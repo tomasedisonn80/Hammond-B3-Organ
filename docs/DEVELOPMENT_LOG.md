@@ -613,3 +613,45 @@ independently qualified its own frozen snapshot. No wrapper correction was neede
 `AGENTS.md` now explicitly requires coherent source/header qualification and keeps
 unfinished runtime edits outside publication snapshots. A full combined staged
 checkpoint and hosted run still qualify these new runtime paths separately.
+
+
+Wave 05's clean staged tree `3f50aafc240100d888870e55bc0062d136de45d0` built under
+strict GCC Release and passed all 34 CTest suites in 9.02 seconds. It was published
+as `093d985150a5d7e18b9c210126af0f08504024ce`; remote commit/tree were verified.
+All active lifecycle header/source changes remained outside that checkpoint.
+Hosted run 43371559575 provides the new checkpoint's own platform gate.
+
+
+### Wave 06 phase-preserving sample-rate lifecycle
+
+Hosted run 43371559575 completed successfully for the prior native-input commit
+`093d985`: Linux GCC, macOS AppleClang and Windows MSVC Release, plus Linux
+ASan/UBSan with leak checking. Wave 06 adds explicit rate transactions to the
+source, contact, shared-percussion and Engine layers. Each validates candidates
+before installation; no sample elapses and all musical history is preserved.
+Same-rate requests are exact no-ops. Owned source parameters can reject an
+otherwise supported rate when its increment falls outside `[2^-53, 0.5)`.
+
+The four implementation assignments retained independent module oracles and
+coherent Engine smoke evidence. The Engine core was frozen in staged tree
+`4370375d5dfe2161d8eefbf492cd692f2613d9c6` before the next wave's partial-key edits.
+Assignments 35/36 qualify that immutable core with separate Engine and owned-input
+acceptance suites. The lifecycle contract records mixed-rate seconds as the sum
+of per-segment frame counts divided by segment rates, and separates this stopped/
+same-thread API from native host/device transitions. The complete staged gate
+and its publication are recorded below when observed.
+
+The independent Engine gate passed 4/4 focused suites, including 36 rate-pair
+scenarios, 36 detector-edge scenarios, 81 rejected transitions and 32603 exact
+future samples. The separate owned-input lifecycle suite passed 1/1, exercising
+12 mixed-rate runs, 14 rate rejections, 42 input rejections and 50 future probes.
+Both used immutable tree `4370375` plus only their own test, and found no production
+defect. All six wave-06 notes are retained before the combined gate.
+
+
+The combined wave-06 staged tree
+`b204d1d91e473929fc92b5563bc97274dd2e2966` built in strict GCC Release from a
+clean archive and passed **39/39 CTest suites in 8.80 seconds**. The archive
+contains all five new lifecycle suites and the prior ownership, console, evidence
+and install gates. Active wave-07 source and build changes were excluded from
+this checkpoint. Final publication and hosted results are tracked separately.

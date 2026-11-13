@@ -58,6 +58,30 @@ Status PercussionState::prepare(const PercussionProfile& profile,
     return Status::Ok;
 }
 
+Status PercussionState::reconfigure_sample_rate(double sample_rate) noexcept {
+    if (!prepared_) {
+        return Status::NotPrepared;
+    }
+    if (!is_supported_sample_rate(sample_rate)) {
+        return Status::InvalidSpec;
+    }
+    if (sample_rate == sample_rate_) {
+        return Status::Ok;
+    }
+
+    // Reuse the same validated coefficient calculation as preparation, but
+    // retain this organ's charge surrogate instead of installing a fresh q=1.
+    // The candidate owns its profile, and every fallible step precedes commit.
+    PercussionState candidate;
+    const Status status = candidate.prepare(profile_, sample_rate);
+    if (status != Status::Ok) {
+        return status;
+    }
+    candidate.readiness_ = readiness_;
+    *this = candidate;
+    return Status::Ok;
+}
+
 double PercussionState::gain(const PercussionSettings& settings) const noexcept {
     if (!prepared_ || !is_valid_percussion_settings(settings) || !settings.enabled) {
         return 0.0;

@@ -46,7 +46,20 @@ its physical events. A native bridge maps all 43 normalized internal controls to
 fixed Engine targets, including exact half-step boundaries under all four standard
 rounding modes. JSON parsing stays outside processing. Native host exports, MIDI
 byte decoding, automation curves, device operation and deadlines remain separate.
-The continuation ledger records these additions' own qualification checkpoint.
+The native-input checkpoint `093d985` passed all 34 local Release suites on its
+exact staged tree. Hosted [run 43371559575](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43371559575)
+passed Linux GCC, macOS AppleClang and Windows MSVC Release plus Linux
+ASan/UBSan with leak checking.
+
+The [sample-rate lifecycle](SAMPLE_RATE_LIFECYCLE.md) now provides an explicit
+stopped/same-thread transaction between 44.1, 48 and 96 kHz when the owned profile
+supports the target rate. It preserves phases, contact position and hysteresis,
+readiness, held targets, controls and frame count. Same-rate requests are exact
+no-ops; rejected changes preserve state and future output. Mixed-rate elapsed
+seconds require the caller's rate schedule. This core API provides no native
+host/device transition or concurrent publication protocol. Its combined clean
+Release archive passed all 39 CTest suites; the continuation ledger retains the
+tested tree and tracks publication and hosted qualification separately.
 
 Pedal mapping data contains 195 connections and five explicit disconnections;
 runtime pedal audio remains open. Physical preset latching, continuous drawbar

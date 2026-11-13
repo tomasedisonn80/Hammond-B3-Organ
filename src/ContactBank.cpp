@@ -63,8 +63,49 @@ Status ContactBank::prepare(const ContactProfile& profile, double sample_rate) n
         }
     }
     keys_ = candidate;
+    sample_rate_ = sample_rate;
     mode_ = profile.mode;
     prepared_ = true;
+    return Status::Ok;
+}
+
+Status ContactBank::reconfigure_sample_rate(double sample_rate) noexcept {
+    if (!prepared_) {
+        return Status::NotPrepared;
+    }
+    if (!is_supported_sample_rate(sample_rate)) {
+        return Status::InvalidSpec;
+    }
+    if (sample_rate == sample_rate_) {
+        return Status::Ok;
+    }
+
+    // Keep candidate coefficients and rebased segment histories local until
+    // every owned key has validated. No contact is resolved at this boundary:
+    // rate changes supply no elapsed time and must preserve hysteresis exactly.
+    auto candidate = keys_;
+    for (auto& manual : candidate) {
+        for (auto& key : manual) {
+            if (!valid_duration(key.profile.press_seconds) ||
+                !valid_duration(key.profile.release_seconds)) {
+                return Status::InvalidProfile;
+            }
+            const double press_step = 1.0 / (sample_rate * key.profile.press_seconds);
+            const double release_step = 1.0 / (sample_rate * key.profile.release_seconds);
+            if (!std::isfinite(press_step) || press_step <= 0.0 ||
+                !std::isfinite(release_step) || release_step <= 0.0) {
+                return Status::InvalidProfile;
+            }
+            key.press_step = press_step;
+            key.release_step = release_step;
+            if (key.state.position != key.state.target) {
+                key.travel_origin = key.state.position;
+                key.travel_frames = 0;
+            }
+        }
+    }
+    keys_ = candidate;
+    sample_rate_ = sample_rate;
     return Status::Ok;
 }
 

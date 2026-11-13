@@ -7,24 +7,22 @@ for the sixty new assignments in ten waves. The earlier session completed all
 sixty original assignments at `7bbd8e7`; its assignments,
 source reviews and evidence remain intact and are not counted again.
 
-The nominal M3 console integration is published in `4ead769`, with all 30 local
-suites passing. The expected-path repair at `72b5062` now passes all four hosted jobs.
-Qualify the completed bounded note-ownership/native-parameter wave while wave 06
-implements phase-preserving sample-rate changes.
+The nominal M3 console integration and its portability repair are published.
+The bounded note-ownership/native-parameter checkpoint `093d985` passes all 34
+local suites and all four hosted jobs. Qualify the completed sample-rate lifecycle
+wave while wave 07 implements explicit partial-key input and observable traces.
 Keep the original ideal/off audio as an explicit compatibility case. Publication
 requires a clean staged source build, applicable tests, an expected-head push and
 observed CI.
 
 Following waves implement and independently verify:
 
-1. Bounded external note ownership, converted into existing physical-key events,
-   and a native mapping of all 43 proposed normalized controls.
-2. An explicit stopped/same-thread sample-rate change that preserves source
-   phase, contact travel, shared readiness and musical controls; invalid changes
-   preserve the complete previous state.
-3. Observable nominal console traces and explicit partial-key input, with
+1. Finish combined qualification of the explicit stopped/same-thread sample-rate
+   transaction, including preservation of source phase, contact travel, shared
+   readiness, musical controls and external note ownership.
+2. Observable nominal console traces and explicit partial-key input, with
    strict offline preflight and independent timing evidence.
-4. Enabled-path real-time checks, portable installation, robustness, final
+3. Enabled-path real-time checks, portable installation, robustness, final
    handoff and independent review of the exact published checkpoint.
 
 Subagents own scoped files and one evidence note. The integrator owns shared

@@ -43,6 +43,19 @@ public:
                                  const ProcessSpec& spec,
                                  const ConsoleModel& console_model) noexcept;
 
+    // Stopped or same-processing-thread lifecycle operation; never call it
+    // concurrently with processing or diagnostics. Validate the owned source
+    // profile and all three rate-dependent module candidates before installing
+    // any change. Success preserves controls, keys, current contact positions/
+    // targets/connections, readiness, all source phases, caches and frame clock.
+    // No sample elapses and no source is reseeded. Only the installed rate and
+    // rate-dependent coefficients/trajectory segment bookkeeping change.
+    // NotPrepared precedes InvalidSpec; an unsupported source increment reports
+    // InvalidProfile. Failure preserves the complete engine and future output.
+    // The same rate is an exact no-op. The render clock remains a count of frames,
+    // so elapsed seconds across rate changes require an external segment record.
+    [[nodiscard]] Status reconfigure_sample_rate(double sample_rate) noexcept;
+
     // Preflights the entire request. Rejection changes no state or output and
     // consumes no events. Positive calls accept empty (disconnected) output or
     // at least frames samples; extra output samples are untouched. Events use
@@ -56,6 +69,10 @@ public:
 
     [[nodiscard]] std::uint64_t frame_clock() const noexcept { return frame_clock_; }
     [[nodiscard]] bool prepared() const noexcept { return prepared_; }
+    // Installed samples per second, or zero before the first successful prepare.
+    [[nodiscard]] double sample_rate() const noexcept {
+        return prepared_ ? spec_.sample_rate : 0.0;
+    }
 
     // Copied diagnostics only. Invalid manuals/notes report zero/false; checked
     // output-parameter queries leave the destination unchanged on failure.

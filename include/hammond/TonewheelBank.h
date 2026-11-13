@@ -22,6 +22,14 @@ public:
     [[nodiscard]] Status prepare(const RuntimeProfile& profile, double sample_rate,
                                  std::uint64_t seed) noexcept;
 
+    // Stopped or same-processing-thread lifecycle operation; advances no time.
+    // Preserve every current source phase/sample/amplitude/frequency and replace
+    // only the increments after validating all 91 at the new supported rate.
+    // Unprepared -> NotPrepared; unsupported rate -> InvalidSpec; any increment
+    // outside [2^-53, 0.5) -> InvalidProfile. Failure preserves all state and
+    // future output. The same rate is an exact no-op, not a new preparation.
+    [[nodiscard]] Status reconfigure_sample_rate(double sample_rate) noexcept;
+
     // Emit each current-phase sample, then advance every source exactly once.
     // No key/control API exists: callers must process silent/disconnected frames
     // as well. An unprepared bank fills output with zeros and advances nothing.
@@ -32,6 +40,8 @@ public:
     [[nodiscard]] bool phase_turns(ToneId id, double& destination) const noexcept;
 
     [[nodiscard]] bool prepared() const noexcept { return prepared_; }
+    // Installed samples/second, or zero before the first successful prepare.
+    [[nodiscard]] double sample_rate() const noexcept { return sample_rate_; }
 
 private:
     struct SourceState {
@@ -43,6 +53,7 @@ private:
     };
 
     std::array<SourceState, kToneSourceCount> sources_{};
+    double sample_rate_{0.0};
     bool prepared_{false};
 };
 

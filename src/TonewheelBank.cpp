@@ -54,7 +54,37 @@ Status TonewheelBank::prepare(const RuntimeProfile& profile, double sample_rate,
     }
 
     sources_ = candidate;
+    sample_rate_ = sample_rate;
     prepared_ = true;
+    return Status::Ok;
+}
+
+Status TonewheelBank::reconfigure_sample_rate(double sample_rate) noexcept {
+    if (!prepared_) {
+        return Status::NotPrepared;
+    }
+    if (!is_supported_sample_rate(sample_rate)) {
+        return Status::InvalidSpec;
+    }
+    if (sample_rate == sample_rate_) {
+        return Status::Ok;
+    }
+
+    std::array<double, kToneSourceCount> increments{};
+    for (std::size_t index = 0; index < sources_.size(); ++index) {
+        const double increment = sources_[index].frequency_hz / sample_rate;
+        if (!std::isfinite(increment) || increment < 0x1p-53 || increment >= 0.5) {
+            return Status::InvalidProfile;
+        }
+        increments[index] = increment;
+    }
+
+    // All fallible validation precedes installation. This deliberately leaves
+    // accumulated phase and the most recently emitted source sample untouched.
+    for (std::size_t index = 0; index < sources_.size(); ++index) {
+        sources_[index].increment_turns = increments[index];
+    }
+    sample_rate_ = sample_rate;
     return Status::Ok;
 }
 

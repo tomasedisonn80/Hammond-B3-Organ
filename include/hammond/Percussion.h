@@ -82,6 +82,14 @@ public:
     [[nodiscard]] Status prepare(const PercussionProfile& profile,
                                  double sample_rate) noexcept;
 
+    // Recompute rate-dependent coefficients from the owned profile without
+    // advancing time or changing readiness/gains. Requires preparation; only
+    // the three supported rates are accepted. Same-rate calls are exact no-ops.
+    // Every failure preserves all state and future behavior. Like preparation,
+    // this stopped/same-thread lifecycle action evaluates exponentials; it is
+    // not part of advance_frame or a concurrent host/device change protocol.
+    [[nodiscard]] Status reconfigure_sample_rate(double sample_rate) noexcept;
+
     [[nodiscard]] bool prepared() const noexcept { return prepared_; }
     [[nodiscard]] double readiness() const noexcept { return readiness_; }
     [[nodiscard]] PercussionDiagnostics diagnostics() const noexcept {

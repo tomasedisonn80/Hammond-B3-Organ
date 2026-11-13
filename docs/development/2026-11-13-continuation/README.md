@@ -32,9 +32,9 @@ physical instrument fidelity, a VST3 plugin, or a device-audio application exist
 | 02 | 07–12 | Contact and shared-percussion model contracts and unit verification | Complete; independent module tests passed |
 | 03 | 13–18 | Engine, control persistence, renderer integration and behavioral verification | Complete; published in `4ead769` |
 | 04 | 19–24 | Stable controls, evidence-format migration and reproducible fixtures | Complete; `72b5062` repair passes all four hosted jobs |
-| 05 | 25–30 | Bounded host-input ownership and independent adapter verification | Complete; combined publication gate in progress |
-| 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | In progress |
-| 07 | 37–42 | Observable console traces and explicit partial-key input | Planned |
+| 05 | 25–30 | Bounded host-input ownership and independent adapter verification | Complete; `093d985`, 34/34 local suites and all four hosted jobs |
+| 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | Complete; combined publication gate in progress |
+| 07 | 37–42 | Observable console traces and explicit partial-key input | In progress |
 | 08 | 43–48 | Integration, cross-platform checks and examples | Planned |
 | 09 | 49–54 | User/developer handoff, verification records and exact next milestone | Planned |
 | 10 | 55–60 | Independent final review, fixes and publication verification | Planned |
@@ -163,3 +163,52 @@ all 43 proposed IDs, preserving exact binary threshold decisions and the origina
 registry comparison. These are typed core adapters; native host/device and byte-
 level MIDI integration remain unimplemented. The next checkpoint qualifies their
 combined source independently of the active sample-rate lifecycle edits.
+
+
+Wave05 was published as `093d985150a5d7e18b9c210126af0f08504024ce`, exact tree
+`3f50aafc240100d888870e55bc0062d136de45d0`. Its clean source archive passed
+**34/34 Release CTest suites** in 9.02 seconds. The remote commit and tree were
+verified, preserving active lifecycle work as unstaged changes. Hosted run
+43371559575 passed Linux GCC, macOS AppleClang and Windows MSVC Release plus Linux
+ASan/UBSan with leak checking. This qualifies that runtime checkpoint separately
+from the earlier console repair and the subsequent lifecycle changes.
+
+
+## Wave 06: phase-preserving lifecycle
+
+Assignments 31-34 add atomic rate transitions to the source bank, contact bank,
+shared percussion and Engine. The supported rates remain 44100, 48000 and 96000 Hz
+subject to owned source-increment bounds. Source phases, all contact positions/
+threshold history, shared readiness, controls, held targets and frame count are
+preserved. Same-rate requests advance and rebuild nothing. Independent module
+checks cover all old/new rate pairs, future-output preservation after rejection,
+analytic phase/contact/readiness evolution and exact same-rate continuation.
+
+The integrator froze the production core in staged tree
+`4370375d5dfe2161d8eefbf492cd692f2613d9c6` before wave 07's Engine edits. The
+independent Engine and owned-input tests use that tree with their own test files,
+preventing accidental qualification against changing live headers. The full
+checkpoint's actual result and remote identity follow once observed.
+
+
+Assignment 35's permanent Engine gate passed four focused suites. It checks all
+91 sources and 122 keys, 36 rate-pair scenarios, 36 independent detector-edge
+scenarios, 81 rejected changes, 6144 same-rate requests and 32603 bit-identical
+future audio samples. Maximum phase and readiness errors against its analytic
+models were respectively 5.55951e-14 turns and 5.51774e-14. These bounded nominal
+software oracles do not establish physical calibration or native-host timing.
+
+Assignment 36 independently passed its owned-input lifecycle suite against the
+same frozen core. Twelve mixed-rate runs use a hand-written 3814-frame physical
+timeline in both contact modes and several partitions. Fourteen rejected-rate
+probes, 42 rejected input blocks, 50 future-output probes and 10086 exact state
+comparisons preserve ownership, original routes and Engine state. All six wave-06
+notes are now retained.
+
+
+The combined wave-06 staged tree
+`b204d1d91e473929fc92b5563bc97274dd2e2966` built in strict GCC Release from a
+clean archive and passed **39/39 CTest suites in 8.80 seconds**. The archive
+contains all five new lifecycle suites and the prior ownership, console, evidence
+and install gates. Active wave-07 source and build changes were excluded from
+this checkpoint. Final publication and hosted results are tracked separately.

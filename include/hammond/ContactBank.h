@@ -79,6 +79,16 @@ public:
     // Failure preserves the complete previous bank. The profile is copied.
     [[nodiscard]] Status prepare(const ContactProfile& profile, double sample_rate) noexcept;
 
+    // Stopped or same-processing-thread lifecycle operation, not a reset.
+    // Preserve every position, target and contact bit without advancing time.
+    // A changed rate starts each moving segment from its current position with
+    // new per-sample steps derived from the owned durations. Same-rate calls are
+    // exact no-ops. Validate every candidate step before installation; failures
+    // preserve the complete bank and its future motion. No concurrent protocol.
+    // NotPrepared takes precedence over InvalidSpec; invalid owned coefficients
+    // would report InvalidProfile. Only the three supported rates are accepted.
+    [[nodiscard]] Status reconfigure_sample_rate(double sample_rate) noexcept;
+
     // Physical-key commands are idempotent targets, not counted MIDI owners.
     // Ideal immediately updates all nine contacts/position to 0 or 1.
     // LinearTravel changes only the target; it never advances time here.
@@ -122,6 +132,8 @@ public:
 
     [[nodiscard]] bool prepared() const noexcept { return prepared_; }
     [[nodiscard]] ContactMode mode() const noexcept { return mode_; }
+    // Zero until a successful prepare. Failed prepare/reconfiguration preserves it.
+    [[nodiscard]] double sample_rate() const noexcept { return sample_rate_; }
 
 private:
     struct Key {
@@ -138,6 +150,7 @@ private:
     [[nodiscard]] Key* checked_key(Manual manual, std::uint32_t midi_note) noexcept;
 
     std::array<std::array<Key, kManualKeyCount>, kManualCount> keys_{};
+    double sample_rate_{0.0};
     ContactMode mode_{ContactMode::Ideal};
     bool prepared_{false};
 };

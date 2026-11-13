@@ -94,6 +94,50 @@ Status Engine::prepare(const RuntimeProfile& profile, const ProcessSpec& spec,
     return Status::Ok;
 }
 
+Status Engine::reconfigure_sample_rate(double sample_rate) noexcept {
+    if (!prepared_) {
+        return Status::NotPrepared;
+    }
+    if (!is_supported_sample_rate(sample_rate)) {
+        return Status::InvalidSpec;
+    }
+    if (sample_rate == spec_.sample_rate) {
+        return Status::Ok;
+    }
+
+    const Status profile_status = validate_runtime_profile(profile_, sample_rate);
+    if (profile_status != Status::Ok) {
+        return profile_status;
+    }
+
+    // Every fallible transition acts on an owned candidate. In particular,
+    // contact trajectories and readiness cannot change if a later module fails.
+    auto candidate_sources = source_bank_;
+    const Status source_status = candidate_sources.reconfigure_sample_rate(sample_rate);
+    if (source_status != Status::Ok) {
+        return source_status;
+    }
+    auto candidate_contacts = contact_bank_;
+    const Status contact_status = candidate_contacts.reconfigure_sample_rate(sample_rate);
+    if (contact_status != Status::Ok) {
+        return contact_status;
+    }
+    auto candidate_percussion = percussion_state_;
+    const Status percussion_status = candidate_percussion.reconfigure_sample_rate(sample_rate);
+    if (percussion_status != Status::Ok) {
+        return percussion_status;
+    }
+
+    source_bank_ = candidate_sources;
+    contact_bank_ = candidate_contacts;
+    percussion_state_ = candidate_percussion;
+    spec_.sample_rate = sample_rate;
+    // Routing, source amplitudes and current contact connections are unchanged;
+    // both coefficient arrays and their existing dirty/eligibility flags remain
+    // valid. Preserve all other ProcessSpec fields and the independent clock.
+    return Status::Ok;
+}
+
 Status Engine::preflight(std::uint32_t frames, std::span<float> mono_output,
                           std::span<const Event> events) const noexcept {
     if (!prepared_) {

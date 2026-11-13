@@ -12,6 +12,8 @@ Use `hammond::Engine` with the agreed value types in `Types.h` and `Profile.h`:
 ```cpp
 Status prepare(const RuntimeProfile&, const ProcessSpec&) noexcept;
 Status prepare(const RuntimeProfile&, const ProcessSpec&, const ConsoleModel&) noexcept;
+Status reconfigure_sample_rate(double sample_rate) noexcept;
+double sample_rate() const noexcept;
 ProcessResult process(std::uint32_t frames,
                       std::span<float> mono_output,
                       std::span<const Event> events) noexcept;
@@ -38,6 +40,15 @@ that physical key. [NoteOwnership](NOTE_OWNERSHIP.md) separately implements boun
 note-ID/channel ownership, and [InputProcessor](INPUT_PROCESSOR.md) commits it only
 after Engine accepts the translated block. These typed adapters do not provide a
 native host SDK, byte-level MIDI parser or device application.
+
+`reconfigure_sample_rate()` is a stopped/same-thread transaction between processing
+calls. It preserves source phases, current contact positions and hysteresis,
+percussion readiness, controls, held keys and the frame clock while replacing
+rate-dependent coefficients. Supported rates are 44100, 48000 and 96000 Hz, subject
+to the owned profile's source-increment bounds. Same-rate requests are exact no-ops;
+rejected changes preserve future output. The rate diagnostic is zero before
+preparation. See [sample-rate lifecycle](SAMPLE_RATE_LIFECYCLE.md) for admission,
+mixed-rate time accounting and the separate native-host/device requirements.
 
 ## Events
 
