@@ -39,9 +39,10 @@ builds and the exact qualification boundaries. Current pedal work has its own
 [trace tool](docs/PEDAL_TRACE.md), [pedal plots](docs/PEDAL_TRACE_PLOTS.md) and
 [musical catalog](docs/PEDAL_AUDIO_ACCEPTANCE.md).
 
-The active [pedal/native session](docs/development/2026-11-13-pedals/README.md)
-tracks **60 new assignments in ten waves**, including a fresh review of all
-500 atlas pages. Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json)
+The current [pedal/native session](docs/development/2026-11-13-pedals/README.md)
+completed **60 distinct new assignments in ten waves**, including a fresh review
+of all 500 atlas pages. All sixty substantive results are accepted; the ledger
+retains exact scopes, checks, failures and final publication boundaries. Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json)
 counts only newly dispatched workers and retains one substantive note per
 completed assignment. Both earlier sixty-agent sessions remain historical.
 [AGENTS.md](AGENTS.md) makes the documented handoff, meaningful verification,
@@ -114,16 +115,13 @@ and metrics without trusting the producer’s Boolean assertions. These outputs 
 synthetic engineering evidence.
 
 [Core/offline CI](docs/CI.md) covers Linux GCC, macOS AppleClang and Windows
-MSVC Release, plus Linux ASan/UBSan with leak checking. The pedal/host-foundation
-checkpoint `88c36b4a72a07f6498f73279f25023278accd350` passed all 65 local suites
-and all four hosted jobs in
-[run 43404272839, attempt 2](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43404272839).
-The [runner record](docs/reviews/PEDAL_RUNNER_AVAILABILITY.md) retains the first
-macOS acquisition failure and actual successful retry. The separate
-[native workflow](docs/VST3_CI.md) builds and tests actual bundles; it does not
-inherit a result from SDK-free CI. Qualification always belongs to the named
-revision, platform and executed scope; [current status](docs/STATUS.md) records
-later outcomes and open gates.
+MSVC Release, plus Linux ASan/UBSan with leak checking. The separate
+[native workflow](docs/VST3_CI.md) builds and tests actual bundles; it has its own
+platform and payload qualification. The [final platform audit](docs/reviews/PEDAL_FINAL_PLATFORM.md)
+retains exact revisions, complete test output, artifact identities, actual failed
+runs and their repairs. [Current status](docs/STATUS.md) distinguishes published
+code, executed checks and pending gates. Neither a workflow dispatch nor a
+bundle inventory alone proves plug-in execution or DAW/device readiness.
 
 ## Project navigation
 
@@ -138,6 +136,9 @@ later outcomes and open gates.
 | [Previous console handoff](docs/CONTINUATION_HANDOFF.md) | Dated console identities and commands; use current status/next steps for later pedal/native work |
 | [Original pedal gate](docs/M3_NEXT_GATE.md) | Retained acceptance contract for the implemented routing kernel; current work is in Next steps |
 | [Acceptance matrix](docs/ACCEPTANCE_MATRIX.md) | M0-M9 requirements, actual evidence and open gates |
+| [Release readiness](docs/RELEASE_READINESS.md) | Usable prototype, outstanding product/distribution gates and first scanner graph task |
+| [Final platform audit](docs/reviews/PEDAL_FINAL_PLATFORM.md) | Exact core/native runs, failures, repairs and verified artifact identities |
+| [Final session audit](docs/reviews/PEDAL_SESSION_FINAL_AUDIT.md) | Independent current-session accounting, full source coverage and future-agent handoff review |
 | [Original session handoff](docs/SESSION_HANDOFF.md) | Preserved commands and evidence for the original session's dated checkpoint |
 | [Original assignment ledger](docs/development/AGENT_LEDGER.md) | Original 60 assignment slots; separate from the new continuation |
 | [Development log](docs/DEVELOPMENT_LOG.md) | Actual changes, commands, results and limitations |
@@ -187,8 +188,9 @@ later outcomes and open gates.
 | [Dependencies and rights](docs/DEPENDENCIES_AND_RIGHTS.md) | Actual distributed material, provenance, notices and unresolved permissions |
 | [Complete atlas review](docs/research/ATLAS_REVIEW.md) | Full 500-page coverage, milestone interpretation and source limits |
 | [Source manifest](docs/research/source-manifest.json) | Preserved PDF identity and missing companion assets |
-| [Review notes](docs/development/agent-notes/) | Actual agent assignments and retained evidence |
-| [Console continuation](docs/development/2026-11-13-continuation/README.md) | New sixty-agent, ten-wave ledger and integration checkpoints |
+| [Original review notes](docs/development/agent-notes/) | Historical original-session assignments and retained evidence |
+| [Current pedal/native session](docs/development/2026-11-13-pedals/README.md) | Current sixty-assignment ledger, owned notes, integration records and final handoff |
+| [Console continuation](docs/development/2026-11-13-continuation/README.md) | Historical completed sixty-agent, ten-wave ledger and console integration checkpoints |
 
 ## Source and evidence
 

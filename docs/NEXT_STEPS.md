@@ -1,119 +1,126 @@
 # Next steps
 
-## Active new session
+## Resume here
 
-Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Nine waves plus the first final-wave review are complete: 55 actual new workers: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation, the concurrent state exchange and the optional native module with independent Linux ABI/behavior gates. All eight retained scores have exact local baseline/current WAV compatibility.
+Read [STATUS.md](STATUS.md), [PEDAL_HANDOFF.md](PEDAL_HANDOFF.md),
+[RELEASE_READINESS.md](RELEASE_READINESS.md), [PLAN.md](PLAN.md) and
+[AGENTS.md](../AGENTS.md), then inspect the actual checkout and remote head.
+The implemented prototype is a nominal two-manual/25-pedal dry organ and optional
+headless VST3 with 45 controls. It is ready for the dependency-ready scanner
+numerical work below; physical M3 and the complete product remain open.
 
-Wave 5 completed same-frame diagnostics, compiled pedal model metadata, independently checked musical fixtures, sample-linear automation and a bounded race-free UI/audio state handoff. The host contract requires the previous-sample anchor at -1, correct offset-N interpolation/carry, stable event ordering, candidate rendering with whole-callback rollback, and state 1/2/3 loading during active processing. The enabled-path audit measured these actual paths, including the complete proposed callback; the later actual native allocation and concurrency gates now have their own scoped results.
+The sixty-worker pedal/native session is complete: **60 distinct new assignments,
+ten waves of six, all accepted**, with one substantive note per worker. Its
+[manifest](development/2026-11-13-pedals/assignments.json) retains those identities;
+earlier original/console sessions are never recounted. Code/test repair
+`0ad7240a88803de9d97bc265a8fd2b6e5d5d7e2b` is published with exact fetched tree
+identity and all four core/three native jobs passed. Final handoff publication
+changes only documentation and this session's completion metadata. A future
+agent begins the product task below in a new, honestly scoped assignment record.
 
-Wave 6 implemented the [minimal native VST3 contract](VST3_SPIKE_CONTRACT.md), [explicit pinned build](VST3_BUILD.md), actual factory/processor/controller tests and separate native CI/artifact inventory. The SDK validator's summary is retained together with its unsupported-rate and repeated-deactivation diagnostics. Wave 7 completed actual native allocation/concurrency and dense automation gates, portable CLI handling, explicit install/relocation and exact legacy review. Wave 8 retains a musical pedal demo, independent replay, plots, operational handoff and the next acquisition/numerical contract; the final waves own integrated review and exact hosted/publication audits. The requested session still requires sixty actual new workers in ten waves; earlier sessions are not counted again.
+## First next product change: admit the scanner graph
 
-## Completed continuation and current baseline
+**Deliverable:** an explicitly reconstructed nominal scanner fixture, strict
+schema/compiler and an independently owned endpoint/source review. The detailed
+acceptance authority is [M3_REMAINING_AND_SCANNER_GATE.md](M3_REMAINING_AND_SCANNER_GATE.md),
+with the concise task in [release readiness](RELEASE_READINESS.md#first-next-product-task-scanner-graph-admission).
+Do not infer original missing companion files from a newly authored replacement.
 
-The [continuation ledger](development/2026-11-13-continuation/README.md) and
-[actual-state manifest](development/2026-11-13-continuation/assignments.json)
-record **60 completed distinct workers in ten waves of six**, with sixty retained
-notes and no planned/running assignments. The original session's sixty remain
-separate. Both explicit final record gates pass under
-[CONTINUATION_CHECKS.md](CONTINUATION_CHECKS.md).
+| Proposed file | Responsibility |
+| --- | --- |
+| `data/scanner/atlas-late-b3-nominal-v1.json` | Named topology, positive nominal R/L/C values, units, signed endpoints, outputs, source locators and explicit assumptions/unknowns. |
+| `data/scanner-line.schema.json` | Strict bounded authoring contract; exact required fields and graph identities. |
+| `tools/compile_scanner_line.py` | Deterministic, build-time admission and representation with destination preservation on rejection. |
+| `tests/test_scanner_line_profile.py` | Independent literal endpoint/output expectations and meaningful malformed/topology mutation cases. |
+| A separately owned source-review note | Actual page images and endpoint/value comparison, primary circuit comparison when available, exact evidence class and unresolved specimen applicability. |
 
-The implemented nominal console, typed input, phase-preserving rate lifecycle,
-partial-key input, trace/plot tooling, 16-file offline install and retained demo
-are ready for the next dependency-ready product task. The final reviews corrected
-renderer stdout reporting, stale host/ownership instructions and Windows CRLF
-handling in the accounting checker. Qualified code `7469ebf759ced820cc34fc9012beff6f772e4b89`
-passes all 46 suites and 372 Python methods in every job of
-[run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473),
-with zero failed/disabled/skipped tests. The
-[final platform audit](reviews/FINAL_CONTINUATION_PLATFORM.md) retains full evidence
-and the earlier failed run. Final Markdown/assignment result publication preserves
-these code/test/data identities and requires observed remote/CI verification.
+Use the unchanged atlas, especially pages 157–159, 175 and 181–186, and the
+[independent final source review](reviews/PEDAL_SOURCE_PLAN_FINAL.md).
+Proposed model identity is `atlas-late-b3-nominal-line-v1`. Its source is a
+candidate documentary reconstruction, not an acquired/calibrated circuit.
 
-Preserve the original ideal-contact/percussion-off behavior as a compatibility
-case. Subagents own scoped files and one evidence note; the integrator owns shared
-handoff updates and publication. Follow [AGENTS.md](../AGENTS.md). There is no
-remaining assignment from this sixty-worker session to invent or count again.
+Acceptance for the first commit:
 
-## Next product milestone
+1. Preserve ground `g`, `p0..p18`, return `r` and `d1..d6`: **27 nodes,
+   18 inductors, 18 capacitors and 14 resistors**. Ideal drive and return switch
+   are explicit separate boundaries. Early divider branches attach before
+   their inductors. Export exactly 19 ground-referenced signed taps.
+2. Convert declared units once and preserve printed values/source locators.
+   Treat the vibrato return short as a constraint/contraction. Winding resistance,
+   mutual/stray coupling, drive/receiver loading and physical signal scaling
+   remain explicit unknowns or named ideal approximations, never invented data.
+3. Independently compare every endpoint/output/value/return state against the
+   rendered atlas and an identified primary circuit when available. Preserve the
+   missing primary/specimen gate if it cannot yet be closed.
+4. Reject duplicate IDs/keys, dangling or missing references, unknown fields,
+   nonfinite/nonpositive values, wrong units/counts, after-inductor divider
+   mutations, return-referenced outputs and missing/wrong switch states. Bound
+   source size and graph dimensions; failed writes preserve existing output.
+5. Run meaningful compiler/source gates from coherent identified inputs.
+   Preserve the original PDF/profile/maps/fixtures, all 45 parameter records,
+   state migrations and Engine/native compiled inputs. Keep graph admission
+   separate from scanner runtime and measured response acceptance.
 
-Publish the qualified final-review repair checkpoint, including the independent
-49–54 audits, updated future-agent instructions and the two-file Windows
-reparse/junction inventory repair and the single-file portable native concurrency
-test helper. Keep the exact qualified source and executed scope explicit:
-production Engine/native inputs remain unchanged from the 71-suite/eight-native-
-suite wave-8 source. The initial Python repair passed its 44 focused methods;
-the subsequent helper passed fresh native configuration/build and 1/1 focused
-concurrency CTest at source tree `81a1c466efdec3efe5c1d9af1e1663eb101dacde`.
-Inspect the actual hosted Windows junction case and repaired macOS native build.
-The wave-8 macOS retries produced an actual 71/71 core pass and a concrete native
-test compilation failure; both are retained in the repair integration review.
-Record later-source qualification separately from those historical executions.
+## Dependency order after graph admission
 
-Complete the remaining assignments 56–60: source/scanner-plan verification,
-actual hosted-artifact runtime loading, readiness assessment, final exact-source
-platform audit and final accounting review. The explicit session gate is:
+| Step | Required work and evidence |
+| --- | --- |
+| Independent offline AC/transient oracle | Independently stamp both return states and all 19 signed outputs. Check exact-rational DC, finite-frequency topology mutations, loading/current sensitivity, conditioning/residuals and a converged transient reference. Freeze frequency grids and error budgets before grading runtime. |
+| Prepared line runtime | A separately implemented bounded solver with physical capacitor/inductor state and prepared operators. Compare AC with declared frequency-warp treatment, transients, nonzero stored energy, partitions, all supported rates and stopped-rate state conversion. |
+| Rotor and modes | One continuing phase/history, three depth maps and V1–V3/C1–C3 behavior. Resolve or explicitly label the atlas's 15-entry/16-position traversal discrepancy. Check signed common return, centers/intervals/wrap, sidebands and convergence. |
+| Opt-in Engine/native integration | Define U/L/P/Q boundaries while preserving literal legacy dry accumulation when disabled. Preserve controls/state/UUID meanings, source clock and whole-callback rollback including precharged scanner state. Qualify newly enabled automation, allocation/concurrency and actual native paths. |
+
+The independent DC solve establishes mathematical answers for the ideal graph;
+it does not establish correct finite-frequency connectivity. A deliberately
+misattached divider variant gives the same DC answers because inductors short
+at DC. Keep independent source and AC checks in the exit criteria.
+
+Do not add scanner parameters during graph/oracle work. When later integration
+needs controls, specify stable identities and saved-state migrations first;
+older states must retain the existing dry default.
+
+## Work that can proceed independently
+
+Physical M3 tasks include preset-latch/loading behavior, continuous drawbar
+conductance, switching bandwidth, loaded expression and the pedal reactor
+network. The present pedal mixtures and gain are named nominal fixtures;
+documentary 25-by-8 wiring is not a measured 16-foot/8-foot voice model.
+
+For acquisition, follow [CAPTURE_PROTOCOL.md](CAPTURE_PROTOCOL.md): identify the
+organ/generator/AO-28/cabinet revision and condition; record calibration, units,
+loading, physical clocks, uncertainty and permissions; retain raw/derived ancestry;
+and keep complete takes/channels together across fitting, validation and untouched
+holdouts. Metadata validation alone cannot admit physical fidelity.
+
+M5 connected AO-28 precedes complete dry-organ validation; M6 selects a specific
+Leslie 122 circuit/driver load while preserving 147 as a separate variant. M7
+rotor/acoustic ownership must avoid counting propagation, filters and room effects
+twice. M8 requires measured held-out evidence. M9 DAW/device operation, standalone
+backend, accessible custom UI, runtime packaging, Windows icon/branding decision, project-license
+choice and signing each retain distinct gates in [release readiness](RELEASE_READINESS.md).
+
+## Required verification and handoff
+
+Use the [operational commands](PEDAL_HANDOFF.md), configure/build the selected
+inputs before CTest, and use `--no-tests=error` on a required filtered gate.
+The completed session passed these exact record gates; use them to validate its
+retained archive:
 
 ```sh
+python3 tools/check_repository.py --root . --expected-agents 60
+python3 tools/check_continuation.py --root . --expected-complete 60
 python3 tools/check_pedal_session.py --repo . --expected-complete 60
 ```
 
-Use that count only after all sixty new assignments have completed and the
-integrator has accepted their substantive notes. Preserve earlier session ledgers.
-Publish all completed authorized work with an expected-head guard, verify the
-fetched exact tree, and retain actual hosted outcomes and unresolved gates.
+The first two preserve earlier histories; only the final command checks the
+pedal session. Record validation is not evidence of external dispatch or semantic
+acceptance, which the integrator must verify separately. A later session needs
+its own actual ledger and must not rewrite these completed identities.
 
-The next product change after this session is the [remaining M3 and scanner
-gate](M3_REMAINING_AND_SCANNER_GATE.md): first author the nominal scanner graph,
-strict schema/compiler and independent endpoint review, then the independent
-offline AC oracle. The gate records all 50 candidate passive components,
-19 signed outputs, depth maps, the explicitly inferred sixteen-position traversal
-and missing physical evidence. Keep the existing dry accumulation path and all
-legacy audio exact while preparing separate U/L/P/Q observability for opt-in
-scanner work. Do not claim the new scanner runtime is already implemented.
-
-The actual loaded native callback now has a scoped allocation audit; native UI
-state/audio stress passed a fully instrumented TSAN run. Preserve their exact
-ownership, interposition and instrumentation assumptions. Local bundle relocation
-and dense multi-curve automation also have focused evidence; the combined source
-and hosted builds remain separately qualified.
-
-The implemented native surface is three event buses, 45 permanent controls,
-float32 dry stereo at 44.1/48/96 kHz and generic host parameter controls. Actual
-DAW project save/reopen, audio-device scheduling, custom accessible UI and signed
-distribution remain separate M9 work. Preserve all original factory UUIDs,
-parameter identities, state migrations and nominal model boundaries.
-
-Physical preset latches, switching bandwidth, continuous drawbars and loaded expression remain additional M3 gates. The selected pedal matrix/gain are explicit nominal fixtures; the documentary 25-by-8 routing evidence does not establish reactor loading, physical tuning or measured timbre. Keep every existing parameter/event/control identity and original fixture unchanged.
-
-## Acquisition work that can proceed in parallel
-
-Use [CAPTURE_PROTOCOL.md](CAPTURE_PROTOCOL.md) and its planned metadata example:
-
-1. Identify the organ/generator, AO-28 revision, cabinet model/revision, condition,
-   modifications and measurement permissions. Keep missing fields explicitly unknown.
-2. Retain the completed [factory routing comparison](FACTORY_REFERENCE.md), then
-   acquire calibrated source, contact, percussion and expression evidence at named
-   boundaries. Documentary wiring agreement is separate from actual specimen tuning,
-   waveform/level/phase and loading measurements.
-3. Record units, loading, raw digital rate versus physical clock, calibration,
-   uncertainty, rights and raw/derived ancestry. Admit real captures with the stated
-   physical checks; a metadata or byte-hash pass cannot perform that admission.
-4. Keep whole takes and related channels/derivatives together. Maintain an external
-   corpus ledger for fitting, validation and untouched final holdouts; the per-file
-   validator does not establish corpus-wide independence.
-
-M4 scanner, M5 AO-28, M6 Leslie electronics and M7 rotary acoustics retain the
-specific source/topology/acquisition dependencies in [PLAN.md](PLAN.md). Native
-VST3/device audio, accessible UI, platform distribution and rights are separate
-M9 gates. The historical [host proposal](HOST_INTEGRATION.md) retains earlier criteria.
-The actual [native build](VST3_BUILD.md) and [operational handoff](PEDAL_HANDOFF.md)
-describe implemented VST3 work; device scheduling and standalone audio remain open.
-
-## Required handoff for every future agent
-
-Follow [AGENTS.md](../AGENTS.md): inspect current code and both session ledgers,
-select dependency-ready work, state its evidence boundary, execute the necessary
-checks, update status/next steps/log and affected contracts, then commit and push
-completed authorized work. Preserve others' commits, use an expected-head guard,
-and observe the actual remote result. Retain failures and unrun gates. Workers
-report to the integrator; they do not compete to rewrite shared status documents.
+Every future agent updates status, next steps, development log and affected
+contracts with source identity, commands, results, actual failures and unrun gates.
+Workers hand owned changes to the integrator. Commit and push completed authorized
+work to main, inspect/integrate concurrent changes, use an expected-head guard,
+never force-push and verify the fetched remote tree. No extra permission request
+is needed for this standing authorized workflow unless repository protection or
+a later user instruction changes it.

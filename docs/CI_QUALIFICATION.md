@@ -1,5 +1,23 @@
 # Hosted CI qualification evidence
 
+## Current pedal/native qualification
+
+Use [STATUS.md](STATUS.md) and the [final pedal platform audit](reviews/PEDAL_FINAL_PLATFORM.md)
+for the current exact code revision, core/native job results, actual failures and
+repairs, complete diagnostic archives and bundle identities. The
+[repair integration](reviews/PEDAL_REVIEW_REPAIR_INTEGRATION.md) retains the W8
+macOS retry and scoped local repair evidence. The
+[hosted-artifact runtime review](reviews/PEDAL_HOSTED_RUNTIME_FINAL.md) separately
+loads the actual downloaded Linux module; an inventory hash alone is not runtime
+qualification. [CI.md](CI.md) and [VST3_CI.md](VST3_CI.md) define the distinct
+workflows and their limits.
+
+## Original-session audit — retained history
+
+The remainder of this document is the original session's revision-specific
+audit. Its use of “final” means that original session, not the latest project
+revision. Later console and pedal work retain their own independent reports.
+
 Audit date: 2026-11-13. This report preserves the observed result for each tested
 revision. The final code integration at `61c6ecb` passed all four hosted jobs; the
 earlier failed run and its local investigation remain below. A later change needs

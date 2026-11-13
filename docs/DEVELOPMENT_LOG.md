@@ -1452,18 +1452,18 @@ macOS repaired native execution remain separate next hosted gates.
 
 ### Final-platform inventory fixture correction after actual hosted execution
 
-Published/fetched feefe83 passed all three native platform jobs (Linux8/8,
-macOS7/7,Windows7/7), including actual inventories and artifacts. Core Linux
-and sanitizers passed71/71; macOS and Windows each passed70/71 with the
+Published/fetched feefe83 passed all three native platform jobs (Linux 8/8,
+macOS 7/7, Windows 7/7), including actual inventories and artifacts. Core Linux
+and sanitizers passed 71/71; macOS and Windows each passed 70/71 with the
 inventory regression failing. The actual Mac temporary alias and Windows
 8.3 path spelling bypassed two synthetic patches. Windows also exposed mklink
 argument quoting and synthetic st_file_attributes=None. These are concrete
 fixture failures, retained with full logs, not a fully passing matrix.
 
-Assignment59 repaired only tests/test_native_bundle_inventory.py: canonical
+Assignment 59 repaired only tests/test_native_bundle_inventory.py: canonical
 fixture roots, separate Windows command arguments, realistic integer attribute
 metadata and an explicit two-success counter before the junction marker. The
-old fixture reproduced the alias failure locally. The repair passed all20methods
+old fixture reproduced the alias failure locally. The repair passed all 20 methods
 both normally and under an actual symlinked temporary parent, plus each forced
 special-mode/symlink fallback. No skips or production change. Root reviewed the
 diff and bound the exact frozen test/tool inputs to tree
@@ -1471,3 +1471,52 @@ diff and bound the exact frozen test/tool inputs to tree
 commands, complete boundaries and log identities. Actual new-source Windows
 junction and macOS suite results remain the next hosted gate. Every previous
 job completed before this next publication; no outstanding job was cancelled.
+
+## Pedal session complete — all sixty actual workers accepted
+
+All sixty new assignments in ten logical waves of six are complete and accepted.
+Six fresh readers covered the unchanged 500-page PDF. Final reviews 56–60 verified
+source/scanner arithmetic, executed the actual hosted Linux artifact, updated
+readiness and every milestone gate, qualified all seven exact-source platform
+jobs, and audited honest accounting plus future-agent instructions. The earlier
+original and console sixty-agent sessions remain separate preserved history.
+
+Final code/test commit 0ad7240a88803de9d97bc265a8fd2b6e5d5d7e2b,
+tree 41c0b421643d4076c65ecbac8a750b4aae4d5806, passed all four core jobs
+(71/71 suites and 549 Python methods each) and native Linux 8/8, macOS 7/7 and Windows 7/7.
+Every JUnit result has zero failures/disabled/skips. Ten downloaded ZIPs and
+all 16 native payload files match their source/run/attempt and byte/mode/hash
+records. Actual Windows junctions and all native cleanup probes passed. The
+validator's 47/0 result retains its 16/9/15 diagnostic classes. Root independently
+observed both successful workflow APIs and reconciled every JUnit/full LastTest
+record. Initial root method/marker assertions used truncated JUnit output;
+counting full LastTest logs corrected that parser setup error. No test failure
+or hidden rerun is inferred from the parser correction.
+
+Root consolidated current status, next tasks, README navigation, operational
+handoff and CI entry points, preserving detailed earlier failures in the log,
+notes and Git history. The final matrix and release-readiness documents clearly
+separate nominal engineering, physical M3/scanner/AO-28/Leslie/calibration and
+DAW/device/UI/distribution work. Assignment 60's read-only follow-up checked 212
+local links and a fragment; root applied its three wording improvements. The
+first next product task is scanner graph/schema/compiler admission with an
+independent endpoint review, followed by an independent AC oracle. AGENTS.md
+retains the standing authorized commit/push and durable handoff rule.
+
+The final integration review records source identities, actual results, setup
+corrections, sixty-complete archive checks and publication boundaries. This
+last handoff changes only Markdown and actual completion metadata; qualified
+production/build/test/data inputs remain byte-identical to 0ad7240.
+
+### Final sixty-complete source-archive gates
+
+Root archived staged tree 1aa9ab3620c525ae8c39042d53ca60d0e11d2fdb
+(562 tracked files) and ran the repository/original, console-history and current
+pedal explicit record gates. All three passed. The current result is 60 complete,
+0 running, 0 planned, 60 distinct identities, 60 completed notes and 10 complete waves.
+Repository integrity found zero errors, preserved the 500-page source/80-chapter
+index and checked 2,161 local links across 317 Markdown files. Current-session
+accounting is separate from both historical sixty-agent checks. Final result
+updates are Markdown only after this qualified archive; code/build/tool/test/data
+and the actual accepted manifest/notes are unchanged. The final integration
+review retains exact commands, source tree, scope and receipt hash.

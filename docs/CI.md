@@ -9,8 +9,9 @@ their results and artifacts have different scopes.
 | [CI](../.github/workflows/ci.yml) | SDK-free core, generated nominal profile, manual/pedal offline tools and all discovered ordinary C++/Python tests; three Release platforms plus Linux ASan/UBSan/leaks. |
 | [Native VST3](../.github/workflows/native-vst3.yml) | Explicit pinned SDK acquisition, actual `HammondB3.vst3`, validator and native harnesses on three Release platforms, followed by bundle inventory/archive. |
 
-Read [STATUS.md](STATUS.md) and the [operational handoff](PEDAL_HANDOFF.md) for
-the latest identified source and remaining gates. A passing core workflow does
+Read [STATUS.md](STATUS.md), the [final platform audit](reviews/PEDAL_FINAL_PLATFORM.md)
+and the [operational handoff](PEDAL_HANDOFF.md) for the latest identified source,
+actual failed/repaired runs, complete artifacts and remaining gates. A passing core workflow does
 not establish native qualification; a passing native CTest step does not by
 itself establish completion of its subsequent artifact stage.
 

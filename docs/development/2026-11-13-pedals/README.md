@@ -4,6 +4,37 @@ This new session begins at `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. The user 
 
 [assignments.json](assignments.json) records actual planned, running and complete states. Notes are retained per worker. A complete state requires a substantive completion report accepted by the integrator, not merely a planned row or file.
 
+## Final integration status
+
+**All 60 actual new workers are complete and accepted: ten waves of six, sixty
+substantive notes, no planned or running slots.** Earlier snapshots below retain
+their then-current counts, failures and pending gates; neither earlier session
+provides participation credit to this one.
+
+The current code/test repair is published/fetched as
+`0ad7240a88803de9d97bc265a8fd2b6e5d5d7e2b`, exact tree
+`41c0b421643d4076c65ecbac8a750b4aae4d5806`. The
+[final platform audit](../../reviews/PEDAL_FINAL_PLATFORM.md) verifies four core
+jobs, each 71/71 suites and 549 Python methods, plus native Linux 8/8, macOS 7/7
+and Windows 7/7, zero failed/disabled/skipped tests. Ten ZIPs and all 16 native
+payload files match their recorded bytes/modes/hashes. Actual Windows junction
+operations and native cleanup probes passed; earlier failures remain retained.
+
+The [independent final session audit](../../reviews/PEDAL_SESSION_FINAL_AUDIT.md)
+checked identities, unchanged historical ledgers, full PDF coverage, implemented
+claims and future-agent rules. Its frozen 58-complete observation precedes root's
+acceptance of its own result and the final platform report. Root's
+[final integration record](../../reviews/PEDAL_SESSION_INTEGRATION.md) owns actual
+sixty-complete validation and the final documentation/metadata publication.
+All three final archive checks passed: current sixty-complete records, preserved
+console history and repository/source/link integrity.
+
+Use [status](../../STATUS.md), [next steps](../../NEXT_STEPS.md),
+[operational handoff](../../PEDAL_HANDOFF.md) and
+[release readiness](../../RELEASE_READINESS.md) to resume. The first new product
+task is scanner graph/schema/compiler admission and independent endpoint review;
+physical M3 and complete M4–M9 exits remain separate.
+
 ## Scope
 
 Read all 500 atlas pages anew across six disjoint assignments, implement the next documented prepared pedal routing gate, then integrate a clearly identified nominal playable pedal division with controls, input, offline evidence and regression qualification. Add an early minimal native VST3 wrapper after the input/automation/state foundations, as permitted by the atlas after M1/M2. Physical reactor/loading calibration and complete M3 remain distinct gates; native smoke tests do not close DAW/device/UI release work.

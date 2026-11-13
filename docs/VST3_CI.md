@@ -189,22 +189,25 @@ fixtures test parsing and bounds; they are not Windows/macOS plugin runs.
 The native workflow had not run when assignment 36 froze; that is its historical
 scope. Subsequent [ABI](VST3_ABI_ACCEPTANCE.md), [behavior](VST3_BEHAVIOR_ACCEPTANCE.md),
 [automation](VST3_AUTOMATION_REVIEW.md), [concurrency](VST3_CONCURRENCY.md) and
-[allocation](VST3_REALTIME.md) gates now execute the actual module. The
+[allocation](VST3_REALTIME.md) gates execute the actual module. The
 [portability review](reviews/PEDAL_NATIVE_PORTABILITY.md) retains the first
-platform failures and observed repairs; the [wave-8 hosted audit](reviews/PEDAL_HOSTED_WAVE8_FINAL.md)
-identifies the exact later jobs, complete logs and downloaded artifacts. Its
-Linux/Windows jobs passed; the initial macOS jobs failed hosted-runner acquisition
-with zero execution. Root subsequently requested one targeted retry per job.
-A pending or cancelled runner is not an executed compiler/test result.
+platform failures and observed repairs. The [wave-8 hosted audit](reviews/PEDAL_HOSTED_WAVE8_FINAL.md)
+and [subsequent repair record](reviews/PEDAL_REVIEW_REPAIR_INTEGRATION.md) retain
+initial macOS runner nonexecution, actual retry outcomes, the Windows reparse
+repair and the portable concurrency-test helper.
 
-The new reparse/junction inventory regression belongs to the later wave-9 source.
-Inspect its actual Windows output and payload before closing that repair's
-platform gate. For every subsequent code checkpoint, observe the separate core
-and native jobs and retain exact source/run/artifact identity. The earlier
-core-only macOS acquisition failure and successful targeted retry remain in
-[PEDAL_RUNNER_AVAILABILITY.md](reviews/PEDAL_RUNNER_AVAILABILITY.md); those events
-do not qualify changed native code. Preserve the configured platform coverage
-and distinguish runner acquisition from project execution.
+The [final platform audit](reviews/PEDAL_FINAL_PLATFORM.md) is the current
+revision-specific source for all core/native jobs, complete logs, uploaded
+bundles, actual Windows junction execution and further fixture corrections.
+Preserve the source/run/attempt/artifact boundaries and failed results. A new
+job ID in a workflow retry response does not establish that a previously passed
+job reexecuted; check its actual timestamps and diagnostic provenance.
+
+For every later code checkpoint, inspect the separate core and native jobs and
+retain exact source and payload identity. A pending/unacquired runner is not an
+executed compiler/test result. A printed marker within a failed subtest method
+is not a passing assertion: reconcile it with successful test outcomes and the
+complete diagnostic archive before closing a gate.
 
 These artifacts establish software and payload evidence for the exact tested
 revision. Actual DAW compatibility, device deadlines, custom UI, signing,

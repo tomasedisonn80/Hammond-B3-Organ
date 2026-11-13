@@ -1,6 +1,6 @@
 # Pedal and native development handoff
 
-This is the operational entry point for the active
+This is the operational entry point for the current
 [2026-11-13 pedal session](development/2026-11-13-pedals/README.md). The program
 now renders both manuals and 25 pedals through one shared nominal source bank,
 and has an optional, actual `HammondB3.vst3` instrument. Its physical models are
@@ -17,8 +17,8 @@ retain actual checks and failures in a substantive assignment note, and leave
 the next step explicit. The integrator owns shared status and commit/push
 publication. The owner has authorized that publication; preserve unrelated
 work, use the expected remote head, and never force-push or claim an unobserved
-remote result. Earlier sessions' sixty workers do not count toward this
-session's sixty new assignments in ten waves.
+remote result. Each session retains its own actual workers and results; never
+recount an earlier completed assignment as newly dispatched work.
 
 From the repository root, inspect before building or changing files:
 
@@ -38,6 +38,12 @@ that is not independent verification of every figure or referenced external
 asset. Companion captures referenced by the atlas were not supplied.
 
 ### Identified snapshots
+
+The [current platform audit](reviews/PEDAL_FINAL_PLATFORM.md) and
+[STATUS.md](STATUS.md) identify the latest code qualification and any subsequent
+result-only publication. Earlier rows below retain their dated scope. The current
+[readiness matrix](ACCEPTANCE_MATRIX.md) separates those software results from
+physical and product exits.
 
 | Identity | What it identifies |
 | --- | --- |
@@ -295,22 +301,27 @@ workflow retains actual bundles separately from diagnostic logs; neither is a
 signed release. [DEPENDENCIES_AND_RIGHTS.md](DEPENDENCIES_AND_RIGHTS.md) retains
 the unresolved project-wide licensing and research-asset questions.
 
-Wave-7 Windows now passed all 68 ordinary and seven native suites, completed
-inventory and uploaded its bundle; Linux passed its ordinary, sanitizer and
-eight native suites and uploaded its bundle. Root independently verified both
-actual artifact archives. The [portability review](reviews/PEDAL_NATIVE_PORTABILITY.md)
-retains exact jobs and hashes. macOS was still queued at that observation.
-Qualify wave 8's retained demo replay, implemented plot/install extension and
-operational records, then finish the independently assigned final review waves.
-The [new session checker](PEDAL_SESSION_CHECKS.md) validates this session only:
+The [wave-8 integration](reviews/PEDAL_WAVE8_INTEGRATION.md) passed 71 ordinary
+and eight actual native local suites. The [later repair record](reviews/PEDAL_REVIEW_REPAIR_INTEGRATION.md)
+preserves the Windows reparse fix, actual macOS retry outcomes and the portable
+concurrency-test helper. The [final platform audit](reviews/PEDAL_FINAL_PLATFORM.md)
+records later exact-source executions, including any fixture corrections. The
+[actual hosted Linux artifact review](reviews/PEDAL_HOSTED_RUNTIME_FINAL.md)
+separately loaded the downloaded W8 module and passed ABI/behavior/automation
+against coherent reference hosts; it did not substitute a local module.
+
+The [new session checker](PEDAL_SESSION_CHECKS.md) validates the pedal session:
 
 ```sh
 python3 tools/check_pedal_session.py --repo . --json
 ```
 
-Add `--expected-complete 60` only after all sixty actual assignments have been
-accepted. The older repository/continuation checkers retain their historical
-scope and cannot establish the new count.
+All sixty pedal-session assignments are now accepted. The explicit
+`--expected-complete 60` gate validates that completed manifest and its notes;
+root retains the actual result in the [final integration record](reviews/PEDAL_SESSION_INTEGRATION.md).
+The historical repository/console checkers cannot establish that count. A later session preserves these identities and records its
+own work. [NEXT_STEPS.md](NEXT_STEPS.md) names the scanner graph admission task;
+[RELEASE_READINESS.md](RELEASE_READINESS.md) gives proposed files and exact exits.
 
 For product development, follow [PLAN.md](PLAN.md) and
 [M3_ACCEPTANCE_CONTRACT.md](M3_ACCEPTANCE_CONTRACT.md): physical preset latches,
