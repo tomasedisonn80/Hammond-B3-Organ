@@ -1121,3 +1121,110 @@ under `checkpoint-w05/source` and `checkpoint-w05/build`, then ran
 The final result publication differs only in Markdown and actual assignment
 metadata from that tested tree; ongoing native wrapper files are excluded.
 Hosted qualification of the new checkpoint remains a separate observed gate.
+
+
+### Fifth-wave publication observed
+
+Root published `88c36b4a72a07f6498f73279f25023278accd350` using an expected-parent
+reference update, fetched it, and verified identical tree
+`354b1e7660c25435f2f97617450cc86e76b26ce3`. The staged code/test/data are
+unchanged from qualified tree `06786b70f1cffcc6371600fd6e14306f16e8c985`; only
+Markdown results and assignment metadata differ. Hosted run 43404272839 has
+successful Linux GCC Release (131814611978), Windows MSVC (131814612087), and
+Linux ASan/UBSan with leaks (131814611668) jobs. macOS 131814612136 is still
+queued. The preceding repair run's queued macOS job later ended cancelled, so that
+earlier run is not a four-platform success. Its precise cause was not yet
+observed; the original inference that a newer workflow cancelled it is withdrawn. These observations
+do not qualify the separate native module currently being implemented.
+
+
+### Hosted macOS acquisition failure, before project execution
+
+Run 43404272839 subsequently concluded failure because macOS job 131814612136
+was never acquired by a runner. Metadata shows an empty runner name, zero steps,
+and cancellation after about fifteen minutes. Its four check annotations state
+hosted-runner acquisition failure and repeat the ARM64-capacity notice. There
+was no checkout, build or test execution, and the log endpoint has no blob.
+The Windows/Linux/sanitizer successes remain their actual results.
+
+Root verified remote main remains 88c36b4, inspected the public check annotations
+with a read-only API request, and requested one targeted job retry through the
+connected GitHub Actions tool. Official GitHub guidance still lists macos-15
+as supported; the public status page reported no current incident. Neither
+observation overrides the concrete failed acquisition. Root does not change
+platform labels or weaken tests to mark a pass; the new retry remains pending.
+The earlier causal guess about a newer push cancelling the repair's macOS job
+is withdrawn in the active record. See reviews/PEDAL_RUNNER_AVAILABILITY.md.
+
+
+### Native integration review before the combined gate
+
+The first actual SDK module validator reports 47 passed/zero failed/exit zero,
+while retaining 16 teardown messages from conflicting repeated-deactivation
+expectations and nine ERROR-labelled unsupported-rate setup rejections. Root
+inspected the pinned ProcessFormatTest and repeated-state/teardown code; those
+diagnostics are not counted as failures by the SDK. The module remains float32
+at 44.1/48/96 kHz, with no altered DSP contract or patched SDK to hide output.
+The independent module harness separately checks actual supported processing
+and balanced lifecycle. Its first fixture underexercised manual audio because
+it edited A while the default selector was B; the worker corrected the fixture
+and added isolated audible division probes before its final gate.
+
+After assignment 33 froze its build files, root added the build-only
+`hammond_vst3_test_inputs` aggregate. Native CI can build all registered test
+inputs then execute one verbose CTest/JUnit run, instead of keeping a duplicate
+explicit target list or running the entire native suite twice. The upcoming
+frozen integration gate verifies this small CMake change with the complete
+module/ABI/behavior set.
+
+
+### macOS retry recovered and fifth-wave matrix closed
+
+The one targeted macOS retry acquired an ARM64 runner and ran all 65 suites:
+job 131822086122 passed in 45.86 seconds. Run 43404272839 attempt 2 is observed
+completed/success at unchanged commit 88c36b4; all four latest jobs are
+successful. The initial acquisition failure and lack of execution remain in
+the runner review. This closes the fifth-wave core/offline hosted matrix,
+without inheriting a native-module qualification for later uncommitted code.
+
+
+### Native module checkpoint — wave 6 accepted — actual native module and qualification path
+
+Assignments 31–36 completed the native processor, controller/factory/stream
+helpers, explicit pinned build and embedded profile, actual loaded-module ABI
+and behavioral gates, and separate native CI with bounded artifact inventory.
+All 36 actual workers in the first six waves have accepted substantive notes.
+The native module uses original UUIDs, exactly 45 stable controls, three event
+buses and the existing nominal core. It has no custom editor or device backend.
+
+The independent ABI gate compared 229,725 frames, and the behavior gate compared
+233,792 plain-Engine reference frames plus post-rejection paired-module output.
+All compared audio was exact under the recorded Linux toolchain. The controller
+gate checks all metadata, thresholds under four rounding modes and strict
+1/2/3 state migration. The actual SDK module validator reports 47 passed/zero
+failed while retaining 16 teardown and nine unsupported-rate diagnostics. Its
+summary is not a warning-free, float64 or arbitrary-rate claim.
+
+Explicit fresh SDK acquisition passed; the SDK-free build helpers and bundle
+inventory passed 14 and 16 methods respectively. The actual four-file Linux
+bundle and tar/copy transport preserve bytes/modes. Native CI has not yet run
+at this checkpoint draft. Root's coherent full archive gate and publication
+follow separately; active wave-7 CLI/install/allocation work is excluded.
+
+
+### Sixth-wave coherent integration gate
+
+Root archived staged tree `b2dae50dcde294bde8e7acb7addb14456197a779` into
+`checkpoint-w06/source`, excluding all ongoing seventh-wave files and hooks.
+A fresh SDK-free Release build passed **67/67 CTest suites, zero failures or
+skips, in 78.43 seconds**. A separate native Release build of the same source
+used the locked SDK and the new `hammond_vst3_test_inputs` aggregate, then passed
+**4/4 focused native suites, zero failures or skips, in 5.23 seconds**. These
+include the actual module validator, controller, independently loaded ABI and
+behavioral gates. The native binary remains byte-identical to the workers'
+qualified module, SHA-256 `d87353b237e52c8d1f91af27933493a4cf78ba4a06af4a96c9930c0ecec1d3ff`.
+
+The [integration review](reviews/PEDAL_NATIVE_INTEGRATION.md) retains
+commands, exact scope, log identities and validator limitations. Final checkpoint
+changes after that gate are Markdown result records only; seventh-wave work is
+unstaged. Hosted native execution remains a separate post-publication gate.

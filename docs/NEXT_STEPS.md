@@ -2,11 +2,11 @@
 
 ## Active new session
 
-Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Five waves and 30 actual new workers are complete: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation and the concurrent state exchange. All eight retained scores have exact local baseline/current WAV compatibility.
+Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Six waves and 36 actual new workers are complete: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation, the concurrent state exchange and the optional native module with independent Linux ABI/behavior gates. All eight retained scores have exact local baseline/current WAV compatibility.
 
 Wave 5 completed same-frame diagnostics, compiled pedal model metadata, independently checked musical fixtures, sample-linear automation and a bounded race-free UI/audio state handoff. The host contract requires the previous-sample anchor at -1, correct offset-N interpolation/carry, stable event ordering, candidate rendering with whole-callback rollback, and state 1/2/3 loading during active processing. The enabled-path audit measured these actual paths, including the complete proposed callback; the native wrapper needs its own instrumented gate.
 
-Wave 6 now implements and independently qualifies the [minimal native VST3 contract](VST3_SPIKE_CONTRACT.md). Use the pinned SDK and existing core; leave ordinary builds SDK-free. Later waves cover workload/package compatibility, retained audio, operational handoff, platform qualification and final audits. The requested session still requires sixty actual new workers in ten waves. Earlier completed sessions are not counted again.
+Wave 6 implemented the [minimal native VST3 contract](VST3_SPIKE_CONTRACT.md), [explicit pinned build](VST3_BUILD.md), actual factory/processor/controller tests and separate native CI/artifact inventory. The SDK validator's summary is retained together with its unsupported-rate and repeated-deactivation diagnostics. Wave 7 now qualifies actual native allocation/concurrency and deeper automation, completes portable CLI handling, expands local install/relocation and preserves legacy identities. Later waves retain a musical pedal demo, plots, operational handoff, hosted evidence and final audits. The requested session still requires sixty actual new workers in ten waves; earlier sessions are not counted again.
 
 ## Completed continuation and current baseline
 
@@ -36,9 +36,27 @@ remaining assignment from this sixty-worker session to invent or count again.
 
 ## Next product milestone
 
-Integrate the implemented [HostTimeline](HOST_TIMELINE.md) and [StateExchange](STATE_EXCHANGE.md) into the native processor according to [VST3_SPIKE_CONTRACT.md](VST3_SPIKE_CONTRACT.md). Validate the full native shape and raw-work bound, peek and preflight the state batch, render into private output with its snapshots, publish valid controls only after timeline success, then copy host output. The preflight and sole audio ownership guarantee the final exchange commit cannot introduce a late resource failure. Parse files and construct SDK objects off the audio callback.
+Qualify and publish the coherent native checkpoint, then observe the exact source's
+[separate native workflow](VST3_CI.md) on Linux, Windows and macOS. Retain full logs,
+actual module inventories and failed attempts. A queue-acquisition failure must
+remain distinct from project execution; one targeted retry recovered the prior
+core/offline macOS gate. Do not weaken assertions or change advertised formats
+to make a validator summary look clean.
 
-Build the actual Hammond module with its frozen UUIDs, three native event buses, forty-five existing parameter identities and generic host controls. Verify the exact module with the pinned SDK validator and an independent ABI harness; SDK selftests alone are insufficient. Test lifecycle, phase-preserving rate changes, connected/disconnected buffers, active state migration and callback allocation behavior. A native smoke gate remains distinct from actual DAW/device use, signed distribution and the custom interface.
+Measure the actual loaded native callback's C++ allocation paths with proved
+module interposition, then stress active native UI state calls against audio
+processing. The core-only allocation and ThreadSanitizer evidence do not
+automatically qualify a wrapper, SDK boundary or dynamic module. Preserve the
+preflight → private render → guaranteed publication → output-copy protocol.
+Add explicit local-prefix installation and relocation of the real bundle,
+while ordinary OfflineTools remains SDK-free. Complete independent multi-curve
+automation and source/old-audio compatibility review before release claims.
+
+The implemented native surface is three event buses, 45 permanent controls,
+float32 dry stereo at 44.1/48/96 kHz and generic host parameter controls. Actual
+DAW project save/reopen, audio-device scheduling, custom accessible UI and signed
+distribution remain separate M9 work. Preserve all original factory UUIDs,
+parameter identities, state migrations and nominal model boundaries.
 
 Physical preset latches, switching bandwidth, continuous drawbars and loaded expression remain additional M3 gates. The selected pedal matrix/gain are explicit nominal fixtures; the documentary 25-by-8 routing evidence does not establish reactor loading, physical tuning or measured timbre. Keep every existing parameter/event/control identity and original fixture unchanged.
 

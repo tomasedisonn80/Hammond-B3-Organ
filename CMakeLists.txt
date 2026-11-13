@@ -6,6 +6,8 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 endif()
 
 option(HAMMOND_ENABLE_SANITIZERS "Enable AddressSanitizer and UndefinedBehaviorSanitizer" OFF)
+option(HAMMOND_BUILD_VST3 "Build the optional pinned-SDK native VST3 instrument" OFF)
+set(HAMMOND_VST3_SDK_ROOT "" CACHE PATH "Separately acquired, locked VST3 SDK checkout")
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -136,9 +138,19 @@ target_link_libraries(hammond_pedal_trace PRIVATE hammond_core)
 hammond_configure_target(hammond_pedal_trace)
 add_dependencies(hammond_pedal_trace hammond_profile)
 
+if(HAMMOND_BUILD_VST3)
+    if(CMAKE_VERSION VERSION_LESS 3.25)
+        message(FATAL_ERROR "The pinned optional VST3 SDK requires CMake 3.25 or newer.")
+    endif()
+    include(cmake/VerifyVst3Sdk.cmake)
+    hammond_verify_vst3_sdk("${HAMMOND_VST3_SDK_ROOT}")
+    set_target_properties(hammond_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
+    add_subdirectory(plugins/vst3)
+endif()
+
 if(BUILD_TESTING)
     find_package(Threads REQUIRED)
-    set(HAMMOND_TEST_TARGETS)
+    set(HAMMOND_TEST_TARGETS ${HAMMOND_VST3_TEST_TARGETS})
     file(GLOB HAMMOND_CPP_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")
     foreach(test_source IN LISTS HAMMOND_CPP_TESTS)
         get_filename_component(test_name "${test_source}" NAME_WE)
@@ -165,6 +177,11 @@ if(BUILD_TESTING)
             WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
             ENVIRONMENT "PYTHONDONTWRITEBYTECODE=1;HAMMOND_TEST_PROFILE=${HAMMOND_COMPILED_PROFILE};HAMMOND_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}")
     endforeach()
+
+    if(TEST python_test_vst3_build_tools)
+        set_property(TEST python_test_vst3_build_tools APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_TEST_CMAKE=${CMAKE_COMMAND}")
+    endif()
 
     if(TARGET hammond_render)
         foreach(test_source IN LISTS HAMMOND_PYTHON_TESTS)

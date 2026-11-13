@@ -97,3 +97,54 @@ under `checkpoint-w05/source` and `checkpoint-w05/build`, then ran
 The final result publication differs only in Markdown and actual assignment
 metadata from that tested tree; ongoing native wrapper files are excluded.
 Hosted qualification of the new checkpoint remains a separate observed gate.
+
+
+Fifth-wave publication `88c36b4a72a07f6498f73279f25023278accd350`, tree
+`354b1e7660c25435f2f97617450cc86e76b26ce3`, was fetched and verified exactly.
+Hosted [run 43404272839](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43404272839)
+attempt 2 passed all four jobs. The first macOS acquisition failed before any
+step; one targeted retry then actually ran and passed 65/65 suites on ARM64 in
+45.86 seconds. The [runner review](../../reviews/PEDAL_RUNNER_AVAILABILITY.md)
+retains the failure, annotations and recovery. Native work has separate gates.
+
+
+## Wave 6 accepted — actual native module and qualification path
+
+Assignments 31–36 completed the native processor, controller/factory/stream
+helpers, explicit pinned build and embedded profile, actual loaded-module ABI
+and behavioral gates, and separate native CI with bounded artifact inventory.
+All 36 actual workers in the first six waves have accepted substantive notes.
+The native module uses original UUIDs, exactly 45 stable controls, three event
+buses and the existing nominal core. It has no custom editor or device backend.
+
+The independent ABI gate compared 229,725 frames, and the behavior gate compared
+233,792 plain-Engine reference frames plus post-rejection paired-module output.
+All compared audio was exact under the recorded Linux toolchain. The controller
+gate checks all metadata, thresholds under four rounding modes and strict
+1/2/3 state migration. The actual SDK module validator reports 47 passed/zero
+failed while retaining 16 teardown and nine unsupported-rate diagnostics. Its
+summary is not a warning-free, float64 or arbitrary-rate claim.
+
+Explicit fresh SDK acquisition passed; the SDK-free build helpers and bundle
+inventory passed 14 and 16 methods respectively. The actual four-file Linux
+bundle and tar/copy transport preserve bytes/modes. Native CI has not yet run
+at this checkpoint draft. Root's coherent full archive gate and publication
+follow separately; active wave-7 CLI/install/allocation work is excluded.
+
+
+### Sixth-wave coherent integration gate
+
+Root archived staged tree `b2dae50dcde294bde8e7acb7addb14456197a779` into
+`checkpoint-w06/source`, excluding all ongoing seventh-wave files and hooks.
+A fresh SDK-free Release build passed **67/67 CTest suites, zero failures or
+skips, in 78.43 seconds**. A separate native Release build of the same source
+used the locked SDK and the new `hammond_vst3_test_inputs` aggregate, then passed
+**4/4 focused native suites, zero failures or skips, in 5.23 seconds**. These
+include the actual module validator, controller, independently loaded ABI and
+behavioral gates. The native binary remains byte-identical to the workers'
+qualified module, SHA-256 `d87353b237e52c8d1f91af27933493a4cf78ba4a06af4a96c9930c0ecec1d3ff`.
+
+The [integration review](../../reviews/PEDAL_NATIVE_INTEGRATION.md) retains
+commands, exact scope, log identities and validator limitations. Final checkpoint
+changes after that gate are Markdown result records only; seventh-wave work is
+unstaged. Hosted native execution remains a separate post-publication gate.

@@ -1,10 +1,15 @@
 # Minimal VST3 instrument: pinned foundation and acceptance contract
 
-**2026-11-13, assignment 15.** This is the implementation contract for an early
-M9 wrapper smoke gate after the nominal pedal core. The selected SDK's headless
-validator builds locally and its own 51 selftests pass. No Hammond VST3 module,
-DAW session, device deadline, custom UI or release package is established by that
-result. Those require the independent gates below.
+**2026-11-13, originally assignment 15; implemented in assignments 31–36.**
+This contract governs the early M9 wrapper after the nominal pedal core. The
+actual module now has an [optional pinned build](VST3_BUILD.md),
+[ABI gate](VST3_ABI_ACCEPTANCE.md), [behavior gate](VST3_BEHAVIOR_ACCEPTANCE.md)
+and [native CI](VST3_CI.md). The original foundation observations below remain
+historical: its 51 SDK selftests alone established no Hammond module. Current
+qualification belongs to the exact source/bundle named in the later reports.
+DAW sessions, device deadlines, custom UI and release distribution remain
+separate gates; the native validator's diagnostics and supported-format limits
+are explicitly retained.
 
 The source basis is atlas pp. 379–402 and 450, reviewed in
 [product review](development/2026-11-13-pedals/05-atlas-product.md) and

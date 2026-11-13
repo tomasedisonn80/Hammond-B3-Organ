@@ -1,0 +1,189 @@
+name: Native VST3
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  native:
+    name: Native VST3 (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: Linux GCC
+            os: ubuntu-24.04
+            compiler: g++
+          - platform: macOS AppleClang
+            os: macos-15
+            compiler: clang++
+          - platform: Windows MSVC x64
+            os: windows-2022
+            compiler: cl
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record actual source and runner provenance
+        run: |
+          set -euo pipefail
+          mkdir -p native-ci-logs native-artifacts
+          python - <<'PY'
+          import json, os, pathlib, platform, shutil, subprocess
+          git = lambda *args: subprocess.check_output(["git", *args], text=True).strip()
+          revision = git("rev-parse", "HEAD")
+          assert revision == os.environ["GITHUB_SHA"], "checkout differs from the event revision"
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
+          record = {
+              "source_commit": revision,
+              "source_tree": git("rev-parse", "HEAD^{tree}"),
+              "run_id": os.environ["GITHUB_RUN_ID"],
+              "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "runner_os": os.environ["RUNNER_OS"],
+              "runner_arch": os.environ["RUNNER_ARCH"],
+              "image_os": os.environ.get("ImageOS"),
+              "image_version": os.environ.get("ImageVersion"),
+              "platform": platform.platform(),
+              "machine": platform.machine(),
+              "python": platform.python_version(),
+              "configuration": "Release",
+          }
+          pathlib.Path("native-ci-logs/provenance.json").write_text(
+              json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          shutil.copyfile("data/dependencies/vst3-sdk-lock.json", "native-ci-logs/vst3-sdk-lock.json")
+          PY
+          cmake --version 2>&1 | tee native-ci-logs/toolchain.log
+          ctest --version 2>&1 | tee -a native-ci-logs/toolchain.log
+          python --version 2>&1 | tee -a native-ci-logs/toolchain.log
+          git --version 2>&1 | tee -a native-ci-logs/toolchain.log
+
+      - name: Explicitly acquire and verify the locked external SDK
+        run: |
+          set -euo pipefail
+          python tools/acquire_vst3_sdk.py \
+            --destination "$RUNNER_TEMP/hammond-vst3-sdk" 2>&1 | tee native-ci-logs/sdk-acquisition.log
+          python tools/acquire_vst3_sdk.py \
+            --verify-existing "$RUNNER_TEMP/hammond-vst3-sdk" 2>&1 | tee native-ci-logs/sdk-verification.log
+
+      - name: Configure native Release on Linux or macOS
+        if: runner.os != 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+          CXX_COMPILER: ${{ matrix.compiler }}
+        run: |
+          set -euo pipefail
+          "$CXX_COMPILER" --version 2>&1 | tee -a native-ci-logs/toolchain.log
+          cmake -S . -B build-native -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+            -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_VST3=ON \
+            -DHAMMOND_VST3_SDK_ROOT="$RUNNER_TEMP/hammond-vst3-sdk" \
+            2>&1 | tee native-ci-logs/configure.log
+
+      - name: Configure native Release on Windows
+        if: runner.os == 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          set -euo pipefail
+          cmake -S . -B build-native -G "Visual Studio 17 2022" -A x64 \
+            -DBUILD_TESTING=ON -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_VST3=ON \
+            -DHAMMOND_VST3_SDK_ROOT="$RUNNER_TEMP/hammond-vst3-sdk" \
+            2>&1 | tee native-ci-logs/configure.log
+
+      - name: Build the bundle and every native test input
+        run: |
+          set -euo pipefail
+          cmake --build build-native --config Release \
+            --target hammond_vst3_test_inputs --parallel 2 --verbose \
+            2>&1 | tee native-ci-logs/build.log
+
+      - name: Validate the actual module and run the native tests
+        run: |
+          set -euo pipefail
+          ctest --test-dir build-native -C Release -V --no-tests=error --timeout 300 \
+            -R '^(hammond_vst3_validator|test_native_)' \
+            --output-junit "$GITHUB_WORKSPACE/native-ci-logs/ctest.xml" \
+            2>&1 | tee native-ci-logs/ctest.log
+
+      - name: Inventory and archive the validated native bundle
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, os, pathlib, shutil, subprocess, sys, tarfile
+          bundle = pathlib.Path("build-native/hammond-vst3-path-Release.txt").read_text(
+              encoding="utf-8").strip()
+          source = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          assert source == os.environ["GITHUB_SHA"]
+          inventory = [sys.executable, "tools/native_bundle_inventory.py",
+                       "--configuration", "Release", "--source-commit", source]
+          subprocess.run(inventory + ["--bundle", bundle,
+                         "--output", "native-ci-logs/build-inventory.json"], check=True)
+          staged = pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond-native-payload" / "HammondB3.vst3"
+          staged.parent.mkdir(exist_ok=False)
+          shutil.copytree(bundle, staged, copy_function=shutil.copy2)
+          subprocess.run(inventory + ["--bundle", str(staged),
+                         "--output", "native-artifacts/inventory.json"], check=True)
+          assert pathlib.Path("native-ci-logs/build-inventory.json").read_bytes() == \
+              pathlib.Path("native-artifacts/inventory.json").read_bytes(), "bundle copy changed its inventory"
+          archive = pathlib.Path("native-artifacts/HammondB3-Release.tar.gz")
+          with tarfile.open(archive, "x:gz") as output:
+              output.add(staged, arcname="HammondB3.vst3")
+          digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+          pathlib.Path("native-artifacts/archive.sha256").write_text(
+              digest + "  " + archive.name + "\n", encoding="ascii")
+          PY
+
+      - name: Retain complete source, dependency, build and test diagnostics
+        if: ${{ always() && !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: native-vst3-${{ matrix.os }}-${{ runner.arch }}-release-diagnostics-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            native-ci-logs/
+            build-native/CMakeCache.txt
+            build-native/CMakeFiles/CMakeConfigureLog.yaml
+            build-native/CMakeFiles/CMakeOutput.log
+            build-native/CMakeFiles/CMakeError.log
+            build-native/Testing/Temporary/LastTest.log
+            build-native/Testing/Temporary/LastTestsFailed.log
+            build-native/hammond-vst3-path-Release.txt
+
+      - name: Retain the qualified bundle and byte inventory
+        if: ${{ success() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: native-vst3-${{ matrix.os }}-${{ runner.arch }}-release-bundle-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: error
+          path: native-artifacts/

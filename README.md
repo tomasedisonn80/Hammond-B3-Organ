@@ -3,42 +3,48 @@
 A project to recreate a vintage Hammond B-3 and Leslie system, guided by the
 repository's **500-page research and build atlas**.
 
-**Current stage:** a working nominal dry-organ engine and offline WAV renderer,
-with strict data contracts and independent tests. The core has 91 shared,
-continuously running sources, two manuals, drawbars, sample-offset events and
-explicit clock/error handling. Four retained A/B banks, routing-only Cancel and
-versioned control snapshots provide early console behavior. Optional independent
-contact travel, explicit partial-key targets and one shared percussion readiness
-state extend the nominal console. Bounded typed note ownership, normalized control
-mapping and phase-preserving rate changes support future host integration. The core also supports 25 independently held pedals from the same source frame,
-two retained nominal mixture controls and version-3 control snapshots. Ideal
-contacts, percussion off and muted pedals preserve the original renderer defaults.
-The selected source and console profiles are **nominal and unmeasured**.
+**Current stage:** a working nominal dry-organ engine, offline WAV renderer and
+optional headless VST3 prototype. The core owns 91 shared, continuously running
+sources, two manuals and 25 independently held pedals. Four retained A/B banks,
+routing-only Cancel, optional contact travel, partial-key targets and shared
+percussion readiness provide early console behavior. Two explicitly nominal
+pedal mixtures consume the same source frame. Version-3 control snapshots
+preserve musical controls and migrate older states to muted pedals.
 
-The current executable renders WAV files offline. The product plan targets a
-playable VST3 instrument and audio-device standalone application, with an
-inspectable organ/Leslie engine and the atlas's dimensional, accessible interface.
-Scanner, AO-28 electronics, Leslie acoustics, physical calibration and the native
-UI remain future work. No current result establishes a measured one-to-one
-instrument match. Start with the [project guide](docs/PROJECT_GUIDE.md) for the
-plan, practical workflows, evidence contracts and session history.
+The native wrapper exposes three event inputs and 45 stable controls through
+generic host parameter controls. It renders identical dry float32 stereo at
+44.1, 48 and 96 kHz, reconstructs bounded sample-linear automation, and accepts
+state loads through a concurrent UI/audio handoff. The actual Linux bundle has
+independent [ABI](docs/VST3_ABI_ACCEPTANCE.md) and
+[behavior](docs/VST3_BEHAVIOR_ACCEPTANCE.md) evidence. Native platform, callback,
+DAW and device gates are recorded separately; the SDK validator's diagnostics
+are retained rather than hidden behind its summary. Ordinary builds remain
+SDK-free; use the explicit [optional build](docs/VST3_BUILD.md) for VST3.
 
-Start with the build below or the retained [two-second console demo](examples/rendered/nominal-console-v2/README.md).
-The [current developer handoff](docs/CONTINUATION_HANDOFF.md) gives reproducible
-render, trace, plot and install commands. The [pedal Engine integration](docs/PEDAL_ENGINE.md)
-now implements the [nominal playable contract](docs/PEDAL_INTEGRATION_CONTRACT.md)
-with independent CSV, phase, migration and transaction checks. Bounded pedal ownership, a [single input transaction](docs/PERFORMANCE_INPUT.md),
-new score commands and [schema-3 evidence](docs/PEDAL_RENDER_EVIDENCE.md) connect it
-to the offline renderer. Diagnostics and native host foundations are next;
-**full M3 remains open**. The [current status](docs/STATUS.md) and separate
-[continuation ledger](docs/development/2026-11-13-continuation/README.md) record
-published checkpoints, actual checks and the completed sixty-worker continuation.
-That earlier session’s **60 distinct assignments in ten waves** are complete, with a separate
-[actual-state manifest](docs/development/2026-11-13-continuation/assignments.json)
-and one retained note per worker. [AGENTS.md](AGENTS.md) makes the documented
-handoff, verification and commit/push workflow mandatory for future agents.
+The selected source, contact, percussion and pedal models are **nominal and
+unmeasured**. Ideal contacts, percussion off and muted pedals preserve the
+original renderer defaults. Full M3, scanner/AO-28 electronics, Leslie acoustics,
+specimen calibration, audio-device standalone and the atlas's accessible custom
+interface remain open. No software test establishes a measured one-to-one
+instrument match. The [project guide](docs/PROJECT_GUIDE.md),
+[current status](docs/STATUS.md) and [next steps](docs/NEXT_STEPS.md) distinguish
+implemented behavior, executed evidence and the next concrete work.
 
-The new [pedal session](docs/development/2026-11-13-pedals/README.md) has completed its first four waves (24 new workers), including a fresh full-atlas review, typed runtime routing, nominal Engine/input/renderer integration and an optional [VST3 foundation contract](docs/VST3_SPIKE_CONTRACT.md). Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json) tracks the remaining new work separately.
+Start with the build below or the retained
+[two-second console demo](examples/rendered/nominal-console-v2/README.md).
+The [previous console handoff](docs/CONTINUATION_HANDOFF.md) retains its dated
+render/trace/install commands. Current pedal work has its own
+[Engine contract](docs/PEDAL_ENGINE.md), [input transaction](docs/PERFORMANCE_INPUT.md),
+[schema-3 render evidence](docs/PEDAL_RENDER_EVIDENCE.md),
+[trace tool](docs/PEDAL_TRACE.md) and [musical catalog](docs/PEDAL_AUDIO_ACCEPTANCE.md).
+
+The active [pedal/native session](docs/development/2026-11-13-pedals/README.md)
+tracks **60 new assignments in ten waves**, including a fresh review of all
+500 atlas pages. Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json)
+counts only newly dispatched workers and retains one substantive note per
+completed assignment. Both earlier sixty-agent sessions remain historical.
+[AGENTS.md](AGENTS.md) makes the documented handoff, meaningful verification,
+commit/push and observed remote-result workflow mandatory for future agents.
 
 ## Build and test
 
@@ -97,15 +103,17 @@ check the steady portion of a declared single-tone fixture. The independent
 and metrics without trusting the producer’s Boolean assertions. These outputs are
 synthetic engineering evidence.
 
-[CI](docs/CI.md) qualifies Linux GCC, macOS AppleClang and Windows MSVC Release,
-plus Linux ASan/UBSan with leak checking. The corrected published code
-`7469ebf759ced820cc34fc9012beff6f772e4b89` passed **all 46 suites and 372 Python
-methods in each of the four jobs**, with zero failed/disabled/skipped tests in
-[run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473).
-The [final platform audit](docs/reviews/FINAL_CONTINUATION_PLATFORM.md) retains
-complete diagnostic-log and archive verification, including the earlier Windows
-CRLF failure and its repair. Qualification belongs to the named revision and
-executed scope; [current status](docs/STATUS.md) records later outcomes.
+[Core/offline CI](docs/CI.md) covers Linux GCC, macOS AppleClang and Windows
+MSVC Release, plus Linux ASan/UBSan with leak checking. The pedal/host-foundation
+checkpoint `88c36b4a72a07f6498f73279f25023278accd350` passed all 65 local suites
+and all four hosted jobs in
+[run 43404272839, attempt 2](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43404272839).
+The [runner record](docs/reviews/PEDAL_RUNNER_AVAILABILITY.md) retains the first
+macOS acquisition failure and actual successful retry. The separate
+[native workflow](docs/VST3_CI.md) builds and tests actual bundles; it does not
+inherit a result from SDK-free CI. Qualification always belongs to the named
+revision, platform and executed scope; [current status](docs/STATUS.md) records
+later outcomes and open gates.
 
 ## Project navigation
 
@@ -114,7 +122,7 @@ executed scope; [current status](docs/STATUS.md) records later outcomes.
 | [Project guide](docs/PROJECT_GUIDE.md) | Practical reading order, workflows, evidence boundaries and session ledgers |
 | [Status](docs/STATUS.md) | What is implemented, what passed, and what remains provisional |
 | [Next steps](docs/NEXT_STEPS.md) | Next concrete tasks, dependencies and acceptance evidence |
-| [Current operational handoff](docs/CONTINUATION_HANDOFF.md) | Current identities, render/trace/install commands, ownership and publication procedure |
+| [Previous console handoff](docs/CONTINUATION_HANDOFF.md) | Dated console identities and commands; use current status/next steps for later pedal/native work |
 | [Original pedal gate](docs/M3_NEXT_GATE.md) | Retained acceptance contract for the implemented routing kernel; current work is in Next steps |
 | [Acceptance matrix](docs/ACCEPTANCE_MATRIX.md) | M0-M9 requirements, actual evidence and open gates |
 | [Original session handoff](docs/SESSION_HANDOFF.md) | Preserved commands and evidence for the original session's dated checkpoint |
@@ -141,6 +149,12 @@ executed scope; [current status](docs/STATUS.md) records later outcomes.
 | [Pedal Engine](docs/PEDAL_ENGINE.md) | Actual same-frame routing, nominal voice and tagged diagnostics |
 | [Pedal evidence](docs/PEDAL_RENDER_EVIDENCE.md) | Current schema3 and strict historical schema1/2 verification |
 | [Legacy audio compatibility](docs/PEDAL_LEGACY_COMPATIBILITY.md) | Exact local replay of all eight original scores against the frozen starting revision |
+| [Native VST3 build](docs/VST3_BUILD.md) | Explicit pinned SDK acquisition, bundle build and validation |
+| [Native ABI acceptance](docs/VST3_ABI_ACCEPTANCE.md) | Actual factory, parameters, buses, lifecycle and reference audio |
+| [Native behavior acceptance](docs/VST3_BEHAVIOR_ACCEPTANCE.md) | Automation, state, capacity and transactional rejection on the loaded module |
+| [Native CI](docs/VST3_CI.md) | Separate platform jobs, complete logs and actual bundle inventories |
+| [Host timeline](docs/HOST_TIMELINE.md) | Sample-linear curves, exact discrete thresholds and boundary carry |
+| [Concurrent state exchange](docs/STATE_EXCHANGE.md) | Bounded pending restores and coherent UI/audio publication |
 | [Sample-rate lifecycle](docs/SAMPLE_RATE_LIFECYCLE.md) | Preserve phases, contact history and shared readiness across supported rate changes |
 | [Pedal routing](docs/PEDAL_ROUTING.md) | Documentary 25-by-8 map and prepared four-bus reference routing |
 | [Factory comparison](docs/FACTORY_REFERENCE.md) | Two independent Table III readings and complete routing comparison |
