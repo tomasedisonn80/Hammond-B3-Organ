@@ -106,10 +106,18 @@ sources. Their hosted gates passed in run 43368537860, independently audited in
 the [final platform review](reviews/FINAL_PLATFORM_REVIEW.md). None establishes
 physical fidelity. Those historical results predate this continuation's Engine/CLI extension.
 
+The console integration `4ead769` passed **30/30** local Release suites on its
+exact published tree. Hosted run 43369940466 passed Linux Release and sanitizer
+checks; Windows and macOS each passed 29/30, failing the same producer test's
+unresolved-versus-canonical temporary-path comparison. The
+[CI repair review](reviews/CONSOLE_CI_REPAIR.md) retains the observed cause and
+portable regression. All 28 producer methods pass locally after the test repair;
+full hosted qualification of that repair remains pending.
+
 The callback audit observed zero C++ allocation/deallocation
 calls in 96 recorded processing calls, including maximum and rejected requests.
 Its static call-graph scope and limits are in [REALTIME.md](REALTIME.md). The
-independent bundle verifier passed 27 test methods, including real render bundles
+independent bundle verifier passed 34 test methods, including real render bundles
 and mutated evidence. It reports retained-bundle integrity separately from
 unestablished authenticity, build provenance and physical fidelity.
 

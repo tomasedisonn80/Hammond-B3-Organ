@@ -208,6 +208,7 @@ class RenderFixtureTests(unittest.TestCase):
         return path
 
     def assert_success(self, directory, manifest):
+        directory = directory.resolve()
         self.assertEqual(manifest["status"], "succeeded", manifest.get("error"))
         self.assertIs(type(manifest["schema_version"]), int)
         self.assertEqual(manifest["schema_version"], 2)
@@ -256,6 +257,22 @@ class RenderFixtureTests(unittest.TestCase):
             raw = (directory / record["path"]).read_bytes()
             self.assertEqual(len(raw), record["size_bytes"])
             self.assertEqual(hashlib.sha256(raw).hexdigest(), record["sha256"])
+
+    def test_success_invocation_resolves_output_path_aliases(self):
+        # Exercise canonicalization on every runner without symlink privileges.
+        # macOS /var and Windows short temporary paths exposed this same oracle
+        # error: the producer records resolved paths, not the caller's spelling.
+        parent = self.work / "existing parent"
+        parent.mkdir()
+        requested = parent / ".." / "canonical evidence"
+        self.assertNotEqual(str(requested), str(requested.resolve()))
+        events = self.score("0 note_on upper 69 100\n32 note_off upper 69 0\n")
+        directory, manifest = self.render(output_dir=requested, events=events, frames=64)
+        self.assert_success(directory, manifest)
+        argv = manifest["invocation"]["argv"]
+        for flag, filename in (("--profile", "profile.b3p"),
+                               ("--output", "render.wav"), ("--events", "events.txt")):
+            self.assertEqual(argv[argv.index(flag) + 1], str(requested.resolve() / filename))
 
     def test_real_render_preserves_inputs_metrics_and_independent_pcm_statistics(self):
         directory, manifest = self.render()

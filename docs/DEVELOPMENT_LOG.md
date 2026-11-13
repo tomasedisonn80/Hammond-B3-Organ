@@ -570,3 +570,18 @@ Markdown-only completion of all 60 original assignments. Those historical notes,
 reviews, stronger handoff and standing instructions were integrated. No runtime,
 fixture, build or test bytes changed in that incoming revision. The current
 continuation keeps its own separate assignment count and current M3 status.
+
+
+### Console publication and observed portability repair
+
+Commit `4ead769` published exact tree `c4890143cb7ea17bfcd1a8cfcbfdc3733d87784d`
+after all 30 Release suites passed (6.85 seconds on the final tree). Remote commit
+and tree were verified. Hosted run 43369940466 passed Linux Release and the
+leak-enabled sanitizer job; Windows/macOS each passed 29/30 suites. Their full
+logs identified the new producer assertion's unresolved temporary-path spelling:
+Windows short versus long user directory and macOS `/var` versus `/private/var`.
+The canonical invocation was correct. Root reproduced the same assertion locally
+using a real output path containing `..`, then corrected the expected path while
+preserving full exact argv checking. All 28 producer methods passed in 4.355 s.
+The retained CI repair review records the IDs, failure boundary and follow-up gate.
+Only this test and documentation are in the repair; wave 05/06 files stay separate.

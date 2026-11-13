@@ -7,11 +7,12 @@ for the sixty new assignments in ten waves. The earlier session completed all
 sixty original assignments at `7bbd8e7`; its assignments,
 source reviews and evidence remain intact and are not counted again.
 
-The dependency-ready task is to finish and qualify the nominal M3 console
-integration: contacts, shared percussion, saved-control migration, renderer flags,
-stable parameter identities and versioned evidence. Keep the original ideal/off
-audio as an explicit compatibility case. Publication requires a clean staged
-source build, the full applicable tests, an expected-head push and observed CI.
+The nominal M3 console integration is published in `4ead769`, with all 30 local
+suites passing. Complete hosted verification of the expected-path test repair
+while wave 05 integrates bounded note ownership and the native parameter bridge.
+Keep the original ideal/off audio as an explicit compatibility case. Publication
+requires a clean staged source build, applicable tests, an expected-head push and
+observed CI.
 
 Following waves implement and independently verify:
 

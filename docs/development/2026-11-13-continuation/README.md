@@ -30,8 +30,8 @@ physical instrument fidelity, a VST3 plugin, or a device-audio application exist
 | --- | --- | --- | --- |
 | 01 | 01–06 | Full 500-page continuation review | Complete; six retained notes |
 | 02 | 07–12 | Contact and shared-percussion model contracts and unit verification | Complete; independent module tests passed |
-| 03 | 13–18 | Engine, control persistence, renderer integration and behavioral verification | Complete; combined publication awaits wave 04 |
-| 04 | 19–24 | Stable controls, evidence-format migration and reproducible fixtures | Complete; combined qualification in progress |
+| 03 | 13–18 | Engine, control persistence, renderer integration and behavioral verification | Complete; published in `4ead769` |
+| 04 | 19–24 | Stable controls, evidence-format migration and reproducible fixtures | Complete; published in `4ead769`; CI path repair pending |
 | 05 | 25–30 | Bounded host-input ownership and independent adapter verification | In progress |
 | 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | Planned |
 | 07 | 37–42 | Observable console traces and explicit partial-key input | Planned |
@@ -134,3 +134,13 @@ Markdown-only completion of all 60 original assignments. Those historical notes,
 reviews, stronger handoff and standing instructions were integrated. No runtime,
 fixture, build or test bytes changed in that incoming revision. The current
 continuation keeps its own separate assignment count and current M3 status.
+
+
+Published `4ead76957c763afbbddde1bc96f1128384329e50` with exact tree
+`c4890143cb7ea17bfcd1a8cfcbfdc3733d87784d`; all 30 local Release suites passed on
+that tree and the remote commit/tree were verified. Hosted run 43369940466 passed
+Linux Release and ASan/UBSan/leak checks. Windows and macOS each passed 29/30,
+with one shared expected-path assertion in the evidence-producer test. The
+[CI repair review](../../reviews/CONSOLE_CI_REPAIR.md) records both job IDs, cause,
+local before/after reproduction and the required new hosted check. The original
+27 producer methods plus the new portable regression pass locally (28/28).
