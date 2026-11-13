@@ -1,0 +1,9 @@
+# 2026-11-13 next-phase standalone session
+
+This is a new user-requested session of sixty distinct agent assignments in ten waves of six. The execution environment permits three workers concurrently; each wave therefore has two batches. The [manifest](assignments.json) records only actually dispatched assignments and their observed states. Earlier original, console, pedal and scanner sessions are separate history.
+
+Baseline: `ba0d9c9c75bd7a39152470f9f7ddb82287cb01b1`. Another checkout is developing the scanner; this session uses an isolated checkout and advances the dependency-ready M9 standalone adapter while preserving the core engine and public control identities. Remote changes must be inspected and integrated without force-pushing.
+
+Wave 1 rereads all 500 atlas pages. The implementation scope is a native standalone instrument window, keyboard/drawbar controls, safe audio callback handling, control-state persistence and reproducible builds. All sound remains an explicitly nominal dry organ until the separately qualified scanner/AO-28/Leslie path is integrated. Product release, physical calibration and real-device qualification require their own evidence.
+
+Later waves will freeze contracts, implement bounded host/UI adapters, integrate the optional native dependency, build the instrument workspace, verify callback/input/state behavior, retain an actual rendered demonstration, run platform/build gates and document the next concrete work. Actual completed work and commands will replace planned outcomes as evidence arrives.
