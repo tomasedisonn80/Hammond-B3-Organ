@@ -32,4 +32,12 @@ limitations, integrates concurrent main changes and publishes reviewable commits
 
 ## Current work
 
-Wave 1 is in progress. No later deliverable or physical acceptance is claimed.
+Waves 1 and 2 are complete: **twelve new accepted assignments**. Six readers
+covered all 500 text pages and selected actual page images; the
+[consolidated review](../../research/CALIBRATION_ATLAS_REVIEW.md) records coverage.
+The audio, corpus and comparison contracts are frozen and independently reviewed.
+Shared JSON admission/publication passed 49 independent methods; the separate
+[session checker](../../CALIBRATION_SESSION_CHECKS.md) passed 27 methods.
+The [clean starting baseline](../../reviews/CALIBRATION_BASELINE.md) passed 85/85
+local Release suites. Wave 3 implements the decoder, corpus auditor and comparison
+metrics in parallel. Physical calibration and full M8 acceptance remain open.

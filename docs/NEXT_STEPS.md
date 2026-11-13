@@ -4,9 +4,9 @@
 
 The [new calibration session](development/2026-11-13-calibration/README.md)
 owns the next offline evidence-tooling work under [CALIBRATION_SCOPE.md](CALIBRATION_SCOPE.md).
-Complete the fresh atlas reading, freeze bounded audio/corpus/comparison
-contracts, then implement actual stream inspection and cross-manifest split
-auditing with independent tests. Existing v1 metadata validation remains valid;
+The fresh 500-page reading and independently reviewed audio/corpus/comparison
+contracts are complete. Implement the frozen decoder, corpus auditor and metric
+producer, then qualify them with independent literal-byte and numerical tests. Existing v1 metadata validation remains valid;
 it does not currently inspect audio headers or establish corpus independence.
 The actual session manifest owns dispatch counts. Physical acquisitions,
 reviewed calibrations and specimen-specific fitting remain separate gates.

@@ -2,6 +2,27 @@
 
 ## 2026-11-13 — Independent capture/calibration-readiness scope
 
+- Frozen audio/corpus/comparison contracts now specify exact APIs, sample/byte
+  identities, whole-group lineage and uncertainty-aware criteria. Independent
+  integration review verified literal hashes and equations and clarified the
+  final/final_test role mapping and comparison-report numeric bound.
+- Independent JSON-helper acceptance reproduced descriptor leaks on fdopen
+  failure and cleanup errors masking publication outcomes. Root repaired those
+  paths and retained the failures/regressions. The complete independent suite
+  now passes 49/49 methods; root repeated it with no failures or skips.
+
+- Wave 1 completed: six distinct new workers read every PDF text page 1-500
+  in disjoint ranges and inspected 31 selected original page images. The new
+  source review records coverage, requirements and unavailable physical evidence.
+- The frozen starting source passed 85/85 Release CTest suites in 61.53 seconds;
+  see `reviews/CALIBRATION_BASELINE.md`. Scope checkpoint `08fa8de` was published
+  and fetched with exact tree identity. Hosted workflows were observed queued,
+  not passed, at the first check.
+- Root added bounded strict-JSON primitives and non-replacing JSON publication
+  for subsequent offline tools. A direct smoke check passed exact hash readback,
+  preserved an existing destination and left no temporary files. Independent
+  acceptance is pending; this smoke does not replace it.
+
 - Inspected authenticated repository permissions and remote `main` at
   `38c1fac949368fa54bd86c6c00a5997a73480f5e`, then created a separate checkout.
   Other checkouts have unfinished scanner, rotary and native standalone work;

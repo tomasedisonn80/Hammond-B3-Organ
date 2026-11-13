@@ -42,7 +42,7 @@
     {
       "assignment": 4,
       "wave": 1,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/cal_w1_a04",
       "scope": "Read every atlas page 251-334",
       "note": "04-atlas-251-334.md",
@@ -53,7 +53,7 @@
     {
       "assignment": 5,
       "wave": 1,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/cal_w1_a05",
       "scope": "Read every atlas page 335-417",
       "note": "05-atlas-335-417.md",
@@ -64,7 +64,7 @@
     {
       "assignment": 6,
       "wave": 1,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/cal_w1_a06",
       "scope": "Read every atlas page 418-500",
       "note": "06-atlas-418-500.md",
@@ -75,83 +75,117 @@
     {
       "assignment": 7,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w2_a07",
+      "scope": "Freeze bounded audio inspection, canonical sample identity and independent acceptance contract",
+      "note": "07-audio-contract.md",
+      "owned_files": [
+        "docs/CAPTURE_AUDIO_CONTRACT.md",
+        "docs/development/2026-11-13-calibration/07-audio-contract.md"
+      ]
     },
     {
       "assignment": 8,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w2_a08",
+      "scope": "Freeze companion corpus identity, cross-manifest lineage, whole-group split and leakage contract",
+      "note": "08-corpus-contract.md",
+      "owned_files": [
+        "docs/CAPTURE_CORPUS_CONTRACT.md",
+        "docs/development/2026-11-13-calibration/08-corpus-contract.md"
+      ]
     },
     {
       "assignment": 9,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w2_a09",
+      "scope": "Freeze deterministic comparison metrics and uncertainty-aware fixed acceptance policy",
+      "note": "09-comparison-contract.md",
+      "owned_files": [
+        "docs/CAPTURE_COMPARISON_CONTRACT.md",
+        "docs/development/2026-11-13-calibration/09-comparison-contract.md"
+      ]
     },
     {
       "assignment": 10,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w2_a10",
+      "scope": "Independently qualify strict JSON and no-clobber output primitives",
+      "note": "10-common-acceptance.md",
+      "owned_files": [
+        "tests/test_capture_common.py",
+        "docs/development/2026-11-13-calibration/10-common-acceptance.md"
+      ]
     },
     {
       "assignment": 11,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w2_a11",
+      "scope": "Implement and independently exercise current-session retained-accounting checker",
+      "note": "11-session-checker.md",
+      "owned_files": [
+        "tools/check_calibration_session.py",
+        "tests/test_calibration_session_records.py",
+        "docs/CALIBRATION_SESSION_CHECKS.md",
+        "docs/development/2026-11-13-calibration/11-session-checker.md"
+      ]
     },
     {
       "assignment": 12,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w2_a12",
+      "scope": "Independently reconcile audio/corpus/comparison contracts before implementation",
+      "note": "12-contract-review.md",
+      "owned_files": [
+        "docs/CALIBRATION_CONTRACT_REVIEW.md",
+        "docs/development/2026-11-13-calibration/12-contract-review.md"
+      ]
     },
     {
       "assignment": 13,
       "wave": 3,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/cal_w3_a13",
+      "scope": "Implement bounded complete-stream audio inspection, window decoding and canonical sample identity",
+      "note": "13-audio-implementation.md",
+      "owned_files": [
+        "tools/capture_audio.py",
+        "docs/CAPTURE_AUDIO.md",
+        "docs/development/2026-11-13-calibration/13-audio-implementation.md"
+      ]
     },
     {
       "assignment": 14,
       "wave": 3,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/cal_w3_a14",
+      "scope": "Implement immutable corpus admission, lineage grouping, split and audio audits",
+      "note": "14-corpus-implementation.md",
+      "owned_files": [
+        "tools/capture_corpus.py",
+        "data/capture-corpus.schema.json",
+        "data/corpus-planned-example.json",
+        "docs/CAPTURE_CORPUS.md",
+        "docs/development/2026-11-13-calibration/14-corpus-implementation.md"
+      ]
     },
     {
       "assignment": 15,
       "wave": 3,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/cal_w3_a15",
+      "scope": "Implement exact pointwise and selected-frequency comparison metrics and report validation",
+      "note": "15-metrics-implementation.md",
+      "owned_files": [
+        "tools/compare_capture.py",
+        "docs/CAPTURE_COMPARISON.md",
+        "docs/development/2026-11-13-calibration/15-metrics-implementation.md"
+      ]
     },
     {
       "assignment": 16,

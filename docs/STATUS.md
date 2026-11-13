@@ -7,9 +7,14 @@ starts from `38c1fac` with sixty distinct new assignments in ten waves.
 Its [scope](CALIBRATION_SCOPE.md) advances offline M0/M8 audio inspection,
 corpus integrity/split auditing and fixed comparison evidence. The scanner,
 rotary and standalone tracks below remain independent and retain ownership.
-Fresh reading of all 500 PDF pages is in progress; the actual manifest records
-accepted versus running work. No new tool or physical calibration pass is
-claimed at this scope checkpoint.
+All 500 PDF pages were freshly read by six distinct workers; the
+[coverage record](research/CALIBRATION_ATLAS_REVIEW.md) retains exact text and
+selected visual coverage. The clean starting source passed 85/85 local Release
+suites. Audio, corpus and comparison contracts are frozen and independently reviewed.
+The first twelve assignments are accepted; the JSON foundation passes 49 methods
+and session accounting passes 27 methods. The decoder, corpus auditor and metric
+producer are being implemented. The actual manifest distinguishes accepted and
+running work. Physical calibration remains unqualified.
 
 ## Active native standalone continuation
 
