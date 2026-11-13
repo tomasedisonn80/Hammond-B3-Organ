@@ -6,6 +6,15 @@ They implement the owner's standing handoff and publication requests of
 
 ## Current session and standing continuation rule
 
+An independent [native standalone session](docs/development/2026-11-13-next-phases/README.md)
+also begins at `ba0d9c9`, with its own sixty actual assignments and ten waves.
+Its [scope](docs/STANDALONE_SCOPE.md) advances the M9 adapter against the existing
+nominal dry core while the scanner track continues. Inspect both current tracks
+and their actual manifests before taking ownership. Standalone-specific code
+belongs under `apps/standalone/`; it must not silently change Engine sound,
+parameter identities, state formats or plugin UUIDs. Preserve the other track's
+work and integrate observed remote advances before publication.
+
 The current session is [2026-11-13 scanner development](docs/development/2026-11-13-scanner/README.md), starting at `6dc0702`. Its [actual assignment manifest](docs/development/2026-11-13-scanner/assignments.json) belongs only to this newly requested sixty-agent, ten-wave session. The completed [pedal session](docs/development/2026-11-13-pedals/README.md), original and console ledgers remain historical and must not be rewritten or recounted. Consult the newest session together with current status and next steps before starting work.
 
 For every future development session, continue the next dependency-ready phase, retain the source basis and limits of the model, run meaningful checks, update status/next steps/development log and affected contracts, then commit and push the completed work to `main` under the owner's standing authorization. Inspect and integrate concurrent changes; never force-push. A user-requested agent count is the scope of that session, not permission to invent participation. Record the real assignment identity, owned files, result and verification. Publication and physical-fidelity claims each require their own observed evidence.

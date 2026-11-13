@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "generator": "tools/generate_standalone_font.py",
+  "rasterizer": {
+    "pillow": "13.0.0",
+    "freetype": "2.14.3",
+    "layout_engine": "BASIC"
+  },
+  "source_manifest_sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+  "coverage": {
+    "first": 32,
+    "last": 126,
+    "glyphs_per_atlas": 95
+  },
+  "rasterization": {
+    "mode": "L",
+    "anchor": "ls",
+    "padding_pixels": 2,
+    "packing": "ASCII-order shelves, power-of-two height",
+    "rle": "uint8 count (1..255), uint8 alpha; row-major"
+  },
+  "header": {
+    "file": "apps/standalone/FontData.h",
+    "bytes": 204816,
+    "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+  },
+  "atlases": [
+    {
+      "name": "Sans",
+      "width": 512,
+      "height": 256,
+      "pixel_height": 32,
+      "ascent": 30,
+      "descent": 8,
+      "alpha_bytes": 131072,
+      "alpha_sha256": "5fc7111bb8c5ab8a9dc1872165c3980becb9db96f3e1eb33618e4994d968a72d",
+      "rle_bytes": 28168,
+      "rle_sha256": "8918cf978e964973a53907349fddeb979c4d918f1b9e97338cbec8db40e226e0"
+    },
+    {
+      "name": "Serif",
+      "width": 512,
+      "height": 256,
+      "pixel_height": 40,
+      "ascent": 38,
+      "descent": 10,
+      "alpha_bytes": 131072,
+      "alpha_sha256": "c5a74341a48bb5adec7b1988e3cdeca7f164b8e32c7807f3d92d6608eb6a34ac",
+      "rle_bytes": 36894,
+      "rle_sha256": "e891df8402e1e630855dfb5aa7538a207c48766aa3c9d5d032049cd6419438a9"
+    }
+  ]
+}
