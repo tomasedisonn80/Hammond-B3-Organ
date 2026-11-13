@@ -1,6 +1,10 @@
-# Next M3 gate: prepared pedal routing
+# M3 pedal gates: routing and playable integration
 
-**Next development task:** implement a fixed-storage pedal routing kernel that
+**Routing checkpoint implemented and locally qualified:** the [runtime contract](PEDAL_RUNTIME_CONTRACT.md) and new session notes 07–12 retain its code and independent checks. All 51 Release suites passed on frozen tree `81b1c30436a239d8c04ffcd1ec658d356eb81acc`. The next task is the [adopted playable integration](PEDAL_INTEGRATION_CONTRACT.md); full M3 remains open.
+
+The original routing acceptance plan below is preserved as the basis for those checks. Its task wording describes the now-implemented first checkpoint.
+
+**Routing task:** implement a fixed-storage pedal routing kernel that
 consumes the existing 91-source frame and returns four normalized bus excitations.
 Use the already corroborated 25-by-8 map. Declare the initial model
 `linear-pedal-bus-reference-v1`; this is a proposed engineering identity, not an

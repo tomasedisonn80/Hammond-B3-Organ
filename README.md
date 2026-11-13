@@ -24,15 +24,18 @@ plan, practical workflows, evidence contracts and session history.
 
 Start with the build below or the retained [two-second console demo](examples/rendered/nominal-console-v2/README.md).
 The [current developer handoff](docs/CONTINUATION_HANDOFF.md) gives reproducible
-render, trace, plot and install commands. The next dependency-ready development
-task is the [prepared pedal-routing kernel](docs/M3_NEXT_GATE.md); **full M3
-remains open**. The [current status](docs/STATUS.md) and separate
+render, trace, plot and install commands. The prepared [pedal-routing kernel](docs/PEDAL_RUNTIME_CONTRACT.md) now passes
+its independent local acceptance and the combined 51-suite Release gate. The next
+step is [nominal playable pedal integration](docs/PEDAL_INTEGRATION_CONTRACT.md);
+**full M3 remains open**. The [current status](docs/STATUS.md) and separate
 [continuation ledger](docs/development/2026-11-13-continuation/README.md) record
 published checkpoints, actual checks and the completed sixty-worker continuation.
-All **60 distinct assignments in ten waves** are complete, with a separate
+That earlier session’s **60 distinct assignments in ten waves** are complete, with a separate
 [actual-state manifest](docs/development/2026-11-13-continuation/assignments.json)
 and one retained note per worker. [AGENTS.md](AGENTS.md) makes the documented
 handoff, verification and commit/push workflow mandatory for future agents.
+
+The new [pedal session](docs/development/2026-11-13-pedals/README.md) has completed its first two waves (12 new workers), including a fresh full-atlas review, typed runtime routing and independent software qualification. Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json) tracks the remaining new work separately.
 
 ## Build and test
 

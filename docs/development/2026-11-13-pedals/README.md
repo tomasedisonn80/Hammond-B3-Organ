@@ -35,3 +35,9 @@ Read all 500 atlas pages anew across six disjoint assignments, implement the nex
 All six fresh readers completed disjoint ranges 1–84, 85–168, 169–252, 253–336, 337–420 and 421–500: **500/500 pages**, with selected actual diagram inspection and one retained note per reader. This is fresh text coverage plus selected visual review, not independent verification of every cited external source. The source PDF remains unchanged. The kernel and later nominal playable integration were selected from the documented next M3 gate.
 
 The frozen baseline passed all 46 local Release suites in 48.19 seconds. The baseline remote CI run [43381864079](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43381864079) was independently observed successful. The actual-state manifest now tracks wave2 implementation separately; no new code test pass is claimed by these baseline results.
+
+## Wave 2 accepted — prepared routing
+
+Assignments 07–12 completed the typed 200-position kernel, strict build-only compiler, adopted runtime/integration contracts, independent CSV/source-basis oracle, allocation audit and shared-source/partition/rate harness. No defect remained in their executed scopes. Map, reference and PDF bytes are unchanged. The kernel returns four normalized bus excitations and is not yet connected to Engine audio at this checkpoint.
+
+The coherent frozen tree `81b1c30436a239d8c04ffcd1ec658d356eb81acc` passed **51/51 local Release suites, zero failures, 67.83 seconds**. The subsequent publication changes only result records/Markdown from that tested tree. Wave 3 proceeds with the named fixed voice, controls migration and a qualified optional VST3 foundation while the independent Engine/parameter integration follows. The first checkpoint's hosted run [43392041624](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43392041624) was observed successful; it predates this kernel code and does not substitute for the next run.

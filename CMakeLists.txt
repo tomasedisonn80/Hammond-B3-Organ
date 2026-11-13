@@ -56,6 +56,32 @@ add_library(hammond_core STATIC ${HAMMOND_CORE_SOURCES})
 target_include_directories(hammond_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 hammond_configure_target(hammond_core)
 
+# Documentary routing is compiled separately from the unchanged organ profile.
+# Both independent CSV readings and the comparison manifest are build inputs.
+set(HAMMOND_PEDAL_COMPILER "${CMAKE_CURRENT_SOURCE_DIR}/tools/compile_pedal_routing.py")
+set(HAMMOND_PEDAL_MAP "${CMAKE_CURRENT_SOURCE_DIR}/data/pedal-map.json")
+set(HAMMOND_PEDAL_REFERENCE "${CMAKE_CURRENT_SOURCE_DIR}/data/references/factory-table-iii.json")
+set(HAMMOND_PEDAL_REVIEW_A "${CMAKE_CURRENT_SOURCE_DIR}/data/references/review-a-pedal.csv")
+set(HAMMOND_PEDAL_REVIEW_B "${CMAKE_CURRENT_SOURCE_DIR}/data/references/review-b-pedal.csv")
+set(HAMMOND_GENERATED_INCLUDE_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
+set(HAMMOND_PEDAL_HEADER "${HAMMOND_GENERATED_INCLUDE_DIR}/hammond/generated/PedalRoutingData.h")
+add_custom_command(
+    OUTPUT "${HAMMOND_PEDAL_HEADER}"
+    COMMAND "${Python3_EXECUTABLE}" "${HAMMOND_PEDAL_COMPILER}"
+        --input "${HAMMOND_PEDAL_MAP}" --reference "${HAMMOND_PEDAL_REFERENCE}"
+        --review-a "${HAMMOND_PEDAL_REVIEW_A}" --review-b "${HAMMOND_PEDAL_REVIEW_B}"
+        --output "${HAMMOND_PEDAL_HEADER}"
+    DEPENDS "${HAMMOND_PEDAL_COMPILER}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/validate_pedal_map.py"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/validate_factory_reference.py"
+        "${HAMMOND_PEDAL_MAP}" "${HAMMOND_PEDAL_REFERENCE}"
+        "${HAMMOND_PEDAL_REVIEW_A}" "${HAMMOND_PEDAL_REVIEW_B}"
+    COMMENT "Checking both factory pedal readings and compiling native routing"
+    VERBATIM)
+add_custom_target(hammond_pedal_routing DEPENDS "${HAMMOND_PEDAL_HEADER}")
+add_dependencies(hammond_core hammond_pedal_routing)
+target_include_directories(hammond_core PRIVATE "${HAMMOND_GENERATED_INCLUDE_DIR}")
+
 set(HAMMOND_AUTHORING_PROFILE "${CMAKE_CURRENT_SOURCE_DIR}/data/profiles/nominal-unmeasured-v1.json")
 set(HAMMOND_PROFILE_COMPILER "${CMAKE_CURRENT_SOURCE_DIR}/tools/compile_profile.py")
 set(HAMMOND_COMPILED_PROFILE "${CMAKE_CURRENT_BINARY_DIR}/nominal.b3p")
