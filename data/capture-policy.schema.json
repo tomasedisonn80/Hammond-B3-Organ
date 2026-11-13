@@ -1,0 +1,553 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hammond:capture-policy:v1",
+  "title": "Project-proposed fixed capture comparison policy v1",
+  "description": "Strict policy shape. compare_capture.parse_policy additionally enforces exact JSON numeric-token types, strict UTF-8 and surrogate admission, byte/node/depth/token bounds, criterion ID and numeric target uniqueness, frequency ordering/Nyquist membership, channel targets, and combined analysis work. evaluate_policy also binds the comparison analysis and exact original policy bytes. This schema does not establish chronology, uncertainty truth or physical fidelity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "metric_contract",
+    "policy_id",
+    "evidence_class",
+    "evaluation_role",
+    "freeze_evidence",
+    "analysis",
+    "criteria"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "metric_contract": {
+      "const": "capture-comparison-v1"
+    },
+    "policy_id": {
+      "$ref": "#/$defs/id"
+    },
+    "evidence_class": {
+      "type": "string",
+      "enum": [
+        "synthetic_numerical_fixture",
+        "digital_comparison"
+      ]
+    },
+    "evaluation_role": {
+      "type": "string",
+      "enum": [
+        "fit",
+        "validation",
+        "final_test",
+        "unassigned"
+      ]
+    },
+    "freeze_evidence": {
+      "$ref": "#/$defs/knownText"
+    },
+    "analysis": {
+      "$ref": "#/$defs/analysis"
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/criterion"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidence_class": {
+            "const": "digital_comparison"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "criteria": {
+            "items": {
+              "properties": {
+                "uncertainty": {
+                  "properties": {
+                    "basis": {
+                      "enum": [
+                        "unknown",
+                        "declared_margin"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "pattern": "\\S",
+      "not": {
+        "pattern": "[\\u0000-\\u001f\\u007f-\\u009f]"
+      }
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+      "not": {
+        "pattern": "[^a-z0-9_-]"
+      }
+    },
+    "knownText": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unknown_reason"
+      ],
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/text"
+            },
+            "unknown_reason": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unknown_reason": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        }
+      ]
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sample_rate_hz",
+        "channel_count",
+        "frame_count",
+        "window",
+        "floor_fs",
+        "frequencies_hz"
+      ],
+      "properties": {
+        "sample_rate_hz": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 768000
+        },
+        "channel_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "frame_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 262144
+        },
+        "window": {
+          "type": "string",
+          "enum": [
+            "rectangular",
+            "hann_symmetric"
+          ]
+        },
+        "floor_fs": {
+          "type": "number",
+          "minimum": 1e-12,
+          "maximum": 1000000
+        },
+        "frequencies_hz": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 384000
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "window": {
+                "const": "hann_symmetric"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "frame_count": {
+                "minimum": 3
+              }
+            }
+          }
+        }
+      ]
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channel_index",
+        "frequency_hz",
+        "metric"
+      ],
+      "properties": {
+        "channel_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "frequency_hz": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 384000
+            }
+          ]
+        },
+        "metric": {
+          "type": "string",
+          "enum": [
+            "absolute_dc_bias_fs",
+            "rms_error_fs",
+            "max_abs_error_fs",
+            "normalized_rms_error",
+            "complex_abs_error_fs",
+            "normalized_complex_error",
+            "absolute_phase_error_rad"
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "frequency_hz": {
+              "type": "null"
+            },
+            "metric": {
+              "enum": [
+                "absolute_dc_bias_fs",
+                "rms_error_fs",
+                "max_abs_error_fs",
+                "normalized_rms_error"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "frequency_hz": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 384000
+            },
+            "metric": {
+              "enum": [
+                "complex_abs_error_fs",
+                "normalized_complex_error",
+                "absolute_phase_error_rad"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "uncertainty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "margin",
+        "unit",
+        "basis",
+        "evidence",
+        "unknown_reason"
+      ],
+      "properties": {
+        "margin": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "FS",
+            "ratio",
+            "rad"
+          ]
+        },
+        "basis": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "declared_margin",
+            "synthetic_numerical"
+          ]
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "basis": {
+              "const": "unknown"
+            },
+            "margin": {
+              "type": "null"
+            },
+            "evidence": {
+              "type": "null"
+            },
+            "unknown_reason": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        },
+        {
+          "properties": {
+            "basis": {
+              "const": "declared_margin"
+            },
+            "margin": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1000000
+            },
+            "evidence": {
+              "$ref": "#/$defs/text"
+            },
+            "unknown_reason": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "basis": {
+              "const": "synthetic_numerical"
+            },
+            "margin": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000
+            },
+            "evidence": {
+              "$ref": "#/$defs/text"
+            },
+            "unknown_reason": {
+              "type": "null"
+            }
+          }
+        }
+      ]
+    },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterion_id",
+        "target",
+        "upper_bound",
+        "unit",
+        "rationale",
+        "uncertainty"
+      ],
+      "properties": {
+        "criterion_id": {
+          "$ref": "#/$defs/id"
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "upper_bound": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "FS",
+            "ratio",
+            "rad"
+          ]
+        },
+        "rationale": {
+          "$ref": "#/$defs/text"
+        },
+        "uncertainty": {
+          "$ref": "#/$defs/uncertainty"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "target": {
+                "properties": {
+                  "metric": {
+                    "enum": [
+                      "absolute_dc_bias_fs",
+                      "rms_error_fs",
+                      "max_abs_error_fs",
+                      "complex_abs_error_fs"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unit": {
+                "const": "FS"
+              },
+              "uncertainty": {
+                "properties": {
+                  "unit": {
+                    "const": "FS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "target": {
+                "properties": {
+                  "metric": {
+                    "enum": [
+                      "normalized_rms_error",
+                      "normalized_complex_error"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unit": {
+                "const": "ratio"
+              },
+              "uncertainty": {
+                "properties": {
+                  "unit": {
+                    "const": "ratio"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "target": {
+                "properties": {
+                  "metric": {
+                    "enum": [
+                      "absolute_phase_error_rad"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unit": {
+                "const": "rad"
+              },
+              "uncertainty": {
+                "properties": {
+                  "unit": {
+                    "const": "rad"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

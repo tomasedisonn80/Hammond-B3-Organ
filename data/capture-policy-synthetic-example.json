@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "metric_contract": "capture-comparison-v1",
+  "policy_id": "literal-repeat-v1",
+  "evidence_class": "synthetic_numerical_fixture",
+  "evaluation_role": "validation",
+  "freeze_evidence": {
+    "value": null,
+    "unknown_reason": "Illustrative policy; no independently retained chronology."
+  },
+  "analysis": {
+    "sample_rate_hz": 4,
+    "channel_count": 1,
+    "frame_count": 4,
+    "window": "rectangular",
+    "floor_fs": 1e-12,
+    "frequencies_hz": [1]
+  },
+  "criteria": [
+    {
+      "criterion_id": "repeat-rms",
+      "target": {"channel_index": 0, "frequency_hz": null, "metric": "rms_error_fs"},
+      "upper_bound": 0,
+      "unit": "FS",
+      "rationale": "Identical literal finite arrays have exactly zero pointwise difference.",
+      "uncertainty": {
+        "margin": 0,
+        "unit": "FS",
+        "basis": "synthetic_numerical",
+        "evidence": "Independent algebra for repeated binary-representable literals; synthetic zero margin only.",
+        "unknown_reason": null
+      }
+    }
+  ]
+}

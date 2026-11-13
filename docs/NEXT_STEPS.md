@@ -5,9 +5,17 @@
 The [new calibration session](development/2026-11-13-calibration/README.md)
 owns the next offline evidence-tooling work under [CALIBRATION_SCOPE.md](CALIBRATION_SCOPE.md).
 The fresh 500-page reading and independently reviewed audio/corpus/comparison
-contracts are complete. Implement the frozen decoder, corpus auditor and metric
-producer, then qualify them with independent literal-byte and numerical tests. Existing v1 metadata validation remains valid;
-it does not currently inspect audio headers or establish corpus independence.
+contracts and independent decoder/corpus/metric acceptance are complete.
+Fixed policy evaluation and adversarial audio/corpus admission are implemented
+and independently qualified. Implement the reviewed file-job contract using one
+admitted metadata snapshot, the original policy bytes, whole-corpus auditing and
+final checks of every input artifact and tool source. Preserve the public corpus
+API while sharing its internal audit core, then rerun both corpus suites and
+independent job acceptance. In parallel, define and qualify a small declaration
+readiness report for unchanged v1 acquisition metadata. Next assemble bounded
+studies and a reproducible synthetic example, with explicit evidence limits.
+Existing v1 metadata validation remains valid; the new companion tools provide
+separate audio and corpus checks without changing its meaning.
 The actual session manifest owns dispatch counts. Physical acquisitions,
 reviewed calibrations and specimen-specific fitting remain separate gates.
 

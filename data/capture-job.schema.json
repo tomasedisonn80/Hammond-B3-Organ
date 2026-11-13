@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hammond:capture-job:v1",
+  "title": "Project-proposed declared capture comparison job v1",
+  "description": "Strict input shape only. The job tool additionally enforces strict parsed bytes, exact integer tokens/types, bounded traversal, work products, corpus/policy/manifest identities, confined paths, source selection, role/evidence agreement, full artifact/audio verification and complete report semantics. No schema pass establishes physical evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_origin", "job_id", "corpus", "reference", "candidate", "analysis", "policy", "pairing", "transform"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "contract_origin": {"type": "string", "const": "project-proposed-capture-job-v1"},
+    "job_id": {"$ref": "#/$defs/id"},
+    "corpus": {"$ref": "#/$defs/fileBinding"},
+    "reference": {"$ref": "#/$defs/selection"},
+    "candidate": {"$ref": "#/$defs/selection"},
+    "analysis": {"$ref": "#/$defs/analysis"},
+    "policy": {"$ref": "#/$defs/fileBinding"},
+    "pairing": {"type": "string", "const": "index"},
+    "transform": {"type": "string", "const": "none"}
+  },
+  "$defs": {
+    "id": {
+      "type": "string", "minLength": 1, "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+      "not": {"pattern": "[^a-z0-9_-]"}
+    },
+    "sha256": {
+      "type": "string", "minLength": 64, "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "portablePath": {
+      "type": "string", "minLength": 1, "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}(?:/[A-Za-z0-9][A-Za-z0-9._-]{0,63}){0,7}$",
+      "not": {
+        "anyOf": [
+          {"pattern": "[^A-Za-z0-9._/-]"},
+          {"pattern": "\\.(?:/|$)"},
+          {"pattern": "(?:^|/)(?:[Cc][Oo][Nn]|[Pp][Rr][Nn]|[Aa][Uu][Xx]|[Nn][Uu][Ll]|[Cc][Oo][Mm][1-9]|[Ll][Pp][Tt][1-9])(?:\\.|/|$)"}
+        ]
+      }
+    },
+    "fileBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/portablePath"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "selection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["capture_id", "file_id", "start_frame"],
+      "properties": {
+        "capture_id": {"$ref": "#/$defs/id"},
+        "file_id": {"$ref": "#/$defs/id"},
+        "start_frame": {"type": "integer", "minimum": 0, "maximum": 134217727}
+      }
+    },
+    "analysis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sample_rate_hz", "channel_count", "frame_count", "window", "floor_fs", "frequencies_hz"],
+      "properties": {
+        "sample_rate_hz": {"type": "integer", "minimum": 1, "maximum": 768000},
+        "channel_count": {"type": "integer", "minimum": 1, "maximum": 16},
+        "frame_count": {"type": "integer", "minimum": 1, "maximum": 262144},
+        "window": {"type": "string", "enum": ["rectangular", "hann_symmetric"]},
+        "floor_fs": {"type": "number", "minimum": 1e-12, "maximum": 1000000},
+        "frequencies_hz": {
+          "type": "array", "maxItems": 64, "uniqueItems": true,
+          "items": {"type": "number", "minimum": 0, "maximum": 384000}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"window": {"const": "hann_symmetric"}}},
+          "then": {"properties": {"frame_count": {"minimum": 3}}}
+        }
+      ]
+    }
+  }
+}

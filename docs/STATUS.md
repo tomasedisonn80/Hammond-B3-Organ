@@ -11,9 +11,17 @@ All 500 PDF pages were freshly read by six distinct workers; the
 [coverage record](research/CALIBRATION_ATLAS_REVIEW.md) retains exact text and
 selected visual coverage. The clean starting source passed 85/85 local Release
 suites. Audio, corpus and comparison contracts are frozen and independently reviewed.
-The first twelve assignments are accepted; the JSON foundation passes 49 methods
-and session accounting passes 27 methods. The decoder, corpus auditor and metric
-producer are being implemented. The actual manifest distinguishes accepted and
+The first twenty-four assignments are accepted. The JSON foundation passes 49
+independent methods and session accounting passes 27 methods. Separate acceptance
+of the decoder, corpus auditor and metric producer passes 41, 47 and 42 methods,
+respectively, repeated by root. Fixed policy evaluation passes 49 independent
+methods. Additional corpus admission passes 57 methods; audio admission passes
+60 methods with two explicit native-capability skips. Those suites exposed a
+directory-close descriptor leak and malformed-header error-ordering defect;
+both repairs pass the retained regressions. The file-job contract is reviewed,
+and its implementation and acquisition-metadata readiness are in progress.
+The [combined wave-4 source](reviews/CALIBRATION_WAVE4_INTEGRATION.md) passed
+96/96 SDK-free Release suites; later changes require their own frozen gate. The actual manifest distinguishes accepted and
 running work. Physical calibration remains unqualified.
 
 ## Active native standalone continuation

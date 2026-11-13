@@ -51,6 +51,14 @@ separate inputs and numerical references. Its
 preserves the concurrently active scanner and native standalone work. This
 research module does not yet establish a measured Leslie or change dry output.
 
+The independent [capture and calibration toolchain](docs/CALIBRATION_HANDOFF.md)
+adds full-stream audio inspection, canonical sample identities, corpus lineage
+and split audits, and fixed numerical comparisons. Its
+[sixty-assignment session](docs/development/2026-11-13-calibration/README.md)
+records the fresh full-PDF reading and separate implementation/acceptance work.
+These offline tools prepare M0/M8 evidence; actual hardware acquisition and
+physical calibration remain separate gates.
+
 The selected source, contact, percussion and pedal models are **nominal and
 unmeasured**. Ideal contacts, percussion off and muted pedals preserve the
 original renderer defaults. Full M3, scanner/AO-28 electronics, Leslie acoustics,

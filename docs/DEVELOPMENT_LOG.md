@@ -2,6 +2,62 @@
 
 ## 2026-11-13 — Independent capture/calibration-readiness scope
 
+- Frozen wave-4 commit `1c2ea32` passed 11/11 focused suites in 12.57 seconds.
+  Remote standalone main then advanced to `649b12c`; root inspected and merged
+  its device/portability changes. Fresh combined source `45f875d`, tree
+  `2dcfc0e8071cdc30d75f8fb9be340826296fcbaf`, passed the full SDK-free Release
+  build and 96/96 CTest suites in 177.43 seconds. The exact commands, log hashes,
+  native-capability skips and excluded later work are retained in
+  [wave-4 integration evidence](reviews/CALIBRATION_WAVE4_INTEGRATION.md).
+
+- Accepted assignments 19-24. Fixed policy evaluation retains the original
+  policy-byte identity, strict report admission and all uncertainty decisions;
+  its independent suite passes 49 methods. The file-job contract and schema
+  were independently reviewed. Root resolved a composition gap by requiring
+  the corpus audit to reuse admitted metadata and to check every artifact in
+  the final snapshot. Compact original policy bytes must never be replaced by
+  a pretty reserialization before evaluation.
+- Independent corpus admission reproduced an opened-leaf descriptor leak on
+  parent-close failure. Root transferred resource ownership before fallible
+  closes and preserved primary/cleanup and cancellation outcomes. The retained
+  suite passes 57 methods, repeated by root in 1.571 seconds; the existing
+  47-method corpus suite also passes the repaired source.
+- Independent audio admission reproduced unsupported-width rejection masking
+  an earlier contradictory byte-rate field. Root restored byte-position error
+  precedence without weakening the frozen contract. The retained suite runs
+  62 methods: 60 pass, two skip for unavailable native Unix socket creation and
+  Windows reparse execution. Root repeated it in 2.158 seconds. Existing audio
+  acceptance still passes 41 methods. Sparse file-size admission and reduced
+  resource guards are not reported as full maximum-stream scans.
+- Integrated concurrent standalone commit `5b8e241` without changing its scope.
+  Frozen combined source `8864c05` passed the complete SDK-free Release build
+  and 93/93 CTest suites in 59.29 seconds. That snapshot predates the later
+  policy and parser repairs; its report names that boundary explicitly.
+  Wave-4 source is frozen separately before assignment 25 may share the corpus
+  audit core. The next independent job tests must retain original policy bytes
+  and prove preflight occurs before artifact work.
+
+- Accepted independent assignments 16-18: audio 41/41, corpus 47/47 and metrics
+  42/42 methods, all repeated by root with no skips. Initial test-control/oracle
+  errors and their corrections are retained in the worker notes; no producer
+  change was needed to pass these suites. The legacy capture suite also passed
+  41/41 methods.
+- A direct legacy analyzer run passed its first 14 methods but could not enter
+  renderer integration because this checkout had no built `hammond_render`.
+  This was an explicit setup failure, not an analyzer result. The coherent gate
+  must build the renderer/profile before running that required integration.
+
+- Published the reviewed foundation as `5026f671e788eb5e1a77c8ed4046a34afd539200`,
+  tree `2ed85b986f70895000f086039750f44773508819`, and fetched exact identity.
+  The frozen-source focused integration passed 3/3 suites; see
+  `reviews/CALIBRATION_WAVE2_INTEGRATION.md`. All three hosted workflows at this
+  commit were observed queued, with no pass claimed.
+- Accepted producers 13-15: bounded full-stream audio inspection and windows,
+  strict cross-manifest corpus/lineage auditing, and array comparison metrics.
+  Their notes retain exact source hashes and author checks. Independent workers
+  16-18 now qualify these modules; producer assertions are not counted as
+  independent acceptance. Root inspection also exercised the maximum report
+  channel/frequency shape and a typed current-directory I/O failure.
 - Frozen audio/corpus/comparison contracts now specify exact APIs, sample/byte
   identities, whole-group lineage and uncertainty-aware criteria. Independent
   integration review verified literal hashes and equations and clarified the

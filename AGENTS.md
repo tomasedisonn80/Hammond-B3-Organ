@@ -13,6 +13,8 @@ cross-capture integrity and split auditing, fixed analysis and reproducible
 acceptance evidence. It owns new capture/corpus/calibration tools and companion
 contracts. Preserve the existing capture v1 meaning, unknown physical values and
 all other active tracks. Synthetic test audio cannot close a hardware gate.
+Its operational entry point is [CALIBRATION_HANDOFF.md](docs/CALIBRATION_HANDOFF.md).
+Read the current session manifest before counting assignments or taking ownership.
 
 A separate [rotary motion and propagation session](docs/development/2026-11-13-rotary/README.md)
 starts at `96a37a9`. Its own sixty assignments advance a nominal M7 research
@@ -46,8 +48,9 @@ For every future development session, continue the next dependency-ready phase, 
 
 ## Start here
 
-1. Read `README.md`, `docs/STATUS.md`, `docs/NEXT_STEPS.md`, the current
-   `docs/SCANNER_HANDOFF.md`, and the latest entry in `docs/DEVELOPMENT_LOG.md`.
+1. Read `README.md`, `docs/STATUS.md`, `docs/NEXT_STEPS.md`, the relevant current
+   handoff (`docs/CALIBRATION_HANDOFF.md`, `docs/SCANNER_HANDOFF.md`, or the
+   separate active track's handoff), and the latest entry in `docs/DEVELOPMENT_LOG.md`.
    If a later session replaces the operational entry point, follow the explicit
    current-status pointer while preserving earlier handoffs as dated history.
 2. Read `docs/PLAN.md`, `docs/research/ATLAS_REVIEW.md`, and the atlas chapters relevant
