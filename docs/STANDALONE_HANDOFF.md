@@ -8,14 +8,19 @@ status and the remote head before taking ownership.
 
 ## Current checkpoint and boundaries
 
-Published native checkpoint: `219821dfaca6bfee8ba0905993ed8deec7a66396`, tree
-`f2db7aee1d45a897273e4e68a2fefc6a2de4d433`. Its Linux standalone and native VST3
-hosted gates passed; Windows/macOS standalone test builds failed and have scoped
-[portability repairs](reviews/STANDALONE_PORTABILITY_REPAIR.md) awaiting publication/rerun.
-The first 41 assignments are accepted; assignments 42–44 are running. The
+Published native checkpoint: `5b8e2419d23fe27c51709d717812060eafd44dcc`, tree
+`880682248c467a51cce14d920189cf0009b68d22`. Root fetched and verified exact tree
+equality. Linux and Windows standalone jobs passed build, tests and packaging;
+macOS failed on two unused drawing constants now removed locally. Core CI
+found the separate reader/test issues retained in the
+[platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md). A workflow's
+successful subset does not override failed or unrun gates.
+The first 46 assignments are accepted; assignments 47–49 are running. The
 [combined-source evidence](reviews/STANDALONE_WAVE6_INTEGRATION.md) records the
-fresh 94/94 gate at local commit `3872752` and the separate later 2/2 chapel
-integration gate. The [earlier checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md)
+fresh 94/94 Release gate at local `3872752` and separate later chapel/device
+integration. The [native sanitizer audit](reviews/STANDALONE_NATIVE_SANITIZERS.md)
+retains its actual 92/94 result and timing failures; it is not a full pass.
+The [earlier checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md)
 records its frozen full gate and subsequent focused acceptance. Inspect the manifest and exact
 source before relying on a later count or result.
 The baseline Release gate passed 77/77 suites. Actual full-application SDL dummy smoke and screenshots now supplement the
@@ -81,11 +86,64 @@ Choose fresh output paths and a deliberately missing state path for the default
 proposed registration. The app embeds the nominal profile and glyphs. It does
 not need the PDF or source font files to run. The explicit nine-file
 [Standalone component](STANDALONE_INSTALL.md) passes staging and relocation;
-the [hosted workflow](STANDALONE_CI.md) has a Linux pass and named Windows/macOS
-test-build repairs awaiting an actual rerun.
+the [hosted workflow](STANDALONE_CI.md) has Linux and Windows package passes at
+5b8e241; remaining macOS/core failures are tracked in the platform follow-up.
 Platform audio/window development headers determine enabled SDL backends. This
 container lacks ALSA/Pulse/X11/Wayland development headers; its executed audio
 checks explicitly select the dummy backend, which is not physical hardware.
+
+## Reproduce an interaction, registration or measurement
+
+Run these commands from the repository root after the native build above.
+`--input-script` drives the ordinary SDL event handlers and records controls,
+note ownership and acknowledgment before shutdown. Use fresh output filenames:
+
+```sh
+cmake -E make_directory out
+SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy \
+  ./build-standalone/apps/standalone/hammond_standalone \
+  --state out/replay-missing.b3controls \
+  --input-script examples/standalone-input/keyboard-notes.b3ui \
+  --diagnostics out/keyboard-notes.json
+```
+
+The [workflow guide](STANDALONE_WORKFLOWS.md) describes the maintained scripts;
+the [replay contract](STANDALONE_INPUT_REPLAY.md) specifies admission and limits.
+Script delivery alone is not proof of applied or audible notes; the app's
+completion diagnostics and acceptance suite check the relevant acknowledgment.
+
+To copy an admitted documentary chapel registration to ordinary controls,
+generate the catalog explicitly and export to a new file:
+
+```sh
+cmake --build build-standalone --target hammond_chapel_catalog --config Release
+python3 tools/chapel_controls.py --catalog build-standalone/chapel-catalog.json \
+  --upper 'C#' --lower off --bank A --expression 0.75 \
+  --output out/chapel-upper-csharp-a.b3controls
+./build-standalone/apps/standalone/hammond_standalone \
+  --state out/chapel-upper-csharp-a.b3controls
+```
+
+The final command requests the actual default audio/video drivers. The exporter
+requires an existing parent and preserves existing destinations. It copies
+atlas p122 tap digits to current nominal gains, with the other manual and pedals
+muted. It does not add physical fixed-preset selection or claim factory timbre.
+See [CHAPEL_CONTROLS.md](CHAPEL_CONTROLS.md) for exact keys, banks and limits.
+
+The Session benchmark also exists with native standalone OFF. Its native-build
+location and one explicit workload are:
+
+```sh
+cmake --build build-standalone --target hammond_standalone_benchmark --config Release
+./build-standalone/apps/standalone/hammond_standalone_benchmark \
+  --profile build-standalone/nominal.b3p --sample-rate 48000 \
+  --buffer-frames 512 --iterations 500 --warmup 16 --workload performance
+```
+
+The JSON retains every measured interval, source/toolchain/profile identity and
+exact workload accounting. It applies no physical deadline or latency pass
+threshold; compare only appropriately controlled runs. Multi-configuration
+generators add the configuration subdirectory to all executable paths above.
 
 ## Architecture and evidence entry points
 
@@ -112,8 +170,8 @@ application workflows and source-identified SDK-free benchmark now pass their
 independent suites. Maximum-plan replay and chapel control-file audition are
 qualified; [four actual native views](../examples/demos/standalone-window-v1/README.md)
 retain their source and diagnostics. Inspect the repaired hosted Linux/macOS/Windows
-gates, finish coherent native sanitizer qualification and independent open-device
-removal handling, then audit clean setup, package/runtime compatibility and the
+gates, inspect the published reader/concurrency repairs and qualify the timing repair, then audit
+clean setup, package/runtime compatibility and the
 final session records. Physical-device
 latency/underruns, hotplug, musician workflow and native accessibility remain
 separate evidence gates. Update this handoff, STATUS, NEXT_STEPS and the log,

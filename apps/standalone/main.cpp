@@ -1091,7 +1091,7 @@ private:
                 break;
             default: break;
             }
-        } else if (event.type == SDL_AUDIODEVICEREMOVED && event.adevice.iscapture == 0 && audio_.is_open()) {
+        } else if (event.type == SDL_AUDIODEVICEREMOVED && audio_.is_removed_by(event.adevice)) {
             lose_input(UiReleaseReason::FocusLost);
             audio_.close();
             commands_enabled_ = false;

@@ -24,6 +24,7 @@ using namespace hammond::standalone;
 
 constexpr std::size_t kTransfers = 8192;
 constexpr std::size_t kEpochs = 64;
+constexpr std::size_t kControlledRecoveryEpochs = 4;
 constexpr std::size_t kLatePosts = 96;
 constexpr std::size_t kFlights = 16;
 constexpr std::size_t kReaders = 2;
@@ -340,6 +341,10 @@ struct Counts {
     std::uint64_t producer_rejected{};
     std::uint64_t overflows{};
     std::uint64_t recovery_pending{};
+    std::uint64_t before_render_discarded{};
+    std::uint64_t before_render_pending{};
+    std::uint64_t after_render_accepted{};
+    std::uint64_t raced_pending{};
     std::uint64_t raced_discarded{};
     std::uint64_t post_acknowledgment{};
     std::uint64_t active_callbacks{};
@@ -468,6 +473,7 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
     Shared shared;
     std::atomic<std::uint64_t> requested{0};
     std::atomic<std::uint64_t> entered{0};
+    std::atomic<std::uint64_t> permitted{0};
     std::atomic<std::uint64_t> completed{0};
     const Oracle oracle{controls, false, kRecoveryFrames};
     std::array<std::thread, kReaders> readers;
@@ -486,8 +492,15 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
                 std::this_thread::yield();
                 continue;
             }
-            shared.audio_active.store(true, std::memory_order_release);
+            // Ready does not mean render has captured its queue prefix. The
+            // first two recovery epochs deliberately hold this public-call
+            // boundary; every other callback is already permitted.
             entered.store(ticket, std::memory_order_release);
+            while (permitted.load(std::memory_order_acquire) < ticket) {
+                deadline.check();
+                std::this_thread::yield();
+            }
+            shared.audio_active.store(true, std::memory_order_release);
             const auto result = session.render(kRecoveryFrames, output);
             shared.audio_active.store(false, std::memory_order_release);
             ++counts.recovery_callbacks;
@@ -514,7 +527,8 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
     };
     std::uint64_t ticket = 0;
     const auto render_once = [&] {
-        requested.store(++ticket, std::memory_order_release);
+        permitted.store(++ticket, std::memory_order_release);
+        requested.store(ticket, std::memory_order_release);
         wait_for(completed, ticket);
         return read_idle(session);
     };
@@ -541,8 +555,9 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
         const auto precharge_sequence = counts.accepted;
         std::uint64_t invalid_sequence = 0;
         const bool overflow = epoch % 2 == 0;
-        // Only setup is serialized. The next callback and late-post burst run
-        // concurrently; the separate sustained phase has no callback tickets.
+        // Four explicit schedules prove both sides of the recovery boundary.
+        // The other sixty epochs retain genuinely concurrent late posting;
+        // no particular outcome of that race is a portable requirement.
         if (overflow) {
             for (const auto& command : release_commands) post(command);
             for (const auto& command : late_commands) post(command);
@@ -566,19 +581,27 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
             post(controls[0]);
         }
         const auto prefix_end = counts.accepted;
-        std::array<std::uint64_t, kLatePosts> raced_sequences{};
-        requested.store(++ticket, std::memory_order_release);
+        const bool before_render = epoch < kControlledRecoveryEpochs / 2;
+        const bool after_render = !before_render && epoch < kControlledRecoveryEpochs;
+        std::array<std::uint64_t, kLatePosts> late_sequences{};
+        std::uint64_t late_pending = 0;
+        ++ticket;
+        if (!before_render) permitted.store(ticket, std::memory_order_release);
+        requested.store(ticket, std::memory_order_release);
         wait_for(entered, ticket);
+        if (after_render) wait_for(completed, ticket);
         for (std::size_t index = 0; index < kLatePosts; ++index) {
             const auto result = session.post(late_commands[index % 2]);
             if (result.ok()) {
                 CHECK(result.sequence == counts.accepted + 1);
-                raced_sequences[index] = ++counts.accepted;
+                late_sequences[index] = ++counts.accepted;
             } else {
                 CHECK(result.status == SessionStatus::RecoveryPending && result.sequence == 0);
                 ++counts.recovery_pending;
+                ++late_pending;
             }
         }
+        if (before_render) permitted.store(ticket, std::memory_order_release);
         wait_for(completed, ticket);
         const auto recovered = read_idle(session);
         CHECK(no_holds(recovered));
@@ -596,12 +619,27 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
             counts.discarded += recovered.resolved_sequence - invalid_sequence;
         }
         std::uint64_t after_ack = 0;
-        for (const auto sequence : raced_sequences) {
+        std::uint64_t late_discarded = 0;
+        for (const auto sequence : late_sequences) {
             if (sequence == 0) continue;
-            if (sequence <= recovered.resolved_sequence) ++counts.raced_discarded;
+            if (sequence <= recovered.resolved_sequence) ++late_discarded;
             else ++after_ack;
         }
-        counts.post_acknowledgment += after_ack;
+        CHECK(late_pending + late_discarded + after_ack == kLatePosts);
+        if (before_render) {
+            CHECK(late_pending == (overflow ? kLatePosts : 0));
+            CHECK(late_discarded == (overflow ? 0 : kLatePosts));
+            CHECK(after_ack == 0);
+            counts.before_render_pending += late_pending;
+            counts.before_render_discarded += late_discarded;
+        } else if (after_render) {
+            CHECK(late_pending == 0 && late_discarded == 0 && after_ack == kLatePosts);
+            counts.after_render_accepted += after_ack;
+        } else {
+            counts.raced_pending += late_pending;
+            counts.raced_discarded += late_discarded;
+            counts.post_acknowledgment += after_ack;
+        }
         CHECK(recovered.discarded_commands == counts.discarded);
         CHECK(recovered.queue_overflows == counts.overflows);
         CHECK(recovered.rejected_commands == counts.consumer_rejected + counts.producer_rejected);
@@ -626,7 +664,12 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
     for (auto& reader : readers) reader.join();
     CHECK(!shared.audio_failed.load(std::memory_order_acquire));
     check_readers(counts.recovery_readers);
-    CHECK(counts.raced_discarded > 0);
+    CHECK(counts.before_render_pending == kLatePosts);
+    CHECK(counts.before_render_discarded == kLatePosts);
+    CHECK(counts.after_render_accepted == 2 * kLatePosts);
+    CHECK(counts.raced_pending + counts.raced_discarded + counts.post_acknowledgment ==
+          (kEpochs - kControlledRecoveryEpochs) * kLatePosts);
+    CHECK(counts.recovery_pending == kEpochs / 2 + counts.before_render_pending + counts.raced_pending);
     CHECK(read_idle(session).recovery_count == kEpochs);
     quiescent_finish(session, counts.accepted);
 }
@@ -833,9 +876,16 @@ int main() {
               << " accepted = " << counts.applied << " applied + " << counts.consumer_rejected
               << " rejected + " << counts.discarded << " discarded; " << counts.producer_rejected
               << " immediate rejects, " << counts.overflows << " overflows, "
-              << counts.recovery_pending << " recovery-pending posts, " << counts.raced_discarded
-              << " raced posts discarded, " << counts.post_acknowledgment << " posts after ack; "
+              << counts.recovery_pending << " recovery-pending posts; "
               << counts.preserved_exhausted_reads << " exhausted reads preserved\n";
+    std::cout << "Controlled recovery boundaries: " << kControlledRecoveryEpochs << " epochs, "
+              << counts.before_render_pending << " pre-render posts pending, "
+              << counts.before_render_discarded << " pre-render admitted posts discarded, "
+              << counts.after_render_accepted << " post-render posts accepted after ack\n";
+    std::cout << "Concurrent recovery schedules: " << kEpochs - kControlledRecoveryEpochs << " epochs, "
+              << counts.raced_pending << " posts pending, " << counts.raced_discarded
+              << " admitted posts discarded, " << counts.post_acknowledgment
+              << " posts accepted after ack\n";
     std::cout << "Active overflow: " << kFlights << " rounds, " << counts.active_callbacks
               << " callbacks, " << counts.active_overflows << " QueueFull calls inside an active interval, "
               << counts.deferred_overflows << " recoveries deferred past that callback; "

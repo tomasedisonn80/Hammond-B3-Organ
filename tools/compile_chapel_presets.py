@@ -123,6 +123,15 @@ def _identity(metadata: os.stat_result) -> tuple[int, int, int, int, int]:
             metadata.st_mtime_ns, metadata.st_ctime_ns)
 
 
+def _same_opened_file(selected: os.stat_result, opened: os.stat_result) -> bool:
+    # Windows Python can expose creation time through lstat but change time
+    # through fstat. Keep ctime checks within each API; all other fields, and
+    # POSIX cross-API ctime, must still agree exactly.
+    path_stamp, descriptor_stamp = _identity(selected), _identity(opened)
+    return path_stamp[:4] == descriptor_stamp[:4] and (
+        os.name == "nt" or path_stamp[4] == descriptor_stamp[4])
+
+
 def _regular(metadata: os.stat_result) -> bool:
     return stat.S_ISREG(metadata.st_mode) and not (
         getattr(metadata, "st_file_attributes", 0)
@@ -139,13 +148,21 @@ def _read(path: Path, limit: int) -> bytes:
         flags = os.O_RDONLY | getattr(os, "O_BINARY", 0) | getattr(os, "O_NONBLOCK", 0)
         flags |= getattr(os, "O_NOFOLLOW", 0)
         descriptor = os.open(path, flags)
-        with os.fdopen(descriptor, "rb") as source:
+        try:
+            source = os.fdopen(descriptor, "rb")
+        except BaseException:
+            os.close(descriptor)
+            raise
+        with source:
             before = os.fstat(source.fileno())
-            if not _regular(before) or _identity(before) != _identity(selected):
+            if not _regular(before) or not _same_opened_file(selected, before):
                 raise ChapelCompileError(f"{path}: input changed before read")
             payload = source.read(limit + 1)
             after = os.fstat(source.fileno())
-        if _identity(before) != _identity(after) or _identity(after) != _identity(path.lstat()):
+        final_path = path.lstat()
+        if (not _regular(after) or not _regular(final_path)
+                or _identity(before) != _identity(after)
+                or _identity(selected) != _identity(final_path)):
             raise ChapelCompileError(f"{path}: input changed during read")
         if len(payload) != before.st_size or len(payload) > limit:
             raise ChapelCompileError(f"{path}: incomplete or oversized bounded read")

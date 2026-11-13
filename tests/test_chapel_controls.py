@@ -17,6 +17,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest import mock
 
@@ -73,6 +74,15 @@ def tree_snapshot(root: Path) -> dict:
     return result
 
 
+def reader_metadata(metadata, **changes):
+    """Keep real file facts except the deliberately injected observation."""
+    values = {name: getattr(metadata, name) for name in (
+        "st_mode", "st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")}
+    values["st_file_attributes"] = getattr(metadata, "st_file_attributes", 0)
+    values.update(changes)
+    return SimpleNamespace(**values)
+
+
 def make_catalog(destination: Path) -> bytes:
     process = subprocess.run([sys.executable, str(COMPILER), "--input", str(AUTHORING),
                               "--review-a", str(REVIEWS[0]), "--review-b", str(REVIEWS[1]),
@@ -91,6 +101,7 @@ class ChapelControlsAcceptance(unittest.TestCase):
     api_rejections = 0
     io_failures = 0
     valid_exports = 0
+    reader_rejections = 0
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -116,7 +127,8 @@ class ChapelControlsAcceptance(unittest.TestCase):
                 raise AssertionError(f"Input source changed during acceptance: {path}")
         print(f"Chapel controls acceptance: {cls.cli_invocations} exporter CLI invocations, "
               f"{cls.valid_exports} exact exported states, {cls.api_rejections} API rejections, "
-              f"{cls.io_failures} publication fault probes", flush=True)
+              f"{cls.io_failures} publication fault probes, "
+              f"{cls.reader_rejections} reader rejection probes", flush=True)
 
     def setUp(self) -> None:
         temporary = tempfile.TemporaryDirectory(prefix="chapel-controls-acceptance-")
@@ -288,6 +300,140 @@ class ChapelControlsAcceptance(unittest.TestCase):
         self.output.unlink()
         self.catalog.write_bytes(self.catalog_bytes + b" " * (65537 - len(self.catalog_bytes)))
         self.rejected_cli(self.arguments("--upper", "D"))
+
+    def test_windows_ctime_domains_and_posix_cross_api_guard(self) -> None:
+        selected = self.catalog.lstat()
+        before = tree_snapshot(self.root)
+        for platform in ("nt", "posix"):
+            observed = []
+
+            def descriptor_stat(descriptor):
+                observed.append(descriptor)
+                return reader_metadata(os.fstat(descriptor), st_ctime_ns=selected.st_ctime_ns + 97)
+
+            # Isolate the producer reference; never change global os.name or
+            # cause pathlib on this runner to construct another platform's paths.
+            isolated_os = SimpleNamespace(**vars(os))
+            isolated_os.name, isolated_os.fstat = platform, descriptor_stat
+            with self.subTest(platform=platform), mock.patch.object(self.subject, "os", isolated_os):
+                if platform == "nt":
+                    self.assertEqual(self.subject.load_catalog(self.catalog), self.catalog_value)
+                    self.assertEqual(len(observed), 2)
+                else:
+                    with self.assertRaisesRegex(self.subject.ChapelControlsError, "changed before its bounded read"):
+                        self.subject.load_catalog(self.catalog)
+                    self.assertEqual(len(observed), 1)
+                    self.__class__.api_rejections += 1
+                    self.__class__.reader_rejections += 1
+            self.assertEqual(tree_snapshot(self.root), before)
+
+    def test_cross_api_identity_size_and_mtime_remain_exact(self) -> None:
+        selected = self.catalog.lstat()
+        before = tree_snapshot(self.root)
+        for platform in ("nt", "posix"):
+            for field in ("st_dev", "st_ino", "st_size", "st_mtime_ns"):
+                observed = []
+
+                def descriptor_stat(descriptor):
+                    observed.append(descriptor)
+                    value = reader_metadata(os.fstat(descriptor), st_ctime_ns=selected.st_ctime_ns)
+                    return reader_metadata(value, **{field: getattr(value, field) + 1})
+
+                isolated_os = SimpleNamespace(**vars(os))
+                isolated_os.name, isolated_os.fstat = platform, descriptor_stat
+                with self.subTest(platform=platform, field=field), mock.patch.object(self.subject, "os", isolated_os):
+                    with self.assertRaisesRegex(self.subject.ChapelControlsError, "changed before its bounded read"):
+                        self.subject.load_catalog(self.catalog)
+                self.assertEqual(len(observed), 1)
+                self.assertEqual(tree_snapshot(self.root), before)
+                self.__class__.api_rejections += 1
+                self.__class__.reader_rejections += 1
+
+    def test_each_descriptor_or_path_change_during_read_is_rejected(self) -> None:
+        selected = self.catalog.lstat()
+        original_lstat = Path.lstat
+        before = tree_snapshot(self.root)
+        fields = ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns",
+                  "st_mode", "st_file_attributes")
+        for platform in ("nt", "posix"):
+            for domain in ("descriptor", "path"):
+                for field in fields:
+                    calls = {"descriptor": 0, "path": 0}
+
+                    def change(value):
+                        replacement = (stat.S_IFDIR if field == "st_mode" else
+                                       value.st_file_attributes | 0x400 if field == "st_file_attributes" else
+                                       getattr(value, field) + 1)
+                        return reader_metadata(value, **{field: replacement})
+
+                    def descriptor_stat(descriptor):
+                        calls["descriptor"] += 1
+                        value = reader_metadata(os.fstat(descriptor),
+                                                st_ctime_ns=selected.st_ctime_ns + (97 if platform == "nt" else 0))
+                        return change(value) if domain == "descriptor" and calls["descriptor"] == 2 else value
+
+                    def path_stat(path, *args, **kwargs):
+                        value = original_lstat(path, *args, **kwargs)
+                        if path == self.catalog:
+                            calls["path"] += 1
+                            if domain == "path" and calls["path"] == 2:
+                                return change(reader_metadata(value))
+                        return value
+
+                    isolated_os = SimpleNamespace(**vars(os))
+                    isolated_os.name, isolated_os.fstat = platform, descriptor_stat
+                    with self.subTest(platform=platform, domain=domain, field=field), \
+                            mock.patch.object(self.subject, "os", isolated_os), \
+                            mock.patch.object(Path, "lstat", autospec=True, side_effect=path_stat):
+                        with self.assertRaisesRegex(self.subject.ChapelControlsError, "changed during its bounded read"):
+                            self.subject.load_catalog(self.catalog)
+                    self.assertEqual(calls["descriptor"], 2, "must reach descriptor post-read observation")
+                    self.assertEqual(calls["path"], 2, "must reach path post-read observation")
+                    self.assertEqual(tree_snapshot(self.root), before)
+                    self.__class__.api_rejections += 1
+                    self.__class__.reader_rejections += 1
+
+    def test_fdopen_failure_closes_the_acquired_read_descriptor(self) -> None:
+        acquired = []
+        before = tree_snapshot(self.root)
+
+        def acquire(*args, **kwargs):
+            descriptor = os.open(*args, **kwargs)
+            acquired.append(descriptor)
+            return descriptor
+
+        def fail_wrap(*args, **kwargs):
+            raise OSError("controlled read fdopen failure")
+
+        isolated_os = SimpleNamespace(**vars(os))
+        isolated_os.open, isolated_os.fdopen = acquire, fail_wrap
+        try:
+            with mock.patch.object(self.subject, "os", isolated_os):
+                with self.assertRaisesRegex(self.subject.ChapelControlsError, "controlled read fdopen failure"):
+                    self.subject.load_catalog(self.catalog)
+            self.assertEqual(len(acquired), 1)
+            with self.assertRaises(OSError):
+                os.fstat(acquired[0])
+            self.assertEqual(tree_snapshot(self.root), before)
+            self.__class__.api_rejections += 1
+            self.__class__.reader_rejections += 1
+        finally:
+            for descriptor in acquired:
+                try:
+                    os.close(descriptor)
+                except OSError:
+                    pass
+
+    def test_real_rewritten_catalogs_load_and_export_exact_controls(self) -> None:
+        for index, payload in enumerate((self.catalog_bytes + b" \n",
+                                         json.dumps(self.catalog_value, sort_keys=True).encode("utf-8"),
+                                         self.catalog_bytes)):
+            self.catalog.write_bytes(payload)
+            self.assertEqual(self.subject.load_catalog(self.catalog), self.catalog_value)
+            output = self.root / f"rewritten-{index}.b3controls"
+            self.invoke(self.arguments("--upper", "C#", "--lower", "G", "--bank", "B", output=output))
+            self.assertEqual(output.read_bytes(), expected_state("C#", "G", "B"))
+            self.assertEqual(self.catalog.read_bytes(), payload)
 
     def test_invalid_public_selection_types_preserve_catalog(self) -> None:
         for kwargs in ({}, {"upper": "off", "lower": "off"}, {"upper": None}, {"upper": True},

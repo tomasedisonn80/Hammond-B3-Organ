@@ -1810,3 +1810,62 @@ review retains exact commands, source tree, scope and receipt hash.
   Running work covers coherent native sanitizers and identity-aware SDL output
   removal with separate independent acceptance. Future-agent continuation and
   guarded commit/push requirements remain in AGENTS.md.
+- Before publication, inspected and merged calibration foundation `5026f67`.
+  Its two isolated Python suites passed 49/49 and 27/27 methods from the merged
+  immutable archive. Archive integrity passed 2,710 local links in 480 Markdown
+  files and the unchanged PDF identity; the standalone checker reports the
+  actual 41 completed / three running assignments, separately from older ledgers.
+- Published `5b8e2419d23fe27c51709d717812060eafd44dcc`, tree
+  `880682248c467a51cce14d920189cf0009b68d22`, with expected-head protection and no
+  force update. Fetched exact tree equality passed; local history remains on
+  `standalone-local-w7-checkpoint`. CI `43523378849`, Native VST3 `43523378803`
+  and Native standalone `43523378962` were observed queued; no pass is inferred.
+- The later [core platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md)
+  observes actual failures at `5b8e241`: Linux Release 89/90 due to an incidental
+  concurrency scheduling assertion; Windows Release 87/90 due to chapel reader
+  cross-API file metadata comparisons and a calibration mock using the unresolved
+  short TEMP path. The core sanitizer job passed. Native standalone build/test/
+  package steps passed on Linux and Windows; macOS was still running.
+- Root corrected only the calibration test's marked paths to match the checker's
+  resolved root and required the injected metadata to be observed. All 27 methods
+  passed locally in 0.904 seconds; Windows verification remains pending. The
+  production checker and metadata rejection rules were not changed. Dedicated
+  chapel-admission and concurrency-oracle repairs follow before final publication.
+- Accepted assignments 43/44: the app now ignores removal notifications for zero,
+  unrelated or capture IDs and closes only its current open output. The actual
+  old application-source injection probe reproduced both false closures; all four
+  repaired probes and the ordinary unshimmed smoke passed. Independent acceptance
+  passed three lifecycle cycles, 93 actual queued events and exact musical state/
+  callback accounting, including two observed SDL handle reuses.
+- Root rebuilt the native input aggregate and passed the canonical device,
+  callback-allocation and new removal subset **3/3** in **2.94 seconds**. The
+  assembled ordinary executable SHA-256 is
+  `f07c1d59c0241dd52079da9f14a64fe56e4ad2730aadd4250c5bd5ea19e21bfb`.
+  The public predicate cannot authenticate event generations across reused IDs;
+  physical hotplug remains explicitly unqualified. No core/control/state identity
+  or callback lifecycle body changed.
+- Accepted assignment 42's completed coherent instrumentation audit with its
+  actual failed gate retained: 92/94 in 222.23 seconds, no ASan/UBSan diagnostics,
+  separate leak probe exit 23/ptrace blocker. All 259 translation units, including
+  176 SDL C units, carried sanitizer flags. Six smoke capture subcases and one
+  resize observation subcase failed; their per-process temporary JSON was not
+  retained by the old fixtures. Assignment 47 owns the bounded timing repair.
+- Later macOS results at 5b8e241: core 89/90 failed the same unresolved-root
+  calibration mock, while native standalone stopped before tests on unused
+  `kPanel`/`kLine` constants. Root removed only those unused declarations;
+  GCC strict syntax with `-Wunused-const-variable=1 -Werror` passes. Actual
+  AppleClang rerun is still required. The native source hash is
+  `1cfa38a407ad2b75c4f9fb910bfa7314c694c63b9e2dee4e41fb22faf0fd283a`.
+  Linux and Windows native jobs completed successfully, including package upload.
+- Accepted assignments 45/46. Chapel readers now retain within-API mutation
+  stamps and compatible cross-API identities; both also close descriptors on
+  stream-wrapper failure. Their complete suites passed 23/23 and 20/20 methods
+  with original before-repair failures retained. Canonical catalog bytes remain
+  unchanged. The recovery test now proves four controlled boundary schedules and
+  reconciles all 5,760 attempts in sixty concurrent epochs without requiring an
+  incidental race outcome. Its first Release and fully rebuilt TSAN gates pass.
+- Root rebuilt the concurrency/catalog inputs and passed the four affected
+  canonical CTest suites together in **17.28 seconds**. This is scoped Linux
+  integration; actual Windows/macOS reruns remain necessary. The real manifest
+  records 46 accepted, three running and eleven not yet dispatched assignments.
+  Timing repair, hosted artifact audit and fresh Unicode/space-path setup follow.

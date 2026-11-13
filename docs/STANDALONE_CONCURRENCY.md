@@ -1,11 +1,47 @@
 # Standalone Session concurrency acceptance
 
-Assignment `/root/w04_a22_session_concurrency`, 13 November 2026, maintains
+Assignments `/root/w04_a22_session_concurrency` and
+`/root/w08_a46_concurrency_oracle`, 13 November 2026, maintain
 [`test_standalone_concurrency`](../apps/standalone/tests/test_standalone_concurrency.cpp)
 against the actual [Session contract](STANDALONE_SESSION.md) and implementation.
 No production code changed. This supplements [serial acceptance](STANDALONE_SESSION_ACCEPTANCE.md).
 
-## Executed gate
+## Current portable recovery-boundary gate
+
+The original test required a positive number of concurrent late posts to be
+discarded. [Hosted Linux Release at `5b8e241`](reviews/STANDALONE_PLATFORM_FOLLOWUP.md)
+showed that this particular race outcome need not occur: the consumer can finish
+rendering before the producer runs again. A ready flag set before `render` does
+not prove the consumer has captured its queue prefix or remains in the call.
+
+The maintained repair retains 64 recovery epochs and the exact four-callback
+musical/publication oracle. Four epochs establish controlled public-call
+boundaries; the remaining sixty keep the actual concurrent late-post race:
+
+| Schedule | Required result for 96 late attempts |
+| --- | --- |
+| Overflow pending; consumer held before render | All 96 return RecoveryPending; no accepted sequence. |
+| Invalid payload queued; consumer held before render | All 96 are admitted, then discarded when the consumer rejects the earlier payload. |
+| Overflow recovery already returned and acknowledged | All 96 are admitted above the published resolved sequence. |
+| Consumer-rejection recovery already returned and acknowledged | All 96 are admitted above the published resolved sequence. |
+| Sixty unscheduled race epochs | Every attempt is classified as pending, admitted-and-discarded, or accepted after acknowledgment; their total is exactly 5,760. |
+
+Controlled counters remain separate from concurrent observations. No minimum is
+required for one incidental race outcome. Every epoch still checks literal
+controls, empty recovered holds, sticky faults, exact sequences and accepted =
+applied + rejected + discarded. The 8,192-post free-running phase, two readers,
+16 active-overflow rounds, 256 forced failed reads and unwind cleanup remain.
+
+Fresh coherent builds of published `5b8e241` plus only the repaired test passed
+**1/1 Release** in **0.13 seconds total** and **1/1 ThreadSanitizer** in
+**0.75 seconds total**, with no race diagnostic. All 23 actual core/support/test
+objects were instrumented in the latter; archive symbols and executable runtime
+linkage were verified. [Assignment 46](development/2026-11-13-next-phases/46-concurrency-oracle.md)
+and the [repair review](reviews/STANDALONE_CONCURRENCY_PORTABILITY.md) retain
+exact hashes, commands, observed counts and exclusions. Hosted rerun remains a
+separate gate; these checks establish no physical-device or deadline result.
+
+## Retained original executed gate — assignment 22
 
 Fresh SDK-free builds used Linux x86_64, GCC 14.2.0, CMake 4.4.4 and Python 3.12.14.
 Final Release CTest passed **1/1**, 0.12 seconds (total 0.13); the complete
@@ -27,9 +63,10 @@ in the TSAN build carried `-fsanitize=thread`. Neither run linked SDL or a host 
 | Successful reader snapshots / busy reads preserving destination | 368,627 / 844 | 165,192 / 1,697 |
 | Deterministic exhausted reads preserving destination | 256 | 256 |
 
-Counts describe these executions and are printed by every run; scheduler-dependent
-counts are not golden values. The test requires observed overlap and progress,
-not a particular callback count, read-failure count or thread ordering.
+Counts describe those original executions. Later hosted review identified the
+original positive raced-discard threshold as an invalid scheduling assumption;
+the current gate above replaces it with explicit boundary coverage and complete
+classification while retaining observed overlap and progress checks.
 
 ## Independent checks
 
@@ -45,8 +82,9 @@ not a particular callback count, read-failure count or thread ordering.
   and an independent exact frame-clock/revision relationship. Recovery readers
   additionally derive complete manual/pedal holds, controls and fault counts
   from the four-callback schedule; same-revision payloads must remain identical.
-- Recovery setup is intentionally coordinated, then admission races the actual
-  callback. Whole-snapshot rejection, real invalid core payloads and all 256 queue
+- Recovery setup is intentionally coordinated. Four controlled epochs now prove
+  before/after-call boundaries, and sixty retain concurrent late admission.
+  Whole-snapshot rejection, real invalid core payloads and all 256 queue
   slots are exercised. Queued independent-channel manual/pedal releases and stale
   note-ons are discarded safely. Literal prefix counts independently reconcile
   every accepted command as applied, consumer-rejected or discarded.

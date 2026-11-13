@@ -39,3 +39,19 @@ Windows/macOS repairs require a named hosted rerun; no blanket platform pass is
 claimed. Native sanitizers and exact output-removal identity are the next active
 tasks. Physical devices, accessibility, measured sound and production release
 remain open. Earlier checkpoint statements above are dated evidence.
+
+## Accepted checkpoint after assignment 46
+
+The first 46 actual assignments are accepted: seven full waves and four results
+of wave 8. Running assignments 47–49 cover native capture/replay timing, actual
+hosted artifacts and fresh setup. The [platform follow-up](../../reviews/STANDALONE_PLATFORM_FOLLOWUP.md)
+retains real failures at published `5b8e241` and their narrow corrections.
+The complete [native sanitizer audit](../../reviews/STANDALONE_NATIVE_SANITIZERS.md)
+reported 92/94, with no ASan/UBSan diagnostic but two failed UI-observation suites;
+that completed audit is accepted as evidence, not misreported as a full pass.
+Device-removal repair and independent lifecycle acceptance pass; root's three
+affected native suites pass. Windows reader, calibration fixture and recovery
+oracle repairs pass their four-suite canonical focus; the recovery test also
+passes coherent TSAN. Actual repaired hosted runs and the timing gate still need
+their own results. The owner-requested sixty assignments remain this session's
+scope; no planned, resumed or other-session worker is counted again.

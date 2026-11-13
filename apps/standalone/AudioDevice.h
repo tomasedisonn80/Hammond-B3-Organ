@@ -3,6 +3,7 @@
 #include "Session.h"
 
 #include <SDL_audio.h>
+#include <SDL_events.h>
 
 #include <atomic>
 #include <cstdint>
@@ -84,6 +85,12 @@ public:
 
     [[nodiscard]] bool is_open() const noexcept { return device_id_ != 0; }
     [[nodiscard]] bool is_running() const noexcept { return running_; }
+    // Main-thread-only, opaque current SDL handle; zero while closed. SDL may
+    // reuse a handle after close, so this is not a persistent hardware identity.
+    [[nodiscard]] SDL_AudioDeviceID device_id() const noexcept { return device_id_; }
+    // Pure classification: only this open output's REMOVED event matches.
+    // Added events use enumeration indices; zero means an unopened removal.
+    [[nodiscard]] bool is_removed_by(const SDL_AudioDeviceEvent& event) const noexcept;
     [[nodiscard]] AudioDeviceInfo info() const;
     [[nodiscard]] AudioDeviceDiagnostics diagnostics() const noexcept;
 

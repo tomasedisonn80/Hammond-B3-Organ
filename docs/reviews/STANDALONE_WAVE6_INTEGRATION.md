@@ -111,3 +111,23 @@ hotplug, deadlines, high-DPI, screen readers, musician workflow, signing, projec
 rights and measured fidelity remain separate gates. Factory Table IV and loaded
 preset gains are not established by the documentary exporter. Follow the
 [handoff](../STANDALONE_HANDOFF.md) and current manifest for the next work.
+
+## Publication and concurrent foundation follow-up
+
+Before publication, remote `main` advanced to calibration checkpoint `5026f67`.
+Root inspected and merged it cleanly. Its only new executable sources were the
+isolated `capture_common.py` and calibration record checker; no core C++ or SDL
+inputs changed. From the merged immutable archive, their maintained suites
+passed **49/49** methods in 0.026 seconds and **27/27** in 0.860 seconds. The
+archive integrity gate passed 2,710 local links in 480 Markdown files, all 500
+atlas pages and the unchanged PDF hash. The standalone record checker passed
+41 completed / three running / 44 dispatched; its six complete waves are
+distinct from the original session's historical sixty-note integrity check.
+
+Root published commit `5b8e2419d23fe27c51709d717812060eafd44dcc`, tree
+`880682248c467a51cce14d920189cf0009b68d22`, using the inspected expected head
+and a non-force ref update. A fresh fetch and exact local/remote tree comparison
+passed. Local integration history is retained on `standalone-local-w7-checkpoint`.
+Observed new runs: CI `43523378849`, Native VST3 `43523378803`, Native standalone
+`43523378962`; all were queued at this observation. No completion is inferred
+from their creation. Later hosted evidence must name the actual source and run.

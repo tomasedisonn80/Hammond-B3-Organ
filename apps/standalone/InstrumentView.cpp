@@ -10,9 +10,7 @@ namespace hammond::standalone {
 namespace {
 
 constexpr UiColor kMuted{158, 160, 146};
-constexpr UiColor kPanel{35, 38, 35};
 constexpr UiColor kDark{17, 20, 18};
-constexpr UiColor kLine{75, 77, 66};
 constexpr UiColor kGreen{151, 188, 145};
 constexpr UiColor kRed{230, 130, 100};
 

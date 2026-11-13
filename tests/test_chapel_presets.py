@@ -20,6 +20,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest import mock
 
@@ -115,10 +116,20 @@ def snapshot_tree(root: Path) -> dict:
     return result
 
 
+def reader_metadata(metadata, **changes):
+    """Preserve real descriptor fields while changing one observed fact."""
+    values = {name: getattr(metadata, name) for name in (
+        "st_mode", "st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")}
+    values["st_file_attributes"] = getattr(metadata, "st_file_attributes", 0)
+    values.update(changes)
+    return SimpleNamespace(**values)
+
+
 class ChapelCatalogAcceptance(unittest.TestCase):
     cli_invocations = 0
     api_rejections = 0
     io_faults = 0
+    reader_rejections = 0
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -137,7 +148,8 @@ class ChapelCatalogAcceptance(unittest.TestCase):
                 raise AssertionError(f"source input changed during acceptance: {path}")
         print(f"Chapel acceptance: {cls.cli_invocations} CLI invocations, "
               f"{cls.api_rejections} public-API admission rejects, "
-              f"{cls.io_faults} injected publication failures", flush=True)
+              f"{cls.io_faults} injected publication failures, "
+              f"{cls.reader_rejections} reader rejection probes", flush=True)
 
     def setUp(self) -> None:
         temporary = tempfile.TemporaryDirectory(prefix="hammond-chapel-acceptance-")
@@ -475,6 +487,145 @@ class ChapelCatalogAcceptance(unittest.TestCase):
             result = self.reject_cli()
             self.assertIn(b"at most 16384 bytes", result.stderr)
             path.write_bytes(self.original_inputs[REVIEW_B])
+
+    def test_windows_ctime_domains_and_posix_cross_api_guard(self) -> None:
+        # Patch only the producer's OS reference. Patching process-wide os.name
+        # would also change pathlib's platform selection on this test host.
+        stamps = {(p.stat().st_dev, p.stat().st_ino): p.stat().st_ctime_ns
+                  for p in self.inputs}
+        before = snapshot_tree(self.root)
+        for platform in ("nt", "posix"):
+            observed = []
+
+            def descriptor_stat(descriptor):
+                value = os.fstat(descriptor)
+                observed.append(descriptor)
+                return reader_metadata(value, st_ctime_ns=stamps[value.st_dev, value.st_ino] + 97)
+
+            isolated_os = SimpleNamespace(**vars(os))
+            isolated_os.name, isolated_os.fstat = platform, descriptor_stat
+            with self.subTest(platform=platform), mock.patch.object(self.subject, "os", isolated_os):
+                if platform == "nt":
+                    result = self.subject.compile_chapel_presets(*self.inputs).encode("utf-8")
+                    self.assertEqual(sha256(result), CATALOG_HASH)
+                    self.assertEqual(len(observed), 6, "all three descriptors must be checked twice")
+                else:
+                    with self.assertRaisesRegex(self.subject.ChapelCompileError, "changed before read"):
+                        self.subject.compile_chapel_presets(*self.inputs)
+                    self.assertEqual(len(observed), 1)
+                    self.__class__.api_rejections += 1
+                    self.__class__.reader_rejections += 1
+            self.assertEqual(snapshot_tree(self.root), before)
+
+    def test_cross_api_identity_size_and_mtime_remain_exact(self) -> None:
+        selected = self.authoring.lstat()
+        before = snapshot_tree(self.root)
+        for platform in ("nt", "posix"):
+            for field in ("st_dev", "st_ino", "st_size", "st_mtime_ns"):
+                observed = []
+
+                def descriptor_stat(descriptor):
+                    observed.append(descriptor)
+                    value = reader_metadata(os.fstat(descriptor), st_ctime_ns=selected.st_ctime_ns)
+                    return reader_metadata(value, **{field: getattr(value, field) + 1})
+
+                isolated_os = SimpleNamespace(**vars(os))
+                isolated_os.name, isolated_os.fstat = platform, descriptor_stat
+                with self.subTest(platform=platform, field=field), mock.patch.object(self.subject, "os", isolated_os):
+                    with self.assertRaisesRegex(self.subject.ChapelCompileError, "changed before read"):
+                        self.subject.compile_chapel_presets(*self.inputs)
+                self.assertEqual(len(observed), 1)
+                self.assertEqual(snapshot_tree(self.root), before)
+                self.__class__.api_rejections += 1
+                self.__class__.reader_rejections += 1
+
+    def test_each_descriptor_or_path_change_during_read_is_rejected(self) -> None:
+        selected = self.authoring.lstat()
+        original_lstat = Path.lstat
+        before = snapshot_tree(self.root)
+        fields = ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns",
+                  "st_mode", "st_file_attributes")
+        for platform in ("nt", "posix"):
+            for domain in ("descriptor", "path"):
+                for field in fields:
+                    calls = {"descriptor": 0, "path": 0}
+
+                    def change(value):
+                        replacement = (stat.S_IFDIR if field == "st_mode" else
+                                       value.st_file_attributes | 0x400 if field == "st_file_attributes" else
+                                       getattr(value, field) + 1)
+                        return reader_metadata(value, **{field: replacement})
+
+                    def descriptor_stat(descriptor):
+                        calls["descriptor"] += 1
+                        value = reader_metadata(os.fstat(descriptor),
+                                                st_ctime_ns=selected.st_ctime_ns + (97 if platform == "nt" else 0))
+                        return change(value) if domain == "descriptor" and calls["descriptor"] == 2 else value
+
+                    def path_stat(path, *args, **kwargs):
+                        value = original_lstat(path, *args, **kwargs)
+                        if path == self.authoring:
+                            calls["path"] += 1
+                            if domain == "path" and calls["path"] == 2:
+                                return change(reader_metadata(value))
+                        return value
+
+                    isolated_os = SimpleNamespace(**vars(os))
+                    isolated_os.name, isolated_os.fstat = platform, descriptor_stat
+                    with self.subTest(platform=platform, domain=domain, field=field), \
+                            mock.patch.object(self.subject, "os", isolated_os), \
+                            mock.patch.object(Path, "lstat", autospec=True, side_effect=path_stat):
+                        with self.assertRaisesRegex(self.subject.ChapelCompileError, "changed during read"):
+                            self.subject.compile_chapel_presets(*self.inputs)
+                    self.assertEqual(calls["descriptor"], 2, "must reach the descriptor's post-read observation")
+                    self.assertEqual(calls["path"], 2, "must reach the path's post-read observation")
+                    self.assertEqual(snapshot_tree(self.root), before)
+                    self.__class__.api_rejections += 1
+                    self.__class__.reader_rejections += 1
+
+    def test_fdopen_failure_closes_the_acquired_read_descriptor(self) -> None:
+        acquired = []
+        before = snapshot_tree(self.root)
+
+        def acquire(*args, **kwargs):
+            descriptor = os.open(*args, **kwargs)
+            acquired.append(descriptor)
+            return descriptor
+
+        def fail_wrap(*args, **kwargs):
+            raise OSError("controlled read fdopen failure")
+
+        isolated_os = SimpleNamespace(**vars(os))
+        isolated_os.open, isolated_os.fdopen = acquire, fail_wrap
+        try:
+            with mock.patch.object(self.subject, "os", isolated_os):
+                with self.assertRaisesRegex(self.subject.ChapelCompileError, "controlled read fdopen failure"):
+                    self.subject.compile_chapel_presets(*self.inputs)
+            self.assertEqual(len(acquired), 1)
+            with self.assertRaises(OSError):
+                os.fstat(acquired[0])
+            self.assertEqual(snapshot_tree(self.root), before)
+            self.__class__.api_rejections += 1
+            self.__class__.reader_rejections += 1
+        finally:
+            for descriptor in acquired:
+                try:
+                    os.close(descriptor)
+                except OSError:
+                    pass
+
+    def test_real_rewritten_inputs_compile_without_changing_the_semantics(self) -> None:
+        original = self.original_inputs[AUTHORING]
+        for payload in (original + b" \n", json.dumps(expected_authoring(), sort_keys=True).encode("utf-8"), original):
+            self.authoring.write_bytes(payload)
+            self.review_a.write_bytes(self.original_inputs[REVIEW_A])
+            self.review_b.write_bytes(self.original_inputs[REVIEW_B])
+            self.cli()
+            result = parse_json(self.output.read_bytes())
+            self.assertEqual({k: v for k, v in result.items() if k not in ("inputs", "format")}, expected_authoring())
+            self.assertEqual(result["inputs"]["authoring"], {
+                "sha256": sha256(payload), "canonical_sha256": CANONICAL_HASH, "bytes": len(payload)})
+        self.assertEqual(sha256(self.output.read_bytes()), CATALOG_HASH)
 
     def test_missing_directory_and_special_inputs_reject_without_blocking(self) -> None:
         for index, original in enumerate(self.inputs):

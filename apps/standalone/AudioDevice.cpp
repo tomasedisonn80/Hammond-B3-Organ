@@ -228,6 +228,11 @@ void AudioDevice::close() noexcept {
     callback_byte_bound_ = 0;
 }
 
+bool AudioDevice::is_removed_by(const SDL_AudioDeviceEvent& event) const noexcept {
+    return event.type == SDL_AUDIODEVICEREMOVED && event.iscapture == 0 &&
+           device_id_ != 0 && event.which == device_id_;
+}
+
 AudioDeviceInfo AudioDevice::info() const {
     auto result = info_;
     result.open = is_open();

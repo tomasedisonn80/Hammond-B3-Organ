@@ -36,10 +36,13 @@ The native app, allocation/concurrency acceptance, installed component, scripted
 musical workflows and SDK-free source-identified benchmark now exist. The
 maximum-plan replay repair, explicit chapel control-file audition and four
 source-identified native screenshots have passed their scoped acceptance.
-Publish the observed Windows/macOS portability repairs and inspect actual reruns.
-Finish the coherent native sanitizer gate; match SDL output-removal events to
-the actual open device and independently qualify its lifecycle. Then complete
-fresh setup, package, compatibility and final handoff audits across the remaining
+At published `5b8e241`, Linux/Windows standalone packaging passes while macOS
+revealed two unused drawing constants, now removed locally. Core CI additionally
+found chapel cross-API metadata and test-oracle/path-fixture failures. Complete
+the active reader/concurrency/timing repairs and inspect actual reruns. The fully
+instrumented native gate retained 92/94 with timing-observation failures; the
+current-output removal repair and independent lifecycle acceptance pass. Then
+complete fresh setup, package, compatibility and final handoff audits across the remaining
 real assignments. Do not overwrite concurrent scanner,
 rotary or capture/calibration work.
 

@@ -19,7 +19,7 @@ running work. Physical calibration remains unqualified.
 ## Active native standalone continuation
 
 The independent [standalone session](development/2026-11-13-next-phases/README.md)
-has accepted its first **41 distinct assignments**, including six complete
+has accepted its first **46 distinct assignments**, including seven complete
 waves. The [native app](STANDALONE_APP.md) now runs the unchanged nominal dry
 engine in a resizable instrument window with keyboard/pointer performance,
 separate edited/sounding banks, pedals, percussion, expression, Audio/Help
@@ -68,16 +68,43 @@ Four [actual native screenshots](reviews/STANDALONE_WINDOW_DEMO.md) retain exact
 source and runtime provenance. Earlier [checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md)
 retains its original source scopes.
 
-Published native checkpoint `219821dfaca6bfee8ba0905993ed8deec7a66396` has an
-observed Linux hosted standalone pass, including installation and relocation.
-Its [downloaded package](reviews/STANDALONE_HOSTED_LINUX_ARTIFACT.md) independently
-passed inventory/source checks and actual relocated ELF execution. That binary
-requires GLIBC 2.38 and GLIBCXX 3.4.32; it does not establish arbitrary Linux compatibility.
-Windows/macOS test builds failed on `getenv`/integer warning portability and
-unavailable `jthread`/`stop_token`; the [repaired test inputs](reviews/STANDALONE_PORTABILITY_REPAIR.md)
-pass their four local suites, with hosted rerun pending. Native VST3 passed at
-that revision; ordinary CI passed Linux, Windows and the sanitizer job, while
-its macOS build failed. These are named-revision results, not later-code passes.
+Current published checkpoint `5b8e2419d23fe27c51709d717812060eafd44dcc`, tree
+`880682248c467a51cce14d920189cf0009b68d22`, preserves concurrent calibration
+foundation `5026f67`. Its Native standalone Linux and Windows jobs passed build,
+tests, installation/relocation and packaging. macOS compilation exposed two
+unused drawing constants; their narrow removal passes strict local syntax with
+an explicit unused-constant warning, and actual macOS rerun remains pending.
+Core CI at the same revision passed its sanitizer job but failed Linux Release
+on an incidental scheduling assertion, Windows on chapel file admission and a
+calibration path mock, and macOS on that same path mock. The
+[platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md) retains exact
+failures and repair requirements. The reader and concurrency
+oracle repairs now pass their full independent suites and root's four-suite
+canonical focus in 17.28 seconds; the corrected concurrency test also passes a
+fresh coherent TSAN run. Assignment 47 owns the instrumented timing repair,
+while 48/49 audit hosted artifacts and fresh setup. No later platform pass is presumed.
+
+The separate [fully instrumented native audit](reviews/STANDALONE_NATIVE_SANITIZERS.md)
+built core, Session/app and all SDL C sources with ASan/UBSan. Its frozen earlier
+source passed **92/94 suites**; app capture and resize-observation assertions
+failed under instrumentation. No ASan/UBSan diagnostic was observed. A separate
+leak-runtime probe hit the environment's ptrace restriction, so the full run
+explicitly disabled leak detection. This is not a full acceptance or leak pass.
+
+[Output removal](STANDALONE_DEVICE_REMOVAL.md) is now restricted to the actual
+open SDL output handle. The old application-source probe reproduced unrelated
+removal closing active audio; the repaired probes pass. Independent maintained
+acceptance observes three lifecycle cycles and 93 queued events, and root's
+assembled device/allocation/removal gate passed **3/3** in 2.94 seconds. Handle
+reuse remains explicit; physical disconnect/reconnect is not established.
+
+Earlier published `219821d` retains its own Linux package audit and Native VST3
+results. Its [downloaded package](reviews/STANDALONE_HOSTED_LINUX_ARTIFACT.md)
+independently passed inventory/source checks and actual relocated ELF execution;
+that binary requires GLIBC 2.38 and GLIBCXX 3.4.32. It does not qualify arbitrary
+Linux compatibility or the later code. Earlier Windows/macOS test compilation
+failures and [their repairs](reviews/STANDALONE_PORTABILITY_REPAIR.md) remain
+historical evidence.
 
 Native physical devices, latency/underruns, hotplug, high-DPI pointer
 capture, screen readers and signed distribution remain unqualified. The two

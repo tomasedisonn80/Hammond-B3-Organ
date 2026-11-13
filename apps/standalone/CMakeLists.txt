@@ -90,6 +90,18 @@ if(HAMMOND_BUILD_STANDALONE)
         add_test(NAME test_standalone_audio_device COMMAND test_standalone_audio_device)
         set_tests_properties(test_standalone_audio_device PROPERTIES
             ENVIRONMENT "SDL_AUDIODRIVER=dummy" TIMEOUT 15)
+        add_executable(test_standalone_device_removal native_tests/test_standalone_device_removal.cpp)
+        target_link_libraries(test_standalone_device_removal PRIVATE hammond_standalone_audio)
+        target_include_directories(test_standalone_device_removal PRIVATE "${PROJECT_SOURCE_DIR}/tests")
+        target_compile_definitions(test_standalone_device_removal PRIVATE
+            SDL_MAIN_HANDLED
+            HAMMOND_TEST_PROFILE="${HAMMOND_COMPILED_PROFILE}"
+            HAMMOND_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
+        hammond_configure_target(test_standalone_device_removal)
+        add_dependencies(test_standalone_device_removal hammond_profile)
+        add_test(NAME test_standalone_device_removal COMMAND test_standalone_device_removal)
+        set_tests_properties(test_standalone_device_removal PROPERTIES
+            ENVIRONMENT "SDL_AUDIODRIVER=dummy" TIMEOUT 15 LABELS "standalone;native")
         # Only this test recompilation replaces SDL_OpenAudioDevice with a
         # recording trampoline. The production application links the ordinary
         # AudioDevice object; the probe still delegates to real SDL callbacks.
@@ -142,7 +154,7 @@ if(HAMMOND_BUILD_STANDALONE)
         set_tests_properties(test_standalone_input_replay PROPERTIES
             ENVIRONMENT "SDL_VIDEODRIVER=dummy" TIMEOUT 15)
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS
-            test_standalone_audio_device test_standalone_callback_allocation
+            test_standalone_audio_device test_standalone_device_removal test_standalone_callback_allocation
             test_standalone_input_replay hammond_standalone)
         add_custom_target(hammond_standalone_test_inputs
             DEPENDS hammond_profile ${HAMMOND_STANDALONE_TEST_TARGETS})

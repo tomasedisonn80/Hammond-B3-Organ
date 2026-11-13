@@ -34,6 +34,11 @@ production-release gates remain separate.
 The [new sixty-assignment session](docs/development/2026-11-13-next-phases/README.md)
 retains distinct records from earlier work. Ordinary builds remain SDK-free.
 
+![Actual standalone instrument window with the upper C4 held](examples/demos/standalone-window-v1/reference.png)
+
+This retained native software-renderer view has matching
+[source and runtime provenance](examples/demos/standalone-window-v1/provenance.json).
+
 The [scanner continuation](docs/SCANNER_HANDOFF.md) now includes a strict circuit
 graph/compiler, independent primary-source review and two independent AC
 calculations. Prepared runtime, rotor and integration work follow the

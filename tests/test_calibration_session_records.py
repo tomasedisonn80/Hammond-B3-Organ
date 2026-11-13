@@ -427,11 +427,16 @@ class CalibrationSessionRecordsTests(unittest.TestCase):
         original_lstat = Path.lstat
         # Controlled Windows metadata on real inside-repository files/directories
         # exercises the junction/alias guard on runners without Windows junctions.
-        for marked in (self.root / "docs/development", self.root / "owned",
-                       self.root / "owned/01.txt"):
+        # The checker resolves its root first. On Windows this also expands the
+        # runner's short TEMP pathname (RUNNER~1), so mark that same real path.
+        resolved_root = self.root.resolve(strict=True)
+        for marked in (resolved_root / "docs/development", resolved_root / "owned",
+                       resolved_root / "owned/01.txt"):
+            intercepted = []
             def mark_reparse(path, *args, **kwargs):
                 metadata = original_lstat(path, *args, **kwargs)
                 if path == marked:
+                    intercepted.append(path)
                     return SimpleNamespace(st_mode=metadata.st_mode, st_size=metadata.st_size,
                                            st_file_attributes=0x400)
                 return metadata
@@ -440,6 +445,7 @@ class CalibrationSessionRecordsTests(unittest.TestCase):
                 CHECKER.Path, "lstat", autospec=True, side_effect=mark_reparse
             ):
                 self.assert_failure(CHECKER.check(self.root), "Windows reparse points are not allowed")
+                self.assertTrue(intercepted, "the marked metadata fixture must actually be observed")
 
 
 if __name__ == "__main__":
