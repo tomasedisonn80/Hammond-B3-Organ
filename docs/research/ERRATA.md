@@ -86,6 +86,14 @@ See [review 06](../development/agent-notes/06-atlas-pages-421-500.md).
 
 ## Other implementation-critical source limits
 
+The rotary source review also found a navigation error on p. 154: its figure
+caption points to chapter 044 for rotary dynamics, while that chapter describes
+the crossover. The relevant motion chapters are 047 (pp. 289–294) and 052
+(pp. 319–324). See the [fresh page review](../development/2026-11-13-rotary/02-atlas-085-167.md).
+On p. 194, prose referring to a graph below accompanies a visible tube photograph;
+the page cannot supply a complete AO-28 connection graph. These observations
+do not modify the preserved source PDF.
+
 | Atlas locator | Hazard and required interpretation |
 | --- | --- |
 | pp. 98-102, 464, 491 | High manual foldback uses repeated octave subtraction. A generated 549-entry map and six printed boundary rows do not recover the absent independent factory transcription. |

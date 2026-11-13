@@ -1,5 +1,16 @@
 # Development status
 
+## Parallel rotary foundation
+
+The distinct [rotary session](development/2026-11-13-rotary/README.md) starts
+from `96a37a9` with its own sixty-agent, ten-wave scope. All six wave-1 readers
+completed every PDF text page and selected actual visual checks. Wave 2 freezes
+the numerical contract, profile and independent references. See
+[ROTARY_SCOPE.md](ROTARY_SCOPE.md) and the actual assignment manifest.
+The clean starting source passed [79/79 Release suites](reviews/ROTARY_BASELINE.md).
+No rotary runtime or physical acceptance is claimed at this checkpoint.
+Scanner and native standalone development retain their separate ownership.
+
 ## Active scanner continuation
 
 The new [scanner session](development/2026-11-13-scanner/README.md) has completed its first 20 distinct assignments; the combined stage and its independent tests are in progress in wave 4. Six fresh readers covered every atlas page; follow its [handoff](SCANNER_HANDOFF.md), actual manifest and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md). Frequency/process and rotor qualification are complete; full matched-step stage qualification is in progress.

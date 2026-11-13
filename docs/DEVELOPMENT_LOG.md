@@ -1,5 +1,21 @@
 # Development log
 
+## 2026-11-13 — Independent rotary foundation begins
+
+- Cloned main at `96a37a977ef22b7adf38e1a841f57ffcf32519a7` into a separate
+  checkout and inspected the active scanner and standalone ownership. Their
+  uncommitted work remains in their own checkouts.
+- Created a distinct sixty-assignment, ten-wave rotary ledger and split all
+  500 unchanged atlas pages among six fresh readers. The new nominal M7 scope
+  preserves separate horn/drum radiation inputs and all unresolved M5/M6,
+  measured-fidelity and product-integration gates.
+- Bare `cmake` initially failed because it was absent from PATH. Located the
+  existing build tools and qualified a clean source archive with GCC 14.2.0,
+  CMake 4.4.4, Ninja and Python 3.12.14: 79/79 default Release CTest suites
+  passed in 50.43 seconds. See [baseline evidence](reviews/ROTARY_BASELINE.md).
+- Updated permanent future-agent scope and handoff rules. No rotary runtime,
+  physical acceptance or new publication is claimed by this initial record.
+
 Every future agent must append actual changes and executable evidence here or
 provide an assigned note for the integrating agent, then update the status and
 next-step documents. See the mandatory [agent instructions](../AGENTS.md).

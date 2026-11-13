@@ -1,5 +1,14 @@
 # Next steps
 
+## Parallel rotary work
+
+The [rotary session](development/2026-11-13-rotary/README.md) develops the
+independent M7 numerical foundation under [ROTARY_SCOPE.md](ROTARY_SCOPE.md).
+Its first gate is full-source review followed by declared mechanics, geometry,
+retarded-time, interpolation, history and runtime acceptance contracts. Preserve
+the scanner and standalone tracks, and keep M5/M6 input/physical dependencies
+visible. Consult its actual manifest before taking rotary-specific ownership.
+
 ## Resume here
 
 Read [STATUS.md](STATUS.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [PLAN.md](PLAN.md), [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) and [AGENTS.md](../AGENTS.md), then inspect the actual checkout and remote head. The [current manifest](development/2026-11-13-scanner/assignments.json) belongs to the new sixty-assignment scanner session. The earlier original, console and pedal sessions are completed history and are not counted again.

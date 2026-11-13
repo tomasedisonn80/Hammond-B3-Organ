@@ -6,6 +6,15 @@ They implement the owner's standing handoff and publication requests of
 
 ## Current session and standing continuation rule
 
+A separate [rotary motion and propagation session](docs/development/2026-11-13-rotary/README.md)
+starts at `96a37a9`. Its own sixty assignments advance a nominal M7 research
+module under [ROTARY_SCOPE.md](docs/ROTARY_SCOPE.md). It owns rotary-specific
+modules, tools, tests and records; it does not own the scanner or standalone
+tracks. Read all active scopes before choosing work. Keep separate horn/drum
+radiation-boundary inputs, one physical trajectory per rotor, explicit effect
+ownership and unresolved M5/M6 dependencies. Its synthetic fixtures cannot be
+promoted to factory dimensions, physical captures or an end-to-end fidelity pass.
+
 An independent [native standalone session](docs/development/2026-11-13-next-phases/README.md)
 also begins at `ba0d9c9`, with its own sixty actual assignments and ten waves.
 Its [scope](docs/STANDALONE_SCOPE.md) advances the M9 adapter against the existing

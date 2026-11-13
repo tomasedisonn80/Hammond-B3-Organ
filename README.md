@@ -26,6 +26,13 @@ graph/compiler, independent primary-source review and two independent AC
 calculations. Prepared runtime, rotor and integration work follow the
 [frozen numerical contract](docs/SCANNER_NUMERICAL_CONTRACT.md).
 
+An independent [rotary motion and propagation track](docs/ROTARY_SCOPE.md)
+develops nominal horn/drum trajectories and emission-time acoustic paths with
+separate inputs and numerical references. Its
+[new sixty-assignment session](docs/development/2026-11-13-rotary/README.md)
+preserves the concurrently active scanner and native standalone work. This
+research module does not yet establish a measured Leslie or change dry output.
+
 The selected source, contact, percussion and pedal models are **nominal and
 unmeasured**. Ideal contacts, percussion off and muted pedals preserve the
 original renderer defaults. Full M3, scanner/AO-28 electronics, Leslie acoustics,
