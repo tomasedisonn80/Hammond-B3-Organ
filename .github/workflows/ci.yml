@@ -1,0 +1,165 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  release:
+    name: Release (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: Linux GCC
+            os: ubuntu-24.04
+            compiler: g++
+          - platform: macOS AppleClang
+            os: macos-15
+            compiler: clang++
+          - platform: Windows MSVC
+            os: windows-2022
+            compiler: cl
+    steps:
+      - name: Check out the tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record the revision and tools
+        run: |
+          mkdir -p ci-logs
+          git rev-parse HEAD | tee ci-logs/source-revision.txt
+          cmake --version 2>&1 | tee ci-logs/toolchain.log
+          ctest --version 2>&1 | tee -a ci-logs/toolchain.log
+          python --version 2>&1 | tee -a ci-logs/toolchain.log
+          python -c "import platform; print(platform.platform()); print(platform.machine())" | tee -a ci-logs/toolchain.log
+
+      - name: Configure Release on Linux or macOS
+        if: runner.os != 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+          CXX_COMPILER: ${{ matrix.compiler }}
+        run: |
+          cmake --preset release -G "Unix Makefiles" \
+            -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log
+
+      - name: Configure Release on Windows
+        if: runner.os == 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          cmake --preset release -G "Visual Studio 17 2022" -A x64 \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log
+
+      - name: Build Release
+        run: |
+          cmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log
+
+      - name: Run every registered Release test
+        run: |
+          ctest --preset release --parallel 2 --timeout 300 --no-tests=error \
+            --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log
+
+      - name: Retain configure, build, and test diagnostics
+        if: ${{ always() && !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ci-${{ matrix.os }}-release-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            ci-logs/
+            build-release/CMakeCache.txt
+            build-release/CMakeFiles/CMakeConfigureLog.yaml
+            build-release/CMakeFiles/CMakeOutput.log
+            build-release/CMakeFiles/CMakeError.log
+            build-release/Testing/Temporary/LastTest.log
+            build-release/Testing/Temporary/LastTestsFailed.log
+
+  sanitizers:
+    name: Linux GCC ASan + UBSan + leaks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+      UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+      LSAN_OPTIONS: exitcode=23
+    steps:
+      - name: Check out the tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record the revision and tools
+        run: |
+          mkdir -p ci-logs
+          git rev-parse HEAD | tee ci-logs/source-revision.txt
+          cmake --version 2>&1 | tee ci-logs/toolchain.log
+          ctest --version 2>&1 | tee -a ci-logs/toolchain.log
+          python --version 2>&1 | tee -a ci-logs/toolchain.log
+          g++ --version 2>&1 | tee -a ci-logs/toolchain.log
+
+      - name: Configure Debug with ASan and UBSan
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          cmake --preset sanitizers -G "Unix Makefiles" \
+            -DCMAKE_CXX_COMPILER=g++ \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log
+
+      - name: Build with sanitizers
+        run: |
+          cmake --build --preset sanitizers --parallel 2 --verbose 2>&1 | tee ci-logs/build.log
+
+      - name: Run every registered test with leak checking
+        run: |
+          ctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error \
+            --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log
+
+      - name: Retain configure, build, and test diagnostics
+        if: ${{ always() && !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: ci-linux-gcc-sanitizers-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            ci-logs/
+            build-sanitizers/CMakeCache.txt
+            build-sanitizers/CMakeFiles/CMakeConfigureLog.yaml
+            build-sanitizers/CMakeFiles/CMakeOutput.log
+            build-sanitizers/CMakeFiles/CMakeError.log
+            build-sanitizers/Testing/Temporary/LastTest.log
+            build-sanitizers/Testing/Temporary/LastTestsFailed.log

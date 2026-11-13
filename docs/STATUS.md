@@ -27,6 +27,20 @@ standalone application or native UI is implemented at this checkpoint. No measur
 instrument-fidelity claim is made. Full M0 specimen lock and factory M2 evidence
 remain open despite the useful nominal engineering implementation.
 
+## Reproducible software evidence
+
+Five versioned musical/event fixtures cover both manuals, nominal A4, low/high
+coherent foldback, and held-note bank/Cancel transitions. All five passed their
+assigned actual-render checks with no reported clipping. A reproducible wrapper
+retains input/compiled/WAV hashes, raw logs, actual float metrics and separate PCM
+statistics. An independent PCM analyzer provides bounded window measurements and
+qualified crossing-rate estimates. None authenticates a physical instrument.
+
+The CI workflow defines Linux/macOS/Windows Release jobs and a Linux sanitizer
+job with leak checking enabled. Hosted execution is pending at this checkpoint;
+local results do not qualify unrun platforms. Callback allocation checks and an
+independent evidence-bundle verifier are the remaining wave-05 work.
+
 ## Evidence boundary
 
 - All 500 source pages were read across six complete page-range assignments;

@@ -99,3 +99,30 @@ documented BankDrawbar event; the invalid-enum assertion itself remains.
 
 No physical contact, percussion, multi-preset latch, pedal-audio or host gate was
 closed. Current tasks move to render provenance, fixtures and independent evidence.
+
+### Primary-source acquisition during wave 05
+
+The coordinator retrieved the atlas-linked 220-page factory service scan from
+Audiofanzine for documentary review. Its SHA-256 is
+`ec2ac51f363dcd1ee039f7711acda32fd014e15ad80dcb77ae199545f9130cc9`
+and its byte size is 7,077,593. PDF pages 155–157 contain Table III, including
+the manual and pedal source assignments. The file is retained outside the
+repository for review; no additional manual is redistributed. This acquisition
+opens independent transcription work in wave 07 and closes no physical gate.
+The separate Synthmania compilation was accessible to web extraction, but its
+direct download returned HTTP 406; it was not used for numerical verification.
+
+### Wave 05 — initial render evidence and CI infrastructure
+
+Agents 25–27 added a bounded reproducible renderer wrapper, five explicit event
+fixtures and an independent streaming PCM16 analyzer. Their targeted suites passed
+14 wrapper tests, the five-render catalog checks and 15 analyzer tests with an
+actual C++ renderer. The A4 steady-window crossing estimate was
+439.9999816417002 Hz at a 48 kHz file rate; this is a serialized nominal fixture,
+not a measurement of a physical generator. No fixture clipped.
+
+Agent 29 added pinned official GitHub Actions, three Release platforms and a
+Linux ASan/UBSan/leak job, with read-only repository permissions and retained
+diagnostics. Initial hosted status is pending. Agents 28 and 30 continue the
+callback boundary audit and independent bundle verification. The coordinator
+will test a clean staged snapshot before publishing this evidence checkpoint.

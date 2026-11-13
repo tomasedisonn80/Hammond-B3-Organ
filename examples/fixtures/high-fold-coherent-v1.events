@@ -1,0 +1,11 @@
+# Synthetic nominal fixture: high-fold-coherent-v1.
+# frames=72000 sample_rate=48000 seed=2605 drawbars=000800000
+# At upper MIDI 96, 4-foot, 2-foot and 1-foot all route to tone ID 85.
+# The 1-foot route folds down twice in the nominal map; it is not clamped.
+# Add branches to hear coherent 1x, 2x and 3x levels at one source frequency.
+# Dry ideal gates/control steps can click; no hardware/performance claim.
+0 expression upper 0 0.5
+4801 note_on upper 96 100
+24007 drawbar upper 5 8
+48013 drawbar upper 8 8
+60017 note_off upper 96 0

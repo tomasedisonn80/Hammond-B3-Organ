@@ -1,0 +1,49 @@
+# Synthetic nominal fixture: two-manual-changes-v1.
+# frames=192000 sample_rate=48000 seed=2601 drawbars=006400000
+# Dry shared sine sources; abrupt ideal key/control gates can click.
+# No recorded hardware, calibrated sound, or performance benchmark is implied.
+# Frame zero prepares the lower manual; both manuals start on retained bank B.
+0 expression upper 0 0.75
+0 drawbar lower 0 4
+0 drawbar lower 2 5
+
+# C major: lower C3/G3, upper C4/E4/G4, after 50 ms of silence.
+2400 note_on lower 48 100
+2400 note_on lower 55 100
+2400 note_on upper 60 100
+2400 note_on upper 64 100
+2400 note_on upper 67 100
+
+# F major at 0.9 s; tied releases precede the new chord.
+43200 all_notes_off upper 0 0
+43200 all_notes_off lower 0 0
+43200 note_on lower 53 100
+43200 note_on lower 60 100
+43200 note_on upper 65 100
+43200 note_on upper 69 100
+43200 note_on upper 72 100
+
+# G major at 1.75 s; raise 8-foot/4-foot and add a quiet 2-foot branch.
+84000 all_notes_off upper 0 0
+84000 all_notes_off lower 0 0
+84000 drawbar upper 2 7
+84000 drawbar upper 3 5
+84000 drawbar upper 5 3
+84000 note_on lower 55 100
+84000 note_on lower 62 100
+84000 note_on upper 67 100
+84000 note_on upper 71 100
+84000 note_on upper 74 100
+
+# Return to C major at 2.6 s with the brighter upper registration retained.
+124800 all_notes_off upper 0 0
+124800 all_notes_off lower 0 0
+124800 note_on lower 48 100
+124800 note_on lower 55 100
+124800 note_on upper 64 100
+124800 note_on upper 67 100
+124800 note_on upper 72 100
+
+# Ideal release at 3.5 s leaves an exactly silent final half-second.
+168000 all_notes_off upper 0 0
+168000 all_notes_off lower 0 0

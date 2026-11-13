@@ -46,6 +46,19 @@ for event files, strict limits and the hard-link filesystem requirement.
 See [build instructions](docs/BUILD.md) for explicit commands, Release and
 sanitizer builds, and platform qualification limits.
 
+## Repeatable audio examples
+
+[Five short event fixtures](examples/README.md) exercise both manuals, A4 pitch,
+coherent foldback, and bank/Cancel behavior. The [evidence wrapper](docs/RENDER_EVIDENCE.md)
+retains exact inputs, renderer hashes, logs and WAV statistics. The independent
+[PCM analyzer](docs/AUDIO_MEASUREMENTS.md) measures serialized samples and can
+check the steady portion of a declared single-tone fixture. These outputs are
+synthetic engineering evidence.
+
+[CI](docs/CI.md) defines Linux, macOS and Windows Release checks plus Linux
+sanitisers. A configured workflow is not a successful hosted run; observed
+qualification is recorded in the status and development log.
+
 ## Project navigation
 
 | Document | Purpose |

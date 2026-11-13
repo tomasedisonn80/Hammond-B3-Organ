@@ -1,0 +1,561 @@
+{
+  "schema_version": 1,
+  "catalog_id": "nominal-engine-fixtures-v1",
+  "model": "ideal-shared-sine-v1",
+  "evidence_status": "synthetic-unmeasured",
+  "profile": {
+    "id": "nominal-unmeasured-v1",
+    "authoring_path": "data/profiles/nominal-unmeasured-v1.json",
+    "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+    "compiled_sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+  },
+  "conventions": {
+    "event_paths": "Relative to this catalog; no absolute paths or parent traversal.",
+    "profile_path": "Relative to the repository root.",
+    "spans": "Half-open absolute frame intervals [start, end).",
+    "registration": "Nine physical drawbar positions supplied with --drawbars to initial upper bank B. Other banks start at 000000000; both manuals initially select B and expression starts at 1. Events supply subsequent controls.",
+    "drawbar_order": [
+      "16-foot",
+      "5-1/3-foot",
+      "8-foot",
+      "4-foot",
+      "2-2/3-foot",
+      "2-foot",
+      "1-3/5-foot",
+      "1-1/3-foot",
+      "1-foot"
+    ],
+    "amplitude": "Normalized digital peak; 1 is PCM full scale. This is not a voltage measurement.",
+    "route_anchors": "Named MIDI/manual/drawbar routing facts checked against the bound nominal profile.",
+    "tone_checks": "The entire indicated span is one sine at the stated frequency and peak; phase is fitted from audio without copying the source PRNG.",
+    "continuous_tone_ids": "Fitted phase at absolute frame zero must agree across every listed span for each ID, including silent gaps.",
+    "waveform": "Two identical dry PCM16 channels; no stereo rotary field.",
+    "spectrum_checks": "Mixed-tone spans: each named frequency component must have its expected peak within the declared relative tolerance; finite-window spectral leakage is allowed. These are component-presence checks, not a fitted hardware spectrum."
+  },
+  "catalog_bounds": {
+    "fixture_count": 5,
+    "sample_rate": 48000,
+    "max_frames": 192000,
+    "max_score_bytes": 16384,
+    "max_events_per_fixture": 128,
+    "max_events_at_frame": 32,
+    "max_line_bytes": 256,
+    "max_float_peak": 0.112
+  },
+  "analysis_tolerances": {
+    "sine_residual_lsb": 1.0,
+    "sine_amplitude_error_lsb": 2.0,
+    "normalized_phase_distance": 0.003,
+    "mixed_tone_relative_error": 0.2
+  },
+  "limits": [
+    "Original synthetic event sequences using the nominal 12-TET shared-sine profile; no imported samples or recorded instrument audio.",
+    "Ideal simultaneous key gates and stepped routing/registration/expression can produce clicks and broadband edges; this catalog does not qualify contact spectra or alias suppression.",
+    "No measured pickup waveform, geared tuning, transformer loading, percussion, pedal audio, scanner, AO-28, Leslie, room or calibrated physical output is represented.",
+    "Audio checks establish these short engineering gestures only; they do not establish real-time performance, host compatibility or instrument fidelity.",
+    "No cross-compiler/libm bitwise WAV identity is promised. Catalog source hashes bind score bytes, not universal audio hashes."
+  ],
+  "fixtures": [
+    {
+      "id": "two-manual-changes-v1",
+      "purpose": "Four short C-F-G-C chords on both manuals, with a brighter upper registration midway.",
+      "events": {
+        "path": "two-manual-changes-v1.events",
+        "sha256": "d86b7fb3e3a62865b218400828aaef7ee176c39da7f08ef29aed5ae5b0627ae8"
+      },
+      "sample_rate": 48000,
+      "frames": 192000,
+      "seed": 2601,
+      "block_size": 127,
+      "registration": "006400000",
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.112,
+        "silence_spans": [
+          [
+            0,
+            2400
+          ],
+          [
+            168000,
+            192000
+          ]
+        ],
+        "audible_spans": [
+          [
+            2400,
+            43200
+          ],
+          [
+            43200,
+            84000
+          ],
+          [
+            84000,
+            124800
+          ],
+          [
+            124800,
+            168000
+          ]
+        ],
+        "route_anchors": [
+          {
+            "manual": "lower",
+            "midi_note": 48,
+            "drawbar_index": 0,
+            "tone_id": 13
+          },
+          {
+            "manual": "lower",
+            "midi_note": 48,
+            "drawbar_index": 2,
+            "tone_id": 25
+          },
+          {
+            "manual": "upper",
+            "midi_note": 60,
+            "drawbar_index": 2,
+            "tone_id": 37
+          },
+          {
+            "manual": "upper",
+            "midi_note": 60,
+            "drawbar_index": 3,
+            "tone_id": 49
+          },
+          {
+            "manual": "upper",
+            "midi_note": 67,
+            "drawbar_index": 5,
+            "tone_id": 68
+          }
+        ],
+        "tone_checks": [],
+        "continuous_tone_ids": [],
+        "spectrum_checks": [
+          {
+            "span": [
+              2400,
+              43200
+            ],
+            "tone_peaks": {
+              "13": 0.0056517444708965555,
+              "20": 0.0056517444708965555,
+              "25": 0.007983301257755447,
+              "32": 0.007983301257755447,
+              "37": 0.011276712756613625,
+              "41": 0.011276712756613625,
+              "44": 0.011276712756613625,
+              "49": 0.0056517444708965555,
+              "53": 0.0056517444708965555,
+              "56": 0.0056517444708965555
+            }
+          },
+          {
+            "span": [
+              43200,
+              84000
+            ],
+            "tone_peaks": {
+              "18": 0.0056517444708965555,
+              "25": 0.0056517444708965555,
+              "30": 0.007983301257755447,
+              "37": 0.007983301257755447,
+              "42": 0.011276712756613625,
+              "46": 0.011276712756613625,
+              "49": 0.011276712756613625,
+              "54": 0.0056517444708965555,
+              "58": 0.0056517444708965555,
+              "61": 0.0056517444708965555
+            }
+          },
+          {
+            "span": [
+              84000,
+              124800
+            ],
+            "tone_peaks": {
+              "20": 0.0056517444708965555,
+              "27": 0.0056517444708965555,
+              "32": 0.007983301257755447,
+              "39": 0.007983301257755447,
+              "44": 0.0159287801486431,
+              "48": 0.0159287801486431,
+              "51": 0.0159287801486431,
+              "56": 0.007983301257755447,
+              "60": 0.007983301257755447,
+              "63": 0.007983301257755447,
+              "68": 0.004001128672587576,
+              "72": 0.004001128672587576,
+              "75": 0.004001128672587576
+            }
+          },
+          {
+            "span": [
+              124800,
+              168000
+            ],
+            "tone_peaks": {
+              "13": 0.0056517444708965555,
+              "20": 0.0056517444708965555,
+              "25": 0.007983301257755447,
+              "32": 0.007983301257755447,
+              "41": 0.0159287801486431,
+              "44": 0.0159287801486431,
+              "49": 0.0159287801486431,
+              "53": 0.007983301257755447,
+              "56": 0.007983301257755447,
+              "61": 0.007983301257755447,
+              "65": 0.004001128672587576,
+              "68": 0.004001128672587576,
+              "73": 0.004001128672587576
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "a4-fundamental-v1",
+      "purpose": "Isolate the nominal A4 8-foot fundamental (tone 46) for exactly one second.",
+      "events": {
+        "path": "a4-fundamental-v1.events",
+        "sha256": "c3295b7a060b7af68c6e3d43198a54cbe33ee26b6bc8e3c2cd1a76b80cfeb59f"
+      },
+      "sample_rate": 48000,
+      "frames": 72000,
+      "seed": 2602,
+      "block_size": 127,
+      "registration": "008000000",
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.0151,
+        "silence_spans": [
+          [
+            0,
+            4800
+          ],
+          [
+            52800,
+            72000
+          ]
+        ],
+        "audible_spans": [
+          [
+            4800,
+            52800
+          ]
+        ],
+        "route_anchors": [
+          {
+            "manual": "upper",
+            "midi_note": 69,
+            "drawbar_index": 2,
+            "tone_id": 46
+          }
+        ],
+        "tone_checks": [
+          {
+            "span": [
+              4800,
+              52800
+            ],
+            "tone_id": 46,
+            "frequency_hz": 440.0,
+            "peak_amplitude": 0.015
+          }
+        ],
+        "continuous_tone_ids": [],
+        "spectrum_checks": []
+      }
+    },
+    {
+      "id": "low-fold-coherent-v1",
+      "purpose": "Add one, two and three shared tone-13 branches across low-fold contacts and both manuals, then return to one.",
+      "events": {
+        "path": "low-fold-coherent-v1.events",
+        "sha256": "3ae330fbdf6f789dcd0533c521c63dce855e743000ecc283fae565009726ddea"
+      },
+      "sample_rate": 48000,
+      "frames": 96000,
+      "seed": 2603,
+      "block_size": 127,
+      "registration": "800000000",
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.0451,
+        "silence_spans": [
+          [
+            0,
+            4807
+          ],
+          [
+            84037,
+            96000
+          ]
+        ],
+        "audible_spans": [
+          [
+            4807,
+            84037
+          ]
+        ],
+        "route_anchors": [
+          {
+            "manual": "upper",
+            "midi_note": 36,
+            "drawbar_index": 0,
+            "tone_id": 13
+          },
+          {
+            "manual": "upper",
+            "midi_note": 36,
+            "drawbar_index": 2,
+            "tone_id": 13
+          },
+          {
+            "manual": "lower",
+            "midi_note": 48,
+            "drawbar_index": 0,
+            "tone_id": 13
+          }
+        ],
+        "tone_checks": [
+          {
+            "span": [
+              4807,
+              24013
+            ],
+            "tone_id": 13,
+            "frequency_hz": 65.40639132514966,
+            "peak_amplitude": 0.015
+          },
+          {
+            "span": [
+              24013,
+              48019
+            ],
+            "tone_id": 13,
+            "frequency_hz": 65.40639132514966,
+            "peak_amplitude": 0.03
+          },
+          {
+            "span": [
+              48019,
+              72031
+            ],
+            "tone_id": 13,
+            "frequency_hz": 65.40639132514966,
+            "peak_amplitude": 0.045
+          },
+          {
+            "span": [
+              72031,
+              84037
+            ],
+            "tone_id": 13,
+            "frequency_hz": 65.40639132514966,
+            "peak_amplitude": 0.015
+          }
+        ],
+        "continuous_tone_ids": [
+          13
+        ],
+        "spectrum_checks": []
+      }
+    },
+    {
+      "id": "held-bank-cancel-v1",
+      "purpose": "Hold one key through B/A selection, an inactive-bank edit, Cancel, a cancelled selected-bank edit, reselect and panic.",
+      "events": {
+        "path": "held-bank-cancel-v1.events",
+        "sha256": "fbd3060bdcae1bb7e4701de92799dca8ae0e4f92c5efedc84b450794c7e5ef5c"
+      },
+      "sample_rate": 48000,
+      "frames": 144000,
+      "seed": 2604,
+      "block_size": 127,
+      "registration": "008000000",
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.0151,
+        "silence_spans": [
+          [
+            0,
+            4807
+          ],
+          [
+            48023,
+            72031
+          ],
+          [
+            120047,
+            144000
+          ]
+        ],
+        "audible_spans": [
+          [
+            4807,
+            48023
+          ],
+          [
+            72031,
+            120047
+          ]
+        ],
+        "route_anchors": [
+          {
+            "manual": "upper",
+            "midi_note": 69,
+            "drawbar_index": 2,
+            "tone_id": 46
+          },
+          {
+            "manual": "upper",
+            "midi_note": 69,
+            "drawbar_index": 3,
+            "tone_id": 58
+          }
+        ],
+        "tone_checks": [
+          {
+            "span": [
+              4807,
+              24013
+            ],
+            "tone_id": 46,
+            "frequency_hz": 440.0,
+            "peak_amplitude": 0.015
+          },
+          {
+            "span": [
+              24013,
+              36019
+            ],
+            "tone_id": 58,
+            "frequency_hz": 880.0,
+            "peak_amplitude": 0.015
+          },
+          {
+            "span": [
+              36019,
+              48023
+            ],
+            "tone_id": 58,
+            "frequency_hz": 880.0,
+            "peak_amplitude": 0.015
+          },
+          {
+            "span": [
+              72031,
+              96043
+            ],
+            "tone_id": 46,
+            "frequency_hz": 440.0,
+            "peak_amplitude": 0.007517808504409083
+          },
+          {
+            "span": [
+              96043,
+              120047
+            ],
+            "tone_id": 58,
+            "frequency_hz": 880.0,
+            "peak_amplitude": 0.010619186765762068
+          }
+        ],
+        "continuous_tone_ids": [
+          46,
+          58
+        ],
+        "spectrum_checks": []
+      }
+    },
+    {
+      "id": "high-fold-coherent-v1",
+      "purpose": "Add colliding 4-foot, 2-foot and twice-folded 1-foot contacts at the top manual key; all use tone 85.",
+      "events": {
+        "path": "high-fold-coherent-v1.events",
+        "sha256": "0431c06df58e4b66decf385f6fdbb4e89b146dcd80efaa0dc23d2d3155b120c0"
+      },
+      "sample_rate": 48000,
+      "frames": 72000,
+      "seed": 2605,
+      "block_size": 127,
+      "registration": "000800000",
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.0451,
+        "silence_spans": [
+          [
+            0,
+            4801
+          ],
+          [
+            60017,
+            72000
+          ]
+        ],
+        "audible_spans": [
+          [
+            4801,
+            60017
+          ]
+        ],
+        "route_anchors": [
+          {
+            "manual": "upper",
+            "midi_note": 96,
+            "drawbar_index": 3,
+            "tone_id": 85
+          },
+          {
+            "manual": "upper",
+            "midi_note": 96,
+            "drawbar_index": 5,
+            "tone_id": 85
+          },
+          {
+            "manual": "upper",
+            "midi_note": 96,
+            "drawbar_index": 8,
+            "tone_id": 85
+          }
+        ],
+        "tone_checks": [
+          {
+            "span": [
+              4801,
+              24007
+            ],
+            "tone_id": 85,
+            "frequency_hz": 4186.009044809578,
+            "peak_amplitude": 0.015
+          },
+          {
+            "span": [
+              24007,
+              48013
+            ],
+            "tone_id": 85,
+            "frequency_hz": 4186.009044809578,
+            "peak_amplitude": 0.03
+          },
+          {
+            "span": [
+              48013,
+              60017
+            ],
+            "tone_id": 85,
+            "frequency_hz": 4186.009044809578,
+            "peak_amplitude": 0.045
+          }
+        ],
+        "continuous_tone_ids": [
+          85
+        ],
+        "spectrum_checks": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+# Synthetic nominal fixture: a4-fundamental-v1.
+# frames=72000 sample_rate=48000 seed=2602 drawbars=008000000
+# Isolate upper MIDI 69 through the 8-foot branch: tone ID 46, nominal 440 Hz.
+# Half expression gives a normalized sine peak of 0.015 in this profile.
+# Dry ideal key gates can click; this is not recorded or calibrated hardware.
+0 expression upper 0 0.5
+4800 note_on upper 69 100
+# Exactly one second of the free-running source, then silence.
+52800 note_off upper 69 0

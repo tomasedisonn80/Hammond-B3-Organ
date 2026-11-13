@@ -1,0 +1,15 @@
+# Synthetic nominal fixture: low-fold-coherent-v1.
+# frames=96000 sample_rate=48000 seed=2603 drawbars=800000000
+# Upper MIDI 36 has colliding 16-foot and 8-foot contacts at tone ID 13.
+# Lower MIDI 48's 16-foot contact also routes to that same source.
+# The audible stages have one, two, three, then one coherent branches.
+# Dry ideal gates/control steps can click; no hardware/performance claim.
+0 expression upper 0 0.5
+0 drawbar lower 0 8
+4807 note_on upper 36 100
+24013 drawbar upper 2 8
+48019 note_on lower 48 100
+# Remove two branches while the remaining upper 8-foot contact stays held.
+72031 drawbar upper 0 0
+72031 note_off lower 48 0
+84037 note_off upper 36 0
