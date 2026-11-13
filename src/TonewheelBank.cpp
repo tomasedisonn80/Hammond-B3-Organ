@@ -36,9 +36,11 @@ Status TonewheelBank::prepare(const RuntimeProfile& profile, double sample_rate,
     for (std::size_t index = 0; index < candidate.size(); ++index) {
         const ToneSource& source = profile.sources[index];
         const double increment = source.frequency_hz / sample_rate;
-        // Also reject positive input frequencies whose division underflows to
-        // zero, or rounds onto Nyquist. Never install a frozen/aliased fallback.
-        if (!std::isfinite(increment) || increment <= 0.0 || increment >= 0.5) {
+        // 2^-53 is the largest binary64 spacing for stored phase in [0,1).
+        // Require a full spacing so every phase can advance; a merely positive
+        // increment may round away. This support floor is not an accuracy claim
+        // near the floor. Also reject division that rounds onto Nyquist.
+        if (!std::isfinite(increment) || increment < 0x1p-53 || increment >= 0.5) {
             return Status::InvalidProfile;
         }
 

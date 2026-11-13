@@ -103,3 +103,12 @@ explicit RIFF/WAVE header, count clipped samples, and report status/metrics. Fil
 I/O is outside the engine call. Diagnostics and manifests name the nominal model
 and supplied profile identity. The same events with different block partitions
 must produce the declared equivalent audio on the same build.
+
+## Numerical support boundary
+
+Preparation rejects computed source increments below `2^-53` turns per sample
+or at/above `0.5`. The lower bound prevents a positive increment from silently
+rounding away across the binary64 phase range. It is a conservative support
+bound, not a low-frequency accuracy guarantee. The supplied nominal profile
+is unchanged. [NUMERICAL_BOUNDS.md](NUMERICAL_BOUNDS.md) retains the derivation,
+atomic rejection tests and finite-window drift evidence.

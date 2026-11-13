@@ -78,6 +78,9 @@ qualification is recorded in the status and development log.
 | [Internal parameters](docs/PARAMETERS.md) | 39 proposed permanent control identities |
 | [Pedal routing](docs/PEDAL_ROUTING.md) | Reconstructed 25-by-8 data; pedal audio remains pending |
 | [Offline format](docs/RENDER_FORMAT.md) | Renderer and event-fixture contract |
+| [Numerical bounds](docs/NUMERICAL_BOUNDS.md) | Preparation limits and finite-window drift evidence |
+| [Benchmark](docs/BENCHMARKING.md) | Bounded workload timing with explicit limitations |
+| [Repository checks](docs/REPOSITORY_CHECKS.md) | Source, navigation, local links and data integrity |
 | [Source manifest](docs/research/source-manifest.json) | Preserved PDF identity and missing companion assets |
 | [Review notes](docs/development/agent-notes/) | Actual agent assignments and retained evidence |
 

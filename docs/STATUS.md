@@ -36,20 +36,26 @@ retains input/compiled/WAV hashes, raw logs, actual float metrics and separate P
 statistics. An independent PCM analyzer provides bounded window measurements and
 qualified crossing-rate estimates. None authenticates a physical instrument.
 
-The CI workflow defines Linux/macOS/Windows Release jobs and a Linux sanitizer
-job with leak checking enabled. The first hosted run at `b9c1cac` passed all 12 suites on Linux Release and
-Linux ASan/UBSan with leak detection enabled. macOS failed compilation because
-its standard library lacks floating `from_chars`; Windows built and passed 10
-of 12 suites, exposing line-ending and file-stat assumptions in the two evidence
-suites. Wave 06 implemented a shared classic-locale decimal converter, canonical LF
-checkout attributes and compatible evidence metadata checks. Targeted Linux
-regressions pass; native rerun qualification is pending. Neither platform is
-qualified yet. The callback audit observed zero C++ allocation/deallocation
+[Hosted CI run 43363048563](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43363048563)
+passed all 16 CTest suites at `9c8068c` on Linux GCC, macOS AppleClang and Windows
+MSVC Release, plus Linux ASan/UBSan with leak detection enabled. This follows the
+retained first-run macOS parser and Windows evidence failures and their tested
+repairs. Qualification applies to this offline software and those runners; native
+audio-device and plugin-host gates remain open.
+
+The callback audit observed zero C++ allocation/deallocation
 calls in 96 recorded processing calls, including maximum and rejected requests.
 Its static call-graph scope and limits are in [REALTIME.md](REALTIME.md). The
 independent bundle verifier passed 27 test methods, including real render bundles
 and mutated evidence. It reports retained-bundle integrity separately from
 unestablished authenticity, build provenance and physical fidelity.
+
+Preparation also rejects increments too small to advance the binary64 source
+phase reliably. [Numerical bounds](NUMERICAL_BOUNDS.md) record the exact support
+floor, atomic rejection and bounded nominal drift checks. The
+[benchmark](BENCHMARKING.md) reports observed processing intervals without a timing
+pass threshold. The [repository checker](REPOSITORY_CHECKS.md) verifies retained
+source/index/link/data identities and supports an explicit final agent count.
 
 ## Evidence boundary
 

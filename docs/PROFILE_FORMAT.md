@@ -67,3 +67,12 @@ Preparation validates then copies the fixed-size profile. Changes to the caller'
 copy cannot alter active audio state. Source storage, mapping and gains have no
 borrowed authoring pointers. A profile can be replaced only while processing is
 stopped; cross-thread exchange and exact DSP checkpointing are future work.
+
+## Preparation adds a numerical support check
+
+Successful parsing and intrinsic profile validation do not guarantee that a
+source can be prepared at the selected rate. The shared bank requires its
+computed binary64 `frequency_hz / sample_rate` increment to be in
+`[2^-53, 0.5)` turns per sample. Smaller positive increments reject atomically
+rather than producing a frozen source. This preserves the named nominal
+profile and its digest; see [NUMERICAL_BOUNDS.md](NUMERICAL_BOUNDS.md).

@@ -76,6 +76,19 @@ if(HAMMOND_RENDER_SOURCE)
     add_dependencies(hammond_render hammond_profile)
 endif()
 
+add_executable(hammond_benchmark tools/benchmark.cpp)
+target_link_libraries(hammond_benchmark PRIVATE hammond_core)
+hammond_configure_target(hammond_benchmark)
+target_compile_definitions(hammond_benchmark PRIVATE
+    HAMMOND_BENCHMARK_PROFILE="${HAMMOND_COMPILED_PROFILE}"
+    HAMMOND_BENCHMARK_CONFIGURATION="$<CONFIG>"
+    HAMMOND_BENCHMARK_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}"
+    HAMMOND_BENCHMARK_COMPILER_VERSION="${CMAKE_CXX_COMPILER_VERSION}"
+    HAMMOND_BENCHMARK_TARGET_SYSTEM="${CMAKE_SYSTEM_NAME}"
+    HAMMOND_BENCHMARK_TARGET_PROCESSOR="${CMAKE_SYSTEM_PROCESSOR}"
+    HAMMOND_BENCHMARK_SANITIZERS=$<BOOL:${HAMMOND_ENABLE_SANITIZERS}>)
+add_dependencies(hammond_benchmark hammond_profile)
+
 if(BUILD_TESTING)
     set(HAMMOND_TEST_TARGETS)
     file(GLOB HAMMOND_CPP_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")

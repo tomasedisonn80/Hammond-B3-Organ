@@ -175,3 +175,37 @@ from CRLF conversion and tested an isolated autocrlf checkout. Nineteen wrapper
 methods, the five-render catalog and 27 independent verifier methods passed.
 Raw output capture still preserves its bytes. An actual hosted rerun must close
 the macOS/Windows gates. Root updated the stale Profile.cpp parser comment.
+
+### Hosted portability repairs verified — `9c8068c`
+
+[Run 43363048563](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43363048563)
+completed successfully. All four jobs passed all 16 registered suites: Linux GCC,
+macOS AppleClang and Windows MSVC Release, plus Linux ASan/UBSan with leak
+detection enabled. The macOS numeric replacement and Windows evidence repairs
+therefore have actual hosted results. These jobs qualify only the tested offline
+software scopes; audio-device, host, hard-deadline and physical gates remain open.
+
+### Wave 06 completion — numerical and tooling boundaries
+
+Agent 34 reproduced a positive source increment that rounded away, then added
+an atomic preparation rejection below `2^-53` turns per sample. Four affected
+Release suites passed. The 262,144-frame nominal check at each rate observed
+maximum circular phase error `7.722181563901e-12` turns within its derived
+`3.637978893828e-11` budget. The source/sample recurrence and nominal profile
+bytes remain unchanged; progress near the new support floor is not an accuracy
+claim. The synthetic maximum mix reached both signs of 1,098 finite coherent
+branches without asserting physical output level.
+
+Agent 35 added a bounded four-case prepared-engine benchmark and CMake target.
+Strict Release build, 16 individual-versus-all workload equivalence checks and
+29 invalid argument/work/profile rejections passed. Its temporary shared-tree
+run includes a scheduling outlier beyond the nominal interval; no deadline gate
+was inferred. Final publication uses a new immutable staged snapshot.
+
+Agent 36 added a read-only source-archive checker with 41 passing mutation/CLI
+methods and a real-PDF smoke. It checks source identity, reconstructed index and
+review coverage, local Markdown file links, actual note IDs and existing data
+hashes without Git or built artifacts. The optional exact agent-count check is
+reserved for the relevant snapshot/final session. All six wave-06 assignments
+are complete. Wave 07 now compares two independently frozen factory readings
+and prepares explicit acquisition metadata and acceptance procedures.

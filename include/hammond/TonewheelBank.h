@@ -15,6 +15,10 @@ class TonewheelBank {
 public:
     // A successful prepare starts a new seeded source field. Failure preserves
     // all previous state. See the agent-13 note for the exact seed convention.
+    // Each computed frequency/sample_rate increment must be in [2^-53, 0.5)
+    // turns/sample or preparation returns InvalidProfile. The lower bound
+    // guarantees phase progress, not frequency accuracy near that bound.
+    // See docs/NUMERICAL_BOUNDS.md for this binary64 numerical support contract.
     [[nodiscard]] Status prepare(const RuntimeProfile& profile, double sample_rate,
                                  std::uint64_t seed) noexcept;
 

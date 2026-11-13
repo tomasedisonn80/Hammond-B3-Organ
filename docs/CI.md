@@ -14,9 +14,10 @@ manual dispatch. This is engineering verification of the nominal model.
 | Release (Windows MSVC) | `windows-2022` | Visual Studio 2022 MSVC / x64 | Release |
 | Linux GCC ASan + UBSan + leaks | `ubuntu-24.04` | GCC / x64 | Debug, address/undefined/leak checks |
 
-These are the declared build targets, not a claim that every platform has passed.
-At foundation introduction, retained local execution evidence covers Linux only;
-see [BUILD.md](BUILD.md) and the [foundation note](development/agent-notes/29-ci-foundation.md).
+All four jobs passed their 16 registered suites at `9c8068c` in
+[run 43363048563](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43363048563).
+The first run exposed macOS decimal parsing and Windows evidence assumptions;
+those failures and their fixes remain in the development log and agent notes.
 Qualification requires the actual jobs for the exact commit under review. On a
 pull request, the default checkout tests GitHub's merge revision; the diagnostic
 artifact records `git rev-parse HEAD`. Never transfer a passing result to a later
@@ -115,11 +116,11 @@ An early failure may leave some files absent; inspect the first failing step.
 The full test log is useful even when the console only prints failed tests.
 Artifacts are diagnostics, not distributable plugin or application packages.
 
-Windows/MSVC and AppleClang need observed runs. Floating `std::from_chars`
-availability and edge behavior, exact nominal `pow` comparisons, differing
-`long double` precision, and filesystem hard-link behavior are review points;
-none has been waived by the workflow. Fix demonstrated portability defects at
-their owning source/test contract rather than suppressing a job or warning.
+The portable decimal converter and Windows evidence repairs now have observed
+MSVC/AppleClang results at the commit above. Exact nominal `pow` comparisons,
+differing `long double` precision and filesystem behavior remain relevant when
+the compiler or platform changes. Fix demonstrated defects in their source/test
+contract; do not suppress a job or warning to manufacture qualification.
 
 ## Workflow trust and maintenance
 

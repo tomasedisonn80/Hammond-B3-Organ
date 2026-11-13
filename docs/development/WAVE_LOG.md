@@ -16,8 +16,8 @@ that all ten product milestones are complete.
 | 03 | 13-18 | Shared-source bank, dry engine, offline renderer and behavioral tests | Complete; notes 13-18 |
 | 04 | 19-24 | Console-state foundations and event/state contract verification | Complete; notes 19-24 |
 | 05 | 25-30 | Reproducible offline fixtures, signal evidence, callback boundaries and CI | Complete; notes 25-30 |
-| 06 | 31-36 | Targeted robustness, portability, numerical and tooling work | In progress |
-| 07 | 37-42 | Acquisition/data infrastructure and remaining implementation risks | Planned |
+| 06 | 31-36 | Targeted robustness, portability, numerical and tooling work | Complete; notes 31-36 |
+| 07 | 37-42 | Independent factory references and acquisition/data infrastructure | In progress |
 | 08 | 43-48 | Cross-platform CI, reproducibility and integration qualification | Planned |
 | 09 | 49-54 | Final acceptance evidence, examples and next-stage handoff | Planned |
 | 10 | 55-60 | Independent final review, fixes and publication verification | Planned |
@@ -47,5 +47,9 @@ agents, and repeated work by one agent must not be counted as another agent.
   infrastructure; all 12 suites passed in the clean Release snapshot. First hosted
   Linux Release and sanitizer jobs passed; macOS/Windows defects are retained
   and assigned for correction.
+
+- `9c8068c`: callback/evidence verification and observed portability repairs; all
+  16 suites passed in the clean Release snapshot and each of four hosted CI jobs
+  (Linux/macOS/Windows Release and Linux ASan/UBSan/leaks).
 
 Further entries will record actual integrated commits and validation results.
