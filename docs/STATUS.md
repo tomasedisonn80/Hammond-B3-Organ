@@ -16,7 +16,12 @@ Independent profile, generator, scheduler and renderer tests passed their assign
 Debug/Release scopes. Source pitch, coherent foldback, same-build block partition
 identity and malformed-input behavior have retained software evidence.
 
-Wave04 is adding retained A/B banks and Cancel semantics. No scanner, AO-28,
+Early M3 console behavior is implemented: four retained A/B banks, direct hidden
+bank edits, routing-only Cancel/reselect and validated control snapshots. Control
+serialization preserves all 39 controls plus route-enable bits; it excludes keys,
+source phases and time. The internal parameter registry has 39 proposed identities,
+without claiming actual VST3 exports. Pedal mapping data contains 195 connections
+and five explicit disconnections; it is not connected to runtime pedal audio. No scanner, AO-28,
 Leslie DSP, physical contact model, percussion, pedal audio, VST3, audio-device
 standalone application or native UI is implemented at this checkpoint. No measured
 instrument-fidelity claim is made. Full M0 specimen lock and factory M2 evidence

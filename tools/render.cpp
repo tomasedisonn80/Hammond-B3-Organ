@@ -383,6 +383,22 @@ struct AbsoluteEvent {
         if (index != 0 || value != 0.0) {
             fail("All-notes-off index and value must be zero.");
         }
+    } else if (tokens[1] == "bank_drawbar") {
+        result.event.type = EventType::BankDrawbar;
+        if (index >= hammond::kDrawbarBankCount * hammond::kDrawbarCount ||
+            value < 0.0 || value > 8.0 || std::trunc(value) != value) {
+            fail("Bank-drawbar index must be in 0..17 and integer value in 0..8.");
+        }
+    } else if (tokens[1] == "select_bank") {
+        result.event.type = EventType::SelectBank;
+        if (index != 0 || value < 0.0 || value > 1.0 || std::trunc(value) != value) {
+            fail("Select-bank index must be zero and integer value 0=A or 1=B.");
+        }
+    } else if (tokens[1] == "cancel") {
+        result.event.type = EventType::Cancel;
+        if (index != 0 || value != 0.0) {
+            fail("Cancel index and value must be zero.");
+        }
     } else {
         fail("Unknown event type.");
     }
@@ -723,7 +739,13 @@ int main(int argc, char* argv[]) {
                 "  --events FILE                  (absolute events replace the default note)\n"
                 "  --fail-on-clip                  (do not publish a clipped render)\n"
                 "Output: unmeasured dry model, stereo little-endian PCM16; existing files are rejected.\n"
-                "Scores: at most 16 MiB, 262144 events, 4096 bytes/line, 1024 events/frame.\n";
+                "Scores: at most 16 MiB, 262144 events, 4096 bytes/line, 1024 events/frame.\n"
+                "Score fields: frame type upper|lower index value (five fields).\n"
+                "Types: note_on, note_off, drawbar, expression, all_notes_off,\n"
+                "       bank_drawbar, select_bank, cancel.\n"
+                "bank_drawbar: index bank*9+drawbar (A=0, B=1), integer value 0..8.\n"
+                "select_bank: index 0, integer value 0=A or 1=B; reconnects the manual.\n"
+                "cancel: index/value 0; retains held keys and banks. Drawbar edits selected bank.\n";
             return std::cout ? 0 : 1;
         }
         return render(parse_options(argc, argv));

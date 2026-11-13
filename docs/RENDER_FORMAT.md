@@ -46,7 +46,7 @@ No processing-time file operations are inside `Engine::process`.
 ```
 
 Supported types are `note_on`, `note_off`, `drawbar`, `expression`,
-`all_notes_off`; manual is `upper` or `lower`. The meaning/range of index/value
+`all_notes_off`, `bank_drawbar`, `select_bank`, `cancel`; manual is `upper` or `lower`. The meaning/range of index/value
 is defined in ENGINE_API.md. Whitespace and full-line comments are allowed;
 extra tokens, unknown names, nonfinite numbers, unsorted frames, oversized files
 and events outside `[0,total_frames)` are rejected before output creation.

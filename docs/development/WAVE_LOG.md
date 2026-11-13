@@ -14,8 +14,8 @@ that all ten product milestones are complete.
 | 01 | 01-06 | Read all 500 atlas pages; review figures and extract requirements | Complete; notes 01-06 |
 | 02 | 07-12 | Profile types/compiler, build foundation, independent tests, atlas traceability | Complete; notes 07-12 |
 | 03 | 13-18 | Shared-source bank, dry engine, offline renderer and behavioral tests | Complete; notes 13-18 |
-| 04 | 19-24 | Console-state foundations and event/state contract verification | In progress |
-| 05 | 25-30 | Reproducible offline fixtures, signal evidence and real-time boundaries | Planned |
+| 04 | 19-24 | Console-state foundations and event/state contract verification | Complete; notes 19-24 |
+| 05 | 25-30 | Reproducible offline fixtures, signal evidence and real-time boundaries | In progress |
 | 06 | 31-36 | Targeted robustness, numerical, tooling and performance work | Planned |
 | 07 | 37-42 | Acquisition/data infrastructure and remaining implementation risks | Planned |
 | 08 | 43-48 | Cross-platform CI, reproducibility and integration qualification | Planned |
@@ -35,5 +35,8 @@ agents, and repeated work by one agent must not be counted as another agent.
 - `640cb0e`: all six complete atlas reviews, M0-M9 plan and profile contract.
 - `4b83053`: profile/compiler/build foundation; exact staged-tree snapshot built
   and passed both registered CTest entries before publication.
+
+- `108a92b`: working shared-source dry engine/renderer; exact staged Release
+  snapshot passed all five registered CTest suites.
 
 Further entries will record actual integrated commits and validation results.

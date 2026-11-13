@@ -1,5 +1,6 @@
 #pragma once
 
+#include "hammond/ControlState.h"
 #include "hammond/Profile.h"
 #include "hammond/TonewheelBank.h"
 
@@ -10,15 +11,15 @@
 
 namespace hammond {
 
-// Nominal dry organ: ideal boolean keys, retained manual drawbars, and one
+// Nominal dry organ: ideal boolean keys, retained manual drawbar banks, and one
 // shared free-running source field. This is not a measured console model.
 // Prepare and all diagnostics require stopped or same-processing-thread access;
 // no concurrent UI snapshot or live profile publication protocol is provided.
 class Engine {
 public:
     // Success installs an owned profile and starts a new seeded source field.
-    // Initial controls: no keys, all drawbars zero, expression one. Any failure
-    // preserves the previous engine, including its prepared state and clock.
+    // Initial controls: no keys, all banks zero, bank B selected, routes enabled,
+    // expression one. Any failure preserves the previous engine and clock.
     [[nodiscard]] Status prepare(const RuntimeProfile& profile,
                                  const ProcessSpec& spec) noexcept;
 
@@ -39,10 +40,23 @@ public:
     [[nodiscard]] std::size_t active_key_count() const noexcept;
     [[nodiscard]] std::size_t active_key_count(Manual manual) const noexcept;
     [[nodiscard]] bool key_down(Manual manual, std::uint32_t midi_note) const noexcept;
+    // Checked control queries require preparation. drawbar_position returns the
+    // selected bank's retained position, including while its route is cancelled.
     [[nodiscard]] bool drawbar_position(Manual manual, std::size_t index,
                                         std::uint8_t& destination) const noexcept;
-    [[nodiscard]] double expression() const noexcept { return expression_; }
+    [[nodiscard]] bool bank_drawbar_position(Manual manual, DrawbarBank bank,
+                                             std::size_t index,
+                                             std::uint8_t& destination) const noexcept;
+    [[nodiscard]] bool selected_bank(Manual manual, DrawbarBank& destination) const noexcept;
+    [[nodiscard]] bool route_enabled(Manual manual, bool& destination) const noexcept;
+    [[nodiscard]] double expression() const noexcept { return controls_.expression(); }
     [[nodiscard]] bool source_phase_turns(ToneId id, double& destination) const noexcept;
+
+    // Copied musical controls only, not a DSP checkpoint. Same-thread or stopped
+    // access only. Restore requires preparation and validates before mutation;
+    // rejection preserves all state, and success preserves keys/phases/clock.
+    [[nodiscard]] ControlSnapshot controls_snapshot() const noexcept { return controls_.snapshot(); }
+    [[nodiscard]] bool restore_controls(const ControlSnapshot& snapshot) noexcept;
 
 private:
     [[nodiscard]] Status preflight(std::uint32_t frames,
@@ -55,9 +69,8 @@ private:
     ProcessSpec spec_{};
     TonewheelBank source_bank_{};
     std::array<std::array<bool, kManualKeyCount>, kManualCount> held_keys_{};
-    std::array<std::array<std::uint8_t, kDrawbarCount>, kManualCount> drawbars_{};
+    ControlState controls_{};
     std::array<double, kToneSourceCount> coefficients_{};
-    double expression_{1.0};
     std::uint64_t frame_clock_{0};
     bool coefficients_dirty_{false};
     bool prepared_{false};

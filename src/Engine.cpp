@@ -26,6 +26,13 @@ namespace {
         return event.index == 0 && event.value >= 0.0 && event.value <= 1.0;
     case EventType::AllNotesOff:
         return event.index == 0 && event.value == 0.0;
+    case EventType::BankDrawbar:
+        return event.index < kDrawbarBankCount * kDrawbarCount &&
+               is_integer_in_range(event.value, 8.0);
+    case EventType::SelectBank:
+        return event.index == 0 && is_integer_in_range(event.value, 1.0);
+    case EventType::Cancel:
+        return event.index == 0 && event.value == 0.0;
     }
     return false;
 }
@@ -50,9 +57,8 @@ Status Engine::prepare(const RuntimeProfile& profile, const ProcessSpec& spec) n
     spec_ = spec;
     source_bank_ = candidate_bank;
     held_keys_ = {};
-    drawbars_ = {};
+    controls_ = ControlState{};
     coefficients_.fill(0.0);
-    expression_ = 1.0;
     frame_clock_ = spec.initial_frame;
     coefficients_dirty_ = false;
     prepared_ = true;
@@ -123,7 +129,8 @@ ProcessResult Engine::process(std::uint32_t frames, std::span<float> mono_output
             for (std::size_t tone = 0; tone < kToneSourceCount; ++tone) {
                 mixed += coefficients_[tone] * source_samples[tone];
             }
-            mono_output[frame] = static_cast<float>(mixed * profile_.output_gain * expression_);
+            mono_output[frame] =
+                static_cast<float>(mixed * profile_.output_gain * controls_.expression());
         }
     }
 
@@ -148,14 +155,16 @@ void Engine::apply_event(const Event& event) noexcept {
     }
     case EventType::Drawbar: {
         const auto position = static_cast<std::uint8_t>(event.value);
-        if (drawbars_[manual][event.index] != position) {
-            drawbars_[manual][event.index] = position;
+        std::uint8_t previous = 0;
+        (void)controls_.drawbar_position(event.manual, event.index, previous);
+        if (previous != position) {
+            (void)controls_.set_drawbar(event.manual, event.index, position);
             coefficients_dirty_ = true;
         }
         break;
     }
     case EventType::Expression:
-        expression_ = event.value;
+        (void)controls_.set_expression(event.value);
         break;
     case EventType::AllNotesOff:
         for (auto& down : held_keys_[manual]) {
@@ -165,19 +174,58 @@ void Engine::apply_event(const Event& event) noexcept {
             }
         }
         break;
+    case EventType::BankDrawbar: {
+        const auto bank = static_cast<DrawbarBank>(event.index / kDrawbarCount);
+        const auto drawbar = static_cast<std::size_t>(event.index) % kDrawbarCount;
+        const auto position = static_cast<std::uint8_t>(event.value);
+        std::uint8_t previous = 0;
+        (void)controls_.bank_drawbar_position(event.manual, bank, drawbar, previous);
+        if (previous != position) {
+            (void)controls_.set_bank_drawbar(event.manual, bank, drawbar, position);
+            coefficients_dirty_ = true;
+        }
+        break;
+    }
+    case EventType::SelectBank: {
+        const auto bank = static_cast<DrawbarBank>(static_cast<std::uint8_t>(event.value));
+        DrawbarBank previous = DrawbarBank::B;
+        bool enabled = false;
+        (void)controls_.selected_bank(event.manual, previous);
+        (void)controls_.route_enabled(event.manual, enabled);
+        if (previous != bank || !enabled) {
+            (void)controls_.select_bank(event.manual, bank);
+            coefficients_dirty_ = true;
+        }
+        break;
+    }
+    case EventType::Cancel: {
+        bool enabled = false;
+        (void)controls_.route_enabled(event.manual, enabled);
+        if (enabled) {
+            (void)controls_.cancel(event.manual);
+            coefficients_dirty_ = true;
+        }
+        break;
+    }
     }
 }
 
 void Engine::rebuild_coefficients() noexcept {
     coefficients_.fill(0.0);
+    const auto controls = controls_.snapshot();
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        if (!controls.route_enabled[manual]) {
+            continue;
+        }
+        const auto bank = static_cast<std::size_t>(controls.selected_banks[manual]);
         for (std::size_t key = 0; key < kManualKeyCount; ++key) {
             if (!held_keys_[manual][key]) {
                 continue;
             }
             for (std::size_t drawbar = 0; drawbar < kDrawbarCount; ++drawbar) {
                 const auto tone = static_cast<std::size_t>(profile_.manual_map[key][drawbar]) - 1;
-                const auto position = static_cast<std::size_t>(drawbars_[manual][drawbar]);
+                const auto position =
+                    static_cast<std::size_t>(controls.drawbars[manual][bank][drawbar]);
                 coefficients_[tone] += profile_.drawbar_gains[position];
             }
         }
@@ -210,10 +258,27 @@ bool Engine::key_down(Manual manual, std::uint32_t midi_note) const noexcept {
 
 bool Engine::drawbar_position(Manual manual, std::size_t index,
                               std::uint8_t& destination) const noexcept {
-    if (!prepared_ || !is_valid_manual(manual) || index >= kDrawbarCount) {
+    return prepared_ && controls_.drawbar_position(manual, index, destination);
+}
+
+bool Engine::bank_drawbar_position(Manual manual, DrawbarBank bank, std::size_t index,
+                                   std::uint8_t& destination) const noexcept {
+    return prepared_ && controls_.bank_drawbar_position(manual, bank, index, destination);
+}
+
+bool Engine::selected_bank(Manual manual, DrawbarBank& destination) const noexcept {
+    return prepared_ && controls_.selected_bank(manual, destination);
+}
+
+bool Engine::route_enabled(Manual manual, bool& destination) const noexcept {
+    return prepared_ && controls_.route_enabled(manual, destination);
+}
+
+bool Engine::restore_controls(const ControlSnapshot& snapshot) noexcept {
+    if (!prepared_ || !controls_.restore(snapshot)) {
         return false;
     }
-    destination = drawbars_[static_cast<std::size_t>(manual)][index];
+    coefficients_dirty_ = true;
     return true;
 }
 

@@ -6,7 +6,9 @@ from the repository's **500-page research and build atlas**.
 **Current stage:** a working nominal dry-organ engine and offline WAV renderer,
 with strict data contracts and independent tests. The core has 91 shared,
 continuously running sources, two manuals, drawbars, sample-offset events and
-explicit clock/error handling. The selected profile is **nominal and unmeasured**.
+explicit clock/error handling. Four retained A/B banks, routing-only Cancel and
+versioned control snapshots provide early console behavior. The selected profile
+is **nominal and unmeasured**.
 
 The eventual product is a VST3 instrument and standalone application, with an
 inspectable organ/Leslie engine and the atlas's dimensional, accessible interface.
@@ -56,6 +58,10 @@ sanitizer builds, and platform qualification limits.
 | [Implementation contract](docs/IMPLEMENTATION_CONTRACT.md) | Initial scope and architecture |
 | [Profile contract](docs/PROFILE_FORMAT.md) | Typed, bounded authoring/runtime boundary |
 | [Engine interface](docs/ENGINE_API.md) | Timing, key ownership, source/mix behavior |
+| [Console controls](docs/CONSOLE_EXTENSION.md) | Retained banks and Cancel/panic separation |
+| [Control state format](docs/CONTROL_STATE_FORMAT.md) | Bounded control-only save/load |
+| [Internal parameters](docs/PARAMETERS.md) | 39 proposed permanent control identities |
+| [Pedal routing](docs/PEDAL_ROUTING.md) | Reconstructed 25-by-8 data; pedal audio remains pending |
 | [Offline format](docs/RENDER_FORMAT.md) | Renderer and event-fixture contract |
 | [Source manifest](docs/research/source-manifest.json) | Preserved PDF identity and missing companion assets |
 | [Review notes](docs/development/agent-notes/) | Actual agent assignments and retained evidence |

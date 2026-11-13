@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "map_id": "atlas-derived-b3-c3-pedal-v1",
+  "provenance": {
+    "evidence_class": "derived",
+    "applicable_variant": "B-3/C-3 factory pedal wiring represented in atlas chapter 022",
+    "source_document": {
+      "path": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+      "edition": "2026-11-12",
+      "pages": [139, 140, 141, 142, 143, 144],
+      "page_numbering": "one-based PDF and printed atlas pages"
+    },
+    "source_reference": "S022-01: Hammond Organ Service Manual, original console models",
+    "derivation": "atlas-p140-piecewise-rule",
+    "mapping_page": 140,
+    "printed_reference_pedals": [1, 7, 8, 13, 25],
+    "bus_membership_page": 140,
+    "bus_membership_evidence_class": "documented",
+    "companion_table_status": "not-supplied",
+    "independent_factory_transcription_status": "missing",
+    "specimen_continuity_status": "not-measured",
+    "specimen_identity": null,
+    "uncertainty": "Independent original Table III transcription and specimen continuity checks remain open."
+  },
+  "indexing": {
+    "pedal_id_base": 1,
+    "column_index_base": 0,
+    "source_id_base": 1,
+    "source_id_bounds": [1, 91],
+    "null_meaning": "no-connection"
+  },
+  "columns": ["fundamental", "third_contact", "second", "fourth", "sixth", "eighth", "tenth", "twelfth"],
+  "bus_columns": {"brown": [0, 1], "red": [2, 3], "orange": [4, 5], "yellow": [6, 7]},
+  "counts": {"pedals": 25, "columns": 8, "positions": 200, "connected": 195, "disconnected": 5},
+  "rows": [
+    {"pedal_id": 1, "sources": [1, 13, 13, 25, 32, 37, 41, 44]},
+    {"pedal_id": 2, "sources": [2, 14, 14, 26, 33, 38, 42, 45]},
+    {"pedal_id": 3, "sources": [3, 15, 15, 27, 34, 39, 43, 46]},
+    {"pedal_id": 4, "sources": [4, 16, 16, 28, 35, 40, 44, 47]},
+    {"pedal_id": 5, "sources": [5, 17, 17, 29, 36, 41, 45, 48]},
+    {"pedal_id": 6, "sources": [6, 18, 18, 30, 37, 42, 46, 49]},
+    {"pedal_id": 7, "sources": [7, 19, 19, 31, 38, 43, 47, 50]},
+    {"pedal_id": 8, "sources": [8, null, 20, 32, 39, 44, 48, 51]},
+    {"pedal_id": 9, "sources": [9, null, 21, 33, 40, 45, 49, 52]},
+    {"pedal_id": 10, "sources": [10, null, 22, 34, 41, 46, 50, 53]},
+    {"pedal_id": 11, "sources": [11, null, 23, 35, 42, 47, 51, 54]},
+    {"pedal_id": 12, "sources": [12, null, 24, 36, 43, 48, 52, 55]},
+    {"pedal_id": 13, "sources": [13, 32, 25, 37, 44, 49, 53, 56]},
+    {"pedal_id": 14, "sources": [14, 33, 26, 38, 45, 50, 54, 57]},
+    {"pedal_id": 15, "sources": [15, 34, 27, 39, 46, 51, 55, 58]},
+    {"pedal_id": 16, "sources": [16, 35, 28, 40, 47, 52, 56, 59]},
+    {"pedal_id": 17, "sources": [17, 36, 29, 41, 48, 53, 57, 60]},
+    {"pedal_id": 18, "sources": [18, 37, 30, 42, 49, 54, 58, 61]},
+    {"pedal_id": 19, "sources": [19, 38, 31, 43, 50, 55, 59, 62]},
+    {"pedal_id": 20, "sources": [20, 39, 32, 44, 51, 56, 60, 63]},
+    {"pedal_id": 21, "sources": [21, 40, 33, 45, 52, 57, 61, 64]},
+    {"pedal_id": 22, "sources": [22, 41, 34, 46, 53, 58, 62, 65]},
+    {"pedal_id": 23, "sources": [23, 42, 35, 47, 54, 59, 63, 66]},
+    {"pedal_id": 24, "sources": [24, 43, 36, 48, 55, 60, 64, 67]},
+    {"pedal_id": 25, "sources": [25, 44, 37, 49, 56, 61, 65, 68]}
+  ]
+}

@@ -26,7 +26,8 @@ checks the whole request before dispatch. There are no partially accepted calls.
 Preparation is a stopped-engine action. Validate all inputs before replacing a
 working engine. Maximum block size must be 1..65536; event capacity is1024. The
 initial frame is a timeline origin, not a request to simulate earlier samples.
-Initial controls are muted drawbars, no held keys and expression1. The offline
+Initial controls are four muted retained banks, bank B selected and routes enabled
+on both manuals, no held keys and expression 1. The offline
 client explicitly supplies a registration. Physical key state is boolean per
 manual/MIDI key: repeated note-ons do not multiply voices, and a release clears
 that physical key. A future host adapter must define note-ID/channel ownership.
@@ -44,11 +45,19 @@ manual enum, event enum, finite value and payload ranges for every event.
 | Drawbar | physical position index0..8 | integer0..8 | Set retained manual control |
 | Expression |0 |0..1 | Global normalized linear gain surrogate |
 | AllNotesOff |0 |0 | Clear held keys on selected manual; preserve sources and controls |
+| BankDrawbar | bank*9 + drawbar,0..17 | integer0..8 | Edit an explicit retained bank without selecting it |
+| SelectBank |0 | integer0=A or1=B | Select bank and enable manual routing |
+| Cancel |0 |0 | Disable routing while preserving held keys and controls |
 
 Expression changes are initially steps. The implementation must not advertise
 native VST3 ramp reconstruction until a separate curve contract is implemented
-and tested. Preset Cancel, physical contact trajectories, pedal shaping and shared
-percussion are later console work; no placeholder enum implies their completion.
+and tested. The implemented Cancel and retained-bank model is described in
+[CONSOLE_EXTENSION.md](CONSOLE_EXTENSION.md). Physical multi-preset latches,
+contact trajectories, pedal shaping and shared percussion remain later work.
+Copied snapshots and `restore_controls()` require the same processing thread or
+stopped processing; restore rejects unprepared or invalid state atomically and
+never resets held keys, source phase or time. Control persistence is separate
+from an exact DSP checkpoint; see [CONTROL_STATE_FORMAT.md](CONTROL_STATE_FORMAT.md).
 
 ## Source bank
 

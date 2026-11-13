@@ -1,0 +1,1275 @@
+{
+  "schema_version": 1,
+  "model": "ideal-exclusive-ab-console-v1",
+  "scope": "implemented-console-subset",
+  "status": "proposed-internal",
+  "provenance": {
+    "evidence_class": "proposed",
+    "applicable_variant": "nominal B-3/AO-28 console engineering subset",
+    "atlas_file": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+    "atlas_pages": [
+      389,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402
+    ],
+    "implementation_sources": [
+      "docs/CONSOLE_EXTENSION.md",
+      "include/hammond/ControlState.h"
+    ],
+    "companion_recovered": false,
+    "host_exports_verified": false,
+    "native_host_curves_implemented": false,
+    "uncertainty": null,
+    "reason": "Original internal IDs, ranges, defaults and conversions for the current ideal console. The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed."
+  },
+  "parameters": [
+    {
+      "id": 4096,
+      "path": "manual.upper.bank.A.drawbar.16ft",
+      "label": "Upper A 16ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4097,
+      "path": "manual.upper.bank.A.drawbar.5_1/3ft",
+      "label": "Upper A 5_1/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 1
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4098,
+      "path": "manual.upper.bank.A.drawbar.8ft",
+      "label": "Upper A 8ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 2
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4099,
+      "path": "manual.upper.bank.A.drawbar.4ft",
+      "label": "Upper A 4ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 3
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4100,
+      "path": "manual.upper.bank.A.drawbar.2_2/3ft",
+      "label": "Upper A 2_2/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 4
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4101,
+      "path": "manual.upper.bank.A.drawbar.2ft",
+      "label": "Upper A 2ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 5
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4102,
+      "path": "manual.upper.bank.A.drawbar.1_3/5ft",
+      "label": "Upper A 1_3/5ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 6
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4103,
+      "path": "manual.upper.bank.A.drawbar.1_1/3ft",
+      "label": "Upper A 1_1/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 7
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4104,
+      "path": "manual.upper.bank.A.drawbar.1ft",
+      "label": "Upper A 1ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 8
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4112,
+      "path": "manual.upper.bank.B.drawbar.16ft",
+      "label": "Upper B 16ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 9
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4113,
+      "path": "manual.upper.bank.B.drawbar.5_1/3ft",
+      "label": "Upper B 5_1/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 10
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4114,
+      "path": "manual.upper.bank.B.drawbar.8ft",
+      "label": "Upper B 8ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 11
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4115,
+      "path": "manual.upper.bank.B.drawbar.4ft",
+      "label": "Upper B 4ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 12
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4116,
+      "path": "manual.upper.bank.B.drawbar.2_2/3ft",
+      "label": "Upper B 2_2/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 13
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4117,
+      "path": "manual.upper.bank.B.drawbar.2ft",
+      "label": "Upper B 2ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 14
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4118,
+      "path": "manual.upper.bank.B.drawbar.1_3/5ft",
+      "label": "Upper B 1_3/5ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 15
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4119,
+      "path": "manual.upper.bank.B.drawbar.1_1/3ft",
+      "label": "Upper B 1_1/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 16
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4120,
+      "path": "manual.upper.bank.B.drawbar.1ft",
+      "label": "Upper B 1ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "upper",
+        "index": 17
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4128,
+      "path": "manual.lower.bank.A.drawbar.16ft",
+      "label": "Lower A 16ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4129,
+      "path": "manual.lower.bank.A.drawbar.5_1/3ft",
+      "label": "Lower A 5_1/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 1
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4130,
+      "path": "manual.lower.bank.A.drawbar.8ft",
+      "label": "Lower A 8ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 2
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4131,
+      "path": "manual.lower.bank.A.drawbar.4ft",
+      "label": "Lower A 4ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 3
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4132,
+      "path": "manual.lower.bank.A.drawbar.2_2/3ft",
+      "label": "Lower A 2_2/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 4
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4133,
+      "path": "manual.lower.bank.A.drawbar.2ft",
+      "label": "Lower A 2ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 5
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4134,
+      "path": "manual.lower.bank.A.drawbar.1_3/5ft",
+      "label": "Lower A 1_3/5ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 6
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4135,
+      "path": "manual.lower.bank.A.drawbar.1_1/3ft",
+      "label": "Lower A 1_1/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 7
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4136,
+      "path": "manual.lower.bank.A.drawbar.1ft",
+      "label": "Lower A 1ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 8
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4144,
+      "path": "manual.lower.bank.B.drawbar.16ft",
+      "label": "Lower B 16ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 9
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4145,
+      "path": "manual.lower.bank.B.drawbar.5_1/3ft",
+      "label": "Lower B 5_1/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 10
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4146,
+      "path": "manual.lower.bank.B.drawbar.8ft",
+      "label": "Lower B 8ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 11
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4147,
+      "path": "manual.lower.bank.B.drawbar.4ft",
+      "label": "Lower B 4ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 12
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4148,
+      "path": "manual.lower.bank.B.drawbar.2_2/3ft",
+      "label": "Lower B 2_2/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 13
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4149,
+      "path": "manual.lower.bank.B.drawbar.2ft",
+      "label": "Lower B 2ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 14
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4150,
+      "path": "manual.lower.bank.B.drawbar.1_3/5ft",
+      "label": "Lower B 1_3/5ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 15
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4151,
+      "path": "manual.lower.bank.B.drawbar.1_1/3ft",
+      "label": "Lower B 1_1/3ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 16
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 4152,
+      "path": "manual.lower.bank.B.drawbar.1ft",
+      "label": "Lower B 1ft",
+      "kind": "drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "bank_drawbar",
+        "manual": "lower",
+        "index": 17
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        397,
+        398,
+        399,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 8192,
+      "path": "global.expression",
+      "label": "Global expression",
+      "kind": "expression",
+      "unit": "normalized-linear-gain-surrogate",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "step_count": 0,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 1.0,
+        "to_plain": "u",
+        "to_normalized": "x",
+        "meaning": "linear-gain-surrogate-not-physical-travel"
+      },
+      "engine_event": {
+        "type": "expression",
+        "manual": "upper",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        398,
+        400,
+        402
+      ]
+    },
+    {
+      "id": 8208,
+      "path": "manual.upper.selected_bank",
+      "label": "Upper selected bank",
+      "kind": "bank_selector",
+      "unit": "bank-index-0=A-1=B",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "step_count": 1,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 1.0,
+        "to_plain": "floor(u + 0.5)",
+        "to_normalized": "x",
+        "meaning": "bank-index-fraction"
+      },
+      "engine_event": {
+        "type": "select_bank",
+        "manual": "upper",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        389,
+        397,
+        401,
+        402
+      ]
+    },
+    {
+      "id": 8209,
+      "path": "manual.lower.selected_bank",
+      "label": "Lower selected bank",
+      "kind": "bank_selector",
+      "unit": "bank-index-0=A-1=B",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "step_count": 1,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 1.0,
+        "to_plain": "floor(u + 0.5)",
+        "to_normalized": "x",
+        "meaning": "bank-index-fraction"
+      },
+      "engine_event": {
+        "type": "select_bank",
+        "manual": "lower",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        389,
+        397,
+        401,
+        402
+      ]
+    }
+  ]
+}

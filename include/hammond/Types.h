@@ -30,11 +30,17 @@ enum class EventType : std::uint8_t {
     Drawbar = 2,
     Expression = 3,
     AllNotesOff = 4,
+    BankDrawbar = 5,
+    SelectBank = 6,
+    Cancel = 7,
 };
 
 // Offsets are relative to the current block; equal offsets retain input order.
 // Note index: MIDI 36..96; NoteOn value: velocity 0..127 (zero means release).
-// Drawbar index: physical order 0..8; value: integer position 0..8.
+// Drawbar index: physical order 0..8 in the selected bank; value: integer 0..8.
+// BankDrawbar index: bank*9 + drawbar, 0..17 (A=0, B=1); value: integer 0..8.
+// SelectBank index: 0; value: integer 0=A or 1=B. Selection enables the route.
+// Cancel index/value: 0. Disconnects one manual without releasing held keys.
 // Expression is global with value 0..1. AllNotesOff selects one manual.
 // Note velocity does not scale the sustained amplitude of this ideal organ.
 struct Event {

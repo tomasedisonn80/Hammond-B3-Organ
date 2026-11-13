@@ -452,7 +452,7 @@ void test_invalid_calls_are_atomic(const RuntimeProfile& nominal) {
     const std::vector<Event> bad_events{
         {15, EventType::NoteOn, invalid_manual, 36, 1},
         {15, invalid_type, upper, 36, 1},
-        {15, static_cast<EventType>(5), upper, 0, 0},
+        {15, static_cast<EventType>(255), upper, 0, 0},
         note_on(15, upper, 35), note_on(15, lower, 97), note_on(15, upper, 255),
         note_on(15, upper, 36, -1), note_on(15, upper, 36, 128),
         note_on(15, upper, 36, 0.5), note_off(15, upper, 35), note_off(15, lower, 97),

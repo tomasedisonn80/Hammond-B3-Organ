@@ -79,3 +79,23 @@ The callback currently has discrete control steps and ideal gates. Native automa
 curves, hot profile exchange and physical circuit/rotary stages are deferred.
 Wave04 adds an explicitly exclusive four-bank model and Cancel while preserving
 legacy audio. Permanent notes13-18 identify actual commands and limits.
+
+### Wave 04 — early console state and documentary control data
+
+Agents19-24 added four retained A/B drawbar banks, route-only Cancel, explicit
+bank events, snapshot restoration and bounded `B3CONTROLS1` serialization.
+The39-entry internal parameter registry has permanent bank identities but no
+verified native host mapping. Pedal data reconstructs25x8 contacts with195
+connections and5 nulls; pedal audio, physical weights and full transcription
+verification remain open.
+
+Strict Debug/Release control and legacy engine/CLI tests passed. The integration
+matched the frozen wave03 renderer in24 WAV-byte/JSON comparisons. New timeline
+tests cover3 rates and6 partitions, held-key switching, Cancel/reselect/panic,
+all91 phases,81 malformed snapshots and68 invalid new-event calls. Control I/O
+rejects330 malformed inputs atomically. Registry19 and pedal15 Python tests pass.
+Root updated the legacy invalid-enum test from5 to255 because5 is now the
+documented BankDrawbar event; the invalid-enum assertion itself remains.
+
+No physical contact, percussion, multi-preset latch, pedal-audio or host gate was
+closed. Current tasks move to render provenance, fixtures and independent evidence.
