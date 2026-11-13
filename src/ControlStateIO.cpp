@@ -13,6 +13,9 @@ namespace {
 
 constexpr std::array<std::string_view, kManualCount> kManualNames{"upper", "lower"};
 constexpr std::array<std::string_view, kDrawbarBankCount> kBankNames{"A", "B"};
+constexpr std::array<std::string_view, 2> kHarmonicNames{"second", "third"};
+constexpr std::array<std::string_view, 2> kVolumeNames{"normal", "soft"};
+constexpr std::array<std::string_view, 2> kDecayNames{"slow", "fast"};
 static_assert(kManualCount == 2 && kDrawbarBankCount == 2 && kDrawbarCount == 9);
 
 [[nodiscard]] bool ascii_space(char value) noexcept {
@@ -62,6 +65,37 @@ private:
     return true;
 }
 
+[[nodiscard]] bool parse_percussion(Tokens& tokens, PercussionSettings& destination,
+                                    std::string& error) {
+    if (!tokens.expect("percussion", error) || !tokens.expect("enabled", error)) return false;
+    std::string_view token;
+    if (!tokens.next(token) || (token != "0" && token != "1")) {
+        error = "Control percussion enabled must be 0 or 1.";
+        return false;
+    }
+    destination.enabled = token == "1";
+    if (!tokens.expect("harmonic", error)) return false;
+    if (!tokens.next(token) || (token != "second" && token != "third")) {
+        error = "Control percussion harmonic must be second or third.";
+        return false;
+    }
+    destination.harmonic = token == "second" ? PercussionHarmonic::Second
+                                             : PercussionHarmonic::Third;
+    if (!tokens.expect("volume", error)) return false;
+    if (!tokens.next(token) || (token != "normal" && token != "soft")) {
+        error = "Control percussion volume must be normal or soft.";
+        return false;
+    }
+    destination.volume = token == "normal" ? PercussionVolume::Normal : PercussionVolume::Soft;
+    if (!tokens.expect("decay", error)) return false;
+    if (!tokens.next(token) || (token != "slow" && token != "fast")) {
+        error = "Control percussion decay must be slow or fast.";
+        return false;
+    }
+    destination.decay = token == "slow" ? PercussionDecay::Slow : PercussionDecay::Fast;
+    return true;
+}
+
 [[nodiscard]] bool parse_manual(Tokens& tokens, std::size_t manual,
                                 ControlSnapshot& candidate, std::string& error) {
     if (!tokens.expect("manual", error) || !tokens.expect(kManualNames[manual], error) ||
@@ -96,8 +130,19 @@ private:
                               std::string& error) {
     Tokens tokens(text);
     ControlSnapshot candidate;
-    if (!tokens.expect("B3CONTROLS1", error) || !tokens.expect("expression", error) ||
+    std::string_view version;
+    if (!tokens.next(version) || (version != "B3CONTROLS1" && version != "B3CONTROLS2")) {
+        error = "Unsupported control version; expected B3CONTROLS1 or B3CONTROLS2.";
+        return false;
+    }
+    if (!tokens.expect("expression", error) ||
         !parse_expression(tokens, candidate.expression, error)) return false;
+    // A fresh candidate gives historical version 1 explicit Off/Second/Normal/
+    // Slow defaults, independent of the caller's destination. Version 2 must
+    // supply every percussion token; missing fields are never default-filled.
+    if (version == "B3CONTROLS2" && !parse_percussion(tokens, candidate.percussion, error)) {
+        return false;
+    }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         if (!parse_manual(tokens, manual, candidate, error)) return false;
     }
@@ -137,8 +182,12 @@ bool serialize_controls(const ControlSnapshot& snapshot, std::string& destinatio
             return false;
         }
         output << std::setprecision(std::numeric_limits<double>::max_digits10)
-               << "B3CONTROLS1\nexpression " << snapshot.expression << '\n';
+               << "B3CONTROLS2\nexpression " << snapshot.expression << '\n';
     }
+    output << "percussion enabled " << (snapshot.percussion.enabled ? '1' : '0')
+           << " harmonic " << kHarmonicNames[static_cast<std::size_t>(snapshot.percussion.harmonic)]
+           << " volume " << kVolumeNames[static_cast<std::size_t>(snapshot.percussion.volume)]
+           << " decay " << kDecayNames[static_cast<std::size_t>(snapshot.percussion.decay)] << '\n';
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         output << "manual " << kManualNames[manual] << " selected "
                << kBankNames[static_cast<std::size_t>(snapshot.selected_banks[manual])]

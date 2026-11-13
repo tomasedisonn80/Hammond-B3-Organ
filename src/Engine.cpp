@@ -33,6 +33,9 @@ namespace {
         return event.index == 0 && is_integer_in_range(event.value, 1.0);
     case EventType::Cancel:
         return event.index == 0 && event.value == 0.0;
+    case EventType::Percussion:
+        return event.manual == Manual::Upper && event.index < 4 &&
+               is_integer_in_range(event.value, 1.0);
     }
     return false;
 }
@@ -40,26 +43,52 @@ namespace {
 } // namespace
 
 Status Engine::prepare(const RuntimeProfile& profile, const ProcessSpec& spec) noexcept {
+    return prepare(profile, spec, make_legacy_console_model());
+}
+
+Status Engine::prepare(const RuntimeProfile& profile, const ProcessSpec& spec,
+                       const ConsoleModel& console_model) noexcept {
     if (!is_supported_sample_rate(spec.sample_rate) || spec.max_block_frames == 0 ||
         spec.max_block_frames > kHardMaxBlockFrames) {
         return Status::InvalidSpec;
     }
 
-    // All fallible validation occurs in a local bank before replacing state.
-    // Both the bank and profile are fixed-size values; this path allocates nothing.
+    const Status console_status = validate_console_model(console_model, spec.sample_rate);
+    if (console_status != Status::Ok) {
+        return console_status;
+    }
+
+    // Every fallible preparation occurs in local, value-owned candidates before
+    // any installed state changes. No candidate retains caller-owned memory.
     TonewheelBank candidate_bank;
     const Status status = candidate_bank.prepare(profile, spec.sample_rate, spec.seed);
     if (status != Status::Ok) {
         return status;
     }
+    ContactBank candidate_contacts;
+    const Status contact_status = candidate_contacts.prepare(console_model.contacts,
+                                                             spec.sample_rate);
+    if (contact_status != Status::Ok) {
+        return contact_status;
+    }
+    PercussionState candidate_percussion;
+    const Status percussion_status = candidate_percussion.prepare(console_model.percussion,
+                                                                  spec.sample_rate);
+    if (percussion_status != Status::Ok) {
+        return percussion_status;
+    }
 
     profile_ = profile;
     spec_ = spec;
     source_bank_ = candidate_bank;
+    contact_bank_ = candidate_contacts;
+    percussion_state_ = candidate_percussion;
     held_keys_ = {};
     controls_ = ControlState{};
     coefficients_.fill(0.0);
+    percussion_coefficients_.fill(0.0);
     frame_clock_ = spec.initial_frame;
+    percussion_eligible_ = false;
     coefficients_dirty_ = false;
     prepared_ = true;
     return Status::Ok;
@@ -121,6 +150,13 @@ ProcessResult Engine::process(std::uint32_t frames, std::span<float> mono_output
             rebuild_coefficients();
         }
 
+        const auto percussion_settings = controls_.percussion_settings();
+        bool physical_detector = false;
+        if (percussion_eligible_) {
+            (void)contact_bank_.any_closed(Manual::Upper, kDrawbarCount - 1, physical_detector);
+        }
+        const bool routed_detector = percussion_eligible_ && physical_detector;
+
         // Sources advance through silence and disconnected output alike. Every
         // branch referencing a tone consumes this one shared sample of that tone.
         source_bank_.process_frame(source_samples);
@@ -129,8 +165,23 @@ ProcessResult Engine::process(std::uint32_t frames, std::span<float> mono_output
             for (std::size_t tone = 0; tone < kToneSourceCount; ++tone) {
                 mixed += coefficients_[tone] * source_samples[tone];
             }
+            if (percussion_eligible_) {
+                double harmonic = 0.0;
+                for (std::size_t tone = 0; tone < kToneSourceCount; ++tone) {
+                    harmonic += percussion_coefficients_[tone] * source_samples[tone];
+                }
+                mixed += harmonic * percussion_state_.gain(percussion_settings);
+            }
             mono_output[frame] =
                 static_cast<float>(mixed * profile_.output_gain * controls_.expression());
+        }
+
+        // Audio used q[n] and the current contact connections. No note event or
+        // routing edit can synthesize elapsed recovery time. Both histories also
+        // advance when no output is connected; source_bank already advanced once.
+        (void)percussion_state_.advance_frame(routed_detector, percussion_settings);
+        if (contact_bank_.advance_frame()) {
+            coefficients_dirty_ = true;
         }
     }
 
@@ -149,6 +200,7 @@ void Engine::apply_event(const Event& event) noexcept {
         const bool down = event.type == EventType::NoteOn && event.value != 0.0;
         if (held_keys_[manual][key] != down) {
             held_keys_[manual][key] = down;
+            (void)contact_bank_.set_key_target(event.manual, event.index, down);
             coefficients_dirty_ = true;
         }
         break;
@@ -168,11 +220,12 @@ void Engine::apply_event(const Event& event) noexcept {
         break;
     case EventType::AllNotesOff:
         for (auto& down : held_keys_[manual]) {
-            if (down) {
-                down = false;
-                coefficients_dirty_ = true;
-            }
+            down = false;
         }
+        // A key may have a released target while contacts are still travelling.
+        // The explicit panic must open those contacts too, without resetting q.
+        (void)contact_bank_.panic_manual(event.manual);
+        coefficients_dirty_ = true;
         break;
     case EventType::BankDrawbar: {
         const auto bank = static_cast<DrawbarBank>(event.index / kDrawbarCount);
@@ -207,26 +260,66 @@ void Engine::apply_event(const Event& event) noexcept {
         }
         break;
     }
+    case EventType::Percussion: {
+        auto settings = controls_.percussion_settings();
+        const auto selection = static_cast<std::uint8_t>(event.value);
+        switch (event.index) {
+        case 0: settings.enabled = selection != 0; break;
+        case 1: settings.harmonic = static_cast<PercussionHarmonic>(selection); break;
+        case 2: settings.volume = static_cast<PercussionVolume>(selection); break;
+        case 3: settings.decay = static_cast<PercussionDecay>(selection); break;
+        default: break; // Full preflight has already excluded this case.
+        }
+        if (settings != controls_.percussion_settings()) {
+            (void)controls_.set_percussion_settings(settings);
+            coefficients_dirty_ = true;
+        }
+        break;
+    }
     }
 }
 
 void Engine::rebuild_coefficients() noexcept {
     coefficients_.fill(0.0);
+    percussion_coefficients_.fill(0.0);
     const auto controls = controls_.snapshot();
+    percussion_eligible_ = controls.percussion.enabled && controls.route_enabled[0] &&
+                           controls.selected_banks[0] == DrawbarBank::B;
+    const std::size_t harmonic_contact =
+        controls.percussion.harmonic == PercussionHarmonic::Second ? 3 : 4;
+    const double upper_sustain_gain = percussion_state_.upper_sustain_gain(controls.percussion);
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         if (!controls.route_enabled[manual]) {
             continue;
         }
         const auto bank = static_cast<std::size_t>(controls.selected_banks[manual]);
         for (std::size_t key = 0; key < kManualKeyCount; ++key) {
-            if (!held_keys_[manual][key]) {
-                continue;
-            }
+            const auto midi_note = static_cast<std::uint32_t>(key) + kMinManualMidiNote;
             for (std::size_t drawbar = 0; drawbar < kDrawbarCount; ++drawbar) {
+                bool closed = false;
+                (void)contact_bank_.contact_closed(static_cast<Manual>(manual), midi_note,
+                                                   drawbar, closed);
+                if (!closed) {
+                    continue;
+                }
                 const auto tone = static_cast<std::size_t>(profile_.manual_map[key][drawbar]) - 1;
                 const auto position =
                     static_cast<std::size_t>(controls.drawbars[manual][bank][drawbar]);
-                coefficients_[tone] += profile_.drawbar_gains[position];
+                if (manual == 0 && percussion_eligible_) {
+                    if (drawbar == harmonic_contact) {
+                        // Each currently connected branch shares its existing
+                        // source, independent of sustained drawbar position and
+                        // physical keying contact. No extra oscillator/return.
+                        percussion_coefficients_[tone] += 1.0;
+                    }
+                    if (drawbar != kDrawbarCount - 1) {
+                        coefficients_[tone] += profile_.drawbar_gains[position] * upper_sustain_gain;
+                    }
+                } else {
+                    // Preserve the legacy order and exact arithmetic when the
+                    // nominal percussion routing is ineligible or disabled.
+                    coefficients_[tone] += profile_.drawbar_gains[position];
+                }
             }
         }
     }
@@ -284,6 +377,28 @@ bool Engine::restore_controls(const ControlSnapshot& snapshot) noexcept {
 
 bool Engine::source_phase_turns(ToneId id, double& destination) const noexcept {
     return source_bank_.phase_turns(id, destination);
+}
+
+bool Engine::contact_snapshot(Manual manual, std::uint32_t midi_note,
+                              ContactKeySnapshot& destination) const noexcept {
+    return prepared_ && contact_bank_.key_snapshot(manual, midi_note, destination);
+}
+
+PercussionRoutingDiagnostics Engine::percussion_diagnostics() const noexcept {
+    if (!prepared_) {
+        return {};
+    }
+    // Derive routes from current controls rather than the audio coefficient
+    // cache: zero-frame events and stopped control restoration may dirty it.
+    const auto controls = controls_.snapshot();
+    bool physical_detector = false;
+    (void)contact_bank_.any_closed(Manual::Upper, kDrawbarCount - 1, physical_detector);
+    const bool eligible = controls.percussion.enabled && controls.route_enabled[0] &&
+                          controls.selected_banks[0] == DrawbarBank::B;
+    return {true, percussion_state_.readiness(), physical_detector, eligible,
+            eligible && physical_detector,
+            eligible ? percussion_state_.gain(controls.percussion) : 0.0,
+            eligible ? percussion_state_.upper_sustain_gain(controls.percussion) : 1.0};
 }
 
 } // namespace hammond

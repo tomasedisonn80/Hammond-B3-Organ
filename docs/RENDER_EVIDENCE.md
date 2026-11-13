@@ -36,14 +36,59 @@ importable `compile_profile.compile_profile()` on validated authoring data.
 | `--drawbars` | `888000000`; exactly nine ASCII digits 0..8 |
 | `--note` | 60; integer MIDI note 36..96 |
 | `--events` | Optional absolute-event file; incompatible with an explicit `--note` |
+| `--contacts` | `ideal`; one of `ideal`, `nominal` |
+| `--percussion` | `off`; one of `off`, `second`, `third` |
+| `--percussion-volume` | `normal`; one of `normal`, `soft` |
+| `--percussion-decay` | `slow`; one of `slow`, `fast` |
 | `--timeout-seconds` | 120; integer 1..600, renderer wall-time bound |
 
 Unsigned numeric syntax and event grammar follow the C++ CLI; duplicate options,
 unknown options and abbreviated options are rejected. Event validation includes
-`bank_drawbar`, `select_bank` and `cancel` from the console extension. The wrapper
-always passes `--fail-on-clip`, never normalizes audio, and invokes an argument list
+`bank_drawbar`, `select_bank`, `cancel` and `percussion` from the console extension.
+A `percussion` event requires manual `upper`, unsigned index 0..3, and a finite
+integer value exactly 0 or 1. Indices select enable, harmonic, volume and decay;
+their 0/1 meanings are Off/On, Second/Third, Normal/Soft and Slow/Fast respectively.
+Finite decimal spellings such as `1.0` or `1e0` follow the renderer's numeric
+grammar and are accepted as the integer value 1; nonintegral parsed values are rejected.
+The wrapper always passes `--fail-on-clip`, never normalizes audio, and invokes an argument list
 without a shell. An empty event file is a valid silence fixture. The default note
 gesture is the renderer's frame-zero note-on and floor(3*frames/4) note-off.
+
+The public `run_fixture()` API accepts the same keyword-only controls, named
+`contacts`, `percussion`, `percussion_volume` and `percussion_decay`, with the
+defaults in the table. Values must be strings from the exact case-sensitive choices.
+The defaults preserve ideal-contact, percussion-off audio, while the retained
+metadata identifies the installed algorithms. To opt into the named nominal
+contact model and third-harmonic percussion, add:
+
+```sh
+  --contacts nominal --percussion third --percussion-volume soft --percussion-decay fast
+```
+
+These are initial controls. A score's frame-zero events follow the initialization
+flush and can override them. With `--percussion off`, the retained initial harmonic
+is Second; volume and decay still initialize their controls. The manifest records
+the initial choices and exact score bytes, without pretending they describe every
+later control state or the current percussion readiness.
+
+### Fixed renderer invocation
+
+Schema 2 retains this exact argument order, with every console choice explicit
+even when its default is selected:
+
+```text
+RENDERER --profile PROFILE_COPY --output WAV --frames FRAMES
+  --sample-rate RATE --block-size BLOCK --seed SEED --drawbars DRAWBARS
+  --contacts CONTACTS --percussion PERCUSSION
+  --percussion-volume VOLUME --percussion-decay DECAY --fail-on-clip
+  (--events EVENTS_COPY | --note NOTE)
+```
+
+This is a schematic argument list, not shell syntax. `RENDERER` and all file paths
+are absolute. The last two arguments are exactly `--events` and the copied score
+path, or `--note` and the resolved default/explicit note. Numeric arguments use
+canonical unsigned decimal strings. Profile, WAV and event paths refer to
+`profile.b3p`, `render.wav` and `events.txt` inside the new evidence directory.
 
 ## Result files and failure semantics
 
@@ -67,7 +112,7 @@ later verification failure, but its mere existence is not successful evidence.
 A launch failure has null return code and null unavailable metrics/log records.
 Consumers must require the manifest success state and every verification below.
 
-## Manifest schema version 1
+## Manifest schema version 2
 
 JSON uses UTF-8, sorted keys, two-space indentation and a final LF. It contains
 no NaN/Infinity values. All hashes are lowercase hexadecimal SHA-256 of raw file
@@ -76,11 +121,11 @@ filenames above, never file URLs or paths that escape the result directory.
 
 | Field | Meaning |
 | --- | --- |
-| `schema_version` | Integer 1 |
+| `schema_version` | Integer 2 |
 | `evidence_scope` | Literal `synthetic_engineering` |
 | `status` | `incomplete`, `failed` or `succeeded` |
 | `started_at_utc`, `finished_at_utc` | ISO 8601 UTC strings ending `Z`; finish is null until finalization |
-| `parameters` | Actual frames, sample rate, block size, seed, drawbars, note, event mode, event count and `fail_on_clip: true` |
+| `parameters` | Actual frames, sample rate, block size, seed, drawbars, note, event mode, event count, the four initial console choices and `fail_on_clip: true` |
 | `inputs.profile_json` | Artifact path/hash/size, absolute original `source_path`, and `canonical_authoring_sha256` |
 | `inputs.events` | Optional artifact path/hash/size and absolute source path; null for the default note gesture |
 | `compiled_profile` | `profile.b3p` raw-byte path/hash/size |
@@ -96,12 +141,45 @@ filenames above, never file URLs or paths that escape the result directory.
 | `integrity_verified` | Whether executable, original inputs, copied inputs, compiled profile and tool bytes passed post-run checks |
 | `error` | Null on success, otherwise `{stage, message}` |
 
-`parameters.note` and `event_count` are null when inapplicable; the latter counts
-only explicit score events, excluding the nine initialization controls.
+The exact `parameters` keys are `frames`, `sample_rate`, `block_size`, `seed`,
+`drawbars`, `note`, `event_mode`, `event_count`, `contacts`, `percussion`,
+`percussion_volume`, `percussion_decay` and `fail_on_clip`. Console choices use the
+exact strings in the option table. `parameters.note` and `event_count` are null
+when inapplicable; the latter counts only explicit score events, excluding the
+thirteen initialization controls (nine drawbars followed by four percussion controls).
 `event_mode` is `default_note` or `file`. `invocation` capture flags are
 `timed_out`, `stdout_truncated`, `stderr_truncated`, `capture_incomplete` and
 `capture_errors` (an array). Capture flags other than `timed_out` are available
 only after an attempted process capture; unavailable logs remain null.
+
+Successful `renderer_metrics` and parsed stdout have exactly these keys:
+`status`, `model`, `evidence_status`, `profile_id`, `authoring_sha256`, `sample_rate`,
+`block_size`, `frames`, `seed`, `channels`, `sample_format`, `clipped_frames`,
+`clipped_channel_samples`, `peak`, `rms`, `render_schema_version`, `contact_model`
+and `percussion_model`. The three new required fields are:
+
+| Field | Required value |
+| --- | --- |
+| `render_schema_version` | Integer `2`, not a float or Boolean |
+| `contact_model` | `ideal-contacts-v1` for `parameters.contacts == "ideal"`; `nominal-linear-travel-v1` for `"nominal"` |
+| `percussion_model` | `shared-readiness-v1`, including when percussion starts disabled |
+
+`model` remains `ideal-shared-sine-v1`, the source-generator identity, and
+`evidence_status` remains `unmeasured`. Missing, extra, mistyped or inconsistent
+fields fail the metrics gate; the wrapper does not accept an older renderer merely
+because it emits the old fields. The chosen contact factory is independent of
+score controls. The fixed shared-readiness identity names a software algorithm,
+without asserting measured contact mechanics or percussion circuit fidelity.
+
+Earlier schema-1 bundles remain historical evidence with their original exact
+field sets and invocation order. They lack all four console parameters and the
+three new metric fields, and put `--fail-on-clip` immediately after `--drawbars`
+and its value. They describe the legacy ideal-contact, percussion-off renderer.
+The current producer only writes schema 2. An independent consumer supporting both
+versions must choose the corresponding strict contract explicitly; it must not
+silently upgrade a schema-1 bundle or accept mixed-version fields. See
+[RENDER_VERIFICATION.md](RENDER_VERIFICATION.md) for the independent consumer's
+supported versions and replay rules.
 
 The raw authoring-file hash and canonical authoring hash are deliberately distinct.
 The canonical digest follows [PROFILE_FORMAT.md](PROFILE_FORMAT.md); it is repeated
@@ -153,7 +231,8 @@ quantization check in normalized units, not an acoustic tolerance.
 An independent consumer should implement these checks from this document rather
 than trusting the producer's Boolean fields or importing its verification helpers:
 
-1. Require schema 1, the exact evidence scope, `status == "succeeded"`, null error,
+1. Require schema 2 for current producer output, the exact evidence scope,
+   `status == "succeeded"`, null error,
    UTC start/finish, `integrity_verified == true`, and all expected typed fields.
    Bound the manifest size and reject duplicate keys or nonfinite JSON numbers.
 2. Require the documented artifact filenames, regular nonsymlink files inside the
@@ -163,11 +242,13 @@ than trusting the producer's Boolean fields or importing its verification helper
    and compare all `profile.b3p` bytes plus the canonical authoring digest. Validate
    score events against parameters; preserve file order at equal timestamps.
 4. Require an argument list using the documented copied files and actual parameters,
-   `--fail-on-clip`, exit 0, no timeout/truncation/capture errors, and an unchanged
+   in the fixed order above with all four console flags and `--fail-on-clip`, exit 0,
+   no timeout/truncation/capture errors, and an unchanged
    executable hash. Rehash the executable if still available; an unavailable external
    executable limits current re-verification and replay, even when artifact hashes pass.
 5. Parse stdout and require exact equality to `renderer_metrics`; check `status: "ok"`,
-   the supported model/unmeasured/profile identities, canonical digest, frames, rate,
+   the exact schema-2 field set and types, contact factory and percussion algorithm,
+   the supported source-model/unmeasured/profile identities, canonical digest, frames, rate,
    block, seed, stereo PCM16 and zero clipped-frame/channel counts. Float peak/RMS
    must be finite, nonnegative, at most 1, and RMS must not exceed peak.
 6. Verify the exact 44-byte little-endian RIFF/WAVE header: PCM format 1, `fmt ` size

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Strict, standard-library validator for the proposed internal console registry.
 
-This checks one named 39-parameter engineering model, not VST3 exports or the
+This checks one named 43-parameter engineering model, not VST3 exports or the
 absent atlas companion. File parsing, validation and conversion run off the
 audio thread. Validation never modifies its argument. Public functions reject
 malformed input with ParameterError (a ValueError subclass).
@@ -17,11 +17,11 @@ import sys
 from typing import Any
 
 
-SCHEMA_VERSION = 1
-MODEL = "ideal-exclusive-ab-console-v1"
+SCHEMA_VERSION = 2
+MODEL = "exclusive-ab-percussion-console-v2"
 SCOPE = "implemented-console-subset"
 STATUS = "proposed-internal"
-PARAMETER_COUNT = 39
+PARAMETER_COUNT = 43
 UINT32_MAX = (1 << 32) - 1
 MAX_INPUT_BYTES = 256 * 1024
 DEFAULT_REGISTRY_PATH = Path(__file__).resolve().parents[1] / "data" / "parameter-registry.json"
@@ -32,13 +32,16 @@ PROVENANCE = {
     "evidence_class": "proposed",
     "applicable_variant": "nominal B-3/AO-28 console engineering subset",
     "atlas_file": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
-    "atlas_pages": [389, 397, 398, 399, 400, 401, 402],
-    "implementation_sources": ["docs/CONSOLE_EXTENSION.md", "include/hammond/ControlState.h"],
+    "atlas_pages": [127, 128, 134, 389, 397, 398, 399, 400, 401, 402, 418],
+    "implementation_sources": ["docs/CONSOLE_EXTENSION.md", "docs/CONSOLE_DYNAMICS.md",
+                               "include/hammond/ControlState.h", "include/hammond/Percussion.h",
+                               "include/hammond/Types.h"],
     "companion_recovered": False,
     "host_exports_verified": False,
     "native_host_curves_implemented": False,
     "uncertainty": None,
-    "reason": "Original internal IDs, ranges, defaults and conversions for the current ideal console. "
+    "reason": "Retains all 39 original internal console records unchanged and adds four independent percussion settings. "
+              "IDs, binary defaults and conversions are internal engineering choices, not manufacturer calibration. "
               "The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed.",
 }
 ROOT_KEYS = frozenset(("schema_version", "model", "scope", "status", "provenance", "parameters"))
@@ -114,7 +117,7 @@ def _specifications() -> dict[int, dict]:
             "normalized": {
                 "minimum": 0.0, "maximum": 1.0, "default": default / maximum,
                 "to_plain": ("floor(u * 8 + 0.5)" if kind == "drawbar_position" else
-                             "floor(u + 0.5)" if kind == "bank_selector" else "u"),
+                             "floor(u + 0.5)" if kind in ("bank_selector", "percussion_switch") else "u"),
                 "to_normalized": "x / 8" if kind == "drawbar_position" else "x",
                 "meaning": meaning,
             },
@@ -135,6 +138,14 @@ def _specifications() -> dict[int, dict]:
         add(identifier, f"manual.{manual}.selected_bank", f"{manual.title()} selected bank",
             "bank_selector", "bank-index-0=A-1=B", 1, 1, 1, "bank-index-fraction",
             {"type": "select_bank", "manual": manual, "index": 0}, [389, 397, 401, 402])
+    for index, (setting, choices) in enumerate((
+            ("enabled", "0=off-1=on"), ("harmonic", "0=second-1=third"),
+            ("volume", "0=normal-1=soft"), ("decay", "0=slow-1=fast"))):
+        add(12288 + index, f"percussion.{setting}", f"Percussion {setting}",
+            "percussion_switch", f"{setting}-index-{choices}", 1, 0, 1,
+            "percussion-setting-index-fraction",
+            {"type": "percussion", "manual": "upper", "index": index},
+            [127, 128, 134, 397, 398, 401, 402, 418])
     return result
 
 
@@ -165,7 +176,12 @@ def _validate_parameter(parameter: Any, path: str) -> None:
 
 
 def validate_registry(registry: Any) -> None:
-    """Validate the complete exact subset without changing it; order is free."""
+    """Validate only the version-2 subset without changes; record order is free.
+
+    Version-1 registry documents are intentionally rejected. Their 39 parameter
+    records retain their exact identity and meaning within this extended model;
+    registry metadata is not the separately migrated B3CONTROLS save format.
+    """
     _object(registry, ROOT_KEYS, "registry")
     for key, expected in (("schema_version", SCHEMA_VERSION), ("model", MODEL),
                           ("scope", SCOPE), ("status", STATUS)):

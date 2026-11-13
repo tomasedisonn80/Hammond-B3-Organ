@@ -150,3 +150,86 @@ No generated WAV is checked into this catalog. The fixtures total 12 seconds of
 audio per test run and each subprocess has a 30-second timeout. They qualify
 these short engineering behaviors, not callback deadlines, native hosts, broad
 physical fidelity or bitwise identity across compilers and math libraries.
+
+## Nominal console continuation fixtures
+
+The separate [console catalog](fixtures/console/console-catalog-v1.json) adds three
+original synthetic scores for `nominal-linear-travel-v1` contacts and
+`shared-readiness-v1` percussion. The five fixtures above remain unchanged and
+continue to exercise their original ideal-contact/percussion-off defaults.
+These new scores use the same bound source profile, explicitly set expression
+0.5, and contain **no acquired instrument audio**. Their contact thresholds,
+8 ms full press, 12 ms full release and normalized percussion gains are proposed;
+RC-derived time constants remain hypotheses, not measured audible decay lengths.
+
+| Fixture ID | Length | Initial upper B drawbars | Initial percussion | What to hear/check |
+| --- | ---: | --- | --- | --- |
+| `console-travel-v1` | 0.300 s | `008000000` | Off / Normal / Slow | Upper then lower A4, with separate contact travel but shared continuous source phase; velocities 127 and 1 have the same held level |
+| `console-percussion-legato-v1` | 0.875 s | `000000000` | Second / Normal / Fast | A4 decays, a joining C5 inherits shared readiness, and a short release gap permits finite recovery before A4 returns |
+| `console-routing-mask-v1` | 0.800 s | `000000008` | Second / Soft / Slow | Held upper/lower A4 through A/B, Cancel, hidden edit and percussion-off changes; the lower one-foot branch stays audible when eligible upper B is masked |
+
+All use 48 kHz, 127-frame reference blocks and the exact seed/score hashes in the
+catalog. Half-open acceptance windows identify sample boundaries rather than
+block boundaries. The travel example's upper 8-foot contact makes at frame 160
+and breaks at 6438; its lower counterpart makes at 7126 and breaks at 13447.
+The percussion detector is the ninth physical contact (index 8 / 1-foot), not
+the selected audible harmonic or a nonzero drawbar setting.
+
+Render after building, using unused output names:
+
+```sh
+cmake -E make_directory out/console-v1
+
+./build/hammond_render --profile build/nominal.b3p \
+  --output out/console-v1/console-travel-v1.wav \
+  --events examples/fixtures/console/console-travel-v1.events \
+  --sample-rate 48000 --frames 14400 --block-size 127 --seed 2623 \
+  --drawbars 008000000 --contacts nominal --percussion off \
+  --percussion-volume normal --percussion-decay slow --fail-on-clip
+
+./build/hammond_render --profile build/nominal.b3p \
+  --output out/console-v1/console-percussion-legato-v1.wav \
+  --events examples/fixtures/console/console-percussion-legato-v1.events \
+  --sample-rate 48000 --frames 42000 --block-size 127 --seed 2624 \
+  --drawbars 000000000 --contacts nominal --percussion second \
+  --percussion-volume normal --percussion-decay fast --fail-on-clip
+
+./build/hammond_render --profile build/nominal.b3p \
+  --output out/console-v1/console-routing-mask-v1.wav \
+  --events examples/fixtures/console/console-routing-mask-v1.events \
+  --sample-rate 48000 --frames 38400 --block-size 127 --seed 2625 \
+  --drawbars 000000008 --contacts nominal --percussion second \
+  --percussion-volume soft --percussion-decay slow --fail-on-clip
+```
+
+For a retained schema-2 bundle, pass the same flags and score to
+`tools/render_fixture.py`, replacing `--profile`/`--output` with
+`--profile-json data/profiles/nominal-unmeasured-v1.json` and a fresh
+`--output-dir`. Verify the resulting directory independently with
+`tools/verify_render.py`; see the [evidence contract](../docs/RENDER_EVIDENCE.md).
+
+Run the dedicated actual-audio checks:
+
+```sh
+python3 tests/test_console_catalog.py \
+  --renderer build/hammond_render --profile build/nominal.b3p -v
+ctest --test-dir build -R '^python_test_console_catalog$' --output-on-failure
+```
+
+The test requires actual build inputs, validates bounded source/score identities,
+then renders every score at block sizes 1, 127 and 1024. It checks exact same-build
+WAV equality, PCM structure, identical channels, no clipping, silent/audible spans
+and the declared contact edges. Independent sine/cosine regression uses absolute
+frame positions and closed-form elapsed-time exponentials to check component
+levels, shared decay/recovery and phase continuity. It never copies the source
+phase PRNG or imports production evidence validation. Each declared fit has a
+maximum residual of two PCM16 units, a component-amplitude tolerance of 0.00004,
+and a normalized phase-vector tolerance of 0.006. These are reviewed software
+acceptance tolerances, not instrument uncertainty estimates.
+
+No generated WAV is checked into this catalog. The scores total 1.975 seconds
+per partition; each renderer subprocess has a 30-second timeout. The contact
+model still uses sample-grid binary switches without bounce or antialiasing.
+Percussion is one nominal readiness/gain model, not a complete AO-28 circuit.
+Pedal audio, physical preset loading, loaded expression, scanner, Leslie, native
+hosts and physical-fidelity qualification remain separate work.

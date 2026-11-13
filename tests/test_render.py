@@ -118,7 +118,8 @@ class RendererTests(unittest.TestCase):
         self.assertEqual(self.profile.read_bytes(), self.profile_bytes)
         return result
 
-    def assert_metrics(self, result, *, frames, rate, block, seed, status="ok"):
+    def assert_metrics(self, result, *, frames, rate, block, seed, status="ok",
+                       contact_model="ideal-contacts-v1"):
         report = json.loads(result.stdout, parse_constant=reject_nonfinite_json)
         self.assertIsInstance(report, dict)
         expected = {
@@ -127,9 +128,12 @@ class RendererTests(unittest.TestCase):
             "authoring_sha256": self.authoring_sha256, "sample_rate": rate,
             "block_size": block, "frames": frames, "seed": seed,
             "channels": 2, "sample_format": "pcm_s16le",
+            "render_schema_version": 2, "contact_model": contact_model,
+            "percussion_model": "shared-readiness-v1",
         }
         for key, value in expected.items():
             self.assertEqual(report[key], value, key)
+        self.assertIs(type(report["render_schema_version"]), int)
         for key in ("peak", "rms"):
             self.assertIsInstance(report[key], (int, float))
             self.assertTrue(math.isfinite(report[key]), key)
@@ -160,11 +164,15 @@ class RendererTests(unittest.TestCase):
         return data, mono
 
     def render(self, *, frames=257, rate=48000, block=64, seed=0,
-               drawbars=None, note=None, events=None, extra=()):
+               drawbars=None, note=None, events=None, contacts=None, percussion=None,
+               percussion_volume=None, percussion_decay=None, extra=()):
         output = self.new_output()
         arguments = self.arguments(output, frames=frames)
         arguments.extend(("--sample-rate", rate, "--block-size", block, "--seed", seed))
-        for flag, value in (("--drawbars", drawbars), ("--note", note), ("--events", events)):
+        for flag, value in (("--drawbars", drawbars), ("--note", note), ("--events", events),
+                            ("--contacts", contacts), ("--percussion", percussion),
+                            ("--percussion-volume", percussion_volume),
+                            ("--percussion-decay", percussion_decay)):
             if value is not None:
                 arguments.extend((flag, value))
         arguments.extend(extra)
@@ -173,7 +181,11 @@ class RendererTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual(result.stderr, "")
         self.assertEqual(self.paths(), before | {output}, "Success left temporary files")
-        report = self.assert_metrics(result, frames=frames, rate=rate, block=block, seed=seed)
+        report = self.assert_metrics(
+            result, frames=frames, rate=rate, block=block, seed=seed,
+            contact_model=("nominal-linear-travel-v1" if contacts == "nominal"
+                           else "ideal-contacts-v1"),
+        )
         data, mono = self.assert_wave(output, frames=frames, rate=rate)
         if report["clipped_frames"] == 0 and report["peak"] < 0.99:
             pcm_peak = max(map(abs, mono)) / 32768.0
@@ -557,6 +569,318 @@ class RendererTests(unittest.TestCase):
         self.assertFalse((self.work / "missing").exists())
         self.assert_rejected(self.arguments(output / "output.wav"))
         self.assertEqual(output.read_bytes(), sentinel)
+
+    def test_console_defaults_and_all_explicit_flags_preserve_default_audio(self):
+        implicit = self.render(frames=1031, seed=7)
+        explicit = self.render(
+            frames=1031, seed=7, drawbars="888000000", note=60,
+            contacts="ideal", percussion="off", percussion_volume="normal",
+            percussion_decay="slow", extra=("--fail-on-clip",),
+        )
+        self.assert_same_render(implicit, explicit)
+        help_result = self.invoke(["--help"])
+        for flag in ("--contacts", "--percussion", "--percussion-volume", "--percussion-decay"):
+            self.assertIn(flag, help_result.stdout)
+        # Exercise the largest legal score-based argument set as well as --note.
+        events = self.score("0 note_on upper 60 100\n773 note_off upper 60 0\n")
+        scored = self.render(
+            frames=1031, seed=7, drawbars="888000000", events=events,
+            contacts="ideal", percussion="off", percussion_volume="normal",
+            percussion_decay="slow", extra=("--fail-on-clip",),
+        )
+        self.assert_same_render(implicit, scored)
+
+    def test_console_flags_accept_all_documented_combinations(self):
+        events = self.score("0 note_on upper 60 100\n")
+        for contacts in ("ideal", "nominal"):
+            for harmonic in ("off", "second", "third"):
+                for volume in ("normal", "soft"):
+                    for decay in ("slow", "fast"):
+                        with self.subTest(contacts=contacts, harmonic=harmonic,
+                                          volume=volume, decay=decay):
+                            rendered = self.render(
+                                frames=1025, block=127, drawbars="008000000", events=events,
+                                contacts=contacts, percussion=harmonic,
+                                percussion_volume=volume, percussion_decay=decay,
+                            )
+                            self.assertTrue(any(rendered[1]))
+                            self.assertEqual(rendered[2]["clipped_frames"], 0)
+
+    def test_console_flags_reject_unknown_case_missing_values_and_duplicates(self):
+        flags = {
+            "--contacts": ("ideal", "nominal"),
+            "--percussion": ("off", "second", "third"),
+            "--percussion-volume": ("normal", "soft"),
+            "--percussion-decay": ("slow", "fast"),
+        }
+        for flag, values in flags.items():
+            for value in ("", "0", "1", "unknown", values[0].upper(),
+                          " " + values[0], values[0] + " ", "x" * 4097):
+                with self.subTest(flag=flag, invalid=value[:30]):
+                    self.assert_rejected(self.arguments(self.new_output()) + [flag, value])
+            for suffix in ([flag], [flag, "--fail-on-clip"],
+                           [flag, values[0], flag, values[0]],
+                           [flag, values[0], flag, values[-1]]):
+                with self.subTest(suffix=suffix):
+                    self.assert_rejected(self.arguments(self.new_output()) + suffix)
+
+    def test_percussion_score_payloads_are_upper_only_bounded_and_integral(self):
+        valid = self.score("".join(
+            f"0 percussion upper {index} {value}\n"
+            for index in range(4) for value in (0, 1)
+        ) + "0 note_on upper 60 100\n")
+        rendered = self.render(frames=193, drawbars="000000000", events=valid)
+        self.assertTrue(any(rendered[1]))
+        invalid = [f"0 percussion {manual} 0 1" for manual in ("lower", "pedal", "UPPER")]
+        invalid.extend(f"0 percussion upper {index} 1"
+                       for index in ("-1", "+0", "0.0", "4", "255", "256"))
+        invalid.extend(f"0 percussion upper {index} {value}"
+                       for index in range(4)
+                       for value in ("-1", "2", "0.5", "1.01", "nan", "inf", "1e9999"))
+        invalid.extend(("0 PERCUSSION upper 0 1", "0 percussion upper 0",
+                        "0 percussion upper 0 1 extra"))
+        for contents in invalid:
+            with self.subTest(score=contents):
+                events = self.score(contents)
+                original = events.read_bytes()
+                self.assert_rejected(self.arguments(self.new_output()) + ["--events", events])
+                self.assertEqual(events.read_bytes(), original)
+
+    def test_initial_percussion_flush_precedes_frame_zero_score_overrides(self):
+        for contacts in ("ideal", "nominal"):
+            for harmonic, harmonic_value in (("second", 0), ("third", 1)):
+                with self.subTest(contacts=contacts, harmonic=harmonic):
+                    reference = self.render(
+                        frames=1501, contacts=contacts, drawbars="000000000",
+                        percussion=harmonic, percussion_volume="soft", percussion_decay="fast",
+                        events=self.score("0 note_on upper 60 100\n", "held.events"),
+                    )
+                    override = self.render(
+                        frames=1501, contacts=contacts, drawbars="000000000",
+                        percussion="off", percussion_volume="normal", percussion_decay="slow",
+                        events=self.score(
+                            "0 percussion upper 0 1\n"
+                            f"0 percussion upper 1 {harmonic_value}\n"
+                            "0 percussion upper 2 1\n0 percussion upper 3 1\n"
+                            "0 note_on upper 60 100\n", "override.events"),
+                    )
+                    self.assert_same_render(reference, override)
+                    muted = self.render(
+                        frames=1501, contacts=contacts, drawbars="000000000",
+                        percussion=harmonic, events=self.score(
+                            "0 percussion upper 0 0\n0 note_on upper 60 100\n", "off.events"),
+                    )
+                    self.assertEqual(muted[1], (0,) * 1501)
+        # Initial settings remain stored while off, and are not reapplied per block.
+        delayed = self.score("0 note_on upper 60 100\n127 percussion upper 0 1\n", "later.events")
+        initialized = self.render(
+            frames=1031, block=64, drawbars="000000000", events=delayed,
+            percussion="off", percussion_volume="soft", percussion_decay="fast",
+        )
+        explicit = self.render(
+            frames=1031, block=17, drawbars="000000000", events=self.score(
+                "0 percussion upper 2 1\n0 percussion upper 3 1\n"
+                "0 note_on upper 60 100\n127 percussion upper 0 1\n", "explicit.events"),
+        )
+        self.assert_same_render(initialized, explicit)
+        self.assertEqual(initialized[1][:127], (0,) * 127)
+        self.assertTrue(any(initialized[1][127:]))
+
+    def test_nominal_nine_contact_onsets_and_release_thresholds_at_all_rates(self):
+        # Named synthetic travel: 8 ms press, 12 ms release; render then advance.
+        # Compare against continuously running ideal source samples, not a second
+        # implementation of the C++ trajectory loop or a fixture from this binary.
+        frames, release = 2401, 1000
+        held = self.score("0 note_on upper 60 100\n", "held.events")
+        released = self.score(f"0 note_on upper 60 100\n{release} note_off upper 60 0\n",
+                              "released.events")
+        for rate in (44100, 48000, 96000):
+            for contact in range(9):
+                with self.subTest(rate=rate, contact=contact):
+                    registration = "0" * contact + "8" + "0" * (8 - contact)
+                    reference = self.render(frames=frames, rate=rate, seed=7,
+                                            drawbars=registration, events=held)
+                    nominal = self.render(frames=frames, rate=rate, seed=7, block=127,
+                                          drawbars=registration, events=released, contacts="nominal")
+                    onset = math.ceil((0.12 + 0.10 * contact) * 0.008 * rate)
+                    opening = release + math.ceil((1 - (0.04 + 0.10 * contact)) * 0.012 * rate)
+                    self.assertEqual(nominal[1][:onset], (0,) * onset)
+                    self.assertEqual(nominal[1][onset:opening], reference[1][onset:opening])
+                    self.assertTrue(any(nominal[1][release:opening]))
+                    self.assertEqual(nominal[1][opening:], (0,) * (frames - opening))
+
+    def test_nominal_panic_is_immediate_and_does_not_wait_for_release_travel(self):
+        rendered = self.render(
+            frames=1501, contacts="nominal", percussion="third", events=self.score(
+                "0 note_on upper 60 100\n1000 all_notes_off upper 0 0\n"),
+        )
+        self.assertTrue(any(rendered[1][:1000]))
+        self.assertEqual(rendered[1][1000:], (0,) * 501)
+
+    def assert_pcm_scaled(self, actual, source, gains, tolerance=1.3):
+        # Each PCM stream contributes <= 0.5 LSB rounding error, with source error
+        # amplified by gain <=1.5 here. The additional 0.05 LSB covers float casts.
+        self.assertEqual(len(actual), len(source))
+        maximum = max(abs(sample - original * gain)
+                      for sample, original, gain in zip(actual, source, gains))
+        self.assertLessEqual(maximum, tolerance, f"PCM envelope error {maximum} LSB")
+
+    def test_shared_percussion_matches_nominal_decay_without_note_retrigger(self):
+        frames, rate = 5003, 48000
+        score = self.score("0 note_on upper 60 100\n2000 note_on upper 64 100\n")
+        fast_tau = (1.5e6 * 4.7e6 / (1.5e6 + 4.7e6)) * 3.3e-7
+        for harmonic, registration in (("second", "000800000"), ("third", "000080000")):
+            source = self.render(frames=frames, rate=rate, seed=7, drawbars=registration, events=score)
+            for decay, tau, fast_gain in (("slow", 1.551, 1.0), ("fast", fast_tau, 1.5)):
+                for volume, level in (("normal", 1.0), ("soft", 0.5)):
+                    with self.subTest(harmonic=harmonic, decay=decay, volume=volume):
+                        actual = self.render(
+                            frames=frames, rate=rate, seed=7, drawbars="000000000", events=score,
+                            percussion=harmonic, percussion_volume=volume, percussion_decay=decay,
+                        )
+                        gains = (level * fast_gain * math.exp(-frame / (rate * tau))
+                                 for frame in range(frames))
+                        self.assert_pcm_scaled(actual[1], source[1], gains)
+        held = self.score("0 note_on upper 60 100\n", "held.events")
+        tied = self.score("0 note_on upper 60 100\n1000 note_on upper 60 1\n"
+                          "2000 note_off upper 60 0\n2000 note_on upper 60 127\n", "tied.events")
+        for contacts in ("ideal", "nominal"):
+            with self.subTest(no_elapsed_recharge=contacts):
+                common = dict(frames=frames, seed=7, contacts=contacts, drawbars="000000000",
+                              percussion="third", percussion_decay="fast")
+                self.assert_same_render(self.render(events=held, **common),
+                                        self.render(events=tied, **common))
+
+    def test_percussion_recovery_uses_elapsed_open_frames_and_shared_phase(self):
+        frames, rate, release, gap = 3501, 48000, 1700, 137
+        repress = release + gap
+        events = self.score(f"0 note_on upper 60 100\n{release} note_off upper 60 0\n"
+                            f"{repress} note_on upper 60 100\n")
+        source = self.render(frames=frames, seed=7, drawbars="000800000", events=events)
+        actual = self.render(frames=frames, seed=7, drawbars="000000000", events=events,
+                             percussion="second", percussion_decay="fast")
+        tau = (1.5e6 * 4.7e6 / (1.5e6 + 4.7e6)) * 3.3e-7
+        q_at_release = math.exp(-release / (rate * tau))
+        recovered = 1 - (1 - q_at_release) * math.exp(-gap / (rate * 0.03432))
+        self.assertLess(recovered, 1)
+        self.assertGreater(recovered, q_at_release)
+        gains = [1.5 * math.exp(-frame / (rate * tau)) if frame < release
+                 else 0.0 if frame < repress
+                 else 1.5 * recovered * math.exp(-(frame - repress) / (rate * tau))
+                 for frame in range(frames)]
+        self.assert_pcm_scaled(actual[1], source[1], gains)
+        self.assertEqual(actual[1][release:repress], (0,) * gap)
+
+    def test_nominal_percussion_harmonic_contact_can_precede_detector_contact(self):
+        frames, rate = 1501, 48000
+        events = self.score("0 note_on upper 60 100\n")
+        source = self.render(frames=frames, seed=7, drawbars="000800000", events=events)
+        actual = self.render(frames=frames, seed=7, drawbars="000000000", events=events,
+                             contacts="nominal", percussion="second")
+        onset = math.ceil(0.42 * 0.008 * rate)
+        detector = math.ceil(0.92 * 0.008 * rate)
+        self.assertEqual(actual[1][:onset], (0,) * onset)
+        self.assertEqual(actual[1][onset:detector], source[1][onset:detector])
+        self.assertTrue(any(actual[1][onset:detector]))
+        gains = [0.0 if frame < onset else 1.0 if frame < detector
+                 else math.exp(-(frame - detector) / (rate * 1.551))
+                 for frame in range(frames)]
+        self.assert_pcm_scaled(actual[1], source[1], gains)
+
+    def test_percussion_is_upper_b_only_and_masks_stored_one_foot_drawbar(self):
+        for contacts in ("ideal", "nominal"):
+            for name, contents in (
+                ("lower", "0 drawbar lower 2 8\n0 drawbar lower 8 8\n0 note_on lower 60 100\n"),
+                ("upper-a", "0 select_bank upper 0 0\n0 drawbar upper 2 8\n"
+                            "0 drawbar upper 8 8\n0 note_on upper 60 100\n"),
+            ):
+                with self.subTest(contacts=contacts, route=name):
+                    events = self.score(contents)
+                    common = dict(frames=1501, contacts=contacts, drawbars="000000000", events=events)
+                    self.assert_same_render(self.render(percussion="off", **common),
+                                            self.render(percussion="third", **common))
+            events = self.score("0 note_on upper 60 100\n1000 percussion upper 0 0\n")
+            common = dict(frames=1501, contacts=contacts, percussion="second", events=events)
+            stored = self.render(drawbars="000000008", **common)
+            empty = self.render(drawbars="000000000", **common)
+            self.assertEqual(stored[1][:1000], empty[1][:1000])
+            self.assertTrue(any(stored[1][1000:]))
+            self.assertEqual(empty[1][1000:], (0,) * 501)
+
+    def test_console_dense_scores_are_identical_across_rates_and_block_partitions(self):
+        dense = ["0 percussion upper 2 0\n"] * 1023 + ["0 note_on upper 60 100\n"]
+        dense.extend(f"1 percussion upper 1 {index % 2}\n" for index in range(700))
+        dense.extend(f"17 percussion upper 2 {index % 2}\n" for index in range(1024))
+        dense.extend("18 percussion upper 3 1\n" for _ in range(512))
+        tail = ("127 note_on upper 64 100\n256 expression upper 0 0.5\n"
+                "1000 drawbar lower 2 8\n1000 note_on lower 55 100\n"
+                "1200 all_notes_off upper 0 0\n1234 note_on upper 67 100\n"
+                "2048 cancel upper 0 0\n2501 select_bank upper 0 1\n"
+                "4098 note_off upper 67 0\n5002 expression upper 0 0\n")
+        dense_score = self.score("".join(dense) + tail, "dense-console.events")
+        sparse_score = self.score(
+            "0 note_on upper 60 100\n1 percussion upper 1 1\n"
+            "17 percussion upper 2 1\n18 percussion upper 3 1\n" + tail,
+            "sparse-console.events",
+        )
+        for rate in (44100, 48000, 96000):
+            common = dict(frames=5003, rate=rate, seed=7, drawbars="008000008",
+                          contacts="nominal", percussion="second")
+            reference = self.render(block=1, events=sparse_score, **common)
+            self.assertTrue(any(reference[1]))
+            for block in (*BLOCK_SIZES, 65536):
+                with self.subTest(rate=rate, block=block):
+                    self.assert_same_render(reference, self.render(block=block, events=dense_score, **common))
+        too_many = self.score("0 percussion upper 0 1\n" * 1025, "too-dense.events")
+        self.assert_rejected(self.arguments(self.new_output()) + [
+            "--contacts", "nominal", "--percussion", "third", "--events", too_many,
+        ], "1024")
+
+    def test_nominal_percussion_clipping_failure_preserves_inputs_and_cleans_output(self):
+        frames = 4097
+        events = self.clipping_score()
+        original_score = events.read_bytes()
+        loud = self.render(frames=frames, block=127, seed=7, drawbars="888888888",
+                           events=events, contacts="nominal", percussion="third",
+                           percussion_decay="fast")
+        self.assertGreater(loud[2]["clipped_frames"], 0)
+        output = self.new_output()
+        before = self.paths()
+        result = self.invoke(self.arguments(output, frames=frames) + [
+            "--block-size", 127, "--seed", 7, "--drawbars", "888888888", "--events", events,
+            "--contacts", "nominal", "--percussion", "third", "--percussion-decay", "fast",
+            "--fail-on-clip",
+        ])
+        self.assertEqual(result.returncode, 2, result.stdout + result.stderr)
+        self.assertIn("clipping", result.stderr.lower())
+        report = self.assert_metrics(result, frames=frames, rate=48000, block=127, seed=7,
+                                     status="clipped", contact_model="nominal-linear-travel-v1")
+        self.assertEqual({**report, "status": "ok"}, loud[2])
+        self.assertFalse(output.exists())
+        self.assertEqual(self.paths(), before)
+        self.assertEqual(events.read_bytes(), original_score)
+        self.assertEqual(self.profile.read_bytes(), self.profile_bytes)
+
+    def test_console_input_collisions_and_no_clobber_keep_existing_bytes(self):
+        events = self.score("0 note_on upper 60 100\n")
+        original = events.read_bytes()
+        suffix = ["--events", events, "--contacts", "nominal", "--percussion", "third",
+                  "--percussion-volume", "soft", "--percussion-decay", "fast"]
+        for output in (events, self.profile):
+            with self.subTest(collision=output.name):
+                self.assert_rejected(self.arguments(output) + suffix, "collides")
+        output = self.new_output()
+        sentinel = b"previous output must survive console rendering\n"
+        output.write_bytes(sentinel)
+        modified = output.stat().st_mtime_ns
+        self.assert_rejected(self.arguments(output) + suffix, "already exists")
+        self.assertEqual(output.read_bytes(), sentinel)
+        self.assertEqual(output.stat().st_mtime_ns, modified)
+        alias = self.work / "score-hardlink.wav"
+        os.link(events, alias)
+        self.assert_rejected(self.arguments(alias) + suffix)
+        self.assertEqual(alias.read_bytes(), original)
+        self.assertEqual(events.read_bytes(), original)
 
 
 if __name__ == "__main__":

@@ -12,7 +12,8 @@ namespace {
 } // namespace
 
 bool is_valid_control_snapshot(const ControlSnapshot& snapshot) noexcept {
-    if (!valid_expression(snapshot.expression)) {
+    if (!valid_expression(snapshot.expression) ||
+        !is_valid_percussion_settings(snapshot.percussion)) {
         return false;
     }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
@@ -73,6 +74,14 @@ bool ControlState::set_expression(double expression) noexcept {
         return false;
     }
     state_.expression = expression;
+    return true;
+}
+
+bool ControlState::set_percussion_settings(const PercussionSettings& settings) noexcept {
+    if (!is_valid_percussion_settings(settings)) {
+        return false;
+    }
+    state_.percussion = settings;
     return true;
 }
 

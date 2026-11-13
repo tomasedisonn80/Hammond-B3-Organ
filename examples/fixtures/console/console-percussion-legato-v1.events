@@ -1,0 +1,12 @@
+# Synthetic nominal console fixture: console-percussion-legato-v1.
+# frames=42000 rate=48000 seed=2624 drawbars=000000000
+# contacts=nominal percussion=second volume=normal decay=fast
+# A joining C5 shares the decaying readiness; no sustained drawbars are audible.
+0 expression upper 0 0.5
+0 note_on upper 69 100
+12000 note_on upper 72 100
+24000 note_off upper 69 0
+24000 note_off upper 72 0
+# A finite open-contact interval permits recovery before the next A4.
+28000 note_on upper 69 100
+41000 note_off upper 69 0

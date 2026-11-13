@@ -1,5 +1,6 @@
 #pragma once
 
+#include "hammond/Percussion.h"
 #include "hammond/Types.h"
 
 #include <array>
@@ -23,6 +24,7 @@ struct ControlSnapshot {
     std::array<DrawbarBank, kManualCount> selected_banks{DrawbarBank::B, DrawbarBank::B};
     std::array<bool, kManualCount> route_enabled{true, true};
     double expression{1.0}; // Global normalized linear-gain surrogate, finite 0..1.
+    PercussionSettings percussion{}; // Retained controls; no readiness/history.
 
     [[nodiscard]] bool operator==(const ControlSnapshot&) const noexcept = default;
 };
@@ -51,6 +53,8 @@ public:
     [[nodiscard]] bool select_bank(Manual manual, DrawbarBank bank) noexcept;
     [[nodiscard]] bool cancel(Manual manual) noexcept;
     [[nodiscard]] bool set_expression(double expression) noexcept;
+    // Stores controls independently of upper-B eligibility and dynamic q.
+    [[nodiscard]] bool set_percussion_settings(const PercussionSettings& settings) noexcept;
 
     [[nodiscard]] ControlSnapshot snapshot() const noexcept { return state_; }
     // Validate the complete candidate before replacing any retained control.
@@ -70,6 +74,9 @@ public:
     [[nodiscard]] bool selected_bank(Manual manual, DrawbarBank& destination) const noexcept;
     [[nodiscard]] bool route_enabled(Manual manual, bool& destination) const noexcept;
     [[nodiscard]] double expression() const noexcept { return state_.expression; }
+    [[nodiscard]] PercussionSettings percussion_settings() const noexcept {
+        return state_.percussion;
+    }
 
 private:
     ControlSnapshot state_{};

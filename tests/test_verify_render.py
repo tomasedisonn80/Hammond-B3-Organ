@@ -44,6 +44,27 @@ def required_file(name):
 
 
 class VerifyRenderTests(unittest.TestCase):
+    @staticmethod
+    def legacy_grammar_fixture(source, destination):
+        """Construct old-schema parser evidence from byte-identical default audio.
+
+        This intentionally edits metadata; it is not a claim that the current
+        renderer emitted schema 1. Historical runtime execution is a separate
+        compatibility check. No old executable or checkout is a test dependency.
+        """
+        shutil.copytree(source, destination)
+        manifest = json.loads((destination / "manifest.json").read_bytes())
+        manifest["schema_version"] = 1
+        for name in ("contacts", "percussion", "percussion_volume", "percussion_decay"):
+            del manifest["parameters"][name]
+        argv = manifest["invocation"]["argv"]
+        manifest["invocation"]["argv"] = argv[:15] + argv[23:]
+        for name in ("render_schema_version", "contact_model", "percussion_model"):
+            del manifest["renderer_metrics"][name]
+        VerifyRenderTests.rewrite(destination, manifest["invocation"]["stdout"],
+                                 (json.dumps(manifest["renderer_metrics"]) + "\n").encode("utf-8"))
+        VerifyRenderTests.save(destination, manifest)
+
     @classmethod
     def setUpClass(cls):
         source_renderer = required_file("HAMMOND_RENDER_EXECUTABLE")
@@ -59,6 +80,9 @@ class VerifyRenderTests(unittest.TestCase):
         cls.profile.write_bytes((ROOT / "data/profiles/nominal-unmeasured-v1.json").read_bytes())
         cls.base = cls.fixtures / "retained note bundle"
         cls.event_base = cls.fixtures / "retained events bundle"
+        cls.console_base = cls.fixtures / "retained nominal console bundle"
+        cls.legacy_base = cls.fixtures / "constructed schema1 note bundle"
+        cls.legacy_event_base = cls.fixtures / "constructed schema1 event bundle"
         score = cls.fixtures / "source events.txt"
         score.write_bytes(b"\xef\xbb\xbf# all supported controls; explicit CRLF\r\n"
                           b"0 drawbar upper 2 8\r\n0 bank_drawbar upper 11 6\r\n"
@@ -74,6 +98,22 @@ class VerifyRenderTests(unittest.TestCase):
                 raise RuntimeError(f"Real-render prerequisite failed: {result['error']}")
         if (cls.base / "profile.b3p").read_bytes() != cls.expected_compiled:
             raise RuntimeError("Real fixture's compiled profile differs from HAMMOND_TEST_PROFILE")
+        cls.legacy_grammar_fixture(cls.base, cls.legacy_base)
+        cls.legacy_grammar_fixture(cls.event_base, cls.legacy_event_base)
+        console_score = cls.fixtures / "console events.txt"
+        console_score.write_bytes(
+            b"0 select_bank upper 0 1\n0 percussion upper 0 1.0\n"
+            b"0 percussion upper 1 1e0\n0 percussion upper 2 0.0\n"
+            b"0 percussion upper 3 +1\n0 note_on upper 60 100\n"
+            b"1000 note_off upper 60 0\n1700 note_on upper 64 100\n"
+            b"2400 percussion upper 0 0\n2700 all_notes_off upper 0 0\n")
+        result = producer.run_fixture(renderer=cls.renderer, output_dir=cls.console_base,
+                                      profile_json=cls.profile, frames=4096, sample_rate=48000,
+                                      block_size=127, seed=7, drawbars="008000000",
+                                      contacts="nominal", percussion="third", percussion_volume="soft",
+                                      percussion_decay="fast", events=console_score)
+        if result["status"] != "succeeded":
+            raise RuntimeError(f"Nominal-console real-render prerequisite failed: {result['error']}")
 
     def setUp(self):
         temporary = tempfile.TemporaryDirectory(prefix="hammond-consumer-mutations-")
@@ -117,6 +157,7 @@ class VerifyRenderTests(unittest.TestCase):
     def test_real_bundle_recomputes_identity_pcm_and_reports_scope(self):
         report = consumer.verify_bundle(self.base)
         self.assertEqual(report["status"], "verified_retained_bundle")
+        self.assertEqual(report["schema_version"], 2)
         self.assertEqual(report["artifacts_verified"], 5)
         self.assertEqual(report["evidence_scope"], "synthetic_engineering")
         self.assertEqual(report["renderer"]["status"], "matched")
@@ -140,6 +181,126 @@ class VerifyRenderTests(unittest.TestCase):
         report = consumer.verify_bundle(directory / "manifest.json")
         self.assertEqual(report["status"], "verified_retained_bundle")
         self.assertEqual(report["manifest"], str(directory / "manifest.json"))
+
+    def test_constructed_schema1_note_and_event_grammars_remain_supported(self):
+        for source, artifact_count in ((self.legacy_base, 5), (self.legacy_event_base, 6)):
+            with self.subTest(source=source.name):
+                directory, manifest = self.clone(source)
+                self.assertEqual(len(manifest["parameters"]), 9)
+                self.assertEqual(len(manifest["invocation"]["argv"]), 18)
+                self.assertEqual(len(manifest["renderer_metrics"]), 15)
+                report = consumer.verify_bundle(directory)
+                self.assertEqual(report["schema_version"], 1)
+                self.assertEqual(report["artifacts_verified"], artifact_count)
+                self.assertEqual(report["replay"]["status"], "not_performed")
+                self.assertEqual(report["provenance"]["authentication"], "not_established")
+
+    def test_real_nominal_console_bundle_checks_model_and_retained_events(self):
+        report = consumer.verify_bundle(self.console_base)
+        manifest = json.loads((self.console_base / "manifest.json").read_bytes())
+        self.assertEqual(report["schema_version"], 2)
+        self.assertEqual(report["artifacts_verified"], 6)
+        self.assertEqual(len(manifest["parameters"]), 13)
+        self.assertEqual(len(manifest["invocation"]["argv"]), 26)
+        self.assertEqual(len(manifest["renderer_metrics"]), 18)
+        self.assertEqual(manifest["renderer_metrics"]["contact_model"], "nominal-linear-travel-v1")
+        self.assertEqual(manifest["renderer_metrics"]["percussion_model"], "shared-readiness-v1")
+        self.assertGreater(manifest["wav"]["pcm_sum_squares_integer"], 0)
+        self.assertEqual(manifest["parameters"]["event_count"], 10)
+
+    def test_all_console_parameter_combinations_verify_actual_renders(self):
+        for contacts in ("ideal", "nominal"):
+            for percussion in ("off", "second", "third"):
+                for volume in ("normal", "soft"):
+                    for decay in ("slow", "fast"):
+                        with self.subTest(contacts=contacts, percussion=percussion, volume=volume, decay=decay):
+                            directory = self.work / f"{contacts}-{percussion}-{volume}-{decay}"
+                            result = producer.run_fixture(
+                                renderer=self.renderer, output_dir=directory, profile_json=self.profile,
+                                frames=401, sample_rate=48000, block_size=127, seed=7,
+                                drawbars="008000000", contacts=contacts, percussion=percussion,
+                                percussion_volume=volume, percussion_decay=decay)
+                            self.assertEqual(result["status"], "succeeded", result["error"])
+                            self.assertEqual(consumer.verify_bundle(directory)["schema_version"], 2)
+
+    def test_schema2_console_parameters_require_exact_strings_and_fields(self):
+        invalid = {
+            "contacts": ("Ideal", "linear", "", 0, False, None, [], {}),
+            "percussion": ("on", "Second", "", 1, True, None, [], {}),
+            "percussion_volume": ("loud", "Soft", "", 0, False, None, [], {}),
+            "percussion_decay": ("quick", "Slow", "", 0, False, None, [], {}),
+        }
+        for name, values in invalid.items():
+            for value in values:
+                with self.subTest(name=name, value=value):
+                    self.change_field(["parameters", name], value)
+            directory, manifest = self.clone()
+            del manifest["parameters"][name]
+            self.reject(directory, manifest, "parameters")
+        directory, manifest = self.clone()
+        manifest["parameters"]["console_model"] = "nominal"
+        self.reject(directory, manifest, "parameters")
+
+    def test_schema1_rejects_new_parameters_metrics_invocation_and_events(self):
+        for name, value in (("contacts", "ideal"), ("percussion", "off"),
+                            ("percussion_volume", "normal"), ("percussion_decay", "slow")):
+            with self.subTest(parameter=name):
+                self.change_field(["parameters", name], value, self.legacy_base)
+        for name, value in (("render_schema_version", 2), ("contact_model", "ideal-contacts-v1"),
+                            ("percussion_model", "shared-readiness-v1")):
+            with self.subTest(metric=name):
+                directory, manifest = self.clone(self.legacy_base)
+                manifest["renderer_metrics"][name] = value
+                self.rewrite(directory, manifest["invocation"]["stdout"],
+                             json.dumps(manifest["renderer_metrics"]).encode("utf-8"))
+                self.reject(directory, manifest, "renderer_metrics")
+        directory, manifest = self.clone(self.legacy_base)
+        manifest["invocation"]["argv"][15:15] = ["--contacts", "ideal", "--percussion", "off",
+                                                "--percussion-volume", "normal", "--percussion-decay", "slow"]
+        self.reject(directory, manifest, "invocation.argv")
+        directory, manifest = self.clone(self.legacy_event_base)
+        self.rewrite(directory, manifest["inputs"]["events"], b"0 percussion upper 0 1\n")
+        manifest["parameters"]["event_count"] = 1
+        self.reject(directory, manifest, "events")
+
+    def test_schema2_requires_matching_model_fields_and_render_version(self):
+        changes = (("render_schema_version", 1), ("render_schema_version", 2.0),
+                   ("render_schema_version", True), ("contact_model", "nominal-linear-travel-v1"),
+                   ("contact_model", "ideal"), ("contact_model", None),
+                   ("percussion_model", "none"), ("percussion_model", None))
+        for key, value in changes:
+            with self.subTest(key=key, value=value):
+                directory, manifest = self.clone()
+                manifest["renderer_metrics"][key] = value
+                self.rewrite(directory, manifest["invocation"]["stdout"],
+                             json.dumps(manifest["renderer_metrics"]).encode("utf-8"))
+                self.reject(directory, manifest, "renderer_metrics")
+        for key in ("render_schema_version", "contact_model", "percussion_model"):
+            with self.subTest(missing=key):
+                directory, manifest = self.clone()
+                del manifest["renderer_metrics"][key]
+                self.rewrite(directory, manifest["invocation"]["stdout"],
+                             json.dumps(manifest["renderer_metrics"]).encode("utf-8"))
+                self.reject(directory, manifest, "renderer_metrics")
+        directory, manifest = self.clone(self.console_base)
+        manifest["renderer_metrics"]["contact_model"] = "ideal-contacts-v1"
+        self.rewrite(directory, manifest["invocation"]["stdout"],
+                     json.dumps(manifest["renderer_metrics"]).encode("utf-8"))
+        self.reject(directory, manifest, "contact_model")
+
+    def test_schema2_rejects_rehashed_invalid_percussion_scores(self):
+        invalid = (b"0 percussion lower 0 1\n", b"0 percussion upper 4 1\n",
+                   b"0 percussion upper 0 -1\n", b"0 percussion upper 1 2\n",
+                   b"0 percussion upper 2 .5\n", b"0 percussion upper 3 0.999\n",
+                   b"0 percussion upper -1 1\n", b"0 percussion upper 1.0 1\n",
+                   b"0 percussion upper 0 1e-999\n", b"0 percussion upper 0 nan\n",
+                   b"0 percussion upper 0 1 extra\n")
+        for raw in invalid:
+            with self.subTest(score=raw):
+                directory, manifest = self.clone(self.console_base)
+                self.rewrite(directory, manifest["inputs"]["events"], raw)
+                manifest["parameters"]["event_count"] = 1
+                self.reject(directory, manifest, "events")
 
     def test_consumer_does_not_call_producer_verification_helpers(self):
         with mock.patch.object(producer, "inspect_wav", side_effect=AssertionError("producer WAV helper")), \
@@ -193,7 +354,7 @@ class VerifyRenderTests(unittest.TestCase):
                 self.change_field(keys, value)
 
     def test_success_scope_integrity_and_error_must_be_true_claims(self):
-        for key, values in {"schema_version": [True, 1.0, 2], "status": ["failed", "incomplete"],
+        for key, values in {"schema_version": [True, 2.0, 0, 1, 3], "status": ["failed", "incomplete"],
                             "evidence_scope": ["measured"], "integrity_verified": [False, 1],
                             "error": [{"stage": "metrics", "message": "failure"}]}.items():
             for value in values:
@@ -309,8 +470,11 @@ class VerifyRenderTests(unittest.TestCase):
     def test_argv_exact_parameters_flags_and_copied_paths_are_checked(self):
         for index, value in ((0, "other-renderer"), (1, "--unknown"), (2, str(self.work / "other.b3p")),
                              (4, str(self.work / "render.wav")), (6, "260"), (10, "0127"),
-                             (12, "8"), (14, "888000000"), (15, "--no-fail-on-clip"),
-                             (16, "--events"), (17, "61")):
+                             (12, "8"), (14, "888000000"), (15, "--unknown"),
+                             (16, "nominal"), (17, "--unknown"), (18, "second"),
+                             (19, "--unknown"), (20, "soft"), (21, "--unknown"),
+                             (22, "fast"), (23, "--no-fail-on-clip"),
+                             (24, "--events"), (25, "61")):
             with self.subTest(index=index):
                 directory, manifest = self.clone()
                 manifest["invocation"]["argv"][index] = value

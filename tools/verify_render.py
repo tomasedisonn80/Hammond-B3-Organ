@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independently verify a retained schema-1 synthetic render bundle.
+"""Independently verify a retained schema-1 or schema-2 synthetic render bundle.
 
 Public API: verify_bundle(directory_or_manifest) -> JSON-compatible report.
 VerificationError/OSError means failure. This consumer never imports the fixture
@@ -255,7 +255,7 @@ def _matches(record, actual, label):
         _literal(record[key], actual[key], f"{label}.{key}")
 
 
-def _events(raw, frames):
+def _events(raw, frames, schema_version):
     """Independent parser of the documented five-field absolute-event grammar."""
     _require(len(raw) <= MAX_SCORE and b"\x00" not in raw, "events: oversized file or NUL byte")
     source = io.BytesIO(raw[3:] if raw.startswith(b"\xef\xbb\xbf") else raw)
@@ -307,6 +307,8 @@ def _events(raw, frames):
             valid = index == 0 and number in (0, 1)
         elif kind in ("all_notes_off", "cancel"):
             valid = index == 0 and number == 0
+        elif kind == "percussion" and schema_version == 2:
+            valid = manual == "upper" and index <= 3 and number in (0, 1)
         else:
             valid = False
         _require(valid, f"{label}: unknown event type or invalid payload")
@@ -382,9 +384,20 @@ def _context(manifest, started, finished):
     _require(environment["byteorder"] in ("little", "big"), "environment.byteorder: unsupported value")
 
 
-def _parameters(value):
-    parameters = _object(value, {"frames", "sample_rate", "block_size", "seed", "drawbars",
-                                 "note", "event_mode", "event_count", "fail_on_clip"}, "parameters")
+def _parameters(value, schema_version):
+    keys = {"frames", "sample_rate", "block_size", "seed", "drawbars",
+            "note", "event_mode", "event_count", "fail_on_clip"}
+    console_choices = {"contacts": ("ideal", "nominal"),
+                       "percussion": ("off", "second", "third"),
+                       "percussion_volume": ("normal", "soft"),
+                       "percussion_decay": ("slow", "fast")}
+    if schema_version == 2:
+        keys.update(console_choices)
+    parameters = _object(value, keys, "parameters")
+    if schema_version == 2:
+        for key, choices in console_choices.items():
+            _require(type(parameters[key]) is str and parameters[key] in choices,
+                     f"parameters.{key}: unsupported value")
     rate = _integer(parameters["sample_rate"], 44100, 96000, "parameters.sample_rate")
     _require(rate in (44100, 48000, 96000), "parameters.sample_rate: unsupported rate")
     _integer(parameters["frames"], 1, rate * 600, "parameters.frames")
@@ -404,7 +417,7 @@ def _parameters(value):
     return parameters
 
 
-def _invocation(value, parameters, renderer):
+def _invocation(value, parameters, renderer, schema_version):
     invocation = _object(value, {"argv", "returncode", "timed_out", "stdout_truncated",
                                 "stderr_truncated", "capture_incomplete", "capture_errors",
                                 "stdout", "stderr"}, "invocation")
@@ -413,25 +426,36 @@ def _invocation(value, parameters, renderer):
         _literal(invocation[key], False, f"invocation.{key}")
     _literal(invocation["capture_errors"], [], "invocation.capture_errors")
     argv = invocation["argv"]
-    _require(type(argv) is list and len(argv) == 18 and all(type(token) is str for token in argv),
-             "invocation.argv: expected the complete 18-token producer argument list")
+    count = 18 if schema_version == 1 else 26
+    _require(type(argv) is list and len(argv) == count and all(type(token) is str for token in argv),
+             f"invocation.argv: expected the complete {count}-token producer argument list")
     profile_path = _absolute(argv[2], "invocation.argv profile")
     original_directory = profile_path.parent
     expected = [renderer["path"], "--profile", str(original_directory / "profile.b3p"),
                 "--output", str(original_directory / "render.wav"), "--frames", str(parameters["frames"]),
                 "--sample-rate", str(parameters["sample_rate"]), "--block-size", str(parameters["block_size"]),
-                "--seed", str(parameters["seed"]), "--drawbars", parameters["drawbars"], "--fail-on-clip"]
+                "--seed", str(parameters["seed"]), "--drawbars", parameters["drawbars"]]
+    if schema_version == 2:
+        expected += ["--contacts", parameters["contacts"], "--percussion", parameters["percussion"],
+                     "--percussion-volume", parameters["percussion_volume"],
+                     "--percussion-decay", parameters["percussion_decay"]]
+    expected += ["--fail-on-clip"]
     expected += (["--events", str(original_directory / "events.txt")] if parameters["event_mode"] == "file"
                  else ["--note", str(parameters["note"])])
     _literal(argv, expected, "invocation.argv")
     return invocation
 
 
-def _metrics(value, parameters, authoring_hash):
+def _metrics(value, parameters, authoring_hash, schema_version):
     expected = {"status": "ok", "model": "ideal-shared-sine-v1", "evidence_status": "unmeasured",
                 "profile_id": "nominal-unmeasured-v1", "authoring_sha256": authoring_hash,
                 "channels": 2, "sample_format": "pcm_s16le", "clipped_frames": 0,
                 "clipped_channel_samples": 0}
+    if schema_version == 2:
+        expected.update({"render_schema_version": 2,
+                         "contact_model": ("ideal-contacts-v1" if parameters["contacts"] == "ideal"
+                                           else "nominal-linear-travel-v1"),
+                         "percussion_model": "shared-readiness-v1"})
     expected.update({key: parameters[key] for key in ("frames", "sample_rate", "block_size", "seed")})
     _object(value, set(expected) | {"peak", "rms"}, "renderer_metrics")
     for key, target in expected.items():
@@ -478,14 +502,15 @@ def verify_bundle(directory_or_manifest):
                        "parameters", "inputs", "compiled_profile", "renderer", "tools", "git",
                        "environment", "limits", "invocation", "renderer_metrics", "wav",
                        "metric_comparison", "integrity_verified", "error"}, "manifest")
-    for key, expected in (("schema_version", 1), ("evidence_scope", "synthetic_engineering"),
+    schema_version = _integer(manifest["schema_version"], 1, 2, "schema_version")
+    for key, expected in (("evidence_scope", "synthetic_engineering"),
                           ("status", "succeeded"), ("error", None), ("integrity_verified", True)):
         _literal(manifest[key], expected, key)
     started = _utc(manifest["started_at_utc"], "started_at_utc")
     finished = _utc(manifest["finished_at_utc"], "finished_at_utc")
     _require(started <= finished, "finish precedes start")
     _context(manifest, started, finished)
-    parameters = _parameters(manifest["parameters"])
+    parameters = _parameters(manifest["parameters"], schema_version)
     frames, rate = parameters["frames"], parameters["sample_rate"]
     limits = _object(manifest["limits"], {"timeout_seconds", "log_bytes_per_stream", "metrics_json_bytes",
                                         "event_bytes", "executable_bytes", "expected_wav_bytes"}, "limits")
@@ -499,7 +524,7 @@ def verify_bundle(directory_or_manifest):
     _integer(renderer["size_bytes"], 1, MAX_EXECUTABLE, "renderer.size_bytes")
     _hash(renderer["sha256_before"], "renderer.sha256_before")
     _literal(renderer["sha256_after"], renderer["sha256_before"], "renderer.sha256_after")
-    invocation = _invocation(manifest["invocation"], parameters, renderer)
+    invocation = _invocation(manifest["invocation"], parameters, renderer, schema_version)
     inputs = _object(manifest["inputs"], {"profile_json", "events"}, "inputs")
     names = {"manifest.json", "profile.json", "profile.b3p", "render.wav",
              "renderer.stdout.txt", "renderer.stderr.txt"}
@@ -531,7 +556,8 @@ def verify_bundle(directory_or_manifest):
         _absolute(inputs["events"]["source_path"], "inputs.events.source_path")
         actual, raw_events = reader.read(directory / "events.txt", MAX_SCORE)
         _matches(inputs["events"], actual, "inputs.events")
-        _literal(parameters["event_count"], _events(raw_events, frames), "parameters.event_count")
+        _literal(parameters["event_count"], _events(raw_events, frames, schema_version),
+                 "parameters.event_count")
     stdout = None
     for name in ("stdout", "stderr"):
         _record(invocation[name], f"renderer.{name}.txt", MAX_LOG, f"invocation.{name}")
@@ -539,8 +565,8 @@ def verify_bundle(directory_or_manifest):
         _matches(invocation[name], actual, f"invocation.{name}")
         if name == "stdout":
             stdout = _json(raw_log, MAX_METRICS, "renderer stdout")
-    _metrics(stdout, parameters, authoring_hash)
-    _metrics(manifest["renderer_metrics"], parameters, authoring_hash)
+    _metrics(stdout, parameters, authoring_hash, schema_version)
+    _metrics(manifest["renderer_metrics"], parameters, authoring_hash, schema_version)
     _require(all(type(stdout[key]) is type(manifest["renderer_metrics"][key]) and
                  stdout[key] == manifest["renderer_metrics"][key] for key in stdout),
              "renderer_metrics differs from actual retained stdout")
@@ -566,7 +592,7 @@ def verify_bundle(directory_or_manifest):
     external = _renderer(reader, renderer)
     _inventory(directory, names)
     reader.finish()
-    return {"status": "verified_retained_bundle", "schema_version": 1,
+    return {"status": "verified_retained_bundle", "schema_version": schema_version,
             "evidence_scope": "synthetic_engineering", "manifest": str(directory / "manifest.json"),
             "manifest_sha256": manifest_identity["sha256"], "artifacts_verified": len(names) - 1,
             "frames": frames, "sample_rate": rate, "canonical_authoring_sha256": authoring_hash,

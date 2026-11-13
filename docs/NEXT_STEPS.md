@@ -1,46 +1,49 @@
 # Next steps
 
-## Current checkpoint and ownership
+## Active continuation
 
-The original session's first development phases, retained demo and final code
-repairs are published in `61c6ecbd87f46a91b4d0d975c823eeae2e2fb3f8`.
-All sixty original workers have completed their assignments in ten waves of six.
-The final session record retains their reviews and current handoff. Read [STATUS.md](STATUS.md), the
-[assignment ledger](development/AGENT_LEDGER.md) and
-[operational handoff](SESSION_HANDOFF.md) for the latest completion and verification.
+Read the [current session ledger](development/2026-11-13-continuation/README.md)
+for the sixty new assignments in ten waves. The earlier session completed all
+sixty original assignments at `7bbd8e7`; its assignments,
+source reviews and evidence remain intact and are not counted again.
 
-The next product milestone is **M3 console integration**. The separate
-[console continuation](development/2026-11-13-continuation/README.md) already owns
-engine, persistence and renderer integration. Its preserved `7a24a30` checkpoint
-supplies `ContactBank`, `PercussionState`, `ConsoleModel`, independent component
-tests and the metadata exporter. Inspect its newest ledger, current remote head
-and actual source before claiming a task; select an uncovered acceptance gate
-within that work rather than starting another implementation of these modules.
+The dependency-ready task is to finish and qualify the nominal M3 console
+integration: contacts, shared percussion, saved-control migration, renderer flags,
+stable parameter identities and versioned evidence. Keep the original ideal/off
+audio as an explicit compatibility case. Publication requires a clean staged
+source build, the full applicable tests, an expected-head push and observed CI.
 
-## First dependency-ready engineering task
+Following waves implement and independently verify:
 
-**Integrate the existing contact and shared-percussion components into the
-prepared engine, then verify the complete event-to-audio history.** Read atlas
-chapters 17–24, [console dynamics](CONSOLE_DYNAMICS.md),
-[the M3 acceptance contract](M3_ACCEPTANCE_CONTRACT.md),
-[engine API](ENGINE_API.md) and [control-state format](CONTROL_STATE_FORMAT.md).
-The nominal source profile and historical demo remain immutable inputs.
+1. Bounded external note ownership, converted into existing physical-key events,
+   and a native mapping of all 43 proposed normalized controls.
+2. An explicit stopped/same-thread sample-rate change that preserves source
+   phase, contact travel, shared readiness and musical controls; invalid changes
+   preserve the complete previous state.
+3. Observable nominal console traces and explicit partial-key input, with
+   strict offline preflight and independent timing evidence.
+4. Enabled-path real-time checks, portable installation, robustness, final
+   handoff and independent review of the exact published checkpoint.
 
-| Step | Affected boundary | Required acceptance evidence |
-| --- | --- | --- |
-| Reconcile active ownership and revision | Continuation ledger, current `main`, actual Engine/Types/control/renderer code | Identify the exact remaining integration gap and preserve all intervening commits and local work. A contract describing an API is not evidence that the API exists. |
-| Connect the prepared console model | `Engine::prepare`, fixed contact storage, source routing | Preserve legacy ideal defaults and the two-argument preparation behavior. Validate/copy the complete model before replacing prepared state; invalid models leave state unchanged. Keep file access, allocation and publication outside processing. |
-| Render contact trajectories | Physical-key targets and all nine manual routes | Independent contact identities; render-current-state-then-advance timing; stable same-frame event order; partial holds/reversal; no phase reset or velocity-dependent steady gain. Compare complete audio and state across block partitions and supported sample rates. |
-| Connect one shared percussion state | Upper-manual detector, eligibility, harmonic source routes, sustained routing | Shared readiness and finite recovery, held-key and release/repress cases, upper-B selection, Cancel/reselect, disabled controls and lower-manual isolation. Reuse the existing continuously running sources; retain explicit nominal parameter identities and limits. |
-| Extend timed controls and saved state | Event preflight, snapshots, registry, proposed `B3CONTROLS2` migration | Preserve prior IDs and source-profile identity; reject whole malformed event spans atomically. Specify and test v1 migration and complete v2 parsing before changing the writer. Keep Agent 55's exact expression round-trip and caller-rounding restoration. Never serialize key trajectories, readiness, source phases or clock as ordinary controls. |
-| Extend the offline CLI and retained evidence | Renderer score/CLI, model metadata, fixtures, verifier | Keep existing ideal fixtures compatible. Retain actual selected console coefficients and controls with new renders. Create a new versioned evidence bundle; never rewrite the historical four-second demo or claim it used the new model. |
-| Close the integrated acceptance gates | Independent tests, callback/partition checks, hosted matrix | Map every proposed M3 scenario to an actual test or an explicit open reason. Exercise complete event-to-audio interactions and preserved failure semantics. Run the necessary full combined suite and all configured platforms, recording exact revisions, counts and skips. |
+Subagents own scoped files and one evidence note. The integrator owns shared
+status/next-step/log updates, integration and publication. Follow `AGENTS.md`.
 
-The current `hammond_model_info` command exports compiled factory defaults. It
-cannot report an arbitrary caller-edited `ConsoleModel` or a running engine's
-current controls/history. A future render that uses custom coefficients must
-retain that actual parameter set. Algorithm IDs alone do not identify every
-possible parameter choice.
+## Next product milestone
+
+Complete the remaining **M3 console behavior** with explicit model identities
+and acceptance gates. Contact/percussion software completion alone does not
+close this milestone.
+
+- Physical preset latch behavior and transformer loading remain separate from
+  the current exclusive A/B selector. Read atlas pp. 121-132 before designing it.
+- Runtime pedals need weighting/shaping and an explicit phase-preserving path
+  from the independently corroborated 25-by-8 routing data. Five positions are
+  disconnected; they must not become source zero or accidental source one.
+- Continuous drawbar travel, contact switching bandwidth/bounce and loaded
+  expression need declared nominal algorithms or admitted measurements. Do not
+  invent calibrated values from the current binary contact surrogate.
+- Preserve shared source identities, original control IDs, legacy fixtures,
+  atomic rejection, stable same-frame event ordering and block invariance.
 
 Physical preset latch behavior, pedal weighting/shaping and measured expression
 remain separate M3 gates. Existing A/B selection, routing-only Cancel, pedal

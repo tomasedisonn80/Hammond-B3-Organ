@@ -7,8 +7,10 @@ repository's **500-page research and build atlas**.
 with strict data contracts and independent tests. The core has 91 shared,
 continuously running sources, two manuals, drawbars, sample-offset events and
 explicit clock/error handling. Four retained A/B banks, routing-only Cancel and
-versioned control snapshots provide early console behavior. The selected profile
-is **nominal and unmeasured**.
+versioned control snapshots provide early console behavior. Optional independent
+contact travel and one shared percussion readiness state extend the nominal
+console; ideal contacts and percussion off preserve the original renderer defaults.
+The selected source and console profiles are **nominal and unmeasured**.
 
 The current executable renders WAV files offline. The product plan targets a
 playable VST3 instrument and audio-device standalone application, with an
@@ -18,10 +20,10 @@ UI remain future work. No current result establishes a measured one-to-one
 instrument match. Start with the [project guide](docs/PROJECT_GUIDE.md) for the
 plan, practical workflows, evidence contracts and session history.
 
-The integrated continuation also supplies standalone nominal contact and shared
-percussion components with independent tests and [model metadata](docs/MODEL_METADATA.md).
-At its `7a24a30` checkpoint these components are not yet connected to the renderer;
-the [current status](docs/STATUS.md) and continuation ledger track that next step.
+The console continuation connects nominal contact and shared percussion components
+to the engine and offline renderer, with independent tests and exported
+[model metadata](docs/MODEL_METADATA.md). The [current status](docs/STATUS.md) and
+continuation ledger distinguish each published checkpoint and its observed checks.
 
 ## Build and test
 
@@ -93,7 +95,10 @@ results and remaining gates; a configured workflow is not a successful hosted ru
 | [Engine interface](docs/ENGINE_API.md) | Timing, key ownership, source/mix behavior |
 | [Console controls](docs/CONSOLE_EXTENSION.md) | Retained banks and Cancel/panic separation |
 | [Control state format](docs/CONTROL_STATE_FORMAT.md) | Bounded control-only save/load |
-| [Internal parameters](docs/PARAMETERS.md) | 39 proposed permanent control identities |
+| [Console dynamics](docs/CONSOLE_DYNAMICS.md) | Independent contacts, shared percussion, timing and evidence boundaries |
+| [Console acceptance](docs/CONSOLE_ACCEPTANCE.md) | Independent PCM and evidence-bundle checks for the nominal model |
+| [Model metadata](docs/MODEL_METADATA.md) | Export the actual compiled nominal factory values and units |
+| [Internal parameters](docs/PARAMETERS.md) | 43 proposed permanent control identities; original 39 preserved |
 | [Pedal routing](docs/PEDAL_ROUTING.md) | Reconstructed 25-by-8 data; pedal audio remains pending |
 | [Factory comparison](docs/FACTORY_REFERENCE.md) | Two independent Table III readings and complete routing comparison |
 | [Factory runtime gate](docs/FACTORY_RUNTIME_ACCEPTANCE.md) | All manual routes exercised against CSV-selected expectations |
@@ -109,6 +114,7 @@ results and remaining gates; a configured workflow is not a successful hosted ru
 | [Complete atlas review](docs/research/ATLAS_REVIEW.md) | Full 500-page coverage, milestone interpretation and source limits |
 | [Source manifest](docs/research/source-manifest.json) | Preserved PDF identity and missing companion assets |
 | [Review notes](docs/development/agent-notes/) | Actual agent assignments and retained evidence |
+| [Console continuation](docs/development/2026-11-13-continuation/README.md) | New sixty-agent, ten-wave ledger and integration checkpoints |
 
 ## Source and evidence
 

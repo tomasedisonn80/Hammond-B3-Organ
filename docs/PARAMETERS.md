@@ -1,12 +1,15 @@
 # Proposed internal console parameter registry
 
 [`data/parameter-registry.json`](../data/parameter-registry.json) defines an
-**original, proposed internal registry of exactly 39 controls** for the current
-ideal console subset. Its schema version is `1`, model is
-`ideal-exclusive-ab-console-v1`, and scope is `implemented-console-subset`.
+**original, proposed internal registry of exactly 43 controls** for the retained
+A/B console and percussion settings. Its schema version is `2`, model is
+`exclusive-ab-percussion-console-v2`, and scope is `implemented-console-subset`.
 The [console extension contract](CONSOLE_EXTENSION.md) and
-[`ControlState.h`](../include/hammond/ControlState.h) own the implemented control
-semantics and defaults.
+[nominal contact/percussion contract](CONSOLE_DYNAMICS.md), together with
+[`ControlState.h`](../include/hammond/ControlState.h) and
+[`Percussion.h`](../include/hammond/Percussion.h), own the implemented control
+semantics and defaults. This registry is independent of ideal versus nominal
+contact travel; selecting either contact model does not change parameter identity.
 
 This is not the absent 62-entry companion referenced by the atlas, and these IDs
 are not verified VST3 exports. The atlas's proposed IDs and continuous controls
@@ -14,6 +17,35 @@ are design guidance, not a recovered machine-readable specification. Every
 record carries `evidence_class: proposed` and source page locators. The registry's
 provenance declares the applicable nominal B-3/AO-28 engineering subset, missing
 calibration, and pending host work. No manufacturer calibration is inferred.
+
+## Version and compatibility policy
+
+Version 2 appends four percussion records to the existing 39 records. Every
+original ID, path, label, kind, unit, domain, default, normalized law/meaning,
+event target and source/evidence field remains unchanged. The test suite retains
+an independent SHA-256 of all 39 complete historical records, captured before this
+extension at commit `7a24a30`:
+
+```text
+61669b54e0a0499da950ece28c855e70ab4cb815d204f625f0aee8542d8b4f1b
+```
+
+The canonical encoding sorts those records by numeric ID, sorts object keys
+recursively, uses compact JSON separators `(',', ':')` and ASCII JSON escaping,
+then hashes the ASCII bytes. The frozen expected digest lives in
+[`tests/test_parameters.py`](../tests/test_parameters.py), independently of the
+validator's expected-record generator. Do not regenerate it to approve an
+accidental change. Record ordering is free and does not affect the digest.
+
+**The current validator accepts only schema 2 and the exact named model above.**
+Whole schema-1 `ideal-exclusive-ab-console-v1` registry files are rejected visibly;
+there is no implicit registry migration or missing-record default insertion.
+Consumers must explicitly adopt the new metadata and four records, retaining an
+original version-1 file when compatibility review needs it. Each unchanged legacy
+parameter record still works with the scalar conversion helpers. Registry schema
+versioning is separate from the [saved control format](CONTROL_STATE_FORMAT.md):
+the control-state reader's `B3CONTROLS1` migration to default percussion settings
+does not imply acceptance of a version-1 registry document.
 
 ## Stable identities and inventory
 
@@ -32,7 +64,11 @@ Never recycle an accepted identity for a different control.
 | Global expression | 8192 | `0x2000` | 1 | `expression`, canonical `upper`, index 0 |
 | Upper bank selector | 8208 | `0x2010` | 1 | `select_bank`, `upper`, index 0 |
 | Lower bank selector | 8209 | `0x2011` | 1 | `select_bank`, `lower`, index 0 |
-| **Total** | | | **39** | |
+| Percussion enabled | 12288 | `0x3000` | 1 | `percussion`, `upper`, index 0 |
+| Percussion harmonic | 12289 | `0x3001` | 1 | `percussion`, `upper`, index 1 |
+| Percussion volume | 12290 | `0x3002` | 1 | `percussion`, `upper`, index 2 |
+| Percussion decay | 12291 | `0x3003` | 1 | `percussion`, `upper`, index 3 |
+| **Total** | | | **43** | |
 
 The drawbar offset order is `16ft`, `5_1/3ft`, `8ft`, `4ft`, `2_2/3ft`, `2ft`,
 `1_3/5ft`, `1_1/3ft`, `1ft`. These are control labels. A semantic path such as
@@ -45,6 +81,12 @@ for the existing event structure; it does not define a separate upper expression
 control. The legacy `drawbar` event addresses whichever bank is selected, so it
 is deliberately not a registry target. `bank_drawbar` preserves fixed identity.
 
+The new semantic paths are `percussion.enabled`, `percussion.harmonic`,
+`percussion.volume` and `percussion.decay`. Their IDs occupy unused space in this
+repository's internal inventory. They do not copy the atlas's proposed allocation:
+the atlas assigns different meanings in parts of these ranges, and its complete
+62-entry companion remains absent. Never infer VST3 exports from these numbers.
+
 ## Domains, defaults and normalized conversion
 
 | Control class | Plain domain and unit | Default | Internal `step_count` | Normalized meaning |
@@ -52,12 +94,21 @@ is deliberately not a registry target. `bank_drawbar` preserves fixed identity.
 | 36 drawbar positions | Integers 0–8, `drawbar-position` | 0 | 8 | Position fraction; never audio amplitude |
 | Global expression | Finite 0–1, `normalized-linear-gain-surrogate` | 1 | 0 | Existing ideal global linear gain surrogate |
 | Two bank selectors | Integers 0–1, `bank-index-0=A-1=B` | 1 (B) | 1 | Ordinal bank fraction |
+| Percussion enabled | Integers 0–1, `enabled-index-0=off-1=on` | 0 (Off) | 1 | Retained binary setting |
+| Percussion harmonic | Integers 0–1, `harmonic-index-0=second-1=third` | 0 (Second) | 1 | Retained binary setting |
+| Percussion volume | Integers 0–1, `volume-index-0=normal-1=soft` | 0 (Normal) | 1 | Retained binary setting |
+| Percussion decay | Integers 0–1, `decay-index-0=slow-1=fast` | 0 (Slow) | 1 | Retained binary setting |
 
 `step_count` counts equal intervals between discrete values: eight intervals
-yield nine drawbar positions; one interval yields two bank values. Zero denotes
+yield nine drawbar positions; one interval yields two bank or percussion values. Zero denotes
 the continuous expression scalar. These are internal declarations, not evidence
 of a host `ParameterInfo` export. Both manual routes initially start enabled;
 route-enabled state is outside this scalar inventory.
+
+Percussion values are dimensionless selection codes. Harmonic 0 selects Second,
+not the fundamental; volume is not a linear amplitude, and decay is not seconds.
+The engine's explicitly named percussion model owns gains, timing, routing and
+continuous readiness. These four settings do not expose or serialize that history.
 
 For a discrete control with `N = step_count`, the internal rule is:
 
@@ -73,6 +124,11 @@ selector threshold `u = 0.5` choosing B. Inputs outside the domain, NaN, infinit
 and booleans are rejected rather than clipped. The Python helper computes the
 discrete result using the input float's exact integer ratio, so intermediate
 floating-point rounding does not move a value just below a threshold upward.
+
+All four percussion controls use `k = floor(u + 0.5)` and `u = k`. At the exact
+threshold `u = 0.5`, enabled chooses On, harmonic chooses Third, volume chooses
+Soft and decay chooses Fast. The immediately smaller binary64 value chooses
+the zero selection. All four normalized defaults are exactly `0.0`.
 
 For expression, `x = u` and `u = x`. The current engine deliberately uses a
 normalized linear-gain surrogate. This is not the atlas's proposed physical
@@ -93,6 +149,16 @@ The [console extension](CONSOLE_EXTENSION.md) assigns `BankDrawbar = 5` and
 retains its existing `Expression = 3` semantics. The JSON records names, manual
 and index, while the plain converted value becomes the event's value field.
 
+The [percussion extension](CONSOLE_DYNAMICS.md) assigns `EventType::Percussion = 8`
+and fixture name `percussion`. Each of its four records targets `manual: upper`
+with indices 0–3 as listed above. Upper is a required target for this event;
+the Lower manual and fractional switch values are invalid. Sending a setting
+changes only that retained control. Percussion eligibility is derived by the
+engine from enabled state, the upper route and upper B selection. Changing
+selection, Cancel or another percussion switch never rewrites a parameter ID or
+its stored meaning. A scalar conversion creates an event; it does not reset
+readiness or advance the engine clock.
+
 Editing a bank changes only that retained position. Selecting A or B enables
 the corresponding manual route and uses that bank's retained positions. Sending
 a selector's already-retained value can therefore be meaningful after Cancel.
@@ -107,12 +173,12 @@ from AllNotesOff and from setting every drawbar to zero. Do not invent a latched
 Cancel toggle or a third selector value to represent it. The exclusive A/B model
 also does not implement the physical multi-preset latch/loading network.
 
-The 39 scalars alone are not a complete control snapshot: they do not include
+The 43 scalars alone are not a complete control snapshot: they do not include
 the separate `route_enabled` bits. Replaying selector parameters as a substitute
 for snapshot restoration could reconnect a cancelled route. Use the separately
 validated control snapshot/persistence contract for coherent state restoration;
 this registry is neither a snapshot serializer nor an exact DSP checkpoint.
-Pedal drawbars, factory presets, percussion, scanner, organ/Leslie circuits,
+Pedal drawbars, factory presets, scanner, organ/Leslie circuits,
 microphones and software output controls are outside this subset.
 
 ## Validator and scalar helpers
@@ -125,7 +191,7 @@ python3 tests/test_parameters.py -v
 ```
 
 The validator uses only the standard library. It checks the exact version,
-model, scope, status and evidence metadata; all 39 identities and permanent
+model, scope, status and evidence metadata; all 43 identities and permanent
 targets; unique uint32 IDs, paths and targets; finite domains, units, defaults
 and normalized meanings; and the complete expected key set at every object
 level. Record order is immaterial. File input is bounded to 256 KiB and rejects
@@ -138,7 +204,7 @@ The module's public API is:
 | --- | --- |
 | `load_registry(path)` | Bounded parse and full validation; returns the registry |
 | `validate_registry(registry)` | Validates without mutation; returns `None` |
-| `normalized_to_value(parameter, u)` | Validated plain integer position/bank or expression scalar |
+| `normalized_to_value(parameter, u)` | Validated plain integer position/bank/percussion selection or expression scalar |
 | `value_to_normalized(parameter, x)` | Validated canonical normalized value; fractional discrete values reject |
 | `normalized_to_event(registry, parameter_id, u)` | Independent untimed event dictionary; performs no dispatch |
 
@@ -150,6 +216,8 @@ helper validates the complete registry before mapping an ID. For example:
 registry = load_registry("data/parameter-registry.json")
 normalized_to_event(registry, 4114, 0.5)
 # {"type": "bank_drawbar", "manual": "upper", "index": 11, "value": 4}
+normalized_to_event(registry, 12289, 0.5)
+# {"type": "percussion", "manual": "upper", "index": 1, "value": 1}
 ```
 
 The dictionary intentionally has no frame or block offset. The caller owns
@@ -160,24 +228,32 @@ binding. They do not prove that a renderer or C++ engine consumes the dictionary
 
 ## Evidence and remaining gates
 
-The retained tests cover metadata rejection, complete bank/target coverage,
+The retained tests cover metadata rejection, complete bank/percussion target coverage,
 canonical round trips, exact half-step boundaries and adjacent floats,
 nonfinite/out-of-range rejection, stable ID meaning through registry reordering
-and selector-payload creation, and the position-versus-amplitude distinction.
+and selector-payload creation, the position-versus-amplitude distinction, all four
+percussion defaults, explicit historical registry rejection and the independent
+whole-record compatibility digest.
 Those are software metadata/conversion tests; actual engine state transitions
 are covered by separate console tests.
 
 Before host automation is a supported product feature, verify actual exported
 IDs and units, selected versus hidden bank behavior, balanced gesture closure,
-native curve timing through block partitions and zero-frame calls, explicit
-same-value reselect/Cancel behavior, compatible state migration and real DAW
+native curve timing through block partitions and zero-frame calls, retained
+percussion positions during ineligible routes, explicit same-value reselect/Cancel
+behavior, compatible state migration and real DAW
 project recall. Preserve retired IDs and historical normalized laws after a
 release freeze. These host gates and physical console fidelity remain pending.
 
-Sources: [atlas](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf) pp. 389 and 397–402
+Sources: [atlas](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf) pp. 127–138
+(shared percussion, routing and coupled controls), p. 418 (retained settings
+versus eligibility), pp. 389 and 397–402
 (retained banks/state domains, permanent identities, normalized laws, gesture
 binding, native curves, state and verification scope); the retained
 [agent 05 review](development/agent-notes/05-atlas-pages-337-420.md); and the
-[console extension contract](CONSOLE_EXTENSION.md). The original source remains
+[console extension contract](CONSOLE_EXTENSION.md) and
+[nominal contact/percussion contract](CONSOLE_DYNAMICS.md). Atlas page locators
+support the architectural/control concepts; they do not establish this repository's
+numeric IDs, startup choices or normalized law as manufacturer values. The original source remains
 unchanged, and the absent companion's reported static checks are not local
 test results.

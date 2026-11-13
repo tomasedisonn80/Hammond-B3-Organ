@@ -1,7 +1,9 @@
-# Initial engine and offline interface
+# Engine and offline interface
 
-This contract describes the integrated first dry-engine implementation. Its scope is an ideal, unmeasured dry source/mix
-engine; the organ and cabinet electronics remain future stages.
+This contract describes the nominal dry engine and its console extension. The
+default uses ideal contacts; explicit preparation can select independent nominal
+contact travel and retained percussion controls. Source and console models remain
+unmeasured. Organ and cabinet electronics remain future stages.
 
 ## Engine facade
 
@@ -9,6 +11,7 @@ Use `hammond::Engine` with the agreed value types in `Types.h` and `Profile.h`:
 
 ```cpp
 Status prepare(const RuntimeProfile&, const ProcessSpec&) noexcept;
+Status prepare(const RuntimeProfile&, const ProcessSpec&, const ConsoleModel&) noexcept;
 ProcessResult process(std::uint32_t frames,
                       std::span<float> mono_output,
                       std::span<const Event> events) noexcept;
@@ -27,7 +30,8 @@ Preparation is a stopped-engine action. Validate all inputs before replacing a
 working engine. Maximum block size must be 1..65536; event capacity is1024. The
 initial frame is a timeline origin, not a request to simulate earlier samples.
 Initial controls are four muted retained banks, bank B selected and routes enabled
-on both manuals, no held keys and expression 1. The offline
+on both manuals, no held keys, expression 1, and percussion Off/Second/Normal/Slow
+with readiness 1. The offline
 client explicitly supplies a registration. Physical key state is boolean per
 manual/MIDI key: repeated note-ons do not multiply voices, and a release clears
 that physical key. A future host adapter must define note-ID/channel ownership.
@@ -48,15 +52,18 @@ manual enum, event enum, finite value and payload ranges for every event.
 | BankDrawbar | bank*9 + drawbar,0..17 | integer0..8 | Edit an explicit retained bank without selecting it |
 | SelectBank |0 | integer0=A or1=B | Select bank and enable manual routing |
 | Cancel |0 |0 | Disable routing while preserving held keys and controls |
+| Percussion |0..3 | integer0..1 | Upper only: enable, harmonic, volume, decay; see console contract |
 
 Expression changes are initially steps. The implementation must not advertise
 native VST3 ramp reconstruction until a separate curve contract is implemented
 and tested. The implemented Cancel and retained-bank model is described in
-[CONSOLE_EXTENSION.md](CONSOLE_EXTENSION.md). Physical multi-preset latches,
-contact trajectories, pedal shaping and shared percussion remain later work.
+[CONSOLE_EXTENSION.md](CONSOLE_EXTENSION.md). Independent contact trajectories and
+one shared percussion state are specified in [CONSOLE_DYNAMICS.md](CONSOLE_DYNAMICS.md).
+Physical multi-preset latches, pedal shaping and loaded expression remain later work.
 Copied snapshots and `restore_controls()` require the same processing thread or
 stopped processing; restore rejects unprepared or invalid state atomically and
-never resets held keys, source phase or time. Control persistence is separate
+never resets held keys, contact trajectories, percussion readiness, source phase
+or time. Control persistence is separate
 from an exact DSP checkpoint; see [CONTROL_STATE_FORMAT.md](CONTROL_STATE_FORMAT.md).
 
 ## Source bank
@@ -82,11 +89,15 @@ coupling, scanner, valves, rotary processing or room responses are implied.
 
 ## Mix and diagnostics
 
-For every sounding key, each drawbar routes to its explicit profile tone ID. Add
+For every closed contact, its drawbar routes to its explicit profile tone ID. Add
 all branch gains algebraically, then apply the fixed profile output gain and the
 expression surrogate. Do not deduplicate colliding branches, power-sum them, or
 normalize by active-key count. Cached per-source coefficients may be recomputed
-only when controls/keys change. This bounds per-sample mixing without changing
+when controls or contact connectivity change. Upper-B percussion selects its
+harmonic independently of retained drawbar gain, masks the sustained one-foot
+branch without erasing that setting, and uses the physical ninth contact detector.
+The console contract defines eligibility, sustain compensation and render-before-
+advance timing. This bounds per-sample mixing without changing
 coherence. No clipping/limiting is hidden in the floating-point core.
 
 Expose copied diagnostics such as clock, active-key count, control values and

@@ -1,15 +1,17 @@
-# Control snapshot format: B3CONTROLS1
+# Control snapshot format: B3CONTROLS2
 
-This is an engineering format for the early exclusive A/B console model in
-[CONSOLE_EXTENSION.md](CONSOLE_EXTENSION.md). It retains all **39 controls**:
-36 drawbar positions, two selected-bank values and global expression. It also
-retains the two independent route-enable bits, including Cancel state. Hidden
-bank positions are present even when their manual's route is disabled.
+This engineering format retains the exclusive A/B console controls described in
+[CONSOLE_EXTENSION.md](CONSOLE_EXTENSION.md) and the retained percussion controls
+in [CONSOLE_DYNAMICS.md](CONSOLE_DYNAMICS.md). It contains **43 controls**:
+36 drawbar positions, two selected-bank values, global expression and the four
+percussion settings. It also stores two independent route-enable bits, including
+Cancel state. Hidden bank positions and percussion settings remain present when
+the current routing makes them inaudible.
 
 The source distinction between musical snapshots and dynamic checkpoints is
-documented in atlas pp. 151–156, 389 and 401. This smaller format implements only
-the controls currently present in `ControlSnapshot`; it is not the atlas's
-complete proposed instrument patch schema.
+recorded in atlas pp. 151-156, 389, 394 and 401. This format is a versioned internal
+control contract. It is not the atlas's full proposed instrument patch schema or
+a verified native-host state format.
 
 ## Public API and execution boundary
 
@@ -22,38 +24,38 @@ bool parse_controls(std::istream& input,
                     ControlSnapshot& destination, std::string& error);
 ```
 
-Both functions may allocate. Use them only with processing stopped or on a
-control thread operating on an independently and safely copied snapshot. Reading
-live mutable engine state from a control thread is not made safe by these APIs.
-There is no concurrent publication protocol or Engine dependency here. Parsing,
-stream access, formatting, allocation and destruction stay outside the audio
-callback.
+Both functions may allocate. Use them with processing stopped or on a control
+thread operating on an independently and safely copied snapshot. Reading live
+mutable engine state from another thread is not made safe by these APIs. There
+is no concurrent publication protocol or Engine dependency here. Parsing, stream
+access, formatting, allocation and destruction stay outside the audio callback.
 
-The serializer validates the complete snapshot with
-`is_valid_control_snapshot`, builds an owned string, and replaces `destination`
-only on success. The caller owns its file opening, atomic publication, overwrite
-and recovery policies. These functions never open or write a file. The serializer's
-destination and error strings must be distinct: aliasing returns false without
-changing their shared value and cannot supply a separate diagnostic.
+The serializer validates the entire snapshot, including every percussion enum,
+builds an owned string, and replaces `destination` only on success. The caller
+owns file opening, publication, overwrite and recovery policies; these functions
+never open or write a file. Destination and error strings must be distinct:
+aliasing returns false without changing the shared value and cannot supply a
+separate diagnostic. New serialization always emits version 2.
 
-The parser reads into bounded temporary storage, checks the entire document,
-validates its candidate with the same helper, and assigns the complete snapshot
-only on success. Failure preserves every destination field; it may consume input
-or change the stream's status flags. The stream's locale and exception mask are
-unchanged. Read failures, including a streambuf exception and a failure after the
-last payload byte, reject the candidate. A normal EOF still succeeds when the
-caller configured its stream to throw at EOF. Successful operations clear `error`;
-other rejected calls set a diagnostic except for the alias case above. Allocation
-failures can propagate as exceptions; destination publication still happens last.
+The parser reads bounded temporary storage, checks the whole document and
+validates a fresh candidate before assigning the complete destination. Failure
+preserves every destination field, including percussion settings. It may consume
+input or change stream status flags; the stream's locale and exception mask are
+unchanged. Read failures, including a streambuf exception or a failure after the
+last payload byte, reject. Normal EOF succeeds even when the caller configured
+an EOF exception. Success clears `error`; rejected calls set a diagnostic except
+for the serializer alias case. Allocation failures can propagate; destination
+publication still occurs last.
 
-## Exact token grammar
+## Exact version-2 grammar
 
-All names are case sensitive. The header is the single token `B3CONTROLS1`.
-Records must appear in exactly this order, with no optional or duplicate fields:
+Names are case sensitive. Records appear in this exact order, with no optional
+or duplicate fields:
 
 ```text
-B3CONTROLS1
+B3CONTROLS2
 expression <expression>
+percussion enabled <0|1> harmonic <second|third> volume <normal|soft> decay <slow|fast>
 manual upper selected <A|B> route_enabled <0|1>
 bank A <p0> <p1> <p2> <p3> <p4> <p5> <p6> <p7> <p8>
 bank B <p0> <p1> <p2> <p3> <p4> <p5> <p6> <p7> <p8>
@@ -63,28 +65,55 @@ bank B <p0> <p1> <p2> <p3> <p4> <p5> <p6> <p7> <p8>
 end
 ```
 
-Each bank has exactly nine positions in `ControlSnapshot` drawbar-index order
-(16′, 5⅓′, 8′, 4′, 2⅔′, 2′, 1⅗′, 1⅓′, 1′). Each position is one ASCII digit
-`0` through `8`; signed, padded, floating and hexadecimal integers reject.
-Selectors are the exact tokens `A` or `B`; route-enable values are the exact
-tokens `0` or `1`. A disabled route does not erase or alter its selected bank.
-There are exactly 60 tokens in a valid document.
+Each bank has nine positions in physical drawbar order: 16-foot, 5-1/3-foot,
+8-foot, 4-foot, 2-2/3-foot, 2-foot, 1-3/5-foot, 1-1/3-foot and 1-foot. A position
+is exactly one ASCII digit `0` through `8`; signed, padded, floating and hexadecimal
+integers reject. Selectors are exactly `A` or `B`, and route-enable values exactly
+`0` or `1`. A disabled route does not erase or change its selected bank.
 
-Expression is a finite, representable `double` in the closed interval `[0,1]`.
-Accepted decimal syntax is the regular expression
-`[+-]?([0-9]+(\.[0-9]*)?|\.[0-9]+)([eE][+-]?[0-9]+)?`. Examples include `0`,
-`1.`, `.375`, `+3.75e-1` and `-0`. Signed zero is retained. `NaN`, infinities,
-overflow, unrepresentable underflow, decimal commas, hexadecimal forms and
-partial tokens reject. Numeric conversion is independent of the caller's locale.
+The percussion record has nine tokens. `enabled` accepts only `0` or `1`, not
+numeric alternatives or words such as `true`. Harmonic, volume and decay use the
+lowercase names in the grammar. All four fields are mandatory even when percussion
+is disabled. Neither upper-bank selection nor Cancel changes these stored values.
+A valid version-2 document contains **69 tokens**.
+
+Expression is a finite, representable `double` in `[0,1]`. Accepted decimal syntax
+is `[+-]?([0-9]+(\.[0-9]*)?|\.[0-9]+)([eE][+-]?[0-9]+)?`. Examples include `0`,
+`1.`, `.375`, `+3.75e-1` and `-0`; signed zero is retained. NaN, infinities,
+overflow, unrepresentable underflow, decimal commas, hexadecimal forms and partial
+tokens reject. Numeric conversion is independent of the caller's locale.
 
 Tokens are separated by one or more ASCII whitespace bytes: space, tab, LF, CR,
 form feed or vertical tab. Leading and trailing ASCII whitespace is permitted;
-line breaks are not otherwise significant. After `end`, only that whitespace
-may remain. Comments, extensions, unknown versions, extra records, UTF byte-order
-marks, embedded NULs and non-ASCII whitespace reject. The complete input,
-including whitespace, must be at most **16,384 bytes** (`kMaxControlStateBytes`).
-The reader consumes at most 16,385 bytes to detect excess length; this is a byte
-limit, not a stream latency guarantee.
+line breaks are otherwise insignificant. Only whitespace may follow `end`.
+Comments, unknown versions or extensions, extra records, UTF byte-order marks,
+embedded NULs and non-ASCII whitespace reject. The whole input, including whitespace,
+is limited to **16,384 bytes** (`kMaxControlStateBytes`). The reader consumes at most
+16,385 bytes to detect excess length; this does not bound stream latency.
+
+## Historical version-1 migration
+
+`B3CONTROLS1` remains readable with its original **60-token grammar**: the same
+expression and manual/bank records, with no percussion record. Parsing starts
+from a fresh `ControlSnapshot`, so the migration is independent of previously
+stored values in the caller's destination:
+
+| New retained field | Explicit value after version-1 loading |
+| --- | --- |
+| Percussion enabled | Off (`false`) |
+| Harmonic | Second |
+| Volume | Normal |
+| Decay | Slow |
+
+All old drawbars, selectors, route bits and expression values retain their original
+meaning. A percussion record inside version 1 is an unsupported extension and
+rejects. A version-2 header without a complete percussion record also rejects;
+it does not activate this migration or inherit the destination's old settings.
+Unsupported future versions reject without mutation.
+
+Re-saving a successfully migrated document produces canonical `B3CONTROLS2`.
+There is no version-1 writer, so new settings cannot silently disappear through
+an implicit downgrade. Keep historical test fixtures unchanged as migration inputs.
 
 ## Canonical serialization
 
@@ -102,11 +131,13 @@ For example, `0.1` is written as `0.10000000000000001` on the supported binary64
 implementation.
 Discrete values always use the exact short tokens above.
 
-A full example is:
+This example retains enabled percussion even though upper bank A currently makes
+its route ineligible:
 
 ```text
-B3CONTROLS1
+B3CONTROLS2
 expression 0.375
+percussion enabled 1 harmonic third volume soft decay fast
 manual upper selected A route_enabled 0
 bank A 0 1 2 3 4 5 6 7 8
 bank B 8 7 6 5 4 3 2 1 0
@@ -116,17 +147,15 @@ bank B 8 6 4 2 0 7 5 3 1
 end
 ```
 
-## Deliberate scope and verification
+## Scope and verification boundary
 
-This document stores no held keys or note owners, pending events, source phases,
-random seed/state, frame clock or time, capacitors, scanner/filter histories,
-percussion charge, rotary state or tails. Loading controls cannot resurrect saved
-notes or resume exact DSP history. The format also contains no physical profile
-identity/digest, registry identity, input mapping, native host state, editor state
-or migration/host compatibility manifest. A future wrapper must own those
-identities and compatibility policies; successful parsing makes no host, audio
-fidelity or exact-render continuation promise. No legacy format is migrated, and
-future version markers reject without changing the destination.
+Snapshots contain no held keys or note owners, contact targets/positions/history,
+pending events, source phases, random seed, render clock, readiness `q`, capacitor,
+scanner/filter histories, rotary state or tails. They contain no source/console
+profile identity or digest, parameter-registry identity, input mapping, editor state
+or native-host compatibility manifest. A future wrapper owns those identities and
+policies. Successful parsing alone makes no host, physical-fidelity or exact-render
+continuation claim.
 
 `test_control_io` checks every retained control, all selector/route combinations,
 all nine positions in each stored bank, exact canonical fixtures, decimal round
@@ -136,3 +165,13 @@ malformed versions/records/enums/numbers/counts,
 truncation, duplicates, trailing data, byte limits, locale independence and stream
 failures. Atomicity compares semantic fields and existing string bytes, never
 `memcmp` over structure padding. These are software-contract tests.
+
+`ControlState::restore` and `set_percussion_settings` validate before assignment.
+Engine restoration changes musical controls while preserving live contact,
+percussion and source histories; that behavior belongs to the separate engine
+integration tests. The I/O API itself never accesses an Engine.
+
+The continuation's [assignment 14 note](development/2026-11-13-continuation/14-control-migration.md)
+records focused implementation checks. Independent permanent migration tests and
+full integration results are recorded separately; a format specification is not
+an executed host or hardware acceptance result.

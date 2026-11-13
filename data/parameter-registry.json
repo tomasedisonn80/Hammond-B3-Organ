@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "model": "ideal-exclusive-ab-console-v1",
+  "schema_version": 2,
+  "model": "exclusive-ab-percussion-console-v2",
   "scope": "implemented-console-subset",
   "status": "proposed-internal",
   "provenance": {
@@ -8,23 +8,30 @@
     "applicable_variant": "nominal B-3/AO-28 console engineering subset",
     "atlas_file": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
     "atlas_pages": [
+      127,
+      128,
+      134,
       389,
       397,
       398,
       399,
       400,
       401,
-      402
+      402,
+      418
     ],
     "implementation_sources": [
       "docs/CONSOLE_EXTENSION.md",
-      "include/hammond/ControlState.h"
+      "docs/CONSOLE_DYNAMICS.md",
+      "include/hammond/ControlState.h",
+      "include/hammond/Percussion.h",
+      "include/hammond/Types.h"
     ],
     "companion_recovered": false,
     "host_exports_verified": false,
     "native_host_curves_implemented": false,
     "uncertainty": null,
-    "reason": "Original internal IDs, ranges, defaults and conversions for the current ideal console. The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed."
+    "reason": "Retains all 39 original internal console records unchanged and adds four independent percussion settings. IDs, binary defaults and conversions are internal engineering choices, not manufacturer calibration. The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed."
   },
   "parameters": [
     {
@@ -1269,6 +1276,146 @@
         397,
         401,
         402
+      ]
+    },
+    {
+      "id": 12288,
+      "path": "percussion.enabled",
+      "label": "Percussion enabled",
+      "kind": "percussion_switch",
+      "unit": "enabled-index-0=off-1=on",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "step_count": 1,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u + 0.5)",
+        "to_normalized": "x",
+        "meaning": "percussion-setting-index-fraction"
+      },
+      "engine_event": {
+        "type": "percussion",
+        "manual": "upper",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        127,
+        128,
+        134,
+        397,
+        398,
+        401,
+        402,
+        418
+      ]
+    },
+    {
+      "id": 12289,
+      "path": "percussion.harmonic",
+      "label": "Percussion harmonic",
+      "kind": "percussion_switch",
+      "unit": "harmonic-index-0=second-1=third",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "step_count": 1,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u + 0.5)",
+        "to_normalized": "x",
+        "meaning": "percussion-setting-index-fraction"
+      },
+      "engine_event": {
+        "type": "percussion",
+        "manual": "upper",
+        "index": 1
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        127,
+        128,
+        134,
+        397,
+        398,
+        401,
+        402,
+        418
+      ]
+    },
+    {
+      "id": 12290,
+      "path": "percussion.volume",
+      "label": "Percussion volume",
+      "kind": "percussion_switch",
+      "unit": "volume-index-0=normal-1=soft",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "step_count": 1,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u + 0.5)",
+        "to_normalized": "x",
+        "meaning": "percussion-setting-index-fraction"
+      },
+      "engine_event": {
+        "type": "percussion",
+        "manual": "upper",
+        "index": 2
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        127,
+        128,
+        134,
+        397,
+        398,
+        401,
+        402,
+        418
+      ]
+    },
+    {
+      "id": 12291,
+      "path": "percussion.decay",
+      "label": "Percussion decay",
+      "kind": "percussion_switch",
+      "unit": "decay-index-0=slow-1=fast",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "step_count": 1,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u + 0.5)",
+        "to_normalized": "x",
+        "meaning": "percussion-setting-index-fraction"
+      },
+      "engine_event": {
+        "type": "percussion",
+        "manual": "upper",
+        "index": 3
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        127,
+        128,
+        134,
+        397,
+        398,
+        401,
+        402,
+        418
       ]
     }
   ]

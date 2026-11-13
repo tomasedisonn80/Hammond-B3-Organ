@@ -1,8 +1,10 @@
 # Early console extension (partial M3)
 
-This adds useful control behavior to the nominal dry engine. It does not close
-M3: individual contact timing, physical multi-preset latches/loading, pedal audio,
-percussion/recharge and loaded expression remain later work. The atlas requires
+This document describes the retained-bank foundation of the nominal dry engine.
+The later [console dynamics](CONSOLE_DYNAMICS.md) contract adds named nominal
+contact travel and shared percussion/recharge. M3 remains partial: measured
+contacts, physical multi-preset latches/loading, pedal audio and loaded expression
+have separate open gates. The atlas requires
 four retained manual drawbar banks and distinguishes preset Cancel from key
 release (pp. 121-132, 389, 447). These relationships can be implemented with
 explicit ideal controls before their circuit model exists.
@@ -11,9 +13,10 @@ explicit ideal controls before their circuit model exists.
 
 A value-owned `ControlState` holds two banks (A/B) for each manual, nine discrete
 positions per bank, one selected sounding bank per manual, a route-enabled bit
-per manual and global normalized expression. Initial state: all positions 0,
-selected bank B, routes enabled, expression 1. Keys and source phases belong to
-Engine, not to this control object.
+per manual, global normalized expression and four percussion controls. Initial
+state: all positions 0, selected bank B, routes enabled, expression 1 and percussion
+Off/Second/Normal/Slow. Keys, contact trajectories, percussion readiness and source
+phases belong to Engine's dynamic modules, not to this control object.
 
 - Setting a bank position never selects it or changes the other banks.
 - Selecting A/B enables that manual's route and uses its retained positions.

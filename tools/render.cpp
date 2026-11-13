@@ -87,23 +87,28 @@ struct Options {
     std::uint64_t seed = 0;
     std::uint8_t note = 60;
     std::array<std::uint8_t, hammond::kDrawbarCount> drawbars{8, 8, 8, 0, 0, 0, 0, 0, 0};
+    hammond::ContactMode contact_mode = hammond::ContactMode::Ideal;
+    hammond::PercussionSettings percussion{};
     bool has_events = false;
     bool fail_on_clip = false;
 };
 
 enum class Flag : std::size_t {
     Profile, Output, SampleRate, BlockSize, Frames, Seed, Drawbars, Note, Events,
-    FailOnClip, Count
+    Contacts, Percussion, PercussionVolume, PercussionDecay, FailOnClip, Count
 };
 
 [[nodiscard]] Options parse_options(int argc, char* argv[]) {
-    if (argc > 32) {
-        fail("Too many command-line arguments.");
-    }
     Options options;
     constexpr std::array<std::string_view, static_cast<std::size_t>(Flag::Count)> names{
         "--profile", "--output", "--sample-rate", "--block-size", "--frames",
-        "--seed", "--drawbars", "--note", "--events", "--fail-on-clip"};
+        "--seed", "--drawbars", "--note", "--events", "--contacts", "--percussion",
+        "--percussion-volume", "--percussion-decay", "--fail-on-clip"};
+    // One program argument, two per value-taking flag, and one valueless flag.
+    // Duplicates and the mutually exclusive note/score pair still reject below.
+    if (argc > static_cast<int>(names.size() * 2)) {
+        fail("Too many command-line arguments.");
+    }
     std::array<bool, names.size()> seen{};
     for (int argument = 1; argument < argc; ++argument) {
         const std::string_view name(argv[argument]);
@@ -170,6 +175,44 @@ enum class Flag : std::size_t {
                     fail("Drawbars must contain exactly nine digits in 0..8.");
                 }
                 options.drawbars[i] = static_cast<std::uint8_t>(value[i] - '0');
+            }
+            break;
+        case Flag::Contacts:
+            if (value == "ideal") {
+                options.contact_mode = hammond::ContactMode::Ideal;
+            } else if (value == "nominal") {
+                options.contact_mode = hammond::ContactMode::LinearTravel;
+            } else {
+                fail("Contacts must be ideal or nominal.");
+            }
+            break;
+        case Flag::Percussion:
+            if (value == "off") {
+                options.percussion.enabled = false;
+            } else if (value == "second" || value == "third") {
+                options.percussion.enabled = true;
+                options.percussion.harmonic = value == "second"
+                    ? hammond::PercussionHarmonic::Second : hammond::PercussionHarmonic::Third;
+            } else {
+                fail("Percussion must be off, second or third.");
+            }
+            break;
+        case Flag::PercussionVolume:
+            if (value == "normal") {
+                options.percussion.volume = hammond::PercussionVolume::Normal;
+            } else if (value == "soft") {
+                options.percussion.volume = hammond::PercussionVolume::Soft;
+            } else {
+                fail("Percussion volume must be normal or soft.");
+            }
+            break;
+        case Flag::PercussionDecay:
+            if (value == "slow") {
+                options.percussion.decay = hammond::PercussionDecay::Slow;
+            } else if (value == "fast") {
+                options.percussion.decay = hammond::PercussionDecay::Fast;
+            } else {
+                fail("Percussion decay must be slow or fast.");
             }
             break;
         case Flag::FailOnClip:
@@ -362,6 +405,12 @@ struct AbsoluteEvent {
         result.event.type = EventType::Cancel;
         if (index != 0 || value != 0.0) {
             fail("Cancel index and value must be zero.");
+        }
+    } else if (tokens[1] == "percussion") {
+        result.event.type = EventType::Percussion;
+        if (result.event.manual != hammond::Manual::Upper || index >= 4 ||
+            value < 0.0 || value > 1.0 || std::trunc(value) != value) {
+            fail("Percussion requires upper manual, index 0..3 and integer value 0 or 1.");
         }
     } else {
         fail("Unknown event type.");
@@ -583,6 +632,9 @@ void encode_pcm(std::span<const float> samples, std::span<std::uint8_t> bytes,
     json.imbue(std::locale::classic());
     json << std::setprecision(std::numeric_limits<double>::max_digits10)
          << "{\"status\":\"" << status << "\",\"model\":\"ideal-shared-sine-v1\","
+         << "\"render_schema_version\":2,\"contact_model\":\""
+         << hammond::contact_model_id(options.contact_mode)
+         << "\",\"percussion_model\":\"" << hammond::kPercussionModelId << "\","
          << "\"evidence_status\":\"unmeasured\",\"profile_id\":\"" << profile.profile_id.data()
          << "\",\"authoring_sha256\":\"" << profile.authoring_sha256.data()
          << "\",\"sample_rate\":" << options.sample_rate
@@ -605,18 +657,32 @@ int render(Options options) {
     hammond::Engine engine;
     const hammond::ProcessSpec spec{static_cast<double>(options.sample_rate), options.block_size,
                                     options.seed, 0};
-    const auto prepared = engine.prepare(profile, spec);
+    const auto console_model = options.contact_mode == hammond::ContactMode::Ideal
+        ? hammond::make_legacy_console_model() : hammond::make_nominal_console_model();
+    const auto prepared = engine.prepare(profile, spec, console_model);
     if (prepared != hammond::Status::Ok || !engine.prepared()) {
         fail("Engine preparation failed: " + std::string(hammond::status_name(prepared)));
     }
-    std::array<hammond::Event, hammond::kDrawbarCount> registration{};
-    for (std::size_t i = 0; i < registration.size(); ++i) {
-        registration[i] = {0, hammond::EventType::Drawbar, hammond::Manual::Upper,
-                           static_cast<std::uint8_t>(i), static_cast<double>(options.drawbars[i])};
+    std::array<hammond::Event, hammond::kDrawbarCount + 4> initial_controls{};
+    for (std::size_t i = 0; i < options.drawbars.size(); ++i) {
+        initial_controls[i] = {0, hammond::EventType::Drawbar, hammond::Manual::Upper,
+                               static_cast<std::uint8_t>(i), static_cast<double>(options.drawbars[i])};
     }
-    const auto flushed = engine.process(0, {}, registration);
-    if (!flushed || flushed.events_consumed != registration.size() || engine.frame_clock() != 0) {
-        fail("Engine rejected initial zero-frame registration.");
+    // These controls follow registration and precede all scored events. Later
+    // score automation, including frame zero, therefore overrides CLI defaults.
+    const std::array<double, 4> percussion_values{
+        options.percussion.enabled ? 1.0 : 0.0,
+        options.percussion.harmonic == hammond::PercussionHarmonic::Third ? 1.0 : 0.0,
+        options.percussion.volume == hammond::PercussionVolume::Soft ? 1.0 : 0.0,
+        options.percussion.decay == hammond::PercussionDecay::Fast ? 1.0 : 0.0};
+    for (std::size_t i = 0; i < percussion_values.size(); ++i) {
+        initial_controls[hammond::kDrawbarCount + i] = {
+            0, hammond::EventType::Percussion, hammond::Manual::Upper,
+            static_cast<std::uint8_t>(i), percussion_values[i]};
+    }
+    const auto flushed = engine.process(0, {}, initial_controls);
+    if (!flushed || flushed.events_consumed != initial_controls.size() || engine.frame_clock() != 0) {
+        fail("Engine rejected initial zero-frame controls.");
     }
     std::vector<float> mono(options.block_size);
     std::vector<std::uint8_t> pcm(static_cast<std::size_t>(options.block_size) * kBytesPerFrame);
@@ -701,15 +767,22 @@ int main(int argc, char* argv[]) {
                 "  --drawbars NNNNNNNNN           (nine digits 0..8; default 888000000)\n"
                 "  --note 36..96                  (default 60; incompatible with --events)\n"
                 "  --events FILE                  (absolute events replace the default note)\n"
+                "  --contacts ideal|nominal        (default ideal; nominal travel is unmeasured)\n"
+                "  --percussion off|second|third    (default off; upper-B route only)\n"
+                "  --percussion-volume normal|soft (default normal)\n"
+                "  --percussion-decay slow|fast     (default slow)\n"
                 "  --fail-on-clip                  (do not publish a clipped render)\n"
                 "Output: unmeasured dry model, stereo little-endian PCM16; existing files are rejected.\n"
                 "Scores: at most 16 MiB, 262144 events, 4096 bytes/line, 1024 events/frame.\n"
                 "Score fields: frame type upper|lower index value (five fields).\n"
                 "Types: note_on, note_off, drawbar, expression, all_notes_off,\n"
-                "       bank_drawbar, select_bank, cancel.\n"
+                "       bank_drawbar, select_bank, cancel, percussion.\n"
                 "bank_drawbar: index bank*9+drawbar (A=0, B=1), integer value 0..8.\n"
                 "select_bank: index 0, integer value 0=A or 1=B; reconnects the manual.\n"
-                "cancel: index/value 0; retains held keys and banks. Drawbar edits selected bank.\n";
+                "cancel: index/value 0; retains held keys and banks. Drawbar edits selected bank.\n"
+                "percussion: upper only; indices 0=enable, 1=third, 2=soft, 3=fast; value 0|1.\n"
+                "Initial percussion controls follow drawbars; score events then take precedence.\n"
+                "JSON summary schema 2 identifies source, contact and percussion models separately.\n";
             return std::cout ? 0 : 1;
         }
         return render(parse_options(argc, argv));

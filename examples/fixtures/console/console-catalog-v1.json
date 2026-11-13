@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "catalog_id": "nominal-console-fixtures-v1",
+  "evidence_status": "synthetic-unmeasured",
+  "models": {
+    "source": "ideal-shared-sine-v1",
+    "contacts": "nominal-linear-travel-v1",
+    "percussion": "shared-readiness-v1"
+  },
+  "profile": {
+    "id": "nominal-unmeasured-v1",
+    "authoring_path": "data/profiles/nominal-unmeasured-v1.json",
+    "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+    "compiled_sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+  },
+  "provenance": {
+    "evidence_class": "proposed",
+    "source_document": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+    "source_sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+    "source_pages": [
+      115,
+      118,
+      127,
+      128,
+      135,
+      137,
+      447
+    ],
+    "scope": "Original synthetic gestures and closed-form checks of the named software models; no acquired instrument recording or physical calibration."
+  },
+  "bounds": {
+    "fixture_count": 3,
+    "sample_rate": 48000,
+    "max_frames": 42000,
+    "max_score_bytes": 4096,
+    "max_events": 32,
+    "max_events_at_frame": 8
+  },
+  "conventions": {
+    "spans": "Half-open absolute frame intervals [start, end).",
+    "event_paths": "A single filename relative to this catalog; no path traversal.",
+    "amplitude": "Normalized digital peak, not volts. PCM16 unit is 1/32768.",
+    "phase": "Fit sine/cosine at absolute frame positions. Compare normalized coefficient vectors for shared tone IDs; do not copy the source PRNG.",
+    "envelope": "Analytic exponentials of elapsed samples under the declared detector and route boundaries; never per-note reset.",
+    "contacts": "Current-state audio before one trajectory update per rendered sample. Full press 0.008 s, release 0.012 s; explicit nominal make/break thresholds.",
+    "expression": "Each score explicitly sets global normalized expression to 0.5; source profile output gain 0.03 therefore gives 0.015 per full-level connected branch."
+  },
+  "tolerances": {
+    "component_peak_abs": 4e-05,
+    "phase_vector_abs": 0.006,
+    "residual_pcm_max": 2.0,
+    "meaningful_pcm_peak_min": 64
+  },
+  "fixtures": [
+    {
+      "id": "console-travel-v1",
+      "purpose": "Independent 8-foot contact travel on both manuals, preserved A4 source phase, and velocity-independent held amplitude.",
+      "events": {
+        "path": "console-travel-v1.events",
+        "sha256": "9147e5bb93d701ad0cee516cf28509a685f2791fefb19218a70c12dacd9d9806"
+      },
+      "sample_rate": 48000,
+      "frames": 14400,
+      "seed": 2623,
+      "block_size": 127,
+      "registration": "008000000",
+      "controls": {
+        "contacts": "nominal",
+        "percussion": "off",
+        "percussion_volume": "normal",
+        "percussion_decay": "slow"
+      },
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.0151,
+        "silence_spans": [
+          [
+            0,
+            160
+          ],
+          [
+            6438,
+            7126
+          ],
+          [
+            13447,
+            14400
+          ]
+        ],
+        "audible_spans": [
+          [
+            160,
+            6438
+          ],
+          [
+            7126,
+            13447
+          ]
+        ],
+        "contact_edges": [
+          {
+            "manual": "upper",
+            "note": 69,
+            "contact_index": 2,
+            "press_frame": 37,
+            "release_frame": 6000,
+            "make_frame": 160,
+            "break_frame": 6438
+          },
+          {
+            "manual": "lower",
+            "note": 69,
+            "contact_index": 2,
+            "press_frame": 7003,
+            "release_frame": 13009,
+            "make_frame": 7126,
+            "break_frame": 13447
+          }
+        ],
+        "fits": [
+          {
+            "span": [
+              600,
+              5400
+            ],
+            "tones": [
+              {
+                "tone_id": 46,
+                "frequency_hz": 440.0,
+                "peak_amplitude": 0.015,
+                "envelope": "unity"
+              }
+            ]
+          },
+          {
+            "span": [
+              7600,
+              12400
+            ],
+            "tones": [
+              {
+                "tone_id": 46,
+                "frequency_hz": 440.0,
+                "peak_amplitude": 0.015,
+                "envelope": "unity"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "console-percussion-legato-v1",
+      "purpose": "One shared fast readiness across joining chord notes, an elapsed release gap and a second attack; no sustained registration.",
+      "events": {
+        "path": "console-percussion-legato-v1.events",
+        "sha256": "48f95b03561e48b13b1899203632a420d45f2283d1c293093c0236afde8e5ac9"
+      },
+      "sample_rate": 48000,
+      "frames": 42000,
+      "seed": 2624,
+      "block_size": 127,
+      "registration": "000000000",
+      "controls": {
+        "contacts": "nominal",
+        "percussion": "second",
+        "percussion_volume": "normal",
+        "percussion_decay": "fast"
+      },
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.0451,
+        "silence_spans": [
+          [
+            0,
+            162
+          ],
+          [
+            24381,
+            28162
+          ],
+          [
+            41381,
+            42000
+          ]
+        ],
+        "audible_spans": [
+          [
+            162,
+            24381
+          ],
+          [
+            28162,
+            41381
+          ]
+        ],
+        "readiness": {
+          "decay_seconds": 0.37524193548387097,
+          "recovery_seconds": 0.03432,
+          "first_detector_make": 354,
+          "detector_break": 24093,
+          "second_detector_make": 28354
+        },
+        "fits": [
+          {
+            "span": [
+              600,
+              6000
+            ],
+            "tones": [
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0225,
+                "envelope": "legato_readiness"
+              }
+            ]
+          },
+          {
+            "span": [
+              7000,
+              11000
+            ],
+            "tones": [
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0225,
+                "envelope": "legato_readiness"
+              }
+            ]
+          },
+          {
+            "span": [
+              13000,
+              22000
+            ],
+            "tones": [
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0225,
+                "envelope": "legato_readiness"
+              },
+              {
+                "tone_id": 61,
+                "frequency_hz": 1046.5022612023945,
+                "peak_amplitude": 0.0225,
+                "envelope": "legato_readiness"
+              }
+            ]
+          },
+          {
+            "span": [
+              28600,
+              40000
+            ],
+            "tones": [
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0225,
+                "envelope": "legato_readiness"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "console-routing-mask-v1",
+      "purpose": "Held-key upper-B eligibility, A selection, Cancel/edit/reselect, retained upper one-foot masking and independent lower manual.",
+      "events": {
+        "path": "console-routing-mask-v1.events",
+        "sha256": "3f654665fd74bc26fe2cb42bf597adb2b68f4485c7a47c89c0a4f0a84ae52318"
+      },
+      "sample_rate": 48000,
+      "frames": 38400,
+      "seed": 2625,
+      "block_size": 127,
+      "registration": "000000008",
+      "controls": {
+        "contacts": "nominal",
+        "percussion": "second",
+        "percussion_volume": "soft",
+        "percussion_decay": "slow"
+      },
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.0301,
+        "silence_spans": [
+          [
+            0,
+            162
+          ],
+          [
+            36023,
+            38400
+          ]
+        ],
+        "audible_spans": [
+          [
+            162,
+            36023
+          ]
+        ],
+        "readiness": {
+          "decay_seconds": 1.551,
+          "recovery_seconds": 0.03432,
+          "first_detector_make": 354,
+          "route_off_frame": 6001,
+          "route_on_frame": 21013
+        },
+        "fits": [
+          {
+            "span": [
+              600,
+              5400
+            ],
+            "tones": [
+              {
+                "tone_id": 82,
+                "frequency_hz": 3520.0,
+                "peak_amplitude": 0.015,
+                "envelope": "unity"
+              },
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0075,
+                "envelope": "routing_readiness"
+              }
+            ]
+          },
+          {
+            "span": [
+              6600,
+              11400
+            ],
+            "tones": [
+              {
+                "tone_id": 82,
+                "frequency_hz": 3520.0,
+                "peak_amplitude": 0.03,
+                "envelope": "unity"
+              },
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0,
+                "envelope": "unity"
+              }
+            ]
+          },
+          {
+            "span": [
+              12600,
+              17400
+            ],
+            "tones": [
+              {
+                "tone_id": 82,
+                "frequency_hz": 3520.0,
+                "peak_amplitude": 0.015,
+                "envelope": "unity"
+              },
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0,
+                "envelope": "unity"
+              }
+            ]
+          },
+          {
+            "span": [
+              18400,
+              20400
+            ],
+            "tones": [
+              {
+                "tone_id": 82,
+                "frequency_hz": 3520.0,
+                "peak_amplitude": 0.015,
+                "envelope": "unity"
+              },
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0,
+                "envelope": "unity"
+              }
+            ]
+          },
+          {
+            "span": [
+              21600,
+              26400
+            ],
+            "tones": [
+              {
+                "tone_id": 82,
+                "frequency_hz": 3520.0,
+                "peak_amplitude": 0.015,
+                "envelope": "unity"
+              },
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0075,
+                "envelope": "routing_readiness"
+              }
+            ]
+          },
+          {
+            "span": [
+              27600,
+              32400
+            ],
+            "tones": [
+              {
+                "tone_id": 82,
+                "frequency_hz": 3520.0,
+                "peak_amplitude": 0.03,
+                "envelope": "unity"
+              },
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0,
+                "envelope": "unity"
+              }
+            ]
+          },
+          {
+            "span": [
+              33600,
+              36000
+            ],
+            "tones": [
+              {
+                "tone_id": 82,
+                "frequency_hz": 3520.0,
+                "peak_amplitude": 0.015,
+                "envelope": "unity"
+              },
+              {
+                "tone_id": 58,
+                "frequency_hz": 880.0,
+                "peak_amplitude": 0.0,
+                "envelope": "unity"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

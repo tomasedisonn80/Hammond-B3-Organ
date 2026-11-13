@@ -481,3 +481,92 @@ All intended changed files are Markdown, their whitespace/UTF-8 checks pass, and
 no code/build/test/data/demo path differs from the qualified `61c6ecb` checkpoint.
 The coordinator repeats the archive gate on the frozen publication tree after
 retaining this result; full DSP reruns are supplied by that commit's hosted workflow.
+
+
+## 2026-11-13 console continuation
+
+The owner requested another complete PDF review and sixty actual new agents in ten
+waves. The continuation starts from `9c8068c`; prior assignments remain separate.
+Notes and the wave ledger are under `development/2026-11-13-continuation/`.
+Assignments 01-06 read every page in six disjoint ranges and retained visual checks,
+full-plan findings, model boundaries and an exact M3 entry task. Commit `5dcd942`
+published these notes and the standing continuation rules in `AGENTS.md`.
+
+Assignments 07-12 implemented independently testable value-owned contact and
+percussion modules, the explicit console contract, analytic tests and compiled
+factory metadata. Incoming `7c2ad20` and `6c3dd8b` were integrated without discarding
+active work. The publication `7a24a30` has tree
+`fe2704e72f326f24e09baed98295f26a35db9783`; a clean archive of that exact staged tree
+passed 24/24 Release CTest suites. Hosted run 43366836424 subsequently passed all
+four configured jobs, including leak-enabled Linux sanitizer execution.
+
+Assignments 13-18 connected the modules to Engine, strict v1-to-v2 musical-control
+migration, percussion events and renderer options. Independent tests cover shared
+source audio, all nine contact thresholds at three rates, finite shared recovery,
+zero-time routing/restore behavior, panic separation, arbitrary block partitions
+and rejection atomicity. The renderer suite retains its original 20 methods and
+adds 14. Thirteen separately retained legacy-render comparisons matched WAV bytes
+exactly; removing only the three schema/model additions left identical old metrics.
+Permanent tests do not depend on the saved old binary or a session path.
+
+Assignment 19 added four stable percussion IDs to the proposed registry. All 39
+old complete records retain the independent canonical digest
+`61669b54e0a0499da950ece28c855e70ab4cb815d204f625f0aee8542d8b4f1b`;
+24 parameter methods passed. Registry documents are schema 2; saved controls have
+a separately specified B3CONTROLS1 migration. Assignment 20 migrated the evidence
+producer to strict manifest schema 2 with explicit contact/percussion parameters,
+argv and model identities. Assignment 22 preserved all 19 producer methods and
+added eight; 27/27 passed against an actual renderer, including all 24 console
+option combinations. Independent verifier migration and the new console catalog
+complete wave 04 before the combined checkpoint is published.
+
+No physical contact calibration, complete AO-28 percussion circuit, pedal audio,
+scanner, cabinet or native host gate is closed by this nominal software work.
+The integration checkpoint's full staged tests and hosted results must be recorded
+separately from the earlier standalone-module qualification.
+
+
+### Incoming review fixes and integration checks
+
+Remote `main` advanced to `61c6ecb` while wave 04 was active. Its audible v1
+bundle, factory runtime acceptance, original assignments 45-56, rights inventory
+and prior-session handoff were retained. Hosted run 43368537860 passed all four
+configured jobs at that incoming commit. A three-way integration preserved the
+nearest-rounding serialization repair inside the new B3CONTROLS2 writer and kept
+the historical renderer-availability handling in the versioned verifier.
+
+The first merged-source compile exposed the incoming rounding test's old
+`kCanonical` name, replaced by explicit legacy/v2 fixtures in the migration tests.
+The test now exercises expression-underflow rejection for both versions under
+all four standard rounding modes. No original historical input was rewritten.
+The pre-merge working integration passed 26/26 suites; the merged checkpoint needs
+its separately recorded clean full gate and new hosted qualification.
+
+
+Assignments 21-24 finished the independent version-selected verifier, comprehensive
+producer tests, three separate console fixtures and the end-to-end PCM acceptance
+layer. Schema1 historical bundles remain supported without rewriting their bytes.
+The new console catalog passed four methods/nine actual renders; independent fits
+had maximum residual 0.526824 PCM units below the declared two-unit allowance.
+The end-to-end suite passed three methods/18 verified bundles and 27 analytic
+windows; its largest error was 2.062 percent of its own quantization-derived bound.
+The incoming demo/verifier/rounding/metadata merge gate passed 4/4 after the fixture
+name correction. The combined exact-source gate is the next publication step.
+
+
+The first combined full gate passed 29/30 suites. The historical catalog
+deliberately accounts for every top-level `.events` file. Root preserved that assertion and all five
+legacy fixtures by moving the three new scores and their catalog into
+`examples/fixtures/console/`. Their bytes/hashes are unchanged; current replay
+commands and the new test use the new location. The console catalog now also
+rejects unlisted `.events` files in its own directory. The assignment23 note retains its
+original pre-integration path listing.
+
+
+The corrected console integration source tree
+`f1b5ac9ca543fcb51bac5360c2c0c782c5a6166d` passed **30/30 Release CTest suites**
+in 8.63 seconds. Before publication, remote `main` advanced to `7bbd8e7` with
+Markdown-only completion of all 60 original assignments. Those historical notes,
+reviews, stronger handoff and standing instructions were integrated. No runtime,
+fixture, build or test bytes changed in that incoming revision. The current
+continuation keeps its own separate assignment count and current M3 status.

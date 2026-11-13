@@ -31,7 +31,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PROFILE = ROOT / "data/profiles/nominal-unmeasured-v1.json"
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
+CONTACT_MODELS = {"ideal": "ideal-contacts-v1", "nominal": "nominal-linear-travel-v1"}
 MAX_EXECUTABLE_BYTES = 512 * 1024 * 1024
 MAX_SCORE_BYTES = 16 * 1024 * 1024
 MAX_LOG_BYTES = 1024 * 1024
@@ -166,7 +167,7 @@ def _event_number(token: str) -> float:
 
 
 def validate_events(raw: bytes, frames: int) -> int:
-    """Preflight the current C++ event grammar, including retained banks/Cancel."""
+    """Preflight the current C++ event grammar, including console controls."""
     if len(raw) > MAX_SCORE_BYTES or b"\x00" in raw:
         raise FixtureError("events exceed 16 MiB or contain a NUL byte")
     source = io.BytesIO(raw)
@@ -205,6 +206,7 @@ def validate_events(raw: bytes, frames: int) -> int:
                 "bank_drawbar": index <= 17 and 0 <= value <= 8 and value.is_integer(),
                 "select_bank": index == 0 and value in (0, 1),
                 "cancel": index == 0 and value == 0,
+                "percussion": manual == "upper" and index <= 3 and value in (0, 1),
             }
             if not valid.get(kind, False):
                 raise FixtureError(f"unknown event type or invalid payload: {kind}")
@@ -366,6 +368,8 @@ def _manifest_write(directory: Path, manifest: dict) -> None:
 
 def _validate_metrics(metrics: dict, parameters: dict, authoring_digest: str) -> None:
     expected = {"status": "ok", "model": profile_compiler.MODEL, "evidence_status": "unmeasured",
+                "render_schema_version": 2, "contact_model": CONTACT_MODELS[parameters["contacts"]],
+                "percussion_model": "shared-readiness-v1",
                 "profile_id": profile_compiler.PROFILE_ID, "authoring_sha256": authoring_digest,
                 "sample_rate": parameters["sample_rate"], "block_size": parameters["block_size"],
                 "frames": parameters["frames"], "seed": parameters["seed"], "channels": 2,
@@ -388,6 +392,8 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
                 events: str | os.PathLike[str] | None = None, frames: int | None = None,
                 sample_rate: int = 48000, block_size: int = 64, seed: int = 0,
                 drawbars: str = "888000000", note: int | None = None,
+                contacts: str = "ideal", percussion: str = "off",
+                percussion_volume: str = "normal", percussion_decay: str = "slow",
                 timeout_seconds: int = DEFAULT_TIMEOUT_SECONDS) -> dict:
     """Create a NEW evidence directory. Check returned status; failures are retained."""
     _integer(sample_rate, 44100, 96000, "sample_rate")
@@ -400,6 +406,13 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
     _integer(timeout_seconds, 1, 600, "timeout_seconds")
     if type(drawbars) is not str or not re.fullmatch(r"[0-8]{9}", drawbars):
         raise FixtureError("drawbars must contain exactly nine ASCII digits 0..8")
+    for label, value, choices in (
+            ("contacts", contacts, ("ideal", "nominal")),
+            ("percussion", percussion, ("off", "second", "third")),
+            ("percussion_volume", percussion_volume, ("normal", "soft")),
+            ("percussion_decay", percussion_decay, ("slow", "fast"))):
+        if type(value) is not str or value not in choices:
+            raise FixtureError(f"{label} must be one of {', '.join(choices)}")
     if events is not None and note is not None:
         raise FixtureError("explicit note is incompatible with events")
     if note is not None:
@@ -440,6 +453,8 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
         tools_identity[name] = {"path": str(path), **sha256_file(path, MAX_TOOL_BYTES)}
     parameters = {"frames": frames, "sample_rate": sample_rate, "block_size": block_size,
                   "seed": seed, "drawbars": drawbars, "note": note,
+                  "contacts": contacts, "percussion": percussion,
+                  "percussion_volume": percussion_volume, "percussion_decay": percussion_decay,
                   "event_mode": "file" if events is not None else "default_note",
                   "event_count": event_count, "fail_on_clip": True}
     manifest = {
@@ -478,7 +493,10 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
         argv = [str(renderer_path), "--profile", str(directory / "profile.b3p"),
                 "--output", str(directory / "render.wav"), "--frames", str(frames),
                 "--sample-rate", str(sample_rate), "--block-size", str(block_size),
-                "--seed", str(seed), "--drawbars", drawbars, "--fail-on-clip"]
+                "--seed", str(seed), "--drawbars", drawbars,
+                "--contacts", contacts, "--percussion", percussion,
+                "--percussion-volume", percussion_volume, "--percussion-decay", percussion_decay,
+                "--fail-on-clip"]
         argv += ["--events", str(directory / "events.txt")] if events is not None else ["--note", str(note)]
         manifest["invocation"]["argv"] = argv
         stage = "renderer"
@@ -583,6 +601,12 @@ def main(argv: list[str] | None = None) -> int:
                           ("seed", 0), ("timeout-seconds", DEFAULT_TIMEOUT_SECONDS)):
         parser.add_argument(f"--{name}", type=_cli_integer, default=default, action=_Once)
     parser.add_argument("--drawbars", default="888000000", action=_Once)
+    for name, default, choices in (
+            ("contacts", "ideal", ("ideal", "nominal")),
+            ("percussion", "off", ("off", "second", "third")),
+            ("percussion-volume", "normal", ("normal", "soft")),
+            ("percussion-decay", "slow", ("slow", "fast"))):
+        parser.add_argument(f"--{name}", default=default, choices=choices, action=_Once)
     options = vars(parser.parse_args(argv))
     options.pop("_seen", None)
     try:

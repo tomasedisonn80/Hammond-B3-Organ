@@ -1,6 +1,8 @@
 # Development status
 
-Session started 2026-11-12 (America/Halifax). Baseline: `501c68b`.
+Foundation session started 2026-11-12 (America/Halifax), baseline `501c68b`.
+The [console continuation](development/2026-11-13-continuation/README.md) started
+2026-11-13 (UTC) from `9c8068c`; its new assignments are counted separately.
 
 **Original requested session complete:** all 60 distinct worker assignments in
 ten waves of six have finished. The [execution ledger](development/AGENT_LEDGER.md)
@@ -11,7 +13,7 @@ checkpoint `61c6ecb`. Current product work continues at the scoped stage below.
 ## Current stage
 
 The M0 engineering foundation and a scoped M1/M2 nominal dry engine are implemented.
-The engine owns 91 shared sine sources, explicit manual routing, ideal key gates,
+The engine owns 91 shared sine sources, explicit manual routing, independent contacts,
 manual drawbars and a linear expression surrogate. It consumes bounded sample-offset
 events with atomic rejection, stable ties, zero-frame flushes and an independent
 64-bit render clock. Source phase continues through silence and disconnected output.
@@ -22,23 +24,27 @@ Independent profile, generator, scheduler and renderer tests passed their assign
 Debug/Release scopes. Source pitch, coherent foldback, same-build block partition
 identity and malformed-input behavior have retained software evidence.
 
-Early M3 console behavior is implemented: four retained A/B banks, direct hidden
-bank edits, routing-only Cancel/reselect and validated control snapshots. Control
-serialization preserves all 39 controls plus route-enable bits; it excludes keys,
-source phases and time. The internal parameter registry has 39 proposed identities,
-without claiming actual VST3 exports. Pedal mapping data contains 195 connections
-and five explicit disconnections; it is not connected to runtime pedal audio.
+M3 remains a partial nominal implementation. It includes four retained A/B banks,
+hidden-bank edits, routing-only Cancel/reselect, 1,098 independent contacts and one
+shared upper-B percussion readiness state. The optional linear-travel model has
+separate make/break thresholds, partial-target support in ContactBank, incomplete
+return and hysteresis. Its proposed times and thresholds are unmeasured. Percussion
+uses the physical ninth contact detector, second/third harmonic routing, retained
+normal/soft and slow/fast controls, finite recovery and upper-only one-foot masking.
+Ideal contacts and percussion off preserve original renderer defaults.
 
-The preserved continuation commit `7a24a30` adds separately tested nominal
-`ContactBank` and shared `PercussionState` components, a `ConsoleModel` contract
-and the `hammond_model_info` diagnostic. Their identities, proposed parameters and
-limits are in [console dynamics](CONSOLE_DYNAMICS.md) and
-[model metadata](MODEL_METADATA.md). They are not yet connected to `Engine` or
-the renderer at that commit; rendered audio still uses ideal manual key gates.
-No scanner, AO-28, Leslie DSP, pedal audio, VST3, audio-device
-standalone application or native UI is implemented at this checkpoint. No measured
-instrument-fidelity claim is made. Full M0 specimen lock, factory gearing and
-source calibration remain open despite the useful nominal implementation.
+Control serialization writes `B3CONTROLS2` and migrates `B3CONTROLS1` with percussion
+Off/Second/Normal/Slow. It preserves 43 controls plus route-enable bits, excluding
+key ownership, trajectories, readiness, source phases and time. All 39 earlier
+registry records are unchanged; four new IDs append percussion controls. These
+are proposed identities, without actual VST3 exports.
+
+Pedal mapping data contains 195 connections and five explicit disconnections;
+runtime pedal audio remains open. Physical preset latching, continuous drawbar
+travel, contact bounce/antialiasing, loaded expression, scanner, AO-28, Leslie DSP,
+VST3, audio-device standalone and native UI remain unimplemented. Full M0 specimen
+lock, factory gearing, source calibration and measured instrument fidelity remain
+open despite the working nominal implementation.
 
 Two independently frozen factory Table III transcriptions now agree with all
 549 manual assignments and all 200 pedal positions in the existing data. The
@@ -71,14 +77,24 @@ diagnostic archive contains 274 Python methods and zero test skips. Qualificatio
 applies to this offline software and those runners; native audio-device and
 plugin-host gates remain open.
 
-The [CI audit](CI_QUALIFICATION.md) preserves the earlier failures and subsequent
-repairs, including the repository diagnostic path mismatch and executable-mutation
-test at `7c2ad20`. The original mutation exception remains unestablished; its
-replacement still requires a successful renderer and the exact integrity failure.
+The historical `7c2ad20` checkpoint exposed a Windows repository-diagnostic path
+mismatch and a Linux sanitizer render-evidence mutation-test failure. The repairs
+were incorporated in `6c3dd8b`; its hosted matrix passed. The
+[CI audit](CI_QUALIFICATION.md) retains the earlier failure evidence.
 
-The [OfflineTools local install](OFFLINE_INSTALL.md) passed actual installation,
-relocation and same-build PCM identity checks in that hosted matrix. It consumes
-explicit installed profile/event paths and rejects a missing profile.
+The contact/percussion module checkpoint `7a24a30` passed all **24/24** suites in
+a clean archive of its exact staged source tree. Hosted
+[run 43366836424](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43366836424)
+passed Linux GCC, macOS AppleClang, Windows MSVC Release, and Linux ASan/UBSan with
+leak checking. This qualification predates the subsequent Engine/CLI integration.
+The continuation ledger records the next checkpoint's complete checks separately;
+focused integration tests alone do not establish a new full-matrix pass.
+
+The new [OfflineTools local install](OFFLINE_INSTALL.md) passed actual installation,
+relocation and same-build PCM identity checks on Linux. It consumes explicit
+installed profile/event paths and rejects a missing profile. macOS/Windows install
+qualification passed in the subsequent hosted integration. Later tool additions
+require their own install/relocation checks.
 
 The [factory runtime acceptance](FACTORY_RUNTIME_ACCEPTANCE.md), retained
 [four-second demo](../examples/rendered/nominal-two-manual-v1/README.md),
@@ -88,7 +104,7 @@ Release suites and 274 Python methods with zero skips. The route gate exercises
 all 1,098 key/drawbar routes across both manuals with CSV-selected expected
 sources. Their hosted gates passed in run 43368537860, independently audited in
 the [final platform review](reviews/FINAL_PLATFORM_REVIEW.md). None establishes
-physical fidelity or makes the nominal components integrated audio behavior.
+physical fidelity. Those historical results predate this continuation's Engine/CLI extension.
 
 The callback audit observed zero C++ allocation/deallocation
 calls in 96 recorded processing calls, including maximum and rejected requests.

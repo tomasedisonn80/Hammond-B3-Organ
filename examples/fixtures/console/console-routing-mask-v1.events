@@ -1,0 +1,16 @@
+# Synthetic nominal console fixture: console-routing-mask-v1.
+# frames=38400 rate=48000 seed=2625 drawbars=000000008
+# contacts=nominal percussion=second volume=soft decay=slow
+# Upper A/B and lower B retain one-foot drawbars; only eligible upper B is masked.
+0 expression upper 0 0.5
+0 bank_drawbar upper 8 8
+0 drawbar lower 8 8
+0 note_on upper 69 100
+0 note_on lower 69 100
+6001 select_bank upper 0 0
+12007 cancel upper 0 0
+18011 drawbar upper 8 4
+21013 select_bank upper 0 1
+27017 percussion upper 0 0
+33019 all_notes_off upper 0 0
+36023 all_notes_off lower 0 0

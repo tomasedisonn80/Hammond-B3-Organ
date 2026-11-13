@@ -1,0 +1,10 @@
+# Synthetic nominal console fixture: console-travel-v1.
+# frames=14400 rate=48000 seed=2623 drawbars=008000000
+# contacts=nominal percussion=off volume=normal decay=slow
+# Independent upper/lower contacts share the same continuously running A4 source.
+0 expression upper 0 0.5
+0 drawbar lower 2 8
+37 note_on upper 69 127
+6000 note_off upper 69 0
+7003 note_on lower 69 1
+13009 note_off lower 69 0

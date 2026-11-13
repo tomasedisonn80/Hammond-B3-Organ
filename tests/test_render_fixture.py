@@ -8,6 +8,7 @@ CTest supplies HAMMOND_RENDER_EXECUTABLE and HAMMOND_TEST_PROFILE. Direct use:
 
 import hashlib
 import importlib.util
+import itertools
 import json
 import math
 import os
@@ -26,6 +27,19 @@ ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("render_fixture", ROOT / "tools/render_fixture.py")
 fixture = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(fixture)
+
+# Frozen from the documented v2 contract, independently of producer constants.
+PARAMETER_FIELDS_V2 = {
+    "frames", "sample_rate", "block_size", "seed", "drawbars", "note", "event_mode",
+    "event_count", "contacts", "percussion", "percussion_volume", "percussion_decay",
+    "fail_on_clip",
+}
+METRIC_FIELDS_V2 = {
+    "status", "model", "evidence_status", "profile_id", "authoring_sha256",
+    "sample_rate", "block_size", "frames", "seed", "channels", "sample_format",
+    "clipped_frames", "clipped_channel_samples", "peak", "rms",
+    "render_schema_version", "contact_model", "percussion_model",
+}
 
 
 def required_file(environment_name):
@@ -195,7 +209,32 @@ class RenderFixtureTests(unittest.TestCase):
 
     def assert_success(self, directory, manifest):
         self.assertEqual(manifest["status"], "succeeded", manifest.get("error"))
-        self.assertEqual(manifest["schema_version"], 1)
+        self.assertIs(type(manifest["schema_version"]), int)
+        self.assertEqual(manifest["schema_version"], 2)
+        parameters = manifest["parameters"]
+        self.assertEqual(set(parameters), PARAMETER_FIELDS_V2)
+        metrics = manifest["renderer_metrics"]
+        self.assertEqual(set(metrics), METRIC_FIELDS_V2)
+        self.assertIs(type(metrics["render_schema_version"]), int)
+        self.assertEqual(metrics["render_schema_version"], 2)
+        self.assertEqual(metrics["contact_model"], {
+            "ideal": "ideal-contacts-v1", "nominal": "nominal-linear-travel-v1",
+        }[parameters["contacts"]])
+        self.assertEqual(metrics["percussion_model"], "shared-readiness-v1")
+        expected_argv = [
+            manifest["renderer"]["path"], "--profile", str(directory / "profile.b3p"),
+            "--output", str(directory / "render.wav"), "--frames", str(parameters["frames"]),
+            "--sample-rate", str(parameters["sample_rate"]),
+            "--block-size", str(parameters["block_size"]), "--seed", str(parameters["seed"]),
+            "--drawbars", parameters["drawbars"], "--contacts", parameters["contacts"],
+            "--percussion", parameters["percussion"],
+            "--percussion-volume", parameters["percussion_volume"],
+            "--percussion-decay", parameters["percussion_decay"], "--fail-on-clip",
+        ]
+        expected_argv += (["--events", str(directory / "events.txt")]
+                          if parameters["event_mode"] == "file"
+                          else ["--note", str(parameters["note"])])
+        self.assertEqual(manifest["invocation"]["argv"], expected_argv)
         self.assertEqual(manifest["evidence_scope"], "synthetic_engineering")
         self.assertTrue(manifest["integrity_verified"])
         self.assertEqual(manifest, json.loads((directory / "manifest.json").read_text()))
@@ -310,6 +349,242 @@ class RenderFixtureTests(unittest.TestCase):
         self.assertIsNone(manifest["parameters"]["note"])
         self.assertNotIn("--note", manifest["invocation"]["argv"])
         self.assertEqual(manifest["inputs"]["events"]["sha256"], hashlib.sha256(raw).hexdigest())
+
+    def test_default_console_options_preserve_legacy_flag_audio_and_metrics(self):
+        implicit_dir, implicit = self.render(frames=1027)
+        explicit_dir, explicit = self.render(
+            frames=1027, contacts="ideal", percussion="off",
+            percussion_volume="normal", percussion_decay="slow")
+        self.assert_success(implicit_dir, implicit)
+        self.assert_success(explicit_dir, explicit)
+        self.assertEqual(implicit["parameters"], {
+            "frames": 1027, "sample_rate": 48000, "block_size": 64, "seed": 7,
+            "drawbars": "008000000", "note": 60, "event_mode": "default_note",
+            "event_count": None, "contacts": "ideal", "percussion": "off",
+            "percussion_volume": "normal", "percussion_decay": "slow", "fail_on_clip": True,
+        })
+        direct_wav = self.work / "legacy flags.wav"
+        result = subprocess.run([
+            str(self.renderer), "--profile", str(implicit_dir / "profile.b3p"),
+            "--output", str(direct_wav), "--frames", "1027", "--sample-rate", "48000",
+            "--block-size", "64", "--seed", "7", "--drawbars", "008000000",
+            "--fail-on-clip", "--note", "60",
+        ], capture_output=True, timeout=20)
+        self.assertEqual(result.returncode, 0, result.stderr.decode(errors="replace"))
+        self.assertEqual(implicit["renderer_metrics"], json.loads(result.stdout))
+        self.assertEqual(implicit["renderer_metrics"], explicit["renderer_metrics"])
+        self.assertEqual((implicit_dir / "render.wav").read_bytes(), direct_wav.read_bytes())
+        self.assertEqual((explicit_dir / "render.wav").read_bytes(), direct_wav.read_bytes())
+
+    def test_all_console_combinations_bind_flags_models_and_audible_controls(self):
+        rendered = {}
+        frames = 2049
+        for contacts, percussion, volume, decay in itertools.product(
+                ("ideal", "nominal"), ("off", "second", "third"),
+                ("normal", "soft"), ("slow", "fast")):
+            with self.subTest(contacts=contacts, percussion=percussion, volume=volume, decay=decay):
+                options = dict(contacts=contacts, percussion=percussion,
+                               percussion_volume=volume, percussion_decay=decay)
+                directory, manifest = self.render(frames=frames, drawbars="000000000", **options)
+                self.assert_success(directory, manifest)
+                for key, value in options.items():
+                    self.assertEqual(manifest["parameters"][key], value)
+                raw = (directory / "render.wav").read_bytes()
+                samples = struct.unpack("<" + "h" * (frames * 2), raw[44:])[::2]
+                rendered[contacts, percussion, volume, decay] = samples
+                if percussion == "off":
+                    self.assertFalse(any(samples))
+                    self.assertEqual(manifest["wav"]["pcm_peak_integer"], 0)
+                else:
+                    self.assertTrue(any(samples[256:1024]))
+                    if contacts == "nominal":
+                        # Independent factory timing: 8 ms full travel; harmonic
+                        # contact 3 closes at .42 and contact 4 at .52.
+                        threshold = .42 if percussion == "second" else .52
+                        first_frame = math.ceil(threshold * .008 * 48000)
+                        self.assertFalse(any(samples[:first_frame]))
+                        self.assertTrue(any(samples[first_frame:first_frame + 64]))
+        for contacts, harmonic, decay in itertools.product(
+                ("ideal", "nominal"), ("second", "third"), ("slow", "fast")):
+            normal = rendered[contacts, harmonic, "normal", decay]
+            soft = rendered[contacts, harmonic, "soft", decay]
+            # With sustained drawbars zero, Soft changes only the documented
+            # 0.5 percussion amplitude; PCM rounding permits one integer step.
+            self.assertLessEqual(max(abs(2 * s - n) for s, n in zip(soft, normal)), 1)
+            self.assertNotEqual(normal, rendered[contacts, harmonic, "normal",
+                                                 "fast" if decay == "slow" else "slow"])
+        self.assertNotEqual(rendered["ideal", "second", "normal", "slow"],
+                            rendered["ideal", "third", "normal", "slow"])
+
+    def test_percussion_score_controls_retain_bytes_and_override_initial_controls(self):
+        prefix = (b"\xef\xbb\xbf# exact controls\r\n0 percussion upper 0 1.0\r\n"
+                  b"0 percussion upper 1 1e0\r\n0 percussion upper 2 +1\r\n"
+                  b"0 percussion upper 3 01\r\n")
+        notes = b"0 note_on upper 60 100\r\n768 note_off upper 60 0\r\n"
+        events = self.score(prefix + notes)
+        first_dir, first = self.render(events=events, frames=1027,
+                                       contacts="nominal", drawbars="000000000")
+        self.assert_success(first_dir, first)
+        self.assertEqual((first_dir / "events.txt").read_bytes(), prefix + notes)
+        self.assertEqual(first["parameters"]["event_count"], 6)
+        self.assertEqual(first["parameters"]["percussion"], "off")
+        self.assertGreater(first["wav"]["pcm_peak_integer"], 0)
+        second_dir, second = self.render(
+            events=self.score(notes), frames=1027, contacts="nominal", drawbars="000000000",
+            percussion="third", percussion_volume="soft", percussion_decay="fast")
+        self.assert_success(second_dir, second)
+        self.assertEqual((first_dir / "render.wav").read_bytes(),
+                         (second_dir / "render.wav").read_bytes())
+        self.assertEqual(first["renderer_metrics"], second["renderer_metrics"])
+        muted_dir, muted = self.render(
+            events=self.score(b"0 percussion upper 0 0e0\n" + notes), frames=1027,
+            contacts="nominal", drawbars="000000000", percussion="third")
+        self.assert_success(muted_dir, muted)
+        self.assertEqual(muted["parameters"]["percussion"], "third")
+        self.assertEqual(muted["wav"]["pcm_peak_integer"], 0)
+
+    def test_nominal_console_score_replays_across_partitions_and_sample_rates(self):
+        events = self.score(
+            "0 note_on upper 60 100\n257 note_on upper 64 5\n"
+            "400 percussion upper 1 1\n511 note_off upper 60 0\n"
+            "511 note_on upper 60 127\n512 cancel upper 0 0\n"
+            "600 percussion upper 2 1\n600 select_bank upper 0 1\n"
+            "701 note_off upper 64 0\n901 note_off upper 60 0\n"
+            "1100 note_on upper 60 1\n1300 percussion upper 3 1\n")
+        for rate in (44100, 48000, 96000):
+            reference = None
+            for block in (1, 17, 64, 257):
+                with self.subTest(rate=rate, block=block):
+                    directory, manifest = self.render(
+                        events=events, frames=1537, sample_rate=rate, block_size=block,
+                        contacts="nominal", percussion="second", drawbars="008000008")
+                    self.assert_success(directory, manifest)
+                    self.assertEqual(manifest["parameters"]["event_count"], 12)
+                    raw = (directory / "render.wav").read_bytes()
+                    metrics = dict(manifest["renderer_metrics"])
+                    metrics.pop("block_size")
+                    observed = (raw, metrics)
+                    if reference is None:
+                        reference = observed
+                    self.assertEqual(observed, reference)
+
+    def test_invalid_console_api_choices_fail_before_launch_or_directory_creation(self):
+        choices = {
+            "contacts": ("ideal", "nominal"), "percussion": ("off", "second", "third"),
+            "percussion_volume": ("normal", "soft"), "percussion_decay": ("slow", "fast"),
+        }
+        for key, accepted in choices.items():
+            invalid = (None, True, False, 0, 1.0, float("nan"), b"nominal", [], {},
+                       "", "unknown", accepted[0].upper(), " " + accepted[0], accepted[0] + " ")
+            for value in invalid:
+                with self.subTest(key=key, value=value):
+                    output = self.new_output()
+                    with mock.patch.object(fixture, "_invoke") as invoked:
+                        with self.assertRaisesRegex(fixture.FixtureError, key):
+                            self.render(output_dir=output, **{key: value})
+                        invoked.assert_not_called()
+                    self.assertFalse(output.exists())
+
+    def test_invalid_percussion_score_is_rejected_before_launch_or_creation(self):
+        malformed = [
+            "0 percussion lower 0 1", "0 percussion upper 4 0", "0 percussion upper 0 2",
+            "0 percussion upper 0 -1", "0 percussion upper 0 .5", "0 percussion upper 0 nan",
+            "0 percussion upper 0 inf", "0 percussion upper 0 1e999",
+            "0 percussion upper 0 1e-999", "0 percussion upper +0 1",
+            "0 percussion upper 1.0 1", "0 percussion upper -1 1",
+            "0 Percussion upper 0 1", "0 percussion Upper 0 1", "0 percussion upper 0 1 extra",
+            "259 percussion upper 0 1", "1 percussion upper 0 1\n0 percussion upper 0 0",
+        ]
+        malformed += [f"0 percussion upper {index} {value}"
+                      for index in range(4) for value in ("1.000001", "-0.000001")]
+        for raw in malformed:
+            with self.subTest(raw=raw):
+                output = self.new_output()
+                events = self.score(raw + "\n")
+                with mock.patch.object(fixture, "_invoke") as invoked:
+                    with self.assertRaises(fixture.FixtureError):
+                        self.render(output_dir=output, events=events)
+                    invoked.assert_not_called()
+                self.assertFalse(output.exists())
+
+    def test_console_cli_choices_are_forwarded_and_strictly_parsed(self):
+        output = self.new_output()
+        arguments = [sys.executable, str(ROOT / "tools/render_fixture.py"),
+                     "--renderer", str(self.renderer), "--profile-json", str(self.profile),
+                     "--output-dir", str(output), "--frames", "1027", "--seed", "7",
+                     "--drawbars", "000000000", "--contacts", "nominal", "--percussion", "third",
+                     "--percussion-volume", "soft", "--percussion-decay", "fast"]
+        result = subprocess.run(arguments, capture_output=True, timeout=20)
+        self.assertEqual(result.returncode, 0, result.stderr.decode(errors="replace"))
+        manifest = json.loads((output / "manifest.json").read_bytes())
+        self.assert_success(output, manifest)
+        self.assertGreater(manifest["wav"]["pcm_peak_integer"], 0)
+        for field, value in (("contacts", "nominal"), ("percussion", "third"),
+                             ("percussion_volume", "soft"), ("percussion_decay", "fast")):
+            self.assertEqual(manifest["parameters"][field], value)
+        invalid = []
+        for flag, value in (("--contacts", "nominal"), ("--percussion", "third"),
+                            ("--percussion-volume", "soft"), ("--percussion-decay", "fast")):
+            invalid += [[flag], [flag, "unknown"], [flag, value.upper()],
+                        [flag, value, flag, value]]
+        invalid += [["--contact", "nominal"], ["--percussion-v", "soft"],
+                    ["--percussion-d", "fast"], ["--contacts=nominal", "--contacts", "nominal"]]
+        for suffix in invalid:
+            with self.subTest(suffix=suffix):
+                output = self.new_output()
+                result = subprocess.run([
+                    sys.executable, str(ROOT / "tools/render_fixture.py"),
+                    "--renderer", str(self.renderer), "--output-dir", str(output), *suffix,
+                ], capture_output=True, timeout=10)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertTrue(result.stderr)
+                self.assertFalse(result.stdout)
+                self.assertFalse(output.exists())
+
+    def test_wrong_console_metrics_are_retained_as_failed_evidence(self):
+        invoke = fixture._invoke
+        mutations = [("render_schema_version", value) for value in (1, 3, 2.0, True, "2", None)]
+        mutations += [("contact_model", value) for value in
+                      ("ideal-contacts-v1", "unknown", True, None)]
+        mutations += [("percussion_model", value) for value in
+                      ("per-note-envelope-v1", "unknown", 1, None)]
+        mutations += [("remove", key) for key in
+                      ("render_schema_version", "contact_model", "percussion_model")]
+        mutations += [("extra", "console_model"), ("legacy", None)]
+        for key, value in mutations:
+            with self.subTest(key=key, value=value):
+                captured = {}
+
+                def alter(argv, cwd, timeout):
+                    status, stdout, stderr = invoke(argv, cwd, timeout)
+                    if "--fail-on-clip" in argv:
+                        metrics = json.loads(stdout)
+                        if key == "remove":
+                            metrics.pop(value)
+                        elif key == "extra":
+                            metrics[value] = "unknown"
+                        elif key == "legacy":
+                            for field in ("render_schema_version", "contact_model", "percussion_model"):
+                                metrics.pop(field)
+                        else:
+                            metrics[key] = value
+                        stdout = (json.dumps(metrics) + "\n").encode()
+                        captured.update(metrics=metrics, stdout=stdout)
+                    return status, stdout, stderr
+
+                with mock.patch.object(fixture, "_invoke", side_effect=alter):
+                    directory, manifest = self.render(contacts="nominal", percussion="second")
+                self.assertEqual(manifest["status"], "failed")
+                self.assertEqual(manifest["error"]["stage"], "metrics")
+                self.assertTrue(manifest["error"]["message"])
+                self.assertEqual(manifest["invocation"]["returncode"], 0)
+                self.assertIsNone(manifest["wav"])
+                self.assertEqual(manifest["renderer_metrics"], captured["metrics"])
+                self.assertEqual((directory / "renderer.stdout.txt").read_bytes(), captured["stdout"])
+                record = manifest["invocation"]["stdout"]
+                self.assertEqual(record["sha256"], hashlib.sha256(captured["stdout"]).hexdigest())
+                self.assertEqual(record["size_bytes"], len(captured["stdout"]))
+                self.assertEqual(manifest, json.loads((directory / "manifest.json").read_bytes()))
 
     def test_invalid_preflight_never_creates_result(self):
         invalid = [dict(frames=0), dict(frames=48000 * 600 + 1), dict(sample_rate=22050),

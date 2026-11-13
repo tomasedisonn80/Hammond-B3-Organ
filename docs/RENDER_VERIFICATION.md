@@ -1,6 +1,7 @@
 # Independent retained-render verification
 
-`tools/verify_render.py` consumes the successful version-1 bundle documented in
+`tools/verify_render.py` consumes successful version-1 and version-2 bundles.
+The current producer's version-2 format is documented in
 [RENDER_EVIDENCE.md](RENDER_EVIDENCE.md). It uses Python 3.10+ and the standard
 library. It does not import `render_fixture.py`, call its validation helpers, or
 execute any recorded command. The supported local profile compiler is reused
@@ -25,6 +26,7 @@ Successful reports contain:
 | Field | Meaning |
 | --- | --- |
 | `status: "verified_retained_bundle"` | The retained bytes and documented assertions agree under the checks below |
+| `schema_version` | The verified manifest version, exactly integer 1 or 2 |
 | `evidence_scope: "synthetic_engineering"` | The only supported evidence scope |
 | `manifest`, `manifest_sha256` | Checked local manifest location and raw-byte identity |
 | `artifacts_verified` | Five required artifacts, or six when `events.txt` is present; excludes the manifest itself |
@@ -57,9 +59,40 @@ original bundle directory with exactly `profile.b3p`, `render.wav`, and optional
 argv as evidence of the claimed original invocation. POSIX and Windows absolute
 path syntax are recognized for historical records.
 
+## Version selection and historical bundles
+
+The manifest's integer `schema_version` selects one complete contract. The
+consumer preserves historical schema-1 verification; it neither fills missing
+version-2 fields nor silently treats mixed schemas as compatible.
+
+| Contract | Schema 1 | Schema 2 |
+| --- | --- | --- |
+| Parameter object | Original nine fields | Original nine plus `contacts`, `percussion`, `percussion_volume`, `percussion_decay` |
+| Console choices | Implicit legacy ideal contacts and disabled percussion | Exact strings `ideal`/`nominal`, `off`/`second`/`third`, `normal`/`soft`, `slow`/`fast` |
+| Invocation | Original 18 tokens | 26 tokens, adding all four console flags before `--fail-on-clip` |
+| Renderer metrics | Original 15 fields | Original 15 plus integer `render_schema_version: 2`, `contact_model`, `percussion_model` |
+| Score grammar | Original eight event types | Original eight plus `percussion` |
+
+Version 2 requires `contact_model` to agree with `parameters.contacts`:
+`ideal-contacts-v1` for `ideal`, or `nominal-linear-travel-v1` for `nominal`.
+It requires `percussion_model: "shared-readiness-v1"` even when the initial
+percussion setting is off; the model identity and enabled control are distinct.
+The existing source-generator `model: "ideal-shared-sine-v1"` remains unchanged.
+Both the retained stdout and the manifest's metric copy must satisfy the exact
+version-selected field set and match one another, including scalar types.
+
+The four schema-2 flags appear in the fixed order `--contacts`, `--percussion`,
+`--percussion-volume`, `--percussion-decay`, followed by `--fail-on-clip` and then
+the original `--events` or `--note` pair. Each value must agree with its manifest
+parameter. A `percussion` event is upper-manual only, with unsigned integer index
+0–3 and a finite parsed numeric value equal to 0 or 1; equivalent decimal forms
+such as `1.0` and `1e0` are valid. The strict numeric-token and underflow rules
+still apply. Schema 1 rejects percussion events and every version-2-only field
+or flag. Unknown versions, floating-point versions and Boolean versions fail.
+
 ## Independently checked contracts
 
-1. **Completion and structure.** Require the exact schema-1 successful field set,
+1. **Completion and structure.** Require the exact selected successful field set,
    `synthetic_engineering`, null error, true producer integrity assertion, valid
    ordered UTC timestamps, typed environment/Git/tool context, and documented
    parameter/limit ranges. Unknown fields, failed/incomplete runs, boolean values
@@ -76,7 +109,7 @@ path syntax are recognized for historical records.
    digest with the profile and renderer metrics. The event parser is implemented
    independently: five fields, ASCII whitespace, full-line comments, optional
    initial UTF-8 BOM, sorted absolute frames, stable file order for ties, both
-   manuals, all eight documented event types, index/value domains, and file,
+   manuals, version-appropriate event types, index/value domains, and file,
    line, numeric-token, total-count and same-frame density bounds. Empty scores
    are valid; out-of-range values and binary64 underflow to zero are rejected.
 4. **Invocation and actual metrics.** Require the producer's exact argument
@@ -131,6 +164,15 @@ them independently. It exercises copied bundles, event grammar, all supported
 sample rates, the maximum seed, empty-score silence, current/missing/changed
 executables, strict JSON/types, missing/extra/symlink files, changed observations,
 and tampered/rehashed profile, stdout, WAV, statistics, argv, flags and comparison
-claims. Producer verification helpers are disabled in a test of consumer
+claims. All 24 combinations of the four console choices are rendered and verified.
+A nominal-contact score exercises all four percussion control indices. Deliberate
+mixed-schema mutations and invalid control/model fields fail independently.
+
+Permanent historical-grammar tests construct schema-1 metadata over real default
+audio, explicitly marking this as test construction rather than claiming that
+the current renderer emitted the old schema. They require no old executable or
+checkout. Separate assignment-21 evidence records verification of genuine
+schema-1 bundles produced with the retained older executable and producer.
+Producer verification helpers are disabled in a test of consumer
 independence. A focused metadata test simulates different stable timestamps from
 the path and descriptor APIs; this is not a substitute for native Windows CI.
