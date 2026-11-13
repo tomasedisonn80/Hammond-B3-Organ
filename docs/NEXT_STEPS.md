@@ -8,9 +8,11 @@ sixty original assignments at `7bbd8e7`; its assignments,
 source reviews and evidence remain intact and are not counted again.
 
 The nominal console, typed input and sample-rate lifecycle checkpoints are
-published. `53bb6e1` passes all 39 local Release suites and all four hosted jobs.
-Wave 07 qualifies explicit partial-key input, observable console traces and their
-visualization. Preserve the original ideal/off audio as a compatibility case.
+published. `9a5c99a` passes all 43 local Release suites and all four hosted jobs.
+The completed wave 08 adds enabled allocation checks, expanded offline installation
+and console/owned-input benchmarks; its combined gate is in progress. Wave 09
+prepares the current-model demo, precise next M3 gate and developer handoff.
+Preserve the original ideal/off audio as a compatibility case.
 Publication requires a clean staged source build, applicable tests, an
 expected-head push and observed CI.
 

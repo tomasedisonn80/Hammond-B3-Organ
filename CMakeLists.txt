@@ -149,6 +149,12 @@ if(BUILD_TESTING)
         list(APPEND HAMMOND_TEST_TARGETS hammond_parameter_info)
     endif()
 
+    if(TEST python_test_console_benchmark)
+        set_property(TEST python_test_console_benchmark APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_BENCHMARK_EXECUTABLE=$<TARGET_FILE:hammond_benchmark>")
+        list(APPEND HAMMOND_TEST_TARGETS hammond_benchmark)
+    endif()
+
     foreach(test_source IN LISTS HAMMOND_PYTHON_TESTS)
         get_filename_component(test_name "${test_source}" NAME_WE)
         set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
@@ -164,7 +170,7 @@ if(BUILD_TESTING)
         USES_TERMINAL)
 endif()
 
-# The scoped local install contains only the offline CLI and its existing data.
+# The scoped local install contains the offline tools and their existing data.
 # Relative GNUInstallDirs destinations preserve --prefix and later relocation.
 include(GNUInstallDirs)
 if(TARGET hammond_render)
@@ -178,13 +184,19 @@ if(TARGET hammond_render)
     endforeach()
     install(CODE "
         if(NOT EXISTS \"$<TARGET_FILE:hammond_render>\" OR
-           NOT EXISTS \"${HAMMOND_COMPILED_PROFILE}\")
+           NOT EXISTS \"$<TARGET_FILE:hammond_model_info>\" OR
+           NOT EXISTS \"$<TARGET_FILE:hammond_parameter_info>\" OR
+           NOT EXISTS \"$<TARGET_FILE:hammond_console_trace>\" OR
+           NOT EXISTS \"${HAMMOND_COMPILED_PROFILE}\" OR
+           NOT EXISTS \"${CMAKE_CURRENT_SOURCE_DIR}/tools/plot_console_trace.py\")
             message(FATAL_ERROR
-                \"OfflineTools requires built hammond_render and nominal.b3p; build the hammond_render target for the selected configuration before installing.\")
+                \"OfflineTools requires built hammond_render, hammond_model_info, hammond_parameter_info, hammond_console_trace, nominal.b3p and the source plot script; build all four executable targets for the selected configuration before installing.\")
         endif()
         " COMPONENT OfflineTools)
-    install(TARGETS hammond_render
+    install(TARGETS hammond_render hammond_model_info hammond_parameter_info hammond_console_trace
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT OfflineTools)
+    install(PROGRAMS tools/plot_console_trace.py
+        DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT OfflineTools)
     install(FILES "${HAMMOND_COMPILED_PROFILE}"
         DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ"
         COMPONENT OfflineTools)
@@ -197,11 +209,20 @@ if(TARGET hammond_render)
         examples/fixtures/high-fold-coherent-v1.events
         DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ/fixtures"
         COMPONENT OfflineTools)
+    install(FILES
+        examples/fixtures/console/console-catalog-v1.json
+        examples/fixtures/console/console-travel-v1.events
+        examples/fixtures/console/console-percussion-legato-v1.events
+        examples/fixtures/console/console-routing-mask-v1.events
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ/fixtures/console"
+        COMPONENT OfflineTools)
     if(BUILD_TESTING AND TEST python_test_install)
         set_property(TEST python_test_install APPEND PROPERTY ENVIRONMENT
             "HAMMOND_TEST_CMAKE=${CMAKE_COMMAND}"
             "HAMMOND_TEST_BUILD_DIR=${CMAKE_CURRENT_BINARY_DIR}"
             "HAMMOND_TEST_CONFIG=$<CONFIG>"
+            "HAMMOND_MODEL_INFO_EXECUTABLE=$<TARGET_FILE:hammond_model_info>"
+            "HAMMOND_PARAMETER_INFO_EXECUTABLE=$<TARGET_FILE:hammond_parameter_info>"
             "HAMMOND_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR}"
             "HAMMOND_INSTALL_DATADIR=${CMAKE_INSTALL_DATADIR}")
         set_tests_properties(python_test_install PROPERTIES TIMEOUT 120)

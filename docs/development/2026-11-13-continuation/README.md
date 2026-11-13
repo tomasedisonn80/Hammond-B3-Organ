@@ -34,9 +34,9 @@ physical instrument fidelity, a VST3 plugin, or a device-audio application exist
 | 04 | 19–24 | Stable controls, evidence-format migration and reproducible fixtures | Complete; `72b5062` repair passes all four hosted jobs |
 | 05 | 25–30 | Bounded host-input ownership and independent adapter verification | Complete; `093d985`, 34/34 local suites and all four hosted jobs |
 | 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | Complete; `53bb6e1`, 39/39 local suites and all four hosted jobs |
-| 07 | 37–42 | Observable console traces and explicit partial-key input | Complete; 43/43 local suites, publication in progress |
-| 08 | 43–48 | Integration, cross-platform checks and examples | In progress |
-| 09 | 49–54 | User/developer handoff, verification records and exact next milestone | Planned |
+| 07 | 37–42 | Observable console traces and explicit partial-key input | Complete; `9a5c99a`, 43/43 local suites and all four hosted jobs |
+| 08 | 43–48 | Integration, cross-platform checks and examples | Complete; 45/45 local suites, publication in progress |
+| 09 | 49–54 | User/developer handoff, verification records and exact next milestone | In progress |
 | 10 | 55–60 | Independent final review, fixes and publication verification | Planned |
 
 Each numbered note names its actual agent, scope, changed files, observed checks,
@@ -284,3 +284,66 @@ previous lifecycle, ownership, evidence and legacy-install suites. Active wave-0
 CMake/install, realtime-audit and benchmark changes were excluded. Only this
 result's Markdown recording changes before publication; the final archive is
 checked for exact unchanged runtime/test blobs and current repository integrity.
+
+
+Wave 07 was published and remote-verified as
+`9a5c99a862daf26a2bab9b05613c98803727a3e7`, final tree
+`a85f1bcb43d2815b6f661172f7ab394ad34bee7e`. The only difference from the full
+43-suite tested tree is three Markdown result records. Every final archive blob
+was verified against the staged tree and all five repository integrity groups
+passed. Hosted run 43375043990 passed all four jobs. Each completed archive contains
+43 suites and 352 Python methods with zero skipped, disabled or failed tests.
+The independent platform review verifies complete logs and artifact digests. Active
+wave-08 install, realtime and benchmark work remained outside this commit.
+
+
+### Wave 08 enabled paths, relocatable tools and compatibility
+
+All six assignments 43-48 are complete. The new allocation gate observes zero
+C++ allocation/deallocation calls across 81 Engine calls, 45 owned-input calls,
+six translations and 137 parameter calls, plus 14 separately labeled stopped
+lifecycle calls. Calibration detects 12 allocations and 12 frees. The audit
+corrects the conservative coefficient-work bound to one complete rebuild per
+rendered frame: contact edges can change connectivity without new input events.
+This does not establish a native callback deadline or general system-allocation
+interception. The independent runtime-boundary review found no actionable defect
+and passed its six selected suites.
+
+OfflineTools now installs 16 files: four native tools, the standalone plotter,
+the compiled profile, both catalogs and eight scores. The focused relocation
+gate moved the prefix, removed HAMMOND_* environment inputs, and ran from an
+unrelated directory. Installed/build WAVs, metadata, traces and SVGs matched;
+missing profiles rejected without output. The pre-build install rejection also
+preserved its destination.
+
+Opt-in console_motion, owned_input and console_all workloads preserve legacy
+benchmark defaults and use a separate report identity. The six-method gate passed
+33 actual CLI calls and exact workload/accounting checks without speed thresholds.
+It found and repaired a real buffered-stdout error: the old one-case JSON/help
+path could return success on a readonly output handle. Explicit flush/checks now
+reject both while preserving successful legacy report content and checksums.
+The independent motion oracle's maximum error was 1.11023e-16.
+
+The hosted audit verified complete logs and eight SHA-256-checked diagnostic
+archives for the preceding lifecycle and partial-key checkpoints. Separately,
+11 WAV/PCM pairs from a fresh 9c8068c source build matched current defaults,
+11 default/explicit-ideal pairs matched, six partition comparisons passed, and
+the retained schema1 demo verified unchanged. All 15 earlier metric fields remain
+equal after removing only three declared schema2 additions. The retained older
+executable has a different binary hash from the fresh baseline and is reported
+as a separate cross-check. No runtime defect or audio mismatch was found.
+
+Root registered the benchmark test environment after the install owner's frozen
+CMake overlay. The combined staged archive and new hosted run now qualify these
+changes together, independently of the earlier 43-suite checkpoint.
+
+
+The combined wave-08 source tree
+`0c722f1ffa2a2f04522438a4cb86cec6b8d3e392` passed **45/45 Release CTest suites in
+12.91 seconds** from a clean archive. The new enabled allocation, benchmark and
+expanded install gates all passed with the prior engine/evidence checks. An
+initial status-text replacement matched an outdated heading and aborted; its
+paragraphs were corrected before this gate, with no runtime/test/build changes.
+Only Markdown result recording changes before publication; final archive integrity
+and unchanged runtime/test blobs are checked separately. Wave-09 artifacts and
+active handoff work remain outside this checkpoint.

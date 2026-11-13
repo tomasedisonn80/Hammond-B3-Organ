@@ -57,7 +57,8 @@ for event files, strict limits and the hard-link filesystem requirement.
 See [build instructions](docs/BUILD.md) for explicit commands, Release and
 sanitizer builds, and platform qualification limits.
 The [OfflineTools local install](docs/OFFLINE_INSTALL.md) places the renderer,
-compiled profile and event fixtures in a relocatable prefix of your choice.
+inspection tools, trace plotter, compiled profile and event fixtures in a
+relocatable prefix of your choice.
 
 ## Repeatable audio examples
 

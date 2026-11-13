@@ -6,6 +6,12 @@ for the current nominal dry engine. It does not run an audio device, emulate a
 host callback, qualify a hard real-time deadline, or establish instrument fidelity.
 No timing value changes the exit status, and there are no CI speed thresholds.
 
+The explicit `console_motion`, `owned_input` and `console_all` selections add
+nominal contact/percussion and transactional ownership workloads. They use the
+separate `hammond-console-benchmark-v1` report described below. The default `all`
+still selects exactly the four original ideal-contact/percussion-off cases and
+retains its `hammond-benchmark-v1` structure and semantics.
+
 The scope follows the distinction between measured time and work counts in atlas
 chapter 062, pp. 379–384, and the stopped preparation/processing contract in
 chapter 063, pp. 385–390 of the
@@ -49,7 +55,7 @@ turn a finite run into a worst-case guarantee.
 | `--iterations` | `128` | `1..10000` recorded calls, subject to the combined limits below |
 | `--warmup` | `16` | `1..1000` unrecorded calls, subject to the combined limits |
 | `--seed` | `0` | Unsigned 64-bit decimal integer |
-| `--case` | `all` | `all`, `silence`, `all_keys`, `disconnected`, `dense_automation` |
+| `--case` | `all` | Original `all`, `silence`, `all_keys`, `disconnected`, `dense_automation`; explicit `console_motion`, `owned_input`, `console_all` |
 
 Warmup plus recorded work must fit **10,000 positive calls and 1,048,576 frames
 per case**. Because at least one warmup is required, 10,000 recorded calls alone
@@ -60,6 +66,9 @@ most 20 digits. Unknown/duplicate options, signs, whitespace, decimal/exponent
 syntax, overflow, unsupported rates, missing values and excess work reject before
 processing. A malformed profile or unsuccessful engine operation also exits
 nonzero with a diagnostic on stderr. Success writes one JSON object to stdout.
+Both JSON and help output are explicitly flushed and checked before success is
+returned. A failed output stream can contain an incomplete prefix; consumers
+must check the exit status before accepting any report.
 
 ## Fixed workloads
 
@@ -161,3 +170,108 @@ initial Linux Release smoke, CLI invariants, observed values and dirty-worktree
 identity limitations. This CLI supplies repeatable screening observations; native
 host/device callbacks, cold starts, long-tail/load campaigns and platform-qualified
 telemetry remain separate future evidence.
+
+## Explicit nominal console workloads
+
+```sh
+../benchmark-release/hammond_benchmark --case console_all --sample-rate 48000 \
+  --block-size 384 --warmup 1 --iterations 7 --seed 71 > console-benchmark.json
+../benchmark-release/hammond_benchmark --case owned_input --block-size 64 \
+  --warmup 16 --iterations 128 > owned-input-benchmark.json
+```
+
+`console_all` runs exactly `console_motion` followed by `owned_input`. Selecting
+one case preserves that case's complete input timeline and deterministic state/
+sample sinks. It does not run any legacy case. The same per-case limits apply:
+warmup plus recorded work fits 10,000 calls and 1,048,576 frames. The two-case
+selection therefore admits at most 20,000 positive calls and 2,097,152 frames,
+plus one unrecorded zero-frame setup per case.
+
+Each case prepares a fresh Engine with `make_nominal_console_model()`, the
+requested source profile, rate and seed. Setup flushes 18 selected-bank drawbar
+settings to eight and four percussion settings to On / Second / Normal / Fast.
+These **22 control events** hold no key, create no owner and advance no frame.
+Upper and lower B banks are selected, routes are enabled and expression is one.
+All nine sustained drawbars are retained on both manuals; eligible upper
+percussion applies its declared one-foot mask and normal sustain compensation.
+
+The arrays below are built once before warmup. Every command has offset zero.
+Absolute call number `j` starts at zero for the first warmup call and continues
+through recording without a reset or intervening flush.
+
+| Case | Timed API | Fixed schedule |
+| --- | --- | --- |
+| `console_motion` | `Engine::process` | 122 direct `KeyPosition` events, one for every key on both manuals. Even `j` commands target 1; odd `j` commands target 0. The nominal travel preserves its current position and hysteresis across each reversal. |
+| `owned_input` | `process_owned_notes` | 122 typed host commands per call; phase `j mod 4` adds first owners, adds second owners, releases first owners, then releases second owners. Only first acquisition and final release emit physical key events. |
+
+The ownership fixture maps bus 0 to Upper and bus 1 to Lower. Channel 0 holds
+the first owners and channel 1 the second. Keys visit MIDI 36–96 in manual order;
+the corresponding identified note IDs are `0..121`. On velocity is 100 and Off
+velocity zero. These are internal typed messages, not decoded MIDI bytes or a
+native host ABI. After phases 0, 1, 2 and 3, owner counts are respectively
+**122, 244, 122 and 0**; active physical targets are **122, 122, 122 and 0**.
+The workload's 244-owner peak is below the adapter's 256-owner capacity.
+
+There are no direct key commands in the owned-input case. Controls are applied
+before the ownership timeline begins, so the adapter remains the sole authority
+for its notes. No reset, rate change, route reassignment or serialization occurs
+inside either timed workload. The two schedules are declared bounded exercises;
+they do not establish the most expensive possible input or model state. Block
+size determines elapsed motion between reversals. Small blocks may retain an
+incomplete return or never cross a particular contact threshold.
+
+### Console report and accounting
+
+The new schema retains the common build, clock, interval and checksum fields,
+and names `ideal-shared-sine-v1`, `nominal-linear-travel-v1`,
+`shared-readiness-v1` and `bounded-fifo-note-ownership-v1`, with
+`workload_version: 1`. The ownership identifier describes the included adapter;
+the per-case `timed_api` distinguishes whether that adapter is actually called.
+No model or parameter identity is inferred from the workload's audio.
+
+For these cases, the common `events_per_call` is always 122, and
+`event_offsets_per_call` is one. `input_event_domain` identifies whether
+`events_consumed` counts direct physical-target events or typed host commands.
+It equals `122 * recorded_calls` in both cases. The separately reported
+`physical_events_consumed` is 122 per direct-target call, but only 122 on owned
+phases 0 and 3 and zero on phases 1 and 2. Warmup input and physical counts are
+reported separately and excluded from the recorded totals.
+
+The common `active_keys` field retains its original meaning: the initial count
+after setup, which is zero here. Additional `start_active_keys` and
+`final_active_keys` describe the recording boundaries. `initial_owner_count`,
+`start_owner_count`, `final_owner_count` and `max_observed_owner_count` distinguish
+ownership from physical targets. The maximum observes completed warmup and
+recorded calls; `workload_owner_bound` is 244 for owned input and zero for direct
+motion. The known monotonic owner additions/removals also fit that bound inside
+each call. Every call's actual consumed counts, owners and active targets are
+checked outside timing; a mismatch fails the run.
+
+The tracked diagnostic key is Upper MIDI 60. The report includes its final
+position and target, final shared readiness, the number of recorded calls whose
+position changed, and the sum of contact-bit changes between recorded call
+boundaries. Each key receives at most one changed target at offset zero per
+call, so motion is monotonic within that call. These observations are not a
+per-frame trace of all 122 keys; use [CONSOLE_TRACE.md](CONSOLE_TRACE.md) for the
+separate detailed diagnostic. A window can include held portions of the owned
+schedule, and its reported motion count reflects that fact.
+
+Event/view selection precedes the first clock read. Status checks, owner counts,
+contact snapshots, finite-output checks, checksums and all statistics follow the
+second clock read. No input construction, fixture allocation or diagnostic query
+is inserted into the timed interval. Between-call observations still affect the
+process's cache/load context, as do the legacy checksum reads. These reports do
+not replace allocation interposition, platform telemetry, multi-instance load,
+device underruns, long-tail measurements or a named-machine deadline campaign.
+
+### Verification boundary
+
+`tests/test_console_benchmark.py` invokes the actual executable, checks both
+schemas and fixed workload counts, and independently computes key travel with
+rational full-travel times. It covers all three supported rates, minimum and
+maximum block sizes, the full unsigned seed range endpoint, repeated/single-case
+sinks, early work/input rejection and portable readonly-stdout failures. It
+checks nonnegative ordered timing statistics and their stated arithmetic without
+setting a speed threshold. The [assignment 45 note](development/2026-11-13-continuation/45-console-benchmark.md)
+retains the exact local source and observed results. Combined publication and
+hosted-platform qualification belong to the integrating agent's ledger.

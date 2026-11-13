@@ -71,7 +71,11 @@ checks compare all 67716 rows at three rates against separate numerical models.
 A bounded [SVG plotter](CONSOLE_TRACE_PLOTS.md) preserves contact transitions and
 documented extrema with input-byte provenance. The continuation ledger separates
 these focused checks from publication. The combined clean Release source passed
-all 43 CTest suites; its hosted qualification is tracked separately.
+all 43 CTest suites. Published commit `9a5c99a` passed all four jobs in
+[run 43375043990](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43375043990),
+with 352 Python methods and zero skipped tests in every complete diagnostic
+archive. The [continuation platform review](reviews/CONTINUATION_PLATFORM_REVIEW.md)
+retains the actual toolchains, logs and artifact identities.
 
 Pedal mapping data contains 195 connections and five explicit disconnections;
 runtime pedal audio remains open. Physical preset latching, continuous drawbar
@@ -124,11 +128,13 @@ leak checking. This qualification predates the subsequent Engine/CLI integration
 The continuation ledger records the next checkpoint's complete checks separately;
 focused integration tests alone do not establish a new full-matrix pass.
 
-The new [OfflineTools local install](OFFLINE_INSTALL.md) passed actual installation,
-relocation and same-build PCM identity checks on Linux. It consumes explicit
-installed profile/event paths and rejects a missing profile. macOS/Windows install
-qualification passed in the subsequent hosted integration. Later tool additions
-require their own install/relocation checks.
+The [OfflineTools local install](OFFLINE_INSTALL.md) now contains four native
+executables, the trace plotter, the compiled profile, two catalogs and eight
+scores. Its focused Linux gate passed installation and prefix relocation with
+unchanged WAVs, metadata, CSV and SVG outputs from an unrelated directory. Earlier
+install versions passed hosted macOS/Windows qualification; the expanded 16-file
+component passed the combined 45-suite local Release gate; its hosted result
+is tracked separately.
 
 The [factory runtime acceptance](FACTORY_RUNTIME_ACCEPTANCE.md), retained
 [four-second demo](../examples/rendered/nominal-two-manual-v1/README.md),
@@ -150,12 +156,24 @@ hosted [run 43370542634](https://github.com/tomasedisonn80/Hammond-B3-Organ/acti
 subsequently passed all four jobs at repair commit `72b5062`, including Linux
 ASan/UBSan with leak checking. This closes that observed portability failure.
 
-The callback audit observed zero C++ allocation/deallocation
-calls in 96 recorded processing calls, including maximum and rejected requests.
-Its static call-graph scope and limits are in [REALTIME.md](REALTIME.md). The
-independent bundle verifier passed 34 test methods, including real render bundles
-and mutated evidence. It reports retained-bundle integrity separately from
-unestablished authenticity, build provenance and physical fidelity.
+The [enabled-path allocation audit](REALTIME.md) observed zero C++ allocation
+and deallocation calls in 126 Engine/facade requests, plus separately measured
+translation, parameter and stopped lifecycle operations. Its calibration detects
+all replaced overloads. The historical 96-call ideal/off evidence remains scoped
+separately. Contact edges can require a coefficient rebuild without new events,
+so the current conservative bound is one rebuild per rendered frame. This scope
+does not establish native callback deadlines or general system allocator behavior.
+The independent bundle verifier retains schema1 compatibility and current schema2
+grammar, while distinguishing artifact integrity from authenticity.
+
+The [runtime boundary review](reviews/RUNTIME_BOUNDARY_REVIEW.md) found no
+actionable defect in the inspected core transactions. The
+[legacy audio comparison](reviews/CONTINUATION_LEGACY_AUDIO.md) passed exact
+WAV/PCM comparisons against a fresh earlier-revision build and preserved the
+existing fields alongside three intentional schema2 additions. The bounded
+benchmark adds explicit console-motion and owned-input workloads; its observed
+stdout-failure repair and scoped checks are retained in
+[BENCHMARKING.md](BENCHMARKING.md). Timing values never become pass thresholds.
 
 Preparation also rejects increments too small to advance the binary64 source
 phase reliably. [Numerical bounds](NUMERICAL_BOUNDS.md) record the exact support

@@ -1,4 +1,5 @@
 #include "hammond/Engine.h"
+#include "hammond/InputProcessor.h"
 #include "hammond/Profile.h"
 
 #include <algorithm>
@@ -29,6 +30,13 @@ constexpr std::uint64_t kMaxCallsPerCase = 10000;
 constexpr std::uint64_t kHashBasis = 14695981039346656037ULL;
 constexpr std::array<std::string_view, 4> kCases{
     "silence", "all_keys", "disconnected", "dense_automation"};
+constexpr std::array<std::string_view, 2> kConsoleCases{"console_motion", "owned_input"};
+constexpr std::size_t kConsoleKeys = hammond::kManualCount * hammond::kManualKeyCount;
+
+[[nodiscard]] bool console_selection(std::string_view name) noexcept {
+    return name == "console_all" ||
+        std::find(kConsoleCases.begin(), kConsoleCases.end(), name) != kConsoleCases.end();
+}
 
 [[noreturn]] void fail(const std::string& message) {
     throw std::runtime_error(message);
@@ -89,8 +97,9 @@ struct Options {
         if (name == "--profile") {
             options.profile = std::filesystem::path(value);
         } else if (name == "--case") {
-            if (value != "all" && std::find(kCases.begin(), kCases.end(), value) == kCases.end()) {
-                fail("Case must be all, silence, all_keys, disconnected, or dense_automation.");
+            if (value != "all" && std::find(kCases.begin(), kCases.end(), value) == kCases.end() &&
+                !console_selection(value)) {
+                fail("Unknown case. Use a legacy case, console_motion, owned_input, or console_all.");
             }
             options.selected_case = value;
         } else {
@@ -181,6 +190,18 @@ struct Result {
     double median_ns = 0.0;
     double p95_ns = 0.0;
     double maximum_ns = 0.0;
+    std::uint64_t physical_events_consumed = 0;
+    std::uint64_t warmup_physical_events_consumed = 0;
+    std::size_t start_active_keys = 0;
+    std::size_t final_active_keys = 0;
+    std::size_t start_owners = 0;
+    std::size_t final_owners = 0;
+    std::size_t max_observed_owners = 0;
+    std::uint32_t motion_calls = 0;
+    std::uint64_t primary_contact_edges = 0;
+    double final_primary_position = 0.0;
+    double final_primary_target = 0.0;
+    double final_readiness = 1.0;
 };
 
 [[nodiscard]] Result run_case(const Options& options, const hammond::RuntimeProfile& profile,
@@ -285,14 +306,175 @@ struct Result {
     return report;
 }
 
+[[nodiscard]] Result run_console_case(const Options& options,
+                                      const hammond::RuntimeProfile& profile,
+                                      std::string_view name) {
+    Result report;
+    report.name = name;
+    report.events_per_call = kConsoleKeys;
+    const bool owned = name == "owned_input";
+    hammond::Engine engine;
+    hammond::NoteOwnership ownership;
+    const hammond::ProcessSpec spec{static_cast<double>(options.sample_rate),
+                                    options.block_size, options.seed, 0};
+    const auto prepared = engine.prepare(profile, spec, hammond::make_nominal_console_model());
+    if (prepared != hammond::Status::Ok || !engine.prepared()) {
+        fail("Console preparation failed: " + std::string(hammond::status_name(prepared)));
+    }
+
+    std::array<hammond::Event, hammond::kManualCount * hammond::kDrawbarCount + 4> setup{};
+    for (const auto manual : {hammond::Manual::Upper, hammond::Manual::Lower}) {
+        for (std::size_t drawbar = 0; drawbar < hammond::kDrawbarCount; ++drawbar) {
+            setup[report.setup_events++] = {0, hammond::EventType::Drawbar, manual,
+                                            static_cast<std::uint8_t>(drawbar), 8.0};
+        }
+    }
+    for (std::uint8_t index = 0; index < 4; ++index) {
+        setup[report.setup_events++] = {0, hammond::EventType::Percussion,
+            hammond::Manual::Upper, index, index == 0 || index == 3 ? 1.0 : 0.0};
+    }
+    require_result(engine.process(0, {}, setup), setup.size(), "Console setup");
+    if (engine.active_key_count() != 0 || engine.frame_clock() != 0) {
+        fail("Console setup unexpectedly advanced time or held a key.");
+    }
+
+    // Every event array and view is constructed outside the timed invocation.
+    // Ownership uses two identified owners per physical key and never mixes
+    // direct note commands with the transactional facade.
+    std::array<std::array<hammond::Event, kConsoleKeys>, 2> targets{};
+    std::array<std::array<hammond::HostNoteEvent, kConsoleKeys>, 4> notes{};
+    for (std::size_t key = 0; key < kConsoleKeys; ++key) {
+        const auto bus = static_cast<std::uint8_t>(key / hammond::kManualKeyCount);
+        const auto manual = bus == 0 ? hammond::Manual::Upper : hammond::Manual::Lower;
+        const auto note = static_cast<std::uint8_t>(hammond::kMinManualMidiNote +
+                                                   key % hammond::kManualKeyCount);
+        for (std::size_t phase = 0; phase < targets.size(); ++phase) {
+            targets[phase][key] = {0, hammond::EventType::KeyPosition, manual, note,
+                                   phase == 0 ? 1.0 : 0.0};
+        }
+        for (std::size_t phase = 0; phase < notes.size(); ++phase) {
+            notes[phase][key] = {0, phase < 2 ? hammond::HostNoteKind::On :
+                hammond::HostNoteKind::Off, bus, static_cast<std::uint8_t>(phase % 2), note,
+                static_cast<std::uint8_t>(phase < 2 ? 100 : 0), static_cast<std::int32_t>(key)};
+        }
+    }
+    std::vector<float> storage(options.block_size, 0.0F);
+    std::vector<double> durations(options.iterations, 0.0);
+    const std::span<float> output(storage);
+    const auto invoke = [&](std::uint64_t call, double* duration) {
+        std::array<std::uint32_t, 2> counts{};
+        if (owned) {
+            const std::span<const hammond::HostNoteEvent> events(notes[call % notes.size()]);
+            hammond::InputProcessResult result;
+            if (duration != nullptr) {
+                const auto begin = Clock::now();
+                result = hammond::process_owned_notes(engine, ownership, options.block_size, output, events);
+                const auto end = Clock::now();
+                *duration = std::chrono::duration<double, std::nano>(end - begin).count();
+            } else {
+                result = hammond::process_owned_notes(engine, ownership, options.block_size, output, events);
+            }
+            const auto expected_physical = call % 4 == 0 || call % 4 == 3 ? kConsoleKeys : 0;
+            if (!result || result.host_events_consumed != events.size() ||
+                result.physical_events_consumed != expected_physical) {
+                fail("Owned-input call failed or consumed unexpected input/physical events.");
+            }
+            counts = {result.host_events_consumed, result.physical_events_consumed};
+        } else {
+            const std::span<const hammond::Event> events(targets[call % targets.size()]);
+            hammond::ProcessResult result;
+            if (duration != nullptr) {
+                const auto begin = Clock::now();
+                result = engine.process(options.block_size, output, events);
+                const auto end = Clock::now();
+                *duration = std::chrono::duration<double, std::nano>(end - begin).count();
+            } else {
+                result = engine.process(options.block_size, output, events);
+            }
+            require_result(result, events.size(), "Console motion");
+            counts = {result.events_consumed, result.events_consumed};
+        }
+        const std::size_t expected_owners = owned ?
+            std::array<std::size_t, 4>{kConsoleKeys, 2 * kConsoleKeys, kConsoleKeys, 0}[call % 4] : 0;
+        const bool down = owned ? call % 4 != 3 : call % 2 == 0;
+        if (ownership.owner_count() != expected_owners ||
+            engine.active_key_count() != (down ? kConsoleKeys : 0)) {
+            fail("Console workload produced unexpected owners or physical targets.");
+        }
+        report.max_observed_owners = std::max(report.max_observed_owners, ownership.owner_count());
+        return counts;
+    };
+    for (std::uint32_t call = 0; call < options.warmup; ++call) {
+        report.warmup_physical_events_consumed += invoke(call, nullptr)[1];
+    }
+    report.start_frame = engine.frame_clock();
+    report.start_owners = ownership.owner_count();
+    report.start_active_keys = engine.active_key_count();
+    hammond::ContactKeySnapshot before;
+    hammond::ContactKeySnapshot after;
+    for (std::size_t call = 0; call < durations.size(); ++call) {
+        if (!engine.contact_snapshot(hammond::Manual::Upper, 60, before)) {
+            fail("Primary contact diagnostic is unavailable.");
+        }
+        const auto counts = invoke(static_cast<std::uint64_t>(options.warmup) + call, &durations[call]);
+        report.events_consumed += counts[0];
+        report.physical_events_consumed += counts[1];
+        if (!engine.contact_snapshot(hammond::Manual::Upper, 60, after) ||
+            !std::isfinite(after.position) || !std::isfinite(after.target)) {
+            fail("Primary contact diagnostic is unavailable or nonfinite.");
+        }
+        if (before.position != after.position) ++report.motion_calls;
+        for (std::size_t contact = 0; contact < after.closed.size(); ++contact) {
+            if (before.closed[contact] != after.closed[contact]) ++report.primary_contact_edges;
+        }
+        for (const auto sample : output) {
+            if (!std::isfinite(sample)) fail("Console process produced a nonfinite sample.");
+        }
+        hash_bytes(report.sample_hash, std::as_bytes(output));
+    }
+    report.end_frame = engine.frame_clock();
+    report.final_owners = ownership.owner_count();
+    report.final_active_keys = engine.active_key_count();
+    report.final_primary_position = after.position;
+    report.final_primary_target = after.target;
+    report.final_readiness = engine.percussion_diagnostics().readiness;
+    const auto expected_start = static_cast<std::uint64_t>(options.warmup) * options.block_size;
+    const auto expected_frames = static_cast<std::uint64_t>(options.iterations) * options.block_size;
+    if (report.start_frame != expected_start || report.end_frame - report.start_frame != expected_frames ||
+        report.events_consumed != static_cast<std::uint64_t>(options.iterations) * kConsoleKeys ||
+        !std::isfinite(report.final_readiness) || report.final_readiness < 0 || report.final_readiness > 1) {
+        fail("Console work counts or readiness disagree with the workload contract.");
+    }
+    for (std::uint32_t id = hammond::kMinToneId; id <= hammond::kMaxToneId; ++id) {
+        double phase = 0.0;
+        if (!engine.source_phase_turns(static_cast<hammond::ToneId>(id), phase) || !std::isfinite(phase)) {
+            fail("Final source phase is unavailable or nonfinite.");
+        }
+        hash_bytes(report.phase_hash, std::as_bytes(std::span<const double>(&phase, 1)));
+    }
+    std::sort(durations.begin(), durations.end());
+    report.minimum_ns = durations.front();
+    const auto middle = durations.size() / 2;
+    report.median_ns = durations.size() % 2 == 0 ?
+        (durations[middle - 1] + durations[middle]) / 2.0 : durations[middle];
+    report.p95_ns = durations[(durations.size() * 95 + 99) / 100 - 1];
+    report.maximum_ns = durations.back();
+    return report;
+}
+
 void write_report(const Options& options, const hammond::RuntimeProfile& profile,
                   std::span<const Result> reports) {
     std::cout.imbue(std::locale::classic());
     std::cout << std::setprecision(std::numeric_limits<double>::max_digits10) << std::boolalpha;
     const double interval_ns = static_cast<double>(options.block_size) * 1.0e9 / options.sample_rate;
-    std::cout << "{\"schema\":\"hammond-benchmark-v1\",\"status\":\"ok\","
-        "\"scope\":\"observed elapsed wall-clock intervals around prepared Engine::process calls\","
-        "\"hard_realtime_guarantee\":false,\"timing_threshold_applied\":false,"
+    const bool console = console_selection(options.selected_case);
+    std::cout << "{\"schema\":";
+    write_string(std::cout, console ? "hammond-console-benchmark-v1" : "hammond-benchmark-v1");
+    std::cout << ",\"status\":\"ok\",\"scope\":";
+    write_string(std::cout, console ?
+        "observed elapsed wall-clock intervals around nominal Engine and owned-input calls" :
+        "observed elapsed wall-clock intervals around prepared Engine::process calls");
+    std::cout << ",\"hard_realtime_guarantee\":false,\"timing_threshold_applied\":false,"
         "\"clock\":\"std::chrono::steady_clock\",\"clock_is_steady\":" << Clock::is_steady
         << ",\"clock_tick_seconds\":" << static_cast<double>(Clock::period::num) / Clock::period::den
         << ",\"timer_overhead_subtracted\":false,\"warmup_included_in_timings\":false,"
@@ -323,8 +505,17 @@ void write_report(const Options& options, const hammond::RuntimeProfile& profile
         << ",\"recorded_calls_per_case\":" << options.iterations
         << ",\"warmup_calls_per_case\":" << options.warmup
         << ",\"nominal_frame_interval_ns\":" << interval_ns
-        << ",\"checksum_encoding\":\"fnv1a64 over native object bytes; same-build diagnostic sink\","
-        "\"cases\":[";
+        << ",\"checksum_encoding\":\"fnv1a64 over native object bytes; same-build diagnostic sink\"";
+    if (console) {
+        std::cout << ",\"source_model\":\"ideal-shared-sine-v1\",\"contact_model\":";
+        write_string(std::cout, hammond::kNominalContactModelId);
+        std::cout << ",\"percussion_model\":";
+        write_string(std::cout, hammond::kPercussionModelId);
+        std::cout << ",\"ownership_model\":";
+        write_string(std::cout, hammond::kNoteOwnershipModelId);
+        std::cout << ",\"workload_version\":1";
+    }
+    std::cout << ",\"cases\":[";
     bool first = true;
     for (const auto& report : reports) {
         if (!first) {
@@ -342,7 +533,8 @@ void write_report(const Options& options, const hammond::RuntimeProfile& profile
             << ",\"processed_frames\":" << report.end_frame - report.start_frame
             << ",\"start_frame\":" << report.start_frame << ",\"end_frame\":" << report.end_frame
             << ",\"events_per_call\":" << report.events_per_call
-            << ",\"event_offsets_per_call\":" << std::min<std::size_t>(options.block_size, report.events_per_call)
+            << ",\"event_offsets_per_call\":" << (console ? 1 :
+                std::min<std::size_t>(options.block_size, report.events_per_call))
             << ",\"events_consumed\":" << report.events_consumed << ",\"call_time_ns\":{\"min\":" << report.minimum_ns
             << ",\"median\":" << report.median_ns << ",\"p95\":" << report.p95_ns << ",\"max\":" << report.maximum_ns
             << "},\"observed_p95_interval_fraction\":" << report.p95_ns / interval_ns
@@ -355,9 +547,33 @@ void write_report(const Options& options, const hammond::RuntimeProfile& profile
         }
         std::cout << ",\"final_source_phase_checksum\":";
         write_string(std::cout, hash_text(report.phase_hash));
+        if (console) {
+            const bool owned = report.name == "owned_input";
+            std::cout << ",\"timed_api\":";
+            write_string(std::cout, owned ? "process_owned_notes" : "Engine::process");
+            std::cout << ",\"input_event_domain\":";
+            write_string(std::cout, owned ? "typed_host_notes" : "physical_key_targets");
+            std::cout << ",\"initial_percussion\":\"on_second_normal_fast\","
+                "\"initial_owner_count\":0,\"start_owner_count\":" << report.start_owners
+                << ",\"final_owner_count\":" << report.final_owners
+                << ",\"max_observed_owner_count\":" << report.max_observed_owners
+                << ",\"workload_owner_bound\":" << (owned ? 2 * kConsoleKeys : 0)
+                << ",\"start_active_keys\":" << report.start_active_keys
+                << ",\"final_active_keys\":" << report.final_active_keys
+                << ",\"physical_events_consumed\":" << report.physical_events_consumed
+                << ",\"warmup_events_consumed\":" << static_cast<std::uint64_t>(options.warmup) * kConsoleKeys
+                << ",\"warmup_physical_events_consumed\":" << report.warmup_physical_events_consumed
+                << ",\"primary_key_midi\":60,\"primary_key_manual\":\"upper\","
+                "\"recorded_primary_motion_calls\":" << report.motion_calls
+                << ",\"recorded_primary_contact_edges\":" << report.primary_contact_edges
+                << ",\"final_primary_position\":" << report.final_primary_position
+                << ",\"final_primary_target\":" << report.final_primary_target
+                << ",\"final_readiness\":" << report.final_readiness;
+        }
         std::cout << '}';
     }
     std::cout << "]}\n";
+    std::cout.flush();
     if (!std::cout) {
         fail("Cannot write JSON report to stdout.");
     }
@@ -375,9 +591,17 @@ int benchmark(const Options& options) {
     }
     std::array<Result, kCases.size()> reports{};
     std::size_t count = 0;
-    for (const auto name : kCases) {
-        if (options.selected_case == "all" || options.selected_case == name) {
-            reports[count++] = run_case(options, profile, name);
+    if (console_selection(options.selected_case)) {
+        for (const auto name : kConsoleCases) {
+            if (options.selected_case == "console_all" || options.selected_case == name) {
+                reports[count++] = run_console_case(options, profile, name);
+            }
+        }
+    } else {
+        for (const auto name : kCases) {
+            if (options.selected_case == "all" || options.selected_case == name) {
+                reports[count++] = run_case(options, profile, name);
+            }
         }
     }
     write_report(options, profile, std::span<const Result>(reports.data(), count));
@@ -398,9 +622,12 @@ int main(int argc, char* argv[]) {
                 "  --warmup 1..1000               (unrecorded calls per case; default 16)\n"
                 "  --seed UNSIGNED64              (default 0)\n"
                 "  --case all|silence|all_keys|disconnected|dense_automation (default all)\n"
+                "         console_motion|owned_input|console_all (explicit nominal workloads)\n"
                 "Warmup + recorded work: at most 10000 calls and 1048576 frames per case.\n"
                 "Output: JSON wall-clock observations; no real-time guarantee or timing pass/fail.\n";
-            return std::cout ? 0 : 1;
+            std::cout.flush();
+            if (!std::cout) fail("Cannot write help output to stdout.");
+            return 0;
         }
         return benchmark(parse_options(argc, argv));
     } catch (const std::exception& error) {
