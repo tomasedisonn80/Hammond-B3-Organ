@@ -29,8 +29,8 @@ physical instrument fidelity, a VST3 plugin, or a device-audio application exist
 | Wave | New assignment IDs | Work | Status |
 | --- | --- | --- | --- |
 | 01 | 01–06 | Full 500-page continuation review | Complete; six retained notes |
-| 02 | 07–12 | Contact and shared-percussion model contracts and unit verification | In progress |
-| 03 | 13–18 | Engine, control persistence, renderer integration and behavioral verification | Planned |
+| 02 | 07–12 | Contact and shared-percussion model contracts and unit verification | Complete; independent module tests passed |
+| 03 | 13–18 | Engine, control persistence, renderer integration and behavioral verification | In progress |
 | 04 | 19–24 | Stable controls, host-input ownership, and reproducible fixtures | Planned |
 | 05 | 25–30 | Evidence capture, independent model checks and numerical boundaries | Planned |
 | 06 | 31–36 | Runtime robustness, portability and acceptance repairs | Planned |
@@ -51,3 +51,19 @@ fast-forwarded without replacing local review notes. The combined baseline passe
 all 18 local Release suites and the source-archive checker. The tiny-frequency
 finding in continuation review01 describes its earlier reviewed commit; the incoming
 numerical-bound implementation resolves that supported-range issue separately.
+
+## Wave 02: independently tested model modules
+
+Assignments 07-12 added the fixed 1,098-contact bank, one shared percussion
+readiness state, a value-owned ConsoleModel contract, independent permanent tests
+and an exporter of the actual compiled factory parameters. The contact tests
+cover independent identities, analytic make/break times at three rates, partial
+holds, reversal and failure atomicity. The percussion tests passed 103 closed-form
+comparisons (maximum absolute error 1.1582061807e-12), 41 invalid profiles, eight
+invalid rates and 762 invalid settings. Metadata output contains both factories
+and remains below its 128 KiB bound. These are software-model results.
+
+This publication checkpoint adds standalone modules and their contracts; Engine,
+state-format and CLI integration is the next wave. The established ideal renderer
+remains the public default until that integration is verified. No measured contact,
+valve, scanner, Leslie, native-host or physical-fidelity gate is closed.

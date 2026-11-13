@@ -89,6 +89,10 @@ target_compile_definitions(hammond_benchmark PRIVATE
     HAMMOND_BENCHMARK_SANITIZERS=$<BOOL:${HAMMOND_ENABLE_SANITIZERS}>)
 add_dependencies(hammond_benchmark hammond_profile)
 
+add_executable(hammond_model_info tools/model_info.cpp)
+target_link_libraries(hammond_model_info PRIVATE hammond_core)
+hammond_configure_target(hammond_model_info)
+
 if(BUILD_TESTING)
     set(HAMMOND_TEST_TARGETS)
     file(GLOB HAMMOND_CPP_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")
@@ -122,6 +126,12 @@ if(BUILD_TESTING)
                 "HAMMOND_RENDER_EXECUTABLE=$<TARGET_FILE:hammond_render>")
         endforeach()
         list(APPEND HAMMOND_TEST_TARGETS hammond_render)
+    endif()
+
+    if(TEST python_test_model_info)
+        set_property(TEST python_test_model_info APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_MODEL_INFO_EXECUTABLE=$<TARGET_FILE:hammond_model_info>")
+        list(APPEND HAMMOND_TEST_TARGETS hammond_model_info)
     endif()
 
     # Unlike invoking CTest directly, this target first builds its required inputs.
