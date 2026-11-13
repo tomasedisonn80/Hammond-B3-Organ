@@ -1,5 +1,9 @@
 # Next steps
 
+## Active new session
+
+Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Complete the full atlas reread, then implement and independently qualify the first kernel checkpoint in [M3_NEXT_GATE.md](M3_NEXT_GATE.md). A subsequent explicit nominal transfer, controls/state migration, Engine integration and input/evidence gates will make the division playable in the offline engine. Earlier completed-session records below do not count as assignments in this new session.
+
 ## Completed continuation and current baseline
 
 The [continuation ledger](development/2026-11-13-continuation/README.md) and

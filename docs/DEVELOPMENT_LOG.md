@@ -1025,3 +1025,14 @@ publication adds only these two Markdown result records, then rechecks archive
 identity and both record/source gates. Broad DSP re-execution is unnecessary for
 these records; the final commit's hosted workflow independently runs the full
 matrix. The integrator verifies that actual result before the final user handoff.
+
+
+## 2026-11-13 — new pedal session, source review and frozen baseline
+
+Started from inspected remote `main` at `b4fc61ccfcc59724f14fb0cee947ed7bb7142075` in an independent clean checkout. The user requested sixty new agents in ten waves and continued development with commit/push and future-agent handoff rules. Created the separate `2026-11-13-pedals` actual-state ledger; the original and console continuation records are preserved. Updated AGENTS.md to point to the newest session and retain the standing workflow.
+
+`pdfinfo` confirmed all 500 pages; `pdftotext -layout` extracted every page into six temporary disjoint review ranges. The first wave has real assigned readers and selected image inspections. Source bytes are unchanged.
+
+The initial `cmake` attempt failed because CMake was absent. Installed CMake 3.31.6 in task-local tooling using the ordinary package route, then built a frozen `git archive` of the baseline with GCC 14.2.0 and Python 3.12.14: `cmake -S baseline -B baseline/build -DCMAKE_BUILD_TYPE=Release`, `cmake --build baseline/build -j 4`, `ctest --test-dir baseline/build --output-on-failure`. Result: **46/46 suites passed, 0 failures, 48.19 seconds**. The retained baseline executable will support exact legacy-audio comparisons. This is local baseline qualification, not a new-code or new hosted-CI result.
+
+Wave1 completed with six new workers covering all500 pages, retaining individual notes and selected diagram inspection. Root also read milestone pages445–450 directly. Review confirmed the existing kernel gate, explicit nominal mixture permission, 36+2 retained drawbars, Great/pedal routing, separate percussion, unchanged parameter identities and physical-calibration boundaries. The baseline GitHub run43381864079 at b4fc61c was independently observed completed/successful. Wave2 now owns the typed kernel, strict generated-data compiler and two implementation contracts.

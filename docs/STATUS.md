@@ -1,5 +1,11 @@
 # Development status
 
+## Active pedal development session
+
+A new [sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from remote `main` at `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. The complete atlas is being reread in six disjoint ranges. The dependency-ready target is the prepared pedal kernel and its explicitly nominal playable integration. The earlier sessions below remain historical records.
+
+The unchanged baseline was built from a frozen `git archive` using GCC 14.2.0, CMake 3.31.6 and Python 3.12.14. **All 46 Release CTest suites passed**, zero failures, in 48.19 seconds. This baseline build and renderer are retained outside the worktree for later legacy comparisons. No new pedal implementation is claimed yet.
+
 Foundation session started 2026-11-12 (America/Halifax), baseline `501c68b`.
 The [console continuation](development/2026-11-13-continuation/README.md) started
 2026-11-13 (UTC) from `9c8068c`; its new assignments are counted separately.

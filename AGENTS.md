@@ -4,6 +4,12 @@ These instructions apply to the entire repository and all future agent sessions.
 They implement the owner's request of 2026-11-12 to preserve a reliable, continuously
 updated development handoff. Read them before modifying code or documentation.
 
+## Current session and standing continuation rule
+
+The current session is [2026-11-13 pedal development](docs/development/2026-11-13-pedals/README.md), starting at `b4fc61c`. Its [actual assignment manifest](docs/development/2026-11-13-pedals/assignments.json) belongs only to this new user-requested sixty-agent, ten-wave session. Earlier original/console ledgers remain historical and must not be rewritten or recounted. Consult the newest session together with current status and next steps before starting work.
+
+For every future development session, continue the next dependency-ready phase, retain the source basis and limits of the model, run meaningful checks, update status/next steps/development log and affected contracts, then commit and push the completed work to `main` under the owner's standing authorization. Inspect and integrate concurrent changes; never force-push. A user-requested agent count is the scope of that session, not permission to invent participation. Record the real assignment identity, owned files, result and verification. Publication and physical-fidelity claims each require their own observed evidence.
+
 ## Start here
 
 1. Read `README.md`, `docs/STATUS.md`, `docs/NEXT_STEPS.md`, the current
