@@ -4,10 +4,17 @@
 
 The [rotary session](development/2026-11-13-rotary/README.md) develops the
 independent M7 numerical foundation under [ROTARY_SCOPE.md](ROTARY_SCOPE.md).
-Its first gate is full-source review followed by declared mechanics, geometry,
-retarded-time, interpolation, history and runtime acceptance contracts. Preserve
-the scanner and standalone tracks, and keep M5/M6 input/physical dependencies
-visible. Consult its actual manifest before taking rotary-specific ownership.
+Its complete source reading, numerical contract, strict profile, independent
+reference and native motion foundation are retained. Next qualify native motion
+against the independent 80-digit reference, complete full-orbit historical
+propagation and bounded cubic waveform history, then build the transactional
+dual-rotor renderer. Apply the frozen R2-R4 experiments and retain failed cases;
+author checks alone do not close those gates.
+
+Preserve the scanner and standalone tracks, and keep M5/M6 input/physical
+and the separate audible-policy dependencies visible. Consult the actual
+manifest before taking rotary-specific ownership. The first 12 assignments
+are accepted; later work is recorded only when actually dispatched.
 
 ## Resume here
 

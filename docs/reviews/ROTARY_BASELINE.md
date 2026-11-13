@@ -44,3 +44,27 @@ The supplied PDF has 500 pages, 21,248,265 bytes and SHA-256
 `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
 The [new session](../development/2026-11-13-rotary/README.md) records its own
 sixty actual assignments; none of the earlier sessions is counted again.
+
+## Source-review checkpoint publication
+
+The six-reader review and initial scope/handoff changes were committed locally
+as `b11bbead7c0ea5c44debecf2c25a8ab2826e1b87`, tree
+`a2fd40769d47444bc2fc5b5e8ad16e3703388041`. The authenticated GitHub tree and
+commit API published the identical tree as
+`6b4b6bd3a881dd13e6e3b7f846993f0fbbb977f9`, advancing `main` with an
+expected-head guard and no force update. Root fetched that commit and verified
+the exact tree. The local qualification commit remains preserved separately.
+
+The staged source-archive integrity checker passed with zero errors, preserving
+the 500-page/80-chapter source index and checking 2,360 local links across 382
+Markdown files. Its original historical sixty-note count is not the new rotary
+session's count; this checkpoint has six accepted rotary readers.
+
+Root subsequently observed both exact-commit GitHub workflow APIs at
+`completed/success`:
+
+- [Core CI, run 43512624398](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43512624398).
+- [Native VST3, run 43512624611](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43512624611).
+
+Those results qualify the source-review checkpoint and its existing code.
+They do not qualify subsequently written rotary primitives or references.

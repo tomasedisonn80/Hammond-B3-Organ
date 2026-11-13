@@ -75,7 +75,7 @@
     {
       "assignment": 7,
       "wave": 2,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/w02_a07_contract",
       "scope": "Freeze nominal rotary types, bounds and predeclared numerical acceptance",
       "note": "07-contract.md",
@@ -88,7 +88,7 @@
     {
       "assignment": 8,
       "wave": 2,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/w02_a08_profile",
       "scope": "Strict profile schema, proposed fixture and offline validation",
       "note": "08-profile.md",
@@ -103,7 +103,7 @@
     {
       "assignment": 9,
       "wave": 2,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/w02_a09_reference",
       "scope": "Independent high-precision motion and bracketed propagation reference",
       "note": "09-reference.md",
@@ -116,56 +116,84 @@
     {
       "assignment": 10,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Selected from prior wave evidence before dispatch",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/w02_a10_motion",
+      "scope": "Bounded native exact-segment rotary motion and event anchor primitives",
+      "note": "10-motion.md",
+      "owned_files": [
+        "include/hammond/RotaryMotion.h",
+        "src/RotaryMotion.cpp",
+        "docs/ROTARY_MOTION.md",
+        "docs/development/2026-11-13-rotary/10-motion.md"
+      ]
     },
     {
       "assignment": 11,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Selected from prior wave evidence before dispatch",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/w02_a11_profile_tests",
+      "scope": "Independent maintained profile admission, provenance, geometry and malformed-input regression",
+      "note": "11-profile-tests.md",
+      "owned_files": [
+        "tests/test_rotary_profile.py",
+        "docs/development/2026-11-13-rotary/11-profile-tests.md"
+      ]
     },
     {
       "assignment": 12,
       "wave": 2,
-      "state": "planned",
-      "agent": null,
-      "scope": "Selected from prior wave evidence before dispatch",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/w02_a12_reference_tests",
+      "scope": "Independent mathematical reference regression and primary-source propagation review",
+      "note": "12-reference-tests.md",
+      "owned_files": [
+        "tests/test_rotary_reference.py",
+        "docs/research/ROTARY_PRIMARY_REVIEW.md",
+        "docs/development/2026-11-13-rotary/12-reference-tests.md"
+      ]
     },
     {
       "assignment": 13,
       "wave": 3,
-      "state": "planned",
-      "agent": null,
-      "scope": "Selected from prior wave evidence before dispatch",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/w03_a13_geometry",
+      "scope": "Full-orbit numeric admission and bounded historical retarded path solver",
+      "note": "13-geometry.md",
+      "owned_files": [
+        "include/hammond/RotaryGeometry.h",
+        "src/RotaryGeometry.cpp",
+        "docs/ROTARY_GEOMETRY.md",
+        "docs/development/2026-11-13-rotary/13-geometry.md"
+      ]
     },
     {
       "assignment": 14,
       "wave": 3,
-      "state": "planned",
-      "agent": null,
-      "scope": "Selected from prior wave evidence before dispatch",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/w03_a14_delay",
+      "scope": "Bounded fractional waveform history, causal cubic interpolation and reversible append journal",
+      "note": "14-delay.md",
+      "owned_files": [
+        "include/hammond/RotaryDelay.h",
+        "src/RotaryDelay.cpp",
+        "docs/ROTARY_DELAY.md",
+        "docs/development/2026-11-13-rotary/14-delay.md"
+      ]
     },
     {
       "assignment": 15,
       "wave": 3,
-      "state": "planned",
-      "agent": null,
-      "scope": "Selected from prior wave evidence before dispatch",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/w03_a15_motion_tests",
+      "scope": "Independent native motion R2 grid, semigroup, lifecycle and high-precision batch acceptance",
+      "note": "15-motion-tests.md",
+      "owned_files": [
+        "tools/rotary_motion_probe.cpp",
+        "tests/test_rotary_motion.cpp",
+        "tests/test_rotary_native_motion.py",
+        "docs/ROTARY_MOTION_ACCEPTANCE.md",
+        "docs/development/2026-11-13-rotary/15-motion-tests.md"
+      ]
     },
     {
       "assignment": 16,

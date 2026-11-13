@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "profile_id": "nominal-research-v1",
+  "model_id": "nominal-effective-mouth-rotary-v1",
+  "contract_id": "rotary-numerics-v1",
+  "evidence_class": "proposed",
+  "applicable_variant": "synthetic-rotary-research",
+  "source": {
+    "document": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+    "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+    "basis": "algorithm-proposals-not-measured-values"
+  },
+  "coordinate_frame": {
+    "handedness": "right",
+    "x_axis": "right-when-facing-cabinet-front",
+    "y_axis": "toward-cabinet-rear",
+    "z_axis": "up",
+    "angle_zero": "+x",
+    "positive_angle": "counterclockwise-viewed-from-positive-z"
+  },
+  "signal_boundary": {
+    "input": "normalized-effective-mouth-amplitude",
+    "output": "normalized-propagated-amplitude",
+    "directivity": "unity-omnidirectional-diagnostic",
+    "distance_gain": "reference-distance-over-path-distance",
+    "reference_distance": {
+      "value": 1.0,
+      "unit": "m",
+      "evidence": {
+        "evidence_class": "proposed",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          308,
+          419
+        ],
+        "source_role": "algorithm-and-boundary-only",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "Proposed 1 m normalization for the explicit inverse-distance ratio; no physical pressure calibration or hidden level match."
+      }
+    },
+    "omitted_effects": [
+      "organ-and-leslie-electronics",
+      "electrical-crossover",
+      "driver-response",
+      "internal-horn-transit",
+      "measured-directivity",
+      "cabinet-reflections",
+      "room-response",
+      "microphone-response",
+      "physical-brake"
+    ]
+  },
+  "speed_of_sound": {
+    "value": 343.0,
+    "unit": "m/s",
+    "evidence": {
+      "evidence_class": "proposed",
+      "applicable_variant": "synthetic-rotary-research",
+      "source_pages": [
+        301,
+        302
+      ],
+      "source_role": "algorithm-and-boundary-only",
+      "uncertainty": null,
+      "measurement_reference": null,
+      "reason": "Illustrative constant sound speed; no environmental measurement or uncertainty is available."
+    }
+  },
+  "rotors": {
+    "horn": {
+      "motion": {
+        "slow_speed": {
+          "value": 4.0,
+          "unit": "rad/s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              292,
+              320
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Synthetic slow target for numerical research; no measured vintage rotor speed is supplied."
+          }
+        },
+        "fast_speed": {
+          "value": 38.0,
+          "unit": "rad/s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              292,
+              320
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Synthetic fast target for numerical research; no measured vintage rotor speed is supplied."
+          }
+        },
+        "tau_up": {
+          "value": 0.45,
+          "unit": "s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              292,
+              320
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Proposed exponential acceleration time constant; no measured transition fit or uncertainty exists."
+          }
+        },
+        "tau_down": {
+          "value": 0.8,
+          "unit": "s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              292,
+              320
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Proposed exponential deceleration time constant; the service adjustment interval is not used as tau."
+          }
+        },
+        "direction": {
+          "value": 1,
+          "unit": "1",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              290,
+              314,
+              319
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Proposed diagnostic sign under the declared frame; the installed rotor direction has not been acquired."
+          }
+        }
+      },
+      "geometry": {
+        "axis_origin": {
+          "value": [
+            0.0,
+            0.0,
+            0.7
+          ],
+          "unit": "m",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              301,
+              302,
+              314
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Illustrative effective radiation axis; no calibrated cabinet geometry or uncertainty exists."
+          }
+        },
+        "radius": {
+          "value": 0.18,
+          "unit": "m",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              301,
+              302,
+              314
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Illustrative acoustic mouth radius, not an inferred physical driver or photograph dimension."
+          }
+        }
+      },
+      "initial_state": {
+        "angle": {
+          "value": 0.0,
+          "unit": "rad",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              319,
+              322
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Declared deterministic initial phase for reproducible synthetic research, not a measured angle."
+          }
+        },
+        "speed": {
+          "value": 4.0,
+          "unit": "rad/s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              319,
+              322
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Declared steady slow initial speed; constant-speed prehistory is a numerical initialization policy."
+          }
+        }
+      },
+      "initial_command": "chorale"
+    },
+    "drum": {
+      "motion": {
+        "slow_speed": {
+          "value": 3.0,
+          "unit": "rad/s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              292,
+              320
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Synthetic slow target for numerical research; no measured vintage rotor speed is supplied."
+          }
+        },
+        "fast_speed": {
+          "value": 32.0,
+          "unit": "rad/s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              292,
+              320
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Synthetic fast target for numerical research; no measured vintage rotor speed is supplied."
+          }
+        },
+        "tau_up": {
+          "value": 1.1,
+          "unit": "s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              292,
+              320
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Proposed exponential acceleration time constant; no measured transition fit or uncertainty exists."
+          }
+        },
+        "tau_down": {
+          "value": 1.7,
+          "unit": "s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              292,
+              320
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Proposed exponential deceleration time constant; the service adjustment interval is not used as tau."
+          }
+        },
+        "direction": {
+          "value": -1,
+          "unit": "1",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              290,
+              314,
+              319
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Proposed diagnostic sign under the declared frame; the installed rotor direction has not been acquired."
+          }
+        }
+      },
+      "geometry": {
+        "axis_origin": {
+          "value": [
+            0.0,
+            0.0,
+            0.2
+          ],
+          "unit": "m",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              301,
+              302,
+              314
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Illustrative effective radiation axis; no calibrated cabinet geometry or uncertainty exists."
+          }
+        },
+        "radius": {
+          "value": 0.22,
+          "unit": "m",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              301,
+              302,
+              314
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Illustrative acoustic mouth radius, not an inferred physical driver or photograph dimension."
+          }
+        }
+      },
+      "initial_state": {
+        "angle": {
+          "value": 1.0,
+          "unit": "rad",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              319,
+              322
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Declared deterministic initial phase for reproducible synthetic research, not a measured angle."
+          }
+        },
+        "speed": {
+          "value": 3.0,
+          "unit": "rad/s",
+          "evidence": {
+            "evidence_class": "proposed",
+            "applicable_variant": "synthetic-rotary-research",
+            "source_pages": [
+              319,
+              322
+            ],
+            "source_role": "algorithm-and-boundary-only",
+            "uncertainty": null,
+            "measurement_reference": null,
+            "reason": "Declared steady slow initial speed; constant-speed prehistory is a numerical initialization policy."
+          }
+        }
+      },
+      "initial_command": "chorale"
+    }
+  },
+  "microphones": [
+    {
+      "id": "left",
+      "position": {
+        "value": [
+          -0.65,
+          -1.2,
+          0.8
+        ],
+        "unit": "m",
+        "evidence": {
+          "evidence_class": "proposed",
+          "applicable_variant": "synthetic-rotary-research",
+          "source_pages": [
+            301,
+            314
+          ],
+          "source_role": "algorithm-and-boundary-only",
+          "uncertainty": null,
+          "measurement_reference": null,
+          "reason": "Illustrative left receiver position in the declared cabinet frame; no physical microphone placement is measured."
+        }
+      }
+    },
+    {
+      "id": "right",
+      "position": {
+        "value": [
+          0.65,
+          -1.2,
+          0.8
+        ],
+        "unit": "m",
+        "evidence": {
+          "evidence_class": "proposed",
+          "applicable_variant": "synthetic-rotary-research",
+          "source_pages": [
+            301,
+            314
+          ],
+          "source_role": "algorithm-and-boundary-only",
+          "uncertainty": null,
+          "measurement_reference": null,
+          "reason": "Illustrative right receiver position in the declared cabinet frame; no physical microphone placement is measured."
+        }
+      }
+    }
+  ],
+  "startup": {
+    "motion_prehistory": "constant-initial-speed-before-zero",
+    "audio_prehistory": "zero-before-sample-zero"
+  },
+  "unknowns": {
+    "selected_cabinet": {
+      "value": null,
+      "unit": "identifier",
+      "evidence": {
+        "evidence_class": "unknown",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          2,
+          289,
+          301,
+          323,
+          343,
+          449
+        ],
+        "source_role": "missing-acquisition",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "No corresponding physical acquisition is present; the nominal research model does not fill this unknown."
+      },
+      "required_acquisition": "Identify cabinet model, serial, electrical revision, motor assemblies and any accessories before specimen claims."
+    },
+    "measured_rotor_geometry": {
+      "value": null,
+      "unit": "m",
+      "evidence": {
+        "evidence_class": "unknown",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          2,
+          289,
+          301,
+          323,
+          343,
+          449
+        ],
+        "source_role": "missing-acquisition",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "No corresponding physical acquisition is present; the nominal research model does not fill this unknown."
+      },
+      "required_acquisition": "Acquire calibrated horn/drum axes, effective radiation geometry and microphone coordinates with uncertainty."
+    },
+    "measured_rotor_speed": {
+      "value": null,
+      "unit": "rad/s",
+      "evidence": {
+        "evidence_class": "unknown",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          2,
+          289,
+          301,
+          323,
+          343,
+          449
+        ],
+        "source_role": "missing-acquisition",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "No corresponding physical acquisition is present; the nominal research model does not fill this unknown."
+      },
+      "required_acquisition": "Acquire independent synchronized horn/drum angle and steady-speed observations under both commands."
+    },
+    "measured_transition_constants": {
+      "value": null,
+      "unit": "s",
+      "evidence": {
+        "evidence_class": "unknown",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          2,
+          289,
+          301,
+          323,
+          343,
+          449
+        ],
+        "source_role": "missing-acquisition",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "No corresponding physical acquisition is present; the nominal research model does not fill this unknown."
+      },
+      "required_acquisition": "Fit and hold out synchronized both-direction transitions and rapid reversals; retain residuals and model inadequacy."
+    },
+    "measured_directivity": {
+      "value": null,
+      "unit": "1",
+      "evidence": {
+        "evidence_class": "unknown",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          2,
+          289,
+          301,
+          323,
+          343,
+          449
+        ],
+        "source_role": "missing-acquisition",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "No corresponding physical acquisition is present; the nominal research model does not fill this unknown."
+      },
+      "required_acquisition": "Acquire separate angle-dependent radiation data with absolute gain, delay, boundary and specimen identity."
+    },
+    "radiation_amplitude_scale": {
+      "value": null,
+      "unit": "Pa/normalized-unit",
+      "evidence": {
+        "evidence_class": "unknown",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          2,
+          289,
+          301,
+          323,
+          343,
+          449
+        ],
+        "source_role": "missing-acquisition",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "No corresponding physical acquisition is present; the nominal research model does not fill this unknown."
+      },
+      "required_acquisition": "Establish each normalized mouth input relation to calibrated acoustic pressure at a named reference boundary."
+    },
+    "m6_input_transfer": {
+      "value": null,
+      "unit": "Pa/V",
+      "evidence": {
+        "evidence_class": "unknown",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          2,
+          289,
+          301,
+          323,
+          343,
+          449
+        ],
+        "source_role": "missing-acquisition",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "No corresponding physical acquisition is present; the nominal research model does not fill this unknown."
+      },
+      "required_acquisition": "Validate the selected electrical crossover, drivers and internal transit before converting M6 outputs to mouth excitations."
+    },
+    "cabinet_room_microphone_response": {
+      "value": null,
+      "unit": "identifier",
+      "evidence": {
+        "evidence_class": "unknown",
+        "applicable_variant": "synthetic-rotary-research",
+        "source_pages": [
+          2,
+          289,
+          301,
+          323,
+          343,
+          449
+        ],
+        "source_role": "missing-acquisition",
+        "uncertainty": null,
+        "measurement_reference": null,
+        "reason": "No corresponding physical acquisition is present; the nominal research model does not fill this unknown."
+      },
+      "required_acquisition": "Acquire and identify each omitted path response separately before combining or fitting it."
+    }
+  }
+}

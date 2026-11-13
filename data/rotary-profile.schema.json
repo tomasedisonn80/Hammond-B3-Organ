@@ -1,0 +1,1646 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Nominal effective-mouth rotary research profile v1",
+  "$comment": "Run tools/validate_rotary_profile.py for cross-field slow/fast, rim-speed, all-orbit geometry, lexical-type and bounded-file admission. Schema conformance alone is not model admission. Physical quantities are synthetic proposals, not measurements.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "model_id",
+    "contract_id",
+    "evidence_class",
+    "applicable_variant",
+    "source",
+    "coordinate_frame",
+    "signal_boundary",
+    "speed_of_sound",
+    "rotors",
+    "microphones",
+    "startup",
+    "unknowns"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "profile_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,62}(?![\\s\\S])"
+    },
+    "model_id": {
+      "const": "nominal-effective-mouth-rotary-v1"
+    },
+    "contract_id": {
+      "const": "rotary-numerics-v1"
+    },
+    "evidence_class": {
+      "const": "proposed"
+    },
+    "applicable_variant": {
+      "const": "synthetic-rotary-research"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document",
+        "sha256",
+        "basis"
+      ],
+      "properties": {
+        "document": {
+          "const": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf"
+        },
+        "sha256": {
+          "const": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+        },
+        "basis": {
+          "const": "algorithm-proposals-not-measured-values"
+        }
+      }
+    },
+    "coordinate_frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "handedness",
+        "x_axis",
+        "y_axis",
+        "z_axis",
+        "angle_zero",
+        "positive_angle"
+      ],
+      "properties": {
+        "handedness": {
+          "const": "right"
+        },
+        "x_axis": {
+          "const": "right-when-facing-cabinet-front"
+        },
+        "y_axis": {
+          "const": "toward-cabinet-rear"
+        },
+        "z_axis": {
+          "const": "up"
+        },
+        "angle_zero": {
+          "const": "+x"
+        },
+        "positive_angle": {
+          "const": "counterclockwise-viewed-from-positive-z"
+        }
+      }
+    },
+    "signal_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input",
+        "output",
+        "directivity",
+        "distance_gain",
+        "reference_distance",
+        "omitted_effects"
+      ],
+      "properties": {
+        "input": {
+          "const": "normalized-effective-mouth-amplitude"
+        },
+        "output": {
+          "const": "normalized-propagated-amplitude"
+        },
+        "directivity": {
+          "const": "unity-omnidirectional-diagnostic"
+        },
+        "distance_gain": {
+          "const": "reference-distance-over-path-distance"
+        },
+        "reference_distance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence"
+          ],
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0.02,
+              "maximum": 10
+            },
+            "unit": {
+              "const": "m"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "proposed"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    308,
+                    419
+                  ]
+                },
+                "source_role": {
+                  "const": "algorithm-and-boundary-only"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            }
+          }
+        },
+        "omitted_effects": {
+          "const": [
+            "organ-and-leslie-electronics",
+            "electrical-crossover",
+            "driver-response",
+            "internal-horn-transit",
+            "measured-directivity",
+            "cabinet-reflections",
+            "room-response",
+            "microphone-response",
+            "physical-brake"
+          ]
+        }
+      }
+    },
+    "speed_of_sound": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "evidence"
+      ],
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 300,
+          "maximum": 380
+        },
+        "unit": {
+          "const": "m/s"
+        },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "evidence_class",
+            "applicable_variant",
+            "source_pages",
+            "source_role",
+            "uncertainty",
+            "measurement_reference",
+            "reason"
+          ],
+          "properties": {
+            "evidence_class": {
+              "const": "proposed"
+            },
+            "applicable_variant": {
+              "const": "synthetic-rotary-research"
+            },
+            "source_pages": {
+              "const": [
+                301,
+                302
+              ]
+            },
+            "source_role": {
+              "const": "algorithm-and-boundary-only"
+            },
+            "uncertainty": {
+              "type": "null"
+            },
+            "measurement_reference": {
+              "type": "null"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        }
+      }
+    },
+    "rotors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "horn",
+        "drum"
+      ],
+      "properties": {
+        "horn": {
+          "$ref": "#/$defs/rotor"
+        },
+        "drum": {
+          "$ref": "#/$defs/rotor"
+        }
+      }
+    },
+    "microphones": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "position"
+          ],
+          "properties": {
+            "id": {
+              "const": "left"
+            },
+            "position": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number",
+                    "minimum": -10,
+                    "maximum": 10
+                  }
+                },
+                "unit": {
+                  "const": "m"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        301,
+                        314
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "position"
+          ],
+          "properties": {
+            "id": {
+              "const": "right"
+            },
+            "position": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number",
+                    "minimum": -10,
+                    "maximum": 10
+                  }
+                },
+                "unit": {
+                  "const": "m"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        301,
+                        314
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "items": false
+    },
+    "startup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "motion_prehistory",
+        "audio_prehistory"
+      ],
+      "properties": {
+        "motion_prehistory": {
+          "const": "constant-initial-speed-before-zero"
+        },
+        "audio_prehistory": {
+          "const": "zero-before-sample-zero"
+        }
+      }
+    },
+    "unknowns": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selected_cabinet",
+        "measured_rotor_geometry",
+        "measured_rotor_speed",
+        "measured_transition_constants",
+        "measured_directivity",
+        "radiation_amplitude_scale",
+        "m6_input_transfer",
+        "cabinet_room_microphone_response"
+      ],
+      "properties": {
+        "selected_cabinet": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence",
+            "required_acquisition"
+          ],
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unit": {
+              "const": "identifier"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "unknown"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    2,
+                    289,
+                    301,
+                    323,
+                    343,
+                    449
+                  ]
+                },
+                "source_role": {
+                  "const": "missing-acquisition"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            },
+            "required_acquisition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        },
+        "measured_rotor_geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence",
+            "required_acquisition"
+          ],
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unit": {
+              "const": "m"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "unknown"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    2,
+                    289,
+                    301,
+                    323,
+                    343,
+                    449
+                  ]
+                },
+                "source_role": {
+                  "const": "missing-acquisition"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            },
+            "required_acquisition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        },
+        "measured_rotor_speed": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence",
+            "required_acquisition"
+          ],
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unit": {
+              "const": "rad/s"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "unknown"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    2,
+                    289,
+                    301,
+                    323,
+                    343,
+                    449
+                  ]
+                },
+                "source_role": {
+                  "const": "missing-acquisition"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            },
+            "required_acquisition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        },
+        "measured_transition_constants": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence",
+            "required_acquisition"
+          ],
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unit": {
+              "const": "s"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "unknown"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    2,
+                    289,
+                    301,
+                    323,
+                    343,
+                    449
+                  ]
+                },
+                "source_role": {
+                  "const": "missing-acquisition"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            },
+            "required_acquisition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        },
+        "measured_directivity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence",
+            "required_acquisition"
+          ],
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unit": {
+              "const": "1"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "unknown"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    2,
+                    289,
+                    301,
+                    323,
+                    343,
+                    449
+                  ]
+                },
+                "source_role": {
+                  "const": "missing-acquisition"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            },
+            "required_acquisition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        },
+        "radiation_amplitude_scale": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence",
+            "required_acquisition"
+          ],
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unit": {
+              "const": "Pa/normalized-unit"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "unknown"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    2,
+                    289,
+                    301,
+                    323,
+                    343,
+                    449
+                  ]
+                },
+                "source_role": {
+                  "const": "missing-acquisition"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            },
+            "required_acquisition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        },
+        "m6_input_transfer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence",
+            "required_acquisition"
+          ],
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unit": {
+              "const": "Pa/V"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "unknown"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    2,
+                    289,
+                    301,
+                    323,
+                    343,
+                    449
+                  ]
+                },
+                "source_role": {
+                  "const": "missing-acquisition"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            },
+            "required_acquisition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        },
+        "cabinet_room_microphone_response": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit",
+            "evidence",
+            "required_acquisition"
+          ],
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "unit": {
+              "const": "identifier"
+            },
+            "evidence": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "evidence_class",
+                "applicable_variant",
+                "source_pages",
+                "source_role",
+                "uncertainty",
+                "measurement_reference",
+                "reason"
+              ],
+              "properties": {
+                "evidence_class": {
+                  "const": "unknown"
+                },
+                "applicable_variant": {
+                  "const": "synthetic-rotary-research"
+                },
+                "source_pages": {
+                  "const": [
+                    2,
+                    289,
+                    301,
+                    323,
+                    343,
+                    449
+                  ]
+                },
+                "source_role": {
+                  "const": "missing-acquisition"
+                },
+                "uncertainty": {
+                  "type": "null"
+                },
+                "measurement_reference": {
+                  "type": "null"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1024,
+                  "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                }
+              }
+            },
+            "required_acquisition": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "rotor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "motion",
+        "geometry",
+        "initial_state",
+        "initial_command"
+      ],
+      "properties": {
+        "motion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "slow_speed",
+            "fast_speed",
+            "tau_up",
+            "tau_down",
+            "direction"
+          ],
+          "properties": {
+            "slow_speed": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 200
+                },
+                "unit": {
+                  "const": "rad/s"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        292,
+                        320
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            },
+            "fast_speed": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 200
+                },
+                "unit": {
+                  "const": "rad/s"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        292,
+                        320
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            },
+            "tau_up": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0.001,
+                  "maximum": 60
+                },
+                "unit": {
+                  "const": "s"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        292,
+                        320
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            },
+            "tau_down": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0.001,
+                  "maximum": 60
+                },
+                "unit": {
+                  "const": "s"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        292,
+                        320
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            },
+            "direction": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": -1,
+                  "maximum": 1,
+                  "enum": [
+                    -1,
+                    1
+                  ]
+                },
+                "unit": {
+                  "const": "1"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        290,
+                        314,
+                        319
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "axis_origin",
+            "radius"
+          ],
+          "properties": {
+            "axis_origin": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {
+                    "type": "number",
+                    "minimum": -10,
+                    "maximum": 10
+                  }
+                },
+                "unit": {
+                  "const": "m"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        301,
+                        302,
+                        314
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "unit": {
+                  "const": "m"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        301,
+                        302,
+                        314
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "initial_state": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "angle",
+            "speed"
+          ],
+          "properties": {
+            "angle": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "exclusiveMaximum": 6.283185307179586
+                },
+                "unit": {
+                  "const": "rad"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        319,
+                        322
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            },
+            "speed": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "value",
+                "unit",
+                "evidence"
+              ],
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 200
+                },
+                "unit": {
+                  "const": "rad/s"
+                },
+                "evidence": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_class",
+                    "applicable_variant",
+                    "source_pages",
+                    "source_role",
+                    "uncertainty",
+                    "measurement_reference",
+                    "reason"
+                  ],
+                  "properties": {
+                    "evidence_class": {
+                      "const": "proposed"
+                    },
+                    "applicable_variant": {
+                      "const": "synthetic-rotary-research"
+                    },
+                    "source_pages": {
+                      "const": [
+                        319,
+                        322
+                      ]
+                    },
+                    "source_role": {
+                      "const": "algorithm-and-boundary-only"
+                    },
+                    "uncertainty": {
+                      "type": "null"
+                    },
+                    "measurement_reference": {
+                      "type": "null"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1024,
+                      "pattern": "^(?![\\s\\S]*[\\x00-\\x1f])(?=[\\s\\S]*\\S)[\\s\\S]*(?![\\s\\S])"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "initial_command": {
+          "enum": [
+            "chorale",
+            "tremolo"
+          ]
+        }
+      }
+    }
+  }
+}

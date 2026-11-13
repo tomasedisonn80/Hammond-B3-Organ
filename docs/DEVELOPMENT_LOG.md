@@ -1,5 +1,38 @@
 # Development log
 
+
+## 2026-11-13 — Rotary contracts and independent acceptance foundation
+
+- Accepted assignments 07-12: frozen R1-R6 numerical/types boundary, strict
+  proposed profile/schema/validator, independent 80-digit motion and Cartesian
+  bisection reference, native exact-segment motion, and independent regression.
+  No fixture value is promoted to a factory or measured value.
+- Profile tests passed 33/33. A separate 358-case JSON Schema audit found and
+  retained a prose-control/terminal-newline pattern defect; repaired patterns
+  now pass all 358 cases. The default suite remains standard-library-only.
+- Independent reference tests initially reported three failing subcases in two
+  methods: full-day zero and positive decay hit an inappropriate exponent guard.
+  The integrator preserved ordinary scalar bounds, admitted compact state
+  exponents within the private context, canonicalized zero and retained positive
+  tails. The unmodified suite then passed 33/33 in 2.227 seconds, exit 0.
+- The native motion implementation has strict GCC 14.2 author checks; complete
+  independent R2 acceptance remains in wave 3. Geometry and fractional-history
+  workers were dispatched only to disjoint paths while wave 2 acceptance closed.
+- The session's retained checker distinguishes actual planned/running/complete
+  records; it cannot attest external dispatch or replace substantive acceptance.
+  Exact coherent integration and publication evidence is recorded separately.
+- Coherent staged source tree `b4bf3bf65ef6706f2c613f875d759f9d71431d1f`
+  configured and built successfully; 81/81 Release suites passed in 38.03 seconds.
+  Repository integrity and the explicit 12-complete checker passed. See
+  [integration evidence](reviews/ROTARY_WAVE2_INTEGRATION.md). Active wave-3
+  implementation was excluded from that qualification.
+- Before publication, inspected and merged concurrent standalone commit
+  `219821dfaca6bfee8ba0905993ed8deec7a66396`. The new coherent source tree
+  `1d78b5663b30cb48984e6b810ed33ede4894ced8` passed strict Release build and
+  85/85 suites in 38.91 seconds, plus source/accounting checks. Both tracks and
+  their separate claims remain preserved; optional native/device gates were
+  not part of this combined SDK-free run.
+
 ## 2026-11-13 — Independent rotary foundation begins
 
 - Cloned main at `96a37a977ef22b7adf38e1a841f57ffcf32519a7` into a separate

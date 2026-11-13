@@ -45,13 +45,27 @@ existing hosted workflows succeeded at published contract/assets checkpoint
 ## Parallel rotary foundation
 
 The distinct [rotary session](development/2026-11-13-rotary/README.md) starts
-from `96a37a9` with its own sixty-agent, ten-wave scope. All six wave-1 readers
-completed every PDF text page and selected actual visual checks. Wave 2 freezes
-the numerical contract, profile and independent references. See
-[ROTARY_SCOPE.md](ROTARY_SCOPE.md) and the actual assignment manifest.
+from `96a37a9` with its own sixty-agent, ten-wave scope. Its first **12 actual
+assignments** are complete. Six readers covered every PDF text page and selected
+actual visuals. Wave 2 supplies the frozen [numerical contract](ROTARY_NUMERICAL_CONTRACT.md),
+strict proposed [profile](ROTARY_PROFILE.md), independent [reference](ROTARY_REFERENCE.md)
+and native [motion foundation](ROTARY_MOTION.md).
+
+Profile admission passes 33 maintained methods and an explicitly separate
+358-case schema audit. The independent reference passes 33 maintained methods
+after correcting full-day Decimal decay representation; its original failing
+cases remain in the record. Native motion has author checks; independent R2
+acceptance and wave-3 geometry/history work are in progress. See the actual
+manifest for running versus accepted assignments. No whole-renderer, audible
+policy or physical acceptance is claimed at this checkpoint.
+
+The [coherent wave-2 integration](reviews/ROTARY_WAVE2_INTEGRATION.md) passed
+**81/81 Release suites** in 38.03 seconds; after integrating standalone commit
+`219821d`, the combined source passed **85/85** in 38.91 seconds, zero failures.
 The clean starting source passed [79/79 Release suites](reviews/ROTARY_BASELINE.md).
-No rotary runtime or physical acceptance is claimed at this checkpoint.
-Scanner and native standalone development retain their separate ownership.
+The wave-1 published tree and both successful hosted workflows are recorded
+there. Scanner and native standalone development retain their separate ownership;
+M5/M6 and measured-capture dependencies remain open under [ROTARY_SCOPE.md](ROTARY_SCOPE.md).
 
 ## Active scanner continuation
 
