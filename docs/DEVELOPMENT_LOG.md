@@ -1,5 +1,26 @@
 # Development log
 
+## 2026-11-13 — Independent capture/calibration-readiness scope
+
+- Inspected authenticated repository permissions and remote `main` at
+  `38c1fac949368fa54bd86c6c00a5997a73480f5e`, then created a separate checkout.
+  Other checkouts have unfinished scanner, rotary and native standalone work;
+  their files and histories remain untouched.
+- Selected the explicitly pending M0/M8 capture/corpus/evaluation tooling under
+  `CALIBRATION_SCOPE.md`. The existing capture validator checks metadata and
+  optional byte identity, but not actual audio headers/content or corpus splits.
+- Verified the unchanged 500-page PDF, SHA-256
+  `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`;
+  extracted every page for six fresh readers. The actual new manifest records
+  each distinct dispatch and accepted result; no previous session is recounted.
+- Started a clean archived-source Release baseline using GCC 14.2.0, CMake 4.4.4
+  and Python 3.12.14, both optional native adapters OFF. Completion/results will
+  be recorded separately after execution finishes.
+- CLI push dry-run has no configured password. Authenticated GitHub publication
+  remains available and authorized; use Git data operations with an expected-head
+  guard and verify the fetched tree. No force-push is used.
+
+
 
 ## 2026-11-13 — Rotary contracts and independent acceptance foundation
 

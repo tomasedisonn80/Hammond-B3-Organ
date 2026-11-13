@@ -71,6 +71,12 @@ commit/push and observed remote-result workflow mandatory for future agents.
 
 ## Build and test
 
+An independent [capture/calibration-readiness track](docs/CALIBRATION_SCOPE.md)
+is developing actual audio-file inspection, corpus split auditing and fixed
+comparison evidence. Its [session record](docs/development/2026-11-13-calibration/README.md)
+retains sixty newly requested assignments separately from the other active work.
+Synthetic tool examples do not supply the missing physical recordings.
+
 Requirements: a C++20 compiler, CMake 3.21 or newer, and Python 3.10 or newer.
 The core and authoring compiler need no downloaded audio/GUI framework.
 

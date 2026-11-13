@@ -6,6 +6,14 @@ They implement the owner's standing handoff and publication requests of
 
 ## Current session and standing continuation rule
 
+An independent [capture/calibration-readiness session](docs/development/2026-11-13-calibration/README.md)
+starts at `38c1fac`. Its sixty new assignments advance the offline M0/M8 tools
+under [CALIBRATION_SCOPE.md](docs/CALIBRATION_SCOPE.md): audio-file inspection,
+cross-capture integrity and split auditing, fixed analysis and reproducible
+acceptance evidence. It owns new capture/corpus/calibration tools and companion
+contracts. Preserve the existing capture v1 meaning, unknown physical values and
+all other active tracks. Synthetic test audio cannot close a hardware gate.
+
 A separate [rotary motion and propagation session](docs/development/2026-11-13-rotary/README.md)
 starts at `96a37a9`. Its own sixty assignments advance a nominal M7 research
 module under [ROTARY_SCOPE.md](docs/ROTARY_SCOPE.md). It owns rotary-specific
