@@ -16,6 +16,8 @@ Independent review found and repaired a schema-only duplicate-ID admission gap i
 
 **Observed numerical limit:** the separate G5 same-hertz grid fails at every investigated internal rate, including 1,536,000 Hz. The full comparison retains 40,786 failing tap comparisons across distinct rate/mode cases. No multiplier alone qualifies an audible policy. The module remains a documented nominal research implementation while an alternative realization/policy, converged transients, rotating output and actual filtering remain required. See [frequency qualification](SCANNER_AC_PARITY.md).
 
+The [coherent line/rotor checkpoint](reviews/SCANNER_WAVE3_INTEGRATION.md) at `babb897`, tree `14572ab24e67489997cee20ae452c0635178dca0`, passed **77/77 Release suites** in 50.64 seconds, zero failures. It excludes unfinished combined-stage work.
+
 The [coherent scanner foundation](reviews/SCANNER_WAVE2_INTEGRATION.md) at commit `74473fa` passed **73/73 Release suites**, zero failures, from a new detached-source build. The original local baseline passed 71/71 Release suites. The optional VST3 baseline built and its project native checks passed; an initially unbuilt SDK validator was built explicitly and its previously unrun gate then passed. Earlier pedal/native hosted results below remain qualification of their named revisions.
 
 ## Current position

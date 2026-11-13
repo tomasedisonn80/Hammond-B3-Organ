@@ -91,3 +91,6 @@ alternative realization or justified policy under the unchanged numerical
 contract. Converged transients, rotating output, real interpolation/filter and
 latency evidence remain separate. No Engine/native scanner control is added by
 the independent research modules.
+
+
+The [coherent line/rotor checkpoint](reviews/SCANNER_WAVE3_INTEGRATION.md) qualifies local commit `babb8975d6881db6629e570e10ee619c70ba8be3`, tree `14572ab24e67489997cee20ae452c0635178dca0`: **77/77 Release suites passed**, zero failures, in 50.64 seconds from a new detached-source build. Combined-stage work is excluded from that result.
