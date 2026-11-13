@@ -18,9 +18,19 @@ control must correspond to an implemented core behavior.
 The existing 45 parameter identities, core sound, profile, VST3 UUIDs and saved
 state formats remain authoritative. Fixed chapel presets, scanner, AO-28,
 Leslie, room, physical expression and continuous drawbar conductance are future
-model work. An explanatory service view may name those gaps without presenting
+runtime model work. An explanatory service view may name those gaps without presenting
 them as working controls. A native canvas with keyboard operation does not by
 itself establish assistive-technology accessibility.
+
+The later dependency-ready source slice imports the atlas p122 chapel matrix
+under `data/registrations/`, with two independent image transcriptions, strict
+offline compiler and admission tests. This is the [documentary catalog](CHAPEL_PRESETS_CATALOG.md),
+not a runtime fixed-key selector. An explicit audition export may translate its
+digits into the existing nominal drawbar controls and ordinary `B3CONTROLS3`;
+it must preserve all existing identities and identify the unmodeled physical
+latch, loading and percussion interlock. Source facts and nominal audition
+choices remain separate. Scanner, rotary and capture/calibration work retain
+their own concurrent ownership.
 
 ## Technical boundary
 

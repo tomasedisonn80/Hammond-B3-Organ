@@ -39,14 +39,53 @@ SDK. The native text uses the [embedded font atlases](STANDALONE_FONTS.md).
 | `--width N` | Initial logical width, 960 through 8192; default 1280. |
 | `--height N` | Initial logical height, 700 through 8192; default 900. |
 | `--smoke-ms N` | Runs the actual window and device for a bounded 250 through 10000 ms smoke interval. |
+| `--input-script PATH` | Reads a bounded `B3UIREPLAY1` event script, runs the ordinary application handlers and stops after delivery, duration and command acknowledgment. Mutually exclusive with `--smoke-ms`. |
 | `--screenshot PATH` | Writes one BMP from the rendered backbuffer before `SDL_RenderPresent`. |
 | `--diagnostics PATH` | Writes copied JSON diagnostics after joining and closing the device. |
 
 Options with values require separate arguments; unknown options, duplicates,
 partial integers and out-of-range values return 2. Runtime failures return 1.
-The three file destinations must be distinct. An ordinary interactive run
+State, script input and requested output files must be distinct. An ordinary interactive run
 writes requested diagnostics when it closes. A screenshot without smoke is
 taken from its first complete frame; it does not close the application.
+With an input script, capture occurs at successful replay completion before
+automatic shutdown cleanup, so a deliberately held final note can be shown.
+
+## Scripted interaction and observations
+
+The [input format](STANDALONE_INPUT_REPLAY.md) admits at most 256 ordered actions
+and a declared duration from 250 to 10000 milliseconds. Parsing completes before
+state-directory selection, audio opening or output writes. Missing or malformed
+input returns 1; combining replay with smoke returns 2. Script input participates
+in the same alias preflight as state, screenshot and diagnostics. A replay
+injects its own events and never adds the automatic smoke note.
+
+Events enter the actual SDL queue and ordinary keyboard/pointer/modal handlers.
+Consumed-prefix markers preserve geometry ordering around real window resizes;
+each main-loop poll remains bounded to 256 events. The final marker establishes
+queue delivery. Successful completion also requires the declared wall time,
+coherent acknowledgment of all accepted commands, completed Save, a running
+device and fault-free joined shutdown. A two-second bounded drain follows the
+declared duration; interruption or a missed gate returns 1.
+
+Only requested replay adds a `replay` object to schema-1 diagnostics. It retains
+delivery/completion, accepted note-command counts, successful device starts, the
+last submitted sequence, the snapshot before shutdown and up to 512 changed
+musical observations with elapsed wall time. Each observation contains absolute
+manual MIDI notes, one-based pedal IDs, copied controls and sequence markers.
+Preparation defaults are excluded until the explicit startup/reopen control
+restore has been acknowledged. Observation overflow fails the run visibly.
+These observations can miss short states between reads and do not measure
+sample-accurate input latency or audibility. Accepted posts and observed holds
+remain distinct facts.
+
+A held final script state is legal. The pre-shutdown snapshot and accepted-note
+counts are frozen before automatic close cleanup; final top-level Session data
+describe joined shutdown with all notes released. An immediately queued scoped
+cleanup command may be discarded by `Session::stop`; that lifecycle count is
+not itself a lost scripted note. The [independent workflows](STANDALONE_WORKFLOWS.md)
+check the original note identity, modal release, Save/Load, selected versus
+edited banks, Cancel, Panic and actual device reopen through these interfaces.
 
 Windows uses `wmain` and `tools/CliArguments.h` for validated UTF-16 to UTF-8
 arguments and native filesystem paths. MinGW needs the target's `-municode`

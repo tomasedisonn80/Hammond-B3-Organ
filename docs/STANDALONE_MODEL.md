@@ -59,9 +59,13 @@ The [M0–M9 plan](PLAN.md) retains the complete project sequence and evidence.
 The [scanner track](SCANNER_HANDOFF.md) is still qualifying a separate nominal
 circuit/rotor realization. Connected AO-28 electronics, identified Leslie 122/147
 circuits, independent horn/drum acoustics, measured calibration and held-out
-listening evidence remain later dependencies. Fixed chapel registrations on
-atlas p122 are a concrete remaining M3 input; the standalone currently exposes
-the implemented A/B/Cancel controls.
+listening evidence remain later dependencies. The fixed chapel registrations on
+atlas p122 now have two agreeing image transcriptions and a strict
+[documentary catalog](CHAPEL_PRESETS_CATALOG.md), covering all 18 rows and 162
+connection digits. The underlying factory Table IV, loaded gains, physical
+selector and latch behavior remain separate M3 gates. The standalone currently
+exposes the implemented A/B/Cancel controls; importing registration values into
+those controls does not implement the physical fixed-key mechanism.
 
 Actual dummy-backend callbacks, synthetic renders and software screenshots
 verify their stated engineering paths. Physical devices, deadline/underrun and

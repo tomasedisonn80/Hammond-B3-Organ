@@ -1,0 +1,29 @@
+B3UIREPLAY1
+duration_ms 2400
+# Hold a Lower note, then open Audio with the ordinary keyboard shortcut.
+200 key_down F2 none 0
+210 key_up F2 none
+300 key_down A none 0
+600 key_down Comma ctrl 0
+610 key_up Comma ctrl
+# Audio focus: previous output, next output, rate, buffer, Apply, Close.
+700 key_down Tab none 0
+710 key_up Tab none
+800 key_down Tab none 0
+810 key_up Tab none
+900 key_down End none 0
+910 key_up End none
+1000 key_down Tab none 0
+1010 key_up Tab none
+1100 key_down Home none 0
+1110 key_up Home none
+1200 key_down Tab none 0
+1210 key_up Tab none
+# Apply 96000 Hz / 128 frames. Acknowledged controls survive; notes clear.
+1300 key_down Return none 0
+1310 key_up Return none
+# A remains suppressed until its physical release, even after Apply.
+1500 key_down A none 1
+1600 key_up A none
+1800 key_down A none 0
+2000 key_up A none

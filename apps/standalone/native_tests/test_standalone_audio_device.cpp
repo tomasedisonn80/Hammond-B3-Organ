@@ -492,7 +492,7 @@ void test_lifetime(const RuntimeProfile& profile) {
 int main() {
     // Driver selection is an explicit fixture/CTest setting, never production
     // fallback or a hidden environment mutation in this test executable.
-    const auto* selected = std::getenv("SDL_AUDIODRIVER");
+    const auto* selected = SDL_getenv("SDL_AUDIODRIVER");
     CHECK(selected != nullptr);
     CHECK(std::string_view{selected} == "dummy");
     RuntimeProfile profile;

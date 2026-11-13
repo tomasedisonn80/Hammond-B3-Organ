@@ -19,7 +19,7 @@ running work. Physical calibration remains unqualified.
 ## Active native standalone continuation
 
 The independent [standalone session](development/2026-11-13-next-phases/README.md)
-has accepted its first **27 distinct assignments**, including four complete
+has accepted its first **41 distinct assignments**, including six complete
 waves. The [native app](STANDALONE_APP.md) now runs the unchanged nominal dry
 engine in a resizable instrument window with keyboard/pointer performance,
 separate edited/sounding banks, pedals, percussion, expression, Audio/Help
@@ -48,10 +48,36 @@ calibration observed zero C++ allocations/deallocations in the callback; coheren
 Session concurrency also passed a separately fully instrumented ThreadSanitizer
 run. App acceptance passed 18 methods and 164 actual invocations after repairing
 missing-leaf path aliases and symmetric dangling-symlink hazards. The nine-file
-installed component runs after relocation. The replay helper has independent
-parser/file/SDL-queue acceptance; its application workflow integration and render
-benchmark are the next active changes. The new three-platform standalone workflow
-is implemented but has not yet executed. See the [checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md).
+installed component runs after relocation. Replay now drives the ordinary app
+handlers and retains pre-shutdown musical observations; its independent workflow
+suite passes 11 methods and 15 actual processes. The SDK-free render benchmark
+and its automatic source manifest pass nine independent methods and 111 CLI
+invocations. The assembled native group passes **11/11 suites** in 22.78 seconds.
+The separate [chapel catalog](CHAPEL_PRESETS_CATALOG.md) admits 18 documentary
+registrations and all 162 taps from two agreeing readings; independent acceptance
+passes 18 methods, 111 CLI invocations, 234 API rejects and five I/O fault probes.
+Its canonical CMake target and CTest also pass. The [control-file exporter](CHAPEL_CONTROLS.md)
+now passes 205 exact-state vectors and actual C++ Load/Save acceptance for every
+registration. The [maximum-plan repair](STANDALONE_REPLAY_BOUNDARIES.md) drains
+all 256 allowed resize events within the declared runtime, preserving the
+existing event budget and grace period. The [fresh combined-source gate](reviews/STANDALONE_WAVE6_INTEGRATION.md)
+passed **94/94 suites** in 98.80 seconds, including the concurrent rotary code;
+the later chapel exporter/native additions passed a separate **2/2** focused
+CTest gate in 18.22 seconds. These are two scopes, not a claimed 96-suite run.
+Four [actual native screenshots](reviews/STANDALONE_WINDOW_DEMO.md) retain exact
+source and runtime provenance. Earlier [checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md)
+retains its original source scopes.
+
+Published native checkpoint `219821dfaca6bfee8ba0905993ed8deec7a66396` has an
+observed Linux hosted standalone pass, including installation and relocation.
+Its [downloaded package](reviews/STANDALONE_HOSTED_LINUX_ARTIFACT.md) independently
+passed inventory/source checks and actual relocated ELF execution. That binary
+requires GLIBC 2.38 and GLIBCXX 3.4.32; it does not establish arbitrary Linux compatibility.
+Windows/macOS test builds failed on `getenv`/integer warning portability and
+unavailable `jthread`/`stop_token`; the [repaired test inputs](reviews/STANDALONE_PORTABILITY_REPAIR.md)
+pass their four local suites, with hosted rerun pending. Native VST3 passed at
+that revision; ordinary CI passed Linux, Windows and the sanitizer job, while
+its macOS build failed. These are named-revision results, not later-code passes.
 
 Native physical devices, latency/underruns, hotplug, high-DPI pointer
 capture, screen readers and signed distribution remain unqualified. The two

@@ -1,0 +1,24 @@
+B3UIREPLAY1
+duration_ms 2600
+# Hold Upper C4 while changing the destination and octave of new presses.
+200 key_down A none 0
+450 key_down F2 none 0
+460 key_up F2 none
+500 key_down RightBracket none 0
+510 key_up RightBracket none
+650 key_down S none 0
+# S now owns Lower D5; the original A still owns Upper C4.
+900 key_down F3 none 0
+910 key_up F3 none
+950 key_down RightBracket none 0
+960 key_up RightBracket none
+1100 key_down D none 0
+# D owns pedal 17. Returning to Upper must not retarget any release.
+1350 key_down F1 none 0
+1360 key_up F1 none
+1500 key_up A shift+ctrl
+1700 key_up S alt
+1900 key_up D meta
+# A new press uses the retained manual octave, Upper C5.
+2100 key_down A none 0
+2300 key_up A none

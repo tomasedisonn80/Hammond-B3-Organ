@@ -19,3 +19,23 @@ workflow and benchmark work. A frozen source at local `738162f` passed 83/83
 Release suites; the later native group passed 9/9 after path-alias repairs and
 test/install additions. The [checkpoint report](../../reviews/STANDALONE_NATIVE_CHECKPOINT.md)
 keeps exact scopes separate. No hosted standalone result is claimed yet.
+
+## Accepted checkpoint after assignment 41
+
+The first 41 distinct assignments are accepted: six full waves and five results
+of wave 7. The current manifest also records actual running assignments 42–44;
+planned or resumed worker turns are not counted as new participants. Root
+normalized the canonical identity fields in notes 40/41 after the record checker
+identified their omission; substantive evidence and ownership were unchanged.
+
+The [combined-source report](../../reviews/STANDALONE_WAVE6_INTEGRATION.md)
+retains a fresh 94/94 native Release gate at local `3872752` with rotary/calibration
+advances preserved, followed by a separate 2/2 chapel exporter/native focus.
+Maximum-plan replay, source-identified benchmark, documentary chapel catalog
+and explicit ordinary-control auditions now have independent acceptance.
+Four actual native views retain source/diagnostic provenance. The actual older
+Linux hosted package was downloaded, checked and run after relocation.
+Windows/macOS repairs require a named hosted rerun; no blanket platform pass is
+claimed. Native sanitizers and exact output-removal identity are the next active
+tasks. Physical devices, accessibility, measured sound and production release
+remain open. Earlier checkpoint statements above are dated evidence.

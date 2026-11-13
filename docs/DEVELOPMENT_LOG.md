@@ -1747,3 +1747,66 @@ review retains exact commands, source tree, scope and receipt hash.
 - Before publication, remote `main` advanced from `96a37a9` to `6b4b6bd` with a
   separate rotary review and documentation track. It is being integrated while
   preserving its actual ledger, evidence and scope; no force-push is authorized.
+
+## 2026-11-13 — Scripted workflows, render benchmark and chapel source admission
+
+- Published and fetched native checkpoint `219821dfaca6bfee8ba0905993ed8deec7a66396`,
+  tree `f2db7aee1d45a897273e4e68a2fefc6a2de4d433`, after integrating rotary review
+  `6b4b6bd`. Exact local/remote tree equality was verified; local commit history
+  remains on `standalone-local-w3-checkpoint`. No force push was used.
+- Hosted standalone run 43517181978 passed Linux, including installation and
+  relocation. Windows/macOS failed test compilation. The four affected tests
+  now use SDL's environment accessor, matching event integer types and portable
+  stop/join ownership; all four local suites pass in 2.94 seconds. Original failed
+  run/source identities remain in the [repair report](reviews/STANDALONE_PORTABILITY_REPAIR.md).
+  Hosted Native VST3 passed at 219821d. Ordinary CI passed Linux/Windows/sanitizers;
+  macOS failed its build. These results qualify only the named published source.
+- Root integrated actual scripted SDL interaction, bounded changed-state
+  observations, pre-shutdown acknowledgment and protected script/state/output
+  paths. Assignment 28 passes 11 methods / 15 processes through ordinary handlers.
+  Its initial zero-discard shutdown assertion was corrected to the existing
+  documented scoped-release cleanup behavior; no production change was made
+  for that test-only assumption. Exact musical paths and saved bytes remain strict.
+- The SDK-free benchmark and source/toolchain identity pass independent 9 methods /
+  111 CLI runs. Assignment 33 verified 54 input hashes, automatic reconfiguration on
+  content/header changes and the Unspecified configuration fallback in private
+  fixtures. Root's assembled native group passed 11/11 suites in 22.78 seconds.
+  These results used main SHA-256 e2fc28db7852c23b46615d6c97d7967d133be810ccdd32e05f244dcda606aecb.
+- Independent chapel image readings 31/32 agree on 18 rows and 162 digits, including
+  all leading zeros and absent names. Strict compiler/JSON Schema/data and
+  independent admission acceptance now exist. Canonical CMake target generated
+  the 4,837-byte catalog SHA-256 f500fa0aaca0ba8652eeede330094deb888f6a516b5c51958fd2381778fb5a91.
+  Root's canonical Python suite passed 18 methods / 111 CLI / 234 API rejections/five I/O
+  probes in 6.86 seconds; worker 36 retains its separate direct/fresh-source results.
+- Six waves / 36 actual assignments are accepted. Script maximum-plan bounds and
+  explicit ordinary-control audition are in progress. The catalog does not
+  implement physical preset selection, loaded gains or percussion interlocks;
+  the atlas's underlying factory Table IV remains independently unverified.
+- Remote main later advanced through rotary foundation 38c1fac and calibration
+  scope 08fa8de. Their owned modules/evidence must be integrated and retained
+  before the next publication; they are not counted as this session's workers.
+
+## 2026-11-13 — Standalone combined-source gate and accepted work through 41
+
+- Integrated rotary foundation `38c1fac` and calibration scope `08fa8de` into
+  local `3872752`, tree `0d6da163edd6531338938e12e0d393841d569a80`, preserving
+  both tracks. A fresh immutable source/native Release build passed **94/94**
+  CTest suites in 98.80 seconds with zero failures. Exact commands, binary/data
+  identities and log hashes are in the [integration report](reviews/STANDALONE_WAVE6_INTEGRATION.md).
+- Accepted replay maximum-plan repair after reproducing an actual timeout;
+  the unchanged 256-event allowance now drains through the public SDL queue.
+  Its independent full-app/workflow/bounds subset passed 3/3 with 208 invocations.
+- Accepted strict ordinary-control chapel export and independent byte-exact,
+  failure-preservation and native Load/Save tests. Root rebuilt native inputs and
+  passed the separate two-suite CTest focus in 18.22 seconds. This does not claim
+  an unexecuted 96-suite full run. The native app hash stayed `7377e8c2…`.
+- Accepted four actual native screenshot states and the actual downloaded older
+  Linux package audit. All package bytes/modes and inventory passed; the archived
+  ELF ran after relocation. Dummy/software evidence and runtime dependency limits
+  remain explicit. Root also inspected each retained PNG.
+- The actual manifest now records 41 completed and three running assignments.
+  The first record check found missing canonical agent names in notes 40/41;
+  root supplied those metadata fields without changing the reports' evidence.
+  Running work covers coherent native sanitizers and identity-aware SDL output
+  removal with separate independent acceptance. Future-agent continuation and
+  guarded commit/push requirements remain in AGENTS.md.

@@ -116,6 +116,10 @@ add_custom_command(
     VERBATIM)
 add_custom_target(hammond_profile ALL DEPENDS "${HAMMOND_COMPILED_PROFILE}")
 
+# Admit the independently transcribed chapel matrix as documentary data only.
+# Nothing in Engine or saved-state identity consumes this catalog implicitly.
+include(cmake/CompileChapelCatalog.cmake)
+
 file(GLOB HAMMOND_RENDER_SOURCE CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tools/render.cpp")
 if(HAMMOND_RENDER_SOURCE)
     add_executable(hammond_render ${HAMMOND_RENDER_SOURCE})

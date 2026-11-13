@@ -532,7 +532,7 @@ void test_empty_and_admission(SDL_Window* window) {
 
 void check_key(const SDL_Event& event, const KeyCase& key, SDL_Keymod modifier,
                bool down, bool repeat, Uint32 window_id) {
-    CHECK(event.type == (down ? SDL_KEYDOWN : SDL_KEYUP));
+    CHECK(event.type == static_cast<Uint32>(down ? SDL_KEYDOWN : SDL_KEYUP));
     CHECK(event.key.windowID == window_id);
     CHECK(event.key.state == (down ? SDL_PRESSED : SDL_RELEASED));
     CHECK(event.key.keysym.scancode == key.scan);
@@ -616,7 +616,7 @@ void test_pointer_queue(SDL_Window* window) {
             CHECK(event.motion.xrel == (at == 0 ? 0 : at == 2 ? 20 : 10));
             CHECK(event.motion.yrel == (at == 0 ? 0 : at == 2 ? 30 : 20));
         } else if (at == 1 || at == 5) {
-            CHECK(event.type == (at == 1 ? SDL_MOUSEBUTTONDOWN : SDL_MOUSEBUTTONUP));
+            CHECK(event.type == static_cast<Uint32>(at == 1 ? SDL_MOUSEBUTTONDOWN : SDL_MOUSEBUTTONUP));
             CHECK(event.button.windowID == window_id);
             CHECK(event.button.button == SDL_BUTTON_LEFT);
             CHECK(event.button.state == (at == 1 ? SDL_PRESSED : SDL_RELEASED));
@@ -844,7 +844,7 @@ void test_lifetimes() {
 
 int main() {
     SDL_SetMainReady();
-    const auto* driver = std::getenv("SDL_VIDEODRIVER");
+    const auto* driver = SDL_getenv("SDL_VIDEODRIVER");
     CHECK(driver != nullptr && std::string_view{driver} == "dummy");
     test_parser_boundaries();
     test_parser_payloads();

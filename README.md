@@ -25,8 +25,12 @@ The [native standalone](docs/STANDALONE_APP.md) now provides a resizable instrum
 window, both manuals and pedals, A/B drawbar editing and selection, percussion,
 expression, keyboard/pointer playing, audio settings, and explicit control-file
 saving/loading. Its [operational handoff](docs/STANDALONE_HANDOFF.md) records
-setup and the current qualification boundary. Actual SDL dummy runs and software
-screenshots exist; real-device and production-release gates remain separate.
+setup and the current qualification boundary. The [actual window demonstration](examples/demos/standalone-window-v1/README.md)
+retains four native backbuffer screenshots and their source/diagnostic identities.
+[Scripted workflows](docs/STANDALONE_WORKFLOWS.md), a [source-identified render benchmark](docs/STANDALONE_BENCHMARK.md)
+and [chapel registration export](docs/CHAPEL_CONTROLS.md) have independent acceptance.
+These software checks use explicit SDL dummy drivers; real-device and
+production-release gates remain separate.
 The [new sixty-assignment session](docs/development/2026-11-13-next-phases/README.md)
 retains distinct records from earlier work. Ordinary builds remain SDK-free.
 

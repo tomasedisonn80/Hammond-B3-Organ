@@ -6,6 +6,7 @@
 #include "Drawing.h"
 #include "EmbeddedProfile.h"
 #include "InstrumentView.h"
+#include "ScriptedInput.h"
 #include "StateFiles.h"
 #include "UiModel.h"
 #include "../../tools/CliArguments.h"
@@ -40,12 +41,15 @@ constexpr std::array<int, 3> kSampleRates{44100, 48000, 96000};
 constexpr std::array<std::uint16_t, 5> kBufferSizes{128, 256, 512, 1024, 2048};
 constexpr std::uint64_t kSaveWaitMilliseconds = 2000;
 constexpr std::uint64_t kCallbackWatchdogMilliseconds = 2000;
+constexpr std::uint64_t kReplayDrainMilliseconds = 2000;
+constexpr std::size_t kReplayObservationCapacity = 512;
 
 struct Options {
     AudioDeviceConfig audio{};
     std::filesystem::path state{};
     std::filesystem::path screenshot{};
     std::filesystem::path diagnostics{};
+    std::filesystem::path input_script{};
     int width{1280};
     int height{900};
     std::uint32_t smoke_ms{0};
@@ -67,6 +71,7 @@ void print_help() {
         "  --width N              Initial logical width: 960..8192, default 1280.\n"
         "  --height N             Initial logical height: 700..8192, default 900.\n"
         "  --smoke-ms N           Actual window/device smoke, 250..10000 ms.\n"
+        "  --input-script PATH    Bounded B3UIREPLAY1 events; excludes --smoke-ms.\n"
         "  --screenshot PATH      Write one BMP before presenting the rendered frame.\n"
         "  --diagnostics PATH     Write JSON after closing and joining the device.\n\n"
         "Playing: A W S E D F T G Y H U J K O L P ;. F1/F2/F3 select\n"
@@ -104,7 +109,8 @@ void print_help() {
         seen.push_back(option);
         if (option == "--help") { options.help = true; continue; }
         if (option == "--list-audio") { options.list_audio = true; continue; }
-        const bool path_option = option == "--state" || option == "--screenshot" || option == "--diagnostics";
+        const bool path_option = option == "--state" || option == "--screenshot" ||
+            option == "--diagnostics" || option == "--input-script";
         const bool number_option = option == "--sample-rate" || option == "--buffer-frames" ||
             option == "--width" || option == "--height" || option == "--smoke-ms";
         if (!path_option && !number_option && option != "--device") {
@@ -121,7 +127,8 @@ void print_help() {
             auto path = cli::argument_path(value);
             if (option == "--state") options.state = std::move(path);
             else if (option == "--screenshot") options.screenshot = std::move(path);
-            else options.diagnostics = std::move(path);
+            else if (option == "--diagnostics") options.diagnostics = std::move(path);
+            else options.input_script = std::move(path);
             continue;
         }
         int number = 0;
@@ -150,6 +157,10 @@ void print_help() {
             error = "Unsupported value for " + std::string(option) + "; see --help";
             return false;
         }
+    }
+    if (!options.input_script.empty() && options.smoke_ms != 0) {
+        error = "--input-script and --smoke-ms are mutually exclusive";
+        return false;
     }
     return true;
 }
@@ -310,6 +321,17 @@ public:
     }
 
     [[nodiscard]] bool initialize() {
+        // Admit the complete script before selecting a state directory or
+        // opening any output. Parsing and all file access stay off audio.
+        std::optional<ScriptedInputPlan> replay_plan;
+        if (!options_.input_script.empty()) {
+            replay_plan.emplace();
+            std::string error;
+            if (!load_scripted_input(options_.input_script, *replay_plan, error)) {
+                fail("Cannot load input script: " + error); return false;
+            }
+            replay_observations_.reserve(kReplayObservationCapacity);
+        }
         window_.reset(SDL_CreateWindow("B-3 Workshop | Nominal dry organ", SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED, options_.width, options_.height,
             SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI));
@@ -331,6 +353,9 @@ public:
         if (!resize()) return false;
         choose_state_path();
         if (!output_paths_distinct()) return false;
+        if (replay_plan && !replay_.initialize(*replay_plan, window_.get(), error)) {
+            fail("Cannot initialize input script: " + error); return false;
+        }
         load_startup_state();
         const bool opened = open_audio(config_);
         (void)opened; // A visible No Audio window remains usable for device selection.
@@ -340,11 +365,25 @@ public:
 
     [[nodiscard]] int run() {
         const std::uint64_t started = SDL_GetTicks64();
+        replay_started_ = started;
         while (running_) {
+            if (!pump_replay(SDL_GetTicks64() - started)) break;
+            // Gather native input once per main-loop turn. Marker handlers can
+            // append another due replay prefix while this bounded drain runs.
+            SDL_PumpEvents();
             SDL_Event event{};
             if (SDL_WaitEventTimeout(&event, 12) != 0) {
                 handle_event(event);
-                for (std::size_t count = 1; count < 256 && SDL_PollEvent(&event) != 0; ++count) {
+                for (std::size_t count = 1; count < 256 && running_; ++count) {
+                    const int received = SDL_PeepEvents(&event, 1, SDL_GETEVENT,
+                        SDL_FIRSTEVENT, SDL_LASTEVENT);
+                    if (received < 0) {
+                        fail(std::string("Cannot drain instrument events: ") + SDL_GetError());
+                        fatal_failure_ = true;
+                        running_ = false;
+                        break;
+                    }
+                    if (received == 0) break;
                     handle_event(event);
                 }
             }
@@ -354,12 +393,29 @@ public:
             check_capture();
             const auto elapsed = SDL_GetTicks64() - started;
             if (options_.smoke_ms != 0) advance_smoke(elapsed);
+            if (!options_.input_script.empty()) {
+                record_replay_observation(elapsed);
+                if (running_ && replay_.completed(elapsed) && replay_acknowledged()) {
+                    replay_completed_ = true;
+                    running_ = false;
+                } else if (running_ && elapsed >= replay_.duration_ms() + kReplayDrainMilliseconds) {
+                    fail("Input replay could not finish delivery and acknowledgment within its bounded drain interval");
+                    fatal_failure_ = true;
+                    running_ = false;
+                }
+            }
             if (!render_frame(elapsed)) { fatal_failure_ = true; running_ = false; }
             if (options_.smoke_ms != 0 && elapsed >= options_.smoke_ms) {
                 smoke_completed_ = true;
                 running_ = false;
             }
         }
+        // Retain script results before ordinary close cleanup can release held
+        // keys or resolve additional commands. A held final script state is legal.
+        replay_before_shutdown_ = snapshot_;
+        replay_last_submitted_sequence_ = last_submitted_sequence_;
+        replay_final_acknowledged_ = replay_acknowledged();
+        replay_finalized_ = true;
         // Off always traverses the normal UiModel path, even after a smoke error.
         if (smoke_on_sent_ && !smoke_off_sent_) {
             const bool released = dispatch(ui_.key({UiKey::A, false}));
@@ -388,6 +444,17 @@ public:
             final_diagnostics_.nonfinite_failures == 0 && final_diagnostics_.overrange_failures == 0 &&
             snapshot_available_ && snapshot_.fault_flags == 0 && !any_held(snapshot_) && !fatal_failure_;
         if (options_.smoke_ms != 0 && !smoke_passed_) fail("Native smoke failed; inspect the copied diagnostics");
+        if (!options_.input_script.empty()) {
+            replay_passed_ = replay_completed_ && replay_final_acknowledged_ && !replay_.failed() &&
+                !replay_observations_truncated_ && !replay_observations_.empty() &&
+                audio_before_close_.open && audio_before_close_.running &&
+                final_diagnostics_.callback_count != 0 && final_diagnostics_.rendered_frames != 0 &&
+                final_diagnostics_.render_failures == 0 && final_diagnostics_.format_failures == 0 &&
+                final_diagnostics_.nonfinite_failures == 0 && final_diagnostics_.overrange_failures == 0 &&
+                snapshot_available_ && snapshot_.fault_flags == 0 && !any_held(snapshot_) &&
+                error_count_ == 0 && !fatal_failure_;
+            if (!replay_passed_) fail("Native input replay failed or was interrupted; inspect the copied diagnostics");
+        }
         if (!write_diagnostics()) fatal_failure_ = true;
         if (options_.smoke_ms != 0) {
             std::cout << "Native SDL smoke " << (smoke_passed_ && !fatal_failure_ ? "passed" : "failed")
@@ -395,7 +462,8 @@ public:
                       << ", frames=" << final_diagnostics_.rendered_frames << ", images=" << render_count_
                       << ", driver=" << audio_before_close_.driver << '\n';
         }
-        return fatal_failure_ || (options_.smoke_ms != 0 && !smoke_passed_) ? 1 : 0;
+        return fatal_failure_ || (options_.smoke_ms != 0 && !smoke_passed_) ||
+            (!options_.input_script.empty() && !replay_passed_) ? 1 : 0;
     }
 
     [[nodiscard]] bool write_diagnostics() const {
@@ -460,7 +528,9 @@ public:
                << ",\"duration_ms\":" << options_.smoke_ms << ",\"completed\":" << smoke_completed_
                << ",\"note_on_sent\":" << smoke_on_sent_ << ",\"note_off_sent\":" << smoke_off_sent_
                << ",\"held_observed\":" << smoke_held_observed_ << ",\"release_observed\":" << smoke_release_observed_
-               << ",\"passed\":" << smoke_passed_ << "},\n  \"state_path\":";
+               << ",\"passed\":" << smoke_passed_ << '}';
+        if (!options_.input_script.empty()) write_replay_json(output);
+        output << ",\n  \"state_path\":";
         json_string(output, cli::path_text(options_.state));
         output << ",\n  \"status\":"; json_string(output, status_);
         output << ",\n  \"errors\":{\"count\":" << error_count_ << ",\"last\":";
@@ -473,6 +543,122 @@ public:
     }
 
 private:
+    struct ReplayObservation {
+        SessionSnapshot snapshot;
+        std::uint64_t elapsed_ms;
+        std::uint64_t last_submitted_sequence;
+    };
+
+    [[nodiscard]] bool pump_replay(std::uint64_t elapsed) {
+        if (options_.input_script.empty()) return true;
+        std::string error;
+        if (replay_.pump(elapsed, error)) return true;
+        fail("Cannot deliver input script: " + error);
+        fatal_failure_ = true;
+        running_ = false;
+        return false;
+    }
+
+    [[nodiscard]] bool replay_acknowledged() const noexcept {
+        return snapshot_available_ && snapshot_.running &&
+            snapshot_.resolved_sequence >= last_submitted_sequence_ &&
+            snapshot_.last_applied_sequence >= last_submitted_sequence_ &&
+            !pending_save_ && !ui_.view().controls_pending;
+    }
+
+    void record_replay_observation(std::uint64_t elapsed) {
+        // Preparation publishes defaults before the queued restore. Record
+        // running musical observations only after that restore is acknowledged.
+        if (!snapshot_available_ || !snapshot_.running ||
+            snapshot_.resolved_sequence < intended_sequence_) return;
+        if (!replay_observations_.empty()) {
+            const auto& previous = replay_observations_.back();
+            if (previous.snapshot.controls == snapshot_.controls &&
+                previous.snapshot.held_keys == snapshot_.held_keys &&
+                previous.snapshot.held_pedals == snapshot_.held_pedals &&
+                previous.snapshot.resolved_sequence == snapshot_.resolved_sequence &&
+                previous.snapshot.last_applied_sequence == snapshot_.last_applied_sequence &&
+                previous.last_submitted_sequence == last_submitted_sequence_) return;
+        }
+        if (replay_observations_.size() == kReplayObservationCapacity) {
+            if (!replay_observations_truncated_) fail("Input replay observation capacity was exceeded");
+            replay_observations_truncated_ = true;
+            fatal_failure_ = true;
+            running_ = false;
+            return;
+        }
+        replay_observations_.push_back({snapshot_, elapsed, last_submitted_sequence_});
+    }
+
+    static void write_replay_snapshot(std::ostream& output, const SessionSnapshot& snapshot) {
+        output << "\"manual_notes\":[";
+        for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+            if (manual != 0) output << ',';
+            output << '[';
+            bool first = true;
+            for (std::size_t key = 0; key < kManualKeyCount; ++key) {
+                if (!snapshot.held_keys[manual][key]) continue;
+                if (!first) output << ',';
+                first = false;
+                output << key + kMinManualMidiNote;
+            }
+            output << ']';
+        }
+        output << "],\"pedal_ids\":[";
+        bool first = true;
+        for (std::size_t pedal = 0; pedal < kPedalCount; ++pedal) {
+            if (!snapshot.held_pedals[pedal]) continue;
+            if (!first) output << ',';
+            first = false;
+            output << pedal + 1;
+        }
+        output << "],\"controls\":";
+        write_controls_json(output, snapshot.controls);
+        output << ",\"resolved_sequence\":" << snapshot.resolved_sequence
+               << ",\"last_applied_sequence\":" << snapshot.last_applied_sequence;
+    }
+
+    void write_replay_json(std::ostream& output) const {
+        output << ",\n  \"replay\":{\"completed\":" << replay_completed_
+               << ",\"delivered\":" << replay_.delivered() << ",\"passed\":" << replay_passed_
+               << ",\"duration_ms\":" << replay_.duration_ms()
+               << ",\"scheduled_events\":" << replay_.scheduled_count()
+               << ",\"pushed_events\":" << replay_.pushed_count()
+               << ",\"final_acknowledged\":" << replay_final_acknowledged_
+               << ",\"last_submitted_sequence\":" << replay_last_submitted_sequence_
+               << ",\"accepted_note_on_commands\":" << replay_accepted_note_on_
+               << ",\"accepted_note_off_commands\":" << replay_accepted_note_off_
+               << ",\"device_starts\":" << device_starts_
+               << ",\"observations_truncated\":" << replay_observations_truncated_
+               << ",\"before_shutdown\":{";
+        write_replay_snapshot(output, replay_before_shutdown_);
+        output << "},\"observations\":[";
+        for (std::size_t index = 0; index < replay_observations_.size(); ++index) {
+            if (index != 0) output << ',';
+            const auto& observation = replay_observations_[index];
+            output << "{\"elapsed_ms\":" << observation.elapsed_ms
+                   << ",\"last_submitted_sequence\":" << observation.last_submitted_sequence << ',';
+            write_replay_snapshot(output, observation.snapshot);
+            output << '}';
+        }
+        output << "]}";
+    }
+
+    void record_accepted(const SessionCommand& command, const SubmitResult& result) noexcept {
+        last_submitted_sequence_ = result.sequence;
+        if (std::holds_alternative<ControlSnapshot>(command)) last_control_sequence_ = result.sequence;
+        if (options_.input_script.empty() || replay_finalized_) return;
+        const auto* input = std::get_if<PerformanceInputEvent>(&command);
+        if (input == nullptr) return;
+        if (const auto* manual = std::get_if<HostNoteEvent>(input)) {
+            if (manual->kind == HostNoteKind::On && manual->velocity != 0) ++replay_accepted_note_on_;
+            else if (manual->kind == HostNoteKind::Off || manual->kind == HostNoteKind::On) ++replay_accepted_note_off_;
+        } else if (const auto* pedal = std::get_if<PedalNoteEvent>(input)) {
+            if (pedal->kind == PedalNoteKind::On && pedal->velocity != 0) ++replay_accepted_note_on_;
+            else if (pedal->kind == PedalNoteKind::Off || pedal->kind == PedalNoteKind::On) ++replay_accepted_note_off_;
+        }
+    }
+
     [[nodiscard]] static bool any_held(const SessionSnapshot& snapshot) noexcept {
         for (const auto& manual : snapshot.held_keys) {
             if (std::any_of(manual.begin(), manual.end(), [](bool held) { return held; })) return true;
@@ -498,7 +684,8 @@ private:
     }
 
     [[nodiscard]] bool output_paths_distinct() {
-        const std::array<std::filesystem::path, 3> paths{options_.state, options_.screenshot, options_.diagnostics};
+        const std::array<std::filesystem::path, 4> paths{
+            options_.state, options_.screenshot, options_.diagnostics, options_.input_script};
         // A dangling leaf on any selected path can alias an absent state file.
         // StateFiles also requires a nonsymlink leaf; preserve that boundary.
         for (std::size_t index = 0; index < paths.size(); ++index) {
@@ -509,7 +696,7 @@ private:
                 fail("Cannot inspect selected path: " + error.message()); return false;
             }
             if (std::filesystem::is_symlink(status)) {
-                fail("State, screenshot, and diagnostics paths must not be symbolic links"); return false;
+                fail("State, screenshot, diagnostics, and input script paths must not be symbolic links"); return false;
             }
             if (index != 0 && std::filesystem::exists(status) && !std::filesystem::is_regular_file(status)) {
                 fail("Screenshot and diagnostics outputs must be regular files or new paths"); return false;
@@ -531,7 +718,7 @@ private:
                 const auto b = resolve(paths[second], error);
                 if (error) { fail("Cannot resolve output path: " + error.message()); return false; }
                 const bool same = a == b || std::filesystem::equivalent(a, b, error);
-                if (same) { fail("State, screenshot, and diagnostics must use different files"); return false; }
+                if (same) { fail("State, screenshot, diagnostics, and input script must use different files"); return false; }
             }
         }
         return true;
@@ -582,6 +769,7 @@ private:
             return false;
         }
         intended_sequence_ = last_control_sequence_;
+        ++device_starts_;
         last_callback_count_ = audio_.diagnostics().callback_count;
         last_callback_time_ = SDL_GetTicks64();
         if (error_count_ == 0) {
@@ -617,7 +805,7 @@ private:
                     SubmitResult{SessionStatus::NotRunning, 0};
                 const auto recovery = ui_.submitted(*command, result);
                 if (result.ok()) {
-                    if (std::holds_alternative<ControlSnapshot>(*command)) last_control_sequence_ = result.sequence;
+                    record_accepted(*command, result);
                     continue;
                 }
                 pending_save_.reset();
@@ -635,6 +823,7 @@ private:
                     const auto ignored = ui_.submitted(*release, recovered);
                     (void)ignored;
                     if (!recovered.ok()) break;
+                    record_accepted(*release, recovered);
                 }
                 return false;
             }
@@ -844,6 +1033,12 @@ private:
     }
 
     void handle_event(const SDL_Event& event) {
+        if (!options_.input_script.empty() && replay_.acknowledge(event)) {
+            // Consumed-prefix markers permit the next resize immediately,
+            // within the ordinary bounded 256-event poll budget.
+            if (running_) { const bool pumped = pump_replay(SDL_GetTicks64() - replay_started_); (void)pumped; }
+            return;
+        }
         if (event.type == SDL_QUIT) { lose_input(UiReleaseReason::WindowClosing); running_ = false; return; }
         if (event.type == SDL_KEYUP) { handle_key(event.key); return; }
         if (event.type == SDL_KEYDOWN && event.key.windowID == SDL_GetWindowID(window_.get())) {
@@ -974,13 +1169,15 @@ private:
         ++render_count_;
         const bool smoke_capture = smoke_held_observed_ && !smoke_off_sent_;
         const bool last_chance = options_.smoke_ms != 0 && elapsed >= options_.smoke_ms;
+        const bool replay_capture = !options_.input_script.empty() && replay_completed_;
         if (!options_.screenshot.empty() && !screenshot_attempted_ &&
-            (options_.smoke_ms == 0 || smoke_capture || last_chance)) {
+            (replay_capture || (options_.input_script.empty() &&
+                (options_.smoke_ms == 0 || smoke_capture || last_chance)))) {
             screenshot_attempted_ = true;
             std::string error;
             // The backbuffer is defined here; RenderPresent invalidates it.
             screenshot_written_ = drawing_->save_bmp(cli::path_text(options_.screenshot), error);
-            screenshot_while_held_ = screenshot_written_ && smoke_capture;
+            screenshot_while_held_ = screenshot_written_ && (smoke_capture || (replay_capture && any_held(snapshot_)));
             if (!screenshot_written_) { fail("Cannot save screenshot: " + error); fatal_failure_ = true; }
         }
         SDL_RenderPresent(renderer_.get());
@@ -1004,11 +1201,14 @@ private:
     std::unique_ptr<SDL_Window, WindowDeleter> window_;
     std::unique_ptr<SDL_Renderer, RendererDeleter> renderer_;
     std::unique_ptr<Drawing> drawing_; // Font textures precede renderer/window destruction.
+    ScriptedInput replay_; // The window outlives its replay helper.
+    std::vector<ReplayObservation> replay_observations_;
     AudioDeviceConfig config_;
     AudioDeviceConfig selected_config_;
     std::optional<ControlSnapshot> intended_controls_;
     ControlSnapshot retained_controls_{};
     SessionSnapshot snapshot_{};
+    SessionSnapshot replay_before_shutdown_{};
     std::optional<PendingSave> pending_save_;
     AudioDeviceInfo audio_before_close_{};
     AudioDeviceDiagnostics final_diagnostics_{};
@@ -1021,6 +1221,12 @@ private:
     std::size_t selected_device_{0};
     std::size_t modal_focus_{0};
     std::uint64_t last_control_sequence_{0};
+    std::uint64_t last_submitted_sequence_{0};
+    std::uint64_t replay_last_submitted_sequence_{0};
+    std::uint64_t replay_started_{0};
+    std::uint64_t replay_accepted_note_on_{0};
+    std::uint64_t replay_accepted_note_off_{0};
+    std::uint64_t device_starts_{0};
     std::uint64_t intended_sequence_{0};
     std::uint64_t last_callback_count_{0};
     std::uint64_t last_callback_time_{0};
@@ -1050,6 +1256,11 @@ private:
     bool smoke_release_observed_{false};
     bool smoke_completed_{false};
     bool smoke_passed_{false};
+    bool replay_completed_{false};
+    bool replay_passed_{false};
+    bool replay_final_acknowledged_{false};
+    bool replay_finalized_{false};
+    bool replay_observations_truncated_{false};
 };
 
 int run_application(int argc, char** argv) {

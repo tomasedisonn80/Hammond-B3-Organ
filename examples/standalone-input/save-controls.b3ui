@@ -1,0 +1,26 @@
+B3UIREPLAY1
+duration_ms 2200
+# Default 1280x900 layout: click Upper EDIT B, then Tab to its first drawbar.
+200 mouse_down 165 136
+220 mouse_up 165 136
+300 key_down Tab none 0
+310 key_up Tab none
+340 key_down Tab none 0
+350 key_up Tab none
+380 key_down Tab none 0
+390 key_up Tab none
+420 key_down Tab none 0
+430 key_up Tab none
+500 key_down Home none 0
+510 key_up Home none
+# Save an acknowledged zero first drawbar while A remains held.
+650 key_down A none 0
+900 key_down S ctrl 0
+910 key_up S ctrl
+# Change the same control, then reload the selected --state file.
+1200 key_down End none 0
+1210 key_up End none
+1500 key_down O ctrl 0
+1510 key_up O ctrl
+1800 key_down A none 1
+# Deliberately leave A held: normal application shutdown must release it.

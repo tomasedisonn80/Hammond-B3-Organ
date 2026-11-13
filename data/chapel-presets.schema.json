@@ -1,0 +1,943 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hammond:chapel-presets:atlas-chapel-nominal-v1",
+  "title": "Frozen atlas chapel registration catalog authoring schema 1",
+  "description": "Exact documentary data, not a loaded transformer or preset latch. The compiler additionally bounds files, rejects duplicate JSON keys and floating-point syntax, and verifies both independently frozen CSV readings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_id",
+    "evidence_class",
+    "applicable_variant",
+    "source",
+    "tap_units",
+    "drawbars",
+    "registrations",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "model_id": {
+      "type": "string",
+      "const": "atlas-chapel-nominal-v1"
+    },
+    "evidence_class": {
+      "type": "string",
+      "const": "documentary-reconstruction"
+    },
+    "applicable_variant": {
+      "type": "string",
+      "const": "atlas-approved-chapel-arrangement"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document",
+        "sha256",
+        "page",
+        "primary_reference"
+      ],
+      "properties": {
+        "document": {
+          "type": "string",
+          "const": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf"
+        },
+        "sha256": {
+          "type": "string",
+          "const": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+        },
+        "page": {
+          "type": "integer",
+          "const": 122
+        },
+        "primary_reference": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "citation",
+            "table",
+            "printed_page",
+            "status"
+          ],
+          "properties": {
+            "citation": {
+              "type": "string",
+              "const": "S019-01"
+            },
+            "table": {
+              "type": "string",
+              "const": "Table IV"
+            },
+            "printed_page": {
+              "type": "string",
+              "const": "4-1"
+            },
+            "status": {
+              "type": "string",
+              "const": "not-independently-verified"
+            }
+          }
+        }
+      }
+    },
+    "tap_units": {
+      "type": "string",
+      "const": "discrete-transformer-tap-index"
+    },
+    "drawbars": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 1
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "16"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "brown"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 2
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "5 1/3"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "red"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 3
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "8"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "orange"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 4
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "4"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "yellow"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 5
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "2 2/3"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "green"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 6
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "2"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "blue"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 7
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "1 3/5"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "violet"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 8
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "1 1/3"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "gray"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "position",
+            "footage_ft",
+            "lead_color"
+          ],
+          "properties": {
+            "position": {
+              "type": "integer",
+              "const": 9
+            },
+            "footage_ft": {
+              "type": "string",
+              "const": "1"
+            },
+            "lead_color": {
+              "type": "string",
+              "const": "white"
+            }
+          }
+        }
+      ],
+      "items": false
+    },
+    "registrations": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "C#"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "005320000"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "D"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "004432000"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "D#"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "008740000"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "E"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "004544222"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "F"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "005403000"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "F#"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "004675300"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "G"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "005644320"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "G#"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "006876540"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "upper"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "A"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "327645222"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "C#"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "004545440"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "D"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "004423220"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "D#"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "007373430"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "E"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "004544220"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "F"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "006644322"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "F#"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "005642200"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "G"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "006845433"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "G#"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "008030000"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "manual",
+            "preset_key",
+            "preset_name",
+            "drawbars",
+            "source_page"
+          ],
+          "properties": {
+            "manual": {
+              "type": "string",
+              "const": "lower"
+            },
+            "preset_key": {
+              "type": "string",
+              "const": "A"
+            },
+            "preset_name": {
+              "type": "null",
+              "const": null
+            },
+            "drawbars": {
+              "type": "string",
+              "const": "427866244"
+            },
+            "source_page": {
+              "type": "integer",
+              "const": 122
+            }
+          }
+        }
+      ],
+      "items": false
+    },
+    "limitations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registration_names",
+        "specimen_wiring",
+        "loaded_tap_gains",
+        "physical_latch",
+        "percussion_interlock"
+      ],
+      "properties": {
+        "registration_names": {
+          "type": "string",
+          "const": "not-published-in-atlas-table"
+        },
+        "specimen_wiring": {
+          "type": "string",
+          "const": "unverified"
+        },
+        "loaded_tap_gains": {
+          "type": "string",
+          "const": "unmeasured-not-modeled"
+        },
+        "physical_latch": {
+          "type": "string",
+          "const": "not-modeled"
+        },
+        "percussion_interlock": {
+          "type": "string",
+          "const": "not-modeled"
+        }
+      }
+    }
+  }
+}

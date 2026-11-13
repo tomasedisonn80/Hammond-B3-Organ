@@ -328,7 +328,7 @@
       "number": 28,
       "wave": 5,
       "agent": "/root/w05_a28_native_workflows",
-      "status": "running",
+      "status": "completed",
       "report": "docs/development/2026-11-13-next-phases/28-native-workflows.md",
       "owned_files": [
         "apps/standalone/native_tests/test_standalone_workflows.py",
@@ -344,7 +344,7 @@
       "number": 29,
       "wave": 5,
       "agent": "/root/w05_a29_session_benchmark",
-      "status": "running",
+      "status": "completed",
       "report": "docs/development/2026-11-13-next-phases/29-session-benchmark.md",
       "owned_files": [
         "apps/standalone/benchmark.cpp",
@@ -356,7 +356,7 @@
       "number": 30,
       "wave": 5,
       "agent": "/root/w05_a30_benchmark_acceptance",
-      "status": "running",
+      "status": "completed",
       "report": "docs/development/2026-11-13-next-phases/30-benchmark-acceptance.md",
       "owned_files": [
         "apps/standalone/tests/test_standalone_benchmark.py",
@@ -368,12 +368,186 @@
       "number": 31,
       "wave": 6,
       "agent": "/root/w06_a31_chapel_source_a",
-      "status": "running",
+      "status": "completed",
       "report": "docs/development/2026-11-13-next-phases/31-chapel-source-a.md",
       "owned_files": [
         "data/registrations/review-a-chapel.csv",
         "docs/research/CHAPEL_PRESETS_SOURCE_A.md",
         "docs/development/2026-11-13-next-phases/31-chapel-source-a.md"
+      ]
+    },
+    {
+      "number": 32,
+      "wave": 6,
+      "agent": "/root/w06_a32_chapel_source_b",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/32-chapel-source-b.md",
+      "owned_files": [
+        "data/registrations/review-b-chapel.csv",
+        "docs/research/CHAPEL_PRESETS_SOURCE_B.md",
+        "docs/development/2026-11-13-next-phases/32-chapel-source-b.md"
+      ]
+    },
+    {
+      "number": 33,
+      "wave": 6,
+      "agent": "/root/w06_a33_benchmark_build",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/33-benchmark-build.md",
+      "owned_files": [
+        "cmake/StandaloneBenchmark.cmake",
+        "docs/STANDALONE_BENCHMARK_BUILD.md",
+        "docs/development/2026-11-13-next-phases/33-benchmark-build.md"
+      ]
+    },
+    {
+      "number": 34,
+      "wave": 6,
+      "agent": "/root/w06_a34_chapel_compiler",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/34-chapel-compiler.md",
+      "owned_files": [
+        "tools/compile_chapel_presets.py",
+        "data/registrations/atlas-chapel-nominal-v1.json",
+        "data/chapel-presets.schema.json",
+        "docs/CHAPEL_PRESETS_CATALOG.md",
+        "docs/development/2026-11-13-next-phases/34-chapel-compiler.md"
+      ]
+    },
+    {
+      "number": 35,
+      "wave": 6,
+      "agent": "/root/w06_a35_native_portability",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/35-native-portability.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_audio_device.cpp",
+        "apps/standalone/native_tests/test_standalone_callback_allocation.cpp",
+        "apps/standalone/native_tests/test_standalone_input_replay.cpp",
+        "apps/standalone/tests/test_standalone_concurrency.cpp",
+        "docs/reviews/STANDALONE_PORTABILITY_REPAIR.md",
+        "docs/development/2026-11-13-next-phases/35-native-portability.md"
+      ]
+    },
+    {
+      "number": 36,
+      "wave": 6,
+      "agent": "/root/w06_a36_chapel_acceptance",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/36-chapel-acceptance.md",
+      "owned_files": [
+        "tests/test_chapel_presets.py",
+        "docs/CHAPEL_PRESETS_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/36-chapel-acceptance.md"
+      ]
+    },
+    {
+      "number": 37,
+      "wave": 7,
+      "agent": "/root/w07_a37_replay_boundaries",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/37-replay-boundaries.md",
+      "owned_files": [
+        "apps/standalone/main.cpp",
+        "apps/standalone/native_tests/test_standalone_replay_boundaries.py",
+        "docs/STANDALONE_REPLAY_BOUNDARIES.md",
+        "docs/development/2026-11-13-next-phases/37-replay-boundaries.md"
+      ]
+    },
+    {
+      "number": 38,
+      "wave": 7,
+      "agent": "/root/w07_a38_chapel_controls",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/38-chapel-controls.md",
+      "owned_files": [
+        "tools/chapel_controls.py",
+        "docs/CHAPEL_CONTROLS.md",
+        "docs/development/2026-11-13-next-phases/38-chapel-controls.md"
+      ]
+    },
+    {
+      "number": 39,
+      "wave": 7,
+      "agent": "/root/w07_a39_chapel_controls_acceptance",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/39-chapel-controls-acceptance.md",
+      "owned_files": [
+        "tests/test_chapel_controls.py",
+        "apps/standalone/native_tests/test_standalone_chapel.py",
+        "docs/CHAPEL_CONTROLS_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/39-chapel-controls-acceptance.md"
+      ]
+    },
+    {
+      "number": 40,
+      "wave": 7,
+      "agent": "/root/w07_a40_native_demo",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/40-native-demo.md",
+      "owned_files": [
+        "docs/reviews/STANDALONE_WINDOW_DEMO.md",
+        "docs/development/2026-11-13-next-phases/40-native-demo.md",
+        "examples/demos/standalone-window-v1/README.md",
+        "examples/demos/standalone-window-v1/audio.b3ui",
+        "examples/demos/standalone-window-v1/audio.json",
+        "examples/demos/standalone-window-v1/audio.png",
+        "examples/demos/standalone-window-v1/help.b3ui",
+        "examples/demos/standalone-window-v1/help.json",
+        "examples/demos/standalone-window-v1/help.png",
+        "examples/demos/standalone-window-v1/minimum.json",
+        "examples/demos/standalone-window-v1/minimum.png",
+        "examples/demos/standalone-window-v1/provenance.json",
+        "examples/demos/standalone-window-v1/reference.json",
+        "examples/demos/standalone-window-v1/reference.png"
+      ]
+    },
+    {
+      "number": 41,
+      "wave": 7,
+      "agent": "/root/w07_a41_hosted_linux_artifact",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/41-hosted-linux-artifact.md",
+      "owned_files": [
+        "docs/reviews/STANDALONE_HOSTED_LINUX_ARTIFACT.md",
+        "docs/development/2026-11-13-next-phases/41-hosted-linux-artifact.md"
+      ]
+    },
+    {
+      "number": 42,
+      "wave": 7,
+      "agent": "/root/w07_a42_native_sanitizers",
+      "status": "running",
+      "report": "docs/development/2026-11-13-next-phases/42-native-sanitizers.md",
+      "owned_files": [
+        "docs/reviews/STANDALONE_NATIVE_SANITIZERS.md",
+        "docs/development/2026-11-13-next-phases/42-native-sanitizers.md"
+      ]
+    },
+    {
+      "number": 43,
+      "wave": 8,
+      "agent": "/root/w08_a43_audio_removal",
+      "status": "running",
+      "report": "docs/development/2026-11-13-next-phases/43-audio-removal.md",
+      "owned_files": [
+        "apps/standalone/AudioDevice.h",
+        "apps/standalone/AudioDevice.cpp",
+        "apps/standalone/main.cpp",
+        "docs/STANDALONE_DEVICE_REMOVAL.md",
+        "docs/development/2026-11-13-next-phases/43-audio-removal.md"
+      ]
+    },
+    {
+      "number": 44,
+      "wave": 8,
+      "agent": "/root/w08_a44_audio_removal_acceptance",
+      "status": "running",
+      "report": "docs/development/2026-11-13-next-phases/44-audio-removal-acceptance.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_device_removal.cpp",
+        "docs/STANDALONE_DEVICE_REMOVAL_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/44-audio-removal-acceptance.md"
       ]
     }
   ]

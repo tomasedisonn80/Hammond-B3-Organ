@@ -32,6 +32,14 @@ belongs under `apps/standalone/`; it must not silently change Engine sound,
 parameter identities, state formats or plugin UUIDs. Preserve the other track's
 work and integrate observed remote advances before publication.
 
+The standalone session also owns the dependency-ready documentary chapel
+catalog under `data/registrations/`, its compiler/admission tests and explicit
+control-file audition tooling. Preserve the distinction between atlas tap
+assignments and current nominal drawbar gains. This source import must not be
+reported as physical preset latching, loaded-gain calibration or a new saved-state
+format. Its two independent readings do not independently verify the atlas's
+underlying factory Table IV; that stronger primary-document gate stays visible.
+
 The current session is [2026-11-13 scanner development](docs/development/2026-11-13-scanner/README.md), starting at `6dc0702`. Its [actual assignment manifest](docs/development/2026-11-13-scanner/assignments.json) belongs only to this newly requested sixty-agent, ten-wave session. The completed [pedal session](docs/development/2026-11-13-pedals/README.md), original and console ledgers remain historical and must not be rewritten or recounted. Consult the newest session together with current status and next steps before starting work.
 
 For every future development session, continue the next dependency-ready phase, retain the source basis and limits of the model, run meaningful checks, update status/next steps/development log and affected contracts, then commit and push the completed work to `main` under the owner's standing authorization. Inspect and integrate concurrent changes; never force-push. A user-requested agent count is the scope of that session, not permission to invent participation. Record the real assignment identity, owned files, result and verification. Publication and physical-fidelity claims each require their own observed evidence.

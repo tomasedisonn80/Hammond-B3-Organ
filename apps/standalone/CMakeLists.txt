@@ -25,6 +25,8 @@ if(BUILD_TESTING)
     endforeach()
 endif()
 
+include("${PROJECT_SOURCE_DIR}/cmake/StandaloneBenchmark.cmake")
+
 if(HAMMOND_BUILD_STANDALONE)
     include("${PROJECT_SOURCE_DIR}/cmake/VerifySdl2.cmake")
     hammond_verify_sdl2("${HAMMOND_SDL2_ROOT}")
@@ -70,7 +72,7 @@ if(HAMMOND_BUILD_STANDALONE)
     add_executable(hammond_standalone
         main.cpp Drawing.cpp InstrumentView.cpp
         "${HAMMOND_STANDALONE_PROFILE}")
-    target_link_libraries(hammond_standalone PRIVATE hammond_standalone_audio)
+    target_link_libraries(hammond_standalone PRIVATE hammond_standalone_audio hammond_standalone_replay)
     target_include_directories(hammond_standalone PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
     target_compile_definitions(hammond_standalone PRIVATE SDL_MAIN_HANDLED)
     hammond_configure_target(hammond_standalone)
@@ -117,6 +119,21 @@ if(HAMMOND_BUILD_STANDALONE)
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
                 "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_app.py")
         set_tests_properties(test_standalone_app PROPERTIES TIMEOUT 60 LABELS "standalone;native")
+        add_test(NAME test_standalone_workflows
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_workflows.py")
+        set_tests_properties(test_standalone_workflows PROPERTIES TIMEOUT 90 LABELS "standalone;native")
+        add_test(NAME test_standalone_replay_boundaries
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_replay_boundaries.py")
+        set_tests_properties(test_standalone_replay_boundaries PROPERTIES TIMEOUT 60 LABELS "standalone;native")
+        add_test(NAME test_standalone_chapel
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_chapel.py")
+        set_tests_properties(test_standalone_chapel PROPERTIES TIMEOUT 90 LABELS "standalone;native")
         add_executable(test_standalone_input_replay native_tests/test_standalone_input_replay.cpp)
         target_link_libraries(test_standalone_input_replay PRIVATE hammond_standalone_replay)
         target_compile_definitions(test_standalone_input_replay PRIVATE SDL_MAIN_HANDLED)

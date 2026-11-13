@@ -14,6 +14,7 @@
 #include <limits>
 #include <span>
 #include <thread>
+#include <utility>
 #include <vector>
 
 namespace {
@@ -38,6 +39,64 @@ struct Deadline {
         CHECK(std::chrono::steady_clock::now() < end);
     }
 };
+
+// The supported Apple standard library does not supply jthread/stop_token.
+// Keep the existing cooperative stop-and-join behavior with the same portable
+// atomic flag and std::thread ownership pattern as native VST3 acceptance.
+class StopToken {
+public:
+    explicit StopToken(const std::atomic<bool>& requested) noexcept : requested_(requested) {}
+    [[nodiscard]] bool stop_requested() const noexcept {
+        return requested_.load(std::memory_order_acquire);
+    }
+private:
+    const std::atomic<bool>& requested_;
+};
+
+class JoiningThread {
+public:
+    template<class Function>
+    explicit JoiningThread(Function&& function)
+        : worker_(std::forward<Function>(function), StopToken{requested_}) {}
+    JoiningThread(const JoiningThread&) = delete;
+    JoiningThread& operator=(const JoiningThread&) = delete;
+    JoiningThread(JoiningThread&&) = delete;
+    JoiningThread& operator=(JoiningThread&&) = delete;
+    ~JoiningThread() {
+        request_stop();
+        if (worker_.joinable()) worker_.join();
+    }
+    void request_stop() noexcept { requested_.store(true, std::memory_order_release); }
+private:
+    std::atomic<bool> requested_{false}; // Must outlive the thread and its token.
+    std::thread worker_;
+};
+
+void test_watchdog_unwind_cleanup(const Deadline& deadline) {
+    struct UnwindProbe {};
+    std::atomic<bool> started{false}, stopped{false}, finished{false};
+    bool caught = false;
+    try {
+        JoiningThread worker([&](StopToken stop) {
+            started.store(true, std::memory_order_release);
+            while (!stop.stop_requested()) {
+                deadline.check();
+                std::this_thread::yield();
+            }
+            stopped.store(stop.stop_requested(), std::memory_order_release);
+            finished.store(true, std::memory_order_release);
+        });
+        while (!started.load(std::memory_order_acquire)) {
+            deadline.check();
+            std::this_thread::yield();
+        }
+        throw UnwindProbe{};
+    } catch (const UnwindProbe&) {
+        caught = true;
+    }
+    CHECK(caught && stopped.load(std::memory_order_acquire) && finished.load(std::memory_order_acquire));
+    std::cout << "Session concurrency cleanup: exception-unwind stop observed, worker joined\n";
+}
 
 // Literal complete patterns, independent of Session's packed-word layout.
 // Every retained control changes between A and B, including all 36 drawbars.
@@ -753,8 +812,9 @@ void test_failed_read_preservation(const RuntimeProfile& profile, Counts& counts
 int main() {
     const auto profile = load_test_profile();
     const Deadline deadline;
+    test_watchdog_unwind_cleanup(deadline);
     // Off-callback watchdog also bounds a failed join, not only producer polls.
-    std::jthread watchdog([&deadline](std::stop_token stop) {
+    JoiningThread watchdog([&deadline](StopToken stop) {
         while (!stop.stop_requested()) {
             deadline.check();
             std::this_thread::sleep_for(std::chrono::milliseconds(20));

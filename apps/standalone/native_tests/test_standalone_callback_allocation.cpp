@@ -700,7 +700,7 @@ void test_render_faults(const RuntimeProfile& profile) {
 } // namespace
 
 int main() {
-    const auto* selected = std::getenv("SDL_AUDIODRIVER");
+    const auto* selected = SDL_getenv("SDL_AUDIODRIVER");
     CHECK(selected != nullptr && std::string_view{selected} == "dummy");
     const auto profile = load_test_profile();
     CHECK(calibrate().passed()); // Separate main-thread post/read calibration.

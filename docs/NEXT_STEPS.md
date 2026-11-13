@@ -32,12 +32,16 @@ are accepted; later work is recorded only when actually dispatched.
 The independent [standalone session](development/2026-11-13-next-phases/README.md)
 is also active. Read [STANDALONE_HANDOFF.md](STANDALONE_HANDOFF.md), its actual
 manifest and [scope](STANDALONE_SCOPE.md) before editing `apps/standalone/`.
-The native app, allocation/concurrency acceptance, installed component and replay
-helper now exist. Integrate the bounded replay helper with the real application
-event loop and qualify musical workflows through its ordinary handlers. Wire the
-SDK-free render benchmark with explicit source/toolchain identity, retain native
-screenshots, and inspect actual hosted platform outcomes. Do not overwrite the
-concurrent scanner or rotary work.
+The native app, allocation/concurrency acceptance, installed component, scripted
+musical workflows and SDK-free source-identified benchmark now exist. The
+maximum-plan replay repair, explicit chapel control-file audition and four
+source-identified native screenshots have passed their scoped acceptance.
+Publish the observed Windows/macOS portability repairs and inspect actual reruns.
+Finish the coherent native sanitizer gate; match SDL output-removal events to
+the actual open device and independently qualify its lifecycle. Then complete
+fresh setup, package, compatibility and final handoff audits across the remaining
+real assignments. Do not overwrite concurrent scanner,
+rotary or capture/calibration work.
 
 Read [STATUS.md](STATUS.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [PLAN.md](PLAN.md), [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) and [AGENTS.md](../AGENTS.md), then inspect the actual checkout and remote head. The [current manifest](development/2026-11-13-scanner/assignments.json) belongs to the new sixty-assignment scanner session. The earlier original, console and pedal sessions are completed history and are not counted again.
 
