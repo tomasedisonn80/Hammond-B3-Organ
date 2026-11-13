@@ -50,10 +50,11 @@ Subagents write their assigned evidence note and report to the integrating agent
 the integrator owns the shared status files and prevents conflicting edits. Record
 actual assignments and outcomes. Never fabricate agent participation or test results.
 
-Run the necessary checks, inspect the diff, and commit completed authorized work in
-reviewable chunks. When pushing is authorized (as in the initial implementation task),
-push to the agreed branch and verify the remote commit. Do not claim a push or CI pass
-without observing it. If access or a gate blocks completion, record the exact blocker,
+The owner's standing repository workflow is to run the necessary checks, inspect the
+diff, commit completed development work in reviewable chunks, and push it to `main`.
+Apply this workflow in future development sessions unless a later user instruction
+or repository protection requires a different branch/review path. Verify the remote
+commit; do not claim a push or CI pass without observing it. If access or a gate blocks completion, record the exact blocker,
 preserve the useful work, and give a precise handoff. Do not send messages or create
 unsolicited issues on the owner's behalf.
 
