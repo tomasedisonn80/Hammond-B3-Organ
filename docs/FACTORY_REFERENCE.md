@@ -156,7 +156,8 @@ checked with pdfinfo during this comparison and is bound to that source hash.
 
 The standard-library validator is read-only. It bounds CSV input at 8 KiB,
 JSON/review-note input at 256 KiB, and optional PDF input at 16 MiB. It rejects
-nonregular files, changing reads, duplicate JSON names, nonfinite numbers,
+nonregular files, changing reads, duplicate JSON names, escaped unpaired Unicode
+surrogates in JSON names or strings, nonfinite numbers,
 excess depth/nodes/string length, wrong shapes, reordered IDs/columns, invalid
 integer types, changed hashes, metadata and source locators. Failures include
 cell identities and PDF/printed-page locators for numeric disagreements. At most
@@ -175,6 +176,14 @@ external Release configuration ran that registered suite successfully.
 The unchanged pedal-map and profile-compiler suites also passed 15 and 37 methods,
 respectively. Review prose is retained for human audit; the validator checks its
 presence and nonempty content, not authorship or semantic truth.
+
+The subsequent [final evidence review](reviews/FINAL_EVIDENCE_REVIEW.md) reproduced
+an escaped-surrogate input that reached canonical hashing and raised an uncaught
+`UnicodeEncodeError`. String and key validation now rejects that input through
+`FactoryReferenceError` before hashing. Two added regression methods cover both
+surrogate halves, keys, values, a valid surrogate pair, the public comparison API
+and clean CLI failure. The expanded **22-method suite passed locally**; this later
+result does not rewrite the original 20-method comparison or frozen data identities.
 
 ## Original provenance and future integration
 

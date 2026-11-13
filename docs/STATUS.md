@@ -21,8 +21,15 @@ bank edits, routing-only Cancel/reselect and validated control snapshots. Contro
 serialization preserves all 39 controls plus route-enable bits; it excludes keys,
 source phases and time. The internal parameter registry has 39 proposed identities,
 without claiming actual VST3 exports. Pedal mapping data contains 195 connections
-and five explicit disconnections; it is not connected to runtime pedal audio. No scanner, AO-28,
-Leslie DSP, physical contact model, percussion, pedal audio, VST3, audio-device
+and five explicit disconnections; it is not connected to runtime pedal audio.
+
+The preserved continuation commit `7a24a30` adds separately tested nominal
+`ContactBank` and shared `PercussionState` components, a `ConsoleModel` contract
+and the `hammond_model_info` diagnostic. Their identities, proposed parameters and
+limits are in [console dynamics](CONSOLE_DYNAMICS.md) and
+[model metadata](MODEL_METADATA.md). They are not yet connected to `Engine` or
+the renderer at that commit; rendered audio still uses ideal manual key gates.
+No scanner, AO-28, Leslie DSP, pedal audio, VST3, audio-device
 standalone application or native UI is implemented at this checkpoint. No measured
 instrument-fidelity claim is made. Full M0 specimen lock, factory gearing and
 source calibration remain open despite the useful nominal implementation.
@@ -36,7 +43,8 @@ original nominal profile identity and its original authoring provenance unchange
 The proposed [capture contract](CAPTURE_FORMAT.md) and validator distinguish
 planned work, declared recorded metadata and optional artifact-byte verification.
 The committed example is a plan with no invented specimen, recording, timestamp
-or calibration. Its 41-method software suite passes locally. Actual acquisitions,
+or calibration. Its 41-method software suite passes locally and in the hosted
+matrix at `6c3dd8b`. Actual acquisitions,
 physical admission and corpus-wide holdout independence remain open.
 The [acquisition protocol](CAPTURE_PROTOCOL.md) provides prioritized dry-organ
 tasks, explicit evidence gates and whole-take holdout grouping for that work.
@@ -50,25 +58,26 @@ retains input/compiled/WAV hashes, raw logs, actual float metrics and separate P
 statistics. An independent PCM analyzer provides bounded window measurements and
 qualified crossing-rate estimates. None authenticates a physical instrument.
 
-[Hosted CI run 43363048563](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43363048563)
-passed all 16 CTest suites at `9c8068c` on Linux GCC, macOS AppleClang and Windows
-MSVC Release, plus Linux ASan/UBSan with leak detection enabled. This follows the
-retained first-run macOS parser and Windows evidence failures and their tested
-repairs. Qualification applies to this offline software and those runners; native
-audio-device and plugin-host gates remain open.
+[Hosted CI run 43365901429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429)
+passed all 21 CTest suites at `6c3dd8b` on Linux GCC, macOS AppleClang and Windows
+MSVC Release, plus Linux ASan/UBSan with leak detection enabled. Each complete
+diagnostic archive contains 257 Python methods and zero test skips. Qualification
+applies to this offline software and those runners; native audio-device and
+plugin-host gates remain open.
 
-The later `7c2ad20` checkpoint passed all 18 suites in a clean staged Release
-snapshot. Its hosted Linux and macOS Release jobs passed, while Windows exposed a
-repository-diagnostic path mismatch and the Linux sanitizer job exposed a
-render-evidence mutation-test failure. The diagnostic formatting and mutation
-procedure have local repairs with retained evidence; a new hosted run must verify
-their integration. The [CI audit](CI_QUALIFICATION.md) preserves all four complete
-logs' counts and zero skipped tests for the failed checkpoint.
+The [CI audit](CI_QUALIFICATION.md) preserves the earlier failures and subsequent
+repairs, including the repository diagnostic path mismatch and executable-mutation
+test at `7c2ad20`. The original mutation exception remains unestablished; its
+replacement still requires a successful renderer and the exact integrity failure.
 
-The new [OfflineTools local install](OFFLINE_INSTALL.md) passed actual installation,
-relocation and same-build PCM identity checks on Linux. It consumes explicit
-installed profile/event paths and rejects a missing profile. macOS/Windows install
-qualification awaits the new hosted integration.
+The [OfflineTools local install](OFFLINE_INSTALL.md) passed actual installation,
+relocation and same-build PCM identity checks in that hosted matrix. It consumes
+explicit installed profile/event paths and rejects a missing profile.
+
+The new [factory runtime acceptance](FACTORY_RUNTIME_ACCEPTANCE.md) passed its
+local Release gate for all 1,098 key/drawbar routes across both manuals, using
+CSV-selected expected sources. Its publication and hosted qualification belong
+to the next integration; it does not establish physical fidelity.
 
 The callback audit observed zero C++ allocation/deallocation
 calls in 96 recorded processing calls, including maximum and rejected requests.
@@ -85,6 +94,13 @@ pass threshold. The [repository checker](REPOSITORY_CHECKS.md) verifies retained
 source/index/link/data identities and supports an explicit final agent count.
 
 ## Evidence boundary
+
+The separate [console continuation](development/2026-11-13-continuation/README.md)
+is actively integrating M3. Its review, standing instructions and independently
+tested model modules were preserved in this session's history. Inspect its newest
+code and ledger before starting overlapping integration work. The original
+[assignment ledger](development/AGENT_LEDGER.md), [acceptance matrix](ACCEPTANCE_MATRIX.md)
+and [operational handoff](SESSION_HANDOFF.md) retain session-specific evidence.
 
 - All 500 source pages were read across six complete page-range assignments;
   their notes retain coverage and visual checks.

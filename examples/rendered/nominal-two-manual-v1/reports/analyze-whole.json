@@ -1,0 +1,75 @@
+{
+  "amplitude": {
+    "calibration": "none; not volts or pascals",
+    "divisor": 32768,
+    "maximum": 0.999969482421875,
+    "minimum": -1.0,
+    "unit": "normalized_pcm"
+  },
+  "analyzer_version": "pcm16-engineering-v1",
+  "channels": [
+    {
+      "channel_index": 0,
+      "dc": -4.130045572916667e-06,
+      "frequency_estimate": null,
+      "full_scale_sample_count": 0,
+      "negative_full_scale_sample_count": 0,
+      "nonzero_sample_count": 165496,
+      "peak": 0.081298828125,
+      "positive_full_scale_sample_count": 0,
+      "rms": 0.020062170290109253,
+      "sample_count": 192000
+    },
+    {
+      "channel_index": 1,
+      "dc": -4.130045572916667e-06,
+      "frequency_estimate": null,
+      "full_scale_sample_count": 0,
+      "negative_full_scale_sample_count": 0,
+      "nonzero_sample_count": 165496,
+      "peak": 0.081298828125,
+      "positive_full_scale_sample_count": 0,
+      "rms": 0.020062170290109253,
+      "sample_count": 192000
+    }
+  ],
+  "clipping": {
+    "confirmed_pre_quantization_clipping": null,
+    "full_scale_channel_samples": 0,
+    "full_scale_definition": "PCM code -32768 or 32767",
+    "pre_quantization_status": "not_inferable_from_pcm16"
+  },
+  "evidence_scope": "PCM file statistics; no physical calibration or fidelity claim",
+  "format": {
+    "channels": 2,
+    "container": "RIFF/WAVE",
+    "sample_format": "pcm_s16le",
+    "sample_rate_hz": 48000,
+    "total_frames": 192000
+  },
+  "frequency": {
+    "expected_frequency_hz": null,
+    "fixture_assumption": null,
+    "limits": [
+      "Crossing rate is not general pitch recognition or proof of a fundamental.",
+      "Harmonics, mixtures, DC, noise, transients and aliasing can mislead this method.",
+      "At least three rising crossings wholly inside the window are required.",
+      "Zero plateaus use their first zero and are flagged as ambiguous.",
+      "Ambiguity thresholds are engineering diagnostics, not calibrated uncertainty.",
+      "Frequency uses the WAV header clock; no physical clock calibration is implied."
+    ],
+    "method": "linearly interpolated rising zero crossings; mean complete period"
+  },
+  "input_path": "/workspace/scratch/c871510c69b2/Hammond-B3-Organ/examples/rendered/nominal-two-manual-v1/bundle/render.wav",
+  "stereo": {
+    "applicable": true,
+    "differing_frames": 0,
+    "identical": true
+  },
+  "window": {
+    "duration_seconds": 4.0,
+    "end_frame": 192000,
+    "frames": 192000,
+    "start_frame": 0
+  }
+}

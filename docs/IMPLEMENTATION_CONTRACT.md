@@ -5,6 +5,15 @@ This is new implementation design derived from atlas pp. 5, 61-66, 97-108,
 by the PDF were not present in the initial repository. These files are original
 reconstructions with their own versions, not recovered companion assets.
 
+This document records the initial design and evidence boundaries. Read
+[STATUS.md](STATUS.md) for current implementation and verification, and
+[PLAN.md](PLAN.md) for the full M0-M9 sequence. Later retained-bank controls and
+control-only persistence have their own [console](CONSOLE_EXTENSION.md) and
+[state-format](CONTROL_STATE_FORMAT.md) contracts. The
+[engine interface](ENGINE_API.md) owns the detailed current API; the
+[host integration proposal](HOST_INTEGRATION.md) describes future adapter work
+without asserting an implemented or qualified plugin/device application.
+
 ## Selected scope
 
 Build a dependency-free C++20, framework-independent dry organ engine and offline
@@ -49,16 +58,17 @@ printed rows on p. 102 independently and all 549 generated ranges. The later
 [factory comparison](FACTORY_REFERENCE.md) also matches every assignment to two
 independently frozen Table III transcriptions. Original profile provenance remains
 unchanged; gearing and physical calibration are separate gates. Tone IDs 1-91,
-array indices 0-90, manual keys 1-61 and MIDI 36-96 are
-separate domains. Store the explicit generated map rather than multiplying oscillator
-frequency by nominal harmonics. Pedal maps have their own disconnected sentinel.
+array indices 0-90, manual keys 1-61 and MIDI 36-96 are separate domains. Store
+the explicit generated map rather than multiplying oscillator frequency by
+nominal harmonics. Pedal maps have their own disconnected sentinel.
 
 ## Timing and failure rules
 
-The render clock is unsigned 64-bit and independent of transport/wall time.
-Positive calls own [start, start+frames); local event offsets satisfy offset<frames.
+The render clock is unsigned 64-bit and independent of transport or wall time.
+Positive calls own `[start, start + frames)`; local event offsets satisfy
+`offset < frames`.
 A zero-frame call accepts offset-zero controls once and advances no oscillator,
-clock or dynamic state. Caller must not resubmit already consumed events. Preserve
+clock or dynamic state. The caller must not resubmit consumed events. Preserve
 supplied same-offset order. Reject unsorted/out-of-range/over-capacity events,
 invalid values and clock overflow before mutating musical state. Null output on
 a positive call still advances state. Prepare supports 44100, 48000 and 96000 Hz

@@ -88,6 +88,12 @@ rules (p. 140), schemas, circuit graphs, mission text and reference implementati
 Factory Table V values are G-G service observations, not oscillator amplitudes
 (pp. 92-93, 350).
 
+Later project evidence now includes two independently frozen direct-image
+transcriptions of factory Table III. The [retained comparison](../FACTORY_REFERENCE.md)
+matches all 549 manual assignments and 200 pedal positions to the existing data.
+This new documentary evidence does not recover the absent atlas companion files
+or establish gearing, source calibration or specimen continuity.
+
 Evidence classes (`documented`, `measured`, `derived`, `proposed`, `unknown`) describe
 inputs. Execution outcomes (`pass`, `failed`, `blocked`, `not_run`, `inconclusive`)
 describe tests. Neither substitutes for the other. Retain code/profile/data
@@ -102,7 +108,7 @@ source claims, not tests run in this repository.
 | --- | --- | --- |
 | Original chapter JSON, source catalog, mission/header, reference scripts and acceptance reports | Claims of recovery, exact companion reproduction or inherited test passes | Versioned reconstructions and independently executed tests (pp. 451-456, 481-492) |
 | Specimen serial, AO-28 revision, condition and actual cabinet identity | Specimen-specific fidelity and applicability of nominal values | Profile schema, documentary variant separation and acquisition planning (pp. 13-18, 223-228) |
-| Independently transcribed factory map and complete geared-frequency evidence | Full factory-table conformity and historical tuning claims | Atlas-derived routing and named 12-TET source tests (pp. 61-66, 97-108) |
+| Complete geared-frequency evidence and specimen continuity | Historical tuning and specimen-specific routing claims | Factory routing now has a [separate independent documentary comparison](../FACTORY_REFERENCE.md); named 12-TET source tests remain nominal (pp. 61-66, 97-108) |
 | Pickup, contact, bus/loading, percussion and expression captures | Measured console response, click, source level/phase and control dynamics | Named ideal/nominal behavior, state and ownership tests (pp. 67-96, 109-156) |
 | Reviewed scanner graph, source-equation resolution and reference captures | Qualified scanner circuit and hardware match | Reconstruct graph, derive equations, compare independent numerical solvers (pp. 157-192, 465) |
 | Complete AO-28 connectivity, active values, transformer/load and operating-point evidence | Circuit-complete M5 numerical export and calibrated dry-organ response | Inventory/source reconciliation and branch contracts (pp. 235-240, 458, 488) |

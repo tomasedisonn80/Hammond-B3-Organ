@@ -243,8 +243,10 @@ def _json(payload: bytes) -> object:
             nodes += 1
             if nodes > MAX_NODES or depth > MAX_DEPTH:
                 raise FactoryReferenceError("JSON: structure exceeds depth/node bounds")
-            if type(item) is str and len(item) > 4096:
-                raise FactoryReferenceError("JSON: string exceeds 4096 characters")
+            if type(item) is str:
+                if len(item) > 4096:
+                    raise FactoryReferenceError("JSON: string exceeds 4096 characters")
+                item.encode("utf-8")  # Reject escaped unpaired surrogates in values and names.
             if type(item) is float and not math.isfinite(item):
                 raise FactoryReferenceError("JSON: nonfinite number")
             if type(item) is dict:

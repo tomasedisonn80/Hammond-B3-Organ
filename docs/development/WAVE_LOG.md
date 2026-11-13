@@ -18,9 +18,9 @@ that all ten product milestones are complete.
 | 05 | 25-30 | Reproducible offline fixtures, signal evidence, callback boundaries and CI | Complete; notes 25-30 |
 | 06 | 31-36 | Targeted robustness, portability, numerical and tooling work | Complete; notes 31-36 |
 | 07 | 37-42 | Independent factory references and acquisition/data infrastructure | Complete; notes 37-42 |
-| 08 | 43-48 | Cross-platform CI, reproducibility and integration qualification | In progress |
-| 09 | 49-54 | Final acceptance evidence, examples and next-stage handoff | Planned |
-| 10 | 55-60 | Independent final review, fixes and publication verification | Planned |
+| 08 | 43-48 | Cross-platform CI, reproducibility and integration qualification | Complete; notes 43-48 |
+| 09 | 49-54 | Final acceptance evidence, examples and next-stage handoff | Complete; notes 49-54 |
+| 10 | 55-60 | Independent final review, fixes and publication verification | In progress; 55-56 complete, 57-59 dispatched |
 
 ## Assignment evidence
 
@@ -57,4 +57,19 @@ agents, and repeated work by one agent must not be counted as another agent.
   36-agent archive check. Hosted Linux/macOS Release passed. Windows diagnostics
   and a sanitizer mutation test exposed failures requiring correction.
 
+- `5dcd942`: incoming independent continuation review and standing-instruction
+  additions were inspected and preserved as an ancestor. Its six workers belong
+  to that separate session and are not counted among this session's 60.
+
+- `6c3dd8b`: factory references, capture workflow and portable local installation;
+  21 suites passed on the clean staged code/test/data, and the combined archive
+  passed the explicit 44-agent check after the incoming documentation was added.
+  All four hosted jobs passed 21 suites and 257 Python methods with zero skips.
+
 Further entries will record actual integrated commits and validation results.
+
+- `7a24a30`: incoming continuation contact/percussion modules, model metadata
+  and independent tests were inspected and preserved as a direct descendant of
+  `6c3dd8b`. All 19 changed paths were disjoint from the original session's local
+  work. These modules are not connected to the rendered audio at this checkpoint.
+  The next combined source snapshot requires a new full build and hosted matrix.

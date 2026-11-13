@@ -319,6 +319,35 @@ class FactoryReferenceTests(unittest.TestCase):
         (self.root / self.manifest["readings"][1]["note"]).write_bytes(b"")
         self.assertIn("empty review note", self.failure())
 
+    def test_json_rejects_unpaired_surrogate_strings_and_keys(self):
+        path = self.root / "unicode.json"
+        for payload in (b'{"value":"\\ud800"}', b'{"value":"\\udfff"}',
+                        b'{"\\ud800":"value"}', b'{"\\udfff":"value"}'):
+            with self.subTest(payload=payload):
+                path.write_bytes(payload)
+                with self.assertRaisesRegex(factory.FactoryReferenceError, "invalid UTF-8 JSON"):
+                    factory.load_json(path)
+        path.write_bytes(b'{"\\ud83d\\ude00":"\\ud83d\\ude00"}')
+        self.assertEqual(factory.load_json(path), {"\U0001f600": "\U0001f600"})
+
+    def test_surrogate_target_fails_through_public_api_and_cli(self):
+        path = self.root / factory.PROFILE_PATH
+        profile = json.loads(path.read_bytes())
+        profile["frequency_model"]["reason"] = "\ud800"
+        path.write_bytes(json.dumps(profile, ensure_ascii=True, allow_nan=False).encode("ascii"))
+        retained = path.read_bytes()
+        with self.assertRaisesRegex(factory.FactoryReferenceError, "invalid UTF-8 JSON"):
+            factory.validate_reference(self.root)
+        result = subprocess.run([sys.executable, str(ROOT / "tools/validate_factory_reference.py"),
+                                 "--root", str(self.root)],
+                                capture_output=True, text=True, timeout=15)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(result.stdout, "")
+        self.assertIn("factory reference error:", result.stderr)
+        self.assertIn("invalid UTF-8 JSON", result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+        self.assertEqual(path.read_bytes(), retained)
+
     def test_optional_source_is_hashed_without_trusting_its_filename(self):
         source = self.root / "Hammond-factory-service.pdf"
         source.write_bytes(b"%PDF-1.5\nnot the retained source\n")

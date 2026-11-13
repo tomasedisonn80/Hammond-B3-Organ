@@ -92,8 +92,14 @@ Serialization emits the exact line layout above, one ASCII space between tokens,
 no trailing spaces, and an LF after every line including `end`. Expression uses
 the classic locale's decimal point, C++ general floating formatting and
 `std::numeric_limits<double>::max_digits10` significant digits, so every accepted
-snapshot expression round-trips without precision loss. For example, `0.1` is
-written as `0.10000000000000001` on the supported binary64 implementation.
+snapshot expression round-trips without precision loss. Expression formatting
+temporarily selects round-to-nearest, matching decimal parsing, and restores the
+caller's floating-point rounding mode when the formatting scope exits, including
+exception unwinding. A failure to select nearest rounding rejects serialization
+with a diagnostic before changing the destination. Serialized bytes therefore
+do not depend on the caller selecting downward, upward or toward-zero rounding.
+For example, `0.1` is written as `0.10000000000000001` on the supported binary64
+implementation.
 Discrete values always use the exact short tokens above.
 
 A full example is:
@@ -124,7 +130,9 @@ future version markers reject without changing the destination.
 
 `test_control_io` checks every retained control, all selector/route combinations,
 all nine positions in each stored bank, exact canonical fixtures, decimal round
-trips through subnormal values, malformed versions/records/enums/numbers/counts,
+trips through subnormal values, fixed binary64 vectors under all four standard
+rounding modes, mode restoration on successful and rejected calls,
+malformed versions/records/enums/numbers/counts,
 truncation, duplicates, trailing data, byte limits, locale independence and stream
 failures. Atomicity compares semantic fields and existing string bytes, never
 `memcmp` over structure padding. These are software-contract tests.

@@ -127,8 +127,18 @@ bool serialize_controls(const ControlSnapshot& snapshot, std::string& destinatio
     }
     std::ostringstream output;
     output.imbue(std::locale::classic());
-    output << std::setprecision(std::numeric_limits<double>::max_digits10)
-           << "B3CONTROLS1\nexpression " << snapshot.expression << '\n';
+    {
+        // num_put can follow the caller's rounding mode just as num_get can.
+        // Match the parser's nearest rounding so max_digits10 preserves every
+        // binary64 expression. Restore the caller's mode before any later exit.
+        const detail::DecimalRounding rounding;
+        if (!rounding.ready()) {
+            error = "Cannot select nearest rounding for the control expression.";
+            return false;
+        }
+        output << std::setprecision(std::numeric_limits<double>::max_digits10)
+               << "B3CONTROLS1\nexpression " << snapshot.expression << '\n';
+    }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         output << "manual " << kManualNames[manual] << " selected "
                << kBankNames[static_cast<std::size_t>(snapshot.selected_banks[manual])]

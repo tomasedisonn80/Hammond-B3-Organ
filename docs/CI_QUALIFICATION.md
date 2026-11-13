@@ -1,9 +1,9 @@
 # Hosted CI qualification evidence
 
 Audit date: 2026-11-13. This report preserves the observed result for each tested
-revision. The test repair described below has local evidence; its hosted rerun
-is pending. It does not promote a later integration to a previously passing
-revision's qualification. See [CI.md](CI.md) for the workflow and scope.
+revision. The repair integration at `6c3dd8b` passed all four hosted jobs; the
+earlier failed run and its local investigation remain below. A later change needs
+its own qualification. See [CI.md](CI.md) for the workflow and scope.
 
 ## Revision-specific results
 
@@ -12,6 +12,31 @@ revision's qualification. See [CI.md](CI.md) for the workflow and scope.
 | [43361632464](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43361632464) | `b9c1cac4841db4cf7320d9571ea576bb5285aa01` | Historical first run: Linux Release and sanitizer passed 12 suites; macOS build and Windows evidence tests failed. |
 | [43363048563](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43363048563) | `9c8068c95f6843dce95f7f22d729738eef8074f6` | Historical qualified baseline: all four jobs passed all 16 registered suites, including hosted leak detection. |
 | [43364414017](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43364414017) | `7c2ad2089f795b2147f5fc72cf10a4542d953a8c` | Audited here: Linux/macOS Release passed 18/18; Windows Release and Linux sanitizer each passed 17/18. The complete matrix failed. |
+| [43365901429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429) | `6c3dd8bc923a3c11f6b234425b056e135fbe9f4b` | Repair integration: all four jobs passed 21/21 suites; 257 Python methods per job and zero test skips. |
+
+## Passing integration audit at 6c3dd8b
+
+The coordinator downloaded all four complete archives for run 43365901429,
+verified their ZIP digests against GitHub metadata, and checked each retained
+source revision. Every JUnit document contains 21 cases, no failure and no skip;
+the complete unittest output totals 257 methods per job with no skipped methods.
+This adds capture, factory-reference and real install/relocation suites to the
+earlier 18-suite set. The factory runtime test developed after this commit is
+not included in these 21 suites.
+
+The sanitizer job explicitly records `detect_leaks=1:halt_on_error=1`, fatal UBSan
+reporting, and `LSAN_OPTIONS=exitcode=23`. All 21 suites passed. The Windows checker
+diagnostic repair and executable-mutation test now have actual hosted results;
+the original mutation exception remains unestablished.
+
+| Archive | GitHub artifact | Verified ZIP SHA-256 |
+| --- | --- | --- |
+| Linux Release | [14009683735](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429/artifacts/14009683735) | `47ac2862ea70abf248a0540e44d145d6429283027aa4d0bb51a8d82b313fbc42` |
+| macOS Release | [14009629816](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429/artifacts/14009629816) | `da7c55fbc2457c517e73827eafa07ce1bdca643e4d54461c2d2404959f28843d` |
+| Windows Release | [14009664803](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429/artifacts/14009664803) | `859d337ac2e856eb9eafcac1d4bd6516833b41a64a97b0e5ca003f21f41c5101` |
+| Linux sanitizer | [14010615934](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429/artifacts/14010615934) | `83d194069721f538e0f53bdce310bd186bf205660dba33e7be4af2400f9f86e8` |
+
+## Earlier failed-run investigation
 
 The two historical rows retain the results recorded in the
 [development log](DEVELOPMENT_LOG.md); this audit independently inspected the
@@ -86,11 +111,12 @@ the sanitizer job nevertheless failed and is not qualified at this revision.
 
 ## Retained failures and the scoped repair
 
-Windows failed three origin-path assertions in `python_test_repository_integrity`:
+At the time of Agent 43's investigation, Windows failed three origin-path assertions in `python_test_repository_integrity`:
 the expected `docs/guide.md` diagnostic appeared as `docs\\guide.md`. The integrator
 changed the repository-relative origin to `as_posix()` and reported all 41 local
-methods passing. Native Windows confirmation of that change still requires the
-new hosted integration. The checker is outside this report author's edit scope.
+methods passing. Native Windows confirmation was then pending; the later
+`6c3dd8b` hosted audit recorded above closes that scoped gate. The checker was
+outside this report author's edit scope.
 
 The sanitizer failure was
 `test_modified_sources_copies_and_executable_cannot_be_success(target='renderer')`:

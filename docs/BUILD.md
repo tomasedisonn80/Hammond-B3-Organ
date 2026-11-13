@@ -13,7 +13,10 @@ are engineering fixtures; they are not measured instrument evidence.
 
 CMake enables strict warnings and treats them as errors for GCC, Clang,
 AppleClang and MSVC. This exposes portability problems instead of hiding them.
-Only the platforms explicitly recorded in the verification section have been run.
+The [verification record](#verification-record) separates historical local checks
+from later hosted qualification. [STATUS.md](STATUS.md) and
+[CI_QUALIFICATION.md](CI_QUALIFICATION.md) identify the tested revisions and
+remaining gates.
 
 ## Linux and macOS
 
@@ -88,7 +91,7 @@ The POSIX Makefile is optional; Windows does not need it.
 |---|---|
 | `hammond_core` | Static framework-independent core from `src/*.cpp` |
 | `hammond_profile` | Validate authoring JSON and write `build/nominal.b3p` |
-| `hammond_render` | Offline renderer, available when `tools/render.cpp` exists |
+| `hammond_render` | Offline WAV renderer from `tools/render.cpp` |
 | `hammond_benchmark` | Bounded prepared-engine timing measurements; see [BENCHMARKING.md](BENCHMARKING.md) |
 | `test_*` | One standalone executable for each `tests/test_*.cpp` |
 | `check` | Build the profile and C++ tests, then run CTest; requires `BUILD_TESTING=ON` |
@@ -144,11 +147,21 @@ must also exist in the installed toolchain and execution environment.
 
 ## Verification record
 
-Build-foundation verification is recorded in
-`development/agent-notes/09-build-foundation.md`. The initial available environment
-is Linux with GCC 14.2.0, GNU Make 4.4.1, Python 3.12 and a task-local CMake 4.4.4.
-macOS/AppleClang and Windows/MSVC commands are provided for portability checks;
-they have not been executed in this environment. The renderer, later engine
-sources, and later tests require their own subsequent evidence. A successful
-build does not establish real-time deadlines, host compatibility, physical
-fidelity, product release readiness or sanitizer coverage of unexecuted paths.
+The [original build-foundation note](development/agent-notes/09-build-foundation.md)
+records historical local checks on Linux with GCC 14.2.0, GNU Make 4.4.1,
+Python 3.12 and a task-local CMake 4.4.4. macOS/AppleClang and Windows/MSVC were
+not executed for that initial assignment. Its results cover that foundation;
+they do not describe the qualification of later engine, renderer or test changes.
+
+Subsequent hosted runs exercised Linux, macOS, Windows and Linux sanitizers at
+specific revisions. Consult [current status](STATUS.md) and the
+[CI qualification record](CI_QUALIFICATION.md) for observed passes, retained
+failures and pending reruns. A result applies to its recorded revision, platform
+and scope; it does not automatically qualify the working tree. The
+[development log](DEVELOPMENT_LOG.md) records the intervening changes and local
+evidence. No verification pass is implied by the commands on this page.
+
+A successful build does not establish real-time deadlines, host compatibility,
+physical fidelity, product release readiness or sanitizer coverage of unexecuted
+paths. For practical render/install workflows and the related evidence contracts,
+see the [project guide](PROJECT_GUIDE.md).

@@ -8,6 +8,7 @@ import math
 import os
 from pathlib import Path
 import subprocess
+import tempfile
 import unittest
 
 
@@ -159,10 +160,17 @@ class ModelInfoTests(unittest.TestCase):
                 self.assertEqual(result.stdout, b"")
                 self.assertIn(b"Expected no arguments or --help", result.stderr)
 
-    @unittest.skipUnless(os.name == "posix" and Path("/dev/full").exists(), "requires POSIX /dev/full")
     def test_stdout_failure_has_nonzero_status(self):
-        with open("/dev/full", "wb", buffering=0) as failed_output:
-            result = subprocess.run([self.executable], stdout=failed_output, stderr=subprocess.PIPE, timeout=15)
+        with tempfile.TemporaryDirectory(prefix="hammond-model-output-") as directory:
+            path = Path(directory) / "read-only-stdout.bin"
+            original = b"retained destination bytes\n"
+            path.write_bytes(original)
+            # A read-only handle rejects writes independently of filesystem
+            # permission bypasses, and does not need a platform-specific device.
+            with path.open("rb", buffering=0) as failed_output:
+                result = subprocess.run([self.executable], stdout=failed_output,
+                                        stderr=subprocess.PIPE, timeout=15)
+            self.assertEqual(path.read_bytes(), original)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn(b"Cannot write metadata to stdout", result.stderr)
 

@@ -40,6 +40,12 @@ log bytes. It does limit current executable verification and replay. A present,
 readable executable with a different size/hash **does fail** verification. A
 matching executable's permission to execute is reported separately; matching
 bytes alone say nothing about current libraries or ability to run successfully.
+
+An expired historical directory that now names a regular file also makes its
+former executable unavailable (`NotADirectoryError`, or the platform's equivalent
+missing-path error). A present executable retains the strict type, ancestry and
+integrity checks.
+
 Original input locations, producer tool identities, checkout metadata, and
 environment fields are validated as typed historical records; the verifier does
 not read original input/tool paths or resample Git history.

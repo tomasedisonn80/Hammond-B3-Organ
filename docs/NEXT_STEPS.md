@@ -1,6 +1,6 @@
 # Next steps
 
-## Active session: complete waves 08-10
+## Active session: complete waves 09-10
 
 The full 500-page review, profile/build foundation, working nominal dry engine,
 offline renderer and early retained-bank console model are complete. The active
@@ -15,9 +15,12 @@ work is evidence tooling and review, not the already finished initial scaffold.
 3. **Wave07 is complete:** two independent factory routing transcriptions,
    complete comparison, capture metadata/byte validation and a concrete physical
    acquisition protocol now have retained documentary and software evidence.
-4. **Wave08:** cross-platform CI, portable build/replay checks and integration.
-5. **Wave09:** consolidate acceptance evidence and a useful audible example;
-   make the post-session implementation queue exact.
+4. **Wave08 is complete:** CI qualification and repairs, local installation,
+   rights inventory, proposed host integration, complete manual runtime routing
+   acceptance and a practical documentation guide have retained scoped evidence.
+5. **Wave09 is complete:** acceptance evidence, the retained audible example and
+   independent local replay, M3 acceptance contract, operational handoff and the
+   original assignment ledger are retained.
 6. **Wave10:** independent final review, required fixes, final commit/push and
    remote/CI verification. Record all 60 actual agent assignments and outcomes.
 
@@ -26,14 +29,19 @@ checkpoints. Each agent must follow `AGENTS.md`.
 
 ## Next product milestone after this session
 
-Complete **M3 console behavior**, starting with a per-contact trajectory model
-that retains shared source identity and deterministic timing. Read atlas chapters
-17-24 and the review notes before choosing physical or named nominal algorithms.
+Continue **M3 console behavior**, preserving shared source identity and
+deterministic timing. First inspect the [active console continuation](development/2026-11-13-continuation/README.md)
+and latest `main`; it is already developing contact/percussion work. Integrate
+that work and choose the next uncovered acceptance gate instead of duplicating
+its modules. Commit `7a24a30` supplies independent `ContactBank`, `PercussionState`
+and model metadata modules; its next wave owns engine, persistence and renderer
+integration. Read atlas chapters 17-24 and the review notes before choosing
+physical or named nominal algorithms.
 
-- Replace ideal boolean key gates with nine separately represented contacts per
+- Integrate the existing contact component with the engine's nine routes per
   manual key, preserving sample time, phase, block invariance and steady-level
   independence from note velocity. Do not invent measured contact timings.
-- Implement shared upper-manual percussion/recharge after its contact dependency
+- Integrate the existing shared upper-manual percussion/recharge component after its contact dependency
   is explicit. Test held keys, same-frame release/repress, routing-only Cancel,
   upper-B selection and finite recovery; a per-note envelope is not the specified
   mechanism.

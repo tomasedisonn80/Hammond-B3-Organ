@@ -1,7 +1,7 @@
 # Hammond B-3 Organ
 
-An evidence-led recreation of a vintage Hammond B-3 and Leslie system, developed
-from the repository's **500-page research and build atlas**.
+A project to recreate a vintage Hammond B-3 and Leslie system, guided by the
+repository's **500-page research and build atlas**.
 
 **Current stage:** a working nominal dry-organ engine and offline WAV renderer,
 with strict data contracts and independent tests. The core has 91 shared,
@@ -10,11 +10,18 @@ explicit clock/error handling. Four retained A/B banks, routing-only Cancel and
 versioned control snapshots provide early console behavior. The selected profile
 is **nominal and unmeasured**.
 
-The eventual product is a VST3 instrument and standalone application, with an
+The current executable renders WAV files offline. The product plan targets a
+playable VST3 instrument and audio-device standalone application, with an
 inspectable organ/Leslie engine and the atlas's dimensional, accessible interface.
-The first milestones establish deterministic sound generation and testable
-boundaries before scanner, AO-28 electronics, Leslie acoustics and physical
-calibration. No current result establishes a measured one-to-one instrument match.
+Scanner, AO-28 electronics, Leslie acoustics, physical calibration and the native
+UI remain future work. No current result establishes a measured one-to-one
+instrument match. Start with the [project guide](docs/PROJECT_GUIDE.md) for the
+plan, practical workflows, evidence contracts and session history.
+
+The integrated continuation also supplies standalone nominal contact and shared
+percussion components with independent tests and [model metadata](docs/MODEL_METADATA.md).
+At its `7a24a30` checkpoint these components are not yet connected to the renderer;
+the [current status](docs/STATUS.md) and continuation ledger track that next step.
 
 ## Build and test
 
@@ -50,6 +57,10 @@ compiled profile and event fixtures in a relocatable prefix of your choice.
 
 ## Repeatable audio examples
 
+Listen to the retained [four-second nominal dry-organ example](examples/rendered/nominal-two-manual-v1/bundle/render.wav).
+Its [evidence package](examples/rendered/nominal-two-manual-v1/README.md) includes
+the exact score/profile, raw logs, hashes and independent measurements.
+
 [Five short event fixtures](examples/README.md) exercise both manuals, A4 pitch,
 coherent foldback, and bank/Cancel behavior. The [evidence wrapper](docs/RENDER_EVIDENCE.md)
 retains exact inputs, renderer hashes, logs and WAV statistics. The independent
@@ -60,15 +71,20 @@ and metrics without trusting the producer’s Boolean assertions. These outputs 
 synthetic engineering evidence.
 
 [CI](docs/CI.md) defines Linux, macOS and Windows Release checks plus Linux
-sanitisers. A configured workflow is not a successful hosted run; observed
-qualification is recorded in the status and development log.
+sanitisers. Read [current status](docs/STATUS.md) and the
+[revision-specific CI qualification](docs/CI_QUALIFICATION.md) for observed
+results and remaining gates; a configured workflow is not a successful hosted run.
 
 ## Project navigation
 
 | Document | Purpose |
 |---|---|
+| [Project guide](docs/PROJECT_GUIDE.md) | Practical reading order, workflows, evidence boundaries and session ledgers |
 | [Status](docs/STATUS.md) | What is implemented, what passed, and what remains provisional |
 | [Next steps](docs/NEXT_STEPS.md) | Next concrete tasks, dependencies and acceptance evidence |
+| [Operational handoff](docs/SESSION_HANDOFF.md) | Exact identities, commands, ownership and publication procedure |
+| [Acceptance matrix](docs/ACCEPTANCE_MATRIX.md) | M0-M9 requirements, actual evidence and open gates |
+| [Assignment ledger](docs/development/AGENT_LEDGER.md) | All 60 original assignment slots and their actual outcomes |
 | [Development log](docs/DEVELOPMENT_LOG.md) | Actual changes, commands, results and limitations |
 | [Full project plan](docs/PLAN.md) | Atlas M0-M9 implementation sequence and exit gates |
 | [Agent instructions](AGENTS.md) | Mandatory workflow and durable handoff for every future agent |
@@ -80,12 +96,17 @@ qualification is recorded in the status and development log.
 | [Internal parameters](docs/PARAMETERS.md) | 39 proposed permanent control identities |
 | [Pedal routing](docs/PEDAL_ROUTING.md) | Reconstructed 25-by-8 data; pedal audio remains pending |
 | [Factory comparison](docs/FACTORY_REFERENCE.md) | Two independent Table III readings and complete routing comparison |
+| [Factory runtime gate](docs/FACTORY_RUNTIME_ACCEPTANCE.md) | All manual routes exercised against CSV-selected expectations |
+| [Demo replay](docs/DEMO_REPLAY.md) | Retained four-second example, independent integrity checks and local replay |
+| [M3 acceptance contract](docs/M3_ACCEPTANCE_CONTRACT.md) | Contact, percussion and history gates for the next integration |
 | [Capture contract](docs/CAPTURE_FORMAT.md) | Planned/recorded metadata, explicit unknowns and optional byte verification |
 | [Acquisition protocol](docs/CAPTURE_PROTOCOL.md) | Prioritized physical captures, admission gates and holdout grouping |
 | [Offline format](docs/RENDER_FORMAT.md) | Renderer and event-fixture contract |
 | [Numerical bounds](docs/NUMERICAL_BOUNDS.md) | Preparation limits and finite-window drift evidence |
 | [Benchmark](docs/BENCHMARKING.md) | Bounded workload timing with explicit limitations |
 | [Repository checks](docs/REPOSITORY_CHECKS.md) | Source, navigation, local links and data integrity |
+| [Dependencies and rights](docs/DEPENDENCIES_AND_RIGHTS.md) | Actual distributed material, provenance, notices and unresolved permissions |
+| [Complete atlas review](docs/research/ATLAS_REVIEW.md) | Full 500-page coverage, milestone interpretation and source limits |
 | [Source manifest](docs/research/source-manifest.json) | Preserved PDF identity and missing companion assets |
 | [Review notes](docs/development/agent-notes/) | Actual agent assignments and retained evidence |
 
@@ -105,6 +126,9 @@ service readings are not used as oscillator amplitudes.
 Two independent direct-image factory-table transcriptions now corroborate every
 manual assignment and pedal position in the retained data. Their comparison is
 documentary routing evidence; source tuning and physical calibration remain open.
+The [dependency and rights inventory](docs/DEPENDENCIES_AND_RIGHTS.md) and
+[third-party notices](THIRD_PARTY_NOTICES.md) record applicable source boundaries
+and unresolved permissions; this repository has no selected project-wide license.
 
 Every future development session must update status, next steps and the development
 log, retain real verification evidence, and commit/push completed work under the

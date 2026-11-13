@@ -79,6 +79,11 @@ real aliases and unavailable identities. The expanded **41-method suite passed**
 locally without skips. This simulation does not claim a particular hosted Windows
 filesystem returned zero IDs; full platform qualification remains a separate run.
 
+The subsequent [hosted integration at 6c3dd8b](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429)
+passed this 41-method suite on Linux, macOS and Windows Release and in the Linux
+ASan/UBSan/leak job. The capture checker is Python software, so the latter result
+does not mean that the Python interpreter was sanitizer-instrumented.
+
 ## Interpretation of results
 
 Passing tests establish only the exercised software behavior. They do not recover

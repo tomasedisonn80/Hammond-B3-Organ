@@ -14,14 +14,15 @@ manual dispatch. This is engineering verification of the nominal model.
 | Release (Windows MSVC) | `windows-2022` | Visual Studio 2022 MSVC / x64 | Release |
 | Linux GCC ASan + UBSan + leaks | `ubuntu-24.04` | GCC / x64 | Debug, address/undefined/leak checks |
 
-All four jobs passed their 16 registered suites at `9c8068c` in
-[run 43363048563](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43363048563).
+All four jobs passed their 21 registered suites at `6c3dd8b` in
+[run 43365901429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429).
+The complete archives contain 257 Python methods per job and zero test skips.
 The first run exposed macOS decimal parsing and Windows evidence assumptions;
 those failures and their fixes remain in the development log and agent notes.
-Qualification requires the actual jobs for the exact commit under review. On a
-later checkpoint, `7c2ad20`, two jobs exposed failures; the complete archive and
-skip audit is retained in [CI_QUALIFICATION.md](CI_QUALIFICATION.md). The locally
-repaired integration awaits its own hosted run. On a
+Qualification requires the actual jobs for the exact commit under review. At the
+earlier checkpoint `7c2ad20`, two jobs exposed failures; the complete archive,
+skip audit and passing repair integration are retained in
+[CI_QUALIFICATION.md](CI_QUALIFICATION.md). On a
 pull request, the default checkout tests GitHub's merge revision; the diagnostic
 artifact records `git rev-parse HEAD`. Never transfer a passing result to a later
 commit without rerunning the affected checks. Shared observed results belong in

@@ -2,7 +2,14 @@
 
 Every future agent must append actual changes and executable evidence here or
 provide an assigned note for the integrating agent, then update the status and
-next-step documents. See the mandatory instructions in `../AGENTS.md`.
+next-step documents. See the mandatory [agent instructions](../AGENTS.md).
+
+Entries below preserve observations at the time of each assignment or checkpoint.
+Later repairs and hosted results supplement earlier failures and pending gates;
+they do not rewrite those records. Use [STATUS.md](STATUS.md) and
+[CI_QUALIFICATION.md](CI_QUALIFICATION.md) for current, revision-specific results.
+The [project guide](PROJECT_GUIDE.md) distinguishes the original session ledger
+from the independent continuation ledger and its separate assignment identities.
 
 ## 2026-11-12 — Initial implementation session (in progress)
 
@@ -30,22 +37,22 @@ All six assigned ranges were read: 1-84, 85-168, 169-252, 253-336,
 selected figures. The combined review identified the complete M0-M9 sequence,
 recoverable routing/preset/pedal data, missing companion assets, proposed versus
 measured evidence boundaries, scanner pseudocode/equation issues, and separate
-organ/Leslie/host/UI gates. See notes01-06 in `development/agent-notes/`.
+organ/Leslie/host/UI gates. See notes 01-06 in `development/agent-notes/`.
 
-Wave02 begins the typed profile contract, strict authoring compiler and build
+Wave 02 begins the typed profile contract, strict authoring compiler and build
 foundation. No hardware fidelity claim has changed.
 
 ### Wave 02 — profile and build foundation
 
-Agents07-12 implemented fixed-size C++20 types/profile loading, strict JSON
+Agents 07-12 implemented fixed-size C++20 types/profile loading, strict JSON
 authoring validation and deterministic compilation, CMake/Make/test tooling,
 independent permanent tests, and full atlas navigation/errata/source notes.
-The profile explicitly contains91 sources,549 manual routes and9 drawbar gains.
+The profile explicitly contains 91 sources, 549 manual routes and 9 drawbar gains.
 
-Observed verification: strict GCC14 Debug and Release builds;37 Python unittest
-cases;2,601 malformed C++ payload cases with field-preserving rejection; exact
+Observed verification: strict GCC 14 Debug and Release builds; 37 Python unittest
+cases; 2,601 malformed C++ payload cases with field-preserving rejection; exact
 byte limits, six printed routing rows, source anchors, locale and I/O failure
-checks. The source PDF hash and500-page/80-chapter coverage were rechecked.
+checks. The source PDF hash and 500-page/80-chapter coverage were rechecked.
 ASan+UBSan passed for the profile test with `ASAN_OPTIONS=detect_leaks=0`. Default
 LeakSanitizer finalization failed because the executor runs under ptrace; leak
 checking is not claimed. No Windows/macOS or host/audio fidelity result yet.
@@ -55,47 +62,48 @@ Profile identities: canonical authoring SHA-256
 compiled bytes SHA-256
 `b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f`.
 
-Wave03 implements the shared bank, dry graph and renderer against frozen timing
-and file contracts. See individual notes07-12 for exact commands and limitations.
+Wave 03 implements the shared bank, dry graph and renderer against frozen timing
+and file contracts. See individual notes 07-12 for exact commands and limitations.
 
 ### Wave 03 — working shared sources, dry engine and offline audio
 
-Agents13-18 implemented a value-owned91-source sine bank with deterministic
+Agents 13-18 implemented a value-owned 91-source sine bank with deterministic
 SplitMix64 initialization, transactional dry Engine, strict offline CLI/WAV writer
 and independent permanent source/engine/CLI tests. The core shares each source
 sample across every routed contact and adds branch gains coherently. It does not
 restart phase on notes or normalize by polyphony.
 
-Observed checks: all supported rates44100/48000/96000;440 crossings in1second for
-tone46; long-double phase/sine oracles; coherent doubling6.020599913dB; stable ties,
-flushes, disconnected rendering, caller-owned profile changes and failure atomicity.
-The2053-frame engine timeline matches bitwise over blocks1/17/64/127/512/1024.
-The CLI's20 retained unittest cases include dense subdivision, little-endian WAV
+Observed checks: all supported rates 44100/48000/96000; 440 crossings in 1 second
+for tone 46; long-double phase/sine oracles; coherent doubling of 6.020599913 dB;
+stable ties, flushes, disconnected rendering, caller-owned profile changes and
+failure atomicity.
+The 2053-frame engine timeline matches bitwise over blocks 1/17/64/127/512/1024.
+The CLI's 20 retained unittest cases include dense subdivision, little-endian WAV
 headers/channels, clipping/no-clobber failure and partial-final-block handling.
-A separate3856-event smoke matched blocks through65536; its concurrent destination
+A separate 3856-event smoke matched blocks through 65536; its concurrent destination
 race preserved the other writer's file. No hardware, host or deadline pass follows.
 
 The callback currently has discrete control steps and ideal gates. Native automation
 curves, hot profile exchange and physical circuit/rotary stages are deferred.
-Wave04 adds an explicitly exclusive four-bank model and Cancel while preserving
-legacy audio. Permanent notes13-18 identify actual commands and limits.
+Wave 04 adds an explicitly exclusive four-bank model and Cancel while preserving
+legacy audio. Permanent notes 13-18 identify actual commands and limits.
 
 ### Wave 04 — early console state and documentary control data
 
-Agents19-24 added four retained A/B drawbar banks, route-only Cancel, explicit
+Agents 19-24 added four retained A/B drawbar banks, route-only Cancel, explicit
 bank events, snapshot restoration and bounded `B3CONTROLS1` serialization.
-The39-entry internal parameter registry has permanent bank identities but no
-verified native host mapping. Pedal data reconstructs25x8 contacts with195
-connections and5 nulls; pedal audio, physical weights and full transcription
+The 39-entry internal parameter registry has permanent bank identities but no
+verified native host mapping. Pedal data reconstructs 25x8 contacts with 195
+connections and 5 nulls; pedal audio, physical weights and full transcription
 verification remain open.
 
 Strict Debug/Release control and legacy engine/CLI tests passed. The integration
-matched the frozen wave03 renderer in24 WAV-byte/JSON comparisons. New timeline
-tests cover3 rates and6 partitions, held-key switching, Cancel/reselect/panic,
-all91 phases,81 malformed snapshots and68 invalid new-event calls. Control I/O
-rejects330 malformed inputs atomically. Registry19 and pedal15 Python tests pass.
-Root updated the legacy invalid-enum test from5 to255 because5 is now the
-documented BankDrawbar event; the invalid-enum assertion itself remains.
+matched the frozen wave 03 renderer in 24 WAV-byte/JSON comparisons. New timeline
+tests cover 3 rates and 6 partitions, held-key switching, Cancel/reselect/panic,
+all 91 phases, 81 malformed snapshots and 68 invalid new-event calls. Control I/O
+rejects 330 malformed inputs atomically. The registry's 19 and pedal map's 15
+Python tests pass. Root updated the legacy invalid-enum test from 5 to 255 because
+5 is now the documented BankDrawbar event; the invalid-enum assertion itself remains.
 
 No physical contact, percussion, multi-preset latch, pedal-audio or host gate was
 closed. Current tasks move to render provenance, fixtures and independent evidence.
@@ -134,11 +142,11 @@ passed all 12 CTest suites on Linux Release and Linux GCC ASan/UBSan with
 `detect_leaks=1`. macOS AppleClang 17 compiled against a libc++ without floating
 `std::from_chars`, failing in control parsing. Windows MSVC compiled with zero
 warnings/errors and passed 10 of 12 suites. The fixture catalog caught Git
-checkout CRLF hash changes; the evidence wrapper rejected unchanged files at its path-stat/descriptor-stat
-comparison, and one raw subprocess fixture expected a POSIX
-newline. These are recorded failures, not waived checks. Wave 06 will implement
-portable decimal conversion and evidence file handling; a later hosted run must
-verify the changes. No native host/audio-device claim follows from CI.
+checkout CRLF hash changes; the evidence wrapper rejected unchanged files at its
+path-stat/descriptor-stat comparison, and one raw subprocess fixture expected a
+POSIX newline. These are recorded failures, not waived checks. Wave 06 will
+implement portable decimal conversion and evidence file handling; a later hosted
+run must verify the changes. No native host/audio-device claim follows from CI.
 
 ### Wave 05 completion and wave 06 robustness
 
@@ -293,3 +301,98 @@ relative layouts passed; missing build inputs and unsafe install destinations
 rejected before copying. No dependency, system install, runtime bundling, plugin
 or device application was added. The combined checkpoint now requires its clean
 staged build and new hosted matrix results.
+
+### Wave 08 documentation review
+
+Agent 48 added a practical project guide and clearer README navigation for the
+plan, current status, build/render/install workflows, evidence contracts, original
+atlas/reviews, rights and the two distinct session ledgers. The build guide now
+separates the initial local foundation evidence from later revision-specific
+hosted qualification. The initial implementation contract points to current API
+and console/state contracts and labels host integration as a proposal.
+
+Early log entries had joined words and numbers; their spacing and prose were
+repaired without changing recorded results. A comparison retained every numeric
+sequence, inline command/identity and external URL in the earlier historical
+entries. The read-only repository checker passed all five groups, including local
+Markdown links and source/data identities, with zero errors. Scoped diff and
+whitespace checks passed. This prose-only work ran no C++ suite and claims no new
+hosted or physical qualification; its note records the remaining review boundary.
+
+### Preserved continuation and qualified factory/capture checkpoint
+
+Before publication, incoming continuation commit `5dcd942` was inspected: its
+AGENTS additions and seven review documents were disjoint from the original
+session's staged work. The coordinator preserved it as parent of `6c3dd8b`; no
+force push or history replacement occurred. The tested original staged code,
+tests and data were unchanged by that documentation integration, and the combined
+archive passed the explicit 44-agent source check.
+
+Actual hosted run [43365901429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429)
+passed all four jobs at `6c3dd8b`: Linux GCC, macOS AppleClang and Windows MSVC
+Release, plus Linux ASan/UBSan with leak detection enabled. The coordinator
+downloaded all four complete diagnostic archives, checked returned ZIP digests,
+source revisions, JUnit and LastTest logs: each contains 21 suites, 257 Python
+methods and zero skips. The sanitizer log explicitly retains fatal ASan/UBSan/LSan
+settings and `detect_leaks=1`. The earlier failed matrix and unestablished original
+mutation exception remain historical facts in CI_QUALIFICATION.md.
+
+### Completed waves 08 and 09 deliverables
+
+Agent 45 recorded actual dependencies, distributed material and unresolved rights;
+no project license or new third-party runtime was invented. Agent 46 wrote the
+SDK-independent host/device integration proposal and eight unrun acceptance
+groups. Agent 47 added independent CSV-selected runtime route checks covering
+all 1,098 manual key/drawbar combinations, additional rates/folds/Cancel histories
+and deliberate wrong-source probes. Its two selected Release suites passed;
+source-waveform physics still shares TonewheelBank and is not independently
+validated by that routing oracle. Agent 48's navigation work is recorded above.
+
+Agent 49 audited M0–M9 requirements against actual source/tests and recorded open
+physical/native-product gates. Agent 50 produced a real four-second, 192,000-frame
+nominal dry-organ WAV with a seven-file evidence bundle and eight independent
+reports. The WAV SHA-256 is
+`9c46d82dc8da8ba5be078e895765e98672b51a30da52e0684d75a293aa4d84fd`;
+the original manifest and its dirty `6c3dd8b` checkout context remain unchanged.
+Actual float peak was 0.08130008727312088, RMS 0.02006219567993473, with zero
+reported clipped samples. This is synthetic engineering audio, not acquired
+instrument evidence.
+
+Agent 51 independently rebuilt a clean `6c3dd8b` source archive. The local GCC
+Release renderer executable and resulting WAV were byte-identical to the retained
+original. Seven new portable demo methods and the existing 27-method verifier
+suite passed. A reproduced absent historical executable beneath a symlinked
+directory required an availability check before strict present-file checks;
+retained bundle bytes were not edited. This observed replay does not establish
+authenticity, source-to-binary provenance or cross-compiler output identity.
+
+Agent 52 read atlas pp. 109–156 and wrote twelve M3 event/history scenarios plus
+four numerical/compatibility gates, all explicitly proposed and unrun. Agent 53
+provided exact revision/profile identities, runnable commands, ranked next work
+and guarded publication/rollback guidance. Agent 54 read every original note
+01–53, checked PDF/review coverage and publication ancestry, and retained sixty
+assignment rows without counting the separate continuation's workers. Its exact
+54-agent archive check passed. All six original wave-09 assignments are complete.
+
+### Final reviews and preserved contact/percussion modules
+
+Agent 55 reproduced a one-ULP control-expression persistence error under downward
+and toward-zero rounding. Scoped nearest rounding now matches the decimal parser
+and restores the caller's mode. The new fixed-vector test failed before repair;
+three affected Release suites passed afterward. The format remains B3CONTROLS1.
+Agent 56 reproduced two controlled-error gaps: an absent historical renderer below
+a regular-file ancestor raised NotADirectoryError, and an escaped lone Unicode
+surrogate escaped factory validation as UnicodeEncodeError. The repairs preserve
+present-file integrity checks and reject invalid UTF-8 strings/keys before
+canonical hashing. Factory 22, demo eight and verifier 27 methods passed locally,
+with zero skips. All frozen profile, transcription and demo identities remain.
+
+Remote `main` then advanced to `7a24a30`, a direct child of `6c3dd8b`. Its nineteen
+paths were inspected and verified disjoint from local changes before integration.
+It adds standalone ContactBank/PercussionState components, ConsoleModel, model
+metadata and independent tests. The original renderer, Engine and saved-state
+format are unchanged. This incoming commit and its separate twelve completed
+worker notes are preserved, not counted in the original sixty. Its planned
+B3CONTROLS2 and Engine integration must retain the rounding repair. The combined
+snapshot needs a new clean full build and hosted matrix; historical passes are
+not promoted to qualification of these additions.

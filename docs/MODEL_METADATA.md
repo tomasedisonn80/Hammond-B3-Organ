@@ -62,7 +62,9 @@ The focused `python_test_model_info` CTest reads the actual executable via
 `HAMMOND_MODEL_INFO_EXECUTABLE`. It checks strict JSON, explicit source separation,
 both modes, all 1,098 contact cells per factory, units, independent decimal/RC/gain
 expectations, default settings, repeated bytes and locale-environment independence,
-argument rejection, and output failure on platforms with `/dev/full`.
+argument rejection, and output failure with a temporary file opened read-only
+as the actual child process's stdout. The failure check requires a nonzero exit,
+the exporter diagnostic, and unchanged destination bytes without a platform skip.
 The CMake `check` target builds this executable before running the test.
 
 The exporter currently needs no source-profile file or external dependency.

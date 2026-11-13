@@ -2,6 +2,9 @@
 #include "hammond/ControlStateIO.h"
 
 #include <array>
+#include <bit>
+#include <cfenv>
+#include <cstdint>
 #include <iterator>
 #include <locale>
 #include <sstream>
@@ -155,6 +158,55 @@ void test_roundtrip() {
     std::string aliased = "preserved alias";
     CHECK(!hammond::serialize_controls(varied, aliased, aliased));
     CHECK(aliased == "preserved alias");
+}
+
+void test_rounding_mode_isolation() {
+    const int original_mode = std::fegetround();
+    CHECK(original_mode != -1);
+    // Fixed binary64 inputs are the round-trip oracle. Include the ordinary
+    // expression that previously lost one ULP under downward/toward-zero output.
+    constexpr std::array<std::uint64_t, 9> expressions{
+        0x3fbfd7f684a99224ULL, 0x0000000000000000ULL, 0x8000000000000000ULL,
+        0x0000000000000001ULL, 0x000fffffffffffffULL,
+        0x0010000000000000ULL, 0x3fb999999999999aULL,
+        0x3fefffffffffffffULL, 0x3ff0000000000000ULL};
+    std::array<std::string, expressions.size()> nearest_bytes;
+    CHECK(std::fesetround(FE_TONEAREST) == 0);
+    for (std::size_t i = 0; i < expressions.size(); ++i) {
+        auto state = varied_snapshot();
+        state.expression = std::bit_cast<double>(expressions[i]);
+        nearest_bytes[i] = encoded(state);
+    }
+    for (const int mode : {FE_TONEAREST, FE_DOWNWARD, FE_UPWARD, FE_TOWARDZERO}) {
+        CHECK(std::fesetround(mode) == 0);
+        for (std::size_t i = 0; i < expressions.size(); ++i) {
+            auto state = varied_snapshot();
+            state.expression = std::bit_cast<double>(expressions[i]);
+            const auto bytes = encoded(state);
+            CHECK(std::fegetround() == mode);
+            const auto restored = accepted(bytes);
+            CHECK(std::fegetround() == mode);
+            CHECK(std::bit_cast<std::uint64_t>(restored.expression) == expressions[i]);
+            CHECK(bytes == nearest_bytes[i]);
+            same_snapshot(restored, state);
+        }
+
+        // Rejected serialization and parsing must preserve the mode and their
+        // existing destination-atomicity/diagnostic contracts too.
+        auto invalid = varied_snapshot();
+        invalid.expression = std::bit_cast<double>(0x3ff0000000000001ULL);
+        rejected(invalid);
+        CHECK(std::fegetround() == mode);
+        std::string aliased = "preserved alias";
+        CHECK(!hammond::serialize_controls(varied_snapshot(), aliased, aliased));
+        CHECK(aliased == "preserved alias");
+        CHECK(std::fegetround() == mode);
+        auto underflow = std::string(kCanonical);
+        underflow.replace(underflow.find("0.375"), 5, "1e-9999");
+        rejected(underflow, "nonzero expression underflow under caller rounding mode");
+        CHECK(std::fegetround() == mode);
+    }
+    CHECK(std::fesetround(original_mode) == 0);
 }
 
 void test_serialization_rejection() {
@@ -328,6 +380,7 @@ int main() {
                             std::istream_iterator<std::string>()};
         CHECK(tokens.size() == 60);
         test_roundtrip();
+        test_rounding_mode_isolation();
         test_serialization_rejection();
         test_text_rejection(tokens);
         test_transport(tokens);

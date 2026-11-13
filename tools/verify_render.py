@@ -447,8 +447,13 @@ def _renderer(reader, record):
     if not native:
         return {"status": "unavailable", "reason": "recorded path belongs to another operating system"}
     try:
-        actual, _ = reader.read(Path(path), MAX_EXECUTABLE, retain=False)
-    except (FileNotFoundError, PermissionError) as error:
+        current_path = Path(path)
+        # A historical path can be absent beneath a host's symlinked /tmp.
+        # Establish availability before inspecting unrelated ancestor aliases;
+        # present files still receive every strict reader/type/hash check below.
+        current_path.lstat()
+        actual, _ = reader.read(current_path, MAX_EXECUTABLE, retain=False)
+    except (FileNotFoundError, NotADirectoryError, PermissionError) as error:
         return {"status": "unavailable", "reason": type(error).__name__}
     _literal(actual["sha256"], record["sha256_before"], "current renderer SHA-256")
     _literal(actual["size_bytes"], record["size_bytes"], "current renderer size")

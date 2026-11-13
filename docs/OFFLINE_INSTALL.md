@@ -128,3 +128,9 @@ builds. Missing build inputs fail rather than skip. All installs during this tes
 stay in temporary local directories; no system install is attempted. Local executed
 platforms and outstanding qualification are recorded in the
 [agent evidence note](development/agent-notes/44-offline-install.md).
+
+The subsequent [hosted run at 6c3dd8b](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429)
+passed the install/relocation gate on Linux, macOS and Windows Release, including
+the Visual Studio multi-config layout, and in the Linux sanitizer job. This
+qualifies the exercised offline installation flow, not binary redistribution or
+native audio-device/plugin behavior.
