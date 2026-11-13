@@ -109,11 +109,11 @@ class PartialKeyRenderTests(unittest.TestCase):
         self.assertEqual(manifest["status"], "succeeded", manifest.get("error"))
         report = consumer.verify_bundle(directory)
         self.assertEqual(report["status"], "verified_retained_bundle")
-        self.assertEqual(report["schema_version"], 2)
+        self.assertEqual(report["schema_version"], 3)
         type(self).verified_bundles += 1
-        self.assertEqual(len(manifest["parameters"]), 13)
-        self.assertEqual(len(manifest["renderer_metrics"]), 18)
-        self.assertEqual(len(manifest["invocation"]["argv"]), 26)
+        self.assertEqual(len(manifest["parameters"]), 14)
+        self.assertEqual(len(manifest["renderer_metrics"]), 31)
+        self.assertEqual(len(manifest["invocation"]["argv"]), 28)
         self.assertEqual((directory / "events.txt").read_bytes(), score)
         self.assertEqual((directory / "profile.b3p").read_bytes(), self.compiled.read_bytes())
         return directory, manifest
@@ -127,7 +127,7 @@ class PartialKeyRenderTests(unittest.TestCase):
                 self.assertEqual(first.returncode, 0, first.stderr)
                 metrics = json.loads(first.stdout)
                 self.assertEqual(metrics["contact_model"], "nominal-linear-travel-v1")
-                self.assertEqual(metrics["render_schema_version"], 2)
+                self.assertEqual(metrics["render_schema_version"], 3)
                 samples = self.read_wav(path, rate, frames)
                 onset = math.ceil(0.42 * 0.008 * rate)
                 self.assertTrue(all(value == 0.0 for value in samples[:onset]))
@@ -218,7 +218,7 @@ class PartialKeyRenderTests(unittest.TestCase):
                 self.assertFalse(destination.exists())
                 self.assertEqual(set(self.work.iterdir()), before)
 
-    def test_schema2_retains_partial_score_and_verifier_checks_declared_mode(self):
+    def test_current_schema_retains_partial_score_and_verifier_checks_declared_mode(self):
         directory, manifest = self.bundle(b"0 key_position upper 60 .5\n2000 note_on upper 60 100\n")
         self.assertEqual(manifest["parameters"]["event_count"], 2)
         manifest["parameters"]["contacts"] = "ideal"
@@ -250,7 +250,7 @@ class PartialKeyRenderTests(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         print(f"partial-key CLI: {cls.cli_invocations} actual renderer calls; "
-              f"{cls.verified_bundles} verified schema2 bundles; "
+              f"{cls.verified_bundles} verified schema3 bundles; "
               f"max independent amplitude error={max(cls.fit_errors, default=0.0):.12g}")
 
 

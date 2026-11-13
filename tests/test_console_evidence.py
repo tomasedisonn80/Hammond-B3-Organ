@@ -130,10 +130,10 @@ class ConsoleEvidenceTests(unittest.TestCase):
         type(self).bundles_rendered += 1
         report = consumer.verify_bundle(directory)
         self.assertEqual(report["status"], "verified_retained_bundle")
-        self.assertEqual(report["schema_version"], 2)
+        self.assertEqual(report["schema_version"], 3)
         self.assertEqual(report["replay"]["status"], "not_performed")
         self.assertEqual(report["evidence_scope"], "synthetic_engineering")
-        self.assertEqual(manifest["renderer_metrics"]["render_schema_version"], 2)
+        self.assertEqual(manifest["renderer_metrics"]["render_schema_version"], 3)
         self.assertEqual(manifest["renderer_metrics"]["contact_model"],
                          "ideal-contacts-v1" if contacts == "ideal" else "nominal-linear-travel-v1")
         self.assertEqual(manifest["renderer_metrics"]["percussion_model"], "shared-readiness-v1")

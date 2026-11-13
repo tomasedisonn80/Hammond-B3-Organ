@@ -2,13 +2,21 @@
 
 ## Active pedal development session
 
-The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **18 new workers have completed three waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
+The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **24 new workers have completed four waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
 
 The core now includes typed 200-position pedal routing, 25 independently held pedals, a named fixed two-mixture voice, two controls and `B3CONTROLS3`. Old state formats explicitly migrate to muted pedals. The registry has 45 records, preserving every field of the earlier 43. Pedals consume the Engine's existing single source frame; lower Cancel, division panics and upper percussion remain independent. Last-rendered diagnostics retain their actual frame/rate tags. The matrix and linear pedal gain are explicit nominal engineering fixtures, not recovered electrical values or measured 16-foot/8-foot responses.
 
 Independent checks cover both CSV maps, all pedals/contacts and supported rates, coherent manual/pedal collisions, bitwise source histories, partition identity, migration during moving contacts and whole-call rejection. The repaired coherent archive `e1828586c35ea40562d6de6be671c206d725edd2` passed **55/55 local Release suites**, zero failures, in 54.86 seconds. The first-run stale allocation-fixture failure and repair remain in the session log. The preceding kernel commit `6768ef2388819ebbaaf7cc23bdf72265dc72c561` passed all 51 local Release suites and all four hosted jobs in [run 43394209142](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43394209142), including leak-enabled ASan/UBSan.
 
-The next wave connects bounded external pedal ownership and offline score/evidence tooling. The optional [native VST3 contract](VST3_SPIKE_CONTRACT.md) pins SDK 3.8.1 and four submodules; its headless validator's own 51 selftests passed. A Hammond plugin is not established by those SDK selftests. Later waves must implement and independently qualify the native module, automation and concurrent state handoff. Ordinary builds remain SDK-free. Full M3, scanner/AO-28/Leslie, specimen calibration, audio-device operation and the custom interface remain open.
+Published pedal Engine commit `e493b9fed9e3ed8a294fb5d95af447132776cb3a` also passed all four hosted jobs in [run 43397574429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43397574429).
+
+The typed pedal adapter now retains up to 256 owners across two origin buses and 16 channels. A combined ordered manual/pedal/control facade commits both ledgers only after one Engine call accepts the complete block. Independent review covers 256+256 simultaneous owners, 1024/1025 expanded-event limits, three rates, both manual contact models and over 1.16 million exact phase comparisons.
+
+The offline renderer accepts four explicit pedal verbs and `--pedal-drawbars NN`; new render/evidence outputs are schema 3. The independent verifier retains exact schema 1/2 acceptance and rejects pedal additions under those historical grammars. All eight original scores produced byte-identical WAV/PCM versus the frozen starting revision in 24 local runs, including default and explicit 00 pedals. Test-migration fixture failures and their repairs are retained in assignment 23.
+
+The combined input/renderer checkpoint passed **60/60 local Release suites**, zero failures, in 56.10 seconds on frozen tree `f84cacb4e6eb01189ca29136fc838885fdd858f4`.
+
+The next wave adds actual pedal trace diagnostics, compiled metadata, a musical fixture catalog, enabled-path allocation evidence and the host automation/state foundations. The optional [native VST3 contract](VST3_SPIKE_CONTRACT.md) pins SDK 3.8.1 and four submodules; its headless validator's own 51 selftests passed. A Hammond plugin is not established by those SDK selftests. Later waves must implement and independently qualify the native module, automation and concurrent state handoff. Ordinary builds remain SDK-free. Full M3, scanner/AO-28/Leslie, specimen calibration, audio-device operation and the custom interface remain open.
 
 ## Earlier checkpoints and retained history
 

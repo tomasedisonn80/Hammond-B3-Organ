@@ -2,9 +2,11 @@
 
 ## Active new session
 
-Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. The full atlas reread, prepared routing kernel and nominal pedal Engine/state/parameter integration are complete. The next concrete work is a separate typed pedal-note ownership adapter, a single-clock transaction merging manuals/pedals/controls, offline pedal score commands and versioned independent render evidence. Preserve the existing eight fixture inputs and compare their actual serialized output with the frozen baseline.
+Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Four waves and 24 actual new workers are complete: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands and schema-3 evidence. All eight retained scores have exact local baseline/current WAV compatibility.
 
-After that gate, add actual pedal diagnostics and enabled-path allocation checks, then implement the [minimal native VST3 contract](VST3_SPIKE_CONTRACT.md). Its pinned headless SDK machinery is available, but a plugin, automation bridge and race-free active state handoff require their own implementation and evidence. The requested session still comprises sixty actual new workers in ten waves; completed earlier sessions are not counted again.
+Wave 5 adds same-frame diagnostics, compiled pedal model metadata, independently checked musical fixtures, sample-linear automation and a bounded race-free UI/audio state handoff. The host contract requires the previous-sample anchor at -1, correct offset-N interpolation/carry, stable event ordering, candidate rendering with whole-callback rollback, and state 1/2/3 loading during active processing. Enabled-path allocation instrumentation must cover these actual paths.
+
+Wave 6 then implements and independently qualifies the [minimal native VST3 contract](VST3_SPIKE_CONTRACT.md). Use the pinned SDK and existing core; leave ordinary builds SDK-free. Later waves cover workload/package compatibility, retained audio, operational handoff, platform qualification and final audits. The requested session still requires sixty actual new workers in ten waves. Earlier completed sessions are not counted again.
 
 ## Completed continuation and current baseline
 
@@ -34,11 +36,11 @@ remaining assignment from this sixty-worker session to invent or count again.
 
 ## Next product milestone
 
-Complete the playable pedal input/evidence gate against [PEDAL_INTEGRATION_CONTRACT.md](PEDAL_INTEGRATION_CONTRACT.md). The prepared-kernel scope in [M3_NEXT_GATE.md](M3_NEXT_GATE.md) is now implemented and retained as its original acceptance contract. All new inputs must retain first-owner/final-release semantics, bounded whole-call rejection, source phase, separate pedal identity and stable ordering. A merged facade must render the elapsed frames once, including disconnected output. Extend the renderer and evidence verifier with explicit new versions; keep historical evidence replayable under its original grammar.
+Implement the host timeline and state-handoff foundations against [VST3_SPIKE_CONTRACT.md](VST3_SPIKE_CONTRACT.md), using the now implemented [PERFORMANCE_INPUT.md](PERFORMANCE_INPUT.md). The unified facade provides one atomic call; a multi-slice wrapper must encompass all slices, owners, pending state, curve anchors, boundary carry and caller output in one callback transaction. Slice lengths must sum to the original frame count. Parse files and construct SDK objects off the audio callback.
 
-The following host checkpoint needs bounded sample-linear automation with the previous sample at -1, correct offset-N interpolation/carry, and a UI/audio state queue whose payload publication is actually race-free. Keep SDK allocation, file parsing and UI operations off the callback. Run the actual built Hammond module through the pinned SDK validator and an independent native harness before claiming that smoke gate.
+Build the actual Hammond module with its frozen UUIDs, three native event buses, forty-five existing parameter identities and generic host controls. Verify the exact module with the pinned SDK validator and an independent ABI harness; SDK selftests alone are insufficient. Test lifecycle, phase-preserving rate changes, connected/disconnected buffers, active state migration and callback allocation behavior. A native smoke gate remains distinct from actual DAW/device use, signed distribution and the custom interface.
 
-Physical preset latches, switching bandwidth, continuous drawbars and loaded expression remain additional M3 gates. Do not create a second tone generator, infer physical pedal tuning from a software controller map, reuse manual contact timings for pedals, silently fill unknown reactor/mixture values, or change existing parameter/event/control identities.
+Physical preset latches, switching bandwidth, continuous drawbars and loaded expression remain additional M3 gates. The selected pedal matrix/gain are explicit nominal fixtures; the documentary 25-by-8 routing evidence does not establish reactor loading, physical tuning or measured timbre. Keep every existing parameter/event/control identity and original fixture unchanged.
 
 ## Acquisition work that can proceed in parallel
 

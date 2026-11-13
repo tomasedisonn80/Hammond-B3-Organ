@@ -40,6 +40,14 @@ METRIC_FIELDS_V2 = {
     "clipped_frames", "clipped_channel_samples", "peak", "rms",
     "render_schema_version", "contact_model", "percussion_model",
 }
+# Additive schema 3 fields are frozen here, without importing producer metadata.
+PARAMETER_FIELDS_V3 = PARAMETER_FIELDS_V2 | {"pedal_drawbars"}
+METRIC_FIELDS_V3 = METRIC_FIELDS_V2 | {
+    "pedal_routing_model", "pedal_voice_model", "pedal_gain_law", "pedal_contact_model",
+    "pedal_map_id", "pedal_map_raw_sha256", "pedal_map_canonical_sha256",
+    "pedal_reference_a_sha256", "pedal_reference_b_sha256", "pedal_mixture_matrix",
+    "pedal_mixture_denominator", "pedal_gain_denominator", "pedal_weight_policy",
+}
 
 
 def required_file(environment_name):
@@ -211,13 +219,13 @@ class RenderFixtureTests(unittest.TestCase):
         directory = directory.resolve()
         self.assertEqual(manifest["status"], "succeeded", manifest.get("error"))
         self.assertIs(type(manifest["schema_version"]), int)
-        self.assertEqual(manifest["schema_version"], 2)
+        self.assertEqual(manifest["schema_version"], 3)
         parameters = manifest["parameters"]
-        self.assertEqual(set(parameters), PARAMETER_FIELDS_V2)
+        self.assertEqual(set(parameters), PARAMETER_FIELDS_V3)
         metrics = manifest["renderer_metrics"]
-        self.assertEqual(set(metrics), METRIC_FIELDS_V2)
+        self.assertEqual(set(metrics), METRIC_FIELDS_V3)
         self.assertIs(type(metrics["render_schema_version"]), int)
-        self.assertEqual(metrics["render_schema_version"], 2)
+        self.assertEqual(metrics["render_schema_version"], 3)
         self.assertEqual(metrics["contact_model"], {
             "ideal": "ideal-contacts-v1", "nominal": "nominal-linear-travel-v1",
         }[parameters["contacts"]])
@@ -227,7 +235,8 @@ class RenderFixtureTests(unittest.TestCase):
             "--output", str(directory / "render.wav"), "--frames", str(parameters["frames"]),
             "--sample-rate", str(parameters["sample_rate"]),
             "--block-size", str(parameters["block_size"]), "--seed", str(parameters["seed"]),
-            "--drawbars", parameters["drawbars"], "--contacts", parameters["contacts"],
+            "--drawbars", parameters["drawbars"], "--pedal-drawbars", parameters["pedal_drawbars"],
+            "--contacts", parameters["contacts"],
             "--percussion", parameters["percussion"],
             "--percussion-volume", parameters["percussion_volume"],
             "--percussion-decay", parameters["percussion_decay"], "--fail-on-clip",
@@ -376,7 +385,7 @@ class RenderFixtureTests(unittest.TestCase):
         self.assert_success(explicit_dir, explicit)
         self.assertEqual(implicit["parameters"], {
             "frames": 1027, "sample_rate": 48000, "block_size": 64, "seed": 7,
-            "drawbars": "008000000", "note": 60, "event_mode": "default_note",
+            "drawbars": "008000000", "pedal_drawbars": "00", "note": 60, "event_mode": "default_note",
             "event_count": None, "contacts": "ideal", "percussion": "off",
             "percussion_volume": "normal", "percussion_decay": "slow", "fail_on_clip": True,
         })
@@ -560,7 +569,7 @@ class RenderFixtureTests(unittest.TestCase):
 
     def test_wrong_console_metrics_are_retained_as_failed_evidence(self):
         invoke = fixture._invoke
-        mutations = [("render_schema_version", value) for value in (1, 3, 2.0, True, "2", None)]
+        mutations = [("render_schema_version", value) for value in (1, 2, 4, 3.0, True, "3", None)]
         mutations += [("contact_model", value) for value in
                       ("ideal-contacts-v1", "unknown", True, None)]
         mutations += [("percussion_model", value) for value in

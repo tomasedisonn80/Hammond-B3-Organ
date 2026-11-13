@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independently verify a retained schema-1 or schema-2 synthetic render bundle.
+"""Independently verify a retained schema-1, schema-2 or schema-3 render bundle.
 
 Public API: verify_bundle(directory_or_manifest) -> JSON-compatible report.
 VerificationError/OSError means failure. This consumer never imports the fixture
@@ -301,7 +301,7 @@ def _events(raw, frames, schema_version, contacts="ideal"):
         if kind in ("note_on", "note_off"):
             valid = 36 <= index <= 96 and (
                 0 <= number <= 127 and number.is_integer() if kind == "note_on" else number == 0)
-        elif kind == "key_position" and schema_version == 2:
+        elif kind == "key_position" and schema_version >= 2:
             valid = 36 <= index <= 96 and 0 <= number <= 1 and (
                 contacts == "nominal" or number in (0, 1))
         elif kind in ("drawbar", "bank_drawbar"):
@@ -312,8 +312,15 @@ def _events(raw, frames, schema_version, contacts="ideal"):
             valid = index == 0 and number in (0, 1)
         elif kind in ("all_notes_off", "cancel"):
             valid = index == 0 and number == 0
-        elif kind == "percussion" and schema_version == 2:
+        elif kind == "percussion" and schema_version >= 2:
             valid = manual == "upper" and index <= 3 and number in (0, 1)
+        elif kind in ("pedal_on", "pedal_off") and schema_version == 3:
+            valid = manual == "lower" and 1 <= index <= 25 and (
+                0 <= number <= 127 and number.is_integer() if kind == "pedal_on" else number == 0)
+        elif kind == "pedal_drawbar" and schema_version == 3:
+            valid = manual == "lower" and index <= 1 and 0 <= number <= 8 and number.is_integer()
+        elif kind == "pedal_all_notes_off" and schema_version == 3:
+            valid = manual == "lower" and index == 0 and number == 0
         else:
             valid = False
         _require(valid, f"{label}: unknown event type or invalid payload")
@@ -396,10 +403,12 @@ def _parameters(value, schema_version):
                        "percussion": ("off", "second", "third"),
                        "percussion_volume": ("normal", "soft"),
                        "percussion_decay": ("slow", "fast")}
-    if schema_version == 2:
+    if schema_version >= 2:
         keys.update(console_choices)
+    if schema_version == 3:
+        keys.add("pedal_drawbars")
     parameters = _object(value, keys, "parameters")
-    if schema_version == 2:
+    if schema_version >= 2:
         for key, choices in console_choices.items():
             _require(type(parameters[key]) is str and parameters[key] in choices,
                      f"parameters.{key}: unsupported value")
@@ -411,6 +420,10 @@ def _parameters(value, schema_version):
     _require(type(parameters["drawbars"]) is str and
              re.fullmatch(r"[0-8]{9}", parameters["drawbars"]) is not None,
              "parameters.drawbars: expected nine digits 0..8")
+    if schema_version == 3:
+        _require(type(parameters["pedal_drawbars"]) is str and
+                 re.fullmatch(r"[0-8]{2}", parameters["pedal_drawbars"]) is not None,
+                 "parameters.pedal_drawbars: expected two digits 0..8")
     _literal(parameters["fail_on_clip"], True, "parameters.fail_on_clip")
     _require(parameters["event_mode"] in ("default_note", "file"), "parameters.event_mode: unsupported value")
     if parameters["event_mode"] == "default_note":
@@ -431,7 +444,7 @@ def _invocation(value, parameters, renderer, schema_version):
         _literal(invocation[key], False, f"invocation.{key}")
     _literal(invocation["capture_errors"], [], "invocation.capture_errors")
     argv = invocation["argv"]
-    count = 18 if schema_version == 1 else 26
+    count = {1: 18, 2: 26, 3: 28}[schema_version]
     _require(type(argv) is list and len(argv) == count and all(type(token) is str for token in argv),
              f"invocation.argv: expected the complete {count}-token producer argument list")
     profile_path = _absolute(argv[2], "invocation.argv profile")
@@ -440,7 +453,9 @@ def _invocation(value, parameters, renderer, schema_version):
                 "--output", str(original_directory / "render.wav"), "--frames", str(parameters["frames"]),
                 "--sample-rate", str(parameters["sample_rate"]), "--block-size", str(parameters["block_size"]),
                 "--seed", str(parameters["seed"]), "--drawbars", parameters["drawbars"]]
-    if schema_version == 2:
+    if schema_version == 3:
+        expected += ["--pedal-drawbars", parameters["pedal_drawbars"]]
+    if schema_version >= 2:
         expected += ["--contacts", parameters["contacts"], "--percussion", parameters["percussion"],
                      "--percussion-volume", parameters["percussion_volume"],
                      "--percussion-decay", parameters["percussion_decay"]]
@@ -456,11 +471,32 @@ def _metrics(value, parameters, authoring_hash, schema_version):
                 "profile_id": "nominal-unmeasured-v1", "authoring_sha256": authoring_hash,
                 "channels": 2, "sample_format": "pcm_s16le", "clipped_frames": 0,
                 "clipped_channel_samples": 0}
-    if schema_version == 2:
-        expected.update({"render_schema_version": 2,
+    if schema_version >= 2:
+        expected.update({"render_schema_version": schema_version,
                          "contact_model": ("ideal-contacts-v1" if parameters["contacts"] == "ideal"
                                            else "nominal-linear-travel-v1"),
                          "percussion_model": "shared-readiness-v1"})
+    if schema_version == 3:
+        # Independently frozen documentary hashes: raw and canonical
+        # data/pedal-map.json, then review-a-pedal.csv and review-b-pedal.csv.
+        # The remaining exact values follow PEDAL_INTEGRATION_CONTRACT.md;
+        # matrix rows use Brown, Red, Orange, Yellow and are divided by eight.
+        # Do not derive these expectations from producer or renderer metadata.
+        expected.update({
+            "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+            "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+            "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+            "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+            "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+            "pedal_routing_model": "linear-pedal-bus-reference-v1",
+            "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+            "pedal_gain_law": "linear-pedal-position-v1",
+            "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+            "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+            "pedal_mixture_denominator": 8,
+            "pedal_gain_denominator": 8,
+            "pedal_weight_policy": "all-200-unit-positive-v1",
+        })
     expected.update({key: parameters[key] for key in ("frames", "sample_rate", "block_size", "seed")})
     _object(value, set(expected) | {"peak", "rms"}, "renderer_metrics")
     for key, target in expected.items():
@@ -507,7 +543,7 @@ def verify_bundle(directory_or_manifest):
                        "parameters", "inputs", "compiled_profile", "renderer", "tools", "git",
                        "environment", "limits", "invocation", "renderer_metrics", "wav",
                        "metric_comparison", "integrity_verified", "error"}, "manifest")
-    schema_version = _integer(manifest["schema_version"], 1, 2, "schema_version")
+    schema_version = _integer(manifest["schema_version"], 1, 3, "schema_version")
     for key, expected in (("evidence_scope", "synthetic_engineering"),
                           ("status", "succeeded"), ("error", None), ("integrity_verified", True)):
         _literal(manifest[key], expected, key)

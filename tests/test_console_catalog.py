@@ -37,7 +37,12 @@ MODELS = {"source": "ideal-shared-sine-v1", "contacts": "nominal-linear-travel-v
 METRICS = {"status", "model", "render_schema_version", "contact_model",
            "percussion_model", "evidence_status", "profile_id", "authoring_sha256",
            "sample_rate", "block_size", "frames", "seed", "channels", "sample_format",
-           "peak", "rms", "clipped_frames", "clipped_channel_samples"}
+           "peak", "rms", "clipped_frames", "clipped_channel_samples",
+    "pedal_routing_model", "pedal_voice_model", "pedal_gain_law", "pedal_contact_model",
+    "pedal_map_id", "pedal_map_raw_sha256", "pedal_map_canonical_sha256",
+    "pedal_reference_a_sha256", "pedal_reference_b_sha256", "pedal_mixture_matrix",
+    "pedal_mixture_denominator", "pedal_gain_denominator", "pedal_weight_policy",
+}
 
 
 def require(condition, message):
@@ -304,7 +309,7 @@ class ConsoleCatalogTests(unittest.TestCase):
                     self.assertEqual(len(raw), 44 + fixture["frames"] * 4)
                     self.assertEqual(set(metrics), METRICS)
                     self.assertEqual(metrics["status"], "ok")
-                    self.assertEqual(metrics["render_schema_version"], 2)
+                    self.assertEqual(metrics["render_schema_version"], 3)
                     self.assertIs(type(metrics["render_schema_version"]), int)
                     self.assertEqual(metrics["model"], MODELS["source"])
                     self.assertEqual(metrics["contact_model"], MODELS["contacts"])

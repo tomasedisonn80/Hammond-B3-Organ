@@ -36,6 +36,12 @@ constexpr std::size_t kMaxScoreLineBytes = 4096;
 constexpr std::size_t kMaxNumberBytes = 128;
 constexpr std::uint64_t kMaxSeconds = 600;
 constexpr std::uint32_t kBytesPerFrame = 4;
+// These identities describe the explicit Engine pedal policies, separately
+// from the documentary routing and the fixed, unmeasured voice transform.
+constexpr std::string_view kPedalContactModelId = "ideal-eight-contact-pedal-v1";
+constexpr std::string_view kPedalWeightPolicyId = "all-200-unit-positive-v1";
+constexpr std::uint32_t kPedalMixtureDenominator = 8;
+constexpr std::uint32_t kPedalGainDenominator = 8;
 
 [[noreturn]] void fail(const std::string& message) {
     throw std::runtime_error(message);
@@ -87,6 +93,7 @@ struct Options {
     std::uint64_t seed = 0;
     std::uint8_t note = 60;
     std::array<std::uint8_t, hammond::kDrawbarCount> drawbars{8, 8, 8, 0, 0, 0, 0, 0, 0};
+    hammond::PedalDrawbarPositions pedal_drawbars{};
     hammond::ContactMode contact_mode = hammond::ContactMode::Ideal;
     hammond::PercussionSettings percussion{};
     bool has_events = false;
@@ -94,7 +101,7 @@ struct Options {
 };
 
 enum class Flag : std::size_t {
-    Profile, Output, SampleRate, BlockSize, Frames, Seed, Drawbars, Note, Events,
+    Profile, Output, SampleRate, BlockSize, Frames, Seed, Drawbars, PedalDrawbars, Note, Events,
     Contacts, Percussion, PercussionVolume, PercussionDecay, FailOnClip, Count
 };
 
@@ -102,7 +109,7 @@ enum class Flag : std::size_t {
     Options options;
     constexpr std::array<std::string_view, static_cast<std::size_t>(Flag::Count)> names{
         "--profile", "--output", "--sample-rate", "--block-size", "--frames",
-        "--seed", "--drawbars", "--note", "--events", "--contacts", "--percussion",
+        "--seed", "--drawbars", "--pedal-drawbars", "--note", "--events", "--contacts", "--percussion",
         "--percussion-volume", "--percussion-decay", "--fail-on-clip"};
     // One program argument, two per value-taking flag, and one valueless flag.
     // Duplicates and the mutually exclusive note/score pair still reject below.
@@ -175,6 +182,17 @@ enum class Flag : std::size_t {
                     fail("Drawbars must contain exactly nine digits in 0..8.");
                 }
                 options.drawbars[i] = static_cast<std::uint8_t>(value[i] - '0');
+            }
+            break;
+        case Flag::PedalDrawbars:
+            if (value.size() != options.pedal_drawbars.size()) {
+                fail("Pedal drawbars must contain exactly two digits in 0..8.");
+            }
+            for (std::size_t i = 0; i < value.size(); ++i) {
+                if (value[i] < '0' || value[i] > '8') {
+                    fail("Pedal drawbars must contain exactly two digits in 0..8.");
+                }
+                options.pedal_drawbars[i] = static_cast<std::uint8_t>(value[i] - '0');
             }
             break;
         case Flag::Contacts:
@@ -422,6 +440,30 @@ struct AbsoluteEvent {
             value < 0.0 || value > 1.0 || std::trunc(value) != value) {
             fail("Percussion requires upper manual, index 0..3 and integer value 0 or 1.");
         }
+    } else if (tokens[1] == "pedal_on" || tokens[1] == "pedal_off") {
+        if (result.event.manual != hammond::Manual::Lower ||
+            index < 1 || index > hammond::kPedalCount) {
+            fail("Pedal note requires lower and a one-based pedal ID in 1..25.");
+        }
+        result.event.type = tokens[1] == "pedal_on" ? EventType::PedalOn : EventType::PedalOff;
+        if (result.event.type == EventType::PedalOn) {
+            if (value < 0.0 || value > 127.0 || std::trunc(value) != value) {
+                fail("Pedal-on velocity must be an integer in 0..127.");
+            }
+        } else if (value != 0.0) {
+            fail("Pedal-off value must be zero.");
+        }
+    } else if (tokens[1] == "pedal_drawbar") {
+        result.event.type = EventType::PedalDrawbar;
+        if (result.event.manual != hammond::Manual::Lower || index >= hammond::kPedalDrawbarCount ||
+            value < 0.0 || value > 8.0 || std::trunc(value) != value) {
+            fail("Pedal-drawbar requires lower, index 0..1 and integer value 0..8.");
+        }
+    } else if (tokens[1] == "pedal_all_notes_off") {
+        result.event.type = EventType::PedalAllNotesOff;
+        if (result.event.manual != hammond::Manual::Lower || index != 0 || value != 0.0) {
+            fail("Pedal-all-notes-off requires lower and index/value zero.");
+        }
     } else {
         fail("Unknown event type.");
     }
@@ -640,11 +682,32 @@ void encode_pcm(std::span<const float> samples, std::span<std::uint8_t> bytes,
         metrics.sum_squares / static_cast<long double>(options.frames)));
     std::ostringstream json;
     json.imbue(std::locale::classic());
+    const auto pedal_identity = hammond::compiled_pedal_identity();
     json << std::setprecision(std::numeric_limits<double>::max_digits10)
          << "{\"status\":\"" << status << "\",\"model\":\"ideal-shared-sine-v1\","
-         << "\"render_schema_version\":2,\"contact_model\":\""
+         << "\"render_schema_version\":3,\"contact_model\":\""
          << hammond::contact_model_id(options.contact_mode)
          << "\",\"percussion_model\":\"" << hammond::kPercussionModelId << "\","
+         << "\"pedal_routing_model\":\"" << pedal_identity.model_id
+         << "\",\"pedal_voice_model\":\"" << hammond::kNominalPedalVoiceModelId
+         << "\",\"pedal_gain_law\":\"" << hammond::kNominalPedalGainLawId
+         << "\",\"pedal_contact_model\":\"" << kPedalContactModelId
+         << "\",\"pedal_map_id\":\"" << pedal_identity.map_id
+         << "\",\"pedal_map_raw_sha256\":\"" << pedal_identity.map_raw_sha256
+         << "\",\"pedal_map_canonical_sha256\":\"" << pedal_identity.map_canonical_sha256
+         << "\",\"pedal_reference_a_sha256\":\"" << pedal_identity.review_a_sha256
+         << "\",\"pedal_reference_b_sha256\":\"" << pedal_identity.review_b_sha256
+         << "\",\"pedal_mixture_matrix\":\"";
+    for (std::size_t row = 0; row < hammond::kNominalPedalMixtureMatrix.size(); ++row) {
+        if (row != 0) json << ';';
+        for (std::size_t bus = 0; bus < hammond::kPedalBusCount; ++bus) {
+            if (bus != 0) json << ',';
+            json << hammond::kNominalPedalMixtureMatrix[row][bus] * kPedalMixtureDenominator;
+        }
+    }
+    json << "\",\"pedal_mixture_denominator\":" << kPedalMixtureDenominator
+         << ",\"pedal_gain_denominator\":" << kPedalGainDenominator
+         << ",\"pedal_weight_policy\":\"" << kPedalWeightPolicyId << "\","
          << "\"evidence_status\":\"unmeasured\",\"profile_id\":\"" << profile.profile_id.data()
          << "\",\"authoring_sha256\":\"" << profile.authoring_sha256.data()
          << "\",\"sample_rate\":" << options.sample_rate
@@ -673,7 +736,8 @@ int render(Options options) {
     if (prepared != hammond::Status::Ok || !engine.prepared()) {
         fail("Engine preparation failed: " + std::string(hammond::status_name(prepared)));
     }
-    std::array<hammond::Event, hammond::kDrawbarCount + 4> initial_controls{};
+    std::array<hammond::Event, hammond::kDrawbarCount + 4 + hammond::kPedalDrawbarCount>
+        initial_controls{};
     for (std::size_t i = 0; i < options.drawbars.size(); ++i) {
         initial_controls[i] = {0, hammond::EventType::Drawbar, hammond::Manual::Upper,
                                static_cast<std::uint8_t>(i), static_cast<double>(options.drawbars[i])};
@@ -689,6 +753,11 @@ int render(Options options) {
         initial_controls[hammond::kDrawbarCount + i] = {
             0, hammond::EventType::Percussion, hammond::Manual::Upper,
             static_cast<std::uint8_t>(i), percussion_values[i]};
+    }
+    for (std::size_t i = 0; i < options.pedal_drawbars.size(); ++i) {
+        initial_controls[hammond::kDrawbarCount + percussion_values.size() + i] = {
+            0, hammond::EventType::PedalDrawbar, hammond::Manual::Lower,
+            static_cast<std::uint8_t>(i), static_cast<double>(options.pedal_drawbars[i])};
     }
     const auto flushed = engine.process(0, {}, initial_controls);
     if (!flushed || flushed.events_consumed != initial_controls.size() || engine.frame_clock() != 0) {
@@ -776,6 +845,7 @@ int main(int argc, char* argv[]) {
                 "  --frames N                     (default 4 seconds; maximum 600 seconds)\n"
                 "  --seed UNSIGNED64              (default 0)\n"
                 "  --drawbars NNNNNNNNN           (nine digits 0..8; default 888000000)\n"
+                "  --pedal-drawbars NN            (two digits 0..8; default 00)\n"
                 "  --note 36..96                  (default 60; incompatible with --events)\n"
                 "  --events FILE                  (absolute events replace the default note)\n"
                 "  --contacts ideal|nominal        (default ideal; nominal travel is unmeasured)\n"
@@ -787,14 +857,19 @@ int main(int argc, char* argv[]) {
                 "Scores: at most 16 MiB, 262144 events, 4096 bytes/line, 1024 events/frame.\n"
                 "Score fields: frame type upper|lower index value (five fields).\n"
                 "Types: note_on, note_off, drawbar, expression, all_notes_off,\n"
-                "       bank_drawbar, select_bank, cancel, percussion, key_position.\n"
+                "       bank_drawbar, select_bank, cancel, percussion, key_position,\n"
+                "       pedal_on, pedal_off, pedal_drawbar, pedal_all_notes_off.\n"
                 "bank_drawbar: index bank*9+drawbar (A=0, B=1), integer value 0..8.\n"
                 "select_bank: index 0, integer value 0=A or 1=B; reconnects the manual.\n"
                 "cancel: index/value 0; retains held keys and banks. Drawbar edits selected bank.\n"
                 "percussion: upper only; indices 0=enable, 1=third, 2=soft, 3=fast; value 0|1.\n"
                 "key_position: either manual, MIDI36..96, target 0..1; ideal contacts require 0|1.\n"
-                "Initial percussion controls follow drawbars; score events then take precedence.\n"
-                "JSON summary schema 2 identifies source, contact and percussion models separately.\n";
+                "Pedal events require lower as an unused-field convention, not lower-manual keys.\n"
+                "pedal_on/off: one-based pedal ID1..25; on velocity0..127 (0 releases), off value0.\n"
+                "pedal_drawbar: mixture index0..1, integer position0..8; pedal_all_notes_off: index/value0.\n"
+                "Pedal Mixture 1/2 use an unmeasured static transfer; no calibrated footage is claimed.\n"
+                "Initial percussion then pedal controls follow drawbars; score events take precedence.\n"
+                "JSON schema 3 identifies source, console and nominal pedal models with map hashes.\n";
             std::cout.flush();
             if (!std::cout) {
                 fail("Cannot write renderer help to stdout.");

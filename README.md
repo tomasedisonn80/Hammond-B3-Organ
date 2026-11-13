@@ -27,8 +27,9 @@ Start with the build below or the retained [two-second console demo](examples/re
 The [current developer handoff](docs/CONTINUATION_HANDOFF.md) gives reproducible
 render, trace, plot and install commands. The [pedal Engine integration](docs/PEDAL_ENGINE.md)
 now implements the [nominal playable contract](docs/PEDAL_INTEGRATION_CONTRACT.md)
-with independent CSV, phase, migration and transaction checks. Pedal input ownership
-and offline score/evidence integration are the next checkpoint;
+with independent CSV, phase, migration and transaction checks. Bounded pedal ownership, a [single input transaction](docs/PERFORMANCE_INPUT.md),
+new score commands and [schema-3 evidence](docs/PEDAL_RENDER_EVIDENCE.md) connect it
+to the offline renderer. Diagnostics and native host foundations are next;
 **full M3 remains open**. The [current status](docs/STATUS.md) and separate
 [continuation ledger](docs/development/2026-11-13-continuation/README.md) record
 published checkpoints, actual checks and the completed sixty-worker continuation.
@@ -37,7 +38,7 @@ That earlier session’s **60 distinct assignments in ten waves** are complete, 
 and one retained note per worker. [AGENTS.md](AGENTS.md) makes the documented
 handoff, verification and commit/push workflow mandatory for future agents.
 
-The new [pedal session](docs/development/2026-11-13-pedals/README.md) has completed its first three waves (18 new workers), including a fresh full-atlas review, typed runtime routing, nominal Engine integration and an optional [VST3 foundation contract](docs/VST3_SPIKE_CONTRACT.md). Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json) tracks the remaining new work separately.
+The new [pedal session](docs/development/2026-11-13-pedals/README.md) has completed its first four waves (24 new workers), including a fresh full-atlas review, typed runtime routing, nominal Engine/input/renderer integration and an optional [VST3 foundation contract](docs/VST3_SPIKE_CONTRACT.md). Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json) tracks the remaining new work separately.
 
 ## Build and test
 
@@ -114,7 +115,7 @@ executed scope; [current status](docs/STATUS.md) records later outcomes.
 | [Status](docs/STATUS.md) | What is implemented, what passed, and what remains provisional |
 | [Next steps](docs/NEXT_STEPS.md) | Next concrete tasks, dependencies and acceptance evidence |
 | [Current operational handoff](docs/CONTINUATION_HANDOFF.md) | Current identities, render/trace/install commands, ownership and publication procedure |
-| [Next M3 gate](docs/M3_NEXT_GATE.md) | Prepared pedal-routing kernel, independent acceptance and later playable-pedal integration |
+| [Original pedal gate](docs/M3_NEXT_GATE.md) | Retained acceptance contract for the implemented routing kernel; current work is in Next steps |
 | [Acceptance matrix](docs/ACCEPTANCE_MATRIX.md) | M0-M9 requirements, actual evidence and open gates |
 | [Original session handoff](docs/SESSION_HANDOFF.md) | Preserved commands and evidence for the original session's dated checkpoint |
 | [Original assignment ledger](docs/development/AGENT_LEDGER.md) | Original 60 assignment slots; separate from the new continuation |
@@ -134,7 +135,12 @@ executed scope; [current status](docs/STATUS.md) records later outcomes.
 | [Internal parameters](docs/PARAMETERS.md) | 45 stable internal control identities; earlier 43 records preserved |
 | [Native parameter bridge](docs/PARAMETER_BRIDGE.md) | Allocation-free conversion of normalized controls into fixed Engine targets |
 | [Note ownership](docs/NOTE_OWNERSHIP.md) | Bounded channel/note-ID ownership and original-route retention |
-| [Input transaction](docs/INPUT_PROCESSOR.md) | Commit note ownership only after Engine accepts the block |
+| [Manual input transaction](docs/INPUT_PROCESSOR.md) | Retained manual-only ownership facade |
+| [Combined input transaction](docs/PERFORMANCE_INPUT.md) | One ordered manual/pedal/control stream with atomic ownership and Engine commit |
+| [Pedal note ownership](docs/PEDAL_NOTE_OWNERSHIP.md) | Explicit pedal identities, overlapping owners and scoped releases |
+| [Pedal Engine](docs/PEDAL_ENGINE.md) | Actual same-frame routing, nominal voice and tagged diagnostics |
+| [Pedal evidence](docs/PEDAL_RENDER_EVIDENCE.md) | Current schema3 and strict historical schema1/2 verification |
+| [Legacy audio compatibility](docs/PEDAL_LEGACY_COMPATIBILITY.md) | Exact local replay of all eight original scores against the frozen starting revision |
 | [Sample-rate lifecycle](docs/SAMPLE_RATE_LIFECYCLE.md) | Preserve phases, contact history and shared readiness across supported rate changes |
 | [Pedal routing](docs/PEDAL_ROUTING.md) | Documentary 25-by-8 map and prepared four-bus reference routing |
 | [Factory comparison](docs/FACTORY_REFERENCE.md) | Two independent Table III readings and complete routing comparison |

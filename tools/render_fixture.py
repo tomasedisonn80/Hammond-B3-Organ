@@ -31,8 +31,27 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PROFILE = ROOT / "data/profiles/nominal-unmeasured-v1.json"
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 CONTACT_MODELS = {"ideal": "ideal-contacts-v1", "nominal": "nominal-linear-travel-v1"}
+# Frozen from data/pedal-map.json, the two retained factory CSVs, and
+# docs/PEDAL_INTEGRATION_CONTRACT.md. These identify documentary routing and an
+# explicitly nominal rational transfer; they do not establish measured voicing.
+# The independent consumer carries its own expectations and never imports us.
+PEDAL_METRICS_V3 = {
+    "pedal_routing_model": "linear-pedal-bus-reference-v1",
+    "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+    "pedal_gain_law": "linear-pedal-position-v1",
+    "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+    "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+    "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+    "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+    "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+    "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+    "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+    "pedal_mixture_denominator": 8,
+    "pedal_gain_denominator": 8,
+    "pedal_weight_policy": "all-200-unit-positive-v1",
+}
 MAX_EXECUTABLE_BYTES = 512 * 1024 * 1024
 MAX_SCORE_BYTES = 16 * 1024 * 1024
 MAX_LOG_BYTES = 1024 * 1024
@@ -211,6 +230,12 @@ def validate_events(raw: bytes, frames: int, contacts: str = "ideal") -> int:
                 "select_bank": index == 0 and value in (0, 1),
                 "cancel": index == 0 and value == 0,
                 "percussion": manual == "upper" and index <= 3 and value in (0, 1),
+                "pedal_on": manual == "lower" and 1 <= index <= 25 and
+                    0 <= value <= 127 and value.is_integer(),
+                "pedal_off": manual == "lower" and 1 <= index <= 25 and value == 0,
+                "pedal_drawbar": manual == "lower" and index <= 1 and
+                    0 <= value <= 8 and value.is_integer(),
+                "pedal_all_notes_off": manual == "lower" and index == 0 and value == 0,
             }
             if not valid.get(kind, False):
                 raise FixtureError(f"unknown event type or invalid payload: {kind}")
@@ -372,12 +397,13 @@ def _manifest_write(directory: Path, manifest: dict) -> None:
 
 def _validate_metrics(metrics: dict, parameters: dict, authoring_digest: str) -> None:
     expected = {"status": "ok", "model": profile_compiler.MODEL, "evidence_status": "unmeasured",
-                "render_schema_version": 2, "contact_model": CONTACT_MODELS[parameters["contacts"]],
+                "render_schema_version": 3, "contact_model": CONTACT_MODELS[parameters["contacts"]],
                 "percussion_model": "shared-readiness-v1",
                 "profile_id": profile_compiler.PROFILE_ID, "authoring_sha256": authoring_digest,
                 "sample_rate": parameters["sample_rate"], "block_size": parameters["block_size"],
                 "frames": parameters["frames"], "seed": parameters["seed"], "channels": 2,
                 "sample_format": "pcm_s16le", "clipped_frames": 0, "clipped_channel_samples": 0}
+    expected.update(PEDAL_METRICS_V3)
     if set(metrics) != set(expected) | {"peak", "rms"}:
         raise FixtureError("renderer JSON fields differ from the supported metrics contract")
     for key, value in expected.items():
@@ -396,6 +422,7 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
                 events: str | os.PathLike[str] | None = None, frames: int | None = None,
                 sample_rate: int = 48000, block_size: int = 64, seed: int = 0,
                 drawbars: str = "888000000", note: int | None = None,
+                pedal_drawbars: str = "00",
                 contacts: str = "ideal", percussion: str = "off",
                 percussion_volume: str = "normal", percussion_decay: str = "slow",
                 timeout_seconds: int = DEFAULT_TIMEOUT_SECONDS) -> dict:
@@ -410,6 +437,8 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
     _integer(timeout_seconds, 1, 600, "timeout_seconds")
     if type(drawbars) is not str or not re.fullmatch(r"[0-8]{9}", drawbars):
         raise FixtureError("drawbars must contain exactly nine ASCII digits 0..8")
+    if type(pedal_drawbars) is not str or not re.fullmatch(r"[0-8]{2}", pedal_drawbars):
+        raise FixtureError("pedal_drawbars must contain exactly two ASCII digits 0..8")
     for label, value, choices in (
             ("contacts", contacts, ("ideal", "nominal")),
             ("percussion", percussion, ("off", "second", "third")),
@@ -456,7 +485,7 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
                        ("profile_compiler", Path(profile_compiler.__file__).resolve())):
         tools_identity[name] = {"path": str(path), **sha256_file(path, MAX_TOOL_BYTES)}
     parameters = {"frames": frames, "sample_rate": sample_rate, "block_size": block_size,
-                  "seed": seed, "drawbars": drawbars, "note": note,
+                  "seed": seed, "drawbars": drawbars, "pedal_drawbars": pedal_drawbars, "note": note,
                   "contacts": contacts, "percussion": percussion,
                   "percussion_volume": percussion_volume, "percussion_decay": percussion_decay,
                   "event_mode": "file" if events is not None else "default_note",
@@ -498,6 +527,7 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
                 "--output", str(directory / "render.wav"), "--frames", str(frames),
                 "--sample-rate", str(sample_rate), "--block-size", str(block_size),
                 "--seed", str(seed), "--drawbars", drawbars,
+                "--pedal-drawbars", pedal_drawbars,
                 "--contacts", contacts, "--percussion", percussion,
                 "--percussion-volume", percussion_volume, "--percussion-decay", percussion_decay,
                 "--fail-on-clip"]
@@ -605,6 +635,7 @@ def main(argv: list[str] | None = None) -> int:
                           ("seed", 0), ("timeout-seconds", DEFAULT_TIMEOUT_SECONDS)):
         parser.add_argument(f"--{name}", type=_cli_integer, default=default, action=_Once)
     parser.add_argument("--drawbars", default="888000000", action=_Once)
+    parser.add_argument("--pedal-drawbars", default="00", action=_Once)
     for name, default, choices in (
             ("contacts", "ideal", ("ideal", "nominal")),
             ("percussion", "off", ("off", "second", "third")),

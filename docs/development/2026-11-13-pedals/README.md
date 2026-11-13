@@ -53,3 +53,15 @@ The kernel publication `6768ef2388819ebbaaf7cc23bdf72265dc72c561` was fetched wi
 
 
 The repaired frozen tree `e1828586c35ea40562d6de6be671c206d725edd2` passed **55/55 local Release CTest suites, zero failures, in 54.86 seconds**, with GCC 14.2.0, CMake 3.31.6 and Python 3.12.14. Final result records differ only in Markdown and actual assignment-state metadata from that tested tree. Hosted qualification for this new publication is a separate observed gate.
+
+
+The nominal pedal Engine checkpoint was published as `e493b9fed9e3ed8a294fb5d95af447132776cb3a`, tree `056a912a1e407d8d0a842442463fd487bf907690`. Root fetched and verified exact local/remote tree identity. Hosted [run 43397574429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43397574429) subsequently passed all four configured jobs: Linux GCC Release, macOS AppleClang Release, Windows MSVC Release, and Linux GCC ASan/UBSan with leak checking. The new input/renderer scopes remain outside that checkpoint.
+
+
+## Wave 4 accepted — playable input and offline evidence
+
+Assignments 19–24 completed explicit pedal ownership, a single ordered manual/pedal/control transaction, four renderer score commands and initial pedal registration, schema-3 evidence with strict historical 1/2 verification, exact legacy replay and independent mixed-input acceptance. Both owner adapters have independent 256-owner capacities; the combined call admits at most 1024 raw and emitted events and advances the Engine once. Rejected calls preserve owner ledgers, Engine history and caller output. The independent test uses hand-written physical timelines and a separate Engine, not the production translator as its oracle.
+
+All eight retained scores and both catalogs/profile inputs are unchanged. Twenty-four actual local executions compared the frozen baseline with current default 00 and explicit 00 pedals: full WAV and PCM bytes and retained common metrics matched for 670,800 frames per variant. Two migration-test assumptions (the exact parameter dictionary and an old 1 KiB metadata-read bound) were repaired, with no production defect. The new evidence test separately verified both genuine retained schema 1/2 bundles unchanged and rejected 80 full-bundle mutations.
+
+Root's coherent frozen tree `f84cacb4e6eb01189ca29136fc838885fdd858f4` passed **60/60 local Release suites, zero failures, in 56.10 seconds**. The final source/test identities remain unchanged; subsequent differences are Markdown results and actual assignment states only. Assignment 24's final test hash matches that exact tree. The new trace/metadata/catalog scopes belong to wave 5 and are excluded from this checkpoint.

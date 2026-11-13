@@ -128,7 +128,7 @@ class RendererTests(unittest.TestCase):
             "authoring_sha256": self.authoring_sha256, "sample_rate": rate,
             "block_size": block, "frames": frames, "seed": seed,
             "channels": 2, "sample_format": "pcm_s16le",
-            "render_schema_version": 2, "contact_model": contact_model,
+            "render_schema_version": 3, "contact_model": contact_model,
             "percussion_model": "shared-readiness-v1",
         }
         for key, value in expected.items():
