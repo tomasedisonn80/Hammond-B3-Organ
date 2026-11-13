@@ -3,10 +3,10 @@
 An evidence-led recreation of a vintage Hammond B-3 and Leslie system, developed
 from the repository's **500-page research and build atlas**.
 
-**Current stage:** initial M0-M2 engineering development. The repository now has
-strict profile/data contracts, a C++20 core foundation, reproducible build tooling
-and tests. The shared-source dry engine and offline client are the active work.
-The selected development profile is explicitly **nominal and unmeasured**.
+**Current stage:** a working nominal dry-organ engine and offline WAV renderer,
+with strict data contracts and independent tests. The core has 91 shared,
+continuously running sources, two manuals, drawbars, sample-offset events and
+explicit clock/error handling. The selected profile is **nominal and unmeasured**.
 
 The eventual product is a VST3 instrument and standalone application, with an
 inspectable organ/Leslie engine and the atlas's dimensional, accessible interface.
@@ -26,6 +26,21 @@ ctest --preset debug
 ```
 
 The build validates the authoring JSON and generates `build/nominal.b3p`.
+
+Render a two-second dry registration (Linux/macOS single-configuration build):
+
+```sh
+cmake -E make_directory out
+./build/hammond_render --profile build/nominal.b3p --output out/dry-organ.wav \
+  --frames 96000 --sample-rate 48000 --block-size 64 --seed 0 \
+  --drawbars 888000000 --note 60 --fail-on-clip
+```
+
+The output is stereo PCM16 with identical dry channels. Existing output files
+are preserved; choose a new filename for another render. The CLI reports profile
+identity, peak, RMS and clipping as JSON. See the [offline contract](docs/RENDER_FORMAT.md)
+for event files, strict limits and the hard-link filesystem requirement.
+
 See [build instructions](docs/BUILD.md) for explicit commands, Release and
 sanitizer builds, and platform qualification limits.
 

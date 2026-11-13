@@ -1,7 +1,6 @@
 # Initial engine and offline interface
 
-This contract guides the next implementation wave. Update it to match integrated
-code before claiming completion. Its scope is an ideal, unmeasured dry source/mix
+This contract describes the integrated first dry-engine implementation. Its scope is an ideal, unmeasured dry source/mix
 engine; the organ and cabinet electronics remain future stages.
 
 ## Engine facade

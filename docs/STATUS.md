@@ -4,16 +4,23 @@ Session started 2026-11-12 (America/Halifax). Baseline: `501c68b`.
 
 ## Current stage
 
-Initial development is in progress. The original repository contained a minimal
-README and the 500-page atlas. The source PDF is preserved and hashed. Permanent
-agent instructions and the initial implementation contract are committed.
+The M0 engineering foundation and a scoped M1/M2 nominal dry engine are implemented.
+The engine owns 91 shared sine sources, explicit manual routing, ideal key gates,
+manual drawbars and a linear expression surrogate. It consumes bounded sample-offset
+events with atomic rejection, stable ties, zero-frame flushes and an independent
+64-bit render clock. Source phase continues through silence and disconnected output.
 
-The current target is an explicitly unmeasured M0-M2 dry engine: data/evidence
-contracts, framework-independent C++20 processing, an offline renderer, 91 shared
-continuous sources and explicit manual mapping. Engineering and physical-fidelity
-statuses are tracked separately. The profile/compiler foundation has passed independent Debug, Release and
-bounded-input checks. The audible engine is being implemented in wave03; no
-plugin has yet been built or validated.
+The offline renderer writes actual stereo PCM16 WAV files, reports signal metrics,
+subdivides dense event blocks and publishes without overwriting existing files.
+Independent profile, generator, scheduler and renderer tests passed their assigned
+Debug/Release scopes. Source pitch, coherent foldback, same-build block partition
+identity and malformed-input behavior have retained software evidence.
+
+Wave04 is adding retained A/B banks and Cancel semantics. No scanner, AO-28,
+Leslie DSP, physical contact model, percussion, pedal audio, VST3, audio-device
+standalone application or native UI is implemented at this checkpoint. No measured
+instrument-fidelity claim is made. Full M0 specimen lock and factory M2 evidence
+remain open despite the useful nominal engineering implementation.
 
 ## Evidence boundary
 

@@ -102,6 +102,15 @@ if(BUILD_TESTING)
             ENVIRONMENT "PYTHONDONTWRITEBYTECODE=1;HAMMOND_TEST_PROFILE=${HAMMOND_COMPILED_PROFILE};HAMMOND_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}")
     endforeach()
 
+    if(TARGET hammond_render)
+        foreach(test_source IN LISTS HAMMOND_PYTHON_TESTS)
+            get_filename_component(test_name "${test_source}" NAME_WE)
+            set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
+                "HAMMOND_RENDER_EXECUTABLE=$<TARGET_FILE:hammond_render>")
+        endforeach()
+        list(APPEND HAMMOND_TEST_TARGETS hammond_render)
+    endif()
+
     # Unlike invoking CTest directly, this target first builds its required inputs.
     add_custom_target(check
         COMMAND "${CMAKE_CTEST_COMMAND}" --output-on-failure --no-tests=error -C "$<CONFIG>"

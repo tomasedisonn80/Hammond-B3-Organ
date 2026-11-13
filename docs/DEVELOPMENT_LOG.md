@@ -57,3 +57,25 @@ compiled bytes SHA-256
 
 Wave03 implements the shared bank, dry graph and renderer against frozen timing
 and file contracts. See individual notes07-12 for exact commands and limitations.
+
+### Wave 03 — working shared sources, dry engine and offline audio
+
+Agents13-18 implemented a value-owned91-source sine bank with deterministic
+SplitMix64 initialization, transactional dry Engine, strict offline CLI/WAV writer
+and independent permanent source/engine/CLI tests. The core shares each source
+sample across every routed contact and adds branch gains coherently. It does not
+restart phase on notes or normalize by polyphony.
+
+Observed checks: all supported rates44100/48000/96000;440 crossings in1second for
+tone46; long-double phase/sine oracles; coherent doubling6.020599913dB; stable ties,
+flushes, disconnected rendering, caller-owned profile changes and failure atomicity.
+The2053-frame engine timeline matches bitwise over blocks1/17/64/127/512/1024.
+The CLI's20 retained unittest cases include dense subdivision, little-endian WAV
+headers/channels, clipping/no-clobber failure and partial-final-block handling.
+A separate3856-event smoke matched blocks through65536; its concurrent destination
+race preserved the other writer's file. No hardware, host or deadline pass follows.
+
+The callback currently has discrete control steps and ideal gates. Native automation
+curves, hot profile exchange and physical circuit/rotary stages are deferred.
+Wave04 adds an explicitly exclusive four-bank model and Cancel while preserving
+legacy audio. Permanent notes13-18 identify actual commands and limits.

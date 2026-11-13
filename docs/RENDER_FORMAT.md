@@ -14,7 +14,11 @@ hammond_render --profile build/nominal.b3p --output out/demo.wav \
   --drawbars 888000000 --note 60
 ```
 
-`--profile` and `--output` are required. Defaults are48000 Hz,64 frames/block,
+`--profile` and `--output` are required. The output parent directory must exist;
+existing destinations are rejected and never overwritten. Publication uses an
+atomic hard link from a temporary sibling, so the output filesystem must support
+hard links. Failure removes temporary work and preserves any existing file.
+ Defaults are48000 Hz,64 frames/block,
 four seconds of frames at the selected rate, seed0, registration888000000 and
 MIDI note60. Accept only the three supported rates. Numeric flags reject signs
 for unsigned integers, fractions, trailing garbage and overflow. Frames must be
