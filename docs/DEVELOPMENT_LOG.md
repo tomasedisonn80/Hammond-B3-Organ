@@ -1449,3 +1449,25 @@ the earlier Python-repair tree. Two generated caches were hashed separately and
 preserved; initial source-proof setup stops are recorded. Final result-only
 Markdown edits do not alter the qualified inputs. Actual Windows junction and
 macOS repaired native execution remain separate next hosted gates.
+
+### Final-platform inventory fixture correction after actual hosted execution
+
+Published/fetched feefe83 passed all three native platform jobs (Linux8/8,
+macOS7/7,Windows7/7), including actual inventories and artifacts. Core Linux
+and sanitizers passed71/71; macOS and Windows each passed70/71 with the
+inventory regression failing. The actual Mac temporary alias and Windows
+8.3 path spelling bypassed two synthetic patches. Windows also exposed mklink
+argument quoting and synthetic st_file_attributes=None. These are concrete
+fixture failures, retained with full logs, not a fully passing matrix.
+
+Assignment59 repaired only tests/test_native_bundle_inventory.py: canonical
+fixture roots, separate Windows command arguments, realistic integer attribute
+metadata and an explicit two-success counter before the junction marker. The
+old fixture reproduced the alias failure locally. The repair passed all20methods
+both normally and under an actual symlinked temporary parent, plus each forced
+special-mode/symlink fallback. No skips or production change. Root reviewed the
+diff and bound the exact frozen test/tool inputs to tree
+43ac9f5ae25e30f91b45279995ef44ecf01c357e. The retained repair report gives
+commands, complete boundaries and log identities. Actual new-source Windows
+junction and macOS suite results remain the next hosted gate. Every previous
+job completed before this next publication; no outstanding job was cancelled.

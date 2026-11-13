@@ -65,6 +65,14 @@ def universal(wide: bool = False) -> bytes:
     return bytes(data)
 
 
+def special_mode_metadata(info, mode: int):
+    fields = {name: getattr(info, name) for name in
+              ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")}
+    # Constructed os.stat_result values can expose st_file_attributes=None on
+    # Windows. These fixtures model a nonspecial attribute word explicitly.
+    return SimpleNamespace(**fields, st_mode=mode, st_file_attributes=0)
+
+
 class Fixture:
     def __init__(self, root: Path, module: str = "Contents/x86_64-linux/HammondB3.so",
                  data: bytes | None = None):
@@ -106,7 +114,9 @@ class Fixture:
 class NativeBundleInventoryTests(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
-        self.root = Path(self.temporary.name)
+        # Match the inventory walk's canonical paths even when the platform
+        # temp directory uses an alias (/var on macOS or an 8.3 Windows name).
+        self.root = Path(self.temporary.name).resolve()
         self.fixture = Fixture(self.root)
 
     def tearDown(self):
@@ -313,9 +323,9 @@ class NativeBundleInventoryTests(unittest.TestCase):
             link.symlink_to(target)
         except OSError:
             # Windows may deny symlink creation. The portable classification
-            # branch still receives a real stat result with a link mode.
+            # branch retains real metadata with a synthetic link mode.
             regular = link.parent.stat()
-            fake = os.stat_result((0o120777, *regular[1:]))
+            fake = special_mode_metadata(regular, 0o120777)
             with mock.patch.object(Path, "lstat", return_value=fake):
                 with self.assertRaises(inventory.InventoryError): inventory._regular(target, 100)
             return
@@ -381,11 +391,12 @@ class NativeBundleInventoryTests(unittest.TestCase):
             cases = ((self.fixture.resources / "junction", outside, self.fixture.bundle),
                      (alias_parent / "HammondB3.vst3", self.fixture.bundle,
                       alias_parent / "HammondB3.vst3"))
+            junctions_checked = 0
             for alias, target, bundle in cases:
                 with self.subTest(actual_windows_junction=alias):
-                    command = f'mklink /J "{alias}" "{target}"'
                     result = subprocess.run(
-                        [os.environ.get("COMSPEC", "cmd.exe"), "/d", "/c", command],
+                        [os.environ.get("COMSPEC", "cmd.exe"), "/d", "/c",
+                         "mklink", "/J", str(alias), str(target)],
                         capture_output=True, text=True, encoding="utf-8", errors="replace",
                         timeout=15, check=False)
                     self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
@@ -399,6 +410,8 @@ class NativeBundleInventoryTests(unittest.TestCase):
                         alias.rmdir()
                     self.assertEqual(sentinel.read_bytes(), b"external target must remain intact\n")
                     self.assertEqual(self.fixture.module.read_bytes(), elf())
+                    junctions_checked += 1
+            self.assertEqual(junctions_checked, 2, "both actual Windows junctions were checked")
             print("reparse probes: root/directory/file metadata and 2 actual Windows junctions")
         else:
             print("reparse probes: root/directory/file metadata; actual Windows junctions not applicable")
@@ -410,7 +423,7 @@ class NativeBundleInventoryTests(unittest.TestCase):
             with self.assertRaises(inventory.InventoryError): self.fixture.report()
         else:
             original = self.fixture.module.stat()
-            fake = os.stat_result((0o010600, *original[1:]))
+            fake = special_mode_metadata(original, 0o010600)
             with mock.patch.object(Path, "lstat", return_value=fake):
                 with self.assertRaises(inventory.InventoryError): inventory._regular(self.fixture.module, 100)
 
