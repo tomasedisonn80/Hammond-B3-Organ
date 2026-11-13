@@ -102,6 +102,10 @@ accepted. Each manifest/note read is capped at **128 KiB**, and direct session
 directory enumeration is capped at **256 entries**. Check a stable snapshot;
 this is not a locking or adversarial concurrent-filesystem protocol.
 
+UTF-8 notes accept both LF and CRLF line endings. The byte limit applies before
+read-only CRLF normalization; owner matching and duplicate-owner rejection remain
+unchanged. The regression writes explicit CRLF bytes on every test platform.
+
 This establishes **retained assignment-record consistency**. It cannot attest
 external agent runtime identities, prove that an agent read the PDF, evaluate the
 substance of a report, authenticate historical execution, or establish test,

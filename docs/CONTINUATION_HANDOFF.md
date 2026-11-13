@@ -17,7 +17,8 @@ product still have separate gates in [PLAN.md](PLAN.md).
 1. Read [AGENTS.md](../AGENTS.md), current status/next steps and the latest
    development-log entry. Inspect the current revision and other workers' file
    ownership before choosing a task. The original and continuation ledgers count
-   different assignments; planned rows are not completed work.
+   different assignments; inspect the continuation's [actual-state manifest](development/2026-11-13-continuation/assignments.json).
+   Planned rows are not completed work.
 2. Build and run the current Release suite from one coherent checkout or frozen
    archive. Record the exact source identity and actual result. Never combine an
    older static library with newer live headers.
@@ -273,12 +274,33 @@ later instruction or branch protection changes that route.
    If the expected head changed, inspect/integrate it and rerun affected checks;
    do not remove the guard or force-push around another session's work.
 
-Use [repository checks](REPOSITORY_CHECKS.md) and each ledger's current instructions
-for source and assignment accounting. The original checker's
-`--expected-agents 60` refers to `docs/development/agent-notes/`; it does not count
-the continuation's separate workers. Preserve prior evidence and use a new
-corrective/revert commit when needed. New model meanings, control laws, IDs or
-saved formats require explicit identities/migrations before publication.
+Use the [repository checks](REPOSITORY_CHECKS.md) and the separate
+[continuation record checks](CONTINUATION_CHECKS.md) on the source archive being
+qualified. These read-only commands permit honest work in progress:
+
+```sh
+python3 -B tools/check_repository.py --json
+python3 -B tools/check_continuation.py --json
+```
+
+For this continuation's completed-session gate, require both counts explicitly:
+
+```sh
+python3 -B tools/check_repository.py --expected-agents 60 --json
+python3 -B tools/check_continuation.py --expected-complete 60 --json
+```
+
+The first count refers only to the original `docs/development/agent-notes/`.
+The second validates this continuation's distinct actual identities, complete
+manifest states and matching notes. Update those states only from actual dispatch
+and substantive completion reports; a note's existence never completes a worker.
+The explicit continuation final gate should fail while any slot remains planned
+or running. Neither consistency check proves external execution, DSP correctness,
+publication, hosted qualification or physical fidelity.
+
+Preserve prior evidence and use a new corrective/revert commit when needed. New
+model meanings, control laws, IDs or saved formats require explicit
+identities/migrations before publication.
 
 The scope and actual command checks for this handoff are retained in
 [assignment 51](development/2026-11-13-continuation/51-operational-handoff.md).

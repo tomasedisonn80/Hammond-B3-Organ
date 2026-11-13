@@ -138,6 +138,7 @@ Qualification belongs to the named revision and executed scope.
 | [Numerical bounds](docs/NUMERICAL_BOUNDS.md) | Preparation limits and finite-window drift evidence |
 | [Benchmark](docs/BENCHMARKING.md) | Bounded workload timing with explicit limitations |
 | [Repository checks](docs/REPOSITORY_CHECKS.md) | Source, navigation, local links and data integrity |
+| [Continuation record checks](docs/CONTINUATION_CHECKS.md) | Separate actual assignment states in the [continuation manifest](docs/development/2026-11-13-continuation/assignments.json) and its explicit final completion gate |
 | [Dependencies and rights](docs/DEPENDENCIES_AND_RIGHTS.md) | Actual distributed material, provenance, notices and unresolved permissions |
 | [Complete atlas review](docs/research/ATLAS_REVIEW.md) | Full 500-page coverage, milestone interpretation and source limits |
 | [Source manifest](docs/research/source-manifest.json) | Preserved PDF identity and missing companion assets |

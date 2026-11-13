@@ -46,7 +46,10 @@ def read_text(path):
     with path.open("rb") as source:
         raw = source.read(MAX_FILE_BYTES + 1)
     require(len(raw) <= MAX_FILE_BYTES, f"file exceeds byte limit: {path.name}")
-    return raw.decode("utf-8")
+    # Identity rules apply to logical lines on both LF and CRLF checkouts.
+    # Keep the bound on original bytes; normalization neither writes files nor
+    # relaxes the requirement for exactly one matching explicit owner line.
+    return raw.decode("utf-8").replace("\r\n", "\n")
 
 
 def unique_object(pairs):

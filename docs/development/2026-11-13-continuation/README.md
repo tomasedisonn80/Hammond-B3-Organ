@@ -37,7 +37,7 @@ physical instrument fidelity, a VST3 plugin, or a device-audio application exist
 | 07 | 37–42 | Observable console traces and explicit partial-key input | Complete; `9a5c99a`, 43/43 local suites and all four hosted jobs |
 | 08 | 43–48 | Integration, cross-platform checks and examples | Complete; `2046b93`, 45/45 local suites and all four hosted jobs |
 | 09 | 49–54 | User/developer handoff, verification records and exact next milestone | Complete; six retained notes and 54-complete record check |
-| 10 | 55–60 | Independent final review, fixes and publication verification | All six dispatched; 55–57 complete, final three running |
+| 10 | 55–60 | Independent final review, fixes and publication verification | All six dispatched; final qualification in progress; actual states in manifest |
 
 Each numbered note names its actual agent, scope, changed files, observed checks,
 results and limitations. The integrator updates shared status/next-step/log files.
@@ -477,3 +477,36 @@ records are added for publication; root verifies unchanged code/test/data blobs
 and the resulting full archive separately. No branch update or hosted result is
 claimed until its actual publication is observed. The final reviewers' active
 files remain outside this checkpoint.
+
+
+The corrected candidate was published and remote-verified as
+`6bdce067ecdfa2b918113e254ed0ae706fdc9b43`, final tree
+`6f7948c1cc83945f2ca872b96e668de3796cf8a5`. The expected parent was `2046b93`;
+the update used the expected-head guard with force disabled. Root fetched and
+verified the commit/tree, then moved only the local branch reference while
+preserving active final-review files. All runtime, test and artifact bytes match
+the 46-suite tested tree; the four final Markdown result records and all 344
+archive blobs were checked separately. Hosted run 43380337294 was observed in
+progress, and assignment 59 owns its independent complete-log qualification.
+Assignment 58's navigation/handoff review is now accepted, bringing the working
+manifest to 58 complete and two running. The published manifest correctly retains
+its earlier 57-complete snapshot.
+
+
+### Windows accounting failure and explicit CRLF regression
+
+The first corrected candidate run `43380337294` passed Linux/macOS Release and
+ASan/UBSan/leaks, but Windows passed only 45/46 suites. Its accounting suite had
+three failures and three errors because bounded raw reads preserved the CR in
+CRLF fixture owner lines. All 35 renderer methods passed, including the stdout
+repair. Root and assignment 59 independently reproduced the CRLF rejection on
+Linux; the [repair record](../../reviews/CONTINUATION_CRLF_REPAIR.md) retains the failed
+job and diagnostic archive identity.
+
+Root added an explicit CRLF regression, observed it fail before the correction,
+and normalized CRLF only after the raw-byte bound and UTF-8 decode. Strict owner
+and duplicate-owner rules remain unchanged. All 13 accounting methods now pass,
+zero skips, in 0.125 seconds; the actual 58-complete progress gate also passes.
+Native source, headers, renderer, profile and retained audio bytes are unchanged.
+The repaired archive and a new hosted run are the next gates. No worker was
+added or counted again for this integrator repair.

@@ -74,6 +74,21 @@ class ContinuationLedgerTests(unittest.TestCase):
         self.manifest["assignments"][1]["note"] = None
         self.assertEqual(self.check()["counts"]["running"], 1)
 
+    def test_crlf_notes_preserve_identity_and_duplicate_owner_checks(self):
+        # Write the Windows byte representation explicitly on every platform.
+        # Reading through Path.read_text first normalizes the host's newlines.
+        for name in ("01-fixture.md", "02-fixture.md", "07-fixture.md"):
+            note = self.session / name
+            text = note.read_text(encoding="utf-8")
+            note.write_bytes(text.replace("\n", "\r\n").encode("utf-8"))
+        report = self.check(expected_complete=2)
+        self.assertEqual(report["counts"], {"planned": 57, "running": 1, "complete": 2})
+        self.assertEqual(report["numbered_notes"], 3)
+        note = self.session / "01-fixture.md"
+        note.write_bytes(note.read_bytes() + b"Agent: `/root/w01_a01_fixture`\r\n")
+        with self.assertRaisesRegex(CHECKER.LedgerError, "exactly one"):
+            self.check()
+
     def test_missing_complete_note_fails(self):
         (self.session / "01-fixture.md").unlink()
         with self.assertRaisesRegex(CHECKER.LedgerError, "complete assignment 01 is missing"):

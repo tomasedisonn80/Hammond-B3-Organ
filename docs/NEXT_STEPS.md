@@ -15,12 +15,12 @@ developer handoff, compatibility review and separate assignment accounting.
 Preserve the original ideal/off audio as a compatibility case.
 Publication requires a clean staged source build, applicable tests, an
 expected-head push and observed CI.
-The frozen wave-09 archive passed all 46 suites. Final review repaired the
-renderer's buffered stdout error status, added a regression, and reconciled stale
-host-integration wording. The corrected combined archive now passes all 46
-Release suites and 371 Python methods; publication and its actual hosted run
-follow. All sixty workers are dispatched; 57 are complete and the last three
-reviews remain in progress in this snapshot.
+The corrected combined candidate is published as `6bdce06`. Its 46-suite local
+Release gate and 371 Python methods passed. Hosted Linux/macOS/sanitizer jobs
+passed, while Windows exposed CRLF handling in the new accounting checker. That
+issue is now corrected and all 13 accounting methods pass locally; qualify the
+repaired archive and observe its new hosted run before final completion. All
+sixty workers are dispatched; 58 are complete and two final reviews are running.
 
 The remaining session work is the six independent wave-10 reviews: runtime,
 input/persistence, offline evidence, handoff/atlas alignment, platform qualification,

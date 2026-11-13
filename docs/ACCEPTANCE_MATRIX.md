@@ -21,7 +21,7 @@ records the actual checks.
 
 | Evidence | Observed scope | What it establishes |
 | --- | --- | --- |
-| Current published software, `2046b9388f6aab1122e37646b2f20199b5c6079f` | The integrator observed all 45 local Release suites pass in 12.91 seconds and all four jobs in [run 43376892064](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43376892064) report 45 suites passed. The local frozen tree and Markdown-only publication differences are retained in the [handoff](CONTINUATION_HANDOFF.md). | Revision-specific offline engineering evidence, including enabled allocation checks, the 16-file install and explicit console/owned-input benchmark cases. This reviewer did not independently download those job archives. |
+| Published qualification checkpoint, `2046b9388f6aab1122e37646b2f20199b5c6079f` | The integrator observed all 45 local Release suites pass in 12.91 seconds and all four jobs in [run 43376892064](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43376892064) report 45 suites passed. The local frozen tree and Markdown-only publication differences are retained in the [handoff](CONTINUATION_HANDOFF.md). | Revision-specific offline engineering evidence, including enabled allocation checks, the 16-file install and explicit console/owned-input benchmark cases. This reviewer did not independently download those job archives. |
 | Independently audited prior checkpoint, `9a5c99a862daf26a2bab9b05613c98803727a3e7` | The [platform review](reviews/CONTINUATION_PLATFORM_REVIEW.md) checked all four complete job archives: 43 suites, 352 Python methods, zero failed/disabled/skipped tests per job. Linux/macOS/Windows Release and Linux ASan/UBSan/leak instrumentation were inspected. | Published partial-key, ownership, lifecycle, trace and plot behavior on the actual named runners. Later changes require their own checks. |
 | Scoped runtime review | [Runtime boundary review](reviews/RUNTIME_BOUNDARY_REVIEW.md): coherent frozen-source inspection and six focused Release suites; no actionable defect found. | Admission, atomic ownership, event timing, partial-key history, rate changes and parameter conversion within the reviewed scope. |
 | Independent legacy comparison | [Legacy audio review](reviews/CONTINUATION_LEGACY_AUDIO.md): 11 exact WAV/PCM comparisons against a fresh pre-continuation build, 11 default-versus-explicit ideal/Off comparisons and six additional partition comparisons. All 15 old JSON metric fields agree after removing the three schema-2 additions. | Same-toolchain compatibility of the retained nominal model and selected cases; not cross-toolchain bit identity or unchanged metadata schema. |
@@ -105,9 +105,11 @@ and bounded processing.
 
 Only after that gate should the next contract add the explicit four-bus/two-drawbar
 transfer, public pedal events, ownership and saved-state migrations. Neither
-step alone closes full M3. Current ownership and unfinished review/accounting
-work are recorded in the continuation ledger; this page makes no claim that all
-60 new assignments have completed.
+step alone closes full M3. Current ownership and actual review/accounting states
+are recorded in the [continuation manifest](development/2026-11-13-continuation/assignments.json)
+and its ledger. The [separate record checker](CONTINUATION_CHECKS.md) must pass
+its explicit sixty-complete gate before the continuation is declared finished;
+that session gate does not close any additional product milestone.
 
 Every subsequent task follows [AGENTS.md](../AGENTS.md): read current plan/status
 and source pages, declare required evidence, preserve others' work, build coherent

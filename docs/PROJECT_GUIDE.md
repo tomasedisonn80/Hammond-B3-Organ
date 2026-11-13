@@ -105,7 +105,7 @@ rights. Record provenance and applicable rights before adding a release payload.
 | Session | Assignment and evidence records |
 | --- | --- |
 | Original ten-wave implementation | [Original agent ledger](development/AGENT_LEDGER.md), [wave log](development/WAVE_LOG.md), [agent notes](development/agent-notes/) and [historical handoff](SESSION_HANDOFF.md). Their original assignment IDs 01-60 remain unchanged. |
-| Independent 2026-11-13 continuation | [Separate continuation ledger](development/2026-11-13-continuation/README.md), its numbered evidence notes and [current handoff](CONTINUATION_HANDOFF.md). This session has its own 60-assignment, ten-wave scope and actual completion accounting. |
+| Independent 2026-11-13 continuation | [Separate continuation ledger](development/2026-11-13-continuation/README.md), [actual-state manifest](development/2026-11-13-continuation/assignments.json), numbered evidence notes and [current handoff](CONTINUATION_HANDOFF.md). The [continuation checker](CONTINUATION_CHECKS.md) validates this session's own 60-assignment, ten-wave records. |
 
 Read the newest ledger and shared status before claiming a task. Contacts,
 percussion, partial-key input and typed core adapters are already implemented;
@@ -115,6 +115,16 @@ Research waves, development waves and M0-M9 milestones describe different things
 
 Preserve existing history when `main` advances. Record actual changes, commands,
 failures and unrun gates in the assigned note; the integrator owns shared status
-and publication. The read-only `python3 tools/check_repository.py --json` command
-checks its documented [navigation/data scope](REPOSITORY_CHECKS.md); it is not a
-product or physical-calibration gate.
+and publication. Check the two scopes independently:
+
+```sh
+python3 -B tools/check_repository.py --json
+python3 -B tools/check_continuation.py --json
+```
+
+The first checks its documented [navigation/data scope](REPOSITORY_CHECKS.md)
+and the original session's notes. The second reports this continuation's actual
+declared complete/running/planned states and validates their retained records.
+Use its [explicit final count](CONTINUATION_CHECKS.md) only when all sixty new
+assignments have substantively completed. These are record/integrity checks,
+not product, external-execution or physical-calibration gates.

@@ -194,10 +194,15 @@ WAV can already exist if subsequent summary delivery fails, as documented in
 match the implemented FIFO, control migration and stopped rate APIs. These final
 changes passed a new coherent combined Release gate: 46/46 suites, including
 371 Python methods, on tree `08d944734efcd1b7a8ed5a93392deabca70a178f`.
-Hosted qualification is recorded separately once observed. The earlier frozen
-wave-09 pass predates the repair and does not substitute for this new gate.
+Published `6bdce06` passed Linux/macOS Release and ASan/UBSan/leaks in run
+43380337294. Windows passed 45/46, failing only the continuation checker's CRLF
+fixture handling. Root reproduced and corrected that issue; all 13 accounting
+methods now pass locally. The [CRLF repair record](reviews/CONTINUATION_CRLF_REPAIR.md)
+retains the cause and failed-run evidence. A new hosted run is required before
+claiming complete platform qualification. The renderer's 35-method suite passed
+in the first Windows run.
 
-All sixty continuation workers have been dispatched; 57 are complete and three
+All sixty continuation workers have been dispatched; 58 are complete and two
 final reviews are running at this checkpoint. The
 [actual manifest](development/2026-11-13-continuation/assignments.json) and
 [separate accounting contract](CONTINUATION_CHECKS.md) govern the final count.
