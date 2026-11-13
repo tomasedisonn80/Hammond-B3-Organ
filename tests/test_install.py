@@ -492,6 +492,32 @@ class OfflineInstallTests(unittest.TestCase):
             configuration = self.configuration or "Release"
             self.assert_success(self.invoke([self.cmake, "-S", source, "-B", build,
                                              f"-DCMAKE_BUILD_TYPE={configuration}"], work, environment))
+            # GNUInstallDirs can cache an empty derived DATADIR. The project
+            # must support repeated default configuration while still rejecting
+            # an explicitly empty command-line value below. Automatic defaults
+            # follow DATAROOTDIR; custom DATADIR values remain independent.
+            def cached_datadir():
+                cache = (build / "CMakeCache.txt").read_text(encoding="utf-8")
+                match = re.search(r"^CMAKE_INSTALL_DATADIR:PATH=(.*)$", cache, re.MULTILINE)
+                self.assertIsNotNone(match)
+                return match.group(1)
+
+            self.assertEqual(cached_datadir(), "share")
+            configure = [self.cmake, "-S", source, "-B", build]
+            self.assert_success(self.invoke(configure, work, environment))
+            self.assertEqual(cached_datadir(), "share")
+            self.assert_success(self.invoke(configure + ["-DCMAKE_INSTALL_DATAROOTDIR=assets"],
+                                             work, environment))
+            self.assertEqual(cached_datadir(), "assets")
+            self.assert_success(self.invoke(configure, work, environment))
+            self.assertEqual(cached_datadir(), "assets")
+            self.assert_success(self.invoke(configure + ["-DCMAKE_INSTALL_DATADIR=custom/data"],
+                                             work, environment))
+            self.assert_success(self.invoke(configure + ["-DCMAKE_INSTALL_DATAROOTDIR=share"],
+                                             work, environment))
+            self.assertEqual(cached_datadir(), "custom/data")
+            self.assert_success(self.invoke(configure + ["-DCMAKE_INSTALL_DATADIR=share"],
+                                             work, environment))
             outputs = [Path(value) for value in (build / f"inputs-{configuration}.txt").read_text(
                 encoding="utf-8").splitlines()]
             install = [self.cmake, "--install", build, "--config", configuration,

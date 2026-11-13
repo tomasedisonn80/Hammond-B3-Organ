@@ -2,7 +2,7 @@
 
 ## Active scanner continuation
 
-The new [scanner session](development/2026-11-13-scanner/README.md) has completed its first 12 distinct assignments in two logical waves. Six fresh readers covered every atlas page; follow its [handoff](SCANNER_HANDOFF.md), actual manifest and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md). Prepared runtime work is the next phase.
+The new [scanner session](development/2026-11-13-scanner/README.md) has completed its first 20 distinct assignments; the combined stage and its independent tests are in progress in wave 4. Six fresh readers covered every atlas page; follow its [handoff](SCANNER_HANDOFF.md), actual manifest and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md). Frequency/process and rotor qualification are complete; full matched-step stage qualification is in progress.
 
 | Current scanner evidence | Observed result |
 | --- | --- |
@@ -12,7 +12,9 @@ The new [scanner session](development/2026-11-13-scanner/README.md) has complete
 | Maintained regression | 19 graph/compiler and 16 AC methods passed locally, including literal edges, rational DC, full-grid power/loading/polarity, same-DC/wrong-AC topology mutations and atomic failures. |
 | Build admission | CMake generates native constants only after full graph validation. The default dry Engine, 45 parameters, existing state formats and native processing remain unchanged. |
 
-Independent review found and repaired a schema-only duplicate-ID admission gap in assumption/unknown arrays; the compiler had already rejected those cases. The tests retain the regression. These results qualify nominal graph/reference engineering. No new native scanner runtime, transient/sideband, integrated host or measured-hardware pass is claimed at this checkpoint.
+Independent review found and repaired a schema-only duplicate-ID admission gap in assumption/unknown arrays; the compiler had already rejected those cases. The tests retain the regression. These results qualify nominal graph/reference engineering. The prepared 36-coordinate line, independent full-graph transient reference and rotor now exist. All 160,740 logical positive tap comparisons and 88 actual process carriers pass their G3 frequency budgets; independently tested rotor behavior passes G4. Full matched-step and combined-stage acceptance are in progress. No converged sideband, integrated host or measured-hardware pass is claimed.
+
+**Observed numerical limit:** the separate G5 same-hertz grid fails at every investigated internal rate, including 1,536,000 Hz. The full comparison retains 40,786 failing tap comparisons across distinct rate/mode cases. No multiplier alone qualifies an audible policy. The module remains a documented nominal research implementation while an alternative realization/policy, converged transients, rotating output and actual filtering remain required. See [frequency qualification](SCANNER_AC_PARITY.md).
 
 The [coherent scanner foundation](reviews/SCANNER_WAVE2_INTEGRATION.md) at commit `74473fa` passed **73/73 Release suites**, zero failures, from a new detached-source build. The original local baseline passed 71/71 Release suites. The optional VST3 baseline built and its project native checks passed; an initially unbuilt SDK validator was built explicitly and its previously unrun gate then passed. Earlier pedal/native hosted results below remain qualification of their named revisions.
 

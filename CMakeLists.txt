@@ -153,11 +153,16 @@ target_link_libraries(hammond_pedal_trace PRIVATE hammond_core)
 hammond_configure_target(hammond_pedal_trace)
 add_dependencies(hammond_pedal_trace hammond_profile)
 
+add_executable(hammond_scanner_line_probe tools/scanner_line_probe.cpp)
+target_link_libraries(hammond_scanner_line_probe PRIVATE hammond_core)
+hammond_configure_target(hammond_scanner_line_probe)
+
 # All offline tools receive lossless Windows argv through wmain. Keep this
 # executable-only startup option away from the core, tests and optional plugin.
 if(MINGW)
     foreach(cli_target hammond_render hammond_benchmark hammond_model_info
-                       hammond_parameter_info hammond_console_trace hammond_pedal_trace)
+                       hammond_parameter_info hammond_console_trace hammond_pedal_trace
+                       hammond_scanner_line_probe)
         if(TARGET ${cli_target})
             target_link_options(${cli_target} PRIVATE -municode)
         endif()
@@ -202,7 +207,10 @@ if(BUILD_TESTING)
         set_tests_properties("python_${test_name}" PROPERTIES
             WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
             ENVIRONMENT "PYTHONDONTWRITEBYTECODE=1;HAMMOND_TEST_PROFILE=${HAMMOND_COMPILED_PROFILE};HAMMOND_SOURCE_DIR=${CMAKE_CURRENT_SOURCE_DIR}")
+        set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_scanner_line_probe>")
     endforeach()
+    list(APPEND HAMMOND_TEST_TARGETS hammond_scanner_line_probe)
 
     if(TEST python_test_vst3_build_tools)
         set_property(TEST python_test_vst3_build_tools APPEND PROPERTY ENVIRONMENT

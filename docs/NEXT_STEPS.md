@@ -8,11 +8,11 @@ Read [STATUS.md](STATUS.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [PLAN.md]
 
 The strict [graph/compiler](SCANNER_GRAPH.md), [primary-source review](research/SCANNER_PRIMARY_REVIEW.md) and [independent AC reference](SCANNER_AC_REFERENCE.md) now exist. Independent tests check every component/output, exact-rational DC, the full 282-bin positive grid in both modes, literal resistor power, loading/polarity and misleading same-DC topology mutations. These are new implementations, not recovered missing atlas companions. Preserve the canonical fixture identity and its physical unknowns.
 
-## Next implementation: prepared line and transient qualification
+## Active qualification: prepared line and independent references
 
-Implement the bounded C++ line separately from the Engine: eighteen capacitor voltages and eighteen inductor currents, both prepared return topologies, one declared trapezoidal endpoint convention, physical-state-preserving stopped-rate changes and transactional rejection. Prepare factorization/operators outside processing. Build a separately stamped full-circuit transient oracle and compare it under the same input reconstruction.
+The bounded [C++ line](SCANNER_LINE.md) and independently stamped [full-circuit transient reference](SCANNER_TRANSIENT_REFERENCE.md) are implemented. The [native probe](SCANNER_PROBE.md), full-grid frequency/process comparison and independent transient regression are complete. Finish the matched-step native trajectory comparison and combined line/rotor routing, state and allocation acceptance under the same input reconstruction. Keep factorization/operators outside processing.
 
-The frozen `scanner-numerics-v1` contract specifies rates, grids, signs, residual/conditioning checks, warp-matched complex bounds, DC, initial-energy, mode/rate migration and complete failure-state preservation. A frequency-response helper must be supplemented by actual processing. Passing a discrete model does not automatically pass the separately declared same-hertz, transient, sideband or output-filter criteria. Keep failures and inconclusive convergence visible.
+The frozen `scanner-numerics-v1` contract specifies rates, grids, signs, residual/conditioning checks, warp-matched complex bounds, DC, initial-energy, mode/rate migration and complete failure-state preservation. A frequency-response helper must be supplemented by actual processing. Passing a discrete model does not automatically pass the separately declared same-hertz, transient, sideband or output-filter criteria. Keep failures and inconclusive convergence visible. The [executed frequency comparison](SCANNER_AC_PARITY.md) passes G3 frequency/process checks but fails G5 same-hertz at every investigated rate, including the largest allowed multiplier. A new identified realization or justified policy must address that measured numerical failure under the unchanged budgets before Engine integration.
 
 ## Following dependencies
 

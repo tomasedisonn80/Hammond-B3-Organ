@@ -18,6 +18,19 @@ if(TARGET hammond_render)
             hammond_require_relative_install_dir(OfflineTools ${_hammond_directory})
         endif()
     endforeach()
+    # Recent GNUInstallDirs versions may cache an empty DATADIR as a signal to
+    # derive it from DATAROOTDIR. Materialize our automatic default below so a
+    # second configure can still distinguish it from a caller's explicit empty
+    # value, which the relocation contract rejects. Keep automatic defaults
+    # following DATAROOTDIR; preserve an independently chosen custom DATADIR.
+    set(_hammond_automatic_datadir FALSE)
+    if(NOT DEFINED CMAKE_INSTALL_DATADIR OR
+       (DEFINED _HAMMOND_LAST_AUTOMATIC_DATADIR AND
+        CMAKE_INSTALL_DATADIR STREQUAL _HAMMOND_LAST_AUTOMATIC_DATADIR))
+        set(_hammond_automatic_datadir TRUE)
+        unset(CMAKE_INSTALL_DATADIR)
+        unset(CMAKE_INSTALL_DATADIR CACHE)
+    endif()
 endif()
 if(HAMMOND_BUILD_VST3 AND TARGET HammondB3 AND DEFINED CMAKE_INSTALL_LIBDIR)
     hammond_require_relative_install_dir(NativeVST3 CMAKE_INSTALL_LIBDIR)
@@ -27,6 +40,14 @@ include(GNUInstallDirs)
 if(TARGET hammond_render)
     hammond_require_relative_install_dir(OfflineTools CMAKE_INSTALL_BINDIR)
     hammond_require_relative_install_dir(OfflineTools CMAKE_INSTALL_DATADIR)
+    if(_hammond_automatic_datadir)
+        set(CMAKE_INSTALL_DATADIR "${CMAKE_INSTALL_DATADIR}" CACHE PATH
+            "Read-only architecture-independent data (DATAROOTDIR)" FORCE)
+        set(_HAMMOND_LAST_AUTOMATIC_DATADIR "${CMAKE_INSTALL_DATADIR}" CACHE INTERNAL
+            "Last materialized automatic data directory" FORCE)
+    else()
+        unset(_HAMMOND_LAST_AUTOMATIC_DATADIR CACHE)
+    endif()
     set(_hammond_fixture_files
         "${PROJECT_SOURCE_DIR}/examples/fixtures/catalog-v1.json"
         "${PROJECT_SOURCE_DIR}/examples/fixtures/a4-fundamental-v1.events"
