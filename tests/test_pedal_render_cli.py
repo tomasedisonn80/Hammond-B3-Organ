@@ -85,6 +85,41 @@ class PedalRendererTests(unittest.TestCase):
                               capture_output=True, text=True, encoding="utf-8",
                               errors="replace", check=False, timeout=30)
 
+    def test_unicode_values_are_not_best_fit_ascii(self):
+        # Windows narrow argv previously changed full-width eight to ASCII eight
+        # before the strict parser could inspect it. Keep exact Unicode inputs.
+        for flag, value in (("--pedal-drawbars", "\u221e0"),
+                            ("--pedal-drawbars", "\uff180"),
+                            ("--drawbars", "\uff18" + "0" * 8),
+                            ("--frames", "\uff11\uff10\uff12\uff14")):
+            with self.subTest(flag=flag, value=value):
+                arguments = self.arguments(self.unique("wav"))
+                if flag in arguments:
+                    arguments[arguments.index(flag) + 1] = value
+                else:
+                    arguments.extend((flag, value))
+                self.rejected(arguments)
+
+    def test_unicode_profile_score_and_output_paths_are_lossless(self):
+        text = "0 pedal_on lower 1 100\n96 pedal_off lower 1 0\n"
+        expected, _, _ = self.render(text, frames=128, registration="60")
+        directory = self.work / "p\u00e9dale_\u97f3_\U0001f3b9"
+        directory.mkdir()
+        profile = directory / "profil_\u8db3.b3p"
+        source = directory / "notes_\u8db3.events"
+        output = directory / "r\u00e9sultat_\u4f4e.wav"
+        profile.write_bytes(self.profile_bytes)
+        source.write_text(text, encoding="utf-8", newline="\n")
+        arguments = self.arguments(output, frames=128, score=source)
+        arguments[arguments.index("--profile") + 1] = profile
+        arguments.extend(("--pedal-drawbars", "60"))
+        before = self.paths()
+        result = self.invoke(arguments)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(result.stderr, "")
+        self.assertEqual(self.paths(), before | {output})
+        self.assertEqual(output.read_bytes(), expected)
+
     def rejected(self, arguments, needle=None):
         before = self.paths()
         result = self.invoke(arguments)

@@ -31,6 +31,14 @@ unsupported choices and positional arguments are rejected. `--help` is accepted
 by itself. The argument-count bound is derived from the complete flag inventory,
 including the valueless `--fail-on-clip` flag.
 
+Numeric controls and option names use their exact ASCII grammar. On Windows,
+the wide entry point preserves arguments as checked UTF-8 before validation;
+full-width digits and other Unicode lookalikes remain invalid. Profile, score
+and output paths use explicit UTF-8 filesystem conversion there, preserving
+Unicode filenames. Arguments remain bounded to 4,096 UTF-8 bytes. The
+[Windows repair record](reviews/PEDAL_WINDOWS_UNICODE.md) retains the observed
+failure, regression cases and exact qualification scope.
+
 | Option | Accepted values | Default / meaning |
 | --- | --- | --- |
 | `--sample-rate` | `44100`, `48000`, `96000` | `48000` Hz |

@@ -16,6 +16,8 @@ The offline renderer accepts four explicit pedal verbs and `--pedal-drawbars NN`
 
 The combined input/renderer checkpoint passed **60/60 local Release suites**, zero failures, in 56.10 seconds on frozen tree `f84cacb4e6eb01189ca29136fc838885fdd858f4`.
 
+The first hosted wave-4 run passed three jobs, while Windows passed 59/60 with a Unicode command-line admission failure. The [renderer repair review](reviews/PEDAL_WINDOWS_UNICODE.md) records its cause and the 8/8 local targeted repair gate; native Windows closure requires the next observed hosted result.
+
 The next wave adds actual pedal trace diagnostics, compiled metadata, a musical fixture catalog, enabled-path allocation evidence and the host automation/state foundations. The optional [native VST3 contract](VST3_SPIKE_CONTRACT.md) pins SDK 3.8.1 and four submodules; its headless validator's own 51 selftests passed. A Hammond plugin is not established by those SDK selftests. Later waves must implement and independently qualify the native module, automation and concurrent state handoff. Ordinary builds remain SDK-free. Full M3, scanner/AO-28/Leslie, specimen calibration, audio-device operation and the custom interface remain open.
 
 ## Earlier checkpoints and retained history

@@ -25,6 +25,13 @@
 #include <utility>
 #include <vector>
 
+#ifdef _WIN32
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <Windows.h>
+#endif
+
 namespace {
 
 namespace fs = std::filesystem;
@@ -45,6 +52,16 @@ constexpr std::uint32_t kPedalGainDenominator = 8;
 
 [[noreturn]] void fail(const std::string& message) {
     throw std::runtime_error(message);
+}
+
+[[nodiscard]] fs::path argument_path(std::string_view value) {
+#ifdef _WIN32
+    // wmain supplies lossless UTF-8 below. A char8_t source makes the filesystem
+    // conversion explicit, independent of the Windows ANSI code page.
+    return fs::path(std::u8string(value.begin(), value.end()));
+#else
+    return fs::path(value);
+#endif
 }
 
 [[nodiscard]] bool ascii_space(char ch) noexcept {
@@ -141,10 +158,10 @@ enum class Flag : std::size_t {
             fail("Missing or oversized value for " + std::string(name));
         }
         switch (flag) {
-        case Flag::Profile: options.profile = fs::path(value); break;
-        case Flag::Output: options.output = fs::path(value); break;
+        case Flag::Profile: options.profile = argument_path(value); break;
+        case Flag::Output: options.output = argument_path(value); break;
         case Flag::Events:
-            options.events = fs::path(value);
+            options.events = argument_path(value);
             options.has_events = true;
             break;
         case Flag::SampleRate: {
@@ -835,7 +852,7 @@ int render(Options options) {
 
 } // namespace
 
-int main(int argc, char* argv[]) {
+static int renderer_main(int argc, char* argv[]) {
     try {
         if (argc == 2 && std::string_view(argv[1]) == "--help") {
             std::cout <<
@@ -885,3 +902,44 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 }
+
+#ifdef _WIN32
+int wmain(int argc, wchar_t* argv[]) {
+    try {
+        if (argc < 1 || argc > static_cast<int>(Flag::Count) * 2) {
+            fail("Too many command-line arguments.");
+        }
+        std::vector<std::string> arguments;
+        arguments.reserve(static_cast<std::size_t>(argc));
+        for (int i = 0; i < argc; ++i) {
+            const int bytes = WideCharToMultiByte(
+                CP_UTF8, WC_ERR_INVALID_CHARS, argv[i], -1, nullptr, 0, nullptr, nullptr);
+            if (bytes <= 0 || (i != 0 && bytes - 1 > static_cast<int>(kMaxArgumentBytes))) {
+                fail("Command-line argument is invalid Unicode or exceeds 4096 UTF-8 bytes.");
+            }
+            std::string value(static_cast<std::size_t>(bytes), '\0');
+            if (WideCharToMultiByte(CP_UTF8, WC_ERR_INVALID_CHARS, argv[i], -1,
+                                    value.data(), bytes, nullptr, nullptr) != bytes) {
+                fail("Cannot convert command-line argument to UTF-8.");
+            }
+            value.pop_back(); // The measured size includes the terminating NUL.
+            arguments.push_back(std::move(value));
+        }
+        std::vector<char*> pointers;
+        pointers.reserve(static_cast<std::size_t>(argc) + 1);
+        for (auto& value : arguments) pointers.push_back(value.data());
+        pointers.push_back(nullptr);
+        return renderer_main(argc, pointers.data());
+    } catch (const std::exception& error) {
+        std::cerr << "hammond_render: " << error.what() << '\n';
+        return 1;
+    } catch (...) {
+        std::cerr << "hammond_render: invalid command-line encoding.\n";
+        return 1;
+    }
+}
+#else
+int main(int argc, char* argv[]) {
+    return renderer_main(argc, argv);
+}
+#endif

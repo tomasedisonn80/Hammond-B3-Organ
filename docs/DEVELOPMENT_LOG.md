@@ -1075,3 +1075,10 @@ All eight retained scores and both catalogs/profile inputs are unchanged. Twenty
 Root's coherent frozen tree `f84cacb4e6eb01189ca29136fc838885fdd858f4` passed **60/60 local Release suites, zero failures, in 56.10 seconds**. The final source/test identities remain unchanged; subsequent differences are Markdown results and actual assignment states only. Assignment 24's final test hash matches that exact tree. The new trace/metadata/catalog scopes belong to wave 5 and are excluded from this checkpoint.
 
 Actual root commands used a fresh `git archive` of the staged tree, `cmake -S checkpoint-w04/source -B checkpoint-w04/build -DCMAKE_BUILD_TYPE=Release`, `cmake --build checkpoint-w04/build -j 4`, and `ctest --test-dir checkpoint-w04/build --output-on-failure --output-junit checkpoint-w04/ctest.xml`. The local toolchain remains GCC14.2.0/CMake3.31.6/Python3.12.14. Publication uses exact Git tree equality and an expected-parent guard; hosted results for the new commit must be observed separately.
+
+
+### Windows renderer argument repair
+
+The wave-4 publication `6bcf35cd0c2a54eeb31fabfde8b40bdfcb5b1f51` was fetched with exact tree identity. Hosted run 43399562616 passed Linux Release, macOS Release and Linux ASan/UBSan+leaks. Windows built successfully but passed 59/60 suites: a full-width digit in `--pedal-drawbars` had become an accepted ASCII value before strict parsing. The [retained review](reviews/PEDAL_WINDOWS_UNICODE.md) records the exact job, failure, diagnosis and official platform references.
+
+Root changed the Windows entry point to checked lossless UTF-8 conversion from `wmain`, constructs its three filesystem arguments explicitly as UTF-8, and adds the MinGW Unicode startup link option. Existing strict-parser checks remain; new regressions preserve non-ASCII controls and exercise actual Unicode profile/score/output paths. The repair touches no DSP/data. On coherent frozen tree `73b7bccb70de21c1dbe9e23ed0d1c1cb10fef3a7`, all 8 relevant Release suites passed, zero failures, 16.87 seconds. The repair's native Windows qualification remains pending until the next exact-commit hosted result is observed.
