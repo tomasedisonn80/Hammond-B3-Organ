@@ -14,7 +14,7 @@ The new [scanner session](development/2026-11-13-scanner/README.md) has complete
 
 Independent review found and repaired a schema-only duplicate-ID admission gap in assumption/unknown arrays; the compiler had already rejected those cases. The tests retain the regression. These results qualify nominal graph/reference engineering. No new native scanner runtime, transient/sideband, integrated host or measured-hardware pass is claimed at this checkpoint.
 
-The original local baseline passed 71/71 Release suites. The optional VST3 baseline built and its project native checks passed; an initially unbuilt SDK validator was built explicitly and its previously unrun gate then passed. Earlier pedal/native hosted results below remain qualification of their named revisions.
+The [coherent scanner foundation](reviews/SCANNER_WAVE2_INTEGRATION.md) at commit `74473fa` passed **73/73 Release suites**, zero failures, from a new detached-source build. The original local baseline passed 71/71 Release suites. The optional VST3 baseline built and its project native checks passed; an initially unbuilt SDK validator was built explicitly and its previously unrun gate then passed. Earlier pedal/native hosted results below remain qualification of their named revisions.
 
 ## Current position
 
