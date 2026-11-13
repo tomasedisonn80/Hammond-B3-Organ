@@ -24,8 +24,22 @@ without claiming actual VST3 exports. Pedal mapping data contains 195 connection
 and five explicit disconnections; it is not connected to runtime pedal audio. No scanner, AO-28,
 Leslie DSP, physical contact model, percussion, pedal audio, VST3, audio-device
 standalone application or native UI is implemented at this checkpoint. No measured
-instrument-fidelity claim is made. Full M0 specimen lock and factory M2 evidence
-remain open despite the useful nominal engineering implementation.
+instrument-fidelity claim is made. Full M0 specimen lock, factory gearing and
+source calibration remain open despite the useful nominal implementation.
+
+Two independently frozen factory Table III transcriptions now agree with all
+549 manual assignments and all 200 pedal positions in the existing data. The
+[factory comparison](FACTORY_REFERENCE.md) records the exact source, page locators,
+hashes and five disconnections. This later documentary attestation leaves the
+original nominal profile identity and its original authoring provenance unchanged.
+
+The proposed [capture contract](CAPTURE_FORMAT.md) and validator distinguish
+planned work, declared recorded metadata and optional artifact-byte verification.
+The committed example is a plan with no invented specimen, recording, timestamp
+or calibration. Its 41-method software suite passes locally. Actual acquisitions,
+physical admission and corpus-wide holdout independence remain open.
+The [acquisition protocol](CAPTURE_PROTOCOL.md) provides prioritized dry-organ
+tasks, explicit evidence gates and whole-take holdout grouping for that work.
 
 ## Reproducible software evidence
 
@@ -42,6 +56,19 @@ MSVC Release, plus Linux ASan/UBSan with leak detection enabled. This follows th
 retained first-run macOS parser and Windows evidence failures and their tested
 repairs. Qualification applies to this offline software and those runners; native
 audio-device and plugin-host gates remain open.
+
+The later `7c2ad20` checkpoint passed all 18 suites in a clean staged Release
+snapshot. Its hosted Linux and macOS Release jobs passed, while Windows exposed a
+repository-diagnostic path mismatch and the Linux sanitizer job exposed a
+render-evidence mutation-test failure. The diagnostic formatting and mutation
+procedure have local repairs with retained evidence; a new hosted run must verify
+their integration. The [CI audit](CI_QUALIFICATION.md) preserves all four complete
+logs' counts and zero skipped tests for the failed checkpoint.
+
+The new [OfflineTools local install](OFFLINE_INSTALL.md) passed actual installation,
+relocation and same-build PCM identity checks on Linux. It consumes explicit
+installed profile/event paths and rejects a missing profile. macOS/Windows install
+qualification awaits the new hosted integration.
 
 The callback audit observed zero C++ allocation/deallocation
 calls in 96 recorded processing calls, including maximum and rejected requests.

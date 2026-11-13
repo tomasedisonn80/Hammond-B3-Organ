@@ -26,7 +26,7 @@ that this repository has executed.
 |---|---|---|---|
 | **M0 — reference and contracts** | Versioned target/profile identities, source hash, evidence classes, explicit unknowns, acquisition queue, permanent agent rules | Validated nominal profile, source traceability, missing-input and rights records | Actual specimen serial, AO-28 revision, condition, cabinet identity and measurement permissions remain unresolved |
 | **M1 — testable skeleton** | Framework-independent prepared graph, bounded sample events, offline WAV rendering, profile validation, diagnostics | Executed scheduler/flush/overflow/lifetime/error tests; repeatable render with identities; no callback allocation in tested path | No physical audio claim; choose and label a nominal surrogate when data is absent |
-| **M2 — shared generator** | 91 continuously running shared sources, separate IDs and arrays, explicit manual and pedal mapping, profile-defined frequencies | Pitch/phase/coherent-sum tests, low/high/double-fold boundaries, callback partition equivalence | Independent factory-table transcription, production gear relationships, measured pickup waves/levels/phases and leakage remain separate gates |
+| **M2 — shared generator** | 91 continuously running shared sources, separate IDs and arrays, explicit manual and pedal mapping, profile-defined frequencies | Pitch/phase/coherent-sum tests, low/high/double-fold boundaries, callback partition equivalence | Factory routing is corroborated by the retained independent comparison; production gear relationships, measured pickup waves/levels/phases and leakage remain open |
 | **M3 — console behavior** | Nine-contact trajectories per manual key, four retained drawbar banks, preset latches, pedals, percussion, expression | Held-key and repeated-note interactions, non-panic cancel, shared percussion/recharge, routing and state tests | Contact capture, transformer tap loading, pedal shaping, expression and percussion circuit evidence |
 | **M4 — scanner** | Verified LC and scanner topology, one scanner phase/history, V1-V3/C1-C3 routing, stable numerical model | Independent loaded AC and time-domain comparisons, mode transitions and long-run numerical tests | Revision-specific connectivity/loading and actual scanner captures; resolve printed pseudocode erratum first |
 | **M5 — organ electronics** | Connected AO-28 graph, linear networks before nonlinear stages, loading/feedback, dry G-G diagnostics, oversampling | Operating-point/convergence/alias tests; complete dry organ validation before cabinet fitting | Component placements are not a complete netlist; transformer data, operating points and dry captures required |
@@ -60,8 +60,10 @@ them, with a pinned version and license record.
 The first generator uses 12-TET, ideal sine waves, reproducible proposed phases and
 normalized amplitude. The atlas gives tone 1=MIDI 24 and tone 46=MIDI 69 as test
 anchors (p. 61). Manual wiring is reconstructed from pp. 98-99 and compared with
-six printed rows on p. 102. That establishes conformance to the reproduced
-algorithm/boundaries, not recovery of the absent independently transcribed table.
+six printed rows on p. 102. A later [factory comparison](FACTORY_REFERENCE.md)
+matches all 549 manual assignments and 200 pedal positions to two independent
+direct-image transcriptions. The atlas's absent companion table remains absent;
+the new evidence has its own source identity and provenance.
 
 Source phase advances during silence and disconnected-output processing. Note
 velocity does not scale steady organ loudness. Drawbar branches add coherently;

@@ -131,3 +131,47 @@ if(BUILD_TESTING)
         DEPENDS hammond_profile ${HAMMOND_TEST_TARGETS}
         USES_TERMINAL)
 endif()
+
+# The scoped local install contains only the offline CLI and its existing data.
+# Relative GNUInstallDirs destinations preserve --prefix and later relocation.
+include(GNUInstallDirs)
+if(TARGET hammond_render)
+    foreach(install_dir CMAKE_INSTALL_BINDIR CMAKE_INSTALL_DATADIR)
+        if(IS_ABSOLUTE "${${install_dir}}" OR
+           "${${install_dir}}" MATCHES "(^|[/\\\\])\\.\\.($|[/\\\\])" OR
+           "${${install_dir}}" STREQUAL "")
+            message(FATAL_ERROR
+                "OfflineTools requires a nonempty relative ${install_dir} without parent traversal.")
+        endif()
+    endforeach()
+    install(CODE "
+        if(NOT EXISTS \"$<TARGET_FILE:hammond_render>\" OR
+           NOT EXISTS \"${HAMMOND_COMPILED_PROFILE}\")
+            message(FATAL_ERROR
+                \"OfflineTools requires built hammond_render and nominal.b3p; build the hammond_render target for the selected configuration before installing.\")
+        endif()
+        " COMPONENT OfflineTools)
+    install(TARGETS hammond_render
+        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT OfflineTools)
+    install(FILES "${HAMMOND_COMPILED_PROFILE}"
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ"
+        COMPONENT OfflineTools)
+    install(FILES
+        examples/fixtures/catalog-v1.json
+        examples/fixtures/a4-fundamental-v1.events
+        examples/fixtures/two-manual-changes-v1.events
+        examples/fixtures/low-fold-coherent-v1.events
+        examples/fixtures/held-bank-cancel-v1.events
+        examples/fixtures/high-fold-coherent-v1.events
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ/fixtures"
+        COMPONENT OfflineTools)
+    if(BUILD_TESTING AND TEST python_test_install)
+        set_property(TEST python_test_install APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_TEST_CMAKE=${CMAKE_COMMAND}"
+            "HAMMOND_TEST_BUILD_DIR=${CMAKE_CURRENT_BINARY_DIR}"
+            "HAMMOND_TEST_CONFIG=$<CONFIG>"
+            "HAMMOND_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR}"
+            "HAMMOND_INSTALL_DATADIR=${CMAKE_INSTALL_DATADIR}")
+        set_tests_properties(python_test_install PROPERTIES TIMEOUT 120)
+    endif()
+endif()

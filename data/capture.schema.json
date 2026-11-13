@@ -1,0 +1,1465 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hammond-b3-organ:capture:1",
+  "title": "Original proposed acquisition capture metadata v1",
+  "description": "Project-authored reconstruction of atlas requirements, not a recovered companion. Structural validity proves neither acquisition authenticity, physical calibration, permission, nor fidelity.",
+  "$comment": "Use tools/validate_capture.py for strict bounded parsing, duplicate-key and nonfinite rejection, exact integer types, valid calendar dates, state/unit consistency, channel count/index equality, unique IDs/paths, aggregate size bounds and local acyclic ancestry. Default validation does not read artifacts. Explicit --check-files streams sizes/SHA-256 only. This schema is not an audio-header or physical-evidence verifier.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "contract_origin": {
+      "const": "project-proposed-v1"
+    },
+    "capture_id": {
+      "$ref": "#/$defs/id"
+    },
+    "status": {
+      "enum": [
+        "planned",
+        "recorded"
+      ]
+    },
+    "status_reason": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/text"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "capture_kind": {
+      "enum": [
+        "hardware",
+        "synthetic"
+      ]
+    },
+    "specimen": {
+      "type": "object",
+      "properties": {
+        "specimen_id": {
+          "$ref": "#/$defs/known_id"
+        },
+        "variant": {
+          "$ref": "#/$defs/known_text"
+        },
+        "revision": {
+          "$ref": "#/$defs/known_text"
+        },
+        "identity_evidence": {
+          "$ref": "#/$defs/known_text"
+        }
+      },
+      "required": [
+        "specimen_id",
+        "variant",
+        "revision",
+        "identity_evidence"
+      ],
+      "additionalProperties": false
+    },
+    "acquisition": {
+      "type": "object",
+      "properties": {
+        "started_at_utc": {
+          "$ref": "#/$defs/known_utc"
+        },
+        "operator_id": {
+          "$ref": "#/$defs/known_id"
+        },
+        "session_id": {
+          "$ref": "#/$defs/known_id"
+        }
+      },
+      "required": [
+        "started_at_utc",
+        "operator_id",
+        "session_id"
+      ],
+      "additionalProperties": false
+    },
+    "digital": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "$ref": "#/$defs/known_format"
+        },
+        "sample_rate_hz": {
+          "$ref": "#/$defs/known_rate"
+        },
+        "channel_count": {
+          "$ref": "#/$defs/known_count"
+        },
+        "channels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/channel"
+          },
+          "maxItems": 16
+        }
+      },
+      "required": [
+        "format",
+        "sample_rate_hz",
+        "channel_count",
+        "channels"
+      ],
+      "additionalProperties": false
+    },
+    "physical_clock": {
+      "$ref": "#/$defs/physical_clock"
+    },
+    "stimulus": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "$ref": "#/$defs/known_text"
+        },
+        "controls": {
+          "$ref": "#/$defs/known_text"
+        },
+        "conditions": {
+          "$ref": "#/$defs/known_text"
+        },
+        "synchronization": {
+          "$ref": "#/$defs/known_text"
+        }
+      },
+      "required": [
+        "description",
+        "controls",
+        "conditions",
+        "synchronization"
+      ],
+      "additionalProperties": false
+    },
+    "signal_path": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "$ref": "#/$defs/known_text"
+        },
+        "bypass": {
+          "$ref": "#/$defs/known_text"
+        },
+        "loading": {
+          "$ref": "#/$defs/known_text"
+        }
+      },
+      "required": [
+        "description",
+        "bypass",
+        "loading"
+      ],
+      "additionalProperties": false
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/file"
+      },
+      "maxItems": 32
+    },
+    "partition": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "enum": [
+            "fit",
+            "held_out",
+            "unassigned"
+          ]
+        },
+        "group_id": {
+          "$ref": "#/$defs/known_id"
+        },
+        "rationale": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "role",
+        "group_id",
+        "rationale"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "role": {
+                "enum": [
+                  "fit",
+                  "held_out"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "group_id": {
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "rights": {
+      "$ref": "#/$defs/known_text"
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_origin",
+    "capture_id",
+    "status",
+    "status_reason",
+    "capture_kind",
+    "specimen",
+    "acquisition",
+    "digital",
+    "physical_clock",
+    "stimulus",
+    "signal_path",
+    "files",
+    "partition",
+    "rights"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "planned"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status_reason": {
+            "$ref": "#/$defs/text"
+          },
+          "acquisition": {
+            "properties": {
+              "started_at_utc": {
+                "properties": {
+                  "value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          },
+          "physical_clock": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "uncalibrated",
+                  "not_applicable"
+                ]
+              }
+            }
+          },
+          "digital": {
+            "properties": {
+              "channels": {
+                "items": {
+                  "properties": {
+                    "calibration": {
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "uncalibrated",
+                            "not_applicable"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "files": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "recorded"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status_reason": {
+            "type": "null"
+          },
+          "acquisition": {
+            "properties": {
+              "started_at_utc": {
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "operator_id": {
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "session_id": {
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "digital": {
+            "properties": {
+              "format": {
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "sample_rate_hz": {
+                "properties": {
+                  "value": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "channel_count": {
+                "properties": {
+                  "value": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "partition": {
+            "properties": {
+              "group_id": {
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "files": {
+            "minItems": 1,
+            "contains": {
+              "properties": {
+                "kind": {
+                  "const": "raw"
+                }
+              },
+              "required": [
+                "kind"
+              ]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "capture_kind": {
+            "const": "hardware"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "physical_clock": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "calibrated",
+                  "uncalibrated"
+                ]
+              },
+              "unit": {
+                "const": "Hz"
+              }
+            }
+          },
+          "digital": {
+            "properties": {
+              "channels": {
+                "items": {
+                  "properties": {
+                    "boundary": {
+                      "properties": {
+                        "value": {
+                          "not": {
+                            "const": "synthetic"
+                          }
+                        }
+                      }
+                    },
+                    "calibration": {
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "calibrated",
+                            "uncalibrated"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "capture_kind": {
+            "const": "synthetic"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "specimen": {
+            "properties": {
+              "specimen_id": {
+                "properties": {
+                  "value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          },
+          "physical_clock": {
+            "properties": {
+              "status": {
+                "const": "not_applicable"
+              },
+              "unit": {
+                "type": "null"
+              }
+            }
+          },
+          "digital": {
+            "properties": {
+              "channels": {
+                "items": {
+                  "properties": {
+                    "boundary": {
+                      "properties": {
+                        "value": {
+                          "const": "synthetic"
+                        }
+                      }
+                    },
+                    "calibration": {
+                      "properties": {
+                        "status": {
+                          "const": "not_applicable"
+                        },
+                        "unit": {
+                          "type": "null"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "digital": {
+            "properties": {
+              "channel_count": {
+                "properties": {
+                  "value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "digital": {
+            "properties": {
+              "channels": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2048,
+      "allOf": [
+        {
+          "pattern": "\\S"
+        },
+        {
+          "pattern": "^[^\\u0000-\\u001f\\u007f-\\u009f\\ud800-\\udfff]+$"
+        }
+      ]
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+    },
+    "utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,6})?Z$"
+    },
+    "known_text": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unknown_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unknown_reason": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "unknown_reason": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "known_id": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unknown_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unknown_reason": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "unknown_reason": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "known_utc": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/utc"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unknown_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unknown_reason": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "unknown_reason": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "known_format": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "enum": [
+                "wav_pcm16",
+                "wav_pcm24",
+                "wav_pcm32",
+                "wav_float32",
+                "wav_float64",
+                "flac_pcm16",
+                "flac_pcm24",
+                "raw_float32_le"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unknown_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unknown_reason": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "unknown_reason": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "known_rate": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 768000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unknown_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unknown_reason": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "unknown_reason": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "known_count": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 16
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unknown_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unknown_reason": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "unknown_reason": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "known_boundary": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "enum": [
+                "pickup_unloaded",
+                "generator_loaded_terminal",
+                "preamp_GG",
+                "electrical_voltage",
+                "electrical_current",
+                "acoustic_microphone",
+                "synthetic"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unknown_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unknown_reason": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "unknown_reason": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "calibration": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "calibrated",
+            "uncalibrated",
+            "not_applicable"
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000000000.0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit": {
+          "enum": [
+            "Hz",
+            "V/FS",
+            "A/FS",
+            "Pa/FS",
+            null
+          ]
+        },
+        "standard_uncertainty": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1000000000000.0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknown_reason": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/text"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "value",
+        "unit",
+        "standard_uncertainty",
+        "evidence",
+        "unknown_reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "calibrated"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "unit": {
+                "type": "string"
+              },
+              "standard_uncertainty": {
+                "type": "number"
+              },
+              "evidence": {
+                "$ref": "#/$defs/text"
+              },
+              "unknown_reason": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "standard_uncertainty": {
+                "type": "null"
+              },
+              "evidence": {
+                "type": "null"
+              },
+              "unknown_reason": {
+                "$ref": "#/$defs/text"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "not_applicable"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unit": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "physical_clock": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/calibration"
+        },
+        {
+          "properties": {
+            "unit": {
+              "enum": [
+                "Hz",
+                null
+              ]
+            },
+            "value": {
+              "maximum": 768000
+            }
+          }
+        }
+      ]
+    },
+    "channel": {
+      "type": "object",
+      "properties": {
+        "channel_id": {
+          "$ref": "#/$defs/id"
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "boundary": {
+          "$ref": "#/$defs/known_boundary"
+        },
+        "port_reference": {
+          "$ref": "#/$defs/known_text"
+        },
+        "calibration": {
+          "$ref": "#/$defs/calibration"
+        }
+      },
+      "required": [
+        "channel_id",
+        "index",
+        "boundary",
+        "port_reference",
+        "calibration"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "boundary": {
+                "properties": {
+                  "value": {
+                    "const": "pickup_unloaded"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "calibration": {
+                "properties": {
+                  "unit": {
+                    "const": "V/FS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "boundary": {
+                "properties": {
+                  "value": {
+                    "const": "generator_loaded_terminal"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "calibration": {
+                "properties": {
+                  "unit": {
+                    "const": "V/FS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "boundary": {
+                "properties": {
+                  "value": {
+                    "const": "preamp_GG"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "calibration": {
+                "properties": {
+                  "unit": {
+                    "const": "V/FS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "boundary": {
+                "properties": {
+                  "value": {
+                    "const": "electrical_voltage"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "calibration": {
+                "properties": {
+                  "unit": {
+                    "const": "V/FS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "boundary": {
+                "properties": {
+                  "value": {
+                    "const": "electrical_current"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "calibration": {
+                "properties": {
+                  "unit": {
+                    "const": "A/FS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "boundary": {
+                "properties": {
+                  "value": {
+                    "const": "acoustic_microphone"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "calibration": {
+                "properties": {
+                  "unit": {
+                    "const": "Pa/FS"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "boundary": {
+                "properties": {
+                  "value": {
+                    "const": "synthetic"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "calibration": {
+                "properties": {
+                  "unit": {
+                    "const": null
+                  },
+                  "status": {
+                    "const": "not_applicable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "boundary": {
+                "properties": {
+                  "value": {
+                    "const": null
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "calibration": {
+                "properties": {
+                  "unit": {
+                    "const": null
+                  },
+                  "status": {
+                    "const": "uncalibrated"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "derivation": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "$ref": "#/$defs/text"
+        },
+        "tool": {
+          "$ref": "#/$defs/text"
+        },
+        "tool_version": {
+          "$ref": "#/$defs/text"
+        },
+        "parameters": {
+          "$ref": "#/$defs/text"
+        }
+      },
+      "required": [
+        "operation",
+        "tool",
+        "tool_version",
+        "parameters"
+      ],
+      "additionalProperties": false
+    },
+    "file": {
+      "type": "object",
+      "properties": {
+        "file_id": {
+          "$ref": "#/$defs/id"
+        },
+        "kind": {
+          "enum": [
+            "raw",
+            "derived",
+            "support"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "maxLength": 240,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}(?:/[A-Za-z0-9][A-Za-z0-9._-]{0,63}){0,7}$",
+          "$comment": "The checker additionally rejects trailing dots, Windows device names and case-folded aliases."
+        },
+        "size_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 268435456
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "parents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "maxItems": 16,
+          "uniqueItems": true
+        },
+        "derivation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/derivation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "file_id",
+        "kind",
+        "path",
+        "size_bytes",
+        "sha256",
+        "parents",
+        "derivation"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "derived"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "parents": {
+                "minItems": 1
+              },
+              "derivation": {
+                "type": "object"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "parents": {
+                "maxItems": 0
+              },
+              "derivation": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

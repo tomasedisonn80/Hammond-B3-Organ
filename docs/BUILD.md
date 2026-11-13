@@ -89,6 +89,7 @@ The POSIX Makefile is optional; Windows does not need it.
 | `hammond_core` | Static framework-independent core from `src/*.cpp` |
 | `hammond_profile` | Validate authoring JSON and write `build/nominal.b3p` |
 | `hammond_render` | Offline renderer, available when `tools/render.cpp` exists |
+| `hammond_benchmark` | Bounded prepared-engine timing measurements; see [BENCHMARKING.md](BENCHMARKING.md) |
 | `test_*` | One standalone executable for each `tests/test_*.cpp` |
 | `check` | Build the profile and C++ tests, then run CTest; requires `BUILD_TESTING=ON` |
 
@@ -116,6 +117,11 @@ CTest exposes the same profile/source paths as environment variables and disable
 Python bytecode output. Run a build before calling `ctest` directly; CTest does
 not compile test executables or generate input files itself. The `check` target
 performs those prerequisites automatically.
+
+The [OfflineTools install component](OFFLINE_INSTALL.md) installs the renderer,
+compiled profile and event fixtures into a user-selected local prefix. Its CTest
+smoke exercises actual installation, relocation, PCM identity and explicit data
+use. It adds no audio-device application, plugin or platform runtime packaging.
 
 ## Release and sanitizer builds
 

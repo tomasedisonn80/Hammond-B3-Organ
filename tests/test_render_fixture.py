@@ -398,34 +398,56 @@ class RenderFixtureTests(unittest.TestCase):
     def test_modified_sources_copies_and_executable_cannot_be_success(self):
         invoke = fixture._invoke
         events = self.score("0 note_on upper 60 100\n")
-        executable = self.work / "renderer copy"
-        shutil.copy2(self.renderer, executable)
+        original_hash = hashlib.sha256(self.renderer.read_bytes()).hexdigest()
         targets = ("profile.json", "profile.b3p", "events.txt", "source_profile", "source_events", "renderer")
         for target in targets:
             with self.subTest(target=target):
                 self.profile.write_bytes(self.authoring_bytes)
                 events.write_text("0 note_on upper 60 100\n")
+                executable = self.work / f"renderer copy {target}"
                 shutil.copy2(self.renderer, executable)
+                if target == "renderer":
+                    # Alter a separate file, then replace the checked path. Writing
+                    # directly to an execution image can fail before the hash check.
+                    replacement = self.work / "changed renderer"
+                    shutil.copy2(executable, replacement)
+                    with replacement.open("ab") as changed:
+                        changed.write(b"\n")
+                    changed_hash = hashlib.sha256(replacement.read_bytes()).hexdigest()
+                    self.assertNotEqual(original_hash, changed_hash)
                 output = self.new_output()
+                observed = {}
 
                 def alter(argv, cwd, timeout):
                     result = invoke(argv, cwd, timeout)
                     if "--fail-on-clip" in argv:
-                        path = {"source_profile": self.profile, "source_events": events,
-                                "renderer": executable}.get(target, output / target)
-                        with path.open("ab") as changed:
-                            changed.write(b"\n")
+                        observed.update(result=result[0], stdout=result[1], stderr=result[2])
+                        if target == "renderer":
+                            replacement.replace(executable)
+                        else:
+                            path = {"source_profile": self.profile, "source_events": events}.get(
+                                target, output / target)
+                            with path.open("ab") as changed:
+                                changed.write(b"\n")
                     return result
 
                 with mock.patch.object(fixture, "_invoke", side_effect=alter):
                     _, manifest = self.render(output_dir=output, events=events, renderer=executable)
-                self.assertEqual(manifest["status"], "failed")
-                self.assertEqual(manifest["error"]["stage"], "integrity")
-                self.assertFalse(manifest["integrity_verified"])
-                self.assertIsNone(manifest["wav"])
+                diagnostic = {"error": manifest["error"], "invocation": manifest["invocation"],
+                              "renderer": manifest["renderer"], "observed": observed}
+                self.assertEqual(manifest["status"], "failed", diagnostic)
+                self.assertEqual(manifest["error"]["stage"], "integrity", diagnostic)
+                self.assertEqual(manifest["invocation"]["returncode"], 0, diagnostic)
+                for flag in ("timed_out", "stdout_truncated", "stderr_truncated",
+                             "capture_incomplete", "capture_errors"):
+                    self.assertFalse(manifest["invocation"][flag], diagnostic)
+                self.assertFalse(manifest["integrity_verified"], diagnostic)
+                self.assertIsNone(manifest["wav"], diagnostic)
                 self.assertEqual(manifest, json.loads((output / "manifest.json").read_bytes()))
                 if target == "renderer":
-                    self.assertNotEqual(manifest["renderer"]["sha256_before"], manifest["renderer"]["sha256_after"])
+                    self.assertEqual(manifest["renderer"]["sha256_before"], original_hash, diagnostic)
+                    self.assertEqual(manifest["renderer"]["sha256_after"], changed_hash, diagnostic)
+                    self.assertEqual(hashlib.sha256(executable.read_bytes()).hexdigest(), changed_hash)
 
     def test_corrupt_wav_or_metrics_are_failed_and_not_verified(self):
         invoke = fixture._invoke

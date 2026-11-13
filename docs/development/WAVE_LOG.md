@@ -17,8 +17,8 @@ that all ten product milestones are complete.
 | 04 | 19-24 | Console-state foundations and event/state contract verification | Complete; notes 19-24 |
 | 05 | 25-30 | Reproducible offline fixtures, signal evidence, callback boundaries and CI | Complete; notes 25-30 |
 | 06 | 31-36 | Targeted robustness, portability, numerical and tooling work | Complete; notes 31-36 |
-| 07 | 37-42 | Independent factory references and acquisition/data infrastructure | In progress |
-| 08 | 43-48 | Cross-platform CI, reproducibility and integration qualification | Planned |
+| 07 | 37-42 | Independent factory references and acquisition/data infrastructure | Complete; notes 37-42 |
+| 08 | 43-48 | Cross-platform CI, reproducibility and integration qualification | In progress |
 | 09 | 49-54 | Final acceptance evidence, examples and next-stage handoff | Planned |
 | 10 | 55-60 | Independent final review, fixes and publication verification | Planned |
 
@@ -51,5 +51,10 @@ agents, and repeated work by one agent must not be counted as another agent.
 - `9c8068c`: callback/evidence verification and observed portability repairs; all
   16 suites passed in the clean Release snapshot and each of four hosted CI jobs
   (Linux/macOS/Windows Release and Linux ASan/UBSan/leaks).
+
+- `7c2ad20`: completed wave 06 numerical support, benchmark and source checker;
+  the exact staged Release snapshot passed all 18 suites and the explicit
+  36-agent archive check. Hosted Linux/macOS Release passed. Windows diagnostics
+  and a sanitizer mutation test exposed failures requiring correction.
 
 Further entries will record actual integrated commits and validation results.

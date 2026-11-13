@@ -14,7 +14,9 @@ The source is `Hammond_B3_Leslie_Research_Atlas_500pp.pdf`, evidence edition
 All page locators below are one-based PDF pages, equal to printed atlas pages.
 Chapter 022 spans pp. 139-144 and cites S022-01, the Hammond Organ Service Manual
 for original console models. Those references identify what the atlas cites;
-this reconstruction has not independently recovered or transcribed that manual.
+they do not themselves supply an independently transcribed manual. The later
+[factory comparison](FACTORY_REFERENCE.md) retains two independent direct-image
+readings and matches all 200 positions, including the five disconnections.
 
 Page 139 scopes the table to the represented factory B-3/C-3 wiring. Page 140
 supplies the complete constructive rule, five printed rows and bus membership.
@@ -22,9 +24,10 @@ Pages 142-144 identify the electrical model and acquisition/acceptance work.
 The atlas's companion table was not supplied. The JSON therefore says `derived`,
 `independent_factory_transcription_status: missing` and
 `specimen_continuity_status: not-measured`; specimen identity is explicitly null.
-Passing software checks cannot promote these statuses to factory verification
-or specimen measurement. A separate profile/review is needed when new evidence
-changes the selected variant or the reconstruction's provenance.
+These frozen fields describe the original authoring provenance. The later
+collateral comparison attests to the exact retained digest without rewriting that
+history. No software or documentary check establishes specimen measurement. A
+separately versioned record is needed to incorporate new provenance or variants.
 
 ## Ordered contacts and buses
 
@@ -89,7 +92,8 @@ Tests retain the five printed p. 140 rows for pedals 1, 7, 8, 13 and 25 as
 independent expected fixtures. Additional tests check all 200 positions, every
 missing connection and duplicate path, exact metadata, malformed records, parser
 limits and read-only CLI behavior. Formula consistency across the other rows is
-an engineering check; full independent original factory-table review remains open.
+an engineering check. The separate factory-reference suite now compares all 200
+positions against both frozen readings; physical continuity remains unmeasured.
 
 ## Future M3 pedal audio needs evidence
 

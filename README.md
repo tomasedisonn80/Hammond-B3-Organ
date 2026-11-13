@@ -45,6 +45,8 @@ for event files, strict limits and the hard-link filesystem requirement.
 
 See [build instructions](docs/BUILD.md) for explicit commands, Release and
 sanitizer builds, and platform qualification limits.
+The [OfflineTools local install](docs/OFFLINE_INSTALL.md) places the renderer,
+compiled profile and event fixtures in a relocatable prefix of your choice.
 
 ## Repeatable audio examples
 
@@ -77,6 +79,9 @@ qualification is recorded in the status and development log.
 | [Control state format](docs/CONTROL_STATE_FORMAT.md) | Bounded control-only save/load |
 | [Internal parameters](docs/PARAMETERS.md) | 39 proposed permanent control identities |
 | [Pedal routing](docs/PEDAL_ROUTING.md) | Reconstructed 25-by-8 data; pedal audio remains pending |
+| [Factory comparison](docs/FACTORY_REFERENCE.md) | Two independent Table III readings and complete routing comparison |
+| [Capture contract](docs/CAPTURE_FORMAT.md) | Planned/recorded metadata, explicit unknowns and optional byte verification |
+| [Acquisition protocol](docs/CAPTURE_PROTOCOL.md) | Prioritized physical captures, admission gates and holdout grouping |
 | [Offline format](docs/RENDER_FORMAT.md) | Renderer and event-fixture contract |
 | [Numerical bounds](docs/NUMERICAL_BOUNDS.md) | Preparation limits and finite-window drift evidence |
 | [Benchmark](docs/BENCHMARKING.md) | Bounded workload timing with explicit limitations |
@@ -96,6 +101,10 @@ routing, normalized amplitude, proposed initial phases and 12-TET tuning. Hardwa
 identity, production gearing, pickup calibration, contact timing, circuit response,
 rotor behavior and acoustics remain acquisition/validation work. Historical G-G
 service readings are not used as oscillator amplitudes.
+
+Two independent direct-image factory-table transcriptions now corroborate every
+manual assignment and pedal position in the retained data. Their comparison is
+documentary routing evidence; source tuning and physical calibration remain open.
 
 Every future development session must update status, next steps and the development
 log, retain real verification evidence, and commit/push completed work under the

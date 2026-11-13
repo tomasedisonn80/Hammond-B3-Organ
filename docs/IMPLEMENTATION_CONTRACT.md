@@ -45,9 +45,11 @@ belong outside the callback. Profile replacement requires a stopped engine in th
 first implementation; hot-swap publication is explicitly deferred.
 
 Manual mapping is a reconstruction of the algorithm on PDF pp. 98-99; test six
-printed rows on p. 102 independently and all 549 generated ranges. The absent
-independent factory transcription prevents declaring factory-table verification
-complete. Tone IDs 1-91, array indices 0-90, manual keys 1-61 and MIDI 36-96 are
+printed rows on p. 102 independently and all 549 generated ranges. The later
+[factory comparison](FACTORY_REFERENCE.md) also matches every assignment to two
+independently frozen Table III transcriptions. Original profile provenance remains
+unchanged; gearing and physical calibration are separate gates. Tone IDs 1-91,
+array indices 0-90, manual keys 1-61 and MIDI 36-96 are
 separate domains. Store the explicit generated map rather than multiplying oscillator
 frequency by nominal harmonics. Pedal maps have their own disconnected sentinel.
 

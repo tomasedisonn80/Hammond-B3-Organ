@@ -467,7 +467,7 @@ class _Checker:
                     candidate = base / relative
                     self.path(relative, base, directory=candidate.is_dir())
                 except (ValueError, OSError, RuntimeError) as error:
-                    self.error("markdown_links", f"{path.relative_to(self.root)}:{line}: {target[:200]}: {error}")
+                    self.error("markdown_links", f"{path.relative_to(self.root).as_posix()}:{line}: {target[:200]}: {error}")
         return {"files": count, "local_links": local, "external_links_skipped": external}
 
     def agent_notes(self, expected):

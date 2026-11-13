@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "contract_origin": "project-proposed-v1",
+  "capture_id": "planned-dry-gg-acquisition",
+  "status": "planned",
+  "status_reason": "Planning record only. No specimen, operator, session, calibration or recording has been acquired.",
+  "capture_kind": "hardware",
+  "specimen": {
+    "specimen_id": {"value": null, "unknown_reason": "The reference specimen has not been selected or identified."},
+    "variant": {"value": null, "unknown_reason": "The actual organ and associated hardware variants have not been verified."},
+    "revision": {"value": null, "unknown_reason": "AO-28 and other connected hardware revisions have not been inspected."},
+    "identity_evidence": {"value": null, "unknown_reason": "No identity photographs, serial record or inspection evidence exists."}
+  },
+  "acquisition": {
+    "started_at_utc": {"value": null, "unknown_reason": "Acquisition has not occurred."},
+    "operator_id": {"value": null, "unknown_reason": "An acquisition operator has not been assigned."},
+    "session_id": {"value": null, "unknown_reason": "No acquisition session exists."}
+  },
+  "digital": {
+    "format": {"value": null, "unknown_reason": "The acquisition file format has not been selected."},
+    "sample_rate_hz": {"value": null, "unknown_reason": "The declared digital sample rate has not been selected."},
+    "channel_count": {"value": null, "unknown_reason": "The acquisition channels have not been designed."},
+    "channels": []
+  },
+  "physical_clock": {
+    "status": "uncalibrated",
+    "value": null,
+    "unit": "Hz",
+    "standard_uncertainty": null,
+    "evidence": null,
+    "unknown_reason": "No recorder or independent physical clock calibration has been acquired."
+  },
+  "stimulus": {
+    "description": {"value": "Proposed dry G-G acquisition, after specimen identification and a reviewed loading and calibration procedure.", "unknown_reason": null},
+    "controls": {"value": null, "unknown_reason": "The registration, gesture, expression and bypass schedule remains to be designed."},
+    "conditions": {"value": null, "unknown_reason": "No mains, temperature, warmup or instrument-condition observations exist."},
+    "synchronization": {"value": null, "unknown_reason": "The clock-sharing, trigger and synchronization arrangement remains to be designed."}
+  },
+  "signal_path": {
+    "description": {"value": null, "unknown_reason": "The actual connected source, probes, interface and downstream equipment are unknown."},
+    "bypass": {"value": null, "unknown_reason": "Scanner, cabinet and other bypass states have not been selected or observed."},
+    "loading": {"value": null, "unknown_reason": "Probe and connected-port impedances have not been specified or measured."}
+  },
+  "files": [],
+  "partition": {
+    "role": "unassigned",
+    "group_id": {"value": null, "unknown_reason": "No physical take, session or related acquisition group exists."},
+    "rationale": "Reserve complete related takes and all their derivatives together when the acquisition protocol is frozen; no fit or held-out evidence exists."
+  },
+  "rights": {"value": null, "unknown_reason": "Store, analyze, derive-model and redistribution permissions have not been established."}
+}

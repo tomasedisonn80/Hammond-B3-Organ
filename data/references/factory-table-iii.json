@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "reference_id": "factory-table-iii-comparison-v1",
+  "kind": "comparison-provenance-manifest",
+  "review_date": "2026-11-13",
+  "evidence_class": "documented",
+  "source": {
+    "title": "Hammond Organ Service Manual - Early Models (A,B,C series, B3, A-100, RT, D, G, etc.)",
+    "url": "https://medias.audiofanzine.com/files/hammond-service-manual-a-a-100-ba-bc-bcv-bv-b2-b3-c-cv-c2-c2-text-470145.pdf",
+    "sha256": "ec2ac51f363dcd1ee039f7711acda32fd014e15ad80dcb77ae199545f9130cc9",
+    "bytes": 7077593,
+    "pdf_pages": 220,
+    "page_numbering": "one-based PDF; printed folios recorded separately",
+    "factory_edition": null,
+    "edition_reason": "Exact factory edition, print date and production revisions are unestablished.",
+    "applicable_models": [
+      "B-3",
+      "C-3"
+    ],
+    "scope_locator": {
+      "pdf_page": 148,
+      "printed_page": "3-69",
+      "region": "opening note"
+    },
+    "manual_context_locator": {
+      "pdf_page": 154,
+      "printed_page": "3-75",
+      "region": "right column, paragraphs 3-15 through 3-19"
+    },
+    "table_locators": [
+      {
+        "kind": "manual",
+        "rows": [
+          1,
+          36
+        ],
+        "pdf_page": 155,
+        "printed_page": "3-76"
+      },
+      {
+        "kind": "manual",
+        "rows": [
+          37,
+          61
+        ],
+        "pdf_page": 156,
+        "printed_page": "3-77"
+      },
+      {
+        "kind": "pedal",
+        "rows": [
+          1,
+          25
+        ],
+        "pdf_page": 157,
+        "printed_page": "3-78"
+      }
+    ],
+    "identifier_locator": {
+      "pdf_page": 157,
+      "printed_page": "3-78",
+      "region": "footnote below Table III"
+    },
+    "redistributed_in_repository": false,
+    "redistribution_permission": "not-established"
+  },
+  "readings": [
+    {
+      "reviewer": "Agent 37",
+      "review": "A",
+      "note": "docs/research/FACTORY_REVIEW_A.md",
+      "method": "direct-image-transcription",
+      "frozen_before_other_reading_and_derived_maps": true,
+      "manual": {
+        "path": "data/references/review-a-manual.csv",
+        "bytes": 1852,
+        "sha256": "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6"
+      },
+      "pedal": {
+        "path": "data/references/review-a-pedal.csv",
+        "bytes": 677,
+        "sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1"
+      },
+      "unresolved_cells": []
+    },
+    {
+      "reviewer": "Agent 38",
+      "review": "B",
+      "note": "docs/research/FACTORY_REVIEW_B.md",
+      "method": "direct-image-transcription",
+      "frozen_before_other_reading_and_derived_maps": true,
+      "manual": {
+        "path": "data/references/review-b-manual.csv",
+        "bytes": 1852,
+        "sha256": "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6"
+      },
+      "pedal": {
+        "path": "data/references/review-b-pedal.csv",
+        "bytes": 677,
+        "sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1"
+      },
+      "unresolved_cells": []
+    }
+  ],
+  "table_contract": {
+    "unit": "dimensionless factory frequency-number identifier",
+    "row_id_base": 1,
+    "source_id_bounds": [
+      1,
+      91
+    ],
+    "manual_header": [
+      "key",
+      "d1",
+      "d2",
+      "d3",
+      "d4",
+      "d5",
+      "d6",
+      "d7",
+      "d8",
+      "d9"
+    ],
+    "manual_printed_roles": [
+      "subfundamental",
+      "sub-third",
+      "fundamental",
+      "second",
+      "third",
+      "fourth",
+      "fifth",
+      "sixth",
+      "eighth"
+    ],
+    "manual_project_columns": [
+      "16ft",
+      "5_1/3ft",
+      "8ft",
+      "4ft",
+      "2_2/3ft",
+      "2ft",
+      "1_3/5ft",
+      "1_1/3ft",
+      "1ft"
+    ],
+    "manual_shape": [
+      61,
+      9
+    ],
+    "pedal_header": [
+      "pedal",
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8"
+    ],
+    "pedal_printed_roles": [
+      "fundamental",
+      "third",
+      "second",
+      "fourth",
+      "sixth",
+      "eighth",
+      "tenth",
+      "twelfth"
+    ],
+    "pedal_project_columns": [
+      "fundamental",
+      "third_contact",
+      "second",
+      "fourth",
+      "sixth",
+      "eighth",
+      "tenth",
+      "twelfth"
+    ],
+    "pedal_shape": [
+      25,
+      8
+    ],
+    "empty_csv_meaning": "printed dash; no assignment, represented as JSON null",
+    "pedal_disconnections": [
+      [
+        8,
+        "c2"
+      ],
+      [
+        9,
+        "c2"
+      ],
+      [
+        10,
+        "c2"
+      ],
+      [
+        11,
+        "c2"
+      ],
+      [
+        12,
+        "c2"
+      ]
+    ],
+    "physical_contact_sequence_established": false
+  },
+  "targets": {
+    "manual": {
+      "path": "data/profiles/nominal-unmeasured-v1.json",
+      "id": "nominal-unmeasured-v1",
+      "bytes": 19627,
+      "raw_sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+      "canonical_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+      "field": "manual_map.tone_ids",
+      "authoring_independent_factory_verification": false
+    },
+    "pedal": {
+      "path": "data/pedal-map.json",
+      "id": "atlas-derived-b3-c3-pedal-v1",
+      "bytes": 3267,
+      "raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+      "canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+      "field": "rows[].sources",
+      "authoring_independent_factory_transcription_status": "missing"
+    },
+    "canonicalization": "json.dumps(sort_keys=True, separators=(',', ':'), ensure_ascii=False, allow_nan=False).encode('utf-8'); no final newline; project convention, not RFC8785"
+  },
+  "comparison": {
+    "reviewer": "Agent 39",
+    "status": "exact-match",
+    "manual_assignments": 549,
+    "pedal_positions": 200,
+    "pedal_connected": 195,
+    "pedal_disconnected": 5,
+    "a_b_manual_mismatches": 0,
+    "a_b_pedal_mismatches": 0,
+    "each_reading_manual_target_mismatches": 0,
+    "each_reading_pedal_target_mismatches": 0,
+    "correction_history": []
+  },
+  "claim_boundary": {
+    "attestation": "Later collateral documentary comparison for these exact target digests.",
+    "original_authoring_provenance_changed": false,
+    "atlas_companion_recovered": false,
+    "measured_specimen": false,
+    "frequency_or_gearing_verified": false,
+    "amplitude_or_phase_calibrated": false,
+    "pedal_audio_verified": false,
+    "percussion_verified": false,
+    "physical_fidelity_established": false,
+    "specimen_identity": null,
+    "specimen_continuity": "not-measured"
+  }
+}

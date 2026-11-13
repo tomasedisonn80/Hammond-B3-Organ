@@ -209,3 +209,87 @@ hashes without Git or built artifacts. The optional exact agent-count check is
 reserved for the relevant snapshot/final session. All six wave-06 assignments
 are complete. Wave 07 now compares two independently frozen factory readings
 and prepares explicit acquisition metadata and acceptance procedures.
+
+### Wave 06 published checkpoint and remaining hosted failures
+
+Commit `7c2ad20` matches the tested staged tree
+`a3416cd144e8ae07f291434aa0b883b5a61796f4`. Its clean Release build passed
+18/18 CTest suites, the source checker passed with exactly agents 01–36, and
+the four-case benchmark completed with its qualified timing report.
+[Hosted run 43364414017](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43364414017)
+passed Linux and macOS Release. Windows passed 17/18 suites but three checker
+assertions expected forward-slash origin paths while diagnostics used native
+backslashes. Root changed that repository-relative diagnostic to `as_posix()`;
+all 41 existing checker methods pass locally. The sanitizer job passed 17/18
+suites and failed the executable-mutation evidence test at an unexpected error
+stage. The cause remains under investigation; no failure is waived and the
+checkpoint has no complete hosted qualification.
+
+### Wave 07 independent factory routing evidence
+
+Agents 37 and 38 independently entered and froze the factory Table III manual
+and pedal cells before comparison. Agent 39 compared each reading against the
+other and the original project data: all 549 manual assignments and all 200
+pedal positions agree, including all five disconnections. The raw profile,
+canonical profile and compiled profile hashes remain unchanged. The new
+provenance manifest and validator pin the documentary scope separately from
+the original authoring metadata. Twenty mutation methods passed; all compiled
+routes also match both readings. Original pedal and compiler suites passed.
+
+The source scan is 220 pages with the previously retained hash. Correct table
+locators are PDF 155–157 / printed 3-76 through 3-78. Exact factory edition and
+production revisions remain unestablished. No additional manual/images are
+redistributed, and no gearing, specimen, calibration or physical-audio claim
+follows. Shared current-status documents now distinguish completed documentary
+routing corroboration from the remaining physical M2 gates.
+
+### Wave 07 capture metadata and independent validation
+
+Agent 40 added an original proposed capture schema, planned example and bounded
+standard-library validator. It separates header rate from physical sample clock,
+declared calibration from verification, and metadata checks from explicit file
+checks. Unknowns retain reasons; local ancestry and grouping are explicit. The
+only committed example is planned, with no fabricated acquired evidence.
+Agent 41 independently constructed 39 passing methods and ran the selected
+CTest gate successfully. The examples used for file tests contain only temporary
+synthetic bytes; hardware declarations used for semantics remain in memory.
+
+Root then reproduced an alias-check gap with real linked files and simulated
+unavailable descriptor identities. The byte checker now uses a nonzero path
+identity as fallback and rejects if neither API supplies an identity. Two targeted
+regressions bring the capture suite to 41 passing methods. This is an observed
+contract gap under the simulated metadata condition, not an observed Windows
+runner failure. Metadata/file passes establish neither physical calibration nor
+rights, authenticity, signal format or specimen fidelity.
+
+Agent 42 completed the acquisition protocol after reading atlas pp. 109–156
+and 349–366. It maps specimen/permission lock, the external pilot, dry sources,
+contact/percussion/expression work and later circuit/cabinet captures to the
+actual v1 fields. Whole takes, synchronized channels, chunks and derivatives
+retain one grouping identity; a separate corpus ledger must govern validation
+and untouched final holdouts. Its planning fragments validate without timestamp
+or file claims, and all ten local links resolve. All six wave-07 assignments are
+complete. Wave 08 addresses observed CI failures and local installation/usability.
+
+### Wave 08 CI audit and local installation
+
+Agent 43 audited all four complete diagnostic archives for `7c2ad20`: each
+contains 18 suites and 195 Python methods with zero test skips. The report retains
+exact toolchains, artifact IDs/hashes and both failures. The executable mutation
+test now prepares a separate modified copy, replaces the checked path after real
+execution and verifies both hashes. It still requires the exact integrity error
+and additionally requires a successful child and complete logs. Nineteen methods
+passed against Release and local ASan/UBSan binaries. The original hosted exception
+remains unestablished; local original-method probes did not reproduce it. Local
+leak-enabled execution explicitly failed under ptrace, so local instrumented checks
+used `detect_leaks=0`; hosted leak qualification remains required.
+
+Agent 44 added the OfflineTools local install component and a real relocation
+test. It installs exactly the renderer, generated profile and six fixture/catalog
+files, then moves a prefix with spaces and compares actual PCM, full WAV bytes
+and JSON against the build renderer. A temporary changed installed profile affects
+identity/output, and its removal rejects without fallback. Default and custom
+relative layouts passed; missing build inputs and unsafe install destinations
+rejected before copying. No dependency, system install, runtime bundling, plugin
+or device application was added. The combined checkpoint now requires its clean
+staged build and new hosted matrix results.

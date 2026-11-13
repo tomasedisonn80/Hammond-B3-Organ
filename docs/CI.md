@@ -19,6 +19,9 @@ All four jobs passed their 16 registered suites at `9c8068c` in
 The first run exposed macOS decimal parsing and Windows evidence assumptions;
 those failures and their fixes remain in the development log and agent notes.
 Qualification requires the actual jobs for the exact commit under review. On a
+later checkpoint, `7c2ad20`, two jobs exposed failures; the complete archive and
+skip audit is retained in [CI_QUALIFICATION.md](CI_QUALIFICATION.md). The locally
+repaired integration awaits its own hosted run. On a
 pull request, the default checkout tests GitHub's merge revision; the diagnostic
 artifact records `git rev-parse HEAD`. Never transfer a passing result to a later
 commit without rerunning the affected checks. Shared observed results belong in

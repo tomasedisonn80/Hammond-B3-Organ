@@ -1,6 +1,6 @@
 # Next steps
 
-## Active session: complete waves 07-10
+## Active session: complete waves 08-10
 
 The full 500-page review, profile/build foundation, working nominal dry engine,
 offline renderer and early retained-bank console model are complete. The active
@@ -12,8 +12,9 @@ work is evidence tooling and review, not the already finished initial scaffold.
    handling, phase support bounds, benchmark tooling and repository consistency
    checks have retained engineering evidence. Verify each published integration
    on the configured hosted matrix.
-3. **Wave07:** prepare acquisition/metadata workflows and resolve evidence gaps
-   where accessible without inventing measurements.
+3. **Wave07 is complete:** two independent factory routing transcriptions,
+   complete comparison, capture metadata/byte validation and a concrete physical
+   acquisition protocol now have retained documentary and software evidence.
 4. **Wave08:** cross-platform CI, portable build/replay checks and integration.
 5. **Wave09:** consolidate acceptance evidence and a useful audible example;
    make the post-session implementation queue exact.
@@ -44,8 +45,8 @@ that retains shared source identity and deterministic timing. Read atlas chapter
 
 ## Acquisition work in parallel
 
-Identify the specimen and AO-28/Leslie revisions; recover or independently review
-factory mappings; acquire calibrated source/contact/percussion/expression captures
+Identify the specimen and AO-28/Leslie revisions; retain the completed independent
+[factory routing comparison](FACTORY_REFERENCE.md); acquire calibrated source/contact/percussion/expression captures
 with rights, loading, clocks and uncertainty. Unknown fields remain null until
 that evidence exists. Scanner/AO-28/Leslie fitting follows upstream dry-organ
 validation, not compensating EQ. Native VST3, device audio, UI and release work
