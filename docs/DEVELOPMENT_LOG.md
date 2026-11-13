@@ -34,3 +34,26 @@ organ/Leslie/host/UI gates. See notes01-06 in `development/agent-notes/`.
 
 Wave02 begins the typed profile contract, strict authoring compiler and build
 foundation. No hardware fidelity claim has changed.
+
+### Wave 02 — profile and build foundation
+
+Agents07-12 implemented fixed-size C++20 types/profile loading, strict JSON
+authoring validation and deterministic compilation, CMake/Make/test tooling,
+independent permanent tests, and full atlas navigation/errata/source notes.
+The profile explicitly contains91 sources,549 manual routes and9 drawbar gains.
+
+Observed verification: strict GCC14 Debug and Release builds;37 Python unittest
+cases;2,601 malformed C++ payload cases with field-preserving rejection; exact
+byte limits, six printed routing rows, source anchors, locale and I/O failure
+checks. The source PDF hash and500-page/80-chapter coverage were rechecked.
+ASan+UBSan passed for the profile test with `ASAN_OPTIONS=detect_leaks=0`. Default
+LeakSanitizer finalization failed because the executor runs under ptrace; leak
+checking is not claimed. No Windows/macOS or host/audio fidelity result yet.
+
+Profile identities: canonical authoring SHA-256
+`49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83`;
+compiled bytes SHA-256
+`b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f`.
+
+Wave03 implements the shared bank, dry graph and renderer against frozen timing
+and file contracts. See individual notes07-12 for exact commands and limitations.

@@ -11,8 +11,9 @@ agent instructions and the initial implementation contract are committed.
 The current target is an explicitly unmeasured M0-M2 dry engine: data/evidence
 contracts, framework-independent C++20 processing, an offline renderer, 91 shared
 continuous sources and explicit manual mapping. Engineering and physical-fidelity
-statuses are tracked separately. No engine or plugin has yet been validated at
-this checkpoint.
+statuses are tracked separately. The profile/compiler foundation has passed independent Debug, Release and
+bounded-input checks. The audible engine is being implemented in wave03; no
+plugin has yet been built or validated.
 
 ## Evidence boundary
 

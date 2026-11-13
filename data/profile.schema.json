@@ -1,0 +1,998 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hammond-b3-organ:profile:1",
+  "title": "Nominal unmeasured Hammond B-3 authoring profile, version 1",
+  "description": "Project-authored structural schema for the ideal-shared-sine-v1 engineering baseline. Not a recovered atlas companion schema or evidence of instrument fidelity.",
+  "$comment": "Use tools/compile_profile.py for bounded strict JSON parsing, duplicate-key and nonfinite-number rejection, exact ordered tone IDs, nominal binary64 frequency/gain equations, and all 549 routing checks. JSON Schema alone does not express those cross-field equations; this project does not implement a generic JSON Schema validator. Canonical hashing sorts object keys, uses compact comma/colon separators, UTF-8 with ensure_ascii=False and allow_nan=False, and no final newline; this is not RFC8785.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "profile_id": {
+      "const": "nominal-unmeasured-v1"
+    },
+    "model_version": {
+      "const": 1
+    },
+    "model": {
+      "const": "ideal-shared-sine-v1"
+    },
+    "evidence_status": {
+      "const": "unmeasured"
+    },
+    "source_document": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "const": "research-atlas-2026-11-12"
+        },
+        "path": {
+          "const": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf"
+        },
+        "sha256": {
+          "const": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+        },
+        "edition": {
+          "const": "2026-11-12"
+        },
+        "page_numbering": {
+          "const": "one_based_pdf"
+        },
+        "evidence_class": {
+          "const": "documented"
+        }
+      },
+      "required": [
+        "id",
+        "path",
+        "sha256",
+        "edition",
+        "page_numbering",
+        "evidence_class"
+      ],
+      "additionalProperties": false
+    },
+    "reference": {
+      "type": "object",
+      "properties": {
+        "target_instrument": {
+          "const": "Hammond B-3"
+        },
+        "specimen_id": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "evidence_class": {
+              "const": "unknown"
+            },
+            "applicable_variant": {
+              "const": "nominal-unmeasured-v1"
+            },
+            "source_locator": {
+              "type": "object",
+              "properties": {
+                "document_id": {
+                  "const": "research-atlas-2026-11-12"
+                },
+                "pdf_pages": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "enum": [
+                      2,
+                      3,
+                      13,
+                      14,
+                      15,
+                      16,
+                      17,
+                      18
+                    ]
+                  },
+                  "minItems": 8,
+                  "maxItems": 8,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "document_id",
+                "pdf_pages"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty": {
+              "type": "null"
+            },
+            "acquisition_reference": {
+              "type": "null"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "value",
+            "evidence_class",
+            "applicable_variant",
+            "source_locator",
+            "uncertainty",
+            "acquisition_reference",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "ao28_revision": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "evidence_class": {
+              "const": "unknown"
+            },
+            "applicable_variant": {
+              "const": "nominal-unmeasured-v1"
+            },
+            "source_locator": {
+              "type": "object",
+              "properties": {
+                "document_id": {
+                  "const": "research-atlas-2026-11-12"
+                },
+                "pdf_pages": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "enum": [
+                      2,
+                      3,
+                      13,
+                      14,
+                      15,
+                      16,
+                      17,
+                      18
+                    ]
+                  },
+                  "minItems": 8,
+                  "maxItems": 8,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "document_id",
+                "pdf_pages"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty": {
+              "type": "null"
+            },
+            "acquisition_reference": {
+              "type": "null"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "value",
+            "evidence_class",
+            "applicable_variant",
+            "source_locator",
+            "uncertainty",
+            "acquisition_reference",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "measurements": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "null"
+            },
+            "evidence_class": {
+              "const": "unknown"
+            },
+            "applicable_variant": {
+              "const": "nominal-unmeasured-v1"
+            },
+            "source_locator": {
+              "type": "object",
+              "properties": {
+                "document_id": {
+                  "const": "research-atlas-2026-11-12"
+                },
+                "pdf_pages": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "enum": [
+                      2,
+                      3,
+                      13,
+                      14,
+                      15,
+                      16,
+                      17,
+                      18
+                    ]
+                  },
+                  "minItems": 8,
+                  "maxItems": 8,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "document_id",
+                "pdf_pages"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty": {
+              "type": "null"
+            },
+            "acquisition_reference": {
+              "type": "null"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "value",
+            "evidence_class",
+            "applicable_variant",
+            "source_locator",
+            "uncertainty",
+            "acquisition_reference",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "target_instrument",
+        "specimen_id",
+        "ao28_revision",
+        "measurements"
+      ],
+      "additionalProperties": false
+    },
+    "frequency_model": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "const": "12tet-a4-440-v1"
+        },
+        "formula": {
+          "const": "440 * 2**((tone_id - 46) / 12)"
+        },
+        "a4_hz": {
+          "const": 440.0
+        },
+        "anchor_tone_id": {
+          "type": "integer",
+          "const": 46
+        },
+        "unit": {
+          "const": "Hz"
+        },
+        "evidence_class": {
+          "const": "proposed"
+        },
+        "applicable_variant": {
+          "const": "nominal-unmeasured-v1"
+        },
+        "source_locator": {
+          "type": "object",
+          "properties": {
+            "document_id": {
+              "const": "research-atlas-2026-11-12"
+            },
+            "pdf_pages": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  61,
+                  62,
+                  63,
+                  64,
+                  65,
+                  66,
+                  94,
+                  98
+                ]
+              },
+              "minItems": 8,
+              "maxItems": 8,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "document_id",
+            "pdf_pages"
+          ],
+          "additionalProperties": false
+        },
+        "uncertainty": {
+          "type": "null"
+        },
+        "acquisition_reference": {
+          "type": "null"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "id",
+        "formula",
+        "a4_hz",
+        "anchor_tone_id",
+        "unit",
+        "evidence_class",
+        "applicable_variant",
+        "source_locator",
+        "uncertainty",
+        "acquisition_reference",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "source_fields": {
+      "type": "object",
+      "properties": {
+        "frequency_hz": {
+          "type": "object",
+          "properties": {
+            "unit": {
+              "const": "Hz"
+            },
+            "evidence_class": {
+              "const": "derived"
+            },
+            "applicable_variant": {
+              "const": "nominal-unmeasured-v1"
+            },
+            "source_locator": {
+              "type": "object",
+              "properties": {
+                "document_id": {
+                  "const": "research-atlas-2026-11-12"
+                },
+                "pdf_pages": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "enum": [
+                      61,
+                      62,
+                      63,
+                      64,
+                      65,
+                      66,
+                      94,
+                      98
+                    ]
+                  },
+                  "minItems": 8,
+                  "maxItems": 8,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "document_id",
+                "pdf_pages"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty": {
+              "type": "null"
+            },
+            "acquisition_reference": {
+              "type": "null"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "unit",
+            "evidence_class",
+            "applicable_variant",
+            "source_locator",
+            "uncertainty",
+            "acquisition_reference",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "peak_amplitude": {
+          "type": "object",
+          "properties": {
+            "unit": {
+              "const": "normalized_peak"
+            },
+            "evidence_class": {
+              "const": "proposed"
+            },
+            "applicable_variant": {
+              "const": "nominal-unmeasured-v1"
+            },
+            "source_locator": {
+              "type": "object",
+              "properties": {
+                "document_id": {
+                  "const": "research-atlas-2026-11-12"
+                },
+                "pdf_pages": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "enum": [
+                      67,
+                      68,
+                      69,
+                      70,
+                      91,
+                      92,
+                      93,
+                      94
+                    ]
+                  },
+                  "minItems": 8,
+                  "maxItems": 8,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "document_id",
+                "pdf_pages"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty": {
+              "type": "null"
+            },
+            "acquisition_reference": {
+              "type": "null"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "unit",
+            "evidence_class",
+            "applicable_variant",
+            "source_locator",
+            "uncertainty",
+            "acquisition_reference",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "base_phase_turns": {
+          "type": "object",
+          "properties": {
+            "unit": {
+              "const": "turns"
+            },
+            "evidence_class": {
+              "const": "proposed"
+            },
+            "applicable_variant": {
+              "const": "nominal-unmeasured-v1"
+            },
+            "source_locator": {
+              "type": "object",
+              "properties": {
+                "document_id": {
+                  "const": "research-atlas-2026-11-12"
+                },
+                "pdf_pages": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "enum": [
+                      63,
+                      64,
+                      65,
+                      66,
+                      87,
+                      88,
+                      89,
+                      90
+                    ]
+                  },
+                  "minItems": 8,
+                  "maxItems": 8,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "document_id",
+                "pdf_pages"
+              ],
+              "additionalProperties": false
+            },
+            "uncertainty": {
+              "type": "null"
+            },
+            "acquisition_reference": {
+              "type": "null"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "unit",
+            "evidence_class",
+            "applicable_variant",
+            "source_locator",
+            "uncertainty",
+            "acquisition_reference",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "frequency_hz",
+        "peak_amplitude",
+        "base_phase_turns"
+      ],
+      "additionalProperties": false,
+      "description": "Per-column units/evidence apply to every explicit source row."
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "minItems": 91,
+      "maxItems": 91,
+      "uniqueItems": true
+    },
+    "manual_map": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "const": "atlas-manual-foldback-v1"
+        },
+        "key_domain": {
+          "const": "one_based_playing_key_1_61"
+        },
+        "tone_domain": {
+          "const": "one_based_tone_id_1_91"
+        },
+        "drawbar_order": {
+          "const": [
+            "16ft",
+            "5_1/3ft",
+            "8ft",
+            "4ft",
+            "2_2/3ft",
+            "2ft",
+            "1_3/5ft",
+            "1_1/3ft",
+            "1ft"
+          ]
+        },
+        "offsets": {
+          "const": [
+            0,
+            19,
+            12,
+            24,
+            31,
+            36,
+            40,
+            43,
+            48
+          ]
+        },
+        "independent_factory_verification": {
+          "type": "boolean",
+          "const": false
+        },
+        "tone_ids": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 13,
+              "maximum": 91
+            },
+            "minItems": 9,
+            "maxItems": 9
+          },
+          "minItems": 61,
+          "maxItems": 61
+        },
+        "evidence_class": {
+          "const": "derived"
+        },
+        "applicable_variant": {
+          "const": "nominal-unmeasured-v1"
+        },
+        "source_locator": {
+          "type": "object",
+          "properties": {
+            "document_id": {
+              "const": "research-atlas-2026-11-12"
+            },
+            "pdf_pages": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  98,
+                  99,
+                  102
+                ]
+              },
+              "minItems": 3,
+              "maxItems": 3,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "document_id",
+            "pdf_pages"
+          ],
+          "additionalProperties": false
+        },
+        "uncertainty": {
+          "type": "null"
+        },
+        "acquisition_reference": {
+          "type": "null"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "algorithm",
+        "key_domain",
+        "tone_domain",
+        "drawbar_order",
+        "offsets",
+        "independent_factory_verification",
+        "tone_ids",
+        "evidence_class",
+        "applicable_variant",
+        "source_locator",
+        "uncertainty",
+        "acquisition_reference",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "drawbar_gains": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "const": "nominal-3db-steps-v1"
+        },
+        "unit": {
+          "const": "dimensionless"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minItems": 9,
+          "maxItems": 9,
+          "prefixItems": [
+            {
+              "const": 0
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "const": 1
+            }
+          ]
+        },
+        "evidence_class": {
+          "const": "proposed"
+        },
+        "applicable_variant": {
+          "const": "nominal-unmeasured-v1"
+        },
+        "source_locator": {
+          "type": "object",
+          "properties": {
+            "document_id": {
+              "const": "research-atlas-2026-11-12"
+            },
+            "pdf_pages": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  109,
+                  110,
+                  111,
+                  112,
+                  113,
+                  114
+                ]
+              },
+              "minItems": 6,
+              "maxItems": 6,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "document_id",
+            "pdf_pages"
+          ],
+          "additionalProperties": false
+        },
+        "uncertainty": {
+          "type": "null"
+        },
+        "acquisition_reference": {
+          "type": "null"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "model",
+        "unit",
+        "values",
+        "evidence_class",
+        "applicable_variant",
+        "source_locator",
+        "uncertainty",
+        "acquisition_reference",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "output_gain": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "const": 0.03
+        },
+        "unit": {
+          "const": "dimensionless"
+        },
+        "evidence_class": {
+          "const": "proposed"
+        },
+        "applicable_variant": {
+          "const": "nominal-unmeasured-v1"
+        },
+        "source_locator": {
+          "type": "object",
+          "properties": {
+            "document_id": {
+              "const": "research-atlas-2026-11-12"
+            },
+            "pdf_pages": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "enum": [
+                  109,
+                  110,
+                  111,
+                  112,
+                  113,
+                  114
+                ]
+              },
+              "minItems": 6,
+              "maxItems": 6,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "document_id",
+            "pdf_pages"
+          ],
+          "additionalProperties": false
+        },
+        "uncertainty": {
+          "type": "null"
+        },
+        "acquisition_reference": {
+          "type": "null"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "evidence_class",
+        "applicable_variant",
+        "source_locator",
+        "uncertainty",
+        "acquisition_reference",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "model_boundaries": {
+      "type": "object",
+      "properties": {
+        "waveform": {
+          "const": "normalized-synthetic-sine"
+        },
+        "contacts": {
+          "const": "ideal-simultaneous-make-break-v1"
+        },
+        "physical_pickup_voltage": {
+          "const": "not-modeled"
+        },
+        "pickup_harmonics_and_loading": {
+          "const": "not-modeled"
+        },
+        "leakage": {
+          "const": "not-modeled"
+        },
+        "pedals": {
+          "const": "not-modeled"
+        },
+        "percussion": {
+          "const": "not-modeled"
+        },
+        "scanner": {
+          "const": "not-modeled"
+        },
+        "ao28": {
+          "const": "not-modeled"
+        },
+        "leslie": {
+          "const": "not-modeled"
+        }
+      },
+      "required": [
+        "waveform",
+        "contacts",
+        "physical_pickup_voltage",
+        "pickup_harmonics_and_loading",
+        "leakage",
+        "pedals",
+        "percussion",
+        "scanner",
+        "ao28",
+        "leslie"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "profile_id",
+    "model_version",
+    "model",
+    "evidence_status",
+    "source_document",
+    "reference",
+    "frequency_model",
+    "source_fields",
+    "sources",
+    "manual_map",
+    "drawbar_gains",
+    "output_gain",
+    "model_boundaries"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "tone_id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 91
+        },
+        "frequency_hz": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 22049
+        },
+        "peak_amplitude": {
+          "type": "number",
+          "const": 1.0
+        },
+        "base_phase_turns": {
+          "type": "number",
+          "const": 0.0
+        }
+      },
+      "required": [
+        "tone_id",
+        "frequency_hz",
+        "peak_amplitude",
+        "base_phase_turns"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
