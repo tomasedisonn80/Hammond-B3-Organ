@@ -1,14 +1,15 @@
 # Next steps
 
-## Active session: complete waves 05-10
+## Active session: complete waves 06-10
 
 The full 500-page review, profile/build foundation, working nominal dry engine,
 offline renderer and early retained-bank console model are complete. The active
 work is evidence tooling and review, not the already finished initial scaffold.
 
-1. **Wave05:** reproducible render manifests, musical event fixtures, independent
-   WAV measurements, allocation checks and evidence verification.
-2. **Wave06:** address concrete numerical/parser/performance risks; retain measured
+1. **Wave05 is complete:** reproducible render manifests, musical event fixtures,
+   independent WAV measurements, allocation checks and evidence verification.
+2. **Wave06:** verify the implemented macOS decimal parser and Windows evidence
+   portability repairs in hosted CI, then complete numerical and tooling work; retain measured
    software results and review architecture/limits.
 3. **Wave07:** prepare acquisition/metadata workflows and resolve evidence gaps
    where accessible without inventing measurements.

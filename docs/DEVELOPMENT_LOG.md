@@ -126,3 +126,52 @@ Linux ASan/UBSan/leak job, with read-only repository permissions and retained
 diagnostics. Initial hosted status is pending. Agents 28 and 30 continue the
 callback boundary audit and independent bundle verification. The coordinator
 will test a clean staged snapshot before publishing this evidence checkpoint.
+
+### First hosted CI result — `b9c1cac`
+
+[Run 43361632464](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43361632464)
+passed all 12 CTest suites on Linux Release and Linux GCC ASan/UBSan with
+`detect_leaks=1`. macOS AppleClang 17 compiled against a libc++ without floating
+`std::from_chars`, failing in control parsing. Windows MSVC compiled with zero
+warnings/errors and passed 10 of 12 suites. The fixture catalog caught Git
+checkout CRLF hash changes; the evidence wrapper rejected unchanged files at its path-stat/descriptor-stat
+comparison, and one raw subprocess fixture expected a POSIX
+newline. These are recorded failures, not waived checks. Wave 06 will implement
+portable decimal conversion and evidence file handling; a later hosted run must
+verify the changes. No native host/audio-device claim follows from CI.
+
+### Wave 05 completion and wave 06 robustness
+
+Agent 28’s calibrated global C++ allocation probes observed zero allocation and
+deallocation calls during 63 accepted and 33 rejected prepared callbacks, covering
+216,255 frames and 23,919 events. Static inspection found only fixed storage and
+bounded project callback work; linked math internals, C/system allocation, other
+threads and timing deadlines remain outside that evidence. Agent 30’s independent
+bundle consumer passed 27 test methods against actual renders and mutated
+artifacts. It keeps integrity, authenticity, build provenance and fidelity distinct.
+All six wave-05 assignments are complete.
+
+Agent 31 reproduced an original stream-buffer runtime exception escaping the
+profile loader. A narrow bad-stream exception handler and nine deterministic
+failure/recovery cases now pass, alongside five existing Release core suites.
+Portable numeric parsing and Windows evidence handling are in progress; combined
+changes require integration and actual hosted qualification. A separately reported
+extreme-frequency phase-stall case is assigned to the numerical boundary review.
+
+### Portable numeric and evidence repairs
+
+Agent 32 replaced floating `from_chars` with one shared classic-locale decimal
+converter, preserving integer parsing, strict syntax, finite/subnormal range
+handling, signed zero, nearest rounding and failure atomicity. Its new vectors
+cover 16,547 accepted exact/round-trip values and 106 invalid tokens; all 16
+then-current Release suites passed. The canonical nominal profile and compiled
+profile identities remain unchanged.
+
+Agent 33 preserved raw artifact identity across Git checkouts with LF attributes
+and repaired invalid cross-API file-stat equality in both hash and WAV readers.
+Within-API before/after checks, regular-file bounds, raw hashes and POSIX
+device/inode binding remain. It reproduced all five bad Windows score hashes
+from CRLF conversion and tested an isolated autocrlf checkout. Nineteen wrapper
+methods, the five-render catalog and 27 independent verifier methods passed.
+Raw output capture still preserves its bytes. An actual hosted rerun must close
+the macOS/Windows gates. Root updated the stale Profile.cpp parser comment.

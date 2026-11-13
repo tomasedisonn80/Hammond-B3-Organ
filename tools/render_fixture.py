@@ -85,22 +85,31 @@ def _json(raw: bytes) -> Any:
 
 
 def _stamp(value: os.stat_result) -> tuple:
-    return (value.st_dev, value.st_ino, value.st_size,
+    return (value.st_dev, value.st_ino, value.st_mode, value.st_size,
             value.st_mtime_ns, value.st_ctime_ns)
+
+
+def _check_opened_file(path: Path, by_path: os.stat_result, by_fd: os.stat_result) -> None:
+    # Windows stat/fstat timestamps can have different meanings (notably ctime).
+    # Compare full stamps only within each API, before and after reading. POSIX
+    # additionally gives comparable device/inode identities across the APIs.
+    if not stat.S_ISREG(by_fd.st_mode) or by_fd.st_size != by_path.st_size:
+        raise FixtureError(f"file type/size changed before reading: {path}")
+    if os.name == "posix" and (by_fd.st_dev, by_fd.st_ino) != (by_path.st_dev, by_path.st_ino):
+        raise FixtureError(f"file identity changed before reading: {path}")
 
 
 def _read_file(path: Path, limit: int, *, retain: bool = False) -> tuple[dict, bytes | None]:
     """Hash in bounded chunks and reject files replaced/changed while reading."""
-    before_path = path.stat()
-    if path.is_symlink() or not stat.S_ISREG(before_path.st_mode) or before_path.st_size > limit:
+    before_path = path.lstat()
+    if not stat.S_ISREG(before_path.st_mode) or not 0 <= before_path.st_size <= limit:
         raise FixtureError(f"expected a regular file no larger than {limit} bytes: {path}")
     digest = hashlib.sha256()
     saved = bytearray() if retain else None
     count = 0
     with path.open("rb") as source:
         before = os.fstat(source.fileno())
-        if _stamp(before) != _stamp(before_path):
-            raise FixtureError(f"input changed before reading: {path}")
+        _check_opened_file(path, before_path, before)
         while True:
             chunk = source.read(min(CHUNK_BYTES, limit - count + 1))
             if not chunk:
@@ -112,7 +121,8 @@ def _read_file(path: Path, limit: int, *, retain: bool = False) -> tuple[dict, b
             if saved is not None:
                 saved.extend(chunk)
         after = os.fstat(source.fileno())
-    if _stamp(before) != _stamp(after) or _stamp(after) != _stamp(path.stat()):
+    if (_stamp(before) != _stamp(after) or count != before.st_size
+            or _stamp(before_path) != _stamp(path.lstat())):
         raise FixtureError(f"file changed while reading: {path}")
     return {"sha256": digest.hexdigest(), "size_bytes": count}, (
         bytes(saved) if saved is not None else None)
@@ -301,14 +311,14 @@ def inspect_wav(path: str | os.PathLike[str], *, frames: int, sample_rate: int) 
     """Stream the renderer's exact 44-byte RIFF/PCM16 format and both channels."""
     path = Path(path)
     expected_size = 44 + frames * 4
-    before = path.stat()
-    if path.is_symlink() or not stat.S_ISREG(before.st_mode) or before.st_size != expected_size:
+    before = path.lstat()
+    if not stat.S_ISREG(before.st_mode) or before.st_size != expected_size:
         raise FixtureError("WAV must be a regular file of exactly 44 + frames*4 bytes")
     digest = hashlib.sha256()
     peak = squares = counted = 0
     with path.open("rb") as source:
-        if _stamp(os.fstat(source.fileno())) != _stamp(before):
-            raise FixtureError("WAV changed before verification")
+        opened = os.fstat(source.fileno())
+        _check_opened_file(path, before, opened)
         header = source.read(44)
         expected = (b"RIFF", expected_size - 8, b"WAVE", b"fmt ", 16, 1, 2,
                     sample_rate, sample_rate * 4, 4, 16, b"data", frames * 4)
@@ -326,9 +336,9 @@ def inspect_wav(path: str | os.PathLike[str], *, frames: int, sample_rate: int) 
                 peak = max(peak, abs(left))
                 squares += left * left
             counted += len(chunk) // 4
-        if source.read(1) or _stamp(os.fstat(source.fileno())) != _stamp(before):
+        if source.read(1) or _stamp(os.fstat(source.fileno())) != _stamp(opened):
             raise FixtureError("WAV changed or has trailing bytes")
-    if _stamp(path.stat()) != _stamp(before):
+    if _stamp(path.lstat()) != _stamp(before):
         raise FixtureError("WAV changed during verification")
     return {"path": path.name, "sha256": digest.hexdigest(), "size_bytes": expected_size,
             "sample_format": "pcm_s16le", "sample_rate": sample_rate, "frames": counted,

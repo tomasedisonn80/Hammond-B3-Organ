@@ -13,10 +13,12 @@ import math
 import os
 from pathlib import Path
 import shutil
+import stat
 import struct
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest import mock
 
@@ -34,6 +36,128 @@ def required_file(environment_name):
             "nominal.b3p with CMake, then run CTest or explicitly set "
             "HAMMOND_RENDER_EXECUTABLE and HAMMOND_TEST_PROFILE. Evidence tests were not run.")
     return Path(raw).resolve()
+
+
+def metadata(info, **changes):
+    fields = {name: getattr(info, name) for name in (
+        "st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")}
+    fields.update(changes)
+    return SimpleNamespace(**fields)
+
+
+class FileIntegrityTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix="hammond-file-integrity-")
+        self.addCleanup(temporary.cleanup)
+        self.work = Path(temporary.name)
+        self.path = self.work / "one-frame.wav"
+        self.raw = struct.pack("<4sI4s4sIHHIIHH4sIhh", b"RIFF", 40, b"WAVE", b"fmt ",
+                               16, 1, 2, 48000, 192000, 4, 16, b"data", 4, 123, 123)
+        self.path.write_bytes(self.raw)
+
+    def readers(self):
+        return (lambda: fixture.sha256_file(self.path, len(self.raw)),
+                lambda: fixture.inspect_wav(self.path, frames=1, sample_rate=48000))
+
+    def test_within_api_changes_are_rejected_by_hash_and_wav_readers(self):
+        original = self.path.lstat()
+        changes = dict(st_dev=original.st_dev + 1, st_ino=original.st_ino + 1,
+                       st_mode=stat.S_IFDIR | 0o700, st_size=original.st_size + 1,
+                       st_mtime_ns=original.st_mtime_ns + 1,
+                       st_ctime_ns=original.st_ctime_ns + 1)
+        for reader in self.readers():
+            for api in ("path", "descriptor"):
+                for field, value in changes.items():
+                    with self.subTest(reader=reader, api=api, field=field):
+                        changed = metadata(original, **{field: value})
+                        path_after = changed if api == "path" else original
+                        fd_after = changed if api == "descriptor" else original
+                        with mock.patch.object(fixture, "os", wraps=os) as windows_os, \
+                                mock.patch.object(type(self.path), "lstat",
+                                                  side_effect=[original, path_after]):
+                            windows_os.name = "nt"
+                            windows_os.fstat.side_effect = [original, fd_after]
+                            with self.assertRaisesRegex(fixture.FixtureError, "changed"):
+                                reader()
+
+    def test_posix_requires_matching_open_file_identity(self):
+        original = self.path.lstat()
+        for reader in self.readers():
+            for field in ("st_dev", "st_ino"):
+                with self.subTest(reader=reader, field=field):
+                    with mock.patch.object(fixture, "os", wraps=os) as posix_os:
+                        posix_os.name = "posix"
+                        posix_os.fstat.return_value = metadata(
+                            original, **{field: getattr(original, field) + 1})
+                        with self.assertRaisesRegex(fixture.FixtureError, "identity changed"):
+                            reader()
+
+    def test_regular_nonsymlink_type_and_size_checks_remain_enforced(self):
+        original = self.path.lstat()
+        for reader in self.readers():
+            for mode in (stat.S_IFLNK, stat.S_IFDIR, stat.S_IFIFO):
+                with self.subTest(reader=reader, mode=mode):
+                    with mock.patch.object(type(self.path), "lstat",
+                                           return_value=metadata(original, st_mode=mode)), \
+                            mock.patch.object(type(self.path), "open") as opened:
+                        with self.assertRaisesRegex(fixture.FixtureError, "regular file"):
+                            reader()
+                        opened.assert_not_called()
+            for change in ({"st_mode": stat.S_IFIFO}, {"st_size": len(self.raw) + 1}):
+                with self.subTest(reader=reader, opened=change):
+                    with mock.patch.object(fixture, "os", wraps=os) as windows_os:
+                        windows_os.name = "nt"
+                        windows_os.fstat.return_value = metadata(original, **change)
+                        with self.assertRaisesRegex(fixture.FixtureError, "type/size changed"):
+                            reader()
+        with self.assertRaisesRegex(fixture.FixtureError, "no larger than"):
+            fixture.sha256_file(self.path, len(self.raw) - 1)
+        # An inaccurate metadata size must not defeat the streaming byte limit.
+        smaller = metadata(original, st_size=len(self.raw) - 1)
+        with mock.patch.object(type(self.path), "lstat", return_value=smaller), \
+                mock.patch.object(fixture, "os", wraps=os) as windows_os:
+            windows_os.name = "nt"
+            windows_os.fstat.return_value = smaller
+            with self.assertRaisesRegex(fixture.FixtureError, "exceeds .* byte limit"):
+                fixture.sha256_file(self.path, len(self.raw) - 1)
+
+    def test_git_autocrlf_checkout_preserves_catalog_hashes_and_binary_bytes(self):
+        catalog_path = Path("examples/fixtures/catalog-v1.json")
+        catalog = json.loads((ROOT / catalog_path).read_bytes())
+        paths = [Path(".gitattributes"), catalog_path,
+                 Path(catalog["profile"]["authoring_path"]), Path("tools/render_fixture.py")]
+        paths += [catalog_path.parent / item["events"]["path"] for item in catalog["fixtures"]]
+        expected = {path: (ROOT / path).read_bytes() for path in paths}
+        for suffix in ("pdf", "wav", "b3p"):
+            # Text-looking payloads prove the extension rule prevents conversion.
+            expected[Path(f"binary.{suffix}")] = b"preserve these bytes\r\nincluding CRLF\r\n"
+        for relative, raw in expected.items():
+            destination = self.work / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_bytes(raw)
+
+        def git(*arguments):
+            result = subprocess.run(
+                ["git", "-c", "core.autocrlf=true", "-c", "core.safecrlf=false",
+                 "-C", str(self.work), *arguments], capture_output=True, timeout=20)
+            self.assertEqual(result.returncode, 0, result.stderr.decode(errors="replace"))
+            return result.stdout
+
+        git("init", "--quiet")
+        git("add", "--", *map(str, expected))
+        for relative in expected:
+            (self.work / relative).unlink()
+        git("checkout-index", "--all", "--force")
+        for relative, raw in expected.items():
+            with self.subTest(path=relative):
+                checked_out = (self.work / relative).read_bytes()
+                self.assertEqual(checked_out, raw)
+                self.assertEqual(hashlib.sha256(checked_out).hexdigest(), hashlib.sha256(raw).hexdigest())
+        for item in catalog["fixtures"]:
+            raw = (self.work / catalog_path.parent / item["events"]["path"]).read_bytes()
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), item["events"]["sha256"])
+        self.assertEqual(git("check-attr", "text", "--", "binary.pdf", "binary.wav", "binary.b3p").splitlines(),
+                         [b"binary.pdf: text: unset", b"binary.wav: text: unset", b"binary.b3p: text: unset"])
 
 
 class RenderFixtureTests(unittest.TestCase):
@@ -134,6 +258,27 @@ class RenderFixtureTests(unittest.TestCase):
         changed_dir, changed = self.render(frames=1027, seed=8)
         self.assert_success(changed_dir, changed)
         self.assertNotEqual(first["wav"]["sha256"], changed["wav"]["sha256"])
+
+    def test_real_render_with_stable_windows_metadata_preserves_crlf_inputs(self):
+        profile_raw = self.authoring_bytes.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")
+        self.profile.write_bytes(profile_raw)
+        events_raw = b"0 note_on upper 60 100\r\n128 note_off upper 60 0\r\n"
+        events = self.score(events_raw)
+
+        def descriptor_info(descriptor):
+            info = os.fstat(descriptor)
+            return metadata(info, st_dev=0, st_ino=0, st_mode=stat.S_IFREG | 0o600,
+                            st_ctime_ns=info.st_ctime_ns + 1000000)
+
+        # Simulate stable Windows path/fd differences on every CI platform.
+        with mock.patch.object(fixture, "os", wraps=os) as windows_os:
+            windows_os.name = "nt"
+            windows_os.fstat.side_effect = descriptor_info
+            directory, manifest = self.render(events=events)
+        self.assert_success(directory, manifest)
+        self.assertEqual((directory / "profile.json").read_bytes(), profile_raw)
+        self.assertEqual((directory / "events.txt").read_bytes(), events_raw)
+        self.assertEqual((directory / "profile.b3p").read_bytes(), self.expected_compiled)
 
     def test_rates_partial_blocks_max_seed_and_literal_path_cli(self):
         for rate in (44100, 48000, 96000):
@@ -336,11 +481,18 @@ class RenderFixtureTests(unittest.TestCase):
 
     def test_bounded_subprocess_time_and_log_capture(self):
         result, stdout, _ = fixture._invoke(
-            [sys.executable, "-c", "import time; print('started', flush=True); time.sleep(20)"],
+            [sys.executable, "-c", "import sys,time; sys.stdout.buffer.write(b'started\\n'); "
+             "sys.stdout.buffer.flush(); time.sleep(20)"],
             self.work, 1)
         self.assertTrue(result["timed_out"])
         self.assertNotEqual(result["returncode"], 0)
         self.assertEqual(stdout, b"started\n")
+        result, stdout, stderr = fixture._invoke(
+            [sys.executable, "-c", "import sys; sys.stdout.buffer.write(b'raw\\r\\n\\x1a'); "
+             "sys.stderr.buffer.write(b'error\\r\\n')"], self.work, 5)
+        self.assertEqual(result["returncode"], 0)
+        self.assertEqual(stdout, b"raw\r\n\x1a")
+        self.assertEqual(stderr, b"error\r\n")
         with mock.patch.object(fixture, "MAX_LOG_BYTES", 4096):
             result, stdout, _ = fixture._invoke(
                 [sys.executable, "-c", "import sys; sys.stdout.buffer.write(b'x'*100000); sys.stdout.flush()"],

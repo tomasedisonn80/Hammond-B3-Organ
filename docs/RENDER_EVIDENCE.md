@@ -111,6 +111,26 @@ executable was built. Executable before/after hashes establish stable observed
 bytes, not a reproducible build, linked-library provenance or resistance to a
 concurrent actor that changes and restores a file between observations.
 
+### Portable file integrity
+
+Repository text uses LF on checkout, including the catalog, scores and authoring
+profile; `.gitattributes` marks PDF, WAV and compiled-profile files as binary.
+This keeps checked-in raw-byte identities stable with `core.autocrlf=true`.
+The wrapper still preserves the actual bytes of supplied inputs and captured
+stdout/stderr. A caller's CRLF score or profile is not converted to LF.
+
+The bounded hash reader and WAV inspector require regular nonsymlink paths and
+regular opened files of matching size. Each compares complete metadata stamps
+(device, inode, mode, size, modification time and change/creation time) within
+the same API: path `lstat` before/after, and descriptor `fstat` before/after.
+POSIX additionally requires matching path/descriptor device and inode identities.
+The hash reader also checks the actual byte count against the observed size.
+Windows can report different timestamp meanings through the two APIs, so a full
+path-versus-descriptor stamp equality is not a portable integrity criterion.
+Raw-byte SHA-256 checks before/after the renderer remain required on every platform.
+See [Windows evidence repair](WINDOWS_EVIDENCE.md) for the observed failure,
+upstream explanation, regression coverage and native rerun status.
+
 ### WAV and metric definitions
 
 `wav` records `path`, `sha256`, `size_bytes`, `sample_format: "pcm_s16le"`,
@@ -186,3 +206,7 @@ inputs fail clearly rather than skip. The suite uses modest real renders and
 covers retained identities, deterministic replay, literal paths, rate/seed/event
 boundaries, preflight failures, no-clobber behavior, actual clipping, changed inputs
 or executable, malformed WAV/metrics, process failure, capture bounds and timeout.
+It also exercises Windows metadata asymmetry on every platform, rejects changes
+within either metadata API, retains deliberate CRLF inputs/raw logs, and checks a
+temporary Git checkout with `core.autocrlf=true` without changing this checkout's
+configuration. Missing Git or renderer prerequisites fail; these checks do not skip.

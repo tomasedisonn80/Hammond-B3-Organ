@@ -1,8 +1,10 @@
 #include "hammond/Profile.h"
+#include "hammond/detail/Decimal.h"
 
 #include <algorithm>
 #include <charconv>
 #include <cmath>
+#include <exception>
 #include <fstream>
 #include <istream>
 #include <locale>
@@ -123,19 +125,16 @@ public:
 
     [[nodiscard]] bool number(double& value, std::string_view field, std::string& error) {
         std::string_view token;
-        if (!next(token) || !decimal_syntax(token)) {
+        if (!next(token)) {
             error = "Expected finite decimal number for " + std::string(field) + ".";
             return false;
         }
-        // from_chars is locale-independent. Its floating grammar omits a leading
-        // '+', so remove that explicitly after validating the decimal grammar.
-        if (token.front() == '+') {
-            token.remove_prefix(1);
+        const auto result = detail::parse_decimal(token, value);
+        if (result == detail::DecimalResult::InvalidSyntax) {
+            error = "Expected finite decimal number for " + std::string(field) + ".";
+            return false;
         }
-        const auto result = std::from_chars(token.data(), token.data() + token.size(),
-                                            value, std::chars_format::general);
-        if (result.ec != std::errc{} || result.ptr != token.data() + token.size() ||
-            !std::isfinite(value)) {
+        if (result != detail::DecimalResult::Ok) {
             error = "Number is not finite or representable for " + std::string(field) + ".";
             return false;
         }
@@ -143,45 +142,6 @@ public:
     }
 
 private:
-    [[nodiscard]] static bool decimal_syntax(std::string_view token) noexcept {
-        if (token.empty()) {
-            return false;
-        }
-        std::size_t at = 0;
-        if (token[at] == '+' || token[at] == '-') {
-            ++at;
-        }
-        std::size_t digits = 0;
-        while (at < token.size() && token[at] >= '0' && token[at] <= '9') {
-            ++at;
-            ++digits;
-        }
-        if (at < token.size() && token[at] == '.') {
-            ++at;
-            while (at < token.size() && token[at] >= '0' && token[at] <= '9') {
-                ++at;
-                ++digits;
-            }
-        }
-        if (digits == 0) {
-            return false;
-        }
-        if (at < token.size() && (token[at] == 'e' || token[at] == 'E')) {
-            ++at;
-            if (at < token.size() && (token[at] == '+' || token[at] == '-')) {
-                ++at;
-            }
-            const auto exponent_start = at;
-            while (at < token.size() && token[at] >= '0' && token[at] <= '9') {
-                ++at;
-            }
-            if (at == exponent_start) {
-                return false;
-            }
-        }
-        return at == token.size();
-    }
-
     std::string_view text_;
     std::size_t position_{0};
 };
@@ -309,7 +269,8 @@ Status validate_runtime_profile(const RuntimeProfile& profile, double sample_rat
 
 bool load_runtime_profile(std::istream& input, RuntimeProfile& destination, std::string& error) {
     // Reading bytes does not depend on the caller's locale. Parse numbers with
-    // from_chars and classic ASCII whitespace, without changing caller state.
+    // the classic-locale decimal parser and classic ASCII whitespace, without
+    // changing caller state.
     std::string bytes;
     bytes.reserve(kMaxCompiledProfileBytes);
     try {
@@ -327,6 +288,15 @@ bool load_runtime_profile(std::istream& input, RuntimeProfile& destination, std:
             error = "Failed while reading the compiled profile stream.";
             return false;
         }
+    } catch (const std::exception&) {
+        // An exception-enabled istream can rethrow a streambuf's original
+        // exception instead of ios_base::failure. Only normalize a confirmed
+        // read failure; unrelated allocation/programming exceptions propagate.
+        if (!input.bad()) {
+            throw;
+        }
+        error = "Failed while reading the compiled profile stream.";
+        return false;
     }
     if (input.bad() || !input.eof()) {
         error = "Failed while reading the compiled profile stream.";

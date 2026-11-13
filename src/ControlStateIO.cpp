@@ -1,14 +1,12 @@
 #include "hammond/ControlStateIO.h"
+#include "hammond/detail/Decimal.h"
 
-#include <charconv>
-#include <cmath>
 #include <iomanip>
 #include <istream>
 #include <limits>
 #include <locale>
 #include <sstream>
 #include <string_view>
-#include <system_error>
 
 namespace hammond {
 namespace {
@@ -55,21 +53,8 @@ private:
         error = "Missing control expression.";
         return false;
     }
-    // from_chars uses the classic decimal grammar without a leading '+'.
-    // Permit that sign explicitly, but never two signs. General format and a
-    // full-token check reject hexadecimal forms, suffixes and decimal commas.
-    if (token.front() == '+') {
-        token.remove_prefix(1);
-        if (token.empty() || token.front() == '-' || token.front() == '+') {
-            error = "Expected a finite decimal control expression.";
-            return false;
-        }
-    }
     double value = 0.0;
-    const auto result = std::from_chars(token.data(), token.data() + token.size(),
-                                        value, std::chars_format::general);
-    if (result.ec != std::errc{} || result.ptr != token.data() + token.size() ||
-        !std::isfinite(value)) {
+    if (detail::parse_decimal(token, value) != detail::DecimalResult::Ok) {
         error = "Control expression must be a finite representable decimal.";
         return false;
     }

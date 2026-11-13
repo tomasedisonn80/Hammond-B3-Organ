@@ -52,7 +52,9 @@ sanitizer builds, and platform qualification limits.
 coherent foldback, and bank/Cancel behavior. The [evidence wrapper](docs/RENDER_EVIDENCE.md)
 retains exact inputs, renderer hashes, logs and WAV statistics. The independent
 [PCM analyzer](docs/AUDIO_MEASUREMENTS.md) measures serialized samples and can
-check the steady portion of a declared single-tone fixture. These outputs are
+check the steady portion of a declared single-tone fixture. The independent
+[bundle verifier](docs/RENDER_VERIFICATION.md) checks retained artifacts, claims
+and metrics without trusting the producer’s Boolean assertions. These outputs are
 synthetic engineering evidence.
 
 [CI](docs/CI.md) defines Linux, macOS and Windows Release checks plus Linux

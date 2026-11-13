@@ -1,5 +1,6 @@
 #include "hammond/Engine.h"
 #include "hammond/Profile.h"
+#include "hammond/detail/Decimal.h"
 
 #include <algorithm>
 #include <array>
@@ -65,49 +66,12 @@ constexpr std::uint32_t kBytesPerFrame = 4;
     if (token.empty() || token.size() > kMaxNumberBytes) {
         fail("Event value must be a finite decimal number.");
     }
-    std::size_t position = 0;
-    if (token[position] == '+' || token[position] == '-') {
-        ++position;
-    }
-    bool digit = false;
-    while (position < token.size() && token[position] >= '0' && token[position] <= '9') {
-        digit = true;
-        ++position;
-    }
-    if (position < token.size() && token[position] == '.') {
-        ++position;
-        while (position < token.size() && token[position] >= '0' && token[position] <= '9') {
-            digit = true;
-            ++position;
-        }
-    }
-    if (!digit) {
-        fail("Event value must be a finite decimal number.");
-    }
-    if (position < token.size() && (token[position] == 'e' || token[position] == 'E')) {
-        ++position;
-        if (position < token.size() && (token[position] == '+' || token[position] == '-')) {
-            ++position;
-        }
-        const auto exponent_start = position;
-        while (position < token.size() && token[position] >= '0' && token[position] <= '9') {
-            ++position;
-        }
-        if (position == exponent_start) {
-            fail("Event value has an invalid exponent.");
-        }
-    }
-    if (position != token.size()) {
-        fail("Event value must be a finite decimal number.");
-    }
-    if (token.front() == '+') {
-        token.remove_prefix(1);
-    }
     double result = 0.0;
-    const auto parsed = std::from_chars(token.data(), token.data() + token.size(), result,
-                                       std::chars_format::general);
-    if (parsed.ec != std::errc{} || parsed.ptr != token.data() + token.size() ||
-        !std::isfinite(result)) {
+    const auto parsed = hammond::detail::parse_decimal(token, result);
+    if (parsed == hammond::detail::DecimalResult::InvalidSyntax) {
+        fail("Event value must be a finite decimal number.");
+    }
+    if (parsed != hammond::detail::DecimalResult::Ok) {
         fail("Event value is nonfinite or out of range.");
     }
     return result;

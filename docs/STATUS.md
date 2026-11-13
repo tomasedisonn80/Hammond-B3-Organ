@@ -37,9 +37,19 @@ statistics. An independent PCM analyzer provides bounded window measurements and
 qualified crossing-rate estimates. None authenticates a physical instrument.
 
 The CI workflow defines Linux/macOS/Windows Release jobs and a Linux sanitizer
-job with leak checking enabled. Hosted execution is pending at this checkpoint;
-local results do not qualify unrun platforms. Callback allocation checks and an
-independent evidence-bundle verifier are the remaining wave-05 work.
+job with leak checking enabled. The first hosted run at `b9c1cac` passed all 12 suites on Linux Release and
+Linux ASan/UBSan with leak detection enabled. macOS failed compilation because
+its standard library lacks floating `from_chars`; Windows built and passed 10
+of 12 suites, exposing line-ending and file-stat assumptions in the two evidence
+suites. Wave 06 implemented a shared classic-locale decimal converter, canonical LF
+checkout attributes and compatible evidence metadata checks. Targeted Linux
+regressions pass; native rerun qualification is pending. Neither platform is
+qualified yet. The callback audit observed zero C++ allocation/deallocation
+calls in 96 recorded processing calls, including maximum and rejected requests.
+Its static call-graph scope and limits are in [REALTIME.md](REALTIME.md). The
+independent bundle verifier passed 27 test methods, including real render bundles
+and mutated evidence. It reports retained-bundle integrity separately from
+unestablished authenticity, build provenance and physical fidelity.
 
 ## Evidence boundary
 
