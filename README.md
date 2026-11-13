@@ -28,7 +28,11 @@ render, trace, plot and install commands. The next dependency-ready development
 task is the [prepared pedal-routing kernel](docs/M3_NEXT_GATE.md); **full M3
 remains open**. The [current status](docs/STATUS.md) and separate
 [continuation ledger](docs/development/2026-11-13-continuation/README.md) record
-published checkpoints, actual checks and remaining assignments.
+published checkpoints, actual checks and the completed sixty-worker continuation.
+All **60 distinct assignments in ten waves** are complete, with a separate
+[actual-state manifest](docs/development/2026-11-13-continuation/assignments.json)
+and one retained note per worker. [AGENTS.md](AGENTS.md) makes the documented
+handoff, verification and commit/push workflow mandatory for future agents.
 
 ## Build and test
 
@@ -87,14 +91,15 @@ check the steady portion of a declared single-tone fixture. The independent
 and metrics without trusting the producer’s Boolean assertions. These outputs are
 synthetic engineering evidence.
 
-[CI](docs/CI.md) defines Linux, macOS and Windows Release checks plus Linux
-sanitisers. The [current handoff](docs/CONTINUATION_HANDOFF.md) records all 45
-local Release suites and all four hosted jobs passing for published code
-`2046b9388f6aab1122e37646b2f20199b5c6079f`. Read [current status](docs/STATUS.md)
-for later outcomes, the [continuation platform review](docs/reviews/CONTINUATION_PLATFORM_REVIEW.md)
-for its independently audited earlier checkpoint, and the
-[original CI qualification](docs/CI_QUALIFICATION.md) for historical results.
-Qualification belongs to the named revision and executed scope.
+[CI](docs/CI.md) qualifies Linux GCC, macOS AppleClang and Windows MSVC Release,
+plus Linux ASan/UBSan with leak checking. The corrected published code
+`7469ebf759ced820cc34fc9012beff6f772e4b89` passed **all 46 suites and 372 Python
+methods in each of the four jobs**, with zero failed/disabled/skipped tests in
+[run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473).
+The [final platform audit](docs/reviews/FINAL_CONTINUATION_PLATFORM.md) retains
+complete diagnostic-log and archive verification, including the earlier Windows
+CRLF failure and its repair. Qualification belongs to the named revision and
+executed scope; [current status](docs/STATUS.md) records later outcomes.
 
 ## Project navigation
 

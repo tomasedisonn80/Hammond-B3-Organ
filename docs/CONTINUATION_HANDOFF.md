@@ -12,6 +12,12 @@ preset latches, continuous drawbars, switching bandwidth, loaded expression,
 scanner, AO-28, Leslie processing, calibration and the playable plugin/device/UI
 product still have separate gates in [PLAN.md](PLAN.md).
 
+This continuation's **60 actual worker assignments in ten waves are complete**.
+Its [manifest](development/2026-11-13-continuation/assignments.json) and sixty notes
+pass the explicit final count. The original sixty remain a separate session.
+The next action is the pedal-map admission fixture below, followed by the prepared
+shared-source bus kernel; no unfinished worker slot needs to be resumed.
+
 ## The next developer's first 30 minutes
 
 1. Read [AGENTS.md](../AGENTS.md), current status/next steps and the latest
@@ -52,12 +58,16 @@ ownership or an isolated checkout; a blind pull/reset is not an integration plan
 
 | Checkpoint | Observed evidence | Scope |
 | --- | --- | --- |
+| `7469ebf759ced820cc34fc9012beff6f772e4b89` | [Run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473): all four jobs pass 46 suites and 372 Python methods, with zero failed/disabled/skipped tests. All diagnostic archives were independently hash/length verified. | Qualified nominal console, renderer stdout correction, separate continuation accounting with CRLF support, demo and offline tools. The [final platform audit](reviews/FINAL_CONTINUATION_PLATFORM.md) retains actual toolchains, instrumentation, complete logs and the earlier failed Windows run. |
 | `9a5c99a862daf26a2bab9b05613c98803727a3e7` | [Run 43375043990](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43375043990): all four jobs passed, each with 43 suites, 352 Python methods and zero skipped tests | Published partial-key, lifecycle, ownership, trace and plot code; Linux/macOS/Windows Release and Linux ASan/UBSan with leaks. The [platform review](reviews/CONTINUATION_PLATFORM_REVIEW.md) retains complete-log and artifact verification. |
 | `2046b9388f6aab1122e37646b2f20199b5c6079f` | All 45 local Release suites passed in 12.91 seconds on tree `0c722f1ffa2a2f04522438a4cb86cec6b8d3e392`. Published tree `759ddcaf93be2047a5732034663e565f728fb5ad` differs only in Markdown result records; runtime/test blobs and archive checks were verified. | Adds enabled-path allocation checks, the 16-file install, console/owned-input benchmarks and the benchmark stdout-error repair. The integrator observed [run 43376892064](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43376892064) complete successfully in all four jobs, each reporting all 45 suites passed. |
 
-Later demo, planning, handoff and review work has its own assignment notes and
-integration gate. An earlier green matrix does not qualify later source changes.
-Current [status](STATUS.md) and the ledger record subsequent observed outcomes.
+The final code qualification follows the renderer stdout correction and the
+accounting checker's Windows CRLF repair. The earlier failed run remains retained
+in the [repair record](reviews/CONTINUATION_CRLF_REPAIR.md). Later Markdown and
+assignment-result publication must preserve those code/test/data identities,
+pass both separate ledger checks and receive its own observed CI. An earlier
+matrix does not qualify changed runtime or test bytes.
 
 ## Architecture and invariants to preserve
 

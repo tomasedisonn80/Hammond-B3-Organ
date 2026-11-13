@@ -1,38 +1,30 @@
 # Next steps
 
-## Active continuation
+## Completed continuation and current baseline
 
-Read the [current session ledger](development/2026-11-13-continuation/README.md)
-for the sixty new assignments in ten waves. The earlier session completed all
-sixty original assignments at `7bbd8e7`; its assignments,
-source reviews and evidence remain intact and are not counted again.
+The [continuation ledger](development/2026-11-13-continuation/README.md) and
+[actual-state manifest](development/2026-11-13-continuation/assignments.json)
+record **60 completed distinct workers in ten waves of six**, with sixty retained
+notes and no planned/running assignments. The original session's sixty remain
+separate. Both explicit final record gates pass under
+[CONTINUATION_CHECKS.md](CONTINUATION_CHECKS.md).
 
-The nominal console, typed input and sample-rate lifecycle checkpoints are
-published. `9a5c99a` passes all 43 local Release suites and all four hosted jobs.
-Wave 08 is published as `2046b93`, with all 45 local suites and all four hosted
-jobs passing. Wave 09 retains the current-model demo, precise next M3 gate,
-developer handoff, compatibility review and separate assignment accounting.
-Preserve the original ideal/off audio as a compatibility case.
-Publication requires a clean staged source build, applicable tests, an
-expected-head push and observed CI.
-The corrected combined candidate is published as `6bdce06`. Its 46-suite local
-Release gate and 371 Python methods passed. Hosted Linux/macOS/sanitizer jobs
-passed, while Windows exposed CRLF handling in the new accounting checker. That
-issue is now corrected and all 13 accounting methods pass locally; qualify the
-repaired archive and observe its new hosted run before final completion. All
-sixty workers are dispatched; 58 are complete and two final reviews are running.
+The implemented nominal console, typed input, phase-preserving rate lifecycle,
+partial-key input, trace/plot tooling, 16-file offline install and retained demo
+are ready for the next dependency-ready product task. The final reviews corrected
+renderer stdout reporting, stale host/ownership instructions and Windows CRLF
+handling in the accounting checker. Qualified code `7469ebf759ced820cc34fc9012beff6f772e4b89`
+passes all 46 suites and 372 Python methods in every job of
+[run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473),
+with zero failed/disabled/skipped tests. The
+[final platform audit](reviews/FINAL_CONTINUATION_PLATFORM.md) retains full evidence
+and the earlier failed run. Final Markdown/assignment result publication preserves
+these code/test/data identities and requires observed remote/CI verification.
 
-The remaining session work is the six independent wave-10 reviews: runtime,
-input/persistence, offline evidence, handoff/atlas alignment, platform qualification,
-and final publication/accounting. Record actual dispatch and completion in the
-[separate manifest](development/2026-11-13-continuation/assignments.json), retain
-all findings, fix observed defects, and run the
-[explicit final continuation gate](CONTINUATION_CHECKS.md) before claiming all
-sixty new assignments complete. The completed enabled-path, install and demo
-work does not need to be repeated merely to close another wave.
-
-Subagents own scoped files and one evidence note. The integrator owns shared
-status/next-step/log updates, integration and publication. Follow `AGENTS.md`.
+Preserve the original ideal-contact/percussion-off behavior as a compatibility
+case. Subagents own scoped files and one evidence note; the integrator owns shared
+handoff updates and publication. Follow [AGENTS.md](../AGENTS.md). There is no
+remaining assignment from this sixty-worker session to invent or count again.
 
 ## Next product milestone
 

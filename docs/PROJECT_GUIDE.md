@@ -18,7 +18,7 @@ remain open.** The [full plan](PLAN.md) keeps their separate dependencies visibl
 | Question | Read |
 | --- | --- |
 | What is the full product plan? | [PLAN.md](PLAN.md): M0-M9 deliverables, dependencies and exit evidence. |
-| What works, and what has actually passed? | [STATUS.md](STATUS.md), then the revision-specific evidence in [CONTINUATION_HANDOFF.md](CONTINUATION_HANDOFF.md) and the [continuation platform review](reviews/CONTINUATION_PLATFORM_REVIEW.md). |
+| What works, and what has actually passed? | [STATUS.md](STATUS.md), then the revision-specific evidence in [CONTINUATION_HANDOFF.md](CONTINUATION_HANDOFF.md) and the [final platform review](reviews/FINAL_CONTINUATION_PLATFORM.md). |
 | What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md), the concrete [M3 pedal-routing gate](M3_NEXT_GATE.md), and the [session ledgers below](#session-ledgers-and-continuation) for current ownership. |
 | How do I resume with exact commands and evidence? | [CONTINUATION_HANDOFF.md](CONTINUATION_HANDOFF.md): source identity, build, render, demo verification, diagnostics, installation and publication. |
 | Which milestone gates are actually closed? | [ACCEPTANCE_MATRIX.md](ACCEPTANCE_MATRIX.md): software, documentary, specimen and product evidence remain distinct. |
@@ -66,7 +66,7 @@ files. It is an offline package, with no plugin or device application target.
 | Processing limits | [Callback audit](REALTIME.md), [numerical bounds](NUMERICAL_BOUNDS.md) and [benchmark](BENCHMARKING.md). Each states its observed scope; none alone qualifies a live device deadline. |
 | Physical acquisitions | [Capture format](CAPTURE_FORMAT.md), [capture validation](CAPTURE_VALIDATION.md) and [acquisition protocol](CAPTURE_PROTOCOL.md). Planned metadata, actual recordings, byte integrity and physical admission are separate states. |
 | Repository and platforms | [Repository checks](REPOSITORY_CHECKS.md), [CI workflow](CI.md), [current handoff](CONTINUATION_HANDOFF.md) and [continuation platform audit](reviews/CONTINUATION_PLATFORM_REVIEW.md). A pass belongs to the named revision and runner scope. |
-| Current continuation reviews | [Runtime boundaries](reviews/RUNTIME_BOUNDARY_REVIEW.md), [platforms](reviews/CONTINUATION_PLATFORM_REVIEW.md) and [legacy audio](reviews/CONTINUATION_LEGACY_AUDIO.md). Each names its actual inspected revision, executed checks and limitations; the continuation ledger records later review progress. |
+| Final continuation reviews | [Core runtime](reviews/FINAL_CONTINUATION_RUNTIME.md), [input and persistence](reviews/FINAL_CONTINUATION_INPUT.md), [offline evidence](reviews/FINAL_CONTINUATION_EVIDENCE.md), [handoff](reviews/FINAL_CONTINUATION_HANDOFF.md), [platforms](reviews/FINAL_CONTINUATION_PLATFORM.md) and [readiness](reviews/FINAL_CONTINUATION_READINESS.md). Each retains its actual inspected revision, observed findings, checks and limits. The [legacy audio comparison](reviews/CONTINUATION_LEGACY_AUDIO.md) remains separate compatibility evidence. |
 | Original session's final reviews | [Core](reviews/FINAL_CORE_REVIEW.md), [evidence tooling](reviews/FINAL_EVIDENCE_REVIEW.md), [claims](reviews/FINAL_CLAIMS_REVIEW.md), [integration](reviews/FINAL_INTEGRATION_REVIEW.md), [platforms](reviews/FINAL_PLATFORM_REVIEW.md) and [readiness](reviews/FINAL_READINESS_REVIEW.md). Preserve these as historical evidence for their original snapshots. |
 | Future host, device and editor work | [Host integration proposal](HOST_INTEGRATION.md) and the M9 row in [ACCEPTANCE_MATRIX.md](ACCEPTANCE_MATRIX.md). Core adapter tests do not close actual VST3/device, concurrency, native UI or accessibility gates. |
 
@@ -106,6 +106,11 @@ rights. Record provenance and applicable rights before adding a release payload.
 | --- | --- |
 | Original ten-wave implementation | [Original agent ledger](development/AGENT_LEDGER.md), [wave log](development/WAVE_LOG.md), [agent notes](development/agent-notes/) and [historical handoff](SESSION_HANDOFF.md). Their original assignment IDs 01-60 remain unchanged. |
 | Independent 2026-11-13 continuation | [Separate continuation ledger](development/2026-11-13-continuation/README.md), [actual-state manifest](development/2026-11-13-continuation/assignments.json), numbered evidence notes and [current handoff](CONTINUATION_HANDOFF.md). The [continuation checker](CONTINUATION_CHECKS.md) validates this session's own 60-assignment, ten-wave records. |
+
+The continuation's sixty assignments are complete, with sixty distinct actual
+identities and retained notes. Its explicit final gate passes; original-session
+notes contribute no credit to that count. These completed assignment scopes do
+not imply full M3 or physical product completion.
 
 Read the newest ledger and shared status before claiming a task. Contacts,
 percussion, partial-key input and typed core adapters are already implemented;

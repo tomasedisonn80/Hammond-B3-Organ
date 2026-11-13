@@ -7,6 +7,12 @@ ledger records the **new** six assignments per wave, run in groups of at most
 three workers because the session has four total concurrency slots including
 the integrator. Planned entries are not completed agents.
 
+**Final assignment state: 60 complete, 0 running, 0 planned.** All sixty actual
+canonical identities and sixty retained notes pass the explicit final checker.
+The ten waves below are complete. Qualified code `7469ebf` passed all four hosted
+jobs with 46 suites and 372 Python methods each; final result publication preserves
+its code/test/data identities. Earlier progress paragraphs remain dated evidence.
+
 The existing code already implements a nominal M0-M2 dry-engine foundation and
 retained-bank console controls. This session continues the dependency-ready M3
 contact/percussion work. It does not repeat the initial scaffold or imply that
@@ -36,8 +42,8 @@ physical instrument fidelity, a VST3 plugin, or a device-audio application exist
 | 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | Complete; `53bb6e1`, 39/39 local suites and all four hosted jobs |
 | 07 | 37–42 | Observable console traces and explicit partial-key input | Complete; `9a5c99a`, 43/43 local suites and all four hosted jobs |
 | 08 | 43–48 | Integration, cross-platform checks and examples | Complete; `2046b93`, 45/45 local suites and all four hosted jobs |
-| 09 | 49–54 | User/developer handoff, verification records and exact next milestone | Complete; six retained notes and 54-complete record check |
-| 10 | 55–60 | Independent final review, fixes and publication verification | All six dispatched; final qualification in progress; actual states in manifest |
+| 09 | 49–54 | User/developer handoff, verification records and exact next milestone | Complete; demo, plan, handoff and separate checker published in `6bdce06` |
+| 10 | 55–60 | Independent final review, fixes and publication verification | Complete; six retained reviews, repaired code `7469ebf` passes all four hosted jobs |
 
 Each numbered note names its actual agent, scope, changed files, observed checks,
 results and limitations. The integrator updates shared status/next-step/log files.
@@ -510,3 +516,78 @@ zero skips, in 0.125 seconds; the actual 58-complete progress gate also passes.
 Native source, headers, renderer, profile and retained audio bytes are unchanged.
 The repaired archive and a new hosted run are the next gates. No worker was
 added or counted again for this integrator repair.
+
+
+The CRLF repair was published and independently remote-verified as
+`7469ebf759ced820cc34fc9012beff6f772e4b89`, exact tree
+`096e2cd13c5aa3fc40e996c923ed80be36b0f622`. Its coherent archive passed all
+13 accounting methods in 0.179 seconds, the actual 58-complete continuation gate
+and all five original source-integrity groups. All 347 archive blobs matched.
+Only the accounting tool and its test changed beyond Markdown and assignment
+records; native source, headers, renderer, build configuration and retained
+artifacts remain byte-identical to `6bdce06`.
+
+An initial batched publication-payload read aborted before a remote commit or
+reference update; a single reread succeeded. The temporary payload helper now
+checks a read-only index-entry digest rather than calling `write-tree` from
+parallel readers. The unchanged staged tree, completed remote tree, expected
+parent and fetched commit were verified before continuing. No force update or
+worktree reset occurred.
+
+Hosted repair run 43380966473 was observed in progress. Assignment 60's final
+readiness report was accepted afterward; its note retains the actual first-run
+Windows failure and root-owned repair qualification gates. The working manifest
+then correctly reports 59 complete and only assignment 59 running, with all
+sixty actual workers dispatched. Earlier published progress snapshots remain
+historical records rather than being silently rewritten.
+
+
+### Final sixty-worker completion and qualified software baseline
+
+All sixty actual continuation workers have completed their assigned scope and
+retained a substantive note; the integrator accepted assignment 59's final
+platform report last. The actual manifest now has **60 complete, zero running,
+zero planned, sixty distinct canonical identities and sixty numbered notes**, in
+ten waves of six. Its explicit `--expected-complete 60` check passes. Earlier
+original-session notes and assignment 18's identity-only follow-up were not counted
+as new workers. All six final review files are retained.
+
+The repaired code `7469ebf759ced820cc34fc9012beff6f772e4b89` passed every job of
+hosted run 43380966473. Each complete archive contains 46 suites (24 C++ and 22
+Python), 372 Python methods, and zero failed/disabled/skipped tests. Actual CTest
+durations were Linux 24.66 s, macOS 27.36 s, Windows 44.51 s and sanitizer 42.82 s.
+Assignment 59 verified all twelve diagnostic archives across the earlier
+45-suite checkpoint, failed first candidate and repaired run. It independently
+confirmed actual sanitizer instrumentation and leak settings, enabled allocation
+counts, the 16-file relocated install and the bounded 33-call benchmark gate.
+Root also fetched all four repaired-run job logs and observed their passing totals.
+
+Final entry points now lead to the completed actual-state manifest, exact
+qualified code/run, six final reviews and the next prepared pedal-routing gate.
+The final result commit changes only Markdown and assignment state records; its
+archive must pass both separate explicit sixty gates, focused accounting tests,
+source/link checks and byte comparison against the qualified code/test/data.
+Root then publishes with the expected-head guard, verifies the fetched commit and
+tree, checks that the working tree is clean, and observes that final commit's CI.
+These integrator publication actions are distinct from worker completion and do
+not create a sixty-first assignment.
+
+
+### Final archive gates observed
+
+The completed-result archive tree `d34b4d94ffff6d9c67065ebf3b38a23c1ec705aa`
+passed both explicit final commands: the continuation reports sixty complete,
+zero running/planned, sixty actual identities and sixty notes; the original
+repository checker separately reports its original sixty notes and all five
+source-integrity groups passed. It checks all 500 PDF pages in the chapter index,
+the unchanged PDF hash, data references and 1,221 local links across 202 Markdown
+files. All 13 focused accounting methods passed, zero skips, in 0.152 seconds.
+
+All 351 archive blobs (27,423,316 bytes before this result paragraph) matched
+that exact staged tree. The 14 changed paths versus fully qualified `7469ebf`
+are only Markdown and the actual assignment-state manifest; code, tests, build
+configuration, data and retained audio/trace assets are byte-identical. The final
+publication adds only these two Markdown result records, then rechecks archive
+identity and both record/source gates. Broad DSP re-execution is unnecessary for
+these records; the final commit's hosted workflow independently runs the full
+matrix. The integrator verifies that actual result before the final user handoff.

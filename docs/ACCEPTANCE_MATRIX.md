@@ -7,21 +7,22 @@ a software pass as physical admission. The plan's source gates are in the
 [atlas, pp. 445-450](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf#page=445) and
 [pp. 481-486](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf#page=481).
 
-Documentation review date: 2026-11-13. Published code:
-`2046b9388f6aab1122e37646b2f20199b5c6079f`. Current status, later publication
-and assignment completion belong to [STATUS.md](STATUS.md) and the
+Updated 2026-11-13. The latest independently qualified code checkpoint is
+`7469ebf759ced820cc34fc9012beff6f772e4b89`; its [final platform review](reviews/FINAL_CONTINUATION_PLATFORM.md)
+verifies all four complete diagnostic archives. Current status, later result
+publication and assignment completion belong to [STATUS.md](STATUS.md) and the
 [separate continuation ledger](development/2026-11-13-continuation/README.md).
 The [current handoff](CONTINUATION_HANDOFF.md) contains commands and exact
-qualification identities. This documentation assignment inspected source
-interfaces, contracts and retained reports; it did not rerun the DSP or hosted
-matrix. Its [evidence note](development/2026-11-13-continuation/52-documentation-navigation.md)
-records the actual checks.
+qualification identities. The original [navigation review](development/2026-11-13-continuation/52-documentation-navigation.md)
+retains its earlier documentation-only scope; the later executed results below
+are separately attributed.
 
 ## Evidence attached to named revisions
 
 | Evidence | Observed scope | What it establishes |
 | --- | --- | --- |
-| Published qualification checkpoint, `2046b9388f6aab1122e37646b2f20199b5c6079f` | The integrator observed all 45 local Release suites pass in 12.91 seconds and all four jobs in [run 43376892064](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43376892064) report 45 suites passed. The local frozen tree and Markdown-only publication differences are retained in the [handoff](CONTINUATION_HANDOFF.md). | Revision-specific offline engineering evidence, including enabled allocation checks, the 16-file install and explicit console/owned-input benchmark cases. This reviewer did not independently download those job archives. |
+| Final qualified code, `7469ebf759ced820cc34fc9012beff6f772e4b89` | [Run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473): all four jobs pass 46 suites (24 C++ and 22 Python), with 372 Python methods and zero failed/disabled/skipped tests. The [final platform audit](reviews/FINAL_CONTINUATION_PLATFORM.md) verifies complete archives, actual instrumentation and the retained earlier CRLF failure. | The completed nominal software scope and its two final repairs on the named platforms. Native host/device, physical fidelity and full M3 remain open. |
+| Published qualification checkpoint, `2046b9388f6aab1122e37646b2f20199b5c6079f` | The integrator observed all 45 local Release suites pass in 12.91 seconds and all four jobs in [run 43376892064](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43376892064) report 45 suites passed. The local frozen tree and Markdown-only publication differences are retained in the [handoff](CONTINUATION_HANDOFF.md). | Revision-specific offline engineering evidence, including enabled allocation checks, the 16-file install and explicit console/owned-input benchmark cases. Assignment 52 did not independently download those job archives; the later final platform audit verified them separately. |
 | Independently audited prior checkpoint, `9a5c99a862daf26a2bab9b05613c98803727a3e7` | The [platform review](reviews/CONTINUATION_PLATFORM_REVIEW.md) checked all four complete job archives: 43 suites, 352 Python methods, zero failed/disabled/skipped tests per job. Linux/macOS/Windows Release and Linux ASan/UBSan/leak instrumentation were inspected. | Published partial-key, ownership, lifecycle, trace and plot behavior on the actual named runners. Later changes require their own checks. |
 | Scoped runtime review | [Runtime boundary review](reviews/RUNTIME_BOUNDARY_REVIEW.md): coherent frozen-source inspection and six focused Release suites; no actionable defect found. | Admission, atomic ownership, event timing, partial-key history, rate changes and parameter conversion within the reviewed scope. |
 | Independent legacy comparison | [Legacy audio review](reviews/CONTINUATION_LEGACY_AUDIO.md): 11 exact WAV/PCM comparisons against a fresh pre-continuation build, 11 default-versus-explicit ideal/Off comparisons and six additional partition comparisons. All 15 old JSON metric fields agree after removing the three schema-2 additions. | Same-toolchain compatibility of the retained nominal model and selected cases; not cross-toolchain bit identity or unchanged metadata schema. |

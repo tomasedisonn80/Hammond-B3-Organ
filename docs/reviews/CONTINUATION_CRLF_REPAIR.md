@@ -68,3 +68,20 @@ and guarded publication. The new hosted run must be observed before marking the
 Windows failure resolved across platforms. Later final records may update the
 [status](../STATUS.md), [session ledger](../development/2026-11-13-continuation/README.md)
 and final platform review with that actual result.
+
+
+## Observed hosted repair qualification
+
+Repair commit `7469ebf759ced820cc34fc9012beff6f772e4b89`, exact tree
+`096e2cd13c5aa3fc40e996c923ed80be36b0f622`, passed all four jobs in
+[run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473).
+Root fetched each complete job log and observed all 46 suites pass, including
+accounting and renderer suites. Assignment 59 independently verified each
+complete diagnostic ZIP against its GitHub byte length and SHA-256 metadata.
+Every job executed 372 Python methods, including all 13 accounting and all 35
+renderer methods, with zero failed/disabled/skipped tests. Linux/macOS/Windows
+Release and Linux ASan/UBSan/leak checks passed; the sanitizer instrumentation and
+actual leak-enabled environment were verified. The
+[final platform report](FINAL_CONTINUATION_PLATFORM.md) retains exact job and
+artifact identities. This resolves the observed Windows CRLF failure without
+removing the failed run or extending the software evidence to physical fidelity.

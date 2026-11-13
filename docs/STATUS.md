@@ -10,6 +10,16 @@ records every actual scope, outcome and limitation; the separate continuation's
 workers are excluded. The final session record follows the qualified code/demo
 checkpoint `61c6ecb`. Current product work continues at the scoped stage below.
 
+**Continuation complete:** all 60 distinct new worker assignments in ten waves
+of six have finished, with sixty retained notes and no planned/running slots in
+the [separate manifest](development/2026-11-13-continuation/assignments.json).
+The explicit sixty-complete checker passes. These workers are separate from the
+original session above. Qualified code `7469ebf` passes all 46 suites and 372
+Python methods on all four hosted jobs in
+[run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473).
+The final result publication preserves those code/test/data identities. The next
+product task is the prepared pedal-routing kernel below; full M3 remains open.
+
 ## Current stage
 
 The M0 engineering foundation and a scoped M1/M2 nominal dry engine are implemented.
@@ -182,30 +192,42 @@ floor, atomic rejection and bounded nominal drift checks. The
 pass threshold. The [repository checker](REPOSITORY_CHECKS.md) verifies retained
 source/index/link/data identities and supports an explicit final agent count.
 
-## Final continuation review
+## Final continuation review and qualification
 
-The core runtime and input reviews found no actionable implementation defect in
-their stated scopes and passed twelve focused binaries between them. Final
-evidence review found and fixed buffered stdout failures in renderer help and
-JSON reporting. Its new regression reproduces both old failures; the repaired
-renderer passes all 35 methods and reproduces the retained demo exactly. A valid
-WAV can already exist if subsequent summary delivery fails, as documented in
-[the render contract](RENDER_FORMAT.md). Stale host/ownership instructions now
-match the implemented FIFO, control migration and stopped rate APIs. These final
-changes passed a new coherent combined Release gate: 46/46 suites, including
-371 Python methods, on tree `08d944734efcd1b7a8ed5a93392deabca70a178f`.
-Published `6bdce06` passed Linux/macOS Release and ASan/UBSan/leaks in run
-43380337294. Windows passed 45/46, failing only the continuation checker's CRLF
-fixture handling. Root reproduced and corrected that issue; all 13 accounting
-methods now pass locally. The [CRLF repair record](reviews/CONTINUATION_CRLF_REPAIR.md)
-retains the cause and failed-run evidence. A new hosted run is required before
-claiming complete platform qualification. The renderer's 35-method suite passed
-in the first Windows run.
+All six final review records are retained: [core runtime](reviews/FINAL_CONTINUATION_RUNTIME.md),
+[input and persistence](reviews/FINAL_CONTINUATION_INPUT.md),
+[offline evidence](reviews/FINAL_CONTINUATION_EVIDENCE.md),
+[handoff](reviews/FINAL_CONTINUATION_HANDOFF.md),
+[platforms](reviews/FINAL_CONTINUATION_PLATFORM.md), and
+[readiness](reviews/FINAL_CONTINUATION_READINESS.md). Their observed snapshots and
+pending-at-the-time gates remain historical evidence; this section records the
+later integrated outcome.
 
-All sixty continuation workers have been dispatched; 58 are complete and two
-final reviews are running at this checkpoint. The
-[actual manifest](development/2026-11-13-continuation/assignments.json) and
-[separate accounting contract](CONTINUATION_CHECKS.md) govern the final count.
+The runtime and input reviews found no actionable core defect in their stated
+scopes and passed twelve focused binaries between them. Evidence review found
+and fixed buffered stdout failures in renderer help and JSON reporting. The new
+regression reproduced both old failures; all 35 renderer methods pass and the
+repaired demo replay exactly matches the retained WAV. A complete WAV can remain
+if subsequent summary delivery fails, as specified in
+[the render contract](RENDER_FORMAT.md). Stale host/ownership guidance now matches
+the implemented FIFO, 43-control migration and stopped rate APIs.
+
+The corrected combined source passed 46 local Release suites and 371 Python
+methods before publication as `6bdce06`. Its first hosted run passed Linux,
+macOS and sanitizers, while Windows failed only the new accounting suite. Root
+and assignment 59 independently reproduced the CRLF owner-line defect; a bounded
+normalization and permanent explicit-CRLF regression fixed it. The
+[repair record](reviews/CONTINUATION_CRLF_REPAIR.md) preserves that failure.
+
+Repair commit `7469ebf759ced820cc34fc9012beff6f772e4b89`, tree
+`096e2cd13c5aa3fc40e996c923ed80be36b0f622`, passed **46/46 suites, including
+372 Python methods, on every job** in
+[run 43380966473](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43380966473).
+All four complete diagnostic archives were independently length/hash verified.
+There are zero failed, disabled or skipped tests; actual sanitizer compilation,
+linking and leak-enabled test settings were inspected. These checks qualify the
+stated offline software scope on the named runners, while native device/host,
+concurrency, physical fidelity and complete M3 retain their separate gates.
 
 ## Current handoff and next implementation
 
@@ -231,9 +253,10 @@ separate gates; this proposed kernel is not yet implemented.
 ## Evidence boundary
 
 The separate [console continuation](development/2026-11-13-continuation/README.md)
-is actively integrating M3. Its review, standing instructions and independently
-tested model modules were preserved in this session's history. Inspect its newest
-code and ledger before starting overlapping integration work. The original
+completed its sixty assigned scopes and qualified the nominal partial-M3 code.
+Its review notes, standing instructions, corrections and observed checks remain
+in history. Inspect the current code and next pedal gate before starting further
+integration work. The original
 [assignment ledger](development/AGENT_LEDGER.md), [acceptance matrix](ACCEPTANCE_MATRIX.md)
 and [operational handoff](SESSION_HANDOFF.md) retain session-specific evidence.
 
