@@ -8,14 +8,18 @@ status and the remote head before taking ownership.
 
 ## Current checkpoint and boundaries
 
-Published native checkpoint: `5b8e2419d23fe27c51709d717812060eafd44dcc`, tree
-`880682248c467a51cce14d920189cf0009b68d22`. Root fetched and verified exact tree
-equality. Linux and Windows standalone jobs passed build, tests and packaging;
-macOS failed on two unused drawing constants now removed locally. Core CI
-found the separate reader/test issues retained in the
-[platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md). A workflow's
+Published native checkpoint: `649b12c7d1faa7601fde1019e913347c65a6634a`, tree
+`cf63327d857b02029e8c5c6f406cab3d3c6890d1`. Root fetched and verified exact tree
+equality. All three standalone platforms passed **14/14**, installation and
+packaging; all three VST3 jobs passed. Core Windows/macOS passed **90/90**, and
+the Linux sanitizer job passed. Linux Release passed **89/90**, retaining a
+scheduler-dependent observer assertion. Exact jobs and earlier failures are in
+the [platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md). A workflow's
 successful subset does not override failed or unrun gates.
-The first 46 assignments are accepted; assignments 47–49 are running. The
+There are 55 actual assignments, of which 52 are accepted. Assignment 52
+completed the 60-case benchmark matrix; 53/54 finish installation and milestone
+reviews, and 55 qualifies the combined source. Five assignments remain undispatched. The accepted timing and reader
+repairs need their own combined-source full gate and publication. The
 [combined-source evidence](reviews/STANDALONE_WAVE6_INTEGRATION.md) records the
 fresh 94/94 Release gate at local `3872752` and separate later chapel/device
 integration. The [native sanitizer audit](reviews/STANDALONE_NATIVE_SANITIZERS.md)
@@ -86,8 +90,10 @@ Choose fresh output paths and a deliberately missing state path for the default
 proposed registration. The app embeds the nominal profile and glyphs. It does
 not need the PDF or source font files to run. The explicit nine-file
 [Standalone component](STANDALONE_INSTALL.md) passes staging and relocation;
-the [hosted workflow](STANDALONE_CI.md) has Linux and Windows package passes at
-5b8e241; remaining macOS/core failures are tracked in the platform follow-up.
+the [hosted workflow](STANDALONE_CI.md) has Linux, Windows and macOS package
+passes at `649b12c`. The [clean setup audit](reviews/STANDALONE_CLEAN_SETUP.md)
+also verifies a fresh Unicode-path build and seven relocated executable runs.
+The remaining core assertion and later timing source require their own gates.
 Platform audio/window development headers determine enabled SDL backends. This
 container lacks ALSA/Pulse/X11/Wayland development headers; its executed audio
 checks explicitly select the dummy backend, which is not physical hardware.

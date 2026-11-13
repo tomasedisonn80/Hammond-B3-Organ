@@ -41,6 +41,15 @@ discarded per successful device start; Session.stop already clears all owners.
 Script acknowledgment and musical state remain strict before final cleanup.
 Tests never require an exact callback count or deadline latency.
 
+Resize observations are sampled after event handling and may coalesce a focused
+edit and its later key-up. Each observed complete control/held state must match
+its acknowledged literal command prefix, with monotonically advancing sequence
+numbers. Two ordinary completions at each size separately prove the fully edited
+controls with the original Upper MIDI 60 still held, then the same controls after
+its release. The held script ends at 1100 ms and the released script retains its
+1600 ms endpoint; neither imposes a guarantee of observing every intermediate
+UI state. Exact On/Off counts and unchanged saved bytes remain required.
+
 ## Execute
 
 After configuring an optional native build with testing enabled:
@@ -71,6 +80,12 @@ The observed Linux Release run passed **11 methods / 15 real subprocesses**;
 the registered CTest gate passed **1/1 in 22.91 seconds**. Exact binary/source
 identities and the initial lifecycle-oracle correction are recorded in
 [assignment 28](development/2026-11-13-next-phases/28-native-workflows.md).
+The later [timing repair](reviews/STANDALONE_TIMING_REPAIR.md) retains the
+instrumented counterexample to the old resize assertion. Its clean ASan/UBSan
+workflow execution passed **11 methods / 17 real subprocesses** in 28.32 seconds,
+as part of a separate 3/3 focused gate. The two added held-endpoint processes
+strengthen ownership evidence while permitting valid coalesced observations.
+That focused result does not replace a later combined-source full gate.
 The [replay input layer](STANDALONE_INPUT_REPLAY.md) has separate parser/SDL-queue acceptance. Queue
 delivery and callback acknowledgment are different boundaries; neither one
 alone proves the intended musical workflow.

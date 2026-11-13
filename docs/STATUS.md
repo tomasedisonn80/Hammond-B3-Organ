@@ -27,8 +27,8 @@ running work. Physical calibration remains unqualified.
 ## Active native standalone continuation
 
 The independent [standalone session](development/2026-11-13-next-phases/README.md)
-has accepted its first **46 distinct assignments**, including seven complete
-waves. The [native app](STANDALONE_APP.md) now runs the unchanged nominal dry
+has accepted **52 of 55 actually dispatched assignments**, including eight complete
+waves. The remaining five assignments have not yet been dispatched. The [native app](STANDALONE_APP.md) now runs the unchanged nominal dry
 engine in a resizable instrument window with keyboard/pointer performance,
 separate edited/sounding banks, pedals, percussion, expression, Audio/Help
 panels and explicit saved controls. Follow the [operational handoff](STANDALONE_HANDOFF.md)
@@ -76,21 +76,30 @@ Four [actual native screenshots](reviews/STANDALONE_WINDOW_DEMO.md) retain exact
 source and runtime provenance. Earlier [checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md)
 retains its original source scopes.
 
-Current published checkpoint `5b8e2419d23fe27c51709d717812060eafd44dcc`, tree
-`880682248c467a51cce14d920189cf0009b68d22`, preserves concurrent calibration
-foundation `5026f67`. Its Native standalone Linux and Windows jobs passed build,
-tests, installation/relocation and packaging. macOS compilation exposed two
-unused drawing constants; their narrow removal passes strict local syntax with
-an explicit unused-constant warning, and actual macOS rerun remains pending.
-Core CI at the same revision passed its sanitizer job but failed Linux Release
-on an incidental scheduling assertion, Windows on chapel file admission and a
-calibration path mock, and macOS on that same path mock. The
-[platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md) retains exact
-failures and repair requirements. The reader and concurrency
-oracle repairs now pass their full independent suites and root's four-suite
-canonical focus in 17.28 seconds; the corrected concurrency test also passes a
-fresh coherent TSAN run. Assignment 47 owns the instrumented timing repair,
-while 48/49 audit hosted artifacts and fresh setup. No later platform pass is presumed.
+Current published checkpoint `649b12c7d1faa7601fde1019e913347c65a6634a`, tree
+`cf63327d857b02029e8c5c6f406cab3d3c6890d1`, preserves concurrent calibration
+foundation `5026f67`. All three Native standalone jobs passed **14/14** suites,
+installation/relocation and packaging on Linux, Windows and macOS. All three
+VST3 jobs also passed. Core Windows and macOS passed **90/90**, and the separate
+Linux sanitizer job passed. Linux Release passed **89/90**: the concurrency test
+still required each observer to catch an incidental callback activity flag.
+The [platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md) preserves both
+this result and the earlier `5b8e241` failures. The [reader-progress repair](reviews/STANDALONE_READER_PROGRESS.md) now passes
+normal Release, constrained single-CPU Release and a fresh fully instrumented
+TSAN run, with exact initial/final publication handshakes and controlled recovery
+coverage. The [timing repair](reviews/STANDALONE_TIMING_REPAIR.md) passes **3/3**
+focused ASan/UBSan native suites, 38 methods and 210 app processes. These accepted
+repairs require a fresh combined-source full gate and their own publication;
+the earlier platform passes do not qualify later source.
+
+The [hosted artifact audit](reviews/STANDALONE_HOSTED_PLATFORM_REVIEW.md) verifies
+actual Linux/Windows packages from `5b8e241`, including relocated Linux replay.
+The [clean setup audit](reviews/STANDALONE_CLEAN_SETUP.md) independently builds
+published `649b12c` in Unicode/space paths, passes **14/14** native suites and
+runs the installed nine-file component after its original paths are unavailable.
+Seven relocated invocations include ordinary/chapel smoke, keyboard replay,
+Save/Load and a fresh-process reload. This Release result does not supersede the
+separate instrumented timing failure or the observed Linux concurrency failure.
 
 The separate [fully instrumented native audit](reviews/STANDALONE_NATIVE_SANITIZERS.md)
 built core, Session/app and all SDL C sources with ASan/UBSan. Its frozen earlier
@@ -164,7 +173,7 @@ The [coherent line/rotor checkpoint](reviews/SCANNER_WAVE3_INTEGRATION.md) at `b
 
 The [coherent scanner foundation](reviews/SCANNER_WAVE2_INTEGRATION.md) at commit `74473fa` passed **73/73 Release suites**, zero failures, from a new detached-source build. The original local baseline passed 71/71 Release suites. The optional VST3 baseline built and its project native checks passed; an initially unbuilt SDK validator was built explicitly and its previously unrun gate then passed. Earlier pedal/native hosted results below remain qualification of their named revisions.
 
-## Current position
+## Retained pedal baseline position
 
 The repository contains a working **nominal dry organ**, offline rendering and
 evidence tools, and an actual headless VST3 prototype. It has two manuals,
@@ -191,7 +200,7 @@ render, trace, plot, install and native commands. The
 [release assessment](RELEASE_READINESS.md) describes usable behavior and the
 separate product gates. [NEXT_STEPS.md](NEXT_STEPS.md) names the first next change.
 
-## Implemented behavior
+## Retained pedal baseline behavior
 
 | Area | Current contract |
 | --- | --- |
@@ -212,7 +221,7 @@ These are synthetic nominal-model results, with the recorded toolchain scope.
 
 ## Retained pedal baseline qualification
 
-The latest code/test repair is published and fetched as
+The pedal session's final code/test repair was published and fetched as
 [`0ad7240a88803de9d97bc265a8fd2b6e5d5d7e2b`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/0ad7240a88803de9d97bc265a8fd2b6e5d5d7e2b),
 tree `41c0b421643d4076c65ecbac8a750b4aae4d5806`. Root verified exact remote/local
 tree identity. The [repair record](reviews/PEDAL_REVIEW_REPAIR_INTEGRATION.md)
@@ -243,14 +252,15 @@ all allocations, locks, scheduler histories or audio-device deadlines.
 
 ## Next implementation and remaining product gates
 
-The next task is the prepared 36-coordinate line runtime and independently stamped transient reference, followed by warp-aware AC/state tests, rotor modes and a declared audible-rate policy. The graph/compiler and independent AC references are implemented and reviewed; their actual commands and source identities are in [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md). [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) separates discrete parity, full-band audible policy and later Engine/native integration. The original [scanner gate](M3_REMAINING_AND_SCANNER_GATE.md) retains the detailed physical and architectural requirements.
+The graph/compiler, independent AC/transient references and prepared line modules now exist. The next scanner decision must resolve the observed G5 same-hertz failure under the frozen budgets before Engine integration. Its exact numerical evidence and separate rotor/integration ownership are in [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md). [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) separates discrete parity, full-band audible policy and later Engine/native integration. The original [scanner gate](M3_REMAINING_AND_SCANNER_GATE.md) retains the detailed physical and architectural requirements.
 
 Physical M3 work remains: preset latch/loading behavior, continuous drawbars,
 switching bandwidth, loaded expression and the pedal reactor network. M5–M7
 require connected revision-specific organ/Leslie circuits and rotary acoustics;
 M8 requires actual admitted captures and held-out calibration. M9 still needs
-DAW project save/reopen, audio-device/standalone operation, accessible custom UI,
-runtime distribution, signing and release qualification. The actual SDK-default
+DAW project save/reopen, physical audio-device/controller qualification and a
+native accessibility tree beyond the implemented SDL canvas, plus runtime
+distribution, signing and release qualification. The actual SDK-default
 Windows icon, project-license decision and research/runtime rights remain in the
 [dependency inventory](DEPENDENCIES_AND_RIGHTS.md), not silently cleared.
 
@@ -263,7 +273,11 @@ handoff; and commit/push completed authorized work with an expected-head guard.
 Publication and product/fidelity claims require their own observed evidence.
 
 The detailed chronological record is in [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md)
-and the [current session ledger](development/2026-11-13-pedals/README.md).
+and the active [standalone](development/2026-11-13-next-phases/README.md),
+[scanner](development/2026-11-13-scanner/README.md),
+[rotary](development/2026-11-13-rotary/README.md) and
+[calibration](development/2026-11-13-calibration/README.md) ledgers. The completed
+[pedal ledger](development/2026-11-13-pedals/README.md) remains a separate history.
 The [original session](development/AGENT_LEDGER.md) and
 [console continuation](development/2026-11-13-continuation/README.md) preserve
 both earlier sixty-agent histories. Their dated pending tasks and test counts

@@ -1,16 +1,23 @@
 # Remaining M3 work and the next scanner gate
 
-The next dependency-ready numerical task is to reconstruct and independently
-review the **nominal scanner circuit**, then produce an offline response oracle
-before adding scanner audio to `Engine`. Complete M3 still needs physical preset
-and drawbar behavior, switching bandwidth, loaded expression and pedal-network
-evidence. These tasks can progress in parallel; a scanner prototype does not close
-those M3 gates.
+This retained contract originally set reconstruction and independent review of
+the **nominal scanner circuit** and its offline response oracle as the next
+numerical task. Those modules now exist. Follow the [scanner handoff](SCANNER_HANDOFF.md)
+and [current status](STATUS.md) for implemented source, executed gates and the
+remaining G5 same-hertz failure before Engine integration. The contract below
+remains authoritative; proposed milestones are not a current absence claim.
+
+Complete M3 still needs physical preset and drawbar behavior, switching
+bandwidth, loaded expression and pedal-network evidence. The later
+[18-row chapel catalog](CHAPEL_PRESETS_CATALOG.md) and explicit
+[ordinary-control auditions](CHAPEL_CONTROLS.md) preserve all 162 documentary
+taps; they do not implement physical latching or calibrated loaded gains.
+These tasks can progress in parallel; a scanner prototype does not close them.
 
 This is an implementation and acquisition contract, not a report of an implemented
 scanner or a measured instrument. The [project plan](PLAN.md) owns the complete
 M0-M9 sequence. [Current status](STATUS.md), [next steps](NEXT_STEPS.md) and the
-[current handoff](PEDAL_HANDOFF.md) own revision-specific execution results.
+[scanner handoff](SCANNER_HANDOFF.md) own revision-specific execution results.
 Proposed filenames and API names below do not imply that those files or APIs exist.
 
 ## 1. Preserve the working baseline

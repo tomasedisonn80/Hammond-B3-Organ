@@ -55,3 +55,40 @@ oracle repairs pass their four-suite canonical focus; the recovery test also
 passes coherent TSAN. Actual repaired hosted runs and the timing gate still need
 their own results. The owner-requested sixty assignments remain this session's
 scope; no planned, resumed or other-session worker is counted again.
+
+## Published repair checkpoint and continuing wave 9
+
+Published `649b12c7d1faa7601fde1019e913347c65a6634a` has exact tree
+`cf63327d857b02029e8c5c6f406cab3d3c6890d1`, verified after fetching. At this
+checkpoint all three standalone platforms pass 14/14 and package, all VST3 jobs
+pass, and Windows/macOS full core plus the Linux sanitizer job pass. Linux
+Release retains 89/90 and an observer-activity assertion; assignment 50 owns
+its deterministic progress repair. Assignment 47 owns the separate instrumented
+capture/resize repair, and 51 audits original core/control/state preservation.
+The ledger records 51 actual dispatches and 48 accepted results. Nine further
+assignments are not yet dispatched.
+
+Completed assignment 48 audits actual earlier hosted Linux/Windows packages;
+49 verifies clean setup from this published source, 14/14 native acceptance,
+nine installed files and seven executions after private original paths become
+unavailable. See the [platform follow-up](../../reviews/STANDALONE_PLATFORM_FOLLOWUP.md)
+for exact jobs, failures and distinct source scopes. Earlier checkpoint sections
+remain historical observations, not claims about unfinished later code.
+
+## Accepted repairs and final wave preparation
+
+Assignments 47–51 are now accepted. All 54 wave-1-through-wave-9 assignments
+have actually been dispatched; 51 are complete, with eight full waves accepted.
+Assignments 52–54 execute the 60-case benchmark matrix, multi-configuration
+installation and milestone reconciliation. Six final-wave assignments remain
+undispatched. The [timing repair](../../reviews/STANDALONE_TIMING_REPAIR.md)
+passes 3/3 focused ASan/UBSan suites; the
+[reader-progress repair](../../reviews/STANDALONE_READER_PROGRESS.md) passes
+fresh Release, single-CPU Release and fully instrumented TSAN. Both retain the
+failed earlier evidence and need a combined-source full gate.
+
+The [preservation audit](../../reviews/STANDALONE_CORE_PRESERVATION.md) verifies
+all 196 protected pre-existing files, all 45 parameter records, state migrations
+and generated inputs. Two fresh builds produce byte-identical renderer binaries;
+40 executed comparison renders match exactly. This audit names baseline
+`ba0d9c9` and published `649b12c` and does not silently qualify later adapters.

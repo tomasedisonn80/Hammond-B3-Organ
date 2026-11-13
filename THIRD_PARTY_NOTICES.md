@@ -174,6 +174,115 @@ freely, subject to the following restrictions:
 3. This notice may not be removed or altered from any source distribution.
 ```
 
+### SDL bundled yuv2rgb notice
+
+The pinned SDL source includes yuv2rgb by Adrien Descamps. The audited Linux
+standalone executable contains its conversion implementation. This complete
+notice accompanies the binary through the existing installed
+`THIRD_PARTY_NOTICES.md`; the nine-file payload layout is unchanged.
+[Exact source](https://github.com/libsdl-org/SDL/blob/5d249570393f7a37e037abf22cd6012a4cc56a71/src/video/yuv2rgb/LICENSE):
+1,480 bytes, SHA-256
+`f7d74004cc75778cae46c5f0139f244d67c07ef64cf51937e8272352197dcb18`.
+
+```text
+Copyright (c) 2016, Adrien Descamps
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of yuv2rgb nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+```
+
+### SDL bundled HIDAPI: selected BSD-style license option
+
+The pinned HIDAPI `LICENSE.txt` expressly offers GPLv3, BSD-style and original
+HIDAPI alternatives. This standalone component selects the **BSD-style option**
+for any included HIDAPI code. The complete text below is retained without
+selecting a license for unrelated project files. Which platform backend is
+compiled remains configuration-specific; SDL HIDAPI wrapper symbols alone do
+not establish that every upstream backend entered an executable.
+[Exact selected source](https://github.com/libsdl-org/SDL/blob/5d249570393f7a37e037abf22cd6012a4cc56a71/src/hidapi/LICENSE-bsd.txt):
+1,534 bytes, SHA-256
+`30eb1bef29b46f8ba7ab8b416035dbd93cb034a45481dd97815b944284582cd2`.
+
+```text
+Copyright (c) 2010, Alan Ott, Signal 11 Software
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Signal 11 Software nor the names of its
+      contributors may be used to endorse or promote products derived from
+      this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+```
+
+### SDL bundled Sun math fallback notice
+
+SDL's pinned `src/libm` fallback sources carry the following Sun Microsystems /
+SunPro notice. It is retained for configurations that include those routines.
+The reviewed Linux build compiled the fallback source objects into the SDL
+archive, but its final executable uses system math and showed no linked
+`SDL_uclibc`, `__kernel` or `__ieee754` fallback symbols. Compilation of an archive
+member is not a claim that the linker selected it for that executable.
+[Example exact source](https://github.com/libsdl-org/SDL/blob/5d249570393f7a37e037abf22cd6012a4cc56a71/src/libm/e_pow.c),
+SHA-256 `ac26220798ad9f92bc051aa5102ae41a0fe50b1c8750f5f90353252c5a948512`:
+
+```c
+/*
+ * ====================================================
+ * Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.
+ *
+ * Developed at SunPro, a Sun Microsystems, Inc. business.
+ * Permission to use, copy, modify, and distribute this
+ * software is freely granted, provided that this notice
+ * is preserved.
+ * ====================================================
+ */
+```
+
+These additions address the identified bundled-source notices. They do not
+constitute a complete inventory of every future platform library, system
+runtime or distribution artifact.
+
 ## Standalone DejaVu font inputs and generated glyphs
 
 Unmodified DejaVu Sans Book and DejaVu Serif Book **2.37** are retained under

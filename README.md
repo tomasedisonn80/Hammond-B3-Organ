@@ -40,9 +40,10 @@ This retained native software-renderer view has matching
 [source and runtime provenance](examples/demos/standalone-window-v1/provenance.json).
 
 The [scanner continuation](docs/SCANNER_HANDOFF.md) now includes a strict circuit
-graph/compiler, independent primary-source review and two independent AC
-calculations. Prepared runtime, rotor and integration work follow the
-[frozen numerical contract](docs/SCANNER_NUMERICAL_CONTRACT.md).
+graph/compiler, independent primary-source review, AC/transient references and
+prepared numerical modules. The observed G5 same-hertz failure must be resolved
+under the [frozen numerical contract](docs/SCANNER_NUMERICAL_CONTRACT.md) before
+Engine integration; discrete parity alone does not close that gate.
 
 An independent [rotary motion and propagation track](docs/ROTARY_SCOPE.md)
 develops nominal horn/drum trajectories and emission-time acoustic paths with
@@ -68,10 +69,12 @@ instrument match. The [project guide](docs/PROJECT_GUIDE.md),
 [current status](docs/STATUS.md) and [next steps](docs/NEXT_STEPS.md) distinguish
 implemented behavior, executed evidence and the next concrete work.
 
-Start with the [current operational handoff](docs/PEDAL_HANDOFF.md), the build
-below, or the retained [three-second pedal phrase](examples/demos/pedal-phrase-v1/README.md).
-The handoff includes rendering, tracing, plotting, local installation, pinned native
-builds and the exact qualification boundaries. Current pedal work has its own
+Start with the [standalone handoff](docs/STANDALONE_HANDOFF.md) for the playable
+window, the [calibration handoff](docs/CALIBRATION_HANDOFF.md) for evidence tools,
+or the [scanner handoff](docs/SCANNER_HANDOFF.md) for model development. The
+[pedal handoff](docs/PEDAL_HANDOFF.md) retains offline rendering, tracing, plotting
+and native plugin commands, including the
+[three-second pedal phrase](examples/demos/pedal-phrase-v1/README.md). Pedal behavior has its own
 [Engine contract](docs/PEDAL_ENGINE.md), [input transaction](docs/PERFORMANCE_INPUT.md),
 [schema-3 render evidence](docs/PEDAL_RENDER_EVIDENCE.md),
 [trace tool](docs/PEDAL_TRACE.md), [pedal plots](docs/PEDAL_TRACE_PLOTS.md) and
@@ -89,8 +92,8 @@ commit/push and observed remote-result workflow mandatory for future agents.
 ## Build and test
 
 An independent [capture/calibration-readiness track](docs/CALIBRATION_SCOPE.md)
-is developing actual audio-file inspection, corpus split auditing and fixed
-comparison evidence. Its [session record](docs/development/2026-11-13-calibration/README.md)
+provides audio-file inspection, corpus split auditing and fixed comparison
+evidence, with file-job composition and readiness work continuing. Its [session record](docs/development/2026-11-13-calibration/README.md)
 retains sixty newly requested assignments separately from the other active work.
 Synthetic tool examples do not supply the missing physical recordings.
 
@@ -174,15 +177,19 @@ bundle inventory alone proves plug-in execution or DAW/device readiness.
 | [Project guide](docs/PROJECT_GUIDE.md) | Practical reading order, workflows, evidence boundaries and session ledgers |
 | [Status](docs/STATUS.md) | What is implemented, what passed, and what remains provisional |
 | [Next steps](docs/NEXT_STEPS.md) | Next concrete tasks, dependencies and acceptance evidence |
-| [Current operational handoff](docs/PEDAL_HANDOFF.md) | Exact current render, evidence, plot, install, pinned native and continuation commands |
+| [Standalone handoff](docs/STANDALONE_HANDOFF.md) | Native window setup, controls, replay, chapel audition, benchmark and current qualification |
+| [Scanner handoff](docs/SCANNER_HANDOFF.md) | Numerical source, executed gates and the unresolved same-hertz integration decision |
+| [Calibration handoff](docs/CALIBRATION_HANDOFF.md) | Audio/corpus/policy tools, explicit evidence limits and next composition work |
+| [Offline and pedal handoff](docs/PEDAL_HANDOFF.md) | Retained render, evidence, plot, install and pinned VST3 commands |
+| [Standalone session](docs/development/2026-11-13-next-phases/README.md) | This session's actual assignments, evidence and completion accounting |
 | [Remaining M3 and scanner gate](docs/M3_REMAINING_AND_SCANNER_GATE.md) | Concrete model, numerical-oracle and acquisition prerequisites for next development |
-| [Pedal session checks](docs/PEDAL_SESSION_CHECKS.md) | Validate this session's actual sixty assignments and explicit completion gate |
+| [Pedal session checks](docs/PEDAL_SESSION_CHECKS.md) | Validate the separately completed pedal session's sixty assignments |
 | [Previous console handoff](docs/CONTINUATION_HANDOFF.md) | Dated console identities and commands; use current status/next steps for later pedal/native work |
 | [Original pedal gate](docs/M3_NEXT_GATE.md) | Retained acceptance contract for the implemented routing kernel; current work is in Next steps |
 | [Acceptance matrix](docs/ACCEPTANCE_MATRIX.md) | M0-M9 requirements, actual evidence and open gates |
-| [Release readiness](docs/RELEASE_READINESS.md) | Usable prototype, outstanding product/distribution gates and first scanner graph task |
-| [Final platform audit](docs/reviews/PEDAL_FINAL_PLATFORM.md) | Exact core/native runs, failures, repairs and verified artifact identities |
-| [Final session audit](docs/reviews/PEDAL_SESSION_FINAL_AUDIT.md) | Independent current-session accounting, full source coverage and future-agent handoff review |
+| [Release readiness](docs/RELEASE_READINESS.md) | Current prototype, unresolved product/distribution gates and retained historical assessment |
+| [Retained pedal platform audit](docs/reviews/PEDAL_FINAL_PLATFORM.md) | Named earlier core/native runs, failures, repairs and verified artifact identities |
+| [Final session audit](docs/reviews/PEDAL_SESSION_FINAL_AUDIT.md) | Independent completed pedal-session accounting, full source coverage and historical handoff review |
 | [Original session handoff](docs/SESSION_HANDOFF.md) | Preserved commands and evidence for the original session's dated checkpoint |
 | [Original assignment ledger](docs/development/AGENT_LEDGER.md) | Original 60 assignment slots; separate from the new continuation |
 | [Development log](docs/DEVELOPMENT_LOG.md) | Actual changes, commands, results and limitations |

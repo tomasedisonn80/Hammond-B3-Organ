@@ -1,0 +1,87 @@
+{
+  "schema": "hammond-session-matrix-verification-v1",
+  "status": "passed",
+  "matrix_sha256": "92e1da3c49fc763ace80740d731bc85471b0ea557b9b126903d1ec79a425505d",
+  "matrix_bytes": 398206,
+  "summary": {
+    "cases": 60,
+    "measured_calls": 6000,
+    "warmup_calls": 960,
+    "measured_frames": 4761600,
+    "warmup_frames": 761856,
+    "stereo_samples": 9523200,
+    "above_period_observations": 26
+  },
+  "stage_totals": {
+    "setup": {
+      "post_attempts": 225,
+      "accepted_commands": 225,
+      "applied_commands": 225,
+      "discarded_commands": 0,
+      "queue_full_posts": 0,
+      "recovery_pending_posts": 0,
+      "recoveries": 0,
+      "positive_render_calls": 0,
+      "zero_frame_render_calls": 60,
+      "rendered_frames": 0
+    },
+    "warmup": {
+      "post_attempts": 124800,
+      "accepted_commands": 124320,
+      "applied_commands": 62880,
+      "discarded_commands": 61440,
+      "queue_full_posts": 240,
+      "recovery_pending_posts": 240,
+      "recoveries": 240,
+      "positive_render_calls": 960,
+      "zero_frame_render_calls": 240,
+      "rendered_frames": 761856
+    },
+    "measured": {
+      "post_attempts": 780000,
+      "accepted_commands": 777000,
+      "applied_commands": 393000,
+      "discarded_commands": 384000,
+      "queue_full_posts": 1500,
+      "recovery_pending_posts": 1500,
+      "recoveries": 1500,
+      "positive_render_calls": 6000,
+      "zero_frame_render_calls": 1500,
+      "rendered_frames": 4761600
+    }
+  },
+  "profile_byte_audit": {
+    "bytes": 4545,
+    "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+    "fnv1a64": "bf38a44e8d31695a",
+    "id_matches_header": true,
+    "retained_authoring_sha256_matches_header": true
+  },
+  "control_hash_parity_pairs": 15,
+  "source_files_verified_before_and_after": 842,
+  "source_manifest_entries_verified": 57,
+  "compile_commands_verified": 23,
+  "scripts": [
+    {
+      "path": "collect_matrix.py",
+      "bytes": 8834,
+      "sha256": "5dbea6f5839ae72c4e5208b2fa95ec4e5deea23465d52d8bdb16dbc119f52299"
+    },
+    {
+      "path": "verify_matrix.py",
+      "bytes": 13366,
+      "sha256": "a46f03370816a7772034a3e515c865d4cd1a7ac9dbcdb6f50845e5939e8ea67a"
+    }
+  ],
+  "preflight_correction": {
+    "benchmark_invocations_before_correction": 0,
+    "original_error": "audit searched for hammond_standalone_core.dir instead of the actual hammond_standalone_support.dir",
+    "correction": "select actual compile target; retain 23-object expectation; no source, binary, profile, budget or benchmark gate changed"
+  },
+  "limitations": [
+    "Reported audio checks are executable assertions and hashes, not retained raw float samples.",
+    "Clock-pair calibration exposes summaries only; its 1000 raw samples are not emitted by the benchmark.",
+    "Collector timings are unfiltered observations on a shared host; no device deadline, underrun or latency is qualified.",
+    "No source rebuild or platform/device gate was performed by this assignment."
+  ]
+}

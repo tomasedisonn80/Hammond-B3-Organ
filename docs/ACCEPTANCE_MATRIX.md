@@ -1,5 +1,39 @@
 # Milestone acceptance and evidence matrix
 
+## Current continuation matrix
+
+The [project plan](PLAN.md) remains the M0–M9 authority. The matrix below
+supersedes the historical pedal-session implementation/next-task descriptions
+retained later in this file. Evidence is scoped to named revisions; software
+acceptance and physical fidelity remain separate exits. Read [STATUS.md](STATUS.md)
+and the relevant handoff before changing a currently owned module.
+
+| Milestone | Present engineering evidence | Remaining dependency or acceptance |
+| --- | --- | --- |
+| M0 — evidence and contracts | Complete 500-page readings, source identity, provenance and bounded contracts are retained across distinct sessions. | Select and document actual specimens, revisions, calibrated boundaries, uncertainties and permitted uses; missing source companions remain missing. |
+| M1 — executable architecture | Prepared SDK-free Engine, bounded Session and native adapters exist; control/lifecycle/transaction gates have named evidence. | Actual host/device lifecycle, deadlines and any future concurrent profile retirement require separate qualification. |
+| M2 — shared generator | 91 free-running nominal sources feed two manuals and pedals. The [preservation audit](reviews/STANDALONE_CORE_PRESERVATION.md) retains exact core/input and rendered parity. | Measured gearing, phase, pickup spectra, source loading, leakage and specimen-specific calibration. |
+| M3 — console | Existing contacts, four banks, percussion, expression and pedals remain; [18 chapel rows / 162 taps](CHAPEL_PRESETS_CATALOG.md) and [ordinary-control export](CHAPEL_CONTROLS.md) now have independent source/admission evidence. | Physical preset latches/interlocks, continuous drawbar conductance, loaded gains/expression, switching bandwidth and pedal reactor network. Documentary taps do not calibrate those mechanisms. |
+| M4 — scanner | Graph/compiler, independent AC/transient references and prepared numerical modules exist. [G3 processing parity](SCANNER_AC_PARITY.md) passes its scope. | The declared G5 same-hertz gate fails at every investigated rate, including the largest allowed multiplier. Resolve it under the frozen budgets before Engine integration; retain separate physical evidence requirements. |
+| M5 — AO-28 | Connected physical electronics are not implemented in the dry Engine path. | Revision-specific connected topology, operating points, loads/feedback, independent AC/transient/nonlinear/alias evidence and calibrated G-G captures. |
+| M6 — Leslie electronics | Connected amplifier/crossover/driver-load stages are not implemented. | Qualify a selected 122 revision and retain 147 as a distinct model/profile; preserve differential polarity and load boundaries. |
+| M7 — rotary acoustics | The independent [rotary foundation](ROTARY_SCOPE.md) implements nominal motion with an independent numerical reference; it is not inserted into the dry output. | Complete reviewed horn/drum histories, propagation/interpolation/radiation ownership and declared numerical gates; acquire actual trajectories, responses and room/microphone evidence. |
+| M8 — calibration | The [calibration track](CALIBRATION_HANDOFF.md), integrated through published `779fb6e`, adds audio decoding/identity, corpus/lineage/split auditing, metrics, fixed policies and independent admission tests. | Complete the reviewed file-job composition/readiness tools, then acquire actual evidence, freeze whole-group fit/holdout separation and uncertainty criteria, and retain independent validation/listening results. |
+| M9 — product | The [native standalone](STANDALONE_HANDOFF.md) has a real instrument window, controls, replay, audio lifecycle and nine-file installation. Named Linux/Windows/macOS jobs at `649b12c` pass 14/14 and packaging; VST3 remains an actual headless adapter. | Qualify later repair/package source, then real devices/controllers/DAWs, desktop/DPI/capture, a native accessibility tree, runtime distribution, project/asset/branding decisions and signing/notarization. |
+
+The accepted later capture/resize and reader-progress repairs have focused
+instrumented evidence; their combined-source full gate is still recorded
+separately. The [platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md)
+preserves the `649b12c` Linux core assertion failure and all earlier failures.
+The installation audit is also checking actual configuration selection; do not
+infer a final product or package pass from the number of completed assignments.
+
+## Preserved pedal session assessment at `0ad7240`
+
+Everything below is retained evidence for the named pedal-era sources. Its
+wording about what existed or was next is historical, not the current roadmap.
+No original result table or unresolved physical gate is promoted by this label.
+
 **Current engineering position: a nominal dry organ with two manuals, 25 pedals,
 offline evidence tools and an actual headless VST3 prototype.** Nominal M1/M2
 behavior and a substantial M3 subset have executed software evidence. Full M3,
@@ -25,7 +59,7 @@ unchanged source identities, all six fresh reader records covering pages 1–500
 and the candidate scanner's exact-rational DC answers. It supplies neither an
 acquired instrument corpus nor executed scanner DSP.
 
-## Current evidence attached to identified revisions
+### Current evidence attached to identified revisions
 
 | Evidence | Actual observed scope | Consequence and limit |
 | --- | --- | --- |
@@ -45,7 +79,7 @@ requirements in that milestone. A planned, unrun or infrastructure-blocked gate
 is distinguished from an observed project-test failure. Ten development waves
 and sixty accepted worker records do not substitute for M0–M9 product exits.
 
-## M0–M9 gates and concrete next evidence
+### M0–M9 gates and concrete next evidence
 
 | Milestone | Current classification and implemented evidence | Open exit and exact next action |
 | --- | --- | --- |
@@ -60,7 +94,7 @@ and sixty accepted worker records do not substitute for M0–M9 product exits.
 | **M8 — calibration and listening** | **Metadata/byte-integrity and synthetic measurement tooling passed; physical calibration not run.** [Capture validation](CAPTURE_VALIDATION.md), [render verification](RENDER_VERIFICATION.md), [PCM analysis](AUDIO_MEASUREMENTS.md) and pedal fixtures check declared files and synthetic signals. | Admit rights-qualified specimen captures with clock, calibration, load, lineage and duplicate checks. Freeze whole-group fit/holdout splits, uncertainty and thresholds before fitting; retain unsuccessful/inconclusive fits and independent listening evaluations. No supplied companion capture corpus or measured reference response is present. |
 | **M9 — product and release** | **Offline tools and native prototype gates passed in their named environments; playable/releasable product open.** The [23-file OfflineTools component](OFFLINE_INSTALL.md) contains five native tools and two plotters. The actual [headless VST3](VST3_PROCESSOR.md) exports 45 controls, three event buses and float32 dry stereo at 44.1/48/96 kHz; state/automation/native staging have executed gates. | Finish exact-source platform qualification, then actual DAW discovery/bus routing/project save/reopen/state migrations and device scheduling. Implement standalone device operation and accessible dimensional/flat UI with real accessibility/input checks. Resolve runtime packaging, project/research rights and Windows icon treatment; qualify installers/signing/notarization/update behavior for selected platforms. The detailed [release gates](RELEASE_READINESS.md#release-gates-and-their-next-actions) remain separate from prototype tests. |
 
-## What the strongest checks establish
+### What the strongest checks establish
 
 **Routing and sources.** Independent factory CSVs and signed basis cases can
 expose routing/branch mistakes. Tests that reuse the existing `TonewheelBank`
@@ -95,7 +129,7 @@ neither executes AC/transient DSP nor resolves primary production drawings,
 traversal applicability or unknown physical loading.
 [Source/plan review](reviews/PEDAL_SOURCE_PLAN_FINAL.md).
 
-## Next actionable gate and durable handoff
+### Next actionable gate and durable handoff
 
 After the integrator publishes and qualifies the final review/repair checkpoint,
 implement the first graph-admission task in [RELEASE_READINESS.md](RELEASE_READINESS.md)
@@ -114,7 +148,7 @@ and observed remote verification. The [pedal-session checker](PEDAL_SESSION_CHEC
 counts this session only; require its sixty-complete gate only after sixty actual
 accepted assignments. Earlier completed sessions cannot contribute new credit.
 
-## Historical console and original-session evidence
+### Historical console and original-session evidence
 
 The following table is retained from the previous matrix. Its named results are
 historical evidence for the preceding console continuation, including its then

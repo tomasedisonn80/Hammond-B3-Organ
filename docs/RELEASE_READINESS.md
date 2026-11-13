@@ -1,4 +1,38 @@
-# Release readiness and next product task
+# Release readiness and retained assessments
+
+## Current continuation assessment
+
+The repository now includes an optional native standalone instrument window,
+keyboard/pointer playing, retained controls, audio-device lifecycle management,
+replay, explicit chapel-control auditions and a relocatable nine-file component.
+Published `649b12c7d1faa7601fde1019e913347c65a6634a` passed standalone 14/14
+and packaging on Linux, Windows and macOS; its remaining Linux core concurrency
+assertion and the later timing repair retain separate qualification scopes.
+The [current status](STATUS.md), [standalone handoff](STANDALONE_HANDOFF.md) and
+[platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md) supersede the
+historical statements below about an absent standalone application or pending
+macOS build. The VST3 surface still uses generic host controls.
+
+The scanner graph/compiler, independent references and prepared numerical
+modules now exist. Its observed G5 same-hertz failure remains an explicit
+Engine-integration gate. The parallel rotary track has a nominal motion
+foundation, while connected AO-28, distinct Leslie 122/147 electronics, physical
+captures and end-to-end fidelity remain unresolved dependencies. See the
+[scanner handoff](SCANNER_HANDOFF.md), [rotary scope](ROTARY_SCOPE.md),
+[calibration scope](CALIBRATION_SCOPE.md) and [next steps](NEXT_STEPS.md).
+
+A keyboard-operable SDL canvas has no qualified native accessibility tree.
+Dummy-driver tests do not establish physical devices, latency, desktop capture,
+MIDI controllers, DAW workflows, signing or clean-machine distribution. Source,
+asset and branding rights retain their separate recorded review requirements.
+No release version, production-readiness or physical-fidelity claim is created
+by these engineering checkpoints.
+
+## Preserved pedal session assessment at `0ad7240`
+
+The following assessment and tables are retained as historical evidence for
+that named source. Its statements about what existed or was next apply to the
+pedal session at that checkpoint, not the later standalone/scanner/rotary work.
 
 **The repository supports bounded nominal offline evaluation and native plugin
 development. It is not a calibrated B-3/Leslie reproduction or a production-ready
@@ -21,7 +55,7 @@ to `d601eb1` and its qualified source `5370890e32045a556cb61a88cdb1f04fb5a18f7e`
 record final acceptance/publication. This assessment does not create a release,
 assign a version/tag or authorize a broader distribution.
 
-## What can be used now
+### What can be used now
 
 A developer can build the SDK-free C++20 core, render and inspect nominal musical
 fixtures, compare manual/pedal source sharing, inspect contact/ownership history,
@@ -58,7 +92,7 @@ need CMake 3.25+ and the exact externally acquired SDK 3.8.1 build 84 lock.
 Required filtered CTest invocations must include `--no-tests=error` so a missing
 registry cannot appear successful. [Independent setup evidence](reviews/PEDAL_CLEAN_SETUP_FINAL.md).
 
-## Qualified engineering and current platform boundary
+### Qualified engineering and current platform boundary
 
 | Named evidence | Result | What remains separate |
 | --- | --- | --- |
@@ -79,7 +113,7 @@ retry or publication names its source, run, attempt, executed suites and payload
 The original failed/repaired Windows and validator records remain part of the
 history, and a diagnostic marker alone cannot override a failed test result.
 
-## Release gates and their next actions
+### Release gates and their next actions
 
 The product target remains one inspectable B-3/AO-28/Leslie-122 model plus VST3,
 standalone operation and accessible dimensional/flat interfaces. A prototype
@@ -122,7 +156,7 @@ SHA-256 `1dda09aceb9fa930a3894cce4ad57edd8fa48ce58157c97ba5f971d2d4e79821`.
 Its copying is an observed packaging fact; this assessment grants no branding
 permission or legal clearance. [Current inventory](DEPENDENCIES_AND_RIGHTS.md).
 
-## First next product task: scanner graph admission
+### First next product task: scanner graph admission
 
 **Task:** add an explicitly reconstructed nominal scanner authoring fixture,
 strict schema/compiler and independent endpoint/source-review record. Preserve

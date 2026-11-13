@@ -1,12 +1,56 @@
 # Standalone Session concurrency acceptance
 
-Assignments `/root/w04_a22_session_concurrency` and
-`/root/w08_a46_concurrency_oracle`, 13 November 2026, maintain
+Assignments `/root/w04_a22_session_concurrency`,
+`/root/w08_a46_concurrency_oracle` and `/root/w09_a50_reader_progress`,
+13 November 2026, maintain
 [`test_standalone_concurrency`](../apps/standalone/tests/test_standalone_concurrency.cpp)
 against the actual [Session contract](STANDALONE_SESSION.md) and implementation.
 No production code changed. This supplements [serial acceptance](STANDALONE_SESSION_ACCEPTANCE.md).
 
-## Current portable recovery-boundary gate
+## Current reader participation and publication-progress gate
+
+Hosted Linux Release at `649b12c7` failed the remaining positive
+`reader.active_reads > 0` assertion, with 89/90 suites passing. Scheduling can
+legitimately let a reader run only between callbacks. The activity flag brackets
+a public `render` call; neither a positive observation nor a ready-thread flag
+proves that a read occurred inside that call. Requiring nonzero flag observations
+confused incidental scheduling with the Session contract.
+
+Each of the two readers now performs one coherent, exact full-snapshot read
+before the consumer is allowed to start. An atomic acknowledgment confirms the
+read itself, not merely thread creation. After the actual workload the consumer
+is stopped and joined; the main thread captures the final publication and makes
+it visible through a release/acquire handoff. Both readers must read that exact
+snapshot and acknowledge its strictly newer revision before they join. This
+proves **12 initial/final checkpoints** across the three phases. Every successful
+read still runs the complete cross-field, FIFO/musical-state and monotonicity
+oracle; every failed read must preserve all destination fields.
+
+Ordinary reader attempts and producer posts still record observations of the
+callback activity flag. These statistics have no required positive minimum.
+They exclude the forced checkpoint reads and are not described as proof of
+execution inside `render`. The free-running phase retains all 8,192 posts and
+its rolling credit window without a per-callback handshake. Of the existing
+16 overflow rounds, the first now waits for a callback to return before filling
+the queue: it requires 256 accepted commands, pending closure and recovery on
+the next callback. The other 15 retain concurrent bursts and complete outcome
+accounting. The required controlled deferred count is one; flagged/deferred
+race observations may both be zero.
+
+Fresh coherent `649b12c7` plus the single test overlay passed **1/1 Release**
+in **0.17 seconds total**, **1/1 Linux one-CPU Release** in **0.54 seconds**, and
+**1/1 fully rebuilt ThreadSanitizer** in **0.89 seconds**, without a race
+diagnostic. In the constrained execution, both readers observed **zero** activity
+flags in the recovery and overflow phases, flagged/deferred overflow counts were
+both zero, and all 5,760 raced late posts arrived after acknowledgment. Every
+deterministic checkpoint and recovery/accounting requirement still passed.
+No gate was retried, sleep added or eight-second watchdog extended. The
+[reader-progress review](reviews/STANDALONE_READER_PROGRESS.md) and
+[assignment 50](development/2026-11-13-next-phases/50-reader-progress.md) retain
+the failure, exact counts, source identities, commands and qualification limits.
+Hosted qualification of the assembled change remains separate.
+
+## Retained recovery-boundary repair — assignment 46
 
 The original test required a positive number of concurrent late posts to be
 discarded. [Hosted Linux Release at `5b8e241`](reviews/STANDALONE_PLATFORM_FOLLOWUP.md)
@@ -66,13 +110,17 @@ in the TSAN build carried `-fsanitize=thread`. Neither run linked SDL or a host 
 Counts describe those original executions. Later hosted review identified the
 original positive raced-discard threshold as an invalid scheduling assumption;
 the current gate above replaces it with explicit boundary coverage and complete
-classification while retaining observed overlap and progress checks.
+classification. Assignment 50 additionally replaces incidental reader/overlap
+requirements with the explicit publication checkpoints described above.
 
 ## Independent checks
 
 - One main-thread producer, one audio worker and two separate snapshot readers
-  exercise actual Session calls. Lifecycle/destruction occurs only after joins.
-- The free-running phase has no per-callback handshake. A rolling 128-command
+  exercise actual Session calls. Both readers prove initial/final publication
+  progress through atomic acknowledgments. Lifecycle/destruction occurs only
+  after joins; checkpoint snapshots remain immutable while readers use them.
+- The free-running phase has only initial/final participation handshakes and
+  no per-callback handshake. A rolling 128-command
   window avoids overflow while 8,192 accepted commands cross 32 full ring laps.
   Literal A/B patterns change every retained control, including all 36 drawbars;
   unique exact expression values identify each sequence. Every observed sequence
@@ -88,9 +136,12 @@ classification while retaining observed overlap and progress checks.
   slots are exercised. Queued independent-channel manual/pedal releases and stale
   note-ons are discarded safely. Literal prefix counts independently reconcile
   every accepted command as applied, consumer-rejected or discarded.
-- Sixteen further rounds fill the queue during a positive callback. Observed
-  QueueFull calls inside active intervals leave recovery pending after that
-  callback, proving these requests arrived after its captured prefix. The next
+- Sixteen further overflow rounds retain exact sequences, literal controls,
+  ownership release and accepted = applied + discarded. One explicitly waits
+  for callback return before filling the queue and proves pending closure until
+  the next callback. Fifteen race a positive callback and classify whether it
+  acknowledged recovery or left it pending. Activity-flag/deferred observations
+  remain statistics; no particular race outcome is required. The recovery
   callback releases all owners and resolves the suffix; no suffix notes reappear.
 - Each phase ends with joined workers, a FIFO Panic, a zero-frame drain, an empty
   follow-up and stopped state. Failed reads compare every public field; forced
@@ -121,7 +172,12 @@ avoid ABA. Readers commit only a locally unpacked successful copy. Engine/lifecy
 fields used outside atomics are audio-owned or stable throughout concurrent use.
 
 These are bounded stress observations and a C++ ordering audit, not an exhaustive
-interleaving proof. TSAN qualifies this instrumented Linux run; weak-memory hardware,
+interleaving proof. The one-CPU execution uses Linux affinity and is not a claim
+about another operating system's scheduling. TSAN qualifies the identified
+instrumented Linux run; weak-memory hardware,
 other platforms, actual device/backend threads, callback deadlines and physical
 fidelity remain unrun here. Allocation qualification is separately owned by assignment 21.
-Exact commands, source/archive identities and handoff are in [assignment 22](development/2026-11-13-next-phases/22-session-concurrency.md).
+The original commands, source/archive identities and handoff remain in
+[assignment 22](development/2026-11-13-next-phases/22-session-concurrency.md);
+[assignment 50](development/2026-11-13-next-phases/50-reader-progress.md) owns
+the current reader-progress qualification.

@@ -4,6 +4,28 @@ if(HAMMOND_BUILD_STANDALONE AND TARGET hammond_standalone)
     hammond_require_relative_install_dir(Standalone CMAKE_INSTALL_BINDIR)
     hammond_require_relative_install_dir(Standalone CMAKE_INSTALL_DATADIR)
     find_package(Python3 3.10 REQUIRED COMPONENTS Interpreter)
+    # A multi-config generator omits target-dependent install rules when no
+    # configured name matches. Reject that selection before those rules: the
+    # unconditional metadata copies must never produce a successful partial
+    # installation. Match CMake's case-insensitive configuration selection.
+    get_property(_hammond_standalone_multi_config GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+    if(_hammond_standalone_multi_config)
+        set(_hammond_standalone_configurations "${CMAKE_CONFIGURATION_TYPES}")
+        list(TRANSFORM _hammond_standalone_configurations TOUPPER)
+        set(_hammond_standalone_configuration_guard [=[
+            string(TOUPPER "${CMAKE_INSTALL_CONFIG_NAME}" _hammond_standalone_selected_configuration)
+            set(_hammond_standalone_allowed_configurations [==[@_hammond_standalone_configurations@]==])
+            list(FIND _hammond_standalone_allowed_configurations
+                "${_hammond_standalone_selected_configuration}" _hammond_standalone_configuration_index)
+            if(_hammond_standalone_configuration_index EQUAL -1)
+                message(FATAL_ERROR
+                    "Standalone unknown configuration '${CMAKE_INSTALL_CONFIG_NAME}'; select a configured name: @_hammond_standalone_configurations@.")
+            endif()
+        ]=])
+        string(CONFIGURE "${_hammond_standalone_configuration_guard}"
+            _hammond_standalone_configuration_guard @ONLY)
+        install(CODE "${_hammond_standalone_configuration_guard}" COMPONENT Standalone EXCLUDE_FROM_ALL)
+    endif()
     get_filename_component(_hammond_standalone_source "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
     set(_hammond_standalone_data "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ/standalone")
     set(_hammond_standalone_lock "${_hammond_standalone_source}/data/dependencies/sdl2-lock.json")

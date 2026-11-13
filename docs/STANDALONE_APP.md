@@ -191,8 +191,13 @@ Choose a nonexistent state path when checking the proposed registration. The
 test sends SDL scancode A down and up through the real event loop, observes
 the corresponding held state in callback snapshots, renders actual frames,
 and joins the actual SDL output. It captures a requested image while the note
-is held when possible, otherwise captures the final available frame and
-reports the failed smoke. The time bound describes the event-loop interval;
+is held in the copied state used to paint that frame. A queued key-up does not
+change the already painted frame. Every successful smoke with a requested
+screenshot must contain that held-key image; if no held frame is observed, the
+application captures the final available frame and reports a failed smoke.
+`runtime.screenshot_while_held` describes the captured keyboard indication,
+not the callback's concurrently changing state at the instant the file is written.
+The time bound describes the event-loop interval;
 window/device setup, shutdown and file writing are additional work.
 
 JSON schema version 1 records `profile`, `runtime`, `audio`, `session`,
@@ -212,6 +217,14 @@ failures, a requested screenshot failure, or a diagnostics write failure.
 Ordinary user registrations can be silent; the held-state check does not force
 a gain change. Final queued shutdown release commands may be counted as
 discarded by the stopped lifecycle even on a successful run.
+
+The native acceptance tests compare the pictured middle-C key with neighboring
+unheld white keys, in addition to checking copied diagnostics. Resize workflows
+use an acknowledged held endpoint followed by a separate released endpoint;
+each sampled observation must match a legal accepted-command prefix. A released
+observation after a focused control edit is valid once the scripted key-up is
+acknowledged. The [timing repair report](reviews/STANDALONE_TIMING_REPAIR.md)
+retains the earlier failed gate and the repair's exact verification scope.
 
 The [assignment evidence](development/2026-11-13-next-phases/18-native-app.md)
 records actual software/dummy execution. Dummy callbacks and rendered BMPs

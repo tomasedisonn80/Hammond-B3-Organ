@@ -438,6 +438,7 @@ public:
         }
         smoke_passed_ = options_.smoke_ms != 0 && smoke_completed_ && smoke_on_sent_ && smoke_off_sent_ &&
             smoke_held_observed_ && smoke_release_observed_ && render_count_ != 0 &&
+            (options_.screenshot.empty() || screenshot_while_held_) &&
             audio_before_close_.open && audio_before_close_.running &&
             final_diagnostics_.callback_count != 0 && final_diagnostics_.rendered_frames != 0 &&
             final_diagnostics_.render_failures == 0 && final_diagnostics_.format_failures == 0 &&
@@ -1167,7 +1168,11 @@ private:
             fail(std::string("Cannot render instrument: ") + SDL_GetError()); return false;
         }
         ++render_count_;
-        const bool smoke_capture = smoke_held_observed_ && !smoke_off_sent_;
+        // Keys were painted from this main-thread copy. A queued key-up does
+        // not change that frame, even if the callback has since applied it.
+        const auto& painted = ui_.view().applied;
+        constexpr std::size_t middle_c_index = 60 - kMinManualMidiNote;
+        const bool smoke_capture = smoke_held_observed_ && painted.held_keys[0][middle_c_index];
         const bool last_chance = options_.smoke_ms != 0 && elapsed >= options_.smoke_ms;
         const bool replay_capture = !options_.input_script.empty() && replay_completed_;
         if (!options_.screenshot.empty() && !screenshot_attempted_ &&
@@ -1177,7 +1182,7 @@ private:
             std::string error;
             // The backbuffer is defined here; RenderPresent invalidates it.
             screenshot_written_ = drawing_->save_bmp(cli::path_text(options_.screenshot), error);
-            screenshot_while_held_ = screenshot_written_ && (smoke_capture || (replay_capture && any_held(snapshot_)));
+            screenshot_while_held_ = screenshot_written_ && (smoke_capture || (replay_capture && any_held(painted)));
             if (!screenshot_written_) { fail("Cannot save screenshot: " + error); fatal_failure_ = true; }
         }
         SDL_RenderPresent(renderer_.get());

@@ -96,3 +96,39 @@ Windows compilation repair through successful build, tests and package steps;
 its complete per-platform result and artifacts need a named final audit. Real
 desktop/audio hotplug, callback deadlines, native accessibility and physical
 fidelity remain outside these hosted dummy-driver checks.
+
+## Observed repaired checkpoint `649b12c`
+
+Root published `649b12c7d1faa7601fde1019e913347c65a6634a`, tree
+`cf63327d857b02029e8c5c6f406cab3d3c6890d1`, with an expected-head guard, then
+fetched it and verified exact local/remote tree equality. It includes the
+accepted repairs through assignment 46 and the two-constant drawing cleanup;
+it excludes assignments 47 and 50. The following jobs were observed completed
+on 2026-11-13, including actual test logs where counts are stated:
+
+| Workflow and job | Observed result |
+| --- | --- |
+| [Native standalone 43526206689](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43526206689), Linux `132232481658` | Success; 14/14 in 60.87 seconds, install/relocation and package steps. |
+| Same workflow, Windows `132232481973` | Success; 14/14 in 79.05 seconds, install/relocation and package steps. |
+| Same workflow, macOS `132232482045` | Success; 14/14 in 64.74 seconds, install/relocation and package steps. |
+| [Core CI 43526206646](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43526206646), Windows `132232481746` | Success; 90/90 in 148.78 seconds. |
+| Same workflow, macOS `132232481704` | Success; 90/90 in 88.80 seconds. |
+| Same workflow, Linux ASan/UBSan/leaks `132232481533` | Success; 90/90 in 104.86 seconds in its SDK-free sanitizer configuration. |
+| Same workflow, Linux Release `132232481835` | Failure; 89/90 in 71.21 seconds, `test_standalone_concurrency.cpp:328`, `reader.active_reads > 0`. |
+| [Native VST3 43526206643](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43526206643), Linux `132232481428`, macOS `132232481711`, Windows `132232481765` | All three jobs completed successfully. |
+
+The actual Windows/macOS results close their earlier chapel/fixture and unused
+constant failures for this source. The Linux failure identifies another
+scheduler-dependent positive in the concurrency test: a ready reader is not
+guaranteed to execute while an activity flag is true. Assignment 50 audits all
+such positives, retaining exact FIFO/recovery/coherence work while requiring
+actual stable initial/final reads and a controlled deferred-recovery boundary.
+Its later source needs a fresh gate; an unchanged rerun is not used to erase
+the failed observation.
+
+Assignment 48's [artifact audit](STANDALONE_HOSTED_PLATFORM_REVIEW.md) covers
+the earlier `5b8e241` Linux/Windows packages. Assignment 49's
+[clean setup](STANDALONE_CLEAN_SETUP.md) covers this `649b12c` Release source,
+with 14/14 native suites and seven isolated relocated invocations. Neither
+supersedes the instrumented timing failures at the older frozen source nor
+qualifies unfinished assignment 47 code.

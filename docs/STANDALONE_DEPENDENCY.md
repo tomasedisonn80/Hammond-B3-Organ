@@ -128,9 +128,10 @@ is newly vendored by this dependency setup.
 The primary license check is not a complete distribution notice inventory.
 The pinned tree also contains `src/hidapi/LICENSE.txt` with its alternative
 license choices and `src/video/yuv2rgb/LICENSE` with a BSD-style notice that
-requires notice retention for binary distribution. Preserve applicable
-bundled notices and record the chosen HIDAPI license and compiled backend
-dependencies when packaging an actual standalone artifact. These upstream
+requires notice retention for binary distribution. The [combined notice](../THIRD_PARTY_NOTICES.md) now retains the full yuv2rgb
+notice, selected HIDAPI BSD-style option and conditional Sun math fallback
+notice. Record actual compiled/linked backend and runtime dependencies for each
+platform package; those retained texts do not establish full transitive clearance. These upstream
 files remain covered by the source pin and cleanliness check; this helper
 hashes the primary `LICENSE.txt` explicitly. Project licensing, third-party
 binary notices, platform signing and release packaging remain separate work.

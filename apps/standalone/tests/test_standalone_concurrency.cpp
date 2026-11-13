@@ -179,15 +179,25 @@ struct ReaderStats {
     std::uint64_t busy{};
     std::uint64_t changes{};
     std::uint64_t active_reads{};
+    std::uint64_t initial_revision{};
+    std::uint64_t final_revision{};
     const char* failure{};
 };
 
 struct Shared {
+    // Written before thread creation, then read-only for every observer.
+    SessionSnapshot initial_snapshot;
+    // Written after the audio join; final_ready publishes it to the readers.
+    SessionSnapshot final_snapshot;
     std::atomic<bool> begin{false};
     std::atomic<bool> finish{false};
+    std::atomic<bool> final_ready{false};
     std::atomic<bool> audio_active{false};
     std::atomic<bool> audio_failed{false};
+    std::atomic<bool> reader_failed{false};
     std::atomic<std::size_t> ready{0};
+    std::atomic<std::size_t> initial_readers{0};
+    std::atomic<std::size_t> final_readers{0};
 };
 
 struct Oracle {
@@ -291,42 +301,101 @@ void observe(const Session& session, Shared& shared, const Oracle& oracle, Reade
     destination.publication_revision = 13;
     SessionSnapshot previous;
     bool have_previous = false;
-    shared.ready.fetch_add(1, std::memory_order_release);
-    while (!shared.begin.load(std::memory_order_acquire)) std::this_thread::yield();
-    while (!shared.finish.load(std::memory_order_acquire)) {
+    const auto read_once = [&](bool count_activity) {
         const auto before = destination;
-        const bool active = shared.audio_active.load(std::memory_order_acquire);
+        const bool active = count_activity && shared.audio_active.load(std::memory_order_acquire);
         const bool success = session.read_snapshot(destination);
-        if (active || shared.audio_active.load(std::memory_order_acquire)) ++stats.active_reads;
+        // This flag surrounds a public call. Observing it does not establish
+        // that this read ran inside render, nor is observing it guaranteed.
+        if (count_activity && (active || shared.audio_active.load(std::memory_order_acquire))) {
+            ++stats.active_reads;
+        }
         if (success) {
             ++stats.successful;
             stats.failure = coherent(destination, have_previous ? &previous : nullptr, oracle);
-            if (stats.failure != nullptr) return;
-            if (!have_previous || destination.publication_revision != previous.publication_revision) {
-                ++stats.changes;
+            if (stats.failure == nullptr) {
+                if (!have_previous || destination.publication_revision != previous.publication_revision) {
+                    ++stats.changes;
+                }
+                previous = destination;
+                have_previous = true;
             }
-            previous = destination;
-            have_previous = true;
         } else {
             ++stats.busy;
             if (!same_snapshot(destination, before)) {
                 stats.failure = "failed read changed destination";
-                return;
             }
+        }
+        return success;
+    };
+    const auto checkpoint = [&](const SessionSnapshot& expected, std::uint64_t& revision) {
+        // The consumer is quiescent at both checkpoints. A single public read
+        // must succeed and match every field, not merely a ready-thread flag.
+        const bool success = read_once(false);
+        if (stats.failure == nullptr && (!success || !same_snapshot(destination, expected))) {
+            stats.failure = "reader checkpoint did not observe the exact stable publication";
+        }
+        if (stats.failure != nullptr) {
+            shared.reader_failed.store(true, std::memory_order_release);
+            return false;
+        }
+        revision = destination.publication_revision;
+        return true;
+    };
+    shared.ready.fetch_add(1, std::memory_order_release);
+    if (!checkpoint(shared.initial_snapshot, stats.initial_revision)) return;
+    shared.initial_readers.fetch_add(1, std::memory_order_release);
+    while (!shared.begin.load(std::memory_order_acquire)) std::this_thread::yield();
+    while (!shared.final_ready.load(std::memory_order_acquire)) {
+        read_once(true);
+        if (stats.failure != nullptr) {
+            shared.reader_failed.store(true, std::memory_order_release);
+            return;
         }
         if ((stats.successful + stats.busy) % 64 == 0) std::this_thread::yield();
     }
+    if (!checkpoint(shared.final_snapshot, stats.final_revision)) return;
+    shared.final_readers.fetch_add(1, std::memory_order_release);
 }
 
-void check_readers(const std::array<ReaderStats, kReaders>& stats) {
+void begin_workers(Shared& shared, const Deadline& deadline) {
+    while (shared.ready.load(std::memory_order_acquire) != kReaders + 1 ||
+           shared.initial_readers.load(std::memory_order_acquire) != kReaders) {
+        deadline.check();
+        CHECK(!shared.reader_failed.load(std::memory_order_acquire));
+        std::this_thread::yield();
+    }
+    shared.begin.store(true, std::memory_order_release);
+}
+
+void check_readers(const std::array<ReaderStats, kReaders>& stats, const Shared& shared) {
     for (const auto& reader : stats) {
         if (reader.failure != nullptr) {
             hammond_test::fail("concurrent snapshot oracle", __FILE__, __LINE__, reader.failure);
         }
-        CHECK(reader.successful > 0);
-        CHECK(reader.changes > 1);
-        CHECK(reader.active_reads > 0);
+        CHECK(reader.initial_revision == shared.initial_snapshot.publication_revision);
+        CHECK(reader.final_revision == shared.final_snapshot.publication_revision);
+        CHECK(reader.final_revision > reader.initial_revision);
+        CHECK(reader.successful >= 2 && reader.changes >= 2);
     }
+}
+
+void finish_workers(Session& session, Shared& shared, std::thread& audio,
+                    std::array<std::thread, kReaders>& readers,
+                    const std::array<ReaderStats, kReaders>& stats, const Deadline& deadline) {
+    shared.finish.store(true, std::memory_order_release);
+    audio.join();
+    CHECK(!shared.audio_failed.load(std::memory_order_acquire));
+    shared.final_snapshot = read_idle(session);
+    CHECK(shared.final_snapshot.publication_revision > shared.initial_snapshot.publication_revision);
+    shared.final_ready.store(true, std::memory_order_release);
+    while (shared.final_readers.load(std::memory_order_acquire) != kReaders) {
+        deadline.check();
+        CHECK(!shared.reader_failed.load(std::memory_order_acquire));
+        std::this_thread::yield();
+    }
+    for (auto& reader : readers) reader.join();
+    check_readers(stats, shared);
 }
 
 struct Counts {
@@ -348,6 +417,7 @@ struct Counts {
     std::uint64_t raced_discarded{};
     std::uint64_t post_acknowledgment{};
     std::uint64_t active_callbacks{};
+    std::uint64_t controlled_deferred_overflows{};
     std::uint64_t active_overflows{};
     std::uint64_t deferred_overflows{};
     std::uint64_t active_accepted{};
@@ -384,6 +454,7 @@ void test_sustained_fifo(const RuntimeProfile& profile, const Deadline& deadline
     CHECK(session.prepare(profile, {48000.0, 1, 37, kInitialFrame}) == SessionStatus::Ok);
     CHECK(session.start() == SessionStatus::Ok);
     Shared shared;
+    shared.initial_snapshot = read_idle(session);
     const Oracle oracle{expected, true, 1};
     std::array<std::thread, kReaders> readers;
     for (std::size_t index = 0; index < readers.size(); ++index) {
@@ -405,11 +476,7 @@ void test_sustained_fifo(const RuntimeProfile& profile, const Deadline& deadline
             }
         }
     });
-    while (shared.ready.load(std::memory_order_acquire) != kReaders + 1) {
-        deadline.check();
-        std::this_thread::yield();
-    }
-    shared.begin.store(true, std::memory_order_release);
+    begin_workers(shared, deadline);
     std::uint64_t resolved = 0;
     for (std::size_t index = 0; index < expected.size(); ++index) {
         // A rolling 128-command credit window permits overlap and ring wrap;
@@ -437,12 +504,7 @@ void test_sustained_fifo(const RuntimeProfile& profile, const Deadline& deadline
         if (session.read_snapshot(snapshot) && snapshot.resolved_sequence == panic.sequence) break;
         std::this_thread::yield();
     }
-    shared.finish.store(true, std::memory_order_release);
-    audio.join();
-    for (auto& reader : readers) reader.join();
-    CHECK(!shared.audio_failed.load(std::memory_order_acquire));
-    check_readers(counts.ordered_readers);
-    CHECK(counts.overlapping_posts > 0);
+    finish_workers(session, shared, audio, readers, counts.ordered_readers, deadline);
     CHECK(read_idle(session).controls == expected.back());
     quiescent_finish(session, panic.sequence);
 }
@@ -471,6 +533,7 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
     CHECK(session.prepare(profile, {48000.0, kRecoveryFrames, 37, kInitialFrame}) == SessionStatus::Ok);
     CHECK(session.start() == SessionStatus::Ok);
     Shared shared;
+    shared.initial_snapshot = read_idle(session);
     std::atomic<std::uint64_t> requested{0};
     std::atomic<std::uint64_t> entered{0};
     std::atomic<std::uint64_t> permitted{0};
@@ -513,11 +576,7 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
             completed.store(done, std::memory_order_release);
         }
     });
-    while (shared.ready.load(std::memory_order_acquire) != kReaders + 1) {
-        deadline.check();
-        std::this_thread::yield();
-    }
-    shared.begin.store(true, std::memory_order_release);
+    begin_workers(shared, deadline);
     const auto wait_for = [&](const std::atomic<std::uint64_t>& counter, std::uint64_t ticket) {
         while (counter.load(std::memory_order_acquire) < ticket) {
             deadline.check();
@@ -659,11 +718,7 @@ void test_recovery_epochs(const RuntimeProfile& profile, const Deadline& deadlin
         CHECK(later.resolved_sequence == drained.resolved_sequence);
         CHECK(later.recovery_count == recovered.recovery_count);
     }
-    shared.finish.store(true, std::memory_order_release);
-    audio.join();
-    for (auto& reader : readers) reader.join();
-    CHECK(!shared.audio_failed.load(std::memory_order_acquire));
-    check_readers(counts.recovery_readers);
+    finish_workers(session, shared, audio, readers, counts.recovery_readers, deadline);
     CHECK(counts.before_render_pending == kLatePosts);
     CHECK(counts.before_render_discarded == kLatePosts);
     CHECK(counts.after_render_accepted == 2 * kLatePosts);
@@ -704,6 +759,7 @@ void test_active_overflow(const RuntimeProfile& profile, const Deadline& deadlin
     CHECK(session.prepare(profile, {48000.0, kFlightFrames, 37, kInitialFrame}) == SessionStatus::Ok);
     CHECK(session.start() == SessionStatus::Ok);
     Shared shared;
+    shared.initial_snapshot = read_idle(session);
     std::atomic<std::uint64_t> requested{0};
     std::atomic<std::uint64_t> entered{0};
     std::atomic<std::uint64_t> completed{0};
@@ -745,11 +801,7 @@ void test_active_overflow(const RuntimeProfile& profile, const Deadline& deadlin
             std::this_thread::yield();
         }
     };
-    while (shared.ready.load(std::memory_order_acquire) != kReaders + 1) {
-        deadline.check();
-        std::this_thread::yield();
-    }
-    shared.begin.store(true, std::memory_order_release);
+    begin_workers(shared, deadline);
     std::uint64_t ticket = 0;
     const auto render_once = [&] {
         requested.store(++ticket, std::memory_order_release);
@@ -773,6 +825,11 @@ void test_active_overflow(const RuntimeProfile& profile, const Deadline& deadlin
         const auto before = counts.active_accepted;
         requested.store(++ticket, std::memory_order_release);
         wait_for(entered, ticket);
+        // One public after-call boundary proves pending overflow and recovery
+        // on the next callback. The other fifteen rounds retain the race;
+        // flag overlap and deferred race observations can both legally be zero.
+        const bool after_callback = epoch == 0;
+        if (after_callback) wait_for(completed, ticket);
         bool overflowed = false;
         bool active_overflow = false;
         for (const auto& command : burst) {
@@ -797,6 +854,12 @@ void test_active_overflow(const RuntimeProfile& profile, const Deadline& deadlin
         const auto expected_controls = applied == 0 ? controls[0] : expected[static_cast<std::size_t>(applied - 1)];
         CHECK(flight.controls == expected_controls);
         CHECK(flight.recovery_count == epoch || flight.recovery_count == epoch + 1);
+        if (after_callback) {
+            CHECK(!active_overflow && applied == 0);
+            CHECK(counts.active_accepted - before == kSessionCommandCapacity);
+            CHECK(flight.recovery_count == epoch && flight.resolved_sequence == before);
+            ++counts.controlled_deferred_overflows;
+        }
         if (flight.recovery_count == epoch) {
             CHECK(flight.resolved_sequence < counts.active_accepted);
             if (active_overflow) ++counts.deferred_overflows;
@@ -815,12 +878,8 @@ void test_active_overflow(const RuntimeProfile& profile, const Deadline& deadlin
         CHECK(recovered.discarded_commands == counts.active_discarded);
         CHECK(counts.active_accepted == counts.active_applied + counts.active_discarded);
     }
-    shared.finish.store(true, std::memory_order_release);
-    audio.join();
-    for (auto& reader : readers) reader.join();
-    CHECK(!shared.audio_failed.load(std::memory_order_acquire));
-    check_readers(counts.active_readers);
-    CHECK(counts.deferred_overflows > 0);
+    finish_workers(session, shared, audio, readers, counts.active_readers, deadline);
+    CHECK(counts.controlled_deferred_overflows == 1);
     quiescent_finish(session, counts.active_accepted);
 }
 
@@ -871,7 +930,7 @@ int main() {
     watchdog.request_stop();
     std::cout << "Session concurrency: " << counts.ordered_posts << " ordered posts, "
               << counts.ordered_callbacks << " free callbacks, " << counts.overlapping_posts
-              << " posts observed an active callback; " << kEpochs << " recovery epochs, "
+              << " posts observed the callback activity flag; " << kEpochs << " recovery epochs, "
               << counts.recovery_callbacks << " recovery callbacks, " << counts.accepted
               << " accepted = " << counts.applied << " applied + " << counts.consumer_rejected
               << " rejected + " << counts.discarded << " discarded; " << counts.producer_rejected
@@ -887,8 +946,10 @@ int main() {
               << " admitted posts discarded, " << counts.post_acknowledgment
               << " posts accepted after ack\n";
     std::cout << "Active overflow: " << kFlights << " rounds, " << counts.active_callbacks
-              << " callbacks, " << counts.active_overflows << " QueueFull calls inside an active interval, "
-              << counts.deferred_overflows << " recoveries deferred past that callback; "
+              << " callbacks, " << counts.controlled_deferred_overflows
+              << " controlled after-callback overflow deferred, " << counts.active_overflows
+              << " QueueFull calls observed the activity flag, "
+              << counts.deferred_overflows << " flagged recoveries deferred past that callback; "
               << counts.active_accepted << " accepted = " << counts.active_applied << " applied + "
               << counts.active_discarded << " discarded\n";
     for (std::size_t index = 0; index < kReaders; ++index) {
@@ -899,7 +960,9 @@ int main() {
             std::cout << label
                       << " reader " << index << ": " << stats->successful << " coherent, "
                       << stats->busy << " busy preserved, " << stats->changes
-                      << " distinct revisions, " << stats->active_reads << " active-callback attempts\n";
+                      << " distinct revisions, " << stats->active_reads << " activity-flag attempts, "
+                      << stats->initial_revision << " -> " << stats->final_revision
+                      << " exact publication checkpoints\n";
         }
     }
     return 0;

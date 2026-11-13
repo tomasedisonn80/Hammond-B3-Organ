@@ -113,6 +113,22 @@ class WorkflowRun:
     elapsed: float
 
 
+def diagnostic_excerpt(value: dict | Path) -> str:
+    """Keep bounded per-process evidence in failures before temporary cleanup."""
+    limit = 65536
+    if isinstance(value, Path):
+        try:
+            if not value.is_file():
+                return "Diagnostics file is unavailable"
+            with value.open("rb") as source:
+                content = source.read(limit + 1).decode("utf-8", errors="replace")
+        except OSError as error:
+            return f"Diagnostics could not be read: {error}"
+    else:
+        content = json.dumps(value, sort_keys=True)
+    return "Copied diagnostics:\n" + content[:limit] + ("\n[truncated at 65536 characters]" if len(content) > limit else "")
+
+
 class NativeWorkflowAcceptance(unittest.TestCase):
     invocations = 0
 
@@ -161,7 +177,8 @@ class NativeWorkflowAcceptance(unittest.TestCase):
             self.fail(f"Native replay exceeded {PROCESS_TIMEOUT}s: {error}")
         elapsed = time.monotonic() - started
         self.assertEqual(process.returncode, 0,
-                         f"Native workflow failed ({elapsed:.3f}s):\n{process.stdout}\n{process.stderr}")
+                         f"Native workflow failed ({elapsed:.3f}s):\n{process.stdout}\n{process.stderr}\n"
+                         + (diagnostic_excerpt(diagnostics_path) if process.returncode != 0 else ""))
         duration_seconds = int(source.splitlines()[1].split()[1]) / 1000.0
         self.assertGreaterEqual(elapsed, duration_seconds - 0.04,
                                 "A completed replay must reach its declared duration")
@@ -169,7 +186,10 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.assertTrue(diagnostics_path.is_file(), "Successful replay must write requested diagnostics")
         data = json.loads(diagnostics_path.read_text(encoding="utf-8"),
                           object_pairs_hook=unique_object, parse_constant=reject_nonfinite)
-        self.assert_common(data, source, state_path, size)
+        try:
+            self.assert_common(data, source, state_path, size)
+        except AssertionError as error:
+            self.fail(f"{error}\n{diagnostic_excerpt(data)}")
         self.assertEqual(script_path.read_text(encoding="ascii"), source, "Replay must not modify its input")
         self.assertEqual({path.name for path in directory.iterdir()},
                          {state_path.name, script_path.name, diagnostics_path.name},
@@ -444,18 +464,49 @@ class NativeWorkflowAcceptance(unittest.TestCase):
                 # Header Save through Upper's first drawbar is eleven Tabs.
                 events = tabs(200, 11) + tap(500, "Home")
                 events += [(650, "key_down A none 0"), (850, f"resize {width} {height}")]
-                events += tap(1050, "Right") + [(1250, "key_up A shift+alt")]
-                run = self.invoke(replay(1600, events), size=(width, height))
+                events += tap(1050, "Right")
                 zero = deepcopy(INITIAL_CONTROLS)
                 zero["manual_drawbars"][0][1][0] = 0
                 one = deepcopy(zero)
                 one["manual_drawbars"][0][1][0] = 1
-                transitions = self.assert_control_path(run, [INITIAL_CONTROLS, zero, one])
-                self.assertEqual(self.holds(transitions[2]), ((60,), (), ()),
-                                 "The note must remain held through resize and the following focused edit")
-                self.assert_hold_path(run, [EMPTY_HOLDS, ((60,), (), ()), EMPTY_HOLDS])
-                self.assert_note_commands(run, 1, 1)
-                self.assertEqual(run.saved_bytes, INITIAL_STATE)
+                held = ((60,), (), ())
+                # Literal script prefixes: startup, Home, A-down, Right, A-up.
+                # Tabs, resize and modifier changes add no script commands.
+                prefixes = {0: (INITIAL_CONTROLS, EMPTY_HOLDS), 1: (zero, EMPTY_HOLDS),
+                            2: (zero, held), 3: (one, held), 4: (one, EMPTY_HOLDS)}
+                for release in (False, True):
+                    with self.subTest(release=release):
+                        # The held endpoint is an ordinary replay completion
+                        # boundary. It proves the resize/edit retained the note
+                        # even if intermediate UI observations were coalesced.
+                        source = replay(1600, events + [(1250, "key_up A shift+alt")]) if release else replay(1100, events)
+                        run = self.invoke(source, size=(width, height))
+                        metadata = run.diagnostics["replay"]
+                        final_sequence = metadata["last_submitted_sequence"]
+                        # SDL can queue scoped releases during window startup.
+                        # Locate this known command suffix without assuming a
+                        # fixed number of those harmless initial commands.
+                        startup_sequence = final_sequence - (4 if release else 3)
+                        evidence = f"Resize release={release}, elapsed={run.elapsed:.3f}s\n{diagnostic_excerpt(run.diagnostics)}"
+                        self.assertGreaterEqual(startup_sequence, 1, evidence)
+                        previous = 0
+                        for observation in [*metadata["observations"], metadata["before_shutdown"]]:
+                            sequence = observation["last_applied_sequence"]
+                            self.assertIn(sequence, range(1, final_sequence + 1), evidence)
+                            self.assertGreaterEqual(sequence, previous, evidence)
+                            self.assertEqual(observation["resolved_sequence"], sequence, evidence)
+                            submitted = observation.get("last_submitted_sequence", metadata["last_submitted_sequence"])
+                            self.assertLessEqual(sequence, submitted, evidence)
+                            self.assertLessEqual(submitted, final_sequence, evidence)
+                            if "elapsed_ms" in observation and observation["elapsed_ms"] < 500:
+                                self.assertEqual(submitted, startup_sequence, evidence)
+                            prefix = max(0, sequence - startup_sequence)
+                            self.assertEqual((observation["controls"], self.holds(observation)), prefixes[prefix], evidence)
+                            previous = sequence
+                        self.assertEqual(previous, final_sequence, evidence)
+                        self.assertEqual(run.diagnostics["controls"], one, evidence)
+                        self.assert_note_commands(run, 1, int(release))
+                        self.assertEqual(run.saved_bytes, INITIAL_STATE, evidence)
 
     def test_off_window_pointer_release_preserves_independent_keyboard_owner(self) -> None:
         source = replay(1400, [

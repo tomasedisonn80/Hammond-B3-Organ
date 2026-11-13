@@ -115,6 +115,13 @@ class StandaloneInstallTests(unittest.TestCase):
         cls.authoring_hash = hashlib.sha256(canonical).hexdigest()
         if not (cls.build / "cmake_install.cmake").is_file():
             raise RuntimeError("Missing selected build install script; configure again")
+        cache = {}
+        for line in (cls.build / "CMakeCache.txt").read_text(encoding="utf-8").splitlines():
+            if line and not line.startswith(("#", "//")) and ":" in line and "=" in line:
+                key, rest = line.split(":", 1)
+                cache[key] = rest.split("=", 1)[1]
+        cls.configurations = cache.get("CMAKE_CONFIGURATION_TYPES", "").split(";")
+        cls.configurations = [value for value in cls.configurations if value]
 
     @staticmethod
     def environment():
@@ -256,6 +263,36 @@ class StandaloneInstallTests(unittest.TestCase):
                                          f"-DCMAKE_BUILD_TYPE={selected}"], work))
         inputs = [binary, *(source / relative for relative in SOURCE_FILES.values()), sdl / "LICENSE.txt"]
         return source, build, binary, inputs
+
+    def test_actual_configuration_selection_preserves_complete_payload_or_destination(self):
+        # This uses the actual generated build, not an imported-target fixture.
+        # A single-config generator selects its configured executable regardless
+        # of --config; no additional generator is needed to run this test.
+        unknown = "HammondUnknownConfiguration"
+        while unknown.casefold() in {value.casefold() for value in self.configurations}:
+            unknown += "X"
+        with tempfile.TemporaryDirectory(prefix="hammond configuration install ") as temporary:
+            work = Path(temporary).resolve()
+            for existing in (False, True):
+                with self.subTest(existing=existing, configurations=self.configurations):
+                    prefix = work / ("existing prefix Ω" if existing else "fresh prefix Ω")
+                    if existing:
+                        (prefix / "keep directory").mkdir(parents=True)
+                        (prefix / "keep directory/sentinel.bin").write_bytes(b"retain this installation prefix\x00\xff")
+                        (prefix / "empty directory").mkdir()
+                    before = tree_state(prefix)
+                    present = prefix.exists()
+                    result = self.invoke(self.install_command(self.build, prefix, configuration=unknown), work)
+                    if self.configurations:
+                        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+                        self.assertIn("Standalone unknown configuration", result.stderr)
+                        self.assertEqual(prefix.exists(), present, "Unknown configuration created a destination")
+                        self.assertEqual(tree_state(prefix), before, "Unknown configuration changed the destination")
+                    else:
+                        self.assert_success(result)
+                        expected = expected_tree(self.payload(self.bindir, self.datadir))
+                        expected.update(before)
+                        self.assertEqual(tree_state(prefix), expected, "Single-config selection installed a partial payload")
 
     def test_preflight_rejects_private_bad_inputs_before_any_destination_write(self):
         with tempfile.TemporaryDirectory(prefix="hammond standalone preflight ") as temporary:

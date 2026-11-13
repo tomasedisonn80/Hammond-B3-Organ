@@ -25,6 +25,12 @@ mv "/absolute/path/staged organ" "/absolute/path/moved organ"
 ```
 
 Use the actual selected configuration with a multi-configuration generator.
+An unknown configuration name is rejected before any destination write, including
+metadata copies. Names are matched without case sensitivity against the build's
+configured names, so declared custom configurations remain supported. A declared
+configuration still requires its own built executable; another configuration's
+binary cannot satisfy that preflight. Single-configuration generators retain
+their configured executable selection regardless of the install `--config` label.
 Windows uses `hammond_standalone.exe`. Prefixes may contain spaces and Unicode.
 `CMAKE_INSTALL_BINDIR` and `CMAKE_INSTALL_DATADIR` may be nonempty relative paths
 without parent traversal or list separators; configure them before staging.
@@ -80,7 +86,12 @@ unrelated directory with explicit private state and diagnostics paths. Rendering
 and nominal-profile diagnostics exercise the embedded glyph/profile path.
 It also checks failure preflight against private copied inputs, explicit opt-in,
 custom relative paths, missing selected configurations, overwrite refusal and
-copy mode. It never renames or damages shared build products. No prerequisite
+copy mode. Against the actual configured build, an unknown multi-config name
+must preserve fresh and pre-existing destinations, including sentinel bytes and
+empty directories. A single-config build instead checks that its selected
+executable and all eight metadata files are copied completely. This introduces
+no Ninja or other additional generator dependency and no capability skip.
+It never renames or damages shared build products. No prerequisite
 failure is silently skipped. The registration provides `HAMMOND_TEST_CMAKE`,
 `HAMMOND_TEST_BUILD_DIR`, `HAMMOND_TEST_CONFIG`, `HAMMOND_STANDALONE_EXECUTABLE`,
 `HAMMOND_SDL2_ROOT`, `HAMMOND_INSTALL_BINDIR` and `HAMMOND_INSTALL_DATADIR`.

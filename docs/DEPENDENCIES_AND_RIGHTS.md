@@ -170,11 +170,11 @@ These are top-level action-license checks, not a transitive-dependency audit of 
 
 ## Gate for the next dependency, asset or release
 
-The selected optional VST3 SDK and native module now have scoped executed evidence above. A complete release, DAW/device operation and project-wide rights review remain separate gates. No GUI framework or audio-device library is selected. The atlas's historical SDK/framework licensing observations do not select today's version. For every further addition, retain this short record before integration/distribution:
+The selected optional VST3 SDK and native module now have scoped executed evidence above. A complete release, DAW/device operation and project-wide rights review remain separate gates. The later standalone update below selects pinned SDL2 and DejaVu inputs; the earlier pedal assessment did not yet select a GUI/device dependency. The atlas's historical SDK/framework licensing observations do not select today's version. For every further addition, retain this short record before integration/distribution:
 
 1. **Identity and purpose:** component/asset name, author/provider, exact version or commit, primary source URL, acquisition date, original and shipped SHA-256, intended use and destination paths. Include transitive components and derivative ancestry.
 2. **Actual terms:** inspect the selected revision's primary license/permission text and retain it; record attribution, modification notices, source-offer or other applicable conditions, and a reviewed compatibility decision for the intended distribution and the owner's eventual project-license choice. Record unresolved items against the affected component/use.
-3. **Build/runtime boundary:** state whether it is system-provided, fetched only by CI, vendored source, statically linked, dynamically linked or copied into the package. Review the actual runtime files included; naming an SDK or passing a build does not complete this record. The VST3 foundation is selected below; GUI/device choices remain **not selected**.
+3. **Build/runtime boundary:** state whether it is system-provided, fetched only by CI, vendored source, statically linked, dynamically linked or copied into the package. Review the actual runtime files included; naming an SDK or passing a build does not complete this record. The VST3 foundation and later SDL2/DejaVu standalone selection have their own exact records; future additions need equivalent review.
 4. **Recordings and pictures:** separately record permission to access and capture the instrument/location and permission to store, analyze, derive models from and redistribute the resulting masters/derivatives. Identify recorder/photographer, operator/session and any included performances or other third-party material. Physical access permission is not a software license; an SDK license does not cover a recording or photograph. [Acquisition admission](CAPTURE_PROTOCOL.md)
 5. **Fonts and UI assets:** record each actual font/image license, creator, version, embedding/distribution scope and alterations; preserve required credit and modification history. An atlas reference or an absent original notice cannot substitute for the acquired file's record.
 6. **Final payload:** enumerate staged files and hashes, include the applicable notices/license texts, check for unintended scans/source trees/captures, and retain the manifest with build/test identities. Resolve the owner's project-license choice and affected PDF/asset permissions for the proposed use; do not mark those questions complete because this inventory exists.
@@ -196,13 +196,18 @@ The independent native adapter introduces explicitly acquired, locked SDL2
 hashes and authoring dependencies are retained in
 [STANDALONE_DEPENDENCY.md](STANDALONE_DEPENDENCY.md) and
 [STANDALONE_FONTS.md](STANDALONE_FONTS.md). The
-[third-party notices](../THIRD_PARTY_NOTICES.md) retain the selected SDL2 license
-and point to the complete accompanying DejaVu notice.
+[third-party notices](../THIRD_PARTY_NOTICES.md) retain the SDL2 primary license,
+bundled yuv2rgb notice, selected HIDAPI BSD option and conditional Sun libm
+fallback permission notice, and point to the complete DejaVu notice. These
+secondary notices were added after review of the actual pinned source and a
+linked yuv2rgb implementation in the Linux executable. Platform-selected system
+and transitive runtime contents still require their own exact payload review.
 
 SDL2 is a static optional native build target, while system audio/window and
 C/C++ runtime linkage remains platform-specific. The generated glyph header
-requires neither source font files nor a font rasterizer at runtime. Future
-standalone staging must accompany the executable with SDL2 and DejaVu notices,
+requires neither source font files nor a font rasterizer at runtime. The nine-file
+standalone component accompanies the executable with the combined notices and
+separate primary SDL2/DejaVu texts,
 a model-scope description and actual runtime-dependency inventory. Building or
 staging an unsigned prototype does not select the missing project-wide license,
 clear supplied research/branding rights or qualify signed public distribution.

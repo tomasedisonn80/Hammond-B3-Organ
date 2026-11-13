@@ -1,5 +1,95 @@
 # Development log
 
+## 2026-11-13 — Combined source freeze for final standalone integration
+
+- Inspected and merged concurrent calibration publication
+  `779fb6e13b8f60236cad4aedb9999ba16198f920`, tree
+  `f9baccbb54f51063b01a0859d2c10cdadfbd238b`. Its independently owned audio,
+  corpus, comparison/policy and admission work is preserved. The reported
+  96/96 SDK-free result belongs to its named wave-4 source; this combined source
+  will receive its own full native-enabled gate in assignment 55.
+- Accepted assignment 52's complete 60-case benchmark matrix: 6,000 measured
+  calls, 4,761,600 measured frames, all 240 state snapshots and all timing
+  arithmetic pass. Root independently reran the retained artifact verifier.
+  All 26 above-period observations remain in the data; no device deadline or
+  controlled performance comparison is claimed. See the
+  [matrix report](reviews/STANDALONE_BENCHMARK_MATRIX.md).
+- Assignment 53 reproduced unknown multi-configuration installation returning
+  success with eight metadata files and no executable. Its frozen repair adds
+  an unconditional component-scoped configured-name guard before all writes.
+  Debug/Release maintained tests pass, mixed-case names preserve CMake behavior,
+  and unknown names preserve fresh/existing destinations. Its remaining runtime
+  audit and final report are still active; the final combined gate will exercise
+  the maintained single-configuration branch as well.
+- Assignment 54 identified a concrete bundled-notice omission. Root retained
+  the exact pinned yuv2rgb notice and selected HIDAPI BSD text, plus the Sun
+  math fallback notice for configurations that include it. The audited Linux
+  binary demonstrably links yuv2rgb; compilation of fallback math archive members
+  alone is not reported as linked fallback code. The existing combined notice
+  carries these texts without changing the nine-file layout.
+- Refreshed current README/guide/status/milestone navigation while preserving
+  the original pedal result tables as explicitly historical. Current scanner
+  G5, physical M3/M5/M6/M7/M8 and device/accessibility/release gates remain open.
+  The actual ledger has 55 dispatches / 52 accepted results; no final-wave
+  completion or new full-source test pass is claimed yet.
+
+## 2026-11-13 — Accepted standalone timing, reader and preservation evidence
+
+- Accepted assignment 47: screenshot labeling/capture uses the actual painted
+  applied state, and successful requested smoke requires the held-key image.
+  Independent pixels and acknowledged held/released resize endpoints supplement
+  diagnostics. A fresh fully instrumented core/SDL/app gate passed 3/3 suites,
+  38 methods and 210 processes in 50.084 seconds; deterministic old failures
+  and an invalidated stale-object attempt are retained. See the
+  [timing review](reviews/STANDALONE_TIMING_REPAIR.md). Leak detection remains
+  explicitly excluded for the demonstrated ptrace limitation.
+- Accepted assignment 50: each of two readers acknowledges exact initial/newer
+  final snapshots in all three phases. A controlled after-return overflow
+  supplements fifteen races; all prior FIFO/recovery/coherence workloads remain.
+  Fresh Release, one-CPU Release and coherent TSAN passed on their first runs.
+  The constrained run legitimately observed zero flagged overlap in two phases,
+  while every required checkpoint and recovery passed. See the
+  [progress review](reviews/STANDALONE_READER_PROGRESS.md).
+- Accepted assignment 51: all 196 protected pre-existing files and all 45
+  parameter records match baseline; state migrations and generated inputs pass.
+  Eleven selected suites passed per fresh revision. Forty renders over
+  3,241,200 frames matched exactly, and the two renderer binaries are themselves
+  byte-identical. See [preservation evidence](reviews/STANDALONE_CORE_PRESERVATION.md).
+- The actual ledger has 54 dispatched / 51 completed assignments and eight
+  completed waves. Wave 9's remaining three reviews are active; six final-wave
+  assignments remain undispatched. The combined-source gate and publication are
+  still required for the accepted repair code.
+
+## 2026-11-13 — Standalone repaired publication and independent setup audit
+
+- Published `649b12c7d1faa7601fde1019e913347c65a6634a`, exact tree
+  `cf63327d857b02029e8c5c6f406cab3d3c6890d1`, using an expected-head update.
+  Fetched the remote commit and verified identical local/remote trees; preserved
+  concurrent rotary/calibration work and unfinished assignment 47 changes.
+- [Observed platform results](reviews/STANDALONE_PLATFORM_FOLLOWUP.md): all
+  three standalone jobs passed 14/14 and packaging; all VST3 jobs passed.
+  Core Windows 90/90 in 148.78 seconds, macOS 90/90 in 88.80 seconds and Linux
+  ASan/UBSan/leaks 90/90 in 104.86 seconds passed. Linux Release retained 89/90
+  in 71.21 seconds because `reader.active_reads > 0` depended on scheduling.
+  Assignment 50 replaces the remaining incidental-positive oracles with exact
+  publication handshakes and controlled recovery coverage; its qualification
+  is separate from these published results.
+- Accepted [assignment 48](reviews/STANDALONE_HOSTED_PLATFORM_REVIEW.md): actual
+  earlier `5b8e241` Linux/Windows ZIP digests, inventories and payload bytes
+  match; the downloaded Linux executable completes the 18-event keyboard replay
+  after relocation. Windows execution evidence comes from its actual runner.
+- Accepted [assignment 49](reviews/STANDALONE_CLEAN_SETUP.md): 842 frozen source
+  blobs/modes, fresh Unicode/space-path builds, eight selected SDK-free suites,
+  complete 14/14 native suites in 63.97 seconds, nine-file installation and
+  seven direct relocated invocations with private original paths absent. The
+  benchmark, explicit chapel export, keyboard ownership, Save/Load and empty
+  fresh-process note state match independent expectations. All 23 recorded
+  commands returned zero; no production change was needed for this scope.
+- The actual ledger now has 51 dispatches and 48 accepted results; assignments
+  47, 50 and 51 remain active. Nine assignments remain undispatched. The original
+  instrumented 92/94 result, current reader assertion and physical product
+  gates remain visible; no passing subset substitutes for their evidence.
+
 ## 2026-11-13 — Independent capture/calibration-readiness scope
 
 - Frozen wave-4 commit `1c2ea32` passed 11/11 focused suites in 12.57 seconds.

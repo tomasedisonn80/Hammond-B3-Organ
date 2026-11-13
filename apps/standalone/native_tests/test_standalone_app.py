@@ -147,6 +147,22 @@ class Run:
     elapsed: float
 
 
+def diagnostic_excerpt(value: dict | Path) -> str:
+    """Keep bounded per-process evidence in failures before temporary cleanup."""
+    limit = 65536
+    if isinstance(value, Path):
+        try:
+            if not value.is_file():
+                return "Diagnostics file is unavailable"
+            with value.open("rb") as source:
+                content = source.read(limit + 1).decode("utf-8", errors="replace")
+        except OSError as error:
+            return f"Diagnostics could not be read: {error}"
+    else:
+        content = json.dumps(value, sort_keys=True)
+    return "Copied diagnostics:\n" + content[:limit] + ("\n[truncated at 65536 characters]" if len(content) > limit else "")
+
+
 class NativeAppAcceptance(unittest.TestCase):
     invocations = 0
 
@@ -190,8 +206,14 @@ class NativeAppAcceptance(unittest.TestCase):
         except subprocess.TimeoutExpired as error:
             self.fail(f"Native subprocess exceeded {timeout}s: {arguments!r}; {error}")
         elapsed = time.monotonic() - started
+        evidence = ""
+        if process.returncode != expected and "--diagnostics" in arguments:
+            index = arguments.index("--diagnostics") + 1
+            if index < len(arguments):
+                evidence = diagnostic_excerpt(Path(arguments[index]))
         self.assertEqual(process.returncode, expected,
-                         f"Arguments: {arguments!r}\nstdout: {process.stdout}\nstderr: {process.stderr}")
+                         f"Arguments: {arguments!r}\nElapsed: {elapsed:.3f}s\n"
+                         f"stdout: {process.stdout}\nstderr: {process.stderr}\n{evidence}")
         return Run(process, elapsed)
 
     def tree_snapshot(self) -> dict[str, tuple]:
@@ -361,7 +383,7 @@ class NativeAppAcceptance(unittest.TestCase):
             self.assertEqual(report["errors"], {"count": 0, "last": ""})
             self.assertEqual(run.process.stderr, "")
 
-    def assert_bmp(self, path: Path, width: int, height: int) -> None:
+    def assert_bmp(self, path: Path, width: int, height: int, *, held_middle_c: bool = False) -> None:
         data = path.read_bytes()
         self.assertGreaterEqual(len(data), 54)
         self.assertEqual(data[:2], b"BM")
@@ -385,6 +407,19 @@ class NativeAppAcceptance(unittest.TestCase):
                 start = row + x * bytes_per_pixel
                 colors.add(data[start:start + 3])
         self.assertGreater(len(colors), 8, "Rendered screenshot is blank or nearly uniform")
+        if held_middle_c:
+            # Literal interior points below the upper manual's accidentals at
+            # the two acceptance sizes. Compare C4 with the unheld D4/E4 keys;
+            # no production layout/paint code or diagnostic flag is imported.
+            c4, d4, e4, y = {(1280, 900): (522, 556, 590, 500),
+                              (960, 700): (391, 417, 442, 410)}[(width, height)]
+            row = offset + (height - 1 - y if actual_height > 0 else y) * stride
+            def pixel(x: int) -> bytes:
+                start = row + x * bytes_per_pixel
+                return data[start:start + 3]
+            self.assertEqual(pixel(d4), pixel(e4), "Reference unheld white keys differ")
+            self.assertNotEqual(pixel(c4), pixel(d4),
+                                "The screenshot did not paint Upper MIDI 60 as held")
 
     def test_help_does_not_initialize_either_driver_or_write_files(self) -> None:
         paths = self.guarded_paths()
@@ -481,9 +516,9 @@ class NativeAppAcceptance(unittest.TestCase):
                 self.assertEqual([runtime[key] for key in ("window_width", "window_height", "drawable_width", "drawable_height")],
                                  [width, height, width, height])
                 self.assertTrue(runtime["screenshot_written"])
-                self.assertTrue(runtime["screenshot_while_held"])
+                self.assertTrue(runtime["screenshot_while_held"], diagnostic_excerpt(report))
                 self.assertGreater(report["session"]["maximum_observed_peak"], 0)
-                self.assert_bmp(screenshot, width, height)
+                self.assert_bmp(screenshot, width, height, held_middle_c=True)
                 self.assertFalse(state.exists(), "Exiting the application saved musical controls")
 
     def test_saved_controls_and_legacy_startup_on_unicode_paths(self) -> None:
@@ -507,8 +542,8 @@ class NativeAppAcceptance(unittest.TestCase):
                 self.assertIn("Loaded saved controls", report["status"])
                 self.assertEqual(report["session"]["maximum_observed_peak"], 0,
                                  "A cancelled upper manual must remain silent during its smoke note")
-                self.assertTrue(report["runtime"]["screenshot_while_held"])
-                self.assert_bmp(screenshot, 1280, 900)
+                self.assertTrue(report["runtime"]["screenshot_while_held"], diagnostic_excerpt(report))
+                self.assert_bmp(screenshot, 1280, 900, held_middle_c=True)
                 self.assertEqual(state.read_bytes(), original, "Startup or exit rewrote the musical file")
 
     def test_late_malformed_startup_preserves_file_and_audition_controls(self) -> None:
