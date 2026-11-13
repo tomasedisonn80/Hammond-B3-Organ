@@ -2,7 +2,7 @@
 
 ## Active new session
 
-Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Eight waves and 48 actual new workers are complete: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation, the concurrent state exchange and the optional native module with independent Linux ABI/behavior gates. All eight retained scores have exact local baseline/current WAV compatibility.
+Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Nine waves plus the first final-wave review are complete: 55 actual new workers: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation, the concurrent state exchange and the optional native module with independent Linux ABI/behavior gates. All eight retained scores have exact local baseline/current WAV compatibility.
 
 Wave 5 completed same-frame diagnostics, compiled pedal model metadata, independently checked musical fixtures, sample-linear automation and a bounded race-free UI/audio state handoff. The host contract requires the previous-sample anchor at -1, correct offset-N interpolation/carry, stable event ordering, candidate rendering with whole-callback rollback, and state 1/2/3 loading during active processing. The enabled-path audit measured these actual paths, including the complete proposed callback; the later actual native allocation and concurrency gates now have their own scoped results.
 
@@ -36,26 +36,31 @@ remaining assignment from this sixty-worker session to invent or count again.
 
 ## Next product milestone
 
-Publish the qualified eighth-wave source (71/71 ordinary and 8/8 native suites), including the retained pedal
-phrase, independent demo gate, plotter, exact 23-file relocation, operational
-handoff, scanner plan and new session checker. Preserve the actual 48-complete
-freeze and keep unfinished wave-9 work outside it. Observe the separate core and
-native workflows at the exact published source. Windows inventory/artifact
-recovery is observed at wave-7 `7fb9b612`; macOS for that checkpoint was still
-queued when this entry was written. The [portability record](reviews/PEDAL_NATIVE_PORTABILITY.md)
-retains actual failures, focused fixes, executed results and downloaded artifacts.
+Publish the qualified final-review repair checkpoint, including the independent
+49–54 audits, updated future-agent instructions and the two-file Windows
+reparse/junction inventory repair and the single-file portable native concurrency
+test helper. Keep the exact qualified source and executed scope explicit:
+production Engine/native inputs remain unchanged from the 71-suite/eight-native-
+suite wave-8 source. The initial Python repair passed its 44 focused methods;
+the subsequent helper passed fresh native configuration/build and 1/1 focused
+concurrency CTest at source tree `81a1c466efdec3efe5c1d9af1e1663eb101dacde`.
+Inspect the actual hosted Windows junction case and repaired macOS native build.
+The wave-8 macOS retries produced an actual 71/71 core pass and a concrete native
+test compilation failure; both are retained in the repair integration review.
+Record later-source qualification separately from those historical executions.
 
-Complete assignments 49–60 as real independent reviews with concrete defect
-repair where warranted. The final gate is:
+Complete the remaining assignments 56–60: source/scanner-plan verification,
+actual hosted-artifact runtime loading, readiness assessment, final exact-source
+platform audit and final accounting review. The explicit session gate is:
 
 ```sh
 python3 tools/check_pedal_session.py --repo . --expected-complete 60
 ```
 
-Use that explicit count only after all sixty new assignments have completed and
-the integrator has accepted their substantive notes. Preserve old session ledgers.
+Use that count only after all sixty new assignments have completed and the
+integrator has accepted their substantive notes. Preserve earlier session ledgers.
 Publish all completed authorized work with an expected-head guard, verify the
-fetched exact tree, and record actual hosted outcomes and any remaining blockers.
+fetched exact tree, and retain actual hosted outcomes and unresolved gates.
 
 The next product change after this session is the [remaining M3 and scanner
 gate](M3_REMAINING_AND_SCANNER_GATE.md): first author the nominal scanner graph,

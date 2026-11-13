@@ -2,7 +2,7 @@
 
 ## Active pedal development session
 
-The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **48 new workers have completed eight waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
+The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **Nine waves (54 assignments) are complete, and the first final-wave review is accepted: 55 new workers total.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
 
 The core now includes typed 200-position pedal routing, 25 independently held pedals, a named fixed two-mixture voice, two controls and `B3CONTROLS3`. Old state formats explicitly migrate to muted pedals. The registry has 45 records, preserving every field of the earlier 43. Pedals consume the Engine's existing single source frame; lower Cancel, division panics and upper percussion remain independent. Last-rendered diagnostics retain their actual frame/rate tags. The matrix and linear pedal gain are explicit nominal engineering fixtures, not recovered electrical values or measured 16-foot/8-foot responses.
 
@@ -85,6 +85,57 @@ passed its core, sanitizer and **8/8 native** gates and uploaded its bundle.
 Root downloaded both ZIPs and matched their digests and every payload member's
 bytes, mode and hash. macOS remained queued at this observation. Exact artifacts,
 failures and recovery are in the [portability review](reviews/PEDAL_NATIVE_PORTABILITY.md).
+
+## Final review checkpoint: concrete repair and current handoff
+
+Assignments 49–54 completed independent core/input, native protocol, tools,
+dependency/artifact, fresh-setup and hosted-platform audits. Assignment 55
+updated the standing future-agent instructions and four current contracts while
+preserving their dated evidence. Core/input and native protocol review found no
+actionable production defect and executed their focused gates. The fresh setup
+audit built in a Unicode/spaces path, installed and moved the exact 23-file
+OfflineTools payload and four-file Linux native bundle, and ran all five native
+tools, both plotters and the actual ABI host while original source/build paths
+were unavailable. The phrase bytes matched the retained demo; ABI audio error
+was zero.
+
+The [tools review](reviews/PEDAL_TOOLS_EVIDENCE_FINAL.md) found a real Windows
+junction/reparse admission gap in native inventory. The two-file repair now
+rejects reparse metadata at root, descendant and regular-file admission, retaining
+all existing bounds, identity/stability and no-clobber checks. Twenty focused
+local methods pass, including independent metadata counterexamples; the actual
+two-junction Windows branch still requires the next published-source execution.
+The old-tool negative control fails as intended, and the actual Linux bundle's
+inventory bytes are unchanged. Root's [coherent repair gate](reviews/PEDAL_REVIEW_REPAIR_INTEGRATION.md)
+passed the 20 inventory and 24 session-checker methods in two CTest suites,
+plus explicit repository and historical/current session checks. All compiled
+inputs were byte-identical to the qualified wave-8 source at that initial
+Python-repair freeze. The later macOS test-harness repair below changes one
+C++ test file while retaining every production core/native input.
+
+The [hosted wave-8 audit](reviews/PEDAL_HOSTED_WAVE8_FINAL.md) independently
+observed all 71 ordinary suites and 548 Python methods passing on Linux,
+Windows and leak-enabled sanitizers, plus native Linux 8/8 and Windows 7/7.
+Seven downloaded ZIP digests and all ten native payload members match their
+records. Both initial macOS jobs failed to acquire a runner and ran zero steps;
+actual annotations identify hosted ARM64 capacity. Root requested one targeted
+retry per macOS job after this audit. The core retry actually passed 71/71
+suites and 548 Python methods in 57.99 seconds. The native retry acquired a
+runner but failed compilation because Apple's supplied library lacks the
+test harness's `std::jthread`/`std::stop_token` types; it ran no native tests.
+The [repair integration record](reviews/PEDAL_REVIEW_REPAIR_INTEGRATION.md)
+retains that failure and the one-file portable stop-and-join test helper.
+Fresh local configuration/build and focused concurrency CTest passed 1/1,
+including exception-unwind cleanup. All 549 tracked bytes/modes match repaired
+source tree `81a1c466efdec3efe5c1d9af1e1663eb101dacde`; actual hosted repair
+qualification remains the next platform gate.
+
+[Dependency/rights review](reviews/PEDAL_DEPENDENCY_ARTIFACT_FINAL.md) verified
+both SDK checkouts, all pins/licenses, actual payloads, embedded profile and
+class identities. The Windows bundle carries the SDK's default VST icon; its
+branding decision, original-icon replacement path, unbundled runtimes and
+project-wide rights remain explicit distribution gates. These findings do not
+block the documented prototype engineering work or establish release clearance.
 
 ## Earlier checkpoints and retained history
 

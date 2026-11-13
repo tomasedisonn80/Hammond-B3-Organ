@@ -30,9 +30,12 @@ and `note_id`. The adapter has no preparation step and initially owns nothing.
 | Offset | Positive calls: `0 <= offset < frames`; zero-frame calls: exactly zero |
 
 Origin indices are not native VST3 event-bus indices. This adapter accepts no
-MIDI octave convention or raw packet. The future native mapping must validate
-and convert its own bus/pitch domain before constructing these records; the
-[VST3 contract](VST3_SPIKE_CONTRACT.md) specifies that separate policy.
+MIDI octave convention or raw packet. The implemented [native processor](VST3_PROCESSOR.md)
+validates its own bus/pitch domain before constructing these records: native
+event bus 2 maps MIDI pitches 36–60 to `PedalId{1}`–`PedalId{25}`, using pedal
+origin 0. Its native bus index is not stored as the pedal-origin index. The
+[VST3 contract](VST3_SPIKE_CONTRACT.md) retains that separate software policy;
+this mapping is not evidence of a physical MIDI-equipped pedalboard.
 
 Inputs must already be in nondecreasing offset order. Equal offsets retain
 supplied order. A zero-frame flush applies commands once and advances no clock.
@@ -109,8 +112,12 @@ preserves release matching and future physical events.
 
 Do not call a manual processing facade and then a pedal processing facade for
 the same interval: each Engine call would advance the shared timeline. The
-existing [manual-only facade](INPUT_PROCESSOR.md) remains unchanged; combined
-manual/pedal/control processing requires the unified transaction under development.
+existing [manual-only facade](INPUT_PROCESSOR.md) remains unchanged. The
+implemented [combined transaction](PERFORMANCE_INPUT.md) coordinates manual,
+pedal and control input with one Engine call and commits both owner candidates
+only after that call succeeds. The native [HostTimeline](HOST_TIMELINE.md) has
+its own whole-callback candidate/slicing transaction over the same ownership
+types; it does not call the combined facade separately for the same interval.
 
 Use one coordinated authority for these physical pedals. Direct Engine
 `PedalOn`, `PedalOff` or `PedalAllNotesOff` calls bypass the owner ledger. A full
@@ -136,6 +143,11 @@ rejection and seven block partitions. The original manual adapter suite is run
 unchanged against the same coherent core.
 
 [Assignment 19](development/2026-11-13-pedals/19-pedal-ownership.md) records the
-source identities, exact commands and actual results. Unified Engine input,
-native host conversion, enabled callback instrumentation, hosted platforms and
-physical pedal calibration remain separately qualified scopes.
+source identities, exact commands and actual results for the original adapter
+gate. Later work has separate executed evidence for [combined Engine input](PERFORMANCE_INPUT.md),
+[independent mixed-input acceptance](development/2026-11-13-pedals/24-input-acceptance.md),
+[enabled core allocation](PEDAL_REALTIME.md), [actual native conversion and ABI](VST3_ABI_ACCEPTANCE.md)
+and [native callback allocation](VST3_REALTIME.md). These results preserve their
+named source, platform and instrumentation limits. Consult [current status](STATUS.md)
+and the [operational handoff](PEDAL_HANDOFF.md) for the latest publication and
+hosted outcomes; none of these software gates establishes physical pedal calibration.

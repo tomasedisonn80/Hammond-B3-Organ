@@ -135,8 +135,10 @@ the bounded manifest's raw size and SHA-256 without inventing a clean commit
 for uncommitted source. `--sdk-lock` and `--project-notices` can explicitly select
 the corresponding source inputs; their defaults are this repository's files.
 
-Inputs must be quiescent. The bundle must be a nonsymlink directory named
-`HammondB3.vst3`. All descendant symlinks, including links that stay inside the
+Inputs must be quiescent. The bundle must be a real directory named
+`HammondB3.vst3`. Windows reparse points, including directory junctions, reject
+at root admission, before descendant traversal and before regular-file reads.
+All descendant symlinks, including links that stay inside the
 bundle, and all special files reject. The helper rejects case-colliding paths,
 unsupported path characters, excessive bounds, missing/empty required resources,
 license or notice mismatches and a missing, multiple or unsupported module path.
@@ -184,13 +186,25 @@ successful SDK acquisition/verification, YAML/shell/embedded-Python checks and
 inventory/copy/tar checks of the existing Linux module. Synthetic PE/Mach-O
 fixtures test parsing and bounds; they are not Windows/macOS plugin runs.
 
-The new hosted native workflow had not run when this assignment froze. Root
-must publish the coherent native checkpoint, observe each hosted job and retain
-its artifacts before reporting platform qualification. The earlier core-only
-macOS runner acquisition failure and successful targeted retry are recorded in
-[PEDAL_RUNNER_AVAILABILITY.md](reviews/PEDAL_RUNNER_AVAILABILITY.md). Those events
-neither fail nor qualify the new native module. Keep `macos-15` and distinguish
-runner acquisition from executed compiler/test failures.
+The native workflow had not run when assignment 36 froze; that is its historical
+scope. Subsequent [ABI](VST3_ABI_ACCEPTANCE.md), [behavior](VST3_BEHAVIOR_ACCEPTANCE.md),
+[automation](VST3_AUTOMATION_REVIEW.md), [concurrency](VST3_CONCURRENCY.md) and
+[allocation](VST3_REALTIME.md) gates now execute the actual module. The
+[portability review](reviews/PEDAL_NATIVE_PORTABILITY.md) retains the first
+platform failures and observed repairs; the [wave-8 hosted audit](reviews/PEDAL_HOSTED_WAVE8_FINAL.md)
+identifies the exact later jobs, complete logs and downloaded artifacts. Its
+Linux/Windows jobs passed; the initial macOS jobs failed hosted-runner acquisition
+with zero execution. Root subsequently requested one targeted retry per job.
+A pending or cancelled runner is not an executed compiler/test result.
+
+The new reparse/junction inventory regression belongs to the later wave-9 source.
+Inspect its actual Windows output and payload before closing that repair's
+platform gate. For every subsequent code checkpoint, observe the separate core
+and native jobs and retain exact source/run/artifact identity. The earlier
+core-only macOS acquisition failure and successful targeted retry remain in
+[PEDAL_RUNNER_AVAILABILITY.md](reviews/PEDAL_RUNNER_AVAILABILITY.md); those events
+do not qualify changed native code. Preserve the configured platform coverage
+and distinguish runner acquisition from project execution.
 
 These artifacts establish software and payload evidence for the exact tested
 revision. Actual DAW compatibility, device deadlines, custom UI, signing,

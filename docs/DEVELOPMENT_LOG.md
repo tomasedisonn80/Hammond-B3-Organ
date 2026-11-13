@@ -1363,3 +1363,89 @@ native bundle relocation. The local module and profile hashes remain unchanged.
 The wave-8 integration review retains exact commands, scope, log/JUnit hashes
 and the separate next hosted gate. Final changes are Markdown results only;
 ongoing wave-9 work and later actual assignment states remain outside the freeze.
+
+
+### Eighth-wave publication and independent review findings
+
+Published `d601eb166ea3206748f8e012b20a463ff365c0b1`, fetched it and verified
+exact tree `8af684dfe56f88222c52ff71d85a911ee1192fa1`. Native run 43417681882
+and core run 43417681825 started at that revision. The wave-7 macOS jobs later
+ended without runner/steps; actual annotations identify cancellation for a
+higher-priority waiting request in each main concurrency group and separately
+record ARM64-capacity notices. Their outcomes remain unqualified; no timeout
+or project failure is inferred.
+
+Independent final core/input and native-protocol reviewers found no actionable
+production defect and executed their focused suites. The tools reviewer found
+a real Windows reparse/junction admission gap in the bundle inventory; the
+coordinated two-file repair belongs to wave 9, not the frozen wave-8 source.
+The artifact/rights review also identifies the actual Windows SDK-default icon
+bytes and its separate branding conditions; project-wide redistribution rights
+and an original-icon replacement remain explicit release gates.
+
+
+## Waves 9 and early 10 accepted — independent review and concrete repair
+
+Assignments 49–54 completed core/input, native protocol, tools/evidence,
+dependency/artifact, fresh-setup and exact hosted audits. Assignment 55 corrected
+standing instructions and stale current input/native contracts, preserving
+dated assignment evidence. Fifty-five actual workers are accepted: all nine
+complete waves plus the first final-wave review.
+
+The core and native reviewers found no actionable production defect and ran
+their focused gates. Fresh Unicode-path setup and moved-prefix execution
+succeeded with original source/build paths unavailable. Actual hosted W8
+Linux/Windows/sanitizer core jobs passed 71 suites and 548 Python methods each;
+native Linux passed eight and Windows seven suites. Seven downloaded artifact
+ZIPs and all ten native payload members were independently verified. Both
+initial macOS jobs failed hosted-runner acquisition, zero steps; root requested
+one targeted retry for each after observing the actual capacity annotations.
+
+The tools audit found a real Windows reparse/junction inventory gap. Its
+two-file repair passes 20 local methods and preserves the actual Linux bundle
+inventory bytes. The old-tool negative control fails in all three metadata
+cases; actual Windows junction execution is the next hosted gate. Root will
+qualify this source with unchanged compiled-input proof and focused Python/
+record checks. The dependency audit records the exact SDK-default Windows icon,
+its supported original-icon replacement path and separate release/rights gates.
+
+
+### Final-review repair qualified from a coherent archive
+
+Frozen tree `a8817841a0a348b6b742dfeb6668249aa9692a54` records 55 accepted workers,
+three running and two planned (58 actual dispatched). Exact comparison with
+qualified wave-8 tree 5370890e32045a556cb61a88cdb1f04fb5a18f7e confirms every compiled
+CMake/C++/header/data/runtime fixture input unchanged. Besides Markdown and the
+manifest, only the native-inventory tool and its Python regression differ.
+Root separately configured the new source and generated the nominal profile.
+
+The two actual matched CTest suites passed 44 Python methods in 1.62 seconds:
+inventory 20 and current-session checker 24, zero failures or skips. The initial
+regex also named two unregistered Python aliases; only two suites ran, with
+repository/original-console/current 55-record gates separately executed as
+explicit successful CLI commands. No four-suite or new full-C++ pass is claimed.
+The integration review retains exact scope, command receipts and log hashes.
+This initial Python-repair freeze preceded the macOS retry outcome below;
+its scoped result remains valid. The final publication also includes the
+separately qualified one-file native test repair described next.
+
+### Observed macOS retry and portable concurrency-test repair
+
+The initial review-repair publication was held before advancing main. At W8
+`d601eb166ea3206748f8e012b20a463ff365c0b1`, the actual macOS core retry passed
+71/71 suites and 548 Python methods in 57.99 seconds. Its native counterpart
+acquired a runner and failed compilation because Apple libc++ lacks the test
+harness's std::jthread/stop_token types; native tests and inventory did not run.
+The original diagnostic artifact and its digest remain in the integration review.
+
+Assignment 59 replaced only that test's thread owner with a nonmoving atomic
+stop-token/std::thread helper whose destructor requests stop and joins. A bounded
+exception-unwind probe verifies cleanup. All workload, oracle and production
+inputs remain unchanged. Fresh local configuration/build and focused concurrency
+CTest passed 1/1 in 0.33 seconds, zero failures/disabled/skips, maximum audio error
+zero. Root verified all549 tracked bytes/modes against repaired Git tree
+`81a1c466efdec3efe5c1d9af1e1663eb101dacde`, which adds just this test blob to
+the earlier Python-repair tree. Two generated caches were hashed separately and
+preserved; initial source-proof setup stops are recorded. Final result-only
+Markdown edits do not alter the qualified inputs. Actual Windows junction and
+macOS repaired native execution remain separate next hosted gates.

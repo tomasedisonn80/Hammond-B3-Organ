@@ -16,9 +16,9 @@
 #include <iostream>
 #include <span>
 #include <stdexcept>
-#include <stop_token>
 #include <string>
 #include <thread>
+#include <utility>
 #include <vector>
 
 namespace {
@@ -182,8 +182,50 @@ struct WorkerError {
     }
 };
 
+// Some supported Apple standard libraries lack jthread/stop_token. This
+// test-local owner keeps the same cooperative stop-and-join cleanup without
+// changing the processor or the concurrent workload. It cannot move: every
+// copied token refers to the owner's flag until its worker has been joined.
+class StopToken {
+public:
+    StopToken() = default;
+    explicit StopToken(const std::atomic<bool>& requested) noexcept : requested_(&requested) {}
+
+    bool stop_requested() const noexcept {
+        return requested_ != nullptr && requested_->load(std::memory_order_acquire);
+    }
+
+private:
+    const std::atomic<bool>* requested_{nullptr};
+};
+
+class JoiningThread {
+public:
+    template<class Function>
+    explicit JoiningThread(Function&& function)
+        : worker_(std::forward<Function>(function), StopToken{requested_}) {}
+
+    JoiningThread(const JoiningThread&) = delete;
+    JoiningThread& operator=(const JoiningThread&) = delete;
+    JoiningThread(JoiningThread&&) = delete;
+    JoiningThread& operator=(JoiningThread&&) = delete;
+
+    ~JoiningThread() {
+        if (worker_.joinable()) {
+            requested_.store(true, std::memory_order_release);
+            worker_.join();
+        }
+    }
+
+    void join() { worker_.join(); }
+
+private:
+    std::atomic<bool> requested_{false};
+    std::thread worker_;
+};
+
 template<class Predicate>
-bool wait_for(Predicate predicate, const WorkerError& error, std::stop_token stop = {}) {
+bool wait_for(Predicate predicate, const WorkerError& error, StopToken stop = {}) {
     const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(60);
     while (!predicate()) {
         error.check();
@@ -193,6 +235,33 @@ bool wait_for(Predicate predicate, const WorkerError& error, std::stop_token sto
     }
     error.check();
     return true;
+}
+
+void verify_unwind_cleanup() {
+    struct UnwindProbe {};
+    std::atomic<bool> started{false}, stopped{false}, finished{false};
+    WorkerError error;
+    bool caught = false;
+    try {
+        JoiningThread worker([&](StopToken stop) {
+            started.store(true, std::memory_order_release);
+            const auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(60);
+            while (!stop.stop_requested() && std::chrono::steady_clock::now() < deadline) {
+                std::this_thread::yield();
+            }
+            stopped.store(stop.stop_requested(), std::memory_order_release);
+            finished.store(true, std::memory_order_release);
+        });
+        nt::require(wait_for([&] { return started.load(std::memory_order_acquire); }, error),
+                    "cleanup probe worker started");
+        throw UnwindProbe{};
+    } catch (const UnwindProbe&) {
+        caught = true;
+    }
+    nt::require(caught && stopped.load(std::memory_order_acquire) &&
+                    finished.load(std::memory_order_acquire),
+                "exception unwind must request stop and join the test worker");
+    std::cout << "native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1\n";
 }
 
 void add(Counters& result, const Counters& value) {
@@ -229,7 +298,7 @@ void coordinated(const std::string& bundle, const RuntimeProfile& profile, doubl
     // No mutex, wait or test callback is installed in the native processor.
     std::atomic<unsigned> command{0}, completed{0};
     WorkerError error;
-    std::jthread audio([&](std::stop_token stop) {
+    JoiningThread audio([&](StopToken stop) {
         try {
             nt::StereoBlock block(kMaximumFrames);
             nt::EventList notes;
@@ -370,7 +439,7 @@ void concurrent_stress(const std::string& bundle, const RuntimeProfile& profile,
     std::atomic<std::uint64_t> published_callbacks{0};
     WorkerError error;
     std::uint32_t final_generation = 0;
-    std::jthread audio([&](std::stop_token stop) {
+    JoiningThread audio([&](StopToken stop) {
         try {
             nt::StereoBlock block(kMaximumFrames);
             nt::ParameterChanges automation;
@@ -472,6 +541,7 @@ void concurrent_stress(const std::string& bundle, const RuntimeProfile& profile,
 int main(int argc, char** argv) {
     try {
         nt::require(argc == 3, "usage: test_native_concurrency BUNDLE PROFILE");
+        verify_unwind_cleanup();
         std::ifstream input(argv[2], std::ios::binary);
         RuntimeProfile profile{};
         std::string error;

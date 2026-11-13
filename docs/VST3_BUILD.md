@@ -75,7 +75,7 @@ lock update and fresh native qualification.
 Typical single-configuration build:
 
 ```sh
-cmake -S . -B build-vst3 -DCMAKE_BUILD_TYPE=Release \
+cmake -S . -B build-vst3 -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
   -DHAMMOND_BUILD_VST3=ON \
   -DHAMMOND_VST3_SDK_ROOT=/absolute/path/to/vst3sdk
 cmake --build build-vst3 --target HammondB3 --parallel 4
@@ -86,12 +86,16 @@ For a multi-configuration generator such as Visual Studio, select Release when
 building and testing:
 
 ```sh
-cmake -S . -B build-vst3 -DHAMMOND_BUILD_VST3=ON \
+cmake -S . -B build-vst3 -DBUILD_TESTING=ON -DHAMMOND_BUILD_VST3=ON \
   -DHAMMOND_VST3_SDK_ROOT=/absolute/path/to/vst3sdk
 cmake --build build-vst3 --config Release --target check_vst3 --parallel 4
 ```
 
-Testing must remain enabled for `check_vst3`. The ordinary project-wide
+Testing must remain enabled for `check_vst3`; the examples set `BUILD_TESTING=ON`
+explicitly, including when reusing a configured build directory. With testing
+disabled, the target can still exist but its required filtered CTest command
+fails because `--no-tests=error` rejects an empty suite. Target discovery alone
+is not acceptance. The ordinary project-wide
 `check` target also includes native targets and tests when VST3 is enabled.
 For CI or a single verbose run with JUnit output, build the maintained input
 aggregate first. It includes every registered native test, the bundle and the
@@ -100,7 +104,7 @@ executables:
 
 ```sh
 cmake --build build-vst3 --config Release --target hammond_vst3_test_inputs --parallel 4
-ctest --test-dir build-vst3 -C Release --output-on-failure \
+ctest --test-dir build-vst3 -C Release --output-on-failure --no-tests=error \
   -R '^(hammond_vst3_validator|test_native_)'
 ```
 
@@ -109,8 +113,9 @@ The exact generated bundle path is written into
 `build-vst3/VST3/Release/HammondB3.vst3`, containing the native module under
 `Contents/x86_64-linux/`. The SDK chooses the appropriate desktop platform
 bundle layout. Build/test commands do not install or link the result into a
-system or user plugin directory. Native installation remains a separately
-reviewed, explicit operation.
+system or user plugin directory. The implemented [NativeVST3 component](VST3_LOCAL_INSTALL.md)
+performs separately invoked local staging and relocation; it does not register
+or install the module into a system/user plugin directory automatically.
 
 The SDK's own validator selftest still runs when that tool is built. Its
 plugin post-link validation hook is replaced locally with the explicit
@@ -147,7 +152,7 @@ Review the actual platform payload and runtime dependencies before redistributio
 The [rights inventory](DEPENDENCIES_AND_RIGHTS.md) retains the unresolved project
 and research-asset questions separately.
 
-## Recorded local qualification and next gate
+## Recorded local qualification and current gates
 
 Assignment 33 built a coherent source archive based on tree
 `06786b70f1cffcc6371600fd6e14306f16e8c985`, overlaid with frozen processor,
@@ -164,7 +169,7 @@ The unchanged SDK's summary/exit status does not count those messages as failed
 tests. They are retained in the [assignment evidence](development/2026-11-13-pedals/33-native-build.md);
 the project does not claim a warning-free validator log, enable unsupported
 float64 processing, or patch the SDK to hide this conflict. Independent balanced
-module lifecycle checks are assigned to the actual ABI harness.
+module lifecycle checks are recorded separately in the [actual ABI harness](VST3_ABI_ACCEPTANCE.md).
 
 The same validator log contains nine `ERROR`-labelled setup rejections for
 unsupported sample rates. Its format test prints those diagnostics without
@@ -185,15 +190,31 @@ hashes, ignored/untracked discovered CMake inputs, no-network configuration,
 existing-destination preservation and exact profile-byte transport. Its tests
 neither download an SDK nor substitute for an actual native build.
 
-The final focused coherent gate passed **3/3 CTest suites in 3.99 seconds**:
+Assignment 33's final focused coherent gate passed **3/3 CTest suites in 3.99 seconds**:
 the 14 SDK-free Python methods, actual-module SDK validator, and the maintained
 native controller/state-stream executable. The latter reported 41,795 checks,
 3,720 exact threshold cases across four rounding modes, 387 native string
 round trips and 306 rejected stream/migration cases. No Windows/macOS or
 actual DAW execution is inferred from this Linux result.
 
-The next gates are the independent loaded-module ABI/behavior harnesses,
-actual native callback allocation evidence, hosted Windows/macOS builds,
-concurrent native state calls and explicit package/relocation review. DAW
-project save/reopen, host scheduling, device underruns/deadlines, custom UI,
-signing and physical fidelity require their own observed evidence.
+Subsequent work completed separate [loaded-module ABI](VST3_ABI_ACCEPTANCE.md),
+[behavior](VST3_BEHAVIOR_ACCEPTANCE.md), [dense automation](VST3_AUTOMATION_REVIEW.md),
+[concurrent state](VST3_CONCURRENCY.md), [native allocation](VST3_REALTIME.md)
+and [explicit installation/relocation](VST3_LOCAL_INSTALL.md) gates. The
+[coherent wave-8 record](reviews/PEDAL_WAVE8_INTEGRATION.md) identifies the later
+71-suite ordinary and eight-suite native local pass. Its source/module/toolchain
+identity and validator limitations remain part of that evidence.
+
+The [native workflow](VST3_CI.md) and [portability review](reviews/PEDAL_NATIVE_PORTABILITY.md)
+retain actual platform executions, failures, fixes and artifact identities.
+Consult [current status](STATUS.md) before treating any dated Linux result as a
+latest-source Windows/macOS pass. The inventory's later reparse-point repair has
+its own [review and platform evidence boundary](reviews/PEDAL_TOOLS_EVIDENCE_FINAL.md).
+Report its actual Windows junction case only after observing it at the named
+source; Linux metadata probes do not establish that Windows execution. Actual payloads also retain the project/third-party and
+Windows SDK-icon decisions in [DEPENDENCIES_AND_RIGHTS.md](DEPENDENCIES_AND_RIGHTS.md).
+
+Resume dependency-ready model work from [NEXT_STEPS.md](NEXT_STEPS.md) and the
+[current handoff](PEDAL_HANDOFF.md), preserving the native contract. DAW project
+save/reopen, host scheduling, device underruns/deadlines, accessible custom UI,
+signing and physical fidelity remain open until their own evidence exists.

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Record a bounded, byte-identified native bundle without claiming host qualification.
 
-Inputs must be quiescent. All bundle symlinks and special files reject. The report
-is published as a complete new file with a no-clobber hard link; it never edits
+Inputs must be quiescent. Bundle symlinks, Windows reparse points and special
+files reject. The report is published as a complete new file with a no-clobber
+hard link; it never edits
 the bundle, dependency lock, notices, or an existing destination.
 """
 
@@ -50,8 +51,17 @@ def _signature(info: os.stat_result) -> tuple[int, ...]:
             info.st_mtime_ns, info.st_ctime_ns)
 
 
+def _reparse(info: os.stat_result) -> bool:
+    # Junctions can retain directory mode without being symbolic links. Inspect
+    # the path's Windows metadata before resolving, traversing or opening it.
+    return bool(getattr(info, "st_file_attributes", 0) &
+                getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0))
+
+
 def _regular(path: Path, maximum: int) -> os.stat_result:
     info = path.lstat()
+    if _reparse(info):
+        raise InventoryError(f"Windows reparse points are unsupported: {path.name}")
     if not stat.S_ISREG(info.st_mode):
         raise InventoryError(f"expected a regular file, without symlinks: {path.name}")
     if info.st_size > maximum:
@@ -142,6 +152,8 @@ def _walk(root: Path) -> list[tuple[str, Path, os.stat_result]]:
                 # and may lag current file information. Both bundle snapshots
                 # use fresh path metadata, matching the per-file admission API.
                 info = path.lstat()
+                if _reparse(info):
+                    raise InventoryError("bundle contains a Windows reparse point")
                 if not (stat.S_ISDIR(info.st_mode) or stat.S_ISREG(info.st_mode)):
                     raise InventoryError("bundle contains a symlink or special file")
                 result.append((name, path, info))
@@ -235,7 +247,10 @@ def make_inventory(bundle: Path, configuration: str, sdk_lock: Path, notices: Pa
                    source_manifest: Path | None = None) -> dict[str, Any]:
     if configuration not in CONFIGURATIONS or (source_commit is None) == (source_manifest is None):
         raise InventoryError("select a supported configuration and exactly one source identity")
-    if bundle.is_symlink() or not bundle.is_dir() or bundle.name != "HammondB3.vst3":
+    root_info = bundle.lstat()
+    if _reparse(root_info):
+        raise InventoryError("bundle root is a Windows reparse point")
+    if not stat.S_ISDIR(root_info.st_mode) or bundle.name != "HammondB3.vst3":
         raise InventoryError("bundle must be the nonsymlink HammondB3.vst3 directory")
     root = bundle.resolve(strict=True)
     if source_commit is not None:

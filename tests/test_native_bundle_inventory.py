@@ -336,6 +336,73 @@ class NativeBundleInventoryTests(unittest.TestCase):
         self.assertTrue(output.is_symlink())
         self.assertEqual(target.read_bytes(), b"outside sentinel")
 
+    def test_reparse_roots_directories_and_files_reject_before_access(self):
+        original_lstat, original_open, original_scan = Path.lstat, Path.open, os.scandir
+        for selected in (self.fixture.bundle, self.fixture.resources, self.fixture.module):
+            with self.subTest(reparse_path=selected.relative_to(self.root)):
+                def tagged(path, *args, **kwargs):
+                    actual = original_lstat(path, *args, **kwargs)
+                    if path != selected:
+                        return actual
+                    fields = {name: getattr(actual, name) for name in
+                              ("st_dev", "st_ino", "st_mode", "st_size",
+                               "st_mtime_ns", "st_ctime_ns")}
+                    # Independent Windows value: FILE_ATTRIBUTE_REPARSE_POINT.
+                    # Keep the real directory/regular mode to expose the gap.
+                    fields["st_file_attributes"] = 0x400
+                    return SimpleNamespace(**fields)
+
+                def guarded_open(path, *args, **kwargs):
+                    self.assertNotEqual(path, selected, "opened a reparse point")
+                    return original_open(path, *args, **kwargs)
+
+                def guarded_scan(path):
+                    self.assertNotEqual(Path(path), selected, "traversed a reparse point")
+                    return original_scan(path)
+
+                with mock.patch.object(Path, "lstat", tagged), \
+                        mock.patch.object(Path, "open", guarded_open), \
+                        mock.patch.object(inventory.os, "scandir", guarded_scan):
+                    with self.assertRaisesRegex(inventory.InventoryError, "reparse"):
+                        self.fixture.report()
+                    if selected == self.fixture.module:
+                        # Lock/notices/source-manifest reads use this admission
+                        # path too, independently of the bundle tree walker.
+                        with self.assertRaisesRegex(inventory.InventoryError, "reparse"):
+                            inventory._file_record(selected, inventory.MAX_FILE_BYTES)
+
+        if os.name == "nt":
+            outside = self.root / "outside junction target"
+            outside.mkdir()
+            sentinel = outside / "sentinel.txt"
+            sentinel.write_bytes(b"external target must remain intact\n")
+            alias_parent = self.root / "junction alias"
+            alias_parent.mkdir()
+            cases = ((self.fixture.resources / "junction", outside, self.fixture.bundle),
+                     (alias_parent / "HammondB3.vst3", self.fixture.bundle,
+                      alias_parent / "HammondB3.vst3"))
+            for alias, target, bundle in cases:
+                with self.subTest(actual_windows_junction=alias):
+                    command = f'mklink /J "{alias}" "{target}"'
+                    result = subprocess.run(
+                        [os.environ.get("COMSPEC", "cmd.exe"), "/d", "/c", command],
+                        capture_output=True, text=True, encoding="utf-8", errors="replace",
+                        timeout=15, check=False)
+                    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                    try:
+                        self.assertTrue(alias.lstat().st_file_attributes & 0x400)
+                        self.assertFalse(alias.is_symlink(), "exercise a junction, not a symlink")
+                        with self.assertRaisesRegex(inventory.InventoryError, "reparse"):
+                            self.fixture.report(bundle=bundle)
+                    finally:
+                        # Remove only the junction; never recursively remove its target.
+                        alias.rmdir()
+                    self.assertEqual(sentinel.read_bytes(), b"external target must remain intact\n")
+                    self.assertEqual(self.fixture.module.read_bytes(), elf())
+            print("reparse probes: root/directory/file metadata and 2 actual Windows junctions")
+        else:
+            print("reparse probes: root/directory/file metadata; actual Windows junctions not applicable")
+
     def test_special_file_is_rejected_without_reading_it(self):
         if hasattr(os, "mkfifo"):
             special = self.fixture.resources / "named-pipe"

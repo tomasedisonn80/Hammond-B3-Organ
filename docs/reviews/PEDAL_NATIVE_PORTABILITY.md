@@ -165,3 +165,14 @@ Complete downloaded ZIPs, inventories, archive hashes and native logs were
 retained in root's local `w07-hosted-artifacts` evidence directory. Later audits
 must inspect their own exact-source platform results rather than inheriting
 these successes for changed production code.
+
+
+## Wave-7 queued macOS jobs: observed cancellation reason
+
+Both wave-7 macOS jobs later ended cancelled without acquiring a runner or
+executing a step: core 131852884348 and native 131852883751. Root retrieved their
+actual check annotations. Each states that a higher-priority waiting request
+for that workflow/main concurrency group caused cancellation, and separately
+retains repeated ARM64-capacity queue notices. This is now an observed
+cancellation reason, not an inference from elapsed time. No wave-7 macOS pass
+is claimed. The new wave-8 runs must supply their own actual macOS result.

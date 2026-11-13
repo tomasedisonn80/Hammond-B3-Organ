@@ -1,8 +1,8 @@
 # Standing instructions for every development agent
 
 These instructions apply to the entire repository and all future agent sessions.
-They implement the owner's request of 2026-11-12 to preserve a reliable, continuously
-updated development handoff. Read them before modifying code or documentation.
+They implement the owner's standing handoff and publication requests of
+2026-11-12 and 2026-11-13. Read them before modifying code or documentation.
 
 ## Current session and standing continuation rule
 
@@ -13,16 +13,25 @@ For every future development session, continue the next dependency-ready phase, 
 ## Start here
 
 1. Read `README.md`, `docs/STATUS.md`, `docs/NEXT_STEPS.md`, the current
-   `docs/CONTINUATION_HANDOFF.md`, and the latest entry in `docs/DEVELOPMENT_LOG.md`
-   when those files exist.
+   `docs/PEDAL_HANDOFF.md`, and the latest entry in `docs/DEVELOPMENT_LOG.md`.
+   If a later session replaces the operational entry point, follow the explicit
+   current-status pointer while preserving earlier handoffs as dated history.
 2. Read `docs/PLAN.md`, `docs/research/ATLAS_REVIEW.md`, and the atlas chapters relevant
    to the task. The source PDF is `Hammond_B3_Leslie_Research_Atlas_500pp.pdf`.
-3. Check the working tree and current remote branch. Preserve unrelated work and
-   existing history. Never force-push or discard somebody else's changes.
-4. Select the next dependency-ready milestone and declare the evidence needed to
+3. Inspect `git status --short`, the actual `HEAD` commit/tree and the current
+   remote branch. Preserve unrelated work and existing history. Never force-push
+   or discard somebody else's changes. A historical report does not identify an
+   uncommitted worktree or qualify changed code.
+4. Select the next dependency-ready milestone, agree owned paths with the
+   integrator when working concurrently, and declare the evidence needed to
    close it. Document missing inputs and continue independent useful work.
 
 Use the newest session ledger and `docs/NEXT_STEPS.md` for the active scope.
+[PEDAL_HANDOFF.md](docs/PEDAL_HANDOFF.md) contains the current build, render,
+trace/plot, installation and native commands. The concrete next model contract
+is [M3_REMAINING_AND_SCANNER_GATE.md](docs/M3_REMAINING_AND_SCANNER_GATE.md);
+its graph, numerical and acquisition gates are proposed work, not a scanner
+implementation or a measured instrument claim.
 `docs/CONTINUATION_HANDOFF.md` retains the preceding console checkout commands;
 `docs/M3_NEXT_GATE.md` retains the original pedal-kernel acceptance contract.
 The separate `docs/development/2026-11-13-continuation/README.md` is completed
@@ -61,7 +70,19 @@ Before claiming completion, update all of the following as appropriate:
   acceptance criteria and dependencies; distinguish engineering from acquisition.
 - `docs/DEVELOPMENT_LOG.md`: actual changes, commands run, results, failures,
   limitations, and relevant commit or report identifiers.
-- Relevant design/data/test documentation whenever a contract changes.
+- Relevant design/data/test documentation whenever a contract changes. Replace
+  stale current next-step claims with the implemented contract and its evidence;
+  preserve earlier dated observations, failures and unrun scopes.
+
+A handoff must name the actual commit or frozen tree, toolchain and relevant data
+or dependency identities; list owned files and concrete commands with their
+working directory and prerequisites; distinguish execution from source inspection;
+and state the next task's inputs and acceptance criteria. Separate setup failures,
+project failures, queued/unacquired runners and completed tests. An artifact hash
+or workflow dispatch alone is not a host, platform, timing or fidelity pass.
+Do not invent a configure option or reuse a stale test count: inspect the actual
+CMake inputs and discover the selected configuration. Build test inputs before
+CTest, and use `--no-tests=error` for a required filtered acceptance gate.
 
 Subagents write their assigned evidence note and report to the integrating agent;
 the integrator owns the shared status files and prevents conflicting edits. Record
@@ -95,9 +116,18 @@ planned rows and preserve the latest user-authorized scope.
 Update actual states in the newest session's manifest. The completed console
 continuation uses `docs/development/2026-11-13-continuation/assignments.json` and
 `docs/CONTINUATION_CHECKS.md`; its checker does not count the current pedal session.
-Use an explicit sixty-complete gate only after all sixty actual assignments in
-that named session have completed. Earlier checkers cannot substitute for a new
-session's accounting.
+The current pedal session has its own [record checker](docs/PEDAL_SESSION_CHECKS.md):
+
+```sh
+python3 tools/check_pedal_session.py --repo . --json
+```
+
+This checks retained consistency and reports actual declared states; it does not
+attest external dispatch or substitute for the integrator's substantive acceptance.
+Use `--expected-complete 60` only after all sixty actual assignments in that named
+session have completed and been accepted. Earlier checkers cannot substitute for
+a new session's accounting. A later distinct session must retain its own ledger
+and applicable validation rather than rewriting this one.
 If `main` advances during work, inspect and integrate the new commits, rerun the
 affected checks, and publish with an expected-head guard. Never overwrite another
 session's completed work or clear an unresolved gate merely to close a wave.

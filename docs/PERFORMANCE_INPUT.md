@@ -56,8 +56,9 @@ the stream nor inserts a control-before-note priority. A host adapter that needs
 a priority must establish that input order explicitly.
 
 Positive blocks require `offset < frames`. Zero-frame calls admit only offset
-zero. There is no retained offset-at-end carry here; that belongs to a later
-host timeline adapter. Offsets are still relative to this single Engine call.
+zero. There is no retained offset-at-end carry here; the implemented
+[HostTimeline](HOST_TIMELINE.md) provides that separate host-level policy.
+Offsets here remain relative to this single Engine call.
 
 Success consumes every raw input, including duplicate identified presses,
 unmatched releases and empty channel panics. `physical_events_consumed` counts
@@ -123,10 +124,14 @@ all three objects at a quiescent boundary. Control-only snapshots preserve
 owners and histories and are not a reset protocol.
 
 The existing [manual-only facade](INPUT_PROCESSOR.md) is unchanged. Do not call
-that facade and this one independently for the same elapsed interval. A future
-automation wrapper may slice a callback, but slice lengths must sum to the
-original interval and any whole-callback rollback must encompass those slices.
-This facade itself promises one transaction for one call.
+that facade and this one independently for the same elapsed interval. The
+implemented [HostTimeline](HOST_TIMELINE.md) maintains its own Engine/ownership
+candidates, renders bounded internal slices and commits the complete callback
+only after all slices succeed. It does not call this facade. Its slice lengths
+sum to the elapsed interval; boundary flushes add no elapsed frames. This facade
+continues to promise one Engine transaction for one call. The native processor
+calls HostTimeline once per admitted callback rather than processing the same
+interval again through this function.
 
 All storage and loops are bounded. It copies both adapters once and the active
 adapter for each translated record, with linear searches/compaction bounded by
@@ -151,7 +156,18 @@ coherent Release gate passed this suite plus both ownership suites and the
 unchanged manual facade suite. Exact source identities and executed counts are
 in [assignment 22](development/2026-11-13-pedals/22-performance-input.md).
 
-Independent mixed-input acceptance, enabled-pedal allocation/workload evidence,
-whole-project/hosted qualification and native automation/state conversion are
-separate subsequent gates. Musical snapshots still exclude held owners, source
-phase, contact trajectories, percussion history and time.
+The later [independent mixed-input acceptance](development/2026-11-13-pedals/24-input-acceptance.md)
+uses its own authored physical timeline and reference Engine. The
+[enabled-path audit](PEDAL_REALTIME.md) measures the declared core allocation
+regions, while [HostTimeline](HOST_TIMELINE.md), [StateExchange](STATE_EXCHANGE.md),
+[actual native ABI](VST3_ABI_ACCEPTANCE.md), [native behavior](VST3_BEHAVIOR_ACCEPTANCE.md)
+and [native concurrency](VST3_CONCURRENCY.md) retain their separate executed
+host conversion, automation and publication evidence. They do not turn this
+facade into an SDK or concurrent UI API.
+
+The [wave-8 integration record](reviews/PEDAL_WAVE8_INTEGRATION.md) identifies
+its complete 71-suite ordinary and eight-suite native local execution; consult
+[current status](STATUS.md) for later exact-source hosted results and open gates.
+Device deadlines, actual DAW sessions and physical calibration remain separate
+work. Musical snapshots still exclude held owners, source phase, contact
+trajectories, percussion history and time.

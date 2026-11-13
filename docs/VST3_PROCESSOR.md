@@ -200,15 +200,26 @@ establishes compilation of this translation unit against the pinned SDK; it
 does not establish a linked module or host behavior. The composed core's earlier
 allocation/concurrency tests likewise do not qualify a native callback.
 
-Next, build the complete optional native bundle with the generated profile,
-controller, state helper and factory, then load that exact bundle through the
-independent ABI harness and pinned SDK validator. Exercise all three event
-buses, all 45 descriptors, zero/max/irregular blocks, both native alias cases,
-state migrations while active, late rejection and stopped rate changes against
-one direct-core reference. Measure allocations on the actual native callback;
-retain source, module, dependency and compiler identities. DAW/device execution,
-audio deadlines, custom UI, signing and measured instrument fidelity remain
-distinct gates.
+That syntax result is historical. The complete [optional native bundle](VST3_BUILD.md)
+now has executed [loaded-module ABI](VST3_ABI_ACCEPTANCE.md) and
+[behavior](VST3_BEHAVIOR_ACCEPTANCE.md) gates covering the three event buses,
+45 descriptors, block boundaries, alias admission, active state migration,
+late rejection and stopped rate changes against independent core references.
+Further [dense automation](VST3_AUTOMATION_REVIEW.md),
+[concurrent native state](VST3_CONCURRENCY.md), [actual callback allocation](VST3_REALTIME.md)
+and [bundle relocation](VST3_LOCAL_INSTALL.md) records identify their own code,
+module, dependency, compiler and instrumentation scopes. The [pinned validator record](VST3_BUILD.md#recorded-local-qualification-and-current-gates)
+retains its actual summary together with the unsupported-rate and teardown
+diagnostics; it is not a warning-free or arbitrary-format result.
+
+The [coherent wave-8 integration](reviews/PEDAL_WAVE8_INTEGRATION.md) passed
+71 ordinary and eight focused native suites locally. Use [current status](STATUS.md)
+and the [portability review](reviews/PEDAL_NATIVE_PORTABILITY.md) to identify
+which later hosted source/platform and artifact gates actually ran. Required
+next work is to preserve these interfaces through the dependency-ready model
+changes in [NEXT_STEPS.md](NEXT_STEPS.md), qualify any changed adapter or package,
+and execute the still-open DAW/device, deadline, accessible custom UI, signing
+and specimen-calibration gates. Existing software evidence does not close them.
 
 Future agents must preserve these ordering, capacity and lifecycle contracts,
 record changed evidence in the current session, and follow [AGENTS.md](../AGENTS.md)
