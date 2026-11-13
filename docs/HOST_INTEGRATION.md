@@ -1,5 +1,10 @@
 # Proposed host, device and editor integration
 
+The later continuation implements the typed [note-ownership adapter](NOTE_OWNERSHIP.md),
+[native parameter bridge](PARAMETER_BRIDGE.md) and [transactional input facade](INPUT_PROCESSOR.md).
+These provide bounded core integration foundations. This document's native host,
+device, bus-layout and lifecycle qualification requirements remain separate gates.
+
 **Status: design handoff; no adapter is implemented or qualified.** The product
 will share `hammond::Engine` across offline, plugin and device clients. The current
 CLI writes WAV files; it is not an audio-device application. This proposal adds

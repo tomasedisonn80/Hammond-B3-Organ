@@ -39,6 +39,15 @@ key ownership, trajectories, readiness, source phases and time. All 39 earlier
 registry records are unchanged; four new IDs append percussion controls. These
 are proposed identities, without actual VST3 exports.
 
+The typed host-input foundation now has a fixed 256-owner adapter with stable
+channel/note-ID handling, FIFO anonymous releases and retained original manual
+routing. The transactional facade commits ownership only after Engine accepts
+its physical events. A native bridge maps all 43 normalized internal controls to
+fixed Engine targets, including exact half-step boundaries under all four standard
+rounding modes. JSON parsing stays outside processing. Native host exports, MIDI
+byte decoding, automation curves, device operation and deadlines remain separate.
+The continuation ledger records these additions' own qualification checkpoint.
+
 Pedal mapping data contains 195 connections and five explicit disconnections;
 runtime pedal audio remains open. Physical preset latching, continuous drawbar
 travel, contact bounce/antialiasing, loaded expression, scanner, AO-28, Leslie DSP,
@@ -112,7 +121,9 @@ checks; Windows and macOS each passed 29/30, failing the same producer test's
 unresolved-versus-canonical temporary-path comparison. The
 [CI repair review](reviews/CONSOLE_CI_REPAIR.md) retains the observed cause and
 portable regression. All 28 producer methods pass locally after the test repair;
-full hosted qualification of that repair remains pending.
+hosted [run 43370542634](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43370542634)
+subsequently passed all four jobs at repair commit `72b5062`, including Linux
+ASan/UBSan with leak checking. This closes that observed portability failure.
 
 The callback audit observed zero C++ allocation/deallocation
 calls in 96 recorded processing calls, including maximum and rejected requests.

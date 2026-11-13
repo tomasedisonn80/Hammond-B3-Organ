@@ -34,7 +34,10 @@ on both manuals, no held keys, expression 1, and percussion Off/Second/Normal/Sl
 with readiness 1. The offline
 client explicitly supplies a registration. Physical key state is boolean per
 manual/MIDI key: repeated note-ons do not multiply voices, and a release clears
-that physical key. A future host adapter must define note-ID/channel ownership.
+that physical key. [NoteOwnership](NOTE_OWNERSHIP.md) separately implements bounded
+note-ID/channel ownership, and [InputProcessor](INPUT_PROCESSOR.md) commits it only
+after Engine accepts the translated block. These typed adapters do not provide a
+native host SDK, byte-level MIDI parser or device application.
 
 ## Events
 

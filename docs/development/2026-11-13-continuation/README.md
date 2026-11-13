@@ -31,9 +31,9 @@ physical instrument fidelity, a VST3 plugin, or a device-audio application exist
 | 01 | 01–06 | Full 500-page continuation review | Complete; six retained notes |
 | 02 | 07–12 | Contact and shared-percussion model contracts and unit verification | Complete; independent module tests passed |
 | 03 | 13–18 | Engine, control persistence, renderer integration and behavioral verification | Complete; published in `4ead769` |
-| 04 | 19–24 | Stable controls, evidence-format migration and reproducible fixtures | Complete; published in `4ead769`; CI path repair pending |
-| 05 | 25–30 | Bounded host-input ownership and independent adapter verification | In progress |
-| 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | Planned |
+| 04 | 19–24 | Stable controls, evidence-format migration and reproducible fixtures | Complete; `72b5062` repair passes all four hosted jobs |
+| 05 | 25–30 | Bounded host-input ownership and independent adapter verification | Complete; combined publication gate in progress |
+| 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | In progress |
 | 07 | 37–42 | Observable console traces and explicit partial-key input | Planned |
 | 08 | 43–48 | Integration, cross-platform checks and examples | Planned |
 | 09 | 49–54 | User/developer handoff, verification records and exact next milestone | Planned |
@@ -144,3 +144,22 @@ with one shared expected-path assertion in the evidence-producer test. The
 [CI repair review](../../reviews/CONSOLE_CI_REPAIR.md) records both job IDs, cause,
 local before/after reproduction and the required new hosted check. The original
 27 producer methods plus the new portable regression pass locally (28/28).
+
+
+The path repair was published and verified as `72b5062dd4d02acc42c30faf291465c7633b87d9`.
+Hosted run 43370542634 passed Linux/macOS/Windows Release and Linux ASan/UBSan/leak
+checks. That qualification applies to the integrated console/evidence checkpoint;
+wave05's new ownership/native-adapter runtime has its own subsequent gate.
+
+
+## Wave 05: bounded typed input and controls
+
+All six assignments 25-30 have completed their retained notes and scoped checks.
+The fixed 256-owner translator preserves per-channel identities and original
+manual routes, with FIFO release for anonymous repeats. Its Engine facade commits
+ownership only after successful processing. Native normalized conversion matches
+all 43 proposed IDs, preserving exact binary threshold decisions and the original
+39 records. Dedicated diagnostics expose the compiled mappings for independent
+registry comparison. These are typed core adapters; native host/device and byte-
+level MIDI integration remain unimplemented. The next checkpoint qualifies their
+combined source independently of the active sample-rate lifecycle edits.

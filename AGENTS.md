@@ -80,6 +80,12 @@ If `main` advances during work, inspect and integrate the new commits, rerun the
 affected checks, and publish with an expected-head guard. Never overwrite another
 session's completed work or clear an unresolved gate merely to close a wave.
 
+Concurrent header changes can alter object layout. Qualify a core, its consumers
+and tests from one coherent frozen source snapshot, or coordinate an explicit
+source freeze. Never link an older library against later live headers and treat
+that result as a product defect. Publication gates must identify the staged tree
+they tested and keep unfinished workers' files outside that checkpoint.
+
 When introducing a new nominal model, preserve its model identity, parameter units,
 source-page basis and limitations with the code. Ordinary saved controls must remain
 separate from contact trajectories, percussion readiness, source phase and other

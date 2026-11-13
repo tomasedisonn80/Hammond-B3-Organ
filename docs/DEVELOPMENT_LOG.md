@@ -585,3 +585,31 @@ using a real output path containing `..`, then corrected the expected path while
 preserving full exact argv checking. All 28 producer methods passed in 4.355 s.
 The retained CI repair review records the IDs, failure boundary and follow-up gate.
 Only this test and documentation are in the repair; wave 05/06 files stay separate.
+
+
+The repair was published as `72b5062` with verified tree
+`81bbceb5b01673f1412026fefb83da1442ce5aae`. Its staged source passed all 28 producer
+methods (4.082 seconds) and all five archive groups. Hosted run 43370542634 passed
+all four jobs, including leak-enabled sanitizer execution. The observed canonical-
+path portability failure is closed; its original failure evidence remains retained.
+
+### Wave 05 bounded host-input foundations
+
+Assignments 25-30 implement and independently test fixed note ownership, native
+normalized-parameter mapping and a transaction that commits ownership only after
+Engine accepts translated notes. The original physical-key API remains idempotent.
+All 43 parameter targets preserve their fixed IDs and exact quantization boundaries;
+the bridge is independent of JSON parsing and any host SDK. Independent owner tests
+passed 2,127 calls, 2,264 atomic rejection/future probes and 5,226 expected physical events.
+Native conversion tests passed 5,635 comparisons and 25,243 rejection checks across
+all 43 Engine targets and all four floating rounding modes; eight Python methods
+used 97 actual metadata CLI calls. The independent input transaction suite passed
+44 rejection/future probes, 66 timing partitions and 459,896 exact audio comparisons.
+
+One initial scratch harness linked an older library against concurrently changed
+TonewheelBank headers, producing an ABI mismatch. Agent 29 froze a coherent source
+snapshot and reran the unchanged harness successfully (17,844 assertions); agent 30
+independently qualified its own frozen snapshot. No wrapper correction was needed.
+`AGENTS.md` now explicitly requires coherent source/header qualification and keeps
+unfinished runtime edits outside publication snapshots. A full combined staged
+checkpoint and hosted run still qualify these new runtime paths separately.

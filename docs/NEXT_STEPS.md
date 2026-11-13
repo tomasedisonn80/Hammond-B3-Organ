@@ -8,8 +8,9 @@ sixty original assignments at `7bbd8e7`; its assignments,
 source reviews and evidence remain intact and are not counted again.
 
 The nominal M3 console integration is published in `4ead769`, with all 30 local
-suites passing. Complete hosted verification of the expected-path test repair
-while wave 05 integrates bounded note ownership and the native parameter bridge.
+suites passing. The expected-path repair at `72b5062` now passes all four hosted jobs.
+Qualify the completed bounded note-ownership/native-parameter wave while wave 06
+implements phase-preserving sample-rate changes.
 Keep the original ideal/off audio as an explicit compatibility case. Publication
 requires a clean staged source build, applicable tests, an expected-head push and
 observed CI.

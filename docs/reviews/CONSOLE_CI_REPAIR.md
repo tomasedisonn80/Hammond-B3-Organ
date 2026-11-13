@@ -52,3 +52,14 @@ hosted run must verify the Windows and macOS behavior before the integration can
 claim a complete platform pass. The continuation ledger and development log record
 that later result. Passing these software checks does not establish hardware
 calibration, native host/device operation or a real-time deadline.
+
+
+## Observed follow-up
+
+Repair commit `72b5062dd4d02acc42c30faf291465c7633b87d9` has exact tree
+`81bbceb5b01673f1412026fefb83da1442ce5aae`. Its staged-source producer suite passed
+28/28 methods and all five source-archive groups passed. Hosted
+[run 43370542634](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43370542634)
+completed successfully in all four jobs: Linux, macOS and Windows Release plus
+Linux ASan/UBSan/leak checking. Root observed those job conclusions. The identified
+expected-path failure is resolved at that revision.

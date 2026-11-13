@@ -93,6 +93,10 @@ add_executable(hammond_model_info tools/model_info.cpp)
 target_link_libraries(hammond_model_info PRIVATE hammond_core)
 hammond_configure_target(hammond_model_info)
 
+add_executable(hammond_parameter_info tools/parameter_info.cpp)
+target_link_libraries(hammond_parameter_info PRIVATE hammond_core)
+hammond_configure_target(hammond_parameter_info)
+
 if(BUILD_TESTING)
     set(HAMMOND_TEST_TARGETS)
     file(GLOB HAMMOND_CPP_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")
@@ -132,6 +136,12 @@ if(BUILD_TESTING)
         set_property(TEST python_test_model_info APPEND PROPERTY ENVIRONMENT
             "HAMMOND_MODEL_INFO_EXECUTABLE=$<TARGET_FILE:hammond_model_info>")
         list(APPEND HAMMOND_TEST_TARGETS hammond_model_info)
+    endif()
+
+    if(TEST python_test_parameter_bridge)
+        set_property(TEST python_test_parameter_bridge APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_PARAMETER_INFO_EXECUTABLE=$<TARGET_FILE:hammond_parameter_info>")
+        list(APPEND HAMMOND_TEST_TARGETS hammond_parameter_info)
     endif()
 
     # Unlike invoking CTest directly, this target first builds its required inputs.

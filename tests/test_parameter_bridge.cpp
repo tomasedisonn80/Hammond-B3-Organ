@@ -1,0 +1,323 @@
+#include "TestSupport.h"
+#include "hammond/Engine.h"
+#include "hammond/ParameterBridge.h"
+
+#include <array>
+#include <bit>
+#include <cfenv>
+#include <cstdint>
+#include <set>
+#include <string_view>
+
+namespace {
+using hammond::Event;
+using hammond::EventType;
+using hammond::Manual;
+constexpr auto upper = Manual::Upper;
+constexpr auto lower = Manual::Lower;
+constexpr auto drawbar = EventType::BankDrawbar;
+constexpr auto expression = EventType::Expression;
+constexpr auto selector = EventType::SelectBank;
+constexpr auto percussion = EventType::Percussion;
+
+struct Expected {
+    std::uint32_t id;
+    EventType type;
+    Manual manual;
+    std::uint8_t index;
+    std::uint8_t steps;
+    double initial;
+};
+
+// Independent inventory transcribed from the version-2 registry contract.
+// It is deliberately not derived from the native descriptor array or lookup.
+constexpr std::array<Expected, 43> expected{{
+    {4096, drawbar, upper, 0, 8, 0}, {4097, drawbar, upper, 1, 8, 0},
+    {4098, drawbar, upper, 2, 8, 0}, {4099, drawbar, upper, 3, 8, 0},
+    {4100, drawbar, upper, 4, 8, 0}, {4101, drawbar, upper, 5, 8, 0},
+    {4102, drawbar, upper, 6, 8, 0}, {4103, drawbar, upper, 7, 8, 0},
+    {4104, drawbar, upper, 8, 8, 0},
+    {4112, drawbar, upper, 9, 8, 0}, {4113, drawbar, upper, 10, 8, 0},
+    {4114, drawbar, upper, 11, 8, 0}, {4115, drawbar, upper, 12, 8, 0},
+    {4116, drawbar, upper, 13, 8, 0}, {4117, drawbar, upper, 14, 8, 0},
+    {4118, drawbar, upper, 15, 8, 0}, {4119, drawbar, upper, 16, 8, 0},
+    {4120, drawbar, upper, 17, 8, 0},
+    {4128, drawbar, lower, 0, 8, 0}, {4129, drawbar, lower, 1, 8, 0},
+    {4130, drawbar, lower, 2, 8, 0}, {4131, drawbar, lower, 3, 8, 0},
+    {4132, drawbar, lower, 4, 8, 0}, {4133, drawbar, lower, 5, 8, 0},
+    {4134, drawbar, lower, 6, 8, 0}, {4135, drawbar, lower, 7, 8, 0},
+    {4136, drawbar, lower, 8, 8, 0},
+    {4144, drawbar, lower, 9, 8, 0}, {4145, drawbar, lower, 10, 8, 0},
+    {4146, drawbar, lower, 11, 8, 0}, {4147, drawbar, lower, 12, 8, 0},
+    {4148, drawbar, lower, 13, 8, 0}, {4149, drawbar, lower, 14, 8, 0},
+    {4150, drawbar, lower, 15, 8, 0}, {4151, drawbar, lower, 16, 8, 0},
+    {4152, drawbar, lower, 17, 8, 0},
+    {8192, expression, upper, 0, 0, 1},
+    {8208, selector, upper, 0, 1, 1}, {8209, selector, lower, 0, 1, 1},
+    {12288, percussion, upper, 0, 1, 0}, {12289, percussion, upper, 1, 1, 0},
+    {12290, percussion, upper, 2, 1, 0}, {12291, percussion, upper, 3, 1, 0},
+}};
+
+std::size_t successful_conversions = 0;
+std::size_t rejected_conversions = 0;
+
+bool same_event(const Event& left, const Event& right) {
+    return left.offset == right.offset && left.type == right.type &&
+           left.manual == right.manual && left.index == right.index &&
+           std::bit_cast<std::uint64_t>(left.value) ==
+               std::bit_cast<std::uint64_t>(right.value);
+}
+
+Event sentinel() {
+    return {0xabcdef01U, static_cast<EventType>(255), static_cast<Manual>(255),
+            253, std::bit_cast<double>(0x7ff800000000babeULL)};
+}
+
+void converted(const Expected& spec, double normalized, double plain,
+               std::uint32_t offset = 7919) {
+    Event actual = sentinel();
+    CHECK(hammond::normalized_to_event(spec.id, normalized, offset, actual));
+    const Event oracle{offset, spec.type, spec.manual, spec.index, plain};
+    CHECK(same_event(actual, oracle));
+    ++successful_conversions;
+}
+
+void rejected(std::uint32_t id, double normalized) {
+    Event actual = sentinel();
+    const auto original = actual;
+    CHECK(!hammond::normalized_to_event(id, normalized, 7, actual));
+    CHECK(same_event(actual, original));
+    ++rejected_conversions;
+}
+
+void plain_rejected(std::uint32_t id, double plain) {
+    double destination = std::bit_cast<double>(0x7ff800000000cafeULL);
+    const auto original = std::bit_cast<std::uint64_t>(destination);
+    CHECK(!hammond::plain_to_normalized(id, plain, destination));
+    CHECK(std::bit_cast<std::uint64_t>(destination) == original);
+    ++rejected_conversions;
+}
+
+void test_inventory() {
+    CHECK(hammond::kParameterCount == 43);
+    CHECK(hammond::kParameterRegistrySchemaVersion == 2);
+    CHECK(hammond::kParameterRegistryModel == "exclusive-ab-percussion-console-v2");
+    const auto actual = hammond::parameter_descriptors();
+    CHECK(actual.size() == expected.size());
+    CHECK(actual.data() == hammond::parameter_descriptors().data());
+    std::set<std::string_view> paths;
+    std::size_t discrete_count = 0;
+    for (std::size_t i = 0; i < expected.size(); ++i) {
+        const auto& spec = expected[i];
+        const auto& descriptor = actual[i];
+        CHECK(descriptor.id == spec.id);
+        CHECK(descriptor.event_type == spec.type);
+        CHECK(descriptor.manual == spec.manual);
+        CHECK(descriptor.index == spec.index);
+        CHECK(descriptor.step_count == spec.steps);
+        CHECK(descriptor.maximum == (spec.steps == 8 ? 8.0 : 1.0));
+        CHECK(descriptor.default_plain == spec.initial);
+        CHECK(!descriptor.path.empty() && !descriptor.kind.empty() && !descriptor.unit.empty());
+        CHECK(paths.insert(descriptor.path).second);
+        hammond::ParameterDescriptor copied;
+        CHECK(hammond::parameter_descriptor(spec.id, copied));
+        CHECK(copied == descriptor);
+        double normalized = -5.0;
+        CHECK(hammond::plain_to_normalized(spec.id, spec.initial, normalized));
+        converted(spec, normalized, spec.initial);
+        discrete_count += spec.steps != 0 ? 1U : 0U;
+    }
+    CHECK(discrete_count == 42);
+}
+
+void test_id_holes_and_atomic_rejection() {
+    const auto base_descriptor = hammond::parameter_descriptors().back();
+    auto unknown = [&](std::uint32_t id) {
+        auto descriptor = base_descriptor;
+        CHECK(!hammond::parameter_descriptor(id, descriptor));
+        CHECK(descriptor == base_descriptor);
+        rejected(id, 0.5);
+        plain_rejected(id, 0.0);
+    };
+    for (std::uint32_t id = 0; id <= 12292; ++id) {
+        bool known = false;
+        for (const auto& spec : expected) known = known || spec.id == id;
+        if (!known) unknown(id);
+    }
+    for (const auto id : {0x7fffffffU, 0x80000000U, 0xfffffffeU, 0xffffffffU}) unknown(id);
+
+    const std::array invalid{
+        -std::numeric_limits<double>::denorm_min(), -1.0,
+        std::nextafter(1.0, 2.0), 2.0, std::numeric_limits<double>::max(),
+        std::numeric_limits<double>::infinity(), -std::numeric_limits<double>::infinity(),
+        std::bit_cast<double>(0x7ff8000000001234ULL)};
+    for (const auto& spec : expected) {
+        for (const auto value : invalid) rejected(spec.id, value);
+        for (const auto value : {-1.0, std::numeric_limits<double>::infinity(),
+                                 -std::numeric_limits<double>::infinity(),
+                                 std::numeric_limits<double>::quiet_NaN()}) {
+            plain_rejected(spec.id, value);
+        }
+        const double maximum = spec.steps == 8 ? 8.0 : 1.0;
+        plain_rejected(spec.id, std::nextafter(maximum, maximum * 2));
+        if (spec.steps != 0) {
+            for (const auto value : {std::numeric_limits<double>::denorm_min(),
+                                     0.25, 0.5, std::nextafter(1.0, 0.0)}) {
+                plain_rejected(spec.id, value);
+            }
+        }
+    }
+}
+
+void test_thresholds_and_rounding_modes() {
+    const int original_rounding = std::fegetround();
+    CHECK(original_rounding != -1);
+    constexpr std::array thresholds{0.0625, 0.1875, 0.3125, 0.4375,
+                                    0.5625, 0.6875, 0.8125, 0.9375};
+    for (const int mode : {FE_TONEAREST, FE_DOWNWARD, FE_UPWARD, FE_TOWARDZERO}) {
+        CHECK(std::fesetround(mode) == 0);
+        for (const auto& spec : expected) {
+            converted(spec, 0.0, 0.0, 0);
+            converted(spec, -0.0, spec.steps == 0 ? -0.0 : 0.0);
+            converted(spec, 1.0, spec.steps == 8 ? 8.0 : 1.0,
+                      std::numeric_limits<std::uint32_t>::max());
+            const double small = std::numeric_limits<double>::denorm_min();
+            converted(spec, small, spec.steps == 0 ? small : 0.0);
+            if (spec.steps == 8) {
+                for (std::size_t index = 0; index < thresholds.size(); ++index) {
+                    const double before = static_cast<double>(index);
+                    const double after = static_cast<double>(index + 1);
+                    converted(spec, std::nextafter(thresholds[index], 0.0), before);
+                    converted(spec, thresholds[index], after);
+                    converted(spec, std::nextafter(thresholds[index], 1.0), after);
+                }
+            } else if (spec.steps == 1) {
+                converted(spec, std::nextafter(0.5, 0.0), 0.0);
+                converted(spec, 0.5, 1.0);
+                converted(spec, std::nextafter(0.5, 1.0), 1.0);
+            } else {
+                for (const auto value : {small, std::numeric_limits<double>::min(),
+                                         0.12345678901234567, std::nextafter(0.5, 0.0),
+                                         0.5, std::nextafter(0.5, 1.0),
+                                         std::nextafter(1.0, 0.0), -0.0}) {
+                    converted(spec, value, value);
+                    double normalized = -999.0;
+                    CHECK(hammond::plain_to_normalized(spec.id, value, normalized));
+                    CHECK(std::bit_cast<std::uint64_t>(normalized) ==
+                          std::bit_cast<std::uint64_t>(value));
+                }
+            }
+            if (spec.steps != 0) {
+                for (std::uint8_t plain = 0; plain <= spec.steps; ++plain) {
+                    double normalized = -999.0;
+                    CHECK(hammond::plain_to_normalized(spec.id, plain, normalized));
+                    const double canonical = spec.steps == 8 ?
+                        static_cast<double>(plain) * 0.125 : static_cast<double>(plain);
+                    CHECK(normalized == canonical);
+                    converted(spec, normalized, static_cast<double>(plain));
+                }
+            }
+            CHECK(std::fegetround() == mode);
+        }
+        rejected(8192, std::numeric_limits<double>::quiet_NaN());
+        plain_rejected(4096, 0.5);
+        CHECK(std::fegetround() == mode);
+    }
+    CHECK(std::fesetround(original_rounding) == 0);
+}
+
+void test_native_events_reach_their_retained_engine_targets() {
+    hammond::Engine engine;
+    CHECK(engine.prepare(load_test_profile(), {48000.0, 1024, 53, 777},
+                         hammond::make_nominal_console_model()) == hammond::Status::Ok);
+    const auto initial = engine.controls_snapshot();
+    for (const auto& spec : expected) {
+        Event event;
+        CHECK(hammond::normalized_to_event(spec.id, spec.initial, 0, event));
+        CHECK(engine.process(0, {}, std::span<const Event>(&event, 1)));
+    }
+    CHECK(engine.controls_snapshot() == initial);
+    const std::array held{Event{0, EventType::NoteOn, upper, 60, 100},
+                          Event{0, EventType::NoteOn, lower, 67, 100},
+                          Event{0, EventType::Percussion, upper, 0, 1}};
+    CHECK(engine.process(512, {}, held));
+    const auto clock = engine.frame_clock();
+    const auto readiness = engine.percussion_diagnostics().readiness;
+    CHECK(readiness > 0 && readiness < 1);
+    hammond::ContactKeySnapshot key_before;
+    CHECK(engine.contact_snapshot(upper, 60, key_before));
+    std::array<double, hammond::kToneSourceCount> phases{};
+    for (std::size_t i = 0; i < phases.size(); ++i) {
+        CHECK(engine.source_phase_turns(static_cast<hammond::ToneId>(i + 1), phases[i]));
+    }
+    auto controls = engine.controls_snapshot();
+    for (const auto& spec : expected) {
+        Event event;
+        CHECK(hammond::normalized_to_event(spec.id, 1.0, 0, event));
+        CHECK(engine.process(0, {}, std::span<const Event>(&event, 1)));
+        const auto manual = static_cast<std::size_t>(spec.manual);
+        if (spec.type == drawbar) {
+            controls.drawbars[manual][spec.index / 9][spec.index % 9] = 8;
+        } else if (spec.type == selector) {
+            controls.selected_banks[manual] = hammond::DrawbarBank::B;
+            controls.route_enabled[manual] = true;
+        } else if (spec.type == expression) {
+            controls.expression = 1;
+        } else {
+            switch (spec.index) {
+            case 0: controls.percussion.enabled = true; break;
+            case 1: controls.percussion.harmonic = hammond::PercussionHarmonic::Third; break;
+            case 2: controls.percussion.volume = hammond::PercussionVolume::Soft; break;
+            case 3: controls.percussion.decay = hammond::PercussionDecay::Fast; break;
+            default: CHECK(false); break;
+            }
+        }
+        CHECK(engine.controls_snapshot() == controls);
+        CHECK(engine.frame_clock() == clock);
+        CHECK(engine.percussion_diagnostics().readiness == readiness);
+    }
+    const Event cancel{0, EventType::Cancel, upper, 0, 0};
+    CHECK(engine.process(0, {}, std::span<const Event>(&cancel, 1)));
+    Event hidden;
+    CHECK(hammond::normalized_to_event(4096, 0.25, 0, hidden));
+    CHECK(engine.process(0, {}, std::span<const Event>(&hidden, 1)));
+    auto snapshot = engine.controls_snapshot();
+    CHECK(snapshot.drawbars[0][0][0] == 2 && snapshot.drawbars[0][1][0] == 8);
+    CHECK(!snapshot.route_enabled[0]);
+    CHECK(snapshot.selected_banks[0] == hammond::DrawbarBank::B);
+    Event reselect;
+    CHECK(hammond::normalized_to_event(8208, 1.0, 0, reselect));
+    CHECK(engine.process(0, {}, std::span<const Event>(&reselect, 1)));
+    CHECK(engine.controls_snapshot().route_enabled[0]);
+    CHECK(engine.frame_clock() == clock && engine.key_down(upper, 60));
+    CHECK(engine.percussion_diagnostics().readiness == readiness);
+    hammond::ContactKeySnapshot key_after;
+    CHECK(engine.contact_snapshot(upper, 60, key_after));
+    CHECK(key_before == key_after);
+    for (std::size_t i = 0; i < phases.size(); ++i) {
+        double phase = -1;
+        CHECK(engine.source_phase_turns(static_cast<hammond::ToneId>(i + 1), phase));
+        CHECK(phase == phases[i]);
+    }
+    Event out_of_block;
+    CHECK(hammond::normalized_to_event(8192, 0.375,
+                                      std::numeric_limits<std::uint32_t>::max(), out_of_block));
+    const auto before_reject = engine.controls_snapshot();
+    std::array<float, 1> output{42};
+    const auto result = engine.process(1, output, std::span<const Event>(&out_of_block, 1));
+    CHECK(result.status == hammond::Status::InvalidEvent && result.events_consumed == 0);
+    CHECK(output[0] == 42);
+    CHECK(engine.controls_snapshot() == before_reject && engine.frame_clock() == clock);
+}
+} // namespace
+
+int main() {
+    test_inventory();
+    test_id_holes_and_atomic_rejection();
+    test_thresholds_and_rounding_modes();
+    test_native_events_reach_their_retained_engine_targets();
+    std::cout << "parameter bridge: " << successful_conversions << " independent conversions, "
+              << rejected_conversions << " atomic conversion rejections; 43 live Engine targets; "
+              << "all four rounding modes passed\n";
+    return EXIT_SUCCESS;
+}
