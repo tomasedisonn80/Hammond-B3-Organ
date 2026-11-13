@@ -3,7 +3,9 @@
 **Current integration addendum:** the coordinator has preserved continuation
 commit `7a24a30`, which adds independent nominal contact/percussion components
 and model metadata. At that commit, `Engine`, the renderer and `B3CONTROLS1`
-remain unchanged. The dated audit below describes its inspected `6c3dd8b`
+remain unchanged. Published `61c6ecb` adds the exhaustive runtime gate, retained
+demo and final repairs; all four jobs in run 43368537860 passed 26 suites and
+274 Python methods with zero skips. The dated audit below describes its inspected `6c3dd8b`
 snapshot; consult [STATUS.md](STATUS.md) and [CI qualification](CI_QUALIFICATION.md)
 for later implementation and executed qualification. The independent continuation
 owns the next M3 integration wave.

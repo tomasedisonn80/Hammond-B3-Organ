@@ -396,3 +396,88 @@ worker notes are preserved, not counted in the original sixty. Its planned
 B3CONTROLS2 and Engine integration must retain the rounding repair. The combined
 snapshot needs a new clean full build and hosted matrix; historical passes are
 not promoted to qualification of these additions.
+
+### Published combined code, demo and final platform qualification
+
+The coordinator explicitly staged the intended demo WAV and compiled-profile
+data, which the general binary-output ignore rules otherwise omit. All seven
+bundle files retained their original bytes. Exact staged tree
+`58cb96a7b620e63a94be2d062b7cf71f9c207a02` was archived into a clean source
+directory, configured and built with local GCC 14.2 Release. All 26 CTest suites
+passed; the complete LastTest log contains 14 Python groups totaling 274 methods
+with zero skips. JUnit has 26 cases, zero failures and zero skipped nodes. The
+source archive passed all five groups with exactly original notes 01–56.
+
+Agent 59 had identified an incoming metadata-test portability gap: /dev/full
+requires a platform-specific skip. With coordinator authorization, that method
+now attaches a real temporary read-only file handle to the child stdout and
+requires a nonzero exit, the exact exporter error and unchanged destination
+bytes. The old Linux device check and the new real-handle reproduction passed;
+the affected seven-method suite passed locally without skips. Production model
+code and output semantics were unchanged.
+
+The GitHub tree assembled from the intended text blobs and exact WAV blob matched
+the tested tree. Commit `61c6ecbd87f46a91b4d0d975c823eeae2e2fb3f8` was created
+on exact parent `7a24a30acd111a8f85cb8df65ba2ca59ada456e3`, then published to
+`main` with the expected-head guard and no force. The coordinator fetched that
+commit and moved the local index to that exact published SHA without discarding
+active final-review files. Original completed notes 01–56 and all sixteen demo
+package files are in the commit.
+
+Actual hosted [run 43368537860](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860)
+passed Linux GCC, macOS AppleClang and Windows MSVC Release plus Linux
+ASan/UBSan/leaks at that exact commit. Agent 59 downloaded all four full archives,
+verified ZIP digests and revisions, matched all 26 registered names, and counted
+274 actual Python methods with zero skips/disabled/failures in each job. The
+metadata output-failure method executed on every platform. The sanitizer test
+step explicitly enabled leak detection and fatal diagnostics; all 22 compile
+commands and fifteen executable links were instrumented. The coordinator also
+observed the live successful run and independently reconciled the four retained
+source revisions, JUnit counts and complete Python totals. Detailed identities
+and limitations are retained in the final platform review and CI qualification.
+
+Agent 57 reviewed complete current/historical claims and navigation, directly
+read twelve relevant atlas pages, checked identities and parsed 29 shell blocks.
+Its concrete stale-state/navigation findings were corrected; the percussion
+queue now explicitly integrates the existing module. Agent 58 independently
+checked preserved incoming ancestry, unchanged PDF/demo identities, actual
+versus proposed APIs and a bounded 220-path payload inventory. Neither worker
+performed a broad DSP rerun or promoted source/document checks to physical
+qualification. Their completed reports join the final documentation publication.
+
+### Original sixty-agent session completed
+
+Agent 59 returned its completed four-platform audit. Agent 60 then independently
+verified committed ancestry, unchanged source PDF/manifest, complete page-range
+coverage, all sixteen demo paths and frozen identities, the sixty unique original
+assignment rows and the separate continuation namespace. It rechecked all four
+raw CI source revisions, JUnit/full Python totals and ZIP digests, and reviewed
+the updated operational handoff. Its focused verifier/compiler checks and 21
+shell-block syntax checks passed; the source checker passed all five groups
+with sixty retained notes. It introduced no source/test/data change and made no
+claim that the coordinator's subsequent publication had already occurred.
+
+The coordinator received actual completed results from all sixty distinct workers
+and marked all ten waves complete. The final handoff names existing modules,
+current legacy audio/state behavior, required M3 integration tests, actual custom
+model metadata and parallel physical acquisition. Permanent AGENTS instructions
+now also point directly to the operational handoff and original assignment record
+while requiring fresh code/ownership/revision checks. Current status and evidence
+addenda name the qualified `61c6ecb` result; older failures and review snapshots
+remain preserved.
+
+The completion record changes documentation only after `61c6ecb`; source, build
+configuration, tests, model data and the retained demo stay unchanged. The final
+archive must pass the explicit sixty-note source/link/identity check before the
+expected-head publication, with the resulting remote tree and hosted run observed
+by the coordinator. The commit containing this record identifies the final
+documentation revision without inventing a self-referential commit hash.
+
+The final clean source-archive check was executed with `--expected-agents 60`:
+all five groups passed, zero errors, exact original IDs 01–60, eighty chapters
+covering 500 pages, 131 Markdown files and 731 local links. A separate ledger
+assertion verified sixty unique completed rows and six correct IDs per wave.
+All intended changed files are Markdown, their whitespace/UTF-8 checks pass, and
+no code/build/test/data/demo path differs from the qualified `61c6ecb` checkpoint.
+The coordinator repeats the archive gate on the frozen publication tree after
+retaining this result; full DSP reruns are supplied by that commit's hosted workflow.

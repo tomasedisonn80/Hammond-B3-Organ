@@ -1,5 +1,12 @@
 # Factory manual routing: runtime acceptance
 
+**Later integration result:** the runtime gate and updated 22-method documentary
+suite are published in `61c6ecb`. Both passed in every job of
+[run 43368537860](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860):
+Linux/macOS/Windows Release and Linux ASan/UBSan with leak detection. The
+[platform audit](reviews/FINAL_PLATFORM_REVIEW.md) retains the complete logs and
+identities. The original local investigation below remains its own evidence.
+
 **Observed result, 2026-11-13:** the new
 [runtime test](../tests/test_factory_runtime.cpp) and existing
 [frozen-reference suite](../tests/test_factory_reference.py) passed in an isolated

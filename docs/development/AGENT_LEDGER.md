@@ -7,12 +7,13 @@ session requested as ten waves of six distinct workers. It supplements the
 
 ## Snapshot and counting rules
 
-At the coordinator's latest integration update, **59 distinct original workers
-have been dispatched**. Assignments **01–56 are complete**, **57–59 are in progress**,
-and **60 remains planned**. The table records those individual scopes; it does not
-yet claim sixty completed workers. Agent 54's original 54/2/4 audit snapshot and
-executed checks remain in its unchanged note. The coordinator owns subsequent
-completion and publication updates.
+The coordinator has received completed substantive results from **all 60 distinct
+original workers, in ten waves of six**. Assignments **01–60 are complete**; no
+planned or in-progress original slots remain. Agent 54's original 54/2/4 audit
+snapshot and executed checks remain in its unchanged note. Its later coordinator
+updates record actual subsequent completions rather than rewriting that history.
+The final record publishes the last four review notes after the qualified code
+and demo checkpoint `61c6ecb`.
 
 The stable identities are the two-digit IDs in this session's `agent-notes/`
 directory. Wave membership is `01–06`, `07–12`, and so on, six assignments per
@@ -45,9 +46,9 @@ preserved incoming `7a24a30acd111a8f85cb8df65ba2ca59ada456e3`, a direct child
 of `6c3dd8b`, after verifying its 19 changed paths were disjoint from local work.
 It supplies independent contact/percussion modules, not integrated renderer audio.
 
-## Actual assignment outcomes and remaining planned slots
+## Completed assignment outcomes
 
-| ID | Wave | Scope and retained note | Status at audit | Concrete outcome and limit |
+| ID | Wave | Scope and retained note | Status | Concrete outcome and limit |
 | --- | --- | --- | --- | --- |
 | 01 | 01 | [Atlas pages 001–084](agent-notes/01-atlas-pages-001-084.md) | Complete | Read all 84 pages and inspected 12 selected page images; extracted source/profile, shared-source and early milestone requirements. No implementation, physical measurement or independent external-source verification. |
 | 02 | 01 | [Atlas pages 085–168](agent-notes/02-atlas-pages-085-168.md) | Complete | Read all 84 pages and six selected images; retained routing/preset/pedal rules and the page 166 scanner traversal error with an explicitly inferred repair. Proposed gates are not executed DSP tests. |
@@ -105,10 +106,10 @@ It supplies independent contact/percussion modules, not integrated renderer audi
 | 54 | 09 | [Execution-ledger audit](agent-notes/54-agent-ledger.md) | Complete | Read every original note 01–53 and both session ledgers; checked exact coverage, original source/manifest bytes, publication ancestry and 60 unique ledger rows. All five archive groups passed with exact retained IDs 01–54; no historical DSP/host checks rerun. |
 | 55 | 10 | [Final core audit and rounding repair](agent-notes/55-core-review.md) | Complete | Reproduced a one-ULP expression round-trip error under non-nearest rounding, repaired scoped formatting, and passed three affected Release suites. Nine bit patterns under four modes preserve bits, canonical bytes and caller mode; no new full-platform or physical qualification. |
 | 56 | 10 | [Final evidence audit and error repairs](agent-notes/56-evidence-review.md) | Complete | Reproduced absent historical-executable and escaped-surrogate errors; repaired controlled handling without changing frozen artifacts. Factory 22, demo eight and verifier 27 methods pass with zero skips locally; hosted integration remains separate. |
-| 57 | 10 | Final claims/navigation review — actual dispatch confirmed | In progress | Audits current and historical evidence boundaries and concrete documentation gaps. Final report and retained result pending. |
-| 58 | 10 | Cross-session source/payload integration review — actual dispatch confirmed | In progress | Audits incoming lineage, preservation, original source/demo identities, publication payload and future-agent rules. Final report pending. |
-| 59 | 10 | Final platform review — actual dispatch confirmed | In progress | Audits the combined hosted matrix and repairs the incoming platform-specific output-failure test mechanism before qualification. New run and final report pending. |
-| 60 | 10 | Final review/fixes/publication scope pending dispatch | Planned | No distinct worker dispatch, retained note or executed result confirmed at this snapshot. Coordinator will record the actual assignment and evidence. |
+| 57 | 10 | [Final claims and navigation review](agent-notes/57-claims-review.md) | Complete | Reviewed complete assigned documents and twelve atlas pages, resolved stale current/historical claims through root, and checked source/data/demo identities, 29 shell blocks and CLI instructions. Five archive groups passed; no DSP/host or physical gate was inferred. |
+| 58 | 10 | [Cross-session integration and payload review](agent-notes/58-integration-review.md) | Complete | Verified direct incoming ancestry, nineteen disjoint paths, unchanged original PDF/demo and the standalone-versus-rendered model boundary. Bounded 220-path payload scan and five archive groups passed; final publication remained root's gate. |
+| 59 | 10 | [Final hosted-platform qualification](agent-notes/59-platform-review.md) | Complete | Replaced the incoming platform-specific stdout-failure test with a real read-only handle, then audited all four complete archives at exact `61c6ecb`: 26 suites/274 Python methods/zero skips each, matching ZIP digests/revisions and effective leak-enabled sanitizer instrumentation. No physical/native-host or integrated M3 claim. |
+| 60 | 10 | [Final publication readiness and handoff](agent-notes/60-final-readiness.md) | Complete | Independently verified published ancestry/source/demo objects, all 500-page review intervals, sixty unique rows and separate continuation namespace; rechecked all four raw CI archives/digests and current handoff. Five archive groups passed with sixty notes, and 21 shell blocks parsed. Final guarded documentation publication remains the coordinator's action. |
 
 ## Atlas identity and exactly-once review coverage
 
@@ -195,6 +196,8 @@ order or that every filename proves completed work.
 | `7c2ad20` | 01–36 (36) | Wave-06 numerical/benchmark/checker checkpoint; local 18/18 and explicit 36-note check passed. Hosted Linux/macOS passed 18/18, Windows/sanitizer each 17/18: the complete hosted matrix failed. |
 | `5dcd942` | 01–36 (36), plus six separate continuation reviews | Incoming continuation and standing-instruction changes were preserved; no new original-session worker IDs are supplied by this commit. |
 | `6c3dd8b` | 01–44 (44), plus six separate continuation reviews | Factory/capture/local-install checkpoint; retained local 21/21 and explicit 44-note check passed. Hosted run 43365901429 subsequently passed all four jobs, each 21 suites/257 Python methods/zero skips. |
+| `7a24a30` | 01–44 (44), plus twelve separate continuation notes | Preserved direct child of `6c3dd8b`; standalone contact/percussion modules, contracts, metadata and tests. No original worker count is added and renderer integration remains pending. |
+| `61c6ecb` | 01–56 (56), plus twelve separate continuation notes | Audible demo, exhaustive runtime routing, acceptance/handoff documents and final repairs. Exact local tree passed 26 suites/274 Python methods/zero skips and the 56-note archive check. Hosted run 43368537860 passed the same counts in each of all four jobs. |
 
 In particular, `7c2ad2089f795b2147f5fc72cf10a4542d953a8c` is the parent of
 incoming `5dcd94292fbd5af61b5bf3bb7e06a1f5f2c4f181`, which is the **exact parent**
@@ -204,9 +207,10 @@ notes are preserved ancestry, not six additional completed original workers.
 The `6c3dd8b` explicit count of 44 addresses only the original `agent-notes/`
 directory, although both sessions together then retained 50 review notes.
 
-Local additions after 44, including Agent 47's runtime gate and Agent 51's demo
-gate/verifier repair, require their own integrated publication and affected
-qualification. Neither later local success nor a repaired test changes the
+At Agent 54's original audit, local additions after 44, including Agent 47's
+runtime gate and Agent 51's demo gate/verifier repair, still required their own
+publication and qualification. The subsequent `61c6ecb` row records that closure.
+Neither later local success nor a repaired test changes the
 historical failure at `7c2ad20`. Final remote identity and CI for the eventual
 wave-10 publication remain the coordinator's work.
 
@@ -243,8 +247,11 @@ checker groups verify source/index/link/data consistency; those also remain
 distinct from execution truth. The observed invocation/result is retained here
 and in [note 54](agent-notes/54-agent-ledger.md).
 
-Before closing the session, the coordinator must replace in-progress/planned
-rows with the actual scopes, retained notes and observed results, reconcile
-shared handoff documents, inspect the resulting diff, run the count appropriate
-to the completed archive, and record final commit/remote/hosted evidence. Until
-then the planned rows contain no fabricated note links, test results or completion.
+The coordinator has now replaced every planned/in-progress row using the actual
+worker's completed result, reconciled the shared handoff and preserved all
+historical evidence. Agent 60 independently reviewed the complete source/payload,
+assignment record and raw four-platform qualification before returning its final
+completion. The final documentation archive is checked with
+`--expected-agents 60` and published through the same guarded workflow. Resolve
+the exact completion-record commit from Git history; its later hosted run is
+separate from the fully audited code qualification at `61c6ecb`.

@@ -1,7 +1,7 @@
 # Hosted CI qualification evidence
 
 Audit date: 2026-11-13. This report preserves the observed result for each tested
-revision. The repair integration at `6c3dd8b` passed all four hosted jobs; the
+revision. The final code integration at `61c6ecb` passed all four hosted jobs; the
 earlier failed run and its local investigation remain below. A later change needs
 its own qualification. See [CI.md](CI.md) for the workflow and scope.
 
@@ -13,6 +13,37 @@ its own qualification. See [CI.md](CI.md) for the workflow and scope.
 | [43363048563](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43363048563) | `9c8068c95f6843dce95f7f22d729738eef8074f6` | Historical qualified baseline: all four jobs passed all 16 registered suites, including hosted leak detection. |
 | [43364414017](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43364414017) | `7c2ad2089f795b2147f5fc72cf10a4542d953a8c` | Audited here: Linux/macOS Release passed 18/18; Windows Release and Linux sanitizer each passed 17/18. The complete matrix failed. |
 | [43365901429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429) | `6c3dd8bc923a3c11f6b234425b056e135fbe9f4b` | Repair integration: all four jobs passed 21/21 suites; 257 Python methods per job and zero test skips. |
+| [43368537860](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860) | `61c6ecbd87f46a91b4d0d975c823eeae2e2fb3f8` | Final code/demo integration: all four jobs passed 26/26 suites; 274 Python methods per job and zero skips, disabled tests or failures. |
+
+## Final code integration audit at 61c6ecb
+
+Agent 59 downloaded and audited all four complete diagnostic archives, checking
+their GitHub ZIP digests, exact source revisions, complete test-name sets, JUnit,
+CTest and full LastTest output. The coordinator independently reconciled the
+retained revisions, 26-case JUnit files and 274-method full Python totals, and
+observed the live run's completed/success result. The exact published source tree
+is `58cb96a7b620e63a94be2d062b7cf71f9c207a02`.
+
+The five added suites since `6c3dd8b` are exhaustive manual runtime routing,
+retained-demo verification, contact-bank and shared-percussion component tests,
+and compiled-model metadata. The final rounding, unavailable-path and Unicode
+repairs are included. All seven metadata methods now execute on every platform;
+the output-failure regression uses an actual read-only stdout handle without a
+platform skip. This qualifies the standalone nominal model components, not
+their still-pending Engine/renderer integration.
+
+The hosted sanitizer test step explicitly enables `detect_leaks=1:halt_on_error=1`,
+fatal UBSan reporting and `LSAN_OPTIONS=exitcode=23`. Its 22 compilation commands
+and 15 executable links contain instrumentation. No sanitizer diagnostic appeared.
+Exact toolchain/build checks and per-suite results are in the
+[final platform review](reviews/FINAL_PLATFORM_REVIEW.md).
+
+| Archive | GitHub artifact | Verified ZIP SHA-256 |
+| --- | --- | --- |
+| Linux Release | [14010904328](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860/artifacts/14010904328) | `1dc0ced5f140662ba93a1587a3ce924e27e3453f5850cd64c9ad230d99ed5a1e` |
+| macOS Release | [14011890289](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860/artifacts/14011890289) | `29e84f66be60ad4fb06df091dd68a75e326d0be1751486ecb35024835cc7bffc` |
+| Windows Release | [14012050023](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860/artifacts/14012050023) | `71da3b95d87e542f2bff31c27f9a812ab6d1523d94532851f87f3192e16e47ed` |
+| Linux sanitizer | [14011113530](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860/artifacts/14011113530) | `7cf2e98e31f11f825550c0a1fe4dea1a7e51f01aae3c8e324433c0de9305835f` |
 
 ## Passing integration audit at 6c3dd8b
 

@@ -15,6 +15,12 @@ updated development handoff. Read them before modifying code or documentation.
 4. Select the next dependency-ready milestone and declare the evidence needed to
    close it. Document missing inputs and continue independent useful work.
 
+Use `docs/SESSION_HANDOFF.md` for operational commands and preserved identities,
+and `docs/development/AGENT_LEDGER.md` for the original sixty-assignment record.
+Their historical snapshots do not replace inspecting current code, current
+ownership and the exact revision's actual test results. The next work and the
+evidence needed to accept it must be concrete enough for another agent to resume.
+
 ## Evidence and architecture
 
 - Follow atlas implementation milestones M0-M9; its ten research waves are a

@@ -14,9 +14,11 @@ manual dispatch. This is engineering verification of the nominal model.
 | Release (Windows MSVC) | `windows-2022` | Visual Studio 2022 MSVC / x64 | Release |
 | Linux GCC ASan + UBSan + leaks | `ubuntu-24.04` | GCC / x64 | Debug, address/undefined/leak checks |
 
-All four jobs passed their 21 registered suites at `6c3dd8b` in
-[run 43365901429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429).
-The complete archives contain 257 Python methods per job and zero test skips.
+All four jobs passed their 26 registered suites at `61c6ecb` in
+[run 43368537860](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860).
+The complete archives contain 274 Python methods per job and zero test skips.
+The [final platform audit](reviews/FINAL_PLATFORM_REVIEW.md) retains exact
+source/artifact identities, actual tools, complete method counts and sanitizer flags.
 The first run exposed macOS decimal parsing and Windows evidence assumptions;
 those failures and their fixes remain in the development log and agent notes.
 Qualification requires the actual jobs for the exact commit under review. At the

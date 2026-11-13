@@ -55,6 +55,7 @@ Platform compatibility and current hosted gates remain in the qualification reco
 | Processing limits | [Callback audit](REALTIME.md), [numerical bounds](NUMERICAL_BOUNDS.md) and [benchmark](BENCHMARKING.md). Read each observation's scope; these do not qualify live audio deadlines. |
 | Physical acquisitions | [Capture format](CAPTURE_FORMAT.md), [capture validation](CAPTURE_VALIDATION.md) and [acquisition protocol](CAPTURE_PROTOCOL.md). Planned metadata, actual recordings, verified bytes and physical admission are separate states. |
 | Repository and platform checks | [Repository checks](REPOSITORY_CHECKS.md), [CI workflow](CI.md) and [CI qualification](CI_QUALIFICATION.md). Passing links/hashes or one revision's matrix does not qualify later changes. |
+| Final independent reviews | [Core](reviews/FINAL_CORE_REVIEW.md), [evidence tooling](reviews/FINAL_EVIDENCE_REVIEW.md), [claims](reviews/FINAL_CLAIMS_REVIEW.md), [integration](reviews/FINAL_INTEGRATION_REVIEW.md), [platforms](reviews/FINAL_PLATFORM_REVIEW.md) and [publication readiness](reviews/FINAL_READINESS_REVIEW.md). Each names its actual inspected revision and executed scope. |
 | Future host, device and editor work | [Host integration proposal](HOST_INTEGRATION.md). This is a design handoff; its adapter acceptance cases remain unexecuted until implementation and evidence exist. |
 
 Evidence classes describe inputs: `documented`, `measured`, `derived`, `proposed`

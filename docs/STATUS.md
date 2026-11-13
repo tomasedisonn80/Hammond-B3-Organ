@@ -2,6 +2,12 @@
 
 Session started 2026-11-12 (America/Halifax). Baseline: `501c68b`.
 
+**Original requested session complete:** all 60 distinct worker assignments in
+ten waves of six have finished. The [execution ledger](development/AGENT_LEDGER.md)
+records every actual scope, outcome and limitation; the separate continuation's
+workers are excluded. The final session record follows the qualified code/demo
+checkpoint `61c6ecb`. Current product work continues at the scoped stage below.
+
 ## Current stage
 
 The M0 engineering foundation and a scoped M1/M2 nominal dry engine are implemented.
@@ -58,10 +64,10 @@ retains input/compiled/WAV hashes, raw logs, actual float metrics and separate P
 statistics. An independent PCM analyzer provides bounded window measurements and
 qualified crossing-rate estimates. None authenticates a physical instrument.
 
-[Hosted CI run 43365901429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429)
-passed all 21 CTest suites at `6c3dd8b` on Linux GCC, macOS AppleClang and Windows
+[Hosted CI run 43368537860](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860)
+passed all 26 CTest suites at `61c6ecb` on Linux GCC, macOS AppleClang and Windows
 MSVC Release, plus Linux ASan/UBSan with leak detection enabled. Each complete
-diagnostic archive contains 257 Python methods and zero test skips. Qualification
+diagnostic archive contains 274 Python methods and zero test skips. Qualification
 applies to this offline software and those runners; native audio-device and
 plugin-host gates remain open.
 
@@ -74,10 +80,15 @@ The [OfflineTools local install](OFFLINE_INSTALL.md) passed actual installation,
 relocation and same-build PCM identity checks in that hosted matrix. It consumes
 explicit installed profile/event paths and rejects a missing profile.
 
-The new [factory runtime acceptance](FACTORY_RUNTIME_ACCEPTANCE.md) passed its
-local Release gate for all 1,098 key/drawbar routes across both manuals, using
-CSV-selected expected sources. Its publication and hosted qualification belong
-to the next integration; it does not establish physical fidelity.
+The [factory runtime acceptance](FACTORY_RUNTIME_ACCEPTANCE.md), retained
+[four-second demo](../examples/rendered/nominal-two-manual-v1/README.md),
+[independent local replay](DEMO_REPLAY.md) and final persistence/evidence repairs
+are now published in `61c6ecb`. Its exact clean staged source passed all 26
+Release suites and 274 Python methods with zero skips. The route gate exercises
+all 1,098 key/drawbar routes across both manuals with CSV-selected expected
+sources. Their hosted gates passed in run 43368537860, independently audited in
+the [final platform review](reviews/FINAL_PLATFORM_REVIEW.md). None establishes
+physical fidelity or makes the nominal components integrated audio behavior.
 
 The callback audit observed zero C++ allocation/deallocation
 calls in 96 recorded processing calls, including maximum and rejected requests.

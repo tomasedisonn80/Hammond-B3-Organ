@@ -1,5 +1,13 @@
 # Retained demo verification and local replay
 
+**Later integration result:** `61c6ecb` includes the unchanged demo, independent
+consumer and subsequent historical-path repairs. All eight retained-demo methods
+passed on each of Linux, macOS, Windows and Linux sanitizers in
+[run 43368537860](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860),
+with no skips. That gate verifies the retained artifact on those systems; the
+fresh rendering and executable/WAV byte identity below were observed on the
+named local toolchain and are not a cross-toolchain replay claim.
+
 Agent 51 independently consumed the [four-second two-manual demo](../examples/rendered/nominal-two-manual-v1/README.md)
 on 2026-11-13, then built a fresh Release renderer from an archive of revision
 `6c3dd8bc923a3c11f6b234425b056e135fbe9f4b` and actually rendered the retained

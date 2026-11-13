@@ -20,7 +20,7 @@ that all ten product milestones are complete.
 | 07 | 37-42 | Independent factory references and acquisition/data infrastructure | Complete; notes 37-42 |
 | 08 | 43-48 | Cross-platform CI, reproducibility and integration qualification | Complete; notes 43-48 |
 | 09 | 49-54 | Final acceptance evidence, examples and next-stage handoff | Complete; notes 49-54 |
-| 10 | 55-60 | Independent final review, fixes and publication verification | In progress; 55-56 complete, 57-59 dispatched |
+| 10 | 55-60 | Independent final review, fixes and publication verification | Complete; notes 55-60 |
 
 ## Assignment evidence
 
@@ -73,3 +73,21 @@ Further entries will record actual integrated commits and validation results.
   `6c3dd8b`. All 19 changed paths were disjoint from the original session's local
   work. These modules are not connected to the rendered audio at this checkpoint.
   The next combined source snapshot requires a new full build and hosted matrix.
+
+- `61c6ecb`: retained audible demo and replay, exhaustive runtime routing gate,
+  rights/acceptance/host/handoff documents and final core/evidence repairs, with
+  original completed notes through 56. Its exact clean tree
+  `58cb96a7b620e63a94be2d062b7cf71f9c207a02` passed all 26 Release suites,
+  274 Python methods with zero skips, and the explicit 56-agent archive check.
+  It preserves `7a24a30` as parent and includes the incoming metadata test's
+  portable output-failure check. Hosted run 43368537860 passed all four jobs,
+  each with 26 suites, 274 Python methods and zero skips; Agent 59 audited every
+  complete diagnostic archive and the effective hosted sanitizer/leak settings.
+
+The final completion record adds the remaining original notes 57–60 and current
+handoff updates after `61c6ecb`. All sixty workers have returned substantive
+completed results; all ten waves are complete. Agent 60 independently checked
+the published payload, complete review intervals, distinct assignment namespaces,
+raw CI evidence and next-step instructions. The final changes are documentation
+only; the coordinator checks the complete archive with `--expected-agents 60`,
+uses the expected-head guard, and observes the completion commit's own hosted run.

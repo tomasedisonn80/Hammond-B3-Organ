@@ -1,14 +1,23 @@
 # Operational handoff for the next development agent
 
-**Coordinator integration update:** original assignments 01–56 are complete;
-57–59 are dispatched and 60 remains planned. Incoming `7a24a30` was inspected
-and preserved after `6c3dd8b`. It adds nominal contact/percussion components and
-model metadata, while engine/renderer integration remains the continuation's
-next wave. Preserve the final review's nearest-rounding serialization repair
+**Coordinator completion update:** all sixty original workers have completed their
+assignments in ten waves of six. The final session record contains their complete
+notes and current handoff. Published
+`61c6ecbd87f46a91b4d0d975c823eeae2e2fb3f8` contains the demo/replay, exhaustive
+routing gate, documents and final repairs through original note 56. Its exact
+tree passed 26 local Release suites and 274 Python methods with zero skips.
+Hosted run 43368537860 passed the same counts in all four jobs; the complete
+archives and effective leak-enabled sanitizer settings were audited independently.
+Incoming `7a24a30` is preserved as its
+parent. That commit adds nominal contact/percussion components and model metadata,
+while engine/renderer integration remains the continuation's next wave.
+Preserve the final review's nearest-rounding serialization repair
 when implementing the proposed `B3CONTROLS2` migration. The current
 [assignment ledger](development/AGENT_LEDGER.md), [status](STATUS.md) and
 [next steps](NEXT_STEPS.md) supersede this document's dated inventory for task
 selection; historical execution evidence below remains attached to its revision.
+
+## Historical wave-09 inventory and operational procedures
 
 **Written during wave 09 on 2026-11-13.** The inspected published code is
 `6c3dd8bc923a3c11f6b234425b056e135fbe9f4b`, tree
