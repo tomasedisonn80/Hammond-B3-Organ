@@ -1252,3 +1252,55 @@ see [the review](reviews/PEDAL_NATIVE_PORTABILITY.md). Native repair tree
 tree 7bf8c8d63ec6d816cbae86a1b1ee874666929eb5 changes only independently checked
 Python inputs and passed 2/2 focused suites / 32 methods. The Linux module is
 unchanged. Actual hosted recovery remains pending; W7 work is excluded.
+
+
+### Wave 7 accepted — portable tools, installation and actual native audits
+
+Assignments 37–42 are complete with six accepted substantive records. All six
+CLI tools now share a strict Windows Unicode boundary. OfflineTools stages 22
+files including the pedal trace and catalog; explicit NativeVST3 staging refuses
+an existing bundle and the relocated actual Linux module passes its ABI gate.
+
+The native allocation audit measured 133 actual API regions without global C++
+new/delete calls, after proving selective module interposition and excluding an
+initial broad-export method that could substitute test-host Engine symbols.
+The dense-automation gate compares all 45 simultaneous curves, absent/empty
+queues, carry/restores and later audible output to a plain Engine; each large
+callback necessarily exceeds the fixed event-array capacity. Maximum observed
+error is zero. The actual concurrent UI/audio gate passed Release and a fully
+instrumented native ThreadSanitizer run, including 3,072 publication-only saves
+and 3,072 concurrent accepted loads. These are finite scoped software gates.
+
+The final legacy review compared 57 baseline files, all earlier 43 full registry
+records and 24 actual old-score renders without differences. Parameter-info
+schema 2 now states its SDK-free verification scope and distinguishes it from
+actual native module qualification; the permanent 45 records are unchanged.
+
+Root's combined seventh-wave archive gate follows before publication. Demo and
+plot work in wave 8 remains outside that freeze. The separate native portability
+repair was published as `9403debd754f771bf39bc8cd771ecfd86c0f14d6`, fetched with
+exact tree `e2a00f7c270317b0f07be8a467120d8a573bb61a`; its core/native hosted
+runs 43413518927/43413518971 are pending at this observation.
+
+
+### Seventh-wave integration and observed platform repair
+
+Root's coherent tree `7c3e1e2e93932dfa59f20e2be8ee4ab7f46b8f73` built successfully
+and passed 8/8 native suites in 6.68 seconds. SDK-free CTest initially passed
+67/68 in 70.98 seconds: only the installed parameter-info assertion still
+expected schema 1 after assignment 42 intentionally introduced diagnostic
+schema 2. The repaired tree `e50351633caddecc212aef3a934378aeda498870` changes only
+that Python fixture and the inventory tool/tests. All compiled inputs remain
+identical. Two install methods and 19 inventory methods passed from the repaired
+archive using the original configured environment. This is focused follow-up,
+not a second claimed full68/68 run. See the wave-7 integration review.
+
+At published platform repair9403debd, native Linux/macOS completed tests and
+artifacts; Windows passed all4 actual native suites but its later inventory
+step still failed. Core Windows passed66/67, only inventory failing; the other
+three core jobs passed. Root changed directory enumeration metadata reads to
+fresh consistent path.lstat() calls, retained all mutation/identity guards,
+added actual mutation regressions and bounded changed-field diagnostics. The
+precise old failing field was not observed. Fresh hosted Windows inventory
+remains required. Final W7 publication changes only Markdown result records
+from the repaired source tree; live wave-8 work and metadata remain excluded.

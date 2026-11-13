@@ -2,7 +2,7 @@
 
 ## Active pedal development session
 
-The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **36 new workers have completed six waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
+The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **42 new workers have completed seven waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
 
 The core now includes typed 200-position pedal routing, 25 independently held pedals, a named fixed two-mixture voice, two controls and `B3CONTROLS3`. Old state formats explicitly migrate to muted pedals. The registry has 45 records, preserving every field of the earlier 43. Pedals consume the Engine's existing single source frame; lower Cancel, division panics and upper percussion remain independent. Last-rendered diagnostics retain their actual frame/rate tags. The matrix and linear pedal gain are explicit nominal engineering fixtures, not recovered electrical values or measured 16-foot/8-foot responses.
 
@@ -26,7 +26,31 @@ Wave 6 implemented the [optional native VST3 build](VST3_BUILD.md): an actual `H
 
 The actual Linux bundle passed independent [ABI](VST3_ABI_ACCEPTANCE.md) and [behavior](VST3_BEHAVIOR_ACCEPTANCE.md) gates against plain Engine references, including all three rates, audible isolated divisions, 512 owners, 1024-record/carry limits, four pending states and failed-call future-audio preservation. The native controller gate passed 41,795 checks with all 45 metadata records and strict state streams. The SDK validator reports 47 passed/zero failed/exit zero, while retaining 16 contradictory teardown diagnostics and nine unsupported-rate error messages; it is not a warning-free or arbitrary-format qualification. The independent harness verifies balanced supported lifecycle directly.
 
-A separate [native CI workflow](VST3_CI.md) acquires the locked SDK, builds all test inputs, runs one verbose native test pass, and retains actual platform bundles, byte inventories and complete logs. Local acquisition, inventory and archive transport checks passed. The coherent sixth-wave tree `b2dae50dcde294bde8e7acb7addb14456197a779` passed **67/67 SDK-free Release suites** in 78.43 seconds and **4/4 focused native suites** in 5.23 seconds, with zero failures or skips. The [integration review](reviews/PEDAL_NATIVE_INTEGRATION.md) records the exact module and logs. First hosted execution found specific macOS/Windows integration defects while native Linux passed. The [portability repair review](reviews/PEDAL_NATIVE_PORTABILITY.md) records the observed failures, scoped fixes and successful focused local checks; hosted recovery of the repair remains pending. Wave 7 adds consistent CLI Unicode handling, explicit install/relocation, actual native callback allocation/concurrency and further automation/legacy acceptance. Full M3, scanner/AO-28/Leslie, specimen calibration, audio-device operation, custom UI and signed distribution remain open.
+A separate [native CI workflow](VST3_CI.md) acquires the locked SDK, builds all test inputs, runs one verbose native test pass, and retains actual platform bundles, byte inventories and complete logs. Local acquisition, inventory and archive transport checks passed. The coherent sixth-wave tree `b2dae50dcde294bde8e7acb7addb14456197a779` passed **67/67 SDK-free Release suites** in 78.43 seconds and **4/4 focused native suites** in 5.23 seconds, with zero failures or skips. The [integration review](reviews/PEDAL_NATIVE_INTEGRATION.md) records the exact module and logs. First hosted execution found specific macOS/Windows integration defects while native Linux passed. The [portability repair review](reviews/PEDAL_NATIVE_PORTABILITY.md) records the observed failures, scoped fixes and successful focused local checks; hosted recovery of native execution is observed on Windows/macOS, while Windows inventory still requires the fresh-path follow-up below. Wave 7 adds consistent CLI Unicode handling, explicit install/relocation, actual native callback allocation/concurrency and further automation/legacy acceptance. Full M3, scanner/AO-28/Leslie, specimen calibration, audio-device operation, custom UI and signed distribution remain open.
+
+
+Wave 7 completed [shared CLI Unicode handling](CLI_UNICODE.md), a 22-file
+[offline install](OFFLINE_INSTALL.md), and explicit [native local staging and
+relocation](VST3_LOCAL_INSTALL.md). The relocated actual Linux bundle passed
+its ABI test. The [native allocation audit](VST3_REALTIME.md) measured 133 API
+regions with zero observed C++ new/delete calls and proved module interposition
+without substituting host Engine symbols. The [dense automation review](VST3_AUTOMATION_REVIEW.md)
+checks all 45 curves, internal event slicing, carry, restores and exact future
+audio. The [native concurrency gate](VST3_CONCURRENCY.md) passed Release and a
+fully instrumented loaded-module ThreadSanitizer run.
+
+The [legacy review](reviews/PEDAL_LEGACY_FINAL.md) preserved 57 baseline files,
+all earlier 43 full registry records and complete audio bytes in 24 original-score
+runs. Parameter-info schema 2 states its SDK-free diagnostic verification scope;
+registry, state and render-evidence versions are unchanged. Root's [coherent
+seventh-wave gate](reviews/PEDAL_WAVE7_INTEGRATION.md) passed 8/8 native suites
+and initially 67/68 SDK-free suites; the one stale install-schema assertion was
+repaired and its two methods passed. The fresh-path inventory follow-up passed
+19 methods. All compiled inputs are unchanged across those focused repairs; no
+second full 68/68 execution is claimed. At separate repair `9403debd`, all three
+platforms passed actual native tests, Linux/macOS completed artifacts, and core
+Windows passed 66/67 with inventory still failing. The new inventory repair's
+Windows execution and exact wave-7 hosted matrix remain pending.
 
 ## Earlier checkpoints and retained history
 

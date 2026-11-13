@@ -90,3 +90,40 @@ result records. Ongoing seventh-wave sources and actual assignment metadata are
 excluded. Native Windows/macOS recovery and the complete new hosted matrix remain
 pending until observed at the repair commit. Quiescent bundle input remains a
 requirement; these file checks are not a hostile concurrent-filesystem sandbox.
+
+
+## Hosted repair outcome and fresh path metadata follow-up
+
+Repair `9403debd754f771bf39bc8cd771ecfd86c0f14d6` was fetched with exact tree
+`e2a00f7c270317b0f07be8a467120d8a573bb61a`. In core
+[run 43413518927](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43413518927),
+Linux, macOS and sanitizer jobs succeeded. Windows job 131845616581 passed
+**66/67 suites**: the read-only Git fixture and original cross-API metadata
+regressions passed, while two synthetic native-header cases still failed at the
+final `bundle changed during inventory` check.
+
+In native [run 43413518971](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43413518971),
+Linux and macOS completed their tests, inventories and artifacts successfully.
+Windows job 131845616021 passed **4/4 actual native suites in 2.63 seconds**,
+including all 41,795 controller checks and exact ABI/behavior audio. Its later
+bundle-inventory step still failed. Thus the CoreFoundation and floating-point
+repairs have observed platform recovery, but the complete Windows artifact gate
+remains open at this commit.
+
+The inventory initially obtained tree metadata from `DirEntry.stat()`. The pinned
+[CPython Windows implementation](https://github.com/python/cpython/blob/v3.12.10/Modules/posixmodule.c)
+reconstructs cached directory-enumeration metadata there; it is not a fresh path
+query. Root now obtains each entry's before/after signature using `path.lstat()`
+consistently, preserving device, inode, mode, size and nanosecond timestamps.
+The cross-path/descriptor identity checks and full within-API before/after guards
+remain. Assignment 46 independently reviewed that implementation rationale.
+The exact field responsible for the previous hosted mismatch was not printed
+by its old diagnostic, so no particular changed field or uninitialized-memory
+cause is claimed. The new bounded diagnostic lists up to four changed entries
+and metadata fields to make any remaining platform failure actionable.
+
+A regression actually changes resource bytes or adds a bundle member during
+header inspection; both mutations still reject. The repaired inventory's
+**19 Python methods pass locally**. The [wave-7 integration record](PEDAL_WAVE7_INTEGRATION.md)
+identifies its exact source and focused qualification. Fresh Windows execution
+and artifact observation are required to close this follow-up.

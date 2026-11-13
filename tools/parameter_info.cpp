@@ -1,3 +1,4 @@
+#include "CliArguments.h"
 #include "hammond/ParameterBridge.h"
 #include "hammond/detail/Decimal.h"
 
@@ -66,11 +67,12 @@ void quoted(std::ostream& output, std::string_view text) {
     std::ostringstream output;
     output.imbue(std::locale::classic());
     output << std::setprecision(std::numeric_limits<double>::max_digits10)
-           << "{\"schema_version\":1,\"registry_schema_version\":"
+           << "{\"schema_version\":2,\"registry_schema_version\":"
            << hammond::kParameterRegistrySchemaVersion << ",\"model\":";
     quoted(output, hammond::kParameterRegistryModel);
     output << ",\"scope\":\"implemented-console-subset\",\"status\":\"proposed-internal\","
-              "\"host_exports_verified\":false,\"native_host_curves_implemented\":false,"
+              "\"verification_scope\":\"sdk-free-core-parameter-mapping\","
+              "\"host_exports_verified\":false,\"native_host_curves_verified\":false,"
               "\"normalized\":" << normalized << ",\"parameters\":[";
     bool first = true;
     for (const auto& descriptor : hammond::parameter_descriptors()) {
@@ -111,7 +113,7 @@ void quoted(std::ostream& output, std::string_view text) {
 
 } // namespace
 
-int main(int argc, char* argv[]) {
+static int parameter_info_main(int argc, char* argv[]) {
     try {
 #ifdef _WIN32
         if (_setmode(_fileno(stdout), _O_BINARY) == -1) {
@@ -122,7 +124,8 @@ int main(int argc, char* argv[]) {
             std::cout << "Usage: hammond_parameter_info [--normalized U | --help]\n"
                          "Emit the 45 compiled internal parameter mappings; U defaults to 0.5.\n"
                          "U must be a finite decimal in [0,1], at most 128 bytes.\n"
-                         "Scope: proposed internal mapping; no native host exports or curves are verified.\n";
+                         "Scope: SDK-free compiled core mapping; this command does not inspect a native module.\n"
+                         "Native exports and automation have separate artifact-specific verification.\n";
         } else if (argc == 1) {
             std::cout << metadata(0.5);
         } else if (argc == 3 && std::string_view(argv[1]) == "--normalized") {
@@ -141,3 +144,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 }
+
+#ifdef _WIN32
+int wmain(int argc, wchar_t* argv[]) {
+    return hammond::cli::run_windows(argc, argv, parameter_info_main, "hammond_parameter_info");
+}
+#else
+int main(int argc, char* argv[]) {
+    return parameter_info_main(argc, argv);
+}
+#endif

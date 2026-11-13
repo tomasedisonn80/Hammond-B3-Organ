@@ -1,3 +1,4 @@
+#include "CliArguments.h"
 #include "hammond/Engine.h"
 #include "hammond/InputProcessor.h"
 #include "hammond/Profile.h"
@@ -95,7 +96,7 @@ struct Options {
             fail("Missing or oversized value for " + std::string(name));
         }
         if (name == "--profile") {
-            options.profile = std::filesystem::path(value);
+            options.profile = hammond::cli::argument_path(value);
         } else if (name == "--case") {
             if (value != "all" && std::find(kCases.begin(), kCases.end(), value) == kCases.end() &&
                 !console_selection(value)) {
@@ -610,7 +611,7 @@ int benchmark(const Options& options) {
 
 } // namespace
 
-int main(int argc, char* argv[]) {
+static int benchmark_main(int argc, char* argv[]) {
     try {
         if (argc == 2 && std::string_view(argv[1]) == "--help") {
             std::cout <<
@@ -638,3 +639,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 }
+
+#ifdef _WIN32
+int wmain(int argc, wchar_t* argv[]) {
+    return hammond::cli::run_windows(argc, argv, benchmark_main, "hammond_benchmark");
+}
+#else
+int main(int argc, char* argv[]) {
+    return benchmark_main(argc, argv);
+}
+#endif

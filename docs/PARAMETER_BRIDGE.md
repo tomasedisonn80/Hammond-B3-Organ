@@ -1,10 +1,14 @@
-# Native internal parameter bridge
+# Compiled parameter bridge and offline diagnostic
 
 [`ParameterBridge.h`](../include/hammond/ParameterBridge.h) converts the
-[45 proposed internal controls](PARAMETERS.md) into typed Engine events. Its
+[45 retained console controls](PARAMETERS.md) into typed Engine events. Its
 compiled table matches registry schema `3`, model
 `exclusive-ab-percussion-pedal-console-v3`. The diagnostic export below has its own
-schema `1`; this is separate from render-evidence and saved-control versions.
+schema `2`; this is separate from registry, render-evidence and saved-control versions.
+The SDK-free diagnostic verifies its compiled scalar mapping. It neither loads
+a native module nor reports the verification status of an unrelated plugin
+binary. The optional [VST3 controller](VST3_CONTROLLER.md) adopts these mappings;
+its [loaded-module evidence](VST3_ABI_ACCEPTANCE.md) has a separate scope.
 
 The bridge is stateless C++20 code with immutable literal metadata. It does not
 read the registry, load files, allocate, lock, log or call a host SDK during
@@ -88,8 +92,11 @@ noncanonical normalized input through a round trip.
 The source atlas's pp. 397-402 motivate permanent identities and frozen laws. Its
 fuller proposal on p. 398 uses continuous drawbar travel and a different discrete
 host conversion. This bridge preserves this repository's existing internal law.
-A future host wrapper must explicitly approve its exported mapping and any
-compatibility migration; these internal IDs are not asserted VST3 exports.
+The optional [native wrapper contract](VST3_SPIKE_CONTRACT.md) explicitly adopts
+this repository's IDs and conversion law. Its controller and loaded-module tests
+inspect the actual exports, while this scalar API and diagnostic alone cannot
+qualify a native binary. Future changes still require an explicit compatibility
+migration; the atlas's differing proposal must not silently replace this law.
 
 ## Inspect the compiled mapping
 
@@ -118,15 +125,33 @@ Successful JSON has these exact root fields:
 
 | Field | Value |
 | --- | --- |
-| `schema_version` | Integer 1 for this diagnostic export |
+| `schema_version` | Integer 2 for this diagnostic export |
 | `registry_schema_version` | Integer 3 |
 | `model` | `exclusive-ab-percussion-pedal-console-v3` |
 | `scope` | `implemented-console-subset` |
-| `status` | `proposed-internal` |
-| `host_exports_verified` | False |
-| `native_host_curves_implemented` | False |
+| `status` | `proposed-internal`, the unchanged registry authoring status |
+| `verification_scope` | `sdk-free-core-parameter-mapping` |
+| `host_exports_verified` | False: this invocation does not inspect a plugin export |
+| `native_host_curves_verified` | False: this invocation does not exercise native automation |
 | `normalized` | Parsed input value |
 | `parameters` | All 45 compiled records in numeric ID order |
+
+### Diagnostic schema migration
+
+Schema 2 adds `verification_scope` and replaces the schema-1 root field
+`native_host_curves_implemented` with `native_host_curves_verified`. The old name
+incorrectly suggested that an offline inspection executable could determine the
+whole project's implementation status. Both current verification flags remain
+false because this command exercises neither native exports nor native curves.
+A false result here does not deny the implemented [HostTimeline](HOST_TIMELINE.md)
+or separate loaded-module evidence.
+
+Consumers must accept diagnostic schema 2 explicitly and update their exact
+root-field inventory. There is no `--schema 1` compatibility mode. Registry
+schema 3, all 45 per-parameter records, conversion results, CLI numeric grammar,
+argument limits and failure behavior are unchanged. The frozen registry's
+original provenance is retained as an authoring record; it is not a live
+capability report. Diagnostic `status` continues to quote that record.
 
 Each record has `id`, `path`, `kind`, `unit`, `minimum`, `maximum`, `default_plain`,
 `default_normalized`, `step_count` and `event`. Its event has `offset` equal to
@@ -150,10 +175,14 @@ belongs in the [pedal development ledger](development/2026-11-13-pedals/README.m
 and [assignment 17 note](development/2026-11-13-pedals/17-pedal-parameters.md);
 an interface or test description is not a completed gate.
 
-This bridge does not supply automation queues, curve interpolation, smoothing,
-balanced UI gestures, native plugin exports or DAW project recall. Those retain
-the host gates in [HOST_INTEGRATION.md](HOST_INTEGRATION.md). The 45 scalar records
-also omit route-enable bits; replaying selectors cannot replace a coherent
+The scalar bridge itself supplies no automation queue or clock. The separate
+[HostTimeline](HOST_TIMELINE.md) owns sample-linear curves, callback admission and
+carry; [StateExchange](STATE_EXCHANGE.md) owns concurrent control transfer; and
+the [optional VST3 module](VST3_BUILD.md) exports the controls through a real SDK
+boundary. Exact supported native behavior belongs to the controller, ABI and
+behavior reports for their named builds. Custom-editor gesture handling, real
+DAW project recall and audio-device qualification remain product gates.
+The 45 scalar records omit route-enable bits; replaying selectors cannot replace a coherent
 [control snapshot](CONTROL_STATE_FORMAT.md) restore. Contact travel, held pedal
 contacts, percussion readiness, note ownership,
 source phase and the render clock remain separate. The version-2 JSON fixture

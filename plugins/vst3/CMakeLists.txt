@@ -140,15 +140,35 @@ if(BUILD_TESTING)
         target_include_directories(hammond_vst3_test_host SYSTEM PUBLIC "${SDK_ROOT}")
         hammond_configure_native_target(hammond_vst3_test_host)
 
-        foreach(native_test test_native_abi test_native_behavior)
+        set(hammond_native_host_tests test_native_abi test_native_behavior test_native_automation test_native_concurrency)
+        # This audit proves ELF module interposition on Linux. Other targets
+        # need their own proof before inheriting a native allocation claim.
+        if(SMTG_LINUX)
+            list(APPEND hammond_native_host_tests test_native_realtime)
+        endif()
+        foreach(native_test IN LISTS hammond_native_host_tests)
             if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/${native_test}.cpp")
                 add_executable(${native_test} "tests/${native_test}.cpp")
                 target_link_libraries(${native_test} PRIVATE hammond_vst3_test_host)
                 hammond_configure_native_target(${native_test})
+                if(native_test STREQUAL "test_native_concurrency")
+                    find_package(Threads REQUIRED)
+                    target_link_libraries(${native_test} PRIVATE Threads::Threads)
+                endif()
+                if(native_test STREQUAL "test_native_realtime")
+                    target_link_options(${native_test} PRIVATE
+                        "LINKER:--export-dynamic-symbol=_Znw*"
+                        "LINKER:--export-dynamic-symbol=_Zna*"
+                        "LINKER:--export-dynamic-symbol=_Zdl*"
+                        "LINKER:--export-dynamic-symbol=_Zda*")
+                endif()
                 add_dependencies(${native_test} HammondB3 hammond_profile)
                 add_test(NAME ${native_test}
                     COMMAND ${native_test} "${HAMMOND_VST3_BUNDLE_PATH}" "${HAMMOND_COMPILED_PROFILE}")
                 set_tests_properties(${native_test} PROPERTIES TIMEOUT 180)
+                if(native_test STREQUAL "test_native_concurrency")
+                    set_tests_properties(${native_test} PROPERTIES TIMEOUT 240)
+                endif()
                 list(APPEND HAMMOND_VST3_TEST_TARGETS ${native_test})
             endif()
         endforeach()

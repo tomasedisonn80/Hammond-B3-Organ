@@ -149,6 +149,32 @@ class NativeBundleInventoryTests(unittest.TestCase):
                     with self.assertRaisesRegex(inventory.InventoryError, "file changed"):
                         inventory._file_record(self.fixture.module, inventory.MAX_FILE_BYTES)
 
+    def test_bundle_changes_during_header_inspection_still_reject(self):
+        original_header = inventory._native_header
+        notice = self.fixture.resources / "THIRD_PARTY_NOTICES.md"
+        original_bytes = notice.read_bytes()
+
+        def changed_header(path, size):
+            result = original_header(path, size)
+            notice.write_bytes(original_bytes + b"changed during inventory\n")
+            return result
+
+        with mock.patch.object(inventory, "_native_header", side_effect=changed_header):
+            with self.assertRaisesRegex(inventory.InventoryError,
+                                        "bundle changed during inventory:.*THIRD_PARTY_NOTICES"):
+                self.fixture.report()
+        notice.write_bytes(original_bytes)
+
+        def added_header(path, size):
+            result = original_header(path, size)
+            (self.fixture.resources / "new-resource.txt").write_bytes(b"unexpected\n")
+            return result
+
+        with mock.patch.object(inventory, "_native_header", side_effect=added_header):
+            with self.assertRaisesRegex(inventory.InventoryError,
+                                        "bundle changed during inventory:.*new-resource.txt"):
+                self.fixture.report()
+
     def test_exact_inventory_preserves_sdk_metadata_bytes(self):
         report = self.fixture.report()
         self.assertEqual(report["schema_version"], 1)

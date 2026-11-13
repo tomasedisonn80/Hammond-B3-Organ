@@ -2,11 +2,11 @@
 
 ## Active new session
 
-Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Six waves and 36 actual new workers are complete: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation, the concurrent state exchange and the optional native module with independent Linux ABI/behavior gates. All eight retained scores have exact local baseline/current WAV compatibility.
+Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Seven waves and 42 actual new workers are complete: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation, the concurrent state exchange and the optional native module with independent Linux ABI/behavior gates. All eight retained scores have exact local baseline/current WAV compatibility.
 
-Wave 5 completed same-frame diagnostics, compiled pedal model metadata, independently checked musical fixtures, sample-linear automation and a bounded race-free UI/audio state handoff. The host contract requires the previous-sample anchor at -1, correct offset-N interpolation/carry, stable event ordering, candidate rendering with whole-callback rollback, and state 1/2/3 loading during active processing. The enabled-path audit measured these actual paths, including the complete proposed callback; the native wrapper needs its own instrumented gate.
+Wave 5 completed same-frame diagnostics, compiled pedal model metadata, independently checked musical fixtures, sample-linear automation and a bounded race-free UI/audio state handoff. The host contract requires the previous-sample anchor at -1, correct offset-N interpolation/carry, stable event ordering, candidate rendering with whole-callback rollback, and state 1/2/3 loading during active processing. The enabled-path audit measured these actual paths, including the complete proposed callback; the later actual native allocation and concurrency gates now have their own scoped results.
 
-Wave 6 implemented the [minimal native VST3 contract](VST3_SPIKE_CONTRACT.md), [explicit pinned build](VST3_BUILD.md), actual factory/processor/controller tests and separate native CI/artifact inventory. The SDK validator's summary is retained together with its unsupported-rate and repeated-deactivation diagnostics. Wave 7 now qualifies actual native allocation/concurrency and deeper automation, completes portable CLI handling, expands local install/relocation and preserves legacy identities. Later waves retain a musical pedal demo, plots, operational handoff, hosted evidence and final audits. The requested session still requires sixty actual new workers in ten waves; earlier sessions are not counted again.
+Wave 6 implemented the [minimal native VST3 contract](VST3_SPIKE_CONTRACT.md), [explicit pinned build](VST3_BUILD.md), actual factory/processor/controller tests and separate native CI/artifact inventory. The SDK validator's summary is retained together with its unsupported-rate and repeated-deactivation diagnostics. Wave 7 completed actual native allocation/concurrency and dense automation gates, portable CLI handling, explicit install/relocation and exact legacy review. Wave 8 retains a musical pedal demo, independent replay, plots, operational handoff and the next acquisition/numerical contract; the final waves own integrated review and exact hosted/publication audits. The requested session still requires sixty actual new workers in ten waves; earlier sessions are not counted again.
 
 ## Completed continuation and current baseline
 
@@ -36,21 +36,26 @@ remaining assignment from this sixty-worker session to invent or count again.
 
 ## Next product milestone
 
-Qualify and publish the coherent native checkpoint, then observe the exact source's
-[separate native workflow](VST3_CI.md) on Linux, Windows and macOS. Retain full logs,
-actual module inventories and failed attempts. A queue-acquisition failure must
-remain distinct from project execution; one targeted retry recovered the prior
-core/offline macOS gate. Do not weaken assertions or change advertised formats
-to make a validator summary look clean.
+Publish the locally qualified seventh-wave source with its retained initial
+67/68 default result, repaired focused Python checks and 8/8 native result. Observe the separate core/native workflows at
+that exact commit on all configured platforms. The first native checkpoint found
+specific macOS linking, Windows floating-point policy and portable inventory/test
+fixture defects; the separate [repair record](reviews/PEDAL_NATIVE_PORTABILITY.md)
+retains those failures. Confirm recovery from actual logs, including inventory and
+bundle artifacts, before closing platform gates.
 
-Measure the actual loaded native callback's C++ allocation paths with proved
-module interposition, then stress active native UI state calls against audio
-processing. The core-only allocation and ThreadSanitizer evidence do not
-automatically qualify a wrapper, SDK boundary or dynamic module. Preserve the
-preflight → private render → guaranteed publication → output-copy protocol.
-Add explicit local-prefix installation and relocation of the real bundle,
-while ordinary OfflineTools remains SDK-free. Complete independent multi-curve
-automation and source/old-audio compatibility review before release claims.
+Complete the retained pedal phrase and independent PCM/source/replay review, add
+bounded plots of actual pedal trace CSVs, and update the current operational
+handoff. The new session checker must validate these sixty actual assignments,
+not reuse either historical sixty-agent count. Continue waves 9 and 10 with
+independent code/evidence/platform reviews and concrete defect repair, then
+publish all completed work with exact remote identity and current next steps.
+
+The actual loaded native callback now has a scoped allocation audit; native UI
+state/audio stress passed a fully instrumented TSAN run. Preserve their exact
+ownership, interposition and instrumentation assumptions. Local bundle relocation
+and dense multi-curve automation also have focused evidence; the combined source
+and hosted builds remain separately qualified.
 
 The implemented native surface is three event buses, 45 permanent controls,
 float32 dry stereo at 44.1/48/96 kHz and generic host parameter controls. Actual

@@ -138,7 +138,10 @@ def _walk(root: Path) -> list[tuple[str, Path, os.stat_result]]:
                 if key in names:
                     raise InventoryError("bundle contains a case-colliding path")
                 names.add(key)
-                info = entry.stat(follow_symlinks=False)
+                # Windows DirEntry metadata comes from directory enumeration
+                # and may lag current file information. Both bundle snapshots
+                # use fresh path metadata, matching the per-file admission API.
+                info = path.lstat()
                 if not (stat.S_ISDIR(info.st_mode) or stat.S_ISREG(info.st_mode)):
                     raise InventoryError("bundle contains a symlink or special file")
                 result.append((name, path, info))
@@ -286,7 +289,22 @@ def make_inventory(bundle: Path, configuration: str, sdk_lock: Path, notices: Pa
     final = _walk(root)
     if [(name, _signature(info)) for name, _, info in initial] != \
             [(name, _signature(info)) for name, _, info in final]:
-        raise InventoryError("bundle changed during inventory")
+        before = {name: info for name, _, info in initial}
+        after = {name: info for name, _, info in final}
+        changes = []
+        fields = ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")
+        for name in sorted(before.keys() | after.keys()):
+            if name not in before or name not in after:
+                changes.append(name + ": added or removed")
+            else:
+                changed = [field + "=" + str(getattr(before[name], field)) + "->" +
+                           str(getattr(after[name], field)) for field in fields
+                           if getattr(before[name], field) != getattr(after[name], field)]
+                if changed:
+                    changes.append(name + ": " + ",".join(changed))
+            if len(changes) == 4:
+                break
+        raise InventoryError("bundle changed during inventory: " + "; ".join(changes))
     return {"schema_version": 1, "kind": "hammond-native-bundle-inventory-v1",
             "bundle_name": root.name, "configuration": configuration, "source": source,
             "sdk_lock": {"bytes": len(lock_bytes), "sha256": hashlib.sha256(lock_bytes).hexdigest(),

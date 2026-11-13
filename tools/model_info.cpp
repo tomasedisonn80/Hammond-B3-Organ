@@ -1,3 +1,4 @@
+#include "CliArguments.h"
 #include "hammond/ConsoleModel.h"
 #include "hammond/ControlState.h"
 #include "hammond/PedalRouting.h"
@@ -319,7 +320,7 @@ void pedal_metadata(std::ostream& output) {
 
 } // namespace
 
-int main(int argc, char* argv[]) {
+static int model_info_main(int argc, char* argv[]) {
     try {
 #ifdef _WIN32
         // Metadata identity includes its bytes. Disable CRT LF translation;
@@ -348,3 +349,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 }
+
+#ifdef _WIN32
+int wmain(int argc, wchar_t* argv[]) {
+    return hammond::cli::run_windows(argc, argv, model_info_main, "hammond_model_info");
+}
+#else
+int main(int argc, char* argv[]) {
+    return model_info_main(argc, argv);
+}
+#endif

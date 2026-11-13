@@ -1,3 +1,4 @@
+#include "CliArguments.h"
 #include "hammond/Engine.h"
 
 #include <array>
@@ -81,7 +82,7 @@ struct Options {
             fail("Argument values require 1..4096 bytes.");
         }
         switch (index) {
-        case 0: options.profile = fs::path(value); break;
+        case 0: options.profile = hammond::cli::argument_path(value); break;
         case 1:
             if (value != "unmute" && value != "overlap" && value != "routing") {
                 fail("Scenario must be unmute, overlap or routing.");
@@ -97,7 +98,7 @@ struct Options {
             break;
         }
         case 3: options.seed = unsigned_number(value); break;
-        case 4: options.output = fs::path(value); break;
+        case 4: options.output = hammond::cli::argument_path(value); break;
         default: fail("Internal option index.");
         }
     }
@@ -403,7 +404,7 @@ private:
 
 } // namespace
 
-int main(int argc, char** argv) {
+static int pedal_trace_main(int argc, char** argv) {
     try {
         if (argc == 2 && std::string_view(argv[1]) == "--help") {
             std::cout <<
@@ -435,3 +436,13 @@ int main(int argc, char** argv) {
         return 1;
     }
 }
+
+#ifdef _WIN32
+int wmain(int argc, wchar_t* argv[]) {
+    return hammond::cli::run_windows(argc, argv, pedal_trace_main, "hammond_pedal_trace");
+}
+#else
+int main(int argc, char* argv[]) {
+    return pedal_trace_main(argc, argv);
+}
+#endif

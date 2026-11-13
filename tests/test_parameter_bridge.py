@@ -28,7 +28,8 @@ registry_api = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(registry_api)
 
 ROOT_KEYS = frozenset(("schema_version", "registry_schema_version", "model", "scope",
-                       "status", "host_exports_verified", "native_host_curves_implemented",
+                       "status", "verification_scope", "host_exports_verified",
+                       "native_host_curves_verified",
                        "normalized", "parameters"))
 RECORD_KEYS = frozenset(("id", "path", "kind", "unit", "minimum", "maximum",
                          "default_plain", "default_normalized", "step_count", "event"))
@@ -108,14 +109,15 @@ class ParameterBridgeTests(unittest.TestCase):
                           parse_constant=reject_constant, parse_int=json_integer)
         self.assertEqual(set(data), ROOT_KEYS)
         self.assertIs(type(data["schema_version"]), int)
-        self.assertEqual(data["schema_version"], 1)
+        self.assertEqual(data["schema_version"], 2)
         self.assertIs(type(data["registry_schema_version"]), int)
         self.assertEqual(data["registry_schema_version"], 3)
         self.assertEqual(data["model"], "exclusive-ab-percussion-pedal-console-v3")
         self.assertEqual(data["scope"], "implemented-console-subset")
         self.assertEqual(data["status"], "proposed-internal")
+        self.assertEqual(data["verification_scope"], "sdk-free-core-parameter-mapping")
         self.assertIs(data["host_exports_verified"], False)
-        self.assertIs(data["native_host_curves_implemented"], False)
+        self.assertIs(data["native_host_curves_verified"], False)
         self.assertIn(type(data["normalized"]), (int, float))
         self.assertEqual(bits(data["normalized"]), bits(normalized))
         self.assertIs(type(data["parameters"]), list)
@@ -226,6 +228,22 @@ class ParameterBridgeTests(unittest.TestCase):
             self.assertEqual(result.stderr, b"")
             self.assertEqual(result.stdout, baseline.stdout)
         self.inspect(baseline.stdout, 0.5)
+
+    def test_export_scope_distinguishes_registry_provenance_from_native_verification(self):
+        result = self.invoke()
+        self.assertEqual(result.returncode, 0, result.stderr)
+        data = self.inspect(result.stdout, 0.5)
+        # Schema 2 describes this SDK-free invocation. The frozen registry's
+        # original authoring provenance is not a live native capability report.
+        self.assertNotIn("native_host_curves_implemented", data)
+        self.assertNotIn("native_module_path", data)
+        self.assertNotIn("native_module_sha256", data)
+        help_result = self.invoke(("--help",))
+        self.assertEqual(help_result.returncode, 0, help_result.stderr)
+        self.assertIn(b"SDK-free compiled core mapping", help_result.stdout)
+        self.assertIn(b"does not inspect a native module", help_result.stdout)
+        self.assertIn(b"artifact-specific verification", help_result.stdout)
+        self.assertNotIn(b"no native host exports or curves are verified", help_result.stdout)
 
     def test_portable_stdout_failure_is_reported_and_preserves_file(self):
         with tempfile.TemporaryDirectory(prefix="hammond parameter output ") as temporary:

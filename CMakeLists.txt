@@ -99,9 +99,6 @@ add_custom_target(hammond_profile ALL DEPENDS "${HAMMOND_COMPILED_PROFILE}")
 file(GLOB HAMMOND_RENDER_SOURCE CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tools/render.cpp")
 if(HAMMOND_RENDER_SOURCE)
     add_executable(hammond_render ${HAMMOND_RENDER_SOURCE})
-    if(MINGW)
-        target_link_options(hammond_render PRIVATE -municode)
-    endif()
     target_link_libraries(hammond_render PRIVATE hammond_core)
     hammond_configure_target(hammond_render)
     add_dependencies(hammond_render hammond_profile)
@@ -137,6 +134,17 @@ add_executable(hammond_pedal_trace tools/pedal_trace.cpp)
 target_link_libraries(hammond_pedal_trace PRIVATE hammond_core)
 hammond_configure_target(hammond_pedal_trace)
 add_dependencies(hammond_pedal_trace hammond_profile)
+
+# All offline tools receive lossless Windows argv through wmain. Keep this
+# executable-only startup option away from the core, tests and optional plugin.
+if(MINGW)
+    foreach(cli_target hammond_render hammond_benchmark hammond_model_info
+                       hammond_parameter_info hammond_console_trace hammond_pedal_trace)
+        if(TARGET ${cli_target})
+            target_link_options(${cli_target} PRIVATE -municode)
+        endif()
+    endforeach()
+endif()
 
 if(HAMMOND_BUILD_VST3)
     if(CMAKE_VERSION VERSION_LESS 3.25)
@@ -210,6 +218,15 @@ if(BUILD_TESTING)
         list(APPEND HAMMOND_TEST_TARGETS hammond_benchmark)
     endif()
 
+    if(TEST python_test_cli_unicode)
+        set_property(TEST python_test_cli_unicode APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_BENCHMARK_EXECUTABLE=$<TARGET_FILE:hammond_benchmark>"
+            "HAMMOND_MODEL_INFO_EXECUTABLE=$<TARGET_FILE:hammond_model_info>"
+            "HAMMOND_PARAMETER_INFO_EXECUTABLE=$<TARGET_FILE:hammond_parameter_info>")
+        list(APPEND HAMMOND_TEST_TARGETS
+            hammond_benchmark hammond_model_info hammond_parameter_info)
+    endif()
+
     foreach(test_source IN LISTS HAMMOND_PYTHON_TESTS)
         get_filename_component(test_name "${test_source}" NAME_WE)
         set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
@@ -232,61 +249,14 @@ if(BUILD_TESTING)
         USES_TERMINAL)
 endif()
 
-# The scoped local install contains the offline tools and their existing data.
-# Relative GNUInstallDirs destinations preserve --prefix and later relocation.
-include(GNUInstallDirs)
-if(TARGET hammond_render)
-    foreach(install_dir CMAKE_INSTALL_BINDIR CMAKE_INSTALL_DATADIR)
-        if(IS_ABSOLUTE "${${install_dir}}" OR
-           "${${install_dir}}" MATCHES "(^|[/\\\\])\\.\\.($|[/\\\\])" OR
-           "${${install_dir}}" STREQUAL "")
-            message(FATAL_ERROR
-                "OfflineTools requires a nonempty relative ${install_dir} without parent traversal.")
-        endif()
-    endforeach()
-    install(CODE "
-        if(NOT EXISTS \"$<TARGET_FILE:hammond_render>\" OR
-           NOT EXISTS \"$<TARGET_FILE:hammond_model_info>\" OR
-           NOT EXISTS \"$<TARGET_FILE:hammond_parameter_info>\" OR
-           NOT EXISTS \"$<TARGET_FILE:hammond_console_trace>\" OR
-           NOT EXISTS \"${HAMMOND_COMPILED_PROFILE}\" OR
-           NOT EXISTS \"${CMAKE_CURRENT_SOURCE_DIR}/tools/plot_console_trace.py\")
-            message(FATAL_ERROR
-                \"OfflineTools requires built hammond_render, hammond_model_info, hammond_parameter_info, hammond_console_trace, nominal.b3p and the source plot script; build all four executable targets for the selected configuration before installing.\")
-        endif()
-        " COMPONENT OfflineTools)
-    install(TARGETS hammond_render hammond_model_info hammond_parameter_info hammond_console_trace
-        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT OfflineTools)
-    install(PROGRAMS tools/plot_console_trace.py
-        DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT OfflineTools)
-    install(FILES "${HAMMOND_COMPILED_PROFILE}"
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ"
-        COMPONENT OfflineTools)
-    install(FILES
-        examples/fixtures/catalog-v1.json
-        examples/fixtures/a4-fundamental-v1.events
-        examples/fixtures/two-manual-changes-v1.events
-        examples/fixtures/low-fold-coherent-v1.events
-        examples/fixtures/held-bank-cancel-v1.events
-        examples/fixtures/high-fold-coherent-v1.events
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ/fixtures"
-        COMPONENT OfflineTools)
-    install(FILES
-        examples/fixtures/console/console-catalog-v1.json
-        examples/fixtures/console/console-travel-v1.events
-        examples/fixtures/console/console-percussion-legato-v1.events
-        examples/fixtures/console/console-routing-mask-v1.events
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ/fixtures/console"
-        COMPONENT OfflineTools)
-    if(BUILD_TESTING AND TEST python_test_install)
-        set_property(TEST python_test_install APPEND PROPERTY ENVIRONMENT
-            "HAMMOND_TEST_CMAKE=${CMAKE_COMMAND}"
-            "HAMMOND_TEST_BUILD_DIR=${CMAKE_CURRENT_BINARY_DIR}"
-            "HAMMOND_TEST_CONFIG=$<CONFIG>"
-            "HAMMOND_MODEL_INFO_EXECUTABLE=$<TARGET_FILE:hammond_model_info>"
-            "HAMMOND_PARAMETER_INFO_EXECUTABLE=$<TARGET_FILE:hammond_parameter_info>"
-            "HAMMOND_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR}"
-            "HAMMOND_INSTALL_DATADIR=${CMAKE_INSTALL_DATADIR}")
-        set_tests_properties(python_test_install PROPERTIES TIMEOUT 120)
-    endif()
+# Component-scoped installation is defined after all targets and tests.
+include(cmake/InstallHammondTools.cmake)
+
+if(HAMMOND_BUILD_VST3 AND BUILD_TESTING)
+    add_test(NAME test_native_install
+        COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/plugins/vst3/tests/test_native_install.py")
+    get_target_property(HAMMOND_NATIVE_INSTALL_BUNDLE HammondB3 SMTG_PLUGIN_PACKAGE_PATH)
+    set_tests_properties(test_native_install PROPERTIES
+        TIMEOUT 240
+        ENVIRONMENT "PYTHONDONTWRITEBYTECODE=1;HAMMOND_TEST_CMAKE=${CMAKE_COMMAND};HAMMOND_TEST_BUILD_DIR=${CMAKE_BINARY_DIR};HAMMOND_TEST_CONFIG=$<CONFIG>;HAMMOND_TEST_PROFILE=${HAMMOND_COMPILED_PROFILE};HAMMOND_TEST_VST3_BUNDLE=${HAMMOND_NATIVE_INSTALL_BUNDLE};HAMMOND_TEST_NATIVE_MODULE=$<TARGET_FILE:HammondB3>;HAMMOND_TEST_NATIVE_ABI=$<TARGET_FILE:test_native_abi>;HAMMOND_INSTALL_LIBDIR=${CMAKE_INSTALL_LIBDIR}")
 endif()

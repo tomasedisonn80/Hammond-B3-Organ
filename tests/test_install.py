@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 """Real OfflineTools install/relocation smoke; uses only the standard library.
 
-Build all four offline executables first, then run ctest -R '^python_test_install$'. CTest
+Build all five offline executables first, then run ctest -R '^python_test_install$'. CTest
 supplies the exact CMake, build, configuration, executable and profile paths,
 including multi-configuration generators. Missing inputs are errors, not skips.
 """
 
+import csv
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
 import re
+import shutil
 import struct
 import subprocess
 import sys
@@ -35,6 +38,13 @@ CONSOLE_FIXTURE_NAMES = {
     "console-percussion-legato-v1.events",
     "console-routing-mask-v1.events",
 }
+PEDAL_FIXTURE_NAMES = {
+    "pedal-catalog-v1.json",
+    "pedal-mixtures-v1.events",
+    "pedal-shared-source-v1.events",
+    "pedal-held-routing-v1.events",
+    "pedal-phrase-v1.events",
+}
 
 
 def required_path(variable, *, directory=False):
@@ -43,8 +53,8 @@ def required_path(variable, *, directory=False):
     if path is None or not (path.is_dir() if directory else path.is_file()):
         raise RuntimeError(
             f"Missing install-test input {variable}={value!r}. Build the "
-            "hammond_render, hammond_model_info, hammond_parameter_info and "
-            "hammond_console_trace targets (including nominal.b3p) for the selected "
+            "hammond_render, hammond_model_info, hammond_parameter_info, "
+            "hammond_console_trace and hammond_pedal_trace targets (including nominal.b3p) for the selected "
             "configuration, then run this test through CTest."
         )
     return path.resolve()
@@ -67,6 +77,7 @@ class OfflineInstallTests(unittest.TestCase):
         cls.model_info = required_path("HAMMOND_MODEL_INFO_EXECUTABLE")
         cls.parameter_info = required_path("HAMMOND_PARAMETER_INFO_EXECUTABLE")
         cls.console_trace = required_path("HAMMOND_CONSOLE_TRACE_EXECUTABLE")
+        cls.pedal_trace = required_path("HAMMOND_PEDAL_TRACE_EXECUTABLE")
         cls.plotter = ROOT / "tools" / "plot_console_trace.py"
         if not cls.plotter.is_file():
             raise RuntimeError(f"Missing standalone plot script: {cls.plotter}")
@@ -107,17 +118,22 @@ class OfflineInstallTests(unittest.TestCase):
             environment = dict(os.environ)
             # Prevent a caller's staging root from redirecting this local install.
             environment.pop("DESTDIR", None)
+            environment.pop("CMAKE_INSTALL_MODE", None)
             install = [self.cmake, "--install", self.build, "--component", "OfflineTools",
                        "--prefix", prefix]
             if self.configuration:
                 install.extend(("--config", self.configuration))
             self.assert_success(self.invoke(install, unrelated, environment))
-            executables = (self.renderer, self.model_info, self.parameter_info, self.console_trace)
+            executables = (self.renderer, self.model_info, self.parameter_info,
+                           self.console_trace, self.pedal_trace)
             expected = {self.bindir / path.name for path in executables}
             expected.update((self.bindir / self.plotter.name, self.datadir / "nominal.b3p"))
             expected.update(self.datadir / "fixtures" / name for name in FIXTURE_NAMES)
             expected.update(self.datadir / "fixtures" / "console" / name
                             for name in CONSOLE_FIXTURE_NAMES)
+            expected.update(self.datadir / "fixtures" / "pedals" / name
+                            for name in PEDAL_FIXTURE_NAMES)
+            self.assertEqual(len(expected), 22)
             actual = {path.relative_to(prefix) for path in prefix.rglob("*") if path.is_file()}
             self.assertEqual(actual, expected, "OfflineTools installed an unexpected file set")
             self.assertFalse(any(path.is_symlink() for path in prefix.rglob("*")))
@@ -135,6 +151,9 @@ class OfflineInstallTests(unittest.TestCase):
             for name in CONSOLE_FIXTURE_NAMES:
                 self.assertEqual((installed_fixtures / "console" / name).read_bytes(),
                                  (ROOT / "examples" / "fixtures" / "console" / name).read_bytes(), name)
+            for name in PEDAL_FIXTURE_NAMES:
+                self.assertEqual((installed_fixtures / "pedals" / name).read_bytes(),
+                                 (ROOT / "examples" / "fixtures" / "pedals" / name).read_bytes(), name)
             self.assertEqual(installed_plotter.read_bytes(), self.plotter.read_bytes())
             catalog = json.loads((installed_fixtures / "catalog-v1.json").read_text(encoding="utf-8"))
             self.assertEqual(hashlib.sha256(profile_bytes).hexdigest(),
@@ -194,10 +213,16 @@ class OfflineInstallTests(unittest.TestCase):
                 if executable == self.model_info:
                     self.assertEqual(metadata["schema_version"], 2)
                     self.assertEqual(len(metadata["console_models"]), 2)
+                    compiled_models = metadata
                 else:
-                    self.assertEqual(metadata["schema_version"], 1)
+                    self.assertEqual(metadata["schema_version"], 2)
+                    self.assertEqual(metadata["verification_scope"], "sdk-free-core-parameter-mapping")
+                    self.assertIs(metadata["host_exports_verified"], False)
+                    self.assertIs(metadata["native_host_curves_verified"], False)
+                    self.assertNotIn("native_host_curves_implemented", metadata)
                     self.assertEqual(len(metadata["parameters"]), 45)
                     self.assertEqual(metadata["normalized"], 0.49999999999999994)
+                    compiled_parameters = metadata
 
             console_catalog = json.loads((installed_fixtures / "console" /
                                           "console-catalog-v1.json").read_text(encoding="utf-8"))
@@ -236,6 +261,96 @@ class OfflineInstallTests(unittest.TestCase):
             self.assertTrue(any(console_pcm), "The installed console fixture must produce audio")
             self.assertEqual(self.read_pcm(console_outputs[1], console), console_pcm)
             self.assertEqual(console_outputs[0].read_bytes(), console_outputs[1].read_bytes())
+
+            # Couple the installed catalog/profile/compiled identities before
+            # exercising a new pedal score and all three retained trace scenarios.
+            pedal_catalog = json.loads((installed_fixtures / "pedals" /
+                                        "pedal-catalog-v1.json").read_text(encoding="utf-8"))
+            self.assertEqual(pedal_catalog["profile"]["compiled_sha256"],
+                             hashlib.sha256(profile_bytes).hexdigest())
+            model = compiled_models["pedal_model"]
+            for field in ("map_id", "map_raw_sha256", "map_canonical_sha256"):
+                self.assertEqual(model["routing"][field], pedal_catalog["routing"][field])
+            self.assertEqual(model["routing"]["model_id"], pedal_catalog["models"]["pedal_routing"])
+            self.assertEqual(model["voice"]["model_id"], pedal_catalog["models"]["pedal_voice"])
+            self.assertEqual(model["voice"]["gain_law_id"], pedal_catalog["models"]["pedal_gain"])
+            self.assertEqual(compiled_parameters["registry_schema_version"],
+                             pedal_catalog["control_model"]["registry_schema_version"])
+            self.assertEqual(compiled_parameters["model"], pedal_catalog["control_model"]["registry_model"])
+            self.assertEqual(len(compiled_parameters["parameters"]),
+                             pedal_catalog["control_model"]["parameter_count"])
+            pedal_ids = [{"id": item["id"], "path": item["path"]}
+                         for item in compiled_parameters["parameters"]
+                         if item["path"].startswith("pedal.")]
+            self.assertEqual(pedal_ids, pedal_catalog["control_model"]["pedal_parameters"])
+            for item in pedal_catalog["fixtures"]:
+                score = installed_fixtures / "pedals" / item["events"]["path"]
+                self.assertEqual(hashlib.sha256(score.read_bytes()).hexdigest(), item["events"]["sha256"])
+            pedal = next(item for item in pedal_catalog["fixtures"] if item["id"] == "pedal-mixtures-v1")
+            self.assertLessEqual(pedal["frames"], 48000)
+            pedal_options = ["--sample-rate", pedal["sample_rate"], "--frames", pedal["frames"],
+                             "--block-size", pedal["block_size"], "--seed", pedal["seed"],
+                             "--drawbars", pedal["registration"],
+                             "--pedal-drawbars", pedal["pedal_registration"], "--fail-on-clip"]
+            for name, value in pedal["controls"].items():
+                pedal_options.extend(("--" + name.replace("_", "-"), value))
+            pedal_outputs, pedal_reports = [], []
+            for executable, profile, fixtures, name in (
+                    (self.renderer, self.profile, ROOT / "examples" / "fixtures" / "pedals",
+                     "build pedal.wav"),
+                    (installed_renderer, installed_profile, installed_fixtures / "pedals",
+                     "relocated pedal.wav")):
+                output = unrelated / name
+                result = self.invoke([executable, "--profile", profile, "--events",
+                                      fixtures / pedal["events"]["path"], "--output", output,
+                                      *pedal_options], unrelated, render_environment)
+                self.assert_success(result)
+                self.assertEqual(result.stderr, "")
+                pedal_outputs.append(output)
+                pedal_reports.append(json.loads(result.stdout))
+            self.assertEqual(pedal_reports[0], pedal_reports[1])
+            self.assert_pedal_identity(pedal_reports[1], pedal_catalog)
+            self.assertEqual(pedal_reports[1]["clipped_frames"], 0)
+            self.assertLessEqual(pedal_reports[1]["peak"], pedal["expectations"]["float_peak_max"])
+            pedal_pcm = self.read_pcm(pedal_outputs[0], pedal)
+            self.assertTrue(any(pedal_pcm), "Installed pedal fixture must produce audio")
+            self.assertEqual(self.read_pcm(pedal_outputs[1], pedal), pedal_pcm)
+            self.assertEqual(pedal_outputs[0].read_bytes(), pedal_outputs[1].read_bytes())
+            for start, end in pedal["expectations"]["silence_spans"]:
+                self.assertFalse(any(pedal_pcm[start * 4:end * 4]))
+
+            for scenario in ("unmute", "overlap", "routing"):
+                with self.subTest(pedal_trace=scenario):
+                    traces = []
+                    for executable, profile, kind in (
+                            (self.pedal_trace, self.profile, "build"),
+                            (relocated / self.bindir / self.pedal_trace.name, installed_profile, "relocated")):
+                        output = unrelated / f"{kind} pedal {scenario}.csv"
+                        result = self.invoke([executable, "--profile", profile, "--scenario", scenario,
+                                              "--sample-rate", 48000, "--seed", 2705,
+                                              "--output", output], unrelated, render_environment)
+                        self.assert_success(result)
+                        self.assertEqual((result.stdout, result.stderr), ("", ""))
+                        self.assertLessEqual(output.stat().st_size, 8 * 1024 * 1024)
+                        traces.append(output.read_bytes())
+                    self.assertEqual(*traces)
+                    lines = traces[1].decode("ascii").splitlines()
+                    identity = dict(line[2:].split("=", 1) for line in lines if line.startswith("# "))
+                    self.assert_pedal_identity(identity, pedal_catalog)
+                    self.assertEqual(identity["scenario"], scenario)
+                    self.assertEqual(identity["evidence_scope"], "synthetic_engineering")
+                    rows = list(csv.DictReader(io.StringIO("\n".join(
+                        line for line in lines if not line.startswith("#")))))
+                    self.assertEqual(len(rows), 5760)
+                    self.assertEqual([int(row["frame"]) for row in rows], list(range(5760)))
+                    self.assertTrue(any(float(row["pedal_output"]) != 0 for row in rows))
+                    # Existing outputs must survive even after successful relocation.
+                    repeated = self.invoke([relocated / self.bindir / self.pedal_trace.name,
+                                            "--profile", installed_profile, "--scenario", scenario,
+                                            "--sample-rate", 48000, "--seed", 2705,
+                                            "--output", output], unrelated, render_environment)
+                    self.assertNotEqual(repeated.returncode, 0)
+                    self.assertEqual(output.read_bytes(), traces[1])
 
             trace_options = ["--scenario", "partial", "--sample-rate", 48000, "--seed", 2644]
             trace_outputs = []
@@ -297,8 +412,111 @@ class OfflineInstallTests(unittest.TestCase):
                      *trace_options, "--output", missing_trace], unrelated, render_environment)
                 self.assertNotEqual(trace_result.returncode, 0, trace_result.stderr)
                 self.assertFalse(missing_trace.exists(), "Trace tool used an implicit profile fallback")
+                missing_pedal_trace = unrelated / "missing profile pedal.csv"
+                pedal_result = self.invoke(
+                    [relocated / self.bindir / self.pedal_trace.name, "--profile", installed_profile,
+                     "--scenario", "unmute", "--sample-rate", 48000, "--seed", 0,
+                     "--output", missing_pedal_trace], unrelated, render_environment)
+                self.assertNotEqual(pedal_result.returncode, 0)
+                self.assertFalse(missing_pedal_trace.exists(), "Pedal trace used an implicit profile fallback")
             finally:
                 installed_profile.write_bytes(profile_bytes)
+
+    def assert_pedal_identity(self, document, catalog):
+        for field in ("profile_id", "authoring_sha256"):
+            self.assertEqual(document[field], catalog["profile"]["id" if field == "profile_id" else field])
+        for field, name in (("pedal_routing_model", "pedal_routing"),
+                            ("pedal_voice_model", "pedal_voice"),
+                            ("pedal_gain_law", "pedal_gain"),
+                            ("pedal_contact_model", "pedal_contacts")):
+            self.assertEqual(document[field], catalog["models"][name])
+        for name in ("map_id", "map_raw_sha256", "map_canonical_sha256"):
+            self.assertEqual(document["pedal_" + name], catalog["routing"][name])
+        for index, review in enumerate(("a", "b")):
+            self.assertEqual(document[f"pedal_reference_{review}_sha256"],
+                             catalog["routing"]["references"][index]["sha256"])
+
+    def test_preflight_preserves_existing_prefix(self):
+        # Generate the real module's install rules in an isolated tiny project.
+        # No live source/build input is renamed or removed while other tests run.
+        with tempfile.TemporaryDirectory(prefix="hammond install preflight ") as temporary:
+            work = Path(temporary)
+            source, build, prefix = work / "source", work / "build", work / "prefix"
+            source.mkdir()
+            prefix.mkdir()
+            (prefix / "unrelated.txt").write_bytes(b"preserve unrelated user data\n")
+            (source / "stub.cpp").write_text("int main() { return 0; }\n", encoding="ascii")
+            shutil.copytree(ROOT / "examples" / "fixtures", source / "examples" / "fixtures")
+            (source / "tools").mkdir()
+            shutil.copyfile(self.plotter, source / "tools" / self.plotter.name)
+            shutil.copyfile(self.profile, source / "nominal.b3p")
+            targets = ("hammond_render", "hammond_model_info", "hammond_parameter_info",
+                       "hammond_console_trace", "hammond_pedal_trace")
+            script = ["cmake_minimum_required(VERSION 3.21)",
+                      "project(OfflineInstallContract LANGUAGES CXX)",
+                      'set(HAMMOND_COMPILED_PROFILE "${PROJECT_SOURCE_DIR}/nominal.b3p")']
+            script.extend(f"add_executable({target} stub.cpp)" for target in targets)
+            paths = "\\n".join(f"$<TARGET_FILE:{target}>" for target in targets)
+            script.extend((f'file(GENERATE OUTPUT "${{CMAKE_BINARY_DIR}}/inputs-$<CONFIG>.txt" CONTENT "{paths}\\n")',
+                           f'include([=[{(ROOT / "cmake" / "InstallHammondTools.cmake").as_posix()}]=])'))
+            (source / "CMakeLists.txt").write_text("\n".join(script) + "\n", encoding="utf-8")
+            environment = dict(os.environ)
+            for name in ("DESTDIR", "CMAKE_INSTALL_MODE"):
+                environment.pop(name, None)
+            configuration = self.configuration or "Release"
+            self.assert_success(self.invoke([self.cmake, "-S", source, "-B", build,
+                                             f"-DCMAKE_BUILD_TYPE={configuration}"], work, environment))
+            outputs = [Path(value) for value in (build / f"inputs-{configuration}.txt").read_text(
+                encoding="utf-8").splitlines()]
+            install = [self.cmake, "--install", build, "--config", configuration,
+                       "--component", "OfflineTools", "--prefix", prefix]
+
+            def snapshot():
+                return {str(path.relative_to(prefix)): path.read_bytes() if path.is_file() else None
+                        for path in prefix.rglob("*")}
+
+            before = snapshot()
+            unbuilt = self.invoke(install, work, environment)
+            self.assertNotEqual(unbuilt.returncode, 0)
+            self.assertIn("OfflineTools missing required file", unbuilt.stderr)
+            self.assertEqual(snapshot(), before)
+            originals = (self.renderer, self.model_info, self.parameter_info,
+                         self.console_trace, self.pedal_trace)
+            for original, output in zip(originals, outputs):
+                output.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(original, output)
+            # Missing binaries, profile, plot script and catalog/score inputs all
+            # fail before an existing installed executable or unrelated data changes.
+            (prefix / "bin").mkdir()
+            (prefix / "bin" / self.renderer.name).write_bytes(b"older installation\n")
+            before = snapshot()
+            missing_inputs = [*outputs, source / "nominal.b3p", source / "tools" / self.plotter.name,
+                              source / "examples/fixtures/catalog-v1.json",
+                              source / "examples/fixtures/console/console-travel-v1.events",
+                              source / "examples/fixtures/pedals/pedal-catalog-v1.json",
+                              source / "examples/fixtures/pedals/pedal-phrase-v1.events"]
+            for missing in missing_inputs:
+                with self.subTest(missing=missing.name):
+                    backup = missing.with_name(missing.name + ".held")
+                    missing.rename(backup)
+                    try:
+                        result = self.invoke(install, work, environment)
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn("OfflineTools missing required file", result.stderr)
+                        self.assertIn(missing.name, result.stderr)
+                        self.assertEqual(snapshot(), before)
+                    finally:
+                        backup.rename(missing)
+            # Also exercise directory policy rather than relying on text inspection.
+            for directory in ("CMAKE_INSTALL_BINDIR", "CMAKE_INSTALL_DATADIR"):
+                for invalid in ("../escape", str(work / "absolute destination"), "..\\escape", ""):
+                    with self.subTest(directory=directory, invalid=invalid):
+                        result = self.invoke([self.cmake, "-S", source, "-B", build,
+                                              "-DCMAKE_INSTALL_BINDIR=bin", "-DCMAKE_INSTALL_DATADIR=share",
+                                              f"-D{directory}:PATH={invalid}"], work, environment)
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn("nonempty relative", result.stderr)
+                        self.assertEqual(snapshot(), before)
 
 
 if __name__ == "__main__":
