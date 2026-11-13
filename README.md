@@ -10,8 +10,9 @@ explicit clock/error handling. Four retained A/B banks, routing-only Cancel and
 versioned control snapshots provide early console behavior. Optional independent
 contact travel, explicit partial-key targets and one shared percussion readiness
 state extend the nominal console. Bounded typed note ownership, normalized control
-mapping and phase-preserving rate changes support future host integration. Ideal
-contacts and percussion off preserve the original renderer defaults.
+mapping and phase-preserving rate changes support future host integration. The core also supports 25 independently held pedals from the same source frame,
+two retained nominal mixture controls and version-3 control snapshots. Ideal
+contacts, percussion off and muted pedals preserve the original renderer defaults.
 The selected source and console profiles are **nominal and unmeasured**.
 
 The current executable renders WAV files offline. The product plan targets a
@@ -24,9 +25,10 @@ plan, practical workflows, evidence contracts and session history.
 
 Start with the build below or the retained [two-second console demo](examples/rendered/nominal-console-v2/README.md).
 The [current developer handoff](docs/CONTINUATION_HANDOFF.md) gives reproducible
-render, trace, plot and install commands. The prepared [pedal-routing kernel](docs/PEDAL_RUNTIME_CONTRACT.md) now passes
-its independent local acceptance and the combined 51-suite Release gate. The next
-step is [nominal playable pedal integration](docs/PEDAL_INTEGRATION_CONTRACT.md);
+render, trace, plot and install commands. The [pedal Engine integration](docs/PEDAL_ENGINE.md)
+now implements the [nominal playable contract](docs/PEDAL_INTEGRATION_CONTRACT.md)
+with independent CSV, phase, migration and transaction checks. Pedal input ownership
+and offline score/evidence integration are the next checkpoint;
 **full M3 remains open**. The [current status](docs/STATUS.md) and separate
 [continuation ledger](docs/development/2026-11-13-continuation/README.md) record
 published checkpoints, actual checks and the completed sixty-worker continuation.
@@ -35,7 +37,7 @@ That earlier session’s **60 distinct assignments in ten waves** are complete, 
 and one retained note per worker. [AGENTS.md](AGENTS.md) makes the documented
 handoff, verification and commit/push workflow mandatory for future agents.
 
-The new [pedal session](docs/development/2026-11-13-pedals/README.md) has completed its first two waves (12 new workers), including a fresh full-atlas review, typed runtime routing and independent software qualification. Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json) tracks the remaining new work separately.
+The new [pedal session](docs/development/2026-11-13-pedals/README.md) has completed its first three waves (18 new workers), including a fresh full-atlas review, typed runtime routing, nominal Engine integration and an optional [VST3 foundation contract](docs/VST3_SPIKE_CONTRACT.md). Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json) tracks the remaining new work separately.
 
 ## Build and test
 
@@ -129,12 +131,12 @@ executed scope; [current status](docs/STATUS.md) records later outcomes.
 | [Console traces](docs/CONSOLE_TRACE.md) | Sample-by-sample contact, readiness, routing, phase and audio diagnostics |
 | [Trace plots](docs/CONSOLE_TRACE_PLOTS.md) | Bounded standalone SVG views of key motion, contacts, readiness and audio |
 | [Model metadata](docs/MODEL_METADATA.md) | Export the actual compiled nominal factory values and units |
-| [Internal parameters](docs/PARAMETERS.md) | 43 proposed permanent control identities; original 39 preserved |
+| [Internal parameters](docs/PARAMETERS.md) | 45 stable internal control identities; earlier 43 records preserved |
 | [Native parameter bridge](docs/PARAMETER_BRIDGE.md) | Allocation-free conversion of normalized controls into fixed Engine targets |
 | [Note ownership](docs/NOTE_OWNERSHIP.md) | Bounded channel/note-ID ownership and original-route retention |
 | [Input transaction](docs/INPUT_PROCESSOR.md) | Commit note ownership only after Engine accepts the block |
 | [Sample-rate lifecycle](docs/SAMPLE_RATE_LIFECYCLE.md) | Preserve phases, contact history and shared readiness across supported rate changes |
-| [Pedal routing](docs/PEDAL_ROUTING.md) | Reconstructed 25-by-8 data; pedal audio remains pending |
+| [Pedal routing](docs/PEDAL_ROUTING.md) | Documentary 25-by-8 map and prepared four-bus reference routing |
 | [Factory comparison](docs/FACTORY_REFERENCE.md) | Two independent Table III readings and complete routing comparison |
 | [Factory runtime gate](docs/FACTORY_RUNTIME_ACCEPTANCE.md) | All manual routes exercised against CSV-selected expectations |
 | [Console demo](examples/rendered/nominal-console-v2/README.md) | Two-second schema-2 audio bundle and a separate partial-key diagnostic plot |

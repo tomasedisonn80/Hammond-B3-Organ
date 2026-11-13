@@ -195,7 +195,7 @@ class OfflineInstallTests(unittest.TestCase):
                 if executable == self.model_info:
                     self.assertEqual(len(metadata["console_models"]), 2)
                 else:
-                    self.assertEqual(len(metadata["parameters"]), 43)
+                    self.assertEqual(len(metadata["parameters"]), 45)
                     self.assertEqual(metadata["normalized"], 0.49999999999999994)
 
             console_catalog = json.loads((installed_fixtures / "console" /

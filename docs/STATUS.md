@@ -2,9 +2,15 @@
 
 ## Active pedal development session
 
-A new [sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from remote `main` at `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. The complete atlas is being reread in six disjoint ranges. The dependency-ready target is the prepared pedal kernel and its explicitly nominal playable integration. The earlier sessions below remain historical records.
+The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **18 new workers have completed three waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
 
-The unchanged baseline was built from a frozen `git archive` using GCC 14.2.0, CMake 3.31.6 and Python 3.12.14. **All 46 Release CTest suites passed**, zero failures, in 48.19 seconds. This baseline build and renderer are retained outside the worktree for later legacy comparisons. The new prepared pedal routing checkpoint now passes all 51 Release suites on frozen source tree `81b1c30436a239d8c04ffcd1ec658d356eb81acc` (67.83 seconds). It includes typed 200-position routing, strict generated documentary data, independent CSV/numerical checks, allocation instrumentation and shared-source lifecycle evidence. Engine pedal audio and controls are the next integration checkpoint.
+The core now includes typed 200-position pedal routing, 25 independently held pedals, a named fixed two-mixture voice, two controls and `B3CONTROLS3`. Old state formats explicitly migrate to muted pedals. The registry has 45 records, preserving every field of the earlier 43. Pedals consume the Engine's existing single source frame; lower Cancel, division panics and upper percussion remain independent. Last-rendered diagnostics retain their actual frame/rate tags. The matrix and linear pedal gain are explicit nominal engineering fixtures, not recovered electrical values or measured 16-foot/8-foot responses.
+
+Independent checks cover both CSV maps, all pedals/contacts and supported rates, coherent manual/pedal collisions, bitwise source histories, partition identity, migration during moving contacts and whole-call rejection. The repaired coherent archive `e1828586c35ea40562d6de6be671c206d725edd2` passed **55/55 local Release suites**, zero failures, in 54.86 seconds. The first-run stale allocation-fixture failure and repair remain in the session log. The preceding kernel commit `6768ef2388819ebbaaf7cc23bdf72265dc72c561` passed all 51 local Release suites and all four hosted jobs in [run 43394209142](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43394209142), including leak-enabled ASan/UBSan.
+
+The next wave connects bounded external pedal ownership and offline score/evidence tooling. The optional [native VST3 contract](VST3_SPIKE_CONTRACT.md) pins SDK 3.8.1 and four submodules; its headless validator's own 51 selftests passed. A Hammond plugin is not established by those SDK selftests. Later waves must implement and independently qualify the native module, automation and concurrent state handoff. Ordinary builds remain SDK-free. Full M3, scanner/AO-28/Leslie, specimen calibration, audio-device operation and the custom interface remain open.
+
+## Earlier checkpoints and retained history
 
 Foundation session started 2026-11-12 (America/Halifax), baseline `501c68b`.
 The [console continuation](development/2026-11-13-continuation/README.md) started

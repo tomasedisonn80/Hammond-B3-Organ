@@ -1,14 +1,14 @@
 # Native internal parameter bridge
 
 [`ParameterBridge.h`](../include/hammond/ParameterBridge.h) converts the
-[43 proposed internal controls](PARAMETERS.md) into typed Engine events. Its
-compiled table matches registry schema `2`, model
-`exclusive-ab-percussion-console-v2`. The diagnostic export below has its own
+[45 proposed internal controls](PARAMETERS.md) into typed Engine events. Its
+compiled table matches registry schema `3`, model
+`exclusive-ab-percussion-pedal-console-v3`. The diagnostic export below has its own
 schema `1`; this is separate from render-evidence and saved-control versions.
 
 The bridge is stateless C++20 code with immutable literal metadata. It does not
 read the registry, load files, allocate, lock, log or call a host SDK during
-conversion. The lookup examines at most 43 descriptors and drawbar quantization
+conversion. The lookup examines at most 45 descriptors and drawbar quantization
 at most eight thresholds. These bounds describe the algorithm; they do not prove
 an audio-device deadline or native-host qualification.
 
@@ -16,7 +16,7 @@ an audio-device deadline or native-host qualification.
 
 | API | Meaning |
 | --- | --- |
-| `parameter_descriptors()` | Read-only span of all 43 descriptors, sorted by numeric ID |
+| `parameter_descriptors()` | Read-only span of all 45 descriptors, sorted by numeric ID |
 | `parameter_descriptor(id, destination)` | Copy the requested descriptor; return false for an undefined ID |
 | `normalized_to_event(id, u, offset, destination)` | Validate and convert one normalized scalar into its permanent event target |
 | `plain_to_normalized(id, x, destination)` | Validate a plain scalar and return its canonical normalized value |
@@ -50,21 +50,27 @@ The event target depends only on the permanent ID. Editing Upper B remains an
 Upper B edit while A is selected or the route is cancelled. Conversion emits a
 selector event even when its scalar value equals a prior value: reselecting that
 bank after Cancel can reconnect its route. There is no stateful deduplication.
-Cancel and AllNotesOff remain explicit actions outside this parameter inventory.
+The pedal IDs `0x4000` and `0x4001` emit `PedalDrawbar = 12`, canonical Lower,
+indices 0 and 1. They remain independent of manual selection and Cancel.
+Cancel, manual/pedal AllNotesOff and pedal On/Off remain explicit actions
+outside this parameter inventory.
 
 ## Exact conversion laws
 
-Normalized input must be finite and in `[0,1]`. The 36 drawbar controls choose
-integer positions 0 through 8 under the existing `floor(8u + 0.5)` mathematical
+Normalized input must be finite and in `[0,1]`. The 36 manual drawbar controls
+and two pedal mixture position controls choose integer positions 0 through 8
+under the existing `floor(8u + 0.5)` mathematical
 law. The two selectors and four percussion controls use `floor(u + 0.5)`.
 Expression passes the finite scalar through unchanged, including signed zero.
 No input is clipped into range and no position-to-audio gain law is applied.
+The pedal voice separately owns `linear-pedal-position-v1`; sharing the divisor
+eight does not make position normalization an audio-gain conversion.
 
 The implementation compares against exactly representable thresholds:
 
 | Class | Thresholds | Exact-boundary result |
 | --- | --- | --- |
-| Drawbars | `1/16, 3/16, 5/16, 7/16, 9/16, 11/16, 13/16, 15/16` | Higher adjacent integer position |
+| Manual and pedal positions | `1/16, 3/16, 5/16, 7/16, 9/16, 11/16, 13/16, 15/16` | Higher adjacent integer position |
 | Selectors and percussion | `1/2` | Selection 1 |
 | Expression | None | Original value |
 
@@ -113,14 +119,14 @@ Successful JSON has these exact root fields:
 | Field | Value |
 | --- | --- |
 | `schema_version` | Integer 1 for this diagnostic export |
-| `registry_schema_version` | Integer 2 |
-| `model` | `exclusive-ab-percussion-console-v2` |
+| `registry_schema_version` | Integer 3 |
+| `model` | `exclusive-ab-percussion-pedal-console-v3` |
 | `scope` | `implemented-console-subset` |
 | `status` | `proposed-internal` |
 | `host_exports_verified` | False |
 | `native_host_curves_implemented` | False |
 | `normalized` | Parsed input value |
-| `parameters` | All 43 compiled records in numeric ID order |
+| `parameters` | All 45 compiled records in numeric ID order |
 
 Each record has `id`, `path`, `kind`, `unit`, `minimum`, `maximum`, `default_plain`,
 `default_normalized`, `step_count` and `event`. Its event has `offset` equal to
@@ -140,18 +146,23 @@ The native and cross-language tests are discovered by CMake; it supplies
 `HAMMOND_PARAMETER_INFO_EXECUTABLE` to the Python suite. They independently compare
 compiled metadata with the registry and exercise threshold neighbors, failure
 atomicity, offsets, defaults and Engine application. Actual execution evidence
-belongs in the [continuation ledger](development/2026-11-13-continuation/README.md)
-and assignment notes; an interface or test description is not a completed gate.
+belongs in the [pedal development ledger](development/2026-11-13-pedals/README.md)
+and [assignment 17 note](development/2026-11-13-pedals/17-pedal-parameters.md);
+an interface or test description is not a completed gate.
 
 This bridge does not supply automation queues, curve interpolation, smoothing,
 balanced UI gestures, native plugin exports or DAW project recall. Those retain
-the host gates in [HOST_INTEGRATION.md](HOST_INTEGRATION.md). The 43 scalar records
+the host gates in [HOST_INTEGRATION.md](HOST_INTEGRATION.md). The 45 scalar records
 also omit route-enable bits; replaying selectors cannot replace a coherent
-[control snapshot](CONTROL_STATE_FORMAT.md) restore. Contact travel, percussion
-readiness, note ownership, source phase and the render clock remain separate.
+[control snapshot](CONTROL_STATE_FORMAT.md) restore. Contact travel, held pedal
+contacts, percussion readiness, note ownership,
+source phase and the render clock remain separate. The version-2 JSON fixture
+and independent complete-record digest preserve all 43 earlier controls; only
+the two pedal records are appended.
 
 The numeric IDs, defaults and normalized domains are proposed engineering choices
 for the unmeasured console subset. The source remains the
-[preserved atlas](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf), pp. 397-402, and the
+[preserved atlas](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf), pp. 139-150 and
+397-402, the [pedal contract](PEDAL_INTEGRATION_CONTRACT.md), and the
 existing [registry contract](PARAMETERS.md); no absent companion file or measured
 manufacturer mapping was recovered.

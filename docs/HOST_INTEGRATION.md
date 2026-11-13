@@ -8,13 +8,14 @@ device, bus-layout and lifecycle qualification requirements remain separate gate
 **Status: native host/device design handoff; no native plugin or device adapter
 is implemented or qualified.** The typed core adapters linked above are implemented.
 The product will share `hammond::Engine` across offline, plugin and device clients. The current
-CLI writes WAV files; it is not an audio-device application. This proposal adds
-no SDK, framework, dependency choice or exported plugin contract.
+CLI writes WAV files; it is not an audio-device application. The newer [VST3 spike contract](VST3_SPIKE_CONTRACT.md) now pins the optional SDK,
+identities and native admission/state rules. Its SDK validator is built, but the
+Hammond native bundle and its qualification are still a following gate.
 
 The current nominal console includes contact trajectories, partial-key targets
-and shared percussion/recharge. The next product implementation is the
-[prepared pedal-routing kernel](M3_NEXT_GATE.md), preserving the shared M2 source
-field; full M3 remains open. Native adapter preparation may proceed independently;
+and shared percussion/recharge. The [prepared pedal-routing kernel](PEDAL_RUNTIME_CONTRACT.md) is implemented,
+and [nominal playable integration](PEDAL_INTEGRATION_CONTRACT.md) extends the same
+shared source field. Full M3 remains open. Native adapter preparation may proceed independently;
 it does not close M9 or M0 specimen/revision/permission gates. Sources are the
 [plan](PLAN.md), [atlas index](research/chapter-index.json)
 and [atlas](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf) chapters 062–065
@@ -190,7 +191,7 @@ focus movement does not. That producer-specific lifecycle policy remains to be
 implemented. Epoch fault recovery deliberately releases all owners. Cancel and
 ordinary musical-control restoration change routing/controls, not ownership.
 
-Use [registry version 2](PARAMETERS.md), model `exclusive-ab-percussion-console-v2`:
+Use [registry version 3](PARAMETERS.md), model `exclusive-ab-percussion-pedal-console-v3`:
 
 | Permanent internal IDs | Target |
 | --- | --- |
@@ -199,24 +200,27 @@ Use [registry version 2](PARAMETERS.md), model `exclusive-ab-percussion-console-
 | `0x2000` | Global expression |
 | `0x2010`; `0x2011` | Upper; lower bank selector |
 | `0x3000`–`0x3003` | Percussion enabled, harmonic, volume and decay |
+| `0x4000`; `0x4001` | Pedal Mixture 1; Pedal Mixture 2 |
 
-These **43 proposed internal IDs** are not verified host exports. The original
-39 records retain their identities and laws; four percussion controls append.
+These **45 proposed internal IDs** are not yet verified host exports. All 43
+earlier records retain their identities and laws; two pedal controls append.
 Never bind an automation lane to the visible slider index or recycle an accepted ID. Drawbar
 events use `BankDrawbar`, index `bank * 9 + drawbar`; selection cannot retarget them.
 For discrete `K = 8` or `1`, `u = k/K` and exact round-half-up
 `k = floor(u*K + 0.5)` apply to finite `u` in `[0,1]`. Preserve adjacent-double
 threshold behavior from the [Python oracle](../tools/validate_parameters.py);
-naive intermediate rounding can differ. Position 4 is not amplitude 0.5.
+naive intermediate rounding can differ. Manual drawbar position 4 is not amplitude 0.5. The separately named nominal
+pedal law explicitly uses position divided by eight.
 Expression uses `x = u`, the existing linear-gain surrogate. Reject invalid
 domains. Do not substitute the different atlas p. 398 law or claim native curve
 reconstruction: current events are steps. A native conversion/curve contract and
 retained migration fixtures precede any released export.
 
-[B3CONTROLS2](CONTROL_STATE_FORMAT.md) writes all 43 controls plus two route-enable
+[B3CONTROLS3](CONTROL_STATE_FORMAT.md) writes all 45 controls plus two route-enable
 bits, with a 16,384-byte input limit. Reading historical B3CONTROLS1 preserves its
-old fields and supplies percussion Off/Second/Normal/Slow; new serialization always
-writes version 2. Parse/serialize off audio. Replaying the 43 scalar parameters
+old fields and supplies percussion Off/Second/Normal/Slow; both versions 1 and 2
+explicitly supply muted pedal controls. New serialization writes version 3.
+Parse/serialize off audio. Replaying the 45 scalar parameters
 cannot restore Cancel: selector replay reconnects a route. Restore a complete
 validated snapshot on the audio owner or while stopped. Restoration preserves
 owners, held targets, contact trajectories/hysteresis, shared readiness, source
@@ -244,7 +248,7 @@ ownership, state and lifecycle descriptions.
 | Flush/transport | Repeated empty flushes advance nothing; consumed commands do not repeat; seek/loop/editor absence do not reset phase; disconnected positive frames advance it. |
 | Bounds/faults | Exercise 1,024/1,025 records, short/null/aliased buffers, `H+1`, malformed final input and clock maximum; verify preflight and the separate recovery transaction, with no stuck owners. |
 | Owners/console | Prove the native origin-to-typed-domain mapping; two devices hold one pitch; release one, close UI, lose device, Cancel, edit hidden bank and reselect unchanged bank; verify FIFO anonymous releases, original destinations, 256-owner admission and only intended keys/routes changing. |
-| Parameters/state | Enumerate the approved exports against all 43 current internal records; check canonical and adjacent-threshold conversions, every retained bank/route combination, B3CONTROLS1 migration, version-2 writing, unsupported versions and missing profiles; restore never invents saved keys or DSP history. |
+| Parameters/state | Enumerate the approved exports against all 45 current internal records; check canonical and adjacent-threshold conversions, every retained bank/route combination, B3CONTROLS1/2 migration, version-3 writing, unsupported versions and missing profiles; restore never invents saved keys or DSP history. |
 | Publication | Delayed consumers, full queues, repeated generations, save-during-play and shutdown preserve slot ownership; correctness/race instrumentation and callback allocation checks remain separate. |
 | Native UI/device | Keyboard and screen-reader tasks, resize/scaling, lost capture, reduced motion, headless playback, device reconnect and clock conversion retain declared behavior and diagnostic evidence. |
 
@@ -257,7 +261,7 @@ around those APIs, followed by the concurrent publication and coordinated recove
 protocol. Select a reviewed adapter/backend with the dependency/rights inventory,
 verify its primary native contracts, and test headless wrapper equivalence before
 device recovery and editor binding. This parallel queue does not displace the
-[next M3 pedal kernel](M3_NEXT_GATE.md).
+[remaining M3 console gates](M3_NEXT_GATE.md).
 
 Native accessibility remains requested and unimplemented: both dimensional and
 flat skins need stable semantic names, ranges, keyboard operation and balanced

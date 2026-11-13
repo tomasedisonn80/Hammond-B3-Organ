@@ -239,6 +239,13 @@ void check_controls(const Engine& engine, const ControlSnapshot& expected) {
             }
         }
     }
+    for (std::size_t pedal = 0; pedal < hammond::kPedalDrawbarCount; ++pedal) {
+        for (const auto invalid : {std::uint8_t{9}, std::uint8_t{255}}) {
+            auto candidate = otherwise_valid;
+            candidate.pedal_drawbars[pedal] = invalid;
+            result.push_back(candidate);
+        }
+    }
     for (const double invalid : {-0.001, 1.001, std::numeric_limits<double>::infinity(),
                                  -std::numeric_limits<double>::infinity(),
                                  std::numeric_limits<double>::quiet_NaN()}) {

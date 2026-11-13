@@ -415,6 +415,11 @@ struct Fixtures {
         result.controls[count++] = {0, EventType::Percussion, Manual::Upper, field,
                                    field == 0 || field == 3 ? 1.0 : 0.0};
     }
+    // Keep this retained manual workload muted on the appended pedal controls.
+    // Enabled pedal ownership/audio receives its own independent allocation gate.
+    for (std::uint8_t mixture = 0; mixture < 2; ++mixture) {
+        result.controls[count++] = {0, EventType::PedalDrawbar, Manual::Lower, mixture, 0.0};
+    }
     CHECK(count == result.controls.size());
     std::copy(result.controls.begin(), result.controls.end(), result.first.begin());
     std::copy(result.partial.begin(), result.partial.end(),

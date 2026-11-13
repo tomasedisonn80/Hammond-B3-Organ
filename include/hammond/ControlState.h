@@ -1,6 +1,7 @@
 #pragma once
 
 #include "hammond/Percussion.h"
+#include "hammond/PedalVoice.h"
 #include "hammond/Types.h"
 
 #include <array>
@@ -17,7 +18,8 @@ using DrawbarPositions = std::array<std::uint8_t, kDrawbarCount>;
 using ManualDrawbarBanks = std::array<DrawbarPositions, kDrawbarBankCount>;
 using AllDrawbarBanks = std::array<ManualDrawbarBanks, kManualCount>;
 
-// Musical controls only: no held keys, source phases or processing clock.
+// Musical controls only: no held keys/pedals, contact histories, source phases
+// or processing clock. Pedal positions are independent of manual routing.
 // Array order is [manual][bank][drawbar], using the enums' storage indices.
 struct ControlSnapshot {
     AllDrawbarBanks drawbars{};
@@ -25,6 +27,7 @@ struct ControlSnapshot {
     std::array<bool, kManualCount> route_enabled{true, true};
     double expression{1.0}; // Global normalized linear-gain surrogate, finite 0..1.
     PercussionSettings percussion{}; // Retained controls; no readiness/history.
+    PedalDrawbarPositions pedal_drawbars{}; // Mixture 1/2 positions 0..8, initially muted.
 
     [[nodiscard]] bool operator==(const ControlSnapshot&) const noexcept = default;
 };
@@ -55,11 +58,18 @@ public:
     [[nodiscard]] bool set_expression(double expression) noexcept;
     // Stores controls independently of upper-B eligibility and dynamic q.
     [[nodiscard]] bool set_percussion_settings(const PercussionSettings& settings) noexcept;
+    // Pedal mixture indices are 0..1 and positions 0..8. Manual selection and
+    // Cancel do not change these independent retained settings.
+    [[nodiscard]] bool set_pedal_drawbar(std::size_t index,
+                                        std::uint8_t position) noexcept;
 
     [[nodiscard]] ControlSnapshot snapshot() const noexcept { return state_; }
     // Validate the complete candidate before replacing any retained control.
     [[nodiscard]] bool restore(const ControlSnapshot& snapshot) noexcept;
     [[nodiscard]] AllDrawbarBanks drawbar_banks() const noexcept { return state_.drawbars; }
+    [[nodiscard]] PedalDrawbarPositions pedal_drawbar_positions() const noexcept {
+        return state_.pedal_drawbars;
+    }
 
     // Copied diagnostics. Invalid input leaves the destination unchanged.
     [[nodiscard]] bool bank_drawbar_position(Manual manual, DrawbarBank bank,
@@ -73,6 +83,8 @@ public:
                                               std::uint8_t& destination) const noexcept;
     [[nodiscard]] bool selected_bank(Manual manual, DrawbarBank& destination) const noexcept;
     [[nodiscard]] bool route_enabled(Manual manual, bool& destination) const noexcept;
+    [[nodiscard]] bool pedal_drawbar_position(std::size_t index,
+                                             std::uint8_t& destination) const noexcept;
     [[nodiscard]] double expression() const noexcept { return state_.expression; }
     [[nodiscard]] PercussionSettings percussion_settings() const noexcept {
         return state_.percussion;

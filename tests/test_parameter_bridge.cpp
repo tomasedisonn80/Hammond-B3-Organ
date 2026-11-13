@@ -19,6 +19,7 @@ constexpr auto drawbar = EventType::BankDrawbar;
 constexpr auto expression = EventType::Expression;
 constexpr auto selector = EventType::SelectBank;
 constexpr auto percussion = EventType::Percussion;
+constexpr auto pedal_drawbar = EventType::PedalDrawbar;
 
 struct Expected {
     std::uint32_t id;
@@ -29,9 +30,9 @@ struct Expected {
     double initial;
 };
 
-// Independent inventory transcribed from the version-2 registry contract.
+// Independent inventory transcribed from the version-3 registry contract.
 // It is deliberately not derived from the native descriptor array or lookup.
-constexpr std::array<Expected, 43> expected{{
+constexpr std::array<Expected, 45> expected{{
     {4096, drawbar, upper, 0, 8, 0}, {4097, drawbar, upper, 1, 8, 0},
     {4098, drawbar, upper, 2, 8, 0}, {4099, drawbar, upper, 3, 8, 0},
     {4100, drawbar, upper, 4, 8, 0}, {4101, drawbar, upper, 5, 8, 0},
@@ -56,6 +57,7 @@ constexpr std::array<Expected, 43> expected{{
     {8208, selector, upper, 0, 1, 1}, {8209, selector, lower, 0, 1, 1},
     {12288, percussion, upper, 0, 1, 0}, {12289, percussion, upper, 1, 1, 0},
     {12290, percussion, upper, 2, 1, 0}, {12291, percussion, upper, 3, 1, 0},
+    {16384, pedal_drawbar, lower, 0, 8, 0}, {16385, pedal_drawbar, lower, 1, 8, 0},
 }};
 
 std::size_t successful_conversions = 0;
@@ -99,9 +101,10 @@ void plain_rejected(std::uint32_t id, double plain) {
 }
 
 void test_inventory() {
-    CHECK(hammond::kParameterCount == 43);
-    CHECK(hammond::kParameterRegistrySchemaVersion == 2);
-    CHECK(hammond::kParameterRegistryModel == "exclusive-ab-percussion-console-v2");
+    CHECK(hammond::kParameterCount == 45);
+    CHECK(hammond::kParameterRegistrySchemaVersion == 3);
+    CHECK(hammond::kParameterRegistryModel == "exclusive-ab-percussion-pedal-console-v3");
+    CHECK(static_cast<std::uint8_t>(pedal_drawbar) == 12);
     const auto actual = hammond::parameter_descriptors();
     CHECK(actual.size() == expected.size());
     CHECK(actual.data() == hammond::parameter_descriptors().data());
@@ -127,7 +130,7 @@ void test_inventory() {
         converted(spec, normalized, spec.initial);
         discrete_count += spec.steps != 0 ? 1U : 0U;
     }
-    CHECK(discrete_count == 42);
+    CHECK(discrete_count == 44);
 }
 
 void test_id_holes_and_atomic_rejection() {
@@ -139,7 +142,7 @@ void test_id_holes_and_atomic_rejection() {
         rejected(id, 0.5);
         plain_rejected(id, 0.0);
     };
-    for (std::uint32_t id = 0; id <= 12292; ++id) {
+    for (std::uint32_t id = 0; id <= 16386; ++id) {
         bool known = false;
         for (const auto& spec : expected) known = known || spec.id == id;
         if (!known) unknown(id);
@@ -263,6 +266,8 @@ void test_native_events_reach_their_retained_engine_targets() {
             controls.route_enabled[manual] = true;
         } else if (spec.type == expression) {
             controls.expression = 1;
+        } else if (spec.type == pedal_drawbar) {
+            controls.pedal_drawbars[spec.index] = 8;
         } else {
             switch (spec.index) {
             case 0: controls.percussion.enabled = true; break;
@@ -309,6 +314,54 @@ void test_native_events_reach_their_retained_engine_targets() {
     CHECK(output[0] == 42);
     CHECK(engine.controls_snapshot() == before_reject && engine.frame_clock() == clock);
 }
+
+void test_pedal_parameters_remain_independent_of_manual_routes_and_live_contacts() {
+    hammond::Engine engine;
+    CHECK(engine.prepare(load_test_profile(), {48000.0, 1024, 53, 777},
+                         hammond::make_nominal_console_model()) == hammond::Status::Ok);
+    const std::array held{Event{0, EventType::NoteOn, lower, 60, 100},
+                          Event{0, EventType::PedalOn, lower, 1, 100}};
+    CHECK(engine.process(32, {}, held));
+    CHECK(engine.key_down(lower, 60));
+    CHECK(engine.pedal_down(hammond::PedalId{1}));
+    const auto clock = engine.frame_clock();
+    hammond::PedalContactStates contacts{};
+    CHECK(engine.pedal_contacts_snapshot(contacts));
+    const auto readiness = engine.percussion_diagnostics().readiness;
+    std::array<double, hammond::kToneSourceCount> phases{};
+    for (std::size_t i = 0; i < phases.size(); ++i) {
+        CHECK(engine.source_phase_turns(static_cast<hammond::ToneId>(i + 1), phases[i]));
+    }
+    for (const auto action : {Event{0, EventType::Cancel, lower, 0, 0},
+                              Event{0, EventType::SelectBank, lower, 0, 0},
+                              Event{0, EventType::Cancel, lower, 0, 0}}) {
+        CHECK(engine.process(0, {}, std::span<const Event>(&action, 1)));
+        auto expected_controls = engine.controls_snapshot();
+        for (std::uint8_t index = 0; index < 2; ++index) {
+            for (std::uint8_t position = 0; position <= 8; ++position) {
+                Event event;
+                CHECK(hammond::normalized_to_event(16384U + index,
+                                                  static_cast<double>(position) * 0.125,
+                                                  0, event));
+                CHECK(engine.process(0, {}, std::span<const Event>(&event, 1)));
+                expected_controls.pedal_drawbars[index] = position;
+                CHECK(engine.controls_snapshot() == expected_controls);
+                std::uint8_t observed = 255;
+                CHECK(engine.pedal_drawbar_position(index, observed) && observed == position);
+                hammond::PedalContactStates current_contacts{};
+                CHECK(engine.pedal_contacts_snapshot(current_contacts));
+                CHECK(current_contacts == contacts);
+                CHECK(engine.frame_clock() == clock && engine.key_down(lower, 60));
+                CHECK(engine.percussion_diagnostics().readiness == readiness);
+            }
+        }
+    }
+    for (std::size_t i = 0; i < phases.size(); ++i) {
+        double phase = -1;
+        CHECK(engine.source_phase_turns(static_cast<hammond::ToneId>(i + 1), phase));
+        CHECK(phase == phases[i]);
+    }
+}
 } // namespace
 
 int main() {
@@ -316,8 +369,9 @@ int main() {
     test_id_holes_and_atomic_rejection();
     test_thresholds_and_rounding_modes();
     test_native_events_reach_their_retained_engine_targets();
+    test_pedal_parameters_remain_independent_of_manual_routes_and_live_contacts();
     std::cout << "parameter bridge: " << successful_conversions << " independent conversions, "
-              << rejected_conversions << " atomic conversion rejections; 43 live Engine targets; "
+              << rejected_conversions << " atomic conversion rejections; 45 live Engine targets; "
               << "all four rounding modes passed\n";
     return EXIT_SUCCESS;
 }

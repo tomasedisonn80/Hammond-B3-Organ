@@ -2,7 +2,9 @@
 
 ## Active new session
 
-Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. The full atlas reread and prepared routing kernel are complete; all 51 local Release suites pass for the scoped kernel checkpoint. Implement the [nominal playable pedal contract](PEDAL_INTEGRATION_CONTRACT.md) next. A subsequent explicit nominal transfer, controls/state migration, Engine integration and input/evidence gates will make the division playable in the offline engine. Earlier completed-session records below do not count as assignments in this new session.
+Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. The full atlas reread, prepared routing kernel and nominal pedal Engine/state/parameter integration are complete. The next concrete work is a separate typed pedal-note ownership adapter, a single-clock transaction merging manuals/pedals/controls, offline pedal score commands and versioned independent render evidence. Preserve the existing eight fixture inputs and compare their actual serialized output with the frozen baseline.
+
+After that gate, add actual pedal diagnostics and enabled-path allocation checks, then implement the [minimal native VST3 contract](VST3_SPIKE_CONTRACT.md). Its pinned headless SDK machinery is available, but a plugin, automation bridge and race-free active state handoff require their own implementation and evidence. The requested session still comprises sixty actual new workers in ten waves; completed earlier sessions are not counted again.
 
 ## Completed continuation and current baseline
 
@@ -32,20 +34,11 @@ remaining assignment from this sixty-worker session to invent or count again.
 
 ## Next product milestone
 
-Implement the first checkpoint in [M3_NEXT_GATE.md](M3_NEXT_GATE.md): a prepared
-pedal routing/reference kernel consuming the current 91-source frame and returning
-four normalized bus excitations. The first concrete change is a typed pedal
-runtime contract plus an executable admission fixture for the existing 25-by-8
-map, preserving every position and explicit disconnection. The plan names the
-files/APIs to create, ordered steps, independent CSV comparisons, phase/atomicity/
-allocation gates, and the later playable-integration boundary.
+Complete the playable pedal input/evidence gate against [PEDAL_INTEGRATION_CONTRACT.md](PEDAL_INTEGRATION_CONTRACT.md). The prepared-kernel scope in [M3_NEXT_GATE.md](M3_NEXT_GATE.md) is now implemented and retained as its original acceptance contract. All new inputs must retain first-owner/final-release semantics, bounded whole-call rejection, source phase, separate pedal identity and stable ordering. A merged facade must render the elapsed frames once, including disconnected output. Extend the renderer and evidence verifier with explicit new versions; keep historical evidence replayable under its original grammar.
 
-Use [CONTINUATION_HANDOFF.md](CONTINUATION_HANDOFF.md) for a current coherent
-checkout and tool commands. Do not create a second tone generator, infer a pedal
-MIDI octave, reuse manual contact timings, silently fill unknown reactor/mixture
-values, or change existing parameter/event/control identities. Physical preset
-latches, switching bandwidth, continuous drawbars and loaded expression remain
-additional M3 gates.
+The following host checkpoint needs bounded sample-linear automation with the previous sample at -1, correct offset-N interpolation/carry, and a UI/audio state queue whose payload publication is actually race-free. Keep SDK allocation, file parsing and UI operations off the callback. Run the actual built Hammond module through the pinned SDK validator and an independent native harness before claiming that smoke gate.
+
+Physical preset latches, switching bandwidth, continuous drawbars and loaded expression remain additional M3 gates. Do not create a second tone generator, infer physical pedal tuning from a software controller map, reuse manual contact timings for pedals, silently fill unknown reactor/mixture values, or change existing parameter/event/control identities.
 
 ## Acquisition work that can proceed in parallel
 

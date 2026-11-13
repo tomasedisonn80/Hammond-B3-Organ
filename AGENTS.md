@@ -22,10 +22,11 @@ For every future development session, continue the next dependency-ready phase, 
 4. Select the next dependency-ready milestone and declare the evidence needed to
    close it. Document missing inputs and continue independent useful work.
 
-Use `docs/CONTINUATION_HANDOFF.md` for current operational commands and
-`docs/M3_NEXT_GATE.md` for the next pedal-routing scope and acceptance criteria.
-Read the separate continuation ledger at
-`docs/development/2026-11-13-continuation/README.md` before selecting an assignment.
+Use the newest session ledger and `docs/NEXT_STEPS.md` for the active scope.
+`docs/CONTINUATION_HANDOFF.md` retains the preceding console checkout commands;
+`docs/M3_NEXT_GATE.md` retains the original pedal-kernel acceptance contract.
+The separate `docs/development/2026-11-13-continuation/README.md` is completed
+history and must not substitute for the current assignment manifest.
 `docs/SESSION_HANDOFF.md` and `docs/development/AGENT_LEDGER.md` preserve the original
 session's handoff and sixty-assignment history. Historical snapshots do not
 replace inspecting current code, ownership and the exact revision's actual test
@@ -91,11 +92,12 @@ The original and 2026-11-13 continuation each requested sixty assignments in ten
 waves. That is their session scope, not a requirement to dispatch sixty agents
 for every later task. Report actual dispatched/completed work separately from
 planned rows and preserve the latest user-authorized scope.
-For this continuation, update the actual states in
-`docs/development/2026-11-13-continuation/assignments.json` and follow
-`docs/CONTINUATION_CHECKS.md`. Run its separate checker with
-`--expected-complete 60` only at the completed-session gate; the original
-repository checker counts the earlier session and cannot substitute for it.
+Update actual states in the newest session's manifest. The completed console
+continuation uses `docs/development/2026-11-13-continuation/assignments.json` and
+`docs/CONTINUATION_CHECKS.md`; its checker does not count the current pedal session.
+Use an explicit sixty-complete gate only after all sixty actual assignments in
+that named session have completed. Earlier checkers cannot substitute for a new
+session's accounting.
 If `main` advances during work, inspect and integrate the new commits, rerun the
 affected checks, and publish with an expected-head guard. Never overwrite another
 session's completed work or clear an unresolved gate merely to close a wave.

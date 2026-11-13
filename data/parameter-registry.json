@@ -1,6 +1,6 @@
 {
-  "schema_version": 2,
-  "model": "exclusive-ab-percussion-console-v2",
+  "schema_version": 3,
+  "model": "exclusive-ab-percussion-pedal-console-v3",
   "scope": "implemented-console-subset",
   "status": "proposed-internal",
   "provenance": {
@@ -11,6 +11,10 @@
       127,
       128,
       134,
+      139,
+      140,
+      142,
+      150,
       389,
       397,
       398,
@@ -23,15 +27,17 @@
     "implementation_sources": [
       "docs/CONSOLE_EXTENSION.md",
       "docs/CONSOLE_DYNAMICS.md",
+      "docs/PEDAL_INTEGRATION_CONTRACT.md",
       "include/hammond/ControlState.h",
       "include/hammond/Percussion.h",
+      "include/hammond/PedalVoice.h",
       "include/hammond/Types.h"
     ],
     "companion_recovered": false,
     "host_exports_verified": false,
     "native_host_curves_implemented": false,
     "uncertainty": null,
-    "reason": "Retains all 39 original internal console records unchanged and adds four independent percussion settings. IDs, binary defaults and conversions are internal engineering choices, not manufacturer calibration. The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed."
+    "reason": "Retains all 43 earlier internal console and percussion records unchanged and adds two nominal pedal mixture positions. IDs, defaults and conversions are internal engineering choices, not manufacturer calibration. The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed."
   },
   "parameters": [
     {
@@ -1411,6 +1417,78 @@
         127,
         128,
         134,
+        397,
+        398,
+        401,
+        402,
+        418
+      ]
+    },
+    {
+      "id": 16384,
+      "path": "pedal.drawbar.mixture1",
+      "label": "Pedal Mixture 1",
+      "kind": "pedal_drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "pedal_drawbar",
+        "manual": "lower",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        139,
+        140,
+        142,
+        150,
+        397,
+        398,
+        401,
+        402,
+        418
+      ]
+    },
+    {
+      "id": 16385,
+      "path": "pedal.drawbar.mixture2",
+      "label": "Pedal Mixture 2",
+      "kind": "pedal_drawbar_position",
+      "unit": "drawbar-position",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 0.0,
+        "to_plain": "floor(u * 8 + 0.5)",
+        "to_normalized": "x / 8",
+        "meaning": "position-fraction-not-amplitude"
+      },
+      "engine_event": {
+        "type": "pedal_drawbar",
+        "manual": "lower",
+        "index": 1
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        139,
+        140,
+        142,
+        150,
         397,
         398,
         401,

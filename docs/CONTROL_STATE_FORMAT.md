@@ -1,12 +1,16 @@
-# Control snapshot format: B3CONTROLS2
+# Control snapshot format: B3CONTROLS3
 
 This engineering format retains the exclusive A/B console controls described in
 [CONSOLE_EXTENSION.md](CONSOLE_EXTENSION.md) and the retained percussion controls
-in [CONSOLE_DYNAMICS.md](CONSOLE_DYNAMICS.md). It contains **43 controls**:
-36 drawbar positions, two selected-bank values, global expression and the four
-percussion settings. It also stores two independent route-enable bits, including
-Cancel state. Hidden bank positions and percussion settings remain present when
-the current routing makes them inaudible.
+in [CONSOLE_DYNAMICS.md](CONSOLE_DYNAMICS.md), plus the two nominal pedal mixture
+positions in [PEDAL_INTEGRATION_CONTRACT.md](PEDAL_INTEGRATION_CONTRACT.md).
+It contains **45 controls**: 36 manual drawbar positions, two selected-bank values,
+global expression, four percussion settings and two pedal positions. It also
+stores two independent manual route-enable bits, including Cancel state. Hidden
+bank positions, percussion settings and pedal positions remain present when the
+current routing or zero pedal gain makes them inaudible. Pedal Mixture 1/2 are
+independent retained controls, not members of a manual bank. Manual Cancel and
+selection do not change them.
 
 The source distinction between musical snapshots and dynamic checkpoints is
 recorded in atlas pp. 151-156, 389, 394 and 401. This format is a versioned internal
@@ -30,16 +34,16 @@ mutable engine state from another thread is not made safe by these APIs. There
 is no concurrent publication protocol or Engine dependency here. Parsing, stream
 access, formatting, allocation and destruction stay outside the audio callback.
 
-The serializer validates the entire snapshot, including every percussion enum,
+The serializer validates the entire snapshot, including every percussion enum and both pedal positions,
 builds an owned string, and replaces `destination` only on success. The caller
 owns file opening, publication, overwrite and recovery policies; these functions
 never open or write a file. Destination and error strings must be distinct:
 aliasing returns false without changing the shared value and cannot supply a
-separate diagnostic. New serialization always emits version 2.
+separate diagnostic. New serialization always emits version 3.
 
 The parser reads bounded temporary storage, checks the whole document and
 validates a fresh candidate before assigning the complete destination. Failure
-preserves every destination field, including percussion settings. It may consume
+preserves every destination field, including percussion and pedal settings. It may consume
 input or change stream status flags; the stream's locale and exception mask are
 unchanged. Read failures, including a streambuf exception or a failure after the
 last payload byte, reject. Normal EOF succeeds even when the caller configured
@@ -47,15 +51,16 @@ an EOF exception. Success clears `error`; rejected calls set a diagnostic except
 for the serializer alias case. Allocation failures can propagate; destination
 publication still occurs last.
 
-## Exact version-2 grammar
+## Exact version-3 grammar
 
 Names are case sensitive. Records appear in this exact order, with no optional
 or duplicate fields:
 
 ```text
-B3CONTROLS2
+B3CONTROLS3
 expression <expression>
 percussion enabled <0|1> harmonic <second|third> volume <normal|soft> decay <slow|fast>
+pedal drawbars <p0> <p1>
 manual upper selected <A|B> route_enabled <0|1>
 bank A <p0> <p1> <p2> <p3> <p4> <p5> <p6> <p7> <p8>
 bank B <p0> <p1> <p2> <p3> <p4> <p5> <p6> <p7> <p8>
@@ -75,7 +80,12 @@ The percussion record has nine tokens. `enabled` accepts only `0` or `1`, not
 numeric alternatives or words such as `true`. Harmonic, volume and decay use the
 lowercase names in the grammar. All four fields are mandatory even when percussion
 is disabled. Neither upper-bank selection nor Cancel changes these stored values.
-A valid version-2 document contains **69 tokens**.
+The pedal record has exactly four tokens: `pedal drawbars` followed by the two
+positions, each one ASCII digit `0` through `8`. The first position controls
+Mixture 1 and the second Mixture 2; these labels do not claim calibrated footage
+or physical reactor behavior. Both values are mandatory, including when muted.
+The record follows percussion and precedes the upper manual. A valid version-3
+document contains **73 tokens**.
 
 Expression is a finite, representable `double` in `[0,1]`. Accepted decimal syntax
 is `[+-]?([0-9]+(\.[0-9]*)?|\.[0-9]+)([eE][+-]?[0-9]+)?`. Examples include `0`,
@@ -91,29 +101,32 @@ embedded NULs and non-ASCII whitespace reject. The whole input, including whites
 is limited to **16,384 bytes** (`kMaxControlStateBytes`). The reader consumes at most
 16,385 bytes to detect excess length; this does not bound stream latency.
 
-## Historical version-1 migration
+## Historical version-1 and version-2 migration
 
 `B3CONTROLS1` remains readable with its original **60-token grammar**: the same
-expression and manual/bank records, with no percussion record. Parsing starts
-from a fresh `ControlSnapshot`, so the migration is independent of previously
-stored values in the caller's destination:
+expression and manual/bank records, with neither percussion nor pedal records.
+`B3CONTROLS2` retains its original **69-token grammar**, adding the complete
+percussion record but no pedal record. Parsing starts from a fresh
+`ControlSnapshot`, so old-format migration never inherits previously stored
+values in the caller's destination:
 
-| New retained field | Explicit value after version-1 loading |
-| --- | --- |
-| Percussion enabled | Off (`false`) |
-| Harmonic | Second |
-| Volume | Normal |
-| Decay | Slow |
+| Input version | Percussion after loading | Pedal positions after loading |
+| --- | --- | --- |
+| 1 | Explicit Off / Second / Normal / Slow | Explicit `[0,0]` |
+| 2 | All four values read from the document | Explicit `[0,0]` |
+| 3 | All four values required in the document | Both values required in the document |
 
-All old drawbars, selectors, route bits and expression values retain their original
-meaning. A percussion record inside version 1 is an unsupported extension and
-rejects. A version-2 header without a complete percussion record also rejects;
-it does not activate this migration or inherit the destination's old settings.
-Unsupported future versions reject without mutation.
+All old drawbars, selectors, route bits, expression and supplied percussion
+values retain their original meaning. A percussion record inside version 1, or
+a pedal record inside version 1/2, is an unsupported extension and rejects.
+A version-2 header missing percussion rejects. A version-3 header missing pedals
+or percussion also rejects; a missing new record is never treated as an old-format
+migration. Unsupported future versions reject without destination mutation.
 
-Re-saving a successfully migrated document produces canonical `B3CONTROLS2`.
-There is no version-1 writer, so new settings cannot silently disappear through
-an implicit downgrade. Keep historical test fixtures unchanged as migration inputs.
+Re-saving any accepted document produces canonical `B3CONTROLS3`. There is no
+older-version writer, so new settings cannot silently disappear through an
+implicit downgrade. Frozen historical version-1 and version-2 fixtures remain
+unchanged as migration inputs.
 
 ## Canonical serialization
 
@@ -135,9 +148,10 @@ This example retains enabled percussion even though upper bank A currently makes
 its route ineligible:
 
 ```text
-B3CONTROLS2
+B3CONTROLS3
 expression 0.375
 percussion enabled 1 harmonic third volume soft decay fast
+pedal drawbars 2 7
 manual upper selected A route_enabled 0
 bank A 0 1 2 3 4 5 6 7 8
 bank B 8 7 6 5 4 3 2 1 0
@@ -149,7 +163,7 @@ end
 
 ## Scope and verification boundary
 
-Snapshots contain no held keys or note owners, contact targets/positions/history,
+Snapshots contain no held keys/pedals or note owners, contact targets/positions/history,
 pending events, source phases, random seed, render clock, readiness `q`, capacitor,
 scanner/filter histories, rotary state or tails. They contain no source/console
 profile identity or digest, parameter-registry identity, input mapping, editor state
@@ -166,12 +180,23 @@ truncation, duplicates, trailing data, byte limits, locale independence and stre
 failures. Atomicity compares semantic fields and existing string bytes, never
 `memcmp` over structure padding. These are software-contract tests.
 
-`ControlState::restore` and `set_percussion_settings` validate before assignment.
+`test_pedal_controls` independently checks all 81 pedal position pairs,
+canonical version-3 bytes, both old-format migrations into every previous pedal
+pair, every invalid byte-valued position, manual-Cancel/selector independence,
+checked getters, value ownership, all four rounding modes, missing/duplicate/
+reordered pedal records, late malformed input and output preservation. The
+existing I/O suite also applies its locale, byte-bound and stream-failure tests
+to the complete version-3 grammar.
+
+`ControlState::restore`, `set_percussion_settings` and `set_pedal_drawbar` validate
+before assignment.
 Engine restoration changes musical controls while preserving live contact,
 percussion and source histories; that behavior belongs to the separate engine
 integration tests. The I/O API itself never accesses an Engine.
 
-The continuation's [assignment 14 note](development/2026-11-13-continuation/14-control-migration.md)
-records focused implementation checks. Independent permanent migration tests and
-full integration results are recorded separately; a format specification is not
-an executed host or hardware acceptance result.
+The [pedal-state assignment note](development/2026-11-13-pedals/14-pedal-state.md)
+records the version-3 implementation and actual focused checks. The earlier
+[percussion migration note](development/2026-11-13-continuation/14-control-migration.md)
+remains the historical version-2 record. Full pedal Engine/history integration,
+host state, concurrent publication and physical fidelity require separate
+acceptance; this control format does not establish them.

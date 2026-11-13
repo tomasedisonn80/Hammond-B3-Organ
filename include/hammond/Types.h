@@ -35,6 +35,10 @@ enum class EventType : std::uint8_t {
     Cancel = 7,
     Percussion = 8,
     KeyPosition = 9,
+    PedalOn = 10,
+    PedalOff = 11,
+    PedalDrawbar = 12,
+    PedalAllNotesOff = 13,
 };
 
 // Offsets are relative to the current block; equal offsets retain input order.
@@ -55,6 +59,13 @@ enum class EventType : std::uint8_t {
 // Note velocity does not scale sustained amplitude or select a motion curve.
 // KeyPosition is direct physical input, not counted external note ownership or
 // a saved control. Keep one coordinated note authority for each physical key.
+// Pedal events require canonical Manual::Lower, without reusing manual MIDI
+// keys or extending Manual. PedalOn/Off index: one-based pedal ID 1..25.
+// On value: integer velocity 0..127; zero releases, positive closes all eight
+// ideal pedal contacts without velocity-dependent gain. Off value: exactly 0.
+// PedalDrawbar index: mixture 0..1; value: integer position 0..8.
+// PedalAllNotesOff index/value: 0. It opens every pedal contact and preserves
+// manual keys, all controls and source/percussion histories.
 struct Event {
     std::uint32_t offset{0};
     EventType type{EventType::NoteOn};

@@ -2,6 +2,7 @@
 
 #include "hammond/ControlState.h"
 #include "hammond/ConsoleModel.h"
+#include "hammond/PedalVoice.h"
 #include "hammond/Profile.h"
 #include "hammond/TonewheelBank.h"
 
@@ -24,8 +25,24 @@ struct PercussionRoutingDiagnostics {
     [[nodiscard]] bool operator==(const PercussionRoutingDiagnostics&) const noexcept = default;
 };
 
+// The last actual rendered pedal frame, separate from current controls/contacts.
+// Frame is the absolute zero-based sample identity; rate is the rate used then.
+// Fresh preparation leaves valid=false. Zero-frame edits, control restores and
+// rate changes preserve this historical record until another sample renders.
+struct PedalRenderDiagnostics {
+    bool valid{false};
+    std::uint64_t frame{0};
+    double sample_rate{0.0};
+    PedalDrawbarPositions positions{};
+    PedalBusFrame buses{};
+    PedalVoiceFrame voice{};
+
+    [[nodiscard]] bool operator==(const PedalRenderDiagnostics&) const noexcept = default;
+};
+
 // Nominal organ: independent contacts, retained manual drawbar banks, one shared
-// percussion readiness state, and one free-running source field. Default contact
+// percussion readiness state, nominal ideal-contact pedals, and one free-running
+// source field. Default manual contact
 // preparation preserves the legacy immediate key behavior. No measured console,
 // scanner, AO-28 or cabinet model is implied.
 // Prepare and all diagnostics require stopped or same-processing-thread access;
@@ -33,7 +50,8 @@ struct PercussionRoutingDiagnostics {
 class Engine {
 public:
     // Success installs an owned profile and starts a new seeded source field.
-    // Initial controls: no keys, all banks zero, bank B selected, routes enabled,
+    // Initial controls: no keys/pedals, all banks and both pedal mixtures zero,
+    // bank B selected, routes enabled,
     // expression one, percussion Off/Second/Normal/Slow, and readiness one.
     // The two-argument overload uses ideal contacts. Any failure preserves the
     // complete previous engine, including contact/readiness histories and clock.
@@ -86,6 +104,21 @@ public:
     [[nodiscard]] std::size_t active_key_count() const noexcept;
     [[nodiscard]] std::size_t active_key_count(Manual manual) const noexcept;
     [[nodiscard]] bool key_down(Manual manual, std::uint32_t midi_note) const noexcept;
+    // Pedals have a distinct identity and count; active_key_count stays manual-
+    // only with a maximum of 122. Invalid/unprepared pedal_down reports false.
+    [[nodiscard]] std::size_t active_pedal_count() const noexcept;
+    [[nodiscard]] bool pedal_down(PedalId pedal) const noexcept;
+    [[nodiscard]] bool pedal_drawbar_position(std::size_t index,
+                                              std::uint8_t& destination) const noexcept;
+    // All 200 independent states are exposed, including the five disconnected
+    // positions. Checked queries preserve their destination on invalid input or
+    // before preparation. There is no independently editable live contact API.
+    [[nodiscard]] bool pedal_contact_closed(PedalId pedal, std::uint32_t contact,
+                                           bool& destination) const noexcept;
+    [[nodiscard]] bool pedal_contacts_snapshot(PedalContactStates& destination) const noexcept;
+    [[nodiscard]] PedalRenderDiagnostics last_pedal_frame() const noexcept {
+        return pedal_frame_;
+    }
     // Checked control queries require preparation. drawbar_position returns the
     // selected bank's retained position, including while its route is cancelled.
     [[nodiscard]] bool drawbar_position(Manual manual, std::size_t index,
@@ -118,6 +151,7 @@ private:
                                     std::span<float> mono_output,
                                     std::span<const Event> events) const noexcept;
     void apply_event(const Event& event) noexcept;
+    void apply_pedal(PedalId pedal, bool closed) noexcept;
     void rebuild_coefficients() noexcept;
 
     RuntimeProfile profile_{};
@@ -125,7 +159,10 @@ private:
     TonewheelBank source_bank_{};
     ContactBank contact_bank_{};
     PercussionState percussion_state_{};
+    PedalBusKernel pedal_kernel_{};
     std::array<std::array<bool, kManualKeyCount>, kManualCount> held_keys_{};
+    std::array<bool, kPedalCount> held_pedals_{};
+    PedalRenderDiagnostics pedal_frame_{};
     ControlState controls_{};
     std::array<double, kToneSourceCount> coefficients_{};
     std::array<double, kToneSourceCount> percussion_coefficients_{};

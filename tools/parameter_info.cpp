@@ -45,6 +45,7 @@ void quoted(std::ostream& output, std::string_view text) {
     case hammond::EventType::Expression: return "expression";
     case hammond::EventType::SelectBank: return "select_bank";
     case hammond::EventType::Percussion: return "percussion";
+    case hammond::EventType::PedalDrawbar: return "pedal_drawbar";
     default: throw std::runtime_error("Compiled descriptor has an unsupported event type.");
     }
 }
@@ -119,7 +120,7 @@ int main(int argc, char* argv[]) {
 #endif
         if (argc == 2 && std::string_view(argv[1]) == "--help") {
             std::cout << "Usage: hammond_parameter_info [--normalized U | --help]\n"
-                         "Emit the 43 compiled internal parameter mappings; U defaults to 0.5.\n"
+                         "Emit the 45 compiled internal parameter mappings; U defaults to 0.5.\n"
                          "U must be a finite decimal in [0,1], at most 128 bytes.\n"
                          "Scope: proposed internal mapping; no native host exports or curves are verified.\n";
         } else if (argc == 1) {

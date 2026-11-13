@@ -9,10 +9,10 @@
 
 namespace hammond {
 
-inline constexpr std::size_t kParameterCount = 43;
-inline constexpr std::uint32_t kParameterRegistrySchemaVersion = 2;
+inline constexpr std::size_t kParameterCount = 45;
+inline constexpr std::uint32_t kParameterRegistrySchemaVersion = 3;
 inline constexpr std::string_view kParameterRegistryModel =
-    "exclusive-ab-percussion-console-v2";
+    "exclusive-ab-percussion-pedal-console-v3";
 
 // Immutable compiled descriptors for the proposed internal registry. Text views
 // refer only to program-lifetime literals; no JSON or host SDK is needed here.

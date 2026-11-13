@@ -1,6 +1,6 @@
 # Dependencies, distributed material and rights handoff
 
-**Review date: 2026-11-13; scope: wave-08 working tree based on `7c2ad20`.** This inventory records actual files and configured outputs, including the new factory/capture records and local-install rules. The later integration update includes Agent 50's retained nominal demo generated at `6c3dd8b`. It does not grant rights or choose a project license. No project `LICENSE` existed at baseline or at this review.
+**Review date: 2026-11-13; original inventory: wave-08 working tree based on `7c2ad20`; optional SDK foundation added by pedal-session assignment 15.** This inventory records actual files and configured outputs, including the new factory/capture records and local-install rules. The later integration update includes Agent 50's retained nominal demo generated at `6c3dd8b`. It does not grant rights or choose a project license. No project `LICENSE` existed at baseline or at this review.
 
 Evidence: tracked plus proposed nonignored files, C++ includes, Python imports, [CMake](../CMakeLists.txt), [CI workflow](../.github/workflows/ci.yml), [source manifest](research/source-manifest.json), [source-rights record](research/RIGHTS_AND_SOURCES.md), and the linked primary license files below. Recheck the final staged payload when creating a release; this is not a claim about an uninspected future archive.
 
@@ -19,12 +19,60 @@ The local install currently stages neither `THIRD_PARTY_NOTICES.md` nor this inv
 
 | Component | Current role and provenance | Current distribution treatment |
 | --- | --- | --- |
-| C++20 and its standard library | `src/`, `include/hammond/`, C++ CLI/benchmark/tests use standard headers and project headers. `hammond_core` is an internal static target; consumers link it. | Zero external runtime audio, GUI or plugin-SDK dependencies. No third-party framework/library source is vendored. This does not mean zero OS/compiler-runtime dependencies. |
+| C++20 and its standard library | `src/`, `include/hammond/`, C++ CLI/benchmark/tests use standard headers and project headers. `hammond_core` is an internal static target; consumers link it. | The ordinary core/offline targets have zero external runtime audio, GUI or plugin-SDK dependencies. No third-party framework/library source is vendored. The separately acquired optional VST3 SDK is inventoried below. This does not mean zero OS/compiler-runtime dependencies. |
 | Python 3.10+ | Profile compiler, evidence/validation tools and Python tests use the standard library and local project modules. The apparent nonstdlib import `analyze_wav` resolves to `tools/analyze_wav.py`. | No pip dependencies, copied interpreter or Python package tree. CI selects 3.12; exact patch/runtime builds remain environment-specific. |
-| CMake/CTest 3.21+ | Build/profile generation and test orchestration; CMake modules come from the installed toolchain. | No `FetchContent`/`ExternalProject`, downloaded audio/GUI dependency, or bundled CMake distribution. |
+| CMake/CTest 3.21+ | Build/profile generation and test orchestration; CMake modules come from the installed toolchain. | No implicit `FetchContent`/`ExternalProject` download or bundled CMake distribution. The selected optional VST3 SDK requires CMake 3.25+ only when that future plugin target is enabled. |
 | SplitMix64 | `src/TonewheelBank.cpp::next_phase_bits` adapts the 2015 Sebastiano Vigna reference, using caller-owned state. Primary source: [splitmix.c](https://prng.di.unimi.it/splitmix.c), inspected 2026-11-13. | The primary source states a worldwide public-domain dedication to the extent possible under law, a permissive use/copy/modify/distribute grant, and an as-is disclaimer. Attribution and a linked terms summary are retained in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). No separate upstream file is vendored. |
 
 No universal license is assigned here to GCC/libstdc++, Clang/libc++, MSVC/UCRT, Python, CMake or hosted runner images. Select and inspect exact versions and bundled runtime payloads before making a binary-distribution claim. Tool availability and a CI pass do not resolve that package-specific review.
+
+## Optional VST3 SDK foundation: selected, separately acquired
+
+Assignment 15 selected the official **Steinberg VST 3 SDK 3.8.1**, tag
+`v3.8.1_build_84`, commit `3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96`, for a
+minimal headless instrument sharing this core. Acquisition/review date:
+2026-11-13. The [machine-readable lock](../data/dependencies/vst3-sdk-lock.json)
+retains exact repository URLs, commits, license identities, excluded modules,
+build options and permanent processor/controller class IDs. The
+[implementation contract](VST3_SPIKE_CONTRACT.md) defines the optional boundary.
+
+| Required source | Exact commit | Inspected primary terms |
+| --- | --- | --- |
+| [SDK root](https://github.com/steinbergmedia/vst3sdk/tree/3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96) | `3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96` | Root `LICENSE.txt`, MIT |
+| [base](https://github.com/steinbergmedia/vst3_base/tree/fcf9da0bd27a16f7f03773a3a39822f28f5c8477) | `fcf9da0bd27a16f7f03773a3a39822f28f5c8477` | Module `LICENSE.txt`, MIT |
+| [cmake](https://github.com/steinbergmedia/vst3_cmake/tree/054c9143cbb8d47fc4694e473f2ee3b4d951a8f5) | `054c9143cbb8d47fc4694e473f2ee3b4d951a8f5` | Module `LICENSE.txt`, MIT |
+| [pluginterfaces](https://github.com/steinbergmedia/vst3_pluginterfaces/tree/4f547e8e102b47de4a8b8aaf343c73b700786372) | `4f547e8e102b47de4a8b8aaf343c73b700786372` | Module `LICENSE.txt`, MIT |
+| [public.sdk](https://github.com/steinbergmedia/vst3_public_sdk/tree/586dc5e6c8012c3e4b01c79389375cbe96bdb1da) | `586dc5e6c8012c3e4b01c79389375cbe96bdb1da` | Module `LICENSE.txt`, MIT; embedded third-party exception below |
+
+All five inspected license files are byte-identical: 1,094 bytes, SHA-256
+`e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e`, copyright
+2026 Steinberg Media Technologies GmbH. The complete MIT text is retained in
+[THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). Copies or substantial portions
+of covered software must retain its copyright and permission notice. This
+selected SDK does not require importing the atlas's historical SDK license
+assumptions, nor does its license choose this project's own license or grant
+rights to research assets, trademarks or other components.
+
+The SDK's embedded `public.sdk/source/vst/moduleinfo/json.h` declares
+**Unlicense**, not MIT. Its exact file is 100,775 bytes, SHA-256
+`098ca68126cb34f7369388d49890d0a5d5ba731b76fbae0c2790377a663e9d41`, in the pinned
+`public.sdk` revision. It is used by the module-info parser and SDK validator.
+Its retained notice and [upstream source](https://github.com/sheredom/json.h) are
+identified separately. Other sample-only dependencies (including NanoVG and
+MetalNanoVG) are outside the selected headless build; their existence prevents
+a blanket claim that every SDK file is MIT. This is an inspected selected-path
+inventory, not a complete transitive audit of omitted SDK samples.
+
+The acquisition is external to the project tree. No SDK source tree or built
+validator is committed or added to the offline install. GUI, plugin examples,
+hosting examples and automatic plugin-directory links are disabled. The ordinary
+build stays SDK-free and performs no network acquisition. A future optional
+native module statically linking SDK/core code must carry applicable notices,
+identify its actual linked/runtime payload and qualify the exact bundle. No
+Hammond module or runtime redistribution has been validated by this foundation.
+The independent Linux/GCC 14.2.0/CMake 3.31.6 validator build and its **51/0**
+selftest establish toolchain feasibility only; actual plugin/DAW/device/build
+lanes remain distinct gates.
 
 ## Source and data provenance
 
@@ -60,11 +108,11 @@ These are top-level action-license checks, not a transitive-dependency audit of 
 
 ## Gate for the next dependency, asset or release
 
-No VST3 SDK, GUI framework or audio-device library is selected or present. The atlas's historical SDK/framework licensing observations do not select today's version. For a future addition, retain this short record before integration/distribution:
+The optional VST3 SDK selected below has been acquired and its validator built outside the repository. Native Hammond plugin integration remains a separate gate. No GUI framework or audio-device library is selected. The atlas's historical SDK/framework licensing observations do not select today's version. For every further addition, retain this short record before integration/distribution:
 
 1. **Identity and purpose:** component/asset name, author/provider, exact version or commit, primary source URL, acquisition date, original and shipped SHA-256, intended use and destination paths. Include transitive components and derivative ancestry.
 2. **Actual terms:** inspect the selected revision's primary license/permission text and retain it; record attribution, modification notices, source-offer or other applicable conditions, and a reviewed compatibility decision for the intended distribution and the owner's eventual project-license choice. Record unresolved items against the affected component/use.
-3. **Build/runtime boundary:** state whether it is system-provided, fetched only by CI, vendored source, statically linked, dynamically linked or copied into the package. Review the actual runtime files included; naming an SDK or passing a build does not complete this record. VST3/GUI/device choices remain **not selected** here.
+3. **Build/runtime boundary:** state whether it is system-provided, fetched only by CI, vendored source, statically linked, dynamically linked or copied into the package. Review the actual runtime files included; naming an SDK or passing a build does not complete this record. The VST3 foundation is selected below; GUI/device choices remain **not selected**.
 4. **Recordings and pictures:** separately record permission to access and capture the instrument/location and permission to store, analyze, derive models from and redistribute the resulting masters/derivatives. Identify recorder/photographer, operator/session and any included performances or other third-party material. Physical access permission is not a software license; an SDK license does not cover a recording or photograph. [Acquisition admission](CAPTURE_PROTOCOL.md)
 5. **Fonts and UI assets:** record each actual font/image license, creator, version, embedding/distribution scope and alterations; preserve required credit and modification history. An atlas reference or an absent original notice cannot substitute for the acquired file's record.
 6. **Final payload:** enumerate staged files and hashes, include the applicable notices/license texts, check for unintended scans/source trees/captures, and retain the manifest with build/test identities. Resolve the owner's project-license choice and affected PDF/asset permissions for the proposed use; do not mark those questions complete because this inventory exists.

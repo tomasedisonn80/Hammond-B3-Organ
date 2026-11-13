@@ -32,9 +32,22 @@ LEGACY_IDS = (set(range(4096, 4105)) | set(range(4112, 4121)) |
               set(range(4128, 4137)) | set(range(4144, 4153)) | {8192, 8208, 8209})
 LEGACY_RECORDS_SHA256 = "61669b54e0a0499da950ece28c855e70ab4cb815d204f625f0aee8542d8b4f1b"
 
+# Captured from committed parent 6768ef2388819ebbaaf7cc23bdf72265dc72c561
+# before any pedal registry edits. Preserve this fixture and both digests.
+VERSION_2_PATH = ROOT / "data" / "references" / "parameter-registry-v2.json"
+VERSION_2_IDS = LEGACY_IDS | {12288, 12289, 12290, 12291}
+VERSION_2_FILE_SHA256 = "658858a8e0f3e722ae1deef1c80e799ab5761c60213af22d5e80696996fd50f5"
+VERSION_2_RECORDS_SHA256 = "5e161206e203cce130330b993590d892182c4ead62daba50b468b5348d70bed2"
+
 
 def legacy_records_digest(parameters):
     records = sorted((p for p in parameters if p["id"] in LEGACY_IDS), key=lambda p: p["id"])
+    canonical = json.dumps(records, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    return hashlib.sha256(canonical.encode("ascii")).hexdigest()
+
+
+def version_2_records_digest(parameters):
+    records = sorted((p for p in parameters if p["id"] in VERSION_2_IDS), key=lambda p: p["id"])
     canonical = json.dumps(records, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
     return hashlib.sha256(canonical.encode("ascii")).hexdigest()
 
@@ -56,10 +69,10 @@ class ParameterTests(unittest.TestCase):
         with self.assertRaises(validator.ParameterError):
             validator.validate_registry(registry)
 
-    def test_exact_43_id_inventory_and_defaults(self):
-        expected = LEGACY_IDS | {12288, 12289, 12290, 12291}
+    def test_exact_45_id_inventory_and_defaults(self):
+        expected = VERSION_2_IDS | {16384, 16385}
         self.assertEqual(set(self.by_id), expected)
-        self.assertEqual(len(self.registry["parameters"]), 43)
+        self.assertEqual(len(self.registry["parameters"]), 45)
         self.assertIsNone(validator.validate_registry(self.registry))
         self.assertEqual(validator.load_registry(REGISTRY_PATH), self.registry)
         for identifier, parameter in self.by_id.items():
@@ -69,6 +82,81 @@ class ParameterTests(unittest.TestCase):
         self.assertEqual(sum(p["kind"] == "drawbar_position" for p in self.by_id.values()), 36)
         self.assertEqual(sum(p["kind"] == "bank_selector" for p in self.by_id.values()), 2)
         self.assertEqual(sum(p["kind"] == "percussion_switch" for p in self.by_id.values()), 4)
+        self.assertEqual(sum(p["kind"] == "pedal_drawbar_position" for p in self.by_id.values()), 2)
+
+    def test_all_43_earlier_whole_records_match_immutable_committed_fixture(self):
+        raw = VERSION_2_PATH.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), VERSION_2_FILE_SHA256)
+        historical = json.loads(raw)
+        self.assertEqual(historical["schema_version"], 2)
+        self.assertEqual(historical["model"], "exclusive-ab-percussion-console-v2")
+        self.assertEqual({p["id"] for p in historical["parameters"]}, VERSION_2_IDS)
+        self.assertEqual(len(historical["parameters"]), 43)
+        self.assertEqual(version_2_records_digest(historical["parameters"]), VERSION_2_RECORDS_SHA256)
+        current = sorted((p for p in self.registry["parameters"] if p["id"] in VERSION_2_IDS),
+                         key=lambda p: p["id"])
+        self.assertEqual(current, sorted(historical["parameters"], key=lambda p: p["id"]))
+        self.assertEqual(version_2_records_digest(self.registry["parameters"]), VERSION_2_RECORDS_SHA256)
+        self.registry["parameters"].reverse()
+        self.assertEqual(version_2_records_digest(self.registry["parameters"]), VERSION_2_RECORDS_SHA256)
+        self.by_id[12290]["normalized"]["meaning"] = "audio-amplitude"
+        self.assertNotEqual(version_2_records_digest(self.registry["parameters"]), VERSION_2_RECORDS_SHA256)
+
+    def test_version_2_registry_document_requires_explicit_upgrade(self):
+        historical = json.loads(VERSION_2_PATH.read_bytes())
+        before = copy.deepcopy(historical)
+        with self.assertRaisesRegex(validator.ParameterError, "registry.schema_version"):
+            validator.validate_registry(historical)
+        with self.assertRaisesRegex(validator.ParameterError, "registry.schema_version"):
+            validator.load_registry(VERSION_2_PATH)
+        self.assertEqual(historical, before)
+        for record in historical["parameters"]:
+            self.assertEqual(validator.normalized_to_value(record, 0.5),
+                             validator.normalized_to_value(self.by_id[record["id"]], 0.5))
+
+    def test_pedal_mixtures_have_distinct_permanent_position_targets(self):
+        before = copy.deepcopy(self.registry)
+        for index, identifier in enumerate((16384, 16385)):
+            parameter = self.by_id[identifier]
+            self.assertEqual(parameter["path"], f"pedal.drawbar.mixture{index + 1}")
+            self.assertEqual(parameter["label"], f"Pedal Mixture {index + 1}")
+            self.assertEqual(parameter["kind"], "pedal_drawbar_position")
+            self.assertEqual(parameter["unit"], "drawbar-position")
+            self.assertEqual((parameter["minimum"], parameter["maximum"], parameter["default"],
+                              parameter["step_count"]), (0, 8, 0, 8))
+            self.assertEqual(parameter["normalized"], {
+                "minimum": 0.0, "maximum": 1.0, "default": 0.0,
+                "to_plain": "floor(u * 8 + 0.5)", "to_normalized": "x / 8",
+                "meaning": "position-fraction-not-amplitude"})
+            for position in range(9):
+                normalized = position / 8
+                self.assertEqual(validator.value_to_normalized(parameter, position), normalized)
+                self.assertEqual(validator.normalized_to_event(self.registry, identifier, normalized),
+                                 {"type": "pedal_drawbar", "manual": "lower",
+                                  "index": index, "value": position})
+            # Manual bank selection and other pedal conversions carry no state.
+            for selector in (8208, 8209):
+                for selection in (0.0, 1.0):
+                    validator.normalized_to_event(self.registry, selector, selection)
+                    validator.normalized_to_event(self.registry, 16385 - index, 1.0)
+                    self.assertEqual(validator.normalized_to_event(self.registry, identifier, 0.5),
+                                     {"type": "pedal_drawbar", "manual": "lower",
+                                      "index": index, "value": 4})
+        self.assertEqual(self.registry, before)
+
+    def test_pedal_records_cannot_be_reinterpreted_as_manual_or_audio_gain_controls(self):
+        for index in (43, 44):
+            for key, value in (("id", 16386), ("label", "16-foot calibrated pedal"),
+                               ("kind", "drawbar_position"), ("unit", "linear-amplitude"),
+                               ("maximum", 1), ("default", 8), ("step_count", 0),
+                               ("source_pages", [139]), ("evidence_class", "measured")):
+                with self.subTest(index=index, field=key):
+                    self.reject_change(("parameters", index, key), value)
+            for key, value in (("type", "bank_drawbar"), ("manual", "upper"), ("index", 2)):
+                self.reject_change(("parameters", index, "engine_event", key), value)
+            for key, value in (("to_plain", "u"), ("to_normalized", "x"),
+                               ("meaning", "audio-amplitude")):
+                self.reject_change(("parameters", index, "normalized", key), value)
 
     def test_original_39_whole_records_match_independent_frozen_digest(self):
         self.assertEqual(sum(p["id"] in LEGACY_IDS for p in self.registry["parameters"]), 39)
@@ -142,7 +230,7 @@ class ParameterTests(unittest.TestCase):
                              {"type": "select_bank", "manual": manual, "index": 0, "value": 0})
             self.assertEqual(validator.normalized_to_event(self.registry, identifier, 1.0)["value"], 1)
         self.assertEqual({p["engine_event"]["type"] for p in self.by_id.values()},
-                         {"bank_drawbar", "select_bank", "expression", "percussion"})
+                         {"bank_drawbar", "select_bank", "expression", "percussion", "pedal_drawbar"})
         self.assertTrue(all("cancel" not in p["path"] for p in self.by_id.values()))
 
     def test_proposed_evidence_and_pending_host_scope(self):
@@ -166,8 +254,8 @@ class ParameterTests(unittest.TestCase):
                              validator.normalized_to_event(before, identifier, 0.5))
 
     def test_version_model_scope_and_status_are_exact(self):
-        for key, bad in (("schema_version", 1), ("schema_version", 3),
-                         ("schema_version", 2.0), ("schema_version", True),
+        for key, bad in (("schema_version", 1), ("schema_version", 2),
+                         ("schema_version", 4), ("schema_version", 3.0), ("schema_version", True),
                          ("model", "measured-console"), ("scope", "full-62-parameter-atlas"),
                          ("status", "exported-vst3")):
             with self.subTest(key=key, value=bad):
@@ -276,7 +364,9 @@ class ParameterTests(unittest.TestCase):
         paths = ((), ("provenance",), ("parameters", 0),
                  ("parameters", 0, "normalized"), ("parameters", 0, "engine_event"),
                  ("parameters", 39), ("parameters", 39, "normalized"),
-                 ("parameters", 39, "engine_event"))
+                 ("parameters", 39, "engine_event"),
+                 ("parameters", 43), ("parameters", 43, "normalized"),
+                 ("parameters", 43, "engine_event"))
         for path in paths:
             for operation in ("unknown", "missing"):
                 candidate = copy.deepcopy(REGISTRY)
@@ -289,7 +379,7 @@ class ParameterTests(unittest.TestCase):
                     validator.validate_registry(candidate)
 
     def test_nonfinite_domains_and_boolean_numbers_reject(self):
-        for index in (0, 36, 37, 39, 40, 41, 42):
+        for index in (0, 36, 37, 39, 40, 41, 42, 43, 44):
             for path in (("minimum",), ("maximum",), ("default",),
                          ("normalized", "minimum"), ("normalized", "maximum"), ("normalized", "default")):
                 for value in (float("nan"), float("inf"), -float("inf"), True, 10 ** 400):
@@ -323,7 +413,7 @@ class ParameterTests(unittest.TestCase):
                     self.assertEqual(validator.normalized_to_value(parameter, math.nextafter(threshold, 1.0)), lower + 1)
 
     def test_conversion_rejects_nonfinite_and_out_of_range_without_clipping(self):
-        for identifier in (4096, 8192, 8208, 12288, 12289, 12290, 12291):
+        for identifier in (4096, 8192, 8208, 12288, 12289, 12290, 12291, 16384, 16385):
             parameter = self.by_id[identifier]
             for invalid in (-0.001, math.nextafter(0.0, -math.inf), math.nextafter(1.0, math.inf), float("nan"),
                             float("inf"), -float("inf"), True, "0.5", None, 10 ** 400):
@@ -336,12 +426,12 @@ class ParameterTests(unittest.TestCase):
                             -float("inf"), True, "1", None, 10 ** 400):
                 with self.assertRaises(validator.ParameterError):
                     validator.value_to_normalized(parameter, invalid)
-        for identifier in (4096, 8208, 12288, 12289, 12290, 12291):
+        for identifier in (4096, 8208, 12288, 12289, 12290, 12291, 16384, 16385):
             with self.assertRaises(validator.ParameterError):
                 validator.value_to_normalized(self.by_id[identifier], 0.5)
 
     def test_event_mapping_rejects_unknown_id_and_returns_an_independent_payload(self):
-        for invalid in (4105, 12287, 12292, -1, 1 << 32, True, 4096.0, "4096"):
+        for invalid in (4105, 12287, 12292, 16383, 16386, -1, 1 << 32, True, 4096.0, "4096"):
             with self.subTest(identifier=invalid), self.assertRaises(validator.ParameterError):
                 validator.normalized_to_event(self.registry, invalid, 0.5)
         event = validator.normalized_to_event(self.registry, 4096, 0.5)
@@ -382,8 +472,8 @@ class ParameterTests(unittest.TestCase):
         result = subprocess.run([sys.executable, str(VALIDATOR_PATH), str(REGISTRY_PATH)],
                                 capture_output=True, text=True, check=False)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("43 proposed internal parameters", result.stdout)
-        self.assertIn("exclusive-ab-percussion-console-v2", result.stdout)
+        self.assertIn("45 proposed internal parameters", result.stdout)
+        self.assertIn("exclusive-ab-percussion-pedal-console-v3", result.stdout)
         self.assertIn("host mapping remains pending", result.stdout)
         with tempfile.TemporaryDirectory(prefix="hammond parameters cli ") as directory:
             path = Path(directory) / "bad.json"

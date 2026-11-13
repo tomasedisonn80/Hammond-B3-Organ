@@ -17,6 +17,7 @@ constexpr std::array<std::string_view, 2> kHarmonicNames{"second", "third"};
 constexpr std::array<std::string_view, 2> kVolumeNames{"normal", "soft"};
 constexpr std::array<std::string_view, 2> kDecayNames{"slow", "fast"};
 static_assert(kManualCount == 2 && kDrawbarBankCount == 2 && kDrawbarCount == 9);
+static_assert(kPedalDrawbarCount == 2);
 
 [[nodiscard]] bool ascii_space(char value) noexcept {
     return value == ' ' || value == '\t' || value == '\n' || value == '\r' ||
@@ -126,21 +127,41 @@ private:
     return true;
 }
 
+[[nodiscard]] bool parse_pedals(Tokens& tokens, PedalDrawbarPositions& destination,
+                               std::string& error) {
+    if (!tokens.expect("pedal", error) || !tokens.expect("drawbars", error)) return false;
+    for (auto& position : destination) {
+        std::string_view token;
+        if (!tokens.next(token) || token.size() != 1 || token.front() < '0' ||
+            token.front() > '8') {
+            error = "Pedal controls require two single-digit positions in 0..8.";
+            return false;
+        }
+        position = static_cast<std::uint8_t>(token.front() - '0');
+    }
+    return true;
+}
+
 [[nodiscard]] bool parse_text(std::string_view text, ControlSnapshot& destination,
                               std::string& error) {
     Tokens tokens(text);
     ControlSnapshot candidate;
     std::string_view version;
-    if (!tokens.next(version) || (version != "B3CONTROLS1" && version != "B3CONTROLS2")) {
-        error = "Unsupported control version; expected B3CONTROLS1 or B3CONTROLS2.";
+    if (!tokens.next(version) || (version != "B3CONTROLS1" && version != "B3CONTROLS2" &&
+                                  version != "B3CONTROLS3")) {
+        error = "Unsupported control version; expected B3CONTROLS1, B3CONTROLS2 or B3CONTROLS3.";
         return false;
     }
     if (!tokens.expect("expression", error) ||
         !parse_expression(tokens, candidate.expression, error)) return false;
     // A fresh candidate gives historical version 1 explicit Off/Second/Normal/
-    // Slow defaults, independent of the caller's destination. Version 2 must
-    // supply every percussion token; missing fields are never default-filled.
-    if (version == "B3CONTROLS2" && !parse_percussion(tokens, candidate.percussion, error)) {
+    // Slow defaults, and versions 1/2 explicit muted pedal defaults, independent
+    // of the caller's destination. Newer formats must supply all their records;
+    // a missing version-3 pedal record never activates legacy migration.
+    if (version != "B3CONTROLS1" && !parse_percussion(tokens, candidate.percussion, error)) {
+        return false;
+    }
+    if (version == "B3CONTROLS3" && !parse_pedals(tokens, candidate.pedal_drawbars, error)) {
         return false;
     }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
@@ -182,12 +203,17 @@ bool serialize_controls(const ControlSnapshot& snapshot, std::string& destinatio
             return false;
         }
         output << std::setprecision(std::numeric_limits<double>::max_digits10)
-               << "B3CONTROLS2\nexpression " << snapshot.expression << '\n';
+               << "B3CONTROLS3\nexpression " << snapshot.expression << '\n';
     }
     output << "percussion enabled " << (snapshot.percussion.enabled ? '1' : '0')
            << " harmonic " << kHarmonicNames[static_cast<std::size_t>(snapshot.percussion.harmonic)]
            << " volume " << kVolumeNames[static_cast<std::size_t>(snapshot.percussion.volume)]
            << " decay " << kDecayNames[static_cast<std::size_t>(snapshot.percussion.decay)] << '\n';
+    output << "pedal drawbars";
+    for (const auto position : snapshot.pedal_drawbars) {
+        output << ' ' << static_cast<unsigned>(position);
+    }
+    output << '\n';
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         output << "manual " << kManualNames[manual] << " selected "
                << kBankNames[static_cast<std::size_t>(snapshot.selected_banks[manual])]

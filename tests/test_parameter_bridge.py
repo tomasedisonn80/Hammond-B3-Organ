@@ -35,8 +35,10 @@ RECORD_KEYS = frozenset(("id", "path", "kind", "unit", "minimum", "maximum",
 EVENT_KEYS = frozenset(("offset", "type", "manual", "index", "value"))
 LEGACY_IDS = (set(range(4096, 4105)) | set(range(4112, 4121)) |
               set(range(4128, 4137)) | set(range(4144, 4153)) | {8192, 8208, 8209})
-ALL_IDS = LEGACY_IDS | {12288, 12289, 12290, 12291}
+VERSION_2_IDS = LEGACY_IDS | {12288, 12289, 12290, 12291}
+ALL_IDS = VERSION_2_IDS | {16384, 16385}
 LEGACY_DIGEST = "61669b54e0a0499da950ece28c855e70ab4cb815d204f625f0aee8542d8b4f1b"
+VERSION_2_DIGEST = "5e161206e203cce130330b993590d892182c4ead62daba50b468b5348d70bed2"
 
 
 def unique_object(pairs):
@@ -78,8 +80,8 @@ class ParameterBridgeTests(unittest.TestCase):
         cls.executable = Path(raw).resolve()
         cls.registry = registry_api.load_registry(ROOT / "data" / "parameter-registry.json")
         cls.by_id = {record["id"]: record for record in cls.registry["parameters"]}
-        if set(cls.by_id) != ALL_IDS or len(cls.by_id) != 43:
-            raise RuntimeError("The independent 43-ID compatibility inventory has changed")
+        if set(cls.by_id) != ALL_IDS or len(cls.by_id) != 45:
+            raise RuntimeError("The independent 45-ID compatibility inventory has changed")
         cls.calls = 0
 
     @classmethod
@@ -108,8 +110,8 @@ class ParameterBridgeTests(unittest.TestCase):
         self.assertIs(type(data["schema_version"]), int)
         self.assertEqual(data["schema_version"], 1)
         self.assertIs(type(data["registry_schema_version"]), int)
-        self.assertEqual(data["registry_schema_version"], 2)
-        self.assertEqual(data["model"], "exclusive-ab-percussion-console-v2")
+        self.assertEqual(data["registry_schema_version"], 3)
+        self.assertEqual(data["model"], "exclusive-ab-percussion-pedal-console-v3")
         self.assertEqual(data["scope"], "implemented-console-subset")
         self.assertEqual(data["status"], "proposed-internal")
         self.assertIs(data["host_exports_verified"], False)
@@ -117,7 +119,7 @@ class ParameterBridgeTests(unittest.TestCase):
         self.assertIn(type(data["normalized"]), (int, float))
         self.assertEqual(bits(data["normalized"]), bits(normalized))
         self.assertIs(type(data["parameters"]), list)
-        self.assertEqual(len(data["parameters"]), 43)
+        self.assertEqual(len(data["parameters"]), 45)
         self.assertEqual([record["id"] for record in data["parameters"]], sorted(ALL_IDS))
         for record in data["parameters"]:
             self.assertEqual(set(record), RECORD_KEYS)
@@ -250,6 +252,29 @@ class ParameterBridgeTests(unittest.TestCase):
             if record["id"] in LEGACY_IDS:
                 event = registry_api.normalized_to_event(self.registry, record["id"], 0.375)
                 self.assertEqual(record["event"], {"offset": 0, **event})
+
+    def test_all_43_previous_records_keep_their_independent_compatibility_digest(self):
+        historical = sorted((record for record in self.registry["parameters"]
+                             if record["id"] in VERSION_2_IDS), key=lambda record: record["id"])
+        self.assertEqual(len(historical), 43)
+        canonical = json.dumps(historical, sort_keys=True, separators=(",", ":"),
+                               ensure_ascii=True).encode("ascii")
+        self.assertEqual(hashlib.sha256(canonical).hexdigest(), VERSION_2_DIGEST)
+        frozen = json.loads((ROOT / "data" / "references" / "parameter-registry-v2.json").read_bytes())
+        self.assertEqual(historical, sorted(frozen["parameters"], key=lambda record: record["id"]))
+
+    def test_pedal_mixture_records_export_canonical_lower_targets(self):
+        converted = self.successful(0.5)
+        by_id = {record["id"]: record for record in converted["parameters"]}
+        for index, identifier in enumerate((16384, 16385)):
+            record = by_id[identifier]
+            self.assertEqual(record["path"], f"pedal.drawbar.mixture{index + 1}")
+            self.assertEqual(record["kind"], "pedal_drawbar_position")
+            self.assertEqual(record["unit"], "drawbar-position")
+            self.assertEqual(record["step_count"], 8)
+            self.assertEqual(record["default_plain"], 0)
+            self.assertEqual(record["event"], {"offset": 0, "type": "pedal_drawbar",
+                                               "manual": "lower", "index": index, "value": 4})
 
 
 if __name__ == "__main__":

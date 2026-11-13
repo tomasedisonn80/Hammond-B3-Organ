@@ -41,6 +41,17 @@ namespace {
     case EventType::Percussion:
         return event.manual == Manual::Upper && event.index < 4 &&
                is_integer_in_range(event.value, 1.0);
+    case EventType::PedalOn:
+        return event.manual == Manual::Lower && is_valid_pedal_id(PedalId{event.index}) &&
+               is_integer_in_range(event.value, 127.0);
+    case EventType::PedalOff:
+        return event.manual == Manual::Lower && is_valid_pedal_id(PedalId{event.index}) &&
+               event.value == 0.0;
+    case EventType::PedalDrawbar:
+        return event.manual == Manual::Lower && event.index < kPedalDrawbarCount &&
+               is_integer_in_range(event.value, 8.0);
+    case EventType::PedalAllNotesOff:
+        return event.manual == Manual::Lower && event.index == 0 && event.value == 0.0;
     }
     return false;
 }
@@ -82,13 +93,22 @@ Status Engine::prepare(const RuntimeProfile& profile, const ProcessSpec& spec,
     if (percussion_status != Status::Ok) {
         return percussion_status;
     }
+    PedalBusKernel candidate_pedals;
+    const Status pedal_status = candidate_pedals.prepare(compiled_pedal_routes(),
+                                                        nominal_pedal_reference_weights());
+    if (pedal_status != Status::Ok) {
+        return pedal_status;
+    }
 
     profile_ = profile;
     spec_ = spec;
     source_bank_ = candidate_bank;
     contact_bank_ = candidate_contacts;
     percussion_state_ = candidate_percussion;
+    pedal_kernel_ = candidate_pedals;
     held_keys_ = {};
+    held_pedals_ = {};
+    pedal_frame_ = {};
     controls_ = ControlState{};
     coefficients_.fill(0.0);
     percussion_coefficients_.fill(0.0);
@@ -139,7 +159,9 @@ Status Engine::reconfigure_sample_rate(double sample_rate) noexcept {
     spec_.sample_rate = sample_rate;
     // Routing, source amplitudes and current contact connections are unchanged;
     // both coefficient arrays and their existing dirty/eligibility flags remain
-    // valid. Preserve all other ProcessSpec fields and the independent clock.
+    // valid. Pedal routing/voice has no rate-dependent state. Its contacts and
+    // last-rendered diagnostic retain their history, including the old rate tag.
+    // Preserve all other ProcessSpec fields and the independent clock.
     return Status::Ok;
 }
 
@@ -210,6 +232,20 @@ ProcessResult Engine::process(std::uint32_t frames, std::span<float> mono_output
         // Sources advance through silence and disconnected output alike. Every
         // branch referencing a tone consumes this one shared sample of that tone.
         source_bank_.process_frame(source_samples);
+        // Admitted source amplitudes are in [0,1], hence every emitted sample is
+        // in [-1,1]. Owned unit weights and fixed nominal controls keep the two
+        // pedal operations inside their admitted domains; they cannot fail here.
+        // Compute even with no connected output, so the last-frame diagnostic
+        // describes the same actual source sample regardless of output wiring.
+        PedalRenderDiagnostics rendered_pedal;
+        rendered_pedal.valid = true;
+        rendered_pedal.frame = frame_clock_ + frame;
+        rendered_pedal.sample_rate = spec_.sample_rate;
+        rendered_pedal.positions = controls_.pedal_drawbar_positions();
+        (void)pedal_kernel_.render_frame(source_samples, rendered_pedal.buses);
+        (void)render_nominal_pedal_voice(rendered_pedal.buses, rendered_pedal.positions,
+                                        rendered_pedal.voice);
+        pedal_frame_ = rendered_pedal;
         if (!mono_output.empty()) {
             double mixed = 0.0;
             for (std::size_t tone = 0; tone < kToneSourceCount; ++tone) {
@@ -221,6 +257,11 @@ ProcessResult Engine::process(std::uint32_t frames, std::span<float> mono_output
                     harmonic += percussion_coefficients_[tone] * source_samples[tone];
                 }
                 mixed += harmonic * percussion_state_.gain(percussion_settings);
+            }
+            // Preserve the complete legacy arithmetic, including signed zero,
+            // when the separate lower-path pedal contribution is inaudible.
+            if (rendered_pedal.voice.output != 0.0) {
+                mixed += rendered_pedal.voice.output;
             }
             mono_output[frame] =
                 static_cast<float>(mixed * profile_.output_gain * controls_.expression());
@@ -333,7 +374,37 @@ void Engine::apply_event(const Event& event) noexcept {
         }
         break;
     }
+    case EventType::PedalOn:
+    case EventType::PedalOff:
+        apply_pedal(PedalId{event.index},
+                    event.type == EventType::PedalOn && event.value != 0.0);
+        break;
+    case EventType::PedalDrawbar:
+        (void)controls_.set_pedal_drawbar(event.index, static_cast<std::uint8_t>(event.value));
+        break;
+    case EventType::PedalAllNotesOff: {
+        std::array<PedalContactEdit, kPedalContactPositionCount> edits{};
+        for (std::size_t position = 0; position < edits.size(); ++position) {
+            edits[position] = {
+                PedalId{static_cast<std::uint8_t>(position / kPedalContactCount + 1)},
+                static_cast<std::uint8_t>(position % kPedalContactCount), false};
+        }
+        (void)pedal_kernel_.apply_contacts(edits);
+        held_pedals_.fill(false);
+        break;
     }
+    }
+}
+
+void Engine::apply_pedal(PedalId pedal, bool closed) noexcept {
+    const auto index = static_cast<std::size_t>(pedal.value) - 1;
+    if (held_pedals_[index] == closed) return;
+    std::array<PedalContactEdit, kPedalContactCount> edits{};
+    for (std::size_t contact = 0; contact < edits.size(); ++contact) {
+        edits[contact] = {pedal, static_cast<std::uint8_t>(contact), closed};
+    }
+    (void)pedal_kernel_.apply_contacts(edits);
+    held_pedals_[index] = closed;
 }
 
 void Engine::rebuild_coefficients() noexcept {
@@ -404,6 +475,35 @@ bool Engine::key_down(Manual manual, std::uint32_t midi_note) const noexcept {
     std::size_t key = 0;
     return is_valid_manual(manual) && manual_midi_to_key_index(midi_note, key) &&
            held_keys_[static_cast<std::size_t>(manual)][key];
+}
+
+std::size_t Engine::active_pedal_count() const noexcept {
+    std::size_t count = 0;
+    for (const bool down : held_pedals_) {
+        if (down) ++count;
+    }
+    return count;
+}
+
+bool Engine::pedal_down(PedalId pedal) const noexcept {
+    std::size_t index = 0;
+    return prepared_ && pedal_id_to_index(pedal, index) && held_pedals_[index];
+}
+
+bool Engine::pedal_drawbar_position(std::size_t index,
+                                    std::uint8_t& destination) const noexcept {
+    return prepared_ && controls_.pedal_drawbar_position(index, destination);
+}
+
+bool Engine::pedal_contact_closed(PedalId pedal, std::uint32_t contact,
+                                  bool& destination) const noexcept {
+    return prepared_ && pedal_kernel_.contact_closed(pedal, contact, destination);
+}
+
+bool Engine::pedal_contacts_snapshot(PedalContactStates& destination) const noexcept {
+    if (!prepared_) return false;
+    destination = pedal_kernel_.contacts_snapshot();
+    return true;
 }
 
 bool Engine::drawbar_position(Manual manual, std::size_t index,

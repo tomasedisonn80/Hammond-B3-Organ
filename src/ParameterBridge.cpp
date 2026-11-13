@@ -139,6 +139,12 @@ constexpr std::array<ParameterDescriptor, kParameterCount> kDescriptors{{
     {12291U, "percussion.decay", "percussion_switch",
      "decay-index-0=slow-1=fast", 1.0, 0.0, 1,
      EventType::Percussion, Manual::Upper, 3},
+    {16384U, "pedal.drawbar.mixture1", "pedal_drawbar_position",
+     "drawbar-position", 8.0, 0.0, 8,
+     EventType::PedalDrawbar, Manual::Lower, 0},
+    {16385U, "pedal.drawbar.mixture2", "pedal_drawbar_position",
+     "drawbar-position", 8.0, 0.0, 8,
+     EventType::PedalDrawbar, Manual::Lower, 1},
 }};
 
 constexpr std::array<double, 8> kDrawbarThresholds{

@@ -16,6 +16,9 @@ bool is_valid_control_snapshot(const ControlSnapshot& snapshot) noexcept {
         !is_valid_percussion_settings(snapshot.percussion)) {
         return false;
     }
+    for (const auto position : snapshot.pedal_drawbars) {
+        if (position >= kDrawbarPositionCount) return false;
+    }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         if (!is_valid_drawbar_bank(snapshot.selected_banks[manual])) {
             return false;
@@ -85,6 +88,12 @@ bool ControlState::set_percussion_settings(const PercussionSettings& settings) n
     return true;
 }
 
+bool ControlState::set_pedal_drawbar(std::size_t index, std::uint8_t position) noexcept {
+    if (index >= kPedalDrawbarCount || position >= kDrawbarPositionCount) return false;
+    state_.pedal_drawbars[index] = position;
+    return true;
+}
+
 bool ControlState::restore(const ControlSnapshot& snapshot) noexcept {
     if (!is_valid_control_snapshot(snapshot)) {
         return false;
@@ -140,6 +149,13 @@ bool ControlState::route_enabled(Manual manual, bool& destination) const noexcep
         return false;
     }
     destination = state_.route_enabled[static_cast<std::size_t>(manual)];
+    return true;
+}
+
+bool ControlState::pedal_drawbar_position(std::size_t index,
+                                         std::uint8_t& destination) const noexcept {
+    if (index >= kPedalDrawbarCount) return false;
+    destination = state_.pedal_drawbars[index];
     return true;
 }
 
