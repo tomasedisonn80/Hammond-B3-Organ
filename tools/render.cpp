@@ -915,7 +915,7 @@ int wmain(int argc, wchar_t* argv[]) {
             const int bytes = WideCharToMultiByte(
                 CP_UTF8, WC_ERR_INVALID_CHARS, argv[i], -1, nullptr, 0, nullptr, nullptr);
             if (bytes <= 0 || (i != 0 && bytes - 1 > static_cast<int>(kMaxArgumentBytes))) {
-                fail("Command-line argument is invalid Unicode or exceeds 4096 UTF-8 bytes.");
+                fail("Command-line argument is invalid Unicode or oversized (maximum 4096 UTF-8 bytes).");
             }
             std::string value(static_cast<std::size_t>(bytes), '\0');
             if (WideCharToMultiByte(CP_UTF8, WC_ERR_INVALID_CHARS, argv[i], -1,

@@ -67,3 +67,21 @@ closing that gate. The first failed job remains part of this record.
 No DSP, control registry, profile, score, pedal map or physical-model value
 changes in this repair. A later portability audit will review the other offline
 entry points separately rather than inheriting this renderer-specific result.
+
+
+## Native regression observed and diagnostic follow-up
+
+Repair commit `8d0573442ca311c9b5298a955e1b837050b606cf` was fetched and its exact
+published tree verified. In [run 43401628824](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43401628824),
+Windows compiled the wide entry point and **passed the entire 19-method pedal
+renderer suite**, including the original Unicode-digit rejection and actual
+Unicode profile/score/output paths. The job nevertheless passed 59/60 suites:
+the older renderer suite expected the established substring `oversized` for a
+4,097-byte argument, while the new early error said `exceeds 4096 UTF-8 bytes`.
+The argument already rejected with status 1 and preserved its destination.
+
+The follow-up restores `oversized` in that Windows-only error string. It changes
+no branch, conversion, limit, parser, DSP or test assertion. This literal-only
+change is inspected directly; another Linux execution cannot exercise it.
+The next exact-commit MSVC run remains the closure gate. The earlier failed
+runs are retained, rather than relabelled as fully passing.
