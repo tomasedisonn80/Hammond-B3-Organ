@@ -149,10 +149,14 @@ admission or endpoint-dropping policy is allowed. Control-state queue entries
 are separately bounded to four. Establish explicit total ordering:
 
 1. An admitted state restore establishes controls and automation anchors.
-2. Retained previous-boundary events precede fresh same-offset events.
-3. Parameter curves are evaluated before musical note events for that sample.
+2. Within each parameter ID, retained boundary points precede fresh same-offset
+   points; the last same-offset point wins. Within the musical stream, retained
+   boundary notes precede fresh same-offset notes.
+3. Evaluated parameters precede all musical notes for that sample, including
+   when a fresh parameter and a retained musical note share offset zero.
 4. Parameter ties use stable parameter-ID order; musical ties preserve the
-   native list's original order.
+   original order within the retained and fresh lists. An explicit same-value
+   selector point may reconnect a cancelled route; an absent queue does not.
 
 Callbacks may be segmented to keep emitted core-event arrays bounded even when
 a small number of curves creates changes at many samples. This must not cause

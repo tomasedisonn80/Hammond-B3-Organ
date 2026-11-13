@@ -1087,3 +1087,37 @@ Root changed the Windows entry point to checked lossless UTF-8 conversion from `
 ### Native Unicode regression passed; diagnostic text follow-up
 
 At repair `8d05734`, Windows passed all 19 pedal renderer methods, including lossless Unicode paths and the original non-ASCII digit rejection. Run 43401628824 still failed one older renderer assertion because the early oversized-argument message omitted its established word `oversized`. Root restored that word in the Windows-only literal, without changing control flow, limits, parser or DSP. No local Windows execution is claimed; the next exact-commit hosted job is the meaningful closure gate. The full record preserves both observed failures.
+
+
+### Windows repair closure and fifth-wave integration
+
+Published `a451ebd3ebd3752cef982777a438cf78eda64b36` was fetched and its tree
+`297325bed036ef40f3c64dd5ca1305abbc9250e4` matched the local committed tree
+exactly. Root aligned local branch metadata without touching concurrent working
+files. In run 43402590446 the Windows MSVC job 131808878321 passed all 60
+suites, closing both the Unicode admission and diagnostic-wording failures.
+Linux Release and Linux ASan/UBSan with leak checking passed as well; macOS was
+still queued when this entry was written.
+
+Fifth-wave frozen sources add a bounded actual-Engine pedal trace, compiled
+model metadata, four independently checked pedal scores, the sample-linear
+HostTimeline, StateExchange and enabled-path allocation audit. The timeline
+retains offset-N endpoints for both current interpolation and next-boundary
+application, uses exact existing discrete thresholds and commits the entire
+callback only after all candidate slices succeed. StateExchange provides four
+pending UI loads and coherent atomic publication; its focused Release and
+ThreadSanitizer runs passed. The allocation test measured 180 actual API
+regions with zero observed global C++ allocations/deallocations, including the
+complete proposed callback protocol. These focused results do not qualify the
+new native wrapper, which is assigned to wave 6. Root's full coherent archive
+gate follows before fifth-wave publication.
+
+
+The complete frozen fifth-wave tree `06786b70f1cffcc6371600fd6e14306f16e8c985` passed **65/65
+Release CTest suites, zero failures, in 65.41 seconds**, using GCC 14.2.0,
+CMake 3.31.6 and Python 3.12.14. Root configured and built a fresh `git archive`
+under `checkpoint-w05/source` and `checkpoint-w05/build`, then ran
+`ctest --test-dir checkpoint-w05/build --output-on-failure --output-junit checkpoint-w05/ctest.xml`.
+The final result publication differs only in Markdown and actual assignment
+metadata from that tested tree; ongoing native wrapper files are excluded.
+Hosted qualification of the new checkpoint remains a separate observed gate.

@@ -85,3 +85,17 @@ no branch, conversion, limit, parser, DSP or test assertion. This literal-only
 change is inspected directly; another Linux execution cannot exercise it.
 The next exact-commit MSVC run remains the closure gate. The earlier failed
 runs are retained, rather than relabelled as fully passing.
+
+
+## Exact native closure observed
+
+At published commit `a451ebd3ebd3752cef982777a438cf78eda64b36`, root fetched
+and verified tree `297325bed036ef40f3c64dd5ca1305abbc9250e4`. Hosted
+[run 43402590446](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43402590446)
+completed the [Windows MSVC job](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43402590446/job/131808878321)
+successfully: all 60 suites passed, including the actual wide-entry Unicode
+regressions and the older oversized-argument assertion. Linux Release and Linux
+ASan/UBSan with leak checking also passed. macOS remained queued at this
+observation; this is native closure of the two reported Windows failures, not
+a claim that the entire new run had completed. Later platform records retain
+the eventual macOS result separately.

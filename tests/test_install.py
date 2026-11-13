@@ -191,10 +191,11 @@ class OfflineInstallTests(unittest.TestCase):
                 self.assertEqual(installed.stderr, "")
                 self.assertEqual(installed.stdout, reference.stdout)
                 metadata = json.loads(installed.stdout)
-                self.assertEqual(metadata["schema_version"], 1)
                 if executable == self.model_info:
+                    self.assertEqual(metadata["schema_version"], 2)
                     self.assertEqual(len(metadata["console_models"]), 2)
                 else:
+                    self.assertEqual(metadata["schema_version"], 1)
                     self.assertEqual(len(metadata["parameters"]), 45)
                     self.assertEqual(metadata["normalized"], 0.49999999999999994)
 

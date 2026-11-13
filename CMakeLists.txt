@@ -131,13 +131,22 @@ target_link_libraries(hammond_console_trace PRIVATE hammond_core)
 hammond_configure_target(hammond_console_trace)
 add_dependencies(hammond_console_trace hammond_profile)
 
+add_executable(hammond_pedal_trace tools/pedal_trace.cpp)
+target_link_libraries(hammond_pedal_trace PRIVATE hammond_core)
+hammond_configure_target(hammond_pedal_trace)
+add_dependencies(hammond_pedal_trace hammond_profile)
+
 if(BUILD_TESTING)
+    find_package(Threads REQUIRED)
     set(HAMMOND_TEST_TARGETS)
     file(GLOB HAMMOND_CPP_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")
     foreach(test_source IN LISTS HAMMOND_CPP_TESTS)
         get_filename_component(test_name "${test_source}" NAME_WE)
         add_executable(${test_name} "${test_source}")
         target_link_libraries(${test_name} PRIVATE hammond_core)
+        if(test_name STREQUAL "test_state_exchange")
+            target_link_libraries(${test_name} PRIVATE Threads::Threads)
+        endif()
         target_include_directories(${test_name} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/tests")
         target_compile_definitions(${test_name} PRIVATE
             HAMMOND_TEST_PROFILE="${HAMMOND_COMPILED_PROFILE}"
@@ -190,6 +199,13 @@ if(BUILD_TESTING)
             "HAMMOND_CONSOLE_TRACE_EXECUTABLE=$<TARGET_FILE:hammond_console_trace>")
     endforeach()
     list(APPEND HAMMOND_TEST_TARGETS hammond_console_trace)
+
+    foreach(test_source IN LISTS HAMMOND_PYTHON_TESTS)
+        get_filename_component(test_name "${test_source}" NAME_WE)
+        set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_PEDAL_TRACE_EXECUTABLE=$<TARGET_FILE:hammond_pedal_trace>")
+    endforeach()
+    list(APPEND HAMMOND_TEST_TARGETS hammond_pedal_trace)
 
     # Unlike invoking CTest directly, this target first builds its required inputs.
     add_custom_target(check

@@ -1,0 +1,790 @@
+{
+  "schema_version": 1,
+  "catalog_id": "nominal-pedal-fixtures-v1",
+  "evidence_status": "synthetic-unmeasured",
+  "models": {
+    "source": "ideal-shared-sine-v1",
+    "manual_contacts": "ideal-contacts-v1",
+    "percussion": "shared-readiness-v1",
+    "pedal_routing": "linear-pedal-bus-reference-v1",
+    "pedal_voice": "nominal-static-pedal-mixture-v1",
+    "pedal_gain": "linear-pedal-position-v1",
+    "pedal_contacts": "ideal-eight-contact-pedal-v1"
+  },
+  "profile": {
+    "id": "nominal-unmeasured-v1",
+    "authoring_path": "data/profiles/nominal-unmeasured-v1.json",
+    "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+    "compiled_sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+  },
+  "routing": {
+    "map_id": "atlas-derived-b3-c3-pedal-v1",
+    "map_path": "data/pedal-map.json",
+    "map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+    "map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+    "references": [
+      {
+        "path": "data/references/review-a-pedal.csv",
+        "sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1"
+      },
+      {
+        "path": "data/references/review-b-pedal.csv",
+        "sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1"
+      },
+      {
+        "path": "data/references/review-a-manual.csv",
+        "sha256": "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6"
+      },
+      {
+        "path": "data/references/review-b-manual.csv",
+        "sha256": "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6"
+      }
+    ]
+  },
+  "control_model": {
+    "registry_schema_version": 3,
+    "registry_model": "exclusive-ab-percussion-pedal-console-v3",
+    "parameter_count": 45,
+    "parameter_records_canonical_sha256": "13ba488bec90154c960c3fd700dc4a774aff5664caf5d68472821493f22d1cad",
+    "pedal_parameters": [
+      {
+        "id": 16384,
+        "path": "pedal.drawbar.mixture1"
+      },
+      {
+        "id": 16385,
+        "path": "pedal.drawbar.mixture2"
+      }
+    ],
+    "bus_order": [
+      "Brown",
+      "Red",
+      "Orange",
+      "Yellow"
+    ],
+    "mixture_numerators": [
+      [
+        4,
+        2,
+        1,
+        1
+      ],
+      [
+        1,
+        4,
+        2,
+        1
+      ]
+    ],
+    "mixture_denominator": 8,
+    "position_gain_denominator": 8,
+    "weight_policy": "all-200-unit-positive-v1"
+  },
+  "provenance": {
+    "evidence_class": "proposed",
+    "source_document": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+    "source_sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+    "source_pages": [
+      139,
+      140,
+      142,
+      144,
+      447
+    ],
+    "uncertainty": null,
+    "reason": "Original synthetic scores and explicitly chosen fixed mixture/gain. Electrical loading, reactor values, physical pitch/timbre and a reference specimen remain unmeasured; no acquired recording is included."
+  },
+  "bounds": {
+    "fixture_count": 4,
+    "sample_rate": 48000,
+    "max_frames": 144000,
+    "max_score_bytes": 8192,
+    "max_events": 64,
+    "max_events_at_frame": 12,
+    "max_fits_per_fixture": 8,
+    "max_fit_frames": 24000,
+    "max_fit_tones": 24,
+    "fit_stride": 4
+  },
+  "tolerances": {
+    "component_peak_abs": 4e-05,
+    "phase_vector_abs": 0.006,
+    "residual_pcm_max": 2.0,
+    "meaningful_pcm_peak_min": 64
+  },
+  "conventions": {
+    "spans": "Half-open absolute frame intervals [start,end).",
+    "identities": "PedalId is a one-based wiring row 1..25. Manual MIDI note, source ToneId and pedal index remain distinct.",
+    "amplitude": "Dimensionless normalized output; PCM16 unit is 1/32768. No volts or measured acoustic levels.",
+    "oracle": "Sum integer pedal contact numerators from both independently retained CSV maps, then fit sine/cosine at absolute frame positions using nominal profile frequencies. Do not copy a source PRNG or production routing/matrix code.",
+    "phase": "Compare unit coefficient vectors for every shared ToneId across stationary spans; unknown initial phase is estimated from actual PCM.",
+    "registration": "Initial manual digits apply to upper bank B; the score configures lower bank B. All manual banks initially select B; score expression is explicit.",
+    "waveform": "Stereo PCM16 with identical dry channels. Ideal switching may click; scanner, AO-28, Leslie and physical filtering are absent.",
+    "compatibility": "Existing five manual and three console fixture files/catalogs remain unchanged."
+  },
+  "fixtures": [
+    {
+      "id": "pedal-mixtures-v1",
+      "purpose": "Three held-pedal registrations expose both distinct mixtures and coherent repeated ToneId 13 paths.",
+      "events": {
+        "path": "pedal-mixtures-v1.events",
+        "sha256": "0adc929a3cde2f834f6d368dbd49e5441b636c2a933880144a8988033b45ba4d"
+      },
+      "sample_rate": 48000,
+      "frames": 48000,
+      "seed": 2701,
+      "block_size": 127,
+      "registration": "000000000",
+      "pedal_registration": "40",
+      "controls": {
+        "contacts": "ideal",
+        "percussion": "off",
+        "percussion_volume": "normal",
+        "percussion_decay": "slow"
+      },
+      "expression": 0.5,
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.031,
+        "silence_spans": [
+          [
+            0,
+            2400
+          ],
+          [
+            38400,
+            48000
+          ]
+        ],
+        "audible_spans": [
+          [
+            2400,
+            38400
+          ]
+        ],
+        "fits": [
+          {
+            "span": [
+              3600,
+              13200
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              15600,
+              25200
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              0,
+              4
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              27600,
+              37200
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              4
+            ],
+            "manual_branches": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "pedal-shared-source-v1",
+      "purpose": "Add lower-manual ToneId 13 and pedal 13 to pedal 1, then release each authority separately.",
+      "events": {
+        "path": "pedal-shared-source-v1.events",
+        "sha256": "b0390f58fed9f91509089d8782a4d22ea5374070a2689fdeab5641a4d582cfb2"
+      },
+      "sample_rate": 48000,
+      "frames": 57600,
+      "seed": 2702,
+      "block_size": 127,
+      "registration": "000000000",
+      "pedal_registration": "40",
+      "controls": {
+        "contacts": "ideal",
+        "percussion": "off",
+        "percussion_volume": "normal",
+        "percussion_decay": "slow"
+      },
+      "expression": 0.5,
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.046,
+        "silence_spans": [
+          [
+            0,
+            2400
+          ],
+          [
+            50400,
+            57600
+          ]
+        ],
+        "audible_spans": [
+          [
+            2400,
+            50400
+          ]
+        ],
+        "fits": [
+          {
+            "span": [
+              3600,
+              10800
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              13200,
+              20400
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": [
+              {
+                "manual": "lower",
+                "midi_note": 36,
+                "drawbar_index": 2,
+                "position": 8
+              }
+            ]
+          },
+          {
+            "span": [
+              22800,
+              30000
+            ],
+            "pedals": [
+              1,
+              13
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": [
+              {
+                "manual": "lower",
+                "midi_note": 36,
+                "drawbar_index": 2,
+                "position": 8
+              }
+            ]
+          },
+          {
+            "span": [
+              32400,
+              39600
+            ],
+            "pedals": [
+              1,
+              13
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              42000,
+              49200
+            ],
+            "pedals": [
+              13
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "pedal-held-routing-v1",
+      "purpose": "Muted held pedal, unmute, lower Cancel/reselection/panic, and the pedal-8 null-contact boundary preserve shared phase.",
+      "events": {
+        "path": "pedal-held-routing-v1.events",
+        "sha256": "71acf2756109509c81fa5e48d0ee7ef4d321f53e29d233ad2c60c3451f2ccdfa"
+      },
+      "sample_rate": 48000,
+      "frames": 57600,
+      "seed": 2703,
+      "block_size": 127,
+      "registration": "000000000",
+      "pedal_registration": "00",
+      "controls": {
+        "contacts": "ideal",
+        "percussion": "off",
+        "percussion_volume": "normal",
+        "percussion_decay": "slow"
+      },
+      "expression": 0.5,
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.046,
+        "silence_spans": [
+          [
+            0,
+            4800
+          ],
+          [
+            19200,
+            24000
+          ],
+          [
+            48000,
+            57600
+          ]
+        ],
+        "audible_spans": [
+          [
+            4800,
+            19200
+          ],
+          [
+            24000,
+            48000
+          ]
+        ],
+        "fits": [
+          {
+            "span": [
+              6000,
+              13200
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              15000,
+              18600
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              24600,
+              28200
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              29400,
+              33000
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              34200,
+              37800
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              39000,
+              42600
+            ],
+            "pedals": [
+              1,
+              8
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          },
+          {
+            "span": [
+              43800,
+              47400
+            ],
+            "pedals": [
+              8
+            ],
+            "positions": [
+              4,
+              0
+            ],
+            "manual_branches": []
+          }
+        ],
+        "initially_audible_reference": {
+          "pedal_registration": "40",
+          "identical_suffix_start": 4800
+        }
+      }
+    },
+    {
+      "id": "pedal-phrase-v1",
+      "purpose": "Original three-second C-F-G-C gesture in the nominal software pitch model, with two manuals and pedal mixtures; no physical pedal-octave or timbre claim.",
+      "events": {
+        "path": "pedal-phrase-v1.events",
+        "sha256": "47daa264ca9524c98d7a189d28728778c9057852b8fd3d68e7fea9d2e63b9be5"
+      },
+      "sample_rate": 48000,
+      "frames": 144000,
+      "seed": 2704,
+      "block_size": 127,
+      "registration": "006400000",
+      "pedal_registration": "32",
+      "controls": {
+        "contacts": "ideal",
+        "percussion": "off",
+        "percussion_volume": "normal",
+        "percussion_decay": "slow"
+      },
+      "expression": 0.75,
+      "expectations": {
+        "clipped_frames": 0,
+        "float_peak_max": 0.103,
+        "silence_spans": [
+          [
+            0,
+            4800
+          ],
+          [
+            120000,
+            144000
+          ]
+        ],
+        "audible_spans": [
+          [
+            4800,
+            120000
+          ]
+        ],
+        "fits": [
+          {
+            "span": [
+              7200,
+              30000
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              3,
+              2
+            ],
+            "manual_branches": [
+              {
+                "manual": "upper",
+                "midi_note": 60,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 60,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "upper",
+                "midi_note": 64,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 64,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "upper",
+                "midi_note": 67,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 67,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "lower",
+                "midi_note": 48,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "lower",
+                "midi_note": 55,
+                "drawbar_index": 2,
+                "position": 6
+              }
+            ]
+          },
+          {
+            "span": [
+              36000,
+              58800
+            ],
+            "pedals": [
+              6
+            ],
+            "positions": [
+              3,
+              2
+            ],
+            "manual_branches": [
+              {
+                "manual": "upper",
+                "midi_note": 60,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 60,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "upper",
+                "midi_note": 65,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 65,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "upper",
+                "midi_note": 69,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 69,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "lower",
+                "midi_note": 53,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "lower",
+                "midi_note": 60,
+                "drawbar_index": 2,
+                "position": 6
+              }
+            ]
+          },
+          {
+            "span": [
+              64800,
+              87600
+            ],
+            "pedals": [
+              8
+            ],
+            "positions": [
+              3,
+              2
+            ],
+            "manual_branches": [
+              {
+                "manual": "upper",
+                "midi_note": 59,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 59,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "upper",
+                "midi_note": 62,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 62,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "upper",
+                "midi_note": 67,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 67,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "lower",
+                "midi_note": 55,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "lower",
+                "midi_note": 62,
+                "drawbar_index": 2,
+                "position": 6
+              }
+            ]
+          },
+          {
+            "span": [
+              93600,
+              116400
+            ],
+            "pedals": [
+              1
+            ],
+            "positions": [
+              3,
+              2
+            ],
+            "manual_branches": [
+              {
+                "manual": "upper",
+                "midi_note": 60,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 60,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "upper",
+                "midi_note": 64,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 64,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "upper",
+                "midi_note": 67,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "upper",
+                "midi_note": 67,
+                "drawbar_index": 3,
+                "position": 4
+              },
+              {
+                "manual": "lower",
+                "midi_note": 48,
+                "drawbar_index": 2,
+                "position": 6
+              },
+              {
+                "manual": "lower",
+                "midi_note": 55,
+                "drawbar_index": 2,
+                "position": 6
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

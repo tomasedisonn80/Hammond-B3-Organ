@@ -2,7 +2,7 @@
 
 ## Active pedal development session
 
-The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **24 new workers have completed four waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
+The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **30 new workers have completed five waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
 
 The core now includes typed 200-position pedal routing, 25 independently held pedals, a named fixed two-mixture voice, two controls and `B3CONTROLS3`. Old state formats explicitly migrate to muted pedals. The registry has 45 records, preserving every field of the earlier 43. Pedals consume the Engine's existing single source frame; lower Cancel, division panics and upper percussion remain independent. Last-rendered diagnostics retain their actual frame/rate tags. The matrix and linear pedal gain are explicit nominal engineering fixtures, not recovered electrical values or measured 16-foot/8-foot responses.
 
@@ -16,9 +16,13 @@ The offline renderer accepts four explicit pedal verbs and `--pedal-drawbars NN`
 
 The combined input/renderer checkpoint passed **60/60 local Release suites**, zero failures, in 56.10 seconds on frozen tree `f84cacb4e6eb01189ca29136fc838885fdd858f4`.
 
-The first hosted wave-4 run passed three jobs, while Windows passed 59/60 with a Unicode command-line admission failure. The [renderer repair review](reviews/PEDAL_WINDOWS_UNICODE.md) records its cause and the 8/8 local targeted repair gate; native Windows closure requires the next observed hosted result.
+The first hosted wave-4 run exposed a Windows Unicode argument conversion; a second run caught only an established diagnostic-word mismatch. The [renderer repair review](reviews/PEDAL_WINDOWS_UNICODE.md) retains both failures. Published repair `a451ebd` passed Windows MSVC, Linux Release and Linux ASan/UBSan with leaks in run 43402590446. macOS remained queued at the current observation.
 
-The next wave adds actual pedal trace diagnostics, compiled metadata, a musical fixture catalog, enabled-path allocation evidence and the host automation/state foundations. The optional [native VST3 contract](VST3_SPIKE_CONTRACT.md) pins SDK 3.8.1 and four submodules; its headless validator's own 51 selftests passed. A Hammond plugin is not established by those SDK selftests. Later waves must implement and independently qualify the native module, automation and concurrent state handoff. Ordinary builds remain SDK-free. Full M3, scanner/AO-28/Leslie, specimen calibration, audio-device operation and the custom interface remain open.
+Wave 5 adds [same-frame pedal traces](PEDAL_TRACE.md), compiled pedal model metadata and four [independently checked musical scores](PEDAL_AUDIO_ACCEPTANCE.md). Model-info schema 2 appends actual compiled pedal identities without changing the earlier console/source fields. The trace covers unmute, overlap and held-routing scenarios at three rates; the catalog checks exact block partition output and independently fitted source amplitudes.
+
+[HostTimeline](HOST_TIMELINE.md) now reconstructs sample-linear normalized curves from previous-sample anchors, applies exact existing discrete thresholds and retains offset-N endpoints correctly. It owns one whole-callback transaction for audio, owners, controls, anchors and carry. [StateExchange](STATE_EXCHANGE.md) provides four pending UI loads and coherent atomic publication without accessing live Engine state on the UI thread. Its focused Release and ThreadSanitizer stress gates passed. The [enabled-path allocation audit](PEDAL_REALTIME.md) measured 180 actual API regions with zero observed global C++ allocations/deallocations, including the complete proposed callback protocol. These results are scoped; no audio-device deadline is inferred. Root's combined frozen tree `06786b70f1cffcc6371600fd6e14306f16e8c985` passed **65/65 local Release suites**, zero failures, in 65.41 seconds.
+
+Wave 6 is implementing the [native VST3 contract](VST3_SPIKE_CONTRACT.md), with pinned SDK 3.8.1, four submodules, frozen original class UUIDs, three event buses and 45 parameters. The SDK validator's own 51 selftests establish its machinery only; actual Hammond-module ABI/validator and callback checks remain separate work. Ordinary builds remain SDK-free. Full M3, scanner/AO-28/Leslie, specimen calibration, audio-device operation and the custom interface remain open.
 
 ## Earlier checkpoints and retained history
 
@@ -42,7 +46,9 @@ Python methods on all four hosted jobs in
 The final result publication preserves those code/test/data identities. The next
 product task is the prepared pedal-routing kernel below; full M3 remains open.
 
-## Current stage
+## Earlier console checkpoint scope (historical)
+
+The following retained narrative describes the preceding console session; the active pedal/native status above supersedes its parameter/state and unimplemented-pedal statements.
 
 The M0 engineering foundation and a scoped M1/M2 nominal dry engine are implemented.
 The engine owns 91 shared sine sources, explicit manual routing, independent contacts,

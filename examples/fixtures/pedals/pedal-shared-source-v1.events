@@ -1,0 +1,10 @@
+# Pedal 1 has two independent paths from ToneId 13.
+# Lower MIDI 36 / drawbar index 2 and pedal 13 add that same shared source.
+0 expression upper 0 0.5
+2400 pedal_on lower 1 100
+12000 bank_drawbar lower 11 8
+12000 note_on lower 36 100
+21600 pedal_on lower 13 100
+31200 all_notes_off lower 0 0
+40800 pedal_off lower 1 0
+50400 pedal_all_notes_off lower 0 0

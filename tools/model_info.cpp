@@ -1,6 +1,10 @@
 #include "hammond/ConsoleModel.h"
+#include "hammond/ControlState.h"
+#include "hammond/PedalRouting.h"
+#include "hammond/PedalVoice.h"
 
 #include <array>
+#include <cmath>
 #include <cstddef>
 #include <exception>
 #include <iomanip>
@@ -24,6 +28,9 @@ constexpr std::size_t kMaxMetadataBytes = 128 * 1024;
 constexpr std::array<std::string_view, hammond::kManualCount> kManualNames{
     "upper", "lower"};
 static_assert(hammond::kManualCount == 2);
+constexpr std::array<std::string_view, hammond::kPedalBusCount> kPedalBusNames{
+    "Brown", "Red", "Orange", "Yellow"};
+static_assert(hammond::kPedalBusCount == 4);
 
 // Every string emitted here is a fixed ASCII contract string or a model ID
 // supplied by the compiled core. Escape even those IDs rather than relying on
@@ -143,6 +150,136 @@ void console_metadata(std::ostream& output, std::string_view choice,
     output << '}';
 }
 
+void pedal_metadata(std::ostream& output) {
+    const auto& routes = hammond::compiled_pedal_routes();
+    const auto identity = hammond::compiled_pedal_identity();
+    const auto weights = hammond::nominal_pedal_reference_weights();
+    const hammond::ControlState controls;
+    const auto defaults = controls.pedal_drawbar_positions();
+    hammond::PedalBusKernel prepared;
+    if (prepared.prepare(routes, weights) != hammond::Status::Ok ||
+        !hammond::is_valid_pedal_drawbar_positions(defaults)) {
+        throw std::runtime_error("Compiled pedal factory parameters are invalid.");
+    }
+    for (const auto& row : hammond::kNominalPedalMixtureMatrix) {
+        for (const double value : row) {
+            if (!std::isfinite(value)) {
+                throw std::runtime_error("Compiled pedal mixture contains a nonfinite value.");
+            }
+        }
+    }
+    for (const double value : hammond::kNominalPedalPositionGains) {
+        if (!std::isfinite(value)) {
+            throw std::runtime_error("Compiled pedal gains contain a nonfinite value.");
+        }
+    }
+    for (const double limit : {hammond::kNominalPedalBusInputLimit,
+                               hammond::kNominalPedalMixtureOutputLimit,
+                               hammond::kNominalPedalOutputLimit}) {
+        if (!std::isfinite(limit) || limit < 0.0) {
+            throw std::runtime_error("Compiled pedal limits are invalid.");
+        }
+    }
+
+    std::size_t connected = 0;
+    std::size_t repeated_pairs = 0;
+    std::array<std::size_t, hammond::kPedalBusCount> connected_per_bus{};
+    for (std::size_t index = 0; index < routes.size(); ++index) {
+        const auto& route = routes[index];
+        if (!route.tone) continue;
+        ++connected;
+        ++connected_per_bus[static_cast<std::size_t>(route.bus)];
+        for (std::size_t other = index + 1; other < routes.size(); ++other) {
+            if (routes[other].pedal != route.pedal) break;
+            if (routes[other].tone == route.tone) ++repeated_pairs;
+        }
+    }
+
+    output << "{\"runtime_state_included\":false,\"evidence_class\":\"proposed\","
+              "\"atlas_pages\":[139,140,142,144,447],\"uncertainty\":null,"
+              "\"missing_evidence\":\"No specimen pedal contact, reactor/loading or calibrated mixture transfer measurements; the fixed voice is an original engineering fixture.\","
+              "\"routing\":{\"model_id\":";
+    quoted(output, identity.model_id);
+    output << ",\"map_id\":";
+    quoted(output, identity.map_id);
+    output << ",\"map_raw_sha256\":";
+    quoted(output, identity.map_raw_sha256);
+    output << ",\"map_canonical_sha256\":";
+    quoted(output, identity.map_canonical_sha256);
+    output << ",\"factory_comparison_id\":";
+    quoted(output, identity.factory_comparison_id);
+    output << ",\"factory_comparison_raw_sha256\":";
+    quoted(output, identity.factory_comparison_raw_sha256);
+    output << ",\"review_a_sha256\":";
+    quoted(output, identity.review_a_sha256);
+    output << ",\"review_b_sha256\":";
+    quoted(output, identity.review_b_sha256);
+    output << ",\"evidence_class\":\"documented\",\"pedal_count\":"
+           << hammond::kPedalCount << ",\"contacts_per_pedal\":"
+           << hammond::kPedalContactCount << ",\"position_count\":" << routes.size()
+           << ",\"bus_count\":" << hammond::kPedalBusCount
+           << ",\"connected_count\":" << connected
+           << ",\"disconnected_count\":" << routes.size() - connected
+           << ",\"repeated_source_pairs\":" << repeated_pairs
+           << ",\"bus_order\":[";
+    for (std::size_t bus = 0; bus < kPedalBusNames.size(); ++bus) {
+        if (bus != 0) output << ',';
+        quoted(output, kPedalBusNames[bus]);
+    }
+    output << "],\"connected_per_bus\":[";
+    for (std::size_t bus = 0; bus < connected_per_bus.size(); ++bus) {
+        if (bus != 0) output << ',';
+        output << connected_per_bus[bus];
+    }
+    output << "],\"disconnections\":[";
+    bool first = true;
+    for (const auto& route : routes) {
+        if (route.tone) continue;
+        if (!first) output << ',';
+        first = false;
+        output << "{\"pedal_id\":" << static_cast<unsigned>(route.pedal.value)
+               << ",\"contact_index\":" << static_cast<unsigned>(route.contact)
+               << ",\"bus\":";
+        quoted(output, kPedalBusNames[static_cast<std::size_t>(route.bus)]);
+        output << ",\"source_tone_id\":null}";
+    }
+    output << "]},\"contacts\":{\"policy\":\"ideal_simultaneous\","
+              "\"canonical_event_manual\":\"lower\",\"null_contact_state_retained\":true,"
+              "\"velocity_scales_output\":false,\"source_clock_owned\":false,"
+              "\"prepared_closed_contact_count\":" << prepared.closed_contact_count()
+           << "},\"weights\":{\"factory\":\"nominal_pedal_reference_weights\","
+              "\"unit\":\"dimensionless\",\"position_order\":\"pedal_id_then_contact_index\","
+              "\"values\":";
+    numbers(output, weights);
+    output << "},\"voice\":{\"model_id\":";
+    quoted(output, hammond::kNominalPedalVoiceModelId);
+    output << ",\"gain_law_id\":";
+    quoted(output, hammond::kNominalPedalGainLawId);
+    output << ",\"mixture_labels\":[";
+    for (std::size_t mixture = 0; mixture < hammond::kNominalPedalMixtureLabels.size(); ++mixture) {
+        if (mixture != 0) output << ',';
+        quoted(output, hammond::kNominalPedalMixtureLabels[mixture]);
+    }
+    output << "],\"matrix\":[";
+    for (std::size_t mixture = 0; mixture < hammond::kNominalPedalMixtureMatrix.size(); ++mixture) {
+        if (mixture != 0) output << ',';
+        numbers(output, hammond::kNominalPedalMixtureMatrix[mixture]);
+    }
+    output << "],\"position_gains\":";
+    numbers(output, hammond::kNominalPedalPositionGains);
+    output << ",\"default_positions\":[";
+    for (std::size_t mixture = 0; mixture < defaults.size(); ++mixture) {
+        if (mixture != 0) output << ',';
+        output << static_cast<unsigned>(defaults[mixture]);
+    }
+    output << "],\"units\":{\"matrix\":\"dimensionless\",\"position_gains\":\"dimensionless\","
+              "\"default_positions\":\"drawbar_position\",\"bus_input\":\"source_normalized_dimensionless\","
+              "\"mixture_output\":\"source_normalized_dimensionless\",\"combined_output\":\"source_normalized_dimensionless\"},"
+              "\"absolute_limits\":{\"bus_input\":" << hammond::kNominalPedalBusInputLimit
+           << ",\"mixture_output\":" << hammond::kNominalPedalMixtureOutputLimit
+           << ",\"combined_output\":" << hammond::kNominalPedalOutputLimit << "}}}";
+}
+
 [[nodiscard]] std::string metadata() {
     const auto legacy = hammond::make_legacy_console_model();
     const auto nominal = hammond::make_nominal_console_model();
@@ -160,7 +297,7 @@ void console_metadata(std::ostream& output, std::string_view choice,
     std::ostringstream output;
     output.imbue(std::locale::classic());
     output << std::setprecision(std::numeric_limits<double>::max_digits10) << std::boolalpha
-           << "{\"schema_version\":1,\"evidence_scope\":\"synthetic_engineering\","
+           << "{\"schema_version\":2,\"evidence_scope\":\"synthetic_engineering\","
               "\"physical_fidelity\":\"unestablished\",\"source_generator\":{"
               "\"included\":false,\"profile_type\":\"RuntimeProfile\",\"source_count\":"
            << hammond::kToneSourceCount
@@ -169,7 +306,9 @@ void console_metadata(std::ostream& output, std::string_view choice,
     console_metadata(output, "legacy", "make_legacy_console_model", legacy, settings);
     output << ',';
     console_metadata(output, "nominal", "make_nominal_console_model", nominal, settings);
-    output << "]}\n";
+    output << "],\"pedal_model\":";
+    pedal_metadata(output);
+    output << "}\n";
     if (!output) throw std::runtime_error("Cannot construct model metadata.");
     auto result = output.str();
     if (result.size() >= kMaxMetadataBytes) {
@@ -191,7 +330,7 @@ int main(int argc, char* argv[]) {
 #endif
         if (argc == 2 && std::string_view(argv[1]) == "--help") {
             std::cout << "Usage: hammond_model_info [--help]\n"
-                         "Without arguments, emit JSON for the compiled console factory defaults.\n"
+                         "Without arguments, emit JSON for the compiled console and pedal factory defaults.\n"
                          "Scope: synthetic engineering metadata; source profiles and measured fidelity are separate.\n";
         } else if (argc == 1) {
             std::cout << metadata();

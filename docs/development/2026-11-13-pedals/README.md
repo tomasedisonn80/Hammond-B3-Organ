@@ -1,6 +1,6 @@
 # Pedal development session — 2026-11-13
 
-This new session begins at `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. The user requested **60 new agent assignments in 10 waves**. This ledger is separate from both earlier completed sixty-agent sessions. The integrator is `/root`; only actual newly dispatched workers count. Three workers run concurrently, so each wave has two batches of three.
+This new session begins at `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. The user requested **60 new agent assignments in 10 waves**. This ledger is separate from both earlier completed sixty-agent sessions. The integrator is `/root`; only actual newly dispatched workers count. At most three workers run concurrently. Each logical wave has six assignments; independent work may roll into the next wave while the integrator completes the preceding publication gate.
 
 [assignments.json](assignments.json) records actual planned, running and complete states. Notes are retained per worker. A complete state requires a substantive completion report accepted by the integrator, not merely a planned row or file.
 
@@ -68,3 +68,32 @@ Root's coherent frozen tree `f84cacb4e6eb01189ca29136fc838885fdd858f4` passed **
 
 
 Wave 4 publication `6bcf35c` passed three hosted jobs; Windows exposed a narrow-argument Unicode conversion before strict parsing. Root applied a separate renderer/startup regression repair, with 8/8 local targeted suites passing on tree `73b7bccb70de21c1dbe9e23ed0d1c1cb10fef3a7` in 16.87 seconds. See the [failure/repair record](../../reviews/PEDAL_WINDOWS_UNICODE.md); the new native Windows result is pending.
+
+
+## Wave 5 accepted — diagnostic evidence and host foundations
+
+Assignments 25–30 completed the actual-Engine pedal trace, appended compiled
+model metadata, four independent audio fixtures, HostTimeline, StateExchange
+and the enabled-path allocation audit. All 30 actual workers in waves 1–5
+have substantive accepted notes. The nominal voice and source/reference inputs
+remain unchanged; no physical calibration is inferred.
+
+The timeline focused gate checked 4,759 accepted callbacks, 43 rejections, 933
+threshold cases and an independent audio/curve oracle with zero observed error.
+The state protocol passed focused Release and ThreadSanitizer runs with 12,000
+concurrent accepted loads and 24,000 publications without UI reads. The
+allocation gate measured 180 API regions, including the full proposed callback,
+with zero observed global C++ allocation/deallocation in every region. These
+focused gates are separate from root's combined archive and the later native
+SDK callback qualification. Wave 6 owns the processor, controller, optional
+build and actual module/ABI gates.
+
+
+The complete frozen fifth-wave tree `06786b70f1cffcc6371600fd6e14306f16e8c985` passed **65/65
+Release CTest suites, zero failures, in 65.41 seconds**, using GCC 14.2.0,
+CMake 3.31.6 and Python 3.12.14. Root configured and built a fresh `git archive`
+under `checkpoint-w05/source` and `checkpoint-w05/build`, then ran
+`ctest --test-dir checkpoint-w05/build --output-on-failure --output-junit checkpoint-w05/ctest.xml`.
+The final result publication differs only in Markdown and actual assignment
+metadata from that tested tree; ongoing native wrapper files are excluded.
+Hosted qualification of the new checkpoint remains a separate observed gate.
