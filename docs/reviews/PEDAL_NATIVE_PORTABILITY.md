@@ -127,3 +127,41 @@ header inspection; both mutations still reject. The repaired inventory's
 **19 Python methods pass locally**. The [wave-7 integration record](PEDAL_WAVE7_INTEGRATION.md)
 identifies its exact source and focused qualification. Fresh Windows execution
 and artifact observation are required to close this follow-up.
+
+
+## Observed wave-7 Windows recovery and retained artifacts
+
+Published wave-7 commit `7fb9b6121b729f46a9e18d80e8620eb21dc0847b` has verified
+local/remote tree `19239e05f6c5219b50d3f398ba9a6eb3acc2a1ac`. In core
+[run 43415692328](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43415692328),
+Windows job 131852884476 passed **68/68 suites in 84.18 seconds**, including
+both the install-schema regression and the full inventory suite. Linux Release
+and leak-enabled ASan/UBSan also succeeded. macOS was still queued when this
+observation was recorded; a four-job success is not claimed here.
+
+In native [run 43415692247](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43415692247),
+Windows job 131852884109 passed **7/7 suites in 5.80 seconds**, then successfully
+completed build/copy inventories and uploaded the actual bundle. Linux job
+131852884056 passed **8/8 suites in 5.70 seconds** and completed its inventory
+and artifact. The extra Linux suite is the scoped allocation interposition gate.
+macOS remained queued at this observation. These results close the observed
+Windows defects at this revision, without guessing the precise metadata field
+that caused the earlier uninformative failure.
+
+Root downloaded both actual bundle artifact ZIPs through the connected Actions
+API, verified their full ZIP SHA-256 against the API's digest, verified each
+inner archive digest, then independently checked every tar file's size, bytes,
+SHA-256 and permission mode against its inventory. Every entry matched; no links
+or unexpected file members were present. The inventory's caller-declared commit
+also matches the independently observed workflow revision. This is retained
+source/run/package association, not an authenticated build attestation.
+
+| Observed artifact | ZIP SHA-256 | Actual module SHA-256 |
+| --- | --- | --- |
+| Windows bundle 14032090890: 6 files, 658,056 payload bytes | `cf2ffb94459991446f2ebe1a8b04749680957f216d8e74b88863748e88d742fa` | `a05435f0d76704c36c8af6f2d64556e7325e2141790a9d8b56c474f305d5cdad` |
+| Linux bundle 14032125757: 4 files, 456,767 payload bytes | `716a064d65e2127dbfb7ded5567d3d10a2c7dddd4a9c1afe494f6d1eb30561a9` | `b8efd0d0e93567f072ef7304734787ff20fdf096145f344dffa502035b9847ca` |
+
+Complete downloaded ZIPs, inventories, archive hashes and native logs were
+retained in root's local `w07-hosted-artifacts` evidence directory. Later audits
+must inspect their own exact-source platform results rather than inheriting
+these successes for changed production code.

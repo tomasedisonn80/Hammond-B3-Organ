@@ -75,3 +75,15 @@ all four core and three native hosted jobs. Specifically observe Windows bundle
 inventory and the uploaded native payload, rather than treating native CTest
 success alone as completed packaging. Preserve any failure and its diagnostics.
 Wave 8 then integrates the separately accepted pedal demo/plots and handoff.
+
+
+## Publication and hosted follow-up
+
+The expected-parent publication is `7fb9b6121b729f46a9e18d80e8620eb21dc0847b`,
+with verified exact tree `19239e05f6c5219b50d3f398ba9a6eb3acc2a1ac`. Windows
+subsequently passed all 68 ordinary and all 7 applicable native suites, including
+install, inventory and actual bundle publication. Linux passed its core,
+sanitizer and 8-native-suite jobs and published its bundle. Root independently
+downloaded and verified every Linux/Windows artifact member. macOS was still
+queued at that observation. The [platform review](PEDAL_NATIVE_PORTABILITY.md)
+retains exact jobs, timings, hashes and the separate open macOS gate.

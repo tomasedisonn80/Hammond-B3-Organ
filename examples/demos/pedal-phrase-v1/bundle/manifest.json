@@ -1,0 +1,193 @@
+{
+  "compiled_profile": {
+    "path": "profile.b3p",
+    "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+    "size_bytes": 4545
+  },
+  "environment": {
+    "byteorder": "little",
+    "machine": "x86_64",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python_implementation": "CPython"
+  },
+  "error": null,
+  "evidence_scope": "synthetic_engineering",
+  "finished_at_utc": "2026-11-13T10:58:46.603009Z",
+  "git": {
+    "binary_association": "not_established",
+    "captured_at_utc": "2026-11-13T10:58:46.257404Z",
+    "dirty": null,
+    "error": "git HEAD unavailable",
+    "head": null,
+    "repository_path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source"
+  },
+  "inputs": {
+    "events": {
+      "path": "events.txt",
+      "sha256": "47daa264ca9524c98d7a189d28728778c9057852b8fd3d68e7fea9d2e63b9be5",
+      "size_bytes": 1246,
+      "source_path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/examples/fixtures/pedals/pedal-phrase-v1.events"
+    },
+    "profile_json": {
+      "canonical_authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+      "path": "profile.json",
+      "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+      "size_bytes": 19627,
+      "source_path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/data/profiles/nominal-unmeasured-v1.json"
+    }
+  },
+  "integrity_verified": true,
+  "invocation": {
+    "argv": [
+      "/workspace/scratch/f364bc93d920/a43-pedal-demo/build/hammond_render",
+      "--profile",
+      "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/profile.b3p",
+      "--output",
+      "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/render.wav",
+      "--frames",
+      "144000",
+      "--sample-rate",
+      "48000",
+      "--block-size",
+      "127",
+      "--seed",
+      "2704",
+      "--drawbars",
+      "006400000",
+      "--pedal-drawbars",
+      "32",
+      "--contacts",
+      "ideal",
+      "--percussion",
+      "off",
+      "--percussion-volume",
+      "normal",
+      "--percussion-decay",
+      "slow",
+      "--fail-on-clip",
+      "--events",
+      "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/events.txt"
+    ],
+    "capture_errors": [],
+    "capture_incomplete": false,
+    "returncode": 0,
+    "stderr": {
+      "path": "renderer.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "stderr_truncated": false,
+    "stdout": {
+      "path": "renderer.stdout.txt",
+      "sha256": "a41b8e19525ae76c891170b3677964c27093ce88fcfb394754375683acf82d05",
+      "size_bytes": 1284
+    },
+    "stdout_truncated": false,
+    "timed_out": false
+  },
+  "limits": {
+    "event_bytes": 16777216,
+    "executable_bytes": 536870912,
+    "expected_wav_bytes": 576044,
+    "log_bytes_per_stream": 1048576,
+    "metrics_json_bytes": 16384,
+    "timeout_seconds": 120
+  },
+  "metric_comparison": {
+    "absolute_error_bound": 3.0517578125e-05,
+    "basis": "one PCM16 step covers rounding and positive-rail saturation; zero clipped frames required",
+    "float_metric_domain": "engine_pre_quantization",
+    "numeric_tolerance": 1e-12,
+    "pcm_metric_domain": "quantized_pcm16",
+    "peak_absolute_difference": 5.200505256652832e-06,
+    "rms_absolute_difference": 1.4270137311395148e-08,
+    "within_quantization_bound": true
+  },
+  "parameters": {
+    "block_size": 127,
+    "contacts": "ideal",
+    "drawbars": "006400000",
+    "event_count": 38,
+    "event_mode": "file",
+    "fail_on_clip": true,
+    "frames": 144000,
+    "note": null,
+    "pedal_drawbars": "32",
+    "percussion": "off",
+    "percussion_decay": "slow",
+    "percussion_volume": "normal",
+    "sample_rate": 48000,
+    "seed": 2704
+  },
+  "renderer": {
+    "path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build/hammond_render",
+    "sha256_after": "a0a33ffad00f01f82e3e25fb59b9225c0d4aa5655ce601fea3b81e2c8af9079e",
+    "sha256_before": "a0a33ffad00f01f82e3e25fb59b9225c0d4aa5655ce601fea3b81e2c8af9079e",
+    "size_bytes": 135320
+  },
+  "renderer_metrics": {
+    "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+    "block_size": 127,
+    "channels": 2,
+    "clipped_channel_samples": 0,
+    "clipped_frames": 0,
+    "contact_model": "ideal-contacts-v1",
+    "evidence_status": "unmeasured",
+    "frames": 144000,
+    "model": "ideal-shared-sine-v1",
+    "peak": 0.08429475128650665,
+    "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+    "pedal_gain_denominator": 8,
+    "pedal_gain_law": "linear-pedal-position-v1",
+    "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+    "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+    "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+    "pedal_mixture_denominator": 8,
+    "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+    "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+    "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+    "pedal_routing_model": "linear-pedal-bus-reference-v1",
+    "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+    "pedal_weight_policy": "all-200-unit-positive-v1",
+    "percussion_model": "shared-readiness-v1",
+    "profile_id": "nominal-unmeasured-v1",
+    "render_schema_version": 3,
+    "rms": 0.022980303816301697,
+    "sample_format": "pcm_s16le",
+    "sample_rate": 48000,
+    "seed": 2704,
+    "status": "ok"
+  },
+  "schema_version": 3,
+  "started_at_utc": "2026-11-13T10:58:46.257379Z",
+  "status": "succeeded",
+  "tools": {
+    "profile_compiler": {
+      "path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/compile_profile.py",
+      "sha256": "2ca649de88a3f267970e4ed00fa6c08b7c234bffcc1b4c24b47a89be608fb2a8",
+      "size_bytes": 20385
+    },
+    "wrapper": {
+      "path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/render_fixture.py",
+      "sha256": "f8da8a3a5633eb4d28e32a9e607ff579f188c520a89ae84dbc0c03684ccadcb1",
+      "size_bytes": 33401
+    }
+  },
+  "wav": {
+    "channels": 2,
+    "channels_identical": true,
+    "frames": 144000,
+    "metric_domain": "quantized_pcm16",
+    "normalization_divisor": 32768,
+    "path": "render.wav",
+    "pcm_peak": 0.08428955078125,
+    "pcm_peak_integer": 2762,
+    "pcm_rms": 0.02298031808643901,
+    "pcm_sum_squares_integer": 81653430143,
+    "sample_format": "pcm_s16le",
+    "sample_rate": 48000,
+    "sha256": "a3d1958189e811b8e353a75380d380016db5286eb08a2005626d95df64dde6f1",
+    "size_bytes": 576044
+  }
+}

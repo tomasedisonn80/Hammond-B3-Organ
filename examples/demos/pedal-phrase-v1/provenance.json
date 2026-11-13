@@ -1,0 +1,759 @@
+{
+  "artifact_inventory": [
+    {
+      "bytes": 8812,
+      "path": "README.md",
+      "sha256": "54433a625801fcf3c1b7bbb9ca35d067118a6eb5eb2af9c46168954f44baf9c8"
+    },
+    {
+      "bytes": 2471,
+      "path": "analysis/c-opening.json",
+      "sha256": "82acc39e009e9283b570b1cc0056b1cb4b28f2aa6264ae8e86ecf013164cc9b4"
+    },
+    {
+      "bytes": 2473,
+      "path": "analysis/c-return.json",
+      "sha256": "63fdb8f10b0a7786e18191ec01f62298c2bcf3dbfcb8080b0ce0354b2faeae42"
+    },
+    {
+      "bytes": 2462,
+      "path": "analysis/f.json",
+      "sha256": "b27b5b63a51bc9cc7a5bb54430a000899ca24bdee7bd80ddcd2a99cbcac32bdf"
+    },
+    {
+      "bytes": 2470,
+      "path": "analysis/g.json",
+      "sha256": "2c4a706fa4efd09be00348d4e4667dc858291c06c5b9d0518a23280e069d63c7"
+    },
+    {
+      "bytes": 2354,
+      "path": "analysis/leading-silence.json",
+      "sha256": "5358976668147dd20bf9470db9622bee6edfca3cc3de21b32627e7e667dc9147"
+    },
+    {
+      "bytes": 2364,
+      "path": "analysis/trailing-silence.json",
+      "sha256": "bf95c17a9df4746f0fa67a8ca7478a66ea8489151ec65a8b5010af9d6257c06b"
+    },
+    {
+      "bytes": 1017,
+      "path": "analysis/verification.json",
+      "sha256": "cd30b53f5a093383ed54780a424e5e1de0486763b4eda94c722f50e421fc1616"
+    },
+    {
+      "bytes": 2468,
+      "path": "analysis/whole.json",
+      "sha256": "d854f4eae2aa8e35865d809b2f8009749422e059d90179ba1186658d44295c97"
+    },
+    {
+      "bytes": 1246,
+      "path": "bundle/events.txt",
+      "sha256": "47daa264ca9524c98d7a189d28728778c9057852b8fd3d68e7fea9d2e63b9be5"
+    },
+    {
+      "bytes": 6844,
+      "path": "bundle/manifest.json",
+      "sha256": "8cca3be0d5f451e9574590a211db748885062446674e46efb2a5e385027efb87"
+    },
+    {
+      "bytes": 4545,
+      "path": "bundle/profile.b3p",
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    },
+    {
+      "bytes": 19627,
+      "path": "bundle/profile.json",
+      "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff"
+    },
+    {
+      "bytes": 576044,
+      "path": "bundle/render.wav",
+      "sha256": "a3d1958189e811b8e353a75380d380016db5286eb08a2005626d95df64dde6f1"
+    },
+    {
+      "bytes": 0,
+      "path": "bundle/renderer.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1284,
+      "path": "bundle/renderer.stdout.txt",
+      "sha256": "a41b8e19525ae76c891170b3677964c27093ce88fcfb394754375683acf82d05"
+    },
+    {
+      "bytes": 124311,
+      "path": "source-blobs.json",
+      "sha256": "4b207c6ad747761442ab326b3fd683ecd48fbbf6b1eedea4a8de600b832b64e8"
+    }
+  ],
+  "artifact_inventory_excludes": [
+    "provenance.json"
+  ],
+  "artifact_inventory_scope": "Generation-time retained demo payload, including README; provenance.json itself is excluded to avoid a recursive hash.",
+  "audio": {
+    "alternate_partitions": [
+      {
+        "argv": [
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/build/hammond_render",
+          "--profile",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/profile.b3p",
+          "--output",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/replay-block64.wav",
+          "--frames",
+          "144000",
+          "--sample-rate",
+          "48000",
+          "--block-size",
+          "64",
+          "--seed",
+          "2704",
+          "--drawbars",
+          "006400000",
+          "--pedal-drawbars",
+          "32",
+          "--contacts",
+          "ideal",
+          "--percussion",
+          "off",
+          "--percussion-volume",
+          "normal",
+          "--percussion-decay",
+          "slow",
+          "--fail-on-clip",
+          "--events",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/events.txt"
+        ],
+        "block_size": 64,
+        "complete_wav_byte_identical": true,
+        "renderer_metrics": {
+          "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+          "block_size": 64,
+          "channels": 2,
+          "clipped_channel_samples": 0,
+          "clipped_frames": 0,
+          "contact_model": "ideal-contacts-v1",
+          "evidence_status": "unmeasured",
+          "frames": 144000,
+          "model": "ideal-shared-sine-v1",
+          "peak": 0.08429475128650665,
+          "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+          "pedal_gain_denominator": 8,
+          "pedal_gain_law": "linear-pedal-position-v1",
+          "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+          "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+          "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+          "pedal_mixture_denominator": 8,
+          "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+          "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+          "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+          "pedal_routing_model": "linear-pedal-bus-reference-v1",
+          "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+          "pedal_weight_policy": "all-200-unit-positive-v1",
+          "percussion_model": "shared-readiness-v1",
+          "profile_id": "nominal-unmeasured-v1",
+          "render_schema_version": 3,
+          "rms": 0.022980303816301697,
+          "sample_format": "pcm_s16le",
+          "sample_rate": 48000,
+          "seed": 2704,
+          "status": "ok"
+        },
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 1283,
+        "wav": {
+          "bytes": 576044,
+          "sha256": "a3d1958189e811b8e353a75380d380016db5286eb08a2005626d95df64dde6f1"
+        }
+      },
+      {
+        "argv": [
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/build/hammond_render",
+          "--profile",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/profile.b3p",
+          "--output",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/replay-block1024.wav",
+          "--frames",
+          "144000",
+          "--sample-rate",
+          "48000",
+          "--block-size",
+          "1024",
+          "--seed",
+          "2704",
+          "--drawbars",
+          "006400000",
+          "--pedal-drawbars",
+          "32",
+          "--contacts",
+          "ideal",
+          "--percussion",
+          "off",
+          "--percussion-volume",
+          "normal",
+          "--percussion-decay",
+          "slow",
+          "--fail-on-clip",
+          "--events",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/events.txt"
+        ],
+        "block_size": 1024,
+        "complete_wav_byte_identical": true,
+        "renderer_metrics": {
+          "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+          "block_size": 1024,
+          "channels": 2,
+          "clipped_channel_samples": 0,
+          "clipped_frames": 0,
+          "contact_model": "ideal-contacts-v1",
+          "evidence_status": "unmeasured",
+          "frames": 144000,
+          "model": "ideal-shared-sine-v1",
+          "peak": 0.08429475128650665,
+          "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+          "pedal_gain_denominator": 8,
+          "pedal_gain_law": "linear-pedal-position-v1",
+          "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+          "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+          "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+          "pedal_mixture_denominator": 8,
+          "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+          "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+          "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+          "pedal_routing_model": "linear-pedal-bus-reference-v1",
+          "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+          "pedal_weight_policy": "all-200-unit-positive-v1",
+          "percussion_model": "shared-readiness-v1",
+          "profile_id": "nominal-unmeasured-v1",
+          "render_schema_version": 3,
+          "rms": 0.022980303816301697,
+          "sample_format": "pcm_s16le",
+          "sample_rate": 48000,
+          "seed": 2704,
+          "status": "ok"
+        },
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 1285,
+        "wav": {
+          "bytes": 576044,
+          "sha256": "a3d1958189e811b8e353a75380d380016db5286eb08a2005626d95df64dde6f1"
+        }
+      }
+    ],
+    "analyses": [
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/render.wav",
+          "--start-frame",
+          "0",
+          "--end-frame",
+          "144000"
+        ],
+        "half_open_frames": [
+          0,
+          144000
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 2468,
+        "stdout_retained_as": "analysis/whole.json",
+        "window_name": "whole"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/render.wav",
+          "--start-frame",
+          "0",
+          "--end-frame",
+          "4800"
+        ],
+        "half_open_frames": [
+          0,
+          4800
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 2354,
+        "stdout_retained_as": "analysis/leading-silence.json",
+        "window_name": "leading-silence"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/render.wav",
+          "--start-frame",
+          "7200",
+          "--end-frame",
+          "30000"
+        ],
+        "half_open_frames": [
+          7200,
+          30000
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 2471,
+        "stdout_retained_as": "analysis/c-opening.json",
+        "window_name": "c-opening"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/render.wav",
+          "--start-frame",
+          "36000",
+          "--end-frame",
+          "58800"
+        ],
+        "half_open_frames": [
+          36000,
+          58800
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 2462,
+        "stdout_retained_as": "analysis/f.json",
+        "window_name": "f"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/render.wav",
+          "--start-frame",
+          "64800",
+          "--end-frame",
+          "87600"
+        ],
+        "half_open_frames": [
+          64800,
+          87600
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 2470,
+        "stdout_retained_as": "analysis/g.json",
+        "window_name": "g"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/render.wav",
+          "--start-frame",
+          "93600",
+          "--end-frame",
+          "116400"
+        ],
+        "half_open_frames": [
+          93600,
+          116400
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 2473,
+        "stdout_retained_as": "analysis/c-return.json",
+        "window_name": "c-return"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle/render.wav",
+          "--start-frame",
+          "120000",
+          "--end-frame",
+          "144000"
+        ],
+        "half_open_frames": [
+          120000,
+          144000
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_bytes": 2364,
+        "stdout_retained_as": "analysis/trailing-silence.json",
+        "window_name": "trailing-silence"
+      }
+    ],
+    "pcm": {
+      "bytes": 576000,
+      "channels": 2,
+      "frames": 144000,
+      "sample_rate": 48000,
+      "sample_width_bytes": 2,
+      "sha256": "3107d186bb811b2cf1a2a3497422f5d77169f92ca2c9c7f22a1553482141c77c"
+    },
+    "postprocessing": "none",
+    "producer": {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/render_fixture.py",
+        "--renderer",
+        "/workspace/scratch/f364bc93d920/a43-pedal-demo/build/hammond_render",
+        "--profile-json",
+        "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/data/profiles/nominal-unmeasured-v1.json",
+        "--output-dir",
+        "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle",
+        "--events",
+        "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/examples/fixtures/pedals/pedal-phrase-v1.events",
+        "--frames",
+        "144000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "127",
+        "--seed",
+        "2704",
+        "--drawbars",
+        "006400000",
+        "--pedal-drawbars",
+        "32",
+        "--contacts",
+        "ideal",
+        "--percussion",
+        "off",
+        "--percussion-volume",
+        "normal",
+        "--percussion-decay",
+        "slow"
+      ],
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stdout_bytes": 183
+    },
+    "renderer_metrics": {
+      "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+      "block_size": 127,
+      "channels": 2,
+      "clipped_channel_samples": 0,
+      "clipped_frames": 0,
+      "contact_model": "ideal-contacts-v1",
+      "evidence_status": "unmeasured",
+      "frames": 144000,
+      "model": "ideal-shared-sine-v1",
+      "peak": 0.08429475128650665,
+      "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+      "pedal_gain_denominator": 8,
+      "pedal_gain_law": "linear-pedal-position-v1",
+      "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+      "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+      "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+      "pedal_mixture_denominator": 8,
+      "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+      "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+      "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+      "pedal_routing_model": "linear-pedal-bus-reference-v1",
+      "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+      "pedal_weight_policy": "all-200-unit-positive-v1",
+      "percussion_model": "shared-readiness-v1",
+      "profile_id": "nominal-unmeasured-v1",
+      "render_schema_version": 3,
+      "rms": 0.022980303816301697,
+      "sample_format": "pcm_s16le",
+      "sample_rate": 48000,
+      "seed": 2704,
+      "status": "ok"
+    },
+    "subjective_listening_performed": false,
+    "verifier": {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/verify_render.py",
+        "/workspace/scratch/f364bc93d920/Hammond-B3-Organ/examples/demos/pedal-phrase-v1/bundle"
+      ],
+      "returncode": 0,
+      "stderr_bytes": 0,
+      "stdout_bytes": 1017,
+      "stdout_retained_as": "analysis/verification.json"
+    },
+    "wav": {
+      "bytes": 576044,
+      "sha256": "a3d1958189e811b8e353a75380d380016db5286eb08a2005626d95df64dde6f1"
+    }
+  },
+  "build": {
+    "build_argv": [
+      "/workspace/scratch/f364bc93d920/tooling/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+      "--config",
+      "Release",
+      "--target",
+      "hammond_render",
+      "--parallel",
+      "2"
+    ],
+    "build_returncode": 0,
+    "compiled_profile": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    },
+    "configuration": "Release",
+    "configure_argv": [
+      "/workspace/scratch/f364bc93d920/tooling/cmake/data/bin/cmake",
+      "-S",
+      "/workspace/scratch/f364bc93d920/a43-pedal-demo/source",
+      "-B",
+      "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "configure_returncode": 0,
+    "core_library": {
+      "bytes": 217906,
+      "sha256": "9bbbb736e8c965cdfa11fead46a2b54539be61b7ddebf30b5a803c415252ace0"
+    },
+    "generated_pedal_header": {
+      "bytes": 13333,
+      "sha256": "efddce2ea3619a7dd9e153382e307928f7aed60bdb8a0318ca6c0e71ee5f6034"
+    },
+    "machine": "x86_64",
+    "native_vst3_enabled": false,
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "renderer": {
+      "bytes": 135320,
+      "path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build/hammond_render",
+      "sha256": "a0a33ffad00f01f82e3e25fb59b9225c0d4aa5655ce601fea3b81e2c8af9079e"
+    },
+    "translation_units": [
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/ContactBank.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/ContactBank.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o",
+        "source_identity": {
+          "bytes": 9665,
+          "sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/ControlState.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/ControlState.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ControlState.cpp.o",
+        "source_identity": {
+          "bytes": 5504,
+          "sha256": "d297545788fa62b0167fc0a9c07081b1f8af79bd1252ceb66d0d1326dd214e58"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/ControlStateIO.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/ControlStateIO.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o",
+        "source_identity": {
+          "bytes": 11261,
+          "sha256": "a1043d29d2321cccad4e994afbf62e16d93ce6cd15ce5c7593556daff1b0a8cf"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Engine.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/Engine.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/Engine.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Engine.cpp.o",
+        "source_identity": {
+          "bytes": 23860,
+          "sha256": "e082d07323c506f58c726c76a8459bbbec9b01fcb7b20ca6d6323c065fa6664c"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/HostTimeline.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/HostTimeline.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/HostTimeline.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/HostTimeline.cpp.o",
+        "source_identity": {
+          "bytes": 21115,
+          "sha256": "37941dc9d833cabc1ed7ca22327ad23240ea8c04e6de9fc3f447222d2ebb41dd"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/InputProcessor.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/InputProcessor.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o",
+        "source_identity": {
+          "bytes": 1257,
+          "sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/NoteOwnership.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/NoteOwnership.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o",
+        "source_identity": {
+          "bytes": 8856,
+          "sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/ParameterBridge.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/ParameterBridge.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o",
+        "source_identity": {
+          "bytes": 9688,
+          "sha256": "14d7dcfd24f5e7d6d59de8b31999ee52b33c64f73df453bff82b9eaa4f89dce0"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalNoteOwnership.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/PedalNoteOwnership.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/PedalNoteOwnership.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalNoteOwnership.cpp.o",
+        "source_identity": {
+          "bytes": 7419,
+          "sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalRouting.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/PedalRouting.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/PedalRouting.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalRouting.cpp.o",
+        "source_identity": {
+          "bytes": 3983,
+          "sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/PedalVoice.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/PedalVoice.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o",
+        "source_identity": {
+          "bytes": 1171,
+          "sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Percussion.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/Percussion.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/Percussion.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Percussion.cpp.o",
+        "source_identity": {
+          "bytes": 4837,
+          "sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/PerformanceInput.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/PerformanceInput.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/PerformanceInput.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/PerformanceInput.cpp.o",
+        "source_identity": {
+          "bytes": 4185,
+          "sha256": "fc9d3775ad1d3faf23beacb52c6c78108f967e8e7d209b74ef56e1a9caa44030"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Profile.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/Profile.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/Profile.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Profile.cpp.o",
+        "source_identity": {
+          "bytes": 11655,
+          "sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/StateExchange.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/StateExchange.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/StateExchange.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/StateExchange.cpp.o",
+        "source_identity": {
+          "bytes": 8893,
+          "sha256": "10a85957cad8e87e00f8ada543f697b9db4d59590b306baaae05fc0120a2a2bf"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -I/workspace/scratch/f364bc93d920/a43-pedal-demo/build/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/TonewheelBank.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/src/TonewheelBank.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o",
+        "source_identity": {
+          "bytes": 4390,
+          "sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b"
+        }
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/f364bc93d920/a43-pedal-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_render.dir/tools/render.cpp.o -c /workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/render.cpp",
+        "directory": "/workspace/scratch/f364bc93d920/a43-pedal-demo/build",
+        "file": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/render.cpp",
+        "output": "CMakeFiles/hammond_render.dir/tools/render.cpp.o",
+        "source_identity": {
+          "bytes": 42174,
+          "sha256": "ed0514a0b75d9109bdbbb3f7f590e33b9738249274ea8b78f4b2ece4d3e5c381"
+        }
+      }
+    ],
+    "versions": {
+      "cmake": "cmake version 3.31.6\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+      "compiler": "c++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+      "python": "Python 3.12.14"
+    }
+  },
+  "created_at_utc": "2026-11-13T10:58:48.017857+00:00",
+  "description": "Three-second original C-F-G-C nominal pedal/two-manual phrase; actual PCM16 render and independent byte/statistical verification.",
+  "evidence_scope": "synthetic_engineering",
+  "limits": [
+    "This example uses the fixed nominal source, ideal-contact and static pedal-mixture models.",
+    "No physical recording, calibrated pedal footage, AO-28/scanner/Leslie processing, DAW/device qualification or subjective listening is claimed.",
+    "Same-build partition equality is observed; byte equality across arbitrary toolchains/libm implementations is not promised.",
+    "Historical absolute paths identify this execution and are not replay instructions."
+  ],
+  "physical_status": "unmeasured",
+  "schema_version": 1,
+  "source": {
+    "archive_path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source",
+    "archive_sha256": "cd12275adc2a32385c9b1c6f098a05a85b969e80e20ef3b5f7506c266e77d84c",
+    "archived_file_count": 474,
+    "attestation": "Observed local archive/build execution; not a signed source-to-binary attestation.",
+    "commit": "d7b886103f8c9d4649ffa1c35930b79808217a3d",
+    "git_blob_and_sha256_checks_after_audio": true,
+    "git_blob_and_sha256_checks_before_build": true,
+    "manifest_git_observation": "unavailable: archive has no Git metadata; genuine producer manifest remains unchanged",
+    "source_inventory": "source-blobs.json",
+    "source_inventory_identity": {
+      "bytes": 124311,
+      "sha256": "4b207c6ad747761442ab326b3fd683ecd48fbbf6b1eedea4a8de600b832b64e8"
+    },
+    "tree": "018c3897889aaae0070f632981e0c889a35cad30"
+  },
+  "tools": {
+    "analyze_wav.py": {
+      "bytes": 15835,
+      "path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/analyze_wav.py",
+      "sha256": "e39d3b414854066af2510c3dedf26c70ea71066a09efce5a9cdb41114e8b5fb7"
+    },
+    "compile_profile.py": {
+      "bytes": 20385,
+      "path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/compile_profile.py",
+      "sha256": "2ca649de88a3f267970e4ed00fa6c08b7c234bffcc1b4c24b47a89be608fb2a8"
+    },
+    "render_fixture.py": {
+      "bytes": 33401,
+      "path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/render_fixture.py",
+      "sha256": "f8da8a3a5633eb4d28e32a9e607ff579f188c520a89ae84dbc0c03684ccadcb1"
+    },
+    "verify_render.py": {
+      "bytes": 34933,
+      "path": "/workspace/scratch/f364bc93d920/a43-pedal-demo/source/tools/verify_render.py",
+      "sha256": "0f212fd56423de617953be200bdfeacfeb807a3b6e280c8f0576242d79fd0539"
+    }
+  }
+}

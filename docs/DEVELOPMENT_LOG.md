@@ -1304,3 +1304,62 @@ added actual mutation regressions and bounded changed-field diagnostics. The
 precise old failing field was not observed. Fresh hosted Windows inventory
 remains required. Final W7 publication changes only Markdown result records
 from the repaired source tree; live wave-8 work and metadata remain excluded.
+
+
+### Wave-7 publication and observed Windows inventory closure
+
+Published and fetched `7fb9b6121b729f46a9e18d80e8620eb21dc0847b`, exact tree
+`19239e05f6c5219b50d3f398ba9a6eb3acc2a1ac`. In core run 43415692328, Windows
+passed 68/68 in 84.18 seconds; Linux Release and sanitizers also passed. In native
+run 43415692247, Windows passed 7/7 in 5.80 seconds and Linux 8/8 in 5.70 seconds. Both completed
+inventory/copy checks and uploaded bundles. Root downloaded both actual ZIPs
+and independently matched API ZIP digest, inner archive digest and every
+payload byte/size/mode/hash. Windows fresh-path inventory now has observed
+platform recovery. macOS remained queued; no full matrix pass is claimed at
+this observation. Exact artifacts and limits are in PEDAL_NATIVE_PORTABILITY.md.
+
+For wave 8, root added the completed pedal plotter to real OfflineTools preflight
+and install rules, extending its exact payload from 22 to 23 files. Relocation
+checks now compare all three actual pedal scenarios' source/installed SVGs,
+embedded CSV hash and existing-output preservation. Missing pedal-script input
+also preserves an existing prefix. The targeted private preflight method passed
+in 0.469 seconds; combined relocation and full source qualification follow the wave 8 freeze.
+
+
+## Wave 8 accepted — retained audio, plots and operational gates
+
+Assignments 43–48 are accepted. The retained three-second pedal phrase includes
+actual stereo PCM16, source/profile/score inputs, schema-3 provenance and seven
+independent PCM windows. Its independent reviewer checked all 474 historical
+Git blobs, relocated verification, ten rehashed semantic mutations, current
+block partitions and manual/pedal counterfactuals. No physical fidelity is inferred.
+
+The bounded standard-library plotter validates all 37 metadata declarations and
+27-column rows, preserves contact/routing transitions and signal extrema, and
+embeds the exact input hash. Sixteen focused methods passed against nine actual
+scenario/rate traces; three SVGs were rendered and inspected. Root integrated
+the frozen script as the 23rd OfflineTools file, including preflight and actual
+relocated comparisons for all three pedal scenarios. The current operational
+handoff and build/CI/project guide contain practical observed commands.
+
+The remaining M3/scanner contract rereads 66 relevant atlas pages and 11 actual
+rendered pages, preserving the page-166 traversal erratum. It specifies the next
+50-component graph/compiler/independent numerical gate without inventing
+companion files, specimen values or runtime results. The new bounded session
+checker validates this ledger only; 24 independent methods pass. Root's explicit
+48-complete gate reports eight complete waves and actual 50 dispatched identities.
+The coherent full source/relocation gate and expected-parent publication follow.
+
+
+### Eighth-wave coherent source qualified
+
+Frozen tree `5370890e32045a556cb61a88cdb1f04fb5a18f7e` contains 534 files and
+the actual 48-complete manifest (51 dispatched, three running, nine planned).
+Fresh SDK-free and locked-SDK native Release builds succeeded. All **71/71
+ordinary suites passed in 54.37 seconds**, and **8/8 focused actual native suites
+passed in 7.87 seconds**, with zero failures, disabled tests or skips. This
+includes the demo, plotter, session checker, exact 23-file relocation and actual
+native bundle relocation. The local module and profile hashes remain unchanged.
+The wave-8 integration review retains exact commands, scope, log/JUnit hashes
+and the separate next hosted gate. Final changes are Markdown results only;
+ongoing wave-9 work and later actual assignment states remain outside the freeze.

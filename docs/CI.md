@@ -1,11 +1,20 @@
 # Continuous integration
 
-The [CI workflow](../.github/workflows/ci.yml) builds and tests the current
-framework-independent core, generated nominal profile, offline renderer, and
-registered C++/Python tests. It runs on pushes to `main`, pull requests, and
-manual dispatch. This is engineering verification of the nominal model.
+Two independent workflows run on pushes to `main`, pull requests and manual
+dispatch. Both provide engineering verification of identified nominal software;
+their results and artifacts have different scopes.
 
-## Supported CI matrix and observed qualification
+| Workflow | What it builds and checks |
+| --- | --- |
+| [CI](../.github/workflows/ci.yml) | SDK-free core, generated nominal profile, manual/pedal offline tools and all discovered ordinary C++/Python tests; three Release platforms plus Linux ASan/UBSan/leaks. |
+| [Native VST3](../.github/workflows/native-vst3.yml) | Explicit pinned SDK acquisition, actual `HammondB3.vst3`, validator and native harnesses on three Release platforms, followed by bundle inventory/archive. |
+
+Read [STATUS.md](STATUS.md) and the [operational handoff](PEDAL_HANDOFF.md) for
+the latest identified source and remaining gates. A passing core workflow does
+not establish native qualification; a passing native CTest step does not by
+itself establish completion of its subsequent artifact stage.
+
+## Core CI matrix and historical qualification
 
 | Check | Hosted runner | Compiler / architecture | Configuration |
 | --- | --- | --- | --- |
@@ -14,11 +23,12 @@ manual dispatch. This is engineering verification of the nominal model.
 | Release (Windows MSVC) | `windows-2022` | Visual Studio 2022 MSVC / x64 | Release |
 | Linux GCC ASan + UBSan + leaks | `ubuntu-24.04` | GCC / x64 | Debug, address/undefined/leak checks |
 
-All four jobs passed their 26 registered suites at `61c6ecb` in
+The original session's historical four jobs passed their then-registered 26 suites at `61c6ecb` in
 [run 43368537860](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43368537860).
-The complete archives contain 274 Python methods per job and zero test skips.
+Those historical archives contain 274 Python methods per job and zero test skips.
 The [final platform audit](reviews/FINAL_PLATFORM_REVIEW.md) retains exact
 source/artifact identities, actual tools, complete method counts and sanitizer flags.
+Those counts do not describe the newer pedal/native source or its current suite.
 The first run exposed macOS decimal parsing and Windows evidence assumptions;
 those failures and their fixes remain in the development log and agent notes.
 Qualification requires the actual jobs for the exact commit under review. At the
@@ -33,12 +43,13 @@ commit without rerunning the affected checks. Shared observed results belong in
 Python is selected as `3.12` through the pinned official setup action, including
 the selected interpreter's absolute path in CMake configuration. CMake and CTest
 come from the hosted image; CMake configuration enforces the repository minimum
-of 3.21. The workflow logs their exact versions, Python, the compiler selection,
+of 3.21; enabling the optional pinned native SDK requires 3.25+. The workflows
+log their exact versions, Python, the compiler selection,
 and the tested revision. Stable OS labels still receive image and tool updates;
 this matrix does not pin every compiler or Python patch release. Runner labels
 and architectures follow the [official runner inventory](https://github.com/actions/runner-images#available-images).
 
-## What runs and how failures propagate
+## What the core workflow runs
 
 Each job configures an out-of-source directory, builds the selected preset with
 two parallel workers, then invokes CTest. Release uses the `release` preset;
@@ -105,7 +116,7 @@ disabled cannot qualify the hosted leak-checking gate.
 
 ## Read the result and diagnostics
 
-A green workflow requires all three Release jobs and the sanitizer job to pass.
+A green core workflow requires all three Release jobs and the sanitizer job to pass.
 A parser check of the YAML, a successful configure, or an unexecuted workflow
 does not establish this. Inspect the run's commit, job conclusions, test counts,
 and any skips before recording qualification. Python unittest skips can appear
@@ -120,21 +131,111 @@ output, CTest console output and JUnit XML. CMake's configuration diagnostics,
 cache, and CTest `LastTest.log` / `LastTestsFailed.log` are included when produced.
 An early failure may leave some files absent; inspect the first failing step.
 The full test log is useful even when the console only prints failed tests.
-Artifacts are diagnostics, not distributable plugin or application packages.
+These core artifacts are diagnostics, not plugin or application packages. Native
+bundle archives have their separate workflow and inventory described below.
 
-The portable decimal converter and Windows evidence repairs now have observed
-MSVC/AppleClang results at the commit above. Exact nominal `pow` comparisons,
+The original portable decimal converter and Windows evidence repairs have
+historical MSVC/AppleClang results at the commit above. Exact nominal `pow` comparisons,
 differing `long double` precision and filesystem behavior remain relevant when
 the compiler or platform changes. Fix demonstrated defects in their source/test
 contract; do not suppress a job or warning to manufacture qualification.
 
+## Actual native VST3 workflow
+
+The [native workflow](../.github/workflows/native-vst3.yml) has separate jobs for
+`ubuntu-24.04` GCC/x64, `macos-15` AppleClang/arm64 and `windows-2022` MSVC/x64.
+Each is limited to 35 minutes, with matrix `fail-fast` disabled. It selects
+Python 3.12 and records the actual runner, source, tools and configuration.
+The SDK is acquired explicitly into the runner's temporary directory, then
+verified against the checked-in
+[dependency lock](../data/dependencies/vst3-sdk-lock.json). Ordinary CMake
+configuration never downloads the SDK.
+
+The workflow builds `hammond_vst3_test_inputs`, then performs one verbose CTest
+run matching `^(hammond_vst3_validator|test_native_)`, with a 300-second timeout,
+JUnit and complete success/failure logs. The aggregate builds the actual module,
+validator and all registered native harness inputs without running them twice.
+Discovery changes with the source and platform. The initial wave-7 Linux
+snapshot registered eight focused entries: validator, controller, ABI, behavior,
+dense automation, concurrency, selective allocation and actual install/relocation.
+The selective allocation audit is Linux-only. A four-suite hosted result from
+the preceding revision does not establish execution of these later entries.
+
+After successful native tests, the workflow inventories the generated bundle,
+copies it into a staging directory, verifies the copied inventory agrees, and
+creates a `tar.gz` archive with an external SHA-256 record. It retains diagnostics
+and bundle payloads as separate artifacts for 14 days, using names containing
+the platform, architecture, source SHA and attempt. The inventory includes the
+actual linked module, SDK metadata and retained notices. SDK `moduleinfo.json`
+is preserved as opaque tool output; its grammar can include trailing commas.
+
+[VST3_CI.md](VST3_CI.md) documents the bounded inventory and publication rules.
+The inventory's source SHA is caller-declared; byte hashes and a supported
+module header do not authenticate its build or load it in a host. Actual native
+harness results supply a distinct execution record. These artifacts are unsigned
+engineering bundles, with no implied DAW registration, runtime bundling,
+notarization, project-wide license grant or release approval.
+
+Native reproduction after explicit SDK acquisition/verification:
+
+```sh
+cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+  -DHAMMOND_BUILD_VST3=ON -DHAMMOND_VST3_SDK_ROOT=/absolute/path/to/vst3sdk
+cmake --build build-native --config Release --parallel 2 \
+  --target hammond_vst3_test_inputs
+ctest --test-dir build-native -C Release -V --no-tests=error --timeout 300 \
+  -R '^(hammond_vst3_validator|test_native_)' \
+  --output-junit native-ctest.xml
+```
+
+Use the same platform generator/compiler choices as the core workflow and a
+fresh build directory when changing them. [VST3_BUILD.md](VST3_BUILD.md) gives
+the exact SDK helper commands and generated bundle-path file;
+[VST3_LOCAL_INSTALL.md](VST3_LOCAL_INSTALL.md) covers explicit local staging.
+Configure/build/CTest success is separate from any actual installed-host test.
+
+### Observed pedal/native portability sequence
+
+The following are dated records inspected during assignment 46, not a claim
+that the latest `main` has already passed every gate. The
+[portability review](reviews/PEDAL_NATIVE_PORTABILITY.md), current status and
+development log own subsequent repair identities and results.
+
+| Source / workflow | Observed result |
+| --- | --- |
+| `d7b886103f8c9d4649ffa1c35930b79808217a3d`; [core run 43411073429](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43411073429) | Linux, macOS and sanitizer jobs succeeded. Windows passed 65/67 suites; inventory's cross-API metadata comparison and a read-only Git-fixture cleanup failed. |
+| Same source; [native run 43411073407](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43411073407) | Linux succeeded. macOS controller linkage lacked CoreFoundation; Windows controller round trips failed under an inherited SDK fast-math option. Other executed Windows native checks were retained rather than treated as a full job pass. |
+| Repair `9403debd754f771bf39bc8cd771ecfd86c0f14d6`; [core run 43413518927](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43413518927) | Linux, macOS and sanitizer jobs succeeded. Windows passed 66/67 suites, failing final bundle stability in two synthetic cases within the inventory suite; the SDK-fixture cleanup repair passed. |
+| Same repair; [native run 43413518971](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43413518971) | All four native CTest entries passed on all three platforms. Complete Linux/macOS jobs succeeded. Windows failed the later artifact inventory with `bundle changed during inventory`; no complete three-platform native workflow pass is established by this run. |
+| Published wave-7 `7fb9b6121b729f46a9e18d80e8620eb21dc0847b`; [core run 43415692328](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43415692328) and [native run 43415692247](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43415692247) | Both were queued when publication and fetched local/remote identity were confirmed. This later source includes the fresh-path inventory repair and new native/install tests. Actual outcomes belong in current status and the portability review; no pass is inferred from dispatch. |
+
+The published repair restored strict project floating-point policy without
+modifying SDK dependencies, linked CoreFoundation for the controller test,
+compared metadata within each stat API while checking cross-API identity/type/
+size, and preserved the read-only Git fixture by moving it. The subsequent
+inventory work checks fresh path metadata instead of Windows enumeration-cached
+`DirEntry` metadata and retains bounded field diagnostics. It is included in
+published wave-7 source `7fb9b612…`; its actual new hosted results must be recorded
+before closing the remaining gate.
+
+Do not collapse these failures into a green validator summary. The retained
+actual-module SDK validation reported 47 passed, zero failed and exit 0, while
+also printing 16 teardown diagnostics and nine unsupported-rate `ERROR` messages.
+Only float32 at 44.1/48/96 kHz is supported. The separate SDK selftest's 51 passes
+do not test the Hammond module. Later Linux allocation/TSAN/automation evidence
+has its own scopes in [VST3_REALTIME.md](VST3_REALTIME.md),
+[VST3_CONCURRENCY.md](VST3_CONCURRENCY.md) and
+[VST3_AUTOMATION_REVIEW.md](VST3_AUTOMATION_REVIEW.md); it is not an unconfigured
+native sanitizer CI job.
+
 ## Workflow trust and maintenance
 
-The workflow uses `contents: read`, opts out of persisted checkout credentials,
-and does not access repository secrets, publish releases, deploy, or write back
+Both workflows use `contents: read`, opt out of persisted checkout credentials,
+and do not access repository secrets, publish releases, deploy, or write back
 to the repository. Pull requests run under `pull_request`; there is no trusted
 `pull_request_target` or follow-up workflow executing their code. No dependency
-cache is shared between these runs. Only named diagnostic paths are uploaded.
+cache is shared between these runs. Only named diagnostics and native-artifact
+paths are uploaded.
 
 Official GitHub actions are pinned to verified full commit SHAs. As checked
 against their release tags and manifests on 2026-11-13:
@@ -149,9 +250,11 @@ For an update, verify the official release tag resolves to its commit, inspect
 the release notes and action manifest, then change the SHA and human-readable
 version comment together. Their Node 24 manifests target current hosted runners;
 self-hosted runner qualification is outside this matrix. No third-party source
-is vendored by this change.
+is vendored by these workflows. The native workflow explicitly acquires the
+reviewed external SDK into temporary storage.
 
-This workflow does not build a VST3 adapter, a device-audio standalone product,
-native UI, signed installer, or measured scanner/AO-28/Leslie model. It supplies
-no DAW/device qualification, physical-fidelity result, or real-time deadline
-guarantee. Those retain their separate [M0-M9 acceptance gates](PLAN.md).
+The core workflow remains SDK-free; the native workflow builds and tests the
+actual VST3 adapter. Neither supplies a device-audio standalone product, custom
+native UI, signed installer or measured scanner/AO-28/Leslie model. Actual DAW
+project behavior, device deadlines and physical fidelity retain their separate
+[M0–M9 acceptance gates](PLAN.md).

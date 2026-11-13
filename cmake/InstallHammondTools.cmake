@@ -58,13 +58,14 @@ if(TARGET hammond_render)
             "$<TARGET_FILE:hammond_pedal_trace>"
             "@HAMMOND_COMPILED_PROFILE@"
             "@PROJECT_SOURCE_DIR@/tools/plot_console_trace.py"
+            "@PROJECT_SOURCE_DIR@/tools/plot_pedal_trace.py"
             "@_hammond_fixture_files@"
             "@_hammond_console_fixture_files@"
             "@_hammond_pedal_fixture_files@")
         foreach(_hammond_input IN LISTS _hammond_inputs)
             if(NOT EXISTS "${_hammond_input}" OR IS_DIRECTORY "${_hammond_input}")
                 message(FATAL_ERROR
-                    "OfflineTools missing required file '${_hammond_input}'. Build all five executable targets (hammond_render, hammond_model_info, hammond_parameter_info, hammond_console_trace, hammond_pedal_trace), nominal.b3p and retain the source plot script/catalogs/scores for the selected configuration before installing.")
+                    "OfflineTools missing required file '${_hammond_input}'. Build all five executable targets (hammond_render, hammond_model_info, hammond_parameter_info, hammond_console_trace, hammond_pedal_trace), nominal.b3p and retain both source plot scripts/catalogs/scores for the selected configuration before installing.")
             endif()
         endforeach()
     ]=])
@@ -75,6 +76,7 @@ if(TARGET hammond_render)
                    hammond_console_trace hammond_pedal_trace
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT OfflineTools)
     install(PROGRAMS "${PROJECT_SOURCE_DIR}/tools/plot_console_trace.py"
+                     "${PROJECT_SOURCE_DIR}/tools/plot_pedal_trace.py"
         DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT OfflineTools)
     install(FILES "${HAMMOND_COMPILED_PROFILE}"
         DESTINATION "${CMAKE_INSTALL_DATADIR}/hammond-b3-organ" COMPONENT OfflineTools)

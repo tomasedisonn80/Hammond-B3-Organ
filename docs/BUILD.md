@@ -1,9 +1,13 @@
 # Building the engineering baseline
 
 The core uses C++20 and the standard library. Authoring tools use Python's
-standard library. No package downloads, host SDKs, audio drivers or external
-libraries are required by this build. The nominal profile and synthetic output
-are engineering fixtures; they are not measured instrument evidence.
+standard library. The default build requires no downloads, host SDKs, audio
+drivers or external libraries. It includes the nominal manual/pedal engine and
+offline tools. An [optional native VST3 build](#optional-native-vst3-build)
+uses a separately acquired pinned SDK; configuration never fetches dependencies.
+The nominal profile and synthetic output are engineering fixtures, not measured
+instrument evidence. [PEDAL_HANDOFF.md](PEDAL_HANDOFF.md) connects the build to
+current rendering, tracing, installation and resume procedures.
 
 ## Prerequisites
 
@@ -11,12 +15,17 @@ are engineering fixtures; they are not measured instrument evidence.
 - A C++20 compiler and build tool: GCC/Make, Clang/Make or Ninja, or MSVC/MSBuild.
 - Python 3.10 or newer, discoverable by CMake as a Python 3 interpreter.
 
+For `HAMMOND_BUILD_VST3=ON`, additionally use CMake 3.25+ and the exact external
+SDK/submodules in [vst3-sdk-lock.json](../data/dependencies/vst3-sdk-lock.json).
+The default switch is `OFF`. Native SDK sources and their generated outputs stay
+outside this repository and outside each other's directories.
+
 CMake enables strict warnings and treats them as errors for GCC, Clang,
 AppleClang and MSVC. This exposes portability problems instead of hiding them.
 The [verification record](#verification-record) separates historical local checks
-from later hosted qualification. [STATUS.md](STATUS.md) and
-[CI_QUALIFICATION.md](CI_QUALIFICATION.md) identify the tested revisions and
-remaining gates.
+from later hosted qualification. [STATUS.md](STATUS.md), [CI.md](CI.md) and the
+[current handoff](PEDAL_HANDOFF.md) identify tested revisions and remaining gates;
+[CI_QUALIFICATION.md](CI_QUALIFICATION.md) retains the original session's history.
 
 ## Linux and macOS
 
@@ -84,6 +93,9 @@ With a single-configuration generator such as Ninja, also pass
 build directory for single-configuration generators and normally under `Debug/`
 or `Release/` for Visual Studio. The compiled profile remains at the build root.
 The POSIX Makefile is optional; Windows does not need it.
+All six native CLI programs use the explicit Unicode argument boundary described
+in [CLI_UNICODE.md](CLI_UNICODE.md); use the selected configuration's executable
+and preserve quoting around paths containing spaces.
 
 ## Targets and generated data
 
@@ -91,10 +103,18 @@ The POSIX Makefile is optional; Windows does not need it.
 |---|---|
 | `hammond_core` | Static framework-independent core from `src/*.cpp` |
 | `hammond_profile` | Validate authoring JSON and write `build/nominal.b3p` |
+| `hammond_pedal_routing` | Validate/compile the reviewed 200-position pedal routing data into the private generated header |
 | `hammond_render` | Offline WAV renderer from `tools/render.cpp` |
+| `hammond_model_info` | Compiled console and pedal model metadata |
+| `hammond_parameter_info` | All 45 core parameter mappings; diagnostic output does not inspect native host exports |
+| `hammond_console_trace` | Actual sample-by-sample console diagnostics |
+| `hammond_pedal_trace` | Actual pedal unmute, overlap and routing diagnostics |
 | `hammond_benchmark` | Bounded prepared-engine timing measurements; see [BENCHMARKING.md](BENCHMARKING.md) |
 | `test_*` | One standalone executable for each `tests/test_*.cpp` |
-| `check` | Build the profile and C++ tests, then run CTest; requires `BUILD_TESTING=ON` |
+| `check` | Build the required profile/tools/tests, then run all registered CTest entries; requires `BUILD_TESTING=ON`, and includes native inputs/tests when enabled |
+| `HammondB3` | Optional actual VST3 module and bundle resources; requires `HAMMOND_BUILD_VST3=ON` |
+| `hammond_vst3_test_inputs` | Optional build-only aggregate for the module, validator and all native harnesses |
+| `check_vst3` | Build that aggregate, then run the focused validator and `test_native_*` entries |
 
 The profile compiler runs as:
 
@@ -121,10 +141,14 @@ Python bytecode output. Run a build before calling `ctest` directly; CTest does
 not compile test executables or generate input files itself. The `check` target
 performs those prerequisites automatically.
 
-The [OfflineTools install component](OFFLINE_INSTALL.md) installs the renderer,
-compiled profile and event fixtures into a user-selected local prefix. Its CTest
-smoke exercises actual installation, relocation, PCM identity and explicit data
-use. It adds no audio-device application, plugin or platform runtime packaging.
+The [OfflineTools install component](OFFLINE_INSTALL.md) installs the five native
+offline tools, compiled profile, catalogs/scores and its declared plotting scripts
+into a selected local prefix. Its CTest exercises actual installation, relocation,
+PCM identity and explicit data use. The separately enabled
+[NativeVST3 component](VST3_LOCAL_INSTALL.md) stages a complete built bundle;
+neither component supplies an audio-device application or compiler runtime
+package. Their current manifests own the file lists; older file counts describe
+only their recorded historical revisions.
 
 ## Release and sanitizer builds
 
@@ -145,6 +169,69 @@ compile and link both runtimes. Unsupported compiler drivers, including MSVC
 and clang-cl, fail configuration with an explicit message. Sanitizer support
 must also exist in the installed toolchain and execution environment.
 
+## Optional native VST3 build
+
+Use [VST3_BUILD.md](VST3_BUILD.md) for the exact SDK identity, license checks and
+platform-specific build boundaries. The reviewed SDK is 3.8.1,
+`v3.8.1_build_84`, root commit
+`3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96`; the lock also pins all four required
+submodules. Acquire into a new external directory whose parent already exists:
+
+```sh
+python3 tools/acquire_vst3_sdk.py --destination /absolute/path/to/vst3sdk
+python3 tools/acquire_vst3_sdk.py --verify-existing /absolute/path/to/vst3sdk
+cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+  -DHAMMOND_BUILD_VST3=ON -DHAMMOND_VST3_SDK_ROOT=/absolute/path/to/vst3sdk \
+  -DCMAKE_INSTALL_LIBDIR=lib
+cmake --build build-native --config Release --parallel 2 \
+  --target hammond_vst3_test_inputs
+ctest --test-dir build-native -C Release --output-on-failure --no-tests=error \
+  -R '^(hammond_vst3_validator|test_native_)'
+```
+
+For an already acquired SDK, run only `--verify-existing`; the acquisition helper
+deliberately refuses existing destinations and never resets them. Both modes
+check the root/submodule pins, raw license/parser identities and tracked,
+untracked or ignored changes. GUI/sample/hosting applications and automatic
+system-plugin links remain disabled. Do not build inside the SDK worktrees.
+
+The commands retain the configuration for Visual Studio; replace the SDK path
+with its actual local spelling and use PowerShell continuation syntax where
+needed. `cmake --build build-native --config Release --target check_vst3`
+combines the input build and focused test run. A module-only build is not a
+validation result. The generated
+`build-native/hammond-vst3-path-Release.txt` records the exact platform bundle
+path. Native tests are conditional on the option; the selective native allocation
+audit is additionally Linux-specific. Read test discovery and logs rather than
+assuming a historical count applies to every platform or revision.
+
+The current instrument supports three event input buses, 45 controls and dry
+float32 stereo at 44.1/48/96 kHz with generic host controls. See the
+[native contract](VST3_SPIKE_CONTRACT.md) for input limits and state migration.
+Hosted native builds have a [separate workflow](VST3_CI.md) and a retained
+[portability repair record](reviews/PEDAL_NATIVE_PORTABILITY.md).
+
+## Install into a selected local prefix
+
+Install does not build missing inputs. After building the corresponding tools
+or bundle, select the component and a new local destination explicitly:
+
+```sh
+cmake --install build-release --config Release --component OfflineTools \
+  --prefix "$HOME/hammond-offline-stage"
+cmake --install build-native --config Release --component NativeVST3 \
+  --prefix "$HOME/hammond-native-stage"
+```
+
+The first command assumes the Release preset's `build-release` directory; use
+the actual configured directory if different. Keep `CMAKE_INSTALL_MODE` unset or
+`COPY` so the payload can move without referring to build-tree symlinks. Offline
+installation can replace selected files in an existing prefix; native staging
+refuses an existing destination `HammondB3.vst3`. The native example's explicit
+`CMAKE_INSTALL_LIBDIR=lib` yields `lib/vst3/HammondB3.vst3` below its prefix.
+Neither command registers the module with a DAW. The component documents retain
+the preflight, relocation, configuration and evidence details.
+
 ## Verification record
 
 The [original build-foundation note](development/agent-notes/09-build-foundation.md)
@@ -154,9 +241,9 @@ not executed for that initial assignment. Its results cover that foundation;
 they do not describe the qualification of later engine, renderer or test changes.
 
 Subsequent hosted runs exercised Linux, macOS, Windows and Linux sanitizers at
-specific revisions. Consult [current status](STATUS.md) and the
-[CI qualification record](CI_QUALIFICATION.md) for observed passes, retained
-failures and pending reruns. A result applies to its recorded revision, platform
+specific revisions. Consult [current status](STATUS.md), [current handoff](PEDAL_HANDOFF.md)
+and [both workflow scopes](CI.md) for observed passes, retained failures and
+pending reruns. A result applies to its recorded revision, platform
 and scope; it does not automatically qualify the working tree. The
 [development log](DEVELOPMENT_LOG.md) records the intervening changes and local
 evidence. No verification pass is implied by the commands on this page.

@@ -2,7 +2,7 @@
 
 ## Active pedal development session
 
-The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **42 new workers have completed seven waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
+The [current sixty-assignment, ten-wave session](development/2026-11-13-pedals/README.md) starts from `b4fc61ccfcc59724f14fb0cee947ed7bb7142075`. **48 new workers have completed eight waves.** Six fresh readers covered all 500 atlas pages and selected actual diagrams; the PDF is unchanged. Earlier sessions below remain historical records.
 
 The core now includes typed 200-position pedal routing, 25 independently held pedals, a named fixed two-mixture voice, two controls and `B3CONTROLS3`. Old state formats explicitly migrate to muted pedals. The registry has 45 records, preserving every field of the earlier 43. Pedals consume the Engine's existing single source frame; lower Cancel, division panics and upper percussion remain independent. Last-rendered diagnostics retain their actual frame/rate tags. The matrix and linear pedal gain are explicit nominal engineering fixtures, not recovered electrical values or measured 16-foot/8-foot responses.
 
@@ -51,6 +51,40 @@ second full 68/68 execution is claimed. At separate repair `9403debd`, all three
 platforms passed actual native tests, Linux/macOS completed artifacts, and core
 Windows passed 66/67 with inventory still failing. The new inventory repair's
 Windows execution and exact wave-7 hosted matrix remain pending.
+
+## Wave 8: retained demo, plots and resumable development
+
+Assignments 43–48 completed the [retained pedal phrase](PEDAL_DEMO.md), its
+[independent acceptance](reviews/PEDAL_DEMO_ACCEPTANCE.md), the [pedal SVG
+plotter](PEDAL_TRACE_PLOTS.md), the [operational handoff](PEDAL_HANDOFF.md), the
+[remaining M3/scanner gate](M3_REMAINING_AND_SCANNER_GATE.md) and a [checker for
+this actual session](PEDAL_SESSION_CHECKS.md). The three-second 48 kHz stereo
+WAV retains all inputs, schema-3 evidence, seven PCM windows and all 474 original
+source-blob identities. Independent local replay and block partitions match;
+component renders agree within the stated quantization bound. It remains
+synthetic nominal-model evidence, with no physical or subjective listening claim.
+
+The standalone standard-library plotter checks the full pedal CSV contract,
+retains every state-transition boundary and min/max envelope bins, and embeds
+its exact CSV hash and metadata. Three actual 48 kHz SVGs were rendered and
+visually inspected. Root added it to the explicit 23-file OfflineTools component;
+all three relocated pedal plots are compared with their source-script execution.
+The [coherent eighth-wave gate](reviews/PEDAL_WAVE8_INTEGRATION.md) passed
+**71/71 SDK-free Release suites in 54.37 seconds** and **8/8 focused native
+suites in 7.87 seconds**, with zero failures, disabled tests or skips.
+
+The new session checker passed the actual 48-complete gate: eight complete waves,
+51 dispatched workers, three running assignments and nine planned rows. This
+validates retained record consistency; root separately accepted the actual work.
+The remaining twelve assignments continue final code, evidence, install,
+platform and handoff reviews. No earlier session's sixty agents are recounted.
+
+At wave-7 commit `7fb9b612`, Windows subsequently passed **68/68 SDK-free suites**
+and **7/7 native suites**, including inventory and bundle publication. Linux
+passed its core, sanitizer and **8/8 native** gates and uploaded its bundle.
+Root downloaded both ZIPs and matched their digests and every payload member's
+bytes, mode and hash. macOS remained queued at this observation. Exact artifacts,
+failures and recovery are in the [portability review](reviews/PEDAL_NATIVE_PORTABILITY.md).
 
 ## Earlier checkpoints and retained history
 

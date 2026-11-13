@@ -1,8 +1,8 @@
 # Local installation of the offline tools
 
 The `OfflineTools` CMake component installs the WAV renderer, console and pedal
-diagnostics, console trace plotter and nominal data into a prefix you choose.
-It contains 22 files and supports offline file workflows. The separate
+diagnostics, both trace plotters and nominal data into a prefix you choose.
+It contains 23 files and supports offline file workflows. The separate
 [NativeVST3 component](VST3_LOCAL_INSTALL.md) stages the actual optional plugin
 bundle in a local prefix. Audio-device applications, signed installers,
 runtime-library bundling and binary redistribution qualification remain separate
@@ -14,7 +14,7 @@ The [build prerequisites](BUILD.md) apply: CMake 3.21+, a C++20 compiler and
 Python 3.10+. Installation performs no downloads and does not build missing
 inputs. Build all five native tools for the selected configuration first. The
 renderer and trace targets also generate `nominal.b3p`. Before copying component
-files, installation checks that all five executables, the profile, plot script,
+files, installation checks that all five executables, the profile, both plot scripts,
 three catalogs and twelve scores exist as files. A missing input fails before
 any component destination is changed, with a build-first or missing-file diagnostic.
 
@@ -49,14 +49,14 @@ cmake --install build-offline --config Release --component OfflineTools `
 
 For single-configuration Ninja on Windows, also configure
 `-DCMAKE_BUILD_TYPE=Release`. The five native tools do not need Python at runtime.
-The installed plot script requires a Python 3.10+ interpreter and only its standard
+Each installed plot script requires a Python 3.10+ interpreter and only its standard
 library. Invoke it explicitly with that interpreter on every platform. Native
 executables still need a compatible operating system and compiler runtime; this
 component does not bundle those runtime libraries.
 
 ## Installed files
 
-The default `GNUInstallDirs` layout contains exactly these **22 files**. Native
+The default `GNUInstallDirs` layout contains exactly these **23 files**. Native
 executable names have the `.exe` suffix on Windows.
 
 | Path below the chosen prefix | Contents |
@@ -66,7 +66,8 @@ executable names have the `.exe` suffix on Windows.
 | `bin/hammond_parameter_info` | All 45 compiled internal parameter mappings |
 | `bin/hammond_console_trace` | Sample-by-sample nominal console CSV diagnostics |
 | `bin/hammond_pedal_trace` | Nominal pedal unmute, overlap and routing CSV diagnostics |
-| `bin/plot_console_trace.py` | Standalone bounded CSV-to-SVG plotter |
+| `bin/plot_console_trace.py` | Standalone bounded console CSV-to-SVG plotter |
+| `bin/plot_pedal_trace.py` | Standalone bounded pedal CSV-to-SVG plotter |
 | `share/hammond-b3-organ/nominal.b3p` | Generated nominal compiled source profile |
 | `share/hammond-b3-organ/fixtures/catalog-v1.json` | Original fixture identities, settings and expectations |
 | `share/hammond-b3-organ/fixtures/a4-fundamental-v1.events` | Nominal A4 gesture with surrounding silence |
@@ -94,7 +95,7 @@ third-party dependencies are installed.
 
 All three catalogs and all twelve event files are copied unchanged. The preceding
 16-file payload retains its names and data bytes; the pedal executable and five
-pedal data files are additions. Event paths remain
+pedal data files and pedal plotter are additions. Event paths remain
 relative to their own catalog. Authoring JSON paths record repository provenance;
 that JSON is not a runtime dependency and is not installed. Pass the installed
 compiled profile explicitly to rendering and tracing. Those tools do not discover
@@ -207,20 +208,25 @@ external recording is needed:
   --profile "$hammond_prefix/share/hammond-b3-organ/nominal.b3p" \
   --scenario overlap --sample-rate 48000 --seed 2705 \
   --output "$hammond_output/pedal-overlap.csv"
+python3 "$hammond_prefix/bin/plot_pedal_trace.py" \
+  --input "$hammond_output/pedal-overlap.csv" --output "$hammond_output/pedal-overlap.svg"
 ```
 
 `hammond_pedal_trace` accepts `unmute`, `overlap` and `routing`. Each scenario is
 120 ms; supported rates are 44100, 48000 and 96000 Hz. Its CSV records the model,
 profile and routing-map identities along with pedal controls, contact state,
-mixtures and audio. Existing output paths are rejected. The installed console
-plotter accepts console CSV; this component does not yet include a pedal plotter.
+mixtures and audio. Existing output paths are rejected. The installed pedal
+plotter reads that CSV without source-checkout dependencies and preserves its
+source hash and all metadata in the SVG. See [PEDAL_TRACE_PLOTS.md](PEDAL_TRACE_PLOTS.md)
+for the exact validation, sample-boundary transitions and extrema-preserving
+drawing reductions.
 See [PEDAL_TRACE.md](PEDAL_TRACE.md) and
 [PEDAL_AUDIO_ACCEPTANCE.md](PEDAL_AUDIO_ACCEPTANCE.md) for the behavioral contracts and limits.
 
 ## Relocation acceptance and evidence scope
 
 `python_test_install` runs actual `cmake --install --component OfflineTools` into a
-temporary prefix containing spaces. It checks all 22 files and unchanged data/script
+temporary prefix containing spaces. It checks all 23 files and unchanged data/script
 bytes, renames the prefix, then runs every installed tool from an unrelated working
 directory with all `HAMMOND_*` variables removed. Missing inputs fail rather than
 skip. The parent test still has source/build paths for the independent comparison;
@@ -233,8 +239,10 @@ must match their same-build originals. The pedal catalog's profile/map/model and
 parameter identities must agree with the installed metadata, render summary and
 all three pedal CSV scenarios. All catalog score hashes are checked. Actual
 build/installed console and pedal traces must be byte-identical, and the installed
-Python script must produce the same bounded console SVG
-as the source script for that retained trace, including its trace hash. These
+Python scripts must produce the same bounded console and pedal SVGs
+as their source scripts for those retained traces, including each trace hash.
+All three pedal scenarios are plotted after relocation, and attempted SVG
+replacement must preserve the installed plotter's existing output. These
 checks establish exercised relocation and same-build equivalence, not physical
 model fidelity or cross-compiler binary/audio identity.
 
@@ -245,7 +253,7 @@ fail without output. The original bytes are restored afterward. This checks expl
 input use; it is not an instrument calibration or provenance-authentication test.
 The additional preflight test generates the same install module's rules in a
 private minimal project. It exercises unbuilt tools and separately missing copies
-of each tool, the profile, plot script, original catalog, console score, pedal
+of each tool, the profile, both plot scripts, original catalog, console score, pedal
 catalog and pedal score. These failures must preserve unrelated prefix contents
 and an older installed executable. Absolute, parent-traversing and empty install
 directories are rejected. No shared build input is renamed or removed by a test.
@@ -255,14 +263,16 @@ including the selected configuration for multi-config generators. All test insta
 are temporary local directories; no system installation is attempted. The expanded
 component's actual local results and precise source snapshot are recorded in
 [pedal assignment 38](development/2026-11-13-pedals/38-install-packages.md).
-The integrator records its new combined publication and hosted qualification.
+The pedal plotter and numeric/visual acceptance are recorded in
+[pedal assignment 45](development/2026-11-13-pedals/45-pedal-plots.md).
+The integrator records its new 23-file combined publication and hosted qualification.
 
 The earlier eight-file component passed hosted Linux, macOS, Windows Release and
 Linux sanitizer relocation checks in
 [run 43365901429 at 6c3dd8b](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43365901429).
 The previous 16-file console extension is recorded in
 [continuation assignment 44](development/2026-11-13-continuation/44-offline-packaging.md).
-Neither historical result substitutes for qualification of this 22-file component.
+Neither historical result substitutes for qualification of this 23-file component.
 The new local Linux result is a same-machine relocation check; it is not a Windows,
 macOS, clean-OS, compiler-runtime bundling or signing result. Native staging has a
 separate [relocated bundle acceptance test](VST3_LOCAL_INSTALL.md).

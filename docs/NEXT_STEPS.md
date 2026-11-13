@@ -2,7 +2,7 @@
 
 ## Active new session
 
-Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Seven waves and 42 actual new workers are complete: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation, the concurrent state exchange and the optional native module with independent Linux ABI/behavior gates. All eight retained scores have exact local baseline/current WAV compatibility.
+Follow the [pedal-session ledger](development/2026-11-13-pedals/README.md) and its actual worker states. Eight waves and 48 actual new workers are complete: full atlas review, prepared routing, nominal Engine/state/parameter integration, bounded pedal ownership, one combined input transaction, offline score commands, schema-3 evidence, trace/catalog diagnostics, bounded automation, the concurrent state exchange and the optional native module with independent Linux ABI/behavior gates. All eight retained scores have exact local baseline/current WAV compatibility.
 
 Wave 5 completed same-frame diagnostics, compiled pedal model metadata, independently checked musical fixtures, sample-linear automation and a bounded race-free UI/audio state handoff. The host contract requires the previous-sample anchor at -1, correct offset-N interpolation/carry, stable event ordering, candidate rendering with whole-callback rollback, and state 1/2/3 loading during active processing. The enabled-path audit measured these actual paths, including the complete proposed callback; the later actual native allocation and concurrency gates now have their own scoped results.
 
@@ -36,20 +36,35 @@ remaining assignment from this sixty-worker session to invent or count again.
 
 ## Next product milestone
 
-Publish the locally qualified seventh-wave source with its retained initial
-67/68 default result, repaired focused Python checks and 8/8 native result. Observe the separate core/native workflows at
-that exact commit on all configured platforms. The first native checkpoint found
-specific macOS linking, Windows floating-point policy and portable inventory/test
-fixture defects; the separate [repair record](reviews/PEDAL_NATIVE_PORTABILITY.md)
-retains those failures. Confirm recovery from actual logs, including inventory and
-bundle artifacts, before closing platform gates.
+Publish the qualified eighth-wave source (71/71 ordinary and 8/8 native suites), including the retained pedal
+phrase, independent demo gate, plotter, exact 23-file relocation, operational
+handoff, scanner plan and new session checker. Preserve the actual 48-complete
+freeze and keep unfinished wave-9 work outside it. Observe the separate core and
+native workflows at the exact published source. Windows inventory/artifact
+recovery is observed at wave-7 `7fb9b612`; macOS for that checkpoint was still
+queued when this entry was written. The [portability record](reviews/PEDAL_NATIVE_PORTABILITY.md)
+retains actual failures, focused fixes, executed results and downloaded artifacts.
 
-Complete the retained pedal phrase and independent PCM/source/replay review, add
-bounded plots of actual pedal trace CSVs, and update the current operational
-handoff. The new session checker must validate these sixty actual assignments,
-not reuse either historical sixty-agent count. Continue waves 9 and 10 with
-independent code/evidence/platform reviews and concrete defect repair, then
-publish all completed work with exact remote identity and current next steps.
+Complete assignments 49–60 as real independent reviews with concrete defect
+repair where warranted. The final gate is:
+
+```sh
+python3 tools/check_pedal_session.py --repo . --expected-complete 60
+```
+
+Use that explicit count only after all sixty new assignments have completed and
+the integrator has accepted their substantive notes. Preserve old session ledgers.
+Publish all completed authorized work with an expected-head guard, verify the
+fetched exact tree, and record actual hosted outcomes and any remaining blockers.
+
+The next product change after this session is the [remaining M3 and scanner
+gate](M3_REMAINING_AND_SCANNER_GATE.md): first author the nominal scanner graph,
+strict schema/compiler and independent endpoint review, then the independent
+offline AC oracle. The gate records all 50 candidate passive components,
+19 signed outputs, depth maps, the explicitly inferred sixteen-position traversal
+and missing physical evidence. Keep the existing dry accumulation path and all
+legacy audio exact while preparing separate U/L/P/Q observability for opt-in
+scanner work. Do not claim the new scanner runtime is already implemented.
 
 The actual loaded native callback now has a scoped allocation audit; native UI
 state/audio stress passed a fully instrumented TSAN run. Preserve their exact
@@ -85,8 +100,9 @@ Use [CAPTURE_PROTOCOL.md](CAPTURE_PROTOCOL.md) and its planned metadata example:
 M4 scanner, M5 AO-28, M6 Leslie electronics and M7 rotary acoustics retain the
 specific source/topology/acquisition dependencies in [PLAN.md](PLAN.md). Native
 VST3/device audio, accessible UI, platform distribution and rights are separate
-M9 gates. The [host proposal](HOST_INTEGRATION.md) supplies unrun adapter criteria,
-not an implemented plugin or device application.
+M9 gates. The historical [host proposal](HOST_INTEGRATION.md) retains earlier criteria.
+The actual [native build](VST3_BUILD.md) and [operational handoff](PEDAL_HANDOFF.md)
+describe implemented VST3 work; device scheduling and standalone audio remain open.
 
 ## Required handoff for every future agent
 

@@ -79,8 +79,10 @@ class OfflineInstallTests(unittest.TestCase):
         cls.console_trace = required_path("HAMMOND_CONSOLE_TRACE_EXECUTABLE")
         cls.pedal_trace = required_path("HAMMOND_PEDAL_TRACE_EXECUTABLE")
         cls.plotter = ROOT / "tools" / "plot_console_trace.py"
-        if not cls.plotter.is_file():
-            raise RuntimeError(f"Missing standalone plot script: {cls.plotter}")
+        cls.pedal_plotter = ROOT / "tools" / "plot_pedal_trace.py"
+        for plotter in (cls.plotter, cls.pedal_plotter):
+            if not plotter.is_file():
+                raise RuntimeError(f"Missing standalone plot script: {plotter}")
         cls.profile = required_path("HAMMOND_TEST_PROFILE")
         cls.bindir = relative_install_dir("HAMMOND_INSTALL_BINDIR")
         cls.datadir = relative_install_dir("HAMMOND_INSTALL_DATADIR") / "hammond-b3-organ"
@@ -127,13 +129,14 @@ class OfflineInstallTests(unittest.TestCase):
             executables = (self.renderer, self.model_info, self.parameter_info,
                            self.console_trace, self.pedal_trace)
             expected = {self.bindir / path.name for path in executables}
-            expected.update((self.bindir / self.plotter.name, self.datadir / "nominal.b3p"))
+            expected.update((self.bindir / self.plotter.name, self.bindir / self.pedal_plotter.name,
+                             self.datadir / "nominal.b3p"))
             expected.update(self.datadir / "fixtures" / name for name in FIXTURE_NAMES)
             expected.update(self.datadir / "fixtures" / "console" / name
                             for name in CONSOLE_FIXTURE_NAMES)
             expected.update(self.datadir / "fixtures" / "pedals" / name
                             for name in PEDAL_FIXTURE_NAMES)
-            self.assertEqual(len(expected), 22)
+            self.assertEqual(len(expected), 23)
             actual = {path.relative_to(prefix) for path in prefix.rglob("*") if path.is_file()}
             self.assertEqual(actual, expected, "OfflineTools installed an unexpected file set")
             self.assertFalse(any(path.is_symlink() for path in prefix.rglob("*")))
@@ -143,6 +146,7 @@ class OfflineInstallTests(unittest.TestCase):
             installed_profile = relocated / self.datadir / "nominal.b3p"
             installed_fixtures = relocated / self.datadir / "fixtures"
             installed_plotter = relocated / self.bindir / self.plotter.name
+            installed_pedal_plotter = relocated / self.bindir / self.pedal_plotter.name
             profile_bytes = self.profile.read_bytes()
             self.assertEqual(installed_profile.read_bytes(), profile_bytes)
             for name in FIXTURE_NAMES:
@@ -155,6 +159,7 @@ class OfflineInstallTests(unittest.TestCase):
                 self.assertEqual((installed_fixtures / "pedals" / name).read_bytes(),
                                  (ROOT / "examples" / "fixtures" / "pedals" / name).read_bytes(), name)
             self.assertEqual(installed_plotter.read_bytes(), self.plotter.read_bytes())
+            self.assertEqual(installed_pedal_plotter.read_bytes(), self.pedal_plotter.read_bytes())
             catalog = json.loads((installed_fixtures / "catalog-v1.json").read_text(encoding="utf-8"))
             self.assertEqual(hashlib.sha256(profile_bytes).hexdigest(),
                              catalog["profile"]["compiled_sha256"])
@@ -351,6 +356,26 @@ class OfflineInstallTests(unittest.TestCase):
                                             "--output", output], unrelated, render_environment)
                     self.assertNotEqual(repeated.returncode, 0)
                     self.assertEqual(output.read_bytes(), traces[1])
+                    retained_trace = output
+                    trace_digest = hashlib.sha256(traces[1]).hexdigest().encode("ascii")
+                    plots = []
+                    for script, kind in ((self.pedal_plotter, "source"),
+                                         (installed_pedal_plotter, "relocated")):
+                        plotted = unrelated / f"{kind} pedal {scenario}.svg"
+                        result = self.invoke([sys.executable, script, "--input", retained_trace,
+                                              "--output", plotted], unrelated, render_environment)
+                        self.assert_success(result)
+                        svg = plotted.read_bytes()
+                        self.assertLessEqual(len(svg), 1024 * 1024)
+                        self.assertEqual(ET.fromstring(svg).tag, "{http://www.w3.org/2000/svg}svg")
+                        self.assertIn(trace_digest, svg)
+                        plots.append(svg)
+                    self.assertEqual(*plots)
+                    repeated_plot = self.invoke(
+                        [sys.executable, installed_pedal_plotter, "--input", retained_trace,
+                         "--output", plotted], unrelated, render_environment)
+                    self.assertNotEqual(repeated_plot.returncode, 0)
+                    self.assertEqual(plotted.read_bytes(), plots[1])
 
             trace_options = ["--scenario", "partial", "--sample-rate", 48000, "--seed", 2644]
             trace_outputs = []
@@ -449,6 +474,7 @@ class OfflineInstallTests(unittest.TestCase):
             shutil.copytree(ROOT / "examples" / "fixtures", source / "examples" / "fixtures")
             (source / "tools").mkdir()
             shutil.copyfile(self.plotter, source / "tools" / self.plotter.name)
+            shutil.copyfile(self.pedal_plotter, source / "tools" / self.pedal_plotter.name)
             shutil.copyfile(self.profile, source / "nominal.b3p")
             targets = ("hammond_render", "hammond_model_info", "hammond_parameter_info",
                        "hammond_console_trace", "hammond_pedal_trace")
@@ -491,6 +517,7 @@ class OfflineInstallTests(unittest.TestCase):
             (prefix / "bin" / self.renderer.name).write_bytes(b"older installation\n")
             before = snapshot()
             missing_inputs = [*outputs, source / "nominal.b3p", source / "tools" / self.plotter.name,
+                              source / "tools" / self.pedal_plotter.name,
                               source / "examples/fixtures/catalog-v1.json",
                               source / "examples/fixtures/console/console-travel-v1.events",
                               source / "examples/fixtures/pedals/pedal-catalog-v1.json",

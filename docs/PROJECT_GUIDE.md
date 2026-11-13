@@ -1,74 +1,85 @@
 # Project guide
 
-The available program is a nominal dry-organ engine and an offline tool set.
-It renders two manuals with retained banks, optional independent contact travel,
-partial key targets and shared percussion. Typed note ownership, a normalized
-parameter bridge and phase-preserving sample-rate changes provide implemented
-foundations for future hosts. The source and console profiles are unmeasured.
+The available program is a nominal dry-organ engine, an offline tool set and an
+optional actual VST3 instrument. Two manuals and 25 pedals share the same 91
+free-running sources. Retained banks, independent contact travel, partial keys,
+shared percussion, typed note ownership and phase-preserving rate changes are
+implemented. The source, console and fixed pedal mixtures remain unmeasured.
 
-Start with the [README quick start](../README.md#build-and-test), listen to the
-[two-second console demo](../examples/rendered/nominal-console-v2/README.md), or use
-the [current developer handoff](CONTINUATION_HANDOFF.md) for exact commands.
-The next development slice is the [prepared pedal-routing kernel](M3_NEXT_GATE.md).
-**Full M3, playable VST3/device applications, native UI and physical fidelity
-remain open.** The [full plan](PLAN.md) keeps their separate dependencies visible.
+Start with the [current operational handoff](PEDAL_HANDOFF.md), the
+[three-second pedal/manual demo](../examples/demos/pedal-phrase-v1/README.md), or
+the [optional native build](VST3_BUILD.md). The default build stays SDK-free.
+**Full M3, actual DAW/device qualification, custom native UI, calibrated physical
+fidelity and signed distribution remain open.** The [full plan](PLAN.md) keeps
+their separate dependencies visible; a built and tested module does not close
+those product gates.
 
 ## Start with the question you need to answer
 
 | Question | Read |
 | --- | --- |
 | What is the full product plan? | [PLAN.md](PLAN.md): M0-M9 deliverables, dependencies and exit evidence. |
-| What works, and what has actually passed? | [STATUS.md](STATUS.md), then the revision-specific evidence in [CONTINUATION_HANDOFF.md](CONTINUATION_HANDOFF.md) and the [final platform review](reviews/FINAL_CONTINUATION_PLATFORM.md). |
-| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md), the concrete [M3 pedal-routing gate](M3_NEXT_GATE.md), and the [session ledgers below](#session-ledgers-and-continuation) for current ownership. |
-| How do I resume with exact commands and evidence? | [CONTINUATION_HANDOFF.md](CONTINUATION_HANDOFF.md): source identity, build, render, demo verification, diagnostics, installation and publication. |
+| What works, and what has actually passed? | [STATUS.md](STATUS.md), the revision-specific [pedal/native handoff](PEDAL_HANDOFF.md), and [native portability review](reviews/PEDAL_NATIVE_PORTABILITY.md). |
+| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md), [M3 requirements](M3_ACCEPTANCE_CONTRACT.md), and the [session ledgers below](#session-ledgers-and-continuation) for current ownership. |
+| How do I resume with exact commands and evidence? | [PEDAL_HANDOFF.md](PEDAL_HANDOFF.md): source identity, builds, render/demo verification, traces/plots, offline/native staging and remaining gates. |
 | Which milestone gates are actually closed? | [ACCEPTANCE_MATRIX.md](ACCEPTANCE_MATRIX.md): software, documentary, specimen and product evidence remain distinct. |
 | Why was a choice made, and what failed? | [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md) and the linked assignment notes. |
 | What must every development session preserve? | [AGENTS.md](../AGENTS.md): source review, declared evidence, file ownership, coherent builds, shared handoff and the standing commit/push workflow. |
 
 Current status and the newest ledger own the latest implementation and observed
 results. A historical review, proposed contract or configured workflow does not
-supersede them. The [original handoff](SESSION_HANDOFF.md) and
+supersede them. The [original handoff](SESSION_HANDOFF.md),
+[console continuation handoff](CONTINUATION_HANDOFF.md) and
 [original CI qualification](CI_QUALIFICATION.md) retain their dated scopes.
 
 ## Build, render, inspect and install
 
-The tools use a C++20 compiler, CMake 3.21+ and Python 3.10+. The core has no
-audio/GUI framework or host-SDK dependency.
+The default tools use a C++20 compiler, CMake 3.21+ and Python 3.10+. The core has
+no audio/GUI framework or host-SDK dependency. Optional native builds additionally
+require CMake 3.25+ and an explicitly acquired, verified pinned SDK.
 
 | Task | Practical reference |
 | --- | --- |
 | Build and test on Linux, macOS or Windows | [BUILD.md](BUILD.md): presets, explicit commands, generated profile, configurations and sanitizer limits. |
 | Render a registration or event score | [RENDER_FORMAT.md](RENDER_FORMAT.md): CLI options, event grammar, sample timing, output format and errors. |
+| Hear the pedals with both manuals | [Pedal demo](PEDAL_DEMO.md) and [retained three-second example](../examples/demos/pedal-phrase-v1/README.md): actual schema-3 bundle, score, source inventory, PCM reports and replay commands. |
+| Inspect actual pedal buses, mixtures and contacts | [Pedal traces](PEDAL_TRACE.md) and [pedal plots](PEDAL_TRACE_PLOTS.md): three fixed 120 ms scenarios, same-frame CSV and bounded standalone SVG. These are distinct from the three-second musical score. |
 | Hear the current console and reproduce its bundle | [Two-second console demo](../examples/rendered/nominal-console-v2/README.md): partial travel, shared readiness, Cancel and masking, with schema-2 provenance and independent PCM checks. |
 | Inspect contact/readiness transitions | [Console traces](CONSOLE_TRACE.md) and [trace plots](CONSOLE_TRACE_PLOTS.md): bounded sample CSV and standalone SVG. The demo's partial-key plot is a separate 120 ms scenario, not a trace of its two-second score. |
 | Try the earlier ideal-contact behavior | [Five original fixtures](../examples/README.md), [four-second demo](../examples/rendered/nominal-two-manual-v1/README.md) and [original replay](DEMO_REPLAY.md). Their retained identities remain intact. |
 | Retain inputs, logs and serialized audio evidence | [RENDER_EVIDENCE.md](RENDER_EVIDENCE.md), [PCM measurements](AUDIO_MEASUREMENTS.md) and [independent bundle verification](RENDER_VERIFICATION.md). |
-| Inspect compiled nominal models and control mappings | [Model metadata](MODEL_METADATA.md) and [parameter bridge](PARAMETER_BRIDGE.md): identities, units and the actual 43 internal mappings. |
-| Install or move the offline tools locally | [OFFLINE_INSTALL.md](OFFLINE_INSTALL.md): the exact 16-file component, explicit profile/event paths and relocation checks. |
+| Inspect compiled nominal models and control mappings | [Model metadata](MODEL_METADATA.md) and [parameter bridge](PARAMETER_BRIDGE.md): console/pedal identities, units and all 45 compiled mappings. Offline metadata does not inspect a native module. |
+| Install or move the offline tools locally | [OFFLINE_INSTALL.md](OFFLINE_INSTALL.md): exact current component payload, five native tools, explicit data paths and relocation checks. |
+| Build, test and stage the actual VST3 | [Native build](VST3_BUILD.md), [native CI](VST3_CI.md) and [explicit local bundle installation](VST3_LOCAL_INSTALL.md). The core/default build remains independent. |
 | Time bounded workloads | [BENCHMARKING.md](BENCHMARKING.md): legacy cases and opt-in `console_motion`, `owned_input` and `console_all` cases; elapsed observations have no deadline pass threshold. |
 
 Build before running CTest; CTest does not compile executables or create the
 generated profile. Render to a new filename: the CLI preserves existing outputs
-and requires hard-link support for publication. The install contains four native
-executables, the Python plotter, a compiled profile, two catalogs and eight event
-files. It is an offline package, with no plugin or device application target.
+and requires hard-link support for publication. The `OfflineTools` install
+component contains the offline tools and its declared data/scripts. The separate,
+opt-in `NativeVST3` component stages a complete built bundle to a new local
+destination. Neither operation supplies an audio-device application or registers
+the plugin in a DAW scan directory. Use the current install manifests rather
+than carrying forward a historical console-only file count.
 
 ## Find the contract behind a claim
 
 | Area | Contracts and retained evidence |
 | --- | --- |
 | Initial architecture and sources | [Implementation contract](IMPLEMENTATION_CONTRACT.md), [profile format](PROFILE_FORMAT.md) and [engine API](ENGINE_API.md). The nominal sources are shared and free-running; source IDs, MIDI notes and indices are distinct. |
-| Controls and saved state | [Console extension](CONSOLE_EXTENSION.md), [control-state format](CONTROL_STATE_FORMAT.md) and [parameters](PARAMETERS.md). There are 43 internal IDs; `B3CONTROLS2` reads legacy version 1 with explicit defaults. Saved controls exclude keys, owners, source phase and transient DSP histories. |
+| Controls and saved state | [Console extension](CONSOLE_EXTENSION.md), [control-state format](CONTROL_STATE_FORMAT.md) and [parameters](PARAMETERS.md). There are 45 permanent IDs; `B3CONTROLS3` reads versions 1/2/3 with explicit muted-pedal migration. Saved controls exclude keys, owners, source phase and transient DSP histories. |
 | Integrated nominal console | [Console dynamics](CONSOLE_DYNAMICS.md), [console acceptance](CONSOLE_ACCEPTANCE.md), [M3 requirements](M3_ACCEPTANCE_CONTRACT.md) and [model metadata](MODEL_METADATA.md). Independent contacts and shared percussion run in the Engine and renderer; the selected values are unmeasured. |
-| Typed input and lifecycle | [Parameter bridge](PARAMETER_BRIDGE.md), [note ownership](NOTE_OWNERSHIP.md), [input transaction](INPUT_PROCESSOR.md) and [sample-rate lifecycle](SAMPLE_RATE_LIFECYCLE.md). These implemented core adapters have fixed bounds and same-thread lifecycle rules; a native host SDK/device integration still needs its own qualification. |
-| Manual and pedal routing | [Factory comparison](FACTORY_REFERENCE.md), [factory runtime acceptance](FACTORY_RUNTIME_ACCEPTANCE.md) and [pedal routing](PEDAL_ROUTING.md). Documentary comparison covers all mapped positions; the audio gate covers manuals. The [next pedal kernel](M3_NEXT_GATE.md) is a plan, not implemented pedal audio. |
+| Typed input and lifecycle | [Parameter bridge](PARAMETER_BRIDGE.md), [manual ownership](NOTE_OWNERSHIP.md), [pedal ownership](PEDAL_NOTE_OWNERSHIP.md), [combined input](PERFORMANCE_INPUT.md) and [sample-rate lifecycle](SAMPLE_RATE_LIFECYCLE.md). Native callback qualification is recorded separately from the core adapters. |
+| Manual and pedal routing | [Factory comparison](FACTORY_REFERENCE.md), [pedal routing](PEDAL_ROUTING.md), [Engine integration](PEDAL_ENGINE.md), [fixed nominal voice](PEDAL_VOICE.md) and [independent audio acceptance](PEDAL_AUDIO_ACCEPTANCE.md). The implemented 200-position map preserves five disconnected contacts; documentary routing is distinct from measured electrical shaping. |
+| Actual native callback and state handoff | [Processor](VST3_PROCESSOR.md), [controller](VST3_CONTROLLER.md), [automation timeline](HOST_TIMELINE.md), [state exchange](STATE_EXCHANGE.md), [actual ABI](VST3_ABI_ACCEPTANCE.md) and [behavior](VST3_BEHAVIOR_ACCEPTANCE.md). Three event buses and 45 controls drive the existing Engine, with generic host controls. |
+| Native allocation, automation and concurrency | [Allocation audit](VST3_REALTIME.md), [dense automation review](VST3_AUTOMATION_REVIEW.md) and [concurrency/TSAN evidence](VST3_CONCURRENCY.md). Their recorded workloads, interposition and instrumentation boundaries remain explicit. |
 | Diagnostic traces | [Trace contract](CONSOLE_TRACE.md) and [plot contract](CONSOLE_TRACE_PLOTS.md): state timing, retained input hashes, limits and display reductions. Diagnostics do not establish physical authenticity. |
 | Processing limits | [Callback audit](REALTIME.md), [numerical bounds](NUMERICAL_BOUNDS.md) and [benchmark](BENCHMARKING.md). Each states its observed scope; none alone qualifies a live device deadline. |
 | Physical acquisitions | [Capture format](CAPTURE_FORMAT.md), [capture validation](CAPTURE_VALIDATION.md) and [acquisition protocol](CAPTURE_PROTOCOL.md). Planned metadata, actual recordings, byte integrity and physical admission are separate states. |
-| Repository and platforms | [Repository checks](REPOSITORY_CHECKS.md), [CI workflow](CI.md), [current handoff](CONTINUATION_HANDOFF.md) and [continuation platform audit](reviews/CONTINUATION_PLATFORM_REVIEW.md). A pass belongs to the named revision and runner scope. |
-| Final continuation reviews | [Core runtime](reviews/FINAL_CONTINUATION_RUNTIME.md), [input and persistence](reviews/FINAL_CONTINUATION_INPUT.md), [offline evidence](reviews/FINAL_CONTINUATION_EVIDENCE.md), [handoff](reviews/FINAL_CONTINUATION_HANDOFF.md), [platforms](reviews/FINAL_CONTINUATION_PLATFORM.md) and [readiness](reviews/FINAL_CONTINUATION_READINESS.md). Each retains its actual inspected revision, observed findings, checks and limits. The [legacy audio comparison](reviews/CONTINUATION_LEGACY_AUDIO.md) remains separate compatibility evidence. |
+| Repository and platforms | [Repository checks](REPOSITORY_CHECKS.md), [both CI workflows](CI.md), [current handoff](PEDAL_HANDOFF.md) and [native portability repair](reviews/PEDAL_NATIVE_PORTABILITY.md). A pass belongs to its named revision, job and artifact scope. |
+| Historical final continuation reviews | [Core runtime](reviews/FINAL_CONTINUATION_RUNTIME.md), [input and persistence](reviews/FINAL_CONTINUATION_INPUT.md), [offline evidence](reviews/FINAL_CONTINUATION_EVIDENCE.md), [handoff](reviews/FINAL_CONTINUATION_HANDOFF.md), [platforms](reviews/FINAL_CONTINUATION_PLATFORM.md) and [readiness](reviews/FINAL_CONTINUATION_READINESS.md). Each retains its actual inspected revision, observed findings, checks and limits. The [legacy audio comparison](reviews/CONTINUATION_LEGACY_AUDIO.md) remains separate compatibility evidence. |
 | Original session's final reviews | [Core](reviews/FINAL_CORE_REVIEW.md), [evidence tooling](reviews/FINAL_EVIDENCE_REVIEW.md), [claims](reviews/FINAL_CLAIMS_REVIEW.md), [integration](reviews/FINAL_INTEGRATION_REVIEW.md), [platforms](reviews/FINAL_PLATFORM_REVIEW.md) and [readiness](reviews/FINAL_READINESS_REVIEW.md). Preserve these as historical evidence for their original snapshots. |
-| Future host, device and editor work | [Host integration proposal](HOST_INTEGRATION.md) and the M9 row in [ACCEPTANCE_MATRIX.md](ACCEPTANCE_MATRIX.md). Core adapter tests do not close actual VST3/device, concurrency, native UI or accessibility gates. |
+| Remaining product host, device and editor work | [Native contract](VST3_SPIKE_CONTRACT.md), [host integration proposal](HOST_INTEGRATION.md) and the M9 row in [ACCEPTANCE_MATRIX.md](ACCEPTANCE_MATRIX.md). An actual module test does not close DAW save/reopen, device deadlines, native UI, accessibility or signed release gates. |
 
 Evidence classes describe inputs: `documented`, `measured`, `derived`, `proposed`
 and `unknown`. Test outcomes describe execution: `pass`, `failed`, `blocked`,
@@ -85,7 +96,8 @@ identity and absence of referenced companion files at baseline. The
 
 The [complete atlas review](research/ATLAS_REVIEW.md) consolidates the original six
 disjoint review ranges. The independent continuation retained another complete
-six-range review in its own ledger. Later [factory comparison](FACTORY_REFERENCE.md)
+six-range review in its own ledger; the current pedal session retains a third
+full six-range reading. Later [factory comparison](FACTORY_REFERENCE.md)
 adds documentary routing corroboration; current engineering results belong in
 [STATUS.md](STATUS.md). Neither reading recovers absent companion data or replaces
 acquired instrument measurements.
@@ -105,7 +117,8 @@ rights. Record provenance and applicable rights before adding a release payload.
 | Session | Assignment and evidence records |
 | --- | --- |
 | Original ten-wave implementation | [Original agent ledger](development/AGENT_LEDGER.md), [wave log](development/WAVE_LOG.md), [agent notes](development/agent-notes/) and [historical handoff](SESSION_HANDOFF.md). Their original assignment IDs 01-60 remain unchanged. |
-| Independent 2026-11-13 continuation | [Separate continuation ledger](development/2026-11-13-continuation/README.md), [actual-state manifest](development/2026-11-13-continuation/assignments.json), numbered evidence notes and [current handoff](CONTINUATION_HANDOFF.md). The [continuation checker](CONTINUATION_CHECKS.md) validates this session's own 60-assignment, ten-wave records. |
+| Completed 2026-11-13 console continuation | [Separate continuation ledger](development/2026-11-13-continuation/README.md), [actual-state manifest](development/2026-11-13-continuation/assignments.json), numbered evidence notes and [historical handoff](CONTINUATION_HANDOFF.md). The [continuation checker](CONTINUATION_CHECKS.md) validates that session's own 60-assignment, ten-wave records. |
+| Active 2026-11-13 pedal/native session | [Current ledger](development/2026-11-13-pedals/README.md), [actual-state manifest](development/2026-11-13-pedals/assignments.json), substantive numbered notes and [operational handoff](PEDAL_HANDOFF.md). Its sixty new assignments and ten waves are independent of both completed sessions. |
 
 The continuation's sixty assignments are complete, with sixty distinct actual
 identities and retained notes. Its explicit final gate passes; original-session
@@ -113,8 +126,9 @@ notes contribute no credit to that count. These completed assignment scopes do
 not imply full M3 or physical product completion.
 
 Read the newest ledger and shared status before claiming a task. Contacts,
-percussion, partial-key input and typed core adapters are already implemented;
-the next concrete gate is [pedal routing](M3_NEXT_GATE.md). Assignment numbers
+percussion, pedals, typed core adapters and an optional native module are already
+implemented; current integration, acquisition and product gates are in
+[NEXT_STEPS.md](NEXT_STEPS.md). Assignment numbers
 belong to their session. Planned rows do not prove dispatched or completed work.
 Research waves, development waves and M0-M9 milestones describe different things.
 
@@ -128,8 +142,9 @@ python3 -B tools/check_continuation.py --json
 ```
 
 The first checks its documented [navigation/data scope](REPOSITORY_CHECKS.md)
-and the original session's notes. The second reports this continuation's actual
-declared complete/running/planned states and validates their retained records.
-Use its [explicit final count](CONTINUATION_CHECKS.md) only when all sixty new
-assignments have substantively completed. These are record/integrity checks,
-not product, external-execution or physical-calibration gates.
+and the original session's notes. The second validates the completed console
+continuation's actual states and retained records. Neither establishes the new
+pedal session's worker count. Use the newest ledger's own current checker and
+explicit final-count procedure when available; do not reuse historical workers
+or mark planned assignments complete. These are record/integrity checks, not
+product, external-execution or physical-calibration gates.

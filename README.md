@@ -30,13 +30,14 @@ instrument match. The [project guide](docs/PROJECT_GUIDE.md),
 [current status](docs/STATUS.md) and [next steps](docs/NEXT_STEPS.md) distinguish
 implemented behavior, executed evidence and the next concrete work.
 
-Start with the build below or the retained
-[two-second console demo](examples/rendered/nominal-console-v2/README.md).
-The [previous console handoff](docs/CONTINUATION_HANDOFF.md) retains its dated
-render/trace/install commands. Current pedal work has its own
+Start with the [current operational handoff](docs/PEDAL_HANDOFF.md), the build
+below, or the retained [three-second pedal phrase](examples/demos/pedal-phrase-v1/README.md).
+The handoff includes rendering, tracing, plotting, local installation, pinned native
+builds and the exact qualification boundaries. Current pedal work has its own
 [Engine contract](docs/PEDAL_ENGINE.md), [input transaction](docs/PERFORMANCE_INPUT.md),
 [schema-3 render evidence](docs/PEDAL_RENDER_EVIDENCE.md),
-[trace tool](docs/PEDAL_TRACE.md) and [musical catalog](docs/PEDAL_AUDIO_ACCEPTANCE.md).
+[trace tool](docs/PEDAL_TRACE.md), [pedal plots](docs/PEDAL_TRACE_PLOTS.md) and
+[musical catalog](docs/PEDAL_AUDIO_ACCEPTANCE.md).
 
 The active [pedal/native session](docs/development/2026-11-13-pedals/README.md)
 tracks **60 new assignments in ten waves**, including a fresh review of all
@@ -76,10 +77,19 @@ for event files, strict limits and the hard-link filesystem requirement.
 See [build instructions](docs/BUILD.md) for explicit commands, Release and
 sanitizer builds, and platform qualification limits.
 The [OfflineTools local install](docs/OFFLINE_INSTALL.md) places the renderer,
-inspection tools, trace plotter, compiled profile and event fixtures in a
+inspection tools, both trace plotters, compiled profile and event fixtures in a
 relocatable prefix of your choice.
 
 ## Repeatable audio examples
+
+Listen to the [three-second two-manual and pedal phrase](examples/demos/pedal-phrase-v1/bundle/render.wav).
+The [retained package](examples/demos/pedal-phrase-v1/README.md) contains the actual
+48 kHz stereo WAV, score, unchanged profile, schema-3 evidence, seven PCM analysis
+windows and a source inventory. Its [independent acceptance](docs/reviews/PEDAL_DEMO_ACCEPTANCE.md)
+checks every archived source blob, exact input/audio bytes, component renders,
+block partitions, relocation and deliberately altered bundles. The recording is
+synthetic nominal-model evidence. The [pedal trace plots](docs/PEDAL_TRACE_PLOTS.md)
+show separate bounded diagnostic scenarios with their exact CSV identities.
 
 Listen to the [two-second nominal console example](examples/rendered/nominal-console-v2/bundle/render.wav).
 Its [evidence package and replay instructions](examples/rendered/nominal-console-v2/README.md)
@@ -122,6 +132,9 @@ later outcomes and open gates.
 | [Project guide](docs/PROJECT_GUIDE.md) | Practical reading order, workflows, evidence boundaries and session ledgers |
 | [Status](docs/STATUS.md) | What is implemented, what passed, and what remains provisional |
 | [Next steps](docs/NEXT_STEPS.md) | Next concrete tasks, dependencies and acceptance evidence |
+| [Current operational handoff](docs/PEDAL_HANDOFF.md) | Exact current render, evidence, plot, install, pinned native and continuation commands |
+| [Remaining M3 and scanner gate](docs/M3_REMAINING_AND_SCANNER_GATE.md) | Concrete model, numerical-oracle and acquisition prerequisites for next development |
+| [Pedal session checks](docs/PEDAL_SESSION_CHECKS.md) | Validate this session's actual sixty assignments and explicit completion gate |
 | [Previous console handoff](docs/CONTINUATION_HANDOFF.md) | Dated console identities and commands; use current status/next steps for later pedal/native work |
 | [Original pedal gate](docs/M3_NEXT_GATE.md) | Retained acceptance contract for the implemented routing kernel; current work is in Next steps |
 | [Acceptance matrix](docs/ACCEPTANCE_MATRIX.md) | M0-M9 requirements, actual evidence and open gates |
@@ -147,6 +160,8 @@ later outcomes and open gates.
 | [Combined input transaction](docs/PERFORMANCE_INPUT.md) | One ordered manual/pedal/control stream with atomic ownership and Engine commit |
 | [Pedal note ownership](docs/PEDAL_NOTE_OWNERSHIP.md) | Explicit pedal identities, overlapping owners and scoped releases |
 | [Pedal Engine](docs/PEDAL_ENGINE.md) | Actual same-frame routing, nominal voice and tagged diagnostics |
+| [Pedal phrase](docs/PEDAL_DEMO.md) | Retained three-second source/inventory/audio package and replay |
+| [Pedal plots](docs/PEDAL_TRACE_PLOTS.md) | Bounded provenance-preserving SVGs of positions, buses, contacts and audio |
 | [Pedal evidence](docs/PEDAL_RENDER_EVIDENCE.md) | Current schema3 and strict historical schema1/2 verification |
 | [Legacy audio compatibility](docs/PEDAL_LEGACY_COMPATIBILITY.md) | Exact local replay of all eight original scores against the frozen starting revision |
 | [Native VST3 build](docs/VST3_BUILD.md) | Explicit pinned SDK acquisition, bundle build and validation |
