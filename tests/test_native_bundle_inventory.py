@@ -14,6 +14,7 @@ import struct
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest import mock
 
@@ -110,6 +111,43 @@ class NativeBundleInventoryTests(unittest.TestCase):
 
     def tearDown(self):
         self.temporary.cleanup()
+
+    def test_descriptor_metadata_does_not_have_to_match_path_representation(self):
+        original_fstat = os.fstat
+
+        def descriptor(fd):
+            actual = original_fstat(fd)
+            fields = {name: getattr(actual, name) for name in
+                      ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")}
+            fields["st_ctime_ns"] += 1234
+            fields["st_mode"] ^= 0o111
+            return SimpleNamespace(**fields)
+
+        with mock.patch.object(inventory.os, "fstat", side_effect=descriptor):
+            record = inventory._file_record(self.fixture.module, inventory.MAX_FILE_BYTES)
+        raw = self.fixture.module.read_bytes()
+        self.assertEqual(record, {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()})
+
+    def test_descriptor_identity_and_in_stream_metadata_changes_still_reject(self):
+        original_fstat = os.fstat
+        for field, change_on in (("st_ino", 1), ("st_size", 1), ("st_ctime_ns", 2),
+                                 ("st_mtime_ns", 2), ("st_mode", 2)):
+            with self.subTest(field=field, change_on=change_on):
+                calls = 0
+
+                def changed(fd):
+                    nonlocal calls
+                    calls += 1
+                    actual = original_fstat(fd)
+                    fields = {name: getattr(actual, name) for name in
+                              ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns")}
+                    if calls >= change_on:
+                        fields[field] += 1
+                    return SimpleNamespace(**fields)
+
+                with mock.patch.object(inventory.os, "fstat", side_effect=changed):
+                    with self.assertRaisesRegex(inventory.InventoryError, "file changed"):
+                        inventory._file_record(self.fixture.module, inventory.MAX_FILE_BYTES)
 
     def test_exact_inventory_preserves_sdk_metadata_bytes(self):
         report = self.fixture.report()

@@ -282,6 +282,12 @@ void descriptors_and_conversions(IEditController& controller) {
             CHECK(controller.getParamStringByValue(record.id, normalized, text) == kResultOk);
             double roundtrip = -1.0;
             CHECK(controller.getParamValueByString(record.id, text, roundtrip) == kResultOk);
+            if (!bits_equal(roundtrip, normalized)) {
+                std::cerr << "roundtrip id=" << record.id << " text=" << ascii(text)
+                          << " expected_bits=" << std::bit_cast<std::uint64_t>(normalized)
+                          << " actual_bits=" << std::bit_cast<std::uint64_t>(roundtrip)
+                          << " rounding=" << std::fegetround() << '\n';
+            }
             CHECK(bits_equal(roundtrip, normalized));
             ++string_cases;
         }

@@ -26,6 +26,22 @@ include(SMTG_VST3_SDK)
 add_subdirectory("${SDK_ROOT}" "${CMAKE_BINARY_DIR}/_vst3sdk" EXCLUDE_FROM_ALL)
 smtg_enable_vst3_sdk()
 
+# SDK setup adds directory-wide floating-point shortcuts on MSVC and Xcode.
+# Our admission checks and exact control/state conversion require finite-value
+# semantics and access to the caller's rounding environment. SDK targets were
+# already created in their own directory and retain their upstream policy.
+get_directory_property(_hammond_native_compile_options COMPILE_OPTIONS)
+list(REMOVE_ITEM _hammond_native_compile_options
+    "/fp:fast" "-ffast-math" "-ffp-contract=fast")
+set_property(DIRECTORY PROPERTY COMPILE_OPTIONS "${_hammond_native_compile_options}")
+
+function(hammond_configure_native_target target)
+    hammond_configure_target(${target})
+    if(MSVC)
+        target_compile_options(${target} PRIVATE /fp:strict)
+    endif()
+endfunction()
+
 set(HAMMOND_EMBEDDED_PROFILE "${CMAKE_CURRENT_BINARY_DIR}/generated/EmbeddedProfile.h")
 add_custom_command(
     OUTPUT "${HAMMOND_EMBEDDED_PROFILE}"
@@ -52,7 +68,7 @@ add_dependencies(HammondB3 hammond_embedded_profile)
 target_link_libraries(HammondB3 PRIVATE hammond_core sdk)
 target_include_directories(HammondB3 PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
 target_include_directories(HammondB3 SYSTEM PRIVATE "${SDK_ROOT}")
-hammond_configure_target(HammondB3)
+hammond_configure_native_target(HammondB3)
 
 if(SMTG_MAC)
     smtg_target_set_bundle(HammondB3
@@ -86,9 +102,13 @@ if(BUILD_TESTING)
         add_executable(test_native_controller
             tests/test_native_controller.cpp Controller.cpp StateStream.cpp)
         target_link_libraries(test_native_controller PRIVATE hammond_core sdk)
+        if(SMTG_MAC)
+            find_library(HAMMOND_COREFOUNDATION_FRAMEWORK CoreFoundation REQUIRED)
+            target_link_libraries(test_native_controller PRIVATE "${HAMMOND_COREFOUNDATION_FRAMEWORK}")
+        endif()
         target_include_directories(test_native_controller PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
         target_include_directories(test_native_controller SYSTEM PRIVATE "${SDK_ROOT}")
-        hammond_configure_target(test_native_controller)
+        hammond_configure_native_target(test_native_controller)
         add_test(NAME test_native_controller COMMAND test_native_controller)
         list(APPEND HAMMOND_VST3_TEST_TARGETS test_native_controller)
     endif()
@@ -118,13 +138,13 @@ if(BUILD_TESTING)
         target_link_libraries(hammond_vst3_test_host PUBLIC hammond_core hammond_vst3_test_loader)
         target_include_directories(hammond_vst3_test_host PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/tests")
         target_include_directories(hammond_vst3_test_host SYSTEM PUBLIC "${SDK_ROOT}")
-        hammond_configure_target(hammond_vst3_test_host)
+        hammond_configure_native_target(hammond_vst3_test_host)
 
         foreach(native_test test_native_abi test_native_behavior)
             if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/${native_test}.cpp")
                 add_executable(${native_test} "tests/${native_test}.cpp")
                 target_link_libraries(${native_test} PRIVATE hammond_vst3_test_host)
-                hammond_configure_target(${native_test})
+                hammond_configure_native_target(${native_test})
                 add_dependencies(${native_test} HammondB3 hammond_profile)
                 add_test(NAME ${native_test}
                     COMMAND ${native_test} "${HAMMOND_VST3_BUNDLE_PATH}" "${HAMMOND_COMPILED_PROFILE}")

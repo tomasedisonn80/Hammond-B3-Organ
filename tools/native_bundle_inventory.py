@@ -64,7 +64,12 @@ def _file_record(path: Path, maximum: int) -> dict[str, Any]:
     digest = hashlib.sha256()
     count = 0
     with path.open("rb") as stream:
-        if _signature(os.fstat(stream.fileno())) != _signature(before):
+        opened = os.fstat(stream.fileno())
+        # CPython's Windows path and descriptor APIs can report different
+        # ctime semantics and synthesized execute bits for the same file.
+        # Compare identity across APIs, then full metadata within each API.
+        if not stat.S_ISREG(opened.st_mode) or not os.path.samestat(before, opened) or \
+                opened.st_size != before.st_size:
             raise InventoryError("file changed before hashing")
         while chunk := stream.read(1024 * 1024):
             count += len(chunk)
@@ -72,7 +77,7 @@ def _file_record(path: Path, maximum: int) -> dict[str, Any]:
                 raise InventoryError("file grew beyond byte bound")
             digest.update(chunk)
         after = os.fstat(stream.fileno())
-    if count != before.st_size or _signature(after) != _signature(before) or \
+    if count != before.st_size or _signature(after) != _signature(opened) or \
             _signature(path.lstat()) != _signature(before):
         raise InventoryError("file changed during hashing")
     return {"bytes": count, "sha256": digest.hexdigest()}

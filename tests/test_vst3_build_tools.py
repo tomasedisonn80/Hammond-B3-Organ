@@ -136,7 +136,10 @@ class SdkFixtureTests(unittest.TestCase):
         self.assertFalse(sdk.verify_sdk(self.checkout, self.record)["network_used"])
 
     def test_missing_module_cannot_inherit_parent_checkout(self):
-        shutil.rmtree(self.checkout / "base" / ".git")
+        # This is a synthetic private checkout. Rename its Git metadata out of
+        # the module instead of unlinking read-only Git objects on Windows.
+        # The module must then discover the parent, which the verifier rejects.
+        (self.checkout / "base" / ".git").rename(self.directory / "removed-base-git")
         with self.assertRaisesRegex(sdk.SdkError, "not its own checkout"):
             sdk.verify_sdk(self.checkout, self.record)
 

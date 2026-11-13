@@ -1228,3 +1228,27 @@ The [integration review](reviews/PEDAL_NATIVE_INTEGRATION.md) retains
 commands, exact scope, log identities and validator limitations. Final checkpoint
 changes after that gate are Markdown result records only; seventh-wave work is
 unstaged. Hosted native execution remains a separate post-publication gate.
+
+
+### Sixth-wave publication observed
+
+Root published `d7b886103f8c9d4649ffa1c35930b79808217a3d` with an expected-parent
+update, fetched it, and verified exact local/remote tree
+`018c3897889aaae0070f632981e0c889a35cad30`. Only Markdown result records differ
+from the qualified source tree. Core workflow 43411073429 and the first native
+workflow 43411073407 were observed running at that exact commit. No hosted
+result is inferred before the jobs finish. Seventh-wave work remains separate.
+
+
+### First hosted native portability repair
+
+At d7b8861, native Linux succeeded, macOS controller linking lacked CoreFoundation,
+and Windows controller round-trip failed with inherited SDK `/fp:fast`. Core
+Windows passed 65/67; new inventory full stat/fstat comparison and synthetic
+read-only Git-object deletion failed. Linux/macOS/core sanitizers succeeded.
+Root retained actual logs and repaired the four specific integration issues;
+see [the review](reviews/PEDAL_NATIVE_PORTABILITY.md). Native repair tree
+09e155a958ee4fb1310ef8f0d8cafa2f980d1125 passed 4/4 local native suites; completed
+tree 7bf8c8d63ec6d816cbae86a1b1ee874666929eb5 changes only independently checked
+Python inputs and passed 2/2 focused suites / 32 methods. The Linux module is
+unchanged. Actual hosted recovery remains pending; W7 work is excluded.
