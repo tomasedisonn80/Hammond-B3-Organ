@@ -84,6 +84,24 @@ add_custom_target(hammond_pedal_routing DEPENDS "${HAMMOND_PEDAL_HEADER}")
 add_dependencies(hammond_core hammond_pedal_routing)
 target_include_directories(hammond_core PRIVATE "${HAMMOND_GENERATED_INCLUDE_DIR}")
 
+# The scanner is a separately identified documentary reconstruction. Admission
+# of its full signed graph precedes generation of the native nominal constants.
+set(HAMMOND_SCANNER_COMPILER "${CMAKE_CURRENT_SOURCE_DIR}/tools/compile_scanner_line.py")
+set(HAMMOND_SCANNER_AUTHORING "${CMAKE_CURRENT_SOURCE_DIR}/data/scanner/atlas-late-b3-nominal-v1.json")
+set(HAMMOND_SCANNER_HEADER "${HAMMOND_GENERATED_INCLUDE_DIR}/hammond/generated/ScannerLineData.h")
+add_custom_command(
+    OUTPUT "${HAMMOND_SCANNER_HEADER}"
+    COMMAND "${CMAKE_COMMAND}" -E make_directory "${HAMMOND_GENERATED_INCLUDE_DIR}/hammond/generated"
+    COMMAND "${Python3_EXECUTABLE}" "${HAMMOND_SCANNER_COMPILER}"
+        --input "${HAMMOND_SCANNER_AUTHORING}"
+        --output "${HAMMOND_SCANNER_HEADER}" --format header
+    DEPENDS "${HAMMOND_SCANNER_COMPILER}" "${HAMMOND_SCANNER_AUTHORING}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/data/scanner-line.schema.json"
+    COMMENT "Admitting the nominal scanner graph and compiling native constants"
+    VERBATIM)
+add_custom_target(hammond_scanner_data DEPENDS "${HAMMOND_SCANNER_HEADER}")
+add_dependencies(hammond_core hammond_scanner_data)
+
 set(HAMMOND_AUTHORING_PROFILE "${CMAKE_CURRENT_SOURCE_DIR}/data/profiles/nominal-unmeasured-v1.json")
 set(HAMMOND_PROFILE_COMPILER "${CMAKE_CURRENT_SOURCE_DIR}/tools/compile_profile.py")
 set(HAMMOND_COMPILED_PROFILE "${CMAKE_CURRENT_BINARY_DIR}/nominal.b3p")

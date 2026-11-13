@@ -1,5 +1,21 @@
 # Development status
 
+## Active scanner continuation
+
+The new [scanner session](development/2026-11-13-scanner/README.md) has completed its first 12 distinct assignments in two logical waves. Six fresh readers covered every atlas page; follow its [handoff](SCANNER_HANDOFF.md), actual manifest and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md). Prepared runtime work is the next phase.
+
+| Current scanner evidence | Observed result |
+| --- | --- |
+| Graph admission | Strict 27-node, 50-passive, 19-output fixture/schema/compiler; all 50components and 19outputs independently match the atlas and primary paper. |
+| Independent source review | Primary circuit/rotor figures corroborate the graph and 16-position traversal. The chosen phase origin is shifted by pi/8 from the paper; its approximate 6Hz does not verify 412rpm. |
+| Independent AC references | 564 solves and 10,716 tap transfers; nodal residual at most 3.2486101684985267e-16. A separately implemented loaded-ladder recursion agrees within 5.6647284161045834e-14. |
+| Maintained regression | 19 graph/compiler and 16 AC methods passed locally, including literal edges, rational DC, full-grid power/loading/polarity, same-DC/wrong-AC topology mutations and atomic failures. |
+| Build admission | CMake generates native constants only after full graph validation. The default dry Engine, 45 parameters, existing state formats and native processing remain unchanged. |
+
+Independent review found and repaired a schema-only duplicate-ID admission gap in assumption/unknown arrays; the compiler had already rejected those cases. The tests retain the regression. These results qualify nominal graph/reference engineering. No new native scanner runtime, transient/sideband, integrated host or measured-hardware pass is claimed at this checkpoint.
+
+The original local baseline passed 71/71 Release suites. The optional VST3 baseline built and its project native checks passed; an initially unbuilt SDK validator was built explicitly and its previously unrun gate then passed. Earlier pedal/native hosted results below remain qualification of their named revisions.
+
 ## Current position
 
 The repository contains a working **nominal dry organ**, offline rendering and
@@ -46,7 +62,7 @@ local block-partition output and deliberate corruption. All eight earlier
 scores retained exact local WAV/PCM/common metrics in 24 baseline/current runs.
 These are synthetic nominal-model results, with the recorded toolchain scope.
 
-## Exact source and executed qualification
+## Retained pedal baseline qualification
 
 The latest code/test repair is published and fetched as
 [`0ad7240a88803de9d97bc265a8fd2b6e5d5d7e2b`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/0ad7240a88803de9d97bc265a8fd2b6e5d5d7e2b),
@@ -79,15 +95,7 @@ all allocations, locks, scheduler histories or audio-device deadlines.
 
 ## Next implementation and remaining product gates
 
-The first next task is **scanner graph/schema/compiler admission plus an
-independent endpoint/source review**, described in
-[NEXT_STEPS.md](NEXT_STEPS.md) and the
-[remaining M3/scanner contract](M3_REMAINING_AND_SCANNER_GATE.md).
-The reviewed candidate has 27 named nodes, 50 passive elements and 19 signed
-outputs. Independent exact-rational DC answers already agree, but an intentionally
-wrong after-inductor divider topology yields the same DC result. Graph/source
-checks and a separately stamped finite-frequency oracle must precede runtime
-confidence. No scanner runtime or AC/transient acceptance is claimed.
+The next task is the prepared 36-coordinate line runtime and independently stamped transient reference, followed by warp-aware AC/state tests, rotor modes and a declared audible-rate policy. The graph/compiler and independent AC references are implemented and reviewed; their actual commands and source identities are in [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md). [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) separates discrete parity, full-band audible policy and later Engine/native integration. The original [scanner gate](M3_REMAINING_AND_SCANNER_GATE.md) retains the detailed physical and architectural requirements.
 
 Physical M3 work remains: preset latch/loading behavior, continuous drawbars,
 switching bandwidth, loaded expression and the pedal reactor network. M5–M7

@@ -21,6 +21,11 @@ DAW and device gates are recorded separately; the SDK validator's diagnostics
 are retained rather than hidden behind its summary. Ordinary builds remain
 SDK-free; use the explicit [optional build](docs/VST3_BUILD.md) for VST3.
 
+The [scanner continuation](docs/SCANNER_HANDOFF.md) now includes a strict circuit
+graph/compiler, independent primary-source review and two independent AC
+calculations. Prepared runtime, rotor and integration work follow the
+[frozen numerical contract](docs/SCANNER_NUMERICAL_CONTRACT.md).
+
 The selected source, contact, percussion and pedal models are **nominal and
 unmeasured**. Ideal contacts, percussion off and muted pedals preserve the
 original renderer defaults. Full M3, scanner/AO-28 electronics, Leslie acoustics,

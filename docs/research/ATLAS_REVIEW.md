@@ -125,3 +125,18 @@ retain separate clocks and histories when implemented (pp. 103-108, 319-324).
 
 The next dependency-ready engineering task and current verification record are
 maintained in [NEXT_STEPS.md](../NEXT_STEPS.md) and [STATUS.md](../STATUS.md).
+
+## Fresh scanner-session review, 13 November 2026
+
+The new scanner session independently read all 500 pages again at baseline `6dc0702d5473912268e8af8f852b9b9984198ef3`. The preserved PDF identity remains unchanged. This fresh reading is separate from earlier retained coverage, with six actual distinct assignments and selected actual page-image inspections. It does not claim every underlying cited source or every diagram has been independently verified.
+
+| New review | Complete inclusive PDF text coverage | Actual visual pages |
+| --- | --- | --- |
+| [01](../development/2026-11-13-scanner/01-atlas-foundation.md) | 1–84 | 4,51,73 |
+| [02](../development/2026-11-13-scanner/02-atlas-scanner-graph.md) | 85–168 | 157,158,166 |
+| [03](../development/2026-11-13-scanner/03-atlas-scanner-electronics.md) | 169–252, plus relevant earlier scanner pages | 157,158,166,170,171,175,182–186,239,250 |
+| [04](../development/2026-11-13-scanner/04-atlas-leslie.md) | 253–336 | 272,283,326 |
+| [05](../development/2026-11-13-scanner/05-atlas-product.md) | 337–420 | 357,381,409,415 |
+| [06](../development/2026-11-13-scanner/06-atlas-closure.md) | 421–500 | 428,447,465,486 |
+
+These reviews confirm the next dependency-ready M4 task: nominal graph admission and independent numerical qualification, with one continuing scanner history. Preserve the current 45 control identities until a separate Engine/native integration and migration is implemented. The source's M0–M9 order, physical M3 gaps, AO-28/Leslie coupling, calibration, standalone and accessible custom UI remain as specified in [PLAN.md](../PLAN.md); completion of this reading does not close those engineering or physical gates.

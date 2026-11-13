@@ -1520,3 +1520,19 @@ accounting is separate from both historical sixty-agent checks. Final result
 updates are Markdown only after this qualified archive; code/build/tool/test/data
 and the actual accepted manifest/notes are unchanged. The final integration
 review retains exact commands, source tree, scope and receipt hash.
+
+## 2026-11-13 — Scanner continuation begins (wave 1)
+
+- Inspected clean main at `6dc0702d5473912268e8af8f852b9b9984198ef3`, tree `a4f1d4b300de236436e22b748b1d4c46ed501ceb`; confirmed the remote at the same commit.
+- Created a distinct scanner-session manifest for the newly requested sixty-agent, ten-wave assignment scope; preserved all earlier completed ledgers. Six fresh readers completed all 500 PDF pages and selected actual visuals. Their notes retain precise source citations and actual checks.
+- Default GCC 14.2.0 Release build with CMake 4.4.4/Ninja 1.13.2/Python 3.12.14 passed 71/71 CTest suites in 42.88 seconds. Historical repository/continuation/pedal checkers each passed their sixty-complete expectations.
+- Root acquired the original DAFx 2016 scanner paper from its publisher archive for subsequent independent comparison: eight pages, 1,471,656 bytes, SHA-256 `ccdace0e88d456d7d80cd3b675a0936ab1313680f5b2dda0ba33445df0caae83`. The external PDF is an inspection input outside the repository; no new redistribution claim is made.
+- Current work advances the nominal scanner graph, independent full-network reference and prepared physical-state module. No new scanner runtime or hardware qualification has yet passed. Existing 45 parameters, state formats and dry-engine arithmetic remain unchanged.
+
+## 2026-11-13 — Scanner graph and independent AC foundation (wave 2)
+
+- Completed all six wave 2 assignments: strict graph/schema/compiler, full-network AC reference, predeclared numerical contract, primary circuit/rotor review, independent graph admission tests, and independent loaded-ladder numerical tests. All twelve assignments in waves 1–2 have actual retained notes.
+- Primary paper comparison matches 50/50 passive records, 19/19 signed outputs and 27 nodes. The 16-position cycle has primary support under the documented phase-origin shift; 412rpm and production/specimen applicability remain unverified.
+- Full AC grid: 564 solves, 10,716 taps, maximum normalized residual 3.2486101684985267e-16. Independent loaded-ladder recursion maximum complex error 5.6647284161045834e-14. Root ran 19 graph/compiler methods and 16 AC methods successfully.
+- Independent test review found a schema-only duplicate-ID gap in unknown/assumption arrays when prose differed. Root added per-ID contains cardinality constraints and directly verified valid/reordered fixtures plus both rejecting duplicate reproductions. The compiler already rejected those cases; regression is retained.
+- CMake graph admission generated the native constants successfully in a new build directory, including independent creation of its output directory. Existing Engine/public controls/state/native processing and original physical inputs remain unchanged. Prepared line and independently stamped transient development are now assigned under the frozen numerical contract.

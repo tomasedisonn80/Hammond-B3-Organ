@@ -28,6 +28,18 @@ M4 acceptance, retain tests for length/range, forward/return traversal, wrap
 continuity, equal-input unity and uninterrupted rotor phase, plus independent
 documentary confirmation. See [review 02](../development/agent-notes/02-atlas-pages-085-168.md).
 
+**2026-11-13 primary-source follow-up:** the complete DAFx-2016 paper was
+read, and its Figures 1 and 3 were freshly rendered and inspected. Both
+independently corroborate the sixteen-position cyclic order above for the
+paper's model. Figure 3 places its terminal-1 peak at `pi/8`; the atlas's
+terminal-1 phase origin therefore shifts the plotted origin by one sixteenth
+of a turn. The trailing entry now has primary documentary support, while
+factory wiring, specimen phase/direction, exact speed and scanner loading
+remain unverified. Preserve the listed executable acceptance checks. Source
+identity, complete component/tap comparisons and limits are recorded in
+[SCANNER_PRIMARY_REVIEW.md](SCANNER_PRIMARY_REVIEW.md). The original atlas
+list and its earlier inference remain source history.
+
 ## E02 — Chapter 028 reports inconsistent publication equations
 
 Chapter 028's discrepancies concern its cited WDF paper; this review inspected

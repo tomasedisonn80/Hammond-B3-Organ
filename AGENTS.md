@@ -6,14 +6,14 @@ They implement the owner's standing handoff and publication requests of
 
 ## Current session and standing continuation rule
 
-The current session is [2026-11-13 pedal development](docs/development/2026-11-13-pedals/README.md), starting at `b4fc61c`. Its [actual assignment manifest](docs/development/2026-11-13-pedals/assignments.json) belongs only to this new user-requested sixty-agent, ten-wave session. Earlier original/console ledgers remain historical and must not be rewritten or recounted. Consult the newest session together with current status and next steps before starting work.
+The current session is [2026-11-13 scanner development](docs/development/2026-11-13-scanner/README.md), starting at `6dc0702`. Its [actual assignment manifest](docs/development/2026-11-13-scanner/assignments.json) belongs only to this newly requested sixty-agent, ten-wave session. The completed [pedal session](docs/development/2026-11-13-pedals/README.md), original and console ledgers remain historical and must not be rewritten or recounted. Consult the newest session together with current status and next steps before starting work.
 
 For every future development session, continue the next dependency-ready phase, retain the source basis and limits of the model, run meaningful checks, update status/next steps/development log and affected contracts, then commit and push the completed work to `main` under the owner's standing authorization. Inspect and integrate concurrent changes; never force-push. A user-requested agent count is the scope of that session, not permission to invent participation. Record the real assignment identity, owned files, result and verification. Publication and physical-fidelity claims each require their own observed evidence.
 
 ## Start here
 
 1. Read `README.md`, `docs/STATUS.md`, `docs/NEXT_STEPS.md`, the current
-   `docs/PEDAL_HANDOFF.md`, and the latest entry in `docs/DEVELOPMENT_LOG.md`.
+   `docs/SCANNER_HANDOFF.md`, and the latest entry in `docs/DEVELOPMENT_LOG.md`.
    If a later session replaces the operational entry point, follow the explicit
    current-status pointer while preserving earlier handoffs as dated history.
 2. Read `docs/PLAN.md`, `docs/research/ATLAS_REVIEW.md`, and the atlas chapters relevant
@@ -27,11 +27,13 @@ For every future development session, continue the next dependency-ready phase, 
    close it. Document missing inputs and continue independent useful work.
 
 Use the newest session ledger and `docs/NEXT_STEPS.md` for the active scope.
-[PEDAL_HANDOFF.md](docs/PEDAL_HANDOFF.md) contains the current build, render,
+[SCANNER_HANDOFF.md](docs/SCANNER_HANDOFF.md) records the scanner continuation.
+[PEDAL_HANDOFF.md](docs/PEDAL_HANDOFF.md) retains the dry-organ build, render,
 trace/plot, installation and native commands. The concrete next model contract
 is [M3_REMAINING_AND_SCANNER_GATE.md](docs/M3_REMAINING_AND_SCANNER_GATE.md);
-its graph, numerical and acquisition gates are proposed work, not a scanner
-implementation or a measured instrument claim.
+its graph, numerical and acquisition requirements remain authoritative; current
+implementation and executed results are in the scanner handoff and status.
+Use the frozen scanner numerical contract before grading new runtime behavior.
 `docs/CONTINUATION_HANDOFF.md` retains the preceding console checkout commands;
 `docs/M3_NEXT_GATE.md` retains the original pedal-kernel acceptance contract.
 The separate `docs/development/2026-11-13-continuation/README.md` is completed
@@ -116,7 +118,7 @@ planned rows and preserve the latest user-authorized scope.
 Update actual states in the newest session's manifest. The completed console
 continuation uses `docs/development/2026-11-13-continuation/assignments.json` and
 `docs/CONTINUATION_CHECKS.md`; its checker does not count the current pedal session.
-The current pedal session has its own [record checker](docs/PEDAL_SESSION_CHECKS.md):
+The completed pedal session has its own [record checker](docs/PEDAL_SESSION_CHECKS.md):
 
 ```sh
 python3 tools/check_pedal_session.py --repo . --json

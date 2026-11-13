@@ -1,0 +1,1896 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hammond:scanner-line:atlas-late-b3-nominal-line-v1",
+  "title": "Admitted nominal atlas scanner line, authoring schema 1",
+  "description": "Strict fixed documentary graph. The compiler additionally rejects duplicate JSON keys, bounds bytes/nesting/strings, and verifies unique record identities. It does not establish hardware fidelity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_id",
+    "evidence_class",
+    "variant",
+    "source",
+    "ground",
+    "nodes",
+    "components",
+    "outputs",
+    "drive",
+    "return_switch",
+    "assumptions",
+    "unknowns"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "model_id": {
+      "const": "atlas-late-b3-nominal-line-v1"
+    },
+    "evidence_class": {
+      "const": "documentary-reconstruction"
+    },
+    "variant": {
+      "const": "atlas-late-b3-paper-model"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "document",
+        "sha256",
+        "values_pages",
+        "topology_pages"
+      ],
+      "properties": {
+        "document": {
+          "const": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf"
+        },
+        "sha256": {
+          "const": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+        },
+        "values_pages": {
+          "const": [
+            157
+          ]
+        },
+        "topology_pages": {
+          "const": [
+            158,
+            175,
+            182
+          ]
+        }
+      }
+    },
+    "ground": {
+      "const": "g"
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 27,
+      "maxItems": 27,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "g",
+          "p0",
+          "p1",
+          "p2",
+          "p3",
+          "p4",
+          "p5",
+          "p6",
+          "p7",
+          "p8",
+          "p9",
+          "p10",
+          "p11",
+          "p12",
+          "p13",
+          "p14",
+          "p15",
+          "p16",
+          "p17",
+          "p18",
+          "r",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6"
+        ]
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 50,
+      "maxItems": 50,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          {
+            "id": "L1",
+            "kind": "L",
+            "positive": "p0",
+            "negative": "p1",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L2",
+            "kind": "L",
+            "positive": "p1",
+            "negative": "p2",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L3",
+            "kind": "L",
+            "positive": "p2",
+            "negative": "p3",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L4",
+            "kind": "L",
+            "positive": "p3",
+            "negative": "p4",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L5",
+            "kind": "L",
+            "positive": "p4",
+            "negative": "p5",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L6",
+            "kind": "L",
+            "positive": "p5",
+            "negative": "p6",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L7",
+            "kind": "L",
+            "positive": "p6",
+            "negative": "p7",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L8",
+            "kind": "L",
+            "positive": "p7",
+            "negative": "p8",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L9",
+            "kind": "L",
+            "positive": "p8",
+            "negative": "p9",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L10",
+            "kind": "L",
+            "positive": "p9",
+            "negative": "p10",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L11",
+            "kind": "L",
+            "positive": "p10",
+            "negative": "p11",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L12",
+            "kind": "L",
+            "positive": "p11",
+            "negative": "p12",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L13",
+            "kind": "L",
+            "positive": "p12",
+            "negative": "p13",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L14",
+            "kind": "L",
+            "positive": "p13",
+            "negative": "p14",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L15",
+            "kind": "L",
+            "positive": "p14",
+            "negative": "p15",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L16",
+            "kind": "L",
+            "positive": "p15",
+            "negative": "p16",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L17",
+            "kind": "L",
+            "positive": "p16",
+            "negative": "p17",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "L18",
+            "kind": "L",
+            "positive": "p17",
+            "negative": "p18",
+            "value": {
+              "magnitude": "500",
+              "unit": "mH",
+              "printed": "500 mH"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C1",
+            "kind": "C",
+            "positive": "p1",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C2",
+            "kind": "C",
+            "positive": "p2",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C3",
+            "kind": "C",
+            "positive": "p3",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C4",
+            "kind": "C",
+            "positive": "p4",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C5",
+            "kind": "C",
+            "positive": "p5",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C6",
+            "kind": "C",
+            "positive": "p6",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C7",
+            "kind": "C",
+            "positive": "p7",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C8",
+            "kind": "C",
+            "positive": "p8",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C9",
+            "kind": "C",
+            "positive": "p9",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C10",
+            "kind": "C",
+            "positive": "p10",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C11",
+            "kind": "C",
+            "positive": "p11",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C12",
+            "kind": "C",
+            "positive": "p12",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C13",
+            "kind": "C",
+            "positive": "p13",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C14",
+            "kind": "C",
+            "positive": "p14",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C15",
+            "kind": "C",
+            "positive": "p15",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C16",
+            "kind": "C",
+            "positive": "p16",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C17",
+            "kind": "C",
+            "positive": "p17",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.004",
+              "unit": "uF",
+              "printed": "0.004 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "C18",
+            "kind": "C",
+            "positive": "p18",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.001",
+              "unit": "uF",
+              "printed": "0.001 uF"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R1+",
+            "kind": "R",
+            "positive": "p0",
+            "negative": "d1",
+            "value": {
+              "magnitude": "27",
+              "unit": "kOhm",
+              "printed": "27 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R1-",
+            "kind": "R",
+            "positive": "d1",
+            "negative": "r",
+            "value": {
+              "magnitude": "68",
+              "unit": "kOhm",
+              "printed": "68 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R2+",
+            "kind": "R",
+            "positive": "p1",
+            "negative": "d2",
+            "value": {
+              "magnitude": "56",
+              "unit": "kOhm",
+              "printed": "56 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R2-",
+            "kind": "R",
+            "positive": "d2",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.15",
+              "unit": "MOhm",
+              "printed": "0.15 MOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R3+",
+            "kind": "R",
+            "positive": "p2",
+            "negative": "d3",
+            "value": {
+              "magnitude": "39",
+              "unit": "kOhm",
+              "printed": "39 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R3-",
+            "kind": "R",
+            "positive": "d3",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.15",
+              "unit": "MOhm",
+              "printed": "0.15 MOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R4+",
+            "kind": "R",
+            "positive": "p3",
+            "negative": "d4",
+            "value": {
+              "magnitude": "33",
+              "unit": "kOhm",
+              "printed": "33 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R4-",
+            "kind": "R",
+            "positive": "d4",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.18",
+              "unit": "MOhm",
+              "printed": "0.18 MOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R5+",
+            "kind": "R",
+            "positive": "p4",
+            "negative": "d5",
+            "value": {
+              "magnitude": "18",
+              "unit": "kOhm",
+              "printed": "18 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R5-",
+            "kind": "R",
+            "positive": "d5",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.18",
+              "unit": "MOhm",
+              "printed": "0.18 MOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R6+",
+            "kind": "R",
+            "positive": "p5",
+            "negative": "d6",
+            "value": {
+              "magnitude": "12",
+              "unit": "kOhm",
+              "printed": "12 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "R6-",
+            "kind": "R",
+            "positive": "d6",
+            "negative": "r",
+            "value": {
+              "magnitude": "0.18",
+              "unit": "MOhm",
+              "printed": "0.18 MOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "Rc",
+            "kind": "R",
+            "positive": "r",
+            "negative": "g",
+            "value": {
+              "magnitude": "22",
+              "unit": "kOhm",
+              "printed": "22 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          },
+          {
+            "id": "Rt",
+            "kind": "R",
+            "positive": "p18",
+            "negative": "r",
+            "value": {
+              "magnitude": "15",
+              "unit": "kOhm",
+              "printed": "15 kOhm"
+            },
+            "source": {
+              "pages": [
+                157,
+                158
+              ],
+              "evidence_class": "documentary-nominal",
+              "uncertainty": "not-supplied"
+            }
+          }
+        ]
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 19,
+      "maxItems": 19,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          {
+            "id": "v1",
+            "positive": "d1",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v2",
+            "positive": "d2",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v3",
+            "positive": "d3",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v4",
+            "positive": "d4",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v5",
+            "positive": "d5",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v6",
+            "positive": "d6",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v7",
+            "positive": "p6",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v8",
+            "positive": "p7",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v9",
+            "positive": "p8",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v10",
+            "positive": "p9",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v11",
+            "positive": "p10",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v12",
+            "positive": "p11",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v13",
+            "positive": "p12",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v14",
+            "positive": "p13",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v15",
+            "positive": "p14",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v16",
+            "positive": "p15",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v17",
+            "positive": "p16",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v18",
+            "positive": "p17",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          },
+          {
+            "id": "v19",
+            "positive": "p18",
+            "negative": "g",
+            "source_pages": [
+              158
+            ]
+          }
+        ]
+      }
+    },
+    "drive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "positive",
+        "negative",
+        "quantity"
+      ],
+      "properties": {
+        "id": {
+          "const": "Vin"
+        },
+        "kind": {
+          "const": "ideal-voltage-source"
+        },
+        "positive": {
+          "const": "p0"
+        },
+        "negative": {
+          "const": "g"
+        },
+        "quantity": {
+          "const": "volts"
+        }
+      }
+    },
+    "return_switch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "positive",
+        "negative",
+        "states",
+        "closed_model"
+      ],
+      "properties": {
+        "id": {
+          "const": "Sreturn"
+        },
+        "positive": {
+          "const": "r"
+        },
+        "negative": {
+          "const": "g"
+        },
+        "states": {
+          "const": {
+            "vibrato": "closed",
+            "chorus": "open"
+          }
+        },
+        "closed_model": {
+          "const": "node-contraction"
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "description",
+              "source_pages",
+              "replacement"
+            ],
+            "properties": {
+              "id": {
+                "const": "ideal-coils"
+              },
+              "status": {
+                "const": "ideal-approximation"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "source_pages": {
+                "const": [
+                  158,
+                  161,
+                  165
+                ]
+              },
+              "replacement": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "description",
+              "source_pages",
+              "replacement"
+            ],
+            "properties": {
+              "id": {
+                "const": "ideal-drive"
+              },
+              "status": {
+                "const": "ideal-approximation"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "source_pages": {
+                "const": [
+                  158,
+                  161,
+                  165
+                ]
+              },
+              "replacement": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "description",
+              "source_pages",
+              "replacement"
+            ],
+            "properties": {
+              "id": {
+                "const": "unloaded-tap-observation"
+              },
+              "status": {
+                "const": "ideal-approximation"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "source_pages": {
+                "const": [
+                  158,
+                  161,
+                  165
+                ]
+              },
+              "replacement": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          }
+        ]
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "ideal-coils"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "ideal-drive"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "unloaded-tap-observation"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "unknowns": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "value",
+              "unit",
+              "reason",
+              "acquisition"
+            ],
+            "properties": {
+              "id": {
+                "const": "winding-resistance"
+              },
+              "status": {
+                "const": "unknown"
+              },
+              "value": {
+                "const": null
+              },
+              "unit": {
+                "const": "ohm"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "acquisition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "value",
+              "unit",
+              "reason",
+              "acquisition"
+            ],
+            "properties": {
+              "id": {
+                "const": "mutual-inductance"
+              },
+              "status": {
+                "const": "unknown"
+              },
+              "value": {
+                "const": null
+              },
+              "unit": {
+                "const": "H"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "acquisition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "value",
+              "unit",
+              "reason",
+              "acquisition"
+            ],
+            "properties": {
+              "id": {
+                "const": "stray-capacitance"
+              },
+              "status": {
+                "const": "unknown"
+              },
+              "value": {
+                "const": null
+              },
+              "unit": {
+                "const": "F"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "acquisition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "value",
+              "unit",
+              "reason",
+              "acquisition"
+            ],
+            "properties": {
+              "id": {
+                "const": "drive-impedance"
+              },
+              "status": {
+                "const": "unknown"
+              },
+              "value": {
+                "const": null
+              },
+              "unit": {
+                "const": "ohm"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "acquisition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "value",
+              "unit",
+              "reason",
+              "acquisition"
+            ],
+            "properties": {
+              "id": {
+                "const": "receiver-loading"
+              },
+              "status": {
+                "const": "unknown"
+              },
+              "value": {
+                "const": null
+              },
+              "unit": {
+                "const": "ohm"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "acquisition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "value",
+              "unit",
+              "reason",
+              "acquisition"
+            ],
+            "properties": {
+              "id": {
+                "const": "scanner-coupling-capacitance"
+              },
+              "status": {
+                "const": "unknown"
+              },
+              "value": {
+                "const": null
+              },
+              "unit": {
+                "const": "F"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "acquisition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "value",
+              "unit",
+              "reason",
+              "acquisition"
+            ],
+            "properties": {
+              "id": {
+                "const": "normalized-signal-scale"
+              },
+              "status": {
+                "const": "unknown"
+              },
+              "value": {
+                "const": null
+              },
+              "unit": {
+                "const": "V"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "acquisition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "value",
+              "unit",
+              "reason",
+              "acquisition"
+            ],
+            "properties": {
+              "id": {
+                "const": "specimen-revision"
+              },
+              "status": {
+                "const": "unknown"
+              },
+              "value": {
+                "const": null
+              },
+              "unit": {
+                "const": "identifier"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              },
+              "acquisition": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512,
+                "pattern": "^[^\\u0000-\\u001f]*\\S[^\\u0000-\\u001f]*$"
+              }
+            }
+          }
+        ]
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "winding-resistance"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "mutual-inductance"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "stray-capacitance"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "drive-impedance"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "receiver-loading"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "scanner-coupling-capacitance"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "normalized-signal-scale"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "const": "specimen-revision"
+              }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    }
+  }
+}
