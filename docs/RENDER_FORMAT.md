@@ -196,6 +196,13 @@ rounds and saturates explicitly; `--fail-on-clip` reports `status: "clipped"`, r
 exit status 2, and publishes no WAV. Ordinary validation or I/O errors return
 status 1. No file operation occurs inside `Engine::process`.
 
+Help text and the final JSON summary are explicitly flushed to stdout, and a
+failed write returns status 1 with a stderr diagnostic. WAV publication precedes
+summary delivery: if that later summary write fails, the complete WAV remains
+at its destination. The error does not roll back or delete a completed artifact.
+Require both a successful process exit and a valid summary when collecting
+successful render evidence; a WAV's existence alone does not establish success.
+
 Same-build replay, partition invariance and a valid WAV are software evidence.
 They do not establish measured contact mechanics, key-click antialiasing, AO-28
 circuit response, scanner/Leslie sound, physical fidelity or host qualification.

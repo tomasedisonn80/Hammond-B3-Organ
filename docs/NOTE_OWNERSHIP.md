@@ -8,11 +8,14 @@ qualified host adapter. The implementation is
 [NoteOwnership.h](../include/hammond/NoteOwnership.h) and
 [NoteOwnership.cpp](../src/NoteOwnership.cpp).
 
-The engine still owns one Boolean target per manual/pitch and nine contacts per
-key. Multiple external owners must first pass through this separate layer. Only
-the first owner depresses a physical key; only its final release raises that key.
-This keeps a second channel's release from cutting off an independently held
-note, without introducing extra oscillators or resetting percussion readiness.
+This adapter commands binary physical-key targets through NoteOn and NoteOff.
+Engine separately supports explicit partial-key targets and owns nine contacts
+per manual key; uncoordinated direct partial-key input must not bypass this
+adapter's ownership, as detailed below. Multiple external owners first pass
+through this layer. Only the first owner depresses a physical key; only its final
+release raises that key. This keeps a second channel's release from cutting off
+an independently held note, without introducing extra oscillators or resetting
+percussion readiness.
 
 ## Input and capacity contract
 

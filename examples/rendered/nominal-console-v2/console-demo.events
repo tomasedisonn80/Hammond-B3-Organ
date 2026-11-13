@@ -1,0 +1,25 @@
+# Original synthetic console demonstration, 48000 Hz, 96000 frames (2 seconds).
+# Upper B registration: 008000008; lower B: only 8-foot at eight.
+# Nominal contacts; percussion initially On/Second/Normal/Fast; seed 0.
+# A partial C4 speaks before its physical ninth-contact detector closes.
+0 drawbar lower 2 8
+0 key_position upper 60 0.5
+# Full press starts shared decay; E4 and G4 join without resetting readiness.
+5760 note_on upper 60 100
+15360 note_on upper 64 100
+23040 note_on upper 67 100
+30720 note_off upper 60 0
+34560 note_off upper 64 0
+38400 note_off upper 67 0
+# The lower C3 stays audible during upper-manual Cancel.
+42240 note_on lower 48 100
+48000 note_on upper 60 100
+48000 note_on upper 64 100
+48000 note_on upper 67 100
+57600 cancel upper 0 0
+63360 select_bank upper 0 1
+# Disabling percussion restores the retained one-foot drawbar; enable masks it again.
+71040 percussion upper 0 0
+76800 percussion upper 0 1
+84480 all_notes_off upper 0 0
+86400 note_off lower 48 0

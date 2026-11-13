@@ -6,8 +6,9 @@ updated development handoff. Read them before modifying code or documentation.
 
 ## Start here
 
-1. Read `README.md`, `docs/STATUS.md`, `docs/NEXT_STEPS.md`, and the latest entry in
-   `docs/DEVELOPMENT_LOG.md` when those files exist.
+1. Read `README.md`, `docs/STATUS.md`, `docs/NEXT_STEPS.md`, the current
+   `docs/CONTINUATION_HANDOFF.md`, and the latest entry in `docs/DEVELOPMENT_LOG.md`
+   when those files exist.
 2. Read `docs/PLAN.md`, `docs/research/ATLAS_REVIEW.md`, and the atlas chapters relevant
    to the task. The source PDF is `Hammond_B3_Leslie_Research_Atlas_500pp.pdf`.
 3. Check the working tree and current remote branch. Preserve unrelated work and
@@ -15,11 +16,14 @@ updated development handoff. Read them before modifying code or documentation.
 4. Select the next dependency-ready milestone and declare the evidence needed to
    close it. Document missing inputs and continue independent useful work.
 
-Use `docs/SESSION_HANDOFF.md` for operational commands and preserved identities,
-and `docs/development/AGENT_LEDGER.md` for the original sixty-assignment record.
-Their historical snapshots do not replace inspecting current code, current
-ownership and the exact revision's actual test results. The next work and the
-evidence needed to accept it must be concrete enough for another agent to resume.
+Use `docs/CONTINUATION_HANDOFF.md` for current operational commands and
+`docs/M3_NEXT_GATE.md` for the next pedal-routing scope and acceptance criteria.
+Read the separate continuation ledger at
+`docs/development/2026-11-13-continuation/README.md` before selecting an assignment.
+`docs/SESSION_HANDOFF.md` and `docs/development/AGENT_LEDGER.md` preserve the original
+session's handoff and sixty-assignment history. Historical snapshots do not
+replace inspecting current code, ownership and the exact revision's actual test
+results. Make the next work and its required evidence concrete enough to resume.
 
 ## Evidence and architecture
 
@@ -60,9 +64,10 @@ The owner's standing repository workflow is to run the necessary checks, inspect
 diff, commit completed development work in reviewable chunks, and push it to `main`.
 Apply this workflow in future development sessions unless a later user instruction
 or repository protection requires a different branch/review path. Verify the remote
-commit; do not claim a push or CI pass without observing it. If access or a gate blocks completion, record the exact blocker,
-preserve the useful work, and give a precise handoff. Do not send messages or create
-unsolicited issues on the owner's behalf.
+commit; do not claim a push or CI pass without observing it. If access or a gate
+blocks completion, record the exact blocker, preserve the useful work, and give a
+precise handoff. Do not send messages or create unsolicited issues on the owner's
+behalf.
 
 ## Scope of completion claims
 
@@ -76,6 +81,15 @@ retained evidence. Mark them pending until that evidence exists.
 Read the newest retained session ledger under `docs/development/` as well as the
 shared status files. A continuation must preserve previous assignment identities
 and execution results; do not count an earlier agent as a newly dispatched agent.
+The original and 2026-11-13 continuation each requested sixty assignments in ten
+waves. That is their session scope, not a requirement to dispatch sixty agents
+for every later task. Report actual dispatched/completed work separately from
+planned rows and preserve the latest user-authorized scope.
+For this continuation, update the actual states in
+`docs/development/2026-11-13-continuation/assignments.json` and follow
+`docs/CONTINUATION_CHECKS.md`. Run its separate checker with
+`--expected-complete 60` only at the completed-session gate; the original
+repository checker counts the earlier session and cannot substitute for it.
 If `main` advances during work, inspect and integrate the new commits, rerun the
 affected checks, and publish with an expected-head guard. Never overwrite another
 session's completed work or clear an unresolved gate merely to close a wave.

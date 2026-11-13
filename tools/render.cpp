@@ -753,6 +753,7 @@ int render(Options options) {
         output.publish(options.output);
     }
     std::cout << report << '\n';
+    std::cout.flush();
     if (!std::cout) {
         fail("Cannot write render JSON summary to stdout.");
     }
@@ -794,7 +795,11 @@ int main(int argc, char* argv[]) {
                 "key_position: either manual, MIDI36..96, target 0..1; ideal contacts require 0|1.\n"
                 "Initial percussion controls follow drawbars; score events then take precedence.\n"
                 "JSON summary schema 2 identifies source, contact and percussion models separately.\n";
-            return std::cout ? 0 : 1;
+            std::cout.flush();
+            if (!std::cout) {
+                fail("Cannot write renderer help to stdout.");
+            }
+            return 0;
         }
         return render(parse_options(argc, argv));
     } catch (const std::exception& error) {

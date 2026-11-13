@@ -1,7 +1,10 @@
 # Assignment 17 — independent control migration and history tests
 
 Date: 2026-11-13. Continuation wave 03, assignment 17 of 60.
-Agent: `w03_a17_state_migration_tests`.
+Agent: `/root/w03_a17_state_migration_tests`.
+
+Identity normalization: assignment 54 recorded the integrator-confirmed
+canonical dispatch name; the original evidence below is unchanged.
 
 ## Scope and basis
 

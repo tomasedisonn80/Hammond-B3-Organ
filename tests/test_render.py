@@ -210,6 +210,38 @@ class RendererTests(unittest.TestCase):
         self.assertIn("unmeasured", result.stdout)
         self.assertEqual(self.paths(), before)
 
+    def test_help_and_summary_stdout_failures_are_not_success(self):
+        sink = self.work / "readonly stdout"
+        sentinel = b"preserve stdout destination bytes\n"
+        sink.write_bytes(sentinel)
+        output = self.new_output()
+        cases = (
+            ("help", ["--help"], None),
+            ("summary", self.arguments(output, frames=1) +
+             ["--drawbars", "000000000"], output),
+        )
+        for name, arguments, published in cases:
+            with self.subTest(output=name):
+                before = self.paths()
+                with sink.open("rb") as destination:
+                    result = subprocess.run(
+                        [str(self.renderer), *map(str, arguments)], cwd=self.work,
+                        stdout=destination, stderr=subprocess.PIPE, text=True,
+                        encoding="utf-8", errors="replace", timeout=30, check=False,
+                    )
+                self.assertEqual(result.returncode, 1, result.stderr)
+                self.assertIn("stdout", result.stderr)
+                self.assertIn("hammond_render:", result.stderr)
+                self.assertEqual(sink.read_bytes(), sentinel)
+                self.assertEqual(self.profile.read_bytes(), self.profile_bytes)
+                expected = before if published is None else before | {published}
+                self.assertEqual(self.paths(), expected, "Failure left temporary files")
+                if published is not None:
+                    # WAV publication precedes summary delivery. A later stdout
+                    # error must report failure without deleting the complete WAV.
+                    _, mono = self.assert_wave(published, frames=1, rate=48000)
+                    self.assertEqual(mono, (0,))
+
     def test_riff_stereo_supported_rates_and_partial_final_blocks(self):
         frames = 1031
         release = frames * 3 // 4

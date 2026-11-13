@@ -22,10 +22,13 @@ UI remain future work. No current result establishes a measured one-to-one
 instrument match. Start with the [project guide](docs/PROJECT_GUIDE.md) for the
 plan, practical workflows, evidence contracts and session history.
 
-The console continuation connects nominal contact and shared percussion components
-to the engine and offline renderer, with independent tests and exported
-[model metadata](docs/MODEL_METADATA.md). The [current status](docs/STATUS.md) and
-continuation ledger distinguish each published checkpoint and its observed checks.
+Start with the build below or the retained [two-second console demo](examples/rendered/nominal-console-v2/README.md).
+The [current developer handoff](docs/CONTINUATION_HANDOFF.md) gives reproducible
+render, trace, plot and install commands. The next dependency-ready development
+task is the [prepared pedal-routing kernel](docs/M3_NEXT_GATE.md); **full M3
+remains open**. The [current status](docs/STATUS.md) and separate
+[continuation ledger](docs/development/2026-11-13-continuation/README.md) record
+published checkpoints, actual checks and remaining assignments.
 
 ## Build and test
 
@@ -62,9 +65,18 @@ relocatable prefix of your choice.
 
 ## Repeatable audio examples
 
-Listen to the retained [four-second nominal dry-organ example](examples/rendered/nominal-two-manual-v1/bundle/render.wav).
-Its [evidence package](examples/rendered/nominal-two-manual-v1/README.md) includes
-the exact score/profile, raw logs, hashes and independent measurements.
+Listen to the [two-second nominal console example](examples/rendered/nominal-console-v2/bundle/render.wav).
+Its [evidence package and replay instructions](examples/rendered/nominal-console-v2/README.md)
+demonstrate partial key travel, shared percussion, lower-manual independence,
+Cancel/reselection and percussion masking. The schema-2 bundle retains the score,
+profile, logs, identities and independent PCM checks. Its linked partial-key
+CSV/SVG illustrates a **separate 120 ms diagnostic scenario**, not the WAV's score.
+The [trace contract](docs/CONSOLE_TRACE.md) and [plot contract](docs/CONSOLE_TRACE_PLOTS.md)
+explain exactly what these diagnostics show and how they are reduced for display.
+
+The original [four-second dry-organ example](examples/rendered/nominal-two-manual-v1/bundle/render.wav)
+and its [evidence package](examples/rendered/nominal-two-manual-v1/README.md) remain
+available for the earlier ideal-contact, percussion-off behavior.
 
 [Five short event fixtures](examples/README.md) exercise both manuals, A4 pitch,
 coherent foldback, and bank/Cancel behavior. The [evidence wrapper](docs/RENDER_EVIDENCE.md)
@@ -76,9 +88,13 @@ and metrics without trusting the producer’s Boolean assertions. These outputs 
 synthetic engineering evidence.
 
 [CI](docs/CI.md) defines Linux, macOS and Windows Release checks plus Linux
-sanitisers. Read [current status](docs/STATUS.md) and the
-[revision-specific CI qualification](docs/CI_QUALIFICATION.md) for observed
-results and remaining gates; a configured workflow is not a successful hosted run.
+sanitisers. The [current handoff](docs/CONTINUATION_HANDOFF.md) records all 45
+local Release suites and all four hosted jobs passing for published code
+`2046b9388f6aab1122e37646b2f20199b5c6079f`. Read [current status](docs/STATUS.md)
+for later outcomes, the [continuation platform review](docs/reviews/CONTINUATION_PLATFORM_REVIEW.md)
+for its independently audited earlier checkpoint, and the
+[original CI qualification](docs/CI_QUALIFICATION.md) for historical results.
+Qualification belongs to the named revision and executed scope.
 
 ## Project navigation
 
@@ -87,9 +103,11 @@ results and remaining gates; a configured workflow is not a successful hosted ru
 | [Project guide](docs/PROJECT_GUIDE.md) | Practical reading order, workflows, evidence boundaries and session ledgers |
 | [Status](docs/STATUS.md) | What is implemented, what passed, and what remains provisional |
 | [Next steps](docs/NEXT_STEPS.md) | Next concrete tasks, dependencies and acceptance evidence |
-| [Operational handoff](docs/SESSION_HANDOFF.md) | Exact identities, commands, ownership and publication procedure |
+| [Current operational handoff](docs/CONTINUATION_HANDOFF.md) | Current identities, render/trace/install commands, ownership and publication procedure |
+| [Next M3 gate](docs/M3_NEXT_GATE.md) | Prepared pedal-routing kernel, independent acceptance and later playable-pedal integration |
 | [Acceptance matrix](docs/ACCEPTANCE_MATRIX.md) | M0-M9 requirements, actual evidence and open gates |
-| [Assignment ledger](docs/development/AGENT_LEDGER.md) | All 60 original assignment slots and their actual outcomes |
+| [Original session handoff](docs/SESSION_HANDOFF.md) | Preserved commands and evidence for the original session's dated checkpoint |
+| [Original assignment ledger](docs/development/AGENT_LEDGER.md) | Original 60 assignment slots; separate from the new continuation |
 | [Development log](docs/DEVELOPMENT_LOG.md) | Actual changes, commands, results and limitations |
 | [Full project plan](docs/PLAN.md) | Atlas M0-M9 implementation sequence and exit gates |
 | [Agent instructions](AGENTS.md) | Mandatory workflow and durable handoff for every future agent |
@@ -111,8 +129,9 @@ results and remaining gates; a configured workflow is not a successful hosted ru
 | [Pedal routing](docs/PEDAL_ROUTING.md) | Reconstructed 25-by-8 data; pedal audio remains pending |
 | [Factory comparison](docs/FACTORY_REFERENCE.md) | Two independent Table III readings and complete routing comparison |
 | [Factory runtime gate](docs/FACTORY_RUNTIME_ACCEPTANCE.md) | All manual routes exercised against CSV-selected expectations |
-| [Demo replay](docs/DEMO_REPLAY.md) | Retained four-second example, independent integrity checks and local replay |
-| [M3 acceptance contract](docs/M3_ACCEPTANCE_CONTRACT.md) | Contact, percussion and history gates for the next integration |
+| [Console demo](examples/rendered/nominal-console-v2/README.md) | Two-second schema-2 audio bundle and a separate partial-key diagnostic plot |
+| [Original demo replay](docs/DEMO_REPLAY.md) | Retained four-second example, independent integrity checks and local replay |
+| [M3 acceptance contract](docs/M3_ACCEPTANCE_CONTRACT.md) | Contact, percussion and history requirements behind the implemented nominal console |
 | [Capture contract](docs/CAPTURE_FORMAT.md) | Planned/recorded metadata, explicit unknowns and optional byte verification |
 | [Acquisition protocol](docs/CAPTURE_PROTOCOL.md) | Prioritized physical captures, admission gates and holdout grouping |
 | [Offline format](docs/RENDER_FORMAT.md) | Renderer and event-fixture contract |

@@ -1,0 +1,105 @@
+{
+  "amplitude": {
+    "calibration": "none; not volts or pascals",
+    "divisor": 32768,
+    "maximum": 0.999969482421875,
+    "minimum": -1.0,
+    "unit": "normalized_pcm"
+  },
+  "analyzer_version": "pcm16-engineering-v1",
+  "channels": [
+    {
+      "channel_index": 0,
+      "dc": -0.0008384863535563151,
+      "frequency_estimate": {
+        "ambiguity_flags": [],
+        "candidate_frequency_hz": 130.81348746905118,
+        "complete_periods": 9,
+        "error_cents": 0.009327857030783093,
+        "error_hz": 0.0007048187518705618,
+        "first_crossing_frame": 58759.35294117647,
+        "last_crossing_frame": 62061.76470588235,
+        "maximum_period_frames": 366.9411764705874,
+        "mean_period_frames": 366.93464052287567,
+        "minimum_period_frames": 366.8933823529442,
+        "period_spread_fraction": 0.00013025240019612494,
+        "rising_crossings": 10,
+        "status": "estimated_under_fixture_assumption",
+        "zero_plateau_crossings": 0
+      },
+      "full_scale_sample_count": 0,
+      "negative_full_scale_sample_count": 0,
+      "nonzero_sample_count": 3839,
+      "peak": 0.029998779296875,
+      "positive_full_scale_sample_count": 0,
+      "rms": 0.021238250349728878,
+      "sample_count": 3840
+    },
+    {
+      "channel_index": 1,
+      "dc": -0.0008384863535563151,
+      "frequency_estimate": {
+        "ambiguity_flags": [],
+        "candidate_frequency_hz": 130.81348746905118,
+        "complete_periods": 9,
+        "error_cents": 0.009327857030783093,
+        "error_hz": 0.0007048187518705618,
+        "first_crossing_frame": 58759.35294117647,
+        "last_crossing_frame": 62061.76470588235,
+        "maximum_period_frames": 366.9411764705874,
+        "mean_period_frames": 366.93464052287567,
+        "minimum_period_frames": 366.8933823529442,
+        "period_spread_fraction": 0.00013025240019612494,
+        "rising_crossings": 10,
+        "status": "estimated_under_fixture_assumption",
+        "zero_plateau_crossings": 0
+      },
+      "full_scale_sample_count": 0,
+      "negative_full_scale_sample_count": 0,
+      "nonzero_sample_count": 3839,
+      "peak": 0.029998779296875,
+      "positive_full_scale_sample_count": 0,
+      "rms": 0.021238250349728878,
+      "sample_count": 3840
+    }
+  ],
+  "clipping": {
+    "confirmed_pre_quantization_clipping": null,
+    "full_scale_channel_samples": 0,
+    "full_scale_definition": "PCM code -32768 or 32767",
+    "pre_quantization_status": "not_inferable_from_pcm16"
+  },
+  "evidence_scope": "PCM file statistics; no physical calibration or fidelity claim",
+  "format": {
+    "channels": 2,
+    "container": "RIFF/WAVE",
+    "sample_format": "pcm_s16le",
+    "sample_rate_hz": 48000,
+    "total_frames": 96000
+  },
+  "frequency": {
+    "expected_frequency_hz": 130.8127826502993,
+    "fixture_assumption": "caller-declared steady monophonic signal",
+    "limits": [
+      "Crossing rate is not general pitch recognition or proof of a fundamental.",
+      "Harmonics, mixtures, DC, noise, transients and aliasing can mislead this method.",
+      "At least three rising crossings wholly inside the window are required.",
+      "Zero plateaus use their first zero and are flagged as ambiguous.",
+      "Ambiguity thresholds are engineering diagnostics, not calibrated uncertainty.",
+      "Frequency uses the WAV header clock; no physical clock calibration is implied."
+    ],
+    "method": "linearly interpolated rising zero crossings; mean complete period"
+  },
+  "input_path": "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle/render.wav",
+  "stereo": {
+    "applicable": true,
+    "differing_frames": 0,
+    "identical": true
+  },
+  "window": {
+    "duration_seconds": 0.08,
+    "end_frame": 62400,
+    "frames": 3840,
+    "start_frame": 58560
+  }
+}

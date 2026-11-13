@@ -790,3 +790,130 @@ paragraphs were corrected before this gate, with no runtime/test/build changes.
 Only Markdown result recording changes before publication; final archive integrity
 and unchanged runtime/test blobs are checked separately. Wave-09 artifacts and
 active handoff work remain outside this checkpoint.
+
+
+Wave 08 was published and remote-verified as
+`2046b9388f6aab1122e37646b2f20199b5c6079f`, tree
+`759ddcaf93be2047a5732034663e565f728fb5ad`. The final archive differs from the
+45-suite tested tree only in Markdown result records; all runtime/test blobs and
+all five repository integrity groups were verified. Hosted run 43376892064 passed
+all four jobs; root fetched each complete job log and observed all 45 suites
+passing, including the expanded install and enabled allocation checks.
+The active demo, next-pedal gate and operational handoff remain in wave 09.
+
+
+### Wave 09 reproducible example and current developer handoff
+
+Assignment 49 retained an original two-second nominal-console score and its
+genuine schema2 bundle, five PCM measurement reports, provenance, and a separate
+120 ms diagnostic CSV/SVG. The complete example contains 18 files and 1774391
+bytes. The WAV reports zero clipping, peak 0.19528882205486298 and RMS
+0.037407620567908695. Block sizes 64 and 127 produce identical WAV bytes; the
+final 160 ms is exactly silent. The source was an exact archive of `9a5c99a`,
+with all 296 blobs checked before and after generation. Root intentionally staged
+the ignored WAV and compiled profile, verified all 18 staged files against the
+worker's inventory, and independently verified the bundle extracted from the
+staged tree. Its WAV SHA-256 is
+`3cbfc2a80ee5ed014782d9abe33d5afc2cd7e494f3efdba280939b4d3d8f56b5`.
+The separate partial CSV/SVG match the previously inspected diagnostic bytes.
+
+Assignment 50 chose the next executable M3 slice: typed admission of the complete
+25-by-8 pedal map, then a fixed-storage four-bus reference kernel using the
+existing shared source frame. It preserves 200 contact positions, five explicit
+disconnections and seven repeated-source pairs. Proposed normalized fixture
+weights remain separate from unknown physical voicing/loading. Playable events,
+controls, ownership and migrations follow a separate integration gate. Forty
+complete relevant atlas pages and the actual data were inspected; both map and
+factory-reference validators passed within their declared documentary scope.
+
+Assignment 51's current operational handoff gives the first 30 minutes, coherent
+build and tool commands, ownership/state/lifecycle boundaries and standing
+publication procedure. Five bounded read-only command checks and all 38 scoped
+links passed. The next navigation, identity and accounting assignments finish
+this wave before six independent final reviews.
+
+
+### Wave 09 identity, navigation and separate accounting complete
+
+Assignments 49–54 are complete with 54 distinct dispatched identities and 54
+retained notes in the new continuation; six wave-10 slots remain planned. The
+navigation review checked 221 relative links and two anchors. The identity audit
+confirmed unchanged PDF/profile/map/legacy-fixture bytes, all 39 original control
+records and exactly four appended IDs, and passed both migration suites plus a
+retained schema1 bundle verification. The original event values are 0–7;
+percussion and KeyPosition were appended as 8 and 9 respectively.
+
+The new bounded continuation checker validates this session's manifest and notes
+independently of the original sixty. Its 12-method focused suite passes; the
+actual 54-complete gate passes and the 60-complete gate correctly rejects the
+unfinished final wave. Six older notes received labeled explicit owner-line
+normalizations without changing their original evidence prose. Assignment 18's
+identity-only follow-up reconfirmed its existing worker and adds no assignment.
+The combined source archive is the next publication gate; focused checks do not
+claim that gate or the new checkpoint's hosted results in advance.
+
+
+### Frozen wave-09 gate and final-review findings
+
+The exact staged source tree `805900d2339eb3975019581de5f8469e72e7509f`
+built in Release and passed **46/46 CTest suites in 42.55 seconds**. Both the
+original sixty-note repository gate and the separate 54-complete continuation
+gate passed on that archive. Root independently verified its retained schema2
+bundle and WAV hash. One preliminary verifier invocation used a nonexistent
+filename; the corrected `tools/verify_render.py` invocation succeeded and no
+artifact was changed.
+
+Independent wave-10 review then reproduced a case beyond those existing tests:
+renderer help and a one-frame render returned success when their small stdout
+writes were buffered to a read-only descriptor. The WAV had already been saved
+correctly in the render case. Assignment 57 owns an explicit flush/status repair
+and regression; the next publication will include that correction and its own
+combined gate. Assignment 56 is reconciling stale current-tense host-integration
+instructions with the actual FIFO ownership, 43-control state and stopped
+phase-preserving rate API. These are observed findings, not evidence that the
+completed software or physical-instrument plan is fully qualified.
+
+
+### Final review: runtime accepted and observed defects repaired
+
+Assignments 55–57 are complete. The core review verified all 23 include/src blobs
+against published `2046b93` and passed six independent runtime/lifecycle binaries.
+The input review passed six ownership, parameter, persistence and mixed-rate
+binaries, then corrected stale `HOST_INTEGRATION.md` and `NOTE_OWNERSHIP.md`
+descriptions without changing runtime behavior. Their retained reports preserve
+source identities, exact counters, limitations and the distinction between
+implemented typed APIs and future native wrappers.
+
+The evidence review reproduced both renderer stdout failures on the frozen
+binary, added explicit flush/status checks and a permanent regression with two
+subcases, and passed all **35 renderer methods**, zero skips, in a private coherent
+Release build. The repaired block-size-257 replay exactly matches all 384044 bytes
+of the retained two-second WAV. Both schema generations verify; independent PCM
+window recomputation, exact CSV/SVG replay and seven no-clobber probes passed.
+The render contract now explains that summary failure can follow successful WAV
+publication. The core, profiles and historical artifacts were not changed.
+
+All **60 actual workers have now been dispatched** in ten waves of six. At this
+checkpoint 57 are complete and the final handoff, platform and readiness reviewers
+are running. This is not yet a sixty-complete claim. Root's next combined source
+gate includes the renderer correction and its regression; the earlier 46-suite
+pass predates that repair and is not substituted for its qualification.
+
+
+### Corrected combined candidate qualification
+
+The corrected source tree `08d944734efcd1b7a8ed5a93392deabca70a178f` passed
+**46/46 Release CTest suites in 14.68 seconds** from a new coherent archive and
+build. The complete local log contains 24 C++ suites and 22 Python suites with
+**371 Python methods**, with no skip reports. This includes the new renderer
+stdout regression and continuation accounting suite. The actual 57-complete
+continuation and original sixty-note source gates both pass; all sixty new
+workers are dispatched, with the last three review outcomes still pending in
+this publication snapshot.
+
+The remote unreferenced Git tree independently equals this exact tested source
+tree, including the WAV, compiled profile and trace assets. Only Markdown result
+records are added for publication; root verifies unchanged code/test/data blobs
+and the resulting full archive separately. No branch update or hosted result is
+claimed until its actual publication is observed. The final reviewers' active
+files remain outside this checkpoint.

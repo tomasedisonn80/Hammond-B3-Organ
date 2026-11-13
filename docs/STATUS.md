@@ -133,8 +133,8 @@ executables, the trace plotter, the compiled profile, two catalogs and eight
 scores. Its focused Linux gate passed installation and prefix relocation with
 unchanged WAVs, metadata, CSV and SVG outputs from an unrelated directory. Earlier
 install versions passed hosted macOS/Windows qualification; the expanded 16-file
-component passed the combined 45-suite local Release gate; its hosted result
-is tracked separately.
+component passed the combined 45-suite local Release gate and all four hosted
+jobs at `2046b93` in [run 43376892064](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43376892064).
 
 The [factory runtime acceptance](FACTORY_RUNTIME_ACCEPTANCE.md), retained
 [four-second demo](../examples/rendered/nominal-two-manual-v1/README.md),
@@ -181,6 +181,47 @@ floor, atomic rejection and bounded nominal drift checks. The
 [benchmark](BENCHMARKING.md) reports observed processing intervals without a timing
 pass threshold. The [repository checker](REPOSITORY_CHECKS.md) verifies retained
 source/index/link/data identities and supports an explicit final agent count.
+
+## Final continuation review
+
+The core runtime and input reviews found no actionable implementation defect in
+their stated scopes and passed twelve focused binaries between them. Final
+evidence review found and fixed buffered stdout failures in renderer help and
+JSON reporting. Its new regression reproduces both old failures; the repaired
+renderer passes all 35 methods and reproduces the retained demo exactly. A valid
+WAV can already exist if subsequent summary delivery fails, as documented in
+[the render contract](RENDER_FORMAT.md). Stale host/ownership instructions now
+match the implemented FIFO, control migration and stopped rate APIs. These final
+changes passed a new coherent combined Release gate: 46/46 suites, including
+371 Python methods, on tree `08d944734efcd1b7a8ed5a93392deabca70a178f`.
+Hosted qualification is recorded separately once observed. The earlier frozen
+wave-09 pass predates the repair and does not substitute for this new gate.
+
+All sixty continuation workers have been dispatched; 57 are complete and three
+final reviews are running at this checkpoint. The
+[actual manifest](development/2026-11-13-continuation/assignments.json) and
+[separate accounting contract](CONTINUATION_CHECKS.md) govern the final count.
+
+## Current handoff and next implementation
+
+The [current developer handoff](CONTINUATION_HANDOFF.md) gives the first build,
+render, evidence, trace, plot, benchmark and relocation commands. The verified
+[two-second nominal console example](../examples/rendered/nominal-console-v2/README.md)
+retains its genuine schema2 bundle, measurements and a separate diagnostic plot.
+It reports zero clipping and exact same-build block-partition replay.
+The [identity review](reviews/CONTINUATION_IDENTITY_REVIEW.md) confirms the
+preserved PDF, profile, maps and original fixture identities, all 39 original
+parameter records, four appended controls and the stated migration boundaries.
+The [continuation record checker](CONTINUATION_CHECKS.md) separately validates
+this session's actual assignment states and notes; the original sixty remain
+a distinct completed session.
+
+The [next M3 gate](M3_NEXT_GATE.md) is a prepared pedal routing/reference kernel.
+Begin with typed admission of the complete 25-by-8 map, then return four bounded
+bus excitations from the existing shared 91-source frame. Preserve all 200
+contact positions, five disconnections and distinct repeated-source branches.
+Playable controls, host mapping, state migration and physical voicing follow
+separate gates; this proposed kernel is not yet implemented.
 
 ## Evidence boundary
 

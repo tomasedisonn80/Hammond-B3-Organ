@@ -9,46 +9,47 @@ source reviews and evidence remain intact and are not counted again.
 
 The nominal console, typed input and sample-rate lifecycle checkpoints are
 published. `9a5c99a` passes all 43 local Release suites and all four hosted jobs.
-The completed wave 08 adds enabled allocation checks, expanded offline installation
-and console/owned-input benchmarks; its combined gate is in progress. Wave 09
-prepares the current-model demo, precise next M3 gate and developer handoff.
+Wave 08 is published as `2046b93`, with all 45 local suites and all four hosted
+jobs passing. Wave 09 retains the current-model demo, precise next M3 gate,
+developer handoff, compatibility review and separate assignment accounting.
 Preserve the original ideal/off audio as a compatibility case.
 Publication requires a clean staged source build, applicable tests, an
 expected-head push and observed CI.
+The frozen wave-09 archive passed all 46 suites. Final review repaired the
+renderer's buffered stdout error status, added a regression, and reconciled stale
+host-integration wording. The corrected combined archive now passes all 46
+Release suites and 371 Python methods; publication and its actual hosted run
+follow. All sixty workers are dispatched; 57 are complete and the last three
+reviews remain in progress in this snapshot.
 
-The remaining development waves cover:
-
-1. Enabled contact/percussion and owned-input allocation checks, bounded workload
-   measurements and packaging of the added offline tools.
-2. Reproducible current-model examples, concrete remaining M3 acceptance gates,
-   documentation reconciliation and separate accounting of all 60 new workers.
-3. Independent final runtime, input, evidence, platform and handoff review, fixes
-   for observed findings, and verification of the exact published checkpoint.
+The remaining session work is the six independent wave-10 reviews: runtime,
+input/persistence, offline evidence, handoff/atlas alignment, platform qualification,
+and final publication/accounting. Record actual dispatch and completion in the
+[separate manifest](development/2026-11-13-continuation/assignments.json), retain
+all findings, fix observed defects, and run the
+[explicit final continuation gate](CONTINUATION_CHECKS.md) before claiming all
+sixty new assignments complete. The completed enabled-path, install and demo
+work does not need to be repeated merely to close another wave.
 
 Subagents own scoped files and one evidence note. The integrator owns shared
 status/next-step/log updates, integration and publication. Follow `AGENTS.md`.
 
 ## Next product milestone
 
-Complete the remaining **M3 console behavior** with explicit model identities
-and acceptance gates. Contact/percussion software completion alone does not
-close this milestone.
+Implement the first checkpoint in [M3_NEXT_GATE.md](M3_NEXT_GATE.md): a prepared
+pedal routing/reference kernel consuming the current 91-source frame and returning
+four normalized bus excitations. The first concrete change is a typed pedal
+runtime contract plus an executable admission fixture for the existing 25-by-8
+map, preserving every position and explicit disconnection. The plan names the
+files/APIs to create, ordered steps, independent CSV comparisons, phase/atomicity/
+allocation gates, and the later playable-integration boundary.
 
-- Physical preset latch behavior and transformer loading remain separate from
-  the current exclusive A/B selector. Read atlas pp. 121-132 before designing it.
-- Runtime pedals need weighting/shaping and an explicit phase-preserving path
-  from the independently corroborated 25-by-8 routing data. Five positions are
-  disconnected; they must not become source zero or accidental source one.
-- Continuous drawbar travel, contact switching bandwidth/bounce and loaded
-  expression need declared nominal algorithms or admitted measurements. Do not
-  invent calibrated values from the current binary contact surrogate.
-- Preserve shared source identities, original control IDs, legacy fixtures,
-  atomic rejection, stable same-frame event ordering and block invariance.
-
-Physical preset latch behavior, pedal weighting/shaping and measured expression
-remain separate M3 gates. Existing A/B selection, routing-only Cancel, pedal
-mapping data and nominal readiness do not close them. Avoid solving later
-scanner/cabinet sound by compensating for an unverified upstream organ model.
+Use [CONTINUATION_HANDOFF.md](CONTINUATION_HANDOFF.md) for a current coherent
+checkout and tool commands. Do not create a second tone generator, infer a pedal
+MIDI octave, reuse manual contact timings, silently fill unknown reactor/mixture
+values, or change existing parameter/event/control identities. Physical preset
+latches, switching bandwidth, continuous drawbars and loaded expression remain
+additional M3 gates.
 
 ## Acquisition work that can proceed in parallel
 

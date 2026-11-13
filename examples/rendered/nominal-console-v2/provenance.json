@@ -1,0 +1,440 @@
+{
+  "audio": {
+    "alternate_partition_command": [
+      "/workspace/scratch/60e8291da354/a49-console-demo/build/hammond_render",
+      "--profile",
+      "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle/profile.b3p",
+      "--output",
+      "/workspace/scratch/60e8291da354/a49-console-demo/replay-block64.wav",
+      "--frames",
+      "96000",
+      "--sample-rate",
+      "48000",
+      "--block-size",
+      "64",
+      "--seed",
+      "0",
+      "--drawbars",
+      "008000008",
+      "--contacts",
+      "nominal",
+      "--percussion",
+      "second",
+      "--percussion-volume",
+      "normal",
+      "--percussion-decay",
+      "fast",
+      "--events",
+      "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle/events.txt",
+      "--fail-on-clip"
+    ],
+    "alternate_partition_returncode": 0,
+    "alternate_partition_wav_identical": true,
+    "alternate_partition_wav_sha256": "3cbfc2a80ee5ed014782d9abe33d5afc2cd7e494f3efdba280939b4d3d8f56b5",
+    "analyses": [
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle/render.wav",
+          "--start-frame",
+          "0",
+          "--end-frame",
+          "96000"
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_retained_as": "analysis/whole.json"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle/render.wav",
+          "--start-frame",
+          "1920",
+          "--end-frame",
+          "4800"
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_retained_as": "analysis/partial-hold.json"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle/render.wav",
+          "--start-frame",
+          "26880",
+          "--end-frame",
+          "29760"
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_retained_as": "analysis/legato.json"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle/render.wav",
+          "--start-frame",
+          "58560",
+          "--end-frame",
+          "62400",
+          "--expected-frequency",
+          "130.8127826502993"
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_retained_as": "analysis/lower-only.json"
+      },
+      {
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/analyze_wav.py",
+          "--input",
+          "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle/render.wav",
+          "--start-frame",
+          "88320",
+          "--end-frame",
+          "96000"
+        ],
+        "returncode": 0,
+        "stderr_bytes": 0,
+        "stdout_retained_as": "analysis/tail.json"
+      }
+    ],
+    "description": "Two-second original partial-key, legato, Cancel/reselect and percussion-mask demonstration",
+    "producer_command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/render_fixture.py",
+      "--renderer",
+      "/workspace/scratch/60e8291da354/a49-console-demo/build/hammond_render",
+      "--profile-json",
+      "/workspace/scratch/60e8291da354/a49-console-demo/source/data/profiles/nominal-unmeasured-v1.json",
+      "--output-dir",
+      "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle",
+      "--frames",
+      "96000",
+      "--sample-rate",
+      "48000",
+      "--block-size",
+      "127",
+      "--seed",
+      "0",
+      "--drawbars",
+      "008000008",
+      "--contacts",
+      "nominal",
+      "--percussion",
+      "second",
+      "--percussion-volume",
+      "normal",
+      "--percussion-decay",
+      "fast",
+      "--events",
+      "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/console-demo.events"
+    ],
+    "producer_returncode": 0,
+    "score_matches_retained_events": true,
+    "verification_command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/verify_render.py",
+      "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/bundle"
+    ],
+    "verification_report": "analysis/verification.json"
+  },
+  "build": {
+    "cmake_version": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "commands": [
+      [
+        "git",
+        "archive",
+        "9a5c99a862daf26a2bab9b05613c98803727a3e7"
+      ],
+      [
+        "/workspace/scratch/c871510c69b2/build-tools/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/60e8291da354/a49-console-demo/source",
+        "-B",
+        "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      [
+        "/workspace/scratch/c871510c69b2/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "--parallel",
+        "2",
+        "--target",
+        "hammond_render",
+        "hammond_console_trace"
+      ]
+    ],
+    "compiled_commands": [
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/ContactBank.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/ContactBank.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/ControlState.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/ControlState.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ControlState.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/ControlStateIO.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/ControlStateIO.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ControlStateIO.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Engine.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/Engine.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/Engine.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Engine.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/InputProcessor.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/InputProcessor.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/InputProcessor.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/NoteOwnership.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/NoteOwnership.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/NoteOwnership.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/ParameterBridge.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/ParameterBridge.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/ParameterBridge.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Percussion.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/Percussion.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/Percussion.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Percussion.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/Profile.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/Profile.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/Profile.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/Profile.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/src/TonewheelBank.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/src/TonewheelBank.cpp",
+        "output": "CMakeFiles/hammond_core.dir/src/TonewheelBank.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_render.dir/tools/render.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/tools/render.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/render.cpp",
+        "output": "CMakeFiles/hammond_render.dir/tools/render.cpp.o"
+      },
+      {
+        "command": "/usr/bin/c++  -I/workspace/scratch/60e8291da354/a49-console-demo/source/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_console_trace.dir/tools/console_trace.cpp.o -c /workspace/scratch/60e8291da354/a49-console-demo/source/tools/console_trace.cpp",
+        "directory": "/workspace/scratch/60e8291da354/a49-console-demo/build",
+        "file": "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/console_trace.cpp",
+        "output": "CMakeFiles/hammond_console_trace.dir/tools/console_trace.cpp.o"
+      }
+    ],
+    "compiler_version": "c++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "configuration": "Release",
+    "machine": "x86_64",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "evidence_scope": "synthetic_engineering",
+  "executables": {
+    "hammond_console_trace": {
+      "bytes": 116984,
+      "original_path": "/workspace/scratch/60e8291da354/a49-console-demo/build/hammond_console_trace",
+      "sha256": "0334f85343477c427c3de094b3e81802eb2d18d7df664b9f8596ced6cfb66a5c"
+    },
+    "hammond_render": {
+      "bytes": 129456,
+      "original_path": "/workspace/scratch/60e8291da354/a49-console-demo/build/hammond_render",
+      "sha256": "cc0f7a98cdc23694e18c8b53a1241704a876331677688950dea0e7cd6a498efd"
+    }
+  },
+  "limits": [
+    "Source/build relationship is an observed local execution record, not signed attestation.",
+    "Producer Git fields are unavailable because its exact source was a Git archive; the source identity is recorded separately without rewriting the genuine manifest.",
+    "Verification authenticates no instrument or physical capture and does not replay audio.",
+    "Same-build block partition identity is observed; universal cross-toolchain byte identity is not claimed.",
+    "Trace/plot use a separate built-in schedule and registration from the two-second WAV.",
+    "No native host/device, subjective listening trial, real-time deadline or physical calibration was performed."
+  ],
+  "observations": {
+    "lower_only_frequency_check": {
+      "absolute_error_hz": 0.0007048187518705618,
+      "declared_source_tone_id": 25,
+      "expected_frequency_hz": 130.8127826502993,
+      "observed_frequency_hz": 130.81348746905118,
+      "passed": true,
+      "sanity_tolerance_hz": 0.01,
+      "window": [
+        58560,
+        62400
+      ]
+    },
+    "renderer_clipped_channel_samples": 0,
+    "renderer_clipped_frames": 0,
+    "tail_pcm_nonzero_channel_samples": 0,
+    "tail_window": [
+      88320,
+      96000
+    ],
+    "whole_pcm_full_scale_channel_samples": 0,
+    "whole_stereo_identical": true
+  },
+  "recorded_at_utc": "2026-11-13T06:09:35.690318+00:00",
+  "retained_artifacts": {
+    "analysis/legato.json": {
+      "bytes": 2469,
+      "sha256": "6b9c34fc95ccdd018ffa6dcb9ff32afd2cd8a660a3a3f99297f292be274d5977"
+    },
+    "analysis/lower-only.json": {
+      "bytes": 3814,
+      "sha256": "80832d178ae65be4db2ab16b260edf24cbd738458aed65ed118b7f984dce2387"
+    },
+    "analysis/partial-hold.json": {
+      "bytes": 2467,
+      "sha256": "36eadc9f46273edfa3f41e20df07830d0142b99eb2da5ef923d0e62a5579ee33"
+    },
+    "analysis/tail.json": {
+      "bytes": 2365,
+      "sha256": "1dbb7251d04f81fb15a2c41300c727ea23b8b41d3217cde22dcf554bbb766f3d"
+    },
+    "analysis/verification.json": {
+      "bytes": 1022,
+      "sha256": "5a65658c22247400ab77f173be2f8282ae8753a993d8bdeff2d331ddb3f1458e"
+    },
+    "analysis/whole.json": {
+      "bytes": 2471,
+      "sha256": "cacd9173c001d5ff6a3c3d958464b56b9f49c94d263448d4abaed468fc52a7ef"
+    },
+    "bundle/events.txt": {
+      "bytes": 987,
+      "sha256": "79da35d4212d2e1416d847b0d41f029182622c8574a0b50c87d643c3f1b29587"
+    },
+    "bundle/manifest.json": {
+      "bytes": 5965,
+      "sha256": "35bbcfef73ff2fb0651cd8db2690841e03d2970f51db0cf64fafe2866ce65bb7"
+    },
+    "bundle/profile.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    },
+    "bundle/profile.json": {
+      "bytes": 19627,
+      "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff"
+    },
+    "bundle/render.wav": {
+      "bytes": 384044,
+      "sha256": "3cbfc2a80ee5ed014782d9abe33d5afc2cd7e494f3efdba280939b4d3d8f56b5"
+    },
+    "bundle/renderer.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "bundle/renderer.stdout.txt": {
+      "bytes": 514,
+      "sha256": "6afdb8812e39c84fc15704d61fdc4e9d861325e293f5d9b378abdfc6f92fe592"
+    },
+    "console-demo.events": {
+      "bytes": 987,
+      "sha256": "79da35d4212d2e1416d847b0d41f029182622c8574a0b50c87d643c3f1b29587"
+    },
+    "trace/partial-48000.csv": {
+      "bytes": 1194816,
+      "sha256": "dbaa075fcd7bea24b4a61a5df8f55faab53053244ad1e59126ba3f4d80fd89b2"
+    },
+    "trace/partial-48000.svg": {
+      "bytes": 117510,
+      "sha256": "76d8583e00977856e54e61fbb1691ff2f7ffb3e2e9f86e0ee5f807e9bdc203a4"
+    }
+  },
+  "schema": "nominal-console-demo-provenance-v1",
+  "source": {
+    "archive_has_git_metadata": false,
+    "archive_sha256": "dc22885d75001119cf6e7ec321647af1b1138b80dfd462664f9d0bec6ff5754d",
+    "blob_count_reverified_after_execution": 296,
+    "producer_git_observation": {
+      "binary_association": "not_established",
+      "captured_at_utc": "2026-11-13T06:04:47.565545Z",
+      "dirty": null,
+      "error": "git HEAD unavailable",
+      "head": null,
+      "repository_path": "/workspace/scratch/60e8291da354/a49-console-demo/source"
+    },
+    "source_commit": "9a5c99a862daf26a2bab9b05613c98803727a3e7",
+    "source_tree": "a85f1bcb43d2815b6f661172f7ab394ad34bee7e",
+    "verified_blob_count": 296
+  },
+  "tools": {
+    "analyze_wav.py": {
+      "sha256": "e39d3b414854066af2510c3dedf26c70ea71066a09efce5a9cdb41114e8b5fb7",
+      "source_relative_path": "tools/analyze_wav.py"
+    },
+    "compile_profile.py": {
+      "sha256": "2ca649de88a3f267970e4ed00fa6c08b7c234bffcc1b4c24b47a89be608fb2a8",
+      "source_relative_path": "tools/compile_profile.py"
+    },
+    "plot_console_trace.py": {
+      "sha256": "e7cf4603acbf2707b7752f781314a97293b89567675eb19cae772f4db37d3720",
+      "source_relative_path": "tools/plot_console_trace.py"
+    },
+    "render_fixture.py": {
+      "sha256": "9e4a63808a7d754a038b503242dfa078c5cfaeaa1bc9ca9b80c3646d7c56fd36",
+      "source_relative_path": "tools/render_fixture.py"
+    },
+    "verify_render.py": {
+      "sha256": "332d7cbc694ab457ed607f4473f688ea6d86c8cf2765e706ec463fef18dc20db",
+      "source_relative_path": "tools/verify_render.py"
+    }
+  },
+  "trace": {
+    "csv_matches_assignment42_observed_hash": true,
+    "description": "Separate built-in 120 ms partial scenario, zero sustained drawbars; differs from the two-second audio score",
+    "plot_command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "/workspace/scratch/60e8291da354/a49-console-demo/source/tools/plot_console_trace.py",
+      "--input",
+      "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/trace/partial-48000.csv",
+      "--output",
+      "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/trace/partial-48000.svg"
+    ],
+    "plot_returncode": 0,
+    "rows": 5760,
+    "svg_matches_assignment42_visually_inspected_hash": true,
+    "trace_command": [
+      "/workspace/scratch/60e8291da354/a49-console-demo/build/hammond_console_trace",
+      "--profile",
+      "/workspace/scratch/60e8291da354/a49-console-demo/build/nominal.b3p",
+      "--scenario",
+      "partial",
+      "--sample-rate",
+      "48000",
+      "--seed",
+      "0",
+      "--output",
+      "/workspace/scratch/60e8291da354/Hammond-B3-Organ/examples/rendered/nominal-console-v2/trace/partial-48000.csv"
+    ],
+    "trace_returncode": 0,
+    "visual_inspection_basis": "Byte identity with the actual librsvg/Cairo-rendered SVG retained by continuation assignment 42; no new visual inspection claim by assignment 49"
+  }
+}

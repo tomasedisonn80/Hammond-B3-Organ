@@ -1,5 +1,10 @@
 # Assignment 36 — ownership through sample-rate lifecycle changes
 
+Agent: `/root/w06_a36_owned_lifecycle_tests`
+
+Identity normalization: assignment 54 recorded the integrator-confirmed
+canonical dispatch name; the original evidence below is unchanged.
+
 Date: 2026-11-13 UTC. Continuation wave 06, assignment 36 of its separately
 counted sixty assignments. Scope: independent cross-layer verification using
 `NoteOwnership`, `process_owned_notes()` and the wave 06 Engine rate API.

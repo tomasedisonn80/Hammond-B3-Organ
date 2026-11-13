@@ -1,5 +1,10 @@
 # Assignment 18 — independent renderer console regressions
 
+Agent: `/root/w03_a18_renderer_tests`
+
+Identity normalization: assignment 54 recorded the integrator-confirmed
+canonical dispatch name; the original evidence below is unchanged.
+
 Date: 2026-11-13. Continuation wave 03, assignment 18 of 60.
 
 ## Scope and files
