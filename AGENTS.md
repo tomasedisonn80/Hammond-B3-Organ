@@ -64,3 +64,17 @@ A working offline renderer is an engineering deliverable. A playable VST3/standa
 product, native UI, measured AO-28/scanner/Leslie model, hardware fidelity, host
 qualification, licensing clearance and signed installers each require their own
 retained evidence. Mark them pending until that evidence exists.
+
+## Continuing across sessions
+
+Read the newest retained session ledger under `docs/development/` as well as the
+shared status files. A continuation must preserve previous assignment identities
+and execution results; do not count an earlier agent as a newly dispatched agent.
+If `main` advances during work, inspect and integrate the new commits, rerun the
+affected checks, and publish with an expected-head guard. Never overwrite another
+session's completed work or clear an unresolved gate merely to close a wave.
+
+When introducing a new nominal model, preserve its model identity, parameter units,
+source-page basis and limitations with the code. Ordinary saved controls must remain
+separate from contact trajectories, percussion readiness, source phase and other
+transient DSP histories. Specify migrations before changing a saved-state format.
