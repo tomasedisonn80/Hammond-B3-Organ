@@ -147,7 +147,7 @@
       "number": 13,
       "wave": 3,
       "agent": "/root/w03_a13_session_runtime",
-      "status": "running",
+      "status": "completed",
       "report": "docs/development/2026-11-13-next-phases/13-session-runtime.md",
       "owned_files": [
         "apps/standalone/Session.cpp",
@@ -158,7 +158,7 @@
       "number": 14,
       "wave": 3,
       "agent": "/root/w03_a14_ui_runtime",
-      "status": "running",
+      "status": "completed",
       "report": "docs/development/2026-11-13-next-phases/14-ui-runtime.md",
       "owned_files": [
         "apps/standalone/UiModel.cpp",
@@ -169,13 +169,211 @@
       "number": 15,
       "wave": 3,
       "agent": "/root/w03_a15_audio_device",
-      "status": "running",
+      "status": "completed",
       "report": "docs/development/2026-11-13-next-phases/15-audio-device.md",
       "owned_files": [
         "apps/standalone/AudioDevice.h",
         "apps/standalone/AudioDevice.cpp",
         "docs/STANDALONE_AUDIO.md",
         "docs/development/2026-11-13-next-phases/15-audio-device.md"
+      ]
+    },
+    {
+      "number": 16,
+      "wave": 3,
+      "agent": "/root/w03_a16_session_acceptance",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/16-session-acceptance.md",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_session.cpp",
+        "docs/STANDALONE_SESSION_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/16-session-acceptance.md"
+      ]
+    },
+    {
+      "number": 17,
+      "wave": 3,
+      "agent": "/root/w03_a17_ui_acceptance",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/17-ui-acceptance.md",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_ui.cpp",
+        "docs/STANDALONE_UI_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/17-ui-acceptance.md"
+      ]
+    },
+    {
+      "number": 18,
+      "wave": 3,
+      "agent": "/root/w03_a18_native_app",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/18-native-app.md",
+      "owned_files": [
+        "apps/standalone/main.cpp",
+        "docs/STANDALONE_APP.md",
+        "docs/development/2026-11-13-next-phases/18-native-app.md"
+      ]
+    },
+    {
+      "number": 19,
+      "wave": 4,
+      "agent": "/root/w04_a19_device_acceptance",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/19-device-acceptance.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_audio_device.cpp",
+        "docs/STANDALONE_AUDIO_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/19-device-acceptance.md"
+      ]
+    },
+    {
+      "number": 20,
+      "wave": 4,
+      "agent": "/root/w04_a20_state_files",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/20-state-files.md",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_state_files.cpp",
+        "docs/STANDALONE_STATE_FILES.md",
+        "docs/development/2026-11-13-next-phases/20-state-files.md"
+      ]
+    },
+    {
+      "number": 21,
+      "wave": 4,
+      "agent": "/root/w04_a21_callback_allocation",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/21-callback-allocation.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_callback_allocation.cpp",
+        "docs/STANDALONE_CALLBACK_ALLOCATION.md",
+        "docs/development/2026-11-13-next-phases/21-callback-allocation.md"
+      ]
+    },
+    {
+      "number": 22,
+      "wave": 4,
+      "agent": "/root/w04_a22_session_concurrency",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/22-session-concurrency.md",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_concurrency.cpp",
+        "docs/STANDALONE_CONCURRENCY.md",
+        "docs/development/2026-11-13-next-phases/22-session-concurrency.md"
+      ]
+    },
+    {
+      "number": 23,
+      "wave": 4,
+      "agent": "/root/w04_a23_standalone_install",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/23-standalone-install.md",
+      "owned_files": [
+        "cmake/InstallStandalone.cmake",
+        "apps/standalone/native_tests/test_standalone_install.py",
+        "docs/STANDALONE_INSTALL.md",
+        "docs/development/2026-11-13-next-phases/23-standalone-install.md"
+      ]
+    },
+    {
+      "number": 24,
+      "wave": 4,
+      "agent": "/root/w04_a24_app_acceptance",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/24-app-acceptance.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_app.py",
+        "docs/STANDALONE_APP_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/24-app-acceptance.md"
+      ]
+    },
+    {
+      "number": 25,
+      "wave": 5,
+      "agent": "/root/w05_a25_standalone_ci",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/25-standalone-ci.md",
+      "owned_files": [
+        ".github/workflows/standalone.yml",
+        "docs/STANDALONE_CI.md",
+        "docs/development/2026-11-13-next-phases/25-standalone-ci.md"
+      ]
+    },
+    {
+      "number": 26,
+      "wave": 5,
+      "agent": "/root/w05_a26_input_replay",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/26-input-replay.md",
+      "owned_files": [
+        "apps/standalone/ScriptedInput.h",
+        "apps/standalone/ScriptedInput.cpp",
+        "docs/STANDALONE_INPUT_REPLAY.md",
+        "docs/development/2026-11-13-next-phases/26-input-replay.md"
+      ]
+    },
+    {
+      "number": 27,
+      "wave": 5,
+      "agent": "/root/w05_a27_replay_acceptance",
+      "status": "completed",
+      "report": "docs/development/2026-11-13-next-phases/27-replay-acceptance.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_input_replay.cpp",
+        "docs/STANDALONE_REPLAY_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/27-replay-acceptance.md"
+      ]
+    },
+    {
+      "number": 28,
+      "wave": 5,
+      "agent": "/root/w05_a28_native_workflows",
+      "status": "running",
+      "report": "docs/development/2026-11-13-next-phases/28-native-workflows.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_workflows.py",
+        "examples/standalone-input/README.md",
+        "examples/standalone-input/keyboard-notes.b3ui",
+        "examples/standalone-input/audio-settings.b3ui",
+        "examples/standalone-input/save-controls.b3ui",
+        "docs/STANDALONE_WORKFLOWS.md",
+        "docs/development/2026-11-13-next-phases/28-native-workflows.md"
+      ]
+    },
+    {
+      "number": 29,
+      "wave": 5,
+      "agent": "/root/w05_a29_session_benchmark",
+      "status": "running",
+      "report": "docs/development/2026-11-13-next-phases/29-session-benchmark.md",
+      "owned_files": [
+        "apps/standalone/benchmark.cpp",
+        "docs/STANDALONE_BENCHMARK.md",
+        "docs/development/2026-11-13-next-phases/29-session-benchmark.md"
+      ]
+    },
+    {
+      "number": 30,
+      "wave": 5,
+      "agent": "/root/w05_a30_benchmark_acceptance",
+      "status": "running",
+      "report": "docs/development/2026-11-13-next-phases/30-benchmark-acceptance.md",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_benchmark.py",
+        "docs/STANDALONE_BENCHMARK_ACCEPTANCE.md",
+        "docs/development/2026-11-13-next-phases/30-benchmark-acceptance.md"
+      ]
+    },
+    {
+      "number": 31,
+      "wave": 6,
+      "agent": "/root/w06_a31_chapel_source_a",
+      "status": "running",
+      "report": "docs/development/2026-11-13-next-phases/31-chapel-source-a.md",
+      "owned_files": [
+        "data/registrations/review-a-chapel.csv",
+        "docs/research/CHAPEL_PRESETS_SOURCE_A.md",
+        "docs/development/2026-11-13-next-phases/31-chapel-source-a.md"
       ]
     }
   ]

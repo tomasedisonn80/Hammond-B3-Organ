@@ -17,7 +17,7 @@ Evidence: tracked plus proposed nonignored files, C++ includes, Python imports, 
 
 | Boundary | Actual contents / consequence |
 | --- | --- |
-| Repository/source archive | Project C++ headers/source, Python tools/tests, build configuration, original documentation, reconstructed/proposed JSON, factual CSVs, text event fixtures, and the supplied atlas PDF. The imported SplitMix64 routine is identified below. No SDK/framework source tree, recorded audio, standalone font, extracted atlas image or additional manual PDF was found among tracked/proposed files. |
+| Repository/source archive | Project C++ headers/source, Python tools/tests, build configuration, original documentation, reconstructed/proposed JSON, factual CSVs, text event fixtures, and the supplied atlas PDF. The imported SplitMix64 routine is identified below. The standalone adds two unmodified DejaVu 2.37 font inputs, their complete notice and generated glyph data, with exact manifests. No SDL2/VST3 SDK source tree, extracted atlas image or additional manual PDF is vendored. Retained demo WAVs are explicitly synthetic engineering output. |
 | Local `OfflineTools` install | Exactly 23 configured files: five native executables, two standalone standard-library plot scripts, the compiled nominal profile, three catalogs and twelve event scores. See the [exact layout and current qualification](OFFLINE_INSTALL.md). The atlas, factual CSVs, Python interpreter, core archive/headers and toolchain runtime libraries are not copied. |
 | CI execution and artifacts | Both workflows fetch the three pinned actions below; setup-python selects Python `3.12`; hosted images supply compilers/CMake and platform tools. Core CI retains diagnostics. The separate [native workflow](VST3_CI.md) also uploads the actual validated platform bundle, byte inventory and archive hash. These are development artifacts, not signed release installers. Action implementations and runner images are not vendored into the repository or installed payload. |
 | Generated outputs | Profiles, diagnostic SVGs and WAV/evidence bundles are generated from declared project inputs. Original, console and pedal catalogs contain synthetic gestures without recorded samples. Retained [dry](../examples/rendered/nominal-two-manual-v1/README.md), [console](../examples/rendered/nominal-console-v2/README.md) and [pedal](../examples/demos/pedal-phrase-v1/README.md) examples include actual generated audio and evidence, with no executable or hardware recording in those example bundles. Keep their input/output identities and nominal-engine scope. |
@@ -187,3 +187,22 @@ limits are in its linked README. At that historical checkpoint, the addition did
 local install payload. The current 23-file layout and actual native development
 artifacts are described above; their existence does not grant redistribution
 permission for unrelated project or research material.
+
+
+## Standalone dependency update — 2026-11-13
+
+The independent native adapter introduces explicitly acquired, locked SDL2
+2.32.10 and source-controlled DejaVu 2.37 font inputs. Exact source/license/font
+hashes and authoring dependencies are retained in
+[STANDALONE_DEPENDENCY.md](STANDALONE_DEPENDENCY.md) and
+[STANDALONE_FONTS.md](STANDALONE_FONTS.md). The
+[third-party notices](../THIRD_PARTY_NOTICES.md) retain the selected SDL2 license
+and point to the complete accompanying DejaVu notice.
+
+SDL2 is a static optional native build target, while system audio/window and
+C/C++ runtime linkage remains platform-specific. The generated glyph header
+requires neither source font files nor a font rasterizer at runtime. Future
+standalone staging must accompany the executable with SDL2 and DejaVu notices,
+a model-scope description and actual runtime-dependency inventory. Building or
+staging an unsigned prototype does not select the missing project-wide license,
+clear supplied research/branding rights or qualify signed public distribution.

@@ -136,3 +136,58 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>.
 ```
+
+
+## Optional SDL2 standalone transport
+
+The optional standalone uses explicitly acquired SDL2 **2.32.10**, official
+release tag `release-2.32.10`, commit
+`5d249570393f7a37e037abf22cd6012a4cc56a71`. Source and license identities are
+recorded in [the dependency lock](data/dependencies/sdl2-lock.json) and verified
+by [the acquisition tool](tools/acquire_sdl2.py). Configuration does not download
+or modify that source. SDL2 source is not vendored in this repository. The native
+standalone statically links the selected SDL2 target; any binary distribution
+containing it must retain this complete upstream notice and identify separately
+included system/runtime dependencies. This does not grant a project-wide license.
+
+The locked `LICENSE.txt` identity (884 bytes, SHA-256
+`97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127`).
+The full notice below normalizes trailing whitespace only:
+
+```text
+Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+
+This software is provided 'as-is', without any express or implied
+warranty.  In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+```
+
+## Standalone DejaVu font inputs and generated glyphs
+
+Unmodified DejaVu Sans Book and DejaVu Serif Book **2.37** are retained under
+[assets/standalone/fonts](assets/standalone/fonts/). Their full source identities,
+font metadata, local package provenance and the fixed rasterizer versions are
+recorded in [the manifest](assets/standalone/fonts/source-manifest.json).
+The executable embeds generated glyph alpha data in
+[FontData.h](apps/standalone/FontData.h); runtime font files, FreeType, Pillow and
+SDL_ttf are not linked or required by this implementation.
+
+The complete [LICENSE-DejaVu.txt](assets/standalone/fonts/LICENSE-DejaVu.txt)
+accompanies the source inputs and is reproduced in the generated header. Packages
+containing the source fonts or derived glyph atlas must also ship that complete
+notice as an accompanying file. The permission text contains Bitstream notices
+and states that DejaVu changes are public domain. The separate Debian packaging
+GPL section is not the font license and was not substituted for it. See
+[font authoring and rights](docs/STANDALONE_FONTS.md) for the exact boundary.

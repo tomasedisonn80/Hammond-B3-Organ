@@ -1573,3 +1573,102 @@ review retains exact commands, source tree, scope and receipt hash.
 - Root is preparing a new coherent code checkpoint excluding in-progress combined-stage files. Worker reports identify their coordinated source hashes; until that integration completes, no new all-suite frozen-tree result is claimed.
 
 - Coherent line/rotor integration: local commit `babb8975d6881db6629e570e10ee619c70ba8be3`, tree `14572ab24e67489997cee20ae452c0635178dca0`, passed 77/77 Release suites in 50.64 seconds, zero failures, from a new detached source/build. The authenticated GitHub code object `772e3b3682c2026414e0a7b50eb726e8bddd7fed` has the identical tree. [The report](reviews/SCANNER_WAVE3_INTEGRATION.md) retains commands and exact input identities; publication verification is separate.
+
+
+## 2026-11-13 — Independent standalone session, waves 1–2
+
+- Read the complete unchanged 500-page PDF in six fresh bounded assignments and
+  inspected selected original page images. The current-session notes preserve
+  exact coverage and source identity; earlier session agents are not counted.
+- Inspected remote baseline `ba0d9c9c75bd7a39152470f9f7ddb82287cb01b1` and created
+  an isolated checkout because another active checkout owns unfinished scanner
+  work. Advanced the dependency-ready M9 dry-organ adapter permitted by atlas
+  p450; retained all core/control/state/native identities.
+- Baseline GCC 14.2.0 / CMake 4.4.4 / Python 3.12.14 Release execution passed 77/77
+  suites in 44.44 seconds. See [baseline evidence](reviews/STANDALONE_BASELINE.md).
+- Wave 2 froze the bounded Session and UI contracts, pinned official SDL2 2.32.10
+  at `5d249570393f7a37e037abf22cd6012a4cc56a71`, added explicit acquisition and
+  offline verification, vendored licensed DejaVu 2.37 inputs and generated the
+  native glyph atlases, and implemented the separate current-session checker.
+- Root independently ran 22 dependency methods and 16 accounting methods,
+  successfully verified the actual pinned checkout, and exercised fresh network
+  acquisition through the maintained script. The first direct dependency-test
+  invocation lacked CMake on PATH; setting `HAMMOND_TEST_CMAKE` resolved that
+  setup error. It was not a failed dependency implementation.
+- Published wave-1 review as `2e917509b378d48c85cc1d52c3aa446eef9552c8` and wave-2
+  contracts/assets as `96a37a977ef22b7adf38e1a841f57ffcf32519a7`, exact tree
+  `ab85e45d6776229c00fa394a540d72803daf8281`. CLI push has no configured credential;
+  authenticated GitHub blob/tree/commit/ref operations used an expected-head
+  guard and no force. Fetched each result and verified exact local/remote tree
+  equality, preserving local commit identities on named branches.
+- Hosted Native VST3 run 43505659847 and CI run 43505660090 both completed with
+  success for `96a37a9`; these runs qualify that checkpoint only.
+
+## 2026-11-13 — Standalone runtime integration, wave 3 in progress
+
+- Accepted Session, UiModel and AudioDevice implementations with exact source
+  identities in notes 13–15. The real unchanged engine plus pinned SDL dummy
+  transport passed all 15 supported rate/buffer combinations: 30 callbacks,
+  23,808 frames, zero render/format/nonfinite failures. Fault-injection doubles
+  remain explicitly separate from actual-engine evidence.
+- Root added the optional application/support CMake boundary, native drawing and
+  instrument painting, and off-callback transactional control-file helpers. The
+  root sources passed strict syntax checks. Actual software-renderer font and
+  full-layout harness images were inspected at 1280x900 and 960x700. Those
+  harnesses are intermediate checks, not completed app/device qualification.
+- Independent maintained Session/UI tests and the complete executable are being
+  implemented by assignments 16–18. Allocation, concurrent recovery, native app
+  smoke, package installation and three-platform hosted acceptance follow.
+
+- Root's new SDK-free Release build with both native options OFF passed all
+  81/81 CTest suites in 61.60 seconds with zero failures (`--parallel 2`). This
+  is an intermediate live-tree integration gate; independent Session/UI
+  production and test inputs were stable during execution. The first serial
+  run ended without a final result after 69 reported passes and a started
+  fixture test; its execution session was no longer available. That interrupted
+  run is not counted as a complete pass or a project failure. The complete
+  repeated gate retained a normal zero exit and final 81/81 summary.
+
+- Accepted the complete main application and independent maintained Session,
+  UI, device and state-file suites (assignments 16–20). The actual device suite
+  passes 15 configurations / 75 matrix callbacks / 59,520 frames, 31 expected
+  open rejections, two real render faults and eight lifecycle cycles. Its
+  adapter ASan/UBSan probe passes; LeakSanitizer is blocked by the environment's
+  ptrace limitation and was explicitly disabled for that narrower successful run.
+- The complete app passes actual SDL event/callback smoke at both supported
+  reference/minimum window sizes. Root's first runs observed 59/56 callbacks,
+  30,208/28,672 frames, positive finite peaks, visible held/released state,
+  screenshots while held and no audio faults. Source main then received one
+  stricter smoke predicate requiring the device still open/running before close;
+  final source `6b3e5b13dc362495f0bd224a3a046a1129652385faa4d20804a03edd162d6f78`
+  passes its own final smoke. Earlier results are retained under their old hash.
+- A fresh optional configure exposed SDL's earlier GNUInstallDirs inclusion
+  materializing an empty DATADIR cache sentinel. Root now materializes an
+  unspecified default before entering SDL. Actual fresh, repeated, custom
+  DATAROOTDIR-following and restored-default configurations pass; an explicitly
+  empty DATADIR still rejects. The initial worker configure workaround remains
+  recorded rather than being substituted for this integration correction.
+- Updated root setup/status/model-scope and dependency notices. Source-font and
+  selected SDL2 terms remain identified separately from unresolved project-wide
+  and research/branding rights. The source-archive integrity check passes with
+  2,382 local links across 383 Markdown files and unchanged 500-page PDF identity.
+
+## 2026-11-13 — Native checkpoint through assignment 27
+
+- Frozen runtime source `738162f`, tree `915e55dc7c3ad022042b188498aa41f2a7f40795`,
+  passed the complete optional native Release gate: 83/83 suites, 78.62 seconds.
+- Accepted calibrated actual-callback allocation, fully instrumented Session
+  concurrency, the nine-file relocatable Standalone install, independent real
+  executable acceptance, three-platform workflow definition and input-replay
+  helper/acceptance. These are scoped engineering results, not physical devices.
+- Independent executable acceptance found missing-leaf path aliases and then a
+  symmetric dangling-state-symlink hazard. Root repaired preflight admission and
+  retained both regression families. Final app acceptance: 18 methods, 164 runs,
+  zero Linux skips. The assembled later native group passed 9/9 in 8.62 seconds.
+- The [checkpoint report](reviews/STANDALONE_NATIVE_CHECKPOINT.md) records exact
+  app/source identities and distinguishes the two test scopes. The hosted
+  standalone workflow is authored but not yet executed; replay application and
+  benchmark integration remain active assignments 28–30.
+- Before publication, remote `main` advanced from `96a37a9` to `6b4b6bd` with a
+  separate rotary review and documentation track. It is being integrated while
+  preserving its actual ledger, evidence and scope; no force-push is authorized.

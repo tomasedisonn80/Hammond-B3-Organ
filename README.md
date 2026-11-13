@@ -4,7 +4,7 @@ A project to recreate a vintage Hammond B-3 and Leslie system, guided by the
 repository's **500-page research and build atlas**.
 
 **Current stage:** a working nominal dry-organ engine, offline WAV renderer and
-optional headless VST3 prototype. The core owns 91 shared, continuously running
+optional headless VST3 and native standalone prototypes. The core owns 91 shared, continuously running
 sources, two manuals and 25 independently held pedals. Four retained A/B banks,
 routing-only Cancel, optional contact travel, partial-key targets and shared
 percussion readiness provide early console behavior. Two explicitly nominal
@@ -21,6 +21,15 @@ DAW and device gates are recorded separately; the SDK validator's diagnostics
 are retained rather than hidden behind its summary. Ordinary builds remain
 SDK-free; use the explicit [optional build](docs/VST3_BUILD.md) for VST3.
 
+The [native standalone](docs/STANDALONE_APP.md) now provides a resizable instrument
+window, both manuals and pedals, A/B drawbar editing and selection, percussion,
+expression, keyboard/pointer playing, audio settings, and explicit control-file
+saving/loading. Its [operational handoff](docs/STANDALONE_HANDOFF.md) records
+setup and the current qualification boundary. Actual SDL dummy runs and software
+screenshots exist; real-device and production-release gates remain separate.
+The [new sixty-assignment session](docs/development/2026-11-13-next-phases/README.md)
+retains distinct records from earlier work. Ordinary builds remain SDK-free.
+
 The [scanner continuation](docs/SCANNER_HANDOFF.md) now includes a strict circuit
 graph/compiler, independent primary-source review and two independent AC
 calculations. Prepared runtime, rotor and integration work follow the
@@ -36,8 +45,8 @@ research module does not yet establish a measured Leslie or change dry output.
 The selected source, contact, percussion and pedal models are **nominal and
 unmeasured**. Ideal contacts, percussion off and muted pedals preserve the
 original renderer defaults. Full M3, scanner/AO-28 electronics, Leslie acoustics,
-specimen calibration, audio-device standalone and the atlas's accessible custom
-interface remain open. No software test establishes a measured one-to-one
+specimen calibration, physical-device qualification and the atlas's accessible
+custom interface remain open. No software test establishes a measured one-to-one
 instrument match. The [project guide](docs/PROJECT_GUIDE.md),
 [current status](docs/STATUS.md) and [next steps](docs/NEXT_STEPS.md) distinguish
 implemented behavior, executed evidence and the next concrete work.
@@ -51,7 +60,7 @@ builds and the exact qualification boundaries. Current pedal work has its own
 [trace tool](docs/PEDAL_TRACE.md), [pedal plots](docs/PEDAL_TRACE_PLOTS.md) and
 [musical catalog](docs/PEDAL_AUDIO_ACCEPTANCE.md).
 
-The current [pedal/native session](docs/development/2026-11-13-pedals/README.md)
+The completed [pedal/native session](docs/development/2026-11-13-pedals/README.md)
 completed **60 distinct new assignments in ten waves**, including a fresh review
 of all 500 atlas pages. All sixty substantive results are accepted; the ledger
 retains exact scopes, checks, failures and final publication boundaries. Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json)

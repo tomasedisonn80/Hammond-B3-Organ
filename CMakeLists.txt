@@ -8,6 +8,8 @@ endif()
 option(HAMMOND_ENABLE_SANITIZERS "Enable AddressSanitizer and UndefinedBehaviorSanitizer" OFF)
 option(HAMMOND_BUILD_VST3 "Build the optional pinned-SDK native VST3 instrument" OFF)
 set(HAMMOND_VST3_SDK_ROOT "" CACHE PATH "Separately acquired, locked VST3 SDK checkout")
+option(HAMMOND_BUILD_STANDALONE "Build the optional SDL2 native standalone instrument" OFF)
+set(HAMMOND_SDL2_ROOT "" CACHE PATH "Separately acquired, locked SDL2 source checkout")
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -179,9 +181,11 @@ if(HAMMOND_BUILD_VST3)
     add_subdirectory(plugins/vst3)
 endif()
 
+add_subdirectory(apps/standalone)
+
 if(BUILD_TESTING)
     find_package(Threads REQUIRED)
-    set(HAMMOND_TEST_TARGETS ${HAMMOND_VST3_TEST_TARGETS})
+    set(HAMMOND_TEST_TARGETS ${HAMMOND_VST3_TEST_TARGETS} ${HAMMOND_STANDALONE_TEST_TARGETS})
     file(GLOB HAMMOND_CPP_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")
     foreach(test_source IN LISTS HAMMOND_CPP_TESTS)
         get_filename_component(test_name "${test_source}" NAME_WE)
@@ -212,10 +216,12 @@ if(BUILD_TESTING)
     endforeach()
     list(APPEND HAMMOND_TEST_TARGETS hammond_scanner_line_probe)
 
-    if(TEST python_test_vst3_build_tools)
-        set_property(TEST python_test_vst3_build_tools APPEND PROPERTY ENVIRONMENT
-            "HAMMOND_TEST_CMAKE=${CMAKE_COMMAND}")
-    endif()
+    foreach(build_tool_test python_test_vst3_build_tools python_test_sdl2_dependency)
+        if(TEST ${build_tool_test})
+            set_property(TEST ${build_tool_test} APPEND PROPERTY ENVIRONMENT
+                "HAMMOND_TEST_CMAKE=${CMAKE_COMMAND}")
+        endif()
+    endforeach()
 
     if(TARGET hammond_render)
         foreach(test_source IN LISTS HAMMOND_PYTHON_TESTS)
@@ -277,6 +283,15 @@ endif()
 
 # Component-scoped installation is defined after all targets and tests.
 include(cmake/InstallHammondTools.cmake)
+include(cmake/InstallStandalone.cmake)
+
+if(HAMMOND_BUILD_STANDALONE AND BUILD_TESTING)
+    add_test(NAME test_standalone_install
+        COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/apps/standalone/native_tests/test_standalone_install.py")
+    set_tests_properties(test_standalone_install PROPERTIES
+        TIMEOUT 90 LABELS "standalone;native"
+        ENVIRONMENT "PYTHONDONTWRITEBYTECODE=1;HAMMOND_TEST_CMAKE=${CMAKE_COMMAND};HAMMOND_TEST_BUILD_DIR=${CMAKE_BINARY_DIR};HAMMOND_TEST_CONFIG=$<CONFIG>;HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>;HAMMOND_SDL2_ROOT=${HAMMOND_SDL2_ROOT};HAMMOND_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR};HAMMOND_INSTALL_DATADIR=${CMAKE_INSTALL_DATADIR}")
+endif()
 
 if(HAMMOND_BUILD_VST3 AND BUILD_TESTING)
     add_test(NAME test_native_install

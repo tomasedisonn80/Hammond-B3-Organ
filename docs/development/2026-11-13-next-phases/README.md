@@ -7,3 +7,15 @@ Baseline: `ba0d9c9c75bd7a39152470f9f7ddb82287cb01b1`. Another checkout is develo
 Wave 1 rereads all 500 atlas pages. The implementation scope is a native standalone instrument window, keyboard/drawbar controls, safe audio callback handling, control-state persistence and reproducible builds. All sound remains an explicitly nominal dry organ until the separately qualified scanner/AO-28/Leslie path is integrated. Product release, physical calibration and real-device qualification require their own evidence.
 
 Later waves will freeze contracts, implement bounded host/UI adapters, integrate the optional native dependency, build the instrument workspace, verify callback/input/state behavior, retain an actual rendered demonstration, run platform/build gates and document the next concrete work. Actual completed work and commands will replace planned outcomes as evidence arrives.
+
+## Accepted checkpoint after assignment 27
+
+The first four waves and assignments 25–27 are accepted: optional native app,
+bounded Session/UI/audio adapters, actual executable/state/device acceptance,
+callback allocation calibration, fully instrumented concurrency, installed
+component, three-platform workflow definition, and bounded SDL input replay
+helper with independent acceptance. Assignments 28–30 are active application
+workflow and benchmark work. A frozen source at local `738162f` passed 83/83
+Release suites; the later native group passed 9/9 after path-alias repairs and
+test/install additions. The [checkpoint report](../../reviews/STANDALONE_NATIVE_CHECKPOINT.md)
+keeps exact scopes separate. No hosted standalone result is claimed yet.

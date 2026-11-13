@@ -1,0 +1,362 @@
+name: Native standalone
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
+jobs:
+  native:
+    name: Native standalone (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: Linux GCC
+            os: ubuntu-24.04
+            c_compiler: gcc
+            cxx_compiler: g++
+          - platform: macOS AppleClang
+            os: macos-15
+            c_compiler: clang
+            cxx_compiler: clang++
+          - platform: Windows MSVC x64
+            os: windows-2022
+            c_compiler: cl
+            cxx_compiler: cl
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record exact source and dependency identities
+        run: |
+          set -euo pipefail
+          mkdir -p standalone-ci-logs standalone-artifacts
+          python - <<'PY'
+          import hashlib, json, os, pathlib, platform, shutil, subprocess
+          git = lambda *args: subprocess.check_output(["git", *args], text=True).strip()
+          revision = git("rev-parse", "HEAD")
+          assert revision == os.environ["GITHUB_SHA"], "checkout differs from the event revision"
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
+          logs = pathlib.Path("standalone-ci-logs")
+          dependencies = {}
+          for name, source, copied in (
+              ("sdl2", "data/dependencies/sdl2-lock.json", "sdl2-lock.json"),
+              ("fonts", "assets/standalone/fonts/source-manifest.json", "font-source-manifest.json"),
+          ):
+              data = pathlib.Path(source).read_bytes()
+              dependencies[name] = {
+                  "source_path": source, "sha256": hashlib.sha256(data).hexdigest(),
+                  "identity": json.loads(data),
+              }
+              shutil.copyfile(source, logs / copied)
+          record = {
+              "source_commit": revision, "source_tree": git("rev-parse", "HEAD^{tree}"),
+              "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "runner_os": os.environ["RUNNER_OS"], "runner_arch": os.environ["RUNNER_ARCH"],
+              "image_os": os.environ.get("ImageOS"), "image_version": os.environ.get("ImageVersion"),
+              "platform": platform.platform(), "machine": platform.machine(),
+              "python": platform.python_version(), "configuration": "Release",
+              "dependencies": dependencies,
+          }
+          (logs / "provenance.json").write_text(
+              json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          PY
+          cmake --version 2>&1 | tee standalone-ci-logs/toolchain.log
+          ctest --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+          python --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+          git --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+
+      - name: Explicitly acquire and locally verify locked external SDL2
+        run: |
+          set -euo pipefail
+          python tools/acquire_sdl2.py --destination "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-ci-logs/sdl-acquisition.log
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-ci-logs/sdl-verification.log
+          python - <<'PY'
+          import os, pathlib, shutil
+          source = pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond-sdl2"
+          shutil.copyfile(source / "docs/README-linux.md", "standalone-ci-logs/SDL2-README-linux.md")
+          PY
+
+      - name: Install Ubuntu desktop and audio development headers
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          # Selected from the locked SDL2 docs/README-linux.md; runner setup only.
+          packages=(pkg-config libasound2-dev libpulse-dev libx11-dev libxext-dev
+                    libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev)
+          printf '%s\n' "${packages[@]}" > standalone-ci-logs/ubuntu-requested-packages.txt
+          sudo apt-get update 2>&1 | tee standalone-ci-logs/apt-update.log
+          sudo apt-get install --no-install-recommends -y "${packages[@]}" \
+            2>&1 | tee standalone-ci-logs/apt-install.log
+          dpkg-query -W -f='${binary:Package}\t${Version}\t${Architecture}\n' \
+            | LC_ALL=C sort > standalone-ci-logs/ubuntu-installed-packages.tsv
+
+      - name: Configure native Release on Linux or macOS
+        if: runner.os != 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+          C_COMPILER: ${{ matrix.c_compiler }}
+          CXX_COMPILER: ${{ matrix.cxx_compiler }}
+        run: |
+          set -euo pipefail
+          "$C_COMPILER" --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+          "$CXX_COMPILER" --version 2>&1 | tee -a standalone-ci-logs/toolchain.log
+          cmake -S . -B build-standalone -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+            -DCMAKE_C_COMPILER="$C_COMPILER" -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
+            -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
+            2>&1 | tee standalone-ci-logs/configure.log
+
+      - name: Configure native Release on Windows
+        if: runner.os == 'Windows'
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          set -euo pipefail
+          cmake -S . -B build-standalone -G "Visual Studio 17 2022" -A x64 \
+            -DBUILD_TESTING=ON -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
+            -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
+            2>&1 | tee standalone-ci-logs/configure.log
+
+      - name: Retain actual compiler identities and require native SDL backends
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os, pathlib, re, shutil
+          build, logs = pathlib.Path("build-standalone"), pathlib.Path("standalone-ci-logs")
+          provenance_path = logs / "provenance.json"
+          provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+          toolchain = {}
+          for language in ("C", "CXX"):
+              candidates = list(build.glob("CMakeFiles/*/CMake" + language + "Compiler.cmake"))
+              assert len(candidates) == 1, (language, candidates)
+              source = candidates[0]
+              shutil.copyfile(source, logs / source.name)
+              text = source.read_text(encoding="utf-8")
+              fields = {}
+              for field in ("COMPILER", "COMPILER_ID", "COMPILER_VERSION", "COMPILER_ARCHITECTURE_ID"):
+                  match = re.search(r'^set\(CMAKE_' + language + "_" + field + r' "([^"]*)"\)', text, re.M)
+                  if match:
+                      fields[field.lower()] = match.group(1)
+              assert fields.get("compiler") and fields.get("compiler_id") and fields.get("compiler_version")
+              toolchain[language] = fields
+          expected_id = {"Linux": "GNU", "macOS": "AppleClang", "Windows": "MSVC"}[os.environ["RUNNER_OS"]]
+          assert all(value["compiler_id"] == expected_id for value in toolchain.values()), toolchain
+          config = build / "_sdl2/include-config-release/SDL2/SDL_config.h"
+          shutil.copyfile(config, logs / "SDL_config-Release.h")
+          macros = dict(re.findall(r"^#define (SDL_(?:AUDIO|VIDEO)_DRIVER_\w+)\s+([^\r\n]+)", config.read_text(), re.M))
+          required = {
+              "Linux": ["SDL_VIDEO_DRIVER_X11", "SDL_AUDIO_DRIVER_ALSA", "SDL_AUDIO_DRIVER_PULSEAUDIO"],
+              "macOS": ["SDL_VIDEO_DRIVER_COCOA", "SDL_AUDIO_DRIVER_COREAUDIO"],
+              "Windows": ["SDL_VIDEO_DRIVER_WINDOWS", "SDL_AUDIO_DRIVER_WASAPI"],
+          }[os.environ["RUNNER_OS"]] + ["SDL_VIDEO_DRIVER_DUMMY", "SDL_AUDIO_DRIVER_DUMMY"]
+          backends = {"required": required, "compiled_macros": macros,
+                      "config_sha256": hashlib.sha256(config.read_bytes()).hexdigest()}
+          (logs / "sdl-backends.json").write_text(json.dumps(backends, sort_keys=True, indent=2) + "\n")
+          provenance.update(toolchain=toolchain, sdl_backends=backends)
+          provenance_path.write_text(json.dumps(provenance, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          missing = [name for name in required if macros.get(name, "").strip() != "1"]
+          assert not missing, "SDL2 did not compile required backends: " + ", ".join(missing)
+          PY
+
+      - name: Build the application and every standalone acceptance input
+        run: |
+          set -euo pipefail
+          cmake --build build-standalone --config Release \
+            --target hammond_standalone_test_inputs --parallel 2 --verbose \
+            2>&1 | tee standalone-ci-logs/build.log
+
+      - name: Run all required standalone acceptance tests
+        env:
+          SDL_AUDIODRIVER: dummy
+          SDL_VIDEODRIVER: dummy
+        run: |
+          set -euo pipefail
+          ctest --test-dir build-standalone -C Release -V --parallel 1 \
+            --no-tests=error --timeout 180 -R '^test_standalone_' \
+            --output-junit "$GITHUB_WORKSPACE/standalone-ci-logs/ctest.xml" \
+            2>&1 | tee standalone-ci-logs/ctest.log
+
+      - name: Reverify source and dependency after acceptance
+        run: |
+          set -euo pipefail
+          git diff --exit-code --quiet HEAD --
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-ci-logs/sdl-final-verification.log
+
+      - name: Stage, relocate, smoke and archive the exact installed payload
+        env:
+          SDL_AUDIODRIVER: dummy
+          SDL_VIDEODRIVER: dummy
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os, pathlib, shutil, stat, subprocess, tarfile
+          repo = pathlib.Path.cwd().resolve()
+          logs, artifacts = repo / "standalone-ci-logs", repo / "standalone-artifacts"
+          temporary = pathlib.Path(os.environ["RUNNER_TEMP"])
+          staged, moved = temporary / "hammond standalone staged", temporary / "hammond standalone relocated"
+          work = temporary / "hammond-standalone-smoke"
+          assert not os.path.lexists(staged) and not os.path.lexists(moved), "staging needs fresh prefixes"
+          work.mkdir(exist_ok=False)
+          windows = os.environ["RUNNER_OS"] == "Windows"
+          executable = "hammond_standalone" + (".exe" if windows else "")
+          build_binary = repo / "build-standalone/apps/standalone"
+          if windows:
+              build_binary /= "Release"
+          build_binary /= executable
+          metadata = "share/hammond-b3-organ/standalone/"
+          expected = {
+              "bin/" + executable: build_binary,
+              metadata + "STANDALONE_INSTALL.md": repo / "docs/STANDALONE_INSTALL.md",
+              metadata + "STANDALONE_APP.md": repo / "docs/STANDALONE_APP.md",
+              metadata + "STANDALONE_MODEL.md": repo / "docs/STANDALONE_MODEL.md",
+              metadata + "THIRD_PARTY_NOTICES.md": repo / "THIRD_PARTY_NOTICES.md",
+              metadata + "LICENSE-SDL2.txt": temporary / "hammond-sdl2/LICENSE.txt",
+              metadata + "LICENSE-DejaVu.txt": repo / "assets/standalone/fonts/LICENSE-DejaVu.txt",
+              metadata + "sdl2-lock.json": repo / "data/dependencies/sdl2-lock.json",
+              metadata + "font-source-manifest.json": repo / "assets/standalone/fonts/source-manifest.json",
+          }
+          expected_directories = {
+              parent.as_posix() for name in expected
+              for parent in pathlib.PurePosixPath(name).parents if parent.as_posix() != "."
+          }
+          digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          def inventory(prefix):
+              files, directories = [], []
+              def visit(path):
+                  info = path.lstat()
+                  assert not (getattr(info, "st_file_attributes", 0) & 0x400), "reparse point: " + str(path)
+                  relative = path.relative_to(prefix).as_posix()
+                  mode = format(stat.S_IMODE(info.st_mode), "04o")
+                  if stat.S_ISDIR(info.st_mode):
+                      directories.append({"path": relative, "mode": mode})
+                      for child in sorted(path.iterdir()):
+                          visit(child)
+                  else:
+                      assert stat.S_ISREG(info.st_mode), "symlink or special payload: " + str(path)
+                      files.append({"path": relative, "bytes": info.st_size, "sha256": digest(path), "mode": mode})
+              visit(prefix)
+              assert {entry["path"] for entry in files} == set(expected), "unexpected installed file set"
+              assert {entry["path"] for entry in directories} == expected_directories | {"."}, "unexpected directories"
+              for entry in files:
+                  source = expected[entry["path"]]
+                  assert stat.S_ISREG(source.lstat().st_mode), "nonregular source payload"
+                  assert entry["sha256"] == digest(source), "installation changed source bytes: " + entry["path"]
+              return {"files": files, "directories": directories}
+          def run_logged(arguments, name, cwd, timeout):
+              with (logs / name).open("w", encoding="utf-8") as output:
+                  output.write(json.dumps({"command": [str(x) for x in arguments], "cwd": str(cwd)}) + "\n")
+                  output.flush()
+                  result = subprocess.run([str(x) for x in arguments], cwd=cwd, stdout=output,
+                                          stderr=subprocess.STDOUT, timeout=timeout)
+              print((logs / name).read_text(encoding="utf-8", errors="replace"), end="", flush=True)
+              result.check_returncode()
+          run_logged(["cmake", "--install", repo / "build-standalone", "--config", "Release",
+                      "--component", "Standalone", "--prefix", staged], "install.log", repo, 90)
+          before = inventory(staged)
+          (logs / "staged-inventory.json").write_text(json.dumps(before, sort_keys=True, indent=2) + "\n")
+          staged.rename(moved)
+          assert not os.path.lexists(staged) and inventory(moved) == before, "relocation changed the payload"
+          binary = moved / "bin" / executable
+          run_logged([binary, "--help"], "relocated-help.log", work, 15)
+          state, screenshot, diagnostics = work / "absent-controls.b3controls", logs / "relocated-smoke.bmp", logs / "relocated-smoke.json"
+          assert not os.path.lexists(state)
+          run_logged([binary, "--smoke-ms", "600", "--state", state, "--screenshot", screenshot,
+                      "--diagnostics", diagnostics], "relocated-smoke.log", work, 20)
+          report = json.loads(diagnostics.read_text(encoding="utf-8"))
+          assert report["smoke"]["passed"] is True and report["smoke"]["duration_ms"] == 600
+          assert report["runtime"]["video_driver"] == report["audio"]["driver"] == "dummy"
+          assert report["runtime"]["screenshot_written"] is True and screenshot.read_bytes()[:2] == b"BM"
+          assert report["audio"]["callback_count"] > 0 and report["audio"]["rendered_frames"] > 0
+          assert not os.path.lexists(state), "smoke unexpectedly saved musical state"
+          assert inventory(moved) == before, "execution changed installed bytes or modes"
+          revision = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          assert revision == os.environ["GITHUB_SHA"]
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
+          provenance = json.loads((logs / "provenance.json").read_text(encoding="utf-8"))
+          assert provenance["source_commit"] == revision
+          record = {"schema_version": 1, "provenance": provenance, "payload": before,
+                    "relocated_help_passed": True, "relocated_dummy_smoke_ms": 600,
+                    "smoke_diagnostics_sha256": digest(diagnostics), "screenshot_sha256": digest(screenshot)}
+          inventory_path = artifacts / "inventory.json"
+          inventory_path.write_text(json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          shutil.copyfile(inventory_path, logs / "installed-inventory.json")
+          archive = artifacts / "HammondB3-Standalone-Release.tar.gz"
+          archive_root = "HammondB3-Standalone"
+          with tarfile.open(archive, "x:gz", dereference=False) as output:
+              output.add(moved, arcname=archive_root)
+          with tarfile.open(archive, "r:gz") as check:
+              members = check.getmembers()
+              assert all(member.isfile() or member.isdir() for member in members)
+              archived = {member.name: member for member in members if member.isfile()}
+              assert set(archived) == {archive_root + "/" + name for name in expected}
+              for entry in before["files"]:
+                  member = archived[archive_root + "/" + entry["path"]]
+                  with check.extractfile(member) as stream:
+                      assert hashlib.sha256(stream.read()).hexdigest() == entry["sha256"]
+                  assert member.size == entry["bytes"] and format(member.mode, "04o") == entry["mode"]
+          (artifacts / "SHA256SUMS").write_text(
+              "".join(digest(path) + "  " + path.name + "\n" for path in (archive, inventory_path)), encoding="ascii")
+          print("Verified nine installed files, relocated help/dummy smoke, and the archived bytes.", flush=True)
+          PY
+
+      - name: Retain complete source, dependency, build, test and smoke diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: standalone-${{ matrix.os }}-${{ runner.arch }}-release-diagnostics-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            standalone-ci-logs/
+            build-standalone/CMakeCache.txt
+            build-standalone/CMakeFiles/CMakeConfigureLog.yaml
+            build-standalone/CMakeFiles/CMakeOutput.log
+            build-standalone/CMakeFiles/CMakeError.log
+            build-standalone/Testing/Temporary/LastTest.log
+            build-standalone/Testing/Temporary/LastTestsFailed.log
+            build-standalone/install_manifest_Standalone.txt
+
+      - name: Retain the successful executable package and byte inventory
+        if: ${{ success() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: standalone-${{ matrix.os }}-${{ runner.arch }}-release-package-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: error
+          path: standalone-artifacts/

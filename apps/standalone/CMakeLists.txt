@@ -1,0 +1,139 @@
+# Host-independent adapters are tested by the ordinary build. SDL2 is entered
+# only when the user explicitly enables the native application.
+add_library(hammond_standalone_support STATIC Session.cpp UiModel.cpp StateFiles.cpp)
+target_link_libraries(hammond_standalone_support PUBLIC hammond_core)
+target_include_directories(hammond_standalone_support PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
+hammond_configure_target(hammond_standalone_support)
+
+set(HAMMOND_STANDALONE_TEST_TARGETS)
+if(BUILD_TESTING)
+    find_package(Threads REQUIRED)
+    file(GLOB HAMMOND_STANDALONE_CPP_TESTS CONFIGURE_DEPENDS
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")
+    foreach(test_source IN LISTS HAMMOND_STANDALONE_CPP_TESTS)
+        get_filename_component(test_name "${test_source}" NAME_WE)
+        add_executable(${test_name} "${test_source}")
+        target_link_libraries(${test_name} PRIVATE hammond_standalone_support Threads::Threads)
+        target_include_directories(${test_name} PRIVATE "${PROJECT_SOURCE_DIR}/tests")
+        target_compile_definitions(${test_name} PRIVATE
+            HAMMOND_TEST_PROFILE="${HAMMOND_COMPILED_PROFILE}"
+            HAMMOND_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
+        hammond_configure_target(${test_name})
+        add_dependencies(${test_name} hammond_profile)
+        add_test(NAME ${test_name} COMMAND ${test_name})
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS ${test_name})
+    endforeach()
+endif()
+
+if(HAMMOND_BUILD_STANDALONE)
+    include("${PROJECT_SOURCE_DIR}/cmake/VerifySdl2.cmake")
+    hammond_verify_sdl2("${HAMMOND_SDL2_ROOT}")
+    # SDL includes GNUInstallDirs before our final install rules. Preserve the
+    # distinction between its automatic empty-cache sentinel and a caller's
+    # explicitly empty DATADIR by materializing a not-yet-specified default now.
+    # The shared install module continues to track DATAROOTDIR on reconfigure.
+    if(NOT DEFINED CMAKE_INSTALL_DATADIR)
+        include(GNUInstallDirs)
+        set(CMAKE_INSTALL_DATADIR "${CMAKE_INSTALL_DATADIR}" CACHE PATH
+            "Read-only architecture-independent data (DATAROOTDIR)" FORCE)
+        set(_HAMMOND_LAST_AUTOMATIC_DATADIR "${CMAKE_INSTALL_DATADIR}" CACHE INTERNAL
+            "Last materialized automatic data directory" FORCE)
+    endif()
+    enable_language(C)
+    set(SDL_SHARED OFF CACHE BOOL "Standalone uses the pinned static SDL2 library" FORCE)
+    set(SDL_STATIC ON CACHE BOOL "Standalone uses the pinned static SDL2 library" FORCE)
+    set(SDL_TEST OFF CACHE BOOL "Do not build SDL2 test support" FORCE)
+    set(SDL_TESTS OFF CACHE BOOL "Do not build SDL2 example tests" FORCE)
+    set(SDL2_DISABLE_INSTALL ON CACHE BOOL "Project owns its standalone install payload" FORCE)
+    set(SDL2_DISABLE_SDL2MAIN ON CACHE BOOL "The application provides its portable entry point" FORCE)
+    add_subdirectory("${HAMMOND_SDL2_ROOT}" "${CMAKE_BINARY_DIR}/_sdl2" EXCLUDE_FROM_ALL)
+
+    add_library(hammond_standalone_replay STATIC ScriptedInput.cpp)
+    target_link_libraries(hammond_standalone_replay PUBLIC SDL2::SDL2-static)
+    target_include_directories(hammond_standalone_replay PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
+    target_compile_definitions(hammond_standalone_replay PRIVATE SDL_MAIN_HANDLED)
+    hammond_configure_target(hammond_standalone_replay)
+
+    add_library(hammond_standalone_audio STATIC AudioDevice.cpp)
+    target_link_libraries(hammond_standalone_audio PUBLIC hammond_standalone_support SDL2::SDL2-static)
+    target_compile_definitions(hammond_standalone_audio PRIVATE SDL_MAIN_HANDLED)
+    hammond_configure_target(hammond_standalone_audio)
+
+    set(HAMMOND_STANDALONE_PROFILE "${CMAKE_CURRENT_BINARY_DIR}/generated/EmbeddedProfile.h")
+    add_custom_command(
+        OUTPUT "${HAMMOND_STANDALONE_PROFILE}"
+        COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/tools/embed_profile.py"
+            --input "${HAMMOND_COMPILED_PROFILE}" --output "${HAMMOND_STANDALONE_PROFILE}"
+        DEPENDS "${PROJECT_SOURCE_DIR}/tools/embed_profile.py" "${HAMMOND_COMPILED_PROFILE}"
+        COMMENT "Embedding the unchanged nominal profile in the standalone instrument"
+        VERBATIM)
+    add_executable(hammond_standalone
+        main.cpp Drawing.cpp InstrumentView.cpp
+        "${HAMMOND_STANDALONE_PROFILE}")
+    target_link_libraries(hammond_standalone PRIVATE hammond_standalone_audio)
+    target_include_directories(hammond_standalone PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
+    target_compile_definitions(hammond_standalone PRIVATE SDL_MAIN_HANDLED)
+    hammond_configure_target(hammond_standalone)
+    add_dependencies(hammond_standalone hammond_profile)
+    if(BUILD_TESTING)
+        add_executable(test_standalone_audio_device native_tests/test_standalone_audio_device.cpp)
+        target_link_libraries(test_standalone_audio_device PRIVATE hammond_standalone_audio)
+        target_include_directories(test_standalone_audio_device PRIVATE "${PROJECT_SOURCE_DIR}/tests")
+        target_compile_definitions(test_standalone_audio_device PRIVATE
+            SDL_MAIN_HANDLED
+            HAMMOND_TEST_PROFILE="${HAMMOND_COMPILED_PROFILE}"
+            HAMMOND_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
+        hammond_configure_target(test_standalone_audio_device)
+        add_dependencies(test_standalone_audio_device hammond_profile)
+        add_test(NAME test_standalone_audio_device COMMAND test_standalone_audio_device)
+        set_tests_properties(test_standalone_audio_device PROPERTIES
+            ENVIRONMENT "SDL_AUDIODRIVER=dummy" TIMEOUT 15)
+        # Only this test recompilation replaces SDL_OpenAudioDevice with a
+        # recording trampoline. The production application links the ordinary
+        # AudioDevice object; the probe still delegates to real SDL callbacks.
+        add_library(hammond_standalone_allocation_object OBJECT AudioDevice.cpp)
+        target_link_libraries(hammond_standalone_allocation_object PRIVATE
+            hammond_standalone_support SDL2::SDL2-static)
+        target_compile_definitions(hammond_standalone_allocation_object PRIVATE
+            SDL_MAIN_HANDLED SDL_OpenAudioDevice=hammond_probe_open_audio_device)
+        hammond_configure_target(hammond_standalone_allocation_object)
+        add_executable(test_standalone_callback_allocation
+            native_tests/test_standalone_callback_allocation.cpp
+            $<TARGET_OBJECTS:hammond_standalone_allocation_object>)
+        target_link_libraries(test_standalone_callback_allocation PRIVATE
+            hammond_standalone_support SDL2::SDL2-static)
+        target_include_directories(test_standalone_callback_allocation PRIVATE "${PROJECT_SOURCE_DIR}/tests")
+        target_compile_definitions(test_standalone_callback_allocation PRIVATE
+            SDL_MAIN_HANDLED
+            HAMMOND_TEST_PROFILE="${HAMMOND_COMPILED_PROFILE}"
+            HAMMOND_SOURCE_DIR="${PROJECT_SOURCE_DIR}")
+        hammond_configure_target(test_standalone_callback_allocation)
+        add_dependencies(test_standalone_callback_allocation hammond_profile)
+        add_test(NAME test_standalone_callback_allocation COMMAND test_standalone_callback_allocation)
+        set_tests_properties(test_standalone_callback_allocation PROPERTIES
+            ENVIRONMENT "SDL_AUDIODRIVER=dummy" TIMEOUT 15)
+        add_test(NAME test_standalone_app
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_app.py")
+        set_tests_properties(test_standalone_app PROPERTIES TIMEOUT 60 LABELS "standalone;native")
+        add_executable(test_standalone_input_replay native_tests/test_standalone_input_replay.cpp)
+        target_link_libraries(test_standalone_input_replay PRIVATE hammond_standalone_replay)
+        target_compile_definitions(test_standalone_input_replay PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_input_replay)
+        add_test(NAME test_standalone_input_replay COMMAND test_standalone_input_replay)
+        set_tests_properties(test_standalone_input_replay PROPERTIES
+            ENVIRONMENT "SDL_VIDEODRIVER=dummy" TIMEOUT 15)
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS
+            test_standalone_audio_device test_standalone_callback_allocation
+            test_standalone_input_replay hammond_standalone)
+        add_custom_target(hammond_standalone_test_inputs
+            DEPENDS hammond_profile ${HAMMOND_STANDALONE_TEST_TARGETS})
+    endif()
+
+    if(MINGW)
+        target_link_options(hammond_standalone PRIVATE -municode)
+    endif()
+endif()
+
+set(HAMMOND_STANDALONE_TEST_TARGETS ${HAMMOND_STANDALONE_TEST_TARGETS} PARENT_SCOPE)

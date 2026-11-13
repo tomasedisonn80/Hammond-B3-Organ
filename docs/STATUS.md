@@ -1,5 +1,47 @@
 # Development status
 
+## Active native standalone continuation
+
+The independent [standalone session](development/2026-11-13-next-phases/README.md)
+has accepted its first **27 distinct assignments**, including four complete
+waves. The [native app](STANDALONE_APP.md) now runs the unchanged nominal dry
+engine in a resizable instrument window with keyboard/pointer performance,
+separate edited/sounding banks, pedals, percussion, expression, Audio/Help
+panels and explicit saved controls. Follow the [operational handoff](STANDALONE_HANDOFF.md)
+and actual manifest. The scanner continuation below remains a separate track.
+
+All 500 atlas pages were reread in six disjoint ranges, including selected actual
+page images. The [scope](STANDALONE_SCOPE.md) preserves the 45 public parameter
+identities, source/profile/maps, saved-state formats and VST3 UUIDs. The pinned
+SDL2 dependency is optional; ordinary builds remain SDK-free. The native window
+uses reproducible licensed glyphs and geometry shared with input hit testing.
+
+The intermediate SDK-free Release gate passed **81/81 suites** in 61.60 seconds.
+Independent Session tests make 156,308 bit-exact stereo comparisons against a
+separate direct Engine. Independent UI acceptance covers all 45 parameter IDs
+and all 147 playing pitches. State-file acceptance verifies canonical output,
+old-format migration, failure preservation, Unicode paths and temporary cleanup.
+The maintained real SDL dummy matrix passes all 15 rate/buffer combinations,
+observing 75 callbacks and 59,520 frames with zero unexpected audio faults.
+Actual complete-app smoke runs at 1280x900 and 960x700 observe a note press,
+its held display, its release, successful image capture and joined shutdown.
+
+The frozen runtime checkpoint passed **83/83 Release suites**. The subsequent
+assembled standalone gate passed **9/9 suites**: actual callback allocation
+calibration observed zero C++ allocations/deallocations in the callback; coherent
+Session concurrency also passed a separately fully instrumented ThreadSanitizer
+run. App acceptance passed 18 methods and 164 actual invocations after repairing
+missing-leaf path aliases and symmetric dangling-symlink hazards. The nine-file
+installed component runs after relocation. The replay helper has independent
+parser/file/SDL-queue acceptance; its application workflow integration and render
+benchmark are the next active changes. The new three-platform standalone workflow
+is implemented but has not yet executed. See the [checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md).
+
+Native physical devices, latency/underruns, hotplug, high-DPI pointer
+capture, screen readers and signed distribution remain unqualified. The two
+existing hosted workflows succeeded at published contract/assets checkpoint
+`96a37a977ef22b7adf38e1a841f57ffcf32519a7`; those results do not qualify later code.
+
 ## Parallel rotary foundation
 
 The distinct [rotary session](development/2026-11-13-rotary/README.md) starts
