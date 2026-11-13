@@ -33,9 +33,9 @@ physical instrument fidelity, a VST3 plugin, or a device-audio application exist
 | 03 | 13–18 | Engine, control persistence, renderer integration and behavioral verification | Complete; published in `4ead769` |
 | 04 | 19–24 | Stable controls, evidence-format migration and reproducible fixtures | Complete; `72b5062` repair passes all four hosted jobs |
 | 05 | 25–30 | Bounded host-input ownership and independent adapter verification | Complete; `093d985`, 34/34 local suites and all four hosted jobs |
-| 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | Complete; combined publication gate in progress |
-| 07 | 37–42 | Observable console traces and explicit partial-key input | In progress |
-| 08 | 43–48 | Integration, cross-platform checks and examples | Planned |
+| 06 | 31–36 | Phase-preserving sample-rate lifecycle and numerical verification | Complete; `53bb6e1`, 39/39 local suites and all four hosted jobs |
+| 07 | 37–42 | Observable console traces and explicit partial-key input | Complete; 43/43 local suites, publication in progress |
+| 08 | 43–48 | Integration, cross-platform checks and examples | In progress |
 | 09 | 49–54 | User/developer handoff, verification records and exact next milestone | Planned |
 | 10 | 55–60 | Independent final review, fixes and publication verification | Planned |
 
@@ -212,3 +212,75 @@ clean archive and passed **39/39 CTest suites in 8.80 seconds**. The archive
 contains all five new lifecycle suites and the prior ownership, console, evidence
 and install gates. Active wave-07 source and build changes were excluded from
 this checkpoint. Final publication and hosted results are tracked separately.
+
+
+Wave 06 was published as `53bb6e1e37eedf84f566ffb8bd9037b50f123a20`, exact tree
+`c88d2f0a6749cf79b7310c131b4f5d335c7d6ab3`. Its final archive matched every staged
+blob and passed all 39 Release suites in 7.47 seconds. The expected-head update
+and remote commit/tree were verified without altering active wave-07 files.
+Hosted run 43372984603 passed all four jobs: Linux GCC, macOS AppleClang and
+Windows MSVC Release, plus Linux ASan/UBSan with leak checking.
+
+
+### Wave 07 explicit partial-key input and observable console behavior
+
+Assignments 37-39 append `KeyPosition` as event 9, preserving earlier event values.
+Nominal travel retains a finite target in `[0,1]` without resetting current
+position or contact history; ideal mode accepts endpoints only. Ordinary positive
+NoteOn now commands full press after a partial hold. The offline renderer,
+producer and independent verifier accept the new score command with mode-aware
+preflight. Schema 2 retains its existing structure; schema 1 rejects the new command
+and historical bundles remain valid. Saved controls and permanent parameter IDs
+are unchanged.
+
+The independent new tests passed both focused suites, including seven Python
+methods. They check 234 exact state pairs, 51513 identical rendered samples,
+768 independent current-phase audio predictions and 51 atomic rejections.
+Nineteen direct CLI calls, two independently verified new bundles and three-rate
+PCM checks cover early rejection, partial harmonic onset, block partitions and
+legacy evidence compatibility. Maximum analytic float-sample error was
+9.29094e-10; maximum independent PCM amplitude error was 7.02819526653e-7.
+The changed production parsers also passed all 96 historical renderer/producer/
+verifier methods. Each scoped build used a coherent frozen source snapshot.
+
+Assignments 40-42 supply deterministic current-state CSV traces, independent
+numerical/CLI acceptance and bounded SVG visualization. Their actual results and
+the combined publication gate follow when observed.
+
+
+The trace exporter uses three fixed 120 ms scenarios and public Engine snapshots.
+Each row pairs the state after current-frame events with that same frame's audio,
+before state advancement. It records 28 metadata comments and 36 numeric columns;
+profile provenance is explicitly declared, and atomic hard-link publication
+preserves existing destinations. Assignment 40 passed nine scenario/rate exports
+and 22 protected-output/malformed-input checks. Its largest CSV was 2392173 bytes
+under the 8 MiB limit.
+
+Assignment 41's independent suite passed ten methods and 62 actual CLI invocations,
+checking all 67716 rows across the three rates and scenarios. Exact rational
+travel, separate hysteresis, closed-form readiness and independent source/audio
+calculations bound maximum observed errors to 1.42248e-16 position, 7.67165e-14
+readiness, 2.07723e-13 phase turns and 3.72430e-9 audio. Competing publishers produced
+one complete expected CSV with no temporary residue. These are nominal software
+checks, not physical captures.
+
+
+Assignment 42 adds a standard-library CSV-to-SVG tool with strict bounded schema
+validation, input-byte SHA-256 provenance and atomic no-clobber publication. Exact
+contact/target transitions are retained; continuous trajectories and audio use
+documented extrema-preserving time bins. All 11 Python tests passed, including
+write/flush/close/link failures and output races. All nine actual traces plotted
+successfully, producing 113384–119631-byte SVGs below the 1 MiB cap. A rendered
+48 kHz partial-key figure was visually inspected with no clipping or overlap.
+The first two QA rendering approaches were unavailable; installed librsvg/Cairo
+completed the inspection without a new production dependency. All six wave-07
+assignments are complete before the combined gate.
+
+
+The combined wave-07 clean Release archive of staged tree
+`1132e9cf242997473b87dd64a8a65086580d594c` passed **43/43 CTest suites in 12.59
+seconds**. That gate includes all partial-key, trace and plot tests plus the
+previous lifecycle, ownership, evidence and legacy-install suites. Active wave-08
+CMake/install, realtime-audit and benchmark changes were excluded. Only this
+result's Markdown recording changes before publication; the final archive is
+checked for exact unchanged runtime/test blobs and current repository integrity.

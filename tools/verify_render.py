@@ -255,8 +255,10 @@ def _matches(record, actual, label):
         _literal(record[key], actual[key], f"{label}.{key}")
 
 
-def _events(raw, frames, schema_version):
+def _events(raw, frames, schema_version, contacts="ideal"):
     """Independent parser of the documented five-field absolute-event grammar."""
+    _require(type(contacts) is str and contacts in ("ideal", "nominal"),
+             "events: unknown contact model selection")
     _require(len(raw) <= MAX_SCORE and b"\x00" not in raw, "events: oversized file or NUL byte")
     source = io.BytesIO(raw[3:] if raw.startswith(b"\xef\xbb\xbf") else raw)
     count = repeated = 0
@@ -299,6 +301,9 @@ def _events(raw, frames, schema_version):
         if kind in ("note_on", "note_off"):
             valid = 36 <= index <= 96 and (
                 0 <= number <= 127 and number.is_integer() if kind == "note_on" else number == 0)
+        elif kind == "key_position" and schema_version == 2:
+            valid = 36 <= index <= 96 and 0 <= number <= 1 and (
+                contacts == "nominal" or number in (0, 1))
         elif kind in ("drawbar", "bank_drawbar"):
             valid = index <= (8 if kind == "drawbar" else 17) and 0 <= number <= 8 and number.is_integer()
         elif kind == "expression":
@@ -556,7 +561,8 @@ def verify_bundle(directory_or_manifest):
         _absolute(inputs["events"]["source_path"], "inputs.events.source_path")
         actual, raw_events = reader.read(directory / "events.txt", MAX_SCORE)
         _matches(inputs["events"], actual, "inputs.events")
-        _literal(parameters["event_count"], _events(raw_events, frames, schema_version),
+        _literal(parameters["event_count"],
+                 _events(raw_events, frames, schema_version, parameters.get("contacts", "ideal")),
                  "parameters.event_count")
     stdout = None
     for name in ("stdout", "stderr"):

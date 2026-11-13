@@ -44,12 +44,21 @@ importable `compile_profile.compile_profile()` on validated authoring data.
 
 Unsigned numeric syntax and event grammar follow the C++ CLI; duplicate options,
 unknown options and abbreviated options are rejected. Event validation includes
-`bank_drawbar`, `select_bank`, `cancel` and `percussion` from the console extension.
+`bank_drawbar`, `select_bank`, `cancel`, `percussion` and `key_position` from the
+console extension.
 A `percussion` event requires manual `upper`, unsigned index 0..3, and a finite
 integer value exactly 0 or 1. Indices select enable, harmonic, volume and decay;
 their 0/1 meanings are Off/On, Second/Third, Normal/Soft and Slow/Fast respectively.
 Finite decimal spellings such as `1.0` or `1e0` follow the renderer's numeric
 grammar and are accepted as the integer value 1; nonintegral parsed values are rejected.
+`key_position` requires either manual, MIDI index 36..96 and a finite target in
+0..1. Nominal contacts accept interior targets; ideal contacts accept only 0 or 1.
+The wrapper validates this mode-dependent rule before creating the evidence
+directory or launching the renderer. The public helper
+`validate_events(raw, frames, contacts="ideal")` keeps the previous two-argument
+call valid; pass `contacts="nominal"` when preflighting a nominal partial-key score.
+Targets preserve the chosen model's contact history and do not represent saved
+controls or measured position calibration; see [the score contract](RENDER_FORMAT.md).
 The wrapper always passes `--fail-on-clip`, never normalizes audio, and invokes an argument list
 without a shell. An empty event file is a valid silence fixture. The default note
 gesture is the renderer's frame-zero note-on and floor(3*frames/4) note-off.
@@ -113,6 +122,12 @@ A launch failure has null return code and null unavailable metrics/log records.
 Consumers must require the manifest success state and every verification below.
 
 ## Manifest schema version 2
+
+The `key_position` command extends the version-2 score grammar without changing
+the manifest's 13 parameter fields, the renderer's 18 metric fields, the 26-token
+invocation, or any model identity. Retained score bytes and `parameters.contacts`
+fully identify its selected model. Earlier version-2 bundles remain valid, while
+historical version-1 bundles retain their original grammar and reject this command.
 
 JSON uses UTF-8, sorted keys, two-space indentation and a final LF. It contains
 no NaN/Infinity values. All hashes are lowercase hexadecimal SHA-256 of raw file

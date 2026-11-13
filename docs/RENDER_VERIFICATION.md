@@ -71,7 +71,7 @@ version-2 fields nor silently treats mixed schemas as compatible.
 | Console choices | Implicit legacy ideal contacts and disabled percussion | Exact strings `ideal`/`nominal`, `off`/`second`/`third`, `normal`/`soft`, `slow`/`fast` |
 | Invocation | Original 18 tokens | 26 tokens, adding all four console flags before `--fail-on-clip` |
 | Renderer metrics | Original 15 fields | Original 15 plus integer `render_schema_version: 2`, `contact_model`, `percussion_model` |
-| Score grammar | Original eight event types | Original eight plus `percussion` |
+| Score grammar | Original eight event types | Original eight plus `percussion` and `key_position` |
 
 Version 2 requires `contact_model` to agree with `parameters.contacts`:
 `ideal-contacts-v1` for `ideal`, or `nominal-linear-travel-v1` for `nominal`.
@@ -87,8 +87,14 @@ the original `--events` or `--note` pair. Each value must agree with its manifes
 parameter. A `percussion` event is upper-manual only, with unsigned integer index
 0–3 and a finite parsed numeric value equal to 0 or 1; equivalent decimal forms
 such as `1.0` and `1e0` are valid. The strict numeric-token and underflow rules
-still apply. Schema 1 rejects percussion events and every version-2-only field
-or flag. Unknown versions, floating-point versions and Boolean versions fail.
+still apply. A `key_position` event requires either manual, MIDI index 36–96 and a
+finite normalized target in 0..1. The independently parsed `parameters.contacts`
+selects admission: `nominal` accepts partial targets, while `ideal` accepts only
+0 or 1. The verifier checks this rule even when event hashes and every other
+manifest field are internally consistent. The new command adds no schema-2
+fields or flags and preserves historical schema-2 event meanings. Schema 1
+rejects both new commands and every version-2-only field or flag. Unknown
+versions, floating-point versions and Boolean versions fail.
 
 ## Independently checked contracts
 

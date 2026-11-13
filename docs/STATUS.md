@@ -27,7 +27,7 @@ identity and malformed-input behavior have retained software evidence.
 M3 remains a partial nominal implementation. It includes four retained A/B banks,
 hidden-bank edits, routing-only Cancel/reselect, 1,098 independent contacts and one
 shared upper-B percussion readiness state. The optional linear-travel model has
-separate make/break thresholds, partial-target support in ContactBank, incomplete
+separate make/break thresholds, explicit partial-key input, incomplete
 return and hysteresis. Its proposed times and thresholds are unmeasured. Percussion
 uses the physical ninth contact detector, second/third harmonic routing, retained
 normal/soft and slow/fast controls, finite recovery and upper-only one-foot masking.
@@ -58,8 +58,20 @@ readiness, held targets, controls and frame count. Same-rate requests are exact
 no-ops; rejected changes preserve state and future output. Mixed-rate elapsed
 seconds require the caller's rate schedule. This core API provides no native
 host/device transition or concurrent publication protocol. Its combined clean
-Release archive passed all 39 CTest suites; the continuation ledger retains the
-tested tree and tracks publication and hosted qualification separately.
+Release archive passed all 39 CTest suites. Published commit `53bb6e1` also passed
+all four hosted jobs in [run 43372984603](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43372984603),
+including the leak-enabled sanitizer job.
+
+Explicit `KeyPosition` events and the matching offline score command now expose
+partial targets through the Engine. Ideal mode accepts endpoints only; mode and
+payload errors reject before rendering/output creation. The nominal
+[console trace](CONSOLE_TRACE.md) exports three bounded scenarios with current
+contact bits, readiness, routing, source phase and same-frame audio. Independent
+checks compare all 67716 rows at three rates against separate numerical models.
+A bounded [SVG plotter](CONSOLE_TRACE_PLOTS.md) preserves contact transitions and
+documented extrema with input-byte provenance. The continuation ledger separates
+these focused checks from publication. The combined clean Release source passed
+all 43 CTest suites; its hosted qualification is tracked separately.
 
 Pedal mapping data contains 195 connections and five explicit disconnections;
 runtime pedal audio remains open. Physical preset latching, continuous drawbar

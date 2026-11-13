@@ -7,23 +7,21 @@ for the sixty new assignments in ten waves. The earlier session completed all
 sixty original assignments at `7bbd8e7`; its assignments,
 source reviews and evidence remain intact and are not counted again.
 
-The nominal M3 console integration and its portability repair are published.
-The bounded note-ownership/native-parameter checkpoint `093d985` passes all 34
-local suites and all four hosted jobs. Qualify the completed sample-rate lifecycle
-wave while wave 07 implements explicit partial-key input and observable traces.
-Keep the original ideal/off audio as an explicit compatibility case. Publication
-requires a clean staged source build, applicable tests, an expected-head push and
-observed CI.
+The nominal console, typed input and sample-rate lifecycle checkpoints are
+published. `53bb6e1` passes all 39 local Release suites and all four hosted jobs.
+Wave 07 qualifies explicit partial-key input, observable console traces and their
+visualization. Preserve the original ideal/off audio as a compatibility case.
+Publication requires a clean staged source build, applicable tests, an
+expected-head push and observed CI.
 
-Following waves implement and independently verify:
+The remaining development waves cover:
 
-1. Finish combined qualification of the explicit stopped/same-thread sample-rate
-   transaction, including preservation of source phase, contact travel, shared
-   readiness, musical controls and external note ownership.
-2. Observable nominal console traces and explicit partial-key input, with
-   strict offline preflight and independent timing evidence.
-3. Enabled-path real-time checks, portable installation, robustness, final
-   handoff and independent review of the exact published checkpoint.
+1. Enabled contact/percussion and owned-input allocation checks, bounded workload
+   measurements and packaging of the added offline tools.
+2. Reproducible current-model examples, concrete remaining M3 acceptance gates,
+   documentation reconciliation and separate accounting of all 60 new workers.
+3. Independent final runtime, input, evidence, platform and handoff review, fixes
+   for observed findings, and verification of the exact published checkpoint.
 
 Subagents own scoped files and one evidence note. The integrator owns shared
 status/next-step/log updates, integration and publication. Follow `AGENTS.md`.

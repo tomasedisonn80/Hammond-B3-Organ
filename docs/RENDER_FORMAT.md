@@ -88,7 +88,8 @@ physical-key target command, with duplicate positive NoteOn idempotent; this tex
 format is not a host note-ID ownership protocol.
 
 Supported event names are `note_on`, `note_off`, `drawbar`, `expression`,
-`all_notes_off`, `bank_drawbar`, `select_bank`, `cancel` and `percussion`.
+`all_notes_off`, `bank_drawbar`, `select_bank`, `cancel`, `percussion` and
+`key_position`.
 The manual is `upper` or `lower`, except that percussion controls require `upper`.
 Existing event meanings remain in [ENGINE_API.md](ENGINE_API.md). Percussion
 extends them as follows:
@@ -105,6 +106,31 @@ that is not a finite integer 0 or 1. It changes retained controls, without reset
 shared readiness. Eligibility remains `enabled && upper route enabled && upper B`.
 The physical detector uses upper contact index 8 independently of the audible
 1-foot drawbar and its percussion mask.
+
+`key_position` uses either manual, MIDI note `36..96` as its index, and a finite
+normalized target in `0..1`. With `--contacts nominal`, it commands the existing
+linear-travel model toward that target, preserving current position and all nine
+contact histories. It does not teleport the key, advance time, scale steady
+amplitude or reset a source/percussion state. Repeating the same target leaves
+motion unchanged. A subsequent positive `note_on` commands full target 1 even
+after a partial hold; `note_off` and zero-velocity `note_on` command target 0.
+With `--contacts ideal`, only endpoint targets 0 and 1 are accepted. An interior
+target is rejected during score preflight, before any output file is created.
+
+For example, render the following score with `--contacts nominal --frames 4000`:
+
+```text
+0 key_position upper 60 0.5
+1000 note_on upper 60 100
+2000 key_position upper 60 0.5
+3000 note_off upper 60 0
+```
+
+The two partial holds can retain different connections because make and break
+thresholds differ. Targets are direct physical-key input, not counted host notes
+or saved controls. The named trajectory remains synthetic and unmeasured; this
+score does not implement a calibrated continuous-position controller, fractional
+event times, contact bounce or antialiasing.
 
 Whitespace and full-line comments are allowed. Extra tokens, unknown names,
 nonfinite values, invalid payloads, unsorted frames and events outside
@@ -138,6 +164,11 @@ and adds these three mandatory fields:
 | `render_schema_version` | Integer `2`; older unversioned summaries are a distinct retained format |
 | `contact_model` | `ideal-contacts-v1` or `nominal-linear-travel-v1`, matching the chosen factory |
 | `percussion_model` | `shared-readiness-v1`; identifies the installed algorithm even when percussion is disabled |
+
+`key_position` is an extension of the schema-2 score grammar; it adds no summary
+fields or CLI flags and changes no model identity. Existing schema-2 scores keep
+their meanings. Historical schema-1 bundles retain their original eight-event
+grammar and reject both `percussion` and `key_position`.
 
 `model` remains `ideal-shared-sine-v1`, identifying the source generator. It does
 not describe the entire organ. `evidence_status` remains `unmeasured`. Model

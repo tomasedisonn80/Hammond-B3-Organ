@@ -2,7 +2,7 @@
 """Retain reproducible, explicitly synthetic offline-render evidence (stdlib only).
 
 Public API: run_fixture(**options), sha256_file(path, max_bytes),
-inspect_wav(path, *, frames, sample_rate), validate_events(raw, frames).
+inspect_wav(path, *, frames, sample_rate), validate_events(raw, frames, contacts="ideal").
 A preflight error raises FixtureError/OSError without creating an output directory.
 After directory creation, run_fixture returns a manifest whose status MUST be
 checked: only 'succeeded' is success. No hardware-fidelity claim is made.
@@ -166,8 +166,10 @@ def _event_number(token: str) -> float:
     return value
 
 
-def validate_events(raw: bytes, frames: int) -> int:
-    """Preflight the current C++ event grammar, including console controls."""
+def validate_events(raw: bytes, frames: int, contacts: str = "ideal") -> int:
+    """Preflight the current event grammar against the selected contact model."""
+    if type(contacts) is not str or contacts not in ("ideal", "nominal"):
+        raise FixtureError("contacts must be ideal or nominal")
     if len(raw) > MAX_SCORE_BYTES or b"\x00" in raw:
         raise FixtureError("events exceed 16 MiB or contain a NUL byte")
     source = io.BytesIO(raw)
@@ -200,6 +202,8 @@ def validate_events(raw: bytes, frames: int) -> int:
             valid = {
                 "note_on": 36 <= index <= 96 and 0 <= value <= 127 and value.is_integer(),
                 "note_off": 36 <= index <= 96 and value == 0,
+                "key_position": 36 <= index <= 96 and 0 <= value <= 1 and
+                    (contacts == "nominal" or value in (0, 1)),
                 "drawbar": index <= 8 and 0 <= value <= 8 and value.is_integer(),
                 "expression": index == 0 and 0 <= value <= 1,
                 "all_notes_off": index == 0 and value == 0,
@@ -446,7 +450,7 @@ def run_fixture(*, renderer: str | os.PathLike[str], output_dir: str | os.PathLi
         event_path = _input_path(events, "events")
         _, raw_events = _read_file(event_path, MAX_SCORE_BYTES, retain=True)
         assert raw_events is not None
-        event_count = validate_events(raw_events, frames)
+        event_count = validate_events(raw_events, frames, contacts)
     tools_identity = {}
     for name, path in (("wrapper", Path(__file__).resolve()),
                        ("profile_compiler", Path(profile_compiler.__file__).resolve())):

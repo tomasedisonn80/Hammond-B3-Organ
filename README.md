@@ -8,8 +8,10 @@ with strict data contracts and independent tests. The core has 91 shared,
 continuously running sources, two manuals, drawbars, sample-offset events and
 explicit clock/error handling. Four retained A/B banks, routing-only Cancel and
 versioned control snapshots provide early console behavior. Optional independent
-contact travel and one shared percussion readiness state extend the nominal
-console; ideal contacts and percussion off preserve the original renderer defaults.
+contact travel, explicit partial-key targets and one shared percussion readiness
+state extend the nominal console. Bounded typed note ownership, normalized control
+mapping and phase-preserving rate changes support future host integration. Ideal
+contacts and percussion off preserve the original renderer defaults.
 The selected source and console profiles are **nominal and unmeasured**.
 
 The current executable renders WAV files offline. The product plan targets a
@@ -97,6 +99,8 @@ results and remaining gates; a configured workflow is not a successful hosted ru
 | [Control state format](docs/CONTROL_STATE_FORMAT.md) | Bounded control-only save/load |
 | [Console dynamics](docs/CONSOLE_DYNAMICS.md) | Independent contacts, shared percussion, timing and evidence boundaries |
 | [Console acceptance](docs/CONSOLE_ACCEPTANCE.md) | Independent PCM and evidence-bundle checks for the nominal model |
+| [Console traces](docs/CONSOLE_TRACE.md) | Sample-by-sample contact, readiness, routing, phase and audio diagnostics |
+| [Trace plots](docs/CONSOLE_TRACE_PLOTS.md) | Bounded standalone SVG views of key motion, contacts, readiness and audio |
 | [Model metadata](docs/MODEL_METADATA.md) | Export the actual compiled nominal factory values and units |
 | [Internal parameters](docs/PARAMETERS.md) | 43 proposed permanent control identities; original 39 preserved |
 | [Native parameter bridge](docs/PARAMETER_BRIDGE.md) | Allocation-free conversion of normalized controls into fixed Engine targets |

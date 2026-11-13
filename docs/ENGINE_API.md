@@ -34,9 +34,11 @@ initial frame is a timeline origin, not a request to simulate earlier samples.
 Initial controls are four muted retained banks, bank B selected and routes enabled
 on both manuals, no held keys, expression 1, and percussion Off/Second/Normal/Slow
 with readiness 1. The offline
-client explicitly supplies a registration. Physical key state is boolean per
-manual/MIDI key: repeated note-ons do not multiply voices, and a release clears
-that physical key. [NoteOwnership](NOTE_OWNERSHIP.md) separately implements bounded
+client explicitly supplies a registration. Physical key targets are retained per
+manual/MIDI key: repeated note-ons do not multiply voices, and a release commands
+normal travel to zero. An explicit `KeyPosition` can retain a partial target in
+the nominal contact model. Held-key diagnostics mean target greater than zero;
+they do not imply that any or all contacts are closed. [NoteOwnership](NOTE_OWNERSHIP.md) separately implements bounded
 note-ID/channel ownership, and [InputProcessor](INPUT_PROCESSOR.md) commits it only
 after Engine accepts the translated block. These typed adapters do not provide a
 native host SDK, byte-level MIDI parser or device application.
@@ -67,6 +69,16 @@ manual enum, event enum, finite value and payload ranges for every event.
 | SelectBank |0 | integer0=A or1=B | Select bank and enable manual routing |
 | Cancel |0 |0 | Disable routing while preserving held keys and controls |
 | Percussion |0..3 | integer0..1 | Upper only: enable, harmonic, volume, decay; see console contract |
+| KeyPosition | MIDI 36..96 | finite 0..1 | Set physical target; nominal mode permits partial travel, ideal mode accepts only 0/1 |
+
+`KeyPosition` is appended as event value 9, preserving the earlier 0..8 values.
+Target changes preserve the current contact position and hysteresis and consume
+no elapsed time. Repeating the same target preserves its current trajectory.
+A positive-velocity NoteOn commands full target 1 even after a positive partial
+hold. NoteOff or velocity-zero NoteOn commands normal release to 0; AllNotesOff
+retains its immediate panic behavior. Unsupported partial targets reject the
+complete call in preflight. These direct key commands require coordinated note
+authority when used alongside the ownership adapter and are not saved controls.
 
 Expression changes are initially steps. The implementation must not advertise
 native VST3 ramp reconstruction until a separate curve contract is implemented

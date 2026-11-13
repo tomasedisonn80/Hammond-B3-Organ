@@ -81,10 +81,11 @@ retained. Separate contacts remain separate even when foldback maps them to the
 same tone source. Coefficients may be aggregated only after these connection
 states have been evaluated (atlas pp. 100, 111, 464).
 
-`set_position_target()` is an explicit normalized partial-hold extension.
+`ContactBank::set_position_target()` is an explicit normalized partial-hold extension.
 Linear travel accepts finite targets in `[0,1]`; ideal mode accepts only 0 or 1.
 An interior target in ideal mode is rejected without mutation. The diagnostic
-`key_target` Boolean means `target > 0`, not that every contact is closed. For
+`key_target` Boolean and Engine's `key_down`/active-key count mean `target > 0`,
+not that any or every contact is closed. For
 example, approaching 0.5 from below closes four contacts under the nominal table;
 approaching it from above retains five because the fifth contact has break
 threshold 0.44. This is a property of the declared hysteresis model.
@@ -211,7 +212,7 @@ numerical checks are required before making the corresponding physical claim
 
 ## Event and saved-control extension
 
-Existing event numeric values 0-7 retain their meaning. Reserve event value 8 as
+Existing event numeric values 0-8 retain their meaning. Event value 8 remains
 `EventType::Percussion`, with `manual = Upper` and finite integer value 0 or 1:
 
 | Event index | Retained setting | Value 0 | Value 1 |
@@ -226,6 +227,50 @@ this global upper-percussion event. Event application changes controls only;
 route eligibility is derived afterward. Existing source IDs, parameter IDs and
 drawbar normalization are preserved. Future host exports require their own mapping
 and qualification; this event is an internal engine contract.
+
+### Direct partial-key input
+
+Event value 9 is `EventType::KeyPosition`. Its `manual` is Upper or Lower,
+`index` is a manual MIDI note in 36-96, and `value` is a finite normalized target
+in `[0,1]`. Offsets follow the ordinary half-open/stable-order event contract.
+The current contact mode is part of admission: `LinearTravel` accepts the complete
+range; `Ideal` accepts exactly 0 and 1. An interior ideal-mode target, invalid
+manual/note, nonfinite value or out-of-range target returns `InvalidEvent` for the
+entire call. Even valid events preceding the bad event are not applied, no events
+are consumed, and state/output remain unchanged.
+
+An accepted travel target changes the destination while retaining current
+position and all nine contact histories. Repeating an identical target preserves
+the existing motion segment. Applying a target itself advances no time; the next
+positive sample renders current contact connectivity before one travel step.
+Same-offset events retain their supplied order, with the final target governing
+subsequent motion. Endpoint ideal commands change connectivity immediately under
+the existing ideal timing convention. Source phases, readiness and the frame
+clock never reset because of a key-position event.
+
+An ordinary positive-velocity NoteOn always commands target 1, including when a
+positive partial hold already makes `key_down` true. NoteOff and zero-velocity
+NoteOn command target 0 through ordinary release travel. `AllNotesOff` remains
+the separate immediate manual panic. A positive target can count as held before
+any contact closes; a target-zero key can retain closed contacts while returning.
+Use `contact_snapshot()` to inspect the actual position, target and nine bits.
+
+The atlas explicitly separates measured gesture input from a named MIDI surrogate
+and requires partial depression to preserve a contact subset (pp. 115-120,
+especially p. 117). This event supplies an explicit normalized **target** to the
+existing nominal trajectory. It is not a calibrated position sensor sample,
+measured finger trajectory, velocity-to-motion curve or new physical model.
+Sample-grid switching and all existing bandwidth/calibration limitations remain.
+
+`KeyPosition` is direct physical-key input, independent of counted host note
+ownership. [InputProcessor](INPUT_PROCESSOR.md) must remain the sole note authority
+for keys assigned to its ownership object. Do not interleave uncoordinated direct
+KeyPosition, NoteOn, NoteOff or manual panic commands with adapter-owned keys.
+No ownership merge, authority-transfer operation or automatic adapter reset is
+introduced here. Partial targets are transient dynamics and are excluded from
+musical-control persistence along with positions, contacts, readiness and phases.
+
+### Musical-control persistence
 
 Control persistence moves to `B3CONTROLS2`, adding the following mandatory tokens
 immediately after expression and before the existing ordered manual/bank blocks:

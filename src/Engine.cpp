@@ -10,7 +10,7 @@ namespace {
     return value >= 0.0 && value <= maximum && std::trunc(value) == value;
 }
 
-[[nodiscard]] bool valid_event_payload(const Event& event) noexcept {
+[[nodiscard]] bool valid_event_payload(const Event& event, ContactMode mode) noexcept {
     if (!is_valid_manual(event.manual) || !std::isfinite(event.value)) {
         return false;
     }
@@ -20,6 +20,11 @@ namespace {
                is_integer_in_range(event.value, 127.0);
     case EventType::NoteOff:
         return is_valid_manual_midi_note(event.index) && event.value == 0.0;
+    case EventType::KeyPosition:
+        return is_valid_manual_midi_note(event.index) &&
+               event.value >= 0.0 && event.value <= 1.0 &&
+               (mode == ContactMode::LinearTravel ||
+                event.value == 0.0 || event.value == 1.0);
     case EventType::Drawbar:
         return event.index < kDrawbarCount && is_integer_in_range(event.value, 8.0);
     case EventType::Expression:
@@ -159,7 +164,8 @@ Status Engine::preflight(std::uint32_t frames, std::span<float> mono_output,
     std::uint32_t previous_offset = 0;
     for (const Event& event : events) {
         if ((frames == 0 ? event.offset != 0 : event.offset >= frames) ||
-            event.offset < previous_offset || !valid_event_payload(event)) {
+            event.offset < previous_offset ||
+            !valid_event_payload(event, contact_bank_.mode())) {
             return Status::InvalidEvent;
         }
         previous_offset = event.offset;
@@ -239,12 +245,19 @@ void Engine::apply_event(const Event& event) noexcept {
     const auto manual = static_cast<std::size_t>(event.manual);
     switch (event.type) {
     case EventType::NoteOn:
-    case EventType::NoteOff: {
+    case EventType::NoteOff:
+    case EventType::KeyPosition: {
         const auto key = static_cast<std::size_t>(event.index - kMinManualMidiNote);
-        const bool down = event.type == EventType::NoteOn && event.value != 0.0;
-        if (held_keys_[manual][key] != down) {
-            held_keys_[manual][key] = down;
-            (void)contact_bank_.set_key_target(event.manual, event.index, down);
+        const double target = event.type == EventType::KeyPosition ? event.value :
+            (event.type == EventType::NoteOn && event.value != 0.0 ? 1.0 : 0.0);
+        held_keys_[manual][key] = target > 0.0;
+        double previous_target = 0.0;
+        (void)contact_bank_.position_target(event.manual, event.index, previous_target);
+        // Compare the actual target, not its held-key Boolean: a positive partial
+        // hold must still respond to a subsequent full NoteOn. Equal targets leave
+        // the existing trajectory segment and all contact histories untouched.
+        if (previous_target != target) {
+            (void)contact_bank_.set_position_target(event.manual, event.index, target);
             coefficients_dirty_ = true;
         }
         break;

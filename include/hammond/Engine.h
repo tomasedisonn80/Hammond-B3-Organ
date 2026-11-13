@@ -63,6 +63,11 @@ public:
     // offset-zero events once without advancing sources, contact travel,
     // readiness or the frame clock. Positive samples render current state before
     // advancing each dynamic module exactly once, even with disconnected output.
+    // KeyPosition accepts finite normalized targets in [0,1] on either manual;
+    // Ideal contacts accept only 0/1. Any invalid partial target rejects the full
+    // call before mutation. Targets are idempotent and preserve contact history;
+    // NoteOn commands full press even after a partial hold. Direct key events
+    // require coordinated note authority when an ownership adapter is in use.
     [[nodiscard]] ProcessResult process(std::uint32_t frames,
                                         std::span<float> mono_output,
                                         std::span<const Event> events) noexcept;
@@ -76,6 +81,8 @@ public:
 
     // Copied diagnostics only. Invalid manuals/notes report zero/false; checked
     // output-parameter queries leave the destination unchanged on failure.
+    // Active/down means target > 0, including partial holds; it does not mean
+    // that any or all contacts have closed, or that releasing contacts are open.
     [[nodiscard]] std::size_t active_key_count() const noexcept;
     [[nodiscard]] std::size_t active_key_count(Manual manual) const noexcept;
     [[nodiscard]] bool key_down(Manual manual, std::uint32_t midi_note) const noexcept;

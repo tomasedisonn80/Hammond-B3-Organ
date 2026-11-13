@@ -34,18 +34,27 @@ enum class EventType : std::uint8_t {
     SelectBank = 6,
     Cancel = 7,
     Percussion = 8,
+    KeyPosition = 9,
 };
 
 // Offsets are relative to the current block; equal offsets retain input order.
 // Note index: MIDI 36..96; NoteOn value: velocity 0..127 (zero means release).
+// NoteOn with positive velocity commands target 1, including after a partial
+// hold; NoteOff/zero velocity command target 0 using ordinary release travel.
+// KeyPosition index: MIDI 36..96 on either manual; value: finite normalized
+// target 0..1. LinearTravel preserves current position and contact hysteresis;
+// Ideal accepts endpoints only. Identical targets do not restart motion. These
+// commands consume no elapsed time and do not reset shared source/readiness state.
 // Drawbar index: physical order 0..8 in the selected bank; value: integer 0..8.
 // BankDrawbar index: bank*9 + drawbar, 0..17 (A=0, B=1); value: integer 0..8.
 // SelectBank index: 0; value: integer 0=A or 1=B. Selection enables the route.
 // Cancel index/value: 0. Disconnects one manual without releasing held keys.
 // Percussion is Upper only, value: integer 0 or 1. Index 0: Off/On;
 // 1: Second/Third harmonic; 2: Normal/Soft volume; 3: Slow/Fast decay.
-// Expression is global with value 0..1. AllNotesOff selects one manual.
-// Note velocity does not scale the sustained amplitude of this ideal organ.
+// Expression is global with value 0..1. AllNotesOff immediately panics one manual.
+// Note velocity does not scale sustained amplitude or select a motion curve.
+// KeyPosition is direct physical input, not counted external note ownership or
+// a saved control. Keep one coordinated note authority for each physical key.
 struct Event {
     std::uint32_t offset{0};
     EventType type{EventType::NoteOn};

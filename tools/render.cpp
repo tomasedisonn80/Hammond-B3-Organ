@@ -324,7 +324,8 @@ struct AbsoluteEvent {
     hammond::Event event;
 };
 
-[[nodiscard]] AbsoluteEvent parse_event_line(std::string_view line, std::uint64_t frames) {
+[[nodiscard]] AbsoluteEvent parse_event_line(std::string_view line, std::uint64_t frames,
+                                             hammond::ContactMode contact_mode) {
     std::array<std::string_view, 5> tokens{};
     std::size_t position = 0;
     std::size_t count = 0;
@@ -373,6 +374,15 @@ struct AbsoluteEvent {
             }
         } else if (value != 0.0) {
             fail("Note-off value must be zero.");
+        }
+    } else if (tokens[1] == "key_position") {
+        result.event.type = EventType::KeyPosition;
+        if (index < hammond::kMinManualMidiNote || index > hammond::kMaxManualMidiNote ||
+            value < 0.0 || value > 1.0) {
+            fail("Key-position index must be MIDI 36..96 and target must be in 0..1.");
+        }
+        if (contact_mode == hammond::ContactMode::Ideal && value != 0.0 && value != 1.0) {
+            fail("Ideal contacts accept only key-position targets 0 or 1.");
         }
     } else if (tokens[1] == "drawbar") {
         result.event.type = EventType::Drawbar;
@@ -472,7 +482,7 @@ struct AbsoluteEvent {
             if (events.size() == kMaxScoreEvents) {
                 fail("Event score exceeds 262144 events.");
             }
-            auto event = parse_event_line(line, options.frames);
+            auto event = parse_event_line(line, options.frames, options.contact_mode);
             if (!events.empty() && event.frame < events.back().frame) {
                 fail("Event frames must be sorted in nondecreasing order.");
             }
@@ -776,11 +786,12 @@ int main(int argc, char* argv[]) {
                 "Scores: at most 16 MiB, 262144 events, 4096 bytes/line, 1024 events/frame.\n"
                 "Score fields: frame type upper|lower index value (five fields).\n"
                 "Types: note_on, note_off, drawbar, expression, all_notes_off,\n"
-                "       bank_drawbar, select_bank, cancel, percussion.\n"
+                "       bank_drawbar, select_bank, cancel, percussion, key_position.\n"
                 "bank_drawbar: index bank*9+drawbar (A=0, B=1), integer value 0..8.\n"
                 "select_bank: index 0, integer value 0=A or 1=B; reconnects the manual.\n"
                 "cancel: index/value 0; retains held keys and banks. Drawbar edits selected bank.\n"
                 "percussion: upper only; indices 0=enable, 1=third, 2=soft, 3=fast; value 0|1.\n"
+                "key_position: either manual, MIDI36..96, target 0..1; ideal contacts require 0|1.\n"
                 "Initial percussion controls follow drawbars; score events then take precedence.\n"
                 "JSON summary schema 2 identifies source, contact and percussion models separately.\n";
             return std::cout ? 0 : 1;
