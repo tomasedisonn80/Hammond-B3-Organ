@@ -2,6 +2,8 @@
 
 ## Current native interface continuation
 
+Read the [workspace recovery checkpoint](docs/development/2026-11-14-interface-continuation/RECOVERY.md) first. It records the unavailable workspace, exact recovered source, all sixty actual dispatches and safe reconciliation of the old unpublished index. Do not restart completed work or confuse recovered documentation with unretrieved raw evidence.
+
 The newest [interface session](docs/development/2026-11-14-interface-continuation/README.md)
 starts from published `d493e998`. Its sixty fresh workers in ten waves have their
 own [actual manifest](docs/development/2026-11-14-interface-continuation/assignments.json).

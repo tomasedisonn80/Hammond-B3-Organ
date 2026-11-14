@@ -1,5 +1,7 @@
 # Hammond B-3 Organ
 
+**Current recovery checkpoint:** the workspace became unavailable after the macOS replay repair passed locally. The exact qualified repair is being published through GitHub; [recovery status and next steps](docs/development/2026-11-14-interface-continuation/RECOVERY.md) distinguish completed work, hosted verification and unavailable local evidence.
+
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The current playable product is a **nominal dry organ** with an offline renderer, an optional VST3 adapter, and a native standalone application.
 
 **Current development:** the native application now has **Play, Rotary and Service workspaces**, a complete **Flat mode**, perspective keyboards with shared drawing/hit geometry, and a read-only inspector built from copied state. It retains eighteen documentary fixed registrations, four A/B drawbar banks, Cancel, percussion, expression and two nominal pedal mixtures. The **47 sound parameters**, **`B3CONTROLS4`** writer and readers for versions 1–3 keep their existing meanings. Its 91 continuously running sources serve two 61-key manuals and 25 pedals.

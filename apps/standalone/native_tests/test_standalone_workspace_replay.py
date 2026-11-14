@@ -285,6 +285,44 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
         self.assertTrue(any(item["inspection"]["snapshot_state"] == "current" for item in frames))
         self.assertIn(frames[-1]["inspection"]["snapshot_state"], ("current", "retained"))
 
+    def assert_header_hold_prefixes(self, run: workflow_fixture.WorkflowRun,
+                                   startup_sequence: int, *, through: int) -> None:
+        # These are the header journey's four original note commands, not an
+        # arbitrary allowed subsequence. Only its first Upper-only sample may
+        # be absent from the full run; the separate completed prefix proves it.
+        self.assertIn(through, (1, 4))
+        states = (EMPTY, ((60,), (), ()), ((60,), (60,), ()),
+                  ((60,), (), ()), EMPTY)
+        earliest = (0, 180, 320, 1600, 1800)
+        replay = run.diagnostics["replay"]
+        final = startup_sequence + through
+        previous_applied = previous_submitted = startup_sequence
+        previous_elapsed = 0
+        seen = set()
+        for item in replay["observations"]:
+            applied, submitted = item["last_applied_sequence"], item["last_submitted_sequence"]
+            self.assertEqual(item["resolved_sequence"], applied)
+            self.assertGreaterEqual(applied, previous_applied)
+            self.assertGreaterEqual(submitted, previous_submitted)
+            self.assertLessEqual(applied, submitted)
+            self.assertLessEqual(submitted, final)
+            prefix = applied - startup_sequence
+            self.assertIn(prefix, range(through + 1))
+            self.assertEqual(holds(item), states[prefix])
+            self.assertGreaterEqual(item["elapsed_ms"], previous_elapsed)
+            self.assertGreaterEqual(item["elapsed_ms"], earliest[prefix])
+            previous_applied, previous_submitted = applied, submitted
+            previous_elapsed = item["elapsed_ms"]
+            seen.add(prefix)
+        required = {1} if through == 1 else {0, 2, 3, 4}
+        self.assertTrue(required.issubset(seen),
+                        f"Required acknowledged header stages missing: {required - seen}")
+        before = replay["before_shutdown"]
+        self.assertEqual(before["last_applied_sequence"], final)
+        self.assertEqual(before["resolved_sequence"], final)
+        self.assertEqual(holds(before), states[through],
+                         "Shutdown cleanup must not substitute for a scripted owner release")
+
     def test_pointer_header_matrix_preserves_keyboard_space_and_exact_save(self) -> None:
         for size, (play, rotary, service, flat, save) in HEADER_POINTS.items():
             with self.subTest(size=size):
@@ -297,12 +335,30 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                 events += click(1250, play) + click(1450, flat)
                 events += [(1600, "key_up Space ctrl+meta"), (1800, "key_up A alt+shift")]
                 events += click(1950, save)
+                # Complete the original startup and first-note prefixes at each
+                # size. Copied snapshots need not sample the short interval
+                # between the original 180 ms Upper and 320 ms Space presses.
+                with self.run_native(250, [event for event in events if event[0] < 180],
+                                     size=size, state=NONCANONICAL_STATE) as startup:
+                    self.assert_control_path(startup, [CONTROLS])
+                    self.assert_hold_path(startup, [EMPTY])
+                    observed = startup.diagnostics["replay"]
+                    startup_sequence = observed["last_submitted_sequence"]
+                    self.assert_commands(startup, on=0, off=0, startup_sequence=startup_sequence)
+                    self.assertEqual(startup.saved_bytes, NONCANONICAL_STATE,
+                                     "The startup prefix must not save or canonicalize its input")
+                with self.run_native(250, [event for event in events if event[0] < 320],
+                                     size=size, state=NONCANONICAL_STATE) as upper:
+                    self.assert_control_path(upper, [CONTROLS])
+                    self.assert_commands(upper, on=1, off=0, startup_sequence=startup_sequence)
+                    self.assert_header_hold_prefixes(upper, startup_sequence, through=1)
+                    self.assertEqual(upper.saved_bytes, NONCANONICAL_STATE,
+                                     "The held-note prefix must not save or canonicalize its input")
                 with self.run_native(2250, events, size=size, state=NONCANONICAL_STATE,
                                      screenshot=True) as run:
                     self.assert_control_path(run, [CONTROLS])
-                    self.assert_hold_path(run, [EMPTY, ((60,), (), ()), ((60,), (60,), ()),
-                                               ((60,), (), ()), EMPTY])
-                    self.assert_commands(run, on=2, off=2)
+                    self.assert_header_hold_prefixes(run, startup_sequence, through=4)
+                    self.assert_commands(run, on=2, off=2, startup_sequence=startup_sequence)
                     self.assert_views(run, [(workspace, mode, *size) for workspace, mode in (
                         ("play", "dimensional"), ("rotary", "dimensional"), ("rotary", "flat"),
                         ("service", "flat"), ("play", "flat"), ("play", "dimensional"))])

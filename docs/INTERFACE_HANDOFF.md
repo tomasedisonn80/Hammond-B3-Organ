@@ -157,7 +157,7 @@ python3 -B tools/capture_standalone_interface.py \
   --exe ../build-native/apps/standalone/hammond_standalone \
   --source-root . --build-root ../build-native \
   --source-qualification examples/demos/standalone-interface-preview-v2/inputs/source-qualification.json \
-  --expected-exe-sha 256 bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2 \
+  --expected-exe-sha256 bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2 \
   --dummy-sdl --output out/interface-new
 ```
 

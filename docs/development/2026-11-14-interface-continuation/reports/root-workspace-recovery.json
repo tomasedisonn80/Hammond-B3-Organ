@@ -1,0 +1,131 @@
+{
+  "schema": "interface-workspace-outage-recovery-v1",
+  "parent_commit": "b1efcdfc34cde92e07f2f6bcb563fc12701dfc01",
+  "parent_tree": "815ad7cd46b348607e6a7353c01e4f4b86ec2126",
+  "environment_status": "unavailable; exec-server transport disconnected and its recovery timed out",
+  "local_fetch_or_index_alignment_after_recovery": false,
+  "successful_current_session_dispatches": 60,
+  "logical_waves": 10,
+  "maximum_active_workers_plus_root": 4,
+  "accounting_at_interruption": {
+    "accepted": 57,
+    "active_followup_assignments": [
+      52,
+      58,
+      60
+    ],
+    "all_actual_dispatches_complete": true,
+    "strict_final_completion_not_yet_run": true
+  },
+  "original_unpublished_staged_candidate": {
+    "tree": "655b1f17577af95ea2c5cacea9eacfa60088d341",
+    "paths": 137,
+    "payload_characters": 768670,
+    "uploaded": false,
+    "explanation": "Workspace became unavailable before the staged payload could be loaded for publication. This recovery commit is a smaller separately identified change; it is not that original tree."
+  },
+  "qualified_fixture": {
+    "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+    "before_sha256": "485de6fd6e3da49bbac1f523d4cb277557ee4b94ee1b7ce098f7188466d2cbf3",
+    "after_sha256": "0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692",
+    "recovery": "Fetched exact published parent bytes, applied the fully recorded approved diff, independently matched both SHA-256 identities in memory before publication. No new implementation was inferred."
+  },
+  "observed_local_qualification": {
+    "worker": "/root/w09_a52_bounded_native_burst",
+    "independent_reviewer": "/root/w10_a60_final_handoff",
+    "methods_passed": 6,
+    "native_processes": 30,
+    "launcher_seconds": 45.05869714799337,
+    "unittest_seconds": 44.869,
+    "child_timeout_seconds": 9,
+    "suite_timeout_seconds": 90,
+    "rejected_corruptions": {
+      "historical_mac_diagnostics": 10,
+      "actual_local_prefixes": 4
+    },
+    "full_scripts_unchanged": 7,
+    "exact_noncanonical_prefix_states": 14,
+    "exact_canonical_full_saves": 7,
+    "original_reports_verified_unchanged": 180,
+    "product_inputs_unchanged": 98,
+    "application_sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+    "result_sha256": "4c5199f063d7acc0918e27ee60326a406e257106788fa3bc26fa76d81cc92385",
+    "claim_basis": "Root observed the successful process/result and inspected the qualified diff. A60 independently inspected all30 zero-exit records and state/script identities before the outage. Original local files cannot currently be retrieved; this is an attributed recovery record, not a replacement for those raw files."
+  },
+  "preserved_hosted_failure": {
+    "commit": "b1efcdfc34cde92e07f2f6bcb563fc12701dfc01",
+    "total_jobs": 12,
+    "succeeded": 11,
+    "failed": 1,
+    "standalone_run": 43601574718,
+    "macos_job": 132467248056,
+    "macos_ctest": {
+      "passed": 37,
+      "executed": 38
+    },
+    "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save at1399x820",
+    "trace": [
+      {
+        "ms": 53,
+        "applied": 5,
+        "submitted": 5,
+        "held": "empty"
+      },
+      {
+        "ms": 356,
+        "applied": 5,
+        "submitted": 7,
+        "held": "empty"
+      },
+      {
+        "ms": 440,
+        "applied": 7,
+        "submitted": 7,
+        "held": "Upper60+Lower60"
+      },
+      {
+        "ms": 1675,
+        "applied": 8,
+        "submitted": 8,
+        "held": "Upper60"
+      },
+      {
+        "ms": 1896,
+        "applied": 9,
+        "submitted": 9,
+        "held": "empty"
+      }
+    ],
+    "raw_log_sha256": "ea124243de963a5c72c9756cc9cc55cd141264b9e87ec30a7319e7302db5bb9c",
+    "raw_log_bytes": 699663,
+    "scope": "Original missing sampled intermediate state remains a failed gate; it does not demonstrate a lost note. Later assertions were not reached. Historical saved/BMP bytes and new prefixes are not attested by this trace."
+  },
+  "evidence_staging": {
+    "normalization_caught_before_publication": true,
+    "affected_noncanonical_prefix_files": 14,
+    "example_actual_bytes": 469,
+    "example_normalized_index_bytes": 456,
+    "original_worktree_modified": false,
+    "rule": "docs/development/**/reports/**/*.b3controls -text",
+    "exact_staged_state_files_checked": 30,
+    "exact_staged_artifact_hashes_checked": 128,
+    "source_and_raw_evidence_changes": "Only Git line-ending treatment was corrected; raw whitespace was preserved. These local raw artifacts are not included in the smaller recovery commit."
+  },
+  "last_storage_observation": {
+    "free_gib": 36.673,
+    "task_apparent_mib": 781.493,
+    "repo_apparent_mib": 112.113,
+    "out_of_space_observed": false
+  },
+  "unavailable_work": [
+    "The original137-file staged candidate and raw30-process local suite artifacts.",
+    "Unpublished original A56–A60 reports/notes and current shared-document edits.",
+    "Final local filesystem audit and strict final session completion command."
+  ],
+  "nonexistent_files_not_to_claim": [
+    "reports/a52-macos-final-result.json",
+    "reports/a52-macos-fixture.patch"
+  ],
+  "restoration": "Preserve the old checkout, worktree and index if the environment returns. Fetch current main and reconcile in an isolated checkout/worktree. Do not reset --hard, overwrite concurrent work, or assume the old staged tree equals the remote recovery tree. The existing local a52-macos-local-suite/result.json is the complete result; correct unfinished narrative links to it.",
+  "next": "Observe all jobs on this exact recovered source through GitHub, publish actual recovery notes/accounting, and run the strict checker on a hosted runner only after every actual assignment is accepted. Keep raw local artifact retrieval explicitly pending."
+}

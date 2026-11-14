@@ -6,3 +6,7 @@
 *.wav binary
 *.f32 binary
 *.b3p binary
+
+# Replay evidence includes deliberate CRLF and surrounding whitespace.
+# Preserve the exact observed state bytes instead of normalizing their text.
+docs/development/**/reports/**/*.b3controls -text
