@@ -1,5 +1,22 @@
 # Development log
 
+## 2026-11-14 — Start independent R4 waveform continuation
+
+Created an isolated checkout at remote `2e161dc` while preserving the preceding
+session's unpublished files. Six actual atlas readers cover the complete PDF;
+their accepted notes and live states are in the new waveform manifest. The
+next documented M7 gate is R4 history/cubic rendering with strict transactions,
+independent of Engine; native design refinement remains a parallel scoped task.
+
+The initial shell configure failed because `cmake` was not in PATH (exit 127).
+Reusing the existing pinned tool/dependency roots resolved setup without a
+product change. Fresh GCC14.2 Release standalone/MIDI-OFF build and complete
+CTest pass **155/155 in 152.15 seconds**. A native baseline frame at 1672×941
+uses SDL dummy drivers/software rendering. Source hashes and raw test output
+are retained in the new session's reports. About58 GiB remains free; source
+and fresh build total roughly197 MiB. Shell push dry-run lacks credentials;
+verified connected GitHub push permission supplies the publication route.
+
 ## 2026-11-14 — Publish native v3 gallery and remove fixture stack pressure
 
 All eight native v3 captures from published `2e161dc` are independently accepted:111 qualified inputs,552 provenance/pixel/source checks and exact painted2/1/1 holds. A32 strengthens the reusable validator with seven methods and sixty synthetic mutations. A34 confirms719,289 identical PCM frames across1,662 presentation transitions and preserved47parameter/state meanings. A35 relocates95installedfiles through Unicode/space paths and passes16expected exits. A37 adds the exact current setup/full-plan handoff and corrects stale component/parameter descriptions.

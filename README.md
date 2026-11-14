@@ -1,6 +1,6 @@
 # Hammond B-3 Organ
 
-**Current checkpoint:** the new [reference refinement session](docs/development/2026-11-14-reference-refinement/README.md) has completed all 500 atlas pages and the unchanged 147/147 native baseline. Wide manuals, sidebar pedals, material refinement and singular inspection wording are implemented and targeted checks pass. Independent rotary R2/R3, changed-product desktop and a refreshed native gallery are in progress. The [live handoff](docs/development/2026-11-14-reference-refinement/CHECKPOINT.md) records actual assignments, setup and next actions; the earlier sixty-worker session remains historical.
+**Current checkpoint:** the [waveform continuation](docs/development/2026-11-14-waveform-continuation/README.md) advances the next independent M7 gate, R4 waveform history and transactional acoustic rendering, alongside native visual refinement. The unchanged current source passes **155/155 local Release tests**. Its [live handoff](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md) records the new sixty-assignment scope, complete atlas review, exact setup and next actions. Earlier reference-refinement and interface sessions retain their own evidence and remaining gates.
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The current playable product is a **nominal dry organ** with an offline renderer, an optional VST3 adapter, and a native standalone application.
 

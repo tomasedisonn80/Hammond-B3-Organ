@@ -1,6 +1,24 @@
 # Development status
 
-## Reference refinement and nominal propagation continuation
+## Current waveform rendering and native design continuation
+
+The [new session](development/2026-11-14-waveform-continuation/README.md) starts
+from published `2e161dc`. Its complete-atlas readers and R4 API review are
+recorded in a separate [actual manifest](development/2026-11-14-waveform-continuation/assignments.json).
+The unchanged Linux GCC 14.2 Release baseline passes **155/155 tests** in
+152.15 seconds, including the enabled native standalone with MIDI disabled.
+[Exact product inputs and raw results](development/2026-11-14-waveform-continuation/reports/baseline.json)
+are retained. R4 implementation and new visual changes are not yet qualified.
+
+The next engineering work is bounded horn/drum waveform history, cubic delay
+and transactional stereo rendering under the existing rotary numerical contract,
+plus a measured native visual refinement and fresh README captures. The dry
+Engine, 47 parameters, state4/readers 1–3 and other sessions remain preserved.
+R5 audible policy, R6 integration, literal reference equality and physical
+qualification keep their separate gates. The [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+is the current setup/resumption entry point.
+
+## Earlier reference refinement and nominal propagation continuation
 
 The [current session](development/2026-11-14-reference-refinement/README.md) has completed all 500 atlas pages and accepted waves 1–6 and two wave-7 results: **38 actual assignments**. A39–A41 are active. The [manifest](development/2026-11-14-reference-refinement/assignments.json) records actual dispatch; the requested sixty are not yet complete.
 

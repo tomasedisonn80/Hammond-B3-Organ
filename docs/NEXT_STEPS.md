@@ -1,6 +1,21 @@
 # Next steps
 
-## Active reference refinement and propagation work
+## Current R4 waveform continuation
+
+Continue the [current checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+and actual [assignment manifest](development/2026-11-14-waveform-continuation/assignments.json).
+Finish full atlas consolidation, review the [R4 brief](ROTARY_RENDERER_PLAN.md),
+freeze implementation ownership and then build bounded histories, independent
+same-cubic reference and atomic stereo rendering. Qualify the complete frozen
+R4 experiments before changing that gate's status. Preserve the current dry
+Engine and all sound/state identities. Compare and refine actual native paint,
+then refresh README with exact-source application captures and residual gaps.
+
+Earlier unpublished reference-refinement work is a separate scope; inspect any
+remote advance before publication and preserve its original source/evidence.
+R5/R6, scanner G5, complete M5/M6 models and physical acquisition remain separate.
+
+## Earlier reference refinement and propagation work
 
 Continue the [live checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and [scope](REFERENCE_REFINEMENT_SCOPE.md). Full atlas review, current UI/inspection implementation, real pending raster, native R2/R3 and their independent acceptance are complete through thirty-eight accepted actual assignments. Publish the accepted v3 gallery, setup/relocation evidence and allocation-fixture stack repair; qualify that repair on actual Windows. Finish the measured wide-header refinement with independent raster/timing acceptance, then capture the final published product and refresh README. Preserve the successful hosted sanitizer gates, original Windows failure, earlier apt stall and local LSan failure. Complete the remaining twenty-two requested actual assignments across waves7–10, including audio/state isolation, packaging, visual comparison, setup, strict current-session accounting, final coherent verification and exact remote publication review.
 

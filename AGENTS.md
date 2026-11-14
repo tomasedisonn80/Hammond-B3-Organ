@@ -1,5 +1,21 @@
 # Standing instructions for every development agent
 
+## Current waveform continuation
+
+The newest owner-requested session starts at `2e161dc3a60fc3442051799574feed37bffbfc5c`.
+Read its [scope](docs/development/2026-11-14-waveform-continuation/README.md),
+[checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md) and
+[actual assignments](docs/development/2026-11-14-waveform-continuation/assignments.json).
+It owns independent R4 waveform rendering and a separately verified native
+visual refinement. Preserve the current dry Engine, all sound/state identities,
+prior session records and concurrent unpublished work. Keep R4 discrete parity,
+R5 audible policy, R6 integration and physical cabinet fidelity separate.
+The future-agent rule is unchanged: read the complete project plan, continue
+dependency-ready work, retain exact setup/results and next actions, refresh
+README from actual UI captures, commit and push authorized completed work to
+main, and verify the remote revision. Checkpoint each wave and reuse bounded
+build/dependency storage. Never overwrite another session or invent evidence.
+
 ## Current reference refinement and propagation continuation
 
 The newest owner-requested session starts at `8bd999e`. Read its
