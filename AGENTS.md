@@ -1,5 +1,17 @@
 # Standing instructions for every development agent
 
+## Concurrent source ownership
+
+The reference-refinement session is still completing its own sixty-worker
+request while the newer waveform session advances R4. Read the
+[concurrent handoff](docs/development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
+before overlapping native paint, gallery or shared documentation changes.
+Integrate the accepted measured header and its source-specific evidence before
+further visual refinement; preserve both sessions' separate ledgers, current
+instructions and original results. Fetch and inspect concurrent advances before
+every expected-head publication, without resetting another checkout or forcing
+main. The user's standing completion/publication authorization remains in effect.
+
 ## Current waveform continuation
 
 The newest owner-requested session starts at `2e161dc3a60fc3442051799574feed37bffbfc5c`.

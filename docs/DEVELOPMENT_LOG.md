@@ -1,5 +1,26 @@
 # Development log
 
+## 2026-11-14 — Accept measured native header and preserve concurrent R4 work
+
+All seven reference-refinement waves are accepted: 42 actual workers. A40's
+wide Dimensional title and truthful caption match the reference vertical bounds
+and reduce their width differences to one pixel. Six affected suites and 1,071
+material assertions pass. A41 independently passes 1,897 checks and 352,552,950
+pixel comparisons: 120 complete frame pairs are identical and 36 differ only
+inside the header. The first timing cell's p95 trigger remains retained; the
+sole reverse-order repeat does not reproduce it. No cause, equivalence, device
+frame-rate or audio-deadline claim is inferred.
+
+A39 adds strict current-session record verification with twenty passing focused
+synthetic methods; partial records never certify completion. A42 supplies a
+proposed detailed R4 streaming/transaction plan for the concurrent waveform
+owner. Root preserves and fast-forwards all 18 documentation-only paths in that
+owner's `26ff2fbe` commit, with exact dirty-source hash checks. All twelve hosted
+jobs at that integrated revision pass on unchanged f9c product/test inputs,
+including full Windows and both sanitizer/leak gates. Source-specific earlier
+failures and cancelled runs remain separate. The accepted header now needs its
+own publication and new final native gallery before README refresh.
+
 ## 2026-11-14 — Start independent R4 waveform continuation
 
 Created an isolated checkout at remote `2e161dc` while preserving the preceding

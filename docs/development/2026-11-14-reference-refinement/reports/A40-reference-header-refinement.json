@@ -1,0 +1,281 @@
+{
+  "schema": "a40-reference-header-refinement-v1",
+  "worker": "/root/w07_a40_reference_header_refinement",
+  "wave": 7,
+  "base_head_before": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+  "base_head_after": "f9c11a498ecd88886349415205fc5dccc627033e",
+  "publication_note": "f9c11a4 advanced documentation/gallery/fixture only; these frozen renderer and test edits remain outside that published tree.",
+  "source": {
+    "apps/standalone/InstrumentView.cpp": {
+      "before": {
+        "sha256": "428f74c4b2aae72e1ee048d1fa878575d0cd2edc064b1a3865ba40c446c30da2",
+        "bytes": 80128
+      },
+      "after": {
+        "sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+        "bytes": 81794
+      }
+    },
+    "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": {
+      "before": {
+        "sha256": "cc00920fa567460999821d9118d3b8c752b9df22be83d63969dd810f5273b252",
+        "bytes": 32576
+      },
+      "after": {
+        "sha256": "66963058652bd0673a043e03f342c94d71fd3c07e2f37a0d1d94093cc4d4a134",
+        "bytes": 40205
+      }
+    },
+    "apps/standalone/UiModel.cpp": {
+      "before": {
+        "sha256": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+        "bytes": 55053
+      },
+      "after": {
+        "sha256": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+        "bytes": 55053
+      }
+    },
+    "apps/standalone/UiModel.h": {
+      "before": {
+        "sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+        "bytes": 16388
+      },
+      "after": {
+        "sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+        "bytes": 16388
+      }
+    },
+    "apps/standalone/Drawing.cpp": {
+      "before": {
+        "sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+        "bytes": 20951
+      },
+      "after": {
+        "sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+        "bytes": 20951
+      }
+    },
+    "apps/standalone/Drawing.h": {
+      "before": {
+        "sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+        "bytes": 2443
+      },
+      "after": {
+        "sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+        "bytes": 2443
+      }
+    },
+    "apps/standalone/FontData.h": {
+      "before": {
+        "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+        "bytes": 204816
+      },
+      "after": {
+        "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+        "bytes": 204816
+      }
+    }
+  },
+  "outside_paint_header_source_unchanged": true,
+  "v3_gallery_unchanged": true,
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "cmake": "cmake version 4.4.5",
+  "configuration": {
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+    "HAMMOND_BUILD_STANDALONE": "ON",
+    "HAMMOND_BUILD_VST3": "OFF",
+    "HAMMOND_ENABLE_MIDI": "ON",
+    "HAMMOND_ENABLE_SANITIZERS": "OFF",
+    "SDL_X11": "ON",
+    "SDL_ALSA": "OFF"
+  },
+  "desktop_executable": {
+    "sha256": "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f",
+    "bytes": 3860368
+  },
+  "baseline": {
+    "checks": 901,
+    "failures": 0,
+    "report": "A40-before-material.json"
+  },
+  "scoped_gate": {
+    "command": [
+      "../build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "../build-desktop",
+      "--no-tests=error",
+      "-R",
+      "^test_standalone_(drawing|quad_drawing|scaled_view|workspace_raster|preset_raster|material_acceptance)$",
+      "--output-on-failure",
+      "-V"
+    ],
+    "passed": 6,
+    "failed": 0,
+    "real_seconds": 44.66,
+    "log": "A40-candidate-ctest.log"
+  },
+  "authored_material": {
+    "checks": 1071,
+    "legacy_checks": 901,
+    "header_checks": 170,
+    "failures": 0,
+    "total_frames": 88,
+    "new_full_header_frames": 24,
+    "new_cut_clip_frames": 8,
+    "sizes": [
+      [
+        1400,
+        820
+      ],
+      [
+        1672,
+        941
+      ]
+    ],
+    "scales": [
+      1,
+      1.25,
+      1.5,
+      2
+    ],
+    "workspaces": [
+      "Play",
+      "Rotary",
+      "Service"
+    ],
+    "legacy_surface_status_overlay_results_unchanged": true
+  },
+  "native_capture_report": "A40-native-captures.json",
+  "measurement_at_1672x941": {
+    "mask": "R>=130,G>=105,R>=G,B*10<=R*9; half-open bbox",
+    "reference_title": [
+      603,
+      20,
+      1067,
+      53
+    ],
+    "v3_title": [
+      617,
+      28,
+      1051,
+      59
+    ],
+    "candidate_title": [
+      602,
+      20,
+      1065,
+      53
+    ],
+    "reference_subtitle": [
+      650,
+      71,
+      1021,
+      83
+    ],
+    "v3_truthful_caption": [
+      769,
+      93,
+      888,
+      100
+    ],
+    "candidate_truthful_caption": [
+      650,
+      71,
+      1020,
+      83
+    ],
+    "title_width_error_before_after": [
+      30,
+      1
+    ],
+    "title_top_error_before_after": [
+      8,
+      0
+    ],
+    "caption_width_error_before_after": [
+      252,
+      1
+    ],
+    "caption_top_error_before_after": [
+      22,
+      0
+    ]
+  },
+  "original_failures": [],
+  "independent_acceptance": "A41 owns preserved-pixel differential, common-control/focus isolation and same-geometry timing; no A40 claim before that report.",
+  "limitations": [
+    "Native captures use explicit SDL dummy audio/video/software rendering.",
+    "No physical display/DPI, real audio/MIDI, accessibility, audio deadline or literal 1:1 qualification.",
+    "Caption wording remains NOMINAL DRY ORGAN; reference string differs.",
+    "Reused build archives; no clean-rebuild or dependency-complete source-to-binary attestation.",
+    "No build-native operations, shared documentation edits, assets, image generation, commit, push or v4 gallery."
+  ],
+  "reports": {
+    "A40-before-build.log": {
+      "sha256": "4f969f7ecf902dffe603f09beb05187f0f150b15058041ffb9af6df5cd1c925b",
+      "bytes": 10453
+    },
+    "A40-before-material.json": {
+      "sha256": "4d322cf8157b7d436388f2011b12e18336bb98316fd07839f30d1c4d83b81d0e",
+      "bytes": 2505
+    },
+    "A40-before-material.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "A40-candidate-build.log": {
+      "sha256": "826194edb6d5938325c80dbb0a98c6dccc426ab2d4c1eb8a9f59f4f023a1fcc6",
+      "bytes": 1934
+    },
+    "A40-candidate-ctest.log": {
+      "sha256": "bf345c1f33804a27cad77c603809757d91dfd225152634b2023b455a3248592d",
+      "bytes": 15092
+    },
+    "A40-candidate-material.json": {
+      "sha256": "09eade9654bc1ccc604a0ab288e51b2f3476a49bd62afe9a2e21b4d03136b312",
+      "bytes": 10571
+    },
+    "A40-capture-native.py": {
+      "sha256": "8e003fe6b5d2d5cda6c91ef4c9ed071f720ab4dc225028797c61652868b62496",
+      "bytes": 4993
+    },
+    "A40-native-captures.json": {
+      "sha256": "437e454d151f2c06e7817ce364e1e044a4ff6fc61ff93c10d96dfe0b6b5340a4",
+      "bytes": 9283
+    },
+    "A40-native-play-1400x820.json": {
+      "sha256": "96979f18728f4dc65d8d55087ecc362f6d4b739ccd5377eca3b52e50d7110f15",
+      "bytes": 15171
+    },
+    "A40-native-play-1400x820.png": {
+      "sha256": "3a479c8d37a640333d5ddec0288ccb4d39e79c831c9f8ba532d65d1c97ae238a",
+      "bytes": 507453
+    },
+    "A40-native-play-1400x820.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "A40-native-play-1400x820.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "A40-native-play-1672x941.json": {
+      "sha256": "963a0f3234b9348bf59d1cab5b0fd43dc50683821248087905f6473bbe9e531a",
+      "bytes": 14705
+    },
+    "A40-native-play-1672x941.png": {
+      "sha256": "fd66010427e80e51ab656d527c4dc6dfc80f191ebfe045f169e552119a09577b",
+      "bytes": 692015
+    },
+    "A40-native-play-1672x941.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "A40-native-play-1672x941.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

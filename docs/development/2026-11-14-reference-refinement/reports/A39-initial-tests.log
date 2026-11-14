@@ -1,0 +1,57 @@
+test_changed_file_during_open_and_read_is_rejected (__main__.RefinementSessionTests.test_changed_file_during_open_and_read_is_rejected) ... ok
+test_complete_synthetic_fixture_requires_sixty_unique_accepted_notes (__main__.RefinementSessionTests.test_complete_synthetic_fixture_requires_sixty_unique_accepted_notes) ... ok
+test_default_strict_cli_rejects_partial_and_progress_is_explicit (__main__.RefinementSessionTests.test_default_strict_cli_rejects_partial_and_progress_is_explicit) ... ok
+test_duplicate_json_numbers_encoding_and_depth_fail_without_tracebacks (__main__.RefinementSessionTests.test_duplicate_json_numbers_encoding_and_depth_fail_without_tracebacks) ... ok
+test_exact_manifest_schema_numbers_and_identity (__main__.RefinementSessionTests.test_exact_manifest_schema_numbers_and_identity) ... ok
+test_fdopen_failure_releases_the_acquired_descriptor (__main__.RefinementSessionTests.test_fdopen_failure_releases_the_acquired_descriptor) ... ok
+test_fifos_are_rejected_before_open (__main__.RefinementSessionTests.test_fifos_are_rejected_before_open) ... ok
+test_ids_waves_names_duplicates_and_mismatches_are_rejected (__main__.RefinementSessionTests.test_ids_waves_names_duplicates_and_mismatches_are_rejected) ... ok
+test_input_size_limits_are_exact_and_bounded (__main__.RefinementSessionTests.test_input_size_limits_are_exact_and_bounded) ... ok
+test_missing_accepted_note_and_running_optional_evidence (__main__.RefinementSessionTests.test_missing_accepted_note_and_running_optional_evidence) ... ok
+test_nonregular_files_and_symlink_leaves_cannot_be_evidence (__main__.RefinementSessionTests.test_nonregular_files_and_symlink_leaves_cannot_be_evidence) ... ok
+test_note_hash_changes_and_raw_crlf_identity (__main__.RefinementSessionTests.test_note_hash_changes_and_raw_crlf_identity) ... ok
+test_other_sessions_unassigned_notes_and_row_order_do_not_add_workers (__main__.RefinementSessionTests.test_other_sessions_unassigned_notes_and_row_order_do_not_add_workers) ... ok
+test_progress_reports_exact_hashes_and_never_mutates_inputs (__main__.RefinementSessionTests.test_progress_reports_exact_hashes_and_never_mutates_inputs) ... ok
+test_row_types_required_fields_and_no_planned_placeholders (__main__.RefinementSessionTests.test_row_types_required_fields_and_no_planned_placeholders) ... ok
+test_safe_session_note_paths_are_required_in_both_modes (__main__.RefinementSessionTests.test_safe_session_note_paths_are_required_in_both_modes) ... 
+  test_safe_session_note_paths_are_required_in_both_modes (__main__.RefinementSessionTests.test_safe_session_note_paths_are_required_in_both_modes) (index=0, value='a\x7f.md') ... FAIL
+  test_safe_session_note_paths_are_required_in_both_modes (__main__.RefinementSessionTests.test_safe_session_note_paths_are_required_in_both_modes) (index=6, value='a\x7f.md') ... FAIL
+test_structural_floor_excludes_code_comments_repetition_and_placeholders (__main__.RefinementSessionTests.test_structural_floor_excludes_code_comments_repetition_and_placeholders) ... ok
+test_symlinked_parent_and_repository_root_are_rejected (__main__.RefinementSessionTests.test_symlinked_parent_and_repository_root_are_rejected) ... ok
+test_text_and_hash_types_are_bounded_and_not_placeholder_values (__main__.RefinementSessionTests.test_text_and_hash_types_are_bounded_and_not_placeholder_values) ... FAIL
+test_windows_reparse_metadata_rejects_root_parent_and_leaf (__main__.RefinementSessionTests.test_windows_reparse_metadata_rejects_root_parent_and_leaf) ... ok
+
+======================================================================
+FAIL: test_safe_session_note_paths_are_required_in_both_modes (__main__.RefinementSessionTests.test_safe_session_note_paths_are_required_in_both_modes) (index=0, value='a\x7f.md')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/test_refinement_session.py", line 319, in test_safe_session_note_paths_are_required_in_both_modes
+    self.assert_error(self.check(), "note_path")
+  File "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/test_refinement_session.py", line 99, in assert_error
+    self.assertIn(code, {error["code"] for error in report["errors"]}, report["errors"])
+AssertionError: 'note_path' not found in {'manifest_read'} : [{'code': 'manifest_read', 'location': 'docs/development/2026-11-14-reference-refinement/assignments.json', 'message': 'text contains a forbidden control character'}]
+
+======================================================================
+FAIL: test_safe_session_note_paths_are_required_in_both_modes (__main__.RefinementSessionTests.test_safe_session_note_paths_are_required_in_both_modes) (index=6, value='a\x7f.md')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/test_refinement_session.py", line 319, in test_safe_session_note_paths_are_required_in_both_modes
+    self.assert_error(self.check(), "note_path")
+  File "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/test_refinement_session.py", line 99, in assert_error
+    self.assertIn(code, {error["code"] for error in report["errors"]}, report["errors"])
+AssertionError: 'note_path' not found in {'manifest_read'} : [{'code': 'manifest_read', 'location': 'docs/development/2026-11-14-reference-refinement/assignments.json', 'message': 'text contains a forbidden control character'}]
+
+======================================================================
+FAIL: test_text_and_hash_types_are_bounded_and_not_placeholder_values (__main__.RefinementSessionTests.test_text_and_hash_types_are_bounded_and_not_placeholder_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/test_refinement_session.py", line 249, in test_text_and_hash_types_are_bounded_and_not_placeholder_values
+    self.assert_error(self.check(), "text_required")
+  File "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/test_refinement_session.py", line 99, in assert_error
+    self.assertIn(code, {error["code"] for error in report["errors"]}, report["errors"])
+AssertionError: 'text_required' not found in {'manifest_read'} : [{'code': 'manifest_read', 'location': 'docs/development/2026-11-14-reference-refinement/assignments.json', 'message': 'text contains a forbidden control character'}]
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.104s
+
+FAILED (failures=3)

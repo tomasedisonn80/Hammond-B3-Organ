@@ -1101,17 +1101,43 @@ void paint_header(Drawing& drawing, const UiLayout& layout) {
         title_right = middle + half_width;
     }
     constexpr std::string_view title = "TONEWHEEL ATLAS";
-    float size = layout.show_cabinet ? 40.0F : 28.0F;
+    const bool reference_header = layout.sidebar_pedals && layout.presentation == UiPresentation::Dimensional;
+    float size = reference_header ? 42.75F : (layout.show_cabinet ? 40.0F : 28.0F);
     const float natural_width = drawing.text_width(title, size, TextFace::Serif);
     if (natural_width > title_right - title_left) size *= (title_right - title_left) / natural_width;
     const float width = drawing.text_width(title, size, TextFace::Serif);
     const float desired_x = (layout.width - width) / 2.0F;
     const float x = std::clamp(desired_x, title_left, std::max(title_left, title_right - width));
-    const float y = layout.header.y + (layout.show_cabinet ? 4.0F : 8.0F);
+    const float y = layout.header.y + (reference_header ? -4.5F : (layout.show_cabinet ? 4.0F : 8.0F));
     drawing.text(title, x + 1.0F, y + 2.0F, size, {4, 5, 4}, TextFace::Serif);
     drawing.text(title, x, y, size, kUiBrass, TextFace::Serif);
-    centered(drawing, "NOMINAL DRY ORGAN", {title_left, layout.header.y + layout.header.height - 29.0F,
-             std::max(0.0F, flat_left - title_left - 10.0F), 22.0F}, 11.0F, kUiIvory);
+    if (reference_header) {
+        // Match the reference's two-line hierarchy with the truthful caption.
+        // Its fixed seventeen glyphs fit symmetrically before Flat: reduce
+        // tracking first, then size, without allocating or dropping letters.
+        constexpr std::string_view caption = "NOMINAL DRY ORGAN";
+        constexpr float gaps = static_cast<float>(caption.size() - 1);
+        const float middle = layout.width / 2.0F;
+        const float half_width = std::max(0.0F, std::min(middle - title_left,
+            std::min(title_right, flat_left - 10.0F) - middle));
+        const float caption_width = std::min(374.0F, 2.0F * half_width);
+        float caption_size = 17.0F;
+        float natural_caption_width = drawing.text_width(caption, caption_size);
+        const float tracking = std::max(0.0F, (caption_width - natural_caption_width) / gaps);
+        if (natural_caption_width > caption_width) {
+            caption_size *= caption_width / natural_caption_width;
+            natural_caption_width = drawing.text_width(caption, caption_size);
+        }
+        float cursor = middle - (natural_caption_width + gaps * tracking) / 2.0F;
+        for (std::size_t index = 0; index < caption.size(); ++index) {
+            const auto glyph = caption.substr(index, 1);
+            drawing.text(glyph, cursor, layout.header.y + 51.5F, caption_size, kUiBrass);
+            cursor += drawing.text_width(glyph, caption_size) + tracking;
+        }
+    } else {
+        centered(drawing, "NOMINAL DRY ORGAN", {title_left, layout.header.y + layout.header.height - 29.0F,
+                 std::max(0.0F, flat_left - title_left - 10.0F), 22.0F}, 11.0F, kUiIvory);
+    }
 }
 
 [[nodiscard]] std::string focused_control_caption(const UiModel& model) {

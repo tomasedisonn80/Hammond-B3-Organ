@@ -1,0 +1,628 @@
+{
+  "schema": "a41-header-final-acceptance-v1",
+  "completed_utc": "2026-11-14T21:54:28.887606+00:00",
+  "worker": "/root/w07_a41_header_independent_acceptance",
+  "accepted_scope": "Narrow sidebar_pedals && Dimensional header typography only",
+  "baseline_commit": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+  "candidate_instrument_view_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+  "binary_identities": [
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/raster-probe",
+      "sha256": "d0ce63c7cdb8c08bf1d4c6a7000ad741b8421fe77cf6be5637ecd52824d96e94",
+      "bytes": 3418992
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/timing-before",
+      "sha256": "0b9acdc44b65b0a332c0370440b8b42698551b7e14fac47b2e42b3acd08a4a21",
+      "bytes": 3302848
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/timing-after",
+      "sha256": "15e008ae3aa4456cc5d10e7df67b970c426f892a943764109c2727bbc59812ab",
+      "bytes": 3306920
+    }
+  ],
+  "raster_summary": {
+    "kind": "summary",
+    "checks": 1897,
+    "failures": 0,
+    "full_pairs": 156,
+    "focus_pairs": 120,
+    "clip_pairs": 12,
+    "compared_pixels": 352552950
+  },
+  "timing_observations": [
+    {
+      "observation": "initial",
+      "runs": [
+        {
+          "label": "before",
+          "start_utc": "2026-11-14T21:45:15.817908+00:00",
+          "end_utc": "2026-11-14T21:45:51.642814+00:00",
+          "exit_code": 0,
+          "total": {
+            "median_ms": 106.769578,
+            "p95_ms": 117.952085,
+            "minimum_ms": 102.568253,
+            "maximum_ms": 172.639245
+          },
+          "paint": {
+            "median_ms": 106.768757,
+            "p95_ms": 117.951384,
+            "minimum_ms": 102.567653,
+            "maximum_ms": 172.638634
+          },
+          "final_flush_present": {
+            "median_ms": 0.000581,
+            "p95_ms": 0.000831,
+            "minimum_ms": 0.00038,
+            "maximum_ms": 0.078496
+          },
+          "wall_seconds": 35.8249845270002,
+          "user_seconds": 35.723717,
+          "system_seconds": 0.02037,
+          "involuntary_context_switches": 252,
+          "fifty_sample_groups": [
+            {
+              "samples_one_based": [
+                1,
+                50
+              ],
+              "median_ms": 108.078304,
+              "p95_ms": 118.79565
+            },
+            {
+              "samples_one_based": [
+                51,
+                100
+              ],
+              "median_ms": 105.7511025,
+              "p95_ms": 117.952085
+            },
+            {
+              "samples_one_based": [
+                101,
+                150
+              ],
+              "median_ms": 105.2854545,
+              "p95_ms": 110.556106
+            },
+            {
+              "samples_one_based": [
+                151,
+                200
+              ],
+              "median_ms": 105.7002815,
+              "p95_ms": 112.235184
+            },
+            {
+              "samples_one_based": [
+                201,
+                250
+              ],
+              "median_ms": 109.3334965,
+              "p95_ms": 126.188029
+            },
+            {
+              "samples_one_based": [
+                251,
+                300
+              ],
+              "median_ms": 106.354605,
+              "p95_ms": 114.310509
+            }
+          ]
+        },
+        {
+          "label": "after",
+          "start_utc": "2026-11-14T21:45:51.643891+00:00",
+          "end_utc": "2026-11-14T21:46:27.988917+00:00",
+          "exit_code": 0,
+          "total": {
+            "median_ms": 106.520051,
+            "p95_ms": 136.904572,
+            "minimum_ms": 102.620832,
+            "maximum_ms": 172.989771
+          },
+          "paint": {
+            "median_ms": 106.519465,
+            "p95_ms": 136.904002,
+            "minimum_ms": 102.620141,
+            "maximum_ms": 172.98917
+          },
+          "final_flush_present": {
+            "median_ms": 0.000581,
+            "p95_ms": 0.000832,
+            "minimum_ms": 0.000311,
+            "maximum_ms": 0.000972
+          },
+          "wall_seconds": 36.3450527039995,
+          "user_seconds": 36.150514,
+          "system_seconds": 0.030504999999999997,
+          "involuntary_context_switches": 889,
+          "fifty_sample_groups": [
+            {
+              "samples_one_based": [
+                1,
+                50
+              ],
+              "median_ms": 104.206142,
+              "p95_ms": 115.674382
+            },
+            {
+              "samples_one_based": [
+                51,
+                100
+              ],
+              "median_ms": 108.5704245,
+              "p95_ms": 143.690715
+            },
+            {
+              "samples_one_based": [
+                101,
+                150
+              ],
+              "median_ms": 106.497554,
+              "p95_ms": 142.496356
+            },
+            {
+              "samples_one_based": [
+                151,
+                200
+              ],
+              "median_ms": 106.8625775,
+              "p95_ms": 139.81948
+            },
+            {
+              "samples_one_based": [
+                201,
+                250
+              ],
+              "median_ms": 106.2896525,
+              "p95_ms": 114.398197
+            },
+            {
+              "samples_one_based": [
+                251,
+                300
+              ],
+              "median_ms": 105.738784,
+              "p95_ms": 135.368187
+            }
+          ]
+        }
+      ],
+      "p95_change_ms": 18.952487000000005,
+      "p95_change_percent": 16.067954203607343,
+      "investigation_trigger": true
+    },
+    {
+      "observation": "sole_reverse_repeat",
+      "runs": [
+        {
+          "label": "after",
+          "start_utc": "2026-11-14T21:47:33.691079+00:00",
+          "end_utc": "2026-11-14T21:48:09.909248+00:00",
+          "exit_code": 0,
+          "total": {
+            "median_ms": 107.107163,
+            "p95_ms": 127.329805,
+            "minimum_ms": 102.502611,
+            "maximum_ms": 160.503999
+          },
+          "paint": {
+            "median_ms": 107.106606,
+            "p95_ms": 127.329013,
+            "minimum_ms": 102.50206,
+            "maximum_ms": 160.503408
+          },
+          "final_flush_present": {
+            "median_ms": 0.000471,
+            "p95_ms": 0.000721,
+            "minimum_ms": 0.0003,
+            "maximum_ms": 0.001162
+          },
+          "wall_seconds": 36.218203348000316,
+          "user_seconds": 36.000614999999996,
+          "system_seconds": 0.039282,
+          "involuntary_context_switches": 1378,
+          "fifty_sample_groups": [
+            {
+              "samples_one_based": [
+                1,
+                50
+              ],
+              "median_ms": 109.3959305,
+              "p95_ms": 153.311798
+            },
+            {
+              "samples_one_based": [
+                51,
+                100
+              ],
+              "median_ms": 105.1151,
+              "p95_ms": 125.954115
+            },
+            {
+              "samples_one_based": [
+                101,
+                150
+              ],
+              "median_ms": 109.64105,
+              "p95_ms": 128.603123
+            },
+            {
+              "samples_one_based": [
+                151,
+                200
+              ],
+              "median_ms": 107.59282,
+              "p95_ms": 134.487447
+            },
+            {
+              "samples_one_based": [
+                201,
+                250
+              ],
+              "median_ms": 106.1023135,
+              "p95_ms": 125.03149
+            },
+            {
+              "samples_one_based": [
+                251,
+                300
+              ],
+              "median_ms": 105.9549615,
+              "p95_ms": 118.341929
+            }
+          ]
+        },
+        {
+          "label": "before",
+          "start_utc": "2026-11-14T21:48:09.911555+00:00",
+          "end_utc": "2026-11-14T21:48:46.801037+00:00",
+          "exit_code": 0,
+          "total": {
+            "median_ms": 108.1479,
+            "p95_ms": 132.594383,
+            "minimum_ms": 102.797224,
+            "maximum_ms": 168.07575
+          },
+          "paint": {
+            "median_ms": 108.147344,
+            "p95_ms": 132.593782,
+            "minimum_ms": 102.796343,
+            "maximum_ms": 168.07533
+          },
+          "final_flush_present": {
+            "median_ms": 0.000561,
+            "p95_ms": 0.000771,
+            "minimum_ms": 0.000361,
+            "maximum_ms": 0.001212
+          },
+          "wall_seconds": 36.889492817000246,
+          "user_seconds": 36.673201999999996,
+          "system_seconds": 0.028087,
+          "involuntary_context_switches": 923,
+          "fifty_sample_groups": [
+            {
+              "samples_one_based": [
+                1,
+                50
+              ],
+              "median_ms": 105.9886895,
+              "p95_ms": 119.729265
+            },
+            {
+              "samples_one_based": [
+                51,
+                100
+              ],
+              "median_ms": 107.5276265,
+              "p95_ms": 121.592772
+            },
+            {
+              "samples_one_based": [
+                101,
+                150
+              ],
+              "median_ms": 107.368849,
+              "p95_ms": 127.946615
+            },
+            {
+              "samples_one_based": [
+                151,
+                200
+              ],
+              "median_ms": 108.943071,
+              "p95_ms": 127.831099
+            },
+            {
+              "samples_one_based": [
+                201,
+                250
+              ],
+              "median_ms": 108.0395455,
+              "p95_ms": 130.142404
+            },
+            {
+              "samples_one_based": [
+                251,
+                300
+              ],
+              "median_ms": 114.9289075,
+              "p95_ms": 146.045934
+            }
+          ]
+        }
+      ],
+      "p95_change_ms": -5.264578,
+      "p95_change_percent": -3.9704381745944697,
+      "investigation_trigger": false
+    }
+  ],
+  "timing_interpretation": "Initial combined threshold trigger retained; sole reversed repeat did not reproduce it. No cause or statistical equivalence is established; no further runs authorized or executed.",
+  "host_scope": "Observed root/sibling workers paused during measurements. Another waveform session existed in a separate checkout; exclusive machine ownership was neither established nor claimed.",
+  "process_integrity": "Both initial processes and both sole-repeat processes exited 0 with 300 measured draws each. Root observed interrupted agent metadata before release receipt; existing exec session 57389 was polled to completion. No duplicate repeat or restarted native process was launched.",
+  "platform_observed_after_measurement": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "uname": [
+      "Linux",
+      "e15497d83e17",
+      "6.18.57",
+      "#1 SMP Tue Oct 20 21:56:04 UTC 2026",
+      "x86_64",
+      ""
+    ],
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "cpu_model": "AMD EPYC 9V74 80-Core Processor"
+  },
+  "all_frozen_inputs_unchanged_after": [
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/raster-probe",
+      "sha256": "d0ce63c7cdb8c08bf1d4c6a7000ad741b8421fe77cf6be5637ecd52824d96e94",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/timing-before",
+      "sha256": "0b9acdc44b65b0a332c0370440b8b42698551b7e14fac47b2e42b3acd08a4a21",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/timing-after",
+      "sha256": "15e008ae3aa4456cc5d10e7df67b970c426f892a943764109c2727bbc59812ab",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/libhammond_standalone_drawing.a",
+      "sha256": "06cde97b0ae59acac7b44437df920b3d12773b20004abedcda101d8da9a7ed36",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/libhammond_standalone_support.a",
+      "sha256": "14cdc87f1119b7d7bda9a0adc79a60bfdfca91e48a799d0c23424596c52311f2",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/libSDL2.a",
+      "sha256": "55ccb40daeebf75e429c7d8c693cdd5b4e2207a00393e35c66be992e752b03ed",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a41-header-acceptance/libhammond_core.a",
+      "sha256": "3f6773440391f5488afd0531b18f59a9169a97862ea68912a33c2ac3a8d4d172",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/Drawing.h",
+      "sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/InspectionModel.h",
+      "sha256": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/InstrumentView.h",
+      "sha256": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/Session.h",
+      "sha256": "8c26342cafcad2022aabba273cdc8d22432fa3c450819f238fa8d546bc22528b",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/UiModel.h",
+      "sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/ConsoleModel.h",
+      "sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/ContactBank.h",
+      "sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/ControlState.h",
+      "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/Engine.h",
+      "sha256": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/FixedRegistration.h",
+      "sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/NoteOwnership.h",
+      "sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/ParameterBridge.h",
+      "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/PedalNoteOwnership.h",
+      "sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/PedalRouting.h",
+      "sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/PedalVoice.h",
+      "sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/Percussion.h",
+      "sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/PerformanceInput.h",
+      "sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/Profile.h",
+      "sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/TonewheelBank.h",
+      "sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/Types.h",
+      "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/benchmarks/standalone_material_timing.cpp",
+      "sha256": "58f6c7e0a7d940c9732b955df3b659cc84f45f4a3ac1dbb21abcc3d42d05b43a",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/UiModel.cpp",
+      "sha256": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/Drawing.cpp",
+      "sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/FontData.h",
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/InspectionModel.cpp",
+      "sha256": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A41-raster-probe.cpp",
+      "sha256": "c8f65596468822cd5336faedf7c292e7b72957ec8a020bfe1e1d634398d27df2",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/benchmarks/standalone_material_timing.cpp",
+      "sha256": "58f6c7e0a7d940c9732b955df3b659cc84f45f4a3ac1dbb21abcc3d42d05b43a",
+      "unchanged": true
+    },
+    {
+      "path": "/usr/bin/x86_64-linux-gnu-g++-14",
+      "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d",
+      "unchanged": true
+    }
+  ],
+  "historical_galleries_preserved": [
+    "examples/demos/standalone-interface-preview-v1",
+    "examples/demos/standalone-interface-preview-v2",
+    "examples/demos/standalone-interface-preview-v3"
+  ],
+  "historical_gallery_diff_stat": "",
+  "final_runner_sha256": "e91df48718827c6f5f42d3de3641d23216282fab240585e9c8575fefbcf37604",
+  "runner_change": "The final runner adds only the separately authorized repeat handler and dispatch after the initial build/raster/pair. Historical build runner hash remains its actual initial identity.",
+  "limits": [
+    "Native software painter acceptance; physical display/DPI, real audio/MIDI devices and native accessibility were not exercised.",
+    "Timing is paint plus explicit flush and software surface present; no FPS, audio latency, deadline or cross-device claim.",
+    "All 156 full pairs and 120 focus strips cover the finite stated dimensions; logical width 8192 is exercised only in a bounded clipped strip.",
+    "The generated reference has different subtitle/control inventory and remaining deck/key/material differences; literal whole-interface 1:1 remains unmet."
+  ],
+  "evidence": [
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-build.json",
+      "sha256": "fc9f015691eaf4d0218c6352541211bf3916bdc9101739cbfbd4c2ee75602c40",
+      "bytes": 20530
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-raster-acceptance.json",
+      "sha256": "9d62bda81b2bb1b6e4ca554808fabb440c451212f70cb92f8a8157396e809cec",
+      "bytes": 7098
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-raster-results.jsonl",
+      "sha256": "bccde5aa9e34f91e8f28cbae5e942c16f4bbfb608ed80e8fa34ea5e42827e1b5",
+      "bytes": 110555
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-raster-run.json",
+      "sha256": "33d59359035a996f53179739470150c3b033f74661fb099dc57074e8fd6010fd",
+      "bytes": 500
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-minimum-ink-review.json",
+      "sha256": "2bc336e141faa899133addf3cd0720eadcefcbc2832a12a0302a7f814d694d7c",
+      "bytes": 2448
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-timing.json",
+      "sha256": "d8082e3004289f49a7b5c60c31311167f021137f69db3c99efd8c0db076fe32b",
+      "bytes": 18908
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-timing-reverse-repeat.json",
+      "sha256": "b98a23bd88d377430017b3e9dd55be69c6fe1baaccb768711d921fa9d754476c",
+      "bytes": 18740
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-raster-probe.cpp",
+      "sha256": "c8f65596468822cd5336faedf7c292e7b72957ec8a020bfe1e1d634398d27df2",
+      "bytes": 17863
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-run-acceptance.py",
+      "sha256": "e91df48718827c6f5f42d3de3641d23216282fab240585e9c8575fefbcf37604",
+      "bytes": 17229
+    }
+  ]
+}

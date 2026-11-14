@@ -36,6 +36,7 @@ struct Counts {
 std::array<long double, 2> minimum_contrast{
     std::numeric_limits<long double>::infinity(), std::numeric_limits<long double>::infinity()};
 std::vector<std::string> overlay_results;
+std::vector<std::string> header_results;
 
 void require(bool condition, std::string_view detail) {
     if (!condition) throw std::runtime_error(std::string(detail) + ": " + SDL_GetError());
@@ -561,10 +562,120 @@ void overlays() {
             }
     }
 }
+
+struct HeaderInk {
+    UiRect bounds{};
+    std::size_t pixels{}, letters{}, outside_header{}, on_controls{};
+};
+
+HeaderInk header_ink(const Frame& frame, const UiLayout& layout, UiRect region) {
+    HeaderInk result;
+    int left = frame.width, right = 0, top = frame.height, bottom = 0;
+    std::vector<bool> columns(static_cast<std::size_t>(frame.width));
+    for (int y = 0; y < frame.height; ++y)
+        for (int x = 0; x < frame.width; ++x) {
+            const auto p = logical(frame.transform, x, y);
+            const auto pixel = frame.pixels[frame.offset(x, y)];
+            // The independent reference review's warm-light mask, applied to
+            // native pixels without image resampling or production metrics.
+            if (!inside(region, p) || pixel[0] < 130 || pixel[1] < 105 ||
+                pixel[0] < pixel[1] || pixel[2] * 10 > pixel[0] * 9) continue;
+            ++result.pixels;
+            left = std::min(left, x); right = std::max(right, x + 1);
+            top = std::min(top, y); bottom = std::max(bottom, y + 1);
+            columns[static_cast<std::size_t>(x)] = true;
+            if (!inside(layout.header, p)) ++result.outside_header;
+            for (std::size_t index = 0; index < layout.control_count; ++index)
+                if (ui_control_visible(layout, layout.controls[index].id) &&
+                    inside(layout.controls[index].bounds, p)) ++result.on_controls;
+        }
+    bool previous = false;
+    for (const bool ink : columns) {
+        if (ink && !previous) ++result.letters;
+        previous = ink;
+    }
+    if (result.pixels != 0) {
+        result.bounds = {(static_cast<float>(left) - static_cast<float>(frame.transform.viewport.x)) / frame.transform.x,
+                         (static_cast<float>(top) - static_cast<float>(frame.transform.viewport.y)) / frame.transform.y,
+                         static_cast<float>(right - left) / frame.transform.x,
+                         static_cast<float>(bottom - top) / frame.transform.y};
+    }
+    return result;
+}
+
+void reference_headers() {
+    std::size_t complete = 0, clipped = 0;
+    for (const auto size : {std::array<int, 2>{1400, 820}, std::array<int, 2>{1672, 941}})
+        for (const float scale : {1.0F, 1.25F, 1.5F, 2.0F}) {
+            const float width = static_cast<float>(size[0]);
+            const int viewport_width = static_cast<int>(std::ceil(width * scale));
+            const int surface_width = std::min(1920, viewport_width + 20);
+            Target target(surface_width, static_cast<int>(std::ceil(128.0F * scale)) + 14);
+            const SDL_Rect viewport{(surface_width - viewport_width) / 2, 7, viewport_width,
+                static_cast<int>(std::ceil(static_cast<float>(size[1]) * scale))};
+            target.configure(scale, viewport);
+            const UiRect title_region{width / 2.0F - 260.0F, 16.0F, 520.0F, 46.0F};
+            const UiRect caption_region{width / 2.0F - 220.0F, 64.0F, 440.0F, 24.0F};
+            auto model = model_at(size[0], size[1], UiPresentation::Dimensional);
+            for (const auto workspace : {UiWorkspace::Play, UiWorkspace::Rotary, UiWorkspace::Service}) {
+                require(model.set_workspace(workspace), "select reference-header workspace");
+                const auto frame = target.paint(model);
+                const auto title = header_ink(frame, model.layout(), title_region);
+                const auto caption = header_ink(frame, model.layout(), caption_region);
+                const auto& t = title.bounds;
+                const auto& c = caption.bounds;
+                // Literal targets come from the original 1672x941 reference;
+                // the minimum sidebar preserves the same size and hierarchy.
+                check(title.pixels > 1000 && std::abs(t.width - 464.0F) <= 3.0F &&
+                      std::abs(t.height - 33.0F) <= 1.0F && std::abs(t.y - 20.0F) <= 1.0F &&
+                      std::abs(t.x + t.width / 2.0F - (width / 2.0F - 1.0F)) <= 2.0F,
+                      "wide title ink meets independently measured reference size/top/center");
+                check(caption.pixels > 300 && std::abs(c.width - 371.0F) <= 4.0F &&
+                      std::abs(c.height - 12.0F) <= 1.0F && std::abs(c.y - 71.0F) <= 1.0F &&
+                      std::abs(c.x + c.width / 2.0F - (width / 2.0F - 0.5F)) <= 2.0F,
+                      "truthful caption ink meets independently measured reference hierarchy");
+                check(caption.letters == 15 && title.outside_header == 0 && caption.outside_header == 0 &&
+                      title.on_controls == 0 && caption.on_controls == 0 &&
+                      t.y + t.height < c.y,
+                      "all fifteen caption letters remain distinct; both lines fit apart from controls");
+                const auto flat = std::find_if(model.layout().controls.begin(),
+                    model.layout().controls.begin() + static_cast<std::ptrdiff_t>(model.layout().control_count),
+                    [](const UiControlGeometry& control) { return control.id.kind == UiControlKind::Presentation; });
+                require(flat != model.layout().controls.begin() + static_cast<std::ptrdiff_t>(model.layout().control_count),
+                        "header retains Flat control");
+                check(c.x + c.width <= flat->bounds.x - 10.0F,
+                      "caption retains at least ten logical pixels before Flat");
+                std::ostringstream row;
+                row << "{\"size\":[" << size[0] << ',' << size[1] << "],\"scale\":" << scale
+                    << ",\"workspace\":" << static_cast<unsigned>(workspace)
+                    << ",\"title\":[" << t.x << ',' << t.y << ',' << t.width << ',' << t.height
+                    << "],\"caption\":[" << c.x << ',' << c.y << ',' << c.width << ',' << c.height
+                    << "],\"caption_letters\":" << caption.letters << '}';
+                header_results.push_back(row.str());
+                ++complete;
+            }
+            // Cut through both title and caption with a caller-owned clip.
+            // Target::paint also checks every pixel outside that physical clip.
+            const SDL_Rect cut{static_cast<int>(width * scale / 2.0F),
+                static_cast<int>(25.0F * scale), static_cast<int>(260.0F * scale),
+                static_cast<int>(60.0F * scale)};
+            target.configure(scale, viewport, &cut);
+            const auto frame = target.paint(model);
+            const auto title = header_ink(frame, model.layout(), title_region);
+            const auto caption = header_ink(frame, model.layout(), caption_region);
+            check(title.pixels > 300 && caption.pixels > 100 &&
+                  title.bounds.x >= width / 2.0F && caption.bounds.x >= width / 2.0F &&
+                  title.bounds.y >= 24.0F && title.outside_header == 0 && caption.outside_header == 0,
+                  "fractional clipped header retains visible ink only on the surviving halves");
+            ++clipped;
+        }
+    check(complete == 24 && clipped == 8, "all header sizes/workspaces/scales and cut clips executed");
+}
 } // namespace
 
 int main() {
     SDL_SetMainReady();
+    std::size_t legacy_checks = 0;
     try {
         require(SDL_Init(0) == 0, "initialize SDL without window/audio subsystems");
         key_matrix(960, 700, false);
@@ -577,6 +688,9 @@ int main() {
               counts.corners == 8 && counts.cut_clips == 4 && counts.status_frames == 4 &&
               counts.overlay_panels == 12 && counts.overlay_buttons == 60,
               "all focused material acceptance cases executed");
+        legacy_checks = counts.checks;
+        check(legacy_checks == 901, "all original 901 material assertions remain executed");
+        reference_headers();
         SDL_Quit();
     } catch (const std::exception& error) {
         std::cerr << "Material acceptance setup failed: " << error.what() << '\n';
@@ -596,6 +710,10 @@ int main() {
         << ",\"backend\":\"SDL software surface; no window/audio\",\"overlays\":[";
     for (std::size_t index = 0; index < overlay_results.size(); ++index)
         std::cout << (index == 0 ? "" : ",") << overlay_results[index];
+    std::cout << "],\"legacy_checks\":" << legacy_checks
+              << ",\"header_checks\":" << counts.checks - legacy_checks << ",\"headers\":[";
+    for (std::size_t index = 0; index < header_results.size(); ++index)
+        std::cout << (index == 0 ? "" : ",") << header_results[index];
     std::cout << "]}\n";
     return counts.failures == 0 ? EXIT_SUCCESS : EXIT_FAILURE;
 }

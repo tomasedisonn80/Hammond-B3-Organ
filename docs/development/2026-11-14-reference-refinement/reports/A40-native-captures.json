@@ -1,0 +1,303 @@
+{
+  "source_sha256": {
+    "apps/standalone/InstrumentView.cpp": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+    "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": "66963058652bd0673a043e03f342c94d71fd3c07e2f37a0d1d94093cc4d4a134"
+  },
+  "executable": {
+    "path": "/workspace/scratch/1bb6ee17ad7e/build-desktop/apps/standalone/hammond_standalone",
+    "bytes": 3860368,
+    "sha256": "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f"
+  },
+  "pillow": "13.0.0",
+  "base_head": "f9c11a498ecd88886349415205fc5dccc627033e",
+  "input_state": {
+    "path": "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/controls.b3controls",
+    "bytes": 456,
+    "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+  },
+  "input_script": {
+    "path": "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/play-dimensional.b3uireplay",
+    "bytes": 1690,
+    "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+  },
+  "cases": [
+    {
+      "size": [
+        1672,
+        941
+      ],
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-desktop/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/A40-native-play-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A40-native-play-1672x941.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.4306639529995664,
+      "validated_native_endpoint": {
+        "passed": true,
+        "actual_painted_view": {
+          "elapsed_ms": 1861,
+          "rendered_image": 27,
+          "workspace": "play",
+          "presentation": "dimensional",
+          "overlay": "none",
+          "window_width": 1672,
+          "window_height": 941,
+          "inspection": {
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current",
+            "controls_pending": false,
+            "frame_clock": 86528,
+            "publication_revision": 342
+          },
+          "held_targets": {
+            "upper": 2,
+            "lower": 1,
+            "pedals": 1
+          },
+          "pointer_capture": {
+            "sdl_captured": false,
+            "ui_captured": false,
+            "attempts": 0,
+            "successes": 0,
+            "losses": 0,
+            "release_calls": 0
+          }
+        },
+        "callbacks": 179,
+        "rendered_frames": 91648,
+        "ui_events": 66,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "live_edit": {
+          "target": "Upper B 16-foot retained drawbar",
+          "before": 7,
+          "after": 8
+        },
+        "complete_control_state_checked": true,
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "midi_source": "none"
+      },
+      "bmp": {
+        "path": "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/A40-native-play-1672x941.bmp",
+        "bytes": 6293530,
+        "sha256": "495159e9ed3200146ffeb4d8dca8a9bd36aa31b579f3fd06df5a79637610d32c"
+      },
+      "png": {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A40-native-play-1672x941.png",
+        "bytes": 692015,
+        "sha256": "fd66010427e80e51ab656d527c4dc6dfc80f191ebfe045f169e552119a09577b"
+      },
+      "diagnostics": {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A40-native-play-1672x941.json",
+        "bytes": 14705,
+        "sha256": "963a0f3234b9348bf59d1cab5b0fd43dc50683821248087905f6473bbe9e531a"
+      },
+      "decoded_rgba8_sha256": "7558bb24c7ed18c2d40f5e07a83714c5075a46e84219400291336540c327436f",
+      "title": {
+        "roi": [
+          595,
+          10,
+          1081,
+          65
+        ],
+        "bbox_half_open": [
+          602,
+          20,
+          1065,
+          53
+        ],
+        "width": 463,
+        "height": 33,
+        "ink_pixels": 3685
+      },
+      "caption": {
+        "roi": [
+          640,
+          65,
+          1030,
+          105
+        ],
+        "bbox_half_open": [
+          650,
+          71,
+          1020,
+          83
+        ],
+        "width": 370,
+        "height": 12,
+        "ink_pixels": 747
+      }
+    },
+    {
+      "size": [
+        1400,
+        820
+      ],
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-desktop/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1400",
+        "--height",
+        "820",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/A40-native-play-1400x820.bmp",
+        "--diagnostics",
+        "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A40-native-play-1400x820.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.1754913099994155,
+      "validated_native_endpoint": {
+        "passed": true,
+        "actual_painted_view": {
+          "elapsed_ms": 1837,
+          "rendered_image": 34,
+          "workspace": "play",
+          "presentation": "dimensional",
+          "overlay": "none",
+          "window_width": 1400,
+          "window_height": 820,
+          "inspection": {
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current",
+            "controls_pending": false,
+            "frame_clock": 85504,
+            "publication_revision": 338
+          },
+          "held_targets": {
+            "upper": 2,
+            "lower": 1,
+            "pedals": 1
+          },
+          "pointer_capture": {
+            "sdl_captured": false,
+            "ui_captured": false,
+            "attempts": 0,
+            "successes": 0,
+            "losses": 0,
+            "release_calls": 0
+          }
+        },
+        "callbacks": 175,
+        "rendered_frames": 89600,
+        "ui_events": 66,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "live_edit": {
+          "target": "Upper B 16-foot retained drawbar",
+          "before": 7,
+          "after": 8
+        },
+        "complete_control_state_checked": true,
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "midi_source": "none"
+      },
+      "bmp": {
+        "path": "/workspace/scratch/1bb6ee17ad7e/a40-header/captures/A40-native-play-1400x820.bmp",
+        "bytes": 4592122,
+        "sha256": "0a8f8ff3056ee59bd4377b6d931322da6c207403d0d774a1f4345cf4cd250f80"
+      },
+      "png": {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A40-native-play-1400x820.png",
+        "bytes": 507453,
+        "sha256": "3a479c8d37a640333d5ddec0288ccb4d39e79c831c9f8ba532d65d1c97ae238a"
+      },
+      "diagnostics": {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A40-native-play-1400x820.json",
+        "bytes": 15171,
+        "sha256": "96979f18728f4dc65d8d55087ecc362f6d4b739ccd5377eca3b52e50d7110f15"
+      },
+      "decoded_rgba8_sha256": "c3033cae05329dfd7309ec5eb1c9b89e5dd43462d64a08514698dc5cbf53359d",
+      "title": {
+        "roi": [
+          459,
+          10,
+          945,
+          65
+        ],
+        "bbox_half_open": [
+          466,
+          20,
+          929,
+          53
+        ],
+        "width": 463,
+        "height": 33,
+        "ink_pixels": 3684
+      },
+      "caption": {
+        "roi": [
+          504,
+          65,
+          894,
+          105
+        ],
+        "bbox_half_open": [
+          514,
+          71,
+          884,
+          83
+        ],
+        "width": 370,
+        "height": 12,
+        "ink_pixels": 747
+      }
+    }
+  ],
+  "source_executable_and_input_state_unchanged": true,
+  "boundaries": [
+    "Actual native dummy-video/dummy-audio/software-renderer endpoints.",
+    "PNG conversion preserves every decoded RGBA pixel; no edited image, generated artwork or v4 gallery.",
+    "No physical-device, display/DPI, accessibility, deadline or literal 1:1 qualification."
+  ]
+}

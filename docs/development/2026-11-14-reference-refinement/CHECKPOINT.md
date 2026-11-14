@@ -2,7 +2,7 @@
 
 ## Current position
 
-This owner-requested session starts at `8bd999efc13e309b932e6ac41d72ceb7b9b80a5f` (the manifest retains the canonical full starting identity). The actual manifest records **41 dispatched, 38 accepted** workers: waves 1–6 complete and wave 7 active. The requested total is sixty distinct actual workers in ten logical waves of six. Historical sessions do not count. At most three workers run alongside root; dispatch follows dependencies.
+This owner-requested session starts at `8bd999efc13e309b932e6ac41d72ceb7b9b80a5f` (the manifest retains the canonical full starting identity). The actual manifest records **45 dispatched, 42 accepted** workers: waves 1–7 complete and wave 8 active. The requested total is sixty distinct actual workers in ten logical waves of six. Historical sessions do not count. At most three workers run alongside root; dispatch follows dependencies.
 
 The full 500-page atlas reading is complete in A01–A06, with exact PDF/reference identities and selected original visual review. The complete M0–M9 plan is `docs/PLAN.md`; `docs/research/REFERENCE_REFINEMENT_ATLAS_REVIEW.md` relates it to this continuation. Do not restart reading after context reset.
 
@@ -32,6 +32,18 @@ Current disk observation: repository 120 MB, shared builds 74/26 MB, approximate
 
 ## Next concrete work
 
-A31 rebuilt the published `2e161dc` source and captured all eight actual v3 views. A32 accepted 552 provenance/pixel/source checks and strengthened painted holds/capture validation with seven methods and sixty synthetic mutations. A33 portability review, A34 dry-audio/state isolation and A35 Unicode/space installation relocation are accepted. A36 completed the measured reference comparison. A37 current setup/handoff and guide corrections are accepted. A38 repaired fixture stack pressure outside measured allocation intervals, preserving all 82,320 queries and byte-identical results; targeted CTest passes and the repaired fixture passes a 512 KiB child stack that crashes the original. The actual Windows rerun remains required. A39 implements strict current-session accounting; A40 owns the narrowly authorized wide-dimensional title/subtitle refinement; A41 independently verifies its pixels, fit and timing. The material-contract addendum records this typography-only exception. Root owns the manifest and publication. Existing v1/v2 and all prior failed reports remain untouched.
+A31 rebuilt the published `2e161dc` source and captured all eight actual v3 views. A32 accepted 552 provenance/pixel/source checks and strengthened painted holds/capture validation with seven methods and sixty synthetic mutations. A33 portability review, A34 dry-audio/state isolation and A35 Unicode/space installation relocation are accepted. A36 completed the measured reference comparison. A37 current setup/handoff and guide corrections are accepted. A38 repaired fixture stack pressure outside measured allocation intervals, preserving all 82,320 queries and byte-identical results; targeted CTest passes and the repaired fixture passes a 512 KiB child stack that crashes the original. The actual Windows rerun remains required. A39 strict current-session accounting is accepted. A40/A41 wide-dimensional title/subtitle refinement is accepted: 1,071 authored material assertions and 1,897 independent checks, including complete Flat/compact identity and header-only wide differences. The initial timing p95 trigger remains retained; the sole reversed repeat did not reproduce it. The material-contract addendum records this typography-only exception. Root owns the manifest and publication. Existing v1/v2 and all prior failed reports remain untouched.
 
 Continue actual assignments A39–A60 across the remaining waves: strict new-session accounting, bounded header refinement and independent acceptance, refreshed affected native captures, desktop evidence review, R4 next-contract review, hosted execution/repair, final coherent verification and independent publication review. These planned tasks do not count as dispatched. Refresh README with actual v3 captures and state concrete remaining differences; **literal 1:1 visual equality remains unmet**. Device/DAW/accessibility/deadline/signing/asset-rights and physical model gates remain separate. Preserve 47 parameters, state4/readers1–3, note ownership, dry Engine sound and the scanner G5 failure.
+
+## Concurrent advancement and current publication preparation
+
+The documentation-only `26ff2fbe` advancement is integrated, retaining all
+incoming waveform-session records and all dirty source hashes. Its unchanged
+f9c product inputs pass all twelve hosted jobs, including full Windows Release.
+The exact primary-log audit is A43's current work; A44 audits sanitizer details
+and A45 updates release readiness. See `CONCURRENT_HANDOFF.md`. A42's independent
+R4 implementation plan supports that concurrent owner without claiming its work.
+Root is preparing the accepted header/checker/plan publication, then the next
+actual worker will capture the final published native gallery. Completed prior
+galleries remain immutable. Actual assignment A46 has not yet been dispatched.
