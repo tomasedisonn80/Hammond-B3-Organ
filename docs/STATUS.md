@@ -1,5 +1,9 @@
 # Development status
 
+## Active MIDI and native visual continuation
+
+A new [sixty-worker session](development/2026-11-14-midi-ui/README.md), starting at `0f7b900`, advances the next independent M9 external-MIDI input and native visual slice under [its scope](MIDI_UI_SCOPE.md). The current work is source review and contract definition. No new MIDI execution, UI match or physical-device pass is claimed at this checkpoint. Earlier completed phases below retain their own identities and evidence.
+
 ## Completed capture and calibration-tooling continuation
 
 The completed [calibration session](development/2026-11-13-calibration/README.md)

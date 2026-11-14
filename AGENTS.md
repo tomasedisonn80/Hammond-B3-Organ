@@ -1,5 +1,11 @@
 # Standing instructions for every development agent
 
+## Current MIDI and visual continuation
+
+The latest requested [MIDI/UI session](docs/development/2026-11-14-midi-ui/README.md) starts at `0f7b900` under [MIDI_UI_SCOPE.md](docs/MIDI_UI_SCOPE.md). Its actual workers are recorded separately from every preceding session. Continue the dependency-ready M9 MIDI input and native visual work while preserving the core, all previous parameter/state identities and concurrent model tracks. The exact UI reference is the atlas cover/page 409, [retained with provenance](docs/design/atlas-reference.json). Future agents must compare actual app screenshots with this source, keep verified dynamic controls, document residual differences, and update the README with the latest verified native captures whenever the interface changes. Never present source concept art as an application screenshot or claim 1:1 fidelity without comparison evidence.
+
+The standing completion workflow remains: update status, next steps, development log and affected setup/contracts; retain actual verification; commit and push completed authorized work to `main`, inspect concurrent advances, and verify the published revision. This instruction applies to future agents as requested by the owner.
+
 These instructions apply to the entire repository and all future agent sessions.
 They implement the owner's standing handoff and publication requests of
 2026-11-12 and 2026-11-13. Read them before modifying code or documentation.

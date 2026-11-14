@@ -1,5 +1,9 @@
 # Next steps
 
+## Current continuation: external MIDI and reference-led UI
+
+The new [MIDI/UI session](development/2026-11-14-midi-ui/README.md) takes the dependency-ready standalone work below. Freeze bounded MIDI ownership/ingress/backend/lifecycle contracts, implement and independently qualify them, refine the native view against the identified atlas cover/page409 reference, then publish actual native captures and coherent source results. Preserve all prior models, control/state identities and source limits. The [actual manifest](development/2026-11-14-midi-ui/assignments.json) tracks only newly dispatched workers.
+
 ## Continue after the completed calibration-tooling phase
 
 The [completed calibration session](development/2026-11-13-calibration/README.md)

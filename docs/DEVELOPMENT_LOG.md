@@ -1,5 +1,11 @@
 # Development log
 
+## 2026-11-13 local time — MIDI/UI continuation: source and baseline
+
+New session `2026-11-14-midi-ui` (UTC storage date) begins at `0f7b90037e51e101d8fa0bfe31af40209d751659`. Six newly dispatched workers read every word on all500 PDF pages in disjoint ranges and inspected selected figures; the [consolidation](research/MIDI_UI_ATLAS_REVIEW.md) and six substantive notes retain findings. Extracted the original cover/page409 JPEG without alteration and recorded its exact source/hash. The next dependency-ready M9 slice is external MIDI input and reference-led native UI refinement under [MIDI_UI_SCOPE.md](MIDI_UI_SCOPE.md).
+
+Built baseline Release using GCC12.2.0 and CMake4.4.4; configured `BUILD_TESTING=ON`, no optional SDKs. `cmake --build build-baseline -j4` succeeded and `ctest --test-dir build-baseline --output-on-failure --no-tests=error -j4` passed106/106 in59.50s. The [baseline record](development/2026-11-14-midi-ui/reports/baseline.json) and complete test output identify this existing code scope. No new MIDI/device/visual pass is implied. Updated permanent future-agent instruction to preserve the reference, publish actual native screenshots, keep status/next steps current and commit/push verified completed work.
+
 ## 2026-11-14 — Complete calibration records published and fetched
 
 - Published `02810eb0724d7fe53ce6fda945772fac84589c78`, tree

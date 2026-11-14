@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "session": "2026-11-14-midi-ui",
+  "started_from": "0f7b90037e51e101d8fa0bfe31af40209d751659",
+  "requested_workers": 60,
+  "requested_waves": 10,
+  "concurrency_limit": 3,
+  "assignments": [
+    {
+      "id": "A01",
+      "wave": 1,
+      "agent": "/root/w01_a01_atlas_foundations",
+      "task": "Full atlas foundation and plan reading",
+      "state": "accepted",
+      "owned_files": [
+        "docs/development/2026-11-14-midi-ui/01-atlas-foundations.md"
+      ],
+      "pages": [
+        1,
+        84
+      ],
+      "evidence_sha256": "bf4cea066c38aa8fe0c6ece6b84ac59ccaec793e7d3bdd64676a3f8d448f73e9"
+    },
+    {
+      "id": "A02",
+      "wave": 1,
+      "agent": "/root/w01_a02_atlas_console",
+      "task": "Full atlas console and ownership reading",
+      "state": "accepted",
+      "owned_files": [
+        "docs/development/2026-11-14-midi-ui/02-atlas-console.md"
+      ],
+      "pages": [
+        85,
+        168
+      ],
+      "evidence_sha256": "4c33df2c9ab492ddcb219972a2ba860f90b29d770dd32408c8d8db3834188c11"
+    },
+    {
+      "id": "A03",
+      "wave": 1,
+      "agent": "/root/w01_a03_atlas_electronics",
+      "task": "Full atlas electronics and scanner reading",
+      "state": "accepted",
+      "owned_files": [
+        "docs/development/2026-11-14-midi-ui/03-atlas-electronics.md"
+      ],
+      "pages": [
+        169,
+        252
+      ],
+      "evidence_sha256": "726ee41e11d269569ab516ba9a907c397df2da3816848de7a36a02156c44083e"
+    },
+    {
+      "id": "A04",
+      "wave": 1,
+      "agent": "/root/w01_a04_atlas_rotary",
+      "task": "Full atlas rotary and measurement reading",
+      "state": "accepted",
+      "owned_files": [
+        "docs/development/2026-11-14-midi-ui/04-atlas-rotary.md"
+      ],
+      "pages": [
+        253,
+        336
+      ],
+      "evidence_sha256": "654ed16891089b076dddcb17e0669f341c96909c40f15d2447d914b95b5e7544"
+    },
+    {
+      "id": "A05",
+      "wave": 1,
+      "agent": "/root/w01_a05_atlas_architecture",
+      "task": "Full atlas architecture and visual-contract reading",
+      "state": "accepted",
+      "owned_files": [
+        "docs/development/2026-11-14-midi-ui/05-atlas-architecture.md"
+      ],
+      "pages": [
+        337,
+        420
+      ],
+      "evidence_sha256": "5caaa70dce427f1dd9d4e83ff5fc44e157e733dcbc7e0cd6b90146a21fab27db"
+    },
+    {
+      "id": "A06",
+      "wave": 1,
+      "agent": "/root/w01_a06_atlas_product",
+      "task": "Full atlas product and implementation-plan reading",
+      "state": "accepted",
+      "owned_files": [
+        "docs/development/2026-11-14-midi-ui/06-atlas-product.md"
+      ],
+      "pages": [
+        421,
+        500
+      ],
+      "evidence_sha256": "264e7280f26eec04cf1120d570d0ac24ecba252b756fd889ea8fb279e17fd6a8"
+    },
+    {
+      "id": "A07",
+      "wave": 2,
+      "agent": "/root/w02_a07_midi_contract",
+      "task": "Freeze bounded MIDI input, mapping and recovery contract",
+      "state": "running",
+      "owned_files": [
+        "apps/standalone/MidiInput.h",
+        "docs/MIDI_INPUT.md",
+        "docs/development/2026-11-14-midi-ui/07-midi-contract.md"
+      ]
+    },
+    {
+      "id": "A08",
+      "wave": 2,
+      "agent": "/root/w02_a08_backend_contract",
+      "task": "Freeze pinned backend lifecycle and callback ownership",
+      "state": "running",
+      "owned_files": [
+        "apps/standalone/MidiDevice.h",
+        "docs/MIDI_BACKEND.md",
+        "docs/development/2026-11-14-midi-ui/08-midi-backend-contract.md"
+      ]
+    },
+    {
+      "id": "A09",
+      "wave": 2,
+      "agent": "/root/w02_a09_visual_contract",
+      "task": "Specify exact-reference native layout and dynamic controls",
+      "state": "running",
+      "owned_files": [
+        "docs/REFERENCE_UI_DESIGN.md",
+        "docs/development/2026-11-14-midi-ui/09-visual-contract.md"
+      ]
+    }
+  ]
+}
