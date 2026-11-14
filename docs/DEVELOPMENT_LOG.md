@@ -1,5 +1,28 @@
 # Development log
 
+## 2026-11-14 — Begin native interface continuation from published preset source
+
+Inspected published `main` at `d493e998e5dd7cf44db46854e87309745063ac54`
+and created a separately owned lightweight source checkout. Six actual readers
+completed every atlas page in disjoint ranges and retained exact page anchors
+and selected original visual inspections. Established a new sixty-worker,
+ten-wave manifest and [bounded M9 scope](INTERFACE_CONTINUATION_SCOPE.md).
+
+The baseline combined Release build passed 136/136 tests in 155.19 seconds with
+GCC 14.2.0, CMake 4.4.4 and Python 3.12.14. SDL2/RtMidi dependencies were reused
+without copying SDKs per worker. Initial configuration lacked ALSA development
+paths; specifying the existing sysroot exposed a pinned SDL/local ALSA signature
+incompatibility. The retained corrected local configuration disables SDL ALSA
+and uses dummy audio/video for acceptance; RtMidi ALSA remains compiled. The
+[baseline record](development/2026-11-14-interface-continuation/reports/baseline.json)
+retains exact source, binary and test identity. No physical device pass follows.
+
+Observed published hosted results: Linux and macOS core, Linux sanitizer,
+Linux/Windows standalone and all native VST3 jobs succeed. Windows core fails
+in Python's `ctypes.CDLL(None)` rounding-environment setup; macOS standalone
+fails one MIDI modal replay after an observed long event-delivery gap. Preserve
+these failures and repair their causes before claiming current platform success.
+
 ## 2026-11-14 — Implement the exclusive fixed-registration path
 
 The reviewed M3 selector now has immutable generated rows, retained A/B/Cancel

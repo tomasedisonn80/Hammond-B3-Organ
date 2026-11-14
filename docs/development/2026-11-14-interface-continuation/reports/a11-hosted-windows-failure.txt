@@ -1,0 +1,29 @@
+Original hosted failure; not a rerun.
+Commit: d493e998e5dd7cf44db46854e87309745063ac54
+Workflow run: 43580730409
+Job: 132404740670 (Release / Windows MSVC)
+URL: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43580730409/job/132404740670
+Complete downloaded log SHA-256: 1a2a8b2dd6d85b0eccf1f9880c7748deb93aaa67c2dc1dcdabd38acb240f9965
+Excerpt retains the original timestamped failure lines.
+
+2026-11-14T09:34:21.9862854Z  95/123 Test  #96: python_test_preset_parameter_oracle ...............***Failed    0.17 sec
+2026-11-14T09:34:21.9863807Z E
+2026-11-14T09:34:21.9864300Z ======================================================================
+2026-11-14T09:34:21.9865062Z ERROR: setUpClass (__main__.PresetParameterOracleTests)
+2026-11-14T09:34:21.9865848Z ----------------------------------------------------------------------
+2026-11-14T09:34:21.9866551Z Traceback (most recent call last):
+2026-11-14T09:34:21.9876415Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_preset_parameter_oracle.py", line 166, in setUpClass
+2026-11-14T09:34:21.9877576Z     cls.fenv = RoundingEnvironment()
+2026-11-14T09:34:21.9879526Z                ^^^^^^^^^^^^^^^^^^^^^
+2026-11-14T09:34:21.9880626Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_preset_parameter_oracle.py", line 128, in __init__
+2026-11-14T09:34:21.9881676Z     library = ctypes.CDLL(candidate)
+2026-11-14T09:34:21.9882203Z               ^^^^^^^^^^^^^^^^^^^^^^
+2026-11-14T09:34:21.9883118Z   File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\ctypes\__init__.py", line 369, in __init__
+2026-11-14T09:34:21.9884381Z     if '/' in name or '\\' in name:
+2026-11-14T09:34:21.9884862Z        ^^^^^^^^^^^
+2026-11-14T09:34:21.9885379Z TypeError: argument of type 'NoneType' is not iterable
+2026-11-14T09:34:21.9885805Z 
+2026-11-14T09:34:21.9886091Z ----------------------------------------------------------------------
+2026-11-14T09:34:21.9886952Z Ran 0 tests in 0.008s
+2026-11-14T09:34:21.9887275Z 
+2026-11-14T09:34:21.9887481Z FAILED (errors=1)

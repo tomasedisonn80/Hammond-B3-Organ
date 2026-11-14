@@ -1,0 +1,49 @@
+{
+  "assignment": "/root/w02_a11_windows_oracle_repair",
+  "base_commit": "d493e998e5dd7cf44db46854e87309745063ac54",
+  "python": "3.12.14",
+  "local_platform": "linux",
+  "owned_source_changes": [
+    "tests/test_preset_parameter_oracle.py"
+  ],
+  "source_sha256": {
+    "test_source": "d6413cc3aca44060372ca778784eca13b512174a6681a879bc1b30690f271975",
+    "python_api": "bd8c451d5d1b648bdd38db2db384c8322abe29ad2a54cfeeff8554340fdb4505",
+    "parameter_registry": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+    "native_oracle_source": "3f431d729946e2ed674d12661416fc2a0976a74457234af97856250a03b77a96"
+  },
+  "binary_sha256": {
+    "hammond_parameter_info": "f3f56ede7fcd93a81423ac78ea86cf959e34ef821d812f1396f607808d93992e",
+    "test_preset_parameter_boundaries": "f613ff6ff88986ca0755faca0a6bf7560b0848e24b84a5050c39187a10a5cdad"
+  },
+  "original_hosted_failure": {
+    "commit": "d493e998e5dd7cf44db46854e87309745063ac54",
+    "run": 43580730409,
+    "job": 132404740670,
+    "full_log_sha256": "1a2a8b2dd6d85b0eccf1f9880c7748deb93aaa67c2dc1dcdabd38acb240f9965",
+    "observed": "Python ctypes.CDLL(None) raises TypeError before reaching UCRT, zero oracle methods run"
+  },
+  "before_regression": {
+    "passed": 1,
+    "errors": 1,
+    "exit": 1,
+    "report": "a11-regression-before.txt"
+  },
+  "after_local_gate": {
+    "ctest_selected": 1,
+    "ctest_passed": 1,
+    "test_methods": 8,
+    "native_vectors": 688,
+    "atomic_rejections": 296,
+    "descriptor_rejections": 84,
+    "cli_invocations": 49,
+    "python_rounding_modes": 4,
+    "exit": 0,
+    "report": "a11-oracle-after.txt"
+  },
+  "limitations": [
+    "Windows native runtime was not executed by this Linux worker",
+    "Windows loader regression is injected setup behavior, not native Windows fenv qualification",
+    "Actual Windows hosted pass must be observed after publication"
+  ]
+}

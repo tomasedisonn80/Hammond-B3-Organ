@@ -1,5 +1,24 @@
 # Development status
 
+## Current native interface continuation
+
+The new [interface session](development/2026-11-14-interface-continuation/README.md)
+starts from published `d493e998`. Six newly dispatched readers have completed
+[all 500 atlas pages](research/INTERFACE_ATLAS_REVIEW.md). The unchanged production
+baseline passes **136/136 local combined Release suites**, including the native
+application and MIDI adapter, under the [retained configuration](development/2026-11-14-interface-continuation/reports/baseline.json).
+Local SDL audio uses dummy drivers after the retained SDL/ALSA header setup
+failure; this is not physical-device qualification.
+
+The next dependency-ready M9 work is defined by the [interface scope](INTERFACE_CONTINUATION_SCOPE.md):
+Play/Rotary/Service navigation, shared dimensional/flat live controls and truthful
+copied-state inspection. Wave 2 is reviewing concrete contracts before code
+changes. All 47 sound parameters, state4/readers 1-3, nominal models and other
+tracks remain preserved. The published source also has two observed hosted
+failures to resolve: macOS native MIDI modal delivery and Windows Python
+rounding-environment setup. They remain failures until affected repairs are
+qualified on the relevant runner. Literal 1:1 appearance is not yet established.
+
 ## Current fixed-registration and preset-key continuation
 
 The newest [requested session](development/2026-11-14-preset-continuation/README.md)

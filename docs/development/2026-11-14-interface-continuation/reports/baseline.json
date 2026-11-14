@@ -1,0 +1,22 @@
+{
+  "source_commit": "d493e998e5dd7cf44db46854e87309745063ac54",
+  "source_note": "Unchanged tracked production source; new documentation overlay only.",
+  "configuration": "Release, native standalone ON, MIDI ON/ALSA, SDL_ALSA OFF, dummy audio/video acceptance",
+  "compiler": "GCC 14.2.0",
+  "cmake": "4.4.4",
+  "python": "3.12.14",
+  "tests": {
+    "registered": 136,
+    "passed": 136,
+    "failed": 0,
+    "seconds": 155.19
+  },
+  "binary_sha256": "557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82",
+  "ctest_sha256": "6c644a7c15cc4bad5670e561537cd95a90b43eaa3d9d7576105c9daa8ed5c3f5",
+  "limits": [
+    "Linux local only",
+    "SDL ALSA disabled due retained local header compile failure",
+    "Dummy audio/video are not physical-device qualification",
+    "Published macOS MIDI CLI and Windows Python oracle failures remain separately observed"
+  ]
+}

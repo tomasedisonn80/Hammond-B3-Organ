@@ -1,5 +1,17 @@
 # Next steps
 
+## Current interface continuation
+
+Continue the [new session](development/2026-11-14-interface-continuation/README.md)
+and [scope](INTERFACE_CONTINUATION_SCOPE.md). Full atlas reading and local baseline
+qualification are complete. Freeze the reviewed workspace, shared key geometry
+and inspection-data contracts; repair the two observed hosted failures; implement
+Play/Rotary/Service plus dimensional/flat presentation without changing sound
+state. Qualify hidden-control exclusion, paired note releases, focus, resize,
+read-only model facts and actual native captures. Then update the current README
+gallery, package/setup/status/handoff, complete the actual sixty-worker record,
+and publish verified source to `main` while preserving concurrent advances.
+
 ## Current preset continuation: finish the reviewed M3/M9 slice
 
 Follow the [new session](development/2026-11-14-preset-continuation/README.md)

@@ -20,7 +20,9 @@ from pathlib import Path
 import struct
 import subprocess
 import sys
+from types import SimpleNamespace
 import unittest
+from unittest.mock import Mock, patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -122,7 +124,10 @@ def required_executable(variable, target):
 
 class RoundingEnvironment:
     def __init__(self):
-        candidates = (None, "ucrtbase.dll") if sys.platform == "win32" else (None,)
+        # CDLL(None) opens the current process on POSIX, but Python 3.12's
+        # Windows DLL loader requires a name. Use its C runtime directly;
+        # missing fenv symbols remain a required failure, never a skipped gate.
+        candidates = ("ucrtbase.dll",) if sys.platform == "win32" else (None,)
         for candidate in candidates:
             try:
                 library = ctypes.CDLL(candidate)
@@ -152,6 +157,47 @@ class RoundingEnvironment:
         finally:
             if self.set_mode(original) != 0 or self.get() != original:
                 raise RuntimeError("Could not restore Python caller's rounding mode")
+
+
+class RoundingEnvironmentLoadingTests(unittest.TestCase):
+    def test_windows_loader_reaches_required_runtime_and_preserves_four_modes(self):
+        # Reproduce the observed Python 3.12 Windows loader contract on every
+        # runner. This models loader/setup behavior, not native Windows fenv.
+        current = [0]
+
+        def set_mode(code):
+            current[0] = code
+            return 0
+
+        library = SimpleNamespace(
+            fegetround=Mock(side_effect=lambda: current[0]),
+            fesetround=Mock(side_effect=set_mode))
+
+        def windows_load(candidate):
+            if candidate is None:
+                raise TypeError("argument of type 'NoneType' is not iterable")
+            if candidate != "ucrtbase.dll":
+                raise OSError("Required Windows runtime unavailable")
+            return library
+
+        with patch.object(sys, "platform", "win32"), \
+                patch.object(ctypes, "CDLL", side_effect=windows_load):
+            environment = RoundingEnvironment()
+            for code in (0, 0x100, 0x200, 0x300):
+                with self.subTest(mode=code):
+                    with environment.mode(code):
+                        self.assertEqual(environment.get(), code)
+                    self.assertEqual(environment.get(), 0)
+        self.assertEqual(library.fegetround.argtypes, [])
+        self.assertIs(library.fegetround.restype, ctypes.c_int)
+        self.assertEqual(library.fesetround.argtypes, [ctypes.c_int])
+        self.assertIs(library.fesetround.restype, ctypes.c_int)
+
+    def test_missing_windows_runtime_remains_a_required_failure(self):
+        with patch.object(sys, "platform", "win32"), \
+                patch.object(ctypes, "CDLL", side_effect=OSError("Missing UCRT")):
+            with self.assertRaisesRegex(RuntimeError, "four-mode Python checks not run"):
+                RoundingEnvironment()
 
 
 class PresetParameterOracleTests(unittest.TestCase):
