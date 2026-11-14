@@ -1,5 +1,20 @@
 # Next steps
 
+## Current preset continuation: finish the reviewed M3/M9 slice
+
+Follow the [new session](development/2026-11-14-preset-continuation/README.md)
+and its [actual manifest](development/2026-11-14-preset-continuation/assignments.json).
+The complete atlas has been freshly read. Freeze the reviewed
+[core](PRESET_CORE_API.md) and [state/parameter](PRESET_STATE_PARAMETER_CONTRACT.md)
+contracts, then implement the [exclusive selector](PRESET_SELECTION_CONTRACT.md),
+its immutable admitted data, both snapshot encodings, existing host/native
+adapters and twelve reversed preset keys per manual. Use the independent
+literal oracle for all eighteen fixed registrations, preserve every historical
+fixture and first 45 parameter record, then retain actual native comparisons and
+updated README screenshots. Keep the existing scanner, rotary, calibration and
+MIDI tracks intact. The shared status and current contract distinguish what is
+implemented from proposed work; do not treat this plan as an executed pass.
+
 ## Current continuation: external MIDI and reference-led UI
 
 The new [MIDI/UI session](development/2026-11-14-midi-ui/README.md) has implemented the dependency-ready standalone work below: bounded MIDI ownership/ingress, the optional native backend, explicit lifecycle and synthetic replay, and the atlas-inspired live renderer. Continue independent native replay/ownership acceptance, the reproduced small-glyph correction, actual reference comparison and complete coherent-source/platform gates. Then publish the current screenshots, source identities and resumable handoff. Preserve all prior models, control/state identities and source limits. The [actual manifest](development/2026-11-14-midi-ui/assignments.json) tracks only newly dispatched workers.

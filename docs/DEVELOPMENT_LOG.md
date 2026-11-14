@@ -1,5 +1,30 @@
 # Development log
 
+## 2026-11-14: fixed-registration continuation and complete source reading
+
+Started from verified remote main `b79086f6bb0c42b97130c721c5c73c7c97a13887`
+in an isolated checkout, preserving other working copies. Six new readers
+covered all 500 unchanged PDF pages and selected diagrams;
+[coverage and source findings](research/PRESET_ATLAS_REVIEW.md) support the
+next M3 exclusive selector and M9 preset-key controls. The user requests sixty
+actual agents in ten logical waves; [the new manifest](development/2026-11-14-preset-continuation/assignments.json)
+records only dispatched identities and actual accepted results.
+
+The baseline configured and built with CMake 4.4/GCC and passed 113/113 SDK-free
+Release suites in 70.65 seconds. The retained
+[baseline record](development/2026-11-14-preset-continuation/reports/baseline.json)
+and complete test output give exact commands and source scope. Combined native
+SDL/RtMidi/VST3 inputs were built using existing pinned checkouts; separate
+actual native baseline qualification follows. No physical-device or hardware
+fidelity result is inferred.
+
+Independent design fixes typed fixed versus adjustable identities, retained
+Cancel memory, source/owner/history continuity, the two upper-B eligibility
+sites, canonical state 4 with all older readers and 47 parameters preserving the
+first 45 records exactly. A direct source-read test fixture covers 18 rows/162 taps.
+Production implementation follows contract freeze; current plans are not tests.
+
+
 ## 2026-11-14 — Integrated native MIDI replay, package and typography gates
 
 Completed the first five logical waves and accepted the separate A31 native

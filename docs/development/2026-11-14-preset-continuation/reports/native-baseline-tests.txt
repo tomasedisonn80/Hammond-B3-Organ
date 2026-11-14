@@ -1,0 +1,898 @@
+Started UTC: 2026-11-14T07:48:20.444423+00:00
+Command: ['/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/ctest', '--test-dir', '/workspace/scratch/a472c29da8b3/build-native', '-C', 'Release', '--no-tests=error', '-R', '^(test_native_|hammond_vst3_|test_standalone_)', '--parallel', '4', '--verbose', '--output-on-failure']
+UpdateCTestConfiguration  from :/workspace/scratch/a472c29da8b3/build-native/DartConfiguration.tcl
+Parse Config file:/workspace/scratch/a472c29da8b3/build-native/DartConfiguration.tcl
+Test project /workspace/scratch/a472c29da8b3/build-native
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 102
+      Start 102: test_standalone_install
+
+102: Test command: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_install.py"
+102: Working Directory: /workspace/scratch/a472c29da8b3/build-native
+102: Environment variables: 
+102:  PYTHONDONTWRITEBYTECODE=1
+102:  HAMMOND_TEST_CMAKE=/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake
+102:  HAMMOND_TEST_BUILD_DIR=/workspace/scratch/a472c29da8b3/build-native
+102:  HAMMOND_TEST_CONFIG=Release
+102:  HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_standalone
+102:  HAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2
+102:  HAMMOND_INSTALL_BINDIR=bin
+102:  HAMMOND_INSTALL_DATADIR=share
+102:  HAMMOND_TEST_ENABLE_MIDI=1
+102:  HAMMOND_STANDALONE_CAPABILITIES=/workspace/scratch/a472c29da8b3/build-native/generated/standalone-capabilities.json
+102:  HAMMOND_RTMIDI_PREPARED_ROOT=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_rtmidi-prepared
+102:  HAMMOND_RTMIDI_BACKEND=ALSA
+102: Test timeout computed to be: 90
+test 103
+      Start 103: test_native_install
+
+103: Test command: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/plugins/vst3/tests/test_native_install.py"
+103: Working Directory: /workspace/scratch/a472c29da8b3/build-native
+103: Environment variables: 
+103:  PYTHONDONTWRITEBYTECODE=1
+103:  HAMMOND_TEST_CMAKE=/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake
+103:  HAMMOND_TEST_BUILD_DIR=/workspace/scratch/a472c29da8b3/build-native
+103:  HAMMOND_TEST_CONFIG=Release
+103:  HAMMOND_TEST_PROFILE=/workspace/scratch/a472c29da8b3/build-native/nominal.b3p
+103:  HAMMOND_TEST_VST3_BUNDLE=/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3
+103:  HAMMOND_TEST_NATIVE_MODULE=/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3/Contents/x86_64-linux/HammondB3.so
+103:  HAMMOND_TEST_NATIVE_ABI=/workspace/scratch/a472c29da8b3/build-native/bin/Release/test_native_abi
+103:  HAMMOND_INSTALL_LIBDIR=lib
+103: Test timeout computed to be: 240
+test 104
+      Start 104: hammond_vst3_validator
+
+104: Test command: /workspace/scratch/a472c29da8b3/build-native/bin/Release/validator "/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3"
+104: Working Directory: /workspace/scratch/a472c29da8b3/build-native/plugins/vst3
+104: Test timeout computed to be: 180
+test 105
+      Start 105: test_native_controller
+
+105: Test command: /workspace/scratch/a472c29da8b3/build-native/bin/Release/test_native_controller
+105: Working Directory: /workspace/scratch/a472c29da8b3/build-native/plugins/vst3
+105: Test timeout computed to be: 1500
+104: * Loading module...
+104: 
+104: 	/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3
+104: 
+104: * Check valid bundle structure...
+104: 
+104: * Scanning classes...
+104: 
+104:   Factory Info:
+104: 	vendor = Hammond B3 Organ project
+104: 	url = https://github.com/tomasedisonn80/Hammond-B3-Organ
+104: 	email = 
+104: 
+104:   Class Info 0:
+104: 	name = Hammond B3 Nominal
+104: 	category = Audio Module Class
+104: 	subCategories = Instrument|Synth
+104: 	version = 0.1.0
+104: 	sdkVersion = VST 3.8.1
+104: 	cid = 19F9ADC0533F42B4B96BD51D6547E838
+104: 
+104:   Class Info 1:
+104: 	name = Hammond B3 Nominal Controller
+104: 	category = Component Controller Class
+104: 	subCategories = 
+104: 	version = 0.1.0
+104: 	sdkVersion = VST 3.8.1
+104: 	cid = 0DEE76AB26BC475ABF64F138C89FB0E0
+104: 
+104: * Checking snapshots...
+104: 
+104: Info: No snapshots in Bundle.
+104: 
+104: * Creating tests...
+104: 
+104: * Running tests...
+104: 
+104: -------------------------------------------------------------
+104: TestSuite : Hammond B3 Nominal
+104: -------------------------------------------------------------
+104: 
+104: -------------------------------------------------------------
+104: TestSuite : General Tests
+104: -------------------------------------------------------------
+104: 
+104: [Scan Editor Classes]
+104: Info:  ===Scan Editor Classes ====================================
+104: Info:  This component has an edit controller class
+104: Info:     Controller CID: {0DEE76AB-26BC-475A-BF64-F138C89FB0E0}
+104: [Succeeded]
+104: 
+104: [Scan Buses]
+104: Info:  ===Scan Buses ====================================
+104: Info:  => Audio Buses: [0 In(s) => 1 Out(s)]
+104: Info:       Out[0]: "Dry stereo" (Main-Default Active) 
+104: Info:  => Event Buses: [3 In(s) => 0 Out(s)]
+104: Info:       In [0]: "Upper" (Main-Default Active) 
+104: Info:       In [1]: "Lower" (Aux-Default Active) 
+104: Info:       In [2]: "Pedals" (Aux-Default Active) 
+104: [Succeeded]
+104: 
+104: [Scan Parameters]
+104: Info:  ===Scan Parameters ====================================
+104: Info:  This component exports 45 parameter(s)
+104: Info:  Note: it could be better to use UnitInfo in order to sort Parameters (>20).
+104: Info:     Parameter 000 (id=4096): [title="manual.upper.bank.A.drawbar.16ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 001 (id=4097): [title="manual.upper.bank.A.drawbar.5_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 002 (id=4098): [title="manual.upper.bank.A.drawbar.8ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 003 (id=4099): [title="manual.upper.bank.A.drawbar.4ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 004 (id=4100): [title="manual.upper.bank.A.drawbar.2_2/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 005 (id=4101): [title="manual.upper.bank.A.drawbar.2ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 006 (id=4102): [title="manual.upper.bank.A.drawbar.1_3/5ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 007 (id=4103): [title="manual.upper.bank.A.drawbar.1_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 008 (id=4104): [title="manual.upper.bank.A.drawbar.1ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 009 (id=4112): [title="manual.upper.bank.B.drawbar.16ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 010 (id=4113): [title="manual.upper.bank.B.drawbar.5_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 011 (id=4114): [title="manual.upper.bank.B.drawbar.8ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 012 (id=4115): [title="manual.upper.bank.B.drawbar.4ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 013 (id=4116): [title="manual.upper.bank.B.drawbar.2_2/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 014 (id=4117): [title="manual.upper.bank.B.drawbar.2ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 015 (id=4118): [title="manual.upper.bank.B.drawbar.1_3/5ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 016 (id=4119): [title="manual.upper.bank.B.drawbar.1_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 017 (id=4120): [title="manual.upper.bank.B.drawbar.1ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 018 (id=4128): [title="manual.lower.bank.A.drawbar.16ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 019 (id=4129): [title="manual.lower.bank.A.drawbar.5_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 020 (id=4130): [title="manual.lower.bank.A.drawbar.8ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 021 (id=4131): [title="manual.lower.bank.A.drawbar.4ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 022 (id=4132): [title="manual.lower.bank.A.drawbar.2_2/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 023 (id=4133): [title="manual.lower.bank.A.drawbar.2ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 024 (id=4134): [title="manual.lower.bank.A.drawbar.1_3/5ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 025 (id=4135): [title="manual.lower.bank.A.drawbar.1_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 026 (id=4136): [title="manual.lower.bank.A.drawbar.1ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 027 (id=4144): [title="manual.lower.bank.B.drawbar.16ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 028 (id=4145): [title="manual.lower.bank.B.drawbar.5_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 029 (id=4146): [title="manual.lower.bank.B.drawbar.8ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 030 (id=4147): [title="manual.lower.bank.B.drawbar.4ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 031 (id=4148): [title="manual.lower.bank.B.drawbar.2_2/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 032 (id=4149): [title="manual.lower.bank.B.drawbar.2ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 033 (id=4150): [title="manual.lower.bank.B.drawbar.1_3/5ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 034 (id=4151): [title="manual.lower.bank.B.drawbar.1_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 035 (id=4152): [title="manual.lower.bank.B.drawbar.1ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 036 (id=8192): [title="global.expression"] [unit="normalized-linear-gain-surrogate"] [type = Float, default = 1.000000, unit = 0]
+104: Info:     Parameter 037 (id=8208): [title="manual.upper.selected_bank"] [unit="bank-index-0=A-1=B"] [type = Toggle, default = 1.000000, unit = 0]
+104: Info:     Parameter 038 (id=8209): [title="manual.lower.selected_bank"] [unit="bank-index-0=A-1=B"] [type = Toggle, default = 1.000000, unit = 0]
+104: Info:     Parameter 039 (id=12288): [title="percussion.enabled"] [unit="enabled-index-0=off-1=on"] [type = Toggle, default = 0.000000, unit = 0]
+104: Info:     Parameter 040 (id=12289): [title="percussion.harmonic"] [unit="harmonic-index-0=second-1=third"] [type = Toggle, default = 0.000000, unit = 0]
+104: Info:     Parameter 041 (id=12290): [title="percussion.volume"] [unit="volume-index-0=normal-1=soft"] [type = Toggle, default = 0.000000, unit = 0]
+104: Info:     Parameter 042 (id=12291): [title="percussion.decay"] [unit="decay-index-0=slow-1=fast"] [type = Toggle, default = 0.000000, unit = 0]
+104: Info:     Parameter 043 (id=16384): [title="pedal.drawbar.mixture1"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:     Parameter 044 (id=16385): [title="pedal.drawbar.mixture2"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+104: Info:  No bypass parameter found. This is an instrument.
+104: [Succeeded]
+104: 
+104: [MIDI Mapping]
+104: Info:  ===MIDI Mapping ====================================
+104: Info:  No MIDI Mapping interface supplied!
+104: [Succeeded]
+104: 
+104: [MIDI Learn]
+104: Info:  ===MIDI Learn ====================================
+104: Info:  No MIDI Learn interface supplied!
+104: [Succeeded]
+104: 
+104: [Scan Units]
+104: Info:  ===Scan Units ====================================
+104: Info:  This component has no units.
+104: [Succeeded]
+104: 
+104: [Scan Programs]
+104: Info:  ===Scan Programs ====================================
+104: Info:  This component does not export any programs.
+104: [Succeeded]
+104: 
+104: [Terminate/Initialize]
+104: Info:  ===Terminate/Initialize ====================================
+104: [Succeeded]
+104: 
+104: [Check Unit Structure]
+104: Info:  ===Check Unit Structure ====================================
+104: Info:  This component does not support IUnitInfo!
+104: [Succeeded]
+104: 
+104: [Valid State Transition 32bits]
+105: native-controller: checks=41795 threshold_cases=3720 string_roundtrips=387 rejected_streams=306
+104: Info:  ===Valid State Transition 32bits ====================================
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Valid State Transition 64bits]
+104: Info:  ===Valid State Transition 64bits ====================================
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Bus Consistency]
+104: Info:  ===Bus Consistency ====================================
+104: [Succeeded]
+104: 
+104: [Bus Activation]
+104: Info:  ===Bus Activation ====================================
+104: Info:     Bus Activation: Output Audio Bus (0) (kMain)
+104: Info:     Bus Activation: Input Event Bus (0) (kMain)
+104: Info:     Bus Activation: Input Event Bus (1) (kAux)
+104: Info:     Bus Activation: Input Event Bus (2) (kAux)
+104: [Succeeded]
+104: 
+104: [Check Audio Bus Arrangement]
+104: Info:  ===Check Audio Bus Arrangement ====================================
+104: Info:     Check Output Audio Bus Arrangement (0)
+104: [Succeeded]
+104: 
+104: [SideChain Arrangement]
+104: Info:  ===SideChain Arrangement ====================================
+104: [Succeeded]
+104: 
+104: [Suspend/Resume]
+104: Info:  ===Suspend/Resume ====================================
+104: [Succeeded]
+104: 
+104: [Note Expression]
+104: Info:  ===Note Expression ====================================
+104: Info:  No Note Expression interface supplied!
+104: [Succeeded]
+104: 
+104: [Keyswitch]
+104: Info:  ===Keyswitch ====================================
+104: Info:  No Keyswitch interface supplied!
+104: [Succeeded]
+104: 
+104: [ProcessContext Requirements]
+104: Info:  ===ProcessContext Requirements ====================================
+104: Info:  ProcessContextRequirements:
+104: Info:   - None
+104: [Succeeded]
+104: 
+104: -------------------------------------------------------------
+104: TestSuite : Single Precision (32 bit) Tests
+104: -------------------------------------------------------------
+104: 
+104: [Process Test]
+ 1/32 Test #105: test_native_controller ....................   Passed    0.01 sec
+test 106
+      Start 106: test_native_abi
+
+106: Test command: /workspace/scratch/a472c29da8b3/build-native/bin/Release/test_native_abi "/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3" "/workspace/scratch/a472c29da8b3/build-native/nominal.b3p"
+106: Working Directory: /workspace/scratch/a472c29da8b3/build-native/plugins/vst3
+106: Test timeout computed to be: 180
+104: [Succeeded]
+104: 
+104: [Process function running in another thread]
+104: Info:  ===Process function running in another thread ====================================
+106: {"suite":"native-abi-v1","instances":9,"assertions":691878,"descriptors":45,"conversions":2002,"accepted_callbacks":73,"rejected_calls":86,"state_round_trips":7,"lifecycle_sequences":6,"compared_frames":229725,"audible_frames":217972,"maximum_audio_error":0,"float_hash":"af029009868faa04"}
+ 2/32 Test #106: test_native_abi ...........................   Passed    1.40 sec
+test 107
+      Start 107: test_native_behavior
+
+107: Test command: /workspace/scratch/a472c29da8b3/build-native/bin/Release/test_native_behavior "/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3" "/workspace/scratch/a472c29da8b3/build-native/nominal.b3p"
+107: Working Directory: /workspace/scratch/a472c29da8b3/build-native/plugins/vst3
+107: Test timeout computed to be: 180
+103: ..
+103: ----------------------------------------------------------------------
+103: Ran 2 tests in 1.396s
+103: 
+103: OK
+103: {"bundle_sha256": {"Contents/Resources/THIRD_PARTY_NOTICES.md": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb", "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e", "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184", "Contents/x86_64-linux/HammondB3.so": "d87353b237e52c8d1f91af27933493a4cf78ba4a06af4a96c9930c0ecec1d3ff"}, "payload_files": 4, "relocated_abi": {"accepted_callbacks": 73, "assertions": 691878, "audible_frames": 217972, "compared_frames": 229725, "conversions": 2002, "descriptors": 45, "float_hash": "af029009868faa04", "instances": 9, "lifecycle_sequences": 6, "maximum_audio_error": 0, "rejected_calls": 86, "state_round_trips": 7, "suite": "native-abi-v1"}, "suite": "native-install-v1"}
+ 3/32 Test #103: test_native_install .......................   Passed    1.57 sec
+test 108
+      Start 108: test_native_automation
+
+108: Test command: /workspace/scratch/a472c29da8b3/build-native/bin/Release/test_native_automation "/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3" "/workspace/scratch/a472c29da8b3/build-native/nominal.b3p"
+108: Working Directory: /workspace/scratch/a472c29da8b3/build-native/plugins/vst3
+108: Test timeout computed to be: 180
+104: [Succeeded]
+104: 
+104: [Silence Flags]
+104: Info:  ===Silence Flags ====================================
+104: [Succeeded]
+104: 
+104: [Silence Processing]
+104: Info:  ===Silence Processing ====================================
+104: [Succeeded]
+104: 
+104: [Parameters Flush (no Buffer)]
+104: Info:  ===Parameters Flush (no Buffer) ====================================
+104: [Succeeded]
+104: 
+104: [Parameters Flush 2 (only numChannel==0)]
+104: Info:  ===Parameters Flush 2 (only numChannel==0) ====================================
+104: [Succeeded]
+104: 
+104: [Parameters Flush 2 (no Buffer, no parameter change)]
+104: Info:  ===Parameters Flush 2 (no Buffer, no parameter change) ====================================
+104: [Succeeded]
+104: 
+104: [Variable Block Size]
+104: Info:  ===Variable Block Size ====================================
+108: native automation: score_cases=6 restore_cases=3 gap_cases=6 callbacks=231 zero_callbacks=18 state_reads=261 direct_reference_frames=89979 exact_channel_samples=179958 partition_mono_samples=19407 future_channel_samples=39948 nonzero_channel_samples=157150 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=5ea365699a5717c9
+ 4/32 Test #108: test_native_automation ....................   Passed    0.64 sec
+test 109
+      Start 109: test_native_concurrency
+
+109: Test command: /workspace/scratch/a472c29da8b3/build-native/bin/Release/test_native_concurrency "/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3" "/workspace/scratch/a472c29da8b3/build-native/nominal.b3p"
+109: Working Directory: /workspace/scratch/a472c29da8b3/build-native/plugins/vst3
+109: Test timeout computed to be: 240
+104: [Succeeded]
+104: 
+104: [Process Format]
+104: Info:  ===Process Format ====================================
+104: Info:  ***Tested Sample Rates***
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 22050.000 Hz! 
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 32000.000 Hz! 
+104: Info:        44100 Hz - processed successfully!
+104: Info:        48000 Hz - processed successfully!
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 88200.000 Hz! 
+104: Info:        96000 Hz - processed successfully!
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 192000.000 Hz! 
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 384000.000 Hz! 
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 1234.568 Hz! 
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 12345.678 Hz! 
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 123456.780 Hz! 
+104: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 1234567.800 Hz! 
+104: [Succeeded]
+104: 
+104: [Parameter Bypass persistence]
+104: Info:  ===Parameter Bypass persistence ====================================
+104: Info:  This plugin does not have a bypass parameter!!!
+104: [Succeeded]
+104: 
+104: [In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+104: Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+104: [Succeeded]
+104: 
+104: [In: Mono: 1 Channels, Out: Mono: 1 Channels]
+104: Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+104: Info:      Mono Output-SpeakerArrangement is not supported. Plug-in suggests: Stereo.
+104: [Succeeded]
+104: 
+104: [Accuracy: Block, 1 Parameters, Change every100 Samples]
+104: Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+104: [Succeeded]
+104: 
+104: [Accuracy: Sample, 1 Parameters, Change every100 Samples]
+104: Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+104: [Succeeded]
+104: 
+104: -------------------------------------------------------------
+104: TestSuite : Double Precision (64 bit) Tests
+104: -------------------------------------------------------------
+104: 
+104: [Process Test]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Process function running in another thread]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Silence Flags]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Silence Processing]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Parameters Flush (no Buffer)]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Parameters Flush 2 (only numChannel==0)]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Parameters Flush 2 (no Buffer, no parameter change)]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Variable Block Size]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Process Format]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Parameter Bypass persistence]
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+104: Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [In: Mono: 1 Channels, Out: Mono: 1 Channels]
+104: Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Accuracy: Block, 1 Parameters, Change every100 Samples]
+104: Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: [Accuracy: Sample, 1 Parameters, Change every100 Samples]
+104: Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+104: Info:  64bit Audio Processing not supported.
+104: [Succeeded]
+104: Failed to teardown test!
+104: 
+104: -------------------------------------------------------------
+104: Result: 47 tests passed, 0 tests failed
+104: -------------------------------------------------------------
+ 5/32 Test #104: hammond_vst3_validator ....................   Passed    2.35 sec
+test 110
+      Start 110: test_native_realtime
+
+110: Test command: /workspace/scratch/a472c29da8b3/build-native/bin/Release/test_native_realtime "/workspace/scratch/a472c29da8b3/build-native/VST3/Release/HammondB3.vst3" "/workspace/scratch/a472c29da8b3/build-native/nominal.b3p"
+110: Working Directory: /workspace/scratch/a472c29da8b3/build-native/plugins/vst3
+110: Test timeout computed to be: 180
+109: native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+109: native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=1560 rejected_callbacks=24 zero_callbacks=308 compared_frames=71231 audible_frames=71231 future_frames=6168 accepted_loads=3174 full_loads=10610 malformed_loads=462 successful_saves=17178 busy_saves=115 pending_saves=14026 published_saves=3104 maximum_audio_error=0
+ 6/32 Test #109: test_native_concurrency ...................   Passed    0.63 sec
+test 111
+      Start 111: test_standalone_concurrency
+
+111: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_concurrency
+111: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+111: Test timeout computed to be: 1500
+111: Session concurrency cleanup: exception-unwind stop observed, worker joined
+111: Session concurrency: 8192 ordered posts, 97450 free callbacks, 7808 posts observed the callback activity flag; 64 recovery epochs, 256 recovery callbacks, 17952 accepted = 9408 applied + 32 rejected + 8512 discarded; 64 immediate rejects, 32 overflows, 128 recovery-pending posts; 256 exhausted reads preserved
+111: Controlled recovery boundaries: 4 epochs, 96 pre-render posts pending, 96 pre-render admitted posts discarded, 192 post-render posts accepted after ack
+111: Concurrent recovery schedules: 60 epochs, 0 posts pending, 0 admitted posts discarded, 5760 posts accepted after ack
+111: Active overflow: 16 rounds, 48 callbacks, 1 controlled after-callback overflow deferred, 14 QueueFull calls observed the activity flag, 14 flagged recoveries deferred past that callback; 4176 accepted = 80 applied + 4096 discarded
+111: free reader 0: 625033 coherent, 120821 busy preserved, 67129 distinct revisions, 743163 activity-flag attempts, 4 -> 194904 exact publication checkpoints
+111: recovery reader 0: 107594 coherent, 332 busy preserved, 242 distinct revisions, 86070 activity-flag attempts, 4 -> 516 exact publication checkpoints
+111: active-overflow reader 0: 13441 coherent, 0 busy preserved, 23 distinct revisions, 12598 activity-flag attempts, 4 -> 100 exact publication checkpoints
+111: free reader 1: 178466 coherent, 35423 busy preserved, 20956 distinct revisions, 213034 activity-flag attempts, 4 -> 194904 exact publication checkpoints
+111: recovery reader 1: 16577 coherent, 0 busy preserved, 257 distinct revisions, 0 activity-flag attempts, 4 -> 516 exact publication checkpoints
+111: active-overflow reader 1: 3664 coherent, 0 busy preserved, 49 distinct revisions, 0 activity-flag attempts, 4 -> 100 exact publication checkpoints
+ 7/32 Test #111: test_standalone_concurrency ...............   Passed    0.70 sec
+test 112
+      Start 112: test_standalone_external_control
+
+112: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_external_control
+112: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+112: Test timeout computed to be: 1500
+112: External controls preserve shared pending UI intent
+ 8/32 Test #112: test_standalone_external_control ..........   Passed    0.01 sec
+test 113
+      Start 113: test_standalone_midi_concurrency
+
+113: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_midi_concurrency
+113: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+113: Test timeout computed to be: 45
+113: Standalone MIDI concurrency: 262436 FIFO transfers across 4 epochs; 8 joined fault races; explicit capacity overflow passed.
+113: Observed 281887 pushes, 327054 pops, 279113 decodes, 1026 fault signals: zero C++ allocations/deallocations in every measured operation.
+113: Calibration separately observed all 12 C++ allocation and deallocation overload paths on the main thread and each worker; no physical/backend/timing qualification implied.
+ 9/32 Test #113: test_standalone_midi_concurrency ..........   Passed    0.13 sec
+test 114
+      Start 114: test_standalone_midi_input
+
+114: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_midi_input
+114: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+114: Test timeout computed to be: 1500
+114: Standalone MIDI inbox/decoder acceptance: 10 behavioral scenarios passed
+10/32 Test #114: test_standalone_midi_input ................   Passed    0.01 sec
+test 115
+      Start 115: test_standalone_midi_replay
+
+115: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_midi_replay
+115: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+115: Test timeout computed to be: 1500
+115: Standalone MIDI replay acceptance: 8 scenarios passed; 18 parsed, 237 parse rejections, 3 loaded, 13 load rejections, 0 capability skips
+11/32 Test #115: test_standalone_midi_replay ...............   Passed    0.01 sec
+test 116
+      Start 116: test_standalone_midi_session
+
+116: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_midi_session
+116: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+116: Test timeout computed to be: 1500
+116: MIDI/Session/UI acceptance: 26 scenarios, 197 decoded packets, 308 commands, 343 callbacks, 17466 finite stereo samples, 8433 physical-reference sample comparisons, 5622 timestamp/velocity/partition sample comparisons
+12/32 Test #116: test_standalone_midi_session ..............   Passed    0.06 sec
+test 117
+      Start 117: test_standalone_session
+
+117: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_session
+117: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+117: Test timeout computed to be: 1500
+110: module calibration processor create new=1 delete=0; release new=0 delete=1 refs=0
+110: module calibration controller create new=1 delete=0; release new=0 delete=1 refs=0
+110: enabled rate 44100: manual, pedal, moving contacts, percussion and independent audio verified
+110: enabled rate 48000: manual, pedal, moving contacts, percussion and independent audio verified
+110: enabled rate 96000: manual, pedal, moving contacts, percussion and independent audio verified
+110: path accepted rejected frames fresh_raw carried_raw queued_restores new delete total_us max_us
+110: enabled 37 0 13022 9 0 28 0 0 56370.453 8292.495
+110: dense 5 0 224 4608 0 4 0 0 2192.728 1023.928
+110: maximum 3 0 196608 6 0 0 0 0 746326.610 312394.251
+110: carry 13 0 32 2054 1027 0 0 0 380.212 135.683
+110: output-shape 24 0 1152 0 0 0 0 0 3608.521 326.628
+110: rejected 0 30 0 0 0 0 0 0 28.931 3.429
+110: setProcessing 15 6 0 0 0 0 0 0 1.931 0.313
+110: regions=133 overload_calibration=12/12 exact_channel_samples=421308 audible_samples=417960 reference_frames=211038 state_reads=132 rollback_cases=27 future_channel_samples=16572 moving_contact_checks=4 owner_capacity_checks=2 assertions=5206536 checksum=34119173a07f00c7
+110: Scope: Linux calling-thread global C++ new/delete; timings are observations, not device deadlines.
+13/32 Test #110: test_native_realtime ......................   Passed    1.61 sec
+test 118
+      Start 118: test_standalone_state_files
+
+118: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_state_files
+118: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+118: Test timeout computed to be: 1500
+118: TESTED: regular and dangling symbolic-link load/save rejection
+118: TESTED: failed write under RLIMIT_FSIZE and temporary cleanup
+118: NOT TESTED: POSIX failed replacement after a complete temporary write; no deterministic non-racing fixture
+118: Standalone state-file acceptance: 7 scenarios completed; platform exclusions are reported above
+14/32 Test #118: test_standalone_state_files ...............   Passed    0.01 sec
+test 119
+      Start 119: test_standalone_ui
+
+119: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_ui
+119: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+119: Test timeout computed to be: 1500
+119: Standalone UI acceptance: 8 behavioral scenarios passed
+15/32 Test #119: test_standalone_ui ........................   Passed    0.02 sec
+test 120
+      Start 120: test_standalone_midi_backend
+
+120: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_midi_backend "--ordinary"
+120: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+120: Test timeout computed to be: 30
+120: PASS ordinary: metadata without native construction
+120: PASS ordinary: exact enumeration and caps
+120: PASS ordinary: enumeration faults and refused fallback
+120: PASS ordinary: argument rejection preserves epoch
+120: PASS ordinary: exact selection and successful generations
+120: PASS ordinary: open caps and refused fallback
+120: PASS ordinary: topology changes around activation
+120: PASS ordinary: actual callback bytes, storage lifetime and sizes
+120: PASS ordinary: actual callback queue overflow
+120: PASS ordinary: backend error callback admission
+120: PASS ordinary: open errors that return normally
+120: PASS ordinary: partial activation and stale-prefix retirement
+120: PASS ordinary: bounded worker callback during native close
+120: PASS ordinary: poll scope and no automatic reconnect
+120: PASS ordinary: ordinary destruction exactly once
+120: PASS 15 backend groups on ALSA; actual MidiDevice.cpp with fake RtMidi API; no native driver claim
+16/32 Test #120: test_standalone_midi_backend ..............   Passed    0.01 sec
+test 121
+      Start 121: test_standalone_midi_backend_quarantine
+
+121: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_midi_backend "--quarantine"
+121: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+121: Environment variables: 
+121:  ASAN_OPTIONS=detect_leaks=0:halt_on_error=1
+121: Test timeout computed to be: 30
+121: PASS quarantine: six failure paths retain context/inbox and refuse reopen
+121: PASS 1 backend groups on ALSA; actual MidiDevice.cpp with fake RtMidi API; no native driver claim
+17/32 Test #121: test_standalone_midi_backend_quarantine ...   Passed    0.01 sec
+test 122
+      Start 122: test_standalone_benchmark
+
+122: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "PYTHONDONTWRITEBYTECODE=1" "HAMMOND_STANDALONE_BENCHMARK_EXECUTABLE=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_standalone_benchmark" "HAMMOND_TEST_PROFILE=/workspace/scratch/a472c29da8b3/build-native/nominal.b3p" "HAMMOND_STANDALONE_BENCHMARK_SOURCE_MANIFEST=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/standalone-benchmark-source-manifest.json" "HAMMOND_SOURCE_DIR=/workspace/scratch/a472c29da8b3/Hammond-B3-Organ" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_CONFIGURATION=Release" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_COMPILER_ID=GNU" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_COMPILER_VERSION=14.2.0" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_TARGET_SYSTEM=Linux" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_TARGET_PROCESSOR=x86_64" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/apps/standalone/tests/test_standalone_benchmark.py"
+122: Working Directory: /workspace/scratch/a472c29da8b3/Hammond-B3-Organ
+122: Test timeout computed to be: 90
+107: native behavior checks=29046845 accepted_callbacks=1030 rejected_callbacks=72 zero_callbacks=123 direct_reference_frames=233792 exact_channel_samples=610510 paired_setup_channel_samples=61360 future_audio_samples=81302 audible_samples=575944 state_reads=542 rejected_state_loads=68 threshold_cases=90 rollback_cases=59 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=3c4b24caebfdd1b9
+18/32 Test #107: test_native_behavior ......................   Passed    2.61 sec
+test 123
+      Start 123: test_standalone_drawing
+
+123: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_drawing
+123: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+123: Test timeout computed to be: 15
+123: SDL 2.32.10, renderer=software, no window/audio
+123: 144 individual glyph cases, 18 normal-size labels, 12 width/multiline/space cases; failures=0
+19/32 Test #123: test_standalone_drawing ...................   Passed    0.06 sec
+test 124
+      Start 124: test_standalone_audio_device
+
+124: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_audio_device
+124: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+124: Environment variables: 
+124:  SDL_AUDIODRIVER=dummy
+124: Test timeout computed to be: 15
+117: standalone Session acceptance: 9 rate/partition scores, 3277 successful renders, 156308 bit-exact stereo samples, 6432 partition samples, 7160 coherent snapshots, 3850 accepted posts, 41 rejected posts, 20 rejected renders, 61 future-output probes
+20/32 Test #117: test_standalone_session ...................   Passed    0.45 sec
+test 125
+      Start 125: test_standalone_device_removal
+
+125: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_device_removal
+125: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+125: Environment variables: 
+125:  SDL_AUDIODRIVER=dummy
+125: Test timeout computed to be: 15
+125: PASS: 3 actual SDL lifecycle cycles; 93 queued events; 78 ignored events; 10 matching pure queries; 3 matched joined closes; 10 rejected opens; 2 observed ID reuses; 12 callbacks; 3584 rendered frames.
+125: Scope: explicit dummy backend and software event injection; no physical disconnect or application-handler execution.
+21/32 Test #125: test_standalone_device_removal ............   Passed    0.24 sec
+test 126
+      Start 126: test_standalone_callback_allocation
+
+126: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_callback_allocation
+126: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+126: Environment variables: 
+126:  SDL_AUDIODRIVER=dummy
+126: Test timeout computed to be: 15
+126: 128 frames / cold controls/manuals/pedals/percussion: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 128 frames / full 256-command prefix: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 128 frames / manual and pedal note-off: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 128 frames / scoped UI release: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 128 frames / global Panic: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 128 frames / active owners before recovery: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 128 frames / pending-release queue overflow: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 128 frames / authoritative command rejection: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 2048 frames / cold controls/manuals/pedals/percussion: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 2048 frames / full 256-command prefix: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 2048 frames / manual and pedal note-off: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 2048 frames / scoped UI release: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 2048 frames / global Panic: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 2048 frames / active owners before recovery: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 2048 frames / pending-release queue overflow: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 2048 frames / authoritative command rejection: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+126: 128 frames / actual timeline-overflow silence: 3 observed callbacks, C++ new=0/delete=0, 6 positive callback-thread calibrations
+126: 128 frames / active-state publication exhaustion: 4 observed callbacks, C++ new=0/delete=0, 8 positive callback-thread calibrations
+126: Calibrated standalone callback allocation: 18 workload observations, 39 real SDL dummy callbacks, 936 positive calibration allocations and frees, 1070 main-thread posts, 757 main-thread snapshot reads; production regions C++ new=0/delete=0.
+126: Scope excludes C/system allocation, locks, deadlines, physical devices, and other platforms.
+22/32 Test #126: test_standalone_callback_allocation .......   Passed    0.99 sec
+test 127
+      Start 127: test_standalone_app
+
+127: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py"
+127: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+127: Test timeout computed to be: 60
+127: Native executable SHA-256: df7b93b6b544adad93c25f3cbaf023232aee21fc67a9a325791763c29d969daf
+127: test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+127: ok
+127: test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+127: test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+127: test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+127: test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+124: SDL 2.32.10, driver=dummy, 1 copied output name(s)
+124: dummy obtained 44100 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+124: dummy obtained 44100 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+124: dummy obtained 44100 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+124: dummy obtained 44100 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+124: dummy obtained 44100 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+124: dummy obtained 48000 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+124: dummy obtained 48000 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+124: dummy obtained 48000 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+124: dummy obtained 48000 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+124: dummy obtained 48000 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+124: dummy obtained 96000 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+124: dummy obtained 96000 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+124: dummy obtained 96000 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+124: dummy obtained 96000 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+124: dummy obtained 96000 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+124: standalone actual-device acceptance: 15 rate/buffer combinations, 75 matrix callbacks, 59520 matrix frames (119040 stereo samples), 31 rejected opens, 2 expected real render faults, 8 close/destruction cycles
+23/32 Test #124: test_standalone_audio_device ..............   Passed    2.97 sec
+test 128
+      Start 128: test_standalone_midi_cli
+
+128: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_cli.py"
+128: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+128: Test timeout computed to be: 90
+128: MIDI CLI/modal executable SHA-256: df7b93b6b544adad93c25f3cbaf023232aee21fc67a9a325791763c29d969daf
+128: test_cli_distinct_channels_and_all_boundary_positions (__main__.NativeMidiAcceptance.test_cli_distinct_channels_and_all_boundary_positions) ... ok
+127: test_late_malformed_startup_preserves_file_and_audition_controls (__main__.NativeAppAcceptance.test_late_malformed_startup_preserves_file_and_audition_controls) ... ok
+128: test_cli_exact_port_argument_bytes_and_no_name_coercion (__main__.NativeMidiAcceptance.test_cli_exact_port_argument_bytes_and_no_name_coercion) ... ok
+127: test_list_audio_needs_no_video_or_file_writes (__main__.NativeAppAcceptance.test_list_audio_needs_no_video_or_file_writes) ... ok
+128: test_cli_list_midi_precedes_sdl_initialization (__main__.NativeMidiAcceptance.test_cli_list_midi_precedes_sdl_initialization) ... ok
+127: test_missing_and_empty_values_reject_before_output (__main__.NativeAppAcceptance.test_missing_and_empty_values_reject_before_output) ... ok
+122: .........
+122: ----------------------------------------------------------------------
+122: Ran 9 tests in 3.598s
+122: 
+122: OK
+122: standalone benchmark CLI calls: 111; no elapsed-time correctness threshold applied
+24/32 Test #122: test_standalone_benchmark .................   Passed    3.83 sec
+test 129
+      Start 129: test_standalone_native_midi_replay
+
+129: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py"
+129: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+129: Test timeout computed to be: 90
+128: test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name (__main__.NativeMidiAcceptance.test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name) ... ok
+129: Native MIDI replay executable SHA-256: df7b93b6b544adad93c25f3cbaf023232aee21fc67a9a325791763c29d969daf
+127: test_no_audio_fails_bounded_with_zero_callback_claims (__main__.NativeAppAcceptance.test_no_audio_fails_bounded_with_zero_callback_claims) ... ok
+128: test_cli_numeric_channels_are_strict_and_bounded (__main__.NativeMidiAcceptance.test_cli_numeric_channels_are_strict_and_bounded) ... ok
+128: test_cli_repeated_options_and_conflicting_lists (__main__.NativeMidiAcceptance.test_cli_repeated_options_and_conflicting_lists) ... ok
+127: test_noninteger_and_overflow_values_reject_before_output (__main__.NativeAppAcceptance.test_noninteger_and_overflow_values_reject_before_output) ... ok
+127: test_output_directory_leaves_reject_before_writes (__main__.NativeAppAcceptance.test_output_directory_leaves_reject_before_writes) ... ok
+127: test_output_symlinks_cannot_create_or_overwrite_musical_state (__main__.NativeAppAcceptance.test_output_symlinks_cannot_create_or_overwrite_musical_state) ... ok
+129: test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect) ... ok
+128: test_cli_startup_defaults_to_no_input_with_custom_routing (__main__.NativeMidiAcceptance.test_cli_startup_defaults_to_no_input_with_custom_routing) ... ok
+102: ........
+102: ----------------------------------------------------------------------
+102: Ran 8 tests in 10.124s
+102: 
+102: OK
+102: {"binary_sha256": "df7b93b6b544adad93c25f3cbaf023232aee21fc67a9a325791763c29d969daf", "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6", "midi_backend": "ALSA", "midi_enabled": true, "payload_files": 17, "relocated_smoke": {"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 55, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 28160, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 1, "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "route_enabled": [true, true], "selected_banks": [1, 1]}, "errors": {"count": 0, "last": ""}, "midi": {"active_after_shutdown": false, "active_before_shutdown": false, "arrival_time_is_sample_time": false, "arrival_time_source": "none", "arrival_time_unit": "steady_clock_nanoseconds", "backend": "ALSA", "backend_available": true, "channels": {"lower": 2, "pedals": 3, "upper": 1}, "decoder": {"actions": 0, "epochs": 0, "inactive": 0, "malformed": 0, "out_of_range": 0, "packets": 0, "timestamp_regressions": 0, "unmapped_channels": 0, "unsupported": 0}, "device": {"admission_failures": 0, "backend_errors": 0, "callback_contentions": 0, "callback_messages": 0, "close_errors": 0, "disconnects": 0, "filtered_messages": 0, "forwarded_messages": 0, "last_arrival_ns": 0}, "diagnostics_stable_after_shutdown": true, "drain_budget": 32, "fault_retirements": 0, "generation": 0, "inbox": {"accepted_packets": 0, "capacity": 256, "discarded_packets": 0, "fault_bits": 0, "faulted_packets": 0, "invalid_size_packets": 0, "overflow_events": 0, "pending_packets": 0, "popped_packets": 0, "received_packets": 0, "resets": 0}, "last_submit_status": "ok", "maximum_drained_per_turn": 0, "open_failures": 0, "opened_port_index": 0, "parameter_messages": 0, "port_name": "", "quiescent_after_shutdown": true, "release_batches": 0, "release_commands_accepted": 0, "release_pending": false, "release_sequence": 0, "requested_port": "", "retired_fault_bits": 0, "retirements": 0, "session_recoveries_observed": 0, "shutdown_failed": false, "source": "none", "startup_failed": false, "state_after_shutdown": "closed", "state_before_shutdown": "closed", "status": "No MIDI input selected.", "submit_failures": 0, "timing_policy": "arrival_order_next_callback_boundary"}, "profile": {"authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83", "id": "nominal-unmeasured-v1"}, "runtime": {"drawable_height": 700, "drawable_width": 960, "rendered_images": 14, "renderer": "software", "screenshot_while_held": true, "screenshot_written": true, "sdl_version": "2.32.10", "video_driver": "dummy", "window_height": 700, "window_width": 960}, "schema_version": 2, "session": {"discarded_commands": 1, "fault_flags": 0, "frame_clock": 28160, "held_after_shutdown": false, "last_applied_sequence": 5, "maximum_observed_peak": 0.08340194821357727, "prepared": true, "publication_revision": 116, "queue_overflows": 0, "recovery_count": 0, "rejected_commands": 0, "resolved_sequence": 6, "running_after_shutdown": false, "sample_rate": 48000, "snapshot_available": true}, "smoke": {"completed": true, "duration_ms": 600, "held_observed": true, "note_off_sent": true, "note_on_sent": true, "passed": true, "release_observed": true, "requested": true}, "state_path": "/tmp/hammond standalone install j9u00_xo/unrelated cwd/absent controls.b3controls", "status": "Proposed audition registration: Upper B 888000000 / Lower B 008000000 / Pedals 80."}, "sdl_license_sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127", "suite": "standalone-install-v2"}
+25/32 Test #102: test_standalone_install ...................   Passed   10.27 sec
+test 130
+      Start 130: test_standalone_workflows
+
+130: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workflows.py"
+130: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+130: Test timeout computed to be: 90
+130: Workflow executable SHA-256: df7b93b6b544adad93c25f3cbaf023232aee21fc67a9a325791763c29d969daf
+128: test_modal_all_eight_keyboard_controls_and_no_port_auto_open (__main__.NativeMidiAcceptance.test_modal_all_eight_keyboard_controls_and_no_port_auto_open) ... ok
+129: test_cc11_and_bank_b_edits_share_pending_ui_controls (__main__.NativeMidiReplayAcceptance.test_cc11_and_bank_b_edits_share_pending_ui_controls) ... ok
+128: test_modal_channels_wrap_and_home_end_apply_without_connecting (__main__.NativeMidiAcceptance.test_modal_channels_wrap_and_home_end_apply_without_connecting) ... ok
+127: test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) ... ok
+130: test_cancel_retains_held_notes_and_panic_releases_every_ui_part (__main__.NativeWorkflowAcceptance.test_cancel_retains_held_notes_and_panic_releases_every_ui_part) ... ok
+128: test_modal_ctrl_and_command_m_open_then_escape_restores_playing (__main__.NativeMidiAcceptance.test_modal_ctrl_and_command_m_open_then_escape_restores_playing) ... ok
+129: test_cc123_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui) ... ok
+128: test_modal_escape_discards_unapplied_channels (__main__.NativeMidiAcceptance.test_modal_escape_discards_unapplied_channels) ... ok
+127: test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) ... ok
+128: test_modal_focus_wraps_forward_and_reverse_across_eight_controls (__main__.NativeMidiAcceptance.test_modal_focus_wraps_forward_and_reverse_across_eight_controls) ... ok
+129: test_division_channel_range_routing_and_ignored_packets (__main__.NativeMidiReplayAcceptance.test_division_channel_range_routing_and_ignored_packets) ... ok
+127: test_screenshot_failure_joins_audio_and_preserves_musical_file (__main__.NativeAppAcceptance.test_screenshot_failure_joins_audio_and_preserves_musical_file) ... ok
+127: test_state_symlinks_cannot_be_filled_by_outputs_or_loaded (__main__.NativeAppAcceptance.test_state_symlinks_cannot_be_filled_by_outputs_or_loaded) ... ok
+127: test_unknown_and_combined_options_reject_before_output (__main__.NativeAppAcceptance.test_unknown_and_combined_options_reject_before_output) ... ok
+127: test_unsupported_numeric_values_reject_before_output (__main__.NativeAppAcceptance.test_unsupported_numeric_values_reject_before_output) ... ok
+127: Actual native application subprocesses: 164
+127: 
+127: ----------------------------------------------------------------------
+127: Ran 18 tests in 9.722s
+127: 
+127: OK
+26/32 Test #127: test_standalone_app .......................   Passed    9.87 sec
+test 131
+      Start 131: test_standalone_replay_boundaries
+
+131: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_replay_boundaries.py"
+131: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+131: Test timeout computed to be: 60
+131: Replay boundary executable SHA-256: df7b93b6b544adad93c25f3cbaf023232aee21fc67a9a325791763c29d969daf
+130: test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes (__main__.NativeWorkflowAcceptance.test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes) ... ok
+128: test_modal_invalid_apply_preserves_active_routing_and_edit_intent (__main__.NativeMidiAcceptance.test_modal_invalid_apply_preserves_active_routing_and_edit_intent) ... ok
+131: test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+129: test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner (__main__.NativeMidiReplayAcceptance.test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner) ... ok
+131: test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+131: test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+131: test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+128: test_modal_pointer_open_apply_disconnect_close_at_two_sizes (__main__.NativeMidiAcceptance.test_modal_pointer_open_apply_disconnect_close_at_two_sizes) ... ok
+130: test_edit_bank_and_sounding_bank_remain_independent (__main__.NativeWorkflowAcceptance.test_edit_bank_and_sounding_bank_remain_independent) ... ok
+131: test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+129: test_focus_resize_help_and_midi_apply_preserve_external_owners (__main__.NativeMidiReplayAcceptance.test_focus_resize_help_and_midi_apply_preserve_external_owners) ... ok
+128: test_modal_shortcut_and_navigation_ignore_repeat_and_alt (__main__.NativeMidiAcceptance.test_modal_shortcut_and_navigation_ignore_repeat_and_alt) ... ok
+128: Actual MIDI CLI/modal subprocesses: 95; enumeration errors: 13; successful UI replays: 0; expected failed UI replays: 11
+128: 
+128: ----------------------------------------------------------------------
+128: Ran 15 tests in 11.722s
+128: 
+128: OK
+27/32 Test #128: test_standalone_midi_cli ..................   Passed   11.91 sec
+test 132
+      Start 132: test_standalone_chapel
+
+132: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/a472c29da8b3/build-native/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_chapel.py"
+132: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+132: Test timeout computed to be: 90
+130: test_empty_replay_has_no_automatic_smoke_note_or_file_write (__main__.NativeWorkflowAcceptance.test_empty_replay_has_no_automatic_smoke_note_or_file_write) ... ok
+131: test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ok
+131: test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) ... ok
+132: Native chapel executable SHA-256: df7b93b6b544adad93c25f3cbaf023232aee21fc67a9a325791763c29d969daf
+132: Native chapel main SHA-256: 22719975ed910b0b23db841617446e492890d89f2106cc04279fc9e46824f42e
+129: test_full_inbox_drains_in_bounded_batches_without_overflow (__main__.NativeMidiReplayAcceptance.test_full_inbox_drains_in_bounded_batches_without_overflow) ... ok
+131: test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner) ... ok
+131: test_zero_and_maximum_nonmutating_events_have_no_smoke_note (__main__.ReplayBoundaryAcceptance.test_zero_and_maximum_nonmutating_events_have_no_smoke_note) ... ok
+131: Actual replay boundary subprocesses: 29; preserved setup rejections: 19
+131: 
+131: ----------------------------------------------------------------------
+131: Ran 9 tests in 5.319s
+131: 
+131: OK
+28/32 Test #131: test_standalone_replay_boundaries .........   Passed    5.53 sec
+test 133
+      Start 133: test_standalone_input_replay
+
+133: Test command: /workspace/scratch/a472c29da8b3/build-native/apps/standalone/test_standalone_input_replay
+133: Working Directory: /workspace/scratch/a472c29da8b3/build-native/apps/standalone
+133: Environment variables: 
+133:  SDL_VIDEODRIVER=dummy
+133: Test timeout computed to be: 15
+133: standalone replay acceptance (SDL dummy): 590 valid parses, 188 atomic parser rejections, 3 regular-file loads, 12 atomic file rejections, 51 forged-plan rejections, 122 checked queue actions, 14 acknowledged markers, 5 expected runtime failures, 4 lifetime cycles
+29/32 Test #133: test_standalone_input_replay ..............   Passed    0.03 sec
+130: test_focus_loss_suppresses_repeat_and_duplicate_down_until_release (__main__.NativeWorkflowAcceptance.test_focus_loss_suppresses_repeat_and_duplicate_down_until_release) ... ok
+129: test_global_panic_retires_midi_and_suppresses_old_ui_press (__main__.NativeMidiReplayAcceptance.test_global_panic_retires_midi_and_suppresses_old_ui_press) ... ok
+129: test_interruption_is_a_failed_replay_but_shutdown_still_joins (__main__.NativeMidiReplayAcceptance.test_interruption_is_a_failed_replay_but_shutdown_still_joins) ... ok
+129: test_real_overflow_discards_stale_packets_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_real_overflow_discards_stale_packets_and_requires_reconnect) ... ok
+129: test_repeated_fifo_owners_velocity_zero_and_both_release_orders (__main__.NativeMidiReplayAcceptance.test_repeated_fifo_owners_velocity_zero_and_both_release_orders) ... ok
+129: Actual native MIDI replay subprocesses: 12; expected interrupted replays: 1
+129: 
+129: ----------------------------------------------------------------------
+129: Ran 11 tests in 18.616s
+129: 
+129: OK
+30/32 Test #129: test_standalone_native_midi_replay ........   Passed   18.90 sec
+130: test_help_open_close_releases_notes_without_retriggering_held_keys (__main__.NativeWorkflowAcceptance.test_help_open_close_releases_notes_without_retriggering_held_keys) ... ok
+130: test_keyboard_audio_apply_retains_all_controls_and_clears_notes (__main__.NativeWorkflowAcceptance.test_keyboard_audio_apply_retains_all_controls_and_clears_notes) ... ok
+130: test_off_window_pointer_release_preserves_independent_keyboard_owner (__main__.NativeWorkflowAcceptance.test_off_window_pointer_release_preserves_independent_keyboard_owner) ... ok
+132: ..Native chapel acceptance: 22 exported states, 22 actual SDL application invocations
+132: 
+132: ----------------------------------------------------------------------
+132: Ran 2 tests in 20.933s
+132: 
+132: OK
+31/32 Test #132: test_standalone_chapel ....................   Passed   21.18 sec
+130: test_original_note_ownership_survives_target_and_octave_changes (__main__.NativeWorkflowAcceptance.test_original_note_ownership_survives_target_and_octave_changes) ... ok
+130: test_replay_cli_errors_preserve_state_and_output_sentinels (__main__.NativeWorkflowAcceptance.test_replay_cli_errors_preserve_state_and_output_sentinels) ... ok
+130: test_resize_preserves_control_focus_and_original_note_release (__main__.NativeWorkflowAcceptance.test_resize_preserves_control_focus_and_original_note_release) ... ok
+130: Actual native workflow subprocesses: 25
+130: 
+130: ----------------------------------------------------------------------
+130: Ran 11 tests in 39.169s
+130: 
+130: OK
+32/32 Test #130: test_standalone_workflows .................   Passed   39.40 sec
+
+The following tests passed:
+	test_native_controller
+	test_native_abi
+	test_native_install
+	test_native_automation
+	hammond_vst3_validator
+	test_native_concurrency
+	test_standalone_concurrency
+	test_standalone_external_control
+	test_standalone_midi_concurrency
+	test_standalone_midi_input
+	test_standalone_midi_replay
+	test_standalone_midi_session
+	test_native_realtime
+	test_standalone_state_files
+	test_standalone_ui
+	test_standalone_midi_backend
+	test_standalone_midi_backend_quarantine
+	test_native_behavior
+	test_standalone_drawing
+	test_standalone_session
+	test_standalone_device_removal
+	test_standalone_callback_allocation
+	test_standalone_audio_device
+	test_standalone_benchmark
+	test_standalone_install
+	test_standalone_app
+	test_standalone_midi_cli
+	test_standalone_replay_boundaries
+	test_standalone_input_replay
+	test_standalone_native_midi_replay
+	test_standalone_chapel
+	test_standalone_workflows
+
+100% tests passed out of 32
+
+Label Time Summary:
+backend                   =   0.01 sec*proc (2 tests)
+benchmark                 =   3.83 sec*proc (1 test)
+concurrency               =   0.13 sec*proc (1 test)
+intentional-quarantine    =   0.01 sec*proc (1 test)
+midi                      =  30.81 sec*proc (2 tests)
+native                    = 117.37 sec*proc (9 tests)
+standalone                = 121.34 sec*proc (13 tests)
+
+Total Test time (real) =  49.68 sec
+
+Exit code: 0
+Finished UTC: 2026-11-14T07:49:10.133258+00:00

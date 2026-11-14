@@ -1,5 +1,27 @@
 # Development status
 
+## Current fixed-registration and preset-key continuation
+
+The newest [requested session](development/2026-11-14-preset-continuation/README.md)
+starts at `b79086f` and owns the next dependency-ready M3 exclusive fixed
+registrations plus their actual M9 native controls. Six fresh readers have read
+[all 500 atlas pages](research/PRESET_ATLAS_REVIEW.md), with selected original
+diagrams inspected. The existing production baseline passes 113/113 SDK-free
+Release suites; its [record](development/2026-11-14-preset-continuation/reports/baseline.json)
+separates production identity from the new documentation overlay.
+
+The [selection contract](PRESET_SELECTION_CONTRACT.md),
+[core API](PRESET_CORE_API.md) and
+[state/parameter contract](PRESET_STATE_PARAMETER_CONTRACT.md) define eighteen
+immutable fixed rows, retained A/B banks, phase/note/percussion preservation,
+B3CONTROLS4 with legacy 1/2/3 migration and two appended parameter IDs. The
+independent source-read test oracle contains all 162 tap positions. Contract
+review, baseline native qualification and UI geometry are in progress; this
+paragraph does not claim the proposed production APIs are already implemented.
+The [actual manifest](development/2026-11-14-preset-continuation/assignments.json)
+records this session's own real assignments and acceptance. Earlier and parallel
+tracks below retain their source identities and separate evidence gates.
+
 ## Active MIDI and native visual continuation
 
 A new [sixty-worker session](development/2026-11-14-midi-ui/README.md), starting at `0f7b900`, advances the next independent M9 external-MIDI input and native visual slice under [its scope](MIDI_UI_SCOPE.md). All 500 atlas pages have been read in six disjoint assignments. The bounded decoder/inbox, optional pinned RtMidi backend, native device modal, synthetic replay path and reference-led renderer are implemented. All 45 public parameters, `B3CONTROLS3`, the nominal Engine and the separate model tracks retain their identities.

@@ -1,0 +1,14 @@
+{
+  "source_commit": "b79086f6bb0c42b97130c721c5c73c7c97a13887",
+  "source_tree": "b0210756bf704017d9e56ebca97f935cc9c451c9",
+  "configuration": "Release; SDK-free; physical MIDI disabled",
+  "configure": "cmake -S . -B ../build-baseline -DCMAKE_BUILD_TYPE=Release",
+  "build": "cmake --build ../build-baseline -j 4",
+  "test": "ctest --test-dir ../build-baseline --output-on-failure --no-tests=error -j 4",
+  "result": "113/113 suites passed; 70.65 seconds",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "cmake": "cmake version 4.4.4",
+  "log_sha256": "dc620ebe7fed834576b9972ab6ff0b1511e13971f498873f8bc0dd44cf8d4633",
+  "scope": "Baseline engineering regressions, not hardware, visual or signed release acceptance.",
+  "source_scope": "Compiled production inputs and pre-existing tests match b79086f; newly authored session documentation was present in the working tree. The commit/tree identify the production baseline, not an archived snapshot of that live documentation overlay."
+}

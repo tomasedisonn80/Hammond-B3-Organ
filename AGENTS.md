@@ -1,5 +1,26 @@
 # Standing instructions for every development agent
 
+## Current fixed-registration continuation
+
+The newest [preset continuation](docs/development/2026-11-14-preset-continuation/README.md)
+starts at `b79086f`. Its own actual manifest records the requested sixty new
+workers in ten logical waves. It owns the next M3 exclusive fixed-registration
+selector and its M9 native UI, state and parameter integration under
+[PRESET_SELECTION_CONTRACT.md](docs/PRESET_SELECTION_CONTRACT.md). Read the
+contract and its review/freeze status before implementation. Preserve all 45
+existing parameter records and their meanings; append new identities only under
+that explicit migration. Preserve previous state readers, source/catalog/PDF
+identities, note/phase/percussion histories and other sessions' work.
+
+The standing owner instruction applies to every future agent: read the entire
+project plan and relevant source, continue a dependency-ready phase, document
+actual changes and remaining work, verify coherent source, update setup/status/
+next steps/development log, update the README with actual UI screenshots after
+interface changes, then commit and push completed authorized work to `main`.
+Inspect concurrent advances and verify the published revision; never force-push.
+Keep source concept art distinct from application captures and preserve explicit
+remaining visual differences until an actual 1:1 comparison passes.
+
 ## Current MIDI and visual continuation
 
 The latest requested [MIDI/UI session](docs/development/2026-11-14-midi-ui/README.md) starts at `0f7b900` under [MIDI_UI_SCOPE.md](docs/MIDI_UI_SCOPE.md). Its actual workers are recorded separately from every preceding session. Continue the dependency-ready M9 MIDI input and native visual work while preserving the core, all previous parameter/state identities and concurrent model tracks. The exact UI reference is the atlas cover/page 409, [retained with provenance](docs/design/atlas-reference.json). Future agents must compare actual app screenshots with this source, keep verified dynamic controls, document residual differences, and update the README with the latest verified native captures whenever the interface changes. Never present source concept art as an application screenshot or claim 1:1 fidelity without comparison evidence.
