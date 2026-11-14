@@ -6,15 +6,22 @@ They implement the owner's standing handoff and publication requests of
 
 ## Current session and standing continuation rule
 
-An independent [capture/calibration-readiness session](docs/development/2026-11-13-calibration/README.md)
-starts at `38c1fac`. Its sixty new assignments advance the offline M0/M8 tools
-under [CALIBRATION_SCOPE.md](docs/CALIBRATION_SCOPE.md): audio-file inspection,
-cross-capture integrity and split auditing, fixed analysis and reproducible
-acceptance evidence. It owns new capture/corpus/calibration tools and companion
-contracts. Preserve the existing capture v1 meaning, unknown physical values and
-all other active tracks. Synthetic test audio cannot close a hardware gate.
-Its operational entry point is [CALIBRATION_HANDOFF.md](docs/CALIBRATION_HANDOFF.md).
-Read the current session manifest before counting assignments or taking ownership.
+The completed [capture/calibration-readiness session](docs/development/2026-11-13-calibration/README.md)
+began at `38c1fac` and accepted **sixty actual distinct workers in ten logical
+waves**. Its [strict completion record](docs/development/2026-11-13-calibration/completion-check.json)
+keeps those identities separate from all other sessions. It advances offline
+M0/M8 under [CALIBRATION_SCOPE.md](docs/CALIBRATION_SCOPE.md): audio/corpus/split
+inspection, fixed comparisons, jobs/studies, declaration readiness, complete
+report replay and movable CaptureTools. Its engineering tests do not close a
+physical calibration gate. Preserve capture v1 meaning, all original reports,
+unknown physical values and the other tracks' work.
+
+Use [CALIBRATION_HANDOFF.md](docs/CALIBRATION_HANDOFF.md) for exact source and
+qualification, [CALIBRATION_RUNBOOK.md](docs/CALIBRATION_RUNBOOK.md) for setup and
+operations, and [CALIBRATION_NEXT_ACQUISITION.md](docs/CALIBRATION_NEXT_ACQUISITION.md)
+for the next real inputs and A1–A6 outputs. Read the completed manifest and current
+status before choosing the next bounded task; a new requested session retains
+its own actual accounting instead of reopening or recounting these sixty rows.
 
 A separate [rotary motion and propagation session](docs/development/2026-11-13-rotary/README.md)
 starts at `96a37a9`. Its own sixty assignments advance a nominal M7 research

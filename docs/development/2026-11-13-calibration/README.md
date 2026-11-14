@@ -1,6 +1,6 @@
 # Capture and calibration-readiness development session
 
-This is a new user-requested session of **60 distinct agent assignments in ten
+This completed user-requested session consists of **60 distinct agent assignments in ten
 logical waves of six**, beginning at `38c1fac949368fa54bd86c6c00a5997a73480f5e`.
 The workspace permits three workers concurrently, so each logical wave requires
 at least two scheduling batches. Dependency-ready work may start while separate
@@ -34,10 +34,15 @@ limitations, integrates concurrent main changes and publishes reviewable commits
 
 ## Current work
 
-Waves 1–8 are complete, with **fifty-two new assignments accepted**.
-Allocation repair, graph acceptance, real-pipe CLI failure repair and the
-physical-evidence boundary review are complete. Hosted-package, clean-setup and compatibility reviews begin wave 9; the remaining
-nine assignments complete operational plans and final integration.
+**All sixty actual assignments are complete and accepted in ten logical waves
+of six**, with no planned or running rows. The [strict completion output](completion-check.json)
+retains its limited accounting scope; root owns observed dispatch and substantive
+acceptance. Every worker has a retained evidence note and declared owned files.
+The [final integration record](../../reviews/CALIBRATION_FINAL_INTEGRATION.md)
+connects full-source checks, all ten successful hosted jobs, original failures,
+practical setup and the next acquisition/software inputs. The qualified code is
+published at `d7f6100`; the current checkout/history owns the later complete
+record revision. Subsequent changes are documentation and records only.
 Six readers
 covered all 500 text pages and selected original page images; the
 [consolidated review](../../research/CALIBRATION_ATLAS_REVIEW.md) records coverage.
@@ -80,5 +85,6 @@ external launch history. Physical calibration and full M8 acceptance remain open
 The [combined wave-8 source](../../reviews/CALIBRATION_WAVE8_INTEGRATION.md)
 passes 106/106 unfiltered Release suites after a fresh full build. Its local and
 reachable GitHub tree identities are recorded separately from later review and
-accounting updates. The full sixty-agent completion check remains pending until
-all actual results are accepted.
+accounting updates. The [fresh hosted matrix](../../reviews/CALIBRATION_FINAL_HOSTED.md) passes all
+ten jobs at d7, including all four 106-suite core gates. The strict sixty-complete record is retained above after all actual results
+were accepted; it does not establish physical M8 or external launch attestation.

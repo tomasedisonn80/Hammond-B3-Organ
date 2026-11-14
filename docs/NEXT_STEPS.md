@@ -1,8 +1,8 @@
 # Next steps
 
-## Independent capture/calibration tooling
+## Continue after the completed calibration-tooling phase
 
-The [new calibration session](development/2026-11-13-calibration/README.md)
+The [completed calibration session](development/2026-11-13-calibration/README.md)
 owns the next offline evidence-tooling work under [CALIBRATION_SCOPE.md](CALIBRATION_SCOPE.md).
 The fresh 500-page reading and independently reviewed audio/corpus/comparison
 contracts and independent decoder/corpus/metric acceptance are complete.
@@ -10,16 +10,27 @@ Fixed policy evaluation, adversarial audio/corpus admission, identity-bound file
 jobs and declaration readiness are implemented and independently qualified.
 The accepted replay and separate 57-file CaptureTools package now pass the
 [coherent 103-suite local gate](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md).
-Eight waves and 52 assignments are accepted, including hosted, clean-setup,
-compatibility and operations reviews in wave 9. The metadata allocation change,
+All sixty actual assignments are accepted in ten logical waves. The metadata allocation change,
 independent graph qualification, real-pipe process repair and evidence-boundary
 review are complete. The [combined frozen source](reviews/CALIBRATION_WAVE8_INTEGRATION.md), including
 the exact-byte Windows installation fixture and raw .f32 Git classification,
-passes 106/106 suites. Publish the qualified checkpoint and observe fresh hosted
-outcomes. The [operating guide](CALIBRATION_RUNBOOK.md) is complete; finish
-acquisition/report-identity handoffs and final independent reviews in the
-remaining actual assignments. Preserve original
-identities, all valid outcomes and complete snapshots.
+passes 106/106 suites. Its code is published and fetched at `d7f6100`;
+[all ten hosted jobs](reviews/CALIBRATION_FINAL_HOSTED.md) now succeed at that
+exact source, including 106/106 Windows suites and the actual repaired fixtures.
+The [operating guide](CALIBRATION_RUNBOOK.md),
+[acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md) and
+[report-identity audit](reviews/CALIBRATION_REPORT_IDENTITY_AUDIT.md) are complete.
+The [final integration record](reviews/CALIBRATION_FINAL_INTEGRATION.md) and
+[strict completion output](development/2026-11-13-calibration/completion-check.json)
+close this requested session. Start the next bounded task below with new
+ownership and accounting; do not count an earlier worker again.
+
+The next physical output is an identified external-output pilot archive with
+chain, physical-clock, repeatability, uncertainty and disposition records.
+Follow A1–A6 in the acquisition sequence; actual inputs and assigned ownership
+precede boundary-specific fitting. Independent software can address a named
+archive-format/scale gap or the separately owned scanner, rotary and M9 contracts.
+Preserve original identities, all valid outcomes and complete snapshots.
 No step fits physical model
 parameters or clears an acquisition gate through synthetic fixtures.
 Existing v1 metadata validation remains valid; the new companion tools provide

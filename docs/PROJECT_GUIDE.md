@@ -45,7 +45,9 @@ CMake 3.21+ and pinned SDL2. Follow the selected adapter's actual prerequisites.
 | Play the standalone window | [Standalone app](STANDALONE_APP.md) and [handoff](STANDALONE_HANDOFF.md): keyboard/pointer playing, Audio/Help, saved controls and bounded replay. |
 | Audition documentary chapel registrations | [Chapel export](CHAPEL_CONTROLS.md): explicit ordinary B3CONTROLS3 files, with physical preset/loading limits retained. |
 | Measure the Session render workload | [Standalone benchmark](STANDALONE_BENCHMARK.md): four fixed workloads, source identity and raw intervals without a timing pass threshold. |
-| Inspect acquisition evidence files | [Calibration handoff](CALIBRATION_HANDOFF.md): audio identity/decoding, corpus/split checks and fixed comparisons. |
+| Inspect, compare and replay acquisition evidence | [Calibration runbook](CALIBRATION_RUNBOOK.md) and [handoff](CALIBRATION_HANDOFF.md): actual commands, complete reports, expected outcomes, source/runtime identities and recovery. |
+| Prepare the next physical acquisition | [A1–A6 sequence](CALIBRATION_NEXT_ACQUISITION.md): required real inputs, roles, artifacts and separate physical acceptance. |
+| Install and move the capture pipeline | [CaptureTools installation](CAPTURE_TOOLS_INSTALL.md): 57 Python/data/documentation files, separate from the 23-file native OfflineTools component. |
 | Build and test on Linux, macOS or Windows | [BUILD.md](BUILD.md): presets, explicit commands, generated profile, configurations and sanitizer limits. |
 | Render a registration or event score | [RENDER_FORMAT.md](RENDER_FORMAT.md): CLI options, event grammar, sample timing, output format and errors. |
 | Hear the pedals with both manuals | [Pedal demo](PEDAL_DEMO.md) and [retained three-second example](../examples/demos/pedal-phrase-v1/README.md): actual schema-3 bundle, score, source inventory, PCM reports and replay commands. |
@@ -129,7 +131,7 @@ rights. Record provenance and applicable rights before adding a release payload.
 | Native standalone session | [Actual ledger](development/2026-11-13-next-phases/README.md), [manifest](development/2026-11-13-next-phases/assignments.json) and [handoff](STANDALONE_HANDOFF.md); sixty distinct assignments in ten waves for this user request. |
 | Scanner session | [Actual ledger](development/2026-11-13-scanner/README.md) and [handoff](SCANNER_HANDOFF.md); retain its independent numerical gates and ownership. |
 | Rotary session | [Actual ledger](development/2026-11-13-rotary/README.md) and [scope](ROTARY_SCOPE.md); separate nominal M7 development. |
-| Calibration session | [Actual ledger](development/2026-11-13-calibration/README.md) and [handoff](CALIBRATION_HANDOFF.md); separate M0/M8 evidence tooling. |
+| Completed calibration session | [Sixty actual workers / ten waves](development/2026-11-13-calibration/README.md), [strict completion](development/2026-11-13-calibration/completion-check.json) and [handoff](CALIBRATION_HANDOFF.md); qualified M0/M8 tooling with separate physical acquisition/fitting gates. |
 
 The continuation's sixty assignments are complete, with sixty distinct actual
 identities and retained notes. Its explicit final gate passes; original-session

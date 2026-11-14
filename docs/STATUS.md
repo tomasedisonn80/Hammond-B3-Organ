@@ -1,8 +1,8 @@
 # Development status
 
-## Independent capture and calibration-readiness continuation
+## Completed capture and calibration-tooling continuation
 
-The new [calibration session](development/2026-11-13-calibration/README.md)
+The completed [calibration session](development/2026-11-13-calibration/README.md)
 starts from `38c1fac` with sixty distinct new assignments in ten waves.
 Its [scope](CALIBRATION_SCOPE.md) advances offline M0/M8 audio inspection,
 corpus integrity/split auditing and fixed comparison evidence. The scanner,
@@ -11,17 +11,32 @@ All 500 PDF pages were freshly read by six distinct workers; the
 [coverage record](research/CALIBRATION_ATLAS_REVIEW.md) retains exact text and
 selected visual coverage. The clean starting source passed 85/85 local Release
 suites. Audio, corpus and comparison contracts are frozen and independently reviewed.
-Fifty-two distinct assignments are accepted: eight complete logical waves plus
-hosted-package, fresh-setup, compatibility and operational reviews in wave 9.
-Fifty-five actual workers have been dispatched; the manifest distinguishes
-the remaining running and planned work.
+All **60 distinct actual assignments are accepted in ten logical waves of six**.
+The [strict completion record](development/2026-11-13-calibration/completion-check.json)
+requires exactly sixty completed rows, no running/planned work and sixty distinct
+identities. Root's actual dispatch and substantive acceptance are retained
+separately from that checker's limited consistency scope. The
+[final integration record](reviews/CALIBRATION_FINAL_INTEGRATION.md) binds the
+complete handoff to its source, checks and publication procedure.
+The verified published code is
+`d7f6100010eb4cdd028ec93000cd9e893ac6d190`, tree
+`0140c737de4db28288b118744c2beef57976697f`. Its
+[final hosted qualification](reviews/CALIBRATION_FINAL_HOSTED.md) completes all
+ten jobs successfully: 106/106 core suites in each of Linux/macOS/Windows Release
+and Linux sanitizers/leaks, 14/14 standalone suites on each platform, and VST3
+8/8 Linux / 7/7 macOS/Windows. Root independently observed all ten completed job
+identities. Final Windows diagnostics verify the new pipeline, metadata, graph
+and literal binary-copy installation fixture; existing capability skips remain
+explicit in the review.
 The measured allocation repair passes 357 methods of independent acceptance and
 a separate 15-suite coherent capture gate. Corpus graph acceptance covers 512
 recorded synthetic captures and exact lineage/split relationships. The executable
 stream guard passes nine independent methods invoking 71 real child processes,
 preserves complete files and standalone generator/validator dependencies, and
 retains all original failures. Evidence-boundary review passes 30 finite cases.
-Wave 9 reviews actual hosted results, clean setup, compatibility and next work.
+Wave 9 accepts actual hosted results, clean setup, compatibility, the
+[runbook](CALIBRATION_RUNBOOK.md), [acquisition plan](CALIBRATION_NEXT_ACQUISITION.md)
+and [complete report-identity audit](reviews/CALIBRATION_REPORT_IDENTITY_AUDIT.md).
 The JSON foundation passes 49
 independent methods and session accounting passes 27 methods. Separate acceptance
 of the decoder, corpus auditor and metric producer passes 41, 47 and 42 methods,
@@ -56,15 +71,16 @@ retains the earlier Windows demo fixture failure. At the later published
 standalone/VST3 platform jobs succeed. Windows passes 102/103, including the
 repaired demo and replay, but its new installation fixture assumes LF for a
 CMake text writer. Root replaced that marker with an exact binary copy; the
-frozen repaired installation suite passes 16/16 locally. A fresh Windows result
-for this repair remains pending. The [completed hosted package review](reviews/CALIBRATION_HOSTED_PACKAGE_RECHECK.md)
+frozen repaired installation suite passes 16/16 locally. The later exact `d7f6100` Windows run passes 106/106, including the
+binary-copy repair; its 16 installation methods retain only the POSIX-only skip. The [completed hosted package review](reviews/CALIBRATION_HOSTED_PACKAGE_RECHECK.md)
 retains actual method results, capability-dependent skips and all diagnostic
 artifact identities.
 The [local combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
 passed 103/103 suites before the later allocation and CLI changes. The later [full coherent source](reviews/CALIBRATION_WAVE8_INTEGRATION.md) now
 passes 106/106 suites in 192.51 seconds after a fresh complete build. Its exact
 tested tree includes the allocation/graph/CLI changes and both byte-preservation
-repairs; fresh hosted qualification remains separate.
+repairs. The later d7 hosted results above qualify the same production/test
+inputs; each local/hosted source and command retains its own evidence.
 
 The separately preserved standalone closure at `27209a7f` passes all ten hosted
 jobs with 103/103 core suites; its alternate newline-free install sentinel has

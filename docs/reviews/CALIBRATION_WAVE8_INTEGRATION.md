@@ -170,3 +170,22 @@ fifteen actual source commands, four exact replays, all expected outcomes and
 unchanged inputs. Its runbook is linked from README and the operational handoff,
 and remains outside the frozen 57-file package inventory. The continuing ledger
 records 52 accepted workers and 55 actual dispatch identities.
+
+## Verified public code checkpoint
+
+Root published `d7f6100010eb4cdd028ec93000cd9e893ac6d190`, exact tree
+`0140c737de4db28288b118744c2beef57976697f`, with first parent
+`7ec79fb1c80793cf2f1bd6418abc081a547528c5` and additional parent
+`f4815a6372d103e92789a9732642345864543405`. Expected-head and non-force guards
+succeeded. Root fetched main, checked its exact commit/tree against local
+`2671fa548a0d728281f54a70ecec6e906b34967c`, and verified both qualified
+`d377fab7` and `5e19022c` source commits and concurrent `7ec79fb` as ancestors.
+Local source history is retained on `calibration-local-wave9-52`.
+
+The public checkpoint contains 52 accepted records and 55 actual dispatch
+identities. All changes from the full 48a1907 source are documentation/records;
+production, tests, build inputs, models and data remain byte-identical. Its own
+fresh hosted jobs are the platform qualification target; root holds further
+publication until those jobs finish to avoid cancelling the observed source.
+Later assignments 53/54 complete nine accepted waves through documentary
+acquisition and exact source/report-identity reviews, without changing code.

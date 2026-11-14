@@ -166,17 +166,30 @@ co-installation/relocation evidence.
 
 ## Current integration and next work
 
-The latest verified published checkpoint is
-`3b0979bd0d30ce96bca0bcd57bd8f730eaadd1bf`, tree
-`656c5f117060210b3df656c62318d5a672fc306d`, containing the first 42 accepted
-assignments and preserving the concurrent `6214032` native test advance. Its
-full tested source is retained as reachable commit `7caee9e5a1aadfa36f2a87b6855684cbd730d803`.
-Later assignments 43–48 are accepted locally: the minimal metadata allocation
-change, independent graph qualification, process-level stream repair and evidence
-boundary review. Their
+The latest verified published code checkpoint is
+`d7f6100010eb4cdd028ec93000cd9e893ac6d190`, tree
+`0140c737de4db28288b118744c2beef57976697f`. Root fetched main and verified exact
+tree equality with local `2671fa5`, plus reachable tested-source ancestors
+`d377fab7a840dc6d7a499fdf576d0dd8bb5dd4c1` (allocation) and
+`5e19022c8696023bb1aa841ebea2eaeec0d719a3` (full 106-suite source). The guarded
+non-force publication preserves concurrent `7ec79fb` and its completed standalone
+history. It contains 52 accepted records; later documentary acceptance does not
+retroactively change that snapshot. Its production, tests, build, models and data
+match the full tested source. [All ten hosted jobs](reviews/CALIBRATION_FINAL_HOSTED.md)
+now succeed at that exact public commit; their complete method and capability
+observations remain separate from the local gate.
+
+The minimal metadata allocation change, independent graph qualification,
+process-level stream repair and evidence-boundary review are accepted. Their
 [15-suite allocation gate](reviews/CALIBRATION_ALLOCATION_INTEGRATION.md)
-is separate from the later accepted stdout/stderr repair and the later [106-suite combined gate](reviews/CALIBRATION_WAVE8_INTEGRATION.md)
-and its publication record.
+is separate from the later [106-suite combined gate](reviews/CALIBRATION_WAVE8_INTEGRATION.md).
+The current manifest has all **60 accepted workers in ten complete waves**.
+The [strict completion output](development/2026-11-13-calibration/completion-check.json)
+and [final integration record](reviews/CALIBRATION_FINAL_INTEGRATION.md) retain
+actual closure and the complete record source separately from the qualified code. The [acquisition plan](CALIBRATION_NEXT_ACQUISITION.md)
+defines the next actual inputs and A1–A6 deliverables. The
+[report-identity review](reviews/CALIBRATION_REPORT_IDENTITY_AUDIT.md) verifies
+original/final full reports and preserves explicit old-source mismatch.
 
 Historically, the reviewed first 34 assignments were published at
 `955fc4c41f74ada094f14fbaf386c943811e9050`, tree
@@ -200,15 +213,16 @@ Windows demo-fixture spelling failure. Its isolated preservation-test repair
 passed locally and then all 43 methods passed on actual Windows at `3b0979b`.
 The [subsequent hosted review](reviews/CALIBRATION_HOSTED_PACKAGE_RECHECK.md)
 retains a separate installation-fixture newline failure and the later local
-byte-copy repair, awaiting its own new Windows run. Replay and the 57-file package
+byte-copy repair. The final d7 Windows run passes 106/106 suites, including
+that exact marker and all nine real-pipe methods. Replay and the 57-file package
 are independently accepted. Their [combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
 passes 103/103 unfiltered local Release suites; the exact source mapping and logs
 are retained separately from later documentation. Resource profiling, the
 220-case composition review and the accounting audit complete seven waves and
-42 accepted assignments at that publication. The current manifest records 52
-accepted assignments and eight complete waves, with 55 actual workers dispatched.
-Clean setup, compatibility and operation reviews are accepted; acquisition,
-report-identity and final handoff reviews continue.
+42 accepted assignments at that publication. All sixty actual assignments are now accepted
+in ten complete waves. Hosted, clean-setup, compatibility, operations/acquisition,
+report-identity, runtime, accounting and final reviews are retained with their
+original source/count scopes; no review silently qualifies a changed source.
 Keep the complete original archives and failure outcomes. Later installation
 and relocation acceptance must include every imported module and preserve the
 existing offline-tools component. The session manifest is the actual accounting
@@ -223,8 +237,22 @@ core suites and the alternative newline-free marker with 15 Windows installation
 passes/one POSIX-only skip. That source predates the new allocation/CLI changes. This merged
 calibration source retains the literal binary-copy fixture already
 qualified at `c352d68` and in the full 106-suite source, while preserving both
-tracks' original evidence and histories. Only the affected installation and
-repository-documentation gates need renewed qualification for this merge.
+tracks' original evidence and histories. Root reran the affected installation and repository-documentation gates for
+these merges; their exact source scopes remain in the integration record.
+
+## Reviewed continuation
+
+The [independent handoff review](reviews/CALIBRATION_HANDOFF_REVIEW.md) verifies
+actual setup options, recovery behavior, complete failed-result replay and
+package/acquisition boundaries. The [M0–M9 reconciliation](reviews/CALIBRATION_MILESTONE_RECONCILIATION.md)
+names the actual Engine scope and each owner's next concrete output; separate
+scanner/rotary research modules are not integrated dry-engine stages.
+
+The [runtime-context review](reviews/CALIBRATION_RUNTIME_CONTEXT.md) adds actual
+CPython 3.13.5 Linux execution of nine maintained pipeline methods / 71 child
+processes and twelve producer/replay processes across 3.12/3.13. Own-runtime
+reports match; cross-runtime reports honestly mismatch. This finite check does
+not claim full-suite or minimum-interpreter qualification.
 
 ## Evidence and continuation
 

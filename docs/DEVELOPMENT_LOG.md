@@ -1,5 +1,104 @@
 # Development log
 
+## 2026-11-14 — All sixty actual calibration assignments accepted
+
+- Accepted assignment 60 after reading its complete review, checking both frozen
+  identities and compiling its Python example. Its source/payload/ancestry,
+  complete-reading coverage, 683-link and standing-rule checks find no new
+  production or operational blocker. Its original 58-complete snapshot and
+  later root-attributed acceptance remain distinct from actual final closure.
+- All sixty real rows are now complete in ten waves, with no planned/running
+  identities. Root reconciled STATUS, NEXT_STEPS, handoff, session README,
+  project navigation and AGENTS with that actual result and the next A1–A6
+  inputs. The strict checker output is retained after acceptance, not inferred
+  from requested counts. Whole-project physical/product gates remain open.
+- The final root integration record preserves full106 and hosted d7 sources,
+  nested capability limits, original failures, practical commands and guarded
+  publication requirements. Complete documentary-source verification follows
+  on the committed immutable snapshot; no new full runtime gate is claimed.
+
+## 2026-11-14 — Accepted independent completion-accounting review
+
+- Accepted assignment 59's fixed 6242c6d review: its actual expected-56 gate
+  passes and premature expected-60 gate fails honestly. The current manifest
+  now has 59 accepted workers; the final worker is still running.
+- Independent checks cover every extracted source blob, 56 then-accepted notes,
+  164 ownership references / 153 distinct paths, five separate-session identity
+  sets, full 500-page coverage / 31 image declarations, original PDF bytes, four
+  exact local/public mappings and five source ancestries. Historical counts are
+  retained and are not silently rewritten to current completion.
+- Root read the review, verified both frozen hashes and compiled its Python
+  example. Earlier README corrections are retained and attributed. This is
+  accounting/provenance evidence, not another full suite or launch attestation.
+
+## 2026-11-14 — Accepted actual newer-runtime and context qualification
+
+- Accepted assignment 58 after reviewing its frozen evidence and compiling all
+  three retained Python examples. Actual CPython 3.13.5 passes the unchanged
+  nine-method pipeline with 71 tool children, no failures/errors/skips.
+- A separate twelve-process 3.12.14/3.13.5 matrix retains four exact own-runtime
+  matches and four expected cross-runtime mismatches with identical sources.
+  Failed/inconclusive engineering outcomes and every original input remain.
+  An explicitly bounded runtime projection diagnoses the difference but never
+  replaces full-byte public replay. The initial harness syntax error is retained.
+- This is finite Linux runtime evidence, not a full 3.13 gate or execution of
+  the declared 3.10 minimum. No production, test or package input changed.
+  The manifest now has 58 accepted assignments and two final reviews running.
+
+## 2026-11-14 — Final code passes all ten hosted jobs
+
+- Accepted assignment 55 after reviewing its frozen evidence and independently
+  fetching all ten completed/success job records at exact d7f6100. Four actual
+  core diagnostic ZIPs match API size/digest and embedded source; all contain
+  the exact 106-name test selection. Linux/macOS/Windows Release and Linux
+  ASan/UBSan/leaks each pass 106/106. Standalone passes 14/14 on each platform;
+  VST3 passes 8/8 Linux and 7/7 macOS/Windows.
+- Actual Windows diagnostics run the pipeline 9/9, metadata 24/24, graph 7/7
+  and demo 43/43 without skips; installation runs 16 methods with only its
+  existing POSIX DESTDIR exclusion. The binary-copy preservation repair now
+  has observed Windows evidence. Earlier failures remain unchanged history.
+- Fixed the two README composition/readiness continuation pointers found by
+  accounting review and updated the current M8 acceptance row and practical
+  project navigation. The final complete code and CaptureTools payload inputs
+  remain unchanged; these are documentation/record changes.
+- All sixty workers are now actually dispatched, with fifty-seven accepted.
+  Runtime-context, accounting and final independent review finish the last wave.
+
+## 2026-11-14 — Accepted practical handoff and complete milestone reconciliation
+
+- Accepted actual assignments 56/57. The independent guide review passes nineteen
+  CLI processes, twenty-four option checks and fifty-eight links; it retains an
+  initial harness-only usage-exit correction and requires no guide/code repair.
+- The M0–M9 reconciliation checks forty-eight actual code/build/data/test files,
+  source equality and ancestry, 91 source records / 45 controls / 18 chapel rows,
+  the zero-asset planned capture and the unchanged PDF. Its seven continuation
+  rows preserve actual subsystem ownership, the scanner G5 failure, nominal dry
+  Engine scope and separate physical/product gates. No runtime pass is inferred
+  from source inspection. Both records are linked from the current handoff.
+- Fifty-six assignments are accepted, with fifty-nine actual workers dispatched.
+  Fresh Windows, actual CPython 3.13 and final accounting reviews continue;
+  the sixtieth worker remains planned until actual dispatch.
+
+## 2026-11-14 — Published qualified code and completed nine calibration waves
+
+- Guarded non-force publication d7f6100 preserves concurrent 7ec79fb and both
+  exact tested source ancestors d377fab7/5e19022c. Root fetched the commit,
+  verified tree 0140c737 against local `2671fa5` and checked all three ancestries.
+  The published checkpoint contains 52 accepted records; later reviews remain
+  distinct from its exact snapshot and full 106-suite source.
+- Accepted assignment 53's acquisition plan: A1–A6, concrete physical input/disposition
+  requirements, actual global/subset limits and supported-format boundaries;
+  eleven actual CLI checks and 32 source identities remain its finite evidence.
+- Accepted assignment 54's source/report audit: 20 check groups, 22 fresh CLI processes,
+  thirteen complete summaries (eight matches/five expected source mismatches),
+  and one noncanonical rejection. All three original/final analyses agree only
+  under the explicitly bounded four-source-array projection; public replay
+  remains full-byte and does not relabel old reports as matching. Root compiled
+  all four frozen Python examples after the retained escaping correction.
+- Nine waves / 54 workers are accepted; 57 actual identities are dispatched.
+  Fresh platform, operational and whole-project handoff reviews continue.
+  Publication is held while final-source hosted jobs execute.
+
 ## 2026-11-14 — Accepted operations and preserved final standalone hosted evidence
 
 - Accepted assignment 52's runbook and fifteen actual command checks, including

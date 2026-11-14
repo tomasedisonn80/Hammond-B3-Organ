@@ -78,13 +78,16 @@ separate inputs and numerical references. Its
 preserves the concurrently active scanner and native standalone work. This
 research module does not yet establish a measured Leslie or change dry output.
 
-The independent [capture and calibration toolchain](docs/CALIBRATION_HANDOFF.md)
-adds full-stream audio inspection, canonical sample identities, corpus lineage
-and split audits, and fixed numerical comparisons. Its
-[sixty-assignment session](docs/development/2026-11-13-calibration/README.md)
-records the fresh full-PDF reading and separate implementation/acceptance work.
-These offline tools prepare M0/M8 evidence; actual hardware acquisition and
-physical calibration remain separate gates.
+The completed [capture and calibration toolchain](docs/CALIBRATION_HANDOFF.md)
+adds full-stream audio inspection, canonical identities, complete declared corpus
+relationships/splits, fixed policies, jobs/studies, readiness, exact report replay
+and movable CaptureTools. Its [sixty-agent session](docs/development/2026-11-13-calibration/README.md)
+accepts all sixty actual workers in ten waves, with complete 500-page text coverage
+and a [strict completion record](docs/development/2026-11-13-calibration/completion-check.json).
+The [final hosted matrix](docs/reviews/CALIBRATION_FINAL_HOSTED.md) passes all ten
+jobs at `d7f6100`, including 106/106 core suites in each configured platform job.
+The [next acquisition plan](docs/CALIBRATION_NEXT_ACQUISITION.md) names the actual
+pilot/chain/clock/uncertainty inputs; physical calibration and full M8 remain open.
 
 The selected source, contact, percussion and pedal models are **nominal and
 unmeasured**. Ideal contacts, percussion off and muted pedals preserve the
@@ -117,11 +120,14 @@ commit/push and observed remote-result workflow mandatory for future agents.
 
 ## Build and test
 
-An independent [capture/calibration-readiness track](docs/CALIBRATION_SCOPE.md)
-provides audio-file inspection, corpus split auditing and fixed comparison
-evidence, with file-job composition and readiness work continuing. Its [session record](docs/development/2026-11-13-calibration/README.md)
-retains sixty newly requested assignments separately from the other active work.
-Synthetic tool examples do not supply the missing physical recordings.
+The independent [capture/calibration toolchain](docs/CALIBRATION_SCOPE.md)
+provides audio inspection, complete declared corpus/split auditing, fixed policies,
+file jobs, bounded studies, declaration readiness and complete-report replay.
+The [runbook](docs/CALIBRATION_RUNBOOK.md) gives source and movable CaptureTools
+setup with explicit expected outcomes. The [acquisition sequence](docs/CALIBRATION_NEXT_ACQUISITION.md)
+names the actual next inputs; its [session record](docs/development/2026-11-13-calibration/README.md)
+keeps this work separate from other tracks. Synthetic examples do not supply
+physical recordings or fitting/calibration evidence.
 
 Requirements: a C++20 compiler, CMake 3.21 or newer, and Python 3.10 or newer.
 The core and authoring compiler need no downloaded audio/GUI framework.
@@ -205,7 +211,7 @@ bundle inventory alone proves plug-in execution or DAW/device readiness.
 | [Next steps](docs/NEXT_STEPS.md) | Next concrete tasks, dependencies and acceptance evidence |
 | [Standalone handoff](docs/STANDALONE_HANDOFF.md) | Native window setup, controls, replay, chapel audition, benchmark and current qualification |
 | [Scanner handoff](docs/SCANNER_HANDOFF.md) | Numerical source, executed gates and the unresolved same-hertz integration decision |
-| [Calibration handoff](docs/CALIBRATION_HANDOFF.md) | Audio/corpus/policy tools, explicit evidence limits and next composition work |
+| [Calibration handoff](docs/CALIBRATION_HANDOFF.md) | Complete capture pipeline, verified operations, source identities and next acquisition |
 | [Offline and pedal handoff](docs/PEDAL_HANDOFF.md) | Retained render, evidence, plot, install and pinned VST3 commands |
 | [Standalone session](docs/development/2026-11-13-next-phases/README.md) | This session's actual assignments, evidence and completion accounting |
 | [Remaining M3 and scanner gate](docs/M3_REMAINING_AND_SCANNER_GATE.md) | Concrete model, numerical-oracle and acquisition prerequisites for next development |
