@@ -287,6 +287,7 @@ endif()
 
 # Component-scoped installation is defined after all targets and tests.
 include(cmake/InstallHammondTools.cmake)
+include(cmake/InstallCaptureTools.cmake)
 include(cmake/InstallStandalone.cmake)
 
 if(HAMMOND_BUILD_STANDALONE AND BUILD_TESTING)

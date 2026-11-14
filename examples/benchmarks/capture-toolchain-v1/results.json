@@ -1,0 +1,1109 @@
+{
+  "array_inputs": [
+    {
+      "channel_count": 2,
+      "encoding": "domain-NUL, little-endian uint32 C,N, channel-major float64",
+      "frame_count": 1024,
+      "sha256": "3e4657d03756a5151129aaf89a79dbf3b81a4889f60ba0ef1d866261ebf4c156"
+    },
+    {
+      "channel_count": 2,
+      "encoding": "domain-NUL, little-endian uint32 C,N, channel-major float64",
+      "frame_count": 1024,
+      "sha256": "4496d0e8046bbd8dd1f9bd9dc38c737beca0d05da76d9ca0369f027ae7ffe275"
+    },
+    {
+      "channel_count": 2,
+      "encoding": "domain-NUL, little-endian uint32 C,N, channel-major float64",
+      "frame_count": 8192,
+      "sha256": "0a3641b04369eaf8f76c264fe2e1e683d8ba3ffc759f3cc90f0824797f567658"
+    },
+    {
+      "channel_count": 2,
+      "encoding": "domain-NUL, little-endian uint32 C,N, channel-major float64",
+      "frame_count": 8192,
+      "sha256": "ab1b46ad8f6f481c2e2f3064792910886630d03e21629472059283ea0eef69f3"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "audio-inspect-16384",
+      "category": "audio",
+      "complete_api_output": {
+        "sha256": "a0438e49ae9d547af55c8cfd08cb42b74b2b2bc2b7dd5b3df917e332657b3a82",
+        "size_bytes": 2072
+      },
+      "fixture": "audio/stereo-16384.f32",
+      "input_identity": {
+        "sha256": "3751871be0488d9762543b3d288c8370513c1fb2ba11c26aacc9e2d218ef010d",
+        "size_bytes": 131072
+      },
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "inspected"
+      },
+      "operation": "inspect",
+      "ordinary": {
+        "max_ns": 36477925,
+        "median_ns": 30854199,
+        "min_ns": 29070698,
+        "samples_ns": [
+          36477925,
+          30854199,
+          29070698
+        ]
+      },
+      "portable_output": {
+        "sha256": "017894ee596707eb2e4a6086ca1aca1d0f787640297b41be4118ee547787f5d8",
+        "size_bytes": 2027
+      },
+      "portable_output_change": "only audio input_path replaced by fixture-relative path",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 5294,
+        "elapsed_ns": 357690841,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 204533,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 31547491,
+        "included_in_statistics": false
+      },
+      "work": {
+        "channels": 2,
+        "complete_stream_validated": true,
+        "decoded_scalars": 32768,
+        "file_bytes": 131072,
+        "returned_window_frames": 0,
+        "sample_rate_hz": 48000,
+        "stream_frames": 16384,
+        "window_start": null
+      }
+    },
+    {
+      "case_id": "audio-window-16384",
+      "category": "audio",
+      "complete_api_output": {
+        "sha256": "1d8c83225a8ee5fa39eeca594c890e299bce1ab3c1d9eba4262302eae2acbdc9",
+        "size_bytes": 38200
+      },
+      "fixture": "audio/stereo-16384.f32",
+      "input_identity": {
+        "sha256": "3751871be0488d9762543b3d288c8370513c1fb2ba11c26aacc9e2d218ef010d",
+        "size_bytes": 131072
+      },
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "inspected"
+      },
+      "operation": "window",
+      "ordinary": {
+        "max_ns": 35452601,
+        "median_ns": 34621774,
+        "min_ns": 30043929,
+        "samples_ns": [
+          30043929,
+          35452601,
+          34621774
+        ]
+      },
+      "portable_output": {
+        "sha256": "282d3a7814c8c9fc45a78f8ecbd408aa268ab7aa9664af9fbd51ec5f059bf77b",
+        "size_bytes": 38155
+      },
+      "portable_output_change": "only audio input_path replaced by fixture-relative path",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 72346,
+        "elapsed_ns": 316208815,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 237621,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 36084806,
+        "included_in_statistics": false
+      },
+      "work": {
+        "channels": 2,
+        "complete_stream_validated": true,
+        "decoded_scalars": 32768,
+        "file_bytes": 131072,
+        "returned_window_frames": 1024,
+        "sample_rate_hz": 48000,
+        "stream_frames": 16384,
+        "window_start": 7680
+      }
+    },
+    {
+      "case_id": "audio-inspect-65536",
+      "category": "audio",
+      "complete_api_output": {
+        "sha256": "c15bf3fe06ec1d5b105707057e42dabeb2232a6b2adb178dbec1ab493a621e6f",
+        "size_bytes": 2077
+      },
+      "fixture": "audio/stereo-65536.f32",
+      "input_identity": {
+        "sha256": "74b5afd721206f34313a3dd02a0463c34382c3d33998befc481bf112ce9588d2",
+        "size_bytes": 524288
+      },
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "inspected"
+      },
+      "operation": "inspect",
+      "ordinary": {
+        "max_ns": 131742613,
+        "median_ns": 125323768,
+        "min_ns": 118502520,
+        "samples_ns": [
+          118502520,
+          125323768,
+          131742613
+        ]
+      },
+      "portable_output": {
+        "sha256": "9ab7ae4e56c94e1465b1b4fc44739ce7a95c6383fda1831352c373ded9cefa3d",
+        "size_bytes": 2032
+      },
+      "portable_output_change": "only audio input_path replaced by fixture-relative path",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 5294,
+        "elapsed_ns": 1280665287,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 204621,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 127399276,
+        "included_in_statistics": false
+      },
+      "work": {
+        "channels": 2,
+        "complete_stream_validated": true,
+        "decoded_scalars": 131072,
+        "file_bytes": 524288,
+        "returned_window_frames": 0,
+        "sample_rate_hz": 48000,
+        "stream_frames": 65536,
+        "window_start": null
+      }
+    },
+    {
+      "case_id": "audio-window-65536",
+      "category": "audio",
+      "complete_api_output": {
+        "sha256": "c73d5395449cfe06e46b6516ca902c413c83b9d1f2123e14943bd26cf2f4a957",
+        "size_bytes": 38214
+      },
+      "fixture": "audio/stereo-65536.f32",
+      "input_identity": {
+        "sha256": "74b5afd721206f34313a3dd02a0463c34382c3d33998befc481bf112ce9588d2",
+        "size_bytes": 524288
+      },
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "inspected"
+      },
+      "operation": "window",
+      "ordinary": {
+        "max_ns": 136647453,
+        "median_ns": 136206282,
+        "min_ns": 125425718,
+        "samples_ns": [
+          125425718,
+          136647453,
+          136206282
+        ]
+      },
+      "portable_output": {
+        "sha256": "f2a2f7304f9a58fb24142a6fcdd50f3d962bbcfe2f0301849072d3ee55c3737f",
+        "size_bytes": 38169
+      },
+      "portable_output_change": "only audio input_path replaced by fixture-relative path",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 72374,
+        "elapsed_ns": 1273675942,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 271525,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 129390494,
+        "included_in_statistics": false
+      },
+      "work": {
+        "channels": 2,
+        "complete_stream_validated": true,
+        "decoded_scalars": 131072,
+        "file_bytes": 524288,
+        "returned_window_frames": 1024,
+        "sample_rate_hz": 48000,
+        "stream_frames": 65536,
+        "window_start": 32256
+      }
+    },
+    {
+      "case_id": "comparison-1024",
+      "category": "comparison",
+      "complete_api_output": {
+        "sha256": "6163b0db462789dc56bc5dd252ee8e037a12fb17ea41fd4b50f157409e0ca237",
+        "size_bytes": 30984
+      },
+      "input_identities": {
+        "candidate": {
+          "channel_count": 2,
+          "encoding": "domain-NUL, little-endian uint32 C,N, channel-major float64",
+          "frame_count": 1024,
+          "sha256": "4496d0e8046bbd8dd1f9bd9dc38c737beca0d05da76d9ca0369f027ae7ffe275"
+        },
+        "reference": {
+          "channel_count": 2,
+          "encoding": "domain-NUL, little-endian uint32 C,N, channel-major float64",
+          "frame_count": 1024,
+          "sha256": "3e4657d03756a5151129aaf89a79dbf3b81a4889f60ba0ef1d866261ebf4c156"
+        }
+      },
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "rms_error_fs": 0.0078125,
+        "status": "calculated"
+      },
+      "operation": "compare_signals",
+      "ordinary": {
+        "max_ns": 11068607,
+        "median_ns": 10395768,
+        "min_ns": 10373493,
+        "samples_ns": [
+          11068607,
+          10395768,
+          10373493
+        ]
+      },
+      "portable_output": {
+        "sha256": "6163b0db462789dc56bc5dd252ee8e037a12fb17ea41fd4b50f157409e0ca237",
+        "size_bytes": 30984
+      },
+      "portable_output_change": "none",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 52408,
+        "elapsed_ns": 72317410,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 165464,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 10165001,
+        "included_in_statistics": false
+      },
+      "work": {
+        "candidate_offset_fs": 0.0078125,
+        "channels": 2,
+        "floor_fs": 1e-12,
+        "frames": 1024,
+        "frequencies": 8,
+        "frequencies_hz": [
+          0,
+          187.5,
+          375,
+          750,
+          1500,
+          3000,
+          6000,
+          12000
+        ],
+        "sample_rate_hz": 48000,
+        "spectral_terms_per_side": 16384,
+        "window": "hann_symmetric",
+        "window_samples_per_side": 2048
+      }
+    },
+    {
+      "case_id": "comparison-8192",
+      "category": "comparison",
+      "complete_api_output": {
+        "sha256": "59ef6f21bd443d67d2feda218409cb291dc0ff6c2bf563f4a9c85317dff5c62f",
+        "size_bytes": 31062
+      },
+      "input_identities": {
+        "candidate": {
+          "channel_count": 2,
+          "encoding": "domain-NUL, little-endian uint32 C,N, channel-major float64",
+          "frame_count": 8192,
+          "sha256": "ab1b46ad8f6f481c2e2f3064792910886630d03e21629472059283ea0eef69f3"
+        },
+        "reference": {
+          "channel_count": 2,
+          "encoding": "domain-NUL, little-endian uint32 C,N, channel-major float64",
+          "frame_count": 8192,
+          "sha256": "0a3641b04369eaf8f76c264fe2e1e683d8ba3ffc759f3cc90f0824797f567658"
+        }
+      },
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "rms_error_fs": 0.0078125,
+        "status": "calculated"
+      },
+      "operation": "compare_signals",
+      "ordinary": {
+        "max_ns": 73399800,
+        "median_ns": 72378331,
+        "min_ns": 71975194,
+        "samples_ns": [
+          72378331,
+          73399800,
+          71975194
+        ]
+      },
+      "portable_output": {
+        "sha256": "59ef6f21bd443d67d2feda218409cb291dc0ff6c2bf563f4a9c85317dff5c62f",
+        "size_bytes": 31062
+      },
+      "portable_output_change": "none",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 52408,
+        "elapsed_ns": 538103977,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 972376,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 73116186,
+        "included_in_statistics": false
+      },
+      "work": {
+        "candidate_offset_fs": 0.0078125,
+        "channels": 2,
+        "floor_fs": 1e-12,
+        "frames": 8192,
+        "frequencies": 8,
+        "frequencies_hz": [
+          0,
+          187.5,
+          375,
+          750,
+          1500,
+          3000,
+          6000,
+          12000
+        ],
+        "sample_rate_hz": 48000,
+        "spectral_terms_per_side": 131072,
+        "window": "hann_symmetric",
+        "window_samples_per_side": 16384
+      }
+    },
+    {
+      "case_id": "demo-corpus",
+      "category": "pipeline",
+      "complete_api_output": {
+        "sha256": "f9d763ef64db724521313a52750e805e2e2df3e3d632ce561fe3135a8401c04a",
+        "size_bytes": 7277
+      },
+      "expected_status": "pass",
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "pass"
+      },
+      "operation": "corpus",
+      "ordinary": {
+        "max_ns": 3541237,
+        "median_ns": 3416269,
+        "min_ns": 3406598,
+        "samples_ns": [
+          3416269,
+          3406598,
+          3541237
+        ]
+      },
+      "portable_output": {
+        "sha256": "f9d763ef64db724521313a52750e805e2e2df3e3d632ce561fe3135a8401c04a",
+        "size_bytes": 7277
+      },
+      "portable_output_change": "none",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 39267,
+        "elapsed_ns": 15000849,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 1059367,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 3817216,
+        "included_in_statistics": false
+      },
+      "work": {
+        "artifact_references": 3,
+        "captures": 3,
+        "declared_artifact_bytes": 48
+      }
+    },
+    {
+      "case_id": "demo-job-pass",
+      "category": "pipeline",
+      "complete_api_output": {
+        "sha256": "03dcebee82f827437ba215bebc1aa6e8db0c342fe753a14bed9edeeb5be269c8",
+        "size_bytes": 32694
+      },
+      "expected_status": "pass",
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "pass"
+      },
+      "operation": "job",
+      "ordinary": {
+        "max_ns": 8470197,
+        "median_ns": 8172206,
+        "min_ns": 7970169,
+        "samples_ns": [
+          8172206,
+          8470197,
+          7970169
+        ]
+      },
+      "portable_output": {
+        "sha256": "03dcebee82f827437ba215bebc1aa6e8db0c342fe753a14bed9edeeb5be269c8",
+        "size_bytes": 32694
+      },
+      "portable_output_change": "none",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 97509,
+        "elapsed_ns": 39955470,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 1115832,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 8837160,
+        "included_in_statistics": false
+      },
+      "work": {
+        "artifact_references": 3,
+        "captures": 3,
+        "declared_artifact_bytes": 48,
+        "declared_job_spectral_terms": 4,
+        "declared_job_window_samples": 4
+      }
+    },
+    {
+      "case_id": "demo-job-inconclusive",
+      "category": "pipeline",
+      "complete_api_output": {
+        "sha256": "40c6ba2947688d4c9c4275ea095abe46f0489facd298decc1dc432fb1ea09946",
+        "size_bytes": 32782
+      },
+      "expected_status": "inconclusive",
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "inconclusive"
+      },
+      "operation": "job",
+      "ordinary": {
+        "max_ns": 7966729,
+        "median_ns": 7476580,
+        "min_ns": 7140841,
+        "samples_ns": [
+          7476580,
+          7140841,
+          7966729
+        ]
+      },
+      "portable_output": {
+        "sha256": "40c6ba2947688d4c9c4275ea095abe46f0489facd298decc1dc432fb1ea09946",
+        "size_bytes": 32782
+      },
+      "portable_output_change": "none",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 97390,
+        "elapsed_ns": 39724057,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 1115792,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 7886543,
+        "included_in_statistics": false
+      },
+      "work": {
+        "artifact_references": 3,
+        "captures": 3,
+        "declared_artifact_bytes": 48,
+        "declared_job_spectral_terms": 4,
+        "declared_job_window_samples": 4
+      }
+    },
+    {
+      "case_id": "demo-job-fail",
+      "category": "pipeline",
+      "complete_api_output": {
+        "sha256": "4c4bf9c287fdf72d09147890dbaa73483c7d0ff95d8297598a87da8820105fdb",
+        "size_bytes": 32659
+      },
+      "expected_status": "failed",
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "failed"
+      },
+      "operation": "job",
+      "ordinary": {
+        "max_ns": 8718165,
+        "median_ns": 8349675,
+        "min_ns": 7401718,
+        "samples_ns": [
+          8349675,
+          8718165,
+          7401718
+        ]
+      },
+      "portable_output": {
+        "sha256": "4c4bf9c287fdf72d09147890dbaa73483c7d0ff95d8297598a87da8820105fdb",
+        "size_bytes": 32659
+      },
+      "portable_output_change": "none",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 97290,
+        "elapsed_ns": 39006160,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 1115744,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 7580041,
+        "included_in_statistics": false
+      },
+      "work": {
+        "artifact_references": 3,
+        "captures": 3,
+        "declared_artifact_bytes": 48,
+        "declared_job_spectral_terms": 4,
+        "declared_job_window_samples": 4
+      }
+    },
+    {
+      "case_id": "demo-study",
+      "category": "pipeline",
+      "complete_api_output": {
+        "sha256": "6cf434334a9a612e18224a986fbfb1e7636556be8669c44b526b9629b9208727",
+        "size_bytes": 119423
+      },
+      "expected_status": "failed",
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "status": "failed"
+      },
+      "operation": "study",
+      "ordinary": {
+        "max_ns": 36295316,
+        "median_ns": 36118502,
+        "min_ns": 35384294,
+        "samples_ns": [
+          36118502,
+          35384294,
+          36295316
+        ]
+      },
+      "portable_output": {
+        "sha256": "6cf434334a9a612e18224a986fbfb1e7636556be8669c44b526b9629b9208727",
+        "size_bytes": 119423
+      },
+      "portable_output_change": "none",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 244753,
+        "elapsed_ns": 254001269,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 1405809,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 35197364,
+        "included_in_statistics": false
+      },
+      "work": {
+        "artifact_references": 3,
+        "captures": 3,
+        "declared_artifact_bytes": 48,
+        "jobs": 3,
+        "study_spectral_terms": 12,
+        "study_window_samples": 12
+      }
+    },
+    {
+      "case_id": "demo-study-replay",
+      "category": "pipeline",
+      "complete_api_output": {
+        "sha256": "e81593b98384dc94f2d97799aaedca7c20ea84ada939272b8e4605a88936b998",
+        "size_bytes": 4260
+      },
+      "expected_status": "match",
+      "observed_outcome": {
+        "physical_fidelity": "not_established",
+        "replayed_engineering_status": "failed",
+        "saved_engineering_status": "failed",
+        "status": "match"
+      },
+      "operation": "replay",
+      "ordinary": {
+        "max_ns": 76722909,
+        "median_ns": 73251405,
+        "min_ns": 72161491,
+        "samples_ns": [
+          73251405,
+          72161491,
+          76722909
+        ]
+      },
+      "portable_output": {
+        "sha256": "e81593b98384dc94f2d97799aaedca7c20ea84ada939272b8e4605a88936b998",
+        "size_bytes": 4260
+      },
+      "portable_output_change": "none",
+      "separate_tracemalloc": {
+        "calls": 1,
+        "current_bytes_at_return": 82422,
+        "elapsed_ns": 398774152,
+        "included_in_ordinary_statistics": false,
+        "peak_bytes_during_call": 16789913,
+        "traceback_frames": 1
+      },
+      "warmup": {
+        "calls": 1,
+        "elapsed_ns": 78373871,
+        "included_in_statistics": false
+      },
+      "work": {
+        "artifact_references": 3,
+        "captures": 3,
+        "declared_artifact_bytes": 48,
+        "jobs": 3,
+        "study_spectral_terms": 12,
+        "study_window_samples": 12
+      }
+    }
+  ],
+  "clock": {
+    "adjustable": false,
+    "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+    "monotonic": true,
+    "resolution_seconds": 1e-09
+  },
+  "collected_at_utc": "2026-11-14T00:17:36.682302+00:00",
+  "collector": {
+    "sha256": "33a4dd7dafd675165ee5f86d04c04145948859ce7d865d2312482e99341e0973",
+    "size_bytes": 20353
+  },
+  "declared_source_limits": {
+    "capture_audio.py": {
+      "CHUNK_BYTES": 65536,
+      "MAX_CHANNELS": 16,
+      "MAX_CHUNKS": 4096,
+      "MAX_DECODED_SAMPLES": 134217728,
+      "MAX_FILE_BYTES": 268435456,
+      "MAX_SAMPLE_MAGNITUDE": 1000000.0,
+      "MAX_SAMPLE_RATE": 768000,
+      "MAX_SECONDS": 3600,
+      "MAX_WINDOW_FRAMES": 262144,
+      "MAX_WINDOW_SAMPLES": 1048576,
+      "MAX_WINDOW_SECONDS": 600
+    },
+    "capture_common.py": {},
+    "capture_corpus.py": {
+      "CHUNK_BYTES": 65536,
+      "MAX_CAPTURES": 512,
+      "MAX_DEPTH": 16,
+      "MAX_EDGES": 65536,
+      "MAX_FINDINGS": 18432,
+      "MAX_INDEX_BYTES": 1048576,
+      "MAX_INDEX_NODES": 65536,
+      "MAX_MANIFEST_BYTES": 65536,
+      "MAX_MANIFEST_NODES": 4096,
+      "MAX_PARENT_EDGES": 8192,
+      "MAX_TEXT": 2048,
+      "MAX_TOTAL_ARTIFACT_BYTES": 2147483648,
+      "MAX_TOTAL_AUDIO_BYTES": 268435456,
+      "MAX_TOTAL_MANIFEST_BYTES": 16777216
+    },
+    "capture_job.py": {
+      "MAX_ARTIFACT_REFERENCES": 256,
+      "MAX_CAPTURES": 64,
+      "MAX_EDGES": 4096,
+      "MAX_JOB_BYTES": 65536,
+      "MAX_JOB_DEPTH": 8,
+      "MAX_JOB_NODES": 4096,
+      "MAX_REPORT_BYTES": 16777216,
+      "MAX_REPORT_DEPTH": 32,
+      "MAX_REPORT_NODES": 1048576,
+      "MAX_REPORT_NUMBER": 4e+18,
+      "MAX_SOURCE_BYTES": 1048576,
+      "MAX_STREAM_FRAMES": 134217728,
+      "MAX_WINDOW_SAMPLES": 1048576,
+      "MAX_WINDOW_SECONDS": 600
+    },
+    "capture_readiness.py": {
+      "MAX_INPUT_BYTES": 65536,
+      "MAX_INPUT_DEPTH": 16,
+      "MAX_INPUT_NODES": 4096,
+      "MAX_NUMBER": 1000000000000.0,
+      "MAX_REPORT_BYTES": 1048576,
+      "MAX_REPORT_DEPTH": 24,
+      "MAX_REPORT_NODES": 16384
+    },
+    "capture_study.py": {
+      "MAX_JOBS": 8,
+      "MAX_LEAF_SNAPSHOTS": 3000,
+      "MAX_REPORT_BYTES": 16777216,
+      "MAX_REPORT_DEPTH": 40,
+      "MAX_REPORT_NODES": 1048576,
+      "MAX_REPORT_NUMBER": 4e+18,
+      "MAX_ROOT_SNAPSHOTS": 64,
+      "MAX_SOURCE_BYTES": 1048576,
+      "MAX_SPECTRAL_TERMS": 33554432,
+      "MAX_STUDY_BYTES": 65536,
+      "MAX_STUDY_DEPTH": 8,
+      "MAX_STUDY_NODES": 4096,
+      "MAX_WINDOW_SAMPLES": 8388608
+    },
+    "compare_capture.py": {
+      "MAX_CHANNELS": 16,
+      "MAX_FRAMES": 262144,
+      "MAX_FREQUENCIES": 64,
+      "MAX_POLICY_BYTES": 65536,
+      "MAX_POLICY_DEPTH": 8,
+      "MAX_POLICY_NODES": 4096,
+      "MAX_POLICY_NUMBER": 1000000.0,
+      "MAX_REPORT_NUMBER": 2e+18,
+      "MAX_SAMPLES": 4194304,
+      "MAX_SPECTRAL_WORK": 16777216
+    },
+    "make_capture_demo.py": {},
+    "validate_capture.py": {
+      "CHUNK_BYTES": 65536,
+      "MAX_DEPTH": 16,
+      "MAX_FILES": 32,
+      "MAX_FILE_BYTES": 268435456,
+      "MAX_INPUT_BYTES": 65536,
+      "MAX_NODES": 4096,
+      "MAX_NUMBER": 1000000000000.0,
+      "MAX_PARENTS": 16,
+      "MAX_TEXT": 2048,
+      "MAX_TOTAL_FILE_BYTES": 536870912
+    },
+    "verify_capture_report.py": {
+      "MAX_INPUT_BYTES": 65536,
+      "MAX_REPLAY_SNAPSHOTS": 12,
+      "MAX_REPORT_BYTES": 16777216,
+      "MAX_REPORT_NODES": 1048576,
+      "MAX_REPORT_NUMBER": 4e+18,
+      "MAX_SOURCE_BYTES": 1048576,
+      "MAX_SUMMARY_BYTES": 65536,
+      "MAX_SUMMARY_DEPTH": 12,
+      "MAX_SUMMARY_NODES": 8192
+    }
+  },
+  "demo_generation_inventory": {
+    "contract_origin": "project-proposed-capture-demo-v1",
+    "evidence_class": "synthetic_numerical_fixture",
+    "execution": "not_run",
+    "file_count": 16,
+    "files": [
+      {
+        "path": "EXPECTED.json",
+        "sha256": "8b3ade3def7f51119b90f5a65bc9fa3bf7c46ab561929a60acdd973245793396",
+        "size_bytes": 4425
+      },
+      {
+        "path": "README.md",
+        "sha256": "867618f49b41d88eaba13a86048190d4f0db30bc34b453adb9d51ce8fd1e4b08",
+        "size_bytes": 6127
+      },
+      {
+        "path": "corpus/audio/half.f32",
+        "sha256": "36d231b4ecc15924aea04f08725924f18ae4346fd287747791d7396eca3d5758",
+        "size_bytes": 16
+      },
+      {
+        "path": "corpus/audio/quarter.f32",
+        "sha256": "bac1c395abe23908b8c106a28b6c151bc25b9473d470f4d942775b5dfdf523e2",
+        "size_bytes": 16
+      },
+      {
+        "path": "corpus/audio/reference.f32",
+        "sha256": "fd801740524b1e1c23a61b5400725b76428652827ba1261b83243eb5ce551402",
+        "size_bytes": 16
+      },
+      {
+        "path": "corpus/corpus.json",
+        "sha256": "1d6e840f5c89ec0f021886e07bc0b0db5e0179fb6a3ce6f4a880f388c3b58361",
+        "size_bytes": 1295
+      },
+      {
+        "path": "corpus/half.json",
+        "sha256": "281945a1b21b473949eb1049c489f21d2e506c96fd859412a97737631d94d0f5",
+        "size_bytes": 4589
+      },
+      {
+        "path": "corpus/quarter.json",
+        "sha256": "2727e5b2ef50652d96be9e2b55880eba9390c1b6804addc7af2d39878f8f7e54",
+        "size_bytes": 4599
+      },
+      {
+        "path": "corpus/reference.json",
+        "sha256": "e3d5761fa8f6d3351c82fdc72a13df8c8db9458f07fba401cb22f1fe85fef970",
+        "size_bytes": 4599
+      },
+      {
+        "path": "job-fail.json",
+        "sha256": "f2fad01bdafbebd14517cb0d9f6e8b3ce8e1541135358308818671327c27e703",
+        "size_bytes": 787
+      },
+      {
+        "path": "job-inconclusive.json",
+        "sha256": "d66a0d0f5762ed6f961e9db2a36426e0b308973547d62ee25be9bf44f42568c6",
+        "size_bytes": 806
+      },
+      {
+        "path": "job-pass.json",
+        "sha256": "63f83d706b412cc4cd7a76957f924cb9c6970436593fdae3e0fd8724dea66e45",
+        "size_bytes": 790
+      },
+      {
+        "path": "policy-fail.json",
+        "sha256": "c1025c652a3b85be75b10420ae87aca2db6bd8bf748e0218e5b2cd260e77ee3c",
+        "size_bytes": 1346
+      },
+      {
+        "path": "policy-inconclusive.json",
+        "sha256": "23684a20f7cf263645fc7b4124804d248a114fba79973280818986ee48dd5e43",
+        "size_bytes": 1362
+      },
+      {
+        "path": "policy-pass.json",
+        "sha256": "8300754d2088849d6a8fe042f248543e1c9965229b4ad9cc220f45bfa31cccc5",
+        "size_bytes": 1348
+      },
+      {
+        "path": "study.json",
+        "sha256": "725e91cd3264d420018f2a6d269a27ed47f941e0e17b0abd09c81a71dafb717a",
+        "size_bytes": 710
+      }
+    ],
+    "permissions": "not_established",
+    "physical_fidelity": "not_established",
+    "schema_version": 1,
+    "total_size_bytes": 32831
+  },
+  "fixture_files": [
+    {
+      "path": "audio/stereo-16384.f32",
+      "sha256": "3751871be0488d9762543b3d288c8370513c1fb2ba11c26aacc9e2d218ef010d",
+      "size_bytes": 131072
+    },
+    {
+      "path": "audio/stereo-65536.f32",
+      "sha256": "74b5afd721206f34313a3dd02a0463c34382c3d33998befc481bf112ce9588d2",
+      "size_bytes": 524288
+    },
+    {
+      "path": "demo/EXPECTED.json",
+      "sha256": "8b3ade3def7f51119b90f5a65bc9fa3bf7c46ab561929a60acdd973245793396",
+      "size_bytes": 4425
+    },
+    {
+      "path": "demo/README.md",
+      "sha256": "867618f49b41d88eaba13a86048190d4f0db30bc34b453adb9d51ce8fd1e4b08",
+      "size_bytes": 6127
+    },
+    {
+      "path": "demo/corpus/audio/half.f32",
+      "sha256": "36d231b4ecc15924aea04f08725924f18ae4346fd287747791d7396eca3d5758",
+      "size_bytes": 16
+    },
+    {
+      "path": "demo/corpus/audio/quarter.f32",
+      "sha256": "bac1c395abe23908b8c106a28b6c151bc25b9473d470f4d942775b5dfdf523e2",
+      "size_bytes": 16
+    },
+    {
+      "path": "demo/corpus/audio/reference.f32",
+      "sha256": "fd801740524b1e1c23a61b5400725b76428652827ba1261b83243eb5ce551402",
+      "size_bytes": 16
+    },
+    {
+      "path": "demo/corpus/corpus.json",
+      "sha256": "1d6e840f5c89ec0f021886e07bc0b0db5e0179fb6a3ce6f4a880f388c3b58361",
+      "size_bytes": 1295
+    },
+    {
+      "path": "demo/corpus/half.json",
+      "sha256": "281945a1b21b473949eb1049c489f21d2e506c96fd859412a97737631d94d0f5",
+      "size_bytes": 4589
+    },
+    {
+      "path": "demo/corpus/quarter.json",
+      "sha256": "2727e5b2ef50652d96be9e2b55880eba9390c1b6804addc7af2d39878f8f7e54",
+      "size_bytes": 4599
+    },
+    {
+      "path": "demo/corpus/reference.json",
+      "sha256": "e3d5761fa8f6d3351c82fdc72a13df8c8db9458f07fba401cb22f1fe85fef970",
+      "size_bytes": 4599
+    },
+    {
+      "path": "demo/job-fail.json",
+      "sha256": "f2fad01bdafbebd14517cb0d9f6e8b3ce8e1541135358308818671327c27e703",
+      "size_bytes": 787
+    },
+    {
+      "path": "demo/job-inconclusive.json",
+      "sha256": "d66a0d0f5762ed6f961e9db2a36426e0b308973547d62ee25be9bf44f42568c6",
+      "size_bytes": 806
+    },
+    {
+      "path": "demo/job-pass.json",
+      "sha256": "63f83d706b412cc4cd7a76957f924cb9c6970436593fdae3e0fd8724dea66e45",
+      "size_bytes": 790
+    },
+    {
+      "path": "demo/policy-fail.json",
+      "sha256": "c1025c652a3b85be75b10420ae87aca2db6bd8bf748e0218e5b2cd260e77ee3c",
+      "size_bytes": 1346
+    },
+    {
+      "path": "demo/policy-inconclusive.json",
+      "sha256": "23684a20f7cf263645fc7b4124804d248a114fba79973280818986ee48dd5e43",
+      "size_bytes": 1362
+    },
+    {
+      "path": "demo/policy-pass.json",
+      "sha256": "8300754d2088849d6a8fe042f248543e1c9965229b4ad9cc220f45bfa31cccc5",
+      "size_bytes": 1348
+    },
+    {
+      "path": "demo/study.json",
+      "sha256": "725e91cd3264d420018f2a6d269a27ed47f941e0e17b0abd09c81a71dafb717a",
+      "size_bytes": 710
+    },
+    {
+      "path": "saved-study.json",
+      "sha256": "6cf434334a9a612e18224a986fbfb1e7636556be8669c44b526b9629b9208727",
+      "size_bytes": 119423
+    }
+  ],
+  "identity_checks": {
+    "array_inputs_unchanged": true,
+    "collector_unchanged": true,
+    "copied_tool_sources_unchanged": true,
+    "fixture_files_unchanged": true,
+    "original_tool_sources_unchanged": true
+  },
+  "limits": {
+    "cold_cache_storage_cost": "not_measured",
+    "cross_machine_comparison": "not_established",
+    "maximum_workload_execution": "not_run",
+    "physical_fidelity": "not_established",
+    "process_memory_bound": "not_established",
+    "real_time_suitability": "not_established"
+  },
+  "method": {
+    "cache_state": "uncontrolled; fixtures created and hashed before timing; one warmup per case",
+    "fixed_cases": 12,
+    "ordinary_samples_per_case": 3,
+    "output_encoding": "API dictionary encoded as sorted two-space UTF-8 JSON plus LF; not the compact audio CLI encoding",
+    "performance_threshold": null,
+    "physical_fidelity": "not_established",
+    "scheduler": "uncontrolled shared host; no CPU pinning or isolation",
+    "setup_api_calls": {
+      "capture_study.run_study": 1,
+      "make_capture_demo.build_demo": 1
+    },
+    "timed_scope": "public API call through return; setup, hashing, serialization and assertions excluded",
+    "top_level_profiled_api_calls": 60,
+    "traced_calls_per_case": 1,
+    "traced_scope": "Python allocations after setup/import/input allocation, during one separate call with returned result retained; not RSS or total process memory",
+    "warmups_per_case": 1
+  },
+  "observation_contract": "capture-resource-profile-v1",
+  "runtime": {
+    "gc_enabled": true,
+    "logical_cpu_count": 9,
+    "machine": "x86_64",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python_implementation": "CPython",
+    "python_version": "3.12.14",
+    "sys_platform": "linux"
+  },
+  "schema_version": 1,
+  "status": "completed_observation",
+  "tool_sources": [
+    {
+      "module": "capture_audio.py",
+      "sha256": "b1f6228932c15f6483808cbb36a407dcdd6919f5894439d93f8888b01d66113c",
+      "size_bytes": 29951
+    },
+    {
+      "module": "capture_common.py",
+      "sha256": "e06dd82e37dd178863af61aa66bee877da1fc7e498a47b729e060215ca79c3f2",
+      "size_bytes": 9625
+    },
+    {
+      "module": "capture_corpus.py",
+      "sha256": "1c68ca13157f767847258ccb74f3a22f49cc1d56f323cddeebd52f3ab85ed5ba",
+      "size_bytes": 39220
+    },
+    {
+      "module": "capture_job.py",
+      "sha256": "147002ac866a4451e6740eae69da9f914116339f89b657bae7d4c6ef41e3eded",
+      "size_bytes": 24302
+    },
+    {
+      "module": "capture_readiness.py",
+      "sha256": "215b2abd3614195151c5751248f2d40850653d794af1786e95eaedccf13bdc76",
+      "size_bytes": 11247
+    },
+    {
+      "module": "capture_study.py",
+      "sha256": "4b627a8c213ff43691e8011dca0a4206db8f4184dd32b5ea6edad4471f90e69d",
+      "size_bytes": 16740
+    },
+    {
+      "module": "compare_capture.py",
+      "sha256": "220a593499539db5f1e635db2eb15ba3c0aa7c6d001c80407fbffe93f75a9a0a",
+      "size_bytes": 33448
+    },
+    {
+      "module": "make_capture_demo.py",
+      "sha256": "d6006b6856ad484f5936e56786aeb5013c148c91fa49e373913ef1bb5484d204",
+      "size_bytes": 22329
+    },
+    {
+      "module": "validate_capture.py",
+      "sha256": "a872e069ba9744f6f8078f87b78ea300df1ee28aec58e104859580cdc09877af",
+      "size_bytes": 24827
+    },
+    {
+      "module": "verify_capture_report.py",
+      "sha256": "23dc1c316232c27345ce35beec667a1e604847dc30b31b9b0b8bfc63423dd2d4",
+      "size_bytes": 23380
+    }
+  ]
+}

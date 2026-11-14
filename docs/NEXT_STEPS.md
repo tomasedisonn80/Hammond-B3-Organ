@@ -8,13 +8,16 @@ The fresh 500-page reading and independently reviewed audio/corpus/comparison
 contracts and independent decoder/corpus/metric acceptance are complete.
 Fixed policy evaluation, adversarial audio/corpus admission, identity-bound file
 jobs and declaration readiness are implemented and independently qualified.
-The numerical/schema and observed portability repairs pass the combined 99-suite
-local gate, including the preserved standalone progress repair from `0085e33`.
-The bounded fixed-job study and reproducible synthetic archive now pass independent
-acceptance and their coherent source passes 16/16 focused suites. Publish the
-completed checkpoints and inspect fresh hosted outcomes. Complete exact report replay and its independent corruption
-checks, then the separate CaptureTools installation, relocation and operating
-guide. Preserve original identities, all valid outcomes and complete snapshots.
+The accepted replay and separate 57-file CaptureTools package now pass the
+[coherent 103-suite local gate](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md).
+Seven waves and 42 assignments are accepted. Publish the exact tested source and
+its retained reviews, preserve inspected concurrent advances, and observe fresh
+hosted outcomes for the Windows preservation-fixture repair and package/replay.
+Resource profiling identified a metadata read allocating from its maximum cap;
+qualify the minimal observed-size read change with independent failure and report
+identity checks before accepting it. Continue graph/lineage, failure preservation,
+physical-claim boundaries, clean installation and operational handoff assignments.
+Preserve original identities, all valid outcomes and complete snapshots.
 No step fits physical model
 parameters or clears an acquisition gate through synthetic fixtures.
 Existing v1 metadata validation remains valid; the new companion tools provide

@@ -11,14 +11,16 @@ All 500 PDF pages were freshly read by six distinct workers; the
 [coverage record](research/CALIBRATION_ATLAS_REVIEW.md) retains exact text and
 selected visual coverage. The clean starting source passed 85/85 local Release
 suites. Audio, corpus and comparison contracts are frozen and independently reviewed.
-The first thirty-four assignments are accepted, completing five logical waves
-and the study/demo producer and independent acceptance pairs in wave 6.
+Forty-two distinct assignments are accepted: seven complete logical waves.
+Wave 8 begins with measured allocation repair, independent acceptance and corpus
+graph qualification; running assignments remain separate from accepted results.
 The JSON foundation passes 49
 independent methods and session accounting passes 27 methods. Separate acceptance
 of the decoder, corpus auditor and metric producer passes 41, 47 and 42 methods,
 respectively, repeated by root. Fixed policy evaluation passes 49 independent
-methods. Additional corpus admission passes 57 methods; audio admission passes
-60 methods with two explicit native-capability skips. Those suites exposed a
+methods. The original wave-4 corpus admission passed 57 methods; audio admission passed
+60 with two explicit native-capability skips. The integrated suites now contain
+59 corpus methods and 63 audio methods, including two capability skips. Those suites exposed a
 directory-close descriptor leak and malformed-header error-ordering defect;
 both repairs pass the retained regressions. The reviewed file-job runner passes
 81 independent methods, including shared metadata, all-input snapshots and
@@ -28,20 +30,30 @@ Additional numerical acceptance passes 19 methods with independently calculated
 high-precision expectations. Schema review completes 665 documented cases and
 verifies a v1 terminal-newline pattern repair without changing v1 semantics.
 The bounded study passes 61 independent methods and the reproducible synthetic
-demo passes 43; every complete failed/inconclusive job remains visible. The
+demo passes 43; every complete failed/inconclusive job remains visible. Complete
+report replay passes 69 independent methods and compares all canonical bytes
+while preserving the underlying engineering outcome. The separate 57-file
+CaptureTools package passes 16 independent installation methods, including
+relocation with private source/build directories removed; the unchanged 23-file
+OfflineTools component passes its two maintained methods. The
 [combined wave-5 source](reviews/CALIBRATION_WAVE5_INTEGRATION.md) passed 99/99
 SDK-free Release suites, including the separately owned standalone progress
 repair. The later [study/demo source](reviews/CALIBRATION_STUDY_DEMO_INTEGRATION.md)
 passes its own 16/16 focused suites. The actual manifest distinguishes accepted and running work.
 Physical calibration remains unqualified.
 
-Hosted checks at `779fb6e` passed all three native standalone and VST3 platform
-jobs and the Linux sanitizer job, but the general Release jobs failed on all
-three platforms. The [portability follow-up](reviews/CALIBRATION_HOSTED_PORTABILITY.md)
-retains the logs and diagnoses. Windows canonical-output and canonical-path test
-repairs pass locally. The standalone repair is integrated from `0085e33` and
-passes the combined local gate; fresh hosted qualification remains open. Current admission suites
-contain 63 audio methods (two capability skips) and 58 corpus methods.
+The [hosted recheck at `955fc4c`](reviews/CALIBRATION_HOSTED_RECHECK.md) records
+all ten completed jobs: nine succeed, while Windows Release passes 100/101 suites
+and fails only the demo fixture's assumption about native symlink-target spelling.
+Linux/macOS Release and Linux sanitizer pass 101/101; all three native standalone
+and VST3 platforms pass their configured suites. Those results resolve the earlier
+canonical-output, path-hook and standalone progress failures at this source.
+Root's isolated target-preservation fixture repair passes all 43 demo methods
+locally; fresh Windows qualification remains open. Replay/install source was
+absent from that hosted tree. The later [combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
+passes 103/103 unfiltered local Release suites in 197.85 seconds. Its exact tree
+excludes the subsequent allocation optimization. Composition review passes 220
+finite cases; the retained resource profile and accounting audit complete wave 7.
 
 ## Active native standalone continuation
 

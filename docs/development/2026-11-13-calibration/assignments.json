@@ -446,7 +446,7 @@
     {
       "assignment": 35,
       "wave": 6,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/cal_w6_a35",
       "scope": "Define and implement bounded complete-report replay against original job or study archives",
       "note": "35-report-replay.md",
@@ -459,7 +459,7 @@
     {
       "assignment": 36,
       "wave": 6,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/cal_w6_a36",
       "scope": "Independently review and accept complete-report replay, corruption admission and failure preservation",
       "note": "36-replay-acceptance.md",
@@ -472,7 +472,7 @@
     {
       "assignment": 37,
       "wave": 7,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/cal_w7_a37",
       "scope": "Package the offline capture pipeline as a separate relocatable CaptureTools component",
       "note": "37-capture-install.md",
@@ -486,74 +486,107 @@
     {
       "assignment": 38,
       "wave": 7,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w7_a38",
+      "scope": "Independently accept CaptureTools installation, dependency closure, relocation and existing-component preservation",
+      "note": "38-install-acceptance.md",
+      "owned_files": [
+        "tests/test_capture_install.py",
+        "docs/CAPTURE_INSTALL_REVIEW.md",
+        "docs/development/2026-11-13-calibration/38-install-acceptance.md"
+      ]
     },
     {
       "assignment": 39,
       "wave": 7,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w7_a39",
+      "scope": "Independently audit actual hosted outcomes and portability repairs at the published study/demo checkpoint",
+      "note": "39-hosted-recheck.md",
+      "owned_files": [
+        "docs/reviews/CALIBRATION_HOSTED_RECHECK.md",
+        "docs/development/2026-11-13-calibration/39-hosted-recheck.md"
+      ]
     },
     {
       "assignment": 40,
       "wave": 7,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w7_a40",
+      "scope": "Collect a reproducible bounded observation of offline capture runtime cost and Python allocation peaks",
+      "note": "40-resource-profile.md",
+      "owned_files": [
+        "examples/benchmarks/capture-toolchain-v1/collect.py",
+        "examples/benchmarks/capture-toolchain-v1/results.json",
+        "examples/benchmarks/capture-toolchain-v1/README.md",
+        "docs/reviews/CALIBRATION_RESOURCE_PROFILE.md",
+        "docs/development/2026-11-13-calibration/40-resource-profile.md"
+      ]
     },
     {
       "assignment": 41,
       "wave": 7,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w7_a41",
+      "scope": "Audit new study, replay and installed-package contract/schema/example consistency",
+      "note": "41-composition-consistency.md",
+      "owned_files": [
+        "docs/reviews/CALIBRATION_COMPOSITION_CONSISTENCY.md",
+        "docs/development/2026-11-13-calibration/41-composition-consistency.md"
+      ]
     },
     {
       "assignment": 42,
       "wave": 7,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "complete",
+      "agent": "/root/cal_w7_a42",
+      "scope": "Independently audit retained assignment accounting, source/publication mappings and future-agent handoff",
+      "note": "42-accounting-audit.md",
+      "owned_files": [
+        "docs/reviews/CALIBRATION_ACCOUNTING_AUDIT.md",
+        "docs/development/2026-11-13-calibration/42-accounting-audit.md"
+      ]
     },
     {
       "assignment": 43,
       "wave": 8,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/cal_w8_a43",
+      "scope": "Investigate and minimally reduce bound-sized confined metadata read allocation while preserving admission and snapshots",
+      "note": "43-metadata-allocation.md",
+      "owned_files": [
+        "tools/capture_corpus.py",
+        "docs/reviews/CALIBRATION_METADATA_ALLOCATION.md",
+        "docs/development/2026-11-13-calibration/43-metadata-allocation.md",
+        "examples/benchmarks/capture-toolchain-v1/check_allocation.py",
+        "examples/benchmarks/capture-toolchain-v1/allocation_comparison.json"
+      ]
     },
     {
       "assignment": 44,
       "wave": 8,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/cal_w8_a44",
+      "scope": "Independently accept size-aware confined metadata reads and unchanged dependent archive/replay/install behavior",
+      "note": "44-metadata-read-acceptance.md",
+      "owned_files": [
+        "tests/test_capture_metadata_read.py",
+        "docs/reviews/CALIBRATION_METADATA_ACCEPTANCE.md",
+        "docs/development/2026-11-13-calibration/44-metadata-read-acceptance.md"
+      ]
     },
     {
       "assignment": 45,
       "wave": 8,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/cal_w8_a45",
+      "scope": "Independent corpus graph scale, lineage, leakage and permutation acceptance",
+      "note": "45-corpus-graph.md",
+      "owned_files": [
+        "tests/test_capture_graph_scale.py",
+        "docs/reviews/CALIBRATION_GRAPH_ACCEPTANCE.md",
+        "docs/development/2026-11-13-calibration/45-corpus-graph.md"
+      ]
     },
     {
       "assignment": 46,
