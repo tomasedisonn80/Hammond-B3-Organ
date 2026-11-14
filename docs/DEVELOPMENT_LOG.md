@@ -1,5 +1,90 @@
 # Development log
 
+## 2026-11-14 — Accepted operations and preserved final standalone hosted evidence
+
+- Accepted assignment 52's runbook and fifteen actual command checks, including
+  four exact replay outcomes and original-output preservation. Linked the guide
+  from the repository README and calibration handoff without changing the
+  57-file package inventory. The manifest has 52 accepted / 55 actual workers.
+- Inspected the concurrent 7ec79fb documentation-only closure and preserved all
+  ten changed paths, successful hosted records at 272 and next M9 contracts.
+  Those 103-suite outcomes remain separate from this new 106-suite source.
+- The merged a77eb83 archive passes 41/41 repository-integrity methods in
+  2.459 seconds. Its production, tests, build, model and data bytes are unchanged
+  from the full qualified 48a1907 source. Assignment 55 owns fresh hosted review
+  after the next guarded publication; root will hold publication while it runs.
+
+## 2026-11-14 — Preserved concurrent standalone completion and accepted setup compatibility
+
+- The expected-head publication guard detected `27209a7` before changing main.
+  Root inspected its 28 paths, merged all completed standalone records and
+  current M9/PLAN instructions, preserved both logs, and retained the already
+  qualified binary-copy installation fixture. No production/test/build/model
+  bytes differ between merged `346d4ea` and the 106-suite calibration source.
+- Its own fresh archive passes 16/16 installation methods in 6.207 seconds and
+  41/41 repository-integrity methods in 2.434 seconds. The full gate remains
+  attributed to exact `48a1907`; the affected documentation/install gates are
+  separately retained in the wave-8 integration report.
+- Accepted assignments 50/51: fresh setup completes 51 commands and 15 grouped
+  checks, including exact 57+23 co-installation, relocation and public workflows
+  after private source/build deletion. Compatibility completes 18 cases against
+  158 identified files and reproduces the raw Git-filter repair independently.
+  Core/VST3/control/state/profile identities and the original PDF are preserved;
+  concurrent standalone changes are explicitly retained and attributed.
+- The calibration manifest now records 51 accepted assignments and three running
+  workers. Operational/acquisition guides and final report-identity review finish
+  wave 9 before the six actual final-wave assignments.
+
+## 2026-11-14 — Qualified combined calibration source and accepted hosted review
+
+- Fresh immutable source `48a19074b7a99ab6a50ea1e29c1114d5ba95fc0a`, tree
+  `3edea0838b75feb06c19e151ec8539e80646fc03`, configures, fully builds and
+  passes **106/106 unfiltered SDK-free Release suites in 192.51 seconds**.
+  Its equal-tree GitHub source is `5e19022c8696023bb1aa841ebea2eaeec0d719a3`.
+  [The integration record](reviews/CALIBRATION_WAVE8_INTEGRATION.md) retains
+  actual commands, log identities, source mappings and excluded scopes.
+- Accepted actual assignment 49's completed hosted review at `3b0979b`:
+  nine successful jobs, one Windows installation-fixture failure. Four actual
+  diagnostic ZIPs match GitHub SHA-256/size and embedded revision. Windows
+  demo passes all 43 methods without skips; replay and platform capability
+  counters are explicitly retained. Its full job log equals root's earlier
+  capture, resolving the temporary metadata-lag uncertainty.
+- The independent affected-installation check passes 1/1 from immutable `c352d68`;
+  root's separate full installation run passed 16/16. Both remain Linux evidence.
+  The new full source includes that repair and the actual stream-boundary fix;
+  observe its next real Windows run after publication.
+- The manifest records 49 accepted workers and three running assignments;
+  clean setup, compatibility and the operating guide are in progress. The
+  historical full-gate snapshot keeps its own 48-accepted/51-dispatched counts.
+- Added a dated CaptureTools distribution inventory after compatibility review
+  found the existing rights handoff omitted the new source-only component.
+  Existing project/PDF rights decisions are unchanged and no license is invented.
+
+## 2026-11-14 — Completed calibration wave 8 and retained portability repairs
+
+- Accepted actual assignments 43–48: a minimal metadata allocation change with
+  retained before/after reports and independent 357-method acceptance, seven
+  graph methods covering 43 complete audits, a real-pipe process repair with
+  nine independent methods/71 child processes, and 30 evidence-boundary audit cases.
+  The session now has 48 accepted workers in 8 complete logical waves.
+- The original pipe matrix retained 24 failing subcases; a first producer candidate
+  then failed the generator's independent-script contract. Both failures are
+  retained. The final guard preserves all 228 existing top-level definitions and
+  standalone generator/validator dependencies; no numerical policy changed.
+- Hosted `3b0979b` has 9 successful jobs and one Windows Release failure: 102/103 suites.
+  The prior demo defect is resolved; the installation fixture expected LF from a
+  native CMake text writer. Root's c352d68 copies literal binary marker bytes
+  instead; all 16 installation methods pass from that frozen archive in 6.133 s.
+  The exact repaired test SHA is c7731f8bbcec56ed65243bb483cf59031048d978ebd0b9a7582ea6a429ea3602.
+  Native Windows requalification of the new fixture remains pending.
+- Root proved Git text-auto filtering changed valid raw float32 bytes `410d0a3f`.
+  Marking `*.f32` binary preserves the exact blob; original demo/PDF bytes are unchanged.
+  [The byte-identity record](reviews/CALIBRATION_RAW_GIT_IDENTITY.md) retains
+  the before/after evidence. No artificial physical measurement was introduced.
+- Updated the acquisition protocol's stale future-tooling/current-task pointers
+  and led the handoff with verified `3b0979b` while retaining older source mappings.
+  Fresh setup, compatibility and actual hosted-outcome review continue in wave 9.
+
 ## 2026-11-14 — Published complete session and all final hosted gates passed
 
 - Published `27209a7fec075b082aa911c9ea2159938deaae85`, tree

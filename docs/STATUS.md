@@ -11,9 +11,17 @@ All 500 PDF pages were freshly read by six distinct workers; the
 [coverage record](research/CALIBRATION_ATLAS_REVIEW.md) retains exact text and
 selected visual coverage. The clean starting source passed 85/85 local Release
 suites. Audio, corpus and comparison contracts are frozen and independently reviewed.
-Forty-two distinct assignments are accepted: seven complete logical waves.
-Wave 8 begins with measured allocation repair, independent acceptance and corpus
-graph qualification; running assignments remain separate from accepted results.
+Fifty-two distinct assignments are accepted: eight complete logical waves plus
+hosted-package, fresh-setup, compatibility and operational reviews in wave 9.
+Fifty-five actual workers have been dispatched; the manifest distinguishes
+the remaining running and planned work.
+The measured allocation repair passes 357 methods of independent acceptance and
+a separate 15-suite coherent capture gate. Corpus graph acceptance covers 512
+recorded synthetic captures and exact lineage/split relationships. The executable
+stream guard passes nine independent methods invoking 71 real child processes,
+preserves complete files and standalone generator/validator dependencies, and
+retains all original failures. Evidence-boundary review passes 30 finite cases.
+Wave 9 reviews actual hosted results, clean setup, compatibility and next work.
 The JSON foundation passes 49
 independent methods and session accounting passes 27 methods. Separate acceptance
 of the decoder, corpus auditor and metric producer passes 41, 47 and 42 methods,
@@ -42,33 +50,29 @@ repair. The later [study/demo source](reviews/CALIBRATION_STUDY_DEMO_INTEGRATION
 passes its own 16/16 focused suites. The actual manifest distinguishes accepted and running work.
 Physical calibration remains unqualified.
 
-The [hosted recheck at `955fc4c`](reviews/CALIBRATION_HOSTED_RECHECK.md) records
-all ten completed jobs: nine succeed, while Windows Release passes 100/101 suites
-and fails only the demo fixture's assumption about native symlink-target spelling.
-Linux/macOS Release and Linux sanitizer pass 101/101; all three native standalone
-and VST3 platforms pass their configured suites. Those results resolve the earlier
-canonical-output, path-hook and standalone progress failures at this source.
-Root's isolated target-preservation fixture repair passes all 43 demo methods
-locally and on actual Windows at `6214032f`; the separate
-[final standalone audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md) records that
-completed gate. Replay/install source was
-absent from that hosted tree. The later [combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
-passes 103/103 unfiltered local Release suites in 197.85 seconds. Its exact tree
-excludes the subsequent allocation optimization. Composition review passes 220
-finite cases; the retained resource profile and accounting audit complete wave 7.
+The historical [hosted recheck at `955fc4c`](reviews/CALIBRATION_HOSTED_RECHECK.md)
+retains the earlier Windows demo fixture failure. At the later published
+`3b0979b`, Linux/macOS Release and Linux sanitizers pass 103/103; all six native
+standalone/VST3 platform jobs succeed. Windows passes 102/103, including the
+repaired demo and replay, but its new installation fixture assumes LF for a
+CMake text writer. Root replaced that marker with an exact binary copy; the
+frozen repaired installation suite passes 16/16 locally. A fresh Windows result
+for this repair remains pending. The [completed hosted package review](reviews/CALIBRATION_HOSTED_PACKAGE_RECHECK.md)
+retains actual method results, capability-dependent skips and all diagnostic
+artifact identities.
+The [local combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
+passed 103/103 suites before the later allocation and CLI changes. The later [full coherent source](reviews/CALIBRATION_WAVE8_INTEGRATION.md) now
+passes 106/106 suites in 192.51 seconds after a fresh complete build. Its exact
+tested tree includes the allocation/graph/CLI changes and both byte-preservation
+repairs; fresh hosted qualification remains separate.
 
-Root subsequently integrated publication `3b0979b` with the completed standalone
-records. The [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md)
-retains fresh frozen-source replay **69/69** and installation **16/16** local
-methods. Actual 3b Windows core passes **102/103**: the new package's late-abort
-test compared an LF sentinel with CMake's CRLF bytes. A newline-independent
-sentinel preserves all partial-package assertions and passes all 16 installation
-methods locally. Published closure `27209a7f` now passes **103/103** core suites
-on Linux, Windows and macOS and Linux sanitizers/leaks. Actual Windows diagnostics
-show 15 installation passes plus one existing POSIX-only skip; the corrected
-late-abort case executes successfully. All ten jobs are completed/success in the
-linked integration record. No production or standalone payload changed in this
-fixture repair.
+The separately preserved standalone closure at `27209a7f` passes all ten hosted
+jobs with 103/103 core suites; its alternate newline-free install sentinel has
+15 Windows passes and one POSIX-only skip. That historical source predates the
+allocation/CLI changes and does not qualify the new 106-suite source or its
+literal binary-copy fixture. The [concurrent results](reviews/STANDALONE_CLOSURE_HOSTED_RESULTS.json)
+retain that distinct completed evidence. The [operations guide](CALIBRATION_RUNBOOK.md)
+provides verified source/installed commands and expected nonzero outcomes.
 
 ## Completed native standalone continuation
 

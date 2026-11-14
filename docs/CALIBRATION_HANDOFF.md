@@ -156,9 +156,29 @@ inventory, existing-destination rejection and disclosed partial-copy boundary.
 Independent installation acceptance passes 16 methods, including execution after
 private source/build deletion; the old 23-file OfflineTools regression also passes.
 
+## Operational guide
+
+The [complete runbook](CALIBRATION_RUNBOOK.md) gives verified source and installed
+commands, expected exits, fresh-output handling, complete replay interpretation,
+partial failures and continuation rules. Assignment 52 executed fifteen source
+commands and four exact replays; assignment 50 separately owns the clean
+co-installation/relocation evidence.
+
 ## Current integration and next work
 
-The reviewed first 34 assignments are published at
+The latest verified published checkpoint is
+`3b0979bd0d30ce96bca0bcd57bd8f730eaadd1bf`, tree
+`656c5f117060210b3df656c62318d5a672fc306d`, containing the first 42 accepted
+assignments and preserving the concurrent `6214032` native test advance. Its
+full tested source is retained as reachable commit `7caee9e5a1aadfa36f2a87b6855684cbd730d803`.
+Later assignments 43–48 are accepted locally: the minimal metadata allocation
+change, independent graph qualification, process-level stream repair and evidence
+boundary review. Their
+[15-suite allocation gate](reviews/CALIBRATION_ALLOCATION_INTEGRATION.md)
+is separate from the later accepted stdout/stderr repair and the later [106-suite combined gate](reviews/CALIBRATION_WAVE8_INTEGRATION.md)
+and its publication record.
+
+Historically, the reviewed first 34 assignments were published at
 `955fc4c41f74ada094f14fbaf386c943811e9050`, tree
 `70956d0f0e125d57abfbf1aed56460c067f8ef28`, verified after fetching main.
 The earlier [wave-4 report](reviews/CALIBRATION_WAVE4_INTEGRATION.md) records 11/11 focused
@@ -177,30 +197,34 @@ the observed Release failures, the local CLI/fixture repairs and the outstanding
 hosted recheck. The [later completed matrix](reviews/CALIBRATION_HOSTED_RECHECK.md)
 resolves those specific earlier failures at `955fc4c`, while retaining a new
 Windows demo-fixture spelling failure. Its isolated preservation-test repair
-passes locally and on actual Windows at `6214032f`, as retained in the
-[standalone platform audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md).
-Replay and the 57-file package
+passed locally and then all 43 methods passed on actual Windows at `3b0979b`.
+The [subsequent hosted review](reviews/CALIBRATION_HOSTED_PACKAGE_RECHECK.md)
+retains a separate installation-fixture newline failure and the later local
+byte-copy repair, awaiting its own new Windows run. Replay and the 57-file package
 are independently accepted. Their [combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
 passes 103/103 unfiltered local Release suites; the exact source mapping and logs
 are retained separately from later documentation. Resource profiling, the
 220-case composition review and the accounting audit complete seven waves and
-42 accepted assignments. Wave 8 qualifies the measured metadata allocation
-change and corpus graph behavior before the remaining operational handoff work.
+42 accepted assignments at that publication. The current manifest records 52
+accepted assignments and eight complete waves, with 55 actual workers dispatched.
+Clean setup, compatibility and operation reviews are accepted; acquisition,
+report-identity and final handoff reviews continue.
 Keep the complete original archives and failure outcomes. Later installation
 and relocation acceptance must include every imported module and preserve the
 existing offline-tools component. The session manifest is the actual accounting
 authority; running or planned workers are not accepted results.
 
-The later 3b Windows core job passes 102/103 suites and exposes a different
-package-test assumption: CMake writes CRLF for a newline-bearing sentinel.
-Root's newline-independent sentinel leaves the late-abort and partial-package
-preservation assertions intact and passes all 16 local installation methods.
-The [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md)
-names that failure, the exact merged source and focused 69/69 replay gate.
-The corrected fixture now passes actual Windows at `27209a7f`: 15 installation
-methods pass, one existing POSIX-only method skips, and all 103 outer CTest suites
-pass. All ten hosted jobs complete successfully at that integrated closure.
-The original 102/103 failure retains its own source and diagnostics.
+The inspected concurrent `27209a7` publication completes the separate standalone
+session and retains its [actual platform audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md),
+including the earlier demo repair's Windows pass at `6214032f`. Its
+[concurrent integration record](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md)
+also records all ten successful hosted jobs at `27209a7f`, including 103/103
+core suites and the alternative newline-free marker with 15 Windows installation
+passes/one POSIX-only skip. That source predates the new allocation/CLI changes. This merged
+calibration source retains the literal binary-copy fixture already
+qualified at `c352d68` and in the full 106-suite source, while preserving both
+tracks' original evidence and histories. Only the affected installation and
+repository-documentation gates need renewed qualification for this merge.
 
 ## Evidence and continuation
 

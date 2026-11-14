@@ -62,6 +62,9 @@ completes all ten jobs successfully: core 103/103 in all four jobs, standalone
 14/14 on each platform, and VST3 8/8 Linux / 7/7 Windows/macOS. Exact source and
 Windows package-fixture diagnostics remain separate from the 621 artifact audit.
 
+The [capture operations guide](docs/CALIBRATION_RUNBOOK.md) provides source and
+installed workflows, explicit expected outcomes and complete report replay.
+
 The [scanner continuation](docs/SCANNER_HANDOFF.md) now includes a strict circuit
 graph/compiler, independent primary-source review, AC/transient references and
 prepared numerical modules. The observed G5 same-hertz failure must be resolved

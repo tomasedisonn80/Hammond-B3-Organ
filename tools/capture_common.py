@@ -9,16 +9,94 @@ Keep source files quiescent: portable checks are not a concurrent-filesystem san
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import math
 import os
 from pathlib import Path
 import stat
+import sys
 import tempfile
 
 
 class DataError(ValueError):
     """Malformed, changing, unsupported or unsafe offline data."""
+
+
+def _cli_exit(entrypoint, diagnostic) -> int:
+    """Finish a real CLI's buffered delivery before choosing its process status.
+
+    Call only at the executable boundary, not around imported API operations.
+    A failed original standard stream is closed so interpreter finalization
+    cannot replace the intended exit with 120 by retrying its buffered bytes.
+    Custom streams and healthy original streams remain owned by their caller.
+    """
+    originals = {name: (getattr(sys, name), getattr(sys, f"__{name}__"))
+                 for name in ("stdout", "stderr")}
+    cleanup_failures = []
+
+    def retire(name, stream, primary):
+        selected, original = originals[name]
+        if (stream is not selected or stream is not original
+                or stream is not getattr(sys, name)
+                or stream is not getattr(sys, f"__{name}__")
+                or type(stream) is not io.TextIOWrapper):
+            return
+        try:
+            if stream.fileno() != {"stdout": 1, "stderr": 2}[name]:
+                return
+            try:
+                stream.close()
+            except OSError as cleanup:
+                # TextIOWrapper still closes its buffer when its flush repeats
+                # the same pipe failure. Keep a distinct cleanup failure visible.
+                if not stream.closed or cleanup.errno != primary.errno:
+                    cleanup_failures.append(f"{name} close failed: {cleanup}")
+            if not stream.closed:
+                cleanup_failures.append(f"{name} remained open after delivery failure")
+        except OSError as cleanup:
+            cleanup_failures.append(f"{name} retirement failed: {cleanup}")
+
+    caught = None
+    try:
+        status = entrypoint()
+    except SystemExit as error:
+        if error.code is not None and type(error.code) is not int:
+            raise
+        status = 0 if error.code is None else error.code
+    except OSError as error:
+        # Expected input errors are handled by each CLI before this boundary.
+        # Do not intercept cancellation or unrelated programming exceptions.
+        caught = error
+        status = 1
+
+    failures = []
+    for name in ("stdout", "stderr"):
+        stream = getattr(sys, name)
+        if stream is None:
+            continue
+        try:
+            stream.flush()
+        except OSError as error:
+            failures.append((name, error))
+            retire(name, stream, error)
+    if caught is None and not failures:
+        return status
+
+    error = caught if caught is not None else failures[0][1]
+    # A CLI that already returned 1 has emitted its contextual diagnostic.
+    # Do not duplicate it merely because final flushing observes the same error.
+    if not any(name == "stderr" for name, _ in failures) and (
+            caught is not None or status != 1 or cleanup_failures):
+        message = str(error)
+        if cleanup_failures:
+            message += "; " + "; ".join(cleanup_failures)
+        try:
+            diagnostic(message)
+            sys.stderr.flush()
+        except OSError as delivery:
+            retire("stderr", sys.stderr, delivery)
+    return 1
 
 
 def _regular(path: Path):

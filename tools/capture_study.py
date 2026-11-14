@@ -349,4 +349,5 @@ def main(argv: list[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(capture_common._cli_exit(main, lambda message: _diagnostic(
+        f"standard-stream delivery failed: {message}")))

@@ -256,4 +256,10 @@ def main(argv: list[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    def _delivery_error(message):
+        failure = {"schema_version": 1, "contract_origin": CONTRACT_ORIGIN,
+                   "status": "rejected", "error": {"code": "stream_error",
+                   "message": f"standard-stream delivery failed: {message}"}}
+        _write_utf8(sys.stderr, common.canonical_json_bytes(failure), label="stderr")
+
+    raise SystemExit(common._cli_exit(main, _delivery_error))

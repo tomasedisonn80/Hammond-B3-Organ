@@ -10,18 +10,16 @@ Fixed policy evaluation, adversarial audio/corpus admission, identity-bound file
 jobs and declaration readiness are implemented and independently qualified.
 The accepted replay and separate 57-file CaptureTools package now pass the
 [coherent 103-suite local gate](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md).
-Seven waves and 42 assignments are accepted and published through `3b0979b`.
-The older demo preservation-fixture repair passes actual Windows at `6214032f`.
-The new package's newline-independent late-abort sentinel also passes actual
-Windows at `27209a7f`: all 103 outer suites pass, including 15 installation
-methods and the one existing POSIX-only skip. All ten hosted jobs succeed at
-that source. The original 3b failure and exact repair/qualification evidence are
-in the [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md).
-Resource profiling identified a metadata read allocating from its maximum cap;
-qualify the minimal observed-size read change with independent failure and report
-identity checks before accepting it. Continue graph/lineage, failure preservation,
-physical-claim boundaries, clean installation and operational handoff assignments.
-Preserve original identities, all valid outcomes and complete snapshots.
+Eight waves and 52 assignments are accepted, including hosted, clean-setup,
+compatibility and operations reviews in wave 9. The metadata allocation change,
+independent graph qualification, real-pipe process repair and evidence-boundary
+review are complete. The [combined frozen source](reviews/CALIBRATION_WAVE8_INTEGRATION.md), including
+the exact-byte Windows installation fixture and raw .f32 Git classification,
+passes 106/106 suites. Publish the qualified checkpoint and observe fresh hosted
+outcomes. The [operating guide](CALIBRATION_RUNBOOK.md) is complete; finish
+acquisition/report-identity handoffs and final independent reviews in the
+remaining actual assignments. Preserve original
+identities, all valid outcomes and complete snapshots.
 No step fits physical model
 parameters or clears an acquisition gate through synthetic fixtures.
 Existing v1 metadata validation remains valid; the new companion tools provide
