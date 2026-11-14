@@ -1,0 +1,68 @@
+{
+  "baseline_commit": "352a398e4f004467c2dab081168be3d8b5206ea9",
+  "baseline_tree": "3e8f370e9234f46ff2463a6109540596f7950caa",
+  "build": [
+    {
+      "stage": "compile-main",
+      "command": [
+        "/usr/bin/c++",
+        "-DSDL_MAIN_HANDLED",
+        "-I/workspace/scratch/a472c29da8b3/build-native/apps/standalone/generated",
+        "-I/workspace/scratch/a472c29da8b3/baseline-mac-compile/apps/standalone",
+        "-I/workspace/scratch/a472c29da8b3/baseline-mac-compile/include",
+        "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include",
+        "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include/SDL2",
+        "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include-config-release/SDL2",
+        "-O3",
+        "-DNDEBUG",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-Wshadow",
+        "-Werror",
+        "-o",
+        "/workspace/scratch/a472c29da8b3/baseline-mac-compile/main.cpp.o",
+        "-c",
+        "/workspace/scratch/a472c29da8b3/baseline-mac-compile/apps/standalone/main.cpp"
+      ],
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "stage": "link",
+      "command": [
+        "/usr/bin/c++",
+        "-O3",
+        "-DNDEBUG",
+        "-Wl,--dependency-file=/workspace/scratch/a472c29da8b3/baseline-mac-compile/link.d",
+        "/workspace/scratch/a472c29da8b3/baseline-mac-compile/main.cpp.o",
+        "/workspace/scratch/a472c29da8b3/baseline-mac-compile/InstrumentView.o",
+        "-o",
+        "/workspace/scratch/a472c29da8b3/baseline-mac-compile/hammond_standalone",
+        "-Wl,-rpath,/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu",
+        "libhammond_standalone_audio.a",
+        "libhammond_standalone_replay.a",
+        "libhammond_standalone_drawing.a",
+        "libhammond_standalone_support.a",
+        "../../libhammond_core.a",
+        "libhammond_rtmidi.a",
+        "/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so",
+        "../../_sdl2/libSDL2.a",
+        "-lm",
+        "-pthread"
+      ],
+      "cwd": "/workspace/scratch/a472c29da8b3/build-native/apps/standalone",
+      "exit": 0,
+      "output": ""
+    }
+  ],
+  "source_sha256": {
+    "apps/standalone/main.cpp": "982ddeb4d8cfdf8bdb1389f9815eb1615283316e9b3f65796f13956f114dae9c",
+    "apps/standalone/InstrumentView.cpp": "3fac0fc723bc1c49b7fa1592144863ddfd6bd1f563362d7e7e95201ed6baf4b9",
+    "tools/CliArguments.h": "8ac5d91ebf66c31456159f028bce3c1c4b0dcd0c09118ac8c8d55c53a8912a47"
+  },
+  "executable_sha256": "f9cf83715907acebdb38cdbd858718cda82d76793b0235963b9b20c4f3a93021"
+}

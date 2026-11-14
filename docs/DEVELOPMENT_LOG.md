@@ -1,5 +1,15 @@
 # Development log
 
+## 2026-11-14 — Repair macOS comparison of new output paths
+
+The hosted renderer compile repair passed compilation and exposed a distinct
+startup path-identity failure at `352a398`: macOS returned Operation not supported
+when comparing absent output leaves. Calls to file equivalence now require two
+existing leaves; canonical path equality still rejects future-file aliases.
+Strict local compilation and all 18 actual native acceptance methods passed,
+covering 164 child launches. [Failure and repair evidence](development/2026-11-14-preset-continuation/BASELINE_PATH_REPAIR.md)
+retain the exact source and limits; hosted macOS verification follows publication.
+
 ## 2026-11-14 — Repair observed hosted macOS baseline build
 
 The new source/contract checkpoint `70b3354` exposed an existing unused private
@@ -1963,7 +1973,7 @@ All eight retained scores and both catalogs/profile inputs are unchanged. Twenty
 
 Root's coherent frozen tree `f84cacb4e6eb01189ca29136fc838885fdd858f4` passed **60/60 local Release suites, zero failures, in 56.10 seconds**. The final source/test identities remain unchanged; subsequent differences are Markdown results and actual assignment states only. Assignment 24's final test hash matches that exact tree. The new trace/metadata/catalog scopes belong to wave 5 and are excluded from this checkpoint.
 
-Actual root commands used a fresh `git archive` of the staged tree, `cmake -S checkpoint-w04/source -B checkpoint-w04/build -DCMAKE_BUILD_TYPE=Release`, `cmake --build checkpoint-w04/build -j 4`, and `ctest --test-dir checkpoint-w04/build --output-on-failure --output-junit checkpoint-w04/ctest.xml`. The local toolchain remains GCC14.2.0/CMake3.31.6/Python3.12.14. Publication uses exact Git tree equality and an expected-parent guard; hosted results for the new commit must be observed separately.
+Actual root commands used a fresh `git archive` of the staged tree, `cmake -S checkpoint-w04/source -B checkpoint-w04/build -DCMAKE_BUILD_TYPE=Release`, `cmake --build checkpoint-w04/build -j 4`, and `ctest --test-dir checkpoint-w04/build --output-on-failure --output-junit checkpoint-w04/ctest.xml`. The local toolchain remains GCC 14.2.0/CMake3.31.6/Python3.12.14. Publication uses exact Git tree equality and an expected-parent guard; hosted results for the new commit must be observed separately.
 
 
 ### Windows renderer argument repair

@@ -1382,6 +1382,7 @@ private:
     [[nodiscard]] bool output_paths_distinct() {
         const std::array<std::filesystem::path, 5> paths{
             options_.state, options_.screenshot, options_.diagnostics, options_.input_script, options_.midi_script};
+        std::array<bool, paths.size()> present{};
         // A dangling leaf on any selected path can alias an absent state file.
         // StateFiles also requires a nonsymlink leaf; preserve that boundary.
         for (std::size_t index = 0; index < paths.size(); ++index) {
@@ -1394,6 +1395,7 @@ private:
             if (std::filesystem::is_symlink(status)) {
                 fail("State, screenshot, diagnostics, and replay script paths must not be symbolic links"); return false;
             }
+            present[index] = std::filesystem::exists(status);
             if (index != 0 && std::filesystem::exists(status) && !std::filesystem::is_regular_file(status)) {
                 fail("Screenshot, diagnostics, and replay script paths must be regular files or new paths"); return false;
             }
@@ -1413,7 +1415,11 @@ private:
                 if (error) { fail("Cannot resolve output path: " + error.message()); return false; }
                 const auto b = resolve(paths[second], error);
                 if (error) { fail("Cannot resolve output path: " + error.message()); return false; }
-                const bool same = a == b || std::filesystem::equivalent(a, b, error);
+                // Equivalent compares existing file identities. libc++ can
+                // report operation_not_supported for two absent output leaves;
+                // their resolved path equality above already detects aliases.
+                const bool same = a == b || (present[first] && present[second] &&
+                                             std::filesystem::equivalent(a, b, error));
                 if (same) { fail("State, screenshot, diagnostics, and replay scripts must use different files"); return false; }
                 if (error && error != std::errc::no_such_file_or_directory) {
                     fail("Cannot compare selected file identities: " + error.message()); return false;
