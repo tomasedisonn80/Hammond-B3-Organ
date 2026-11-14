@@ -63,7 +63,7 @@ executable names have the `.exe` suffix on Windows.
 | --- | --- |
 | `bin/hammond_render` | Offline stereo PCM16 WAV renderer |
 | `bin/hammond_model_info` | Actual compiled console and pedal factory metadata |
-| `bin/hammond_parameter_info` | All 45 compiled internal parameter mappings |
+| `bin/hammond_parameter_info` | All 47 compiled internal parameter mappings |
 | `bin/hammond_console_trace` | Sample-by-sample nominal console CSV diagnostics |
 | `bin/hammond_pedal_trace` | Nominal pedal unmute, overlap and routing CSV diagnostics |
 | `bin/plot_console_trace.py` | Standalone bounded console CSV-to-SVG plotter |
@@ -156,7 +156,7 @@ remain synthetic nominal-model evidence.
 
 Metadata JSON is written to stdout; the shell manages a redirected destination.
 The model exporter describes compiled factories, not the parameters or histories
-of an arbitrary running Engine. The parameter exporter reports the 45 compiled
+of an arbitrary running Engine. The parameter exporter reports the 47 compiled
 internal mappings, including the two pedal controls. Its output alone does not
 qualify native host exports; those have a separate
 [actual VST3 ABI gate](VST3_ABI_ACCEPTANCE.md).

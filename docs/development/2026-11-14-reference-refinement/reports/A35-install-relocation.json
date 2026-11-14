@@ -1,0 +1,1657 @@
+{
+  "schema_version": 1,
+  "agent": "/root/w06_a35_install_relocation",
+  "base_commit": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+  "scope": "Actual current Linux GCC Release MIDI-off OfflineTools/CaptureTools/Standalone co-installation and Unicode/space-prefix relocation; no build/configure/full CTest",
+  "work_directory": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation",
+  "components": {
+    "OfflineTools": {
+      "files": 23,
+      "bytes": 596982
+    },
+    "CaptureTools": {
+      "files": 57,
+      "bytes": 705797
+    },
+    "Standalone": {
+      "files": 15,
+      "bytes": 3774506
+    }
+  },
+  "expected_payload": {
+    "bin/hammond_render": {
+      "sha256": "ade81c8062b28a862a01c48f86220320558d893f19ab78a073deb1acf754f93b",
+      "bytes": 140456,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_render",
+      "component": "OfflineTools"
+    },
+    "bin/hammond_model_info": {
+      "sha256": "3471217c9f35530ea19c10fcff8508fa6a8dd4ae29c920e6ef5e8d1cb6bcc991",
+      "bytes": 46976,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_model_info",
+      "component": "OfflineTools"
+    },
+    "bin/hammond_parameter_info": {
+      "sha256": "f3f56ede7fcd93a81423ac78ea86cf959e34ef821d812f1396f607808d93992e",
+      "bytes": 41248,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_parameter_info",
+      "component": "OfflineTools"
+    },
+    "bin/hammond_console_trace": {
+      "sha256": "13d41e1bc68f3ceff8e43d3dd06636c754d338c7af3424d3d00bc373e6caef41",
+      "bytes": 127840,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_console_trace",
+      "component": "OfflineTools"
+    },
+    "bin/hammond_pedal_trace": {
+      "sha256": "fba2f313e2d0f584b4a73d2f50b1868ba15ae735320ee4f0b039f87660c211b6",
+      "bytes": 131992,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_pedal_trace",
+      "component": "OfflineTools"
+    },
+    "bin/plot_console_trace.py": {
+      "sha256": "e7cf4603acbf2707b7752f781314a97293b89567675eb19cae772f4db37d3720",
+      "bytes": 22430,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/plot_console_trace.py",
+      "component": "OfflineTools"
+    },
+    "bin/plot_pedal_trace.py": {
+      "sha256": "45b28978924e88ac09b95bc6e5c9671e2b2f5059f9bd79df47565e8659f10f15",
+      "bytes": 25610,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/plot_pedal_trace.py",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/nominal.b3p": {
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "bytes": 4545,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/catalog-v1.json": {
+      "sha256": "98ffa2c3bc30f60ceb839e1fc2ab978e45dcf5f2cb4970fe77f91894344c34f8",
+      "bytes": 15544,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/catalog-v1.json",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/a4-fundamental-v1.events": {
+      "sha256": "c3295b7a060b7af68c6e3d43198a54cbe33ee26b6bc8e3c2cd1a76b80cfeb59f",
+      "bytes": 480,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/a4-fundamental-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/two-manual-changes-v1.events": {
+      "sha256": "d86b7fb3e3a62865b218400828aaef7ee176c39da7f08ef29aed5ae5b0627ae8",
+      "bytes": 1607,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/two-manual-changes-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/low-fold-coherent-v1.events": {
+      "sha256": "3ae330fbdf6f789dcd0533c521c63dce855e743000ecc283fae565009726ddea",
+      "bytes": 671,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/low-fold-coherent-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/held-bank-cancel-v1.events": {
+      "sha256": "fbd3060bdcae1bb7e4701de92799dca8ae0e4f92c5efedc84b450794c7e5ef5c",
+      "bytes": 1010,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/held-bank-cancel-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/high-fold-coherent-v1.events": {
+      "sha256": "0431c06df58e4b66decf385f6fdbb4e89b146dcd80efaa0dc23d2d3155b120c0",
+      "bytes": 537,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/high-fold-coherent-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-catalog-v1.json": {
+      "sha256": "f66d31d43e67b52fb2044a680c9c6ca6f02608bd94eac1988ed56edc1f28a27b",
+      "bytes": 12216,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/console/console-catalog-v1.json",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-travel-v1.events": {
+      "sha256": "9147e5bb93d701ad0cee516cf28509a685f2791fefb19218a70c12dacd9d9806",
+      "bytes": 396,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/console/console-travel-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-percussion-legato-v1.events": {
+      "sha256": "48f95b03561e48b13b1899203632a420d45f2283d1c293093c0236afde8e5ac9",
+      "bytes": 515,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/console/console-percussion-legato-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/console/console-routing-mask-v1.events": {
+      "sha256": "3f654665fd74bc26fe2cb42bf597adb2b68f4485c7a47c89c0a4f0a84ae52318",
+      "bytes": 565,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/console/console-routing-mask-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-catalog-v1.json": {
+      "sha256": "f064cdda432791703f1853d9cde52faa3cd5bf9899b999ad5b38ee64bb1ed5b7",
+      "bytes": 20057,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-catalog-v1.json",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-mixtures-v1.events": {
+      "sha256": "0adc929a3cde2f834f6d368dbd49e5441b636c2a933880144a8988033b45ba4d",
+      "bytes": 238,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-mixtures-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-shared-source-v1.events": {
+      "sha256": "b0390f58fed9f91509089d8782a4d22ea5374070a2689fdeab5641a4d582cfb2",
+      "bytes": 356,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-shared-source-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-held-routing-v1.events": {
+      "sha256": "71acf2756109509c81fa5e48d0ee7ef4d321f53e29d233ad2c60c3451f2ccdfa",
+      "bytes": 447,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-held-routing-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/fixtures/pedals/pedal-phrase-v1.events": {
+      "sha256": "47daa264ca9524c98d7a189d28728778c9057852b8fd3d68e7fea9d2e63b9be5",
+      "bytes": 1246,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-phrase-v1.events",
+      "component": "OfflineTools"
+    },
+    "share/hammond-b3-organ/capture-tools/README.md": {
+      "sha256": "9a7b8bdf85fbd2ed212342f0338a6e2ad8927191f0ea6e875da3497a71fbf715",
+      "bytes": 4448,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/capture-tools-install/README.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/validate_capture.py": {
+      "sha256": "f17ac8e24c98c792364bfdcc10c41bf410853ba19654eaa36482596d5881f3aa",
+      "bytes": 28237,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/validate_capture.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/capture_common.py": {
+      "sha256": "f583dbfde3d164157d7e5aa1c601878e3f7d44b4eb7fb059426b92045ac793ab",
+      "bytes": 12774,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_common.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/capture_audio.py": {
+      "sha256": "f6f059a81078982d1061637c84836bef9564d51215cb37e0c120046ba0d7b216",
+      "bytes": 30313,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_audio.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/capture_corpus.py": {
+      "sha256": "baf4aac2fc87e322d2e5d663f4de9da8118559100ad7de1e6f77feba606779a8",
+      "bytes": 39476,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_corpus.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/compare_capture.py": {
+      "sha256": "220a593499539db5f1e635db2eb15ba3c0aa7c6d001c80407fbffe93f75a9a0a",
+      "bytes": 33448,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/compare_capture.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/capture_job.py": {
+      "sha256": "a12645460b4c35400e5f851ac61f7bf273741a3c8d249ee186e93c46ba43a92b",
+      "bytes": 24433,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_job.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/capture_readiness.py": {
+      "sha256": "816ae53470e54c428cf53bbcf566ddf9a46ad422e427f3bfb28d9b47ca7e64e1",
+      "bytes": 11630,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_readiness.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/capture_study.py": {
+      "sha256": "5147b3f7b959ff6e2e1c7ca4b49154579a212af1cf2604bb6272fd9a212f5f98",
+      "bytes": 16849,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_study.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/make_capture_demo.py": {
+      "sha256": "67a49b81f009677a7d2ac62c7f6b95a50e5dd885dca0cc2ac04ca42655f79535",
+      "bytes": 25734,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/make_capture_demo.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/tools/verify_capture_report.py": {
+      "sha256": "6c100e976cbe9fa4748a66fe7c6a9488f4e87b4227edc2d88ddf83913b8e91ba",
+      "bytes": 23489,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/verify_capture_report.py",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/data/capture.schema.json": {
+      "sha256": "51fbfdbcc92d9cdb3b71d4b55618840a806e2847b49c93e6aa7d926621661a74",
+      "bytes": 32414,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture.schema.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/data/capture-corpus.schema.json": {
+      "sha256": "420037ea76f22dbd559b4005f1514bcf59d21310349800f138ce5b93c43707c9",
+      "bytes": 3690,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-corpus.schema.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/data/capture-policy.schema.json": {
+      "sha256": "2a1b0fd959f5f760d9460c7c960d48d7d4adbbd27918c9b4df6849646c8a9678",
+      "bytes": 12377,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-policy.schema.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/data/capture-job.schema.json": {
+      "sha256": "af1046b9d50d18e6da553805972591a2cf330403b8196ca376a577bfdb7afa2a",
+      "bytes": 3574,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-job.schema.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/data/capture-study.schema.json": {
+      "sha256": "1805ad62f357ec7f828591dce0a968391beba42418b9ea4f20adfe4139389e3d",
+      "bytes": 2102,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-study.schema.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/data/capture-planned-example.json": {
+      "sha256": "35eb831bd8fc4cca3107dca983efadfe8b4edc50a966931bae96dc7946f075ac",
+      "bytes": 3223,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-planned-example.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/data/corpus-planned-example.json": {
+      "sha256": "9c23a5faf002472d50e9c4e5e923bdb46e95091ee026288d98a91b785a7c4e2e",
+      "bytes": 466,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/corpus-planned-example.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/data/capture-policy-synthetic-example.json": {
+      "sha256": "e091dca3b3fdf3c3675383096007c5f95b848fa6294dedd3906705d061884316",
+      "bytes": 1047,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-policy-synthetic-example.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_FORMAT.md": {
+      "sha256": "618c20e4c6d2b204c69cdad006d69bfd93638de7c6d711b230452fea78b88177",
+      "bytes": 13696,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_FORMAT.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_PROTOCOL.md": {
+      "sha256": "8dbfd09b9c2b5a8cfd10dd7df3adecab3d1b0ad7d48e0472557af9850424751f",
+      "bytes": 31287,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_PROTOCOL.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_VALIDATION.md": {
+      "sha256": "4a16cd0e1c09944ad8554db6b17dbdd3265120ce0c02169c2d23359990313b4d",
+      "bytes": 5436,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_VALIDATION.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_COMMON.md": {
+      "sha256": "5ae7a7fffb05829c8758d82ac74460ca14834acbe1fa4f2b6e4b1648623bb805",
+      "bytes": 3923,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_COMMON.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_AUDIO_CONTRACT.md": {
+      "sha256": "1766ed93f26eb5fa4db21397f6dd74002970ec567e7ff4541536911598d026cc",
+      "bytes": 35980,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_AUDIO_CONTRACT.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_AUDIO.md": {
+      "sha256": "b62ab52596532140845586a66ba0da7781b92da60fa26678afc7ff0c8851eb14",
+      "bytes": 9078,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_AUDIO.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_CORPUS_CONTRACT.md": {
+      "sha256": "a524a38eedf8b18decd39845df844cc86ad98f8409216523e9917bb372bfb8b2",
+      "bytes": 31880,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_CORPUS_CONTRACT.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_CORPUS.md": {
+      "sha256": "ae3501ce95a6557ff5cdc7a975703ce43708101d20c1ebe18593c80346eb79e6",
+      "bytes": 10802,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_CORPUS.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_COMPARISON_CONTRACT.md": {
+      "sha256": "4ec3037aa0588528fe3c9e520d099cc48a82d78135fc86bd3851c2667860750c",
+      "bytes": 28479,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_COMPARISON_CONTRACT.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_COMPARISON.md": {
+      "sha256": "ab3b0e89bd94e26246fbff70dcc7982e93f2747ee953c83b428da69015fca6ea",
+      "bytes": 8399,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_COMPARISON.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_POLICY.md": {
+      "sha256": "ea762fb1a65c99727fbcdf573ff47e86b004089d37d71ff72067f83e30c72a4c",
+      "bytes": 11526,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_POLICY.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_JOB_CONTRACT.md": {
+      "sha256": "ed0b34cbd45d737ea35b33d3049d1b8884f8f665d4f42caeb1e1406466217b84",
+      "bytes": 29508,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_JOB_CONTRACT.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_JOB.md": {
+      "sha256": "8e51706e2f2d10540dde62071cbfa157339cbc8ce162b57cdbd7ab754c3581f6",
+      "bytes": 11741,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_JOB.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_READINESS.md": {
+      "sha256": "e3eb647244c62d600e58d37a83f99db165256e4a69cf89e210f354fc12b55b0b",
+      "bytes": 14203,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_READINESS.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_STUDY.md": {
+      "sha256": "a60d8c6a92356f2381ea61ba39c0dab50048b0f88ee6dc75bf943c7f5c5198e3",
+      "bytes": 19910,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_STUDY.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_DEMO.md": {
+      "sha256": "c60283e526a7e1f5f11e628536d0295b9a614038b411de6642e227c1c6ae3008",
+      "bytes": 13389,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_DEMO.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_REPLAY.md": {
+      "sha256": "1d855c9c734f0f8e9c3d73e4a735c9ef5d86066b734d1a74b95426545f3d3d88",
+      "bytes": 18044,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_REPLAY.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_TOOLS_INSTALL.md": {
+      "sha256": "ccffae418b2f45d5c88f977aa1fa1f6aa0662ba231f142dc7b2b2f264cd1f590",
+      "bytes": 17824,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_TOOLS_INSTALL.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/PLAN.md": {
+      "sha256": "5a7f8ecda549cbc1e5f738c00b8dbfb88356caa424c39de4d5c10031d389bd07",
+      "bytes": 9296,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/PLAN.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CALIBRATION_SCOPE.md": {
+      "sha256": "a6d9f05dd5cf24de297210e65597e15d02cd2197f422b9da2889c0211643bb35",
+      "bytes": 3139,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CALIBRATION_SCOPE.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/docs/CAPTURE_JOB_REVIEW.md": {
+      "sha256": "9218ca2e0fd72ff07ff1b838cac2dd153ce8e5b1ece18e20cbcc24d3b2c2f271",
+      "bytes": 13719,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_JOB_REVIEW.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/README.md": {
+      "sha256": "867618f49b41d88eaba13a86048190d4f0db30bc34b453adb9d51ce8fd1e4b08",
+      "bytes": 6127,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/README.md",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/EXPECTED.json": {
+      "sha256": "8b3ade3def7f51119b90f5a65bc9fa3bf7c46ab561929a60acdd973245793396",
+      "bytes": 4425,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/EXPECTED.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/study.json": {
+      "sha256": "725e91cd3264d420018f2a6d269a27ed47f941e0e17b0abd09c81a71dafb717a",
+      "bytes": 710,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/study.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/job-pass.json": {
+      "sha256": "63f83d706b412cc4cd7a76957f924cb9c6970436593fdae3e0fd8724dea66e45",
+      "bytes": 790,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/job-pass.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/job-inconclusive.json": {
+      "sha256": "d66a0d0f5762ed6f961e9db2a36426e0b308973547d62ee25be9bf44f42568c6",
+      "bytes": 806,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/job-inconclusive.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/job-fail.json": {
+      "sha256": "f2fad01bdafbebd14517cb0d9f6e8b3ce8e1541135358308818671327c27e703",
+      "bytes": 787,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/job-fail.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/policy-pass.json": {
+      "sha256": "8300754d2088849d6a8fe042f248543e1c9965229b4ad9cc220f45bfa31cccc5",
+      "bytes": 1348,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/policy-pass.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/policy-inconclusive.json": {
+      "sha256": "23684a20f7cf263645fc7b4124804d248a114fba79973280818986ee48dd5e43",
+      "bytes": 1362,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/policy-inconclusive.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/policy-fail.json": {
+      "sha256": "c1025c652a3b85be75b10420ae87aca2db6bd8bf748e0218e5b2cd260e77ee3c",
+      "bytes": 1346,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/policy-fail.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/corpus/corpus.json": {
+      "sha256": "1d6e840f5c89ec0f021886e07bc0b0db5e0179fb6a3ce6f4a880f388c3b58361",
+      "bytes": 1295,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/corpus.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/corpus/reference.json": {
+      "sha256": "e3d5761fa8f6d3351c82fdc72a13df8c8db9458f07fba401cb22f1fe85fef970",
+      "bytes": 4599,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/reference.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/corpus/quarter.json": {
+      "sha256": "2727e5b2ef50652d96be9e2b55880eba9390c1b6804addc7af2d39878f8f7e54",
+      "bytes": 4599,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/quarter.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/corpus/half.json": {
+      "sha256": "281945a1b21b473949eb1049c489f21d2e506c96fd859412a97737631d94d0f5",
+      "bytes": 4589,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/half.json",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/corpus/audio/reference.f32": {
+      "sha256": "fd801740524b1e1c23a61b5400725b76428652827ba1261b83243eb5ce551402",
+      "bytes": 16,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/audio/reference.f32",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/corpus/audio/quarter.f32": {
+      "sha256": "bac1c395abe23908b8c106a28b6c151bc25b9473d470f4d942775b5dfdf523e2",
+      "bytes": 16,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/audio/quarter.f32",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/examples/capture-demo/corpus/audio/half.f32": {
+      "sha256": "36d231b4ecc15924aea04f08725924f18ae4346fd287747791d7396eca3d5758",
+      "bytes": 16,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/audio/half.f32",
+      "component": "CaptureTools"
+    },
+    "share/hammond-b3-organ/capture-tools/THIRD_PARTY_NOTICES.md": {
+      "sha256": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb",
+      "bytes": 21983,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/THIRD_PARTY_NOTICES.md",
+      "component": "CaptureTools"
+    },
+    "bin/hammond_standalone": {
+      "sha256": "0ef37dd5a0501da08df302027b31791b7917705e00cb32017b035a145ceb3811",
+      "bytes": 3632664,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/hammond_standalone",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md": {
+      "sha256": "7d121ce847ecb90dccbe01b7a3b9bd0917c29ebf0c13955c5c442efa1117aa7c",
+      "bytes": 12330,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/STANDALONE_INSTALL.md",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_APP.md": {
+      "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262",
+      "bytes": 26725,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/STANDALONE_APP.md",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md": {
+      "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3",
+      "bytes": 9182,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/STANDALONE_MODEL.md",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md": {
+      "sha256": "f51b2c32f5f6e6aa062885bd2b1b64fee24faf85712f4bca9a3b8f1a600695a1",
+      "bytes": 25136,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/MIDI_UI_RUNBOOK.md",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md": {
+      "sha256": "aab73b054b7cb90fb140fea0257c36c3752c33b3032cc6899d7c5b398a209361",
+      "bytes": 17137,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/PRESET_RUNBOOK.md",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+      "sha256": "f16a8b7b16bf9014dd4061b5e1dc8e82803d3816d3927fc04062afca514ae981",
+      "bytes": 18279,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/INTERFACE_RUNBOOK.md",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md": {
+      "sha256": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb",
+      "bytes": 21983,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/THIRD_PARTY_NOTICES.md",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt": {
+      "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+      "bytes": 884,
+      "source": "/workspace/scratch/1bb6ee17ad7e/SDL2/LICENSE.txt",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt": {
+      "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+      "bytes": 2345,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/assets/standalone/fonts/LICENSE-DejaVu.txt",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/sdl2-lock.json": {
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "bytes": 375,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/dependencies/sdl2-lock.json",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/font-source-manifest.json": {
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+      "bytes": 1428,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/assets/standalone/fonts/source-manifest.json",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/reference-source-manifest.json": {
+      "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+      "bytes": 3816,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/assets/standalone/reference/manifest.json",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/atlas-reference.json": {
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "bytes": 811,
+      "source": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/design/atlas-reference.json",
+      "component": "Standalone"
+    },
+    "share/hammond-b3-organ/standalone/standalone-capabilities.json": {
+      "sha256": "0aa7e692d1986def4e8f5f31f0104e49ec1e50dca162fb2a14343f458a6bb204",
+      "bytes": 1411,
+      "source": "/workspace/scratch/1bb6ee17ad7e/build-native/generated/standalone-capabilities.json",
+      "component": "Standalone"
+    }
+  },
+  "payload_count": 95,
+  "payload_bytes": 5077285,
+  "text_files_scanned_for_task_source_build_paths": 85,
+  "path_leaks": [],
+  "commands": [
+    {
+      "name": "install-OfflineTools",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--install",
+        "/workspace/scratch/1bb6ee17ad7e/build-native",
+        "--config",
+        "Release",
+        "--component",
+        "OfflineTools",
+        "--prefix",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/staged orgue é"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.054217,
+      "stdout_sha256": "7e49dcedfea36118122f7d827ae79e904534c4c69b7354713faabc1a06dd7858",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install-CaptureTools",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--install",
+        "/workspace/scratch/1bb6ee17ad7e/build-native",
+        "--config",
+        "Release",
+        "--component",
+        "CaptureTools",
+        "--prefix",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/staged orgue é"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.025732,
+      "stdout_sha256": "e543a0042e1ca65dc2330e82dfce1d358e270fef060496e365f35ea511a08dad",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install-Standalone",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--install",
+        "/workspace/scratch/1bb6ee17ad7e/build-native",
+        "--config",
+        "Release",
+        "--component",
+        "Standalone",
+        "--prefix",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/staged orgue é"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.055061,
+      "stdout_sha256": "42a7b2a9799bc88ca552afa0243618dea1b0f3882dadcdbc20e5060d00433f73",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-model-info",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/hammond_model_info"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.00343,
+      "stdout_sha256": "11a28002347425e56898115148f5c2ccb53364a0d6c62903da80ebf42126bfd3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-parameter-info",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/hammond_parameter_info",
+        "--normalized",
+        "0.5"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.002002,
+      "stdout_sha256": "50a2b6d3712c1b1fc100ac08262b4b2c0cbaedd7efd588f2efb4e436086fc3bb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-render",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/hammond_render",
+        "--profile",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/nominal.b3p",
+        "--events",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/fixtures/a4-fundamental-v1.events",
+        "--output",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/a4.wav",
+        "--sample-rate",
+        "48000",
+        "--frames",
+        "72000",
+        "--block-size",
+        "127",
+        "--seed",
+        "2602",
+        "--drawbars",
+        "008000000",
+        "--fail-on-clip"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.124918,
+      "stdout_sha256": "47bc2032a447fad6392db9f0bde22c862d6ac0392a752d6f7ce4e5037808d4e4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "missing-installed-profile",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/hammond_render",
+        "--profile",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/nominal.b3p",
+        "--events",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/fixtures/a4-fundamental-v1.events",
+        "--output",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/must-not-exist.wav",
+        "--sample-rate",
+        "48000",
+        "--frames",
+        "72000",
+        "--block-size",
+        "127",
+        "--seed",
+        "2602",
+        "--drawbars",
+        "008000000",
+        "--fail-on-clip"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 1,
+      "exit": 1,
+      "seconds": 0.002201,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "455822c440f58f6f8e6de881179165849b09ce0c4bf6033bdedba54c36321c48"
+    },
+    {
+      "name": "relocated-console-trace",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/hammond_console_trace",
+        "--profile",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/nominal.b3p",
+        "--scenario",
+        "partial",
+        "--sample-rate",
+        "48000",
+        "--seed",
+        "0",
+        "--output",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/partial.csv"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.038693,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-console-plot",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-S",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/plot_console_trace.py",
+        "--input",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/partial.csv",
+        "--output",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/partial.svg"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.418412,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-pedal-help",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/hammond_pedal_trace",
+        "--help"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.001851,
+      "stdout_sha256": "b957b41573b2035ff9bc4e2811c07ac09155bcab6e0b4408e7ffe2085644dc48",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-pedal-plot-help",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-S",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/plot_pedal_trace.py",
+        "--help"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.041765,
+      "stdout_sha256": "4469d4acc0907b80428fa5c090868b66ef4d938cca101fcd2b81c5fc18b911b3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-capture-study",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-S",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/capture-tools/tools/capture_study.py",
+        "--input",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/capture-tools/examples/capture-demo/study.json",
+        "--output",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/study.json"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 1,
+      "exit": 1,
+      "seconds": 0.110638,
+      "stdout_sha256": "b1446aa4c2f66d578331c2b784b48791cd03897ac66fe1226ffc3d6e659e3aaa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-capture-replay",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-S",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/capture-tools/tools/verify_capture_report.py",
+        "--kind",
+        "study",
+        "--input",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/capture-tools/examples/capture-demo/study.json",
+        "--report",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/study.json",
+        "--output",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/study-replay.json"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.146644,
+      "stdout_sha256": "5c6b8ad9c208566c887c92ba00e04978c304c20902d486a8474d47178e5e59db",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "missing-local-Python-dependency",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-B",
+        "-S",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/capture-tools/tools/capture_study.py",
+        "--input",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/share/hammond-b3-organ/capture-tools/examples/capture-demo/study.json",
+        "--output",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/must-not-exist-study.json"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 1,
+      "exit": 1,
+      "seconds": 0.024108,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "09a5e94fb0059612b2a880f622cb099ffdaf03f3ff536831c66d0eb2420080d9"
+    },
+    {
+      "name": "relocated-standalone-help",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/hammond_standalone",
+        "--help"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.001834,
+      "stdout_sha256": "da4a112e7cfea567501615701f02cd74143b47634a756fc605e2dfc9752ef537",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "relocated-standalone-smoke",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/moved orgue Ω/bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/absent controls.b3controls",
+        "--smoke-ms",
+        "600",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--screenshot",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/frame.bmp",
+        "--diagnostics",
+        "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/standalone.json"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/unrelated working é",
+      "expected_exit": 0,
+      "exit": 0,
+      "seconds": 0.698851,
+      "stdout_sha256": "6d5ae331412d831443d21768b0ba1da3476de8400b3df387a8b9809002c9d410",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": {
+    "partial.csv": {
+      "sha256": "dbaa075fcd7bea24b4a61a5df8f55faab53053244ad1e59126ba3f4d80fd89b2",
+      "bytes": 1194816
+    },
+    "partial.svg": {
+      "sha256": "76d8583e00977856e54e61fbb1691ff2f7ffb3e2e9f86e0ee5f807e9bdc203a4",
+      "bytes": 117510
+    },
+    "models.json": {
+      "sha256": "11a28002347425e56898115148f5c2ccb53364a0d6c62903da80ebf42126bfd3",
+      "bytes": 108255
+    },
+    "study.json": {
+      "sha256": "b1446aa4c2f66d578331c2b784b48791cd03897ac66fe1226ffc3d6e659e3aaa",
+      "bytes": 119427
+    },
+    "standalone.json": {
+      "sha256": "3aaf652b69df37291b8159642c062dfd429735bd29e083b60e8df7f3a08233d6",
+      "bytes": 7382
+    },
+    "study-replay.json": {
+      "sha256": "5c6b8ad9c208566c887c92ba00e04978c304c20902d486a8474d47178e5e59db",
+      "bytes": 4262
+    },
+    "parameters.json": {
+      "sha256": "50a2b6d3712c1b1fc100ac08262b4b2c0cbaedd7efd588f2efb4e436086fc3bb",
+      "bytes": 12835
+    },
+    "render.json": {
+      "sha256": "47bc2032a447fad6392db9f0bde22c862d6ac0392a752d6f7ce4e5037808d4e4",
+      "bytes": 1284
+    },
+    "a4.wav": {
+      "sha256": "01f6efe7eb581e702cd59efc19b2df75ab0ddeee945ae7550c8bbfe9ed36e4d3",
+      "bytes": 288044
+    },
+    "frame.bmp": {
+      "sha256": "8def8286517f09da462935d87906fc153d4f0099cf139c6bc335048b1634178f",
+      "bytes": 2688122
+    }
+  },
+  "standalone_diagnostics": {
+    "schema_version": 3,
+    "application": "hammond_standalone",
+    "profile": {
+      "id": "nominal-unmeasured-v1",
+      "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83"
+    },
+    "runtime": {
+      "video_driver": "dummy",
+      "renderer": "software",
+      "sdl_version": "2.32.10",
+      "window_width": 960,
+      "window_height": 700,
+      "drawable_width": 960,
+      "drawable_height": 700,
+      "rendered_images": 16,
+      "screenshot_written": true,
+      "screenshot_while_held": true
+    },
+    "audio": {
+      "driver": "dummy",
+      "device_name": "Default output",
+      "requested_device": "",
+      "requested_sample_rate": 48000,
+      "requested_buffer_frames": 512,
+      "sample_rate": 48000,
+      "buffer_frames": 512,
+      "channels": 2,
+      "sample_format": 33056,
+      "native_float32_format": 33056,
+      "buffer_bytes": 4096,
+      "open_before_shutdown": true,
+      "running_before_shutdown": true,
+      "callback_count": 59,
+      "rendered_frames": 30208,
+      "render_failures": 0,
+      "format_failures": 0,
+      "overrange_failures": 0,
+      "overrange_samples": 0,
+      "nonfinite_failures": 0,
+      "nonfinite_samples": 0,
+      "last_render_status": "ok",
+      "last_lifecycle_status": "ok"
+    },
+    "midi": {
+      "source": "none",
+      "backend_available": false,
+      "backend": "unavailable",
+      "requested_port": "",
+      "port_name": "",
+      "opened_port_index": 0,
+      "generation": 0,
+      "state_before_shutdown": "unavailable",
+      "state_after_shutdown": "unavailable",
+      "active_before_shutdown": false,
+      "active_after_shutdown": false,
+      "quiescent_after_shutdown": true,
+      "diagnostics_stable_after_shutdown": true,
+      "shutdown_failed": false,
+      "startup_failed": false,
+      "channels": {
+        "upper": 1,
+        "lower": 2,
+        "pedals": 3
+      },
+      "drain_budget": 32,
+      "maximum_drained_per_turn": 0,
+      "timing_policy": "arrival_order_next_callback_boundary",
+      "arrival_time_unit": "steady_clock_nanoseconds",
+      "arrival_time_source": "none",
+      "arrival_time_is_sample_time": false,
+      "retirements": 0,
+      "fault_retirements": 0,
+      "session_recoveries_observed": 0,
+      "open_failures": 0,
+      "submit_failures": 0,
+      "release_batches": 0,
+      "release_commands_accepted": 0,
+      "release_sequence": 0,
+      "release_pending": false,
+      "parameter_messages": 0,
+      "retired_fault_bits": 0,
+      "last_submit_status": "ok",
+      "status": "MIDI backend unavailable in this build.",
+      "discovery": {
+        "requests": 0,
+        "started": 0,
+        "completed": 0,
+        "discarded_results": 0,
+        "failures": 0,
+        "pending_before_shutdown": false,
+        "shutdown_join_performed": false,
+        "pending_after_shutdown": false
+      },
+      "device": {
+        "callback_messages": 0,
+        "forwarded_messages": 0,
+        "filtered_messages": 0,
+        "admission_failures": 0,
+        "backend_errors": 0,
+        "callback_contentions": 0,
+        "disconnects": 0,
+        "close_errors": 0,
+        "last_arrival_ns": 0
+      },
+      "inbox": {
+        "capacity": 256,
+        "pending_packets": 0,
+        "received_packets": 0,
+        "accepted_packets": 0,
+        "invalid_size_packets": 0,
+        "faulted_packets": 0,
+        "overflow_events": 0,
+        "popped_packets": 0,
+        "discarded_packets": 0,
+        "resets": 0,
+        "fault_bits": 0
+      },
+      "decoder": {
+        "packets": 0,
+        "actions": 0,
+        "unsupported": 0,
+        "unmapped_channels": 0,
+        "out_of_range": 0,
+        "malformed": 0,
+        "inactive": 0,
+        "timestamp_regressions": 0,
+        "epochs": 0
+      }
+    },
+    "presentation": {
+      "initial_workspace": "play",
+      "initial_presentation": "dimensional",
+      "observation_capacity": 512,
+      "observations_truncated": false,
+      "last_painted": {
+        "elapsed_ms": 623,
+        "rendered_image": 16,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 29184,
+          "publication_revision": 118
+        },
+        "held_targets": {
+          "upper": 0,
+          "lower": 0,
+          "pedals": 0
+        },
+        "pointer_capture": {
+          "sdl_captured": false,
+          "ui_captured": false,
+          "attempts": 0,
+          "successes": 0,
+          "losses": 0,
+          "release_calls": 0
+        }
+      },
+      "screenshot": {
+        "elapsed_ms": 117,
+        "rendered_image": 4,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 5120,
+          "publication_revision": 24
+        },
+        "held_targets": {
+          "upper": 1,
+          "lower": 0,
+          "pedals": 0
+        },
+        "pointer_capture": {
+          "sdl_captured": false,
+          "ui_captured": false,
+          "attempts": 0,
+          "successes": 0,
+          "losses": 0,
+          "release_calls": 0
+        }
+      },
+      "before_shutdown": {
+        "elapsed_ms": 623,
+        "rendered_image": 16,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 29184,
+          "publication_revision": 118
+        },
+        "held_targets": {
+          "upper": 0,
+          "lower": 0,
+          "pedals": 0
+        },
+        "pointer_capture": {
+          "sdl_captured": false,
+          "ui_captured": false,
+          "attempts": 0,
+          "successes": 0,
+          "losses": 0,
+          "release_calls": 0
+        }
+      },
+      "observations": [
+        {
+          "elapsed_ms": 0,
+          "rendered_image": 1,
+          "workspace": "play",
+          "presentation": "dimensional",
+          "overlay": "none",
+          "window_width": 960,
+          "window_height": 700,
+          "inspection": {
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current",
+            "controls_pending": true,
+            "frame_clock": 0,
+            "publication_revision": 4
+          },
+          "held_targets": {
+            "upper": 0,
+            "lower": 0,
+            "pedals": 0
+          },
+          "pointer_capture": {
+            "sdl_captured": false,
+            "ui_captured": false,
+            "attempts": 0,
+            "successes": 0,
+            "losses": 0,
+            "release_calls": 0
+          }
+        },
+        {
+          "elapsed_ms": 41,
+          "rendered_image": 2,
+          "workspace": "play",
+          "presentation": "dimensional",
+          "overlay": "none",
+          "window_width": 960,
+          "window_height": 700,
+          "inspection": {
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current",
+            "controls_pending": false,
+            "frame_clock": 1536,
+            "publication_revision": 10
+          },
+          "held_targets": {
+            "upper": 0,
+            "lower": 0,
+            "pedals": 0
+          },
+          "pointer_capture": {
+            "sdl_captured": false,
+            "ui_captured": false,
+            "attempts": 0,
+            "successes": 0,
+            "losses": 0,
+            "release_calls": 0
+          }
+        },
+        {
+          "elapsed_ms": 117,
+          "rendered_image": 4,
+          "workspace": "play",
+          "presentation": "dimensional",
+          "overlay": "none",
+          "window_width": 960,
+          "window_height": 700,
+          "inspection": {
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current",
+            "controls_pending": false,
+            "frame_clock": 5120,
+            "publication_revision": 24
+          },
+          "held_targets": {
+            "upper": 1,
+            "lower": 0,
+            "pedals": 0
+          },
+          "pointer_capture": {
+            "sdl_captured": false,
+            "ui_captured": false,
+            "attempts": 0,
+            "successes": 0,
+            "losses": 0,
+            "release_calls": 0
+          }
+        },
+        {
+          "elapsed_ms": 499,
+          "rendered_image": 13,
+          "workspace": "play",
+          "presentation": "dimensional",
+          "overlay": "none",
+          "window_width": 960,
+          "window_height": 700,
+          "inspection": {
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current",
+            "controls_pending": false,
+            "frame_clock": 23040,
+            "publication_revision": 94
+          },
+          "held_targets": {
+            "upper": 0,
+            "lower": 0,
+            "pedals": 0
+          },
+          "pointer_capture": {
+            "sdl_captured": false,
+            "ui_captured": false,
+            "attempts": 0,
+            "successes": 0,
+            "losses": 0,
+            "release_calls": 0
+          }
+        }
+      ]
+    },
+    "session": {
+      "snapshot_available": true,
+      "prepared": true,
+      "running_after_shutdown": false,
+      "sample_rate": 48000,
+      "frame_clock": 30208,
+      "publication_revision": 124,
+      "resolved_sequence": 4,
+      "last_applied_sequence": 3,
+      "recovery_count": 0,
+      "queue_overflows": 0,
+      "rejected_commands": 0,
+      "discarded_commands": 1,
+      "fault_flags": 0,
+      "held_after_shutdown": false,
+      "maximum_observed_peak": 0.08362317830324173
+    },
+    "controls": {
+      "manual_drawbars": [
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            8,
+            8,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      ],
+      "selected_banks": [
+        1,
+        1
+      ],
+      "fixed_registrations": [
+        0,
+        0
+      ],
+      "preset_selections": [
+        11,
+        11
+      ],
+      "route_enabled": [
+        true,
+        true
+      ],
+      "expression": 1,
+      "pedal_drawbars": [
+        8,
+        0
+      ],
+      "percussion": {
+        "enabled": false,
+        "harmonic": 0,
+        "volume": 0,
+        "decay": 0
+      }
+    },
+    "smoke": {
+      "requested": true,
+      "duration_ms": 600,
+      "completed": true,
+      "note_on_sent": true,
+      "note_off_sent": true,
+      "held_observed": true,
+      "release_observed": true,
+      "passed": true
+    },
+    "state_path": "/workspace/scratch/1bb6ee17ad7e/A35-install-relocation/outputs/absent controls.b3controls",
+    "status": "Proposed audition registration: Upper B 888000000 / Lower B 008000000 / Pedals 80.",
+    "errors": {
+      "count": 0,
+      "last": ""
+    }
+  },
+  "source_hashes": {
+    "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_render": "ade81c8062b28a862a01c48f86220320558d893f19ab78a073deb1acf754f93b",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_model_info": "3471217c9f35530ea19c10fcff8508fa6a8dd4ae29c920e6ef5e8d1cb6bcc991",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_parameter_info": "f3f56ede7fcd93a81423ac78ea86cf959e34ef821d812f1396f607808d93992e",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_console_trace": "13d41e1bc68f3ceff8e43d3dd06636c754d338c7af3424d3d00bc373e6caef41",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_pedal_trace": "fba2f313e2d0f584b4a73d2f50b1868ba15ae735320ee4f0b039f87660c211b6",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/plot_console_trace.py": "e7cf4603acbf2707b7752f781314a97293b89567675eb19cae772f4db37d3720",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/plot_pedal_trace.py": "45b28978924e88ac09b95bc6e5c9671e2b2f5059f9bd79df47565e8659f10f15",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/catalog-v1.json": "98ffa2c3bc30f60ceb839e1fc2ab978e45dcf5f2cb4970fe77f91894344c34f8",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/a4-fundamental-v1.events": "c3295b7a060b7af68c6e3d43198a54cbe33ee26b6bc8e3c2cd1a76b80cfeb59f",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/two-manual-changes-v1.events": "d86b7fb3e3a62865b218400828aaef7ee176c39da7f08ef29aed5ae5b0627ae8",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/low-fold-coherent-v1.events": "3ae330fbdf6f789dcd0533c521c63dce855e743000ecc283fae565009726ddea",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/held-bank-cancel-v1.events": "fbd3060bdcae1bb7e4701de92799dca8ae0e4f92c5efedc84b450794c7e5ef5c",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/high-fold-coherent-v1.events": "0431c06df58e4b66decf385f6fdbb4e89b146dcd80efaa0dc23d2d3155b120c0",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/console/console-catalog-v1.json": "f66d31d43e67b52fb2044a680c9c6ca6f02608bd94eac1988ed56edc1f28a27b",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/console/console-travel-v1.events": "9147e5bb93d701ad0cee516cf28509a685f2791fefb19218a70c12dacd9d9806",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/console/console-percussion-legato-v1.events": "48f95b03561e48b13b1899203632a420d45f2283d1c293093c0236afde8e5ac9",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/console/console-routing-mask-v1.events": "3f654665fd74bc26fe2cb42bf597adb2b68f4485c7a47c89c0a4f0a84ae52318",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-catalog-v1.json": "f064cdda432791703f1853d9cde52faa3cd5bf9899b999ad5b38ee64bb1ed5b7",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-mixtures-v1.events": "0adc929a3cde2f834f6d368dbd49e5441b636c2a933880144a8988033b45ba4d",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-shared-source-v1.events": "b0390f58fed9f91509089d8782a4d22ea5374070a2689fdeab5641a4d582cfb2",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-held-routing-v1.events": "71acf2756109509c81fa5e48d0ee7ef4d321f53e29d233ad2c60c3451f2ccdfa",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/fixtures/pedals/pedal-phrase-v1.events": "47daa264ca9524c98d7a189d28728778c9057852b8fd3d68e7fea9d2e63b9be5",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/capture-tools-install/README.md": "9a7b8bdf85fbd2ed212342f0338a6e2ad8927191f0ea6e875da3497a71fbf715",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/validate_capture.py": "f17ac8e24c98c792364bfdcc10c41bf410853ba19654eaa36482596d5881f3aa",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_common.py": "f583dbfde3d164157d7e5aa1c601878e3f7d44b4eb7fb059426b92045ac793ab",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_audio.py": "f6f059a81078982d1061637c84836bef9564d51215cb37e0c120046ba0d7b216",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_corpus.py": "baf4aac2fc87e322d2e5d663f4de9da8118559100ad7de1e6f77feba606779a8",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/compare_capture.py": "220a593499539db5f1e635db2eb15ba3c0aa7c6d001c80407fbffe93f75a9a0a",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_job.py": "a12645460b4c35400e5f851ac61f7bf273741a3c8d249ee186e93c46ba43a92b",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_readiness.py": "816ae53470e54c428cf53bbcf566ddf9a46ad422e427f3bfb28d9b47ca7e64e1",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_study.py": "5147b3f7b959ff6e2e1c7ca4b49154579a212af1cf2604bb6272fd9a212f5f98",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/make_capture_demo.py": "67a49b81f009677a7d2ac62c7f6b95a50e5dd885dca0cc2ac04ca42655f79535",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/verify_capture_report.py": "6c100e976cbe9fa4748a66fe7c6a9488f4e87b4227edc2d88ddf83913b8e91ba",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture.schema.json": "51fbfdbcc92d9cdb3b71d4b55618840a806e2847b49c93e6aa7d926621661a74",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-corpus.schema.json": "420037ea76f22dbd559b4005f1514bcf59d21310349800f138ce5b93c43707c9",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-policy.schema.json": "2a1b0fd959f5f760d9460c7c960d48d7d4adbbd27918c9b4df6849646c8a9678",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-job.schema.json": "af1046b9d50d18e6da553805972591a2cf330403b8196ca376a577bfdb7afa2a",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-study.schema.json": "1805ad62f357ec7f828591dce0a968391beba42418b9ea4f20adfe4139389e3d",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-planned-example.json": "35eb831bd8fc4cca3107dca983efadfe8b4edc50a966931bae96dc7946f075ac",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/corpus-planned-example.json": "9c23a5faf002472d50e9c4e5e923bdb46e95091ee026288d98a91b785a7c4e2e",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/capture-policy-synthetic-example.json": "e091dca3b3fdf3c3675383096007c5f95b848fa6294dedd3906705d061884316",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_FORMAT.md": "618c20e4c6d2b204c69cdad006d69bfd93638de7c6d711b230452fea78b88177",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_PROTOCOL.md": "8dbfd09b9c2b5a8cfd10dd7df3adecab3d1b0ad7d48e0472557af9850424751f",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_VALIDATION.md": "4a16cd0e1c09944ad8554db6b17dbdd3265120ce0c02169c2d23359990313b4d",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_COMMON.md": "5ae7a7fffb05829c8758d82ac74460ca14834acbe1fa4f2b6e4b1648623bb805",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_AUDIO_CONTRACT.md": "1766ed93f26eb5fa4db21397f6dd74002970ec567e7ff4541536911598d026cc",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_AUDIO.md": "b62ab52596532140845586a66ba0da7781b92da60fa26678afc7ff0c8851eb14",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_CORPUS_CONTRACT.md": "a524a38eedf8b18decd39845df844cc86ad98f8409216523e9917bb372bfb8b2",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_CORPUS.md": "ae3501ce95a6557ff5cdc7a975703ce43708101d20c1ebe18593c80346eb79e6",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_COMPARISON_CONTRACT.md": "4ec3037aa0588528fe3c9e520d099cc48a82d78135fc86bd3851c2667860750c",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_COMPARISON.md": "ab3b0e89bd94e26246fbff70dcc7982e93f2747ee953c83b428da69015fca6ea",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_POLICY.md": "ea762fb1a65c99727fbcdf573ff47e86b004089d37d71ff72067f83e30c72a4c",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_JOB_CONTRACT.md": "ed0b34cbd45d737ea35b33d3049d1b8884f8f665d4f42caeb1e1406466217b84",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_JOB.md": "8e51706e2f2d10540dde62071cbfa157339cbc8ce162b57cdbd7ab754c3581f6",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_READINESS.md": "e3eb647244c62d600e58d37a83f99db165256e4a69cf89e210f354fc12b55b0b",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_STUDY.md": "a60d8c6a92356f2381ea61ba39c0dab50048b0f88ee6dc75bf943c7f5c5198e3",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_DEMO.md": "c60283e526a7e1f5f11e628536d0295b9a614038b411de6642e227c1c6ae3008",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_REPLAY.md": "1d855c9c734f0f8e9c3d73e4a735c9ef5d86066b734d1a74b95426545f3d3d88",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_TOOLS_INSTALL.md": "ccffae418b2f45d5c88f977aa1fa1f6aa0662ba231f142dc7b2b2f264cd1f590",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/PLAN.md": "5a7f8ecda549cbc1e5f738c00b8dbfb88356caa424c39de4d5c10031d389bd07",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CALIBRATION_SCOPE.md": "a6d9f05dd5cf24de297210e65597e15d02cd2197f422b9da2889c0211643bb35",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/CAPTURE_JOB_REVIEW.md": "9218ca2e0fd72ff07ff1b838cac2dd153ce8e5b1ece18e20cbcc24d3b2c2f271",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/README.md": "867618f49b41d88eaba13a86048190d4f0db30bc34b453adb9d51ce8fd1e4b08",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/EXPECTED.json": "8b3ade3def7f51119b90f5a65bc9fa3bf7c46ab561929a60acdd973245793396",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/study.json": "725e91cd3264d420018f2a6d269a27ed47f941e0e17b0abd09c81a71dafb717a",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/job-pass.json": "63f83d706b412cc4cd7a76957f924cb9c6970436593fdae3e0fd8724dea66e45",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/job-inconclusive.json": "d66a0d0f5762ed6f961e9db2a36426e0b308973547d62ee25be9bf44f42568c6",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/job-fail.json": "f2fad01bdafbebd14517cb0d9f6e8b3ce8e1541135358308818671327c27e703",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/policy-pass.json": "8300754d2088849d6a8fe042f248543e1c9965229b4ad9cc220f45bfa31cccc5",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/policy-inconclusive.json": "23684a20f7cf263645fc7b4124804d248a114fba79973280818986ee48dd5e43",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/policy-fail.json": "c1025c652a3b85be75b10420ae87aca2db6bd8bf748e0218e5b2cd260e77ee3c",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/corpus.json": "1d6e840f5c89ec0f021886e07bc0b0db5e0179fb6a3ce6f4a880f388c3b58361",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/reference.json": "e3d5761fa8f6d3351c82fdc72a13df8c8db9458f07fba401cb22f1fe85fef970",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/quarter.json": "2727e5b2ef50652d96be9e2b55880eba9390c1b6804addc7af2d39878f8f7e54",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/half.json": "281945a1b21b473949eb1049c489f21d2e506c96fd859412a97737631d94d0f5",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/audio/reference.f32": "fd801740524b1e1c23a61b5400725b76428652827ba1261b83243eb5ce551402",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/audio/quarter.f32": "bac1c395abe23908b8c106a28b6c151bc25b9473d470f4d942775b5dfdf523e2",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/capture-demo/corpus/audio/half.f32": "36d231b4ecc15924aea04f08725924f18ae4346fd287747791d7396eca3d5758",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/THIRD_PARTY_NOTICES.md": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/hammond_standalone": "0ef37dd5a0501da08df302027b31791b7917705e00cb32017b035a145ceb3811",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/STANDALONE_INSTALL.md": "7d121ce847ecb90dccbe01b7a3b9bd0917c29ebf0c13955c5c442efa1117aa7c",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/STANDALONE_APP.md": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/STANDALONE_MODEL.md": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/MIDI_UI_RUNBOOK.md": "f51b2c32f5f6e6aa062885bd2b1b64fee24faf85712f4bca9a3b8f1a600695a1",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/PRESET_RUNBOOK.md": "aab73b054b7cb90fb140fea0257c36c3752c33b3032cc6899d7c5b398a209361",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/INTERFACE_RUNBOOK.md": "f16a8b7b16bf9014dd4061b5e1dc8e82803d3816d3927fc04062afca514ae981",
+    "/workspace/scratch/1bb6ee17ad7e/SDL2/LICENSE.txt": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/assets/standalone/fonts/LICENSE-DejaVu.txt": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/data/dependencies/sdl2-lock.json": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/assets/standalone/fonts/source-manifest.json": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/assets/standalone/reference/manifest.json": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/design/atlas-reference.json": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/generated/standalone-capabilities.json": "0aa7e692d1986def4e8f5f31f0104e49ec1e50dca162fb2a14343f458a6bb204"
+  },
+  "source_unchanged": true,
+  "payload_unchanged_after_execution": true,
+  "render": {
+    "channels": 2,
+    "sample_width_bytes": 2,
+    "sample_rate": 48000,
+    "frames": 72000,
+    "stereo_samples_equal": true
+  },
+  "documentation_findings": [
+    {
+      "path": "docs/OFFLINE_INSTALL.md",
+      "issue": "Two current descriptions still say45 compiled parameter mappings; actual installed registry has47."
+    },
+    {
+      "path": "docs/CAPTURE_TOOLS_INSTALL.md",
+      "issue": "Component separation sentence calls standalone NativeStandalone; actual component name is Standalone."
+    }
+  ],
+  "limitations": [
+    "No physical audio/MIDI, real display/DPI, DAW or release signing qualification.",
+    "No runtime-dependency bundling, other-platform binary execution, installed C++ SDK or whole-project completion claim.",
+    "Missing profile and Python dependency probes modify only session-owned installed copies and restore exact bytes; original build/source inputs remain unchanged."
+  ],
+  "published_source_comparison": {
+    "commit": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+    "source_file_count": 84,
+    "all_match": true,
+    "paths": [
+      "tools/plot_console_trace.py",
+      "tools/plot_pedal_trace.py",
+      "examples/fixtures/catalog-v1.json",
+      "examples/fixtures/a4-fundamental-v1.events",
+      "examples/fixtures/two-manual-changes-v1.events",
+      "examples/fixtures/low-fold-coherent-v1.events",
+      "examples/fixtures/held-bank-cancel-v1.events",
+      "examples/fixtures/high-fold-coherent-v1.events",
+      "examples/fixtures/console/console-catalog-v1.json",
+      "examples/fixtures/console/console-travel-v1.events",
+      "examples/fixtures/console/console-percussion-legato-v1.events",
+      "examples/fixtures/console/console-routing-mask-v1.events",
+      "examples/fixtures/pedals/pedal-catalog-v1.json",
+      "examples/fixtures/pedals/pedal-mixtures-v1.events",
+      "examples/fixtures/pedals/pedal-shared-source-v1.events",
+      "examples/fixtures/pedals/pedal-held-routing-v1.events",
+      "examples/fixtures/pedals/pedal-phrase-v1.events",
+      "tools/validate_capture.py",
+      "tools/capture_common.py",
+      "tools/capture_audio.py",
+      "tools/capture_corpus.py",
+      "tools/compare_capture.py",
+      "tools/capture_job.py",
+      "tools/capture_readiness.py",
+      "tools/capture_study.py",
+      "tools/make_capture_demo.py",
+      "tools/verify_capture_report.py",
+      "data/capture.schema.json",
+      "data/capture-corpus.schema.json",
+      "data/capture-policy.schema.json",
+      "data/capture-job.schema.json",
+      "data/capture-study.schema.json",
+      "data/capture-planned-example.json",
+      "data/corpus-planned-example.json",
+      "data/capture-policy-synthetic-example.json",
+      "docs/CAPTURE_FORMAT.md",
+      "docs/CAPTURE_PROTOCOL.md",
+      "docs/CAPTURE_VALIDATION.md",
+      "docs/CAPTURE_COMMON.md",
+      "docs/CAPTURE_AUDIO_CONTRACT.md",
+      "docs/CAPTURE_AUDIO.md",
+      "docs/CAPTURE_CORPUS_CONTRACT.md",
+      "docs/CAPTURE_CORPUS.md",
+      "docs/CAPTURE_COMPARISON_CONTRACT.md",
+      "docs/CAPTURE_COMPARISON.md",
+      "docs/CAPTURE_POLICY.md",
+      "docs/CAPTURE_JOB_CONTRACT.md",
+      "docs/CAPTURE_JOB.md",
+      "docs/CAPTURE_READINESS.md",
+      "docs/CAPTURE_STUDY.md",
+      "docs/CAPTURE_DEMO.md",
+      "docs/CAPTURE_REPLAY.md",
+      "docs/CAPTURE_TOOLS_INSTALL.md",
+      "docs/PLAN.md",
+      "docs/CALIBRATION_SCOPE.md",
+      "docs/CAPTURE_JOB_REVIEW.md",
+      "examples/capture-demo/README.md",
+      "examples/capture-demo/EXPECTED.json",
+      "examples/capture-demo/study.json",
+      "examples/capture-demo/job-pass.json",
+      "examples/capture-demo/job-inconclusive.json",
+      "examples/capture-demo/job-fail.json",
+      "examples/capture-demo/policy-pass.json",
+      "examples/capture-demo/policy-inconclusive.json",
+      "examples/capture-demo/policy-fail.json",
+      "examples/capture-demo/corpus/corpus.json",
+      "examples/capture-demo/corpus/reference.json",
+      "examples/capture-demo/corpus/quarter.json",
+      "examples/capture-demo/corpus/half.json",
+      "examples/capture-demo/corpus/audio/reference.f32",
+      "examples/capture-demo/corpus/audio/quarter.f32",
+      "examples/capture-demo/corpus/audio/half.f32",
+      "THIRD_PARTY_NOTICES.md",
+      "docs/STANDALONE_INSTALL.md",
+      "docs/STANDALONE_APP.md",
+      "docs/STANDALONE_MODEL.md",
+      "docs/MIDI_UI_RUNBOOK.md",
+      "docs/PRESET_RUNBOOK.md",
+      "docs/INTERFACE_RUNBOOK.md",
+      "assets/standalone/fonts/LICENSE-DejaVu.txt",
+      "data/dependencies/sdl2-lock.json",
+      "assets/standalone/fonts/source-manifest.json",
+      "assets/standalone/reference/manifest.json",
+      "docs/design/atlas-reference.json"
+    ]
+  },
+  "parameter_registry": {
+    "schema_version": 2,
+    "registry_schema_version": 4,
+    "parameter_count": 47,
+    "host_exports_verified": false
+  },
+  "capture_study_summary": {
+    "schema_version": 1,
+    "status": "failed",
+    "summary": {
+      "failed": 1,
+      "inconclusive": 1,
+      "jobs": 3,
+      "pass": 1,
+      "roles": {
+        "final_test": 0,
+        "fit": 0,
+        "unassigned": 0,
+        "validation": 3
+      }
+    }
+  },
+  "capture_replay_summary": {
+    "schema_version": 1,
+    "status": "match",
+    "kind": "study",
+    "exact_report_match": true,
+    "saved_engineering_status": "failed",
+    "replayed_engineering_status": "failed"
+  },
+  "source_unchanged_scope": "All 94 unique source/build/dependency inputs retained exact initial bytes through the end of installation and relocated execution. Subsequent coordinated documentation edits are outside this interval.",
+  "verification_method": "Each copied file matched its expected source bytes, the whole 95-file tree matched before/after rename and all executions, and the 84 repository source payload inputs matched the published commit; installed paths were supplied explicitly from an unrelated cwd with PYTHONPATH/PYTHONHOME/LD_LIBRARY_PATH unset."
+}

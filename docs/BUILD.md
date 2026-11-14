@@ -1,5 +1,10 @@
 # Building the engineering baseline
 
+For the current reference UI, native R2/R3 numerical work, shared workspace
+setup and concrete continuation, start with the
+[reference-refinement handoff](REFERENCE_REFINEMENT_HANDOFF.md). This page
+retains the general build commands and explicitly dated verification history.
+
 The core uses C++20 and the standard library. Authoring tools use Python's
 standard library. The default build requires no downloads, host SDKs, audio
 drivers or external libraries. It includes the nominal manual/pedal engine and
@@ -106,7 +111,7 @@ and preserve quoting around paths containing spaces.
 | `hammond_pedal_routing` | Validate/compile the reviewed 200-position pedal routing data into the private generated header |
 | `hammond_render` | Offline WAV renderer from `tools/render.cpp` |
 | `hammond_model_info` | Compiled console and pedal model metadata |
-| `hammond_parameter_info` | All 45 core parameter mappings; diagnostic output does not inspect native host exports |
+| `hammond_parameter_info` | All 47 core parameter mappings; diagnostic output does not inspect native host exports |
 | `hammond_console_trace` | Actual sample-by-sample console diagnostics |
 | `hammond_pedal_trace` | Actual pedal unmute, overlap and routing diagnostics |
 | `hammond_benchmark` | Bounded prepared-engine timing measurements; see [BENCHMARKING.md](BENCHMARKING.md) |
@@ -205,7 +210,7 @@ path. Native tests are conditional on the option; the selective native allocatio
 audit is additionally Linux-specific. Read test discovery and logs rather than
 assuming a historical count applies to every platform or revision.
 
-The current instrument supports three event input buses, 45 controls and dry
+The current instrument supports three event input buses, 47 controls and dry
 float32 stereo at 44.1/48/96 kHz with generic host controls. See the
 [native contract](VST3_SPIKE_CONTRACT.md) for input limits and state migration.
 Hosted native builds have a [separate workflow](VST3_CI.md) and a retained

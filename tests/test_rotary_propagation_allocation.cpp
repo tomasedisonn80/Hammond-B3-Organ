@@ -312,11 +312,15 @@ struct HistoryStorage {
     std::uint64_t through_frame{};
     std::array<MotionSegment, kMaxMotionSegments> segments{};
 };
+static_assert(std::is_trivially_copyable_v<HistoryStorage>);
 
-// Build before any view borrows the object. The caller binds the result const
-// and never moves it, so every observed query has immutable stationary storage.
-[[nodiscard]] HistoryStorage make_storage(double rate, std::int8_t direction) {
-    HistoryStorage storage;
+// Build directly in stable storage before any view borrows it. Large fixture
+// ownership stays outside the call stack and all observed allocation intervals.
+// Returning a const owner keeps every borrowed segment immutable and stationary.
+[[nodiscard]] std::unique_ptr<const HistoryStorage> make_storage(
+    double rate, std::int8_t direction) {
+    auto owner = std::make_unique<HistoryStorage>();
+    auto& storage = *owner;
     storage.profile = {5.0, 200.0, 0.001, 60.0, direction};
     storage.sample_rate = rate;
     storage.through_frame = kMaxEpochSeconds * static_cast<std::uint64_t>(rate);
@@ -333,7 +337,7 @@ struct HistoryStorage {
         CHECK(make_motion_segment(storage.profile, initial, command, anchor,
                                   storage.segments[index]) == Status::Ok);
     }
-    return storage;
+    return owner;
 }
 
 constexpr Vec3 origin{0.1, -0.2, 0.15};
@@ -564,8 +568,12 @@ void check_failures(const HistoryStorage& storage, PreparedCopies& copies, Summa
 }
 
 void check_fixture(double rate, std::int8_t direction, Summary& summary) {
-    const HistoryStorage storage = make_storage(rate, direction);
-    const auto storage_before = bytes(storage);
+    const auto storage_owner = make_storage(rate, direction);
+    const auto& storage = *storage_owner;
+    // Snapshot the complete object without another large stack temporary.
+    // Both fixture allocations and their destruction occur outside observe().
+    const auto storage_before = std::make_unique<std::byte[]>(sizeof(storage));
+    std::memcpy(storage_before.get(), &storage, sizeof(storage));
     const auto positions = observations(storage);
     std::array<ExpectedObservation, kObservationCount> expected{};
     PreparedCopies copies;
@@ -624,7 +632,7 @@ void check_fixture(double rate, std::int8_t direction, Summary& summary) {
         CHECK(state == reference);
     }
     CHECK(bytes(copies) == copied_before);
-    CHECK(bytes(storage) == storage_before);
+    CHECK(std::memcmp(&storage, storage_before.get(), sizeof(storage)) == 0);
     check_calibration(summary);
     ++summary.fixtures;
 }

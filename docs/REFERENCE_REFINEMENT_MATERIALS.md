@@ -88,3 +88,35 @@ The active sidebar contract reserves at least 116 px for status.
 
 Implementation and fresh acceptance remain next work; this document supplies
 reviewable targets, not executed results.
+
+## 2026-11-14 measured wide-header typography addendum
+
+The owner requests close reproduction of the original reference. After the
+accepted v3 capture, [A36's measured review](reviews/REFERENCE_REFINEMENT_VISUAL.md)
+identified title ink 30 pixels too narrow and 8 pixels too low at 1672×941,
+plus a much smaller/lower truthful subtitle. Root authorizes a **narrow exception
+to the original text-size preservation rule** for `sidebar_pedals` with
+`UiPresentation::Dimensional` only. Earlier A08/A14/A26 results retain their
+original source identities and requirements.
+
+A40 may refine the title size/baseline and the exact `NOMINAL DRY ORGAN` caption's
+size, tracking and baseline, using existing serif/sans faces and existing
+`kUiBrass`. Initial measured candidates are title 42.75 at `header.y - 4.5`,
+and caption 17 at `header.y + 51.5`, tracked to a 374-pixel advance. These are
+candidates; measured native ink, safe fitting and clipping determine acceptance.
+The original reference's title ink box is `[603,20,1067,53]` and subtitle box is
+`[650,71,1021,83]` under A36's stated threshold/half-open measurement convention.
+The caption retains truthful product wording rather than imitating unavailable
+sound features.
+
+All control/hit/focus geometry, parameter/state meanings, other palettes,
+material/error budgets and allocation boundaries remain unchanged. Complete
+Flat and non-sidebar frames must retain identical pixels; changed wide frames
+must preserve pixels outside the header. Keep the original title allowance and
+fit safely at the wide breakpoint and tested scales. Preserve all existing
+material assertions, add scoped authored checks, and require A41's independent
+ink/isolation/clip review plus the one changed reference timing cell under A25's
+frozen procedure. Retain any first failure and at most one permitted reversed
+repeat. Publish accepted source before a fresh source-identified final gallery;
+v3 remains immutable historical evidence. This addendum does not claim literal
+whole-interface equality or physical display/device qualification.

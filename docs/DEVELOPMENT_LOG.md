@@ -1,5 +1,11 @@
 # Development log
 
+## 2026-11-14 — Publish native v3 gallery and remove fixture stack pressure
+
+All eight native v3 captures from published `2e161dc` are independently accepted:111 qualified inputs,552 provenance/pixel/source checks and exact painted2/1/1 holds. A32 strengthens the reusable validator with seven methods and sixty synthetic mutations. A34 confirms719,289 identical PCM frames across1,662 presentation transitions and preserved47parameter/state meanings. A35 relocates95installedfiles through Unicode/space paths and passes16expected exits. A37 adds the exact current setup/full-plan handoff and corrects stale component/parameter descriptions.
+
+At `2e161dc`, eleven hosted jobs succeed, including both core/native sanitizer-leak gates and all five native configurations. Windows core Release retains135/136 with an immediate allocation-test SegFault. A38 moves only its full-capacity fixture and snapshot to stable heap storage outside measured intervals. The GCC stack frame falls693,904→5,872bytes; the repaired full workload passes at512KiB while the original crashes. All82,320 queries and calibration/copy/rejection results are byte-identical. Actual Windows confirmation follows publication; original primary logs remain retained. A36's measured title/subtitle gap motivates the explicit typography-only material-contract addendum; A40/A41 own implementation and independent acceptance. The v3 gallery remains immutable.
+
 ## 2026-11-14 — Qualify native propagation, pending images and input observations
 
 Accepted waves 1–5 include independent R2 motion and R3 historical propagation, six genuine Session pending/acknowledged images, exact replay of those images, new copied held/capture observations and the narrow Flat-overlay repair. Original numerical/raster failures remain retained. The real X11 journey establishes held-pedal continuity across the wide-layout breakpoint, persistent capture outside/inside/outside and ordinary Alt+F4 cleanup; keyboard-transition observations retain their stated pre-held limitation. Material timing retains all original paired cells and the sole nonreproducing repeat of a triggered p95 regression.

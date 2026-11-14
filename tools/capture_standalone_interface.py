@@ -275,6 +275,16 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
             "actual painted screenshot is not the requested view/size")
     require(painted["elapsed_ms"] >= DURATION_MS and 0 < painted["rendered_image"] <= runtime["rendered_images"]
             and painted == view["before_shutdown"] == view["last_painted"], "capture is not the final replay-painted frame")
+    held = painted.get("held_targets")
+    require(held == {"upper": 2, "lower": 1, "pedals": 1}
+            and all(type(value) is int for value in held.values()),
+            "actual painted held targets differ from Upper 2 / Lower 1 / Pedals 1")
+    pointer = painted.get("pointer_capture")
+    require(pointer == {"sdl_captured": False, "ui_captured": False, "attempts": 0,
+                        "successes": 0, "losses": 0, "release_calls": 0}
+            and pointer["sdl_captured"] is False and pointer["ui_captured"] is False
+            and all(type(pointer[key]) is int for key in ("attempts", "successes", "losses", "release_calls")),
+            "keyboard-only painted frame has unexpected pointer capture state or counters")
     copied = painted["inspection"]
     require(copied["snapshot_available"] is True and copied["snapshot_read_succeeded"] is True
             and copied["snapshot_state"] == "current" and copied["controls_pending"] is False

@@ -1,0 +1,409 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w07_a38_windows_allocation_repair",
+  "base_commit": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+  "owned_source": "tests/test_rotary_propagation_allocation.cpp",
+  "original_test_sha256": "6ab50ccbb4e77e19c30171ec55f406d17b1a70166557d2bc4f6374f8a35f9fe6",
+  "repaired_test_sha256": "022845759fe2e604ad4c8003dc0acf4e2b693d79933da86e25a0ac8e0f9f39d7",
+  "hosted_original": {
+    "run_id": 43641918154,
+    "job_id": 132591143228,
+    "job_name": "Release (Windows MSVC)",
+    "compiler": "MSVC14.44.35207",
+    "build": "zero warnings/errors; full Release build passed",
+    "ctest": "135/136 passed; allocation test SEGFAULT after 0.02 seconds; total 216.45 seconds",
+    "decoded_primary_log": "docs/development/2026-11-14-reference-refinement/reports/root-windows-2e.log",
+    "log_sha256": "54cf09b82e8344b47fc0cbc4135b4fb2be04e2cbc1ebb365d648ac33dddbdeff",
+    "log_bytes": 383399,
+    "provenance": "UTF-8 encoding of connector-decoded job log retained by root; not claimed as raw artifact ZIP bytes.",
+    "exact_excerpts": [
+      {
+        "line_number": 2225,
+        "lines": [
+          "2026-11-14T21:19:21.6036781Z  41/136 Test  #41: test_rotary_motion ................................   Passed    0.10 sec",
+          "2026-11-14T21:19:21.6037205Z         Start  43: test_rotary_propagation_allocation",
+          "2026-11-14T21:19:21.6349860Z  42/136 Test  #43: test_rotary_propagation_allocation ................***Exception: SegFault  0.02 sec",
+          "2026-11-14T21:19:21.6350659Z ",
+          "2026-11-14T21:19:21.6350973Z         Start  44: test_scanner_line",
+          "2026-11-14T21:19:21.6507346Z  43/136 Test  #42: test_rotary_propagation ...........................   Passed    0.06 sec"
+        ]
+      },
+      {
+        "line_number": 2415,
+        "lines": [
+          "2026-11-14T21:22:52.6208561Z 136/136 Test #114: python_test_vst3_build_tools ......................   Passed   21.98 sec",
+          "2026-11-14T21:22:52.6363321Z ",
+          "2026-11-14T21:22:52.6363918Z 99% tests passed, 1 tests failed out of 136",
+          "2026-11-14T21:22:52.6364259Z ",
+          "2026-11-14T21:22:52.6364440Z Label Time Summary:",
+          "2026-11-14T21:22:52.6365091Z backend                   =   0.02 sec*proc (2 tests)"
+        ]
+      },
+      {
+        "line_number": 2427,
+        "lines": [
+          "2026-11-14T21:22:52.6368403Z ",
+          "2026-11-14T21:22:52.6368604Z The following tests FAILED:",
+          "2026-11-14T21:22:52.6369116Z \t 43 - test_rotary_propagation_allocation (SEGFAULT)",
+          "2026-11-14T21:22:52.6369649Z Errors while running CTest",
+          "2026-11-14T21:22:52.6569962Z ##[error]Process completed with exit code 8.",
+          "2026-11-14T21:22:52.6789459Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+        ]
+      }
+    ]
+  },
+  "diagnosis": {
+    "confirmed": "The original fixture retains large by-value backing storage and whole-object snapshots/temporaries on its stack. GCC static frames and bounded-child runs demonstrate substantial stack pressure.",
+    "original_gcc_static_fixture_bytes": 693904,
+    "original_gcc_no_optional_copy_elision_bytes": 923424,
+    "repaired_gcc_static_fixture_bytes": 5872,
+    "windows_cause": "Stack exhaustion is the working explanation, not an observed Windows stack trace. The original GCC binary passes at1MiB; the exact MSVC crash mechanism is not proven by the Linux experiment.",
+    "scope_of_limits": "Only child RLIMIT_STACK soft limits were tightened. Child core output was disabled to avoid crash dumps; no parent/global limit, system policy, CMake stack setting or workflow changed."
+  },
+  "repair": {
+    "behavior": "Construct a const-owned HistoryStorage directly on heap before borrowing. Snapshot all object bytes in a separate heap array before observation and compare every byte afterward using memcmp. Preserve the previous trivially-copyable static assertion explicitly.",
+    "observed_intervals": "All fixture allocations and deallocations are outside observe(); the sixteen independent12-overload calibrations remain unchanged.",
+    "unchanged": [
+      "4,097 segments per fixture",
+      "four rates / two directions / eight fixtures",
+      "all 82,320 admitted queries",
+      "all 40 preparations / eight copy intervals / 856 rejections",
+      "all full-byte object, destination and history assertions",
+      "all numerical limits and budgets",
+      "all product, CMake and workflow code"
+    ]
+  },
+  "original_runs": {
+    "binary": "/workspace/scratch/1bb6ee17ad7e/build-native/test_rotary_propagation_allocation",
+    "binary_sha256": "40d00595bb4dd9f33a7a041975a88772a8a0270fa73f306190df1ef8fbe4d0d9",
+    "test_source_sha256": "6ab50ccbb4e77e19c30171ec55f406d17b1a70166557d2bc4f6374f8a35f9fe6",
+    "runs": [
+      {
+        "stack_soft_limit_bytes": null,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      },
+      {
+        "stack_soft_limit_bytes": 1048576,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      },
+      {
+        "stack_soft_limit_bytes": 524288,
+        "returncode": -11,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "source_pairing_limit": "The existing coherent-build binary predates the publication-only removal of one trailing LF; source6ab50c is token-identical to its compiledb7329b source. Exact-source isolated runs are retained separately."
+  },
+  "original_stack_compilations": {
+    "original": {
+      "command": [
+        "/usr/bin/c++",
+        "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ\"",
+        "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p\"",
+        "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests",
+        "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+        "-O3",
+        "-DNDEBUG",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-Wshadow",
+        "-Werror",
+        "-o",
+        "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.o",
+        "-c",
+        "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp",
+        "-fstack-usage"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "stack_usage": "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:196:27:{anonymous}::Calibration {anonymous}::calibrate()\t416\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:146:29:void operator delete(void*, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:150:29:void operator delete [](void*, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:157:29:void operator delete [](void*, std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:165:29:void operator delete [](void*, std::align_val_t, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:153:29:void operator delete(void*, std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:161:29:void operator delete(void*, std::align_val_t, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:113:29:void operator delete(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:117:29:void operator delete [](void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:121:29:void operator delete [](void*, std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:127:29:void operator delete [](void*, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:118:29:void operator delete(void*, std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:124:29:void operator delete(void*, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:102:30:void* operator new(std::size_t)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:106:30:void* operator new [](std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:110:30:void* operator new [](std::size_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:107:30:void* operator new(std::size_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:131:30:void* operator new(std::size_t, std::align_val_t)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:135:30:void* operator new [](std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:142:30:void* operator new [](std::size_t, std::align_val_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:138:30:void* operator new(std::size_t, std::align_val_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/TestSupport.h:24:26:void hammond_test::fail(const char*, const char*, int, std::string_view)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:455:6:void {anonymous}::reject_path_query(const hammond::rotary::PreparedRetardedPath&, hammond::rotary::SamplePosition, hammond::rotary::Status, Summary&)\t592\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:447:6:void {anonymous}::reject_history_query(const hammond::rotary::MotionHistoryView&, hammond::rotary::SamplePosition, hammond::rotary::Status, Summary&)\t320\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:379:6:void {anonymous}::solve_path(const hammond::rotary::PreparedRetardedPath&, hammond::rotary::SamplePosition, hammond::rotary::PathResult&, hammond::rotary::SamplePosition&, Summary&)\t64\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:371:6:void {anonymous}::query_history(const hammond::rotary::MotionHistoryView&, hammond::rotary::SamplePosition, hammond::rotary::MotionState&, Summary&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:400:29:void {anonymous}::prepare_escaped_copies(const HistoryStorage&, const std::array<hammond::rotary::SamplePosition, 16>&, PreparedCopies&, std::array<ExpectedObservation, 16>&, Summary&)\t1680\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:566:6:void {anonymous}::check_fixture(double, int8_t, Summary&)\t693904\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:44:6:void allocation_probe::allocation()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:48:6:void allocation_probe::deallocation(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:52:6:void allocation_probe::begin()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:57:22:allocation_probe::Counts allocation_probe::end()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:62:21:void* allocation_probe::allocate_bytes(std::size_t)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:74:21:void* allocation_probe::allocate_aligned(std::size_t, std::size_t)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:93:6:void allocation_probe::free_aligned(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:636:5:int main()\t304\tstatic\n",
+      "link_command": [
+        "/usr/bin/c++",
+        "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.o",
+        "/workspace/scratch/1bb6ee17ad7e/build-native/libhammond_core.a",
+        "-o",
+        "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original-probe"
+      ],
+      "binary_sha256": "fb9b411c5efb5aa94e2084148d287bd4d71d86235db1856eeb6aededb9524c4c"
+    },
+    "no_elide": {
+      "command": [
+        "/usr/bin/c++",
+        "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ\"",
+        "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p\"",
+        "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests",
+        "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+        "-O3",
+        "-DNDEBUG",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-Wshadow",
+        "-Werror",
+        "-o",
+        "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/no_elide.o",
+        "-c",
+        "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp",
+        "-fstack-usage",
+        "-fno-elide-constructors"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "stack_usage": "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:196:27:{anonymous}::Calibration {anonymous}::calibrate()\t448\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:146:29:void operator delete(void*, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:150:29:void operator delete [](void*, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:157:29:void operator delete [](void*, std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:165:29:void operator delete [](void*, std::align_val_t, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:153:29:void operator delete(void*, std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:161:29:void operator delete(void*, std::align_val_t, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:113:29:void operator delete(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:117:29:void operator delete [](void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:121:29:void operator delete [](void*, std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:127:29:void operator delete [](void*, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:118:29:void operator delete(void*, std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:124:29:void operator delete(void*, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:102:30:void* operator new(std::size_t)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:106:30:void* operator new [](std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:110:30:void* operator new [](std::size_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:107:30:void* operator new(std::size_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:131:30:void* operator new(std::size_t, std::align_val_t)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:135:30:void* operator new [](std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:142:30:void* operator new [](std::size_t, std::align_val_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:138:30:void* operator new(std::size_t, std::align_val_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/TestSupport.h:24:26:void hammond_test::fail(const char*, const char*, int, std::string_view)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:455:6:void {anonymous}::reject_path_query(const hammond::rotary::PreparedRetardedPath&, hammond::rotary::SamplePosition, hammond::rotary::Status, Summary&)\t800\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:447:6:void {anonymous}::reject_history_query(const hammond::rotary::MotionHistoryView&, hammond::rotary::SamplePosition, hammond::rotary::Status, Summary&)\t432\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:379:6:void {anonymous}::solve_path(const hammond::rotary::PreparedRetardedPath&, hammond::rotary::SamplePosition, hammond::rotary::PathResult&, hammond::rotary::SamplePosition&, Summary&)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:371:6:void {anonymous}::query_history(const hammond::rotary::MotionHistoryView&, hammond::rotary::SamplePosition, hammond::rotary::MotionState&, Summary&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:400:29:void {anonymous}::prepare_escaped_copies(const HistoryStorage&, const std::array<hammond::rotary::SamplePosition, 16>&, PreparedCopies&, std::array<ExpectedObservation, 16>&, Summary&)\t1984\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:566:6:void {anonymous}::check_fixture(double, int8_t, Summary&)\t923424\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:44:6:void allocation_probe::allocation()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:48:6:void allocation_probe::deallocation(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:52:6:void allocation_probe::begin()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:57:22:allocation_probe::Counts allocation_probe::end()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:62:21:void* allocation_probe::allocate_bytes(std::size_t)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:74:21:void* allocation_probe::allocate_aligned(std::size_t, std::size_t)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:93:6:void allocation_probe::free_aligned(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original.cpp:636:5:int main()\t304\tstatic\n",
+      "link_command": [
+        "/usr/bin/c++",
+        "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/no_elide.o",
+        "/workspace/scratch/1bb6ee17ad7e/build-native/libhammond_core.a",
+        "-o",
+        "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/no_elide-probe"
+      ],
+      "binary_sha256": "5c478277b4f9879d7e16f7c6a4e733d24a03c0f93512668496e244299bb7467b"
+    }
+  },
+  "candidate_before_explicit_static_assert": {
+    "compile_command": [
+      "/usr/bin/c++",
+      "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ\"",
+      "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p\"",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+      "-O3",
+      "-DNDEBUG",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-o",
+      "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.o",
+      "-c",
+      "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp",
+      "-fstack-usage"
+    ],
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "stack_usage": "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:196:27:{anonymous}::Calibration {anonymous}::calibrate()\t416\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:146:29:void operator delete(void*, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:150:29:void operator delete [](void*, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:157:29:void operator delete [](void*, std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:165:29:void operator delete [](void*, std::align_val_t, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:153:29:void operator delete(void*, std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:161:29:void operator delete(void*, std::align_val_t, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:113:29:void operator delete(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:117:29:void operator delete [](void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:121:29:void operator delete [](void*, std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:127:29:void operator delete [](void*, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:118:29:void operator delete(void*, std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:124:29:void operator delete(void*, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:102:30:void* operator new(std::size_t)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:106:30:void* operator new [](std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:110:30:void* operator new [](std::size_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:107:30:void* operator new(std::size_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:131:30:void* operator new(std::size_t, std::align_val_t)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:135:30:void* operator new [](std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:142:30:void* operator new [](std::size_t, std::align_val_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:138:30:void* operator new(std::size_t, std::align_val_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/TestSupport.h:24:26:void hammond_test::fail(const char*, const char*, int, std::string_view)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:458:6:void {anonymous}::reject_path_query(const hammond::rotary::PreparedRetardedPath&, hammond::rotary::SamplePosition, hammond::rotary::Status, Summary&)\t592\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:450:6:void {anonymous}::reject_history_query(const hammond::rotary::MotionHistoryView&, hammond::rotary::SamplePosition, hammond::rotary::Status, Summary&)\t320\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:382:6:void {anonymous}::solve_path(const hammond::rotary::PreparedRetardedPath&, hammond::rotary::SamplePosition, hammond::rotary::PathResult&, hammond::rotary::SamplePosition&, Summary&)\t64\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:374:6:void {anonymous}::query_history(const hammond::rotary::MotionHistoryView&, hammond::rotary::SamplePosition, hammond::rotary::MotionState&, Summary&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:403:29:void {anonymous}::prepare_escaped_copies(const HistoryStorage&, const std::array<hammond::rotary::SamplePosition, 16>&, PreparedCopies&, std::array<ExpectedObservation, 16>&, Summary&)\t1680\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:569:6:void {anonymous}::check_fixture(double, int8_t, Summary&)\t5872\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:44:6:void allocation_probe::allocation()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:48:6:void allocation_probe::deallocation(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:52:6:void allocation_probe::begin()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:57:22:allocation_probe::Counts allocation_probe::end()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:62:21:void* allocation_probe::allocate_bytes(std::size_t)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:74:21:void* allocation_probe::allocate_aligned(std::size_t, std::size_t)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:93:6:void allocation_probe::free_aligned(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:643:5:int main()\t304\tstatic\n",
+    "binary": "/workspace/scratch/1bb6ee17ad7e/build-native/test_rotary_propagation_allocation",
+    "binary_sha256": "1045dfbf55446a6bf1d0eace2deb29c24a82ed05f0ba3045d58a2dbf96514f3d",
+    "test_source_sha256": "156447d07471b24579db4efdf7988660e815bccb57058a347c97184dbb52dd67",
+    "runs": [
+      {
+        "stack_soft_limit_bytes": null,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      },
+      {
+        "stack_soft_limit_bytes": 1048576,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      },
+      {
+        "stack_soft_limit_bytes": 524288,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      }
+    ],
+    "stdout_byte_identical_to_original_unrestricted": true
+  },
+  "final": {
+    "compile_command": [
+      "/usr/bin/c++",
+      "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ\"",
+      "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p\"",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+      "-O3",
+      "-DNDEBUG",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-o",
+      "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.o",
+      "-c",
+      "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp",
+      "-fstack-usage"
+    ],
+    "compile_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "stack_usage": "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:196:27:{anonymous}::Calibration {anonymous}::calibrate()\t416\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:146:29:void operator delete(void*, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:150:29:void operator delete [](void*, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:157:29:void operator delete [](void*, std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:165:29:void operator delete [](void*, std::align_val_t, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:153:29:void operator delete(void*, std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:161:29:void operator delete(void*, std::align_val_t, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:113:29:void operator delete(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:117:29:void operator delete [](void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:121:29:void operator delete [](void*, std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:127:29:void operator delete [](void*, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:118:29:void operator delete(void*, std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:124:29:void operator delete(void*, const std::nothrow_t&)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:102:30:void* operator new(std::size_t)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:106:30:void* operator new [](std::size_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:110:30:void* operator new [](std::size_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:107:30:void* operator new(std::size_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:131:30:void* operator new(std::size_t, std::align_val_t)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:135:30:void* operator new [](std::size_t, std::align_val_t)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:142:30:void* operator new [](std::size_t, std::align_val_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:138:30:void* operator new(std::size_t, std::align_val_t, const std::nothrow_t&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/TestSupport.h:24:26:void hammond_test::fail(const char*, const char*, int, std::string_view)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:459:6:void {anonymous}::reject_path_query(const hammond::rotary::PreparedRetardedPath&, hammond::rotary::SamplePosition, hammond::rotary::Status, Summary&)\t592\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:451:6:void {anonymous}::reject_history_query(const hammond::rotary::MotionHistoryView&, hammond::rotary::SamplePosition, hammond::rotary::Status, Summary&)\t320\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:383:6:void {anonymous}::solve_path(const hammond::rotary::PreparedRetardedPath&, hammond::rotary::SamplePosition, hammond::rotary::PathResult&, hammond::rotary::SamplePosition&, Summary&)\t64\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:375:6:void {anonymous}::query_history(const hammond::rotary::MotionHistoryView&, hammond::rotary::SamplePosition, hammond::rotary::MotionState&, Summary&)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:404:29:void {anonymous}::prepare_escaped_copies(const HistoryStorage&, const std::array<hammond::rotary::SamplePosition, 16>&, PreparedCopies&, std::array<ExpectedObservation, 16>&, Summary&)\t1680\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:570:6:void {anonymous}::check_fixture(double, int8_t, Summary&)\t5872\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:44:6:void allocation_probe::allocation()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:48:6:void allocation_probe::deallocation(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:52:6:void allocation_probe::begin()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:57:22:allocation_probe::Counts allocation_probe::end()\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:62:21:void* allocation_probe::allocate_bytes(std::size_t)\t16\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:74:21:void* allocation_probe::allocate_aligned(std::size_t, std::size_t)\t48\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:93:6:void allocation_probe::free_aligned(void*)\t8\tstatic\n/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/repaired.cpp:644:5:int main()\t304\tstatic\n",
+    "binary": "/workspace/scratch/1bb6ee17ad7e/build-native/test_rotary_propagation_allocation",
+    "binary_sha256": "8ae80156b04a4fba4a034024547dcbfee398a9aca4ba08c9224f8dffa76a803f",
+    "test_source_sha256": "022845759fe2e604ad4c8003dc0acf4e2b693d79933da86e25a0ac8e0f9f39d7",
+    "runs": [
+      {
+        "stack_soft_limit_bytes": null,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      },
+      {
+        "stack_soft_limit_bytes": 1048576,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      },
+      {
+        "stack_soft_limit_bytes": 524288,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      }
+    ],
+    "stdout_byte_identical_to_original_unrestricted": true
+  },
+  "final_target_ctest": {
+    "command": [
+      "../build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "../build-native",
+      "-C",
+      "Release",
+      "--output-on-failure",
+      "--no-tests=error",
+      "-V",
+      "-R",
+      "^test_rotary_propagation_allocation$"
+    ],
+    "exit_code": 0,
+    "passed": 1,
+    "executed": 1,
+    "log": "A38-final-ctest.log"
+  },
+  "final_workload": {
+    "status": "passed",
+    "fixtures": 8,
+    "segments_per_fixture": 4097,
+    "repetitions": 32,
+    "calibrations": 16,
+    "calibration_allocations": 192,
+    "calibration_deallocations": 192,
+    "history_queries": 69776,
+    "solved_paths": 8448,
+    "geometry_queries": 4096,
+    "rejected_calls": 856,
+    "maximum_evaluations": 40,
+    "maximum_residual_s": 9.716186188946097e-15,
+    "intervals": {
+      "prepare": {
+        "calls": 40,
+        "allocations": 0,
+        "deallocations": 0
+      },
+      "query": {
+        "calls": 82320,
+        "allocations": 0,
+        "deallocations": 0
+      },
+      "copy": {
+        "calls": 8,
+        "allocations": 0,
+        "deallocations": 0
+      },
+      "rejection": {
+        "calls": 856,
+        "allocations": 0,
+        "deallocations": 0
+      }
+    }
+  },
+  "all_final_stdout_identical_to_original_unrestricted": true,
+  "unchanged_source_identities": {
+    "include/hammond/RotaryMotion.h": {
+      "sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+      "bytes": 6314,
+      "matches_published_commit": true
+    },
+    "include/hammond/RotaryPropagation.h": {
+      "sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+      "bytes": 3577,
+      "matches_published_commit": true
+    },
+    "src/RotaryMotion.cpp": {
+      "sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+      "bytes": 17599,
+      "matches_published_commit": true
+    },
+    "src/RotaryPropagation.cpp": {
+      "sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+      "bytes": 14495,
+      "matches_published_commit": true
+    },
+    "tests/TestSupport.h": {
+      "sha256": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5",
+      "bytes": 2914,
+      "matches_published_commit": true
+    }
+  },
+  "logs": {
+    "A38-build.log": {
+      "bytes": 9134,
+      "sha256": "0c3ff34ee783ac677c4e34cfd8f63bf357f7cf4fe1051fab403fb0f3d3bdc217"
+    },
+    "A38-ctest.log": {
+      "bytes": 1477,
+      "sha256": "7eaaa33bd924e965ffa8fa4285d8ad5142ca33c34dbb0eae650a651cbc31ba36"
+    },
+    "A38-final-build.log": {
+      "bytes": 228,
+      "sha256": "da67ce0010f3d9073ac702e6a0ba49a01b593de9539572e492ba6f41357c2ff5"
+    },
+    "A38-final-ctest.log": {
+      "bytes": 1477,
+      "sha256": "7eaaa33bd924e965ffa8fa4285d8ad5142ca33c34dbb0eae650a651cbc31ba36"
+    }
+  },
+  "remaining_gate": "Publish exact repair and execute Windows MSVC full Release plus hosted leak-enabled sanitizer gates. Neither is claimed completed for the repaired source.",
+  "original_source_paired_runs": {
+    "binary": "/workspace/scratch/1bb6ee17ad7e/a38-allocation-stack/original-probe",
+    "binary_sha256": "fb9b411c5efb5aa94e2084148d287bd4d71d86235db1856eeb6aededb9524c4c",
+    "source_sha256": "6ab50ccbb4e77e19c30171ec55f406d17b1a70166557d2bc4f6374f8a35f9fe6",
+    "runs": [
+      {
+        "stack_soft_limit_bytes": null,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      },
+      {
+        "stack_soft_limit_bytes": 1048576,
+        "returncode": 0,
+        "stdout": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\n",
+        "stderr": ""
+      },
+      {
+        "stack_soft_limit_bytes": 524288,
+        "returncode": -11,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "source_provenance": "Compiled from exact pre-repair source copy original.cpp using exported Release flags plus-fstack-usage; object/link commands retained in original_stack_compilations.original."
+  }
+}

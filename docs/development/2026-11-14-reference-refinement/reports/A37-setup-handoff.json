@@ -1,0 +1,719 @@
+{
+  "schema_version": 1,
+  "agent": "/root/w07_a37_setup_handoff",
+  "observed_head": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+  "scope": "Documentation and source-checked setup; no shared configure/build/CTest/native process",
+  "before_sha256": {
+    "docs/BUILD.md": "6f36d1874df80ca532ebc3f725e7ace87af453e86956c65b1d178bfe55f7d338",
+    "docs/OFFLINE_INSTALL.md": "7a845917ab369f17fd467b838ff1b612f041e3c263d6c3499e10d73a835f6422",
+    "docs/CAPTURE_TOOLS_INSTALL.md": "ccffae418b2f45d5c88f977aa1fa1f6aa0662ba231f142dc7b2b2f264cd1f590"
+  },
+  "installation_coordination": "A35 released both install guides only after the95-file installation and byte checks completed. Its report and original payload identities remain unchanged.",
+  "queued_for_other_owner": [
+    "INTERFACE_RUNBOOK.md current-gallery v2 and old-session navigation; root assigned later documentation owner A47."
+  ],
+  "observed_hosted_sanitizer_jobs": [
+    {
+      "id": 132591142914,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "head_sha": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+      "run_id": 43641918154,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43641918154/job/132591142914",
+      "completed_at": "2026-11-14T21:20:08Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure Debug with ASan and UBSan",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build with sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run every registered test with leak checking",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 132591142854,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "head_sha": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+      "run_id": 43641918142,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43641918142/job/132591142854",
+      "completed_at": "2026-11-14T21:22:08Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record the revision, sanitizer policy and tools",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release with project and SDL sanitizers",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build only the sixteen interface acceptance targets",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Discover exactly sixteen gates and run with leak checking",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reverify source and locked SDL2 after acceptance",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain native sanitizer diagnostics",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "hosted_observation_limit": "Job status and successful named steps observed through the run jobs endpoint; no hosted job was dispatched, logs regraded or other matrix job claimed by A37.",
+  "toolchain_observed": {
+    "cmake": "4.4.5",
+    "ninja": "1.13.2.git.kitware.jobserver-pipe-1",
+    "cxx": "Debian GCC14.2.0-19",
+    "python": "3.12.14"
+  },
+  "validation": {
+    "local_links": [
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "REFERENCE_REFINEMENT_SCOPE.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/notes/A34-audio-state-isolation.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "../AGENTS.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "STATUS.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "NEXT_STEPS.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/CHECKPOINT.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/assignments.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "research/REFERENCE_REFINEMENT_ATLAS_REVIEW.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/reports/root-native-publication.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "design/atlas-cover-reference.jpg",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "design/atlas-reference.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "../examples/demos/standalone-interface-preview-v3/README.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/notes/A31-native-gallery.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/notes/A32-gallery-independent.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/reports/coherent-result.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/reports/A37-setup-handoff.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/reports/root-windows-2e.log",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "MIDI_UI_RUNBOOK.md#prerequisites-and-platform-backends",
+        "exists": true,
+        "fragment_valid": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "ROTARY_NUMERICAL_CONTRACT.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "ROTARY_PROPAGATION.md#reproduce-the-native-and-python-gates",
+        "exists": true,
+        "fragment_valid": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "INTERFACE_RUNBOOK.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "RTMIDI_BUILD.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "VST3_BUILD.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "STANDALONE_INSTALL.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "OFFLINE_INSTALL.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "CAPTURE_TOOLS_INSTALL.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/reports/A35-install-relocation.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "../data/dependencies/rtmidi-lock.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/reports/A31-native-gallery.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/reports/root-desktop-acceptance-review.json",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "development/2026-11-14-reference-refinement/notes/A26-material-boundary-repair.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "PLAN.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "SCANNER_NUMERICAL_CONTRACT.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "ROTARY_PROPAGATION.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "ROTARY_NUMERICAL_CONTRACT.md",
+        "exists": true
+      },
+      {
+        "from": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "target": "../AGENTS.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "REFERENCE_REFINEMENT_HANDOFF.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "#optional-native-vst3-build",
+        "exists": true,
+        "fragment_valid": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "PEDAL_HANDOFF.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "../data/dependencies/vst3-sdk-lock.json",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "#verification-record",
+        "exists": true,
+        "fragment_valid": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "STATUS.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "CI.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "PEDAL_HANDOFF.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "CI_QUALIFICATION.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "CLI_UNICODE.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "BENCHMARKING.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "OFFLINE_INSTALL.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "VST3_LOCAL_INSTALL.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "VST3_BUILD.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "VST3_SPIKE_CONTRACT.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "VST3_CI.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "reviews/PEDAL_NATIVE_PORTABILITY.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "development/agent-notes/09-build-foundation.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "STATUS.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "PEDAL_HANDOFF.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "CI.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "DEVELOPMENT_LOG.md",
+        "exists": true
+      },
+      {
+        "from": "docs/BUILD.md",
+        "target": "PROJECT_GUIDE.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "VST3_LOCAL_INSTALL.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "PLAN.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "BUILD.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "VST3_ABI_ACCEPTANCE.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "CONSOLE_TRACE.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "CONSOLE_TRACE_PLOTS.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "PEDAL_TRACE_PLOTS.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "PEDAL_TRACE.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "PEDAL_AUDIO_ACCEPTANCE.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "development/2026-11-13-pedals/38-install-packages.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "development/2026-11-13-pedals/45-pedal-plots.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "development/2026-11-13-continuation/44-offline-packaging.md",
+        "exists": true
+      },
+      {
+        "from": "docs/OFFLINE_INSTALL.md",
+        "target": "VST3_LOCAL_INSTALL.md",
+        "exists": true
+      }
+    ],
+    "local_link_count": 72,
+    "shell_syntax": [
+      {
+        "file": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "block": 1,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "block": 2,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "block": 3,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/REFERENCE_REFINEMENT_HANDOFF.md",
+        "block": 4,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/BUILD.md",
+        "block": 1,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/BUILD.md",
+        "block": 2,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/BUILD.md",
+        "block": 3,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/BUILD.md",
+        "block": 4,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/BUILD.md",
+        "block": 5,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/BUILD.md",
+        "block": 6,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/BUILD.md",
+        "block": 7,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/OFFLINE_INSTALL.md",
+        "block": 1,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/OFFLINE_INSTALL.md",
+        "block": 2,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/OFFLINE_INSTALL.md",
+        "block": 3,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/OFFLINE_INSTALL.md",
+        "block": 4,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/OFFLINE_INSTALL.md",
+        "block": 5,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/CAPTURE_TOOLS_INSTALL.md",
+        "block": 1,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/CAPTURE_TOOLS_INSTALL.md",
+        "block": 2,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/CAPTURE_TOOLS_INSTALL.md",
+        "block": 3,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/CAPTURE_TOOLS_INSTALL.md",
+        "block": 4,
+        "exit": 0,
+        "stderr": ""
+      },
+      {
+        "file": "docs/CAPTURE_TOOLS_INSTALL.md",
+        "block": 5,
+        "exit": 0,
+        "stderr": ""
+      }
+    ],
+    "shell_block_count": 21,
+    "errors": [],
+    "executed_builds_or_suites": false,
+    "whitespace": "git diff --check on the four owned documentation paths passed",
+    "source_contract_checks": {
+      "root_cmake_minimum_3_21": true,
+      "python_minimum_3_10": true,
+      "configured_options": true,
+      "dependency_root_cache_paths": true,
+      "native_test_input_aggregate": true,
+      "application_options": true,
+      "sdl_acquisition_options": true,
+      "rtmidi_acquisition_options": true,
+      "current_documented_47": true,
+      "actual_standalone_component": true,
+      "whitespace:docs/REFERENCE_REFINEMENT_HANDOFF.md": true,
+      "whitespace:docs/BUILD.md": true,
+      "whitespace:docs/OFFLINE_INSTALL.md": true,
+      "whitespace:docs/CAPTURE_TOOLS_INSTALL.md": true
+    },
+    "initial_source_check": {
+      "current_documented_47": false,
+      "reason": "An overbroad absence-of-substring45 diagnostic rejected the deliberately retained historical pedal assignment45 link. Replace it with four exact current-claim checks; no historical source/evidence number is changed."
+    },
+    "note_links": 2
+  },
+  "after_sha256": {
+    "docs/REFERENCE_REFINEMENT_HANDOFF.md": "f35c14ca903edd23e4ee2cd810358b047dbff46910e1abe507fd1de6d2b84c3b",
+    "docs/BUILD.md": "90ad01e73bad3658f6ff8a999711634598787f2c0cffea4e33add30bab40b53b",
+    "docs/OFFLINE_INSTALL.md": "fa73ec5f084ab2b096581248715e91a3960554afcfb98268cdb334d526468334",
+    "docs/CAPTURE_TOOLS_INSTALL.md": "9e7d89d1763ec887a848a96eb1c477d7edac2f74a6009f0b33468310738ed2c3"
+  },
+  "current_windows_boundary": {
+    "source": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+    "primary_log": "docs/development/2026-11-14-reference-refinement/reports/root-windows-2e.log",
+    "owner": "A38",
+    "result": "135 of136 core Release suites passed; allocation fixture SEGFAULT at0.02s; no product defect established; repair qualification separate."
+  },
+  "note": {
+    "path": "docs/development/2026-11-14-reference-refinement/notes/A37-setup-handoff.md",
+    "bytes": 3938,
+    "words": 473,
+    "sha256": "a8023eb9fe851b3d946bcd69033c5cd0621078290c5578c4752b984a89bfc9e0"
+  },
+  "windows_primary_log_sha256": "54cf09b82e8344b47fc0cbc4135b4fb2be04e2cbc1ebb365d648ac33dddbdeff"
+}

@@ -1,0 +1,106 @@
+{
+  "purpose": "Scratch-only precision diagnostic: replace long double oracle arithmetic and literal L suffixes with double while leaving all product inputs and tolerances unchanged. This does not execute MSVC, AppleClang or another operating system.",
+  "variants": {
+    "tests/TestSupport.h": {
+      "source_sha256": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5",
+      "variant_sha256": "d7d282bb526d9d31d608b11a166aa0c9f372b97b1bc12b7071b95d0c7bb2e84f",
+      "long_double_tokens_replaced": 4,
+      "literal_L_suffixes_removed": 1
+    },
+    "tests/test_rotary_propagation.cpp": {
+      "source_sha256": "71f39ed739a6b86832c20ad69d5c5453c528f4ef4b6cc8a6408e5a97b4a24856",
+      "variant_sha256": "0d3f291403bad89a52a858b4e436710465bba68badff81532bb2315ce36b47fe",
+      "long_double_tokens_replaced": 14,
+      "literal_L_suffixes_removed": 13
+    },
+    "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": {
+      "source_sha256": "cc00920fa567460999821d9118d3b8c752b9df22be83d63969dd810f5273b252",
+      "variant_sha256": "c26163dca00555e6b6610590cffd7fc5c6745229375295e52b18fdfe972c244a",
+      "long_double_tokens_replaced": 23,
+      "literal_L_suffixes_removed": 26
+    }
+  },
+  "inputs": {
+    "build-native/libhammond_core.a": "3f6773440391f5488afd0531b18f59a9169a97862ea68912a33c2ac3a8d4d172",
+    "build-native/apps/standalone/libhammond_standalone_drawing.a": "06cde97b0ae59acac7b44437df920b3d12773b20004abedcda101d8da9a7ed36",
+    "build-native/apps/standalone/libhammond_standalone_support.a": "14cdc87f1119b7d7bda9a0adc79a60bfdfca91e48a799d0c23424596c52311f2",
+    "build-native/_sdl2/libSDL2.a": "55ccb40daeebf75e429c7d8c693cdd5b4e2207a00393e35c66be992e752b03ed",
+    "build-native/apps/standalone/CMakeFiles/test_standalone_material_acceptance.dir/InstrumentView.cpp.o": "56342f976703b8a13f0ac0540d4942ec86e9112d99ff8ad7ca4a7dd9c4e803bd"
+  },
+  "commands": {
+    "rotary_propagation": [
+      "/usr/bin/c++",
+      "-std=c++20",
+      "-O3",
+      "-DNDEBUG",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+      "-I/workspace/scratch/1bb6ee17ad7e/A33-portability",
+      "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p\"",
+      "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ\"",
+      "/workspace/scratch/1bb6ee17ad7e/A33-portability/test_rotary_propagation.cpp",
+      "/workspace/scratch/1bb6ee17ad7e/build-native/libhammond_core.a",
+      "-o",
+      "/workspace/scratch/1bb6ee17ad7e/A33-portability/rotary_binary64"
+    ],
+    "standalone_material": [
+      "/usr/bin/c++",
+      "-std=c++20",
+      "-O3",
+      "-DNDEBUG",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-DSDL_MAIN_HANDLED",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+      "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include",
+      "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2",
+      "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include-config-release/SDL2",
+      "/workspace/scratch/1bb6ee17ad7e/A33-portability/test_standalone_material_acceptance.cpp",
+      "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/CMakeFiles/test_standalone_material_acceptance.dir/InstrumentView.cpp.o",
+      "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/libhammond_standalone_drawing.a",
+      "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/libhammond_standalone_support.a",
+      "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/libSDL2.a",
+      "-lm",
+      "-pthread",
+      "/workspace/scratch/1bb6ee17ad7e/build-native/libhammond_core.a",
+      "-o",
+      "/workspace/scratch/1bb6ee17ad7e/A33-portability/material_binary64"
+    ]
+  },
+  "results": {
+    "rotary_propagation": {
+      "compile_exit": 0,
+      "compile_seconds": 1.8001655819998632,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_exit": 0,
+      "run_seconds": 0.016247798000222247,
+      "stdout": "Rotary propagation author checks: 65664 history queries, 163 rejected calls, 369 solved paths; max constant-root error 1.0404871408908889e-14 s, max residual 9.4906721370691116e-15 s, max evaluations 41\n",
+      "stderr": "",
+      "binary_sha256": "1f5715063ade1aa2938385a631ebcdd40e5908e5c52735cb3bd83edf45b4bdea"
+    },
+    "standalone_material": {
+      "compile_exit": 0,
+      "compile_seconds": 3.265688210999542,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_exit": 0,
+      "run_seconds": 3.914584434000062,
+      "stdout": "{\"checks\":901,\"failures\":0,\"frames\":56,\"state_checks\":56,\"clip_frames\":56,\"outside_pixels\":6543712,\"held_keys\":588,\"focused_keys\":24,\"surfaces\":72,\"sloped_corners\":8,\"cut_clips\":4,\"status_frames\":4,\"status_ink_pixels\":10246,\"last_row_ink_pixels\":2048,\"minimum_natural_top_front_srgb_levels\":63.8004,\"minimum_accidental_top_front_srgb_levels\":14.6426,\"overlay_panels\":12,\"overlay_buttons\":60,\"backend\":\"SDL software surface; no window/audio\",\"overlays\":[{\"overlay\":\"Audio\",\"flat\":false,\"scale\":1,\"panel_pixels\":2130,\"panel_nonflat_pixels\":2130,\"button_pixels\":504,\"button_nonflat_pixels\":492,\"rgba_fnv1a64\":\"77a677a937d462f7\"},{\"overlay\":\"MIDI\",\"flat\":false,\"scale\":1,\"panel_pixels\":2610,\"panel_nonflat_pixels\":2610,\"button_pixels\":738,\"button_nonflat_pixels\":720,\"rgba_fnv1a64\":\"be17906b7755322f\"},{\"overlay\":\"Help\",\"flat\":false,\"scale\":1,\"panel_pixels\":2130,\"panel_nonflat_pixels\":2130,\"button_pixels\":72,\"button_nonflat_pixels\":72,\"rgba_fnv1a64\":\"c0764e2a5eed6dc0\"},{\"overlay\":\"Audio\",\"flat\":true,\"scale\":1,\"panel_pixels\":2130,\"panel_nonflat_pixels\":0,\"button_pixels\":504,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"8a179daa33ebe770\"},{\"overlay\":\"MIDI\",\"flat\":true,\"scale\":1,\"panel_pixels\":2610,\"panel_nonflat_pixels\":0,\"button_pixels\":738,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"8b7c82fd930c5fd0\"},{\"overlay\":\"Help\",\"flat\":true,\"scale\":1,\"panel_pixels\":2130,\"panel_nonflat_pixels\":0,\"button_pixels\":72,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"b2cda43aea277ca2\"},{\"overlay\":\"Audio\",\"flat\":false,\"scale\":1.25,\"panel_pixels\":3101,\"panel_nonflat_pixels\":3101,\"button_pixels\":848,\"button_nonflat_pixels\":832,\"rgba_fnv1a64\":\"e2e9cac740c9bb80\"},{\"overlay\":\"MIDI\",\"flat\":false,\"scale\":1.25,\"panel_pixels\":3801,\"panel_nonflat_pixels\":3801,\"button_pixels\":1232,\"button_nonflat_pixels\":1208,\"rgba_fnv1a64\":\"8cd64335e0eaf9fe\"},{\"overlay\":\"Help\",\"flat\":false,\"scale\":1.25,\"panel_pixels\":3101,\"panel_nonflat_pixels\":3101,\"button_pixels\":120,\"button_nonflat_pixels\":120,\"rgba_fnv1a64\":\"2c8a994710aba9d9\"},{\"overlay\":\"Audio\",\"flat\":true,\"scale\":1.25,\"panel_pixels\":3101,\"panel_nonflat_pixels\":0,\"button_pixels\":848,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"eb483e930ac58252\"},{\"overlay\":\"MIDI\",\"flat\":true,\"scale\":1.25,\"panel_pixels\":3801,\"panel_nonflat_pixels\":0,\"button_pixels\":1232,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"d30f9ce9f273ab5c\"},{\"overlay\":\"Help\",\"flat\":true,\"scale\":1.25,\"panel_pixels\":3101,\"panel_nonflat_pixels\":0,\"button_pixels\":120,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"c59a24083c09d3af\"}]}\n",
+      "stderr": "",
+      "binary_sha256": "8021d6df80b5fe9c504938a2aee34bcdd18832050cc82cbfe3ee207e56f38f70"
+    }
+  }
+}

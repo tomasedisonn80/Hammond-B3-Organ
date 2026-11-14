@@ -1,0 +1,500 @@
+{
+  "agent": "/root/w06_a31_native_gallery_capture",
+  "all_capture_payload_hashes_recomputed": 39,
+  "assignment": "A31",
+  "binary_after_build": {
+    "bytes": 3856304,
+    "sha256": "97ed35cbf618792155c15106862d8bc5f416b7cf6d073c9e37e94babdf8bc9a9"
+  },
+  "binary_after_capture": {
+    "bytes": 3856304,
+    "sha256": "97ed35cbf618792155c15106862d8bc5f416b7cf6d073c9e37e94babdf8bc9a9"
+  },
+  "binary_before_build": {
+    "bytes": 3856272,
+    "sha256": "6eea84ba830ea8710b550c14561b4dd887bea8aac489fa82a467e3708e071b13"
+  },
+  "boundaries": [
+    "Actual native dummy-audio/dummy-video/software-renderer pixels.",
+    "No physical audio/MIDI device, display/DPI, OS pointer capture, accessibility or fidelity qualification.",
+    "Settled acknowledged endpoint; genuine pending state belongs to the separate retained A18 harness.",
+    "No compiler/dependency-complete or clean-rebuild source-to-binary attestation.",
+    "No A31 GUI use, commit, push, child agent, image generation, compositing or pixel edit."
+  ],
+  "build": {
+    "command": [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/1bb6ee17ad7e/build-desktop",
+      "--parallel",
+      "3",
+      "--target",
+      "hammond_standalone"
+    ],
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "elapsed_seconds": 4.9341796580001756,
+    "exit_code": 0,
+    "finished_at_utc": "2026-11-14T21:16:46.962012+00:00",
+    "log": {
+      "bytes": 10434,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A31-build.log",
+      "sha256": "69bdafbace0a0a5e1ee2ec51c5a7e3a545575ed98bba1020881bc0f86ca63242"
+    },
+    "started_at_utc": "2026-11-14T21:16:42.027841+00:00"
+  },
+  "capture": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_standalone_interface.py",
+      "--exe",
+      "/workspace/scratch/1bb6ee17ad7e/build-desktop/apps/standalone/hammond_standalone",
+      "--source-root",
+      "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+      "--build-root",
+      "/workspace/scratch/1bb6ee17ad7e/build-desktop",
+      "--source-qualification",
+      "/workspace/scratch/1bb6ee17ad7e/a31-source-qualification.json",
+      "--expected-exe-sha256",
+      "97ed35cbf618792155c15106862d8bc5f416b7cf6d073c9e37e94babdf8bc9a9",
+      "--dummy-sdl",
+      "--output",
+      "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v3"
+    ],
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "elapsed_seconds": 18.895237329999873,
+    "exit_code": 0,
+    "finished_at_utc": "2026-11-14T21:17:05.916272+00:00",
+    "log": {
+      "bytes": 188,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A31-capture.log",
+      "sha256": "a88b88abe666e995fd910eb37ebba0cf068229d6df12ec971284943ee38e195a"
+    },
+    "started_at_utc": "2026-11-14T21:16:47.021038+00:00"
+  },
+  "capture_tool": {
+    "bytes": 29183,
+    "sha256": "17aafb70e87a2fd557317e04802e62a4d935d2f2b93bf65a2df0d688c5a16545"
+  },
+  "decoded_pngs_recomputed": 8,
+  "desktop_configuration_before_and_after": {
+    "CMAKE_BUILD_TYPE": "Release",
+    "HAMMOND_BUILD_STANDALONE": "ON",
+    "HAMMOND_BUILD_VST3": "OFF",
+    "HAMMOND_ENABLE_MIDI": "ON",
+    "HAMMOND_ENABLE_SANITIZERS": "OFF",
+    "SDL_ALSA": "OFF",
+    "SDL_X11": "ON"
+  },
+  "extra_build_inputs_before_and_after_capture": {
+    "CMakeCache.txt": {
+      "bytes": 56586,
+      "sha256": "91a84055c778f29dbffeabf8a36feba1b2ebe64d5d9c41985af583086d160b39"
+    },
+    "_sdl2/include-config-release/SDL2/SDL_config.h": {
+      "bytes": 16450,
+      "sha256": "34306fba28a2ac816cb3b7daae0d5f08a9abd157b4fd7b2f3a6d3f8de8d8fc38"
+    },
+    "apps/standalone/hammond_rtmidi-prepared/RtMidi.cpp": {
+      "bytes": 168216,
+      "sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a"
+    },
+    "apps/standalone/hammond_rtmidi-prepared/RtMidi.h": {
+      "bytes": 27901,
+      "sha256": "74f98ca172243b0b9c0c59f53c4e20285d879ffa86b3d61692109b013f4606f9"
+    },
+    "apps/standalone/hammond_rtmidi-prepared/prepared-source.json": {
+      "bytes": 1996,
+      "sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae"
+    },
+    "apps/standalone/hammond_rtmidi-prepared/rtmidi-coremidi-zero-init.patch": {
+      "bytes": 728,
+      "sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad"
+    },
+    "build.ninja": {
+      "bytes": 711741,
+      "sha256": "b77668e1389d0e73f3ac0eb29db1205c05355bd8b4b9d0e85fe1fe1b9d2b8e78"
+    },
+    "compile_commands.json": {
+      "bytes": 361948,
+      "sha256": "c4a6f107965d04abaa4b0ed9bc538ce273a520221192f3ec01624bb92e695649"
+    },
+    "generated/standalone-capabilities.json": {
+      "bytes": 2062,
+      "sha256": "57ccbbb25c2f868db64ff7aa17cf691e9fd92917b2e640b4fd1d5a623edcbc48"
+    }
+  },
+  "finalized_at_utc": "2026-11-14T21:22:03.480481+00:00",
+  "finished_capture_at_utc": "2026-11-14T21:17:06.387056+00:00",
+  "gallery": "examples/demos/standalone-interface-preview-v3",
+  "gallery_bytes_before_readme": 2920127,
+  "gallery_bytes_final": 2930464,
+  "gallery_files_final": 41,
+  "gallery_manifest": {
+    "bytes": 6528,
+    "sha256": "1d486225c8eff4c3f19461f6188cb99be464d40d7e41ab921981e949d06ddcf4"
+  },
+  "gallery_provenance": {
+    "bytes": 68059,
+    "sha256": "32b111d1001a75b89d6b50267bb1f81c9203af23df11e3866c0c168844503f0f"
+  },
+  "gallery_readme": {
+    "bytes": 10337,
+    "sha256": "f8bc50b053afdec84270dfce4a64b98c2782ac508e0533e10e89c5fd8de715b8"
+  },
+  "historical_galleries_unchanged": {
+    "v1": {
+      "all_files_match_published_blobs": true,
+      "files": 41,
+      "inventory_sha256": "73d68484579a3a48160f3b989e55623d26f1b66b652b0fa51e7c851c15a13991"
+    },
+    "v2": {
+      "all_files_match_published_blobs": true,
+      "files": 41,
+      "inventory_sha256": "287027532134f24902e87d8278e331e8ab4a876468790b1f141da82c8c4dbe5f"
+    }
+  },
+  "note_word_count": 501,
+  "painter_sha256": "428f74c4b2aae72e1ee048d1fa878575d0cd2edc064b1a3865ba40c446c30da2",
+  "png_bytes_total": 2707580,
+  "production_inventory": {
+    "changed_paths": [],
+    "file_count": 100,
+    "sha256_after": "2fbf6fc46edcfb7300c078b70350a0c2caf53357fa2609b6322642aaab97f991",
+    "sha256_before": "2fbf6fc46edcfb7300c078b70350a0c2caf53357fa2609b6322642aaab97f991"
+  },
+  "published_commit": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+  "published_tree": "17f8e4d698f903c37bff09deee196ea73e0da108",
+  "schema": "a31-native-gallery-v1",
+  "selected_build_inventory": {
+    "changed_paths": [],
+    "file_count": 13,
+    "sha256_after": "4799c5b0dcf4d1d95e4f71f032449670cd355fa99f05a0e4375df381b48f6113",
+    "sha256_before": "4799c5b0dcf4d1d95e4f71f032449670cd355fa99f05a0e4375df381b48f6113"
+  },
+  "selected_configuration": {
+    "ALSA_INCLUDE_DIR": "/workspace/scratch/1bb6ee17ad7e/native-sysroot/usr/include",
+    "ALSA_LIBRARY": "/workspace/scratch/1bb6ee17ad7e/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so",
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+    "CMAKE_CXX_FLAGS": "",
+    "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+    "HAMMOND_BUILD_STANDALONE": "ON",
+    "HAMMOND_ENABLE_MIDI": "ON",
+    "HAMMOND_RTMIDI_ROOT": "/workspace/scratch/1bb6ee17ad7e/rtmidi",
+    "HAMMOND_SDL2_ROOT": "/workspace/scratch/1bb6ee17ad7e/SDL2",
+    "SDL_ALSA": "OFF"
+  },
+  "source_qualification": {
+    "all_files_match_published_blobs": true,
+    "file_count": 111,
+    "inventory_sha256_after_build": "6b11122ee676bb0a7fb3d535a6f9403028b8dbdb687dec6d07b7e5e919c97dcc",
+    "inventory_sha256_after_capture": "6b11122ee676bb0a7fb3d535a6f9403028b8dbdb687dec6d07b7e5e919c97dcc",
+    "inventory_sha256_before_build": "6b11122ee676bb0a7fb3d535a6f9403028b8dbdb687dec6d07b7e5e919c97dcc",
+    "sha256": "e903805fe28d736dbc573fcea822781518a5c48289c4e5846df63f2de8cd3e30",
+    "source_files_definition": "Observed production_paths plus repository files in the native Ninja input closure and repository CMake configuration files; a conservative product/build-source set."
+  },
+  "status": "passed",
+  "supplemental_validation": {
+    "cases": [
+      {
+        "callbacks": 171,
+        "decoded_sha256": "e8cbbfa256e883aced77dc7274dc9561991e3c091f604f195e365527a5e16477",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "name": "play-reference-1672x941",
+        "png": {
+          "bytes": 669904,
+          "sha256": "4e2113423745e938a88e90bb60e23f62131b479f6e255687d193839c4813403f"
+        },
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "rendered_frames": 87552,
+        "status": "passed",
+        "ui_events": 66
+      },
+      {
+        "callbacks": 175,
+        "decoded_sha256": "adbcc4f325d6c03d55df87f6273659efbd723db9033c066ef524670a80c3c23c",
+        "dimensions": [
+          1280,
+          900
+        ],
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "name": "play-default-1280x900",
+        "png": {
+          "bytes": 176267,
+          "sha256": "7ff19445d781f30953a618b429056726a095f7cc25fd6b762ef56cb6924191a5"
+        },
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "rendered_frames": 89600,
+        "status": "passed",
+        "ui_events": 66
+      },
+      {
+        "callbacks": 170,
+        "decoded_sha256": "e03a32e077ff76606a3eedc9218334473040bf8d75cee04d8bece0d8b5adffd8",
+        "dimensions": [
+          960,
+          700
+        ],
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "name": "play-minimum-960x700",
+        "png": {
+          "bytes": 141425,
+          "sha256": "6f770445508638108d31c22ae038e3927b5d4c9c6ade9d55372e40a93ab94c97"
+        },
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "rendered_frames": 87040,
+        "status": "passed",
+        "ui_events": 66
+      },
+      {
+        "callbacks": 170,
+        "decoded_sha256": "d4bf968e4b8d2108220207e5e9ee1ac0e95389ac3fdc872b11292285b6cc42e6",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "name": "service-reference-1672x941",
+        "png": {
+          "bytes": 407958,
+          "sha256": "27a904cab4b80fa6eebc8da8a1e11f1e3815b7aabb0095ce70fadc08edd132e6"
+        },
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "rendered_frames": 87040,
+        "status": "passed",
+        "ui_events": 66
+      },
+      {
+        "callbacks": 167,
+        "decoded_sha256": "0040980ec944907e554682c69a8fc938b7f2f453a8c6b095a9820faf9f027367",
+        "dimensions": [
+          960,
+          700
+        ],
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "name": "service-minimum-960x700",
+        "png": {
+          "bytes": 175380,
+          "sha256": "e787549462aac15303906c1fb079ae3d9fc074ed102fa7fedb375b06b243a8a8"
+        },
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "rendered_frames": 85504,
+        "status": "passed",
+        "ui_events": 66
+      },
+      {
+        "callbacks": 176,
+        "decoded_sha256": "34c434062765e13c26ca1181a0d09a040f7296f023d2478c80ff83e8571827aa",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "name": "rotary-reference-1672x941",
+        "png": {
+          "bytes": 769691,
+          "sha256": "0e6d82d8b8a1b5b100b2c6e7231372ce494ee63cbcc931227e0672ddaf9f1f8b"
+        },
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "rendered_frames": 90112,
+        "status": "passed",
+        "ui_events": 66
+      },
+      {
+        "callbacks": 168,
+        "decoded_sha256": "ee88f45d55b18e750ac62c52aea4060d1a9f6b223c0ae24063660ce94481eec3",
+        "dimensions": [
+          960,
+          700
+        ],
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "name": "rotary-minimum-960x700",
+        "png": {
+          "bytes": 317334,
+          "sha256": "29f658d618e7b75e81e8ef7331983eae3f723b07290dd4391ec993658ecb918c"
+        },
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "rendered_frames": 86016,
+        "status": "passed",
+        "ui_events": 66
+      },
+      {
+        "callbacks": 165,
+        "decoded_sha256": "32e91671ad4641130e89bbd91e005294d3ea6d2165b4bf83319cfd53c9592eeb",
+        "dimensions": [
+          960,
+          700
+        ],
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "name": "flat-minimum-960x700",
+        "png": {
+          "bytes": 49621,
+          "sha256": "a7dd6b6a5e158d81bd469299a3380fde98a83c6d0c74b0cd7dee44f7ad3c99fd"
+        },
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "rendered_frames": 84480,
+        "status": "passed",
+        "ui_events": 68
+      }
+    ],
+    "expected_held_targets": {
+      "lower": 1,
+      "pedals": 1,
+      "upper": 2
+    },
+    "keyboard_only_pointer_capture_all_false_or_zero": true,
+    "reason": "Producer records but does not yet assert exact painted hold counts or pointer-capture state."
+  },
+  "visual_review": {
+    "comparison_inputs": {
+      "docs/design/atlas-cover-reference.jpg": {
+        "bytes": 412664,
+        "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+      },
+      "examples/demos/standalone-interface-preview-v2/images/play-reference-1672x941.png": {
+        "bytes": 643593,
+        "sha256": "27c1a877ac458dc6775e7fb80f3edadf7b0508f923a5ef8d6cfb5095115847cd"
+      }
+    },
+    "inspected_images": [
+      {
+        "name": "play-reference-1672x941",
+        "observation": "Deeper complete manuals; disjoint sidebar pedalboard below cabinet/status; four held marks and focused Upper B drawbar visible.",
+        "png_sha256": "4e2113423745e938a88e90bb60e23f62131b479f6e255687d193839c4813403f"
+      },
+      {
+        "name": "play-default-1280x900",
+        "observation": "Compact composition without cabinet; both complete manuals, pedals, held marks and drawbar focus visible.",
+        "png_sha256": "7ff19445d781f30953a618b429056726a095f7cc25fd6b762ef56cb6924191a5"
+      },
+      {
+        "name": "play-minimum-960x700",
+        "observation": "Compact minimum arrangement preserves both manuals, preset rails and pedalboard; small legends remain a real-display review boundary.",
+        "png_sha256": "6f770445508638108d31c22ae038e3927b5d4c9c6ade9d55372e40a93ab94c97"
+      },
+      {
+        "name": "service-reference-1672x941",
+        "observation": "All six cards and 28 rows visible, correct singular 1 target labels, applied sound/edit-bank distinction and unavailable model quantities.",
+        "png_sha256": "27a904cab4b80fa6eebc8da8a1e11f1e3815b7aabb0095ce70fadc08edd132e6"
+      },
+      {
+        "name": "service-minimum-960x700",
+        "observation": "All six cards visible; bank-memory text wraps within the retained-controls card without row overlap; singular counts correct.",
+        "png_sha256": "e787549462aac15303906c1fb079ae3d9fc074ed102fa7fedb375b06b243a8a8"
+      },
+      {
+        "name": "rotary-reference-1672x941",
+        "observation": "Six read-only facts visible with decorative artwork, unconnected cabinet audio, unavailable speeds/geometry and unmodeled stop/brake.",
+        "png_sha256": "0e6d82d8b8a1b5b100b2c6e7231372ce494ee63cbcc931227e0672ddaf9f1f8b"
+      },
+      {
+        "name": "rotary-minimum-960x700",
+        "observation": "All read-only rows, artwork and explicit decorative/unconnected captions remain visible within panels.",
+        "png_sha256": "29f658d618e7b75e81e8ef7331983eae3f723b07290dd4391ec993658ecb918c"
+      },
+      {
+        "name": "flat-minimum-960x700",
+        "observation": "Plain panels and caps, rectangular keys, full playing inventory, four held marks and Upper B drawbar focus remain visible.",
+        "png_sha256": "a7dd6b6a5e158d81bd469299a3380fde98a83c6d0c74b0cd7dee44f7ad3c99fd"
+      }
+    ],
+    "literal_reference_equality_claimed": false,
+    "method": "Directly opened all eight unchanged original PNGs with the local image viewer; no new native invocation or image transformation.",
+    "no_observed_crop_or_panel_overlap": true,
+    "remaining_differences": "Live tools, correct key/preset inventory, pedalboard, truthful status, material texture and lighting differ from the concept. Real display/DPI and tiny preset-legend assessment remain separate.",
+    "status": "completed"
+  }
+}

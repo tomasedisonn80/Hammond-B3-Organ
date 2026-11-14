@@ -40,7 +40,7 @@ cmake --install build-capture-tools --config Release --component CaptureTools --
 
 The explicit `--component CaptureTools` selection is required. Every rule in
 this component is excluded from an ordinary unqualified `cmake --install`.
-Selecting `OfflineTools`, `NativeStandalone` or `NativeVST3` does not select
+Selecting `OfflineTools`, `Standalone` or `NativeVST3` does not select
 `CaptureTools`; selecting `CaptureTools` does not select those other components.
 No elevated privileges or system prefix is needed.
 
