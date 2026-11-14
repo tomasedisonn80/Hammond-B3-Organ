@@ -102,3 +102,10 @@ All 1,041 files / 40,663,711 bytes remain unchanged by the checks. The later
 observations and the guarded publication procedure; its documentary additions
 do not create a new runtime test claim. Inspect the actual current HEAD and
 remote before continuing.
+
+The complete record checkpoint was published and fetched at
+`02810eb0724d7fe53ce6fda945772fac84589c78`, tree
+`f5696578f070587e8e2692dd845ed4f2cfff2eec`. The
+[publication receipt](publication.json) records the guarded update, exact fetched
+identity, clean worktree and preserved qualified/concurrent ancestors. This later
+receipt does not relabel the qualified platform source or change completed counts.

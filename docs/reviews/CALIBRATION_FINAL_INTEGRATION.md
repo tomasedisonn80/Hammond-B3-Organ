@@ -100,6 +100,24 @@ uses the expected-head non-force update and fetches the resulting commit/tree
 for equality and ancestry verification. Future work starts by inspecting that
 actual checkout/remote identity under AGENTS, preserving concurrent history.
 
+## Observed complete publication
+
+Root published and fetched
+`02810eb0724d7fe53ce6fda945772fac84589c78`, exact tree
+`f5696578f070587e8e2692dd845ed4f2cfff2eec`, equal to local
+`5302581369dd36debd3c4b172c23454900fdb198`. The expected previous main was d7;
+the non-force guarded update succeeded. Fetched commit/tree equality, the clean
+worktree and all five required ancestors were verified. The
+[publication receipt](../development/2026-11-13-calibration/publication.json)
+retains those observations, including complete-source be9479, qualified d7/5e/d377
+and preserved concurrent 7ec. Local history remains on
+`calibration-local-complete-60`.
+
+This later receipt documents that completed observation. Its own commit is the
+actual subsequent HEAD; it changes no runtime, test or CaptureTools input and
+adds no new platform-test claim. The final record's post-edit check also passes
+623 Markdown files / 3,502 local links and strict sixty-complete accounting.
+
 ## Practical continuation and standing rule
 
 The [operating guide](../CALIBRATION_RUNBOOK.md) supplies verified source and

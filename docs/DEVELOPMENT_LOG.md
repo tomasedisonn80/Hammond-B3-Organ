@@ -1,5 +1,23 @@
 # Development log
 
+## 2026-11-14 — Complete calibration records published and fetched
+
+- Published `02810eb0724d7fe53ce6fda945772fac84589c78`, tree
+  `f5696578f070587e8e2692dd845ed4f2cfff2eec`, with expected previous d7 and
+  no force update. Root fetched main and verified exact equality with local
+  `5302581`, a clean worktree and all five complete/qualified/concurrent ancestors.
+  Local source history is preserved on `calibration-local-complete-60`.
+- All sixty actual accepted records, the strict completion output, final source
+  integrity, operational/acquisition guides and permanent AGENTS workflow are
+  included. The post-record integrity check passes 623 Markdown files / 3,502
+  local links; strict sixty-complete accounting also passes. No runtime or
+  CaptureTools payload input changes from the all-ten-success d7 source.
+- This final documentary receipt retains the actual observed publication in
+  the integration record, handoff, session README and publication JSON. Its own
+  subsequent commit records that event; inspect actual HEAD before new work.
+  Continue the identified pilot/acquisition inputs and independently owned
+  software contracts. Physical instrument and complete product gates stay open.
+
 ## 2026-11-14 — Complete immutable archive passes final record gates
 
 - Fresh complete source `79bcc28`, tree `6f84cac7`, passes strict sixty-complete

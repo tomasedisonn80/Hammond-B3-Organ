@@ -166,6 +166,14 @@ co-installation/relocation evidence.
 
 ## Current integration and next work
 
+The complete sixty-worker records were published and fetched at
+`02810eb0724d7fe53ce6fda945772fac84589c78`, tree
+`f5696578f070587e8e2692dd845ed4f2cfff2eec`, with exact local equality and all
+qualified/concurrent ancestors verified. The [publication receipt](development/2026-11-13-calibration/publication.json)
+records that observed checkpoint; later documentation records the receipt.
+Use the actual current HEAD for the complete checkout and the code identity below
+for the source-specific platform results.
+
 The latest verified published code checkpoint is
 `d7f6100010eb4cdd028ec93000cd9e893ac6d190`, tree
 `0140c737de4db28288b118744c2beef57976697f`. Root fetched main and verified exact
