@@ -9,12 +9,14 @@ import hashlib
 import json
 import ntpath
 import os
+import re
 from pathlib import Path
 import shutil
 import stat
 import struct
 import subprocess
 import tempfile
+from types import SimpleNamespace
 import unittest
 
 
@@ -23,11 +25,33 @@ SOURCE_FILES = {
     "STANDALONE_INSTALL.md": Path("docs/STANDALONE_INSTALL.md"),
     "STANDALONE_APP.md": Path("docs/STANDALONE_APP.md"),
     "STANDALONE_MODEL.md": Path("docs/STANDALONE_MODEL.md"),
+    "MIDI_UI_RUNBOOK.md": Path("docs/MIDI_UI_RUNBOOK.md"),
     "THIRD_PARTY_NOTICES.md": Path("THIRD_PARTY_NOTICES.md"),
     "LICENSE-DejaVu.txt": Path("assets/standalone/fonts/LICENSE-DejaVu.txt"),
     "sdl2-lock.json": Path("data/dependencies/sdl2-lock.json"),
     "font-source-manifest.json": Path("assets/standalone/fonts/source-manifest.json"),
+    "reference-source-manifest.json": Path("assets/standalone/reference/manifest.json"),
+    "atlas-reference.json": Path("docs/design/atlas-reference.json"),
 }
+
+MIDI_FILES = {"LICENSE-RtMidi.txt", "rtmidi-lock.json", "rtmidi-prepared-source.json",
+              "rtmidi-coremidi-zero-init.patch"}
+GUIDES = ("STANDALONE_INSTALL.md", "STANDALONE_APP.md", "STANDALONE_MODEL.md",
+          "MIDI_UI_RUNBOOK.md", "THIRD_PARTY_NOTICES.md")
+
+
+def metadata_inputs(source, sdl, capabilities, prepared=None):
+    result = {name: source / relative for name, relative in SOURCE_FILES.items()}
+    result["LICENSE-SDL2.txt"] = sdl / "LICENSE.txt"
+    result["standalone-capabilities.json"] = capabilities
+    if prepared is not None:
+        result.update({
+            "LICENSE-RtMidi.txt": prepared / "LICENSE",
+            "rtmidi-lock.json": source / "data/dependencies/rtmidi-lock.json",
+            "rtmidi-prepared-source.json": prepared / "prepared-source.json",
+            "rtmidi-coremidi-zero-init.patch": prepared / "rtmidi-coremidi-zero-init.patch",
+        })
+    return result
 
 
 def required_path(variable, *, directory=False):
@@ -96,8 +120,16 @@ class StandaloneInstallTests(unittest.TestCase):
         cls.configuration = os.environ.get("HAMMOND_TEST_CONFIG", "")
         cls.bindir = relative_directory("HAMMOND_INSTALL_BINDIR")
         cls.datadir = relative_directory("HAMMOND_INSTALL_DATADIR")
-        cls.metadata = {name: ROOT / relative for name, relative in SOURCE_FILES.items()}
-        cls.metadata["LICENSE-SDL2.txt"] = cls.sdl / "LICENSE.txt"
+        mode = os.environ.get("HAMMOND_TEST_ENABLE_MIDI", "").upper()
+        if mode not in ("ON", "OFF", "TRUE", "FALSE", "1", "0"):
+            raise RuntimeError("HAMMOND_TEST_ENABLE_MIDI must identify the selected build as ON or OFF")
+        cls.midi_enabled = mode in ("ON", "TRUE", "1")
+        cls.prepared = required_path("HAMMOND_RTMIDI_PREPARED_ROOT", directory=True) if cls.midi_enabled else None
+        cls.backend = os.environ.get("HAMMOND_RTMIDI_BACKEND", "") if cls.midi_enabled else "unavailable"
+        if cls.midi_enabled and cls.backend not in ("ALSA", "WinMM", "CoreMIDI"):
+            raise RuntimeError("Missing exact configured RtMidi backend identity")
+        capabilities = required_path("HAMMOND_STANDALONE_CAPABILITIES")
+        cls.metadata = metadata_inputs(ROOT, cls.sdl, capabilities, cls.prepared)
         for path in (cls.executable, *cls.metadata.values()):
             if path.is_symlink() or not path.is_file() or path.stat().st_size == 0:
                 raise RuntimeError(f"Missing/nonregular standalone input: {path}")
@@ -149,10 +181,94 @@ class StandaloneInstallTests(unittest.TestCase):
             command.extend(("--config", selected))
         return command
 
-    def payload(self, bindir, datadir):
+    def payload(self, bindir, datadir, source_hashes=None):
         metadata = datadir / "hammond-b3-organ" / "standalone"
         return {(bindir / self.executable.name).as_posix(): self.binary_hash,
-                **{(metadata / name).as_posix(): digest for name, digest in self.source_hashes.items()}}
+                **{(metadata / name).as_posix(): digest
+                   for name, digest in (self.source_hashes if source_hashes is None else source_hashes).items()}}
+
+    def assert_capabilities(self, metadata, midi_enabled, backend):
+        document = json.loads(metadata["standalone-capabilities.json"].read_text(encoding="utf-8"))
+        self.assertEqual(document["schema_version"], 1)
+        self.assertEqual(document["component"], "Standalone")
+        self.assertEqual(document["profile"], "embedded nominal-unmeasured-v1")
+        sdl = json.loads(metadata["sdl2-lock.json"].read_text(encoding="utf-8"))
+        fonts = json.loads(metadata["font-source-manifest.json"].read_text(encoding="utf-8"))
+        reference = json.loads(metadata["reference-source-manifest.json"].read_text(encoding="utf-8"))
+        atlas = json.loads(metadata["atlas-reference.json"].read_text(encoding="utf-8"))
+        self.assertEqual(document["sdl2"], {
+            "version": sdl["version"], "commit": sdl["commit"], "linkage": "static",
+            "lock_sha256": sha256(metadata["sdl2-lock.json"]),
+            "license_sha256": sha256(metadata["LICENSE-SDL2.txt"]),
+        })
+        self.assertEqual(document["sdl2"]["license_sha256"], sdl["license"]["sha256"])
+        self.assertEqual(document["fonts"], {
+            "embedded": True, "manifest_sha256": sha256(metadata["font-source-manifest.json"]),
+            "license_sha256": sha256(metadata["LICENSE-DejaVu.txt"]),
+        })
+        self.assertEqual(document["fonts"]["license_sha256"], fonts["license"]["sha256"])
+        self.assertEqual(document["reference_art"], {
+            "embedded": True, "identity": reference["identity"],
+            "manifest_sha256": sha256(metadata["reference-source-manifest.json"]),
+            "provenance_sha256": sha256(metadata["atlas-reference.json"]),
+            "source_image_sha256": reference["source"]["sha256"],
+            "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration",
+        })
+        self.assertEqual(reference["source"]["sha256"], atlas["sha256"])
+        self.assertEqual(reference["source"]["pdf_sha256"], atlas["source_sha256"])
+        self.assertEqual(reference["source"]["pdf_pages"], [1, 409])
+        self.assertTrue(reference["rights"])
+        notices = metadata["THIRD_PARTY_NOTICES.md"].read_text(encoding="utf-8")
+        self.assertIn("## Embedded reference decoration", notices)
+        self.assertIn(reference["source"]["sha256"], notices)
+        midi = document["midi"]
+        self.assertIs(midi["enabled"], midi_enabled)
+        self.assertEqual(midi["backend"], backend)
+        if midi_enabled:
+            self.assertTrue(MIDI_FILES.issubset(metadata))
+            lock = json.loads(metadata["rtmidi-lock.json"].read_text(encoding="utf-8"))
+            prepared = json.loads(metadata["rtmidi-prepared-source.json"].read_text(encoding="utf-8"))
+            self.assertEqual(prepared["dependency_lock"], lock)
+            self.assertEqual(midi["rtmidi"], {
+                "version": lock["version"], "commit": lock["commit"], "linkage": "static",
+                "lock_sha256": sha256(metadata["rtmidi-lock.json"]),
+                "license_sha256": sha256(metadata["LICENSE-RtMidi.txt"]),
+                "prepared_manifest_sha256": sha256(metadata["rtmidi-prepared-source.json"]),
+                "prepared_source_sha256": lock["patch"]["prepared_sha256"],
+                "patch_id": lock["patch"]["id"],
+                "patch_sha256": sha256(metadata["rtmidi-coremidi-zero-init.patch"]),
+            })
+            self.assertEqual(midi["rtmidi"]["license_sha256"], lock["license"]["sha256"])
+            self.assertEqual(midi["rtmidi"]["patch_sha256"], lock["patch"]["sha256"])
+            self.assertEqual(prepared["prepared_files"]["RtMidi.cpp"], {
+                "bytes": lock["patch"]["prepared_bytes"], "sha256": lock["patch"]["prepared_sha256"]})
+            for installed, prepared_name in (("LICENSE-RtMidi.txt", "LICENSE"),
+                                              ("rtmidi-coremidi-zero-init.patch", "rtmidi-coremidi-zero-init.patch")):
+                self.assertEqual(prepared["prepared_files"][prepared_name], {
+                    "bytes": metadata[installed].stat().st_size, "sha256": sha256(metadata[installed])})
+            self.assertRegex(prepared["preparation_tool"]["sha256"], r"^[0-9a-f]{64}$")
+            self.assertIn("runtime service", midi["availability"])
+        else:
+            self.assertFalse(MIDI_FILES.intersection(metadata))
+            self.assertIsNone(midi["rtmidi"])
+            self.assertIn("No physical MIDI backend was compiled", midi["availability"])
+        self.assertNotIn(str(ROOT), json.dumps(document))
+        self.assertNotIn(str(self.build), json.dumps(document))
+        return document
+
+    def assert_installed_guide_links(self, metadata):
+        for name in GUIDES:
+            document = metadata[name].read_text(encoding="utf-8")
+            for target in re.findall(r"(?<!!)\[[^\]]+\]\(([^)]+)\)", document):
+                if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", target) or target.startswith("#"):
+                    continue
+                path = target.split("#", 1)[0]
+                self.assertIn(path, metadata, f"{name}: installed relative link is absent: {target}")
+                self.assertTrue(metadata[path].is_file())
+
+    def test_configured_capabilities_identify_exact_payload(self):
+        self.assert_capabilities(self.metadata, self.midi_enabled, self.backend)
+        self.assertEqual(len(self.metadata) + 1, 17 if self.midi_enabled else 13)
 
     def test_actual_component_relocates_and_runs(self):
         with tempfile.TemporaryDirectory(prefix="hammond standalone install ") as temporary:
@@ -178,6 +294,10 @@ class StandaloneInstallTests(unittest.TestCase):
             self.assertIn("destination already exists", repeated.stderr)
             self.assertEqual(tree_state(prefix), expected_tree(expected))
             prefix.rename(moved)
+            installed_directory = moved / self.datadir / "hammond-b3-organ/standalone"
+            installed_metadata = {name: installed_directory / name for name in self.metadata}
+            self.assert_capabilities(installed_metadata, self.midi_enabled, self.backend)
+            self.assert_installed_guide_links(installed_metadata)
             self.assertFalse(prefix.exists())
             executable = moved / self.bindir / self.executable.name
             help_result = self.invoke([executable, "--help"], unrelated)
@@ -194,7 +314,7 @@ class StandaloneInstallTests(unittest.TestCase):
                                  unrelated, environment)
             self.assert_success(result)
             report = json.loads(diagnostics.read_text(encoding="utf-8"))
-            self.assertEqual(report["schema_version"], 1)
+            self.assertEqual(report["schema_version"], 2)
             self.assertEqual(report["profile"], {"id": "nominal-unmeasured-v1",
                                                  "authoring_sha256": self.authoring_hash})
             self.assertEqual(report["runtime"]["sdl_version"], self.lock["version"])
@@ -214,6 +334,14 @@ class StandaloneInstallTests(unittest.TestCase):
             self.assertFalse(report["session"]["held_after_shutdown"])
             self.assertGreater(report["session"]["maximum_observed_peak"], 0)
             self.assertEqual(report["errors"]["count"], 0)
+            self.assertIs(report["midi"]["backend_available"], self.midi_enabled)
+            self.assertEqual(report["midi"]["backend"], self.backend)
+            self.assertEqual(report["midi"]["requested_port"], "")
+            self.assertEqual(report["midi"]["port_name"], "")
+            self.assertEqual(report["midi"]["state_after_shutdown"], "closed" if self.midi_enabled else "unavailable")
+            self.assertFalse(report["midi"]["active_after_shutdown"])
+            self.assertEqual(report["midi"]["open_failures"], 0)
+            self.assertEqual(report["midi"]["device"]["callback_messages"], 0)
             self.assertEqual(Path(report["state_path"]), state)
             self.assertFalse(state.exists(), "Running must not implicitly save a controls file")
             bitmap = screenshot.read_bytes()
@@ -222,14 +350,17 @@ class StandaloneInstallTests(unittest.TestCase):
             self.assertGreater(len(set(bitmap[54:])), 32, "Rendered frame must contain actual image data")
             self.assertEqual(tree_state(moved), expected_tree(expected), "Relocated execution changed the payload")
             self.assertEqual(sha256(self.executable), self.binary_hash, "Install changed the source binary")
-            print(json.dumps({"suite": "standalone-install-v1", "payload_files": 9,
+            print(json.dumps({"suite": "standalone-install-v2", "payload_files": len(self.source_hashes) + 1,
+                              "midi_enabled": self.midi_enabled, "midi_backend": self.backend,
                               "binary_sha256": self.binary_hash,
                               "sdl_license_sha256": self.source_hashes["LICENSE-SDL2.txt"],
                               "font_license_sha256": self.source_hashes["LICENSE-DejaVu.txt"],
                               "relocated_smoke": report}, sort_keys=True))
 
-    def fixture(self, work, *, bindir="bin", datadir="share", enabled=True):
-        """Generate actual module rules around private copies of the real input bytes."""
+    def fixture(self, work, *, bindir="bin", datadir="share", enabled=True, midi_enabled=None):
+        """Actual install module and private input bytes; no compiler, SDK or device."""
+        if midi_enabled is None:
+            midi_enabled = self.midi_enabled
         source, build, sdl = work / "source", work / "build", work / "SDL2 source"
         source.mkdir(parents=True)
         sdl.mkdir()
@@ -239,6 +370,14 @@ class StandaloneInstallTests(unittest.TestCase):
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / relative, destination)
         shutil.copyfile(self.sdl / "LICENSE.txt", sdl / "LICENSE.txt")
+        prepared = None
+        if midi_enabled:
+            self.assertIsNotNone(self.prepared, "Enabled fixture requires the actual verified prepared metadata")
+            prepared = work / "prepared RtMidi"
+            prepared.mkdir()
+            for name in ("LICENSE", "prepared-source.json", "rtmidi-coremidi-zero-init.patch"):
+                shutil.copyfile(self.prepared / name, prepared / name)
+            shutil.copyfile(ROOT / "data/dependencies/rtmidi-lock.json", source / "data/dependencies/rtmidi-lock.json")
         selected = self.configuration or "Release"
         unselected = "Debug" if selected.upper() != "DEBUG" else "Release"
         binary = build / selected / self.executable.name
@@ -252,17 +391,28 @@ class StandaloneInstallTests(unittest.TestCase):
             f"set(CMAKE_INSTALL_DATADIR {cmake_literal(datadir)} CACHE PATH \"\")\n"
             f"set(HAMMOND_SDL2_ROOT {cmake_literal(sdl)})\n"
             f"set(HAMMOND_BUILD_STANDALONE {'ON' if enabled else 'OFF'})\n"
+            f"set(HAMMOND_ENABLE_MIDI {'ON' if midi_enabled else 'OFF'})\n"
+            f"set(HAMMOND_RTMIDI_ROOT {cmake_literal(work / 'absent external RtMidi checkout')})\n"
+            "set(CMAKE_DISABLE_FIND_PACKAGE_ALSA TRUE)\nset(CMAKE_DISABLE_FIND_PACKAGE_Threads TRUE)\n"
             "if(HAMMOND_BUILD_STANDALONE)\nadd_executable(hammond_standalone IMPORTED)\n"
             f"set_property(TARGET hammond_standalone PROPERTY IMPORTED_CONFIGURATIONS {selected} {unselected})\n"
             f"set_property(TARGET hammond_standalone PROPERTY IMPORTED_LOCATION {cmake_literal(binary)})\n"
             f"set_property(TARGET hammond_standalone PROPERTY IMPORTED_LOCATION_{selected.upper()} {cmake_literal(binary)})\n"
             f"set_property(TARGET hammond_standalone PROPERTY IMPORTED_LOCATION_{unselected.upper()} {cmake_literal(decoy)})\n"
-            "endif()\ninclude(cmake/InstallHammondTools.cmake)\ninclude(cmake/InstallStandalone.cmake)\n")
+            "endif()\n")
+        if midi_enabled:
+            script += ("add_library(hammond_rtmidi STATIC IMPORTED)\n"
+                       f"set_property(TARGET hammond_rtmidi PROPERTY HAMMOND_RTMIDI_PREPARED_ROOT {cmake_literal(prepared)})\n"
+                       f"set_property(TARGET hammond_rtmidi PROPERTY HAMMOND_RTMIDI_BACKEND {self.backend})\n")
+        script += "include(cmake/InstallHammondTools.cmake)\ninclude(cmake/InstallStandalone.cmake)\n"
         (source / "CMakeLists.txt").write_text(script, encoding="utf-8")
         self.assert_success(self.invoke([self.cmake, "-S", source, "-B", build,
                                          f"-DCMAKE_BUILD_TYPE={selected}"], work))
-        inputs = [binary, *(source / relative for relative in SOURCE_FILES.values()), sdl / "LICENSE.txt"]
-        return source, build, binary, inputs
+        metadata = metadata_inputs(source, sdl, build / "generated/standalone-capabilities.json", prepared) if enabled else {}
+        hashes = {name: sha256(path) for name, path in metadata.items()}
+        return SimpleNamespace(source=source, build=build, binary=binary,
+                               inputs=[binary, *metadata.values()], metadata=metadata, hashes=hashes,
+                               midi_enabled=midi_enabled, backend=self.backend if midi_enabled else "unavailable")
 
     def test_actual_configuration_selection_preserves_complete_payload_or_destination(self):
         # This uses the actual generated build, not an imported-target fixture.
@@ -297,7 +447,8 @@ class StandaloneInstallTests(unittest.TestCase):
     def test_preflight_rejects_private_bad_inputs_before_any_destination_write(self):
         with tempfile.TemporaryDirectory(prefix="hammond standalone preflight ") as temporary:
             work = Path(temporary).resolve()
-            source, build, binary, inputs = self.fixture(work)
+            fixture = self.fixture(work)
+            source, build, binary, inputs = fixture.source, fixture.build, fixture.binary, fixture.inputs
             prefix = work / "fresh destination Ω"
             command = self.install_command(build, prefix, configuration=self.configuration or "Release")
 
@@ -324,10 +475,14 @@ class StandaloneInstallTests(unittest.TestCase):
                         rejected("missing or unreadable required input")
                     finally:
                         held.rename(path)
-            original = binary.read_bytes()
-            binary.write_bytes(b"")
-            rejected("required input is empty")
-            binary.write_bytes(original)
+            for path in inputs:
+                with self.subTest(empty=str(path.relative_to(work))):
+                    original = path.read_bytes()
+                    try:
+                        path.write_bytes(b"")
+                        rejected("required input is empty")
+                    finally:
+                        path.write_bytes(original)
             guide = source / "docs/STANDALONE_APP.md"
             held = guide.with_name(guide.name + ".held")
             guide.rename(held)
@@ -349,9 +504,7 @@ class StandaloneInstallTests(unittest.TestCase):
                 if os.path.lexists(guide):
                     guide.rmdir() if guide.is_dir() else guide.unlink()
                 held.rename(guide)
-            for path in (source / "assets/standalone/fonts/LICENSE-DejaVu.txt",
-                         work / "SDL2 source/LICENSE.txt", source / "data/dependencies/sdl2-lock.json",
-                         source / "assets/standalone/fonts/source-manifest.json"):
+            for path in fixture.metadata.values():
                 with self.subTest(identity=str(path.relative_to(work))):
                     content = path.read_bytes()
                     try:
@@ -379,27 +532,118 @@ class StandaloneInstallTests(unittest.TestCase):
                         shutil.rmtree(prefix)
             self.assertEqual(sha256(self.executable), self.binary_hash)
 
+    def test_disabled_midi_inventory_requires_no_rtmidi_input_or_sdk_lookup(self):
+        # This imported-target fixture checks install-rule selection. Actual
+        # executable/configuration agreement is checked by the relocated smoke.
+        with tempfile.TemporaryDirectory(prefix="hammond disabled MIDI package ") as temporary:
+            work = Path(temporary).resolve()
+            fixture = self.fixture(work / "fixture", midi_enabled=False)
+            self.assertFalse((fixture.source / "data/dependencies/rtmidi-lock.json").exists())
+            self.assertFalse((work / "fixture/prepared RtMidi").exists())
+            self.assertFalse((work / "fixture/absent external RtMidi checkout").exists())
+            fixture.binary.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.executable, fixture.binary)
+            self.assert_capabilities(fixture.metadata, False, "unavailable")
+            prefix = work / "installed without MIDI"
+            self.assert_success(self.invoke(self.install_command(fixture.build, prefix), work))
+            self.assertEqual(tree_state(prefix), expected_tree(self.payload(Path("bin"), Path("share"), fixture.hashes)))
+            self.assertEqual(len(fixture.hashes) + 1, 13)
+            install_text = (fixture.build / "cmake_install.cmake").read_text(encoding="utf-8")
+            self.assertNotIn("prepared RtMidi", install_text)
+            self.assertNotIn("rtmidi-lock.json", install_text)
+            self.assertFalse((work / "fixture/absent external RtMidi checkout").exists())
+
+    def test_reference_capability_and_midi_records_reject_nonregular_inputs(self):
+        with tempfile.TemporaryDirectory(prefix="hammond identity preflight ") as temporary:
+            work = Path(temporary).resolve()
+            fixture = self.fixture(work / "fixture")
+            fixture.binary.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.executable, fixture.binary)
+            prefix = work / "destination"
+            # Preserve existing ordinary entries as well as refusing creation
+            # of the application and metadata directories.
+            (prefix / "empty sentinel").mkdir(parents=True)
+            (prefix / "sentinel.bin").write_bytes(b"preserve identity preflight\x00\xff")
+            before = tree_state(prefix)
+            names = {"reference-source-manifest.json", "atlas-reference.json", "standalone-capabilities.json"}
+            names.update(MIDI_FILES.intersection(fixture.metadata))
+            for name in sorted(names):
+                path = fixture.metadata[name]
+                held = path.with_name(path.name + ".held")
+                path.rename(held)
+                try:
+                    kinds = ["directory", "symlink", "dangling symlink"]
+                    if hasattr(os, "mkfifo"):
+                        kinds.append("fifo")
+                    for kind in kinds:
+                        with self.subTest(input=name, kind=kind):
+                            if kind == "directory":
+                                path.mkdir()
+                            elif kind == "symlink":
+                                path.symlink_to(held)
+                            elif kind == "dangling symlink":
+                                path.symlink_to(work / "absent target")
+                            else:
+                                os.mkfifo(path)
+                            try:
+                                result = self.invoke(self.install_command(fixture.build, prefix), work)
+                                self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+                                self.assertIn("regular input without symlinks", result.stderr)
+                                self.assertEqual(tree_state(prefix), before)
+                            finally:
+                                path.rmdir() if kind == "directory" else path.unlink()
+                finally:
+                    held.rename(path)
+
+    def test_destination_ancestors_remain_ordinary_directories(self):
+        with tempfile.TemporaryDirectory(prefix="hammond destination ancestry ") as temporary:
+            work = Path(temporary).resolve()
+            fixture = self.fixture(work / "fixture")
+            fixture.binary.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(self.executable, fixture.binary)
+            external = work / "external directory"
+            external.mkdir()
+            (external / "sentinel.bin").write_bytes(b"preserve external target\x00\xff")
+            external_before = tree_state(external)
+            for directory in ("bin", "share"):
+                for kind in ("file", "symlink"):
+                    with self.subTest(directory=directory, kind=kind):
+                        prefix = work / f"{directory}-{kind}"
+                        prefix.mkdir()
+                        path = prefix / directory
+                        if kind == "file":
+                            path.write_bytes(b"preserve parent entry\n")
+                        else:
+                            path.symlink_to(external, target_is_directory=True)
+                        before = tree_state(prefix)
+                        result = self.invoke(self.install_command(fixture.build, prefix), work)
+                        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+                        self.assertIn("destination parent must be an ordinary directory without symlinks", " ".join(result.stderr.split()))
+                        self.assertEqual(tree_state(prefix), before)
+                        self.assertEqual(tree_state(external), external_before)
+
     def test_custom_directories_copy_mode_and_disabled_component(self):
         with tempfile.TemporaryDirectory(prefix="hammond standalone directories ") as temporary:
             work = Path(temporary).resolve()
             bindir, datadir = Path("program files Ω/bin"), Path("readable data Ω/share")
-            source, build, binary, _ = self.fixture(work / "custom", bindir=bindir, datadir=datadir)
+            fixture = self.fixture(work / "custom", bindir=bindir, datadir=datadir)
+            source, build, binary = fixture.source, fixture.build, fixture.binary
             binary.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.executable, binary)
             prefix, moved = work / "prefix Ω", work / "relocated Ω"
             environment = self.environment()
             environment["CMAKE_INSTALL_MODE"] = "COPY"
             self.assert_success(self.invoke(self.install_command(build, prefix), work, environment))
-            self.assertEqual(tree_state(prefix), expected_tree(self.payload(bindir, datadir)))
+            self.assertEqual(tree_state(prefix), expected_tree(self.payload(bindir, datadir, fixture.hashes)))
             prefix.rename(moved)
             shutil.rmtree(source)
             shutil.rmtree(build)
             self.assert_success(self.invoke([moved / bindir / self.executable.name, "--help"], work))
             # The flag-off fixture cannot create or preflight a Standalone payload.
-            _, disabled, _, _ = self.fixture(work / "disabled", enabled=False)
-            self.assert_success(self.invoke(self.install_command(disabled, prefix), work))
+            disabled = self.fixture(work / "disabled", enabled=False, midi_enabled=False)
+            self.assert_success(self.invoke(self.install_command(disabled.build, prefix), work))
             self.assertFalse(prefix.exists())
-            install_text = (disabled / "cmake_install.cmake").read_text(encoding="utf-8")
+            install_text = (disabled.build / "cmake_install.cmake").read_text(encoding="utf-8")
             self.assertNotIn("Standalone requires", install_text)
 
 

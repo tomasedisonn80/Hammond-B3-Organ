@@ -1,7 +1,7 @@
 # Host-independent adapters are tested by the ordinary build. SDL2 is entered
 # only when the user explicitly enables the native application.
 add_library(hammond_standalone_support STATIC
-    Session.cpp UiModel.cpp StateFiles.cpp MidiInput.cpp MidiDevice.cpp)
+    Session.cpp UiModel.cpp StateFiles.cpp MidiInput.cpp MidiDevice.cpp MidiReplay.cpp)
 target_link_libraries(hammond_standalone_support PUBLIC hammond_core)
 target_include_directories(hammond_standalone_support PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_compile_definitions(hammond_standalone_support PRIVATE
@@ -34,6 +34,9 @@ if(BUILD_TESTING)
         hammond_configure_target(${test_name})
         add_dependencies(${test_name} hammond_profile)
         add_test(NAME ${test_name} COMMAND ${test_name})
+        if(test_name STREQUAL "test_standalone_midi_concurrency")
+            set_tests_properties(${test_name} PROPERTIES TIMEOUT 45 LABELS "standalone;concurrency")
+        endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS ${test_name})
     endforeach()
     # Compile the unchanged transport adapter against a deterministic test-only
@@ -124,15 +127,30 @@ if(HAMMOND_BUILD_STANDALONE)
             "${PROJECT_SOURCE_DIR}/docs/design/atlas-cover-reference.jpg"
         COMMENT "Verifying and embedding exact decorative reference pixels"
         VERBATIM)
+    add_library(hammond_standalone_drawing STATIC Drawing.cpp "${HAMMOND_REFERENCE_ART}")
+    target_link_libraries(hammond_standalone_drawing PUBLIC SDL2::SDL2-static)
+    target_include_directories(hammond_standalone_drawing
+        PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}/include"
+        PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
+    target_compile_definitions(hammond_standalone_drawing PRIVATE SDL_MAIN_HANDLED)
+    hammond_configure_target(hammond_standalone_drawing)
     add_executable(hammond_standalone
-        main.cpp Drawing.cpp InstrumentView.cpp
-        "${HAMMOND_STANDALONE_PROFILE}" "${HAMMOND_REFERENCE_ART}")
-    target_link_libraries(hammond_standalone PRIVATE hammond_standalone_audio hammond_standalone_replay)
+        main.cpp InstrumentView.cpp "${HAMMOND_STANDALONE_PROFILE}")
+    target_link_libraries(hammond_standalone PRIVATE
+        hammond_standalone_audio hammond_standalone_replay hammond_standalone_drawing)
     target_include_directories(hammond_standalone PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
     target_compile_definitions(hammond_standalone PRIVATE SDL_MAIN_HANDLED)
     hammond_configure_target(hammond_standalone)
     add_dependencies(hammond_standalone hammond_profile)
     if(BUILD_TESTING)
+        add_executable(test_standalone_drawing native_tests/test_standalone_drawing.cpp)
+        target_link_libraries(test_standalone_drawing PRIVATE hammond_standalone_drawing)
+        target_compile_definitions(test_standalone_drawing PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_drawing)
+        add_test(NAME test_standalone_drawing COMMAND test_standalone_drawing)
+        set_tests_properties(test_standalone_drawing PROPERTIES
+            TIMEOUT 15 LABELS "standalone;native")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_drawing)
         add_executable(test_standalone_audio_device native_tests/test_standalone_audio_device.cpp)
         target_link_libraries(test_standalone_audio_device PRIVATE hammond_standalone_audio)
         target_include_directories(test_standalone_audio_device PRIVATE "${PROJECT_SOURCE_DIR}/tests")
@@ -186,6 +204,17 @@ if(HAMMOND_BUILD_STANDALONE)
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
                 "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_app.py")
         set_tests_properties(test_standalone_app PROPERTIES TIMEOUT 60 LABELS "standalone;native")
+        add_test(NAME test_standalone_midi_cli
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_midi_cli.py")
+        set_tests_properties(test_standalone_midi_cli PROPERTIES TIMEOUT 90 LABELS "standalone;native;midi")
+        add_test(NAME test_standalone_native_midi_replay
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_midi_replay.py")
+        set_tests_properties(test_standalone_native_midi_replay PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;midi")
         add_test(NAME test_standalone_workflows
             COMMAND "${CMAKE_COMMAND}" -E env
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"

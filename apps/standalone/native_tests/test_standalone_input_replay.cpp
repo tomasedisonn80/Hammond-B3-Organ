@@ -125,6 +125,7 @@ constexpr std::array kKeys{
     KeyCase{"U", SDL_SCANCODE_U, SDLK_u}, KeyCase{"J", SDL_SCANCODE_J, SDLK_j},
     KeyCase{"K", SDL_SCANCODE_K, SDLK_k}, KeyCase{"O", SDL_SCANCODE_O, SDLK_o},
     KeyCase{"L", SDL_SCANCODE_L, SDLK_l}, KeyCase{"P", SDL_SCANCODE_P, SDLK_p},
+    KeyCase{"M", SDL_SCANCODE_M, SDLK_m},
     KeyCase{"Semicolon", SDL_SCANCODE_SEMICOLON, SDLK_SEMICOLON},
     KeyCase{"Tab", SDL_SCANCODE_TAB, SDLK_TAB},
     KeyCase{"Left", SDL_SCANCODE_LEFT, SDLK_LEFT},
@@ -247,7 +248,8 @@ void test_parser_payloads() {
             CHECK(plan.events[0].repeat && !plan.events[1].repeat);
         }
     }
-    for (const auto* name : {"a", "Q", "Z", "Enter", "KP_ENTER", "SDL_SCANCODE_A", ";", "F4"}) {
+    for (const auto* name : {"a", "m", "Q", "Z", "Enter", "KP_ENTER", "SDL_SCANCODE_A",
+                            "SDL_SCANCODE_M", ";", "F4"}) {
         rejected(script(std::string{"0 key_down "} + name + " none 0\n"));
     }
     for (const auto* modifier : {"None", "Shift", "0", "super", "none+shift", "shift+none",
@@ -564,10 +566,10 @@ void test_key_queue(SDL_Window* window) {
     CHECK(poll_events().empty());
     CHECK(input.pushed_count() == 0 && !input.delivered());
     pump(input, 5);
-    CHECK(input.pushed_count() == 100);
+    CHECK(input.pushed_count() == 102);
     CHECK(!input.delivered() && !input.completed(250));
     const auto events = poll_events();
-    CHECK(events.size() == 101);
+    CHECK(events.size() == 103);
     std::size_t index = 0;
     const auto window_id = SDL_GetWindowID(window);
     for (const auto& key : kKeys) {
@@ -591,7 +593,34 @@ void test_key_queue(SDL_Window* window) {
     pump(input, 250);
     pump(input, std::numeric_limits<std::uint64_t>::max());
     CHECK(input.completed(std::numeric_limits<std::uint64_t>::max()));
-    CHECK(input.pushed_count() == 100 && poll_events().empty());
+    CHECK(input.pushed_count() == 102 && poll_events().empty());
+}
+
+void test_midi_shortcut_queue(SDL_Window* window) {
+    // Native handle_key consumes the M scancode with Ctrl or Command. Check
+    // those complete key events, including the release and nonrepeat bit,
+    // independently of the parser's ordinary whitelist traversal above.
+    const auto plan = parsed(script(
+        "0 key_down M ctrl 0\n1 key_up M ctrl\n"
+        "2 key_down M meta 0\n3 key_up M meta\n"));
+    ScriptedInput input;
+    initialized(input, plan, window);
+    pump(input, 3);
+    CHECK(input.pushed_count() == 4 && !input.delivered());
+    const auto events = poll_events();
+    CHECK(events.size() == 5);
+    const KeyCase expected{"M", SDL_SCANCODE_M, SDLK_m};
+    const auto window_id = SDL_GetWindowID(window);
+    check_key(events[0], expected, KMOD_LCTRL, true, false, window_id);
+    check_key(events[1], expected, KMOD_LCTRL, false, false, window_id);
+    check_key(events[2], expected, KMOD_LGUI, true, false, window_id);
+    check_key(events[3], expected, KMOD_LGUI, false, false, window_id);
+    for (std::size_t index = 0; index < 4; ++index) CHECK(!input.acknowledge(events[index]));
+    CHECK(input.acknowledge(events[4]));
+    ++totals.markers;
+    CHECK(input.delivered() && input.completed(250));
+    pump(input, 250);
+    CHECK(poll_events().empty());
 }
 
 void test_pointer_queue(SDL_Window* window) {
@@ -857,6 +886,7 @@ int main() {
         test_empty_and_admission(window.get());
         flush_events();
         test_key_queue(window.get());
+        test_midi_shortcut_queue(window.get());
         test_pointer_queue(window.get());
         test_resize_order(window.get());
         test_marker_identity(window.get());

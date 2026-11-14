@@ -1,0 +1,44 @@
+{
+  "reviewed_at_utc": "2026-11-14T04:51:27.080803+00:00",
+  "worker": "/root/w05_a28_capture_pipeline",
+  "method": "Opened the exact original atlas JPEG and all four actual native PNGs with view_image; independent full decoded pixel equality and literal held-key interior samples were checked separately.",
+  "reference": {
+    "path": "docs/design/atlas-cover-reference.jpg",
+    "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "meaning": "User-supplied design concept, not an app screenshot or calibrated photograph."
+  },
+  "images": {
+    "reference-1672x941": {
+      "bytes": 597319,
+      "sha256": "239a38c6f47079e442c4ecb0c62c8e38c81d032153be93d892bc854966835fc7"
+    },
+    "default-1280x900": {
+      "bytes": 126140,
+      "sha256": "05ab45236a00aac71f22c76dac9c91d7e8cd85830a536f6fea537f9ad6449dc0"
+    },
+    "minimum-960x700": {
+      "bytes": 93903,
+      "sha256": "333bb3ac47c5ae89ed5cb63f95a722c407661b484331cd7db0d083520c3def2c"
+    },
+    "midi-synthetic-960x700": {
+      "bytes": 82519,
+      "sha256": "03649d40360ac667435fb9ad60f297594631e930219fb0b361f4f57c837a3fee"
+    }
+  },
+  "observations": {
+    "reference-1672x941": "Adjacent drawbar racks, both complete manuals, pedalboard and cabinet/status column fit. Upper C4 and Lower E4 have distinct held paint. CABINET REFERENCE and ROTARY AUDIO NOT CONNECTED remain visible. The stretched left wood crop, flat rectangular playing planes, spacing and fonts differ substantially from the concept.",
+    "default-1280x900": "Cabinet column is intentionally absent; bank controls occupy left manual rails. Both held keys are distinct. No observed panel edge clipping or major control overlap in this state. Small manual headings and footer text lose thin glyph strokes.",
+    "minimum-960x700": "Cabinet and left bank rails are intentionally absent; bank controls fit inside rack rows. Both held keys are distinct. Major controls remain within the window; small headings/footer still exhibit thin-glyph dropout.",
+    "midi-synthetic-960x700": "The real centered modal fits. Synthetic replay (script controlled), MIDI NOT CONNECTED / Synthetic replay, channels 1/2/3 and cyan Apply focus are visible. Small close/reopen / exact-name help and keyboard instructions visibly drop narrow glyphs. Generic native Apply help and duplicated Synthetic replay wording remain initial presentation residuals."
+  },
+  "gates": {
+    "actual_native_render": "passed for these four exact states",
+    "lossless_BMP_PNG_pixels": "passed all four",
+    "literal_held_key_pixels": "passed three unobscured players",
+    "complete_text_legibility": "not met; known A21 narrow-glyph raster issue retained before A29 repair",
+    "pixel_identical_reference": "not met and not claimed",
+    "physical_MIDI_audio": "not run",
+    "live_resize_high_DPI_screen_reader": "not run"
+  },
+  "next": "A29 repairs typography; A39 captures the later refined source into a new edition. Keep this initial gallery unchanged."
+}

@@ -18,6 +18,8 @@ import sys
 import tempfile
 import unittest
 
+from test_standalone_app import assert_no_midi_input
+
 ROOT = Path(__file__).resolve().parents[3]
 _spec = importlib.util.spec_from_file_location("chapel_independent_oracles", ROOT / "tests/test_chapel_controls.py")
 if _spec is None or _spec.loader is None:
@@ -173,7 +175,8 @@ class NativeChapelAcceptance(unittest.TestCase):
             data = json.loads(diagnostics.read_text(encoding="utf-8"), object_pairs_hook=unique_object,
                               parse_constant=reject_nonfinite)
             expected = expected_controls(upper, lower, bank, numeric)
-            self.assertEqual(data["schema_version"], 1)
+            self.assertEqual(data["schema_version"], 2)
+            assert_no_midi_input(self, data)
             self.assertEqual(data["controls"], expected)
             self.assertEqual(data["errors"], {"count": 0, "last": ""})
             self.assertEqual(data["state_path"], str(state))
@@ -181,6 +184,8 @@ class NativeChapelAcceptance(unittest.TestCase):
             self.assertEqual(data["runtime"]["video_driver"], "dummy")
             self.assertEqual(data["runtime"]["sdl_version"], "2.32.10")
             audio, session, replay = data["audio"], data["session"], data["replay"]
+            self.assertIs(type(replay["observation_capacity"]), int)
+            self.assertEqual(replay["observation_capacity"], 512)
             self.assertEqual(audio["driver"], "dummy")
             self.assertTrue(audio["open_before_shutdown"] and audio["running_before_shutdown"])
             self.assertGreater(audio["callback_count"], 0)

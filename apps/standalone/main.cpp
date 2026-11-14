@@ -8,6 +8,7 @@
 #include "InstrumentView.h"
 #include "MidiDevice.h"
 #include "MidiInput.h"
+#include "MidiReplay.h"
 #include "ScriptedInput.h"
 #include "StateFiles.h"
 #include "UiModel.h"
@@ -18,6 +19,7 @@
 #include <algorithm>
 #include <array>
 #include <charconv>
+#include <chrono>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
@@ -29,6 +31,7 @@
 #include <limits>
 #include <memory>
 #include <optional>
+#include <span>
 #include <sstream>
 #include <string>
 #include <string_view>
@@ -46,6 +49,8 @@ constexpr std::uint64_t kSaveWaitMilliseconds = 2000;
 constexpr std::uint64_t kCallbackWatchdogMilliseconds = 2000;
 constexpr std::uint64_t kReplayDrainMilliseconds = 2000;
 constexpr std::size_t kReplayObservationCapacity = 512;
+constexpr std::size_t kMidiReplayEventBudget = 512;
+constexpr std::size_t kMidiReplayObservationCapacity = 4 * kMidiReplayMaxEvents + kReplayObservationCapacity;
 
 struct Options {
     AudioDeviceConfig audio{};
@@ -55,6 +60,7 @@ struct Options {
     std::filesystem::path screenshot{};
     std::filesystem::path diagnostics{};
     std::filesystem::path input_script{};
+    std::filesystem::path midi_script{};
     int width{1280};
     int height{900};
     std::uint32_t smoke_ms{0};
@@ -84,6 +90,9 @@ void print_help() {
         "  --height N             Initial logical height: 700..8192, default 900.\n"
         "  --smoke-ms N           Actual window/device smoke, 250..10000 ms.\n"
         "  --input-script PATH    Bounded B3UIREPLAY1 events; excludes --smoke-ms.\n"
+        "  --midi-script PATH     Synthetic B3MIDIREPLAY1 input; excludes --midi-port,\n"
+        "                         --list-midi, and --smoke-ms. Starts disconnected.\n"
+        "                         Paired UI/MIDI scripts must have equal durations.\n"
         "  --screenshot PATH      Write one BMP before presenting the rendered frame.\n"
         "  --diagnostics PATH     Write JSON after closing and joining the device.\n\n"
         "Playing: A W S E D F T G Y H U J K O L P ;. F1/F2/F3 select\n"
@@ -125,7 +134,7 @@ void print_help() {
         if (option == "--list-audio") { options.list_audio = true; continue; }
         if (option == "--list-midi") { options.list_midi = true; continue; }
         const bool path_option = option == "--state" || option == "--screenshot" ||
-            option == "--diagnostics" || option == "--input-script";
+            option == "--diagnostics" || option == "--input-script" || option == "--midi-script";
         const bool number_option = option == "--sample-rate" || option == "--buffer-frames" ||
             option == "--width" || option == "--height" || option == "--smoke-ms" ||
             option == "--midi-upper-channel" || option == "--midi-lower-channel" ||
@@ -153,6 +162,7 @@ void print_help() {
             if (option == "--state") options.state = std::move(path);
             else if (option == "--screenshot") options.screenshot = std::move(path);
             else if (option == "--diagnostics") options.diagnostics = std::move(path);
+            else if (option == "--midi-script") options.midi_script = std::move(path);
             else options.input_script = std::move(path);
             continue;
         }
@@ -201,6 +211,11 @@ void print_help() {
     }
     if (!options.input_script.empty() && options.smoke_ms != 0) {
         error = "--input-script and --smoke-ms are mutually exclusive";
+        return false;
+    }
+    if (!options.midi_script.empty() &&
+        (!options.midi_port.empty() || options.smoke_ms != 0 || options.list_midi)) {
+        error = "--midi-script excludes --midi-port, --list-midi, and --smoke-ms";
         return false;
     }
     return true;
@@ -393,7 +408,7 @@ public:
     }
 
     [[nodiscard]] bool initialize() {
-        // Admit the complete script before selecting a state directory or
+        // Admit both complete scripts before selecting a state directory or
         // opening any output. Parsing and all file access stay off audio.
         std::optional<ScriptedInputPlan> replay_plan;
         if (!options_.input_script.empty()) {
@@ -402,8 +417,22 @@ public:
             if (!load_scripted_input(options_.input_script, *replay_plan, error)) {
                 fail("Cannot load input script: " + error); return false;
             }
-            replay_observations_.reserve(kReplayObservationCapacity);
         }
+        if (midi_replay_requested()) {
+            std::string error;
+            if (!load_midi_replay(options_.midi_script, midi_replay_.plan, error)) {
+                fail("Cannot load MIDI script: " + error); return false;
+            }
+            if (replay_plan && replay_plan->duration_ms != midi_replay_.plan.duration_ms) {
+                fail("Paired --input-script and --midi-script durations must be equal"); return false;
+            }
+            for (std::size_t index = 0; index < midi_replay_.plan.event_count; ++index) {
+                if (midi_replay_.plan.events[index].kind == MidiReplayKind::Bytes) {
+                    ++midi_replay_.scheduled_packets;
+                }
+            }
+        }
+        if (replay_requested()) replay_observations_.reserve(replay_observation_capacity());
         window_.reset(SDL_CreateWindow("B-3 Workshop | Nominal dry organ", SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED, options_.width, options_.height,
             SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI));
@@ -435,7 +464,10 @@ public:
         midi_routing_ = options_.midi_routing;
         selected_midi_routing_ = midi_routing_;
         midi_requested_port_ = options_.midi_port;
-        if (!MidiDevice::backend_available()) midi_status_ = "MIDI backend unavailable in this build.";
+        midi_native_requested_ = !options_.midi_port.empty();
+        if (midi_replay_requested()) {
+            midi_status_ = "Synthetic replay is disconnected; waiting for an explicit script connect event.";
+        } else if (!MidiDevice::backend_available()) midi_status_ = "MIDI backend unavailable in this build.";
         if (!options_.midi_port.empty()) {
             const bool connected = request_midi(options_.midi_port, midi_routing_);
             midi_startup_failed_ = !connected;
@@ -469,18 +501,29 @@ public:
             }
             observe();
             monitor_audio();
-            if (running_) process_midi();
+            if (running_) {
+                pump_midi_replay(SDL_GetTicks64() - started);
+                process_midi();
+            }
             complete_save();
             check_capture();
             const auto elapsed = SDL_GetTicks64() - started;
             if (options_.smoke_ms != 0) advance_smoke(elapsed);
-            if (!options_.input_script.empty()) {
+            if (replay_requested()) {
                 record_replay_observation(elapsed);
-                if (running_ && replay_.completed(elapsed) && replay_acknowledged()) {
-                    replay_completed_ = true;
+                const bool ui_finished = options_.input_script.empty() || replay_.completed(elapsed);
+                const bool midi_finished = !midi_replay_requested() ||
+                    (elapsed >= midi_replay_.plan.duration_ms &&
+                     midi_replay_.cursor == midi_replay_.plan.event_count &&
+                     midi_.inbox->pending() == 0 && !pending_midi_open_ && !midi_retirement_waiting_);
+                if (running_ && ui_finished && midi_finished && replay_acknowledged()) {
+                    replay_completed_ = !options_.input_script.empty();
+                    midi_replay_.completed = midi_replay_requested();
                     running_ = false;
-                } else if (running_ && elapsed >= replay_.duration_ms() + kReplayDrainMilliseconds) {
-                    fail("Input replay could not finish delivery and acknowledgment within its bounded drain interval");
+                } else if (running_ && elapsed >= replay_duration_ms() + kReplayDrainMilliseconds) {
+                    fail(midi_replay_requested() ?
+                        "MIDI replay could not finish delivery and acknowledgment within its bounded drain interval" :
+                        "Input replay could not finish delivery and acknowledgment within its bounded drain interval");
                     fatal_failure_ = true;
                     running_ = false;
                 }
@@ -499,6 +542,11 @@ public:
         replay_finalized_ = true;
         midi_before_shutdown_ = midi_.device.info();
         midi_active_before_shutdown_ = midi_input_.active();
+        midi_replay_.connected_before_shutdown = midi_replay_.connected;
+        midi_replay_.faulted_before_shutdown = midi_replay_.faulted;
+        midi_replay_.pending_packets_before_shutdown = midi_.inbox->pending();
+        midi_replay_.pending_connect_before_shutdown = pending_midi_open_.has_value();
+        midi_replay_.release_pending_before_shutdown = midi_retirement_waiting_;
         retire_midi("MIDI input closed for application shutdown.");
         // Off always traverses the normal UiModel path, even after a smoke error.
         if (smoke_on_sent_ && !smoke_off_sent_) {
@@ -531,16 +579,23 @@ public:
             snapshot_available_ && snapshot_.fault_flags == 0 && !any_held(snapshot_) && !fatal_failure_ &&
             !midi_startup_failed_ && !midi_shutdown_failed_;
         if (options_.smoke_ms != 0 && !smoke_passed_) fail("Native smoke failed; inspect the copied diagnostics");
-        if (!options_.input_script.empty()) {
-            replay_passed_ = replay_completed_ && replay_final_acknowledged_ && !replay_.failed() &&
+        if (replay_requested()) {
+            const bool healthy_replay = replay_final_acknowledged_ && !replay_.failed() &&
                 !replay_observations_truncated_ && !replay_observations_.empty() &&
                 audio_before_close_.open && audio_before_close_.running &&
                 final_diagnostics_.callback_count != 0 && final_diagnostics_.rendered_frames != 0 &&
                 final_diagnostics_.render_failures == 0 && final_diagnostics_.format_failures == 0 &&
                 final_diagnostics_.nonfinite_failures == 0 && final_diagnostics_.overrange_failures == 0 &&
                 snapshot_available_ && snapshot_.fault_flags == 0 && !any_held(snapshot_) &&
-                error_count_ == 0 && !fatal_failure_;
-            if (!replay_passed_) fail("Native input replay failed or was interrupted; inspect the copied diagnostics");
+                error_count_ == 0 && !fatal_failure_ && !midi_startup_failed_ && !midi_shutdown_failed_;
+            replay_passed_ = !options_.input_script.empty() && replay_completed_ && healthy_replay;
+            midi_replay_.passed = midi_replay_requested() && midi_replay_.completed && healthy_replay;
+            if ((!options_.input_script.empty() && !replay_passed_) ||
+                (midi_replay_requested() && !midi_replay_.passed)) {
+                fail(midi_replay_requested() ?
+                    "Native MIDI replay failed or was interrupted; inspect the copied diagnostics" :
+                    "Native input replay failed or was interrupted; inspect the copied diagnostics");
+            }
         }
         if (!write_diagnostics()) fatal_failure_ = true;
         if (options_.smoke_ms != 0) {
@@ -551,7 +606,8 @@ public:
         }
         return fatal_failure_ || midi_startup_failed_ || midi_shutdown_failed_ ||
             (options_.smoke_ms != 0 && !smoke_passed_) ||
-            (!options_.input_script.empty() && !replay_passed_) ? 1 : 0;
+            (!options_.input_script.empty() && !replay_passed_) ||
+            (midi_replay_requested() && !midi_replay_.passed) ? 1 : 0;
     }
 
     [[nodiscard]] bool write_diagnostics() const {
@@ -620,6 +676,7 @@ public:
                << ",\"held_observed\":" << smoke_held_observed_ << ",\"release_observed\":" << smoke_release_observed_
                << ",\"passed\":" << smoke_passed_ << '}';
         if (!options_.input_script.empty()) write_replay_json(output);
+        if (midi_replay_requested()) write_midi_replay_json(output);
         output << ",\n  \"state_path\":";
         json_string(output, cli::path_text(options_.state));
         output << ",\n  \"status\":"; json_string(output, status_);
@@ -636,6 +693,40 @@ private:
     struct MidiRequest {
         std::string port;
         MidiRouting routing;
+        bool synthetic{false};
+    };
+
+    // Main-thread synthetic producer state. MidiDevice remains unopened; its
+    // native diagnostics must never inherit this source's connection state.
+    struct MidiReplayState {
+        MidiReplayPlan plan{};
+        std::size_t cursor{0};
+        std::size_t maximum_events_per_turn{0};
+        std::size_t pending_packets_before_shutdown{0};
+        std::uint64_t scheduled_packets{0};
+        std::uint64_t offered_packets{0};
+        std::uint64_t accepted_packets{0};
+        std::uint64_t ignored_while_closed{0};
+        std::uint64_t rejected_packets{0};
+        std::uint64_t connect_events{0};
+        std::uint64_t connections_started{0};
+        std::uint64_t disconnect_events{0};
+        std::uint64_t intentional_backend_faults{0};
+        std::uint64_t intentional_overflow_faults{0};
+        std::uint64_t faults_while_closed{0};
+        std::uint64_t connect_barriers{0};
+        std::uint64_t barrier_wait_turns{0};
+        std::uint64_t cancelled_connects{0};
+        std::uint64_t budget_exhaustions{0};
+        std::uint64_t last_arrival_ns{0};
+        bool connected{false};
+        bool faulted{false};
+        bool connected_before_shutdown{false};
+        bool faulted_before_shutdown{false};
+        bool pending_connect_before_shutdown{false};
+        bool release_pending_before_shutdown{false};
+        bool completed{false};
+        bool passed{false};
     };
 
     struct ReplayObservation {
@@ -644,8 +735,27 @@ private:
         std::uint64_t last_submitted_sequence;
     };
 
+    [[nodiscard]] bool midi_replay_requested() const noexcept {
+        return !options_.midi_script.empty();
+    }
+
+    [[nodiscard]] bool replay_requested() const noexcept {
+        return !options_.input_script.empty() || midi_replay_requested();
+    }
+
+    [[nodiscard]] std::uint32_t replay_duration_ms() const noexcept {
+        return midi_replay_requested() ? midi_replay_.plan.duration_ms : replay_.duration_ms();
+    }
+
+    [[nodiscard]] std::size_t replay_observation_capacity() const noexcept {
+        return midi_replay_requested() ? kMidiReplayObservationCapacity : kReplayObservationCapacity;
+    }
+
     void write_midi_json(std::ostream& output) const {
-        output << "{\"backend_available\":" << MidiDevice::backend_available() << ",\"backend\":";
+        output << "{\"source\":";
+        json_string(output, midi_replay_requested() ? "synthetic-replay" :
+            (midi_native_requested_ ? "native" : "none"));
+        output << ",\"backend_available\":" << MidiDevice::backend_available() << ",\"backend\":";
         json_string(output, MidiDevice::backend_name());
         output << ",\"requested_port\":"; json_string(output, midi_requested_port_);
         output << ",\"port_name\":"; json_string(output, midi_final_info_.port_name);
@@ -667,6 +777,10 @@ private:
                << ",\"maximum_drained_per_turn\":" << midi_maximum_drain_
                << ",\"timing_policy\":\"arrival_order_next_callback_boundary\""
                << ",\"arrival_time_unit\":\"steady_clock_nanoseconds\""
+               << ",\"arrival_time_source\":";
+        json_string(output, midi_replay_requested() ? "synthetic_main_thread_receipt" :
+            (midi_native_requested_ ? "native_callback_receipt" : "none"));
+        output << ",\"arrival_time_is_sample_time\":false"
                << ",\"retirements\":" << midi_retirements_
                << ",\"fault_retirements\":" << midi_fault_retirements_
                << ",\"session_recoveries_observed\":" << midi_session_recoveries_
@@ -743,7 +857,7 @@ private:
                 previous.snapshot.last_applied_sequence == snapshot_.last_applied_sequence &&
                 previous.last_submitted_sequence == last_submitted_sequence_) return;
         }
-        if (replay_observations_.size() == kReplayObservationCapacity) {
+        if (replay_observations_.size() == replay_observation_capacity()) {
             if (!replay_observations_truncated_) fail("Input replay observation capacity was exceeded");
             replay_observations_truncated_ = true;
             fatal_failure_ = true;
@@ -786,12 +900,62 @@ private:
                << ",\"delivered\":" << replay_.delivered() << ",\"passed\":" << replay_passed_
                << ",\"duration_ms\":" << replay_.duration_ms()
                << ",\"scheduled_events\":" << replay_.scheduled_count()
-               << ",\"pushed_events\":" << replay_.pushed_count()
-               << ",\"final_acknowledged\":" << replay_final_acknowledged_
+               << ",\"pushed_events\":" << replay_.pushed_count();
+        write_replay_results(output);
+        output << '}';
+    }
+
+    void write_midi_replay_json(std::ostream& output) const {
+        output << ",\n  \"midi_replay\":{\"source\":\"synthetic-replay\""
+               << ",\"completed\":" << midi_replay_.completed
+               << ",\"delivered\":" << (midi_replay_.cursor == midi_replay_.plan.event_count)
+               << ",\"passed\":" << midi_replay_.passed
+               << ",\"duration_ms\":" << midi_replay_.plan.duration_ms
+               << ",\"scheduled_events\":" << midi_replay_.plan.event_count
+               << ",\"delivered_events\":" << midi_replay_.cursor
+               << ",\"scheduled_packets\":" << midi_replay_.scheduled_packets
+               << ",\"offered_packets\":" << midi_replay_.offered_packets
+               << ",\"accepted_packets\":" << midi_replay_.accepted_packets
+               << ",\"dropped_packets\":" << (midi_replay_.ignored_while_closed +
+                    midi_replay_.rejected_packets + midi_final_inbox_.discarded_packets)
+               << ",\"ignored_while_closed\":" << midi_replay_.ignored_while_closed
+               << ",\"rejected_packets\":" << midi_replay_.rejected_packets
+               << ",\"discarded_queued_packets\":" << midi_final_inbox_.discarded_packets
+               << ",\"connect_events\":" << midi_replay_.connect_events
+               << ",\"connections_started\":" << midi_replay_.connections_started
+               << ",\"disconnect_events\":" << midi_replay_.disconnect_events
+               << ",\"intentional_backend_faults\":" << midi_replay_.intentional_backend_faults
+               << ",\"intentional_overflow_faults\":" << midi_replay_.intentional_overflow_faults
+               << ",\"faults_while_closed\":" << midi_replay_.faults_while_closed
+               << ",\"failure_count\":" << error_count_
+               << ",\"connect_barriers\":" << midi_replay_.connect_barriers
+               << ",\"barrier_wait_turns\":" << midi_replay_.barrier_wait_turns
+               << ",\"cancelled_connects\":" << midi_replay_.cancelled_connects
+               << ",\"event_budget\":" << kMidiReplayEventBudget
+               << ",\"maximum_events_per_turn\":" << midi_replay_.maximum_events_per_turn
+               << ",\"budget_exhaustions\":" << midi_replay_.budget_exhaustions
+               << ",\"arrival_time_source\":\"synthetic_main_thread_steady_clock_receipt\""
+               << ",\"arrival_time_is_sample_time\":false"
+               << ",\"last_arrival_ns\":" << midi_replay_.last_arrival_ns
+               << ",\"connected_before_shutdown\":" << midi_replay_.connected_before_shutdown
+               << ",\"faulted_before_shutdown\":" << midi_replay_.faulted_before_shutdown
+               << ",\"connected_after_shutdown\":" << midi_replay_.connected
+               << ",\"pending_packets_before_shutdown\":" << midi_replay_.pending_packets_before_shutdown
+               << ",\"pending_connect_before_shutdown\":" << midi_replay_.pending_connect_before_shutdown
+               << ",\"release_pending_before_shutdown\":" << midi_replay_.release_pending_before_shutdown;
+        write_replay_results(output);
+        output << '}';
+    }
+
+    // Both transports use the same Session observations and sequence barrier.
+    // The existing UI replay event/delivery fields keep their original meaning.
+    void write_replay_results(std::ostream& output) const {
+        output << ",\"final_acknowledged\":" << replay_final_acknowledged_
                << ",\"last_submitted_sequence\":" << replay_last_submitted_sequence_
                << ",\"accepted_note_on_commands\":" << replay_accepted_note_on_
                << ",\"accepted_note_off_commands\":" << replay_accepted_note_off_
                << ",\"device_starts\":" << device_starts_
+               << ",\"observation_capacity\":" << replay_observation_capacity()
                << ",\"observations_truncated\":" << replay_observations_truncated_
                << ",\"before_shutdown\":{";
         write_replay_snapshot(output, replay_before_shutdown_);
@@ -804,13 +968,13 @@ private:
             write_replay_snapshot(output, observation.snapshot);
             output << '}';
         }
-        output << "]}";
+        output << ']';
     }
 
     void record_accepted(const SessionCommand& command, const SubmitResult& result) noexcept {
         last_submitted_sequence_ = result.sequence;
         if (std::holds_alternative<ControlSnapshot>(command)) last_control_sequence_ = result.sequence;
-        if (options_.input_script.empty() || replay_finalized_) return;
+        if (!replay_requested() || replay_finalized_) return;
         const auto* input = std::get_if<PerformanceInputEvent>(&command);
         if (input == nullptr) return;
         if (const auto* manual = std::get_if<HostNoteEvent>(input)) {
@@ -852,18 +1016,24 @@ private:
 
     void retire_midi(std::string_view reason) {
         const bool had_pending_request = pending_midi_open_.has_value();
+        if (pending_midi_open_ && pending_midi_open_->synthetic) {
+            increment_counter(midi_replay_.cancelled_connects);
+        }
         pending_midi_open_.reset();
         if (midi_shutdown_failed_) return; // Never retry or replace a quarantined epoch.
-        const bool had_epoch = midi_input_.active() || midi_.device.is_open() ||
+        const bool had_epoch = midi_input_.active() || midi_.device.is_open() || midi_replay_.connected ||
             midi_.inbox->faults() != 0 || midi_.inbox->pending() != 0;
         if (!had_epoch) {
             if (had_pending_request) midi_status_ = reason;
             return;
         }
         midi_input_.end_epoch();
+        // No synthetic producer callback exists. Closing admission here, on
+        // its sole main thread, establishes quiescence before the same reset.
+        midi_replay_.connected = false;
         midi_status_ = reason;
         midi_retired_faults_ |= midi_.inbox->faults();
-        midi_.device.close();
+        if (!midi_replay_requested()) midi_.device.close();
         midi_retired_faults_ |= midi_.inbox->faults();
         if (midi_.device.is_quiescent()) {
             midi_.inbox->reset_quiescent();
@@ -920,34 +1090,54 @@ private:
             fail(midi_status_);
             return false;
         }
+        if (request.synthetic && (midi_.inbox->pending() != 0 || midi_.inbox->faults() != 0)) {
+            midi_status_ = "Synthetic replay cannot open an epoch with stale inbox state.";
+            increment_counter(midi_open_failures_);
+            fail(midi_status_);
+            return false;
+        }
         if (!midi_input_.begin_epoch(request.routing)) {
             midi_status_ = "MIDI routing could not begin a fresh input epoch.";
             fail(midi_status_);
             return false;
         }
-        std::string error;
-        if (!midi_.device.open(*midi_.inbox, request.port, error)) {
-            increment_counter(midi_open_failures_);
-            const auto explanation = "Cannot open MIDI input: " + error;
-            retire_midi(explanation);
-            fail(explanation);
-            return false;
+        if (request.synthetic) {
+            midi_replay_.connected = true;
+            midi_replay_.faulted = false;
+            increment_counter(midi_replay_.connections_started);
+        } else {
+            std::string error;
+            if (!midi_.device.open(*midi_.inbox, request.port, error)) {
+                increment_counter(midi_open_failures_);
+                const auto explanation = "Cannot open MIDI input: " + error;
+                retire_midi(explanation);
+                fail(explanation);
+                return false;
+            }
         }
         midi_routing_ = request.routing;
         midi_requested_port_ = std::move(request.port);
         midi_last_poll_ = SDL_GetTicks64();
         midi_startup_failed_ = false;
-        midi_status_ = "MIDI connected. Messages apply at the next audio callback boundary.";
+        midi_status_ = request.synthetic ?
+            "Synthetic replay active. Messages apply at the next audio callback boundary." :
+            "MIDI connected. Messages apply at the next audio callback boundary.";
         message(midi_status_);
         return true;
     }
 
     [[nodiscard]] bool request_midi(std::string port, const MidiRouting& routing) {
+        if (midi_replay_requested()) {
+            midi_status_ = "Synthetic replay is script controlled. Only a later script connect event can open input.";
+            message(midi_status_);
+            return true; // UI Apply cannot enumerate, alter routes, or open a native port.
+        }
         if (!valid_midi_routing(routing)) {
             midi_status_ = "Choose three distinct MIDI channels from 1 through 16.";
             fail(midi_status_);
             return false; // Preserve the existing transport and routing.
         }
+        if (!port.empty()) midi_native_requested_ = true;
         if (!port.empty() && (!MidiDevice::backend_available() || midi_shutdown_failed_)) {
             midi_status_ = midi_shutdown_failed_ ? "MIDI shutdown failed; restart the application." :
                 "MIDI backend unavailable in this build.";
@@ -982,17 +1172,127 @@ private:
         return start_pending_midi();
     }
 
-    void midi_fault(std::string explanation) {
+    void request_midi_replay_connect() {
+        // Every script connect requests a fresh epoch, even if already active.
+        // The common retirement cancels any earlier intent and discards only
+        // after the producer has stopped; no packet crosses its release barrier.
+        retire_midi("Synthetic replay retired its previous epoch; waiting for scoped release acknowledgment.");
+        if (midi_shutdown_failed_ || midi_release_failed_) return;
+        if (!commands_enabled_ || !audio_.is_running()) {
+            midi_status_ = "Synthetic replay connect requires running audio; the request was not retained.";
+            increment_counter(midi_open_failures_);
+            fail(midi_status_);
+            return;
+        }
+        pending_midi_open_ = MidiRequest{{}, midi_routing_, true};
+        if (midi_retirement_waiting_) {
+            increment_counter(midi_replay_.connect_barriers);
+            midi_status_ = "Synthetic replay connect is waiting for the previous scoped release acknowledgment.";
+            return;
+        }
+        const bool opened = start_pending_midi();
+        (void)opened; // Failure is visible and the consumed request is never retried.
+    }
+
+    void feed_midi_replay_bytes(const MidiReplayEvent& event) {
+        if (!midi_replay_.connected || !midi_input_.active()) {
+            increment_counter(midi_replay_.ignored_while_closed);
+            return;
+        }
+        // This is synthetic receipt metadata sampled on the main thread. Script
+        // due times and steady nanoseconds are never Engine frames/deadlines.
+        const auto receipt = std::chrono::duration_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now().time_since_epoch()).count();
+        midi_replay_.last_arrival_ns = receipt > 0 ? static_cast<std::uint64_t>(receipt) : 0;
+        increment_counter(midi_replay_.offered_packets);
+        const auto pushed = midi_.inbox->push(
+            std::span<const std::uint8_t>{event.bytes.data(), event.size}, midi_replay_.last_arrival_ns);
+        if (pushed == MidiPushResult::Accepted) {
+            increment_counter(midi_replay_.accepted_packets);
+            return;
+        }
+        increment_counter(midi_replay_.rejected_packets);
+        if (pushed == MidiPushResult::Overflow) {
+            increment_counter(midi_replay_.intentional_overflow_faults);
+            midi_fault("Synthetic replay overflowed the real inbox; old packets discarded. A later connect event is required.", true);
+        } else if (pushed == MidiPushResult::Faulted) {
+            midi_fault("Synthetic replay reached a faulted inbox; old packets discarded. A later connect event is required.", true);
+        } else {
+            // The admitted fixed plan cannot contain an invalid-size packet.
+            midi_fault("Synthetic replay produced an invalid packet size after admission.");
+        }
+    }
+
+    void deliver_midi_replay_event(const MidiReplayEvent& event) {
+        switch (event.kind) {
+        case MidiReplayKind::Bytes:
+            feed_midi_replay_bytes(event);
+            break;
+        case MidiReplayKind::Connect:
+            increment_counter(midi_replay_.connect_events);
+            request_midi_replay_connect();
+            break;
+        case MidiReplayKind::Disconnect:
+            increment_counter(midi_replay_.disconnect_events);
+            if (midi_replay_.connected) midi_.inbox->signal_fault(MidiInboxFault::Disconnected);
+            retire_midi("Synthetic replay disconnected; MIDI owners are being released.");
+            midi_status_ = "Synthetic replay is disconnected. Only a later script connect event can open input.";
+            break;
+        case MidiReplayKind::BackendFault:
+            increment_counter(midi_replay_.intentional_backend_faults);
+            if (midi_replay_.connected) {
+                midi_.inbox->signal_fault(MidiInboxFault::Backend);
+                midi_fault("Synthetic replay injected a backend fault; old packets discarded. A later connect event is required.", true);
+            } else {
+                increment_counter(midi_replay_.faults_while_closed);
+                retire_midi("Synthetic replay cancelled pending input after a scripted backend fault.");
+                midi_replay_.faulted = true;
+                midi_status_ = "Synthetic replay counted a backend fault while disconnected; input remains closed.";
+            }
+            break;
+        }
+    }
+
+    void pump_midi_replay(std::uint64_t elapsed) {
+        if (!midi_replay_requested()) return;
+        if (pending_midi_open_ && !midi_retirement_waiting_) {
+            const bool opened = start_pending_midi();
+            (void)opened;
+        }
+        std::size_t delivered = 0;
+        while (midi_replay_.cursor < midi_replay_.plan.event_count && delivered < kMidiReplayEventBudget) {
+            const auto& event = midi_replay_.plan.events[midi_replay_.cursor];
+            if (event.at_ms > elapsed) break;
+            if (pending_midi_open_) {
+                // Preserve FIFO ties across the pending open. UI Panic, audio
+                // restart, or Session recovery may cancel this intent first.
+                increment_counter(midi_replay_.barrier_wait_turns);
+                break;
+            }
+            ++midi_replay_.cursor;
+            ++delivered;
+            deliver_midi_replay_event(event);
+        }
+        midi_replay_.maximum_events_per_turn = std::max(midi_replay_.maximum_events_per_turn, delivered);
+        if (delivered == kMidiReplayEventBudget && midi_replay_.cursor < midi_replay_.plan.event_count &&
+            midi_replay_.plan.events[midi_replay_.cursor].at_ms <= elapsed) {
+            increment_counter(midi_replay_.budget_exhaustions);
+        }
+    }
+
+    void midi_fault(std::string explanation, bool synthetic_injection = false) {
         increment_counter(midi_fault_retirements_);
-        if (midi_.inbox->faults() != 0 && midi_.device.is_open()) {
+        if (!midi_replay_requested() && midi_.inbox->faults() != 0 && midi_.device.is_open()) {
             std::string error;
             const bool connected = midi_.device.poll_connection(error);
             (void)connected;
         }
         retire_midi(explanation);
+        if (midi_replay_requested()) midi_replay_.faulted = true;
         if (!midi_shutdown_failed_) {
             midi_status_ = std::move(explanation);
-            fail(midi_status_);
+            if (synthetic_injection && midi_replay_requested()) message(midi_status_);
+            else fail(midi_status_);
         }
     }
 
@@ -1007,7 +1307,12 @@ private:
             return;
         }
         const auto now = SDL_GetTicks64();
-        if (midi_.inbox->faults() != 0 || !midi_.device.is_open() ||
+        if (midi_replay_requested()) {
+            if (!midi_replay_.connected || midi_.inbox->faults() != 0) {
+                midi_fault("Synthetic replay inbox fault; old packets discarded. A later connect event is required.", true);
+                return;
+            }
+        } else if (midi_.inbox->faults() != 0 || !midi_.device.is_open() ||
             now - midi_last_poll_ >= kMidiConnectionPollMilliseconds) {
             midi_last_poll_ = now;
             std::string error;
@@ -1075,8 +1380,8 @@ private:
     }
 
     [[nodiscard]] bool output_paths_distinct() {
-        const std::array<std::filesystem::path, 4> paths{
-            options_.state, options_.screenshot, options_.diagnostics, options_.input_script};
+        const std::array<std::filesystem::path, 5> paths{
+            options_.state, options_.screenshot, options_.diagnostics, options_.input_script, options_.midi_script};
         // A dangling leaf on any selected path can alias an absent state file.
         // StateFiles also requires a nonsymlink leaf; preserve that boundary.
         for (std::size_t index = 0; index < paths.size(); ++index) {
@@ -1087,10 +1392,10 @@ private:
                 fail("Cannot inspect selected path: " + error.message()); return false;
             }
             if (std::filesystem::is_symlink(status)) {
-                fail("State, screenshot, diagnostics, and input script paths must not be symbolic links"); return false;
+                fail("State, screenshot, diagnostics, and replay script paths must not be symbolic links"); return false;
             }
             if (index != 0 && std::filesystem::exists(status) && !std::filesystem::is_regular_file(status)) {
-                fail("Screenshot and diagnostics outputs must be regular files or new paths"); return false;
+                fail("Screenshot, diagnostics, and replay script paths must be regular files or new paths"); return false;
             }
         }
         const auto resolve = [](const std::filesystem::path& path, std::error_code& error) {
@@ -1109,7 +1414,10 @@ private:
                 const auto b = resolve(paths[second], error);
                 if (error) { fail("Cannot resolve output path: " + error.message()); return false; }
                 const bool same = a == b || std::filesystem::equivalent(a, b, error);
-                if (same) { fail("State, screenshot, diagnostics, and input script must use different files"); return false; }
+                if (same) { fail("State, screenshot, diagnostics, and replay scripts must use different files"); return false; }
+                if (error && error != std::errc::no_such_file_or_directory) {
+                    fail("Cannot compare selected file identities: " + error.message()); return false;
+                }
             }
         }
         return true;
@@ -1344,6 +1652,13 @@ private:
         if (overlay == ViewOverlay::Midi) {
             selected_midi_routing_ = midi_routing_;
             midi_choices_.clear();
+            if (midi_replay_requested()) {
+                midi_choices_.emplace_back("Synthetic replay (script controlled)");
+                selected_midi_port_ = 0;
+                midi_status_ = "Synthetic replay: Apply leaves the script route unchanged; Disconnect retires MIDI owners.";
+                message("Synthetic replay uses explicit script connect events. Native MIDI ports are not enumerated.");
+                return;
+            }
             midi_choices_.emplace_back("No input");
             std::vector<std::string> names;
             std::string error;
@@ -1446,8 +1761,12 @@ private:
                 midi_requested_port_.clear();
                 selected_midi_port_ = 0;
                 if (!midi_shutdown_failed_) {
-                    midi_status_ = midi_retirement_waiting_ ?
-                        "MIDI disconnected; waiting for scoped release acknowledgment." : "No MIDI input selected.";
+                    if (midi_replay_requested()) {
+                        midi_status_ = "Synthetic replay disconnected. Only a later script connect event can open input.";
+                    } else {
+                        midi_status_ = midi_retirement_waiting_ ?
+                            "MIDI disconnected; waiting for scoped release acknowledgment." : "No MIDI input selected.";
+                    }
                 }
                 return;
             }
@@ -1652,14 +1971,17 @@ private:
         const auto device = audio_.info();
         const auto diagnostics = audio_.diagnostics();
         const auto midi_device = midi_.device.info();
+        const std::string replay_status = midi_replay_requested() ? "Synthetic replay: " + midi_status_ : std::string{};
         InstrumentViewInfo information{device.running, device.sample_rate, device.buffer_frames,
             device.driver, device.device_name, status_, diagnostics.overrange_samples, overlay_, audio_choices_,
             selected_device_, selected_config_.sample_rate, selected_config_.buffer_frames};
-        information.midi_available = MidiDevice::backend_available();
-        information.midi_open = midi_.device.is_open() && midi_input_.active();
-        information.midi_backend = MidiDevice::backend_name();
-        information.midi_port = midi_device.port_name;
-        information.midi_status = midi_status_;
+        information.midi_available = midi_replay_requested() || MidiDevice::backend_available();
+        information.midi_open = !midi_replay_requested() && midi_.device.is_open() && midi_input_.active();
+        information.midi_backend = midi_replay_requested() ? "Synthetic replay" : MidiDevice::backend_name();
+        information.midi_port = midi_replay_requested() ?
+            (midi_replay_.connected ? "Synthetic replay (active)" : "Synthetic replay (disconnected)") :
+            std::string_view{midi_device.port_name};
+        information.midi_status = midi_replay_requested() ? replay_status : midi_status_;
         information.midi_choices = midi_choices_;
         information.selected_midi_port = selected_midi_port_;
         information.selected_midi_channels = {selected_midi_routing_.upper_channel,
@@ -1677,9 +1999,11 @@ private:
         constexpr std::size_t middle_c_index = 60 - kMinManualMidiNote;
         const bool smoke_capture = smoke_held_observed_ && painted.held_keys[0][middle_c_index];
         const bool last_chance = options_.smoke_ms != 0 && elapsed >= options_.smoke_ms;
-        const bool replay_capture = !options_.input_script.empty() && replay_completed_;
+        const bool replay_capture = replay_requested() &&
+            (options_.input_script.empty() || replay_completed_) &&
+            (!midi_replay_requested() || midi_replay_.completed);
         if (!options_.screenshot.empty() && !screenshot_attempted_ &&
-            (replay_capture || (options_.input_script.empty() &&
+            (replay_capture || (!replay_requested() &&
                 (options_.smoke_ms == 0 || smoke_capture || last_chance)))) {
             screenshot_attempted_ = true;
             std::string error;
@@ -1707,6 +2031,7 @@ private:
     AudioDevice audio_; // Destruction precedes Session.
     MidiLifetime midi_; // The sole inbox outlives its backend, including quarantine.
     MidiInput midi_input_;
+    MidiReplayState midi_replay_;
     UiModel ui_;
     std::unique_ptr<SDL_Window, WindowDeleter> window_;
     std::unique_ptr<SDL_Renderer, RendererDeleter> renderer_;
@@ -1804,6 +2129,7 @@ private:
     bool midi_startup_failed_{false};
     bool midi_active_before_shutdown_{false};
     bool midi_final_quiescent_{true};
+    bool midi_native_requested_{false};
 };
 
 int run_application(int argc, char** argv) {

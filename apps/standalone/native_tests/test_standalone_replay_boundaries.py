@@ -19,6 +19,8 @@ import tempfile
 import time
 import unittest
 
+from test_standalone_app import assert_no_midi_input
+
 
 TIMEOUT = 8.0
 DEFAULT_CONTROLS = {
@@ -153,7 +155,8 @@ class ReplayBoundaryAcceptance(unittest.TestCase):
         return data, image_path
 
     def assert_joined(self, data: dict) -> None:
-        self.assertEqual(data["schema_version"], 1)
+        self.assertEqual(data["schema_version"], 2)
+        assert_no_midi_input(self, data)
         self.assertEqual(data["application"], "hammond_standalone")
         self.assertEqual(data["runtime"]["video_driver"], "dummy")
         self.assertGreater(data["runtime"]["rendered_images"], 0)
@@ -183,6 +186,8 @@ class ReplayBoundaryAcceptance(unittest.TestCase):
 
     def assert_success(self, data: dict, source: bytes) -> None:
         replay = data["replay"]
+        self.assertIs(type(replay["observation_capacity"]), int)
+        self.assertEqual(replay["observation_capacity"], 512)
         for key in ("completed", "delivered", "passed", "final_acknowledged"):
             self.assertTrue(replay[key], key)
         self.assertFalse(replay["observations_truncated"])
@@ -237,11 +242,13 @@ class ReplayBoundaryAcceptance(unittest.TestCase):
                 self.assertEqual(data["replay"]["accepted_note_off_commands"], off)
 
     def test_tied_resizes_preserve_each_pointer_geometry_and_note_owner(self) -> None:
-        # Literal public-layout points: (35,500) is Lower C at960x700 and
-        # Upper C at1280x900. Space must retain the original Lower owner.
-        actions = ["resize 960 700", "mouse_down 35 500", "mouse_up 35 500",
+        # Independent literal points: (36,560) is Lower C2 at 960x700;
+        # (202,580) is Upper C2 at 1280x900, beyond its new bank rail.
+        # Each tied resize marker must apply before its following pointer
+        # events. Space retains the original Lower owner after Upper refocus.
+        actions = ["resize 960 700", "mouse_down 36 560", "mouse_up 36 560",
                    "key_down Space none 0", "resize 1280 900",
-                   "mouse_down 35 500", "mouse_up 35 500"]
+                   "mouse_down 202 580", "mouse_up 202 580"]
         data, _ = self.invoke(script([(200, action) for action in actions], 550))
         self.assert_holds(data, [], [36], [])
         self.assertEqual(data["replay"]["accepted_note_on_commands"], 3)

@@ -232,12 +232,21 @@ void Drawing::text(std::string_view value, float x, float top, float size,
         }
         const auto& glyph = font_data::glyph(atlas, static_cast<unsigned char>(character));
         if (glyph.width != 0 && glyph.height != 0) {
-            const SDL_Rect source{static_cast<int>(glyph.x), static_cast<int>(glyph.y),
-                                  static_cast<int>(glyph.width), static_cast<int>(glyph.height)};
-            const SDL_FRect target{x + static_cast<float>(glyph.bearing_x) * scale,
-                                  baseline + static_cast<float>(glyph.bearing_y) * scale,
-                                  static_cast<float>(glyph.width) * scale,
-                                  static_cast<float>(glyph.height) * scale};
+            // The atlas generator verifies two transparent pixels around every
+            // ink rectangle, including at its edges. Include that gutter in a
+            // subpixel dimension so l/i strokes and hyphens survive the SDL
+            // software renderer's integer destination extent. Keep the existing
+            // sampling in other dimensions and offset the bearing identically.
+            const int padding_x = static_cast<float>(glyph.width) * scale < 1.0F ? 2 : 0;
+            const int padding_y = static_cast<float>(glyph.height) * scale < 1.0F ? 2 : 0;
+            const SDL_Rect source{static_cast<int>(glyph.x) - padding_x,
+                                  static_cast<int>(glyph.y) - padding_y,
+                                  static_cast<int>(glyph.width) + 2 * padding_x,
+                                  static_cast<int>(glyph.height) + 2 * padding_y};
+            const SDL_FRect target{x + static_cast<float>(glyph.bearing_x - padding_x) * scale,
+                                  baseline + static_cast<float>(glyph.bearing_y - padding_y) * scale,
+                                  static_cast<float>(source.w) * scale,
+                                  static_cast<float>(source.h) * scale};
             SDL_RenderCopyF(renderer_, texture, &source, &target);
         }
         x += static_cast<float>(glyph.advance_64) * scale / 64.0F;

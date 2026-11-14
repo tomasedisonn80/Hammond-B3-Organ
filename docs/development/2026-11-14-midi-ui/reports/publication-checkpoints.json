@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "repository": "tomasedisonn80/Hammond-B3-Organ",
+  "branch": "main",
+  "checkpoints": [
+    {
+      "purpose": "Complete source review, exact reference and standing continuation rules",
+      "local_commit": "94d3470",
+      "repository_commit": "7b36cfac2565397191b3df5e07112611e7f1b0e1",
+      "tree": "f6fe5ec715fe113d581e188834d51f9a30f52046",
+      "parent": "0f7b90037e51e101d8fa0bfe31af40209d751659",
+      "state": "published_and_fetched",
+      "expected_head_guard": true
+    },
+    {
+      "purpose": "Initial MIDI transport and reference renderer, with source-identified native captures",
+      "local_commit": "e09107414896c2c53dad124a74f60c8043fadfe4",
+      "repository_commit": "e918b332ccc64d0307e60f53bf7c7f53ffd141e9",
+      "tree": "1f117a17cf561fae8978adeb612abf9ad29d7b64",
+      "parent": "7b36cfac2565397191b3df5e07112611e7f1b0e1",
+      "state": "prepared_not_main",
+      "reason": "Retain this reviewable source checkpoint; advance main only with subsequent native fixture and integration acceptance."
+    }
+  ],
+  "limits": [
+    "Git object/tree equality is publication integrity, not runtime or hardware qualification.",
+    "The prepared checkpoint is not yet the main branch head."
+  ]
+}

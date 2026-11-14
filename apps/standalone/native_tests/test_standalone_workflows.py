@@ -22,9 +22,11 @@ import tempfile
 import time
 import unittest
 
+from test_standalone_app import assert_no_midi_input
+
 
 REPOSITORY = Path(__file__).resolve().parents[3]
-EXAMPLES = REPOSITORY / "examples" / "standalone-input"
+EXAMPLES = REPOSITORY / "examples" / "standalone-input-v2"
 PROCESS_TIMEOUT = 9.0
 
 # Accepted noncanonical input deliberately differs from canonical saved output.
@@ -217,7 +219,8 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         return WorkflowRun(data, state_path.read_bytes(), elapsed)
 
     def assert_common(self, data: dict, source: str, state_path: Path, size: tuple[int, int]) -> None:
-        self.assertEqual(data["schema_version"], 1)
+        self.assertEqual(data["schema_version"], 2)
+        assert_no_midi_input(self, data)
         self.assertEqual(data["application"], "hammond_standalone")
         self.assertEqual(data["state_path"], str(state_path))
         self.assertEqual(data["errors"], {"count": 0, "last": ""})
@@ -257,9 +260,11 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.assertFalse(data["smoke"]["requested"])
         self.assertFalse(data["smoke"]["note_on_sent"])
         self.assertFalse(data["smoke"]["note_off_sent"])
-        # Only the replay object is new. Ordinary schema-1 diagnostics retain
-        # their original meaning, including joined shutdown observations.
+        # Schema 2 adds inert MIDI diagnostics to these UI-only workflows;
+        # joined shutdown and pre-shutdown musical observations retain meaning.
         metadata = data["replay"]
+        self.assertIs(type(metadata["observation_capacity"]), int)
+        self.assertEqual(metadata["observation_capacity"], 512)
         event_count = sum(bool(line.strip()) and not line.lstrip().startswith("#")
                           for line in source.splitlines()[2:])
         self.assertTrue(metadata["completed"])
@@ -473,11 +478,12 @@ class NativeWorkflowAcceptance(unittest.TestCase):
                     self.assert_command_prefixes(run, prefixes[:commands + 1])
 
     def test_edit_bank_and_sounding_bank_remain_independent(self) -> None:
-        # Centers of real default-size buttons; Tab navigates their public UI
-        # order. No production layout calculation is reused as an oracle.
-        events = [(200, "key_down A none 0")] + click(400, 76, 136)
+        # Literal centers in the default-size Upper cheek: EDIT A (58,508),
+        # EDIT B (130,508), PLAY B (130,536). Tab keeps its semantic UI order;
+        # no production layout calculation is reused as an oracle.
+        events = [(200, "key_down A none 0")] + click(400, 58, 508)
         events += tabs(500, 5) + tap(700, "End")
-        events += click(1000, 343, 136) + click(1200, 165, 136)
+        events += click(1000, 130, 536) + click(1200, 130, 508)
         events += tabs(1300, 4) + tap(1500, "Home") + [(1900, "key_up A ctrl+meta")]
         run = self.invoke(replay(2300, events))
         edited_a = deepcopy(INITIAL_CONTROLS)
@@ -495,13 +501,13 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.assertEqual(run.saved_bytes, INITIAL_STATE)
 
     def test_cancel_retains_held_notes_and_panic_releases_every_ui_part(self) -> None:
-        events = click(200, 343, 136) + [(400, "key_down A none 0")]
+        events = click(200, 130, 536) + [(400, "key_down A none 0")]
         events += tap(600, "F2") + [(700, "key_down S none 0")]
         events += tap(850, "F3") + [(950, "key_down D none 0")]
-        events += click(1150, 432, 136)
+        events += click(1150, 94, 564)
         # Shift+Tab from Cancel focuses Sounding B; Return reconnects it.
         events += tap(1400, "Tab", "shift") + tap(1500, "Return")
-        events += click(1750, 1208, 52)
+        events += click(1750, 1228, 66)
         events += [(1900, "key_down A none 1"), (1910, "key_down S none 1"),
                    (1920, "key_down D none 1"), (2000, "key_up A none"),
                    (2010, "key_up S none"), (2020, "key_up D none"),
@@ -540,8 +546,9 @@ class NativeWorkflowAcceptance(unittest.TestCase):
     def test_resize_preserves_control_focus_and_original_note_release(self) -> None:
         for width, height in ((960, 700), (1600, 1000)):
             with self.subTest(width=width, height=height):
-                # Header Save through Upper's first drawbar is eleven Tabs.
-                events = tabs(200, 11) + tap(500, "Home")
+                # Six header buttons, including MIDI, then five Upper bank
+                # controls put the first drawbar at the twelfth Tab.
+                events = tabs(200, 12) + tap(500, "Home")
                 events += [(650, "key_down A none 0"), (850, f"resize {width} {height}")]
                 events += tap(1050, "Right")
                 zero = deepcopy(INITIAL_CONTROLS)
@@ -589,7 +596,9 @@ class NativeWorkflowAcceptance(unittest.TestCase):
 
     def test_off_window_pointer_release_preserves_independent_keyboard_owner(self) -> None:
         source = replay(1400, [
-            (200, "key_down A none 0"), (450, "mouse_down 45 520"),
+            # Upper C2 (MIDI 36) is inside the reference keyboard at (202,580),
+            # to the right of the bank rail and below its accidentals.
+            (200, "key_down A none 0"), (450, "mouse_down 202 580"),
             (650, "mouse_move -100 -100"), (800, "mouse_up -80 -80"),
             (1100, "key_up A none"),
         ])

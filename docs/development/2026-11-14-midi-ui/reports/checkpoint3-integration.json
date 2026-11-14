@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "purpose": "Integrated MIDI replay, retained native workflows, packaging and narrow-glyph correction before next publication",
+  "local_base_commit": "e09107414896c2c53dad124a74f60c8043fadfe4",
+  "equivalent_repository_base_commit": "e918b332ccc64d0307e60f53bf7c7f53ffd141e9",
+  "source_input_count": 280,
+  "source_before": "checkpoint3-inputs-before.json",
+  "after_run_input_changes": {
+    "apps/standalone/CMakeLists.txt": {
+      "before": "a9285a12464a6d51f3218fe419a2d1ef9c5ba63269f56dcef27859ec590d7ff1",
+      "after": "80f65c37c7feee61ad30346a937ba167abe594d80cf25a48fa83267e612e9c50"
+    }
+  },
+  "change_explanation": "After the 113-suite default and 23-suite native runs, only the app CMake registration of the independently authored Python native MIDI replay suite was added among these 280 source/test inputs. All compiled production inputs remained unchanged. The new suite then passed against the same final executable. Documentation was edited concurrently and caused the original integrity failure described below.",
+  "new_test": {
+    "path": "apps/standalone/native_tests/test_standalone_midi_replay.py",
+    "sha256": "667e7009305128dd8a4365ae48753211837e0f9fc859fe679ddb20e8a71d62ed"
+  },
+  "toolchain": {
+    "cmake": "4.4.4",
+    "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+    "python": "3.12.14",
+    "configuration": "Release",
+    "sdl": "2.32.10",
+    "rtmidi": "6.0.0",
+    "midi_backend": "ALSA",
+    "local_sdl_alsa": false
+  },
+  "native_executable": {
+    "bytes": 3583376,
+    "sha256": "33728f0df9688ed82e8e5e9446465ff98acbef60ca2d5438b1f22de4db1de4bb"
+  },
+  "runs": {
+    "default_full": {
+      "tests": "113",
+      "failures": "1",
+      "disabled": "0",
+      "time": "212"
+    },
+    "native_existing": {
+      "tests": "23",
+      "failures": "0",
+      "disabled": "0",
+      "time": "98"
+    },
+    "native_replay_added": {
+      "tests": "1",
+      "failures": "0",
+      "disabled": "0",
+      "time": "18"
+    },
+    "repository_integrity_repair": {
+      "tests": "1",
+      "failures": "0",
+      "disabled": "0",
+      "time": "3"
+    }
+  },
+  "original_failure": {
+    "suite": "python_test_repository_integrity",
+    "reason": [
+      "Installed-guide notice Markdown link incorrectly resolved into docs/ instead of its actual root or installed sibling.",
+      "A concurrently edited CI guide linked its assignment note before the note had been written."
+    ],
+    "repair": "Represent the adjacent installed notice by its literal filename, retaining offline availability; complete the actual CI note. The unchanged 41-method integrity suite then passes.",
+    "policy": "The original 112/113 result is retained. The repair is a targeted affected-suite recheck, not a rewritten full-run result."
+  },
+  "limits": [
+    "All native execution uses explicit SDL dummy drivers and software rendering.",
+    "No physical controller, audio deadline, native screen reader, host-wide or reference pixel-equality result is inferred.",
+    "The initial gallery retains its earlier executable; A29 corrected screenshots have separate identities.",
+    "Hosted jobs are implemented and locally syntax/configuration checked but not yet executed at this checkpoint."
+  ],
+  "retained_files": {
+    "checkpoint3-default-integrated-configure.log": {
+      "bytes": 137,
+      "sha256": "e9ba980ca920d8deaa3972a9433d16830c263c43b72ee73a4518b4f521ed9339"
+    },
+    "checkpoint3-default-integrated-build.log": {
+      "bytes": 3748,
+      "sha256": "f3156d590577d2df007caf298a8afb7265188338cea564dd359b990a7314c41d"
+    },
+    "checkpoint3-default-integrated-ctest.log": {
+      "bytes": 16239,
+      "sha256": "1218daf0c0ca1ee73a23eb3f819cfa39d0ba321ed5299cd0d7408a3a8c7c5784"
+    },
+    "checkpoint3-default-integrated-junit.xml": {
+      "bytes": 56887,
+      "sha256": "99932c266d13a65144f3377817ef50502d542fdcea4bbb47783298b38dc56fa7"
+    },
+    "checkpoint3-native-integrated-build.log": {
+      "bytes": 3288,
+      "sha256": "d943083ab20cc1f91729859baf37028d4efbdb0a90ed579a15dafd415a76e143"
+    },
+    "checkpoint3-native-integrated-ctest.log": {
+      "bytes": 3442,
+      "sha256": "54eca1cc24252f5f7777b97141e816aceb46ed412bb114a5f4b66e696e514a4a"
+    },
+    "checkpoint3-native-integrated-junit.xml": {
+      "bytes": 17975,
+      "sha256": "f4a78d2ff2db7fdc604182222abb226e6c8cd46c7e1113a82421016c7b0509f1"
+    },
+    "checkpoint3-native-midi-replay-configure.log": {
+      "bytes": 9456,
+      "sha256": "7c0e7df2c664d9508b4c0938440d6ebdc2dacb42506b605f04a0eaea0e200785"
+    },
+    "checkpoint3-native-midi-replay-ctest.log": {
+      "bytes": 392,
+      "sha256": "64d1580d5e898f03acebd73a2bf9a9bcbb1473d38d04c89de558cbfe39258ce2"
+    },
+    "checkpoint3-native-midi-replay-junit.xml": {
+      "bytes": 1588,
+      "sha256": "24cfd5e115264fb4c22581d51e811c73257f3233f6f9571a6d20342a7a24b118"
+    },
+    "checkpoint3-repository-integrity-repair.log": {
+      "bytes": 244,
+      "sha256": "d5175ade024bfe982366c9788ef19c6e8b9d767354ad5eb0bb2ed75d774f478e"
+    },
+    "checkpoint3-repository-integrity-repair-junit.xml": {
+      "bytes": 524,
+      "sha256": "22445e872c78c2d1d2b1ef7d7390c10ed5c60a0a8fc7f351c57677d9a85d37d1"
+    },
+    "checkpoint3-enabled-install-integration.log": {
+      "bytes": 336,
+      "sha256": "63df753dd6bfb857d6a1dcf0e3619af911c2589770820ea91e89b551a0daa896"
+    },
+    "checkpoint3-inputs-before.json": {
+      "bytes": 29909,
+      "sha256": "b6da9cf20cb26b07fab623cf09614f07ccf48e8a248edc7b28e63bad6b08d878"
+    }
+  }
+}

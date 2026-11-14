@@ -1,122 +1,74 @@
 # Hammond B-3 Organ
 
-A project to recreate a vintage Hammond B-3 and Leslie system, guided by the
-repository's **500-page research and build atlas**.
+A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The current playable product is a **nominal dry organ** with an offline renderer, an optional VST3 adapter, and a native standalone application.
 
-**Current stage:** a working nominal dry-organ engine, offline WAV renderer and
-optional headless VST3 and native standalone prototypes. The core owns 91 shared, continuously running
-sources, two manuals and 25 independently held pedals. Four retained A/B banks,
-routing-only Cancel, optional contact travel, partial-key targets and shared
-percussion readiness provide early console behavior. Two explicitly nominal
-pedal mixtures consume the same source frame. Version-3 control snapshots
-preserve musical controls and migrate older states to muted pedals.
+**Current development:** the standalone has a reference-led instrument interface and optional external MIDI input. Its 91 shared, continuously running sources serve two 61-key manuals and 25 pedals. Four retained A/B drawbar banks, percussion, expression and two nominal pedal mixtures retain the existing **45 public sound parameters** and **`B3CONTROLS3`** saved controls.
 
-The native wrapper exposes three event inputs and 45 stable controls through
-generic host parameter controls. It renders identical dry float32 stereo at
-44.1, 48 and 96 kHz, reconstructs bounded sample-linear automation, and accepts
-state loads through a concurrent UI/audio handoff. The actual Linux bundle has
-independent [ABI](docs/VST3_ABI_ACCEPTANCE.md) and
-[behavior](docs/VST3_BEHAVIOR_ACCEPTANCE.md) evidence. Native platform, callback,
-DAW and device gates are recorded separately; the SDK validator's diagnostics
-are retained rather than hidden behind its summary. Ordinary builds remain
-SDK-free; use the explicit [optional build](docs/VST3_BUILD.md) for VST3.
+[Build and operate the instrument](docs/MIDI_UI_RUNBOOK.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [Complete M0–M9 plan](docs/PLAN.md) · [Current development record](docs/development/2026-11-14-midi-ui/README.md)
 
-The [native standalone](docs/STANDALONE_APP.md) now provides a resizable instrument
-window, both manuals and pedals, A/B drawbar editing and selection, percussion,
-expression, keyboard/pointer playing, audio settings, and explicit control-file
-saving/loading. Its [operational handoff](docs/STANDALONE_HANDOFF.md) records
-setup and the current qualification boundary. The [actual window demonstration](examples/demos/standalone-window-v1/README.md)
-retains four native backbuffer screenshots and their source/diagnostic identities.
-The [chapel audition views](examples/demos/standalone-chapel-v1/README.md)
-add reference/minimum-size captures with Upper C4 and Lower E4 held and a complete
-explicit documentary registration.
-[Scripted workflows](docs/STANDALONE_WORKFLOWS.md), a [source-identified render benchmark](docs/STANDALONE_BENCHMARK.md)
-and [chapel registration export](docs/CHAPEL_CONTROLS.md) have independent acceptance.
-These software checks use explicit SDL dummy drivers; real-device and
-production-release gates remain separate.
-The [completed standalone session](docs/development/2026-11-13-next-phases/README.md)
-accepted **60 newly dispatched agents in ten logical waves**, including full
-500-page atlas coverage. Its [strict completion record](docs/development/2026-11-13-next-phases/completion-check.json)
-retains sixty completed rows with no earlier/resumed workers counted again.
-Ordinary builds remain SDK-free.
+## Native interface and UI/UX design
 
-![Actual standalone chapel audition with Upper C4 and Lower E4 held](examples/demos/standalone-chapel-v1/reference.png)
+The visual target is the atlas's [original cover/page-409 reference](docs/design/atlas-cover-reference.jpg), retained with [exact provenance](docs/design/atlas-reference.json). The live design uses walnut cheeks, charcoal and brass panels, a centered serif title, raised tablets and drawbar caps, adjacent drawbar racks, two manuals with bank controls, and a cabinet composition at wide window sizes.
 
-This retained native software-renderer view has matching
-[source and runtime provenance](examples/demos/standalone-chapel-v1/provenance.json).
+![Actual native reference-layout instrument with held upper and lower notes](examples/demos/standalone-midi-ui-v1/images/reference-1672x941.png)
 
-The [final platform audit](docs/reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md)
-records all ten successful hosted jobs at code revision
-[`6214032f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/6214032f3565f9e221fcf3988e33a22a73bb4ea8):
-core Release on Linux/Windows/macOS, Linux sanitizers/leaks, and all three
-standalone and VST3 builds. Actual package bytes, relocated execution and
-capability limits are retained. The [combined Release gate](docs/reviews/STANDALONE_COMBINED_FINAL_GATE.md)
-and [fully instrumented native gate](docs/reviews/STANDALONE_FINAL_INTEGRATION.md)
-keep their own exact source scopes and original failure records.
+This is an **application-rendered capture**. The [capture gallery and provenance](examples/demos/standalone-midi-ui-v1/README.md) identify the executable, source files, scripts, dimensions, decoded pixels and explicit SDL dummy drivers. The initial gallery precedes the separately tracked small-text refinement; its source identity remains attached to its images.
 
-The standalone session's completed integrated closure is
-[`27209a7f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/27209a7fec075b082aa911c9ea2159938deaae85).
-It preserves concurrent calibration replay/installation and all sixty accepted
-standalone records. Its [hosted recheck](docs/reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md#published-closure-and-completed-hosted-qualification)
-completes all ten jobs successfully: core 103/103 in all four jobs, standalone
-14/14 on each platform, and VST3 8/8 Linux / 7/7 Windows/macOS. Exact source and
-Windows package-fixture diagnostics remain separate from the 621 artifact audit.
+| Interface area | Implemented interaction | Relationship to the reference |
+|---|---|---|
+| Header | Save, Load, Help, Audio, MIDI and Panic; keyboard shortcuts and visible focus. | The reference's material, title and tablet treatment guide the live header. |
+| Performance strip | Four verified percussion choices, nominal expression and two pedal-mixture drawbars. | Actual controls retain their correct legends; the concept's incorrect percussion legends are corrected. |
+| Drawbar racks | Nine live drawbars per manual, independent edited and sounding A/B banks, visible values and drag/keyboard adjustment. | Adjacent racks retain the reference's proportions and cap colors; correct footage and zero-to-eight direction remain authoritative. |
+| Manuals and pedals | 61 + 61 manual keys and 25 pedals with pointer/computer-keyboard playing and held-state feedback. | Real key counts and a playable pedal row are preserved. |
+| Cabinet | Exact decorative cabinet/microphone artwork with factual device and signal-path status. | Cabinet artwork is a preview; scanner and rotary audio remain separate development work. |
+| MIDI settings | Exact input selection, three distinct channels, explicit Apply/Disconnect and keyboard navigation. | A functional native settings surface follows the same material language. |
+| Resize | Reference capture at 1672×941, default 1280×900, minimum 960×700; cabinet hides below width 1400 and compact bank controls move into the racks. | Musical ownership and control state survive layout changes. |
 
-The [capture operations guide](docs/CALIBRATION_RUNBOOK.md) provides source and
-installed workflows, explicit expected outcomes and complete report replay.
+All control text, cap positions, values, focus and held-key indicators are painted from live state. The retained image assets supply decoration. The [design specification](docs/REFERENCE_UI_DESIGN.md) and [independent visual comparison](docs/reviews/MIDI_UI_REFERENCE_REVIEW.md) record exact geometry, corrected source legends and remaining differences. **Literal pixel equality remains open**, including procedural material/perspective differences and the reference's incompatible generated legends and key counts. Keyboard operation is implemented; native screen-reader semantics remain a distinct product gate.
 
-The [scanner continuation](docs/SCANNER_HANDOFF.md) now includes a strict circuit
-graph/compiler, independent primary-source review, AC/transient references and
-prepared numerical modules. The observed G5 same-hertz failure must be resolved
-under the [frozen numerical contract](docs/SCANNER_NUMERICAL_CONTRACT.md) before
-Engine integration; discrete parity alone does not close that gate.
+## External MIDI and playing
 
-An independent [rotary motion and propagation track](docs/ROTARY_SCOPE.md)
-develops nominal horn/drum trajectories and emission-time acoustic paths with
-separate inputs and numerical references. Its
-[new sixty-assignment session](docs/development/2026-11-13-rotary/README.md)
-preserves the concurrently active scanner and native standalone work. This
-research module does not yet establish a measured Leslie or change dry output.
+MIDI is an explicitly enabled build option using locked RtMidi 6.0.0 with a recorded preparation correction. Linux uses ALSA, Windows uses WinMM and macOS uses CoreMIDI. The ordinary build needs no MIDI SDK. An enabled application starts with no selected input; connect one exact, unique port through **MIDI / Ctrl+M** or `--midi-port`.
 
-The completed [capture and calibration toolchain](docs/CALIBRATION_HANDOFF.md)
-adds full-stream audio inspection, canonical identities, complete declared corpus
-relationships/splits, fixed policies, jobs/studies, readiness, exact report replay
-and movable CaptureTools. Its [sixty-agent session](docs/development/2026-11-13-calibration/README.md)
-accepts all sixty actual workers in ten waves, with complete 500-page text coverage
-and a [strict completion record](docs/development/2026-11-13-calibration/completion-check.json).
-The [final hosted matrix](docs/reviews/CALIBRATION_FINAL_HOSTED.md) passes all ten
-jobs at `d7f6100`, including 106/106 core suites in each configured platform job.
-The [next acquisition plan](docs/CALIBRATION_NEXT_ACQUISITION.md) names the actual
-pilot/chain/clock/uncertainty inputs; physical calibration and full M8 remain open.
+| Division | Default wire channel | Accepted notes | Drawbar controllers |
+|---|---:|---|---|
+| Upper | 1 | MIDI 36–96 | CC16–24, retained Upper B bank. |
+| Lower | 2 | MIDI 36–96 | CC16–24, retained Lower B bank. |
+| Pedals | 3 | MIDI 36–60 → pedal IDs 1–25 | CC16–17, the two nominal pedal mixtures. |
 
-The selected source, contact, percussion and pedal models are **nominal and
-unmeasured**. Ideal contacts, percussion off and muted pedals preserve the
-original renderer defaults. Full M3, scanner/AO-28 electronics, Leslie acoustics,
-specimen calibration, physical-device qualification and the atlas's accessible
-custom interface remain open. No software test establishes a measured one-to-one
-instrument match. The [project guide](docs/PROJECT_GUIDE.md),
-[current status](docs/STATUS.md) and [next steps](docs/NEXT_STEPS.md) distinguish
-implemented behavior, executed evidence and the next concrete work.
+Choose three distinct channels from 1–16. CC11 adjusts shared expression; CC123 releases the selected MIDI division. Steady organ gain does not follow Note On velocity. MIDI and UI have separate note owners, so disconnecting the controller preserves an independently held UI note. Device faults retire old packets and notes; reconnect is explicit after a fault, Panic or audio restart. Arrival order is retained and admitted events apply at the next audio callback boundary.
 
-Start with the [standalone handoff](docs/STANDALONE_HANDOFF.md) for the playable
-window, the [calibration handoff](docs/CALIBRATION_HANDOFF.md) for evidence tools,
-or the [scanner handoff](docs/SCANNER_HANDOFF.md) for model development. The
-[pedal handoff](docs/PEDAL_HANDOFF.md) retains offline rendering, tracing, plotting
-and native plugin commands, including the
-[three-second pedal phrase](examples/demos/pedal-phrase-v1/README.md). Pedal behavior has its own
-[Engine contract](docs/PEDAL_ENGINE.md), [input transaction](docs/PERFORMANCE_INPUT.md),
-[schema-3 render evidence](docs/PEDAL_RENDER_EVIDENCE.md),
-[trace tool](docs/PEDAL_TRACE.md), [pedal plots](docs/PEDAL_TRACE_PLOTS.md) and
-[musical catalog](docs/PEDAL_AUDIO_ACCEPTANCE.md).
+Computer keys `A W S E D F T G Y H U J K O L P ;` play notes. F1/F2/F3 choose Upper/Lower/Pedals; `[` and `]` change octave. EDIT A/B chooses the bank being edited; PLAY A/B chooses the sounding bank. Cancel mutes one manual route while preserving its held notes. Save/Load retain musical controls and exclude note owners, device selections and transient DSP history.
 
-The completed [pedal/native session](docs/development/2026-11-13-pedals/README.md)
-completed **60 distinct new assignments in ten waves**, including a fresh review
-of all 500 atlas pages. All sixty substantive results are accepted; the ledger
-retains exact scopes, checks, failures and final publication boundaries. Its [actual-state manifest](docs/development/2026-11-13-pedals/assignments.json)
-counts only newly dispatched workers and retains one substantive note per
-completed assignment. Both earlier sixty-agent sessions remain historical.
-[AGENTS.md](AGENTS.md) makes the documented handoff, meaningful verification,
-commit/push and observed remote-result workflow mandatory for future agents.
+See the [operating guide](docs/MIDI_UI_RUNBOOK.md), [exact input mapping](docs/MIDI_INPUT.md), [backend lifetime contract](docs/MIDI_BACKEND.md) and [optional dependency setup](docs/RTMIDI_BUILD.md). Bounded [`B3MIDIREPLAY1`](docs/MIDI_REPLAY.md) scripts exercise the actual application input path for acceptance; their diagnostics explicitly identify synthetic input.
+
+## Plan, qualification and parallel tracks
+
+The [complete atlas review](docs/research/MIDI_UI_ATLAS_REVIEW.md) covers all 500 pages in six disjoint readings. The atlas's ten research waves, implementation milestones M0–M9 and each requested sixty-worker development session have separate meanings. The [current manifest](docs/development/2026-11-14-midi-ui/assignments.json) records actual dispatched workers and accepted evidence; earlier sessions remain historical.
+
+The active M9 work advances native MIDI input and the reference interface while preserving the existing engine, profile, state and parameter identities. Current engineering evidence includes independent decoder/inbox acceptance, concurrent allocation probes, injected transport failures, real Session/Engine ownership comparisons, native CLI/modal runs and all retained native musical workflows. Individual reports name exact source and dependency identities. Dummy-driver and synthetic runs establish their declared software behavior; physical MIDI/audio, host deadlines, native accessibility, signed distribution and specimen fidelity retain separate gates.
+
+| Track | Current boundary and continuation |
+|---|---|
+| Dry organ and console | Working nominal generator, manuals, pedals, retained banks, percussion and control-state migration. Physical contact, gain/loading, expression and circuit calibration remain open. |
+| Scanner | Graph/compiler, references and prepared numerical modules exist. Resolve the observed G5 same-hertz failure under the [frozen numerical contract](docs/SCANNER_NUMERICAL_CONTRACT.md) before Engine integration; see [handoff](docs/SCANNER_HANDOFF.md). |
+| AO-28 and Leslie electronics | Complete revision-specific electrical graphs, operating points and measured signal boundaries remain required by M5/M6. |
+| Rotary acoustics | The independent [motion/propagation track](docs/ROTARY_SCOPE.md) retains separate horn/drum inputs and numerical references; it does not change the current dry output. |
+| Capture and calibration | The completed [toolchain](docs/CALIBRATION_HANDOFF.md) validates audio/corpora, declared splits, policies, studies and exact report replay. The [next acquisition plan](docs/CALIBRATION_NEXT_ACQUISITION.md) names the missing real inputs. |
+| VST3 | Three event inputs, 45 stable controls, sample-linear automation and concurrent state handoff have separate [ABI](docs/VST3_ABI_ACCEPTANCE.md), [behavior](docs/VST3_BEHAVIOR_ACCEPTANCE.md) and [build](docs/VST3_BUILD.md) records. Its custom editor and actual host/device qualification remain product work. |
+
+### Earlier source-identified qualifications
+
+These records qualify their named revisions and preserve earlier failures and platform distinctions. They do not substitute for testing the current MIDI/UI source.
+
+| Record | Retained evidence |
+|---|---|
+| [Standalone platform audit](docs/reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md) | Ten successful hosted jobs at `6214032f`, including platform builds and package-byte/relocation inspection. |
+| [Standalone integrated closure](docs/reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md#published-closure-and-completed-hosted-qualification) | `27209a7f` retained sixty accepted standalone records and all ten hosted jobs: core 103/103, standalone 14/14 per platform, VST3 8/8 Linux and 7/7 Windows/macOS. |
+| [Calibration hosted matrix](docs/reviews/CALIBRATION_FINAL_HOSTED.md) | Ten successful jobs at `d7f6100`, including 106/106 core suites in each configured platform job. |
+| [Original native window](examples/demos/standalone-window-v1/README.md) and [chapel audition](examples/demos/standalone-chapel-v1/README.md) | Historical native images, control registrations, exact source/runtime provenance and declared dummy-device limits remain unchanged. |
+
+The selected sound models remain **nominal and unmeasured**. The [project guide](docs/PROJECT_GUIDE.md), [status](docs/STATUS.md) and [next steps](docs/NEXT_STEPS.md) distinguish implementation, observed qualification and acquisition. [AGENTS.md](AGENTS.md) gives every future agent the standing workflow: inspect current work, preserve other tracks, test coherent source, update the handoff and actual UI captures, then commit and publish authorized completed changes to `main` with a verified revision.
 
 ## Build and test
 
@@ -159,6 +111,28 @@ sanitizer builds, and platform qualification limits.
 The [OfflineTools local install](docs/OFFLINE_INSTALL.md) places the renderer,
 inspection tools, both trace plotters, compiled profile and event fixtures in a
 relocatable prefix of your choice.
+
+### Native application with MIDI
+
+Install the platform development prerequisites in the [operating guide](docs/MIDI_UI_RUNBOOK.md), then explicitly acquire the two locked dependencies outside the repository:
+
+```sh
+python3 tools/acquire_sdl2.py --destination ../SDL2
+python3 tools/acquire_rtmidi.py --destination ../rtmidi-6.0.0
+cmake -S . -B build-standalone -DCMAKE_BUILD_TYPE=Release \
+  -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT=../SDL2 \
+  -DHAMMOND_ENABLE_MIDI=ON -DHAMMOND_RTMIDI_ROOT=../rtmidi-6.0.0
+cmake --build build-standalone --config Release
+```
+
+For a Linux/macOS single-configuration build:
+
+```sh
+./build-standalone/apps/standalone/hammond_standalone --list-midi
+./build-standalone/apps/standalone/hammond_standalone
+```
+
+Open MIDI / Ctrl+M to choose an exact input and its three channels. The guide gives Windows and multi-configuration paths, explicit port selection, synthetic acceptance commands, and the [fresh-prefix Standalone installation](docs/STANDALONE_INSTALL.md). `HAMMOND_ENABLE_MIDI=OFF` preserves the unavailable physical-backend configuration and requires no RtMidi checkout; the native window still requires its explicitly acquired SDL2 dependency.
 
 ## Repeatable audio examples
 

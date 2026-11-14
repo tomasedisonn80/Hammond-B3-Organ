@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="23"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="2b85fe4e0adc"
+	time="98"
+	timestamp="2026-11-13T22:01:02"
+	>
+	<testcase name="test_standalone_install" classname="test_standalone_install" time="7.38487" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>........
+----------------------------------------------------------------------
+Ran 8 tests in 7.264s
+
+OK
+{"binary_sha256": "33728f0df9688ed82e8e5e9446465ff98acbef60ca2d5438b1f22de4db1de4bb", "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6", "midi_backend": "ALSA", "midi_enabled": true, "payload_files": 17, "relocated_smoke": {"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 55, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 28160, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"exp...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_concurrency" classname="test_standalone_concurrency" time="0.146298" status="run">
+		<properties/>
+		<system-out>Session concurrency cleanup: exception-unwind stop observed, worker joined
+Session concurrency: 8192 ordered posts, 476 free callbacks, 8183 posts observed the callback activity flag; 64 recovery epochs, 256 recovery callbacks, 15072 accepted = 3648 applied + 32 rejected + 11392 discarded; 64 immediate rejects, 32 overflows, 3008 recovery-pending posts; 256 exhausted reads preserved
+Controlled recovery boundaries: 4 epochs, 96 pre-render posts pending, 96 pre-render admitted posts discarded, 192 post-render posts accepted after ack
+Concurrent recovery schedules: 60 epochs, 2880 posts pending, 2880 admitted posts discarded, 0 posts accepted after ack
+Active overflow: 16 rounds, 48 callbacks, 1 controlled after-callback overflow deferred, 15 QueueFull calls observed the activity flag, 15 flagged recoveries deferred past that callback; 4176 accepted = 80 applied + 4096 discarded
+free reader 0: 6617 coherent, 416 busy preserved, 399 distinct revisions, 6908 activity-flag attempts, 4 -&gt; 956 exact publication check...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_external_control" classname="test_standalone_external_control" time="0.00379932" status="run">
+		<properties/>
+		<system-out>External controls preserve shared pending UI intent
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_concurrency" classname="test_standalone_midi_concurrency" time="0.261545" status="run">
+		<properties>
+			<property name="cmake_labels" value="concurrency;standalone"/>
+		</properties>
+		<system-out>Standalone MIDI concurrency: 262436 FIFO transfers across 4 epochs; 8 joined fault races; explicit capacity overflow passed.
+Observed 281887 pushes, 378751 pops, 279113 decodes, 1026 fault signals: zero C++ allocations/deallocations in every measured operation.
+Calibration separately observed all 12 C++ allocation and deallocation overload paths on the main thread and each worker; no physical/backend/timing qualification implied.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_input" classname="test_standalone_midi_input" time="0.00439381" status="run">
+		<properties/>
+		<system-out>Standalone MIDI inbox/decoder acceptance: 10 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_replay" classname="test_standalone_midi_replay" time="0.00599735" status="run">
+		<properties/>
+		<system-out>Standalone MIDI replay acceptance: 8 scenarios passed; 18 parsed, 237 parse rejections, 3 loaded, 13 load rejections, 0 capability skips
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_session" classname="test_standalone_midi_session" time="0.0358518" status="run">
+		<properties/>
+		<system-out>MIDI/Session/UI acceptance: 26 scenarios, 197 decoded packets, 308 commands, 343 callbacks, 17466 finite stereo samples, 8433 physical-reference sample comparisons, 5622 timestamp/velocity/partition sample comparisons
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_session" classname="test_standalone_session" time="0.37426" status="run">
+		<properties/>
+		<system-out>standalone Session acceptance: 9 rate/partition scores, 3277 successful renders, 156308 bit-exact stereo samples, 6432 partition samples, 7160 coherent snapshots, 3850 accepted posts, 41 rejected posts, 20 rejected renders, 61 future-output probes
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_state_files" classname="test_standalone_state_files" time="0.00631027" status="run">
+		<properties/>
+		<system-out>TESTED: regular and dangling symbolic-link load/save rejection
+TESTED: failed write under RLIMIT_FSIZE and temporary cleanup
+NOT TESTED: POSIX failed replacement after a complete temporary write; no deterministic non-racing fixture
+Standalone state-file acceptance: 7 scenarios completed; platform exclusions are reported above
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_ui" classname="test_standalone_ui" time="0.00794808" status="run">
+		<properties/>
+		<system-out>Standalone UI acceptance: 8 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_backend" classname="test_standalone_midi_backend" time="0.00337381" status="run">
+		<properties>
+			<property name="cmake_labels" value="backend;standalone"/>
+		</properties>
+		<system-out>PASS ordinary: metadata without native construction
+PASS ordinary: exact enumeration and caps
+PASS ordinary: enumeration faults and refused fallback
+PASS ordinary: argument rejection preserves epoch
+PASS ordinary: exact selection and successful generations
+PASS ordinary: open caps and refused fallback
+PASS ordinary: topology changes around activation
+PASS ordinary: actual callback bytes, storage lifetime and sizes
+PASS ordinary: actual callback queue overflow
+PASS ordinary: backend error callback admission
+PASS ordinary: open errors that return normally
+PASS ordinary: partial activation and stale-prefix retirement
+PASS ordinary: bounded worker callback during native close
+PASS ordinary: poll scope and no automatic reconnect
+PASS ordinary: ordinary destruction exactly once
+PASS 15 backend groups on ALSA; actual MidiDevice.cpp with fake RtMidi API; no native driver claim
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_backend_quarantine" classname="test_standalone_midi_backend_quarantine" time="0.00465647" status="run">
+		<properties>
+			<property name="cmake_labels" value="backend;intentional-quarantine;standalone"/>
+		</properties>
+		<system-out>PASS quarantine: six failure paths retain context/inbox and refuse reopen
+PASS 1 backend groups on ALSA; actual MidiDevice.cpp with fake RtMidi API; no native driver claim
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_benchmark" classname="test_standalone_benchmark" time="3.22663" status="run">
+		<properties>
+			<property name="cmake_labels" value="benchmark;standalone"/>
+		</properties>
+		<system-out>.........
+----------------------------------------------------------------------
+Ran 9 tests in 3.106s
+
+OK
+standalone benchmark CLI calls: 111; no elapsed-time correctness threshold applied
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_drawing" classname="test_standalone_drawing" time="0.0457739" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>SDL 2.32.10, renderer=software, no window/audio
+144 individual glyph cases, 18 normal-size labels, 12 width/multiline/space cases; failures=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_audio_device" classname="test_standalone_audio_device" time="2.90046" status="run">
+		<properties/>
+		<system-out>SDL 2.32.10, driver=dummy, 1 copied output name(s)
+dummy obtained 44100 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 44100 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+dummy obtained 44100 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+dummy obtained 44100 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+dummy obtained 44100 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+dummy obtained 48000 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 48000 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+dummy obtained 48000 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+dummy obtained 48000 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+dummy obtained 48000 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+dummy obtained 96000 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 96000 Hz / 256 frame...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_device_removal" classname="test_standalone_device_removal" time="0.231182" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>PASS: 3 actual SDL lifecycle cycles; 93 queued events; 78 ignored events; 10 matching pure queries; 3 matched joined closes; 10 rejected opens; 2 observed ID reuses; 12 callbacks; 3584 rendered frames.
+Scope: explicit dummy backend and software event injection; no physical disconnect or application-handler execution.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_callback_allocation" classname="test_standalone_callback_allocation" time="0.946619" status="run">
+		<properties/>
+		<system-out>128 frames / cold controls/manuals/pedals/percussion: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / full 256-command prefix: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / manual and pedal note-off: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / scoped UI release: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / global Panic: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / active owners before recovery: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / pending-release queue overflow: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / authoritative command rejection: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+2048 frames / cold controls/manuals/pedals...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_app" classname="test_standalone_app" time="8.94461" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native executable SHA-256: 33728f0df9688ed82e8e5e9446465ff98acbef60ca2d5438b1f22de4db1de4bb
+test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+ok
+test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+test_late_malformed_startup_preserves_file_and_audition_controls ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_cli" classname="test_standalone_midi_cli" time="10.7939" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>MIDI CLI/modal executable SHA-256: 33728f0df9688ed82e8e5e9446465ff98acbef60ca2d5438b1f22de4db1de4bb
+test_cli_distinct_channels_and_all_boundary_positions (__main__.NativeMidiAcceptance.test_cli_distinct_channels_and_all_boundary_positions) ... ok
+test_cli_exact_port_argument_bytes_and_no_name_coercion (__main__.NativeMidiAcceptance.test_cli_exact_port_argument_bytes_and_no_name_coercion) ... ok
+test_cli_list_midi_precedes_sdl_initialization (__main__.NativeMidiAcceptance.test_cli_list_midi_precedes_sdl_initialization) ... ok
+test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name (__main__.NativeMidiAcceptance.test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name) ... ok
+test_cli_numeric_channels_are_strict_and_bounded (__main__.NativeMidiAcceptance.test_cli_numeric_channels_are_strict_and_bounded) ... ok
+test_cli_repeated_options_and_conflicting_lists (__main__.NativeMidiAcceptance.test_cli_repeated_options_and_conflicting_lists) ... ok
+test_cli_startup_defaults_to_no_input_with_custom_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workflows" classname="test_standalone_workflows" time="38.4891" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Workflow executable SHA-256: 33728f0df9688ed82e8e5e9446465ff98acbef60ca2d5438b1f22de4db1de4bb
+test_cancel_retains_held_notes_and_panic_releases_every_ui_part (__main__.NativeWorkflowAcceptance.test_cancel_retains_held_notes_and_panic_releases_every_ui_part) ... ok
+test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes (__main__.NativeWorkflowAcceptance.test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes) ... ok
+test_edit_bank_and_sounding_bank_remain_independent (__main__.NativeWorkflowAcceptance.test_edit_bank_and_sounding_bank_remain_independent) ... ok
+test_empty_replay_has_no_automatic_smoke_note_or_file_write (__main__.NativeWorkflowAcceptance.test_empty_replay_has_no_automatic_smoke_note_or_file_write) ... ok
+test_focus_loss_suppresses_repeat_and_duplicate_down_until_release (__main__.NativeWorkflowAcceptance.test_focus_loss_suppresses_repeat_and_duplicate_down_until_release) ... ok
+test_help_open_close_releases_notes_without_retriggering_held_keys (__main__.NativeWorkflowAcce...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_replay_boundaries" classname="test_standalone_replay_boundaries" time="5.07295" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Replay boundary executable SHA-256: 33728f0df9688ed82e8e5e9446465ff98acbef60ca2d5438b1f22de4db1de4bb
+test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_chapel" classname="test_standalone_chapel" time="19.7676" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native chapel executable SHA-256: 33728f0df9688ed82e8e5e9446465ff98acbef60ca2d5438b1f22de4db1de4bb
+Native chapel main SHA-256: 22719975ed910b0b23db841617446e492890d89f2106cc04279fc9e46824f42e
+..Native chapel acceptance: 22 exported states, 22 actual SDL application invocations
+
+----------------------------------------------------------------------
+Ran 2 tests in 19.597s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_input_replay" classname="test_standalone_input_replay" time="0.018699" status="run">
+		<properties/>
+		<system-out>standalone replay acceptance (SDL dummy): 590 valid parses, 188 atomic parser rejections, 3 regular-file loads, 12 atomic file rejections, 51 forged-plan rejections, 122 checked queue actions, 14 acknowledged markers, 5 expected runtime failures, 4 lifetime cycles
+</system-out>
+	</testcase>
+</testsuite>

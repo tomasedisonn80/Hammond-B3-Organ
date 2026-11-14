@@ -1,5 +1,38 @@
 # Development log
 
+## 2026-11-14 — Integrated native MIDI replay, package and typography gates
+
+Completed the first five logical waves and accepted the separate A31 native
+replay assignment. The actual manifest now records 31 accepted workers; later
+wave-six work remains in progress. Added bounded `B3MIDIREPLAY1` admission and
+native delivery, schema-2 diagnostics, independent CLI/modal and musical replay
+acceptance, preserved legacy workflow fixtures, exact 13/17-file installation,
+the operational guide and a source-identified four-image initial gallery.
+The reproduced small-glyph defect failed 48 isolated cases before repair and
+passes all 144 after the final per-axis transparent-gutter correction. The first
+broader-padding candidate was visually rejected despite its passing unit tests.
+
+The [integration record](development/2026-11-14-midi-ui/reports/checkpoint3-integration.json)
+retains all commands/logs, 280 source/test hashes, executable identity and the
+original failure. The complete default run passed **112/113 suites in 212.30 s**;
+the sole repository-integrity failure identified a wrong source-relative notice
+link and a concurrently unfinished CI note. Correcting that link and completing
+the note passes the unchanged affected suite **1/1 in 3.02 s**. The original full
+result remains intact. The native gate passes **23/23 in 98.69 s**. A31's newly
+registered independent application suite then passes **1/1 in 18.43 s** on the
+same final executable, covering 11 methods and 12 native processes. Only that
+CTest registration changed among the earlier 280 source/test inputs; compiled
+production inputs stayed unchanged.
+
+The hosted workflow now requires actual ALSA/CoreMIDI/WinMM builds and one Linux
+MIDI-disabled build, exact prepared-source/font/reference identity, native-test
+discovery and 13/17-file relocated packages. Local syntax, configuration,
+File API and actual RtMidi ALSA library checks pass; hosted execution remains
+pending until publication. The new handoff and README expose current setup,
+actual UI captures, remaining visual differences and concrete continuation.
+Physical device, deadline, accessibility and full reference-equality gates stay
+separate. Original galleries and all preceding session records are preserved.
+
 ## 2026-11-14 — Initial MIDI implementation and reference renderer
 
 Implemented the frozen optional MIDI queue/decoder, exact-port transport, shared desired-control bridge, three owner scopes, native settings dialog and bounded main-thread draining. The reference renderer now uses verified decorative RGB assets with live controls and shared resize geometry. All 45 public sound parameters, core sound behavior and `B3CONTROLS3` remain unchanged. The first 18 actual workers completed source, contract and implementation work; the live manifest records later independent acceptance separately.

@@ -86,6 +86,114 @@ def reject_nonfinite(token: str) -> None:
     raise ValueError(f"Non-JSON numeric token: {token}")
 
 
+MIDI_SCHEMA = {
+    "source": str, "backend_available": bool, "backend": str,
+    "requested_port": str, "port_name": str, "opened_port_index": int,
+    "generation": int, "state_before_shutdown": str, "state_after_shutdown": str,
+    "active_before_shutdown": bool, "active_after_shutdown": bool,
+    "quiescent_after_shutdown": bool, "diagnostics_stable_after_shutdown": bool,
+    "shutdown_failed": bool, "startup_failed": bool,
+    "channels": {"upper": int, "lower": int, "pedals": int},
+    "drain_budget": int, "maximum_drained_per_turn": int,
+    "timing_policy": str, "arrival_time_unit": str, "arrival_time_source": str,
+    "arrival_time_is_sample_time": bool, "retirements": int,
+    "fault_retirements": int, "session_recoveries_observed": int,
+    "open_failures": int, "submit_failures": int, "release_batches": int,
+    "release_commands_accepted": int, "release_sequence": int,
+    "release_pending": bool, "parameter_messages": int, "retired_fault_bits": int,
+    "last_submit_status": str, "status": str,
+    "device": {
+        "callback_messages": int, "forwarded_messages": int,
+        "filtered_messages": int, "admission_failures": int,
+        "backend_errors": int, "callback_contentions": int,
+        "disconnects": int, "close_errors": int, "last_arrival_ns": int,
+    },
+    "inbox": {
+        "capacity": int, "pending_packets": int, "received_packets": int,
+        "accepted_packets": int, "invalid_size_packets": int,
+        "faulted_packets": int, "overflow_events": int, "popped_packets": int,
+        "discarded_packets": int, "resets": int, "fault_bits": int,
+    },
+    "decoder": {
+        "packets": int, "actions": int, "unsupported": int,
+        "unmapped_channels": int, "out_of_range": int, "malformed": int,
+        "inactive": int, "timestamp_regressions": int, "epochs": int,
+    },
+}
+
+
+def assert_schema(case: unittest.TestCase, value: object, schema: object, name: str = "$") -> None:
+    """Exact keys and types; in particular, bool never satisfies an int field."""
+    if isinstance(schema, dict):
+        case.assertIs(type(value), dict, name)
+        case.assertEqual(set(value), set(schema), name)
+        for key, child in schema.items():
+            assert_schema(case, value[key], child, f"{name}.{key}")
+    elif isinstance(schema, list):
+        case.assertIs(type(value), list, name)
+        case.assertEqual(len(value), len(schema), name)
+        for index, child in enumerate(schema):
+            assert_schema(case, value[index], child, f"{name}[{index}]")
+    elif schema == "number":
+        case.assertIn(type(value), (int, float), name)
+        case.assertTrue(math.isfinite(value), name)
+    else:
+        case.assertIs(type(value), schema, name)
+
+
+def assert_no_midi_input(case: unittest.TestCase, report: dict) -> None:
+    """No selected port or replay: the native transport must stay unopened.
+
+    A compiled backend is allowed. These UI-only runs must neither enumerate
+    hardware nor construct/open a native MIDI input; the exact inert state,
+    empty stderr and zero lifetime counters remain required in either build.
+    """
+    midi = report["midi"]
+    assert_schema(case, midi, MIDI_SCHEMA, "$.midi")
+    case.assertNotIn("midi_replay", report)
+    available = midi["backend_available"]
+    if available:
+        case.assertIn(midi["backend"], ("ALSA", "CoreMIDI", "WinMM"))
+    else:
+        case.assertEqual(midi["backend"], "unavailable")
+    case.assertEqual(midi, {
+        "source": "none", "backend_available": available, "backend": midi["backend"],
+        "requested_port": "", "port_name": "", "opened_port_index": 0,
+        "generation": 0, "state_before_shutdown": "closed" if available else "unavailable",
+        "state_after_shutdown": "closed" if available else "unavailable",
+        "active_before_shutdown": False, "active_after_shutdown": False,
+        "quiescent_after_shutdown": True, "diagnostics_stable_after_shutdown": True,
+        "shutdown_failed": False, "startup_failed": False,
+        "channels": {"upper": 1, "lower": 2, "pedals": 3},
+        "drain_budget": 32, "maximum_drained_per_turn": 0,
+        "timing_policy": "arrival_order_next_callback_boundary",
+        "arrival_time_unit": "steady_clock_nanoseconds", "arrival_time_source": "none",
+        "arrival_time_is_sample_time": False, "retirements": 0,
+        "fault_retirements": 0, "session_recoveries_observed": 0,
+        "open_failures": 0, "submit_failures": 0, "release_batches": 0,
+        "release_commands_accepted": 0, "release_sequence": 0,
+        "release_pending": False, "parameter_messages": 0, "retired_fault_bits": 0,
+        "last_submit_status": "ok",
+        "status": "No MIDI input selected." if available else "MIDI backend unavailable in this build.",
+        "device": {
+            "callback_messages": 0, "forwarded_messages": 0, "filtered_messages": 0,
+            "admission_failures": 0, "backend_errors": 0, "callback_contentions": 0,
+            "disconnects": 0, "close_errors": 0, "last_arrival_ns": 0,
+        },
+        "inbox": {
+            "capacity": 256, "pending_packets": 0, "received_packets": 0,
+            "accepted_packets": 0, "invalid_size_packets": 0, "faulted_packets": 0,
+            "overflow_events": 0, "popped_packets": 0, "discarded_packets": 0,
+            "resets": 0, "fault_bits": 0,
+        },
+        "decoder": {
+            "packets": 0, "actions": 0, "unsupported": 0, "unmapped_channels": 0,
+            "out_of_range": 0, "malformed": 0, "inactive": 0,
+            "timestamp_regressions": 0, "epochs": 0,
+        },
+    })
+
+
 SCHEMA = {
     "schema_version": int,
     "application": str,
@@ -107,6 +215,7 @@ SCHEMA = {
         "nonfinite_failures": int, "nonfinite_samples": int,
         "last_render_status": str, "last_lifecycle_status": str,
     },
+    "midi": MIDI_SCHEMA,
     "session": {
         "snapshot_available": bool, "prepared": bool, "running_after_shutdown": bool,
         "sample_rate": "number", "frame_clock": int, "publication_revision": int,
@@ -267,28 +376,12 @@ class NativeAppAcceptance(unittest.TestCase):
             arguments += ["--screenshot", str(screenshot)]
         return arguments + (extra or [])
 
-    def assert_schema(self, value: object, schema: object, name: str = "$") -> None:
-        if isinstance(schema, dict):
-            self.assertIs(type(value), dict, name)
-            self.assertEqual(set(value), set(schema), name)
-            for key, child in schema.items():
-                self.assert_schema(value[key], child, f"{name}.{key}")
-        elif isinstance(schema, list):
-            self.assertIs(type(value), list, name)
-            self.assertEqual(len(value), len(schema), name)
-            for index, child in enumerate(schema):
-                self.assert_schema(value[index], child, f"{name}[{index}]")
-        elif schema == "number":
-            self.assertIn(type(value), (int, float), name)
-            self.assertTrue(math.isfinite(value), name)
-        else:
-            self.assertIs(type(value), schema, name)
-
     def diagnostics(self, path: Path, state: Path) -> dict:
         report = json.loads(path.read_text(encoding="utf-8"),
                             object_pairs_hook=unique_object, parse_constant=reject_nonfinite)
-        self.assert_schema(report, SCHEMA)
-        self.assertEqual(report["schema_version"], 1)
+        assert_schema(self, report, SCHEMA)
+        self.assertEqual(report["schema_version"], 2)
+        assert_no_midi_input(self, report)
         self.assertEqual(report["application"], "hammond_standalone")
         self.assertEqual(report["profile"], PROFILE)
         self.assertEqual(report["state_path"], str(state))
@@ -408,11 +501,15 @@ class NativeAppAcceptance(unittest.TestCase):
                 colors.add(data[start:start + 3])
         self.assertGreater(len(colors), 8, "Rendered screenshot is blank or nearly uniform")
         if held_middle_c:
-            # Literal interior points below the upper manual's accidentals at
-            # the two acceptance sizes. Compare C4 with the unheld D4/E4 keys;
-            # no production layout/paint code or diagnostic flag is imported.
-            c4, d4, e4, y = {(1280, 900): (522, 556, 590, 500),
-                              (960, 700): (391, 417, 442, 410)}[(width, height)]
+            # Literal interior points below the upper manual's accidentals in
+            # reference-player layout v1. The keyboard begins at (188,496)
+            # with 1068 units of natural-key width at 1280x900, or (24,424)
+            # with width 912 at 960x700. C4/D4/E4 are naturals 14/15/16.
+            # Fresh held/idle native captures verified these points; each
+            # invocation still checks its own new BMP, never a retained image.
+            # No production layout/paint code or diagnostic flag is imported.
+            c4, d4, e4, y = {(1280, 900): (618, 648, 678, 580),
+                              (960, 700): (391, 417, 442, 466)}[(width, height)]
             row = offset + (height - 1 - y if actual_height > 0 else y) * stride
             def pixel(x: int) -> bytes:
                 start = row + x * bytes_per_pixel
@@ -630,11 +727,17 @@ class NativeAppAcceptance(unittest.TestCase):
                 paths[option].unlink()
                 paths[option].mkdir()
                 before = self.tree_snapshot()
-                run = self.invoke(self.cli_arguments(paths, []), expected=1)
-                self.assertIn("outputs must be regular files or new paths", run.process.stderr)
-                self.assertEqual(run.process.stdout, "")
-                self.assertEqual(self.tree_snapshot(), before)
-                paths[option].rmdir()
+                try:
+                    run = self.invoke(self.cli_arguments(paths, []), expected=1)
+                    self.assertEqual(run.process.stderr,
+                                     "hammond_standalone: Screenshot, diagnostics, and replay script paths "
+                                     "must be regular files or new paths\n")
+                    self.assertEqual(run.process.stdout, "")
+                    self.assertEqual(self.tree_snapshot(), before)
+                finally:
+                    # A diagnostic-text failure must not turn the next
+                    # independent subcase into an IsADirectoryError fixture.
+                    paths[option].rmdir()
 
     def file_symlink(self, alias: Path, target: Path) -> None:
         try:

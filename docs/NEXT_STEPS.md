@@ -2,7 +2,7 @@
 
 ## Current continuation: external MIDI and reference-led UI
 
-The new [MIDI/UI session](development/2026-11-14-midi-ui/README.md) takes the dependency-ready standalone work below. Freeze bounded MIDI ownership/ingress/backend/lifecycle contracts, implement and independently qualify them, refine the native view against the identified atlas cover/page409 reference, then publish actual native captures and coherent source results. Preserve all prior models, control/state identities and source limits. The [actual manifest](development/2026-11-14-midi-ui/assignments.json) tracks only newly dispatched workers.
+The new [MIDI/UI session](development/2026-11-14-midi-ui/README.md) has implemented the dependency-ready standalone work below: bounded MIDI ownership/ingress, the optional native backend, explicit lifecycle and synthetic replay, and the atlas-inspired live renderer. Continue independent native replay/ownership acceptance, the reproduced small-glyph correction, actual reference comparison and complete coherent-source/platform gates. Then publish the current screenshots, source identities and resumable handoff. Preserve all prior models, control/state identities and source limits. The [actual manifest](development/2026-11-14-midi-ui/assignments.json) tracks only newly dispatched workers.
 
 ## Continue after the completed calibration-tooling phase
 
@@ -94,18 +94,16 @@ not physical deadline passes; the existing actual screenshots use dummy drivers.
 
 ## Next standalone development
 
-The next independent M9 implementation is an external MIDI adapter for the
-existing nominal instrument. First freeze the supported backend/version/notice,
-timestamp and late-event policy, bounded admission and disconnect behavior.
-Start from `apps/standalone/`, [PERFORMANCE_INPUT.md](PERFORMANCE_INPUT.md) and
-[STANDALONE_SESSION.md](STANDALONE_SESSION.md). The Session queue has one producer:
-serialize incoming device events through that owner rather than writing from a
-second callback. Preserve independent UI/device note ownership so UI focus loss
-does not release a controller's held notes. Acceptance must cover velocity-zero
-release, duplicate and channel ownership, out-of-order/late input, overflow,
-disconnect, restart, controls and joined shutdown with independent event streams.
-Then qualify a named physical controller/audio device and record its OS/backend,
-actual timing, dropout and hotplug observations separately from synthetic events.
+The current external MIDI implementation lives in `apps/standalone/` under the
+[input](MIDI_INPUT.md), [backend](MIDI_BACKEND.md) and [replay](MIDI_REPLAY.md)
+contracts. RtMidi callbacks publish only to a bounded inbox; the main thread
+remains the sole Session producer. UI and MIDI owners remain independent, faults
+retire stale packets and device-owned notes, and reconnect is explicit. Receipt
+timestamps are diagnostic; admitted events apply at callback boundaries.
+Complete the current independent native replay and exact-source platform gates,
+then qualify a named physical controller/audio device using the
+[operating guide](MIDI_UI_RUNBOOK.md). Record its OS/backend, actual timing,
+dropout and hotplug observations separately from synthetic events.
 
 In parallel, select one native accessibility bridge and map the existing controls
 to semantic names, roles, values, focus and actions using copied UI state. Verify

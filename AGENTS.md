@@ -6,6 +6,11 @@ The latest requested [MIDI/UI session](docs/development/2026-11-14-midi-ui/READM
 
 The standing completion workflow remains: update status, next steps, development log and affected setup/contracts; retain actual verification; commit and push completed authorized work to `main`, inspect concurrent advances, and verify the published revision. This instruction applies to future agents as requested by the owner.
 
+Use [MIDI_UI_HANDOFF.md](docs/MIDI_UI_HANDOFF.md) and
+[MIDI_UI_RUNBOOK.md](docs/MIDI_UI_RUNBOOK.md) for the current standalone entry
+point. Earlier standalone handoffs retain their dated source and qualification;
+they do not replace this continuation's actual manifest or current build inputs.
+
 These instructions apply to the entire repository and all future agent sessions.
 They implement the owner's standing handoff and publication requests of
 2026-11-12 and 2026-11-13. Read them before modifying code or documentation.

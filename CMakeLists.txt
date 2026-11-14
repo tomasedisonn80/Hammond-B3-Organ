@@ -295,9 +295,28 @@ include(cmake/InstallStandalone.cmake)
 if(HAMMOND_BUILD_STANDALONE AND BUILD_TESTING)
     add_test(NAME test_standalone_install
         COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/apps/standalone/native_tests/test_standalone_install.py")
+    set(_hammond_standalone_test_environment
+        "PYTHONDONTWRITEBYTECODE=1"
+        "HAMMOND_TEST_CMAKE=${CMAKE_COMMAND}"
+        "HAMMOND_TEST_BUILD_DIR=${CMAKE_BINARY_DIR}"
+        "HAMMOND_TEST_CONFIG=$<CONFIG>"
+        "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+        "HAMMOND_SDL2_ROOT=${HAMMOND_SDL2_ROOT}"
+        "HAMMOND_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR}"
+        "HAMMOND_INSTALL_DATADIR=${CMAKE_INSTALL_DATADIR}"
+        "HAMMOND_TEST_ENABLE_MIDI=$<BOOL:${HAMMOND_ENABLE_MIDI}>"
+        "HAMMOND_STANDALONE_CAPABILITIES=${CMAKE_CURRENT_BINARY_DIR}/generated/standalone-capabilities.json")
+    if(HAMMOND_ENABLE_MIDI)
+        list(APPEND _hammond_standalone_test_environment
+            "HAMMOND_RTMIDI_PREPARED_ROOT=$<TARGET_PROPERTY:hammond_rtmidi,HAMMOND_RTMIDI_PREPARED_ROOT>"
+            "HAMMOND_RTMIDI_BACKEND=$<TARGET_PROPERTY:hammond_rtmidi,HAMMOND_RTMIDI_BACKEND>")
+    else()
+        list(APPEND _hammond_standalone_test_environment
+            "HAMMOND_RTMIDI_PREPARED_ROOT=" "HAMMOND_RTMIDI_BACKEND=")
+    endif()
     set_tests_properties(test_standalone_install PROPERTIES
         TIMEOUT 90 LABELS "standalone;native"
-        ENVIRONMENT "PYTHONDONTWRITEBYTECODE=1;HAMMOND_TEST_CMAKE=${CMAKE_COMMAND};HAMMOND_TEST_BUILD_DIR=${CMAKE_BINARY_DIR};HAMMOND_TEST_CONFIG=$<CONFIG>;HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>;HAMMOND_SDL2_ROOT=${HAMMOND_SDL2_ROOT};HAMMOND_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR};HAMMOND_INSTALL_DATADIR=${CMAKE_INSTALL_DATADIR}")
+        ENVIRONMENT "${_hammond_standalone_test_environment}")
 endif()
 
 if(HAMMOND_BUILD_VST3 AND BUILD_TESTING)

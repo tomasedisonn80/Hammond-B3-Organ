@@ -2,7 +2,13 @@
 
 ## Active MIDI and native visual continuation
 
-A new [sixty-worker session](development/2026-11-14-midi-ui/README.md), starting at `0f7b900`, advances the next independent M9 external-MIDI input and native visual slice under [its scope](MIDI_UI_SCOPE.md). The current work is source review and contract definition. No new MIDI execution, UI match or physical-device pass is claimed at this checkpoint. Earlier completed phases below retain their own identities and evidence.
+A new [sixty-worker session](development/2026-11-14-midi-ui/README.md), starting at `0f7b900`, advances the next independent M9 external-MIDI input and native visual slice under [its scope](MIDI_UI_SCOPE.md). All 500 atlas pages have been read in six disjoint assignments. The bounded decoder/inbox, optional pinned RtMidi backend, native device modal, synthetic replay path and reference-led renderer are implemented. All 45 public parameters, `B3CONTROLS3`, the nominal Engine and the separate model tracks retain their identities.
+
+The [operating guide](MIDI_UI_RUNBOOK.md) gives exact setup, mapping, connection and recovery steps. Independent checks cover decoder routing, Session/Engine musical ownership, concurrent admission, transport failure injection and native CLI/modal behavior. The retained native musical workflow suites pass all 40 methods; the Standalone package passes enabled and disabled acceptance with exact 17/13-file payloads. An [initial actual gallery](../examples/demos/standalone-midi-ui-v1/README.md) preserves its pre-typography executable, pixels and source overlay. Its independently reproduced narrow-glyph defect is corrected: the direct SDL drawing regression passes all 144 glyph cases while retaining normal-size label pixels.
+
+The [integrated checkpoint evidence](development/2026-11-14-midi-ui/reports/checkpoint3-integration.json) retains the original default **112/113** run and corrected **1/1** documentation-integrity recheck, native **23/23** gate and added **1/1** native MIDI replay suite. The latter contains 11 methods and 12 actual application runs. The [handoff](MIDI_UI_HANDOFF.md) separates exact-source qualifications from the remaining work and physical gates.
+
+The [live manifest](development/2026-11-14-midi-ui/assignments.json) distinguishes accepted workers from current work. Complete coherent-source qualification, platform CI, further visual refinement and final handoff are in progress. This paragraph does not claim physical MIDI/audio, literal pixel equality, native screen-reader semantics or complete M9 release. Earlier completed phases below retain their own identities and evidence.
 
 ## Completed capture and calibration-tooling continuation
 

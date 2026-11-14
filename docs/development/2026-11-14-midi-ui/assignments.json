@@ -258,11 +258,12 @@
       "wave": 4,
       "agent": "/root/w04_a19_midi_concurrency",
       "task": "Qualify concurrent inbox publication and allocation-free adapter path",
-      "state": "running",
+      "state": "accepted",
       "owned_files": [
         "apps/standalone/tests/test_standalone_midi_concurrency.cpp",
         "docs/development/2026-11-14-midi-ui/19-midi-concurrency.md"
-      ]
+      ],
+      "evidence_sha256": "d41e7e8da4311597ef96820688c2fdf241cb6b50a13d13ce3b176367e8211a2e"
     },
     {
       "id": "A20",
@@ -293,13 +294,172 @@
       "wave": 4,
       "agent": "/root/w04_a22_midi_replay",
       "task": "Implement bounded synthetic MIDI script admission for native acceptance",
-      "state": "running",
+      "state": "accepted",
       "owned_files": [
         "apps/standalone/MidiReplay.h",
         "apps/standalone/MidiReplay.cpp",
         "apps/standalone/tests/test_standalone_midi_replay.cpp",
         "docs/MIDI_REPLAY.md",
         "docs/development/2026-11-14-midi-ui/22-midi-replay.md"
+      ],
+      "evidence_sha256": "010af1014fafc4d347a66911171bda28d463f278f958961301627389ebb7301e"
+    },
+    {
+      "id": "A23",
+      "wave": 4,
+      "agent": "/root/w04_a23_native_midi_replay",
+      "task": "Drive bounded synthetic MIDI through the actual native lifecycle and diagnostics",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/main.cpp",
+        "docs/development/2026-11-14-midi-ui/23-native-midi-replay.md"
+      ],
+      "evidence_sha256": "54c226d4d0c5b0ca273e6a69e602ea5d74ba13b230f967c16cf486a62107f77b"
+    },
+    {
+      "id": "A24",
+      "wave": 4,
+      "agent": "/root/w04_a24_midi_cli_modal",
+      "task": "Qualify native MIDI CLI and modal interaction, including replayed Ctrl+M",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/ScriptedInput.cpp",
+        "apps/standalone/native_tests/test_standalone_input_replay.cpp",
+        "apps/standalone/native_tests/test_standalone_midi_cli.py",
+        "docs/development/2026-11-14-midi-ui/24-midi-cli-modal.md"
+      ],
+      "evidence_sha256": "86942008c56082ac12604e91d87d1c4fa49748080a65d413fe7b824930f030d5"
+    },
+    {
+      "id": "A25",
+      "wave": 5,
+      "agent": "/root/w05_a25_legacy_native_acceptance",
+      "task": "Preserve legacy native musical acceptance under new layout and diagnostics",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_app.py",
+        "apps/standalone/native_tests/test_standalone_workflows.py",
+        "apps/standalone/native_tests/test_standalone_replay_boundaries.py",
+        "apps/standalone/native_tests/test_standalone_chapel.py",
+        "examples/standalone-input-v2/",
+        "docs/development/2026-11-14-midi-ui/25-legacy-native-acceptance.md"
+      ],
+      "evidence_sha256": "26d4581ff9aad12f7554a41e4802e76c2853cccfedd0d78c7e43e892ab9d265e"
+    },
+    {
+      "id": "A26",
+      "wave": 5,
+      "agent": "/root/w05_a26_midi_packaging",
+      "task": "Extend byte-preserving standalone packaging with MIDI and reference provenance",
+      "state": "accepted",
+      "owned_files": [
+        "cmake/InstallStandalone.cmake",
+        "apps/standalone/native_tests/test_standalone_install.py",
+        "THIRD_PARTY_NOTICES.md",
+        "docs/STANDALONE_INSTALL.md",
+        "docs/development/2026-11-14-midi-ui/26-midi-packaging.md"
+      ],
+      "evidence_sha256": "19c5b407d806a3b7f2c9cd9b3b7eb0bfb1075ee7bb3e02f2d29387b7bd617b07"
+    },
+    {
+      "id": "A27",
+      "wave": 5,
+      "agent": "/root/w05_a27_operations_handoff",
+      "task": "Document usable source and installed MIDI/UI operations and limits",
+      "state": "accepted",
+      "owned_files": [
+        "docs/MIDI_UI_RUNBOOK.md",
+        "docs/STANDALONE_APP.md",
+        "docs/STANDALONE_MODEL.md",
+        "docs/development/2026-11-14-midi-ui/27-operations-handoff.md"
+      ],
+      "evidence_sha256": "18a60ee441501e57e631ff06bf9a6b5b54779d49972a002c9a0c58f93d78acbe"
+    },
+    {
+      "id": "A28",
+      "wave": 5,
+      "agent": "/root/w05_a28_capture_pipeline",
+      "task": "Create repeatable actual native captures with source and pixel provenance",
+      "state": "accepted",
+      "owned_files": [
+        "tools/capture_standalone_reference.py",
+        "examples/demos/standalone-midi-ui-v1/",
+        "docs/development/2026-11-14-midi-ui/28-capture-pipeline.md"
+      ],
+      "evidence_sha256": "d12b44c56a44f6038673fb13633dd011544da8fab8ad48db8b50fa3e20190973"
+    },
+    {
+      "id": "A29",
+      "wave": 5,
+      "agent": "/root/w05_a29_typography_fix",
+      "task": "Correct observed subpixel glyph loss with actual SDL drawing regression evidence",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/Drawing.cpp",
+        "apps/standalone/native_tests/test_standalone_drawing.cpp",
+        "docs/development/2026-11-14-midi-ui/29-typography-fix.md"
+      ],
+      "evidence_sha256": "2789f9cdc1df79ca1e6840dcb9d9ee7013e9eaa6fde6aafd01ba95b860f0c1de"
+    },
+    {
+      "id": "A30",
+      "wave": 5,
+      "agent": "/root/w05_a30_hosted_ci",
+      "task": "Integrate pinned native MIDI, reference provenance and package gates in hosted CI",
+      "state": "accepted",
+      "owned_files": [
+        ".github/workflows/standalone.yml",
+        "docs/development/2026-11-14-midi-ui/30-hosted-ci.md",
+        "docs/STANDALONE_CI.md"
+      ],
+      "evidence_sha256": "8b414ba90764934e763ddee75bbe96c7a4f978d784873ff03bb509ab5123abde"
+    },
+    {
+      "id": "A31",
+      "wave": 6,
+      "agent": "/root/w06_a31_native_midi_acceptance",
+      "task": "Independently qualify actual native synthetic MIDI lifecycle and ownership",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_midi_replay.py",
+        "docs/development/2026-11-14-midi-ui/31-native-midi-acceptance.md"
+      ],
+      "evidence_sha256": "243c94d9f9196d273a4fdef8b415c1affb2941452729b6df5e0879f62eaa3fae"
+    },
+    {
+      "id": "A32",
+      "wave": 6,
+      "agent": "/root/w06_a32_midi_lifecycle_audit",
+      "task": "Audit actual device, main-thread and Session lifetime and ownership transitions",
+      "state": "running",
+      "owned_files": [
+        "docs/reviews/MIDI_LIFECYCLE_AUDIT.md",
+        "docs/development/2026-11-14-midi-ui/32-midi-lifecycle-audit.md"
+      ]
+    },
+    {
+      "id": "A33",
+      "wave": 6,
+      "agent": "/root/w06_a33_reference_materials",
+      "task": "Refine actual native materials, depth and lighting against the exact reference",
+      "state": "running",
+      "owned_files": [
+        "apps/standalone/Drawing.h",
+        "apps/standalone/Drawing.cpp",
+        "apps/standalone/InstrumentView.cpp",
+        "docs/development/2026-11-14-midi-ui/33-reference-materials.md"
+      ]
+    },
+    {
+      "id": "A34",
+      "wave": 6,
+      "agent": "/root/w06_a34_midi_name_presentation",
+      "task": "Implement bounded exact-byte MIDI port-name presentation and independent page acceptance",
+      "state": "running",
+      "owned_files": [
+        "apps/standalone/MidiPortText.h",
+        "apps/standalone/tests/test_standalone_midi_port_text.cpp",
+        "docs/development/2026-11-14-midi-ui/34-midi-name-presentation.md"
       ]
     }
   ]

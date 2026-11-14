@@ -2,12 +2,12 @@
 
 Reviewed 2026-11-13. These notices identify particular material and its source;
 they do not select a project-wide license. No project `LICENSE` file was present
-at this review. The [dependency and rights inventory](docs/DEPENDENCIES_AND_RIGHTS.md)
+at this review. The [dependency and rights inventory](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/DEPENDENCIES_AND_RIGHTS.md)
 records the source, local-install and CI boundaries and remaining release work.
 
 ## SplitMix64 reference adaptation
 
-[`src/TonewheelBank.cpp`](src/TonewheelBank.cpp), function `next_phase_bits`, adapts
+[`src/TonewheelBank.cpp`](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/src/TonewheelBank.cpp), function `next_phase_bits`, adapts
 Sebastiano Vigna's 2015 fixed-increment SplitMix64 reference for deterministic
 phase initialization. It uses caller-owned state instead of the reference's
 global state. The increment, two mixing multipliers and three shifts match the
@@ -25,7 +25,7 @@ atlas, factory source material, other project files or future dependencies.
 
 ## CI actions: fetched by GitHub Actions, not vendored
 
-The [workflow](.github/workflows/ci.yml) references these exact official action
+The [workflow](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/.github/workflows/ci.yml) references these exact official action
 revisions. Their top-level license files were inspected through GitHub on
 2026-11-13; each states MIT and `Copyright (c) 2018 GitHub, Inc. and contributors`.
 
@@ -44,16 +44,16 @@ those notices with copies or substantial portions of the covered software.
 
 ## Supplied research material and new factual transcriptions
 
-The pre-existing [500-page atlas](Hammond_B3_Leslie_Research_Atlas_500pp.pdf) remains
+The pre-existing [500-page atlas](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/Hammond_B3_Leslie_Research_Atlas_500pp.pdf) remains
 unchanged. Its supplier's authorship and publication/derivative permissions,
 including underlying pictures, embedded material and quoted sources, remain
-unresolved in the [source-rights record](docs/research/RIGHTS_AND_SOURCES.md).
+unresolved in the [source-rights record](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/research/RIGHTS_AND_SOURCES.md).
 Its presence is not a new permission grant. Its absent companion rights catalogs
 and font-notice file have not been recovered or recreated by this notice.
 
 The four Table III CSVs are new factual transcriptions with recorded source,
 page locators, independent procedures and frozen hashes in the
-[factory comparison](docs/FACTORY_REFERENCE.md). The separately consulted factory
+[factory comparison](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/FACTORY_REFERENCE.md). The separately consulted factory
 manual and rendered pages are not bundled. No publication permission for that
 manual was established by the transcription or this notice.
 
@@ -67,7 +67,7 @@ The selected SDK is separately acquired for an optional headless VST3 adapter
 and SDK validator. Its source tree and built tools are not vendored in this
 repository or included in the offline install. The exact root and four required
 submodule revisions and primary license hashes are retained in
-[data/dependencies/vst3-sdk-lock.json](data/dependencies/vst3-sdk-lock.json).
+[data/dependencies/vst3-sdk-lock.json](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/data/dependencies/vst3-sdk-lock.json).
 Root: [v3.8.1_build_84 at the pinned commit](https://github.com/steinbergmedia/vst3sdk/tree/3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96).
 Reviewed 2026-11-13. Root, base, cmake, pluginterfaces and public.sdk primary
 `LICENSE.txt` files have identical MIT text, reproduced below. A later package
@@ -143,8 +143,8 @@ For more information, please refer to <http://unlicense.org/>.
 The optional standalone uses explicitly acquired SDL2 **2.32.10**, official
 release tag `release-2.32.10`, commit
 `5d249570393f7a37e037abf22cd6012a4cc56a71`. Source and license identities are
-recorded in [the dependency lock](data/dependencies/sdl2-lock.json) and verified
-by [the acquisition tool](tools/acquire_sdl2.py). Configuration does not download
+recorded in [the dependency lock](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/data/dependencies/sdl2-lock.json) and verified
+by [the acquisition tool](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/tools/acquire_sdl2.py). Configuration does not download
 or modify that source. SDL2 source is not vendored in this repository. The native
 standalone statically links the selected SDL2 target; any binary distribution
 containing it must retain this complete upstream notice and identify separately
@@ -179,7 +179,7 @@ freely, subject to the following restrictions:
 The pinned SDL source includes yuv2rgb by Adrien Descamps. The audited Linux
 standalone executable contains its conversion implementation. This complete
 notice accompanies the binary through the existing installed
-`THIRD_PARTY_NOTICES.md`; the nine-file payload layout is unchanged.
+`THIRD_PARTY_NOTICES.md`; later payload additions retain this notice unchanged.
 [Exact source](https://github.com/libsdl-org/SDL/blob/5d249570393f7a37e037abf22cd6012a4cc56a71/src/video/yuv2rgb/LICENSE):
 1,480 bytes, SHA-256
 `f7d74004cc75778cae46c5f0139f244d67c07ef64cf51937e8272352197dcb18`.
@@ -286,17 +286,88 @@ runtime or distribution artifact.
 ## Standalone DejaVu font inputs and generated glyphs
 
 Unmodified DejaVu Sans Book and DejaVu Serif Book **2.37** are retained under
-[assets/standalone/fonts](assets/standalone/fonts/). Their full source identities,
+[assets/standalone/fonts](https://github.com/tomasedisonn80/Hammond-B3-Organ/tree/main/assets/standalone/fonts/). Their full source identities,
 font metadata, local package provenance and the fixed rasterizer versions are
-recorded in [the manifest](assets/standalone/fonts/source-manifest.json).
+recorded in [the manifest](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/assets/standalone/fonts/source-manifest.json).
 The executable embeds generated glyph alpha data in
-[FontData.h](apps/standalone/FontData.h); runtime font files, FreeType, Pillow and
+[FontData.h](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/apps/standalone/FontData.h); runtime font files, FreeType, Pillow and
 SDL_ttf are not linked or required by this implementation.
 
-The complete [LICENSE-DejaVu.txt](assets/standalone/fonts/LICENSE-DejaVu.txt)
+The complete [LICENSE-DejaVu.txt](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/assets/standalone/fonts/LICENSE-DejaVu.txt)
 accompanies the source inputs and is reproduced in the generated header. Packages
 containing the source fonts or derived glyph atlas must also ship that complete
 notice as an accompanying file. The permission text contains Bitstream notices
 and states that DejaVu changes are public domain. The separate Debian packaging
 GPL section is not the font license and was not substituted for it. See
-[font authoring and rights](docs/STANDALONE_FONTS.md) for the exact boundary.
+[font authoring and rights](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STANDALONE_FONTS.md) for the exact boundary.
+
+
+## Optional RtMidi input backend
+
+MIDI-enabled standalone builds statically link **RtMidi 6.0.0**, tag `6.0.0`,
+commit `1e5b49925aa60065db52de44c366d446a902547b`. Its
+[pinned upstream source](https://github.com/thestk/rtmidi/tree/1e5b49925aa60065db52de44c366d446a902547b),
+[reviewed dependency lock](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/data/dependencies/rtmidi-lock.json) and
+[preparation contract](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/RTMIDI_BUILD.md) identify the dependency. This addition
+was reviewed against the retained local source and lock on 2026-11-14.
+
+The exact upstream [LICENSE](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/assets/standalone/midi/LICENSE-RtMidi.txt) is
+1,349 bytes, SHA-256
+`7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364`.
+It contains the RtMidi copyright/permission/warranty notice and an expressly
+nonbinding request to send modifications upstream. An enabled local installation
+retains those exact bytes as `LICENSE-RtMidi.txt`, alongside `rtmidi-lock.json`.
+The notice is required for copies or substantial portions of the covered
+software; it does not select a license for this project or its artwork.
+
+The separately prepared source applies the identified
+`coremidi-zero-initialize-v1` correction to two allocations in `RtMidi.cpp`.
+Only `new CoreMidiData;` becomes `new CoreMidiData{};`. This applies to the prepared
+copy on every selected platform; the external upstream checkout is unchanged.
+The installed `rtmidi-prepared-source.json` retains the complete dependency lock,
+prepared file identities and preparation-tool hash; the installed
+`rtmidi-coremidi-zero-init.patch` retains the exact 728-byte correction, SHA-256
+`80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad`.
+The prepared C++ source SHA-256 is
+`240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a`.
+
+`standalone-capabilities.json` states the configured native API: ALSA, WinMM or
+CoreMIDI. It records a compiled capability, not an available device, service or
+permission. A MIDI-disabled build identifies its backend as `unavailable` and
+contains no linked RtMidi, RtMidi license/lock or preparation payload. This
+repository-wide notice describes the optional dependency without implying that
+every build includes it. System driver/framework notices and release-runtime
+inventories remain platform-specific work.
+
+## Embedded reference decoration
+
+The standalone embeds three decorative pixel regions derived from the supplied
+atlas cover/page 409 concept: the cabinet/microphones and two control-free wood
+edges. They remain separate from the implemented, dynamic controls. The source
+is a user-supplied generated design concept; it is not an actual application
+capture, a factory construction drawing or calibrated physical geometry.
+
+The retained source JPEG, [atlas-cover-reference.jpg](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/design/atlas-cover-reference.jpg),
+has SHA-256 `9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187`.
+It is the unchanged embedded JPEG stream from image object 3, appearing on PDF
+pages 1 and 409 of `Hammond_B3_Leslie_Research_Atlas_500pp.pdf` (SHA-256
+`4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`).
+The [extraction record](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/design/atlas-reference.json) and
+[decoration manifest](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/assets/standalone/reference/manifest.json) retain exact
+source/pixel hashes, integer crop rectangles, authoring versions and intended
+roles. These local retained identities were inspected on 2026-11-14; no new
+external artwork was acquired.
+
+Every standalone installation, with or without MIDI, includes those records as
+`atlas-reference.json` and `reference-source-manifest.json`, plus this notice.
+The executable embeds the derived pixels; installation does not copy the PDF,
+source JPEG or authoring crop files as separate runtime resources.
+
+**Use and publication rights remain unresolved.** Presence in the supplied atlas
+and matching hashes establish provenance, not ownership or permission to
+redistribute its pictures or derivatives. No new license or publication grant
+is created by extraction, embedding, local staging or this notice. The
+[source-rights record](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/research/RIGHTS_AND_SOURCES.md) retains the missing
+authorship, underlying permission and redistribution evidence. Public release
+or broader redistribution of the embedded decoration remains subject to that
+existing clearance gate. SDL2, RtMidi and font licenses do not cover this artwork.

@@ -22,9 +22,12 @@ env:
 
 jobs:
   native:
-    name: Native standalone (${{ matrix.platform }})
+    name: Native standalone (${{ matrix.platform }}, MIDI ${{ matrix.midi }})
     runs-on: ${{ matrix.os }}
     timeout-minutes: 40
+    env:
+      HAMMOND_CI_MIDI: ${{ matrix.midi }}
+      HAMMOND_CI_MIDI_BACKEND: ${{ matrix.midi_backend }}
     strategy:
       fail-fast: false
       matrix:
@@ -33,14 +36,26 @@ jobs:
             os: ubuntu-24.04
             c_compiler: gcc
             cxx_compiler: g++
+            midi: "ON"
+            midi_backend: ALSA
           - platform: macOS AppleClang
             os: macos-15
             c_compiler: clang
             cxx_compiler: clang++
+            midi: "ON"
+            midi_backend: CoreMIDI
           - platform: Windows MSVC x64
             os: windows-2022
             c_compiler: cl
             cxx_compiler: cl
+            midi: "ON"
+            midi_backend: WinMM
+          - platform: Linux GCC
+            os: ubuntu-24.04
+            c_compiler: gcc
+            cxx_compiler: g++
+            midi: "OFF"
+            midi_backend: unavailable
     steps:
       - name: Check out the exact tested revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -57,7 +72,8 @@ jobs:
       - name: Record exact source and dependency identities
         run: |
           set -euo pipefail
-          mkdir -p standalone-ci-logs standalone-artifacts
+          mkdir -p standalone-ci-logs standalone-artifacts build-standalone/.cmake/api/v1/query
+          touch build-standalone/.cmake/api/v1/query/codemodel-v2
           python - <<'PY'
           import hashlib, json, os, pathlib, platform, shutil, subprocess
           git = lambda *args: subprocess.check_output(["git", *args], text=True).strip()
@@ -66,16 +82,52 @@ jobs:
           subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
           logs = pathlib.Path("standalone-ci-logs")
           dependencies = {}
+          source_files = {}
+          def identify(source, expected=None):
+              path = pathlib.Path(source)
+              assert path.is_file() and not path.is_symlink(), source
+              raw = path.read_bytes()
+              identity = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+              if expected:
+                  assert identity["sha256"] == expected["sha256"], source
+                  if "bytes" in expected:
+                      assert identity["bytes"] == expected["bytes"], source
+              source_files[source] = identity
+              return identity
           for name, source, copied in (
               ("sdl2", "data/dependencies/sdl2-lock.json", "sdl2-lock.json"),
+              ("rtmidi", "data/dependencies/rtmidi-lock.json", "rtmidi-lock.json"),
               ("fonts", "assets/standalone/fonts/source-manifest.json", "font-source-manifest.json"),
+              ("font_atlases", "assets/standalone/fonts/atlas-manifest.json", "font-atlas-manifest.json"),
+              ("reference_art", "assets/standalone/reference/manifest.json", "reference-source-manifest.json"),
+              ("atlas_reference", "docs/design/atlas-reference.json", "atlas-reference.json"),
           ):
               data = pathlib.Path(source).read_bytes()
               dependencies[name] = {
-                  "source_path": source, "sha256": hashlib.sha256(data).hexdigest(),
+                  "source_path": source, **identify(source),
                   "identity": json.loads(data),
               }
               shutil.copyfile(source, logs / copied)
+          fonts = dependencies["fonts"]["identity"]
+          for font in fonts["fonts"]:
+              identify("assets/standalone/fonts/" + font["file"], font)
+          identify("assets/standalone/fonts/" + fonts["license"]["file"], fonts["license"])
+          atlases = dependencies["font_atlases"]["identity"]
+          assert atlases["source_manifest_sha256"] == dependencies["fonts"]["sha256"]
+          identify(atlases["header"]["file"], atlases["header"])
+          reference = dependencies["reference_art"]["identity"]
+          atlas = dependencies["atlas_reference"]["identity"]
+          identify(reference["source"]["file"], reference["source"])
+          identify(reference["source"]["pdf"], {"sha256": reference["source"]["pdf_sha256"]})
+          assert atlas["sha256"] == reference["source"]["sha256"]
+          assert atlas["source_sha256"] == reference["source"]["pdf_sha256"]
+          for asset in reference["assets"]:
+              identify("assets/standalone/reference/" + asset["file"], asset)
+          for source in ("tools/acquire_sdl2.py", "tools/acquire_rtmidi.py",
+                         "tools/compile_reference_art.py", "tools/generate_standalone_font.py",
+                         "assets/standalone/fonts/requirements-authoring.txt",
+                         "assets/standalone/reference/requirements-authoring.txt"):
+              identify(source)
           record = {
               "source_commit": revision, "source_tree": git("rev-parse", "HEAD^{tree}"),
               "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
@@ -83,7 +135,9 @@ jobs:
               "image_os": os.environ.get("ImageOS"), "image_version": os.environ.get("ImageVersion"),
               "platform": platform.platform(), "machine": platform.machine(),
               "python": platform.python_version(), "configuration": "Release",
-              "dependencies": dependencies,
+              "requested_midi": {"enabled": os.environ["HAMMOND_CI_MIDI"] == "ON",
+                                 "backend": os.environ["HAMMOND_CI_MIDI_BACKEND"]},
+              "dependencies": dependencies, "source_files": source_files,
           }
           (logs / "provenance.json").write_text(
               json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
@@ -105,6 +159,15 @@ jobs:
           source = pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond-sdl2"
           shutil.copyfile(source / "docs/README-linux.md", "standalone-ci-logs/SDL2-README-linux.md")
           PY
+
+      - name: Explicitly acquire and locally verify locked external RtMidi
+        if: matrix.midi == 'ON'
+        run: |
+          set -euo pipefail
+          python tools/acquire_rtmidi.py --destination "$RUNNER_TEMP/hammond-rtmidi" \
+            2>&1 | tee standalone-ci-logs/rtmidi-acquisition.log
+          python tools/acquire_rtmidi.py --verify-existing "$RUNNER_TEMP/hammond-rtmidi" \
+            2>&1 | tee standalone-ci-logs/rtmidi-verification.log
 
       - name: Install Ubuntu desktop and audio development headers
         if: runner.os == 'Linux'
@@ -136,6 +199,8 @@ jobs:
             -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
             -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
             -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            -DHAMMOND_ENABLE_MIDI="$HAMMOND_CI_MIDI" \
+            -DHAMMOND_RTMIDI_ROOT="$RUNNER_TEMP/hammond-rtmidi" \
             -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
             2>&1 | tee standalone-ci-logs/configure.log
 
@@ -149,6 +214,8 @@ jobs:
             -DBUILD_TESTING=ON -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
             -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
             -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            -DHAMMOND_ENABLE_MIDI="$HAMMOND_CI_MIDI" \
+            -DHAMMOND_RTMIDI_ROOT="$RUNNER_TEMP/hammond-rtmidi" \
             -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
             2>&1 | tee standalone-ci-logs/configure.log
 
@@ -200,23 +267,141 @@ jobs:
             --target hammond_standalone_test_inputs --parallel 2 --verbose \
             2>&1 | tee standalone-ci-logs/build.log
 
+      - name: Verify the compiled MIDI backend and retain prepared identities
+        run: |
+          set -euo pipefail
+          if [[ "$HAMMOND_CI_MIDI" == "ON" ]]; then
+            python tools/acquire_rtmidi.py --verify-existing "$RUNNER_TEMP/hammond-rtmidi" \
+              --prepare-build-copy build-standalone/apps/standalone/hammond_rtmidi-prepared \
+              2>&1 | tee standalone-ci-logs/rtmidi-prepared-verification.log
+          fi
+          python - <<'PY'
+          import hashlib, json, os, pathlib, shutil
+          build, logs = pathlib.Path("build-standalone"), pathlib.Path("standalone-ci-logs")
+          digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          enabled = os.environ["HAMMOND_CI_MIDI"] == "ON"
+          backend = {"Linux": "ALSA", "macOS": "CoreMIDI", "Windows": "WinMM"}[os.environ["RUNNER_OS"]] if enabled else "unavailable"
+          assert backend == os.environ["HAMMOND_CI_MIDI_BACKEND"]
+          capability_path = build / "generated/standalone-capabilities.json"
+          capability = json.loads(capability_path.read_text(encoding="utf-8"))
+          assert capability["schema_version"] == 1 and capability["component"] == "Standalone"
+          assert capability["midi"]["enabled"] is enabled
+          assert capability["midi"]["backend"] == backend
+          shutil.copyfile(capability_path, logs / "standalone-capabilities.json")
+          reply = build / ".cmake/api/v1/reply"
+          index_path = sorted(reply.glob("index-*.json"))[-1]
+          index = json.loads(index_path.read_text(encoding="utf-8"))
+          model_path = reply / index["reply"]["codemodel-v2"]["jsonFile"]
+          model = json.loads(model_path.read_text(encoding="utf-8"))
+          configurations = [item for item in model["configurations"] if item["name"] == "Release"]
+          assert len(configurations) == 1, "Missing or ambiguous Release codemodel"
+          targets = {item["name"]: item for item in configurations[0]["targets"]}
+          def target(name):
+              path = reply / targets[name]["jsonFile"]
+              shutil.copyfile(path, logs / (name + "-target-Release.json"))
+              return json.loads(path.read_text(encoding="utf-8"))
+          def definitions(value):
+              return {item["define"] for group in value.get("compileGroups", [])
+                      for item in group.get("defines", [])}
+          support_definitions = definitions(target("hammond_standalone_support"))
+          assert {value for value in support_definitions if value.startswith("HAMMOND_HAS_RTMIDI=")} == {
+              "HAMMOND_HAS_RTMIDI=" + ("1" if enabled else "0")}
+          shutil.copyfile(index_path, logs / "cmake-file-api-index.json")
+          shutil.copyfile(model_path, logs / "cmake-codemodel.json")
+          record = {"enabled": enabled, "backend": backend,
+                    "capabilities": capability, "capabilities_sha256": digest(capability_path),
+                    "support_compile_definitions": sorted(support_definitions), "rtmidi": None}
+          prepared = build / "apps/standalone/hammond_rtmidi-prepared"
+          if enabled:
+              rtmidi = target("hammond_rtmidi")
+              assert rtmidi["type"] == "STATIC_LIBRARY"
+              api_definitions = {"__LINUX_ALSA__", "__MACOSX_CORE__", "__WINDOWS_MM__", "__UNIX_JACK__",
+                                 "__RTMIDI_DUMMY__", "__WEB_MIDI_API__", "__WINDOWS_UWP__", "__AMIDI__"}
+              expected_api = {"ALSA": "__LINUX_ALSA__", "CoreMIDI": "__MACOSX_CORE__", "WinMM": "__WINDOWS_MM__"}[backend]
+              actual_definitions = definitions(rtmidi)
+              assert {value.split("=", 1)[0] for value in actual_definitions} & api_definitions == {expected_api}
+              compiled_sources = [item for item in rtmidi["sources"] if "compileGroupIndex" in item]
+              assert len(compiled_sources) == 1
+              source = pathlib.Path(compiled_sources[0]["path"])
+              if not source.is_absolute():
+                  source = pathlib.Path(model["paths"]["source"]) / source
+              assert source.resolve() == (prepared / "RtMidi.cpp").resolve()
+              manifest_path = prepared / "prepared-source.json"
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              lock_path = pathlib.Path("data/dependencies/rtmidi-lock.json")
+              lock = json.loads(lock_path.read_text(encoding="utf-8"))
+              assert manifest["dependency_lock"] == lock
+              assert manifest["preparation_tool"]["sha256"] == digest(pathlib.Path("tools/acquire_rtmidi.py"))
+              for name, identity in manifest["prepared_files"].items():
+                  path = prepared / name
+                  assert path.is_file() and not path.is_symlink()
+                  assert path.stat().st_size == identity["bytes"] and digest(path) == identity["sha256"], name
+              identity = capability["midi"]["rtmidi"]
+              assert identity["version"] == lock["version"] and identity["commit"] == lock["commit"]
+              assert identity["lock_sha256"] == digest(lock_path)
+              assert identity["prepared_manifest_sha256"] == digest(manifest_path)
+              assert identity["prepared_source_sha256"] == digest(prepared / "RtMidi.cpp") == lock["patch"]["prepared_sha256"]
+              assert identity["patch_sha256"] == digest(prepared / "rtmidi-coremidi-zero-init.patch") == lock["patch"]["sha256"]
+              assert identity["license_sha256"] == digest(prepared / "LICENSE") == lock["license"]["sha256"]
+              libraries = []
+              for item in rtmidi["artifacts"]:
+                  path = build / item["path"]
+                  assert path.is_file() and not path.is_symlink() and path.stat().st_size > 0
+                  libraries.append({"path": item["path"], "bytes": path.stat().st_size, "sha256": digest(path)})
+              assert len(libraries) == 1 and pathlib.Path(libraries[0]["path"]).suffix in {".a", ".lib"}
+              for source_name, copied in (("prepared-source.json", "rtmidi-prepared-source.json"),
+                                          ("LICENSE", "LICENSE-RtMidi.txt"),
+                                          ("rtmidi-coremidi-zero-init.patch", "rtmidi-coremidi-zero-init.patch")):
+                  shutil.copyfile(prepared / source_name, logs / copied)
+              record["rtmidi"] = {"prepared_manifest": manifest,
+                                  "compile_definitions": sorted(actual_definitions), "libraries": libraries}
+          else:
+              assert capability["midi"]["rtmidi"] is None
+              assert "hammond_rtmidi" not in targets and not os.path.lexists(prepared)
+              assert not os.path.lexists(pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond-rtmidi")
+          (logs / "midi-backend.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          provenance_path = logs / "provenance.json"
+          provenance = json.loads(provenance_path.read_text(encoding="utf-8"))
+          provenance["midi"] = record
+          provenance_path.write_text(json.dumps(provenance, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+          PY
+
       - name: Run all required standalone acceptance tests
         env:
           SDL_AUDIODRIVER: dummy
           SDL_VIDEODRIVER: dummy
         run: |
           set -euo pipefail
+          ctest --test-dir build-standalone -C Release --show-only=json-v1 \
+            -R '^test_standalone_' > standalone-ci-logs/ctest-discovered.json
+          python - <<'PY'
+          import json, pathlib
+          tests = json.loads(pathlib.Path("standalone-ci-logs/ctest-discovered.json").read_text(encoding="utf-8"))
+          names = {test["name"] for test in tests["tests"]}
+          required = {"test_standalone_midi_cli", "test_standalone_drawing", "test_standalone_install",
+                      "test_standalone_midi_input", "test_standalone_midi_session", "test_standalone_midi_replay",
+                      "test_standalone_native_midi_replay",
+                      "test_standalone_midi_concurrency", "test_standalone_midi_backend",
+                      "test_standalone_midi_backend_quarantine"}
+          assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
+          print("Discovered", len(names), "standalone tests, including all required MIDI and drawing gates.", flush=True)
+          PY
           ctest --test-dir build-standalone -C Release -V --parallel 1 \
             --no-tests=error --timeout 180 -R '^test_standalone_' \
             --output-junit "$GITHUB_WORKSPACE/standalone-ci-logs/ctest.xml" \
             2>&1 | tee standalone-ci-logs/ctest.log
 
-      - name: Reverify source and dependency after acceptance
+      - name: Reverify source and dependencies after acceptance
         run: |
           set -euo pipefail
           git diff --exit-code --quiet HEAD --
           python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
             2>&1 | tee standalone-ci-logs/sdl-final-verification.log
+          if [[ "$HAMMOND_CI_MIDI" == "ON" ]]; then
+            python tools/acquire_rtmidi.py --verify-existing "$RUNNER_TEMP/hammond-rtmidi" \
+              --prepare-build-copy build-standalone/apps/standalone/hammond_rtmidi-prepared \
+              2>&1 | tee standalone-ci-logs/rtmidi-final-verification.log
+          fi
 
       - name: Stage, relocate, smoke and archive the exact installed payload
         env:
@@ -239,18 +424,36 @@ jobs:
           if windows:
               build_binary /= "Release"
           build_binary /= executable
+          enabled = os.environ["HAMMOND_CI_MIDI"] == "ON"
+          capability_path = repo / "build-standalone/generated/standalone-capabilities.json"
+          capability = json.loads(capability_path.read_text(encoding="utf-8"))
+          assert capability["midi"]["enabled"] is enabled
+          assert capability["midi"]["backend"] == os.environ["HAMMOND_CI_MIDI_BACKEND"]
           metadata = "share/hammond-b3-organ/standalone/"
           expected = {
               "bin/" + executable: build_binary,
               metadata + "STANDALONE_INSTALL.md": repo / "docs/STANDALONE_INSTALL.md",
               metadata + "STANDALONE_APP.md": repo / "docs/STANDALONE_APP.md",
               metadata + "STANDALONE_MODEL.md": repo / "docs/STANDALONE_MODEL.md",
+              metadata + "MIDI_UI_RUNBOOK.md": repo / "docs/MIDI_UI_RUNBOOK.md",
               metadata + "THIRD_PARTY_NOTICES.md": repo / "THIRD_PARTY_NOTICES.md",
               metadata + "LICENSE-SDL2.txt": temporary / "hammond-sdl2/LICENSE.txt",
               metadata + "LICENSE-DejaVu.txt": repo / "assets/standalone/fonts/LICENSE-DejaVu.txt",
               metadata + "sdl2-lock.json": repo / "data/dependencies/sdl2-lock.json",
               metadata + "font-source-manifest.json": repo / "assets/standalone/fonts/source-manifest.json",
+              metadata + "reference-source-manifest.json": repo / "assets/standalone/reference/manifest.json",
+              metadata + "atlas-reference.json": repo / "docs/design/atlas-reference.json",
+              metadata + "standalone-capabilities.json": capability_path,
           }
+          if enabled:
+              prepared = repo / "build-standalone/apps/standalone/hammond_rtmidi-prepared"
+              expected.update({
+                  metadata + "LICENSE-RtMidi.txt": prepared / "LICENSE",
+                  metadata + "rtmidi-lock.json": repo / "data/dependencies/rtmidi-lock.json",
+                  metadata + "rtmidi-prepared-source.json": prepared / "prepared-source.json",
+                  metadata + "rtmidi-coremidi-zero-init.patch": prepared / "rtmidi-coremidi-zero-init.patch",
+              })
+          assert len(expected) == (17 if enabled else 13)
           expected_directories = {
               parent.as_posix() for name in expected
               for parent in pathlib.PurePosixPath(name).parents if parent.as_posix() != "."
@@ -299,10 +502,19 @@ jobs:
           run_logged([binary, "--smoke-ms", "600", "--state", state, "--screenshot", screenshot,
                       "--diagnostics", diagnostics], "relocated-smoke.log", work, 20)
           report = json.loads(diagnostics.read_text(encoding="utf-8"))
+          assert report["schema_version"] == 2
           assert report["smoke"]["passed"] is True and report["smoke"]["duration_ms"] == 600
           assert report["runtime"]["video_driver"] == report["audio"]["driver"] == "dummy"
           assert report["runtime"]["screenshot_written"] is True and screenshot.read_bytes()[:2] == b"BM"
           assert report["audio"]["callback_count"] > 0 and report["audio"]["rendered_frames"] > 0
+          midi = report["midi"]
+          assert midi["backend_available"] is enabled and midi["backend"] == capability["midi"]["backend"]
+          assert midi["state_before_shutdown"] == midi["state_after_shutdown"] == ("closed" if enabled else "unavailable")
+          assert not midi["active_before_shutdown"] and not midi["active_after_shutdown"]
+          assert midi["quiescent_after_shutdown"] and midi["diagnostics_stable_after_shutdown"]
+          assert not midi["startup_failed"] and not midi["shutdown_failed"]
+          assert midi["requested_port"] == midi["port_name"] == "" and midi["open_failures"] == 0
+          assert midi["device"]["callback_messages"] == midi["device"]["forwarded_messages"] == 0
           assert not os.path.lexists(state), "smoke unexpectedly saved musical state"
           assert inventory(moved) == before, "execution changed installed bytes or modes"
           revision = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
@@ -310,6 +522,8 @@ jobs:
           subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
           provenance = json.loads((logs / "provenance.json").read_text(encoding="utf-8"))
           assert provenance["source_commit"] == revision
+          assert provenance["midi"]["capabilities_sha256"] == digest(capability_path)
+          assert provenance["midi"]["capabilities"] == capability
           record = {"schema_version": 1, "provenance": provenance, "payload": before,
                     "relocated_help_passed": True, "relocated_dummy_smoke_ms": 600,
                     "smoke_diagnostics_sha256": digest(diagnostics), "screenshot_sha256": digest(screenshot)}
@@ -332,14 +546,15 @@ jobs:
                   assert member.size == entry["bytes"] and format(member.mode, "04o") == entry["mode"]
           (artifacts / "SHA256SUMS").write_text(
               "".join(digest(path) + "  " + path.name + "\n" for path in (archive, inventory_path)), encoding="ascii")
-          print("Verified nine installed files, relocated help/dummy smoke, and the archived bytes.", flush=True)
+          print(f"Verified {len(expected)} installed files, MIDI {capability['midi']['backend']}, "
+                "relocated help/dummy smoke, and the archived bytes.", flush=True)
           PY
 
       - name: Retain complete source, dependency, build, test and smoke diagnostics
         if: ${{ always() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: standalone-${{ matrix.os }}-${{ runner.arch }}-release-diagnostics-${{ github.sha }}-${{ github.run_attempt }}
+          name: standalone-${{ matrix.os }}-${{ runner.arch }}-midi-${{ matrix.midi }}-release-diagnostics-${{ github.sha }}-${{ github.run_attempt }}
           retention-days: 14
           if-no-files-found: warn
           path: |
@@ -351,12 +566,16 @@ jobs:
             build-standalone/Testing/Temporary/LastTest.log
             build-standalone/Testing/Temporary/LastTestsFailed.log
             build-standalone/install_manifest_Standalone.txt
+            build-standalone/generated/standalone-capabilities.json
+            build-standalone/apps/standalone/hammond_rtmidi-prepared/prepared-source.json
+            build-standalone/apps/standalone/hammond_rtmidi-prepared/rtmidi-coremidi-zero-init.patch
+            build-standalone/apps/standalone/hammond_rtmidi-prepared/LICENSE
 
       - name: Retain the successful executable package and byte inventory
         if: ${{ success() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: standalone-${{ matrix.os }}-${{ runner.arch }}-release-package-${{ github.sha }}-${{ github.run_attempt }}
+          name: standalone-${{ matrix.os }}-${{ runner.arch }}-midi-${{ matrix.midi }}-release-package-${{ github.sha }}-${{ github.run_attempt }}
           retention-days: 14
           if-no-files-found: error
           path: standalone-artifacts/

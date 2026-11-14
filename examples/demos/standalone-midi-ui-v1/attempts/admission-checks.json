@@ -1,0 +1,23 @@
+[
+  {
+    "case": "existing-output",
+    "returncode": 2,
+    "stdout": "",
+    "stderr": "capture_standalone_reference: output directory already exists; refusing to overwrite any files\n",
+    "sentinel_sha256": "95aef1ab398cf0a71aa4299b71e6492e57e047917417cdd7622f8820cfe4a7de"
+  },
+  {
+    "case": "missing-dummy",
+    "returncode": 2,
+    "stdout": "",
+    "stderr": "usage: capture_standalone_reference.py [-h] --exe EXE --source-root\n                                       SOURCE_ROOT --build-root BUILD_ROOT\n                                       --output OUTPUT --dummy-sdl\n                                       [--expected-exe-sha256 EXPECTED_EXE_SHA256]\n                                       [--source-context SOURCE_CONTEXT]\n                                       [--timeout-seconds TIMEOUT_SECONDS]\ncapture_standalone_reference.py: error: the following arguments are required: --dummy-sdl\n",
+    "sentinel_sha256": "95aef1ab398cf0a71aa4299b71e6492e57e047917417cdd7622f8820cfe4a7de"
+  },
+  {
+    "case": "nonfinite-timeout",
+    "returncode": 2,
+    "stdout": "",
+    "stderr": "capture_standalone_reference: timeout must be finite, 4 through 60\n",
+    "sentinel_sha256": "95aef1ab398cf0a71aa4299b71e6492e57e047917417cdd7622f8820cfe4a7de"
+  }
+]

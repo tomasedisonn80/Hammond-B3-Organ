@@ -80,13 +80,18 @@ Build controls from stable verified parameter identities. A camera movement or
 editor closure must never change audio routing or clock state. Generated concept
 art is design intent; it is neither hardware dimensional evidence nor a working UI.
 
-The optional [native standalone](STANDALONE_HANDOFF.md) now implements a flat,
-resizable instrument window with actual keyboard/pointer input, both manuals,
+The optional [native standalone](MIDI_UI_RUNBOOK.md) now implements a resizable
+reference-led instrument window with keyboard/pointer input, both manuals,
 pedals, retained bank controls, percussion/expression and explicit Save/Load.
-Its [actual chapel views](../examples/demos/standalone-chapel-v1/README.md)
-retain application-rendered pixels and musical diagnostics. The dimensional
-cabinet/service workspace, native semantic accessibility, physical controller
-integration and real display/device acceptance remain separate product work.
+The current M9 continuation adds optional external MIDI through a bounded,
+separately owned input path and native device settings. Its
+[actual MIDI/UI gallery](../examples/demos/standalone-midi-ui-v1/README.md)
+retains application-rendered pixels, musical diagnostics and exact source
+identities; earlier [chapel views](../examples/demos/standalone-chapel-v1/README.md)
+remain historical evidence. The exact source cabinet artwork supplies decoration,
+while controls and their state remain live. Full reference material/perspective
+matching, cabinet/service interaction, native semantic accessibility and real
+display/controller/audio-device acceptance remain separate product work.
 Use [NEXT_STEPS.md](NEXT_STEPS.md) for the next concrete adapter/model contracts;
 the research milestones above remain the complete project plan.
 
