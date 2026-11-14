@@ -16,6 +16,7 @@
 #include <string>
 #include <string_view>
 #include <thread>
+#include <utility>
 #include <vector>
 
 namespace {
@@ -198,6 +199,40 @@ void check_saved_copy(const ControlSnapshot& controls) {
     require(same_controls(controls, restored), "saved copied controls changed on reload");
 }
 
+// The supported Apple standard library does not supply jthread/stop_token.
+// Keep the existing cooperative stop-and-join behavior with the same portable
+// atomic flag and std::thread ownership pattern as native VST3 acceptance.
+class StopToken {
+public:
+    explicit StopToken(const std::atomic<bool>& requested) noexcept : requested_(requested) {}
+    [[nodiscard]] bool stop_requested() const noexcept {
+        return requested_.load(std::memory_order_acquire);
+    }
+private:
+    const std::atomic<bool>& requested_;
+};
+
+class JoiningThread {
+public:
+    template<class Function>
+    explicit JoiningThread(Function&& function)
+        : worker_(std::forward<Function>(function), StopToken{requested_}) {}
+    JoiningThread(const JoiningThread&) = delete;
+    JoiningThread& operator=(const JoiningThread&) = delete;
+    JoiningThread(JoiningThread&&) = delete;
+    JoiningThread& operator=(JoiningThread&&) = delete;
+    ~JoiningThread() {
+        request_stop();
+        if (worker_.joinable()) worker_.join();
+    }
+    void request_stop() noexcept { requested_.store(true, std::memory_order_release); }
+    [[nodiscard]] bool joinable() const noexcept { return worker_.joinable(); }
+    void join() { worker_.join(); }
+private:
+    std::atomic<bool> requested_{false}; // Must outlive the thread and its token.
+    std::thread worker_;
+};
+
 void concurrent_publication(const RuntimeProfile& profile, double rate) {
     std::vector<ControlSnapshot> expected;
     expected.reserve(kRestores + 1);
@@ -212,7 +247,7 @@ void concurrent_publication(const RuntimeProfile& profile, double rate) {
     Counts reader_counts;
     std::exception_ptr audio_error, reader_error;
 
-    std::jthread audio([&](std::stop_token token) {
+    JoiningThread audio([&](StopToken token) {
         try {
             std::array<float, kPositiveFrames * 2> buffer{};
             while (!stop.load(std::memory_order_acquire) && !token.stop_requested()) {
@@ -242,7 +277,7 @@ void concurrent_publication(const RuntimeProfile& profile, double rate) {
             stop.store(true, std::memory_order_release);
         }
     });
-    std::jthread reader([&](std::stop_token token) {
+    JoiningThread reader([&](StopToken token) {
         try {
             SessionSnapshot previous = initial;
             std::uint64_t last_saved = 0;
