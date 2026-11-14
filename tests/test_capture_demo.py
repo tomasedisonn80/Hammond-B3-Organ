@@ -465,10 +465,18 @@ class DemoAcceptance(unittest.TestCase):
         path = self.root / "dangling"
         missing = self.root / "absent-target"
         self.make_symlink(path, missing)
+        # Windows may return an extended-length target spelling from readlink.
+        # Preservation compares the actual link with its own initial value.
+        before_target = path.readlink()
+        before_stat = path.lstat()
         with self.assertRaises(subject.DemoError):
             subject.build_demo(path)
         self.assertTrue(path.is_symlink())
-        self.assertEqual(path.readlink(), missing)
+        self.assertEqual(path.readlink(), before_target)
+        after_stat = path.lstat()
+        fields = ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns")
+        self.assertEqual(tuple(getattr(after_stat, key) for key in fields),
+                         tuple(getattr(before_stat, key) for key in fields))
         self.assertFalse(missing.exists())
 
     def test_existing_directory_symlink_does_not_modify_target(self):

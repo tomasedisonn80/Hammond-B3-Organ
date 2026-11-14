@@ -9,6 +9,7 @@ No UiModel, replay parser, Engine, or production serializer is imported.
 
 from __future__ import annotations
 
+from contextlib import contextmanager
 from copy import deepcopy
 from dataclasses import dataclass
 import hashlib
@@ -85,6 +86,15 @@ def replay(duration_ms: int, events: list[tuple[int, str]]) -> str:
     )
 
 
+def replay_prefix(source: str, duration_ms: int) -> str:
+    """End a known fixture before later events, retaining its original timings."""
+    lines = source.splitlines()
+    return f"B3UIREPLAY1\nduration_ms {duration_ms}\n" + "".join(
+        line + "\n" for line in lines[2:]
+        if not line.strip() or line.lstrip().startswith("#") or int(line.split()[0]) < duration_ms
+    )
+
+
 def unique_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
     result: dict[str, object] = {}
     for key, value in pairs:
@@ -127,6 +137,16 @@ def diagnostic_excerpt(value: dict | Path) -> str:
     else:
         content = json.dumps(value, sort_keys=True)
     return "Copied diagnostics:\n" + content[:limit] + ("\n[truncated at 65536 characters]" if len(content) > limit else "")
+
+
+@contextmanager
+def retain_workflow_failure(run: WorkflowRun, case: str):
+    """Preserve diagnostics for assertions made after invoke() has returned."""
+    try:
+        yield
+    except Exception as error:
+        raise AssertionError(f"{case}: {type(error).__name__}: {error}\n"
+                             + diagnostic_excerpt(run.diagnostics)) from error
 
 
 class NativeWorkflowAcceptance(unittest.TestCase):
@@ -292,6 +312,46 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.assertEqual(metadata["accepted_note_on_commands"], on)
         self.assertEqual(metadata["accepted_note_off_commands"], off)
 
+    def assert_command_prefixes(self, run: WorkflowRun, prefixes: list[tuple[int, tuple]]) -> None:
+        """Check literal coherent states without requiring every UI sample."""
+        metadata = run.diagnostics["replay"]
+        # These two workflows have one callback sequence epoch. Device restart
+        # cases need separate expectations and must not use this helper blindly.
+        self.assertEqual(metadata["device_starts"], 1)
+        self.assertTrue(metadata["passed"])
+        final_sequence = metadata["last_submitted_sequence"]
+        self.assertIs(type(final_sequence), int)
+        startup_sequence = final_sequence - (len(prefixes) - 1)
+        self.assertGreaterEqual(startup_sequence, 1)
+        before = metadata["before_shutdown"]
+        self.assertEqual(before["resolved_sequence"], final_sequence)
+        self.assertEqual(before["last_applied_sequence"], final_sequence)
+        self.assertEqual(before["controls"], INITIAL_CONTROLS)
+        self.assertEqual(self.holds(before), prefixes[-1][1])
+        previous = 0
+        for observation in [*metadata["observations"], before]:
+            sequence = observation["last_applied_sequence"]
+            self.assertIs(type(sequence), int)
+            self.assertIn(sequence, range(1, final_sequence + 1))
+            self.assertGreaterEqual(sequence, previous)
+            self.assertEqual(observation["resolved_sequence"], sequence)
+            submitted = observation.get("last_submitted_sequence", final_sequence)
+            self.assertIs(type(submitted), int)
+            self.assertLessEqual(sequence, submitted)
+            self.assertLessEqual(submitted, final_sequence)
+            prefix = max(0, sequence - startup_sequence)
+            earliest, expected_holds = prefixes[prefix]
+            if "elapsed_ms" in observation:
+                elapsed = observation["elapsed_ms"]
+                self.assertIs(type(elapsed), int)
+                self.assertGreaterEqual(elapsed, earliest)
+                if elapsed < prefixes[1][0]:
+                    self.assertEqual(submitted, startup_sequence)
+            self.assertEqual(observation["controls"], INITIAL_CONTROLS)
+            self.assertEqual(self.holds(observation), expected_holds)
+            previous = sequence
+        self.assertEqual(previous, final_sequence)
+
     def test_replay_cli_errors_preserve_state_and_output_sentinels(self) -> None:
         for case, expected in (("mixed-smoke", 2), ("missing-input", 1), ("malformed-input", 1)):
             with self.subTest(case=case):
@@ -337,18 +397,27 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.assertEqual(run.saved_bytes, INITIAL_STATE)
 
     def test_original_note_ownership_survives_target_and_octave_changes(self) -> None:
-        run = self.invoke((EXAMPLES / "keyboard-notes.b3ui").read_text(encoding="ascii"))
-        transitions = self.assert_hold_path(run, [
-            EMPTY_HOLDS, ((60,), (), ()), ((60,), (74,), ()), ((60,), (74,), (17,)),
-            ((), (74,), (17,)), ((), (), (17,)), EMPTY_HOLDS, ((72,), (), ()), EMPTY_HOLDS,
-        ])
-        # No target/octave change may perform one of these original releases.
-        for index, earliest in ((4, 1500), (5, 1700), (6, 1900), (8, 2300)):
-            self.assertGreaterEqual(transitions[index]["elapsed_ms"], earliest)
-        self.assert_note_commands(run, 4, 4)
-        self.assertEqual(run.diagnostics["controls"], INITIAL_CONTROLS)
-        self.assertGreater(run.diagnostics["session"]["maximum_observed_peak"], 0)
-        self.assertEqual(run.saved_bytes, INITIAL_STATE)
+        original = (EXAMPLES / "keyboard-notes.b3ui").read_text(encoding="ascii")
+        # Literal command suffix: three original owners, their three releases,
+        # then a fresh Upper press/release at the retained manual octave.
+        prefixes = [(0, EMPTY_HOLDS), (200, ((60,), (), ())), (650, ((60,), (74,), ())),
+                    (1100, ((60,), (74,), (17,))), (1500, ((), (74,), (17,))),
+                    (1700, ((), (), (17,))), (1900, EMPTY_HOLDS),
+                    (2100, ((72,), (), ())), (2300, EMPTY_HOLDS)]
+        # The original complete fixture remains unchanged. Independent final
+        # acknowledgments make every critical ownership/release state mandatory
+        # even when the full run's UI samples coalesce adjacent transitions.
+        for duration, commands, on, off in ((2600, 8, 4, 4), (1450, 3, 3, 0),
+                (1650, 4, 3, 1), (1850, 5, 3, 2), (2050, 6, 3, 3), (2250, 7, 4, 3)):
+            with self.subTest(endpoint_ms=duration):
+                source = original if duration == 2600 else replay_prefix(original, duration)
+                run = self.invoke(source)
+                with retain_workflow_failure(run, f"Target/octave endpoint {duration} ms"):
+                    self.assert_note_commands(run, on, off)
+                    self.assertEqual(run.diagnostics["controls"], INITIAL_CONTROLS)
+                    self.assertGreater(run.diagnostics["session"]["maximum_observed_peak"], 0)
+                    self.assertEqual(run.saved_bytes, INITIAL_STATE)
+                    self.assert_command_prefixes(run, prefixes[:commands + 1])
 
     def test_focus_loss_suppresses_repeat_and_duplicate_down_until_release(self) -> None:
         source = replay(2000, [
@@ -385,13 +454,23 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         events += [(900, "key_down A none 1"), (1050, "key_up A none"),
                    (1200, "key_down A none 0"), (1350, "key_up A none")]
         events += tap(1500, "Slash", "shift") + tap(1700, "Escape")
-        run = self.invoke(replay(2000, events))
-        transitions = self.assert_hold_path(run, [EMPTY_HOLDS, ((60,), (), ()), EMPTY_HOLDS, ((60,), (), ()), EMPTY_HOLDS])
-        self.assertGreaterEqual(transitions[2]["elapsed_ms"], 400)
-        self.assertLess(transitions[2]["elapsed_ms"], 750, "Opening Help must release while Help remains open")
-        self.assert_note_commands(run, 2, 1)
-        self.assertEqual(run.diagnostics["controls"], INITIAL_CONTROLS)
-        self.assertEqual(run.saved_bytes, INITIAL_STATE)
+        original = replay(2000, events)
+        # Opening Help and Escape each submit a scoped release. Return closes
+        # the first modal without another command; the suppressed original Up
+        # emits no note-off. These literal prefixes include all six commands.
+        prefixes = [(0, EMPTY_HOLDS), (200, ((60,), (), ())), (400, EMPTY_HOLDS),
+                    (1200, ((60,), (), ())), (1350, EMPTY_HOLDS),
+                    (1500, EMPTY_HOLDS), (1700, EMPTY_HOLDS)]
+        for duration, commands, on, off in ((2000, 6, 2, 1), (700, 2, 1, 0),
+                                          (1000, 2, 1, 0), (1300, 3, 2, 0)):
+            with self.subTest(endpoint_ms=duration):
+                source = original if duration == 2000 else replay_prefix(original, duration)
+                run = self.invoke(source)
+                with retain_workflow_failure(run, f"Help endpoint {duration} ms"):
+                    self.assert_note_commands(run, on, off)
+                    self.assertEqual(run.diagnostics["controls"], INITIAL_CONTROLS)
+                    self.assertEqual(run.saved_bytes, INITIAL_STATE)
+                    self.assert_command_prefixes(run, prefixes[:commands + 1])
 
     def test_edit_bank_and_sounding_bank_remain_independent(self) -> None:
         # Centers of real default-size buttons; Tab navigates their public UI
