@@ -550,7 +550,7 @@
     {
       "assignment": 43,
       "wave": 8,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/cal_w8_a43",
       "scope": "Investigate and minimally reduce bound-sized confined metadata read allocation while preserving admission and snapshots",
       "note": "43-metadata-allocation.md",
@@ -565,7 +565,7 @@
     {
       "assignment": 44,
       "wave": 8,
-      "state": "running",
+      "state": "complete",
       "agent": "/root/cal_w8_a44",
       "scope": "Independently accept size-aware confined metadata reads and unchanged dependent archive/replay/install behavior",
       "note": "44-metadata-read-acceptance.md",
@@ -591,20 +591,34 @@
     {
       "assignment": 46,
       "wave": 8,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/cal_w8_a46",
+      "scope": "Independent cross-command CLI publication, byte output and failure preservation audit",
+      "note": "46-cli-pipeline.md",
+      "owned_files": [
+        "docs/reviews/CALIBRATION_CLI_PIPELINE.md",
+        "docs/development/2026-11-13-calibration/46-cli-pipeline.md"
+      ]
     },
     {
       "assignment": 47,
       "wave": 8,
-      "state": "planned",
-      "agent": null,
-      "scope": "Select dependency-ready work from preceding accepted results.",
-      "note": null,
-      "owned_files": []
+      "state": "running",
+      "agent": "/root/cal_w8_a47",
+      "scope": "Repair actual stdout delivery and interpreter-finalization failures under independently frozen CLI semantics",
+      "note": "47-stdout-delivery.md",
+      "owned_files": [
+        "tools/capture_common.py",
+        "tools/capture_audio.py",
+        "tools/capture_corpus.py",
+        "tools/capture_job.py",
+        "tools/capture_readiness.py",
+        "tools/capture_study.py",
+        "tools/verify_capture_report.py",
+        "tools/make_capture_demo.py",
+        "docs/reviews/CALIBRATION_STDOUT_DELIVERY.md",
+        "docs/development/2026-11-13-calibration/47-stdout-delivery.md"
+      ]
     },
     {
       "assignment": 48,

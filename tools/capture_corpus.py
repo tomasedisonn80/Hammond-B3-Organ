@@ -358,7 +358,8 @@ def _read_confined_bytes(root: Path, parts: list[str], *, max_bytes: int) -> byt
         _bind_descriptor(before_path, before_fd, str(target))
         _require(0 <= before_fd.st_size <= max_bytes, str(target),
                  f"opened input byte limit exceeded: limit {max_bytes}, observed {before_fd.st_size}")
-        payload = source.read(max_bytes + 1)
+        # The admitted size bounds allocation; the extra byte still exposes growth.
+        payload = source.read(before_fd.st_size + 1)
         _require(len(payload) <= max_bytes and len(payload) == before_fd.st_size,
                  str(target), "input size changed or byte limit exceeded")
         _require(_stamp(before_fd) == _stamp(os.fstat(source.fileno())),
