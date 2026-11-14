@@ -12,9 +12,12 @@ The numerical/schema and observed portability repairs pass the combined 99-suite
 local gate, including the preserved standalone progress repair from `0085e33`.
 The bounded fixed-job study and reproducible synthetic archive now pass independent
 acceptance and their coherent source passes 16/16 focused suites. Publish the
-completed checkpoints and inspect fresh hosted outcomes. Complete exact report replay and its independent corruption
-checks, then the separate CaptureTools installation, relocation and operating
-guide. Preserve original identities, all valid outcomes and complete snapshots.
+completed checkpoints and inspect fresh hosted outcomes. Exact report replay
+and its 69-method independent corruption acceptance are complete. Finish the
+coherent integration of the independently accepted 57-file CaptureTools package
+and replay. Publish the isolated Windows demo-fixture repair and observe fresh
+hosted results. Resource profiling, composition/accounting audits and the complete
+operating handoff continue under the actual remaining assignments. Preserve original identities, all valid outcomes and complete snapshots.
 No step fits physical model
 parameters or clears an acquisition gate through synthetic fixtures.
 Existing v1 metadata validation remains valid; the new companion tools provide

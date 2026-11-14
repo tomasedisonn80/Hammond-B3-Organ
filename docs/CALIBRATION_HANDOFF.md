@@ -124,10 +124,44 @@ Its shared snapshot covers earlier inputs and sources through final return.
 The study has 61 independent acceptance methods and the demo has 43. Original
 archives and freshly executed report bytes are the inputs for subsequent replay.
 
+Retain and reproduce a complete report with fresh output paths:
+
+```sh
+python3 tools/capture_study.py --input examples/capture-demo/study.json --output /existing/new-study-report.json
+python3 tools/verify_capture_report.py --kind study --input examples/capture-demo/study.json --report /existing/new-study-report.json --output /existing/new-replay-summary.json
+```
+
+Run these separately: their expected exits are **1 and 0** under the same coherent
+sources/runtime. A matching replay preserves the study's failed engineering
+status. The [replay guide](CAPTURE_REPLAY.md) defines strict original canonical
+report admission, actual re-execution, complete byte comparison and the explicit
+preflight race boundary. Independent acceptance passes 69 methods. A replay
+match establishes no historical authenticity or physical result; source/runtime
+differences remain visible context and may produce mismatch.
+
+Install the complete source-only package with CMake 3.21 or newer and a C++
+compiler available for ordinary repository configuration:
+
+```sh
+cmake -S . -B build-capture -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DHAMMOND_BUILD_VST3=OFF -DHAMMOND_BUILD_STANDALONE=OFF
+cmake --install build-capture --config Release --component CaptureTools --prefix /existing/new-prefix
+```
+
+No native target build is needed for this component. Its 57 files live under
+`<prefix>/<CMAKE_INSTALL_DATADIR>/hammond-b3-organ/capture-tools`; the default
+data directory is `share`. Run that package's README commands or absolute tool
+paths after moving the complete package. Its runtime requires Python and the
+standard library. The [install guide](CAPTURE_TOOLS_INSTALL.md) defines the exact
+inventory, existing-destination rejection and disclosed partial-copy boundary.
+Independent installation acceptance passes 16 methods, including execution after
+private source/build deletion; the old 23-file OfflineTools regression also passes.
+
 ## Current integration and next work
 
-The reviewed first four waves are published at `779fb6e`; the
-[wave-4 report](reviews/CALIBRATION_WAVE4_INTEGRATION.md) records 11/11 focused
+The reviewed first 34 assignments are published at
+`955fc4c41f74ada094f14fbaf386c943811e9050`, tree
+`70956d0f0e125d57abfbf1aed56460c067f8ef28`, verified after fetching main.
+The earlier [wave-4 report](reviews/CALIBRATION_WAVE4_INTEGRATION.md) records 11/11 focused
 and 96/96 full SDK-free Release suites from separate frozen snapshots. The
 later job implementation shares the corpus audit core without changing its
 public API; both existing corpus suites still pass. The
@@ -140,9 +174,13 @@ distinct GitHub commits, with the exact mapping in their reports.
 Readiness, numerical and schema acceptance are complete. The
 [hosted portability follow-up](reviews/CALIBRATION_HOSTED_PORTABILITY.md) records
 the observed Release failures, the local CLI/fixture repairs and the outstanding
-hosted recheck. Complete replay and its independent corruption checks, then the
-separate CaptureTools installation and relocation acceptance, while retaining
-that platform gate. Bounded studies and the synthetic archive are implemented.
+hosted recheck. The [later completed matrix](reviews/CALIBRATION_HOSTED_RECHECK.md)
+resolves those specific earlier failures at `955fc4c`, while retaining a new
+Windows demo-fixture spelling failure. Its isolated preservation-test repair
+passes locally and needs a fresh Windows run. Replay and the 57-file package
+are independently accepted; qualify their combined source before publication.
+Resource/composition/accounting review continues in wave 7, followed by the
+remaining robustness and operational handoff assignments.
 Keep the complete original archives and failure outcomes. Later installation
 and relocation acceptance must include every imported module and preserve the
 existing offline-tools component. The session manifest is the actual accounting

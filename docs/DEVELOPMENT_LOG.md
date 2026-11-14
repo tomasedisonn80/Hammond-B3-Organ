@@ -1,5 +1,51 @@
 # Development log
 
+## 2026-11-14 — Accepted replay, installation and actual hosted review
+
+- Accepted assignments 35–39, bringing the calibration total to 39. Replay
+  passes 69 independent methods; one initial metric-record lookup error in the
+  test harness is retained with unchanged numerical expectations. Complete
+  canonical-byte equality distinguishes replay match from engineering outcome.
+- The separate 57-file CaptureTools component passes 16 independent methods,
+  including all 57 missing-input preflights, Unicode relocation with private
+  source/build deletion, standard-library-only installed execution and four
+  exact replays. The unchanged 23-file OfflineTools suite passes 2/2 through a
+  private current configuration with 95 source identities checked before reusing
+  complete qualified binaries. The initial AST-relative-import harness error is
+  retained; no production repair or inventory change was needed.
+- Assignment 39 inspected all ten completed hosted logs at `955fc4c`: nine
+  successes and one Windows Release failure. Linux/macOS Release and Linux
+  sanitizer each pass 101/101; the native standalone and VST3 matrices succeed.
+  Earlier canonical-output, alias-fixture and progress failures are resolved at
+  this exact source. See [the hosted recheck](reviews/CALIBRATION_HOSTED_RECHECK.md).
+- Windows failed one of 43 demo methods because `readlink()` returns its native
+  extended absolute target spelling. Root captures the actual target before
+  rejected generation and requires it unchanged afterward; link-presence and
+  absent-target assertions stay intact. All 43 methods pass locally in 1.223 s.
+  A reached original/repaired spelling probe reproduces the old failure and new
+  pass. No producer changed, and a new native Windows result is still required.
+- The fetched concurrent main advance `183fc9e` contains standalone chapel
+  replay/demo/audit work and an additional corpus Unicode regression. The merge
+  preserves that advance; its sole development-log insertion conflict retains
+  both complete histories. The coherent gate follows this combined source.
+
+## 2026-11-14 — Verified calibration publication through assignment 34
+
+- Published with an expected-head guard from remote `0085e33`, without force.
+  Fetched main is exactly `955fc4c41f74ada094f14fbaf386c943811e9050`, tree
+  `70956d0f0e125d57abfbf1aed56460c067f8ef28`, identical to the reviewed local
+  committed tree. Active replay/install worker files remained outside it.
+- Retained the exact tested source trees as separate reachable commits:
+  `340903a333ecfa5c684620ae8ac54e2e917a6217` for the 99-suite combined gate,
+  and `783363f627afeb07f1401fcff042d1a24df094dd` for the 16-suite study/demo
+  gate. Qualification reports map their local freeze identities explicitly.
+- Actual hosted runs are CI `43531758072`, native standalone `43531758095`
+  and native VST3 `43531758175`. Initial completed observations include Linux
+  Release and sanitizer success, native standalone Linux success and native
+  VST3 Linux/Windows success. Windows Release/standalone and all macOS results
+  were still running or queued at that observation. Assignment 39 independently
+  records exact later states and completed logs; no pending job is called pass.
+
 ## 2026-11-14 — Final standalone reviews and observed candidate failures
 
 - Accepted the completed multi-configuration installation and milestone reviews,

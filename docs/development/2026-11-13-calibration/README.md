@@ -34,8 +34,8 @@ limitations, integrates concurrent main changes and publishes reviewable commits
 
 ## Current work
 
-Waves 1–5 are complete, with **thirty-four new assignments accepted** including
-the study/demo producer and acceptance pairs. Six readers
+Waves 1–6 are complete, with **thirty-nine new assignments accepted** including
+installation and hosted review in wave 7. Six readers
 covered all 500 text pages and selected original page images; the
 [consolidated review](../../research/CALIBRATION_ATLAS_REVIEW.md) records coverage.
 The audio, corpus and comparison contracts are frozen and independently reviewed.
@@ -57,8 +57,9 @@ whole-corpus meaning. Declaration readiness passes 65 methods, retains unknown
 reasons and reads no artifact/evidence locator. Numerical review adds 19 methods;
 schema review executes 665 cases and verifies the v1 string-pattern repair.
 Bounded studies pass 61 independent methods; the deterministic 16-file synthetic
-archive passes 43. Replay and its separate acceptance complete wave 6 while the
-dependency-ready installation component begins. The combined wave-5 source
+archive passes 43. Complete-report replay passes 69 independent methods,
+completing wave 6. The separate 57-file CaptureTools installation passes 16
+independent methods, and the existing 23-file component passes its two methods. The combined wave-5 source
 passes 99/99 SDK-free Release suites; later study/demo source passes its separate
 16/16 focused gate.
 Hosted failures and subsequent portability repairs are retained in the

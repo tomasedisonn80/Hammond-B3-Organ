@@ -465,10 +465,11 @@ class DemoAcceptance(unittest.TestCase):
         path = self.root / "dangling"
         missing = self.root / "absent-target"
         self.make_symlink(path, missing)
+        original_target = path.readlink()
         with self.assertRaises(subject.DemoError):
             subject.build_demo(path)
         self.assertTrue(path.is_symlink())
-        self.assertEqual(path.readlink(), missing)
+        self.assertEqual(path.readlink(), original_target)
         self.assertFalse(missing.exists())
 
     def test_existing_directory_symlink_does_not_modify_target(self):
