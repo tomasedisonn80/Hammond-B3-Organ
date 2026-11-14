@@ -1,5 +1,11 @@
 # Development log
 
+## 2026-11-14 — Implement reference layout, live materials and inspection repair
+
+The new wide branch begins at width 1400 and height 820. At 1672×941 it deepens both full manuals to 144.12-pixel key space and moves all 25 pedals below the cabinet without overlap. The live renderer adds bounded deterministic charcoal grain, warmer caps, darker key fronts and corrected compact status spacing. Natural preset focus now leaves its lower edge open after an unchanged raster test exposed fourteen pitch-ink failures at a fractional lower-manual position. All five affected drawing/raster suites pass after the narrow repair; six geometry/preset/continuity and two inspection suites also pass. The inspector correctly distinguishes one target from plural targets, including real queued MIDI/UI owner combinations.
+
+Root observed the original native X11 app through Service/Flat navigation and ordinary joined shutdown, retaining exact diagnostics and a lossless startup frame. This does not qualify the changed-product desktop or physical devices. Native R2/R3 work and the deterministic pending rendering harness remain in progress. The actual manifest records eighteen dispatched assignments and fifteen accepted results at this checkpoint; previous sessions are not recounted. Raw initial and final raster logs are retained. About 58 GB remains free.
+
 ## 2026-11-14 — Reference refinement session baseline
 
 A new owner-requested 60-agent, ten-wave session starts at `8bd999e`; its actual workers are tracked separately. Six readers completed all 500 pages with exact source identities and selected visual review. Root acquired pinned SDL2/RtMidi and task-local CMake/Ninja, built the unchanged MIDI-off native configuration, and ran complete CTest: **147/147 passed in 145.26 seconds**. Original configure/build/test logs and source hashes are retained under `development/2026-11-14-reference-refinement/reports/`. An X11/MIDI-enabled native executable also built; actual desktop qualification remains pending. The reviewed scope advances M9 reference/desktop work and independent nominal M7 R2/R3 while preserving the dry Engine, 47 parameters and state4. Historical recovery and physical gates remain open.

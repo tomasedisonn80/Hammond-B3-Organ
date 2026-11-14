@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "assignment": "A12",
+  "agent": "/root/w02_a12_scope_setup_review",
+  "observed_at_utc": "2026-11-14T20:18:56.221145+00:00",
+  "scope": "Independent read-only setup, identity and contract audit; authored only assigned note/report. No build or test execution.",
+  "source": {
+    "starting_commit": "8bd999efc13e309b932e6ac41d72ceb7b9b80a5f",
+    "baseline_report_sha256": "aef4ff42395cd2c6973738c8c970769377e7a26db7bbf7eb719dc091b1bf225d",
+    "baseline_entries_at_final_observation": 159,
+    "tracked_entries_checked": 159,
+    "initial_audit_entries": 162,
+    "initial_ephemeral_entries": 3,
+    "untracked_entries_still_in_baseline": [],
+    "tracked_inventory_sha256": "58b6a2a6fc88ddb4c39831d2a694e7aead0dbad5432db455f99750cec58bd5fe",
+    "tracked_product_paths_compared": [
+      "CMakeLists.txt",
+      "include",
+      "src",
+      "apps",
+      "cmake",
+      "assets",
+      "data",
+      "tests",
+      "tools"
+    ],
+    "initial_audit_head": "8bd999efc13e309b932e6ac41d72ceb7b9b80a5f",
+    "initial_audit_tree": "c37da16cedbb91573476a44bd4eafe5a5e30134a",
+    "initial_tracked_mismatches": [],
+    "initial_tracked_product_diff_from_start": [],
+    "final_handoff_observation": {
+      "at_utc": "2026-11-14T20:18:56.221145+00:00",
+      "head": "d2972a5744c63219f785e118055b7992656cf8b3",
+      "tree": "a9f803c6d339a9b2e5fa9314b461b32a954f0954",
+      "committed_product_diff_from_start": [],
+      "concurrent_worktree_product_changes": [
+        "apps/standalone/UiModel.cpp",
+        "apps/standalone/UiModel.h",
+        "apps/standalone/tests/test_standalone_preset_ui.cpp",
+        "apps/standalone/tests/test_standalone_projection.cpp",
+        "apps/standalone/tests/test_standalone_ui.cpp"
+      ],
+      "current_baseline_hash_mismatches": [
+        "apps/standalone/UiModel.h",
+        "apps/standalone/UiModel.cpp",
+        "apps/standalone/tests/test_standalone_ui.cpp",
+        "apps/standalone/tests/test_standalone_preset_ui.cpp",
+        "apps/standalone/tests/test_standalone_projection.cpp"
+      ],
+      "qualification": "Concurrent wave-3 worktree edits are unqualified by the earlier unchanged-product test run; documentation-only publication is separate."
+    }
+  },
+  "baseline_result": {
+    "source": "reports/baseline-ctest.log; not rerun by A12",
+    "passed": 147,
+    "total": 147,
+    "seconds": 145.26,
+    "log_sha256": "27cd0b937976fb85743145a8a7ce4d10a8aabc4f6ea9fb7c220469639ecc747b",
+    "matches_native_binary": true
+  },
+  "toolchain": {
+    "cmake_ctest_version": "4.4.5",
+    "cmake_path": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+    "ctest_path": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+    "ninja_version": "1.13.2.git.kitware.jobserver-pipe-1",
+    "ninja_path": "/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+    "gcc": "g++ (Debian 14.2.0-19) 14.2.0"
+  },
+  "builds": {
+    "build-native": {
+      "binary": "build-native/apps/standalone/hammond_standalone",
+      "binary_bytes": 3624104,
+      "binary_sha256": "eb979f273466ffbcb7fee0b7c7e71c075ef1b8f5a001dbddaa3f96da13434976",
+      "cache_sha256": "3d8d1b65a436e297c3f755fd43fe7160c4d71d03f563b3c3c5e00419ca337e2c",
+      "release": true,
+      "midi_enabled": false,
+      "vst3_enabled": false,
+      "sdl_x11_effective": false,
+      "sdl_alsa_effective": false,
+      "ctest_discovered": 147,
+      "ctest_executed_by_A12": 0
+    },
+    "build-desktop": {
+      "binary": "build-desktop/apps/standalone/hammond_standalone",
+      "binary_bytes": 3851832,
+      "binary_sha256": "a93d6671c0602b465df5b09c47c6e18a72ae108af255d206d89c27ce9c07f095",
+      "cache_sha256": "91a84055c778f29dbffeabf8a36feba1b2ebe64d5d9c41985af583086d160b39",
+      "release": true,
+      "midi_enabled": true,
+      "vst3_enabled": false,
+      "sdl_x11_effective": true,
+      "sdl_alsa_effective": false,
+      "ctest_discovered": 147,
+      "ctest_executed_by_A12": 0
+    }
+  },
+  "dependencies": {
+    "sdl2": {
+      "version": "2.32.10",
+      "lock_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "expected_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "actual_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "worktree_clean": true,
+      "content_records_checked": 1,
+      "content_records_match": true
+    },
+    "rtmidi": {
+      "version": "6.0.0",
+      "lock_sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa",
+      "expected_commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "actual_commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "worktree_clean": true,
+      "content_records_checked": 3,
+      "content_records_match": true,
+      "prepared_source_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a",
+      "prepared_source_matches_lock": true,
+      "desktop_backend": "ALSA; compiled __LINUX_ALSA__, linked extracted libasound"
+    },
+    "vst3": {
+      "lock_sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965",
+      "version": "3.8.1",
+      "recorded_commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+      "configured": false,
+      "local_sdk_verified": false
+    },
+    "native_packages": {
+      "manifest_sha256": "74afad5ec45260a9fcd0321d151b0df2e591a6c0a4188a98486ce3beb3e1114e",
+      "archives_checked": 25,
+      "mismatches": []
+    }
+  },
+  "storage": {
+    "task_root": "/workspace/scratch/1bb6ee17ad7e",
+    "allocated_bytes": 605155328,
+    "repository_allocated_bytes": 118718464,
+    "build_native_allocated_bytes": 68059136,
+    "build_desktop_allocated_bytes": 26980352,
+    "filesystem_free_bytes": 62267076608,
+    "cleanup_performed": false
+  },
+  "references": {
+    "Hammond_B3_Leslie_Research_Atlas_500pp.pdf": {
+      "bytes": 21248265,
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+    },
+    "docs/design/atlas-cover-reference.jpg": {
+      "bytes": 412664,
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    },
+    "examples/demos/standalone-interface-preview-v2/images/play-reference-1672x941.png": {
+      "bytes": 643593,
+      "sha256": "27c1a877ac458dc6775e7fb80f3edadf7b0508f923a5ef8d6cfb5095115847cd"
+    }
+  },
+  "contracts_sha256": {
+    "docs/REFERENCE_REFINEMENT_SCOPE.md": "0b8bc11317ee155ac6793401517aa331da8dc10a5c73a605c8981cfcde5e729a",
+    "docs/REFERENCE_REFINEMENT_LAYOUT.md": "1b53a562a29585a9f94ec8d6ba0baee3daf3b94fb1ba1d406f6604b401897a56",
+    "docs/REFERENCE_REFINEMENT_MATERIALS.md": "84bcea40468070f00ebdb395cde2d274de15028b95deb266ef96049b5f01e661",
+    "docs/REFERENCE_REFINEMENT_DESKTOP.md": "2f8b279cd732d581d0b50c061c32f7c25e4fe77c1ef0247454cfd94f67ace3ab",
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+    "docs/ROTARY_PROPAGATION_CONTRACT.md": "4eeec529604465ef269ce945fc3c8a2392163793fbded0953b77ef35a1a179f3"
+  },
+  "invariants": {
+    "parameter_registry_records": 47,
+    "writer": "B3CONTROLS4",
+    "older_readers": [
+      1,
+      2,
+      3
+    ],
+    "shared_sources": 91,
+    "manuals": 2,
+    "keys_per_manual": 61,
+    "pedals": 25,
+    "presets": 24,
+    "ordinary_control_records": 68,
+    "play_focus_stops": 71,
+    "common_focus_stops": 10,
+    "preserved_scope": "Default dry Engine, note/pedal owners, source/percussion histories, all four drawbar banks; no new Engine connection"
+  },
+  "layout_calculation": {
+    "method": "Independent arithmetic from reviewed formulas; not production execution or raster evidence",
+    "reference_size": [
+      1672,
+      941
+    ],
+    "manual_y": 520.76,
+    "manual_height": 174.12,
+    "key_depth": 144.12,
+    "cabinet_x": 1124.831312,
+    "minimum_active_status_height": 116.0,
+    "minimum_active_art_height": 287.4,
+    "whole_application_header": "paint_header precedes workspace branch; common controls remain visible across all three workspaces and both presentations"
+  },
+  "findings": [
+    "No blocking setup or UI allocation hole found. Acceptance remains unexecuted for changed source.",
+    "CMake cache requests SDL_X11 ON in both builds; effective baseline configuration is OFF and desktop is ON.",
+    "Keep material before/after measurements on identical revised geometry and backend; retain a layout-only executable before paint changes.",
+    "Maintain separate actual OS press/hold/release/capture/close evidence; scripted SDL events do not establish OS input.",
+    "Wave-3 product edits appeared after the successful initial identity audit; final_handoff_observation records them separately. No changed-source acceptance is claimed."
+  ],
+  "m7_review": {
+    "status": "No blocking contract hole found; final domain/status clarifications reviewed",
+    "history_capacity": 4097,
+    "history_scope": "Borrowed immutable canonical offline anchors, not streaming R4 history",
+    "queries": "At most 13 binary-search comparisons; copied paths retain the backing-storage lifetime obligation",
+    "solver_evaluations_max": 48,
+    "solver_count_includes_endpoints": true,
+    "solver_internal_target_s": 1e-14,
+    "frozen_acceptance_residual_s": 1e-11,
+    "clarifications_resolved": [
+      "Pure geometry helper coordinates [-10,10] m, radius [0,1] m and direction +/-1 explicit",
+      "Epoch overflow checked before positive covered-through exhaustion",
+      "Same-frame history exports omit identical snapshots"
+    ],
+    "numerical_qualification": "Not executed; R2 must be independently qualified before R3 grading",
+    "remaining_gates": [
+      "R4 streaming waveform history/interpolation/audio transactions",
+      "R5 audible policy",
+      "R6 integration/device timing",
+      "Physical M7"
+    ]
+  },
+  "limitations": [
+    "No full tests rerun; CTest --show-only used only for registration discovery.",
+    "No CUA, real devices, high DPI, accessibility, physical model, publication or remote-state qualification.",
+    "Documentation/HEAD advances are separate from unchanged product-path identity."
+  ]
+}

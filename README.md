@@ -1,6 +1,6 @@
 # Hammond B-3 Organ
 
-**Current checkpoint:** all **60 actual assignments in ten waves** are accepted, the [strict record check](docs/development/2026-11-14-interface-continuation/completion-check.json) passed, and [all twelve hosted jobs](docs/development/2026-11-14-interface-continuation/reports/a58-final-head-hosted.json) passed at `a517203`. [The current handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) gives setup, the complete plan, remaining visual/desktop gates and safe recovery of the original local evidence.
+**Current checkpoint:** the new [reference refinement session](docs/development/2026-11-14-reference-refinement/README.md) has completed all 500 atlas pages and the unchanged 147/147 native baseline. Wide manuals, sidebar pedals, material refinement and singular inspection wording are implemented and targeted checks pass. Independent rotary R2/R3, changed-product desktop and a refreshed native gallery are in progress. The [live handoff](docs/development/2026-11-14-reference-refinement/CHECKPOINT.md) records actual assignments, setup and next actions; the earlier sixty-worker session remains historical.
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The current playable product is a **nominal dry organ** with an offline renderer, an optional VST3 adapter, and a native standalone application.
 
@@ -9,6 +9,8 @@ A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the reposito
 [Build and operate the instrument](docs/INTERFACE_RUNBOOK.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [Complete M0–M9 plan](docs/PLAN.md) · [Current development record](docs/development/2026-11-14-interface-continuation/README.md)
 
 ## Native interface and UI/UX design
+
+The new wide layout (at least 1400×820) gives the full manuals 144.12-pixel key depth at the reference size and places all 25 pedals beneath the cabinet. Live charcoal, key/cap lighting and compact status spacing are refined. The complete new gallery is being qualified; the source-identified v2 images below remain historical until its replacement is accepted. [Layout contract](docs/REFERENCE_REFINEMENT_LAYOUT.md) · [Material contract](docs/REFERENCE_REFINEMENT_MATERIALS.md)
 
 The visual target is the atlas's [original cover/page-409 reference](docs/design/atlas-cover-reference.jpg), retained with [exact provenance](docs/design/atlas-reference.json). The live interface uses walnut cheeks, charcoal and brass panels, a centered serif title, raised tablets and drawbar caps, adjacent drawbar racks, and a cabinet composition at wide sizes. The manuals have projected top and front faces; drawing, pointer hit regions and inset focus use shared geometry.
 

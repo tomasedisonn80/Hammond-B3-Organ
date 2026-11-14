@@ -349,9 +349,9 @@ void retained_literal_landmarks() {
     near_point(layout.manual_keys[0].front().hit.points[3], {200.0L, 604.0L}, 0.0002L);
     near_point(layout.manual_keys[0].front().hit.points[2], {229.333333333333L, 604.0L}, 0.0002L);
     CHECK(make_ui_layout(1672.0F, 941.0F, {DrawbarBank::B, DrawbarBank::B}, layout));
-    near_point(layout.manual_keys[0].front().hit.points[0], {275.1013528L, 526.76L}, 0.0003L);
-    near_point(layout.manual_keys[0].front().hit.points[3], {248.85784L, 635.24L}, 0.0003L);
-    near_point(layout.manual_keys[0].back().hit.points[2], {1123.6416L, 635.24L}, 0.0003L);
+    near_point(layout.manual_keys[0].front().hit.points[0], {272.151147256L, 542.76L}, 0.0003L);
+    near_point(layout.manual_keys[0].front().hit.points[3], {246.3362968L, 686.88L}, 0.0003L);
+    near_point(layout.manual_keys[0].back().hit.points[2], {1106.831312L, 686.88L}, 0.0003L);
 }
 
 void exact_half_open_quads() {

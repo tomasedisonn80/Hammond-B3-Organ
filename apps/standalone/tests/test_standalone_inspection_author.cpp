@@ -54,6 +54,8 @@ using Availability = InspectionAvailability;
 using Evidence = InspectionEvidence;
 using State = InspectionSnapshotState;
 constexpr InspectionRuntimeInfo current{true, true};
+constexpr std::array<std::string_view, 3> held_row_ids{
+    "contacts.upper_held", "contacts.lower_held", "contacts.pedals_held"};
 
 UiViewState ready_view() {
     UiViewState view{};
@@ -81,6 +83,15 @@ const InspectionRow& find_row(const InspectionDocument& document, std::string_vi
 
 std::string_view value(const InspectionDocument& document, std::string_view id) {
     return find_row(document, id).value.view();
+}
+
+void held_row(const InspectionDocument& document, std::string_view id,
+              std::string_view count, std::string_view unit,
+              Availability availability = Availability::Available,
+              Evidence evidence = Evidence::Software) {
+    const auto& actual = find_row(document, id);
+    CHECK(actual.value.view() == count && actual.unit == unit);
+    CHECK(actual.availability == availability && actual.evidence == evidence);
 }
 
 void bounded_text(const InspectionText& item) {
@@ -222,7 +233,9 @@ void snapshot_precedence(const RuntimeProfile& profile) {
                     auto view = ready_view();
                     view.applied.prepared = prepared;
                     view.applied.running = running;
-                    view.applied.held_keys[0][60] = true;
+                    view.applied.held_keys[0].back() = true;
+                    view.applied.held_keys[1].back() = true;
+                    view.applied.held_pedals.back() = true;
                     view.controls_pending = true;
                     const auto document = make_inspection_document(profile, view, {available, read});
                     const auto expected = !available ? State::Unavailable : !prepared ? State::Unprepared :
@@ -232,10 +245,13 @@ void snapshot_precedence(const RuntimeProfile& profile) {
                     CHECK(document.frame_clock == (available ? 12345U : 0U));
                     CHECK(document.publication_revision == (available ? 82U : 0U));
                     if (available && prepared) {
-                        CHECK(value(document, "contacts.upper_held") == "1");
+                        for (const auto id : held_row_ids) held_row(document, id, "1", "target");
                         CHECK(value(document, "controls.expression") == "1");
                     } else {
-                        CHECK(value(document, "contacts.upper_held") == "Not observed");
+                        for (const auto id : held_row_ids) {
+                            held_row(document, id, "Not observed", "targets",
+                                     Availability::NotObserved, Evidence::Unknown);
+                        }
                         CHECK(value(document, "controls.expression") == "Not observed");
                         CHECK(find_row(document, "controls.expression").availability == Availability::NotObserved);
                         CHECK(value(document, "controls.upper") == "Sound Not observed / Edit B");
@@ -249,6 +265,38 @@ void snapshot_precedence(const RuntimeProfile& profile) {
     zero_clock.applied.publication_revision = 0;
     CHECK(make_inspection_document(profile, zero_clock, current).snapshot_state == State::Current);
     CHECK(make_inspection_document(profile, zero_clock, {true, false}).snapshot_state == State::Retained);
+}
+
+void held_count_boundaries(const RuntimeProfile& profile) {
+    struct Case {
+        std::size_t division, count;
+        std::string_view text, unit;
+    };
+    constexpr std::array cases{
+        Case{0, 0, "0", "targets"}, Case{0, 1, "1", "target"},
+        Case{0, 2, "2", "targets"}, Case{0, 61, "61", "targets"},
+        Case{1, 0, "0", "targets"}, Case{1, 1, "1", "target"},
+        Case{1, 2, "2", "targets"}, Case{1, 61, "61", "targets"},
+        Case{2, 0, "0", "targets"}, Case{2, 1, "1", "target"},
+        Case{2, 2, "2", "targets"}, Case{2, 25, "25", "targets"},
+    };
+    for (const auto& item : cases) {
+        auto view = ready_view();
+        // Start at the last target so singular cases also catch truncated scans.
+        for (std::size_t index = 0; index < item.count; ++index) {
+            if (item.division < kManualCount) {
+                view.applied.held_keys[item.division][kManualKeyCount - 1 - index] = true;
+            } else {
+                view.applied.held_pedals[kPedalCount - 1 - index] = true;
+            }
+        }
+        const auto document = make_inspection_document(profile, view, current);
+        for (std::size_t division = 0; division < held_row_ids.size(); ++division) {
+            held_row(document, held_row_ids[division],
+                     division == item.division ? item.text : "0",
+                     division == item.division ? item.unit : "targets");
+        }
+    }
 }
 
 void profile_values_and_admission(RuntimeProfile profile) {
@@ -380,6 +428,9 @@ void percussion_boundaries(const RuntimeProfile& profile) {
 void invalid_control_admission(const RuntimeProfile& profile) {
     for (unsigned variant = 0; variant < 14; ++variant) {
         auto view = ready_view();
+        view.applied.held_keys[0].back() = true;
+        view.applied.held_keys[1].back() = true;
+        view.applied.held_pedals.back() = true;
         auto& controls = view.applied.controls;
         switch (variant) {
         case 0: controls.selected_banks[0] = static_cast<DrawbarBank>(255); break;
@@ -404,6 +455,7 @@ void invalid_control_admission(const RuntimeProfile& profile) {
         CHECK(value(document, "controls.banks") == "Invalid snapshot");
         CHECK(value(document, "controls.percussion") == "Invalid snapshot");
         CHECK(value(document, "controls.expression") == (variant >= 11 ? "Invalid" : "Invalid snapshot"));
+        for (const auto id : held_row_ids) held_row(document, id, "1", "target");
     }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         auto view = ready_view();
@@ -471,10 +523,12 @@ int main() {
     const auto profile = load_test_profile();
     stable_inventory_and_truth(profile);
     snapshot_precedence(profile);
+    held_count_boundaries(profile);
     profile_values_and_admission(profile);
     applied_desired_edit_and_held(profile);
     percussion_boundaries(profile);
     invalid_control_admission(profile);
     ownership_determinism_and_allocation(profile);
-    std::cout << "Inspection author checks passed: bounded copied facts, truthful models and observations.\n";
+    std::cout << "Inspection author checks passed: bounded copied facts, held-count units, "
+                 "truthful models and observations.\n";
 }

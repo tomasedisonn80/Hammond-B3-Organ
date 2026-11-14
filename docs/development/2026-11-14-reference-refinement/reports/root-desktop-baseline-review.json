@@ -1,0 +1,77 @@
+{
+  "published_checkpoint": "d2972a5744c63219f785e118055b7992656cf8b3",
+  "product_basis": "8bd999efc13e309b932e6ac41d72ceb7b9b80a5f",
+  "binary_sha256": "a93d6671c0602b465df5b09c47c6e18a72ae108af255d206d89c27ce9c07f095",
+  "actual_os_actions": [
+    "Launched installed xfwm4 to supply window focus/decorations",
+    "Launched native organ at1280x900 with X11/software and explicit dummy audio",
+    "F6 selected Service; observed current copied-state inspector",
+    "A key press, F4 returned Play, F7 selected Flat; observed native Flat surface",
+    "Alt+F4 closed the window and returned to Terminal"
+  ],
+  "runtime": {
+    "video_driver": "x11",
+    "renderer": "software",
+    "sdl_version": "2.32.10",
+    "window_width": 1280,
+    "window_height": 900,
+    "drawable_width": 1280,
+    "drawable_height": 900,
+    "rendered_images": 4489,
+    "screenshot_written": true,
+    "screenshot_while_held": false
+  },
+  "audio_failures": {
+    "render_failures": 0,
+    "format_failures": 0,
+    "overrange_failures": 0,
+    "nonfinite_failures": 0
+  },
+  "joined_state": {
+    "snapshot_available": true,
+    "prepared": true,
+    "running_after_shutdown": false,
+    "sample_rate": 48000,
+    "frame_clock": 12637696,
+    "publication_revision": 49372,
+    "resolved_sequence": 7,
+    "last_applied_sequence": 6,
+    "recovery_count": 0,
+    "queue_overflows": 0,
+    "rejected_commands": 0,
+    "discarded_commands": 1,
+    "fault_flags": 0,
+    "held_after_shutdown": false,
+    "maximum_observed_peak": 0.07743412256240845
+  },
+  "midi_shutdown_failed": false,
+  "errors": {
+    "count": 0,
+    "last": ""
+  },
+  "startup_screenshot": {
+    "path": "docs/development/2026-11-14-reference-refinement/reports/desktop-baseline-startup.png",
+    "sha256": "3796a6ad17d22f03738bd7744080b84b433c4609d96765f95036c71159e9af80",
+    "source_bmp_sha256": "ead24169fd6ccee2b0a006cf831c7aa7b28385e84ee3617065505265d479a945",
+    "rgb_sha256": "b0f7dda86280c06f5ef8fb3e799f4f0882d879d906b542810988c31d2af0465d",
+    "dimensions": [
+      1280,
+      900
+    ],
+    "painted_inspection": {
+      "snapshot_available": true,
+      "snapshot_read_succeeded": true,
+      "snapshot_state": "current",
+      "controls_pending": true,
+      "frame_clock": 0,
+      "publication_revision": 4
+    }
+  },
+  "limits": [
+    "Baseline product only; changed source requires new qualification",
+    "No physical audio or MIDI device",
+    "No held-across-navigation, resize or persistent pointer capture qualification in this baseline journey",
+    "Retained PNG is actual native render captured at startup, not a desktop screenshot; CUA desktop images remain conversation observations"
+  ],
+  "notable_observation": "Actual startup screenshot reported controls_pending=true at frame0/revision4; preserve as observed whole-app pending evidence, not a deterministic pending capture protocol."
+}

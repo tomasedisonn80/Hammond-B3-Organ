@@ -2,9 +2,13 @@
 
 ## Reference refinement and nominal propagation continuation
 
-A new [session](development/2026-11-14-reference-refinement/README.md) starts at `8bd999e` under the [reviewed scope](REFERENCE_REFINEMENT_SCOPE.md). Six new actual readers completed all 500 atlas pages. The unchanged Linux native baseline passed **147/147** CTest suites in 145.26 seconds; [retained evidence](development/2026-11-14-reference-refinement/reports/baseline.json) identifies its source, build and limitations. Wave 2 is freezing wide-layout/material, desktop, inspection and independent nominal M7 R2/R3 contracts. No new product or fidelity completion is claimed at this checkpoint. Follow the new [checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and actual manifest; prior results below remain historical.
+The [new session](development/2026-11-14-reference-refinement/README.md) starts at `8bd999e` under the [reviewed scope](REFERENCE_REFINEMENT_SCOPE.md). Six actual readers completed all 500 atlas pages. The unchanged Linux native baseline passed **147/147** CTest suites in 145.26 seconds. Its first published records checkpoint is `d2972a5`.
 
-## Current native interface continuation
+Wave 3 now implements the accepted wide sidebar layout: both complete manuals have 144.12-pixel key depth at 1672×941, and all 25 pedals sit beneath the disjoint cabinet panel. Charcoal surfaces, cap/key fronts and bounded grain are refined; Flat behavior and musical identities remain intact. Singular inspection text now reads **1 target**. Six model/continuity, two inspection and five drawing/raster suites pass. The original 14-case preset-ink regression and its narrow focus repair are retained in A14's evidence. Current accepted implementation notes are [A13](development/2026-11-14-reference-refinement/notes/A13-layout-implementation.md), [A14](development/2026-11-14-reference-refinement/notes/A14-material-implementation.md) and [A15](development/2026-11-14-reference-refinement/notes/A15-inspection-implementation.md).
+
+A genuine native X11 baseline window was opened, navigated through Service and Flat, and closed normally with cleared held state and a stopped Session. Changed-product desktop, final gallery and timing acceptance remain to execute. Independent rotary R2 qualification and R3 primitives plus a deterministic real-Session pending rendering harness are in progress. Follow the [live checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and actual manifest; no claim of all sixty new assignments, literal 1:1 equality, physical sound or R4 integration is made yet.
+
+## Historical interface continuation through a517203
 
 The [current recovery handoff](INTERFACE_RECOVERY_HANDOFF.md) contains setup,
 source identities, the whole M0–M9 plan and concrete next gates. Six actual

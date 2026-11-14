@@ -1,4 +1,5 @@
 #include "InspectionModel.h"
+#include "MidiInput.h"
 #include "TestSupport.h"
 
 #include "hammond/Engine.h"
@@ -27,6 +28,8 @@ using Availability = InspectionAvailability;
 using Evidence = InspectionEvidence;
 using State = InspectionSnapshotState;
 constexpr InspectionRuntimeInfo copied_now{true, true};
+constexpr std::array<std::string_view, 3> held_row_ids{
+    "contacts.upper_held", "contacts.lower_held", "contacts.pedals_held"};
 constexpr std::string_view bank_memory =
     "UA 012345678 / UB 876543210 / LA 135702468 / LB 864207531";
 constexpr std::string_view declared_digest =
@@ -73,6 +76,13 @@ const InspectionRow& lookup(const InspectionDocument& document, std::string_view
 
 std::string_view value(const InspectionDocument& document, std::string_view id) {
     return lookup(document, id).value.view();
+}
+
+void held_row(const InspectionDocument& document, std::string_view id,
+              std::string_view count, std::string_view unit) {
+    const auto& row = lookup(document, id);
+    CHECK(row.value.view() == count && row.unit == unit);
+    CHECK(row.availability == Availability::Available && row.evidence == Evidence::Software);
 }
 
 void same_document(const InspectionDocument& left, const InspectionDocument& right) {
@@ -196,8 +206,90 @@ void missing_applied_values(const InspectionDocument& document) {
         CHECK(value(document, id) == "Not observed");
         CHECK(lookup(document, id).availability == Availability::NotObserved);
     }
+    for (const auto id : held_row_ids) {
+        CHECK(lookup(document, id).unit == "targets");
+        CHECK(lookup(document, id).evidence == Evidence::Unknown);
+    }
     CHECK(value(document, "controls.upper").starts_with("Sound Not observed / Edit "));
     CHECK(value(document, "controls.lower").starts_with("Sound Not observed / Edit "));
+}
+
+void held_units_from_real_owners(const RuntimeProfile& profile) {
+    Session session;
+    UiModel ui;
+    MidiInput midi;
+    CHECK(session.prepare(profile, {48000.0, 64, 819, 0}) == SessionStatus::Ok);
+    CHECK(session.start() == SessionStatus::Ok);
+    CHECK(midi.begin_epoch());
+    ui.observe(read(session));
+
+    const auto expect = [&](std::size_t active, std::string_view count, std::string_view unit) {
+        const auto document = inspect(profile, ui.view());
+        CHECK(document.snapshot_state == State::Current);
+        CHECK(ui.view().applied.fault_flags == 0);
+        CHECK(ui.view().applied.last_core_status == Status::Ok);
+        for (std::size_t division = 0; division < held_row_ids.size(); ++division) {
+            held_row(document, held_row_ids[division], division == active ? count : "0",
+                     division == active ? unit : "targets");
+        }
+    };
+    const auto midi_note = [&](std::size_t division, std::uint8_t pitch, bool on) {
+        // Default wire channels 1/2/3 map to distinct MIDI owner namespaces.
+        // Decode real packets and queue the correct manual/pedal event type.
+        const MidiPacket packet{{static_cast<std::uint8_t>((on ? 0x90 : 0x80) | division),
+                                 pitch, static_cast<std::uint8_t>(on ? 127 : 0)}, 3, 0};
+        const auto decoded = midi.decode(packet);
+        CHECK(decoded.status == MidiDecodeStatus::Action);
+        const auto* command = std::get_if<SessionCommand>(&decoded.action);
+        CHECK(command != nullptr);
+        const auto* input = std::get_if<PerformanceInputEvent>(command);
+        CHECK(input != nullptr);
+        CHECK(division < kManualCount ? std::holds_alternative<HostNoteEvent>(*input) :
+                                      std::holds_alternative<PedalNoteEvent>(*input));
+        submit(session, ui, *command);
+    };
+
+    constexpr std::array<std::string_view, 3> maximum_counts{"61", "61", "25"};
+    for (std::size_t division = 0; division < held_row_ids.size(); ++division) {
+        expect(division, "0", "targets");
+        CHECK(ui.activate({UiControlKind::KeyboardTarget, Manual::Upper, DrawbarBank::A,
+                           static_cast<std::uint8_t>(division)}).count == 0);
+        const auto shared_pitch = static_cast<std::uint8_t>(division < kManualCount ? 60 : 36);
+        for (const bool release_ui_first : {true, false}) {
+            submit(session, ui, ui.key({UiKey::A, true}));
+            publish(session, ui);
+            expect(division, "1", "target");
+            midi_note(division, shared_pitch, true);
+            publish(session, ui);
+            expect(division, "1", "target"); // Two owners, one physical target.
+            if (release_ui_first) submit(session, ui, ui.key({UiKey::A, false}));
+            else midi_note(division, shared_pitch, false);
+            publish(session, ui);
+            expect(division, "1", "target"); // The other owner still holds it.
+            if (release_ui_first) midi_note(division, shared_pitch, false);
+            else submit(session, ui, ui.key({UiKey::A, false}));
+            publish(session, ui);
+            expect(division, "0", "targets");
+        }
+
+        const auto last_pitch = static_cast<std::uint8_t>(division < kManualCount ? 96 : 60);
+        midi_note(division, 36, true);
+        midi_note(division, last_pitch, true);
+        publish(session, ui);
+        expect(division, "2", "targets");
+        for (std::uint8_t pitch = 37; pitch < last_pitch; ++pitch) midi_note(division, pitch, true);
+        publish(session, ui);
+        expect(division, maximum_counts[division], "targets");
+        for (std::uint8_t pitch = 36; pitch <= last_pitch; ++pitch) midi_note(division, pitch, false);
+        publish(session, ui);
+        expect(division, "0", "targets");
+    }
+    midi.end_epoch();
+    CHECK(session.stop() == SessionStatus::Ok);
+    ui.observe(read(session));
+    const auto stopped = inspect(profile, ui.view());
+    CHECK(stopped.snapshot_state == State::Stopped);
+    for (const auto id : held_row_ids) held_row(stopped, id, "0", "targets");
 }
 
 void inventory_from_real_publication(const RuntimeProfile& profile, const UiViewState& view) {
@@ -384,11 +476,11 @@ void lifecycle_and_failed_reads(const RuntimeProfile& profile) {
     // An actual Session changed after this copy. Formatting cannot discover it.
     same_document(retained, inspect(profile, retained_view, {true, false}));
     CHECK(retained.snapshot_state == State::Retained);
-    CHECK(value(retained, "contacts.upper_held") == "1");
+    held_row(retained, "contacts.upper_held", "1", "target");
     ui.observe(read(session));
     const auto stopped = inspect(profile, ui.view());
     CHECK(stopped.snapshot_state == State::Stopped);
-    CHECK(value(stopped, "contacts.upper_held") == "0");
+    for (const auto id : held_row_ids) held_row(stopped, id, "0", "targets");
     CHECK(stopped.frame_clock == retained.frame_clock);
     CHECK(stopped.publication_revision > retained.publication_revision);
     const auto unavailable = inspect(profile, retained_view, {false, true});
@@ -404,6 +496,9 @@ void lifecycle_and_failed_reads(const RuntimeProfile& profile) {
     limited_ui.observe(read(limited));
     submit(limited, limited_ui, limited_ui.load_controls(distinct_controls()));
     submit(limited, limited_ui, manual_note(HostNoteKind::On, 0, 60, 701));
+    submit(limited, limited_ui, manual_note(HostNoteKind::On, 1, 60, 702));
+    submit(limited, limited_ui, SessionCommand{PerformanceInputEvent{PedalNoteEvent{
+        0, PedalNoteKind::On, 0, 0, PedalId{1}, 127, 703}}});
     publish(limited, limited_ui, 7);
     auto last = limited_ui.view().applied;
     const auto before = bytes_of(last);
@@ -417,7 +512,7 @@ void lifecycle_and_failed_reads(const RuntimeProfile& profile) {
     CHECK(failed.snapshot_state == State::Retained && failed.controls_pending);
     CHECK(failed.frame_clock == 7 && failed.publication_revision == 6);
     CHECK(value(failed, "controls.expression") == "0.3125");
-    CHECK(value(failed, "contacts.upper_held") == "1");
+    for (const auto id : held_row_ids) held_row(failed, id, "1", "target");
 
     Session stopped_limited({std::numeric_limits<std::uint64_t>::max(), 1});
     UiModel stopped_ui;
@@ -560,8 +655,10 @@ int main() {
     CHECK(actual_default.contact_mode() == ContactMode::Ideal);
     CHECK(contact_model_id(actual_default.contact_mode()) == kIdealContactModelId);
     CHECK(make_legacy_console_model().contacts.mode != make_nominal_console_model().contacts.mode);
+    held_units_from_real_owners(profile);
     lifecycle_and_failed_reads(profile);
     defensive_copies_and_lifetime(profile);
     std::cout << "Inspection independent acceptance passed: 34 source-qualified rows, actual Session commands, "
-                 "four selections per manual, real failed reads, owned immutable copies and finite admission.\n";
+                 "three-division UI/MIDI ownership and count units, four selections per manual, "
+                 "real failed reads, owned immutable copies and finite admission.\n";
 }

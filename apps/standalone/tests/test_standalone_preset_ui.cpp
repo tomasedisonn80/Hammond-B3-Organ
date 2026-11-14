@@ -175,11 +175,11 @@ void geometry_and_occlusion() {
     constexpr std::array<Anchor, 7> anchors{{
         {960, 700, 156, 82, 52, false, false},
         {1280, 900, 168, 138, 76, false, true},
-        {1672, 941, 158.9619F, 138.48F, 76.48F, true, true},
+        {1672, 941, 156.4402968F, 174.12F, 112.12F, true, true},
         {1399, 819, 168, 115.32F, 85.32F, false, false},
         {1400, 819, 156, 115.32F, 85.32F, true, false},
         {1399, 820, 168, 115.6F, 53.6F, false, true},
-        {1400, 820, 156, 104.6F, 42.6F, true, true}}};
+        {1400, 820, 156, 135.4F, 73.4F, true, true}}};
     UiModel model;
     for (const auto& anchor : anchors) {
         CHECK(model.resize(anchor.width, anchor.height));
@@ -187,6 +187,7 @@ void geometry_and_occlusion() {
         CHECK(layout.control_count == 68);
         CHECK(layout.show_cabinet == anchor.cabinet);
         CHECK(layout.bank_controls_in_cheeks == anchor.cheeks);
+        CHECK(layout.sidebar_pedals == (anchor.cabinet && anchor.cheeks));
         unsigned preset_count = 0;
         for (const auto& control : layout.controls) {
             CHECK(control.id.kind != UiControlKind::SoundingBank);

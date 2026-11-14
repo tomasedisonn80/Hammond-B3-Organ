@@ -420,21 +420,32 @@ bool make_ui_layout(float width, float height,
     layout.presentation = presentation;
     layout.show_cabinet = width >= 1400.0F;
     layout.bank_controls_in_cheeks = height >= 820.0F;
+    layout.sidebar_pedals = layout.show_cabinet && layout.bank_controls_in_cheeks;
     const bool dense = !layout.bank_controls_in_cheeks;
     const float margin = layout.show_cabinet ? std::clamp(width * 0.043F, 48.0F, 72.0F) : 16.0F;
     const float gap = dense || !layout.show_cabinet ? 8.0F : 10.0F;
     const float content_width = width - 2.0F * margin;
-    const float cabinet_width = layout.show_cabinet ? content_width * 0.30F : 0.0F;
+    const float cabinet_width = layout.show_cabinet ?
+        content_width * (layout.sidebar_pedals ? 0.311F : 0.30F) : 0.0F;
     const float player_width = layout.show_cabinet ? content_width - cabinet_width - gap : content_width;
-    const float header_height = dense || !layout.show_cabinet ? 82.0F : 90.0F;
+    const float header_height = layout.sidebar_pedals ? 100.0F :
+        (dense || !layout.show_cabinet ? 82.0F : 90.0F);
     const float performance_height = std::clamp(76.0F + 0.12F * (height - 700.0F), 76.0F, 110.0F);
-    const float rack_height = std::clamp(168.0F + 0.24F * (height - 700.0F), 168.0F, 236.0F);
-    const float pedal_height = std::clamp(58.0F + 0.08F * (height - 700.0F), 58.0F, 86.0F);
+    const float rack_height = std::clamp(168.0F + 0.24F * (height - 700.0F), 168.0F, 236.0F) +
+        (layout.sidebar_pedals ? 6.0F : 0.0F);
+    const float pedal_height = layout.sidebar_pedals ?
+        std::clamp(86.0F + 0.08F * (height - 700.0F), 86.0F, 114.0F) :
+        std::clamp(58.0F + 0.08F * (height - 700.0F), 58.0F, 86.0F);
     constexpr float toolbar_height = 28.0F;
     constexpr float footer_height = 36.0F;
     const float registration_width = (player_width - gap) / 2.0F;
-    const float manual_height = (height - 32.0F - header_height - performance_height - rack_height -
-                                toolbar_height - pedal_height - footer_height - 7.0F * gap) / 2.0F;
+    // Sidebar pedals share the manuals' bottom edge instead of consuming a
+    // full player-width row. Preserve the original arithmetic outside this branch.
+    const float manual_height = layout.sidebar_pedals ?
+        (height - 32.0F - header_height - performance_height - rack_height -
+         toolbar_height - footer_height - 6.0F * gap) / 2.0F :
+        (height - 32.0F - header_height - performance_height - rack_height -
+         toolbar_height - pedal_height - footer_height - 7.0F * gap) / 2.0F;
     layout.header = {margin, 16.0F, content_width, header_height};
     layout.performance_panel = {margin, layout.header.y + header_height + gap, player_width, performance_height};
     const float rack_top = layout.performance_panel.y + performance_height + gap;
@@ -453,20 +464,31 @@ bool make_ui_layout(float width, float height,
             margin + 8.0F, y + (dense ? 22.0F : 54.0F),
             rail_width - 16.0F, manual_height - (dense ? 30.0F : 62.0F)};
     }
-    layout.pedal_panel = {margin, manual_top + 2.0F * (manual_height + gap), player_width, pedal_height};
-    layout.footer = {margin, layout.pedal_panel.y + pedal_height + gap, content_width, footer_height};
+    if (layout.sidebar_pedals) {
+        layout.footer = {margin, height - 52.0F, content_width, footer_height};
+        layout.pedal_panel = {margin + player_width + gap, layout.footer.y - gap - pedal_height,
+                              cabinet_width, pedal_height};
+    } else {
+        layout.pedal_panel = {margin, manual_top + 2.0F * (manual_height + gap), player_width, pedal_height};
+        layout.footer = {margin, layout.pedal_panel.y + pedal_height + gap, content_width, footer_height};
+    }
     layout.workspace_panel = {margin, layout.performance_panel.y, content_width,
                               layout.footer.y - gap - layout.performance_panel.y};
     if (layout.show_cabinet) {
+        const float cabinet_bottom = layout.sidebar_pedals ? layout.pedal_panel.y - gap :
+            layout.pedal_panel.y + pedal_height;
         layout.cabinet_panel = {margin + player_width + gap, layout.performance_panel.y, cabinet_width,
-                               layout.pedal_panel.y + pedal_height - layout.performance_panel.y};
+                               cabinet_bottom - layout.performance_panel.y};
         const auto& cabinet = layout.cabinet_panel;
-        // Keep the reference crop's 466:397 aspect and normal destination, but
-        // leave a readable status card at extreme short/wide window aspects.
-        const float art_height = std::min((cabinet.width - 24.0F) * 397.0F / 466.0F,
-                                          cabinet.height - 38.0F - 176.0F);
+        // Keep the reference crop's 466:397 aspect. The sidebar reserve leaves
+        // 61 px above the status card, at least 116 px inside it and 14 px below.
+        const float art_top = layout.sidebar_pedals ? 48.0F : 38.0F;
+        const float art_inset = layout.sidebar_pedals ? 16.0F : 24.0F;
+        const float art_reserve = layout.sidebar_pedals ? 191.0F : 176.0F;
+        const float art_height = std::min((cabinet.width - art_inset) * 397.0F / 466.0F,
+                                          cabinet.height - art_top - art_reserve);
         const float art_width = art_height * 466.0F / 397.0F;
-        layout.cabinet_art = {cabinet.x + (cabinet.width - art_width) / 2.0F, cabinet.y + 38.0F,
+        layout.cabinet_art = {cabinet.x + (cabinet.width - art_width) / 2.0F, cabinet.y + art_top,
                               art_width, art_height};
     }
 

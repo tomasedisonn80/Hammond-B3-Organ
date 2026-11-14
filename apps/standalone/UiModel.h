@@ -175,6 +175,7 @@ struct UiLayout {
     float width{kUiReferenceWidth}, height{kUiReferenceHeight};
     bool show_cabinet{false};
     bool bank_controls_in_cheeks{false};
+    bool sidebar_pedals{false}; // Wide/tall allocation; short/wide windows retain the lower pedal row.
     UiRect header{};
     std::array<UiRect, kManualCount> registration_panels{};
     UiRect performance_panel{};

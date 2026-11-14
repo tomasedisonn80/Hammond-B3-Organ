@@ -2,9 +2,9 @@
 
 ## Active reference refinement and propagation work
 
-Continue the [new session checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and [scope](REFERENCE_REFINEMENT_SCOPE.md). Full atlas reading and unchanged 147/147 native baseline are complete. Freeze the wide pedal/sidebar and material contracts, implement and independently verify those changes, repair singular inspection wording, retain actual pending and desktop observations, then qualify native rotary R2/R3 under the existing numerical contract. Preserve the dry Engine and all parameter/state identities. Refresh actual README captures and all handoff/setup records, publish coherent accepted work to main and verify its exact revision. Historical missing raw evidence remains a separate recovery task; do not fabricate it or block independent useful work.
+Continue the [live checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and [scope](REFERENCE_REFINEMENT_SCOPE.md). Full atlas reading, the unchanged 147/147 native baseline, reviewed contracts, wide layout/material implementation and singular inspection repair are complete. Finish the real-Session pending harness and native R2/R3 implementation/independent qualification. Independently review the new geometry, materials, input ownership and performance, then execute the changed-product desktop journey and eight-view native gallery. Refresh README, setup, current status and handoff with those actual results. Preserve the dry Engine and all parameter/state identities, complete sixty actual assignments in ten waves, and publish accepted work to main with exact revision verification. Historical missing raw evidence remains a separate recovery task.
 
-## Current interface continuation
+## Historical interface continuation next steps
 
 Resume the [current handoff](INTERFACE_RECOVERY_HANDOFF.md),
 [session](development/2026-11-14-interface-continuation/README.md) and

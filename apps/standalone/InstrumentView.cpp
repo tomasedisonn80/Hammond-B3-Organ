@@ -28,6 +28,14 @@ constexpr UiColor kPresetPending{235, 169, 73};
             std::max(0.0F, bounds.height - 2.0F * amount)};
 }
 
+[[nodiscard]] bool material_surface(UiRect bounds) noexcept {
+    return std::isfinite(bounds.x) && std::isfinite(bounds.y) &&
+        std::isfinite(bounds.width) && std::isfinite(bounds.height) &&
+        bounds.width > 0.0F && bounds.height > 0.0F &&
+        bounds.width <= kUiMaximumDimension && bounds.height <= kUiMaximumDimension &&
+        std::isfinite(bounds.x + bounds.width) && std::isfinite(bounds.y + bounds.height);
+}
+
 [[nodiscard]] UiColor shade(UiColor value, int change) noexcept {
     const auto component = [change](std::uint8_t channel) {
         return static_cast<std::uint8_t>(std::clamp(static_cast<int>(channel) + change, 0, 255));
@@ -114,7 +122,7 @@ void screw(Drawing& drawing, float x, float y) {
 }
 
 void panel(Drawing& drawing, UiRect bounds, bool screws = true, bool flat = false) {
-    if (!(bounds.width > 0.0F && bounds.height > 0.0F)) return;
+    if (!material_surface(bounds)) return;
     if (flat) {
         drawing.rect(bounds, {27, 29, 28});
         drawing.outline(bounds, {82, 79, 67});
@@ -124,28 +132,47 @@ void panel(Drawing& drawing, UiRect bounds, bool screws = true, bool flat = fals
     drawing.rounded(bounds, 6.0F, {7, 7, 7});
     drawing.rounded(inset(bounds, 1.0F), 5.0F, kMetalEdge);
     drawing.rounded(inset(bounds, 2.0F), 4.0F, {14, 14, 14});
-    drawing.gradient(inset(bounds, 4.0F), {35, 34, 33}, {18, 18, 18});
+    drawing.gradient(inset(bounds, 4.0F), {43, 41, 38}, {21, 22, 21});
     // Restrained procedural grain belongs to the live charcoal surface, not
-    // to a stretched image of controls. It never changes their shared bounds.
-    const auto rows = static_cast<int>(std::max(0.0F, bounds.height - 14.0F));
-    const auto columns = static_cast<int>(std::max(0.0F, bounds.width - 14.0F));
-    const int grain_step = std::max(4, static_cast<int>(std::max(bounds.width, bounds.height) / 180.0F));
-    for (int row = 1; row < rows; row += grain_step) {
-        for (int column = 1; column < columns; column += grain_step * 3) {
+    // to a stretched image of controls. Its local-coordinate lattice is fixed
+    // in time, leaves room for both marks and emits at most 2,048 point pairs.
+    // Over the deck gradient, these alpha ranges perturb any RGB channel by
+    // at most eight levels, including integer blending roundoff.
+    constexpr std::size_t maximum_grain_pairs = 2048;
+    const auto rows = static_cast<int>(std::max(0.0F, std::floor(bounds.height - 16.0F)));
+    const auto columns = static_cast<int>(std::max(0.0F, std::floor(bounds.width - 21.0F)));
+    int grain_step = std::max(4, static_cast<int>(std::ceil(std::sqrt(
+        static_cast<double>(rows) * static_cast<double>(columns) /
+        (3.0 * static_cast<double>(maximum_grain_pairs))))));
+    const auto pair_count = [rows, columns](int step) {
+        const auto row_count = rows > 1 ? static_cast<std::size_t>((rows - 2) / step + 1) : 0;
+        const auto column_count = columns > 1 ? static_cast<std::size_t>((columns - 2) / (step * 3) + 1) : 0;
+        return row_count * column_count;
+    };
+    while (pair_count(grain_step) > maximum_grain_pairs) ++grain_step;
+    std::size_t grain_pairs = 0;
+    for (int row = 1; row < rows && grain_pairs < maximum_grain_pairs; row += grain_step) {
+        for (int column = 1; column < columns && grain_pairs < maximum_grain_pairs; column += grain_step * 3) {
             const auto grain = static_cast<std::uint32_t>(row) * 1973U +
                 static_cast<std::uint32_t>(column) * 9277U;
             const float x = bounds.x + 7.0F + static_cast<float>(column) +
                 static_cast<float>((grain >> 5U) % 3U);
             const float y = bounds.y + 7.0F + static_cast<float>(row);
             drawing.rect({x, y, 1.0F, 1.0F},
-                         {231, 223, 208, static_cast<std::uint8_t>(3U + grain % 5U)});
-            drawing.rect({x + 3.0F, y + 1.0F, 2.0F, 1.0F}, {0, 0, 0, 17});
+                         {212, 205, 190, static_cast<std::uint8_t>(6U + grain % 5U)});
+            drawing.rect({x + 3.0F, y + 1.0F, 2.0F, 1.0F},
+                         {0, 0, 0, static_cast<std::uint8_t>(10U + (grain >> 3U) % 9U)});
+            ++grain_pairs;
         }
     }
     drawing.line(bounds.x + 7.0F, bounds.y + 3.0F,
-                 bounds.x + bounds.width - 7.0F, bounds.y + 3.0F, {147, 133, 111, 104});
+                 bounds.x + bounds.width - 7.0F, bounds.y + 3.0F, {147, 133, 111, 120});
+    drawing.line(bounds.x + 3.0F, bounds.y + 7.0F,
+                 bounds.x + 3.0F, bounds.y + bounds.height - 7.0F, {123, 112, 94, 92});
     drawing.line(bounds.x + 7.0F, bounds.y + bounds.height - 3.0F,
                  bounds.x + bounds.width - 7.0F, bounds.y + bounds.height - 3.0F, {7, 8, 7});
+    drawing.line(bounds.x + bounds.width - 3.0F, bounds.y + 7.0F,
+                 bounds.x + bounds.width - 3.0F, bounds.y + bounds.height - 7.0F, {7, 8, 7});
     if (screws) {
         for (const float x : {bounds.x + 7.0F, bounds.x + bounds.width - 13.0F}) {
             screw(drawing, x, bounds.y + 7.0F);
@@ -155,6 +182,7 @@ void panel(Drawing& drawing, UiRect bounds, bool screws = true, bool flat = fals
 }
 
 void wood(Drawing& drawing, UiRect bounds) {
+    if (!material_surface(bounds)) return;
     drawing.gradient(bounds, {111, 64, 34}, {54, 28, 17});
     const auto rows = static_cast<int>(bounds.height);
     for (int row = 2; row < rows; row += 3) {
@@ -166,6 +194,9 @@ void wood(Drawing& drawing, UiRect bounds) {
         }
     }
     drawing.line(bounds.x, bounds.y + 1.0F, bounds.x + bounds.width, bounds.y + 1.0F, {207, 140, 82, 150});
+    const float underside = std::min(3.0F, bounds.height);
+    drawing.gradient({bounds.x, bounds.y + bounds.height - underside, bounds.width, underside},
+                     {20, 10, 6, 0}, {20, 10, 6, 155});
     drawing.line(bounds.x, bounds.y + bounds.height - 1.0F,
                  bounds.x + bounds.width, bounds.y + bounds.height - 1.0F, {17, 9, 5});
 }
@@ -184,6 +215,7 @@ void heading(Drawing& drawing, std::string_view value, UiRect bounds, float size
 void button(Drawing& drawing, UiRect bounds, std::string_view label,
             bool selected = false, bool warning = false,
             TextFace face = TextFace::Sans, bool ivory = false, bool flat = false) {
+    if (!material_surface(bounds)) return;
     const bool light = selected || ivory;
     const UiColor cap = selected ? UiColor{238, 204, 145} : ivory ? kIvoryCap : UiColor{45, 41, 36};
     if (flat) {
@@ -206,20 +238,34 @@ void button(Drawing& drawing, UiRect bounds, std::string_view label,
     const float front = std::clamp(bounds.height * 0.12F, 3.0F, 5.0F);
     const UiRect face_bounds{cap_bounds.x + 1.0F, cap_bounds.y + 1.0F,
                              cap_bounds.width - 2.0F, cap_bounds.height - front - 1.0F};
-    // The shallow light band and softer lower face keep a live tablet legible
-    // without the bright double frame competing with its label.
-    drawing.gradient(face_bounds, shade(cap, 20), shade(cap, -7));
+    const UiColor face_top = selected ? UiColor{254, 226, 173} :
+        ivory ? UiColor{250, 237, 207} : shade(cap, 20);
+    const UiColor face_bottom = selected ? UiColor{225, 185, 115} :
+        ivory ? UiColor{225, 204, 166} : shade(cap, -7);
+    const UiColor front_top = selected ? UiColor{197, 151, 86} :
+        ivory ? UiColor{205, 180, 139} : shade(cap, -17);
+    const UiColor front_bottom = selected ? UiColor{153, 110, 56} :
+        ivory ? UiColor{165, 135, 91} : shade(cap, -42);
+    // One small upper highlight and a darker front give the live tablet depth;
+    // all labels and focus ink are still painted over the finished material.
+    drawing.gradient(face_bounds, face_top, face_bottom);
     drawing.gradient({face_bounds.x, face_bounds.y, face_bounds.width,
-                      std::min(5.0F, face_bounds.height * 0.25F)},
+                      std::min(4.0F, face_bounds.height * 0.12F)},
                      light ? UiColor{255, 248, 225, 75} : UiColor{190, 174, 147, 42},
                      {255, 244, 219, 0});
     drawing.line(face_bounds.x + 1.0F, face_bounds.y, face_bounds.x + face_bounds.width - 1.0F,
                  face_bounds.y, light ? UiColor{255, 245, 218} : UiColor{122, 108, 88});
     drawing.gradient({face_bounds.x, face_bounds.y + face_bounds.height,
-                      face_bounds.width, front}, shade(cap, -17), shade(cap, -42));
+                      face_bounds.width, front}, front_top, front_bottom);
     drawing.line(face_bounds.x, face_bounds.y + face_bounds.height,
                  face_bounds.x + face_bounds.width, face_bounds.y + face_bounds.height,
-                 shade(cap, 14));
+                 light ? shade(face_bottom, 14) : shade(cap, 14));
+    drawing.line(face_bounds.x, face_bounds.y + 1.0F, face_bounds.x,
+                 face_bounds.y + face_bounds.height - 1.0F,
+                 light ? UiColor{255, 246, 219, 175} : UiColor{120, 106, 86, 150});
+    drawing.line(face_bounds.x + face_bounds.width - 1.0F, face_bounds.y + 1.0F,
+                 face_bounds.x + face_bounds.width - 1.0F, face_bounds.y + face_bounds.height + front - 1.0F,
+                 light ? UiColor{124, 98, 63, 180} : UiColor{11, 11, 10, 200});
     centered(drawing, label, inset(bounds, 4.0F), face == TextFace::Serif ? 15.0F : 11.0F,
              warning ? (light ? UiColor{112, 43, 24} : kRed) : light ? UiColor{35, 29, 21} : kUiIvory, face);
 }
@@ -253,6 +299,7 @@ void button(Drawing& drawing, UiRect bounds, std::string_view label,
 
 void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
              std::uint8_t value, std::string_view label, UiColor cap, bool flat) {
+    if (!material_surface(geometry.bounds) || !material_surface(geometry.track)) return;
     const bool mixture = geometry.id.kind == UiControlKind::PedalDrawbar;
     centered(drawing, label, geometry.label_bounds, mixture ? 11.0F : 13.0F,
              kUiIvory, mixture ? TextFace::Sans : TextFace::Serif);
@@ -291,17 +338,26 @@ void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
     drawing.line(center - 0.75F, track.y, center - 0.75F, y, {192, 179, 153, 125});
     drawing.rounded({knob.x - 1.0F, knob.y + 3.0F, knob.width + 3.0F, knob.height + 1.0F}, 3.0F, {0, 0, 0, 210});
     drawing.rounded(knob, 3.0F, shade(cap, -38));
-    drawing.gradient({knob.x + 1.0F, knob.y + 2.0F, knob.width - 2.0F, knob.height - 10.0F},
-                     shade(cap, 29), shade(cap, -2));
-    drawing.line(knob.x + 1.0F, knob.y + 4.0F, knob.x + 1.0F,
-                 knob.y + knob.height - 10.0F, shade(cap, 48));
-    drawing.line(knob.x + knob.width - 2.0F, knob.y + 4.0F,
-                 knob.x + knob.width - 2.0F, knob.y + knob.height - 3.0F, shade(cap, -48));
-    drawing.gradient({knob.x + 1.0F, knob.y + knob.height - 8.0F, knob.width - 2.0F, 6.0F},
-                     shade(cap, -13), shade(cap, -34));
-    drawing.line(knob.x + 3.0F, knob.y + 2.0F, knob.x + knob.width - 3.0F, knob.y + 2.0F, shade(cap, 65));
-    drawing.line(knob.x + 2.0F, knob.y + knob.height - 9.0F,
-                 knob.x + knob.width - 2.0F, knob.y + knob.height - 9.0F, shade(cap, 34));
+    const bool ivory = cap.red == kIvoryCap.red && cap.green == kIvoryCap.green && cap.blue == kIvoryCap.blue;
+    const float front = std::clamp(knob.height * 0.18F, 3.0F, 5.0F);
+    const UiRect face{knob.x + 1.0F, knob.y + 2.0F, knob.width - 2.0F, knob.height - front - 3.0F};
+    drawing.gradient(face, ivory ? UiColor{250, 237, 207} : shade(cap, 29),
+                     ivory ? UiColor{225, 204, 166} : shade(cap, -2));
+    drawing.gradient({face.x, face.y, face.width, std::min(4.0F, face.height * 0.12F)},
+                     ivory ? UiColor{255, 248, 225, 75} : UiColor{222, 197, 162, 40},
+                     {255, 244, 219, 0});
+    drawing.gradient({face.x, face.y + face.height, face.width, front},
+                     ivory ? UiColor{205, 180, 139} : shade(cap, -13),
+                     ivory ? UiColor{165, 135, 91} : shade(cap, -34));
+    drawing.line(face.x, face.y + 1.0F, face.x, face.y + face.height - 1.0F,
+                 ivory ? UiColor{255, 246, 219} : shade(cap, 48));
+    drawing.line(face.x + face.width - 1.0F, face.y + 1.0F,
+                 face.x + face.width - 1.0F, face.y + face.height + front - 1.0F,
+                 ivory ? UiColor{145, 118, 80} : shade(cap, -48));
+    drawing.line(face.x + 2.0F, face.y, face.x + face.width - 2.0F, face.y,
+                 ivory ? UiColor{255, 248, 224} : shade(cap, 65));
+    drawing.line(face.x + 1.0F, face.y + face.height, face.x + face.width - 1.0F,
+                 face.y + face.height, ivory ? UiColor{244, 224, 186} : shade(cap, 34));
     centered(drawing, std::to_string(value), geometry.value_bounds, 13.0F, kUiBrass);
 }
 
@@ -398,17 +454,24 @@ void paint_preset_key(Drawing& drawing, const UiControlGeometry& geometry, bool 
 
 void paint_preset_focus(Drawing& drawing, const UiControlGeometry& geometry) {
     const auto bounds = preset_indicator_bounds(geometry, 2.0F);
+    // A natural's pitch fits between the side strokes. Leave the frame's lower
+    // edge open: a full-width bottom stroke can cover the final glyph pixels
+    // when the sidebar's lower manual lands at a fractional y coordinate.
+    // This keeps the original label pixels and full-height side ink independent.
+    if (!preset_accidental(geometry.id.index)) {
+        const auto open_frame = [&](UiRect frame, float stroke, UiColor color) {
+            drawing.rect({frame.x, frame.y, frame.width, stroke}, color);
+            drawing.rect({frame.x, frame.y, stroke, frame.height}, color);
+            drawing.rect({frame.x + frame.width - stroke, frame.y, stroke, frame.height}, color);
+        };
+        open_frame(bounds, 3.0F, {5, 6, 6});
+        open_frame(inset(bounds, 1.0F), 1.0F, kUiFocusCyan);
+        return;
+    }
     const auto paint = [&] {
         drawing.outline(bounds, {5, 6, 6}, 3.0F);
         drawing.outline(inset(bounds, 1.0F), kUiFocusCyan, 1.0F);
     };
-    // A natural's single-letter pitch fits between the side strokes. Its
-    // shortest exposed region is almost all label bounds, so repainting that
-    // whole rectangle would erase the independent focus indicator.
-    if (!preset_accidental(geometry.id.index)) {
-        paint();
-        return;
-    }
     // A 12-unit accidental needs an opening through the stroke at its label.
     // Clip the focus ink above the original label; redrawing a scaled glyph
     // through a tighter clip can change its sampling at fractional positions.
@@ -577,6 +640,7 @@ void paint_controls(Drawing& drawing, const UiModel& model) {
 }
 
 void paint_key(Drawing& drawing, const UiKeyGeometry& key, bool held, bool focused, bool flat) {
+    if (!material_surface(key.bounds)) return;
     if (flat) {
         const UiColor color = key.accidental ? (held ? UiColor{143, 115, 66} : UiColor{32, 33, 30}) :
             (held ? UiColor{230, 195, 123} : UiColor{242, 230, 204});
@@ -589,8 +653,8 @@ void paint_key(Drawing& drawing, const UiKeyGeometry& key, bool held, bool focus
         // A narrow bevel follows the projected cap; no rectangular highlight
         // may cross its sloping side or the neighboring natural key.
         drawing.quad(inset_quad(key.top, 1.4F),
-            held ? UiColor{166, 138, 88} : UiColor{66, 63, 56},
-            held ? UiColor{104, 84, 48} : UiColor{23, 25, 22});
+            held ? UiColor{166, 138, 88} : UiColor{61, 58, 52},
+            held ? UiColor{104, 84, 48} : UiColor{20, 22, 19});
         drawing.quad(key.front,
             held ? UiColor{95, 75, 40} : UiColor{41, 39, 32},
             held ? UiColor{55, 42, 24} : UiColor{9, 11, 9});
@@ -604,12 +668,16 @@ void paint_key(Drawing& drawing, const UiKeyGeometry& key, bool held, bool focus
             held ? UiColor{209, 181, 122} : UiColor{226, 211, 181},
             held ? UiColor{244, 213, 149} : UiColor{255, 244, 220});
         drawing.quad(key.front,
-            held ? UiColor{190, 157, 96} : UiColor{225, 203, 163},
-            held ? UiColor{145, 115, 62} : UiColor{174, 144, 99});
+            held ? UiColor{190, 157, 96} : UiColor{215, 190, 148},
+            held ? UiColor{145, 115, 62} : UiColor{164, 132, 89});
         drawing.quad_outline(key.hit, {83, 65, 42}, 0.7F);
-        drawing.quad(quad_band(key.front, 0.0F, 0.13F, 0.9F),
+        const float front_depth = key.front.points[3].y - key.front.points[0].y;
+        const float front_highlight = front_depth > 0.0F ? std::min(0.13F, 2.0F / front_depth) : 0.0F;
+        drawing.quad(quad_band(key.front, 0.0F, front_highlight, 0.9F),
                      {255, 245, 217, 220}, {255, 245, 217, 60});
-        drawing.quad(quad_band(key.top, 0.0F, 0.08F, 0.8F), {20, 17, 13, 70}, {20, 17, 13, 0});
+        const float top_depth = key.top.points[3].y - key.top.points[0].y;
+        const float rear_recess = top_depth > 0.0F ? std::min(0.12F, 18.0F / top_depth) : 0.0F;
+        drawing.quad(quad_band(key.top, 0.0F, rear_recess, 0.8F), {20, 17, 13, 90}, {20, 17, 13, 0});
     }
     if (held) drawing.quad(quad_band(key.top, 0.91F, 0.96F, 2.0F), kUiBrass, kUiBrass);
     if (focused) drawing.quad_outline(inset_quad(key.hit, 2.0F), kUiFocusCyan, 2.0F);
@@ -629,21 +697,34 @@ void paint_cabinet(Drawing& drawing, const UiLayout& layout, const InstrumentVie
     if (layout.workspace != UiWorkspace::Play || !layout.show_cabinet) return;
     const auto& cabinet = layout.cabinet_panel;
     const auto& art = layout.cabinet_art;
-    panel(drawing, cabinet, true, layout.presentation == UiPresentation::Flat);
+    if (!material_surface(cabinet) || !material_surface(art)) return;
+    const bool flat = layout.presentation == UiPresentation::Flat;
+    panel(drawing, cabinet, true, flat);
     heading(drawing, "ROTARY CABINET", {cabinet.x + 17.0F, cabinet.y + 6.0F,
             cabinet.width - 34.0F, 25.0F}, 16.0F);
-    drawing.rect({art.x - 2.0F, art.y - 2.0F, art.width + 4.0F, art.height + 4.0F}, {8, 9, 8});
+    // The shared art rectangle is authoritative. Its small recess and rim stay
+    // in the cabinet allocation; the separate sidebar pedal panel is untouched.
+    const float recess = flat ? 2.0F : 3.0F;
+    drawing.rect({art.x - recess, art.y - recess,
+                  art.width + 2.0F * recess, art.height + 2.0F * recess}, {8, 9, 8});
     if (!drawing.reference_art(ReferenceArt::Cabinet, art)) {
         drawing.gradient(art, {34, 25, 18}, {12, 13, 11});
         const UiRect box{art.x + art.width * 0.2F, art.y + art.height * 0.13F,
                          art.width * 0.6F, art.height * 0.73F};
-        wood(drawing, box);
+        if (flat) drawing.rect(box, kUiWalnut);
+        else wood(drawing, box);
         for (int slot = 0; slot < 5; ++slot) {
             drawing.rect({box.x + box.width * 0.08F, box.y + 12.0F + static_cast<float>(slot) * 10.0F,
                           box.width * 0.84F, 4.0F}, {14, 10, 7});
         }
         centered(drawing, "DECORATIVE ART UNAVAILABLE", {art.x + 8.0F, art.y + art.height - 28.0F,
                  art.width - 16.0F, 20.0F}, 10.0F, kMuted);
+    }
+    if (!flat) {
+        drawing.line(art.x - 2.0F, art.y - 3.0F, art.x + art.width + 2.0F,
+                     art.y - 3.0F, {132, 112, 82, 170});
+        drawing.line(art.x - 3.0F, art.y - 2.0F, art.x - 3.0F,
+                     art.y + art.height + 2.0F, {95, 81, 61, 130});
     }
     const float below_art = art.y + art.height;
     heading(drawing, "CABINET REFERENCE", {cabinet.x + 14.0F, below_art + 9.0F,
@@ -677,9 +758,9 @@ void paint_cabinet(Drawing& drawing, const UiLayout& layout, const InstrumentVie
     } else {
         const std::string audio = std::string(info.audio_running ? "AUDIO RUNNING / " : "AUDIO STOPPED / ") + audio_configuration(info);
         text_line(drawing, audio, {x, card.y + 31.0F, width, 14.0F}, 10.0F, info.audio_running ? kGreen : kRed);
-        text_line(drawing, midi_state(info), {x, card.y + 51.0F, width, 14.0F}, 10.0F, info.midi_open ? kGreen : kMuted);
-        text_line(drawing, "SCANNER / CHORUS: NOT CONNECTED", {x, card.y + 71.0F, width, 14.0F}, 10.0F, kMuted);
-        text_line(drawing, "ROTARY AUDIO: NOT CONNECTED", {x, card.y + 91.0F, width, 14.0F}, 10.0F, kMuted);
+        text_line(drawing, midi_state(info), {x, card.y + 49.0F, width, 14.0F}, 10.0F, info.midi_open ? kGreen : kMuted);
+        text_line(drawing, "SCANNER / CHORUS: NOT CONNECTED", {x, card.y + 67.0F, width, 14.0F}, 10.0F, kMuted);
+        text_line(drawing, "ROTARY AUDIO: NOT CONNECTED", {x, card.y + 85.0F, width, 14.0F}, 10.0F, kMuted);
         if (card.height >= 151.0F) wrapped(drawing, info.midi_status,
             {x, card.y + 118.0F, width, card.height - 126.0F}, 10.0F, kMuted);
     }
@@ -1004,6 +1085,14 @@ void paint_header(Drawing& drawing, const UiLayout& layout) {
             title_left = control.bounds.x + control.bounds.width + 12.0F;
         if (control.id.kind == UiControlKind::SaveControls) title_right = control.bounds.x - 12.0F;
         if (control.id.kind == UiControlKind::Presentation) flat_left = control.bounds.x;
+    }
+    if (layout.sidebar_pedals) {
+        // Fit inside an interval symmetric about the window center. The wider
+        // workspace tabs must not push the title toward the narrower tools.
+        const float middle = layout.width / 2.0F;
+        const float half_width = std::max(0.0F, std::min(middle - title_left, title_right - middle));
+        title_left = middle - half_width;
+        title_right = middle + half_width;
     }
     constexpr std::string_view title = "TONEWHEEL ATLAS";
     float size = layout.show_cabinet ? 40.0F : 28.0F;

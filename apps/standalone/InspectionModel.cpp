@@ -143,6 +143,7 @@ void held_count(InspectionRow& target, const std::array<bool, Count>& values,
         if (held) ++count;
     }
     TextWriter(target.value).integer(count);
+    target.unit = count == 1 ? "target" : "targets";
     target.availability = Availability::Available;
     target.evidence = Evidence::Software;
 }

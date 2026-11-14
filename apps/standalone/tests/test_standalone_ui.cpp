@@ -552,6 +552,7 @@ bool same_quad(const UiQuad& a, const UiQuad& b) {
 void equal_layout(const UiLayout& a, const UiLayout& b) {
     CHECK(a.width == b.width && a.height == b.height && a.control_count == b.control_count);
     CHECK(a.show_cabinet == b.show_cabinet && a.bank_controls_in_cheeks == b.bank_controls_in_cheeks);
+    CHECK(a.sidebar_pedals == b.sidebar_pedals);
     CHECK(same_rect(a.header, b.header) && same_rect(a.performance_panel, b.performance_panel));
     CHECK(same_rect(a.keyboard_toolbar, b.keyboard_toolbar) && same_rect(a.pedal_panel, b.pedal_panel));
     CHECK(same_rect(a.footer, b.footer));
@@ -711,15 +712,15 @@ struct LayoutCase {
     std::array<float, 8> row_top, row_height;
 };
 
-constexpr std::array<LayoutCase, 12> kLayoutCases{{
+constexpr std::array<LayoutCase, 16> kLayoutCases{{
     {{960, 700}, false, false, 16, 928, 928, 460, 8, 156, 180, 764, 0, 0,
      {16, 106, 190, 366, 402, 492, 582, 648}, {82, 76, 168, 28, 82, 82, 58, 36}},
     {{1280, 900}, false, true, 16, 1248, 1248, 620, 8, 168, 192, 1072, 0, 0,
      {16, 106, 214, 438, 474, 620, 766, 848}, {82, 100, 216, 28, 138, 138, 74, 36}},
-    {{1672, 941}, true, true, 71.896F, 1528.208F, 1059.7456F, 524.8728F, 10, 158.96184F,
-     240.85784F, 890.78376F, 1141.6416F, 458.4624F,
-     {16, 116, 230.92F, 466.76F, 504.76F, 653.24F, 801.72F, 889},
-     {90, 104.92F, 225.84F, 28, 138.48F, 138.48F, 77.28F, 36}},
+    {{1672, 941}, true, true, 71.896F, 1528.208F, 1042.935312F, 516.467656F, 10, 156.4402968F,
+     238.3362968F, 876.4950152F, 1124.831312F, 475.272688F,
+     {16, 126, 240.92F, 482.76F, 520.76F, 704.88F, 773.72F, 889},
+     {100, 104.92F, 231.84F, 28, 174.12F, 174.12F, 105.28F, 36}},
     {{1399, 819}, false, false, 16, 1367, 1367, 679.5F, 8, 168, 192, 1191, 0, 0,
      {16, 106, 204.28F, 408.84F, 444.84F, 568.16F, 691.48F, 767},
      {82, 90.28F, 196.56F, 28, 115.32F, 115.32F, 67.52F, 36}},
@@ -730,36 +731,55 @@ constexpr std::array<LayoutCase, 12> kLayoutCases{{
     {{1399, 820}, false, true, 16, 1367, 1367, 679.5F, 8, 168, 192, 1191, 0, 0,
      {16, 106, 204.4F, 409.2F, 445.2F, 568.8F, 692.4F, 768},
      {82, 90.4F, 196.8F, 28, 115.6F, 115.6F, 67.6F, 36}},
-    {{1400, 820}, true, true, 60.2F, 1279.6F, 885.72F, 437.86F, 10, 156,
-     226.2F, 719.72F, 955.92F, 383.88F,
-     {16, 116, 216.4F, 423.2F, 461.2F, 575.8F, 690.4F, 768},
-     {90, 90.4F, 196.8F, 28, 104.6F, 104.6F, 67.6F, 36}},
+    {{1400, 820}, true, true, 60.2F, 1279.6F, 871.6444F, 430.8222F, 10, 156,
+     226.2F, 705.6444F, 941.8444F, 397.9556F,
+     {16, 126, 226.4F, 439.2F, 477.2F, 622.6F, 662.4F, 768},
+     {100, 90.4F, 202.8F, 28, 135.4F, 135.4F, 95.6F, 36}},
     {{1920, 700}, true, false, 72, 1776, 1235.2F, 613.6F, 8, 168,
      248, 1059.2F, 1315.2F, 532.8F,
      {16, 106, 190, 366, 402, 492, 582, 648}, {82, 76, 168, 28, 82, 82, 58, 36}},
-    {{1920, 1080}, true, true, 72, 1776, 1233.2F, 611.6F, 10, 168,
-     250, 1055.2F, 1315.2F, 532.8F,
-     {16, 116, 236, 482, 520, 726, 932, 1028}, {90, 110, 236, 28, 196, 196, 86, 36}},
+    {{1920, 1080}, true, true, 72, 1776, 1213.664F, 601.832F, 10, 168,
+     250, 1035.664F, 1295.664F, 552.336F,
+     {16, 126, 246, 498, 536, 782, 904, 1028}, {100, 110, 242, 28, 236, 236, 114, 36}},
     {{8192, 700}, true, false, 72, 8048, 5625.6F, 2808.8F, 8, 168,
      248, 5449.6F, 5705.6F, 2414.4F,
      {16, 106, 190, 366, 402, 492, 582, 648}, {82, 76, 168, 28, 82, 82, 58, 36}},
     {{960, 8192}, false, true, 16, 928, 928, 460, 8, 156, 180, 764, 0, 0,
      {16, 106, 224, 468, 504, 4275, 8046, 8140}, {82, 110, 236, 28, 3763, 3763, 86, 36}},
-    {{8192, 8192}, true, true, 72, 8048, 5623.6F, 2806.8F, 10, 168,
-     250, 5445.6F, 5705.6F, 2414.4F,
-     {16, 116, 236, 482, 520, 4282, 8044, 8140}, {90, 110, 236, 28, 3752, 3752, 86, 36}},
+    {{8192, 8192}, true, true, 72, 8048, 5535.072F, 2762.536F, 10, 168,
+     250, 5357.072F, 5617.072F, 2502.928F,
+     {16, 126, 246, 498, 536, 4338, 8016, 8140}, {100, 110, 242, 28, 3792, 3792, 114, 36}},
+    {{1399.75F, 819.75F}, false, false, 16, 1367.75F, 1367.75F, 679.875F, 8, 168,
+     192, 1191.75F, 0, 0,
+     {16, 106, 204.37F, 409.11F, 445.11F, 568.64F, 692.17F, 767.75F},
+     {82, 90.37F, 196.74F, 28, 115.53F, 115.53F, 67.58F, 36}},
+    {{1400.25F, 819.75F}, true, false, 60.21075F, 1279.8285F, 887.87995F, 439.939975F, 8, 156,
+     224.21075F, 723.87995F, 956.0907F, 383.94855F,
+     {16, 106, 204.37F, 409.11F, 445.11F, 568.64F, 692.17F, 767.75F},
+     {82, 90.37F, 196.74F, 28, 115.53F, 115.53F, 67.58F, 36}},
+    {{1399.75F, 820.25F}, false, true, 16, 1367.75F, 1367.75F, 679.875F, 8, 168,
+     192, 1191.75F, 0, 0,
+     {16, 106, 204.43F, 409.29F, 445.29F, 568.96F, 692.63F, 768.25F},
+     {82, 90.43F, 196.86F, 28, 115.67F, 115.67F, 67.62F, 36}},
+    {{1400.25F, 820.25F}, true, true, 60.21075F, 1279.8285F, 871.8018365F, 430.90091825F, 10, 156,
+     226.21075F, 705.8018365F, 942.0125865F, 398.0266635F,
+     {16, 126, 226.43F, 439.29F, 477.29F, 622.77F, 662.63F, 768.25F},
+     {100, 90.43F, 202.86F, 28, 135.48F, 135.48F, 95.62F, 36}},
 }};
 
 void check_reference_regions(const UiLayout& layout, const LayoutCase& expected) {
+    const bool sidebar = expected.cabinet && expected.cheeks;
     CHECK(layout.show_cabinet == expected.cabinet);
     CHECK(layout.bank_controls_in_cheeks == expected.cheeks);
+    CHECK(layout.sidebar_pedals == sidebar);
     near_rect(layout.header, {expected.margin, expected.row_top[0], expected.content_width, expected.row_height[0]});
     near_rect(layout.performance_panel,
               {expected.margin, expected.row_top[1], expected.player_width, expected.row_height[1]});
     near_rect(layout.keyboard_toolbar,
               {expected.margin, expected.row_top[3], expected.player_width, expected.row_height[3]});
     near_rect(layout.pedal_panel,
-              {expected.margin, expected.row_top[6], expected.player_width, expected.row_height[6]});
+              {sidebar ? expected.cabinet_x : expected.margin, expected.row_top[6],
+               sidebar ? expected.cabinet_width : expected.player_width, expected.row_height[6]});
     near_rect(layout.footer, {expected.margin, expected.row_top[7], expected.content_width, expected.row_height[7]});
     CHECK_NEAR(layout.footer.y + layout.footer.height, expected.size.y - 16, 0.001F);
     for (std::size_t manual = 0; manual < 2; ++manual) {
@@ -777,16 +797,33 @@ void check_reference_regions(const UiLayout& layout, const LayoutCase& expected)
     if (expected.cabinet) {
         near_rect(layout.cabinet_panel,
                   {expected.cabinet_x, expected.row_top[1], expected.cabinet_width,
-                   expected.row_top[6] + expected.row_height[6] - expected.row_top[1]});
+                   (sidebar ? expected.row_top[6] - expected.gap :
+                              expected.row_top[6] + expected.row_height[6]) - expected.row_top[1]});
         contained(layout.cabinet_art, layout.cabinet_panel);
         CHECK_NEAR(layout.cabinet_art.width / layout.cabinet_art.height, 466.0F / 397.0F, 0.00001F);
-        CHECK_NEAR(layout.cabinet_art.y, layout.cabinet_panel.y + 38, 0.001F);
-        CHECK(layout.cabinet_art.y + layout.cabinet_art.height + 176 <=
+        CHECK_NEAR(layout.cabinet_art.y, layout.cabinet_panel.y + (sidebar ? 48 : 38), 0.001F);
+        CHECK(layout.cabinet_art.y + layout.cabinet_art.height + (sidebar ? 191 : 176) <=
               layout.cabinet_panel.y + layout.cabinet_panel.height + 0.001F);
+        if (sidebar) {
+            CHECK(!overlaps(layout.cabinet_panel, layout.pedal_panel));
+            CHECK_NEAR(layout.pedal_panel.y - layout.cabinet_panel.y - layout.cabinet_panel.height, 10, 0.001F);
+            CHECK_NEAR(layout.pedal_panel.y + layout.pedal_panel.height,
+                       layout.footer.y - 10, 0.001F);
+            for (const auto& panel : layout.manual_panels) {
+                CHECK(!overlaps(panel, layout.pedal_panel));
+                CHECK(!overlaps(panel, layout.cabinet_panel));
+            }
+            for (const auto& key : layout.pedal_keys) contained(key.bounds, layout.pedal_panel);
+        }
         CHECK(ui_hit_test(layout, {layout.cabinet_art.x + layout.cabinet_art.width / 2,
                                   layout.cabinet_art.y + layout.cabinet_art.height / 2}).kind == UiControlKind::None);
         if (expected.size.x == 1672) {
-            near_rect(layout.cabinet_art, {1153.6416F, 154, 434.4624F, 370.13213F});
+            near_rect(layout.cabinet_art, {1132.831312F, 174, 459.272688F, 391.268792F});
+        }
+        if (expected.size.x == 1400 && expected.size.y == 820) {
+            near_rect(layout.cabinet_art, {972.146633F, 174, 337.351134F, 287.4F});
+            CHECK_NEAR(layout.cabinet_panel.y + layout.cabinet_panel.height -
+                       layout.cabinet_art.y - layout.cabinet_art.height - 75, 116, 0.001F);
         }
         if (expected.size.y == 700 && expected.size.x >= 1920) {
             CHECK_NEAR(layout.cabinet_art.height, 320, 0.001F);
@@ -1021,8 +1058,15 @@ void layout_and_hit_boundaries() {
             near_rect(geometry(layout, {UiControlKind::Help}).bounds, {1510.104F, 26, 90, 30});
             near_rect(geometry(layout, {UiControlKind::MidiSettings}).bounds, {1412.104F, 62, 90, 30});
             near_rect(geometry(layout, {UiControlKind::Panic}).bounds, {1510.104F, 62, 90, 30});
-            near_rect(geometry(layout, {UiControlKind::Presentation}).bounds, {1232.104F, 76, 70, 24});
+            near_rect(geometry(layout, {UiControlKind::Presentation}).bounds, {1232.104F, 86, 70, 24});
         }
+        UiLayout flat;
+        CHECK(make_ui_layout(size.x, size.y, {DrawbarBank::A, DrawbarBank::B}, flat,
+                             UiWorkspace::Play, UiPresentation::Flat));
+        check_reference_regions(flat, expected);
+        check_keyboard(flat, flat.manual_keys[0], UiTarget::Upper, flat.manual_panels[0], manual_naturals, manual_accidentals);
+        check_keyboard(flat, flat.manual_keys[1], UiTarget::Lower, flat.manual_panels[1], manual_naturals, manual_accidentals);
+        check_keyboard(flat, flat.pedal_keys, UiTarget::Pedals, flat.pedal_panel, pedal_naturals, pedal_accidentals);
     }
     UiLayout layout;
     CHECK(make_ui_layout(1280, 900, {DrawbarBank::A, DrawbarBank::B}, layout));
