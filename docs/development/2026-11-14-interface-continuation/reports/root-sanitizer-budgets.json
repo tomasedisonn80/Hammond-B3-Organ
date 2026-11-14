@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "actor": "/root",
+  "observed_utc": "2026-11-14T12:53:02.996278+00:00",
+  "scope": "CMake configure and CTest discovery only; no build or test rerun",
+  "configure_command": [
+    "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+    "-S",
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+    "-B",
+    "/workspace/scratch/601951e27dc3/build-interface-asan"
+  ],
+  "configure_seconds": 1.8744608089909889,
+  "configure_log": "root-sanitizer-property-configure.txt",
+  "configure_log_sha256": "83f5fb07fcb38890bf56b2baf01f698acca700920327c18e5e705216086b6f90",
+  "query": [
+    "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/601951e27dc3/build-interface-asan",
+    "-C",
+    "Release",
+    "--show-only=json-v1",
+    "-R",
+    "^test_standalone_(workspace_raster|scaled_view|preset_raster)$"
+  ],
+  "sanitizer_limits_seconds": {
+    "test_standalone_workspace_raster": 180.0,
+    "test_standalone_scaled_view": 360.0,
+    "test_standalone_preset_raster": 300.0
+  },
+  "three_binary_sha256_unchanged": {
+    "test_standalone_workspace_raster": "9ce42d168b8c8c01ccca0cbe0566ddaae12277ab9c3d5d74580d2754d83e0f2e",
+    "test_standalone_scaled_view": "274ce0dbdbe06c572f7ee82601272d3a66fe2cd77302e82c6dfb52dd32de70ad",
+    "test_standalone_preset_raster": "3eddff10e8866a5ff7e719ae004b26f03ddb444758d6a6d957a779742921c0a0"
+  },
+  "normal_release_limits_evidence": "a44-package-refresh.json",
+  "normal_release_limits_evidence_sha256": "b130cfde2a5b2feafbe44cea0474da2764778cd077f5b868b06be6a6e76816a3",
+  "normal_release_limits_seconds": {
+    "test_standalone_workspace_raster": 60,
+    "test_standalone_scaled_view": 60,
+    "test_standalone_preset_raster": 30
+  },
+  "cmake_sha256": "6b75fe8c73e4927b5fbe3c78e3ab7f88c92ba3f49eb2a5d3df269412cca1abc8",
+  "workflow_sha256": "3b7edd6c6b0933bbf5f1857f2c200a437492659802b854cc8418530ebc12b244",
+  "direct_measurements_seconds": {
+    "test_standalone_workspace_raster": 74.730474,
+    "test_standalone_scaled_view": 172.510959,
+    "test_standalone_preset_raster": 128.676768
+  },
+  "original_gate": "A41 original 10 PASS/3 TIMEOUT at normal limits retained",
+  "leak_scope": "Local LSan attachment blocked; hosted exact-source native leak gate pending",
+  "static_recheck": "root-a43-static-recheck.json"
+}

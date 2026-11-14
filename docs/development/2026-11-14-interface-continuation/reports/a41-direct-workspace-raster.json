@@ -1,0 +1,28 @@
+{
+  "asan_ubsan_diagnostics": [],
+  "command": [
+    "/workspace/scratch/601951e27dc3/build-interface-asan/apps/standalone/test_standalone_workspace_raster"
+  ],
+  "cwd": "/workspace/scratch/601951e27dc3/build-interface-asan/apps/standalone",
+  "elapsed_seconds": 74.730474,
+  "environment_overrides": {
+    "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_VIDEODRIVER": "dummy",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+  },
+  "executable_sha256_after": "9ce42d168b8c8c01ccca0cbe0566ddaae12277ab9c3d5d74580d2754d83e0f2e",
+  "executable_sha256_before": "9ce42d168b8c8c01ccca0cbe0566ddaae12277ab9c3d5d74580d2754d83e0f2e",
+  "log": "docs/development/2026-11-14-interface-continuation/reports/a41-direct-workspace-raster.txt",
+  "log_bytes": 339,
+  "log_sha256": "961c3ea9ef69b1cbd20809c2a5b6a9137316b04962af4b022cd06f1e614ea686",
+  "returncode": 0,
+  "scope": "One separately authorized bounded direct diagnostic. Original CTest 10 PASS/3 TIMEOUT is unchanged. Leak qualification remains blocked.",
+  "started_at_utc": "2026-11-14T12:43:12.937367+00:00",
+  "test_name": "test_standalone_workspace_raster",
+  "timed_out": false,
+  "timeout_seconds": 240
+}

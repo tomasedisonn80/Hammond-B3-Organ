@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+    "-S",
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+    "-B",
+    "/workspace/scratch/601951e27dc3/build-interface-asan",
+    "-G",
+    "Unix Makefiles",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DCMAKE_C_COMPILER=/usr/bin/gcc",
+    "-DCMAKE_CXX_COMPILER=/usr/bin/g++",
+    "-DBUILD_TESTING=ON",
+    "-DHAMMOND_ENABLE_SANITIZERS=ON",
+    "-DHAMMOND_BUILD_STANDALONE=ON",
+    "-DHAMMOND_ENABLE_MIDI=OFF",
+    "-DHAMMOND_BUILD_VST3=OFF",
+    "-DHAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2",
+    "-DSDL_ALSA=OFF",
+    "-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer",
+    "-DPython3_EXECUTABLE=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12"
+  ],
+  "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "elapsed_seconds": 31.988846,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "log": "docs/development/2026-11-14-interface-continuation/reports/a41-configure.txt",
+  "log_bytes": 22818,
+  "log_sha256": "bd264fd5451bf152eb77ac7d299072d2bc882537f3c7e6948f686eef0f5e098d",
+  "returncode": 0,
+  "started_at_utc": "2026-11-14T12:32:19.695626+00:00"
+}

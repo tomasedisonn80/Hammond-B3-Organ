@@ -3,8 +3,10 @@
 ## Published source and exact qualification
 
 Verified local HEAD and fetched main are
-`aea58bb85bc66a5feaff66a0b8a388e7c3f9e630`, tree
-`19e61b344fc8dfd3146588a6058994ff351d2cc5`.
+`8673713a484c40e26ac7810c7c4cbc22fa874426`, tree
+`e11bd68d6051f663631579ef235325a8775f8133`.
+[Publication 4](reports/publication-4.json) includes the final label/status polish,
+A39 required test names, A40 Windows fixtures and accepted evidence.
 [Publication 3](reports/publication-3.json) contains the workspace implementation,
 shared geometry, inspection, scale repairs, capture harness, guides and accepted
 evidence through its staged boundary. Earlier `5d81199` has eleven successful
@@ -15,8 +17,9 @@ warnings in three new test files. A40 repaired the explicit integer/float
 conversion and used existing `SDL_getenv`, with no warning suppression, assertion
 or timeout change. [Original diagnostics](reports/root-ui-ci-windows-failures.json)
 and [local qualification](reports/a40-result.json) are retained. Full SDK-free
-Release passes 130/130; the three affected native suites pass 3/3. Hosted Windows
-closure requires publication and observation of the repaired source.
+Release passes 130/130; the three affected native suites pass 3/3. Both repaired Windows builds now pass at `8673713`, along with all eleven
+existing hosted jobs; see [the exact observation](reports/root-ui-polish-hosted.json).
+The new native SDL sanitizer/leak job is a separate, unpublished twelfth job.
 
 The first complete UI gate remains **146/147**: two native MIDI observation
 assertions failed. [Its closure](reports/root-ui-repair-closure.json) retains
@@ -33,31 +36,42 @@ operator journeys pass. Current frozen product executable:
 A34's focused gates and before/after pixels, A36 acknowledgment and A37 held-note,
 Save/Load and Flat focus evidence retain their own source identities.
 
-The manifest currently records **44 actual assignments, 41 accepted**, with A41,
-A43 and A44 running. Historical workers and root integration do not count.
+The manifest currently records **48 actual assignments, 45 accepted**. A46 completes the new actual gallery;
+A47 audits the VST3 boundary and A48 independently verifies published platform
+evidence. All earlier assignments are accepted. Historical workers and root integration do not count.
 Finish all sixty distinct assignments in ten logical waves of six; at most three
 workers run beside root. Dependency-ready work may cross a logical wave boundary.
 
-- A41 owns `../build-interface-asan` and its reports. Fully instrumented SDL and
-  project builds succeeded. Original CTest limits yielded ten passes and three
-  raster timeouts, with no sanitizer diagnostic. Local leak detection is blocked
-  by ptrace/thread-attach restrictions; that is not a leak pass. Separately bounded
-  direct runs of the three timed-out binaries are authorized to measure overhead.
-- A42 completed the actual desktop audit: its pinned app exited before creating
-  a window because compiled SDL has no X11 backend. Persistent pointer capture
-  remains **NOT RUN**. See [desktop review](../../reviews/INTERFACE_DESKTOP_POINTER.md).
-- A43 owns the standalone workflow's new focused native sanitizer/leak job. The
-  completed A39 three-name guard is staged separately. A43's unfinished job must
-  stay out of checkpoint 4. Root may integrate justified sanitizer-only time
-  allowances after A41 measurements; normal Release deadlines stay unchanged.
-- A44 owns `../build-native` and `../build-native-midi-off` for final actual
-  install/relocation qualification. No other worker configures these trees.
+- A41 has released `../build-interface-asan`. Its original gate remains ten
+  passes and three timeouts. All three direct diagnostics completed unchanged
+  assertions without ASan/UBSan findings in 74.73 / 172.51 / 128.68 seconds.
+  Leak detection remains locally blocked by thread attachment. Root configured
+  sanitizer-only limits 180/360/300 and checked unchanged executable bytes;
+  [the property record](reports/root-sanitizer-budgets.json) preserves normal
+  Release 60/60/30 limits from both A44 package configurations.
+- A42’s actual desktop launch failed before initialization because compiled SDL
+  lacks X11; persistent pointer capture remains **NOT RUN**. Root found existing
+  X11 development headers/libraries under the shared sysroot. A57 should qualify
+  a separate backend-capable build, then the retained focused desktop flow.
+- A43’s focused native sanitizer/leak job and static validation are accepted.
+  Root integrated the measured conditional budgets and discovery assertions;
+  publish this complete job, then A48/A58 must observe its exact hosted result.
+- A44 has released both native builds after final on/off source-absent relocation
+  and guide-only inventory refresh. Both packages retain their original runtime
+  application bytes; only the corrected MIDI guide changed at final install.
+- A45 has supplied verified guide/navigation repairs, which root applied. It is
+  finishing its independent documentation audit; A46 supersedes the provisional
+  README-caption proposal with the final actual gallery.
+- A46 owns the README visual section and new `standalone-interface-preview-v2`
+  gallery. All eight actual captures passed with no source/build drift, and its
+  read/capture lease is released; final image/provenance review continues.
 
-Root owns shared status, CMake, README, manifest, index and publication. Publish
-completed A34/A36/A39/A40 and accepted evidence with a fresh expected-head guard;
-preserve A41/A43/A44 unfinished files during fetch and soft alignment. Never
-stage all untracked reports indiscriminately. Then continue A45–A60, final actual
-gallery, coherent gate, hosted results and strict accounting/handoff.
+Root owns other shared status, CMake, manifest, index and publication. All eleven
+existing hosted jobs pass at `8673713`. Stage only completed A41/A43/A44/A45 and
+root integration evidence for the next checkpoint; A46 remains excluded until
+its complete gallery result. Continue A49–A60, final coherent gate, new native
+leak coverage, desktop setup, strict accounting and handoff. Never stage unfinished
+reports or claim a historical source’s result for a later executable.
 
 ## Visual and physical boundaries
 
@@ -91,8 +105,9 @@ MIDI-on build. Local SDL provides dummy/offscreen, not X11/Wayland. An ON cache
 request is not proof that a backend compiled. The SDK-free tree
 `../build-a13-sdkfree` is free after A40. Reuse builds rather than copying SDKs.
 
-About 38 GiB remain free. Native/SDK-free/MIDI-off builds use about 82/10/35 MiB;
-the reusable fully instrumented build uses about 374 MiB. Keep compact reports
+At the latest check, 36.74 GiB remain free. Checkout allocation is109 MiB;
+native/SDK-free/MIDI-off builds use about75/24/32 MiB, and the fully instrumented
+build about371 MiB. Keep compact reports
 and meaningful PNGs; no compiled cache/binary belongs in Git. Delete only owned
 reproducible intermediates after preserving necessary evidence. Do not delete the
 original PDF, assets, failed results or other worktrees. The 8192 logical limit

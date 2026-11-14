@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-g++"
+	tests="13"
+	failures="3"
+	disabled="0"
+	skipped="0"
+	hostname="2b85fe4e0adc"
+	time="171"
+	timestamp="2026-11-14T05:38:17"
+	>
+	<testcase name="test_standalone_inspection_acceptance" classname="test_standalone_inspection_acceptance" time="0.0937011" status="run">
+		<properties/>
+		<system-out>Inspection independent acceptance passed: 34 source-qualified rows, actual Session commands, four selections per manual, real failed reads, owned immutable copies and finite admission.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_inspection_author" classname="test_standalone_inspection_author" time="0.0459788" status="run">
+		<properties/>
+		<system-out>Inspection author checks passed: bounded copied facts, truthful models and observations.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_ui" classname="test_standalone_preset_ui" time="5.4793" status="run">
+		<properties/>
+		<system-out>Independent preset UI acceptance: 12 layouts, 549388 independently classified hit points, 288 route transitions, 48 keyboard activations, 144 focus-only moves, 753 invalid identities, 288 exact single-command pointer acknowledgments; passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_projection" classname="test_standalone_projection" time="1.70812" status="run">
+		<properties/>
+		<system-out>projection matrix: 288 layouts, 42336 playing-key records, 6912 preset records
+independent projection, silhouette, half-open ownership and rollback acceptance passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_ui" classname="test_standalone_ui" time="0.184766" status="run">
+		<properties/>
+		<system-out>Standalone UI acceptance: 9 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_acceptance" classname="test_standalone_workspace_acceptance" time="0.35497" status="run">
+		<properties/>
+		<system-out>Workspace acceptance: 42 layout/mode/view cases, 5740 hidden semantic/pointer rejections, 56 focus-memory returns, 2041 atomic invalid operations, 14 real-Session ownership runs, 63 closed parameter gestures, 120 shortcut suppression cases passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_continuity" classname="test_standalone_workspace_continuity" time="12.4005" status="run">
+		<properties/>
+		<system-out>case kind=registration variant=0 rate=44100 seed=11740672 frames=8874 commands=20 peak=0.15445317327976227 energy=12.388344111279981 isolated_energy=0 pcm_fnv1a64=6be70c82e36cb701
+case kind=registration variant=1 rate=44100 seed=11740673 frames=8874 commands=20 peak=0.14571726322174072 energy=14.819911340016612 isolated_energy=0 pcm_fnv1a64=465b8523baa45379
+case kind=registration variant=2 rate=44100 seed=11740674 frames=8874 commands=20 peak=0.15826630592346191 energy=14.456555723508712 isolated_energy=0 pcm_fnv1a64=989e678ea6097ae9
+case kind=registration variant=3 rate=44100 seed=11740675 frames=8874 commands=20 peak=0.17036087810993195 energy=12.723127669830598 isolated_energy=0 pcm_fnv1a64=470d5f7b4ac7b6c9
+case kind=registration variant=4 rate=44100 seed=11740676 frames=8874 commands=20 peak=0.1711624413728714 energy=15.243782869395975 isolated_energy=0 pcm_fnv1a64=4a2eb24f02c07619
+case kind=registration variant=5 rate=44100 seed=11740677 frames=8874 commands=20 peak=0.11457514762878418 energy=8.365804732...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspaces_author" classname="test_standalone_workspaces_author" time="0.016596" status="run">
+		<properties/>
+		<system-out>Workspace author checks: 6 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_drawing" classname="test_standalone_drawing" time="0.963772" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>SDL 2.32.10, renderer=software, no window/audio
+144 individual glyph cases, 18 normal-size labels, 12 width/multiline/space cases; 298 full-target surface checks (18309120 pixels); failures=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_quad_drawing" classname="test_standalone_quad_drawing" time="0.0511807" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;standalone"/>
+		</properties>
+		<system-out>SDL 2.32.10, renderer=software, no window/audio; 17 full-target coverage checks; failures=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_raster" classname="test_standalone_workspace_raster" time="60.0307" status="fail">
+		<failure message="Timeout"/>
+		<properties>
+			<property name="cmake_labels" value="geometry;native;standalone;workspace"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="test_standalone_scaled_view" classname="test_standalone_scaled_view" time="60.0908" status="fail">
+		<failure message="Timeout"/>
+		<properties>
+			<property name="cmake_labels" value="native;standalone;workspace"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_raster" classname="test_standalone_preset_raster" time="30.058" status="fail">
+		<failure message="Timeout"/>
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out></system-out>
+	</testcase>
+</testsuite>

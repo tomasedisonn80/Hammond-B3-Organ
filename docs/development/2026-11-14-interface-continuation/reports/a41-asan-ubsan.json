@@ -1,0 +1,34 @@
+{
+  "command": [
+    "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/601951e27dc3/build-interface-asan",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "1",
+    "-V",
+    "-R",
+    "^(test_standalone_ui|test_standalone_preset_ui|test_standalone_workspaces_author|test_standalone_workspace_acceptance|test_standalone_projection|test_standalone_inspection_author|test_standalone_inspection_acceptance|test_standalone_workspace_continuity|test_standalone_drawing|test_standalone_quad_drawing|test_standalone_workspace_raster|test_standalone_scaled_view|test_standalone_preset_raster)$",
+    "--output-junit",
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a41-asan-ubsan.xml"
+  ],
+  "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "elapsed_seconds": 171.576015,
+  "environment_overrides": {
+    "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_VIDEODRIVER": "dummy",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+  },
+  "log": "docs/development/2026-11-14-interface-continuation/reports/a41-asan-ubsan.txt",
+  "log_bytes": 20497,
+  "log_sha256": "f65c44d1a728f6ed64ce427908cac8092e23141c2921e04f97d9e01e7e0bf4d9",
+  "returncode": 8,
+  "started_at_utc": "2026-11-14T12:38:17.581595+00:00"
+}

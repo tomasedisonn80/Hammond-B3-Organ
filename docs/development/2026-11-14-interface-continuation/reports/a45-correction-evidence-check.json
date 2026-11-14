@@ -1,0 +1,127 @@
+{
+  "schema": 1,
+  "assignment": 45,
+  "kind": "Existing report and corrected paragraph inspection; no execution of recorded tests",
+  "guide_correction": {
+    "root_record": "root-guide-freshness.json",
+    "original_sha256": "bc088e41621a0fa5363b3206e1ca71bbf4518a0492f46d842c415ab116bb779d",
+    "current_sha256": "f51b2c32f5f6e6aa062885bd2b1b64fee24faf85712f4bca9a3b8f1a600695a1",
+    "matches_root_correction": true,
+    "blocks": [
+      {
+        "id": "midi-current-capability",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-current-guide-entry",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-background-discovery",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-preset-controls",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-current-state",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-historical-visual-defect",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-smoke-diagnostic-schema",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-replay-diagnostic-schema",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-current-session-link",
+        "replacement_present": true,
+        "original_absent": true
+      },
+      {
+        "id": "midi-current-qualification-footer",
+        "replacement_present": true,
+        "original_absent": true
+      }
+    ]
+  },
+  "retained_control_migration_evidence": {
+    "source": "tests/test_control_io.cpp",
+    "source_sha256": "1a310827bb90c492bfa65f1b824563b0214ba39a7191752ad812b2650b54986a",
+    "scope": "Source asserts 1,600 state4 combinations and 4,800 legacy migrations; success is retained in A40 test_control_io, not freshly run by A45.",
+    "report": "docs/development/2026-11-14-interface-continuation/reports/a40-sdkfree-ctest.xml",
+    "report_sha256": "e261177892df90f567901a307b6a010862f006ebc9b86d7c20c0373e2c5b35cd",
+    "selected_retained_results": [
+      {
+        "name": "test_control_io",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      },
+      {
+        "name": "test_controls",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      },
+      {
+        "name": "test_parameter_bridge",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      },
+      {
+        "name": "python_test_parameters",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      },
+      {
+        "name": "test_preset_parameter_boundaries",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      },
+      {
+        "name": "test_fixed_registration_engine",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      },
+      {
+        "name": "test_fixed_registration_lifecycle",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      },
+      {
+        "name": "test_standalone_preset_ui",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      },
+      {
+        "name": "test_standalone_state_files",
+        "present": true,
+        "failure": false,
+        "skipped": false
+      }
+    ]
+  },
+  "audit_script_syntax": "pass"
+}

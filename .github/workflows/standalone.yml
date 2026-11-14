@@ -586,3 +586,235 @@ jobs:
           retention-days: 14
           if-no-files-found: error
           path: standalone-artifacts/
+
+  native-sanitizers:
+    name: Native standalone (Linux GCC ASan + UBSan + leaks)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+      UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+      LSAN_OPTIONS: exitcode=23
+      SDL_AUDIODRIVER: dummy
+      SDL_VIDEODRIVER: dummy
+      SDL_RENDER_DRIVER: software
+      HAMMOND_SANITIZER_TARGETS: >-
+        test_standalone_ui test_standalone_preset_ui
+        test_standalone_workspaces_author test_standalone_workspace_acceptance
+        test_standalone_projection test_standalone_inspection_author
+        test_standalone_inspection_acceptance test_standalone_workspace_continuity
+        test_standalone_drawing test_standalone_quad_drawing
+        test_standalone_workspace_raster test_standalone_scaled_view
+        test_standalone_preset_raster
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record the revision, sanitizer policy and tools
+        run: |
+          set -euo pipefail
+          mkdir -p standalone-sanitizer-logs
+          python - <<'PY'
+          import hashlib, json, os, pathlib, platform, shutil, subprocess
+          git = lambda *args: subprocess.check_output(["git", *args], text=True).strip()
+          revision = git("rev-parse", "HEAD")
+          assert revision == os.environ["GITHUB_SHA"], "checkout differs from the event revision"
+          subprocess.run(["git", "diff", "--exit-code", "--quiet", "HEAD", "--"], check=True)
+          logs = pathlib.Path("standalone-sanitizer-logs")
+          sources = (".github/workflows/standalone.yml", "CMakeLists.txt",
+                     "apps/standalone/CMakeLists.txt", "cmake/VerifySdl2.cmake",
+                     "tools/acquire_sdl2.py", "data/dependencies/sdl2-lock.json")
+          record = {
+              "source_commit": revision, "source_tree": git("rev-parse", "HEAD^{tree}"),
+              "run_id": os.environ["GITHUB_RUN_ID"], "run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "runner_os": os.environ["RUNNER_OS"], "runner_arch": os.environ["RUNNER_ARCH"],
+              "image_os": os.environ.get("ImageOS"), "image_version": os.environ.get("ImageVersion"),
+              "platform": platform.platform(), "configuration": "Release", "midi_enabled": False,
+              "environment": {name: os.environ[name] for name in
+                              ("ASAN_OPTIONS", "UBSAN_OPTIONS", "LSAN_OPTIONS",
+                               "SDL_AUDIODRIVER", "SDL_VIDEODRIVER", "SDL_RENDER_DRIVER")},
+              "required_tests": os.environ["HAMMOND_SANITIZER_TARGETS"].split(),
+              "source_sha256": {name: hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()
+                                for name in sources},
+          }
+          (logs / "provenance.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
+          shutil.copyfile("data/dependencies/sdl2-lock.json", logs / "sdl2-lock.json")
+          PY
+          cmake --version 2>&1 | tee standalone-sanitizer-logs/toolchain.log
+          ctest --version 2>&1 | tee -a standalone-sanitizer-logs/toolchain.log
+          python --version 2>&1 | tee -a standalone-sanitizer-logs/toolchain.log
+          gcc --version 2>&1 | tee -a standalone-sanitizer-logs/toolchain.log
+          g++ --version 2>&1 | tee -a standalone-sanitizer-logs/toolchain.log
+
+      - name: Explicitly acquire and locally verify locked external SDL2
+        run: |
+          set -euo pipefail
+          python tools/acquire_sdl2.py --destination "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-sanitizer-logs/sdl-acquisition.log
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-sanitizer-logs/sdl-verification.log
+          python - <<'PY'
+          import os, pathlib, shutil
+          source = pathlib.Path(os.environ["RUNNER_TEMP"]) / "hammond-sdl2"
+          shutil.copyfile(source / "docs/README-linux.md", "standalone-sanitizer-logs/SDL2-README-linux.md")
+          PY
+
+      - name: Install Ubuntu desktop and audio development headers
+        run: |
+          set -euo pipefail
+          # Reuse the Release runner setup; leave SDL's native backend detection enabled.
+          packages=(pkg-config libasound2-dev libpulse-dev libx11-dev libxext-dev
+                    libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev)
+          printf '%s\n' "${packages[@]}" > standalone-sanitizer-logs/ubuntu-requested-packages.txt
+          sudo apt-get update 2>&1 | tee standalone-sanitizer-logs/apt-update.log
+          sudo apt-get install --no-install-recommends -y "${packages[@]}" \
+            2>&1 | tee standalone-sanitizer-logs/apt-install.log
+          dpkg-query -W -f='${binary:Package}\t${Version}\t${Architecture}\n' \
+            | LC_ALL=C sort > standalone-sanitizer-logs/ubuntu-installed-packages.tsv
+
+      - name: Configure native Release with project and SDL sanitizers
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          set -euo pipefail
+          # The project option instruments C++; SDL's separate C targets need these C flags.
+          cmake -S . -B build-standalone-sanitizers -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
+            -DHAMMOND_ENABLE_MIDI=OFF -DHAMMOND_ENABLE_SANITIZERS=ON \
+            -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+            '-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' \
+            2>&1 | tee standalone-sanitizer-logs/configure.log
+
+      - name: Build only the thirteen interface acceptance targets
+        run: |
+          set -euo pipefail
+          read -r -a targets <<< "$HAMMOND_SANITIZER_TARGETS"
+          [[ ${#targets[@]} -eq 13 ]]
+          cmake --build build-standalone-sanitizers --config Release \
+            --target "${targets[@]}" --parallel 2 --verbose \
+            2>&1 | tee standalone-sanitizer-logs/build.log
+
+      - name: Require instrumented SDL C and project C++ objects and linked runtimes
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import collections, hashlib, json, os, pathlib, re, shlex, shutil, subprocess
+          build, logs = pathlib.Path("build-standalone-sanitizers"), pathlib.Path("standalone-sanitizer-logs")
+          required = os.environ["HAMMOND_SANITIZER_TARGETS"].split()
+          assert len(required) == len(set(required)) == 13
+          expected = set(required) | {"SDL2-static", "hammond_core", "hammond_standalone_support",
+                                      "hammond_standalone_drawing"}
+          commands = json.loads((build / "compile_commands.json").read_text())
+          counts = collections.Counter()
+          for entry in commands:
+              args = entry.get("arguments") or shlex.split(entry["command"])
+              output = pathlib.Path(entry["directory"]) / args[args.index("-o") + 1]
+              match = re.search(r"CMakeFiles/([^/]+)\.dir/", output.as_posix())
+              if not match or match.group(1) not in expected:
+                  continue
+              assert {"-fsanitize=address,undefined", "-fno-omit-frame-pointer"} <= set(args), entry
+              assert output.is_file() and output.stat().st_size > 0, output
+              counts[match.group(1)] += 1
+          assert set(counts) == expected, "Missing instrumented build inputs: " + str(expected - set(counts))
+          digest = lambda path: hashlib.sha256(path.read_bytes()).hexdigest()
+          archives = {}
+          for relative in ("_sdl2/libSDL2.a", "libhammond_core.a",
+                           "apps/standalone/libhammond_standalone_support.a",
+                           "apps/standalone/libhammond_standalone_drawing.a"):
+              archive = build / relative
+              symbols = subprocess.check_output(["nm", "-u", str(archive)], text=True)
+              assert "__asan_" in symbols and "__ubsan_" in symbols, relative
+              archives[relative] = {"sha256": digest(archive), "asan_and_ubsan_references": True}
+          executables = {}
+          for name in required:
+              executable = build / "apps/standalone" / name
+              link = build / "apps/standalone/CMakeFiles" / (name + ".dir/link.txt")
+              assert "-fsanitize=address,undefined" in shlex.split(link.read_text()), name
+              runtimes = subprocess.check_output(["ldd", str(executable)], text=True)
+              assert "libasan.so" in runtimes and "libubsan.so" in runtimes, (name, runtimes)
+              (logs / (name + "-runtimes.txt")).write_text(runtimes)
+              executables[name] = {"sha256": digest(executable), "link_command": link.read_text().strip()}
+          config = build / "_sdl2/include-config-release/SDL2/SDL_config.h"
+          shutil.copyfile(config, logs / "SDL_config-Release.h")
+          macros = dict(re.findall(r"^#define (SDL_(?:AUDIO|VIDEO)_DRIVER_\w+)\s+([^\r\n]+)", config.read_text(), re.M))
+          for name in ("SDL_VIDEO_DRIVER_DUMMY", "SDL_AUDIO_DRIVER_DUMMY", "SDL_VIDEO_DRIVER_X11",
+                       "SDL_AUDIO_DRIVER_ALSA", "SDL_AUDIO_DRIVER_PULSEAUDIO"):
+              assert macros.get(name, "").strip() == "1", name
+          record = {"instrumented_objects_by_target": dict(counts), "archives": archives,
+                    "executables": executables, "sdl_backends": macros,
+                    "compile_commands_sha256": digest(build / "compile_commands.json"),
+                    "scope": "Selected project C++ and pinned SDL C; system libraries are not rebuilt."}
+          (logs / "instrumentation.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
+          PY
+
+      - name: Discover exactly thirteen gates and run with leak checking
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, pathlib, re, subprocess
+          logs = pathlib.Path("standalone-sanitizer-logs")
+          required = os.environ["HAMMOND_SANITIZER_TARGETS"].split()
+          assert len(required) == len(set(required)) == 13
+          selection = "^(" + "|".join(re.escape(name) for name in required) + ")$"
+          (logs / "ctest-filter.txt").write_text(selection + "\n")
+          command = ["ctest", "--test-dir", "build-standalone-sanitizers", "-C", "Release",
+                     "--show-only=json-v1", "--no-tests=error", "-R", selection]
+          with (logs / "ctest-discovered.json").open("w") as output:
+              subprocess.run(command, stdout=output, check=True)
+          discovered = json.loads((logs / "ctest-discovered.json").read_text())["tests"]
+          names = [test["name"] for test in discovered]
+          assert len(names) == len(set(names)) == 13 and set(names) == set(required), names
+          sanitizer_limits = {"test_standalone_workspace_raster": 180,
+                              "test_standalone_scaled_view": 360,
+                              "test_standalone_preset_raster": 300}
+          for test in discovered:
+              assert test.get("command"), "Missing built test command: " + test["name"]
+              properties = {item["name"]: item["value"] for item in test.get("properties", [])}
+              assert not properties.get("DISABLED", False), "Disabled required gate: " + test["name"]
+              if test["name"] in sanitizer_limits:
+                  assert properties.get("TIMEOUT") == sanitizer_limits[test["name"]], properties
+              overrides = properties.get("ENVIRONMENT", []) + properties.get("ENVIRONMENT_MODIFICATION", [])
+              assert not any(value.startswith(("ASAN_OPTIONS=", "UBSAN_OPTIONS=", "LSAN_OPTIONS="))
+                             for value in overrides), (test["name"], overrides)
+          print("Discovered exactly 13 built interface gates; job sanitizer policy applies to every gate.", flush=True)
+          PY
+          ctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \
+            --no-tests=error --timeout 180 -R "$(cat standalone-sanitizer-logs/ctest-filter.txt)" \
+            --output-junit "$GITHUB_WORKSPACE/standalone-sanitizer-logs/ctest.xml" \
+            2>&1 | tee standalone-sanitizer-logs/ctest.log
+
+      - name: Reverify source and locked SDL2 after acceptance
+        run: |
+          set -euo pipefail
+          git diff --exit-code --quiet HEAD --
+          python tools/acquire_sdl2.py --verify-existing "$RUNNER_TEMP/hammond-sdl2" \
+            2>&1 | tee standalone-sanitizer-logs/sdl-final-verification.log
+
+      - name: Retain native sanitizer diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: standalone-linux-gcc-sanitizers-${{ github.sha }}-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            standalone-sanitizer-logs/
+            build-standalone-sanitizers/CMakeCache.txt
+            build-standalone-sanitizers/compile_commands.json
+            build-standalone-sanitizers/CMakeFiles/CMakeConfigureLog.yaml
+            build-standalone-sanitizers/CMakeFiles/CMakeOutput.log
+            build-standalone-sanitizers/CMakeFiles/CMakeError.log
+            build-standalone-sanitizers/Testing/Temporary/LastTest.log
+            build-standalone-sanitizers/Testing/Temporary/LastTestsFailed.log

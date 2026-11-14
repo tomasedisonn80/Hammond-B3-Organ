@@ -7,16 +7,18 @@ and [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md).
 The complete atlas review, workspace/geometry/inspection implementation, actual
 packages, protected musical continuity and platform repairs are retained.
 
-1. Publish completed label/title/status and strict Windows fixture repairs; retain
-   their original failures and source identities. Observe hosted Windows results
-   on the repaired revision, without substituting Linux success.
-2. Close the exact remaining qualification: A41's separate native sanitizer
-   measurements, hosted leak runtime, final on/off package and actual gallery,
-   final coherent source and VST3 boundary. The local SDL lacks X11/Wayland;
-   qualify a backend-capable build before claiming actual pointer capture.
+1. Publish and observe the new thirteen-suite native SDL sanitizer/leak job.
+   The polished product and strict Windows fixtures are already published at
+   `8673713`, with all eleven existing hosted jobs successful. Preserve the local
+   leak-runtime blocker and original raster timeouts separately from later runs.
+2. Finish the actual final gallery, full coherent source and VST3 boundary.
+   Final on/off packages and source-absent relocation pass, including the current
+   guide refresh. The local SDL lacks X11/Wayland; existing development headers
+   are available in the shared sysroot for an identified backend-capable build
+   before any actual pointer-capture claim.
 3. Complete all sixty actual assignments and their strict record, refresh the
    README/setup/status/handoff, and publish completed work to main with a fresh
-   expected-head guard. The first UI gate's 146/147 result, later repairs and
+   expected-head guard. The first UI gate’s 146/147 result, later repairs and
    original sanitizer timeouts remain separate facts.
 
 Keep 47 parameter identities, saved-state compatibility, nominal models and all

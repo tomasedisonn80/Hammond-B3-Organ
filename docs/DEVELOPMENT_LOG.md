@@ -1,5 +1,29 @@
 # Development log
 
+## 2026-11-14 — Close polished UI platform gates and final package relocation
+
+Published and fetched `8673713`, tree `e11bd68d`, with readable preset labels,
+centered title, truthful Load status and strict Windows fixture repairs. All
+eleven hosted jobs completed successfully at this revision, including both
+Windows builds, macOS standalone, Linux MIDI-on/off, core sanitizers and VST3.
+[Exact job evidence](development/2026-11-14-interface-continuation/reports/root-ui-polish-hosted.json)
+keeps the upcoming native SDL leak job separate.
+
+A41 completed all three timed-out raster binaries with unchanged assertions and
+no ASan/UBSan findings in separate bounded diagnostics. Root added only
+sanitizer-conditional budgets of 180/360/300 seconds; actual CTest discovery
+confirms those limits and preserves ordinary 60/60/30. A43’s focused hosted
+job instruments project C++ and SDL C and will run all thirteen gates with leak
+detection enabled. Original local LSan attachment failures and CTest timeouts
+remain retained.
+
+A44 qualifies final native packages in a mount namespace without source, build
+or SDK access, retaining system ALSA fallback evidence. A45 found stale current
+MIDI guide/navigation facts; root corrected 47/state4, actual preset controls,
+diagnostic schema 3 and historical references. The packages’ guide-only refresh
+changes no executable; the final payloads remain 19/15 files. A46 now prepares a
+new actual native gallery and README images.
+
 ## 2026-11-14 — Finish native readability and operator fixes; qualify strict test portability
 
 Published the workspace and independent acceptance checkpoint as `aea58bb` with

@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "assignment": 45,
+  "method": "Read-only retained byte/provenance verification; no recapture, rendering or new visual comparison",
+  "gallery": "examples/demos/standalone-interface-preview-v1",
+  "payload_files_checked": 39,
+  "payload_mismatches": [],
+  "gallery_status": "passed",
+  "retained_executable": {
+    "after": {
+      "bytes": 3699200,
+      "sha256": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    },
+    "before": {
+      "bytes": 3699200,
+      "sha256": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    },
+    "path": "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone"
+  },
+  "qualification": "Actual native screenshots with SDL dummy audio/video and software renderer; no physical device, deadline, accessibility, measured instrument or literal 1:1 reference qualification.",
+  "reference": {
+    "path": "docs/design/atlas-cover-reference.jpg",
+    "expected_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "actual_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "matches": true,
+    "evidence_class": "user-supplied generated design concept; not calibrated physical geometry"
+  },
+  "source_honesty": "Gallery README explicitly identifies a provisional A20 renderer on the 5d81199 overlay, predating A28/A31/A34/A36. Its historical pixels do not qualify the current product or establish 1:1 acceptance. A45 supplied a main README caption clarification; A46 owns the new gallery.",
+  "limitations": [
+    "No current executable rebuild/qualification",
+    "No bitmap or reference comparison performed by A45",
+    "No physical display/audio/MIDI/accessibility/fidelity claims"
+  ]
+}

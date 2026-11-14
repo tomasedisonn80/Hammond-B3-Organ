@@ -2,7 +2,7 @@
 
 Session: [2026-11-14-interface-continuation](development/2026-11-14-interface-continuation/README.md).
 Starting published source: `d493e998e5dd7cf44db46854e87309745063ac54`.
-Status: workspace, geometry and inspection contracts accepted for implementation after wave-2 cross-review. Execution gates remain pending.
+Status: workspace, geometry and inspection are implemented with source-identified acceptance. Final coherent-source, gallery, hosted and product gates retain their separate status in the [current checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md).
 
 ## Goal
 

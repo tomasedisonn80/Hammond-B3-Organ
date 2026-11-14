@@ -371,7 +371,9 @@
       "wave": 7,
       "agent": "/root/w07_a41_native_sanitizers",
       "scope": "fully instrumented native ASan/UBSan qualification with separate leak-runtime capability and original-timeout evidence",
-      "status": "running"
+      "status": "accepted",
+      "result": "session41-native-sanitizers.md",
+      "acceptance": "Reviewed fully instrumented 220-unit build, original 10-pass/3-timeout gate and all three unchanged bounded direct diagnostics completing without ASan/UBSan findings. All 13 binaries and114 protected files remain stable. Local leak runtime is explicitly blocked, not passed."
     },
     {
       "number": 42,
@@ -387,13 +389,47 @@
       "wave": 8,
       "agent": "/root/w08_a43_native_leak_ci",
       "scope": "focused hosted native sanitizer/leak gate closing local ptrace limitation with measured instrumentation budgets",
-      "status": "running"
+      "status": "accepted",
+      "result": "session43-native-leak-ci.md",
+      "acceptance": "Reviewed focused thirteen-target hosted native sanitizer/leak workflow, unchanged Release prefix and complete static syntax/inventory checks. Root integrated measured sanitizer-only budgets and verified actual configured properties; Release limits and assertions preserved. Exact hosted leak result remains a separate A48/A58 gate."
     },
     {
       "number": 44,
       "wave": 8,
       "agent": "/root/w08_a44_final_package",
       "scope": "actual final MIDI-on/off install inventory and relocation qualification",
+      "status": "accepted",
+      "result": "session44-final-package.md",
+      "acceptance": "Reviewed exact 19/15-file final packages, two install suites/16 methods and eight isolated native outcomes with source/build/SDK paths absent. System ALSA fallback and MIDI-off dependency boundary proved; guide-only final refresh preserves app bytes and both Release timeout inventories."
+    },
+    {
+      "number": 45,
+      "wave": 8,
+      "agent": "/root/w08_a45_documentation_freshness",
+      "scope": "independent current operator/setup/source-identity documentation and relevant-link audit",
+      "status": "accepted",
+      "result": "session45-documentation-freshness.md",
+      "acceptance": "Independent current-guide, source and696-link audit found concrete state/control/schema/navigation defects. Root applied20 exact guide/index/scope replacements; worker verified final hashes and package refresh. Provisional README caption is superseded by A46 final gallery."
+    },
+    {
+      "number": 46,
+      "wave": 8,
+      "agent": "/root/w08_a46_final_native_gallery",
+      "scope": "new actual native eight-view gallery from published polished product and current README UI/UX images",
+      "status": "running"
+    },
+    {
+      "number": 47,
+      "wave": 8,
+      "agent": "/root/w08_a47_vst3_boundary",
+      "scope": "independent preserved native VST3 parameter/state/bus and build boundary with exact hosted source evidence",
+      "status": "running"
+    },
+    {
+      "number": 48,
+      "wave": 8,
+      "agent": "/root/w08_a48_hosted_platform_evidence",
+      "scope": "independent exact published platform qualification and observed Windows fixture-failure closure",
       "status": "running"
     }
   ],

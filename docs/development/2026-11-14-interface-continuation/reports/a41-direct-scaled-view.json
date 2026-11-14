@@ -1,0 +1,28 @@
+{
+  "asan_ubsan_diagnostics": [],
+  "command": [
+    "/workspace/scratch/601951e27dc3/build-interface-asan/apps/standalone/test_standalone_scaled_view"
+  ],
+  "cwd": "/workspace/scratch/601951e27dc3/build-interface-asan/apps/standalone",
+  "elapsed_seconds": 172.510959,
+  "environment_overrides": {
+    "ASAN_OPTIONS": "detect_leaks=0:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_VIDEODRIVER": "dummy",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+  },
+  "executable_sha256_after": "274ce0dbdbe06c572f7ee82601272d3a66fe2cd77302e82c6dfb52dd32de70ad",
+  "executable_sha256_before": "274ce0dbdbe06c572f7ee82601272d3a66fe2cd77302e82c6dfb52dd32de70ad",
+  "log": "docs/development/2026-11-14-interface-continuation/reports/a41-direct-scaled-view.txt",
+  "log_bytes": 5241,
+  "log_sha256": "69b0f6f8c639892e32a718745ccd2602ac932096f2b4384642547be7a9b9460e",
+  "returncode": 0,
+  "scope": "One separately authorized bounded direct diagnostic. Original CTest 10 PASS/3 TIMEOUT is unchanged. Leak qualification remains blocked.",
+  "started_at_utc": "2026-11-14T12:45:02.097098+00:00",
+  "test_name": "test_standalone_scaled_view",
+  "timed_out": false,
+  "timeout_seconds": 240
+}

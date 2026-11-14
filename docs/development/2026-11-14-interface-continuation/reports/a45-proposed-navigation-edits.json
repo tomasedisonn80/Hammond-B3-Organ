@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "kind": "read-only exact replacements for root; not applied",
+  "replacements": [
+    {
+      "id": "index-current-entry",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "Start with the [standalone handoff](STANDALONE_HANDOFF.md),\n[scanner handoff](SCANNER_HANDOFF.md) or [calibration handoff](CALIBRATION_HANDOFF.md)\nfor the relevant active track.",
+      "after": "Start with the [interface operating guide](INTERFACE_RUNBOOK.md) and\n[current interface checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md),\n[scanner handoff](SCANNER_HANDOFF.md) or [calibration handoff](CALIBRATION_HANDOFF.md)\nfor the relevant active track. The [earlier standalone handoff](STANDALONE_HANDOFF.md)\nretains its named source and qualification."
+    },
+    {
+      "id": "index-resume-entry",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "| How do I resume with exact commands and evidence? | [STANDALONE_HANDOFF.md](STANDALONE_HANDOFF.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [CALIBRATION_HANDOFF.md](CALIBRATION_HANDOFF.md), or [PEDAL_HANDOFF.md](PEDAL_HANDOFF.md), according to the selected task. |",
+      "after": "| How do I resume with exact commands and evidence? | [Current interface checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md) and [operating guide](INTERFACE_RUNBOOK.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [CALIBRATION_HANDOFF.md](CALIBRATION_HANDOFF.md), or [PEDAL_HANDOFF.md](PEDAL_HANDOFF.md), according to the selected task. |"
+    },
+    {
+      "id": "index-play-entry",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "| Play the standalone window | [Standalone app](STANDALONE_APP.md) and [handoff](STANDALONE_HANDOFF.md): keyboard/pointer playing, Audio/Help, saved controls and bounded replay. |",
+      "after": "| Play the standalone window | [Interface runbook](INTERFACE_RUNBOOK.md), [preset/build guide](PRESET_RUNBOOK.md) and [standalone app](STANDALONE_APP.md): Play/Rotary/Service, Flat, keyboard/pointer/MIDI, saved controls and bounded replay. |"
+    },
+    {
+      "id": "index-current-compiled-count",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "units and all 45 compiled mappings.",
+      "after": "units and all 47 compiled mappings."
+    },
+    {
+      "id": "index-current-package-count",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "stages the audio-device app and its eight accompanying files.",
+      "after": "stages 15 files with MIDI disabled or 19 with MIDI enabled, including the app\nand six operating/model/install guides."
+    },
+    {
+      "id": "index-current-controls-state",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "There are 45 permanent IDs; `B3CONTROLS3` reads versions 1/2/3 with explicit muted-pedal migration.",
+      "after": "There are 47 permanent IDs, preserving the earlier 45 records. The writer emits `B3CONTROLS4`; readers 1–3 retain their existing migrations and initialize fixed modes to None."
+    },
+    {
+      "id": "index-current-native-count",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "Three event buses and 45 controls drive the existing Engine, with generic host controls.",
+      "after": "Three event buses and 47 controls drive the existing Engine, with generic host controls; historical native reports retain their original source/count."
+    },
+    {
+      "id": "index-current-session",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "| Session | Assignment and evidence records |\n| --- | --- |",
+      "after": "| Session | Assignment and evidence records |\n| --- | --- |\n| Current 2026-11-14 interface continuation | [Session](development/2026-11-14-interface-continuation/README.md), [actual manifest](development/2026-11-14-interface-continuation/assignments.json) and [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md); current M9 interface ownership and source-specific evidence. |"
+    },
+    {
+      "id": "index-historical-completion-disambiguation",
+      "path": "docs/PROJECT_GUIDE.md",
+      "base_sha256": "97ecc7e9807aabe071c3ccda57bbaa6c6ad2f29cc2c9aeb8dd4a131e14f05168",
+      "before": "The continuation's sixty assignments are complete, with sixty distinct actual",
+      "after": "The console continuation's sixty assignments are complete, with sixty distinct actual"
+    },
+    {
+      "id": "scope-current-status",
+      "path": "docs/INTERFACE_CONTINUATION_SCOPE.md",
+      "base_sha256": "fff0ba7cf8050808ad5ac5965f826e900270b7dfc4ddabacc90e5d87bbb83abe",
+      "before": "Status: workspace, geometry and inspection contracts accepted for implementation after wave-2 cross-review. Execution gates remain pending.",
+      "after": "Status: workspace, geometry and inspection are implemented with source-identified acceptance. Final coherent-source, gallery, hosted and product gates retain their separate status in the [current checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md)."
+    },
+    {
+      "id": "readme-preview-source-label",
+      "path": "README.md",
+      "base_sha256": "cf7d5ce0cdaa277214f66d6cfeb6a7adf047059a886b5a975ea73044f16eabf1",
+      "before": "This is an **actual native application capture**, with Upper fixed C#, Lower adjustable A#, held Upper notes 60/64, Lower note 67 and pedal 3.",
+      "after": "This is an **actual native application capture from the provisional A20 renderer**, predating the later scale, preset-label/title and Load-message repairs. It shows Upper fixed C#, Lower adjustable A#, held Upper notes 60/64, Lower note 67 and pedal 3."
+    }
+  ]
+}

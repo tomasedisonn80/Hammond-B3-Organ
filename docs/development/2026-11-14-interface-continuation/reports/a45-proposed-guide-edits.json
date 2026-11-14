@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "kind": "read-only exact replacements for root; not applied",
+  "base_path": "docs/MIDI_UI_RUNBOOK.md",
+  "base_sha256": "bc088e41621a0fa5363b3206e1ca71bbf4518a0492f46d842c415ab116bb779d",
+  "replacements": [
+    {
+      "id": "midi-current-capability",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "scanner, AO-28 or Leslie sound. All 45 public parameter identities and\n`B3CONTROLS3` remain unchanged.",
+      "after": "scanner, AO-28 or Leslie sound. The current instrument has 47 public parameter\nidentities and a `B3CONTROLS4` writer, with readers for versions 1–3. The first\n45 parameter records retain their meanings.",
+      "evidence": [
+        "include/hammond/ParameterBridge.h: kParameterCount",
+        "src/ControlStateIO.cpp: read_control_state/write_control_state"
+      ]
+    },
+    {
+      "id": "midi-current-guide-entry",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "This guide covers source setup, installed use, connection, recovery and bounded\nengineering checks. The sibling [application guide](STANDALONE_APP.md),",
+      "after": "This guide covers source setup, installed use, connection, recovery and bounded\nengineering checks. The [interface guide](INTERFACE_RUNBOOK.md) covers current\nPlay/Rotary/Service, Flat and background MIDI discovery; the\n[preset guide](PRESET_RUNBOOK.md) covers fixed registrations and saved controls.\nThe sibling [application guide](STANDALONE_APP.md),",
+      "evidence": [
+        "docs/INTERFACE_RUNBOOK.md",
+        "docs/PRESET_RUNBOOK.md"
+      ]
+    },
+    {
+      "id": "midi-background-discovery",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "Select **MIDI** or press **Ctrl+M**; Command is also accepted for Ctrl. Opening\nthe modal lists current native ports after **No input**. Tab/Shift+Tab cycles\nthese eight controls, with wraparound:",
+      "after": "Select **MIDI** or press **Ctrl+M**; Command is also accepted for Ctrl. Opening\nthe modal starts background discovery; completed results list native ports\nafter **No input**. While searching, No input/Apply, Disconnect and Close remain\navailable. Applying a physical port requires the current discovery to finish.\nTab/Shift+Tab cycles these eight controls, with wraparound:",
+      "evidence": [
+        "apps/standalone/main.cpp: begin_midi_discovery/poll_midi_discovery",
+        "docs/INTERFACE_RUNBOOK.md: MIDI discovery and recovery"
+      ]
+    },
+    {
+      "id": "midi-preset-controls",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "**EDIT A/B** selects the retained bank displayed by the drawbar editors.\n**PLAY A/B** selects the sounding bank and reconnects that manual's route.\n**CANCEL** disconnects its route while preserving held keys and stored values.\nMIDI drawbars always edit B: they neither select B, change A nor reopen Cancel.\nChoose PLAY B explicitly to hear those edited B values. MIDI and local edits\nshare the desired control state and its pending/dirty indicators.",
+      "after": "**EDIT A/B** selects the retained bank displayed by the drawbar editors.\nPreset **A#** sounds adjustable bank A and preset **B** sounds bank B; either\nreconnects that manual and clears fixed mode. Preset **C#–A** selects one of nine\nfixed rows for that manual, preserving both adjustable banks. Preset **C**\ncancels the route while preserving held keys and stored bank/fixed memory.\nMIDI drawbars always edit B: they neither select B, change A, leave fixed mode\nnor reopen Cancel. Choose preset B explicitly to hear those edited B values.\nMIDI and local edits share the desired control state and its pending/dirty\nindicators.",
+      "evidence": [
+        "src/ControlState.cpp: select_bank/select_preset/cancel",
+        "apps/standalone/UiModel.cpp: make_ui_layout/activate",
+        "apps/standalone/MidiInput.cpp"
+      ]
+    },
+    {
+      "id": "midi-current-state",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "**Save** or Ctrl+S explicitly writes acknowledged musical controls. Ctrl+O loads\nthe selected control file. Exit never saves automatically. `B3CONTROLS3` stores\nthe four drawbar banks, selected routes, expression, percussion and pedal\nmixtures, with the existing v1/v2 migrations. It does not store held notes,\nsource phases, transient envelopes, MIDI port/channels, audio settings or window\ngeometry. Without a valid selected state the app proposes upper B `888000000`,\nlower B `008000000`, pedals `80`; this is an audition choice, not a factory preset.",
+      "after": "**Save** or Ctrl+S explicitly writes acknowledged musical controls. Ctrl+O loads\nthe selected control file. Exit never saves automatically. `B3CONTROLS4` stores\nthe four drawbar banks, remembered banks, raw fixed choices, route bits,\nexpression, percussion and pedal mixtures, with the pinned registration catalog\nidentity. Readers 1–3 remain supported and migrate fixed modes to None; the\nnext explicit Save writes version 4. It does not store held notes, source\nphases, transient envelopes, MIDI port/channels, audio settings, window geometry,\nworkspace, Flat presentation or focus. An absent selected state file gives the\nproposed upper B `888000000`, lower B `008000000`, pedals `80`; this is an audition\nchoice, not a factory preset.",
+      "evidence": [
+        "src/ControlStateIO.cpp",
+        "apps/standalone/main.cpp: initialize_state/save/load",
+        "docs/PRESET_RUNBOOK.md: Save, Load and recovery"
+      ]
+    },
+    {
+      "id": "midi-historical-visual-defect",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "[independent visual review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/reviews/MIDI_UI_REFERENCE_REVIEW.md)\nrecords actual screenshots and differences from the source, including an open\nthin-glyph legibility defect at minimum size.",
+      "after": "[earlier independent visual review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/reviews/MIDI_UI_REFERENCE_REVIEW.md)\nretains its source-specific screenshots, differences and original thin-glyph\nfinding. The [current interface status](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STATUS.md)\nrecords subsequent glyph, scale and preset-label repairs with their evidence.",
+      "evidence": [
+        "docs/development/2026-11-14-interface-continuation/reports/a34-result.json",
+        "docs/STATUS.md"
+      ]
+    },
+    {
+      "id": "midi-smoke-diagnostic-schema",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "`schema_version: 2`, `smoke.passed: true`",
+      "after": "`schema_version: 3`, `smoke.passed: true`",
+      "evidence": [
+        "apps/standalone/main.cpp: write_diagnostics"
+      ]
+    },
+    {
+      "id": "midi-replay-diagnostic-schema",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "| `schema_version` / `midi.source` | `2` / `synthetic-replay` |",
+      "after": "| `schema_version` / `midi.source` | `3` / `synthetic-replay` |",
+      "evidence": [
+        "apps/standalone/main.cpp: write_diagnostics"
+      ]
+    },
+    {
+      "id": "midi-current-session-link",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "the [current session records](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-midi-ui/README.md)",
+      "after": "the [current interface session](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-interface-continuation/README.md)",
+      "evidence": [
+        "docs/development/2026-11-14-interface-continuation/CHECKPOINT.md"
+      ]
+    },
+    {
+      "id": "midi-current-qualification-footer",
+      "path": "docs/MIDI_UI_RUNBOOK.md",
+      "before": "The current independent visual review leaves minimum-size thin-glyph legibility\nand differences from the exact reference open. Physical MIDI/audio, Windows and\nmacOS qualification of this MIDI slice, native accessibility, scanner G5,\nconnected AO-28/Leslie models and measured acoustic fidelity retain their own\ngates.",
+      "after": "Literal equality with the reference remains open. Hosted platform results and\nvisual repairs qualify only their named source revisions; consult current status\nfor the latest observed results. Physical MIDI/audio, native accessibility,\nscanner G5, connected AO-28/Leslie models and measured acoustic fidelity retain\ntheir own gates.",
+      "evidence": [
+        "docs/development/2026-11-14-interface-continuation/reports/platform-repair-hosted.json",
+        "docs/development/2026-11-14-interface-continuation/reports/a34-result.json",
+        "docs/reviews/INTERFACE_REFERENCE_COMPARISON.md"
+      ]
+    }
+  ]
+}

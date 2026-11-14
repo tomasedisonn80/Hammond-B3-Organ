@@ -1,0 +1,555 @@
+{
+  "build": "/workspace/scratch/601951e27dc3/build-native",
+  "capabilities": {
+    "component": "Standalone",
+    "fonts": {
+      "embedded": true,
+      "license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+      "manifest_sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+    },
+    "midi": {
+      "availability": "Compiled backend only; runtime service, permissions and physical input availability must be checked on the destination system.",
+      "backend": "ALSA",
+      "enabled": true,
+      "rtmidi": {
+        "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+        "license_sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364",
+        "linkage": "static",
+        "lock_sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa",
+        "patch_id": "coremidi-zero-initialize-v1",
+        "patch_sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad",
+        "prepared_manifest_sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae",
+        "prepared_source_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a",
+        "version": "6.0.0"
+      }
+    },
+    "profile": "embedded nominal-unmeasured-v1",
+    "qualification": "Local staging metadata; no physical-device, timing, fidelity or release-distribution claim.",
+    "reference_art": {
+      "embedded": true,
+      "identity": "standalone-reference-decoration-v1",
+      "manifest_sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+      "provenance_sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "rights_notice": "THIRD_PARTY_NOTICES.md#embedded-reference-decoration",
+      "source_image_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    },
+    "schema_version": 1,
+    "sdl2": {
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "license_sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+      "linkage": "static",
+      "lock_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "version": "2.32.10"
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "--install",
+        "/workspace/scratch/601951e27dc3/build-native",
+        "--config",
+        "Release",
+        "--component",
+        "Standalone",
+        "--prefix",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω"
+      ],
+      "driver_mode": "dummy",
+      "elapsed_seconds": 0.11,
+      "expected_returncode": 0,
+      "name": "install",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/bin/hammond_standalone\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/STANDALONE_APP.md\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/STANDALONE_MODEL.md\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/LICENSE-SDL2.txt\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/sdl2-lock.json\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/font-source-manifest.json\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/reference-source-manifest.json\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/atlas-reference.json\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/LICENSE-RtMidi.txt\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/rtmidi-lock.json\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/rtmidi-prepared-source.json\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/rtmidi-coremidi-zero-init.patch\n-- Installing: /workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω/share/hammond-b3-organ/standalone/standalone-capabilities.json\n"
+    },
+    {
+      "command": [
+        "/usr/bin/bwrap",
+        "--die-with-parent",
+        "--new-session",
+        "--unshare-pid",
+        "--ro-bind",
+        "/usr",
+        "/usr",
+        "--ro-bind",
+        "/lib",
+        "/lib",
+        "--ro-bind",
+        "/lib64",
+        "/lib64",
+        "--ro-bind",
+        "/bin",
+        "/bin",
+        "--ro-bind",
+        "/etc",
+        "/etc",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--ro-bind",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/relocated organ Ω",
+        "/app",
+        "--bind",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/unrelated cwd 音",
+        "/run-work",
+        "--chdir",
+        "/run-work",
+        "--",
+        "/usr/bin/python3",
+        "-c",
+        "import os,json,sys; p={x:os.path.exists(x) for x in sys.argv[1:]}; print(json.dumps(p,sort_keys=True)); assert not any(p.values())",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+        "/workspace/scratch/601951e27dc3/build-native",
+        "/workspace/scratch/601951e27dc3/build-native-midi-off",
+        "/workspace/scratch/7ffc2842608b/SDL2",
+        "/workspace/scratch/cd4bd06ce68f/rtmidi",
+        "/workspace/scratch/641ca55ce6de/native-sysroot/usr",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω"
+      ],
+      "driver_mode": "dummy",
+      "elapsed_seconds": 0.0607,
+      "expected_returncode": 0,
+      "name": "source-absence-proof",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"/workspace/scratch/601951e27dc3/Hammond-B3-Organ\": false, \"/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ \\u03a9\": false, \"/workspace/scratch/601951e27dc3/build-native\": false, \"/workspace/scratch/601951e27dc3/build-native-midi-off\": false, \"/workspace/scratch/641ca55ce6de/native-sysroot/usr\": false, \"/workspace/scratch/7ffc2842608b/SDL2\": false, \"/workspace/scratch/cd4bd06ce68f/rtmidi\": false}\n"
+    },
+    {
+      "command": [
+        "/usr/bin/readelf",
+        "-d",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/relocated organ Ω/bin/hammond_standalone"
+      ],
+      "driver_mode": "dummy",
+      "elapsed_seconds": 0.0043,
+      "expected_returncode": 0,
+      "name": "elf-dynamic",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "\nDynamic section at offset 0x3362a0 contains 31 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libasound.so.2]\n 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000001d (RUNPATH)            Library runpath: [/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu]\n 0x000000000000000c (INIT)               0x1d000\n 0x000000000000000d (FINI)               0x1e3ca0\n 0x0000000000000019 (INIT_ARRAY)         0x3307b0\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x3307b8\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0x2658\n 0x0000000000000006 (SYMTAB)             0x498\n 0x000000000000000a (STRSZ)              8706 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x337fe8\n 0x0000000000000002 (PLTRELSZ)           7608 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x1a930\n 0x0000000000000007 (RELA)               0x4d60\n 0x0000000000000008 (RELASZ)             89040 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x4b30\n 0x000000006fffffff (VERNEEDNUM)         5\n 0x000000006ffffff0 (VERSYM)             0x485a\n 0x000000006ffffff9 (RELACOUNT)          3626\n 0x0000000000000000 (NULL)               0x0\n"
+    },
+    {
+      "command": [
+        "/usr/bin/bwrap",
+        "--die-with-parent",
+        "--new-session",
+        "--unshare-pid",
+        "--ro-bind",
+        "/usr",
+        "/usr",
+        "--ro-bind",
+        "/lib",
+        "/lib",
+        "--ro-bind",
+        "/lib64",
+        "/lib64",
+        "--ro-bind",
+        "/bin",
+        "/bin",
+        "--ro-bind",
+        "/etc",
+        "/etc",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--ro-bind",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/relocated organ Ω",
+        "/app",
+        "--bind",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/unrelated cwd 音",
+        "/run-work",
+        "--chdir",
+        "/run-work",
+        "--",
+        "/usr/bin/ldd",
+        "/app/bin/hammond_standalone"
+      ],
+      "driver_mode": "dummy",
+      "elapsed_seconds": 0.0193,
+      "expected_returncode": 0,
+      "name": "runtime-library-resolution",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "\tlinux-vdso.so.1 (0x00007f763356d000)\n\tlibasound.so.2 => /lib/x86_64-linux-gnu/libasound.so.2 (0x00007f76330dd000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f7632e77000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f7632d87000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f7632d5a000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7632b64000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f763356f000)\n"
+    },
+    {
+      "command": [
+        "/usr/bin/bwrap",
+        "--die-with-parent",
+        "--new-session",
+        "--unshare-pid",
+        "--ro-bind",
+        "/usr",
+        "/usr",
+        "--ro-bind",
+        "/lib",
+        "/lib",
+        "--ro-bind",
+        "/lib64",
+        "/lib64",
+        "--ro-bind",
+        "/bin",
+        "/bin",
+        "--ro-bind",
+        "/etc",
+        "/etc",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--ro-bind",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/relocated organ Ω",
+        "/app",
+        "--bind",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/unrelated cwd 音",
+        "/run-work",
+        "--chdir",
+        "/run-work",
+        "--",
+        "/app/bin/hammond_standalone",
+        "--help"
+      ],
+      "driver_mode": "deliberately invalid",
+      "elapsed_seconds": 0.0171,
+      "expected_returncode": 0,
+      "name": "help",
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "B-3 Workshop -- nominal dry organ\nUsage: hammond_standalone [options]\n\n  --help                 Show this help without initializing SDL.\n  --list-audio           List SDL output devices without a window.\n  --list-midi            List exact MIDI input names without initializing SDL.\n  --midi-port NAME       Open this exact MIDI input; omitted means no input.\n  --midi-upper-channel N Upper wire channel, 1..16 (default 1).\n  --midi-lower-channel N Lower wire channel, 1..16 (default 2).\n  --midi-pedal-channel N Pedal wire channel, 1..16 (default 3).\n                         The three MIDI channels must be distinct.\n  --device NAME          Exact SDL output name; omitted means default.\n  --sample-rate N        44100, 48000 (default), or 96000 Hz.\n  --buffer-frames N      128, 256, 512 (default), 1024, or 2048.\n  --state PATH           Control-state file for startup, Save, and Load.\n                         Default: SDL preference directory/controls.b3controls.\n  --width N              Initial logical width: 960..8192, default 1280.\n  --height N             Initial logical height: 700..8192, default 900.\n  --workspace NAME       Initial play (default), rotary, or service view.\n  --flat                 Start with flat presentation; controls are unchanged.\n  --smoke-ms N           Actual window/device smoke, 250..10000 ms.\n  --input-script PATH    Bounded B3UIREPLAY1 events; excludes --smoke-ms.\n  --midi-script PATH     Synthetic B3MIDIREPLAY1 input; excludes --midi-port,\n                         --list-midi, and --smoke-ms. Starts disconnected.\n                         Paired UI/MIDI scripts must have equal durations.\n  --screenshot PATH      Write one BMP before presenting the rendered frame.\n  --diagnostics PATH     Write JSON after closing and joining the device.\n\nPlaying: A W S E D F T G Y H U J K O L P ;. F1/F2/F3 select\nUpper/Lower/Pedals; [ and ] change octave.\nF4/F5/F6 select Play/Rotary/Service; F7 toggles dimensional/flat.\nTab/Shift+Tab move focus; arrows, Home, End adjust controls.\nSpace holds the focused playing key.\nEscape releases UI notes. Ctrl+S saves, Ctrl+O loads, Ctrl+, opens Audio,\nCtrl+M opens MIDI, and Shift+/ opens Help (Command also works for Ctrl).\nAudio/MIDI dialogs: Tab/Shift+Tab, arrows, Home/End, Enter/Space, Escape.\nMIDI uses one explicit input port; Apply connects and Disconnect releases\nonly MIDI owners. A fault, Panic, or audio restart requires explicit Apply.\n\nExisting valid state loads at startup; Save is explicit, never automatic.\nWithout a state: proposed audition registration Upper B 888000000,\nLower B 008000000, pedals 80. This is not a factory preset.\nSmoke sends one short UI note and checks real SDL callbacks and output.\nDummy drivers are used only when explicitly selected in the environment,\nfor example SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy.\nNo physical-device, latency, or acoustic-fidelity result is implied.\n"
+    },
+    {
+      "command": [
+        "/usr/bin/bwrap",
+        "--die-with-parent",
+        "--new-session",
+        "--unshare-pid",
+        "--ro-bind",
+        "/usr",
+        "/usr",
+        "--ro-bind",
+        "/lib",
+        "/lib",
+        "--ro-bind",
+        "/lib64",
+        "/lib64",
+        "--ro-bind",
+        "/bin",
+        "/bin",
+        "--ro-bind",
+        "/etc",
+        "/etc",
+        "--proc",
+        "/proc",
+        "--dev",
+        "/dev",
+        "--tmpfs",
+        "/tmp",
+        "--ro-bind",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/relocated organ Ω",
+        "/app",
+        "--bind",
+        "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/unrelated cwd 音",
+        "/run-work",
+        "--chdir",
+        "/run-work",
+        "--",
+        "/app/bin/hammond_standalone",
+        "--workspace",
+        "a44_invalid",
+        "--state",
+        "/run-work/rejected-state.b3controls",
+        "--screenshot",
+        "/run-work/rejected.bmp",
+        "--diagnostics",
+        "/run-work/rejected.json"
+      ],
+      "driver_mode": "deliberately invalid",
+      "elapsed_seconds": 0.0106,
+      "expected_returncode": 1,
+      "name": "invalid-workspace",
+      "returncode": 2,
+      "stderr": "hammond_standalone: Unsupported value for --workspace; use play, rotary, or service\n",
+      "stdout": ""
+    }
+  ],
+  "elf_dynamic_dependencies": [
+    "0x0000000000000001 (NEEDED)             Shared library: [libasound.so.2]",
+    "0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]",
+    "0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]",
+    "0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]",
+    "0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+    "0x000000000000001d (RUNPATH)            Library runpath: [/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu]"
+  ],
+  "expected_payload": {
+    "bin/hammond_standalone": {
+      "bytes": 3707640,
+      "sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2"
+    },
+    "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+      "bytes": 17618,
+      "sha256": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0"
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt": {
+      "bytes": 2345,
+      "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-RtMidi.txt": {
+      "bytes": 1349,
+      "sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364"
+    },
+    "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt": {
+      "bytes": 884,
+      "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+    },
+    "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md": {
+      "bytes": 24106,
+      "sha256": "bc088e41621a0fa5363b3206e1ca71bbf4518a0492f46d842c415ab116bb779d"
+    },
+    "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md": {
+      "bytes": 17137,
+      "sha256": "aab73b054b7cb90fb140fea0257c36c3752c33b3032cc6899d7c5b398a209361"
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_APP.md": {
+      "bytes": 26725,
+      "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262"
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md": {
+      "bytes": 12330,
+      "sha256": "7d121ce847ecb90dccbe01b7a3b9bd0917c29ebf0c13955c5c442efa1117aa7c"
+    },
+    "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md": {
+      "bytes": 9182,
+      "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3"
+    },
+    "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md": {
+      "bytes": 21983,
+      "sha256": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb"
+    },
+    "share/hammond-b3-organ/standalone/atlas-reference.json": {
+      "bytes": 811,
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+    },
+    "share/hammond-b3-organ/standalone/font-source-manifest.json": {
+      "bytes": 1428,
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+    },
+    "share/hammond-b3-organ/standalone/reference-source-manifest.json": {
+      "bytes": 3816,
+      "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87"
+    },
+    "share/hammond-b3-organ/standalone/rtmidi-coremidi-zero-init.patch": {
+      "bytes": 728,
+      "sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad"
+    },
+    "share/hammond-b3-organ/standalone/rtmidi-lock.json": {
+      "bytes": 1161,
+      "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+    },
+    "share/hammond-b3-organ/standalone/rtmidi-prepared-source.json": {
+      "bytes": 1996,
+      "sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae"
+    },
+    "share/hammond-b3-organ/standalone/sdl2-lock.json": {
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    "share/hammond-b3-organ/standalone/standalone-capabilities.json": {
+      "bytes": 2062,
+      "sha256": "57ccbbb25c2f868db64ff7aa17cf691e9fd92917b2e640b4fd1d5a623edcbc48"
+    }
+  },
+  "failure": "AssertionError: {'name': 'invalid-workspace', 'command': ['/usr/bin/bwrap', '--die-with-parent', '--new-session', '--unshare-pid', '--ro-bind', '/usr', '/usr', '--ro-bind', '/lib', '/lib', '--ro-bind', '/lib64', '/lib64', '--ro-bind', '/bin', '/bin', '--ro-bind', '/etc', '/etc', '--proc', '/proc', '--dev', '/dev', '--tmpfs', '/tmp', '--ro-bind', '/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/relocated organ Ω', '/app', '--bind', '/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/unrelated cwd 音', '/run-work', '--chdir', '/run-work', '--', '/app/bin/hammond_standalone', '--workspace', 'a44_invalid', '--state', '/run-work/rejected-state.b3controls', '--screenshot', '/run-work/rejected.bmp', '--diagnostics', '/run-work/rejected.json'], 'returncode': 2, 'expected_returncode': 1, 'elapsed_seconds': 0.0106, 'stdout': '', 'stderr': 'hammond_standalone: Unsupported value for --workspace; use play, rotary, or service\\n', 'driver_mode': 'deliberately invalid'}",
+  "installed_relative_links": [
+    {
+      "source": "STANDALONE_INSTALL.md",
+      "target": "INTERFACE_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_INSTALL.md",
+      "target": "PRESET_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_INSTALL.md",
+      "target": "STANDALONE_APP.md"
+    },
+    {
+      "source": "STANDALONE_INSTALL.md",
+      "target": "MIDI_UI_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_INSTALL.md",
+      "target": "STANDALONE_MODEL.md"
+    },
+    {
+      "source": "STANDALONE_APP.md",
+      "target": "INTERFACE_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_APP.md",
+      "target": "PRESET_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_APP.md",
+      "target": "MIDI_UI_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_APP.md",
+      "target": "STANDALONE_INSTALL.md"
+    },
+    {
+      "source": "STANDALONE_APP.md",
+      "target": "STANDALONE_MODEL.md"
+    },
+    {
+      "source": "STANDALONE_APP.md",
+      "target": "MIDI_UI_RUNBOOK.md#prerequisites-and-platform-backends"
+    },
+    {
+      "source": "STANDALONE_APP.md",
+      "target": "INTERFACE_RUNBOOK.md#read-service-and-rotary-correctly"
+    },
+    {
+      "source": "STANDALONE_MODEL.md",
+      "target": "PRESET_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_MODEL.md",
+      "target": "INTERFACE_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_MODEL.md",
+      "target": "MIDI_UI_RUNBOOK.md"
+    },
+    {
+      "source": "STANDALONE_MODEL.md",
+      "target": "INTERFACE_RUNBOOK.md#midi-discovery-and-recovery"
+    },
+    {
+      "source": "MIDI_UI_RUNBOOK.md",
+      "target": "STANDALONE_APP.md"
+    },
+    {
+      "source": "MIDI_UI_RUNBOOK.md",
+      "target": "STANDALONE_MODEL.md"
+    },
+    {
+      "source": "MIDI_UI_RUNBOOK.md",
+      "target": "STANDALONE_INSTALL.md"
+    },
+    {
+      "source": "MIDI_UI_RUNBOOK.md",
+      "target": "STANDALONE_INSTALL.md"
+    },
+    {
+      "source": "MIDI_UI_RUNBOOK.md",
+      "target": "STANDALONE_MODEL.md"
+    },
+    {
+      "source": "PRESET_RUNBOOK.md",
+      "target": "INTERFACE_RUNBOOK.md"
+    },
+    {
+      "source": "INTERFACE_RUNBOOK.md",
+      "target": "PRESET_RUNBOOK.md"
+    },
+    {
+      "source": "INTERFACE_RUNBOOK.md",
+      "target": "STANDALONE_APP.md"
+    },
+    {
+      "source": "INTERFACE_RUNBOOK.md",
+      "target": "STANDALONE_MODEL.md"
+    },
+    {
+      "source": "INTERFACE_RUNBOOK.md",
+      "target": "MIDI_UI_RUNBOOK.md"
+    },
+    {
+      "source": "INTERFACE_RUNBOOK.md",
+      "target": "PRESET_RUNBOOK.md#build-from-source"
+    },
+    {
+      "source": "INTERFACE_RUNBOOK.md",
+      "target": "STANDALONE_INSTALL.md"
+    },
+    {
+      "source": "INTERFACE_RUNBOOK.md",
+      "target": "PRESET_RUNBOOK.md#select-edit-and-play"
+    },
+    {
+      "source": "INTERFACE_RUNBOOK.md",
+      "target": "STANDALONE_APP.md#scripted-interaction-and-observations"
+    }
+  ],
+  "isolated_runtime_libraries": [
+    "\tlinux-vdso.so.1 (0x00007f763356d000)",
+    "\tlibasound.so.2 => /lib/x86_64-linux-gnu/libasound.so.2 (0x00007f76330dd000)",
+    "\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f7632e77000)",
+    "\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f7632d87000)",
+    "\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f7632d5a000)",
+    "\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7632b64000)",
+    "\t/lib64/ld-linux-x86-64.so.2 (0x00007f763356f000)"
+  ],
+  "mode": "midi-on",
+  "namespace_absence_proof": {
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ": false,
+    "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/original organ Ω": false,
+    "/workspace/scratch/601951e27dc3/build-native": false,
+    "/workspace/scratch/601951e27dc3/build-native-midi-off": false,
+    "/workspace/scratch/641ca55ce6de/native-sysroot/usr": false,
+    "/workspace/scratch/7ffc2842608b/SDL2": false,
+    "/workspace/scratch/cd4bd06ce68f/rtmidi": false
+  },
+  "namespace_mounts": [
+    "/usr/bin/bwrap",
+    "--die-with-parent",
+    "--new-session",
+    "--unshare-pid",
+    "--ro-bind",
+    "/usr",
+    "/usr",
+    "--ro-bind",
+    "/lib",
+    "/lib",
+    "--ro-bind",
+    "/lib64",
+    "/lib64",
+    "--ro-bind",
+    "/bin",
+    "/bin",
+    "--ro-bind",
+    "/etc",
+    "/etc",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--tmpfs",
+    "/tmp",
+    "--ro-bind",
+    "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/relocated organ Ω",
+    "/app",
+    "--bind",
+    "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/unrelated cwd 音",
+    "/run-work",
+    "--chdir",
+    "/run-work"
+  ],
+  "native_invocations": 1,
+  "physical_devices_used": false,
+  "relocated_prefix": "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on/relocated organ Ω",
+  "schema": "a44-final-relocation-v1",
+  "shared_paths_renamed_or_removed": false,
+  "source": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "status": "failed",
+  "work": "/workspace/scratch/601951e27dc3/a44-final-packages/midi-on"
+}

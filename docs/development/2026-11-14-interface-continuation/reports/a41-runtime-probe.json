@@ -1,0 +1,34 @@
+{
+  "command": [
+    "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/601951e27dc3/build-interface-asan",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "1",
+    "-V",
+    "-R",
+    "^(test_standalone_inspection_acceptance)$",
+    "--output-junit",
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a41-runtime-probe.xml"
+  ],
+  "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "elapsed_seconds": 0.041444,
+  "environment_overrides": {
+    "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_VIDEODRIVER": "dummy",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+  },
+  "log": "docs/development/2026-11-14-interface-continuation/reports/a41-runtime-probe.txt",
+  "log_bytes": 1515,
+  "log_sha256": "f2361b97512e59140ab7ecf8ce461b7b7140337d1a15b7bb15c6106423509f34",
+  "returncode": 8,
+  "started_at_utc": "2026-11-14T12:34:53.596432+00:00"
+}

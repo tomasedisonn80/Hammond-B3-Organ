@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/usr/bin/bwrap",
+    "--ro-bind",
+    "/usr",
+    "/usr",
+    "--ro-bind",
+    "/lib",
+    "/lib",
+    "--ro-bind",
+    "/lib64",
+    "/lib64",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev",
+    "--",
+    "/usr/bin/true"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "purpose": "Determine whether source-absent private mount namespace is available without changing shared source or dependencies."
+}

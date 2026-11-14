@@ -47,19 +47,29 @@ all five affected raster suites pass, including 298 full-surface checks across
 identifies every changed input and qualification; it does not rename the original
 146/147 run as a full pass.
 
-The workspace checkpoint is published at `aea58bb85bc66a5feaff66a0b8a388e7c3f9e630`.
+The workspace checkpoint is published at `aea58bb85bc66a5feaff66a0b8a388e7c3f9e630`;
+its completed readability/status and Windows repairs are published at
+`8673713a484c40e26ac7810c7c4cbc22fa874426`.
 A34's stacked accidental labels and centered title are complete; A36's Load
 notice now agrees with its acknowledgment. A37's two actual operator journeys
 pass on the resulting application. A40 repaired observed strict Windows test
 compilation with explicit conversions and SDL's portable environment lookup;
 three affected native suites and all 130 SDK-free Release suites pass locally.
-Hosted Windows closure follows publication of those exact repairs.
+All eleven hosted jobs now pass at that exact polished revision, including both
+strict Windows builds and Linux/macOS standalone. The
+[observed job record](development/2026-11-14-interface-continuation/reports/root-ui-polish-hosted.json)
+retains each job and its completed steps.
 
-A41's fully instrumented native run retains ten passes and three raster timeouts
-under normal limits. Local leak checking is blocked by thread-attach restrictions;
-A43 is adding an identified hosted leak gate. A42's actual desktop launch exposes
-missing compiled X11 support, so persistent pointer capture remains unrun. Final
-package/gallery, coherent-source/platform qualification and sixty assignments
+A41’s fully instrumented native run retains ten passes and three raster timeouts
+under normal limits. All three subsequently completed their unchanged assertions
+in separately bounded direct diagnostics without ASan/UBSan findings. Root
+added measured sanitizer-only budgets while preserving Release deadlines. Local
+leak checking is blocked by thread-attach restrictions; A43’s new focused hosted
+leak job is awaiting publication and observation. A42's actual desktop launch exposes
+missing compiled X11 support, so persistent pointer capture remains unrun. A44’s final 19-file MIDI-on and 15-file MIDI-off packages pass actual relocation
+with source/build/SDK paths inaccessible; a corrected installed guide has its
+own final inventory refresh. Final gallery, coherent-source qualification,
+native leak coverage and sixty assignments
 continue; [the checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md)
 records current ownership and the separate follow-ups. The
 [reference comparison](reviews/INTERFACE_REFERENCE_COMPARISON.md) records that

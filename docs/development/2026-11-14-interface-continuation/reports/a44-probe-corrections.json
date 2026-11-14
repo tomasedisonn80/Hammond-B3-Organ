@@ -1,0 +1,49 @@
+{
+  "additional_retained_cli_invocations_before_final": 4,
+  "blocked_tracer_attempts_without_native_result": 1,
+  "cases": [
+    {
+      "correction": "Accept actual CTest 4.4.4 summary; validate retained successful output and resume only off configuration. No on-suite rerun.",
+      "observed": "MIDI-on CTest exit 0, eight methods passed; harness asserted an older CTest summary spelling.",
+      "record": "a44-build-result-first.json",
+      "scope": "build-result postprocessing"
+    },
+    {
+      "correction": "Expected CLI usage exit changed to 2; app source unchanged. Original commands preserve two actual CLI invocations; its early-aborted native_invocations counter stopped at 1.",
+      "observed": "Help returned 0; invalid workspace returned documented usage error 2, while the new harness expected 1. Private directory remained empty.",
+      "record": "a44-midi-on-relocation-first.json",
+      "scope": "first relocated CLI admission"
+    },
+    {
+      "correction": "Do not use ptrace. Retain working source-absent bwrap namespace and ordinary LD_DEBUG loader output for actual native smoke; system library loading and application success observed.",
+      "observed": "Second-stage help and invalid-workspace probes returned 0 and 2. strace failed PTRACE_TRACEME/PTRACE_SETOPTIONS with Operation not permitted; no application diagnostics or image appeared; only an empty trace file existed.",
+      "record": "a44-midi-on-relocation-strace-blocked.json",
+      "scope": "optional syscall trace"
+    }
+  ],
+  "cleanup": [
+    {
+      "owned_directory": "/workspace/scratch/601951e27dc3/a44-final-packages",
+      "payload_matched_retained_identity": true,
+      "regular_file_bytes_removed": 3853676,
+      "retained_evidence": "a44-midi-on-relocation-first.json",
+      "runtime_outputs_before_removal": {}
+    },
+    {
+      "owned_directory": "/workspace/scratch/601951e27dc3/a44-final-packages-qualified",
+      "payload_matched_retained_identity": true,
+      "regular_file_bytes_removed": 3853676,
+      "retained_evidence": "a44-midi-on-relocation-strace-blocked.json",
+      "runtime_outputs_before_removal": {
+        "smoke-file-access.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "final_runtime_native_invocations": 8,
+  "free_disk_bytes_after_cleanup": 39455698944,
+  "product_failures_observed": 0,
+  "schema": "a44-harness-corrections-v1"
+}

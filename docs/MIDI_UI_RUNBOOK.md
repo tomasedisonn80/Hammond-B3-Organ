@@ -3,11 +3,15 @@
 The optional native application plays the existing **nominal dry organ** through
 SDL2. Optional RtMidi input controls that same engine. The reference-oriented
 view adds dynamic player controls and decorative source art; it does not add
-scanner, AO-28 or Leslie sound. All 45 public parameter identities and
-`B3CONTROLS3` remain unchanged.
+scanner, AO-28 or Leslie sound. The current instrument has 47 public parameter
+identities and a `B3CONTROLS4` writer, with readers for versions 1–3. The first
+45 parameter records retain their meanings.
 
 This guide covers source setup, installed use, connection, recovery and bounded
-engineering checks. The sibling [application guide](STANDALONE_APP.md),
+engineering checks. The [interface guide](INTERFACE_RUNBOOK.md) covers current
+Play/Rotary/Service, Flat and background MIDI discovery; the
+[preset guide](PRESET_RUNBOOK.md) covers fixed registrations and saved controls.
+The sibling [application guide](STANDALONE_APP.md),
 [model guide](STANDALONE_MODEL.md) and [installation guide](STANDALONE_INSTALL.md)
 provide the complete application, musical and staging contracts. Links to other
 project documents use the canonical repository URL so installed copies remain
@@ -152,8 +156,10 @@ is not a measurement of physical latency.
 ### MIDI dialog by keyboard or pointer
 
 Select **MIDI** or press **Ctrl+M**; Command is also accepted for Ctrl. Opening
-the modal lists current native ports after **No input**. Tab/Shift+Tab cycles
-these eight controls, with wraparound:
+the modal starts background discovery; completed results list native ports
+after **No input**. While searching, No input/Apply, Disconnect and Close remain
+available. Applying a physical port requires the current discovery to finish.
+Tab/Shift+Tab cycles these eight controls, with wraparound:
 
 | Focus order | Control and action |
 | ---: | --- |
@@ -208,11 +214,14 @@ adapter does not reconstruct a running-status byte stream. The exact
 defines decoding, timing, counters and owner limits.
 
 **EDIT A/B** selects the retained bank displayed by the drawbar editors.
-**PLAY A/B** selects the sounding bank and reconnects that manual's route.
-**CANCEL** disconnects its route while preserving held keys and stored values.
-MIDI drawbars always edit B: they neither select B, change A nor reopen Cancel.
-Choose PLAY B explicitly to hear those edited B values. MIDI and local edits
-share the desired control state and its pending/dirty indicators.
+Preset **A#** sounds adjustable bank A and preset **B** sounds bank B; either
+reconnects that manual and clears fixed mode. Preset **C#–A** selects one of nine
+fixed rows for that manual, preserving both adjustable banks. Preset **C**
+cancels the route while preserving held keys and stored bank/fixed memory.
+MIDI drawbars always edit B: they neither select B, change A, leave fixed mode
+nor reopen Cancel. Choose preset B explicitly to hear those edited B values.
+MIDI and local edits share the desired control state and its pending/dirty
+indicators.
 
 For computer-key playing, use `A W S E D F T G Y H U J K O L P ;`, F1/F2/F3 for
 upper/lower/pedals, and `[`/`]` for octave. Tab/Shift+Tab changes focus; arrows,
@@ -222,12 +231,15 @@ Opening Help, Audio or MIDI also releases UI holds; these ordinary view actions
 leave external MIDI ownership active.
 
 **Save** or Ctrl+S explicitly writes acknowledged musical controls. Ctrl+O loads
-the selected control file. Exit never saves automatically. `B3CONTROLS3` stores
-the four drawbar banks, selected routes, expression, percussion and pedal
-mixtures, with the existing v1/v2 migrations. It does not store held notes,
-source phases, transient envelopes, MIDI port/channels, audio settings or window
-geometry. Without a valid selected state the app proposes upper B `888000000`,
-lower B `008000000`, pedals `80`; this is an audition choice, not a factory preset.
+the selected control file. Exit never saves automatically. `B3CONTROLS4` stores
+the four drawbar banks, remembered banks, raw fixed choices, route bits,
+expression, percussion and pedal mixtures, with the pinned registration catalog
+identity. Readers 1–3 remain supported and migrate fixed modes to None; the
+next explicit Save writes version 4. It does not store held notes, source
+phases, transient envelopes, MIDI port/channels, audio settings, window geometry,
+workspace, Flat presentation or focus. An absent selected state file gives the
+proposed upper B `888000000`, lower B `008000000`, pedals `80`; this is an audition
+choice, not a factory preset.
 
 ### Reference view and sound boundaries
 
@@ -243,9 +255,10 @@ controls, with corrected key counts and legends.
 The cabinet is an illustration with an explicit unavailable-sound status; it
 does not provide rotary speed, scanner or microphone processing. The existing
 nominal core still produces identical left/right dry audio. The
-[independent visual review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/reviews/MIDI_UI_REFERENCE_REVIEW.md)
-records actual screenshots and differences from the source, including an open
-thin-glyph legibility defect at minimum size. Concept pixels are not an
+[earlier independent visual review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/reviews/MIDI_UI_REFERENCE_REVIEW.md)
+retains its source-specific screenshots, differences and original thin-glyph
+finding. The [current interface status](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STATUS.md)
+records subsequent glyph, scale and preset-label repairs with their evidence. Concept pixels are not an
 application screenshot, and this view does not establish one-to-one appearance
 or measured instrument sound.
 
@@ -291,7 +304,7 @@ SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy \
 
 Use an absent state file for the proposed registration. Success exits **0** and
 prints `Native SDL smoke passed` with actual counters. Diagnostics have
-`schema_version: 2`, `smoke.passed: true`, positive audio callback/frame counts,
+`schema_version: 3`, `smoke.passed: true`, positive audio callback/frame counts,
 `errors.count: 0` and `session.held_after_shutdown: false`. Without a requested
 MIDI input, `midi.source` is `none`. Optional `--screenshot ./smoke.bmp` captures
 an actual rendered held-key frame; a screenshot failure or missing required
@@ -336,7 +349,7 @@ exits **0**, and a replay need not print a success line. Inspect the JSON:
 
 | Field | Expected for this example |
 | --- | --- |
-| `schema_version` / `midi.source` | `2` / `synthetic-replay` |
+| `schema_version` / `midi.source` | `3` / `synthetic-replay` |
 | `midi_replay.completed`, `.delivered`, `.passed`, `.final_acknowledged` | All `true` |
 | `midi_replay.scheduled_events` / `.delivered_events` | `9` / `9` |
 | `midi_replay.scheduled_packets` / `.accepted_packets` / `.dropped_packets` | `7` / `7` / `0` |
@@ -413,14 +426,14 @@ OS, command, exit status and copied diagnostics. For a physical run, also record
 the actual controller/audio device, transmitted channels, exact enumerated port,
 observed sustained-note and reconnect behavior, and measurement method for any
 timing claim. Keep an original failure alongside its repair evidence. Refer to
-the [current session records](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-midi-ui/README.md)
+the [current interface session](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-interface-continuation/README.md)
 and [status](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STATUS.md)
 for completed versus pending work; this guide does not certify all sixty
 assignments, a new hosted CI run or a new physical device.
 
-The current independent visual review leaves minimum-size thin-glyph legibility
-and differences from the exact reference open. Physical MIDI/audio, Windows and
-macOS qualification of this MIDI slice, native accessibility, scanner G5,
-connected AO-28/Leslie models and measured acoustic fidelity retain their own
-gates. See the [model guide](STANDALONE_MODEL.md) before interpreting the
+Literal equality with the reference remains open. Hosted platform results and
+visual repairs qualify only their named source revisions; consult current status
+for the latest observed results. Physical MIDI/audio, native accessibility,
+scanner G5, connected AO-28/Leslie models and measured acoustic fidelity retain
+their own gates. See the [model guide](STANDALONE_MODEL.md) before interpreting the
 decorative cabinet or an engineering test as evidence of those features.

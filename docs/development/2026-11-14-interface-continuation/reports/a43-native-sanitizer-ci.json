@@ -1,0 +1,259 @@
+{
+  "a41_frozen_discovery": {
+    "all_count": 147,
+    "matched_count": 13,
+    "no_new_discovery_execution": true,
+    "original_timeouts_seconds": {
+      "test_standalone_drawing": 15.0,
+      "test_standalone_inspection_acceptance": null,
+      "test_standalone_inspection_author": null,
+      "test_standalone_preset_raster": 30.0,
+      "test_standalone_preset_ui": null,
+      "test_standalone_projection": null,
+      "test_standalone_quad_drawing": 30.0,
+      "test_standalone_scaled_view": 60.0,
+      "test_standalone_ui": null,
+      "test_standalone_workspace_acceptance": null,
+      "test_standalone_workspace_continuity": null,
+      "test_standalone_workspace_raster": 60.0,
+      "test_standalone_workspaces_author": null
+    },
+    "path": "docs/development/2026-11-14-interface-continuation/reports/a41-discovery.txt",
+    "sha256": "eb5769878d517d2798d5ecf207dce04a57cfc6905042415ab4a545dbeb4b6168"
+  },
+  "a41_original_limit_outcome": {
+    "path": "a41-post-run.json",
+    "result": "partial_asan_ubsan_10_pass_3_timeout_leaks_blocked",
+    "scope": "Original 13 named suites, unchanged CTest deadlines; separate root-approved detect_leaks=0 scope. Original leak-enabled setup failures remain retained.",
+    "sha256": "c4eb5491d4233faeee0cc9fbe3fd8b89353e4799077679586e7fd9f9b10d3415"
+  },
+  "a41_workflow_freeze_release": {
+    "input_count": 354,
+    "observed_utc": "2026-11-14T12:41:36.427357+00:00",
+    "path": "a41-source-after-test.json",
+    "protected_count": 114,
+    "sha256": "96c2e623f99194d63ecc23e172eca429d5ba3cf0a5429ed2a316400d85f9e230",
+    "source_digest": "b4a1caa57a92b2caadb7c07d0c951de73b4ab86bbdde412bf5941a5a87c80b44"
+  },
+  "assignment": 43,
+  "baseline_workflow_sha256": "527d1cdb692cd5d837f0436ee68b2026878b10c5db1553459ca623060e4c1d34",
+  "cmake_source_sha256": {
+    "CMakeLists.txt": "1c569b0dc5d5afbe5b99ff8529d457ca736ad8e82a36105336badbd4e9841e53",
+    "apps/standalone/CMakeLists.txt": "6661ddf975af37b0b8720140afa857b6537c069d07f388ce0e8524befed97ffe"
+  },
+  "executed_by_a43": {
+    "application_or_test": 0,
+    "build": 0,
+    "commit": 0,
+    "configure": 0,
+    "hosted_dispatch": 0,
+    "index_update": 0
+  },
+  "head_at_validation": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+  "head_tree": "e11bd68d6051f663631579ef235325a8775f8133",
+  "hosted_job_inventory_after": {
+    "ci.yml": 4,
+    "native-vst3.yml": 3,
+    "standalone.yml": 5
+  },
+  "hosted_jobs_after": 12,
+  "hosted_jobs_before": 11,
+  "job": {
+    "actions": [
+      "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+    ],
+    "artifact": {
+      "if-no-files-found": "warn",
+      "name": "standalone-linux-gcc-sanitizers-${{ github.sha }}-${{ github.run_attempt }}",
+      "path": "standalone-sanitizer-logs/\nbuild-standalone-sanitizers/CMakeCache.txt\nbuild-standalone-sanitizers/compile_commands.json\nbuild-standalone-sanitizers/CMakeFiles/CMakeConfigureLog.yaml\nbuild-standalone-sanitizers/CMakeFiles/CMakeOutput.log\nbuild-standalone-sanitizers/CMakeFiles/CMakeError.log\nbuild-standalone-sanitizers/Testing/Temporary/LastTest.log\nbuild-standalone-sanitizers/Testing/Temporary/LastTestsFailed.log\n",
+      "retention-days": 14
+    },
+    "build_parallelism": 2,
+    "ctest_default_timeout_seconds": 180,
+    "discovery_exact_set_and_count": true,
+    "environment": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "HAMMOND_SANITIZER_TARGETS": "test_standalone_ui test_standalone_preset_ui test_standalone_workspaces_author test_standalone_workspace_acceptance test_standalone_projection test_standalone_inspection_author test_standalone_inspection_acceptance test_standalone_workspace_continuity test_standalone_drawing test_standalone_quad_drawing test_standalone_workspace_raster test_standalone_scaled_view test_standalone_preset_raster",
+      "LSAN_OPTIONS": "exitcode=23",
+      "SDL_AUDIODRIVER": "dummy",
+      "SDL_RENDER_DRIVER": "software",
+      "SDL_VIDEODRIVER": "dummy",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+    },
+    "key": "native-sanitizers",
+    "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+    "no_tests_error": true,
+    "required_names": [
+      "test_standalone_ui",
+      "test_standalone_preset_ui",
+      "test_standalone_workspaces_author",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_projection",
+      "test_standalone_inspection_author",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_drawing",
+      "test_standalone_quad_drawing",
+      "test_standalone_workspace_raster",
+      "test_standalone_scaled_view",
+      "test_standalone_preset_raster"
+    ],
+    "runner": "ubuntu-24.04",
+    "runtime_verification": [
+      "All selected compiled object flags and nonempty files",
+      "ASan/UBSan references in SDL/core/support/drawing static archives",
+      "ASan/UBSan link flags and dynamic runtimes for all thirteen binaries"
+    ],
+    "sanitizer_compile_c": "-fsanitize=address,undefined -fno-omit-frame-pointer",
+    "sanitizer_compile_cpp": "HAMMOND_ENABLE_SANITIZERS=ON -> hammond_configure_target",
+    "sdl_alsa": "Automatic detection with the unchanged Ubuntu development packages",
+    "test_parallelism": 1,
+    "test_sanitizer_environment_overrides_rejected": true,
+    "timeout_minutes": 20
+  },
+  "limits": [
+    "Static parsing and retained configured-name discovery are not test execution.",
+    "The original local leak-enabled run failed LSan thread attachment (exit 23/errno 1).",
+    "A41's separately approved detect_leaks=0 run is not a leak pass and retained three original-limit timeouts.",
+    "This job does not run the application, Python wall-time suites, VST3, real devices or package smoke.",
+    "System libraries are not rebuilt; instrumented SDL and selected project paths do not qualify every native path.",
+    "No performance, native accessibility, physical fidelity, literal reference match or signed-release claim follows."
+  ],
+  "observed_utc": "2026-11-14T12:46:09.869019+00:00",
+  "pending": [
+    "A41 direct raster diagnostics and root's review of any sanitizer-only timeout allowance",
+    "Publish the reviewed exact source through root's guarded checkpoint",
+    "A48/A58 observe setup, instrumentation, exact 13-name discovery and 13/13 leak-enabled passes",
+    "Retain the successful hosted job identity and diagnostics before making a leak qualification claim"
+  ],
+  "release_matrix_rows_preserved": 4,
+  "release_packages_preserved": {
+    "common_files": 15,
+    "midi_enabled_files": 19
+  },
+  "release_required_names_preserved": [
+    "test_standalone_drawing",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author",
+    "test_standalone_install",
+    "test_standalone_midi_backend",
+    "test_standalone_midi_backend_quarantine",
+    "test_standalone_midi_cli",
+    "test_standalone_midi_concurrency",
+    "test_standalone_midi_discovery",
+    "test_standalone_midi_input",
+    "test_standalone_midi_replay",
+    "test_standalone_midi_session",
+    "test_standalone_native_midi_replay",
+    "test_standalone_projection",
+    "test_standalone_quad_drawing",
+    "test_standalone_scaled_view",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_workspace_raster",
+    "test_standalone_workspace_replay",
+    "test_standalone_workspaces_author"
+  ],
+  "release_workflow_prefix_byte_identical": true,
+  "result": "pass_static_validation_hosted_pending",
+  "runtime": {
+    "python": "3.12.14",
+    "pyyaml": "6.0.3"
+  },
+  "schema_version": 1,
+  "syntax": [
+    {
+      "bash_run_blocks_parsed": 9,
+      "path": ".github/workflows/ci.yml",
+      "python_blocks_parsed": 0,
+      "sha256": "4835cbd72231c81c082c6545bde58e1514843626ffe4c9b88078c380f79dc87e",
+      "yaml_parsed": true
+    },
+    {
+      "bash_run_blocks_parsed": 7,
+      "path": ".github/workflows/native-vst3.yml",
+      "python_blocks_parsed": 2,
+      "sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+      "yaml_parsed": true
+    },
+    {
+      "bash_run_blocks_parsed": 20,
+      "path": ".github/workflows/standalone.yml",
+      "python_blocks_parsed": 10,
+      "sha256": "3b88204f26d0c6574c0f95cb29d252a6d23d23f46a29c9b7f7f4a2dc5558d27b",
+      "yaml_parsed": true
+    }
+  ],
+  "test_source_mapping": {
+    "test_standalone_drawing": {
+      "registration": "Explicit native target",
+      "sha256": "c49af9889f5f43e9f3ea20d42a3263b2f911ab1c7877b7b6ff42e99216823ebc",
+      "source": "apps/standalone/native_tests/test_standalone_drawing.cpp"
+    },
+    "test_standalone_inspection_acceptance": {
+      "registration": "SDK-free C++ glob",
+      "sha256": "a3f09a51f2d1e39a6f051934a0efba8a7617024063c371ec6ed32ba52f9900e3",
+      "source": "apps/standalone/tests/test_standalone_inspection_acceptance.cpp"
+    },
+    "test_standalone_inspection_author": {
+      "registration": "SDK-free C++ glob",
+      "sha256": "e1b3518f73794640963394299fa269b4e63ad9cc75ab7c409f92165bc696ba02",
+      "source": "apps/standalone/tests/test_standalone_inspection_author.cpp"
+    },
+    "test_standalone_preset_raster": {
+      "registration": "Explicit native target",
+      "sha256": "e3fe978c9c8e37a1915b10c4586d3f178414828954016eae5de58af4994b48e6",
+      "source": "apps/standalone/native_tests/test_standalone_preset_raster.cpp"
+    },
+    "test_standalone_preset_ui": {
+      "registration": "SDK-free C++ glob",
+      "sha256": "e7a0b59be9e3dbd9684bc077db2ddcc8a36ba5f7284f511862227ddf9b36f072",
+      "source": "apps/standalone/tests/test_standalone_preset_ui.cpp"
+    },
+    "test_standalone_projection": {
+      "registration": "SDK-free C++ glob",
+      "sha256": "dc69d54421ef52dfdbd45e3436a89ba9ad3aa155ff76fae4a8cfc9fc56140fd8",
+      "source": "apps/standalone/tests/test_standalone_projection.cpp"
+    },
+    "test_standalone_quad_drawing": {
+      "registration": "Explicit native target",
+      "sha256": "b2c265a2da00b1211ffebe376b552ed3ba55a83a7a6dcfb70dc37b453de4c6fd",
+      "source": "apps/standalone/native_tests/test_standalone_quad_drawing.cpp"
+    },
+    "test_standalone_scaled_view": {
+      "registration": "Explicit native target",
+      "sha256": "bbffea029ec96c3b611f0fa49ed1089fcf9c535ba7642c18992c87454539af99",
+      "source": "apps/standalone/native_tests/test_standalone_scaled_view.cpp"
+    },
+    "test_standalone_ui": {
+      "registration": "SDK-free C++ glob",
+      "sha256": "4caa497d5579dbab05c6038c8e008578bdc5d6e408b4a49f56b37e2381951f69",
+      "source": "apps/standalone/tests/test_standalone_ui.cpp"
+    },
+    "test_standalone_workspace_acceptance": {
+      "registration": "SDK-free C++ glob",
+      "sha256": "7f25ce7d5cf2adedafed3ab2eef5ff59c832d0ea5fc440021a1d6cee4df2eba0",
+      "source": "apps/standalone/tests/test_standalone_workspace_acceptance.cpp"
+    },
+    "test_standalone_workspace_continuity": {
+      "registration": "SDK-free C++ glob",
+      "sha256": "e231c62715369592028f4403a665816faab34b629378e0274929a31b0c0d0a05",
+      "source": "apps/standalone/tests/test_standalone_workspace_continuity.cpp"
+    },
+    "test_standalone_workspace_raster": {
+      "registration": "Explicit native target",
+      "sha256": "077820d47d6cefec2544a248d25033439fac5d34e013401558df8fca80630e51",
+      "source": "apps/standalone/native_tests/test_standalone_workspace_raster.cpp"
+    },
+    "test_standalone_workspaces_author": {
+      "registration": "SDK-free C++ glob",
+      "sha256": "b8c8fa0a491ad94815770976269b10ba66f98b18fb5a02f0c89344ea0ba723d2",
+      "source": "apps/standalone/tests/test_standalone_workspaces_author.cpp"
+    }
+  },
+  "wave": 8,
+  "worker": "/root/w08_a43_native_leak_ci",
+  "workflow_sha256": "3b88204f26d0c6574c0f95cb29d252a6d23d23f46a29c9b7f7f4a2dc5558d27b"
+}

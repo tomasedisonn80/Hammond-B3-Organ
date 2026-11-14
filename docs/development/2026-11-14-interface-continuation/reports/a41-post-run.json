@@ -1,0 +1,103 @@
+{
+  "asan_ubsan_diagnostics": [],
+  "captured_at_utc": "2026-11-14T12:41:37.267979+00:00",
+  "ctest_returncode": 8,
+  "executable_hash_mismatches": [],
+  "result": "partial_asan_ubsan_10_pass_3_timeout_leaks_blocked",
+  "scope": "Original 13 named suites, unchanged CTest deadlines; separate root-approved detect_leaks=0 scope. Original leak-enabled setup failures remain retained.",
+  "source_recheck": "a41-source-after-test.json",
+  "tests": [
+    {
+      "failure": null,
+      "name": "test_standalone_inspection_acceptance",
+      "output": "Inspection independent acceptance passed: 34 source-qualified rows, actual Session commands, four selections per manual, real failed reads, owned immutable copies and finite admission.\n",
+      "seconds": 0.0937011,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_inspection_author",
+      "output": "Inspection author checks passed: bounded copied facts, truthful models and observations.\n",
+      "seconds": 0.0459788,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_preset_ui",
+      "output": "Independent preset UI acceptance: 12 layouts, 549388 independently classified hit points, 288 route transitions, 48 keyboard activations, 144 focus-only moves, 753 invalid identities, 288 exact single-command pointer acknowledgments; passed\n",
+      "seconds": 5.4793,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_projection",
+      "output": "projection matrix: 288 layouts, 42336 playing-key records, 6912 preset records\nindependent projection, silhouette, half-open ownership and rollback acceptance passed\n",
+      "seconds": 1.70812,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_ui",
+      "output": "Standalone UI acceptance: 9 behavioral scenarios passed\n",
+      "seconds": 0.184766,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_workspace_acceptance",
+      "output": "Workspace acceptance: 42 layout/mode/view cases, 5740 hidden semantic/pointer rejections, 56 focus-memory returns, 2041 atomic invalid operations, 14 real-Session ownership runs, 63 closed parameter gestures, 120 shortcut suppression cases passed\n",
+      "seconds": 0.35497,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_workspace_continuity",
+      "output": "case kind=registration variant=0 rate=44100 seed=11740672 frames=8874 commands=20 peak=0.15445317327976227 energy=12.388344111279981 isolated_energy=0 pcm_fnv1a64=6be70c82e36cb701\ncase kind=registration variant=1 rate=44100 seed=11740673 frames=8874 commands=20 peak=0.14571726322174072 energy=14.819911340016612 isolated_energy=0 pcm_fnv1a64=465b8523baa45379\ncase kind=registration variant=2 rate=44100 seed=11740674 frames=8874 commands=20 peak=0.15826630592346191 energy=14.456555723508712 isolated_energy=0 pcm_fnv1a64=989e678ea6097ae9\ncase kind=registration variant=3 rate=44100 seed=11740675 frames=8874 commands=20 peak=0.17036087810993195 energy=12.723127669830598 isolated_energy=0 pcm_fnv1a64=470d5f7b4ac7b6c9\ncase kind=registration variant=4 rate=44100 seed=11740676 frames=8874 commands=20 peak=0.1711624413728714 energy=15.243782869395975 isolated_energy=0 pcm_fnv1a64=4a2eb24f02c07619\ncase kind=registration variant=5 rate=44100 seed=11740677 frames=8874 commands=20 peak=0.11457514762878418 energy=8.365804732...\n[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]\n",
+      "seconds": 12.4005,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_workspaces_author",
+      "output": "Workspace author checks: 6 behavioral scenarios passed\n",
+      "seconds": 0.016596,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_drawing",
+      "output": "SDL 2.32.10, renderer=software, no window/audio\n144 individual glyph cases, 18 normal-size labels, 12 width/multiline/space cases; 298 full-target surface checks (18309120 pixels); failures=0\n",
+      "seconds": 0.963772,
+      "status": "run"
+    },
+    {
+      "failure": null,
+      "name": "test_standalone_quad_drawing",
+      "output": "SDL 2.32.10, renderer=software, no window/audio; 17 full-target coverage checks; failures=0\n",
+      "seconds": 0.0511807,
+      "status": "run"
+    },
+    {
+      "failure": "<failure message=\"Timeout\" />\n\t\t",
+      "name": "test_standalone_workspace_raster",
+      "output": "",
+      "seconds": 60.0307,
+      "status": "fail"
+    },
+    {
+      "failure": "<failure message=\"Timeout\" />\n\t\t",
+      "name": "test_standalone_scaled_view",
+      "output": "",
+      "seconds": 60.0908,
+      "status": "fail"
+    },
+    {
+      "failure": "<failure message=\"Timeout\" />\n\t\t",
+      "name": "test_standalone_preset_raster",
+      "output": "",
+      "seconds": 30.058,
+      "status": "fail"
+    }
+  ],
+  "workflow_freeze_release_ready": true
+}

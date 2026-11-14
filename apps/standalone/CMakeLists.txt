@@ -189,6 +189,15 @@ if(HAMMOND_BUILD_STANDALONE)
         set_tests_properties(test_standalone_preset_raster PROPERTIES
             TIMEOUT 30 LABELS "standalone;native")
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_preset_raster)
+        if(HAMMOND_ENABLE_SANITIZERS)
+            # Full SDL C and project C++ instrumentation measured 75/173/129 s
+            # for these unchanged assertions (interface continuation A41).
+            # Preserve ordinary Release deadlines; memory checking has separate
+            # bounded budgets and is not a rendering-performance qualification.
+            set_tests_properties(test_standalone_workspace_raster PROPERTIES TIMEOUT 180)
+            set_tests_properties(test_standalone_scaled_view PROPERTIES TIMEOUT 360)
+            set_tests_properties(test_standalone_preset_raster PROPERTIES TIMEOUT 300)
+        endif()
         add_executable(test_standalone_audio_device native_tests/test_standalone_audio_device.cpp)
         target_link_libraries(test_standalone_audio_device PRIVATE hammond_standalone_audio)
         target_include_directories(test_standalone_audio_device PRIVATE "${PROJECT_SOURCE_DIR}/tests")
