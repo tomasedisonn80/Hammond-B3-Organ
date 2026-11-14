@@ -1,0 +1,185 @@
+{
+  "utc": "2026-11-14T22:19:13.983767+00:00",
+  "head": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "compile_command": [
+    "g++",
+    "-std=c++20",
+    "-O2",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wshadow",
+    "-Werror",
+    "-Iinclude",
+    "tests/test_rotary_streaming_path.cpp",
+    "src/RotaryMotion.cpp",
+    "src/RotaryPropagation.cpp",
+    "src/RotaryHistory.cpp",
+    "src/RotaryStreamingPath.cpp",
+    "-o",
+    "/workspace/scratch/e3cacb90cc81/a17-streaming-path/test_rotary_streaming_path"
+  ],
+  "compile_exit_code": 0,
+  "compile_wall_seconds": 4.915401822001513,
+  "sources": {
+    "tests/test_rotary_streaming_path.cpp": "ab6526e628018a52a89a8bfc23eec8337ce8e9b152811ba8bc28d8787fb04dfa",
+    "tests/reference/rotary_waveform_reference.h": "3c24792f80f86f903926622f4bf016984caf44d727ad3913e4570738ac9c8f21",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+    "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+    "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+    "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+    "docs/ROTARY_RENDERER_CONTRACT.md": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9",
+    "docs/ROTARY_PROPAGATION_CONTRACT.md": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+    "docs/ROTARY_WAVEFORM_ACCEPTANCE.md": "fa4288d586a2a40d803740408177f9c0a085bd4deb9ae0bdfc832e6d58b0c1aa"
+  },
+  "source_stable_after_compile_and_runs": true,
+  "executable_sha256": "c9d8a3d0a24d0370f39d80543785e2487c8c75816c63e9289cd20a47fb21888e",
+  "executable_bytes": 151184,
+  "report_sha256": "cf6d00b81f5846d66803c1d8a21d1511bf873c5b2b110d10f05e37149cacfb0c",
+  "normal_and_stack_output_identical": true,
+  "runs": [
+    {
+      "label": "normal",
+      "exit_code": 0,
+      "wall_seconds": 0.12148157599949627,
+      "stderr": ""
+    },
+    {
+      "label": "stack-512-kib",
+      "exit_code": 0,
+      "wall_seconds": 0.13611284400030854,
+      "stderr": ""
+    }
+  ],
+  "result": {
+    "experiment": "a17-bounded-streaming-path-v1",
+    "status": "pass",
+    "rates": [
+      44100,
+      48000,
+      96000,
+      192000
+    ],
+    "directions": [
+      -1,
+      1
+    ],
+    "reference": "independent-long-double-waveform-v1",
+    "reference_method": "pure_bisection",
+    "reference_target_s": 1e-16,
+    "long_double_significand_bits": 64,
+    "checks": 345828,
+    "successful_paths": 3952,
+    "exact_r3_paths": 3940,
+    "analytic_paths": 1080,
+    "command_side_roots": 768,
+    "retired_anchor_paths": 56,
+    "epoch_paths": 64,
+    "preparation_rejections": 73,
+    "solve_rejections": 109,
+    "mismatch_rejections": 7,
+    "conservative_bracket_rejections": 1,
+    "changed_seed_paths": 16,
+    "mach_limit_paths": 16,
+    "maximum_native_residual_s": 9.996344030316351e-15,
+    "maximum_native_evaluations": 41,
+    "maximum_reference_residual_s": 9.998376909389761e-17,
+    "maximum_reference_evaluations": 47,
+    "errors": {
+      "root_delay_s": {
+        "count": 2804,
+        "maximum": 1.1574636191044813e-14,
+        "rms": 4.5696009673681925e-15,
+        "worst": "geometry fs=44100 dir=1 r=1.000000 phase=1.570796 c=343.000000 mic=1"
+      },
+      "root_frequency_ratio": {
+        "count": 2804,
+        "maximum": 9.970751546455048e-12,
+        "rms": 9.239067326440657e-13,
+        "worst": "geometry fs=44100 dir=-1 r=1.000000 phase=0.000000 c=300.000000 mic=0"
+      },
+      "emission_frames": {
+        "count": 2804,
+        "maximum": 2.222421580100331e-09,
+        "rms": 5.036842561044753e-10,
+        "worst": "geometry fs=192000 dir=1 r=1.000000 phase=1.570796 c=343.000000 mic=1"
+      },
+      "identical_state_distance_m": {
+        "count": 2804,
+        "maximum": 3.859759734048396e-16,
+        "rms": 1.130944897267993e-16,
+        "worst": "moving fs=96000 dir=-1 mode=0 mic=0 obs=4095+0"
+      },
+      "identical_state_frequency_ratio": {
+        "count": 2804,
+        "maximum": 1.6761765586625899e-16,
+        "rms": 6.557551512998372e-17,
+        "worst": "moving fs=192000 dir=-1 mode=1 mic=1 emission-command=2048 side=0"
+      },
+      "identical_state_gain": {
+        "count": 2804,
+        "maximum": 5.1982723681121e-14,
+        "rms": 4.467801781353296e-15,
+        "worst": "geometry fs=44100 dir=-1 r=1.000000 phase=0.000000 c=300.000000 mic=0"
+      },
+      "motion_angle_rad": {
+        "count": 2804,
+        "maximum": 3.5373180079512068e-15,
+        "rms": 6.4942258209371695e-16,
+        "worst": "moving fs=48000 dir=-1 mode=1 mic=1 obs=2048+0.5"
+      },
+      "motion_speed_rad_s": {
+        "count": 2804,
+        "maximum": 2.3744894939170536e-14,
+        "rms": 3.4548833017259965e-15,
+        "worst": "moving fs=48000 dir=-1 mode=1 mic=0 obs=4095+0.99999999999999989"
+      },
+      "motion_root_contribution_s": {
+        "count": 2804,
+        "maximum": 4.959724457068772e-18,
+        "rms": 6.728297217698874e-19,
+        "worst": "geometry fs=48000 dir=1 r=1.000000 phase=3.141593 c=343.000000 mic=0"
+      },
+      "analytic_delay_s": {
+        "count": 1080,
+        "maximum": 3.7562861892118105e-16,
+        "rms": 1.5688571341098664e-16,
+        "worst": "stationary fs=44100 dir=-1 case=1 c=300.000000 ref=0.020000 obs=-1+0.125"
+      },
+      "analytic_distance_m": {
+        "count": 1080,
+        "maximum": 6.342582709040201e-17,
+        "rms": 3.7694358870051496e-17,
+        "worst": "stationary fs=44100 dir=-1 case=4 c=300.000000 ref=0.020000 obs=-1+0.125"
+      },
+      "analytic_gain": {
+        "count": 1080,
+        "maximum": 1.0408340855860843e-14,
+        "rms": 2.714740200190487e-15,
+        "worst": "stationary fs=44100 dir=-1 case=0 c=300.000000 ref=10.000000 obs=-1+0.125"
+      }
+    }
+  },
+  "pre_bound_edit": {
+    "test_sha256": "ce1d9e035077314ad45ad4a0a1ba4d86effde1877f438c65c552565f7054d17f",
+    "final_test_sha256": "ab6526e628018a52a89a8bfc23eec8337ce8e9b152811ba8bc28d8787fb04dfa",
+    "diff_file": "pre-bound-edit-to-final.diff",
+    "diff_sha256": "a0f13eeb2a50e2c607cff29f8fe736693792ef344b9c3379d63c3cf8738fd4f9",
+    "diff": "--- pre-bound-edit/tests/test_rotary_streaming_path.cpp\n+++ final/tests/test_rotary_streaming_path.cpp\n@@ -251,7 +251,8 @@\n     CHECK(emission.frame < observation.frame ||\n           (emission.frame == observation.frame && emission.fraction < observation.fraction));\n     CHECK(std::isfinite(emission.fraction) && emission.fraction >= 0 && emission.fraction < 1);\n-    CHECK(path.frequency_ratio >= 0.8 - 2.0e-15 && path.frequency_ratio <= 4.0 / 3.0 + 2.0e-15);\n+    CHECK(path.frequency_ratio >= 1.0 / (1.25 + 2.0e-15)\n+          && path.frequency_ratio <= 1.0 / (0.75 - 2.0e-15));\n     ++results.successful_paths;\n     results.maximum_native_residual = std::max(results.maximum_native_residual, std::abs(path.residual_s));\n     results.maximum_native_evaluations = std::max(results.maximum_native_evaluations, path.iterations);\n",
+    "reason": "Express the ratio range using the exact frozen derivative allowance; no production source changed.",
+    "prior_source_reconstruction_verified_against_actual_precompile_hash": true,
+    "root_in_flight_full_suite": "Root reports its 160-test suite uses the pre-edit binary; root owns that outcome and a subsequent final-source target rebuild and filtered recheck."
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "status": "pass",
+  "scope": "Fresh CMake CLI target, compiler-generated nominal profile and exact basic input/event/tail integration; not independent full audio or physical qualification.",
+  "command": [
+    "/workspace/scratch/e3cacb90cc81/build/hammond_rotary_render",
+    "--horn",
+    "/workspace/scratch/e3cacb90cc81/root-cli-integration/horn.f64le",
+    "--drum",
+    "/workspace/scratch/e3cacb90cc81/root-cli-integration/drum.f64le",
+    "--events",
+    "/workspace/scratch/e3cacb90cc81/root-cli-integration/events.txt",
+    "--sample-rate",
+    "48000",
+    "--output-dir",
+    "/workspace/scratch/e3cacb90cc81/root-cli-integration/result",
+    "--block-size",
+    "64"
+  ],
+  "elapsed_seconds": 0.11862143699909211,
+  "exit_code": 0,
+  "report": {
+    "schema_version": 1,
+    "report_contract": "rotary-offline-render-v1",
+    "tool": "hammond_rotary_render",
+    "status": "ok",
+    "renderer_contract": "rotary-renderer-v1",
+    "numerical_contract": "rotary-numerics-v1",
+    "model_id": "nominal-effective-mouth-rotary-v1",
+    "profile": {
+      "id": "nominal-research-v1",
+      "sha256": "c0473cb20604726d989d7c280700109f647f7b227edb71c61d275ed9bfd67443",
+      "compiled_function": "hammond::rotary::generated::nominal_profile"
+    },
+    "sample_rate_hz": 48000,
+    "block_size": 64,
+    "input_format": "mono-f64le",
+    "output_format": "stereo-interleaved-f64le",
+    "channel_order": [
+      "left",
+      "right"
+    ],
+    "input_frames": 4800,
+    "tail_flush_frames": 242,
+    "output_frames": 5042,
+    "output_bytes": 80672,
+    "algorithmic_latency_frames": 2,
+    "history_capacity_frames": 244,
+    "event_count": 3,
+    "events_consumed": 3,
+    "paths": {
+      "horn": "/workspace/scratch/e3cacb90cc81/root-cli-integration/horn.f64le",
+      "drum": "/workspace/scratch/e3cacb90cc81/root-cli-integration/drum.f64le",
+      "events": "/workspace/scratch/e3cacb90cc81/root-cli-integration/events.txt",
+      "output_directory": "/workspace/scratch/e3cacb90cc81/root-cli-integration/result",
+      "audio": "/workspace/scratch/e3cacb90cc81/root-cli-integration/result/stereo.f64le",
+      "report": "/workspace/scratch/e3cacb90cc81/root-cli-integration/result/report.json"
+    },
+    "path_bytes_hex": {
+      "encoding": "UTF-8 on Windows; native POSIX bytes",
+      "horn": "2f776f726b73706163652f736372617463682f6533636163623930636338312f726f6f742d636c692d696e746567726174696f6e2f686f726e2e6636346c65",
+      "drum": "2f776f726b73706163652f736372617463682f6533636163623930636338312f726f6f742d636c692d696e746567726174696f6e2f6472756d2e6636346c65",
+      "events": "2f776f726b73706163652f736372617463682f6533636163623930636338312f726f6f742d636c692d696e746567726174696f6e2f6576656e74732e747874",
+      "output_directory": "2f776f726b73706163652f736372617463682f6533636163623930636338312f726f6f742d636c692d696e746567726174696f6e2f726573756c74"
+    },
+    "physical_path_bounds": [
+      {
+        "path": "horn_left",
+        "min_distance_m": 1.1889472712015354,
+        "max_distance_m": 1.547967824698699,
+        "min_delay_seconds": 0.00346631857493159,
+        "max_delay_seconds": 0.004513025727984545
+      },
+      {
+        "path": "horn_right",
+        "min_distance_m": 1.1889472712015354,
+        "max_distance_m": 1.547967824698699,
+        "min_delay_seconds": 0.00346631857493159,
+        "max_delay_seconds": 0.004513025727984545
+      },
+      {
+        "path": "drum_left",
+        "min_distance_m": 1.2924460767033679,
+        "max_distance_m": 1.6945156059517632,
+        "min_delay_seconds": 0.00376806436356667,
+        "max_delay_seconds": 0.004940278734553246
+      },
+      {
+        "path": "drum_right",
+        "min_distance_m": 1.2924460767033679,
+        "max_distance_m": 1.6945156059517632,
+        "min_delay_seconds": 0.00376806436356667,
+        "max_delay_seconds": 0.004940278734553246
+      }
+    ],
+    "diagnostics": {
+      "has_rendered_sample": true,
+      "last_input_frame": 5041,
+      "last_observation": {
+        "frame": 5039,
+        "fraction": 0
+      },
+      "max_solver_residual_s": 9.999813477268304e-15,
+      "max_solver_iterations": 38,
+      "last_paths": [
+        {
+          "path": "horn_left",
+          "delay_s": 0.004489795374530703,
+          "distance_m": 1.5399998134628674,
+          "emission_phase_rad": 0.7565541913637126,
+          "radial_speed_m_s": -0.5368978447396042,
+          "frequency_ratio": 0.998437146495448,
+          "distance_gain": 0.6493507280052097,
+          "residual_s": 3.3922517572726463e-15,
+          "iterations": 37,
+          "emission": {
+            "frame": 4823,
+            "fraction": 0.48982202252625484
+          }
+        },
+        {
+          "path": "horn_right",
+          "delay_s": 0.0041569154940163736,
+          "distance_m": 1.4258220144484175,
+          "emission_phase_rad": 0.7601391002204062,
+          "radial_speed_m_s": -1.7910551346983006,
+          "frequency_ratio": 0.9948053897918013,
+          "distance_gain": 0.7013498107523977,
+          "residual_s": -2.336672522140759e-15,
+          "iterations": 38,
+          "emission": {
+            "frame": 4839,
+            "fraction": 0.46805628721406833
+          }
+        },
+        {
+          "path": "drum_left",
+          "delay_s": 0.004882206943119594,
+          "distance_m": 1.674596981487499,
+          "emission_phase_rad": 0.5970837700963543,
+          "radial_speed_m_s": 0.43358711862051447,
+          "frequency_ratio": 1.001265702364028,
+          "distance_gain": 0.5971586065512474,
+          "residual_s": 7.351758091189708e-15,
+          "iterations": 37,
+          "emission": {
+            "frame": 4804,
+            "fraction": 0.6540667302595011
+          }
+        },
+        {
+          "path": "drum_right",
+          "delay_s": 0.004450132201532241,
+          "distance_m": 1.5263953451241998,
+          "emission_phase_rad": 0.5948068822188555,
+          "radial_speed_m_s": 1.032556211925195,
+          "frequency_ratio": 1.003019457643357,
+          "distance_gain": 0.6551382662390338,
+          "residual_s": 3.9621084191310274e-15,
+          "iterations": 38,
+          "emission": {
+            "frame": 4825,
+            "fraction": 0.39365432645240617
+          }
+        }
+      ]
+    },
+    "final_state": {
+      "frame": 5042,
+      "rotors": [
+        {
+          "rotor": "horn",
+          "command": "chorale",
+          "phase_rad": 0.8054984573087419,
+          "turns": 0,
+          "speed_rad_s": 10.732366393309885
+        },
+        {
+          "rotor": "drum",
+          "command": "tremolo",
+          "phase_rad": 0.5707561093389781,
+          "turns": 0,
+          "speed_rad_s": 5.384323735762708
+        }
+      ]
+    },
+    "peak_absolute_output": {
+      "left": 0.2762909190138453,
+      "right": 0.3028843886471139
+    },
+    "output_samples_above_unity": {
+      "left": 0,
+      "right": 0
+    },
+    "normalized_gain_warning": "Normalized inputs do not bound the output to [-1,1]: cubic interpolation, reference-distance/path-distance gain and signed horn/drum sums can exceed unity. Output is never clipped, normalized or resampled.",
+    "synthetic_boundary": "Synthetic nominal research model with separate normalized horn/drum radiation-boundary inputs. Not a measured cabinet, connected Engine output, R5 audible reconstruction qualification, or R6 host/device qualification.",
+    "tail_policy": "Explicit zero inputs; motion continues; no latency trimming"
+  },
+  "executable": {
+    "sha256": "eab00b6d8df762890b0681806b621c98f25d766ac94b098886d2d9496542eada",
+    "bytes": 118216
+  },
+  "files": {
+    "drum.f64le": {
+      "sha256": "25a2f2e761290eae3ed54169487b2906e99cfee4df06bc96cce643a4b2b7ca0e",
+      "bytes": 38400
+    },
+    "events.txt": {
+      "sha256": "07d3e765ef01c79a5881cde9003c4dcfd9fc0bddeb518cd4ebdd3ac721e6557e",
+      "bytes": 50
+    },
+    "horn.f64le": {
+      "sha256": "c52add9ea2301b09b89490d6c2c5b5c12ca1d2db0acbe937a17043a9b704b091",
+      "bytes": 38400
+    },
+    "result/report.json": {
+      "sha256": "49f7881c8204eebaeb8fcf186851b2b07230032f7b04005237f420547dbb86e3",
+      "bytes": 5206
+    },
+    "result/stereo.f64le": {
+      "sha256": "23b76cfbb894813a05c895b46cc6cfbacbb960edce9b2465c8f5667efb92c79a",
+      "bytes": 80672
+    }
+  }
+}

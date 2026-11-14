@@ -1,0 +1,416 @@
+Test project /workspace/scratch/e3cacb90cc81/build
+        Start 157: test_standalone_workflows
+        Start 158: test_standalone_workspace_replay
+  1/161 Test #158: test_standalone_workspace_replay ..................***Failed   44.90 sec
+Native workspace executable SHA-256: 677acfa6a0244d3f7085eb96fa0737306a9f9e74febabb34f55fea99b303c51c
+test_capture_failure_closes_parameter_gesture_before_view_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_capture_failure_closes_parameter_gesture_before_view_and_resize) ... ok
+test_focus_memory_restores_drawbar_save_and_load_after_returns (__main__.NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns) ... ok
+test_hidden_play_regions_cannot_edit_redirect_or_audition (__main__.NativeWorkspaceReplayAcceptance.test_hidden_play_regions_cannot_edit_redirect_or_audition) ... ok
+test_pointer_capture_failure_preserves_keyboard_owner_during_navigation (__main__.NativeWorkspaceReplayAcceptance.test_pointer_capture_failure_preserves_keyboard_owner_during_navigation) ... ok
+test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... 
+  test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) (size=(1672, 941)) ... FAIL
+test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok
+Actual native workspace subprocesses: 30
+
+======================================================================
+FAIL: test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) (size=(1672, 941))
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 221, in run_native
+    yield workflow_fixture.WorkflowRun(data, state_path.read_bytes(), elapsed)
+  File "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 401, in test_pointer_header_matrix_preserves_keyboard_space_and_exact_save
+    self.assert_views(run, [(workspace, mode, *size) for workspace, mode in (
+  File "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 315, in assert_views
+    self.assertIn(counts, [painted_holds(frame) for frame in visit],
+AssertionError: (1, 1, 0) not found in [(0, 0, 0), (0, 0, 0), (1, 0, 0)] : Applied held targets must appear in the painted visit ('play', 'dimensional', 1672, 941)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 396, in test_pointer_header_matrix_preserves_keyboard_space_and_exact_save
+    with self.run_native(2250, events, size=size, state=NONCANONICAL_STATE,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 225, in run_native
+    raise AssertionError(
+AssertionError: test_pointer_header_matrix_preserves_keyboard_space_and_exact_save: AssertionError: (1, 1, 0) not found in [(0, 0, 0), (0, 0, 0), (1, 0, 0)] : Applied held targets must appear in the painted visit ('play', 'dimensional', 1672, 941)
+Command: ['/workspace/scratch/e3cacb90cc81/build/apps/standalone/hammond_standalone', '--state', '/tmp/hammond-native-workspaces-mv5wwkq3/run-9/private controls.b3controls', '--input-script', '/tmp/hammond-native-workspaces-mv5wwkq3/run-9/workspace input.b3ui', '--diagnostics', '/tmp/hammond-native-workspaces-mv5wwkq3/run-9/diagnostics.json', '--width', '1672', '--height', '941', '--screenshot', '/tmp/hammond-native-workspaces-mv5wwkq3/run-9/painted-frame.bmp']
+Elapsed: 2.457s
+
+
+UI input:
+B3UIREPLAY1
+duration_ms 2250
+50 key_down Tab shift 0
+60 key_up Tab shift
+80 key_down Tab shift 0
+90 key_up Tab shift
+180 key_down A none 0
+320 key_down Space none 0
+500 mouse_down 248 67
+520 mouse_up 248 67
+700 mouse_down 1267 88
+720 mouse_up 1267 88
+900 mouse_down 368 67
+920 mouse_up 368 67
+1050 key_down F3 none 0
+1060 key_up F3 none
+1100 key_down RightBracket none 0
+1110 key_up RightBracket none
+1250 mouse_down 128 67
+1270 mouse_up 128 67
+1450 mouse_down 1267 88
+1470 mouse_up 1267 88
+1600 key_up Space ctrl+meta
+1800 key_up A alt+shift
+1950 mouse_down 1359 40
+1970 mouse_up 1359 40
+Copied diagnostics:
+{"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 218, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 111616, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "errors": {"count": 0, "last": ""}, "midi": {"active_after_shutdown": false, "active_before_shutdown": false, "arrival_time_is_sample_time": false, "arrival_time_source": "none", "arrival_time_unit": "steady_clock_nanoseconds", "backend": "unavailable", "backend_available": false, "channels": {"lower": 2, "pedals": 3, "upper": 1}, "decoder": {"actions": 0, "epochs": 0, "inactive": 0, "malformed": 0, "out_of_range": 0, "packets": 0, "timestamp_regressions": 0, "unmapped_channels": 0, "unsupported": 0}, "device": {"admission_failures": 0, "backend_errors": 0, "callback_contentions": 0, "callback_messages": 0, "close_errors": 0, "disconnects": 0, "filtered_messages": 0, "forwarded_messages": 0, "last_arrival_ns": 0}, "diagnostics_stable_after_shutdown": true, "discovery": {"completed": 0, "discarded_results": 0, "failures": 0, "pending_after_shutdown": false, "pending_before_shutdown": false, "requests": 0, "shutdown_join_performed": false, "started": 0}, "drain_budget": 32, "fault_retirements": 0, "generation": 0, "inbox": {"accepted_packets": 0, "capacity": 256, "discarded_packets": 0, "fault_bits": 0, "faulted_packets": 0, "invalid_size_packets": 0, "overflow_events": 0, "pending_packets": 0, "popped_packets": 0, "received_packets": 0, "resets": 0}, "last_submit_status": "ok", "maximum_drained_per_turn": 0, "open_failures": 0, "opened_port_index": 0, "parameter_messages": 0, "port_name": "", "quiescent_after_shutdown": true, "release_batches": 0, "release_commands_accepted": 0, "release_pending": false, "release_sequence": 0, "requested_port": "", "retired_fault_bits": 0, "retirements": 0, "session_recoveries_observed": 0, "shutdown_failed": false, "source": "none", "startup_failed": false, "state_after_shutdown": "unavailable", "state_before_shutdown": "unavailable", "status": "MIDI backend unavailable in this build.", "submit_failures": 0, "timing_policy": "arrival_order_next_callback_boundary"}, "presentation": {"before_shutdown": {"elapsed_ms": 2323, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 107008, "publication_revision": 422, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 6, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 49, "window_height": 941, "window_width": 1672, "workspace": "play"}, "initial_presentation": "dimensional", "initial_workspace": "play", "last_painted": {"elapsed_ms": 2323, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 107008, "publication_revision": 422, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 6, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 49, "window_height": 941, "window_width": 1672, "workspace": "play"}, "observation_capacity": 512, "observations": [{"elapsed_ms": 0, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": true, "frame_clock": 0, "publication_revision": 4, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 1, "window_height": 941, "window_width": 1672, "workspace": "play"}, {"elapsed_ms": 68, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 3072, "publication_revision": 16, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 2, "window_height": 941, "window_width": 1672, "workspace": "play"}, {"elapsed_ms": 329, "held_targets": {"lower": 0, "pedals": 0, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 14848, "publication_revision": 62, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 0, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 5, "window_height": 941, "window_width": 1672, "workspace": "play"}, {"elapsed_ms": 527, "held_targets": {"lower": 1, "pedals": 0, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 24064, "publication_revision": 98, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 1, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 7, "window_height": 941, "window_width": 1672, "workspace": "rotary"}, {"elapsed_ms": 734, "held_targets": {"lower": 1, "pedals": 0, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 33280, "publication_revision": 134, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 2, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 9, "window_height": 941, "window_width": 1672, "workspace": "rotary"}, {"elapsed_ms": 911, "held_targets": {"lower": 1, "pedals": 0, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 41472, "publication_revision": 166, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 3, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 15, "window_height": 941, "window_width": 1672, "workspace": "service"}, {"elapsed_ms": 1252, "held_targets": {"lower": 1, "pedals": 0, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 57344, "publication_revision": 228, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 4, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "flat", "rendered_image": 32, "window_height": 941, "window_width": 1672, "workspace": "play"}, {"elapsed_ms": 1478, "held_targets": {"lower": 1, "pedals": 0, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 67584, "publication_revision": 268, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 5, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 39, "window_height": 941, "window_width": 1672, "workspace": "play"}, {"elapsed_ms": 1750, "held_targets": {"lower": 0, "pedals": 0, "upper": 1}, "inspection": {"controls_pending": false, "frame_clock": 80384, "publication_revision": 318, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 5, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 42, "window_height": 941, "window_width": 1672, "workspace": "play"}, {"elapsed_ms": 1920, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 88064, "publication_revision": 348, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 5, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 44, "window_height": 941, "window_width": 1672, "workspace": "play"}, {"elapsed_ms": 2000, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 92160, "publication_revision": 364, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 6, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 45, "window_height": 941, "window_width": 1672, "workspace": "play"}], "observations_truncated": false, "screenshot": {"elapsed_ms": 2323, "held_targets": {"lower": 0, "pedals": 0, "upper": 0}, "inspection": {"controls_pending": false, "frame_clock": 107008, "publication_revision": 422, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "pointer_capture": {"attempts": 6, "losses": 0, "release_calls": 0, "sdl_captured": false, "successes": 0, "ui_captured": false}, "presentation": "dimensional", "rendered_image": 49, "window_height": 941, "window_width": 1672, "workspace": "play"}}, "profile": {"authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83", "id": "nominal-unmeasured-v1"}, "replay": {"accepted_note_off_commands": 2, "accepted_note_on_commands": 2, "before_shutdown": {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "last_applied_sequence": 7, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 7}, "completed": true, "controls_pending_before_shutdown": false, "delivered": true, "desired_controls_before_shutdown": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "device_starts": 1, "duration_ms": 2250, "final_acknowledged": true, "last_submitted_sequence": 7, "observation_capacity": 512, "observations": [{"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 68, "last_applied_sequence": 3, "last_submitted_sequence": 3, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 219, "last_applied_sequence": 3, "last_submitted_sequence": 4, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 329, "last_applied_sequence": 4, "last_submitted_sequence": 4, "manual_notes": [[60], []], "pedal_ids": [], "resolved_sequence": 4}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 426, "last_applied_sequence": 4, "last_submitted_sequence": 5, "manual_notes": [[60], []], "pedal_ids": [], "resolved_sequence": 4}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 527, "last_applied_sequence": 5, "last_submitted_sequence": 5, "manual_notes": [[60], [60]], "pedal_ids": [], "resolved_sequence": 5}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1655, "last_applied_sequence": 5, "last_submitted_sequence": 6, "manual_notes": [[60], [60]], "pedal_ids": [], "resolved_sequence": 5}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1750, "last_applied_sequence": 6, "last_submitted_sequence": 6, "manual_notes": [[60], []], "pedal_ids": [], "resolved_sequence": 6}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1848, "last_applied_sequence": 6, "last_submitted_sequence": 7, "manual_notes": [[60], []], "pedal_ids": [], "resolved_sequence": 6}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1920, "last_applied_sequence": 7, "last_submitted_sequence": 7, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 7}], "observations_truncated": false, "passed": true, "pushed_events": 24, "save_pending_before_shutdown": false, "scheduled_events": 24, "session_running_before_shutdown": true, "snapshot_available_before_shutdown": true}, "runtime": {"drawable_height": 941, "drawable_width": 1672, "rendered_images": 49, "renderer": "software", "screenshot_while_held": false, "screenshot_written": true, "sdl_version": "2.32.10", "video_driver": "dummy", "window_height": 941, "window_width": 1672}, "schema_version": 3, "session": {"discarded_commands": 1, "fault_flags": 0, "frame_clock": 111616, "held_after_shutdown": false, "last_applied_sequence": 7, "maximum_observed_peak": 0.029461665078997612, "prepared": true, "publication_revision": 442, "queue_overflows": 0, "recovery_count": 0, "rejected_commands": 0, "resolved_sequence": 8, "running_after_shutdown": false, "sample_rate": 48000, "snapshot_available": true}, "smoke": {"completed": false, "duration_ms": 0, "held_observed": false, "note_off_sent": false, "note_on_sent": false, "passed": false, "release_observed": false, "requested": false}, "state_path": "/tmp/hammond-native-workspaces-mv5wwkq3/run-9/private controls.b3controls", "status": "Saved controls to /tmp/hammond-native-workspaces-mv5wwkq3/run-9/private controls.b3controls"}
+
+----------------------------------------------------------------------
+Ran 6 tests in 44.790s
+
+FAILED (failures=1)
+
+        Start 156: test_standalone_native_midi_replay
+  2/161 Test #157: test_standalone_workflows .........................   Passed   64.48 sec
+        Start 160: test_standalone_chapel
+  3/161 Test #156: test_standalone_native_midi_replay ................   Passed   29.41 sec
+        Start 149: test_standalone_scaled_view
+  4/161 Test #160: test_standalone_chapel ............................   Passed   19.89 sec
+        Start 154: test_standalone_app
+  5/161 Test #149: test_standalone_scaled_view .......................   Passed   19.97 sec
+        Start 150: test_standalone_preset_raster
+  6/161 Test #154: test_standalone_app ...............................   Passed   15.06 sec
+        Start 110: python_test_rotary_propagation_acceptance
+  7/161 Test #150: test_standalone_preset_raster .....................   Passed   16.15 sec
+        Start  74: python_test_chapel_controls
+  8/161 Test #110: python_test_rotary_propagation_acceptance .........   Passed   13.83 sec
+        Start 103: python_test_plot_pedal_trace
+  9/161 Test  #74: python_test_chapel_controls .......................   Passed   12.69 sec
+        Start 155: test_standalone_midi_cli
+ 10/161 Test #103: python_test_plot_pedal_trace ......................   Passed   13.44 sec
+        Start 145: test_standalone_workspace_raster
+ 11/161 Test #155: test_standalone_midi_cli ..........................   Passed   10.92 sec
+        Start  71: python_test_capture_replay
+ 12/161 Test #145: test_standalone_workspace_raster ..................   Passed    8.63 sec
+        Start 102: python_test_plot_console_trace
+ 13/161 Test  #71: python_test_capture_replay ........................   Passed    6.53 sec
+        Start  58: python_test_capture_cli_pipeline
+ 14/161 Test #102: python_test_plot_console_trace ....................   Passed    6.25 sec
+        Start  65: python_test_capture_install
+ 15/161 Test  #58: python_test_capture_cli_pipeline ..................   Passed    5.53 sec
+        Start  73: python_test_capture_study
+ 16/161 Test  #65: python_test_capture_install .......................   Passed    5.77 sec
+        Start 159: test_standalone_replay_boundaries
+ 17/161 Test  #73: python_test_capture_study .........................   Passed    5.23 sec
+        Start  89: python_test_install
+ 18/161 Test #159: test_standalone_replay_boundaries .................   Passed    4.97 sec
+        Start 106: python_test_render_fixture
+ 19/161 Test  #89: python_test_install ...............................   Passed    5.23 sec
+        Start  75: python_test_chapel_presets
+ 20/161 Test #106: python_test_render_fixture ........................   Passed    5.30 sec
+        Start 101: python_test_pedal_trace
+ 21/161 Test  #75: python_test_chapel_presets ........................   Passed    4.67 sec
+        Start 120: test_standalone_install
+ 22/161 Test #101: python_test_pedal_trace ...........................   Passed    4.74 sec
+        Start  83: python_test_console_trace
+ 23/161 Test #120: test_standalone_install ...........................   Passed    4.42 sec
+        Start 147: test_standalone_material_acceptance
+ 24/161 Test  #83: python_test_console_trace .........................   Passed    4.46 sec
+        Start  79: python_test_compile_profile
+ 25/161 Test #147: test_standalone_material_acceptance ...............   Passed    4.10 sec
+        Start  64: python_test_capture_graph_scale
+ 26/161 Test  #79: python_test_compile_profile .......................   Passed    4.08 sec
+        Start 138: test_standalone_workspace_continuity
+ 27/161 Test  #64: python_test_capture_graph_scale ...................   Passed    3.86 sec
+        Start  66: python_test_capture_job
+ 28/161 Test #138: test_standalone_workspace_continuity ..............   Passed    3.90 sec
+        Start  95: python_test_pedal_catalog
+ 29/161 Test  #66: python_test_capture_job ...........................   Passed    3.47 sec
+        Start  82: python_test_console_evidence
+ 30/161 Test  #95: python_test_pedal_catalog .........................   Passed    3.25 sec
+        Start 113: python_test_scanner_line_profile
+ 31/161 Test  #82: python_test_console_evidence ......................   Passed    3.57 sec
+        Start 151: test_standalone_audio_device
+ 32/161 Test #113: python_test_scanner_line_profile ..................   Passed    3.26 sec
+        Start 118: python_test_verify_render
+ 33/161 Test #151: test_standalone_audio_device ......................   Passed    2.87 sec
+        Start 142: test_standalone_benchmark
+ 34/161 Test #118: python_test_verify_render .........................   Passed    2.81 sec
+        Start 112: python_test_scanner_ac_reference
+ 35/161 Test #142: test_standalone_benchmark .........................   Passed    2.62 sec
+        Start 115: python_test_scanner_transient_reference
+ 36/161 Test #112: python_test_scanner_ac_reference ..................   Passed    2.74 sec
+        Start 105: python_test_render
+ 37/161 Test #115: python_test_scanner_transient_reference ...........   Passed    2.43 sec
+        Start  78: python_test_compile_pedal_routing
+ 38/161 Test #105: python_test_render ................................   Passed    2.60 sec
+        Start 119: python_test_vst3_build_tools
+ 39/161 Test  #78: python_test_compile_pedal_routing .................   Passed    2.51 sec
+        Start  57: python_test_capture_audio_admission
+ 40/161 Test #119: python_test_vst3_build_tools ......................   Passed    1.86 sec
+        Start  96: python_test_pedal_demo
+ 41/161 Test  #57: python_test_capture_audio_admission ...............   Passed    2.00 sec
+        Start 114: python_test_scanner_native_ac
+ 42/161 Test  #96: python_test_pedal_demo ............................   Passed    1.85 sec
+        Start  77: python_test_compile_fixed_registrations
+ 43/161 Test #114: python_test_scanner_native_ac .....................   Passed    1.78 sec
+        Start  88: python_test_fixture_catalog
+ 44/161 Test  #77: python_test_compile_fixed_registrations ...........   Passed    1.69 sec
+        Start 111: python_test_rotary_reference
+ 45/161 Test #111: python_test_rotary_reference ......................   Passed    1.61 sec
+        Start 109: python_test_rotary_profile
+ 46/161 Test  #88: python_test_fixture_catalog .......................   Passed    1.83 sec
+        Start  98: python_test_pedal_render_cli
+ 47/161 Test  #98: python_test_pedal_render_cli ......................   Passed    1.42 sec
+        Start 107: python_test_repository_integrity
+ 48/161 Test #109: python_test_rotary_profile ........................   Passed    1.81 sec
+        Start  99: python_test_pedal_render_evidence
+ 49/161 Test  #99: python_test_pedal_render_evidence .................   Passed    1.37 sec
+        Start  62: python_test_capture_corpus_admission
+ 50/161 Test  #62: python_test_capture_corpus_admission ..............   Passed    1.59 sec
+        Start  67: python_test_capture_metadata_read
+ 51/161 Test #107: python_test_repository_integrity ..................   Passed    3.45 sec
+        Start  93: python_test_parameters
+ 52/161 Test  #67: python_test_capture_metadata_read .................   Passed    1.53 sec
+        Start  17: test_numerics
+ 53/161 Test  #93: python_test_parameters ............................   Passed    1.35 sec
+        Start  15: test_input_processor
+ 54/161 Test  #15: test_input_processor ..............................   Passed    1.11 sec
+        Start  63: python_test_capture_demo
+ 55/161 Test  #17: test_numerics .....................................   Passed    1.24 sec
+        Start 153: test_standalone_callback_allocation
+ 56/161 Test #153: test_standalone_callback_allocation ...............   Passed    0.96 sec
+        Start  12: test_fixed_registration_engine
+ 57/161 Test  #63: python_test_capture_demo ..........................   Passed    1.35 sec
+        Start  81: python_test_console_catalog
+ 58/161 Test  #12: test_fixed_registration_engine ....................   Passed    1.05 sec
+        Start  39: test_realtime_console
+ 59/161 Test  #81: python_test_console_catalog .......................   Passed    0.92 sec
+        Start 116: python_test_sdl2_dependency
+ 60/161 Test  #39: test_realtime_console .............................   Passed    0.82 sec
+        Start  13: test_fixed_registration_lifecycle
+ 61/161 Test #116: python_test_sdl2_dependency .......................   Passed    0.86 sec
+        Start  55: python_test_capture
+ 62/161 Test  #13: test_fixed_registration_lifecycle .................   Passed    0.70 sec
+        Start  76: python_test_cli_unicode
+ 63/161 Test  #55: python_test_capture ...............................   Passed    0.87 sec
+        Start  80: python_test_console_benchmark
+ 64/161 Test  #76: python_test_cli_unicode ...........................   Passed    0.85 sec
+        Start  54: python_test_calibration_session_records
+ 65/161 Test  #80: python_test_console_benchmark .....................   Passed    0.77 sec
+        Start   9: test_engine_rate
+ 66/161 Test  #54: python_test_calibration_session_records ...........   Passed    0.93 sec
+        Start  61: python_test_capture_corpus
+ 67/161 Test   #9: test_engine_rate ..................................   Passed    0.63 sec
+        Start 146: test_standalone_inspection_raster
+ 68/161 Test #146: test_standalone_inspection_raster .................   Passed    0.56 sec
+        Start  60: python_test_capture_comparison
+ 69/161 Test  #61: python_test_capture_corpus ........................   Passed    0.73 sec
+        Start  52: test_tonewheel
+ 70/161 Test  #60: python_test_capture_comparison ....................   Passed    0.56 sec
+        Start  40: test_realtime_pedals
+ 71/161 Test  #52: test_tonewheel ....................................   Passed    0.67 sec
+        Start  53: python_test_audio_analysis
+ 72/161 Test  #40: test_realtime_pedals ..............................   Passed    0.65 sec
+        Start 104: python_test_preset_parameter_oracle
+ 73/161 Test  #53: python_test_audio_analysis ........................   Passed    0.64 sec
+        Start  68: python_test_capture_numerics
+ 74/161 Test #104: python_test_preset_parameter_oracle ...............   Passed    0.66 sec
+        Start 100: python_test_pedal_session
+ 75/161 Test  #68: python_test_capture_numerics ......................   Passed    0.71 sec
+        Start  85: python_test_demo_bundle
+ 76/161 Test #100: python_test_pedal_session .........................   Passed    0.54 sec
+        Start  92: python_test_parameter_bridge
+ 77/161 Test  #85: python_test_demo_bundle ...........................   Passed    0.66 sec
+        Start 117: python_test_standalone_session_records
+ 78/161 Test  #92: python_test_parameter_bridge ......................   Passed    0.66 sec
+        Start 108: python_test_rotary_motion_acceptance
+ 79/161 Test #117: python_test_standalone_session_records ............   Passed    0.55 sec
+        Start  33: test_performance_acceptance
+ 80/161 Test #108: python_test_rotary_motion_acceptance ..............   Passed    0.70 sec
+        Start  94: python_test_partial_key_render
+ 81/161 Test  #33: test_performance_acceptance .......................   Passed    0.62 sec
+        Start  70: python_test_capture_readiness
+ 82/161 Test  #94: python_test_partial_key_render ....................   Passed    0.48 sec
+        Start  48: test_scanner_line
+ 83/161 Test  #70: python_test_capture_readiness .....................   Passed    0.54 sec
+        Start  14: test_host_timeline
+ 84/161 Test  #48: test_scanner_line .................................   Passed    0.44 sec
+        Start  56: python_test_capture_audio
+ 85/161 Test  #14: test_host_timeline ................................   Passed    0.46 sec
+        Start  38: test_realtime
+ 86/161 Test  #56: python_test_capture_audio .........................   Passed    0.56 sec
+        Start 131: test_standalone_preset_ui
+ 87/161 Test  #38: test_realtime .....................................   Passed    0.41 sec
+        Start  87: python_test_fixed_registration_source_admission
+ 88/161 Test #131: test_standalone_preset_ui .........................   Passed    0.46 sec
+        Start  69: python_test_capture_policy
+ 89/161 Test  #87: python_test_fixed_registration_source_admission ...   Passed    0.39 sec
+        Start  86: python_test_factory_reference
+ 90/161 Test  #69: python_test_capture_policy ........................   Passed    0.41 sec
+        Start   1: test_console_engine
+ 91/161 Test  #86: python_test_factory_reference .....................   Passed    0.44 sec
+        Start  10: test_factory_runtime
+ 92/161 Test   #1: test_console_engine ...............................   Passed    0.32 sec
+        Start  97: python_test_pedal_map
+ 93/161 Test  #10: test_factory_runtime ..............................   Passed    0.26 sec
+        Start 134: test_standalone_session
+ 94/161 Test #134: test_standalone_session ...........................   Passed    0.29 sec
+        Start  91: python_test_native_bundle_inventory
+ 95/161 Test  #97: python_test_pedal_map .............................   Passed    0.32 sec
+        Start  50: test_source_rate
+ 96/161 Test  #50: test_source_rate ..................................   Passed    0.23 sec
+        Start  20: test_partial_key
+ 97/161 Test  #91: python_test_native_bundle_inventory ...............   Passed    0.33 sec
+        Start  37: test_profile
+ 98/161 Test  #20: test_partial_key ..................................   Passed    0.22 sec
+        Start  18: test_owned_lifecycle
+ 99/161 Test  #37: test_profile ......................................   Passed    0.24 sec
+        Start 152: test_standalone_device_removal
+100/161 Test  #18: test_owned_lifecycle ..............................   Passed    0.20 sec
+        Start  84: python_test_continuation_ledger
+101/161 Test #152: test_standalone_device_removal ....................   Passed    0.24 sec
+        Start   8: test_engine
+102/161 Test  #84: python_test_continuation_ledger ...................   Passed    0.21 sec
+        Start   5: test_controls
+103/161 Test   #8: test_engine .......................................   Passed    0.19 sec
+        Start 132: test_standalone_projection
+104/161 Test   #5: test_controls .....................................   Passed    0.13 sec
+        Start  28: test_pedal_sources
+105/161 Test #132: test_standalone_projection ........................   Passed    0.15 sec
+        Start  72: python_test_capture_standalone_interface
+106/161 Test  #28: test_pedal_sources ................................   Passed    0.13 sec
+        Start 121: test_standalone_concurrency
+107/161 Test  #72: python_test_capture_standalone_interface ..........   Passed    0.12 sec
+        Start  59: python_test_capture_common
+108/161 Test #121: test_standalone_concurrency .......................   Passed    0.14 sec
+        Start  90: python_test_model_info
+109/161 Test  #59: python_test_capture_common ........................   Passed    0.14 sec
+        Start  36: test_preset_realtime
+110/161 Test  #90: python_test_model_info ............................   Passed    0.11 sec
+        Start 143: test_standalone_drawing
+111/161 Test  #36: test_preset_realtime ..............................   Passed    0.06 sec
+        Start  34: test_performance_input
+112/161 Test #143: test_standalone_drawing ...........................   Passed    0.08 sec
+        Start  42: test_rotary_history_acceptance
+113/161 Test  #34: test_performance_input ............................   Passed    0.07 sec
+        Start  23: test_pedal_integration
+114/161 Test  #42: test_rotary_history_acceptance ....................   Passed    0.07 sec
+        Start 125: test_standalone_midi_concurrency
+115/161 Test  #23: test_pedal_integration ............................   Passed    0.07 sec
+        Start   4: test_control_io
+116/161 Test #125: test_standalone_midi_concurrency ..................   Passed    0.06 sec
+        Start  45: test_rotary_propagation_allocation
+117/161 Test   #4: test_control_io ...................................   Passed    0.06 sec
+        Start  51: test_state_exchange
+118/161 Test  #51: test_state_exchange ...............................   Passed    0.02 sec
+        Start   3: test_contact_rate
+119/161 Test  #45: test_rotary_propagation_allocation ................   Passed    0.07 sec
+        Start  49: test_scanner_rotor
+120/161 Test   #3: test_contact_rate .................................   Passed    0.05 sec
+        Start 136: test_standalone_ui
+121/161 Test  #49: test_scanner_rotor ................................   Passed    0.05 sec
+        Start  41: test_rotary_history
+122/161 Test  #41: test_rotary_history ...............................   Passed    0.04 sec
+        Start  43: test_rotary_motion
+123/161 Test #136: test_standalone_ui ................................   Passed    0.07 sec
+        Start  16: test_note_ownership
+124/161 Test  #16: test_note_ownership ...............................   Passed    0.02 sec
+        Start   2: test_contact_bank
+125/161 Test  #43: test_rotary_motion ................................   Passed    0.05 sec
+        Start  31: test_percussion_controls
+126/161 Test  #31: test_percussion_controls ..........................   Passed    0.03 sec
+        Start 137: test_standalone_workspace_acceptance
+127/161 Test   #2: test_contact_bank .................................   Passed    0.05 sec
+        Start 129: test_standalone_midi_session
+128/161 Test #137: test_standalone_workspace_acceptance ..............   Passed    0.03 sec
+        Start   7: test_decimal
+129/161 Test #129: test_standalone_midi_session ......................   Passed    0.03 sec
+        Start 133: test_standalone_reference_layout
+130/161 Test   #7: test_decimal ......................................   Passed    0.02 sec
+        Start  26: test_pedal_reference
+131/161 Test #133: test_standalone_reference_layout ..................   Passed    0.03 sec
+        Start  44: test_rotary_propagation
+132/161 Test  #44: test_rotary_propagation ...........................   Passed    0.02 sec
+        Start 130: test_standalone_preset_concurrency
+133/161 Test  #26: test_pedal_reference ..............................   Passed    0.03 sec
+        Start 161: test_standalone_input_replay
+134/161 Test #130: test_standalone_preset_concurrency ................   Passed    0.01 sec
+        Start  22: test_pedal_engine
+135/161 Test #161: test_standalone_input_replay ......................   Passed    0.01 sec
+        Start  19: test_parameter_bridge
+136/161 Test  #22: test_pedal_engine .................................   Passed    0.01 sec
+        Start  21: test_pedal_controls
+137/161 Test  #19: test_parameter_bridge .............................   Passed    0.01 sec
+        Start  30: test_percussion
+138/161 Test  #21: test_pedal_controls ...............................   Passed    0.01 sec
+        Start  32: test_percussion_rate
+139/161 Test  #30: test_percussion ...................................   Passed    0.01 sec
+        Start 128: test_standalone_midi_replay
+140/161 Test  #32: test_percussion_rate ..............................   Passed    0.01 sec
+        Start 123: test_standalone_inspection_acceptance
+141/161 Test #128: test_standalone_midi_replay .......................   Passed    0.00 sec
+        Start  29: test_pedal_voice
+142/161 Test #123: test_standalone_inspection_acceptance .............   Passed    0.01 sec
+        Start 144: test_standalone_quad_drawing
+143/161 Test  #29: test_pedal_voice ..................................   Passed    0.01 sec
+        Start  25: test_pedal_realtime
+144/161 Test #144: test_standalone_quad_drawing ......................   Passed    0.01 sec
+        Start   6: test_core_robustness
+145/161 Test  #25: test_pedal_realtime ...............................   Passed    0.00 sec
+        Start 135: test_standalone_state_files
+146/161 Test   #6: test_core_robustness ..............................   Passed    0.00 sec
+        Start 126: test_standalone_midi_discovery
+147/161 Test #135: test_standalone_state_files .......................   Passed    0.00 sec
+        Start  24: test_pedal_note_ownership
+148/161 Test #126: test_standalone_midi_discovery ....................   Passed    0.00 sec
+        Start  27: test_pedal_routing
+149/161 Test  #24: test_pedal_note_ownership .........................   Passed    0.00 sec
+        Start  35: test_preset_parameter_boundaries
+150/161 Test  #27: test_pedal_routing ................................   Passed    0.00 sec
+        Start 122: test_standalone_external_control
+151/161 Test  #35: test_preset_parameter_boundaries ..................   Passed    0.00 sec
+        Start 139: test_standalone_workspaces_author
+152/161 Test #122: test_standalone_external_control ..................   Passed    0.00 sec
+        Start 124: test_standalone_inspection_author
+153/161 Test #139: test_standalone_workspaces_author .................   Passed    0.00 sec
+        Start  11: test_fixed_registration_data
+154/161 Test #124: test_standalone_inspection_author .................   Passed    0.00 sec
+        Start 140: test_standalone_midi_backend
+155/161 Test  #11: test_fixed_registration_data ......................   Passed    0.00 sec
+        Start 141: test_standalone_midi_backend_quarantine
+156/161 Test #140: test_standalone_midi_backend ......................   Passed    0.00 sec
+        Start 127: test_standalone_midi_input
+157/161 Test #141: test_standalone_midi_backend_quarantine ...........   Passed    0.00 sec
+        Start  46: test_rotary_renderer
+158/161 Test #127: test_standalone_midi_input ........................   Passed    0.00 sec
+        Start  47: test_rotary_streaming_path
+159/161 Test  #47: test_rotary_streaming_path ........................   Passed    0.12 sec
+        Start 148: test_standalone_waveform_material
+160/161 Test  #46: test_rotary_renderer ..............................   Passed    0.63 sec
+161/161 Test #148: test_standalone_waveform_material .................   Passed    7.57 sec
+
+99% tests passed, 1 tests failed out of 161
+
+Label Time Summary:
+backend                   =   0.01 sec*proc (2 tests)
+benchmark                 =   2.62 sec*proc (1 test)
+concurrency               =   0.06 sec*proc (1 test)
+geometry                  =  20.32 sec*proc (4 tests)
+inspection                =   0.56 sec*proc (1 test)
+intentional-quarantine    =   0.00 sec*proc (1 test)
+material                  =  11.68 sec*proc (2 tests)
+midi                      =  40.33 sec*proc (2 tests)
+native                    = 251.36 sec*proc (17 tests)
+standalone                = 254.04 sec*proc (21 tests)
+workspace                 =  73.50 sec*proc (3 tests)
+
+Total Test time (real) = 226.45 sec
+
+The following tests FAILED:
+	158 - test_standalone_workspace_replay (Failed)         native standalone workspace
+Errors while running CTest

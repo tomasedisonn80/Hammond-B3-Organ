@@ -34,6 +34,12 @@ import test_standalone_workflows as workflow_fixture
 
 
 PROCESS_TIMEOUT = 9.0
+# Give the asynchronous Space command a visible Play interval before moving
+# to Rotary. The original 180 ms gap could contain only a submitted snapshot
+# on the actual reference-size software painter; its applied snapshot then
+# first appeared in Rotary. Keep every painted-hold assertion and the process
+# deadline, and shift only the later journey by this fixed observation dwell.
+HEADER_VISUAL_SETTLE_MS = 600
 EMPTY = ((), (), ())
 STATE = workflow_fixture.FIXED_STATE
 CONTROLS = workflow_fixture.FIXED_CONTROLS
@@ -332,7 +338,8 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
         self.assertIn(through, (1, 4))
         states = (EMPTY, ((60,), (), ()), ((60,), (60,), ()),
                   ((60,), (), ()), EMPTY)
-        earliest = (0, 180, 320, 1600, 1800)
+        earliest = (0, 180, 320, 1600 + HEADER_VISUAL_SETTLE_MS,
+                    1800 + HEADER_VISUAL_SETTLE_MS)
         replay = run.diagnostics["replay"]
         final = startup_sequence + through
         previous_applied = previous_submitted = startup_sequence
@@ -374,6 +381,8 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                 events += click(1250, play) + click(1450, flat)
                 events += [(1600, "key_up Space ctrl+meta"), (1800, "key_up A alt+shift")]
                 events += click(1950, save)
+                events = [(at + (HEADER_VISUAL_SETTLE_MS if at >= 500 else 0), event)
+                          for at, event in events]
                 # Complete the original startup and first-note prefixes at each
                 # size. Copied snapshots need not sample the short interval
                 # between the original 180 ms Upper and 320 ms Space presses.
@@ -393,7 +402,8 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                     self.assert_header_hold_prefixes(upper, startup_sequence, through=1)
                     self.assertEqual(upper.saved_bytes, NONCANONICAL_STATE,
                                      "The held-note prefix must not save or canonicalize its input")
-                with self.run_native(2250, events, size=size, state=NONCANONICAL_STATE,
+                with self.run_native(2250 + HEADER_VISUAL_SETTLE_MS, events,
+                                     size=size, state=NONCANONICAL_STATE,
                                      screenshot=True) as run:
                     self.assert_control_path(run, [CONTROLS])
                     self.assert_header_hold_prefixes(run, startup_sequence, through=4)

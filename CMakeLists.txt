@@ -166,12 +166,29 @@ add_executable(hammond_scanner_line_probe tools/scanner_line_probe.cpp)
 target_link_libraries(hammond_scanner_line_probe PRIVATE hammond_core)
 hammond_configure_target(hammond_scanner_line_probe)
 
+# Independent normalized mouth-input renderer; no organ profile or live route.
+set(HAMMOND_ROTARY_AUTHORING "${CMAKE_CURRENT_SOURCE_DIR}/data/rotary/nominal-research-v1.json")
+set(HAMMOND_ROTARY_HEADER "${HAMMOND_GENERATED_INCLUDE_DIR}/RotaryNominalProfile.h")
+add_custom_command(
+    OUTPUT "${HAMMOND_ROTARY_HEADER}"
+    COMMAND "${CMAKE_COMMAND}" -E make_directory "${HAMMOND_GENERATED_INCLUDE_DIR}"
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/tools/compile_rotary_profile.py"
+        --input "${HAMMOND_ROTARY_AUTHORING}" --output "${HAMMOND_ROTARY_HEADER}"
+    DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tools/compile_rotary_profile.py"
+        "${CMAKE_CURRENT_SOURCE_DIR}/tools/validate_rotary_profile.py" "${HAMMOND_ROTARY_AUTHORING}"
+    COMMENT "Admitting the nominal rotary profile and compiling exact constants"
+    VERBATIM)
+add_executable(hammond_rotary_render tools/rotary_render.cpp "${HAMMOND_ROTARY_HEADER}")
+target_link_libraries(hammond_rotary_render PRIVATE hammond_core)
+target_include_directories(hammond_rotary_render PRIVATE "${HAMMOND_GENERATED_INCLUDE_DIR}")
+hammond_configure_target(hammond_rotary_render)
+
 # All offline tools receive lossless Windows argv through wmain. Keep this
 # executable-only startup option away from the core, tests and optional plugin.
 if(MINGW)
     foreach(cli_target hammond_render hammond_benchmark hammond_model_info
                        hammond_parameter_info hammond_console_trace hammond_pedal_trace
-                       hammond_scanner_line_probe)
+                       hammond_scanner_line_probe hammond_rotary_render)
         if(TARGET ${cli_target})
             target_link_options(${cli_target} PRIVATE -municode)
         endif()
@@ -201,6 +218,14 @@ if(BUILD_TESTING)
     target_link_libraries(hammond_rotary_propagation_probe PRIVATE hammond_core)
     hammond_configure_target(hammond_rotary_propagation_probe)
     list(APPEND HAMMOND_TEST_TARGETS hammond_rotary_propagation_probe)
+    add_executable(hammond_rotary_waveform_probe
+        tests/probes/rotary_waveform_probe.cpp
+        tests/reference/rotary_waveform_reference.h)
+    target_link_libraries(hammond_rotary_waveform_probe PRIVATE hammond_core)
+    target_include_directories(hammond_rotary_waveform_probe PRIVATE
+        "${CMAKE_CURRENT_SOURCE_DIR}/tests")
+    hammond_configure_target(hammond_rotary_waveform_probe)
+    list(APPEND HAMMOND_TEST_TARGETS hammond_rotary_waveform_probe)
     file(GLOB HAMMOND_CPP_TESTS CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")
     foreach(test_source IN LISTS HAMMOND_CPP_TESTS)
         get_filename_component(test_name "${test_source}" NAME_WE)
@@ -210,6 +235,12 @@ if(BUILD_TESTING)
             target_link_libraries(${test_name} PRIVATE Threads::Threads)
         endif()
         target_include_directories(${test_name} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/tests")
+        if(test_name MATCHES "^test_rotary_renderer($|_)")
+            # Dedicated transaction/lifetime tests may inspect the private
+            # storage through the declared test friend. Never expose src/ as
+            # a public core include or ship a test accessor implementation.
+            target_include_directories(${test_name} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
+        endif()
         target_compile_definitions(${test_name} PRIVATE
             HAMMOND_TEST_PROFILE="${HAMMOND_COMPILED_PROFILE}"
             HAMMOND_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
@@ -239,6 +270,30 @@ if(BUILD_TESTING)
         set_property(TEST python_test_rotary_propagation_acceptance APPEND PROPERTY ENVIRONMENT
             "HAMMOND_ROTARY_PROPAGATION_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_rotary_propagation_probe>")
     endif()
+    if(TEST python_test_rotary_waveform_acceptance)
+        set_property(TEST python_test_rotary_waveform_acceptance APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_ROTARY_WAVEFORM_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_rotary_waveform_probe>"
+            "HAMMOND_ROTARY_WAVEFORM_REPORT_DIR=${CMAKE_BINARY_DIR}/rotary-waveform/$<CONFIG>/smoke")
+        set_tests_properties(python_test_rotary_waveform_acceptance PROPERTIES
+            TIMEOUT 120 LABELS "rotary;waveform;smoke")
+        add_test(NAME python_test_rotary_waveform_report_admission
+            COMMAND "${Python3_EXECUTABLE}"
+                "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_rotary_waveform_acceptance.py" --self-test)
+        set_tests_properties(python_test_rotary_waveform_report_admission PROPERTIES
+            WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+            ENVIRONMENT "PYTHONDONTWRITEBYTECODE=1"
+            TIMEOUT 30 LABELS "rotary;waveform;admission")
+        add_custom_target(check_rotary_waveform_full
+            COMMAND "${Python3_EXECUTABLE}"
+                "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_rotary_waveform_acceptance.py"
+                --mode full
+                --probe "$<TARGET_FILE:hammond_rotary_waveform_probe>"
+                --report-dir "${CMAKE_BINARY_DIR}/rotary-waveform/$<CONFIG>/full"
+                --timeout-seconds 1500
+            DEPENDS hammond_rotary_waveform_probe
+            WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
+            USES_TERMINAL VERBATIM)
+    endif()
 
     foreach(build_tool_test python_test_vst3_build_tools python_test_sdl2_dependency)
         if(TEST ${build_tool_test})
@@ -260,6 +315,14 @@ if(BUILD_TESTING)
         set_property(TEST python_test_model_info APPEND PROPERTY ENVIRONMENT
             "HAMMOND_MODEL_INFO_EXECUTABLE=$<TARGET_FILE:hammond_model_info>")
         list(APPEND HAMMOND_TEST_TARGETS hammond_model_info)
+    endif()
+
+    if(TEST python_test_rotary_render_cli)
+        set_property(TEST python_test_rotary_render_cli APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_ROTARY_RENDER_EXECUTABLE=$<TARGET_FILE:hammond_rotary_render>")
+        set_tests_properties(python_test_rotary_render_cli PROPERTIES
+            TIMEOUT 120 LABELS "rotary;waveform;offline")
+        list(APPEND HAMMOND_TEST_TARGETS hammond_rotary_render)
     endif()
 
     if(TEST python_test_parameter_bridge)

@@ -326,20 +326,44 @@ void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
         return;
     }
     drawing.rounded(slot, 2.0F, {5, 5, 5});
+    // Recess walls and a substantial dark stem follow the reference material,
+    // entirely inside the existing live slot and gesture geometry.
+    if (slot.width > 4.0F && slot.height > 2.0F) {
+        const float wall_height = std::max(0.0F, slot.height - 2.0F);
+        drawing.gradient({slot.x + 1.0F, slot.y + 1.0F,
+                          std::min(3.0F, slot.width - 2.0F), wall_height},
+                         {47, 43, 36}, {22, 21, 18});
+        drawing.gradient({slot.x + slot.width - 3.0F, slot.y + 1.0F,
+                          2.0F, wall_height}, {27, 26, 23}, {13, 14, 12});
+        drawing.gradient({slot.x + 1.0F, slot.y + 1.0F,
+                          slot.width - 2.0F, std::min(6.0F, slot.height / 4.0F)},
+                         {0, 0, 0, 135}, {0, 0, 0, 0});
+    }
     drawing.line(slot.x, slot.y + 1.0F, slot.x, slot.y + slot.height - 1.0F, {63, 58, 49});
     drawing.line(slot.x + slot.width - 1.0F, slot.y, slot.x + slot.width - 1.0F,
                  slot.y + slot.height, {36, 34, 30});
-    drawing.gradient({center - 1.75F, track.y, 3.5F, track.height}, {79, 75, 67}, {30, 30, 28});
     for (int tick = 0; tick <= 8; ++tick) {
         const float tick_y = track.y + track.height * static_cast<float>(tick) / 8.0F;
         drawing.line(slot.x + 1.0F, tick_y, slot.x + 3.0F, tick_y, {103, 94, 72});
     }
-    drawing.gradient({center - 1.75F, track.y, 3.5F, y - track.y}, {144, 135, 116}, {83, 77, 64});
-    drawing.line(center - 0.75F, track.y, center - 0.75F, y, {192, 179, 153, 125});
+    const float shaft_width = std::min(9.0F, slot.width - 8.0F);
+    const float exposed_height = std::max(0.0F, knob.y - track.y);
+    if (shaft_width > 0.0F) {
+        const float shaft_left = center - shaft_width / 2.0F;
+        drawing.gradient({shaft_left, track.y, shaft_width, track.height},
+                         {37, 36, 31}, {20, 22, 19});
+        if (exposed_height > 0.0F) {
+            drawing.gradient({shaft_left, track.y, shaft_width, exposed_height},
+                             {70, 65, 54}, {43, 41, 34});
+            drawing.rect({shaft_left, track.y, 1.0F, exposed_height}, {174, 158, 129, 170});
+            drawing.rect({shaft_left + shaft_width - 1.0F, track.y, 1.0F, exposed_height},
+                         {15, 16, 14});
+        }
+    }
     drawing.rounded({knob.x - 1.0F, knob.y + 3.0F, knob.width + 3.0F, knob.height + 1.0F}, 3.0F, {0, 0, 0, 210});
     drawing.rounded(knob, 3.0F, shade(cap, -38));
     const bool ivory = cap.red == kIvoryCap.red && cap.green == kIvoryCap.green && cap.blue == kIvoryCap.blue;
-    const float front = std::clamp(knob.height * 0.18F, 3.0F, 5.0F);
+    const float front = mixture ? 6.0F : 7.0F;
     const UiRect face{knob.x + 1.0F, knob.y + 2.0F, knob.width - 2.0F, knob.height - front - 3.0F};
     drawing.gradient(face, ivory ? UiColor{250, 237, 207} : shade(cap, 29),
                      ivory ? UiColor{225, 204, 166} : shade(cap, -2));
@@ -668,8 +692,8 @@ void paint_key(Drawing& drawing, const UiKeyGeometry& key, bool held, bool focus
             held ? UiColor{209, 181, 122} : UiColor{226, 211, 181},
             held ? UiColor{244, 213, 149} : UiColor{255, 244, 220});
         drawing.quad(key.front,
-            held ? UiColor{190, 157, 96} : UiColor{215, 190, 148},
-            held ? UiColor{145, 115, 62} : UiColor{164, 132, 89});
+            held ? UiColor{190, 157, 96} : UiColor{198, 168, 124},
+            held ? UiColor{145, 115, 62} : UiColor{131, 96, 62});
         drawing.quad_outline(key.hit, {83, 65, 42}, 0.7F);
         const float front_depth = key.front.points[3].y - key.front.points[0].y;
         const float front_highlight = front_depth > 0.0F ? std::min(0.13F, 2.0F / front_depth) : 0.0F;

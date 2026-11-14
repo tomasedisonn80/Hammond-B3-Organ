@@ -3,15 +3,23 @@
 ## Current R4 waveform continuation
 
 Continue the [current checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
-and actual [assignment manifest](development/2026-11-14-waveform-continuation/assignments.json).
-Finish full atlas consolidation, review the [R4 brief](ROTARY_RENDERER_PLAN.md),
-freeze implementation ownership and then build bounded histories, independent
-same-cubic reference and atomic stereo rendering. Qualify the complete frozen
-R4 experiments before changing that gate's status. Preserve the current dry
-Engine and all sound/state identities. Compare and refine actual native paint,
-then refresh README with exact-source application captures and residual gaps.
+and [actual assignment manifest](development/2026-11-14-waveform-continuation/assignments.json).
+The full atlas reading, API freeze and history implementation are complete.
+Next qualify the complete renderer against the independent same-cubic reference
+for ten seconds at all four rates and every prescribed partition. Independently
+exercise nonzero-history late rejection, repeated-wrap partial-frame rollback,
+all stopped rate pairs, exact event order, signed input/receiver symmetries and
+calibrated allocation/deallocation checks. Keep smoke and full results distinct;
+close R4 only after the complete frozen experiments pass.
 
-Earlier unpublished reference-refinement work is a separate scope; inspect any
+Add the bounded offline developer renderer, integrate its build and command
+acceptance, and retain reproducible examples. UI timing has passed; finish the actual
+coherent-source gallery, then update README screenshots and measured residual
+reference differences. Complete all sixty newly dispatched assignments in their
+ten logical waves and verify their substantive notes, final build and remote
+publication. Preserve the current dry Engine and all sound/state identities.
+
+Earlier unpublished reference-refinement work is a separate scope. Inspect each
 remote advance before publication and preserve its original source/evidence.
 R5/R6, scanner G5, complete M5/M6 models and physical acquisition remain separate.
 

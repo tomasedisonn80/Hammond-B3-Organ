@@ -1,0 +1,22 @@
+{
+  "scope": "Exploratory workload sizing only, not full acceptance, an audio deadline pass or a real-device measurement. Static full_scene parameters, moving rotors, 24 blocks of4096 at48000Hz, isolated horn impulses, no commands.",
+  "compiler": "GCC14.2 C++20; probe -O2, shared hammond_core Release -O3",
+  "native_frames": 98304,
+  "elapsed_seconds": 2.2817,
+  "frames_per_second": 43083.7,
+  "max_residual_seconds": 9.99981e-15,
+  "max_evaluations": 38,
+  "renderer_storage_bytes": 2721712,
+  "rough_full_native_seconds_at_observed_rate": 529.3417232039031,
+  "limits": "Single timing under current shared Linux container. The full fixture has different commands/rates/signals and independent reference cost. Administrative timeout must use actual full run.",
+  "source_sha256": {
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+    "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+    "src/RotaryRendererInternal.h": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e"
+  },
+  "probe_sha256": "c847e3d027814f6a90b316d170edddd85e00187b356431dc9dcdd14a15c5b8d2",
+  "executable_sha256": "a9270ff22cd55ec4a30ee13c7883bb301336ad43af146c341782e35e23b80648"
+}

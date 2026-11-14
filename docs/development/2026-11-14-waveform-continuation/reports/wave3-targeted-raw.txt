@@ -1,0 +1,94 @@
+Start testing: Nov 14 15:26 MST
+----------------------------------------------------------
+47/162 Testing: test_rotary_streaming_path
+47/162 Test: test_rotary_streaming_path
+Command: "/workspace/scratch/e3cacb90cc81/build/test_rotary_streaming_path"
+Directory: /workspace/scratch/e3cacb90cc81/build
+"test_rotary_streaming_path" start time: Nov 14 15:26 MST
+Output:
+----------------------------------------------------------
+{
+  "experiment":"a17-bounded-streaming-path-v1",
+  "status":"pass",
+  "rates":[44100,48000,96000,192000],
+  "directions":[-1,1],
+  "reference":"independent-long-double-waveform-v1",
+  "reference_method":"pure_bisection",
+  "reference_target_s":1e-16,
+  "long_double_significand_bits":64,
+  "checks":345828,
+  "successful_paths":3952,
+  "exact_r3_paths":3940,
+  "analytic_paths":1080,
+  "command_side_roots":768,
+  "retired_anchor_paths":56,
+  "epoch_paths":64,
+  "preparation_rejections":73,
+  "solve_rejections":109,
+  "mismatch_rejections":7,
+  "conservative_bracket_rejections":1,
+  "changed_seed_paths":16,
+  "mach_limit_paths":16,
+  "maximum_native_residual_s":9.99634403031635088155e-15,
+  "maximum_native_evaluations":41,
+  "maximum_reference_residual_s":9.99837690938976120236e-17,
+  "maximum_reference_evaluations":47,
+  "errors":{
+    "root_delay_s": {"count":2804,"maximum":1.15746361910448129079e-14,"rms":4.56960096736819233291e-15,"worst":"geometry fs=44100 dir=1 r=1.000000 phase=1.570796 c=343.000000 mic=1"},
+    "root_frequency_ratio": {"count":2804,"maximum":9.97075154645504779793e-12,"rms":9.23906732644065685663e-13,"worst":"geometry fs=44100 dir=-1 r=1.000000 phase=0.000000 c=300.000000 mic=0"},
+    "emission_frames": {"count":2804,"maximum":2.2224215801003310844e-09,"rms":5.03684256104475373973e-10,"worst":"geometry fs=192000 dir=1 r=1.000000 phase=1.570796 c=343.000000 mic=1"},
+    "identical_state_distance_m": {"count":2804,"maximum":3.85975973404839578507e-16,"rms":1.13094489726799301126e-16,"worst":"moving fs=96000 dir=-1 mode=0 mic=0 obs=4095+0"},
+    "identical_state_frequency_ratio": {"count":2804,"maximum":1.67617655866258985498e-16,"rms":6.55755151299837228997e-17,"worst":"moving fs=192000 dir=-1 mode=1 mic=1 emission-command=2048 side=0"},
+    "identical_state_gain": {"count":2804,"maximum":5.19827236811210013911e-14,"rms":4.46780178135329554197e-15,"worst":"geometry fs=44100 dir=-1 r=1.000000 phase=0.000000 c=300.000000 mic=0"},
+    "motion_angle_rad": {"count":2804,"maximum":3.53731800795120676639e-15,"rms":6.49422582093716986588e-16,"worst":"moving fs=48000 dir=-1 mode=1 mic=1 obs=2048+0.5"},
+    "motion_speed_rad_s": {"count":2804,"maximum":2.37448949391705355083e-14,"rms":3.45488330172599660304e-15,"worst":"moving fs=48000 dir=-1 mode=1 mic=0 obs=4095+0.99999999999999989"},
+    "motion_root_contribution_s": {"count":2804,"maximum":4.95972445706877208143e-18,"rms":6.72829721769887415737e-19,"worst":"geometry fs=48000 dir=1 r=1.000000 phase=3.141593 c=343.000000 mic=0"},
+    "analytic_delay_s": {"count":1080,"maximum":3.75628618921181045565e-16,"rms":1.56885713410986624729e-16,"worst":"stationary fs=44100 dir=-1 case=1 c=300.000000 ref=0.020000 obs=-1+0.125"},
+    "analytic_distance_m": {"count":1080,"maximum":6.34258270904020093894e-17,"rms":3.76943588700514994946e-17,"worst":"stationary fs=44100 dir=-1 case=4 c=300.000000 ref=0.020000 obs=-1+0.125"},
+    "analytic_gain": {"count":1080,"maximum":1.04083408558608425665e-14,"rms":2.71474020019048705664e-15,"worst":"stationary fs=44100 dir=-1 case=0 c=300.000000 ref=10.000000 obs=-1+0.125"}
+  }
+}
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"test_rotary_streaming_path" end time: Nov 14 15:26 MST
+"test_rotary_streaming_path" time elapsed: 00:00:00
+----------------------------------------------------------
+
+159/162 Testing: test_standalone_workspace_replay
+159/162 Test: test_standalone_workspace_replay
+Command: "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake" "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/e3cacb90cc81/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py"
+Directory: /workspace/scratch/e3cacb90cc81/build/apps/standalone
+"test_standalone_workspace_replay" start time: Nov 14 15:26 MST
+Output:
+----------------------------------------------------------
+Native workspace executable SHA-256: 677acfa6a0244d3f7085eb96fa0737306a9f9e74febabb34f55fea99b303c51c
+test_capture_failure_closes_parameter_gesture_before_view_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_capture_failure_closes_parameter_gesture_before_view_and_resize) ... ok
+test_focus_memory_restores_drawbar_save_and_load_after_returns (__main__.NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns) ... ok
+test_hidden_play_regions_cannot_edit_redirect_or_audition (__main__.NativeWorkspaceReplayAcceptance.test_hidden_play_regions_cannot_edit_redirect_or_audition) ... ok
+test_pointer_capture_failure_preserves_keyboard_owner_during_navigation (__main__.NativeWorkspaceReplayAcceptance.test_pointer_capture_failure_preserves_keyboard_owner_during_navigation) ... ok
+test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok
+test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok
+Actual native workspace subprocesses: 30
+
+----------------------------------------------------------------------
+Ran 6 tests in 48.829s
+
+OK
+<end of output>
+Test time =  48.91 sec
+----------------------------------------------------------
+Test Passed.
+"test_standalone_workspace_replay" end time: Nov 14 15:27 MST
+"test_standalone_workspace_replay" time elapsed: 00:00:48
+----------------------------------------------------------
+
+End testing: Nov 14 15:27 MST
+
+native =  48.91 sec*proc
+
+standalone =  48.91 sec*proc
+
+workspace =  48.91 sec*proc
+

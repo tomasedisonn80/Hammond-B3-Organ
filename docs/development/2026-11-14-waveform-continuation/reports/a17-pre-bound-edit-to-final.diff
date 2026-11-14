@@ -1,0 +1,12 @@
+--- pre-bound-edit/tests/test_rotary_streaming_path.cpp
++++ final/tests/test_rotary_streaming_path.cpp
+@@ -251,7 +251,8 @@
+     CHECK(emission.frame < observation.frame ||
+           (emission.frame == observation.frame && emission.fraction < observation.fraction));
+     CHECK(std::isfinite(emission.fraction) && emission.fraction >= 0 && emission.fraction < 1);
+-    CHECK(path.frequency_ratio >= 0.8 - 2.0e-15 && path.frequency_ratio <= 4.0 / 3.0 + 2.0e-15);
++    CHECK(path.frequency_ratio >= 1.0 / (1.25 + 2.0e-15)
++          && path.frequency_ratio <= 1.0 / (0.75 - 2.0e-15));
+     ++results.successful_paths;
+     results.maximum_native_residual = std::max(results.maximum_native_residual, std::abs(path.residual_s));
+     results.maximum_native_evaluations = std::max(results.maximum_native_evaluations, path.iterations);

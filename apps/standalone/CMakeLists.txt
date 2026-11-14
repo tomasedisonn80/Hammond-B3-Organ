@@ -193,6 +193,16 @@ if(HAMMOND_BUILD_STANDALONE)
         set_tests_properties(test_standalone_material_acceptance PROPERTIES
             TIMEOUT 60 LABELS "standalone;native;material;geometry")
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_material_acceptance)
+        add_executable(test_standalone_waveform_material
+            native_tests/test_standalone_waveform_material.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_waveform_material PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_waveform_material PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_waveform_material)
+        add_test(NAME test_standalone_waveform_material COMMAND test_standalone_waveform_material)
+        set_tests_properties(test_standalone_waveform_material PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;material;geometry")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_waveform_material)
         add_executable(test_standalone_scaled_view
             native_tests/test_standalone_scaled_view.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_scaled_view PRIVATE

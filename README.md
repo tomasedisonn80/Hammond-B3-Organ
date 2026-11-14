@@ -1,16 +1,18 @@
 # Hammond B-3 Organ
 
-**Current checkpoint:** the [waveform continuation](docs/development/2026-11-14-waveform-continuation/README.md) advances the next independent M7 gate, R4 waveform history and transactional acoustic rendering, alongside native visual refinement. The unchanged current source passes **155/155 local Release tests**. Its [live handoff](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md) records the new sixty-assignment scope, complete atlas review, exact setup and next actions. Earlier reference-refinement and interface sessions retain their own evidence and remaining gates.
+**Current checkpoint:** the [waveform continuation](docs/development/2026-11-14-waveform-continuation/README.md) has read all 500 atlas pages and implemented the independent R4 history, cubic interpolation and transactional stereo-renderer foundation. The full four-rate/six-partition numerical experiment passes; lifecycle, allocation and offline-tool acceptance are continuing. The [live handoff](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md) records the actual sixty-assignment scope, setup, exact results and next actions. The initial source passed 155/155 local Release tests; all twelve hosted jobs passed at its published `26ff2fb` checkpoint. Those historical results do not substitute for acceptance of the new code.
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The current playable product is a **nominal dry organ** with an offline renderer, an optional VST3 adapter, and a native standalone application.
 
 **Current development:** the native application now has **Play, Rotary and Service workspaces**, a complete **Flat mode**, perspective keyboards with shared drawing/hit geometry, and a read-only inspector built from copied state. It retains eighteen documentary fixed registrations, four A/B drawbar banks, Cancel, percussion, expression and two nominal pedal mixtures. The **47 sound parameters**, **`B3CONTROLS4`** writer and readers for versions 1–3 keep their existing meanings. Its 91 continuously running sources serve two 61-key manuals and 25 pedals.
 
-[Build and operate the instrument](docs/INTERFACE_RUNBOOK.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [Complete M0–M9 plan](docs/PLAN.md) · [Current development record](docs/development/2026-11-14-interface-continuation/README.md)
+[Build and operate the instrument](docs/INTERFACE_RUNBOOK.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [Complete M0–M9 plan](docs/PLAN.md) · [Current development record](docs/development/2026-11-14-waveform-continuation/README.md)
 
 ## Native interface and UI/UX design
 
 The new wide layout (at least 1400×820) gives the full manuals 144.12-pixel key depth at the reference size and places all 25 pedals beneath the cabinet. Live charcoal, key/cap lighting and compact status spacing are refined. The complete new gallery is being qualified; the source-identified v2 images below remain historical until its replacement is accepted. [Layout contract](docs/REFERENCE_REFINEMENT_LAYOUT.md) · [Material contract](docs/REFERENCE_REFINEMENT_MATERIALS.md)
+
+The current [drawbar/key-front refinement](docs/WAVEFORM_UI_DESIGN.md) adds dark reflected stems, deeper cap faces and warmer, darker idle key fronts. Its [independent raster acceptance](docs/reviews/WAVEFORM_MATERIAL_ACCEPTANCE.md) passes the measured reference targets and confines every changed pixel to those surfaces. [Paired timing acceptance](docs/reviews/WAVEFORM_MATERIAL_TIMING.md) also passes. The final combined-source gallery is next; the historical images below retain their original source identities.
 
 The visual target is the atlas's [original cover/page-409 reference](docs/design/atlas-cover-reference.jpg), retained with [exact provenance](docs/design/atlas-reference.json). The live interface uses walnut cheeks, charcoal and brass panels, a centered serif title, raised tablets and drawbar caps, adjacent drawbar racks, and a cabinet composition at wide sizes. The manuals have projected top and front faces; drawing, pointer hit regions and inset focus use shared geometry.
 
@@ -55,18 +57,43 @@ See the [operating guide](docs/INTERFACE_RUNBOOK.md), [exact input mapping](docs
 
 ## Plan, qualification and parallel tracks
 
-The [complete atlas review](docs/research/INTERFACE_ATLAS_REVIEW.md) covers all 500 pages in six disjoint readings. The atlas's ten research waves, implementation milestones M0–M9 and each requested sixty-worker development session have separate meanings. The [current manifest](docs/development/2026-11-14-interface-continuation/assignments.json) records actual dispatched workers and accepted evidence; earlier sessions remain historical.
+The [current complete atlas review](docs/research/WAVEFORM_ATLAS_REVIEW.md)
+covers all 500 pages in six disjoint readings. The atlas's ten research waves,
+implementation milestones M0–M9 and each requested sixty-worker development
+session have separate meanings. The [waveform session manifest](docs/development/2026-11-14-waveform-continuation/assignments.json)
+records this session's actual dispatched workers, assigned files and accepted
+results; earlier manifests remain historical.
 
-The current M9 slice connects workspace navigation, perspective/Flat rendering and copied-state inspection to the existing instrument. All **sixty actual assignments in ten waves** are accepted in the current manifest, and the [executed strict check](docs/development/2026-11-14-interface-continuation/completion-check.json) records sixty substantive notes and zero errors. At `a517203`, [all twelve hosted jobs passed](docs/development/2026-11-14-interface-continuation/reports/a58-final-head-hosted.json): each of the four standalone Release jobs passed 38/38 with six workspace methods and thirty actual native processes; the focused native sanitizer/leak job passed thirteen selected suites. The [earlier recovery attempt](docs/reviews/INTERFACE_HOSTED_RECOVERY.md) retains its nine successes and three unexecuted macOS cancellations, while b1's actual macOS 37/38 failure and the final local 146/147 result remain historical. The repaired source, full scripts, command counts, Save assertions and deadlines are unchanged between the recovered and qualified commits. The [recovery record](docs/development/2026-11-14-interface-continuation/reports/root-workspace-recovery.json) names the original local evidence that remains unavailable. Use the [current handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) for setup and next actions; literal visual equality, the full desktop journey, physical devices/hosts, accessibility, timing and specimen fidelity remain open.
+The independent R4 module now implements bounded waveform and motion histories,
+causal moving-path interpolation and transactional horn/drum-to-stereo rendering.
+Independent tests cover analytical output, immutable-R3 path agreement, complete
+static interpolation characterization, late rejection after multiple ring wraps,
+state preservation and exact continuation. The full ten-second experiment at
+44.1, 48, 96 and 192 kHz passes against an independent reference with six
+block partitions: 22,806,000 native frames and 38,010,000 exact alternate sample
+comparisons. Its [complete receipt](docs/development/2026-11-14-waveform-continuation/reports/full-waveform/qualification.json)
+retains the original source and build identities. The bounded smoke remains a
+separate experiment.
+The [renderer contract](docs/ROTARY_RENDERER_CONTRACT.md) and
+[acceptance specification](docs/ROTARY_WAVEFORM_ACCEPTANCE.md) define the actual
+boundaries; the [current checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+retains exact source, commands, failures and next actions.
+
+The native interface retains all existing musical controls and state semantics.
+The completed earlier interface session and concurrently advancing reference
+session have their own identities and evidence. Their source-specific hosted,
+platform and desktop results remain preserved. The current renderer and native
+paint changes require their own coherent qualification and current captures.
 
 | Track | Current boundary and continuation |
 |---|---|
 | Dry organ and console | Working nominal generator, manuals, pedals, eighteen fixed registrations, retained banks, percussion and control-state migration. Physical contact, gain/loading, expression and circuit calibration remain open. |
 | Scanner | Graph/compiler, references and prepared numerical modules exist. Resolve the observed G5 same-hertz failure under the [frozen numerical contract](docs/SCANNER_NUMERICAL_CONTRACT.md) before Engine integration; see [handoff](docs/SCANNER_HANDOFF.md). |
 | AO-28 and Leslie electronics | Complete revision-specific electrical graphs, operating points and measured signal boundaries remain required by M5/M6. |
-| Rotary acoustics | The independent [motion/propagation track](docs/ROTARY_SCOPE.md) retains separate horn/drum inputs and numerical references; it does not change the current dry output. |
+| Rotary acoustics | R2 motion and R3 propagation feed the independent R4 waveform renderer. Complete its frozen numerical gate, then define R5 reconstruction/alias policy and R6 live integration. The playable instrument remains dry. |
 | Capture and calibration | The completed [toolchain](docs/CALIBRATION_HANDOFF.md) validates audio/corpora, declared splits, policies, studies and exact report replay. The [next acquisition plan](docs/CALIBRATION_NEXT_ACQUISITION.md) names the missing real inputs. |
-| VST3 | Three event inputs, 47 controls, sample-linear automation and concurrent state handoff have [current integration](docs/reviews/PRESET_VST3_INTEGRATION.md), [independent acceptance](docs/reviews/PRESET_VST3_ACCEPTANCE.md) and [build](docs/VST3_BUILD.md) records. Its custom editor and actual host/device qualification remain product work. |
+| Native interface | Reference-led Play/Rotary/Service, Flat mode and copied-state inspection are implemented. The current paint refinement has independent raster and timing evidence; combined-source captures, literal reference equality and physical-device/accessibility/release gates remain distinct. |
+| VST3 | Three event inputs, 47 controls, sample-linear automation and concurrent state handoff have [integration](docs/reviews/PRESET_VST3_INTEGRATION.md), [independent acceptance](docs/reviews/PRESET_VST3_ACCEPTANCE.md) and [build](docs/VST3_BUILD.md) records. Its custom editor and actual host/device qualification remain product work. |
 
 ### Earlier source-identified qualifications
 

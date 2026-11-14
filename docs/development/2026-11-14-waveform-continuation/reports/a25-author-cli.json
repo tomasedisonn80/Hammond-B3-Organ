@@ -1,0 +1,731 @@
+{
+  "schema_version": 1,
+  "assignment": "A25",
+  "status": "pass",
+  "scope": "offline CLI author checks; independent acceptance is separate",
+  "test_count": 83,
+  "seconds": 5.3998384320002515,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/e3cacb90cc81/a25-offline-renderer/author_checks.py"
+  ],
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "head": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "binary_sha256": "ea7ef59afe78c495c29cb5f80866b5d52800a6aa6c7da44eca4465e931008060",
+  "author_script_sha256": "6218798d86a7c9bee30aecf561731853ace95bcbb712f8057665f20cffb42b18",
+  "generated_header_sha256": "d51f3e6edf4f44f87ed65f9a80b9932299ee8d5fa52a2fad5b5d011a454a05a5",
+  "source_sha256": {
+    "tools/rotary_render.cpp": "3fd1a4e2a79cea4a0964394193aa4e993df5d91ff257415e380523206d514a97",
+    "tools/CliArguments.h": "8ac5d91ebf66c31456159f028bce3c1c4b0dcd0c09118ac8c8d55c53a8912a47",
+    "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+    "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+    "src/RotaryRendererInternal.h": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+    "data/rotary/nominal-research-v1.json": "c0473cb20604726d989d7c280700109f647f7b227edb71c61d275ed9bfd67443"
+  },
+  "partition_comparisons": [
+    {
+      "rate": 44100,
+      "output_frames": 8415,
+      "tail_flush_frames": 222,
+      "audio_sha256": "a21e50e5dff07e70c59b05d3c73bfcf952bd992519d1c6b454ee23ddba696ea1"
+    },
+    {
+      "rate": 48000,
+      "output_frames": 8435,
+      "tail_flush_frames": 242,
+      "audio_sha256": "c18351aec88be310809fe73aa93a559ced292704090c85766abad056d59b4ff8"
+    },
+    {
+      "rate": 96000,
+      "output_frames": 8672,
+      "tail_flush_frames": 479,
+      "audio_sha256": "4e873429d55d7efff5029d7bee94cbe17d92edd61b837a59e2432514c491c3c0"
+    },
+    {
+      "rate": 192000,
+      "output_frames": 9146,
+      "tail_flush_frames": 953,
+      "audio_sha256": "46f61e61e7e7fa190ac991029d50faa394c598062fc30dc85cb0c5c7519d6f50"
+    }
+  ],
+  "results": [
+    {
+      "name": "help",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.00214804200004437,
+      "stderr": ""
+    },
+    {
+      "name": "missing_required",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.001614172999325092,
+      "stderr": "hammond_rotary_render: Required argument missing: --horn"
+    },
+    {
+      "name": "partition_44100_1",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.2248571100008121,
+      "stderr": ""
+    },
+    {
+      "name": "partition_44100_7",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.2154557570011093,
+      "stderr": ""
+    },
+    {
+      "name": "partition_44100_64",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.19627038600083324,
+      "stderr": ""
+    },
+    {
+      "name": "partition_44100_257",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.23234867199971632,
+      "stderr": ""
+    },
+    {
+      "name": "partition_44100_4096",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.19736485199973686,
+      "stderr": ""
+    },
+    {
+      "name": "partition_48000_1",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.20234306800011836,
+      "stderr": ""
+    },
+    {
+      "name": "partition_48000_7",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.1866790870008117,
+      "stderr": ""
+    },
+    {
+      "name": "partition_48000_64",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.2008087890008028,
+      "stderr": ""
+    },
+    {
+      "name": "partition_48000_257",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.2004306729995733,
+      "stderr": ""
+    },
+    {
+      "name": "partition_48000_4096",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.1931736770002317,
+      "stderr": ""
+    },
+    {
+      "name": "partition_96000_1",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.20344263200058776,
+      "stderr": ""
+    },
+    {
+      "name": "partition_96000_7",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.2046945140009484,
+      "stderr": ""
+    },
+    {
+      "name": "partition_96000_64",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.22707514500143589,
+      "stderr": ""
+    },
+    {
+      "name": "partition_96000_257",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.19648502800009737,
+      "stderr": ""
+    },
+    {
+      "name": "partition_96000_4096",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.2508801719995972,
+      "stderr": ""
+    },
+    {
+      "name": "partition_192000_1",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.21376942599999893,
+      "stderr": ""
+    },
+    {
+      "name": "partition_192000_7",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.23315205800099648,
+      "stderr": ""
+    },
+    {
+      "name": "partition_192000_64",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.23444755600030476,
+      "stderr": ""
+    },
+    {
+      "name": "partition_192000_257",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.2404004990003159,
+      "stderr": ""
+    },
+    {
+      "name": "partition_192000_4096",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.21196941400012292,
+      "stderr": ""
+    },
+    {
+      "name": "empty_input_terminal_events_44100",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.007524159000240616,
+      "stderr": ""
+    },
+    {
+      "name": "empty_input_terminal_events_48000",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.007911550999779138,
+      "stderr": ""
+    },
+    {
+      "name": "empty_input_terminal_events_96000",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.012780869999915012,
+      "stderr": ""
+    },
+    {
+      "name": "empty_input_terminal_events_192000",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.020672130000093603,
+      "stderr": ""
+    },
+    {
+      "name": "empty_event_file",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.007347578999542748,
+      "stderr": ""
+    },
+    {
+      "name": "positive_unity_unclipped",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.04641005099983886,
+      "stderr": ""
+    },
+    {
+      "name": "negative_unity_unclipped",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.047868032999758725,
+      "stderr": ""
+    },
+    {
+      "name": "late_input_nan_cleanup",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.15949180899951898,
+      "stderr": "hammond_rotary_render: Horn input frame 8192 must be finite and in [-1,1]."
+    },
+    {
+      "name": "late_input_positive_inf_cleanup",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.15665864699985832,
+      "stderr": "hammond_rotary_render: Horn input frame 8192 must be finite and in [-1,1]."
+    },
+    {
+      "name": "late_input_negative_inf_cleanup",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.15957541900024808,
+      "stderr": "hammond_rotary_render: Horn input frame 8192 must be finite and in [-1,1]."
+    },
+    {
+      "name": "late_input_positive_out_of_range_cleanup",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.18135658199935278,
+      "stderr": "hammond_rotary_render: Horn input frame 8192 must be finite and in [-1,1]."
+    },
+    {
+      "name": "late_input_negative_out_of_range_cleanup",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.15681602399854455,
+      "stderr": "hammond_rotary_render: Horn input frame 8192 must be finite and in [-1,1]."
+    },
+    {
+      "name": "partial_frame",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0023313620004046243,
+      "stderr": "hammond_rotary_render: Horn and drum inputs must contain equal whole binary64 frames."
+    },
+    {
+      "name": "unequal_frames",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0016341270002158126,
+      "stderr": "hammond_rotary_render: Horn and drum inputs must contain equal whole binary64 frames."
+    },
+    {
+      "name": "directory_input",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0013106049991620239,
+      "stderr": "hammond_rotary_render: Horn input must name a readable regular file."
+    },
+    {
+      "name": "over_60_seconds_44100",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0013995159988553496,
+      "stderr": "hammond_rotary_render: Horn input exceeds its byte limit or is unreadable."
+    },
+    {
+      "name": "over_60_seconds_192000",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.00178174500069872,
+      "stderr": "hammond_rotary_render: Horn input exceeds its byte limit or is unreadable."
+    },
+    {
+      "name": "event_blank",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0016587190002610441,
+      "stderr": "hammond_rotary_render: Each event line must contain three fields and at most 64 ASCII bytes."
+    },
+    {
+      "name": "event_whitespace",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.001621453999177902,
+      "stderr": "hammond_rotary_render: Each event line must contain exactly three fields; blank lines are invalid."
+    },
+    {
+      "name": "event_embedded_blank",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.002203944000939373,
+      "stderr": "hammond_rotary_render: Each event line must contain three fields and at most 64 ASCII bytes."
+    },
+    {
+      "name": "event_extra_token",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.001896449999549077,
+      "stderr": "hammond_rotary_render: Each event line must contain exactly three fields."
+    },
+    {
+      "name": "event_missing_token",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0019637500008684583,
+      "stderr": "hammond_rotary_render: Each event line must contain exactly three fields; blank lines are invalid."
+    },
+    {
+      "name": "event_comment",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0014815169997746125,
+      "stderr": "hammond_rotary_render: Each event line must contain exactly three fields."
+    },
+    {
+      "name": "event_unknown_rotor",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0016930340007093037,
+      "stderr": "hammond_rotary_render: Event rotor must be horn or drum."
+    },
+    {
+      "name": "event_unknown_command",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0016511669982719468,
+      "stderr": "hammond_rotary_render: Event command must be chorale or tremolo."
+    },
+    {
+      "name": "event_negative",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.001439570000002277,
+      "stderr": "hammond_rotary_render: Event frame must be an unsigned decimal integer."
+    },
+    {
+      "name": "event_plus",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0013616100004583132,
+      "stderr": "hammond_rotary_render: Event frame must be an unsigned decimal integer."
+    },
+    {
+      "name": "event_fractional",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0019300889998703497,
+      "stderr": "hammond_rotary_render: Event frame must be an unsigned decimal integer."
+    },
+    {
+      "name": "event_overflow",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0014484929997706786,
+      "stderr": "hammond_rotary_render: Event frame is out of range."
+    },
+    {
+      "name": "event_decreasing",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.002059761000055005,
+      "stderr": "hammond_rotary_render: Events must have nondecreasing frame numbers; supplied order is preserved."
+    },
+    {
+      "name": "event_past_end",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.001604348999535432,
+      "stderr": "hammond_rotary_render: Event frame must lie in inclusive [0,input_frames]."
+    },
+    {
+      "name": "event_nul",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0013788160013064044,
+      "stderr": "hammond_rotary_render: Events require ASCII tokens and LF or CRLF lines."
+    },
+    {
+      "name": "event_bom",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0014590339997084811,
+      "stderr": "hammond_rotary_render: Events require ASCII tokens and LF or CRLF lines."
+    },
+    {
+      "name": "event_non_ascii",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0018300119991181418,
+      "stderr": "hammond_rotary_render: Events require ASCII tokens and LF or CRLF lines."
+    },
+    {
+      "name": "event_vertical_tab",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0016498450004291954,
+      "stderr": "hammond_rotary_render: Events require ASCII tokens and LF or CRLF lines."
+    },
+    {
+      "name": "event_form_feed",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0018227410000690725,
+      "stderr": "hammond_rotary_render: Events require ASCII tokens and LF or CRLF lines."
+    },
+    {
+      "name": "event_bare_cr",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0017165640001621796,
+      "stderr": "hammond_rotary_render: Events require ASCII tokens and LF or CRLF lines."
+    },
+    {
+      "name": "event_long_line",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0018141380005545216,
+      "stderr": "hammond_rotary_render: Each event line must contain three fields and at most 64 ASCII bytes."
+    },
+    {
+      "name": "event_too_many",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0015517909996560775,
+      "stderr": "hammond_rotary_render: Events file exceeds 1024 events."
+    },
+    {
+      "name": "event_too_large",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0015463429990631994,
+      "stderr": "hammond_rotary_render: Events exceeds its byte limit or is unreadable."
+    },
+    {
+      "name": "1024_events_accepted",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.007091751000189106,
+      "stderr": ""
+    },
+    {
+      "name": "existing_directory_preserved",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.002718493999054772,
+      "stderr": "hammond_rotary_render: Cannot exclusively create output directory; existing paths are never overwritten."
+    },
+    {
+      "name": "existing_file_preserved",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.002361956998356618,
+      "stderr": "hammond_rotary_render: Cannot exclusively create output directory; existing paths are never overwritten."
+    },
+    {
+      "name": "output_equals_input",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0024228570000559557,
+      "stderr": "hammond_rotary_render: Cannot exclusively create output directory; existing paths are never overwritten."
+    },
+    {
+      "name": "missing_output_parent",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0015359579992946237,
+      "stderr": "hammond_rotary_render: Output directory parent must already exist."
+    },
+    {
+      "name": "existing_symlink_input_preserved",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.003083323001192184,
+      "stderr": "hammond_rotary_render: Cannot exclusively create output directory; existing paths are never overwritten."
+    },
+    {
+      "name": "existing_symlink_directory_preserved",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0023689879999437835,
+      "stderr": "hammond_rotary_render: Cannot exclusively create output directory; existing paths are never overwritten."
+    },
+    {
+      "name": "existing_symlink_dangling_preserved",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.002534642000682652,
+      "stderr": "hammond_rotary_render: Cannot exclusively create output directory; existing paths are never overwritten."
+    },
+    {
+      "name": "option_duplicate",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.001851474000432063,
+      "stderr": "hammond_rotary_render: Duplicate argument: --horn"
+    },
+    {
+      "name": "option_unknown",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0015167589990596753,
+      "stderr": "hammond_rotary_render: Unknown argument: --wat"
+    },
+    {
+      "name": "block_size_0",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0015564280001854058,
+      "stderr": "hammond_rotary_render: Block size must be in 1..4096."
+    },
+    {
+      "name": "block_size_4097",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.001869620999059407,
+      "stderr": "hammond_rotary_render: Block size must be in 1..4096."
+    },
+    {
+      "name": "block_size_-1",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0014044629988347879,
+      "stderr": "hammond_rotary_render: --block-size must be an unsigned decimal integer."
+    },
+    {
+      "name": "block_size_1.5",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.001558650999868405,
+      "stderr": "hammond_rotary_render: --block-size must be an unsigned decimal integer."
+    },
+    {
+      "name": "sample_rate_0",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.002017037000769051,
+      "stderr": "hammond_rotary_render: Sample rate must be 44100, 48000, 96000 or 192000 Hz."
+    },
+    {
+      "name": "sample_rate_48000.0",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0014860339997539995,
+      "stderr": "hammond_rotary_render: --sample-rate must be an unsigned decimal integer."
+    },
+    {
+      "name": "sample_rate_44101",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0014720239996677265,
+      "stderr": "hammond_rotary_render: Sample rate must be 44100, 48000, 96000 or 192000 Hz."
+    },
+    {
+      "name": "sample_rate_384000",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0014272480002546217,
+      "stderr": "hammond_rotary_render: Sample rate must be 44100, 48000, 96000 or 192000 Hz."
+    },
+    {
+      "name": "oversized_path_argument",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.0013356520012166584,
+      "stderr": "hammond_rotary_render: Missing or oversized value for --horn"
+    },
+    {
+      "name": "native_posix_path_bytes",
+      "exit_code": 0,
+      "expected_success": true,
+      "seconds": 0.007134113000574871,
+      "stderr": ""
+    },
+    {
+      "name": "output_write_failure_cleanup",
+      "exit_code": 1,
+      "expected_success": false,
+      "seconds": 0.011951164999118191,
+      "stderr": "hammond_rotary_render: Cannot write complete output file."
+    }
+  ],
+  "not_run": [
+    "Windows/MSVC and macOS executables",
+    "big-endian host execution",
+    "60-second maximum-length successful render",
+    "independent R4 numerical reference/full qualification",
+    "R5 audible policy",
+    "R6 integration/devices/deadlines",
+    "physical cabinet fidelity"
+  ],
+  "build_command": [
+    "g++",
+    "-std=c++20",
+    "-O2",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wshadow",
+    "-Werror",
+    "-I",
+    "include",
+    "-I",
+    "/workspace/scratch/e3cacb90cc81/a26-profile-compiler/generated",
+    "tools/rotary_render.cpp",
+    "src/RotaryMotion.cpp",
+    "src/RotaryPropagation.cpp",
+    "src/RotaryHistory.cpp",
+    "src/RotaryStreamingPath.cpp",
+    "src/RotaryRenderer.cpp",
+    "-o",
+    "/workspace/scratch/e3cacb90cc81/a25-offline-renderer/hammond_rotary_render"
+  ],
+  "build_cwd": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ",
+  "build_exit_code": 0,
+  "documented_example": {
+    "command": [
+      "/workspace/scratch/e3cacb90cc81/a25-offline-renderer/hammond_rotary_render",
+      "--horn",
+      "/workspace/scratch/e3cacb90cc81/a25-offline-renderer/documented-example-inputs/horn.f64le",
+      "--drum",
+      "/workspace/scratch/e3cacb90cc81/a25-offline-renderer/documented-example-inputs/drum.f64le",
+      "--sample-rate",
+      "48000",
+      "--block-size",
+      "64",
+      "--events",
+      "/workspace/scratch/e3cacb90cc81/a25-offline-renderer/documented-example-inputs/events.txt",
+      "--output-dir",
+      "/workspace/scratch/e3cacb90cc81/a25-offline-renderer/documented-example-render"
+    ],
+    "exit_code": 0,
+    "input_frames": 4800,
+    "tail_flush_frames": 242,
+    "output_frames": 5042,
+    "output_bytes": 80672,
+    "audio_sha256": "d063f76998193a6febba12419a44bf30623e43db1e123cfcef007d102abc50da",
+    "first_eight_frames": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ]
+  }
+}

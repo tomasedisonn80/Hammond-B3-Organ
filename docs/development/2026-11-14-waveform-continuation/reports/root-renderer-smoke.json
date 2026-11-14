@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "scope": "Author stationary-path smoke only; independent R4 parity, transaction, allocation and lifecycle acceptance pending.",
+  "exit_code": 0,
+  "compiler": "GCC 14.2, C++20 O2 strict warnings as errors",
+  "source_sha256": {
+    "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+    "src/RotaryRendererInternal.h": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+    "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+    "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+    "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4"
+  },
+  "probe_source": "root-renderer-smoke.cpp",
+  "probe_sha256": "3eff0d5549b7c8d84ea86bf675adeccbc3481970150e3d502c8704861de87551",
+  "executable_sha256": "e26d28845e00acbb3897d173a58fcd23ee586b2b756f394dafd9496e1610da2a",
+  "observed_stdout": "ok frame=4096 capacity=326 flush=324 left_impulse=1 right_impulse=0.5 max_residual=4.68375e-17 evaluations=2",
+  "checks": [
+    "4096-frame stationary two-input rendering through multiple history wraps",
+    "analytical 160/320-frame propagation plus separate two-frame latency",
+    "signed impulses and distance gains",
+    "nonzero-history invalid-input preservation",
+    "48 to 192 kHz stopped physical-state preservation",
+    "reset original seeds at replacement rate"
+  ]
+}

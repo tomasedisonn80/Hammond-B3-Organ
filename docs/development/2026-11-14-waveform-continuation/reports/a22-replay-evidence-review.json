@@ -1,0 +1,1483 @@
+{
+  "schema": "a22-replay-evidence-review-v1",
+  "assignment": "A22",
+  "agent": "/root/w04_a22_replay_fix_review",
+  "reviewed_utc": "2026-11-14T22:36:25.743504+00:00",
+  "scope": "Offline source and evidence review; no new native subprocess, build, CTest or product modification.",
+  "command": "PYTHONDONTWRITEBYTECODE=1 python /workspace/scratch/e3cacb90cc81/a22-replay-review.py",
+  "reviewer_script": {
+    "bytes": 17582,
+    "sha256": "0794eee7e086f643478fb9eaaf4d72d0039dd27f4ef37a3c0bf6fd80ace6b9c1"
+  },
+  "original_fixture_sha256": "28b61802b99233e5f7ee14d01f5456b15bdff235309038b2943e75863d6097f7",
+  "current_fixture_sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3",
+  "patch_hunks": 4,
+  "unchanged_assertion_calls": 132,
+  "schedule_comparison": {
+    "cases": 30,
+    "unchanged_requests": 23,
+    "changed_full_header_requests": 7,
+    "changed_cases": [
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-3",
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-6",
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-9",
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-12",
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-15",
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-18",
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-21"
+    ],
+    "events_per_full_header_script": 24,
+    "unchanged_early_events_per_full_script": 6,
+    "equally_shifted_later_events_per_full_script": 18,
+    "later_shift_ms": 600,
+    "original_duration_ms": 2250,
+    "changed_duration_ms": 2850,
+    "other_run_arguments_unchanged": true,
+    "method": "Enumerated original and current run requests in memory using retained data; no subprocess launched."
+  },
+  "unchanged_test_methods": [
+    "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+    "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+    "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+    "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+    "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+    "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize"
+  ],
+  "process_timeout_seconds": 9.0,
+  "binary": {
+    "path": "/workspace/scratch/e3cacb90cc81/build/apps/standalone/hammond_standalone",
+    "bytes": 3628544,
+    "sha256": "677acfa6a0244d3f7085eb96fa0737306a9f9e74febabb34f55fea99b303c51c",
+    "unchanged_during_review": true
+  },
+  "source_identities": {
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": {
+      "bytes": 35691,
+      "sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+    },
+    "apps/standalone/native_tests/test_standalone_workflows.py": {
+      "bytes": 41796,
+      "sha256": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124"
+    },
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+      "bytes": 48023,
+      "sha256": "7675ea52acf4ea808b062eacf05e5a23a32f1b9b2c5e7239ad747aee1197b0a6"
+    },
+    "apps/standalone/native_tests/test_standalone_app.py": {
+      "bytes": 59598,
+      "sha256": "655d38d62d9018abbb2f4a1f8c09d9fc54427438ed472f0afd761cc446bcaf6a"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "bytes": 81391,
+      "sha256": "6570c97f1c62b555a1df3477954514e379d61165a36cf20f879dea5151ff866b"
+    }
+  },
+  "evidence_identities": {
+    "Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/root-workspace-first-failure.json": {
+      "bytes": 35839,
+      "sha256": "b4a02e4d4269b827ca67bc07e4cefa91f91bf7177b19bc0303cdb4aee600270d"
+    },
+    "Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/root-workspace-replay-fix.patch": {
+      "bytes": 2942,
+      "sha256": "3c11829c1264038b38b3014467787c31400040ee4ac5b2755807f37aee1db4c4"
+    },
+    "Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/root-workspace-replay-fix.json": {
+      "bytes": 1972,
+      "sha256": "6ae860eabc7be2e8d093507922b9dd26e5f5487a2645690cd440ce823b3efc11"
+    },
+    "Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/wave3-ctest-first.txt": {
+      "bytes": 46126,
+      "sha256": "b1e2e53c13ef14450c4be9bb7d3a033ccd918fab28fd2b349228f63ad5ba4e82"
+    },
+    "Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/wave3-targeted-recheck.txt": {
+      "bytes": 496,
+      "sha256": "1ed660347f2806f92bfc12c0e95f58a9272191f0b3e5f92ea36f09b918568a2d"
+    },
+    "Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/wave3-targeted-raw.txt": {
+      "bytes": 6255,
+      "sha256": "9d22f530fd6d9fb99e23f486a4f2f5ae7498956ce6da94cc40425aeb00b5d66a"
+    },
+    "Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/a18-material-timing.json": {
+      "bytes": 48505,
+      "sha256": "5edeb6d1cf7735e2fc1b336e6d425021da9d74c097cd4086c56090c178adce46"
+    },
+    "build/Testing/Temporary/LastTest.log": {
+      "bytes": 6255,
+      "sha256": "9d22f530fd6d9fb99e23f486a4f2f5ae7498956ce6da94cc40425aeb00b5d66a"
+    }
+  },
+  "native_execution_results": {
+    "initial_full_ctest": {
+      "passed": 160,
+      "failed": 1,
+      "seconds": 226.45
+    },
+    "later_targeted_ctest": {
+      "passed": 2,
+      "failed": 0,
+      "seconds": 48.92,
+      "workspace_ctest_seconds": 48.91,
+      "workspace_unittest_seconds": 48.829,
+      "workspace_methods": 6,
+      "workspace_native_processes": 30
+    }
+  },
+  "offline_admission": {
+    "status": "pass",
+    "methods": 6,
+    "cases": 30,
+    "native_processes_launched_by_reviewer": 0,
+    "file_count": 122,
+    "case_counts_by_method": {
+      "test_capture_failure_closes_parameter_gesture_before_view_and_resize": 1,
+      "test_focus_memory_restores_drawbar_save_and_load_after_returns": 1,
+      "test_hidden_play_regions_cannot_edit_redirect_or_audition": 4,
+      "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation": 1,
+      "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save": 21,
+      "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize": 2
+    },
+    "native_elapsed_min_seconds": 0.3265391169989016,
+    "native_elapsed_max_seconds": 3.851062396999623,
+    "native_elapsed_sum_seconds": 48.7002908100003,
+    "canonical_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+    "noncanonical_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+    "evidence_aggregate_sha256": "6ef5733eae159768c0347af2288b6796341b8a56fb1506355d4ce6694850270b",
+    "aggregate_definition": "SHA-256 of sorted UTF-8 lines: file_sha256 + two spaces + case/filename + LF",
+    "negative_original_view_gate": "(1, 1, 0) not found in [(0, 0, 0), (0, 0, 0), (1, 0, 0)] : Applied held targets must appear in the painted visit ('play', 'dimensional', 1672, 941)",
+    "unittest_output": "test_capture_failure_closes_parameter_gesture_before_view_and_resize (__main__.OfflineAdmission.test_capture_failure_closes_parameter_gesture_before_view_and_resize) ... ok\ntest_focus_memory_restores_drawbar_save_and_load_after_returns (__main__.OfflineAdmission.test_focus_memory_restores_drawbar_save_and_load_after_returns) ... ok\ntest_hidden_play_regions_cannot_edit_redirect_or_audition (__main__.OfflineAdmission.test_hidden_play_regions_cannot_edit_redirect_or_audition) ... ok\ntest_pointer_capture_failure_preserves_keyboard_owner_during_navigation (__main__.OfflineAdmission.test_pointer_capture_failure_preserves_keyboard_owner_during_navigation) ... ok\ntest_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.OfflineAdmission.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok\ntest_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.OfflineAdmission.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.039s\n\nOK\n"
+  },
+  "limitations": [
+    "No new native replay or timing experiment was run by A22.",
+    "Original BMP bytes were temporary by fixture design; screenshot metadata was admitted, not image bytes re-decoded.",
+    "Retained copied snapshots do not establish the exact audio callback application instant.",
+    "A fixed 600 ms dwell is not an unbounded-load or cross-platform timing guarantee.",
+    "The original full 160/161 and targeted 2/2 results are separate executions; no final full-suite pass is inferred.",
+    "Final frozen-source full CTest and actual hosted results remain required."
+  ],
+  "cases": [
+    {
+      "case": "test_capture_failure_closes_parameter_gesture_before_view_and_resize-1",
+      "method": "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+      "duration_ms": 1900,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        960,
+        700
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 1.9565866770008142,
+      "ui_events": 16,
+      "midi_events": null,
+      "note_on_commands": 1,
+      "note_off_commands": 1,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 16082,
+          "sha256": "e54c8701de221dcf8a1648066862aaa57b3bf434cc323e34c558e357fed80534"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 956,
+          "sha256": "afdc906ef398f430a2615618e550d7441d274e29db3e547c4b2df6fcc6229592"
+        },
+        "workspace input.b3ui": {
+          "bytes": 377,
+          "sha256": "7e19729664960ea9ba97eb38654e9bd76489709f70db048bbbb290604879ae9e"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_focus_memory_restores_drawbar_save_and_load_after_returns-1",
+      "method": "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+      "duration_ms": 3750,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        960,
+        700
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 3.851062396999623,
+      "ui_events": 87,
+      "midi_events": null,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 9,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "b0e31c3172a8a54c72f6ca087a893c26db2f0774790879d3c5968300684b5199",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 22694,
+          "sha256": "8a19bcc26afe5c6441797db6d5dbba6899125ec5b28b96d0ac48b2a4168b9ad1"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "b0e31c3172a8a54c72f6ca087a893c26db2f0774790879d3c5968300684b5199"
+        },
+        "process.json": {
+          "bytes": 955,
+          "sha256": "025e9083bd46b5572b4062e5ec9fa36ec075e5c136dd74165c4be5bcd22b18de"
+        },
+        "workspace input.b3ui": {
+          "bytes": 1969,
+          "sha256": "905d176f2fca14799ec78c4d7dc80bb1f7531960094d2b4087a52b57817d4194"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_hidden_play_regions_cannot_edit_redirect_or_audition-1",
+      "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+      "duration_ms": 2600,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        1280,
+        900
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 2.7876622269996005,
+      "ui_events": 50,
+      "midi_events": null,
+      "note_on_commands": 3,
+      "note_off_commands": 3,
+      "last_submitted_sequence": 9,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 22886,
+          "sha256": "f051b730f4feec29c839648adebfa6d5917ec3c68aeb9bda45d610a95883e491"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 957,
+          "sha256": "eac6ee304915c30b1ebd7ab9aa2a7d85bf62062f058c7a740942fe0b294d39ae"
+        },
+        "workspace input.b3ui": {
+          "bytes": 1145,
+          "sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_hidden_play_regions_cannot_edit_redirect_or_audition-2",
+      "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+      "duration_ms": 2600,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        1280,
+        900
+      ],
+      "initial_flat": true,
+      "elapsed_seconds": 2.6622018329999264,
+      "ui_events": 50,
+      "midi_events": null,
+      "note_on_commands": 3,
+      "note_off_commands": 3,
+      "last_submitted_sequence": 9,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 23191,
+          "sha256": "8b5239eb510e6f6d2931db73a5487a17c0f7afe634cc684db68be3d913f82a21"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 971,
+          "sha256": "cd567c92ec1f5d0db4465c6163d6da22518a0bf4f972ba7cc92643a3f6571d73"
+        },
+        "workspace input.b3ui": {
+          "bytes": 1145,
+          "sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_hidden_play_regions_cannot_edit_redirect_or_audition-3",
+      "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+      "duration_ms": 2600,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        1280,
+        900
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 2.7461465199994564,
+      "ui_events": 50,
+      "midi_events": null,
+      "note_on_commands": 3,
+      "note_off_commands": 3,
+      "last_submitted_sequence": 9,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 22415,
+          "sha256": "0f0dc117a412954dce98991872d66d258adfc8754cc984c8c902877a7cb205fc"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 957,
+          "sha256": "afe4aa3054d141328a8d477592598db4fe004779d420f6d2ac858363357a36d6"
+        },
+        "workspace input.b3ui": {
+          "bytes": 1145,
+          "sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_hidden_play_regions_cannot_edit_redirect_or_audition-4",
+      "method": "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+      "duration_ms": 2600,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        1280,
+        900
+      ],
+      "initial_flat": true,
+      "elapsed_seconds": 2.6543957619996945,
+      "ui_events": 50,
+      "midi_events": null,
+      "note_on_commands": 3,
+      "note_off_commands": 3,
+      "last_submitted_sequence": 9,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 23208,
+          "sha256": "8b3d8a71e52446af458e836e0c7332f8aecbd02d8a06b08674bb98aeb0769ce0"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 971,
+          "sha256": "46469b27d56231ee5feaa016644195eaf86ef791d18ee0a8b0b86156b5f2e88d"
+        },
+        "workspace input.b3ui": {
+          "bytes": 1145,
+          "sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation-1",
+      "method": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+      "duration_ms": 2250,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        960,
+        700
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 2.3171556729994336,
+      "ui_events": 13,
+      "midi_events": null,
+      "note_on_commands": 2,
+      "note_off_commands": 2,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 13749,
+          "sha256": "73faf602474a643660c4065b640c4af324e500efc0a524bf4db2ce979713df26"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 956,
+          "sha256": "5342bed2949a3fabe63bdca61d33e4da2890f9309e83af12661b0d3da153ea78"
+        },
+        "workspace input.b3ui": {
+          "bytes": 316,
+          "sha256": "d00185eb0af35357e993498a4da6560cb42afc24e205d1f8649da8ac6fcb6084"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-1",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        960,
+        700
+      ],
+      "final_size": [
+        960,
+        700
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.3265391169989016,
+      "ui_events": 4,
+      "midi_events": null,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 3,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 7615,
+          "sha256": "0499547cc27e0bd808e16890abd2181901575a4421ae1d46d42acbb45bb9b4d0"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 955,
+          "sha256": "2c93f415dd9037ebefefd01580f323fb8f8ea25f3db3188d63ab7fc05ccd634d"
+        },
+        "workspace input.b3ui": {
+          "bytes": 116,
+          "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-2",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        960,
+        700
+      ],
+      "final_size": [
+        960,
+        700
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.34916611399967223,
+      "ui_events": 5,
+      "midi_events": null,
+      "note_on_commands": 1,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 4,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 9037,
+          "sha256": "dd0d18868bd9264215804636abd4d9ea0602f5721236602aee878a6daa15d0c2"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 956,
+          "sha256": "18f4c68c226121c65edd4ef47d807ea0bec9251a206753eb820eae248c48fa48"
+        },
+        "workspace input.b3ui": {
+          "bytes": 138,
+          "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-3",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 2850,
+      "initial_size": [
+        960,
+        700
+      ],
+      "final_size": [
+        960,
+        700
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 2.945078996999655,
+      "ui_events": 24,
+      "midi_events": null,
+      "note_on_commands": 2,
+      "note_off_commands": 2,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": {
+        "sha256": "8526fec7c9fcab1752af72a92ffbc8ef4c5f78404bb8250adab97e9e139b7982",
+        "bytes": 2688122,
+        "width": 960,
+        "height": 700
+      },
+      "files": {
+        "diagnostics.json": {
+          "bytes": 16667,
+          "sha256": "253731746ade5c43468ab2fd98725c7449e6b4b2394b5a7a7567c8c7dd843830"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1053,
+          "sha256": "0cf488c3bffb3b56f3b3317fc0241e62b9b9dffc106ca5a8146c2521a8014be8"
+        },
+        "workspace input.b3ui": {
+          "bytes": 587,
+          "sha256": "6c3d6b22b1bf6725e8bb88a83c4459e4b5c36905bf657678ebe74b183830fd47"
+        }
+      },
+      "admission": "pass",
+      "first_both_painted_ms": 368,
+      "first_rotary_painted_ms": 1126,
+      "first_both_to_navigation_observed_ms": 758
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-4",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        1280,
+        900
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.37082141999962914,
+      "ui_events": 4,
+      "midi_events": null,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 3,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 7621,
+          "sha256": "52dc6e6fdfa50815204d972735f541172a123804e3bce4ed948d92fb879110a5"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 957,
+          "sha256": "67e7e8302a24209b2b7dd63e3a9eeac4dd42ac61f63cbc78131a4e1dd08c0b1d"
+        },
+        "workspace input.b3ui": {
+          "bytes": 116,
+          "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-5",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        1280,
+        900
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.3694030169990583,
+      "ui_events": 5,
+      "midi_events": null,
+      "note_on_commands": 1,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 4,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 9044,
+          "sha256": "2e985980da878dd10506e985e663dc86f303d09f04c798a772618472527e4a80"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 956,
+          "sha256": "75a957722f778467edce1c3fc4b070c1ad38f97850ace65524cfb086a42a46f2"
+        },
+        "workspace input.b3ui": {
+          "bytes": 138,
+          "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-6",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 2850,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        1280,
+        900
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 2.955801361998965,
+      "ui_events": 24,
+      "midi_events": null,
+      "note_on_commands": 2,
+      "note_off_commands": 2,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": {
+        "sha256": "094014502793d8e9a3d481760f1ef9d132af2cd49798f572e32fe3e13d56e9a4",
+        "bytes": 4608122,
+        "width": 1280,
+        "height": 900
+      },
+      "files": {
+        "diagnostics.json": {
+          "bytes": 16684,
+          "sha256": "85a2024404afb45a970bcb65e8ef75231a75b1f154cf015a59b508eaf0bc1bfb"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1055,
+          "sha256": "b09984a914e010bc612153f71635f5aca41f261e86ffeb65c95c41f5de13e9f6"
+        },
+        "workspace input.b3ui": {
+          "bytes": 589,
+          "sha256": "a74e8b9de3109680053c09fd5c0c7e5b9fbcb5675729181ca3737ab9faf86ce5"
+        }
+      },
+      "admission": "pass",
+      "first_both_painted_ms": 395,
+      "first_rotary_painted_ms": 1156,
+      "first_both_to_navigation_observed_ms": 761
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-7",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1672,
+        941
+      ],
+      "final_size": [
+        1672,
+        941
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.4260577090008155,
+      "ui_events": 4,
+      "midi_events": null,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 3,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 7621,
+          "sha256": "7b8db02f0700f9d376c498ced6b3d775b6c1adcce8ccc049bf6e51b19bcf6019"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 956,
+          "sha256": "1b99123933553711da13853cf411fcac5657d2ad4e444c622b79ad7381296221"
+        },
+        "workspace input.b3ui": {
+          "bytes": 116,
+          "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-8",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1672,
+        941
+      ],
+      "final_size": [
+        1672,
+        941
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.4442725270000665,
+      "ui_events": 5,
+      "midi_events": null,
+      "note_on_commands": 1,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 4,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 9046,
+          "sha256": "75b6f85adf84690d75690af641a4e4438bda813b2cd86ec2d2b96e7ff89b6381"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 956,
+          "sha256": "50f23cd034fc9a26faf8fb7d5f631ba0e9d021e236b046944e28cd7adc1f3d6c"
+        },
+        "workspace input.b3ui": {
+          "bytes": 138,
+          "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-9",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 2850,
+      "initial_size": [
+        1672,
+        941
+      ],
+      "final_size": [
+        1672,
+        941
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 2.9682050310002523,
+      "ui_events": 24,
+      "midi_events": null,
+      "note_on_commands": 2,
+      "note_off_commands": 2,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": {
+        "sha256": "d66247f9427ee616edeaf3a4dff8d5d5edb7124053dc274e09b0d725795014cf",
+        "bytes": 6293530,
+        "width": 1672,
+        "height": 941
+      },
+      "files": {
+        "diagnostics.json": {
+          "bytes": 16684,
+          "sha256": "eab5fcffaa5351c9c9d68d4a87c7b1701bfc55b4051b5cbf195d8b74bfb7eed3"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1056,
+          "sha256": "48b3073f3a6c61c484200208e23f8d1e186f3b06b3f4fa6a81973bc0008eacdd"
+        },
+        "workspace input.b3ui": {
+          "bytes": 595,
+          "sha256": "2aca73b41c69205d90e8f4f771c29a8d840bce392ec6a2d882a0630832c829cd"
+        }
+      },
+      "admission": "pass",
+      "first_both_painted_ms": 432,
+      "first_rotary_painted_ms": 1109,
+      "first_both_to_navigation_observed_ms": 677
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-10",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1399,
+        819
+      ],
+      "final_size": [
+        1399,
+        819
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.3490537140005472,
+      "ui_events": 4,
+      "midi_events": null,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 3,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 7622,
+          "sha256": "055a2f40aeb682c4b94e8ac1b0f6ebe5fda4e6c97faafe022807b409faae369c"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 959,
+          "sha256": "ac6eaded1f36bd98f1751e08a97955b9bbcd64cb067303cfe658fe981cace2bf"
+        },
+        "workspace input.b3ui": {
+          "bytes": 116,
+          "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-11",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1399,
+        819
+      ],
+      "final_size": [
+        1399,
+        819
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.36649860400029866,
+      "ui_events": 5,
+      "midi_events": null,
+      "note_on_commands": 1,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 4,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 9044,
+          "sha256": "aeb02ca857554b6c5b8e4b84cf136ec1c2dbb3824761cc4330a764ef1acc74a5"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 960,
+          "sha256": "b491f7d7c94b604fa29869ccba3ce4978be708699be549533d13b6ec7a841ef1"
+        },
+        "workspace input.b3ui": {
+          "bytes": 138,
+          "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-12",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 2850,
+      "initial_size": [
+        1399,
+        819
+      ],
+      "final_size": [
+        1399,
+        819
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 3.0197772100000293,
+      "ui_events": 24,
+      "midi_events": null,
+      "note_on_commands": 2,
+      "note_off_commands": 2,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": {
+        "sha256": "ae91de99fc43d2170dd5fb67085040792d02f979ff45fb1c5fc07eb813922cd0",
+        "bytes": 4583246,
+        "width": 1399,
+        "height": 819
+      },
+      "files": {
+        "diagnostics.json": {
+          "bytes": 16686,
+          "sha256": "e1c3f13d378159385728fd3a391fc30f42ff19c3ffa1516104f5b38a04dc5b0c"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1060,
+          "sha256": "b9bfe859889a0330f18e4c3e80a04821f4225d4b7682a95351c3738010bd80f1"
+        },
+        "workspace input.b3ui": {
+          "bytes": 593,
+          "sha256": "2df46d3336e17a28139c27fe6b7d4c392f92b5d9965a9f374ade70177236d536"
+        }
+      },
+      "admission": "pass",
+      "first_both_painted_ms": 377,
+      "first_rotary_painted_ms": 1147,
+      "first_both_to_navigation_observed_ms": 770
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-13",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1400,
+        819
+      ],
+      "final_size": [
+        1400,
+        819
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.38063581100141164,
+      "ui_events": 4,
+      "midi_events": null,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 3,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 7622,
+          "sha256": "b81f2b4b70f4ee8dabe0439a24b2d52168df394bd435699edb7907a22c7c0508"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 960,
+          "sha256": "bbbdb5a1dde21fc806f055db9ced98439705df7ec6380e98695d596ed83fe584"
+        },
+        "workspace input.b3ui": {
+          "bytes": 116,
+          "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-14",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1400,
+        819
+      ],
+      "final_size": [
+        1400,
+        819
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.3469380070000625,
+      "ui_events": 5,
+      "midi_events": null,
+      "note_on_commands": 1,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 4,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 9045,
+          "sha256": "cda2f5c7cfca2362719ed005d896bbcc17e941278982e5b071c3cdbe3c8981db"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 959,
+          "sha256": "89de2460cc1c593b460873a0c0767f4eb90469818d3e95394bc44c1feb25ee76"
+        },
+        "workspace input.b3ui": {
+          "bytes": 138,
+          "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-15",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 2850,
+      "initial_size": [
+        1400,
+        819
+      ],
+      "final_size": [
+        1400,
+        819
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 3.0168615160000627,
+      "ui_events": 24,
+      "midi_events": null,
+      "note_on_commands": 2,
+      "note_off_commands": 2,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": {
+        "sha256": "b19ada0ee694ac93a66272028431405dff308010667279bb077a6e9a16e69e2d",
+        "bytes": 4586522,
+        "width": 1400,
+        "height": 819
+      },
+      "files": {
+        "diagnostics.json": {
+          "bytes": 16686,
+          "sha256": "6c723c4e8ce57c7b831addfa6f1dda7dd03cae61ed2ab0c46fbd1745775e19be"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1060,
+          "sha256": "7a2f1f633b6ad53e5a6ddd617a8a2c2dcc613d0b5fe215bbd03bfbe4103d8f6a"
+        },
+        "workspace input.b3ui": {
+          "bytes": 595,
+          "sha256": "ea3481ec7f87ceb33cca1800a89c28a402fa094d4f96c1589d5acaa5fb72df12"
+        }
+      },
+      "admission": "pass",
+      "first_both_painted_ms": 414,
+      "first_rotary_painted_ms": 1130,
+      "first_both_to_navigation_observed_ms": 716
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-16",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1399,
+        820
+      ],
+      "final_size": [
+        1399,
+        820
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.3537617530000716,
+      "ui_events": 4,
+      "midi_events": null,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 3,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 7622,
+          "sha256": "47b0fe691a7b74980f113009ccb5433f5a4cda01858bb2ae5bdd5fcf449dbf8c"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 959,
+          "sha256": "494d3a581d5413af6a2ebf56ce5612e6855bdc2f27b57e205cf613aa26fb3f0e"
+        },
+        "workspace input.b3ui": {
+          "bytes": 116,
+          "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-17",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1399,
+        820
+      ],
+      "final_size": [
+        1399,
+        820
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.3729809260003094,
+      "ui_events": 5,
+      "midi_events": null,
+      "note_on_commands": 1,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 4,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 9045,
+          "sha256": "a7e5c8ea1ed1771ca7d7203d120cfaf8251de198bddd50dbe843e1120a6a86bc"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 959,
+          "sha256": "271e6675a869de3f5abef711186b5bbc2b4f406040a795c6ab7593347a735150"
+        },
+        "workspace input.b3ui": {
+          "bytes": 138,
+          "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-18",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 2850,
+      "initial_size": [
+        1399,
+        820
+      ],
+      "final_size": [
+        1399,
+        820
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 2.994556456000282,
+      "ui_events": 24,
+      "midi_events": null,
+      "note_on_commands": 2,
+      "note_off_commands": 2,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": {
+        "sha256": "eae768d679f99f65ef2094cf4a1729fe065896cf3395155109c4a051a9c34143",
+        "bytes": 4588842,
+        "width": 1399,
+        "height": 820
+      },
+      "files": {
+        "diagnostics.json": {
+          "bytes": 16686,
+          "sha256": "70756bb46192a0c8f04d965487be846d79ca053bac2eae1b59c10b641bc5a786"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1059,
+          "sha256": "bc76d8329fc1cbad78e9ce3c7b02e68bc088a07ecc20d5c8db6bacf8239155b4"
+        },
+        "workspace input.b3ui": {
+          "bytes": 593,
+          "sha256": "2df46d3336e17a28139c27fe6b7d4c392f92b5d9965a9f374ade70177236d536"
+        }
+      },
+      "admission": "pass",
+      "first_both_painted_ms": 443,
+      "first_rotary_painted_ms": 1147,
+      "first_both_to_navigation_observed_ms": 704
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-19",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1400,
+        820
+      ],
+      "final_size": [
+        1400,
+        820
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.3591795190004632,
+      "ui_events": 4,
+      "midi_events": null,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 3,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 7622,
+          "sha256": "51b138b6df63591cf8a332b07b1c7e56887fa03f9766fe945b5a1993eef223dc"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 959,
+          "sha256": "0e38e7088b938e1293d7f5d5a08b4ed8369861a7f04f5dadc84fc5a08a79a654"
+        },
+        "workspace input.b3ui": {
+          "bytes": 116,
+          "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-20",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 250,
+      "initial_size": [
+        1400,
+        820
+      ],
+      "final_size": [
+        1400,
+        820
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.36928481200084207,
+      "ui_events": 5,
+      "midi_events": null,
+      "note_on_commands": 1,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 4,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "screenshot_metadata": null,
+      "files": {
+        "diagnostics.json": {
+          "bytes": 9044,
+          "sha256": "0b1e1a3a4fb2b020c8837a40eb11a2363c5798836ab4af2b6c5472a40185e1ee"
+        },
+        "private controls.b3controls": {
+          "bytes": 469,
+          "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+        },
+        "process.json": {
+          "bytes": 960,
+          "sha256": "313c06561c636daff502a43e78823c2daae6d0fbd375e2b3099fc50afb501b52"
+        },
+        "workspace input.b3ui": {
+          "bytes": 138,
+          "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-21",
+      "method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+      "duration_ms": 2850,
+      "initial_size": [
+        1400,
+        820
+      ],
+      "final_size": [
+        1400,
+        820
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 3.013931120000052,
+      "ui_events": 24,
+      "midi_events": null,
+      "note_on_commands": 2,
+      "note_off_commands": 2,
+      "last_submitted_sequence": 7,
+      "input_state_sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": {
+        "sha256": "4571f87c21d204b928ae42850de11231a5b2f55d211d1e23b1297dff37e6192b",
+        "bytes": 4592122,
+        "width": 1400,
+        "height": 820
+      },
+      "files": {
+        "diagnostics.json": {
+          "bytes": 16686,
+          "sha256": "a7b8b66f3aa2ad742c4af447ccdd0887ffadd8bdb5094f6c4f00dae7cf9fd4c1"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1059,
+          "sha256": "95a125879984dd6fa3e83515ae6291df85acae3a4cbd182488e78aaf4f321dc9"
+        },
+        "workspace input.b3ui": {
+          "bytes": 595,
+          "sha256": "3a706f55ac143d1bdefe2845146c7b8247da52b9c143956eae79cd4e2a79b721"
+        }
+      },
+      "admission": "pass",
+      "first_both_painted_ms": 422,
+      "first_rotary_painted_ms": 1138,
+      "first_both_to_navigation_observed_ms": 716
+    },
+    {
+      "case": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1",
+      "method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+      "duration_ms": 250,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        1280,
+        900
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 0.3738126900007046,
+      "ui_events": 4,
+      "midi_events": 1,
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "last_submitted_sequence": 3,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": null,
+      "files": {
+        "MIDI input.b3midi": {
+          "bytes": 41,
+          "sha256": "e219db6661addfa5fb082918bbb5ff5278b295372f89e3cc255f3f697dfabc28"
+        },
+        "diagnostics.json": {
+          "bytes": 10269,
+          "sha256": "08aa729d30b40db120c3c3e391caaa2cbc68b286d30a22585cb2d7070a23539d"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1048,
+          "sha256": "760592e516bd903f00126ab976f650499abf0472b4e044e2e8fd9894f39eea9f"
+        },
+        "workspace input.b3ui": {
+          "bytes": 116,
+          "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+        }
+      },
+      "admission": "pass"
+    },
+    {
+      "case": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-2",
+      "method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+      "duration_ms": 3200,
+      "initial_size": [
+        1280,
+        900
+      ],
+      "final_size": [
+        960,
+        700
+      ],
+      "initial_flat": false,
+      "elapsed_seconds": 3.2524622889995953,
+      "ui_events": 17,
+      "midi_events": 7,
+      "note_on_commands": 5,
+      "note_off_commands": 5,
+      "last_submitted_sequence": 13,
+      "input_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "screenshot_metadata": null,
+      "files": {
+        "MIDI input.b3midi": {
+          "bytes": 159,
+          "sha256": "4cbf9900dd6ee9b32634a4e491cdef4457291e8aed6496e56b2361e1d137cace"
+        },
+        "diagnostics.json": {
+          "bytes": 35203,
+          "sha256": "9779650d5f0df4f048a16e2801686dbf480435d0174ececc7ebfe790f2dc80cd"
+        },
+        "private controls.b3controls": {
+          "bytes": 452,
+          "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+        },
+        "process.json": {
+          "bytes": 1048,
+          "sha256": "cb46d7241a1ccba1730812562b57b3b982d87bfd5e9b8985697b4bea7bd9a061"
+        },
+        "workspace input.b3ui": {
+          "bytes": 411,
+          "sha256": "9d4770809137535ad3085b2ff07cc0087dc98ce548282996e333e0517f45de43"
+        }
+      },
+      "admission": "pass"
+    }
+  ]
+}

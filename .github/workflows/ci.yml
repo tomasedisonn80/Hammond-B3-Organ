@@ -107,6 +107,68 @@ jobs:
             build-release/CMakeFiles/CMakeError.log
             build-release/Testing/Temporary/LastTest.log
             build-release/Testing/Temporary/LastTestsFailed.log
+            build-release/rotary-waveform/
+
+  rotary-waveform:
+    name: Complete R4 waveform qualification (Linux GCC)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Check out the exact tested revision
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Record source and tools
+        run: |
+          mkdir -p waveform-ci-logs
+          git rev-parse HEAD | tee waveform-ci-logs/source-revision.txt
+          cmake --version 2>&1 | tee waveform-ci-logs/toolchain.log
+          g++ --version 2>&1 | tee -a waveform-ci-logs/toolchain.log
+          python --version 2>&1 | tee -a waveform-ci-logs/toolchain.log
+
+      - name: Configure the independent core qualification
+        env:
+          PYTHON_EXECUTABLE: ${{ steps.python.outputs.python-path }}
+        run: |
+          cmake -S . -B build-waveform -G "Unix Makefiles" \
+            -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+            -DHAMMOND_BUILD_STANDALONE=OFF -DHAMMOND_BUILD_VST3=OFF \
+            -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+            2>&1 | tee waveform-ci-logs/configure.log
+
+      - name: Require strict report admission
+        run: |
+          python tests/test_rotary_waveform_acceptance.py --self-test \
+            2>&1 | tee waveform-ci-logs/report-admission.log
+
+      - name: Build and run all full waveform experiments
+        timeout-minutes: 30
+        run: |
+          set -o pipefail
+          cmake --build build-waveform --target check_rotary_waveform_full \
+            --parallel 2 --verbose 2>&1 | tee waveform-ci-logs/full.log
+
+      - name: Retain exact complete waveform evidence
+        if: ${{ always() && !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: rotary-waveform-full-linux-${{ github.run_attempt }}
+          retention-days: 14
+          if-no-files-found: error
+          path: |
+            waveform-ci-logs/
+            build-waveform/rotary-waveform/
+            build-waveform/CMakeCache.txt
+            build-waveform/compile_commands.json
+            build-waveform/CMakeFiles/CMakeConfigureLog.yaml
 
   sanitizers:
     name: Linux GCC ASan + UBSan + leaks
@@ -169,3 +231,4 @@ jobs:
             build-sanitizers/CMakeFiles/CMakeError.log
             build-sanitizers/Testing/Temporary/LastTest.log
             build-sanitizers/Testing/Temporary/LastTestsFailed.log
+            build-sanitizers/rotary-waveform/

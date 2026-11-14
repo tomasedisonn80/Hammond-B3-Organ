@@ -1,0 +1,304 @@
+{
+  "schema": "a20-rotary-transactions-v1",
+  "actual_worker": "/root/w04_a20_transaction_acceptance",
+  "date": "2026-11-14",
+  "wave": 4,
+  "result": "pass",
+  "scope": "Two actual late whole-process failures, complete field snapshots and future continuation; no allocation, deadline, sanitizer or physical qualification.",
+  "cwd": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ",
+  "head_metadata": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+  "head_tree_metadata": "530d5fcf777003f470f64558de9e5631d31a21a4",
+  "source_identity_note": "HEAD is the prior checkpoint; the exact tested uncommitted source is identified by the per-file SHA-256 map.",
+  "source_sha256": {
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+    "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+    "src/RotaryRendererInternal.h": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+    "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+    "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+    "tests/test_rotary_renderer_transactions.cpp": "fd42656661ed4ea8a75bd207fd971c9ff90e92efec3c16a30c60e33cb092bced",
+    "tests/TestSupport.h": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5",
+    "docs/ROTARY_RENDERER_CONTRACT.md": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9",
+    "docs/reviews/WAVEFORM_TRANSACTION_REVIEW.md": "53bb801dc09a37ad8b70a994d565652be1b7652a2606ff50d776e26e85180844"
+  },
+  "source_hashes_unchanged_before_compile_and_after_both_runs": true,
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "compile": {
+    "command_argv": [
+      "c++",
+      "-std=c++20",
+      "-O2",
+      "-DNDEBUG",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-fstack-usage",
+      "-Iinclude",
+      "-Isrc",
+      "-Itests",
+      "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/e3cacb90cc81/build/nominal.b3p\"",
+      "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ\"",
+      "tests/test_rotary_renderer_transactions.cpp",
+      "src/RotaryMotion.cpp",
+      "src/RotaryPropagation.cpp",
+      "src/RotaryHistory.cpp",
+      "src/RotaryStreamingPath.cpp",
+      "src/RotaryRenderer.cpp",
+      "-o",
+      "../a20-transactions/test_rotary_renderer_transactions"
+    ],
+    "exit_code": 0,
+    "flags_include_release_assertions_active_via_CHECK": true
+  },
+  "executable": {
+    "path": "/workspace/scratch/e3cacb90cc81/a20-transactions/test_rotary_renderer_transactions",
+    "sha256": "53e08e30fc2ae846e0f06f4754cf6f1eeb2bdabc5f804c080ce69a309bac43ee",
+    "bytes": 109320
+  },
+  "runs": [
+    {
+      "command": "../a20-transactions/test_rotary_renderer_transactions",
+      "exit_code": 0,
+      "result": "pass"
+    },
+    {
+      "command": "bash -c 'ulimit -s 1024 && exec ../a20-transactions/test_rotary_renderer_transactions'",
+      "stack_limit_kib": 1024,
+      "exit_code": 0,
+      "result": "pass",
+      "stdout_identical_to_normal_run": true
+    }
+  ],
+  "observed_program_output": {
+    "experiments": [
+      {
+        "name": "late_poisoned_support",
+        "inputs": "separate_inputs",
+        "status": "invalid_buffer",
+        "failure_frame": 43,
+        "completed_samples": 3,
+        "journal_records": 4,
+        "events_before_failure": 9,
+        "events_consumed": 0,
+        "solver_iterations_max": 2,
+        "solver_residual_max_s": 2.3689817468808272e-17,
+        "scratch_oracle_max_error": 8.163469900068776e-13,
+        "slot_visits": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "accepted_continuation_frames": 68
+      },
+      {
+        "name": "partial_second_motion_append",
+        "inputs": "partial_inputs_one_sample_apart",
+        "status": "timeline_overflow",
+        "failure_frame": 63,
+        "completed_samples": 23,
+        "journal_records": 24,
+        "events_before_failure": 13,
+        "events_consumed": 0,
+        "solver_iterations_max": 2,
+        "solver_residual_max_s": 2.3689817468808272e-17,
+        "scratch_oracle_max_error": 8.251177519014163e-13,
+        "slot_visits": [
+          3,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "accepted_continuation_frames": 68
+      }
+    ],
+    "rate": 48000,
+    "capacity": 10,
+    "preload_frames": 40,
+    "request_frames": 37,
+    "snapshot_comparisons": 18,
+    "snapshot_field_words": 262504,
+    "compared_field_words": 4725072,
+    "waveform_slots_per_snapshot": 32768,
+    "motion_slots_per_snapshot": 32768,
+    "compared_output_values_with_guards": 874,
+    "storage_bytes": 2721712,
+    "motion_segment_bytes": 56,
+    "result": "pass"
+  },
+  "fixture_profile": {
+    "sound_speed_m_s": 300.0,
+    "reference_distance_m": 0.0234375,
+    "microphones": [
+      {
+        "position_m": [
+          0.0234375,
+          0.0,
+          -0.0
+        ]
+      },
+      {
+        "position_m": [
+          0.0234375,
+          0.0,
+          -0.0
+        ]
+      }
+    ],
+    "rotors": [
+      {
+        "origin_m": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "radius_m": 0.0,
+        "motion": {
+          "slow_rad_s": 3.0,
+          "fast_rad_s": 90.0,
+          "tau_up_s": 0.007,
+          "tau_down_s": 0.013,
+          "direction": 1
+        },
+        "initial_phase_rad": 6.25,
+        "initial_speed_rad_s": 47.0,
+        "initial_command": "Chorale"
+      },
+      {
+        "origin_m": [
+          0.0,
+          -0.0,
+          0.0
+        ],
+        "radius_m": 0.0,
+        "motion": {
+          "slow_rad_s": 4.0,
+          "fast_rad_s": 75.0,
+          "tau_up_s": 0.011,
+          "tau_down_s": 0.019,
+          "direction": -1
+        },
+        "initial_phase_rad": 0.035,
+        "initial_speed_rad_s": 61.0,
+        "initial_command": "Chorale"
+      }
+    ]
+  },
+  "fixture_profile_identity": {
+    "encoding": "UTF-8 of json.dumps(profile, sort_keys=True, separators=(comma, colon), ensure_ascii=False), no final LF",
+    "sha256": "a25d0811eba736068166c4a400dfd117fa4520fedd3104dacb498defcafb6b81"
+  },
+  "fixture_details": {
+    "max_block_frames": 64,
+    "mathematical_delay_frames": 3.75,
+    "emission": "(n-6)+0.25",
+    "supports": [
+      "n-7",
+      "n-6",
+      "n-5",
+      "n-4"
+    ],
+    "weights_denominator": 128,
+    "weight_numerators": [
+      -7,
+      105,
+      35,
+      -5
+    ],
+    "gain": 1.0,
+    "flush_frames": 8,
+    "request_events": 16,
+    "first_poisoned_support": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "poison_horn_absolute_frame": 39,
+    "poison_physical_slot": 9,
+    "poison_value": 2.0,
+    "only_shortened_limit": "motion_history[1].max_frame_",
+    "shortened_limit": 63,
+    "original_limit": 4147200000,
+    "continuation_partitions": [
+      37,
+      1,
+      9,
+      11,
+      10
+    ],
+    "suffix_frames": 31,
+    "caller_output_values_per_rejection": 95,
+    "caller_output_bytes_per_rejection": 760,
+    "scratch_oracle_absolute_tolerance": 1e-11
+  },
+  "comparison_method": {
+    "padding_compared": false,
+    "floating_fields": "std::bit_cast<uint64_t>",
+    "unused_backing_slots_included": true,
+    "all_ring_metadata_included": true,
+    "owners": "All current getter fields plus reset of small owner copies for original seeds and commands",
+    "configuration": "Copied profile/spec/capacity/flush/path bounds and each prepared path flag; path solve is const",
+    "diagnostics": "Every copied diagnostic field including all four paths/emissions",
+    "only_injected_field_changed": "Exactly one canonical field differs after injection; restoring only that field returns the pristine full snapshot",
+    "scratch": "Output/journal entries are excluded from rollback equality and inspected solely for actual late execution"
+  },
+  "stack_usage": {
+    "compiler_option": "-fstack-usage",
+    "renderer_process": [
+      {
+        "symbol": "src/RotaryRenderer.cpp:160:15:hammond::rotary::ProcessResult hammond::rotary::RotaryRenderer::process(std::span<const double>, std::span<const double>, std::span<double>, std::span<double>, std::span<const hammond::rotary::CommandEvent>)",
+        "bytes": 1296,
+        "kind": "dynamic,bounded"
+      }
+    ],
+    "largest_test_frame": {
+      "symbol": "tests/test_rotary_renderer_transactions.cpp:434:10:void transaction_test::Fixture::accepted_continuation()",
+      "bytes": 1088,
+      "kind": "dynamic,bounded"
+    },
+    "largest_compiled_frame": {
+      "symbol": "src/RotaryRenderer.cpp:98:8:hammond::rotary::Status hammond::rotary::RotaryRenderer::prepare(const hammond::rotary::Profile&, const hammond::rotary::ProcessSpec&)",
+      "bytes": 2208,
+      "kind": "static"
+    },
+    "raw_file_sha256": {
+      "test_rotary_renderer_transactions-RotaryHistory.su": "cf11e44d6db34adc777fb58a7a48277080f6dec157f77660b1781cbf6ab8823f",
+      "test_rotary_renderer_transactions-RotaryMotion.su": "56a306b7c285e43d24660ce3d710828556f4bfcdb9a65a16779e31a97d0d99ac",
+      "test_rotary_renderer_transactions-RotaryPropagation.su": "905fd5c9a38bfc22ee7d14186f1649500c605cf1a1325f07dc9d247726bce395",
+      "test_rotary_renderer_transactions-RotaryRenderer.su": "627d5d1499de7c594875152cf65dd896bd502291d3ca3e06f415ec1fb7023f7c",
+      "test_rotary_renderer_transactions-RotaryStreamingPath.su": "61587c13446cd8d74f5abcfa8368c7e58a6d7f9fc7c7bf452883e04c9de38fc3",
+      "test_rotary_renderer_transactions-test_rotary_renderer_transactions.su": "80f9f9fb498f13b13e59a9dbcb5cc4d9414785ddde884c598630802c88b06921"
+    },
+    "note": "Compiler frame sizes are per-function, not an instrumented maximum call-chain depth; actual 1 MiB stack run also passes."
+  },
+  "not_run": [
+    "shared CMake reconfigure/build/CTest (integrator ownership)",
+    "allocation/deallocation interposition (A29)",
+    "full sanitizer/leak gate (A43)",
+    "host/device deadline or physical-fidelity checks"
+  ],
+  "next_gate": "Integrator discovers and runs test_rotary_renderer_transactions; A29 reuses both late fixtures in calibrated allocation intervals, followed by coherent-source sanitizer/platform gates.",
+  "product_changes": []
+}

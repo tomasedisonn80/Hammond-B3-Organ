@@ -1,0 +1,61 @@
+{
+  "scope": "Actual observed visual replay failure and a test-only observation-dwell repair, independently rerun through all six methods and thirty native processes. No product or assertion change.",
+  "original_test_sha256": "28b61802b99233e5f7ee14d01f5456b15bdff235309038b2943e75863d6097f7",
+  "changed_test_sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3",
+  "executable_sha256": "677acfa6a0244d3f7085eb96fa0737306a9f9e74febabb34f55fea99b303c51c",
+  "failed_method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+  "size": [
+    1672,
+    941
+  ],
+  "expected_initial_painted_held": [
+    1,
+    1,
+    0
+  ],
+  "observed_initial_visit_held": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0
+    ]
+  ],
+  "observed_second_command_applied_ms": 527,
+  "first_rotary_paint_ms": 527,
+  "original_space_to_navigation_ms": 180,
+  "added_observation_dwell_ms": 600,
+  "new_space_to_navigation_ms": 780,
+  "original_full_duration_ms": 2250,
+  "new_full_duration_ms": 2850,
+  "unchanged_process_timeout_seconds": 9,
+  "unchanged_checks": [
+    "all six methods",
+    "all thirty actual native processes",
+    "all six full journey visits with both original held targets",
+    "all original command ordering/ownership",
+    "exact saved canonical bytes",
+    "zero unexpected sound commands",
+    "release and shutdown checks"
+  ],
+  "note": "Only events at or after initial navigation and full-run duration shift by600ms; initial prefixes unchanged; release earliest-time assertions shift equally.",
+  "validation": {
+    "ctest_report": "wave3-targeted-recheck.txt",
+    "tests_passed": 2,
+    "tests_failed": 0,
+    "duration_seconds": 48.92,
+    "workspace_test_seconds": 48.91,
+    "native_workspace_process_count": 30,
+    "all_six_workspace_methods": true,
+    "current_test_sha256": "9a226a6b17b1d7eb84a079a113f5ef97a6f37935ba16d1d3f55876bed907d6f3"
+  }
+}

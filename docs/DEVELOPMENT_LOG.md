@@ -1,5 +1,63 @@
 # Development log
 
+## 2026-11-14 — Complete waveform experiment and offline developer tool
+
+The frozen R4 build-before-run experiment passed in 649.663 seconds: all four
+rates, 24 partitions, 22,806,000 native frames, 91,224,000 native paths,
+38,010,000 exact alternate samples and 840 accepted events. Maximum normalized
+error is 1.935740205876292e-9 against 2e-5. All 176 selected high-precision paths
+pass; all sixteen runner groups retain stable source/executable/build metadata.
+The [original receipts](development/2026-11-14-waveform-continuation/reports/full-waveform/retention.json)
+include exact native stdout/stderr, qualification JSON and build log. This
+qualifies the 82 frozen source inputs at 0881 plus overlay. Subsequent CMake
+wiring adds only the independent offline target; it is outside that run's
+build-metadata identity. Live Engine audio and controls remain unchanged.
+
+A25/A26 implement `hammond_rotary_render` and deterministic nominal-profile
+compilation. Author CLI checks pass 83 cases; compiler checks pass sixteen
+portable methods and nineteen with the explicit native audit, preserving all
+32 physical fields. The root CMake target builds and executes 4,800 input plus
+242 explicit tail frames, with complete finite unclipped stereo binary64 output
+and source-identified report. Compiler/private-install integration passes 2/2.
+The separate tool is build-tree only; existing install payloads are unchanged.
+Independent lifecycle/symmetry, allocation and CLI acceptance remain scheduled.
+
+Concurrent header source 0881 was safely merged with the accepted material
+slice. The combined native material/header and late-transaction gates pass
+3/3 in 12.42 seconds. The earlier 160/161 full suite and separate 2/2 replay
+repair stay retained, with all assertions unchanged. Current-source gallery,
+final coherent suite and exact published hosted results remain next.
+
+
+## 2026-11-14 — Implement bounded R4 foundation and measured live materials
+
+All six atlas readers and six design/review workers are accepted. Independent
+reviews freeze the R4 API, transaction journal, lifecycle and complete numerical
+experiments. The implementation adds owned fixed waveform/motion histories,
+original event-anchor retention, four-support cubic interpolation, the streaming
+retarded path and a separate transactional two-input stereo renderer. It does
+not change Engine audio or parameter/state identities.
+
+History author checks pass with 46,200 lifetime events and all sixteen rate
+pairs; independent acceptance passes 774,721 checks and the complete 33,280-row
+complex-delay grid. The full error grid is retained losslessly. Low-band error
+passes while high-band error remains explicit characterization. Both integrated
+history CTests pass. A linked 4,096-frame stationary renderer author smoke
+verifies propagation/algorithmic delay, pressure gain, invalid-input rollback
+and rate/reset behavior. Full renderer acceptance remains in progress.
+
+The native drawbar/key-front slice passes six prior native suites. Independent
+fixed-state comparison covers 79 pairs and 149,100,628 pixels with no escaped
+delta; Flat and hidden workspaces remain exact. Reference-size front brightness
+moves 159.0608 to 129.9874, the adjacent top stays 240.8184, and measured stems
+move from three to nine pixels. These are digital appearance statistics, not
+physical reflectance or literal 1:1 equality. Timing and the final gallery follow.
+
+All twelve hosted jobs pass at published `26ff2fb`. Later source has its own
+pending qualification. The local history LSan environment failure and separate
+leak-disabled sanitizer success remain distinct. Disk use remains bounded with
+about 58 GiB free; a renderer's fixed heap storage is 2,721,712 bytes on this ABI.
+
 ## 2026-11-14 — Accept measured native header and preserve concurrent R4 work
 
 All seven reference-refinement waves are accepted: 42 actual workers. A40's

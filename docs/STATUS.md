@@ -2,21 +2,58 @@
 
 ## Current waveform rendering and native design continuation
 
-The [new session](development/2026-11-14-waveform-continuation/README.md) starts
-from published `2e161dc`. Its complete-atlas readers and R4 API review are
-recorded in a separate [actual manifest](development/2026-11-14-waveform-continuation/assignments.json).
-The unchanged Linux GCC 14.2 Release baseline passes **155/155 tests** in
-152.15 seconds, including the enabled native standalone with MIDI disabled.
-[Exact product inputs and raw results](development/2026-11-14-waveform-continuation/reports/baseline.json)
-are retained. R4 implementation and new visual changes are not yet qualified.
+The [waveform session](development/2026-11-14-waveform-continuation/README.md)
+starts at `2e161dc`. Six complete readings cover all 500 atlas pages. Its
+[actual manifest](development/2026-11-14-waveform-continuation/assignments.json)
+currently records 29 dispatched workers: A01–A26 accepted and A27–A29 active.
+The ten logical waves remain separate from earlier sessions and the atlas's
+research waves. Planned work is never counted as accepted.
 
-The next engineering work is bounded horn/drum waveform history, cubic delay
-and transactional stereo rendering under the existing rotary numerical contract,
-plus a measured native visual refinement and fresh README captures. The dry
-Engine, 47 parameters, state4/readers 1–3 and other sessions remain preserved.
-R5 audible policy, R6 integration, literal reference equality and physical
-qualification keep their separate gates. The [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
-is the current setup/resumption entry point.
+The frozen [R4 renderer API](ROTARY_RENDERER_CONTRACT.md), bounded waveform and
+motion histories, cubic kernel, streaming retarded paths and transactional
+stereo renderer are implemented. Independent history acceptance passes 774,721
+checks and all 33,280 static-grid coordinates. Low-band error 0.00348056414 is
+within 0.005; full-band 0.99539807929 remains reconstruction characterization.
+Analytical renderer acceptance passes 57,568 samples. Streaming paths pass
+345,828 checks including 3,940 exact immutable-R3 comparisons. Both actual late
+failure experiments pass 4,725,072 field-word comparisons and exact subsequent
+continuation. The four-rate/six-partition smoke passes 98,328 native frames;
+strict admission and high-precision root checks also pass.
+
+**The complete ten-second/all-rate waveform run passes all 24 partitions.**
+It processes 22,806,000 native frames, compares 38,010,000 alternate samples
+exactly and records maximum normalized error 1.935740205876292e-9 against 2e-5.
+All 176 selected high-precision reference paths and sixteen runner groups pass.
+The [original full receipt](development/2026-11-14-waveform-continuation/reports/full-waveform/qualification.json)
+binds the frozen numerical source. R4 remains open until its remaining
+mandatory lifecycle/symmetry gates are accepted. All stopped rate pairs, receiver/scene symmetries and calibrated
+allocation observations retain their explicit remaining assignments. A25/A26
+have implemented the bounded offline native renderer and deterministic nominal
+profile compiler. Author checks pass; the explicit CMake tool build and fresh
+4,800-frame integration also pass, with independent CLI acceptance next. The playable Engine stays dry; this independent numerical
+module has no live audio connection.
+
+The native drawbar/key-front refinement passes 79 independent fixed-state pairs
+with zero escaped pixels, eight actual app smokes and paired timing limits.
+The concurrently published wide-header refinement is now integrated from
+`0881d1f`, preserving both paint changes. The combined native material/header and transaction gates pass 3/3 in 12.42
+seconds; a fresh actual gallery is next. Original
+captures remain unchanged. **Literal 1:1 reference fidelity is not established.**
+
+The first integrated build passes; its full CTest run records **160/161**.
+An initial Play dwell failure is retained with the exact diagnostics. A test-only
+600ms dwell adjustment preserves all 132 assertion ASTs and the nine-second
+process deadline. The targeted recheck passes **2/2**, including thirty native
+workspace processes. These are separate observations, not a new full-suite pass.
+The baseline **155/155** and twelve successful hosted jobs at `26ff2fb` remain
+qualified history. Local leak-enabled history testing retains its environment
+attachment failure separately from passing ASan/UBSan with leak checking disabled.
+
+The dry Engine, 47 parameters, state4/readers1–3 and musical ownership remain
+unchanged. R5 audible policy, R6 integration/deadlines, scanner G5, complete M5/M6,
+physical acquisition and literal visual equality have separate gates. The
+[current checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+records exact paths, current commands, concurrent-source ownership and publication.
 
 ## Earlier reference refinement and nominal propagation continuation
 

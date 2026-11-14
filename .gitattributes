@@ -14,3 +14,8 @@ docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/**
 
 # Exact command-log evidence includes CMake's whitespace-only status prefixes.
 docs/development/2026-11-14-reference-refinement/reports/*.log -text -whitespace
+
+# Preserve waveform-session raw command logs and exact unified-diff evidence.
+docs/development/2026-11-14-waveform-continuation/reports/*.txt -text -whitespace
+docs/development/2026-11-14-waveform-continuation/reports/*.patch -text -whitespace
+docs/development/2026-11-14-waveform-continuation/reports/full-waveform/build-before-run.log -text -whitespace

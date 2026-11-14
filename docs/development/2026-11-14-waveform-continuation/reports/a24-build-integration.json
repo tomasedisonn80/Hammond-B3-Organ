@@ -1,0 +1,673 @@
+{
+  "schema_version": 1,
+  "agent": "/root/w04_a24_build_integration_review",
+  "assignment": "A24",
+  "reviewed_utc": "2026-11-14T22:49:53.240982+00:00",
+  "status": "pass",
+  "scope": "Fresh Linux GCC Release core-only CMake integration, testing-off configure, generated target graph and source/build-bound bounded waveform smoke; not full R4 or hosted qualification",
+  "source": {
+    "head": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "git_tree": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+    "dirty_overlay": true,
+    "source_count": 82,
+    "source_sha256": {
+      ".github/workflows/ci.yml": "7429018fbe0f372fdac6f9d89f524e83b906926146abf64d4073be51a43fa7b5",
+      "CMakeLists.txt": "167342e2e0a406c4cb3c684abada08cc2cfb98c875144bf4c15f0405febfa4ed",
+      "CMakePresets.json": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      "cmake/CompileChapelCatalog.cmake": "0af69e3d2d779c86a0b646545a6377b41ce0d5c4fff79f02e890a9d35e7d552e",
+      "cmake/CompileFixedRegistrations.cmake": "c9dba11f08dac36317a02028bb706d73fc39a91ede3776e9fcdce0d08cea5e1c",
+      "cmake/InstallCaptureTools.cmake": "b7658c5ac2083e7661dd01d6ebf1cb66ee838a73e71fa2300c6d9b1affd5f015",
+      "cmake/InstallHammondTools.cmake": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+      "cmake/InstallStandalone.cmake": "079543943e5259a3d3375521015716cd66dd99d5452a21df9af39de8a8382091",
+      "cmake/StandaloneBenchmark.cmake": "737fdac548210959ccc4d7fbb59bed892237da78076884c6485b86105053d871",
+      "cmake/VerifyRtMidi.cmake": "fe2f76f57ca3384aedf05da1afbe0cc3fd3989bee29120bbb252249368bbccdd",
+      "cmake/VerifySdl2.cmake": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e",
+      "cmake/VerifyVst3Sdk.cmake": "4feeb4cfabf1560cfd3487859b88d40974b47801753aeccf848517717443e6eb",
+      "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+      "docs/ROTARY_PROPAGATION_CONTRACT.md": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+      "docs/ROTARY_RENDERER_CONTRACT.md": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9",
+      "docs/ROTARY_WAVEFORM_ACCEPTANCE.md": "fa4288d586a2a40d803740408177f9c0a085bd4deb9ae0bdfc832e6d58b0c1aa",
+      "docs/WAVEFORM_BUILD_PLAN.md": "5f7cfef2b9b98f5c5151ba441539f46224c13fa40a98d9c23adb80fcf89cc9aa",
+      "docs/development/2026-11-14-waveform-continuation/reports/a14-history-acceptance.json": "3ebb5feacd33afbe94b1aa033776001df7a6287394aa8c28c6f5c257f5f469cc",
+      "docs/development/2026-11-14-waveform-continuation/reports/a14-static-grid.csv.gz": "03a56786a5d929d9a942048091b91fb5e791926019a0e0f3f0dc8aeceb0a2e77",
+      "include/hammond/ConsoleModel.h": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+      "include/hammond/ContactBank.h": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+      "include/hammond/ControlState.h": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "include/hammond/ControlStateIO.h": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+      "include/hammond/Engine.h": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6",
+      "include/hammond/FixedRegistration.h": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+      "include/hammond/HostTimeline.h": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+      "include/hammond/InputProcessor.h": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+      "include/hammond/NoteOwnership.h": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+      "include/hammond/ParameterBridge.h": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "include/hammond/PedalNoteOwnership.h": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+      "include/hammond/PedalRouting.h": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+      "include/hammond/PedalVoice.h": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+      "include/hammond/Percussion.h": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+      "include/hammond/PerformanceInput.h": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+      "include/hammond/Profile.h": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+      "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+      "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+      "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+      "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+      "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+      "include/hammond/ScannerLine.h": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+      "include/hammond/ScannerRotor.h": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+      "include/hammond/StateExchange.h": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+      "include/hammond/TonewheelBank.h": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+      "include/hammond/Types.h": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "include/hammond/detail/Decimal.h": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+      "src/ContactBank.cpp": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+      "src/ControlState.cpp": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "src/ControlStateIO.cpp": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "src/Engine.cpp": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a",
+      "src/FixedRegistration.cpp": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+      "src/HostTimeline.cpp": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+      "src/InputProcessor.cpp": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+      "src/NoteOwnership.cpp": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+      "src/ParameterBridge.cpp": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+      "src/PedalNoteOwnership.cpp": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+      "src/PedalRouting.cpp": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+      "src/PedalVoice.cpp": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+      "src/Percussion.cpp": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+      "src/PerformanceInput.cpp": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+      "src/Profile.cpp": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+      "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+      "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+      "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+      "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+      "src/RotaryRendererInternal.h": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+      "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+      "src/ScannerLine.cpp": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+      "src/ScannerRotor.cpp": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+      "src/StateExchange.cpp": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+      "src/TonewheelBank.cpp": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+      "tests/probes/rotary_motion_probe.cpp": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e",
+      "tests/probes/rotary_propagation_probe.cpp": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768",
+      "tests/probes/rotary_waveform_probe.cpp": "922c92ab81d2fcc8a5a0948c7c85ee496cf6816bdc57b20dddba7474899ef577",
+      "tests/reference/rotary_waveform_reference.h": "3c24792f80f86f903926622f4bf016984caf44d727ad3913e4570738ac9c8f21",
+      "tests/test_capture_install.py": "f435bdc83ec5e68d3fce04198b88534af10cd3323d20f9940628960185a94a5e",
+      "tests/test_rotary_history_acceptance.cpp": "839f85847e381c536549829395fb436964bb03e80092802ba5f700a495b59c03",
+      "tests/test_rotary_motion_acceptance.py": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366",
+      "tests/test_rotary_propagation_acceptance.py": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+      "tests/test_rotary_reference.py": "1f4b86baa292723027a65349a113d1e6fec21477a92516d4cba2951c43c0c223",
+      "tests/test_rotary_waveform_acceptance.py": "8f04debc59982303b986c3200bc2b11df5070ce68f4989d8640b1514bb3516c2",
+      "tools/rotary_reference.py": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d"
+    },
+    "tracked_overlay_diff_sha256": "ce319e15c4d9446ec97d1a3aeafb52ccf60138fe33c87d446a109d836844428e"
+  },
+  "toolchain": {
+    "cmake": "4.4.5",
+    "ninja": "1.13.2.git.kitware.jobserver-pipe-1",
+    "cxx": "GCC 14.2.0",
+    "python": "3.12.14",
+    "core_probe_flags": [
+      "-O3",
+      "-DNDEBUG",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror"
+    ],
+    "floating_contraction_policy": "compiler default; no stronger policy inferred"
+  },
+  "configurations": {
+    "core_on": {
+      "BUILD_TESTING": "ON",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+      "HAMMOND_BUILD_STANDALONE": "OFF",
+      "HAMMOND_BUILD_VST3": "OFF",
+      "HAMMOND_ENABLE_MIDI": "OFF",
+      "HAMMOND_ENABLE_SANITIZERS": "OFF",
+      "HAMMOND_RTMIDI_ROOT": "",
+      "HAMMOND_SDL2_ROOT": "",
+      "HAMMOND_VST3_SDK_ROOT": "",
+      "CMAKE_GENERATOR": "Ninja",
+      "CMAKE_HOME_DIRECTORY": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ"
+    },
+    "testing_off": {
+      "BUILD_TESTING": "OFF",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+      "HAMMOND_BUILD_STANDALONE": "OFF",
+      "HAMMOND_BUILD_VST3": "OFF",
+      "HAMMOND_ENABLE_MIDI": "OFF",
+      "HAMMOND_ENABLE_SANITIZERS": "OFF",
+      "HAMMOND_RTMIDI_ROOT": "",
+      "HAMMOND_SDL2_ROOT": "",
+      "HAMMOND_VST3_SDK_ROOT": "",
+      "CMAKE_GENERATOR": "Ninja",
+      "CMAKE_HOME_DIRECTORY": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ"
+    },
+    "root_native_build": {
+      "BUILD_TESTING": "ON",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_BUILD_VST3": "OFF",
+      "HAMMOND_ENABLE_MIDI": "OFF",
+      "HAMMOND_ENABLE_SANITIZERS": "OFF",
+      "HAMMOND_RTMIDI_ROOT": "",
+      "HAMMOND_SDL2_ROOT": "/workspace/scratch/1bb6ee17ad7e/SDL2",
+      "HAMMOND_VST3_SDK_ROOT": "",
+      "CMAKE_GENERATOR": "Ninja",
+      "CMAKE_HOME_DIRECTORY": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ"
+    }
+  },
+  "commands": [
+    {
+      "label": "core-on-configure",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "-S",
+        ".",
+        "-B",
+        "../a24-build-integration/core-on",
+        "-G",
+        "Ninja",
+        "-DCMAKE_MAKE_PROGRAM=/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DBUILD_TESTING=ON",
+        "-DHAMMOND_BUILD_STANDALONE=OFF",
+        "-DHAMMOND_BUILD_VST3=OFF",
+        "-DHAMMOND_ENABLE_MIDI=OFF",
+        "-DHAMMOND_ENABLE_SANITIZERS=OFF",
+        "-DPython3_EXECUTABLE=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+      ],
+      "cwd": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T22:46:01.842423+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.5719358789992839,
+      "log": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on-configure.log",
+      "finished_utc": "2026-11-14T22:46:02.414377+00:00"
+    },
+    {
+      "label": "testing-off-configure",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "-S",
+        ".",
+        "-B",
+        "../a24-build-integration/testing-off",
+        "-G",
+        "Ninja",
+        "-DCMAKE_MAKE_PROGRAM=/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DBUILD_TESTING=OFF",
+        "-DHAMMOND_BUILD_STANDALONE=OFF",
+        "-DHAMMOND_BUILD_VST3=OFF",
+        "-DHAMMOND_ENABLE_MIDI=OFF",
+        "-DHAMMOND_ENABLE_SANITIZERS=OFF",
+        "-DPython3_EXECUTABLE=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+      ],
+      "cwd": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T22:46:01.851641+00:00",
+      "exit_code": 0,
+      "wall_seconds": 0.47651423500064993,
+      "log": "/workspace/scratch/e3cacb90cc81/a24-build-integration/testing-off-configure.log",
+      "finished_utc": "2026-11-14T22:46:02.328174+00:00"
+    },
+    {
+      "label": "core-probe-build",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "../a24-build-integration/core-on",
+        "--target",
+        "hammond_rotary_waveform_probe",
+        "--parallel",
+        "2",
+        "--verbose"
+      ],
+      "cwd": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T22:46:07.093052+00:00",
+      "exit_code": 0,
+      "wall_seconds": 11.278708486001051,
+      "log": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-probe-build.log",
+      "finished_utc": "2026-11-14T22:46:18.371779+00:00"
+    },
+    {
+      "label": "waveform-ctest",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "../a24-build-integration/core-on",
+        "-C",
+        "Release",
+        "--no-tests=error",
+        "-V",
+        "-R",
+        "^python_test_rotary_waveform_(acceptance|report_admission)$",
+        "--output-junit",
+        "/workspace/scratch/e3cacb90cc81/a24-build-integration/waveform-ctest.xml"
+      ],
+      "cwd": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T22:47:16.991152+00:00",
+      "exit_code": 0,
+      "wall_seconds": 3.4806052559997624,
+      "log": "/workspace/scratch/e3cacb90cc81/a24-build-integration/waveform-ctest.log",
+      "finished_utc": "2026-11-14T22:47:20.471771+00:00"
+    }
+  ],
+  "generated_build_audit": {
+    "checks": {
+      "core_glob_contains_history_renderer_streaming": true,
+      "all_behavior_targets_discovered": true,
+      "private_src_only_renderer_suites": true,
+      "core_does_not_export_src_include": true,
+      "independent_oracle_only_probe_target": true,
+      "probe_links_core_only": true,
+      "probe_tests_include": true,
+      "full_depends_on_probe": true,
+      "check_builds_probe": true,
+      "check_does_not_run_full_target": true,
+      "testing_off_omits_probe_full_check_and_tests": true,
+      "sdk_application_targets_absent": true,
+      "smoke_exact_probe_environment": true,
+      "smoke_release_report_directory": true,
+      "smoke_120_second_timeout": true,
+      "admission_30_second_timeout": true,
+      "admission_self_test_command": true,
+      "full_command_mode_timeout_and_path": true
+    },
+    "all_checks_pass": true,
+    "core_on_target_count": 121,
+    "testing_off_target_count": 15,
+    "private_src_include_targets": [
+      "test_rotary_renderer",
+      "test_rotary_renderer_transactions"
+    ],
+    "oracle_header_targets": [
+      "hammond_rotary_waveform_probe"
+    ],
+    "probe_link_fragments": [
+      {
+        "fragment": "-O3 -DNDEBUG",
+        "role": "flags"
+      },
+      {
+        "backtrace": 2,
+        "fragment": "libhammond_core.a",
+        "role": "libraries"
+      }
+    ],
+    "relevant_test_names": [
+      "test_rotary_history",
+      "test_rotary_history_acceptance",
+      "test_rotary_renderer",
+      "test_rotary_renderer_transactions",
+      "test_rotary_streaming_path",
+      "python_test_rotary_waveform_acceptance",
+      "python_test_rotary_waveform_report_admission"
+    ],
+    "full_target_generated_command": "cd /workspace/scratch/e3cacb90cc81/Hammond-B3-Organ && /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 /workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/tests/test_rotary_waveform_acceptance.py --mode full --probe /workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/hammond_rotary_waveform_probe --report-dir /workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/rotary-waveform/Release/full --timeout-seconds 1500",
+    "sdk_app_targets_present": [],
+    "core_includes": [
+      "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/include",
+      "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/generated"
+    ],
+    "probe_includes": [
+      "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/include",
+      "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/tests"
+    ],
+    "discovery_command": [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on",
+      "-C",
+      "Release",
+      "--show-only=json-v1",
+      "-R",
+      "^(test_rotary_(history|history_acceptance|renderer|renderer_transactions|streaming_path)|python_test_rotary_waveform_(acceptance|report_admission))$"
+    ],
+    "testing_off_target_names": [
+      "hammond_benchmark",
+      "hammond_chapel_catalog",
+      "hammond_console_trace",
+      "hammond_core",
+      "hammond_fixed_registration_data",
+      "hammond_model_info",
+      "hammond_parameter_info",
+      "hammond_pedal_routing",
+      "hammond_pedal_trace",
+      "hammond_profile",
+      "hammond_render",
+      "hammond_scanner_data",
+      "hammond_scanner_line_probe",
+      "hammond_standalone_benchmark",
+      "hammond_standalone_support"
+    ]
+  },
+  "source_binding_checks": {
+    "all_82_required_source_hashes_stable": true,
+    "git_head_stable": true,
+    "smoke_bound_to_same_source_inventory": true,
+    "metadata_before_after_current_equal": true,
+    "probe_bytes_before_after_current_equal": true,
+    "latest_receipt_digest_matches": true,
+    "full_mode_build_metadata_admission_without_full_execution": true,
+    "core_probe_commands_actual_and_complete": true,
+    "no_unsafe_float_flags_in_observed_commands": true,
+    "core_only_cache_has_no_optional_sdk_roots": true,
+    "testing_off_cache_has_no_optional_sdk_roots": true,
+    "core_only_differs_from_integrator_native_configuration": true
+  },
+  "build_metadata": {
+    "files": [
+      {
+        "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/CMakeCache.txt",
+        "bytes": 21164,
+        "sha256": "a72b61bb883f83e40c5c827c6574936ecda5d1d4d3bef59ec522f8f51f00c2b0"
+      },
+      {
+        "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/compile_commands.json",
+        "bytes": 101631,
+        "sha256": "6fe3fcb0f6226bdd11a6ad5e4e193843ada679c1f5b40c187d7c8f4634662a0b"
+      }
+    ],
+    "actual_core_probe_compile_command_count": 25,
+    "required_rotary_compile_commands": [
+      {
+        "directory": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on",
+        "command": "/usr/bin/g++ -I/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/include -I/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryHistory.cpp.o -c /workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryHistory.cpp",
+        "file": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryHistory.cpp",
+        "output": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/CMakeFiles/hammond_core.dir/src/RotaryHistory.cpp.o"
+      },
+      {
+        "directory": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on",
+        "command": "/usr/bin/g++ -I/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/include -I/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o -c /workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryMotion.cpp",
+        "file": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryMotion.cpp",
+        "output": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o"
+      },
+      {
+        "directory": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on",
+        "command": "/usr/bin/g++ -I/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/include -I/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o -c /workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryPropagation.cpp",
+        "file": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryPropagation.cpp",
+        "output": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o"
+      },
+      {
+        "directory": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on",
+        "command": "/usr/bin/g++ -I/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/include -I/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryRenderer.cpp.o -c /workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryRenderer.cpp",
+        "file": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryRenderer.cpp",
+        "output": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/CMakeFiles/hammond_core.dir/src/RotaryRenderer.cpp.o"
+      },
+      {
+        "directory": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on",
+        "command": "/usr/bin/g++ -I/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/include -I/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_core.dir/src/RotaryStreamingPath.cpp.o -c /workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryStreamingPath.cpp",
+        "file": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/src/RotaryStreamingPath.cpp",
+        "output": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/CMakeFiles/hammond_core.dir/src/RotaryStreamingPath.cpp.o"
+      },
+      {
+        "directory": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on",
+        "command": "/usr/bin/g++ -I/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/tests -I/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_rotary_waveform_probe.dir/tests/probes/rotary_waveform_probe.cpp.o -c /workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/tests/probes/rotary_waveform_probe.cpp",
+        "file": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/tests/probes/rotary_waveform_probe.cpp",
+        "output": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/CMakeFiles/hammond_rotary_waveform_probe.dir/tests/probes/rotary_waveform_probe.cpp.o"
+      }
+    ],
+    "unsafe_float_options": [],
+    "explicit_float_options": [],
+    "source_to_binary_attestation": false,
+    "limit": "This fresh isolated build was observed and its source/build/binary hashes remained stable; metadata alone is not a cryptographic proof of compilation. No preexisting root native executable is qualified by this report."
+  },
+  "ctest": {
+    "passed": 2,
+    "total": 2,
+    "reported_total_seconds": 3.47,
+    "admission_method_count": 9,
+    "cases": [
+      {
+        "name": "python_test_rotary_waveform_acceptance",
+        "classname": "python_test_rotary_waveform_acceptance",
+        "time": "3.07517",
+        "status": "run"
+      },
+      {
+        "name": "python_test_rotary_waveform_report_admission",
+        "classname": "python_test_rotary_waveform_report_admission",
+        "time": "0.395447",
+        "status": "run"
+      }
+    ],
+    "junit": {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/waveform-ctest.xml",
+      "bytes": 2147,
+      "sha256": "7b01e28d42cc9028dfb6440b3efacf88b6f51543292b91cf7e74efb4babc4589"
+    }
+  },
+  "smoke": {
+    "receipt": {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/rotary-waveform/Release/smoke/smoke-20261114T224717.116013Z-aa6b6838/qualification.json",
+      "bytes": 75473,
+      "sha256": "4f8142939447024e1650b9b297cd8ff092e148c0af1b29acebd3a55c73b834d0"
+    },
+    "native_stdout": {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/rotary-waveform/Release/smoke/smoke-20261114T224717.116013Z-aa6b6838/native.stdout.json",
+      "bytes": 224740,
+      "sha256": "8fac1c791373b8398ae5575b0d54d73c96f66db80b8a9bb1fa290c87562657a7"
+    },
+    "native_stderr": {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/rotary-waveform/Release/smoke/smoke-20261114T224717.116013Z-aa6b6838/native.stderr.txt",
+      "bytes": 2325,
+      "sha256": "980784825b0507c0dffb8f3321d0044d34104294f26c6231461210acbeb3ab4f"
+    },
+    "latest": {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/rotary-waveform/Release/smoke/latest.json",
+      "bytes": 444,
+      "sha256": "53859f46e47a62cc49e343db37bc2a1bd9933bd9959c9789137d3a2762eb71c1"
+    },
+    "run_id": "smoke-20261114T224717.116013Z-aa6b6838",
+    "wall_seconds": 2.940258132000963,
+    "totals": {
+      "rate_count": 4,
+      "completed_partitions": 24,
+      "reference_frames": 16388,
+      "reference_scalar_comparisons": 32776,
+      "reference_path_solutions": 65552,
+      "native_frames": 98328,
+      "native_path_solutions": 393312,
+      "partition_compared_samples": 163880,
+      "partition_equal_samples": 163880,
+      "native_events_consumed": 360,
+      "selected_trace_paths": 64,
+      "convergence_pairs": 96,
+      "auxiliary_convergence_path_solutions": 192
+    },
+    "precision": {
+      "status": "pass",
+      "compiler": "GCC 14.2.0",
+      "standard_library": "libstdc++ 20250315",
+      "platform": "Linux",
+      "cplusplus": 202002,
+      "build_configuration": "not_embedded",
+      "build_flags": "not_embedded_runner_must_record_actual_flags",
+      "floating_contraction_options": "runner_records_actual_core_and_probe_options",
+      "fast_math_enabled": false,
+      "rounding_mode": 0,
+      "rounding_is_to_nearest": true,
+      "double": {
+        "radix": 2,
+        "digits": 53,
+        "digits10": 15,
+        "max_digits10": 17,
+        "sizeof": 8,
+        "is_iec559": true
+      },
+      "long_double": {
+        "radix": 2,
+        "digits": 64,
+        "digits10": 18,
+        "max_digits10": 21,
+        "sizeof": 16,
+        "is_iec559": true
+      },
+      "wider_than_double": true,
+      "pointer_bytes": 8,
+      "native_byte_order": "little"
+    },
+    "admission": {
+      "status": "pass",
+      "mode": "smoke",
+      "fixture_id": "rotary-r4-shifted-input-smoke-v1",
+      "totals": {
+        "rate_count": 4,
+        "completed_partitions": 24,
+        "reference_frames": 16388,
+        "reference_scalar_comparisons": 32776,
+        "reference_path_solutions": 65552,
+        "native_frames": 98328,
+        "native_path_solutions": 393312,
+        "partition_compared_samples": 163880,
+        "partition_equal_samples": 163880,
+        "native_events_consumed": 360,
+        "selected_trace_paths": 64,
+        "convergence_pairs": 96,
+        "auxiliary_convergence_path_solutions": 192
+      },
+      "maximum_normalized_error": "1.20659368074701270776E-9"
+    },
+    "resource": {
+      "max_canonical_audio_bytes": 65552,
+      "canonical_audio_limit_bytes": 30720000,
+      "current_audio_block_bytes": 131072,
+      "sizeof_waveform_history": 131112,
+      "sizeof_motion_frame_history": 917608,
+      "sizeof_renderer_state": 248,
+      "sizeof_renderer_diagnostics": 368,
+      "full_waveform_buffers": 1,
+      "reference_audio_buffered": false,
+      "wall_seconds": "2.34245159200000019339"
+    },
+    "actual_retained_bytes": 302538,
+    "max_normalized_error": 1.2065936807470127e-09
+  },
+  "selected_decimal_crosscheck": {
+    "status": "pass",
+    "selected_paths": 64,
+    "failures": []
+  },
+  "probe_identity": {
+    "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on/hammond_rotary_waveform_probe",
+    "bytes": 199272,
+    "sha256": "3c057118d714f5131d1d8c01278d441830fc218acde3044c9a0e55f0cbe037a3"
+  },
+  "ci": {
+    "checks": {
+      "dedicated_linux_release_core_only_job": true,
+      "job_35_minutes": true,
+      "full_step_30_minutes": true,
+      "job_not_optional": true,
+      "build_failure_propagates": true,
+      "raw_runs_uploaded": true,
+      "evidence_upload_on_success_and_failure": true,
+      "retention_14_days": true,
+      "missing_upload_files_error": true,
+      "prior_jobs_preserved_except_additive_smoke_uploads": true
+    },
+    "prior_jobs": {
+      "release": {
+        "all_other_fields_preserved": true,
+        "all_original_artifact_paths_preserved": true,
+        "added_artifact_paths": [
+          "build-release/rotary-waveform/"
+        ]
+      },
+      "sanitizers": {
+        "all_other_fields_preserved": true,
+        "all_original_artifact_paths_preserved": true,
+        "added_artifact_paths": [
+          "build-sanitizers/rotary-waveform/"
+        ]
+      }
+    },
+    "full_job_id": "rotary-waveform",
+    "full_job_timeout_minutes": 35,
+    "full_step_timeout_minutes": 30,
+    "raw_upload_paths": [
+      "waveform-ci-logs/",
+      "build-waveform/rotary-waveform/",
+      "build-waveform/CMakeCache.txt",
+      "build-waveform/compile_commands.json",
+      "build-waveform/CMakeFiles/CMakeConfigureLog.yaml"
+    ],
+    "branch_protection_required_check_status": "not inspected; requirement here means the unconditional non-optional workflow job"
+  },
+  "capture_fixture": {
+    "review": "source inspection only",
+    "copies_probes_directory": true,
+    "copies_reference_directory": true,
+    "payload_helpers_changed_from_confirmed_head": false,
+    "installer_tests_reexecuted": false
+  },
+  "resolved_finding": {
+    "issue": "Ordinary Release and sanitizer artifact lists omitted smoke receipt directories.",
+    "resolution": "Integrator appended build-release/rotary-waveform/ and build-sanitizers/rotary-waveform/ before the source freeze; audited final CI source hash is retained above.",
+    "source_modified_by_a24": false
+  },
+  "raw_logs": [
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-on-configure.log",
+      "bytes": 715,
+      "sha256": "556ce6debca7caf885e018b0f0ce9c71610beb77728d451d98bb4f7a85cc0a0d"
+    },
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/testing-off-configure.log",
+      "bytes": 719,
+      "sha256": "d7868c00178b15fcaefe874c78c2da6417d98aaaf9e7dc6cacc3c868c52bbfc5"
+    },
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/core-probe-build.log",
+      "bytes": 16883,
+      "sha256": "2d6b75a9cbf9ca2c4cb5a4ef7edc8446986301d1bcfe0887ad5c51ed255e3f40"
+    },
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/waveform-ctest.log",
+      "bytes": 4565,
+      "sha256": "c97df9908a683876a30a0d2bf5db16903e9106859855758c323b8437433ab897"
+    }
+  ],
+  "scratch_audit_files": [
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/static-audit.json",
+      "bytes": 4607,
+      "sha256": "65820a4c0612556740820bb5e58a30c7a5dd8ddf94ffbad164a71eaf21bbb39d"
+    },
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/generated-build-audit.json",
+      "bytes": 3294,
+      "sha256": "353484477d98afcef6d7dabf40bf70f2d51aeb6b0ec419da8f93e1cbdc3789fc"
+    },
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/source-binding-audit.json",
+      "bytes": 43615,
+      "sha256": "fdc545fc79714c28cbfad7021bdf0e30083824e2942ca8d0f46395ca410cb521"
+    },
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/waveform-test-discovery.json",
+      "bytes": 5322,
+      "sha256": "64a5c4d175d89d887e979318999d35be456cf011edb2a5fa310f738da4dfd154"
+    },
+    {
+      "path": "/workspace/scratch/e3cacb90cc81/a24-build-integration/full-target-commands.log",
+      "bytes": 16669,
+      "sha256": "34d55a552fd697619b429ad4a5f3eeda483075222e432cf0dd2bda219ed35fd3"
+    }
+  ],
+  "limits": {
+    "full_workload_executed": false,
+    "static_grid_reexecuted": false,
+    "behavior_cpp_targets_built_or_run": false,
+    "hosted_ci_executed": false,
+    "other_platforms_executed": false,
+    "install_suite_reexecuted": false,
+    "root_native_build": "cache inspected read-only for configuration comparison; no build or test invoked"
+  }
+}

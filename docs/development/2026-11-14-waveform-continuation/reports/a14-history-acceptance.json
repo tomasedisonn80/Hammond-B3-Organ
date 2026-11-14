@@ -1,0 +1,218 @@
+{
+  "status": "pass",
+  "experiment": "rotary-history-acceptance-a14-v1",
+  "contract": "rotary-numerics-v1",
+  "scope": "native cubic and owned histories; not complete renderer R4, R5, R6 or physical M7",
+  "checks": 774721,
+  "rejected_calls": 23963,
+  "compiler": "14.2.0",
+  "precision": {
+    "double_bytes": 8,
+    "double_digits": 53,
+    "double_max_digits10": 17,
+    "long_double_bytes": 16,
+    "long_double_digits": 64,
+    "long_double_max_digits10": 21,
+    "radix": 2,
+    "rounding_mode": 0
+  },
+  "tuple_seed": "0xa14c0b1c5eed1234",
+  "polynomial_product": {
+    "count": 1028,
+    "finite": true,
+    "maximum": 6.776263578034403e-21,
+    "rms": 1.2303637361129194e-21,
+    "worst_indices": [
+      2,
+      130
+    ]
+  },
+  "polynomial_analytic": {
+    "count": 1028,
+    "finite": true,
+    "maximum": 0,
+    "rms": 0,
+    "worst_indices": [
+      0,
+      0
+    ]
+  },
+  "additional_product": {
+    "count": 20303,
+    "finite": true,
+    "maximum": 6.776263578034403e-21,
+    "rms": 4.524617980509106e-22,
+    "worst_indices": [
+      0,
+      130
+    ]
+  },
+  "static_product": {
+    "count": 33280,
+    "finite": true,
+    "maximum": 2.3713676857996664e-16,
+    "rms": 6.487150010916883e-17,
+    "worst_indices": [
+      36,
+      53
+    ]
+  },
+  "static_full_band": {
+    "count": 33280,
+    "finite": true,
+    "maximum": 0.9953980792939058,
+    "rms": 0.27893468136119615,
+    "worst_indices": [
+      32,
+      511
+    ]
+  },
+  "static_low_band": {
+    "count": 6695,
+    "finite": true,
+    "maximum": 0.0034805641422248736,
+    "rms": 0.0008464023833509164,
+    "worst_indices": [
+      32,
+      102
+    ]
+  },
+  "static_full_band_above_low_budget": 23874,
+  "static_grid": {
+    "evaluated_rows": 33280,
+    "written_rows": 33280,
+    "columns": 7,
+    "path": "/workspace/scratch/e3cacb90cc81/a14-history-acceptance/static-grid.csv",
+    "raw_bytes": 4890892,
+    "raw_sha256": "34434383696384062b622de40ac08a29ab52f33a583b85d5764fadda12db367c",
+    "compressed_bytes": 2056124,
+    "compressed_sha256": "03a56786a5d929d9a942048091b91fb5e791926019a0e0f3f0dc8aeceb0a2e77",
+    "compressed_path": "/workspace/scratch/e3cacb90cc81/a14-history-acceptance/static-grid.csv.gz",
+    "all_coordinates_verified": true,
+    "lossless_round_trip_verified": true
+  },
+  "waveform_product": {
+    "count": 12800,
+    "finite": true,
+    "maximum": 1.2202695451324352e-16,
+    "rms": 2.3292824120506876e-17,
+    "worst_indices": [
+      5,
+      0
+    ]
+  },
+  "motion_angle": {
+    "count": 20032,
+    "finite": true,
+    "maximum": 5.684341886080802e-14,
+    "rms": 1.1162463979943153e-14,
+    "worst_indices": [
+      1,
+      0
+    ]
+  },
+  "motion_speed": {
+    "count": 20032,
+    "finite": true,
+    "maximum": 3.1563293645398005e-15,
+    "rms": 8.552003668033088e-16,
+    "worst_indices": [
+      44,
+      0
+    ]
+  },
+  "cubic_endpoints": 158,
+  "aliased_cubic_cases": 15420,
+  "waveform_reads": 65816,
+  "waveform_interpolations": 32140,
+  "waveform_pushes": 131728,
+  "motion_appends": 1536,
+  "accelerated_epoch_fixtures": 12,
+  "budgets": {
+    "cubic": 2e-12,
+    "low_band_complex": 0.005
+  },
+  "failures": [],
+  "git_head_observed_before": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+  "git_head_observed_after": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+  "source_sha256_before": {
+    "tests/test_rotary_history_acceptance.cpp": "839f85847e381c536549829395fb436964bb03e80092802ba5f700a495b59c03",
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+    "docs/ROTARY_RENDERER_CONTRACT.md": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9",
+    "docs/ROTARY_WAVEFORM_ACCEPTANCE.md": "fa4288d586a2a40d803740408177f9c0a085bd4deb9ae0bdfc832e6d58b0c1aa"
+  },
+  "source_sha256_after": {
+    "tests/test_rotary_history_acceptance.cpp": "839f85847e381c536549829395fb436964bb03e80092802ba5f700a495b59c03",
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+    "docs/ROTARY_RENDERER_CONTRACT.md": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9",
+    "docs/ROTARY_WAVEFORM_ACCEPTANCE.md": "fa4288d586a2a40d803740408177f9c0a085bd4deb9ae0bdfc832e6d58b0c1aa"
+  },
+  "source_stable": true,
+  "build_command": [
+    "g++",
+    "-std=c++20",
+    "-O2",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wshadow",
+    "-Werror",
+    "-Iinclude",
+    "tests/test_rotary_history_acceptance.cpp",
+    "src/RotaryHistory.cpp",
+    "src/RotaryMotion.cpp",
+    "-o",
+    "/workspace/scratch/e3cacb90cc81/a14-history-acceptance/test_rotary_history_acceptance"
+  ],
+  "invocation": [
+    "/workspace/scratch/e3cacb90cc81/a14-history-acceptance/test_rotary_history_acceptance",
+    "--static-grid",
+    "/workspace/scratch/e3cacb90cc81/a14-history-acceptance/static-grid.csv",
+    "--report",
+    "/workspace/scratch/e3cacb90cc81/a14-history-acceptance/report.json"
+  ],
+  "compiler_version": "g++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "executable_sha256": "5a57bb4140e7b4813f098aab29953da21118cbcd13817d239598f78a8442affb",
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "libc": [
+      "glibc",
+      "2.41"
+    ],
+    "fast_math": false,
+    "floating_contraction": "off"
+  },
+  "resource_observations": {
+    "wall_seconds": 0.1307166269998561,
+    "children_max_rss_kib": 11008
+  },
+  "test_limits": [
+    "one native compiler/platform",
+    "one-day boundaries reached with documented private clock relocation, not a continuous one-day run",
+    "allocation, renderer stream, R5, R6 and physical fidelity are outside this test"
+  ],
+  "native_report_exact_text": "{\"status\":\"pass\",\"experiment\":\"rotary-history-acceptance-a14-v1\",\"contract\":\"rotary-numerics-v1\",\"scope\":\"native cubic and owned histories; not complete renderer R4, R5, R6 or physical M7\",\"checks\":774721,\"rejected_calls\":23963,\"compiler\":\"14.2.0\",\"precision\":{\"double_bytes\":8,\"double_digits\":53,\"double_max_digits10\":17,\"long_double_bytes\":16,\"long_double_digits\":64,\"long_double_max_digits10\":21,\"radix\":2,\"rounding_mode\":0},\"tuple_seed\":\"0xa14c0b1c5eed1234\",\"polynomial_product\":{\"count\":1028,\"finite\":true,\"maximum\":6.77626357803440271255e-21,\"rms\":1.23036373611291944844e-21,\"worst_indices\":[2,130]},\"polynomial_analytic\":{\"count\":1028,\"finite\":true,\"maximum\":0,\"rms\":0,\"worst_indices\":[0,0]},\"additional_product\":{\"count\":20303,\"finite\":true,\"maximum\":6.77626357803440271255e-21,\"rms\":4.52461798050910565667e-22,\"worst_indices\":[0,130]},\"static_product\":{\"count\":33280,\"finite\":true,\"maximum\":2.37136768579966639072e-16,\"rms\":6.48715001091688302286e-17,\"worst_indices\":[36,53]},\"static_full_band\":{\"count\":33280,\"finite\":true,\"maximum\":0.995398079293905799409,\"rms\":0.27893468136119617287,\"worst_indices\":[32,511]},\"static_low_band\":{\"count\":6695,\"finite\":true,\"maximum\":0.00348056414222487351369,\"rms\":0.0008464023833509164149,\"worst_indices\":[32,102]},\"static_full_band_above_low_budget\":23874,\"static_grid\":{\"evaluated_rows\":33280,\"written_rows\":33280,\"columns\":7,\"path\":\"/workspace/scratch/e3cacb90cc81/a14-history-acceptance/static-grid.csv\"},\"waveform_product\":{\"count\":12800,\"finite\":true,\"maximum\":1.22026954513243524048e-16,\"rms\":2.32928241205068771254e-17,\"worst_indices\":[5,0]},\"motion_angle\":{\"count\":20032,\"finite\":true,\"maximum\":5.68434188608080148697e-14,\"rms\":1.11624639799431534893e-14,\"worst_indices\":[1,0]},\"motion_speed\":{\"count\":20032,\"finite\":true,\"maximum\":3.15632936453980050828e-15,\"rms\":8.55200366803308778412e-16,\"worst_indices\":[44,0]},\"cubic_endpoints\":158,\"aliased_cubic_cases\":15420,\"waveform_reads\":65816,\"waveform_interpolations\":32140,\"waveform_pushes\":131728,\"motion_appends\":1536,\"accelerated_epoch_fixtures\":12,\"budgets\":{\"cubic\":2e-12,\"low_band_complex\":0.005},\"failures\":[]}\n",
+  "native_report_sha256": "9469f14e25455e1dc015ad4968591d4ed6dea5680fbc122d024f0a0c6999cb4b",
+  "default_invocation_512k_stack": {
+    "status": "pass",
+    "checks": 774719,
+    "grid_evaluated_rows": 33280,
+    "stack_limit_kib": 512,
+    "stdout_sha256": "b336b6eeb608739ab4484491939677516eeda05c9ef1c24384e6633bf18b207d"
+  }
+}
