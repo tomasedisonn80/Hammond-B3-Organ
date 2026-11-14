@@ -54,6 +54,14 @@ capability limits are retained. The [combined Release gate](docs/reviews/STANDAL
 and [fully instrumented native gate](docs/reviews/STANDALONE_FINAL_INTEGRATION.md)
 keep their own exact source scopes and original failure records.
 
+The completed integrated closure is
+[`27209a7f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/27209a7fec075b082aa911c9ea2159938deaae85).
+It preserves concurrent calibration replay/installation and all sixty accepted
+standalone records. Its [hosted recheck](docs/reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md#published-closure-and-completed-hosted-qualification)
+completes all ten jobs successfully: core 103/103 in all four jobs, standalone
+14/14 on each platform, and VST3 8/8 Linux / 7/7 Windows/macOS. Exact source and
+Windows package-fixture diagnostics remain separate from the 621 artifact audit.
+
 The [scanner continuation](docs/SCANNER_HANDOFF.md) now includes a strict circuit
 graph/compiler, independent primary-source review, AC/transient references and
 prepared numerical modules. The observed G5 same-hertz failure must be resolved

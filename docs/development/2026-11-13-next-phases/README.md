@@ -174,3 +174,15 @@ The next bounded work is external MIDI ownership, a native accessibility bridge
 and a typed fixed-registration selector, alongside the existing numerical and
 physical-evidence dependencies. Completing this session does not claim a
 calibrated instrument, physical device/DAW validation or signed production release.
+
+Root's integrated publication `27209a7fec075b082aa911c9ea2159938deaae85`, tree
+`087d81ba1ea83834e866ab47cdd44a53fd9251ec`, preserves concurrent calibration 3b
+and all completed records above. Exact local/remote tree equality and a clean
+worktree were verified after the guarded push. Its
+[hosted recheck](../../reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md#published-closure-and-completed-hosted-qualification)
+now completes all ten jobs successfully: core 103/103 in four jobs, standalone
+14/14 on each platform, VST3 8/8 Linux / 7/7 Windows/macOS. The newly integrated
+package's Windows newline fixture is repaired and actually passes, with its
+one existing POSIX-only skip recorded. This root closure adds no assignment and
+does not rewrite the earlier source scopes. Later documentation records these
+observed outcomes; its actual commit is inspectable in this file's history.

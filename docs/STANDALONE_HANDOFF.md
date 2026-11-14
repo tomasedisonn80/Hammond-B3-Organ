@@ -8,7 +8,7 @@ status and the remote head before taking ownership.
 
 ## Current checkpoint and boundaries
 
-Published code candidate: `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, tree
+Standalone package-audit checkpoint: `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, tree
 `10f070c54d176571f1919d8141d24dd82db0e41c`. Root fetched and verified exact tree
 equality with local `fcc22346`; the local source history is preserved. Its two
 changed tests follow `183fc9e2`, whose production, build and installed payload
@@ -16,12 +16,19 @@ inputs are unchanged. The final documentation/ledger closure is recorded by
 this checkout's actual HEAD and the session manifest, not by assuming the code
 candidate already contained later review files.
 
-The closure also preserves concurrent calibration publication `3b0979b`, which
-adds report replay and a separate CaptureTools component. The
+The complete integrated closure is published at
+`27209a7fec075b082aa911c9ea2159938deaae85`, tree
+`087d81ba1ea83834e866ab47cdd44a53fd9251ec`. It preserves concurrent calibration
+publication `3b0979b`, which adds report replay and a separate CaptureTools component. The
 [root integration record](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md)
 names the merged tree, fresh 69-method replay/16-method install checks and the
-new package's Windows sentinel repair. That later package/test scope does not
-extend the 621 standalone artifact audit or the earlier 110-suite combined gate.
+new package's Windows sentinel repair. All ten hosted jobs now succeed at 272:
+core 103/103 in all four jobs, standalone 14/14 on each platform, and VST3 8/8
+Linux / 7/7 Windows/macOS. Actual Windows diagnostics confirm the corrected
+preservation method passed; its one existing POSIX-only installation skip remains
+explicit. This later scope does not extend the 621 standalone artifact audit or
+the earlier 110-suite combined gate. Subsequent documentation records the outcomes
+without changing the tested implementation.
 
 All sixty requested assignments are complete and accepted in ten logical waves.
 The [manifest](development/2026-11-13-next-phases/assignments.json) and

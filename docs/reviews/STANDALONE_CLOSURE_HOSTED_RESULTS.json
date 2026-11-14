@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "scope": "Observed final closure workflows and Windows package fixture; separate from the earlier 621 actual standalone package audit.",
+  "source": {
+    "commit": "27209a7fec075b082aa911c9ea2159938deaae85",
+    "tree": "087d81ba1ea83834e866ab47cdd44a53fd9251ec",
+    "local_equivalent_commit": "9b68f77628d5c289ab878a811672ad7871eb57fc",
+    "preserved_remote_parent": "3b0979bd0d30ce96bca0bcd57bd8f730eaadd1bf"
+  },
+  "runs": [
+    {
+      "id": 43537087807,
+      "name": "CI",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "head_tree": "087d81ba1ea83834e866ab47cdd44a53fd9251ec",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-14T00:52:59Z",
+      "updated_at": "2026-11-14T00:59:39Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807"
+    },
+    {
+      "id": 43537087781,
+      "name": "Native standalone",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "head_tree": "087d81ba1ea83834e866ab47cdd44a53fd9251ec",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-14T00:52:59Z",
+      "updated_at": "2026-11-14T00:58:44Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087781"
+    },
+    {
+      "id": 43537087764,
+      "name": "Native VST3",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "head_tree": "087d81ba1ea83834e866ab47cdd44a53fd9251ec",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-14T00:52:59Z",
+      "updated_at": "2026-11-14T00:55:21Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087764"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 132268583371,
+      "run_id": 43537087807,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:01Z",
+      "completed_at": "2026-11-14T00:56:14Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807/job/132268583371",
+      "ctest": {
+        "passed": 103,
+        "failed": 0,
+        "elapsed_seconds": 128.3
+      },
+      "retained_log": {
+        "file": "132268583371.log",
+        "bytes": 221512,
+        "sha256": "6c70cb2af5e762c8cee2456ff1ed1c1a23b44724674061828fe9c1c44dab0488",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583576,
+      "run_id": 43537087807,
+      "name": "Release (Windows MSVC)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:01Z",
+      "completed_at": "2026-11-14T00:59:38Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807/job/132268583576",
+      "ctest": {
+        "passed": 103,
+        "failed": 0,
+        "elapsed_seconds": 181.38
+      },
+      "retained_log": {
+        "file": "132268583576.log",
+        "bytes": 263553,
+        "sha256": "2748a5f45c4671c21eb1aeae486e1a829db091bcbbacce6a669d50f288b2c845",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583578,
+      "run_id": 43537087807,
+      "name": "Release (macOS AppleClang)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:01Z",
+      "completed_at": "2026-11-14T00:55:53Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807/job/132268583578",
+      "ctest": {
+        "passed": 103,
+        "failed": 0,
+        "elapsed_seconds": 103.58
+      },
+      "retained_log": {
+        "file": "132268583578.log",
+        "bytes": 194025,
+        "sha256": "0d1be0eb890a8cf4a5a7445d371ca5321f4aac660f6e91eb1f962319e3709b4c",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583811,
+      "run_id": 43537087807,
+      "name": "Release (Linux GCC)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:01Z",
+      "completed_at": "2026-11-14T00:55:25Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807/job/132268583811",
+      "ctest": {
+        "passed": 103,
+        "failed": 0,
+        "elapsed_seconds": 84.62
+      },
+      "retained_log": {
+        "file": "132268583811.log",
+        "bytes": 213747,
+        "sha256": "b688302910a08337d2e8bae944b9aa5a531ea842d0c6dbbb4ab030107298b837",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583294,
+      "run_id": 43537087781,
+      "name": "Native standalone (macOS AppleClang)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:02Z",
+      "completed_at": "2026-11-14T00:56:09Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087781/job/132268583294",
+      "ctest": {
+        "passed": 14,
+        "failed": 0,
+        "elapsed_seconds": 80.72
+      },
+      "retained_log": {
+        "file": "132268583294.log",
+        "bytes": 534583,
+        "sha256": "27b064e78e29982dd2afc0518f1bd88f5ae01d37daae7b6ca683e35ce20bfcb1",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583572,
+      "run_id": 43537087781,
+      "name": "Native standalone (Linux GCC)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:01Z",
+      "completed_at": "2026-11-14T00:56:02Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087781/job/132268583572",
+      "ctest": {
+        "passed": 14,
+        "failed": 0,
+        "elapsed_seconds": 79.78
+      },
+      "retained_log": {
+        "file": "132268583572.log",
+        "bytes": 546459,
+        "sha256": "f8d9e4d2cf1334a0bfde31a98e36808fd35bef91eb04d1ef69ea2cdad73c06a2",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583590,
+      "run_id": 43537087781,
+      "name": "Native standalone (Windows MSVC x64)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:01Z",
+      "completed_at": "2026-11-14T00:58:43Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087781/job/132268583590",
+      "ctest": {
+        "passed": 14,
+        "failed": 0,
+        "elapsed_seconds": 95.03
+      },
+      "retained_log": {
+        "file": "132268583590.log",
+        "bytes": 241496,
+        "sha256": "c93486f4350c27a286752b235ce2ab1eab3d26996e0b88504da2a12d204588c2",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583088,
+      "run_id": 43537087764,
+      "name": "Native VST3 (Linux GCC)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:01Z",
+      "completed_at": "2026-11-14T00:53:56Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087764/job/132268583088",
+      "ctest": {
+        "passed": 8,
+        "failed": 0,
+        "elapsed_seconds": 4.26
+      },
+      "retained_log": {
+        "file": "132268583088.log",
+        "bytes": 283581,
+        "sha256": "30259c803a9bcb04d525b982efd37d9be6955b57aaf328f56d1ae992bebc170f",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583475,
+      "run_id": 43537087764,
+      "name": "Native VST3 (Windows MSVC x64)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:01Z",
+      "completed_at": "2026-11-14T00:55:20Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087764/job/132268583475",
+      "ctest": {
+        "passed": 7,
+        "failed": 0,
+        "elapsed_seconds": 6.8
+      },
+      "retained_log": {
+        "file": "132268583475.log",
+        "bytes": 192672,
+        "sha256": "c76cb4d4b38ae51d6488510857565cd2d4865ee664636955e5377c708a747015",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    },
+    {
+      "id": 132268583549,
+      "run_id": 43537087764,
+      "name": "Native VST3 (macOS AppleClang)",
+      "head_sha": "27209a7fec075b082aa911c9ea2159938deaae85",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T00:53:02Z",
+      "completed_at": "2026-11-14T00:54:25Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087764/job/132268583549",
+      "ctest": {
+        "passed": 7,
+        "failed": 0,
+        "elapsed_seconds": 6.4
+      },
+      "retained_log": {
+        "file": "132268583549.log",
+        "bytes": 288674,
+        "sha256": "26ec5e7722202c45cbd9f84ee0afffa881d0bd058c35e57b8ac2b0d9f71f07c0",
+        "encoding": "UTF-8 retained decoded log with CRLF normalized to LF"
+      }
+    }
+  ],
+  "windows_package_fixture": {
+    "artifact_id": 14090826655,
+    "artifact_name": "ci-windows-2022-release-1",
+    "artifact_zip_bytes": 57055,
+    "artifact_zip_sha256": "815a7cf38a935dcd1ac8843b86f022a936e83f946faa48508130eee71d70308f",
+    "artifact_source_verified": "27209a7fec075b082aa911c9ea2159938deaae85",
+    "ctest_xml_sha256": "565271c6e26f12eb65bdc18e7b538598215c6483ff1fe01c135f7bfd176f4439",
+    "outer_suite_counts": {
+      "tests": "103",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0"
+    },
+    "install_ctest_attributes": {
+      "name": "python_test_capture_install",
+      "classname": "python_test_capture_install",
+      "time": "39.6261",
+      "status": "run"
+    },
+    "install_unittest_output": "...s............\n----------------------------------------------------------------------\nRan 16 tests in 39.501s\n\nOK (skipped=1)\n",
+    "method_mapping": {
+      "source_sha256": "7c6ee26c5721bd91c700769076d8615879ccaa85c9e523ca83addb0f45e0d89e",
+      "method_results": [
+        {
+          "method": "test_component_is_excluded_from_default_and_other_selections",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_ctest_receives_configured_cmake",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_custom_relative_datadir",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_destdir_staging_uses_actual_staged_destination",
+          "unittest_result": "s"
+        },
+        {
+          "method": "test_empty_and_directory_inputs_reject_before_writes",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_every_payload_input_is_preflighted_before_prefix_writes",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_exact_component_inventory_without_build",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_existing_destination_file_directory_and_completed_package_survive",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_existing_destination_links_survive",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_import_closure_contains_only_packaged_or_standard_modules",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_invalid_datadirs_reject_during_configuration",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_late_install_abort_preserves_partial_package",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_noncopy_modes_reject_before_writes",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_relocated_tools_work_after_private_sources_and_build_are_removed",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_repeat_configuration_and_configuration_independent_copy",
+          "unittest_result": "."
+        },
+        {
+          "method": "test_source_symlink_rejects_before_writes",
+          "unittest_result": "."
+        }
+      ],
+      "reported_summary": "Ran 16 tests in 39.501s; OK (skipped=1)",
+      "mapping_basis": "Default unittest alphabetic method order in one CaptureInstallAcceptance class; no load_tests override."
+    }
+  },
+  "limits": [
+    "Outer CTest counts do not mean every internal Python capability ran.",
+    "The Windows installation suite has 15 passes and one existing POSIX-only DESTDIR skip; the late-abort method executed successfully.",
+    "No new standalone package byte or relocated-runtime audit is claimed here; those remain attached to 621.",
+    "Hosted core sanitizer/leak evidence is separate from the final local native ASan/UBSan gate with local leak detection excluded.",
+    "These software tests do not establish hardware capture, physical device/DAW, accessibility or signed-release qualification."
+  ]
+}

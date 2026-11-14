@@ -197,7 +197,10 @@ Root's newline-independent sentinel leaves the late-abort and partial-package
 preservation assertions intact and passes all 16 local installation methods.
 The [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md)
 names that failure, the exact merged source and focused 69/69 replay gate.
-Fresh Windows qualification of the corrected fixture remains a separate check.
+The corrected fixture now passes actual Windows at `27209a7f`: 15 installation
+methods pass, one existing POSIX-only method skips, and all 103 outer CTest suites
+pass. All ten hosted jobs complete successfully at that integrated closure.
+The original 102/103 failure retains its own source and diagnostics.
 
 ## Evidence and continuation
 

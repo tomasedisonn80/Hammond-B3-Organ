@@ -63,8 +63,12 @@ retains fresh frozen-source replay **69/69** and installation **16/16** local
 methods. Actual 3b Windows core passes **102/103**: the new package's late-abort
 test compared an LF sentinel with CMake's CRLF bytes. A newline-independent
 sentinel preserves all partial-package assertions and passes all 16 installation
-methods locally; fresh Windows qualification belongs to its forthcoming public
-source. No production or standalone payload changed in this fixture repair.
+methods locally. Published closure `27209a7f` now passes **103/103** core suites
+on Linux, Windows and macOS and Linux sanitizers/leaks. Actual Windows diagnostics
+show 15 installation passes plus one existing POSIX-only skip; the corrected
+late-abort case executes successfully. All ten jobs are completed/success in the
+linked integration record. No production or standalone payload changed in this
+fixture repair.
 
 ## Completed native standalone continuation
 
@@ -80,11 +84,19 @@ and actual manifest. The scanner continuation below remains a separate track.
 
 ### Final code and current evidence
 
-Published code candidate: `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, tree
+Standalone package-audit checkpoint: `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, tree
 `10f070c54d176571f1919d8141d24dd82db0e41c`. Root fetched it and verified exact
 local/remote tree equality after the guarded update. It preserves concurrent
 calibration `955fc4c` and changes only two tests from the preceding candidate.
 All production, CMake and installed payload inputs are unchanged from 183.
+
+The complete integrated closure is published at
+`27209a7fec075b082aa911c9ea2159938deaae85`, tree
+`087d81ba1ea83834e866ab47cdd44a53fd9251ec`, preserving calibration 3b and all
+sixty accepted records. Its [completed hosted recheck](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md#published-closure-and-completed-hosted-qualification)
+passes all ten jobs: core **103/103** in each of four jobs, standalone **14/14**
+on each platform and VST3 **8/8 Linux / 7/7 Windows/macOS**. Earlier source-specific
+counts and actual 621 package identities below remain unchanged.
 
 The [fresh combined Release gate](reviews/STANDALONE_COMBINED_FINAL_GATE.md)
 passes **110/110 suites** at published `183fc9e2`, with all 957 source blobs/modes

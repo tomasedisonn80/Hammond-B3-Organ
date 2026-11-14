@@ -78,8 +78,49 @@ process time. All source bytes remain unchanged. Complete corrected log:
 `../final-remote-integration/fixed-install.log`, SHA-256
 `9bbf9b85f8c665e8216f06dd14806b4d11a5caee7049d802e9c12ed2885d82d0`.
 
-Fresh hosted Windows execution of this corrected fixture is the remaining
-publication check. Its result must be recorded at the actual new public commit,
-without relabeling the earlier 102/103 failure or extending the standalone
-621 artifact audit. This root integration repair does not create a sixty-first
-assignment or establish physical calibration, device or release qualification.
+## Published closure and completed hosted qualification
+
+Root published the complete sixty-agent records and this correction at
+[`27209a7fec075b082aa911c9ea2159938deaae85`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/27209a7fec075b082aa911c9ea2159938deaae85),
+tree **`087d81ba1ea83834e866ab47cdd44a53fd9251ec`**, with guarded parent 3b.
+The exact local equivalent is `9b68f77628d5c289ab878a811672ad7871eb57fc`.
+Root fetched the public commit, verified exact tree equality and a clean worktree,
+and preserved local history on `standalone-local-completed-session`.
+
+All three workflows and all ten jobs are observed **completed/success** on that
+exact source. Complete decoded job logs were retrieved. The retained
+[machine-readable results](STANDALONE_CLOSURE_HOSTED_RESULTS.json) include public
+run/job identities, source/tree, all ten test summaries and normalized log hashes.
+
+| Hosted job | CTest result | Seconds | Actual job |
+| --- | --- | ---: | --- |
+| Core Linux Release | 103/103 | 84.62 | [132268583811](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807/job/132268583811) |
+| Core Windows Release | 103/103 | 181.38 | [132268583576](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807/job/132268583576) |
+| Core macOS Release | 103/103 | 103.58 | [132268583578](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807/job/132268583578) |
+| Core Linux ASan/UBSan/leaks | 103/103 | 128.30 | [132268583371](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087807/job/132268583371) |
+| Standalone Linux | 14/14 | 79.78 | [132268583572](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087781/job/132268583572) |
+| Standalone Windows | 14/14 | 95.03 | [132268583590](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087781/job/132268583590) |
+| Standalone macOS | 14/14 | 80.72 | [132268583294](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087781/job/132268583294) |
+| VST3 Linux | 8/8 | 4.26 | [132268583088](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087764/job/132268583088) |
+| VST3 Windows | 7/7 | 6.80 | [132268583475](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087764/job/132268583475) |
+| VST3 macOS | 7/7 | 6.40 | [132268583549](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43537087764/job/132268583549) |
+
+Root downloaded the actual Windows core diagnostics, artifact **14090826655**,
+**57,055 bytes**, SHA-256
+`815a7cf38a935dcd1ac8843b86f022a936e83f946faa48508130eee71d70308f`.
+All ZIP checks pass and its source-revision file matches 272. Its CTest XML
+records 103 tests with zero failures, disabled or skipped outer cases. The
+installation case is explicitly `status="run"`, 39.6261 seconds. Its internal
+unittest output reports **16 methods in 39.501 seconds: 15 passes and one skip**.
+The single skip is the existing POSIX-only DESTDIR method; the corrected
+late-abort method passes. The JSON retains the original compact result markers
+and their mapping to the exact source's default alphabetical unittest order.
+The critical preservation case is not a skip or an inferred unchanged retry.
+
+This completes the new Windows fixture gate. The original 3b **102/103** failure
+remains intact above. Internal Python capability skips are distinct from outer
+CTest counts. This follow-up does not repeat or extend the 621 standalone
+package-byte/relocated-runtime audit, the 183 local 110-suite gate, or the separate
+local native sanitizer scope. Later documentation records these outcomes without
+changing the tested code. No sixty-first assignment, physical calibration,
+device, accessibility, DAW or signed-release qualification is claimed.

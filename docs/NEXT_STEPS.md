@@ -12,9 +12,11 @@ The accepted replay and separate 57-file CaptureTools package now pass the
 [coherent 103-suite local gate](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md).
 Seven waves and 42 assignments are accepted and published through `3b0979b`.
 The older demo preservation-fixture repair passes actual Windows at `6214032f`.
-Observe fresh hosted Windows execution of the new package's newline-independent
-late-abort sentinel; the original 3b failure and focused local repair evidence
-are in the [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md).
+The new package's newline-independent late-abort sentinel also passes actual
+Windows at `27209a7f`: all 103 outer suites pass, including 15 installation
+methods and the one existing POSIX-only skip. All ten hosted jobs succeed at
+that source. The original 3b failure and exact repair/qualification evidence are
+in the [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md).
 Resource profiling identified a metadata read allocating from its maximum cap;
 qualify the minimal observed-size read change with independent failure and report
 identity checks before accepting it. Continue graph/lineage, failure preservation,
@@ -63,6 +65,13 @@ results and downloaded packages belong to the
 105/105, both failed 13/14 native gates, Windows 92/96 and 100/101, and Linux
 89/90 retain their own identities and concrete repair evidence. No failed
 unchanged retry is promoted to acceptance.
+
+The completed integrated closure at `27209a7f` preserves calibration 3b and the
+sixty accepted standalone records. All ten hosted jobs succeed with core 103/103,
+standalone 14/14 per platform and VST3 8/8 Linux / 7/7 Windows/macOS. The
+[closure evidence](reviews/STANDALONE_CLOSURE_HOSTED_RESULTS.json) keeps this later
+source distinct from the actual 621 package audit. No standalone session work
+remains pending; begin the successor contracts below.
 
 The [milestone reconciliation](reviews/STANDALONE_MILESTONE_RECONCILIATION.md)
 connects these product advances to the complete M0–M9 plan. Continue the

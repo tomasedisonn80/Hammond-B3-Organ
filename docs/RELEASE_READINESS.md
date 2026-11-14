@@ -7,7 +7,8 @@ keyboard/pointer playing, retained controls, audio-device lifecycle management,
 replay, explicit chapel-control auditions and a relocatable nine-file component.
 The named combined source at `183fc9e2` passes **110/110 Release suites**;
 the final sampled-state oracles pass **14/14 native ASan/UBSan suites** with
-verified unchanged compiled inputs. The final code is published at `6214032f`.
+verified unchanged compiled inputs. The standalone package-audit checkpoint is
+published at `6214032f`; the complete integrated closure is `27209a7f`.
 The [combined gate](reviews/STANDALONE_COMBINED_FINAL_GATE.md),
 [native integration](reviews/STANDALONE_FINAL_INTEGRATION.md) and
 [actual platform/artifact audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md)
@@ -16,6 +17,12 @@ All ten hosted jobs at 621 succeed: three core Release jobs and the Linux
 sanitizer/leak job each pass 101/101, all three standalone jobs pass 14/14,
 and VST3 passes 8/8 on Linux and 7/7 on Windows/macOS. Actual package bytes,
 runtime floors and capability skips remain in the audit's qualified scope.
+The later [integrated hosted recheck](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md#published-closure-and-completed-hosted-qualification)
+also completes all ten jobs successfully at 272, with the added capture replay/
+installation suites: core 103/103 in each job, standalone 14/14 on each platform,
+and VST3 8/8 Linux / 7/7 Windows/macOS. The corrected Windows late-abort package
+fixture passes while its existing POSIX-only skip remains explicit. This later
+workflow evidence does not relabel the older downloaded package audit.
 The [current status](STATUS.md) and [standalone handoff](STANDALONE_HANDOFF.md)
 supersede the historical statements below about an absent standalone application
 or pending macOS build. The VST3 surface still uses generic host controls.
