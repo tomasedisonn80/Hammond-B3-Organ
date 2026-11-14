@@ -1,5 +1,10 @@
 # Development log
 
+## 2026-11-14 — Reference refinement session baseline
+
+A new owner-requested 60-agent, ten-wave session starts at `8bd999e`; its actual workers are tracked separately. Six readers completed all 500 pages with exact source identities and selected visual review. Root acquired pinned SDL2/RtMidi and task-local CMake/Ninja, built the unchanged MIDI-off native configuration, and ran complete CTest: **147/147 passed in 145.26 seconds**. Original configure/build/test logs and source hashes are retained under `development/2026-11-14-reference-refinement/reports/`. An X11/MIDI-enabled native executable also built; actual desktop qualification remains pending. The reviewed scope advances M9 reference/desktop work and independent nominal M7 R2/R3 while preserving the dry Engine, 47 parameters and state4. Historical recovery and physical gates remain open.
+
+
 ## 2026-11-14 — Close recovered macOS and strict sixty-assignment gates
 
 The published final-records checkpoint `a517203b2adc44f7b802d6b46219cb6c80e89d40`,

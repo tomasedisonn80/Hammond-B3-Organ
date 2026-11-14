@@ -1,5 +1,27 @@
 # Standing instructions for every development agent
 
+## Current reference refinement and propagation continuation
+
+The newest owner-requested session starts at `8bd999e`. Read its
+[scope](docs/REFERENCE_REFINEMENT_SCOPE.md),
+[live checkpoint](docs/development/2026-11-14-reference-refinement/CHECKPOINT.md)
+and [actual assignment manifest](docs/development/2026-11-14-reference-refinement/assignments.json)
+before changing current source. Its requested sixty fresh workers in ten waves
+are distinct from all completed historical sessions below. Follow its reviewed
+layout and nominal rotary contracts; preserve all 47 parameters, state4/readers
+1-3, note ownership and default dry Engine sound. M7 numerical work does not
+connect cabinet audio or close physical gates.
+
+The standing owner rule continues for every future agent: read the complete
+plan, continue dependency-ready work, record exact setup/source/tests and the
+next concrete task, refresh README screenshots from the actual changed native
+application, then commit and publish authorized completed work to main. Use a
+fresh expected remote head, inspect concurrent advances and never force-push.
+Checkpoint each wave; reuse one checkout and bounded shared builds/dependencies.
+Preserve other sessions and retain compact evidence before removing only owned
+reproducible intermediates. Never substitute invented raw evidence or prior
+workers for a new session's results.
+
 ## Current native interface continuation
 
 Read the [current recovery handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) and [checkpoint](docs/development/2026-11-14-interface-continuation/CHECKPOINT.md) first. All sixty actual assignments in ten waves are accepted, with partial product gates explicitly retained. The exact qualified fixture is published, while final raw local evidence remains unavailable. Preserve the old index if the workspace returns and reconcile it in isolation before updating a local checkout; do not reset it away, recount completed workers, or describe new recovery prose as original artifact bytes. The Linux Release workflow requires the strict session checker and retains its exact JSON report. Inspect the actual job result; record consistency does not prove dispatch or visual/physical fidelity.

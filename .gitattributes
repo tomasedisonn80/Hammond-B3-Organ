@@ -10,3 +10,6 @@
 # Replay evidence includes deliberate CRLF and surrounding whitespace.
 # Preserve the exact observed state bytes instead of normalizing their text.
 docs/development/**/reports/**/*.b3controls -text
+
+# Exact command-log evidence includes CMake's whitespace-only status prefixes.
+docs/development/2026-11-14-reference-refinement/reports/*.log -text -whitespace

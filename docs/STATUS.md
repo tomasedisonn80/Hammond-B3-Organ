@@ -1,5 +1,9 @@
 # Development status
 
+## Reference refinement and nominal propagation continuation
+
+A new [session](development/2026-11-14-reference-refinement/README.md) starts at `8bd999e` under the [reviewed scope](REFERENCE_REFINEMENT_SCOPE.md). Six new actual readers completed all 500 atlas pages. The unchanged Linux native baseline passed **147/147** CTest suites in 145.26 seconds; [retained evidence](development/2026-11-14-reference-refinement/reports/baseline.json) identifies its source, build and limitations. Wave 2 is freezing wide-layout/material, desktop, inspection and independent nominal M7 R2/R3 contracts. No new product or fidelity completion is claimed at this checkpoint. Follow the new [checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and actual manifest; prior results below remain historical.
+
 ## Current native interface continuation
 
 The [current recovery handoff](INTERFACE_RECOVERY_HANDOFF.md) contains setup,
