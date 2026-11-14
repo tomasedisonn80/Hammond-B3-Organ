@@ -1,10 +1,35 @@
 # Development log
 
+## 2026-11-14 — Qualified combined calibration source and accepted hosted review
+
+- Fresh immutable source `48a19074b7a99ab6a50ea1e29c1114d5ba95fc0a`, tree
+  `3edea0838b75feb06c19e151ec8539e80646fc03`, configures, fully builds and
+  passes **106/106 unfiltered SDK-free Release suites in 192.51 seconds**.
+  Its equal-tree GitHub source is `5e19022c8696023bb1aa841ebea2eaeec0d719a3`.
+  [The integration record](reviews/CALIBRATION_WAVE8_INTEGRATION.md) retains
+  actual commands, log identities, source mappings and excluded scopes.
+- Accepted actual assignment 49's completed hosted review at `3b0979b`:
+  nine successful jobs, one Windows installation-fixture failure. Four actual
+  diagnostic ZIPs match GitHub SHA-256/size and embedded revision. Windows
+  demo passes all 43 methods without skips; replay and platform capability
+  counters are explicitly retained. Its full job log equals root's earlier
+  capture, resolving the temporary metadata-lag uncertainty.
+- The independent affected-installation check passes 1/1 from immutable `c352d68`;
+  root's separate full installation run passed 16/16. Both remain Linux evidence.
+  The new full source includes that repair and the actual stream-boundary fix;
+  observe its next real Windows run after publication.
+- The manifest records 49 accepted workers and three running assignments;
+  clean setup, compatibility and the operating guide are in progress. The
+  historical full-gate snapshot keeps its own 48-accepted/51-dispatched counts.
+- Added a dated CaptureTools distribution inventory after compatibility review
+  found the existing rights handoff omitted the new source-only component.
+  Existing project/PDF rights decisions are unchanged and no license is invented.
+
 ## 2026-11-14 — Completed calibration wave 8 and retained portability repairs
 
 - Accepted actual assignments 43–48: a minimal metadata allocation change with
   retained before/after reports and independent 357-method acceptance, seven
-  graph methods covering43 complete audits, a real-pipe process repair with
+  graph methods covering 43 complete audits, a real-pipe process repair with
   nine independent methods/71 child processes, and 30 evidence-boundary audit cases.
   The session now has 48 accepted workers in 8 complete logical waves.
 - The original pipe matrix retained 24 failing subcases; a first producer candidate

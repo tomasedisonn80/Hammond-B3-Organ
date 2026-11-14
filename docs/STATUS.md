@@ -11,7 +11,8 @@ All 500 PDF pages were freshly read by six distinct workers; the
 [coverage record](research/CALIBRATION_ATLAS_REVIEW.md) retains exact text and
 selected visual coverage. The clean starting source passed 85/85 local Release
 suites. Audio, corpus and comparison contracts are frozen and independently reviewed.
-Forty-eight distinct assignments are accepted: eight complete logical waves.
+Forty-nine distinct assignments are accepted: eight complete logical waves and
+the completed hosted-package review in wave 9.
 The measured allocation repair passes 357 methods of independent acceptance and
 a separate 15-suite coherent capture gate. Corpus graph acceptance covers 512
 recorded synthetic captures and exact lineage/split relationships. The executable
@@ -54,10 +55,14 @@ standalone/VST3 platform jobs succeed. Windows passes 102/103, including the
 repaired demo and replay, but its new installation fixture assumes LF for a
 CMake text writer. Root replaced that marker with an exact binary copy; the
 frozen repaired installation suite passes 16/16 locally. A fresh Windows result
-for this repair remains pending. Hosted counts retain capability-dependent skips.
+for this repair remains pending. The [completed hosted package review](reviews/CALIBRATION_HOSTED_PACKAGE_RECHECK.md)
+retains actual method results, capability-dependent skips and all diagnostic
+artifact identities.
 The [local combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
-passed 103/103 suites before the later allocation and CLI changes. A new full
-coherent gate qualifies those accepted changes separately before publication.
+passed 103/103 suites before the later allocation and CLI changes. The later [full coherent source](reviews/CALIBRATION_WAVE8_INTEGRATION.md) now
+passes 106/106 suites in 192.51 seconds after a fresh complete build. Its exact
+tested tree includes the allocation/graph/CLI changes and both byte-preservation
+repairs; fresh hosted qualification remains separate.
 
 ## Active native standalone continuation
 

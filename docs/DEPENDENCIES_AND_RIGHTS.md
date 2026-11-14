@@ -19,6 +19,7 @@ Evidence: tracked plus proposed nonignored files, C++ includes, Python imports, 
 | --- | --- |
 | Repository/source archive | Project C++ headers/source, Python tools/tests, build configuration, original documentation, reconstructed/proposed JSON, factual CSVs, text event fixtures, and the supplied atlas PDF. The imported SplitMix64 routine is identified below. The standalone adds two unmodified DejaVu 2.37 font inputs, their complete notice and generated glyph data, with exact manifests. No SDL2/VST3 SDK source tree, extracted atlas image or additional manual PDF is vendored. Retained demo WAVs are explicitly synthetic engineering output. |
 | Local `OfflineTools` install | Exactly 23 configured files: five native executables, two standalone standard-library plot scripts, the compiled nominal profile, three catalogs and twelve event scores. See the [exact layout and current qualification](OFFLINE_INSTALL.md). The atlas, factual CSVs, Python interpreter, core archive/headers and toolchain runtime libraries are not copied. |
+| Local `CaptureTools` install — 2026-11-14 update | Exactly 57 source/data/document files: ten Python modules, eight schema/example data files, the sixteen-file original synthetic demo, twenty-one guides/contracts, a generated README and unchanged project notices. See the [exact inventory and boundaries](CAPTURE_TOOLS_INSTALL.md). Runtime uses Python 3.10+ and its standard library; no interpreter, native executable, SDK, font, atlas PDF, acquired recording or third-party package is copied. The notices do not select a project license or clear unrelated research rights. |
 | CI execution and artifacts | Both workflows fetch the three pinned actions below; setup-python selects Python `3.12`; hosted images supply compilers/CMake and platform tools. Core CI retains diagnostics. The separate [native workflow](VST3_CI.md) also uploads the actual validated platform bundle, byte inventory and archive hash. These are development artifacts, not signed release installers. Action implementations and runner images are not vendored into the repository or installed payload. |
 | Generated outputs | Profiles, diagnostic SVGs and WAV/evidence bundles are generated from declared project inputs. Original, console and pedal catalogs contain synthetic gestures without recorded samples. Retained [dry](../examples/rendered/nominal-two-manual-v1/README.md), [console](../examples/rendered/nominal-console-v2/README.md) and [pedal](../examples/demos/pedal-phrase-v1/README.md) examples include actual generated audio and evidence, with no executable or hardware recording in those example bundles. Keep their input/output identities and nominal-engine scope. |
 
@@ -211,3 +212,25 @@ separate primary SDL2/DejaVu texts,
 a model-scope description and actual runtime-dependency inventory. Building or
 staging an unsigned prototype does not select the missing project-wide license,
 clear supplied research/branding rights or qualify signed public distribution.
+
+## Capture-toolchain inventory update — 2026-11-14
+
+The M0/M8 calibration continuation adds project-authored offline tools, companion
+schemas, independent tests and explicitly synthetic examples. The separate
+`CaptureTools` component is opt-in and source-only; its installation guide owns
+the exact 57-file inventory, relocation behavior and disclosed limits. The
+existing `OfflineTools`, native standalone and native VST3 inventories remain
+separate. The capture package includes the existing `THIRD_PARTY_NOTICES.md`
+without modifying its grants or introducing a project-wide license.
+
+Its commands need no pip package, network request, native SDK or audio device.
+Authoring audits used already available `jsonschema` separately; it is not a
+runtime or installed dependency. The three raw float32 examples contain original
+literal numerical arrays, with constructed identifiers and explicit unknown
+rights/calibration context; they are not instrument recordings. Raw `.f32`
+files are explicitly binary in Git to preserve their original bytes.
+
+The unchanged supplied PDF, existing source-rights decisions, optional native
+dependencies and future acquired-recording permissions retain their own records.
+This update identifies the new payload and does not resolve those separate
+decisions or create an additional approval step for ordinary development.

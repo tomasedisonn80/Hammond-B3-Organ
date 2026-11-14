@@ -10,11 +10,13 @@ Fixed policy evaluation, adversarial audio/corpus admission, identity-bound file
 jobs and declaration readiness are implemented and independently qualified.
 The accepted replay and separate 57-file CaptureTools package now pass the
 [coherent 103-suite local gate](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md).
-Eight waves and 48 assignments are accepted. The metadata allocation change,
+Eight waves and 49 assignments are accepted, including the completed hosted
+review in wave 9. The metadata allocation change,
 independent graph qualification, real-pipe process repair and evidence-boundary
-review are complete. Qualify the combined frozen source, including the exact-byte
-Windows installation fixture and raw .f32 Git classification, then publish and
-observe fresh hosted outcomes. Complete clean setup, compatibility, operating and
+review are complete. The [combined frozen source](reviews/CALIBRATION_WAVE8_INTEGRATION.md), including
+the exact-byte Windows installation fixture and raw .f32 Git classification,
+passes 106/106 suites. Publish the qualified checkpoint and observe fresh hosted
+outcomes. Complete clean setup, compatibility, operating and
 acquisition handoffs in the remaining actual assignments. Preserve original
 identities, all valid outcomes and complete snapshots.
 No step fits physical model
