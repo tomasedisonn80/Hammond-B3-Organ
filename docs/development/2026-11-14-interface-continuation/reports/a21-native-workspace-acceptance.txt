@@ -1,0 +1,83 @@
+Targeted original fixture recheck (A17 executable)
+Workflow executable SHA-256: ca095152e8e94b4b1a51fa26f0e1fca346cbb2a7acfd7ec48b0a5839d83151fd
+test_resize_preserves_control_focus_and_original_note_release (__main__.NativeWorkflowAcceptance.test_resize_preserves_control_focus_and_original_note_release) ... ok
+test_off_window_pointer_release_preserves_independent_keyboard_owner (__main__.NativeWorkflowAcceptance.test_off_window_pointer_release_preserves_independent_keyboard_owner) ... ok
+Actual native workflow subprocesses: 5
+
+----------------------------------------------------------------------
+Ran 2 tests in 7.474s
+
+OK
+
+New native workspace suite (A20 executable)
+Native workspace executable SHA-256: 005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364
+test_capture_failure_closes_parameter_gesture_before_view_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_capture_failure_closes_parameter_gesture_before_view_and_resize) ... ok
+test_focus_memory_restores_drawbar_save_and_load_after_returns (__main__.NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns) ... ok
+test_hidden_play_regions_cannot_edit_redirect_or_audition (__main__.NativeWorkspaceReplayAcceptance.test_hidden_play_regions_cannot_edit_redirect_or_audition) ... ok
+test_pointer_capture_failure_preserves_keyboard_owner_during_navigation (__main__.NativeWorkspaceReplayAcceptance.test_pointer_capture_failure_preserves_keyboard_owner_during_navigation) ... ok
+test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok
+test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok
+Actual native workspace subprocesses: 15
+
+----------------------------------------------------------------------
+Ran 6 tests in 39.137s
+
+OK
+
+Complete preserved workflows CTest (A20 executable)
+Test project /workspace/scratch/601951e27dc3/build-native
+    Start 139: test_standalone_workflows
+1/1 Test #139: test_standalone_workflows ........   Passed   64.12 sec
+
+100% tests passed out of 1
+
+Label Time Summary:
+native        =  64.12 sec*proc (1 test)
+standalone    =  64.12 sec*proc (1 test)
+
+Total Test time (real) =  64.13 sec
+
+Complete preserved workflows retained CTest detail
+Start testing: Nov 14 04:12 MST
+----------------------------------------------------------
+139/143 Testing: test_standalone_workflows
+139/143 Test: test_standalone_workflows
+Command: "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake" "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workflows.py"
+Directory: /workspace/scratch/601951e27dc3/build-native/apps/standalone
+"test_standalone_workflows" start time: Nov 14 04:12 MST
+Output:
+----------------------------------------------------------
+Workflow executable SHA-256: 005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364
+test_all_twenty_four_presets_at_minimum_size_preserve_owners (__main__.NativeWorkflowAcceptance.test_all_twenty_four_presets_at_minimum_size_preserve_owners) ... ok
+test_cancel_retains_held_notes_and_panic_releases_every_ui_part (__main__.NativeWorkflowAcceptance.test_cancel_retains_held_notes_and_panic_releases_every_ui_part) ... ok
+test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes (__main__.NativeWorkflowAcceptance.test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes) ... ok
+test_edit_bank_and_sounding_bank_remain_independent (__main__.NativeWorkflowAcceptance.test_edit_bank_and_sounding_bank_remain_independent) ... ok
+test_empty_replay_has_no_automatic_smoke_note_or_file_write (__main__.NativeWorkflowAcceptance.test_empty_replay_has_no_automatic_smoke_note_or_file_write) ... ok
+test_fixed_cancel_save_live_load_cold_load_and_audio_restart (__main__.NativeWorkflowAcceptance.test_fixed_cancel_save_live_load_cold_load_and_audio_restart) ... ok
+test_focus_loss_suppresses_repeat_and_duplicate_down_until_release (__main__.NativeWorkflowAcceptance.test_focus_loss_suppresses_repeat_and_duplicate_down_until_release) ... ok
+test_help_open_close_releases_notes_without_retriggering_held_keys (__main__.NativeWorkflowAcceptance.test_help_open_close_releases_notes_without_retriggering_held_keys) ... ok
+test_keyboard_audio_apply_retains_all_controls_and_clears_notes (__main__.NativeWorkflowAcceptance.test_keyboard_audio_apply_retains_all_controls_and_clears_notes) ... ok
+test_off_window_pointer_release_preserves_independent_keyboard_owner (__main__.NativeWorkflowAcceptance.test_off_window_pointer_release_preserves_independent_keyboard_owner) ... ok
+test_original_note_ownership_survives_target_and_octave_changes (__main__.NativeWorkflowAcceptance.test_original_note_ownership_survives_target_and_octave_changes) ... ok
+test_replay_cli_errors_preserve_state_and_output_sentinels (__main__.NativeWorkflowAcceptance.test_replay_cli_errors_preserve_state_and_output_sentinels) ... ok
+test_resize_preserves_control_focus_and_original_note_release (__main__.NativeWorkflowAcceptance.test_resize_preserves_control_focus_and_original_note_release) ... ok
+Actual native workflow subprocesses: 52
+
+----------------------------------------------------------------------
+Ran 13 tests in 63.971s
+
+OK
+<end of output>
+Test time =  64.12 sec
+----------------------------------------------------------
+Test Passed.
+"test_standalone_workflows" end time: Nov 14 04:13 MST
+"test_standalone_workflows" time elapsed: 00:01:04
+----------------------------------------------------------
+
+End testing: Nov 14 04:13 MST
+
+native =  64.12 sec*proc
+
+standalone =  64.12 sec*proc
+

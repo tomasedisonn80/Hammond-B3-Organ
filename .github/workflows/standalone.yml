@@ -382,9 +382,13 @@ jobs:
                       "test_standalone_midi_input", "test_standalone_midi_session", "test_standalone_midi_replay",
                       "test_standalone_native_midi_replay",
                       "test_standalone_midi_concurrency", "test_standalone_midi_backend",
-                      "test_standalone_midi_backend_quarantine"}
+                      "test_standalone_midi_backend_quarantine", "test_standalone_midi_discovery",
+                      "test_standalone_workspaces_author", "test_standalone_workspace_acceptance",
+                      "test_standalone_projection", "test_standalone_quad_drawing",
+                      "test_standalone_inspection_author", "test_standalone_inspection_acceptance",
+                      "test_standalone_workspace_replay"}
           assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
-          print("Discovered", len(names), "standalone tests, including all required MIDI and drawing gates.", flush=True)
+          print("Discovered", len(names), "standalone tests, including required MIDI, workspace, inspection and drawing gates.", flush=True)
           PY
           ctest --test-dir build-standalone -C Release -V --parallel 1 \
             --no-tests=error --timeout 180 -R '^test_standalone_' \
@@ -436,6 +440,8 @@ jobs:
               metadata + "STANDALONE_APP.md": repo / "docs/STANDALONE_APP.md",
               metadata + "STANDALONE_MODEL.md": repo / "docs/STANDALONE_MODEL.md",
               metadata + "MIDI_UI_RUNBOOK.md": repo / "docs/MIDI_UI_RUNBOOK.md",
+              metadata + "PRESET_RUNBOOK.md": repo / "docs/PRESET_RUNBOOK.md",
+              metadata + "INTERFACE_RUNBOOK.md": repo / "docs/INTERFACE_RUNBOOK.md",
               metadata + "THIRD_PARTY_NOTICES.md": repo / "THIRD_PARTY_NOTICES.md",
               metadata + "LICENSE-SDL2.txt": temporary / "hammond-sdl2/LICENSE.txt",
               metadata + "LICENSE-DejaVu.txt": repo / "assets/standalone/fonts/LICENSE-DejaVu.txt",
@@ -453,7 +459,7 @@ jobs:
                   metadata + "rtmidi-prepared-source.json": prepared / "prepared-source.json",
                   metadata + "rtmidi-coremidi-zero-init.patch": prepared / "rtmidi-coremidi-zero-init.patch",
               })
-          assert len(expected) == (17 if enabled else 13)
+          assert len(expected) == (19 if enabled else 15)
           expected_directories = {
               parent.as_posix() for name in expected
               for parent in pathlib.PurePosixPath(name).parents if parent.as_posix() != "."

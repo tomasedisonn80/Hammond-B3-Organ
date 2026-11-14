@@ -1,5 +1,47 @@
 # Development log
 
+## 2026-11-14 — Integrate native interface acceptance and observed rendering repairs
+
+The complete 147-suite UI Release gate retained 146 passes and two failed
+observation assertions in one native MIDI suite. A35's source/trace review found
+that separately sampled UI/MIDI clocks and per-packet callbacks do not guarantee
+co-dispatch or a four-command pending suffix. Explicit acknowledged script
+prefixes now check every control/Panic phase, exact command deltas and real
+pending submissions; all twelve methods pass on the same frozen executable, and
+the affected two pass on the subsequent surface-repair executable. No drain or
+timeout was relaxed. [Initial and repair evidence](development/2026-11-14-interface-continuation/reports/root-ui-repair-closure.json)
+retain the original failures and all changed inputs.
+
+A28 corrected loss of odd physical clip edges around scaled preset focus. Its
+required image inspection exposed fractional-scale gaps through gradient/rounded
+surfaces; A31 corrected output-pixel coverage and an SDL one-pixel line omission.
+Five affected raster suites pass, including 298 full-surface checks across
+18,309,120 pixels. The same Service patch changes from 9,500 clear gaps to zero.
+Actual 19-file MIDI-on and 15-file MIDI-off relocations pass at their named
+source identities. The operating guide now explains dummy SDL versus real native
+MIDI enumeration. A27/A32's small preset legend and title-offset findings and
+A30's stale Load status remain assigned corrections before final visual handoff.
+
+
+## 2026-11-14 — Qualify platform repairs and integrate the workspace interface
+
+Published `c83fe233` with the complete atlas review/contracts and required Windows
+UCRT oracle lookup. Published `5d81199` with generation-aware asynchronous MIDI
+discovery after five targeted local gates; the original 2,000 ms replay drain
+deadline and failure semantics remain. All eleven hosted jobs now pass on that
+exact repair revision, including macOS standalone MIDI. See the [retained hosted
+record](development/2026-11-14-interface-continuation/reports/platform-repair-hosted.json).
+
+Implemented Play/Rotary/Service, transient Flat mode, focus memory and hidden-target
+exclusion, shared perspective key geometry, clipped quad rendering, copied-state
+inspection and native CLI/replay/paint diagnostics. Independent model and geometry
+acceptance pass; actual native reference/minimum images and 24-preset raster checks
+pass. The first native overlay gate passed three suites and retained five failures
+in two older workflow fixture methods for independent correction. Renderer material
+and caption refinement followed; gallery, package and final coherent qualification
+continue under the actual session manifest. No sound model, parameter/state format,
+core or VST3 source migration is part of this interface slice.
+
 ## 2026-11-14 — Begin native interface continuation from published preset source
 
 Inspected published `main` at `d493e998e5dd7cf44db46854e87309745063ac54`

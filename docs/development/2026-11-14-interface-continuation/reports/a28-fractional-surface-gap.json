@@ -1,0 +1,119 @@
+{
+  "status": "observed_visual_defect_open_for_A31",
+  "proof_path": "docs/development/2026-11-14-interface-continuation/reports/a28-injected-renderer-service-960x700-at-1p5.png",
+  "png_sha256": "52c42ddefcf926292ec6bee3bd801a70aadcf843c478a88f7125df96b6fd78a3",
+  "region_physical_pixels": [
+    60,
+    444,
+    440,
+    519
+  ],
+  "region_description": "Blank interior of first Generator card below its last value and above summary; retained complete native renderer image is unchanged.",
+  "rows": [
+    {
+      "physical_y_modulo_3": 0,
+      "pixels": 9500,
+      "clear_walnut_pixels": 0,
+      "most_common_colors": [
+        {
+          "rgba": [
+            22,
+            22,
+            22,
+            255
+          ],
+          "pixels": 1456
+        },
+        {
+          "rgba": [
+            21,
+            21,
+            21,
+            255
+          ],
+          "pixels": 1141
+        },
+        {
+          "rgba": [
+            24,
+            24,
+            23,
+            255
+          ],
+          "pixels": 1077
+        },
+        {
+          "rgba": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "pixels": 1010
+        }
+      ]
+    },
+    {
+      "physical_y_modulo_3": 1,
+      "pixels": 9500,
+      "clear_walnut_pixels": 0,
+      "most_common_colors": [
+        {
+          "rgba": [
+            22,
+            22,
+            22,
+            255
+          ],
+          "pixels": 1487
+        },
+        {
+          "rgba": [
+            21,
+            21,
+            21,
+            255
+          ],
+          "pixels": 1478
+        },
+        {
+          "rgba": [
+            23,
+            23,
+            22,
+            255
+          ],
+          "pixels": 1123
+        },
+        {
+          "rgba": [
+            24,
+            23,
+            23,
+            255
+          ],
+          "pixels": 1103
+        }
+      ]
+    },
+    {
+      "physical_y_modulo_3": 2,
+      "pixels": 9500,
+      "clear_walnut_pixels": 9500,
+      "most_common_colors": [
+        {
+          "rgba": [
+            85,
+            54,
+            36,
+            255
+          ],
+          "pixels": 9500
+        }
+      ]
+    }
+  ],
+  "cause_source": "Drawing.cpp rounded() and gradient() draw one-logical-unit-high rectangles per logical row. Pinned SDL2/src/render/software/SDL_render_sw.c SW_QueueFillRects converts scaled widths/heights to int. At1.5, floor(1.5)=1 height leaves a gap between some successive floor(1.5*y) row origins.",
+  "scope": "Source diagnosis and existing-image measurement only; no additional native run or modified image. Numeric state/clip/value-presence acceptance did not detect this surface coverage failure.",
+  "owner": "/root/w06_a31_scaled_surface_repair"
+}

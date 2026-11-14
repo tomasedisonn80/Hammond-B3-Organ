@@ -1,0 +1,57 @@
+UpdateCTestConfiguration  from :/workspace/scratch/601951e27dc3/build-native/DartConfiguration.tcl
+Parse Config file:/workspace/scratch/601951e27dc3/build-native/DartConfiguration.tcl
+Test project /workspace/scratch/601951e27dc3/build-native
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 134
+    Start 134: test_standalone_workspace_raster
+
+134: Test command: /workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_workspace_raster
+134: Working Directory: /workspace/scratch/601951e27dc3/build-native/apps/standalone
+134: Test timeout computed to be: 60
+134: Contrast probe 960x700 Dimensional Pedals index 1: top height=11.36, 80%=26.3582, 50%=44.639, front=19.4986; pixels (84,613)=(25,27,24), (84,609)=(45,45,40), (84,619)=(19,20,16)
+134: FAIL: 960x700 Dimensional Pedals index 1 has a visibly darker front below its top
+134: Contrast probe 960x700 Dimensional Pedals index 13: top height=11.36, 80%=26.3582, 50%=44.639, front=19.4986; pixels (510,613)=(25,27,24), (510,609)=(45,45,40), (510,619)=(19,20,16)
+134: FAIL: 960x700 Dimensional Pedals index 13 has a visibly darker front below its top
+134: Contrast probe 960x700 Dimensional Pedals index 22: top height=11.36, 80%=26.3582, 50%=44.639, front=19.4986; pixels (814,613)=(25,27,24), (814,609)=(45,45,40), (814,619)=(19,20,16)
+134: FAIL: 960x700 Dimensional Pedals index 22 has a visibly darker front below its top
+134: Contrast probe 1672x941 Dimensional Pedals index 1: top height=23.3136, 80%=30.4986, 50%=43.639, front=22.7112; pixels (149,842)=(30,31,27), (149,835)=(44,44,39), (149,850)=(23,23,19)
+134: FAIL: 1672x941 Dimensional Pedals index 1 has a visibly darker front below its top
+134: Contrast probe 1672x941 Dimensional Pedals index 13: top height=23.3136, 80%=30.4986, 50%=43.639, front=22.7112; pixels (636,842)=(30,31,27), (636,835)=(44,44,39), (636,850)=(23,23,19)
+134: FAIL: 1672x941 Dimensional Pedals index 13 has a visibly darker front below its top
+134: Contrast probe 1672x941 Dimensional Pedals index 22: top height=23.3136, 80%=30.4986, 50%=43.639, front=22.7112; pixels (984,842)=(30,31,27), (984,835)=(44,44,39), (984,850)=(23,23,19)
+134: FAIL: 1672x941 Dimensional Pedals index 22 has a visibly darker front below its top
+134: Native workspace raster: 150 frames; 108 held, 108 held+focus, 108 front/Flat, 54 two-natural occlusion, 12 sloped-corner, 12 hidden-body checks; failures=6; 8.79059 seconds; actual paint_instrument, independent half-plane oracle, SDL software surface, no window/audio
+1/1 Test #134: test_standalone_workspace_raster ...***Failed    8.81 sec
+Contrast probe 960x700 Dimensional Pedals index 1: top height=11.36, 80%=26.3582, 50%=44.639, front=19.4986; pixels (84,613)=(25,27,24), (84,609)=(45,45,40), (84,619)=(19,20,16)
+FAIL: 960x700 Dimensional Pedals index 1 has a visibly darker front below its top
+Contrast probe 960x700 Dimensional Pedals index 13: top height=11.36, 80%=26.3582, 50%=44.639, front=19.4986; pixels (510,613)=(25,27,24), (510,609)=(45,45,40), (510,619)=(19,20,16)
+FAIL: 960x700 Dimensional Pedals index 13 has a visibly darker front below its top
+Contrast probe 960x700 Dimensional Pedals index 22: top height=11.36, 80%=26.3582, 50%=44.639, front=19.4986; pixels (814,613)=(25,27,24), (814,609)=(45,45,40), (814,619)=(19,20,16)
+FAIL: 960x700 Dimensional Pedals index 22 has a visibly darker front below its top
+Contrast probe 1672x941 Dimensional Pedals index 1: top height=23.3136, 80%=30.4986, 50%=43.639, front=22.7112; pixels (149,842)=(30,31,27), (149,835)=(44,44,39), (149,850)=(23,23,19)
+FAIL: 1672x941 Dimensional Pedals index 1 has a visibly darker front below its top
+Contrast probe 1672x941 Dimensional Pedals index 13: top height=23.3136, 80%=30.4986, 50%=43.639, front=22.7112; pixels (636,842)=(30,31,27), (636,835)=(44,44,39), (636,850)=(23,23,19)
+FAIL: 1672x941 Dimensional Pedals index 13 has a visibly darker front below its top
+Contrast probe 1672x941 Dimensional Pedals index 22: top height=23.3136, 80%=30.4986, 50%=43.639, front=22.7112; pixels (984,842)=(30,31,27), (984,835)=(44,44,39), (984,850)=(23,23,19)
+FAIL: 1672x941 Dimensional Pedals index 22 has a visibly darker front below its top
+Native workspace raster: 150 frames; 108 held, 108 held+focus, 108 front/Flat, 54 two-natural occlusion, 12 sloped-corner, 12 hidden-body checks; failures=6; 8.79059 seconds; actual paint_instrument, independent half-plane oracle, SDL software surface, no window/audio
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+geometry      =   8.81 sec*proc (1 test)
+native        =   8.81 sec*proc (1 test)
+standalone    =   8.81 sec*proc (1 test)
+workspace     =   8.81 sec*proc (1 test)
+
+Total Test time (real) =   8.83 sec
+
+The following tests FAILED:
+	134 - test_standalone_workspace_raster (Failed)         geometry native standalone workspace
+Errors while running CTest

@@ -511,27 +511,55 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
                    bytes_event(1000, 0xB1, 24, 0), bytes_event(1000, 0xB2, 16, 0),
                    bytes_event(1000, 0xB2, 17, 127)]
         ui += tap(1200, "Right")
-        expected["manual_drawbars"][0][0][0] = 1
-        expected["manual_drawbars"][0][1] = [0, 1, 8, 0, 0, 0, 0, 0, 8]
-        expected["manual_drawbars"][1][1][0] = 4
-        expected["pedal_drawbars"] = [0, 8]
-        expected["expression"] = 64 / 127
-        with self.run_native(1550, events, ui_events=ui, state=CONTROL_STATE,
-                             arguments=["--sample-rate", "44100", "--buffer-frames", "2048"]) as run:
-            self.assert_final(run, ((60,), (), ()), on=1, controls=expected)
-            self.assertEqual(run.data["midi"]["parameter_messages"], 17)
-            self.assertEqual(run.data["midi"]["decoder"]["actions"], 18)
-            # Alternating groups change A plus three MIDI parameters; unchanged
-            # values may emit no snapshot. A pending suffix of four commands is
-            # an observed unacknowledged UI edit joined by MIDI edits, not merely a
-            # claim based on equal schedule times in independent streams.
-            pending = [item for item in run.midi["observations"]
-                       if 350 <= item["elapsed_ms"] < 1000
-                       and item["last_submitted_sequence"] - item["last_applied_sequence"] >= 4]
-            self.assertTrue(pending, "No paired UI/MIDI control batch was observed while pending")
-            self.assertTrue(all(item["controls"]["selected_banks"] == [0, 0]
-                                and item["controls"]["route_enabled"] == [False, True]
-                                for item in run.midi["observations"]))
+        # Finish each source prefix before checking its copied state. UI and MIDI
+        # have separate receipt clocks, and the app may observe a callback after
+        # every MIDI packet: equal schedule times promise neither a common turn
+        # nor four simultaneously unacknowledged commands. The first CC16 is also
+        # a deliberate no-op (bank B already contains 8). Later groups must still
+        # submit all four changed controls, and every completed prefix must retain
+        # both independent edits. Keep the full original script as the last run.
+        phases = ((300, None, 1, 0), (480, True, 4, 3), (630, False, 8, 6),
+                  (780, True, 12, 9), (980, False, 16, 12), (1550, None, 21, 17))
+        source_origin = None
+        previous_commands = 1
+        for endpoint, high, commands, parameters in phases:
+            with self.subTest(endpoint_ms=endpoint):
+                wanted = deepcopy(expected)
+                if high is not None or endpoint == 1550:
+                    wanted["manual_drawbars"][0][0][0] = 8 if high else 0
+                    wanted["manual_drawbars"][0][1][:2] = [8, 0] if high else [0, 1]
+                    wanted["expression"] = (96 if high else 64) / 127
+                if endpoint == 1550:
+                    wanted["manual_drawbars"][0][0][0] = 1
+                    wanted["manual_drawbars"][0][1][8] = 8
+                    wanted["manual_drawbars"][1][1][0] = 4
+                    wanted["pedal_drawbars"] = [0, 8]
+                prefix_events = [event for event in events if event[0] < endpoint]
+                prefix_ui = [event for event in ui if event[0] < endpoint]
+                with self.run_native(endpoint, prefix_events, ui_events=prefix_ui, state=CONTROL_STATE,
+                                     arguments=["--sample-rate", "44100", "--buffer-frames", "2048"]) as run:
+                    self.assert_final(run, ((60,), (), ()), on=1, controls=wanted)
+                    self.assertEqual(run.data["midi"]["parameter_messages"], parameters)
+                    self.assertEqual(run.data["midi"]["decoder"]["actions"], parameters + 1)
+                    submitted = run.midi["last_submitted_sequence"]
+                    if source_origin is None:
+                        source_origin = submitted - commands
+                        self.assertGreater(source_origin, 0)
+                    self.assertEqual(submitted, source_origin + commands)
+                    self.assertEqual(run.midi["before_shutdown"]["last_applied_sequence"], submitted)
+                    if parameters:
+                        # After the note-on, every source command is a control
+                        # snapshot. Require a real unacknowledged submission from
+                        # this new phase, followed by its complete acknowledgement;
+                        # do not infer simultaneous UI/MIDI ownership from its size.
+                        pending = [item for item in run.midi["observations"]
+                                   if source_origin + previous_commands < item["last_submitted_sequence"] <= submitted
+                                   and item["last_applied_sequence"] < item["last_submitted_sequence"]]
+                        self.assertTrue(pending, "No control submission from this source phase was observed pending")
+                    self.assertTrue(all(item["controls"]["selected_banks"] == [0, 0]
+                                        and item["controls"]["route_enabled"] == [False, True]
+                                        for item in run.midi["observations"]))
+                previous_commands = commands
 
     def test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection(self) -> None:
         events = [(0, "connect"), bytes_event(150, 0x90, 60, 100),
@@ -679,14 +707,31 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
                   bytes_event(750, 0x91, 70, 100), (1100, "connect"), bytes_event(1100, 0x91, 65, 100)]
         ui = [(100, "key_down A none 0")] + click(500, 1228, 66)
         ui += [(850, "key_down A none 1"), (1000, "key_up A none"), (1300, "key_down A none 0")]
-        with self.run_native(1650, events, ui_events=ui) as run:
-            self.assert_window(run, 150, 480, ((60, 64), (67,), (1,)))
-            self.assert_window(run, 500, 1080, EMPTY)
-            self.assert_final(run, ((60,), (65,), ()), on=6)
-            self.assertEqual(run.midi["ignored_while_closed"], 1)
-            self.assertEqual(run.midi["connections_started"], 2)
-            self.assertEqual(run.data["midi"]["release_batches"], 2)
-            self.assertEqual(run.data["midi"]["fault_retirements"], 0)
+        # A rendered observation can arrive after a quiet gap's wall-clock bound.
+        # Complete the held, Panic/repeat-suppression and reconnect prefixes so
+        # each musical phase is acknowledged before shutdown can release notes.
+        # The final case retains the complete original order, timings and result.
+        phases = ((480, ((60, 64), (67,), (1,)), 4, 0, 1, True, 4),
+                  (1080, EMPTY, 4, 1, 1, False, 8),
+                  (1650, ((60,), (65,), ()), 6, 1, 2, True, 10))
+        source_origin = None
+        for endpoint, wanted, on, ignored, connections, connected, commands in phases:
+            with self.subTest(endpoint_ms=endpoint):
+                prefix_events = [event for event in events if event[0] < endpoint]
+                prefix_ui = [event for event in ui if event[0] < endpoint]
+                with self.run_native(endpoint, prefix_events, ui_events=prefix_ui) as run:
+                    self.assert_final(run, wanted, on=on)
+                    self.assertEqual(run.midi["ignored_while_closed"], ignored)
+                    self.assertEqual(run.midi["connections_started"], connections)
+                    self.assertEqual(run.midi["connected_before_shutdown"], connected)
+                    self.assertEqual(run.data["midi"]["release_batches"], connections)
+                    self.assertEqual(run.data["midi"]["fault_retirements"], 0)
+                    submitted = run.midi["last_submitted_sequence"]
+                    if source_origin is None:
+                        source_origin = submitted - commands
+                        self.assertGreater(source_origin, 0)
+                    self.assertEqual(submitted, source_origin + commands)
+                    self.assertEqual(run.midi["before_shutdown"]["last_applied_sequence"], submitted)
 
     def test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect(self) -> None:
         events = [(0, "connect"), bytes_event(150, 0x90, 64, 100),

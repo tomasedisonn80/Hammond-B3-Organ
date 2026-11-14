@@ -1,0 +1,293 @@
+{
+  "assignment": 20,
+  "agent": "/root/w04_a20_material_refinement",
+  "published_head_at_inspection": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "source_is_worktree_overlay": true,
+  "owned_source": [
+    "apps/standalone/InstrumentView.cpp"
+  ],
+  "source_sha256": {
+    "apps/standalone/InstrumentView.cpp": "5f5f209dbe33cb92e3c1d237258ba123d0a86e78c694d50c0634db8549d54407",
+    "apps/standalone/InstrumentView.h": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+    "apps/standalone/Drawing.cpp": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+    "apps/standalone/main.cpp": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689",
+    "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+  },
+  "a17_renderer_sha256": "1fccdc4ef3943be029e320571faad42b21cb053eb8e9ee205ce63808a51b7831",
+  "binary_sha256": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+  "build": {
+    "target": "hammond_standalone",
+    "exit_code": 0,
+    "cmake": "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+    "build_dir": "/workspace/scratch/601951e27dc3/build-native"
+  },
+  "native_capture_directory": "/workspace/scratch/601951e27dc3/a20-renderer",
+  "captures": [
+    {
+      "stem": "play-reference",
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--workspace",
+        "play",
+        "--smoke-ms",
+        "1200",
+        "--state",
+        "/workspace/scratch/601951e27dc3/a20-renderer/play-reference.b3controls",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a20-renderer/play-reference.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a20-renderer/play-reference.json"
+      ],
+      "returncode": 0,
+      "sha256": "a2978ed218068fadd49e4deaed2b523dc41608ba2283b322a97528af2f39db2c",
+      "bytes": 651927,
+      "diagnostic_sha256": "d29d19cbca8ce08ef2d71c8f0fe97fade2921e126eff1795d49f535db80d24f9",
+      "screenshot_observation": {
+        "elapsed_ms": 264,
+        "rendered_image": 4,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 1672,
+        "window_height": 941,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 11776,
+          "publication_revision": 50
+        }
+      },
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "held_after_shutdown": false,
+      "audio_failures": {
+        "render_failures": 0,
+        "format_failures": 0,
+        "overrange_failures": 0,
+        "nonfinite_failures": 0
+      }
+    },
+    {
+      "stem": "play-min",
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--workspace",
+        "play",
+        "--smoke-ms",
+        "1200",
+        "--state",
+        "/workspace/scratch/601951e27dc3/a20-renderer/play-min.b3controls",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a20-renderer/play-min.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a20-renderer/play-min.json"
+      ],
+      "returncode": 0,
+      "sha256": "f690fc29090a19f1023bb16e8e393cb4c170d2b825f6168e0f9dae5fff62c1ca",
+      "bytes": 132773,
+      "diagnostic_sha256": "6ad29711d1c26a92c2070ff3be80542e09ad19d428811d67d24fe25511c985ef",
+      "screenshot_observation": {
+        "elapsed_ms": 95,
+        "rendered_image": 4,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 4096,
+          "publication_revision": 20
+        }
+      },
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "held_after_shutdown": false,
+      "audio_failures": {
+        "render_failures": 0,
+        "format_failures": 0,
+        "overrange_failures": 0,
+        "nonfinite_failures": 0
+      }
+    },
+    {
+      "stem": "flat-min",
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--workspace",
+        "play",
+        "--smoke-ms",
+        "1200",
+        "--state",
+        "/workspace/scratch/601951e27dc3/a20-renderer/flat-min.b3controls",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a20-renderer/flat-min.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a20-renderer/flat-min.json",
+        "--flat"
+      ],
+      "returncode": 0,
+      "sha256": "21285b0473117ea322609a0ef7c4410d89d1139ee87f7fc0917a30566b8fafb0",
+      "bytes": 48766,
+      "diagnostic_sha256": "cedd6f8502a066cca1a5c20a3656aaf803dfd8d43bb2e9efd8bd0a5d2cc686ab",
+      "screenshot_observation": {
+        "elapsed_ms": 63,
+        "rendered_image": 5,
+        "workspace": "play",
+        "presentation": "flat",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 2560,
+          "publication_revision": 14
+        }
+      },
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "held_after_shutdown": false,
+      "audio_failures": {
+        "render_failures": 0,
+        "format_failures": 0,
+        "overrange_failures": 0,
+        "nonfinite_failures": 0
+      }
+    },
+    {
+      "stem": "service-min",
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--workspace",
+        "service",
+        "--smoke-ms",
+        "1200",
+        "--state",
+        "/workspace/scratch/601951e27dc3/a20-renderer/service-min.b3controls",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a20-renderer/service-min.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a20-renderer/service-min.json"
+      ],
+      "returncode": 0,
+      "sha256": "7c919d2acff08e8255c3e772aa3c9fe27a14d1327e220238e215cc21f60fecaa",
+      "bytes": 173758,
+      "diagnostic_sha256": "94b374debe16b4d835e3c23755a583e9beeb9f30d3d0b5d4774e462ce775adfe",
+      "screenshot_observation": {
+        "elapsed_ms": 105,
+        "rendered_image": 4,
+        "workspace": "service",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 4608,
+          "publication_revision": 22
+        }
+      },
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "held_after_shutdown": false,
+      "audio_failures": {
+        "render_failures": 0,
+        "format_failures": 0,
+        "overrange_failures": 0,
+        "nonfinite_failures": 0
+      }
+    },
+    {
+      "stem": "rotary-min",
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--workspace",
+        "rotary",
+        "--smoke-ms",
+        "1200",
+        "--state",
+        "/workspace/scratch/601951e27dc3/a20-renderer/rotary-min.b3controls",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a20-renderer/rotary-min.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a20-renderer/rotary-min.json"
+      ],
+      "returncode": 0,
+      "sha256": "994b8911d8d3fd682d7e0465391316ce29fecaeceea2188db6d02c1c0ff2a23f",
+      "bytes": 328025,
+      "diagnostic_sha256": "63dc0f25e74f0227e9d2a0fc75096f92d8bcd0279b482523c0fcad9224ee2555",
+      "screenshot_observation": {
+        "elapsed_ms": 97,
+        "rendered_image": 4,
+        "workspace": "rotary",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 4096,
+          "publication_revision": 20
+        }
+      },
+      "screenshot_written": true,
+      "screenshot_while_held": true,
+      "held_after_shutdown": false,
+      "audio_failures": {
+        "render_failures": 0,
+        "format_failures": 0,
+        "overrange_failures": 0,
+        "nonfinite_failures": 0
+      }
+    }
+  ],
+  "preset_paint_and_focus_modified": false,
+  "preset_raster_rerun": false,
+  "inspection_rows_and_layout_modified": false,
+  "visual_result": "All five actual PNGs inspected; improved small Play captions and bounded cap/key bevel. Service 28 rows and V/rpm/m units visible; Flat remains plain. Not a 1:1 or physical fidelity pass.",
+  "remaining": [
+    "Exact concept composition and inventory differ",
+    "Non-current snapshot raster branches not forced",
+    "Coherent independent integration/raster gate pending root",
+    "Physical devices, accessibility and deadlines not qualified"
+  ]
+}

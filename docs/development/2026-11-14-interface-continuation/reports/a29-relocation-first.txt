@@ -1,0 +1,14 @@
+install: exit 0, 0.0612 s
+help: exit 0, 0.0045 s
+list-midi: exit 1, 0.0036 s
+service-flat: exit 0, 0.6559 s
+Traceback (most recent call last):
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a29-qualify-relocation.py", line 275, in <module>
+    main()
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a29-qualify-relocation.py", line 202, in main
+    service, _, _ = native("service-flat", ["--workspace", "service", "--flat", "--smoke-ms", "600",
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a29-qualify-relocation.py", line 153, in native
+    assert result.stdout == result.stderr == ""
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

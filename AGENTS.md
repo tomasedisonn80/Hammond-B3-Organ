@@ -19,9 +19,11 @@ Keep disk use bounded: reuse shared source/dependencies/builds, checkpoint
 progress, and retain compact evidence before removing reproducible intermediates
 owned by the current session. Never delete another session's source or work.
 
-## Current fixed-registration continuation
+## Historical fixed-registration continuation
 
-The newest [preset continuation](docs/development/2026-11-14-preset-continuation/README.md)
+The sections below retain earlier session handoffs and their original evidence. For current source, parameter counts, UI scope and next work, the interface continuation above and the newest `STATUS.md` / `NEXT_STEPS.md` take precedence. Do not apply an older migration or recount an earlier session’s agents. The standing preservation, documentation and publication rules continue to apply.
+
+The earlier [preset continuation](docs/development/2026-11-14-preset-continuation/README.md)
 starts at `b79086f`. Its own actual manifest records the requested sixty new
 workers in ten logical waves. It owns the next M3 exclusive fixed-registration
 selector and its M9 native UI, state and parameter integration under
@@ -40,9 +42,9 @@ Inspect concurrent advances and verify the published revision; never force-push.
 Keep source concept art distinct from application captures and preserve explicit
 remaining visual differences until an actual 1:1 comparison passes.
 
-## Current MIDI and visual continuation
+## Historical MIDI and visual continuation
 
-The latest requested [MIDI/UI session](docs/development/2026-11-14-midi-ui/README.md) starts at `0f7b900` under [MIDI_UI_SCOPE.md](docs/MIDI_UI_SCOPE.md). Its actual workers are recorded separately from every preceding session. Continue the dependency-ready M9 MIDI input and native visual work while preserving the core, all previous parameter/state identities and concurrent model tracks. The exact UI reference is the atlas cover/page 409, [retained with provenance](docs/design/atlas-reference.json). Future agents must compare actual app screenshots with this source, keep verified dynamic controls, document residual differences, and update the README with the latest verified native captures whenever the interface changes. Never present source concept art as an application screenshot or claim 1:1 fidelity without comparison evidence.
+The earlier [MIDI/UI session](docs/development/2026-11-14-midi-ui/README.md) starts at `0f7b900` under [MIDI_UI_SCOPE.md](docs/MIDI_UI_SCOPE.md). Its actual workers are recorded separately from every preceding session. Continue the dependency-ready M9 MIDI input and native visual work while preserving the core, all previous parameter/state identities and concurrent model tracks. The exact UI reference is the atlas cover/page 409, [retained with provenance](docs/design/atlas-reference.json). Future agents must compare actual app screenshots with this source, keep verified dynamic controls, document residual differences, and update the README with the latest verified native captures whenever the interface changes. Never present source concept art as an application screenshot or claim 1:1 fidelity without comparison evidence.
 
 The standing completion workflow remains: update status, next steps, development log and affected setup/contracts; retain actual verification; commit and push completed authorized work to `main`, inspect concurrent advances, and verify the published revision. This instruction applies to future agents as requested by the owner.
 

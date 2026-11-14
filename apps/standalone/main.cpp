@@ -5,6 +5,7 @@
 #include "AudioDevice.h"
 #include "Drawing.h"
 #include "EmbeddedProfile.h"
+#include "InspectionModel.h"
 #include "InstrumentView.h"
 #include "MidiDevice.h"
 #include "MidiDiscovery.h"
@@ -50,6 +51,7 @@ constexpr std::uint64_t kSaveWaitMilliseconds = 2000;
 constexpr std::uint64_t kCallbackWatchdogMilliseconds = 2000;
 constexpr std::uint64_t kReplayDrainMilliseconds = 2000;
 constexpr std::size_t kReplayObservationCapacity = 512;
+constexpr std::size_t kPresentationObservationCapacity = 512;
 constexpr std::size_t kMidiReplayEventBudget = 512;
 constexpr std::size_t kMidiReplayObservationCapacity = 4 * kMidiReplayMaxEvents + kReplayObservationCapacity;
 
@@ -64,6 +66,8 @@ struct Options {
     std::filesystem::path midi_script{};
     int width{1280};
     int height{900};
+    UiWorkspace workspace{UiWorkspace::Play};
+    UiPresentation presentation{UiPresentation::Dimensional};
     std::uint32_t smoke_ms{0};
     bool help{false};
     bool list_audio{false};
@@ -89,6 +93,8 @@ void print_help() {
         "                         Default: SDL preference directory/controls.b3controls.\n"
         "  --width N              Initial logical width: 960..8192, default 1280.\n"
         "  --height N             Initial logical height: 700..8192, default 900.\n"
+        "  --workspace NAME       Initial play (default), rotary, or service view.\n"
+        "  --flat                 Start with flat presentation; controls are unchanged.\n"
         "  --smoke-ms N           Actual window/device smoke, 250..10000 ms.\n"
         "  --input-script PATH    Bounded B3UIREPLAY1 events; excludes --smoke-ms.\n"
         "  --midi-script PATH     Synthetic B3MIDIREPLAY1 input; excludes --midi-port,\n"
@@ -97,8 +103,10 @@ void print_help() {
         "  --screenshot PATH      Write one BMP before presenting the rendered frame.\n"
         "  --diagnostics PATH     Write JSON after closing and joining the device.\n\n"
         "Playing: A W S E D F T G Y H U J K O L P ;. F1/F2/F3 select\n"
-        "Upper/Lower/Pedals; [ and ] change octave. Tab/Shift+Tab move focus;\n"
-        "arrows, Home, End adjust controls; Space holds the focused playing key.\n"
+        "Upper/Lower/Pedals; [ and ] change octave.\n"
+        "F4/F5/F6 select Play/Rotary/Service; F7 toggles dimensional/flat.\n"
+        "Tab/Shift+Tab move focus; arrows, Home, End adjust controls.\n"
+        "Space holds the focused playing key.\n"
         "Escape releases UI notes. Ctrl+S saves, Ctrl+O loads, Ctrl+, opens Audio,\n"
         "Ctrl+M opens MIDI, and Shift+/ opens Help (Command also works for Ctrl).\n"
         "Audio/MIDI dialogs: Tab/Shift+Tab, arrows, Home/End, Enter/Space, Escape.\n"
@@ -134,13 +142,15 @@ void print_help() {
         if (option == "--help") { options.help = true; continue; }
         if (option == "--list-audio") { options.list_audio = true; continue; }
         if (option == "--list-midi") { options.list_midi = true; continue; }
+        if (option == "--flat") { options.presentation = UiPresentation::Flat; continue; }
         const bool path_option = option == "--state" || option == "--screenshot" ||
             option == "--diagnostics" || option == "--input-script" || option == "--midi-script";
         const bool number_option = option == "--sample-rate" || option == "--buffer-frames" ||
             option == "--width" || option == "--height" || option == "--smoke-ms" ||
             option == "--midi-upper-channel" || option == "--midi-lower-channel" ||
             option == "--midi-pedal-channel";
-        if (!path_option && !number_option && option != "--device" && option != "--midi-port") {
+        if (!path_option && !number_option && option != "--device" && option != "--midi-port" &&
+            option != "--workspace") {
             error = "Unknown option: " + std::string(option);
             return false;
         }
@@ -149,6 +159,16 @@ void print_help() {
             return false;
         }
         const std::string_view value{argv[++index]};
+        if (option == "--workspace") {
+            if (value == "play") options.workspace = UiWorkspace::Play;
+            else if (value == "rotary") options.workspace = UiWorkspace::Rotary;
+            else if (value == "service") options.workspace = UiWorkspace::Service;
+            else {
+                error = "Unsupported value for --workspace; use play, rotary, or service";
+                return false;
+            }
+            continue;
+        }
         if (option == "--device") { options.audio.device_name = value; continue; }
         if (option == "--midi-port") {
             if (value.size() > kMidiMaximumPortNameBytes || value.find('\0') != std::string_view::npos) {
@@ -253,6 +273,44 @@ void print_help() {
     return "unknown";
 }
 
+[[nodiscard]] const char* workspace_name(UiWorkspace workspace) noexcept {
+    switch (workspace) {
+    case UiWorkspace::Play: return "play";
+    case UiWorkspace::Rotary: return "rotary";
+    case UiWorkspace::Service: return "service";
+    }
+    return "unknown";
+}
+
+[[nodiscard]] const char* presentation_name(UiPresentation presentation) noexcept {
+    switch (presentation) {
+    case UiPresentation::Dimensional: return "dimensional";
+    case UiPresentation::Flat: return "flat";
+    }
+    return "unknown";
+}
+
+[[nodiscard]] const char* overlay_name(ViewOverlay overlay) noexcept {
+    switch (overlay) {
+    case ViewOverlay::None: return "none";
+    case ViewOverlay::Help: return "help";
+    case ViewOverlay::Audio: return "audio";
+    case ViewOverlay::Midi: return "midi";
+    }
+    return "unknown";
+}
+
+[[nodiscard]] const char* inspection_state_name(InspectionSnapshotState state) noexcept {
+    switch (state) {
+    case InspectionSnapshotState::Unavailable: return "unavailable";
+    case InspectionSnapshotState::Unprepared: return "unprepared";
+    case InspectionSnapshotState::Retained: return "retained";
+    case InspectionSnapshotState::Stopped: return "stopped";
+    case InspectionSnapshotState::Current: return "current";
+    }
+    return "unknown";
+}
+
 void increment_counter(std::uint64_t& value) noexcept {
     if (value != std::numeric_limits<std::uint64_t>::max()) ++value;
 }
@@ -306,6 +364,10 @@ struct MidiLifetime {
     case SDL_SCANCODE_F1: return UiKey::F1;
     case SDL_SCANCODE_F2: return UiKey::F2;
     case SDL_SCANCODE_F3: return UiKey::F3;
+    case SDL_SCANCODE_F4: return UiKey::F4;
+    case SDL_SCANCODE_F5: return UiKey::F5;
+    case SDL_SCANCODE_F6: return UiKey::F6;
+    case SDL_SCANCODE_F7: return UiKey::F7;
     default: return UiKey::Unknown;
     }
 }
@@ -444,6 +506,10 @@ public:
             }
         }
         if (replay_requested()) replay_observations_.reserve(replay_observation_capacity());
+        presentation_observations_.reserve(kPresentationObservationCapacity);
+        if (!ui_.set_workspace(options_.workspace) || !ui_.set_presentation(options_.presentation)) {
+            fail("Cannot initialize instrument presentation"); return false;
+        }
         window_.reset(SDL_CreateWindow("B-3 Workshop | Nominal dry organ", SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED, options_.width, options_.height,
             SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI));
@@ -548,6 +614,7 @@ public:
         }
         // Retain script results before ordinary close cleanup can release held
         // keys or resolve additional commands. A held final script state is legal.
+        presentation_before_shutdown_ = last_painted_;
         replay_before_shutdown_ = snapshot_;
         replay_desired_controls_ = ui_.view().controls;
         replay_snapshot_available_ = snapshot_available_;
@@ -679,6 +746,8 @@ public:
         json_string(output, status_name(final_diagnostics_.last_lifecycle_status));
         output << "},\n  \"midi\":";
         write_midi_json(output);
+        output << ",\n  \"presentation\":";
+        write_presentation_json(output);
         output << ",\n  \"session\":{\"snapshot_available\":" << snapshot_available_
                << ",\"prepared\":" << snapshot_.prepared << ",\"running_after_shutdown\":" << snapshot_.running
                << ",\"sample_rate\":" << snapshot_.sample_rate << ",\"frame_clock\":" << snapshot_.frame_clock
@@ -757,6 +826,91 @@ private:
         std::uint64_t elapsed_ms;
         std::uint64_t last_submitted_sequence;
     };
+
+    // Values from a successfully flushed frame, never a later shutdown read.
+    // Keep presentation observations separate from musical replay snapshots.
+    struct PresentationObservation {
+        std::uint64_t elapsed_ms{0};
+        std::uint64_t rendered_image{0};
+        UiWorkspace workspace{UiWorkspace::Play};
+        UiPresentation presentation{UiPresentation::Dimensional};
+        ViewOverlay overlay{ViewOverlay::None};
+        int window_width{0};
+        int window_height{0};
+        InspectionRuntimeInfo runtime{};
+        InspectionSnapshotState snapshot_state{InspectionSnapshotState::Unavailable};
+        bool controls_pending{false};
+        std::uint64_t frame_clock{0};
+        std::uint64_t publication_revision{0};
+    };
+
+    static void write_presentation_observation(std::ostream& output,
+                                               const PresentationObservation& observation) {
+        output << "{\"elapsed_ms\":" << observation.elapsed_ms
+               << ",\"rendered_image\":" << observation.rendered_image << ",\"workspace\":";
+        json_string(output, workspace_name(observation.workspace));
+        output << ",\"presentation\":";
+        json_string(output, presentation_name(observation.presentation));
+        output << ",\"overlay\":"; json_string(output, overlay_name(observation.overlay));
+        output << ",\"window_width\":" << observation.window_width
+               << ",\"window_height\":" << observation.window_height
+               << ",\"inspection\":{\"snapshot_available\":" << observation.runtime.snapshot_available
+               << ",\"snapshot_read_succeeded\":" << observation.runtime.snapshot_read_succeeded
+               << ",\"snapshot_state\":";
+        json_string(output, inspection_state_name(observation.snapshot_state));
+        output << ",\"controls_pending\":" << observation.controls_pending
+               << ",\"frame_clock\":" << observation.frame_clock
+               << ",\"publication_revision\":" << observation.publication_revision << "}}";
+    }
+
+    static void write_presentation_observation(std::ostream& output,
+                                               const std::optional<PresentationObservation>& observation) {
+        if (observation) write_presentation_observation(output, *observation);
+        else output << "null";
+    }
+
+    void write_presentation_json(std::ostream& output) const {
+        output << "{\"initial_workspace\":"; json_string(output, workspace_name(options_.workspace));
+        output << ",\"initial_presentation\":"; json_string(output, presentation_name(options_.presentation));
+        output << ",\"observation_capacity\":" << kPresentationObservationCapacity
+               << ",\"observations_truncated\":" << presentation_observations_truncated_
+               << ",\"last_painted\":";
+        write_presentation_observation(output, last_painted_);
+        output << ",\"screenshot\":"; write_presentation_observation(output, screenshot_presentation_);
+        output << ",\"before_shutdown\":"; write_presentation_observation(output, presentation_before_shutdown_);
+        output << ",\"observations\":[";
+        for (std::size_t index = 0; index < presentation_observations_.size(); ++index) {
+            if (index != 0) output << ',';
+            write_presentation_observation(output, presentation_observations_[index]);
+        }
+        output << "]}";
+    }
+
+    void record_painted_presentation(std::uint64_t elapsed, const InspectionDocument& inspection) {
+        const auto& view = ui_.view();
+        const PresentationObservation observation{elapsed, render_count_, view.workspace, view.presentation,
+            overlay_, window_width_, window_height_, {snapshot_available_, snapshot_read_succeeded_},
+            inspection.snapshot_state, inspection.controls_pending, inspection.frame_clock,
+            inspection.publication_revision};
+        last_painted_ = observation;
+        // Retain the first painted frame and visible-state transitions. The
+        // latest frame and capture are always exact even if this history fills.
+        if (!presentation_observations_.empty()) {
+            const auto& previous = presentation_observations_.back();
+            if (previous.workspace == observation.workspace && previous.presentation == observation.presentation &&
+                previous.overlay == observation.overlay && previous.window_width == observation.window_width &&
+                previous.window_height == observation.window_height &&
+                previous.runtime.snapshot_available == observation.runtime.snapshot_available &&
+                previous.runtime.snapshot_read_succeeded == observation.runtime.snapshot_read_succeeded &&
+                previous.snapshot_state == observation.snapshot_state &&
+                previous.controls_pending == observation.controls_pending) return;
+        }
+        if (presentation_observations_.size() == kPresentationObservationCapacity) {
+            presentation_observations_truncated_ = true;
+            return;
+        }
+        presentation_observations_.push_back(observation);
+    }
 
     [[nodiscard]] bool midi_replay_requested() const noexcept {
         return !options_.midi_script.empty();
@@ -1523,7 +1677,8 @@ private:
 
     void observe() {
         SessionSnapshot candidate;
-        if (!session_.read_snapshot(candidate)) return;
+        snapshot_read_succeeded_ = session_.read_snapshot(candidate);
+        if (!snapshot_read_succeeded_) return;
         const bool recovered = snapshot_available_ && candidate.recovery_count > snapshot_.recovery_count;
         snapshot_ = candidate;
         snapshot_available_ = true;
@@ -2104,12 +2259,16 @@ private:
         information.selected_midi_channels = {selected_midi_routing_.upper_channel,
             selected_midi_routing_.lower_channel, selected_midi_routing_.pedal_channel};
         information.midi_messages = midi_input_.diagnostics().packets;
+        const auto inspection = make_inspection_document(profile_, ui_.view(),
+            {snapshot_available_, snapshot_read_succeeded_});
+        information.inspection = &inspection;
         paint_instrument(*drawing_, ui_, information);
         if (overlay_ != ViewOverlay::None) drawing_->outline(modal_rectangles()[modal_focus_], kUiFocusCyan, 2.0F);
         if (SDL_RenderFlush(renderer_.get()) != 0) {
             fail(std::string("Cannot render instrument: ") + SDL_GetError()); return false;
         }
         ++render_count_;
+        record_painted_presentation(elapsed, inspection);
         // Keys were painted from this main-thread copy. A queued key-up does
         // not change that frame, even if the callback has since applied it.
         const auto& painted = ui_.view().applied;
@@ -2126,6 +2285,7 @@ private:
             std::string error;
             // The backbuffer is defined here; RenderPresent invalidates it.
             screenshot_written_ = drawing_->save_bmp(cli::path_text(options_.screenshot), error);
+            if (screenshot_written_) screenshot_presentation_ = last_painted_;
             screenshot_while_held_ = screenshot_written_ && (smoke_capture || (replay_capture && any_held(painted)));
             if (!screenshot_written_) { fail("Cannot save screenshot: " + error); fatal_failure_ = true; }
         }
@@ -2156,6 +2316,10 @@ private:
     std::unique_ptr<Drawing> drawing_; // Font textures precede renderer/window destruction.
     ScriptedInput replay_; // The window outlives its replay helper.
     std::vector<ReplayObservation> replay_observations_;
+    std::vector<PresentationObservation> presentation_observations_;
+    std::optional<PresentationObservation> last_painted_;
+    std::optional<PresentationObservation> screenshot_presentation_;
+    std::optional<PresentationObservation> presentation_before_shutdown_;
     AudioDeviceConfig config_;
     AudioDeviceConfig selected_config_;
     std::optional<ControlSnapshot> intended_controls_;
@@ -2242,6 +2406,8 @@ private:
     bool midi_discovery_pending_before_shutdown_{false};
     bool captured_{false};
     bool snapshot_available_{false};
+    bool snapshot_read_succeeded_{false};
+    bool presentation_observations_truncated_{false};
     bool fatal_failure_{false};
     bool screenshot_attempted_{false};
     bool screenshot_written_{false};

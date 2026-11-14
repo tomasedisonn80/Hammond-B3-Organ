@@ -52,6 +52,8 @@ if(HAMMOND_BUILD_STANDALONE AND TARGET hammond_standalone)
         "${_hammond_standalone_source}/docs/STANDALONE_APP.md"
         "${_hammond_standalone_source}/docs/STANDALONE_MODEL.md"
         "${_hammond_standalone_source}/docs/MIDI_UI_RUNBOOK.md"
+        "${_hammond_standalone_source}/docs/PRESET_RUNBOOK.md"
+        "${_hammond_standalone_source}/docs/INTERFACE_RUNBOOK.md"
         "${_hammond_standalone_source}/THIRD_PARTY_NOTICES.md"
         "${HAMMOND_SDL2_ROOT}/LICENSE.txt"
         "${_hammond_standalone_fonts}/LICENSE-DejaVu.txt"
@@ -61,6 +63,7 @@ if(HAMMOND_BUILD_STANDALONE AND TARGET hammond_standalone)
         "${_hammond_standalone_atlas}")
     set(_hammond_standalone_metadata_names
         STANDALONE_INSTALL.md STANDALONE_APP.md STANDALONE_MODEL.md MIDI_UI_RUNBOOK.md
+        PRESET_RUNBOOK.md INTERFACE_RUNBOOK.md
         THIRD_PARTY_NOTICES.md LICENSE-SDL2.txt LICENSE-DejaVu.txt sdl2-lock.json
         font-source-manifest.json reference-source-manifest.json atlas-reference.json)
     set(_hammond_standalone_midi_json [=[

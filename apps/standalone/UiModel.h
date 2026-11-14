@@ -7,6 +7,7 @@
 #include "hammond/PerformanceInput.h"
 
 #include <array>
+#include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <span>
@@ -15,8 +16,7 @@
 
 namespace hammond::standalone {
 
-// Frozen SDK-free interface; UiModel.cpp is a subsequent implementation task.
-// Main-thread values only. Neither drawing nor input enters a live Engine.
+// SDK-free, main-thread values only. Neither drawing nor input enters a live Engine.
 inline constexpr std::string_view kUiModelId = "standalone-dry-ui-v1";
 inline constexpr float kUiReferenceWidth = 1280.0F;
 inline constexpr float kUiReferenceHeight = 900.0F;
@@ -24,7 +24,9 @@ inline constexpr float kUiMinimumWidth = 960.0F;
 inline constexpr float kUiMinimumHeight = 700.0F;
 inline constexpr float kUiMaximumDimension = 8192.0F;
 inline constexpr std::size_t kUiVisibleDrawbars = kManualCount * kDrawbarCount;
-inline constexpr std::size_t kUiMaxControls = 64;
+inline constexpr std::size_t kUiWorkspaceCount = 3;
+inline constexpr std::size_t kUiCommonControlCount = 10;
+inline constexpr std::size_t kUiMaxControls = 68;
 inline constexpr std::size_t kUiMaxActions = 4;
 inline constexpr std::uint8_t kUiNoteVelocity = 127;
 
@@ -60,7 +62,39 @@ struct UiRect {
     }
 };
 
+// Clockwise TL/TR/BR/BL with horizontal top and bottom edges. Shared by
+// rendering and input; invalid, collapsed and non-finite quads are empty.
+struct UiQuad {
+    std::array<UiPoint, 4> points{};
+
+    [[nodiscard]] bool contains(UiPoint point) const noexcept {
+        if (!std::isfinite(point.x) || !std::isfinite(point.y)) return false;
+        for (const auto& vertex : points) {
+            if (!std::isfinite(vertex.x) || !std::isfinite(vertex.y)) return false;
+        }
+        const auto& top_left = points[0];
+        const auto& top_right = points[1];
+        const auto& bottom_right = points[2];
+        const auto& bottom_left = points[3];
+        if (top_left.y != top_right.y || bottom_left.y != bottom_right.y ||
+            bottom_left.y <= top_left.y || top_right.x <= top_left.x ||
+            bottom_right.x <= bottom_left.x || point.y < top_left.y ||
+            point.y >= bottom_left.y) return false;
+        // Double intermediates also keep forged finite float endpoints from
+        // overflowing during interpolation.
+        const double fraction = (static_cast<double>(point.y) - top_left.y) /
+                                (static_cast<double>(bottom_left.y) - top_left.y);
+        const double left = top_left.x +
+            (static_cast<double>(bottom_left.x) - top_left.x) * fraction;
+        const double right = top_right.x +
+            (static_cast<double>(bottom_right.x) - top_right.x) * fraction;
+        return point.x >= left && point.x < right;
+    }
+};
+
 enum class UiTarget : std::uint8_t { Upper, Lower, Pedals };
+enum class UiWorkspace : std::uint8_t { Play = 0, Rotary = 1, Service = 2 };
+enum class UiPresentation : std::uint8_t { Dimensional = 0, Flat = 1 };
 
 // Manual notes use MIDI 36..96; pedals use one-based IDs 1..25. The tagged
 // value is never a tone-source number, physical terminal or array index.
@@ -92,6 +126,8 @@ enum class UiControlKind : std::uint8_t {
     PedalKey,
     MidiSettings,
     PresetKey = 19,
+    Workspace = 20,
+    Presentation = 21,
 };
 
 // Semantic identity, independent of rectangle, ordinal in a list or focus.
@@ -102,6 +138,8 @@ enum class UiControlKind : std::uint8_t {
 // canonical defaults. PresetKey: manual/index 0..11, canonical unused bank A;
 // all twelve keys of a manual target its one preset-selection parameter.
 // SoundingBank and CancelManual remain semantic compatibility actions only.
+// Workspace: canonical Upper/A with index Play=0, Rotary=1, Service=2.
+// Presentation: canonical Upper/A/index 0, toggling Dimensional/Flat.
 struct UiControlId {
     UiControlKind kind{UiControlKind::None};
     Manual manual{Manual::Upper};
@@ -123,11 +161,14 @@ struct UiKeyGeometry {
     UiNote note{};
     UiRect bounds{};
     bool accidental{false};
+    UiQuad hit{};
+    UiQuad top{};
+    UiQuad front{};
 };
 
-// A single layout owns every visible/hit rectangle. Draw naturals first and
+// A single layout owns every visible/hit region. Draw naturals first and
 // accidentals last; hit-test accidentals first. Arrays are in ascending pitch
-// or pedal-ID order. The 64 control slots include 24 PresetKey controls and
+// or pedal-ID order. The 68 control slots include 24 PresetKey controls and
 // exclude the 147 playing-key slots. Presets also paint natural-first and hit
 // accidental-first, independently of their semantic insertion order.
 struct UiLayout {
@@ -149,6 +190,9 @@ struct UiLayout {
     std::array<std::array<UiKeyGeometry, kManualKeyCount>, kManualCount> manual_keys{};
     std::array<UiKeyGeometry, kPedalCount> pedal_keys{};
     std::array<UiRect, kManualCount> preset_key_panels{};
+    UiWorkspace workspace{UiWorkspace::Play};
+    UiPresentation presentation{UiPresentation::Dimensional};
+    UiRect workspace_panel{};
 };
 
 // Validation failure preserves destination. The same function supplies the
@@ -156,7 +200,10 @@ struct UiLayout {
 [[nodiscard]] bool make_ui_layout(
     float width, float height,
     const std::array<DrawbarBank, kManualCount>& edited_banks,
-    UiLayout& destination) noexcept;
+    UiLayout& destination,
+    UiWorkspace workspace = UiWorkspace::Play,
+    UiPresentation presentation = UiPresentation::Dimensional) noexcept;
+[[nodiscard]] bool ui_control_visible(const UiLayout& layout, UiControlId control) noexcept;
 [[nodiscard]] UiControlId ui_hit_test(const UiLayout& layout, UiPoint point) noexcept;
 [[nodiscard]] bool ui_parameter_id(UiControlId control,
                                    std::uint32_t& destination) noexcept;
@@ -170,6 +217,7 @@ enum class UiKey : std::uint8_t {
     A, W, S, E, D, F, T, G, Y, H, U, J, K, O, L, P, Semicolon,
     Tab, Left, Right, Up, Down, Home, End, Space, Enter, Escape,
     LeftBracket, RightBracket, F1, F2, F3,
+    F4, F5, F6, F7,
     Count,
 };
 
@@ -236,7 +284,8 @@ struct UiDrawbarGesture {
 // Complete fixed-size main-thread presentation state. controls is the latest
 // desired whole snapshot; applied.controls is authoritative for SOUNDING and
 // actual held-key indicators. Pending edits are labeled until resolved.
-// Edit-bank/focus/octave/saved marker are never musical snapshot fields.
+// Edit-bank/focus/octave/saved marker/workspace/presentation are never musical
+// snapshot fields. Workspace memories retain the last visible non-tab target.
 struct UiViewState {
     ControlSnapshot controls{};
     SessionSnapshot applied{};
@@ -253,6 +302,9 @@ struct UiViewState {
     bool pointer_captured{false};
     bool input_recovery{false};
     SessionStatus last_submit_status{};
+    UiWorkspace workspace{UiWorkspace::Play};
+    UiPresentation presentation{UiPresentation::Dimensional};
+    std::array<UiControlId, kUiWorkspaceCount> workspace_focus{};
 };
 
 class UiModel {
@@ -265,6 +317,10 @@ public:
     // Finite sizes from minimum through kUiMaximumDimension; invalid input preserves state.
     // Resize closes a parameter drag, keeps note owners/focus and emits no audio.
     [[nodiscard]] bool resize(float width, float height) noexcept;
+    // Transient presentation changes never publish musical actions. Invalid
+    // values preserve all state; selecting the current value preserves gestures.
+    [[nodiscard]] bool set_workspace(UiWorkspace workspace) noexcept;
+    [[nodiscard]] bool set_presentation(UiPresentation presentation) noexcept;
     [[nodiscard]] UiActions key(const UiKeyInput& input) noexcept;
     [[nodiscard]] UiActions pointer(const UiPointerInput& input) noexcept;
     [[nodiscard]] UiActions activate(UiControlId control) noexcept;
@@ -318,6 +374,8 @@ static_assert(kUiVisibleDrawbars == 18);
 static_assert(kManualKeyCount == 61 && kPedalCount == 25);
 static_assert(static_cast<std::uint8_t>(UiControlKind::MidiSettings) == 18);
 static_assert(static_cast<std::uint8_t>(UiControlKind::PresetKey) == 19);
+static_assert(static_cast<std::uint8_t>(UiControlKind::Workspace) == 20);
+static_assert(static_cast<std::uint8_t>(UiControlKind::Presentation) == 21);
 static_assert(kPresetSelectionCount == 12);
 static_assert(kParameterCount == 47);
 

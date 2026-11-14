@@ -41,7 +41,7 @@ UiControlId preset(unsigned manual, unsigned index) {
 }
 
 void focus(UiModel& model, UiControlId id) {
-    for (unsigned i = 0; i < 68 && model.view().focus != id; ++i) {
+    for (unsigned i = 0; i < 71 && model.view().focus != id; ++i) {
         require(model.key({UiKey::Tab, true}).count == 0, "focus navigation emits no action");
         require(model.key({UiKey::Tab, false}).count == 0, "Tab release emits no action");
     }

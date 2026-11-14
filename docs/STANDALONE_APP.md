@@ -2,8 +2,11 @@
 
 `hammond_standalone` is an optional SDL2 instrument around the existing nominal
 dry Engine, with optional explicitly enabled RtMidi input. The
-[MIDI/UI runbook](MIDI_UI_RUNBOOK.md) gives the complete setup, controller map,
-recovery and bounded replay procedure; the sibling
+[interface runbook](INTERFACE_RUNBOOK.md) gives current Play/Rotary/Service,
+Flat, focus and read-only inspection workflows. The
+[preset runbook](PRESET_RUNBOOK.md) gives build, registration and state procedures,
+and the [MIDI/UI runbook](MIDI_UI_RUNBOOK.md) retains the controller map,
+platform prerequisites and bounded replay procedure. The sibling
 [installation guide](STANDALONE_INSTALL.md) and [model guide](STANDALONE_MODEL.md)
 describe relocation and musical limits. The application entry point is
 [`main.cpp`](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/apps/standalone/main.cpp); its audio, UI and file boundaries are
@@ -58,6 +61,8 @@ SDK. The native text uses the [embedded font atlases](https://github.com/tomased
 | `--state PATH` | Selects the musical file used at startup and by Save/Load. |
 | `--width N` | Initial logical width, 960 through 8192; default 1280. |
 | `--height N` | Initial logical height, 700 through 8192; default 900. |
+| `--workspace NAME` | Initial `play`, `rotary` or `service` workspace; default `play`. This is transient presentation state. |
+| `--flat` | Start in Flat presentation; default is dimensional. Musical controls are unchanged. |
 | `--smoke-ms N` | Runs the actual window and device for a bounded 250 through 10000 ms smoke interval. |
 | `--input-script PATH` | Reads a bounded `B3UIREPLAY1` event script, runs the ordinary application handlers and stops after delivery, duration and command acknowledgment. Mutually exclusive with `--smoke-ms`. |
 | `--midi-script PATH` | Reads bounded synthetic `B3MIDIREPLAY1` input. Starts disconnected and never opens a native MIDI device. Excludes `--midi-port`, `--list-midi` and `--smoke-ms`; paired UI/MIDI scripts require equal declared durations. |
@@ -135,14 +140,18 @@ not a claim of an executed Windows or macOS build.
 The resizable window starts at **1280 × 900 logical units**, has a minimum of
 **960 × 700**, and limits each dimension to 8192. The drawing scale comes from
 the actual drawable size; pointer input and the model use window coordinates.
-Both the renderer and input use the same `UiLayout` rectangles.
+Both the renderer and input use the same `UiLayout` control regions and playing
+key quadrilaterals. Dimensional manuals have sloped sides and front faces;
+Flat uses rectangular playing keys with the same semantic note identities.
 
 | Input | Behavior |
 | --- | --- |
 | `A W S E D F T G Y H U J K O L P ;` | Seventeen chromatic positions, C through E, using physical scancodes. |
 | `F1`, `F2`, `F3` | Select upper manual, lower manual, or pedals for new computer-key presses. |
+| `F4`, `F5`, `F6` | Select Play, Rotary or Service. Computer-piano playing remains available in each workspace. |
+| `F7` | Toggle Dimensional/Flat presentation without changing musical controls. |
 | `[` / `]` | Move the computer keyboard octave within the model's limits. |
-| `Tab` / `Shift+Tab` | Move focus through controls and the roving keyboard groups. |
+| `Tab` / `Shift+Tab` | Traverse 71 visible stops in Play, including three roving keyboard groups; traverse ten common controls in Rotary/Service. |
 | Arrow keys, `Home`, `End` | Adjust the focused drawbar/expression or move the focused playing key. |
 | `Space` | Activate a button, or hold the focused manual/pedal key until release. |
 | `Enter` | Activate a focused button. |
@@ -153,6 +162,10 @@ Both the renderer and input use the same `UiLayout` rectangles.
 
 Note release always reaches `UiModel` before modifier, focus or modal gates.
 Changing target, octave or focus cannot retarget an existing note's release.
+Workspace, Flat and resize changes also preserve the original release owner.
+Each workspace remembers its non-tab focus; hidden Play controls reject new
+pointer, Space and arrow activation in Rotary/Service. Changing presentation
+closes a parameter drag and suppresses further moves until its original release.
 Pointer playing requests OS capture; a failed request immediately delivers
 `CaptureLost`. Release outside the window, window deactivation/minimization,
 lost capture and shutdown release the model's UI ownership safely. Escape is
@@ -165,7 +178,7 @@ banks muted and retains the existing default expression/percussion controls.
 This is a convenience for the nominal model, not a factory preset or a change
 to saved-state defaults. An existing valid state replaces that proposal.
 
-The current player view uses walnut decoration, dark panels, brass headings,
+The current Play view uses walnut decoration, dark panels, brass headings,
 adjacent drawbar racks and stacked manuals. At widths of at least 1400 logical
 units it also shows the source-art cabinet and an explicit unavailable-sound
 status card. The source is the atlas cover/page 409 generated concept, retained
@@ -173,15 +186,29 @@ with [provenance](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/d
 are decorative; all keys, controls, values and focus states remain dynamic.
 The source's inaccurate legends and key counts do not override the correct
 61+61 manuals, 25 pedals or actual control semantics. The
-[independent reference review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/reviews/MIDI_UI_REFERENCE_REVIEW.md) retains
-material/proportion differences and the unresolved minimum-size thin-glyph
-legibility defect. A source image is not a runtime screenshot or a verified
+[current native gallery](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v1/README.md)
+retains actual Play, Rotary, Service and Flat frames with source/executable/input
+identities and remaining reference differences. Earlier galleries retain their
+own dated observations. A source image is not a runtime screenshot or a verified
 one-to-one appearance result.
+
+The layout keeps 68 ordinary controls, including 24 reversed preset keys, plus
+147 playing keys. Play exposes the performance body; Rotary exposes cabinet
+reference facts and Service exposes six copied-state cards. Both inspection
+bodies are read-only. Their current/retained/stopped/unprepared/unavailable
+captions, availability/evidence labels and pending/applied distinction are
+explained in the [interface guide](INTERFACE_RUNBOOK.md#read-service-and-rotary-correctly).
+Neither workspace adds physical telemetry or connects scanner/AO-28/Leslie audio.
 
 ## MIDI settings, controllers and recovery
 
-Choose **MIDI** or **Ctrl+M**. Opening the dialog enumerates exact native input
-names after **No input**; close and reopen to refresh. The eight focus positions
+Choose **MIDI** or **Ctrl+M**. Opening the dialog requests background discovery
+of exact native input names after **No input**. The query does not block the UI
+event loop, painting or audio. Close and reopen to request an explicit refresh.
+While **Searching MIDI inputs** is visible, No input/Apply, Disconnect and Close
+remain usable; selecting a physical port requires the current query to finish.
+A late result does not automatically select/open a port or overwrite a newer
+Apply/Disconnect outcome. The eight focus positions
 are previous port, next port, upper channel, lower channel, pedal channel,
 Apply/Connect, Disconnect and Close. Pointer activation and Tab/Shift+Tab use the
 same controls. Arrows change selected values, Home/End select endpoints, and
@@ -258,7 +285,8 @@ acknowledged coherent `SessionSnapshot.controls`. If edits are pending, it
 waits at most two seconds; changed controls, rejection or recovery cancel the
 request. The exact successfully written copy becomes the clean-file reference.
 Held keys, owners, MIDI port/channel selections, audio/window settings and DSP
-histories are never saved. All 45 previous parameter records retain their meanings;
+histories, workspace, Flat presentation and focus are never saved. All 45 previous
+parameter records retain their meanings;
 two appended preset selectors bring the current count to 47. The writer emits
 `B3CONTROLS4`, while readers 1/2/3 remain available. See the
 [fixed-registration native workflow contract](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/PRESET_NATIVE_WORKFLOWS.md) for raw
@@ -292,7 +320,7 @@ not the callback's concurrently changing state at the instant the file is writte
 The time bound describes the event-loop interval;
 window/device setup, shutdown and file writing are additional work.
 
-JSON schema version 3 records `profile`, `runtime`, `audio`, `midi`, `session`,
+JSON schema version 3 records `profile`, `runtime`, `audio`, `midi`, `presentation`, `session`,
 `controls`, `smoke`, `state_path`, `status`, and `errors`. Runtime includes the
 actual video driver, renderer, window/drawable sizes and rendered image count.
 Audio includes requested and obtained configurations, native float32 format,
@@ -309,6 +337,13 @@ barrier. These copied values make a failed replay diagnosable before shutdown
 cleanup changes state; they do not weaken the completion requirement.
 The final device counters are copied after callbacks have joined.
 
+`presentation` keeps initial choices, a bounded observation history,
+`last_painted`, `screenshot` and `before_shutdown` records. Each painted record
+identifies workspace (`play|rotary|service`), presentation (`dimensional|flat`),
+overlay, logical size and copied inspection status/frame/revision. Screenshot
+identity is frozen from the actual painted frame; final shutdown data does not
+replace it. These fields do not change sound-control or saved-state meanings.
+
 `midi` identifies the compiled backend, requested and observed port, selected
 channels, connection/retirement state, decoder/inbox/device counters and the
 source (`none`, `native` or `synthetic-replay`). Backend availability means
@@ -316,6 +351,12 @@ compiled capability, not successful physical enumeration. Synthetic input keeps
 native generation and native callback counts at zero. Optional `replay` and
 `midi_replay` objects retain their respective completion results; neither is
 present merely because MIDI support was compiled.
+
+The MIDI `discovery` fields distinguish requests, starts, completions, discarded
+results, failures and pending/join state at shutdown. Shutdown joins outstanding
+native discovery after audio closes; the operating-system query has no promised
+hard deadline. The separate `--list-midi` command still performs explicit native
+enumeration rather than using the modal's background workflow.
 
 Smoke exits nonzero for an output that is not open/running before shutdown,
 missing callbacks or rendered frames, missing observed

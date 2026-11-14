@@ -1,0 +1,29 @@
+{
+  "assignment": 16,
+  "source_head": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "owned_source_sha256": {
+    "apps/standalone/main.cpp": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689",
+    "apps/standalone/ScriptedInput.cpp": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/native_tests/test_standalone_input_replay.cpp": "35ccdc0eb81ac0d583776fccc76a86101059f10edb8b36d7dc75ec14391c3c84",
+    "docs/STANDALONE_INPUT_REPLAY.md": "da2f71ee6047bd175361376c9ef826ecd6407e5c434d708a8e1d5fe880c9cf5b"
+  },
+  "checks": {
+    "strict_main_syntax": "passed; native generated include paths and -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror",
+    "python_syntax": "passed",
+    "native_replay_parser": "passed 1/1 CTest; 39-key whitelist, ordinary bounds and queue semantics preserved",
+    "native_workspace_runtime": "not_run; renderer integration still in progress"
+  },
+  "limitations": [
+    "SDL parser acceptance uses dummy video",
+    "Native full application renderer integration is pending",
+    "No physical device, native accessibility, timing deadline or instrument-fidelity claim"
+  ],
+  "native_app_test_methods": 21,
+  "added_native_app_methods": [
+    "test_invalid_workspaces_reject_before_device_or_output",
+    "test_workspace_and_flat_startup_preserve_controls_and_actual_painted_view",
+    "test_workspace_shortcuts_paint_views_preserve_holds_and_respect_modal_gate"
+  ],
+  "parser_executable_sha256": "d563511e825e084a07411900081dbef5a5936e905bbfe97292da367e809f5be1"
+}

@@ -2,7 +2,7 @@
 # only when the user explicitly enables the native application.
 find_package(Threads REQUIRED)
 add_library(hammond_standalone_support STATIC
-    Session.cpp UiModel.cpp StateFiles.cpp MidiInput.cpp MidiDevice.cpp MidiReplay.cpp)
+    Session.cpp UiModel.cpp InspectionModel.cpp StateFiles.cpp MidiInput.cpp MidiDevice.cpp MidiReplay.cpp)
 target_link_libraries(hammond_standalone_support PUBLIC hammond_core Threads::Threads)
 target_include_directories(hammond_standalone_support PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_compile_definitions(hammond_standalone_support PRIVATE
@@ -151,6 +151,34 @@ if(HAMMOND_BUILD_STANDALONE)
         set_tests_properties(test_standalone_drawing PROPERTIES
             TIMEOUT 15 LABELS "standalone;native")
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_drawing)
+        add_executable(test_standalone_quad_drawing native_tests/test_standalone_quad_drawing.cpp)
+        target_link_libraries(test_standalone_quad_drawing PRIVATE hammond_standalone_drawing)
+        target_compile_definitions(test_standalone_quad_drawing PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_quad_drawing)
+        add_test(NAME test_standalone_quad_drawing COMMAND test_standalone_quad_drawing)
+        set_tests_properties(test_standalone_quad_drawing PROPERTIES
+            TIMEOUT 30 LABELS "standalone;native;geometry")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_quad_drawing)
+        add_executable(test_standalone_workspace_raster
+            native_tests/test_standalone_workspace_raster.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_workspace_raster PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_workspace_raster PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_workspace_raster)
+        add_test(NAME test_standalone_workspace_raster COMMAND test_standalone_workspace_raster)
+        set_tests_properties(test_standalone_workspace_raster PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;workspace;geometry")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_workspace_raster)
+        add_executable(test_standalone_scaled_view
+            native_tests/test_standalone_scaled_view.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_scaled_view PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_scaled_view PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_scaled_view)
+        add_test(NAME test_standalone_scaled_view COMMAND test_standalone_scaled_view)
+        set_tests_properties(test_standalone_scaled_view PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;workspace")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_scaled_view)
         add_executable(test_standalone_preset_raster
             native_tests/test_standalone_preset_raster.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_preset_raster PRIVATE
@@ -230,6 +258,12 @@ if(HAMMOND_BUILD_STANDALONE)
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
                 "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_workflows.py")
         set_tests_properties(test_standalone_workflows PROPERTIES TIMEOUT 90 LABELS "standalone;native")
+        add_test(NAME test_standalone_workspace_replay
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_workspace_replay.py")
+        set_tests_properties(test_standalone_workspace_replay PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;workspace")
         add_test(NAME test_standalone_replay_boundaries
             COMMAND "${CMAKE_COMMAND}" -E env
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"

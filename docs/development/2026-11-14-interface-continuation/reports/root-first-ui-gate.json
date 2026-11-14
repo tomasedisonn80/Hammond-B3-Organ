@@ -1,0 +1,38 @@
+{
+  "base_commit": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "scope": "First coherent UI overlay, native application/replay/workflows only; concurrent SDK-free tests are separately qualified.",
+  "native_source_sha256": {
+    "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/Drawing.cpp": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe",
+    "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/InstrumentView.h": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+    "apps/standalone/InstrumentView.cpp": "1fccdc4ef3943be029e320571faad42b21cb053eb8e9ee205ce63808a51b7831",
+    "apps/standalone/main.cpp": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689",
+    "apps/standalone/ScriptedInput.cpp": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23",
+    "apps/standalone/CMakeLists.txt": "a9fd96cd28043b207d91d1e909402590cddbbba6412152ab2ba8d1cf49f50071"
+  },
+  "native_executable_sha256": "ca095152e8e94b4b1a51fa26f0e1fca346cbb2a7acfd7ec48b0a5839d83151fd",
+  "test_source_sha256": {
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "945f72c6deff94736c4b37edf7e448eb8b5e78aa52fd8e9809fb2e0c743aad98",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "512fc173d4f8fbf976e6d2acd26d26dcd5a3bb70415cf5f2a959b6ad648070c3",
+    "apps/standalone/native_tests/test_standalone_replay_boundaries.py": "b3b36600ac4da2f8619326f73752b885d186fc59e45986ae9f308285cb53b817"
+  },
+  "result": "3/4 pass; legacy workflows has five failures in two methods",
+  "elapsed_seconds": 107.31,
+  "passed": [
+    "test_standalone_app",
+    "test_standalone_native_midi_replay",
+    "test_standalone_replay_boundaries"
+  ],
+  "failed": {
+    "test_standalone_workflows": [
+      "off-window pointer capture: accepted note-ons 1 != 2",
+      "resize focus initial Tab prefix: submitted 3 != startup 1 across four cases"
+    ]
+  },
+  "next_action": "A21 independently distinguishes obsolete literal geometry/order fixtures from any production defect; preserve assertions and deadlines."
+}

@@ -32,12 +32,21 @@ Negative coordinates are allowed; negative time, duration and sizes fail.
 | `quit` | Queue `SDL_QUIT` through the ordinary shutdown path. |
 
 Coordinates X and Y each range from -8192 through 16384. KEY is case-sensitive:
-`A W S E D F T G Y H U J K O L P Semicolon Tab Left Right Up Down Home End
-Space Return Escape LeftBracket RightBracket F1 F2 F3 Comma Slash`.
+`A W S E D F T G Y H U J K O L P M Semicolon Tab Left Right Up Down Home End
+Space Return Escape LeftBracket RightBracket F1 F2 F3 F4 F5 F6 F7 Comma Slash`.
 MODIFIERS is `none` or `+`-joined `shift`, `ctrl`, `alt`, `meta` in any order,
 without duplicates or empty components. The adapter sets canonical left-side
 modifier bits and consistent physical scancodes/unshifted US keycodes. It does
 not send modifier-key events, OS keystrokes, or change global SDL key state.
+
+F4/F5/F6 select Play/Rotary/Service, and F7 toggles Dimensional/Flat. These
+presentation shortcuts have the same repeat, physical-release, modifier and
+modal gates as native keyboard input. They leave sound controls and held owners
+unchanged. F1/F2/F3, octave shortcuts and computer-piano keys remain available
+in every workspace. `M` admits the established Ctrl/Command+M MIDI shortcut.
+The optional `--workspace play|rotary|service` and `--flat` switches select the
+initial presentation before device startup; invalid values fail during CLI
+admission. The default is Play/Dimensional.
 
 ```text
 B3UIREPLAY1
@@ -93,3 +102,31 @@ These values do not change SDL's global mouse state or OS capture behavior.
 Dummy-backend capture failure exercises failure/release handling only. Physical
 mouse capture, real device timing, accessibility, cross-platform execution and
 acoustic fidelity need separate evidence. See the [assignment note](development/2026-11-13-next-phases/26-input-replay.md).
+
+## Presentation and inspection observations
+
+Diagnostics retain schema version 3 and all existing musical replay semantics.
+The separate top-level `presentation` object records `initial_workspace` and
+`initial_presentation`, plus `last_painted`, `screenshot`, `before_shutdown` and
+up to 512 transition `observations`. A frame record contains its elapsed time,
+one-based rendered-image number, workspace (`play|rotary|service`), presentation
+(`dimensional|flat`), overlay, logical window dimensions and copied inspection
+status. Absent painted/captured records are JSON null. `screenshot` is set only
+after a BMP succeeds; `before_shutdown` freezes the last successfully flushed
+frame before ordinary note/device cleanup. The later joined Session snapshot
+does not replace these records.
+
+`inspection` records whether any Session copy is available, whether the latest
+actual snapshot read succeeded, the document's snapshot state
+(`unavailable|unprepared|retained|stopped|current`), pending controls, copied frame
+clock and publication revision. A failed read retains the preceding copied
+state and marks it retained when prepared. The document is rebuilt each frame
+from the loaded profile, UiViewState and those two read flags, without Engine
+access or a second device query.
+
+History retains the first painted frame and changes to workspace, presentation,
+overlay, size, snapshot status or pending status. It omits clock-only changes;
+it is neither a musical timeline nor every frame. `observations_truncated`
+signals a full history without changing playback, shutdown deadlines or the
+exact latest/captured records. Several events consumed before one paint may
+therefore appear as one resulting frame, not as unpainted intermediate views.

@@ -1,0 +1,45 @@
+UpdateCTestConfiguration  from :/workspace/scratch/601951e27dc3/build-native/DartConfiguration.tcl
+Parse Config file:/workspace/scratch/601951e27dc3/build-native/DartConfiguration.tcl
+Test project /workspace/scratch/601951e27dc3/build-native
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 134
+    Start 134: test_standalone_workspace_raster
+
+134: Test command: /workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_workspace_raster
+134: Working Directory: /workspace/scratch/601951e27dc3/build-native/apps/standalone
+134: Test timeout computed to be: 60
+134: FAIL: 960x700 Dimensional Pedals index 1 has a visibly darker front below its top
+134: FAIL: 960x700 Dimensional Pedals index 13 has a visibly darker front below its top
+134: FAIL: 960x700 Dimensional Pedals index 22 has a visibly darker front below its top
+134: FAIL: 1672x941 Dimensional Pedals index 1 has a visibly darker front below its top
+134: FAIL: 1672x941 Dimensional Pedals index 13 has a visibly darker front below its top
+134: FAIL: 1672x941 Dimensional Pedals index 22 has a visibly darker front below its top
+134: Native workspace raster: 150 frames; 108 held, 108 held+focus, 108 front/Flat, 54 two-natural occlusion, 12 sloped-corner, 12 hidden-body checks; failures=6; 9.32618 seconds; actual paint_instrument, independent half-plane oracle, SDL software surface, no window/audio
+1/1 Test #134: test_standalone_workspace_raster ...***Failed    9.33 sec
+FAIL: 960x700 Dimensional Pedals index 1 has a visibly darker front below its top
+FAIL: 960x700 Dimensional Pedals index 13 has a visibly darker front below its top
+FAIL: 960x700 Dimensional Pedals index 22 has a visibly darker front below its top
+FAIL: 1672x941 Dimensional Pedals index 1 has a visibly darker front below its top
+FAIL: 1672x941 Dimensional Pedals index 13 has a visibly darker front below its top
+FAIL: 1672x941 Dimensional Pedals index 22 has a visibly darker front below its top
+Native workspace raster: 150 frames; 108 held, 108 held+focus, 108 front/Flat, 54 two-natural occlusion, 12 sloped-corner, 12 hidden-body checks; failures=6; 9.32618 seconds; actual paint_instrument, independent half-plane oracle, SDL software surface, no window/audio
+
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+geometry      =   9.33 sec*proc (1 test)
+native        =   9.33 sec*proc (1 test)
+standalone    =   9.33 sec*proc (1 test)
+workspace     =   9.33 sec*proc (1 test)
+
+Total Test time (real) =   9.34 sec
+
+The following tests FAILED:
+	134 - test_standalone_workspace_raster (Failed)         geometry native standalone workspace
+Errors while running CTest

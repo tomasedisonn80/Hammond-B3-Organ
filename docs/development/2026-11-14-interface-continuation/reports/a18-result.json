@@ -1,0 +1,88 @@
+{
+  "worker": "/root/w03_a18_workspace_acceptance",
+  "head": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "source_kind": "Concurrent dirty worktree; hashes identify reviewed inputs",
+  "commands": [
+    {
+      "name": "build",
+      "arguments": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+        "--target",
+        "test_standalone_ui",
+        "test_standalone_preset_ui",
+        "test_standalone_workspace_acceptance",
+        "--parallel",
+        "3"
+      ],
+      "exit_code": 0,
+      "log": "a18-build.txt",
+      "log_sha256": "7deb2e85e6c4c1fc0ed745a9803ce2152623609186fa81509bdfeeae3e7bc0d4"
+    },
+    {
+      "name": "ctest",
+      "arguments": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+        "--output-on-failure",
+        "--no-tests=error",
+        "-R",
+        "^test_standalone_(ui|preset_ui|workspace_acceptance)$"
+      ],
+      "exit_code": 0,
+      "log": "a18-ctest.txt",
+      "log_sha256": "b3a1f17bfaa30bfe60757cceb82bbebbe3a2b90d9e94c42814f6b88737f8f0cf"
+    },
+    {
+      "name": "diff-check",
+      "arguments": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "apps/standalone/tests/test_standalone_ui.cpp",
+        "apps/standalone/tests/test_standalone_preset_ui.cpp",
+        "apps/standalone/native_tests/test_standalone_preset_raster.cpp"
+      ],
+      "exit_code": 0,
+      "log": "a18-diff-check.txt",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sources": {
+    "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/Session.h": "8c26342cafcad2022aabba273cdc8d22432fa3c450819f238fa8d546bc22528b",
+    "apps/standalone/Session.cpp": "196bc1872b526854a801ae09fcebf408a76c746e7d8e5f0ebd11d066e978f5af",
+    "apps/standalone/CMakeLists.txt": "a9fd96cd28043b207d91d1e909402590cddbbba6412152ab2ba8d1cf49f50071",
+    "apps/standalone/tests/test_standalone_ui.cpp": "9eee39fd57b08d97165f53aa667b21efc330cdb4e2498eb76d9820911a23a577",
+    "apps/standalone/tests/test_standalone_preset_ui.cpp": "8404e8872cd6eba30a9e99c44ab544af96f188d12f5e7f7545f4a59e474e0b4b",
+    "apps/standalone/tests/test_standalone_workspace_acceptance.cpp": "9e050bb3da027e2221659bc6c0e59d5a81bd096ad9ca899514647bce73c38505",
+    "apps/standalone/native_tests/test_standalone_preset_raster.cpp": "912b6197f00599230a2c57b1be95a66a44f2a78c4e625c3ff992869fbcc4afb8",
+    "docs/INTERFACE_WORKSPACE_CONTRACT.md": "baa4ba12a881d599c7f46065bed0a92495b7494e9ac4cbe2193db2e0d447a01f",
+    "docs/INTERFACE_GEOMETRY_CONTRACT.md": "f0a36fe9fc15743332453689d49d37e2a26ad5b8fa0ee1222d7d574695de05ae"
+  },
+  "binaries": {
+    "test_standalone_ui": {
+      "sha256": "b5ccc3587f397b38d4f5213cdc40454cbcad68a652a0d89df8fea79e2a0570fe",
+      "exit_code": 0,
+      "output": "Standalone UI acceptance: 9 behavioral scenarios passed"
+    },
+    "test_standalone_preset_ui": {
+      "sha256": "748a4a19c19372fb9fb68d150689289b6fefdf860ae0210873bd7c498eac6b4c",
+      "exit_code": 0,
+      "output": "Independent preset UI acceptance: 12 layouts, 549388 independently classified hit points, 288 route transitions, 48 keyboard activations, 144 focus-only moves, 753 invalid identities, 288 exact single-command pointer acknowledgments; passed"
+    },
+    "test_standalone_workspace_acceptance": {
+      "sha256": "344429a6a57cd1096a1b73c5f8a6eb9fd4a27829f0a53675e7d52958c47df782",
+      "exit_code": 0,
+      "output": "Workspace acceptance: 42 layout/mode/view cases, 5740 hidden semantic/pointer rejections, 56 focus-memory returns, 2041 atomic invalid operations, 14 real-Session ownership runs, 63 closed parameter gestures, 120 shortcut suppression cases passed"
+    }
+  },
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "native_preset_raster": "Focus-loop bound updated from 68 to 71 only; native execution deferred to integrated renderer gate.",
+  "earlier_setup_retry": "First build requested the new target before CMake regenerated its glob; no target existed. Explicit configure of the existing SDK-free build succeeded, then compilation and acceptance passed.",
+  "final_review": "Preserved explicit accidental top-left inclusion, top-right exclusion and bottom exclusion after adapting geometry; all three focused tests rebuilt/re-executed against final owned sources."
+}

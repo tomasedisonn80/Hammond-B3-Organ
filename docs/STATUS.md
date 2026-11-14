@@ -2,24 +2,60 @@
 
 ## Current native interface continuation
 
-The new [interface session](development/2026-11-14-interface-continuation/README.md)
-starts from published `d493e998`. Six newly dispatched readers have completed
-[all 500 atlas pages](research/INTERFACE_ATLAS_REVIEW.md). The unchanged production
-baseline passes **136/136 local combined Release suites**, including the native
-application and MIDI adapter, under the [retained configuration](development/2026-11-14-interface-continuation/reports/baseline.json).
-Local SDL audio uses dummy drivers after the retained SDL/ALSA header setup
-failure; this is not physical-device qualification.
+The [interface session](development/2026-11-14-interface-continuation/README.md)
+starts at `d493e998`. Six fresh readers completed
+[all 500 atlas pages](research/INTERFACE_ATLAS_REVIEW.md). The unchanged combined
+Release baseline passed 136/136 suites. This session's requested sixty actual
+agents in ten logical waves have their own
+[manifest](development/2026-11-14-interface-continuation/assignments.json).
 
-The next dependency-ready M9 work is defined by the [interface scope](INTERFACE_CONTINUATION_SCOPE.md):
-Play/Rotary/Service navigation, shared dimensional/flat live controls and truthful
-copied-state inspection. Wave 2 is reviewing concrete contracts before code
-changes. All 47 sound parameters, state4/readers 1-3, nominal models and other
-tracks remain preserved. The published source also has two observed hosted
-failures to resolve: macOS native MIDI modal delivery and Windows Python
-rounding-environment setup. They remain failures until affected repairs are
-qualified on the relevant runner. Literal 1:1 appearance is not yet established.
+The platform repairs are published at `5d81199a9822874b55f3b0a124715cbd6eadf0e5`.
+All eleven hosted Linux, Windows and macOS jobs pass at that exact revision,
+including native standalone, core/sanitizer and VST3 jobs. The
+[hosted record](development/2026-11-14-interface-continuation/reports/platform-repair-hosted.json)
+closes the original Windows C-runtime oracle and macOS synchronous MIDI discovery
+failures. Those results do not qualify a later interface revision automatically.
 
-## Current fixed-registration and preset-key continuation
+The implemented [M9 interface slice](INTERFACE_CONTINUATION_SCOPE.md) provides
+Play/Rotary/Service, transient Flat presentation, shared perspective hit/paint
+geometry, per-workspace focus memory and bounded copied-state inspection. Play
+retains 68 ordinary records, 24 preset keys, 147 playing keys and 71 focus stops;
+Rotary and Service expose ten common controls and read-only bodies. All 47 sound
+parameters, state4/readers 1–3, core models and VST3 identities remain preserved.
+
+Independent acceptance includes 288 geometry layouts, workspace ownership and
+rollback checks, all inspector rows, 150 native raster frames and 719,289 paired
+PCM frames matching exactly through 1,662 presentation transitions. The
+[provisional eight-view gallery](../examples/demos/standalone-interface-preview-v1/README.md)
+contains actual native runs with precise earlier source identities. Both actual
+MIDI-on and MIDI-off packages have named-version relocation evidence; the current
+[operating guide](INTERFACE_RUNBOOK.md) explains their capability distinctions.
+
+The first full UI [coherent gate](development/2026-11-14-interface-continuation/reports/root-ui-coherent-gate.json)
+ran 147 suites: 146 passed and one native MIDI suite failed two observation
+assertions. Its complete failures remain retained. Independent A35 diagnosis
+replaced wall-clock/co-dispatch assumptions with exact acknowledged script
+prefixes, command deltas and genuine pending observations. All twelve methods
+then passed on the same frozen application, and the two affected methods passed
+on the later surface-repair application. The original drain and timeouts remain.
+
+A28 repaired physical clip restoration around scaled preset focus. A31 repaired
+fractional-scale gaps in gradients/rounded panels and an omitted one-pixel span;
+all five affected raster suites pass, including 298 full-surface checks across
+18.3 million pixels. Root inspected the repaired 150% frames. The
+[incremental closure record](development/2026-11-14-interface-continuation/reports/root-ui-repair-closure.json)
+identifies every changed input and qualification; it does not rename the original
+146/147 run as a full pass.
+
+Minimum accidental preset readability and reference-size title centering are the
+current A34 work. A36 addresses a stale post-Load status sentence. Final gallery,
+coherent-source/platform qualification and all sixty assignments continue. The
+[reference comparison](reviews/INTERFACE_REFERENCE_COMPARISON.md) records that
+literal 1:1 equality is not yet met. Local dummy drivers do not establish
+physical devices, persistent native pointer capture, native semantic accessibility
+or physical sound-model fidelity. Earlier sections below retain dated history.
+
+## Historical fixed-registration and preset-key continuation
 
 The newest [requested session](development/2026-11-14-preset-continuation/README.md)
 starts at `b79086f` and owns the next dependency-ready M3 exclusive fixed

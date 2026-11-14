@@ -13,6 +13,15 @@ namespace {
     return manual == Manual::Upper || manual == Manual::Lower;
 }
 
+[[nodiscard]] constexpr bool valid_workspace(UiWorkspace workspace) noexcept {
+    return workspace == UiWorkspace::Play || workspace == UiWorkspace::Rotary ||
+           workspace == UiWorkspace::Service;
+}
+
+[[nodiscard]] constexpr bool valid_presentation(UiPresentation presentation) noexcept {
+    return presentation == UiPresentation::Dimensional || presentation == UiPresentation::Flat;
+}
+
 [[nodiscard]] constexpr std::size_t manual_index(Manual manual) noexcept {
     return static_cast<std::size_t>(manual);
 }
@@ -41,6 +50,8 @@ namespace {
         return canonical_global(id) && id.index < 4;
     case UiControlKind::KeyboardTarget:
         return canonical_global(id) && id.index < 3;
+    case UiControlKind::Workspace:
+        return canonical_global(id) && id.index < kUiWorkspaceCount;
     case UiControlKind::PedalKey:
         return canonical_global(id) && id.index < kPedalCount;
     case UiControlKind::Expression:
@@ -52,6 +63,7 @@ namespace {
     case UiControlKind::Help:
     case UiControlKind::Panic:
     case UiControlKind::MidiSettings:
+    case UiControlKind::Presentation:
         return canonical_global(id) && id.index == 0;
     case UiControlKind::None:
         return false;
@@ -81,10 +93,14 @@ namespace {
             static_cast<std::uint8_t>(kMinManualMidiNote + id.index)};
 }
 
-void focus_control(UiViewState& view, UiControlId id) noexcept {
+void focus_control(UiViewState& view, const UiLayout& layout, UiControlId id) noexcept {
     view.focus = id;
     if (id.kind == UiControlKind::ManualKey) view.roving_manual_keys[manual_index(id.manual)] = id.index;
     if (id.kind == UiControlKind::PedalKey) view.roving_pedal_key = id.index;
+    if (id.kind != UiControlKind::Workspace && valid_workspace(view.workspace) &&
+        ui_control_visible(layout, id)) {
+        view.workspace_focus[static_cast<std::size_t>(view.workspace)] = id;
+    }
 }
 
 [[nodiscard]] UiActions one_command(const SessionCommand& command) noexcept {
@@ -237,29 +253,54 @@ void focus_control(UiViewState& view, UiControlId id) noexcept {
 
 template <std::size_t Count>
 void make_keys(std::array<UiKeyGeometry, Count>& keys, UiRect panel,
-               UiTarget target, std::size_t natural_count) noexcept {
+               UiTarget target, std::size_t natural_count,
+               UiPresentation presentation) noexcept {
     const float left = panel.x + 8.0F;
     const float top = panel.y + 22.0F;
     const float width = panel.width - 16.0F;
     const float height = panel.height - 30.0F;
-    const float natural_width = width / static_cast<float>(natural_count);
-    const float black_width = natural_width * 0.60F;
+    const bool dimensional = presentation == UiPresentation::Dimensional;
+    const double back = dimensional && target != UiTarget::Pedals ? 0.94 : 1.0;
+    const double count = static_cast<double>(natural_count);
+    const auto project = [=](double u, double v) noexcept -> UiPoint {
+        const double denominator = 1.0 - (1.0 - back) * v;
+        return {static_cast<float>(left + static_cast<double>(width) / 2.0 +
+                    static_cast<double>(width) * back * (u - 0.5) / denominator),
+                static_cast<float>(top + static_cast<double>(height) * back * v / denominator)};
+    };
     std::size_t natural = 0;
     for (std::size_t index = 0; index < Count; ++index) {
         auto& key = keys[index];
         key.note = {target, static_cast<std::uint8_t>(
             target == UiTarget::Pedals ? index + 1 : kMinManualMidiNote + index)};
         key.accidental = accidental(index);
-        if (key.accidental) {
-            key.bounds = {left + static_cast<float>(natural) * natural_width - black_width / 2.0F,
-                          top, black_width, height * 0.62F};
-        } else {
-            // Derive both edges from their ordinal. The last edge is exactly
-            // the keyboard boundary, so accumulated rounding creates no gaps.
-            const float start = left + width * static_cast<float>(natural) / static_cast<float>(natural_count);
-            const float end = left + width * static_cast<float>(natural + 1) / static_cast<float>(natural_count);
-            key.bounds = {start, top, end - start, height};
-            ++natural;
+        // Each natural edge is derived from its integer ordinal. Adjacent
+        // keys therefore use identical projected endpoints, including the
+        // last boundary. Neither rendering nor hit testing invents a second
+        // keyboard coordinate system.
+        const double ordinal = static_cast<double>(natural);
+        const double u0 = (ordinal - (key.accidental ? 0.30 : 0.0)) / count;
+        const double u1 = (ordinal + (key.accidental ? 0.30 : 1.0)) / count;
+        const double depth = key.accidental ? 0.62 : 1.0;
+        key.hit.points = {{project(u0, 0.0), project(u1, 0.0),
+                           project(u1, depth), project(u0, depth)}};
+        if (!key.accidental) ++natural;
+        const auto& points = key.hit.points;
+        const float minimum_x = std::min({points[0].x, points[1].x, points[2].x, points[3].x});
+        const float maximum_x = std::max({points[0].x, points[1].x, points[2].x, points[3].x});
+        key.bounds = {minimum_x, points[0].y, maximum_x - minimum_x,
+                      points[3].y - points[0].y};
+        key.top = key.hit;
+        key.front = {};
+        if (dimensional) {
+            const float front_depth = std::clamp(key.bounds.height * 0.14F, 6.0F, 18.0F);
+            const float split_y = points[3].y - front_depth;
+            const float fraction = (split_y - points[0].y) / key.bounds.height;
+            const UiPoint split_left{points[0].x + (points[3].x - points[0].x) * fraction, split_y};
+            const UiPoint split_right{points[1].x + (points[2].x - points[1].x) * fraction, split_y};
+            key.top.points[2] = split_right;
+            key.top.points[3] = split_left;
+            key.front.points = {{split_left, split_right, points[2], points[3]}};
         }
     }
 }
@@ -293,10 +334,11 @@ void add_preset_keys(UiLayout& layout, Manual manual, UiRect panel) noexcept {
 
 [[nodiscard]] bool valid_layout(const UiLayout& layout) noexcept {
     constexpr std::size_t expected_controls =
-        6 + kManualCount * (2 + kPresetSelectionCount + kDrawbarCount) +
+        kUiCommonControlCount + kManualCount * (2 + kPresetSelectionCount + kDrawbarCount) +
         4 + 1 + kPedalDrawbarCount + 3 + 2;
     static_assert(expected_controls == kUiMaxControls);
-    if (layout.control_count != expected_controls) return false;
+    if (layout.control_count != expected_controls || !valid_workspace(layout.workspace) ||
+        !valid_presentation(layout.presentation)) return false;
     const auto visible = [&layout](UiRect bounds) noexcept {
         return std::isfinite(bounds.x) && std::isfinite(bounds.y) &&
                std::isfinite(bounds.width) && std::isfinite(bounds.height) &&
@@ -305,6 +347,7 @@ void add_preset_keys(UiLayout& layout, Manual manual, UiRect panel) noexcept {
                bounds.x + bounds.width <= layout.width &&
                bounds.y + bounds.height <= layout.height;
     };
+    if (!visible(layout.workspace_panel)) return false;
     for (const auto& control : layout.controls) {
         if (!valid_control(control.id) || !visible(control.bounds) ||
             !visible(control.label_bounds)) return false;
@@ -323,19 +366,24 @@ void add_preset_keys(UiLayout& layout, Manual manual, UiRect panel) noexcept {
 }
 
 void move_tab_focus(UiViewState& view, const UiLayout& layout, bool backwards) noexcept {
-    const std::size_t count = layout.control_count + kManualCount + 1;
+    std::size_t count = 0;
     std::array<UiControlId, kUiMaxControls + kManualCount + 1> order{};
-    for (std::size_t index = 0; index < layout.control_count; ++index) order[index] = layout.controls[index].id;
-    order[layout.control_count] = {UiControlKind::ManualKey, Manual::Upper, DrawbarBank::A, view.roving_manual_keys[0]};
-    order[layout.control_count + 1] = {UiControlKind::ManualKey, Manual::Lower, DrawbarBank::A, view.roving_manual_keys[1]};
-    order[layout.control_count + 2] = {UiControlKind::PedalKey, Manual::Upper, DrawbarBank::A, view.roving_pedal_key};
+    for (std::size_t index = 0; index < std::min(layout.control_count, layout.controls.size()); ++index) {
+        if (ui_control_visible(layout, layout.controls[index].id)) order[count++] = layout.controls[index].id;
+    }
+    if (layout.workspace == UiWorkspace::Play) {
+        order[count++] = {UiControlKind::ManualKey, Manual::Upper, DrawbarBank::A, view.roving_manual_keys[0]};
+        order[count++] = {UiControlKind::ManualKey, Manual::Lower, DrawbarBank::A, view.roving_manual_keys[1]};
+        order[count++] = {UiControlKind::PedalKey, Manual::Upper, DrawbarBank::A, view.roving_pedal_key};
+    }
+    if (count == 0) return;
     std::size_t current = count;
     for (std::size_t index = 0; index < count; ++index) {
         if (order[index] == view.focus) { current = index; break; }
     }
     const std::size_t next = current == count ? (backwards ? count - 1 : 0) :
         (backwards ? (current + count - 1) % count : (current + 1) % count);
-    focus_control(view, order[next]);
+    focus_control(view, layout, order[next]);
 }
 
 void move_octave(UiViewState& view, bool up) noexcept {
@@ -357,14 +405,18 @@ void move_octave(UiViewState& view, bool up) noexcept {
 
 bool make_ui_layout(float width, float height,
                     const std::array<DrawbarBank, kManualCount>& edited_banks,
-                    UiLayout& destination) noexcept {
+                    UiLayout& destination, UiWorkspace workspace,
+                    UiPresentation presentation) noexcept {
     if (!std::isfinite(width) || !std::isfinite(height) ||
         width < kUiMinimumWidth || height < kUiMinimumHeight ||
         width > kUiMaximumDimension || height > kUiMaximumDimension ||
-        !is_valid_drawbar_bank(edited_banks[0]) || !is_valid_drawbar_bank(edited_banks[1])) return false;
+        !is_valid_drawbar_bank(edited_banks[0]) || !is_valid_drawbar_bank(edited_banks[1]) ||
+        !valid_workspace(workspace) || !valid_presentation(presentation)) return false;
     UiLayout layout;
     layout.width = width;
     layout.height = height;
+    layout.workspace = workspace;
+    layout.presentation = presentation;
     layout.show_cabinet = width >= 1400.0F;
     layout.bank_controls_in_cheeks = height >= 820.0F;
     const bool dense = !layout.bank_controls_in_cheeks;
@@ -402,6 +454,8 @@ bool make_ui_layout(float width, float height,
     }
     layout.pedal_panel = {margin, manual_top + 2.0F * (manual_height + gap), player_width, pedal_height};
     layout.footer = {margin, layout.pedal_panel.y + pedal_height + gap, content_width, footer_height};
+    layout.workspace_panel = {margin, layout.performance_panel.y, content_width,
+                              layout.footer.y - gap - layout.performance_panel.y};
     if (layout.show_cabinet) {
         layout.cabinet_panel = {margin + player_width + gap, layout.performance_panel.y, cabinet_width,
                                layout.pedal_panel.y + pedal_height - layout.performance_panel.y};
@@ -415,26 +469,37 @@ bool make_ui_layout(float width, float height,
                               art_width, art_height};
     }
 
-    constexpr std::array<UiControlKind, 3> left_header_kinds{
-        UiControlKind::SaveControls, UiControlKind::LoadControls, UiControlKind::Help};
-    constexpr std::array<UiControlKind, 3> right_header_kinds{
+    constexpr std::array<UiControlKind, 6> tool_kinds{
+        UiControlKind::SaveControls, UiControlKind::LoadControls, UiControlKind::Help,
         UiControlKind::AudioSettings, UiControlKind::MidiSettings, UiControlKind::Panic};
     const float header_button_gap = layout.show_cabinet ? 8.0F : 6.0F;
     const float left_button_width = layout.show_cabinet ? 112.0F : 72.0F;
     const float right_button_width = layout.show_cabinet ? 90.0F : 72.0F;
     const float header_button_top = layout.header.y + (layout.show_cabinet ? 30.0F : 34.0F);
     const float header_button_height = layout.show_cabinet ? 42.0F : 32.0F;
-    for (std::size_t index = 0; index < left_header_kinds.size(); ++index) {
-        add_button(layout, {left_header_kinds[index]},
+    for (std::size_t index = 0; index < kUiWorkspaceCount; ++index) {
+        add_button(layout, {UiControlKind::Workspace, Manual::Upper, DrawbarBank::A,
+                            static_cast<std::uint8_t>(index)},
                    {margin + static_cast<float>(index) * (left_button_width + header_button_gap),
                     header_button_top, left_button_width, header_button_height});
     }
     const float right_buttons_x = margin + content_width - 3.0F * right_button_width - 2.0F * header_button_gap;
-    for (std::size_t index = 0; index < right_header_kinds.size(); ++index) {
-        add_button(layout, {right_header_kinds[index]},
-                   {right_buttons_x + static_cast<float>(index) * (right_button_width + header_button_gap),
-                    header_button_top, right_button_width, header_button_height});
+    const float tool_height = layout.show_cabinet ? 30.0F : 28.0F;
+    for (std::size_t index = 0; index < tool_kinds.size(); ++index) {
+        add_button(layout, {tool_kinds[index]},
+                   {right_buttons_x + static_cast<float>(index % 3) * (right_button_width + header_button_gap),
+                    layout.header.y + 10.0F + static_cast<float>(index / 3) * (tool_height + 6.0F),
+                    right_button_width, tool_height});
     }
+    const float title_left = margin + 3.0F * left_button_width + 2.0F * header_button_gap + 12.0F;
+    const float title_right = right_buttons_x - 12.0F;
+    const float flat_width = layout.show_cabinet ? 70.0F : 60.0F;
+    add_button(layout, {UiControlKind::Presentation},
+               {title_right - flat_width, layout.header.y + header_height - 30.0F,
+                flat_width, 24.0F});
+    // The renderer derives its title/caption allowance from the left tabs and
+    // right tools. Keep a useful center region at every admitted window width.
+    if (title_right - title_left < flat_width + 12.0F) return false;
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         const auto identity = static_cast<Manual>(manual);
         const auto& panel = layout.registration_panels[manual];
@@ -513,39 +578,59 @@ bool make_ui_layout(float width, float height,
     }
     add_button(layout, {UiControlKind::OctaveDown}, {target_x + 12.0F, toolbar.y, 74.0F, toolbar.height});
     add_button(layout, {UiControlKind::OctaveUp}, {target_x + 92.0F, toolbar.y, 74.0F, toolbar.height});
-    make_keys(layout.manual_keys[0], layout.manual_panels[0], UiTarget::Upper, 36);
-    make_keys(layout.manual_keys[1], layout.manual_panels[1], UiTarget::Lower, 36);
-    make_keys(layout.pedal_keys, layout.pedal_panel, UiTarget::Pedals, 15);
+    make_keys(layout.manual_keys[0], layout.manual_panels[0], UiTarget::Upper, 36, presentation);
+    make_keys(layout.manual_keys[1], layout.manual_panels[1], UiTarget::Lower, 36, presentation);
+    make_keys(layout.pedal_keys, layout.pedal_panel, UiTarget::Pedals, 15, presentation);
     if (!valid_layout(layout)) return false;
     destination = layout;
     return true;
 }
 
+bool ui_control_visible(const UiLayout& layout, UiControlId control) noexcept {
+    if (!valid_workspace(layout.workspace) || !valid_presentation(layout.presentation) ||
+        !valid_control(control)) return false;
+    if (is_playing_control(control)) return layout.workspace == UiWorkspace::Play;
+    const bool common = control.kind == UiControlKind::Workspace ||
+        control.kind == UiControlKind::Presentation || control.kind == UiControlKind::SaveControls ||
+        control.kind == UiControlKind::LoadControls || control.kind == UiControlKind::Help ||
+        control.kind == UiControlKind::AudioSettings || control.kind == UiControlKind::MidiSettings ||
+        control.kind == UiControlKind::Panic;
+    if (!common && layout.workspace != UiWorkspace::Play) return false;
+    const auto count = std::min(layout.control_count, layout.controls.size());
+    for (std::size_t index = 0; index < count; ++index) {
+        if (layout.controls[index].id == control) return true;
+    }
+    return false;
+}
+
 UiControlId ui_hit_test(const UiLayout& layout, UiPoint point) noexcept {
-    if (!std::isfinite(point.x) || !std::isfinite(point.y)) return {};
+    if (!std::isfinite(point.x) || !std::isfinite(point.y) ||
+        !valid_workspace(layout.workspace) || !valid_presentation(layout.presentation)) return {};
     const auto count = std::min(layout.control_count, layout.controls.size());
     // Preset semantic order is pitch order, so explicitly give short ivory
     // accidentals precedence over the overlapping dark natural rectangles.
     for (const bool sharp : {true, false}) {
         for (std::size_t index = 0; index < count; ++index) {
             const auto& control = layout.controls[index];
-            if (control.id.kind == UiControlKind::PresetKey &&
+            if (control.id.kind == UiControlKind::PresetKey && ui_control_visible(layout, control.id) &&
                 accidental(control.id.index) == sharp && control.bounds.contains(point)) return control.id;
         }
     }
     // Accidentals have visual and hit precedence over their underlying naturals.
     for (const bool black : {true, false}) {
+        if (layout.workspace != UiWorkspace::Play) break;
         for (const auto& manual : layout.manual_keys) {
             for (const auto& key : manual) {
-                if (key.accidental == black && key.bounds.contains(point)) return note_control(key.note);
+                if (key.accidental == black && key.hit.contains(point)) return note_control(key.note);
             }
         }
         for (const auto& key : layout.pedal_keys) {
-            if (key.accidental == black && key.bounds.contains(point)) return note_control(key.note);
+            if (key.accidental == black && key.hit.contains(point)) return note_control(key.note);
         }
     }
     for (std::size_t index = 0; index < count; ++index) {
         if (layout.controls[index].id.kind != UiControlKind::PresetKey &&
+            ui_control_visible(layout, layout.controls[index].id) &&
             layout.controls[index].bounds.contains(point)) return layout.controls[index].id;
     }
     return {};
@@ -580,24 +665,76 @@ UiModel::UiModel() noexcept {
 
 bool UiModel::resize(float width, float height) noexcept {
     UiLayout candidate;
-    if (!make_ui_layout(width, height, view_.edited_banks, candidate)) return false;
+    if (!make_ui_layout(width, height, view_.edited_banks, candidate,
+                        view_.workspace, view_.presentation)) return false;
     layout_ = candidate;
     drag_ = {};
+    if (pointer_down_) pointer_suppressed_ = true;
+    return true;
+}
+
+bool UiModel::set_workspace(UiWorkspace workspace) noexcept {
+    if (!valid_workspace(workspace)) return false;
+    if (workspace == view_.workspace) return true;
+    UiLayout candidate;
+    if (!make_ui_layout(layout_.width, layout_.height, view_.edited_banks, candidate,
+                        workspace, view_.presentation)) return false;
+    const auto remembered = view_.workspace_focus[static_cast<std::size_t>(workspace)];
+    const UiControlId focus = ui_control_visible(candidate, remembered) &&
+        remembered.kind != UiControlKind::Workspace ? remembered :
+        UiControlId{UiControlKind::Workspace, Manual::Upper, DrawbarBank::A,
+                    static_cast<std::uint8_t>(workspace)};
+    layout_ = candidate;
+    view_.workspace = workspace;
+    focus_control(view_, layout_, focus);
+    drag_ = {};
+    if (pointer_down_) pointer_suppressed_ = true;
+    return true;
+}
+
+bool UiModel::set_presentation(UiPresentation presentation) noexcept {
+    if (!valid_presentation(presentation)) return false;
+    if (presentation == view_.presentation) return true;
+    UiLayout candidate;
+    if (!make_ui_layout(layout_.width, layout_.height, view_.edited_banks, candidate,
+                        view_.workspace, presentation)) return false;
+    layout_ = candidate;
+    view_.presentation = presentation;
+    drag_ = {};
+    if (pointer_down_) pointer_suppressed_ = true;
     return true;
 }
 
 UiActions UiModel::activate(UiControlId control) noexcept {
     if (!valid_control(control)) return {};
+    const bool compatibility = view_.workspace == UiWorkspace::Play &&
+        (control.kind == UiControlKind::SoundingBank || control.kind == UiControlKind::CancelManual);
+    if (!compatibility && !ui_control_visible(layout_, control)) return {};
+    // Switching first preserves the outgoing body's focus memory. Clicking the
+    // currently selected tab is an idempotent operation, not a focus change.
+    if (control.kind == UiControlKind::Workspace) {
+        const bool valid = set_workspace(static_cast<UiWorkspace>(control.index));
+        (void)valid;
+        return {};
+    }
+    if (control.kind == UiControlKind::Presentation) {
+        const bool valid = set_presentation(view_.presentation == UiPresentation::Dimensional ?
+                                            UiPresentation::Flat : UiPresentation::Dimensional);
+        (void)valid;
+        return {};
+    }
     // An explicit activation can focus a playing key but has no implicit
     // note lifetime. Only pointer/Space/physical-key events create owners.
-    focus_control(view_, control);
+    focus_control(view_, layout_, control);
     switch (control.kind) {
     case UiControlKind::EditBank: {
         const auto manual = manual_index(control.manual);
         if (view_.edited_banks[manual] == control.bank) return {};
         drag_ = {};
+        if (pointer_down_) pointer_suppressed_ = true;
         view_.edited_banks[manual] = control.bank;
-        const bool valid = make_ui_layout(layout_.width, layout_.height, view_.edited_banks, layout_);
+        const bool valid = make_ui_layout(layout_.width, layout_.height, view_.edited_banks, layout_,
+                                          view_.workspace, view_.presentation);
         (void)valid;
         return {};
     }
@@ -676,11 +813,25 @@ UiActions UiModel::key(const UiKeyInput& input) noexcept {
     case UiKey::F1: view_.keyboard_target = UiTarget::Upper; return {};
     case UiKey::F2: view_.keyboard_target = UiTarget::Lower; return {};
     case UiKey::F3: view_.keyboard_target = UiTarget::Pedals; return {};
+    case UiKey::F4:
+    case UiKey::F5:
+    case UiKey::F6: {
+        const bool valid = set_workspace(input.key == UiKey::F4 ? UiWorkspace::Play :
+            input.key == UiKey::F5 ? UiWorkspace::Rotary : UiWorkspace::Service);
+        (void)valid;
+        return {};
+    }
+    case UiKey::F7: {
+        const bool valid = set_presentation(view_.presentation == UiPresentation::Dimensional ?
+                                            UiPresentation::Flat : UiPresentation::Dimensional);
+        (void)valid;
+        return {};
+    }
     case UiKey::LeftBracket: move_octave(view_, false); return {};
     case UiKey::RightBracket: move_octave(view_, true); return {};
     case UiKey::Tab: move_tab_focus(view_, layout_, input.shift); return {};
     case UiKey::Space:
-        if (valid_control(view_.focus) && is_playing_control(view_.focus)) {
+        if (ui_control_visible(layout_, view_.focus) && is_playing_control(view_.focus)) {
             audition_hold_ = {true, control_note(view_.focus), kUiAuditionOwnerId};
             return one_command(note_command(audition_hold_, true));
         }
@@ -690,7 +841,7 @@ UiActions UiModel::key(const UiKeyInput& input) noexcept {
         return {};
     default: break;
     }
-    if (!navigation_key(input.key) || !valid_control(view_.focus)) return {};
+    if (!navigation_key(input.key) || !ui_control_visible(layout_, view_.focus)) return {};
     if (view_.focus.kind == UiControlKind::PresetKey) {
         auto focus = view_.focus;
         int next = focus.index;
@@ -704,7 +855,7 @@ UiActions UiModel::key(const UiKeyInput& input) noexcept {
         default: break;
         }
         focus.index = static_cast<std::uint8_t>(std::clamp(next, 0, static_cast<int>(kPresetSelectionCount) - 1));
-        focus_control(view_, focus);
+        focus_control(view_, layout_, focus);
         return {};
     }
     if (is_playing_control(view_.focus)) {
@@ -722,7 +873,7 @@ UiActions UiModel::key(const UiKeyInput& input) noexcept {
         }
         auto focus = view_.focus;
         focus.index = static_cast<std::uint8_t>(std::clamp(next, 0, last));
-        focus_control(view_, focus);
+        focus_control(view_, layout_, focus);
         return {};
     }
     const auto kind = view_.focus.kind;
@@ -760,7 +911,9 @@ UiActions UiModel::pointer(const UiPointerInput& input) noexcept {
         pointer_suppressed_ = true;
         const auto control = ui_hit_test(layout_, input.point);
         if (!valid_control(control)) return {};
-        focus_control(view_, control);
+        if (control.kind == UiControlKind::Workspace || control.kind == UiControlKind::Presentation)
+            return activate(control);
+        focus_control(view_, layout_, control);
         if (is_playing_control(control)) {
             pointer_suppressed_ = false;
             view_.pointer_captured = true;
@@ -803,7 +956,7 @@ UiActions UiModel::pointer(const UiPointerInput& input) noexcept {
     if (on_key) {
         pointer_hold_ = {true, note, kUiPointerOwnerId};
         actions.items[actions.count++] = note_command(pointer_hold_, true);
-        focus_control(view_, control);
+        focus_control(view_, layout_, control);
     }
     return actions;
 }

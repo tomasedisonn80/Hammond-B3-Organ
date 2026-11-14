@@ -80,18 +80,19 @@ Build controls from stable verified parameter identities. A camera movement or
 editor closure must never change audio routing or clock state. Generated concept
 art is design intent; it is neither hardware dimensional evidence nor a working UI.
 
-The optional [native standalone](MIDI_UI_RUNBOOK.md) now implements a resizable
-reference-led instrument window with keyboard/pointer input, both manuals,
-pedals, retained bank controls, percussion/expression and explicit Save/Load.
-The current M9 continuation adds optional external MIDI through a bounded,
-separately owned input path and native device settings. Its
-[actual MIDI/UI gallery](../examples/demos/standalone-midi-ui-v1/README.md)
-retains application-rendered pixels, musical diagnostics and exact source
-identities; earlier [chapel views](../examples/demos/standalone-chapel-v1/README.md)
-remain historical evidence. The exact source cabinet artwork supplies decoration,
-while controls and their state remain live. Full reference material/perspective
-matching, cabinet/service interaction, native semantic accessibility and real
-display/controller/audio-device acceptance remain separate product work.
+The optional [native standalone](INTERFACE_RUNBOOK.md) implements a resizable
+reference-led instrument with keyboard/pointer and optional MIDI input, both
+manuals, pedals, four retained drawbar banks, fixed registrations, percussion,
+expression, device settings and explicit Save/Load. The current
+[interface continuation](development/2026-11-14-interface-continuation/README.md)
+adds Play/Rotary/Service workspaces, shared perspective hit/paint geometry,
+transient Flat presentation and truthful copied-state inspection. Its
+[provisional actual gallery](../examples/demos/standalone-interface-preview-v1/README.md)
+records native pixels, musical diagnostics and exact overlay identities. Earlier
+MIDI/chapel galleries remain historical evidence. The exact source cabinet
+artwork supplies decoration; controls and state remain live. Full reference
+image equality, connected rotary audio, native semantic accessibility and real
+display/controller/audio-device acceptance retain separate product gates.
 Use [NEXT_STEPS.md](NEXT_STEPS.md) for the next concrete adapter/model contracts;
 the research milestones above remain the complete project plan.
 

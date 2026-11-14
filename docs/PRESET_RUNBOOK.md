@@ -9,6 +9,8 @@ they do not add scanner, AO-28 or Leslie processing. The
 defines the behavior and source limits.
 
 This guide supplies the current preset, state and diagnostic instructions.
+The [interface runbook](INTERFACE_RUNBOOK.md) covers Play/Rotary/Service, Flat,
+focus, copied-state inspection and current background MIDI discovery.
 Earlier galleries, state files and reports retain their original versions.
 Links below use repository URLs so this guide remains navigable when installed
 beside the application. Those linked references require network access.
@@ -33,7 +35,10 @@ Audio defaults to SDL's default output, 48 kHz and 512 frames. **AUDIO / Ctrl+,*
 selects an exact output, 44.1/48/96 kHz and 128/256/512/1024/2048-frame buffers.
 `--list-audio` lists outputs. **MIDI / Ctrl+M** connects one explicitly selected
 input when the physical backend is available; no port is selected by default.
-`--list-midi` prints exact names. Upper/Lower/Pedal channels default to 1/2/3
+`--list-midi` prints exact names. Opening MIDI requests nonblocking background
+discovery; close and reopen for an explicit refresh. No input/Apply, Disconnect
+and Close remain available while discovery is pending. Connect a physical port
+only after the current discovery finishes. Upper/Lower/Pedal channels default to 1/2/3
 and must be distinct values from 1 through 16. Apply staged device choices
 explicitly. The obtained buffer setting is not a measured latency result.
 
@@ -165,7 +170,11 @@ They are ordinary routing parameters, not host programs or whole-state recall.
 Click a preset once, or focus it with Tab and activate with Enter/Space.
 Left/Right moves preset focus; Home/End focuses C/B; Up/Down focuses the same
 pitch on the other manual. Those navigation keys do not select a route.
-Tab/Shift+Tab traverses 67 stops, including three roving playing-key groups.
+In Play, Tab/Shift+Tab traverses 71 stops, including three roving playing-key
+groups. Rotary and Service traverse ten common header controls. F4/F5/F6 selects
+Play/Rotary/Service; F7 toggles Flat. Workspace and presentation changes preserve
+held-note release ownership and sounding controls; hidden preset keys cannot
+receive new activation outside Play. Each workspace remembers its non-tab focus.
 The applied key stays selected while a different requested key has an amber
 pending outline. The separate two-tone outline denotes keyboard focus.
 
@@ -190,8 +199,8 @@ Version 4 retains all four banks, remembered banks, raw fixed choices, route
 bits, expression, percussion and pedal mixtures. It pins catalog
 `atlas-chapel-nominal-v1` to its exact authoring SHA-256. A mismatched catalog or
 malformed file rejects instead of substituting another table. Cancelled fixed
-memory survives Save/Load. Held notes, phase, contact/readiness history, devices
-and UI focus are not saved. Live Load changes controls while preserving current
+memory survives Save/Load. Held notes, phase, contact/readiness history, devices,
+workspace, presentation and UI focus are not saved. Live Load changes controls while preserving current
 histories; cold Load creates no held notes. Audio restart preserves controls
 but deliberately releases notes and restarts the existing audio lifecycle.
 The [format contract](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/CONTROL_STATE_FORMAT.md)

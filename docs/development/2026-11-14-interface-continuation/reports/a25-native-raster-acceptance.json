@@ -1,0 +1,337 @@
+{
+  "assignment": "/root/w05_a25_native_raster_acceptance",
+  "actual_number": 25,
+  "date": "2026-11-14",
+  "outcome": "pass",
+  "base_head": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "working_tree_overlay": true,
+  "source_sha256_before_final_gate": {
+    "apps/standalone/native_tests/test_standalone_workspace_raster.cpp": "4013b25b53d15ee649804056d817e0936c8251fd5894656cef319e832bfe6c23",
+    "apps/standalone/InstrumentView.cpp": "5f5f209dbe33cb92e3c1d237258ba123d0a86e78c694d50c0634db8549d54407",
+    "apps/standalone/InstrumentView.h": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+    "apps/standalone/Drawing.cpp": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+    "apps/standalone/CMakeLists.txt": "17d67f9dbe81f939113f2e845dc2bafd0c3b92a57658c629af4ab6ab09ca16b7",
+    "CMakeLists.txt": "1c569b0dc5d5afbe5b99ff8529d457ca736ad8e82a36105336badbd4e9841e53"
+  },
+  "source_sha256_after_final_gate": {
+    "apps/standalone/native_tests/test_standalone_workspace_raster.cpp": "4013b25b53d15ee649804056d817e0936c8251fd5894656cef319e832bfe6c23",
+    "apps/standalone/InstrumentView.cpp": "5f5f209dbe33cb92e3c1d237258ba123d0a86e78c694d50c0634db8549d54407",
+    "apps/standalone/InstrumentView.h": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+    "apps/standalone/Drawing.cpp": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+    "apps/standalone/CMakeLists.txt": "17d67f9dbe81f939113f2e845dc2bafd0c3b92a57658c629af4ab6ab09ca16b7",
+    "CMakeLists.txt": "1c569b0dc5d5afbe5b99ff8529d457ca736ad8e82a36105336badbd4e9841e53"
+  },
+  "all_recorded_sources_stable_across_final_gate": true,
+  "native_sources_stable_across_final_gate": true,
+  "test_executable": "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_workspace_raster",
+  "test_executable_sha256": "79884188406c30012f66918f8b9abcd926573dde3ffa935a958589bff672243e",
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "configuration": "Linux C++20 Release; SDL 2.32.10 software renderer, RGBA32, scale 1; no SDL hardware subsystem",
+  "compile_flags": "-O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -DSDL_MAIN_HANDLED",
+  "commands": [
+    {
+      "argv": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+        "-B",
+        "/workspace/scratch/601951e27dc3/build-native"
+      ],
+      "exit_code": 0,
+      "log": "reports/a25-configure.txt"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/601951e27dc3/build-native",
+        "--target",
+        "test_standalone_workspace_raster",
+        "--parallel",
+        "3"
+      ],
+      "exit_code": 0,
+      "log": "reports/a25-build.txt"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/601951e27dc3/build-native",
+        "-R",
+        "^test_standalone_workspace_raster$",
+        "--output-on-failure",
+        "--no-tests=error",
+        "-V"
+      ],
+      "environment": {
+        "HAMMOND_WORKSPACE_RASTER_CAPTURE_DIR": "/workspace/scratch/601951e27dc3/a25-native-raster"
+      },
+      "exit_code": 0,
+      "log": "reports/a25-ctest.txt"
+    }
+  ],
+  "matrix": {
+    "sizes": [
+      [
+        960,
+        700
+      ],
+      [
+        1280,
+        900
+      ],
+      [
+        1672,
+        941
+      ]
+    ],
+    "presentations": [
+      "Dimensional",
+      "Flat"
+    ],
+    "manual_natural_indices": [
+      0,
+      29,
+      60
+    ],
+    "manual_accidental_indices": [
+      1,
+      30,
+      58
+    ],
+    "pedal_natural_indices": [
+      0,
+      12,
+      24
+    ],
+    "pedal_accidental_indices": [
+      1,
+      13,
+      22
+    ],
+    "frames": 150,
+    "held_cases": 108,
+    "held_focus_cases": 108,
+    "surface_cases": 108,
+    "two_natural_occlusion_cases": 54,
+    "sloped_aabb_corner_cases": 12,
+    "hidden_body_cases": 12,
+    "hidden_workspaces": [
+      "Service",
+      "Rotary"
+    ],
+    "hidden_held_bits_changed": 147
+  },
+  "oracle": {
+    "containment": "Independent long-double convex half-plane cross products from shared quad coordinates; pixel-center sampling; no production contains/hit-test/projection/raster helper",
+    "held_scope": "Every frame pixel; changes only within independently visible selected-key silhouettes, with nonselected and accidentally occluded pixels unchanged",
+    "focus_scope": "Every frame pixel except legitimate changed footer caption; changed ink must be cyan, owned by focused key, and at least 1 pixel inside its original silhouette",
+    "surface": "Dimensional: nine paired central top/front samples, mean contrast >=20 natural or >=8 accidental, at least 6/9 darker front pairs. Flat: nine exact literal uniform-color samples through old front area plus empty front quad.",
+    "minimum_mean_contrast": {
+      "natural": 53.1049,
+      "accidental": 20.0227
+    },
+    "contrast_units": "Weighted RGB luminance on the 0..255 display scale; presentation metric, not physical material calibration"
+  },
+  "final_result": {
+    "ctest_passed": 1,
+    "ctest_total": 1,
+    "ctest_seconds": 8.8,
+    "test_seconds": 8.79631,
+    "timeout_seconds": 60,
+    "failures": 0
+  },
+  "retained_initial_failure": {
+    "log": "reports/a25-ctest-first.txt",
+    "test_source_sha256": "5fc77d4dc3468f624133da98f9bdbba0df6d349aa4868f5f0fb743a936309178",
+    "test_seconds": 9.32618,
+    "failures": 6,
+    "affected": "Dimensional accidental pedals at minimum/reference sizes only; original single 80%-depth top probe fell in shaded cap tail; all containment/focus/occlusion/hidden-body checks passed",
+    "classification": "New oracle sampling assumption; no production defect and no floating-point boundary tolerance change"
+  },
+  "diagnosis": {
+    "log": "reports/a25-contrast-diagnosis.txt",
+    "test_source_sha256": "2e8058eb860b840be8514be4fe13a6d1be3f30a2f846b70d98c51f914e7f38bd",
+    "test_executable_sha256": "1668e28d34c2b6f47cbd46c8e66969b8c55d63e32db3ee859a0280366f9880fa",
+    "test_seconds": 8.79059,
+    "failures": 6,
+    "examples": [
+      {
+        "size": [
+          960,
+          700
+        ],
+        "pedal_index": 1,
+        "top_height": 11.36,
+        "tail_pixel": {
+          "xy": [
+            84,
+            613
+          ],
+          "rgb": [
+            25,
+            27,
+            24
+          ]
+        },
+        "middle_pixel": {
+          "xy": [
+            84,
+            609
+          ],
+          "rgb": [
+            45,
+            45,
+            40
+          ]
+        },
+        "front_pixel": {
+          "xy": [
+            84,
+            619
+          ],
+          "rgb": [
+            19,
+            20,
+            16
+          ]
+        }
+      },
+      {
+        "size": [
+          1672,
+          941
+        ],
+        "pedal_index": 1,
+        "top_height": 23.3136,
+        "tail_pixel": {
+          "xy": [
+            149,
+            842
+          ],
+          "rgb": [
+            30,
+            31,
+            27
+          ]
+        },
+        "middle_pixel": {
+          "xy": [
+            149,
+            835
+          ],
+          "rgb": [
+            44,
+            44,
+            39
+          ]
+        },
+        "front_pixel": {
+          "xy": [
+            149,
+            850
+          ],
+          "rgb": [
+            23,
+            23,
+            19
+          ]
+        }
+      }
+    ],
+    "correction": "Use nine central samples rather than one shaded-tail pixel; keep numeric contrast thresholds; additionally require six of nine paired front samples darker and nine Flat samples uniform"
+  },
+  "native_picture_proof": [
+    {
+      "path": "docs/development/2026-11-14-interface-continuation/reports/a25-native-renderer-test-dimensional.png",
+      "sha256": "ce384b6b7dff93230326018ba699c3ebc6daecd0f9bc5cb12a2d71b1f9c9c0dc",
+      "width": 1672,
+      "height": 941,
+      "presentation": "dimensional",
+      "kind": "Actual paint_instrument SDL software renderer test frame with injected/copied UiModel state; no application window, audio device or MIDI device",
+      "focus": {
+        "division": "Upper",
+        "index": 30,
+        "midi_note": 66
+      },
+      "held_indices": {
+        "Upper": [
+          1,
+          30,
+          58
+        ],
+        "Lower": [
+          1,
+          30,
+          58
+        ],
+        "Pedals": [
+          1,
+          13,
+          22
+        ]
+      },
+      "lossless_bmp_rgb_identity": true,
+      "bytes": 555683
+    },
+    {
+      "path": "docs/development/2026-11-14-interface-continuation/reports/a25-native-renderer-test-flat.png",
+      "sha256": "0950a9633c10e8ca83ba620fcd9b38022876d1b3bc8970f6b07af8503852963f",
+      "width": 1672,
+      "height": 941,
+      "presentation": "flat",
+      "kind": "Actual paint_instrument SDL software renderer test frame with injected/copied UiModel state; no application window, audio device or MIDI device",
+      "focus": {
+        "division": "Upper",
+        "index": 30,
+        "midi_note": 66
+      },
+      "held_indices": {
+        "Upper": [
+          1,
+          30,
+          58
+        ],
+        "Lower": [
+          1,
+          30,
+          58
+        ],
+        "Pedals": [
+          1,
+          13,
+          22
+        ]
+      },
+      "lossless_bmp_rgb_identity": true,
+      "bytes": 292026
+    }
+  ],
+  "production_changes": false,
+  "existing_preset_gate": "Preserved; no changes or duplicate execution by A25",
+  "cmake_owner": "root registered target, 60-second timeout and aggregate membership",
+  "limits": [
+    "Representative native raster gate, not all 147 individual key-focus combinations; A19 separately qualifies all 147 geometries and A18 input semantics.",
+    "Scale 1 software surfaces only; scaled renderer/text bounds belong to A28.",
+    "No OS window dispatch, hardware GPU, physical audio/MIDI, host, accessibility, callback deadline, physical fidelity or literal reference-image equality claim.",
+    "Inspector held values are deliberately isolated with a null fixed InspectionDocument; this tests absence of hidden performance paint, not inspector content.",
+    "No commit, staging or publication performed; parent integrates accepted evidence."
+  ],
+  "handoff_checks": {
+    "report_json_parsed": true,
+    "test_source_matches_tested_hash": true,
+    "native_png_hashes_match": true,
+    "owned_source_note_no_whitespace_errors": true
+  }
+}

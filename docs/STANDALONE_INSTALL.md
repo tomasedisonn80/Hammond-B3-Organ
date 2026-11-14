@@ -3,7 +3,7 @@
 The optional `Standalone` component stages the built native instrument and its
 fixed documentation, capability and notice payload. Ordinary installation
 continues to select `OfflineTools` only. A fresh standalone destination contains
-**13 files with MIDI disabled, or 17 with MIDI enabled**.
+**15 files with MIDI disabled, or 19 with MIDI enabled**.
 
 The executable embeds the nominal profile, generated DejaVu glyph atlases and
 three decorative regions from the supplied atlas reference. Installed execution
@@ -25,8 +25,9 @@ is in `share/hammond-b3-organ/standalone`.
 "/absolute/path/moved organ/bin/hammond_standalone"
 ```
 
-The installed [application guide](STANDALONE_APP.md),
-[MIDI and interface runbook](MIDI_UI_RUNBOOK.md),
+The installed [interface runbook](INTERFACE_RUNBOOK.md),
+[preset/build runbook](PRESET_RUNBOOK.md), [application guide](STANDALONE_APP.md),
+[MIDI mapping/setup guide](MIDI_UI_RUNBOOK.md) and
 [model scope](STANDALONE_MODEL.md), together with the adjacent
 `THIRD_PARTY_NOTICES.md`, remain readable without a source checkout. Their source-only references use repository
 URLs; those references require network access. The application does not require
@@ -99,7 +100,7 @@ its RPATH.
 
 ## Exact payload
 
-The common payload contains the executable plus twelve metadata files.
+The common payload contains the executable plus fourteen metadata files.
 In the table, `metadata/` means `share/hammond-b3-organ/standalone/`; replace
 `bin` and `share` with the configured relative directories.
 
@@ -110,6 +111,8 @@ In the table, `metadata/` means `share/hammond-b3-organ/standalone/`; replace
 | `metadata/STANDALONE_APP.md` | `docs/STANDALONE_APP.md` |
 | `metadata/STANDALONE_MODEL.md` | `docs/STANDALONE_MODEL.md` |
 | `metadata/MIDI_UI_RUNBOOK.md` | `docs/MIDI_UI_RUNBOOK.md` |
+| `metadata/PRESET_RUNBOOK.md` | `docs/PRESET_RUNBOOK.md` |
+| `metadata/INTERFACE_RUNBOOK.md` | `docs/INTERFACE_RUNBOOK.md` |
 | `metadata/THIRD_PARTY_NOTICES.md` | Root notice file, including reference-art provenance and use-rights limits |
 | `metadata/LICENSE-SDL2.txt` | Locked SDL2 `LICENSE.txt`, exact bytes |
 | `metadata/LICENSE-DejaVu.txt` | `assets/standalone/fonts/LICENSE-DejaVu.txt`, exact bytes |
@@ -204,5 +207,6 @@ SDL drivers. Native desktop/audio hardware, physical MIDI input, platform
 runtime/dependency inventories, project and artwork licensing, branding,
 signing and release distribution remain separate gates. Source-specific results
 are retained in the
-[MIDI packaging evidence](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-midi-ui/26-midi-packaging.md);
-prior nine-file staging evidence remains dated history.
+[interface packaging evidence](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-interface-continuation/24-setup-package.md).
+The earlier [MIDI packaging evidence](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-midi-ui/26-midi-packaging.md)
+and nine-file staging results remain dated history with their original payloads.

@@ -11,6 +11,8 @@
 
 namespace hammond::standalone {
 
+struct InspectionDocument;
+
 enum class ViewOverlay { None, Help, Audio, Midi };
 
 struct InstrumentViewInfo {
@@ -36,6 +38,7 @@ struct InstrumentViewInfo {
     std::size_t selected_midi_port{0};
     std::array<std::uint8_t, 3> selected_midi_channels{1, 2, 3};
     std::uint64_t midi_messages{0};
+    const InspectionDocument* inspection{nullptr};
 };
 
 struct AudioOverlayLayout {

@@ -26,6 +26,8 @@ SOURCE_FILES = {
     "STANDALONE_APP.md": Path("docs/STANDALONE_APP.md"),
     "STANDALONE_MODEL.md": Path("docs/STANDALONE_MODEL.md"),
     "MIDI_UI_RUNBOOK.md": Path("docs/MIDI_UI_RUNBOOK.md"),
+    "PRESET_RUNBOOK.md": Path("docs/PRESET_RUNBOOK.md"),
+    "INTERFACE_RUNBOOK.md": Path("docs/INTERFACE_RUNBOOK.md"),
     "THIRD_PARTY_NOTICES.md": Path("THIRD_PARTY_NOTICES.md"),
     "LICENSE-DejaVu.txt": Path("assets/standalone/fonts/LICENSE-DejaVu.txt"),
     "sdl2-lock.json": Path("data/dependencies/sdl2-lock.json"),
@@ -37,7 +39,8 @@ SOURCE_FILES = {
 MIDI_FILES = {"LICENSE-RtMidi.txt", "rtmidi-lock.json", "rtmidi-prepared-source.json",
               "rtmidi-coremidi-zero-init.patch"}
 GUIDES = ("STANDALONE_INSTALL.md", "STANDALONE_APP.md", "STANDALONE_MODEL.md",
-          "MIDI_UI_RUNBOOK.md", "THIRD_PARTY_NOTICES.md")
+          "MIDI_UI_RUNBOOK.md", "PRESET_RUNBOOK.md", "INTERFACE_RUNBOOK.md",
+          "THIRD_PARTY_NOTICES.md")
 
 
 def metadata_inputs(source, sdl, capabilities, prepared=None):
@@ -268,7 +271,7 @@ class StandaloneInstallTests(unittest.TestCase):
 
     def test_configured_capabilities_identify_exact_payload(self):
         self.assert_capabilities(self.metadata, self.midi_enabled, self.backend)
-        self.assertEqual(len(self.metadata) + 1, 17 if self.midi_enabled else 13)
+        self.assertEqual(len(self.metadata) + 1, 19 if self.midi_enabled else 15)
 
     def test_actual_component_relocates_and_runs(self):
         with tempfile.TemporaryDirectory(prefix="hammond standalone install ") as temporary:
@@ -304,6 +307,8 @@ class StandaloneInstallTests(unittest.TestCase):
             self.assert_success(help_result)
             self.assertIn("nominal dry organ", help_result.stdout)
             self.assertIn("--smoke-ms", help_result.stdout)
+            self.assertIn("--workspace", help_result.stdout)
+            self.assertIn("--flat", help_result.stdout)
             diagnostics, screenshot, state = (unrelated / name for name in
                                               ("diagnostics.json", "frame.bmp", "absent controls.b3controls"))
             environment = self.environment()
@@ -547,7 +552,7 @@ class StandaloneInstallTests(unittest.TestCase):
             prefix = work / "installed without MIDI"
             self.assert_success(self.invoke(self.install_command(fixture.build, prefix), work))
             self.assertEqual(tree_state(prefix), expected_tree(self.payload(Path("bin"), Path("share"), fixture.hashes)))
-            self.assertEqual(len(fixture.hashes) + 1, 13)
+            self.assertEqual(len(fixture.hashes) + 1, 15)
             install_text = (fixture.build / "cmake_install.cmake").read_text(encoding="utf-8")
             self.assertNotIn("prepared RtMidi", install_text)
             self.assertNotIn("rtmidi-lock.json", install_text)

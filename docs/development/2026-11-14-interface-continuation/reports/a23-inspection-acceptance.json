@@ -1,0 +1,200 @@
+{
+  "schema": "interface-inspection-acceptance-v1",
+  "worker": "/root/w04_a23_inspection_acceptance",
+  "assignment": 23,
+  "wave": 4,
+  "session_requested_workers": 60,
+  "result": "pass",
+  "production_changes": [],
+  "source": {
+    "head": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+    "head_tree": "52b4ec72b77e4442efe2e9e1b089b7b0ea6e638b",
+    "files": {
+      "CMakeLists.txt": "1c569b0dc5d5afbe5b99ff8529d457ca736ad8e82a36105336badbd4e9841e53",
+      "apps/standalone/CMakeLists.txt": "10d2dcc6bdbcef8f668f00f1dfb2fa9e5230ee233b309402a43ad3df9d2ff402",
+      "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+      "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+      "apps/standalone/Session.h": "8c26342cafcad2022aabba273cdc8d22432fa3c450819f238fa8d546bc22528b",
+      "apps/standalone/Session.cpp": "196bc1872b526854a801ae09fcebf408a76c746e7d8e5f0ebd11d066e978f5af",
+      "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+      "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+      "apps/standalone/tests/test_standalone_inspection_acceptance.cpp": "a3f09a51f2d1e39a6f051934a0efba8a7617024063c371ec6ed32ba52f9900e3",
+      "apps/standalone/tests/test_standalone_inspection_author.cpp": "e1b3518f73794640963394299fa269b4e63ad9cc75ab7c409f92165bc696ba02",
+      "include/hammond/Types.h": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "include/hammond/Profile.h": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+      "include/hammond/Engine.h": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6",
+      "include/hammond/ConsoleModel.h": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+      "include/hammond/ContactBank.h": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+      "include/hammond/ControlState.h": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "include/hammond/FixedRegistration.h": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+      "include/hammond/Percussion.h": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+      "include/hammond/PedalVoice.h": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+      "include/hammond/ScannerLine.h": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+      "include/hammond/TonewheelBank.h": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+      "src/Engine.cpp": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a",
+      "src/ControlState.cpp": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "src/Profile.cpp": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+      "src/TonewheelBank.cpp": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+      "data/profiles/nominal-unmeasured-v1.json": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+      "docs/INTERFACE_INSPECTION_CONTRACT.md": "cc506683e10e3c6b1bd8fdd9851c70e20fab0797057d9be929ccfeb8226d4608",
+      "docs/SCANNER_HANDOFF.md": "6d22bb3a523de4043c830c296f9e8072259a225f07df92929ed5848f79f530f7",
+      "docs/ROTARY_SCOPE.md": "af1bd79423a7da3e99e0cdb7275347be5714d4bc1f2ef0431e9d99563114ae32",
+      "docs/PLAN.md": "aa0bd36d51ff14f583feae6ed069d79d6bc18f0f3751e515c9dfde95c826f1e1"
+    }
+  },
+  "build": "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+  "configuration": {
+    "build_type": "Release",
+    "native_standalone": false,
+    "midi": false,
+    "sanitizers": false
+  },
+  "toolchain": {
+    "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+    "cmake": "cmake version 4.4.4"
+  },
+  "artifact_sha256": {
+    "apps/standalone/test_standalone_inspection_acceptance": "9ccb3c4590b60d7c81594a8a3fdc145b5f13d564cdd0eddc5cad7907d864d720",
+    "apps/standalone/test_standalone_inspection_author": "37512d878941600db15b40159acfe1a94be08470cd2f615e2930b4259fa3f68a",
+    "apps/standalone/libhammond_standalone_support.a": "8fe4d1595716aeb4d0bb2e8cfbfba7494efa90e4893c35ce62470efc08569cf5",
+    "libhammond_core.a": "5f9e77044925821c9c7f6896352f704ecd93fa30d21b788be27c9e3650680930",
+    "nominal.b3p": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+  },
+  "validation": {
+    "strict_syntax": {
+      "result": "pass",
+      "flags": "-std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror",
+      "log": "a23-strict-syntax.txt"
+    },
+    "configure": {
+      "result": "pass",
+      "log": "a23-configure.txt"
+    },
+    "build": {
+      "result": "pass",
+      "log": "a23-build.txt"
+    },
+    "ctest": {
+      "result": "pass",
+      "passed": 2,
+      "total": 2,
+      "elapsed_seconds": 0.01,
+      "filter": "^test_standalone_inspection_(acceptance|author)$",
+      "log": "a23-ctest.txt"
+    }
+  },
+  "initial_test_authoring_preflight": {
+    "result": "failed",
+    "production_failure": false,
+    "diagnostics": [
+      "Nested AllDrawbarBanks brace assignment did not match std::array operator=; changed fixture to four explicit bank assignments.",
+      "Lambda copied a const UiViewState, so mutating its captured controls was rejected; changed to a mutable init-capture."
+    ],
+    "resolution": "Both test-only syntax errors corrected before the first configure/build/CTest. Strict syntax and first binary gate then passed."
+  },
+  "independent_coverage": {
+    "stable_rows": 34,
+    "service_row_counts": [
+      4,
+      6,
+      3,
+      4,
+      5,
+      6
+    ],
+    "rotary_rows": 6,
+    "source_truth": [
+      "Actual Engine two-argument prepare reports Ideal contact mode; Session source calls that overload.",
+      "91 shared sources; supplied changed frequency, gain, and digest successfully prepare and remain visible.",
+      "Scanner remains research only; separate G5 failure is not closed or represented as connected audio.",
+      "AO-28 percussion is a nominal surrogate; complete AO-28 and cabinet remain unconnected.",
+      "Leslie 122 baseline and separate 147, no installed specimen, physical unknowns are words with units."
+    ],
+    "actual_session_and_ui": [
+      "Loaded profile, prepare/start/stop, UiModel load_controls/submitted/observe and Session publications.",
+      "Accepted queued restore retains old applied values until render acknowledgement.",
+      "Bank A, Bank B, fixed F#, and Cancel commands on each manual; all four unequal memories preserved.",
+      "Contradictory invalid desired controls and independent edit-bank copies cannot overwrite applied values.",
+      "Structural Upper-B eligibility boundaries, including retained Off while eligible.",
+      "Manual endpoint and pedal endpoint targets; two owners on one key count once and release independently.",
+      "All five snapshot states; current at frame zero; unchanged stale copy after an actual Session stop.",
+      "Actual failed reads after publication budget exhaustion, retaining exact frame/revision/controls/holds/pending.",
+      "Failed latest read of a copied stopped session is Retained even at a large nonzero frame clock."
+    ],
+    "defensive_formatting": [
+      "Invalid inactive/cancelled control enums and bank memory fail whole applied controls closed.",
+      "NaN/infinity and adjacent finite out-of-domain values are Invalid; valid boundary numbers remain Available.",
+      "Display-only positive finite frequency domain is distinct from full profile preparation admission.",
+      "Wrong, unterminated, trailing-byte and control/non-ASCII identities; malformed/unterminated digest.",
+      "Repeated deterministic documents; byte-unchanged profile/view/runtime inputs; returned owned copies survive input mutation/destruction.",
+      "Bounded printable dynamic text, complete 64-byte digest, row limits and empty unused storage."
+    ]
+  },
+  "limitations": [
+    "SDK-free software/source qualification only; native font formatting and forced-state raster acceptance remain A25/A36 work.",
+    "No second Session or Engine read is performed by the inspection model; no live private Engine state is inferred from a retained UI copy.",
+    "No new allocator interposition or 128-case percussion Cartesian product duplicates were added; existing author suite was run unchanged.",
+    "Private overflow formatting branch is source-reviewed; no currently admitted row reaches 127 payload bytes.",
+    "No physical audio/MIDI device, concurrent scheduling, timing/deadline, native accessibility, scanner G5, calibration or fidelity pass.",
+    "No commit, staging or publication was performed by this worker; integrator owns those actions."
+  ],
+  "working_directory": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "commands": {
+    "strict_syntax": [
+      "g++",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-Iinclude",
+      "-Iapps/standalone",
+      "-Itests",
+      "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/601951e27dc3/build-a13-sdkfree/nominal.b3p\"",
+      "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/601951e27dc3/Hammond-B3-Organ\"",
+      "-fsyntax-only",
+      "apps/standalone/tests/test_standalone_inspection_acceptance.cpp"
+    ],
+    "configure": [
+      "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+      "-S",
+      "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "-B",
+      "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DHAMMOND_BUILD_STANDALONE=OFF",
+      "-DHAMMOND_ENABLE_MIDI=OFF"
+    ],
+    "build": [
+      "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+      "--target",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author",
+      "--parallel",
+      "3"
+    ],
+    "ctest": [
+      "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+      "--output-on-failure",
+      "--no-tests=error",
+      "-R",
+      "^test_standalone_inspection_(acceptance|author)$"
+    ]
+  },
+  "initial_passing_gate": {
+    "passed": 2,
+    "total": 2,
+    "elapsed_seconds": 0.02,
+    "acceptance_source_sha256": "59fcf4f8090a8e481348edc7eee8f236544d5b602df3f0cda1db1ccccecb2d6b",
+    "acceptance_executable_sha256": "110656b2660d832bfd69535580df0bf6234f6442069b420ece4b50ed25bd8ca3",
+    "followup_reason": "Final review isolated route-disabled eligibility with Cancel directly after adjustable B, retaining fixed None."
+  },
+  "source_files_unchanged_across_final_build_test": true
+}

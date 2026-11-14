@@ -127,9 +127,26 @@ MIDI_SCHEMA = {
 }
 
 
+@dataclass(frozen=True)
+class ArraySchema:
+    element: object
+
+
+@dataclass(frozen=True)
+class NullableSchema:
+    element: object
+
+
 def assert_schema(case: unittest.TestCase, value: object, schema: object, name: str = "$") -> None:
     """Exact keys and types; in particular, bool never satisfies an int field."""
-    if isinstance(schema, dict):
+    if isinstance(schema, NullableSchema):
+        if value is not None:
+            assert_schema(case, value, schema.element, name)
+    elif isinstance(schema, ArraySchema):
+        case.assertIs(type(value), list, name)
+        for index, child in enumerate(value):
+            assert_schema(case, child, schema.element, f"{name}[{index}]")
+    elif isinstance(schema, dict):
         case.assertIs(type(value), dict, name)
         case.assertEqual(set(value), set(schema), name)
         for key, child in schema.items():
@@ -204,6 +221,71 @@ def assert_no_midi_input(case: unittest.TestCase, report: dict) -> None:
     })
 
 
+PRESENTATION_FRAME_SCHEMA = {
+    "elapsed_ms": int, "rendered_image": int, "workspace": str,
+    "presentation": str, "overlay": str, "window_width": int, "window_height": int,
+    "inspection": {
+        "snapshot_available": bool, "snapshot_read_succeeded": bool,
+        "snapshot_state": str, "controls_pending": bool,
+        "frame_clock": int, "publication_revision": int,
+    },
+}
+PRESENTATION_SCHEMA = {
+    "initial_workspace": str, "initial_presentation": str,
+    "observation_capacity": int, "observations_truncated": bool,
+    "last_painted": NullableSchema(PRESENTATION_FRAME_SCHEMA),
+    "screenshot": NullableSchema(PRESENTATION_FRAME_SCHEMA),
+    "before_shutdown": NullableSchema(PRESENTATION_FRAME_SCHEMA),
+    "observations": ArraySchema(PRESENTATION_FRAME_SCHEMA),
+}
+
+
+def assert_presentation(case: unittest.TestCase, report: dict) -> None:
+    presentation = report["presentation"]
+    assert_schema(case, presentation, PRESENTATION_SCHEMA, "$.presentation")
+    case.assertIn(presentation["initial_workspace"], ("play", "rotary", "service"))
+    case.assertIn(presentation["initial_presentation"], ("dimensional", "flat"))
+    case.assertEqual(presentation["observation_capacity"], 512)
+    case.assertLessEqual(len(presentation["observations"]), 512)
+    case.assertEqual(presentation["before_shutdown"], presentation["last_painted"])
+    case.assertEqual(presentation["screenshot"] is not None, report["runtime"]["screenshot_written"])
+    case.assertEqual(presentation["last_painted"] is not None, report["runtime"]["rendered_images"] > 0)
+    if presentation["last_painted"] is not None:
+        case.assertEqual(presentation["last_painted"]["rendered_image"], report["runtime"]["rendered_images"])
+    last_image = 0
+    last_elapsed = 0
+    for frame in presentation["observations"]:
+        case.assertGreater(frame["rendered_image"], last_image)
+        case.assertGreaterEqual(frame["elapsed_ms"], last_elapsed)
+        last_image, last_elapsed = frame["rendered_image"], frame["elapsed_ms"]
+    for frame in [*presentation["observations"], presentation["last_painted"],
+                  presentation["screenshot"], presentation["before_shutdown"]]:
+        if frame is None:
+            continue
+        case.assertIn(frame["workspace"], ("play", "rotary", "service"))
+        case.assertIn(frame["presentation"], ("dimensional", "flat"))
+        case.assertIn(frame["overlay"], ("none", "help", "audio", "midi"))
+        case.assertGreaterEqual(frame["window_width"], 960)
+        case.assertGreaterEqual(frame["window_height"], 700)
+        case.assertLessEqual(max(frame["window_width"], frame["window_height"]), 8192)
+        case.assertGreater(frame["rendered_image"], 0)
+        case.assertLessEqual(frame["rendered_image"], report["runtime"]["rendered_images"])
+        observation = frame["inspection"]
+        case.assertIn(observation["snapshot_state"], ("unavailable", "unprepared", "retained", "stopped", "current"))
+        case.assertGreaterEqual(observation["frame_clock"], 0)
+        case.assertGreaterEqual(observation["publication_revision"], 0)
+        if not observation["snapshot_available"]:
+            case.assertEqual(observation["snapshot_state"], "unavailable")
+            case.assertEqual(observation["frame_clock"], 0)
+            case.assertEqual(observation["publication_revision"], 0)
+        else:
+            case.assertNotEqual(observation["snapshot_state"], "unavailable")
+        if observation["snapshot_state"] == "retained":
+            case.assertFalse(observation["snapshot_read_succeeded"])
+        if observation["snapshot_state"] in ("current", "stopped"):
+            case.assertTrue(observation["snapshot_read_succeeded"])
+
+
 SCHEMA = {
     "schema_version": int,
     "application": str,
@@ -226,6 +308,7 @@ SCHEMA = {
         "last_render_status": str, "last_lifecycle_status": str,
     },
     "midi": MIDI_SCHEMA,
+    "presentation": PRESENTATION_SCHEMA,
     "session": {
         "snapshot_available": bool, "prepared": bool, "running_after_shutdown": bool,
         "sample_rate": "number", "frame_clock": int, "publication_revision": int,
@@ -386,12 +469,18 @@ class NativeAppAcceptance(unittest.TestCase):
             arguments += ["--screenshot", str(screenshot)]
         return arguments + (extra or [])
 
-    def diagnostics(self, path: Path, state: Path) -> dict:
+    def diagnostics(self, path: Path, state: Path, *,
+                    workspace: str = "play", presentation: str = "dimensional") -> dict:
         report = json.loads(path.read_text(encoding="utf-8"),
                             object_pairs_hook=unique_object, parse_constant=reject_nonfinite)
         assert_schema(self, report, SCHEMA)
         self.assertEqual(report["schema_version"], 3)
         assert_no_midi_input(self, report)
+        assert_presentation(self, report)
+        self.assertEqual(report["presentation"]["initial_workspace"], workspace)
+        self.assertEqual(report["presentation"]["initial_presentation"], presentation)
+        self.assertEqual(report["presentation"]["before_shutdown"]["workspace"], workspace)
+        self.assertEqual(report["presentation"]["before_shutdown"]["presentation"], presentation)
         self.assertEqual(report["application"], "hammond_standalone")
         self.assertEqual(report["profile"], PROFILE)
         self.assertEqual(report["state_path"], str(state))
@@ -540,8 +629,10 @@ class NativeAppAcceptance(unittest.TestCase):
         run = self.invoke(self.cli_arguments(paths, ["--help"]),
                           audio=INVALID_DRIVER, video=INVALID_DRIVER, timeout=3.0)
         self.assertIn("Usage: hammond_standalone", run.process.stdout)
-        for option in ("--help", "--list-audio", "--device", *NUMERIC_OPTIONS, *paths):
+        for option in ("--help", "--list-audio", "--device", "--workspace", "--flat", *NUMERIC_OPTIONS, *paths):
             self.assertIn(option, run.process.stdout)
+        self.assertIn("F4/F5/F6", run.process.stdout)
+        self.assertIn("F7", run.process.stdout)
         self.assertIn("never automatic", run.process.stdout)
         self.assertEqual(run.process.stderr, "")
         self.assertEqual(self.tree_snapshot(), before)
@@ -571,10 +662,10 @@ class NativeAppAcceptance(unittest.TestCase):
 
     def test_duplicate_options_reject_before_output(self) -> None:
         paths = self.guarded_paths()
-        for option in ("--help", "--list-audio"):
+        for option in ("--help", "--list-audio", "--flat"):
             with self.subTest(option=option):
                 self.reject_cli(paths, [option, option], "Repeated option")
-        values = {**NUMERIC_OPTIONS, "--device": "Default output",
+        values = {**NUMERIC_OPTIONS, "--device": "Default output", "--workspace": "service",
                   **{option: str(path) for option, path in paths.items()}}
         for option, value in values.items():
             with self.subTest(option=option):
@@ -582,7 +673,7 @@ class NativeAppAcceptance(unittest.TestCase):
 
     def test_missing_and_empty_values_reject_before_output(self) -> None:
         paths = self.guarded_paths()
-        for option in (*NUMERIC_OPTIONS, "--device", *paths):
+        for option in (*NUMERIC_OPTIONS, "--device", "--workspace", *paths):
             for suffix in ([], [""]):
                 with self.subTest(option=option, empty=bool(suffix)):
                     self.reject_cli(paths, [option, *suffix], "Missing value", option)
@@ -609,6 +700,95 @@ class NativeAppAcceptance(unittest.TestCase):
             for value in values:
                 with self.subTest(option=option, value=value):
                     self.reject_cli(paths, [option, str(value)], "Unsupported value", option)
+
+    def test_invalid_workspaces_reject_before_device_or_output(self) -> None:
+        paths = self.guarded_paths()
+        for value in ("Play", "SERVICE", "rotary ", " service", "flat", "unknown", "0", "3", "--flat"):
+            with self.subTest(value=value):
+                self.reject_cli(paths, ["--workspace", value], "Unsupported value for --workspace")
+
+    def test_workspace_and_flat_startup_preserve_controls_and_actual_painted_view(self) -> None:
+        for workspace in ("play", "rotary", "service"):
+            for presentation in ("dimensional", "flat"):
+                with self.subTest(workspace=workspace, presentation=presentation):
+                    state = self.root / f"{workspace}-{presentation}.b3controls"
+                    state.write_bytes(state_document())
+                    diagnostics = self.root / f"{workspace}-{presentation}.json"
+                    screenshot = self.root / f"{workspace}-{presentation}.bmp"
+                    extra = ["--workspace", workspace]
+                    if presentation == "flat":
+                        extra += ["--flat"]
+                    run = self.invoke(self.smoke_arguments(state, diagnostics, screenshot, extra))
+                    report = self.diagnostics(diagnostics, state, workspace=workspace, presentation=presentation)
+                    self.assert_success(run, report, VARIED_CONTROLS)
+                    views = report["presentation"]
+                    self.assertFalse(views["observations_truncated"])
+                    self.assertEqual((views["screenshot"]["workspace"], views["screenshot"]["presentation"]),
+                                     (workspace, presentation))
+                    self.assertLessEqual(views["screenshot"]["rendered_image"], views["last_painted"]["rendered_image"])
+                    self.assertIn(views["before_shutdown"]["inspection"]["snapshot_state"], ("current", "retained"))
+                    self.assertGreater(views["before_shutdown"]["inspection"]["frame_clock"], 0)
+                    self.assertFalse(views["before_shutdown"]["inspection"]["controls_pending"])
+                    self.assert_bmp(screenshot, 1280, 900)
+                    self.assertEqual(state.read_bytes(), state_document())
+
+    def test_workspace_shortcuts_paint_views_preserve_holds_and_respect_modal_gate(self) -> None:
+        state, diagnostics, screenshot, script = (self.root / name for name in
+            ("absent.b3controls", "workspaces.json", "rotary-held.bmp", "workspaces.b3uireplay"))
+        events = ["150 key_down A none 0"]
+        for at, key, modifiers in (
+            (250, "F5", "none"), (400, "F6", "none"), (550, "F7", "none"),
+            (650, "F4", "ctrl"), (850, "Slash", "shift"), (950, "F4", "none"),
+            (1050, "F7", "none"), (1150, "Escape", "none"), (1250, "F4", "none"),
+            (1400, "F7", "none"), (1500, "F5", "none"),
+        ):
+            events += [f"{at} key_down {key} {modifiers} 0", f"{at + 10} key_up {key} {modifiers}"]
+        events += ["750 key_up A alt", "1650 key_down A none 0"]
+        events.sort(key=lambda event: int(event.split()[0]))
+        script.write_text("B3UIREPLAY1\nduration_ms 1900\n" + "\n".join(events) + "\n", encoding="ascii")
+        run = self.invoke(["--state", str(state), "--input-script", str(script),
+                           "--diagnostics", str(diagnostics), "--screenshot", str(screenshot)])
+        self.assertEqual(run.process.stderr, "")
+        report = json.loads(diagnostics.read_text(encoding="utf-8"),
+                            object_pairs_hook=unique_object, parse_constant=reject_nonfinite)
+        assert_schema(self, report, {**SCHEMA, "replay": dict})
+        assert_no_midi_input(self, report)
+        assert_presentation(self, report)
+        self.assertEqual(report["schema_version"], 3)
+        self.assertEqual(report["errors"], {"count": 0, "last": ""})
+        self.assertEqual(report["controls"], AUDITION_CONTROLS)
+        self.assertFalse(report["session"]["running_after_shutdown"])
+        self.assertFalse(report["session"]["held_after_shutdown"])
+        replay = report["replay"]
+        for flag in ("completed", "delivered", "passed", "final_acknowledged"):
+            self.assertTrue(replay[flag], diagnostic_excerpt(report))
+        self.assertEqual(replay["scheduled_events"], len(events))
+        self.assertEqual(replay["pushed_events"], len(events))
+        self.assertEqual(replay["accepted_note_on_commands"], 2)
+        self.assertEqual(replay["accepted_note_off_commands"], 1)
+        self.assertEqual(replay["before_shutdown"]["manual_notes"], [[60], []])
+        self.assertEqual(replay["before_shutdown"]["pedal_ids"], [])
+        self.assertEqual(replay["before_shutdown"]["controls"], AUDITION_CONTROLS)
+        views = report["presentation"]
+        self.assertFalse(views["observations_truncated"])
+        transitions = []
+        for observation in views["observations"]:
+            value = tuple(observation[key] for key in ("workspace", "presentation", "overlay"))
+            if not transitions or transitions[-1] != value:
+                transitions.append(value)
+        self.assertEqual(transitions, [
+            ("play", "dimensional", "none"), ("rotary", "dimensional", "none"),
+            ("service", "dimensional", "none"), ("service", "flat", "none"),
+            ("service", "flat", "help"), ("service", "flat", "none"),
+            ("play", "flat", "none"), ("play", "dimensional", "none"),
+            ("rotary", "dimensional", "none"),
+        ])
+        self.assertEqual(views["before_shutdown"], views["screenshot"])
+        self.assertEqual(views["before_shutdown"]["workspace"], "rotary")
+        self.assertIn(views["before_shutdown"]["inspection"]["snapshot_state"], ("current", "retained"))
+        self.assertTrue(report["runtime"]["screenshot_while_held"])
+        self.assert_bmp(screenshot, 1280, 900)
+        self.assertFalse(state.exists())
 
     def test_reference_minimum_and_extreme_audio_smokes(self) -> None:
         configurations = (
@@ -677,8 +857,9 @@ class NativeAppAcceptance(unittest.TestCase):
 
     def test_no_audio_fails_bounded_with_zero_callback_claims(self) -> None:
         state, diagnostics, screenshot = (self.root / name for name in ("absent.b3controls", "no-audio.json", "no-audio.bmp"))
-        run = self.invoke(self.smoke_arguments(state, diagnostics, screenshot), expected=1, audio=INVALID_DRIVER)
-        report = self.diagnostics(diagnostics, state)
+        run = self.invoke(self.smoke_arguments(state, diagnostics, screenshot,
+                          ["--workspace", "service", "--flat"]), expected=1, audio=INVALID_DRIVER)
+        report = self.diagnostics(diagnostics, state, workspace="service", presentation="flat")
         self.assert_summary(run, report, False)
         self.assertIn("No Audio: cannot initialize selected SDL audio driver", run.process.stderr)
         self.assertFalse(report["audio"]["open_before_shutdown"])
@@ -690,6 +871,11 @@ class NativeAppAcceptance(unittest.TestCase):
                     "queue_overflows", "rejected_commands", "discarded_commands", "fault_flags", "maximum_observed_peak"):
             self.assertEqual(report["session"][key], 0, key)
         self.assertFalse(report["session"]["prepared"])
+        inspection = report["presentation"]["screenshot"]["inspection"]
+        self.assertTrue(inspection["snapshot_available"])
+        self.assertTrue(inspection["snapshot_read_succeeded"])
+        self.assertEqual(inspection["snapshot_state"], "unprepared")
+        self.assertEqual((inspection["frame_clock"], inspection["publication_revision"]), (0, 0))
         self.assertTrue(report["smoke"]["completed"])
         for key in ("note_on_sent", "note_off_sent", "held_observed", "release_observed", "passed"):
             self.assertFalse(report["smoke"][key], key)

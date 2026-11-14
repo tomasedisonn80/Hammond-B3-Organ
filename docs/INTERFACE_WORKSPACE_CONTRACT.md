@@ -236,8 +236,8 @@ Play/Dimensional as defaults; neither changes sound-state loading.
 Inspection reads `InspectionModel.h/.cpp` under the separate wave-2 inspection
 contract. `make_inspection_document(const RuntimeProfile&, const UiViewState&,
 const InspectionRuntimeInfo&) noexcept` returns a bounded value-owned document.
-It receives copied UiViewState, immutable profile metadata and main-thread
-device/snapshot-freshness status. Applied values come from `view.applied` only;
+It receives copied UiViewState, immutable profile metadata and the two existing
+snapshot-read outcome flags. Device facts remain in InstrumentViewInfo. Applied values come from `view.applied` only;
 desired and pending values are separately labeled. It must not call Engine,
 enumerate/open devices, advance model clocks, post commands or fill unknown
 physical fields with zero. The read-only six-card body has no tab stops in v1.

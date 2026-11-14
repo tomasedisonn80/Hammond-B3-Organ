@@ -15,28 +15,35 @@ are not captured pickup waveforms. This preserves coherent shared-source sums
 and gives timing/routing tests a repeatable model.
 
 Each manual retains nine drawbar positions in both A and B banks. **EDIT A/B**
-chooses which retained bank the screen edits. **PLAY A/B** selects the sounding
-bank and reconnects that manual. **CANCEL** disconnects its route while retaining
-its held keys and stored values. **PANIC** releases notes globally. These actions
-have different musical meanings and should not be interchanged.
+chooses which retained bank the screen edits. The reversed preset octave selects
+the sounding route: **C#–A** chooses one of nine fixed registrations, **A#** selects
+adjustable bank A, **B** selects adjustable bank B, and **C** cancels the route.
+Fixed selection and Cancel retain all adjustable banks and held-note histories.
+**PANIC** releases notes globally. The [preset guide](PRESET_RUNBOOK.md) gives
+the complete eighteen-row selection behavior and source limits.
 
-The reference-oriented interface retains all 45 public parameter identities and
-the same musical state. Its additional MIDI settings action is an application
-control, not a new sound parameter. Source-art walnut and cabinet decoration
-comes from the atlas cover/page 409 generated concept; the cabinet is visible
-when the window is wide enough. It does not implement a rotating speaker,
-speed switch, scanner, microphone or room. Correct dynamic keys, drawbar labels
-and control behavior take precedence over the concept's inaccurate legends.
-The [reference review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/reviews/MIDI_UI_REFERENCE_REVIEW.md) records actual
-captures, remaining appearance differences and the minimum-size text-legibility
-gate. It does not establish a one-to-one visual match.
+The current interface preserves all **47 public parameter identities** and the
+same musical state. Play, Rotary, Service and Flat are presentation choices,
+outside those sound parameters. Play keeps the live controls; Service shows
+read-only copied model/control facts and Rotary shows a cabinet reference with
+explicit unavailable audio/physical values. Source-art walnut and cabinet
+decoration comes from the atlas cover/page 409 generated concept. It does not
+implement a rotating speaker, speed switch, scanner, microphone or room.
+Correct dynamic keys, drawbar labels and control behavior take precedence over
+the concept's inaccurate legends. The [current native gallery](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v1/README.md)
+records actual source-identified captures and remaining appearance differences.
+It does not establish a one-to-one visual match. The
+[interface guide](INTERFACE_RUNBOOK.md) explains current/retained/stopped and
+unavailable inspection states; unknown physical values are not numeric zeros.
 
 Drawbars use the implemented integer positions 0–8. Expression is a normalized
 linear gain surrogate. The two pedal controls are the existing **Mix 1** and
 **Mix 2** nominal mixtures, not independently measured historical footage laws.
 The upper-B percussion route retains its four switch settings even when another
-bank is selected. Percussion and ideal key contacts remain identified behavioral
-models; the standalone does not imply that their physical circuits were fitted.
+bank or a fixed registration is selected. Eligibility requires the enabled
+Upper B route with no fixed choice. Percussion and `ideal-contacts-v1` remain
+identified behavioral models; the standalone does not imply that their physical
+circuits were fitted. Inspection does not expose transient percussion readiness.
 
 The application may explicitly load a proposed audition registration so its
 initial window can be played immediately: upper B `888000000`, lower B
@@ -53,12 +60,14 @@ counted clips, and silences a callback containing a nonfinite sample. There is n
 hidden loudness normalization. A clip counter identifies output saturation; it
 does not identify an amplifier model.
 
-Musical control files use the existing `B3CONTROLS3` grammar and retain the
-existing migrations from versions 1 and 2. They contain bank values, route
-selection, expression, percussion and pedal controls. They do not contain held
-notes, source phases, contact travel, envelope readiness, the sample clock,
-audio-device preferences or window geometry. Loading a control file is not
-restoring an exact audio checkpoint.
+Musical control files use **`B3CONTROLS4`** and retain readers for versions 1,
+2 and 3. They contain all four bank memories, remembered sounding banks, raw fixed
+choices, route bits, expression, percussion and pedal controls, with the pinned
+fixed-registration catalog identity. Older versions migrate fixed modes to None;
+the next explicit Save writes version 4. They do not contain held notes, source
+phases, contact travel, envelope readiness, the sample clock, device preferences,
+window geometry, workspace, Flat presentation or focus. Loading controls is not
+restoring an exact audio checkpoint or a saved UI view.
 
 UI and admitted MIDI events apply at callback boundaries. Optional pinned RtMidi
 6.0.0 provides one explicitly selected native input, using ALSA on Linux, WinMM
@@ -72,14 +81,17 @@ latency promise. Synthetic `B3MIDIREPLAY1` replay exercises the same application
 routing without opening a physical port. The existing VST3 event buses remain
 part of the separate plugin adapter.
 
-Manual CC16–24 edit fixed **B** banks, independently of the screen's EDIT and
-SOUNDING selections. Pedal CC16/17 edit Mix 1/Mix 2; CC11 edits shared nominal
+Manual CC16–24 edit the retained **B** drawbar banks, independently of the screen's
+EDIT bank and sounding fixed/adjustable/Cancel selection. They do not leave fixed
+mode or reconnect Cancel; select preset B explicitly to hear that bank.
+Pedal CC16/17 edit Mix 1/Mix 2; CC11 edits shared nominal
 expression. CC123 releases the mapped division's MIDI owners. Sustain,
 CC120/121, pitch bend, pressure, Program Change and SysEx have no implemented
 musical effect. MIDI edits join the same desired controls as local edits and
 can be saved, but port/channel choices are machine setup and are not saved in
-`B3CONTROLS3`. The [MIDI/UI runbook](MIDI_UI_RUNBOOK.md) gives the complete map,
-connection steps and supported-message limits.
+`B3CONTROLS4`. The [MIDI/UI runbook](MIDI_UI_RUNBOOK.md) gives the complete map
+and supported-message limits. The [interface guide](INTERFACE_RUNBOOK.md#midi-discovery-and-recovery)
+describes nonblocking modal discovery and explicit refresh/connection.
 
 Normal MIDI disconnect releases MIDI owners while preserving UI holds. Panic,
 audio Restart and faults retire incoming MIDI; connecting again requires an
@@ -98,19 +110,20 @@ listening evidence remain later dependencies. The fixed chapel registrations on
 atlas p122 now have two agreeing image transcriptions and a strict
 [documentary catalog](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/CHAPEL_PRESETS_CATALOG.md), covering all 18 rows and 162
 connection digits. The underlying factory Table IV, loaded gains, physical
-selector and latch behavior remain separate M3 gates. The standalone currently
-exposes the implemented A/B/Cancel controls; importing registration values into
-those controls does not implement the physical fixed-key mechanism.
+selector and latch behavior remain separate M3 gates. The standalone implements
+exclusive fixed selection through its 24 reversed preset keys and preserves
+adjustable-bank memory; this nominal routing behavior does not model a measured
+physical latch mechanism or calibrated transformer loading.
 
 Actual dummy-backend callbacks, synthetic renders and software screenshots
 verify their stated engineering paths. Physical devices, deadline/underrun and
 latency measurements, native screen readers, musician workflows, signed
 installers and specimen-specific fidelity each require their own retained
-results. The [current status](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STATUS.md) and [handoff](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STANDALONE_HANDOFF.md)
+results. The [current status](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STATUS.md) and [interface session](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-interface-continuation/README.md)
 identify which gates have actually run for a named revision.
 
 Source basis: atlas pp. 379–408, 409–444 and 445–456; existing
 [implementation contract](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/IMPLEMENTATION_CONTRACT.md),
 [pedal engine](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/PEDAL_ENGINE.md), [control state](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/CONTROL_STATE_FORMAT.md) and
-[standalone scope](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STANDALONE_SCOPE.md). The latest full-atlas reading and engineering boundaries are retained in the
-[MIDI/UI atlas review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/research/MIDI_UI_ATLAS_REVIEW.md).
+[interface scope](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/INTERFACE_CONTINUATION_SCOPE.md). The latest full-atlas reading and engineering boundaries are retained in the
+[interface atlas review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/research/INTERFACE_ATLAS_REVIEW.md).

@@ -1,0 +1,1424 @@
+{
+  "all_recorded_inputs_unchanged": true,
+  "build": {
+    "boundary": "Generated embedded headers, nominal profile and selected native/core static libraries. Selected CMake values are checked; this is not a hermetic compiler/dependency or rebuild attestation.",
+    "changed_paths": [],
+    "files": {
+      "_sdl2/libSDL2.a": {
+        "bytes": 3245774,
+        "sha256": "1e471c6f7a2c14eba9230c44e743e27c5dc68a243308427e5004d4e446db9324"
+      },
+      "apps/standalone/generated/EmbeddedProfile.h": {
+        "bytes": 28806,
+        "sha256": "427e4e3e99a69ebc61f4bc4c576f014843304b384881792934367b00ba569537"
+      },
+      "apps/standalone/generated/ReferenceArtData.h": {
+        "bytes": 5093899,
+        "sha256": "d94cefd9ad69726c267d4674acd66912f4764ee9f88d1c21ecce4ed7befcbac6"
+      },
+      "apps/standalone/libhammond_rtmidi.a": {
+        "bytes": 103458,
+        "sha256": "d3dd768f60e5e8db9dcba86c39ae4931e31296cfeed092b3cb66f698a536a4ff"
+      },
+      "apps/standalone/libhammond_standalone_audio.a": {
+        "bytes": 32566,
+        "sha256": "6ab58451d462c655701f90880fceb1a7886f58f53681bfecf7b05503348971f8"
+      },
+      "apps/standalone/libhammond_standalone_drawing.a": {
+        "bytes": 916998,
+        "sha256": "ec8cde3a173c59ca911b76933be53ffba6098f52c8bfd22abfcdfa8a42c02287"
+      },
+      "apps/standalone/libhammond_standalone_replay.a": {
+        "bytes": 64866,
+        "sha256": "c095ecdbe90c90bd4e8b9afe87448914e7fba794edab88de456c1c6ab1f8250f"
+      },
+      "apps/standalone/libhammond_standalone_support.a": {
+        "bytes": 256722,
+        "sha256": "b76221970fad666f56d741034683671f9a77c6316292dc89c319adbfa79b3c64"
+      },
+      "generated/hammond/generated/FixedRegistrationData.h": {
+        "bytes": 2099,
+        "sha256": "66cbb1a23cb5ebf14844afd6f98e13829c9f69c1511b09d5974ca5a4527157c6"
+      },
+      "generated/hammond/generated/PedalRoutingData.h": {
+        "bytes": 13333,
+        "sha256": "efddce2ea3619a7dd9e153382e307928f7aed60bdb8a0318ca6c0e71ee5f6034"
+      },
+      "generated/hammond/generated/ScannerLineData.h": {
+        "bytes": 1104,
+        "sha256": "d508e3856e637a8e107364ad2a8fed09893a2e50ae05d99db3d4b3da37a5a082"
+      },
+      "libhammond_core.a": {
+        "bytes": 290476,
+        "sha256": "5f9e77044925821c9c7f6896352f704ecd93fa30d21b788be27c9e3650680930"
+      },
+      "nominal.b3p": {
+        "bytes": 4545,
+        "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+      }
+    },
+    "inventory_sha256_after": "a55aa515407a2f9bd631d8183b3c10ffb93c92d48360843ee9fbecf19d7be94a",
+    "inventory_sha256_before": "a55aa515407a2f9bd631d8183b3c10ffb93c92d48360843ee9fbecf19d7be94a",
+    "root": "/workspace/scratch/601951e27dc3/build-native",
+    "selected_configuration_after": {
+      "ALSA_INCLUDE_DIR": "/workspace/scratch/641ca55ce6de/native-sysroot/usr/include",
+      "ALSA_LIBRARY": "/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_ENABLE_MIDI": "ON",
+      "HAMMOND_RTMIDI_ROOT": "/workspace/scratch/cd4bd06ce68f/rtmidi",
+      "HAMMOND_SDL2_ROOT": "/workspace/scratch/7ffc2842608b/SDL2",
+      "SDL_ALSA": "OFF"
+    },
+    "selected_configuration_before": {
+      "ALSA_INCLUDE_DIR": "/workspace/scratch/641ca55ce6de/native-sysroot/usr/include",
+      "ALSA_LIBRARY": "/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_ENABLE_MIDI": "ON",
+      "HAMMOND_RTMIDI_ROOT": "/workspace/scratch/cd4bd06ce68f/rtmidi",
+      "HAMMOND_SDL2_ROOT": "/workspace/scratch/7ffc2842608b/SDL2",
+      "SDL_ALSA": "OFF"
+    }
+  },
+  "capture_contract": "standalone-interface-capture-v1",
+  "cases": [
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/images/play-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/diagnostics/play-reference-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/runs/play-reference-1672x941",
+      "diagnostics": {
+        "bytes": 11689,
+        "path": "diagnostics/play-reference-1672x941.json",
+        "sha256": "b9f20806913fd9a5325952ed4e33766334b6604a946e224b096204a2891c2cc3"
+      },
+      "elapsed_seconds": 2.0653118539994466,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "8bcc18884407ac2160fd9bb57a3bd1d03a75f0cdae89a9069df4adc898c2ab26",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "7b3d72ec4ceedd063181e88da362c226252616db80cd0514a87f7a41757a2770"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-reference-1672x941.png",
+        "png": {
+          "bytes": 643326,
+          "sha256": "6dd996e7e955e749ae58c2a3cebf8a14f489148ab1658261c7d01e43f3dd487f"
+        },
+        "width": 1672
+      },
+      "name": "play-reference-1672x941",
+      "presentation": "dimensional",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1842,
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 83456,
+            "publication_revision": 330,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "overlay": "none",
+          "presentation": "dimensional",
+          "rendered_image": 29,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "play"
+        },
+        "callbacks": 175,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_source": "none",
+        "passed": true,
+        "rendered_frames": 89600,
+        "ui_events": 66
+      },
+      "width": 1672,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1280",
+        "--height",
+        "900",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/images/play-default-1280x900.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/diagnostics/play-default-1280x900.json"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/runs/play-default-1280x900",
+      "diagnostics": {
+        "bytes": 11688,
+        "path": "diagnostics/play-default-1280x900.json",
+        "sha256": "ed8c05ce9c4af99b387d326980b62abedb8232f503924d10009c81038ace7fbc"
+      },
+      "elapsed_seconds": 1.9944626399956178,
+      "exit_code": 0,
+      "height": 900,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "04d04080b6b84675504bbab58ca301dcfae6b6c517ac4b8decbd19af8426aa98",
+        "height": 900,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 4608122,
+          "sha256": "0adeea7288a814dbaf9ee16e4931ca17b6f1d1d62e3c6c75bd976c221ba2c6a0"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-default-1280x900.png",
+        "png": {
+          "bytes": 172136,
+          "sha256": "648538c0dfe117de74f23343edfd40f9a53b903260ce635d94b8d427d23bd119"
+        },
+        "width": 1280
+      },
+      "name": "play-default-1280x900",
+      "presentation": "dimensional",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1867,
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 86016,
+            "publication_revision": 340,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "overlay": "none",
+          "presentation": "dimensional",
+          "rendered_image": 30,
+          "window_height": 900,
+          "window_width": 1280,
+          "workspace": "play"
+        },
+        "callbacks": 176,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_source": "none",
+        "passed": true,
+        "rendered_frames": 90112,
+        "ui_events": 66
+      },
+      "width": 1280,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/play-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/images/play-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/diagnostics/play-minimum-960x700.json"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/runs/play-minimum-960x700",
+      "diagnostics": {
+        "bytes": 11680,
+        "path": "diagnostics/play-minimum-960x700.json",
+        "sha256": "74f40792195f8161decf1afe1f719f80ac75df94dd386b68c2e38b1fbb7491d5"
+      },
+      "elapsed_seconds": 1.8944853159991908,
+      "exit_code": 0,
+      "height": 700,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "e4c32f4b44cc4022741e53c36711f61a017b25c6bc7b2e3cd45b5d214dc3153e",
+        "height": 700,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 2688122,
+          "sha256": "f8867cdc2ffa426017de4b03d327dd8c45aaf931b29ebcf028473b5cf5dcd0e1"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/play-minimum-960x700.png",
+        "png": {
+          "bytes": 131056,
+          "sha256": "4a6e12d7f5b5774406142ba514ce603d8cf63cc96165671f241d81c0a1a87f58"
+        },
+        "width": 960
+      },
+      "name": "play-minimum-960x700",
+      "presentation": "dimensional",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1801,
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 82944,
+            "publication_revision": 328,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "overlay": "none",
+          "presentation": "dimensional",
+          "rendered_image": 56,
+          "window_height": 700,
+          "window_width": 960,
+          "workspace": "play"
+        },
+        "callbacks": 167,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_source": "none",
+        "passed": true,
+        "rendered_frames": 85504,
+        "ui_events": 66
+      },
+      "width": 960,
+      "workspace": "play"
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/service-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/images/service-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/diagnostics/service-reference-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/runs/service-reference-1672x941",
+      "diagnostics": {
+        "bytes": 11551,
+        "path": "diagnostics/service-reference-1672x941.json",
+        "sha256": "8b024ca9d581ac4b173e8b36fcfad2481a43294e146fb39fa120c0124ce3acc8"
+      },
+      "elapsed_seconds": 1.980870491002861,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "72d91556b5fbea18cc2421ae0fb2623eff6a094c20cddfb701b0a09a7b293fdc",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "5d2221105edee4fb2896479fb0273d16e4528ffbecd1bec4e8b10125cce2737a"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/service-reference-1672x941.png",
+        "png": {
+          "bytes": 410332,
+          "sha256": "dc810d239fac6e94a447239c059e1cc60d8adbf0f73912bfaadb2d62a9f213f6"
+        },
+        "width": 1672
+      },
+      "name": "service-reference-1672x941",
+      "presentation": "dimensional",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1853,
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 83968,
+            "publication_revision": 332,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "overlay": "none",
+          "presentation": "dimensional",
+          "rendered_image": 30,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "service"
+        },
+        "callbacks": 171,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_source": "none",
+        "passed": true,
+        "rendered_frames": 87552,
+        "ui_events": 66
+      },
+      "width": 1672,
+      "workspace": "service"
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/service-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/images/service-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/diagnostics/service-minimum-960x700.json"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/runs/service-minimum-960x700",
+      "diagnostics": {
+        "bytes": 12007,
+        "path": "diagnostics/service-minimum-960x700.json",
+        "sha256": "8aae6640c93c56947b7b9da5f44646d30712c6f31d21e8b188506d2179922888"
+      },
+      "elapsed_seconds": 1.898581893001392,
+      "exit_code": 0,
+      "height": 700,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "6f1669af6e267d05e1b15cccdb118c48b9fac0a43e502dea08ceaaf83dd7efee",
+        "height": 700,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 2688122,
+          "sha256": "22af204a0cd0b28faf17d0942e30c08aab6a276a4cd5dfac4ebb2790075182d6"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/service-minimum-960x700.png",
+        "png": {
+          "bytes": 166394,
+          "sha256": "ff4336ef3238a85cc3ab2e27ab492de000108f68437d94aa89936312ef2e2d90"
+        },
+        "width": 960
+      },
+      "name": "service-minimum-960x700",
+      "presentation": "dimensional",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1805,
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 82432,
+            "publication_revision": 326,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "overlay": "none",
+          "presentation": "dimensional",
+          "rendered_image": 56,
+          "window_height": 700,
+          "window_width": 960,
+          "workspace": "service"
+        },
+        "callbacks": 165,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_source": "none",
+        "passed": true,
+        "rendered_frames": 84480,
+        "ui_events": 66
+      },
+      "width": 960,
+      "workspace": "service"
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/rotary-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/images/rotary-reference-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/diagnostics/rotary-reference-1672x941.json"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/runs/rotary-reference-1672x941",
+      "diagnostics": {
+        "bytes": 11083,
+        "path": "diagnostics/rotary-reference-1672x941.json",
+        "sha256": "68115f4bdc451b0c17537ffd262b7354970440b9310db6f1550bcc6922d4b7a9"
+      },
+      "elapsed_seconds": 1.9686221699957969,
+      "exit_code": 0,
+      "height": 941,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "3d9a7a6528ba4035eec9b725dccd365cfed41cdfdedec6115b6cdbdf58df741e",
+        "height": 941,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 6293530,
+          "sha256": "95b82bf51e965fc2f8514c53ebb967fae81f0cfe5ed199150a1139af2715de17"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/rotary-reference-1672x941.png",
+        "png": {
+          "bytes": 783139,
+          "sha256": "8dc28f6cebc2dbd8b704558f9efd6f6169c3b08a4c34f740d51aff76bb0eab52"
+        },
+        "width": 1672
+      },
+      "name": "rotary-reference-1672x941",
+      "presentation": "dimensional",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1854,
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 85504,
+            "publication_revision": 338,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "overlay": "none",
+          "presentation": "dimensional",
+          "rendered_image": 27,
+          "window_height": 941,
+          "window_width": 1672,
+          "workspace": "rotary"
+        },
+        "callbacks": 173,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_source": "none",
+        "passed": true,
+        "rendered_frames": 88576,
+        "ui_events": 66
+      },
+      "width": 1672,
+      "workspace": "rotary"
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/rotary-dimensional.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/images/rotary-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/diagnostics/rotary-minimum-960x700.json"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/runs/rotary-minimum-960x700",
+      "diagnostics": {
+        "bytes": 12003,
+        "path": "diagnostics/rotary-minimum-960x700.json",
+        "sha256": "79892a13efd935aa2fb6a4295190ac20d0b2d680ee4eec30cb46445fceacaeab"
+      },
+      "elapsed_seconds": 1.9244783660033136,
+      "exit_code": 0,
+      "height": 700,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "cc71971df77920bc47e5ae1729d795f10a6d743673ced24cfd6ad3798c580826",
+        "height": 700,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 2688122,
+          "sha256": "1b2499304ccfac6678ff38ac5c52ad1deace8581c85cadd2f115354184fa2463"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/rotary-minimum-960x700.png",
+        "png": {
+          "bytes": 320060,
+          "sha256": "6082e29b90eb4e9878df50a9f643eb6fd092857b7bb515f5210f8a8ff36eb8a2"
+        },
+        "width": 960
+      },
+      "name": "rotary-minimum-960x700",
+      "presentation": "dimensional",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1840,
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 84480,
+            "publication_revision": 334,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "overlay": "none",
+          "presentation": "dimensional",
+          "rendered_image": 58,
+          "window_height": 700,
+          "window_width": 960,
+          "workspace": "rotary"
+        },
+        "callbacks": 169,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_source": "none",
+        "passed": true,
+        "rendered_frames": 86528,
+        "ui_events": 66
+      },
+      "width": 960,
+      "workspace": "rotary"
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/play-flat.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/images/flat-minimum-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/diagnostics/flat-minimum-960x700.json"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/runs/flat-minimum-960x700",
+      "diagnostics": {
+        "bytes": 11967,
+        "path": "diagnostics/flat-minimum-960x700.json",
+        "sha256": "e4469d85d5f9233e2db36d30a758bb9b3172a1ea42c351b234cfda9a9a1f625c"
+      },
+      "elapsed_seconds": 1.8585717589958222,
+      "exit_code": 0,
+      "height": 700,
+      "image": {
+        "decoded_mode": "RGBA",
+        "decoded_sha256": "19f2ef51daadbc45aa0b8b17bdffa7ca6fd05ac51e21fa02c1e8714706effb00",
+        "height": 700,
+        "lossless_bmp_to_png": true,
+        "native_bmp": {
+          "bytes": 2688122,
+          "sha256": "bfc3da9e01c3d030fb603fc62f98d5c2f7aa89d80921c9221d093c34c791a966"
+        },
+        "native_bmp_removed_after_verification": true,
+        "path": "images/flat-minimum-960x700.png",
+        "png": {
+          "bytes": 49272,
+          "sha256": "ca87348e369a2547ffbef65e985f112d681a27429a3c1271b26a3e9555630036"
+        },
+        "width": 960
+      },
+      "name": "flat-minimum-960x700",
+      "presentation": "flat",
+      "status": "passed",
+      "timeout_seconds": 12.0,
+      "validation": {
+        "actual_painted_view": {
+          "elapsed_ms": 1809,
+          "inspection": {
+            "controls_pending": false,
+            "frame_clock": 81920,
+            "publication_revision": 324,
+            "snapshot_available": true,
+            "snapshot_read_succeeded": true,
+            "snapshot_state": "current"
+          },
+          "overlay": "none",
+          "presentation": "flat",
+          "rendered_image": 73,
+          "window_height": 700,
+          "window_width": 960,
+          "workspace": "play"
+        },
+        "callbacks": 161,
+        "complete_control_state_checked": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "input_state_file_unchanged": true,
+        "joined_shutdown_clear": true,
+        "live_edit": {
+          "after": 8,
+          "before": 7,
+          "target": "Upper B 16-foot retained drawbar"
+        },
+        "midi_source": "none",
+        "passed": true,
+        "rendered_frames": 82432,
+        "ui_events": 68
+      },
+      "width": 960,
+      "workspace": "play"
+    }
+  ],
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "tools/capture_standalone_interface.py",
+    "--exe",
+    "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+    "--source-root",
+    ".",
+    "--build-root",
+    "/workspace/scratch/601951e27dc3/build-native",
+    "--source-qualification",
+    "docs/development/2026-11-14-interface-continuation/reports/a20-material-refinement.json",
+    "--expected-exe-sha256",
+    "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+    "--dummy-sdl",
+    "--output",
+    "examples/demos/standalone-interface-preview-v1"
+  ],
+  "environment": {
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "PATH": "/bin:/usr/bin",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_VIDEODRIVER": "dummy"
+  },
+  "executable": {
+    "after": {
+      "bytes": 3699200,
+      "sha256": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    },
+    "before": {
+      "bytes": 3699200,
+      "sha256": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    },
+    "path": "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone"
+  },
+  "finished_at_utc": "2026-11-14T11:13:02.727922+00:00",
+  "inputs": {
+    "after": {
+      "inputs/controls.b3controls": {
+        "bytes": 456,
+        "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+      },
+      "inputs/play-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+      },
+      "inputs/play-flat.b3uireplay": {
+        "bytes": 1734,
+        "sha256": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74"
+      },
+      "inputs/rotary-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+      },
+      "inputs/service-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+      },
+      "inputs/source-qualification.json": {
+        "bytes": 10439,
+        "sha256": "5b2e9b4d7ea16ec4254d6978a25180fdafd2771685eaea307feb81b3b790df87"
+      }
+    },
+    "before": {
+      "inputs/controls.b3controls": {
+        "bytes": 456,
+        "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+      },
+      "inputs/play-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+      },
+      "inputs/play-flat.b3uireplay": {
+        "bytes": 1734,
+        "sha256": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74"
+      },
+      "inputs/rotary-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+      },
+      "inputs/service-dimensional.b3uireplay": {
+        "bytes": 1690,
+        "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+      },
+      "inputs/source-qualification.json": {
+        "bytes": 10439,
+        "sha256": "5b2e9b4d7ea16ec4254d6978a25180fdafd2771685eaea307feb81b3b790df87"
+      }
+    }
+  },
+  "output_directory_at_capture": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1",
+  "pillow": "13.0.0",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "qualification": "Actual native screenshots with SDL dummy audio/video and software renderer; no physical device, deadline, accessibility, measured instrument or literal 1:1 reference qualification.",
+  "schema_version": 1,
+  "source": {
+    "boundary": "Observed production overlay, including untracked files; HEAD alone does not identify this UI. The author report pins its listed sources only. Extra production hashes are observed capture inputs, not an independent build attestation. Test, install-rule and unrelated documentation edits are excluded.",
+    "changed_paths": [],
+    "checked_author_report": {
+      "binary_sha256": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+      "bytes": 10439,
+      "checked_source_sha256": {
+        "apps/standalone/Drawing.cpp": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe",
+        "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+        "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+        "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+        "apps/standalone/InstrumentView.cpp": "5f5f209dbe33cb92e3c1d237258ba123d0a86e78c694d50c0634db8549d54407",
+        "apps/standalone/InstrumentView.h": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+        "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+        "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+        "apps/standalone/main.cpp": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689",
+        "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+      },
+      "meaning": "Supplied author build report matched the current files and executable. This utility did not rebuild or independently attest source-to-binary provenance.",
+      "report_path_at_capture": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a20-material-refinement.json",
+      "sha256": "5b2e9b4d7ea16ec4254d6978a25180fdafd2771685eaea307feb81b3b790df87"
+    },
+    "files": {
+      "apps/standalone/AudioDevice.cpp": {
+        "bytes": 12072,
+        "sha256": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0"
+      },
+      "apps/standalone/AudioDevice.h": {
+        "bytes": 5331,
+        "sha256": "75ac25e462afb85c64b0298bf4e8c30d4979d3d30f231edec75c8ba41818673a"
+      },
+      "apps/standalone/Drawing.cpp": {
+        "bytes": 19512,
+        "sha256": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe"
+      },
+      "apps/standalone/Drawing.h": {
+        "bytes": 2443,
+        "sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188"
+      },
+      "apps/standalone/FontData.h": {
+        "bytes": 204816,
+        "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+      },
+      "apps/standalone/InspectionModel.cpp": {
+        "bytes": 18534,
+        "sha256": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645"
+      },
+      "apps/standalone/InspectionModel.h": {
+        "bytes": 2778,
+        "sha256": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9"
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "bytes": 71888,
+        "sha256": "5f5f209dbe33cb92e3c1d237258ba123d0a86e78c694d50c0634db8549d54407"
+      },
+      "apps/standalone/InstrumentView.h": {
+        "bytes": 2089,
+        "sha256": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932"
+      },
+      "apps/standalone/MidiDevice.cpp": {
+        "bytes": 22400,
+        "sha256": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324"
+      },
+      "apps/standalone/MidiDevice.h": {
+        "bytes": 7457,
+        "sha256": "ce6c75faf49218073a369ac12a67bf0b995ec0309f1c078f23da78963865bea3"
+      },
+      "apps/standalone/MidiDiscovery.h": {
+        "bytes": 4604,
+        "sha256": "414d76b9fbbdda4043f800de09da4863629c8790b2a312631cf6eb4466e5d7a6"
+      },
+      "apps/standalone/MidiInput.cpp": {
+        "bytes": 10235,
+        "sha256": "32e135e84a870dc0e7d6cd9f5a9804b6c75031d4b2fd8dcfcf4d0959bd210802"
+      },
+      "apps/standalone/MidiInput.h": {
+        "bytes": 8970,
+        "sha256": "00a1e6d43f8db1721f7042b6c37b081f192dd85f55dc1bb999c81ee0a4014038"
+      },
+      "apps/standalone/MidiReplay.cpp": {
+        "bytes": 10746,
+        "sha256": "a61047fcb0da050eae35a10e86205a496d13ea7d00fb8b113c8682d1556a88db"
+      },
+      "apps/standalone/MidiReplay.h": {
+        "bytes": 2088,
+        "sha256": "c0a62c0d33e7b0c3b90237e82cf631222d3d5274bb6b45fa797906e1e77a3948"
+      },
+      "apps/standalone/ScriptedInput.cpp": {
+        "bytes": 22586,
+        "sha256": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23"
+      },
+      "apps/standalone/ScriptedInput.h": {
+        "bytes": 4115,
+        "sha256": "294b11d6a2c9b425d766b019b2ff1e7c460a308c93887c648dd7bce1d955c3d5"
+      },
+      "apps/standalone/Session.cpp": {
+        "bytes": 29422,
+        "sha256": "196bc1872b526854a801ae09fcebf408a76c746e7d8e5f0ebd11d066e978f5af"
+      },
+      "apps/standalone/Session.h": {
+        "bytes": 8209,
+        "sha256": "8c26342cafcad2022aabba273cdc8d22432fa3c450819f238fa8d546bc22528b"
+      },
+      "apps/standalone/StateFiles.cpp": {
+        "bytes": 4844,
+        "sha256": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6"
+      },
+      "apps/standalone/StateFiles.h": {
+        "bytes": 789,
+        "sha256": "ccf0aa7cb6d88df7c5e582a6154a12d28d9db97ab97d2833529ba8a328354a67"
+      },
+      "apps/standalone/UiModel.cpp": {
+        "bytes": 53685,
+        "sha256": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3"
+      },
+      "apps/standalone/UiModel.h": {
+        "bytes": 16284,
+        "sha256": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d"
+      },
+      "apps/standalone/benchmark.cpp": {
+        "bytes": 37640,
+        "sha256": "fbd8bc62d8cd60c72384da8ef2ebecef1a699f966c221cef5e7c84cba1902c82"
+      },
+      "apps/standalone/main.cpp": {
+        "bytes": 132563,
+        "sha256": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689"
+      },
+      "assets/standalone/fonts/DejaVuSans.ttf": {
+        "bytes": 759720,
+        "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+      },
+      "assets/standalone/fonts/DejaVuSerif.ttf": {
+        "bytes": 380660,
+        "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7"
+      },
+      "assets/standalone/fonts/LICENSE-DejaVu.txt": {
+        "bytes": 2345,
+        "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+      },
+      "assets/standalone/fonts/atlas-manifest.json": {
+        "bytes": 1487,
+        "sha256": "8b9413cc6acdf32f40ba272f04d0b984f9909772c295ca8c35f88f85bceb0469"
+      },
+      "assets/standalone/fonts/requirements-authoring.txt": {
+        "bytes": 90,
+        "sha256": "3f309f723b3bbd26e0455988913d43c28b25de63f45a4d89973b95fbefcdf280"
+      },
+      "assets/standalone/fonts/source-manifest.json": {
+        "bytes": 1428,
+        "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+      },
+      "assets/standalone/midi/LICENSE-RtMidi.txt": {
+        "bytes": 1349,
+        "sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364"
+      },
+      "assets/standalone/reference/cabinet.rgb.gz": {
+        "bytes": 369409,
+        "sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e"
+      },
+      "assets/standalone/reference/left-wood-cheek.rgb.gz": {
+        "bytes": 52070,
+        "sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4"
+      },
+      "assets/standalone/reference/manifest.json": {
+        "bytes": 3816,
+        "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87"
+      },
+      "assets/standalone/reference/requirements-authoring.txt": {
+        "bytes": 167,
+        "sha256": "98d3fbeaee859ac1b6076b2ab6495b2e3e3a7ecdcf32787de7204127e49fd254"
+      },
+      "assets/standalone/reference/right-wood-cheek.rgb.gz": {
+        "bytes": 142330,
+        "sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6"
+      },
+      "data/dependencies/rtmidi-lock.json": {
+        "bytes": 1161,
+        "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+      },
+      "data/dependencies/sdl2-lock.json": {
+        "bytes": 375,
+        "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+      },
+      "data/parameter-registry.json": {
+        "bytes": 36882,
+        "sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2"
+      },
+      "data/pedal-map.json": {
+        "bytes": 3267,
+        "sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd"
+      },
+      "data/profiles/nominal-unmeasured-v1.json": {
+        "bytes": 19627,
+        "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff"
+      },
+      "data/registrations/atlas-chapel-nominal-v1.json": {
+        "bytes": 4298,
+        "sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf"
+      },
+      "data/registrations/review-a-chapel.csv": {
+        "bytes": 466,
+        "sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694"
+      },
+      "data/registrations/review-b-chapel.csv": {
+        "bytes": 466,
+        "sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694"
+      },
+      "data/rotary/nominal-research-v1.json": {
+        "bytes": 19988,
+        "sha256": "c0473cb20604726d989d7c280700109f647f7b227edb71c61d275ed9bfd67443"
+      },
+      "data/scanner/atlas-late-b3-nominal-v1.json": {
+        "bytes": 26228,
+        "sha256": "1d236be5e6b63e938a9f147808386173949d167e09aee8e902c55002e4ea4604"
+      },
+      "docs/design/atlas-cover-reference.jpg": {
+        "bytes": 412664,
+        "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+      },
+      "docs/design/atlas-reference.json": {
+        "bytes": 811,
+        "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+      },
+      "include/hammond/ConsoleModel.h": {
+        "bytes": 1721,
+        "sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51"
+      },
+      "include/hammond/ContactBank.h": {
+        "bytes": 7646,
+        "sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d"
+      },
+      "include/hammond/ControlState.h": {
+        "bytes": 5751,
+        "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856"
+      },
+      "include/hammond/ControlStateIO.h": {
+        "bytes": 2070,
+        "sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081"
+      },
+      "include/hammond/Engine.h": {
+        "bytes": 9841,
+        "sha256": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6"
+      },
+      "include/hammond/FixedRegistration.h": {
+        "bytes": 1822,
+        "sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0"
+      },
+      "include/hammond/HostTimeline.h": {
+        "bytes": 7260,
+        "sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316"
+      },
+      "include/hammond/InputProcessor.h": {
+        "bytes": 2317,
+        "sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df"
+      },
+      "include/hammond/NoteOwnership.h": {
+        "bytes": 5037,
+        "sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc"
+      },
+      "include/hammond/ParameterBridge.h": {
+        "bytes": 2952,
+        "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3"
+      },
+      "include/hammond/PedalNoteOwnership.h": {
+        "bytes": 4596,
+        "sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33"
+      },
+      "include/hammond/PedalRouting.h": {
+        "bytes": 6909,
+        "sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8"
+      },
+      "include/hammond/PedalVoice.h": {
+        "bytes": 3384,
+        "sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf"
+      },
+      "include/hammond/Percussion.h": {
+        "bytes": 6395,
+        "sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722"
+      },
+      "include/hammond/PerformanceInput.h": {
+        "bytes": 3220,
+        "sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77"
+      },
+      "include/hammond/Profile.h": {
+        "bytes": 2250,
+        "sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0"
+      },
+      "include/hammond/RotaryMotion.h": {
+        "bytes": 6314,
+        "sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36"
+      },
+      "include/hammond/RotaryTypes.h": {
+        "bytes": 8414,
+        "sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4"
+      },
+      "include/hammond/ScannerLine.h": {
+        "bytes": 6451,
+        "sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7"
+      },
+      "include/hammond/ScannerRotor.h": {
+        "bytes": 6041,
+        "sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a"
+      },
+      "include/hammond/StateExchange.h": {
+        "bytes": 6878,
+        "sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0"
+      },
+      "include/hammond/TonewheelBank.h": {
+        "bytes": 2760,
+        "sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b"
+      },
+      "include/hammond/Types.h": {
+        "bytes": 6015,
+        "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8"
+      },
+      "include/hammond/detail/Decimal.h": {
+        "bytes": 3736,
+        "sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42"
+      },
+      "src/ContactBank.cpp": {
+        "bytes": 9665,
+        "sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1"
+      },
+      "src/ControlState.cpp": {
+        "bytes": 7673,
+        "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d"
+      },
+      "src/ControlStateIO.cpp": {
+        "bytes": 13152,
+        "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb"
+      },
+      "src/Engine.cpp": {
+        "bytes": 25291,
+        "sha256": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a"
+      },
+      "src/FixedRegistration.cpp": {
+        "bytes": 1630,
+        "sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d"
+      },
+      "src/HostTimeline.cpp": {
+        "bytes": 21374,
+        "sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149"
+      },
+      "src/InputProcessor.cpp": {
+        "bytes": 1257,
+        "sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc"
+      },
+      "src/NoteOwnership.cpp": {
+        "bytes": 8856,
+        "sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751"
+      },
+      "src/ParameterBridge.cpp": {
+        "bytes": 11334,
+        "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220"
+      },
+      "src/PedalNoteOwnership.cpp": {
+        "bytes": 7419,
+        "sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde"
+      },
+      "src/PedalRouting.cpp": {
+        "bytes": 3983,
+        "sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af"
+      },
+      "src/PedalVoice.cpp": {
+        "bytes": 1171,
+        "sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba"
+      },
+      "src/Percussion.cpp": {
+        "bytes": 4837,
+        "sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a"
+      },
+      "src/PerformanceInput.cpp": {
+        "bytes": 4219,
+        "sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189"
+      },
+      "src/Profile.cpp": {
+        "bytes": 11655,
+        "sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54"
+      },
+      "src/RotaryMotion.cpp": {
+        "bytes": 16042,
+        "sha256": "9c8c98dc66a66088d39b43a52d025289d4dd241ebba583bd4200aba3b539ac4d"
+      },
+      "src/ScannerLine.cpp": {
+        "bytes": 20512,
+        "sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336"
+      },
+      "src/ScannerRotor.cpp": {
+        "bytes": 5383,
+        "sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0"
+      },
+      "src/StateExchange.cpp": {
+        "bytes": 9473,
+        "sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837"
+      },
+      "src/TonewheelBank.cpp": {
+        "bytes": 4390,
+        "sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b"
+      },
+      "tools/compile_chapel_presets.py": {
+        "bytes": 15395,
+        "sha256": "ae54bbc196d779b2b1b369aa2c2e7db4268dd175201d6b193fed8256e6420826"
+      },
+      "tools/compile_profile.py": {
+        "bytes": 20385,
+        "sha256": "2ca649de88a3f267970e4ed00fa6c08b7c234bffcc1b4c24b47a89be608fb2a8"
+      },
+      "tools/compile_reference_art.py": {
+        "bytes": 12418,
+        "sha256": "b0e06b4a0e6312300f64d47226875ce7d997759b9d9076eeb4cd049839d5c766"
+      },
+      "tools/embed_profile.py": {
+        "bytes": 3681,
+        "sha256": "f190b1bd45c1f1c8497293d9154d19982429cc07b3b1f45613e9e62c97556da9"
+      }
+    },
+    "git_after": {
+      "committed_tree": "52b4ec72b77e4442efe2e9e1b089b7b0ea6e638b",
+      "head": "5d81199a9822874b55f3b0a124715cbd6eadf0e5"
+    },
+    "git_before": {
+      "committed_tree": "52b4ec72b77e4442efe2e9e1b089b7b0ea6e638b",
+      "head": "5d81199a9822874b55f3b0a124715cbd6eadf0e5"
+    },
+    "inventory_sha256_after": "6eb61ab582aaa01b92f84ded0b49db6896b22eebb4b67bdabc49134acaf6a7bf",
+    "inventory_sha256_before": "6eb61ab582aaa01b92f84ded0b49db6896b22eebb4b67bdabc49134acaf6a7bf",
+    "root": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ"
+  },
+  "started_at_utc": "2026-11-14T11:12:42.970142+00:00",
+  "status": "passed",
+  "tool": {
+    "after": {
+      "bytes": 29183,
+      "sha256": "17aafb70e87a2fd557317e04802e62a4d935d2f2b93bf65a2df0d688c5a16545"
+    },
+    "before": {
+      "bytes": 29183,
+      "sha256": "17aafb70e87a2fd557317e04802e62a4d935d2f2b93bf65a2df0d688c5a16545"
+    },
+    "path": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/tools/capture_standalone_interface.py"
+  },
+  "visual_review": "Not performed by this utility. Review retained PNGs separately against the source concept."
+}

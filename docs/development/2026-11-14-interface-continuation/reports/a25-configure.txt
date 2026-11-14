@@ -1,0 +1,186 @@
+-- Pinned RtMidi verified: {"commit": "1e5b49925aa60065db52de44c366d446a902547b", "manifest_sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae", "network_used": false, "patch_sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad", "prepared_copy_reused": true, "prepared_cpp_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a", "prepared_root": "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_rtmidi-prepared", "primary_licenses_verified": 1, "repository": "https://github.com/thestk/rtmidi.git", "rtmidi_root": "/workspace/scratch/cd4bd06ce68f/rtmidi", "schema_version": 1, "source_files_verified": 2, "tag": "6.0.0", "version": "6.0.0"}
+
+-- Optional RtMidi backend: ALSA (prepared static source)
+-- Pinned SDL2 verified: {"commit": "5d249570393f7a37e037abf22cd6012a4cc56a71", "network_used": false, "primary_licenses_verified": 1, "repository": "https://github.com/libsdl-org/SDL.git", "schema_version": 1, "sdl2_root": "/workspace/scratch/7ffc2842608b/SDL2", "tag": "release-2.32.10", "version": "2.32.10"}
+
+-- Checking for module 'jack'
+--   Package 'jack', required by 'virtual:world', not found
+-- Checking for module 'libpipewire-0.3>=0.3.20'
+--   Package 'libpipewire-0.3', required by 'virtual:world', not found
+-- Checking for module 'libpulse>=0.9.15'
+--   Package 'libpulse', required by 'virtual:world', not found
+-- Checking for module 'esound'
+--   Package 'esound', required by 'virtual:world', not found
+-- Checking for module 'sndio'
+--   Package 'sndio', required by 'virtual:world', not found
+-- Checking for module 'bcm_host'
+--   Package 'bcm_host', required by 'virtual:world', not found
+-- Checking for module 'brcmegl'
+--   Package 'brcmegl', required by 'virtual:world', not found
+-- Checking for module 'egl'
+--   Package 'egl', required by 'virtual:world', not found
+-- Checking for modules 'libdrm;gbm;egl'
+--   Package 'libdrm', required by 'virtual:world', not found
+--   Package 'gbm', required by 'virtual:world', not found
+--   Package 'egl', required by 'virtual:world', not found
+-- Checking for modules 'wayland-client>=1.18;wayland-egl;wayland-cursor;egl;xkbcommon>=0.5.0'
+--   Package 'wayland-client', required by 'virtual:world', not found
+--   Package 'wayland-egl', required by 'virtual:world', not found
+--   Package 'wayland-cursor', required by 'virtual:world', not found
+--   Package 'egl', required by 'virtual:world', not found
+--   Package 'xkbcommon', required by 'virtual:world', not found
+-- Checking for one of the modules 'dbus-1;dbus'
+-- Checking for one of the modules 'ibus-1.0;ibus'
+-- Checking for modules 'libunwind;libunwind-generic'
+--   Package 'libunwind', required by 'virtual:world', not found
+--   Package 'libunwind-generic', required by 'virtual:world', not found
+CMake Warning (deprecated) at /workspace/scratch/7ffc2842608b/SDL2/CMakeLists.txt:3300 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- 
+-- SDL2 was configured with the following options:
+-- 
+-- Platform: Linux-6.18.57
+-- 64-bit:   TRUE
+-- Compiler: /usr/bin/cc
+-- Revision: SDL-release-2.32.10-0-g5d24957
+-- 
+-- Subsystems:
+--   Atomic:	ON
+--   Audio:	ON
+--   Video:	ON
+--   Render:	ON
+--   Events:	ON
+--   Joystick:	ON
+--   Haptic:	ON
+--   Hidapi:	ON
+--   Power:	ON
+--   Threads:	ON
+--   Timers:	ON
+--   File:	ON
+--   Loadso:	ON
+--   CPUinfo:	ON
+--   Filesystem:	ON
+--   Sensor:	ON
+--   Locale:	ON
+--   Misc:	ON
+-- 
+-- Options:
+--   SDL2_DISABLE_INSTALL        (Wanted: ON): OFF
+--   SDL2_DISABLE_SDL2MAIN       (Wanted: ON): OFF
+--   SDL2_DISABLE_UNINSTALL      (Wanted: OFF): OFF
+--   SDL_3DNOW                   (Wanted: OFF): OFF
+--   SDL_ALSA                    (Wanted: OFF): OFF
+--   SDL_ALSA_SHARED             (Wanted: OFF): OFF
+--   SDL_ALTIVEC                 (Wanted: ON): OFF
+--   SDL_ARMNEON                 (Wanted: OFF): OFF
+--   SDL_ARMSIMD                 (Wanted: OFF): OFF
+--   SDL_ARTS                    (Wanted: ON): OFF
+--   SDL_ARTS_SHARED             (Wanted: ON): OFF
+--   SDL_ASAN                    (Wanted: OFF): OFF
+--   SDL_ASSEMBLY                (Wanted: ON): ON
+--   SDL_ASSERTIONS              (Wanted: auto): auto
+--   SDL_BACKGROUNDING_SIGNAL    (Wanted: OFF): OFF
+--   SDL_CCACHE                  (Wanted: ON): OFF
+--   SDL_CLOCK_GETTIME           (Wanted: ON): ON
+--   SDL_COCOA                   (Wanted: OFF): OFF
+--   SDL_DBUS                    (Wanted: ON): OFF
+--   SDL_DIRECTFB                (Wanted: OFF): OFF
+--   SDL_DIRECTFB_SHARED         (Wanted: OFF): OFF
+--   SDL_DIRECTX                 (Wanted: OFF): OFF
+--   SDL_DISKAUDIO               (Wanted: ON): ON
+--   SDL_DUMMYAUDIO              (Wanted: ON): ON
+--   SDL_DUMMYVIDEO              (Wanted: ON): ON
+--   SDL_ESD                     (Wanted: ON): OFF
+--   SDL_ESD_SHARED              (Wanted: ON): OFF
+--   SDL_FOREGROUNDING_SIGNAL    (Wanted: OFF): OFF
+--   SDL_FUSIONSOUND             (Wanted: OFF): OFF
+--   SDL_FUSIONSOUND_SHARED      (Wanted: OFF): OFF
+--   SDL_GCC_ATOMICS             (Wanted: ON): ON
+--   SDL_HIDAPI                  (Wanted: ON): ON
+--   SDL_HIDAPI_JOYSTICK         (Wanted: ON): ON
+--   SDL_HIDAPI_LIBUSB           (Wanted: OFF): OFF
+--   SDL_IBUS                    (Wanted: ON): OFF
+--   SDL_INSTALL_TESTS           (Wanted: OFF): OFF
+--   SDL_JACK                    (Wanted: ON): OFF
+--   SDL_JACK_SHARED             (Wanted: ON): OFF
+--   SDL_KMSDRM                  (Wanted: ON): OFF
+--   SDL_KMSDRM_SHARED           (Wanted: ON): OFF
+--   SDL_LASX                    (Wanted: OFF): OFF
+--   SDL_LIBC                    (Wanted: ON): ON
+--   SDL_LIBICONV                (Wanted: OFF): OFF
+--   SDL_LIBSAMPLERATE           (Wanted: ON): OFF
+--   SDL_LIBSAMPLERATE_SHARED    (Wanted: ON): OFF
+--   SDL_LIBUDEV                 (Wanted: ON): OFF
+--   SDL_LSX                     (Wanted: OFF): OFF
+--   SDL_METAL                   (Wanted: OFF): OFF
+--   SDL_MMX                     (Wanted: ON): ON
+--   SDL_NAS                     (Wanted: ON): OFF
+--   SDL_NAS_SHARED              (Wanted: ON): OFF
+--   SDL_OFFSCREEN               (Wanted: ON): ON
+--   SDL_OPENGL                  (Wanted: ON): OFF
+--   SDL_OPENGLES                (Wanted: ON): ON
+--   SDL_OSS                     (Wanted: ON): ON
+--   SDL_PIPEWIRE                (Wanted: ON): OFF
+--   SDL_PIPEWIRE_SHARED         (Wanted: ON): OFF
+--   SDL_PTHREADS                (Wanted: ON): ON
+--   SDL_PTHREADS_SEM            (Wanted: ON): ON
+--   SDL_PULSEAUDIO              (Wanted: ON): OFF
+--   SDL_PULSEAUDIO_SHARED       (Wanted: ON): OFF
+--   SDL_RENDER_D3D              (Wanted: OFF): OFF
+--   SDL_RENDER_METAL            (Wanted: OFF): OFF
+--   SDL_RPATH                   (Wanted: ON): OFF
+--   SDL_RPI                     (Wanted: ON): OFF
+--   SDL_SNDIO                   (Wanted: ON): OFF
+--   SDL_SNDIO_SHARED            (Wanted: ON): OFF
+--   SDL_SSE                     (Wanted: ON): ON
+--   SDL_SSE2                    (Wanted: ON): ON
+--   SDL_SSE3                    (Wanted: ON): ON
+--   SDL_SSEMATH                 (Wanted: ON): ON
+--   SDL_STATIC_PIC              (Wanted: OFF): OFF
+--   SDL_SYSTEM_ICONV            (Wanted: ON): ON
+--   SDL_TESTS                   (Wanted: OFF): OFF
+--   SDL_VENDOR_INFO             (Wanted: ): OFF
+--   SDL_VIRTUAL_JOYSTICK        (Wanted: ON): ON
+--   SDL_VIVANTE                 (Wanted: ON): OFF
+--   SDL_VULKAN                  (Wanted: ON): ON
+--   SDL_WASAPI                  (Wanted: OFF): OFF
+--   SDL_WAYLAND                 (Wanted: ON): OFF
+--   SDL_WAYLAND_LIBDECOR        (Wanted: ON): OFF
+--   SDL_WAYLAND_LIBDECOR_SHARED (Wanted: ON): OFF
+--   SDL_WAYLAND_QT_TOUCH        (Wanted: ON): OFF
+--   SDL_WAYLAND_SHARED          (Wanted: ON): OFF
+--   SDL_X11                     (Wanted: ON): OFF
+--   SDL_X11_SHARED              (Wanted: ON): OFF
+--   SDL_X11_XCURSOR             (Wanted: ON): OFF
+--   SDL_X11_XDBE                (Wanted: ON): OFF
+--   SDL_X11_XFIXES              (Wanted: ON): OFF
+--   SDL_X11_XINPUT              (Wanted: ON): OFF
+--   SDL_X11_XRANDR              (Wanted: ON): OFF
+--   SDL_X11_XSCRNSAVER          (Wanted: ON): OFF
+--   SDL_X11_XSHAPE              (Wanted: ON): OFF
+--   SDL_XINPUT                  (Wanted: OFF): OFF
+-- 
+--  CFLAGS:         -idirafter "/workspace/scratch/7ffc2842608b/SDL2/src/video/khronos" -DHAVE_LINUX_VERSION_H
+--  EXTRA_CFLAGS:   -Wall -Wundef -fno-strict-aliasing -Wdeclaration-after-statement -fvisibility=hidden -Wshadow -Wno-unused-local-typedefs -mmmx -msse -msse2 -msse3 -DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11 -D_REENTRANT
+--  EXTRA_LDFLAGS: -pthread -Wl,--no-undefined
+--  EXTRA_LIBS:    m
+-- 
+--  Build Shared Library: OFF
+--  Build Static Library: ON
+--  Build Static Library with Position Independent Code: OFF
+-- 
+-- If something was not detected, although the libraries
+-- were installed, then make sure you have set the
+-- CFLAGS and LDFLAGS environment variables correctly.
+-- 
+-- Configuring done (1.0s)
+-- Generating done (0.3s)
+-- Build files have been written to: /workspace/scratch/601951e27dc3/build-native

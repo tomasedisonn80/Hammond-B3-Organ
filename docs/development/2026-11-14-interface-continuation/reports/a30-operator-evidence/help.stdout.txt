@@ -1,0 +1,46 @@
+B-3 Workshop -- nominal dry organ
+Usage: hammond_standalone [options]
+
+  --help                 Show this help without initializing SDL.
+  --list-audio           List SDL output devices without a window.
+  --list-midi            List exact MIDI input names without initializing SDL.
+  --midi-port NAME       Open this exact MIDI input; omitted means no input.
+  --midi-upper-channel N Upper wire channel, 1..16 (default 1).
+  --midi-lower-channel N Lower wire channel, 1..16 (default 2).
+  --midi-pedal-channel N Pedal wire channel, 1..16 (default 3).
+                         The three MIDI channels must be distinct.
+  --device NAME          Exact SDL output name; omitted means default.
+  --sample-rate N        44100, 48000 (default), or 96000 Hz.
+  --buffer-frames N      128, 256, 512 (default), 1024, or 2048.
+  --state PATH           Control-state file for startup, Save, and Load.
+                         Default: SDL preference directory/controls.b3controls.
+  --width N              Initial logical width: 960..8192, default 1280.
+  --height N             Initial logical height: 700..8192, default 900.
+  --workspace NAME       Initial play (default), rotary, or service view.
+  --flat                 Start with flat presentation; controls are unchanged.
+  --smoke-ms N           Actual window/device smoke, 250..10000 ms.
+  --input-script PATH    Bounded B3UIREPLAY1 events; excludes --smoke-ms.
+  --midi-script PATH     Synthetic B3MIDIREPLAY1 input; excludes --midi-port,
+                         --list-midi, and --smoke-ms. Starts disconnected.
+                         Paired UI/MIDI scripts must have equal durations.
+  --screenshot PATH      Write one BMP before presenting the rendered frame.
+  --diagnostics PATH     Write JSON after closing and joining the device.
+
+Playing: A W S E D F T G Y H U J K O L P ;. F1/F2/F3 select
+Upper/Lower/Pedals; [ and ] change octave.
+F4/F5/F6 select Play/Rotary/Service; F7 toggles dimensional/flat.
+Tab/Shift+Tab move focus; arrows, Home, End adjust controls.
+Space holds the focused playing key.
+Escape releases UI notes. Ctrl+S saves, Ctrl+O loads, Ctrl+, opens Audio,
+Ctrl+M opens MIDI, and Shift+/ opens Help (Command also works for Ctrl).
+Audio/MIDI dialogs: Tab/Shift+Tab, arrows, Home/End, Enter/Space, Escape.
+MIDI uses one explicit input port; Apply connects and Disconnect releases
+only MIDI owners. A fault, Panic, or audio restart requires explicit Apply.
+
+Existing valid state loads at startup; Save is explicit, never automatic.
+Without a state: proposed audition registration Upper B 888000000,
+Lower B 008000000, pedals 80. This is not a factory preset.
+Smoke sends one short UI note and checks real SDL callbacks and output.
+Dummy drivers are used only when explicitly selected in the environment,
+for example SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy.
+No physical-device, latency, or acoustic-fidelity result is implied.

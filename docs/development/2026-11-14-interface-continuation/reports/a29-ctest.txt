@@ -1,0 +1,114 @@
+UpdateCTestConfiguration  from :/workspace/scratch/601951e27dc3/build-native-midi-off/DartConfiguration.tcl
+Parse Config file:/workspace/scratch/601951e27dc3/build-native-midi-off/DartConfiguration.tcl
+Test project /workspace/scratch/601951e27dc3/build-native-midi-off
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 110
+    Start 110: test_standalone_install
+
+110: Test command: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_install.py"
+110: Working Directory: /workspace/scratch/601951e27dc3/build-native-midi-off
+110: Environment variables: 
+110:  PYTHONDONTWRITEBYTECODE=1
+110:  HAMMOND_TEST_CMAKE=/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake
+110:  HAMMOND_TEST_BUILD_DIR=/workspace/scratch/601951e27dc3/build-native-midi-off
+110:  HAMMOND_TEST_CONFIG=Release
+110:  HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone/hammond_standalone
+110:  HAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2
+110:  HAMMOND_INSTALL_BINDIR=bin
+110:  HAMMOND_INSTALL_DATADIR=share
+110:  HAMMOND_TEST_ENABLE_MIDI=0
+110:  HAMMOND_STANDALONE_CAPABILITIES=/workspace/scratch/601951e27dc3/build-native-midi-off/generated/standalone-capabilities.json
+110:  HAMMOND_RTMIDI_PREPARED_ROOT=
+110:  HAMMOND_RTMIDI_BACKEND=
+110: Test timeout computed to be: 90
+110: ........
+110: ----------------------------------------------------------------------
+110: Ran 8 tests in 5.981s
+110: 
+110: OK
+110: {"binary_sha256": "20bf16c85d3d29157af5e175919491bae14d3663bdab281e0639dacba5cc28f0", "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6", "midi_backend": "unavailable", "midi_enabled": false, "payload_files": 15, "relocated_smoke": {"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 56, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 28672, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "errors": {"count": 0, "last": ""}, "midi": {"active_after_shutdown": false, "active_before_shutdown": false, "arrival_time_is_sample_time": false, "arrival_time_source": "none", "arrival_time_unit": "steady_clock_nanoseconds", "backend": "unavailable", "backend_available": false, "channels": {"lower": 2, "pedals": 3, "upper": 1}, "decoder": {"actions": 0, "epochs": 0, "inactive": 0, "malformed": 0, "out_of_range": 0, "packets": 0, "timestamp_regressions": 0, "unmapped_channels": 0, "unsupported": 0}, "device": {"admission_failures": 0, "backend_errors": 0, "callback_contentions": 0, "callback_messages": 0, "close_errors": 0, "disconnects": 0, "filtered_messages": 0, "forwarded_messages": 0, "last_arrival_ns": 0}, "diagnostics_stable_after_shutdown": true, "discovery": {"completed": 0, "discarded_results": 0, "failures": 0, "pending_after_shutdown": false, "pending_before_shutdown": false, "requests": 0, "shutdown_join_performed": false, "started": 0}, "drain_budget": 32, "fault_retirements": 0, "generation": 0, "inbox": {"accepted_packets": 0, "capacity": 256, "discarded_packets": 0, "fault_bits": 0, "faulted_packets": 0, "invalid_size_packets": 0, "overflow_events": 0, "pending_packets": 0, "popped_packets": 0, "received_packets": 0, "resets": 0}, "last_submit_status": "ok", "maximum_drained_per_turn": 0, "open_failures": 0, "opened_port_index": 0, "parameter_messages": 0, "port_name": "", "quiescent_after_shutdown": true, "release_batches": 0, "release_commands_accepted": 0, "release_pending": false, "release_sequence": 0, "requested_port": "", "retired_fault_bits": 0, "retirements": 0, "session_recoveries_observed": 0, "shutdown_failed": false, "source": "none", "startup_failed": false, "state_after_shutdown": "unavailable", "state_before_shutdown": "unavailable", "status": "MIDI backend unavailable in this build.", "submit_failures": 0, "timing_policy": "arrival_order_next_callback_boundary"}, "presentation": {"before_shutdown": {"elapsed_ms": 601, "inspection": {"controls_pending": false, "frame_clock": 27136, "publication_revision": 110, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "dimensional", "rendered_image": 16, "window_height": 700, "window_width": 960, "workspace": "play"}, "initial_presentation": "dimensional", "initial_workspace": "play", "last_painted": {"elapsed_ms": 601, "inspection": {"controls_pending": false, "frame_clock": 27136, "publication_revision": 110, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "dimensional", "rendered_image": 16, "window_height": 700, "window_width": 960, "workspace": "play"}, "observation_capacity": 512, "observations": [{"elapsed_ms": 0, "inspection": {"controls_pending": true, "frame_clock": 0, "publication_revision": 4, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "dimensional", "rendered_image": 1, "window_height": 700, "window_width": 960, "workspace": "play"}, {"elapsed_ms": 58, "inspection": {"controls_pending": false, "frame_clock": 2560, "publication_revision": 14, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "dimensional", "rendered_image": 2, "window_height": 700, "window_width": 960, "workspace": "play"}], "observations_truncated": false, "screenshot": {"elapsed_ms": 122, "inspection": {"controls_pending": false, "frame_clock": 5632, "publication_revision": 26, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "dimensional", "rendered_image": 4, "window_height": 700, "window_width": 960, "workspace": "play"}}, "profile": {"authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83", "id": "nominal-unmeasured-v1"}, "runtime": {"drawable_height": 700, "drawable_width": 960, "rendered_images": 16, "renderer": "software", "screenshot_while_held": true, "screenshot_written": true, "sdl_version": "2.32.10", "video_driver": "dummy", "window_height": 700, "window_width": 960}, "schema_version": 3, "session": {"discarded_commands": 1, "fault_flags": 0, "frame_clock": 28672, "held_after_shutdown": false, "last_applied_sequence": 5, "maximum_observed_peak": 0.08340194821357727, "prepared": true, "publication_revision": 118, "queue_overflows": 0, "recovery_count": 0, "rejected_commands": 0, "resolved_sequence": 6, "running_after_shutdown": false, "sample_rate": 48000, "snapshot_available": true}, "smoke": {"completed": true, "duration_ms": 600, "held_observed": true, "note_off_sent": true, "note_on_sent": true, "passed": true, "release_observed": true, "requested": true}, "state_path": "/tmp/hammond standalone install h0upm93z/unrelated cwd/absent controls.b3controls", "status": "Proposed audition registration: Upper B 888000000 / Lower B 008000000 / Pedals 80."}, "sdl_license_sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127", "suite": "standalone-install-v2"}
+1/3 Test #110: test_standalone_install ..........   Passed    6.14 sec
+test 140
+    Start 140: test_standalone_app
+
+140: Test command: /workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py"
+140: Working Directory: /workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone
+140: Test timeout computed to be: 60
+140: Native executable SHA-256: 20bf16c85d3d29157af5e175919491bae14d3663bdab281e0639dacba5cc28f0
+140: test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+140: ok
+140: test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+140: test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+140: test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+140: test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+140: test_invalid_workspaces_reject_before_device_or_output (__main__.NativeAppAcceptance.test_invalid_workspaces_reject_before_device_or_output) ... ok
+140: test_late_malformed_startup_preserves_file_and_audition_controls (__main__.NativeAppAcceptance.test_late_malformed_startup_preserves_file_and_audition_controls) ... ok
+140: test_list_audio_needs_no_video_or_file_writes (__main__.NativeAppAcceptance.test_list_audio_needs_no_video_or_file_writes) ... ok
+140: test_missing_and_empty_values_reject_before_output (__main__.NativeAppAcceptance.test_missing_and_empty_values_reject_before_output) ... ok
+140: test_no_audio_fails_bounded_with_zero_callback_claims (__main__.NativeAppAcceptance.test_no_audio_fails_bounded_with_zero_callback_claims) ... ok
+140: test_noninteger_and_overflow_values_reject_before_output (__main__.NativeAppAcceptance.test_noninteger_and_overflow_values_reject_before_output) ... ok
+140: test_output_directory_leaves_reject_before_writes (__main__.NativeAppAcceptance.test_output_directory_leaves_reject_before_writes) ... ok
+140: test_output_symlinks_cannot_create_or_overwrite_musical_state (__main__.NativeAppAcceptance.test_output_symlinks_cannot_create_or_overwrite_musical_state) ... ok
+140: test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) ... ok
+140: test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) ... ok
+140: test_screenshot_failure_joins_audio_and_preserves_musical_file (__main__.NativeAppAcceptance.test_screenshot_failure_joins_audio_and_preserves_musical_file) ... ok
+140: test_state_symlinks_cannot_be_filled_by_outputs_or_loaded (__main__.NativeAppAcceptance.test_state_symlinks_cannot_be_filled_by_outputs_or_loaded) ... ok
+140: test_unknown_and_combined_options_reject_before_output (__main__.NativeAppAcceptance.test_unknown_and_combined_options_reject_before_output) ... ok
+140: test_unsupported_numeric_values_reject_before_output (__main__.NativeAppAcceptance.test_unsupported_numeric_values_reject_before_output) ... ok
+140: test_workspace_and_flat_startup_preserve_controls_and_actual_painted_view (__main__.NativeAppAcceptance.test_workspace_and_flat_startup_preserve_controls_and_actual_painted_view) ... ok
+140: test_workspace_shortcuts_paint_views_preserve_holds_and_respect_modal_gate (__main__.NativeAppAcceptance.test_workspace_shortcuts_paint_views_preserve_holds_and_respect_modal_gate) ... ok
+140: Actual native application subprocesses: 184
+140: 
+140: ----------------------------------------------------------------------
+140: Ran 21 tests in 14.774s
+140: 
+140: OK
+2/3 Test #140: test_standalone_app ..............   Passed   14.90 sec
+test 141
+    Start 141: test_standalone_midi_cli
+
+141: Test command: /workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_cli.py"
+141: Working Directory: /workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone
+141: Test timeout computed to be: 90
+141: MIDI CLI/modal executable SHA-256: 20bf16c85d3d29157af5e175919491bae14d3663bdab281e0639dacba5cc28f0
+141: test_cli_distinct_channels_and_all_boundary_positions (__main__.NativeMidiAcceptance.test_cli_distinct_channels_and_all_boundary_positions) ... ok
+141: test_cli_exact_port_argument_bytes_and_no_name_coercion (__main__.NativeMidiAcceptance.test_cli_exact_port_argument_bytes_and_no_name_coercion) ... ok
+141: test_cli_list_midi_precedes_sdl_initialization (__main__.NativeMidiAcceptance.test_cli_list_midi_precedes_sdl_initialization) ... ok
+141: test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name (__main__.NativeMidiAcceptance.test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name) ... ok
+141: test_cli_numeric_channels_are_strict_and_bounded (__main__.NativeMidiAcceptance.test_cli_numeric_channels_are_strict_and_bounded) ... ok
+141: test_cli_repeated_options_and_conflicting_lists (__main__.NativeMidiAcceptance.test_cli_repeated_options_and_conflicting_lists) ... ok
+141: test_cli_startup_defaults_to_no_input_with_custom_routing (__main__.NativeMidiAcceptance.test_cli_startup_defaults_to_no_input_with_custom_routing) ... ok
+141: test_modal_all_eight_keyboard_controls_and_no_port_auto_open (__main__.NativeMidiAcceptance.test_modal_all_eight_keyboard_controls_and_no_port_auto_open) ... ok
+141: test_modal_channels_wrap_and_home_end_apply_without_connecting (__main__.NativeMidiAcceptance.test_modal_channels_wrap_and_home_end_apply_without_connecting) ... ok
+141: test_modal_ctrl_and_command_m_open_then_escape_restores_playing (__main__.NativeMidiAcceptance.test_modal_ctrl_and_command_m_open_then_escape_restores_playing) ... ok
+141: test_modal_escape_discards_unapplied_channels (__main__.NativeMidiAcceptance.test_modal_escape_discards_unapplied_channels) ... ok
+141: test_modal_focus_wraps_forward_and_reverse_across_eight_controls (__main__.NativeMidiAcceptance.test_modal_focus_wraps_forward_and_reverse_across_eight_controls) ... ok
+141: test_modal_invalid_apply_preserves_active_routing_and_edit_intent (__main__.NativeMidiAcceptance.test_modal_invalid_apply_preserves_active_routing_and_edit_intent) ... ok
+141: test_modal_pointer_open_apply_disconnect_close_at_two_sizes (__main__.NativeMidiAcceptance.test_modal_pointer_open_apply_disconnect_close_at_two_sizes) ... ok
+141: test_modal_shortcut_and_navigation_ignore_repeat_and_alt (__main__.NativeMidiAcceptance.test_modal_shortcut_and_navigation_ignore_repeat_and_alt) ... ok
+141: Actual MIDI CLI/modal subprocesses: 95; enumeration errors: 0; successful UI replays: 9; expected failed UI replays: 2
+141: 
+141: ----------------------------------------------------------------------
+141: Ran 15 tests in 10.862s
+141: 
+141: OK
+3/3 Test #141: test_standalone_midi_cli .........   Passed   11.00 sec
+
+The following tests passed:
+	test_standalone_install
+	test_standalone_app
+	test_standalone_midi_cli
+
+100% tests passed out of 3
+
+Label Time Summary:
+midi          =  11.00 sec*proc (1 test)
+native        =  32.04 sec*proc (3 tests)
+standalone    =  32.04 sec*proc (3 tests)
+
+Total Test time (real) =  32.05 sec

@@ -1,0 +1,436 @@
+{
+  "schema_version": 1,
+  "assignment": 21,
+  "actual_worker": "/root/w04_a21_native_workspace_acceptance",
+  "base_commit": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "base_tree": "52b4ec72b77e4442efe2e9e1b089b7b0ea6e638b",
+  "source_qualification": "Concurrent working-tree overlay, qualified by these file hashes and the stable executed binary; HEAD alone is not the implementation identity.",
+  "working_directory": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "toolchain": {
+    "python": "3.12.14",
+    "native_cxx": "GNU 14.2.0",
+    "sdl": "2.32.10",
+    "renderer": "software",
+    "audio_driver": "dummy",
+    "video_driver": "dummy"
+  },
+  "executables": {
+    "targeted_fixture_recheck": {
+      "path": "/workspace/scratch/601951e27dc3/first-ui-bin/hammond_standalone",
+      "sha256": "ca095152e8e94b4b1a51fa26f0e1fca346cbb2a7acfd7ec48b0a5839d83151fd"
+    },
+    "workspace_and_full_workflow": {
+      "path": "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+      "sha256": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    }
+  },
+  "source_sha256": {
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "482f2d7b9075358782e966c12c7117c5fd1bd5d10a52682cffa3c0d4c459e891",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "945f72c6deff94736c4b37edf7e448eb8b5e78aa52fd8e9809fb2e0c743aad98",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/Drawing.cpp": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe",
+    "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/InstrumentView.h": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+    "apps/standalone/InstrumentView.cpp": "5f5f209dbe33cb92e3c1d237258ba123d0a86e78c694d50c0634db8549d54407",
+    "apps/standalone/main.cpp": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689",
+    "apps/standalone/ScriptedInput.cpp": "a023e8a0a900f1cd7000d532c511d5593d11507eeb997300ff2bd3325c13cc23"
+  },
+  "results": {
+    "targeted_original_fixture_recheck": {
+      "status": "pass",
+      "methods": 2,
+      "subprocesses": 5,
+      "elapsed_seconds": 7.474
+    },
+    "new_native_workspace_suite": {
+      "status": "pass",
+      "runner": "direct Python",
+      "methods": 6,
+      "subprocesses": 15,
+      "elapsed_seconds": 39.137,
+      "ui_events": 501,
+      "midi_packets": 6
+    },
+    "complete_preserved_workflows": {
+      "status": "pass",
+      "runner": "CTest --no-tests=error",
+      "tests": 1,
+      "methods": 13,
+      "subprocesses": 52,
+      "ctest_elapsed_seconds": 64.12,
+      "python_elapsed_seconds": 63.971
+    },
+    "python_compile": "pass",
+    "owned_diff_check": "pass",
+    "new_ctest_registration": {
+      "status": "generated command inspected; registered suite awaits final integrated CTest execution",
+      "name": "test_standalone_workspace_replay",
+      "timeout_seconds": 90,
+      "labels": [
+        "standalone",
+        "native",
+        "workspace"
+      ],
+      "environment": "HAMMOND_STANDALONE_EXECUTABLE"
+    }
+  },
+  "legacy_fixture_changes": [
+    "Initial drawbar focus: 21 Tabs beginning at 100 ms becomes 25 Tabs beginning at 20 ms; musical event times, assertions and deadlines unchanged.",
+    "Projected Upper C2 interior point: (202,580) becomes (222,580); note ownership, counts, off-window release and state expectations unchanged."
+  ],
+  "untouched": [
+    "production main/model/renderer",
+    "MIDI replay fixture",
+    "relative Tab sequences",
+    "Panic point",
+    "state grammar",
+    "47 sound parameters",
+    "historical capture fixtures"
+  ],
+  "production_bug_observed": false,
+  "limitations": [
+    "Dummy SDL immediately loses mouse capture; native pointer tests qualify the capture-failure route, not a persistent captured pointer.",
+    "SDK-free A18 qualifies model held-pointer/gesture semantics separately; real desktop capture remains open.",
+    "Temporary screenshot dimensions and captured frame identity are checked; pixel/reference fidelity and full extreme-size raster matrices are separate gates.",
+    "Synthetic MIDI and dummy audio do not qualify physical devices, musical sample timing, callback deadlines, native accessibility or specimen fidelity.",
+    "No deterministic PCM/history equivalence claim is made by this native diagnostics suite."
+  ],
+  "next_gate": "Run registered test_standalone_workspace_replay within the coherent final native integration; retain gallery/raster evidence and real desktop pointer qualification separately.",
+  "case_evidence_directory": "/workspace/scratch/601951e27dc3/a21-workspace-first-evidence",
+  "cases": [
+    {
+      "name": "test_capture_failure_closes_parameter_gesture_before_view_and_resize-1",
+      "elapsed_seconds": 1.960678,
+      "ui_script_sha256": "7e19729664960ea9ba97eb38654e9bd76489709f70db048bbbb290604879ae9e",
+      "diagnostics_sha256": "8828e0e7f2d2da799dc257d4e490fd2c801276a1bf22939d72e39124eb05d6a7",
+      "scheduled_ui_events": 16,
+      "accepted_note_commands": {
+        "on": 1,
+        "off": 1
+      },
+      "final_view": [
+        "play",
+        "flat",
+        960,
+        700
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0
+    },
+    {
+      "name": "test_focus_memory_restores_drawbar_save_and_load_after_returns-1",
+      "elapsed_seconds": 3.809038,
+      "ui_script_sha256": "905d176f2fca14799ec78c4d7dc80bb1f7531960094d2b4087a52b57817d4194",
+      "diagnostics_sha256": "92a6529857922d8a17df814293cfc83c49d4e7f274f8d35ebca7cce9e9d3f361",
+      "scheduled_ui_events": 87,
+      "accepted_note_commands": {
+        "on": 0,
+        "off": 0
+      },
+      "final_view": [
+        "service",
+        "flat",
+        960,
+        700
+      ],
+      "saved_state_sha256": "b0e31c3172a8a54c72f6ca087a893c26db2f0774790879d3c5968300684b5199",
+      "returncode": 0
+    },
+    {
+      "name": "test_hidden_play_regions_cannot_edit_redirect_or_audition-1",
+      "elapsed_seconds": 2.729219,
+      "ui_script_sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c",
+      "diagnostics_sha256": "bc055bc5f6664de8a8d10eed04b4faee5c99428210f44a7023024b7785e3b542",
+      "scheduled_ui_events": 50,
+      "accepted_note_commands": {
+        "on": 3,
+        "off": 3
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        1280,
+        900
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0
+    },
+    {
+      "name": "test_hidden_play_regions_cannot_edit_redirect_or_audition-2",
+      "elapsed_seconds": 2.672108,
+      "ui_script_sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c",
+      "diagnostics_sha256": "a9af2f26db094ce64ec6fcc85e754d2c6e3a913e10fba262e459008799469ce1",
+      "scheduled_ui_events": 50,
+      "accepted_note_commands": {
+        "on": 3,
+        "off": 3
+      },
+      "final_view": [
+        "play",
+        "flat",
+        1280,
+        900
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0
+    },
+    {
+      "name": "test_hidden_play_regions_cannot_edit_redirect_or_audition-3",
+      "elapsed_seconds": 2.709328,
+      "ui_script_sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc",
+      "diagnostics_sha256": "450c7b48d062b54107ddbad84e27919d4360a8aa32288c3c6801c374f42beafd",
+      "scheduled_ui_events": 50,
+      "accepted_note_commands": {
+        "on": 3,
+        "off": 3
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        1280,
+        900
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0
+    },
+    {
+      "name": "test_hidden_play_regions_cannot_edit_redirect_or_audition-4",
+      "elapsed_seconds": 2.702521,
+      "ui_script_sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc",
+      "diagnostics_sha256": "b5d6c8a3f1ecefc6c11ce64611aa80985fd32579c65b0ee027ede84aeec225ae",
+      "scheduled_ui_events": 50,
+      "accepted_note_commands": {
+        "on": 3,
+        "off": 3
+      },
+      "final_view": [
+        "play",
+        "flat",
+        1280,
+        900
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0
+    },
+    {
+      "name": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation-1",
+      "elapsed_seconds": 2.313833,
+      "ui_script_sha256": "d00185eb0af35357e993498a4da6560cb42afc24e205d1f8649da8ac6fcb6084",
+      "diagnostics_sha256": "f686001ee96c564d5252f5f574c38fc1b2ee2e4f1a8dfea53186c33ac1b0a43d",
+      "scheduled_ui_events": 13,
+      "accepted_note_commands": {
+        "on": 2,
+        "off": 2
+      },
+      "final_view": [
+        "play",
+        "flat",
+        960,
+        700
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0
+    },
+    {
+      "name": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-1",
+      "elapsed_seconds": 2.363675,
+      "ui_script_sha256": "5237f91ed5e60dcf8af3d0b59859c13b83ce9faa4630b5219d9fbb2082dc53d2",
+      "diagnostics_sha256": "6f02efab1ee2e908f73ca3f7ce6cde8d82f979ae5cd7e0eec891c75ae0015974",
+      "scheduled_ui_events": 24,
+      "accepted_note_commands": {
+        "on": 2,
+        "off": 2
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        960,
+        700
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0,
+      "screenshot": {
+        "sha256": "36046a6915dc381370f6743839afe8d258650fb444f5de263841d506259d43a3",
+        "bytes": 2688122,
+        "width": 960,
+        "height": 700
+      }
+    },
+    {
+      "name": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-2",
+      "elapsed_seconds": 2.381591,
+      "ui_script_sha256": "855e8c4a70389080f814ccb668e092977ec15fb9dacf1898ab04ff1ee573e299",
+      "diagnostics_sha256": "099303519e057586eadc8159b864d4865bfb50fe4fa07da7e5763258f4678c3d",
+      "scheduled_ui_events": 24,
+      "accepted_note_commands": {
+        "on": 2,
+        "off": 2
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        1280,
+        900
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0,
+      "screenshot": {
+        "sha256": "faf470a3bd92a1ee227bb7bafcf3d0c840344afb6f81e3209400171f5fdef52c",
+        "bytes": 4608122,
+        "width": 1280,
+        "height": 900
+      }
+    },
+    {
+      "name": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-3",
+      "elapsed_seconds": 2.429254,
+      "ui_script_sha256": "1ebe71ddf424cd46e00d9701dd15fc1a7222c9f7703a8581b2bb2c9eb502089d",
+      "diagnostics_sha256": "ced7f1a88518dd1c3233d310ab187f01f8d945de293fb6437f73a941a5702068",
+      "scheduled_ui_events": 24,
+      "accepted_note_commands": {
+        "on": 2,
+        "off": 2
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        1672,
+        941
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0,
+      "screenshot": {
+        "sha256": "2bf4744b6918ecdfbcd81f864c8899a58ae706e721e03a6b086f06bc28e1da06",
+        "bytes": 6293530,
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "name": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-4",
+      "elapsed_seconds": 2.381894,
+      "ui_script_sha256": "6255efef1b37d69d37b5ba7a1519c6478b12ae0bc1749b4d25e00109652e49db",
+      "diagnostics_sha256": "4893ee1e9c3c120fe49716d2f5a9ce192bb54caef831cd04050ccc1763cfec25",
+      "scheduled_ui_events": 24,
+      "accepted_note_commands": {
+        "on": 2,
+        "off": 2
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        1399,
+        819
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0,
+      "screenshot": {
+        "sha256": "4ef84d9bc86c931bef1b13e6e54d2d9efd8423f214e78546e44566e89128841f",
+        "bytes": 4583246,
+        "width": 1399,
+        "height": 819
+      }
+    },
+    {
+      "name": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-5",
+      "elapsed_seconds": 2.371035,
+      "ui_script_sha256": "2f66d720461d792a8a1a0b0bdac5b5c3a24fdc0aa2b3055775123e7f1ec7f043",
+      "diagnostics_sha256": "c1a61bce512430b7631855b5311d0132b84fe158467d0bc1b6878a27220de028",
+      "scheduled_ui_events": 24,
+      "accepted_note_commands": {
+        "on": 2,
+        "off": 2
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        1400,
+        819
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0,
+      "screenshot": {
+        "sha256": "f170e9ea013596b397582a87ec4bf3c49567fe8d2c5e337041d0338db9a23e8a",
+        "bytes": 4586522,
+        "width": 1400,
+        "height": 819
+      }
+    },
+    {
+      "name": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-6",
+      "elapsed_seconds": 2.408029,
+      "ui_script_sha256": "6255efef1b37d69d37b5ba7a1519c6478b12ae0bc1749b4d25e00109652e49db",
+      "diagnostics_sha256": "653c1b8439fe3489eccf92dcbfdd2e5d90bdda8535d2cbcc25e757c9b905d10b",
+      "scheduled_ui_events": 24,
+      "accepted_note_commands": {
+        "on": 2,
+        "off": 2
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        1399,
+        820
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0,
+      "screenshot": {
+        "sha256": "3a1af32d205b6495583c5a4423a2b832331d5299efe65aa2d257c9c2549bbb29",
+        "bytes": 4588842,
+        "width": 1399,
+        "height": 820
+      }
+    },
+    {
+      "name": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-7",
+      "elapsed_seconds": 2.39971,
+      "ui_script_sha256": "552e276b1bb50be2c34ba2dbc0a31a56b66e13345aafb89fc30900be9fcd51f4",
+      "diagnostics_sha256": "2704fc628fd975fe43f51dfec3585ff160e00566afadb0a8a984df195c59ff5e",
+      "scheduled_ui_events": 24,
+      "accepted_note_commands": {
+        "on": 2,
+        "off": 2
+      },
+      "final_view": [
+        "play",
+        "dimensional",
+        1400,
+        820
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0,
+      "screenshot": {
+        "sha256": "76577509d1aa3b75c0621e169aedfae66ba9c6af7602e106b2be9b1a8ab21fd0",
+        "bytes": 4592122,
+        "width": 1400,
+        "height": 820
+      }
+    },
+    {
+      "name": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1",
+      "elapsed_seconds": 3.254662,
+      "ui_script_sha256": "9d4770809137535ad3085b2ff07cc0087dc98ce548282996e333e0517f45de43",
+      "diagnostics_sha256": "93444b33882a527bedea519c9dcda73a3ddb08654ac3d2e2118fbb915795ad60",
+      "scheduled_ui_events": 17,
+      "accepted_note_commands": {
+        "on": 5,
+        "off": 5
+      },
+      "final_view": [
+        "play",
+        "flat",
+        960,
+        700
+      ],
+      "saved_state_sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+      "returncode": 0,
+      "midi_script_sha256": "4cbf9900dd6ee9b32634a4e491cdef4457291e8aed6496e56b2361e1d137cace",
+      "accepted_midi_packets": 6
+    }
+  ]
+}

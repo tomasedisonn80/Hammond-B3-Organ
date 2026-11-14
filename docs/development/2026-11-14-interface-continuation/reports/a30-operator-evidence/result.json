@@ -1,0 +1,480 @@
+{
+  "agent": "A30",
+  "kind": "independent bounded native operator audit",
+  "published_base": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "qualification_scope": "Pinned pre-A28 interface overlay; base commit alone does not contain this UI",
+  "executable": "/tmp/a30-operator-pinned/hammond_standalone",
+  "executable_sha256_before": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+  "python": "3.12.14",
+  "pillow": "13.0.0",
+  "source_and_guide_sha256_before": {
+    "docs/INTERFACE_RUNBOOK.md": "cee311e98e477aa9e330b3d1060dd04668bafcf6150e1c964570538d9f34e7a5",
+    "docs/STANDALONE_INPUT_REPLAY.md": "da2f71ee6047bd175361376c9ef826ecd6407e5c434d708a8e1d5fe880c9cf5b",
+    "apps/standalone/main.cpp": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "482f2d7b9075358782e966c12c7117c5fd1bd5d10a52682cffa3c0d4c459e891",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "945f72c6deff94736c4b37edf7e448eb8b5e78aa52fd8e9809fb2e0c743aad98",
+    "examples/demos/standalone-interface-preview-v1/inputs/source-qualification.json": "5b2e9b4d7ea16ec4254d6978a25180fdafd2771685eaea307feb81b3b790df87"
+  },
+  "cli": [
+    {
+      "name": "help",
+      "command": [
+        "/tmp/a30-operator-pinned/hammond_standalone",
+        "--help"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "invalid-workspace",
+      "command": [
+        "/tmp/a30-operator-pinned/hammond_standalone",
+        "--workspace",
+        "Service"
+      ],
+      "returncode": 2
+    }
+  ],
+  "runs": [
+    {
+      "name": "01-first-launch",
+      "command": [
+        "/tmp/a30-operator-pinned/hammond_standalone",
+        "--state",
+        "/tmp/a30-01-first-launch-a4c7o5pp/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-01-first-launch-a4c7o5pp/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-01-first-launch-a4c7o5pp/diagnostics.json",
+        "--workspace",
+        "service"
+      ],
+      "cwd": "/tmp/a30-01-first-launch-a4c7o5pp",
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "timeout_seconds": 9,
+      "executable_sha256_before": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+      "returncode": 0,
+      "elapsed_seconds": 2.4719260670026415,
+      "native_result": "passed",
+      "state_existed_at_start": false,
+      "state_exists_after": false,
+      "state_sha256_after": null,
+      "painted_views": [
+        [
+          "service",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "service",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "service",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ]
+      ],
+      "note_on_commands": 1,
+      "note_off_commands": 1,
+      "device_starts": 1,
+      "audio_callbacks": 214,
+      "held_before_shutdown": [
+        [],
+        [],
+        []
+      ],
+      "executable_sha256_after": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    },
+    {
+      "name": "02-edit-save-live-load",
+      "command": [
+        "/tmp/a30-operator-pinned/hammond_standalone",
+        "--state",
+        "/tmp/a30-02-edit-save-live-load-8b22xyuu/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-02-edit-save-live-load-8b22xyuu/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-02-edit-save-live-load-8b22xyuu/diagnostics.json",
+        "--screenshot",
+        "/tmp/a30-02-edit-save-live-load-8b22xyuu/frame.bmp"
+      ],
+      "cwd": "/tmp/a30-02-edit-save-live-load-8b22xyuu",
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "timeout_seconds": 9,
+      "executable_sha256_before": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+      "returncode": 0,
+      "elapsed_seconds": 3.2532356180017814,
+      "capture": {
+        "png": "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/frame.png",
+        "bmp_sha256": "88c4a11e56750ca82a9c9457a2bc0cc45b425e0b6846ec738d9bf4634b833b96",
+        "png_sha256": "c600ecd937baead0253adf3f153b6e87d45b343cd789a2a681b880e0579fc26d",
+        "decoded_mode": "RGBA",
+        "size": [
+          960,
+          700
+        ],
+        "decoded_pixels_sha256": "d9c793328e340e391d6ad39369dc1df78b566d6061cd80dff5be168e0e035104",
+        "decoded_pixels_equal": true
+      },
+      "native_result": "passed",
+      "state_existed_at_start": true,
+      "state_exists_after": true,
+      "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+      "painted_views": [
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "service",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          960,
+          700
+        ],
+        [
+          "service",
+          "flat",
+          "none",
+          960,
+          700
+        ]
+      ],
+      "note_on_commands": 1,
+      "note_off_commands": 1,
+      "device_starts": 1,
+      "audio_callbacks": 287,
+      "held_before_shutdown": [
+        [],
+        [],
+        []
+      ],
+      "executable_sha256_after": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    },
+    {
+      "name": "03-cold-reload",
+      "command": [
+        "/tmp/a30-operator-pinned/hammond_standalone",
+        "--state",
+        "/tmp/a30-03-cold-reload-tqwgg_7t/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-03-cold-reload-tqwgg_7t/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-03-cold-reload-tqwgg_7t/diagnostics.json",
+        "--screenshot",
+        "/tmp/a30-03-cold-reload-tqwgg_7t/frame.bmp"
+      ],
+      "cwd": "/tmp/a30-03-cold-reload-tqwgg_7t",
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "timeout_seconds": 9,
+      "executable_sha256_before": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+      "returncode": 0,
+      "elapsed_seconds": 0.7951120279976749,
+      "capture": {
+        "png": "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/03-cold-reload/frame.png",
+        "bmp_sha256": "0aed59c26aabe20eb1eca4fb48b2630fdad49a0a7424b3683d69bb08bf3df0dc",
+        "png_sha256": "ca3e20ee7220b0a2ce216516b2611bc419f40f996ca0f5fef49b59d0cce08f8a",
+        "decoded_mode": "RGBA",
+        "size": [
+          1280,
+          900
+        ],
+        "decoded_pixels_sha256": "f55cee97532db6a7ca22d30fce0501fd1a1276d71e60dc3394c46f1a1eb2ba4c",
+        "decoded_pixels_equal": true
+      },
+      "native_result": "passed",
+      "state_existed_at_start": true,
+      "state_exists_after": true,
+      "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+      "painted_views": [
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ]
+      ],
+      "note_on_commands": 0,
+      "note_off_commands": 0,
+      "device_starts": 1,
+      "audio_callbacks": 66,
+      "held_before_shutdown": [
+        [],
+        [],
+        []
+      ],
+      "executable_sha256_after": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    },
+    {
+      "name": "04-help-audio-safe-stop",
+      "command": [
+        "/tmp/a30-operator-pinned/hammond_standalone",
+        "--state",
+        "/tmp/a30-04-help-audio-safe-stop-0z2gqo3y/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-04-help-audio-safe-stop-0z2gqo3y/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-04-help-audio-safe-stop-0z2gqo3y/diagnostics.json",
+        "--workspace",
+        "rotary",
+        "--flat"
+      ],
+      "cwd": "/tmp/a30-04-help-audio-safe-stop-0z2gqo3y",
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "timeout_seconds": 9,
+      "executable_sha256_before": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+      "returncode": 0,
+      "elapsed_seconds": 3.338380897999741,
+      "native_result": "passed",
+      "state_existed_at_start": true,
+      "state_exists_after": true,
+      "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+      "painted_views": [
+        [
+          "rotary",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "flat",
+          "help",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "flat",
+          "audio",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "service",
+          "flat",
+          "none",
+          1280,
+          900
+        ]
+      ],
+      "note_on_commands": 3,
+      "note_off_commands": 1,
+      "device_starts": 2,
+      "audio_callbacks": 213,
+      "held_before_shutdown": [
+        [],
+        [],
+        []
+      ],
+      "executable_sha256_after": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    },
+    {
+      "name": "05-midi-no-input",
+      "command": [
+        "/tmp/a30-operator-pinned/hammond_standalone",
+        "--state",
+        "/tmp/a30-05-midi-no-input-7ej2g9ns/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-05-midi-no-input-7ej2g9ns/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-05-midi-no-input-7ej2g9ns/diagnostics.json",
+        "--workspace",
+        "service",
+        "--flat",
+        "--width",
+        "960",
+        "--height",
+        "700"
+      ],
+      "cwd": "/tmp/a30-05-midi-no-input-7ej2g9ns",
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "timeout_seconds": 9,
+      "executable_sha256_before": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+      "returncode": 1,
+      "elapsed_seconds": 2.408498251999845,
+      "native_result": "failed: MIDI discovery unavailable; preserved environmental failure",
+      "state_existed_at_start": true,
+      "state_exists_after": true,
+      "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+      "painted_views": [
+        [
+          "service",
+          "flat",
+          "none",
+          960,
+          700
+        ],
+        [
+          "service",
+          "flat",
+          "midi",
+          960,
+          700
+        ],
+        [
+          "service",
+          "flat",
+          "none",
+          960,
+          700
+        ],
+        [
+          "rotary",
+          "flat",
+          "none",
+          960,
+          700
+        ]
+      ],
+      "note_on_commands": 2,
+      "note_off_commands": 1,
+      "device_starts": 1,
+      "audio_callbacks": 214,
+      "held_before_shutdown": [
+        [],
+        [],
+        []
+      ],
+      "executable_sha256_after": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+    }
+  ],
+  "checks": [
+    "First launch: literal audition defaults, read-only bodies, F4-F7, unchanged controls/sequence, original A release, no implicit Save",
+    "Held fixed F#: EDIT A and first drawbar edit preserve route; explicit preset B changes route; canonical Save and live Load restore exact fixed/control memory without releasing A",
+    "Cold reload: identical canonical B3CONTROLS4 sound controls; zero held targets; default Play/Dimensional and 1280x900 return after Service/Flat/960x700 exit",
+    "Help/Audio modal gates: original UI holds clear; repeats remain suppressed until Up; Audio Apply changes 48k/512 to 44.1k/2048, retains all controls, starts one new lifecycle; fresh note works",
+    "MIDI No input Apply/Disconnect/Close: no native input epoch or packets; no implicit connection; modal releases/suppression and fresh keyboard play are intact; native discovery failure remains explicit"
+  ],
+  "failure": null,
+  "executable_sha256_after": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+  "source_and_guide_sha256_after": {
+    "docs/INTERFACE_RUNBOOK.md": "cee311e98e477aa9e330b3d1060dd04668bafcf6150e1c964570538d9f34e7a5",
+    "docs/STANDALONE_INPUT_REPLAY.md": "da2f71ee6047bd175361376c9ef826ecd6407e5c434d708a8e1d5fe880c9cf5b",
+    "apps/standalone/main.cpp": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "482f2d7b9075358782e966c12c7117c5fd1bd5d10a52682cffa3c0d4c459e891",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "945f72c6deff94736c4b37edf7e448eb8b5e78aa52fd8e9809fb2e0c743aad98",
+    "examples/demos/standalone-interface-preview-v1/inputs/source-qualification.json": "5b2e9b4d7ea16ec4254d6978a25180fdafd2771685eaea307feb81b3b790df87"
+  },
+  "native_processes": 5,
+  "native_successes": 4,
+  "native_failures_preserved": 1,
+  "operator_assertions_completed": true,
+  "limits": [
+    "Dummy SDL, software renderer, no physical audio or controller evidence",
+    "No native persistent pointer capture: dummy SDL_CaptureMouse fails immediately",
+    "No sample-accurate replay or physical latency/deadline claim",
+    "No screen-reader/accessibility or literal reference-image equality claim",
+    "Pinned pre-A28 executable; no qualification of later rebuilt source"
+  ]
+}

@@ -142,6 +142,10 @@ constexpr std::array kKeys{
     KeyCase{"F1", SDL_SCANCODE_F1, SDLK_F1},
     KeyCase{"F2", SDL_SCANCODE_F2, SDLK_F2},
     KeyCase{"F3", SDL_SCANCODE_F3, SDLK_F3},
+    KeyCase{"F4", SDL_SCANCODE_F4, SDLK_F4},
+    KeyCase{"F5", SDL_SCANCODE_F5, SDLK_F5},
+    KeyCase{"F6", SDL_SCANCODE_F6, SDLK_F6},
+    KeyCase{"F7", SDL_SCANCODE_F7, SDLK_F7},
     KeyCase{"Comma", SDL_SCANCODE_COMMA, SDLK_COMMA},
     KeyCase{"Slash", SDL_SCANCODE_SLASH, SDLK_SLASH},
 };
@@ -249,7 +253,7 @@ void test_parser_payloads() {
         }
     }
     for (const auto* name : {"a", "m", "Q", "Z", "Enter", "KP_ENTER", "SDL_SCANCODE_A",
-                            "SDL_SCANCODE_M", ";", "F4"}) {
+                            "SDL_SCANCODE_M", ";", "F8"}) {
         rejected(script(std::string{"0 key_down "} + name + " none 0\n"));
     }
     for (const auto* modifier : {"None", "Shift", "0", "super", "none+shift", "shift+none",
@@ -566,10 +570,10 @@ void test_key_queue(SDL_Window* window) {
     CHECK(poll_events().empty());
     CHECK(input.pushed_count() == 0 && !input.delivered());
     pump(input, 5);
-    CHECK(input.pushed_count() == 102);
+    CHECK(input.pushed_count() == 110);
     CHECK(!input.delivered() && !input.completed(250));
     const auto events = poll_events();
-    CHECK(events.size() == 103);
+    CHECK(events.size() == 111);
     std::size_t index = 0;
     const auto window_id = SDL_GetWindowID(window);
     for (const auto& key : kKeys) {
@@ -593,7 +597,7 @@ void test_key_queue(SDL_Window* window) {
     pump(input, 250);
     pump(input, std::numeric_limits<std::uint64_t>::max());
     CHECK(input.completed(std::numeric_limits<std::uint64_t>::max()));
-    CHECK(input.pushed_count() == 102 && poll_events().empty());
+    CHECK(input.pushed_count() == 110 && poll_events().empty());
 }
 
 void test_midi_shortcut_queue(SDL_Window* window) {

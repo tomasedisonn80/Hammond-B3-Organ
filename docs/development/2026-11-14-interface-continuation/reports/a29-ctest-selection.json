@@ -1,0 +1,167 @@
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test"
+    ],
+    "files" : 
+    [
+      "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/CMakeLists.txt",
+      "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 304,
+        "parent" : 0
+      },
+      {
+        "file" : 1
+      },
+      {
+        "command" : 0,
+        "file" : 1,
+        "line" : 240,
+        "parent" : 2
+      },
+      {
+        "file" : 1
+      },
+      {
+        "command" : 0,
+        "file" : 1,
+        "line" : 245,
+        "parent" : 4
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 1,
+      "command" : 
+      [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_install.py"
+      ],
+      "config" : "Release",
+      "name" : "test_standalone_install",
+      "properties" : 
+      [
+        {
+          "name" : "ENVIRONMENT",
+          "value" : 
+          [
+            "PYTHONDONTWRITEBYTECODE=1",
+            "HAMMOND_TEST_CMAKE=/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+            "HAMMOND_TEST_BUILD_DIR=/workspace/scratch/601951e27dc3/build-native-midi-off",
+            "HAMMOND_TEST_CONFIG=Release",
+            "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone/hammond_standalone",
+            "HAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2",
+            "HAMMOND_INSTALL_BINDIR=bin",
+            "HAMMOND_INSTALL_DATADIR=share",
+            "HAMMOND_TEST_ENABLE_MIDI=0",
+            "HAMMOND_STANDALONE_CAPABILITIES=/workspace/scratch/601951e27dc3/build-native-midi-off/generated/standalone-capabilities.json",
+            "HAMMOND_RTMIDI_PREPARED_ROOT=",
+            "HAMMOND_RTMIDI_BACKEND="
+          ]
+        },
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 90.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/workspace/scratch/601951e27dc3/build-native-midi-off"
+        }
+      ]
+    },
+    {
+      "backtrace" : 3,
+      "command" : 
+      [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py"
+      ],
+      "config" : "Release",
+      "name" : "test_standalone_app",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 60.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone"
+        }
+      ]
+    },
+    {
+      "backtrace" : 5,
+      "command" : 
+      [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_cli.py"
+      ],
+      "config" : "Release",
+      "name" : "test_standalone_midi_cli",
+      "properties" : 
+      [
+        {
+          "name" : "LABELS",
+          "value" : 
+          [
+            "midi",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 90.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "/workspace/scratch/601951e27dc3/build-native-midi-off/apps/standalone"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "05-midi-no-input",
+  "command": [
+    "/tmp/a30-operator-pinned/hammond_standalone",
+    "--state",
+    "/tmp/a30-05-midi-no-input-7ej2g9ns/controls.b3controls",
+    "--input-script",
+    "/tmp/a30-05-midi-no-input-7ej2g9ns/input.b3uireplay",
+    "--diagnostics",
+    "/tmp/a30-05-midi-no-input-7ej2g9ns/diagnostics.json",
+    "--workspace",
+    "service",
+    "--flat",
+    "--width",
+    "960",
+    "--height",
+    "700"
+  ],
+  "cwd": "/tmp/a30-05-midi-no-input-7ej2g9ns",
+  "environment": {
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_VIDEODRIVER": "dummy"
+  },
+  "timeout_seconds": 9,
+  "executable_sha256_before": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364",
+  "returncode": 1,
+  "elapsed_seconds": 2.408498251999845,
+  "native_result": "failed: MIDI discovery unavailable; preserved environmental failure",
+  "state_existed_at_start": true,
+  "state_exists_after": true,
+  "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+  "painted_views": [
+    [
+      "service",
+      "flat",
+      "none",
+      960,
+      700
+    ],
+    [
+      "service",
+      "flat",
+      "midi",
+      960,
+      700
+    ],
+    [
+      "service",
+      "flat",
+      "none",
+      960,
+      700
+    ],
+    [
+      "rotary",
+      "flat",
+      "none",
+      960,
+      700
+    ]
+  ],
+  "note_on_commands": 2,
+  "note_off_commands": 1,
+  "device_starts": 1,
+  "audio_callbacks": 214,
+  "held_before_shutdown": [
+    [],
+    [],
+    []
+  ],
+  "executable_sha256_after": "005db1e2006bd1929e07dff3acaa40a5a6e6fa60a2bc8f07eb992d972b04b364"
+}

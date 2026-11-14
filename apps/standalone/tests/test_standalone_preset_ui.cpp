@@ -47,6 +47,14 @@ UiPoint exposed_point(const UiModel& model, unsigned manual, unsigned index) {
             bounds.y + bounds.height * (is_sharp(index) ? 0.3F : 0.85F)};
 }
 
+UiPoint exposed_playing_point(const UiKeyGeometry& key) {
+    const float depth = key.accidental ? 0.3F : 0.85F;
+    const auto& corners = key.hit.points;
+    const float left = corners[0].x + depth * (corners[3].x - corners[0].x);
+    const float right = corners[1].x + depth * (corners[2].x - corners[1].x);
+    return {(left + right) * 0.5F, corners[0].y + depth * (corners[3].y - corners[0].y)};
+}
+
 const SessionCommand& command(const UiActions& actions) {
     CHECK(actions.count == 1);
     CHECK(std::holds_alternative<SessionCommand>(actions.items[0]));
@@ -64,7 +72,7 @@ void tap_navigation(UiModel& model, UiKey key, bool shift = false) {
 }
 
 void focus_via_tab(UiModel& model, UiControlId target) {
-    for (unsigned i = 0; i < 68 && model.view().focus != target; ++i)
+    for (unsigned i = 0; i < 71 && model.view().focus != target; ++i)
         tap_navigation(model, UiKey::Tab);
     CHECK(model.view().focus == target);
 }
@@ -176,7 +184,7 @@ void geometry_and_occlusion() {
     for (const auto& anchor : anchors) {
         CHECK(model.resize(anchor.width, anchor.height));
         const auto& layout = model.layout();
-        CHECK(layout.control_count == 64);
+        CHECK(layout.control_count == 68);
         CHECK(layout.show_cabinet == anchor.cabinet);
         CHECK(layout.bank_controls_in_cheeks == anchor.cheeks);
         unsigned preset_count = 0;
@@ -226,8 +234,7 @@ void geometry_and_occlusion() {
             for (unsigned index = 0; index < 61; ++index) {
                 const auto& key = layout.manual_keys[manual][index];
                 CHECK(key.note.value == 36 + index);
-                const UiPoint point{key.bounds.x + key.bounds.width * 0.5F,
-                    key.bounds.y + key.bounds.height * (key.accidental ? 0.3F : 0.85F)};
+                const UiPoint point = exposed_playing_point(key);
                 const UiControlId wanted{UiControlKind::ManualKey, static_cast<Manual>(manual),
                     DrawbarBank::A, static_cast<std::uint8_t>(index)};
                 CHECK(ui_hit_test(layout, point) == wanted);
@@ -236,8 +243,7 @@ void geometry_and_occlusion() {
         for (unsigned index = 0; index < 25; ++index) {
             const auto& key = layout.pedal_keys[index];
             CHECK(key.note.value == index + 1);
-            const UiPoint point{key.bounds.x + key.bounds.width * 0.5F,
-                key.bounds.y + key.bounds.height * (key.accidental ? 0.3F : 0.85F)};
+            const UiPoint point = exposed_playing_point(key);
             const UiControlId wanted{UiControlKind::PedalKey, Manual::Upper,
                 DrawbarBank::A, static_cast<std::uint8_t>(index)};
             CHECK(ui_hit_test(layout, point) == wanted);
@@ -247,7 +253,7 @@ void geometry_and_occlusion() {
     for (const auto size : std::array<UiPoint, 5>{{{960, 8192}, {8192, 700},
              {8192, 8192}, {1920, 1080}, {1024, 768}}}) {
         CHECK(model.resize(size.x, size.y));
-        CHECK(model.layout().control_count == 64);
+        CHECK(model.layout().control_count == 68);
         for (unsigned manual = 0; manual < 2; ++manual)
             for (unsigned index = 0; index < 12; ++index)
                 CHECK(ui_hit_test(model.layout(), exposed_point(model, manual, index)) == preset(manual, index));
@@ -257,12 +263,16 @@ void geometry_and_occlusion() {
 
 void tab_order_and_navigation() {
     UiModel model;
-    std::array<UiControlId, 67> expected{};
+    std::array<UiControlId, 71> expected{};
     std::size_t size = 0;
+    expected[size++] = {UiControlKind::Workspace, Manual::Upper, DrawbarBank::A, 0};
+    expected[size++] = {UiControlKind::Workspace, Manual::Upper, DrawbarBank::A, 1};
+    expected[size++] = {UiControlKind::Workspace, Manual::Upper, DrawbarBank::A, 2};
     for (const auto kind : {UiControlKind::SaveControls, UiControlKind::LoadControls,
                            UiControlKind::Help, UiControlKind::AudioSettings,
                            UiControlKind::MidiSettings, UiControlKind::Panic})
         expected[size++] = {kind};
+    expected[size++] = {UiControlKind::Presentation};
     for (unsigned manual = 0; manual < 2; ++manual) {
         expected[size++] = {UiControlKind::EditBank, static_cast<Manual>(manual), DrawbarBank::A};
         expected[size++] = {UiControlKind::EditBank, static_cast<Manual>(manual), DrawbarBank::B};

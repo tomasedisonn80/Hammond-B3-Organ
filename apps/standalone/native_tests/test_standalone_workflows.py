@@ -655,9 +655,11 @@ class NativeWorkflowAcceptance(unittest.TestCase):
     def test_resize_preserves_control_focus_and_original_note_release(self) -> None:
         for width, height in ((960, 700), (1600, 1000)):
             with self.subTest(width=width, height=height):
-                # Six header controls, two EDIT buttons and twelve presets
-                # put the first Upper drawbar at the twenty-first Tab.
-                events = tabs(100, 21) + tap(550, "Home")
+                # Ten common controls, two EDIT buttons and twelve presets
+                # put the first Upper drawbar at the twenty-fifth Tab. Begin
+                # the four additional tabs earlier, preserving every musical
+                # action time and the original replay/acknowledgment deadlines.
+                events = tabs(20, 25) + tap(550, "Home")
                 events += [(650, "key_down A none 0"), (850, f"resize {width} {height}")]
                 events += tap(1050, "Right")
                 zero = deepcopy(INITIAL_CONTROLS)
@@ -705,9 +707,10 @@ class NativeWorkflowAcceptance(unittest.TestCase):
 
     def test_off_window_pointer_release_preserves_independent_keyboard_owner(self) -> None:
         source = replay(1400, [
-            # Upper C2 (MIDI 36) is inside the reference keyboard at (202,580),
-            # to the right of the bank rail and below its accidentals.
-            (200, "key_down A none 0"), (450, "mouse_down 202 580"),
+            # Upper C2 (MIDI 36) contains (222,580) in the reviewed 0.94
+            # projection, below its accidentals. The former x=202 sample is
+            # outside the sloping left edge; the two-owner expectation stays.
+            (200, "key_down A none 0"), (450, "mouse_down 222 580"),
             (650, "mouse_move -100 -100"), (800, "mouse_up -80 -80"),
             (1100, "key_up A none"),
         ])

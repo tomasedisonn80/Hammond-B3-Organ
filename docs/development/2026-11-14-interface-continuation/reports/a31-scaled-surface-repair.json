@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "actual_assignment": "A31",
+  "agent": "/root/w06_a31_scaled_surface_repair",
+  "wave": 6,
+  "timestamp_utc": "2026-11-14T12:13:43.599986+00:00",
+  "status": "pass_scoped_surface_repair",
+  "base_head": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "scope": "Drawing gradient/rounded filled-surface rasterization on pinned SDL software; preserve all existing sound/state/model boundaries",
+  "owned_source": [
+    "apps/standalone/Drawing.cpp",
+    "apps/standalone/native_tests/test_standalone_drawing.cpp"
+  ],
+  "owned_documents": [
+    "docs/reviews/INTERFACE_SCALED_SURFACE_REPAIR.md",
+    "docs/development/2026-11-14-interface-continuation/session31-scaled-surface-repair.md"
+  ],
+  "no_stage_or_commit": true,
+  "shared_build_released": true,
+  "root_owns_publication": true,
+  "source_identity_report": "a31-final-identities.json",
+  "final_drawing_sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+  "final_test_sha256": "c49af9889f5f43e9f3ea20d42a3263b2f911ab1c7877b7b6ff42e99216823ebc",
+  "final_app_sha256": "968938196bcf291270e1b1e32e36f08535281a959fb47ea731a216c56486d270",
+  "source_unchanged_through_final_gate": true,
+  "relevant_source_files_checked": 17,
+  "first_failure": {
+    "cause": "One-logical-pixel SDL_FRect strips truncate 1.5 physical pixels to one row",
+    "pre_repair_drawing_sha256": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe",
+    "probe_exit": 1,
+    "scale_1p5_expected_interior_per_primitive": 756,
+    "scale_1p5_missing_per_primitive": 252,
+    "primitive_names": [
+      "gradient",
+      "rounded"
+    ],
+    "a28_measured_service_patch_pixels": 28500,
+    "a28_clear_pixels": 9500,
+    "retained_log": "a31-first-interior-failure.txt"
+  },
+  "first_recheck": {
+    "source_report": "a31-source-before-build.json",
+    "ctest_passed": 4,
+    "ctest_total": 5,
+    "exit_code": 8,
+    "elapsed_seconds": 41.18,
+    "drawing_regression_failures": 48,
+    "cause": "One-pixel span sent as a coincident-endpoint blended line is not painted by SDL_BlendLines",
+    "correction": "Emit SDL_RenderDrawPoint for exactly one output pixel; unchanged line path otherwise",
+    "oracle_or_tolerance_relaxed": false,
+    "retained_log": "a31-ctest-first.txt"
+  },
+  "correction": {
+    "raster": "Physical output-pixel centers; clipped disjoint integer row spans",
+    "geometry": "Finite positive extents; double circle geometry; same half-open boundary policy as the raster helper",
+    "color": "Gradient stops at first and last logical pixel centers; retain scale-one integer-aligned float palette",
+    "state": "Preserve scale, physical viewport/clip, clip enable and blend mode; retain A28 InstrumentView repair",
+    "scope_limits": "No Drawing.h, InstrumentView, UiModel, font/art, core/audio, parameter/state, CMake or registration edits"
+  },
+  "final_gate": {
+    "build_exit": 0,
+    "ctest_exit": 0,
+    "ctest_passed": 5,
+    "ctest_total": 5,
+    "elapsed_seconds": 40.7,
+    "suites": [
+      {
+        "name": "test_standalone_drawing",
+        "elapsed_seconds": 0.13,
+        "surface_masks": 298,
+        "full_target_pixel_comparisons": 18309120,
+        "literal_gradient_samples": 15,
+        "original_individual_glyph_cases": 144,
+        "original_normal_labels": 18,
+        "original_metric_space_cases": 12,
+        "failures": 0
+      },
+      {
+        "name": "test_standalone_quad_drawing",
+        "elapsed_seconds": 0.01,
+        "full_target_coverage_checks": 17,
+        "failures": 0
+      },
+      {
+        "name": "test_standalone_workspace_raster",
+        "elapsed_seconds": 9.21,
+        "frames": 150,
+        "failures": 0
+      },
+      {
+        "name": "test_standalone_scaled_view",
+        "elapsed_seconds": 19.8,
+        "frames": 168,
+        "renderer_state_checks": 168,
+        "clip_checks": 90,
+        "focus_checks": 16,
+        "service_values": 56,
+        "service_lines": 58,
+        "failures": 0
+      },
+      {
+        "name": "test_standalone_preset_raster",
+        "elapsed_seconds": 11.54,
+        "label_focus_cases": 96,
+        "isolation_cases": 376,
+        "state_cases": 48,
+        "failures": 0
+      }
+    ],
+    "surface_transforms": [
+      [
+        1,
+        1
+      ],
+      [
+        1.5,
+        1.5
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        0.75,
+        0.75
+      ],
+      [
+        1.25,
+        1.25
+      ],
+      [
+        1.25,
+        1.75
+      ]
+    ],
+    "matrix": "6 transforms \u00d7 3 physical viewport/clip setups \u00d7 4 shapes \u00d7 2 alpha values \u00d7 2 primitives = 288 masks; 10 additional full-target checks",
+    "mask_oracle": "Independent rectangle membership and 2D circle distance; alpha detects repeated blends; no production geometry helper used",
+    "probe_recheck_exit": 0,
+    "probe_missing_pixels_all_six_cases": 0
+  },
+  "proof": {
+    "images": [
+      {
+        "kind": "Injected native paint_instrument software-renderer frame; not an application screenshot",
+        "logical_size": [
+          960,
+          700
+        ],
+        "renderer_scale": 1.5,
+        "physical_size": [
+          1440,
+          1050
+        ],
+        "mode": "RGBA",
+        "workspace": "play",
+        "source_bmp_sha256": "f706ead77b83e3d7fa401bcb706363f121f3b826ef8e0ee2e0fd3cad424d548a",
+        "decoded_pixel_sha256": "3afc58e7cc3522b3801b143af564628ff32405be732b51ea50414fe90f8d5f49",
+        "path": "docs/development/2026-11-14-interface-continuation/reports/a31-injected-renderer-play-960x700-at-1p5.png",
+        "png_sha256": "d088a4fe13f723600f41b09a33badca8e7fb2f27076b0b9ace2037e98060a071",
+        "bytes": 248723,
+        "lossless_conversion_verified": true,
+        "visually_inspected": true,
+        "visual_inspector": "/root/w06_a31_scaled_surface_repair",
+        "visual_review_utc": "2026-11-14T12:13:43.599986+00:00",
+        "visual_observation": "No repeated horizontal clear/walnut surface rows; bounded visible panel edges and focus. Small preset legends remain a separate readability finding."
+      },
+      {
+        "kind": "Injected native paint_instrument software-renderer frame; not an application screenshot",
+        "logical_size": [
+          960,
+          700
+        ],
+        "renderer_scale": 1.5,
+        "physical_size": [
+          1440,
+          1050
+        ],
+        "mode": "RGBA",
+        "workspace": "service",
+        "source_bmp_sha256": "4994608441cce9d62874860c05e22b571146557c245f0c05a0f535f4f2dfb95a",
+        "decoded_pixel_sha256": "90d61e5bad72844850866615af4b42c5e489dccc25f9372576fa5578f35fac6f",
+        "path": "docs/development/2026-11-14-interface-continuation/reports/a31-injected-renderer-service-960x700-at-1p5.png",
+        "png_sha256": "c23a87ff6e6cc83e65d11481b98731d0dda47bd0f4118387fcdcdb4f3e265faa",
+        "bytes": 341827,
+        "lossless_conversion_verified": true,
+        "visually_inspected": true,
+        "visual_inspector": "/root/w06_a31_scaled_surface_repair",
+        "visual_review_utc": "2026-11-14T12:13:43.599986+00:00",
+        "visual_observation": "No repeated horizontal clear/walnut surface rows; bounded visible panel edges and focus. Small preset legends remain a separate readability finding."
+      }
+    ],
+    "image_bytes_total": 590550,
+    "visual_inspection": "Both final PNGs opened and inspected with view_image",
+    "same_service_patch_pixels": 28500,
+    "before_clear_pixels": 9500,
+    "after_clear_pixels": 0,
+    "comparison_report": "a31-surface-gap-comparison.json",
+    "max_full_view_target": [
+      1920,
+      1400
+    ],
+    "retained_proof_size": [
+      1440,
+      1050
+    ],
+    "captures_are_application_screenshots": false,
+    "injected_device_labels_are_not_hardware_observations": true,
+    "own_redundant_bmps_removed": true,
+    "original_a28_failure_images_preserved": true
+  },
+  "commands": {
+    "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+    "build": "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake --build ../build-native --target hammond_standalone test_standalone_drawing test_standalone_quad_drawing test_standalone_workspace_raster test_standalone_scaled_view test_standalone_preset_raster -j 3",
+    "first_ctest": "HAMMOND_SCALED_VIEW_CAPTURE_DIR=/workspace/scratch/601951e27dc3/a31-scaled-surface/captures-final /workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest --test-dir ../build-native -R '^test_standalone_(drawing|quad_drawing|workspace_raster|scaled_view|preset_raster)$' --output-on-failure --no-tests=error -V",
+    "final_ctest": "HAMMOND_SCALED_VIEW_CAPTURE_DIR=/workspace/scratch/601951e27dc3/a31-scaled-surface/captures-corrected /workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest --test-dir ../build-native -R '^test_standalone_(drawing|quad_drawing|workspace_raster|scaled_view|preset_raster)$' --output-on-failure --no-tests=error -V",
+    "before_probe_compile": "c++ -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -DSDL_MAIN_HANDLED -Iapps/standalone -Iinclude -I../build-native/_sdl2/include -I../build-native/_sdl2/include/SDL2 -I../build-native/_sdl2/include-config-release/SDL2 ../a31-scaled-surface/before-probe.cpp ../build-native/apps/standalone/libhammond_standalone_drawing.a ../build-native/_sdl2/libSDL2.a -lm -pthread -o ../a31-scaled-surface/before-probe",
+    "before_probe_run": "../a31-scaled-surface/before-probe",
+    "after_probe_compile": "c++ -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -DSDL_MAIN_HANDLED -Iapps/standalone -Iinclude -I../build-native/_sdl2/include -I../build-native/_sdl2/include/SDL2 -I../build-native/_sdl2/include-config-release/SDL2 docs/development/2026-11-14-interface-continuation/reports/a31-interior-probe.cpp ../build-native/apps/standalone/libhammond_standalone_drawing.a ../build-native/_sdl2/libSDL2.a -lm -pthread -o ../a31-scaled-surface/interior-probe-corrected",
+    "after_probe_run": "../a31-scaled-surface/interior-probe-corrected",
+    "scope_diff_check": "git diff --check -- apps/standalone/Drawing.cpp apps/standalone/native_tests/test_standalone_drawing.cpp"
+  },
+  "limitations": [
+    "Executed SDL software surface transforms only; not all positive finite scales exhaustively sampled",
+    "GPU, real monitor/cross-monitor DPI, native accessibility and physical audio/MIDI are separate gates",
+    "No timing/deadline/frame-rate or physical/atlas fidelity claim",
+    "Tiny preset labels remain A34 scope",
+    "Root owns actual application gallery, coherent integration and publication; A35 MIDI observation correction is separate"
+  ],
+  "artifacts": {
+    "a31-source-before-build.json": {
+      "sha256": "3e0687f27003db6401a4f83a4595f33e2d8a858e0df3d5e9f6930fcecae22b94",
+      "bytes": 4319
+    },
+    "a31-final-source-before-build.json": {
+      "sha256": "5ffe52c30e84baea65c1013f28e35dfb71e95de0a859be2f11f4943bf0ad7bb8",
+      "bytes": 4324
+    },
+    "a31-final-identities.json": {
+      "sha256": "cfbf0674f027917c0d9ca5ea7df05d21dd1cb4c098746103b7b6b529b595eaeb",
+      "bytes": 5960
+    },
+    "a31-interior-probe.cpp": {
+      "sha256": "2a37c8d467c40f23864ec0797fe5f1ba7c8faf70f0146a2b13a4241b14143a83",
+      "bytes": 2267
+    },
+    "a31-first-interior-failure.txt": {
+      "sha256": "6e8edcb42d85424c66089951f36c3ff40631704c30b49f0208238e41076f04f0",
+      "bytes": 627
+    },
+    "a31-interior-recheck.txt": {
+      "sha256": "bcc67c957f7872b4fcdb13d429a43341c28428d9aaa121b5ee7db40429a21a3c",
+      "bytes": 339
+    },
+    "a31-build-first.txt": {
+      "sha256": "b80058d22056da0445364314fac09807735fc9963dfb001a0e4d9730f0993bf3",
+      "bytes": 2739
+    },
+    "a31-build-final.txt": {
+      "sha256": "d42367c8fb95b086d14783cab6325348c3f0ea006f013c5bb9ecc8fe1cfb8edc",
+      "bytes": 12070
+    },
+    "a31-ctest-first.txt": {
+      "sha256": "7f9fcf920162f82569833728f06c0280d5c1c7d376a217cdf26f7ceda516b8be",
+      "bytes": 20541
+    },
+    "a31-ctest-final.txt": {
+      "sha256": "d586b0a87758db7e6a4498ae756c0bec3b710cfe34334ea4bf64c29d2f093881",
+      "bytes": 9041
+    },
+    "a31-proof-images.json": {
+      "sha256": "94d3e391f323ebe9c155110f02596b8990ba0f2bb45dc842341ed8a4122d1ac9",
+      "bytes": 2165
+    },
+    "a31-surface-gap-comparison.json": {
+      "sha256": "e5d9bf6d4c0aecbf425fbe47d8391bfe81f445a9f91c0f1b612b51a3ccd72829",
+      "bytes": 1700
+    }
+  }
+}

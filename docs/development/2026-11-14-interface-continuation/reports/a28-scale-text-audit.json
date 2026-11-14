@@ -1,0 +1,169 @@
+{
+  "assignment": "/root/w05_a28_scale_text_audit",
+  "date_utc": "2026-11-14T11:56:50.850236+00:00",
+  "status": "scoped_numeric_gates_pass; visual_scaling_defect_open_for_A31; preset_readability_open_for_A34",
+  "head": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "scope": "Native full paint_instrument software-surface scaling, clipping, copied Service value visibility and source-derived text budgets; no application window/audio/MIDI/physical display",
+  "first_run": {
+    "status": "failed",
+    "frames": 156,
+    "failures": 4,
+    "seconds": 21.25,
+    "cause": "Scaled preset-focus integer logical clip save/restore loses odd physical edges",
+    "log": "a28-ctest-first.txt",
+    "source": "a28-source-before.json"
+  },
+  "production_repair": {
+    "authorized_by": "root after observed exact failure",
+    "path": "apps/standalone/InstrumentView.cpp",
+    "function": "paint_preset_focus",
+    "sha256": "6b498c9ba2c47acf432216189159b928d2a5d31368ec34c1fe8dc906710e8a67",
+    "change": "Intersect temporary focus clip in physical pixels and restore caller clip/scale; preserve ordinary logical clip if its physical roundtrip is exact",
+    "geometry_material_text_unchanged": true
+  },
+  "final_run": {
+    "status": "pass",
+    "suites": 2,
+    "total_seconds": 27.9,
+    "scaled_view_seconds": 16.31,
+    "preset_raster_seconds": 11.58,
+    "frames": 168,
+    "state_checks": 168,
+    "clipping_checks": 90,
+    "scaled_key_focus": 16,
+    "service_values": 56,
+    "service_lines": 58,
+    "failures": 0,
+    "log": "a28-ctest.txt"
+  },
+  "matrix": {
+    "logical_sizes": [
+      [
+        960,
+        700
+      ],
+      [
+        1280,
+        900
+      ]
+    ],
+    "scales": [
+      1,
+      1.5,
+      2
+    ],
+    "workspaces": [
+      "Play",
+      "Rotary",
+      "Service"
+    ],
+    "presentations": [
+      "Dimensional",
+      "Flat"
+    ],
+    "max_surface": [
+      1920,
+      1400
+    ],
+    "default_at_2": "Four overlapping1920x1400 tiles cover virtual2560x1800; no full large allocation/capture"
+  },
+  "open_findings": [
+    {
+      "id": "fractional_surface_gaps",
+      "owner": "/root/w06_a31_scaled_surface_repair",
+      "status": "observed; not fixed by A28",
+      "evidence": "a28-fractional-surface-gap.json",
+      "blank_patch_pixels": 28500,
+      "clear_walnut_pixels_on_third_rows": 9500,
+      "cause": "One-logical-row gradient/rounded strips scale to1.5 physical pixels and SDL software truncates rectangle height to1"
+    },
+    {
+      "id": "preset_accidental_legibility",
+      "owner": "A34",
+      "status": "retained open",
+      "minimum_D_sharp_font_logical": 6.153846153846154,
+      "minimum_D_sharp_glyph_height_logical": 4.423076923076923,
+      "evidence": "a28-font-metrics.json; A27responsive audit"
+    }
+  ],
+  "source_sha256": {
+    "apps/standalone/native_tests/test_standalone_scaled_view.cpp": "8d2fbaa61ba9ffba1c2056307e32a3c1de6848a0bd24bde1efdb594a02c38f42",
+    "apps/standalone/InstrumentView.cpp": "6b498c9ba2c47acf432216189159b928d2a5d31368ec34c1fe8dc906710e8a67",
+    "apps/standalone/InstrumentView.h": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+    "apps/standalone/Drawing.cpp": "84b91089fa6938075e8b0cfde39d66266acc9c3e7ea026958deb9eaf6a9b16fe",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+    "apps/standalone/UiModel.cpp": "c536c460c6157197bc98c12c1d9d865584c043c44d1c7d3ca6d3d539f74dc0c3",
+    "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+    "apps/standalone/Session.h": "8c26342cafcad2022aabba273cdc8d22432fa3c450819f238fa8d546bc22528b",
+    "apps/standalone/CMakeLists.txt": "6661ddf975af37b0b8720140afa857b6537c069d07f388ce0e8524befed97ffe",
+    "include/hammond/Profile.h": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0"
+  },
+  "build_sha256": {
+    "apps/standalone/hammond_standalone": "55b0947985ee562cce3d04eae66cc4d44f805420f475dd578f00373dd2bef6cd",
+    "apps/standalone/test_standalone_scaled_view": "95a15c6e411d78eacd63cbb7c7f0d6edaf7df231a2b2dc83cb1426dc01e3db63",
+    "apps/standalone/test_standalone_preset_raster": "f64a273d67e0cf6b384afb896273fb3ac5567083dcb829c3a575aaae29f36282",
+    "apps/standalone/libhammond_standalone_drawing.a": "ec8cde3a173c59ca911b76933be53ffba6098f52c8bfd22abfcdfa8a42c02287",
+    "apps/standalone/libhammond_standalone_support.a": "b76221970fad666f56d741034683671f9a77c6316292dc89c319adbfa79b3c64",
+    "libhammond_core.a": "5f9e77044925821c9c7f6896352f704ecd93fa30d21b788be27c9e3650680930",
+    "_sdl2/libSDL2.a": "1e471c6f7a2c14eba9230c44e743e27c5dc68a243308427e5004d4e446db9324",
+    "apps/standalone/generated/ReferenceArtData.h": "d94cefd9ad69726c267d4674acd66912f4764ee9f88d1c21ecce4ed7befcbac6",
+    "apps/standalone/generated/EmbeddedProfile.h": "427e4e3e99a69ebc61f4bc4c576f014843304b384881792934367b00ba569537",
+    "apps/standalone/CMakeFiles/test_standalone_scaled_view.dir/flags.make": "99236dc23035aea0c78cf06d0e191629aaa5c6160fb40fd81278f70ba869194c"
+  },
+  "application_sha256": "55b0947985ee562cce3d04eae66cc4d44f805420f475dd578f00373dd2bef6cd",
+  "scaled_test_sha256": "95a15c6e411d78eacd63cbb7c7f0d6edaf7df231a2b2dc83cb1426dc01e3db63",
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "sdl_git_revision": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+  "source_unchanged_during_final_gate": true,
+  "proofs": [
+    {
+      "kind": "Injected native paint_instrument software-renderer frame; not an application screenshot",
+      "logical_size": [
+        960,
+        700
+      ],
+      "renderer_scale": 1.5,
+      "physical_size": [
+        1440,
+        1050
+      ],
+      "mode": "RGBA",
+      "source_bmp_sha256": "0bee5e30d65c6d895032227fb3397a2d03a36cf1217ded75eb0a138e7bf8acef",
+      "decoded_pixel_sha256": "59885b747c2941fca0ff0c8a4703e1b18027717edf53972d04780fcd895a90f0",
+      "path": "docs/development/2026-11-14-interface-continuation/reports/a28-injected-renderer-play-960x700-at-1p5.png",
+      "png_sha256": "e618b64db2d62c4b7fa931f2684b863fa69f6f742b0a2484d925e192dc5c53f9",
+      "bytes": 287696,
+      "lossless_conversion_verified": true
+    },
+    {
+      "kind": "Injected native paint_instrument software-renderer frame; not an application screenshot",
+      "logical_size": [
+        960,
+        700
+      ],
+      "renderer_scale": 1.5,
+      "physical_size": [
+        1440,
+        1050
+      ],
+      "mode": "RGBA",
+      "source_bmp_sha256": "97a9b0b17f43103aa3661a6506dd08955d471f45fb103b1e1fe26339de6bc55e",
+      "decoded_pixel_sha256": "32182948a530863feeed17e1eba8050855d06013479a4efe0f09a51542d44e76",
+      "path": "docs/development/2026-11-14-interface-continuation/reports/a28-injected-renderer-service-960x700-at-1p5.png",
+      "png_sha256": "52c42ddefcf926292ec6bee3bd801a70aadcf843c478a88f7125df96b6fd78a3",
+      "bytes": 381757,
+      "lossless_conversion_verified": true
+    }
+  ],
+  "limits": [
+    "Value-color differences and source budgets are not OCR or individual-glyph/human-legibility verification.",
+    "Minimum/default row-fit result is for named injected display fixtures, not all future/invalid strings.",
+    "Physical/logical state acceptance is scoped to the listed scales and clip construction fixtures.",
+    "Native display/DPI/GPU, audio/MIDI devices, accessibility, physical fidelity and literal reference equality are not qualified.",
+    "Passing numeric raster tests do not close observed fractional surface gaps."
+  ],
+  "publication": "No child stage/commit; root owns coherent integration and publication."
+}

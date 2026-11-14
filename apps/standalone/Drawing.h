@@ -27,6 +27,11 @@ public:
     void rounded(UiRect bounds, float radius, UiColor color) const noexcept;
     void outline(UiRect bounds, UiColor color, float thickness = 1.0F) const noexcept;
     void gradient(UiRect bounds, UiColor top, UiColor bottom) const noexcept;
+    // Horizontal-edge quads use the same half-open silhouette as UiQuad::contains.
+    // Work is clipped to the current output/viewport; focus remains inside it.
+    void quad(const UiQuad& shape, UiColor top, UiColor bottom) const noexcept;
+    void quad_outline(const UiQuad& shape, UiColor color,
+                      float thickness = 1.0F) const noexcept;
     void line(float x1, float y1, float x2, float y2, UiColor color) const noexcept;
     void shadow(UiRect bounds, float radius = 7.0F) const noexcept;
     // Optional decorative RGB assets are uploaded only during initialize().

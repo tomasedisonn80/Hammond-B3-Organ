@@ -35,7 +35,7 @@ struct KeyName {
     SDL_Keycode keycode;
 };
 
-constexpr std::array<KeyName, 35> kKeys{{
+constexpr std::array<KeyName, 39> kKeys{{
     {"A", SDL_SCANCODE_A, SDLK_a}, {"W", SDL_SCANCODE_W, SDLK_w},
     {"S", SDL_SCANCODE_S, SDLK_s}, {"E", SDL_SCANCODE_E, SDLK_e},
     {"D", SDL_SCANCODE_D, SDLK_d}, {"F", SDL_SCANCODE_F, SDLK_f},
@@ -56,6 +56,8 @@ constexpr std::array<KeyName, 35> kKeys{{
     {"RightBracket", SDL_SCANCODE_RIGHTBRACKET, SDLK_RIGHTBRACKET},
     {"F1", SDL_SCANCODE_F1, SDLK_F1}, {"F2", SDL_SCANCODE_F2, SDLK_F2},
     {"F3", SDL_SCANCODE_F3, SDLK_F3},
+    {"F4", SDL_SCANCODE_F4, SDLK_F4}, {"F5", SDL_SCANCODE_F5, SDLK_F5},
+    {"F6", SDL_SCANCODE_F6, SDLK_F6}, {"F7", SDL_SCANCODE_F7, SDLK_F7},
     {"Comma", SDL_SCANCODE_COMMA, SDLK_COMMA}, {"Slash", SDL_SCANCODE_SLASH, SDLK_SLASH},
 }};
 
