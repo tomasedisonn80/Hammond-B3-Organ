@@ -1,151 +1,116 @@
 # Next steps
 
-**Completed development pass:** all 60 reference-refinement agents are accepted.
-The combined `487064d` source plus two reviewed portability-test repairs passes
-[166/166 local tests](development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json).
-The [closure record](REFERENCE_REFINEMENT_CLOSURE.md) owns the current
-v5 gallery, source boundaries, publication and remaining platform/product gates.
+**Completed and published:** all 60 reference-refinement agents are accepted.
+Source [`fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/fd2f6060b1f03b6d902ff0547441c07d6e74ba4f),
+tree `89c0fb214b018ca43ec9c8b413d3030284a54ec2`, passes
+[166/166 local tests](development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json)
+and [all 13 hosted jobs](development/2026-11-14-reference-refinement/reports/root-final-hosted.json).
+The [publication receipt](development/2026-11-14-reference-refinement/reports/root-closing-publication.json)
+records the verified remote commit/tree and passed 967-Markdown gate;
+[A59's published integrity audit](development/2026-11-14-reference-refinement/reports/A59-final-published-integrity.json)
+preserves the accepted records and source identities. The
+[closure record](REFERENCE_REFINEMENT_CLOSURE.md) owns the complete qualification
+and remaining product gates. The current v5 images retain their actual `487064d2`
+capture source; they are not a new capture at `fd2f606`.
 
 ## Current R4 waveform continuation
 
-The [combined-source closure](REFERENCE_REFINEMENT_CLOSURE.md) owns the latest
-merged-source verification and remaining platform/publication outcomes.
-
-Continue the [waveform checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+Continue the separate [waveform checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
 and [actual manifest](development/2026-11-14-waveform-continuation/assignments.json).
-Incoming published `487064d2400b9f39d0ee66ed136a09c9e372379e` contains the
-implemented histories, streaming paths, transactional renderer, offline CLI
-and profile compiler. Its snapshot has **29 actual workers dispatched and 26
-accepted**; planned rows do not count. The full four-rate/24-partition waveform
-experiment has already passed, with 22,806,000 native frames and 38,010,000 exact
-alternate sample comparisons in its [source-bound receipt](development/2026-11-14-waveform-continuation/reports/full-waveform/qualification.json).
-Do not rerun or describe that completed experiment as pending merely to recover
-context. The bounded smoke and later CLI build metadata remain separate.
+Incoming `487064d2400b9f39d0ee66ed136a09c9e372379e` introduced the implemented
+histories, streaming paths, transactional renderer, offline CLI/profile compiler
+and native material changes; these are retained in qualified `fd2f606`.
+The incoming waveform snapshot records **29 actual workers dispatched and 26
+accepted**. Follow its live ledger for later progress; its workers remain
+separate from the completed **60 reference-refinement assignments**.
 
-The waveform owner next completes independent lifecycle/all-sixteen-rate-pair,
-signed-input/receiver/scene symmetry, calibrated allocation/deallocation and CLI
-acceptance under the [renderer contract](ROTARY_RENDERER_CONTRACT.md) and
-[frozen acceptance specification](ROTARY_WAVEFORM_ACCEPTANCE.md). The offline
-[developer tool](ROTARY_RENDER_CLI.md) already exists; validate its real command,
-profile/input/output/refusal paths and retained examples rather than planning
-its implementation again. Finish the remaining authorized waves using actual
-assignments and substantive acceptance; this session is not yet complete.
+The original four-rate/24-partition waveform experiment already passed with
+22,806,000 native frames and 38,010,000 exact alternate sample comparisons in its
+[source-bound receipt](development/2026-11-14-waveform-continuation/reports/full-waveform/qualification.json).
+The final `fd2f606` hosted full-waveform job separately passes in **513.538 seconds**,
+with mode `full`, no failures and **14/14** report-admission checks. The local
+**166/166**, final **967-Markdown**, expected-head publication and **13/13 hosted**
+gates are complete, including the exact Linux strict sixty-record output.
+Do not repeat this completed reference-refinement closure to recover context.
 
-Root's incoming-source all-target build has passed in 18.733 seconds and the
-eight-view [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
-now captures exact `487064d2` with 117 qualified inputs and executable
+The admitted [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
+retains its actual **`487064d2` capture source**, 117 qualified inputs and executable
 `0b2fe36e1ff9a76e12bbd0bf97e633a424fcfd67cd78b9987e0b1b75e8e6f040`.
-Complete its independent admission and the fresh full integrated suite; keep
-observed incoming hosted platform failures open until their repairs qualify.
-The retained v4 views still qualify only `0881d1f4`.
-Keep the original 160/161 suite, separate 2/2 replay repair, 3/3 combined gates
-and numerical source-bound results distinct. Preserve both paint slices, all
-47 sound parameters, state4/readers 1–3, note ownership and dry Engine sound.
-
-Reference refinement has **60 accepted actual assignments and a strict record
-pass** in its separate manifest. Its closing records are protected and being
-integrated with this remote advance; they are not an unimplemented earlier
-scope or extra waveform workers. Inspect each subsequent remote advance before
-publication and preserve its exact source/evidence. R5/R6, scanner G5, complete
-M5/M6 models, physical acquisition and literal visual equality remain separate.
+The [capture receipt](development/2026-11-14-reference-refinement/reports/root-integration487064-final-native-gallery.json)
+and [A60 independent admission](development/2026-11-14-reference-refinement/reports/A60-integration-gallery-admission.json)
+pass for all eight original PNGs. These are not new `fd2f606` captures.
+The [original 487064 hosted failures](development/2026-11-14-reference-refinement/reports/root-integration487064-original-hosted.json),
+160/161 suite, separate 2/2 replay repair, 3/3 combined gates and numerical
+source-bound results remain unchanged historical observations.
 
 ## Current reference-refinement closure and shared continuation
 
-Resume the [current handoff](REFERENCE_REFINEMENT_HANDOFF.md),
-[live checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md),
+The [current handoff](REFERENCE_REFINEMENT_HANDOFF.md),
+[completed checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md),
 [actual manifest](development/2026-11-14-reference-refinement/assignments.json)
-and [concurrent ownership record](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md).
-The earlier accepted measured header is published at
-`0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
-`f8144b771cda1264a8788f8297f5bfec999f4a08`. A46's v4 capture, A50's **611-check**
-admission and A49's single full **157/157** run are complete. A51 supplies a
-bounded retained OS-input/source review. **All sixty actual assignments are
-accepted**, and root's [strict completion result](development/2026-11-14-reference-refinement/completion-check.json)
-passes all ten waves with zero errors. [A56's completed primary audit](reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md)
-qualifies all twelve `0881d1f4` jobs: core **138/138 each**, native Release
-**41/41 each**, native sanitizer **16/16**, VST3 **8/7/7** and SDK **47/47**
-on every platform. All five native jobs report **1,071 material checks**;
-the core quarantine-only leak exception remains explicit. Remaining work is
-concrete:
+and [concurrent ownership record](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
+retain the sixty accepted results and exact ownership. The
+[strict completion result](development/2026-11-14-reference-refinement/completion-check.json)
+passes all ten waves with zero errors; the final hosted Linux output matches it.
+The [closure record](REFERENCE_REFINEMENT_CLOSURE.md) links completed local,
+publication, integrity and hosted evidence. Later record-only edits retain their
+own affected documentation checks and do not become a new product build or capture.
 
-1. **Qualify the integrated source and publish the preserved closing records.**
-   The fresh all-target build has passed. Root next verifies the actual merged
-   `487064d2` product/workflow inputs with the full coherent suite and any
-   affected acceptance required by further repairs, then checks final
-   documentation and retained records. The older A49/A56
-   passes do not qualify this incoming renderer, CLI or paint. Retain the new
-   source-specific results and [closure-verification receipt](development/2026-11-14-reference-refinement/reports/root-closure-verification.json).
-   The strict result qualifies the accepted notes/manifest; it does not
-   substitute for integrated-source execution, documentation integrity or
-   actual final-head CI.
-   A49's product inputs matched `0881d1f4`; its 2,625-file freeze ended before
-   later notes and documentation were added. Record the new documentation
-   identity and avoid inferring its verification from that earlier snapshot.
-   Inspect the owned diff, fetch and reconcile remote advances, publish with a
-   fresh expected head and `force=false`, then fetch and verify commit/tree/
-   parent. Observe the **actual final publication's CI**, preserving failures,
-   cancellations and nonexecution. Verify A55's new strict Linux step and its
-   retained JSON in that actual final run; it was not present at 0881. Preserve
-   26ff's earlier primary audit, original Windows 135/136, f9c cancellations,
-   154/155 plus affected 1/1 and local LSan EPERM. Earlier-head success cannot
-   close a later-head gate.
-2. **Complete admission of the fresh combined native gallery.** Incoming `487064d2` already
-   preserves both the accepted `0881d1f4` header and the waveform owner's
-   drawbar/key-front changes. Root's [v5 capture receipt](development/2026-11-14-reference-refinement/reports/root-integration487064-final-native-gallery.json)
-   retains all eight original PNGs, source/binary identities, typed endpoint
-   checks and direct visual review. README uses those actual v5 images;
-   independent A60 admission remains underway. The
-   [accepted v4 views](../examples/demos/standalone-interface-preview-v4/README.md)
-   remain immutable historical `0881d1f4` evidence. Compare the fresh application
-   with the original reference and preserve Flat, shared hit/paint geometry,
-   all 24 presets, 147 playing keys and owner release semantics. Further visual
-   work belongs to the waveform owner after coordination. **Literal 1:1
-   reference equality remains unmet.**
-3. **Complete independent R4 acceptance under its separate owner.** The
-   [implemented renderer contract](ROTARY_RENDERER_CONTRACT.md),
+**Historical header evidence:** `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
+`f8144b771cda1264a8788f8297f5bfec999f4a08`, remains the source for A46/v4,
+A50's **611-check** admission and A49's single full **157/157** run. A51 supplies
+a bounded retained OS-input/source review. [A56](reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md)
+qualifies that earlier twelve-job matrix: core **138/138 each**, four native
+Release jobs **41/41 each**, native sanitizer **16/16**, VST3 **8/7/7**, SDK
+**47/47 each** and **1,071 material checks** in all five native jobs. The named
+core quarantine-only leak exception remains explicit. Preserve 26ff's primary
+audit, original Windows 135/136, f9c cancellations, 154/155 plus separate 1/1
+and local LSan EPERM. These historical receipts do not supply the later source's
+qualification; the completed final receipts above do.
+
+The next product tasks belong to the waveform owner and their separately
+qualified continuations:
+
+1. **Complete independent R4 acceptance.** Use the implemented
+   [renderer contract](ROTARY_RENDERER_CONTRACT.md),
    [acceptance specification](ROTARY_WAVEFORM_ACCEPTANCE.md) and
-   [A57 readiness review](reviews/ROTARY_RENDERER_IMPLEMENTATION_READINESS.md)
-   retain trajectory binding, borrows ending before mutation, representation-safe
-   storage/metadata restoration and explicit per-call flush ownership. Confirm
-   those requirements against the implemented code and remaining independent
-   lifecycle/symmetry/allocation/CLI tests. The full same-cubic experiment is
-   already complete; its finite source-bound result does not close those gates.
-   Preserve `D+6` capacity (maximum 12,806), an 8,192-entry per-write journal,
-   `max(D)+4` flush and all sixteen ordered stopped rate pairs. Dense changes
+   [A57 readiness review](reviews/ROTARY_RENDERER_IMPLEMENTATION_READINESS.md).
+   Verify lifecycle/all sixteen ordered stopped-rate pairs, signed-input and
+   receiver/scene symmetries, calibrated allocation/deallocation and independent
+   [CLI acceptance](ROTARY_RENDER_CLI.md), including real command, profile,
+   input/output/refusal paths and retained examples. Check trajectory binding,
+   borrows ending before mutation, representation-safe storage/metadata rollback
+   and explicit per-call flush ownership. Preserve `D+6` capacity (maximum
+   12,806), the 8,192-entry per-write journal and `max(D)+4` flush. Dense changes
    to both rotors every frame require calls of at most 512 frames under the
-   1,024-event cap; separately exercise legal 4,096-frame calls and repeated
-   wraps, full flush and epoch overflow. R5 reconstruction/filter/alias policy,
-   R6 runtime/Engine integration and physical cabinet fidelity need their own
-   evidence. The independent renderer is not connected to playable Engine audio.
-4. **Execute the missing actual display/device journey when its inputs exist.**
+   1,024-event cap; separately exercise legal 4,096-frame calls, repeated wraps,
+   complete flush and epoch overflow. The completed full numerical experiment
+   does not replace these independent gates. R5 audible policy, R6 live
+   integration/deadlines and physical cabinet fidelity remain separate.
+2. **Continue measured UI refinement from the admitted v5 application.** The
+   accepted header and waveform drawbar/key-front paint are already integrated.
+   Compare the actual application with the [original reference](design/atlas-cover-reference.jpg),
+   prioritize small-label readability and remaining material/composition gaps,
+   and preserve Flat, shared hit/paint geometry, all 24 presets, 147 playing
+   keys and release ownership. Coordinate overlapping paint files with the
+   waveform owner. A further visual change needs a fresh actual capture,
+   source/executable/pixel identities and independent comparison before README
+   promotion. Preserve all v1–v5 evidence. **Literal 1:1 equality remains unmet.**
+3. **Execute the missing actual display/device journey when its inputs exist.**
    [A51's sequence](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md#concrete-next-actual-displaydevice-journey)
-   requires identified source/executable and hardware, painted pre-held
-   keyboard/pointer frames through both directions of navigation/resize,
-   pointer-held pedal resize, outside release/reentry/fresh press, deliberate
-   focus loss, per-step lossless frames and an actual exit/status receipt.
-   Existing dummy v4 endpoints, pending harness and old X11 observations retain
-   their own scopes. Devices, DAWs, accessibility and audio deadlines require
-   separately observed results.
+   requires identified source/executable and hardware, painted pre-held keyboard
+   and pointer frames in both navigation/resize directions, pointer-held pedal
+   resize, outside release/reentry/fresh press, deliberate focus loss, per-step
+   lossless frames and an actual exit/status receipt. Dummy v4/v5 endpoints,
+   the pending harness and older X11 observations retain their separate scopes.
+   Devices, DAWs, accessibility and audio deadlines need observed results.
 
-From this repository root, after coordinated ownership of `../build-native`
-and after the actual integrated product has been qualified and all final records
-are present, these commands cover only root's affected documentation/accounting
-gates:
-
-```sh
-../build-tools/cmake/data/bin/ctest --test-dir ../build-native -C Release \
-  --output-on-failure --no-tests=error -R '^python_test_repository_integrity$'
-python3 tools/check_refinement_session.py --repo . --json
-```
-
-The actual strict result now passes the sixty accepted records. Revalidate
-after changing any counted note, manifest or checker input. Its regression
-suite and `--in-progress` mode do not substitute for that completed result;
-the checker does not authenticate dispatch or certify product fidelity.
 Preserve **47 parameters**, `B3CONTROLS4`, readers 1–3, 91 free-running sources,
 musical ownership and dry Engine sound. Resolve scanner **G5 same-hertz failure**
 before scanner integration, and retain revision-specific AO-28/Leslie electrical
-and real-capture dependencies under the [whole M0–M9 plan](PLAN.md).
+and real-capture dependencies under the [whole M0–M9 plan](PLAN.md). Coordinate
+build-tree ownership and verify the affected inputs when new product work changes
+them. Completed worker accounting stays closed unless its counted records change.
 
 ## Historical interface continuation next steps
 

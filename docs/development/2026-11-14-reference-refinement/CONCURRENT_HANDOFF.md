@@ -1,5 +1,13 @@
 # Concurrent development handoff
 
+**Closing source is published and qualified:** `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`,
+tree `89c0fb214b018ca43ec9c8b413d3030284a54ec2`. The
+[publication receipt](reports/root-closing-publication.json) and
+[13-job primary hosted result](reports/root-final-hosted.json)
+record actual success, including the strict 60-record Linux gate. The full local
+run passed 166/166. Resume remaining product work; do not repeat this completed
+60-agent closure or promote old source-specific evidence to a later implementation.
+
 **Combined-source continuation:** the [completion and integration record](../../REFERENCE_REFINEMENT_CLOSURE.md)
 records all 60 accepted agents, the integrated `487064d` R4/material source,
 the fresh v5 native gallery and its separate qualification. Source-specific
@@ -22,6 +30,15 @@ readers 1–3, nominal dry Engine, musical ownership, original failures and exac
 source identities. Read the complete [M0–M9 plan](../../PLAN.md) before choosing
 dependency-ready work. Scanner G5, R4 discrete parity, R5 audible policy, R6
 runtime/Engine integration and physical cabinet fidelity remain separate gates.
+
+## Current shared continuation
+
+The accepted header and the other owner's published R4/native-material source
+are integrated. V5 remains bound to the exact combined application inputs;
+its source/executable identity is unchanged by the two test-only portability
+repairs. The final matrix passed at the closing source above. The separate
+waveform owner continues its remaining acceptance and publishes its own actual
+worker outcomes. Preserve both manifests and the completed refinement ledger.
 
 ## Preserved measured-header integration
 

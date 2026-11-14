@@ -1,5 +1,13 @@
 # Completed reference-refinement checkpoint
 
+**Closing source is published and qualified:** `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`,
+tree `89c0fb214b018ca43ec9c8b413d3030284a54ec2`. The
+[publication receipt](reports/root-closing-publication.json) and
+[13-job primary hosted result](reports/root-final-hosted.json)
+record actual success, including the strict 60-record Linux gate. The full local
+run passed 166/166. Resume remaining product work; do not repeat this completed
+60-agent closure or promote old source-specific evidence to a later implementation.
+
 **Combined-source continuation:** the [completion and integration record](../../REFERENCE_REFINEMENT_CLOSURE.md)
 records all 60 accepted agents, the integrated `487064d` R4/material source,
 the fresh v5 native gallery and its separate qualification. Source-specific
@@ -72,7 +80,7 @@ earlier 154/155 plus affected 1/1 repair, Windows 135/136 failure, apt stall and
 f9c cancellations. Their reports retain exact sources; later passes do not
 rewrite them. V1–v4 galleries and accepted assignment notes are immutable.
 
-## Final records and publication boundary
+## Completed final records and publication boundary
 
 The [root closure receipt](reports/root-closure-verification.json) records the
 actual strict result, affected final repository-integrity outcome and exact
@@ -82,10 +90,10 @@ preflight findings and the current-navigation corrections addressed at closure.
 The new Linux Release step requires the strict current-session checker and
 retains its JSON alongside the historical interface gate.
 
-Publish accepted staged bytes with a freshly observed expected remote head and
-`force=false`; fetch and verify commit/tree/parent, preserving concurrent work.
-Qualify the closing revision's actual CI separately from the earlier product
-matrix. The enclosing Git revision and workflow results identify publication;
+Root published accepted staged bytes with a freshly observed expected remote
+head and `force=false`, fetched and verified the commit/tree/parent chain, and
+preserved concurrent work. The closing revision's actual 13-job CI is qualified
+separately from the earlier product matrix. The enclosing Git revision and workflow results identify publication;
 no earlier pass or API request substitutes for observing them. The user's
 standing authorization covers this completion/publication workflow.
 

@@ -1,5 +1,13 @@
 # Standing instructions for every development agent
 
+**Closing source is published and qualified:** `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`,
+tree `89c0fb214b018ca43ec9c8b413d3030284a54ec2`. The
+[publication receipt](docs/development/2026-11-14-reference-refinement/reports/root-closing-publication.json) and
+[13-job primary hosted result](docs/development/2026-11-14-reference-refinement/reports/root-final-hosted.json)
+record actual success, including the strict 60-record Linux gate. The full local
+run passed 166/166. Resume remaining product work; do not repeat this completed
+60-agent closure or promote old source-specific evidence to a later implementation.
+
 **Combined-source continuation:** the [completion and integration record](docs/REFERENCE_REFINEMENT_CLOSURE.md)
 records all 60 accepted agents, the integrated `487064d` R4/material source,
 the fresh v5 native gallery and its separate qualification. Source-specific

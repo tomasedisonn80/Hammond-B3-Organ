@@ -1,0 +1,79 @@
+{
+  "schema": "reference-refinement-closing-publication-v1",
+  "observed_at_utc": "2026-11-14 23:41:31 UTC",
+  "publication": {
+    "sha": "fd2f6060b1f03b6d902ff0547441c07d6e74ba4f",
+    "tree": "89c0fb214b018ca43ec9c8b413d3030284a54ec2",
+    "parent": "0ed3ee4e5d5bcfffaf9b0633f212c45f553b5156",
+    "previous": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+    "tested_tree": "ef49240585d5b2a88fd6788496151917e2b2491a",
+    "paths": 253,
+    "bytes": 15319989
+  },
+  "ref_update": {
+    "expected_previous": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+    "force": false,
+    "success": true
+  },
+  "independent_fetch": {
+    "command": "git fetch --depth=4 origin main",
+    "observed_remote_main": "fd2f6060b1f03b6d902ff0547441c07d6e74ba4f",
+    "observed_local_head_after_update": "fd2f6060b1f03b6d902ff0547441c07d6e74ba4f",
+    "observed_tree": "89c0fb214b018ca43ec9c8b413d3030284a54ec2",
+    "observed_parent": "0ed3ee4e5d5bcfffaf9b0633f212c45f553b5156",
+    "observed_tested_parent_tree": "ef49240585d5b2a88fd6788496151917e2b2491a",
+    "observed_tested_parent_parent": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+    "staged_tree_equal_published": true,
+    "worktree_clean_at_verification": true
+  },
+  "qualification": {
+    "completed_agents": 60,
+    "waves": 10,
+    "strict_report_sha256": "a83d3fe69a8426dd01e4dc2f0efaa606a56ff9146b77372b1bd9af1116c36f1e",
+    "manifest_sha256": "bd56eae6857e7de74899f1810c740bb02a1f4db326ca44dcd1277d6d205ce610",
+    "full_local": {
+      "passed": 166,
+      "total": 166,
+      "ctest_seconds": 149.69,
+      "report": "integration487064-coherent-result.json",
+      "frozen_tree": "ef49240585d5b2a88fd6788496151917e2b2491a"
+    },
+    "affected_final_documentation": {
+      "passed": 1,
+      "total": 1,
+      "markdown_files": 967,
+      "report": "root-integration487064-final-documentation.json"
+    }
+  },
+  "hosted": {
+    "status": "in_progress_at_this_publication_receipt",
+    "source": "fd2f6060b1f03b6d902ff0547441c07d6e74ba4f",
+    "expected_jobs": 13,
+    "runs": [
+      {
+        "id": 43654334888,
+        "name": "CI"
+      },
+      {
+        "id": 43654334873,
+        "name": "Native standalone"
+      },
+      {
+        "id": 43654334846,
+        "name": "Native VST3"
+      }
+    ],
+    "result_owner": "A60 follow-up; root-final-hosted.json will retain separately observed outcomes."
+  },
+  "boundaries": [
+    "The retained strict checker proves record consistency, not product or physical fidelity.",
+    "The original 487064 hosted failures remain preserved; this publication alone does not prove their repair in hosted execution.",
+    "V5 images qualify named487064 application source; the two closing code changes are test-only.",
+    "Literal 1:1 visual equality, physical-device/DAW/accessibility/deadline qualification and complete connected organ/cabinet models remain open."
+  ],
+  "storage_observation": {
+    "filesystem": "/workspace",
+    "available": "58 GiB",
+    "used_percent": 4
+  }
+}

@@ -1,5 +1,31 @@
 # Development log
 
+## 2026-11-14 — Publish completed refinement and observe all thirteen hosted passes
+
+The closing source `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`, tree
+`89c0fb214b018ca43ec9c8b413d3030284a54ec2`, is published and independently
+fetched. Its parent `0ed3ee4e` preserves the exact locally tested tree
+`ef49240585d5b2a88fd6788496151917e2b2491a`; concurrent `487064d` remains in
+ancestry. The [publication receipt](development/2026-11-14-reference-refinement/reports/root-closing-publication.json)
+records the expected-head/non-force update and clean verified checkout.
+
+All **13 hosted jobs pass** at that exact closing source. Core Release on
+Linux/macOS/Windows and core sanitizers pass 146/146 each; four native Release
+configurations pass 42/42; required native sanitizers pass 16/16; VST3 passes
+8/7/7 with 47/47 SDK checks each. The full R4 waveform experiment reports
+full-mode pass with no failures in 513.538 seconds. Linux's actual strict
+completion output equals the committed 60-record result. Original 487064
+platform failures remain retained beside these repaired executions.
+The [primary hosted audit](development/2026-11-14-reference-refinement/reports/root-final-hosted.json)
+retains source identities, warnings and the named quarantine-only leak exception.
+
+The final follow-up contains documentation and verification receipts only,
+with an affected Markdown gate and a `[skip ci]` commit to avoid repeating
+unchanged product experiments. The [current closure](REFERENCE_REFINEMENT_CLOSURE.md)
+names the remaining separate waveform, UI-fidelity and physical/product work.
+The 60-agent ledger stays closed; all future agents follow the standing recovery,
+verification, documentation and publication workflow in AGENTS.
+
 ## 2026-11-14 — Integrate concurrent waveform source and complete local closure
 
 The expected-head publication check caught concurrent `487064d`, direct child

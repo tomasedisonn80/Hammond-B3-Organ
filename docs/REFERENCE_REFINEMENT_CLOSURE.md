@@ -1,5 +1,17 @@
 # Reference-refinement completion and combined-source integration
 
+**Published and verified:** `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`, tree
+`89c0fb214b018ca43ec9c8b413d3030284a54ec2`. All **13 hosted jobs pass** at this
+exact source, alongside the completed 60-agent ledger and 166/166 local run.
+[Publication receipt](development/2026-11-14-reference-refinement/reports/root-closing-publication.json) ·
+[Primary hosted evidence](development/2026-11-14-reference-refinement/reports/root-final-hosted.json) ·
+[Published-byte audit](development/2026-11-14-reference-refinement/reports/A59-final-published-integrity.json).
+The enclosing final receipt commit changes documentation/evidence only; it
+preserves this qualified product, test and workflow source. Its `[skip ci]`
+message avoids repeating the expensive full experiment for record-only changes.
+The [final record verification](development/2026-11-14-reference-refinement/reports/root-final-record-verification.json)
+records the affected documentation check and the unchanged product boundary.
+
 ## Completed request and current source
 
 The reference-refinement session completed **60 actual distinct accepted agents
@@ -90,9 +102,27 @@ This configuration is GCC Release with standalone enabled and MIDI/VST3/sanitize
 disabled; it is distinct from the MIDI-enabled v5 capture binary. Both repaired
 fixtures pass in this coherent run. No expensive full-waveform experiment was
 rerun locally. Later record-only edits require the affected documentation check.
-Final publication and hosted observations remain separately recorded gates. The repository's current CI requires the
-completed reference-refinement checker on Linux and retains its output. An API
-request, configured workflow or old green matrix is not a new execution result.
+The [final primary hosted audit](development/2026-11-14-reference-refinement/reports/root-final-hosted.json)
+records all 13 jobs passing at `fd2f6060`, with no requested reruns or
+cancellations. The final matrix is:
+
+| Executed qualification | Observed result |
+| --- | --- |
+| Core Release: Linux, macOS, Windows | 146/146 each |
+| Core ASan/UBSan/leak configuration | 146/146; the named pre-existing MIDI quarantine-only leak exception remains explicit |
+| Native Release: Linux MIDI ON/OFF, macOS and Windows MIDI ON | 42/42 each |
+| Required native ASan/UBSan/leak gate | 16/16 |
+| VST3: Linux, macOS, Windows | 8/8, 7/7, 7/7; SDK validator 47/47 on every platform |
+| Complete R4 waveform job | Full mode passed, no failures, 513.538 seconds; strict report-admission self-tests 14/14 |
+| Actual Linux strict completion step | 60 accepted/distinct agents/verified notes; zero errors; decoded output exactly equals the committed strict result |
+
+The repaired macOS/Windows waveform admissions and macOS native build/material
+fixture passed on the actual hosted platforms. These observations resolve the
+named first-matrix failures at this revision; they do not rewrite those failures.
+All five native material fixtures also report 1,071 checks and zero failures.
+Runtime warnings and the named sanitizer exception remain in the primary audit;
+this is not a warning-free or exception-free claim. The new Linux strict step
+ran, rather than merely being configured.
 
 ## Rotary implementation and next phase
 

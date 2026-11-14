@@ -1,10 +1,17 @@
 # Development status
 
-**Completed development pass:** all 60 reference-refinement agents are accepted.
-The combined `487064d` source plus two reviewed portability-test repairs passes
-[166/166 local tests](development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json).
-The [closure record](REFERENCE_REFINEMENT_CLOSURE.md) owns the current
-v5 gallery, source boundaries, publication and remaining platform/product gates.
+**Completed and published:** all 60 reference-refinement agents are accepted.
+Source [`fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/fd2f6060b1f03b6d902ff0547441c07d6e74ba4f),
+tree `89c0fb214b018ca43ec9c8b413d3030284a54ec2`, passes
+[166/166 local tests](development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json)
+and [all 13 hosted jobs](development/2026-11-14-reference-refinement/reports/root-final-hosted.json).
+The [publication receipt](development/2026-11-14-reference-refinement/reports/root-closing-publication.json)
+records the verified remote commit/tree and passed 967-Markdown gate;
+[A59's published integrity audit](development/2026-11-14-reference-refinement/reports/A59-final-published-integrity.json)
+preserves the accepted records and source identities. The
+[closure record](REFERENCE_REFINEMENT_CLOSURE.md) owns the complete qualification
+and remaining product gates. The current v5 images retain their actual `487064d2`
+capture source; they are not a new capture at `fd2f606`.
 
 ## Current waveform rendering and native design continuation
 
@@ -12,12 +19,16 @@ The [waveform session](development/2026-11-14-waveform-continuation/README.md)
 starts at `2e161dc`. Its published incoming source is
 `487064d2400b9f39d0ee66ed136a09c9e372379e`, tree
 `ae75093a76ff19c2e7f9189a92cf2faa63f4d8b6`, a direct child of `0881d1f4`.
-The combined checkout retains this source and the protected reference-refinement
-closing records. Root's fresh all-target build passed in **18.733 seconds**;
-the full combined-source CTest run remains pending. Incoming hosted CI retains
-observed platform failures and requires separately verified repairs.
-Use the [combined-source closure](REFERENCE_REFINEMENT_CLOSURE.md) for later
-verification, capture admission and platform/publication outcomes.
+The final combined source is published at `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`
+with both sessions' records and the two reviewed portability-test repairs.
+The incoming-source all-target build passed in **18.733 seconds**; the later
+coherent local suite passed **166/166 in 149.69 seconds**. The original
+[487064 hosted result](development/2026-11-14-reference-refinement/reports/root-integration487064-original-hosted.json)
+retains its 10/13 outcome and three platform failures. Their repaired gates
+and all thirteen final jobs pass in the
+[fd2f606 primary audit](development/2026-11-14-reference-refinement/reports/root-final-hosted.json).
+Use the [combined-source closure](REFERENCE_REFINEMENT_CLOSURE.md) for completed
+verification, capture admission, publication and remaining product gates.
 Six complete readings cover all 500 atlas pages. Its
 [actual manifest](development/2026-11-14-waveform-continuation/assignments.json)
 at this incoming checkpoint records **29 dispatched workers, 26 accepted**:
@@ -61,12 +72,12 @@ at exact `487064d2`, tree `ae75093a76ff19c2e7f9189a92cf2faa63f4d8b6`, with
 `0b2fe36e1ff9a76e12bbd0bf97e633a424fcfd67cd78b9987e0b1b75e8e6f040`.
 The [capture receipt](development/2026-11-14-reference-refinement/reports/root-integration487064-final-native-gallery.json)
 passes its endpoint/payload/decoded-PNG checks and records root's direct review
-of every image; independent A60 v5 admission is underway. The dummy-SDL gallery
+of every image; [A60's independent v5 admission](development/2026-11-14-reference-refinement/reports/A60-integration-gallery-admission.json) also passes. The dummy-SDL gallery
 contains 41 files / 2,946,785 bytes. The accepted v4 gallery remains historical
 `0881d1f4` evidence with A50's separate 611-check result. All original captures
 remain unchanged. **Literal 1:1 reference fidelity is not established.**
 
-The first integrated build passes; its full CTest run records **160/161**.
+The historical first integrated build passes; its original full CTest run records **160/161**.
 An initial Play dwell failure is retained with the exact diagnostics. A test-only
 600ms dwell adjustment preserves all 132 assertion ASTs and the nine-second
 process deadline. The targeted recheck passes **2/2**, including thirty native
@@ -84,8 +95,9 @@ records exact paths, current commands, concurrent-source ownership and publicati
 ## Current reference refinement and nominal propagation qualification
 
 The [reference-refinement session](development/2026-11-14-reference-refinement/README.md)
-continues alongside the separately owned waveform session above. Its published
-earlier accepted header/checker/R4-review source is
+is complete; the separately owned waveform session above continues product work.
+The following `0881d1f4`/v4/A49/A50/A56 results are historical, source-specific
+evidence. Its earlier accepted header/checker/R4-review source is
 `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
 `f8144b771cda1264a8788f8297f5bfec999f4a08`; the
 [publication receipt](development/2026-11-14-reference-refinement/reports/root-header-publication.json)
@@ -95,9 +107,15 @@ now records **all 60 actual assignments accepted in ten waves of six**. Root's
 [strict completion result](development/2026-11-14-reference-refinement/completion-check.json)
 passes with zero errors; it verifies retained record consistency, not dispatch,
 product readiness or physical fidelity. Neither session counts the other's
-workers. Final documentation integrity, closing publication and final-head CI
-remain root-owned steps recorded in the
-[closure-verification receipt](development/2026-11-14-reference-refinement/reports/root-closure-verification.json).
+workers. Final combined-source documentation integrity passed at **967 Markdown
+files**, publication is verified, and all thirteen hosted jobs passed at
+`fd2f606`. The Linux strict output exactly matches the committed completion JSON.
+The [final documentation receipt](development/2026-11-14-reference-refinement/reports/root-integration487064-final-documentation.json),
+[publication receipt](development/2026-11-14-reference-refinement/reports/root-closing-publication.json)
+and [primary hosted result](development/2026-11-14-reference-refinement/reports/root-final-hosted.json)
+record these completed gates; the preceding
+[closure-verification receipt](development/2026-11-14-reference-refinement/reports/root-closure-verification.json)
+retains its earlier source and Markdown scope.
 
 The reference-led native layout retains full 144.12-pixel-deep manuals at
 1672×941, disjoint sidebar pedals, refined live materials, singular inspection,
@@ -119,9 +137,9 @@ and one complete **157/157 CTest run in 146.97 seconds**, with no rerun.
 All **2,625 repository files**, including **912 Markdown files**, were frozen
 through build/test snapshots; all **368 product/test/build-source files**
 matched published `0881d1f4`, and all **1,758 SDL2 files** stayed unchanged.
-The tested documentation included accepted unpublished work. Later records,
-including this update, require the final affected repository-integrity check;
-they do not inherit A49's frozen Markdown identity. This MIDI-OFF/VST3-OFF
+The tested documentation included then-unpublished accepted work. Later records
+do not inherit A49's frozen Markdown identity; the final 967-Markdown gate has
+its own receipt above. This MIDI-OFF/VST3-OFF
 Release run is distinct from the v4 MIDI-enabled desktop executable.
 
 [A56's completed primary hosted audit](reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md)
@@ -135,9 +153,13 @@ retain leak checking and instrumentation. The core
 `test_standalone_midi_backend_quarantine` alone keeps its explicit leak-detection
 exception. [A43/A44's preceding 26ff audit](reviews/REFERENCE_REFINEMENT_HOSTED.md)
 remains a separate pre-header result with 137 core/901 material checks.
-A56 does not qualify incoming `487064d2`, the later documentation/workflow
-candidate or execute
-A55's new strict sixty-record CI step; root must verify the final publication.
+A56 does not qualify later source or execute A55's strict sixty-record CI step.
+Those gates have separate final `fd2f606` evidence: core **146/146 each**, four
+native Release jobs **42/42 each**, native sanitizer **16/16**, VST3 **8/7/7**
+and SDK **47/47 each**, with the same named core quarantine leak exception.
+The thirteenth, full-waveform job records mode `full`, status `pass`, an empty
+failure list and **513.538 seconds**; report admission passes **14/14**. The
+Linux strict step matches the committed sixty-record completion result exactly.
 The historical **154/155 plus separate affected 1/1**, original `2e161dc`
 Windows **135/136**, f9c cancellations, apt stall and A27 local LSan
 thread-attachment EPERM failure remain attributable and unchanged.
@@ -165,8 +187,9 @@ remain open. The dry Engine, **47 parameters**, `B3CONTROLS4`, readers 1–3,
 91 shared sources and musical ownership remain unchanged. **Literal 1:1
 reference equality remains unmet.** Use the [current setup/handoff](REFERENCE_REFINEMENT_HANDOFF.md),
 [concurrent ownership](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
-and [whole M0–M9 plan](PLAN.md) to resume; integrate the accepted header before
-overlapping visual work.
+and [whole M0–M9 plan](PLAN.md) to resume the waveform owner's remaining
+independent R4 acceptance and measured UI work. The accepted header and material
+changes are already integrated; preserve both and the admitted v5 source boundary.
 
 ## Historical interface continuation through a517203
 

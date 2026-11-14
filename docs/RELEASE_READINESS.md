@@ -5,7 +5,26 @@ records all 60 accepted agents, the integrated `487064d` R4/material source,
 the fresh v5 native gallery and its separate qualification. Source-specific
 `0881d1f4`/v4 results below remain historical evidence for those exact inputs.
 
-## Current assessment — 2026-11-14
+## Current combined-source qualification — `fd2f6060`
+
+The [published closure](REFERENCE_REFINEMENT_CLOSURE.md) records **all 13 hosted
+jobs passing** at `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`, tree
+`89c0fb214b018ca43ec9c8b413d3030284a54ec2`. Core Release on three platforms and
+core sanitizers pass 146/146 each; four native Release configurations pass
+42/42; the required native sanitizer gate passes 16/16; VST3 passes 8/7/7 with
+47/47 SDK checks each. The full R4 waveform job and actual strict 60-record Linux
+step pass. The [primary audit](development/2026-11-14-reference-refinement/reports/root-final-hosted.json)
+retains exact source, original failures, warnings and the pre-existing named
+core quarantine-only leak exception.
+
+The combined local run passes 166/166 once, and current actual UI images are the
+[source-bound v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md).
+The final follow-up changes records only; it does not relabel earlier tests as
+new execution. R4's remaining independent acceptance, R5/R6, scanner G5,
+physical acquisition, devices/DAWs/accessibility/deadlines and signed release
+remain separate. **Literal 1:1 reference equality remains unmet.**
+
+## Preserved header-source assessment — 2026-11-14
 
 The repository supports a **nominal dry organ** through offline tools, an optional
 native standalone instrument and an optional VST3 adapter. The current interface
