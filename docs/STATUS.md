@@ -2,69 +2,92 @@
 
 ## Current native interface continuation
 
-The [current handoff](INTERFACE_HANDOFF.md) contains the complete M0–M9 map,
-portable setup, exact evidence and remaining gates. Six fresh readers covered
-[all 500 atlas pages](research/INTERFACE_ATLAS_REVIEW.md). The
-[actual manifest](development/2026-11-14-interface-continuation/assignments.json)
-currently records 58 dispatched workers, 55 accepted, toward the requested sixty
-in ten logical waves. A56 publication review, A57 desktop setup and A58 hosted
-closure are active; the final accounting and handoff assignments follow.
+The [current recovery handoff](INTERFACE_RECOVERY_HANDOFF.md) contains setup,
+source identities, the whole M0–M9 plan and concrete next gates. Six actual
+readers covered [all 500 atlas pages](research/INTERFACE_ATLAS_REVIEW.md).
+The [manifest](development/2026-11-14-interface-continuation/assignments.json)
+now records **60 actual assignments accepted in ten logical waves of six**.
+Accepted work can establish a partial result or a concrete blocker; it does not
+declare every product, visual or physical gate complete. The final receipts for
+A56, A57 and A59 are explicitly new root-authored recovery notes from their
+completed reports, not reconstructed original artifact bytes.
 
-The implemented [M9 interface slice](INTERFACE_CONTINUATION_SCOPE.md) supplies
+The implemented [M9 slice](INTERFACE_CONTINUATION_SCOPE.md) supplies
 Play/Rotary/Service, transient Flat presentation, shared perspective paint/hit
 geometry, per-workspace focus and bounded copied-state inspection. Play retains
 68 control records **including** 24 preset keys, 147 playing keys and 71 focus
-stops. The 47 sound parameters, state4/readers1–3, 91-source core and VST3 boundary
-remain unchanged. Current sound is nominal dry and unmeasured.
+stops. The 47 sound parameters, state4/readers 1–3, 91-source core and VST3
+boundary retain their meanings. Current sound is nominal dry and unmeasured;
+scanner, AO-28 and Leslie artwork/inspection does not imply connected models.
 
-Product polish and strict Windows fixture repairs are published at `8673713`,
-with all eleven then-existing hosted jobs successful. The native sanitizer/leak
-workflow and sanitizer-only measured budgets are published at `cdbb2be`, where
-[all twelve jobs succeeded](development/2026-11-14-interface-continuation/reports/root-checkpoint5-hosted.json).
-A58 has independently read job 132455309517's primary log: thirteen selected
-native-interface sanitizer suites pass with leak checking enabled. Its detailed
-report is being prepared. These successes identify their source revision;
-the next fixture/gallery/documentation publication needs its own hosted results.
+The [eight-image native gallery](../examples/demos/standalone-interface-preview-v2/README.md)
+and README show the actual polished product, with 98 matching product inputs
+and an unchanged source-identified executable. Original v1 remains historical.
+Independent geometry, ownership, copied-state and raster acceptance is retained,
+including 288 layouts, 719,289 exactly matched PCM frames through 1,662
+presentation transitions and five scale-repair suites. **Literal 1:1 reference
+equality remains unmet**: full-manual depth, material texture, lighting, bevels
+and composition need further measured work. The Service singular “1 targets”
+copy and an actual pending-state visual capture remain open.
 
-Independent implementation acceptance covers 288 geometry layouts, workspace
-ownership/rollback, all inspection rows, 150 raster frames and 719,289 paired
-PCM frames equal through 1,662 presentation transitions. Scale repairs pass five
-affected raster suites, including 298 full-surface checks across 18.3 million
-pixels. Final title/accidental labels and the Load notice are corrected, with two
-actual final operator journeys passing.
+### Exact source and executed qualification
 
-The [final eight-image gallery](../examples/demos/standalone-interface-preview-v2/README.md)
-and README now show the published polished product, with98 matching product
-inputs and unchanged executable identity. Original v1 remains historical.
-Independent provenance and visual review are accepted. **Literal 1:1 reference
-equality remains unmet**; keyboard depth, materials, lighting and composition
-need further measured refinement. The minor Service “1 targets” copy remains a
-bounded follow-up. Dummy captures do not qualify a desktop, hardware or accessibility.
+The recovery source is [6f69c68ed5bf51d77dba1ae4f75d4bc75d144747](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/6f69c68ed5bf51d77dba1ae4f75d4bc75d144747),
+tree `daa6195fd3cfc4e56dd0d99b46972c68ae3c7e81`. Its seven-file diff changes one
+test fixture, scoped raw-evidence attributes, one corrected CLI option and
+recovery navigation/records. Product, CMake and workflow source did not change
+in that commit. At this exact recovered source, all nine Linux/Windows jobs passed. The three macOS jobs were cancelled without a runner or any executed step; all three workflow runs therefore concluded failure. The cancellation cause is unverified, and the repaired macOS gate remains unexecuted. These results are not an all-platform pass.
+The [primary recovery review](reviews/INTERFACE_HOSTED_RECOVERY.md) preserves
+exact runs/jobs, previous failures and sanitizer scope.
 
-[A49's final serial Release gate](reviews/INTERFACE_FINAL_COHERENT_GATE.md)
-ran147 suites:146 passed, one workspace startup-observation assertion failed,
-zero skipped. The original failure remains intact. A52's
-[fixture-only repair](reviews/INTERFACE_BOUNDED_INPUT.md) measures the original
-nonmusical startup prefix and preserves the full journey, command counts and
-ownership checks. All six workspace methods / 16 native processes pass; seven
-corrupt traces are rejected and one 256-action burst passes. Root's
-[incremental closure](development/2026-11-14-interface-continuation/reports/root-final-incremental-closure.json)
-verifies the only two changed test inputs, unchanged 98 product inputs,
-114 protected files and82 executables. It does not relabel the full gate147/147.
+The earlier `cdbb2be` matrix passed all twelve jobs; the original b1 publication
+retained eleven successes and the macOS workspace 37/38 result. The new repair
+separately acknowledges the unchanged startup and first-note prefixes at seven
+sizes, then checks each full-run sample against its applied command sequence.
+It preserves all seven complete scripts, exact 2 On/2 Off and +4 command delta,
+view and ownership checks, canonical Save bytes and deadlines. The fresh local
+suite passed six methods and thirty processes in 45.058697 seconds; ten corrupt
+historical diagnostics and four corrupt local prefixes were rejected. The
+exact recovered source SHA-256 is
+`0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692`.
+See [A52's recovery note](development/2026-11-14-interface-continuation/session52-bounded-native-recovery.md).
 
-A41's local leak-runtime attach failure and original three sanitizer raster
-timeouts remain historical, with separate successful unchanged direct checks.
-A44's19-file MIDI-on and 15-file MIDI-off packages pass source-absent relocation.
-The latest [guide-only package refresh](development/2026-11-14-interface-continuation/reports/root-final-guide-package-refresh.json)
-changes only INTERFACE_RUNBOOK.md; both binary hashes remain exact. Its initial
-stale-configured-guide refusal is retained separately from the successful
-reconfigure/install. A57 has enabled verified X11 build configuration in a separate tree using
-existing dependencies; actual desktop interaction is still pending.
+[A49's full local gate](reviews/INTERFACE_FINAL_COHERENT_GATE.md) remains
+146 passed / 147 executed, one failed and zero skipped. Its original evidence,
+the earlier separate 16-process repair and the newer 30-process repair are
+distinct observations. The local leak attach failure and three original
+sanitizer timeouts are also retained. A58's primary audit confirms the hosted
+thirteen selected native sanitizer suites with ASan/UBSan and leak detection;
+these are thirteen selected suites, only five of them carrying the native
+CTest label, not all tests in a larger Release configuration.
 
-The [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md)
-owns active leases and publication. No full physical organ, connected scanner/
-AO-28/Leslie, real-device, DAW, native accessibility, deadline or release-rights
-claim follows from this interface work.
+### Desktop, recovery and continuation
+
+[A57's actual X11 work](development/2026-11-14-interface-continuation/session57-desktop-recovery.md)
+resolved the missing backend and opened a focused 1280×900 window with existing
+dependencies and unchanged product inputs. Real click/focus navigation and an
+off-window drag's released endpoint were observed. Held owners through
+navigation/resize, persistent capture and capture return were not qualified.
+No lossless desktop screenshot was retained. Alt+F4 was ineffective; the
+90-second supervisor's SIGTERM produced a clean zero exit and joined cleanup,
+with the supervisor timeout recorded. This remains partial desktop evidence.
+
+The managed workspace became unavailable before the 137-file final local
+candidate was uploaded. Its staged tree was not published. Root recovered
+the exact qualified fixture through GitHub and verified both old and new
+SHA-256 identities; later notes clearly label new recovery authorship.
+[RECOVERY.md](development/2026-11-14-interface-continuation/RECOVERY.md) and its
+[machine record](development/2026-11-14-interface-continuation/reports/root-workspace-recovery.json)
+name the missing raw evidence and safe reconciliation procedure. No current
+clean local-tree or local/remote alignment claim is made. The last observed
+free space was **36.673 GiB**; no out-of-space event was observed.
+
+The completed ledger is checked in strict mode by the Linux Release workflow;
+its log and artifact identify the exact manifest and sixty note hashes.
+This accounting check does not authenticate dispatch or certify product
+readiness. [Next steps](NEXT_STEPS.md) prioritize evidence recovery, the full
+desktop journey and measured reference refinement before separate real-device,
+host, native accessibility, timing and release gates.
 
 ## Historical fixed-registration and preset-key continuation
 

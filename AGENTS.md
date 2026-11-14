@@ -2,13 +2,13 @@
 
 ## Current native interface continuation
 
-Read the [workspace recovery checkpoint](docs/development/2026-11-14-interface-continuation/RECOVERY.md) first. It records the unavailable workspace, exact recovered source, all sixty actual dispatches and safe reconciliation of the old unpublished index. Do not restart completed work or confuse recovered documentation with unretrieved raw evidence.
+Read the [current recovery handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) and [checkpoint](docs/development/2026-11-14-interface-continuation/CHECKPOINT.md) first. All sixty actual assignments in ten waves are accepted, with partial product gates explicitly retained. The exact qualified fixture is published, while final raw local evidence remains unavailable. Preserve the old index if the workspace returns and reconcile it in isolation before updating a local checkout; do not reset it away, recount completed workers, or describe new recovery prose as original artifact bytes. The Linux Release workflow requires the strict session checker and retains its exact JSON report. Inspect the actual job result; record consistency does not prove dispatch or visual/physical fidelity.
 
 The newest [interface session](docs/development/2026-11-14-interface-continuation/README.md)
 starts from published `d493e998`. Its sixty fresh workers in ten waves have their
 own [actual manifest](docs/development/2026-11-14-interface-continuation/assignments.json).
 Read [its scope](docs/INTERFACE_CONTINUATION_SCOPE.md), the current
-[operator/developer handoff](docs/INTERFACE_HANDOFF.md), checkpoint and reviewed
+[operator/developer handoff](docs/INTERFACE_RECOVERY_HANDOFF.md), checkpoint and reviewed
 workspace/geometry/inspection contracts before changing the native UI.
 It owns dependency-ready M9 Play/Rotary/Service presentation, reference-led live
 geometry, truthful copied-state inspection and repairs to observed platform

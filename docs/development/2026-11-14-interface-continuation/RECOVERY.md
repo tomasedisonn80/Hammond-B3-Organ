@@ -1,5 +1,7 @@
 # Workspace interruption and exact-source recovery
 
+**Current records:** all sixty actual assignments are now accepted, with their partial/blocked gates explicit. The [current checkpoint](CHECKPOINT.md), [handoff](../../INTERFACE_RECOVERY_HANDOFF.md) and [source-specific hosted review](../../reviews/INTERFACE_HOSTED_RECOVERY.md) supersede the dated interruption snapshot below. The recovered source at `6f69c68` has nine successful Linux/Windows jobs and three macOS jobs cancelled before runner acquisition or execution; macOS remains unverified. The final-records publication adds the strict Linux session check, whose actual result must be read from its identified CI job. Original unavailable artifacts have not been silently replaced.
+
 The managed workspace became unavailable after the macOS fixture repair passed its local qualification and before the staged commit was uploaded. GitHub access remains available. This recovery publishes the **exact qualified fixture bytes**, verified against SHA-256 `0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692`, plus the independently checked gallery-command correction and evidence-preservation attributes.
 
 The [machine recovery record](reports/root-workspace-recovery.json) preserves the original parent, interrupted staged tree, actual results, missing files and recovery limits. The original 137-file candidate `655b1f17577af95ea2c5cacea9eacfa60088d341` was **not published**. This smaller recovery must not be described as that tree.

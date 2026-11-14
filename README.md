@@ -1,6 +1,6 @@
 # Hammond B-3 Organ
 
-**Current recovery checkpoint:** the workspace became unavailable after the macOS replay repair passed locally. The exact qualified repair is being published through GitHub; [recovery status and next steps](docs/development/2026-11-14-interface-continuation/RECOVERY.md) distinguish completed work, hosted verification and unavailable local evidence.
+**Current checkpoint:** the exact qualified replay repair is published at `6f69c68`. [The current handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) records all sixty actual workers, source-specific verification, the remaining visual/desktop gates and the evidence still unavailable after the workspace interruption.
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The current playable product is a **nominal dry organ** with an offline renderer, an optional VST3 adapter, and a native standalone application.
 
@@ -55,7 +55,7 @@ See the [operating guide](docs/INTERFACE_RUNBOOK.md), [exact input mapping](docs
 
 The [complete atlas review](docs/research/INTERFACE_ATLAS_REVIEW.md) covers all 500 pages in six disjoint readings. The atlas's ten research waves, implementation milestones M0–M9 and each requested sixty-worker development session have separate meanings. The [current manifest](docs/development/2026-11-14-interface-continuation/assignments.json) records actual dispatched workers and accepted evidence; earlier sessions remain historical.
 
-The current M9 slice connects workspace navigation, perspective/Flat rendering and copied-state inspection to the existing instrument. Product polish at `8673713` passes eleven hosted jobs; the native sanitizer/leak addition at `cdbb2be` passes [all twelve jobs](docs/development/2026-11-14-interface-continuation/reports/root-checkpoint5-hosted.json). The final local Release run retains its original146/147 result. The [separately qualified startup-fixture repair](docs/reviews/INTERFACE_BOUNDED_INPUT.md) passes all six workspace methods / 16 native processes and one 256-action burst on unchanged product bytes. The next publication's hosted results remain separate. Use the [current handoff](docs/INTERFACE_HANDOFF.md) for exact setup, evidence and continuation. Physical MIDI/audio, host deadlines, native accessibility, signed distribution and specimen fidelity retain their own gates.
+The current M9 slice connects workspace navigation, perspective/Flat rendering and copied-state inspection to the existing instrument. All **sixty actual assignments in ten waves** are accepted in the current manifest; some acceptances explicitly retain partial or blocked product gates. The [exact-source hosted recovery review](docs/reviews/INTERFACE_HOSTED_RECOVERY.md) records nine successful Linux/Windows jobs and three macOS jobs cancelled before acquiring a runner or executing a step at `6f69c68`; the repaired macOS gate remains unexecuted. Earlier `cdbb2be` passed twelve jobs; the later `b1efcdf` retained eleven successes and a macOS 37/38 failure. The final local full run remains 146/147. The exact fixture repair at `6f69c68` separately passed six workspace methods / thirty local native processes, with seven unchanged full journeys and strict negative checks. Raw evidence from that final local run became unavailable before upload; the [recovery record](docs/development/2026-11-14-interface-continuation/reports/root-workspace-recovery.json) distinguishes that observation from newly retained hosted evidence. Use the [current handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) for setup, the complete plan and next actions. Physical MIDI/audio, hosts, deadlines, native accessibility, signed distribution and specimen fidelity retain their own gates.
 
 | Track | Current boundary and continuation |
 |---|---|
@@ -192,7 +192,8 @@ bundle inventory alone proves plug-in execution or DAW/device readiness.
 | [Project guide](docs/PROJECT_GUIDE.md) | Practical reading order, workflows, evidence boundaries and session ledgers |
 | [Status](docs/STATUS.md) | What is implemented, what passed, and what remains provisional |
 | [Next steps](docs/NEXT_STEPS.md) | Next concrete tasks, dependencies and acceptance evidence |
-| [Standalone handoff](docs/STANDALONE_HANDOFF.md) | Native window setup, controls, replay, chapel audition, benchmark and current qualification |
+| [Current interface handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) | Current source, setup, complete M0–M9 boundaries, sixty-worker accounting, recovery and concrete next actions |
+| [Earlier standalone handoff](docs/STANDALONE_HANDOFF.md) | Historical native window setup, controls, replay, chapel audition, benchmark and named-revision qualification |
 | [Scanner handoff](docs/SCANNER_HANDOFF.md) | Numerical source, executed gates and the unresolved same-hertz integration decision |
 | [Calibration handoff](docs/CALIBRATION_HANDOFF.md) | Complete capture pipeline, verified operations, source identities and next acquisition |
 | [Offline and pedal handoff](docs/PEDAL_HANDOFF.md) | Retained render, evidence, plot, install and pinned VST3 commands |
@@ -220,7 +221,7 @@ bundle inventory alone proves plug-in execution or DAW/device readiness.
 | [Console traces](docs/CONSOLE_TRACE.md) | Sample-by-sample contact, readiness, routing, phase and audio diagnostics |
 | [Trace plots](docs/CONSOLE_TRACE_PLOTS.md) | Bounded standalone SVG views of key motion, contacts, readiness and audio |
 | [Model metadata](docs/MODEL_METADATA.md) | Export the actual compiled nominal factory values and units |
-| [Internal parameters](docs/PARAMETERS.md) | 45 stable internal control identities; earlier 43 records preserved |
+| [Internal parameters](docs/PARAMETERS.md) | 47 current control identities; the first 45 records retain their meanings |
 | [Native parameter bridge](docs/PARAMETER_BRIDGE.md) | Allocation-free conversion of normalized controls into fixed Engine targets |
 | [Note ownership](docs/NOTE_OWNERSHIP.md) | Bounded channel/note-ID ownership and original-route retention |
 | [Manual input transaction](docs/INPUT_PROCESSOR.md) | Retained manual-only ownership facade |

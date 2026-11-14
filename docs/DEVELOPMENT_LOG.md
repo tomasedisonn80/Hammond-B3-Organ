@@ -1,5 +1,77 @@
 # Development log
 
+## 2026-11-14 — Recover the exact repaired source and complete the sixty-worker record
+
+The original publication-6 candidate was published as `b1efcdfc34cde92e07f2f6bcb563fc12701dfc01`,
+tree `815ad7cd46b348607e6a7353c01e4f4b86ec2126`, and independently verified
+by A56. Its twelve hosted jobs completed with eleven successes and one macOS
+standalone failure (37/38). The header-size replay missed a sampled Upper-only
+intermediate state; the full trace later reached both-held and released states.
+The combined synthetic MIDI/UI method itself passed. The primary failed result
+remains visible in [A58's recovery report](development/2026-11-14-interface-continuation/reports/a58-recovery-checkpoint6-primary.json).
+
+A52 used the same worker identity to qualify two unchanged event prefixes per
+header size and an exact applied-command/held-state oracle for the full journey.
+A fresh local suite passed six methods / thirty native processes, preserving
+seven complete scripts, exact counts, ownership, views, Save bytes and deadlines.
+Ten altered historical diagnostics and four altered local prefixes were rejected.
+A60 independently reviewed the thirty outcomes and 112 artifact identities.
+Product inputs and the bd4991 executable remained unchanged. The original
+A49 146/147 result and earlier 16-process repair remain separate.
+
+Before publication, root caught Git text normalization of fourteen deliberately
+noncanonical CRLF state files. A scoped `.gitattributes` rule preserves raw
+`docs/development/**/reports/**/*.b3controls` bytes. Root corrected the index
+without changing raw worktree artifacts and verified all 128 indexed artifact
+hashes and all thirty state files. The resulting 137-file candidate tree
+`655b1f17577af95ea2c5cacea9eacfa60088d341` was **not uploaded**: the managed
+workspace became unavailable before payload retrieval.
+
+GitHub access remained available. Root fetched the exact b1 parent fixture,
+applied the retained approved diff and verified old SHA-256
+`485de6fd6e3da49bbac1f523d4cb277557ee4b94ee1b7ce098f7188466d2cbf3`
+and new SHA-256
+`0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692`.
+The repaired bytes match the locally qualified source exactly. The seven-file
+recovery was committed and guardedly published as
+`6f69c68ed5bf51d77dba1ae4f75d4bc75d144747`, tree
+`daa6195fd3cfc4e56dd0d99b46972c68ae3c7e81`. All seven fetched file contents
+matched intended hashes before publication; remote main was checked afterward.
+A58 and A60 independently verified the source/tree boundary. No local fetch or
+clean-worktree claim follows from this remote recovery. At this exact recovered source, all nine Linux/Windows jobs passed. The three macOS jobs were cancelled without a runner or any executed step; all three workflow runs therefore concluded failure. The cancellation cause is unverified, and the repaired macOS gate remains unexecuted. These results are not an all-platform pass.
+
+A57 completed an unchanged-product X11-capable build using existing dependencies
+and observed a focused window, click/focus navigation and an off-window drag's
+released endpoint. Held-owner/resize/capture-return replay and a lossless
+desktop screenshot were not completed. Alt+F4 was ineffective; the 90-second
+supervisor delivered SIGTERM, followed by zero exit and joined cleanup.
+A59 inspected actual accounting and storage, corrected the documented gallery
+option to `--expected-exe-sha256`, and observed 36.673 GiB free. No storage
+exhaustion was observed.
+
+All sixty actual workers in ten logical waves are now accepted with substantive
+notes. A52/A58/A60 authored new recovery notes; root explicitly authored new
+receipts from A56/A57/A59's already completed and reviewed reports. These notes
+are not copies of unretrieved original artifacts. The final manifest and root
+dispatch attestation preserve that distinction and exclude the failed first
+A59 creation attempt. Names are unique within this session; historical
+cross-session name reuse is not silently promoted to globally unique IDs.
+
+Current README, status, next steps, checkpoint, standing instructions and
+[recovery handoff](INTERFACE_RECOVERY_HANDOFF.md) now point to completed work and
+precise remaining gates. README retains all real v2 images and corrects its
+current parameter index to 47. A Linux-only strict interface-session checker
+step follows the existing complete Release suite and writes JSON to the
+existing retained CI artifact; it does not weaken any product assertion,
+deadline or platform gate. The exact hosted check outcome belongs to its
+identified job, not to a claimed unavailable local run.
+
+Literal 1:1 appearance, complete desktop pointer behavior, physical devices/
+hosts, native accessibility and measured organ fidelity remain unclosed. Future
+work must preserve original source evidence and reconcile the unavailable raw
+files safely if access returns. See [RECOVERY.md](development/2026-11-14-interface-continuation/RECOVERY.md)
+and [the machine record](development/2026-11-14-interface-continuation/reports/root-workspace-recovery.json).
+
 ## 2026-11-14 — Accept final native gallery and preserve coherent-gate repair
 
 All twelve hosted jobs at `cdbb2be` succeeded, including the new native-interface

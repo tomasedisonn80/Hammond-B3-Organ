@@ -1,6 +1,6 @@
 # Interface continuation — 2026-11-14
 
-This requested session starts at `d493e998e5dd7cf44db46854e87309745063ac54`. It requests **60 distinct actual agents in ten logical waves of six**; the manifest records actual dispatched and accepted counts. The available concurrency is three workers plus the integrator; ready independent work can overlap a wave boundary. [assignments.json](assignments.json) records only dispatched identities, individual ownership and accepted results. Historical workers and root integration are not counted again.
+This requested session starts at `d493e998e5dd7cf44db46854e87309745063ac54` and has completed **60 actual assignments in ten logical waves of six**. All sixty substantive results are accepted in [assignments.json](assignments.json). At most three workers ran beside root; dependency-ready work could overlap a wave boundary. Root directly observed the real creations, and the [new recovery attestation](reports/root-dispatch-recovery.json) distinguishes that observation from record checking and historical name collisions. Same-worker follow-ups and the rejected first A59 creation do not add assignments. Acceptance preserves explicit partial or blocked product gates.
 
 ## Goal and source
 
@@ -23,13 +23,50 @@ The current organ remains nominal and unmeasured. Scanner integration, full AO-2
 | 9 | Final coherent qualification, provenance, independent visual comparison, bounded stress, handoff, strict session checker | Verify the exact deliverable and the real assignment record. |
 | 10 | Final UX acceptance, publication review, setup reproduction, hosted closure, accounting audit, final handoff acceptance | Complete guarded main publication and leave precise next steps. |
 
-Future assignments may be refined to resolve concrete findings. A planned task is not a dispatched or accepted worker. Each worker leaves an individual note with its owned changes, source identity, checks, limits and next action. The integrator inspects those results and owns shared CMake/status/README integration, coherent builds and publication.
+Assignments were refined to resolve observed findings. A planned task was never counted as a dispatched worker. Every accepted row has its own substantive note. The final A56/A57/A59 receipts are expressly new root-authored accounts of completed reports read before the outage; A52/A58/A60 authored new recovery notes themselves. Original unavailable raw files are not represented as recovered. Root owns shared integration, acceptance and guarded publication.
 
 ## Current checkpoint and reproducibility
 
-See [CHECKPOINT.md](CHECKPOINT.md) for exact current revisions, active ownership, dependency paths and reusable builds. The initial unchanged combined Release baseline passed **136/136 tests**. Its executable and report identities are retained in `reports/` and the original binaries remain outside the repository for comparisons.
+Use [CHECKPOINT.md](CHECKPOINT.md) and the [current handoff](../../INTERFACE_RECOVERY_HANDOFF.md).
+The exact qualified replay repair is published at
+`6f69c68ed5bf51d77dba1ae4f75d4bc75d144747`, tree
+`daa6195fd3cfc4e56dd0d99b46972c68ae3c7e81`.
+Its [primary hosted review](../../reviews/INTERFACE_HOSTED_RECOVERY.md) records
+nine successful Linux/Windows jobs and three macOS cancellations without
+runners or executed steps. The repaired macOS gate remains unexecuted; the
+cancellation cause is unverified. The completed records publication introduces
+a strict Linux Release accounting step and receives its own platform matrix.
 
-Published checkpoint `c83fe2336be931385f0d7ab82c55b30bfdfc8fc6` contains the atlas review, contracts and Windows oracle repair; hosted Windows Release succeeded. Published checkpoint `5d81199a9822874b55f3b0a124715cbd6eadf0e5` contains the nonblocking MIDI discovery repair after five targeted local gates. All eleven hosted jobs now pass at that exact repair revision, including macOS standalone; [the hosted record](reports/platform-repair-hosted.json) closes both original platform failures. The workspace UI and accepted incremental repairs are published at `aea58bb85bc66a5feaff66a0b8a388e7c3f9e630` ([publication](reports/publication-3.json)). The subsequent label/status polish and strict Windows fixture repairs are published at `8673713a484c40e26ac7810c7c4cbc22fa874426` ([publication](reports/publication-4.json)); [all eleven existing hosted jobs pass](reports/root-ui-polish-hosted.json) on that exact revision. Publication 5 is `cdbb2be`, with [all twelve hosted jobs successful](reports/root-checkpoint5-hosted.json), including the new native sanitizer/leak job. The final v2 gallery, independent visual/provenance review and A52's fixture repair are accepted. A49's original146/147 and the corrected6/6-method/16-process result remain distinct. The [current handoff](../../INTERFACE_HANDOFF.md) records setup and M0–M9 boundaries; the checkpoint records active desktop, detailed hosted and final accounting work.
+The [sixty-assignment checker](../../../tools/check_interface_session.py) requires
+all sixty accepted notes by default and retains exact manifest/note hashes in
+`ci-logs/interface-session-completion.json`. Read its actual hosted result;
+a configured step alone is not execution. Root's dispatch attestation and
+substantive acceptance remain separate from consistency validation.
+
+The initial native baseline passed 136/136. Later checkpoints are preserved:
+`c83fe233` added atlas/contracts and the Windows oracle repair; `5d81199`
+closed the asynchronous MIDI platform repair with eleven successful jobs;
+`aea58bb` published the live interface; `8673713` polished labels/status
+and strict Windows fixtures with eleven passing jobs; `cdbb2be` added the
+native sanitizer/leak gate with twelve passing jobs. The 300-file
+`b1efcdf` gallery/evidence checkpoint has eleven passes and the original
+macOS 37/38 failure. Source identities and original failure records remain
+unchanged.
+
+A49's full local result remains 146/147. The first A52 repair's six methods /
+sixteen processes and 256-action burst are distinct from the later six-method /
+thirty-process header qualification. The latter fixture was recovered exactly
+after the environment failed, with independent root/A52/A58/A60 hash checks.
+The three executed 6f standalone Release jobs each passed 38/38 with six
+workspace methods and thirty actual subprocesses. Raw local final evidence
+is still unavailable; [RECOVERY.md](RECOVERY.md) names the interrupted staged
+candidate and safe retrieval procedure.
+
+The [real eight-image v2 gallery](../../../examples/demos/standalone-interface-preview-v2/README.md)
+and README show the polished native product. Literal reference equality is
+unmet and A57 desktop acceptance is partial. Continue the complete pointer
+journey and measured visual gaps, then separate physical-device/host,
+accessibility, timing, model and release gates.
 
 ## Standing continuation rule
 
@@ -37,4 +74,4 @@ Every future agent must read the newest status, next steps, this record and the 
 
 ## Storage policy
 
-Use one shared checkout and bounded reusable builds. Reuse pinned SDK sources, keep compact text reports, and retain screenshots only when they carry reviewable evidence. Delete only this session’s reproducible intermediates after retaining necessary identities; do not delete separately owned worktrees or original source material. The latest observation had approximately **36 GiB free**. Durable progress is in the repository, so a context reset resumes from the manifest and checkpoint rather than restarting the work.
+Use one shared checkout and bounded reusable builds. Reuse pinned SDK sources, keep compact text reports, and retain screenshots only when they carry reviewable evidence. Delete only this session’s reproducible intermediates after retaining necessary identities; do not delete separately owned worktrees or original source material. At 13:56:00 UTC on 14 November 2026, the last observation had **36.673 GiB free**; no out-of-space condition was observed. The workspace later became unavailable, so current local usage cannot be measured. Durable progress is in the repository; resume from the manifest, recovery record and checkpoint instead of restarting work.

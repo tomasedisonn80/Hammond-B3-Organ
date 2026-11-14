@@ -1,4 +1,6 @@
-# Native interface continuation: operator and developer handoff
+# Native interface continuation: historical operator and developer handoff
+
+**Historical checkpoint:** this body retains the earlier cdbb2be/58-worker integration boundary. Use [INTERFACE_RECOVERY_HANDOFF.md](INTERFACE_RECOVERY_HANDOFF.md), [STATUS.md](STATUS.md) and the [current checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md) for the completed sixty-worker session, recovered source, hosted results and outstanding evidence. Statements below that a task is active or pending describe that older checkpoint. The corrected `--expected-exe-sha256` option is retained.
 
 The usable result is a live instrument interface over the existing **nominal dry
 organ**, with preserved sound/state contracts and explicit model limits.

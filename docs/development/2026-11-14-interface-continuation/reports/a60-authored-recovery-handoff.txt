@@ -1,0 +1,160 @@
+# Native interface recovery handoff
+
+This is the current operational handoff for the native interface continuation after the managed workspace interruption on 2026-11-14. The implemented product is a playable **nominal dry organ** with Play, Rotary and Service workspaces, dimensional and Flat presentation, optional physical MIDI input and explicit musical Save/Load. The complete physical Hammond B-3/AO-28/Leslie project remains in progress.
+
+Read the [recovery checkpoint](development/2026-11-14-interface-continuation/RECOVERY.md), [machine recovery record](development/2026-11-14-interface-continuation/reports/root-workspace-recovery.json), [final acceptance review](reviews/INTERFACE_FINAL_ACCEPTANCE_RECOVERY.md), [operator guide](INTERFACE_RUNBOOK.md) and [full M0–M9 plan](PLAN.md). This document supplies current source, setup and continuation facts where the older [interface handoff](INTERFACE_HANDOFF.md) contains a dated snapshot. Preserve earlier evidence and original failures.
+
+## Published source and current evidence
+
+| Item | Identity and meaning |
+| --- | --- |
+| Runtime product implementation | `8673713a484c40e26ac7810c7c4cbc22fa874426`. Later interface checkpoints did not change the product implementation. |
+| Earlier final gallery/fixture checkpoint | `b1efcdfc34cde92e07f2f6bcb563fc12701dfc01`, tree `815ad7cd46b348607e6a7353c01e4f4b86ec2126`. Its hosted matrix completed with eleven successes and one macOS failure. |
+| Exact recovered fixture checkpoint | [`6f69c68ed5bf51d77dba1ae4f75d4bc75d144747`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/6f69c68ed5bf51d77dba1ae4f75d4bc75d144747), tree `daa6195fd3cfc4e56dd0d99b46972c68ae3c7e81`, parent `b1efcdf`. Seven paths: one Python fixture, raw-evidence attributes, a CLI correction and recovery documentation/navigation. |
+| Recovered workspace fixture | SHA-256 `0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692`. A60 independently fetched and hashed it against the reviewed local source. |
+| Original interrupted local candidate | Tree `655b1f17577af95ea2c5cacea9eacfa60088d341`, 137 paths. It was not published, and its raw artifact archive cannot currently be retrieved. |
+| Actual worker scope | Sixty real workers in ten logical waves, according to root's direct dispatch account. The interruption snapshot had 57 accepted, with A52 follow-up, A58 and A60 active. Final acceptance and the strict checker remain distinct from dispatch. |
+
+A52's recovered fixture had already passed one complete local suite: six methods and thirty native processes, with the original full scripts, seven exact canonical Saves, fourteen exact noncanonical prefixes and unchanged application bytes. A60 independently reviewed those actual local records before the interruption. The published recovery record is an attributed account of that completed work; it does not replace the missing raw files.
+
+The older macOS [job 132467248056](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43601574718/job/132467248056) remains 37/38. It missed the sampled initial Upper-only state in one unchanged header journey. The repaired fixture separately acknowledges the original startup and first-note prefixes, then checks every full-run observation against the literal applied-command state. It preserves the original musical commands, view order, ownership, Save and timeout assertions. The old historical excerpt lacks actual saved/BMP bytes and did not execute the new prefixes.
+
+At 14:22:24 UTC on 2026-11-14, the recovered commit had three successful, six running and three queued jobs, as reported by A58. Consult the exact-source [standalone workflow](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43604228118) and the latest accepted session record for later results. This dated handoff does not claim an all-pass recovered matrix. The old full local run remains 146/147 with one failure; later focused closures have their own identities.
+
+## What the interface implements
+
+The [operator guide](INTERFACE_RUNBOOK.md) is the detailed user contract. F4/F5/F6 select Play/Rotary/Service; F7 toggles Flat. These view changes preserve sound controls and existing release ownership. A hidden Play control cannot receive a new click or edit from another workspace. Help, Audio and MIDI deliberately release UI holds. Save is explicit; closing the app does not save.
+
+| Count | Meaning |
+| --- | --- |
+| 47 | Stable sound parameter records. |
+| 68 | Ordinary UI control records, including all 24 reversed preset keys. |
+| 147 | Playing keys: two 61-key manuals and 25 pedals. |
+| 71 | Play Tab stops: 68 ordinary controls plus three roving playing-key groups. |
+| 10 | Common focus stops available in Rotary and Service. |
+| 28 rows in six cards | Read-only Service inspection. |
+| 91 | Shared continuously running nominal tone sources. |
+
+All four drawbar banks remain retained. On each manual, C cancels the route, C#–A selects one of nine fixed registrations, A# sounds adjustable bank A, and B sounds adjustable bank B. Edit A/B chooses which bank is edited independently of the sounding route. Cancel preserves bank memory and held-note history. Upper-B percussion eligibility remains explicit. The fixed selector is already implemented; the next M3 work concerns physical contacts, latches, loading and circuit evidence.
+
+The writer emits `B3CONTROLS4`; readers for versions 1–3 remain. Save/Load concerns musical controls, excluding device selection, workspace, focus, presentation, note ownership, source phase and transient histories. Snapshot freshness, applied versus desired controls and evidence availability remain distinct. Unknown physical quantities are shown as unavailable, not fabricated zero values. Rotary artwork is decorative and cabinet audio is not connected.
+
+## Build and run from a usable checkout
+
+The commands below are procedures for a fresh usable checkout, not commands executed after the workspace outage. Run them from the repository root. Use CMake/CTest 3.21 or newer, Python 3.10 or newer, Git, a C++20 compiler and a C compiler for SDL. Platform desktop/audio development packages are required for the backends you intend to test. The [MIDI setup guide](MIDI_UI_RUNBOOK.md#prerequisites-and-platform-backends) lists Linux ALSA, Windows WinMM and macOS CoreMIDI requirements.
+
+Acquire the pinned SDL2 2.32.10 source into an absent path outside the repository. Its parent must exist. If that dependency already exists, use `--verify-existing ../SDL2` instead of acquiring again.
+
+~~~sh
+python3 tools/acquire_sdl2.py --destination ../SDL2
+cmake -S . -B build-interface -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+  -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT="$PWD/../SDL2" \
+  -DHAMMOND_ENABLE_MIDI=OFF -DHAMMOND_BUILD_VST3=OFF
+cmake --build build-interface --config Release --parallel 2
+ctest --test-dir build-interface -C Release -N
+ctest --test-dir build-interface -C Release --output-on-failure --no-tests=error \
+  -R '^test_standalone_'
+~~~
+
+This builds the SDL keyboard/pointer application without physical MIDI. Synthetic replay remains available. Discover the selected configuration before interpreting its test count; a count from another checkpoint or build is not a substitute.
+
+On Windows use `python` if that is the installed command and add `.exe` to executables. A multi-configuration build adds `Release/` before the executable. The examples use a POSIX shell and single-configuration paths. The [preset guide](PRESET_RUNBOOK.md) and [VST3 build guide](VST3_BUILD.md) retain complete alternative recipes. An ordinary SDK-free core build requires neither SDL, RtMidi nor the VST3 SDK.
+
+For physical MIDI, acquire the pinned RtMidi 6.0.0 source into another absent external path and use a separate build. Existing dependencies use their verifier; do not edit or substitute dependency source to bypass identity checks.
+
+~~~sh
+python3 tools/acquire_rtmidi.py --destination ../rtmidi-6.0.0
+cmake -S . -B build-interface-midi -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+  -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT="$PWD/../SDL2" \
+  -DHAMMOND_ENABLE_MIDI=ON -DHAMMOND_RTMIDI_ROOT="$PWD/../rtmidi-6.0.0" \
+  -DHAMMOND_BUILD_VST3=OFF
+cmake --build build-interface-midi --config Release --parallel 2
+~~~
+
+SDL audio/video and native MIDI are separate capabilities. Dummy SDL drivers do not bypass ALSA/CoreMIDI/WinMM discovery. Select a unique real MIDI input and distinct Upper/Lower/Pedal channels explicitly, then Apply. There is no automatic input connection. A retained discovery error remains historical evidence even after a successful recovery; No Input, Apply, Disconnect and Close remain usable.
+
+Create an output directory and choose a writable state path:
+
+~~~sh
+cmake -E make_directory out
+build-interface/apps/standalone/hammond_standalone \
+  --state "$PWD/out/my-controls.b3controls" --workspace play
+~~~
+
+A missing state file starts the proposed audition setting: Upper B `888000000`, Lower B `008000000`, pedal mixtures `80`. It is not a factory preset. Startup requests 48 kHz and 512 frames from the default output; the request is not a measured latency. Use Audio to select and Apply a real output configuration, and Save explicitly to create the state file.
+
+The installed payload can be moved as a unit. Use new destination names so these commands do not overwrite an existing installation:
+
+~~~sh
+cmake --install build-interface --config Release --component Standalone \
+  --prefix "$PWD/out/interface-install"
+cmake -E rename "$PWD/out/interface-install" "$PWD/out/interface-moved"
+"$PWD/out/interface-moved/bin/hammond_standalone" \
+  --state "$PWD/out/my-controls.b3controls" --workspace service --flat
+~~~
+
+The [installation guide](STANDALONE_INSTALL.md) defines the complete payload. Earlier MIDI-on/off qualification recorded 19 and 15 files, including six installed guides. A later guide refresh preserved executable bytes. That evidence does not claim a new post-outage installation was built.
+
+A bounded dummy-driver inspection can create a diagnostic file and bitmap without selecting physical hardware:
+
+~~~sh
+SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy \
+  build-interface/apps/standalone/hammond_standalone \
+  --state "$PWD/out/unused-controls.b3controls" --workspace service --flat \
+  --width 960 --height 700 --smoke-ms 600 \
+  --screenshot "$PWD/out/service.bmp" --diagnostics "$PWD/out/service.json"
+~~~
+
+Use new output names and retain the actual executable, source, dependency, driver and diagnostic identities. This procedure does not qualify physical audio, MIDI, display DPI or pointer capture.
+
+## Gallery and real-desktop boundary
+
+The [v2 gallery](../examples/demos/standalone-interface-preview-v2/README.md) contains eight actual native PNGs. Its README records source, executable, state and image identities. Earlier galleries remain historical. The concept/reference artwork is separately identified in the [500-page atlas review](research/INTERFACE_ATLAS_REVIEW.md); do not label it an application screenshot.
+
+The gallery tool's argument is the single token `--expected-exe-sha256`. Its published application digest, `bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2`, belongs to the original qualified executable. A newly built executable needs its own measured digest and qualification. Do not reuse the old digest or old qualification record to describe a different binary.
+
+The published captures used dummy SDL with software rendering and equal logical/drawable dimensions. They demonstrate actual UI output, not physical display scaling. Literal 1:1 reference equality is still unmet: key depth, material appearance, lighting and composition differ. The minor Service phrase “1 targets” remains deferred. Settled final captures do not themselves demonstrate the pending-control appearance.
+
+A57 subsequently built the same product source with an X11-capable SDL backend and observed a real window, click/focus navigation and an off-window-drag endpoint with no held target. That was a different executable and a bounded partial desktop result. The original full 13-event held-key/pointer journey through navigation, Flat and resize was not run on X11. Capture-return counters were unavailable and no durable lossless desktop image was retained. Alt+F4 did not close the window; the 90-second SIGTERM bound joined with exit 0. Do not extend this to a full desktop ownership or resize pass.
+
+The next desktop gate needs a recorded driver inventory, the unchanged scripted journey on a real desktop, evidence of holds through the view/resize transitions, original release endpoints, capture results where observable and retained before/after screenshots. A real controller, real audio output, native accessibility and DAW acceptance each need separate observations.
+
+## Complete M0–M9 continuation
+
+The atlas's ten research waves, this session's ten worker waves and the ten implementation milestones are different organizations. The [full plan](PLAN.md) remains authoritative. Completed nominal engineering enables the following dependency-ready work; it does not manufacture absent specimen evidence.
+
+| Milestone | Preserve what exists | Next concrete gate and dependency |
+| --- | --- | --- |
+| **M0 — reference and contracts** | Source/PDF identities, variant boundaries, evidence classes, units and explicit unknowns. | Identify specimen, serial/revision/condition and measurement permissions. Acquire missing primary documents and physical observations with uncertainty and rights records. |
+| **M1 — testable skeleton** | Prepared SDK-independent core, bounded events, lifecycle and error contracts, offline tools and proven allocation boundaries. | Extend a graph only with preparation/rollback/lifetime and meaningful scheduling evidence. Host or device timing requires its own measured operating conditions. |
+| **M2 — shared generator** | 91 free-running shared sources, source/index distinctions and corroborated routing. | Acquire production gear relationships, pickup waves/levels/phases and leakage. Keep the ideal sine/12-TET model labelled nominal until replacement evidence exists. |
+| **M3 — console behavior** | Four banks, implemented exclusive fixed selectors, Cancel semantics, held-note/percussion histories, pedals and state compatibility. | Develop identified physical contact/latch trajectories, transformer tap loading, expression, percussion and pedal shaping against actual circuit/capture evidence. Independent admission of the underlying factory Table IV remains a separate documentary gate. |
+| **M4 — scanner** | The separate scanner graph, independent references, prepared modules and frozen numerical policy. | Resolve the same-hertz G5 failure under the frozen budget before Engine integration. A new numerical realization or justified policy change needs independent loaded AC/time-domain references; retain the original failure. |
+| **M5 — organ electronics** | Nominal dry signal boundary and unresolved AO-28 quantities. | Build a connected revision-specific AO-28 graph with transformer/load/operating-point evidence. Validate the complete dry G-G path before fitting a cabinet downstream. |
+| **M6 — Leslie electronics** | Distinct 122/147 variants and signed differential ports. | Acquire identified cabinet circuits and driver impedances; verify loading, polarity, crossover/amplifier/transformer behavior against independent electrical measurements. |
+| **M7 — rotary acoustics** | Separate horn/drum inputs, one trajectory per rotor, explicit delay/filter/room ownership and the nominal research module. | Continue independent motion/propagation work while M5/M6 inputs remain missing. Acquire trajectories and angle/position captures and separate cabinet from room effects before a physical acoustic claim. |
+| **M8 — calibration** | Immutable ancestry, inspection/split/comparison tooling and declaration contracts. | Acquire actual captures with predeclared tolerances, train/held-out grouping and uncertainty. Fit, evaluate and retain failures/inconclusive results; synthetic fixtures do not close this gate. |
+| **M9 — product and release** | Current native/VST3 adapters, 47 parameters, state readers, routing/ownership, actual gallery and qualified packaging. | Complete current hosted closure/accounting, the full desktop replay and actual screenshots, physical display/device/DAW trials, semantic accessibility, callback deadlines, rights/signing and the remaining visual comparison. |
+
+The [scanner handoff](SCANNER_HANDOFF.md), [rotary scope](ROTARY_SCOPE.md), [next calibration acquisition](CALIBRATION_NEXT_ACQUISITION.md) and [release readiness](RELEASE_READINESS.md) retain their own source and acceptance boundaries. Choose a task whose inputs are available; do not erase another track's unresolved gate to close this interface session.
+
+## Resume after the workspace interruption
+
+The unavailable workspace had ample free storage at its last observation: 36.673 GiB. No out-of-space failure was observed. GitHub publication now supplies the exact recovered source, but local build directories, the original staged candidate and the final raw reports remain unavailable.
+
+1. Read `AGENTS.md`, this handoff, the recovery record, the newest actual manifest and current status before editing. Do not redispatch or recount earlier workers solely because the workspace is unavailable.
+2. If the old environment returns, preserve its worktree and index first. Fetch the newer remote and reconcile the interrupted candidate in an isolated checkout or worktree. Do not reset hard, overwrite concurrent work or assume the old staged tree equals remote main.
+3. Retrieve the existing local `reports/a52-macos-local-suite/result.json` and its actual archive if possible. It already held the complete local result and artifact manifest. Two proposed packaging files, `a52-macos-final-result.json` and `a52-macos-fixture.patch`, were never created. Do not fabricate them or link them as evidence.
+4. Preserve raw `.b3controls` bytes under development reports. The published scoped Git attribute prevents the observed CRLF normalization. Before the interruption root checked thirty states and 128 artifact identities; repeat only the checks needed to verify a recovered archive or changed material.
+5. Finish the exact recovered source's hosted jobs and keep each completed result with its commit and primary diagnostics. A queued workflow is not a platform pass. Do not relabel the previous macOS failure or original 146/147 run.
+6. Root must accept all sixty actual assignments and integrate their genuine notes, with recovery notes clearly labelled as new accounts where original bytes are unavailable. Then run the strict session checker on a usable or hosted runner and retain its JSON.
+
+The strict command is:
+
+~~~sh
+python tools/check_interface_session.py --repo . --json
+~~~
+
+It checks the ledger's sixty accepted records, waves, distinct within-session names, note paths and hashes. It does not prove external dispatch or validate every substantive claim. A60 proposed running it once after existing tests in the Linux Release job, with `pipefail` and the existing diagnostic upload. That step was not present or executed at the recovered source checkpoint; root owns its later publication and observed result.
+
+Continue the standing workflow: make a bounded dependency-ready change, preserve unrelated work, verify affected behavior, update status/next steps/log/setup and actual screenshots when the UI changes, publish with an expected-head guard and no force push, and verify the published revision. Keep source recovery, assignment acceptance, engineering tests, real-device observations and physical fidelity as separate evidenced claims.

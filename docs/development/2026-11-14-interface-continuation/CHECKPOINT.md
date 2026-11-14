@@ -1,113 +1,125 @@
-# Resume checkpoint — interface continuation
+# Resume checkpoint — completed interface session and recovery
 
-## Exact published boundary
+## Start here
 
-Local HEAD and fetched main are `cdbb2beaa28bf136f9a8db6213819129514e2ae9`,
-tree `b4d71c1f574ab17ba1a3f37b24667c1ff3f9c527`.
-[Publication 5](reports/publication-5.json) contains the native sanitizer/leak CI,
-measured sanitizer-only budgets, package evidence and corrected MIDI guide.
-All [twelve hosted jobs](reports/root-checkpoint5-hosted.json) completed successfully
-on that revision. A58 independently confirmed the primary native sanitizer job
-132455309517, run 43597589820: thirteen selected suites pass with leak checking.
-Its detailed report and observation of the next publication remain active work.
+All **60 actual assignments in ten logical waves of six** are accepted in
+[assignments.json](assignments.json). Read the
+[current handoff](../../INTERFACE_RECOVERY_HANDOFF.md),
+[status](../../STATUS.md), [next steps](../../NEXT_STEPS.md) and
+[RECOVERY.md](RECOVERY.md). Acceptance records actual work, including explicit
+partial results and blocked gates; it does not claim a finished physical model
+or literal visual equality. The old [pre-recovery checkpoint](reports/checkpoint-before-recovery.txt)
+is retained as dated history and must not be treated as current ownership.
 
-Product code remains exactly the polished `8673713` source, whose eleven existing
-jobs pass. Earlier `aea58` Windows strict-warning failures, A40's repair and both
-later Windows successes remain separately identified. No new product, workflow
-or CMake change is proposed in the next checkpoint.
+The Linux Release job now runs
+`python tools/check_interface_session.py --repo . --json` in strict mode
+after all registered Release tests. Its retained `ci-logs/interface-session-completion.json`
+identifies the exact checker, manifest and sixty substantive note hashes.
+Read the actual job result before claiming the check passed. This validates
+record consistency, not external dispatch, semantic acceptance or product
+readiness. Do not rerun A54's historical incomplete-fixture verifier as a final
+completion test.
 
-## Reviewed candidate and real accounting
+## Exact source and publication boundary
 
-The manifest records **58 actual dispatched assignments, 55 accepted**. A56,
-A57 and A58 are active. A59 and A60 have not been dispatched; do not invent rows.
-Ten logical waves contain six workers each, with at most three workers beside
-root. Dependency-ready overlap is allowed. Historical workers and root are not
-counted again. Each accepted result has a substantive individual note.
+| Revision | What it identifies |
+|---|---|
+| `8673713a484c40e26ac7810c7c4cbc22fa874426` | Polished product source, readable preset labels, centered title, truthful Load notice and strict Windows test repairs; all eleven then-existing jobs passed. |
+| `cdbb2beaa28bf136f9a8db6213819129514e2ae9` | Native sanitizer/leak CI and measured sanitizer-only budgets; all twelve jobs passed. |
+| `b1efcdfc34cde92e07f2f6bcb563fc12701dfc01` | Reviewed 300-file final-gallery/evidence checkpoint; eleven jobs passed, macOS standalone remained 37/38. |
+| `6f69c68ed5bf51d77dba1ae4f75d4bc75d144747` | Exact qualified thirty-process replay repair plus scoped evidence attributes, CLI correction and recovery records; tree `daa6195fd3cfc4e56dd0d99b46972c68ae3c7e81`. |
 
-Completed A46–A55 work is ready for guarded publication: the eight-image final
-v2 native gallery and README, independent source/visual/platform/VST3 reviews,
-A49's full gate and A52's fixture repair, current operator/developer handoff,
-strict session checker and corrected guide. Root owns shared documents/index.
-A56 will audit the immutable staged candidate, excluding unfinished A57/A58 work.
-After A60 acceptance, run `python3 -B tools/check_interface_session.py --repo . --json`
-and publish its exact strict completion record. Checker consistency is separate
-from actual dispatch and semantic acceptance.
+At this exact recovered source, all nine Linux/Windows jobs passed. The three macOS jobs were cancelled without a runner or any executed step; all three workflow runs therefore concluded failure. The cancellation cause is unverified, and the repaired macOS gate remains unexecuted. These results are not an all-platform pass. See [A58's primary review](../../reviews/INTERFACE_HOSTED_RECOVERY.md)
+and [report](reports/a58-recovery-hosted-6f69c68.json). The final record/navigation
+publication adds a strict accounting step but does not change product or replay
+source. Inspect current remote main before any new work; this document does not
+self-identify a future commit hash.
 
-A49's serial full Release gate remains **146 passed/147 executed, one failed,
-zero skipped**. Its workspace startup sample arrived at 191 ms after the first
-note's 180 ms schedule. A52's measured original nonmusical prefix supplies an
-acknowledged sequence origin. The original full UI/MIDI/state scripts, exact
-+10 command delta, ownership/view/packet checks and timeouts are preserved.
-The corrected workspace suite passes **6 methods/16 native processes**; seven
-corrupted traces are rejected; one 256-action burst passes. Its first authoring
-attempt exposed a zero-packet timestamp assumption and remains retained.
-The shared helper now requires zero for zero offered packets and retains the
-positive requirement otherwise. No product behavior changed.
+The workspace fixture SHA-256 is
+`0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692`.
+Its local six-method/thirty-process run completed in 45.058697 seconds with zero
+native exits, fourteen exact noncanonical prefixes and seven exact full Save
+outputs. The seven full input scripts and deadlines remained unchanged; ten
+historical diagnostic corruptions and four local prefix corruptions were
+rejected. A60 independently reviewed the result before the interruption.
+These are actual completed local observations; their raw files were not
+uploaded. Fresh hosted evidence is separately retained.
 
-[Root incremental closure](reports/root-final-incremental-closure.json) verifies
-only those two Python fixtures changed among327 source/test/build/workflow inputs.
-All 98 product files,114 protected inputs,82 executables and21 selected generated/
-library inputs remain exact. The installed INTERFACE_RUNBOOK update is separately
-identified. The full local gate is not relabelled147/147. Current frozen native
-application: `../a36-status-bin/hammond_standalone`, SHA256
+Original A49 remains 146/147; the original first A52 repair remains six methods /
+sixteen processes. Original b1 macOS remains 37/38. Do not merge these counts
+into a fabricated new full local 147/147 run.
+
+## Interrupted local candidate
+
+The managed workspace is unavailable. Its last local parent was b1; root had
+staged 137 files as tree `655b1f17577af95ea2c5cacea9eacfa60088d341`.
+That tree and its `publication-7.json` payload were not uploaded and are not
+the seven-file recovered tree. The [machine record](reports/root-workspace-recovery.json)
+names missing evidence and files that were never created. No current local
+HEAD, clean index or local/remote alignment has been observed.
+
+If access returns, preserve the index and working files first. Reconcile in a
+separate checkout or worktree, compare against the current remote head, recover
+existing original artifacts and retain their hashes/bytes. Do not reset hard,
+clean unrelated work, reconstruct raw logs from prose, or overwrite the exact
+already published fixture. Deliberate CRLF/whitespace state evidence is covered
+by the scoped `.gitattributes` rule. Root had verified 128 staged artifact hashes
+and thirty state files before the outage, including fourteen files whose initial
+index normalization was detected and corrected.
+
+A56, A57 and A59 recovery receipts are newly authored by root from completed
+reports reviewed before the outage. A52, A58 and A60 authored their own new
+recovery notes. All explicitly distinguish observation from unavailable raw
+bytes. Root's [dispatch attestation](reports/root-dispatch-recovery.json) records
+sixty successful creations within this session; a rejected A59 attempt added
+no worker. Task-name collisions across historical sessions remain explicit.
+
+## Current product and remaining gates
+
+The [eight-image gallery](../../../examples/demos/standalone-interface-preview-v2/README.md)
+is actual dummy SDL/software native output. Product executable SHA-256:
 `bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2`.
+Its 98 product inputs remain the published polished source; 47 sound parameters,
+state4/readers 1–3, 91 shared sources, two 61-key manuals, 25 pedals and four
+retained drawbar banks retain their meanings. A44's exact 19/15-file packages
+and source-absent relocation remain qualified on their named inputs.
 
-[Guide-only refreshed packages](reports/root-final-guide-package-refresh.json)
-contain 19 files MIDI-on/15 MIDI-off; only INTERFACE_RUNBOOK.md changes from A44's
-final payload. Both executable identities remain exact. The installer first
-rejected its stale configured guide identity; that refusal is preserved under
-`reports/root-guide-first-attempt/`. Reconfigure and install then passed without
-rebuilding or rerunning native flows. A44's source-absent runtime/relocation
-qualification remains separately identified.
+A57's separately built X11 executable has SHA-256
+`fff5d06a48fd156e89219d30781223b3a366126776005b6a3a7851fdf912950c`.
+It opened a real focused window and supports a partial click/focus/released-endpoint
+observation. Held owners through navigation/resize, persistent capture, capture
+return and a retained desktop screenshot remain unqualified. Bounded SIGTERM
+cleanup is separate from the ineffective Alt+F4 attempt.
 
-## Remaining active work and honest limits
+**Literal 1:1 reference equality remains unmet.** Keyboard depth, texture,
+lighting, bevels and composition require measured refinement; singular-count
+copy and a pending-state capture remain. Physical audio/MIDI, actual DAWs, DPI,
+native accessibility, deadlines, signing and rights are separate gates. Sound
+remains nominal dry. Resolve scanner G5 before Engine integration and preserve
+the separate AO-28, Leslie, rotary and capture/calibration dependencies.
 
-A57 owns `../build-desktop-qualification` and the desktop. Existing sysroot X11
-headers plus system versioned libraries enabled SDL_VIDEO_DRIVER_X11 in generated
-configuration. Build and actual Sky interaction must establish the remaining
-window/input evidence. No product edits, downloads or device selection are allowed
-within that lease. Root must not operate the desktop concurrently.
+## Historical environment and storage
 
-A58 owns primary hosted logs and the next published-source closure. A56 owns
-read-only candidate-tree review. Spawn A59 accounting/storage/handoff audit and
-A60 final acceptance only as slots free, then resolve all current entry points.
-Preserve raw failures and original whitespace; never force-push. Fetch and verify
-the remote tree after a fresh expected-head update, preserving active working edits.
+These paths identify the interrupted environment; check existence before reuse.
+They are not claims that a current workspace is available.
 
-A50's gallery addendum reconciles a historical A44 two-key schema rename with
-identical values and reproducible earlier bytes. It changes no captured payload,
-manifest or provenance input. A53's original authored handoff is archived under
-`reports/a53-authored-handoff.txt` before current outcome updates.
+- Checkout: `/workspace/scratch/601951e27dc3/Hammond-B3-Organ`.
+- CMake/CTest: `/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/`.
+- SDL: `/workspace/scratch/7ffc2842608b/SDL2`.
+- RtMidi: `/workspace/scratch/cd4bd06ce68f/rtmidi`.
+- Native headers/libraries: `/workspace/scratch/641ca55ce6de/native-sysroot/usr/`.
+- Python: `/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12`.
+- VST3 SDK: `/workspace/scratch/1742da7072be/vst3sdk`.
 
-**Literal 1:1 reference equality remains unmet.** A51 records keyboard depth,
-material/lighting and composition differences, plus unshown genuinely pending
-appearance and minor “1 targets” copy. The final eight native images are actual
-dummy/software output from published product inputs. Physical audio/MIDI,
-display/DPI, persistent OS pointer capture and native accessibility remain distinct
-acceptance gates. A42's earlier `x11 not available` launch remains a failed attempt.
+Original native ON/OFF builds used SDL_ALSA=OFF for the pinned SDL/header
+combination; RtMidi ALSA stayed ON in the enabled build. A57's separate X11 tree
+used existing versioned runtime libraries. Generated configuration and actual
+startup, not a cache option alone, establish backend capability.
 
-Sound remains nominal dry with ideal contacts and nominal-unmeasured profile.
-Scanner G5/integration, complete AO-28/Leslie, actual captures/calibration and
-release rights remain separate M0–M9 work. Preserve 47 parameters, state4/readers1–3,
-91 sources and the 114-file protected inventory. See [current handoff](../../INTERFACE_HANDOFF.md).
-
-## Reusable environment and storage
-
-Checkout: `/workspace/scratch/601951e27dc3/Hammond-B3-Organ`.
-CMake/CTest: `/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/`.
-SDL: `/workspace/scratch/7ffc2842608b/SDL2`; RtMidi:
-`/workspace/scratch/cd4bd06ce68f/rtmidi`; development headers/libraries:
-`/workspace/scratch/641ca55ce6de/native-sysroot/usr/`.
-Python: `/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12`.
-VST3 SDK: `/workspace/scratch/1742da7072be/vst3sdk`.
-
-Original native ON/OFF builds use SDL_ALSA=OFF due pinned SDL/current ALSA-header
-compatibility; RtMidi ALSA stays ON in the enabled build. They provide dummy/
-offscreen video. A57's separate build adds desktop capability; a cache ON setting
-alone is never backend proof. The SDK-free, original native and sanitizer trees
-are free after their accepted work; A57 owns only its separate build.
-
-Approximately 36 GiB remain free. Reuse existing sources/builds; do not copy SDKs,
-index compiled binaries/caches or remove other sessions' work. Retain compact
-reports and meaningful images. The 8192 logical sizing limit is not a separate
-physical drawable-memory cap; no giant surface acceptance is claimed.
+At 13:56:00 UTC on 2026-11-14, A59 observed **36.673 GiB free**, task apparent
+size 781.493 MiB and repository apparent size 112.113 MiB. No storage exhaustion
+was observed. Reuse pinned dependencies and bounded builds, retain compact
+evidence and meaningful captures, and remove only owned reproducible
+intermediates after preserving needed results. Do not index binaries/caches or
+delete other sessions' work. Keep context durable in these records instead of
+restarting completed readings and assignments.

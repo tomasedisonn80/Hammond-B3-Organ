@@ -2,31 +2,62 @@
 
 ## Current interface continuation
 
-Resume the [handoff](INTERFACE_HANDOFF.md), [session](development/2026-11-14-interface-continuation/README.md)
-and [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md).
-The complete atlas reading, interface implementation, final native gallery,
-protected musical continuity and source-identified qualification are retained.
+Resume the [current handoff](INTERFACE_RECOVERY_HANDOFF.md),
+[session](development/2026-11-14-interface-continuation/README.md) and
+[recovery checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md).
+All 500 atlas pages were reviewed and all sixty actual assignments are accepted.
+The implementation, real native gallery, preserved musical contracts and
+source-specific results are published. The following work remains concrete.
 
-1. Publish the reviewed two-fixture startup repair, final gallery and current
-   guides with a fresh expected-head guard. Preserve A49's original146/147 and
-   A52's separate6/6-method/16-process closure, seven rejected corruptions and
-   256-action burst. Product code and executable bytes remain unchanged.
-2. Finish A57's actual X11 desktop flow on its identified separate build. Report
-   only observed window, input, resize/release and cleanup behavior. Physical
-   audio/MIDI, DPI and native accessibility require their own acceptance.
-3. Finish A58's primary thirteen-suite sanitizer/leak report and observe all
-   twelve jobs on the newly published source. Existing cdbb2be successes and
-   the local LSan attachment blocker retain their original scope.
-4. Complete A59/A60 accounting and handoff acceptance, run the strict real-session
-   checker after all sixty actual assignments are accepted, publish the final
-   evidence and verify clean local/remote main.
+1. **Recover the original final evidence when the workspace returns.** Preserve
+   the old index and working files before fetching the newer remote main.
+   Reconcile the unpublished 137-file candidate in an isolated checkout or
+   worktree, using the [machine recovery record](development/2026-11-14-interface-continuation/reports/root-workspace-recovery.json).
+   Retrieve the actual A52 thirty-process result and existing artifacts plus
+   A56/A57/A59/A60 records; do not fabricate never-created packaging files or
+   reset away the old index. Verify artifact hashes and deliberately preserved
+   CRLF/control-state bytes before an additive publication. The exact repaired
+   fixture is already published; do not redo or overwrite it from an older tree.
+2. **Finish the desktop pointer journey.** Inspect A57's generated X11 settings
+   and same-product executable identity, then exercise held owners through
+   workspace/Flat changes and resize, off-window release, capture return and
+   ordinary joined shutdown. Retain lossless frames and exact replay/diagnostic
+   evidence. Existing click/focus and released-endpoint observations do not
+   satisfy these missing assertions. Physical audio/MIDI and high DPI remain
+   separate from this bounded display/input test.
+3. **Close the measured reference gaps.** Compare actual 1672×941 native output
+   with the preserved cover/page-409 image. Refine the shallower manuals
+   (approximately 108 versus 144 reference pixels in the recorded comparison),
+   materials, lighting, bevels and cabinet/panel composition. Preserve the
+   correct 24 preset keys, 147 playing keys, 68 control records, all parameter
+   and state meanings, hit/focus geometry and note release ownership. Correct
+   the Service singular-count wording and retain a truly pending-state capture.
+   Refresh the actual eight-view README gallery only after affected acceptance;
+   keep old captures and never substitute concept art for application output.
+4. **Qualify physical product behavior separately.** Real MIDI/audio devices,
+   supported DAWs, display scale, native accessibility semantics and audio
+   deadlines need identified systems, repeatable journeys and observed results.
+   Signing, distribution and asset rights remain explicit release gates.
+5. **Continue dependency-ready model work.** Resolve the scanner G5 same-hertz
+   failure under its frozen numerical contract before Engine integration.
+   Build revision-specific AO-28 and Leslie electrical boundaries, then qualify
+   rotary propagation with its actual required inputs. Use the capture toolchain
+   with admitted real specimens, immutable recordings and held-out splits for
+   calibration. The [M0–M9 plan](PLAN.md) and active track handoffs own these gates.
 
-After this bounded continuation, refine the measured reference gaps and the
-Service singular-count copy, then qualify real devices/hosts and native semantic
-accessibility. Preserve the 47 parameters, saved-state meanings and nominal
-models. The [M0–M9 plan](PLAN.md) keeps scanner G5 resolution, revision-specific
-AO-28/Leslie, physical captures and calibration as separate dependency gates.
-Historical sequences below are context; do not restart or recount their workers.
+The Linux Release workflow now requires the strict interface-session checker
+after its complete Release suite and retains its JSON in the existing CI
+artifact. Inspect the exact commit's job before reporting success. The checker
+validates the sixty retained notes and manifest; root's dispatch attestation
+and substantive reviews remain separate. Preserve original local 146/147,
+b1 macOS 37/38, the separate repaired results and all prior failures.
+
+For every bounded next task, inspect current main and any restored local work,
+agree owned paths, run affected checks on coherent source, update setup/status/
+next steps/log and real UI images where applicable, then commit and push under
+the standing authorization with a fresh expected head and no force. Do not
+repeat atlas reading or recount the completed workers after a context reset.
+Historical sequences below retain their dated scope.
 
 ## Historical preset continuation sequence
 

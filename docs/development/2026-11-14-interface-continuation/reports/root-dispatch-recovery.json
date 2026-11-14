@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "record_kind": "new_recovery_attestation_from_actual_session_orchestration",
+  "session": "2026-11-14-interface-continuation",
+  "authored_by": "integrating_root",
+  "authored_at_utc": "2026-11-14 14:46:48 UTC",
+  "base_commit": "d493e998e5dd7cf44db46854e87309745063ac54",
+  "actual_successful_worker_creations": 60,
+  "logical_waves": 10,
+  "workers_per_wave": 6,
+  "concurrency": {
+    "workers_max": 3,
+    "integrator": 1
+  },
+  "failed_creation": {
+    "assignment": 59,
+    "reason": "Concurrency limit; no worker was created.",
+    "counted": false
+  },
+  "same_worker_followups_count_as_new_workers": false,
+  "identity_scope": "Canonical names are unique inside this session. A01-A06 strings recur across historical sessions and are not asserted globally unique platform IDs.",
+  "basis": "The integrating root directly observed all sixty successful collaboration.spawn_agent calls in this conversation. A59 compared all sixty session tuples with the then-supplied root attestation before the outage. This newly authored record is not the unretrieved original attestation file.",
+  "historical_attestation_sha256": "3286f5603dcc216b39ca37108cfe5bcf962ba6e2bc0361d6f90fafcee6ea0857",
+  "historical_a59_audit": {
+    "manifest_bytes": 30559,
+    "manifest_sha256": "d6b53e690c5c5e12c08640525ba86fe434a509b84728ea48ac10958b4785bf3c",
+    "recorded": 60,
+    "accepted": 57,
+    "running": 3,
+    "observation_utc": "2026-11-14T13:53:46.682192+00:00"
+  },
+  "current_manifest": {
+    "path": "docs/development/2026-11-14-interface-continuation/assignments.json",
+    "sha256": "f7af18dadc375ca2e0d2cbc23c5886b03bda1fade4d998e4152b99ebbe282ec9",
+    "recorded": 60,
+    "accepted": 60,
+    "running": 0
+  },
+  "dispatches": [
+    {
+      "number": 1,
+      "wave": 1,
+      "agent": "/root/w01_a01_atlas_foundation",
+      "scope": "atlas pages 1-84"
+    },
+    {
+      "number": 2,
+      "wave": 1,
+      "agent": "/root/w01_a02_atlas_console",
+      "scope": "atlas pages 85-167"
+    },
+    {
+      "number": 3,
+      "wave": 1,
+      "agent": "/root/w01_a03_atlas_electronics",
+      "scope": "atlas pages 168-250"
+    },
+    {
+      "number": 4,
+      "wave": 1,
+      "agent": "/root/w01_a04_atlas_rotary",
+      "scope": "atlas pages 251-334"
+    },
+    {
+      "number": 5,
+      "wave": 1,
+      "agent": "/root/w01_a05_atlas_product",
+      "scope": "atlas pages 335-417"
+    },
+    {
+      "number": 6,
+      "wave": 1,
+      "agent": "/root/w01_a06_atlas_completion",
+      "scope": "atlas pages 418-500"
+    },
+    {
+      "number": 7,
+      "wave": 2,
+      "agent": "/root/w02_a07_workspace_contract",
+      "scope": "workspace/model/focus ownership contract"
+    },
+    {
+      "number": 8,
+      "wave": 2,
+      "agent": "/root/w02_a08_geometry_contract",
+      "scope": "shared perspective geometry/reference contract"
+    },
+    {
+      "number": 9,
+      "wave": 2,
+      "agent": "/root/w02_a09_inspection_contract",
+      "scope": "copied-state inspection data contract"
+    },
+    {
+      "number": 10,
+      "wave": 2,
+      "agent": "/root/w02_a10_macos_replay_repair",
+      "scope": "repair observed macOS native MIDI modal blocking"
+    },
+    {
+      "number": 11,
+      "wave": 2,
+      "agent": "/root/w02_a11_windows_oracle_repair",
+      "scope": "repair observed Windows rounding oracle loader"
+    },
+    {
+      "number": 12,
+      "wave": 2,
+      "agent": "/root/w02_a12_integration_inventory",
+      "scope": "independent contract/baseline and changed-boundary inventory"
+    },
+    {
+      "number": 13,
+      "wave": 3,
+      "agent": "/root/w03_a13_workspace_model",
+      "scope": "workspace model/header/focus/input implementation"
+    },
+    {
+      "number": 14,
+      "wave": 3,
+      "agent": "/root/w03_a14_quad_drawing",
+      "scope": "native bounded quad gradient and inset focus rendering"
+    },
+    {
+      "number": 15,
+      "wave": 3,
+      "agent": "/root/w03_a15_inspection_model",
+      "scope": "bounded read-only copied-state inspection model"
+    },
+    {
+      "number": 16,
+      "wave": 3,
+      "agent": "/root/w03_a16_native_integration",
+      "scope": "native workspace and flat CLI, shortcuts, inspector snapshot integration and strict diagnostics"
+    },
+    {
+      "number": 17,
+      "wave": 3,
+      "agent": "/root/w03_a17_native_renderer",
+      "scope": "native workspace header, Play geometry, Flat materials and read-only Rotary/Service renderer"
+    },
+    {
+      "number": 18,
+      "wave": 3,
+      "agent": "/root/w03_a18_workspace_acceptance",
+      "scope": "independent workspace/input acceptance and baseline fixture preservation"
+    },
+    {
+      "number": 19,
+      "wave": 4,
+      "agent": "/root/w04_a19_geometry_acceptance",
+      "scope": "independent full-inventory perspective projection, shared-edge and hit acceptance"
+    },
+    {
+      "number": 20,
+      "wave": 4,
+      "agent": "/root/w04_a20_material_refinement",
+      "scope": "reference-led material and text refinement of live renderer"
+    },
+    {
+      "number": 21,
+      "wave": 4,
+      "agent": "/root/w04_a21_native_workspace_acceptance",
+      "scope": "independent native workspace/pointer replay and legacy workflow preservation"
+    },
+    {
+      "number": 22,
+      "wave": 4,
+      "agent": "/root/w04_a22_capture_harness",
+      "scope": "repeatable actual native capture/provenance harness and provisional interface gallery"
+    },
+    {
+      "number": 23,
+      "wave": 4,
+      "agent": "/root/w04_a23_inspection_acceptance",
+      "scope": "independent actual-Session inspection truth and copied-state acceptance"
+    },
+    {
+      "number": 24,
+      "wave": 4,
+      "agent": "/root/w04_a24_setup_package",
+      "scope": "current operating guide and synchronized install/package/workflow inventories"
+    },
+    {
+      "number": 25,
+      "wave": 5,
+      "agent": "/root/w05_a25_native_raster_acceptance",
+      "scope": "independent playing-key held/focus/front/Flat and workspace visibility raster acceptance"
+    },
+    {
+      "number": 26,
+      "wave": 5,
+      "agent": "/root/w05_a26_musical_continuity",
+      "scope": "paired real-Session exact PCM and musical-history continuity across presentation transitions"
+    },
+    {
+      "number": 27,
+      "wave": 5,
+      "agent": "/root/w05_a27_responsive_inventory",
+      "scope": "independent responsive control/label/track inventory and usability audit beyond key-projection coverage"
+    },
+    {
+      "number": 28,
+      "wave": 5,
+      "agent": "/root/w05_a28_scale_text_audit",
+      "scope": "independent scaled native view, clip restoration and all Service value-row raster/text audit"
+    },
+    {
+      "number": 29,
+      "wave": 5,
+      "agent": "/root/w05_a29_midi_off_relocation",
+      "scope": "actual MIDI-disabled build and independent relocated15-file package/runtime qualification"
+    },
+    {
+      "number": 30,
+      "wave": 5,
+      "agent": "/root/w05_a30_operator_runbook",
+      "scope": "independent actual native operator journey against the current operating guide"
+    },
+    {
+      "number": 31,
+      "wave": 6,
+      "agent": "/root/w06_a31_scaled_surface_repair",
+      "scope": "repair observed fractional-scale horizontal gaps in native gradient/rounded surfaces with independent coverage regression"
+    },
+    {
+      "number": 32,
+      "wave": 6,
+      "agent": "/root/w06_a32_reference_comparison",
+      "scope": "independent original-reference versus actual native gallery comparison with concrete visual residuals"
+    },
+    {
+      "number": 33,
+      "wave": 6,
+      "agent": "/root/w06_a33_resource_budget",
+      "scope": "measured bounded disk/runtime footprint and resumability audit without hardware deadline claims"
+    },
+    {
+      "number": 34,
+      "wave": 6,
+      "agent": "/root/w06_a34_preset_label_polish",
+      "scope": "repair minimum accidental preset labels and reference-size title centering while preserving musical and hit geometry"
+    },
+    {
+      "number": 35,
+      "wave": 6,
+      "agent": "/root/w06_a35_native_midi_observation",
+      "scope": "independent diagnosis and meaningful correction of two observed native MIDI observation assertions on frozen executable"
+    },
+    {
+      "number": 36,
+      "wave": 6,
+      "agent": "/root/w06_a36_status_clarity",
+      "scope": "correct observed stale post-Load waiting status while preserving dynamic snapshot and pending semantics"
+    },
+    {
+      "number": 37,
+      "wave": 7,
+      "agent": "/root/w07_a37_final_operator_flow",
+      "scope": "independent final native operator Save/Load, held-note workspace and Flat focus journey"
+    },
+    {
+      "number": 38,
+      "wave": 7,
+      "agent": "/root/w07_a38_evidence_claims",
+      "scope": "independent current implementation/evidence claims and whole M0–M9 milestone boundary audit"
+    },
+    {
+      "number": 39,
+      "wave": 7,
+      "agent": "/root/w07_a39_ci_inventory",
+      "scope": "required native CI inventory and independent workflow/package consistency audit"
+    },
+    {
+      "number": 40,
+      "wave": 7,
+      "agent": "/root/w07_a40_sdkfree_windows_qualification",
+      "scope": "repair observed strict MSVC test compilation and qualify full SDK-free Release source"
+    },
+    {
+      "number": 41,
+      "wave": 7,
+      "agent": "/root/w07_a41_native_sanitizers",
+      "scope": "fully instrumented native ASan/UBSan qualification with separate leak-runtime capability and original-timeout evidence"
+    },
+    {
+      "number": 42,
+      "wave": 7,
+      "agent": "/root/w07_a42_desktop_pointer",
+      "scope": "actual desktop startup and persistent-pointer capability qualification"
+    },
+    {
+      "number": 43,
+      "wave": 8,
+      "agent": "/root/w08_a43_native_leak_ci",
+      "scope": "focused hosted native sanitizer/leak gate closing local ptrace limitation with measured instrumentation budgets"
+    },
+    {
+      "number": 44,
+      "wave": 8,
+      "agent": "/root/w08_a44_final_package",
+      "scope": "actual final MIDI-on/off install inventory and relocation qualification"
+    },
+    {
+      "number": 45,
+      "wave": 8,
+      "agent": "/root/w08_a45_documentation_freshness",
+      "scope": "independent current operator/setup/source-identity documentation and relevant-link audit"
+    },
+    {
+      "number": 46,
+      "wave": 8,
+      "agent": "/root/w08_a46_final_native_gallery",
+      "scope": "new actual native eight-view gallery from published polished product and current README UI/UX images"
+    },
+    {
+      "number": 47,
+      "wave": 8,
+      "agent": "/root/w08_a47_vst3_boundary",
+      "scope": "independent preserved native VST3 parameter/state/bus and build boundary with exact hosted source evidence"
+    },
+    {
+      "number": 48,
+      "wave": 8,
+      "agent": "/root/w08_a48_hosted_platform_evidence",
+      "scope": "independent exact published platform qualification and observed Windows fixture-failure closure"
+    },
+    {
+      "number": 49,
+      "wave": 9,
+      "agent": "/root/w09_a49_final_coherent_gate",
+      "scope": "final complete coherent native MIDI-on Release configure/build and all147-test gate with exact source identity"
+    },
+    {
+      "number": 50,
+      "wave": 9,
+      "agent": "/root/w09_a50_provenance_assets",
+      "scope": "independent original PDF/reference/assets and final gallery source/evidence provenance audit"
+    },
+    {
+      "number": 51,
+      "wave": 9,
+      "agent": "/root/w09_a51_final_visual_comparison",
+      "scope": "independent original-reference comparison and final eight-image native visual acceptance"
+    },
+    {
+      "number": 52,
+      "wave": 9,
+      "agent": "/root/w09_a52_bounded_native_burst",
+      "scope": "diagnose and repair observed workspace replay startup-baseline oracle, then qualify bounded legal native input transitions"
+    },
+    {
+      "number": 53,
+      "wave": 9,
+      "agent": "/root/w09_a53_handoff",
+      "scope": "durable current operator/developer handoff, whole-plan boundaries and concrete next tasks"
+    },
+    {
+      "number": 54,
+      "wave": 9,
+      "agent": "/root/w09_a54_session_checker",
+      "scope": "strict real-session completion consistency checker with independent positive/negative admission cases"
+    },
+    {
+      "number": 55,
+      "wave": 10,
+      "agent": "/root/w10_a55_final_ux",
+      "scope": "final operator journey, truthful UI affordance and reader-facing documentation clarity acceptance"
+    },
+    {
+      "number": 56,
+      "wave": 10,
+      "agent": "/root/w10_a56_publication_review",
+      "scope": "independent immutable candidate-tree publication, protected-boundary and honest qualification review"
+    },
+    {
+      "number": 57,
+      "wave": 10,
+      "agent": "/root/w10_a57_desktop_setup",
+      "scope": "identified X11-capable same-product build and bounded actual desktop operator acceptance"
+    },
+    {
+      "number": 58,
+      "wave": 10,
+      "agent": "/root/w10_a58_hosted_closure",
+      "scope": "primary exact-source native sanitizer/leak log and final hosted platform closure"
+    },
+    {
+      "number": 59,
+      "wave": 10,
+      "agent": "/root/w10_a59_accounting_storage",
+      "scope": "independent actual-session accounting, documentation-command and bounded storage audit"
+    },
+    {
+      "number": 60,
+      "wave": 10,
+      "agent": "/root/w10_a60_final_handoff",
+      "scope": "independent final implementation, source-recovery, local qualification and complete-plan handoff acceptance"
+    }
+  ],
+  "limits": [
+    "This is root's direct orchestration attestation, not independent platform dispatch authentication.",
+    "The strict checker verifies only retained record consistency and exact file identities.",
+    "Acceptance of an assignment may include a concrete blocker or partial product result; it does not close literal 1:1, desktop, macOS nonexecution or physical/model gates.",
+    "Original local final evidence is unavailable. New recovery notes and receipts are expressly labelled new authorship."
+  ]
+}

@@ -7,7 +7,8 @@ shared percussion, typed note ownership and phase-preserving rate changes are
 implemented. The source, console and fixed pedal mixtures remain unmeasured.
 
 Start with the [interface operating guide](INTERFACE_RUNBOOK.md) and
-[current interface checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md),
+[current interface handoff](INTERFACE_RECOVERY_HANDOFF.md) and
+[checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md),
 [scanner handoff](SCANNER_HANDOFF.md) or [calibration handoff](CALIBRATION_HANDOFF.md)
 for the relevant active track. The [earlier standalone handoff](STANDALONE_HANDOFF.md)
 retains its named source and qualification. The [pedal handoff](PEDAL_HANDOFF.md) retains
