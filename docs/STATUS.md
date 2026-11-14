@@ -49,21 +49,86 @@ Linux/macOS Release and Linux sanitizer pass 101/101; all three native standalon
 and VST3 platforms pass their configured suites. Those results resolve the earlier
 canonical-output, path-hook and standalone progress failures at this source.
 Root's isolated target-preservation fixture repair passes all 43 demo methods
-locally; fresh Windows qualification remains open. Replay/install source was
+locally and on actual Windows at `6214032f`; the separate
+[final standalone audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md) records that
+completed gate. Replay/install source was
 absent from that hosted tree. The later [combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
 passes 103/103 unfiltered local Release suites in 197.85 seconds. Its exact tree
 excludes the subsequent allocation optimization. Composition review passes 220
 finite cases; the retained resource profile and accounting audit complete wave 7.
 
-## Active native standalone continuation
+Root subsequently integrated publication `3b0979b` with the completed standalone
+records. The [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md)
+retains fresh frozen-source replay **69/69** and installation **16/16** local
+methods. Actual 3b Windows core passes **102/103**: the new package's late-abort
+test compared an LF sentinel with CMake's CRLF bytes. A newline-independent
+sentinel preserves all partial-package assertions and passes all 16 installation
+methods locally; fresh Windows qualification belongs to its forthcoming public
+source. No production or standalone payload changed in this fixture repair.
+
+## Completed native standalone continuation
 
 The independent [standalone session](development/2026-11-13-next-phases/README.md)
-has accepted **56 of 59 actually dispatched assignments**, including nine complete
-waves. The final assignment has not yet been dispatched. The [native app](STANDALONE_APP.md) now runs the unchanged nominal dry
+has accepted all **60 actual assignments in ten logical waves**. The
+[strict completion record](development/2026-11-13-next-phases/completion-check.json)
+passes with zero running, blocked or undispatched rows. The
+[native app](STANDALONE_APP.md) runs the unchanged nominal dry
 engine in a resizable instrument window with keyboard/pointer performance,
 separate edited/sounding banks, pedals, percussion, expression, Audio/Help
 panels and explicit saved controls. Follow the [operational handoff](STANDALONE_HANDOFF.md)
 and actual manifest. The scanner continuation below remains a separate track.
+
+### Final code and current evidence
+
+Published code candidate: `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, tree
+`10f070c54d176571f1919d8141d24dd82db0e41c`. Root fetched it and verified exact
+local/remote tree equality after the guarded update. It preserves concurrent
+calibration `955fc4c` and changes only two tests from the preceding candidate.
+All production, CMake and installed payload inputs are unchanged from 183.
+
+The [fresh combined Release gate](reviews/STANDALONE_COMBINED_FINAL_GATE.md)
+passes **110/110 suites** at published `183fc9e2`, with all 957 source blobs/modes
+verified before/after, nine installed files and the same executable bytes used
+in the retained chapel demo. The [final native integration](reviews/STANDALONE_FINAL_INTEGRATION.md)
+passes **14/14 ASan/UBSan native suites** after the explicitly identified chapel
+and workflow oracle changes: 22 chapel auditions and 25 workflow processes,
+with no observed sanitizer diagnostics. All 213 built instrumented objects,
+five archives, ten runtime executables and generated inputs remain unchanged.
+Local leak detection remains excluded for the separately demonstrated ptrace
+limitation; the hosted core leak gate is distinct evidence.
+
+The [capture portability review](reviews/STANDALONE_CAPTURE_PORTABILITY.md)
+retains all 41 original Windows failures, calibration authorship, sensitive
+counterexamples and 210 methods with 208 passes/two existing capability skips.
+At 183, all four originally failing suites pass on Windows; the separate demo
+fixture retained **100/101** core suites because `readlink()` returned a different
+valid Windows target spelling. The [root preservation repair](reviews/STANDALONE_FINAL_PORTABILITY_REPAIR.md)
+keeps the actual link target and same-API metadata unchanged and passes 43/43
+local methods. Exact 621 hosted results and actual downloaded payload identities
+belong to the [final platform audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md).
+
+All **ten hosted jobs** at exact 621 are completed successfully: Linux, Windows
+and macOS core Release each pass **101/101**, as does Linux ASan/UBSan with leaks
+enabled; standalone passes **14/14** on each platform; VST3 passes **8/8** on
+Linux and **7/7** on Windows/macOS. Root independently observed the completed
+job states. The actual Windows diagnostics pass all five formerly failing
+audio/corpus/demo suites; their internal capability skips remain explicitly
+separate from the outer CTest counts. The artifact audit verifies each actual
+nine-file package and corrected notice bytes, then executes the downloaded
+Linux app after relocation with complete input/ownership/acknowledgment checks.
+
+The [60-case benchmark](../examples/benchmarks/standalone-session-matrix-v1/README.md)
+retains all 6,000 raw render intervals, 4,761,600 measured frames and 240 checked
+state snapshots. The [multi-configuration audit](reviews/STANDALONE_MULTICONFIG_INSTALL.md)
+qualifies explicit Debug/Release, custom Unicode/space paths, unknown-configuration
+failure preservation and relocation. The [repair/handoff review](reviews/STANDALONE_REPAIR_HANDOFF_REVIEW.md)
+checks the final test oracles, Unicode stream regression, Windows link fix and
+usable build recipes. [Two actual chapel views](../examples/demos/standalone-chapel-v1/README.md)
+retain complete controls, held-note endpoints, provenance and pixel identities.
+The [milestone reconciliation](reviews/STANDALONE_MILESTONE_RECONCILIATION.md)
+keeps the complete M0–M9 dependency plan and next contracts explicit.
+
+### Earlier standalone checkpoints and retained failures
 
 All 500 atlas pages were reread in six disjoint ranges, including selected actual
 page images. The [scope](STANDALONE_SCOPE.md) preserves the 45 public parameter
@@ -107,24 +172,26 @@ Four [actual native screenshots](reviews/STANDALONE_WINDOW_DEMO.md) retain exact
 source and runtime provenance. Earlier [checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md)
 retains its original source scopes.
 
-Current code candidate `0085e338388f2c7516a7d455f11692b94e9451f4`, tree
+Earlier code candidate `0085e338388f2c7516a7d455f11692b94e9451f4`, tree
 `19c763503f67e1f054d2d27b6ec3d8fca2e36474`, is published and fetched with exact
 tree equality. It includes the accepted timing/reader repairs, the configuration
 install guard, corrected bundled notices and preserved calibration `779fb6e`.
 Its fresh complete native-enabled Release gate passed **105/105**. The first
 fully instrumented native group passed **13/14**: the chapel suite required a
 brief sampled intermediate hold that can be coalesced between UI observations.
-Assignment 55 retains that failure and qualifies literal command-prefix checks
-with independent held/released endpoints. No sanitizer diagnostic was observed;
-this failed acceptance result is not a full sanitizer pass.
+Assignment 55 retains that failure and the later chapel-only 13/14 result, whose
+remaining failure was two general workflow sample assertions. It adds literal
+command-prefix checks and independent held/released endpoints before the final
+14/14 gate above. Neither failed run is reclassified as a passing sanitizer run.
 
 At this candidate, standalone and VST3 Linux/Windows jobs pass. Core Linux Release
 and Linux ASan/UBSan/leaks pass; Windows core passes **92/96**, retaining canonical
 JSON newline and filesystem-fixture failures in the newly merged calibration
 tools. All three queued macOS jobs were subsequently cancelled without an
 observed execution. Concurrent calibration `955fc4c` supplies separately authored
-repairs; assignment 58 independently reviews and qualifies them before root's
-integration. Assignment 59 reviews these final repairs and the practical handoff.
+repairs; assignment 58 independently reviewed and qualified them, and root
+preserved their authorship during integration. Assignment 59 reviewed the final
+repairs and practical handoff.
 The [chapel demonstration](../examples/demos/standalone-chapel-v1/README.md)
 retains two actual candidate renders, complete musical endpoints and exact bytes.
 
@@ -141,9 +208,8 @@ normal Release, constrained single-CPU Release and a fresh fully instrumented
 TSAN run, with exact initial/final publication handshakes and controlled recovery
 coverage. The [timing repair](reviews/STANDALONE_TIMING_REPAIR.md) passes **3/3**
 focused ASan/UBSan native suites, 38 methods and 210 app processes. These accepted
-repairs are in the published candidate; its complete Release gate now passes,
-while the separate chapel oracle and Windows calibration failures remain above.
-The earlier platform passes do not qualify later source.
+repairs are retained in the later candidates and their exact scoped results
+above. The earlier platform passes do not qualify later source.
 
 The [hosted artifact audit](reviews/STANDALONE_HOSTED_PLATFORM_REVIEW.md) verifies
 actual Linux/Windows packages from `5b8e241`, including relocated Linux replay.

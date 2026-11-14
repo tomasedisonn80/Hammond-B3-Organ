@@ -115,3 +115,62 @@ failure, and 59 reviews the repaired oracles and operational handoff. Root owns
 integration, the final actual assignment, strict sixty accounting and guarded
 publication. No queued job, source hash or partial record audit substitutes for
 those remaining results.
+
+## Final code and local gates — 14 November 2026
+
+All **60 actual assignments** are dispatched, with **59 accepted results** and
+only the final hosted/artifact audit active at this checkpoint. Later closure
+belongs to the actual manifest and the final section below, once recorded.
+Resumed turns and the root integration repairs are not additional assignments.
+
+Final code candidate `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, tree
+`10f070c54d176571f1919d8141d24dd82db0e41c`, is published and fetched with exact
+local equality. It follows the fresh **110/110 combined Release** source at
+`183fc9e2`. Assignment 55's final changed-test native group passes **14/14
+ASan/UBSan**, including 25 workflow processes and 22 chapel auditions. Its
+original 105/105 Release and both failed 13/14 native gates remain separate.
+The [combined gate](../../reviews/STANDALONE_COMBINED_FINAL_GATE.md),
+[final native integration](../../reviews/STANDALONE_FINAL_INTEGRATION.md),
+[capture review](../../reviews/STANDALONE_CAPTURE_PORTABILITY.md),
+[Windows demo-fixture repair](../../reviews/STANDALONE_FINAL_PORTABILITY_REPAIR.md)
+and [independent repair review](../../reviews/STANDALONE_REPAIR_HANDOFF_REVIEW.md)
+retain exact sources, commands, failures, local capability limits and authorship.
+
+The final public delta contains only the reviewed workflow and Windows demo tests;
+production, CMake and installed payload inputs remain unchanged. Actual final
+platform results and downloaded bytes are the separate assignment-60 audit.
+The [operational handoff](../../STANDALONE_HANDOFF.md) now supplies build/run/
+install recipes, evidence boundaries and concrete MIDI/accessibility/M3 successor
+contracts. The complete M0–M9 plan remains authoritative; this software adapter
+session does not close physical acquisition or final product-release gates.
+
+## Completed session — all sixty accepted
+
+All **60 actual new assignments are complete and substantively accepted** across
+**ten waves of six**. The final [strict checker output](completion-check.json)
+passes with 60 dispatched, 60 completed, ten complete waves and zero running,
+blocked or undispatched assignments. The six atlas ranges cover every page 1–500;
+the source PDF remains byte-identical. Root's actual dispatch/acceptance history
+is separate from the checker's retained-record consistency claim. Earlier
+sessions, repeated human-readable names in those sessions and resumed turns
+are not additional assignments in this ledger.
+
+The [final platform audit](../../reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md)
+observes all ten hosted jobs successful at exact code `6214032f`: 101/101 core
+suites on Linux/Windows/macOS and Linux sanitizers/leaks, 14/14 standalone on each,
+and VST3 8/8 Linux / 7/7 Windows/macOS. It verifies six actual standalone ZIPs,
+all 27 payload records and corrected notices; downloaded Linux replay succeeds
+after relocation with four On/four Off, final sequence 9, zero faults and intact
+inputs. Windows's internal capability skips remain distinct from its 101/101
+outer result. The durable [artifact evidence](../../reviews/STANDALONE_FINAL_PLATFORM_ARTIFACTS.json)
+includes exact identities, commands and audit-program sources.
+
+Every assignment owns a substantive note in this directory. The final handoff,
+status, next steps, plan, acceptance/release assessment and standing AGENTS rule
+are reconciled. Root owns the final guarded documentation publication and remote
+tree check; code qualification remains attached to the exact versions named
+above. The independent scanner, rotary and calibration tracks remain preserved.
+The next bounded work is external MIDI ownership, a native accessibility bridge
+and a typed fixed-registration selector, alongside the existing numerical and
+physical-evidence dependencies. Completing this session does not claim a
+calibrated instrument, physical device/DAW validation or signed production release.

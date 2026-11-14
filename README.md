@@ -27,17 +27,32 @@ expression, keyboard/pointer playing, audio settings, and explicit control-file
 saving/loading. Its [operational handoff](docs/STANDALONE_HANDOFF.md) records
 setup and the current qualification boundary. The [actual window demonstration](examples/demos/standalone-window-v1/README.md)
 retains four native backbuffer screenshots and their source/diagnostic identities.
+The [chapel audition views](examples/demos/standalone-chapel-v1/README.md)
+add reference/minimum-size captures with Upper C4 and Lower E4 held and a complete
+explicit documentary registration.
 [Scripted workflows](docs/STANDALONE_WORKFLOWS.md), a [source-identified render benchmark](docs/STANDALONE_BENCHMARK.md)
 and [chapel registration export](docs/CHAPEL_CONTROLS.md) have independent acceptance.
 These software checks use explicit SDL dummy drivers; real-device and
 production-release gates remain separate.
-The [new sixty-assignment session](docs/development/2026-11-13-next-phases/README.md)
-retains distinct records from earlier work. Ordinary builds remain SDK-free.
+The [completed standalone session](docs/development/2026-11-13-next-phases/README.md)
+accepted **60 newly dispatched agents in ten logical waves**, including full
+500-page atlas coverage. Its [strict completion record](docs/development/2026-11-13-next-phases/completion-check.json)
+retains sixty completed rows with no earlier/resumed workers counted again.
+Ordinary builds remain SDK-free.
 
-![Actual standalone instrument window with the upper C4 held](examples/demos/standalone-window-v1/reference.png)
+![Actual standalone chapel audition with Upper C4 and Lower E4 held](examples/demos/standalone-chapel-v1/reference.png)
 
 This retained native software-renderer view has matching
-[source and runtime provenance](examples/demos/standalone-window-v1/provenance.json).
+[source and runtime provenance](examples/demos/standalone-chapel-v1/provenance.json).
+
+The [final platform audit](docs/reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md)
+records all ten successful hosted jobs at code revision
+[`6214032f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/6214032f3565f9e221fcf3988e33a22a73bb4ea8):
+core Release on Linux/Windows/macOS, Linux sanitizers/leaks, and all three
+standalone and VST3 builds. Actual package bytes, relocated execution and
+capability limits are retained. The [combined Release gate](docs/reviews/STANDALONE_COMBINED_FINAL_GATE.md)
+and [fully instrumented native gate](docs/reviews/STANDALONE_FINAL_INTEGRATION.md)
+keep their own exact source scopes and original failure records.
 
 The [scanner continuation](docs/SCANNER_HANDOFF.md) now includes a strict circuit
 graph/compiler, independent primary-source review, AC/transient references and

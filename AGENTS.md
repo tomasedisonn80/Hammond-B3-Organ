@@ -25,8 +25,10 @@ radiation-boundary inputs, one physical trajectory per rotor, explicit effect
 ownership and unresolved M5/M6 dependencies. Its synthetic fixtures cannot be
 promoted to factory dimensions, physical captures or an end-to-end fidelity pass.
 
-An independent [native standalone session](docs/development/2026-11-13-next-phases/README.md)
-also begins at `ba0d9c9`, with its own sixty actual assignments and ten waves.
+The completed [native standalone session](docs/development/2026-11-13-next-phases/README.md)
+began at `ba0d9c9` and accepted all sixty actual assignments in ten waves.
+Its [strict completion record](docs/development/2026-11-13-next-phases/completion-check.json)
+is separate from other sessions and does not finish the whole M0–M9 project.
 Its [scope](docs/STANDALONE_SCOPE.md) advances the M9 adapter against the existing
 nominal dry core while the scanner track continues. Inspect all active tracks
 and their actual manifests before taking ownership. Standalone-specific code

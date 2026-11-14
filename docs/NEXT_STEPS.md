@@ -10,9 +10,11 @@ Fixed policy evaluation, adversarial audio/corpus admission, identity-bound file
 jobs and declaration readiness are implemented and independently qualified.
 The accepted replay and separate 57-file CaptureTools package now pass the
 [coherent 103-suite local gate](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md).
-Seven waves and 42 assignments are accepted. Publish the exact tested source and
-its retained reviews, preserve inspected concurrent advances, and observe fresh
-hosted outcomes for the Windows preservation-fixture repair and package/replay.
+Seven waves and 42 assignments are accepted and published through `3b0979b`.
+The older demo preservation-fixture repair passes actual Windows at `6214032f`.
+Observe fresh hosted Windows execution of the new package's newline-independent
+late-abort sentinel; the original 3b failure and focused local repair evidence
+are in the [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md).
 Resource profiling identified a metadata read allocating from its maximum cap;
 qualify the minimal observed-size read change with independent failure and report
 identity checks before accepting it. Continue graph/lineage, failure preservation,
@@ -43,31 +45,66 @@ are accepted; later work is recorded only when actually dispatched.
 
 ## Resume here
 
-The independent [standalone session](development/2026-11-13-next-phases/README.md)
-is also active. Read [STANDALONE_HANDOFF.md](STANDALONE_HANDOFF.md), its actual
-manifest and [scope](STANDALONE_SCOPE.md) before editing `apps/standalone/`.
-The native app, allocation/concurrency acceptance, installed component, scripted
-musical workflows and SDK-free source-identified benchmark now exist. The
-maximum-plan replay repair, explicit chapel control-file audition and four
-source-identified native screenshots have passed their scoped acceptance.
-The combined published candidate `0085e33` passes a fresh **105/105 Release**
-gate, including the accepted timing/reader repairs and configuration-install
-guard. Its first instrumented native gate retains **13/14** because chapel
-sampling can coalesce a brief hold. Finish assignment 55's independent endpoint
-and literal-prefix checks, then qualify the changed native test group while
-preserving the original result. Hosted native/VST3 Linux and Windows pass;
-Windows core retains **92/96** calibration portability failures. Integrate and
-independently review the calibration authors' `955fc4c` fixes, then observe the
-actual repaired hosted run. The three queued macOS jobs were cancelled without
-observed execution; an earlier platform pass does not qualify this candidate.
+The [standalone handoff](STANDALONE_HANDOFF.md), actual
+[session manifest](development/2026-11-13-next-phases/assignments.json) and
+[scope](STANDALONE_SCOPE.md) describe the implemented M9 adapter. The native
+window, Session/UI/state/device acceptance, callback/concurrency handling,
+relocatable component, bounded replay, documentary chapel audition and retained
+benchmark now exist. All sixty requested assignments were actually dispatched;
+final acceptance and publication are recorded in the manifest and status.
 
-Clean setup, Debug/Release custom-path installation, relocated operation,
-actual older hosted archives, the 60-case benchmark and two additional chapel
-views are independently recorded. Finish the real final-wave repair/handoff
-review and hosted artifact audit, accept all sixty actual results, run the
-strict session checker and publish with an expected-head guard. Preserve exact
-source scopes and concurrent scanner, rotary and capture/calibration work.
-The benchmark's raw intervals are observations, not physical deadline passes.
+Published code `6214032f3565f9e221fcf3988e33a22a73bb4ea8` contains the final
+workflow and Windows demo-fixture corrections. The preceding coherent source
+passes [110/110 combined Release suites](reviews/STANDALONE_COMBINED_FINAL_GATE.md);
+the final changed native tests pass
+[14/14 ASan/UBSan suites](reviews/STANDALONE_FINAL_INTEGRATION.md). Exact hosted
+results and downloaded packages belong to the
+[final platform audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md). Earlier
+105/105, both failed 13/14 native gates, Windows 92/96 and 100/101, and Linux
+89/90 retain their own identities and concrete repair evidence. No failed
+unchanged retry is promoted to acceptance.
+
+The [milestone reconciliation](reviews/STANDALONE_MILESTONE_RECONCILIATION.md)
+connects these product advances to the complete M0–M9 plan. Continue the
+concrete independent adapter/model work below while preserving the scanner,
+rotary and calibration tracks. The benchmark's raw intervals are observations,
+not physical deadline passes; the existing actual screenshots use dummy drivers.
+
+## Next standalone development
+
+The next independent M9 implementation is an external MIDI adapter for the
+existing nominal instrument. First freeze the supported backend/version/notice,
+timestamp and late-event policy, bounded admission and disconnect behavior.
+Start from `apps/standalone/`, [PERFORMANCE_INPUT.md](PERFORMANCE_INPUT.md) and
+[STANDALONE_SESSION.md](STANDALONE_SESSION.md). The Session queue has one producer:
+serialize incoming device events through that owner rather than writing from a
+second callback. Preserve independent UI/device note ownership so UI focus loss
+does not release a controller's held notes. Acceptance must cover velocity-zero
+release, duplicate and channel ownership, out-of-order/late input, overflow,
+disconnect, restart, controls and joined shutdown with independent event streams.
+Then qualify a named physical controller/audio device and record its OS/backend,
+actual timing, dropout and hotplug observations separately from synthetic events.
+
+In parallel, select one native accessibility bridge and map the existing controls
+to semantic names, roles, values, focus and actions using copied UI state. Verify
+actual screen-reader navigation, value editing, status/error announcements and
+scale changes. The current keyboard-operable canvas does not supply that bridge.
+Keep audio processing, Engine access and UI lifetime independent of assistive
+technology calls. [UI ownership](STANDALONE_UI.md) and the
+[milestone reconciliation](reviews/STANDALONE_MILESTONE_RECONCILIATION.md)
+provide the current boundary and concrete exit criteria.
+
+For the next M3 model slice, specify a typed exclusive fixed-registration selector
+using the admitted eighteen chapel rows, while retaining four A/B banks, Cancel,
+existing note owners and explicit upper-B percussion eligibility/history. Agree
+append-only parameter IDs and saved-state migration before editing shared fixed
+structures or native adapters. Compare each selection with an independently
+initialized equivalent bank at continuing source phase; cover held chords,
+inactive-bank edits, partly recovered percussion, B-to-fixed-to-B transitions,
+same-offset ordering, block partition invariance and failed-call rollback.
+Acquire and independently compare the underlying factory Table IV before
+upgrading the documentary catalog's source status. Physical latch/contact
+networks and loaded gains remain a separate contract and measurement gate.
 
 Read [STATUS.md](STATUS.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [PLAN.md](PLAN.md), [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) and [AGENTS.md](../AGENTS.md), then inspect the actual checkout and remote head. The [current manifest](development/2026-11-13-scanner/assignments.json) belongs to the new sixty-assignment scanner session. The earlier original, console and pedal sessions are completed history and are not counted again.
 
@@ -96,7 +133,7 @@ Keep all 45 existing public controls, old state migrations, source/profile/maps,
 
 Physical M3 still needs preset latch/loading, continuous drawbar conductance, switching bandwidth, loaded expression and the pedal reactor network. Scanner physical admission requires an identified production/AO-28 revision, winding/coupling/loading, calibrated voltage/time and actual stationary/rotating captures. Follow [CAPTURE_PROTOCOL.md](CAPTURE_PROTOCOL.md); a numerical fixture is not a measured specimen.
 
-M5 connected AO-28 precedes complete dry-organ validation; M6 selects a specific Leslie 122 circuit/load while 147 stays separate. M7 owns independent horn/drum motion and propagation without duplicating filters or room effects. M8 requires held-out measured evidence. M9 still needs device/standalone and DAW workflows, accessible custom UI, distribution, license/branding and signing qualification. [RELEASE_READINESS.md](RELEASE_READINESS.md) retains those separate gates.
+M5 connected AO-28 precedes complete dry-organ validation; M6 selects a specific Leslie 122 circuit/load while 147 stays separate. M7 owns independent horn/drum motion and propagation without duplicating filters or room effects. M8 requires held-out measured evidence. M9 still needs physical audio/MIDI and DAW workflows, native semantic accessibility, further custom UI work, distribution, license/branding and signing qualification. [RELEASE_READINESS.md](RELEASE_READINESS.md) retains those separate gates.
 
 ## Required completion workflow
 

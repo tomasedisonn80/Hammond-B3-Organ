@@ -1,5 +1,127 @@
 # Development log
 
+## 2026-11-14 — Final concurrent integration and package fixture correction
+
+- Preserved calibration publication `3b0979b` and completed standalone closure
+  in local merge `3e1a6cdec048d2b3926457cb2e20a6c4e7dedaa5`, tree
+  `4c2f1f6c9e31e364029cbc13ebb53165fc1be062`. Shared status/log conflicts retain
+  both tracks' complete records. All standalone, core and plugin implementation
+  inputs match the 621 checkpoint; the new CaptureTools component remains
+  separate. No additional agent is counted.
+- From the immutable 993-file merge archive, root executed
+  `python3 -B tests/test_capture_replay.py -v` and
+  `python3 -B tests/test_capture_install.py -v`: **69/69** and **16/16** passed,
+  respectively. All source files remained unchanged. These are focused suites,
+  not an invented new full native-enabled gate.
+- Actual 3b Windows core job `132262885865` passed **102/103**; its sole failure
+  compared LF sentinel bytes with CMake's native CRLF write in the intentional
+  late-install-abort fixture. Root removed the sentinel newline in both the
+  fixture and expected bytes. Rejection, diagnostics, partial-package counts,
+  copied bytes and capability policy remain unchanged; no production code changed.
+  The exact frozen one-test overlay passes all **16 methods** with zero skips
+  in 6.262 seconds (6.405 recorded process time). Original failure, source and
+  log identities are retained in the
+  [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md).
+- Reconciled current M8 acceptance/next steps with implemented replay and package
+  installation. The older Windows demo repair is now explicitly closed at 621;
+  the new package fixture's hosted recheck is a separate forthcoming gate.
+  Final standalone accounting remains sixty accepted assignments in ten waves.
+- Before publication, `git diff --check` passed; the strict 60-assignment check
+  passed again with no pending rows. Source integrity passed 583 Markdown files,
+  3,229 local links and the original 500-page PDF identity. The calibration
+  component include is the only top-level CMake change from 621; all tracked
+  standalone/core/plugin implementation paths compare equal.
+
+## 2026-11-14 — All sixty standalone assignments accepted
+
+- Accepted assignment 60's complete final platform/artifact audit. All ten jobs
+  at `6214032f` succeeded: core Release on three platforms and Linux sanitizers/
+  leaks each 101/101, standalone 14/14 on each, and VST3 8/8 Linux / 7/7
+  Windows/macOS. Root independently fetched all completed job states and
+  rehashed all six actual downloaded standalone ZIPs. The audit retains all
+  27 installed file identities, complete corrected notices, platform modes and
+  the separately downloaded Windows core diagnostics.
+- Actual relocated Linux replay uses the downloaded ELF, empty PATH, explicit
+  dummy drivers and a Unicode/space directory: 238 callbacks / 121,856 frames,
+  four On/four Off, final sequence 9, every original owner/prefix, preserved
+  controls/inputs and joined empty shutdown with zero reported faults. Native
+  Windows/macOS execution remains the named hosted scope. Capability skips,
+  runtime floors and signing/physical limits stay explicit in the report.
+- The final strict standalone checker passed with **60 dispatched / 60 completed,
+  ten complete waves and zero running, blocked or undispatched assignments**.
+  Its actual output is retained in `completion-check.json` in this session's
+  directory. The preceding source-integrity check passed 564 Markdown files /
+  3,156 local links and the unchanged PDF; later integrated files need their
+  own final source check. Original-session consistency counts are not reused.
+- Reconciled README, AGENTS, plan, status, operational handoff, next steps and
+  acceptance/release assessments. Every future agent must inspect current
+  ownership/source, complete meaningful checks, preserve failures and physical
+  limits, update durable context, commit/push authorized work and verify the
+  guarded remote result. This sixty-agent session is complete; successor work
+  is concrete in the handoff and does not fabricate another dispatch.
+- Before closure, fetched concurrent calibration `3b0979b`, which adds qualified
+  report replay, a separate CaptureTools package, resource profiling and accounting.
+  Its own local 103-suite result is separately named. Its delta preserves all
+  standalone source and adds only a separate installation include to top-level
+  CMake. Root is integrating that accepted remote work and validating affected
+  inputs before the final guarded documentation publication.
+
+## 2026-11-14 — Final standalone code and completed local qualification
+
+- Published final test-source candidate
+  `6214032f3565f9e221fcf3988e33a22a73bb4ea8`, exact tree
+  `10f070c54d176571f1919d8141d24dd82db0e41c`, with expected parent
+  `183fc9e2a5e1530787deb9a6bb823e8f6ef61c2e`. Root fetched and compared exact
+  trees, verified the index and preserved local source history on
+  `standalone-local-final-oracle-code`. No force update was used. Its delta
+  contains only the independently reviewed workflow and demo test corrections;
+  production, CMake and installed payload inputs are unchanged from 183.
+- Root's fresh 957-file combined 183 archive passed **110/110 native-enabled
+  Release suites in 130.339 seconds**, explicit nine-file installation and source
+  integrity: 554 Markdown files / 3,066 local links, with unchanged PDF bytes.
+  Every Git blob/mode remained intact. The Release app is byte-identical to the
+  named chapel demo binary. See the
+  [combined final gate](reviews/STANDALONE_COMBINED_FINAL_GATE.md); it does not
+  silently qualify the two later test changes or claim all Python capabilities.
+- Accepted assignment 55's complete final native qualification. Original 0085
+  Release remains **105/105**; the first instrumented group retains **13/14**
+  with a chapel sample assertion. The chapel-only repaired group retains a
+  second **13/14**, with two general workflow sample assertions. Literal applied
+  command prefixes plus explicit bounded endpoints replace those particular
+  sample requirements, preserve original scripts/timeouts/controls/counts/state
+  bytes and retain bounded failure diagnostics. Focused Release and ASan checks
+  pass, followed by **14/14 ASan/UBSan native suites in 117.292 seconds** with
+  25 workflow processes and 22 chapel auditions. All 213 instrumented objects,
+  five archives, ten runtime executables and generated inputs match before/after;
+  the separate CTest driver preserves every original setting after the frozen
+  source substitution. No local leak-detection pass is inferred.
+- Accepted assignment 58's independent portability investigation and one added
+  Unicode-path/StringIO regression. It preserves the calibration authors'
+  producer fixes, all 41 original Windows failure/error records and the first
+  correctly rejected authored fixture. All four affected suites pass locally:
+  210 methods, 208 passes and two existing capability skips. Real text-wrapper
+  and ancestor-alias counterexamples fail on original source and pass repaired
+  source; these Linux probes do not substitute for Windows execution.
+- Windows core at 183 then passed the four capture suites but retained **100/101**:
+  the newly integrated demo fixture compared native symlink target spelling
+  with its creation argument. Root recorded the actual target before the call,
+  required its exact preservation afterward and added same-lstat metadata
+  checks, retaining rejection/type/absent-target assertions. The frozen 43-method
+  demo suite passes; a real relative-target counterexample fails the old fixture
+  and passes the correction. No producer or new skip changed. See the
+  [final portability repair](reviews/STANDALONE_FINAL_PORTABILITY_REPAIR.md).
+- Accepted assignment 59's independent producer AST, stream/error, sampled-state,
+  diagnostic retention, Windows link-preservation and operational recipe review.
+  Concrete negative controls remain sensitive to wrong ownership, early/backward
+  application, incomplete acknowledgments, altered controls and device epochs.
+  It verifies all 57 benchmark inputs and selected chapel-demo source identities.
+- All sixty actual assignments are dispatched; 59 are accepted at this entry.
+  The final actual hosted/package audit is assignment 60. Its source-specific
+  results, artifact bytes and final session acceptance are recorded separately.
+  Current handoffs now name external MIDI ownership, native semantic accessibility
+  and the typed fixed-registration selector as concrete independent next work,
+  preserving scanner G5 and physical AO-28/Leslie/acquisition prerequisites.
+
 ## 2026-11-14 — Qualified replay/install source and completed calibration wave 7
 
 - The immutable combined commit `16d72e1` (tree `5619bbb018830e071bc2ce45af84984cdd16bfc1`)

@@ -73,16 +73,41 @@ requires `HAMMOND_STANDALONE_EXECUTABLE`; absence is a prerequisite error, never
 a skipped pass. It sends actual `--state`, `--input-script` and `--diagnostics`
 arguments to the built SDL application with dummy audio and video drivers.
 It executes all eighteen individual registrations across alternating A/B banks,
-plus two paired-manual cases. Every case observes successful Save status, exact
-acknowledged controls, original note ownership, note-on and release, final empty
-holds, no faults/errors/overflow/recovery, and finite unclipped copied output.
+plus four paired-manual cases: two complete releases and two held endpoints.
+Every case observes successful Save status, exact acknowledged controls, original
+note ownership, the exact accepted note-on/release counts, no faults/errors/
+overflow/recovery, and finite unclipped copied output. All cases require joined
+shutdown with empty holds. The eighteen single-manual and two complete-release
+cases also require an empty final acknowledged snapshot before shutdown.
 Expression zero must yield zero observed peak; nonzero cases require a positive
 peak. Catalog/script bytes survive, and state bytes match the independent grammar.
+
+The replay UI samples coherent callback snapshots; it does not promise an
+observation of every intermediate transition. Each sampled hold set is checked
+against the literal note-command prefix identified by its applied sequence.
+Sequences must progress monotonically, have equal resolved/applied values, and
+never exceed submitted commands. Every sample retains the exact complete controls.
+The original 700 ms single-manual and 900 ms paired scripts keep their schedules
+and final acknowledgement checks; no assertion requires a UI sample inside the
+100 ms between the paired releases.
+
+Two additional 650 ms paired scripts omit only the final Upper release. They
+require two accepted note-ons, one accepted Lower note-off, and an acknowledged
+endpoint with Upper MIDI 60 held, Lower empty and pedals empty. This independently
+requires correct Upper ownership after the Lower release, including at expression
+zero, without depending on an intermediate UI sample. The two original paired
+scripts still require two note-ons, two note-offs, and the final empty endpoint.
+The suite therefore performs **22 real exporter/application invocations** within
+the existing eight-second per-process and 90-second CTest budgets.
 
 The paired `0.1` case first checks the exporter bytes, then supplies accepted
 shorter `0.1` text to the C++ parser. Ctrl+S while notes are held must rewrite it
 to `0.10000000000000001`, proving actual serialization rather than unchanged
 canonical input. No automatic smoke-note shortcut supplies these observations.
+Canonical state bytes, untouched input files and the final endpoint are checked
+before the sampled-prefix oracle. A post-invocation failure copies up to 65,536
+bytes of diagnostic JSON into the failure record before temporary cleanup, with
+an explicit marker if truncated or unavailable.
 
 ## Reproduce and continue
 
@@ -99,6 +124,10 @@ Canonical CTest names are `python_test_chapel_controls` and
 `test_standalone_chapel`; the latter has a 90-second timeout and native labels.
 [Assignment 39](development/2026-11-13-next-phases/39-chapel-controls-acceptance.md)
 records the actual 15/15 SDK-free and 2/2 native results and frozen identities.
+Those historical native results covered twenty application invocations. The
+[final integration review](reviews/STANDALONE_FINAL_INTEGRATION.md) retains the
+later sampled-transition failure and the separate changed-test qualification;
+the earlier passing result does not erase that failure.
 Root owns assembled CTest and publication evidence. Real audio devices, other
 platforms, physical selector/interlock behavior and loaded-gain calibration need
 their own evidence; a nominal dry audition does not close those gates.

@@ -5,13 +5,20 @@
 The repository now includes an optional native standalone instrument window,
 keyboard/pointer playing, retained controls, audio-device lifecycle management,
 replay, explicit chapel-control auditions and a relocatable nine-file component.
-Published `649b12c7d1faa7601fde1019e913347c65a6634a` passed standalone 14/14
-and packaging on Linux, Windows and macOS; its remaining Linux core concurrency
-assertion and the later timing repair retain separate qualification scopes.
-The [current status](STATUS.md), [standalone handoff](STANDALONE_HANDOFF.md) and
-[platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md) supersede the
-historical statements below about an absent standalone application or pending
-macOS build. The VST3 surface still uses generic host controls.
+The named combined source at `183fc9e2` passes **110/110 Release suites**;
+the final sampled-state oracles pass **14/14 native ASan/UBSan suites** with
+verified unchanged compiled inputs. The final code is published at `6214032f`.
+The [combined gate](reviews/STANDALONE_COMBINED_FINAL_GATE.md),
+[native integration](reviews/STANDALONE_FINAL_INTEGRATION.md) and
+[actual platform/artifact audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md)
+retain exact sources, results, capability limits and the preceding failed gates.
+All ten hosted jobs at 621 succeed: three core Release jobs and the Linux
+sanitizer/leak job each pass 101/101, all three standalone jobs pass 14/14,
+and VST3 passes 8/8 on Linux and 7/7 on Windows/macOS. Actual package bytes,
+runtime floors and capability skips remain in the audit's qualified scope.
+The [current status](STATUS.md) and [standalone handoff](STANDALONE_HANDOFF.md)
+supersede the historical statements below about an absent standalone application
+or pending macOS build. The VST3 surface still uses generic host controls.
 
 The scanner graph/compiler, independent references and prepared numerical
 modules now exist. Its observed G5 same-hertz failure remains an explicit

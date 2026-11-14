@@ -177,7 +177,9 @@ the observed Release failures, the local CLI/fixture repairs and the outstanding
 hosted recheck. The [later completed matrix](reviews/CALIBRATION_HOSTED_RECHECK.md)
 resolves those specific earlier failures at `955fc4c`, while retaining a new
 Windows demo-fixture spelling failure. Its isolated preservation-test repair
-passes locally and needs a fresh Windows run. Replay and the 57-file package
+passes locally and on actual Windows at `6214032f`, as retained in the
+[standalone platform audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md).
+Replay and the 57-file package
 are independently accepted. Their [combined source](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md)
 passes 103/103 unfiltered local Release suites; the exact source mapping and logs
 are retained separately from later documentation. Resource profiling, the
@@ -188,6 +190,14 @@ Keep the complete original archives and failure outcomes. Later installation
 and relocation acceptance must include every imported module and preserve the
 existing offline-tools component. The session manifest is the actual accounting
 authority; running or planned workers are not accepted results.
+
+The later 3b Windows core job passes 102/103 suites and exposes a different
+package-test assumption: CMake writes CRLF for a newline-bearing sentinel.
+Root's newline-independent sentinel leaves the late-abort and partial-package
+preservation assertions intact and passes all 16 local installation methods.
+The [concurrent integration report](reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md)
+names that failure, the exact merged source and focused 69/69 replay gate.
+Fresh Windows qualification of the corrected fixture remains a separate check.
 
 ## Evidence and continuation
 

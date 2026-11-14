@@ -502,7 +502,9 @@ class CaptureInstallAcceptance(unittest.TestCase):
         prefix = self.fresh("late-failure-prefix")
         package = self.project.package(prefix)
         marker = package / "other-writer-marker.txt"
-        injected = ('\nfile(WRITE [=[' + marker.as_posix() + ']=] "preserve other writer\\n")\n'
+        # This probes preservation after a late abort, not CMake's native text
+        # newline translation. Use exact ASCII bytes with no platform newline.
+        injected = ('\nfile(WRITE [=[' + marker.as_posix() + ']=] "preserve other writer")\n'
                     'message(FATAL_ERROR "capture acceptance reached late abort")\n')
         try:
             script.write_text(original[:end] + injected + original[end:], encoding="utf-8")
@@ -510,7 +512,7 @@ class CaptureInstallAcceptance(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("capture acceptance reached late abort", diagnostic(result))
             self.assertIn("partial", diagnostic(result).lower())
-            self.assertEqual(marker.read_bytes(), b"preserve other writer\n")
+            self.assertEqual(marker.read_bytes(), b"preserve other writer")
             retained = files(package)
             self.assertGreater(len(retained), 1)
             self.assertLess(len(retained), 58)

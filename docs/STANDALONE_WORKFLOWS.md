@@ -50,13 +50,49 @@ its release. The held script ends at 1100 ms and the released script retains its
 1600 ms endpoint; neither imposes a guarantee of observing every intermediate
 UI state. Exact On/Off counts and unchanged saved bytes remain required.
 
+Target/octave and Help observations use the same explicit sampling boundary.
+Every copied complete control/held state must match its literal accepted-command
+prefix, with monotone applied/resolved sequences and no command appearing before
+its scheduled time. These two workflows require one device start; their sequence
+oracle is not applied across the Audio workflow's restart. The original 2600 ms
+target/octave and 2000 ms Help scripts retain all events and exact note counts.
+
+Independent bounded replay endpoints require the critical intermediate states
+even when the original run does not sample each transition:
+
+| Workflow endpoint | Required acknowledged state | Accepted note On / Off |
+| --- | --- | --- |
+| Target/octave, 1450 ms | Upper 60, Lower 74 and pedal 17 held after returning to Upper | 3 / 0 |
+| Target/octave, 1650 ms | Lower 74 and pedal 17 survive the original Upper release | 3 / 1 |
+| Target/octave, 1850 ms | Pedal 17 survives the original Lower release | 3 / 2 |
+| Target/octave, 2050 ms | Empty after the original pedal release | 3 / 3 |
+| Target/octave, 2250 ms | Fresh Upper 72 held at the retained manual octave | 4 / 3 |
+| Help, 700 ms | Empty while the modal remains open, before any close event | 1 / 0 |
+| Help, 1000 ms | Empty after Return closes Help and the still-held key repeats | 1 / 0 |
+| Help, 1300 ms | Fresh Upper 60 held after the original physical key-up | 2 / 0 |
+
+The original released endpoints still require empty holds and counts 4 / 4 and
+2 / 1 respectively. All added runs preserve exact complete controls and initial
+state bytes, require full replay delivery/acknowledgement, and finish with joined
+shutdown clearing every hold. These eight processes bring the maintained suite
+to **11 methods / 25 actual subprocesses**, with the same nine-second process and
+90-second suite budgets. Counts, controls, saved bytes and final acknowledged
+states are checked before sampled-prefix comparisons. Later assertion failures
+in these two cases retain a bounded diagnostic excerpt before temporary cleanup.
+
+Other workflow control/hold-path assertions remain unchanged. Their observations
+are also sampled; this narrow repair does not claim independent endpoint coverage
+for every existing intermediate control transition. A future concrete failure
+must retain its evidence and musical contract rather than silently broadening
+accepted paths or reusing a sequence mapping across device epochs.
+
 ## Execute
 
 After configuring an optional native build with testing enabled:
 
 ```sh
-cmake --build build-native --target hammond_standalone_test_inputs --parallel 3
-ctest --test-dir build-native --output-on-failure --no-tests=error \
+cmake --build build-native --config Release --target hammond_standalone_test_inputs --parallel 3
+ctest --test-dir build-native -C Release --output-on-failure --no-tests=error \
   -R '^test_standalone_workflows$'
 ```
 
@@ -86,6 +122,10 @@ workflow execution passed **11 methods / 17 real subprocesses** in 28.32 seconds
 as part of a separate 3/3 focused gate. The two added held-endpoint processes
 strengthen ownership evidence while permitting valid coalesced observations.
 That focused result does not replace a later combined-source full gate.
+The [final integration review](reviews/STANDALONE_FINAL_INTEGRATION.md) separately
+retains later Help and target/octave sampled-path failures, their exact reached
+and unreached assertions, and the changed-test qualification. Earlier passes and
+the subsequent chapel repair do not erase those failures.
 The [replay input layer](STANDALONE_INPUT_REPLAY.md) has separate parser/SDL-queue acceptance. Queue
 delivery and callback acknowledgment are different boundaries; neither one
 alone proves the intended musical workflow.

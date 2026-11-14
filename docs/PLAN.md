@@ -71,7 +71,7 @@ polyphony-dependent normalization must not disguise source-sharing mistakes.
 Data loading and profile replacement happen with processing stopped until a
 separately tested publication/retirement protocol exists.
 
-## Future user interface
+## User interface direction and current implementation
 
 The art direction on pp. 409-444 specifies a walnut/charcoal/brass instrument,
 readable drawbars and manuals, a cabinet view, player and service workspaces,
@@ -79,6 +79,16 @@ resize support, keyboard access, reduced motion and a flat usable alternative.
 Build controls from stable verified parameter identities. A camera movement or
 editor closure must never change audio routing or clock state. Generated concept
 art is design intent; it is neither hardware dimensional evidence nor a working UI.
+
+The optional [native standalone](STANDALONE_HANDOFF.md) now implements a flat,
+resizable instrument window with actual keyboard/pointer input, both manuals,
+pedals, retained bank controls, percussion/expression and explicit Save/Load.
+Its [actual chapel views](../examples/demos/standalone-chapel-v1/README.md)
+retain application-rendered pixels and musical diagnostics. The dimensional
+cabinet/service workspace, native semantic accessibility, physical controller
+integration and real display/device acceptance remain separate product work.
+Use [NEXT_STEPS.md](NEXT_STEPS.md) for the next concrete adapter/model contracts;
+the research milestones above remain the complete project plan.
 
 ## Keeping the plan alive
 

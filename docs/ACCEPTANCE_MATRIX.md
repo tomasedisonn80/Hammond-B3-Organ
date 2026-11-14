@@ -18,15 +18,19 @@ and the relevant handoff before changing a currently owned module.
 | M5 — AO-28 | Connected physical electronics are not implemented in the dry Engine path. | Revision-specific connected topology, operating points, loads/feedback, independent AC/transient/nonlinear/alias evidence and calibrated G-G captures. |
 | M6 — Leslie electronics | Connected amplifier/crossover/driver-load stages are not implemented. | Qualify a selected 122 revision and retain 147 as a distinct model/profile; preserve differential polarity and load boundaries. |
 | M7 — rotary acoustics | The independent [rotary foundation](ROTARY_SCOPE.md) implements nominal motion with an independent numerical reference; it is not inserted into the dry output. | Complete reviewed horn/drum histories, propagation/interpolation/radiation ownership and declared numerical gates; acquire actual trajectories, responses and room/microphone evidence. |
-| M8 — calibration | The [calibration track](CALIBRATION_HANDOFF.md), integrated through published `779fb6e`, adds audio decoding/identity, corpus/lineage/split auditing, metrics, fixed policies and independent admission tests. | Complete the reviewed file-job composition/readiness tools, then acquire actual evidence, freeze whole-group fit/holdout separation and uncertainty criteria, and retain independent validation/listening results. |
-| M9 — product | The [native standalone](STANDALONE_HANDOFF.md) has a real instrument window, controls, replay, audio lifecycle and nine-file installation. Named Linux/Windows/macOS jobs at `649b12c` pass 14/14 and packaging; VST3 remains an actual headless adapter. | Qualify later repair/package source, then real devices/controllers/DAWs, desktop/DPI/capture, a native accessibility tree, runtime distribution, project/asset/branding decisions and signing/notarization. |
+| M8 — calibration | The [calibration track](CALIBRATION_HANDOFF.md), integrated through published `3b0979b`, adds audio decoding/identity, corpus/lineage/split auditing, metrics, fixed policies, identity-bound file jobs, declaration readiness, bounded studies, a reproducible synthetic archive, exact report replay and a separate 57-file CaptureTools component. | Qualify the measured allocation repair and corpus graph behavior under the owning session; retain source-specific platform evidence. Acquire actual evidence, freeze whole-group fit/holdout separation and uncertainty criteria, and retain independent validation/listening results. |
+| M9 — product | The [native standalone](STANDALONE_HANDOFF.md) has a real instrument window, controls, replay, audio lifecycle and nine-file installation. The [final platform audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md) retains exact Linux/Windows/macOS jobs, test counts and actual package bytes; VST3 remains an actual headless adapter. | Qualify real devices/controllers/DAWs, desktop/DPI/capture, a native accessibility tree, runtime distribution, project/asset/branding decisions and signing/notarization. |
 
-The accepted later capture/resize and reader-progress repairs have focused
-instrumented evidence; their combined-source full gate is still recorded
-separately. The [platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md)
-preserves the `649b12c` Linux core assertion failure and all earlier failures.
-The installation audit is also checking actual configuration selection; do not
-infer a final product or package pass from the number of completed assignments.
+The [combined gate](reviews/STANDALONE_COMBINED_FINAL_GATE.md) passes **110/110
+Release suites** at its named source, and the final
+[native integration](reviews/STANDALONE_FINAL_INTEGRATION.md) passes **14/14
+ASan/UBSan suites** with the later test-oracle changes. Original failures remain
+in those reports and the [platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md).
+The [installation audit](reviews/STANDALONE_MULTICONFIG_INSTALL.md) qualifies
+actual Debug/Release selection and unknown-config preservation; the final
+artifact audit checks downloaded installed notices and bytes. None of these
+software gates or the number of completed assignments establishes a final
+product or physical-fidelity pass.
 
 ## Preserved pedal session assessment at `0ad7240`
 
