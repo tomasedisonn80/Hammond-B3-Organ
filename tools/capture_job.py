@@ -340,10 +340,27 @@ def run_job(path: str | Path) -> dict:
     No file is written. Valid failed and inconclusive results are complete
     reports; malformed inputs or observed changes raise JobError instead.
     """
+    return _run_bound_job(path)
+
+
+def _run_bound_job(path: str | Path, *, expected_job_sha256: str | None = None,
+                   snapshots: _Snapshots | None = None) -> dict:
+    """Share the unchanged job execution with a hash-bound study operation.
+
+    A study supplies its original expected job digest and one snapshot set that
+    outlives every constituent job. The consumed job must match before any
+    corpus or policy read. Ordinary public calls still own their snapshot set.
+    """
     try:
-        snapshots = _Snapshots()
+        if snapshots is None:
+            snapshots = _Snapshots()
         sources = _source_observations(snapshots)
         job, job_observation, root = _read_job(path, snapshots)
+        if expected_job_sha256 is not None:
+            capture_corpus._sha(expected_job_sha256, "expected job SHA-256")
+            _require(job_observation["sha256"] == expected_job_sha256,
+                     "job SHA-256",
+                     f"mismatch: expected {expected_job_sha256}, observed {job_observation['sha256']}")
         index_bytes, index_observation = _bound_input(
             job["corpus"], root, max_bytes=capture_corpus.MAX_INDEX_BYTES,
             snapshots=snapshots, label="corpus")

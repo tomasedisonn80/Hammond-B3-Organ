@@ -8,14 +8,14 @@ The fresh 500-page reading and independently reviewed audio/corpus/comparison
 contracts and independent decoder/corpus/metric acceptance are complete.
 Fixed policy evaluation, adversarial audio/corpus admission, identity-bound file
 jobs and declaration readiness are implemented and independently qualified.
-Publish the reviewed numerical/schema work and observed portability repairs,
-then inspect fresh hosted outcomes while continuing the dependency-ready tools.
-Preserve the separate standalone progress repair when it reaches main.
-Assemble a bounded fixed-job study runner, a reproducible
-synthetic example and exact replay checks. Bind each job's actual original bytes
-before artifact work, retain all valid outcomes, and preserve a complete shared
-input snapshot across each study. Add independent acceptance before integrating
-installation, relocation and the operating guide. No step fits physical model
+The numerical/schema and observed portability repairs pass the combined 99-suite
+local gate, including the preserved standalone progress repair from `0085e33`.
+The bounded fixed-job study and reproducible synthetic archive now pass independent
+acceptance. Qualify their coherent source, publish completed work and inspect
+fresh hosted outcomes. Complete exact report replay and its independent corruption
+checks, then the separate CaptureTools installation, relocation and operating
+guide. Preserve original identities, all valid outcomes and complete snapshots.
+No step fits physical model
 parameters or clears an acquisition gate through synthetic fixtures.
 Existing v1 metadata validation remains valid; the new companion tools provide
 separate audio and corpus checks without changing its meaning.

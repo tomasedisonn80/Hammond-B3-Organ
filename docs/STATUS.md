@@ -11,7 +11,8 @@ All 500 PDF pages were freshly read by six distinct workers; the
 [coverage record](research/CALIBRATION_ATLAS_REVIEW.md) retains exact text and
 selected visual coverage. The clean starting source passed 85/85 local Release
 suites. Audio, corpus and comparison contracts are frozen and independently reviewed.
-The first thirty assignments are accepted, completing five logical waves.
+The first thirty-four assignments are accepted, completing five logical waves
+and the study/demo producer and independent acceptance pairs in wave 6.
 The JSON foundation passes 49
 independent methods and session accounting passes 27 methods. Separate acceptance
 of the decoder, corpus auditor and metric producer passes 41, 47 and 42 methods,
@@ -26,16 +27,20 @@ preserves unknown reasons without reading artifact or evidence locators.
 Additional numerical acceptance passes 19 methods with independently calculated
 high-precision expectations. Schema review completes 665 documented cases and
 verifies a v1 terminal-newline pattern repair without changing v1 semantics.
-The [combined wave-4 source](reviews/CALIBRATION_WAVE4_INTEGRATION.md) passed
-96/96 SDK-free Release suites; later changes require their own frozen gate. The actual manifest distinguishes accepted and
-running work. Physical calibration remains unqualified.
+The bounded study passes 61 independent methods and the reproducible synthetic
+demo passes 43; every complete failed/inconclusive job remains visible. The
+[combined wave-5 source](reviews/CALIBRATION_WAVE5_INTEGRATION.md) passed 99/99
+SDK-free Release suites, including the separately owned standalone progress
+repair. That source excludes the later study/demo extension, which receives its
+own focused gate. The actual manifest distinguishes accepted and running work.
+Physical calibration remains unqualified.
 
 Hosted checks at `779fb6e` passed all three native standalone and VST3 platform
 jobs and the Linux sanitizer job, but the general Release jobs failed on all
 three platforms. The [portability follow-up](reviews/CALIBRATION_HOSTED_PORTABILITY.md)
 retains the logs and diagnoses. Windows canonical-output and canonical-path test
-repairs pass locally; fresh hosted qualification and the separately owned
-standalone scheduling repair remain to be observed. Current admission suites
+repairs pass locally. The standalone repair is integrated from `0085e33` and
+passes the combined local gate; fresh hosted qualification remains open. Current admission suites
 contain 63 audio methods (two capability skips) and 58 corpus methods.
 
 ## Active native standalone continuation

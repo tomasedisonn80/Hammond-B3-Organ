@@ -1,5 +1,35 @@
 # Development log
 
+## 2026-11-14 — Calibration wave 5 gate and accepted study/demo
+
+- Accepted 34 distinct calibration assignments: five complete logical waves
+  plus the study/demo producer and independent acceptance pairs. Replay and its
+  reviewer finish wave 6; the dependency-ready installation component begins
+  wave 7. The manifest retains 37 actual identities at this observation, with
+  three running. A date change does not create another session or recount workers.
+- Inspected and merged remote `0085e338388f2c7516a7d455f11692b94e9451f4`,
+  preserving the separate standalone reader-progress/configuration/notices work.
+  Frozen combined source `fd0fb58d2f882aa76c7e40e510f44766f762727c`, tree
+  `3329cf68bb9ea84479e254934778935bb5c44773`, passed the complete SDK-free
+  Release build and **99/99 suites in 180.68 seconds**. See the
+  [wave-5 evidence](reviews/CALIBRATION_WAVE5_INTEGRATION.md). This source
+  excludes the later study/demo/private job extension and their focused gate.
+- Bounded studies preserve all ordered jobs and complete shared snapshots.
+  Independent acceptance passes 61 methods plus the unchanged 81-method public
+  job regression. Fourteen temporary-source mutation processes test both
+  between-job and final-return phases; actual eight-job/64-manifest/256-reference
+  composition stays within independently derived bookkeeping bounds.
+- The original 16-file, 32,831-byte synthetic archive passes 43 independent
+  methods. Literal quarter/half-offset comparisons produce pass, inconclusive
+  and failure; the study retains all three and deliberately fails. All identities
+  and date placeholders are disclosed constructions, rights remain unknown and
+  physical claims remain unestablished. No cached execution report is substituted
+  for the literal `EXPECTED.json` oracle.
+- Hosted failures at `779fb6e` remain recorded. Windows canonical-byte writers
+  and canonical-path fault fixtures pass locally; the standalone scheduling
+  repair is now integrated. Fresh hosted results are still needed. No physical,
+  native device, every-host or final-release gate is inferred from these checks.
+
 ## 2026-11-13 — Combined source freeze for final standalone integration
 
 - Inspected and merged concurrent calibration publication

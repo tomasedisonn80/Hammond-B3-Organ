@@ -1,0 +1,41 @@
+{
+  "analysis": {
+    "channel_count": 1,
+    "floor_fs": 1e-12,
+    "frame_count": 4,
+    "frequencies_hz": [
+      1
+    ],
+    "sample_rate_hz": 4,
+    "window": "rectangular"
+  },
+  "criteria": [
+    {
+      "criterion_id": "rms-offset",
+      "rationale": "Literal bound 0.375 FS demonstrates the pass interval outcome; it is not an atlas or physical fidelity tolerance.",
+      "target": {
+        "channel_index": 0,
+        "frequency_hz": null,
+        "metric": "rms_error_fs"
+      },
+      "uncertainty": {
+        "basis": "synthetic_numerical",
+        "evidence": "The exact original job-contract vectors have constant error 0.25 or 0.5 FS. The literal 0.125 FS decision margin demonstrates interval classification only; it is not physical uncertainty or confidence coverage.",
+        "margin": 0.125,
+        "unit": "FS",
+        "unknown_reason": null
+      },
+      "unit": "FS",
+      "upper_bound": 0.375
+    }
+  ],
+  "evaluation_role": "validation",
+  "evidence_class": "synthetic_numerical_fixture",
+  "freeze_evidence": {
+    "unknown_reason": "Fixed constructed fixture bytes, with no independently retained chronology or preregistration evidence. This policy ID is a software-fixture label.",
+    "value": null
+  },
+  "metric_contract": "capture-comparison-v1",
+  "policy_id": "demo-policy-pass",
+  "schema_version": 1
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:hammond:capture-study:v1",
+  "title": "Project-proposed fixed capture comparison study v1",
+  "description": "Input shape only. tools/capture_study.py additionally enforces strict original bytes and exact types, bounded traversal, unique IDs/paths/digests by field, expected job/corpus identities before work, cumulative work, complete shared snapshots, actual audio execution and report semantics. No schema pass establishes physical evidence or chronology.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_origin", "study_id", "corpus_sha256", "jobs"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "contract_origin": {"type": "string", "const": "project-proposed-capture-study-v1"},
+    "study_id": {"$ref": "#/$defs/id"},
+    "corpus_sha256": {"$ref": "#/$defs/sha256"},
+    "jobs": {
+      "type": "array", "minItems": 1, "maxItems": 8, "uniqueItems": true,
+      "items": {"$ref": "#/$defs/job"}
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string", "minLength": 1, "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+      "not": {"pattern": "[^a-z0-9_-]"}
+    },
+    "sha256": {
+      "type": "string", "minLength": 64, "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "portablePath": {
+      "type": "string", "minLength": 1, "maxLength": 240,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}(?:/[A-Za-z0-9][A-Za-z0-9._-]{0,63}){0,7}$",
+      "not": {
+        "anyOf": [
+          {"pattern": "[^A-Za-z0-9._/-]"},
+          {"pattern": "\\.(?:/|$)"},
+          {"pattern": "(?:^|/)(?:[Cc][Oo][Nn]|[Pp][Rr][Nn]|[Aa][Uu][Xx]|[Nn][Uu][Ll]|[Cc][Oo][Mm][1-9]|[Ll][Pp][Tt][1-9])(?:\\.|/|$)"}
+        ]
+      }
+    },
+    "job": {
+      "type": "object", "additionalProperties": false,
+      "required": ["job_id", "path", "sha256"],
+      "properties": {
+        "job_id": {"$ref": "#/$defs/id"},
+        "path": {"$ref": "#/$defs/portablePath"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

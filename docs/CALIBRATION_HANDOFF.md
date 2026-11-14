@@ -102,20 +102,45 @@ with 20 missing declarations. This command reads metadata only. Even
 `declarations_complete` establishes no acquisition, calibrated scale, rights or
 physical fidelity. Unknown reasons and raw-only calibration context are retained.
 
+Run the retained synthetic demonstration and its complete study:
+
+```sh
+python3 tools/capture_job.py --input examples/capture-demo/job-pass.json
+python3 tools/capture_job.py --input examples/capture-demo/job-inconclusive.json
+python3 tools/capture_job.py --input examples/capture-demo/job-fail.json
+python3 tools/capture_study.py --input examples/capture-demo/study.json
+```
+
+The expected exits are **0, 3, 1, 1**. The failed study retains one result of
+each kind; failure is deliberate demonstration data. The [demo guide](CAPTURE_DEMO.md)
+defines all sixteen original files and literal expectations. To regenerate,
+use `python3 tools/make_capture_demo.py --output /existing/parent/new-demo`:
+the destination must be new, and its parent must exist. Generation executes no
+analysis. `EXPECTED.json` is an oracle, not a saved execution report.
+
+The [study guide](CAPTURE_STUDY.md) binds up to eight original job files to one
+corpus identity, preflights cumulative work and retains every complete result.
+Its shared snapshot covers earlier inputs and sources through final return.
+The study has 61 independent acceptance methods and the demo has 43. Original
+archives and freshly executed report bytes are the inputs for subsequent replay.
+
 ## Current integration and next work
 
 The reviewed first four waves are published at `779fb6e`; the
 [wave-4 report](reviews/CALIBRATION_WAVE4_INTEGRATION.md) records 11/11 focused
 and 96/96 full SDK-free Release suites from separate frozen snapshots. The
 later job implementation shares the corpus audit core without changing its
-public API; both existing corpus suites still pass. Its eventual coherent
-integration is recorded separately, rather than attributed to the earlier tree.
+public API; both existing corpus suites still pass. The
+[combined wave-5 source](reviews/CALIBRATION_WAVE5_INTEGRATION.md) passes 99/99
+SDK-free Release suites, preserving the standalone advance from `0085e33`.
+Study/demo changes are later source and receive a separate focused gate.
 
 Readiness, numerical and schema acceptance are complete. The
 [hosted portability follow-up](reviews/CALIBRATION_HOSTED_PORTABILITY.md) records
 the observed Release failures, the local CLI/fixture repairs and the outstanding
-hosted recheck. Continue bounded fixed-job studies, a reproducible synthetic
-example and replay checks while retaining that separate platform gate.
+hosted recheck. Complete replay and its independent corruption checks, then the
+separate CaptureTools installation and relocation acceptance, while retaining
+that platform gate. Bounded studies and the synthetic archive are implemented.
 Keep the complete original archives and failure outcomes. Later installation
 and relocation acceptance must include every imported module and preserve the
 existing offline-tools component. The session manifest is the actual accounting

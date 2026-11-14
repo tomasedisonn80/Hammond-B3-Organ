@@ -1,0 +1,169 @@
+{
+  "analysis": {
+    "channel_count": 1,
+    "floor_fs": 1e-12,
+    "frame_count": 4,
+    "frequencies_hz": [
+      1
+    ],
+    "sample_rate_hz": 4,
+    "window": "rectangular"
+  },
+  "basis": "Independent literal acceptance vector 1 in CAPTURE_JOB_CONTRACT.md section 8.",
+  "contract_origin": "project-proposed-capture-demo-expectations-v1",
+  "corpus": {
+    "expected_exit": 0,
+    "expected_status": "pass",
+    "mode": "files_and_audio_checked",
+    "related_group_count": 1
+  },
+  "evidence_class": "synthetic_numerical_fixture",
+  "execution": "not_run",
+  "independence": "not_established",
+  "jobs": [
+    {
+      "candidate_capture_id": "quarter",
+      "criterion": {
+        "interval_fs": {
+          "lower": 0.125,
+          "upper": 0.375
+        },
+        "margin_fs": 0.125,
+        "metric": "rms_error_fs",
+        "numerical_verdict": "pass",
+        "upper_bound_fs": 0.375
+      },
+      "expected_exit": 0,
+      "expected_status": "pass",
+      "job_id": "demo-pass",
+      "path": "job-pass.json",
+      "pointwise_values_fs": {
+        "absolute_dc_bias_fs": 0.25,
+        "dc_bias_fs": 0.25,
+        "max_abs_error_fs": 0.25,
+        "rms_error_fs": 0.25
+      }
+    },
+    {
+      "candidate_capture_id": "quarter",
+      "criterion": {
+        "interval_fs": {
+          "lower": 0.125,
+          "upper": 0.375
+        },
+        "margin_fs": 0.125,
+        "metric": "rms_error_fs",
+        "numerical_verdict": "inconclusive",
+        "upper_bound_fs": 0.25
+      },
+      "expected_exit": 3,
+      "expected_status": "inconclusive",
+      "job_id": "demo-inconclusive",
+      "path": "job-inconclusive.json",
+      "pointwise_values_fs": {
+        "absolute_dc_bias_fs": 0.25,
+        "dc_bias_fs": 0.25,
+        "max_abs_error_fs": 0.25,
+        "rms_error_fs": 0.25
+      }
+    },
+    {
+      "candidate_capture_id": "half",
+      "criterion": {
+        "interval_fs": {
+          "lower": 0.375,
+          "upper": 0.625
+        },
+        "margin_fs": 0.125,
+        "metric": "rms_error_fs",
+        "numerical_verdict": "fail",
+        "upper_bound_fs": 0.25
+      },
+      "expected_exit": 1,
+      "expected_status": "failed",
+      "job_id": "demo-fail",
+      "path": "job-fail.json",
+      "pointwise_values_fs": {
+        "absolute_dc_bias_fs": 0.5,
+        "dc_bias_fs": 0.5,
+        "max_abs_error_fs": 0.5,
+        "rms_error_fs": 0.5
+      }
+    }
+  ],
+  "permissions": "not_established",
+  "physical_fidelity": "not_established",
+  "preregistration": "not_established",
+  "schema_version": 1,
+  "study": {
+    "counts": {
+      "failed": 1,
+      "inconclusive": 1,
+      "jobs": 3,
+      "pass": 1
+    },
+    "expected_exit": 1,
+    "expected_status": "failed",
+    "job_order": [
+      "demo-pass",
+      "demo-inconclusive",
+      "demo-fail"
+    ],
+    "path": "study.json",
+    "roles": {
+      "final_test": 0,
+      "fit": 0,
+      "unassigned": 0,
+      "validation": 3
+    },
+    "study_id": "synthetic-offset-demo",
+    "work": {
+      "spectral_terms": 12,
+      "window_samples": 12
+    }
+  },
+  "vectors": [
+    {
+      "capture_id": "reference",
+      "decoded_digest_version": "hammond-capture-decoded-v1",
+      "decoded_sha256": "786665f3cf05b2f9b33e7cadee75e7176e122d62ad82133c72737c76261dd440",
+      "raw_hex": "0000803f000080bf0000803f000080bf",
+      "raw_sha256": "fd801740524b1e1c23a61b5400725b76428652827ba1261b83243eb5ce551402",
+      "raw_size_bytes": 16,
+      "samples": [
+        1.0,
+        -1.0,
+        1.0,
+        -1.0
+      ]
+    },
+    {
+      "capture_id": "quarter",
+      "decoded_digest_version": "hammond-capture-decoded-v1",
+      "decoded_sha256": "79d8014af588d583abcc570598d3e073413543ef518b339cbca37dbb5eb6bd0c",
+      "raw_hex": "0000a03f000040bf0000a03f000040bf",
+      "raw_sha256": "bac1c395abe23908b8c106a28b6c151bc25b9473d470f4d942775b5dfdf523e2",
+      "raw_size_bytes": 16,
+      "samples": [
+        1.25,
+        -0.75,
+        1.25,
+        -0.75
+      ]
+    },
+    {
+      "capture_id": "half",
+      "decoded_digest_version": "hammond-capture-decoded-v1",
+      "decoded_sha256": "52c3450c9c276f60b8ed6dc728977cfe33b4b0702ce8332927169d25f18e4db8",
+      "raw_hex": "0000c03f000000bf0000c03f000000bf",
+      "raw_sha256": "36d231b4ecc15924aea04f08725924f18ae4346fd287747791d7396eca3d5758",
+      "raw_size_bytes": 16,
+      "samples": [
+        1.5,
+        -0.5,
+        1.5,
+        -0.5
+      ]
+    }
+  ]
+}
