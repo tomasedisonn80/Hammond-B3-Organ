@@ -1,0 +1,162 @@
+{
+  "base_head": "7b36cfac2565397191b3df5e07112611e7f1b0e1",
+  "source": {
+    "apps/standalone/Drawing.h": "5f338b1fe85be0b2c2766efaf1595931391465f164ec88b56425dc4919ba6e10",
+    "apps/standalone/Drawing.cpp": "4d13a5eb312799b341e44a41f52960e44c04da1a7b05ecfdda86bc635e1ecda9",
+    "apps/standalone/InstrumentView.h": "9a248ce4934990292a2134cad3be9a8b5f9379edd7d821ab4e39214cbe80b819",
+    "apps/standalone/InstrumentView.cpp": "82c7171626f16039ac4877a8cafc12928941d51fb295a37d0f23ac6c294c6e8e",
+    "apps/standalone/UiModel.h": "fac0dd9bfa1baf77d1efda2fbb8839c5a223d9ab0c3580c10dda184317f7da3c",
+    "apps/standalone/UiModel.cpp": "ac1a381367cfee7cce61e27ebd0b094c76a730806383e9ead609622687993e28",
+    "apps/standalone/main.cpp": "f57cad73282e37fa37a0eae6adc518d352062905dacabe1f8724195b2216bed4",
+    "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "assets/standalone/reference/manifest.json": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+    "binary_sha256": "072f52ad299592f997af2aaeb2a140a3417e4a77542dd6afbfbae9fd4a60eb4b",
+    "reference_art_header_sha256": "d94cefd9ad69726c267d4674acd66912f4764ee9f88d1c21ecce4ed7befcbac6"
+  },
+  "drivers": {
+    "audio": "dummy",
+    "video": "dummy"
+  },
+  "captures": [
+    {
+      "name": "native-1672x941",
+      "command": [
+        "/workspace/scratch/cd4bd06ce68f/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--smoke-ms",
+        "800",
+        "--state",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-1672x941.b3controls",
+        "--screenshot",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-1672x941.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Native SDL smoke passed: callbacks=80, frames=40960, images=11, driver=dummy\n",
+      "stderr": "",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "bmp_sha256": "8c66f4b7b0eb8ce89267d468d08aaa3dd0e78f32f1d3cfb71919f3164f1051bd",
+      "png_sha256": "87ce06e8b791cb6041a87c7d4ae211a4f6a46daaa6054f2ff949b75178036755",
+      "pixel_sha256": "5c7a1813b4f4073e7ad8adfc48e414acab65e848465618ab4f49c5933a2ef8cc",
+      "mode": "RGBA"
+    },
+    {
+      "name": "native-1280x900",
+      "command": [
+        "/workspace/scratch/cd4bd06ce68f/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "1280",
+        "--height",
+        "900",
+        "--smoke-ms",
+        "800",
+        "--state",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-1280x900.b3controls",
+        "--screenshot",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-1280x900.bmp",
+        "--diagnostics",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-1280x900.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Native SDL smoke passed: callbacks=76, frames=38912, images=16, driver=dummy\n",
+      "stderr": "",
+      "dimensions": [
+        1280,
+        900
+      ],
+      "bmp_sha256": "a2cebbdc672e9eeda96ddb38bfa9469abcc9a40d86d7f30e06353a2fdf3de5da",
+      "png_sha256": "0460093e4b216a50bfcc856a8d48f56678e7628cd131f3a0b189461cae5543d6",
+      "pixel_sha256": "917aaf94ba8730869e44e61f38a415ba9450d4a6ece3f228a5ac21274e3a5bc0",
+      "mode": "RGBA"
+    },
+    {
+      "name": "native-960x700",
+      "command": [
+        "/workspace/scratch/cd4bd06ce68f/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--smoke-ms",
+        "800",
+        "--state",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700.b3controls",
+        "--screenshot",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700.bmp",
+        "--diagnostics",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Native SDL smoke passed: callbacks=76, frames=38912, images=25, driver=dummy\n",
+      "stderr": "",
+      "dimensions": [
+        960,
+        700
+      ],
+      "bmp_sha256": "3988fe5f5d9ed09c22d54636fdf362e526d142743f41b85c5353ef4dd0b892e1",
+      "png_sha256": "bf722384d52ed70e71d8f246a51eee75bd056e6fc312db90543ec4071451f503",
+      "pixel_sha256": "f33a0c169eb358a43adad16341877a0b5bba70e9d77f63b5d7a14d6cadb6bfb9",
+      "mode": "RGBA"
+    },
+    {
+      "name": "native-960x700-midi",
+      "command": [
+        "/workspace/scratch/cd4bd06ce68f/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--input-script",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/midi-modal.b3uireplay",
+        "--state",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700-midi.b3controls",
+        "--screenshot",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700-midi.bmp",
+        "--diagnostics",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700-midi.json"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "ALSA lib seq_hw.c:540:(snd_seq_hw_open) open /dev/snd/seq failed: No such file or directory\n\nMidiInAlsa::initialize: error creating ALSA sequencer client object.\n\nhammond_standalone: Cannot enumerate MIDI input ports: MIDI input enumeration failed: MidiInAlsa::initialize: error creating ALSA sequencer client object.\nhammond_standalone: Native input replay failed or was interrupted; inspect the copied diagnostics\n",
+      "dimensions": [
+        960,
+        700
+      ],
+      "bmp_sha256": "5bbfb3da1ad17cbdfc45912c31d5185f99f4db489432dfe1c0aa756fea816928",
+      "png_sha256": "668263c830ce88e135257f7781fe6f2407edfa0ae94fd0ca3e6eaa3f741ba352",
+      "pixel_sha256": "16fb316a1f946051ebe972ed87f995b3b3825172d29ebc167b87378de8672b22",
+      "mode": "RGBA"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "name": "native-960x700-midi",
+      "command": [
+        "/workspace/scratch/cd4bd06ce68f/build-native/apps/standalone/hammond_standalone",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--input-script",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/midi-modal.b3uireplay",
+        "--state",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700-midi.b3controls",
+        "--screenshot",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700-midi.bmp",
+        "--diagnostics",
+        "/workspace/scratch/cd4bd06ce68f/a17-render-checks/native-960x700-midi.json"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "hammond_standalone: Cannot load input script: Input replay line 3: unsupported key, modifiers, or repeat (0 or 1)\n",
+      "script_text": "B3UIREPLAY1\nduration_ms 1200\n120 key_down M ctrl 0\n130 key_up M ctrl\n220 key_down Tab none 0\n230 key_up Tab none\n320 key_down Tab none 0\n330 key_up Tab none\n420 key_down Right none 0\n430 key_up Right none\n520 key_down Tab none 0\n530 key_up Tab none\n620 key_down Right none 0\n630 key_up Right none\n720 key_down Tab none 0\n730 key_up Tab none\n820 key_down Right none 0\n830 key_up Right none\n930 key_down Tab none 0\n940 key_up Tab none\n"
+    }
+  ]
+}

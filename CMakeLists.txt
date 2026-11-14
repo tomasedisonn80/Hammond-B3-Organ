@@ -10,6 +10,8 @@ option(HAMMOND_BUILD_VST3 "Build the optional pinned-SDK native VST3 instrument"
 set(HAMMOND_VST3_SDK_ROOT "" CACHE PATH "Separately acquired, locked VST3 SDK checkout")
 option(HAMMOND_BUILD_STANDALONE "Build the optional SDL2 native standalone instrument" OFF)
 set(HAMMOND_SDL2_ROOT "" CACHE PATH "Separately acquired, locked SDL2 source checkout")
+option(HAMMOND_ENABLE_MIDI "Enable the optional pinned physical MIDI backend" OFF)
+set(HAMMOND_RTMIDI_ROOT "" CACHE PATH "Separately acquired, locked RtMidi source checkout")
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 

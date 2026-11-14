@@ -6,6 +6,8 @@
 #include "Drawing.h"
 #include "EmbeddedProfile.h"
 #include "InstrumentView.h"
+#include "MidiDevice.h"
+#include "MidiInput.h"
 #include "ScriptedInput.h"
 #include "StateFiles.h"
 #include "UiModel.h"
@@ -24,6 +26,7 @@
 #include <iomanip>
 #include <iostream>
 #include <locale>
+#include <limits>
 #include <memory>
 #include <optional>
 #include <sstream>
@@ -46,6 +49,8 @@ constexpr std::size_t kReplayObservationCapacity = 512;
 
 struct Options {
     AudioDeviceConfig audio{};
+    MidiRouting midi_routing{};
+    std::string midi_port{};
     std::filesystem::path state{};
     std::filesystem::path screenshot{};
     std::filesystem::path diagnostics{};
@@ -55,6 +60,7 @@ struct Options {
     std::uint32_t smoke_ms{0};
     bool help{false};
     bool list_audio{false};
+    bool list_midi{false};
 };
 
 void print_help() {
@@ -63,6 +69,12 @@ void print_help() {
         "Usage: hammond_standalone [options]\n\n"
         "  --help                 Show this help without initializing SDL.\n"
         "  --list-audio           List SDL output devices without a window.\n"
+        "  --list-midi            List exact MIDI input names without initializing SDL.\n"
+        "  --midi-port NAME       Open this exact MIDI input; omitted means no input.\n"
+        "  --midi-upper-channel N Upper wire channel, 1..16 (default 1).\n"
+        "  --midi-lower-channel N Lower wire channel, 1..16 (default 2).\n"
+        "  --midi-pedal-channel N Pedal wire channel, 1..16 (default 3).\n"
+        "                         The three MIDI channels must be distinct.\n"
         "  --device NAME          Exact SDL output name; omitted means default.\n"
         "  --sample-rate N        44100, 48000 (default), or 96000 Hz.\n"
         "  --buffer-frames N      128, 256, 512 (default), 1024, or 2048.\n"
@@ -78,8 +90,10 @@ void print_help() {
         "Upper/Lower/Pedals; [ and ] change octave. Tab/Shift+Tab move focus;\n"
         "arrows, Home, End adjust controls; Space holds the focused playing key.\n"
         "Escape releases UI notes. Ctrl+S saves, Ctrl+O loads, Ctrl+, opens Audio,\n"
-        "and Shift+/ opens Help (Command also works for the Ctrl shortcuts).\n"
-        "Audio dialog: Tab/Shift+Tab, arrows, Home/End, Enter/Space, Escape.\n\n"
+        "Ctrl+M opens MIDI, and Shift+/ opens Help (Command also works for Ctrl).\n"
+        "Audio/MIDI dialogs: Tab/Shift+Tab, arrows, Home/End, Enter/Space, Escape.\n"
+        "MIDI uses one explicit input port; Apply connects and Disconnect releases\n"
+        "only MIDI owners. A fault, Panic, or audio restart requires explicit Apply.\n\n"
         "Existing valid state loads at startup; Save is explicit, never automatic.\n"
         "Without a state: proposed audition registration Upper B 888000000,\n"
         "Lower B 008000000, pedals 80. This is not a factory preset.\n"
@@ -109,11 +123,14 @@ void print_help() {
         seen.push_back(option);
         if (option == "--help") { options.help = true; continue; }
         if (option == "--list-audio") { options.list_audio = true; continue; }
+        if (option == "--list-midi") { options.list_midi = true; continue; }
         const bool path_option = option == "--state" || option == "--screenshot" ||
             option == "--diagnostics" || option == "--input-script";
         const bool number_option = option == "--sample-rate" || option == "--buffer-frames" ||
-            option == "--width" || option == "--height" || option == "--smoke-ms";
-        if (!path_option && !number_option && option != "--device") {
+            option == "--width" || option == "--height" || option == "--smoke-ms" ||
+            option == "--midi-upper-channel" || option == "--midi-lower-channel" ||
+            option == "--midi-pedal-channel";
+        if (!path_option && !number_option && option != "--device" && option != "--midi-port") {
             error = "Unknown option: " + std::string(option);
             return false;
         }
@@ -123,6 +140,14 @@ void print_help() {
         }
         const std::string_view value{argv[++index]};
         if (option == "--device") { options.audio.device_name = value; continue; }
+        if (option == "--midi-port") {
+            if (value.size() > kMidiMaximumPortNameBytes || value.find('\0') != std::string_view::npos) {
+                error = "Invalid exact MIDI input name";
+                return false;
+            }
+            options.midi_port = value;
+            continue;
+        }
         if (path_option) {
             auto path = cli::argument_path(value);
             if (option == "--state") options.state = std::move(path);
@@ -149,14 +174,30 @@ void print_help() {
         } else if (option == "--height") {
             valid = number >= 700 && number <= 8192;
             if (valid) options.height = number;
-        } else {
+        } else if (option == "--smoke-ms") {
             valid = number >= 250 && number <= 10000;
             if (valid) options.smoke_ms = static_cast<std::uint32_t>(number);
+        } else {
+            valid = number >= 1 && number <= 16;
+            if (valid) {
+                const auto channel = static_cast<std::uint8_t>(number);
+                if (option == "--midi-upper-channel") options.midi_routing.upper_channel = channel;
+                else if (option == "--midi-lower-channel") options.midi_routing.lower_channel = channel;
+                else options.midi_routing.pedal_channel = channel;
+            }
         }
         if (!valid) {
             error = "Unsupported value for " + std::string(option) + "; see --help";
             return false;
         }
+    }
+    if (!valid_midi_routing(options.midi_routing)) {
+        error = "MIDI upper, lower, and pedal channels must be distinct values from 1 through 16";
+        return false;
+    }
+    if (options.list_audio && options.list_midi) {
+        error = "--list-audio and --list-midi are mutually exclusive";
+        return false;
     }
     if (!options.input_script.empty() && options.smoke_ms != 0) {
         error = "--input-script and --smoke-ms are mutually exclusive";
@@ -184,6 +225,35 @@ void print_help() {
     }
     return "unknown";
 }
+
+[[nodiscard]] const char* midi_state_name(MidiDeviceState state) noexcept {
+    switch (state) {
+    case MidiDeviceState::Unavailable: return "unavailable";
+    case MidiDeviceState::Closed: return "closed";
+    case MidiDeviceState::Open: return "open";
+    case MidiDeviceState::Disconnected: return "disconnected";
+    case MidiDeviceState::Faulted: return "faulted";
+    }
+    return "unknown";
+}
+
+void increment_counter(std::uint64_t& value) noexcept {
+    if (value != std::numeric_limits<std::uint64_t>::max()) ++value;
+}
+
+// There is exactly one device and one inbox for the lifetime of the app. A
+// backend that cannot establish callback quiescence quarantines its context;
+// the matching inbox must also survive until process termination. Ordinary
+// close destroys both normally, including during initialization exceptions.
+struct MidiLifetime {
+    std::unique_ptr<MidiInbox> inbox{std::make_unique<MidiInbox>()};
+    MidiDevice device;
+
+    ~MidiLifetime() {
+        device.close();
+        if (!device.is_quiescent()) (void)inbox.release();
+    }
+};
 
 [[nodiscard]] UiKey ui_key(SDL_Scancode code) noexcept {
     switch (code) {
@@ -316,6 +386,8 @@ public:
 
     ~Application() {
         // The callback must return before Session, graphics, and finally SDL die.
+        midi_input_.end_epoch();
+        midi_.device.close();
         audio_.close();
         release_capture();
     }
@@ -360,6 +432,14 @@ public:
         const bool opened = open_audio(config_);
         (void)opened; // A visible No Audio window remains usable for device selection.
         observe();
+        midi_routing_ = options_.midi_routing;
+        selected_midi_routing_ = midi_routing_;
+        midi_requested_port_ = options_.midi_port;
+        if (!MidiDevice::backend_available()) midi_status_ = "MIDI backend unavailable in this build.";
+        if (!options_.midi_port.empty()) {
+            const bool connected = request_midi(options_.midi_port, midi_routing_);
+            midi_startup_failed_ = !connected;
+        }
         return true;
     }
 
@@ -389,6 +469,7 @@ public:
             }
             observe();
             monitor_audio();
+            if (running_) process_midi();
             complete_save();
             check_capture();
             const auto elapsed = SDL_GetTicks64() - started;
@@ -416,6 +497,9 @@ public:
         replay_last_submitted_sequence_ = last_submitted_sequence_;
         replay_final_acknowledged_ = replay_acknowledged();
         replay_finalized_ = true;
+        midi_before_shutdown_ = midi_.device.info();
+        midi_active_before_shutdown_ = midi_input_.active();
+        retire_midi("MIDI input closed for application shutdown.");
         // Off always traverses the normal UiModel path, even after a smoke error.
         if (smoke_on_sent_ && !smoke_off_sent_) {
             const bool released = dispatch(ui_.key({UiKey::A, false}));
@@ -431,6 +515,7 @@ public:
         commands_enabled_ = false;
         observe();
         final_diagnostics_ = audio_.diagnostics(); // Joined: stable copied counters.
+        copy_midi_diagnostics(); // Quarantine, if any, remains explicitly nonquiescent.
         release_capture();
         if (!options_.screenshot.empty() && !screenshot_written_) {
             fail("The requested screenshot was not written");
@@ -443,7 +528,8 @@ public:
             final_diagnostics_.callback_count != 0 && final_diagnostics_.rendered_frames != 0 &&
             final_diagnostics_.render_failures == 0 && final_diagnostics_.format_failures == 0 &&
             final_diagnostics_.nonfinite_failures == 0 && final_diagnostics_.overrange_failures == 0 &&
-            snapshot_available_ && snapshot_.fault_flags == 0 && !any_held(snapshot_) && !fatal_failure_;
+            snapshot_available_ && snapshot_.fault_flags == 0 && !any_held(snapshot_) && !fatal_failure_ &&
+            !midi_startup_failed_ && !midi_shutdown_failed_;
         if (options_.smoke_ms != 0 && !smoke_passed_) fail("Native smoke failed; inspect the copied diagnostics");
         if (!options_.input_script.empty()) {
             replay_passed_ = replay_completed_ && replay_final_acknowledged_ && !replay_.failed() &&
@@ -463,7 +549,8 @@ public:
                       << ", frames=" << final_diagnostics_.rendered_frames << ", images=" << render_count_
                       << ", driver=" << audio_before_close_.driver << '\n';
         }
-        return fatal_failure_ || (options_.smoke_ms != 0 && !smoke_passed_) ||
+        return fatal_failure_ || midi_startup_failed_ || midi_shutdown_failed_ ||
+            (options_.smoke_ms != 0 && !smoke_passed_) ||
             (!options_.input_script.empty() && !replay_passed_) ? 1 : 0;
     }
 
@@ -475,7 +562,7 @@ public:
         output << std::boolalpha << std::setprecision(17);
         SDL_version linked{};
         SDL_GetVersion(&linked);
-        output << "{\n  \"schema_version\":1,\n  \"application\":\"hammond_standalone\",\n  \"profile\":{\"id\":";
+        output << "{\n  \"schema_version\":2,\n  \"application\":\"hammond_standalone\",\n  \"profile\":{\"id\":";
         json_string(output, profile_.profile_id.data());
         output << ",\"authoring_sha256\":"; json_string(output, profile_.authoring_sha256.data());
         output << "},\n  \"runtime\":{\"video_driver\":"; json_string(output, video_driver_);
@@ -511,7 +598,9 @@ public:
         json_string(output, status_name(final_diagnostics_.last_render_status));
         output << ",\"last_lifecycle_status\":";
         json_string(output, status_name(final_diagnostics_.last_lifecycle_status));
-        output << "},\n  \"session\":{\"snapshot_available\":" << snapshot_available_
+        output << "},\n  \"midi\":";
+        write_midi_json(output);
+        output << ",\n  \"session\":{\"snapshot_available\":" << snapshot_available_
                << ",\"prepared\":" << snapshot_.prepared << ",\"running_after_shutdown\":" << snapshot_.running
                << ",\"sample_rate\":" << snapshot_.sample_rate << ",\"frame_clock\":" << snapshot_.frame_clock
                << ",\"publication_revision\":" << snapshot_.publication_revision
@@ -544,11 +633,84 @@ public:
     }
 
 private:
+    struct MidiRequest {
+        std::string port;
+        MidiRouting routing;
+    };
+
     struct ReplayObservation {
         SessionSnapshot snapshot;
         std::uint64_t elapsed_ms;
         std::uint64_t last_submitted_sequence;
     };
+
+    void write_midi_json(std::ostream& output) const {
+        output << "{\"backend_available\":" << MidiDevice::backend_available() << ",\"backend\":";
+        json_string(output, MidiDevice::backend_name());
+        output << ",\"requested_port\":"; json_string(output, midi_requested_port_);
+        output << ",\"port_name\":"; json_string(output, midi_final_info_.port_name);
+        output << ",\"opened_port_index\":" << midi_final_info_.opened_port_index
+               << ",\"generation\":" << midi_final_info_.generation
+               << ",\"state_before_shutdown\":";
+        json_string(output, midi_state_name(midi_before_shutdown_.state));
+        output << ",\"state_after_shutdown\":"; json_string(output, midi_state_name(midi_final_info_.state));
+        output << ",\"active_before_shutdown\":" << midi_active_before_shutdown_
+               << ",\"active_after_shutdown\":" << midi_input_.active()
+               << ",\"quiescent_after_shutdown\":" << midi_final_quiescent_
+               << ",\"diagnostics_stable_after_shutdown\":" << midi_final_quiescent_
+               << ",\"shutdown_failed\":" << midi_shutdown_failed_
+               << ",\"startup_failed\":" << midi_startup_failed_
+               << ",\"channels\":{\"upper\":" << static_cast<unsigned int>(midi_routing_.upper_channel)
+               << ",\"lower\":" << static_cast<unsigned int>(midi_routing_.lower_channel)
+               << ",\"pedals\":" << static_cast<unsigned int>(midi_routing_.pedal_channel)
+               << "},\"drain_budget\":" << kMidiDrainBudget
+               << ",\"maximum_drained_per_turn\":" << midi_maximum_drain_
+               << ",\"timing_policy\":\"arrival_order_next_callback_boundary\""
+               << ",\"arrival_time_unit\":\"steady_clock_nanoseconds\""
+               << ",\"retirements\":" << midi_retirements_
+               << ",\"fault_retirements\":" << midi_fault_retirements_
+               << ",\"session_recoveries_observed\":" << midi_session_recoveries_
+               << ",\"open_failures\":" << midi_open_failures_
+               << ",\"submit_failures\":" << midi_submit_failures_
+               << ",\"release_batches\":" << midi_release_batches_
+               << ",\"release_commands_accepted\":" << midi_release_commands_
+               << ",\"release_sequence\":" << midi_release_sequence_
+               << ",\"release_pending\":" << midi_retirement_waiting_
+               << ",\"parameter_messages\":" << midi_parameter_messages_
+               << ",\"retired_fault_bits\":" << midi_retired_faults_
+               << ",\"last_submit_status\":";
+        json_string(output, status_name(midi_last_submit_status_));
+        output << ",\"status\":"; json_string(output, midi_status_);
+        output << ",\"device\":{\"callback_messages\":" << midi_final_device_.callback_messages
+               << ",\"forwarded_messages\":" << midi_final_device_.forwarded_messages
+               << ",\"filtered_messages\":" << midi_final_device_.filtered_messages
+               << ",\"admission_failures\":" << midi_final_device_.admission_failures
+               << ",\"backend_errors\":" << midi_final_device_.backend_errors
+               << ",\"callback_contentions\":" << midi_final_device_.callback_contentions
+               << ",\"disconnects\":" << midi_final_device_.disconnects
+               << ",\"close_errors\":" << midi_final_device_.close_errors
+               << ",\"last_arrival_ns\":" << midi_final_device_.last_arrival_ns
+               << "},\"inbox\":{\"capacity\":" << kMidiInboxCapacity
+               << ",\"pending_packets\":" << midi_final_pending_
+               << ",\"received_packets\":" << midi_final_inbox_.received_packets
+               << ",\"accepted_packets\":" << midi_final_inbox_.accepted_packets
+               << ",\"invalid_size_packets\":" << midi_final_inbox_.invalid_size_packets
+               << ",\"faulted_packets\":" << midi_final_inbox_.faulted_packets
+               << ",\"overflow_events\":" << midi_final_inbox_.overflow_events
+               << ",\"popped_packets\":" << midi_final_inbox_.popped_packets
+               << ",\"discarded_packets\":" << midi_final_inbox_.discarded_packets
+               << ",\"resets\":" << midi_final_inbox_.resets
+               << ",\"fault_bits\":" << midi_final_inbox_.faults
+               << "},\"decoder\":{\"packets\":" << midi_final_input_.packets
+               << ",\"actions\":" << midi_final_input_.actions
+               << ",\"unsupported\":" << midi_final_input_.unsupported
+               << ",\"unmapped_channels\":" << midi_final_input_.unmapped_channels
+               << ",\"out_of_range\":" << midi_final_input_.out_of_range
+               << ",\"malformed\":" << midi_final_input_.malformed
+               << ",\"inactive\":" << midi_final_input_.inactive
+               << ",\"timestamp_regressions\":" << midi_final_input_.timestamp_regressions
+               << ",\"epochs\":" << midi_final_input_.epochs << "}}";
+    }
 
     [[nodiscard]] bool pump_replay(std::uint64_t elapsed) {
         if (options_.input_script.empty()) return true;
@@ -676,6 +838,234 @@ private:
         std::cerr << "hammond_standalone: " << last_error_ << '\n';
     }
 
+    // MIDI note/release commands deliberately bypass UiModel::submitted: an
+    // unexpected adapter rejection must never become ReleaseUiNotes. Controls
+    // take external_parameter() and the ordinary UI acknowledgment path below.
+    [[nodiscard]] SubmitResult post_midi_command(const SessionCommand& command) {
+        const auto result = commands_enabled_ ? session_.post(command) :
+            SubmitResult{SessionStatus::NotRunning, 0};
+        midi_last_submit_status_ = result.status;
+        if (result.ok()) record_accepted(command, result);
+        else increment_counter(midi_submit_failures_);
+        return result;
+    }
+
+    void retire_midi(std::string_view reason) {
+        const bool had_pending_request = pending_midi_open_.has_value();
+        pending_midi_open_.reset();
+        if (midi_shutdown_failed_) return; // Never retry or replace a quarantined epoch.
+        const bool had_epoch = midi_input_.active() || midi_.device.is_open() ||
+            midi_.inbox->faults() != 0 || midi_.inbox->pending() != 0;
+        if (!had_epoch) {
+            if (had_pending_request) midi_status_ = reason;
+            return;
+        }
+        midi_input_.end_epoch();
+        midi_status_ = reason;
+        midi_retired_faults_ |= midi_.inbox->faults();
+        midi_.device.close();
+        midi_retired_faults_ |= midi_.inbox->faults();
+        if (midi_.device.is_quiescent()) {
+            midi_.inbox->reset_quiescent();
+        } else if (!midi_shutdown_failed_) {
+            midi_shutdown_failed_ = true;
+            midi_status_ = "MIDI shutdown failed; restart the application before using MIDI.";
+            fail(midi_status_);
+        }
+        increment_counter(midi_retirements_);
+        midi_retirement_waiting_ = true;
+        midi_release_failed_ = false;
+        midi_release_sequence_ = 0;
+        midi_retirement_recovery_ = snapshot_.recovery_count;
+        if (!commands_enabled_) return; // The audio close/stop lifecycle resolves owners.
+        increment_counter(midi_release_batches_);
+        for (const auto& command : midi_release_commands()) {
+            const auto result = post_midi_command(command);
+            if (!result.ok()) {
+                midi_release_failed_ = true;
+                midi_release_sequence_ = 0; // A partial batch is not a retirement acknowledgment.
+                fail(std::string("MIDI release rejected: ") + status_name(result.status) +
+                    "; awaiting Session recovery or an explicit audio restart.");
+                break; // Never retry a full queue or send later releases out of order.
+            }
+            midi_release_sequence_ = result.sequence;
+            increment_counter(midi_release_commands_);
+        }
+    }
+
+    void observe_midi_retirement(const SessionSnapshot& candidate) noexcept {
+        if (!midi_retirement_waiting_) return;
+        const bool applied = midi_release_sequence_ != 0 &&
+            candidate.resolved_sequence >= midi_release_sequence_ &&
+            candidate.last_applied_sequence >= midi_release_sequence_;
+        const bool recovered = candidate.recovery_count > midi_retirement_recovery_;
+        // AudioDevice::close joins the callback and calls Session::stop, which
+        // clears every owner and pending command. A merely paused callback is
+        // not used as an acknowledgment, nor is queue admission alone.
+        const bool stopped = !audio_.is_open() && !candidate.running && candidate.prepared;
+        if (applied || recovered || stopped) {
+            midi_retirement_waiting_ = false;
+            midi_release_failed_ = false;
+        }
+    }
+
+    [[nodiscard]] bool start_pending_midi() {
+        if (!pending_midi_open_ || midi_retirement_waiting_) return true;
+        auto request = std::move(*pending_midi_open_);
+        pending_midi_open_.reset(); // A failed open is never automatically retried.
+        if (!commands_enabled_ || !audio_.is_running() || midi_shutdown_failed_ ||
+            !midi_.device.is_quiescent()) {
+            midi_status_ = midi_shutdown_failed_ ? "MIDI shutdown failed; restart the application." :
+                "MIDI is disconnected. Start audio, then explicitly Apply MIDI settings.";
+            fail(midi_status_);
+            return false;
+        }
+        if (!midi_input_.begin_epoch(request.routing)) {
+            midi_status_ = "MIDI routing could not begin a fresh input epoch.";
+            fail(midi_status_);
+            return false;
+        }
+        std::string error;
+        if (!midi_.device.open(*midi_.inbox, request.port, error)) {
+            increment_counter(midi_open_failures_);
+            const auto explanation = "Cannot open MIDI input: " + error;
+            retire_midi(explanation);
+            fail(explanation);
+            return false;
+        }
+        midi_routing_ = request.routing;
+        midi_requested_port_ = std::move(request.port);
+        midi_last_poll_ = SDL_GetTicks64();
+        midi_startup_failed_ = false;
+        midi_status_ = "MIDI connected. Messages apply at the next audio callback boundary.";
+        message(midi_status_);
+        return true;
+    }
+
+    [[nodiscard]] bool request_midi(std::string port, const MidiRouting& routing) {
+        if (!valid_midi_routing(routing)) {
+            midi_status_ = "Choose three distinct MIDI channels from 1 through 16.";
+            fail(midi_status_);
+            return false; // Preserve the existing transport and routing.
+        }
+        if (!port.empty() && (!MidiDevice::backend_available() || midi_shutdown_failed_)) {
+            midi_status_ = midi_shutdown_failed_ ? "MIDI shutdown failed; restart the application." :
+                "MIDI backend unavailable in this build.";
+            fail(midi_status_);
+            return false;
+        }
+        if (!port.empty() && (!commands_enabled_ || !audio_.is_running())) {
+            midi_status_ = "Start audio before applying a MIDI input port.";
+            fail(midi_status_);
+            return false;
+        }
+        if (midi_input_.active() && midi_.device.is_open() && midi_.inbox->faults() == 0 &&
+            port == midi_requested_port_ && routing == midi_routing_) {
+            midi_status_ = "The selected MIDI port and channels are already active.";
+            return true;
+        }
+        retire_midi("MIDI input retired. Waiting for its scoped release acknowledgment.");
+        if (midi_shutdown_failed_ || midi_release_failed_) return false;
+        midi_requested_port_ = port;
+        midi_routing_ = routing;
+        if (port.empty()) {
+            midi_startup_failed_ = false;
+            midi_status_ = midi_retirement_waiting_ ?
+                "MIDI disconnected; waiting for scoped releases to be acknowledged." : "No MIDI input selected.";
+            return true;
+        }
+        pending_midi_open_ = MidiRequest{std::move(port), routing};
+        if (midi_retirement_waiting_) {
+            midi_status_ = "Apply requested. Waiting for the previous MIDI release acknowledgment.";
+            return true;
+        }
+        return start_pending_midi();
+    }
+
+    void midi_fault(std::string explanation) {
+        increment_counter(midi_fault_retirements_);
+        if (midi_.inbox->faults() != 0 && midi_.device.is_open()) {
+            std::string error;
+            const bool connected = midi_.device.poll_connection(error);
+            (void)connected;
+        }
+        retire_midi(explanation);
+        if (!midi_shutdown_failed_) {
+            midi_status_ = std::move(explanation);
+            fail(midi_status_);
+        }
+    }
+
+    void process_midi() {
+        if (pending_midi_open_ && !midi_retirement_waiting_) {
+            const bool opened = start_pending_midi();
+            (void)opened;
+        }
+        if (!midi_input_.active()) return;
+        if (!commands_enabled_ || !audio_.is_running()) {
+            retire_midi("MIDI disconnected after audio stopped. Apply MIDI settings to reconnect.");
+            return;
+        }
+        const auto now = SDL_GetTicks64();
+        if (midi_.inbox->faults() != 0 || !midi_.device.is_open() ||
+            now - midi_last_poll_ >= kMidiConnectionPollMilliseconds) {
+            midi_last_poll_ = now;
+            std::string error;
+            const bool connected = midi_.device.poll_connection(error);
+            if (!connected || midi_.inbox->faults() != 0) {
+                midi_fault(error.empty() ?
+                    "MIDI input fault; old packets discarded. Apply MIDI settings to reconnect." :
+                    "MIDI input disconnected: " + error + ". Apply MIDI settings to reconnect.");
+                return;
+            }
+        }
+        std::size_t drained = 0;
+        for (; drained < kMidiDrainBudget && midi_input_.active();) {
+            if (midi_.inbox->faults() != 0) {
+                midi_fault("MIDI inbox fault; old packets discarded. Apply MIDI settings to reconnect.");
+                break;
+            }
+            MidiPacket packet;
+            if (!midi_.inbox->pop(packet)) break;
+            ++drained;
+            const auto decoded = midi_input_.decode(packet);
+            if (decoded.status != MidiDecodeStatus::Action) continue;
+            bool accepted = false;
+            if (const auto* command = std::get_if<SessionCommand>(&decoded.action)) {
+                const auto result = post_midi_command(*command);
+                accepted = result.ok();
+                if (!accepted) {
+                    midi_fault(std::string("MIDI command rejected: ") + status_name(result.status) +
+                        ". Input retired; reconnect explicitly after recovery.");
+                }
+            } else {
+                const auto& edit = std::get<MidiParameterEdit>(decoded.action);
+                increment_counter(midi_parameter_messages_);
+                accepted = dispatch(ui_.external_parameter(edit.parameter_id, edit.normalized));
+                if (!accepted && midi_input_.active()) {
+                    midi_fault("MIDI control submission failed. Apply MIDI settings after recovery.");
+                }
+            }
+            if (!accepted) break;
+            // Observe recovery between accepted actions too. A UI or Engine
+            // failure can retire this epoch while acquisition is still active.
+            observe();
+        }
+        midi_maximum_drain_ = std::max(midi_maximum_drain_, drained);
+        if (midi_input_.active() && midi_.inbox->faults() != 0) {
+            midi_fault("MIDI inbox fault; old packets discarded. Apply MIDI settings to reconnect.");
+        }
+    }
+
+    void copy_midi_diagnostics() {
+        midi_final_info_ = midi_.device.info();
+        midi_final_device_ = midi_.device.diagnostics();
+        midi_final_inbox_ = midi_.inbox->diagnostics();
+        midi_final_input_ = midi_input_.diagnostics();
+        midi_final_quiescent_ = midi_.device.is_quiescent();
+        midi_final_pending_ = midi_.inbox->pending();
+    }
+
     void choose_state_path() {
         if (!options_.state.empty()) return;
         char* preference = SDL_GetPrefPath("B3Workshop", "HammondStandalone");
@@ -783,10 +1173,16 @@ private:
     void observe() {
         SessionSnapshot candidate;
         if (!session_.read_snapshot(candidate)) return;
+        const bool recovered = snapshot_available_ && candidate.recovery_count > snapshot_.recovery_count;
         snapshot_ = candidate;
         snapshot_available_ = true;
         retained_controls_ = candidate.controls;
         ui_.observe(candidate);
+        if (recovered && (midi_input_.active() || pending_midi_open_ || midi_retirement_waiting_)) {
+            increment_counter(midi_session_recoveries_);
+            retire_midi("MIDI disconnected after global Session recovery. Apply MIDI settings to reconnect.");
+        }
+        observe_midi_retirement(candidate);
         if (std::isfinite(candidate.peak)) maximum_observed_peak_ = std::max(maximum_observed_peak_, candidate.peak);
         if (intended_controls_ && intended_sequence_ != 0 && candidate.resolved_sequence >= intended_sequence_ &&
             candidate.last_applied_sequence >= intended_sequence_ && candidate.controls == *intended_controls_) {
@@ -800,6 +1196,9 @@ private:
     [[nodiscard]] bool dispatch(const UiActions& actions) {
         for (const auto& action : actions.span()) {
             if (const auto* command = std::get_if<SessionCommand>(&action)) {
+                if (std::holds_alternative<Panic>(*command)) {
+                    retire_midi("MIDI disconnected by global Panic. Apply MIDI settings to reconnect.");
+                }
                 // A stopped Session intentionally admits commands. Reject at the
                 // device gate instead of accumulating work without a consumer.
                 const SubmitResult result = commands_enabled_ ? session_.post(*command) :
@@ -826,6 +1225,9 @@ private:
                     if (!recovered.ok()) break;
                     record_accepted(*release, recovered);
                 }
+                if (midi_input_.active() || pending_midi_open_) {
+                    retire_midi("MIDI disconnected after Session submission failure. Apply MIDI settings after recovery.");
+                }
                 return false;
             }
             handle_request(std::get<UiAppRequest>(action));
@@ -839,6 +1241,7 @@ private:
         case UiAppRequest::LoadControls: load_state(); break;
         case UiAppRequest::AudioSettings: open_overlay(ViewOverlay::Audio); break;
         case UiAppRequest::Help: open_overlay(ViewOverlay::Help); break;
+        case UiAppRequest::MidiSettings: open_overlay(ViewOverlay::Midi); break;
         }
     }
 
@@ -938,6 +1341,33 @@ private:
         overlay_ = overlay;
         ui_.set_text_entry_active(true);
         modal_focus_ = overlay == ViewOverlay::Help ? 5U : 0U;
+        if (overlay == ViewOverlay::Midi) {
+            selected_midi_routing_ = midi_routing_;
+            midi_choices_.clear();
+            midi_choices_.emplace_back("No input");
+            std::vector<std::string> names;
+            std::string error;
+            if (midi_shutdown_failed_) {
+                midi_status_ = "MIDI shutdown failed; restart the application before using MIDI.";
+            } else if (MidiDevice::backend_available()) {
+                if (MidiDevice::enumerate_input_ports(names, error)) {
+                    for (auto& name : names) midi_choices_.push_back(std::move(name));
+                    if (names.empty() && !midi_input_.active()) midi_status_ = "No MIDI input ports were found.";
+                } else {
+                    midi_status_ = "Cannot enumerate MIDI input ports: " + error;
+                    fail(midi_status_);
+                }
+            } else midi_status_ = "MIDI backend unavailable in this build.";
+            selected_midi_port_ = 0;
+            if (!midi_requested_port_.empty()) {
+                const auto found = std::find(midi_choices_.begin() + 1, midi_choices_.end(), midi_requested_port_);
+                if (found != midi_choices_.end()) {
+                    selected_midi_port_ = static_cast<std::size_t>(found - midi_choices_.begin());
+                }
+            }
+            message("MIDI: choose an exact port and distinct channels; Apply connects; Disconnect releases MIDI notes.");
+            return;
+        }
         if (overlay != ViewOverlay::Audio) return;
         selected_config_ = config_;
         const auto current = audio_.info();
@@ -966,13 +1396,40 @@ private:
         // Physical-key records are intentionally retained until their actual Up.
     }
 
-    [[nodiscard]] std::array<UiRect, 6> modal_rectangles() const noexcept {
+    [[nodiscard]] std::size_t modal_control_count() const noexcept {
+        return overlay_ == ViewOverlay::Midi ? 8U : 6U;
+    }
+
+    [[nodiscard]] std::array<UiRect, 8> modal_rectangles() const noexcept {
+        if (overlay_ == ViewOverlay::Midi) {
+            const auto boxes = midi_overlay_layout(ui_.layout().width, ui_.layout().height);
+            return {boxes.previous_port, boxes.next_port, boxes.upper_channel,
+                    boxes.lower_channel, boxes.pedal_channel, boxes.apply, boxes.disconnect, boxes.close};
+        }
         const auto boxes = audio_overlay_layout(ui_.layout().width, ui_.layout().height);
         return {boxes.previous_device, boxes.next_device, boxes.sample_rate,
-                boxes.buffer_frames, boxes.apply, boxes.close};
+                boxes.buffer_frames, boxes.apply, boxes.close, {}, {}};
+    }
+
+    [[nodiscard]] std::uint8_t* selected_midi_channel() noexcept {
+        if (modal_focus_ == 2) return &selected_midi_routing_.upper_channel;
+        if (modal_focus_ == 3) return &selected_midi_routing_.lower_channel;
+        if (modal_focus_ == 4) return &selected_midi_routing_.pedal_channel;
+        return nullptr;
     }
 
     void change_modal_value(int direction) {
+        if (overlay_ == ViewOverlay::Midi) {
+            if (modal_focus_ <= 1 && !midi_choices_.empty()) {
+                selected_midi_port_ = direction < 0 ?
+                    (selected_midi_port_ + midi_choices_.size() - 1) % midi_choices_.size() :
+                    (selected_midi_port_ + 1) % midi_choices_.size();
+            } else if (auto* channel = selected_midi_channel()) {
+                *channel = static_cast<std::uint8_t>(direction < 0 ? (*channel == 1 ? 16 : *channel - 1) :
+                    (*channel == 16 ? 1 : *channel + 1));
+            }
+            return;
+        }
         if (modal_focus_ <= 1 && !audio_choices_.empty()) {
             selected_device_ = direction < 0 ? (selected_device_ + audio_choices_.size() - 1) % audio_choices_.size() :
                 (selected_device_ + 1) % audio_choices_.size();
@@ -981,10 +1438,35 @@ private:
     }
 
     void activate_modal() {
+        if (overlay_ == ViewOverlay::Midi) {
+            if (modal_focus_ == 7) { close_overlay(); return; }
+            if (modal_focus_ < 5) { change_modal_value(modal_focus_ == 0 ? -1 : 1); return; }
+            if (modal_focus_ == 6) {
+                retire_midi("MIDI disconnected by request. MIDI owners are being released.");
+                midi_requested_port_.clear();
+                selected_midi_port_ = 0;
+                if (!midi_shutdown_failed_) {
+                    midi_status_ = midi_retirement_waiting_ ?
+                        "MIDI disconnected; waiting for scoped release acknowledgment." : "No MIDI input selected.";
+                }
+                return;
+            }
+            if (selected_midi_port_ >= midi_choices_.size()) return;
+            std::string port = selected_midi_port_ == 0 ? std::string{} : midi_choices_[selected_midi_port_];
+            if (!port.empty() && std::count(midi_choices_.begin() + 1, midi_choices_.end(), port) != 1) {
+                midi_status_ = "The selected MIDI name is ambiguous. Reopen MIDI settings after resolving duplicate names.";
+                fail(midi_status_);
+                return;
+            }
+            const bool requested = request_midi(std::move(port), selected_midi_routing_);
+            (void)requested;
+            return; // Keep the selected configuration and connection result reviewable.
+        }
         if (overlay_ == ViewOverlay::Help || modal_focus_ == 5) { close_overlay(); return; }
         if (modal_focus_ < 4) { change_modal_value(modal_focus_ == 0 ? -1 : 1); return; }
         pending_save_.reset();
         lose_input(UiReleaseReason::FocusLost);
+        retire_midi("MIDI disconnected for audio restart. Apply MIDI settings to reconnect.");
         audio_.close(); // Joins callbacks, then stops Session, before any prepare.
         commands_enabled_ = false;
         observe(); // Includes every control actually applied before the join.
@@ -1003,12 +1485,19 @@ private:
             return;
         }
         if (input.key == UiKey::Tab) {
-            modal_focus_ = input.shift ? (modal_focus_ + 5) % 6 : (modal_focus_ + 1) % 6;
+            const auto count = modal_control_count();
+            modal_focus_ = input.shift ? (modal_focus_ + count - 1) % count : (modal_focus_ + 1) % count;
         } else if (input.key == UiKey::Enter || input.key == UiKey::Space) activate_modal();
         else if (input.key == UiKey::Left || input.key == UiKey::Down) change_modal_value(-1);
         else if (input.key == UiKey::Right || input.key == UiKey::Up) change_modal_value(1);
         else if (input.key == UiKey::Home || input.key == UiKey::End) {
             const bool end = input.key == UiKey::End;
+            if (overlay_ == ViewOverlay::Midi) {
+                if (modal_focus_ <= 1 && !midi_choices_.empty()) {
+                    selected_midi_port_ = end ? midi_choices_.size() - 1 : 0;
+                } else if (auto* channel = selected_midi_channel()) *channel = end ? 16 : 1;
+                return;
+            }
             if (modal_focus_ <= 1) selected_device_ = end ? audio_choices_.size() - 1 : 0;
             else if (modal_focus_ == 2) selected_config_.sample_rate = end ? kSampleRates.back() : kSampleRates.front();
             else if (modal_focus_ == 3) selected_config_.buffer_frames = end ? kBufferSizes.back() : kBufferSizes.front();
@@ -1030,6 +1519,7 @@ private:
             if (event.keysym.scancode == SDL_SCANCODE_S) request_save();
             else if (event.keysym.scancode == SDL_SCANCODE_O) load_state();
             else if (event.keysym.scancode == SDL_SCANCODE_COMMA) open_overlay(ViewOverlay::Audio);
+            else if (event.keysym.scancode == SDL_SCANCODE_M) open_overlay(ViewOverlay::Midi);
         } else if (event.keysym.scancode == SDL_SCANCODE_SLASH && input.shift) open_overlay(ViewOverlay::Help);
     }
 
@@ -1058,7 +1548,7 @@ private:
             if (overlay_ != ViewOverlay::None) {
                 const auto rectangles = modal_rectangles();
                 const std::size_t first = overlay_ == ViewOverlay::Help ? 5U : 0U;
-                for (std::size_t index = first; index < rectangles.size(); ++index) {
+                for (std::size_t index = first; index < modal_control_count(); ++index) {
                     if (rectangles[index].contains(point)) { modal_focus_ = index; activate_modal(); break; }
                 }
             } else {
@@ -1094,6 +1584,7 @@ private:
             }
         } else if (event.type == SDL_AUDIODEVICEREMOVED && audio_.is_removed_by(event.adevice)) {
             lose_input(UiReleaseReason::FocusLost);
+            retire_midi("MIDI disconnected after audio-device removal. Apply MIDI settings after restarting audio.");
             audio_.close();
             commands_enabled_ = false;
             observe();
@@ -1125,6 +1616,7 @@ private:
         handled_format_failures_ = diagnostics.format_failures;
         handled_nonfinite_failures_ = diagnostics.nonfinite_failures;
         lose_input(UiReleaseReason::FocusLost);
+        retire_midi("MIDI disconnected after audio failure. Apply MIDI settings after restarting audio.");
         audio_.close();
         commands_enabled_ = false;
         observe();
@@ -1159,9 +1651,20 @@ private:
         if (status_until_ != 0 && SDL_GetTicks64() >= status_until_) { status_.clear(); status_until_ = 0; }
         const auto device = audio_.info();
         const auto diagnostics = audio_.diagnostics();
-        const InstrumentViewInfo information{device.running, device.sample_rate, device.buffer_frames,
+        const auto midi_device = midi_.device.info();
+        InstrumentViewInfo information{device.running, device.sample_rate, device.buffer_frames,
             device.driver, device.device_name, status_, diagnostics.overrange_samples, overlay_, audio_choices_,
             selected_device_, selected_config_.sample_rate, selected_config_.buffer_frames};
+        information.midi_available = MidiDevice::backend_available();
+        information.midi_open = midi_.device.is_open() && midi_input_.active();
+        information.midi_backend = MidiDevice::backend_name();
+        information.midi_port = midi_device.port_name;
+        information.midi_status = midi_status_;
+        information.midi_choices = midi_choices_;
+        information.selected_midi_port = selected_midi_port_;
+        information.selected_midi_channels = {selected_midi_routing_.upper_channel,
+            selected_midi_routing_.lower_channel, selected_midi_routing_.pedal_channel};
+        information.midi_messages = midi_input_.diagnostics().packets;
         paint_instrument(*drawing_, ui_, information);
         if (overlay_ != ViewOverlay::None) drawing_->outline(modal_rectangles()[modal_focus_], kUiFocusCyan, 2.0F);
         if (SDL_RenderFlush(renderer_.get()) != 0) {
@@ -1202,6 +1705,8 @@ private:
     RuntimeProfile profile_;
     Session session_;
     AudioDevice audio_; // Destruction precedes Session.
+    MidiLifetime midi_; // The sole inbox outlives its backend, including quarantine.
+    MidiInput midi_input_;
     UiModel ui_;
     std::unique_ptr<SDL_Window, WindowDeleter> window_;
     std::unique_ptr<SDL_Renderer, RendererDeleter> renderer_;
@@ -1215,15 +1720,29 @@ private:
     SessionSnapshot snapshot_{};
     SessionSnapshot replay_before_shutdown_{};
     std::optional<PendingSave> pending_save_;
+    std::optional<MidiRequest> pending_midi_open_;
     AudioDeviceInfo audio_before_close_{};
     AudioDeviceDiagnostics final_diagnostics_{};
+    MidiDeviceInfo midi_before_shutdown_{};
+    MidiDeviceInfo midi_final_info_{};
+    MidiDeviceDiagnostics midi_final_device_{};
+    MidiInboxDiagnostics midi_final_inbox_{};
+    MidiInputDiagnostics midi_final_input_{};
+    MidiRouting midi_routing_{};
+    MidiRouting selected_midi_routing_{};
     std::vector<std::string> audio_choices_;
+    std::vector<std::string> midi_choices_;
+    std::string midi_requested_port_;
+    std::string midi_status_{"No MIDI input selected."};
     std::string status_;
     std::string last_error_;
     std::string renderer_name_;
     std::string video_driver_;
     ViewOverlay overlay_{ViewOverlay::None};
     std::size_t selected_device_{0};
+    std::size_t selected_midi_port_{0};
+    std::size_t midi_maximum_drain_{0};
+    std::size_t midi_final_pending_{0};
     std::size_t modal_focus_{0};
     std::uint64_t last_control_sequence_{0};
     std::uint64_t last_submitted_sequence_{0};
@@ -1241,6 +1760,19 @@ private:
     std::uint64_t status_until_{0};
     std::uint64_t error_count_{0};
     std::uint64_t render_count_{0};
+    std::uint64_t midi_last_poll_{0};
+    std::uint64_t midi_retirements_{0};
+    std::uint64_t midi_fault_retirements_{0};
+    std::uint64_t midi_session_recoveries_{0};
+    std::uint64_t midi_open_failures_{0};
+    std::uint64_t midi_submit_failures_{0};
+    std::uint64_t midi_release_batches_{0};
+    std::uint64_t midi_release_commands_{0};
+    std::uint64_t midi_release_sequence_{0};
+    std::uint64_t midi_retirement_recovery_{0};
+    std::uint64_t midi_parameter_messages_{0};
+    std::uint32_t midi_retired_faults_{0};
+    SessionStatus midi_last_submit_status_{SessionStatus::Ok};
     int window_width_{0};
     int window_height_{0};
     int drawable_width_{0};
@@ -1266,6 +1798,12 @@ private:
     bool replay_final_acknowledged_{false};
     bool replay_finalized_{false};
     bool replay_observations_truncated_{false};
+    bool midi_retirement_waiting_{false};
+    bool midi_release_failed_{false};
+    bool midi_shutdown_failed_{false};
+    bool midi_startup_failed_{false};
+    bool midi_active_before_shutdown_{false};
+    bool midi_final_quiescent_{true};
 };
 
 int run_application(int argc, char** argv) {
@@ -1276,6 +1814,20 @@ int run_application(int argc, char** argv) {
         return 2;
     }
     if (options.help) { print_help(); return 0; }
+    if (options.list_midi) {
+        std::cout << "MIDI backend: " << MidiDevice::backend_name() << '\n';
+        std::vector<std::string> names;
+        if (!MidiDevice::enumerate_input_ports(names, error)) {
+            std::cerr << "hammond_standalone: " << error << '\n';
+            return 1;
+        }
+        std::cout << "Default input: none; select an exact name with --midi-port or MIDI settings\n";
+        if (names.empty()) std::cout << "No MIDI input ports found.\n";
+        for (std::size_t index = 0; index < names.size(); ++index) {
+            std::cout << index + 1 << ": " << names[index] << '\n';
+        }
+        return 0;
+    }
     SDL_SetMainReady();
     const SdlLifetime sdl;
     if (options.list_audio) {

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "identity": "standalone-reference-decoration-v1",
+  "evidence_class": "user-supplied generated design concept; decorative pixels only; not an application capture or calibrated physical geometry",
+  "rights": "Derived only from the user-supplied atlas already retained in this repository; no new external artwork acquired. Upstream publication-rights clearance remains the existing project gate.",
+  "source": {
+    "file": "docs/design/atlas-cover-reference.jpg",
+    "bytes": 412664,
+    "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "width": 1672,
+    "height": 941,
+    "decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+    "pdf": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+    "pdf_sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+    "pdf_pages": [
+      1,
+      409
+    ],
+    "pdf_image_object": 3
+  },
+  "authoring": {
+    "tool": "tools/compile_reference_art.py",
+    "tool_version": 1,
+    "python": "3.12.14",
+    "pillow": "13.0.0",
+    "libjpeg_api": "6.2",
+    "libjpeg_turbo": "3.2.0",
+    "zlib_compile": "1.3.2",
+    "zlib_runtime": "1.3.2"
+  },
+  "pixels": {
+    "format": "RGB24",
+    "channels": [
+      "R",
+      "G",
+      "B"
+    ],
+    "component_bits": 8,
+    "order": "row-major, top-to-bottom, left-to-right",
+    "row_padding": 0,
+    "decode": "Pillow Image.open JPEG defaults, load(), convert(\"RGB\"); no ICC transform or EXIF transpose",
+    "extraction": "Exact integer crop; no resampling, retouching, compositing or color adjustment"
+  },
+  "compression": {
+    "format": "gzip",
+    "level": 9,
+    "mtime": 0,
+    "filename": "",
+    "os_byte": 255,
+    "members": 1
+  },
+  "rejected_regions": [
+    {
+      "name": "original_left_wood_cheek",
+      "source_rect": [
+        0,
+        0,
+        72,
+        941
+      ],
+      "reason": "Contains fragments of upper and lower BASS tablets and text around y578-647 and y742-814; narrowed to the control-free 24-pixel outer strip."
+    }
+  ],
+  "assets": [
+    {
+      "name": "cabinet",
+      "cpp_symbol": "kCabinet",
+      "file": "cabinet.rgb.gz",
+      "source_rect": [
+        1132,
+        174,
+        466,
+        397
+      ],
+      "width": 466,
+      "height": 397,
+      "pitch": 1398,
+      "pixel_bytes": 555006,
+      "pixel_sha256": "aa116739250f4924c203be1f46aae72a9e58dfb85ff5bbab6fd752778b3331e6",
+      "bytes": 369409,
+      "sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e",
+      "role": "Cabinet and microphones only; excludes heading, microphone and speed controls."
+    },
+    {
+      "name": "left-wood-cheek",
+      "cpp_symbol": "kLeftWoodCheek",
+      "file": "left-wood-cheek.rgb.gz",
+      "source_rect": [
+        0,
+        0,
+        24,
+        941
+      ],
+      "width": 24,
+      "height": 941,
+      "pitch": 72,
+      "pixel_bytes": 67752,
+      "pixel_sha256": "d81dc7d13f2fbcd7908cc3aada7b722e4f35e9526f8c4a1065601786f2cf8b45",
+      "bytes": 52070,
+      "sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4",
+      "role": "Control-free outer left wood and edge; corrected after visual inspection of the rejected 72-pixel region."
+    },
+    {
+      "name": "right-wood-cheek",
+      "cpp_symbol": "kRightWoodCheek",
+      "file": "right-wood-cheek.rgb.gz",
+      "source_rect": [
+        1604,
+        0,
+        68,
+        941
+      ],
+      "width": 68,
+      "height": 941,
+      "pitch": 204,
+      "pixel_bytes": 191964,
+      "pixel_sha256": "7634f7468857f35e6517a3df30e18d661ee6c58c4b7bf77e1d27bfdde8a5eced",
+      "bytes": 142330,
+      "sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6",
+      "role": "Right wood and edge only; no control legends."
+    }
+  ]
+}

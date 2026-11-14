@@ -1,0 +1,15 @@
+{
+  "code_base": "0f7b90037e51e101d8fa0bfe31af40209d751659",
+  "documentation_commit": "7b36cfac2565397191b3df5e07112611e7f1b0e1",
+  "configuration": "Release; standalone enabled; pinned SDL2; explicit SDL_ALSA=OFF",
+  "reason_for_alsa_option": "Local available ALSA1.2.14 headers expose a changed snd_pcm_info_free signature incompatible with pinned SDL2. Original native build failed at SDL_alsa_audio.c:120; retained in setup record, then explicitly disabled only SDL ALSA for dummy-driver engineering baseline. RtMidi ALSA is separate. Hosted normal backend gates remain required.",
+  "drivers": {
+    "audio": "dummy",
+    "video": "dummy"
+  },
+  "passed": 14,
+  "failed": 0,
+  "test_seconds": 43.86,
+  "test_log_sha256": "13ad5dff84665d96d1b23c572e0af27231f21bb2229ad9931517efa17bbcc7fe",
+  "physical_device_pass": false
+}

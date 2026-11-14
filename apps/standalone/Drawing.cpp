@@ -1,5 +1,6 @@
 #include "Drawing.h"
 #include "FontData.h"
+#include "ReferenceArtData.h"
 
 #include <algorithm>
 #include <cmath>
@@ -52,11 +53,33 @@ void color(SDL_Renderer* renderer, UiColor value) noexcept {
     return texture;
 }
 
+[[nodiscard]] SDL_Texture* make_art(SDL_Renderer* renderer,
+                                    const reference_art::RgbImage& art) noexcept {
+    if (art.width <= 0 || art.height <= 0 || art.width > 8192 || art.height > 8192 ||
+        art.pitch != art.width * 3 || art.pixels == nullptr ||
+        art.byte_count != static_cast<std::size_t>(art.pitch) * static_cast<std::size_t>(art.height)) {
+        return nullptr;
+    }
+    auto* texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGB24,
+        SDL_TEXTUREACCESS_STATIC, art.width, art.height);
+    if (texture == nullptr) return nullptr;
+    if (SDL_UpdateTexture(texture, nullptr, art.pixels, art.pitch) != 0 ||
+        SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_NONE) != 0 ||
+        SDL_SetTextureScaleMode(texture, SDL_ScaleModeLinear) != 0) {
+        SDL_DestroyTexture(texture);
+        return nullptr;
+    }
+    return texture;
+}
+
 } // namespace
 
 Drawing::~Drawing() {
     SDL_DestroyTexture(sans_);
     SDL_DestroyTexture(serif_);
+    SDL_DestroyTexture(cabinet_);
+    SDL_DestroyTexture(left_wood_);
+    SDL_DestroyTexture(right_wood_);
 }
 
 bool Drawing::initialize(std::string& error) {
@@ -80,6 +103,11 @@ bool Drawing::initialize(std::string& error) {
         serif_ = nullptr;
         return false;
     }
+    // Decoration is optional. Failed preparation cannot make the instrument
+    // unusable; all controls and their procedural surface remain independent.
+    cabinet_ = make_art(renderer_, hammond::standalone::reference_art::kCabinet);
+    left_wood_ = make_art(renderer_, hammond::standalone::reference_art::kLeftWoodCheek);
+    right_wood_ = make_art(renderer_, hammond::standalone::reference_art::kRightWoodCheek);
     error.clear();
     return true;
 }
@@ -155,6 +183,18 @@ void Drawing::shadow(UiRect bounds, float radius) const noexcept {
                  bounds.width + spread * 2.0F, bounds.height + spread * 2.0F},
                 radius + spread, {0, 0, 0, 16});
     }
+}
+
+bool Drawing::reference_art(ReferenceArt art, UiRect bounds) const noexcept {
+    SDL_Texture* texture = nullptr;
+    switch (art) {
+    case ReferenceArt::Cabinet: texture = cabinet_; break;
+    case ReferenceArt::LeftWoodCheek: texture = left_wood_; break;
+    case ReferenceArt::RightWoodCheek: texture = right_wood_; break;
+    }
+    if (texture == nullptr || !(bounds.width > 0.0F && bounds.height > 0.0F)) return false;
+    const SDL_FRect target{bounds.x, bounds.y, bounds.width, bounds.height};
+    return SDL_RenderCopyF(renderer_, texture, nullptr, &target) == 0;
 }
 
 float Drawing::text_width(std::string_view value, float size, TextFace face) const noexcept {

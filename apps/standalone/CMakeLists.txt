@@ -1,8 +1,21 @@
 # Host-independent adapters are tested by the ordinary build. SDL2 is entered
 # only when the user explicitly enables the native application.
-add_library(hammond_standalone_support STATIC Session.cpp UiModel.cpp StateFiles.cpp)
+add_library(hammond_standalone_support STATIC
+    Session.cpp UiModel.cpp StateFiles.cpp MidiInput.cpp MidiDevice.cpp)
 target_link_libraries(hammond_standalone_support PUBLIC hammond_core)
 target_include_directories(hammond_standalone_support PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
+target_compile_definitions(hammond_standalone_support PRIVATE
+    HAMMOND_HAS_RTMIDI=$<BOOL:${HAMMOND_ENABLE_MIDI}>)
+if(HAMMOND_ENABLE_MIDI)
+    include("${PROJECT_SOURCE_DIR}/cmake/VerifyRtMidi.cmake")
+    hammond_add_rtmidi(hammond_rtmidi "${HAMMOND_RTMIDI_ROOT}")
+    target_link_libraries(hammond_standalone_support PRIVATE hammond_rtmidi)
+    if(HAMMOND_ENABLE_SANITIZERS)
+        target_compile_options(hammond_rtmidi PRIVATE
+            -fsanitize=address,undefined -fno-omit-frame-pointer)
+        target_link_options(hammond_rtmidi PUBLIC -fsanitize=address,undefined)
+    endif()
+endif()
 hammond_configure_target(hammond_standalone_support)
 
 set(HAMMOND_STANDALONE_TEST_TARGETS)
@@ -23,6 +36,33 @@ if(BUILD_TESTING)
         add_test(NAME ${test_name} COMMAND ${test_name})
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS ${test_name})
     endforeach()
+    # Compile the unchanged transport adapter against a deterministic test-only
+    # RtMidi API. This target needs neither RtMidi nor a native MIDI SDK, and
+    # does not link the separately configured production backend object.
+    if((CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT ANDROID) OR
+       CMAKE_SYSTEM_NAME STREQUAL "Windows" OR CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+        add_executable(test_standalone_midi_backend
+            backend_tests/test_standalone_midi_backend.cpp MidiDevice.cpp MidiInput.cpp)
+        target_include_directories(test_standalone_midi_backend BEFORE PRIVATE
+            "${CMAKE_CURRENT_SOURCE_DIR}/backend_tests/fake"
+            "${CMAKE_CURRENT_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}/tests")
+        target_compile_definitions(test_standalone_midi_backend PRIVATE HAMMOND_HAS_RTMIDI=1)
+        target_link_libraries(test_standalone_midi_backend PRIVATE hammond_core Threads::Threads)
+        hammond_configure_target(test_standalone_midi_backend)
+        add_test(NAME test_standalone_midi_backend
+            COMMAND test_standalone_midi_backend --ordinary)
+        add_test(NAME test_standalone_midi_backend_quarantine
+            COMMAND test_standalone_midi_backend --quarantine)
+        set_tests_properties(test_standalone_midi_backend PROPERTIES
+            TIMEOUT 30 LABELS "standalone;backend")
+        # Only these injected failed-close cases intentionally retain a callback
+        # context until process exit. Ordinary destruction keeps the normal leak
+        # policy, while memory/undefined-behavior instrumentation remains active here.
+        set_tests_properties(test_standalone_midi_backend_quarantine PROPERTIES
+            TIMEOUT 30 LABELS "standalone;backend;intentional-quarantine"
+            ENVIRONMENT "ASAN_OPTIONS=detect_leaks=0:halt_on_error=1")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_midi_backend)
+    endif()
 endif()
 
 include("${PROJECT_SOURCE_DIR}/cmake/StandaloneBenchmark.cmake")
@@ -69,9 +109,24 @@ if(HAMMOND_BUILD_STANDALONE)
         DEPENDS "${PROJECT_SOURCE_DIR}/tools/embed_profile.py" "${HAMMOND_COMPILED_PROFILE}"
         COMMENT "Embedding the unchanged nominal profile in the standalone instrument"
         VERBATIM)
+    set(HAMMOND_REFERENCE_ART "${CMAKE_CURRENT_BINARY_DIR}/generated/ReferenceArtData.h")
+    add_custom_command(
+        OUTPUT "${HAMMOND_REFERENCE_ART}"
+        COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/tools/compile_reference_art.py"
+            --input "${PROJECT_SOURCE_DIR}/assets/standalone/reference/manifest.json"
+            --source "${PROJECT_SOURCE_DIR}/docs/design/atlas-cover-reference.jpg"
+            --output "${HAMMOND_REFERENCE_ART}"
+        DEPENDS "${PROJECT_SOURCE_DIR}/tools/compile_reference_art.py"
+            "${PROJECT_SOURCE_DIR}/assets/standalone/reference/manifest.json"
+            "${PROJECT_SOURCE_DIR}/assets/standalone/reference/cabinet.rgb.gz"
+            "${PROJECT_SOURCE_DIR}/assets/standalone/reference/left-wood-cheek.rgb.gz"
+            "${PROJECT_SOURCE_DIR}/assets/standalone/reference/right-wood-cheek.rgb.gz"
+            "${PROJECT_SOURCE_DIR}/docs/design/atlas-cover-reference.jpg"
+        COMMENT "Verifying and embedding exact decorative reference pixels"
+        VERBATIM)
     add_executable(hammond_standalone
         main.cpp Drawing.cpp InstrumentView.cpp
-        "${HAMMOND_STANDALONE_PROFILE}")
+        "${HAMMOND_STANDALONE_PROFILE}" "${HAMMOND_REFERENCE_ART}")
     target_link_libraries(hammond_standalone PRIVATE hammond_standalone_audio hammond_standalone_replay)
     target_include_directories(hammond_standalone PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
     target_compile_definitions(hammond_standalone PRIVATE SDL_MAIN_HANDLED)

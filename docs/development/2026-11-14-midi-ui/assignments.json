@@ -101,34 +101,205 @@
       "wave": 2,
       "agent": "/root/w02_a07_midi_contract",
       "task": "Freeze bounded MIDI input, mapping and recovery contract",
-      "state": "running",
+      "state": "accepted",
       "owned_files": [
         "apps/standalone/MidiInput.h",
         "docs/MIDI_INPUT.md",
         "docs/development/2026-11-14-midi-ui/07-midi-contract.md"
-      ]
+      ],
+      "evidence_sha256": "c001b123579144f04cb9e886340f64bf4a1d1ed2f9a5a4cfd03c13c29728761f"
     },
     {
       "id": "A08",
       "wave": 2,
       "agent": "/root/w02_a08_backend_contract",
       "task": "Freeze pinned backend lifecycle and callback ownership",
-      "state": "running",
+      "state": "accepted",
       "owned_files": [
         "apps/standalone/MidiDevice.h",
         "docs/MIDI_BACKEND.md",
         "docs/development/2026-11-14-midi-ui/08-midi-backend-contract.md"
-      ]
+      ],
+      "evidence_sha256": "5322fff8875add5686a5ab39809b17f11adb4a31483f29ed6190beff9d9bbc0e"
     },
     {
       "id": "A09",
       "wave": 2,
       "agent": "/root/w02_a09_visual_contract",
       "task": "Specify exact-reference native layout and dynamic controls",
-      "state": "running",
+      "state": "accepted",
       "owned_files": [
         "docs/REFERENCE_UI_DESIGN.md",
         "docs/development/2026-11-14-midi-ui/09-visual-contract.md"
+      ],
+      "evidence_sha256": "888b24c98e816ce2b080edf33333fedf3e72769083fb62e0aeb443fdb505298b"
+    },
+    {
+      "id": "A10",
+      "wave": 2,
+      "agent": "/root/w02_a10_midi_acceptance",
+      "task": "Author independent decoder/inbox acceptance against the frozen contract",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_midi_input.cpp",
+        "docs/development/2026-11-14-midi-ui/10-midi-acceptance.md"
+      ],
+      "evidence_sha256": "82d6f4e63a9c4cf33b417823ececbf339564134c046614a2ca5d446d40c0d9c3"
+    },
+    {
+      "id": "A11",
+      "wave": 2,
+      "agent": "/root/w02_a11_reference_assets",
+      "task": "Prepare precise decorative source assets and deterministic native embedding",
+      "state": "accepted",
+      "owned_files": [
+        "assets/standalone/reference/",
+        "tools/compile_reference_art.py",
+        "docs/REFERENCE_ART_ASSETS.md",
+        "docs/development/2026-11-14-midi-ui/11-reference-assets.md"
+      ],
+      "evidence_sha256": "9ce8a4bbefbdc00c645531e4a667cb677d693e44ea097175a094009a3573902c"
+    },
+    {
+      "id": "A12",
+      "wave": 2,
+      "agent": "/root/w02_a12_rtmidi_build",
+      "task": "Implement locked backend acquisition, verified preparation and optional native build",
+      "state": "accepted",
+      "owned_files": [
+        "tools/acquire_rtmidi.py",
+        "cmake/VerifyRtMidi.cmake",
+        "data/dependencies/rtmidi-lock.json",
+        "assets/standalone/midi/LICENSE-RtMidi.txt",
+        "docs/RTMIDI_BUILD.md",
+        "docs/development/2026-11-14-midi-ui/12-rtmidi-build.md"
+      ],
+      "evidence_sha256": "c495cc45e0a26d744bb50c52619cfc985b4b864fe1917a806fe11b557755a91c"
+    },
+    {
+      "id": "A13",
+      "wave": 3,
+      "agent": "/root/w03_a13_midi_implementation",
+      "task": "Implement fixed inbox, decoder and scoped retirement",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/MidiInput.cpp",
+        "docs/development/2026-11-14-midi-ui/13-midi-implementation.md"
+      ],
+      "evidence_sha256": "0c768ae414f84711e38335a5a1c3be284f7bac202193edf5bd88e4629575ef18"
+    },
+    {
+      "id": "A14",
+      "wave": 3,
+      "agent": "/root/w03_a14_backend_implementation",
+      "task": "Implement optional physical-port transport and fault-safe lifecycle",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/MidiDevice.cpp",
+        "docs/development/2026-11-14-midi-ui/14-midi-backend.md"
+      ],
+      "evidence_sha256": "a0a1376d46c86e987eefe9398a33ceac2c08df3dfdae5b2000f3e4796ddbc56a"
+    },
+    {
+      "id": "A15",
+      "wave": 3,
+      "agent": "/root/w03_a15_reference_layout",
+      "task": "Implement shared reference-player layout and MIDI app action",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/UiModel.h",
+        "apps/standalone/UiModel.cpp",
+        "apps/standalone/tests/test_standalone_ui.cpp",
+        "docs/development/2026-11-14-midi-ui/15-reference-layout.md"
+      ],
+      "evidence_sha256": "5155939190b02c3f450d136d0a5defbd0ad7d4ef97da835072067bd5b113c063"
+    },
+    {
+      "id": "A16",
+      "wave": 3,
+      "agent": "/root/w03_a16_app_midi",
+      "task": "Integrate native MIDI device selection, callback-boundary input and lifecycle",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/main.cpp",
+        "docs/development/2026-11-14-midi-ui/16-app-midi.md"
+      ],
+      "evidence_sha256": "07148328d99431fe5f9df1be0365732a65b8da04024465eb3e1d761bee547011"
+    },
+    {
+      "id": "A17",
+      "wave": 3,
+      "agent": "/root/w03_a17_reference_renderer",
+      "task": "Render reference composition, retained decorative assets and MIDI modal",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/Drawing.h",
+        "apps/standalone/Drawing.cpp",
+        "apps/standalone/InstrumentView.h",
+        "apps/standalone/InstrumentView.cpp",
+        "docs/development/2026-11-14-midi-ui/17-reference-renderer.md"
+      ],
+      "evidence_sha256": "ce989a05194509dcfb4b7e6f0eee28eca36244f85e301337b536b8986ee086cf"
+    },
+    {
+      "id": "A18",
+      "wave": 3,
+      "agent": "/root/w03_a18_midi_session_acceptance",
+      "task": "Independently qualify MIDI, UI and Session musical ownership integration",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_midi_session.cpp",
+        "docs/development/2026-11-14-midi-ui/18-midi-session-acceptance.md"
+      ],
+      "evidence_sha256": "cd0c1cc12e8bda57464cf7f53ec270a1891e72c0b3f5ceaf268edcc3a62b09a4"
+    },
+    {
+      "id": "A19",
+      "wave": 4,
+      "agent": "/root/w04_a19_midi_concurrency",
+      "task": "Qualify concurrent inbox publication and allocation-free adapter path",
+      "state": "running",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_midi_concurrency.cpp",
+        "docs/development/2026-11-14-midi-ui/19-midi-concurrency.md"
+      ]
+    },
+    {
+      "id": "A20",
+      "wave": 4,
+      "agent": "/root/w04_a20_backend_fault_acceptance",
+      "task": "Inject transport faults against the actual backend wrapper",
+      "state": "accepted",
+      "owned_files": [
+        "apps/standalone/backend_tests/",
+        "docs/development/2026-11-14-midi-ui/20-backend-fault-acceptance.md"
+      ],
+      "evidence_sha256": "346cbdf4dafca9d10c9d7c4e5df817090f7cde7b46855bbd12edd51b519ca09a"
+    },
+    {
+      "id": "A21",
+      "wave": 4,
+      "agent": "/root/w04_a21_visual_acceptance",
+      "task": "Independently compare actual native captures with the source reference",
+      "state": "accepted",
+      "owned_files": [
+        "docs/reviews/MIDI_UI_REFERENCE_REVIEW.md",
+        "docs/development/2026-11-14-midi-ui/21-visual-acceptance.md"
+      ],
+      "evidence_sha256": "f9cd936a137f0068b194e029946694fb7a306459bae58735f59141dd5673e3cc"
+    },
+    {
+      "id": "A22",
+      "wave": 4,
+      "agent": "/root/w04_a22_midi_replay",
+      "task": "Implement bounded synthetic MIDI script admission for native acceptance",
+      "state": "running",
+      "owned_files": [
+        "apps/standalone/MidiReplay.h",
+        "apps/standalone/MidiReplay.cpp",
+        "apps/standalone/tests/test_standalone_midi_replay.cpp",
+        "docs/MIDI_REPLAY.md",
+        "docs/development/2026-11-14-midi-ui/22-midi-replay.md"
       ]
     }
   ]

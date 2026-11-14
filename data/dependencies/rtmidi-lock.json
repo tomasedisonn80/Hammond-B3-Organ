@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "name": "RtMidi",
+  "version": "6.0.0",
+  "repository": "https://github.com/thestk/rtmidi.git",
+  "tag": "6.0.0",
+  "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+  "sources": {
+    "RtMidi.cpp": {
+      "bytes": 168212,
+      "sha256": "184d775e88e5d73b079897363fb42af155122e879f0bc9254a1c7edae4eadb3c"
+    },
+    "RtMidi.h": {
+      "bytes": 27901,
+      "sha256": "74f98ca172243b0b9c0c59f53c4e20285d879ffa86b3d61692109b013f4606f9"
+    }
+  },
+  "license": {
+    "spdx": "MIT",
+    "path": "LICENSE",
+    "bytes": 1349,
+    "sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364"
+  },
+  "patch": {
+    "id": "coremidi-zero-initialize-v1",
+    "source": "RtMidi.cpp",
+    "before": "CoreMidiData *data = (CoreMidiData *) new CoreMidiData;",
+    "after": "CoreMidiData *data = (CoreMidiData *) new CoreMidiData{};",
+    "occurrences": 2,
+    "format": "unified-diff-lf-context-3",
+    "bytes": 728,
+    "sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad",
+    "prepared_bytes": 168216,
+    "prepared_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a"
+  }
+}

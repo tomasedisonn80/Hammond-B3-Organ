@@ -49,6 +49,7 @@ namespace {
     case UiControlKind::AudioSettings:
     case UiControlKind::Help:
     case UiControlKind::Panic:
+    case UiControlKind::MidiSettings:
         return canonical_global(id) && id.index == 0;
     case UiControlKind::None:
         return false;
@@ -299,40 +300,76 @@ bool make_ui_layout(float width, float height,
     UiLayout layout;
     layout.width = width;
     layout.height = height;
-    const float margin = width >= 1120.0F ? 24.0F : 16.0F;
-    const float gap = 12.0F;
+    layout.show_cabinet = width >= 1400.0F;
+    layout.bank_controls_in_cheeks = height >= 820.0F;
+    const bool dense = !layout.bank_controls_in_cheeks;
+    const float margin = layout.show_cabinet ? std::clamp(width * 0.043F, 48.0F, 72.0F) : 16.0F;
+    const float gap = dense || !layout.show_cabinet ? 8.0F : 10.0F;
     const float content_width = width - 2.0F * margin;
-    const float rack_height = height >= 820.0F ? 248.0F : 208.0F;
-    const float pedal_height = height >= 820.0F ? 112.0F : 88.0F;
-    const float performance_width = width >= 1120.0F ? 288.0F : 236.0F;
-    const float registration_width = (content_width - performance_width - 2.0F * gap) / 2.0F;
-    const float manual_height = (height - 2.0F * margin - 56.0F - rack_height -
-                                32.0F - pedal_height - 40.0F - 6.0F * gap) / 2.0F;
-    layout.header = {margin, margin, content_width, 56.0F};
-    const float rack_top = margin + 56.0F + gap;
+    const float cabinet_width = layout.show_cabinet ? content_width * 0.30F : 0.0F;
+    const float player_width = layout.show_cabinet ? content_width - cabinet_width - gap : content_width;
+    const float header_height = dense || !layout.show_cabinet ? 82.0F : 90.0F;
+    const float performance_height = std::clamp(76.0F + 0.12F * (height - 700.0F), 76.0F, 110.0F);
+    const float rack_height = std::clamp(168.0F + 0.24F * (height - 700.0F), 168.0F, 236.0F);
+    const float pedal_height = std::clamp(58.0F + 0.08F * (height - 700.0F), 58.0F, 86.0F);
+    constexpr float toolbar_height = 28.0F;
+    constexpr float footer_height = 36.0F;
+    const float registration_width = (player_width - gap) / 2.0F;
+    const float manual_height = (height - 32.0F - header_height - performance_height - rack_height -
+                                toolbar_height - pedal_height - footer_height - 7.0F * gap) / 2.0F;
+    layout.header = {margin, 16.0F, content_width, header_height};
+    layout.performance_panel = {margin, layout.header.y + header_height + gap, player_width, performance_height};
+    const float rack_top = layout.performance_panel.y + performance_height + gap;
     layout.registration_panels[0] = {margin, rack_top, registration_width, rack_height};
     layout.registration_panels[1] = {margin + registration_width + gap, rack_top, registration_width, rack_height};
-    layout.performance_panel = {margin + 2.0F * (registration_width + gap), rack_top, performance_width, rack_height};
-    layout.keyboard_toolbar = {margin, rack_top + rack_height + gap, content_width, 32.0F};
+    layout.keyboard_toolbar = {margin, rack_top + rack_height + gap, player_width, toolbar_height};
     const float manual_top = layout.keyboard_toolbar.y + layout.keyboard_toolbar.height + gap;
-    layout.manual_panels[0] = {margin, manual_top, content_width, manual_height};
-    layout.manual_panels[1] = {margin, manual_top + manual_height + gap, content_width, manual_height};
-    layout.pedal_panel = {margin, manual_top + 2.0F * (manual_height + gap), content_width, pedal_height};
-    layout.footer = {margin, layout.pedal_panel.y + pedal_height + gap, content_width, 40.0F};
+    const float rail_width = layout.bank_controls_in_cheeks ? std::clamp(player_width * 0.15F, 112.0F, 156.0F) : 0.0F;
+    const float keyboard_x = layout.bank_controls_in_cheeks ? margin + rail_width + gap : margin;
+    const float keyboard_width = layout.bank_controls_in_cheeks ? player_width - rail_width - gap : player_width;
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        const float y = manual_top + static_cast<float>(manual) * (manual_height + gap);
+        if (layout.bank_controls_in_cheeks) layout.manual_rail_panels[manual] = {margin, y, rail_width, manual_height};
+        layout.manual_panels[manual] = {keyboard_x, y, keyboard_width, manual_height};
+    }
+    layout.pedal_panel = {margin, manual_top + 2.0F * (manual_height + gap), player_width, pedal_height};
+    layout.footer = {margin, layout.pedal_panel.y + pedal_height + gap, content_width, footer_height};
+    if (layout.show_cabinet) {
+        layout.cabinet_panel = {margin + player_width + gap, layout.performance_panel.y, cabinet_width,
+                               layout.pedal_panel.y + pedal_height - layout.performance_panel.y};
+        const auto& cabinet = layout.cabinet_panel;
+        // Keep the reference crop's 466:397 aspect and normal destination, but
+        // leave a readable status card at extreme short/wide window aspects.
+        const float art_height = std::min((cabinet.width - 24.0F) * 397.0F / 466.0F,
+                                          cabinet.height - 38.0F - 176.0F);
+        const float art_width = art_height * 466.0F / 397.0F;
+        layout.cabinet_art = {cabinet.x + (cabinet.width - art_width) / 2.0F, cabinet.y + 38.0F,
+                              art_width, art_height};
+    }
 
-    constexpr std::array<UiControlKind, 5> header_kinds{
-        UiControlKind::SaveControls, UiControlKind::LoadControls, UiControlKind::AudioSettings,
-        UiControlKind::Help, UiControlKind::Panic};
-    constexpr std::array<float, 5> header_widths{72.0F, 72.0F, 88.0F, 64.0F, 80.0F};
-    float button_x = margin + content_width - 408.0F;
-    for (std::size_t index = 0; index < header_kinds.size(); ++index) {
-        add_button(layout, {header_kinds[index]}, {button_x, margin + 10.0F, header_widths[index], 36.0F});
-        button_x += header_widths[index] + 8.0F;
+    constexpr std::array<UiControlKind, 3> left_header_kinds{
+        UiControlKind::SaveControls, UiControlKind::LoadControls, UiControlKind::Help};
+    constexpr std::array<UiControlKind, 3> right_header_kinds{
+        UiControlKind::AudioSettings, UiControlKind::MidiSettings, UiControlKind::Panic};
+    const float header_button_gap = layout.show_cabinet ? 8.0F : 6.0F;
+    const float left_button_width = layout.show_cabinet ? 112.0F : 72.0F;
+    const float right_button_width = layout.show_cabinet ? 90.0F : 72.0F;
+    const float header_button_top = layout.header.y + (layout.show_cabinet ? 30.0F : 34.0F);
+    const float header_button_height = layout.show_cabinet ? 42.0F : 32.0F;
+    for (std::size_t index = 0; index < left_header_kinds.size(); ++index) {
+        add_button(layout, {left_header_kinds[index]},
+                   {margin + static_cast<float>(index) * (left_button_width + header_button_gap),
+                    header_button_top, left_button_width, header_button_height});
+    }
+    const float right_buttons_x = margin + content_width - 3.0F * right_button_width - 2.0F * header_button_gap;
+    for (std::size_t index = 0; index < right_header_kinds.size(); ++index) {
+        add_button(layout, {right_header_kinds[index]},
+                   {right_buttons_x + static_cast<float>(index) * (right_button_width + header_button_gap),
+                    header_button_top, right_button_width, header_button_height});
     }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         const auto identity = static_cast<Manual>(manual);
         const auto& panel = layout.registration_panels[manual];
-        const float button_width = (panel.width - 36.0F) / 5.0F;
         const std::array<UiControlId, 5> buttons{{
             {UiControlKind::EditBank, identity, DrawbarBank::A},
             {UiControlKind::EditBank, identity, DrawbarBank::B},
@@ -340,55 +377,77 @@ bool make_ui_layout(float width, float height,
             {UiControlKind::SoundingBank, identity, DrawbarBank::B},
             {UiControlKind::CancelManual, identity}}};
         for (std::size_t index = 0; index < buttons.size(); ++index) {
-            add_button(layout, buttons[index],
-                {panel.x + 10.0F + static_cast<float>(index) * (button_width + 4.0F),
-                 panel.y + 28.0F, button_width, 32.0F});
+            if (layout.bank_controls_in_cheeks) {
+                const auto& rail = layout.manual_rail_panels[manual];
+                const float button_width = (rail.width - 20.0F) / 2.0F;
+                add_button(layout, buttons[index],
+                    {rail.x + 8.0F + static_cast<float>(index % 2) * (button_width + 4.0F),
+                     rail.y + 22.0F + static_cast<float>(index / 2) * 28.0F,
+                     index == 4 ? rail.width - 16.0F : button_width, 24.0F});
+            } else {
+                const float button_width = (panel.width - 40.0F) / 5.0F;
+                add_button(layout, buttons[index],
+                    {panel.x + 12.0F + static_cast<float>(index) * (button_width + 4.0F),
+                     panel.y + 28.0F, button_width, 26.0F});
+            }
         }
-        const float column_width = (panel.width - 20.0F) / static_cast<float>(kDrawbarCount);
+        const float column_width = (panel.width - 24.0F) / static_cast<float>(kDrawbarCount);
+        const float label_top = dense ? 60.0F : 32.0F;
         for (std::size_t index = 0; index < kDrawbarCount; ++index) {
-            const float x = panel.x + 10.0F + static_cast<float>(index) * column_width;
+            const float x = panel.x + 12.0F + static_cast<float>(index) * column_width;
             layout.controls[layout.control_count++] = {
                 {UiControlKind::ManualDrawbar, identity, edited_banks[manual], static_cast<std::uint8_t>(index)},
-                {x + 2.0F, panel.y + 82.0F, column_width - 4.0F, panel.height - 92.0F},
-                {x + 2.0F, panel.y + 84.0F, column_width - 4.0F, 28.0F},
-                {x + 2.0F, panel.y + panel.height - 28.0F, column_width - 4.0F, 18.0F},
-                {x + column_width / 2.0F - 2.0F, panel.y + 124.0F, 4.0F, panel.height - 168.0F}};
+                {x + 2.0F, panel.y + label_top, column_width - 4.0F, panel.height - label_top - 8.0F},
+                {x + 2.0F, panel.y + label_top, column_width - 4.0F, 24.0F},
+                {x + 2.0F, panel.y + panel.height - 24.0F, column_width - 4.0F, 16.0F},
+                {x + column_width / 2.0F - 2.0F, panel.y + label_top + 38.0F,
+                 4.0F, panel.height - label_top - 80.0F}};
         }
     }
     const auto& performance = layout.performance_panel;
-    const float percussion_width = (performance.width - 32.0F) / 4.0F;
+    const float percussion_group_width = performance.width * 0.46F;
+    const float percussion_width = (percussion_group_width - 48.0F) / 4.0F;
     for (std::size_t index = 0; index < 4; ++index) {
-        const float x = performance.x + 10.0F + static_cast<float>(index) * (percussion_width + 4.0F);
+        const float x = performance.x + 12.0F + static_cast<float>(index) * (percussion_width + 8.0F);
         layout.controls[layout.control_count++] = {
             {UiControlKind::Percussion, Manual::Upper, DrawbarBank::A, static_cast<std::uint8_t>(index)},
-            {x, performance.y + 28.0F, percussion_width, 40.0F},
-            {x + 2.0F, performance.y + 31.0F, percussion_width - 4.0F, 14.0F},
-            {x + 2.0F, performance.y + 47.0F, percussion_width - 4.0F, 18.0F}, {}};
+            {x, performance.y + 24.0F, percussion_width, 42.0F},
+            {x + 4.0F, performance.y + 28.0F, percussion_width - 8.0F, 14.0F},
+            {x + 4.0F, performance.y + 44.0F, percussion_width - 8.0F, 18.0F}, {}};
     }
-    const float lower_column = (performance.width - 20.0F) / 3.0F;
+    const float performance_right_x = performance.x + percussion_group_width + 8.0F;
+    const float performance_right_width = performance.width - percussion_group_width - 8.0F;
+    const float parameter_width = performance_right_width - 24.0F - 16.0F;
+    const float expression_width = parameter_width * 0.46F;
+    const float mixture_width = (parameter_width - expression_width) / 2.0F;
+    float parameter_x = performance_right_x + 12.0F;
     for (std::size_t index = 0; index < 3; ++index) {
-        const float x = performance.x + 10.0F + static_cast<float>(index) * lower_column;
         const bool expression = index == 0;
+        const float control_width = expression ? expression_width : mixture_width;
         layout.controls[layout.control_count++] = {
             {expression ? UiControlKind::Expression : UiControlKind::PedalDrawbar,
              Manual::Upper, DrawbarBank::A, static_cast<std::uint8_t>(expression ? 0 : index - 1)},
-            {x + 2.0F, performance.y + 102.0F, lower_column - 4.0F, performance.height - 112.0F},
-            {x + 2.0F, performance.y + 104.0F, lower_column - 4.0F, 28.0F},
-            {x + 2.0F, performance.y + performance.height - 28.0F, lower_column - 4.0F, 18.0F},
-            expression ? UiRect{x + 12.0F, performance.y + (performance.height + 106.0F) / 2.0F,
-                                lower_column - 24.0F, 4.0F} :
-                         UiRect{x + lower_column / 2.0F - 2.0F, performance.y + 144.0F,
-                                4.0F, performance.height - 188.0F}};
+            {parameter_x, performance.y + 6.0F, control_width, performance.height - 10.0F},
+            {parameter_x + 4.0F, performance.y + 8.0F, control_width - 8.0F, 16.0F},
+            expression ? UiRect{parameter_x + 4.0F, performance.y + performance.height - 22.0F,
+                                control_width - 8.0F, 16.0F} :
+                         UiRect{parameter_x + control_width * 0.68F, performance.y + 34.0F,
+                                control_width * 0.28F, performance.height - 42.0F},
+            expression ? UiRect{parameter_x + 12.0F, performance.y + (performance.height + 4.0F) / 2.0F,
+                                control_width - 24.0F, 4.0F} :
+                         UiRect{parameter_x + control_width * 0.40F - 2.0F, performance.y + 36.0F,
+                                4.0F, performance.height - 52.0F}};
+        parameter_x += control_width + 8.0F;
     }
     const auto& toolbar = layout.keyboard_toolbar;
     float target_x = toolbar.x + 10.0F;
     for (std::size_t index = 0; index < 3; ++index) {
         add_button(layout, {UiControlKind::KeyboardTarget, Manual::Upper, DrawbarBank::A, static_cast<std::uint8_t>(index)},
-                   {target_x, toolbar.y, 82.0F, 32.0F});
+                   {target_x, toolbar.y, 82.0F, toolbar.height});
         target_x += 88.0F;
     }
-    add_button(layout, {UiControlKind::OctaveDown}, {target_x + 12.0F, toolbar.y, 74.0F, 32.0F});
-    add_button(layout, {UiControlKind::OctaveUp}, {target_x + 92.0F, toolbar.y, 74.0F, 32.0F});
+    add_button(layout, {UiControlKind::OctaveDown}, {target_x + 12.0F, toolbar.y, 74.0F, toolbar.height});
+    add_button(layout, {UiControlKind::OctaveUp}, {target_x + 92.0F, toolbar.y, 74.0F, toolbar.height});
     make_keys(layout.manual_keys[0], layout.manual_panels[0], UiTarget::Upper, 36);
     make_keys(layout.manual_keys[1], layout.manual_panels[1], UiTarget::Lower, 36);
     make_keys(layout.pedal_keys, layout.pedal_panel, UiTarget::Pedals, 15);
@@ -492,6 +551,7 @@ UiActions UiModel::activate(UiControlId control) noexcept {
     case UiControlKind::LoadControls: return one_request(UiAppRequest::LoadControls);
     case UiControlKind::AudioSettings: return one_request(UiAppRequest::AudioSettings);
     case UiControlKind::Help: return one_request(UiAppRequest::Help);
+    case UiControlKind::MidiSettings: return one_request(UiAppRequest::MidiSettings);
     case UiControlKind::Panic: return panic();
     default: return {};
     }
@@ -674,6 +734,14 @@ UiActions UiModel::load_controls(const ControlSnapshot& controls) noexcept {
     if (!is_valid_control_snapshot(controls)) return {};
     saved_controls_ = controls;
     return publish_controls(view_, saved_controls_, pending_control_sequence_, controls, true);
+}
+
+UiActions UiModel::external_parameter(std::uint32_t parameter_id,
+                                    double normalized) noexcept {
+    if (!std::isfinite(normalized) || normalized < 0.0 || normalized > 1.0) return {};
+    ControlSnapshot candidate;
+    if (!apply_parameter(view_.controls, parameter_id, normalized, candidate)) return {};
+    return publish_controls(view_, saved_controls_, pending_control_sequence_, candidate);
 }
 
 void UiModel::mark_saved(const ControlSnapshot& saved_controls) noexcept {

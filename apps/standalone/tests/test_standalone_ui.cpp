@@ -15,6 +15,11 @@ namespace {
 using namespace hammond;
 using namespace hammond::standalone;
 
+static_assert(static_cast<std::uint8_t>(UiControlKind::PedalKey) == 17);
+static_assert(static_cast<std::uint8_t>(UiControlKind::MidiSettings) == 18);
+static_assert(static_cast<std::uint8_t>(UiAppRequest::Help) == 3);
+static_assert(static_cast<std::uint8_t>(UiAppRequest::MidiSettings) == 4);
+
 constexpr UiControlId manual_key(Manual manual, std::uint8_t midi) {
     return {UiControlKind::ManualKey, manual, DrawbarBank::A,
             static_cast<std::uint8_t>(midi - 36)};
@@ -74,11 +79,15 @@ UiPoint key_point(const UiModel& model, UiControlId id) {
             key.bounds.y + key.bounds.height * (key.accidental ? 0.5F : 0.9F)};
 }
 
-UiControlGeometry geometry(const UiModel& model, UiControlId id) {
-    for (std::size_t index = 0; index < model.layout().control_count; ++index) {
-        if (model.layout().controls[index].id == id) return model.layout().controls[index];
+UiControlGeometry geometry(const UiLayout& layout, UiControlId id) {
+    for (std::size_t index = 0; index < layout.control_count; ++index) {
+        if (layout.controls[index].id == id) return layout.controls[index];
     }
     hammond_test::fail("visible control exists", __FILE__, __LINE__);
+}
+
+UiControlGeometry geometry(const UiModel& model, UiControlId id) {
+    return geometry(model.layout(), id);
 }
 
 // Real Session/Engine processing qualifies physical ownership, not only the
@@ -160,7 +169,8 @@ void registry_and_retained_banks() {
     for (const auto& descriptor : parameter_descriptors()) CHECK(seen.contains(descriptor.id));
     for (const auto kind : {UiControlKind::EditBank, UiControlKind::CancelManual,
                            UiControlKind::Panic, UiControlKind::SaveControls,
-                           UiControlKind::ManualKey, UiControlKind::PedalKey}) {
+                           UiControlKind::ManualKey, UiControlKind::PedalKey,
+                           UiControlKind::MidiSettings}) {
         std::uint32_t unchanged = 999;
         CHECK(!ui_parameter_id({kind}, unchanged) && unchanged == 999);
     }
@@ -517,12 +527,15 @@ bool same_rect(UiRect a, UiRect b) {
 
 void equal_layout(const UiLayout& a, const UiLayout& b) {
     CHECK(a.width == b.width && a.height == b.height && a.control_count == b.control_count);
+    CHECK(a.show_cabinet == b.show_cabinet && a.bank_controls_in_cheeks == b.bank_controls_in_cheeks);
     CHECK(same_rect(a.header, b.header) && same_rect(a.performance_panel, b.performance_panel));
     CHECK(same_rect(a.keyboard_toolbar, b.keyboard_toolbar) && same_rect(a.pedal_panel, b.pedal_panel));
     CHECK(same_rect(a.footer, b.footer));
+    CHECK(same_rect(a.cabinet_panel, b.cabinet_panel) && same_rect(a.cabinet_art, b.cabinet_art));
     for (std::size_t manual = 0; manual < 2; ++manual) {
         CHECK(same_rect(a.registration_panels[manual], b.registration_panels[manual]));
         CHECK(same_rect(a.manual_panels[manual], b.manual_panels[manual]));
+        CHECK(same_rect(a.manual_rail_panels[manual], b.manual_rail_panels[manual]));
         for (std::size_t key = 0; key < 61; ++key) {
             CHECK(a.manual_keys[manual][key].note == b.manual_keys[manual][key].note);
             CHECK(a.manual_keys[manual][key].accidental == b.manual_keys[manual][key].accidental);
@@ -594,6 +607,217 @@ void check_keyboard(const UiLayout& layout, std::span<const UiKeyGeometry> keys,
     CHECK(ui_hit_test(layout, {first_box.x, first_box.y + first_box.height}).kind == UiControlKind::None);
 }
 
+void near_rect(UiRect actual, UiRect expected) {
+    CHECK_NEAR(actual.x, expected.x, 0.001F);
+    CHECK_NEAR(actual.y, expected.y, 0.001F);
+    CHECK_NEAR(actual.width, expected.width, 0.001F);
+    CHECK_NEAR(actual.height, expected.height, 0.001F);
+}
+
+bool empty(UiRect box) {
+    return box.width == 0 && box.height == 0;
+}
+
+bool overlaps(UiRect a, UiRect b) {
+    return a.width > 0 && a.height > 0 && b.width > 0 && b.height > 0 &&
+           a.x < b.x + b.width && b.x < a.x + a.width &&
+           a.y < b.y + b.height && b.y < a.y + a.height;
+}
+
+void contained(UiRect inner, UiRect outer) {
+    CHECK(inner.width > 0 && inner.height > 0);
+    CHECK(inner.x >= outer.x - 0.001F && inner.y >= outer.y - 0.001F);
+    CHECK(inner.x + inner.width <= outer.x + outer.width + 0.001F);
+    CHECK(inner.y + inner.height <= outer.y + outer.height + 0.001F);
+}
+
+// Literal coordinates independently evaluated from the reviewed design table
+// and decimal breakpoint calculations. The test does not call a production
+// layout helper to build its expected rows, margins, widths or heights.
+struct LayoutCase {
+    UiPoint size;
+    bool cabinet, cheeks;
+    float margin, content_width, player_width, rack_width, gap, rail_width;
+    float keyboard_x, keyboard_width, cabinet_x, cabinet_width;
+    std::array<float, 8> row_top, row_height;
+};
+
+constexpr std::array<LayoutCase, 12> kLayoutCases{{
+    {{960, 700}, false, false, 16, 928, 928, 460, 8, 0, 16, 928, 0, 0,
+     {16, 106, 190, 366, 402, 492, 582, 648}, {82, 76, 168, 28, 82, 82, 58, 36}},
+    {{1280, 900}, false, true, 16, 1248, 1248, 620, 8, 156, 180, 1084, 0, 0,
+     {16, 106, 214, 438, 474, 620, 766, 848}, {82, 100, 216, 28, 138, 138, 74, 36}},
+    {{1672, 941}, true, true, 71.896F, 1528.208F, 1059.7456F, 524.8728F, 10, 156,
+     237.896F, 893.7456F, 1141.6416F, 458.4624F,
+     {16, 116, 230.92F, 466.76F, 504.76F, 653.24F, 801.72F, 889},
+     {90, 104.92F, 225.84F, 28, 138.48F, 138.48F, 77.28F, 36}},
+    {{1399, 819}, false, false, 16, 1367, 1367, 679.5F, 8, 0, 16, 1367, 0, 0,
+     {16, 106, 204.28F, 408.84F, 444.84F, 568.16F, 691.48F, 767},
+     {82, 90.28F, 196.56F, 28, 115.32F, 115.32F, 67.52F, 36}},
+    {{1400, 819}, true, false, 60.2F, 1279.6F, 887.72F, 439.86F, 8, 0,
+     60.2F, 887.72F, 955.92F, 383.88F,
+     {16, 106, 204.28F, 408.84F, 444.84F, 568.16F, 691.48F, 767},
+     {82, 90.28F, 196.56F, 28, 115.32F, 115.32F, 67.52F, 36}},
+    {{1399, 820}, false, true, 16, 1367, 1367, 679.5F, 8, 156, 180, 1203, 0, 0,
+     {16, 106, 204.4F, 409.2F, 445.2F, 568.8F, 692.4F, 768},
+     {82, 90.4F, 196.8F, 28, 115.6F, 115.6F, 67.6F, 36}},
+    {{1400, 820}, true, true, 60.2F, 1279.6F, 885.72F, 437.86F, 10, 132.858F,
+     203.058F, 742.862F, 955.92F, 383.88F,
+     {16, 116, 216.4F, 423.2F, 461.2F, 575.8F, 690.4F, 768},
+     {90, 90.4F, 196.8F, 28, 104.6F, 104.6F, 67.6F, 36}},
+    {{1920, 700}, true, false, 72, 1776, 1235.2F, 613.6F, 8, 0,
+     72, 1235.2F, 1315.2F, 532.8F,
+     {16, 106, 190, 366, 402, 492, 582, 648}, {82, 76, 168, 28, 82, 82, 58, 36}},
+    {{1920, 1080}, true, true, 72, 1776, 1233.2F, 611.6F, 10, 156,
+     238, 1067.2F, 1315.2F, 532.8F,
+     {16, 116, 236, 482, 520, 726, 932, 1028}, {90, 110, 236, 28, 196, 196, 86, 36}},
+    {{8192, 700}, true, false, 72, 8048, 5625.6F, 2808.8F, 8, 0,
+     72, 5625.6F, 5705.6F, 2414.4F,
+     {16, 106, 190, 366, 402, 492, 582, 648}, {82, 76, 168, 28, 82, 82, 58, 36}},
+    {{960, 8192}, false, true, 16, 928, 928, 460, 8, 139.2F, 163.2F, 780.8F, 0, 0,
+     {16, 106, 224, 468, 504, 4275, 8046, 8140}, {82, 110, 236, 28, 3763, 3763, 86, 36}},
+    {{8192, 8192}, true, true, 72, 8048, 5623.6F, 2806.8F, 10, 156,
+     238, 5457.6F, 5705.6F, 2414.4F,
+     {16, 116, 236, 482, 520, 4282, 8044, 8140}, {90, 110, 236, 28, 3752, 3752, 86, 36}},
+}};
+
+void check_reference_regions(const UiLayout& layout, const LayoutCase& expected) {
+    CHECK(layout.show_cabinet == expected.cabinet);
+    CHECK(layout.bank_controls_in_cheeks == expected.cheeks);
+    near_rect(layout.header, {expected.margin, expected.row_top[0], expected.content_width, expected.row_height[0]});
+    near_rect(layout.performance_panel,
+              {expected.margin, expected.row_top[1], expected.player_width, expected.row_height[1]});
+    near_rect(layout.keyboard_toolbar,
+              {expected.margin, expected.row_top[3], expected.player_width, expected.row_height[3]});
+    near_rect(layout.pedal_panel,
+              {expected.margin, expected.row_top[6], expected.player_width, expected.row_height[6]});
+    near_rect(layout.footer, {expected.margin, expected.row_top[7], expected.content_width, expected.row_height[7]});
+    CHECK_NEAR(layout.footer.y + layout.footer.height, expected.size.y - 16, 0.001F);
+    for (std::size_t manual = 0; manual < 2; ++manual) {
+        near_rect(layout.registration_panels[manual],
+                  {expected.margin + static_cast<float>(manual) * (expected.rack_width + expected.gap),
+                   expected.row_top[2], expected.rack_width, expected.row_height[2]});
+        near_rect(layout.manual_panels[manual],
+                  {expected.keyboard_x, expected.row_top[4 + manual], expected.keyboard_width, expected.row_height[4 + manual]});
+        if (expected.cheeks) {
+            near_rect(layout.manual_rail_panels[manual],
+                      {expected.margin, expected.row_top[4 + manual], expected.rail_width, expected.row_height[4 + manual]});
+        } else {
+            CHECK(same_rect(layout.manual_rail_panels[manual], {}));
+        }
+    }
+    if (expected.cabinet) {
+        near_rect(layout.cabinet_panel,
+                  {expected.cabinet_x, expected.row_top[1], expected.cabinet_width,
+                   expected.row_top[6] + expected.row_height[6] - expected.row_top[1]});
+        contained(layout.cabinet_art, layout.cabinet_panel);
+        CHECK_NEAR(layout.cabinet_art.width / layout.cabinet_art.height, 466.0F / 397.0F, 0.00001F);
+        CHECK_NEAR(layout.cabinet_art.y, layout.cabinet_panel.y + 38, 0.001F);
+        CHECK(layout.cabinet_art.y + layout.cabinet_art.height + 176 <=
+              layout.cabinet_panel.y + layout.cabinet_panel.height + 0.001F);
+        CHECK(ui_hit_test(layout, {layout.cabinet_art.x + layout.cabinet_art.width / 2,
+                                  layout.cabinet_art.y + layout.cabinet_art.height / 2}).kind == UiControlKind::None);
+        if (expected.size.x == 1672) {
+            near_rect(layout.cabinet_art, {1153.6416F, 154, 434.4624F, 370.13213F});
+        }
+        if (expected.size.y == 700 && expected.size.x >= 1920) {
+            CHECK_NEAR(layout.cabinet_art.height, 320, 0.001F);
+            CHECK_NEAR(layout.cabinet_art.width, 375.6171F, 0.001F);
+        }
+    } else {
+        CHECK(same_rect(layout.cabinet_panel, {}) && same_rect(layout.cabinet_art, {}));
+    }
+}
+
+void check_control_regions(const UiLayout& layout) {
+    std::array<std::size_t, 19> kinds{};
+    for (std::size_t index = 0; index < layout.control_count; ++index) {
+        const auto& entry = layout.controls[index];
+        ++kinds[static_cast<std::size_t>(entry.id.kind)];
+        UiRect parent;
+        switch (entry.id.kind) {
+        case UiControlKind::EditBank:
+        case UiControlKind::SoundingBank:
+        case UiControlKind::CancelManual:
+            parent = layout.bank_controls_in_cheeks ?
+                layout.manual_rail_panels[static_cast<std::size_t>(entry.id.manual)] :
+                layout.registration_panels[static_cast<std::size_t>(entry.id.manual)];
+            CHECK(entry.bounds.height == (layout.bank_controls_in_cheeks ? 24 : 26));
+            break;
+        case UiControlKind::ManualDrawbar:
+            parent = layout.registration_panels[static_cast<std::size_t>(entry.id.manual)];
+            CHECK(entry.track.width == 4 && entry.track.height >= 28);
+            break;
+        case UiControlKind::Percussion:
+        case UiControlKind::Expression:
+        case UiControlKind::PedalDrawbar:
+            parent = layout.performance_panel;
+            if (entry.id.kind == UiControlKind::Percussion) CHECK(entry.bounds.height == 42);
+            if (entry.id.kind == UiControlKind::PedalDrawbar) CHECK(entry.track.width == 4 && entry.track.height >= 24);
+            if (entry.id.kind == UiControlKind::Expression) CHECK(entry.track.height == 4 && entry.track.width > 100);
+            break;
+        case UiControlKind::KeyboardTarget:
+        case UiControlKind::OctaveDown:
+        case UiControlKind::OctaveUp:
+            parent = layout.keyboard_toolbar;
+            CHECK(entry.bounds.height == 28);
+            break;
+        default:
+            parent = layout.header;
+            CHECK(entry.bounds.height == (layout.show_cabinet ? 42 : 32));
+            break;
+        }
+        contained(entry.bounds, parent);
+        contained(entry.label_bounds, entry.bounds);
+        if (!empty(entry.value_bounds)) {
+            contained(entry.value_bounds, entry.bounds);
+            CHECK(!overlaps(entry.label_bounds, entry.value_bounds));
+        }
+        if (!empty(entry.track)) {
+            contained(entry.track, entry.bounds);
+            CHECK(!overlaps(entry.label_bounds, entry.track));
+            CHECK(!overlaps(entry.value_bounds, entry.track));
+        }
+        for (std::size_t other = 0; other < index; ++other) {
+            CHECK(entry.id != layout.controls[other].id);
+            CHECK(!overlaps(entry.bounds, layout.controls[other].bounds));
+        }
+        for (const auto& manual : layout.manual_keys) {
+            for (const auto& key : manual) CHECK(!overlaps(entry.bounds, key.bounds));
+        }
+        for (const auto& key : layout.pedal_keys) CHECK(!overlaps(entry.bounds, key.bounds));
+    }
+    constexpr std::array<std::size_t, 19> expected_kinds{0, 4, 4, 2, 18, 2, 4, 1, 3, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1};
+    CHECK(kinds == expected_kinds);
+
+    for (const auto manual : {Manual::Upper, Manual::Lower}) {
+        const auto& source = layout.bank_controls_in_cheeks ?
+            layout.manual_rail_panels[static_cast<std::size_t>(manual)] :
+            layout.registration_panels[static_cast<std::size_t>(manual)];
+        const auto edit_a = geometry(layout, {UiControlKind::EditBank, manual, DrawbarBank::A});
+        const auto edit_b = geometry(layout, {UiControlKind::EditBank, manual, DrawbarBank::B});
+        const auto play_a = geometry(layout, {UiControlKind::SoundingBank, manual, DrawbarBank::A});
+        const auto play_b = geometry(layout, {UiControlKind::SoundingBank, manual, DrawbarBank::B});
+        const auto cancel = geometry(layout, {UiControlKind::CancelManual, manual});
+        if (layout.bank_controls_in_cheeks) {
+            CHECK_NEAR(edit_a.bounds.x, source.x + 8, 0.001F);
+            CHECK_NEAR(edit_b.bounds.x + edit_b.bounds.width, source.x + source.width - 8, 0.001F);
+            CHECK_NEAR(edit_a.bounds.y, source.y + 22, 0.001F);
+            CHECK_NEAR(edit_b.bounds.y, source.y + 22, 0.001F);
+            CHECK_NEAR(play_a.bounds.y, source.y + 50, 0.001F);
+            CHECK_NEAR(play_b.bounds.y, source.y + 50, 0.001F);
+            near_rect(cancel.bounds, {source.x + 8, source.y + 78, source.width - 16, 24});
+        } else {
+            CHECK_NEAR(edit_a.bounds.x, source.x + 12, 0.001F);
+            CHECK_NEAR(cancel.bounds.x + cancel.bounds.width, source.x + source.width - 12, 0.001F);
+            for (const auto& control : {edit_a, edit_b, play_a, play_b, cancel}) {
+                CHECK_NEAR(control.bounds.y, source.y + 28, 0.001F);
+                CHECK_NEAR(control.bounds.width, (source.width - 40) / 5, 0.001F);
+            }
+        }
+    }
+}
+
 void layout_and_hit_boundaries() {
     // Independent complete piano spelling: no call to the production accidental
     // helper, no modulo pitch formula, and no reuse of the playing-key table.
@@ -605,19 +829,20 @@ void layout_and_hit_boundaries() {
         80, 82, 85, 87, 90, 92, 94};
     constexpr std::array<int, 15> pedal_naturals{1, 3, 5, 6, 8, 10, 12, 13, 15, 17, 18, 20, 22, 24, 25};
     constexpr std::array<int, 10> pedal_accidentals{2, 4, 7, 9, 11, 14, 16, 19, 21, 23};
-    constexpr std::array<UiPoint, 6> sizes{{{960, 700}, {1280, 900}, {1920, 1080},
-                                        {1119, 819}, {1120, 820}, {8192, 8192}}};
-    for (const auto size : sizes) {
+    for (const auto& expected : kLayoutCases) {
+        const auto size = expected.size;
         UiLayout layout;
         CHECK(make_ui_layout(size.x, size.y, {DrawbarBank::A, DrawbarBank::B}, layout));
-        CHECK(layout.width == size.x && layout.height == size.y && layout.control_count == 45);
+        CHECK(layout.width == size.x && layout.height == size.y && layout.control_count == 46);
+        check_reference_regions(layout, expected);
         check_keyboard(layout, layout.manual_keys[0], UiTarget::Upper, layout.manual_panels[0], manual_naturals, manual_accidentals);
         check_keyboard(layout, layout.manual_keys[1], UiTarget::Lower, layout.manual_panels[1], manual_naturals, manual_accidentals);
         check_keyboard(layout, layout.pedal_keys, UiTarget::Pedals, layout.pedal_panel, pedal_naturals, pedal_accidentals);
+        check_control_regions(layout);
         std::size_t visible_drawbars = 0;
         for (std::size_t index = 0; index < layout.control_count; ++index) {
             const auto& entry = layout.controls[index];
-            CHECK(entry.bounds.width > 0 && entry.bounds.height >= 32);
+            CHECK(entry.bounds.width > 0 && entry.bounds.height >= 24);
             CHECK(ui_hit_test(layout, {entry.bounds.x + entry.bounds.width / 2,
                                       entry.bounds.y + entry.bounds.height / 2}) == entry.id);
             CHECK(entry.bounds.x >= 0 && entry.bounds.y >= 0);
@@ -628,8 +853,34 @@ void layout_and_hit_boundaries() {
             }
         }
         CHECK(visible_drawbars == 18);
-        if (size.x == 1280) CHECK(layout.manual_panels[0].height == 146);
-        if (size.x == 960) CHECK(layout.manual_panels[0].height == 86);
+        if (size.x == 960 && size.y == 700) {
+            near_rect(geometry(layout, {UiControlKind::SaveControls}).bounds, {16, 50, 72, 32});
+            near_rect(geometry(layout, {UiControlKind::Help}).bounds, {172, 50, 72, 32});
+            near_rect(geometry(layout, {UiControlKind::MidiSettings}).bounds, {794, 50, 72, 32});
+            near_rect(geometry(layout, {UiControlKind::Panic}).bounds, {872, 50, 72, 32});
+            near_rect(layout.manual_keys[0][0].bounds, {24, 424, 25.333333F, 52});
+            near_rect(layout.pedal_keys[0].bounds, {24, 604, 60.8F, 28});
+            near_rect(geometry(layout, {UiControlKind::Percussion}).bounds, {28, 130, 94.72F, 42});
+            const auto drawbar = geometry(layout, {UiControlKind::ManualDrawbar, Manual::Upper, DrawbarBank::A, 0});
+            near_rect(drawbar.bounds, {30, 250, 44.444444F, 100});
+            near_rect(drawbar.label_bounds, {30, 250, 44.444444F, 24});
+            near_rect(drawbar.value_bounds, {30, 334, 44.444444F, 16});
+            near_rect(drawbar.track, {50.222222F, 288, 4, 28});
+            near_rect(geometry(layout, {UiControlKind::Expression}).track, {474.88F, 146, 184.4352F, 4});
+            near_rect(geometry(layout, {UiControlKind::PedalDrawbar}).track, {726.25216F, 142, 4, 24});
+        }
+        if (size.x == 1280 && size.y == 900) {
+            near_rect(geometry(layout, {UiControlKind::AudioSettings}).bounds, {1036, 50, 72, 32});
+            near_rect(geometry(layout, {UiControlKind::EditBank, Manual::Upper}).bounds, {24, 496, 68, 24});
+            near_rect(geometry(layout, {UiControlKind::CancelManual, Manual::Lower}).bounds, {24, 698, 140, 24});
+            near_rect(layout.manual_keys[0][0].bounds, {188, 496, 29.666667F, 108});
+        }
+        if (size.x == 1672) {
+            near_rect(geometry(layout, {UiControlKind::SaveControls}).bounds, {71.896F, 46, 112, 42});
+            near_rect(geometry(layout, {UiControlKind::Help}).bounds, {311.896F, 46, 112, 42});
+            near_rect(geometry(layout, {UiControlKind::MidiSettings}).bounds, {1412.104F, 46, 90, 42});
+            near_rect(geometry(layout, {UiControlKind::Panic}).bounds, {1510.104F, 46, 90, 42});
+        }
     }
     UiLayout layout;
     CHECK(make_ui_layout(1280, 900, {DrawbarBank::A, DrawbarBank::B}, layout));
@@ -650,9 +901,71 @@ void layout_and_hit_boundaries() {
     CHECK((!UiRect{0, 0, 10, -1}.contains({0, 0})));
 }
 
+void breakpoint_resize_preserves_performance() {
+    Rig rig;
+    CHECK(rig.model.resize(1399, 819));
+    CHECK(rig.model.activate({UiControlKind::EditBank, Manual::Upper, DrawbarBank::A}).count == 0);
+    CHECK(tap(rig.model, UiKey::RightBracket).count == 0);
+    CHECK(rig.model.view().manual_base_midi == 72);
+    rig.dispatch(rig.model.key({UiKey::A, true}));
+    const SessionCommand external_on = PerformanceInputEvent{
+        HostNoteEvent{0, HostNoteKind::On, 0, 1, 72, 127, 700}};
+    CHECK(rig.session.post(external_on).ok());
+    const SessionCommand external_pedal_on = PerformanceInputEvent{
+        PedalNoteEvent{0, PedalNoteKind::On, 0, 3, PedalId{25}, 127, 701}};
+    CHECK(rig.session.post(external_pedal_on).ok());
+    rig.flush();
+
+    const UiControlId drawbar{UiControlKind::ManualDrawbar, Manual::Upper, DrawbarBank::A, 0};
+    constexpr std::array<UiPoint, 7> transitions{{
+        {1400, 819}, {1400, 820}, {1399, 820}, {1399, 819}, {1672, 941}, {1920, 700}, {960, 700}}};
+    std::uint8_t value = 0;
+    for (const auto next : transitions) {
+        const auto bar = geometry(rig.model, drawbar);
+        value = value == 8 ? 0 : 8;
+        const UiPoint point{bar.track.x + 1,
+                            value == 0 ? bar.track.y : bar.track.y + bar.track.height};
+        rig.dispatch(rig.model.pointer({UiPointerKind::Down, point}));
+        CHECK(rig.model.view().pointer_captured && rig.model.view().focus == drawbar);
+        CHECK(rig.model.view().controls_pending && rig.model.view().controls.drawbars[0][0][0] == value);
+        const auto controls_before = rig.model.view().controls;
+        const bool dirty_before = rig.model.view().controls_dirty;
+        const auto applied_before = rig.model.view().applied;
+        CHECK(rig.model.resize(next.x, next.y));
+        CHECK(rig.model.view().controls == controls_before);
+        CHECK(rig.model.view().controls_pending && rig.model.view().controls_dirty == dirty_before);
+        CHECK(rig.model.view().applied.publication_revision == applied_before.publication_revision);
+        CHECK(rig.model.view().focus == drawbar && rig.model.view().pointer_captured);
+        CHECK(rig.model.view().edited_banks[0] == DrawbarBank::A && rig.model.view().manual_base_midi == 72);
+        const auto moved = geometry(rig.model, drawbar);
+        CHECK(rig.model.pointer({UiPointerKind::Move,
+            {moved.track.x + 1, value == 0 ? moved.track.y + moved.track.height : moved.track.y}}).count == 0);
+        CHECK(rig.model.view().controls == controls_before); // A resize closes the captured parameter gesture.
+        CHECK(rig.model.pointer({UiPointerKind::Up, {-100, -100}}).count == 0);
+        rig.flush();
+        CHECK(!rig.model.view().controls_pending && rig.model.view().applied.controls == controls_before);
+        CHECK(rig.model.view().applied.held_keys[0][36] && rig.model.view().applied.held_pedals[24]);
+        CHECK(rig.model.view().applied.recovery_count == 0);
+    }
+    const auto original_off = rig.model.key({UiKey::A, false});
+    manual_event(original_off, 0, false, 0, 72, 1);
+    rig.dispatch(original_off);
+    rig.flush();
+    CHECK(rig.model.view().applied.held_keys[0][36]); // External ownership survives the original UI release.
+    const SessionCommand external_off = PerformanceInputEvent{
+        HostNoteEvent{0, HostNoteKind::Off, 0, 1, 72, 0, 700}};
+    CHECK(rig.session.post(external_off).ok());
+    const SessionCommand external_pedal_off = PerformanceInputEvent{
+        PedalNoteEvent{0, PedalNoteKind::Off, 0, 3, PedalId{25}, 0, 701}};
+    CHECK(rig.session.post(external_pedal_off).ok());
+    rig.flush();
+    CHECK(!rig.model.view().applied.held_keys[0][36] && !rig.model.view().applied.held_pedals[24]);
+}
+
 void focus_and_app_actions() {
     UiModel model;
-    for (std::size_t index = 0; index < 45; ++index) {
+    CHECK(model.layout().width == 1280 && model.layout().height == 900);
+    for (std::size_t index = 0; index < 46; ++index) {
         CHECK(tap(model, UiKey::Tab).count == 0);
         CHECK(model.view().focus == model.layout().controls[index].id);
     }
@@ -673,11 +986,12 @@ void focus_and_app_actions() {
     CHECK(tap(model, UiKey::Right).count == 0 && model.view().focus == manual_key(Manual::Upper, 49));
     model.set_text_entry_active(false);
     struct RequestCase { UiControlKind kind; UiAppRequest request; };
-    constexpr std::array<RequestCase, 4> requests{{
+    constexpr std::array<RequestCase, 5> requests{{
         {UiControlKind::SaveControls, UiAppRequest::SaveControls},
         {UiControlKind::LoadControls, UiAppRequest::LoadControls},
         {UiControlKind::AudioSettings, UiAppRequest::AudioSettings},
-        {UiControlKind::Help, UiAppRequest::Help}}};
+        {UiControlKind::Help, UiAppRequest::Help},
+        {UiControlKind::MidiSettings, UiAppRequest::MidiSettings}}};
     for (const auto& entry : requests) {
         const auto action = model.activate({entry.kind});
         CHECK(action.count == 1 && std::get<UiAppRequest>(action.items[0]) == entry.request);
@@ -698,6 +1012,7 @@ int main() {
     drag_identity_and_parameter_laws();
     pending_saved_and_recovery();
     layout_and_hit_boundaries();
+    breakpoint_resize_preserves_performance();
     focus_and_app_actions();
-    std::cout << "Standalone UI acceptance: 7 behavioral scenarios passed\n";
+    std::cout << "Standalone UI acceptance: 8 behavioral scenarios passed\n";
 }

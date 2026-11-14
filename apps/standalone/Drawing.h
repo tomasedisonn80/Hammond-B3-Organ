@@ -10,6 +10,7 @@
 namespace hammond::standalone {
 
 enum class TextFace { Sans, Serif };
+enum class ReferenceArt { Cabinet, LeftWoodCheek, RightWoodCheek };
 
 // Main-thread SDL painting only. Glyph textures are prepared once and own no
 // audio state. Labels remain dynamic text over separately painted geometry.
@@ -28,6 +29,9 @@ public:
     void gradient(UiRect bounds, UiColor top, UiColor bottom) const noexcept;
     void line(float x1, float y1, float x2, float y2, UiColor color) const noexcept;
     void shadow(UiRect bounds, float radius = 7.0F) const noexcept;
+    // Optional decorative RGB assets are uploaded only during initialize().
+    // A false result asks the caller to retain its procedural fallback.
+    [[nodiscard]] bool reference_art(ReferenceArt art, UiRect bounds) const noexcept;
     void text(std::string_view value, float x, float top, float size,
               UiColor color, TextFace face = TextFace::Sans) const noexcept;
     [[nodiscard]] float text_width(std::string_view value, float size,
@@ -39,6 +43,9 @@ private:
     SDL_Renderer* renderer_{};
     SDL_Texture* sans_{};
     SDL_Texture* serif_{};
+    SDL_Texture* cabinet_{};
+    SDL_Texture* left_wood_{};
+    SDL_Texture* right_wood_{};
 };
 
 } // namespace hammond::standalone

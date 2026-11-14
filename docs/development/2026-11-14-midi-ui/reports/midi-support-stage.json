@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "stage": "Integrated MIDI support and revised shared layout; native renderer still in progress",
+  "base_commit": "7b36cfac2565397191b3df5e07112611e7f1b0e1",
+  "toolchain": {
+    "cmake": "4.4.4",
+    "compiler": "GNU C++ 14.2.0",
+    "configuration": "Release"
+  },
+  "files": {
+    "CMakeLists.txt": "797f4923b755d4ae02258540be74a887fd308f97266d9561a9958984ac0f082b",
+    "apps/standalone/CMakeLists.txt": "1adc4a299dd4bc6480b0036b24cdd01ec58635b2bda58d39c77888c47e9e19d7",
+    "apps/standalone/Session.cpp": "247c6a63dc9bb6c4e60398b17779a2d985058563b8d981c5e06426eab977f6ae",
+    "apps/standalone/Session.h": "0eed6c82d0cf5ffbeb0206f6f9702a93ef5a75cde6fd669b2862705dc7af84a0",
+    "apps/standalone/UiModel.cpp": "ac1a381367cfee7cce61e27ebd0b094c76a730806383e9ead609622687993e28",
+    "apps/standalone/UiModel.h": "fac0dd9bfa1baf77d1efda2fbb8839c5a223d9ab0c3580c10dda184317f7da3c",
+    "apps/standalone/MidiInput.cpp": "32e135e84a870dc0e7d6cd9f5a9804b6c75031d4b2fd8dcfcf4d0959bd210802",
+    "apps/standalone/MidiInput.h": "00a1e6d43f8db1721f7042b6c37b081f192dd85f55dc1bb999c81ee0a4014038",
+    "apps/standalone/MidiDevice.cpp": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324",
+    "apps/standalone/MidiDevice.h": "53ca2f5483c4574f0589c2d511f3fce2d68603671b4b89638f653a93a82c8942",
+    "apps/standalone/tests/test_standalone_midi_input.cpp": "a4d42a5be724ac04e8c113e409ae26ccb2ffced13fbc357bae054a4a809120fa",
+    "apps/standalone/tests/test_standalone_external_control.cpp": "d79ac2b836f8bc431ee9a5ab8f6814ad639aef704e496417dd8dd80ab2e33c1b",
+    "apps/standalone/tests/test_standalone_ui.cpp": "2289bfa944e7e5a186f20b32f736dcc886299e4464c80ab4af1e577726a5103e",
+    "cmake/VerifyRtMidi.cmake": "fe2f76f57ca3384aedf05da1afbe0cc3fd3989bee29120bbb252249368bbccdd",
+    "data/dependencies/rtmidi-lock.json": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa",
+    "tools/acquire_rtmidi.py": "b5b436be15a7a1aa807ec342793741eaefbbc2df0dbe5f315fc7f97a690809bf"
+  },
+  "executed": [
+    {
+      "build_directory": "/workspace/scratch/cd4bd06ce68f/build-baseline",
+      "midi_enabled": false,
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_regex": "test_standalone_(midi_input|ui|external_control)$",
+      "passed": 3,
+      "failed": 0,
+      "seconds": 0.02
+    },
+    {
+      "build_directory": "/workspace/scratch/cd4bd06ce68f/build-midi",
+      "midi_enabled": true,
+      "rtmidi_backend": "ALSA",
+      "rtmidi_commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "alsa_development_version": "1.2.14",
+      "configure_exit": 0,
+      "build_exit": 0,
+      "ctest_regex": "test_standalone_(midi_input|ui|external_control)$",
+      "passed": 3,
+      "failed": 0,
+      "seconds": 0.02
+    }
+  ],
+  "limits": [
+    "Subset support tests, not the complete suite.",
+    "No native window/runtime result at this stage.",
+    "No physical MIDI or audio-device qualification.",
+    "The exact listed files identify this intermediate worktree; no claim that the base commit alone includes these changes."
+  ]
+}

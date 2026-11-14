@@ -2,6 +2,7 @@
 
 #include "Drawing.h"
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
 #include <span>
@@ -10,7 +11,7 @@
 
 namespace hammond::standalone {
 
-enum class ViewOverlay { None, Help, Audio };
+enum class ViewOverlay { None, Help, Audio, Midi };
 
 struct InstrumentViewInfo {
     bool audio_running{false};
@@ -26,6 +27,15 @@ struct InstrumentViewInfo {
     std::size_t selected_device{0};
     int selected_sample_rate{48000};
     std::uint32_t selected_buffer_frames{512};
+    bool midi_available{false};
+    bool midi_open{false};
+    std::string_view midi_backend{};
+    std::string_view midi_port{};
+    std::string_view midi_status{};
+    std::span<const std::string> midi_choices{};
+    std::size_t selected_midi_port{0};
+    std::array<std::uint8_t, 3> selected_midi_channels{1, 2, 3};
+    std::uint64_t midi_messages{0};
 };
 
 struct AudioOverlayLayout {
@@ -38,8 +48,21 @@ struct AudioOverlayLayout {
     UiRect close{};
 };
 
+struct MidiOverlayLayout {
+    UiRect panel{};
+    UiRect previous_port{};
+    UiRect next_port{};
+    UiRect upper_channel{};
+    UiRect lower_channel{};
+    UiRect pedal_channel{};
+    UiRect apply{};
+    UiRect disconnect{};
+    UiRect close{};
+};
+
 // These shared rectangles also drive the app's modal hit testing.
 [[nodiscard]] AudioOverlayLayout audio_overlay_layout(float width, float height) noexcept;
+[[nodiscard]] MidiOverlayLayout midi_overlay_layout(float width, float height) noexcept;
 void paint_instrument(Drawing& drawing, const UiModel& model,
                        const InstrumentViewInfo& info);
 

@@ -90,6 +90,7 @@ enum class UiControlKind : std::uint8_t {
     Panic,
     ManualKey,
     PedalKey,
+    MidiSettings,
 };
 
 // Semantic identity, independent of rectangle, ordinal in a list or focus.
@@ -126,6 +127,8 @@ struct UiKeyGeometry {
 // or pedal-ID order. The 64 control slots exclude the 147 playing-key slots.
 struct UiLayout {
     float width{kUiReferenceWidth}, height{kUiReferenceHeight};
+    bool show_cabinet{false};
+    bool bank_controls_in_cheeks{false};
     UiRect header{};
     std::array<UiRect, kManualCount> registration_panels{};
     UiRect performance_panel{};
@@ -133,6 +136,9 @@ struct UiLayout {
     std::array<UiRect, kManualCount> manual_panels{};
     UiRect pedal_panel{};
     UiRect footer{};
+    UiRect cabinet_panel{};
+    UiRect cabinet_art{};
+    std::array<UiRect, kManualCount> manual_rail_panels{};
     std::array<UiControlGeometry, kUiMaxControls> controls{};
     std::size_t control_count{0};
     std::array<std::array<UiKeyGeometry, kManualKeyCount>, kManualCount> manual_keys{};
@@ -190,7 +196,7 @@ struct UiPointerInput {
 };
 
 enum class UiReleaseReason : std::uint8_t { FocusLost, WindowClosing, Escape };
-enum class UiAppRequest : std::uint8_t { SaveControls, LoadControls, AudioSettings, Help };
+enum class UiAppRequest : std::uint8_t { SaveControls, LoadControls, AudioSettings, Help, MidiSettings };
 
 // SessionCommand is the exact Session.h variant, not another wire protocol.
 // Musical actions have offset 0 and target the next callback boundary. App
@@ -263,6 +269,12 @@ public:
     // no action and preserves state. Does not resurrect/release notes or change
     // the edited bank. The loaded snapshot becomes the clean-file reference.
     [[nodiscard]] UiActions load_controls(const ControlSnapshot& controls) noexcept;
+    // Main-thread external controller edit. Uses the same desired snapshot and
+    // acknowledgment path as native gestures, so a pending MIDI edit is retained
+    // by subsequent unrelated UI changes. Invalid/unchanged values emit nothing;
+    // the caller dispatches returned actions once, never a second raw CC event.
+    [[nodiscard]] UiActions external_parameter(std::uint32_t parameter_id,
+                                               double normalized) noexcept;
     void mark_saved(const ControlSnapshot& saved_controls) noexcept;
     void set_text_entry_active(bool active) noexcept;
 
