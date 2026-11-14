@@ -52,10 +52,53 @@ observation, not an audio-callback, RSS or universal latency guarantee.
 
 ## Final record verification
 
-The sixty-complete manifest and complete source are ready for the final immutable
-archive checks. The integrator's observed snapshot, exact outcomes and public
-source mapping are recorded here after those checks, before guarded publication.
-Later documentary records do not retroactively change the d7 platform source.
+The complete immutable record source is local
+`79bcc286dc9dc64dea1b7eb8a990551f78dde674`, exact tree
+`6f84cac7b4fb250e9448f0d63723a55596ceb0aa`, with equal-tree public source
+`be9479d8b0647705c92f9d599be09bac22402296`. That complete source is retained
+as an ancestor of the final documentation publication; its parent is qualified
+d7. Root created the exact GitHub tree and compared its returned SHA before
+preparing the final expected-head, non-force update. The actual fetched branch
+HEAD identifies the later documentary record, rather than assuming it equals
+this frozen source.
+
+A fresh `git archive` of the local complete source contains **1,041 files /
+40,663,711 bytes**. Every file's before/after size and SHA-256 is unchanged.
+Using CPython 3.12.14 on Linux, root executed both actual read-only commands:
+
+```sh
+python3 -B tools/check_calibration_session.py --repo . --expected-complete 60 --json
+python3 -B tools/check_repository.py --root . --json
+```
+
+These were invoked with absolute paths inside that private fresh archive.
+Both return zero with empty stderr. The strict session output exactly equals
+the retained [completion record](../development/2026-11-13-calibration/completion-check.json):
+60 complete, zero running/planned, all ten waves, sixty distinct identities and
+zero errors. Its SHA-256 is
+`22748ae31f28e10a30caf5b2532e831ea9e9638971d82e7219037e8aac0a43ae`.
+
+The [repository-integrity output](../development/2026-11-13-calibration/repository-integrity.json)
+passes with zero errors: **623 Markdown files / 3,498 local links**, original PDF
+size/hash, 80 reconstructed chapters and their 500-page coverage, and the named
+data-reference checks. Its SHA-256 is
+`71e17afb7496adfec2b555aa3130092160c83543e780cff3b24e10e755e1ea5c`.
+Its legacy agent-note check concerns the original session; it is not substituted
+for the separate strict calibration check above. The JSON's private root names
+this actual run and is not a public setup prerequisite.
+
+All **29 changed paths** between d7 and that complete record source are AGENTS,
+README or documents/records. All 56 copied CaptureTools inputs, its installer
+and top-level CMake equal d7 byte for byte; the generated README definition is
+unchanged. Production, tests, build, model and data inputs have no changes. The
+later integration record/JSON additions likewise add no runtime or payload
+change. The d7 platform results retain their exact source; this final gate is
+source-archive and accounting verification, not another full 106-suite run.
+
+Root preserves local history, inspects the current remote before publication,
+uses the expected-head non-force update and fetches the resulting commit/tree
+for equality and ancestry verification. Future work starts by inspecting that
+actual checkout/remote identity under AGENTS, preserving concurrent history.
 
 ## Practical continuation and standing rule
 

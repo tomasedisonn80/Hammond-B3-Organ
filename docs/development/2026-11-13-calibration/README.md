@@ -88,3 +88,17 @@ reachable GitHub tree identities are recorded separately from later review and
 accounting updates. The [fresh hosted matrix](../../reviews/CALIBRATION_FINAL_HOSTED.md) passes all
 ten jobs at d7, including all four 106-suite core gates. The strict sixty-complete record is retained above after all actual results
 were accepted; it does not establish physical M8 or external launch attestation.
+
+## Complete source and final integrity gate
+
+The frozen sixty-complete source is public `be9479d8b0647705c92f9d599be09bac22402296`,
+exact tree `6f84cac7b4fb250e9448f0d63723a55596ceb0aa`, equivalent to local `79bcc28`.
+It follows qualified d7 without changing production, tests or CaptureTools inputs.
+A fresh complete archive passes strict sixty-complete accounting and
+[repository integrity](repository-integrity.json): 623 Markdown files / 3,498
+local links, the original PDF and declared data/source relationships, zero errors.
+All 1,041 files / 40,663,711 bytes remain unchanged by the checks. The later
+[final record](../../reviews/CALIBRATION_FINAL_INTEGRATION.md) retains these
+observations and the guarded publication procedure; its documentary additions
+do not create a new runtime test claim. Inspect the actual current HEAD and
+remote before continuing.

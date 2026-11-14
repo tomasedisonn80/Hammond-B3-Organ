@@ -54,7 +54,7 @@ capability limits are retained. The [combined Release gate](docs/reviews/STANDAL
 and [fully instrumented native gate](docs/reviews/STANDALONE_FINAL_INTEGRATION.md)
 keep their own exact source scopes and original failure records.
 
-The completed integrated closure is
+The standalone session's completed integrated closure is
 [`27209a7f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/27209a7fec075b082aa911c9ea2159938deaae85).
 It preserves concurrent calibration replay/installation and all sixty accepted
 standalone records. Its [hosted recheck](docs/reviews/STANDALONE_CONCURRENT_CALIBRATION_INTEGRATION.md#published-closure-and-completed-hosted-qualification)

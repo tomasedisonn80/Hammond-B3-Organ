@@ -1,5 +1,21 @@
 # Development log
 
+## 2026-11-14 — Complete immutable archive passes final record gates
+
+- Fresh complete source `79bcc28`, tree `6f84cac7`, passes strict sixty-complete
+  accounting and source-archive integrity with zero errors and empty stderr.
+  All 1,041 files / 40,663,711 bytes remain unchanged. The actual integrity
+  output checks 623 Markdown files / 3,498 local links, source PDF/chapter identity
+  and named data relationships. Both exact outputs and hashes are retained.
+- The equal-tree public source is be9479d8b0647705c92f9d599be09bac22402296,
+  prepared as a child of qualified d7 and retained in the final publication.
+  All 29 d7-to-complete changes are documents/records; all 56 CaptureTools inputs,
+  installer and top-level CMake are unchanged. This is not a new full-suite run.
+- The final integration record binds the actual complete source, independent
+  final reviews, original failures and concrete next inputs. Root will finish
+  the expected-head non-force publication and fetched commit/tree/ancestry
+  verification, preserving all concurrent history and local source checkpoints.
+
 ## 2026-11-14 — All sixty actual calibration assignments accepted
 
 - Accepted assignment 60 after reading its complete review, checking both frozen
