@@ -779,4 +779,7 @@ def main(argv: list[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    from capture_common import _cli_exit
+
+    raise SystemExit(_cli_exit(main, lambda message: _write_utf8(
+        sys.stderr, f"corpus error: standard-stream delivery failed: {message}\n")))

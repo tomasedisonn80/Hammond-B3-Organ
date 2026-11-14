@@ -654,4 +654,12 @@ def main(argv: list[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    from capture_common import _cli_exit
+
+    def _delivery_error(message):
+        _write_utf8(sys.stderr, _json_line({
+            "error": {"code": "io_error", "message": f"standard-stream delivery failed: {message}",
+                      "details": {}},
+            "inspector_version": INSPECTOR_VERSION, "status": "rejected"}))
+
+    raise SystemExit(_cli_exit(main, _delivery_error))

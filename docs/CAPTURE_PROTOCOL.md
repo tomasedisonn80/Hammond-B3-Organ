@@ -336,11 +336,11 @@ support artifacts, with explicit external review and limitations.
 | **A1 — obtain access and lock** | Actual owner/specimen and qualified technician | Completed identity/configuration/permission records; approved external pilot scope. No hardware claim while these are missing. |
 | **A2 — qualify and pilot** | A1; recorder, references and appropriate interfaces | Actual before/after chain/clock evidence, pilot raw files, reviewed QA, measured repeatability and frozen main schedule. |
 | **A3 — acquire dry corpus** | A2; accessible qualified boundaries | P1 source/routing and P2 contact/percussion captures, P3 expression as setup permits; explicit unobserved quantities and retained failures. |
-| **A4 — audit admission and splits** | Actual A2/A3 files; reviewed rights | Actual header/content check, restored-byte check, cross-manifest ancestry/duplicate audit, reviewer dispositions and frozen group/purpose ledger. This needs new tooling or documented manual review. |
+| **A4 — audit admission and splits** | Actual A2/A3 files; reviewed rights | Use the bounded [audio inspector](CAPTURE_AUDIO.md) and [corpus auditor](CAPTURE_CORPUS.md) for actual header/content, original-byte and whole-graph checks; retain reviewer dispositions and the frozen group/purpose ledger. [Fixed jobs](CAPTURE_JOB.md), [studies](CAPTURE_STUDY.md) and [report replay](CAPTURE_REPLAY.md) preserve declared analysis and complete outcomes. Software checks do not establish acquisition quality, rights or an untouched holdout history. |
 | **A5 — fit and validate M3** | Qualified dry corpus; dependency-ready M3 implementation | Boundary-scoped parameters, raw/derived provenance, uncertainty, fixed analysis, development-validation results and untouched final evaluation. |
 | **A6 — extend downstream** | Applicable M4–M7 gates in section 8 | New revision/port/rotor/scene evidence; separate acceptance for scanner, AO-28, 122, 147 and acoustics. |
 
-Until A1–A4 have actual evidence, the concrete next engineering work is the
-named nominal M3 contact/percussion implementation in [NEXT_STEPS.md](NEXT_STEPS.md).
-This protocol prepares its acquisition replacement path without claiming that
-the measurements, permissions or physical acceptance have already occurred.
+Until A1–A4 have actual evidence, continue the dependency-ready engineering work
+in [NEXT_STEPS.md](NEXT_STEPS.md) under the current track scopes and handoffs.
+The implemented evidence tools support this acquisition path; they do not imply
+that measurements, permissions or physical acceptance have already occurred.

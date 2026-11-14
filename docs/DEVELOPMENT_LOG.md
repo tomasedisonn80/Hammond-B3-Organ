@@ -1,5 +1,30 @@
 # Development log
 
+## 2026-11-14 — Completed calibration wave 8 and retained portability repairs
+
+- Accepted actual assignments 43–48: a minimal metadata allocation change with
+  retained before/after reports and independent 357-method acceptance, seven
+  graph methods covering43 complete audits, a real-pipe process repair with
+  nine independent methods/71 child processes, and 30 evidence-boundary audit cases.
+  The session now has 48 accepted workers in 8 complete logical waves.
+- The original pipe matrix retained 24 failing subcases; a first producer candidate
+  then failed the generator's independent-script contract. Both failures are
+  retained. The final guard preserves all 228 existing top-level definitions and
+  standalone generator/validator dependencies; no numerical policy changed.
+- Hosted `3b0979b` has 9 successful jobs and one Windows Release failure: 102/103 suites.
+  The prior demo defect is resolved; the installation fixture expected LF from a
+  native CMake text writer. Root's c352d68 copies literal binary marker bytes
+  instead; all 16 installation methods pass from that frozen archive in 6.133 s.
+  The exact repaired test SHA is c7731f8bbcec56ed65243bb483cf59031048d978ebd0b9a7582ea6a429ea3602.
+  Native Windows requalification of the new fixture remains pending.
+- Root proved Git text-auto filtering changed valid raw float32 bytes `410d0a3f`.
+  Marking `*.f32` binary preserves the exact blob; original demo/PDF bytes are unchanged.
+  [The byte-identity record](reviews/CALIBRATION_RAW_GIT_IDENTITY.md) retains
+  the before/after evidence. No artificial physical measurement was introduced.
+- Updated the acquisition protocol's stale future-tooling/current-task pointers
+  and led the handoff with verified `3b0979b` while retaining older source mappings.
+  Fresh setup, compatibility and actual hosted-outcome review continue in wave 9.
+
 ## 2026-11-14 — Qualified replay/install source and completed calibration wave 7
 
 - The immutable combined commit `16d72e1` (tree `5619bbb018830e071bc2ce45af84984cdd16bfc1`)

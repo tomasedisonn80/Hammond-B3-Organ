@@ -34,9 +34,11 @@ limitations, integrates concurrent main changes and publishes reviewable commits
 
 ## Current work
 
-Waves 1–7 are complete, with **forty-two new assignments accepted**.
-The next three actual workers are qualifying a measured allocation repair and
-corpus graph behavior. Six readers
+Waves 1–8 are complete, with **forty-eight new assignments accepted**.
+Allocation repair, graph acceptance, real-pipe CLI failure repair and the
+physical-evidence boundary review are complete. The remaining twelve actual
+assignments qualify setup/compatibility, operational plans and final integration.
+Six readers
 covered all 500 text pages and selected original page images; the
 [consolidated review](../../research/CALIBRATION_ATLAS_REVIEW.md) records coverage.
 The audio, corpus and comparison contracts are frozen and independently reviewed.

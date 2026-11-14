@@ -158,7 +158,19 @@ private source/build deletion; the old 23-file OfflineTools regression also pass
 
 ## Current integration and next work
 
-The reviewed first 34 assignments are published at
+The latest verified published checkpoint is
+`3b0979bd0d30ce96bca0bcd57bd8f730eaadd1bf`, tree
+`656c5f117060210b3df656c62318d5a672fc306d`, containing the first 42 accepted
+assignments and preserving the concurrent `6214032` native test advance. Its
+full tested source is retained as reachable commit `7caee9e5a1aadfa36f2a87b6855684cbd730d803`.
+Later assignments 43–48 are accepted locally: the minimal metadata allocation
+change, independent graph qualification, process-level stream repair and evidence
+boundary review. Their
+[15-suite allocation gate](reviews/CALIBRATION_ALLOCATION_INTEGRATION.md)
+is separate from the later accepted stdout/stderr repair and its pending combined
+source gate/publication.
+
+Historically, the reviewed first 34 assignments were published at
 `955fc4c41f74ada094f14fbaf386c943811e9050`, tree
 `70956d0f0e125d57abfbf1aed56460c067f8ef28`, verified after fetching main.
 The earlier [wave-4 report](reviews/CALIBRATION_WAVE4_INTEGRATION.md) records 11/11 focused
@@ -182,8 +194,9 @@ are independently accepted. Their [combined source](reviews/CALIBRATION_INSTALL_
 passes 103/103 unfiltered local Release suites; the exact source mapping and logs
 are retained separately from later documentation. Resource profiling, the
 220-case composition review and the accounting audit complete seven waves and
-42 accepted assignments. Wave 8 qualifies the measured metadata allocation
-change and corpus graph behavior before the remaining operational handoff work.
+42 accepted assignments at that publication. The current manifest records 48
+accepted assignments and eight complete waves. The remaining assignments qualify
+clean setup, compatibility, operation/acquisition plans and final handoff.
 Keep the complete original archives and failure outcomes. Later installation
 and relocation acceptance must include every imported module and preserve the
 existing offline-tools component. The session manifest is the actual accounting

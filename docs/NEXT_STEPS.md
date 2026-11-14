@@ -10,14 +10,13 @@ Fixed policy evaluation, adversarial audio/corpus admission, identity-bound file
 jobs and declaration readiness are implemented and independently qualified.
 The accepted replay and separate 57-file CaptureTools package now pass the
 [coherent 103-suite local gate](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md).
-Seven waves and 42 assignments are accepted. Publish the exact tested source and
-its retained reviews, preserve inspected concurrent advances, and observe fresh
-hosted outcomes for the Windows preservation-fixture repair and package/replay.
-Resource profiling identified a metadata read allocating from its maximum cap;
-qualify the minimal observed-size read change with independent failure and report
-identity checks before accepting it. Continue graph/lineage, failure preservation,
-physical-claim boundaries, clean installation and operational handoff assignments.
-Preserve original identities, all valid outcomes and complete snapshots.
+Eight waves and 48 assignments are accepted. The metadata allocation change,
+independent graph qualification, real-pipe process repair and evidence-boundary
+review are complete. Qualify the combined frozen source, including the exact-byte
+Windows installation fixture and raw .f32 Git classification, then publish and
+observe fresh hosted outcomes. Complete clean setup, compatibility, operating and
+acquisition handoffs in the remaining actual assignments. Preserve original
+identities, all valid outcomes and complete snapshots.
 No step fits physical model
 parameters or clears an acquisition gate through synthetic fixtures.
 Existing v1 metadata validation remains valid; the new companion tools provide
