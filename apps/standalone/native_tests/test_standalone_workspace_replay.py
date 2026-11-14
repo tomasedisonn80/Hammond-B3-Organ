@@ -17,6 +17,7 @@ from __future__ import annotations
 from contextlib import contextmanager
 from copy import deepcopy
 import hashlib
+from itertools import groupby
 import json
 import os
 from pathlib import Path
@@ -80,6 +81,10 @@ def script(magic: str, duration: int, events: list[tuple[int, str]]) -> bytes:
 
 def holds(snapshot: dict) -> tuple[tuple[int, ...], tuple[int, ...], tuple[int, ...]]:
     return tuple(snapshot["manual_notes"][0]), tuple(snapshot["manual_notes"][1]), tuple(snapshot["pedal_ids"])
+
+
+def painted_holds(frame: dict) -> tuple[int, int, int]:
+    return tuple(frame["held_targets"][part] for part in ("upper", "lower", "pedals"))
 
 
 def unique(values: list) -> list:
@@ -181,7 +186,17 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
             self.assertFalse(data["presentation"]["observations_truncated"])
             self.assertEqual(data["presentation"]["initial_workspace"], "play")
             self.assertEqual(data["presentation"]["initial_presentation"], "flat" if flat else "dimensional")
+            self.assertEqual(data["runtime"]["video_driver"], "dummy")
             self.assertEqual(data["runtime"]["renderer"], "software")
+            self.assertEqual(painted_holds(data["presentation"]["before_shutdown"]),
+                             tuple(map(len, holds(data["replay"]["before_shutdown"]))),
+                             "The last painted counts must precede joined-shutdown cleanup")
+            for frame in [*data["presentation"]["observations"], data["presentation"]["last_painted"]]:
+                capture = frame["pointer_capture"]
+                self.assertFalse(capture["sdl_captured"])
+                self.assertFalse(capture["ui_captured"])
+                self.assertEqual((capture["successes"], capture["losses"], capture["release_calls"]), (0, 0, 0),
+                                 "Dummy capture refusal must not be reported as an admitted/released OS capture")
             self.assertEqual(data["replay"]["device_starts"], 1)
             for field in ("passed", "final_acknowledged", "snapshot_available_before_shutdown",
                           "session_running_before_shutdown"):
@@ -244,6 +259,11 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
         self.assertEqual(unique([holds(item) for item in observed["observations"]]), expected)
         self.assertEqual(holds(observed["before_shutdown"]), expected[-1],
                          "Joined shutdown must not substitute for the scripted release")
+        presentation = run.diagnostics["presentation"]
+        frames = [*presentation["observations"], presentation["before_shutdown"]]
+        self.assertEqual(unique([painted_holds(frame) for frame in frames]),
+                         unique([tuple(map(len, state)) for state in expected]),
+                         "Painted observations must retain applied held-count changes")
 
     def assert_commands(self, run: workflow_fixture.WorkflowRun, *, on: int, off: int,
                         control_changes: int = 0, startup_sequence: int | None = None) -> None:
@@ -271,7 +291,8 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
         self.assertEqual(observed["before_shutdown"]["last_applied_sequence"], final)
         self.assertEqual(observed["before_shutdown"]["resolved_sequence"], final)
 
-    def assert_views(self, run: workflow_fixture.WorkflowRun, expected: list[tuple]) -> None:
+    def assert_views(self, run: workflow_fixture.WorkflowRun, expected: list[tuple], *,
+                     held_targets: list[tuple[int, int, int]] | None = None) -> None:
         presentation = run.diagnostics["presentation"]
         frames = [*presentation["observations"], presentation["last_painted"]]
         actual = unique([(item["workspace"], item["presentation"],
@@ -284,6 +305,24 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
         self.assertGreater(clocks[-1], clocks[0])
         self.assertTrue(any(item["inspection"]["snapshot_state"] == "current" for item in frames))
         self.assertIn(frames[-1]["inspection"]["snapshot_state"], ("current", "retained"))
+        if held_targets is not None:
+            # Group consecutive visits, so an earlier Play frame cannot stand
+            # in for the held owner after returning from a hidden workspace.
+            visits = [list(group) for _, group in groupby(frames, key=lambda item: (
+                item["workspace"], item["presentation"], item["window_width"], item["window_height"]))]
+            self.assertEqual(len(visits), len(held_targets))
+            for view, visit, counts in zip(expected, visits, held_targets):
+                self.assertIn(counts, [painted_holds(frame) for frame in visit],
+                              f"Applied held targets must appear in the painted visit {view}")
+
+    def assert_capture_refusals(self, run: workflow_fixture.WorkflowRun, attempts: int) -> None:
+        presentation = run.diagnostics["presentation"]
+        self.assertEqual(presentation["before_shutdown"]["pointer_capture"], {
+            "sdl_captured": False, "ui_captured": False, "attempts": attempts,
+            "successes": 0, "losses": 0, "release_calls": 0,
+        })
+        self.assertEqual(presentation["observations"][-1]["pointer_capture"]["attempts"], attempts,
+                         "Capture counter changes must be retained even when both endpoints are uncaptured")
 
     def assert_header_hold_prefixes(self, run: workflow_fixture.WorkflowRun,
                                    startup_sequence: int, *, through: int) -> None:
@@ -361,7 +400,9 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                     self.assert_commands(run, on=2, off=2, startup_sequence=startup_sequence)
                     self.assert_views(run, [(workspace, mode, *size) for workspace, mode in (
                         ("play", "dimensional"), ("rotary", "dimensional"), ("rotary", "flat"),
-                        ("service", "flat"), ("play", "flat"), ("play", "dimensional"))])
+                        ("service", "flat"), ("play", "flat"), ("play", "dimensional"))],
+                        held_targets=[(1, 1, 0)] * 6)
+                    self.assert_capture_refusals(run, 6)
                     self.assertEqual(run.saved_bytes, STATE,
                                      "Header Save must emit the same canonical sound-only bytes at every view size")
                     self.assertFalse(run.diagnostics["runtime"]["screenshot_while_held"])
@@ -438,7 +479,8 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                 ("play", "dimensional", 1280, 900), ("play", "flat", 1280, 900),
                 ("service", "flat", 1280, 900), ("play", "flat", 1280, 900),
                 ("play", "flat", 960, 700),
-            ])
+            ], held_targets=[(1, 0, 0)] * 5)
+            self.assert_capture_refusals(run, 2)
             self.assertEqual(run.saved_bytes, STATE)
 
     def test_pointer_capture_failure_preserves_keyboard_owner_during_navigation(self) -> None:
@@ -463,7 +505,8 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                 ("play", "dimensional", 1280, 900), ("service", "dimensional", 1280, 900),
                 ("service", "flat", 1280, 900), ("play", "flat", 1280, 900),
                 ("play", "flat", 960, 700),
-            ])
+            ], held_targets=[(1, 0, 0)] * 5)
+            self.assert_capture_refusals(run, 1)
             self.assertEqual(run.saved_bytes, STATE)
 
     def test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize(self) -> None:
@@ -517,7 +560,8 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
                 ("play", "dimensional", 1280, 900), ("rotary", "dimensional", 1280, 900),
                 ("rotary", "flat", 1280, 900), ("service", "flat", 1280, 900),
                 ("service", "flat", 960, 700), ("play", "flat", 960, 700),
-            ])
+            ], held_targets=[(1, 2, 1)] * 5 + [(0, 0, 0)])
+            self.assert_capture_refusals(run, 4)
             self.assertEqual(run.saved_bytes, STATE)
 
 

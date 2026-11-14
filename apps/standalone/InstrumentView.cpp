@@ -978,11 +978,12 @@ void paint_rotary(Drawing& drawing, const UiLayout& layout, const InstrumentView
 
 void midi_overlay(Drawing& drawing, const UiLayout& layout, const InstrumentViewInfo& info) {
     const auto boxes = midi_overlay_layout(layout.width, layout.height);
-    panel(drawing, boxes.panel);
+    const bool flat = layout.presentation == UiPresentation::Flat;
+    panel(drawing, boxes.panel, true, flat);
     const float x = boxes.panel.x + 28.0F;
     const float y = boxes.panel.y;
     drawing.text("MIDI input", x, y + 22.0F, 28.0F, kUiIvory, TextFace::Serif);
-    button(drawing, boxes.close, "CLOSE");
+    button(drawing, boxes.close, "CLOSE", false, false, TextFace::Sans, false, flat);
     text_line(drawing, "INPUT PORT / EXACT NAME", {x, y + 73.0F, boxes.panel.width - 56.0F, 16.0F}, 11.0F, kUiBrass);
     std::string_view choice = "No input";
     if (info.selected_midi_port < info.midi_choices.size()) choice = info.midi_choices[info.selected_midi_port];
@@ -990,8 +991,8 @@ void midi_overlay(Drawing& drawing, const UiLayout& layout, const InstrumentView
                        boxes.next_port.x - boxes.previous_port.x - boxes.previous_port.width - 24.0F, 77.0F};
     drawing.rect(inset({port.x - 6.0F, port.y - 5.0F, port.width + 12.0F, port.height + 10.0F}, 1.0F), {13, 15, 13});
     wrapped(drawing, choice, port, 12.0F, kUiIvory);
-    button(drawing, boxes.previous_port, "<");
-    button(drawing, boxes.next_port, ">");
+    button(drawing, boxes.previous_port, "<", false, false, TextFace::Sans, false, flat);
+    button(drawing, boxes.next_port, ">", false, false, TextFace::Sans, false, flat);
     text_line(drawing, "Close and reopen to refresh ports. Full exact names: --list-midi",
               {x, y + 184.0F, boxes.panel.width - 56.0F, 16.0F}, 10.5F, kMuted);
     constexpr std::array<std::string_view, 3> names{"UPPER CHANNEL", "LOWER CHANNEL", "PEDAL CHANNEL"};
@@ -999,7 +1000,8 @@ void midi_overlay(Drawing& drawing, const UiLayout& layout, const InstrumentView
     for (std::size_t index = 0; index < channels.size(); ++index) {
         const auto& bounds = channels[index];
         text_line(drawing, names[index], {bounds.x, bounds.y - 22.0F, bounds.width, 16.0F}, 11.0F, kUiBrass);
-        button(drawing, bounds, std::to_string(info.selected_midi_channels[index]));
+        button(drawing, bounds, std::to_string(info.selected_midi_channels[index]),
+               false, false, TextFace::Sans, false, flat);
     }
     const auto& selected = info.selected_midi_channels;
     const bool distinct = selected[0] != selected[1] && selected[0] != selected[2] && selected[1] != selected[2];
@@ -1012,8 +1014,9 @@ void midi_overlay(Drawing& drawing, const UiLayout& layout, const InstrumentView
               {x + 12.0F, status.y + 8.0F, status.width - 24.0F, 18.0F}, 12.0F,
               info.midi_open ? kGreen : kUiBrass);
     wrapped(drawing, info.midi_status, {x + 12.0F, status.y + 31.0F, status.width - 24.0F, 45.0F}, 11.5F, kUiIvory);
-    button(drawing, boxes.apply, "APPLY / CONNECT", distinct && info.midi_available);
-    button(drawing, boxes.disconnect, "DISCONNECT");
+    button(drawing, boxes.apply, "APPLY / CONNECT", distinct && info.midi_available,
+           false, TextFace::Sans, false, flat);
+    button(drawing, boxes.disconnect, "DISCONNECT", false, false, TextFace::Sans, false, flat);
     text_line(drawing, "Apply changes the MIDI route. Disconnect releases MIDI-owned notes.",
               {x, y + 477.0F, boxes.panel.width - 56.0F, 16.0F}, 11.0F, kMuted);
     text_line(drawing, "Tab / Shift+Tab selects a control. Enter activates. Escape closes.",
@@ -1028,12 +1031,13 @@ void overlay(Drawing& drawing, const UiLayout& layout, const InstrumentViewInfo&
         return;
     }
     const auto boxes = audio_overlay_layout(layout.width, layout.height);
-    panel(drawing, boxes.panel);
+    const bool flat = layout.presentation == UiPresentation::Flat;
+    panel(drawing, boxes.panel, true, flat);
     const float x = boxes.panel.x + 28.0F;
     const float y = boxes.panel.y + 22.0F;
     drawing.text(info.overlay == ViewOverlay::Audio ? "Audio output" : "Playing the instrument",
                   x, y, 28.0F, kUiIvory, TextFace::Serif);
-    button(drawing, boxes.close, "CLOSE");
+    button(drawing, boxes.close, "CLOSE", false, false, TextFace::Sans, false, flat);
     if (info.overlay == ViewOverlay::Help) {
         constexpr std::array<std::string_view, 15> help{
             "61 playing keys per manual; 12 preset keys per manual; 25 pedals.",
@@ -1061,16 +1065,18 @@ void overlay(Drawing& drawing, const UiLayout& layout, const InstrumentViewInfo&
     std::string_view choice = "Default output";
     if (info.selected_device < info.audio_choices.size()) choice = info.audio_choices[info.selected_device];
     wrapped(drawing, choice, {x + 48.0F, y + 88.0F, boxes.panel.width - 152.0F, 47.0F}, 13.0F, kUiIvory);
-    button(drawing, boxes.previous_device, "<");
-    button(drawing, boxes.next_device, ">");
+    button(drawing, boxes.previous_device, "<", false, false, TextFace::Sans, false, flat);
+    button(drawing, boxes.next_device, ">", false, false, TextFace::Sans, false, flat);
     drawing.text("SAMPLE RATE", x, y + 150.0F, 12.0F, kUiBrass);
     drawing.text("CALLBACK FRAMES", x + 270.0F, y + 150.0F, 12.0F, kUiBrass);
-    button(drawing, boxes.sample_rate, std::to_string(info.selected_sample_rate) + " Hz");
-    button(drawing, boxes.buffer_frames, std::to_string(info.selected_buffer_frames));
+    button(drawing, boxes.sample_rate, std::to_string(info.selected_sample_rate) + " Hz",
+           false, false, TextFace::Sans, false, flat);
+    button(drawing, boxes.buffer_frames, std::to_string(info.selected_buffer_frames),
+           false, false, TextFace::Sans, false, flat);
     drawing.text("Click a value to cycle through supported settings.", x, y + 234.0F, 14.0F, kMuted);
     drawing.text("Applying settings stops notes and restarts the audio device.", x, y + 265.0F, 14.0F, kMuted);
     drawing.text("Your drawbars and other musical controls are retained.", x, y + 292.0F, 14.0F, kMuted);
-    button(drawing, boxes.apply, "APPLY AUDIO SETTINGS", true);
+    button(drawing, boxes.apply, "APPLY AUDIO SETTINGS", true, false, TextFace::Sans, false, flat);
 }
 
 void paint_header(Drawing& drawing, const UiLayout& layout) {

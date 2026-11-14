@@ -1,0 +1,19 @@
+{
+  "purpose": "Supported PTY retry of the identical ASan/UBSan binary with leak detection unchanged",
+  "executable": "/tmp/a27-rotary-allocation-asan_ubsan",
+  "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+  "environment": {
+    "ASAN_OPTIONS": "detect_leaks=1:detect_stack_use_after_return=1:halt_on_error=1:abort_on_error=1:strict_string_checks=1",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+    "LSAN_OPTIONS": "exitcode=23:report_objects=1"
+  },
+  "tool_result": {
+    "chunk_id": "2cd518",
+    "wall_time_seconds": 0.158218803,
+    "exit_code": 134,
+    "original_token_count": 196,
+    "output": "{\"status\":\"passed\",\"fixtures\":8,\"segments_per_fixture\":4097,\"repetitions\":32,\"calibrations\":16,\"calibration_allocations\":192,\"calibration_deallocations\":192,\"history_queries\":69776,\"solved_paths\":8448,\"geometry_queries\":4096,\"rejected_calls\":856,\"maximum_evaluations\":40,\"maximum_residual_s\":9.7161861889460965e-15,\"intervals\":{\"prepare\":{\"calls\":40,\"allocations\":0,\"deallocations\":0},\"query\":{\"calls\":82320,\"allocations\":0,\"deallocations\":0},\"copy\":{\"calls\":8,\"allocations\":0,\"deallocations\":0},\"rejection\":{\"calls\":856,\"allocations\":0,\"deallocations\":0}}}\r\n==2==LeakSanitizer has encountered a fatal error.\r\n==2==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1\r\n==2==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)\r\n"
+  },
+  "interpretation": "Workload printed success before the exit-time LeakSanitizer fatal error. Exit 134 means the complete sanitizer gate did not pass.",
+  "executable_sha256": "f9996fa5e6a15e8aa6bf260bad93e3319c584211db8d49e64f252ebff6cccfcd"
+}

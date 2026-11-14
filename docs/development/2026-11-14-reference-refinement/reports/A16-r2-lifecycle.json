@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "source_head_observed": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "command": [
+    "/workspace/scratch/1bb6ee17ad7e/build-native/test_rotary_motion"
+  ],
+  "native_result": {
+    "status": "pass",
+    "gate": "R2 owner lifecycle and partition identity",
+    "rejected_calls": 174,
+    "rate_replacements": 32,
+    "partition_sample_states": 327720,
+    "partition_calls": 131760,
+    "zero_frame_calls": 48,
+    "physical_status": "unmeasured"
+  },
+  "source_sha256": {
+    "tests/test_rotary_motion.cpp": "e8095db59203e88023bd4d3cd56b75882b6cf88b111b3bf8af77574fa1de2a82",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4"
+  },
+  "executable_sha256": "1bf5df00a00c1e64d6fc8e7163565b274f7874819a0822fd40c47d1caf3f357f",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "build_command": "../build-tools/cmake/data/bin/cmake --build ../build-native --target hammond_rotary_motion_probe test_rotary_motion -j2",
+  "ctest_command": "../build-tools/cmake/data/bin/ctest --test-dir ../build-native --no-tests=error -R '^(test_rotary_motion|python_test_rotary_motion_acceptance)$' --output-on-failure",
+  "ctest_observed": "2/2 passed; 0.56 seconds; native 0.03 seconds, Python 0.53 seconds",
+  "scope": "R2 owner validation, lifecycle, and sample-state partition identity; no waveform history or callback integration is implied",
+  "build_configuration": {
+    "build_type": "Release",
+    "compiler_flags": "-O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror",
+    "sanitizers": false,
+    "standalone": true,
+    "MIDI": false,
+    "VST3": false
+  }
+}

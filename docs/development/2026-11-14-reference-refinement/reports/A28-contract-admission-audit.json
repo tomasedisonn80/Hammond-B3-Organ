@@ -1,0 +1,134 @@
+{
+  "worker": "/root/w05_a28_contract_admission_audit",
+  "scope": "Independent contract/admission review; one authorized late-rejection regression; no production or numerical-budget changes",
+  "head": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "source_sha256": {
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+    "tests/test_rotary_propagation.cpp": "71f39ed739a6b86832c20ad69d5c5453c528f4ef4b6cc8a6408e5a97b4a24856",
+    "tests/test_rotary_propagation_allocation.cpp": "b7329be029b8ddd41d8f6f43b5b007ee9c5ab60fcbff7c2dd23c026c4278f45d",
+    "tests/test_rotary_propagation_acceptance.py": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+    "docs/ROTARY_PROPAGATION_CONTRACT.md": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+    "docs/REFERENCE_REFINEMENT_MATERIALS.md": "84bcea40468070f00ebdb395cde2d274de15028b95deb266ef96049b5f01e661"
+  },
+  "review": {
+    "history": "1..4097 immutable borrowed segments; exact native continuity including turns; equal-frame replacement stays caller-owned; copied metadata does not require the source view to live",
+    "lookup": "Upper-bound binary search selects newest anchor at equality; worst depth floor(log2(4097))+1 = 13",
+    "admission": "Supported rates, ordered coverage, profile/seed/segment domains, final turn overflow, full-orbit clearance/distance and actual-seed Mach bound match frozen statuses",
+    "local_time": "Only bounded delay*Fs is split with modf; checked integer subtraction and normalized borrow/carry; no absolute floating sample index or seconds subtraction",
+    "failure_exits": [
+      "History prepare: rate/count, profile/seed, epoch/anchor order, segment state/target/tau/direction, exact continuity and final endpoint all reject before metadata writes",
+      "History query: unprepared/range/helper failures preserve destination; negative history uses epoch seed",
+      "Geometry: output alias, coordinate/radius/sign and state checks precede both vector writes",
+      "Path prepare: unprepared view, domains and complete-orbit cross-fields precede object writes",
+      "Path solve: observation, local subtraction, history, geometry, distance, derivative, finite diagnostics, both endpoints, bracket signs, midpoints and final acceptance precede both caller-output writes",
+      "Motion helpers and owner lifecycle: validation/evaluation failures precede destination/member publication; specific TimelineOverflow and InsufficientHistory statuses propagate"
+    ],
+    "production_contract_mismatch_found": false
+  },
+  "independent_work_bound": {
+    "derivation": "Distance norm is 1-Lipschitz, so rmax-rmin <= 2*radius <= 2 metres. With margin m=32*ulp(max(1,rmax)) <= 2^-43 metres, W <= (2+2m)/300 seconds. After k midpoint evaluations, |G| <= 1.25*W/2^k in exact arithmetic for a covered evaluable bracket.",
+    "maximum_distance_margin_m": 1.1368683772161603e-13,
+    "width_bound_s": 0.006666666666667424,
+    "after_40_midpoints_residual_bound_s": 7.579122514775263e-15,
+    "evaluations_for_exact_arithmetic_early_target_bound": 42,
+    "enforced_all_evaluations_cap": 48,
+    "finite_arithmetic_limit": "Analytic contraction does not replace actual residual checks; the implementation rejects unavailable history/numerical failure and publishes a cached evaluated result without a further evaluation."
+  },
+  "coverage_gap": {
+    "finding": "Earlier retained negative-epoch path failures reject at the first endpoint; they did not cover a successful low endpoint followed by upper-endpoint turn overflow.",
+    "fixture": {
+      "profile": [
+        75,
+        75,
+        1,
+        1,
+        1
+      ],
+      "seed_phase_rad": 0.5,
+      "seed_turns": -9223372036854775808,
+      "seed_speed_rad_s": 75,
+      "rate": 48000,
+      "through_frame": 0,
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "radius": 1,
+      "microphone": [
+        2,
+        0,
+        0
+      ],
+      "sound_speed": 300,
+      "observation": [
+        0,
+        0
+      ]
+    },
+    "expected": "Preparation succeeds; history at -160 frames succeeds near phase 0.25; -480 frames needs a negative turn and returns TimelineOverflow. Solve must return TimelineOverflow with prepared path/history/segment and both destination byte snapshots unchanged.",
+    "regression": "tests/test_rotary_propagation.cpp::check_second_endpoint_turn_overflow",
+    "status": "Closed by the added regression and isolated focused execution; root owns coherent CMake/CTest integration."
+  },
+  "material_clarification": {
+    "contract": "REFERENCE_REFINEMENT_MATERIALS.md acceptance 2: unobstructed natural-key center front weighted sRGB level at least 15 below adjacent top",
+    "A26_accidental_minimum_paired_mean": 14.6426,
+    "A26_natural_minimum_paired_mean": 63.8004,
+    "A26_mean_is_not_median_or_per_pixel_minimum": true,
+    "accidental_at_least_15_contract_exists": false,
+    "real_contract_mismatch_from_reported_value": false
+  },
+  "execution": {
+    "status": "passed",
+    "quiet_interval_release_observed": true,
+    "working_directory": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+    "compile_argv": [
+      "g++",
+      "-std=c++20",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wshadow",
+      "-Werror",
+      "-Iinclude",
+      "-DHAMMOND_TEST_PROFILE=\"unused\"",
+      "-DHAMMOND_SOURCE_DIR=\".\"",
+      "src/RotaryMotion.cpp",
+      "src/RotaryPropagation.cpp",
+      "/tmp/a28-second-endpoint.cpp",
+      "-o",
+      "/tmp/a28-second-endpoint"
+    ],
+    "compile_exit_code": 0,
+    "compile_output": "",
+    "compile_wall_seconds": 2.477701118,
+    "run_argv": [
+      "/tmp/a28-second-endpoint"
+    ],
+    "run_exit_code": 0,
+    "run_stdout": "A28 second-endpoint turn-overflow transaction passed\n",
+    "run_stderr": "",
+    "focused_regressions_executed": 1,
+    "wrapper_source": "#define main a28_existing_acceptance_main\n#include \"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/test_rotary_propagation.cpp\"\n#undef main\nint main() {\n    check_second_endpoint_turn_overflow();\n    std::cout << \"A28 second-endpoint turn-overflow transaction passed\\n\";\n    return 0;\n}\n",
+    "wrapper_sha256": "740c5cfac0350192bd3f26540822aff1eb9b2099f95c1e798ecfd6114e58ef94",
+    "executable_sha256": "7e517f38f68dae2c99950f59714824e3c37efe454de56f451f21d2a09e917bfa",
+    "production_and_test_hashes_match_review": true,
+    "git_diff_check_exit_code": 0,
+    "shared_build_or_logs_mutated": false,
+    "whole_author_suite_rerun_by_A28": false
+  },
+  "limits": [
+    "No R4 waveform/history ownership acceptance",
+    "No Engine integration",
+    "No physical or device gate",
+    "No new whole-oracle replay claimed"
+  ]
+}

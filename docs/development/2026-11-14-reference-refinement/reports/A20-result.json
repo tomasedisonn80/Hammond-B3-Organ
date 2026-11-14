@@ -1,0 +1,1287 @@
+{
+  "scope": "A20 read-only painted applied-held and pointer-capture observations; dummy replay acceptance",
+  "base_head": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "source_identity_report": "A20-source-build.json",
+  "owned_source_sha256": {
+    "apps/standalone/main.cpp": "c8a802218ea0980651c7fb46b1a2afd4a0da63a600385cbfc41fe0e865af9f5b",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "28b61802b99233e5f7ee14d01f5456b15bdff235309038b2943e75863d6097f7",
+    "apps/standalone/native_tests/test_standalone_app.py": "655d38d62d9018abbb2f4a1f8c09d9fc54427438ed472f0afd761cc446bcaf6a"
+  },
+  "base_source_sha256": {
+    "apps/standalone/main.cpp": "3c3ed7e237830e6a11176ca2b6e39e85fa007ac51b8044aee6aca6110fec66d3",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf"
+  },
+  "executable": {
+    "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/hammond_standalone",
+    "sha256": "291c0cf0a9815ab029eaef8fd1a100aab9b35da40b094c1c45841f3e25af445e"
+  },
+  "build": {
+    "argv": [
+      "../build-tools/cmake/data/bin/cmake",
+      "--build",
+      "../build-native",
+      "--target",
+      "hammond_standalone",
+      "--parallel",
+      "2"
+    ],
+    "exit_code": 0,
+    "log": "A20-build.log"
+  },
+  "ctest": {
+    "argv": [
+      "../build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "../build-native",
+      "--verbose",
+      "--output-on-failure",
+      "--no-tests=error",
+      "-R",
+      "^test_standalone_workspace_replay$"
+    ],
+    "environment": {
+      "HAMMOND_STANDALONE_WORKSPACE_EVIDENCE": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay"
+    },
+    "exit_code": 0,
+    "suites_passed": 1,
+    "suites_executed": 1,
+    "seconds": 44.6,
+    "python_methods": 6,
+    "python_seconds": 44.506,
+    "native_processes": 30,
+    "process_deadline_seconds": 9,
+    "ctest_deadline_seconds": 90,
+    "log": "A20-ctest.log"
+  },
+  "qualification": [
+    "All 30 native processes selected dummy video and audio and software rendering.",
+    "Applied held counts occur in each tested consecutive workspace/Flat visit and retain original ownership/release assertions.",
+    "Dummy capture attempts are recorded with zero successful admissions, losses or release calls.",
+    "Existing schema version 3, deadlines, scripts, controls, command counts, audio starts and final joined lifecycle checks are preserved."
+  ],
+  "remaining": [
+    "No X11, OS pointer delivery, persistent capture, off-window return or OS-held navigation qualification is supplied by this worker.",
+    "Root must rebuild the desktop binary to use these diagnostics; previous desktop evidence identifies the earlier executable.",
+    "Physical audio/MIDI, DPI, accessibility and complete wide/minimum branch-crossing journeys remain separate gates."
+  ],
+  "runs": [
+    {
+      "case": "test_capture_failure_closes_parameter_gesture_before_view_and_resize-1",
+      "elapsed_seconds": 1.9639850099997602,
+      "exit_code": 0,
+      "rendered_images": 83,
+      "presentation_observations": 11,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 2,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_focus_memory_restores_drawbar_save_and_load_after_returns-1",
+      "elapsed_seconds": 3.801189844000419,
+      "exit_code": 0,
+      "rendered_images": 136,
+      "presentation_observations": 22,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 7,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_hidden_play_regions_cannot_edit_redirect_or_audition-1",
+      "elapsed_seconds": 2.6894216059999962,
+      "exit_code": 0,
+      "rendered_images": 49,
+      "presentation_observations": 20,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 15,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_hidden_play_regions_cannot_edit_redirect_or_audition-2",
+      "elapsed_seconds": 2.65233834799983,
+      "exit_code": 0,
+      "rendered_images": 132,
+      "presentation_observations": 23,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 15,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_hidden_play_regions_cannot_edit_redirect_or_audition-3",
+      "elapsed_seconds": 2.688152569000067,
+      "exit_code": 0,
+      "rendered_images": 52,
+      "presentation_observations": 23,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 15,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_hidden_play_regions_cannot_edit_redirect_or_audition-4",
+      "elapsed_seconds": 2.6730416540003716,
+      "exit_code": 0,
+      "rendered_images": 136,
+      "presentation_observations": 23,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 15,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation-1",
+      "elapsed_seconds": 2.299906387000192,
+      "exit_code": 0,
+      "rendered_images": 84,
+      "presentation_observations": 9,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 1,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-1",
+      "elapsed_seconds": 0.3709080730000096,
+      "exit_code": 0,
+      "rendered_images": 8,
+      "presentation_observations": 2,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-10",
+      "elapsed_seconds": 0.34670684699995036,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 2,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-11",
+      "elapsed_seconds": 0.3359890980000273,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 3,
+      "held_targets_before_shutdown": {
+        "upper": 1,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-12",
+      "elapsed_seconds": 2.389740255000106,
+      "exit_code": 0,
+      "rendered_images": 66,
+      "presentation_observations": 12,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 6,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-13",
+      "elapsed_seconds": 0.3568413130001318,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 2,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-14",
+      "elapsed_seconds": 0.36740350199988825,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 3,
+      "held_targets_before_shutdown": {
+        "upper": 1,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-15",
+      "elapsed_seconds": 2.389329607000036,
+      "exit_code": 0,
+      "rendered_images": 63,
+      "presentation_observations": 12,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 6,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-16",
+      "elapsed_seconds": 0.35786321899968243,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 2,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-17",
+      "elapsed_seconds": 0.3338726179999867,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 3,
+      "held_targets_before_shutdown": {
+        "upper": 1,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-18",
+      "elapsed_seconds": 2.3599723679999443,
+      "exit_code": 0,
+      "rendered_images": 68,
+      "presentation_observations": 12,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 6,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-19",
+      "elapsed_seconds": 0.3821290629998657,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 2,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-2",
+      "elapsed_seconds": 0.3553252059996339,
+      "exit_code": 0,
+      "rendered_images": 9,
+      "presentation_observations": 3,
+      "held_targets_before_shutdown": {
+        "upper": 1,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-20",
+      "elapsed_seconds": 0.34840282499999375,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 3,
+      "held_targets_before_shutdown": {
+        "upper": 1,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-21",
+      "elapsed_seconds": 2.409059857000102,
+      "exit_code": 0,
+      "rendered_images": 67,
+      "presentation_observations": 12,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 6,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-3",
+      "elapsed_seconds": 2.3737443290001465,
+      "exit_code": 0,
+      "rendered_images": 88,
+      "presentation_observations": 12,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 6,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-4",
+      "elapsed_seconds": 0.39369100300018545,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 2,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-5",
+      "elapsed_seconds": 0.3526838359998692,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 3,
+      "held_targets_before_shutdown": {
+        "upper": 1,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-6",
+      "elapsed_seconds": 2.4406647340001655,
+      "exit_code": 0,
+      "rendered_images": 63,
+      "presentation_observations": 12,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 6,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-7",
+      "elapsed_seconds": 0.4181830190000255,
+      "exit_code": 0,
+      "rendered_images": 5,
+      "presentation_observations": 2,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-8",
+      "elapsed_seconds": 0.42583886399961557,
+      "exit_code": 0,
+      "rendered_images": 5,
+      "presentation_observations": 3,
+      "held_targets_before_shutdown": {
+        "upper": 1,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-9",
+      "elapsed_seconds": 2.4522895049999534,
+      "exit_code": 0,
+      "rendered_images": 56,
+      "presentation_observations": 12,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 6,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1",
+      "elapsed_seconds": 0.3863898119998339,
+      "exit_code": 0,
+      "rendered_images": 6,
+      "presentation_observations": 2,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 0,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    },
+    {
+      "case": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-2",
+      "elapsed_seconds": 3.25399949299981,
+      "exit_code": 0,
+      "rendered_images": 125,
+      "presentation_observations": 15,
+      "held_targets_before_shutdown": {
+        "upper": 0,
+        "lower": 0,
+        "pedals": 0
+      },
+      "pointer_capture_before_shutdown": {
+        "sdl_captured": false,
+        "ui_captured": false,
+        "attempts": 4,
+        "successes": 0,
+        "losses": 0,
+        "release_calls": 0
+      }
+    }
+  ],
+  "retained_files": [
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_capture_failure_closes_parameter_gesture_before_view_and_resize-1/diagnostics.json",
+      "bytes": 15604,
+      "sha256": "d4127c89c7095365c02033d064b4eabb039fc2c131c68ef1b31c23e87d14ce83"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_capture_failure_closes_parameter_gesture_before_view_and_resize-1/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_capture_failure_closes_parameter_gesture_before_view_and_resize-1/process.json",
+      "bytes": 963,
+      "sha256": "6bbfedd8cdcf546043d3bc396ac980f3832660193949e18fe2289563a4c97c9d"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_capture_failure_closes_parameter_gesture_before_view_and_resize-1/workspace input.b3ui",
+      "bytes": 377,
+      "sha256": "7e19729664960ea9ba97eb38654e9bd76489709f70db048bbbb290604879ae9e"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_focus_memory_restores_drawbar_save_and_load_after_returns-1/diagnostics.json",
+      "bytes": 22692,
+      "sha256": "82c784ecb3fb2641736e1c77e18b7d9e195c35283bfb568203c30a3c7d54002a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_focus_memory_restores_drawbar_save_and_load_after_returns-1/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "b0e31c3172a8a54c72f6ca087a893c26db2f0774790879d3c5968300684b5199"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_focus_memory_restores_drawbar_save_and_load_after_returns-1/process.json",
+      "bytes": 962,
+      "sha256": "b30ae9fa84038f5f77720fa729d0fd0330689fd277e4abd636ddbb01508e2795"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_focus_memory_restores_drawbar_save_and_load_after_returns-1/workspace input.b3ui",
+      "bytes": 1969,
+      "sha256": "905d176f2fca14799ec78c4d7dc80bb1f7531960094d2b4087a52b57817d4194"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-1/diagnostics.json",
+      "bytes": 21921,
+      "sha256": "833ec7e7dc69f0579337174d7da2095137214d6780f874dbd95613000e95a30a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-1/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-1/process.json",
+      "bytes": 964,
+      "sha256": "f64f3ef77127d6f37efeb9e20ad97c8e1fa4a44dfa862ef1dd66ca42f42a8ed4"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-1/workspace input.b3ui",
+      "bytes": 1145,
+      "sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-2/diagnostics.json",
+      "bytes": 23192,
+      "sha256": "17c425bbd85eb121e1c3563c882fcf424338ab6c432b84a5c02571b5790761df"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-2/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-2/process.json",
+      "bytes": 976,
+      "sha256": "0c359d2170ea6bf2342e42c31c2f30e03c3eaa05c8ec23032bd8b20cf62d59f7"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-2/workspace input.b3ui",
+      "bytes": 1145,
+      "sha256": "e935531efe02d41023fe02c91554cd5f88c58a7cfb12f02deded48acbd97e59c"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-3/diagnostics.json",
+      "bytes": 23383,
+      "sha256": "8b554e08ad0a8ed8b84f1717d701824f7c4d5ba59f4ca5d506ab4976a7c0c330"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-3/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-3/process.json",
+      "bytes": 963,
+      "sha256": "aa86a8ea77c7079736fb5ac14a6af7d4fc2c02d5f02099a1a7ccaba146e3d286"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-3/workspace input.b3ui",
+      "bytes": 1145,
+      "sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-4/diagnostics.json",
+      "bytes": 23207,
+      "sha256": "dac2381b0c4d02d6bbd1e8d8b7cc36fbf2a8e3e349d776a3cf5223ca90384b16"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-4/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-4/process.json",
+      "bytes": 978,
+      "sha256": "224f8a468b3c161077affdd89b62972b87130eedad9808ef402ebd44c4a61f50"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_hidden_play_regions_cannot_edit_redirect_or_audition-4/workspace input.b3ui",
+      "bytes": 1145,
+      "sha256": "d439c62f4beda54919b60666cc9cd354ebd08614ea2f7939d3c2afe5534e39bc"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_capture_failure_preserves_keyboard_owner_during_navigation-1/diagnostics.json",
+      "bytes": 13749,
+      "sha256": "f9ac32702cc78e54d9c2a3ccd9225d03fa3309de76f36da8c442e4200cabcc44"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_capture_failure_preserves_keyboard_owner_during_navigation-1/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_capture_failure_preserves_keyboard_owner_during_navigation-1/process.json",
+      "bytes": 962,
+      "sha256": "f93a683d13da4458b99dd8f931e33288efb92c118ee624421e28a97b59e882fe"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_capture_failure_preserves_keyboard_owner_during_navigation-1/workspace input.b3ui",
+      "bytes": 316,
+      "sha256": "d00185eb0af35357e993498a4da6560cb42afc24e205d1f8649da8ac6fcb6084"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-1/diagnostics.json",
+      "bytes": 7615,
+      "sha256": "4d80a9a0ad3acf57fa0400983ca4b6f5cd19b8e34f6718dc1ef6a37d7ee5f42d"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-1/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-1/process.json",
+      "bytes": 962,
+      "sha256": "9f33d2ab00b6f2f621f7fb0e144f4f6c4ed6fc4d6183c0e5c7346ed8095fac6d"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-1/workspace input.b3ui",
+      "bytes": 116,
+      "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-10/diagnostics.json",
+      "bytes": 7622,
+      "sha256": "6965895a65800ce2af2c79daef6fb087a1c642876b9cc5001cd00170c23d4e83"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-10/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-10/process.json",
+      "bytes": 967,
+      "sha256": "7b7b25d130fd70636b5ec2fd005a7d33cd54a0751a9cc798e016d96b3d292fad"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-10/workspace input.b3ui",
+      "bytes": 116,
+      "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-11/diagnostics.json",
+      "bytes": 9045,
+      "sha256": "f3ee68ade228c10a4d738e4409ac46986afa2e2bac39fd3bc8107b4d0130fbe2"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-11/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-11/process.json",
+      "bytes": 966,
+      "sha256": "36a6099911fa6365bc7e737c8f55ca97ee4f440d92f077e9dfbd90da1f6f54b1"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-11/workspace input.b3ui",
+      "bytes": 138,
+      "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-12/diagnostics.json",
+      "bytes": 16680,
+      "sha256": "6059084a7f8c0eb44acec6a8e2d767042368f79b4e3af90ac49d68a37cc34af3"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-12/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-12/process.json",
+      "bytes": 1066,
+      "sha256": "b2f6bf4f3f7fa7a6c6b068b9a8100320a530d94cb04c2aafc080b35d3eb4901e"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-12/workspace input.b3ui",
+      "bytes": 587,
+      "sha256": "6255efef1b37d69d37b5ba7a1519c6478b12ae0bc1749b4d25e00109652e49db"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-13/diagnostics.json",
+      "bytes": 7622,
+      "sha256": "55c220bd0e46a0f18396a3d130f7be0ec4c0a5c12bdf14b4242049e7e3ca4a7b"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-13/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-13/process.json",
+      "bytes": 966,
+      "sha256": "00861814de88bf1324dd65750ad7dadbcbd10108ec99e10d3cfb3105735b7beb"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-13/workspace input.b3ui",
+      "bytes": 116,
+      "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-14/diagnostics.json",
+      "bytes": 9044,
+      "sha256": "c5ef304daaced6d4b0ed98a9f449e4cab57162bb2b1ce63ae62e68ac3b3e5d61"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-14/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-14/process.json",
+      "bytes": 967,
+      "sha256": "05d2229d91888229507bca2a69636e1eb1d3d6fdf554ea103df8fca5f13733ce"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-14/workspace input.b3ui",
+      "bytes": 138,
+      "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-15/diagnostics.json",
+      "bytes": 16679,
+      "sha256": "b0cd3ad89ccba0932a45a0f9a5ee8b47d3ce9eb1c28c3f1051f2fbacdca04179"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-15/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-15/process.json",
+      "bytes": 1066,
+      "sha256": "68e2da709388239da19271bbaa4a1b9cf1a295333a166f90595db14ba4451a80"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-15/workspace input.b3ui",
+      "bytes": 589,
+      "sha256": "2f66d720461d792a8a1a0b0bdac5b5c3a24fdc0aa2b3055775123e7f1ec7f043"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-16/diagnostics.json",
+      "bytes": 7622,
+      "sha256": "3f7dbcc2c5ed3cdbd0a8765ae8d1b824b05185c699a6dbe93ab04624b16e30e6"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-16/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-16/process.json",
+      "bytes": 967,
+      "sha256": "d97c31e9e312a5144c6e10af9c28b4ed24c3ddd74037e090574c115bce3f9025"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-16/workspace input.b3ui",
+      "bytes": 116,
+      "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-17/diagnostics.json",
+      "bytes": 9045,
+      "sha256": "8a1113700b573ae93094e44a3db67b3ead406ea058a8af99577a8767b5ea01c7"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-17/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-17/process.json",
+      "bytes": 966,
+      "sha256": "735a1bd4eef0e82c2f5dfad1a936208c5be8cf2d418ce766fd828bc137bd3d9a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-17/workspace input.b3ui",
+      "bytes": 138,
+      "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-18/diagnostics.json",
+      "bytes": 16680,
+      "sha256": "929e35aab431a50faddd65ff0e45226aaafc4706ceb1f54bd45ae530f48d0c4b"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-18/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-18/process.json",
+      "bytes": 1067,
+      "sha256": "8d585bafc947ede0626ba403c8d2c2803eaca06ba3986cd6c68560128fdd36e2"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-18/workspace input.b3ui",
+      "bytes": 587,
+      "sha256": "6255efef1b37d69d37b5ba7a1519c6478b12ae0bc1749b4d25e00109652e49db"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-19/diagnostics.json",
+      "bytes": 7622,
+      "sha256": "5a893e0611a02aee65de1f93509b5626d5dd5916d3e97d30a3207623037ce712"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-19/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-19/process.json",
+      "bytes": 966,
+      "sha256": "0557043e0c7affd33216d8db10fc984a2b36d6e01e880cc5a6c488f80812a060"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-19/workspace input.b3ui",
+      "bytes": 116,
+      "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-2/diagnostics.json",
+      "bytes": 9037,
+      "sha256": "a360e2c82a6a9fa7e01fa3d9d0794f7bb7a0dac47047cea8a7f15c4485bda06f"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-2/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-2/process.json",
+      "bytes": 962,
+      "sha256": "c5b195ca1eb8a6f3255c1fde140bd4f45c4414fadc5beb8dfda40dd022888762"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-2/workspace input.b3ui",
+      "bytes": 138,
+      "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-20/diagnostics.json",
+      "bytes": 9045,
+      "sha256": "4ab60d8f6838f4ed972feaeeb02cdbcc189d69994e88bb7420135aefdccf527b"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-20/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-20/process.json",
+      "bytes": 967,
+      "sha256": "953a9cbc8e79e7b0e71cc793a703cbe5a6ea1fe9f4aeaf01c87c284e28b55ce0"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-20/workspace input.b3ui",
+      "bytes": 138,
+      "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-21/diagnostics.json",
+      "bytes": 16680,
+      "sha256": "6a333fa31aa94a40e1a20114058abaf86cf0f3127f111ea6ff46b5ec7a8dfc5a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-21/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-21/process.json",
+      "bytes": 1066,
+      "sha256": "97179e8cddb76fce383374ae9642cd6c412f77e5222c61ed6352285c5fb8f4a5"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-21/workspace input.b3ui",
+      "bytes": 589,
+      "sha256": "552e276b1bb50be2c34ba2dbc0a31a56b66e13345aafb89fc30900be9fcd51f4"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-3/diagnostics.json",
+      "bytes": 16661,
+      "sha256": "9964c2bbf8bb97a55eebf12a0d04036ff90176dff5824a640c552a56d37ac97e"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-3/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-3/process.json",
+      "bytes": 1061,
+      "sha256": "2f6d182b572cdaf2819ce051c3f47f37f1a1f57ece580a0a2f6a4574954fcdcd"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-3/workspace input.b3ui",
+      "bytes": 581,
+      "sha256": "5237f91ed5e60dcf8af3d0b59859c13b83ce9faa4630b5219d9fbb2082dc53d2"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-4/diagnostics.json",
+      "bytes": 7621,
+      "sha256": "2e71b63825e6889f315d576fd1fa56897291e8c27b7c274165d727ff44aa528b"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-4/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-4/process.json",
+      "bytes": 964,
+      "sha256": "5a4f26a88a9a2d1c49490a76d2d956604f9c2ef7c8bc8501a7f79f2ca6449345"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-4/workspace input.b3ui",
+      "bytes": 116,
+      "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-5/diagnostics.json",
+      "bytes": 9044,
+      "sha256": "21b5952e1f32d02883fa8e60d2871e1e9c2638571e216ca6ee2364d158448da5"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-5/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-5/process.json",
+      "bytes": 963,
+      "sha256": "678ada7b48bda760f773506711bd72639b61311469a0ce487d5fa9ed05b2b1aa"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-5/workspace input.b3ui",
+      "bytes": 138,
+      "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-6/diagnostics.json",
+      "bytes": 16678,
+      "sha256": "54164893385e4f0cf9889a3b1aedd84280777edc72665c8c21b92ae6d258a868"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-6/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-6/process.json",
+      "bytes": 1063,
+      "sha256": "51916d629d39c0a71570e840abd43c420dc72465d4c43bae72b98015ad2054a9"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-6/workspace input.b3ui",
+      "bytes": 583,
+      "sha256": "855e8c4a70389080f814ccb668e092977ec15fb9dacf1898ab04ff1ee573e299"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-7/diagnostics.json",
+      "bytes": 7621,
+      "sha256": "0036150269776eae809c21fdad967706abf74f24ff9b1226404f3ce8b30006c2"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-7/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-7/process.json",
+      "bytes": 963,
+      "sha256": "13baae7ce8f8905d9a548d1503ef3a79af3a0677cae50be9a01dadbc7c97eff6"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-7/workspace input.b3ui",
+      "bytes": 116,
+      "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-8/diagnostics.json",
+      "bytes": 9044,
+      "sha256": "296b05b37feac69a8d9d77db9abbb9ee9f7c738a1407b8ea56863aefa8456513"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-8/private controls.b3controls",
+      "bytes": 469,
+      "sha256": "96921f6bea580a6bd0619f4b8000db5ca81a523e61f50fdf682c53e1fa64e97a"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-8/process.json",
+      "bytes": 964,
+      "sha256": "532efdc9760d8cf393730d04c3bc94f588fbd2e307a6d2247939ecd3744fc093"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-8/workspace input.b3ui",
+      "bytes": 138,
+      "sha256": "244a785caf7d7507a46988b472ad39666e034c58353380da65bf549a59a0de5f"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-9/diagnostics.json",
+      "bytes": 16677,
+      "sha256": "afe371bdf2f74084e6d6a47ebb75d3f18943d61c58ec95e8796fb8b6e615def0"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-9/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-9/process.json",
+      "bytes": 1063,
+      "sha256": "1e5a88164255c481592c0b13b987fe0f05a0cabcfacadb838f734b330982f116"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_pointer_header_matrix_preserves_keyboard_space_and_exact_save-9/workspace input.b3ui",
+      "bytes": 589,
+      "sha256": "1ebe71ddf424cd46e00d9701dd15fc1a7222c9f7703a8581b2bb2c9eb502089d"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1/MIDI input.b3midi",
+      "bytes": 41,
+      "sha256": "e219db6661addfa5fb082918bbb5ff5278b295372f89e3cc255f3f697dfabc28"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1/diagnostics.json",
+      "bytes": 10269,
+      "sha256": "bf74c484cc1bc2a9009946dad4b931b4cb39b99dd4f7dde597312f926ef2520e"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1/process.json",
+      "bytes": 1055,
+      "sha256": "a40187bcde8231ceac8f4577e1e3407a3947f29fe85699df3b34d6411fb00ff1"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1/workspace input.b3ui",
+      "bytes": 116,
+      "sha256": "6554ab6b44d5a1e3c236b839ce06444edf5dbed62fab7660cc71ee540eaeac40"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-2/MIDI input.b3midi",
+      "bytes": 159,
+      "sha256": "4cbf9900dd6ee9b32634a4e491cdef4457291e8aed6496e56b2361e1d137cace"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-2/diagnostics.json",
+      "bytes": 35202,
+      "sha256": "7579d21034e4ab99a760b96cb25ce6458e0677a774493fedbc28996cb83a7b9b"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-2/private controls.b3controls",
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-2/process.json",
+      "bytes": 1053,
+      "sha256": "8e023f4c4a4aace3eb5b9287e0eeff57e0ec7366a66cb87dded7a95b2be85455"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-workspace-replay/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-2/workspace input.b3ui",
+      "bytes": 411,
+      "sha256": "9d4770809137535ad3085b2ff07cc0087dc98ce548282996e333e0517f45de43"
+    }
+  ],
+  "report_sha256": {
+    "A20-source-build.json": "1984e5412d74d1d9002f957a5d7037d99275a9ab6f64840a6a02c5a84b64da3a",
+    "A20-build.log": "8625398c6ee4021030c4bd549089b117e531976e310b751a29dad2c6fe4e35c6",
+    "A20-ctest.log": "bd211ccd4ffc59622860dbb93324da9724e1a1493d38c2624ddc4a073d3db2b7"
+  }
+}

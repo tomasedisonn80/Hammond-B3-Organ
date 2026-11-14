@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "check": "required native probe is missing",
+  "expected": "nonzero failure, no skipped native gate",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "setUpClass (__main__.NativePropagationAcceptance) ... ERROR\n\n======================================================================\nERROR: setUpClass (__main__.NativePropagationAcceptance)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/test_rotary_propagation_acceptance.py\", line 662, in setUpClass\n    raise RuntimeError(\"R3 requires HAMMOND_ROTARY_PROPAGATION_PROBE_EXECUTABLE to name an existing native probe\")\nRuntimeError: R3 requires HAMMOND_ROTARY_PROPAGATION_PROBE_EXECUTABLE to name an existing native probe\n\n----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nFAILED (errors=1)\n",
+  "test_sha256": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+  "status": "pass"
+}

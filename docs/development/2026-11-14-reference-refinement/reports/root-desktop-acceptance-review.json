@@ -1,0 +1,60 @@
+{
+  "scope": "Root-observed ordinary native X11 input journey; no application replay or smoke mode",
+  "binary_sha256": "6eea84ba830ea8710b550c14561b4dd887bea8aac489fa82a467e3708e071b13",
+  "input_inventory_report": "root-desktop-acceptance-source.json",
+  "post_run_checks": {
+    "source_inputs_unchanged": 161,
+    "native_x11": true,
+    "not_truncated": true,
+    "pedal_held_before_branch": true,
+    "pedal_held_after_branch": true,
+    "pedal_release_observed": true,
+    "captured_inside_outside_return": true,
+    "capture_release": true,
+    "session_stopped": true,
+    "held_after_shutdown_clear": true,
+    "zero_faults": true,
+    "zero_sample_failures": true
+  },
+  "observations": 19,
+  "actions": [
+    "Start1400x820 dimensional Play",
+    "OS a+F6 chord held1500ms; return F4; OS a+F7 held1500ms",
+    "Select Pedals F3; hold a while dragging left resize edge:1400x820\u21921180x820",
+    "Move window to client25,95; select Upper F1",
+    "OS mouse path Upper natural\u2192outside right\u2192return inside\u2192outside release, then F6 Service",
+    "Ordinary Alt+F4 closes application and returns to Terminal"
+  ],
+  "evidence_indices": {
+    "service_held": [
+      3,
+      4
+    ],
+    "flat_held": [
+      7,
+      8
+    ],
+    "held_pedal_resize": [
+      9,
+      10,
+      11
+    ],
+    "captured_outside_return_release": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ]
+  },
+  "limits": [
+    "The two keyboard chords show held Upper targets after navigation; no painted pre-held frame precedes those workspace/presentation transitions. Existing replay/model gates separately cover pre-held repeated navigation.",
+    "The startup1400px window extends41px beyond the1364px desktop; the interactive interior was visible. Automated reference captures cover the entire logical window.",
+    "Dummy audio and no physical MIDI input; no physical display/DPI, DAW, semantic accessibility or acoustic fidelity claim.",
+    "CUA desktop images were observed live; retained PNG is the application startup capture."
+  ],
+  "diagnostics_sha256": "60aab57cd4a5d134765db921e111586299902cda9c02b8358579b06cb9ed7326",
+  "startup_png_sha256": "9cb1ac834a30855cd2e15162854f256c38326dcc3361be93fc53b8070fbba54a",
+  "startup_bmp_sha256": "656af3b42fb3a588c48cb780c77049347ea140eda28b25195d9338e83db2f2d6"
+}

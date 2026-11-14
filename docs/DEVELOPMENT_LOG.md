@@ -1,5 +1,11 @@
 # Development log
 
+## 2026-11-14 — Qualify native propagation, pending images and input observations
+
+Accepted waves 1–5 include independent R2 motion and R3 historical propagation, six genuine Session pending/acknowledged images, exact replay of those images, new copied held/capture observations and the narrow Flat-overlay repair. Original numerical/raster failures remain retained. The real X11 journey establishes held-pedal continuity across the wide-layout breakpoint, persistent capture outside/inside/outside and ordinary Alt+F4 cleanup; keyboard-transition observations retain their stated pre-held limitation. Material timing retains all original paired cells and the sole nonreproducing repeat of a triggered p95 regression.
+
+The coherent all-target GCC Release build passes. Full CTest records **154/155 in 145.94 seconds**. Capture-install's private source fixture omitted the two newly declared native probes; adding only those inputs closes the affected gate at **1/1 in 5.25 seconds**. Reports retain the failed run and source delta. Local no-allocation/lifetime acceptance passes; full LSan remains blocked by observed thread-attachment EPERM. A29 explicitly wires sixteen native sanitizer suites and bounded Ubuntu acquisition, while the previous head remains eleven successful hosted jobs plus one observed apt-setup stall. No threshold, leak check, parameter/state identity or Engine integration was changed. Actual v3 gallery and remaining waves follow publication. Storage remains approximately 58 GB free.
+
 ## 2026-11-14 — Implement reference layout, live materials and inspection repair
 
 The new wide branch begins at width 1400 and height 820. At 1672×941 it deepens both full manuals to 144.12-pixel key space and moves all 25 pedals below the cabinet without overlap. The live renderer adds bounded deterministic charcoal grain, warmer caps, darker key fronts and corrected compact status spacing. Natural preset focus now leaves its lower edge open after an unchanged raster test exposed fourteen pitch-ink failures at a fractional lower-manual position. All five affected drawing/raster suites pass after the narrow repair; six geometry/preset/continuity and two inspection suites also pass. The inspector correctly distinguishes one target from plural targets, including real queued MIDI/UI owner combinations.

@@ -9,9 +9,11 @@ first-order motion and persistent-clock discussion, especially pp. 292 and
 motor, radiation, cabinet and upstream electrical evidence.
 
 The module contains composable constant-command evaluations and a small
-`RotaryMotion` owner. It does not retain an entire command history. The later
-renderer must retain the anchors or snapshots needed for delayed emission
-queries. Horn and drum each require their own owner and history.
+`RotaryMotion` owner. It retains only its current command anchor. The implemented
+[`MotionHistoryView`](ROTARY_PROPAGATION.md) borrows caller-retained canonical
+anchors for delayed emission queries; streaming retention and waveform histories
+remain R4 work. Horn and drum each require their own owner and history. These
+are source-tree C++ research interfaces, not an installed public SDK.
 
 ## Admitted inputs and guarantees
 
@@ -68,12 +70,23 @@ angle_increment = sigma * (wt*h + (w0-wt)*tau*(1-exp(-z)))
 These formulas specify the analytical first-order model; the implementation
 evaluates them with binary64 arithmetic. For `z < 1/8`, it uses
 `q=-expm1(-z)` and a fixed polynomial for
-`g=z+expm1(-z)=z^2/2!-z^3/3!+...+z^12/12!`, then evaluates
-`w0+(wt-w0)*q` and `w0*h+(wt-w0)*tau*g`. This avoids cancellation of the
-quadratic angle at a start from rest. For larger `z`, the direct exponential
-speed residual retains small decays toward zero. The integrated long-time
-form avoids cancellation between large terms. `fma` reduces local rounding
-in the angle and speed calculations. There is no numerical iteration loop.
+`g(z)/z=z/2!-z^2/3!+...+z^11/12!`, where `g(z)=z+expm1(-z)`.
+The angle is evaluated as `fma((wt-w0)*h, g(z)/z, w0*h)`, then signed by
+`sigma`. This is algebraically the `tau*g(z)` contribution, but avoids forming
+`z*z` before a representable small angle can be scaled. Ordinary small-time
+speed uses `fma(wt-w0,q,w0)`. When `z` is subnormal or has rounded to zero,
+it instead uses `fma((wt-w0)/tau,h,w0)`; the omitted curvature at that scale
+is below binary64 representability.
+
+For larger `z`, speed uses the direct exponential residual. Above `z=700`,
+the residual is multiplied by two `exp(-z/2)` factors, preserving a scaled
+subnormal decay that a separately rounded `exp(-z)` could erase. This threshold
+selects arithmetic, never a stop state. The long-time angle uses
+`fma((w0-wt)*tau,q,wt*h)`. Equal-speed motion is linear, and zero elapsed time
+returns the seed exactly. These are fixed-work arithmetic paths with no
+numerical iteration loop. [A16](development/2026-11-14-reference-refinement/notes/A16-rotary-motion-qualification.md)
+and the [independent A24 review](development/2026-11-14-reference-refinement/notes/A24-motion-independent-review.md)
+retain the original underflow failures and qualified repairs.
 
 The angle increment is reduced using the shared binary64 `kTwoPi`, with a
 wrapped phase and an integer turn change. Adding that change to the retained
@@ -103,6 +116,13 @@ tail. This preserves fractional timing late in an epoch, without forming a
 large floating-point sample index. The split depends only on the original
 event anchor and the query position, never on host block boundaries.
 
+If that tail has no residual whole frame and `fraction/Fs` is subnormal or
+rounds to zero, the implementation applies speed slope and constant-speed
+angle **per frame before multiplying by the fraction**. Whole seconds have
+already been evaluated. This preserves the qualified minimum-positive sample
+fractions without introducing a zero-motion cutoff; higher-order curvature is
+unrepresentable at that scale.
+
 The physical-time helper has no sample rate. It admits an anchor only within
 the largest supported epoch; the sample-position helper additionally checks
 that anchor against the supplied rate. Passing a positive position earlier
@@ -112,26 +132,9 @@ uses its dedicated helper.
 
 ## Owner lifecycle and command semantics
 
-```cpp
-#include "hammond/RotaryMotion.h"
-
-using namespace hammond::rotary;
-RotaryMotion horn;
-const MotionProfile motion{4.0, 40.0, 0.7, 1.1, 1}; // Synthetic example.
-const auto prepared = horn.prepare(motion, 0.25, 4.0,
-                                   SpeedCommand::Chorale, 48000.0);
-if (prepared == Status::Ok) {
-    const auto commanded = horn.apply_command(24000, SpeedCommand::Tremolo);
-    if (commanded == Status::Ok) {
-        MotionState predicted;
-        const auto queried = horn.state_at({36000, 0.5}, predicted);
-        // Inspect queried before using predicted. A query does not advance horn.
-        (void)queried;
-    }
-}
-```
-
-The example values are mathematical examples, not measured instrument data.
+The [complete C++ caller example](ROTARY_PROPAGATION.md#small-source-tree-caller)
+prepares an owner, applies a command, retains both anchors and queries a path
+while the borrowed storage remains alive. Its values are synthetic.
 
 | Method | Lifecycle effect |
 | --- | --- |
@@ -174,11 +177,53 @@ nonfinite/out-of-range physical duration, or invalid sample fraction returns
 Internal nonfinite or noncanonical arithmetic results return
 `NumericalFailure`. These statuses preserve the existing owner and destination.
 
-The [assignment evidence](development/2026-11-13-rotary/10-motion.md) records
-strict compilation and focused author checks. Those checks do not qualify
-the entire R2 domain. The next independent gate must compare the native
-motion against the 80-digit oracle across the frozen grid and random
-semigroup cases, retain worst-case locations, verify event/block invariance,
-and exercise rejection and lifetime behavior. Geometry, retarded propagation,
-waveform interpolation, audio processing, native adapters and physical
-measurements have separate gates.
+## Qualified native R2 evidence
+
+The [A16 report](development/2026-11-14-reference-refinement/reports/A16-r2-native.json)
+and [A24 independent replay](development/2026-11-14-reference-refinement/reports/A24-motion-independent-review.json)
+pass the named GCC 14.2.0/Linux R2 workload: seven Python methods, 3,780 native
+requests, the 1,152-case frozen grid, 1,024 semigroup cases (seed `20261114016`),
+all four rates, day-end fractions, and 24 event timelines with 1,272 queries.
+The oracle uses 80 decimal digits; no alignment, rescaling or relaxed budget
+was applied. The greatest error/budget fraction is `0.0336243143` in
+reconstructed frozen-grid angle.
+
+| Metric | Maximum absolute error | RMS error |
+| --- | ---: | ---: |
+| Frozen-grid speed | `1.308603e-14 rad/s` | `4.190668e-15 rad/s` |
+| Frozen-grid angle increment | `6.557950e-12 rad` | `2.801127e-13 rad` |
+| Day/wrap angle increment | `7.450581e-10 rad` | `1.073587e-10 rad` |
+| Sample-position reconstructed increment | `1.418679e-9 rad` | `4.251926e-10 rad` |
+| Native semigroup angle difference | `9.086065e-13 rad` | `5.431919e-14 rad` |
+| Native semigroup speed difference | `2.842171e-14 rad/s` | `7.359079e-15 rad/s` |
+
+The [owner evidence](development/2026-11-14-reference-refinement/reports/A16-r2-lifecycle.json)
+separately records 174 transactional rejections, 32 stopped rate replacements
+and 327,720 bit-identical sample-state comparisons across 131,760 partition
+calls and 48 zero-frame calls. This tests the motion owner, not audio output.
+
+Original failures remain visible: [30 initial failures](development/2026-11-14-reference-refinement/reports/A16-r2-original.json)
+erased 24 positive long-decay speeds and six tiny angle increments; the
+[36-case extension](development/2026-11-14-reference-refinement/reports/A16-r2-subnormal-time-original.json)
+found eight physical-time speeds, 24 fractional-time speeds and four
+constant-motion phases erased at subnormal scales. A24 regenerated all 66
+inputs, matched their original reference strings, and passed them on the final
+source. The [summary](development/2026-11-14-reference-refinement/reports/A16-r2-summary.json)
+retains literal reproducers and every original/intermediate/final identity.
+
+Qualified `src/RotaryMotion.cpp` SHA-256 is
+`a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1`.
+The final reports observed HEAD `e4968b2` with additional uncommitted numerical work;
+their input hashes identify the qualified source, not HEAD alone. The original
+[2026-11-13 author checks](development/2026-11-13-rotary/10-motion.md) remain
+historical evidence. Reproduction commands, the implemented R3 boundary and the
+next R4 task are in [ROTARY_PROPAGATION.md](ROTARY_PROPAGATION.md).
+
+These results require the qualified floating-point behavior: preserve gradual
+underflow and avoid fast-math/reassociation. CMake's warning flags do not prevent
+externally supplied incompatible flags or a caller changing the floating-point
+environment. Windows/MSVC and AppleClang need their own numerical runs;
+same-executable partition identity does not require cross-platform output hashes.
+R4 waveform rendering, R5 audible policy, R6 integration/device deadlines and
+physical measurements remain separate. Nothing here connects the dry Engine or
+resolves the separate scanner G5 gate.

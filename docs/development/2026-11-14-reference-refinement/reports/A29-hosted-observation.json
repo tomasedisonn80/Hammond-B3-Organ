@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "kind": "A29 observed existing-head hosted infrastructure",
+  "source_head": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "observed_between_utc": [
+    "2026-11-14T21:04:51.910Z",
+    "2026-11-14T21:05:35.666Z"
+  ],
+  "retrieval": "Connected GitHub GET API; no remote workflow mutation, cancellation or rerun.",
+  "runs": [
+    {
+      "id": 43637781341,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "e4968b2acd37b6f79683704356350070fe2fc329",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43637781341",
+      "created_at": "2026-11-14T20:29:48Z",
+      "updated_at": "2026-11-14T20:35:39Z"
+    },
+    {
+      "id": 43637781292,
+      "name": "Native standalone",
+      "path": ".github/workflows/standalone.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "e4968b2acd37b6f79683704356350070fe2fc329",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43637781292",
+      "created_at": "2026-11-14T20:29:48Z",
+      "updated_at": "2026-11-14T20:30:01Z"
+    },
+    {
+      "id": 43637781288,
+      "name": "Native VST3",
+      "path": ".github/workflows/native-vst3.yml",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "e4968b2acd37b6f79683704356350070fe2fc329",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43637781288",
+      "created_at": "2026-11-14T20:29:48Z",
+      "updated_at": "2026-11-14T20:31:20Z"
+    }
+  ],
+  "job_totals": {
+    "total": 12,
+    "success": 11,
+    "in_progress": 1
+  },
+  "jobs": [
+    {
+      "id": 132578323435,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:36:21Z"
+    },
+    {
+      "id": 132578323599,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "status": "in_progress",
+      "conclusion": null,
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": null
+    },
+    {
+      "id": 132578323634,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:37:43Z"
+    },
+    {
+      "id": 132578323678,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:36:23Z"
+    },
+    {
+      "id": 132578323702,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:37:39Z"
+    },
+    {
+      "id": 132578323167,
+      "name": "Release (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:32:12Z"
+    },
+    {
+      "id": 132578323374,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:35:38Z"
+    },
+    {
+      "id": 132578323428,
+      "name": "Release (Windows MSVC)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:50Z",
+      "completed_at": "2026-11-14T20:35:26Z"
+    },
+    {
+      "id": 132578323508,
+      "name": "Release (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:33:07Z"
+    },
+    {
+      "id": 132578323304,
+      "name": "Native VST3 (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:31:19Z"
+    },
+    {
+      "id": 132578323490,
+      "name": "Native VST3 (Windows MSVC x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:50Z",
+      "completed_at": "2026-11-14T20:31:18Z"
+    },
+    {
+      "id": 132578323570,
+      "name": "Native VST3 (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T20:29:51Z",
+      "completed_at": "2026-11-14T20:31:03Z"
+    }
+  ],
+  "stalled_job": {
+    "id": 132578323599,
+    "run_id": 43637781292,
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43637781292/job/132578323599",
+    "job_started_at": "2026-11-14T20:29:51Z",
+    "observed_step": {
+      "name": "Install Ubuntu desktop and audio development headers",
+      "status": "in_progress",
+      "conclusion": null,
+      "number": 7,
+      "started_at": "2026-11-14T20:30:01Z",
+      "completed_at": null
+    }
+  },
+  "running_job_log_result": {
+    "status": "unavailable",
+    "http_status": 404,
+    "error_code": "BlobNotFound",
+    "observed_utc": "2026-11-14T21:04:10.6067896Z"
+  },
+  "interpretation": "An Ubuntu package/header setup stall is observed. The unavailable live log does not establish whether a mirror, lock, or package hook caused it. Eleven successful jobs qualify this old head, not the current changed source.",
+  "next_gate": "Publish the coherent next checkpoint and observe its new sixteen-target native sanitizer job plus ordinary native/core jobs; retain any original timeout result separately."
+}

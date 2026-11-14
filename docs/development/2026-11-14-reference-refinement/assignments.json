@@ -5,7 +5,7 @@
   "requested_agents": 60,
   "requested_waves": 10,
   "concurrency_limit_including_root": 4,
-  "counting": "Actual distinct collaboration agents; six per logical wave in two batches of three. Historical workers are not recounted.",
+  "counting": "Actual distinct collaboration agents; six per logical wave, dispatched in dependency-ready batches with at most three workers plus root. Historical workers are not recounted.",
   "assignments": [
     {
       "id": "A01",
@@ -161,22 +161,172 @@
       "id": "A16",
       "wave": 3,
       "agent": "/root/w03_a16_rotary_motion_qualification",
-      "status": "running",
-      "scope": "Native R2 motion qualification against independent high precision oracle"
+      "status": "accepted",
+      "scope": "Native R2 motion qualification against independent high precision oracle",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A16-rotary-motion-qualification.md",
+      "note_sha256": "3d7914bf2752365d5764338af56413b58637b01b25cccfbcdc5c832319114cd1",
+      "result": "Native R2 frozen grid,3780 oracle requests and327720 exact partition state comparisons pass after retained positive-underflow repairs; two CTest suites pass."
     },
     {
       "id": "A17",
       "wave": 3,
       "agent": "/root/w03_a17_rotary_propagation_impl",
-      "status": "running",
-      "scope": "Implement historical native R3 propagation primitives"
+      "status": "accepted",
+      "scope": "Implement historical native R3 propagation primitives",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A17-rotary-propagation-implementation.md",
+      "note_sha256": "956ac73d6393e267ba2676d2df98c45de974f6273ad9052d605ebe0af6142a75",
+      "result": "Native historical propagation primitives and author acceptance pass; independent full R3 grid follows in A19."
     },
     {
       "id": "A18",
       "wave": 3,
       "agent": "/root/w03_a18_pending_raster_impl",
+      "status": "accepted",
+      "scope": "Implement genuine Session pending native rendering harness",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A18-pending-raster-implementation.md",
+      "note_sha256": "4c4564567a46a873bc1740b1b984a443d0eae9e114a47759da2592520349dbab",
+      "result": "Real Session pending/zero-frame acknowledgement harness passes965 assertions and three inspection suites; six lossless native frames retained."
+    },
+    {
+      "id": "A19",
+      "wave": 4,
+      "agent": "/root/w04_a19_rotary_independent_oracle",
+      "status": "accepted",
+      "scope": "Independent high precision native R3 oracle and numerical acceptance",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A19-rotary-independent-oracle.md",
+      "note_sha256": "b93b1d820213294e5d010932ce6b12fd0bfe1b3c6f3dbbb1aef6d88b76c7a47d",
+      "result": "Independent full R3 oracle passes six methods/4466 roots/1440 geometry fixtures with frozen budgets; same numerical hash for isolated and CMake probes."
+    },
+    {
+      "id": "A20",
+      "wave": 4,
+      "agent": "/root/w04_a20_native_observation_impl",
+      "status": "accepted",
+      "scope": "Add bounded copied-state held/capture native diagnostics and replay acceptance",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A20-native-observation.md",
+      "note_sha256": "c70f116387e3f0c0f4b2216a60d41375453ed11a07be433c3a10a66ae9da36ea",
+      "result": "Bounded additive copied held/capture diagnostics implemented; six workspace methods and30 native processes pass with unchanged timing budgets."
+    },
+    {
+      "id": "A21",
+      "wave": 4,
+      "agent": "/root/w04_a21_layout_independent",
+      "status": "accepted",
+      "scope": "Independent wide-layout and boundary/inventory acceptance",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A21-layout-independent.md",
+      "note_sha256": "865fef74fb68934a4468d330e98d25e18c04c1ae1b1a658b9814e66ec223ec6e",
+      "result": "Independent78-layout/breakpoint test and byte-identical legacy comparison pass; no production defect."
+    },
+    {
+      "id": "A22",
+      "wave": 4,
+      "agent": "/root/w04_a22_material_independent",
+      "status": "accepted",
+      "scope": "Independent live-material/native-raster and visual acceptance",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A22-material-independent.md",
+      "note_sha256": "aed4adb08ec3f9eb0bc0f5ca05f80615b7267a48449bc4965de63e00df3b5057",
+      "result": "Five native raster suites pass; independent review identifies1.25x,short-wide status and Flat overlay gaps for A26."
+    },
+    {
+      "id": "A23",
+      "wave": 4,
+      "agent": "/root/w04_a23_pending_independent",
+      "status": "accepted",
+      "scope": "Independent real Session pending/raster and artifact identity acceptance",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A23-pending-independent.md",
+      "note_sha256": "c89cc0d9897da18e3a14922bdc75b9b5f0ab7e56d0c914154a4fb0c2249e6a44",
+      "result": "Independent real Session causal review and six lossless capture replays/identities pass; no blocker."
+    },
+    {
+      "id": "A24",
+      "wave": 4,
+      "agent": "/root/w04_a24_motion_independent_review",
+      "status": "accepted",
+      "scope": "Independent numerical and portability review of R2 scaling repairs",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A24-motion-independent-review.md",
+      "note_sha256": "bf8d45fbeef8edb9f27c511c0690ee3a6d4a7a1a1507a310023a372e391ecd24",
+      "result": "All66 retained underflow failures and six literal reproducers independently pass; complete native oracle/lifecycle replay and arithmetic review support R2 qualification."
+    },
+    {
+      "id": "A25",
+      "wave": 5,
+      "agent": "/root/w05_a25_material_performance",
+      "status": "accepted",
+      "scope": "Matched old/current renderer timing with identical geometry and backend",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A25-material-performance.md",
+      "note_sha256": "f9ee859bae5b7bba219a5e8d6d45e18531a09ab6b94ff4c5f43dddd1e1e4d706",
+      "result": "Nine matched timing cells retained; one Flat tail-latency trigger did not reproduce in the sole reverse-order repeat; no persistent hotspot claimed."
+    },
+    {
+      "id": "A26",
+      "wave": 5,
+      "agent": "/root/w05_a26_material_boundary_repair",
+      "status": "accepted",
+      "scope": "Independent quarter-scale/status raster and Flat overlay repair",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A26-material-boundary-repair.md",
+      "note_sha256": "1bf0346c24269c0fbf1d915395e01edf5d36a1adeed70b8108d190099b66ccf6",
+      "result": "Independent quarter-scale/status/Flat overlay probe passes901 checks;36 original overlay failures repaired narrowly with dimensional fingerprints preserved."
+    },
+    {
+      "id": "A27",
+      "wave": 5,
+      "agent": "/root/w05_a27_rotary_realtime_sanitizer",
+      "status": "accepted",
+      "scope": "Independent R3 allocation/lifetime and ASan/UBSan execution",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A27-rotary-realtime.md",
+      "note_sha256": "689c9c055a5497b60e1d7ff15b10ab529475c25fb2bf512ce139680a5d28dfb4",
+      "result": "Optimized no-allocation/lifetime gate passes; unchanged sanitizer binary completes workload but LSan is blocked by environment EPERM, retained for hosted qualification."
+    },
+    {
+      "id": "A28",
+      "wave": 5,
+      "agent": "/root/w05_a28_contract_admission_audit",
+      "status": "accepted",
+      "scope": "Independent bounded history/solver contract and admission audit",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A28-contract-admission-audit.md",
+      "note_sha256": "03701dc7ffb58d81c701ba2d99eb5d69a8a72d52c5c496d122ac5391d6132b4b",
+      "result": "Independent history/solver bounds and admission audit pass; late second-endpoint overflow preserves all caller outputs and prepared state."
+    },
+    {
+      "id": "A29",
+      "wave": 5,
+      "agent": "/root/w05_a29_hosted_gate_wiring",
+      "status": "accepted",
+      "scope": "Integrate new native sanitizer gates and bound observed hosted dependency acquisition stall",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A29-hosted-gate-wiring.md",
+      "note_sha256": "dcecfc48b0918e9a522fc649bb0360760dfc6a4d0b29ce5db39a46c8a20ccb1f",
+      "result": "Sixteen explicit native sanitizer gates and bounded Ubuntu acquisition are wired; static/discovery mutation validation passes. Hosted execution remains required; the original apt stall is retained."
+    },
+    {
+      "id": "A30",
+      "wave": 5,
+      "agent": "/root/w05_a30_rotary_docs_handoff",
+      "status": "accepted",
+      "scope": "Refresh qualified native R2/R3 API, setup and concrete R4 continuation documentation",
+      "note": "docs/development/2026-11-14-reference-refinement/notes/A30-rotary-docs-handoff.md",
+      "note_sha256": "f114d9e54e83d9569d31c3b4a7dc703fc3ae365f81ba3c5af7007267c6aeb200",
+      "result": "Current native R2/R3 ownership, arithmetic, errors, reproduction and R4 continuation are documented; literal caller passes strict C++20 syntax and38 local links resolve."
+    },
+    {
+      "id": "A31",
+      "wave": 6,
+      "agent": "/root/w06_a31_native_gallery_capture",
       "status": "running",
-      "scope": "Implement genuine Session pending native rendering harness"
+      "scope": "Create source-identified eight-view actual native v3 gallery after publication"
+    },
+    {
+      "id": "A32",
+      "wave": 6,
+      "agent": "/root/w06_a32_gallery_independent",
+      "status": "running",
+      "scope": "Strengthen painted gallery provenance validation after frozen capture and independently audit all eight native views"
+    },
+    {
+      "id": "A33",
+      "wave": 6,
+      "agent": "/root/w06_a33_portable_native_review",
+      "status": "running",
+      "scope": "Independent portable compiler and platform-contract review of new native primitives and acceptance fixtures"
     }
   ]
 }

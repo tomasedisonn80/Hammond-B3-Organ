@@ -136,6 +136,9 @@ class PrivateProject:
                 shutil.copyfile(path, self.source / path.name)
         (self.source / "tests").mkdir()
         shutil.copyfile(Path(__file__), self.source / "tests" / Path(__file__).name)
+        # BUILD_TESTING declares the native oracle probes even though this
+        # fixture only configures the project and installs capture resources.
+        shutil.copytree(ROOT / "tests" / "probes", self.source / "tests" / "probes")
         self.originals = {path: (self.source / path).read_bytes()
                           for path in PAYLOAD if path != "README.md"}
         self.configured = self.configure()

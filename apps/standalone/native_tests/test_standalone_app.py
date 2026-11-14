@@ -229,6 +229,11 @@ PRESENTATION_FRAME_SCHEMA = {
         "snapshot_state": str, "controls_pending": bool,
         "frame_clock": int, "publication_revision": int,
     },
+    "held_targets": {"upper": int, "lower": int, "pedals": int},
+    "pointer_capture": {
+        "sdl_captured": bool, "ui_captured": bool,
+        "attempts": int, "successes": int, "losses": int, "release_calls": int,
+    },
 }
 PRESENTATION_SCHEMA = {
     "initial_workspace": str, "initial_presentation": str,
@@ -254,10 +259,15 @@ def assert_presentation(case: unittest.TestCase, report: dict) -> None:
         case.assertEqual(presentation["last_painted"]["rendered_image"], report["runtime"]["rendered_images"])
     last_image = 0
     last_elapsed = 0
+    capture_counters = ("attempts", "successes", "losses", "release_calls")
+    previous_capture = dict.fromkeys(capture_counters, 0)
     for frame in presentation["observations"]:
         case.assertGreater(frame["rendered_image"], last_image)
         case.assertGreaterEqual(frame["elapsed_ms"], last_elapsed)
         last_image, last_elapsed = frame["rendered_image"], frame["elapsed_ms"]
+        for counter in capture_counters:
+            case.assertGreaterEqual(frame["pointer_capture"][counter], previous_capture[counter])
+        previous_capture = frame["pointer_capture"]
     for frame in [*presentation["observations"], presentation["last_painted"],
                   presentation["screenshot"], presentation["before_shutdown"]]:
         if frame is None:
@@ -270,6 +280,16 @@ def assert_presentation(case: unittest.TestCase, report: dict) -> None:
         case.assertLessEqual(max(frame["window_width"], frame["window_height"]), 8192)
         case.assertGreater(frame["rendered_image"], 0)
         case.assertLessEqual(frame["rendered_image"], report["runtime"]["rendered_images"])
+        for part, maximum in (("upper", 61), ("lower", 61), ("pedals", 25)):
+            case.assertGreaterEqual(frame["held_targets"][part], 0)
+            case.assertLessEqual(frame["held_targets"][part], maximum)
+        capture = frame["pointer_capture"]
+        for counter in capture_counters:
+            case.assertGreaterEqual(capture[counter], 0)
+        case.assertLessEqual(capture["successes"], capture["attempts"])
+        case.assertLessEqual(capture["losses"] + capture["release_calls"], capture["successes"])
+        if capture["sdl_captured"]:
+            case.assertGreater(capture["successes"], 0)
         observation = frame["inspection"]
         case.assertIn(observation["snapshot_state"], ("unavailable", "unprepared", "retained", "stopped", "current"))
         case.assertGreaterEqual(observation["frame_clock"], 0)

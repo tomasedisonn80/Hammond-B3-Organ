@@ -827,6 +827,14 @@ private:
         std::uint64_t last_submitted_sequence;
     };
 
+    struct PointerCaptureCounters {
+        std::uint64_t attempts{0};
+        std::uint64_t successes{0};
+        std::uint64_t losses{0};
+        std::uint64_t release_calls{0};
+        bool operator==(const PointerCaptureCounters&) const noexcept = default;
+    };
+
     // Values from a successfully flushed frame, never a later shutdown read.
     // Keep presentation observations separate from musical replay snapshots.
     struct PresentationObservation {
@@ -842,6 +850,10 @@ private:
         bool controls_pending{false};
         std::uint64_t frame_clock{0};
         std::uint64_t publication_revision{0};
+        std::array<std::size_t, 3> held_targets{}; // Applied Upper, Lower and Pedals.
+        bool sdl_captured{false};
+        bool ui_captured{false};
+        PointerCaptureCounters pointer_capture{};
     };
 
     static void write_presentation_observation(std::ostream& output,
@@ -860,7 +872,16 @@ private:
         json_string(output, inspection_state_name(observation.snapshot_state));
         output << ",\"controls_pending\":" << observation.controls_pending
                << ",\"frame_clock\":" << observation.frame_clock
-               << ",\"publication_revision\":" << observation.publication_revision << "}}";
+               << ",\"publication_revision\":" << observation.publication_revision
+               << "},\"held_targets\":{\"upper\":" << observation.held_targets[0]
+               << ",\"lower\":" << observation.held_targets[1]
+               << ",\"pedals\":" << observation.held_targets[2]
+               << "},\"pointer_capture\":{\"sdl_captured\":" << observation.sdl_captured
+               << ",\"ui_captured\":" << observation.ui_captured
+               << ",\"attempts\":" << observation.pointer_capture.attempts
+               << ",\"successes\":" << observation.pointer_capture.successes
+               << ",\"losses\":" << observation.pointer_capture.losses
+               << ",\"release_calls\":" << observation.pointer_capture.release_calls << "}}";
     }
 
     static void write_presentation_observation(std::ostream& output,
@@ -891,7 +912,11 @@ private:
         const PresentationObservation observation{elapsed, render_count_, view.workspace, view.presentation,
             overlay_, window_width_, window_height_, {snapshot_available_, snapshot_read_succeeded_},
             inspection.snapshot_state, inspection.controls_pending, inspection.frame_clock,
-            inspection.publication_revision};
+            inspection.publication_revision,
+            {static_cast<std::size_t>(std::count(view.applied.held_keys[0].begin(), view.applied.held_keys[0].end(), true)),
+             static_cast<std::size_t>(std::count(view.applied.held_keys[1].begin(), view.applied.held_keys[1].end(), true)),
+             static_cast<std::size_t>(std::count(view.applied.held_pedals.begin(), view.applied.held_pedals.end(), true))},
+            captured_, view.pointer_captured, pointer_capture_};
         last_painted_ = observation;
         // Retain the first painted frame and visible-state transitions. The
         // latest frame and capture are always exact even if this history fills.
@@ -903,7 +928,11 @@ private:
                 previous.runtime.snapshot_available == observation.runtime.snapshot_available &&
                 previous.runtime.snapshot_read_succeeded == observation.runtime.snapshot_read_succeeded &&
                 previous.snapshot_state == observation.snapshot_state &&
-                previous.controls_pending == observation.controls_pending) return;
+                previous.controls_pending == observation.controls_pending &&
+                previous.held_targets == observation.held_targets &&
+                previous.sdl_captured == observation.sdl_captured &&
+                previous.ui_captured == observation.ui_captured &&
+                previous.pointer_capture == observation.pointer_capture) return;
         }
         if (presentation_observations_.size() == kPresentationObservationCapacity) {
             presentation_observations_truncated_ = true;
@@ -1802,6 +1831,7 @@ private:
 
     void release_capture() noexcept {
         if (captured_) {
+            increment_counter(pointer_capture_.release_calls);
             const int ignored = SDL_CaptureMouse(SDL_FALSE);
             (void)ignored;
             captured_ = false;
@@ -1818,6 +1848,7 @@ private:
 
     void check_capture() {
         if (captured_ && (SDL_GetWindowFlags(window_.get()) & SDL_WINDOW_MOUSE_CAPTURE) == 0) {
+            increment_counter(pointer_capture_.losses);
             captured_ = false;
             const bool released = dispatch(ui_.pointer({UiPointerKind::CaptureLost, {}}));
             (void)released;
@@ -2139,7 +2170,9 @@ private:
                     if (rectangles[index].contains(point)) { modal_focus_ = index; activate_modal(); break; }
                 }
             } else {
+                increment_counter(pointer_capture_.attempts);
                 const bool capture_succeeded = SDL_CaptureMouse(SDL_TRUE) == 0;
+                if (capture_succeeded) increment_counter(pointer_capture_.successes);
                 captured_ = capture_succeeded;
                 const bool accepted = dispatch(ui_.pointer({UiPointerKind::Down, point}));
                 (void)accepted;
@@ -2320,6 +2353,7 @@ private:
     std::optional<PresentationObservation> last_painted_;
     std::optional<PresentationObservation> screenshot_presentation_;
     std::optional<PresentationObservation> presentation_before_shutdown_;
+    PointerCaptureCounters pointer_capture_{};
     AudioDeviceConfig config_;
     AudioDeviceConfig selected_config_;
     std::optional<ControlSnapshot> intended_controls_;

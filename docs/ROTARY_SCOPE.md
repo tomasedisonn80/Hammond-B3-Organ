@@ -5,6 +5,33 @@ This nominal M7 research track is governed by atlas pp. 289–294, 301–324 and
 instrument measurements (p. 2). Its worked examples and reported companion
 results are not measurements or executed tests of this repository.
 
+## Current status — 14 November 2026
+
+The [reference-refinement continuation](REFERENCE_REFINEMENT_SCOPE.md) has
+implemented and independently qualified the named native **R2 motion and R3
+historical propagation** workloads on the source identified in its reports.
+[ROTARY_MOTION.md](ROTARY_MOTION.md) records the repaired arithmetic and retained
+R2 failures; [ROTARY_PROPAGATION.md](ROTARY_PROPAGATION.md) is the current API,
+storage-lifetime, query-boundary, rejection and reproduction handoff.
+
+| Slice | Current evidence and remaining boundary |
+| --- | --- |
+| R2 | A16/A24 pass seven Python methods with 3,780 native requests and 327,720 separate bit-identical owner-state comparisons. All 66 original underflow failures were independently replayed successfully; original reports remain retained. |
+| R3 | A19 passes six independent methods including 1,440 geometry fixtures and 4,466 roots; maximum native residual `9.980e-15 s`, maximum 41 of 48 evaluations. A28 audits admission and adds a passing late-rejection regression. |
+| Primitive allocation/lifetime | A27 observes zero C++ allocations/deallocations in the named prepared/query/copy/rejection intervals. This is not a callback or device-deadline qualification. |
+| Sanitizers | The local instrumented workload completes, then LSan fails with EPERM attaching to its thread. The full gate failed/environment-blocked; hosted leak-enabled qualification remains pending. |
+| R4 → R5 → R6 | Next implement bounded fractional-delay waveform histories and a transactional two-input renderer under the frozen R4 contract; then qualify audible policy and actual runtime/integration separately. |
+
+The reports hash the tested numerical sources added on top of observed HEAD
+`e4968b2`; that commit alone is not the tested worktree identity. The current
+[checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) owns
+publication status. The original
+[2026-11-13 session](development/2026-11-13-rotary/README.md) remains historical.
+All fixtures remain nominal/unmeasured, with separate horn/drum radiation-boundary
+inputs. Engine sound, all 47 parameters and state4/readers 1–3 stay unchanged.
+Scanner G5, M5/M6 inputs, physical captures and device/host qualification remain
+separate unresolved work.
+
 ## Deliverable
 
 Develop a host-independent, inspectable C++ module and offline tools that:

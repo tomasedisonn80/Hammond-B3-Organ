@@ -1,0 +1,175 @@
+{
+  "head": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "tree": "1aff4305e347b46c659dcbc27eb524649a4c54c8",
+  "sources": {
+    "apps/standalone/UiModel.cpp": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+    "apps/standalone/UiModel.h": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+    "apps/standalone/tests/test_standalone_reference_layout.cpp": "e053edf405d11470db92396fdeabed111aeb5debe38c16632884f21eac32bdbf",
+    "apps/standalone/tests/test_standalone_projection.cpp": "2a103add377be40669a2fe150355a405325969f8c5d4345d49ecbe0d37541278",
+    "apps/standalone/tests/test_standalone_preset_ui.cpp": "bb9e0d2879581eb630b9c703c5c308de216384e62bd17d8520c0f47152b28943",
+    "docs/REFERENCE_REFINEMENT_LAYOUT.md": "1b53a562a29585a9f94ec8d6ba0baee3daf3b94fb1ba1d406f6604b401897a56",
+    "docs/INTERFACE_GEOMETRY_CONTRACT.md": "f0a36fe9fc15743332453689d49d37e2a26ad5b8fa0ee1222d7d574695de05ae"
+  },
+  "baseline_ui_cpp_sha256": "c3aa5756e0edac899d0d608cb451695926d970eedcfaa247948c7ce699077258",
+  "core_archive_sha256": "3f6773440391f5488afd0531b18f59a9169a97862ea68912a33c2ac3a8d4d172",
+  "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "compile_commands": [
+    [
+      "/usr/bin/c++",
+      "-O3",
+      "-DNDEBUG",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ\"",
+      "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p\"",
+      "-I/workspace/scratch/1bb6ee17ad7e/a21-layout-independent",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests",
+      "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/tests/test_standalone_reference_layout.cpp",
+      "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/UiModel.cpp",
+      "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/libhammond_core.a",
+      "-pthread",
+      "-o",
+      "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/reference-layout-current"
+    ],
+    [
+      "/usr/bin/c++",
+      "-O3",
+      "-DNDEBUG",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-DHAMMOND_SOURCE_DIR=\"/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ\"",
+      "-DHAMMOND_TEST_PROFILE=\"/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p\"",
+      "-I/workspace/scratch/1bb6ee17ad7e/a21-layout-independent",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests",
+      "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/tests/test_standalone_reference_layout.cpp",
+      "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/UiModel-baseline.cpp",
+      "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/libhammond_core.a",
+      "-pthread",
+      "-o",
+      "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/reference-layout-baseline"
+    ]
+  ],
+  "binaries_sha256": {
+    "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/reference-layout-current": "1178da496b908df1cf18fa49c73c0b15e92e789798d6329ebd4a8780537c880c",
+    "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/reference-layout-baseline": "44fdf9a3dd1a6692859b6ac072aa44bce90d54e505d137b43498896ab88d3733",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_projection": "d5df76d885a4747f5270a57c665f3d933011353efcc7804614593cb68aa4fa00",
+    "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_preset_ui": "d4733a1d7369d1e76f30f7527657727a9303c29e034ec8cd06aa288a5f80879f"
+  },
+  "results": {
+    "reference_layout": {
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/reference-layout-current"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.035722,
+      "stderr": "",
+      "stdout_bytes": 227,
+      "stdout_sha256": "6ac411e139ecc99508f2c359457ccb93ff8479102f34a2d2a4e0269f75823a5d",
+      "stdout": "Independent reference layout: 78 layouts, 11466 playing-key records, 5304 control records including 1872 presets, 2366 unique focus stops, 144 empty-gap hits, 8 old-location classifications, 24 literal landmark layouts; passed\n"
+    },
+    "legacy_current": {
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/reference-layout-current",
+        "--legacy-snapshot"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.022679,
+      "stderr": "",
+      "stdout_bytes": 1868256,
+      "stdout_sha256": "ee17282335c9e93ed4f5e3ccfd247cca649b59dfab95c41462d957930db1d0f9"
+    },
+    "legacy_baseline": {
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a21-layout-independent/reference-layout-baseline",
+        "--legacy-snapshot"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.022432,
+      "stderr": "",
+      "stdout_bytes": 1868256,
+      "stdout_sha256": "ee17282335c9e93ed4f5e3ccfd247cca649b59dfab95c41462d957930db1d0f9"
+    },
+    "projection": {
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_projection"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.178957,
+      "stderr": "",
+      "stdout_bytes": 166,
+      "stdout_sha256": "b01e4467e173c61d647795003989eb9f19b2b618993f6a4b779cbfef615afd44",
+      "stdout": "projection matrix: 288 layouts, 42336 playing-key records, 6912 preset records\nindependent projection, silhouette, half-open ownership and rollback acceptance passed\n"
+    },
+    "preset_ui": {
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_preset_ui"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 0.430477,
+      "stderr": "",
+      "stdout_bytes": 241,
+      "stdout_sha256": "b28fe774435fb5da7f19bfd94b2273e66112156d1c7ed5d34ca1e9a7a2dfe036",
+      "stdout": "Independent preset UI acceptance: 12 layouts, 621920 independently classified hit points, 288 route transitions, 48 keyboard activations, 144 focus-only moves, 753 invalid identities, 288 exact single-command pointer acknowledgments; passed\n"
+    }
+  },
+  "legacy_comparison": {
+    "equal": true,
+    "windows": 13,
+    "presentations": 2,
+    "workspaces": 3,
+    "layouts": 78,
+    "bytes_per_layout": 23952,
+    "serialized_scalar_fields": 467064,
+    "snapshot_sha256": "ee17282335c9e93ed4f5e3ccfd247cca649b59dfab95c41462d957930db1d0f9",
+    "all_legacy_fields_serialized": true,
+    "omitted": "padding and newly added sidebar_pedals flag"
+  },
+  "sources_unchanged_after_run": true,
+  "passed": true,
+  "acceptance_counts": {
+    "layouts": 78,
+    "playing_key_records": 11466,
+    "ordinary_control_records": 5304,
+    "preset_records": 1872,
+    "focus_stops": 2366,
+    "empty_gap_hits": 144,
+    "old_location_classifications": 8,
+    "literal_anchor_layouts": 24,
+    "playing_keys_per_layout": [
+      61,
+      61,
+      25
+    ],
+    "presets_per_layout": 24,
+    "ordinary_controls_per_layout": 68,
+    "play_focus_stops_per_cycle": 71,
+    "hidden_workspace_focus_stops_per_cycle": 10
+  },
+  "scope_limits": [
+    "Model geometry and semantic hit/focus acceptance; no native raster/text readability claim.",
+    "Same-toolchain cross-revision comparison; no portable frozen binary32 hash gate.",
+    "No shared build mutation; root owns coherent CMake/CTest integration.",
+    "No reference-image equality, accessibility, hardware or physical-fidelity claim."
+  ],
+  "owned_files": [
+    "apps/standalone/tests/test_standalone_reference_layout.cpp",
+    "docs/development/2026-11-14-reference-refinement/notes/A21-layout-independent.md",
+    "docs/development/2026-11-14-reference-refinement/reports/A21-layout-independent.json"
+  ]
+}

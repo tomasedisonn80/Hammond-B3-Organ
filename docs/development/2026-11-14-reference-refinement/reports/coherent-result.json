@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "base_commit": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "configuration": "GCC Release, pinned SDL2, MIDI OFF, VST3 OFF, software/dummy native fixtures",
+  "source_before": "coherent-source-before.json",
+  "original": {
+    "build_exit": 0,
+    "ctest_exit": 8,
+    "passed": 154,
+    "executed": 155,
+    "failed": [
+      "python_test_capture_install"
+    ],
+    "seconds": 145.94,
+    "log": "coherent-ctest.log",
+    "log_sha256": "59d8a49a1e3c916ebd0eba8f2c12f0aa0100c89cc4b425e6b3e689b0d8dc567e"
+  },
+  "repair": {
+    "path": "tests/test_capture_install.py",
+    "reason": "The private BUILD_TESTING source copy omitted both newly declared native rotary probe sources. Copy the tests/probes inputs without skipping targets or changing product code.",
+    "source_changes_since_original": [
+      {
+        "path": "tests/test_capture_install.py",
+        "before": "c7731f8bbcec56ed65243bb483cf59031048d978ebd0b9a7582ea6a429ea3602",
+        "after": "09b46e89620b7102d1271acec263603c4b0c1e384433605b5a0cad2ac2655d68"
+      }
+    ]
+  },
+  "affected_recheck": {
+    "command": "../build-tools/cmake/data/bin/ctest --test-dir ../build-native -C Release --output-on-failure --no-tests=error -R '^python_test_capture_install$'",
+    "exit": 0,
+    "passed": 1,
+    "executed": 1,
+    "seconds": 5.25,
+    "log": "coherent-capture-install-repaired.log",
+    "log_sha256": "6ccb22bf11a571183b91484984e61e9bf81bb33ab05786f992e519b871fad0a5"
+  },
+  "limits": [
+    "This retains the original 154/155 result and a separate repaired 1/1 recheck; it is not a second full 155-suite execution.",
+    "Local LSan remains blocked by the observed thread-attach EPERM environment; hosted sanitizer qualification remains required."
+  ],
+  "prepublication_format_only": {
+    "path": "tests/test_rotary_propagation_allocation.cpp",
+    "change": "Remove one empty trailing line; no tokens or executable behavior changed.",
+    "qualified_source_sha256": "b7329be029b8ddd41d8f6f43b5b007ee9c5ab60fcbff7c2dd23c026c4278f45d",
+    "published_source_sha256": "6ab50ccbb4e77e19c30171ec55f406d17b1a70166557d2bc4f6374f8a35f9fe6"
+  }
+}

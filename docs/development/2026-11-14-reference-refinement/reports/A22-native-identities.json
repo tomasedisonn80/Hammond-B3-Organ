@@ -1,0 +1,337 @@
+{
+  "binaries_after": [
+    {
+      "bytes": 3167920,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_drawing",
+      "sha256": "d5825a9d3f65d09200a099990d0fb0fbbeabacf838fdce83a99b19963b97a8eb"
+    },
+    {
+      "bytes": 3145488,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_quad_drawing",
+      "sha256": "55ae6d4fd3ada6ad53d5a21fe3c8605c13b8cfb49d4fb93e26025a85a47ac65f"
+    },
+    {
+      "bytes": 3358008,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_workspace_raster",
+      "sha256": "bba1e99db4606620677913afa082544294f953a129fac2b9c71497e7060caa5b"
+    },
+    {
+      "bytes": 3350992,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_scaled_view",
+      "sha256": "a7bd9eb1bf8727c44642e0486437d5ff41a64170d01ff104a6019f75fc9cf9ee"
+    },
+    {
+      "bytes": 3333128,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_preset_raster",
+      "sha256": "b4ff2a7a794f57211bc50c45fe9d9fd4d5e46977a89240eb1a51696bcff2df54"
+    }
+  ],
+  "binaries_before": [
+    {
+      "bytes": 3167920,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_drawing",
+      "sha256": "d5825a9d3f65d09200a099990d0fb0fbbeabacf838fdce83a99b19963b97a8eb"
+    },
+    {
+      "bytes": 3145488,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_quad_drawing",
+      "sha256": "55ae6d4fd3ada6ad53d5a21fe3c8605c13b8cfb49d4fb93e26025a85a47ac65f"
+    },
+    {
+      "bytes": 3358008,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_workspace_raster",
+      "sha256": "bba1e99db4606620677913afa082544294f953a129fac2b9c71497e7060caa5b"
+    },
+    {
+      "bytes": 3350992,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_scaled_view",
+      "sha256": "a7bd9eb1bf8727c44642e0486437d5ff41a64170d01ff104a6019f75fc9cf9ee"
+    },
+    {
+      "bytes": 3333128,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_preset_raster",
+      "sha256": "b4ff2a7a794f57211bc50c45fe9d9fd4d5e46977a89240eb1a51696bcff2df54"
+    }
+  ],
+  "build": {
+    "command": [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/1bb6ee17ad7e/build-native",
+      "--parallel",
+      "3",
+      "--target",
+      "test_standalone_drawing",
+      "test_standalone_quad_drawing",
+      "test_standalone_workspace_raster",
+      "test_standalone_scaled_view",
+      "test_standalone_preset_raster"
+    ],
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "exit_code": 0,
+    "log": {
+      "bytes": 267,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A22-build.log",
+      "sha256": "45de298530905097a2e85ac1e806d27a908047e9cc79e3b7fcad94e960a87cb0"
+    },
+    "wall_seconds": 0.2365084090001801
+  },
+  "changed_source_paths": [],
+  "ctest": {
+    "command": [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/1bb6ee17ad7e/build-native",
+      "-R",
+      "^test_standalone_(drawing|quad_drawing|workspace_raster|scaled_view|preset_raster)$",
+      "--no-tests=error",
+      "--output-on-failure",
+      "-V",
+      "-j",
+      "2"
+    ],
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "exit_code": 0,
+    "log": {
+      "bytes": 9076,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A22-ctest.log",
+      "sha256": "4df83a6b19309c1480dacff53df2be524b3a776f66a9a6ca770f66f0fee2a6e5"
+    },
+    "wall_seconds": 22.0812689950003
+  },
+  "finished_utc": "2026-11-14T20:42:18.433461+00:00",
+  "head": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "head_tree": "1aff4305e347b46c659dcbc27eb524649a4c54c8",
+  "linked_build_artifacts_after": [
+    {
+      "bytes": 927814,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/libhammond_standalone_drawing.a",
+      "sha256": "06cde97b0ae59acac7b44437df920b3d12773b20004abedcda101d8da9a7ed36"
+    },
+    {
+      "bytes": 215336,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/libhammond_standalone_support.a",
+      "sha256": "14cdc87f1119b7d7bda9a0adc79a60bfdfca91e48a799d0c23424596c52311f2"
+    },
+    {
+      "bytes": 307108,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/libhammond_core.a",
+      "sha256": "3f6773440391f5488afd0531b18f59a9169a97862ea68912a33c2ac3a8d4d172"
+    },
+    {
+      "bytes": 3245774,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/libSDL2.a",
+      "sha256": "55ccb40daeebf75e429c7d8c693cdd5b4e2207a00393e35c66be992e752b03ed"
+    },
+    {
+      "bytes": 5093899,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/generated/ReferenceArtData.h",
+      "sha256": "d94cefd9ad69726c267d4674acd66912f4764ee9f88d1c21ecce4ed7befcbac6"
+    }
+  ],
+  "missing_paths": [],
+  "source_after": [
+    {
+      "bytes": 79420,
+      "path": "apps/standalone/InstrumentView.cpp",
+      "sha256": "4127c0b2feb9b04f591fa9af82e4a6f3bbc162228205d7d92c8bdcca911ac45f"
+    },
+    {
+      "bytes": 2089,
+      "path": "apps/standalone/InstrumentView.h",
+      "sha256": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932"
+    },
+    {
+      "bytes": 20951,
+      "path": "apps/standalone/Drawing.cpp",
+      "sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f"
+    },
+    {
+      "bytes": 2443,
+      "path": "apps/standalone/Drawing.h",
+      "sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188"
+    },
+    {
+      "bytes": 55053,
+      "path": "apps/standalone/UiModel.cpp",
+      "sha256": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064"
+    },
+    {
+      "bytes": 16388,
+      "path": "apps/standalone/UiModel.h",
+      "sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3"
+    },
+    {
+      "bytes": 18587,
+      "path": "apps/standalone/InspectionModel.cpp",
+      "sha256": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8"
+    },
+    {
+      "bytes": 2778,
+      "path": "apps/standalone/InspectionModel.h",
+      "sha256": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9"
+    },
+    {
+      "bytes": 204816,
+      "path": "apps/standalone/FontData.h",
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+    },
+    {
+      "bytes": 26736,
+      "path": "apps/standalone/native_tests/test_standalone_drawing.cpp",
+      "sha256": "c49af9889f5f43e9f3ea20d42a3263b2f911ab1c7877b7b6ff42e99216823ebc"
+    },
+    {
+      "bytes": 18487,
+      "path": "apps/standalone/native_tests/test_standalone_quad_drawing.cpp",
+      "sha256": "b2c265a2da00b1211ffebe376b552ed3ba55a83a7a6dcfb70dc37b453de4c6fd"
+    },
+    {
+      "bytes": 25118,
+      "path": "apps/standalone/native_tests/test_standalone_workspace_raster.cpp",
+      "sha256": "077820d47d6cefec2544a248d25033439fac5d34e013401558df8fca80630e51"
+    },
+    {
+      "bytes": 27676,
+      "path": "apps/standalone/native_tests/test_standalone_scaled_view.cpp",
+      "sha256": "bbffea029ec96c3b611f0fa49ed1089fcf9c535ba7642c18992c87454539af99"
+    },
+    {
+      "bytes": 18914,
+      "path": "apps/standalone/native_tests/test_standalone_preset_raster.cpp",
+      "sha256": "e3fe978c9c8e37a1915b10c4586d3f178414828954016eae5de58af4994b48e6"
+    },
+    {
+      "bytes": 7116,
+      "path": "docs/REFERENCE_REFINEMENT_MATERIALS.md",
+      "sha256": "84bcea40468070f00ebdb395cde2d274de15028b95deb266ef96049b5f01e661"
+    },
+    {
+      "bytes": 5849,
+      "path": "docs/REFERENCE_REFINEMENT_LAYOUT.md",
+      "sha256": "1b53a562a29585a9f94ec8d6ba0baee3daf3b94fb1ba1d406f6604b401897a56"
+    },
+    {
+      "bytes": 412664,
+      "path": "docs/design/atlas-cover-reference.jpg",
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    },
+    {
+      "bytes": 11632,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A14-first-native.log",
+      "sha256": "9b0bfcd8a09e9a0504a208fb07abbb1e86f8bd81b7f4d8a1961c87886bc80692"
+    },
+    {
+      "bytes": 8082,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A14-final-native.log",
+      "sha256": "a8943cf660345b51d054a4efe95658e7abef0b6f5baa1355e47926b53d950b0c"
+    }
+  ],
+  "source_before": [
+    {
+      "bytes": 79420,
+      "path": "apps/standalone/InstrumentView.cpp",
+      "sha256": "4127c0b2feb9b04f591fa9af82e4a6f3bbc162228205d7d92c8bdcca911ac45f"
+    },
+    {
+      "bytes": 2089,
+      "path": "apps/standalone/InstrumentView.h",
+      "sha256": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932"
+    },
+    {
+      "bytes": 20951,
+      "path": "apps/standalone/Drawing.cpp",
+      "sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f"
+    },
+    {
+      "bytes": 2443,
+      "path": "apps/standalone/Drawing.h",
+      "sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188"
+    },
+    {
+      "bytes": 55053,
+      "path": "apps/standalone/UiModel.cpp",
+      "sha256": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064"
+    },
+    {
+      "bytes": 16388,
+      "path": "apps/standalone/UiModel.h",
+      "sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3"
+    },
+    {
+      "bytes": 18587,
+      "path": "apps/standalone/InspectionModel.cpp",
+      "sha256": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8"
+    },
+    {
+      "bytes": 2778,
+      "path": "apps/standalone/InspectionModel.h",
+      "sha256": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9"
+    },
+    {
+      "bytes": 204816,
+      "path": "apps/standalone/FontData.h",
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+    },
+    {
+      "bytes": 26736,
+      "path": "apps/standalone/native_tests/test_standalone_drawing.cpp",
+      "sha256": "c49af9889f5f43e9f3ea20d42a3263b2f911ab1c7877b7b6ff42e99216823ebc"
+    },
+    {
+      "bytes": 18487,
+      "path": "apps/standalone/native_tests/test_standalone_quad_drawing.cpp",
+      "sha256": "b2c265a2da00b1211ffebe376b552ed3ba55a83a7a6dcfb70dc37b453de4c6fd"
+    },
+    {
+      "bytes": 25118,
+      "path": "apps/standalone/native_tests/test_standalone_workspace_raster.cpp",
+      "sha256": "077820d47d6cefec2544a248d25033439fac5d34e013401558df8fca80630e51"
+    },
+    {
+      "bytes": 27676,
+      "path": "apps/standalone/native_tests/test_standalone_scaled_view.cpp",
+      "sha256": "bbffea029ec96c3b611f0fa49ed1089fcf9c535ba7642c18992c87454539af99"
+    },
+    {
+      "bytes": 18914,
+      "path": "apps/standalone/native_tests/test_standalone_preset_raster.cpp",
+      "sha256": "e3fe978c9c8e37a1915b10c4586d3f178414828954016eae5de58af4994b48e6"
+    },
+    {
+      "bytes": 7116,
+      "path": "docs/REFERENCE_REFINEMENT_MATERIALS.md",
+      "sha256": "84bcea40468070f00ebdb395cde2d274de15028b95deb266ef96049b5f01e661"
+    },
+    {
+      "bytes": 5849,
+      "path": "docs/REFERENCE_REFINEMENT_LAYOUT.md",
+      "sha256": "1b53a562a29585a9f94ec8d6ba0baee3daf3b94fb1ba1d406f6604b401897a56"
+    },
+    {
+      "bytes": 412664,
+      "path": "docs/design/atlas-cover-reference.jpg",
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    },
+    {
+      "bytes": 11632,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A14-first-native.log",
+      "sha256": "9b0bfcd8a09e9a0504a208fb07abbb1e86f8bd81b7f4d8a1961c87886bc80692"
+    },
+    {
+      "bytes": 8082,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A14-final-native.log",
+      "sha256": "a8943cf660345b51d054a4efe95658e7abef0b6f5baa1355e47926b53d950b0c"
+    }
+  ],
+  "started_utc": "2026-11-14T20:41:56.031917+00:00",
+  "toolchain": {
+    "compiler_version": "c++ (Debian 14.2.0-19) 14.2.0",
+    "configuration": "Release",
+    "midi_enabled": false,
+    "renderer": "SDL software surface, SDL_Init(0), no window/audio",
+    "sdl_runtime_observed": "2.32.10",
+    "vst3_enabled": false
+  },
+  "worker": "/root/w04_a22_material_independent"
+}

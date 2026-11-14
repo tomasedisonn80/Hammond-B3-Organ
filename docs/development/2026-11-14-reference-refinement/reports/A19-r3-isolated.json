@@ -1,0 +1,3643 @@
+{
+  "schema_version": 1,
+  "gate": "R3 independent native geometry and retarded-path qualification",
+  "status": "pass",
+  "contract_id": "rotary-numerics-v1",
+  "model_id": "nominal-effective-mouth-rotary-v1",
+  "source_head_observed": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "source_sha256": {
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+    "tools/rotary_reference.py": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d",
+    "tests/probes/rotary_propagation_probe.cpp": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768",
+    "tests/test_rotary_propagation_acceptance.py": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+    "docs/ROTARY_PROPAGATION_CONTRACT.md": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc"
+  },
+  "reference_id": "decimal-motion-cartesian-bisection-rotary-reference-v1",
+  "geometry_precision_digits": 100,
+  "motion_precision_digits": 80,
+  "probe": {
+    "path": "/tmp/a19-rotary-propagation-probe",
+    "sha256": "681e9dd4509ce6a7ddef9ac049e11123deb84b66fa1d33aff64a1382470e219d",
+    "native_processes": 1,
+    "requests": 124673,
+    "batches": 46,
+    "stdin_sha256": "3729c99cb794fa71fc7c985dbcfa7beb353cb51168578f7b53f7300553839047",
+    "stdout_sha256": "71b039aa08698cff28f4ab56ddfcd1a34d3b26546f18fa8ff4fa5414587a0390"
+  },
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "wall_seconds": 13.0291680979999,
+    "invocation": [
+      "tests/test_rotary_propagation_acceptance.py",
+      "--probe",
+      "/tmp/a19-rotary-propagation-probe",
+      "--report",
+      "docs/development/2026-11-14-reference-refinement/reports/A19-r3-isolated.json"
+    ]
+  },
+  "fixtures": {
+    "radii_m": [
+      0.0,
+      0.02,
+      0.18,
+      1.0
+    ],
+    "directions": [
+      -1,
+      1
+    ],
+    "phase_extrema_rad": [
+      0.0,
+      1.5707963267948966,
+      3.141592653589793,
+      4.71238898038469,
+      6.283185307179585
+    ],
+    "sound_speeds_m_s": [
+      300.0,
+      343.0,
+      380.0
+    ],
+    "rates_hz": [
+      44100,
+      48000,
+      96000,
+      192000
+    ],
+    "deterministic_seed": "no random inputs",
+    "core_poses": [
+      "right",
+      "left",
+      "above_minimum",
+      "below_minimum",
+      "tangent",
+      "maximum_distance"
+    ],
+    "geometry_fixtures": 1440,
+    "history_queries": 1728,
+    "native_root_queries": 4466,
+    "rejection_fixtures": 7,
+    "shared_history_receiver_pairs": 96,
+    "counts": {
+      "derivative:roots": 50,
+      "derivative:scenes": 2,
+      "frozen_grid:roots": 2880,
+      "frozen_grid:scenes": 1440,
+      "historical:roots": 1536,
+      "historical:scenes": 192,
+      "rejection:scenes": 7
+    }
+  },
+  "budgets": {
+    "geometry_distance_m": "2e-12",
+    "native_true_residual_s": "1e-11",
+    "delay_identical_motion_s": "2e-11",
+    "frequency_ratio_identical_motion": "2e-10",
+    "independent_true_residual_s": "1e-14",
+    "oracle_internal_target_s": 5e-15,
+    "motion_root_contribution": "radius*abs(phase_error)/(c*(1-beta))"
+  },
+  "iterations": {
+    "native_total_evaluations_maximum": 41,
+    "native_total_evaluations_limit": 48,
+    "same_trajectory_bisections_maximum": 40,
+    "independent_motion_bisections_maximum": 40,
+    "oracle_bisections_limit": 96,
+    "oracle_endpoint_evaluations_separate": 2
+  },
+  "metrics": {
+    "admission:maximum_distance_m": {
+      "count": 1634,
+      "maximum_absolute_error": "5.11042760040983266471701308800838259422951749622693353902664928229193361478681531625E-16",
+      "maximum_budget_fraction": "0.0002555213800204916332358506544004191297114758748113466769513324641145966807393407658125",
+      "worst_case": {
+        "inputs": {
+          "id": 1632,
+          "group": "derivative",
+          "rate": 48000,
+          "slow": 75.0,
+          "fast": 75.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 0.73,
+          "speed": 75.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 1.0,
+          "mic": [
+            1.41,
+            0.83,
+            0.27
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "through": 4147200000
+        },
+        "absolute_error": "5.11042760040983266471701308800838259422951749622693353902664928229193361478681531625E-16",
+        "budget": "2E-12"
+      },
+      "rms_error": "1.368670546583735061056884693037941048410154506603634040318311573108140844417791824871395708301453193E-16"
+    },
+    "admission:maximum_mach": {
+      "count": 1634,
+      "maximum_absolute_error": "7.4041841656852640997640158622674969820517492711370262390670553935860058309037900875E-18",
+      "maximum_budget_fraction": "0.00000370209208284263204988200793113374849102587463556851311953352769679300291545189504375",
+      "worst_case": {
+        "inputs": {
+          "id": 738,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 200.0,
+          "fast": 200.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 0.0,
+          "speed": 200.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.18,
+          "mic": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "c": 343.0,
+          "reference_distance": 1.0,
+          "pose": "right",
+          "speed_regime": "admitted_maximum",
+          "through": 4147200000
+        },
+        "absolute_error": "7.4041841656852640997640158622674969820517492711370262390670553935860058309037900875E-18",
+        "budget": "2E-12"
+      },
+      "rms_error": "2.355090866714977107177463996858493436880867585875779121414902476549874592789180027717776443007273735E-18"
+    },
+    "admission:minimum_distance_m": {
+      "count": 1634,
+      "maximum_absolute_error": "4.2674197509029454522533342242240905761718750000000000000000000000000000000000000000E-16",
+      "maximum_budget_fraction": "0.00021337098754514727261266671121120452880859375000000000000000000000000000000000000000",
+      "worst_case": {
+        "inputs": {
+          "id": 365,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 0.0,
+          "fast": 0.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 0.0,
+          "speed": 0.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            -10.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.02,
+          "mic": [
+            9.98,
+            0.0,
+            0.0
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "pose": "maximum_distance",
+          "speed_regime": "zero",
+          "through": 4147200000
+        },
+        "absolute_error": "4.2674197509029454522533342242240905761718750000000000000000000000000000000000000000E-16",
+        "budget": "2E-12"
+      },
+      "rms_error": "9.895235928424058431532164558390552676576368296711583981274683388341885882525483703563878283637532896E-17"
+    },
+    "derivative:delay_identical_motion_s": {
+      "count": 50,
+      "maximum_absolute_error": "1.188112108696515178962727077305316925048828125E-14",
+      "maximum_budget_fraction": "0.0005940560543482575894813635386526584625244140625",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1632,
+            "group": "derivative",
+            "rate": 48000,
+            "slow": 75.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.73,
+            "speed": 75.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.41,
+              0.83,
+              0.27
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "through": 4147200000
+          },
+          "query": {
+            "id": 4416,
+            "scene": 1632,
+            "group": "derivative",
+            "position": [
+              11088,
+              0.0
+            ],
+            "label": "derivative_center"
+          }
+        },
+        "absolute_error": "1.188112108696515178962727077305316925048828125E-14",
+        "budget": "2E-11"
+      },
+      "rms_error": "7.878350959906140178411010615014884479427124039949848372512402521345191639241385823328734227574803148E-15"
+    },
+    "derivative:distance_identical_motion_m": {
+      "count": 50,
+      "maximum_absolute_error": "4.93140682078917187233372337670617058046542249821878609011708874036373278547807037512E-16",
+      "maximum_budget_fraction": "0.000246570341039458593616686168835308529023271124910939304505854437018186639273903518756",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1632,
+            "group": "derivative",
+            "rate": 48000,
+            "slow": 75.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.73,
+            "speed": 75.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.41,
+              0.83,
+              0.27
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "through": 4147200000
+          },
+          "query": {
+            "id": 4438,
+            "scene": 1632,
+            "group": "derivative",
+            "position": [
+              11085,
+              0.0
+            ],
+            "label": "derivative_stencil",
+            "h": 6.25e-05,
+            "multiplier": -1
+          }
+        },
+        "absolute_error": "4.93140682078917187233372337670617058046542249821878609011708874036373278547807037512E-16",
+        "budget": "2E-12"
+      },
+      "rms_error": "2.206846668215450115523297778874811249916842453050742785982736844014077153497592138676231376320445632E-16"
+    },
+    "derivative:ratio_formula": {
+      "count": 50,
+      "maximum_absolute_error": "2.04070266805947288611528129072839952709456789759609009023468199534461537984850601670E-16",
+      "maximum_budget_fraction": "0.00000102035133402973644305764064536419976354728394879804504511734099767230768992425300835",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1632,
+            "group": "derivative",
+            "rate": 48000,
+            "slow": 75.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.73,
+            "speed": 75.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.41,
+              0.83,
+              0.27
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "through": 4147200000
+          },
+          "query": {
+            "id": 4423,
+            "scene": 1632,
+            "group": "derivative",
+            "position": [
+              11136,
+              0.0
+            ],
+            "label": "derivative_stencil",
+            "h": 0.001,
+            "multiplier": 1
+          }
+        },
+        "absolute_error": "2.04070266805947288611528129072839952709456789759609009023468199534461537984850601670E-16",
+        "budget": "2E-10"
+      },
+      "rms_error": "1.038960263558150157986265107000620538324983465484278431669884414947166544476303798357250512214430468E-16"
+    },
+    "derivative:ratio_identical_motion": {
+      "count": 50,
+      "maximum_absolute_error": "1.60471554906643920119142817441701188548485830614818321582324521922651365690374279014457E-13",
+      "maximum_budget_fraction": "0.000802357774533219600595714087208505942742429153074091607911622609613256828451871395072285",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1632,
+            "group": "derivative",
+            "rate": 48000,
+            "slow": 75.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.73,
+            "speed": 75.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.41,
+              0.83,
+              0.27
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "through": 4147200000
+          },
+          "query": {
+            "id": 4427,
+            "scene": 1632,
+            "group": "derivative",
+            "position": [
+              11112,
+              0.0
+            ],
+            "label": "derivative_stencil",
+            "h": 0.0005,
+            "multiplier": 1
+          }
+        },
+        "absolute_error": "1.60471554906643920119142817441701188548485830614818321582324521922651365690374279014457E-13",
+        "budget": "2E-10"
+      },
+      "rms_error": "1.028159185818292784316685480915211181837413829646813908947043013661667716904758107929324042739794870E-13"
+    },
+    "derivative:retained_residual_recalculation_s": {
+      "count": 50,
+      "maximum_absolute_error": "1.921358029752679759217149042591428604946807499406262030039029580121244261826023458373E-18",
+      "maximum_budget_fraction": "0.0001921358029752679759217149042591428604946807499406262030039029580121244261826023458373",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1632,
+            "group": "derivative",
+            "rate": 48000,
+            "slow": 75.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.73,
+            "speed": 75.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.41,
+              0.83,
+              0.27
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "through": 4147200000
+          },
+          "query": {
+            "id": 4438,
+            "scene": 1632,
+            "group": "derivative",
+            "position": [
+              11085,
+              0.0
+            ],
+            "label": "derivative_stencil",
+            "h": 6.25e-05,
+            "multiplier": -1
+          }
+        },
+        "absolute_error": "1.921358029752679759217149042591428604946807499406262030039029580121244261826023458373E-18",
+        "budget": "1E-14"
+      },
+      "rms_error": "8.552957105739493836614544102922038246493139860637370401759054379811165046462578447835959275318630938E-19"
+    },
+    "derivative:split_delay_roundoff_s": {
+      "count": 50,
+      "maximum_absolute_error": "5.874930171974786693075050910313924153645833333333333333333333333333333333333333333E-19",
+      "maximum_budget_fraction": "0.0005874930171974786693075050910313924153645833333333333333333333333333333333333333333",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1633,
+            "group": "derivative",
+            "rate": 48000,
+            "slow": 75.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": 1,
+            "phase": 0.73,
+            "speed": 75.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.41,
+              0.83,
+              0.27
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "through": 4147200000
+          },
+          "query": {
+            "id": 4452,
+            "scene": 1633,
+            "group": "derivative",
+            "position": [
+              11112,
+              0.0
+            ],
+            "label": "derivative_stencil",
+            "h": 0.0005,
+            "multiplier": 1
+          }
+        },
+        "absolute_error": "5.874930171974786693075050910313924153645833333333333333333333333333333333333333333E-19",
+        "budget": "1E-15"
+      },
+      "rms_error": "3.569993292233661243648862185831978021537105564009057066298429198207324512842647647728232609321279058E-19"
+    },
+    "derivative:split_time_residual_s": {
+      "count": 50,
+      "maximum_absolute_error": "9.47673166898331514579722987469829703436022753514596179256559722902179840295485336902838E-15",
+      "maximum_budget_fraction": "0.000947673166898331514579722987469829703436022753514596179256559722902179840295485336902838",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1632,
+            "group": "derivative",
+            "rate": 48000,
+            "slow": 75.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.73,
+            "speed": 75.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.41,
+              0.83,
+              0.27
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "through": 4147200000
+          },
+          "query": {
+            "id": 4416,
+            "scene": 1632,
+            "group": "derivative",
+            "position": [
+              11088,
+              0.0
+            ],
+            "label": "derivative_center"
+          }
+        },
+        "absolute_error": "9.47673166898331514579722987469829703436022753514596179256559722902179840295485336902838E-15",
+        "budget": "1E-11"
+      },
+      "rms_error": "5.686235716856539540120592063066275909612450489538798243840877981176913227869010362517527841915655167E-15"
+    },
+    "derivative:true_residual_s": {
+      "count": 50,
+      "maximum_absolute_error": "9.47619506118807965346935845272538647120918586847929512589893056235513173628818670236168E-15",
+      "maximum_budget_fraction": "0.000947619506118807965346935845272538647120918586847929512589893056235513173628818670236168",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1632,
+            "group": "derivative",
+            "rate": 48000,
+            "slow": 75.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.73,
+            "speed": 75.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.41,
+              0.83,
+              0.27
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "through": 4147200000
+          },
+          "query": {
+            "id": 4416,
+            "scene": 1632,
+            "group": "derivative",
+            "position": [
+              11088,
+              0.0
+            ],
+            "label": "derivative_center"
+          }
+        },
+        "absolute_error": "9.47619506118807965346935845272538647120918586847929512589893056235513173628818670236168E-15",
+        "budget": "1E-11"
+      },
+      "rms_error": "5.686250321142273760450915546680061760606509569307309725240778947668260371296511882560492461728481014E-15"
+    },
+    "frozen_grid:delay_identical_motion_s": {
+      "count": 2880,
+      "maximum_absolute_error": "1.4448186570759080638026716769672930240631103515625E-14",
+      "maximum_budget_fraction": "0.00072240932853795403190133583848364651203155517578125",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 740,
+            "group": "frozen_grid",
+            "rate": 48000,
+            "slow": 200.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.0,
+            "speed": 200.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.18,
+              0.0,
+              0.02
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "pose": "above_minimum",
+            "speed_regime": "admitted_maximum",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 1481,
+            "scene": 740,
+            "group": "frozen_grid",
+            "position": [
+              5925,
+              0.73125
+            ],
+            "label": "running"
+          }
+        },
+        "absolute_error": "1.4448186570759080638026716769672930240631103515625E-14",
+        "budget": "2E-11"
+      },
+      "rms_error": "3.894548887266796496621632127829378231260299847157644998903628939374368072235123012703214307051589884E-15"
+    },
+    "frozen_grid:distance_identical_motion_m": {
+      "count": 2880,
+      "maximum_absolute_error": "6.50268388835992456088328214867613195106445947946106877407878745551919326789516130146E-15",
+      "maximum_budget_fraction": "0.00325134194417996228044164107433806597553222973973053438703939372775959663394758065073",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 431,
+            "group": "frozen_grid",
+            "rate": 48000,
+            "slow": 200.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 1.5707963267948966,
+            "speed": 200.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              -10.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.02,
+            "mic": [
+              9.98,
+              0.0,
+              0.0
+            ],
+            "c": 380.0,
+            "reference_distance": 1.0,
+            "pose": "maximum_distance",
+            "speed_regime": "admitted_maximum",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 863,
+            "scene": 431,
+            "group": "frozen_grid",
+            "position": [
+              5925,
+              0.73125
+            ],
+            "label": "running"
+          }
+        },
+        "absolute_error": "6.50268388835992456088328214867613195106445947946106877407878745551919326789516130146E-15",
+        "budget": "2E-12"
+      },
+      "rms_error": "5.837774588450984441175015005418112252421350789075454153419230735499307087300561136263878792783582690E-16"
+    },
+    "frozen_grid:ratio_formula": {
+      "count": 2880,
+      "maximum_absolute_error": "2.13168099286716411762127942238556601963008177018899444251674865257109726905551827380E-16",
+      "maximum_budget_fraction": "0.00000106584049643358205881063971119278300981504088509449722125837432628554863452775913690",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1134,
+            "group": "frozen_grid",
+            "rate": 48000,
+            "slow": 85.75,
+            "fast": 85.75,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 1.5707963267948966,
+            "speed": 85.75,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.0200000000000002,
+              0.0,
+              0.0
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "pose": "right",
+            "speed_regime": "admitted_maximum",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 2268,
+            "scene": 1134,
+            "group": "frozen_grid",
+            "position": [
+              199,
+              0.8963088308143775
+            ],
+            "label": "emission_at_zero"
+          }
+        },
+        "absolute_error": "2.13168099286716411762127942238556601963008177018899444251674865257109726905551827380E-16",
+        "budget": "2E-10"
+      },
+      "rms_error": "4.116682169667701837725895510938979701304606372272811939506182030254360789978693049568301701224711334E-17"
+    },
+    "frozen_grid:ratio_identical_motion": {
+      "count": 2880,
+      "maximum_absolute_error": "1.9789062140889250872205604343603655058654946763731781106649531385792400023895930482727423E-12",
+      "maximum_budget_fraction": "0.0098945310704446254361028021718018275293274733818658905533247656928962000119479652413637115",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 730,
+            "group": "frozen_grid",
+            "rate": 48000,
+            "slow": 200.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 0.0,
+            "speed": 200.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.18,
+              0.0894483090952534,
+              0.0
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "pose": "tangent",
+            "speed_regime": "admitted_maximum",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 1461,
+            "scene": 730,
+            "group": "frozen_grid",
+            "position": [
+              5925,
+              0.73125
+            ],
+            "label": "running"
+          }
+        },
+        "absolute_error": "1.9789062140889250872205604343603655058654946763731781106649531385792400023895930482727423E-12",
+        "budget": "2E-10"
+      },
+      "rms_error": "6.974311609224822709612878862922389849280204985993556936697513119477632486691783895481741408705539022E-14"
+    },
+    "frozen_grid:retained_residual_recalculation_s": {
+      "count": 2880,
+      "maximum_absolute_error": "2.003396556048705552975503635991303227253805126173965466862838804083998228393463500384E-17",
+      "maximum_budget_fraction": "0.002003396556048705552975503635991303227253805126173965466862838804083998228393463500384",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 431,
+            "group": "frozen_grid",
+            "rate": 48000,
+            "slow": 200.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 1.5707963267948966,
+            "speed": 200.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              -10.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.02,
+            "mic": [
+              9.98,
+              0.0,
+              0.0
+            ],
+            "c": 380.0,
+            "reference_distance": 1.0,
+            "pose": "maximum_distance",
+            "speed_regime": "admitted_maximum",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 863,
+            "scene": 431,
+            "group": "frozen_grid",
+            "position": [
+              5925,
+              0.73125
+            ],
+            "label": "running"
+          }
+        },
+        "absolute_error": "2.003396556048705552975503635991303227253805126173965466862838804083998228393463500384E-17",
+        "budget": "1E-14"
+      },
+      "rms_error": "2.050687243739225081710602423401040058938324043022421674613048448571175292397293305809357200513389719E-18"
+    },
+    "frozen_grid:split_delay_roundoff_s": {
+      "count": 2880,
+      "maximum_absolute_error": "4.60742555219439964275807142257690429687500000000000000000000000000000000000000000003E-18",
+      "maximum_budget_fraction": "0.00460742555219439964275807142257690429687500000000000000000000000000000000000000000003",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1187,
+            "group": "frozen_grid",
+            "rate": 48000,
+            "slow": 95.0,
+            "fast": 95.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": -1,
+            "phase": 3.141592653589793,
+            "speed": 95.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              -10.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              9.0,
+              0.0,
+              0.0
+            ],
+            "c": 380.0,
+            "reference_distance": 1.0,
+            "pose": "maximum_distance",
+            "speed_regime": "admitted_maximum",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 2375,
+            "scene": 1187,
+            "group": "frozen_grid",
+            "position": [
+              5925,
+              0.73125
+            ],
+            "label": "running"
+          }
+        },
+        "absolute_error": "4.60742555219439964275807142257690429687500000000000000000000000000000000000000000003E-18",
+        "budget": "1E-15"
+      },
+      "rms_error": "1.161059754573378399890488474408238857075210482529229577669208643567911701125765545157365775657348280E-18"
+    },
+    "frozen_grid:split_time_residual_s": {
+      "count": 2880,
+      "maximum_absolute_error": "9.979582049589788657317201600864762137331724581973639043373721586170426296185303123084082E-15",
+      "maximum_budget_fraction": "0.0009979582049589788657317201600864762137331724581973639043373721586170426296185303123084082",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 982,
+            "group": "frozen_grid",
+            "rate": 48000,
+            "slow": 200.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": 1,
+            "phase": 3.141592653589793,
+            "speed": 200.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.18,
+              0.0894483090952534,
+              0.0
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "pose": "tangent",
+            "speed_regime": "admitted_maximum",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 1965,
+            "scene": 982,
+            "group": "frozen_grid",
+            "position": [
+              5925,
+              0.73125
+            ],
+            "label": "running"
+          }
+        },
+        "absolute_error": "9.979582049589788657317201600864762137331724581973639043373721586170426296185303123084082E-15",
+        "budget": "1E-11"
+      },
+      "rms_error": "3.306965159753117183301472536330905425064000986575199550491436919736827844944645621142552728694547720E-15"
+    },
+    "frozen_grid:true_residual_s": {
+      "count": 2880,
+      "maximum_absolute_error": "9.979635247776385279401430233215524822471698540306972376707054919503759629518636456417382E-15",
+      "maximum_budget_fraction": "0.0009979635247776385279401430233215524822471698540306972376707054919503759629518636456417382",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 982,
+            "group": "frozen_grid",
+            "rate": 48000,
+            "slow": 200.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 60.0,
+            "direction": 1,
+            "phase": 3.141592653589793,
+            "speed": 200.0,
+            "command": 0,
+            "events": [],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.18,
+              0.0894483090952534,
+              0.0
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "pose": "tangent",
+            "speed_regime": "admitted_maximum",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 1965,
+            "scene": 982,
+            "group": "frozen_grid",
+            "position": [
+              5925,
+              0.73125
+            ],
+            "label": "running"
+          }
+        },
+        "absolute_error": "9.979635247776385279401430233215524822471698540306972376707054919503759629518636456417382E-15",
+        "budget": "1E-11"
+      },
+      "rms_error": "3.306992663771503306904260822984465489859751827929076540232589669812057431511564015650507902877639641E-15"
+    },
+    "geometry:distance_m": {
+      "count": 1440,
+      "maximum_absolute_error": "2.27251289394649662636580428429941396645984650601039000107012296640272269350720246375E-15",
+      "maximum_budget_fraction": "0.001136256446973248313182902142149706983229923253005195000535061483201361346753601231875",
+      "worst_case": {
+        "inputs": {
+          "id": 473,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 0.0,
+          "fast": 0.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 4.71238898038469,
+          "speed": 0.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            -10.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.02,
+          "mic": [
+            9.98,
+            0.0,
+            0.0
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "pose": "maximum_distance",
+          "speed_regime": "zero",
+          "through": 4147200000
+        },
+        "absolute_error": "2.27251289394649662636580428429941396645984650601039000107012296640272269350720246375E-15",
+        "budget": "2E-12"
+      },
+      "rms_error": "3.884903419889310200135322179358549873390181193751931717943007202453598024725884578207505233345433840E-16"
+    },
+    "geometry:position_x": {
+      "count": 1440,
+      "maximum_absolute_error": "4.267419750902945452253334224224090576171875E-16",
+      "maximum_budget_fraction": "0.00021337098754514727261266671121120452880859375",
+      "worst_case": {
+        "inputs": {
+          "id": 365,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 0.0,
+          "fast": 0.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 0.0,
+          "speed": 0.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            -10.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.02,
+          "mic": [
+            9.98,
+            0.0,
+            0.0
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "pose": "maximum_distance",
+          "speed_regime": "zero",
+          "through": 4147200000
+        },
+        "absolute_error": "4.267419750902945452253334224224090576171875E-16",
+        "budget": "2E-12"
+      },
+      "rms_error": "8.247027397930996828680587981752625157039251255818833118350718264719100115395062762064835935469720685E-17"
+    },
+    "geometry:position_y": {
+      "count": 1440,
+      "maximum_absolute_error": "5.5293346195750159419973336397517619691971814034532034832128443896217248080305679402E-32",
+      "maximum_budget_fraction": "2.7646673097875079709986668198758809845985907017266017416064221948108624040152839701E-20",
+      "worst_case": {
+        "inputs": {
+          "id": 1224,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 0.0,
+          "fast": 0.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 6.283185307179585,
+          "speed": 0.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 1.0,
+          "mic": [
+            1.0200000000000002,
+            0.0,
+            0.0
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "pose": "right",
+          "speed_regime": "zero",
+          "through": 4147200000
+        },
+        "absolute_error": "5.5293346195750159419973336397517619691971814034532034832128443896217248080305679402E-32",
+        "budget": "2E-12"
+      },
+      "rms_error": "1.300630386141031112739958521435847437048748370346799290081503795349203296657841439146676508880282374E-32"
+    },
+    "geometry:position_z": {
+      "count": 1440,
+      "maximum_absolute_error": "0",
+      "maximum_budget_fraction": "0",
+      "worst_case": {
+        "inputs": {
+          "id": 0,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 0.0,
+          "fast": 0.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 0.0,
+          "speed": 0.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.0,
+          "mic": [
+            0.020000000000000004,
+            0.0,
+            0.0
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "pose": "right",
+          "speed_regime": "zero",
+          "through": 4147200000
+        },
+        "absolute_error": "0",
+        "budget": "2E-12"
+      },
+      "rms_error": "0"
+    },
+    "geometry:velocity_x": {
+      "count": 1440,
+      "maximum_absolute_error": "1.33226762955018845591106997976128772840676782849614483567549064299753107975934539554E-15",
+      "maximum_budget_fraction": "0.00066613381477509422795553498988064386420338391424807241783774532149876553987967269777",
+      "worst_case": {
+        "inputs": {
+          "id": 834,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 200.0,
+          "fast": 200.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 4.71238898038469,
+          "speed": 200.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.18,
+          "mic": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "pose": "right",
+          "speed_regime": "admitted_maximum",
+          "through": 4147200000
+        },
+        "absolute_error": "1.33226762955018845591106997976128772840676782849614483567549064299753107975934539554E-15",
+        "budget": "2E-12"
+      },
+      "rms_error": "2.984853752319426038096568130889477253750614478022442820149800528528907180164907284906149431622694251E-16"
+    },
+    "geometry:velocity_y": {
+      "count": 1440,
+      "maximum_absolute_error": "1.33226762955021095930667855055038259999179303198004745590952910790017339746004148714E-15",
+      "maximum_budget_fraction": "0.00066613381477510547965333927527519129999589651599002372795476455395008669873002074357",
+      "worst_case": {
+        "inputs": {
+          "id": 870,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 200.0,
+          "fast": 200.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 6.283185307179585,
+          "speed": 200.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.18,
+          "mic": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "pose": "right",
+          "speed_regime": "admitted_maximum",
+          "through": 4147200000
+        },
+        "absolute_error": "1.33226762955021095930667855055038259999179303198004745590952910790017339746004148714E-15",
+        "budget": "2E-12"
+      },
+      "rms_error": "3.655684325007177674578607643157709996070969102958161516156545484335315070530459174215126371740623099E-16"
+    },
+    "geometry:velocity_z": {
+      "count": 1440,
+      "maximum_absolute_error": "0",
+      "maximum_budget_fraction": "0",
+      "worst_case": {
+        "inputs": {
+          "id": 0,
+          "group": "frozen_grid",
+          "rate": 48000,
+          "slow": 0.0,
+          "fast": 0.0,
+          "up": 0.001,
+          "down": 60.0,
+          "direction": -1,
+          "phase": 0.0,
+          "speed": 0.0,
+          "command": 0,
+          "events": [],
+          "origin": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.0,
+          "mic": [
+            0.020000000000000004,
+            0.0,
+            0.0
+          ],
+          "c": 300.0,
+          "reference_distance": 1.0,
+          "pose": "right",
+          "speed_regime": "zero",
+          "through": 4147200000
+        },
+        "absolute_error": "0",
+        "budget": "2E-12"
+      },
+      "rms_error": "0"
+    },
+    "historical:delay_identical_motion_s": {
+      "count": 1536,
+      "maximum_absolute_error": "1.48357888474226484731843811459839344024658203125E-14",
+      "maximum_budget_fraction": "0.000741789442371132423659219057299196720123291015625",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1446,
+            "group": "historical",
+            "rate": 44100,
+            "slow": 0.0,
+            "fast": 200.0,
+            "up": 60.0,
+            "down": 0.001,
+            "direction": -1,
+            "phase": 0.7,
+            "speed": 200.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                8820,
+                0
+              ],
+              [
+                44100,
+                1
+              ],
+              [
+                3810235590,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.55,
+              -0.63,
+              0.2
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "regime": "fast_decay",
+            "through": 3810240000
+          },
+          "query": {
+            "id": 2928,
+            "scene": 1446,
+            "group": "historical",
+            "position": [
+              -1,
+              0.25
+            ],
+            "label": "startup",
+            "startup": true
+          }
+        },
+        "absolute_error": "1.48357888474226484731843811459839344024658203125E-14",
+        "budget": "2E-11"
+      },
+      "rms_error": "5.532927851799389420748659061763624844567586036503368341494122300190344121786024310763145566408251867E-15"
+    },
+    "historical:distance_identical_motion_m": {
+      "count": 1536,
+      "maximum_absolute_error": "5.67619124051551651834811823760280372724467665126589962679611437609049464661179573763E-16",
+      "maximum_budget_fraction": "0.0002838095620257758259174059118801401863622338325632949813398057188045247323305897868815",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1572,
+            "group": "historical",
+            "rate": 96000,
+            "slow": 0.0,
+            "fast": 75.0,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                9600,
+                1
+              ],
+              [
+                9600,
+                1
+              ],
+              [
+                19200,
+                0
+              ],
+              [
+                96000,
+                1
+              ],
+              [
+                8294390400,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 8294400000
+          },
+          "query": {
+            "id": 3945,
+            "scene": 1572,
+            "group": "historical",
+            "position": [
+              8294399999,
+              0.0
+            ],
+            "label": "late_split_fraction"
+          }
+        },
+        "absolute_error": "5.67619124051551651834811823760280372724467665126589962679611437609049464661179573763E-16",
+        "budget": "2E-12"
+      },
+      "rms_error": "1.415045974368386730658023856860661207857131091078807814815063341784958166426569667118765921747651536E-16"
+    },
+    "historical:ratio_formula": {
+      "count": 1536,
+      "maximum_absolute_error": "1.94303521849281118977330772986938662634699912914040940453883364514394261123186963466E-16",
+      "maximum_budget_fraction": "9.7151760924640559488665386493469331317349956457020470226941682257197130561593481733E-7",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1622,
+            "group": "historical",
+            "rate": 192000,
+            "slow": 0.0,
+            "fast": 75.0,
+            "up": 60.0,
+            "down": 0.001,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 75.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                38400,
+                0
+              ],
+              [
+                192000,
+                1
+              ],
+              [
+                16588780800,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_decay",
+            "through": 16588800000
+          },
+          "query": {
+            "id": 4343,
+            "scene": 1622,
+            "group": "historical",
+            "position": [
+              16588781407,
+              0.003941020661982095
+            ],
+            "label": "command_crossing",
+            "crossing_anchor": 16588780800,
+            "side": -1
+          }
+        },
+        "absolute_error": "1.94303521849281118977330772986938662634699912914040940453883364514394261123186963466E-16",
+        "budget": "2E-10"
+      },
+      "rms_error": "5.745808228003137391115510729572450621214441399490858806475322338979100956530773078183024981394352194E-17"
+    },
+    "historical:ratio_identical_motion": {
+      "count": 1536,
+      "maximum_absolute_error": "4.978369324897923926313015465210326540345607476861375159360420355529064978099398982974102E-12",
+      "maximum_budget_fraction": "0.02489184662448961963156507732605163270172803738430687579680210177764532489049699491487051",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1478,
+            "group": "historical",
+            "rate": 44100,
+            "slow": 0.0,
+            "fast": 75.0,
+            "up": 60.0,
+            "down": 0.001,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 75.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                8820,
+                0
+              ],
+              [
+                44100,
+                1
+              ],
+              [
+                3810235590,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_decay",
+            "through": 3810240000
+          },
+          "query": {
+            "id": 3192,
+            "scene": 1478,
+            "group": "historical",
+            "position": [
+              3810235726,
+              0.3147994907103206
+            ],
+            "label": "command_crossing",
+            "crossing_anchor": 3810235590,
+            "side": 1
+          }
+        },
+        "absolute_error": "4.978369324897923926313015465210326540345607476861375159360420355529064978099398982974102E-12",
+        "budget": "2E-10"
+      },
+      "rms_error": "2.830791302882090939866143775065158264517835200018343124552011936881114950995615117223919661528571429E-13"
+    },
+    "historical:retained_residual_recalculation_s": {
+      "count": 1536,
+      "maximum_absolute_error": "2.176924760637655220282381713590110470755413419517349035381975476136122501568348853880E-18",
+      "maximum_budget_fraction": "0.0002176924760637655220282381713590110470755413419517349035381975476136122501568348853880",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1579,
+            "group": "historical",
+            "rate": 96000,
+            "slow": 0.0,
+            "fast": 85.75,
+            "up": 60.0,
+            "down": 0.001,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 85.75,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                9600,
+                1
+              ],
+              [
+                9600,
+                1
+              ],
+              [
+                19200,
+                0
+              ],
+              [
+                96000,
+                1
+              ],
+              [
+                8294390400,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              -2.3,
+              0.2,
+              -0.17
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "regime": "fast_decay",
+            "through": 8294400000,
+            "borrowed_from": 1578
+          },
+          "query": {
+            "id": 3999,
+            "scene": 1579,
+            "group": "historical",
+            "position": [
+              32000,
+              0.625
+            ],
+            "label": "distinct_receiver",
+            "paired_job": 3998
+          }
+        },
+        "absolute_error": "2.176924760637655220282381713590110470755413419517349035381975476136122501568348853880E-18",
+        "budget": "1E-14"
+      },
+      "rms_error": "4.663580576672769245398073354783342638450575180981784538297118017646743370750396180041582820093961427E-19"
+    },
+    "historical:split_delay_roundoff_s": {
+      "count": 1536,
+      "maximum_absolute_error": "6.4117897184630284895497435480018321619012188208616780045351473922902494331066E-19",
+      "maximum_budget_fraction": "0.00064117897184630284895497435480018321619012188208616780045351473922902494331066",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1460,
+            "group": "historical",
+            "rate": 44100,
+            "slow": 0.0,
+            "fast": 95.0,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": -1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                8820,
+                0
+              ],
+              [
+                44100,
+                1
+              ],
+              [
+                3810235590,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 380.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 3810240000
+          },
+          "query": {
+            "id": 3047,
+            "scene": 1460,
+            "group": "historical",
+            "position": [
+              3810235854,
+              0.25397811632945827
+            ],
+            "label": "command_crossing",
+            "crossing_anchor": 3810235590,
+            "side": -1
+          }
+        },
+        "absolute_error": "6.4117897184630284895497435480018321619012188208616780045351473922902494331066E-19",
+        "budget": "1E-15"
+      },
+      "rms_error": "1.831694751992550662471105098139671714075156395976036974960939423681563480567324728550046770056461867E-19"
+    },
+    "historical:split_time_residual_s": {
+      "count": 1536,
+      "maximum_absolute_error": "9.972852171171751314246132318780959054410129600437804150923977425329174163614474458866447E-15",
+      "maximum_budget_fraction": "0.0009972852171171751314246132318780959054410129600437804150923977425329174163614474458866447",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1441,
+            "group": "historical",
+            "rate": 44100,
+            "slow": 0.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": -1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                8820,
+                0
+              ],
+              [
+                44100,
+                1
+              ],
+              [
+                3810235590,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              -1.48,
+              0.2,
+              -0.17
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 3810240000,
+            "borrowed_from": 1440
+          },
+          "query": {
+            "id": 2895,
+            "scene": 1441,
+            "group": "historical",
+            "position": [
+              14700,
+              0.625
+            ],
+            "label": "distinct_receiver",
+            "paired_job": 2894
+          }
+        },
+        "absolute_error": "9.972852171171751314246132318780959054410129600437804150923977425329174163614474458866447E-15",
+        "budget": "1E-11"
+      },
+      "rms_error": "5.056481728387853095802104342961842110802867046384890140108574022671052822602599166740849548891331347E-15"
+    },
+    "historical:true_residual_s": {
+      "count": 1536,
+      "maximum_absolute_error": "9.972909995287617207815946049597005451301405642104470817590644091995840830281141125533047E-15",
+      "maximum_budget_fraction": "0.0009972909995287617207815946049597005451301405642104470817590644091995840830281141125533047",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1441,
+            "group": "historical",
+            "rate": 44100,
+            "slow": 0.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": -1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                8820,
+                0
+              ],
+              [
+                44100,
+                1
+              ],
+              [
+                3810235590,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              -1.48,
+              0.2,
+              -0.17
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 3810240000,
+            "borrowed_from": 1440
+          },
+          "query": {
+            "id": 2895,
+            "scene": 1441,
+            "group": "historical",
+            "position": [
+              14700,
+              0.625
+            ],
+            "label": "distinct_receiver",
+            "paired_job": 2894
+          }
+        },
+        "absolute_error": "9.972909995287617207815946049597005451301405642104470817590644091995840830281141125533047E-15",
+        "budget": "1E-11"
+      },
+      "rms_error": "5.056473906420729548815497512594084500350317685761671276146109047197813230455584903735642841092739956E-15"
+    },
+    "history:phase_rad": {
+      "count": 1728,
+      "maximum_absolute_error": "1.418663321075709237192150367270675409917208191094381872266781679E-9",
+      "maximum_budget_fraction": "0.02256380653855450561601390057038622727108872341039004561499009127003169923437646076879158533711271478",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1608,
+            "group": "historical",
+            "rate": 192000,
+            "slow": 0.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                38400,
+                0
+              ],
+              [
+                192000,
+                1
+              ],
+              [
+                16588780800,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.55,
+              -0.63,
+              0.2
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 16588800000
+          },
+          "query": {
+            "scene": 1608,
+            "position": [
+              16588780799,
+              0.5
+            ],
+            "anchor": 16588780800
+          }
+        },
+        "absolute_error": "1.418663321075709237192150367270675409917208191094381872266781679E-9",
+        "budget": "6.9124207078814243438096535256648783479807921473322414313549703580106318188826180E-8"
+      },
+      "rms_error": "3.422799916665273506410165345139555540998015164070121847279357364191138094155060955756838096875416125E-10"
+    },
+    "history:root_contribution_bound_s": {
+      "count": 1728,
+      "maximum_absolute_error": "2.599759324661948136329289543717189889218662601025256829938571215160349854227405247813411078717201166E-12",
+      "maximum_budget_fraction": "0",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1480,
+            "group": "historical",
+            "rate": 44100,
+            "slow": 0.0,
+            "fast": 85.75,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                8820,
+                0
+              ],
+              [
+                44100,
+                1
+              ],
+              [
+                3810235590,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 3810240000
+          },
+          "query": {
+            "scene": 1480,
+            "position": [
+              3810235589,
+              0.5
+            ],
+            "anchor": 3810235590
+          }
+        },
+        "absolute_error": "2.599759324661948136329289543717189889218662601025256829938571215160349854227405247813411078717201166E-12",
+        "budget": null
+      },
+      "rms_error": "4.921934977832072797294284405433606412015605295868146220488667581297652910155124939577434533855330951E-13"
+    },
+    "history:speed_rad_s": {
+      "count": 1728,
+      "maximum_absolute_error": "1.3251908644123770703677791102157570076631704829523432558439445198E-14",
+      "maximum_budget_fraction": "0.001818116179220771632119001851855832555212772862454327824261479007979484913070342158562838975290256266",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1440,
+            "group": "historical",
+            "rate": 44100,
+            "slow": 0.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": -1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                8820,
+                0
+              ],
+              [
+                44100,
+                1
+              ],
+              [
+                3810235590,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.55,
+              -0.63,
+              0.2
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 3810240000
+          },
+          "query": {
+            "scene": 1440,
+            "position": [
+              16,
+              0.5
+            ],
+            "anchor": 17
+          }
+        },
+        "absolute_error": "1.3251908644123770703677791102157570076631704829523432558439445198E-14",
+        "budget": "7.49700834398198200431115239773599665147234028869719693473180681906269766242219208E-12"
+      },
+      "rms_error": "2.699253454499837600988430429939642705240108984428955619968990236696664541284217923014390339856775100E-15"
+    },
+    "motion_contribution:phase_rad": {
+      "count": 4466,
+      "maximum_absolute_error": "1.418676685577748336788068393208242078937998697316410410002485687E-9",
+      "maximum_budget_fraction": "0.02256408891809275083177172334954842478833492567035144494528805709734665469057217036036256573729669265",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1536,
+            "group": "historical",
+            "rate": 96000,
+            "slow": 0.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": -1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                9600,
+                1
+              ],
+              [
+                9600,
+                1
+              ],
+              [
+                19200,
+                0
+              ],
+              [
+                96000,
+                1
+              ],
+              [
+                8294390400,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.55,
+              -0.63,
+              0.2
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 8294400000
+          },
+          "query": {
+            "id": 3655,
+            "scene": 1536,
+            "group": "historical",
+            "position": [
+              8294390712,
+              0.8764929862832322
+            ],
+            "label": "command_crossing",
+            "crossing_anchor": 8294390400,
+            "side": -1
+          }
+        },
+        "absolute_error": "1.418676685577748336788068393208242078937998697316410410002485687E-9",
+        "budget": "6.9124207710092161511223179836828820515192596058101362918734246491548905708541400E-8"
+      },
+      "rms_error": "3.252239591439070896024989906030817055746779844248505288528047765282985131819378143815047837361320123E-10"
+    },
+    "motion_contribution:root_contribution_bound_s": {
+      "count": 4466,
+      "maximum_absolute_error": "2.599791811303084805500030956058440755308066705757429075154592097570456754130223517978620019436345967E-12",
+      "maximum_budget_fraction": "0",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1552,
+            "group": "historical",
+            "rate": 96000,
+            "slow": 0.0,
+            "fast": 85.75,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": -1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                9600,
+                1
+              ],
+              [
+                9600,
+                1
+              ],
+              [
+                19200,
+                0
+              ],
+              [
+                96000,
+                1
+              ],
+              [
+                8294390400,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 8294400000
+          },
+          "query": {
+            "id": 3783,
+            "scene": 1552,
+            "group": "historical",
+            "position": [
+              8294391094,
+              0.6508958945151812
+            ],
+            "label": "command_crossing",
+            "crossing_anchor": 8294390400,
+            "side": -1
+          }
+        },
+        "absolute_error": "2.599791811303084805500030956058440755308066705757429075154592097570456754130223517978620019436345967E-12",
+        "budget": null
+      },
+      "rms_error": "4.676672886659832611364566767674730943317140502458729737301828546297216032332419806498353604238201808E-13"
+    },
+    "motion_contribution:speed_rad_s": {
+      "count": 4466,
+      "maximum_absolute_error": "1.412369451188226233883005303549003853751120002270400122595729249E-14",
+      "maximum_budget_fraction": "0.001086438685328364772991557386277658077128984014299153781795283303899950744623653208317322153153898852",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1616,
+            "group": "historical",
+            "rate": 192000,
+            "slow": 0.0,
+            "fast": 200.0,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                38400,
+                0
+              ],
+              [
+                192000,
+                1
+              ],
+              [
+                16588780800,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.18,
+            "mic": [
+              0.55,
+              -0.63,
+              0.2
+            ],
+            "c": 380.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 16588800000
+          },
+          "query": {
+            "id": 4294,
+            "scene": 1616,
+            "group": "historical",
+            "position": [
+              38915,
+              0.39955753653434906
+            ],
+            "label": "command_crossing",
+            "crossing_anchor": 38400,
+            "side": 1
+          }
+        },
+        "absolute_error": "1.412369451188226233883005303549003853751120002270400122595729249E-14",
+        "budget": "1.29999922707221372810030027550738291091513942053984584995519990918399509617083004E-11"
+      },
+      "rms_error": "1.106754769148011669090867949193555583727521519676525983298589535277999943656354124362130476377899209E-15"
+    },
+    "motion_contribution:total_independent_delay_discrepancy_s": {
+      "count": 4466,
+      "maximum_absolute_error": "2.486452883865286622722123865969479084014892578125E-12",
+      "maximum_budget_fraction": "0.1100213195774165984267359518241618977854868811813052561481654687079132431383991723396061267040535666",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1528,
+            "group": "historical",
+            "rate": 48000,
+            "slow": 0.0,
+            "fast": 85.75,
+            "up": 0.001,
+            "down": 0.01,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 0.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4800,
+                1
+              ],
+              [
+                4800,
+                1
+              ],
+              [
+                9600,
+                0
+              ],
+              [
+                48000,
+                1
+              ],
+              [
+                4147195200,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "regime": "fast_ramps",
+            "through": 4147200000
+          },
+          "query": {
+            "id": 3591,
+            "scene": 1528,
+            "group": "historical",
+            "position": [
+              4147195394,
+              0.729871423921463
+            ],
+            "label": "command_crossing",
+            "crossing_anchor": 4147195200,
+            "side": -1
+          }
+        },
+        "absolute_error": "2.486452883865286622722123865969479084014892578125E-12",
+        "budget": "2.259973697293906624105015417641734781961364762175408238381511929562682215743440233236151603498542274E-11",
+        "motion_root_contribution_bound_s": "2.599736972939066241050154176417347819613647621754082383815119295626822157434402332361516034985422741E-12"
+      },
+      "rms_error": "2.568066486182342528449958016628253381359328797985176934057453136273494209888975471350486566115846306E-13"
+    },
+    "motion_contribution:total_independent_ratio_discrepancy": {
+      "count": 4466,
+      "maximum_absolute_error": "4.76978332248222041125950011872764078844968615160374662597709168629240829364386265064307464E-10",
+      "maximum_budget_fraction": "0",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1478,
+            "group": "historical",
+            "rate": 44100,
+            "slow": 0.0,
+            "fast": 75.0,
+            "up": 60.0,
+            "down": 0.001,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 75.0,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                4410,
+                1
+              ],
+              [
+                8820,
+                0
+              ],
+              [
+                44100,
+                1
+              ],
+              [
+                3810235590,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 300.0,
+            "reference_distance": 1.0,
+            "regime": "fast_decay",
+            "through": 3810240000
+          },
+          "query": {
+            "id": 3192,
+            "scene": 1478,
+            "group": "historical",
+            "position": [
+              3810235726,
+              0.3147994907103206
+            ],
+            "label": "command_crossing",
+            "crossing_anchor": 3810235590,
+            "side": 1
+          }
+        },
+        "absolute_error": "4.76978332248222041125950011872764078844968615160374662597709168629240829364386265064307464E-10",
+        "budget": null
+      },
+      "rms_error": "2.840293846863239634652246675225843302835276897465584526288278854278065999021062692540438578013372581E-11"
+    },
+    "oracle:independent_motion_true_residual_s": {
+      "count": 4466,
+      "maximum_absolute_error": "4.994612440931973484067790317970137473626327149597060291082029288802626045318207287746324E-15",
+      "maximum_budget_fraction": "0.4994612440931973484067790317970137473626327149597060291082029288802626045318207287746324",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1626,
+            "group": "historical",
+            "rate": 192000,
+            "slow": 0.0,
+            "fast": 85.75,
+            "up": 60.0,
+            "down": 0.001,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 85.75,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                38400,
+                0
+              ],
+              [
+                192000,
+                1
+              ],
+              [
+                16588780800,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "regime": "fast_decay",
+            "through": 16588800000
+          },
+          "query": {
+            "id": 4382,
+            "scene": 1626,
+            "group": "historical",
+            "position": [
+              64000,
+              0.625
+            ],
+            "label": "distinct_receiver",
+            "receiver_pair": 1627
+          }
+        },
+        "absolute_error": "4.994612440931973484067790317970137473626327149597060291082029288802626045318207287746324E-15",
+        "budget": "1E-14"
+      },
+      "rms_error": "2.055591398094941031486963860462615550265368769121777731128609556550591301087754300002061301814718260E-15"
+    },
+    "oracle:native_trajectory_true_residual_s": {
+      "count": 4466,
+      "maximum_absolute_error": "4.996395271428293974847826154239565520152671415452812264524730840379709593477956163121883E-15",
+      "maximum_budget_fraction": "0.4996395271428293974847826154239565520152671415452812264524730840379709593477956163121883",
+      "worst_case": {
+        "inputs": {
+          "scene": {
+            "id": 1626,
+            "group": "historical",
+            "rate": 192000,
+            "slow": 0.0,
+            "fast": 85.75,
+            "up": 60.0,
+            "down": 0.001,
+            "direction": 1,
+            "phase": 0.7,
+            "speed": 85.75,
+            "command": 0,
+            "events": [
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                19200,
+                1
+              ],
+              [
+                38400,
+                0
+              ],
+              [
+                192000,
+                1
+              ],
+              [
+                16588780800,
+                0
+              ]
+            ],
+            "origin": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 1.0,
+            "mic": [
+              1.37,
+              -0.63,
+              0.2
+            ],
+            "c": 343.0,
+            "reference_distance": 1.0,
+            "regime": "fast_decay",
+            "through": 16588800000
+          },
+          "query": {
+            "id": 4382,
+            "scene": 1626,
+            "group": "historical",
+            "position": [
+              64000,
+              0.625
+            ],
+            "label": "distinct_receiver",
+            "receiver_pair": 1627
+          }
+        },
+        "absolute_error": "4.996395271428293974847826154239565520152671415452812264524730840379709593477956163121883E-15",
+        "budget": "1E-14"
+      },
+      "rms_error": "2.059544209684969674792511455717186036947765440239424648783899261880977888238194207101468794652907278E-15"
+    }
+  },
+  "derivative_convergence": [
+    {
+      "scene": 1632,
+      "direction": -1,
+      "steps": [
+        {
+          "h_s": 0.002,
+          "native_four_point_error": "0.000006062606893644486818731012236740854051378038194444444444444444444444444444444444444444444444404",
+          "independent_error_by_residual_target": {
+            "1e-10": "0.000006062426902646878927131505558160521710912386576334635416666666666666666666666666666666666666667",
+            "1e-12": "0.000006063313731487854814824108492151329604287942250569661458333333333333333333333333333333333333333",
+            "1e-14": "0.000006062607039043129789993950377417301448682943979899088541666666666666666666666666666666666666667",
+            "1e-16": "0.00000606260911178470307536514383173198439180850982666015625"
+          }
+        },
+        {
+          "h_s": 0.001,
+          "native_four_point_error": "3.75107368277838304493343457579612731933593749999999999999999999999999999999999999999999999975E-7",
+          "independent_error_by_residual_target": {
+            "1e-10": "3.29961362849582699278509304955756912628809611002604166666666666666666666666666666666666666667E-7",
+            "1e-12": "3.75316354168930832457817814429290592670440673828125E-7",
+            "1e-14": "3.75107514279104936605335751664824783802032470703125E-7",
+            "1e-16": "3.75103292684965857380537575712272276480992635091145833333333333333333333333333333333333333333E-7"
+          }
+        },
+        {
+          "h_s": 0.0005,
+          "native_four_point_error": "2.3407244340331898355442616674635145399305555555555555555555555555555555555555555555555555833E-8",
+          "independent_error_by_residual_target": {
+            "1e-10": "3.8067790313530321573883459980910023053487141927083333333333333333333333333333333333333333333E-8",
+            "1e-12": "2.4385277147080201369059674713450173536936442057291666666666666666666666666666666666666666667E-8",
+            "1e-14": "2.3407390394025728852511747390963137149810791015625E-8",
+            "1e-16": "2.3385054383669630813831948519994815190633138020833333333333333333333333333333333333333333333E-8"
+          }
+        },
+        {
+          "h_s": 0.00025,
+          "native_four_point_error": "1.470074037810162634640518161985609266493055555555555555555555555555555555555555555555555433E-9",
+          "independent_error_by_residual_target": {
+            "1e-10": "1.24095324798475144708239289078240593274434407552083333333333333333333333333333333333333333333E-7",
+            "1e-12": "2.087835187144134370858713130777080853780110677083333333333333333333333333333333333333333333E-9",
+            "1e-14": "1.4702186967863184463567449711263179779052734375E-9",
+            "1e-16": "1.460690438973936503922838407258192698160807291666666666666666666666666666666666666666666667E-9"
+          }
+        },
+        {
+          "h_s": 0.000125,
+          "native_four_point_error": "1.55664715685411970803721083535088433159722222222222222222222222222222222222222222222222467E-10",
+          "independent_error_by_residual_target": {
+            "1e-10": "5.1328675099160392392150242812931537628173828125E-7",
+            "1e-12": "6.6486666450149556339965783990919589996337890625E-9",
+            "1e-14": "1.55810623662470485821055869261423746744791666666666666666666666666666666666666666666666667E-10",
+            "1e-16": "9.13494557774896520641050301492214202880859375E-11"
+          }
+        },
+        {
+          "h_s": 6.25e-05,
+          "native_four_point_error": "3.4350201695411265569014681710137261284722222222222222222222222222222222222222222222222667E-11",
+          "independent_error_by_residual_target": {
+            "1e-10": "0.0000013029399319464118889300152659416198730468750000",
+            "1e-12": "2.472993957762052256536359588305155436197916666666666666666666666666666666666666666666666667E-9",
+            "1e-14": "3.4201734037490420329656141499678293863932291666666666666666666666666666666666666666666667E-11",
+            "1e-16": "6.649847339446068872348405420780181884765625E-12"
+          }
+        }
+      ]
+    },
+    {
+      "scene": 1633,
+      "direction": 1,
+      "steps": [
+        {
+          "h_s": 0.002,
+          "native_four_point_error": "0.000015157432275931310212197584203547901577419704861111111111111111111111111111111111111111111111125",
+          "independent_error_by_residual_target": {
+            "1e-10": "0.000015130748072939593599587719078651086116830507914225260416666666666666666666666666666666666666667",
+            "1e-12": "0.00001515735295645574687295464855196769349277019500732421875",
+            "1e-14": "0.0000151574321376919673998173720974591560661792755126953125",
+            "1e-16": "0.000015157432647772949481831024816832117115457852681477864583333333333333333333333333333333333333333"
+          }
+        },
+        {
+          "h_s": 0.001,
+          "native_four_point_error": "9.35152476492599286454302879671255747477213541666666666666666666666666666666666666666666666667E-7",
+          "independent_error_by_residual_target": {
+            "1e-10": "9.8201771164818651982386654708534479141235351562500E-7",
+            "1e-12": "9.34762371020946466101027757152526949842770894368489583333333333333333333333333333333333333333E-7",
+            "1e-14": "9.35152338014828369653722954050560171405474344889322916666666666666666666666666666666666666667E-7",
+            "1e-16": "9.35146399550409087216470046162915726502736409505208333333333333333333333333333333333333333333E-7"
+          }
+        },
+        {
+          "h_s": 0.0005,
+          "native_four_point_error": "5.828204718838492226495873183012008666992187500000000000000000000000000000000000000000000005E-8",
+          "independent_error_by_residual_target": {
+            "1e-10": "1.87418528032704904499420687595071891943613688151041666666666666666666666666666666666666666667E-7",
+            "1e-12": "5.7941429285289040388799245799115548531214396158854166666666666666666666666666666666666666667E-8",
+            "1e-14": "5.8281908810649725912374681987178822358449300130208333333333333333333333333333333333333333333E-8",
+            "1e-16": "5.8259639298026873651300168906648953755696614583333333333333333333333333333333333333333333333E-8"
+          }
+        },
+        {
+          "h_s": 0.00025,
+          "native_four_point_error": "3.607431933419194239023555484082963731553819444444444444444444444444444444444444444444444567E-9",
+          "independent_error_by_residual_target": {
+            "1e-10": "1.54985910677067166100565979528861741224924723307291666666666666666666666666666666666666666667E-7",
+            "1e-12": "3.464767243943622787583080935291945934295654296875E-9",
+            "1e-14": "3.607294148573932564734908131261666615804036458333333333333333333333333333333333333333333333E-9",
+            "1e-16": "3.638471755366505059707075512657562891642252604166666666666666666666666666666666666666666667E-9"
+          }
+        },
+        {
+          "h_s": 0.000125,
+          "native_four_point_error": "2.34306746844165698146551019615597195095486111111111111111111111111111111111111111111111333E-10",
+          "independent_error_by_residual_target": {
+            "1e-10": "2.5255426509366666702286844762663046518961588541666666666666666666666666666666666666666666667E-8",
+            "1e-12": "7.012078704719352610178854471693436304728190104166666666666666666666666666666666666666666667E-9",
+            "1e-14": "2.34169452347406566635375687231620152791341145833333333333333333333333333333333333333333333E-10",
+            "1e-16": "2.268651100312268908965052105486392974853515625E-10"
+          }
+        },
+        {
+          "h_s": 6.25e-05,
+          "native_four_point_error": "7.5944929357597680387294126881493462456597222222222222222222222222222222222222222222223067E-11",
+          "independent_error_by_residual_target": {
+            "1e-10": "0.000001582021161350422033819995704106986522674560546875",
+            "1e-12": "7.177200676370768898474731637785832087198893229166666666666666666666666666666666666666666667E-9",
+            "1e-14": "7.58053897431665291151148267090320587158203125E-11",
+            "1e-16": "1.4677203896695800722227431833744049072265625E-11"
+          }
+        }
+      ]
+    }
+  ],
+  "receiver_emission_differences": [
+    {
+      "scene": 1441,
+      "other_scene": 1440,
+      "delay_difference_s": "0.0012799153303475678360168199532154176267795264720916748046875"
+    },
+    {
+      "scene": 1443,
+      "other_scene": 1442,
+      "delay_difference_s": "0.0027828876197920873920843565230143212829716503620147705078125"
+    },
+    {
+      "scene": 1445,
+      "other_scene": 1444,
+      "delay_difference_s": "0.0011194593431055640912752391358253589714877307415008544921875"
+    },
+    {
+      "scene": 1447,
+      "other_scene": 1446,
+      "delay_difference_s": "0.00243401249542979890294613909418330877088010311126708984375"
+    },
+    {
+      "scene": 1449,
+      "other_scene": 1448,
+      "delay_difference_s": "0.0010104592780905605718666517844894769950769841670989990234375"
+    },
+    {
+      "scene": 1451,
+      "other_scene": 1450,
+      "delay_difference_s": "0.002197016541927425230251724741492580506019294261932373046875"
+    },
+    {
+      "scene": 1453,
+      "other_scene": 1452,
+      "delay_difference_s": "0.00470525142791295217237212966665538260713219642639160156250"
+    },
+    {
+      "scene": 1455,
+      "other_scene": 1454,
+      "delay_difference_s": "0.0061259906770042386880970042284388910047709941864013671875"
+    },
+    {
+      "scene": 1457,
+      "other_scene": 1456,
+      "delay_difference_s": "0.001978161216643794899361363803791391546837985515594482421875"
+    },
+    {
+      "scene": 1459,
+      "other_scene": 1458,
+      "delay_difference_s": "0.0054238724149105071482834805607353700906969606876373291015625"
+    },
+    {
+      "scene": 1461,
+      "other_scene": 1460,
+      "delay_difference_s": "0.0027005549746562627910773102257735445164144039154052734375"
+    },
+    {
+      "scene": 1463,
+      "other_scene": 1462,
+      "delay_difference_s": "0.0049466360067126741682785873166494639008305966854095458984375"
+    },
+    {
+      "scene": 1465,
+      "other_scene": 1464,
+      "delay_difference_s": "0.002211057408050501153773392815082843299023807048797607421875"
+    },
+    {
+      "scene": 1467,
+      "other_scene": 1466,
+      "delay_difference_s": "0.002213136438703249171677800433144511771388351917266845703125"
+    },
+    {
+      "scene": 1469,
+      "other_scene": 1468,
+      "delay_difference_s": "0.0019338696831048027106880748959838456357829272747039794921875"
+    },
+    {
+      "scene": 1471,
+      "other_scene": 1470,
+      "delay_difference_s": "0.00193568784726231776782690019444999052211642265319824218750"
+    },
+    {
+      "scene": 1473,
+      "other_scene": 1472,
+      "delay_difference_s": "0.0017455719804312778455079868678012644522823393344879150390625"
+    },
+    {
+      "scene": 1475,
+      "other_scene": 1474,
+      "delay_difference_s": "0.001747212977923616808451079407404904486611485481262207031250"
+    },
+    {
+      "scene": 1477,
+      "other_scene": 1476,
+      "delay_difference_s": "0.003835276319060852701081643090219586156308650970458984375"
+    },
+    {
+      "scene": 1479,
+      "other_scene": 1478,
+      "delay_difference_s": "0.00503555551191307328162682921401938074268400669097900390625"
+    },
+    {
+      "scene": 1481,
+      "other_scene": 1480,
+      "delay_difference_s": "0.00015048174022590406206933977273365599103271961212158203125"
+    },
+    {
+      "scene": 1483,
+      "other_scene": 1482,
+      "delay_difference_s": "0.004333797268593891395538353350502802641130983829498291015625"
+    },
+    {
+      "scene": 1485,
+      "other_scene": 1484,
+      "delay_difference_s": "0.004802897002274225494999893015801717410795390605926513671875"
+    },
+    {
+      "scene": 1487,
+      "other_scene": 1486,
+      "delay_difference_s": "0.003856909738317398049500805967682026675902307033538818359375"
+    },
+    {
+      "scene": 1489,
+      "other_scene": 1488,
+      "delay_difference_s": "0.0013129609463849215532371683679002671851776540279388427734375"
+    },
+    {
+      "scene": 1491,
+      "other_scene": 1490,
+      "delay_difference_s": "0.0027775075053233272588670832448087821830995380878448486328125"
+    },
+    {
+      "scene": 1493,
+      "other_scene": 1492,
+      "delay_difference_s": "0.00114836220602350554120807402114223805256187915802001953125"
+    },
+    {
+      "scene": 1495,
+      "other_scene": 1494,
+      "delay_difference_s": "0.002429306855967925012074193347189066116698086261749267578125"
+    },
+    {
+      "scene": 1497,
+      "other_scene": 1496,
+      "delay_difference_s": "0.0010365479100399124269549222532305066124536097049713134765625"
+    },
+    {
+      "scene": 1499,
+      "other_scene": 1498,
+      "delay_difference_s": "0.002192769083149997098869388167940996936522424221038818359375"
+    },
+    {
+      "scene": 1501,
+      "other_scene": 1500,
+      "delay_difference_s": "0.004807202842984011591231929827472413307987153530120849609375"
+    },
+    {
+      "scene": 1503,
+      "other_scene": 1502,
+      "delay_difference_s": "0.0061147632868299717223692368861520662903785705566406250000"
+    },
+    {
+      "scene": 1505,
+      "other_scene": 1504,
+      "delay_difference_s": "0.001901788404827543625674746152753868955187499523162841796875"
+    },
+    {
+      "scene": 1507,
+      "other_scene": 1506,
+      "delay_difference_s": "0.005412708605820797623520146402142927399836480617523193359375"
+    },
+    {
+      "scene": 1509,
+      "other_scene": 1508,
+      "delay_difference_s": "0.002741697502715891021640715052853920497000217437744140625"
+    },
+    {
+      "scene": 1511,
+      "other_scene": 1510,
+      "delay_difference_s": "0.004935528283554026403312509074794434127397835254669189453125"
+    },
+    {
+      "scene": 1513,
+      "other_scene": 1512,
+      "delay_difference_s": "0.0021588427097702371677823141027374731493182480335235595703125"
+    },
+    {
+      "scene": 1515,
+      "other_scene": 1514,
+      "delay_difference_s": "0.0022196020502908086168003531923886839649640023708343505859375"
+    },
+    {
+      "scene": 1517,
+      "other_scene": 1516,
+      "delay_difference_s": "0.001888200849782435859769424979504037764854729175567626953125"
+    },
+    {
+      "scene": 1519,
+      "other_scene": 1518,
+      "delay_difference_s": "0.001941342901128985214131983383367696660570800304412841796875"
+    },
+    {
+      "scene": 1521,
+      "other_scene": 1520,
+      "delay_difference_s": "0.001704349848759026571365371438560032402165234088897705078125"
+    },
+    {
+      "scene": 1523,
+      "other_scene": 1522,
+      "delay_difference_s": "0.001752317408124323162843527512677610502578318119049072265625"
+    },
+    {
+      "scene": 1525,
+      "other_scene": 1524,
+      "delay_difference_s": "0.00381775293857959489851605638932596775703132152557373046875"
+    },
+    {
+      "scene": 1527,
+      "other_scene": 1526,
+      "delay_difference_s": "0.00504750646047498474633385967536014504730701446533203125"
+    },
+    {
+      "scene": 1529,
+      "other_scene": 1528,
+      "delay_difference_s": "0.0002471946614359711580366507632788852788507938385009765625"
+    },
+    {
+      "scene": 1531,
+      "other_scene": 1530,
+      "delay_difference_s": "0.00434578919339480458650104566231675562448799610137939453125"
+    },
+    {
+      "scene": 1533,
+      "other_scene": 1532,
+      "delay_difference_s": "0.004706730934279071756898282785641640657559037208557128906250"
+    },
+    {
+      "scene": 1535,
+      "other_scene": 1534,
+      "delay_difference_s": "0.00386893582161536297991943911256385035812854766845703125"
+    },
+    {
+      "scene": 1537,
+      "other_scene": 1536,
+      "delay_difference_s": "0.00155538082455383350199973335747927194461226463317871093750"
+    },
+    {
+      "scene": 1539,
+      "other_scene": 1538,
+      "delay_difference_s": "0.002746699102671910051876036362727973028086125850677490234375"
+    },
+    {
+      "scene": 1541,
+      "other_scene": 1540,
+      "delay_difference_s": "0.0013603912093309209439817575315601061447523534297943115234375"
+    },
+    {
+      "scene": 1543,
+      "other_scene": 1542,
+      "delay_difference_s": "0.002402360731199923611633995079728265409357845783233642578125"
+    },
+    {
+      "scene": 1545,
+      "other_scene": 1544,
+      "delay_difference_s": "0.001227931957938220748627333733793420833535492420196533203125"
+    },
+    {
+      "scene": 1547,
+      "other_scene": 1546,
+      "delay_difference_s": "0.002168446660004139971145153964471319341100752353668212890625"
+    },
+    {
+      "scene": 1549,
+      "other_scene": 1548,
+      "delay_difference_s": "0.005430693600028196725559848090369996498338878154754638671875"
+    },
+    {
+      "scene": 1551,
+      "other_scene": 1550,
+      "delay_difference_s": "0.00605110956959728843451706836731318617239594459533691406250"
+    },
+    {
+      "scene": 1553,
+      "other_scene": 1552,
+      "delay_difference_s": "0.001398863991330898635945256813783998950384557247161865234375"
+    },
+    {
+      "scene": 1555,
+      "other_scene": 1554,
+      "delay_difference_s": "0.00534938394677475156924195687224710127338767051696777343750"
+    },
+    {
+      "scene": 1557,
+      "other_scene": 1556,
+      "delay_difference_s": "0.002947625396029415582865862432981884921900928020477294921875"
+    },
+    {
+      "scene": 1559,
+      "other_scene": 1558,
+      "delay_difference_s": "0.004872493408261557683303077936898262123577296733856201171875"
+    },
+    {
+      "scene": 1561,
+      "other_scene": 1560,
+      "delay_difference_s": "0.0018399880460247216608371534363186583505012094974517822265625"
+    },
+    {
+      "scene": 1563,
+      "other_scene": 1562,
+      "delay_difference_s": "0.002256108056994220699420505837906603119336068630218505859375"
+    },
+    {
+      "scene": 1565,
+      "other_scene": 1564,
+      "delay_difference_s": "0.001609319203721616513280689986231664079241454601287841796875"
+    },
+    {
+      "scene": 1567,
+      "other_scene": 1566,
+      "delay_difference_s": "0.001973272353056170110019440500082055223174393177032470703125"
+    },
+    {
+      "scene": 1569,
+      "other_scene": 1568,
+      "delay_difference_s": "0.001452622459080035906275885082550303195603191852569580078125"
+    },
+    {
+      "scene": 1571,
+      "other_scene": 1570,
+      "delay_difference_s": "0.001781137939732281051663509430227350094355642795562744140625"
+    },
+    {
+      "scene": 1573,
+      "other_scene": 1572,
+      "delay_difference_s": "0.003664883534424185317079913914994904189370572566986083984375"
+    },
+    {
+      "scene": 1575,
+      "other_scene": 1574,
+      "delay_difference_s": "0.005114956351123843038275484929044978343881666660308837890625"
+    },
+    {
+      "scene": 1577,
+      "other_scene": 1576,
+      "delay_difference_s": "0.000829905041834384619992004417099451529793441295623779296875"
+    },
+    {
+      "scene": 1579,
+      "other_scene": 1578,
+      "delay_difference_s": "0.0044134579809104630687688342050023493357002735137939453125"
+    },
+    {
+      "scene": 1581,
+      "other_scene": 1580,
+      "delay_difference_s": "0.004095931627987597391238328015106162638403475284576416015625"
+    },
+    {
+      "scene": 1583,
+      "other_scene": 1582,
+      "delay_difference_s": "0.00393678756992554314264598502859371365047991275787353515625"
+    },
+    {
+      "scene": 1585,
+      "other_scene": 1584,
+      "delay_difference_s": "0.001715024742249716439845830251442748703993856906890869140625"
+    },
+    {
+      "scene": 1587,
+      "other_scene": 1586,
+      "delay_difference_s": "0.002731054024214566236516965602731943363323807716369628906250"
+    },
+    {
+      "scene": 1589,
+      "other_scene": 1588,
+      "delay_difference_s": "0.00150002143864440620757427780063153477385640144348144531250"
+    },
+    {
+      "scene": 1591,
+      "other_scene": 1590,
+      "delay_difference_s": "0.00238867698910894855901521083296756842173635959625244140625"
+    },
+    {
+      "scene": 1593,
+      "other_scene": 1592,
+      "delay_difference_s": "0.00135396660094318915801281377753184642642736434936523437500"
+    },
+    {
+      "scene": 1595,
+      "other_scene": 1594,
+      "delay_difference_s": "0.002156095282274658742061035354709019884467124938964843750"
+    },
+    {
+      "scene": 1597,
+      "other_scene": 1596,
+      "delay_difference_s": "0.00577343171530141259506496709263956290669739246368408203125"
+    },
+    {
+      "scene": 1599,
+      "other_scene": 1598,
+      "delay_difference_s": "0.006019172113557752328005800990240459213964641094207763671875"
+    },
+    {
+      "scene": 1601,
+      "other_scene": 1600,
+      "delay_difference_s": "0.00109657393273999460847623055315125384368002414703369140625"
+    },
+    {
+      "scene": 1603,
+      "other_scene": 1602,
+      "delay_difference_s": "0.005317592106544535672518758673277261550538241863250732421875"
+    },
+    {
+      "scene": 1605,
+      "other_scene": 1604,
+      "delay_difference_s": "0.003023044643775562277665525101610910496674478054046630859375"
+    },
+    {
+      "scene": 1607,
+      "other_scene": 1606,
+      "delay_difference_s": "0.004840829521612319795431655933271031244657933712005615234375"
+    },
+    {
+      "scene": 1609,
+      "other_scene": 1608,
+      "delay_difference_s": "0.00167120761433874054358028615752118639647960662841796875000"
+    },
+    {
+      "scene": 1611,
+      "other_scene": 1610,
+      "delay_difference_s": "0.0022743217614254874862911304234103226917795836925506591796875"
+    },
+    {
+      "scene": 1613,
+      "other_scene": 1612,
+      "delay_difference_s": "0.0014616978189712962442337040869233533157967031002044677734375"
+    },
+    {
+      "scene": 1615,
+      "other_scene": 1614,
+      "delay_difference_s": "0.001989202706786139841776961389996358775533735752105712890625"
+    },
+    {
+      "scene": 1617,
+      "other_scene": 1616,
+      "delay_difference_s": "0.001319374726216517371146785819746583001688122749328613281250"
+    },
+    {
+      "scene": 1619,
+      "other_scene": 1618,
+      "delay_difference_s": "0.001795517180072753529729290278282860526815056800842285156250"
+    },
+    {
+      "scene": 1621,
+      "other_scene": 1620,
+      "delay_difference_s": "0.0035474799096298255396408904971394804306328296661376953125"
+    },
+    {
+      "scene": 1623,
+      "other_scene": 1622,
+      "delay_difference_s": "0.005148604312049405613838093387357730534859001636505126953125"
+    },
+    {
+      "scene": 1625,
+      "other_scene": 1624,
+      "delay_difference_s": "0.00114262670271150258705095126288142637349665164947509765625"
+    },
+    {
+      "scene": 1627,
+      "other_scene": 1626,
+      "delay_difference_s": "0.004447206894662607441770507676892520976252853870391845703125"
+    },
+    {
+      "scene": 1629,
+      "other_scene": 1628,
+      "delay_difference_s": "0.003743739064368144763006451825049225590191781520843505859375"
+    },
+    {
+      "scene": 1631,
+      "other_scene": 1630,
+      "delay_difference_s": "0.00397062114654119467649362462680073804222047328948974609375"
+    }
+  ],
+  "failure_count": 0,
+  "failures": [],
+  "independence": "Converged 100-digit sin/cos series and Cartesian square root; independent batched bisection on native states; original independent 80-digit Decimal timeline and offline solver; no production approximation copied",
+  "scope": "R3 numerical primitives; R2 prerequisites and API/rejection lifetime coverage are separate native suites",
+  "exclusions": [
+    "R4 waveform rendering",
+    "R5 audible policy",
+    "R6 integration and deadlines",
+    "physical cabinet calibration",
+    "host and audio device qualification"
+  ]
+}

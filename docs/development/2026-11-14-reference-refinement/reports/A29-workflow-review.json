@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "kind": "A29 static workflow and source admission review",
+  "source_head": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "checks": {
+    "yaml_documents": 2,
+    "bash_blocks": 30,
+    "python_blocks": 10
+  },
+  "sanitizer_count": 16,
+  "sanitizer_targets": [
+    "test_standalone_ui",
+    "test_standalone_preset_ui",
+    "test_standalone_workspaces_author",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_projection",
+    "test_standalone_inspection_author",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_drawing",
+    "test_standalone_quad_drawing",
+    "test_standalone_workspace_raster",
+    "test_standalone_scaled_view",
+    "test_standalone_preset_raster",
+    "test_standalone_reference_layout",
+    "test_standalone_inspection_raster",
+    "test_standalone_material_acceptance"
+  ],
+  "added_targets": [
+    "test_standalone_inspection_raster",
+    "test_standalone_material_acceptance",
+    "test_standalone_reference_layout"
+  ],
+  "policy_preserved": true,
+  "native_required_admission": [
+    "test_standalone_inspection_raster",
+    "test_standalone_material_acceptance",
+    "test_standalone_reference_layout"
+  ],
+  "core_cpp_autoregistered": [
+    "test_rotary_motion",
+    "test_rotary_propagation",
+    "test_rotary_propagation_allocation"
+  ],
+  "core_python_autoregistered": [
+    "python_test_rotary_motion_acceptance",
+    "python_test_rotary_propagation_acceptance"
+  ],
+  "core_probe_bindings_verified": true,
+  "core_build_and_ctest_unfiltered": true,
+  "apt_step_minutes": 8,
+  "apt_retries": 3,
+  "apt_http_and_https_timeout_seconds": 30,
+  "apt_dpkg_lock_timeout_seconds": 60,
+  "apt_refresh_errors_are_fatal": true,
+  "source_sha256": {
+    ".github/workflows/standalone.yml": "d43c847855e375936c15b68731031ce37393b93b073173e67b1c8e8f67075610",
+    ".github/workflows/ci.yml": "dff4199953804baf7f6bab50f5642952ef0fb407baec6968a0c5d96396a884c3",
+    "CMakeLists.txt": "a1865e59816ed4a63c9a0d8ed95c9aaea1951960f969fe209a3309cc3f2f99e7",
+    "apps/standalone/CMakeLists.txt": "3d3bcf0bd6ee595bed01e9d6090fe9e1ac221e1963795dfbaf23e630d4c2fa62",
+    "CMakePresets.json": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8"
+  },
+  "limits": "Source/syntax review only; no configure, build, CTest, package operation, or hosted execution of this changed workflow.",
+  "discovery_admission_validation": {
+    "payload_kind": "Synthetic CTest JSON to exercise the exact workflow Python; no CTest process or native binary executed.",
+    "passed_cases": 11,
+    "cases": [
+      {
+        "case": "complete_16",
+        "accepted": true,
+        "expected": true
+      },
+      {
+        "case": "missing_test_standalone_reference_layout",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "missing_test_standalone_inspection_raster",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "missing_test_standalone_material_acceptance",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "duplicate_target",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "unexpected_target",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "disabled",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "leak_override",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "leak_modification",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "missing_built_command",
+        "accepted": false,
+        "expected": false
+      },
+      {
+        "case": "changed_material_deadline",
+        "accepted": false,
+        "expected": false
+      }
+    ]
+  },
+  "validation_tools": {
+    "python": "3.12.14",
+    "pyyaml": "6.0.3",
+    "bash": "GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)",
+    "git": "git version 2.52.0"
+  }
+}

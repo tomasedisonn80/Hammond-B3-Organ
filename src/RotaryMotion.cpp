@@ -48,11 +48,12 @@ constexpr std::uint64_t kLargestEpochFrames = kMaxEpochSeconds * 192000ULL;
     return Status::Ok;
 }
 
-// g(z)=z+expm1(-z). The alternating polynomial is evaluated only for z<1/8;
-// its terms through z^12 leave less than 4e-20 relative remainder there.
-// Unlike subtracting z from expm1, this preserves the O(z^2) start-from-rest
-// angle. Fixed work and no termination test depend on the input's magnitude.
-[[nodiscard]] double small_angle_remainder(double z) noexcept {
+// g(z)/z, where g(z)=z+expm1(-z). The alternating polynomial is evaluated only
+// for z<1/8; its terms through z^12 leave <4e-20 relative remainder there.
+// The caller supplies the other z through elapsed=tau*z: forming z*z here
+// would underflow before a representable scaled angle can be produced.
+// Fixed work and no termination test depend on the input's magnitude.
+[[nodiscard]] double small_angle_remainder_over_z(double z) noexcept {
     double polynomial = 1.0 / 479001600.0; // +1/12!
     polynomial = -1.0 / 39916800.0 + z * polynomial;
     polynomial = 1.0 / 3628800.0 + z * polynomial;
@@ -64,7 +65,7 @@ constexpr std::uint64_t kLargestEpochFrames = kMaxEpochSeconds * 192000ULL;
     polynomial = 1.0 / 24.0 + z * polynomial;
     polynomial = -1.0 / 6.0 + z * polynomial;
     polynomial = 0.5 + z * polynomial;
-    return z * (z * polynomial);
+    return z * polynomial;
 }
 
 // Add bounded physical angle without ever converting the retained integer
@@ -121,6 +122,18 @@ constexpr std::uint64_t kLargestEpochFrames = kMaxEpochSeconds * 192000ULL;
     MotionEvaluation whole;
     Status status = evaluate_motion_segment(segment, static_cast<double>(seconds), whole);
     if (status != Status::Ok) return status;
+    if (remaining == 0 && fraction != 0.0
+        && subsecond < std::numeric_limits<double>::min()) {
+        // A positive fraction/rate can round to zero before multiplication by
+        // the admitted angular acceleration. At this scale all curvature is
+        // unrepresentable; apply the linear terms before division by the rate.
+        const double slope_per_frame = (segment.target_rad_s - whole.state.speed_rad_s)
+                                     / (segment.tau_s * sample_rate);
+        const double speed = std::fma(slope_per_frame, fraction, whole.state.speed_rad_s);
+        const double distance = static_cast<double>(segment.direction)
+                              * (whole.state.speed_rad_s / sample_rate) * fraction;
+        return add_angle(whole.state, distance, speed, destination);
+    }
     if (subsecond == 0.0) {
         destination = whole.state;
         return Status::Ok;
@@ -193,11 +206,22 @@ Status evaluate_motion_segment(const MotionSegment& segment, double elapsed_s,
     if (difference != 0.0) {
         const double q = -std::expm1(-z);
         if (z < 0.125) {
-            speed = std::fma(difference, q, start);
-            distance = std::fma(difference * tau, small_angle_remainder(z), distance);
+            // With subnormal z, division by tau may erase an observable speed
+            // before multiplying by the target. The O(z^2) correction is then
+            // unrepresentable, so scale the initial slope before elapsed time.
+            speed = z < std::numeric_limits<double>::min()
+                  ? std::fma(difference / tau, elapsed_s, start)
+                  : std::fma(difference, q, start);
+            distance = std::fma(difference * elapsed_s, small_angle_remainder_over_z(z), distance);
         } else {
-            // This retains a nonzero decaying tail when the target is zero.
-            speed = std::fma(start - target, std::exp(-z), target);
+            // Split only the extreme decay so exp(-z) cannot underflow before
+            // multiplication by an admitted speed preserves a subnormal tail.
+            if (z > 700.0) {
+                const double half_decay = std::exp(-0.5 * z);
+                speed = std::fma((start - target) * half_decay, half_decay, target);
+            } else {
+                speed = std::fma(start - target, std::exp(-z), target);
+            }
             distance = std::fma((start - target) * tau, q, target * elapsed_s);
         }
     }

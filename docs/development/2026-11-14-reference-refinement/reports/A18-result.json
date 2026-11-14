@@ -1,0 +1,107 @@
+{
+  "agent": "/root/w03_a18_pending_raster_impl",
+  "assignment": "A18",
+  "binary": {
+    "bytes": 3445104,
+    "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/test_standalone_inspection_raster",
+    "sha256": "44e059f761aff6c04af62088b7a26d500839f95043e297dcf7769c08e3094b60"
+  },
+  "build_exit_code": 0,
+  "built_identity_report": "A18-built-identity.json",
+  "capture": {
+    "acknowledged_frame_clock": 32,
+    "acknowledged_publication_revision": 8,
+    "assertions": 965,
+    "changed_pixels": [
+      5317,
+      2918,
+      2698
+    ],
+    "elapsed_seconds": 0.58763,
+    "exit_code": 0,
+    "fault_flags_all_observations": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "frames": 6,
+    "note_sequence": 1,
+    "pending_frame_clock": 32,
+    "pending_publication_revision": 6,
+    "preset_sequence": 2,
+    "release_sequence": 3
+  },
+  "capture_inventory": "A18-pending-capture/capture-inventory.json",
+  "commands": [
+    [
+      "../build-tools/cmake/data/bin/cmake",
+      "--build",
+      "../build-native",
+      "--target",
+      "test_standalone_inspection_author",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_raster",
+      "--parallel",
+      "2"
+    ],
+    [
+      "../build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "../build-native",
+      "-R",
+      "^test_standalone_inspection_(author|acceptance|raster)$",
+      "--output-on-failure",
+      "--no-tests=error"
+    ],
+    [
+      "../build-native/apps/standalone/test_standalone_inspection_raster",
+      "--capture-dir",
+      "../A18-inspection-pending-raw"
+    ]
+  ],
+  "ctest": {
+    "failed": 0,
+    "passed": 3,
+    "raster_seconds": 0.61,
+    "real_seconds": 0.63
+  },
+  "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+  "evidence_kind": "native rendering harness captures, no application window or audio device",
+  "harness_source_sha256": "d04873c3d4d7d2b76c2c678e592ac8bc8e13f01af64faafce581fbf69b35950d",
+  "limits": [
+    "Native rendering harness, no whole-application desktop/window interaction or physical device qualification.",
+    "No physical fidelity or literal reference-image equality claim.",
+    "PNG conversion preserves every decoded RGBA pixel; original BMP sizes/hashes retained in capture inventory.",
+    "Observed 102-input source subset excludes separately in-progress RotaryPropagation sources; not a full working-tree attestation.",
+    "No Session, UiModel, main.cpp or production timing changes by A18."
+  ],
+  "native_metadata": "A18-pending-capture/native-metadata.json",
+  "ordinary_run": {
+    "exit_code": 0,
+    "files_created_in_empty_cwd": [],
+    "stderr": "",
+    "stdout": "Native inspection rendering harness: 6 frames; q=2; frame clock pending/acknowledged=32/32; publication pending/acknowledged=6/8; changed pixels=5317,2918,2698; assertions=947; no application window or audio device\nElapsed 0.681182 seconds\n"
+  },
+  "profile": {
+    "bytes": 4545,
+    "path": "/workspace/scratch/1bb6ee17ad7e/build-native/nominal.b3p",
+    "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+  },
+  "schema_version": 1,
+  "source_before_report": "A18-source-before.json",
+  "visual_review": {
+    "findings": [
+      "Pending Play retains applied Bank B, a distinct F pending marker and the held Upper key; acknowledged Play shows sounding Fixed F with the same held key.",
+      "Both Service sizes visibly show Current snapshot, frame 32, revision 6 and DESIRED CONTROLS PENDING before acknowledgement; revision 8 and pending removal follow.",
+      "Upper 1 target and Lower/Pedals 0 targets are legible at both sizes; retained Upper text changes from Sound Bank B / Edit B to Sound Fixed F / Edit B.",
+      "No label collision or clipping was observed in these six frames. Minimum-size typography remains small and is not a native display/DPI acceptance.",
+      "Audio stopped/no active audio configuration remains truthful because the harness opens no audio device."
+    ],
+    "inspected_pngs": 6,
+    "reviewer": "A18"
+  },
+  "wave": 3
+}

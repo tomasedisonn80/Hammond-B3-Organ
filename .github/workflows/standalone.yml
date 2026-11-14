@@ -171,14 +171,20 @@ jobs:
 
       - name: Install Ubuntu desktop and audio development headers
         if: runner.os == 'Linux'
+        timeout-minutes: 8
         run: |
           set -euo pipefail
           # Selected from the locked SDL2 docs/README-linux.md; runner setup only.
           packages=(pkg-config libasound2-dev libpulse-dev libx11-dev libxext-dev
                     libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev)
+          # Bound stalled mirrors/locks and fail on incomplete repository refreshes.
+          apt_options=(-o Acquire::Retries=3 -o Acquire::http::Timeout=30
+                       -o Acquire::https::Timeout=30 -o DPkg::Lock::Timeout=60
+                       -o APT::Update::Error-Mode=any)
           printf '%s\n' "${packages[@]}" > standalone-ci-logs/ubuntu-requested-packages.txt
-          sudo apt-get update 2>&1 | tee standalone-ci-logs/apt-update.log
-          sudo apt-get install --no-install-recommends -y "${packages[@]}" \
+          printf '%s\n' "${apt_options[@]}" > standalone-ci-logs/ubuntu-apt-options.txt
+          sudo apt-get "${apt_options[@]}" update 2>&1 | tee standalone-ci-logs/apt-update.log
+          sudo apt-get "${apt_options[@]}" install --no-install-recommends -y "${packages[@]}" \
             2>&1 | tee standalone-ci-logs/apt-install.log
           dpkg-query -W -f='${binary:Package}\t${Version}\t${Architecture}\n' \
             | LC_ALL=C sort > standalone-ci-logs/ubuntu-installed-packages.tsv
@@ -387,7 +393,9 @@ jobs:
                       "test_standalone_projection", "test_standalone_quad_drawing",
                       "test_standalone_inspection_author", "test_standalone_inspection_acceptance",
                       "test_standalone_workspace_replay", "test_standalone_workspace_raster",
-                      "test_standalone_workspace_continuity", "test_standalone_scaled_view"}
+                      "test_standalone_workspace_continuity", "test_standalone_scaled_view",
+                      "test_standalone_reference_layout", "test_standalone_inspection_raster",
+                      "test_standalone_material_acceptance"}
           assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
           print("Discovered", len(names), "standalone tests, including required MIDI, workspace, inspection and drawing gates.", flush=True)
           PY
@@ -605,7 +613,8 @@ jobs:
         test_standalone_inspection_acceptance test_standalone_workspace_continuity
         test_standalone_drawing test_standalone_quad_drawing
         test_standalone_workspace_raster test_standalone_scaled_view
-        test_standalone_preset_raster
+        test_standalone_preset_raster test_standalone_reference_layout
+        test_standalone_inspection_raster test_standalone_material_acceptance
     steps:
       - name: Check out the exact tested revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -669,14 +678,20 @@ jobs:
           PY
 
       - name: Install Ubuntu desktop and audio development headers
+        timeout-minutes: 8
         run: |
           set -euo pipefail
           # Reuse the Release runner setup; leave SDL's native backend detection enabled.
           packages=(pkg-config libasound2-dev libpulse-dev libx11-dev libxext-dev
                     libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev)
+          # Bound stalled mirrors/locks and fail on incomplete repository refreshes.
+          apt_options=(-o Acquire::Retries=3 -o Acquire::http::Timeout=30
+                       -o Acquire::https::Timeout=30 -o DPkg::Lock::Timeout=60
+                       -o APT::Update::Error-Mode=any)
           printf '%s\n' "${packages[@]}" > standalone-sanitizer-logs/ubuntu-requested-packages.txt
-          sudo apt-get update 2>&1 | tee standalone-sanitizer-logs/apt-update.log
-          sudo apt-get install --no-install-recommends -y "${packages[@]}" \
+          printf '%s\n' "${apt_options[@]}" > standalone-sanitizer-logs/ubuntu-apt-options.txt
+          sudo apt-get "${apt_options[@]}" update 2>&1 | tee standalone-sanitizer-logs/apt-update.log
+          sudo apt-get "${apt_options[@]}" install --no-install-recommends -y "${packages[@]}" \
             2>&1 | tee standalone-sanitizer-logs/apt-install.log
           dpkg-query -W -f='${binary:Package}\t${Version}\t${Architecture}\n' \
             | LC_ALL=C sort > standalone-sanitizer-logs/ubuntu-installed-packages.tsv
@@ -697,11 +712,11 @@ jobs:
             '-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' \
             2>&1 | tee standalone-sanitizer-logs/configure.log
 
-      - name: Build only the thirteen interface acceptance targets
+      - name: Build only the sixteen interface acceptance targets
         run: |
           set -euo pipefail
           read -r -a targets <<< "$HAMMOND_SANITIZER_TARGETS"
-          [[ ${#targets[@]} -eq 13 ]]
+          [[ ${#targets[@]} -eq 16 ]]
           cmake --build build-standalone-sanitizers --config Release \
             --target "${targets[@]}" --parallel 2 --verbose \
             2>&1 | tee standalone-sanitizer-logs/build.log
@@ -713,7 +728,7 @@ jobs:
           import collections, hashlib, json, os, pathlib, re, shlex, shutil, subprocess
           build, logs = pathlib.Path("build-standalone-sanitizers"), pathlib.Path("standalone-sanitizer-logs")
           required = os.environ["HAMMOND_SANITIZER_TARGETS"].split()
-          assert len(required) == len(set(required)) == 13
+          assert len(required) == len(set(required)) == 16
           expected = set(required) | {"SDL2-static", "hammond_core", "hammond_standalone_support",
                                       "hammond_standalone_drawing"}
           commands = json.loads((build / "compile_commands.json").read_text())
@@ -759,14 +774,14 @@ jobs:
           (logs / "instrumentation.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
           PY
 
-      - name: Discover exactly thirteen gates and run with leak checking
+      - name: Discover exactly sixteen gates and run with leak checking
         run: |
           set -euo pipefail
           python - <<'PY'
           import json, os, pathlib, re, subprocess
           logs = pathlib.Path("standalone-sanitizer-logs")
           required = os.environ["HAMMOND_SANITIZER_TARGETS"].split()
-          assert len(required) == len(set(required)) == 13
+          assert len(required) == len(set(required)) == 16
           selection = "^(" + "|".join(re.escape(name) for name in required) + ")$"
           (logs / "ctest-filter.txt").write_text(selection + "\n")
           command = ["ctest", "--test-dir", "build-standalone-sanitizers", "-C", "Release",
@@ -775,10 +790,12 @@ jobs:
               subprocess.run(command, stdout=output, check=True)
           discovered = json.loads((logs / "ctest-discovered.json").read_text())["tests"]
           names = [test["name"] for test in discovered]
-          assert len(names) == len(set(names)) == 13 and set(names) == set(required), names
+          assert len(names) == len(set(names)) == 16 and set(names) == set(required), names
           sanitizer_limits = {"test_standalone_workspace_raster": 180,
                               "test_standalone_scaled_view": 360,
-                              "test_standalone_preset_raster": 300}
+                              "test_standalone_preset_raster": 300,
+                              "test_standalone_inspection_raster": 60,
+                              "test_standalone_material_acceptance": 60}
           for test in discovered:
               assert test.get("command"), "Missing built test command: " + test["name"]
               properties = {item["name"]: item["value"] for item in test.get("properties", [])}
@@ -788,7 +805,7 @@ jobs:
               overrides = properties.get("ENVIRONMENT", []) + properties.get("ENVIRONMENT_MODIFICATION", [])
               assert not any(value.startswith(("ASAN_OPTIONS=", "UBSAN_OPTIONS=", "LSAN_OPTIONS="))
                              for value in overrides), (test["name"], overrides)
-          print("Discovered exactly 13 built interface gates; job sanitizer policy applies to every gate.", flush=True)
+          print("Discovered exactly 16 built interface gates; job sanitizer policy applies to every gate.", flush=True)
           PY
           ctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \
             --no-tests=error --timeout 180 -R "$(cat standalone-sanitizer-logs/ctest-filter.txt)" \

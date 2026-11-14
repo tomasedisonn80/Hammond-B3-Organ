@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "gate": "R2 nominal native motion",
+  "assignment": "/root/w03_a16_rotary_motion_qualification",
+  "original_motion_sha256": "9c8c98dc66a66088d39b43a52d025289d4dd241ebba583bd4200aba3b539ac4d",
+  "first_repair_motion_sha256": "ec8d3feab44704e05816a896c6674c0a54a31da00eb5b2d5fe82fefc403a90ea",
+  "final_motion_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+  "final_probe_sha256": "fccdc98a447f5e51294ba6670d56438bee7ab6914886162311f311f7fa94beb9",
+  "oracle_sha256": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d",
+  "reproducer_records": [
+    {
+      "request": "segment 0 0 0 200 0 1 1 746",
+      "native_final": {
+        "id": 0,
+        "status": "ok",
+        "state": [
+          5.221255477432827,
+          31,
+          2.08e-322
+        ],
+        "increment": 200
+      },
+      "reference_speed_rad_s": "2.0765696190316564788500182425594719744484747540177779307959020439153350130791850E-322",
+      "reference_angle_increment_rad": "200.00000000000000000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "request": "segment 1 0 0 0 200 60 1 1e-161",
+      "native_final": {
+        "id": 1,
+        "status": "ok",
+        "state": [
+          1.7e-322,
+          0,
+          3.333333333333333e-161
+        ],
+        "increment": 1.7e-322
+      },
+      "reference_speed_rad_s": "3.3333333333333334270692487667712528284984858041459286039005221107905066483725530E-161",
+      "reference_angle_increment_rad": "1.6666666666666667604025821001045874797950954591730339901914567785528246033873822E-322"
+    },
+    {
+      "request": "segment 2 0 0 0 200 60 1 4.9406564584124654e-324",
+      "native_final": {
+        "id": 2,
+        "status": "ok",
+        "state": [
+          0,
+          0,
+          1.5e-323
+        ],
+        "increment": 0
+      },
+      "reference_speed_rad_s": "1.6468854861374884805885626428940712412168660087144158814186189416689183575673625E-323",
+      "reference_angle_increment_rad": "4.0683477066754676435488442859939682378186597692911049187335961921734412773178408E-647"
+    },
+    {
+      "request": "sample 3 0 0 0 200 0.001 1 0 0 4.9406564584124654e-324 44100",
+      "native_final": {
+        "id": 3,
+        "status": "ok",
+        "state": [
+          0,
+          0,
+          2.5e-323
+        ]
+      },
+      "reference_speed_rad_s": "2.2406605253571271378311179079128417666971930495642925841148520405657558610089714E-323",
+      "reference_angle_increment_rad": "1.2551398974734192724819427039714637534936682368297655328164513694445434914321131E-651"
+    },
+    {
+      "request": "sample 4 0 0 0 200 0.001 1 0 0 4.9406564584124654e-324 48000",
+      "native_final": {
+        "id": 4,
+        "status": "ok",
+        "state": [
+          0,
+          0,
+          2e-323
+        ]
+      },
+      "reference_speed_rad_s": "2.0586068576718605578823395778949233731530461142871938116555203122697881973019924E-323",
+      "reference_angle_increment_rad": "1.0594655486134030101196210894577875097361201925646251327590116266534039182170520E-651"
+    },
+    {
+      "request": "sample 5 0 0 200 200 1 1 0 0 1e-319 48000",
+      "native_final": {
+        "id": 5,
+        "status": "ok",
+        "state": [
+          4.15e-322,
+          0,
+          200
+        ]
+      },
+      "reference_speed_rad_s": "200.00000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "reference_angle_increment_rad": "4.1666202799278458558890634865220002402786710020474721799891059224223634446454271E-322"
+    }
+  ],
+  "reports": {
+    "A16-r2-final-isolated.json": {
+      "sha256": "4bffbdc72816153cbad56c86abb8883ea8146802c54df7b52ce5515752c2dcb8",
+      "bytes": 41769
+    },
+    "A16-r2-lifecycle.json": {
+      "sha256": "30e0c60d806c10842dba71f0e0f84abd0e24f8d71398d1595c2d197f7fc36cc6",
+      "bytes": 1954
+    },
+    "A16-r2-native.json": {
+      "sha256": "4a461e610cd1010f384dd6a26684245e9d274999bca1f8aa75539449595bbd34",
+      "bytes": 41862
+    },
+    "A16-r2-original.json": {
+      "sha256": "d50835563442c43b5b9cb37933ea0e810d095d81a286b240486819ee97f74d8c",
+      "bytes": 58746
+    },
+    "A16-r2-repaired-isolated.json": {
+      "sha256": "7047be8cbc6726fc632938acaa55dd605d00adf3526864abde2b9a4e38e96fa8",
+      "bytes": 40109
+    },
+    "A16-r2-subnormal-time-original.json": {
+      "sha256": "267384d43f4db0b71974b3341ec3722f1db1dc7a9be64abd7d2926ea1bbe9d76",
+      "bytes": 66260
+    }
+  },
+  "qualifying_fixture_requests": 3780,
+  "original_failure_counts": {
+    "initial_grid": 30,
+    "subnormal_time_and_fraction_extension": 36
+  },
+  "final_failure_count": 0,
+  "no_budget_changes": true,
+  "not_qualified": [
+    "R3 propagation",
+    "R4 rendering",
+    "R5 audio policy",
+    "R6 integration",
+    "physical fidelity",
+    "platform portability",
+    "sanitizers and real-time deadlines"
+  ]
+}

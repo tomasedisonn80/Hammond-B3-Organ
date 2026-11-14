@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "assignment": "/root/w04_a24_motion_independent_review",
+  "gate": "R2 independent numerical repair review",
+  "status": "pass",
+  "qualification": "supported for identified GCC/Linux build and frozen R2 experiments",
+  "source_head_observed": "e4968b2acd37b6f79683704356350070fe2fc329",
+  "source_sha256": {
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "tools/rotary_reference.py": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d",
+    "tests/probes/rotary_motion_probe.cpp": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e",
+    "tests/test_rotary_motion_acceptance.py": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366",
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+    "docs/ROTARY_PROPAGATION_CONTRACT.md": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+    "tests/test_rotary_motion.cpp": "e8095db59203e88023bd4d3cd56b75882b6cf88b111b3bf8af77574fa1de2a82",
+    "docs/ROTARY_MOTION.md": "ec9f478c69c5ac2fbaba4e808fa38e0d173d129e7b08a8ef168ecdbda36c7895",
+    "src/Engine.cpp": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a",
+    "include/hammond/Engine.h": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6"
+  },
+  "executables": {
+    "probe": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_rotary_motion_probe",
+      "sha256": "fccdc98a447f5e51294ba6670d56438bee7ab6914886162311f311f7fa94beb9"
+    },
+    "owner": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/test_rotary_motion",
+      "sha256": "1bf5df00a00c1e64d6fc8e7163565b274f7874819a0822fd40c47d1caf3f357f"
+    }
+  },
+  "retained_original_reports": [
+    {
+      "file": "A16-r2-original.json",
+      "sha256": "d50835563442c43b5b9cb37933ea0e810d095d81a286b240486819ee97f74d8c",
+      "retained_failure_count": 30,
+      "source_sha256": "9c8c98dc66a66088d39b43a52d025289d4dd241ebba583bd4200aba3b539ac4d"
+    },
+    {
+      "file": "A16-r2-subnormal-time-original.json",
+      "sha256": "267384d43f4db0b71974b3341ec3722f1db1dc7a9be64abd7d2926ea1bbe9d76",
+      "retained_failure_count": 36,
+      "source_sha256": "ec8d3feab44704e05816a896c6674c0a54a31da00eb5b2d5fe82fefc403a90ea"
+    }
+  ],
+  "original_failure_replay": {
+    "requests": 66,
+    "exact_recomputed_reference_matches": 66,
+    "failures": [],
+    "groups": {
+      "A16-r2-original.json": {
+        "replayed": 30,
+        "original_ids": [
+          1179,
+          1181,
+          1211,
+          1213,
+          1243,
+          1245,
+          1275,
+          1277,
+          1307,
+          1309,
+          1339,
+          1341,
+          1355,
+          1359,
+          1360,
+          1389,
+          1391,
+          1421,
+          1423,
+          1453,
+          1455,
+          1485,
+          1487,
+          1517,
+          1519,
+          1549,
+          1551,
+          1565,
+          1569,
+          1570
+        ]
+      },
+      "A16-r2-subnormal-time-original.json": {
+        "replayed": 36,
+        "original_ids": [
+          1345,
+          1347,
+          1385,
+          1387,
+          1603,
+          1605,
+          1643,
+          1645,
+          2932,
+          2933,
+          2934,
+          3038,
+          3039,
+          3040,
+          3050,
+          3144,
+          3145,
+          3146,
+          3250,
+          3251,
+          3252,
+          3262,
+          3356,
+          3357,
+          3358,
+          3462,
+          3463,
+          3464,
+          3474,
+          3568,
+          3569,
+          3570,
+          3674,
+          3675,
+          3676,
+          3686
+        ]
+      }
+    },
+    "stdin_sha256": "5c3afb866efbde2a6baf53e900fa3fcf2f91f32f8eabbb186e9d732a3d95c1eb",
+    "stdout_sha256": "3e5cf90b6e2cf270096250881d3676121ef8e86eca2900a573196a4a72f2c0cc",
+    "grading": "Original observable sign/nonzero plus unchanged 2e-12*abs(reference)+1e-300; references freshly recomputed with independent 80-digit oracle"
+  },
+  "exact_documented_reproducers": {
+    "requests": 6,
+    "all_native_values_match_A16": true,
+    "stdin_sha256": "362c5718574901134481b6aac18ee6dfaef3b17179020abd1694601f34d945ad",
+    "stdout_sha256": "40dcd9d20ab42bce358f9f502a2a6ae502172bfc5b2f2008941ab638b068a908",
+    "records": [
+      {
+        "request": "segment 0 0 0 200 0 1 1 746",
+        "native_final": {
+          "id": 0,
+          "status": "ok",
+          "state": [
+            5.221255477432827,
+            31,
+            2.08e-322
+          ],
+          "increment": 200
+        }
+      },
+      {
+        "request": "segment 1 0 0 0 200 60 1 1e-161",
+        "native_final": {
+          "id": 1,
+          "status": "ok",
+          "state": [
+            1.7e-322,
+            0,
+            3.333333333333333e-161
+          ],
+          "increment": 1.7e-322
+        }
+      },
+      {
+        "request": "segment 2 0 0 0 200 60 1 4.9406564584124654e-324",
+        "native_final": {
+          "id": 2,
+          "status": "ok",
+          "state": [
+            0,
+            0,
+            1.5e-323
+          ],
+          "increment": 0
+        }
+      },
+      {
+        "request": "sample 3 0 0 0 200 0.001 1 0 0 4.9406564584124654e-324 44100",
+        "native_final": {
+          "id": 3,
+          "status": "ok",
+          "state": [
+            0,
+            0,
+            2.5e-323
+          ]
+        }
+      },
+      {
+        "request": "sample 4 0 0 0 200 0.001 1 0 0 4.9406564584124654e-324 48000",
+        "native_final": {
+          "id": 4,
+          "status": "ok",
+          "state": [
+            0,
+            0,
+            2e-323
+          ]
+        }
+      },
+      {
+        "request": "sample 5 0 0 200 200 1 1 0 0 1e-319 48000",
+        "native_final": {
+          "id": 5,
+          "status": "ok",
+          "state": [
+            4.15e-322,
+            0,
+            200
+          ]
+        }
+      }
+    ]
+  },
+  "focused_final_oracle": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 HAMMOND_ROTARY_MOTION_PROBE_EXECUTABLE=/workspace/scratch/1bb6ee17ad7e/build-native/hammond_rotary_motion_probe python3 tests/test_rotary_motion_acceptance.py --report /tmp/A24-motion-oracle.json",
+    "python_methods": 7,
+    "observed_unittest_seconds": 0.462,
+    "status": "pass",
+    "failure_count": 0,
+    "probe": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/hammond_rotary_motion_probe",
+      "sha256": "fccdc98a447f5e51294ba6670d56438bee7ab6914886162311f311f7fa94beb9",
+      "native_processes": 1,
+      "requests": 3780,
+      "stdin_sha256": "3f29d0f51d0313bd55d7165c0ac8bc5fb74a9e03249a31843cb44d1c8ad6495c",
+      "stdout_sha256": "d3204e84223dfd65918a9b25ce4c88229f115f062578c1ee87789f7bb0b653ea"
+    },
+    "fixture_counts": {
+      "command_reversals:fixtures": 24,
+      "command_reversals:queries": 1272,
+      "day_and_wrap:fixtures": 210,
+      "day_and_wrap:observable_increment": 48,
+      "frozen_grid:fixtures": 1152,
+      "frozen_grid:observable_increment": 180,
+      "frozen_grid:observable_speed": 24,
+      "prehistory:fixtures": 30,
+      "sample_positions:fixtures": 824,
+      "sample_positions:observable_phase": 4,
+      "sample_positions:observable_speed": 48,
+      "semigroup:fixtures": 1024,
+      "tiny_and_long:fixtures": 516,
+      "tiny_and_long:observable_increment": 154,
+      "tiny_and_long:observable_speed": 460
+    },
+    "seed": 20261114016,
+    "all_metrics_exactly_match_A16_native": true,
+    "retained_metric_report": "A16-r2-native.json",
+    "retained_metric_report_sha256": "4a461e610cd1010f384dd6a26684245e9d274999bca1f8aa75539449595bbd34",
+    "maximum_budget_fraction": {
+      "metric": "frozen_grid:reconstructed_increment_rad",
+      "fraction": "0.0336243142510511871313848485961944224931003524572944915880153002563858696279790149393705379867249342473316610407051705823"
+    }
+  },
+  "owner_lifecycle": {
+    "command": "/workspace/scratch/1bb6ee17ad7e/build-native/test_rotary_motion",
+    "result": {
+      "status": "pass",
+      "gate": "R2 owner lifecycle and partition identity",
+      "rejected_calls": 174,
+      "rate_replacements": 32,
+      "partition_sample_states": 327720,
+      "partition_calls": 131760,
+      "zero_frame_calls": 48,
+      "physical_status": "unmeasured"
+    }
+  },
+  "budgets": {
+    "speed_rad_s": "5e-12 + 4e-14*abs(reference)",
+    "angle_increment_rad": "5e-12 + 4e-15*abs(reference)",
+    "near_zero_relative": "2e-12*abs(reference) + 1e-300",
+    "semigroup_angle_rad": "2e-10",
+    "semigroup_speed_rad_s": "2e-11",
+    "observable_nonzero": "require sign/nonzero when the reference rounds to nonzero binary64"
+  },
+  "inspection": {
+    "frozen_contract_and_oracle_match_HEAD": true,
+    "budgets_unchanged_in_all_original_and_final_reports": true,
+    "engine_sources_match_HEAD": true,
+    "destination_publication_only_after_validation_and_add_angle": true,
+    "no_zero_decay_cutoff": true,
+    "no_new_dynamic_work": true,
+    "maximum_normalized_elapsed": 86400000,
+    "maximum_speed_difference_per_tau": 200000,
+    "maximum_abs_angle_increment_rad": 17280000,
+    "maximum_abs_tau_scaled_speed_difference": 12000,
+    "minimum_tau_times_rate": 44.1,
+    "maximum_tau_times_rate": 11520000,
+    "small_angle_series_relative_truncation_bound": "<4e-20 for 0<z<1/8; floating-point roundoff graded separately",
+    "subnormal_linear_curvature_bound": "<1e-607 for omitted speed/angle terms at either new linear branch, far below binary64 minimum subnormal"
+  },
+  "setup": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+    "motion_compile_flags": "-O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror",
+    "fast_math_observed": false,
+    "rebuilt_by_A24": false,
+    "ctest_global_logs_touched": false
+  },
+  "followups": [
+    "Update docs/ROTARY_MOTION.md arithmetic-order prose and obsolete next-R2-gate wording when integrating this qualification.",
+    "Run the same exact failure replay, oracle and lifecycle suite on Windows/MSVC and AppleClang; do not infer their libm, strtod, fma or gradual-underflow behavior from GCC output.",
+    "Preserve no-fast-math/no-reassociation and gradual-underflow execution; CMake currently specifies warning options but does not explicitly forbid externally supplied /fp:fast or -ffast-math.",
+    "Retain semantic tolerances and same-executable partition identity; output hashes are build-specific, not a cross-platform bit-identity requirement."
+  ],
+  "exclusions": [
+    "R3 review",
+    "R4 waveform rendering",
+    "R5 audio policy",
+    "R6 integration/allocation/deadlines",
+    "sanitizers",
+    "Windows/MSVC or AppleClang execution",
+    "physical cabinet fidelity"
+  ]
+}

@@ -1,0 +1,2644 @@
+{
+  "schema": "a25-same-geometry-material-performance-v1",
+  "worker": "/root/w05_a25_material_performance",
+  "started_utc": "2026-11-14T20:55:34.962746+00:00",
+  "build": {
+    "created_utc": "2026-11-14T20:50:43.804782+00:00",
+    "repository": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "head": "e4968b2acd37b6f79683704356350070fe2fc329",
+    "head_tree": "1aff4305e347b46c659dcbc27eb524649a4c54c8",
+    "compiler": "c++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "compiler_executable": {
+      "path": "/usr/bin/x86_64-linux-gnu-g++-14",
+      "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d",
+      "bytes": 1166360
+    },
+    "compiler_flags": [
+      "-O3",
+      "-DNDEBUG",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-DSDL_MAIN_HANDLED"
+    ],
+    "include_flags": [
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone",
+      "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+      "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include",
+      "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2",
+      "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include-config-release/SDL2"
+    ],
+    "archives": [
+      {
+        "source": {
+          "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/libhammond_standalone_drawing.a",
+          "sha256": "06cde97b0ae59acac7b44437df920b3d12773b20004abedcda101d8da9a7ed36",
+          "bytes": 927814
+        },
+        "frozen": {
+          "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_standalone_drawing.a",
+          "sha256": "06cde97b0ae59acac7b44437df920b3d12773b20004abedcda101d8da9a7ed36",
+          "bytes": 927814
+        },
+        "matches_a22_artifact": true
+      },
+      {
+        "source": {
+          "path": "/workspace/scratch/1bb6ee17ad7e/build-native/apps/standalone/libhammond_standalone_support.a",
+          "sha256": "14cdc87f1119b7d7bda9a0adc79a60bfdfca91e48a799d0c23424596c52311f2",
+          "bytes": 215336
+        },
+        "frozen": {
+          "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_standalone_support.a",
+          "sha256": "14cdc87f1119b7d7bda9a0adc79a60bfdfca91e48a799d0c23424596c52311f2",
+          "bytes": 215336
+        },
+        "matches_a22_artifact": true
+      },
+      {
+        "source": {
+          "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/libSDL2.a",
+          "sha256": "55ccb40daeebf75e429c7d8c693cdd5b4e2207a00393e35c66be992e752b03ed",
+          "bytes": 3245774
+        },
+        "frozen": {
+          "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libSDL2.a",
+          "sha256": "55ccb40daeebf75e429c7d8c693cdd5b4e2207a00393e35c66be992e752b03ed",
+          "bytes": 3245774
+        },
+        "matches_a22_artifact": true
+      },
+      {
+        "source": {
+          "path": "/workspace/scratch/1bb6ee17ad7e/build-native/libhammond_core.a",
+          "sha256": "3f6773440391f5488afd0531b18f59a9169a97862ea68912a33c2ac3a8d4d172",
+          "bytes": 307108
+        },
+        "frozen": {
+          "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_core.a",
+          "sha256": "3f6773440391f5488afd0531b18f59a9169a97862ea68912a33c2ac3a8d4d172",
+          "bytes": 307108
+        },
+        "matches_a22_artifact": true
+      }
+    ],
+    "commands": [
+      {
+        "argv": [
+          "/usr/bin/c++",
+          "-O3",
+          "-DNDEBUG",
+          "-std=c++20",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Wconversion",
+          "-Wsign-conversion",
+          "-Wshadow",
+          "-Werror",
+          "-DSDL_MAIN_HANDLED",
+          "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone",
+          "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include-config-release/SDL2",
+          "-MMD",
+          "-MF",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/benchmark.d",
+          "-c",
+          "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/benchmarks/standalone_material_timing.cpp",
+          "-o",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/benchmark.o"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/usr/bin/c++",
+          "-O3",
+          "-DNDEBUG",
+          "-std=c++20",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Wconversion",
+          "-Wsign-conversion",
+          "-Wshadow",
+          "-Werror",
+          "-DSDL_MAIN_HANDLED",
+          "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone",
+          "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include-config-release/SDL2",
+          "-MMD",
+          "-MF",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-before.d",
+          "-c",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-before.cpp",
+          "-o",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-before.o"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/usr/bin/c++",
+          "-O3",
+          "-DNDEBUG",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/benchmark.o",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-before.o",
+          "-o",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_standalone_drawing.a",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_standalone_support.a",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libSDL2.a",
+          "-lm",
+          "-pthread",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_core.a"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/usr/bin/c++",
+          "-O3",
+          "-DNDEBUG",
+          "-std=c++20",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Wconversion",
+          "-Wsign-conversion",
+          "-Wshadow",
+          "-Werror",
+          "-DSDL_MAIN_HANDLED",
+          "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone",
+          "-I/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2",
+          "-I/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include-config-release/SDL2",
+          "-MMD",
+          "-MF",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-current.d",
+          "-c",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-current.cpp",
+          "-o",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-current.o"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "/usr/bin/c++",
+          "-O3",
+          "-DNDEBUG",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/benchmark.o",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-current.o",
+          "-o",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_standalone_drawing.a",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_standalone_support.a",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libSDL2.a",
+          "-lm",
+          "-pthread",
+          "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/libhammond_core.a"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "source_before": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/instrument-view-before-materials.cpp",
+      "sha256": "920f58ca287eca607632698c52a1e1fa819eb623a0be4828f082b2c6b0701912",
+      "bytes": 73583
+    },
+    "source_benchmark": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/benchmarks/standalone_material_timing.cpp",
+      "sha256": "58f6c7e0a7d940c9732b955df3b659cc84f45f4a3ac1dbb21abcc3d42d05b43a",
+      "bytes": 12864
+    },
+    "ui_model_source": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/UiModel.cpp",
+      "sha256": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+      "bytes": 55053
+    },
+    "drawing_source": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/Drawing.cpp",
+      "sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+      "bytes": 20951
+    },
+    "sdl_generated_config": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include-config-release/SDL2/SDL_config.h",
+      "sha256": "aaf484912cdee7aa3cef491fc7fbef54ec413cdd40f181e6592e3a3f773bfce3",
+      "bytes": 16410
+    },
+    "before_executable": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+      "sha256": "6e7c930bc166d88d88a0f6f4b3c64752050020d5727e75abc98d5631b4e92a47",
+      "bytes": 3302440
+    },
+    "compiled_source_dependencies": [
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/Drawing.h",
+        "sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+        "bytes": 2443
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/InspectionModel.h",
+        "sha256": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+        "bytes": 2778
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/InstrumentView.h",
+        "sha256": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+        "bytes": 2089
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/Session.h",
+        "sha256": "8c26342cafcad2022aabba273cdc8d22432fa3c450819f238fa8d546bc22528b",
+        "bytes": 8209
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/UiModel.h",
+        "sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+        "bytes": 16388
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/ConsoleModel.h",
+        "sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+        "bytes": 1721
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/ContactBank.h",
+        "sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+        "bytes": 7646
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/ControlState.h",
+        "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+        "bytes": 5751
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/Engine.h",
+        "sha256": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6",
+        "bytes": 9841
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/FixedRegistration.h",
+        "sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+        "bytes": 1822
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/NoteOwnership.h",
+        "sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+        "bytes": 5037
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/ParameterBridge.h",
+        "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+        "bytes": 2952
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/PedalNoteOwnership.h",
+        "sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+        "bytes": 4596
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/PedalRouting.h",
+        "sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+        "bytes": 6909
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/PedalVoice.h",
+        "sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+        "bytes": 3384
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/Percussion.h",
+        "sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+        "bytes": 6395
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/PerformanceInput.h",
+        "sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+        "bytes": 3220
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/Profile.h",
+        "sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+        "bytes": 2250
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/TonewheelBank.h",
+        "sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+        "bytes": 2760
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/include/hammond/Types.h",
+        "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+        "bytes": 6015
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tests/benchmarks/standalone_material_timing.cpp",
+        "sha256": "58f6c7e0a7d940c9732b955df3b659cc84f45f4a3ac1dbb21abcc3d42d05b43a",
+        "bytes": 12864
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-before.cpp",
+        "sha256": "920f58ca287eca607632698c52a1e1fa819eb623a0be4828f082b2c6b0701912",
+        "bytes": 73583
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-current.cpp",
+        "sha256": "428f74c4b2aae72e1ee048d1fa878575d0cd2edc064b1a3865ba40c446c30da2",
+        "bytes": 80128
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include-config-release/SDL2/SDL_config.h",
+        "sha256": "aaf484912cdee7aa3cef491fc7fbef54ec413cdd40f181e6592e3a3f773bfce3",
+        "bytes": 16410
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL.h",
+        "sha256": "952e89e1dc4e0dd1a7bea6a153df632b8cdb6e433a9b3b0702c5ffe15b9b9360",
+        "bytes": 8111
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_assert.h",
+        "sha256": "32fc342e0a5f3a55ea1ce2a5d9195e77215edcb6f4595c0dc3674dcca1cc81d8",
+        "bytes": 12808
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_atomic.h",
+        "sha256": "c561ce8f94de18ccb4f708bda45880ba6d3c9f052e166beb5dadc5544f35221e",
+        "bytes": 14496
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_audio.h",
+        "sha256": "047afc29591ac43a90f06169f67ee7d99a6256c6bbe5efe5de79a52565bb6853",
+        "bytes": 59559
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_blendmode.h",
+        "sha256": "1985f81b886d9bc681821af4f23d28e6e51bf51f21e5ef28ccc13bc8c7cdfbae",
+        "bytes": 9048
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_clipboard.h",
+        "sha256": "3e8c73fb9b3ca5a544b70b66b683b78db53e1a187e066912a068c0ed7bb3e8ce",
+        "bytes": 4307
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_cpuinfo.h",
+        "sha256": "fee0c489ed4364c21fe0b726a47f72df167fbcbf42cf569807b2bbf77dc30c54",
+        "bytes": 17785
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_endian.h",
+        "sha256": "7907cb3ab7b8d7bc99274f5aef5294bef215b01ea49d97226cbe6e911de557d5",
+        "bytes": 10896
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_error.h",
+        "sha256": "0931656a5825e5f1f319f2cd3f573fc527393bb02fa7a1ed3f7fae6c790328be",
+        "bytes": 5177
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_events.h",
+        "sha256": "ceb7bc717342e652e2c432fd1dd08a5508575cea6bd8615fb4ddea63c071ddc4",
+        "bytes": 48349
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_filesystem.h",
+        "sha256": "dcfaa010c73150e7b0d56f50f5adb3fc2e35621091a55bc5436b2fb85fe71675",
+        "bytes": 5526
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_gamecontroller.h",
+        "sha256": "c77c1d8287ee441843b9d8be87b71252bdb1ce76b7bfc4fcff46889ad8e9cfec",
+        "bytes": 41726
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_gesture.h",
+        "sha256": "a5a8f8bb8efb26860faa9694189aaf76df1cdb7755ccd30a8599b46b237a5d82",
+        "bytes": 3420
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_guid.h",
+        "sha256": "da8fef1d047b31e55d1b167de301a806481b6948e7c2497779fd71934c45d5db",
+        "bytes": 3365
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_haptic.h",
+        "sha256": "4267b6f039bea7ad0f5cb37c37d63d0704af84f73a36d2680684ff302f49f153",
+        "bytes": 42573
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_hidapi.h",
+        "sha256": "489a83d1073e528f82e821c23c515af8b5a59357ec5ab132c854bb588648f59f",
+        "bytes": 16663
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_hints.h",
+        "sha256": "96c1056e0734f019b1dafed5129d4a9d36253559ed8c7577a23c188bb75a48c1",
+        "bytes": 120275
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_joystick.h",
+        "sha256": "a39fc5da97edc94eabff8616a413cf850efb35d1daf437a8cc16caa837766482",
+        "bytes": 39540
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_keyboard.h",
+        "sha256": "f68dfa4f784f0b22949a8df94f3c3653ea01a03ae02297d17579eb9e7ea94054",
+        "bytes": 11377
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_keycode.h",
+        "sha256": "291c769a05bc3e1ead011db3e07cb52415e1aa306f484904d203e94cbb3186cd",
+        "bytes": 15615
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_loadso.h",
+        "sha256": "8d3653b7b774b406a289519c74ae695eb5b52d71060712a88fce4c72d82b1bd3",
+        "bytes": 3898
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_locale.h",
+        "sha256": "c4a663ce8ea4ca22f961796cae644a04fc521fa2d0681333f7da8a581909560c",
+        "bytes": 3808
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_log.h",
+        "sha256": "3342cb31280c2dbf0e5809b03e5499f0cf5edf193efa5e3c5b17814526a92033",
+        "bytes": 11775
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_main.h",
+        "sha256": "622ffcd0e7fe0c755a987c5eb9dad6b3672774026b8250b66ad3c40d3a4dda9a",
+        "bytes": 8994
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_messagebox.h",
+        "sha256": "65df549cab0a515145ae55325c447159ae1d60171331a7508eac06034d25c972",
+        "bytes": 6878
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_metal.h",
+        "sha256": "1f3d0251522b735b0e37677eb1a0594440599fbbb2af86bbb508606cca001a06",
+        "bytes": 3367
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_misc.h",
+        "sha256": "5d5e4b42481a5ef44ec9d66159e88426be5632262731a3c3b223277771d30006",
+        "bytes": 2834
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_mouse.h",
+        "sha256": "66b5353387d011a54b232931e86121cb5551e251b9491b9ed15afe293d5856ff",
+        "bytes": 17031
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_mutex.h",
+        "sha256": "c5ef9a8aeb056422ef878672770e1f60ae965933693df6d8ebd53d0e514a1794",
+        "bytes": 16751
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_pixels.h",
+        "sha256": "fee61aee337a3823e832f5c26b3000315d6eb95da91ba20d4fb0b5bac9d4967a",
+        "bytes": 26252
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_platform.h",
+        "sha256": "9ce62823791d7a16b9ad17ad11f4de8dcbcde7918f67bf6d1dd4fc625b69e50c",
+        "bytes": 7129
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_power.h",
+        "sha256": "fbbdf3ff13b21095623edfc5659c1b76c6dbb1364a4dd14d8f9e5cf329048784",
+        "bytes": 3238
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_quit.h",
+        "sha256": "9c902abaea7560f98fc546bd35a04629a205d047df5433fc30b0c1d81af58b21",
+        "bytes": 1982
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_rect.h",
+        "sha256": "01db368d4b7736e2358cd29eec0d187d964cfd6182cffab57a938adf73b6a418",
+        "bytes": 12890
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_render.h",
+        "sha256": "a0cf0db1a13d0dd0d8bfdc01ffb371e2b19be36326f85058200ac9481876c7f0",
+        "bytes": 74566
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_rwops.h",
+        "sha256": "10da91c08e96e5fca452e06e11029908a6f237356e4db11af1ad13ffa2e57a47",
+        "bytes": 28219
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_scancode.h",
+        "sha256": "eb14f3cedde58358f6456d185f473d7551e8234de260151ad0319861ff1444c2",
+        "bytes": 16910
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_sensor.h",
+        "sha256": "f4dabf5bae217fa6370d8af73abdcbba99aea626f35e17a381b636afe01bb81b",
+        "bytes": 10733
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_shape.h",
+        "sha256": "cbdcdd8ead6d61a7bfa09bc4c538cc598919d1c060d70524c0828d3af7418667",
+        "bytes": 5880
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_stdinc.h",
+        "sha256": "33edc0b35512b86162d1affe9df95165b4bc514a90b17238420efe85d24ca8a1",
+        "bytes": 30995
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_surface.h",
+        "sha256": "92299233370d645f78d9c655ce7f102c16f9d4ddde28a59bd82a962c49b51d94",
+        "bytes": 36909
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_system.h",
+        "sha256": "ffc5f3662a85f795c0b2e2b87b9fbf493bceeda4aacf7721a68225c5e318ca67",
+        "bytes": 21435
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_thread.h",
+        "sha256": "0e546047dd407ca0e1d2d686cf2650ac77a987047184e3645f6ba2ec958ddc5c",
+        "bytes": 17410
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_timer.h",
+        "sha256": "d0497ad3d75701613a227134d63fdcbc62ed72f645153d52753e386ee4b498c7",
+        "bytes": 7291
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_touch.h",
+        "sha256": "4e5d7a083bbf5237daf5ccf06faed3fae81b1caa693e27841ebf4ec9bf8ff769",
+        "bytes": 4506
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_version.h",
+        "sha256": "ee97570d0d6507b4687076336c07fd4a7fa1f5e7986c9b61893a279950febce8",
+        "bytes": 6839
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/SDL_video.h",
+        "sha256": "82ab63ff37834cd4bfcee490b8e37fb892bbb0b31a1a7913ec13c329271ca5ff",
+        "bytes": 85653
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/begin_code.h",
+        "sha256": "9803dab29fb4522ce3500ab789260e9622df6307ce90f92ad20c1808e19c4e7b",
+        "bytes": 5664
+      },
+      {
+        "path": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2/include/SDL2/close_code.h",
+        "sha256": "4599e9cedba7451ff07a6306f0b7531beed05b1c5a65b1a2613d1b771be43fda",
+        "bytes": 1486
+      }
+    ],
+    "environment": {
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "uname": [
+        "Linux",
+        "e15497d83e17",
+        "6.18.57",
+        "#1 SMP Tue Oct 20 21:56:04 UTC 2026",
+        "x86_64",
+        ""
+      ],
+      "logical_cpus_visible": 9,
+      "allowed_affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "cpuinfo_first_processor": "processor\t: 0\nvendor_id\t: AuthenticAMD\ncpu family\t: 25\nmodel\t\t: 17\nmodel name\t: AMD EPYC 9V74 80-Core Processor\nstepping\t: 1\nmicrocode\t: 0x1000065\ncpu MHz\t\t: 2596.138\ncache size\t: 1024 KB\nphysical id\t: 0\nsiblings\t: 9\ncore id\t\t: 0\ncpu cores\t: 9\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 28\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext cpuid_fault vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx512_bf16 clzero xsaveerptr arat npt nrip_save tsc_scale vmcb_clean flushbyasid pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm arch_capabilities\nbugs\t\t: sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass srso spectre_v2_user tsa\nbogomips\t: 5192.27\nTLB size\t: 3584 4K pages\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 46 bits physical, 48 bits virtual\npower management:",
+      "kernel": "Linux version 6.18.57 (root@84c140011298) (gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #1 SMP Tue Oct 20 21:56:04 UTC 2026",
+      "libc": [
+        "glibc",
+        "2.41"
+      ],
+      "sdl_source_head": "5d249570393f7a37e037abf22cd6012a4cc56a71"
+    },
+    "current_model_and_drawing_match_a22": [
+      {
+        "path": "apps/standalone/InstrumentView.h",
+        "a22_sha256": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+        "current_sha256": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+        "matches": true
+      },
+      {
+        "path": "apps/standalone/Drawing.cpp",
+        "a22_sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+        "current_sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+        "matches": true
+      },
+      {
+        "path": "apps/standalone/Drawing.h",
+        "a22_sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+        "current_sha256": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+        "matches": true
+      },
+      {
+        "path": "apps/standalone/UiModel.cpp",
+        "a22_sha256": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+        "current_sha256": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+        "matches": true
+      },
+      {
+        "path": "apps/standalone/UiModel.h",
+        "a22_sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+        "current_sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+        "matches": true
+      },
+      {
+        "path": "apps/standalone/InspectionModel.cpp",
+        "a22_sha256": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+        "current_sha256": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+        "matches": true
+      },
+      {
+        "path": "apps/standalone/InspectionModel.h",
+        "a22_sha256": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+        "current_sha256": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+        "matches": true
+      },
+      {
+        "path": "apps/standalone/FontData.h",
+        "a22_sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+        "current_sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+        "matches": true
+      }
+    ],
+    "runtime_dynamic_libraries": [
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33",
+        "bytes": 2497768,
+        "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+        "bytes": 977112,
+        "sha256": "6d567d53e895273ca14a1f9dc164fc6c8d39aed2f60aa46a733c2784228915f3"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "bytes": 182856,
+        "sha256": "30c61ab012a4241bed033725a09b61f5fdd3bb7df95ee852d0b096520524c7af"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+        "bytes": 1995216,
+        "sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92"
+      },
+      {
+        "path": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+        "bytes": 225672,
+        "sha256": "c8438e4fde1934e61c88311633f00949ff645d5c04cdb8671fa3d78164d2f307"
+      }
+    ],
+    "affinity_preflight": {
+      "observed_utc": "2026-11-14T20:53:16.410390+00:00",
+      "available": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "selected": 0,
+      "effective": [
+        0
+      ],
+      "inherited_child_verified": [
+        0
+      ]
+    },
+    "source_current": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+      "sha256": "428f74c4b2aae72e1ee048d1fa878575d0cd2edc064b1a3865ba40c446c30da2",
+      "bytes": 80128
+    },
+    "source_current_snapshot": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-current.cpp",
+      "sha256": "428f74c4b2aae72e1ee048d1fa878575d0cd2edc064b1a3865ba40c446c30da2",
+      "bytes": 80128
+    },
+    "current_executable": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+      "sha256": "40858109328da9bac777ace052d26af8510fd0cb3d623638cc437541b932c0da",
+      "bytes": 3302848
+    },
+    "benchmark_object": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/benchmark.o",
+      "sha256": "260411078f1d356d79e6715c660ba4e2216faef1b10cf340fac770be369e4ece",
+      "bytes": 38960
+    },
+    "before_painter_object": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-before.o",
+      "sha256": "fda1867d3190bd8e9259fd71735630ec488afe4c2a993d49d389970dd922e733",
+      "bytes": 185400
+    },
+    "current_painter_object": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/InstrumentView-current.o",
+      "sha256": "4e381ae5c56a2df823a02dfc364a91bda16ec2f59cf90049158a5083fb4dfa5a",
+      "bytes": 188224
+    },
+    "prepared_utc": "2026-11-14T20:55:15.458486+00:00",
+    "verified_configuration_flags": [
+      "CMAKE_BUILD_TYPE:STRING=Release",
+      "HAMMOND_BUILD_VST3:BOOL=OFF",
+      "HAMMOND_ENABLE_MIDI:BOOL=OFF",
+      "SDL_SHARED:BOOL=OFF",
+      "SDL_STATIC:BOOL=ON"
+    ]
+  },
+  "method": {
+    "warmup_per_case": 30,
+    "samples_per_case": 300,
+    "case_count_per_renderer": 9,
+    "order": "Sequential adjacent before/current pairs; pair order alternates each case.",
+    "affinity_before": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "timed_process_affinity": [
+      0
+    ],
+    "timed_interval": "paint_instrument + SDL_RenderFlush + SDL_RenderPresent on an RGBA32 software surface",
+    "excluded": "SDL/Drawing initialization, model construction, warmup, surface hashing, JSON stdout, file IO and teardown",
+    "paint_split_note": "SDL may flush internally during paint; explicit flush/surface-present is the final segment only.",
+    "p95_definition": "Nearest rank: sorted sample 285 of 300; median averages sorted samples 150 and 151.",
+    "threshold": "Investigate only p95 increase >15 percent AND >2 ms versus the paired before renderer.",
+    "state_fixture": "Default copied ControlSnapshot; publication revision 2; held Upper indexes 24,25, Lower 36,37, Pedals 0,1; focused Upper 24; Play; no Session/Engine or audio/MIDI device.",
+    "quiet_interval": "Root and A26/A27 were notified and released heavy builds/tests before this run; virtual host scheduling remains outside task control."
+  },
+  "processes": [
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "960",
+        "700",
+        "dimensional",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:55:34.983646+00:00",
+      "finished_utc": "2026-11-14T20:55:50.889111+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 15.905319671999678,
+      "child_user_seconds": 15.734400999999998,
+      "child_system_seconds": 0.06539400000000001,
+      "child_involuntary_context_switches": 926,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 13952,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 960,
+        "height": 700,
+        "presentation": "dimensional",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 2688000,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          960,
+          700
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "8f5cecf84e3329b1",
+        "final_pixels_fnv1a64": "dee75024a386b9e7",
+        "upper_c_hit_depth": 52.0,
+        "paint": {
+          "median_ms": 46.204449,
+          "p95_ms": 52.352759,
+          "minimum_ms": 43.789959,
+          "maximum_ms": 125.03846
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000571,
+          "p95_ms": 0.000981,
+          "minimum_ms": 0.00023,
+          "maximum_ms": 0.030475
+        },
+        "total": {
+          "median_ms": 46.20511,
+          "p95_ms": 52.3534,
+          "minimum_ms": 43.79036,
+          "maximum_ms": 125.066652
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "960",
+        "700",
+        "dimensional",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:55:50.890418+00:00",
+      "finished_utc": "2026-11-14T20:56:06.798809+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 15.90823454800011,
+      "child_user_seconds": 15.843510000000002,
+      "child_system_seconds": 0.011330999999999994,
+      "child_involuntary_context_switches": 342,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 13952,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 960,
+        "height": 700,
+        "presentation": "dimensional",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 2688000,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          960,
+          700
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "8f5cecf84e3329b1",
+        "final_pixels_fnv1a64": "8692b423b0977268",
+        "upper_c_hit_depth": 52.0,
+        "paint": {
+          "median_ms": 47.578465,
+          "p95_ms": 55.531835,
+          "minimum_ms": 44.072664,
+          "maximum_ms": 76.677918
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000441,
+          "p95_ms": 0.000661,
+          "minimum_ms": 0.00014,
+          "maximum_ms": 0.000872
+        },
+        "total": {
+          "median_ms": 47.579051,
+          "p95_ms": 55.532255,
+          "minimum_ms": 44.073045,
+          "maximum_ms": 76.678569
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "960",
+        "700",
+        "flat",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:56:06.800841+00:00",
+      "finished_utc": "2026-11-14T20:56:10.836486+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 4.035577982000177,
+      "child_user_seconds": 4.014769000000001,
+      "child_system_seconds": 0.0038600000000000023,
+      "child_involuntary_context_switches": 86,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 13952,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 960,
+        "height": 700,
+        "presentation": "flat",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 2688000,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          960,
+          700
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "adf4a9348eaed65c",
+        "final_pixels_fnv1a64": "acfe336e9b6b3218",
+        "upper_c_hit_depth": 52.0,
+        "paint": {
+          "median_ms": 11.771406,
+          "p95_ms": 13.562269,
+          "minimum_ms": 11.07669,
+          "maximum_ms": 30.604275
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000241,
+          "p95_ms": 0.000541,
+          "minimum_ms": 0.0001,
+          "maximum_ms": 0.002013
+        },
+        "total": {
+          "median_ms": 11.771832,
+          "p95_ms": 13.562589,
+          "minimum_ms": 11.076841,
+          "maximum_ms": 30.604616
+        }
+      }
+    },
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "960",
+        "700",
+        "flat",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:56:10.837186+00:00",
+      "finished_utc": "2026-11-14T20:56:14.888930+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 4.051686040000277,
+      "child_user_seconds": 4.028551999999998,
+      "child_system_seconds": 0.0071279999999999955,
+      "child_involuntary_context_switches": 74,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14080,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 960,
+        "height": 700,
+        "presentation": "flat",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 2688000,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          960,
+          700
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "adf4a9348eaed65c",
+        "final_pixels_fnv1a64": "acfe336e9b6b3218",
+        "upper_c_hit_depth": 52.0,
+        "paint": {
+          "median_ms": 11.879049,
+          "p95_ms": 13.792149,
+          "minimum_ms": 11.098693,
+          "maximum_ms": 31.78005
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000351,
+          "p95_ms": 0.000621,
+          "minimum_ms": 3e-05,
+          "maximum_ms": 0.000942
+        },
+        "total": {
+          "median_ms": 11.879374,
+          "p95_ms": 13.79259,
+          "minimum_ms": 11.098803,
+          "maximum_ms": 31.780611
+        }
+      }
+    },
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "1280",
+        "900",
+        "dimensional",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:56:14.890498+00:00",
+      "finished_utc": "2026-11-14T20:56:42.022333+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 27.131750126000043,
+      "child_user_seconds": 27.049532000000006,
+      "child_system_seconds": 0.0030720000000000053,
+      "child_involuntary_context_switches": 310,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14080,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1280,
+        "height": 900,
+        "presentation": "dimensional",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 4608000,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          900
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "ba92304603c433f6",
+        "final_pixels_fnv1a64": "14ba74ce3aec8510",
+        "upper_c_hit_depth": 108.0,
+        "paint": {
+          "median_ms": 80.93974,
+          "p95_ms": 87.783867,
+          "minimum_ms": 77.363586,
+          "maximum_ms": 119.540143
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000581,
+          "p95_ms": 0.000821,
+          "minimum_ms": 0.000411,
+          "maximum_ms": 0.014972
+        },
+        "total": {
+          "median_ms": 80.940265,
+          "p95_ms": 87.784528,
+          "minimum_ms": 77.364097,
+          "maximum_ms": 119.540974
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "1280",
+        "900",
+        "dimensional",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:56:42.022891+00:00",
+      "finished_utc": "2026-11-14T20:57:09.561396+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 27.53834198000004,
+      "child_user_seconds": 27.478538,
+      "child_system_seconds": 0.012903999999999999,
+      "child_involuntary_context_switches": 205,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14080,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1280,
+        "height": 900,
+        "presentation": "dimensional",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 4608000,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          900
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "ba92304603c433f6",
+        "final_pixels_fnv1a64": "d939c3f5cb7d6434",
+        "upper_c_hit_depth": 108.0,
+        "paint": {
+          "median_ms": 82.337423,
+          "p95_ms": 90.932645,
+          "minimum_ms": 78.139189,
+          "maximum_ms": 115.136231
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000531,
+          "p95_ms": 0.000771,
+          "minimum_ms": 0.000321,
+          "maximum_ms": 0.021331
+        },
+        "total": {
+          "median_ms": 82.337949,
+          "p95_ms": 90.933126,
+          "minimum_ms": 78.13993,
+          "maximum_ms": 115.136962
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "1280",
+        "900",
+        "flat",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:57:09.562507+00:00",
+      "finished_utc": "2026-11-14T20:57:16.689031+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 7.12646275499992,
+      "child_user_seconds": 7.08935799999999,
+      "child_system_seconds": 0.0040979999999999905,
+      "child_involuntary_context_switches": 184,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14080,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1280,
+        "height": 900,
+        "presentation": "flat",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 4608000,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          900
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "89c7968b9f59363f",
+        "final_pixels_fnv1a64": "f9d4bb4e6eb61089",
+        "upper_c_hit_depth": 108.0,
+        "paint": {
+          "median_ms": 21.105767,
+          "p95_ms": 23.24427,
+          "minimum_ms": 20.086881,
+          "maximum_ms": 44.230396
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000471,
+          "p95_ms": 0.000841,
+          "minimum_ms": 0.00018,
+          "maximum_ms": 0.035502
+        },
+        "total": {
+          "median_ms": 21.106173,
+          "p95_ms": 23.24465,
+          "minimum_ms": 20.087061,
+          "maximum_ms": 44.230986
+        }
+      }
+    },
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "1280",
+        "900",
+        "flat",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:57:16.689281+00:00",
+      "finished_utc": "2026-11-14T20:57:23.838985+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 7.1496892840004875,
+      "child_user_seconds": 7.11806,
+      "child_system_seconds": 0.007900000000000004,
+      "child_involuntary_context_switches": 118,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14080,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1280,
+        "height": 900,
+        "presentation": "flat",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 4608000,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1280,
+          900
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "89c7968b9f59363f",
+        "final_pixels_fnv1a64": "f9d4bb4e6eb61089",
+        "upper_c_hit_depth": 108.0,
+        "paint": {
+          "median_ms": 21.137145,
+          "p95_ms": 24.925052,
+          "minimum_ms": 20.077105,
+          "maximum_ms": 41.477163
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000441,
+          "p95_ms": 0.000731,
+          "minimum_ms": 0.000131,
+          "maximum_ms": 0.000922
+        },
+        "total": {
+          "median_ms": 21.137531,
+          "p95_ms": 24.925512,
+          "minimum_ms": 20.077345,
+          "maximum_ms": 41.477714
+        }
+      }
+    },
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "1672",
+        "941",
+        "dimensional",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:57:23.840139+00:00",
+      "finished_utc": "2026-11-14T20:58:00.705862+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 36.8656793909995,
+      "child_user_seconds": 36.70004700000001,
+      "child_system_seconds": 0.01855000000000001,
+      "child_involuntary_context_switches": 605,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14080,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "dimensional",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "96fb350bb7a123ae",
+        "final_pixels_fnv1a64": "df94cd1308616a81",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 109.186245,
+          "p95_ms": 128.730509,
+          "minimum_ms": 103.197649,
+          "maximum_ms": 143.984151
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000596,
+          "p95_ms": 0.000841,
+          "minimum_ms": 0.00028,
+          "maximum_ms": 0.001162
+        },
+        "total": {
+          "median_ms": 109.18674,
+          "p95_ms": 128.731401,
+          "minimum_ms": 103.197929,
+          "maximum_ms": 143.984662
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "1672",
+        "941",
+        "dimensional",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:58:00.706167+00:00",
+      "finished_utc": "2026-11-14T20:58:36.955638+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 36.24945442399985,
+      "child_user_seconds": 36.147328999999985,
+      "child_system_seconds": 0.019910999999999984,
+      "child_involuntary_context_switches": 316,
+      "child_voluntary_context_switches": 2,
+      "maximum_child_rss_so_far_kib": 14080,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "dimensional",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "96fb350bb7a123ae",
+        "final_pixels_fnv1a64": "133183231b1bc6eb",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 108.249479,
+          "p95_ms": 121.008036,
+          "minimum_ms": 102.289497,
+          "maximum_ms": 145.050994
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000561,
+          "p95_ms": 0.000811,
+          "minimum_ms": 0.00031,
+          "maximum_ms": 0.001331
+        },
+        "total": {
+          "median_ms": 108.24991,
+          "p95_ms": 121.008496,
+          "minimum_ms": 102.290058,
+          "maximum_ms": 145.051604
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "1672",
+        "941",
+        "flat",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:58:36.957255+00:00",
+      "finished_utc": "2026-11-14T20:58:47.610652+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 10.653374518000419,
+      "child_user_seconds": 10.607596999999998,
+      "child_system_seconds": 0.012723000000000012,
+      "child_involuntary_context_switches": 120,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14080,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "9ac2bac0db68cf6f",
+        "final_pixels_fnv1a64": "3f81943e94dad8c0",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 31.163023,
+          "p95_ms": 41.205844,
+          "minimum_ms": 28.009975,
+          "maximum_ms": 54.430222
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.00042,
+          "p95_ms": 0.000631,
+          "minimum_ms": 0.000181,
+          "maximum_ms": 0.000852
+        },
+        "total": {
+          "median_ms": 31.163293,
+          "p95_ms": 41.206304,
+          "minimum_ms": 28.010175,
+          "maximum_ms": 54.430593
+        }
+      }
+    },
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "1672",
+        "941",
+        "flat",
+        "none"
+      ],
+      "started_utc": "2026-11-14T20:58:47.610866+00:00",
+      "finished_utc": "2026-11-14T20:58:57.768743+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 10.157861061000403,
+      "child_user_seconds": 10.123604,
+      "child_system_seconds": 0.007070999999999994,
+      "child_involuntary_context_switches": 108,
+      "child_voluntary_context_switches": 2,
+      "maximum_child_rss_so_far_kib": 14208,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "overlay": "none",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "9ac2bac0db68cf6f",
+        "final_pixels_fnv1a64": "b4da82a5e0217294",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 30.247074,
+          "p95_ms": 33.041851,
+          "minimum_ms": 27.394163,
+          "maximum_ms": 57.995805
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000461,
+          "p95_ms": 0.000701,
+          "minimum_ms": 0.00021,
+          "maximum_ms": 0.001372
+        },
+        "total": {
+          "median_ms": 30.247474,
+          "p95_ms": 33.042171,
+          "minimum_ms": 27.394483,
+          "maximum_ms": 57.996295
+        }
+      }
+    },
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "1672",
+        "941",
+        "flat",
+        "help"
+      ],
+      "started_utc": "2026-11-14T20:58:57.770714+00:00",
+      "finished_utc": "2026-11-14T20:59:16.439596+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 18.668862167000043,
+      "child_user_seconds": 18.65237300000001,
+      "child_system_seconds": 0.0,
+      "child_involuntary_context_switches": 83,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14208,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "overlay": "help",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "9ac2bac0db68cf6f",
+        "final_pixels_fnv1a64": "e0c7f3261378294d",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 55.688495,
+          "p95_ms": 61.930519,
+          "minimum_ms": 52.495002,
+          "maximum_ms": 72.487013
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000571,
+          "p95_ms": 0.000851,
+          "minimum_ms": 0.000331,
+          "maximum_ms": 0.001172
+        },
+        "total": {
+          "median_ms": 55.689075,
+          "p95_ms": 61.93102,
+          "minimum_ms": 52.495773,
+          "maximum_ms": 72.487494
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "1672",
+        "941",
+        "flat",
+        "help"
+      ],
+      "started_utc": "2026-11-14T20:59:16.439790+00:00",
+      "finished_utc": "2026-11-14T20:59:30.448245+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 14.008438994000244,
+      "child_user_seconds": 13.993448999999998,
+      "child_system_seconds": 0.0037490000000000023,
+      "child_involuntary_context_switches": 51,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14208,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "overlay": "help",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "9ac2bac0db68cf6f",
+        "final_pixels_fnv1a64": "4e9cb0a42443a62b",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 41.730674,
+          "p95_ms": 47.770788,
+          "minimum_ms": 38.56672,
+          "maximum_ms": 56.007617
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000526,
+          "p95_ms": 0.000872,
+          "minimum_ms": 0.00018,
+          "maximum_ms": 0.001172
+        },
+        "total": {
+          "median_ms": 41.731144,
+          "p95_ms": 47.771379,
+          "minimum_ms": 38.5669,
+          "maximum_ms": 56.008198
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "1672",
+        "941",
+        "flat",
+        "audio"
+      ],
+      "started_utc": "2026-11-14T20:59:30.449232+00:00",
+      "finished_utc": "2026-11-14T20:59:44.142429+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 13.693180064000444,
+      "child_user_seconds": 13.649178000000006,
+      "child_system_seconds": 0.012243000000000004,
+      "child_involuntary_context_switches": 113,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14208,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "overlay": "audio",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "9ac2bac0db68cf6f",
+        "final_pixels_fnv1a64": "c06a23d14c0d88f6",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 40.866038,
+          "p95_ms": 46.320055,
+          "minimum_ms": 37.811399,
+          "maximum_ms": 64.357463
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000681,
+          "p95_ms": 0.000981,
+          "minimum_ms": 0.000261,
+          "maximum_ms": 0.001202
+        },
+        "total": {
+          "median_ms": 40.866839,
+          "p95_ms": 46.320886,
+          "minimum_ms": 37.811719,
+          "maximum_ms": 64.358444
+        }
+      }
+    },
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "1672",
+        "941",
+        "flat",
+        "audio"
+      ],
+      "started_utc": "2026-11-14T20:59:44.142717+00:00",
+      "finished_utc": "2026-11-14T21:00:03.669569+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 19.52683606699975,
+      "child_user_seconds": 19.473780000000005,
+      "child_system_seconds": 0.006727999999999984,
+      "child_involuntary_context_switches": 185,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14208,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "overlay": "audio",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "9ac2bac0db68cf6f",
+        "final_pixels_fnv1a64": "1a13dd4e765df06c",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 58.329596,
+          "p95_ms": 65.069845,
+          "minimum_ms": 53.110635,
+          "maximum_ms": 82.976552
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000541,
+          "p95_ms": 0.000772,
+          "minimum_ms": 0.0002,
+          "maximum_ms": 0.000972
+        },
+        "total": {
+          "median_ms": 58.330107,
+          "p95_ms": 65.070386,
+          "minimum_ms": 53.110945,
+          "maximum_ms": 82.977003
+        }
+      }
+    },
+    {
+      "variant": "before",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-before",
+        "1672",
+        "941",
+        "flat",
+        "midi"
+      ],
+      "started_utc": "2026-11-14T21:00:03.670784+00:00",
+      "finished_utc": "2026-11-14T21:00:25.460414+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 21.78961019400049,
+      "child_user_seconds": 21.719267000000002,
+      "child_system_seconds": 0.004209000000000018,
+      "child_involuntary_context_switches": 253,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14208,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "overlay": "midi",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "9ac2bac0db68cf6f",
+        "final_pixels_fnv1a64": "b6601d1b2fb989dc",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 65.023316,
+          "p95_ms": 72.711308,
+          "minimum_ms": 60.388652,
+          "maximum_ms": 96.969098
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000461,
+          "p95_ms": 0.000701,
+          "minimum_ms": 0.00019,
+          "maximum_ms": 0.009895
+        },
+        "total": {
+          "median_ms": 65.023807,
+          "p95_ms": 72.711729,
+          "minimum_ms": 60.389403,
+          "maximum_ms": 96.969569
+        }
+      }
+    },
+    {
+      "variant": "current",
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/a25-material-benchmark/material-current",
+        "1672",
+        "941",
+        "flat",
+        "midi"
+      ],
+      "started_utc": "2026-11-14T21:00:25.460752+00:00",
+      "finished_utc": "2026-11-14T21:00:40.416837+00:00",
+      "exit_code": 0,
+      "process_wall_seconds_including_setup_and_output": 14.956058439000117,
+      "child_user_seconds": 14.935285999999962,
+      "child_system_seconds": 0.0,
+      "child_involuntary_context_switches": 59,
+      "child_voluntary_context_switches": 1,
+      "maximum_child_rss_so_far_kib": 14208,
+      "stderr": "",
+      "measurement": {
+        "schema": "standalone-material-timing-v1",
+        "width": 1672,
+        "height": 941,
+        "presentation": "flat",
+        "overlay": "midi",
+        "workspace": "Play",
+        "warmup": 30,
+        "samples": 300,
+        "renderer": "software",
+        "renderer_flags": 13,
+        "sdl_version": "2.32.10",
+        "surface_format": "SDL_PIXELFORMAT_ABGR8888",
+        "surface_bytes": 6293408,
+        "render_batching": "1",
+        "scale": [
+          1,
+          1
+        ],
+        "viewport": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "clip": null,
+        "clock": "std::chrono::steady_clock",
+        "clock_period": [
+          1,
+          1000000000
+        ],
+        "layout_fnv1a64": "9ac2bac0db68cf6f",
+        "final_pixels_fnv1a64": "ba35d0b2c4e7ee38",
+        "upper_c_hit_depth": 144.119995,
+        "paint": {
+          "median_ms": 43.938573,
+          "p95_ms": 52.704528,
+          "minimum_ms": 40.019773,
+          "maximum_ms": 69.644475
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000471,
+          "p95_ms": 0.000792,
+          "minimum_ms": 0.00032,
+          "maximum_ms": 0.002283
+        },
+        "total": {
+          "median_ms": 43.938989,
+          "p95_ms": 52.705119,
+          "minimum_ms": 40.020234,
+          "maximum_ms": 69.645286
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "width": 960,
+      "height": 700,
+      "presentation": "dimensional",
+      "overlay": "none",
+      "layout_fnv1a64": "8f5cecf84e3329b1",
+      "before_median_ms": 46.20511,
+      "current_median_ms": 47.579051,
+      "before_p95_ms": 52.3534,
+      "current_p95_ms": 55.532255,
+      "p95_delta_ms": 3.1788549999999987,
+      "p95_delta_percent": 6.071917010165526,
+      "investigation_threshold_exceeded": false
+    },
+    {
+      "width": 960,
+      "height": 700,
+      "presentation": "flat",
+      "overlay": "none",
+      "layout_fnv1a64": "adf4a9348eaed65c",
+      "before_median_ms": 11.879374,
+      "current_median_ms": 11.771832,
+      "before_p95_ms": 13.79259,
+      "current_p95_ms": 13.562589,
+      "p95_delta_ms": -0.23000100000000145,
+      "p95_delta_percent": -1.6675693252681436,
+      "investigation_threshold_exceeded": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "presentation": "dimensional",
+      "overlay": "none",
+      "layout_fnv1a64": "ba92304603c433f6",
+      "before_median_ms": 80.940265,
+      "current_median_ms": 82.337949,
+      "before_p95_ms": 87.784528,
+      "current_p95_ms": 90.933126,
+      "p95_delta_ms": 3.148598000000007,
+      "p95_delta_percent": 3.586734555319369,
+      "investigation_threshold_exceeded": false
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "presentation": "flat",
+      "overlay": "none",
+      "layout_fnv1a64": "89c7968b9f59363f",
+      "before_median_ms": 21.137531,
+      "current_median_ms": 21.106173,
+      "before_p95_ms": 24.925512,
+      "current_p95_ms": 23.24465,
+      "p95_delta_ms": -1.6808620000000012,
+      "p95_delta_percent": -6.743540513831777,
+      "investigation_threshold_exceeded": false
+    },
+    {
+      "width": 1672,
+      "height": 941,
+      "presentation": "dimensional",
+      "overlay": "none",
+      "layout_fnv1a64": "96fb350bb7a123ae",
+      "before_median_ms": 109.18674,
+      "current_median_ms": 108.24991,
+      "before_p95_ms": 128.731401,
+      "current_p95_ms": 121.008496,
+      "p95_delta_ms": -7.7229050000000115,
+      "p95_delta_percent": -5.999239455181577,
+      "investigation_threshold_exceeded": false
+    },
+    {
+      "width": 1672,
+      "height": 941,
+      "presentation": "flat",
+      "overlay": "none",
+      "layout_fnv1a64": "9ac2bac0db68cf6f",
+      "before_median_ms": 30.247474,
+      "current_median_ms": 31.163293,
+      "before_p95_ms": 33.042171,
+      "current_p95_ms": 41.206304,
+      "p95_delta_ms": 8.164133,
+      "p95_delta_percent": 24.708222108044893,
+      "investigation_threshold_exceeded": true
+    },
+    {
+      "width": 1672,
+      "height": 941,
+      "presentation": "flat",
+      "overlay": "help",
+      "layout_fnv1a64": "9ac2bac0db68cf6f",
+      "before_median_ms": 55.689075,
+      "current_median_ms": 41.731144,
+      "before_p95_ms": 61.93102,
+      "current_p95_ms": 47.771379,
+      "p95_delta_ms": -14.159640999999993,
+      "p95_delta_percent": -22.863568208629527,
+      "investigation_threshold_exceeded": false
+    },
+    {
+      "width": 1672,
+      "height": 941,
+      "presentation": "flat",
+      "overlay": "audio",
+      "layout_fnv1a64": "9ac2bac0db68cf6f",
+      "before_median_ms": 58.330107,
+      "current_median_ms": 40.866839,
+      "before_p95_ms": 65.070386,
+      "current_p95_ms": 46.320886,
+      "p95_delta_ms": -18.749499999999998,
+      "p95_delta_percent": -28.814182845019545,
+      "investigation_threshold_exceeded": false
+    },
+    {
+      "width": 1672,
+      "height": 941,
+      "presentation": "flat",
+      "overlay": "midi",
+      "layout_fnv1a64": "9ac2bac0db68cf6f",
+      "before_median_ms": 65.023807,
+      "current_median_ms": 43.938989,
+      "before_p95_ms": 72.711729,
+      "current_p95_ms": 52.705119,
+      "p95_delta_ms": -20.006610000000002,
+      "p95_delta_percent": -27.514969421233268,
+      "investigation_threshold_exceeded": false
+    }
+  ],
+  "finished_utc": "2026-11-14T21:00:40.418112+00:00",
+  "maximum_child_rss_kib": 14208,
+  "identities_unchanged_after": true,
+  "worktree_current_renderer_after": {
+    "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/apps/standalone/InstrumentView.cpp",
+    "bytes": 80128,
+    "sha256": "428f74c4b2aae72e1ee048d1fa878575d0cd2edc064b1a3865ba40c446c30da2"
+  },
+  "threshold_exceedances": 1,
+  "raw_samples": {
+    "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A25-material-samples.jsonl",
+    "bytes": 74436,
+    "sha256": "f26fe01eb1b8506d840c52a5ed071ffee1c98ccc71cfa0650c725bfd8f286291"
+  },
+  "investigation": {
+    "report": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A25-material-investigation.json",
+      "bytes": 8895,
+      "sha256": "05be43d9168dc62323fe9f0c046661b8837b89b199763bf3cb2567e0a736a207"
+    },
+    "initial_trigger_preserved": true,
+    "repeated_case_count": 1,
+    "repeat_order": [
+      "before",
+      "current"
+    ],
+    "repeat_comparison": {
+      "before_median_ms": 30.615289,
+      "current_median_ms": 30.05654,
+      "before_p95_ms": 35.663495,
+      "current_p95_ms": 33.114226,
+      "p95_delta_ms": -2.5492689999999953,
+      "p95_delta_percent": -7.148118825706778,
+      "investigation_threshold_exceeded": false
+    },
+    "distributions_and_resource_observations": [
+      {
+        "batch": "initial",
+        "variant": "current",
+        "paint": {
+          "median_ms": 31.163023,
+          "p95_ms": 41.205844,
+          "minimum_ms": 28.009975,
+          "maximum_ms": 54.430222
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.00042,
+          "p95_ms": 0.000631,
+          "minimum_ms": 0.000181,
+          "maximum_ms": 0.000852
+        },
+        "total": {
+          "median_ms": 31.163293,
+          "p95_ms": 41.206304,
+          "minimum_ms": 28.010175,
+          "maximum_ms": 54.430593
+        },
+        "process_wall_seconds_including_setup_and_output": 10.653374518000419,
+        "cpu_user_seconds": 10.607596999999998,
+        "cpu_system_seconds": 0.012723000000000012,
+        "involuntary_context_switches": 120,
+        "voluntary_context_switches": 1,
+        "fifty_frame_blocks": [
+          {
+            "frames": [
+              1,
+              50
+            ],
+            "median_ms": 31.3705055,
+            "p95_ms": 37.331092,
+            "maximum_ms": 50.348366
+          },
+          {
+            "frames": [
+              51,
+              100
+            ],
+            "median_ms": 32.9246895,
+            "p95_ms": 42.064317,
+            "maximum_ms": 54.430593
+          },
+          {
+            "frames": [
+              101,
+              150
+            ],
+            "median_ms": 33.138242,
+            "p95_ms": 44.210118,
+            "maximum_ms": 51.561855
+          },
+          {
+            "frames": [
+              151,
+              200
+            ],
+            "median_ms": 30.419081,
+            "p95_ms": 36.073526,
+            "maximum_ms": 52.765055
+          },
+          {
+            "frames": [
+              201,
+              250
+            ],
+            "median_ms": 29.7138505,
+            "p95_ms": 32.506032,
+            "maximum_ms": 35.249591
+          },
+          {
+            "frames": [
+              251,
+              300
+            ],
+            "median_ms": 30.031734,
+            "p95_ms": 42.492789,
+            "maximum_ms": 47.072143
+          }
+        ]
+      },
+      {
+        "batch": "initial",
+        "variant": "before",
+        "paint": {
+          "median_ms": 30.247074,
+          "p95_ms": 33.041851,
+          "minimum_ms": 27.394163,
+          "maximum_ms": 57.995805
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000461,
+          "p95_ms": 0.000701,
+          "minimum_ms": 0.00021,
+          "maximum_ms": 0.001372
+        },
+        "total": {
+          "median_ms": 30.247474,
+          "p95_ms": 33.042171,
+          "minimum_ms": 27.394483,
+          "maximum_ms": 57.996295
+        },
+        "process_wall_seconds_including_setup_and_output": 10.157861061000403,
+        "cpu_user_seconds": 10.123604,
+        "cpu_system_seconds": 0.007070999999999994,
+        "involuntary_context_switches": 108,
+        "voluntary_context_switches": 2,
+        "fifty_frame_blocks": [
+          {
+            "frames": [
+              1,
+              50
+            ],
+            "median_ms": 29.745488,
+            "p95_ms": 32.174642,
+            "maximum_ms": 55.02056
+          },
+          {
+            "frames": [
+              51,
+              100
+            ],
+            "median_ms": 30.315433,
+            "p95_ms": 32.621131,
+            "maximum_ms": 33.16542
+          },
+          {
+            "frames": [
+              101,
+              150
+            ],
+            "median_ms": 30.302014,
+            "p95_ms": 32.724604,
+            "maximum_ms": 57.996295
+          },
+          {
+            "frames": [
+              151,
+              200
+            ],
+            "median_ms": 30.8634515,
+            "p95_ms": 33.187039,
+            "maximum_ms": 52.551638
+          },
+          {
+            "frames": [
+              201,
+              250
+            ],
+            "median_ms": 30.275532,
+            "p95_ms": 33.315165,
+            "maximum_ms": 36.91029
+          },
+          {
+            "frames": [
+              251,
+              300
+            ],
+            "median_ms": 30.002629,
+            "p95_ms": 34.332114,
+            "maximum_ms": 37.790205
+          }
+        ]
+      },
+      {
+        "batch": "reverse_order_repeat",
+        "variant": "before",
+        "paint": {
+          "median_ms": 30.614698,
+          "p95_ms": 35.662924,
+          "minimum_ms": 28.127873,
+          "maximum_ms": 45.797531
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000591,
+          "p95_ms": 0.000871,
+          "minimum_ms": 0.00032,
+          "maximum_ms": 0.048481
+        },
+        "total": {
+          "median_ms": 30.615289,
+          "p95_ms": 35.663495,
+          "minimum_ms": 28.128554,
+          "maximum_ms": 45.798152
+        },
+        "process_wall_seconds_including_setup_and_output": 10.317747576000329,
+        "cpu_user_seconds": 10.280011,
+        "cpu_system_seconds": 0.018548,
+        "involuntary_context_switches": 44,
+        "voluntary_context_switches": 1,
+        "fifty_frame_blocks": [
+          {
+            "frames": [
+              1,
+              50
+            ],
+            "median_ms": 30.27369,
+            "p95_ms": 36.432614,
+            "maximum_ms": 45.798152
+          },
+          {
+            "frames": [
+              51,
+              100
+            ],
+            "median_ms": 30.7329275,
+            "p95_ms": 33.717022,
+            "maximum_ms": 41.191143
+          },
+          {
+            "frames": [
+              101,
+              150
+            ],
+            "median_ms": 30.602115,
+            "p95_ms": 33.870178,
+            "maximum_ms": 39.848832
+          },
+          {
+            "frames": [
+              151,
+              200
+            ],
+            "median_ms": 30.3236535,
+            "p95_ms": 35.663495,
+            "maximum_ms": 37.997525
+          },
+          {
+            "frames": [
+              201,
+              250
+            ],
+            "median_ms": 30.649715,
+            "p95_ms": 33.906732,
+            "maximum_ms": 36.111595
+          },
+          {
+            "frames": [
+              251,
+              300
+            ],
+            "median_ms": 31.5655565,
+            "p95_ms": 38.048845,
+            "maximum_ms": 42.365125
+          }
+        ]
+      },
+      {
+        "batch": "reverse_order_repeat",
+        "variant": "current",
+        "paint": {
+          "median_ms": 30.056219,
+          "p95_ms": 33.113906,
+          "minimum_ms": 27.184361,
+          "maximum_ms": 45.261401
+        },
+        "flush_and_surface_present": {
+          "median_ms": 0.000345,
+          "p95_ms": 0.000561,
+          "minimum_ms": 0.00017,
+          "maximum_ms": 0.000822
+        },
+        "total": {
+          "median_ms": 30.05654,
+          "p95_ms": 33.114226,
+          "minimum_ms": 27.184651,
+          "maximum_ms": 45.261962
+        },
+        "process_wall_seconds_including_setup_and_output": 10.064027923999674,
+        "cpu_user_seconds": 10.021431999999999,
+        "cpu_system_seconds": 0.019212999999999997,
+        "involuntary_context_switches": 90,
+        "voluntary_context_switches": 1,
+        "fifty_frame_blocks": [
+          {
+            "frames": [
+              1,
+              50
+            ],
+            "median_ms": 29.5864005,
+            "p95_ms": 32.01473,
+            "maximum_ms": 40.029758
+          },
+          {
+            "frames": [
+              51,
+              100
+            ],
+            "median_ms": 29.5854045,
+            "p95_ms": 32.173795,
+            "maximum_ms": 34.79314
+          },
+          {
+            "frames": [
+              101,
+              150
+            ],
+            "median_ms": 30.1896865,
+            "p95_ms": 33.082991,
+            "maximum_ms": 45.261962
+          },
+          {
+            "frames": [
+              151,
+              200
+            ],
+            "median_ms": 30.257396,
+            "p95_ms": 35.385484,
+            "maximum_ms": 41.783021
+          },
+          {
+            "frames": [
+              201,
+              250
+            ],
+            "median_ms": 29.9702575,
+            "p95_ms": 32.825836,
+            "maximum_ms": 40.045773
+          },
+          {
+            "frames": [
+              251,
+              300
+            ],
+            "median_ms": 30.1558195,
+            "p95_ms": 33.223024,
+            "maximum_ms": 37.177334
+          }
+        ]
+      }
+    ],
+    "conclusion": "The initial reference Flat/no-overlay p95 trigger did not reproduce in the sole approved reverse-order repeat. Both observations are retained separately without averaging. The original tail was in paint, while the explicit flush/surface-present segment remained below0.002 ms. These data establish interval variability, not its cause or statistical equivalence. No persistent regression or actionable paint hotspot is demonstrated; no optimization or additional run was performed."
+  },
+  "qualification": "Completed nine same-geometry paired cells and the one threshold-triggered investigation. All three Dimensional material cells and three Flat overlays were below the combined investigation threshold. One original reference Flat/no-overlay control trigger remains recorded and did not reproduce in one reverse-order repeat. This is source-specific software-surface paint+flush+present timing, not display FPS, audio latency, a real-device deadline or a cross-device claim.",
+  "compiled_dependencies_unchanged_after": true,
+  "changed_compiled_dependency_paths": [],
+  "validation": {
+    "main_processes": 18,
+    "followup_processes": 2,
+    "main_measured_draws": 5400,
+    "followup_measured_draws": 600,
+    "all_process_exit_codes_zero": true,
+    "all_layout_and_renderer_pair_fingerprints_match": true,
+    "all_compiled_dependency_identities_unchanged": true
+  },
+  "maximum_child_rss_including_followup_kib": 16256
+}

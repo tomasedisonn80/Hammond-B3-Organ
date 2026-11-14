@@ -169,6 +169,30 @@ if(HAMMOND_BUILD_STANDALONE)
         set_tests_properties(test_standalone_workspace_raster PROPERTIES
             TIMEOUT 60 LABELS "standalone;native;workspace;geometry")
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_workspace_raster)
+        add_executable(test_standalone_inspection_raster
+            native_tests/test_standalone_inspection_raster.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_inspection_raster PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_inspection_raster PRIVATE
+            SDL_MAIN_HANDLED
+            HAMMOND_TEST_PROFILE="${HAMMOND_COMPILED_PROFILE}"
+            HAMMOND_TEST_SOURCE_ROOT="${PROJECT_SOURCE_DIR}")
+        hammond_configure_target(test_standalone_inspection_raster)
+        add_dependencies(test_standalone_inspection_raster hammond_profile)
+        add_test(NAME test_standalone_inspection_raster COMMAND test_standalone_inspection_raster)
+        set_tests_properties(test_standalone_inspection_raster PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;inspection")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_inspection_raster)
+        add_executable(test_standalone_material_acceptance
+            native_tests/test_standalone_material_acceptance.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_material_acceptance PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_material_acceptance PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_material_acceptance)
+        add_test(NAME test_standalone_material_acceptance COMMAND test_standalone_material_acceptance)
+        set_tests_properties(test_standalone_material_acceptance PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;material;geometry")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_material_acceptance)
         add_executable(test_standalone_scaled_view
             native_tests/test_standalone_scaled_view.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_scaled_view PRIVATE
