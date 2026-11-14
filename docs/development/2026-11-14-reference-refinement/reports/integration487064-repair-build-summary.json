@@ -1,0 +1,67 @@
+{
+  "adoption_receipt": "docs/development/2026-11-14-reference-refinement/reports/root-integration487064-test-repair-adoption.json",
+  "adoption_receipt_identity": {
+    "bytes": 1620,
+    "git_blob_sha1": "573812bdc01698f8c97340344c8f6d7bbf806a2e",
+    "kind": "file",
+    "sha256": "053ce27f3023d6d6c41826df5f9141ec5815ca0fd69c48ecbcb936afcec7c669"
+  },
+  "build_execution_input_changes": [
+    {
+      "after": {
+        "bytes": 42981,
+        "git_blob_sha1": "e0b992fe9c544ede95f3f701c8efbd2377a2e780",
+        "kind": "file",
+        "sha256": "736c98410c49ff90aaf2cef6d59f84d6f8c765271ed79bb3fbf9664e5c9e90bd"
+      },
+      "before": {
+        "bytes": 42981,
+        "git_blob_sha1": "8b35995722cd6e555b9ddada27d03919efab68c4",
+        "kind": "file",
+        "sha256": "c267fde31d503be55fb01fd85d2ebf069005b45d6aa368b31516d3c7f3754d51"
+      },
+      "path": "cmake_install.cmake"
+    }
+  ],
+  "command_result": {
+    "cap_bytes": 8388608,
+    "command": [
+      "../build-tools/cmake/data/bin/cmake",
+      "--build",
+      "../build-native",
+      "--target",
+      "test_standalone_waveform_material",
+      "--parallel",
+      "3"
+    ],
+    "completed_utc": "2026-11-14T23:31:23.685105+00:00",
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "exit": 0,
+    "log": "integration487064-repair-build.log",
+    "log_sha256": "71966acc17915c9d779078a8b9f705d05635b8f1f8f1363fe268e0418e5846d2",
+    "seconds": 4.013393365999946,
+    "started_utc": "2026-11-14T23:31:19.671712+00:00",
+    "stored_bytes": 9025,
+    "stream": "unmodified merged stdout and stderr",
+    "stream_bytes": 9025,
+    "stream_sha256": "71966acc17915c9d779078a8b9f705d05635b8f1f8f1363fe268e0418e5846d2",
+    "truncated": false
+  },
+  "dependency_changes_during_rebuild": [],
+  "follow_up_not_new_worker": true,
+  "full_ctest_executed": false,
+  "incoming_commit": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+  "limits": [
+    "A local GCC target rebuild is not a macOS/Windows hosted repair pass.",
+    "The Python test-only overlay executes later in the explicitly authorized full CTest; it needs no compiled target."
+  ],
+  "overlay": {
+    "apps/standalone/native_tests/test_standalone_waveform_material.cpp": "1b6449143afd636e48b6be5e422b591e4dee26e29592b98a2394665916cdfead",
+    "tests/test_rotary_waveform_acceptance.py": "e2a21f1b5181ae7b46c776e96041a95b24ca2e2391f1e55ff5aed3e0d03e688d"
+  },
+  "reason": "Root adopted two independently reviewed test-only repairs after hosted compiler/numeric failures; the initial all-target build remains unchanged.",
+  "repository_changes_during_rebuild": [],
+  "schema_version": 1,
+  "source_changes_during_rebuild": [],
+  "worker": "/root/w10_a59_publication_preflight"
+}

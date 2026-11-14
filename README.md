@@ -1,5 +1,11 @@
 # Hammond B-3 Organ
 
+**Completed development pass:** all 60 reference-refinement agents are accepted.
+The combined `487064d` source plus two reviewed portability-test repairs passes
+[166/166 local tests](docs/development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json).
+The [closure record](docs/REFERENCE_REFINEMENT_CLOSURE.md) owns the current
+v5 gallery, source boundaries, publication and remaining platform/product gates.
+
 **Current checkpoint:** published waveform source `487064d2400b9f39d0ee66ed136a09c9e372379e` adds the independent R4 history, cubic interpolation, transactional stereo renderer and offline developer CLI, plus drawbar/key-front paint. The [waveform continuation](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md) retains the completed four-rate/six-partition numerical experiment; independent lifecycle, symmetry, allocation and CLI acceptance remain open. Its incoming manifest records **29 actual workers dispatched, 26 accepted**, separately from reference refinement's **60 accepted assignments and strict record pass**. Root's integrated all-target build has passed and the fresh **v5 gallery below captures the actual `487064d2` application**. Independent v5 admission and full combined-source/hosted qualification remain separate gates; the incoming hosted matrix has observed platform failures.
 
 The [combined-source closure](docs/REFERENCE_REFINEMENT_CLOSURE.md) is the authority for the merged source, latest verification, current captures and remaining platform/publication gates.

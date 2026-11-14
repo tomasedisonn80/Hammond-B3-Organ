@@ -1,0 +1,691 @@
+{
+  "LastTest_failure_markers": 0,
+  "LastTest_pass_markers": 166,
+  "approved_test_only_repair": {
+    "adoption_receipt": "docs/development/2026-11-14-reference-refinement/reports/root-integration487064-test-repair-adoption.json",
+    "adoption_receipt_identity": {
+      "bytes": 1620,
+      "git_blob_sha1": "573812bdc01698f8c97340344c8f6d7bbf806a2e",
+      "kind": "file",
+      "sha256": "053ce27f3023d6d6c41826df5f9141ec5815ca0fd69c48ecbcb936afcec7c669"
+    },
+    "build_execution_input_changes": [
+      {
+        "after": {
+          "bytes": 42981,
+          "git_blob_sha1": "e0b992fe9c544ede95f3f701c8efbd2377a2e780",
+          "kind": "file",
+          "sha256": "736c98410c49ff90aaf2cef6d59f84d6f8c765271ed79bb3fbf9664e5c9e90bd"
+        },
+        "before": {
+          "bytes": 42981,
+          "git_blob_sha1": "8b35995722cd6e555b9ddada27d03919efab68c4",
+          "kind": "file",
+          "sha256": "c267fde31d503be55fb01fd85d2ebf069005b45d6aa368b31516d3c7f3754d51"
+        },
+        "path": "cmake_install.cmake"
+      }
+    ],
+    "command_result": {
+      "cap_bytes": 8388608,
+      "command": [
+        "../build-tools/cmake/data/bin/cmake",
+        "--build",
+        "../build-native",
+        "--target",
+        "test_standalone_waveform_material",
+        "--parallel",
+        "3"
+      ],
+      "completed_utc": "2026-11-14T23:31:23.685105+00:00",
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+      "exit": 0,
+      "log": "integration487064-repair-build.log",
+      "log_sha256": "71966acc17915c9d779078a8b9f705d05635b8f1f8f1363fe268e0418e5846d2",
+      "seconds": 4.013393365999946,
+      "started_utc": "2026-11-14T23:31:19.671712+00:00",
+      "stored_bytes": 9025,
+      "stream": "unmodified merged stdout and stderr",
+      "stream_bytes": 9025,
+      "stream_sha256": "71966acc17915c9d779078a8b9f705d05635b8f1f8f1363fe268e0418e5846d2",
+      "truncated": false
+    },
+    "dependency_changes_during_rebuild": [],
+    "follow_up_not_new_worker": true,
+    "full_ctest_executed": false,
+    "incoming_commit": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+    "limits": [
+      "A local GCC target rebuild is not a macOS/Windows hosted repair pass.",
+      "The Python test-only overlay executes later in the explicitly authorized full CTest; it needs no compiled target."
+    ],
+    "overlay": {
+      "apps/standalone/native_tests/test_standalone_waveform_material.cpp": "1b6449143afd636e48b6be5e422b591e4dee26e29592b98a2394665916cdfead",
+      "tests/test_rotary_waveform_acceptance.py": "e2a21f1b5181ae7b46c776e96041a95b24ca2e2391f1e55ff5aed3e0d03e688d"
+    },
+    "reason": "Root adopted two independently reviewed test-only repairs after hosted compiler/numeric failures; the initial all-target build remains unchanged.",
+    "repository_changes_during_rebuild": [],
+    "schema_version": 1,
+    "source_changes_during_rebuild": [],
+    "worker": "/root/w10_a59_publication_preflight"
+  },
+  "build": {
+    "cap_bytes": 8388608,
+    "command": [
+      "../build-tools/cmake/data/bin/cmake",
+      "--build",
+      "../build-native",
+      "--parallel",
+      "3"
+    ],
+    "completed_utc": "2026-11-14T23:23:41.658378+00:00",
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "exit": 0,
+    "log": "integration487064-build.log",
+    "log_sha256": "28132f3c9a48b85c0fc05948bf2a2bbd66f080f8d2bbfcf38502577e054f7673",
+    "seconds": 18.733160094001505,
+    "started_utc": "2026-11-14T23:23:22.925221+00:00",
+    "stored_bytes": 18295,
+    "stream": "unmodified merged stdout and stderr",
+    "stream_bytes": 18295,
+    "stream_sha256": "28132f3c9a48b85c0fc05948bf2a2bbd66f080f8d2bbfcf38502577e054f7673",
+    "truncated": false
+  },
+  "build_execution_changes_during_tests": [],
+  "cache": {
+    "bytes": 53797,
+    "git_blob_sha1": "f93ee5fdc198b2c4ea952e713cebf77ed1a3a47d",
+    "kind": "file",
+    "sha256": "3d8d1b65a436e297c3f755fd43fe7160c4d71d03f563b3c3c5e00419ca337e2c"
+  },
+  "compiled_source_changes_between_repair_build_and_test": [],
+  "ctest_discovery": {
+    "cap_bytes": 8388608,
+    "command": [
+      "../build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "../build-native",
+      "-C",
+      "Release",
+      "--show-only=json-v1",
+      "--no-tests=error"
+    ],
+    "completed_utc": "2026-11-14T23:32:31.567083+00:00",
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "exit": 0,
+    "log": "integration487064-ctest-discovery.log",
+    "log_sha256": "fe0b6ada840dcd6e6e7563617c68645e0415af0b31dae10ab03a8e3ad5047e43",
+    "seconds": 0.011210767001102795,
+    "started_utc": "2026-11-14T23:32:31.555872+00:00",
+    "stored_bytes": 165263,
+    "stream": "unmodified merged stdout and stderr",
+    "stream_bytes": 165263,
+    "stream_sha256": "fe0b6ada840dcd6e6e7563617c68645e0415af0b31dae10ab03a8e3ad5047e43",
+    "truncated": false
+  },
+  "ctest_reported_seconds": 149.69,
+  "dependency_changes_during_build": [],
+  "dependency_changes_during_tests": [],
+  "discovered_count": 166,
+  "documentation_changes_between_repair_build_and_test": [],
+  "execution_input_changes_between_repair_build_and_test": [],
+  "follow_up_not_new_worker": true,
+  "frozen_staged_tree_check": {
+    "index_exactly_matches_tree_modes_and_blobs": true,
+    "missing_snapshot_paths": [],
+    "no_Git_object_or_index_write": true,
+    "observed_utc": "2026-11-14T23:32:57.513031+00:00",
+    "root_named_frozen_staged_tree": "ef49240585d5b2a88fd6788496151917e2b2491a",
+    "schema_version": 1,
+    "snapshot_blob_mismatches": [],
+    "snapshot_path_count": 2863,
+    "snapshot_paths_outside_tree": [],
+    "snapshot_repository_sha256": "5849bee5d7a232a243d01ff73363786006f82d8afb79a17ac72cca2178882f4f",
+    "snapshot_source": "integration487064-inputs-before-test.json",
+    "tree_path_count": 2863,
+    "worker": "/root/w10_a59_publication_preflight"
+  },
+  "full_suite_executions": 1,
+  "full_waveform_custom_target_executions": 0,
+  "incoming_commit": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+  "incoming_tree": "ae75093a76ff19c2e7f9189a92cf2faa63f4d8b6",
+  "inherited_failure_file": {
+    "bytes": 31,
+    "classification": "Pre-existing before this full test run; not a current failure observation.",
+    "git_blob_sha1": "0081bede89f6c7147b478e3bbb1fd39b10a304d9",
+    "kind": "file",
+    "original_mtime_ns": 1794690409695445165,
+    "path": "integration487064-inherited-LastTestsFailed.log",
+    "sha256": "43af22753a7885bf6400d1765056e8caf2d45fa3e02e6deb53f57bc819008b3d"
+  },
+  "limits": [
+    "An incremental all-target GCC Release build and one full registered CTest; not a clean rebuild, hermetic image or cross-platform rerun.",
+    "MIDI, VST3 and sanitizers are OFF in this local build; physical devices, GUI, deadline, literal equality and physical fidelity are not newly qualified.",
+    "The expensive custom ten-second full waveform target was not invoked here; incoming retained full-run and exact final CI evidence keep their source boundaries.",
+    "Known hosted487064 macOS/Windows failures remain separate; the two exact approved test-only repairs were adopted and the affected material target was rebuilt once before this full GCC run. Actual repaired-platform CI remains required.",
+    "Original A49 and accepted notes/reports remain untouched."
+  ],
+  "native_executable": {
+    "bytes": 3632680,
+    "git_blob_sha1": "a2b8804cc82c795f49b2d6e8745262621fb38df3",
+    "kind": "file",
+    "sha256": "5ddc0c9a39b34cf16fa3a89c08bb053714c5169e09499f7351c0c48ee943dd1b"
+  },
+  "next_action": "Root reviews the exact coherent result, admits current captures and handles later published test-only fixes with their affected checks; observe exact final publication/hosted outcome.",
+  "observed_HEAD_tree_at_test": "ae75093a76ff19c2e7f9189a92cf2faa63f4d8b6",
+  "observed_all_pass": true,
+  "observed_head_at_test": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+  "original_commands_reexecuted_during_finalization": false,
+  "original_ctest": {
+    "cap_bytes": 8388608,
+    "command": [
+      "../build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "../build-native",
+      "-C",
+      "Release",
+      "--output-on-failure",
+      "--no-tests=error",
+      "--parallel",
+      "3"
+    ],
+    "completed_utc": "2026-11-14T23:35:01.262839+00:00",
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "exit": 0,
+    "log": "integration487064-ctest-original.log",
+    "log_sha256": "e87d99a5d1e5a1d897cb7d3a7ec52b65176eba2deb7a793de0081843fb140fa3",
+    "seconds": 149.69443412100009,
+    "started_utc": "2026-11-14T23:32:31.568419+00:00",
+    "stored_bytes": 23912,
+    "stream": "unmodified merged stdout and stderr",
+    "stream_bytes": 23912,
+    "stream_sha256": "e87d99a5d1e5a1d897cb7d3a7ec52b65176eba2deb7a793de0081843fb140fa3",
+    "truncated": false
+  },
+  "outcome": "passed_coherent_frozen_inputs",
+  "passing_completion_rows": 166,
+  "passing_unique_names": 166,
+  "qualification": {
+    "dependency_aggregate_sha256": "81999c306e29c09c2a9ebbf4b76aa4708ae70e74710e178cf76f00593b5fd2b9",
+    "dependency_files": 1758,
+    "markdown_aggregate_sha256": "1df67d3b9d8694f56636cc002202fc3c68371f6401422c12c8c38bd2c05f40ab",
+    "markdown_files": 967,
+    "post_test_snapshot_utc": "2026-11-14T23:35:01.776065+00:00",
+    "product_control_aggregate_sha256": "651571f341d1221a220e2018d655f487ba26a6750475c4082c6dbdce21595cc1",
+    "product_control_inputs": 386,
+    "repository_aggregate_sha256": "5849bee5d7a232a243d01ff73363786006f82d8afb79a17ac72cca2178882f4f",
+    "repository_files": 2863,
+    "snapshot_started_utc": "2026-11-14T23:32:30.725262+00:00",
+    "source_target_mismatches": [
+      ".gitattributes",
+      ".github/workflows/ci.yml",
+      "apps/standalone/native_tests/test_standalone_waveform_material.cpp",
+      "tests/test_rotary_waveform_acceptance.py"
+    ]
+  },
+  "reported_summary": [
+    "100% tests passed out of 166"
+  ],
+  "repository_changes_during_build": [],
+  "repository_changes_during_tests": [],
+  "schema_version": 1,
+  "scope": "One all-target incremental build, one separately recorded approved test-only material target rebuild, and one full discovered CTest after incoming487064 integration and root-authorized final repository freeze.",
+  "selected_cache": {
+    "BUILD_TESTING": "ON",
+    "CMAKE_ADDR2LINE": "/usr/bin/addr2line",
+    "CMAKE_ADDR2LINE-ADVANCED": "1",
+    "CMAKE_AR": "/usr/bin/ar",
+    "CMAKE_AR-ADVANCED": "1",
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CACHEFILE_DIR": "/workspace/scratch/1bb6ee17ad7e/build-native",
+    "CMAKE_CACHE_MAJOR_VERSION": "4",
+    "CMAKE_CACHE_MINOR_VERSION": "4",
+    "CMAKE_CACHE_PATCH_VERSION": "5",
+    "CMAKE_COMMAND": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+    "CMAKE_CPACK_COMMAND": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cpack",
+    "CMAKE_CTEST_COMMAND": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+    "CMAKE_CTEST_COMMAND-ADVANCED": "1",
+    "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+    "CMAKE_CXX_COMPILER-ADVANCED": "1",
+    "CMAKE_CXX_COMPILER_AR": "/usr/bin/gcc-ar-14",
+    "CMAKE_CXX_COMPILER_AR-ADVANCED": "1",
+    "CMAKE_CXX_COMPILER_RANLIB": "/usr/bin/gcc-ranlib-14",
+    "CMAKE_CXX_COMPILER_RANLIB-ADVANCED": "1",
+    "CMAKE_CXX_FLAGS": "",
+    "CMAKE_CXX_FLAGS-ADVANCED": "1",
+    "CMAKE_CXX_FLAGS_DEBUG": "-g",
+    "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": "1",
+    "CMAKE_CXX_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+    "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": "1",
+    "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+    "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": "1",
+    "CMAKE_CXX_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+    "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+    "CMAKE_C_COMPILER": "/usr/bin/cc",
+    "CMAKE_C_COMPILER-ADVANCED": "1",
+    "CMAKE_C_COMPILER_AR": "/usr/bin/gcc-ar-14",
+    "CMAKE_C_COMPILER_AR-ADVANCED": "1",
+    "CMAKE_C_COMPILER_RANLIB": "/usr/bin/gcc-ranlib-14",
+    "CMAKE_C_COMPILER_RANLIB-ADVANCED": "1",
+    "CMAKE_C_FLAGS": "",
+    "CMAKE_C_FLAGS-ADVANCED": "1",
+    "CMAKE_C_FLAGS_DEBUG": "-g",
+    "CMAKE_C_FLAGS_DEBUG-ADVANCED": "1",
+    "CMAKE_C_FLAGS_MINSIZEREL": "-Os -DNDEBUG",
+    "CMAKE_C_FLAGS_MINSIZEREL-ADVANCED": "1",
+    "CMAKE_C_FLAGS_RELEASE": "-O3 -DNDEBUG",
+    "CMAKE_C_FLAGS_RELEASE-ADVANCED": "1",
+    "CMAKE_C_FLAGS_RELWITHDEBINFO": "-O2 -g -DNDEBUG",
+    "CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+    "CMAKE_DIAGNOSTIC_INIT": "CMD_AUTHOR=WARN;CMD_DEPRECATED=WARN;CMD_EXPERIMENTAL=WARN;CMD_INSTALL_ABSOLUTE_DESTINATION=IGNORE;CMD_POLICY=WARN;CMD_UNINITIALIZED=IGNORE;CMD_UNUSED_CLI=WARN",
+    "CMAKE_DLLTOOL": "CMAKE_DLLTOOL-NOTFOUND",
+    "CMAKE_DLLTOOL-ADVANCED": "1",
+    "CMAKE_ERROR_DEPRECATED": "OFF",
+    "CMAKE_EXECUTABLE_FORMAT": "ELF",
+    "CMAKE_EXE_LINKER_FLAGS": "",
+    "CMAKE_EXE_LINKER_FLAGS-ADVANCED": "1",
+    "CMAKE_EXE_LINKER_FLAGS_DEBUG": "",
+    "CMAKE_EXE_LINKER_FLAGS_DEBUG-ADVANCED": "1",
+    "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL": "",
+    "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED": "1",
+    "CMAKE_EXE_LINKER_FLAGS_RELEASE": "",
+    "CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED": "1",
+    "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO": "",
+    "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+    "CMAKE_EXPORT_BUILD_DATABASE": "",
+    "CMAKE_EXPORT_BUILD_DATABASE-ADVANCED": "1",
+    "CMAKE_EXPORT_COMPILE_COMMANDS": "",
+    "CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED": "1",
+    "CMAKE_EXTRA_GENERATOR": "",
+    "CMAKE_FIND_PACKAGE_REDIRECTS_DIR": "/workspace/scratch/1bb6ee17ad7e/build-native/CMakeFiles/pkgRedirects",
+    "CMAKE_GENERATOR": "Ninja",
+    "CMAKE_GENERATOR_INSTANCE": "",
+    "CMAKE_GENERATOR_PLATFORM": "",
+    "CMAKE_GENERATOR_TOOLSET": "",
+    "CMAKE_HAVE_LIBC_PTHREAD": "1",
+    "CMAKE_HOME_DIRECTORY": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "CMAKE_INSTALL_BINDIR": "bin",
+    "CMAKE_INSTALL_BINDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_DATADIR": "share",
+    "CMAKE_INSTALL_DATADIR-ADVANCED": "1",
+    "CMAKE_INSTALL_DATAROOTDIR": "share",
+    "CMAKE_INSTALL_DATAROOTDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_DOCDIR": "",
+    "CMAKE_INSTALL_DOCDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_INCLUDEDIR": "include",
+    "CMAKE_INSTALL_INCLUDEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_INFODIR": "",
+    "CMAKE_INSTALL_INFODIR-ADVANCED": "1",
+    "CMAKE_INSTALL_LIBDIR": "lib",
+    "CMAKE_INSTALL_LIBDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_LIBEXECDIR": "libexec",
+    "CMAKE_INSTALL_LIBEXECDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_LOCALEDIR": "",
+    "CMAKE_INSTALL_LOCALEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_LOCALSTATEDIR": "var",
+    "CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_MANDIR": "",
+    "CMAKE_INSTALL_MANDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_OLDINCLUDEDIR": "/usr/include",
+    "CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_PREFIX": "/usr/local",
+    "CMAKE_INSTALL_RUNSTATEDIR": "",
+    "CMAKE_INSTALL_RUNSTATEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_SBINDIR": "sbin",
+    "CMAKE_INSTALL_SBINDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_SHAREDSTATEDIR": "com",
+    "CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED": "1",
+    "CMAKE_INSTALL_SO_NO_EXE": "1",
+    "CMAKE_INSTALL_SYSCONFDIR": "etc",
+    "CMAKE_INSTALL_SYSCONFDIR-ADVANCED": "1",
+    "CMAKE_LINKER": "/usr/bin/ld",
+    "CMAKE_LINKER-ADVANCED": "1",
+    "CMAKE_LIST_FILE_NAME": "CMakeLists.txt",
+    "CMAKE_MAKE_PROGRAM": "/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+    "CMAKE_MODULE_LINKER_FLAGS": "",
+    "CMAKE_MODULE_LINKER_FLAGS-ADVANCED": "1",
+    "CMAKE_MODULE_LINKER_FLAGS_DEBUG": "",
+    "CMAKE_MODULE_LINKER_FLAGS_DEBUG-ADVANCED": "1",
+    "CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL": "",
+    "CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED": "1",
+    "CMAKE_MODULE_LINKER_FLAGS_RELEASE": "",
+    "CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED": "1",
+    "CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO": "",
+    "CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+    "CMAKE_NM": "/usr/bin/nm",
+    "CMAKE_NM-ADVANCED": "1",
+    "CMAKE_NUMBER_OF_MAKEFILES": "3",
+    "CMAKE_OBJCOPY": "/usr/bin/objcopy",
+    "CMAKE_OBJCOPY-ADVANCED": "1",
+    "CMAKE_OBJDUMP": "/usr/bin/objdump",
+    "CMAKE_OBJDUMP-ADVANCED": "1",
+    "CMAKE_PLATFORM_INFO_INITIALIZED": "1",
+    "CMAKE_PROJECT_COMPAT_VERSION": "",
+    "CMAKE_PROJECT_DESCRIPTION": "",
+    "CMAKE_PROJECT_HOMEPAGE_URL": "",
+    "CMAKE_PROJECT_NAME": "HammondB3Organ",
+    "CMAKE_PROJECT_SPDX_LICENSE": "",
+    "CMAKE_PROJECT_VERSION": "0.1.0",
+    "CMAKE_PROJECT_VERSION_MAJOR": "0",
+    "CMAKE_PROJECT_VERSION_MINOR": "1",
+    "CMAKE_PROJECT_VERSION_PATCH": "0",
+    "CMAKE_PROJECT_VERSION_TWEAK": "",
+    "CMAKE_RANLIB": "/usr/bin/ranlib",
+    "CMAKE_RANLIB-ADVANCED": "1",
+    "CMAKE_READELF": "/usr/bin/readelf",
+    "CMAKE_READELF-ADVANCED": "1",
+    "CMAKE_ROOT": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/share/cmake-4.4",
+    "CMAKE_SHARED_LINKER_FLAGS": "",
+    "CMAKE_SHARED_LINKER_FLAGS-ADVANCED": "1",
+    "CMAKE_SHARED_LINKER_FLAGS_DEBUG": "",
+    "CMAKE_SHARED_LINKER_FLAGS_DEBUG-ADVANCED": "1",
+    "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL": "",
+    "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL-ADVANCED": "1",
+    "CMAKE_SHARED_LINKER_FLAGS_RELEASE": "",
+    "CMAKE_SHARED_LINKER_FLAGS_RELEASE-ADVANCED": "1",
+    "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO": "",
+    "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+    "CMAKE_SKIP_INSTALL_RPATH": "NO",
+    "CMAKE_SKIP_INSTALL_RPATH-ADVANCED": "1",
+    "CMAKE_SKIP_RPATH": "NO",
+    "CMAKE_SKIP_RPATH-ADVANCED": "1",
+    "CMAKE_STATIC_LINKER_FLAGS": "",
+    "CMAKE_STATIC_LINKER_FLAGS-ADVANCED": "1",
+    "CMAKE_STATIC_LINKER_FLAGS_DEBUG": "",
+    "CMAKE_STATIC_LINKER_FLAGS_DEBUG-ADVANCED": "1",
+    "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL": "",
+    "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED": "1",
+    "CMAKE_STATIC_LINKER_FLAGS_RELEASE": "",
+    "CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED": "1",
+    "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO": "",
+    "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": "1",
+    "CMAKE_STRIP": "/usr/bin/strip",
+    "CMAKE_STRIP-ADVANCED": "1",
+    "CMAKE_TAPI": "CMAKE_TAPI-NOTFOUND",
+    "CMAKE_TAPI-ADVANCED": "1",
+    "CMAKE_UNAME": "/usr/bin/uname",
+    "CMAKE_VERBOSE_MAKEFILE": "FALSE",
+    "CMAKE_VERBOSE_MAKEFILE-ADVANCED": "1",
+    "CMAKE_WARN_DEPRECATED": "ON",
+    "HAMMOND_BUILD_STANDALONE": "ON",
+    "HAMMOND_BUILD_VST3": "OFF",
+    "HAMMOND_ENABLE_MIDI": "OFF",
+    "HAMMOND_ENABLE_SANITIZERS": "OFF",
+    "HAMMOND_RTMIDI_ROOT": "",
+    "HAMMOND_SDL2_ROOT": "/workspace/scratch/1bb6ee17ad7e/SDL2",
+    "HAMMOND_VST3_SDK_ROOT": "",
+    "SDL2_BINARY_DIR": "/workspace/scratch/1bb6ee17ad7e/build-native/_sdl2",
+    "SDL2_DISABLE_INSTALL": "ON",
+    "SDL2_DISABLE_SDL2MAIN": "ON",
+    "SDL2_DISABLE_UNINSTALL": "OFF",
+    "SDL2_IS_TOP_LEVEL": "OFF",
+    "SDL2_SOURCE_DIR": "/workspace/scratch/1bb6ee17ad7e/SDL2",
+    "_Python3_EXECUTABLE": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12"
+  },
+  "selected_original_results": {
+    "python_test_capture_install": {
+      "passed": true,
+      "python_methods": 16,
+      "seconds": 4.98,
+      "section_utf8_sha256": "ac1cfddbb28339d7ab0bd8fce8b4f8f4df5efc5ec94587c3aca9ca1a9f833aca"
+    },
+    "python_test_compile_rotary_profile": {
+      "passed": true,
+      "python_methods": 16,
+      "seconds": 0.47,
+      "section_utf8_sha256": "b0c72981da8976a1ac9816527ef20b2b160263301ba0438225643b683133c650"
+    },
+    "python_test_repository_integrity": {
+      "passed": true,
+      "python_methods": 41,
+      "seconds": 2.49,
+      "section_utf8_sha256": "15fb7832ce164f6ff198abefd1f582abffac5c4719db64a712b1629157a617bb"
+    },
+    "python_test_rotary_waveform_acceptance": {
+      "passed": true,
+      "python_methods": null,
+      "seconds": 3.16,
+      "section_utf8_sha256": "5149a2262233abdf6310ad25ab6613ea29e7f3dd44ad5733e8962e242e5f5841"
+    },
+    "python_test_rotary_waveform_report_admission": {
+      "passed": true,
+      "python_methods": 14,
+      "seconds": 0.5,
+      "section_utf8_sha256": "abb2ffb43619071f1e215d0f0d9dbb8836baeedcaaa1871f2f3ea7ff7bb1578e"
+    },
+    "test_rotary_history": {
+      "passed": true,
+      "python_methods": null,
+      "seconds": 0.03,
+      "section_utf8_sha256": "5c443800acc2cca41852a09b7885b54b22a55d5997b948e64cb9dba39592720b"
+    },
+    "test_rotary_history_acceptance": {
+      "passed": true,
+      "python_methods": null,
+      "seconds": 0.08,
+      "section_utf8_sha256": "ba1bf2feeab9e691cfdd7372bc5057d55bb8006412dab1556988787257914f69"
+    },
+    "test_rotary_renderer": {
+      "passed": true,
+      "python_methods": null,
+      "seconds": 0.63,
+      "section_utf8_sha256": "662bc81c088119a17e3169898d5a28e575d55d2cae4f8e88ba2722eb9da635e5"
+    },
+    "test_rotary_renderer_transactions": {
+      "passed": true,
+      "python_methods": null,
+      "seconds": 0.02,
+      "section_utf8_sha256": "85ed9e2edd503ef1e5e6e45f2b71ce994895083e9186b6a2909075b746a7c24c"
+    },
+    "test_rotary_streaming_path": {
+      "passed": true,
+      "python_methods": null,
+      "seconds": 0.13,
+      "section_utf8_sha256": "135056212ca378e4e40fd5bd151de3d982e41769b3bb30d6d24e277557c56443"
+    },
+    "test_standalone_install": {
+      "passed": true,
+      "python_methods": 8,
+      "seconds": 4.28,
+      "section_utf8_sha256": "044dc369fe6bece324cb22cccbceae39a22f31522a974da6bb01a19700148932"
+    },
+    "test_standalone_material_acceptance": {
+      "passed": true,
+      "python_methods": null,
+      "seconds": 4.94,
+      "section_utf8_sha256": "e0ccf05bf76a818b3e19784825b3313ff8b4dec45e2cc6e1078635f3cfe19798"
+    },
+    "test_standalone_waveform_material": {
+      "passed": true,
+      "python_methods": null,
+      "seconds": 7.5,
+      "section_utf8_sha256": "dbc3d672e27f313b40e227525ac2b38c077aa382a07c91600a32743f15be76d1"
+    },
+    "test_standalone_workspace_replay": {
+      "passed": true,
+      "python_methods": 6,
+      "seconds": 48.84,
+      "section_utf8_sha256": "eff2514808de8c3a9f8d66bf2e3076d2be2b556eab5fa8641887fb4d8f3b5880"
+    }
+  },
+  "snapshots": {
+    "after-build": {
+      "compressed": {
+        "bytes": 451274,
+        "sha256": "12eb1ec91b824f78b0fa2e63a7514bd3d13d2263d78ec94295ac28882e1d69a8"
+      },
+      "compression": "gzip, lossless, mtime=0",
+      "original": {
+        "bytes": 1664015,
+        "sha256": "8a4dff4de52da95decc118601c65ddd7a435b9afbafabbe90ef2f7bfe0db79e9"
+      },
+      "stored_file": "integration487064-inputs-after-build.json.gz"
+    },
+    "after-repair-build": {
+      "compressed": {
+        "bytes": 452038,
+        "sha256": "f0886a8e0a7827e8142b6676fb260cd35909176deb95b659cc040b708faa80d7"
+      },
+      "compression": "gzip, lossless, mtime=0",
+      "original": {
+        "bytes": 1664788,
+        "sha256": "b845a7dc6946b22e1322d41a93a5c3171d6035eae25e13158aa5cb369e4b49bb"
+      },
+      "stored_file": "integration487064-inputs-after-repair-build.json.gz"
+    },
+    "after-test": {
+      "compressed": {
+        "bytes": 458343,
+        "sha256": "621ef081655921b6ecb85c78664ca9458e489eecf01d3cb89bef1a9143b18902"
+      },
+      "compression": "gzip, lossless, mtime=0",
+      "original": {
+        "bytes": 1699547,
+        "sha256": "9830e8110451e2488273cb2ad36da5ea9b1fd5e4a2ee8bb1816f4e11b99123fc"
+      },
+      "stored_file": "integration487064-inputs-after-test.json.gz"
+    },
+    "before-build": {
+      "compressed": {
+        "bytes": 450573,
+        "sha256": "29eb2580643f1b7c6d78acbd80f57e31c58cf212ba837f289b68e2ea9afcc1bb"
+      },
+      "compression": "gzip, lossless, mtime=0",
+      "original": {
+        "bytes": 1661850,
+        "sha256": "3af9a253b9480a48b961df9279c790b722d76d7f8724105a5326d57f176e6389"
+      },
+      "stored_file": "integration487064-inputs-before-build.json.gz"
+    },
+    "before-repair-build": {
+      "compressed": {
+        "bytes": 452041,
+        "sha256": "06e457df516a01fb6d61494b69cdfb71b0d9ff9095418429686e13937764035f"
+      },
+      "compression": "gzip, lossless, mtime=0",
+      "original": {
+        "bytes": 1664788,
+        "sha256": "4edcf0cc35bfc35c4b1b98220e4f03bc1cb5dd07c0825e36baf8a1ebb095bb00"
+      },
+      "stored_file": "integration487064-inputs-before-repair-build.json.gz"
+    },
+    "before-test": {
+      "compressed": {
+        "bytes": 458346,
+        "sha256": "fb31bf643a3086384a29cfa01be936ff2234851f7ee4941dc9eface8747666aa"
+      },
+      "compression": "gzip, lossless, mtime=0",
+      "original": {
+        "bytes": 1699547,
+        "sha256": "2efff66924752201ab95ff5b0314734b7a19bcd517e549dfe3ef2dd68bccc4d3"
+      },
+      "stored_file": "integration487064-inputs-before-test.json.gz"
+    }
+  },
+  "source_changes_during_build": [],
+  "test_artifacts": [
+    {
+      "bytes": 258748,
+      "git_blob_sha1": "4c11942c27f845c2e37b93460454a8ee62fcc0e1",
+      "kind": "file",
+      "path": "integration487064-LastTest.log",
+      "sha256": "23283fbf3992c899be49e7a527c18036b63f91aeeb9bed6ac244b78968592921"
+    },
+    {
+      "bytes": 31,
+      "git_blob_sha1": "0081bede89f6c7147b478e3bbb1fd39b10a304d9",
+      "kind": "file",
+      "path": "integration487064-LastTestsFailed.log",
+      "sha256": "43af22753a7885bf6400d1765056e8caf2d45fa3e02e6deb53f57bc819008b3d"
+    },
+    {
+      "bytes": 6365,
+      "git_blob_sha1": "dc21ecd0fbc7b937f05e8ee2fe938e929ab15328",
+      "kind": "file",
+      "path": "integration487064-CTestCostData.txt",
+      "sha256": "a00620c463d443f4e74bfe91f35281b86b2c555613ecdc707cc78b22239b59aa"
+    }
+  ],
+  "tool_versions": [
+    {
+      "command": [
+        "../build-tools/cmake/data/bin/cmake",
+        "--version"
+      ],
+      "resolved_path": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+      "sha256": "7ea6e681a679e5e635b059765467a9830e142feaea4cd49af01615cf4c11882f",
+      "version_first_line": "cmake version 4.4.5"
+    },
+    {
+      "command": [
+        "../build-tools/cmake/data/bin/ctest",
+        "--version"
+      ],
+      "resolved_path": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+      "sha256": "d2cd03927dd2477420b2e71212a80401f4f331657198e6b30839b33a581f2da7",
+      "version_first_line": "ctest version 4.4.5"
+    },
+    {
+      "command": [
+        "../build-tools/bin/ninja",
+        "--version"
+      ],
+      "resolved_path": "/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+      "sha256": "08639e194fffa7f08b259fc4abfa4803aff66b64de52549cee42ec527d55cea6",
+      "version_first_line": "1.13.2.git.kitware.jobserver-pipe-1"
+    },
+    {
+      "command": [
+        "/usr/bin/c++",
+        "--version"
+      ],
+      "resolved_path": "/usr/bin/x86_64-linux-gnu-g++-14",
+      "sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d",
+      "version_first_line": "c++ (Debian 14.2.0-19) 14.2.0"
+    },
+    {
+      "command": [
+        "/usr/bin/cc",
+        "--version"
+      ],
+      "resolved_path": "/usr/bin/x86_64-linux-gnu-gcc-14",
+      "sha256": "a23ecab8ff08f09ad8c80602c2c5df7f49e09c25905cb8975902e101bf72635f",
+      "version_first_line": "cc (Debian 14.2.0-19) 14.2.0"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "--version"
+      ],
+      "resolved_path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+      "version_first_line": "Python 3.12.14"
+    },
+    {
+      "command": [
+        "/usr/bin/ld",
+        "--version"
+      ],
+      "resolved_path": "/usr/bin/x86_64-linux-gnu-ld.bfd",
+      "sha256": "d2766988b6a1b1d1518cdc09242e726d1f24e151e16410ada3092b11ffd9081b",
+      "version_first_line": "GNU ld (GNU Binutils for Debian) 2.44"
+    },
+    {
+      "command": [
+        "/usr/bin/ar",
+        "--version"
+      ],
+      "resolved_path": "/usr/bin/x86_64-linux-gnu-ar",
+      "sha256": "f8fe09d485b40b1d47c534c96f5cbaaa9148e247aa0494c087104421f48ac5eb",
+      "version_first_line": "GNU ar (GNU Binutils for Debian) 2.44"
+    }
+  ],
+  "toolchain_unchanged": true,
+  "waveform_probe": {
+    "bytes": 199272,
+    "git_blob_sha1": "29716845d613731c683239239d05249379d9f061",
+    "kind": "file",
+    "sha256": "3c057118d714f5131d1d8c01278d441830fc218acde3044c9a0e55f0cbe037a3"
+  },
+  "worker": "/root/w10_a59_publication_preflight",
+  "worktree_boundary": "Incoming487064 product/assets/data/build sources plus two exact approved test-only repairs, root closing workflow/attribute deltas and merged documentation/gallery records; all2,863 tested repository blobs exactly match the named frozen staged tree."
+}

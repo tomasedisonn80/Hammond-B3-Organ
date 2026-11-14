@@ -1,5 +1,37 @@
 # Development log
 
+## 2026-11-14 — Integrate concurrent waveform source and complete local closure
+
+The expected-head publication check caught concurrent `487064d`, direct child
+of accepted header `0881d1f4`. Root preserved the full accepted candidate tree,
+integrated all 119 incoming paths and merged both sessions' documentation,
+CI and exact-log policies without resetting either checkout. The completed
+reference-refinement ledger remains 60 distinct accepted agents in ten waves.
+
+A fresh [v5 native gallery](../examples/demos/standalone-interface-preview-v5/README.md)
+now supplies README's actual combined-source images. Its 117 named production/
+build inputs match published source. Root inspected all eight original PNGs;
+A60 independently passes 40 grouped and 104 per-case admission checks. Older
+v1–v4 galleries, source-specific A49/A50/A56 results and all original failures
+remain immutable.
+
+The incoming hosted matrix passed 10/13 jobs, including full Linux waveform
+qualification, but exposed binary64 report-admission failures on macOS/Windows
+and an unused test constant on native macOS. Root adopted only those two
+reviewed test repairs from the separate owner's observed unpublished bytes,
+with exact hashes, preserved budgets and regression cases. No application
+source or sound/state identity changed. The [combined local execution](development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json)
+passes 166/166 in one 149.69-second run against exact staged tree
+`ef49240585d5b2a88fd6788496151917e2b2491a`; all 2,863 repository files remained
+frozen. The subsequent record-only updates need their own documentation gate.
+
+The [closure authority](REFERENCE_REFINEMENT_CLOSURE.md) records actual R4
+implementation versus remaining acceptance, the incoming contract's storage
+boundary, current setup and next tasks. The playable Engine remains dry;
+literal 1:1 visual equality and physical/device/product gates remain open.
+Closing publication and repaired hosted execution are separate subsequent
+observations, never inferred from the local pass.
+
 ## 2026-11-14 — Preserve both sessions while integrating published waveform source
 
 Remote main advanced from `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b` to direct

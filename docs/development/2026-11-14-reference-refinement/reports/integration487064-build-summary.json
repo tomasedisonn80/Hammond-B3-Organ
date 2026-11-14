@@ -1,0 +1,324 @@
+{
+  "allowed_closing_control_deltas": [
+    ".gitattributes",
+    ".github/workflows/ci.yml"
+  ],
+  "build": {
+    "cap_bytes": 8388608,
+    "command": [
+      "../build-tools/cmake/data/bin/cmake",
+      "--build",
+      "../build-native",
+      "--parallel",
+      "3"
+    ],
+    "completed_utc": "2026-11-14T23:23:41.658378+00:00",
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "exit": 0,
+    "log": "integration487064-build.log",
+    "log_sha256": "28132f3c9a48b85c0fc05948bf2a2bbd66f080f8d2bbfcf38502577e054f7673",
+    "seconds": 18.733160094001505,
+    "started_utc": "2026-11-14T23:23:22.925221+00:00",
+    "stored_bytes": 18295,
+    "stream": "unmodified merged stdout and stderr",
+    "stream_bytes": 18295,
+    "stream_sha256": "28132f3c9a48b85c0fc05948bf2a2bbd66f080f8d2bbfcf38502577e054f7673",
+    "truncated": false
+  },
+  "build_execution_input_changes": [
+    {
+      "after": {
+        "bytes": 21626,
+        "git_blob_sha1": "81831a6f24d875e8cf5fb42c9da0bde1ea0a210e",
+        "kind": "file",
+        "sha256": "ac59cf896d4c2bcc3376c413b49a53be19be06026bcc24469702bd941b4f8397"
+      },
+      "before": {
+        "bytes": 20591,
+        "git_blob_sha1": "1ee7541f436855602af9c984923e0947eaa25ccc",
+        "kind": "file",
+        "sha256": "7cdb48d440af0eb3a11b1758f26431122148ffdaf36c3d8c4e12f3af754cf853"
+      },
+      "path": "CMakeFiles/VerifyGlobs.cmake"
+    },
+    {
+      "after": {
+        "bytes": 214726,
+        "git_blob_sha1": "60f1d7642dd5350b742e1ebacc5bf67080f7d660",
+        "kind": "file",
+        "sha256": "6534c30e5ee9e2854bf4b03694a478c2e587b5be15e64c92f2df078933988718"
+      },
+      "before": {
+        "bytes": 198300,
+        "git_blob_sha1": "0c884dd2dce172ed7cef5509e26b91bd01a0555d",
+        "kind": "file",
+        "sha256": "664e27693a5ec9eaf6c430225b08c188ab0b13590bc7da9781a01af3f1365d9a"
+      },
+      "path": "CMakeFiles/rules.ninja"
+    },
+    {
+      "after": {
+        "bytes": 97226,
+        "git_blob_sha1": "fc68fedbc19c76e3957fd583e9ec74b73ba8ae57",
+        "kind": "file",
+        "sha256": "84b5bfac7f5c7fc21f163deb3ce3a5cdf328f0862043070e5dc8f80109d5113e"
+      },
+      "before": {
+        "bytes": 92405,
+        "git_blob_sha1": "a54a0acf86aa341289e31ec73a4f7bdc27d8472f",
+        "kind": "file",
+        "sha256": "0435f15bd7d806f357c519a0e78136c43f8ff94bb99e3d85e104767c59574f99"
+      },
+      "path": "CTestTestfile.cmake"
+    },
+    {
+      "after": {
+        "bytes": 21212,
+        "git_blob_sha1": "cc1dcfc892cf7e3219de87a10d80822831bad5a2",
+        "kind": "file",
+        "sha256": "8912363ece1e7d7f25f321bed64e1ca09daa0f59b60fc9cb56cf9e428c7d083b"
+      },
+      "before": {
+        "bytes": 20744,
+        "git_blob_sha1": "cd860d4ff893b7b70849e95b19c9bbb89c95d940",
+        "kind": "file",
+        "sha256": "a63eaaa27f89aad764719ff99b1376e9cb45e08cccefef586b889e098b79e891"
+      },
+      "path": "apps/standalone/CTestTestfile.cmake"
+    },
+    {
+      "after": {
+        "bytes": 3632680,
+        "git_blob_sha1": "a2b8804cc82c795f49b2d6e8745262621fb38df3",
+        "kind": "file",
+        "sha256": "5ddc0c9a39b34cf16fa3a89c08bb053714c5169e09499f7351c0c48ee943dd1b"
+      },
+      "before": {
+        "bytes": 3632640,
+        "git_blob_sha1": "0b93266ab55161f7e267379166dcae307bdb5e8b",
+        "kind": "file",
+        "sha256": "7945754c1551a0c3c143c7b180cb2ef1ab74da9981bb7901c8724f46bbf8eb0b"
+      },
+      "path": "apps/standalone/hammond_standalone"
+    },
+    {
+      "after": {
+        "bytes": 159696,
+        "git_blob_sha1": "95157edc6a48c8dccb6eb78757a66747ff8afeac",
+        "kind": "file",
+        "sha256": "e682459b1a21c340f6b99f09ba642fe01f2ebb20595e2f5060187a0bfd876392"
+      },
+      "before": {
+        "bytes": 159696,
+        "git_blob_sha1": "cacdf107abf647b88638c64981445b2409fe30a2",
+        "kind": "file",
+        "sha256": "18ef6a216188272de3676a75c664497ec328e04a67561d23d71dfafc8c26643e"
+      },
+      "path": "apps/standalone/hammond_standalone_benchmark"
+    },
+    {
+      "after": {
+        "bytes": 3445152,
+        "git_blob_sha1": "b4debdc4b4a6f43f7357828e289d412f83b5c3d7",
+        "kind": "file",
+        "sha256": "953fbf4d7ad1b1d41757d3a3d8eefb90d206765d6a9f0237b5a79d4a49c47c68"
+      },
+      "before": {
+        "bytes": 3445104,
+        "git_blob_sha1": "41bc7f33958c8c048a3dc0d0c3eab175598d3f18",
+        "kind": "file",
+        "sha256": "ce46058b8ac99fdc9e2d1c9e7e0860b978442e828efa8b3f71e89c852daf61ce"
+      },
+      "path": "apps/standalone/test_standalone_inspection_raster"
+    },
+    {
+      "after": {
+        "bytes": 3350528,
+        "git_blob_sha1": "1415a4adfef35791717d72870e46f244e315d318",
+        "kind": "file",
+        "sha256": "5ac4a7a626c2ac32409594664d56a1404e2e54f16025536aeba8afb809abc9b5"
+      },
+      "before": {
+        "bytes": 3350456,
+        "git_blob_sha1": "c9a24afb90ea5efe8f83d5181759312a690afe9a",
+        "kind": "file",
+        "sha256": "a3cf005efc828c8d684ff97a112c3b2b1bef1412ec78f0ce1d0c04ab08dc59c5"
+      },
+      "path": "apps/standalone/test_standalone_material_acceptance"
+    },
+    {
+      "after": {
+        "bytes": 3333208,
+        "git_blob_sha1": "4fea0a9cca26e14f25ef8a3e02f6ccdbf927c93c",
+        "kind": "file",
+        "sha256": "5fa431796c6235a7e76ac9f869d49a357608fabcda0c5e46e0d56fa039e55ab4"
+      },
+      "before": {
+        "bytes": 3333128,
+        "git_blob_sha1": "79a3e75fc47d668fd8738fd8052a4160b188a64f",
+        "kind": "file",
+        "sha256": "2ea5ff024dee12fdff3b1431f641dbf160891017c6cef203f389ad429adfd41d"
+      },
+      "path": "apps/standalone/test_standalone_preset_raster"
+    },
+    {
+      "after": {
+        "bytes": 3351032,
+        "git_blob_sha1": "5b2d496a58134d60994e8036becd4985e41c0aa6",
+        "kind": "file",
+        "sha256": "c3b86a3eec5dc9418d499923c0d20ce0a7106b306b0c93016cbae7289d10cfa6"
+      },
+      "before": {
+        "bytes": 3350992,
+        "git_blob_sha1": "15a00c890eef371401cd74e036546f7ed377ac67",
+        "kind": "file",
+        "sha256": "4059dc6502130014b33b29d78b6a35e9c15e3e412c04759273d1fabbf6be25db"
+      },
+      "path": "apps/standalone/test_standalone_scaled_view"
+    },
+    {
+      "after": {
+        "bytes": 3317416,
+        "git_blob_sha1": "26547ffd8d484dabf39b1723e03e28d6534319b2",
+        "kind": "file",
+        "sha256": "4314f5bd8d786cd5f87179fd4b64a39104ad9104244ef68fd7765b1ef3b3784b"
+      },
+      "before": null,
+      "path": "apps/standalone/test_standalone_waveform_material"
+    },
+    {
+      "after": {
+        "bytes": 3358080,
+        "git_blob_sha1": "be38de7f0398ba244fd7f2658cf639268f27d40f",
+        "kind": "file",
+        "sha256": "87b04760bacaa62e1c27719cc29550e25fce82218b81fbf038149c2f8f519c63"
+      },
+      "before": {
+        "bytes": 3358008,
+        "git_blob_sha1": "3c4a91079de7cf7323b6df730031b36fadc12be7",
+        "kind": "file",
+        "sha256": "8a587285cc60ccfacd9146ada3e2e6c636c2cce9893773cdac4fe643c9770732"
+      },
+      "path": "apps/standalone/test_standalone_workspace_raster"
+    },
+    {
+      "after": {
+        "bytes": 679369,
+        "git_blob_sha1": "0f93c18475f2d7bda7d0957dc6b8b545d99b0fdc",
+        "kind": "file",
+        "sha256": "ba1fdd62e8dc84d7e7aec2c7a95e4f280b5602dba4f2591c3a2f941007ccfad0"
+      },
+      "before": {
+        "bytes": 652191,
+        "git_blob_sha1": "412390e2d6a532e0be347aaea2e5dcf053d3580e",
+        "kind": "file",
+        "sha256": "be7aa97e681c214cd048563f94a52767fc5a613ddda5a93a21b647c863715cbf"
+      },
+      "path": "build.ninja"
+    },
+    {
+      "after": {
+        "bytes": 2722,
+        "git_blob_sha1": "41bbe15bd76daf1ec157dce0301f49ba96cd673b",
+        "kind": "file",
+        "sha256": "d51f3e6edf4f44f87ed65f9a80b9932299ee8d5fa52a2fad5b5d011a454a05a5"
+      },
+      "before": null,
+      "path": "generated/RotaryNominalProfile.h"
+    },
+    {
+      "after": {
+        "bytes": 118216,
+        "git_blob_sha1": "b29382dcfb4083c205626545d40cbc2957a61056",
+        "kind": "file",
+        "sha256": "eab00b6d8df762890b0681806b621c98f25d766ac94b098886d2d9496542eada"
+      },
+      "before": null,
+      "path": "hammond_rotary_render"
+    },
+    {
+      "after": {
+        "bytes": 199272,
+        "git_blob_sha1": "29716845d613731c683239239d05249379d9f061",
+        "kind": "file",
+        "sha256": "3c057118d714f5131d1d8c01278d441830fc218acde3044c9a0e55f0cbe037a3"
+      },
+      "before": null,
+      "path": "hammond_rotary_waveform_probe"
+    },
+    {
+      "after": {
+        "bytes": 344852,
+        "git_blob_sha1": "d4525334da03334d2d6d124ee26cad5a00f7402e",
+        "kind": "file",
+        "sha256": "2e60507a07753f9d54b9451c13fe882a27fd4d8c1b82186a40afed360d787f24"
+      },
+      "before": {
+        "bytes": 307108,
+        "git_blob_sha1": "b354e798b7aefd07e9ab4ddb105707c942e1e296",
+        "kind": "file",
+        "sha256": "3f6773440391f5488afd0531b18f59a9169a97862ea68912a33c2ac3a8d4d172"
+      },
+      "path": "libhammond_core.a"
+    },
+    {
+      "after": {
+        "bytes": 66744,
+        "git_blob_sha1": "c857c72d107e16a8498d551fc400d664dd93cc48",
+        "kind": "file",
+        "sha256": "529c1d29624be4d61b1ed9923504867dd0da150ad0c65bac2a90150d71a2e8e8"
+      },
+      "before": null,
+      "path": "test_rotary_history"
+    },
+    {
+      "after": {
+        "bytes": 125320,
+        "git_blob_sha1": "a712f4a49bfce838fcc0b538d0855c61dcc5d4e6",
+        "kind": "file",
+        "sha256": "e3b3e5bb66e85fd08a7c273fa68ca48a4051fdd4207164cd01086574a2c1fb6e"
+      },
+      "before": null,
+      "path": "test_rotary_history_acceptance"
+    },
+    {
+      "after": {
+        "bytes": 142528,
+        "git_blob_sha1": "533aa35961000d9167de2ba8bf85b125c2f82fed",
+        "kind": "file",
+        "sha256": "2e1693360f168d92435ca355e191b1c3d87d38d9f4ff77e649f61a3697c56801"
+      },
+      "before": null,
+      "path": "test_rotary_renderer"
+    },
+    {
+      "after": {
+        "bytes": 107672,
+        "git_blob_sha1": "0cd857282ebec4e9b899516246472caea041e7e2",
+        "kind": "file",
+        "sha256": "2a67180fe1566ff5b717499dfd07d4e8c4796c98bb593ba973816b65b49e958b"
+      },
+      "before": null,
+      "path": "test_rotary_renderer_transactions"
+    },
+    {
+      "after": {
+        "bytes": 163392,
+        "git_blob_sha1": "7baff5b73a9276508fe5baa48ab2a69bafa2b0d1",
+        "kind": "file",
+        "sha256": "79709db13a56f2cd57fd7bf9819ca34186f1d776a516a6d710e2af4bbdea862a"
+      },
+      "before": null,
+      "path": "test_rotary_streaming_path"
+    }
+  ],
+  "ctest_execution": "Not launched: waiting for root whole-repository freeze.",
+  "dependency_changes_during_build": [],
+  "follow_up_not_new_assignment": true,
+  "incoming_source": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+  "repository_changes_during_build": [],
+  "schema_version": 1,
+  "source_boundary": "Incoming487064 product/test/assets/data/CMake bytes plus explicitly recorded root closing workflow/attributes; local HEAD/index are not this frozen worktree identity.",
+  "source_changes_during_build": [],
+  "worker": "/root/w10_a59_publication_preflight"
+}

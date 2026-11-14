@@ -38,7 +38,9 @@ and executable SHA-256
 `0b2fe36e1ff9a76e12bbd0bf97e633a424fcfd67cd78b9987e0b1b75e8e6f040`.
 The [capture receipt](development/2026-11-14-reference-refinement/reports/root-integration487064-final-native-gallery.json)
 retains source/build snapshots, all processes and decoded image identities.
-Root directly inspected every original PNG. The manifest binds 39 payloads;
+Root directly inspected every original PNG. The [independent v5 admission](development/2026-11-14-reference-refinement/reports/A60-integration-gallery-admission.json)
+passes 40 grouped and 104 per-case checks across payloads, decoded pixels,
+source/executable binding, typed held state and cleanup. The manifest binds 39 payloads;
 the complete gallery has 41 files and 2,946,785 bytes, including its README.
 
 The new frames combine the measured wide header, deeper full manuals and sidebar
@@ -77,8 +79,18 @@ numerical acceptance budget or application source changed. Their affected
 rebuild, coherent local test result and repaired hosted execution remain
 separately observed gates.
 
-Combined-source local execution and final publication/hosted observations are
-recorded separately as they finish. The repository's current CI requires the
+The [combined-source local run](development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json)
+passes **166/166 tests in 149.69 seconds**, once, without a retry. The first
+all-target build passed in 18.733 seconds; the subsequent test-only repair
+required one affected fixture rebuild in 4.013 seconds. All 2,863 repository
+files, including 967 Markdown files, matched staged tree
+`ef49240585d5b2a88fd6788496151917e2b2491a` and remained unchanged through
+testing, as did the 1,758 SDL2 files and recorded build execution inputs.
+This configuration is GCC Release with standalone enabled and MIDI/VST3/sanitizers
+disabled; it is distinct from the MIDI-enabled v5 capture binary. Both repaired
+fixtures pass in this coherent run. No expensive full-waveform experiment was
+rerun locally. Later record-only edits require the affected documentation check.
+Final publication and hosted observations remain separately recorded gates. The repository's current CI requires the
 completed reference-refinement checker on Linux and retains its output. An API
 request, configured workflow or old green matrix is not a new execution result.
 

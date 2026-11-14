@@ -1,5 +1,11 @@
 # Next steps
 
+**Completed development pass:** all 60 reference-refinement agents are accepted.
+The combined `487064d` source plus two reviewed portability-test repairs passes
+[166/166 local tests](development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json).
+The [closure record](REFERENCE_REFINEMENT_CLOSURE.md) owns the current
+v5 gallery, source boundaries, publication and remaining platform/product gates.
+
 ## Current R4 waveform continuation
 
 The [combined-source closure](REFERENCE_REFINEMENT_CLOSURE.md) owns the latest
