@@ -240,7 +240,7 @@ bundle inventory alone proves plug-in execution or DAW/device readiness.
 | [Complete atlas review](docs/research/ATLAS_REVIEW.md) | Full 500-page coverage, milestone interpretation and source limits |
 | [Source manifest](docs/research/source-manifest.json) | Preserved PDF identity and missing companion assets |
 | [Original review notes](docs/development/agent-notes/) | Historical original-session assignments and retained evidence |
-| [Current pedal/native session](docs/development/2026-11-13-pedals/README.md) | Current sixty-assignment ledger, owned notes, integration records and final handoff |
+| [Completed pedal/native session](docs/development/2026-11-13-pedals/README.md) | Retained sixty-assignment ledger, owned notes, integration records and historical handoff |
 | [Console continuation](docs/development/2026-11-13-continuation/README.md) | Historical completed sixty-agent, ten-wave ledger and console integration checkpoints |
 
 ## Source and evidence

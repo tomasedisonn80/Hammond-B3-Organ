@@ -1,5 +1,38 @@
 # Development log
 
+## 2026-11-14 — Final standalone reviews and observed candidate failures
+
+- Accepted the completed multi-configuration installation and milestone reviews,
+  two actual chapel audition captures and the partial session/workflow audit.
+  Root independently viewed both PNGs and ran the ten-file retained demo verifier:
+  165,762 bytes, both complete control/held endpoints, zero recorded faults and
+  joined empty shutdown. These are dummy audio/video software renders.
+- The actual manifest now records 59 dispatched / 56 accepted assignments and
+  nine complete waves. Assignment 60 has not yet been dispatched. The session
+  audit's frozen 57/54 counts remain historical; its deliberately premature
+  strict-sixty check correctly failed and was not reclassified as acceptance.
+- At published `0085e33`, fresh complete native-enabled Release passes 105/105.
+  The first fully instrumented native group retains 13/14: a chapel assertion
+  required a sampled Upper-only state during a 100ms interval. Assignment 55
+  retains that failure and qualifies exact legal command prefixes plus separate
+  held endpoints without changing production code or increasing existing scripts.
+- Hosted core run `43529788060` has successful Linux Release and sanitizer jobs;
+  Windows job `132244338459` retains 92/96 and all original calibration failure
+  details. Native run `43529788101` and VST3 run `43529788109` pass Linux/Windows.
+  Their three queued macOS jobs were subsequently cancelled without observed
+  execution. Dispatch and cancellation are not platform passes.
+- Fetched concurrent calibration `955fc4c`, which already contains its authors'
+  UTF-8/LF output, canonical fixture-path and observable-mutation repairs along
+  with new offline job/readiness/study/demo work. Assignment 58 preserves that
+  authorship and independently checks the fixes against every original Windows
+  failure, adding only a meaningful missing Unicode/StringIO regression.
+- Assignment 59 found two remaining copied build recipes that selected default
+  configuration before referring to Release. Root added `--config Release` in
+  the app/install guides, as already done in the operational handoff. Standing
+  instructions now say all active tracks, and logical six-assignment waves no
+  longer imply two synchronized batches. Integration and final publication follow
+  only after the accepted changed-source evidence is complete.
+
 ## 2026-11-14 — Calibration wave 5 gate and accepted study/demo
 
 - Accepted 34 distinct calibration assignments: five complete logical waves
@@ -34,6 +67,24 @@
   and canonical-path fault fixtures pass locally; the standalone scheduling
   repair is now integrated. Fresh hosted results are still needed. No physical,
   native device, every-host or final-release gate is inferred from these checks.
+
+## 2026-11-13 — Published standalone final code candidate
+
+- Published `0085e338388f2c7516a7d455f11692b94e9451f4` with guarded parent
+  `779fb6e13b8f60236cad4aedb9999ba16198f920`. Its exact tree
+  `19c763503f67e1f054d2d27b6ec3d8fca2e36474` matches local `fa6df9d` and was
+  independently fetched and compared after publication. No force update was used.
+  The local source history remains on `standalone-local-w9-checkpoint`.
+- Frozen archive integrity passed 525 Markdown files / 2,925 local links, the
+  unchanged 500-page PDF and this session's actual 55-dispatched / 52-completed
+  record at the candidate. The source checker also reports the separate original
+  session's sixty notes; that number is not reused for this active session.
+- Hosted core `43529788060`, standalone `43529788101` and VST3 `43529788109`
+  were observed queued against this exact commit. Execution, artifact bytes and
+  completed results require their own observation. Assignment 55 starts a fresh
+  complete local Release build and fully instrumented native gate on the same
+  tree; assignment 56 will use its completed binary read-only for an actual
+  chapel demonstration.
 
 ## 2026-11-13 — Combined source freeze for final standalone integration
 

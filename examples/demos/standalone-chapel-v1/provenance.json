@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "artifact": "hammond-standalone-chapel-v1",
+  "assignment": 56,
+  "agent": "/root/w10_a56_chapel_demo",
+  "source": {
+    "published_commit": "0085e338388f2c7516a7d455f11692b94e9451f4",
+    "equivalent_local_commit": "fa6df9d04916da8e23938cc3e85f524e3707e7d8",
+    "git_tree": "19c763503f67e1f054d2d27b6ec3d8fca2e36474",
+    "tracked_file_count": 894,
+    "source_inventory_sha256": "d78606ec2567e271e37f0aa0b466f794852cb2079668ec0ce5ec0bf9c818140d",
+    "selected_source_files": {
+      "apps/standalone/main.cpp": {
+        "bytes": 67766,
+        "sha256": "d5728ab172e53cdb99e0f7d739ae2bc90344ff44f34140749812be1bb34fe26e"
+      },
+      "apps/standalone/UiModel.cpp": {
+        "bytes": 35786,
+        "sha256": "c42aee8edcd3663f5925581cd738997bf83438a2fdcc13072b8a40f5407997c1"
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "bytes": 18290,
+        "sha256": "1cfa38a407ad2b75c4f9fb910bfa7314c694c63b9e2dee4e41fb22faf0fd283a"
+      },
+      "apps/standalone/Session.cpp": {
+        "bytes": 27818,
+        "sha256": "247c6a63dc9bb6c4e60398b17779a2d985058563b8d981c5e06426eab977f6ae"
+      },
+      "apps/standalone/AudioDevice.cpp": {
+        "bytes": 12072,
+        "sha256": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0"
+      },
+      "tools/chapel_controls.py": {
+        "bytes": 16947,
+        "sha256": "9639e83a6a04e40786227ffca69c50db82dd6099e102cc8c727a204fe1a9d436"
+      },
+      "data/registrations/atlas-chapel-nominal-v1.json": {
+        "bytes": 4298,
+        "sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf"
+      },
+      "assets/standalone/fonts/source-manifest.json": {
+        "bytes": 1428,
+        "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+      },
+      "THIRD_PARTY_NOTICES.md": {
+        "bytes": 16366,
+        "sha256": "3d4acfae5c0c83b5184d3806b1ce70040beeaf027da28b541ab220e764ae4faa"
+      }
+    }
+  },
+  "build": {
+    "producer_assignment": 55,
+    "fresh_build_observed_from": "assignment55 completion message; this assignment independently reads recorded compile metadata and hashes outputs",
+    "configuration": "Release",
+    "compiler": "GCC 14.2.0",
+    "cmake_version": "4.4.4",
+    "generator": "Unix Makefiles",
+    "make_version": "4.4.1",
+    "main_compile_command": "/usr/bin/c++ -DSDL_MAIN_HANDLED -I/workspace/scratch/5ba97739b54c/a55-full-integration/release/apps/standalone/generated -I/workspace/scratch/5ba97739b54c/a55-full-integration/source/apps/standalone -I/workspace/scratch/5ba97739b54c/a55-full-integration/source/include -I/workspace/scratch/5ba97739b54c/a55-full-integration/release/_sdl2/include -I/workspace/scratch/5ba97739b54c/a55-full-integration/release/_sdl2/include/SDL2 -I/workspace/scratch/5ba97739b54c/a55-full-integration/release/_sdl2/include-config-release/SDL2 -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_standalone.dir/main.cpp.o -c /workspace/scratch/5ba97739b54c/a55-full-integration/source/apps/standalone/main.cpp"
+  },
+  "binary": {
+    "path": "/workspace/scratch/5ba97739b54c/a55-full-integration/release/apps/standalone/hammond_standalone",
+    "bytes": 2598768,
+    "sha256": "def97cef70b3eafcd108170a985c61215b878c918debde6ff2fb236a2a9c3416"
+  },
+  "profile": {
+    "path": "/workspace/scratch/5ba97739b54c/a55-full-integration/release/nominal.b3p",
+    "bytes": 4545,
+    "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+    "id": "nominal-unmeasured-v1",
+    "retained_authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83"
+  },
+  "catalog": {
+    "path": "/workspace/scratch/5ba97739b54c/a55-full-integration/release/chapel-catalog.json",
+    "bytes": 4837,
+    "sha256": "f500fa0aaca0ba8652eeede330094deb888f6a516b5c51958fd2381778fb5a91",
+    "model_id": "atlas-chapel-nominal-v1",
+    "source_pdf_page": 122,
+    "source_pdf_sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+    "primary_table_iv": "not-independently-verified"
+  },
+  "dependencies": {
+    "sdl_version": "2.32.10",
+    "sdl_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+    "font_family_inputs": "DejaVu Sans Book and Serif Book 2.37",
+    "font_source_manifest_sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+  },
+  "creation_environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "libc": [
+      "glibc",
+      "2.41"
+    ],
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "pillow": "13.0.0"
+  },
+  "registration": {
+    "upper_catalog_key": "C#",
+    "upper_drawbars": "005320000",
+    "lower_catalog_key": "A",
+    "lower_drawbars": "427866244",
+    "selected_bank": "B",
+    "expression": 0.5,
+    "other_banks": "000000000",
+    "pedal_drawbars": [
+      0,
+      0
+    ],
+    "percussion": "off/second/normal/slow",
+    "file": "chapel-pair.b3controls",
+    "bytes": 292,
+    "sha256": "25efc1b8af7eaee11b022059c8607822aab8209221f60c20990dad3cacd352c0"
+  },
+  "export_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "/workspace/scratch/5ba97739b54c/a55-full-integration/source/tools/chapel_controls.py",
+    "--catalog",
+    "/workspace/scratch/5ba97739b54c/a55-full-integration/release/chapel-catalog.json",
+    "--upper",
+    "C#",
+    "--lower",
+    "A",
+    "--bank",
+    "B",
+    "--expression",
+    "0.5",
+    "--output",
+    "/workspace/scratch/5ba97739b54c/a56-chapel-demo/chapel-pair.b3controls"
+  ],
+  "replay": {
+    "file": "held-manuals.b3ui",
+    "bytes": 349,
+    "sha256": "b203d8b94ed0e32bd7f3b8f6871f85cd36f008cad22153d13161f6bad867b9ff",
+    "duration_ms": 1400,
+    "script_actions": 8,
+    "expected_note_on_commands": 2,
+    "expected_note_off_commands": 0,
+    "before_shutdown_manual_notes": [
+      [
+        60
+      ],
+      [
+        64
+      ]
+    ],
+    "before_shutdown_pedal_ids": [],
+    "after_shutdown_held": false
+  },
+  "runs": [
+    {
+      "name": "reference",
+      "argv": [
+        "/workspace/scratch/5ba97739b54c/a55-full-integration/release/apps/standalone/hammond_standalone",
+        "--state",
+        "chapel-pair.b3controls",
+        "--width",
+        "1280",
+        "--height",
+        "900",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--input-script",
+        "held-manuals.b3ui",
+        "--screenshot",
+        "capture.bmp",
+        "--diagnostics",
+        "diagnostics.json"
+      ],
+      "cwd": "/workspace/scratch/5ba97739b54c/a56-chapel-demo/reference",
+      "environment": {
+        "PATH": "",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "started_utc": "2026-11-13T23:52:23.892896+00:00",
+      "elapsed_seconds": 1.5468433210007788,
+      "returncode": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bmp": {
+        "bytes": 4608122,
+        "sha256": "d1b82de1f37bdba38db1fce90ded94f1a5bc8533a89431ef661142927ce3fdd6"
+      },
+      "png": {
+        "bytes": 67777,
+        "sha256": "78f6c7a581f2633077765a9bf70a14d3675422340fdca614605160093adbc74e",
+        "mode": "RGBA",
+        "width": 1280,
+        "height": 900,
+        "decoded_pixel_sha256": "dcc9466b560740e6d52cf026881cab23582c265fe72df75349b58b7672e8f677",
+        "lossless_bmp_pixel_equality": true
+      },
+      "diagnostics": {
+        "bytes": 4667,
+        "sha256": "69ba78a6f383b297fca22140ef184c25946362d7a299f6c21f327b4fa430bf5c"
+      },
+      "observed_hold_stages": [
+        [
+          [
+            [],
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              60
+            ],
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              60
+            ],
+            [
+              64
+            ]
+          ],
+          []
+        ]
+      ],
+      "summary": {
+        "callbacks": 130,
+        "frames": 66560,
+        "rendered_images": 34,
+        "last_script_sequence": 3,
+        "discarded_lifecycle_commands": 1,
+        "maximum_peak": 0.04554705694317818
+      },
+      "pixel_samples": {
+        "upper_c4": {
+          "xy": [
+            522,
+            500
+          ],
+          "rgba": [
+            180,
+            168,
+            125,
+            255
+          ]
+        },
+        "upper_d4": {
+          "xy": [
+            556,
+            500
+          ],
+          "rgba": [
+            243,
+            237,
+            215,
+            255
+          ]
+        },
+        "upper_e4": {
+          "xy": [
+            590,
+            500
+          ],
+          "rgba": [
+            243,
+            237,
+            215,
+            255
+          ]
+        },
+        "lower_c4": {
+          "xy": [
+            522,
+            670
+          ],
+          "rgba": [
+            245,
+            239,
+            216,
+            255
+          ]
+        },
+        "lower_d4": {
+          "xy": [
+            556,
+            670
+          ],
+          "rgba": [
+            245,
+            239,
+            216,
+            255
+          ]
+        },
+        "lower_e4": {
+          "xy": [
+            590,
+            670
+          ],
+          "rgba": [
+            176,
+            165,
+            121,
+            255
+          ]
+        }
+      }
+    },
+    {
+      "name": "minimum",
+      "argv": [
+        "/workspace/scratch/5ba97739b54c/a55-full-integration/release/apps/standalone/hammond_standalone",
+        "--state",
+        "chapel-pair.b3controls",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--input-script",
+        "held-manuals.b3ui",
+        "--screenshot",
+        "capture.bmp",
+        "--diagnostics",
+        "diagnostics.json"
+      ],
+      "cwd": "/workspace/scratch/5ba97739b54c/a56-chapel-demo/minimum",
+      "environment": {
+        "PATH": "",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy",
+        "SDL_RENDER_DRIVER": "software"
+      },
+      "started_utc": "2026-11-13T23:52:25.625848+00:00",
+      "elapsed_seconds": 1.4842436979997728,
+      "returncode": 0,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bmp": {
+        "bytes": 2688122,
+        "sha256": "14c35e53d59d66758fa12cdf148f3e51e9dfe3e2abe31cca9a84b8d5c980d7a8"
+      },
+      "png": {
+        "bytes": 54084,
+        "sha256": "1f64a62e3aae8280b78cc6ab9627f23477e3a1c6e90ae06892fc809e8f9b6e1d",
+        "mode": "RGBA",
+        "width": 960,
+        "height": 700,
+        "decoded_pixel_sha256": "02b3952f6bd9c654fa3d418fa189810048c5a5f9d5019a35933e7d7ec00128a8",
+        "lossless_bmp_pixel_equality": true
+      },
+      "diagnostics": {
+        "bytes": 4665,
+        "sha256": "b0a60e51ca3af8ed93d7b28e2a8483256be587f882b06b15d7fd793fc1a03960"
+      },
+      "observed_hold_stages": [
+        [
+          [
+            [],
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              60
+            ],
+            []
+          ],
+          []
+        ],
+        [
+          [
+            [
+              60
+            ],
+            [
+              64
+            ]
+          ],
+          []
+        ]
+      ],
+      "summary": {
+        "callbacks": 129,
+        "frames": 66048,
+        "rendered_images": 50,
+        "last_script_sequence": 3,
+        "discarded_lifecycle_commands": 1,
+        "maximum_peak": 0.04757985100150108
+      },
+      "pixel_samples": {
+        "upper_c4": {
+          "xy": [
+            391,
+            410
+          ],
+          "rgba": [
+            180,
+            168,
+            124,
+            255
+          ]
+        },
+        "upper_d4": {
+          "xy": [
+            417,
+            410
+          ],
+          "rgba": [
+            243,
+            237,
+            215,
+            255
+          ]
+        },
+        "upper_e4": {
+          "xy": [
+            442,
+            410
+          ],
+          "rgba": [
+            243,
+            237,
+            215,
+            255
+          ]
+        },
+        "lower_c4": {
+          "xy": [
+            391,
+            510
+          ],
+          "rgba": [
+            244,
+            238,
+            215,
+            255
+          ]
+        },
+        "lower_d4": {
+          "xy": [
+            417,
+            510
+          ],
+          "rgba": [
+            244,
+            238,
+            215,
+            255
+          ]
+        },
+        "lower_e4": {
+          "xy": [
+            442,
+            510
+          ],
+          "rgba": [
+            178,
+            167,
+            123,
+            255
+          ]
+        }
+      }
+    }
+  ],
+  "conversion": {
+    "method": "Pillow BMP decode followed by PNG save; no resize, crop, retouching or mode conversion",
+    "all_decoded_pixel_bytes_equal": true,
+    "original_bmp_location": "/workspace/scratch/5ba97739b54c/a56-chapel-demo",
+    "original_bmp_in_repository": false
+  },
+  "scope": {
+    "actual_application_backbuffer": true,
+    "explicit_dummy_audio_and_video": true,
+    "software_renderer": true,
+    "generated_mockup": false,
+    "physical_device_qualification": false,
+    "audible_hardware_or_listening_evaluation": false,
+    "deadline_or_latency_qualification": false,
+    "native_accessibility_qualification": false,
+    "hardware_fidelity": false,
+    "atlas_taps_equal_calibrated_gains": false
+  }
+}

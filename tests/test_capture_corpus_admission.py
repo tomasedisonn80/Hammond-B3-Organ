@@ -1016,6 +1016,51 @@ class CorpusAdmission(unittest.TestCase):
                     out.close()
                     error.close()
 
+    def test_unicode_inputs_and_rejection_match_stringio_and_legacy_bytes(self):
+        archive = _Archive(self.work / "archive-café-東京")
+        capture = archive.add("unicode-path")
+        capture["specimen"]["variant"]["value"] = "Synthetic café-東京"
+        path = archive.write()
+        report = subject.audit_corpus(path, check_files=True)
+        self.assertEqual(report["captures"][0]["capture_id"], "unicode-path")
+        missing = self.work / "missing-café-東京.json"
+        rejected = self.reject(subject.audit_corpus, missing, check_files=True)
+        cases = ((path, 0, _json_bytes(report)),
+                 (missing, 1, f"corpus error: {rejected}\n".encode("utf-8")))
+        for target, expected_status, expected in cases:
+            if expected_status == 1:
+                self.assertIn("café-東京".encode("utf-8"), expected)
+            for text_only in (False, True):
+                with self.subTest(target=target.name, text_only=text_only):
+                    out, error = ((io.StringIO(), io.StringIO()) if text_only else
+                                  (io.TextIOWrapper(io.BytesIO(), encoding="cp1252", newline="\r\n"),
+                                   io.TextIOWrapper(io.BytesIO(), encoding="cp1252", newline="\r\n")))
+                    try:
+                        with mock.patch.object(sys, "stdout", out), mock.patch.object(sys, "stderr", error):
+                            self.assertEqual(subject.main(["--input", str(target), "--check-files"]),
+                                             expected_status)
+                        out.flush(); error.flush()
+                        actual, unused = (out, error) if expected_status == 0 else (error, out)
+                        if text_only:
+                            self.assertEqual(actual.getvalue(), expected.decode("utf-8"))
+                            self.assertEqual(unused.getvalue(), "")
+                        else:
+                            self.assertEqual(actual.buffer.getvalue(), expected)
+                            self.assertEqual(unused.buffer.getvalue(), b"")
+                    finally:
+                        out.close(); error.close()
+            # Counterexample: the real text layer translates report LFs and
+            # cannot encode the Unicode diagnostic. The corpus report retains
+            # ASCII IDs/paths, not the free-text specimen metadata above.
+            with io.TextIOWrapper(io.BytesIO(), encoding="cp1252", newline="\r\n") as control:
+                if expected_status == 0:
+                    control.write(expected.decode("utf-8")); control.flush()
+                    self.assertEqual(control.buffer.getvalue(), expected.replace(b"\n", b"\r\n"))
+                    self.assertNotEqual(control.buffer.getvalue(), expected)
+                else:
+                    with self.assertRaises(UnicodeEncodeError):
+                        control.write(expected.decode("utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

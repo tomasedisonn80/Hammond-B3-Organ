@@ -16,7 +16,7 @@ run from the repository root (CMake 3.21+, Python 3.10+, C++20 compiler):
 ```sh
 cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release \
   -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT=/absolute/path/to/SDL2
-cmake --build build-native --target hammond_standalone --parallel 3
+cmake --build build-native --config Release --target hammond_standalone --parallel 3
 cmake --install build-native --config Release --component Standalone \
   --prefix "/absolute/path/staged organ"
 mv "/absolute/path/staged organ" "/absolute/path/moved organ"

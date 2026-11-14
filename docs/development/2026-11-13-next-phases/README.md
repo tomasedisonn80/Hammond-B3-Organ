@@ -1,6 +1,6 @@
 # 2026-11-13 next-phase standalone session
 
-This is a new user-requested session of sixty distinct agent assignments in ten waves of six. The execution environment permits three workers concurrently; each wave therefore has two batches. The [manifest](assignments.json) records only actually dispatched assignments and their observed states. Earlier original, console, pedal and scanner sessions are separate history.
+This is a new user-requested session of sixty distinct agent assignments in ten logical waves of six. The execution environment permits at most three workers concurrently; dispatch follows dependencies, and adjacent waves may overlap while completed work is integrated. The [manifest](assignments.json) records only actually dispatched assignments and their observed states. Earlier original, console, pedal and scanner sessions are separate history.
 
 Baseline: `ba0d9c9c75bd7a39152470f9f7ddb82287cb01b1`. Another checkout is developing the scanner; this session uses an isolated checkout and advances the dependency-ready M9 standalone adapter while preserving the core engine and public control identities. Remote changes must be inspected and integrated without force-pushing.
 
@@ -92,3 +92,26 @@ all 196 protected pre-existing files, all 45 parameter records, state migrations
 and generated inputs. Two fresh builds produce byte-identical renderer binaries;
 40 executed comparison renders match exactly. This audit names baseline
 `ba0d9c9` and published `649b12c` and does not silently qualify later adapters.
+
+## Final wave in progress — 14 November 2026
+
+The manifest records **59 actual dispatches / 56 accepted results**, with nine
+complete waves. The remaining real assignment has not yet been dispatched.
+Assignments 52–54 and 56–57 are accepted: the retained 60-case benchmark,
+multi-configuration install repair, milestone reconciliation, two actual chapel
+renders and the explicitly partial session/workflow audit. The audit's frozen
+57-dispatched/54-accepted counts remain its own historical scope.
+
+Published `0085e338388f2c7516a7d455f11692b94e9451f4` passed the fresh combined
+**105/105 Release** gate. Its first instrumented native group retained **13/14**
+because chapel sampling coalesced a brief intermediate hold. Assignment 55
+qualifies a literal-prefix oracle plus independent held endpoint while preserving
+the original failure. Hosted native/VST3 Linux and Windows pass; core Linux
+Release/sanitizers pass. Windows core retains **92/96** calibration portability
+failures; macOS jobs were cancelled while queued, without observed execution.
+Concurrent calibration publication `955fc4c` contains its authors' portability
+repairs. Assignment 58 independently audits those fixes against every original
+failure, and 59 reviews the repaired oracles and operational handoff. Root owns
+integration, the final actual assignment, strict sixty accounting and guarded
+publication. No queued job, source hash or partial record audit substitutes for
+those remaining results.

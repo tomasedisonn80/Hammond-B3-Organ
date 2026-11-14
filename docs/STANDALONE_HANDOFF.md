@@ -3,12 +3,21 @@
 This is the active independent M9 dry-organ adapter track. The
 [actual session manifest](development/2026-11-13-next-phases/assignments.json)
 records new assignments only. The separate [scanner handoff](SCANNER_HANDOFF.md)
-remains authoritative for its unfinished model work. Read both tracks, current
+remains authoritative for its unfinished model work. Read all active tracks, current
 status and the remote head before taking ownership.
 
 ## Current checkpoint and boundaries
 
-Published native checkpoint: `649b12c7d1faa7601fde1019e913347c65a6634a`, tree
+Published code candidate: `0085e338388f2c7516a7d455f11692b94e9451f4`, tree
+`19c763503f67e1f054d2d27b6ec3d8fca2e36474`. Root fetched and verified equality
+with local `fa6df9d`. Its fresh full native-enabled Release gate passes **105/105**.
+The first instrumented native gate retains **13/14**, with a sampled chapel hold
+oracle under repair. Native and VST3 Linux/Windows jobs pass; core Linux Release
+and sanitizer jobs pass, while Windows core retains **92/96** from calibration
+JSON/fixture portability. The three queued macOS jobs were cancelled without
+observed execution. Later repairs require their own named source and results.
+
+Earlier platform-qualified checkpoint: `649b12c7d1faa7601fde1019e913347c65a6634a`, tree
 `cf63327d857b02029e8c5c6f406cab3d3c6890d1`. Root fetched and verified exact tree
 equality. All three standalone platforms passed **14/14**, installation and
 packaging; all three VST3 jobs passed. Core Windows/macOS passed **90/90**, and
@@ -16,10 +25,12 @@ the Linux sanitizer job passed. Linux Release passed **89/90**, retaining a
 scheduler-dependent observer assertion. Exact jobs and earlier failures are in
 the [platform follow-up](reviews/STANDALONE_PLATFORM_FOLLOWUP.md). A workflow's
 successful subset does not override failed or unrun gates.
-There are 55 actual assignments, of which 52 are accepted. Assignment 52
-completed the 60-case benchmark matrix; 53/54 finish installation and milestone
-reviews, and 55 qualifies the combined source. Five assignments remain undispatched. The accepted timing and reader
-repairs need their own combined-source full gate and publication. The
+There are 59 actual assignments, of which 56 are accepted. The 60-case benchmark,
+Debug/Release custom-path installation, complete milestone reconciliation,
+two source-identified chapel views and partial session audit are accepted.
+Assignment 55 qualifies the chapel observation repair, 58 independently reviews
+the concurrent calibration portability fixes and 59 reviews the final repairs
+and handoff. The final actual assignment remains undispatched. The
 [combined-source evidence](reviews/STANDALONE_WAVE6_INTEGRATION.md) records the
 fresh 94/94 Release gate at local `3872752` and separate later chapel/device
 integration. The [native sanitizer audit](reviews/STANDALONE_NATIVE_SANITIZERS.md)
@@ -45,7 +56,7 @@ SDK-free build does not require SDL2 and does not download dependencies:
 
 ```sh
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON
-cmake --build build --parallel 2
+cmake --build build --config Release --parallel 2
 ctest --test-dir build -C Release --output-on-failure --no-tests=error
 ```
 
@@ -57,13 +68,13 @@ python3 tools/acquire_sdl2.py --destination ../SDL2
 python3 tools/acquire_sdl2.py --verify-existing ../SDL2
 cmake -S . -B build-standalone -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
   -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT="$PWD/../SDL2"
-cmake --build build-standalone --target hammond_standalone --parallel 2
+cmake --build build-standalone --config Release --target hammond_standalone --parallel 2
 ```
 
 For the complete native acceptance group, build its actual inputs before CTest:
 
 ```sh
-cmake --build build-standalone --target hammond_standalone_test_inputs --parallel 2
+cmake --build build-standalone --config Release --target hammond_standalone_test_inputs --parallel 2
 ctest --test-dir build-standalone -C Release -R '^test_standalone_' \
   --output-on-failure --no-tests=error
 ```

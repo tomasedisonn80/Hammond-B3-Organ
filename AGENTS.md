@@ -28,7 +28,7 @@ promoted to factory dimensions, physical captures or an end-to-end fidelity pass
 An independent [native standalone session](docs/development/2026-11-13-next-phases/README.md)
 also begins at `ba0d9c9`, with its own sixty actual assignments and ten waves.
 Its [scope](docs/STANDALONE_SCOPE.md) advances the M9 adapter against the existing
-nominal dry core while the scanner track continues. Inspect both current tracks
+nominal dry core while the scanner track continues. Inspect all active tracks
 and their actual manifests before taking ownership. Standalone-specific code
 belongs under `apps/standalone/`; it must not silently change Engine sound,
 parameter identities, state formats or plugin UUIDs. Preserve the other track's
@@ -154,7 +154,7 @@ for every later task. Report actual dispatched/completed work separately from
 planned rows and preserve the latest user-authorized scope.
 Update actual states in the newest session's manifest. The completed console
 continuation uses `docs/development/2026-11-13-continuation/assignments.json` and
-`docs/CONTINUATION_CHECKS.md`; its checker does not count the current pedal session.
+`docs/CONTINUATION_CHECKS.md`; its checker does not count the separate pedal session.
 The completed pedal session has its own [record checker](docs/PEDAL_SESSION_CHECKS.md):
 
 ```sh

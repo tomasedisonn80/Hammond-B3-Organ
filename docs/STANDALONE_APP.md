@@ -17,11 +17,15 @@ then configure from the repository root:
 ```sh
 cmake -S . -B build-native -DCMAKE_BUILD_TYPE=Release \
   -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT=/absolute/path/to/SDL2
-cmake --build build-native --target hammond_standalone --parallel 3
+cmake --build build-native --config Release --target hammond_standalone --parallel 3
 build-native/apps/standalone/hammond_standalone --help
 build-native/apps/standalone/hammond_standalone --list-audio
 build-native/apps/standalone/hammond_standalone
 ```
+
+The executable paths above use a single-configuration generator. For a
+multi-configuration generator, use `apps/standalone/Release/` beneath the build
+directory; Windows also adds the `.exe` suffix.
 
 The native target embeds the same compiled nominal profile. The generated
 header retains the historical `hammond::vst3::kEmbeddedProfileText` namespace;

@@ -47,26 +47,24 @@ The native app, allocation/concurrency acceptance, installed component, scripted
 musical workflows and SDK-free source-identified benchmark now exist. The
 maximum-plan replay repair, explicit chapel control-file audition and four
 source-identified native screenshots have passed their scoped acceptance.
-At published `649b12c`, standalone **14/14** tests and packaging pass on Linux,
-Windows and macOS; all VST3 jobs, Windows/macOS full core **90/90**, and the
-Linux sanitizer job pass. Linux Release retains **89/90** because an observer
-activity-flag assertion still depends on scheduling. Assignments 47 and 50 now
-supply accepted capture/resize and deterministic reader-progress repairs, with
-focused ASan/UBSan and Release/single-CPU/TSAN evidence. Qualify their combined
-source in a fresh full build and actual hosted runs. The earlier native sanitizer gate retained **92/94**;
-the current-output removal and independent lifecycle checks pass. Clean setup,
-relocated operation and actual older hosted archives have been independently
-audited. Complete the remaining real compatibility, benchmark, release and
-handoff assignments, preserving exact source scopes. Do not overwrite concurrent scanner,
-rotary or capture/calibration work.
+The combined published candidate `0085e33` passes a fresh **105/105 Release**
+gate, including the accepted timing/reader repairs and configuration-install
+guard. Its first instrumented native gate retains **13/14** because chapel
+sampling can coalesce a brief hold. Finish assignment 55's independent endpoint
+and literal-prefix checks, then qualify the changed native test group while
+preserving the original result. Hosted native/VST3 Linux and Windows pass;
+Windows core retains **92/96** calibration portability failures. Integrate and
+independently review the calibration authors' `955fc4c` fixes, then observe the
+actual repaired hosted run. The three queued macOS jobs were cancelled without
+observed execution; an earlier platform pass does not qualify this candidate.
 
-The combined final-source gate is assignment 55. It includes the integrated
-calibration publication `779fb6e`, accepted timing/reader repairs, the new
-multi-configuration install guard and the corrected combined third-party
-notices. Assignment 53 retains the observed partial-install failure and its
-Debug/Release regression; the complete single-configuration and hosted checks
-must also run against the integrated source. The 60-case benchmark artifact is
-complete and independently verifiable; its timing samples are observational.
+Clean setup, Debug/Release custom-path installation, relocated operation,
+actual older hosted archives, the 60-case benchmark and two additional chapel
+views are independently recorded. Finish the real final-wave repair/handoff
+review and hosted artifact audit, accept all sixty actual results, run the
+strict session checker and publish with an expected-head guard. Preserve exact
+source scopes and concurrent scanner, rotary and capture/calibration work.
+The benchmark's raw intervals are observations, not physical deadline passes.
 
 Read [STATUS.md](STATUS.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [PLAN.md](PLAN.md), [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) and [AGENTS.md](../AGENTS.md), then inspect the actual checkout and remote head. The [current manifest](development/2026-11-13-scanner/assignments.json) belongs to the new sixty-assignment scanner session. The earlier original, console and pedal sessions are completed history and are not counted again.
 

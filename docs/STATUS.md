@@ -46,8 +46,8 @@ contain 63 audio methods (two capability skips) and 58 corpus methods.
 ## Active native standalone continuation
 
 The independent [standalone session](development/2026-11-13-next-phases/README.md)
-has accepted **52 of 55 actually dispatched assignments**, including eight complete
-waves. The remaining five assignments have not yet been dispatched. The [native app](STANDALONE_APP.md) now runs the unchanged nominal dry
+has accepted **56 of 59 actually dispatched assignments**, including nine complete
+waves. The final assignment has not yet been dispatched. The [native app](STANDALONE_APP.md) now runs the unchanged nominal dry
 engine in a resizable instrument window with keyboard/pointer performance,
 separate edited/sounding banks, pedals, percussion, expression, Audio/Help
 panels and explicit saved controls. Follow the [operational handoff](STANDALONE_HANDOFF.md)
@@ -95,7 +95,28 @@ Four [actual native screenshots](reviews/STANDALONE_WINDOW_DEMO.md) retain exact
 source and runtime provenance. Earlier [checkpoint evidence](reviews/STANDALONE_NATIVE_CHECKPOINT.md)
 retains its original source scopes.
 
-Current published checkpoint `649b12c7d1faa7601fde1019e913347c65a6634a`, tree
+Current code candidate `0085e338388f2c7516a7d455f11692b94e9451f4`, tree
+`19c763503f67e1f054d2d27b6ec3d8fca2e36474`, is published and fetched with exact
+tree equality. It includes the accepted timing/reader repairs, the configuration
+install guard, corrected bundled notices and preserved calibration `779fb6e`.
+Its fresh complete native-enabled Release gate passed **105/105**. The first
+fully instrumented native group passed **13/14**: the chapel suite required a
+brief sampled intermediate hold that can be coalesced between UI observations.
+Assignment 55 retains that failure and qualifies literal command-prefix checks
+with independent held/released endpoints. No sanitizer diagnostic was observed;
+this failed acceptance result is not a full sanitizer pass.
+
+At this candidate, standalone and VST3 Linux/Windows jobs pass. Core Linux Release
+and Linux ASan/UBSan/leaks pass; Windows core passes **92/96**, retaining canonical
+JSON newline and filesystem-fixture failures in the newly merged calibration
+tools. All three queued macOS jobs were subsequently cancelled without an
+observed execution. Concurrent calibration `955fc4c` supplies separately authored
+repairs; assignment 58 independently reviews and qualifies them before root's
+integration. Assignment 59 reviews these final repairs and the practical handoff.
+The [chapel demonstration](../examples/demos/standalone-chapel-v1/README.md)
+retains two actual candidate renders, complete musical endpoints and exact bytes.
+
+Earlier published checkpoint `649b12c7d1faa7601fde1019e913347c65a6634a`, tree
 `cf63327d857b02029e8c5c6f406cab3d3c6890d1`, preserves concurrent calibration
 foundation `5026f67`. All three Native standalone jobs passed **14/14** suites,
 installation/relocation and packaging on Linux, Windows and macOS. All three
@@ -108,8 +129,9 @@ normal Release, constrained single-CPU Release and a fresh fully instrumented
 TSAN run, with exact initial/final publication handshakes and controlled recovery
 coverage. The [timing repair](reviews/STANDALONE_TIMING_REPAIR.md) passes **3/3**
 focused ASan/UBSan native suites, 38 methods and 210 app processes. These accepted
-repairs require a fresh combined-source full gate and their own publication;
-the earlier platform passes do not qualify later source.
+repairs are in the published candidate; its complete Release gate now passes,
+while the separate chapel oracle and Windows calibration failures remain above.
+The earlier platform passes do not qualify later source.
 
 The [hosted artifact audit](reviews/STANDALONE_HOSTED_PLATFORM_REVIEW.md) verifies
 actual Linux/Windows packages from `5b8e241`, including relocated Linux replay.
