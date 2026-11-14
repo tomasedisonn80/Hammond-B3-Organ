@@ -1,0 +1,1341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="147"
+	failures="1"
+	disabled="0"
+	skipped="0"
+	hostname="2b85fe4e0adc"
+	time="525"
+	timestamp="2026-11-14T06:07:45"
+	>
+	<testcase name="test_console_engine" classname="test_console_engine" time="0.466861" status="run">
+		<properties/>
+		<system-out>Console engine passed: 1179 source/audio oracles, 318 closed-form readiness checks, 42 partition/disconnected comparisons, 16 failure-preservation cases.
+</system-out>
+	</testcase>
+	<testcase name="test_contact_bank" classname="test_contact_bank" time="0.0719793" status="run">
+		<properties/>
+		<system-out>Contact bank: 1098 one-hot identities, three-rate analytic edges, hysteresis, reversal, endpoints and atomic failures passed.
+</system-out>
+	</testcase>
+	<testcase name="test_contact_rate" classname="test_contact_rate" time="0.0770893" status="run">
+		<properties/>
+		<system-out>contact rate lifecycle: 71 tracked migrations, 115 rejected migrations, 12288 same-rate no-ops, 456298 position and 4116402 contact comparisons, 14028 exact future frames, 18630 threshold samples; maximum position error=1.59459034518305564632e-16
+</system-out>
+	</testcase>
+	<testcase name="test_control_io" classname="test_control_io" time="0.104295" status="run">
+		<properties/>
+		<system-out>Control persistence tests passed; 2240 malformed inputs preserved destination semantics.
+</system-out>
+	</testcase>
+	<testcase name="test_controls" classname="test_controls" time="0.227287" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="test_core_robustness" classname="test_core_robustness" time="0.0258696" status="run">
+		<properties/>
+		<system-out>Core robustness: 9 original-exception rejection/recovery cases passed.
+</system-out>
+	</testcase>
+	<testcase name="test_decimal" classname="test_decimal" time="0.0361851" status="run">
+		<properties/>
+		<system-out>decimal: 16547 exact values/round trips; 106 rejected tokens with unchanged destinations
+</system-out>
+	</testcase>
+	<testcase name="test_engine" classname="test_engine" time="0.20378" status="run">
+		<properties/>
+		<system-out>Engine: independent sine/routing, musical state, atomic rejection, and 3-rate/6-partition timelines passed.
+</system-out>
+	</testcase>
+	<testcase name="test_engine_rate" classname="test_engine_rate" time="1.16314" status="run">
+		<properties/>
+		<system-out>rate_pair_scenarios=36 rejected_changes=81 same_rate_calls=6144 complete_snapshots=13776 phase_checks=12740 position_checks=17080 contact_bit_checks=153720 readiness_checks=140 sample_oracles=140 exact_audio_frames=32603 mixed_segments=14 ownership_cases=6 detector_edge_scenarios=36
+max_phase_error_turns=5.5595068479408205e-14 max_position_error=1.5943192946399343e-16 max_readiness_error=5.5177433802566789e-14 max_sample_error=2.7298798391023251e-08
+</system-out>
+	</testcase>
+	<testcase name="test_factory_runtime" classname="test_factory_runtime" time="0.463259" status="run">
+		<properties/>
+		<system-out>wrong-route probe rejected: mismatched_frames=128 peak_error=0.0497971664381
+muted-source probe rejected: mismatched_frames=128 peak_error=0.0299972152215
+factory runtime: 1098 routes at 48000 Hz; 32 boundary routes each at 44100/96000 Hz; 6 coherent cases; 8 manual addition/Cancel stages; 2 rejected probes
+matched_audio_frames=150528 probe_frames=256 checked_silent_frames=19907 total_engine_frames=170691 peak_nominal_error=1.41557759958e-08
+CSV source coverage: all 79 tone IDs 13..91; no manual reference to IDs 1..12. Nominal source/mix software only; no pedal audio or physical-fidelity claim.
+</system-out>
+	</testcase>
+	<testcase name="test_fixed_registration_data" classname="test_fixed_registration_data" time="0.00614457" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="test_fixed_registration_engine" classname="test_fixed_registration_engine" time="1.58812" status="run">
+		<properties/>
+		<system-out>fixed registration engine: 108 literal-row/rate/contact audio cases, 532 rejected calls with future-audio continuation; passed
+</system-out>
+	</testcase>
+	<testcase name="test_fixed_registration_lifecycle" classname="test_fixed_registration_lifecycle" time="1.0928" status="run">
+		<properties/>
+		<system-out>fixed registration lifecycle: 72 rate/route/contact scenarios, 288 preserved rate boundaries, 740 live restores, 308 state4 round trips, 72 cold loads, 100 rejected rates, 84 rejected restores, 80256 exact audio frames; 32760 phase, 43920 position, 395280 contact-bit and 360 readiness oracles; 5412 full snapshots; passed
+</system-out>
+	</testcase>
+	<testcase name="test_host_timeline" classname="test_host_timeline" time="0.722621" status="run">
+		<properties/>
+		<system-out>host timeline: accepted=7486, oracle_frames=9216, phase_values=17199, exact_samples=27937, rejections=51, future_probes=47, threshold_cases=999, partitions=63, max_audio_error=0, max_curve_error=0, sizeof(HostTimeline)=416664
+</system-out>
+	</testcase>
+	<testcase name="test_input_processor" classname="test_input_processor" time="1.32627" status="run">
+		<properties/>
+		<system-out>input processor: 66072 calls; 44 atomic rejections; 44 future probes; 814 complete state comparisons; 816 hand-authored reference events; 66 partition variants; 459896 bit-exact sample comparisons
+</system-out>
+	</testcase>
+	<testcase name="test_note_ownership" classname="test_note_ownership" time="0.0404306" status="run">
+		<properties/>
+		<system-out>note ownership: 2127 accepted calls, 2264 atomic rejections with future checks, 5226 expected physical events, 541 retained owner rows, 16 partition/flush cases
+</system-out>
+	</testcase>
+	<testcase name="test_numerics" classname="test_numerics" time="1.58396" status="run">
+		<properties/>
+		<system-out>nominal 44100 Hz, tone 1: maximum checked phase error 4.37381793109981042988e-12 turns, sample error 2.71935487653986911541e-11
+nominal 44100 Hz, tone 91: maximum checked phase error 1.62222692961025427572e-12 turns, sample error 1.00781642349534981962e-11
+nominal 48000 Hz, tone 1: maximum checked phase error 2.94995560097544018419e-12 turns, sample error 1.81957633427434913552e-11
+nominal 48000 Hz, tone 91: maximum checked phase error 1.08684795104702081048e-12 turns, sample error 6.65298986556170021678e-12
+nominal 96000 Hz, tone 1: maximum checked phase error 5.44049039759991748255e-12 turns, sample error 3.36449091650021722688e-11
+nominal 96000 Hz, tone 91: maximum checked phase error 7.72218156390100385345e-12 turns, sample error 4.79478160175333912793e-11
+phase budget at 262144 frames: 3.6379788938278867505e-11 turns; long-double significand bits: 64
+maximum mix 44100 Hz: 1098, -1098; finite bound including one float ULP: 1098.0001220703125
+maximum mix 48000 Hz: 1098, -1098; finite bound including one fl...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_owned_lifecycle" classname="test_owned_lifecycle" time="0.352849" status="run">
+		<properties/>
+		<system-out>owned lifecycle: 12 mixed-rate runs, 156 preserved rate boundaries, 14 rejected rates, 42 rejected input blocks, 50 future probes, 10086 exact state comparisons, 2408812 exact sample comparisons
+</system-out>
+	</testcase>
+	<testcase name="test_parameter_bridge" classname="test_parameter_bridge" time="0.0138168" status="run">
+		<properties/>
+		<system-out>parameter bridge: 6327 independent conversions, 42666 atomic conversion rejections; 47 live Engine targets; all four rounding modes passed
+</system-out>
+	</testcase>
+	<testcase name="test_partial_key" classname="test_partial_key" time="0.340311" status="run">
+		<properties/>
+		<system-out>partial-key acceptance: 234 exact state pairs, 51513 exact audio samples, 768 isolated current-phase samples, 51 rejected calls; max audio error=9.29094e-10
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_controls" classname="test_pedal_controls" time="0.00936754" status="run">
+		<properties/>
+		<system-out>Pedal controls passed: 105 round trips, 243 legacy migrations, 134 rejected documents, 494 rejected snapshots; all failures preserve destinations.
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_engine" classname="test_pedal_engine" time="0.024749" status="run">
+		<properties/>
+		<system-out>Pedal Engine passed: 1442 exact audio comparisons, 11921 exact phase comparisons, 19 event rejection cases.
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_integration" classname="test_pedal_integration" time="0.114782" status="run">
+		<properties/>
+		<system-out>Pedal Engine integration: both 200-cell CSV maps; 2203 independent oracle frames; 32600 contact checks; 200837 bitwise source-phase checks; 17676 bitwise partition samples; 10 late-invalid transactions.
+Peak absolute bus/voice/audio error: 7.64666108210576567e-15 / 3.40005801291454191e-15 / 1.08423013451923456e-07
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_note_ownership" classname="test_pedal_note_ownership" time="0.00767211" status="run">
+		<properties/>
+		<system-out>pedal ownership: 74 accepted calls, 59 atomic rejection/future checks, 1454 exact event comparisons, 1073 owner rows, 7 partitions; sizeof=2112
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_realtime" classname="test_pedal_realtime" time="0.00638832" status="run">
+		<properties/>
+		<system-out>Pedal maximum-occupancy observation: 4096 frames, checksum 199680, elapsed 0.001337606 seconds (not a device deadline claim).
+Pedal allocation observations: 4130 measured regions, 4111 accepted and 8 rejected status calls; 4102 rendered frames, 1000 accepted contact edits; zero observed C++ allocations/deallocations.
+Observed fixed storage: kernel=2808 bytes, source frame=728, bus frame=32, 200-edit batch=600; architecture-specific sizes.
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_reference" classname="test_pedal_reference" time="0.0461788" status="run">
+		<properties/>
+		<system-out>independent pedal reference passed: csv_cells=400; isolated_contacts=200; exact_frames=37026; ordinary_frames=3072; repeated_pairs=7; disconnected_positions=5; oracle_counterexamples=3; fixed_tolerance=2.2204460492503624e-12; peak_ordinary_error=2.6645352591003757e-15
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_routing" classname="test_pedal_routing" time="0.00775672" status="run">
+		<properties/>
+		<system-out>pedal routing: six focused admission, atomicity, branch and bound groups passed
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_sources" classname="test_pedal_sources" time="0.150983" status="run">
+		<properties/>
+		<system-out>pedal source harness passed: source_frames=30414, phase_values=3188913, coherent_frames=24141, nonzero_frames=22534, discarded_pedal_frames=495, zero_time_edit_batches=228, rate_changes=57, partition_runs=12, max_coherence_error=3.81639164714897561e-16, fixed_tolerance=1.1368683772161603e-13
+</system-out>
+	</testcase>
+	<testcase name="test_pedal_voice" classname="test_pedal_voice" time="0.0085406" status="run">
+		<properties/>
+		<system-out>pedal_voice_groups=5 exact_frames=3240 floating_frames=83268 rejected_frames=1073 maximum_error=3.27515792264421179425e-14 absolute_tolerance=7.10542735760100185871e-13
+</system-out>
+	</testcase>
+	<testcase name="test_percussion" classname="test_percussion" time="0.0132055" status="run">
+		<properties/>
+		<system-out>Percussion checks passed: 103 closed-form comparisons, 41 invalid profiles, 762 invalid enum settings; maximum absolute q error=1.1582061807e-12
+</system-out>
+	</testcase>
+	<testcase name="test_percussion_controls" classname="test_percussion_controls" time="0.0514133" status="run">
+		<properties/>
+		<system-out>Percussion control/history migration tests passed.
+</system-out>
+	</testcase>
+	<testcase name="test_percussion_rate" classname="test_percussion_rate" time="0.0155459" status="run">
+		<properties/>
+		<system-out>Percussion rate lifecycle passed: 234 tracked migrations, 250 rejected changes, 20736 exact same-rate calls, 1305 analytic comparisons, 7488 instantaneous gain checks, 152544 exact future frames; max q error 6.3501070721172503e-14
+</system-out>
+	</testcase>
+	<testcase name="test_performance_acceptance" classname="test_performance_acceptance" time="0.846814" status="run">
+		<properties/>
+		<system-out>performance acceptance: accepted=12660 atomic_rejections=41 rejected_future_probes=39 bitwise_audio_samples=68102 partition_audio_samples=49152 bitwise_phase_values=1162434 complete_state_pairs=12778 explicit_owner_rows=1035 partition_runs=24
+</system-out>
+	</testcase>
+	<testcase name="test_performance_input" classname="test_performance_input" time="0.129024" status="run">
+		<properties/>
+		<system-out>performance input: 3891 accepted calls, 67 atomic rejection/future checks, 26986 bitwise audio samples, 12922 bitwise source phase comparisons, 42 partition cases
+</system-out>
+	</testcase>
+	<testcase name="test_preset_parameter_boundaries" classname="test_preset_parameter_boundaries" time="0.00985821" status="run">
+		<properties/>
+		<system-out>688 integer-oracle conversions, 296 atomic conversion rejections, 84 unchanged unknown-ID descriptors; four rounding modes passed
+</system-out>
+	</testcase>
+	<testcase name="test_preset_realtime" classname="test_preset_realtime" time="0.112777" status="run">
+		<properties/>
+		<system-out>preset realtime: calibration=12/12, compared_samples=6968, audible_samples=12800, preserved_histories=152, future_probes=104
+lookup calls=57 accepted=51 rejected=6 frames=0 records=0 new=0 delete=0
+control calls=156 accepted=150 rejected=6 frames=0 records=0 new=0 delete=0
+engine calls=482 accepted=398 rejected=84 frames=17600 records=6348 new=0 delete=0
+combined calls=6 accepted=4 rejected=2 frames=128 records=20 new=0 delete=0
+timeline calls=60 accepted=48 rejected=12 frames=1920 records=6210 new=0 delete=0
+</system-out>
+	</testcase>
+	<testcase name="test_profile" classname="test_profile" time="0.412894" status="run">
+		<properties/>
+		<system-out>Profile boundary tests passed; 2601 malformed inputs preserved every destination field.
+</system-out>
+	</testcase>
+	<testcase name="test_realtime" classname="test_realtime" time="0.617194" status="run">
+		<properties/>
+		<system-out>Prepared process observations: 63 accepted, 33 rejected; 216255 frames, 23919 consumed events; zero observed C++ allocations/deallocations.
+</system-out>
+	</testcase>
+	<testcase name="test_realtime_console" classname="test_realtime_console" time="1.21231" status="run">
+		<properties/>
+		<system-out>Enabled Engine processing: 63 accepted, 18 rejected; 218193 rendered frames, 15042 input events, 0 physical events; zero C++ allocations/deallocations.
+Standalone ownership translation: 3 accepted, 3 rejected; 0 rendered frames, 1312 input events, 1268 physical events; zero C++ allocations/deallocations.
+Owned-input processing: 24 accepted, 21 rejected; 204636 rendered frames, 7011 input events, 6879 physical events; zero C++ allocations/deallocations.
+Parameter APIs (rate independent): 142 accepted, 7 rejected; 0 rendered frames, 0 input events, 0 physical events; zero C++ allocations/deallocations.
+Stopped sample-rate lifecycle: 6 accepted, 8 rejected; 0 rendered frames, 0 input events, 0 physical events; zero C++ allocations/deallocations.
+Calibration separately observed 12 allocations and 12 deallocations.
+</system-out>
+	</testcase>
+	<testcase name="test_realtime_pedals" classname="test_realtime_pedals" time="1.01095" status="run">
+		<properties/>
+		<system-out>compiler=GCC-14.2.0 pointer_bits=64 clock=steady_clock timing=observed-only
+calibration=12-allocations/12-frees (8-new-overloads,12-delete-overloads)
+engine calls=58 accepted=41 rejected=17 frames=202091 records=3663 physical=3663 new=0 delete=0 elapsed_us=536939.721 max_us=181234.417
+manual-owners calls=6 accepted=4 rejected=2 frames=0 records=1538 physical=1268 new=0 delete=0 elapsed_us=57.963 max_us=23.664
+pedal-owners calls=7 accepted=5 rejected=2 frames=0 records=1538 physical=1074 new=0 delete=0 elapsed_us=54.219 max_us=21.763
+combined calls=18 accepted=12 rejected=6 frames=67073 records=2052 physical=1318 new=0 delete=0 elapsed_us=181008.230 max_us=176983.648
+timeline calls=16 accepted=10 rejected=6 frames=65636 records=3599 physical=65718 new=0 delete=0 elapsed_us=255364.248 max_us=254827.076
+exchange calls=29 accepted=17 rejected=12 frames=0 records=3 physical=0 new=0 delete=0 elapsed_us=3.565 max_us=0.547
+complete-callback calls=35 accepted=34 rejected=1 frames=3072 records=515 physical=1172 new=0 d...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_scanner_line" classname="test_scanner_line" time="0.608258" status="run">
+		<properties/>
+		<system-out>scanner line state acceptance passed
+dc_responses=30 maximum_dc_complex_error=1.9008557748667609e-13
+basis_paths=432 energy_paths=24 energy_frames=376200
+maximum_zero_drive_energy_increase_joules=0 maximum_final_energy_joules=1.6802239252088292e-26
+retune_pairs=9 rejected_calls=237 external_partition_paths=12
+energy rate=44100 mode=vibrato fixture=x1=+1V initial_joules=2.0000000000000001e-09 final_joules=2.8251081157097834e-27 maximum_positive_step_increase_joules=0
+energy rate=44100 mode=vibrato fixture=x18=-1V initial_joules=5.0000000000000003e-10 final_joules=1.0039546162841046e-28 maximum_positive_step_increase_joules=0
+energy rate=44100 mode=vibrato fixture=i1=+1e-4A initial_joules=2.5000000000000001e-09 final_joules=8.9411328914383298e-28 maximum_positive_step_increase_joules=0
+energy rate=44100 mode=vibrato fixture=i18=-1e-4A initial_joules=2.5000000000000001e-09 final_joules=1.6109367269850059e-27 maximum_positive_step_increase_joules=0
+energy rate=44100 mode=chorus fixture=x1=+1V initial_joules=2.000...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_scanner_rotor" classname="test_scanner_rotor" time="0.108794" status="run">
+		<properties/>
+		<system-out>scanner rotor: stateless_cases=23616 chorus_return_cases=288 max_oracle_error_volts=5.55111512312578270212e-17 max_chorus_error_volts=1.11022302462515654042e-16 clock_frames=76800 max_clock_drift_turns=5.62909636438180260853e-14 rejected_calls=716 continuation_frames=29766 rate_pairs=9 partition_paths=12
+</system-out>
+	</testcase>
+	<testcase name="test_source_rate" classname="test_source_rate" time="0.254655" status="run">
+		<properties/>
+		<system-out>source rate checks passed; transitions=42; rejected=80; phase oracles=15561; sample oracles=15561; exact future frames=61772; maximum phase error=2.459699111057e-13 turns; maximum sample error=1.2362302208389e-12
+</system-out>
+	</testcase>
+	<testcase name="test_state_exchange" classname="test_state_exchange" time="0.0609298" status="run">
+		<properties/>
+		<system-out>concurrent callbacks=6059 producer_reads=53954 observer_reads=21295 bounded_read_failures=126417
+StateExchange: queue, publication, migration and engine history checks passed
+</system-out>
+	</testcase>
+	<testcase name="test_tonewheel" classname="test_tonewheel" time="0.757307" status="run">
+		<properties/>
+		<system-out>tonewheel 44100 Hz: 440 positive crossings in 1 s, estimated 439.999999434 Hz
+tonewheel 48000 Hz: 440 positive crossings in 1 s, estimated 440.000000188 Hz
+tonewheel 96000 Hz: 440 positive crossings in 1 s, estimated 439.999999997 Hz
+tonewheel checks passed; maximum analytical sample error 1.76897394539e-11, phase error 2.82768253257e-12 turns
+</system-out>
+	</testcase>
+	<testcase name="python_test_audio_analysis" classname="python_test_audio_analysis" time="1.17575" status="run">
+		<properties/>
+		<system-out>...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.990s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_calibration_session_records" classname="python_test_calibration_session_records" time="1.57104" status="run">
+		<properties/>
+		<system-out>...........................
+----------------------------------------------------------------------
+Ran 27 tests in 1.311s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture" classname="python_test_capture" time="1.59163" status="run">
+		<properties/>
+		<system-out>.........................................
+----------------------------------------------------------------------
+Ran 41 tests in 1.406s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_audio" classname="python_test_capture_audio" time="0.765722" status="run">
+		<properties/>
+		<system-out>.........................................
+----------------------------------------------------------------------
+Ran 41 tests in 0.625s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_audio_admission" classname="python_test_capture_audio_admission" time="2.82936" status="run">
+		<properties/>
+		<system-out>..............s.............s..................................
+----------------------------------------------------------------------
+Ran 63 tests in 2.629s
+
+OK (skipped=2)
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_cli_pipeline" classname="python_test_capture_cli_pipeline" time="9.72509" status="run">
+		<properties/>
+		<system-out>.........
+----------------------------------------------------------------------
+Ran 9 tests in 9.562s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_common" classname="python_test_capture_common" time="0.280379" status="run">
+		<properties/>
+		<system-out>test_bom_invalid_utf8_and_unpaired_surrogates_reject (__main__.CaptureCommonAcceptance.test_bom_invalid_utf8_and_unpaired_surrogates_reject) ... ok
+test_canonical_bytes_match_the_independent_literal_in_every_order (__main__.CaptureCommonAcceptance.test_canonical_bytes_match_the_independent_literal_in_every_order) ... ok
+test_canonical_scalar_empty_and_nested_object_encodings (__main__.CaptureCommonAcceptance.test_canonical_scalar_empty_and_nested_object_encodings) ... ok
+test_canonical_uses_the_larger_declared_numeric_and_depth_bounds (__main__.CaptureCommonAcceptance.test_canonical_uses_the_larger_declared_numeric_and_depth_bounds) ... ok
+test_container_depth_has_root_zero_and_scalar_leaves_do_not_add_depth (__main__.CaptureCommonAcceptance.test_container_depth_has_root_zero_and_scalar_leaves_do_not_add_depth) ... ok
+test_direct_cycles_and_parser_recursion_exhaustion_are_controlled (__main__.CaptureCommonAcceptance.test_direct_cycles_and_parser_recursion_exhaustion_are_controlled) ... ok
+test_direct_keys_and...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_comparison" classname="python_test_capture_comparison" time="0.863975" status="run">
+		<properties/>
+		<system-out>..........................................
+----------------------------------------------------------------------
+Ran 42 tests in 0.622s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_corpus" classname="python_test_capture_corpus" time="1.46745" status="run">
+		<properties/>
+		<system-out>...............................................
+----------------------------------------------------------------------
+Ran 47 tests in 1.279s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_corpus_admission" classname="python_test_capture_corpus_admission" time="2.10966" status="run">
+		<properties/>
+		<system-out>...........................................................
+----------------------------------------------------------------------
+Ran 59 tests in 1.795s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_demo" classname="python_test_capture_demo" time="2.09399" status="run">
+		<properties/>
+		<system-out>...........................................
+----------------------------------------------------------------------
+Ran 43 tests in 1.805s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_graph_scale" classname="python_test_capture_graph_scale" time="5.37964" status="run">
+		<properties/>
+		<system-out>.......
+----------------------------------------------------------------------
+Ran 7 tests in 5.197s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_install" classname="python_test_capture_install" time="9.84895" status="run">
+		<properties/>
+		<system-out>................
+----------------------------------------------------------------------
+Ran 16 tests in 9.686s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_job" classname="python_test_capture_job" time="6.44503" status="run">
+		<properties/>
+		<system-out>.................................................................................
+----------------------------------------------------------------------
+Ran 81 tests in 6.135s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_metadata_read" classname="python_test_capture_metadata_read" time="1.84205" status="run">
+		<properties/>
+		<system-out>........................
+----------------------------------------------------------------------
+Ran 24 tests in 1.516s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_numerics" classname="python_test_capture_numerics" time="1.06861" status="run">
+		<properties/>
+		<system-out>...................
+----------------------------------------------------------------------
+Ran 19 tests in 0.882s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_policy" classname="python_test_capture_policy" time="0.71317" status="run">
+		<properties/>
+		<system-out>.................................................
+----------------------------------------------------------------------
+Ran 49 tests in 0.470s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_readiness" classname="python_test_capture_readiness" time="1.0325" status="run">
+		<properties/>
+		<system-out>.................................................................
+----------------------------------------------------------------------
+Ran 65 tests in 0.787s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_replay" classname="python_test_capture_replay" time="10.6221" status="run">
+		<properties/>
+		<system-out>.....................................................................
+----------------------------------------------------------------------
+Ran 69 tests in 10.233s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_capture_study" classname="python_test_capture_study" time="8.85552" status="run">
+		<properties/>
+		<system-out>.............................................................
+----------------------------------------------------------------------
+Ran 61 tests in 8.484s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_chapel_controls" classname="python_test_chapel_controls" time="19.364" status="run">
+		<properties/>
+		<system-out>Chapel exporter SHA-256: 9639e83a6a04e40786227ffca69c50db82dd6099e102cc8c727a204fe1a9d436
+....................Chapel controls acceptance: 273 exporter CLI invocations, 205 exact exported states, 302 API rejections, 6 publication fault probes, 38 reader rejection probes
+
+----------------------------------------------------------------------
+Ran 20 tests in 19.182s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_chapel_presets" classname="python_test_chapel_presets" time="8.8082" status="run">
+		<properties/>
+		<system-out>Chapel compiler SHA-256: ae54bbc196d779b2b1b369aa2c2e7db4268dd175201d6b193fed8256e6420826
+.......................Chapel acceptance: 114 CLI invocations, 272 public-API admission rejects, 5 injected publication failures, 38 reader rejection probes
+
+----------------------------------------------------------------------
+Ran 23 tests in 8.650s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_cli_unicode" classname="python_test_cli_unicode" time="1.37287" status="run">
+		<properties/>
+		<system-out>...........
+----------------------------------------------------------------------
+Ran 11 tests in 1.274s
+
+OK
+CLI Unicode actual invocations on posix: render=19, benchmark=14, model_info=5, parameter_info=13, console_trace=15, pedal_trace=15
+</system-out>
+	</testcase>
+	<testcase name="python_test_compile_fixed_registrations" classname="python_test_compile_fixed_registrations" time="2.66699" status="run">
+		<properties/>
+		<system-out>.................
+----------------------------------------------------------------------
+Ran 17 tests in 2.486s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_compile_pedal_routing" classname="python_test_compile_pedal_routing" time="3.88209" status="run">
+		<properties/>
+		<system-out>................
+----------------------------------------------------------------------
+Ran 16 tests in 3.691s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_compile_profile" classname="python_test_compile_profile" time="6.40614" status="run">
+		<properties/>
+		<system-out>test_booleans_are_not_numeric_parameters (__main__.AuthoringRejectionTests.test_booleans_are_not_numeric_parameters) ... ok
+test_duplicate_json_keys_reject_equal_conflicting_and_escaped_names (__main__.AuthoringRejectionTests.test_duplicate_json_keys_reject_equal_conflicting_and_escaped_names) ... ok
+test_every_manual_cell_and_drawbar_definition_is_validated (__main__.AuthoringRejectionTests.test_every_manual_cell_and_drawbar_definition_is_validated) ... ok
+test_every_required_field_is_rejected_if_absent_or_unexpectedly_null (__main__.AuthoringRejectionTests.test_every_required_field_is_rejected_if_absent_or_unexpectedly_null) ... ok
+test_every_source_id_must_be_unique_and_in_its_declared_position (__main__.AuthoringRejectionTests.test_every_source_id_must_be_unique_and_in_its_declared_position) ... ok
+test_every_source_numeric_value_must_match_the_named_baseline (__main__.AuthoringRejectionTests.test_every_source_numeric_value_must_match_the_named_baseline) ... ok
+test_file_byte_limit_includes_insignificant_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_console_benchmark" classname="python_test_console_benchmark" time="1.12122" status="run">
+		<properties/>
+		<system-out>......
+----------------------------------------------------------------------
+Ran 6 tests in 1.004s
+
+OK
+benchmark CLI calls: 33; maximum rational-position error: 1.1102230246251565e-16; no timing threshold applied
+</system-out>
+	</testcase>
+	<testcase name="python_test_console_catalog" classname="python_test_console_catalog" time="1.17585" status="run">
+		<properties/>
+		<system-out>....
+----------------------------------------------------------------------
+Ran 4 tests in 1.062s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_console_evidence" classname="python_test_console_evidence" time="4.85115" status="run">
+		<properties/>
+		<system-out>...
+----------------------------------------------------------------------
+Ran 3 tests in 4.636s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_console_trace" classname="python_test_console_trace" time="6.51966" status="run">
+		<properties/>
+		<system-out>..........
+----------------------------------------------------------------------
+Ran 10 tests in 6.368s
+
+OK
+console trace observed: {"actual_cli_calls": 62, "independent_rows": 67716, "maximum_absolute_errors": {"audio": 3.7242897099609706e-09, "phase": 2.077227279073668e-13, "position": 1.4224732503009818e-16, "readiness": 7.671641100159832e-14}, "scenario_rate_traces": 9}
+</system-out>
+	</testcase>
+	<testcase name="python_test_continuation_ledger" classname="python_test_continuation_ledger" time="0.432295" status="run">
+		<properties/>
+		<system-out>.............
+----------------------------------------------------------------------
+Ran 13 tests in 0.276s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_demo_bundle" classname="python_test_demo_bundle" time="1.00237" status="run">
+		<properties/>
+		<system-out>........
+----------------------------------------------------------------------
+Ran 8 tests in 0.751s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_factory_reference" classname="python_test_factory_reference" time="0.827807" status="run">
+		<properties/>
+		<system-out>......................
+----------------------------------------------------------------------
+Ran 22 tests in 0.640s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_fixed_registration_source_admission" classname="python_test_fixed_registration_source_admission" time="0.827295" status="run">
+		<properties/>
+		<system-out>test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) ... ok
+Fixed admission-source subprocesses: 8
+
+----------------------------------------------------------------------
+Ran 1 test in 0.645s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_fixture_catalog" classname="python_test_fixture_catalog" time="2.84479" status="run">
+		<properties/>
+		<system-out>test_catalog_paths_hashes_profile_and_score_bounds (__main__.FixtureCatalogTests.test_catalog_paths_hashes_profile_and_score_bounds) ... ok
+test_render_every_catalog_fixture_and_its_audio_expectations (__main__.FixtureCatalogTests.test_render_every_catalog_fixture_and_its_audio_expectations) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.646s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_install" classname="python_test_install" time="8.57212" status="run">
+		<properties/>
+		<system-out>..
+----------------------------------------------------------------------
+Ran 2 tests in 8.396s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_model_info" classname="python_test_model_info" time="0.220876" status="run">
+		<properties/>
+		<system-out>..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.068s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_native_bundle_inventory" classname="python_test_native_bundle_inventory" time="0.629491" status="run">
+		<properties/>
+		<system-out>test_actual_cli_unicode_paths_and_preserved_failure_destination (__main__.NativeBundleInventoryTests.test_actual_cli_unicode_paths_and_preserved_failure_destination) ... ok
+test_bad_module_headers_and_platform_mismatches_reject (__main__.NativeBundleInventoryTests.test_bad_module_headers_and_platform_mismatches_reject) ... ok
+test_bundle_changes_during_header_inspection_still_reject (__main__.NativeBundleInventoryTests.test_bundle_changes_during_header_inspection_still_reject) ... ok
+test_case_collisions_are_not_silently_normalized (__main__.NativeBundleInventoryTests.test_case_collisions_are_not_silently_normalized) ... ok
+test_copy_preserves_inventory_and_native_permission_facts (__main__.NativeBundleInventoryTests.test_copy_preserves_inventory_and_native_permission_facts) ... ok
+test_descriptor_identity_and_in_stream_metadata_changes_still_reject (__main__.NativeBundleInventoryTests.test_descriptor_identity_and_in_stream_metadata_changes_still_reject) ... ok
+test_descriptor_metadata_does_not_have_to_match_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_parameter_bridge" classname="python_test_parameter_bridge" time="1.1575" status="run">
+		<properties/>
+		<system-out>.............
+----------------------------------------------------------------------
+Ran 13 tests in 0.905s
+
+OK
+parameter bridge: 150 actual diagnostic CLI calls
+</system-out>
+	</testcase>
+	<testcase name="python_test_parameters" classname="python_test_parameters" time="1.46583" status="run">
+		<properties/>
+		<system-out>................................
+----------------------------------------------------------------------
+Ran 32 tests in 1.343s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_partial_key_render" classname="python_test_partial_key_render" time="0.76544" status="run">
+		<properties/>
+		<system-out>.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.518s
+
+OK
+partial-key CLI: 19 actual renderer calls; 2 verified schema3 bundles; max independent amplitude error=7.02819526653e-07
+</system-out>
+	</testcase>
+	<testcase name="python_test_pedal_catalog" classname="python_test_pedal_catalog" time="4.95378" status="run">
+		<properties/>
+		<system-out>test_actual_pcm_partition_silence_and_audibility (__main__.PedalCatalogTests.test_actual_pcm_partition_silence_and_audibility) ... ok
+test_catalog_rejects_changed_identities_bounds_and_grammar (__main__.PedalCatalogTests.test_catalog_rejects_changed_identities_bounds_and_grammar) ... ok
+test_independent_components_and_shared_phase (__main__.PedalCatalogTests.test_independent_components_and_shared_phase) ... ok
+test_initially_muted_hold_matches_unmuted_source_suffix (__main__.PedalCatalogTests.test_initially_muted_hold_matches_unmuted_source_suffix) ... ok
+test_oracle_rejects_deduplicated_and_altered_mixture_models (__main__.PedalCatalogTests.test_oracle_rejects_deduplicated_and_altered_mixture_models) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.676s
+
+OK
+{"component_amplitudes": 155, "full_residual_frames": 184800, "independent_fit_windows": 19, "maximum_component_peak_error": 1.4432453011507633e-06, "maximum_phase_vector_error": 0.0008450474547653242, "maxim...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_pedal_demo" classname="python_test_pedal_demo" time="2.81846" status="run">
+		<properties/>
+		<system-out>test_current_complete_wav_is_partition_identical (__main__.CurrentPedalDemoReplayTests.test_current_complete_wav_is_partition_identical) ... ok
+test_each_current_division_is_audible_and_stops_at_its_panic (__main__.CurrentPedalDemoReplayTests.test_each_current_division_is_audible_and_stops_at_its_panic) ... ok
+test_independent_division_scores_reconstruct_combined_pcm (__main__.CurrentPedalDemoReplayTests.test_independent_division_scores_reconstruct_combined_pcm) ... ok
+test_all_seven_analysis_windows_against_integer_pcm (__main__.RetainedPedalDemoTests.test_all_seven_analysis_windows_against_integer_pcm) ... ok
+test_exact_historical_bundle_and_scope (__main__.RetainedPedalDemoTests.test_exact_historical_bundle_and_scope) ... ok
+test_independent_pcm_statistics_and_audible_timeline (__main__.RetainedPedalDemoTests.test_independent_pcm_statistics_and_audible_timeline) ... ok
+test_literal_score_catalog_and_nominal_inputs (__main__.RetainedPedalDemoTests.test_literal_score_catalog_and_nominal_inputs) ... ok
+test_r...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_pedal_map" classname="python_test_pedal_map" time="0.574627" status="run">
+		<properties/>
+		<system-out>...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.422s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_pedal_render_cli" classname="python_test_pedal_render_cli" time="2.8152" status="run">
+		<properties/>
+		<system-out>...................
+----------------------------------------------------------------------
+Ran 19 tests in 2.659s
+
+OK
+pedal renderer: 364 actual CLI invocations; no skipped cases
+</system-out>
+	</testcase>
+	<testcase name="python_test_pedal_render_evidence" classname="python_test_pedal_render_evidence" time="1.90419" status="run">
+		<properties/>
+		<system-out>.................
+----------------------------------------------------------------------
+Ran 17 tests in 1.706s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_pedal_session" classname="python_test_pedal_session" time="0.941699" status="run">
+		<properties/>
+		<system-out>........................
+----------------------------------------------------------------------
+Ran 24 tests in 0.708s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_pedal_trace" classname="python_test_pedal_trace" time="7.0709" status="run">
+		<properties/>
+		<system-out>test_all_five_null_contacts_and_all_pedal_targets_remain_visible (__main__.PedalTraceTests.test_all_five_null_contacts_and_all_pedal_targets_remain_visible) ... ok
+test_all_scenarios_rates_against_independent_source_csv_and_voice_oracles (__main__.PedalTraceTests.test_all_scenarios_rates_against_independent_source_csv_and_voice_oracles) ... ok
+test_deterministic_bytes_and_unsigned_leading_zero_arguments (__main__.PedalTraceTests.test_deterministic_bytes_and_unsigned_leading_zero_arguments) ... ok
+test_exact_metadata_and_source_identities (__main__.PedalTraceTests.test_exact_metadata_and_source_identities) ... ok
+test_existing_destinations_and_input_are_preserved (__main__.PedalTraceTests.test_existing_destinations_and_input_are_preserved) ... ok
+test_help_is_separate_and_reports_fixed_evidence_limits (__main__.PedalTraceTests.test_help_is_separate_and_reports_fixed_evidence_limits) ... ok
+test_max_seed_and_custom_profile_values_are_consumed (__main__.PedalTraceTests.test_max_seed_and_custom_profile_values_are...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_plot_console_trace" classname="python_test_plot_console_trace" time="8.61957" status="run">
+		<properties/>
+		<system-out>...........
+----------------------------------------------------------------------
+Ran 11 tests in 8.399s
+
+OK
+console plot: 10 actual CLI calls; baseline SVG 100860 bytes
+</system-out>
+	</testcase>
+	<testcase name="python_test_plot_pedal_trace" classname="python_test_plot_pedal_trace" time="18.0241" status="run">
+		<properties/>
+		<system-out>................
+----------------------------------------------------------------------
+Ran 16 tests in 17.808s
+
+OK
+{"actual_pedal_trace_calls": 9, "actual_plots": [{"csv_sha256": "eae2eff6f43bc5c9b3cad198a994805d0d91da2c88d508f8981614abeb4fc44d", "rate": 44100, "rows": 5292, "scenario": "unmute", "svg_bytes": 202547}, {"csv_sha256": "47890dac0847125ffeae159e4ec8dc1326e6277baec0a1e76484340db2d8faa1", "rate": 48000, "rows": 5760, "scenario": "unmute", "svg_bytes": 202662}, {"csv_sha256": "64609cb2f3e3526fd86c81f7938993646899b9299e384c1011c252981769de3f", "rate": 96000, "rows": 11520, "scenario": "unmute", "svg_bytes": 202700}, {"csv_sha256": "92b952bff90a0dcea1fe8774d8dffdcb217d81c0618f067c791c714b2d7a0194", "rate": 44100, "rows": 5292, "scenario": "overlap", "svg_bytes": 202937}, {"csv_sha256": "eb9104804095053877a8195a98d3265184c2ef59df79537b2853011e0f00b2f5", "rate": 48000, "rows": 5760, "scenario": "overlap", "svg_bytes": 203228}, {"csv_sha256": "44777c35eb41efa6e1f59eec33f57eb5991839a3ccc884cf243def01e991...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_preset_parameter_oracle" classname="python_test_preset_parameter_oracle" time="1.17036" status="run">
+		<properties/>
+		<system-out>........
+----------------------------------------------------------------------
+Ran 8 tests in 0.974s
+
+OK
+preset parameter oracle: 688 actual native vectors, 296 atomic conversion rejections, 84 descriptor rejections; 49 actual 47-record CLI calls; four Python modes
+</system-out>
+	</testcase>
+	<testcase name="python_test_render" classname="python_test_render" time="4.20506" status="run">
+		<properties/>
+		<system-out>test_1025_same_frame_and_oversized_score_inputs_reject (__main__.RendererTests.test_1025_same_frame_and_oversized_score_inputs_reject) ... ok
+test_absolute_block_end_and_final_sample_events (__main__.RendererTests.test_absolute_block_end_and_final_sample_events) ... ok
+test_all_eighteen_presets_match_literal_bank_events (__main__.RendererTests.test_all_eighteen_presets_match_literal_bank_events) ... ok
+test_cli_defaults_match_explicit_default_gesture (__main__.RendererTests.test_cli_defaults_match_explicit_default_gesture) ... ok
+test_clipping_metrics_and_fail_on_clip_remove_all_output (__main__.RendererTests.test_clipping_metrics_and_fail_on_clip_remove_all_output) ... ok
+test_console_defaults_and_all_explicit_flags_preserve_default_audio (__main__.RendererTests.test_console_defaults_and_all_explicit_flags_preserve_default_audio) ... ok
+test_console_dense_scores_are_identical_across_rates_and_block_partitions (__main__.RendererTests.test_console_dense_scores_are_identical_across_rates_and_block_partitions) ....
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_render_fixture" classname="python_test_render_fixture" time="9.54596" status="run">
+		<properties/>
+		<system-out>test_git_autocrlf_checkout_preserves_catalog_hashes_and_binary_bytes (__main__.FileIntegrityTests.test_git_autocrlf_checkout_preserves_catalog_hashes_and_binary_bytes) ... ok
+test_posix_requires_matching_open_file_identity (__main__.FileIntegrityTests.test_posix_requires_matching_open_file_identity) ... ok
+test_regular_nonsymlink_type_and_size_checks_remain_enforced (__main__.FileIntegrityTests.test_regular_nonsymlink_type_and_size_checks_remain_enforced) ... ok
+test_within_api_changes_are_rejected_by_hash_and_wav_readers (__main__.FileIntegrityTests.test_within_api_changes_are_rejected_by_hash_and_wav_readers) ... ok
+test_all_console_combinations_bind_flags_models_and_audible_controls (__main__.RenderFixtureTests.test_all_console_combinations_bind_flags_models_and_audible_controls) ... ok
+test_bounded_subprocess_time_and_log_capture (__main__.RenderFixtureTests.test_bounded_subprocess_time_and_log_capture) ... ok
+test_cli_rejects_bad_duplicate_and_conflicting_options_without_directory (__main__.RenderFixture...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_repository_integrity" classname="python_test_repository_integrity" time="4.00967" status="run">
+		<properties/>
+		<system-out>.........................................
+----------------------------------------------------------------------
+Ran 41 tests in 3.698s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_rotary_profile" classname="python_test_rotary_profile" time="2.64944" status="run">
+		<properties/>
+		<system-out>.................................
+----------------------------------------------------------------------
+Ran 33 tests in 2.329s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_rotary_reference" classname="python_test_rotary_reference" time="4.22925" status="run">
+		<properties/>
+		<system-out>.................................
+----------------------------------------------------------------------
+Ran 33 tests in 3.925s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_scanner_ac_reference" classname="python_test_scanner_ac_reference" time="4.1696" status="run">
+		<properties/>
+		<system-out>................
+----------------------------------------------------------------------
+Ran 16 tests in 3.898s
+
+OK
+independent ladder: 10716 tap comparisons, maximum error 5.6647284161045834e-14
+</system-out>
+	</testcase>
+	<testcase name="python_test_scanner_line_profile" classname="python_test_scanner_line_profile" time="5.90772" status="run">
+		<properties/>
+		<system-out>...................
+----------------------------------------------------------------------
+Ran 19 tests in 5.720s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_scanner_native_ac" classname="python_test_scanner_native_ac" time="3.04161" status="run">
+		<properties/>
+		<system-out>.............
+----------------------------------------------------------------------
+Ran 13 tests in 2.836s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_scanner_transient_reference" classname="python_test_scanner_transient_reference" time="3.90799" status="run">
+		<properties/>
+		<system-out>.....................
+----------------------------------------------------------------------
+Ran 21 tests in 3.605s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_sdl2_dependency" classname="python_test_sdl2_dependency" time="1.94989" status="run">
+		<properties/>
+		<system-out>test_assume_unchanged_and_skip_worktree_cannot_hide_tampering (__main__.SdlFixtureTests.test_assume_unchanged_and_skip_worktree_cannot_hide_tampering) ... ok
+test_cmake_helper_uses_repository_verifier_and_rejects_unreviewed_sources (__main__.SdlFixtureTests.test_cmake_helper_uses_repository_verifier_and_rejects_unreviewed_sources) ... ok
+test_committed_license_size_and_same_size_digest_tamper_reject (__main__.SdlFixtureTests.test_committed_license_size_and_same_size_digest_tamper_reject) ... ok
+test_committed_missing_required_sources_are_rejected (__main__.SdlFixtureTests.test_committed_missing_required_sources_are_rejected) ... ok
+test_committed_source_and_license_symlinks_are_rejected (__main__.SdlFixtureTests.test_committed_source_and_license_symlinks_are_rejected) ... ok
+test_destination_created_after_preflight_is_not_reused (__main__.SdlFixtureTests.test_destination_created_after_preflight_is_not_reused) ... ok
+test_existing_destinations_including_broken_symlinks_are_preserved (__main__.SdlFixtureTests.t...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_standalone_session_records" classname="python_test_standalone_session_records" time="1.1688" status="run">
+		<properties/>
+		<system-out>................
+----------------------------------------------------------------------
+Ran 16 tests in 0.967s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="python_test_verify_render" classname="python_test_verify_render" time="3.92106" status="run">
+		<properties/>
+		<system-out>test_actual_stdout_must_equal_manifest_and_be_strict_bounded_json (__main__.VerifyRenderTests.test_actual_stdout_must_equal_manifest_and_be_strict_bounded_json) ... ok
+test_all_console_parameter_combinations_verify_actual_renders (__main__.VerifyRenderTests.test_all_console_parameter_combinations_verify_actual_renders) ... ok
+test_all_eighteen_presets_verify_and_match_literal_bank_evidence (__main__.VerifyRenderTests.test_all_eighteen_presets_verify_and_match_literal_bank_evidence) ... ok
+test_argv_exact_parameters_flags_and_copied_paths_are_checked (__main__.VerifyRenderTests.test_argv_exact_parameters_flags_and_copied_paths_are_checked) ... ok
+test_capture_failure_flags_and_return_code_cannot_claim_success (__main__.VerifyRenderTests.test_capture_failure_flags_and_return_code_cannot_claim_success) ... ok
+test_changed_external_renderer_is_rejected (__main__.VerifyRenderTests.test_changed_external_renderer_is_rejected) ... ok
+test_changed_file_after_its_read_is_rejected (__main__.VerifyRenderTests.test_change...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="python_test_vst3_build_tools" classname="python_test_vst3_build_tools" time="4.07716" status="run">
+		<properties/>
+		<system-out>test_actual_compiled_profile_roundtrips_exact_bytes (__main__.LockAndEmbeddingTests.test_actual_compiled_profile_roundtrips_exact_bytes) ... ok
+test_default_configure_never_executes_an_unverified_sdk (__main__.LockAndEmbeddingTests.test_default_configure_never_executes_an_unverified_sdk) ... ok
+test_generated_header_is_deterministic_and_unchanged_output_is_not_rewritten (__main__.LockAndEmbeddingTests.test_generated_header_is_deterministic_and_unchanged_output_is_not_rewritten) ... ok
+test_invalid_embedding_preserves_destination_and_rejects_alias (__main__.LockAndEmbeddingTests.test_invalid_embedding_preserves_destination_and_rejects_alias) ... ok
+test_reviewed_lock_and_malformed_fields (__main__.LockAndEmbeddingTests.test_reviewed_lock_and_malformed_fields) ... ok
+test_cmake_boundary_rejects_missing_and_modified_checkout (__main__.SdkFixtureTests.test_cmake_boundary_rejects_missing_and_modified_checkout) ... ok
+test_existing_acquisition_destination_is_untouched (__main__.SdkFixtureTests.test_existing_acquisi...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_install" classname="test_standalone_install" time="9.74691" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>........
+----------------------------------------------------------------------
+Ran 8 tests in 9.618s
+
+OK
+{"binary_sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2", "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6", "midi_backend": "ALSA", "midi_enabled": true, "payload_files": 19, "relocated_smoke": {"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 57, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 29184, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"exp...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_concurrency" classname="test_standalone_concurrency" time="0.187176" status="run">
+		<properties/>
+		<system-out>Session concurrency cleanup: exception-unwind stop observed, worker joined
+Session concurrency: 8192 ordered posts, 924 free callbacks, 8136 posts observed the callback activity flag; 64 recovery epochs, 256 recovery callbacks, 15072 accepted = 3648 applied + 32 rejected + 11392 discarded; 64 immediate rejects, 32 overflows, 3008 recovery-pending posts; 256 exhausted reads preserved
+Controlled recovery boundaries: 4 epochs, 96 pre-render posts pending, 96 pre-render admitted posts discarded, 192 post-render posts accepted after ack
+Concurrent recovery schedules: 60 epochs, 2880 posts pending, 2880 admitted posts discarded, 0 posts accepted after ack
+Active overflow: 16 rounds, 48 callbacks, 1 controlled after-callback overflow deferred, 14 QueueFull calls observed the activity flag, 14 flagged recoveries deferred past that callback; 4176 accepted = 80 applied + 4096 discarded
+free reader 0: 8661 coherent, 1591 busy preserved, 799 distinct revisions, 10040 activity-flag attempts, 4 -&gt; 1852 exact publication ch...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_external_control" classname="test_standalone_external_control" time="0.00781835" status="run">
+		<properties/>
+		<system-out>External controls preserve shared pending UI intent
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_inspection_acceptance" classname="test_standalone_inspection_acceptance" time="0.00814212" status="run">
+		<properties/>
+		<system-out>Inspection independent acceptance passed: 34 source-qualified rows, actual Session commands, four selections per manual, real failed reads, owned immutable copies and finite admission.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_inspection_author" classname="test_standalone_inspection_author" time="0.00494617" status="run">
+		<properties/>
+		<system-out>Inspection author checks passed: bounded copied facts, truthful models and observations.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_concurrency" classname="test_standalone_midi_concurrency" time="0.316394" status="run">
+		<properties>
+			<property name="cmake_labels" value="concurrency;standalone"/>
+		</properties>
+		<system-out>Standalone MIDI concurrency: 262436 FIFO transfers across 4 epochs; 8 joined fault races; explicit capacity overflow passed.
+Observed 281887 pushes, 664337 pops, 279113 decodes, 1026 fault signals: zero C++ allocations/deallocations in every measured operation.
+Calibration separately observed all 12 C++ allocation and deallocation overload paths on the main thread and each worker; no physical/backend/timing qualification implied.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_discovery" classname="test_standalone_midi_discovery" time="0.00956632" status="run">
+		<properties/>
+		<system-out>MIDI discovery: blocked probe permits 4096 owner polls; exact results, failures, exceptions, single-worker admission, 32 generations and joined cleanup passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_input" classname="test_standalone_midi_input" time="0.0032689" status="run">
+		<properties/>
+		<system-out>Standalone MIDI inbox/decoder acceptance: 10 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_replay" classname="test_standalone_midi_replay" time="0.0322651" status="run">
+		<properties/>
+		<system-out>Standalone MIDI replay acceptance: 8 scenarios passed; 18 parsed, 237 parse rejections, 3 loaded, 13 load rejections, 0 capability skips
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_session" classname="test_standalone_midi_session" time="0.0674016" status="run">
+		<properties/>
+		<system-out>MIDI/Session/UI acceptance: 26 scenarios, 197 decoded packets, 308 commands, 343 callbacks, 17466 finite stereo samples, 8433 physical-reference sample comparisons, 5622 timestamp/velocity/partition sample comparisons
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_concurrency" classname="test_standalone_preset_concurrency" time="0.0429203" status="run">
+		<properties/>
+		<system-out>preset Session concurrency: rates=3 controlled_pending=192 restored_snapshots=3264 callbacks=273 observer_reads=16327 busy_reads=91 copied_state4_saves=18 hidden_fixed_observations=175 hidden_none_observations=19 queue_recoveries=6 discarded_restores=1536 rejected_calls=24 exact_priming_stereo_samples=768 exact_future_stereo_samples=1524 audible_stereo_samples=2292
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_ui" classname="test_standalone_preset_ui" time="0.611978" status="run">
+		<properties/>
+		<system-out>Independent preset UI acceptance: 12 layouts, 549388 independently classified hit points, 288 route transitions, 48 keyboard activations, 144 focus-only moves, 753 invalid identities, 288 exact single-command pointer acknowledgments; passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_projection" classname="test_standalone_projection" time="0.265238" status="run">
+		<properties/>
+		<system-out>projection matrix: 288 layouts, 42336 playing-key records, 6912 preset records
+independent projection, silhouette, half-open ownership and rollback acceptance passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_session" classname="test_standalone_session" time="0.347374" status="run">
+		<properties/>
+		<system-out>standalone Session acceptance: 9 rate/partition scores, 4929 successful renders, 157552 bit-exact stereo samples, 6432 partition samples, 15860 coherent snapshots, 5563 accepted posts, 534 rejected posts, 20 rejected renders, 70 future-output probes, 1600 fixed-mode publications
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_state_files" classname="test_standalone_state_files" time="0.00813588" status="run">
+		<properties/>
+		<system-out>TESTED: regular and dangling symbolic-link load/save rejection
+TESTED: failed write under RLIMIT_FSIZE and temporary cleanup
+NOT TESTED: POSIX failed replacement after a complete temporary write; no deterministic non-racing fixture
+Standalone state-file acceptance: 7 scenarios completed; platform exclusions are reported above
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_ui" classname="test_standalone_ui" time="0.0520113" status="run">
+		<properties/>
+		<system-out>Standalone UI acceptance: 9 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_acceptance" classname="test_standalone_workspace_acceptance" time="0.0543064" status="run">
+		<properties/>
+		<system-out>Workspace acceptance: 42 layout/mode/view cases, 5740 hidden semantic/pointer rejections, 56 focus-memory returns, 2041 atomic invalid operations, 14 real-Session ownership runs, 63 closed parameter gestures, 120 shortcut suppression cases passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_continuity" classname="test_standalone_workspace_continuity" time="5.18176" status="run">
+		<properties/>
+		<system-out>case kind=registration variant=0 rate=44100 seed=11740672 frames=8874 commands=20 peak=0.15445317327976227 energy=12.388344111279981 isolated_energy=0 pcm_fnv1a64=6be70c82e36cb701
+case kind=registration variant=1 rate=44100 seed=11740673 frames=8874 commands=20 peak=0.14571726322174072 energy=14.819911340016612 isolated_energy=0 pcm_fnv1a64=465b8523baa45379
+case kind=registration variant=2 rate=44100 seed=11740674 frames=8874 commands=20 peak=0.15826630592346191 energy=14.456555723508712 isolated_energy=0 pcm_fnv1a64=989e678ea6097ae9
+case kind=registration variant=3 rate=44100 seed=11740675 frames=8874 commands=20 peak=0.17036087810993195 energy=12.723127669830598 isolated_energy=0 pcm_fnv1a64=470d5f7b4ac7b6c9
+case kind=registration variant=4 rate=44100 seed=11740676 frames=8874 commands=20 peak=0.1711624413728714 energy=15.243782869395975 isolated_energy=0 pcm_fnv1a64=4a2eb24f02c07619
+case kind=registration variant=5 rate=44100 seed=11740677 frames=8874 commands=20 peak=0.11457514762878418 energy=8.365804732...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspaces_author" classname="test_standalone_workspaces_author" time="0.00688997" status="run">
+		<properties/>
+		<system-out>Workspace author checks: 6 behavioral scenarios passed
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_backend" classname="test_standalone_midi_backend" time="0.0113635" status="run">
+		<properties>
+			<property name="cmake_labels" value="backend;standalone"/>
+		</properties>
+		<system-out>PASS ordinary: metadata without native construction
+PASS ordinary: exact enumeration and caps
+PASS ordinary: enumeration faults and refused fallback
+PASS ordinary: argument rejection preserves epoch
+PASS ordinary: exact selection and successful generations
+PASS ordinary: open caps and refused fallback
+PASS ordinary: topology changes around activation
+PASS ordinary: actual callback bytes, storage lifetime and sizes
+PASS ordinary: actual callback queue overflow
+PASS ordinary: backend error callback admission
+PASS ordinary: open errors that return normally
+PASS ordinary: partial activation and stale-prefix retirement
+PASS ordinary: bounded worker callback during native close
+PASS ordinary: poll scope and no automatic reconnect
+PASS ordinary: ordinary destruction exactly once
+PASS 15 backend groups on ALSA; actual MidiDevice.cpp with fake RtMidi API; no native driver claim
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_backend_quarantine" classname="test_standalone_midi_backend_quarantine" time="0.00580254" status="run">
+		<properties>
+			<property name="cmake_labels" value="backend;intentional-quarantine;standalone"/>
+		</properties>
+		<system-out>PASS quarantine: six failure paths retain context/inbox and refuse reopen
+PASS 1 backend groups on ALSA; actual MidiDevice.cpp with fake RtMidi API; no native driver claim
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_benchmark" classname="test_standalone_benchmark" time="3.29616" status="run">
+		<properties>
+			<property name="cmake_labels" value="benchmark;standalone"/>
+		</properties>
+		<system-out>.........
+----------------------------------------------------------------------
+Ran 9 tests in 3.138s
+
+OK
+standalone benchmark CLI calls: 111; no elapsed-time correctness threshold applied
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_drawing" classname="test_standalone_drawing" time="0.1586" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>SDL 2.32.10, renderer=software, no window/audio
+144 individual glyph cases, 18 normal-size labels, 12 width/multiline/space cases; 298 full-target surface checks (18309120 pixels); failures=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_quad_drawing" classname="test_standalone_quad_drawing" time="0.00501167" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;standalone"/>
+		</properties>
+		<system-out>SDL 2.32.10, renderer=software, no window/audio; 17 full-target coverage checks; failures=0
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_raster" classname="test_standalone_workspace_raster" time="9.57255" status="run">
+		<properties>
+			<property name="cmake_labels" value="geometry;native;standalone;workspace"/>
+		</properties>
+		<system-out>Native workspace raster: 150 frames; 108 held, 108 held+focus, 108 front/Flat, 54 two-natural occlusion, 12 sloped-corner, 12 hidden-body checks; failures=0; 9.56647 seconds; minimum top/front mean contrast=53.1049 natural / 20.0227 accidental; actual paint_instrument, independent half-plane oracle, SDL software surface, no window/audio
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_scaled_view" classname="test_standalone_scaled_view" time="20.4773" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone;workspace"/>
+		</properties>
+		<system-out>SERVICE|960x700|generator.model|10.5|1|284.667|193.5|204|145.5|ideal-shared-sine-v1
+SERVICE|960x700|generator.sources|10.5|1|284.667|221.125|231.625|117.875|91 sources
+SERVICE|960x700|generator.tone46_hz|10.5|1|284.667|248.75|259.25|90.25|442.125 Hz
+SERVICE|960x700|generator.output_gain|10.5|1|284.667|276.375|286.875|62.625|0.0123456 normalized amplitude
+SERVICE|960x700|contacts.model|10.5|1|284.667|193.5|204|145.5|ideal-contacts-v1
+SERVICE|960x700|contacts.upper_held|10.5|1|284.667|221.125|231.625|117.875|2 targets
+SERVICE|960x700|contacts.lower_held|10.5|1|284.667|248.75|259.25|90.25|1 targets
+SERVICE|960x700|contacts.pedals_held|10.5|1|284.667|276.375|286.875|62.625|1 targets
+SERVICE|960x700|contacts.inventory|10.5|1|284.667|304|314.5|35|61 + 61 manual keys / 25 pedals
+SERVICE|960x700|contacts.pedal_model|10.5|1|284.667|331.625|342.125|7.375|nominal-static-pedal-mixture-v1
+SERVICE|960x700|scanner.audio|10.5|1|284.667|193.5|204|145.5|Not connected
+SERVICE|960x700|scanner.research_model|10.5|1|284.667|221.12...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_preset_raster" classname="test_standalone_preset_raster" time="17.3346" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native preset raster: 192 preserved label/focus cases, 160 full-size accidental glyph cases, 752 other-manual/accidental isolation cases, 96 applied/pending/Cancel/rejection checks; failures=0; SDL software surface, no window/audio
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_audio_device" classname="test_standalone_audio_device" time="2.94073" status="run">
+		<properties/>
+		<system-out>SDL 2.32.10, driver=dummy, 1 copied output name(s)
+dummy obtained 44100 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 44100 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+dummy obtained 44100 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+dummy obtained 44100 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+dummy obtained 44100 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+dummy obtained 48000 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 48000 Hz / 256 frames / F32 stereo: 5 callbacks, 1280 rendered frames
+dummy obtained 48000 Hz / 512 frames / F32 stereo: 5 callbacks, 2560 rendered frames
+dummy obtained 48000 Hz / 1024 frames / F32 stereo: 5 callbacks, 5120 rendered frames
+dummy obtained 48000 Hz / 2048 frames / F32 stereo: 5 callbacks, 10240 rendered frames
+dummy obtained 96000 Hz / 128 frames / F32 stereo: 5 callbacks, 640 rendered frames
+dummy obtained 96000 Hz / 256 frame...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_device_removal" classname="test_standalone_device_removal" time="0.229883" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>PASS: 3 actual SDL lifecycle cycles; 93 queued events; 78 ignored events; 10 matching pure queries; 3 matched joined closes; 10 rejected opens; 2 observed ID reuses; 12 callbacks; 3584 rendered frames.
+Scope: explicit dummy backend and software event injection; no physical disconnect or application-handler execution.
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_callback_allocation" classname="test_standalone_callback_allocation" time="1.0165" status="run">
+		<properties/>
+		<system-out>128 frames / cold controls/manuals/pedals/percussion: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / full 256-command prefix: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / manual and pedal note-off: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / scoped UI release: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / global Panic: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / active owners before recovery: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / pending-release queue overflow: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+128 frames / authoritative command rejection: 2 observed callbacks, C++ new=0/delete=0, 4 positive callback-thread calibrations
+2048 frames / cold controls/manuals/pedals...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_app" classname="test_standalone_app" time="15.7225" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native executable SHA-256: bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2
+test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+ok
+test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+test_invalid_workspaces_reject_before_device_or_output (__main__....
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_cli" classname="test_standalone_midi_cli" time="11.2747" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>MIDI CLI/modal executable SHA-256: bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2
+test_cli_distinct_channels_and_all_boundary_positions (__main__.NativeMidiAcceptance.test_cli_distinct_channels_and_all_boundary_positions) ... ok
+test_cli_exact_port_argument_bytes_and_no_name_coercion (__main__.NativeMidiAcceptance.test_cli_exact_port_argument_bytes_and_no_name_coercion) ... ok
+test_cli_list_midi_precedes_sdl_initialization (__main__.NativeMidiAcceptance.test_cli_list_midi_precedes_sdl_initialization) ... ok
+test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name (__main__.NativeMidiAcceptance.test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name) ... ok
+test_cli_numeric_channels_are_strict_and_bounded (__main__.NativeMidiAcceptance.test_cli_numeric_channels_are_strict_and_bounded) ... ok
+test_cli_repeated_options_and_conflicting_lists (__main__.NativeMidiAcceptance.test_cli_repeated_options_and_conflicting_lists) ... ok
+test_cli_startup_defaults_to_no_input_with_custom_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_native_midi_replay" classname="test_standalone_native_midi_replay" time="30.4714" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>Native MIDI replay executable SHA-256: bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2
+test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect) ... ok
+test_cc11_and_bank_b_edits_share_pending_ui_controls (__main__.NativeMidiReplayAcceptance.test_cc11_and_bank_b_edits_share_pending_ui_controls) ... ok
+test_cc123_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui) ... ok
+test_division_channel_range_routing_and_ignored_packets (__main__.NativeMidiReplayAcceptance.test_division_channel_range_routing_and_ignored_packets) ... ok
+test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner (__main__.NativeMidiReplayAcceptance.test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner) ... ok
+test_focus_resize_help_and_midi_apply_preserve_external_owners (__main__.Nati...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workflows" classname="test_standalone_workflows" time="65.0086" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Workflow executable SHA-256: bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2
+test_all_twenty_four_presets_at_minimum_size_preserve_owners (__main__.NativeWorkflowAcceptance.test_all_twenty_four_presets_at_minimum_size_preserve_owners) ... ok
+test_cancel_retains_held_notes_and_panic_releases_every_ui_part (__main__.NativeWorkflowAcceptance.test_cancel_retains_held_notes_and_panic_releases_every_ui_part) ... ok
+test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes (__main__.NativeWorkflowAcceptance.test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes) ... ok
+test_edit_bank_and_sounding_bank_remain_independent (__main__.NativeWorkflowAcceptance.test_edit_bank_and_sounding_bank_remain_independent) ... ok
+test_empty_replay_has_no_automatic_smoke_note_or_file_write (__main__.NativeWorkflowAcceptance.test_empty_replay_has_no_automatic_smoke_note_or_file_write) ... ok
+test_fixed_cancel_save_live_load_cold_load_and_audio_restart (__main__.NativeWorkflowAcceptance.test_fixed_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workspace_replay" classname="test_standalone_workspace_replay" time="39.9815" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="native;standalone;workspace"/>
+		</properties>
+		<system-out>Native workspace executable SHA-256: bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2
+test_capture_failure_closes_parameter_gesture_before_view_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_capture_failure_closes_parameter_gesture_before_view_and_resize) ... ok
+test_focus_memory_restores_drawbar_save_and_load_after_returns (__main__.NativeWorkspaceReplayAcceptance.test_focus_memory_restores_drawbar_save_and_load_after_returns) ... ok
+test_hidden_play_regions_cannot_edit_redirect_or_audition (__main__.NativeWorkspaceReplayAcceptance.test_hidden_play_regions_cannot_edit_redirect_or_audition) ... ok
+test_pointer_capture_failure_preserves_keyboard_owner_during_navigation (__main__.NativeWorkspaceReplayAcceptance.test_pointer_capture_failure_preserves_keyboard_owner_during_navigation) ... ok
+test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok
+test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... FAIL
+Actual native workspace subprocesses: 15
+
+======================================================================
+FAIL: test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 206, in run_native
+    yield workflow_fixture.WorkflowRun(data, state_path.read_bytes(), elapsed)
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 419, in test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize
+    self.assert_commands(run, on=5, off=5)
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 254, in assert_commands
+    self.assertLess(initial["elapsed_ms"], 180, "A pre-action loaded-state observation is required")
+AssertionError: 191 not less than 180 : A pre-action loaded-state observation is required
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 412, in test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize
+    with self.run_native(3200, events, final_size=(960, 700), midi_events=midi_events) as run:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py", line 210, in run_native
+    raise AssertionError(
+AssertionError: test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize: AssertionError: 191 not less than 180 : A pre-action loaded-state observation is required
+Command: ['/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone', '--state', '/tmp/hammond-native-workspaces-g24xelg8/run-1/private controls.b3controls', '--input-script', '/tmp/hammond-native-workspaces-g24xelg8/run-1/workspace input.b3ui', '--diagnostics', '/tmp/hammond-native-workspaces-g24xelg8/run-1/diagnostics.json', '--width', '1280', '--height', '900', '--midi-script', '/tmp/hammond-native-workspaces-g24xelg8/run-1/MIDI input.b3midi']
+Elapsed: 3.322s
+
+
+UI input:
+B3UIREPLAY1
+duration_ms 3200
+50 key_down Tab shift 0
+60 key_up Tab shift
+80 key_down Tab shift 0
+90 key_up Tab shift
+180 key_down A none 0
+330 key_down Space none 0
+1100 mouse_down 130 66
+1120 mouse_up 130 66
+1300 mouse_down 994 80
+1320 mouse_up 994 80
+1500 mouse_down 208 66
+1520 mouse_up 208 66
+1700 resize 960 700
+1900 key_up Space ctrl+meta
+2100 key_up A alt+shift
+2950 mouse_down 52 66
+2970 mouse_up 52 66
+MIDI input:
+B3MIDIREPLAY1
+duration_ms 3200
+50 connect
+450 bytes 90 3C 64
+650 bytes 91 40 64
+850 bytes 92 3C 64
+2350 bytes 80 3C 00
+2550 bytes 81 40 00
+2750 bytes 82 3C 00
+Copied diagnostics:
+{"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 285, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 145920, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "errors": {"count": 0, "last": ""}, "midi": {"active_after_shutdown": false, "active_before_shutdown": true, "arrival_time_is_sample_time": false, "arrival_time_source": "synthetic_main_thread_receipt", "arrival_time_unit": "steady_clock_nanoseconds", "backend": "ALSA", "backend_available": true, "channels": {"lower": 2, "pedals": 3, "upper": 1}, "decoder": {"actions": 6, "epochs": 1, "inactive": 0, "malformed": 0, "out_of_range": 0, "packets": 6, "timestamp_regressions": 0, "unmapped_channels": 0, "unsupported": 0}, "device": {"admission_failures": 0, "backend_errors": 0, "callback_contentions": 0, "callback_messages": 0, "close_errors": 0, "disconnects": 0, "filtered_messages": 0, "forwarded_messages": 0, "last_arrival_ns": 0}, "diagnostics_stable_after_shutdown": true, "discovery": {"completed": 0, "discarded_results": 0, "failures": 0, "pending_after_shutdown": false, "pending_before_shutdown": false, "requests": 0, "shutdown_join_performed": false, "started": 0}, "drain_budget": 32, "fault_retirements": 0, "generation": 0, "inbox": {"accepted_packets": 6, "capacity": 256, "discarded_packets": 0, "fault_bits": 0, "faulted_packets": 0, "invalid_size_packets": 0, "overflow_events": 0, "pending_packets": 0, "popped_packets": 6, "received_packets": 6, "resets": 1}, "last_submit_status": "ok", "maximum_drained_per_turn": 1, "open_failures": 0, "opened_port_index": 0, "parameter_messages": 0, "port_name": "", "quiescent_after_shutdown": true, "release_batches": 1, "release_commands_accepted": 3, "release_pending": false, "release_sequence": 16, "requested_port": "", "retired_fault_bits": 0, "retirements": 1, "session_recoveries_observed": 0, "shutdown_failed": false, "source": "synthetic-replay", "startup_failed": false, "state_after_shutdown": "closed", "state_before_shutdown": "closed", "status": "MIDI input closed for application shutdown.", "submit_failures": 0, "timing_policy": "arrival_order_next_callback_boundary"}, "midi_replay": {"accepted_note_off_commands": 5, "accepted_note_on_commands": 5, "accepted_packets": 6, "arrival_time_is_sample_time": false, "arrival_time_source": "synthetic_main_thread_steady_clock_receipt", "barrier_wait_turns": 0, "before_shutdown": {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "last_applied_sequence": 13, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 13}, "budget_exhaustions": 0, "cancelled_connects": 0, "completed": true, "connect_barriers": 0, "connect_events": 1, "connected_after_shutdown": false, "connected_before_shutdown": true, "connections_started": 1, "controls_pending_before_shutdown": false, "delivered": true, "delivered_events": 7, "desired_controls_before_shutdown": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "device_starts": 1, "discarded_queued_packets": 0, "disconnect_events": 0, "dropped_packets": 0, "duration_ms": 3200, "event_budget": 512, "failure_count": 0, "faulted_before_shutdown": false, "faults_while_closed": 0, "final_acknowledged": true, "ignored_while_closed": 0, "intentional_backend_faults": 0, "intentional_overflow_faults": 0, "last_arrival_ns": 67203398041061, "last_submitted_sequence": 13, "maximum_events_per_turn": 1, "observation_capacity": 8704, "observations": [{"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 191, "last_applied_sequence": 3, "last_submitted_sequence": 4, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 337, "last_applied_sequence": 4, "last_submitted_sequence": 5, "manual_notes": [[60], []], "pedal_ids": [], "resolved_sequence": 4}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 452, "last_applied_sequence": 5, "last_submitted_sequence": 6, "manual_notes": [[60], [60]], "pedal_ids": [], "resolved_sequence": 5}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 554, "last_applied_sequence": 6, "last_submitted_sequence": 6, "manual_notes": [[60], [60]], "pedal_ids": [], "resolved_sequence": 6}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 656, "last_applied_sequence": 6, "last_submitted_sequence": 7, "manual_notes": [[60], [60]], "pedal_ids": [], "resolved_sequence": 6}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 750, "last_applied_sequence": 7, "last_submitted_sequence": 7, "manual_notes": [[60], [60, 64]], "pedal_ids": [], "resolved_sequence": 7}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 940, "last_applied_sequence": 7, "last_submitted_sequence": 8, "manual_notes": [[60], [60, 64]], "pedal_ids": [], "resolved_sequence": 7}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1033, "last_applied_sequence": 8, "last_submitted_sequence": 8, "manual_notes": [[60], [60, 64]], "pedal_ids": [25], "resolved_sequence": 8}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1915, "last_applied_sequence": 8, "last_submitted_sequence": 9, "manual_notes": [[60], [60, 64]], "pedal_ids": [25], "resolved_sequence": 8}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1940, "last_applied_sequence": 9, "last_submitted_sequence": 9, "manual_notes": [[60], [64]], "pedal_ids": [25], "resolved_sequence": 9}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2108, "last_applied_sequence": 9, "last_submitted_sequence": 10, "manual_notes": [[60], [64]], "pedal_ids": [25], "resolved_sequence": 9}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2134, "last_applied_sequence": 10, "last_submitted_sequence": 10, "manual_notes": [[60], [64]], "pedal_ids": [25], "resolved_sequence": 10}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2354, "last_applied_sequence": 10, "last_submitted_sequence": 11, "manual_notes": [[60], [64]], "pedal_ids": [25], "resolved_sequence": 10}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2374, "last_applied_sequence": 11, "last_submitted_sequence": 11, "manual_notes": [[], [64]], "pedal_ids": [25], "resolved_sequence": 11}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2566, "last_applied_sequence": 11, "last_submitted_sequence": 12, "manual_notes": [[], [64]], "pedal_ids": [25], "resolved_sequence": 11}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2585, "last_applied_sequence": 12, "last_submitted_sequence": 12, "manual_notes": [[], []], "pedal_ids": [25], "resolved_sequence": 12}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2763, "last_applied_sequence": 12, "last_submitted_sequence": 13, "manual_notes": [[], []], "pedal_ids": [25], "resolved_sequence": 12}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2783, "last_applied_sequence": 13, "last_submitted_sequence": 13, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 13}], "observations_truncated": false, "offered_packets": 6, "passed": true, "pending_connect_before_shutdown": false, "pending_packets_before_shutdown": 0, "rejected_packets": 0, "release_pending_before_shutdown": false, "save_pending_before_shutdown": false, "scheduled_events": 7, "scheduled_packets": 6, "session_running_before_shutdown": true, "snapshot_available_before_shutdown": true, "source": "synthetic-replay"}, "presentation": {"before_shutdown": {"elapsed_ms": 3203, "inspection": {"controls_pending": false, "frame_clock": 145408, "publication_revision": 572, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "flat", "rendered_image": 98, "window_height": 700, "window_width": 960, "workspace": "play"}, "initial_presentation": "dimensional", "initial_workspace": "play", "last_painted": {"elapsed_ms": 3203, "inspection": {"controls_pending": false, "frame_clock": 145408, "publication_revision": 572, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "flat", "rendered_image": 98, "window_height": 700, "window_width": 960, "workspace": "play"}, "observation_capacity": 512, "observations": [{"elapsed_ms": 0, "inspection": {"controls_pending": true, "frame_clock": 0, "publication_revision": 4, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "dimensional", "rendered_image": 1, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 191, "inspection": {"controls_pending": false, "frame_clock": 8704, "publication_revision": 38, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "dimensional", "rendered_image": 2, "window_height": 900, "window_width": 1280, "workspace": "play"}, {"elapsed_ms": 1121, "inspection": {"controls_pending": false, "frame_clock": 51200, "publication_revision": 204, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "dimensional", "rendered_image": 11, "window_height": 900, "window_width": 1280, "workspace": "rotary"}, {"elapsed_ms": 1310, "inspection": {"controls_pending": false, "frame_clock": 59904, "publication_revision": 238, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "flat", "rendered_image": 13, "window_height": 900, "window_width": 1280, "workspace": "rotary"}, {"elapsed_ms": 1503, "inspection": {"controls_pending": false, "frame_clock": 68608, "publication_revision": 272, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "flat", "rendered_image": 20, "window_height": 900, "window_width": 1280, "workspace": "service"}, {"elapsed_ms": 1717, "inspection": {"controls_pending": false, "frame_clock": 78336, "publication_revision": 310, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "flat", "rendered_image": 28, "window_height": 700, "window_width": 960, "workspace": "service"}, {"elapsed_ms": 2962, "inspection": {"controls_pending": false, "frame_clock": 134144, "publication_revision": 528, "snapshot_available": true, "snapshot_read_succeeded": true, "snapshot_state": "current"}, "overlay": "none", "presentation": "flat", "rendered_image": 85, "window_height": 700, "window_width": 960, "workspace": "play"}], "observations_truncated": false, "screenshot": null}, "profile": {"authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83", "id": "nominal-unmeasured-v1"}, "replay": {"accepted_note_off_commands": 5, "accepted_note_on_commands": 5, "before_shutdown": {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "last_applied_sequence": 13, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 13}, "completed": true, "controls_pending_before_shutdown": false, "delivered": true, "desired_controls_before_shutdown": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "device_starts": 1, "duration_ms": 3200, "final_acknowledged": true, "last_submitted_sequence": 13, "observation_capacity": 8704, "observations": [{"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 191, "last_applied_sequence": 3, "last_submitted_sequence": 4, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 3}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 337, "last_applied_sequence": 4, "last_submitted_sequence": 5, "manual_notes": [[60], []], "pedal_ids": [], "resolved_sequence": 4}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 452, "last_applied_sequence": 5, "last_submitted_sequence": 6, "manual_notes": [[60], [60]], "pedal_ids": [], "resolved_sequence": 5}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 554, "last_applied_sequence": 6, "last_submitted_sequence": 6, "manual_notes": [[60], [60]], "pedal_ids": [], "resolved_sequence": 6}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 656, "last_applied_sequence": 6, "last_submitted_sequence": 7, "manual_notes": [[60], [60]], "pedal_ids": [], "resolved_sequence": 6}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 750, "last_applied_sequence": 7, "last_submitted_sequence": 7, "manual_notes": [[60], [60, 64]], "pedal_ids": [], "resolved_sequence": 7}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 940, "last_applied_sequence": 7, "last_submitted_sequence": 8, "manual_notes": [[60], [60, 64]], "pedal_ids": [], "resolved_sequence": 7}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1033, "last_applied_sequence": 8, "last_submitted_sequence": 8, "manual_notes": [[60], [60, 64]], "pedal_ids": [25], "resolved_sequence": 8}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1915, "last_applied_sequence": 8, "last_submitted_sequence": 9, "manual_notes": [[60], [60, 64]], "pedal_ids": [25], "resolved_sequence": 8}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 1940, "last_applied_sequence": 9, "last_submitted_sequence": 9, "manual_notes": [[60], [64]], "pedal_ids": [25], "resolved_sequence": 9}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2108, "last_applied_sequence": 9, "last_submitted_sequence": 10, "manual_notes": [[60], [64]], "pedal_ids": [25], "resolved_sequence": 9}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2134, "last_applied_sequence": 10, "last_submitted_sequence": 10, "manual_notes": [[60], [64]], "pedal_ids": [25], "resolved_sequence": 10}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2354, "last_applied_sequence": 10, "last_submitted_sequence": 11, "manual_notes": [[60], [64]], "pedal_ids": [25], "resolved_sequence": 10}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2374, "last_applied_sequence": 11, "last_submitted_sequence": 11, "manual_notes": [[], [64]], "pedal_ids": [25], "resolved_sequence": 11}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2566, "last_applied_sequence": 11, "last_submitted_sequence": 12, "manual_notes": [[], [64]], "pedal_ids": [25], "resolved_sequence": 11}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2585, "last_applied_sequence": 12, "last_submitted_sequence": 12, "manual_notes": [[], []], "pedal_ids": [25], "resolved_sequence": 12}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2763, "last_applied_sequence": 12, "last_submitted_sequence": 13, "manual_notes": [[], []], "pedal_ids": [25], "resolved_sequence": 12}, {"controls": {"expression": 0.375, "fixed_registrations": [6, 8], "manual_drawbars": [[[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]], [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]]], "pedal_drawbars": [2, 7], "percussion": {"decay": 1, "enabled": true, "harmonic": 1, "volume": 1}, "preset_selections": [6, 8], "route_enabled": [true, true], "selected_banks": [0, 1]}, "elapsed_ms": 2783, "last_applied_sequence": 13, "last_submitted_sequence": 13, "manual_notes": [[], []], "pedal_ids": [], "resolved_sequence": 13}], "observations_truncated": false, "passed": true, "pushed_events": 17, "save_pending_before_shutdown": false, "scheduled_events": 17, "session_running_before_shutdown": true, "snapshot_available_before_shutdown": true}, "runtime": {"drawable_height": 700, "drawable_width": 960, "rendered_images": 98, "renderer": "software", "screenshot_while_held": false, "screenshot_written": false, "sdl_version": "2.32.10", "video_driver": "dummy", "window_height": 700, "window_width": 960}, "schema_version": 3, "session": {"discarded_commands": 4, "fault_flags": 0, "frame_clock": 145920, "held_after_shutdown": false, "last_applied_sequence": 13, "maximum_observed_peak": 0.0519539937376976, "prepared": true, "publication_revision": 576, "queue_overflows": 0, "recovery_count": 0, "rejected_commands": 0, "resolved_sequence": 17, "running_after_shutdown": false, "sample_rate": 48000, "snapshot_available": true}, "smoke": {"completed": false, "duration_ms": 0, "held_observed": false, "note_off_sent": false, "note_on_sent": false, "passed": false, "release_observed": false, "requested": false}, "state_path": "/tmp/hammond-native-workspaces-g24xelg8/run-1/private controls.b3controls", "status": "Synthetic replay active. Messages apply at the next audio callback boundary."}
+
+----------------------------------------------------------------------
+Ran 6 tests in 39.643s
+
+FAILED (failures=1)
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_replay_boundaries" classname="test_standalone_replay_boundaries" time="5.9743" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Replay boundary executable SHA-256: bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2
+test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_chapel" classname="test_standalone_chapel" time="21.6131" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native chapel executable SHA-256: bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2
+Native chapel main SHA-256: 3c3ed7e237830e6a11176ca2b6e39e85fa007ac51b8044aee6aca6110fec66d3
+..Native chapel acceptance: 22 exported states, 22 actual SDL application invocations
+
+----------------------------------------------------------------------
+Ran 2 tests in 21.286s
+
+OK
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_input_replay" classname="test_standalone_input_replay" time="0.0191007" status="run">
+		<properties/>
+		<system-out>standalone replay acceptance (SDL dummy): 654 valid parses, 188 atomic parser rejections, 3 regular-file loads, 12 atomic file rejections, 51 forged-plan rejections, 130 checked queue actions, 14 acknowledged markers, 5 expected runtime failures, 4 lifetime cycles
+</system-out>
+	</testcase>
+</testsuite>

@@ -1,0 +1,620 @@
+{
+  "assignment": 54,
+  "checker_sha256": "1af6b63e4fb1d5bc9ded110c50a41dd6cf3046a9c200026941d83104d7679430",
+  "claim": "Fixtures prove specified rejection behavior only; real dispatch and acceptance require root/A59/A60 review.",
+  "fixture_case_count": 51,
+  "fixture_cases": [
+    {
+      "actual_exit": 0,
+      "case": "complete_60",
+      "completion_valid": true,
+      "error_codes": [],
+      "expected_exit": 0,
+      "status": "passed"
+    },
+    {
+      "actual_exit": 0,
+      "case": "complete_60_out_of_dispatch_order",
+      "completion_valid": true,
+      "error_codes": [],
+      "expected_exit": 0,
+      "status": "passed"
+    },
+    {
+      "actual_exit": 0,
+      "case": "partial_actual_records",
+      "completion_valid": false,
+      "error_codes": [],
+      "expected_exit": 0,
+      "status": "incomplete"
+    },
+    {
+      "actual_exit": 1,
+      "case": "partial_default_rejected",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_count",
+        "completion_status"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 0,
+      "case": "empty_in_progress",
+      "completion_valid": false,
+      "error_codes": [],
+      "expected_exit": 0,
+      "status": "incomplete"
+    },
+    {
+      "actual_exit": 1,
+      "case": "duplicate_number",
+      "completion_valid": false,
+      "error_codes": [
+        "agent_mapping",
+        "completion_count",
+        "number_duplicate"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "missing_middle_number",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_count",
+        "completion_status"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "out_of_range_number",
+      "completion_valid": false,
+      "error_codes": [
+        "agent_mapping",
+        "completion_count",
+        "number_type",
+        "wave_mapping"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "extra_future_row",
+      "completion_valid": false,
+      "error_codes": [
+        "assignments_type",
+        "completion_count",
+        "completion_status"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "wrong_wave",
+      "completion_valid": false,
+      "error_codes": [
+        "wave_mapping"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "duplicate_identity",
+      "completion_valid": false,
+      "error_codes": [
+        "agent_duplicate",
+        "agent_mapping"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "empty_identity",
+      "completion_valid": false,
+      "error_codes": [
+        "agent_identity"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "identity_wrong_number",
+      "completion_valid": false,
+      "error_codes": [
+        "agent_mapping"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "running_default_rejected",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_status"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "planned_rejected_in_progress",
+      "completion_valid": false,
+      "error_codes": [
+        "status_invalid"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "future_status_rejected",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_status",
+        "status_invalid"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "completed_is_not_accepted",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_status",
+        "status_invalid"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "status_wrong_type",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_status",
+        "status_invalid"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "scope_empty",
+      "completion_valid": false,
+      "error_codes": [
+        "text_required"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "acceptance_missing",
+      "completion_valid": false,
+      "error_codes": [
+        "row_fields",
+        "text_required"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "acceptance_empty",
+      "completion_valid": false,
+      "error_codes": [
+        "text_required"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "result_missing",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path",
+        "row_fields"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "result_empty",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "duplicate_note",
+      "completion_valid": false,
+      "error_codes": [
+        "note_duplicate"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "missing_note",
+      "completion_valid": false,
+      "error_codes": [
+        "note_read"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "empty_note",
+      "completion_valid": false,
+      "error_codes": [
+        "note_substance"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "heading_only_note",
+      "completion_valid": false,
+      "error_codes": [
+        "note_substance"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "code_only_note",
+      "completion_valid": false,
+      "error_codes": [
+        "note_substance"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "comment_only_note",
+      "completion_valid": false,
+      "error_codes": [
+        "note_substance"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "invalid_utf8_note",
+      "completion_valid": false,
+      "error_codes": [
+        "note_read"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "oversized_note",
+      "completion_valid": false,
+      "error_codes": [
+        "note_read"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "path_parent_escape",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "path_absolute",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "path_windows_drive",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "path_backslash",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "path_empty_component",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "note_symlink",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "parent_symlink",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "manifest_symlink",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_count",
+        "completion_status",
+        "manifest_read"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "note_is_directory",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "note_is_fifo",
+      "completion_valid": false,
+      "error_codes": [
+        "result_path"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "schema_boolean",
+      "completion_valid": false,
+      "error_codes": [
+        "manifest_type"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "number_boolean",
+      "completion_valid": false,
+      "error_codes": [
+        "agent_mapping",
+        "completion_count",
+        "number_type",
+        "wave_mapping"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "number_float",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_count",
+        "completion_status",
+        "manifest_read"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "wrong_session",
+      "completion_valid": false,
+      "error_codes": [
+        "session_identity"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "wrong_base",
+      "completion_valid": false,
+      "error_codes": [
+        "base_identity"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "unexpected_manifest_field",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_count",
+        "completion_status",
+        "manifest_fields"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "unexpected_row_field",
+      "completion_valid": false,
+      "error_codes": [
+        "row_fields"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "row_wrong_type",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_count",
+        "completion_status",
+        "row_type"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "duplicate_json_member",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_count",
+        "completion_status",
+        "manifest_read"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    },
+    {
+      "actual_exit": 1,
+      "case": "nonstandard_json_constant",
+      "completion_valid": false,
+      "error_codes": [
+        "completion_count",
+        "completion_status",
+        "manifest_read"
+      ],
+      "expected_exit": 1,
+      "status": "failed"
+    }
+  ],
+  "fixture_policy": "Constructed manifests and notes were temporary, outside the repository and removed.",
+  "real_manifest_in_progress": {
+    "checked_notes_sha256": "7d1afb3dde0a2aa6f2d257256d2e68b3b5d5fa2338e96c5e4b0dddda18a94b3b",
+    "completion_valid": false,
+    "counts": {
+      "accepted": 52,
+      "distinct_agents": 55,
+      "distinct_numbers": 55,
+      "invalid_status": 0,
+      "malformed_rows": 0,
+      "recorded": 55,
+      "running": 3,
+      "substantive_accepted_notes": 52
+    },
+    "error_count": 0,
+    "errors": [],
+    "exit_code": 0,
+    "manifest": {
+      "bytes": 27470,
+      "path": "docs/development/2026-11-14-interface-continuation/assignments.json",
+      "sha256": "b6d6f24638f704962c313e3313e131d1d81c18d24a8a876ffb38b5332a083c7f"
+    },
+    "missing_numbers": [
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "mode": "in_progress",
+    "record_consistency_valid": true,
+    "status": "incomplete"
+  },
+  "real_manifest_strict": {
+    "checked_notes_sha256": "7d1afb3dde0a2aa6f2d257256d2e68b3b5d5fa2338e96c5e4b0dddda18a94b3b",
+    "completion_valid": false,
+    "counts": {
+      "accepted": 52,
+      "distinct_agents": 55,
+      "distinct_numbers": 55,
+      "invalid_status": 0,
+      "malformed_rows": 0,
+      "recorded": 55,
+      "running": 3,
+      "substantive_accepted_notes": 52
+    },
+    "error_count": 2,
+    "errors": [
+      {
+        "code": "completion_count",
+        "location": "assignments",
+        "message": "strict completion requires exactly one record for every number 1-60"
+      },
+      {
+        "code": "completion_status",
+        "location": "assignments",
+        "message": "strict completion requires 60 accepted records; found 52"
+      }
+    ],
+    "exit_code": 1,
+    "manifest": {
+      "bytes": 27470,
+      "path": "docs/development/2026-11-14-interface-continuation/assignments.json",
+      "sha256": "b6d6f24638f704962c313e3313e131d1d81c18d24a8a876ffb38b5332a083c7f"
+    },
+    "missing_numbers": [
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "mode": "strict_completion",
+    "record_consistency_valid": true,
+    "status": "failed"
+  },
+  "schema_version": 1,
+  "scope": "standalone checker CLI verification; no application/build/CI execution",
+  "status": "passed",
+  "verification_sha256": "3b7192ca8fd542f43ff8427a4ab59f16360a8a30e03a9d6b5fef79aa201c82cb"
+}

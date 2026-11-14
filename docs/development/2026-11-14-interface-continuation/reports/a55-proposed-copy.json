@@ -1,0 +1,82 @@
+{
+  "schema": "interface-final-ux-copy-a55-v1",
+  "agent": "A55",
+  "disposition": "proposed only; A55 did not modify shared documents",
+  "groups": [
+    {
+      "id": "A55-P1",
+      "kind": "current navigation correction",
+      "priority": "medium",
+      "reason": "The current operator guide sends its unqualified gallery link to provisional v1 and still calls that current gallery a source overlay. v2 is the current exact-source gallery.",
+      "replacements": [
+        {
+          "path": "docs/INTERFACE_RUNBOOK.md",
+          "before": "The [actual eight-image preview and reproduction commands](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v1/README.md)\ncover Play at reference/default/minimum sizes, Rotary and Service at\nreference/minimum sizes, and minimum Flat Play. The source\n[capture utility](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/tools/capture_standalone_interface.py)",
+          "after": "The [current eight-image preview and reproduction commands](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v2/README.md)\ncover Play at reference/default/minimum sizes, Rotary and Service at\nreference/minimum sizes, and minimum Flat Play. The\n[provisional v1 gallery](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v1/README.md)\nremains unchanged historical evidence. The source\n[capture utility](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/tools/capture_standalone_interface.py)",
+          "before_count": 1,
+          "file_sha256_at_proposal": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0",
+          "first_line": 235
+        },
+        {
+          "path": "docs/INTERFACE_RUNBOOK.md",
+          "before": "The gallery is an actual source-overlay preview with its own identities; it\ndoes not qualify a later build. Current publication and execution evidence is",
+          "after": "The current gallery records published product source and its exact executable\nidentity; it does not automatically qualify a changed executable. Current\npublication and execution evidence is",
+          "before_count": 1,
+          "file_sha256_at_proposal": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0",
+          "first_line": 265
+        }
+      ]
+    },
+    {
+      "id": "A55-P2",
+      "kind": "copy ambiguity correction",
+      "priority": "low",
+      "reason": "Momentarily can imply hold-to-mute. ControlState::cancel leaves routing disconnected and UiModel key release does not reconnect it. Remove only that adverb.",
+      "replacements": [
+        {
+          "path": "README.md",
+          "before": "C momentarily cancels its route while retaining the fixed choice, bank memory and held notes.",
+          "after": "C cancels its route while retaining the fixed choice, bank memory and held notes.",
+          "before_count": 1,
+          "file_sha256_at_proposal": "86ebe9e862f869d5bce8c3068cb579df8c4806d426f8191d207acc71ff9d73ef",
+          "first_line": 48
+        }
+      ]
+    },
+    {
+      "id": "A55-P3",
+      "kind": "optional operator clarity",
+      "priority": "low",
+      "reason": "Document the visible UNSAVED indicator independently of acknowledgment and file existence, plus the existing truthful Load and Save messages. No behavior change requested.",
+      "replacements": [
+        {
+          "path": "docs/INTERFACE_RUNBOOK.md",
+          "before": "An audio restart preserves acknowledged controls but deliberately\nclears notes and starts a new audio lifecycle.",
+          "after": "An audio restart preserves acknowledged controls but deliberately\nclears notes and starts a new audio lifecycle.\n\n**UNSAVED** in the footer marks controls changed from the current clean reference;\nit is independent of pending acknowledgment. The audition baseline can be clean\nbefore any file exists, so Save explicitly to create one. **Loaded saved\ncontrols.** confirms file loading; pending indicators show whether audio has\napplied the request. A Save success message confirms the write. A cancelled or\ntimed-out Save requires a new Save request.",
+          "before_count": 1,
+          "file_sha256_at_proposal": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0",
+          "first_line": 141
+        }
+      ]
+    },
+    {
+      "id": "A55-P4",
+      "kind": "optional reader-facing caption",
+      "priority": "low",
+      "reason": "The full 98/13 inventory, source tree and executable digest already remain in the linked gallery. Retain exact capture commit and both evidence links while shortening the leading paragraph. The next paragraph retains SDL dummy/software and device/display limitations.",
+      "before_words": 88,
+      "after_words": 60,
+      "replacements": [
+        {
+          "path": "README.md",
+          "before": "This **final v2 gallery contains eight actual native application captures**, made on 14 November 2026 from product source published at `8673713a484c40e26ac7810c7c4cbc22fa874426` (tree `e11bd68d6051f663631579ef235325a8775f8133`). Every one of the 98 observed product inputs matched that commit; the 13 recorded generated/library inputs and the executable stayed unchanged through capture. The executable SHA-256 is `bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2`. The [gallery and reproduction instructions](examples/demos/standalone-interface-preview-v2/README.md) and [final visual/provenance review](docs/reviews/INTERFACE_FINAL_GALLERY.md) retain the A44 build/package basis, exact source-subset limits, native diagnostics, replay inputs and decoded PNG identities. Concurrent workflow, test-budget and documentation edits were outside this rendered product inventory.",
+          "after": "This **final v2 gallery contains eight actual native application captures**, made on 14 November 2026 from published product source `8673713a484c40e26ac7810c7c4cbc22fa874426`. The [gallery and reproduction instructions](examples/demos/standalone-interface-preview-v2/README.md) and [final visual/provenance review](docs/reviews/INTERFACE_FINAL_GALLERY.md) retain the exact source/executable identities, A44 build/package basis, unchanged-input checks, source-subset limits, diagnostics, replay inputs and decoded PNG identities. Concurrent workflow, test-budget and documentation edits are outside that rendered product inventory.",
+          "before_count": 1,
+          "file_sha256_at_proposal": "86ebe9e862f869d5bce8c3068cb579df8c4806d426f8191d207acc71ff9d73ef",
+          "first_line": 15
+        }
+      ]
+    }
+  ],
+  "package_note": "INTERFACE_RUNBOOK.md is installed documentation; root should record any guide-only package metadata refresh separately from unchanged runtime acceptance."
+}

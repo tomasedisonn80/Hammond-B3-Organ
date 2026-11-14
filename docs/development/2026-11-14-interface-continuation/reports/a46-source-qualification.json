@@ -1,0 +1,69 @@
+{
+  "a44_source_committed_tree": "e11bd68d6051f663631579ef235325a8775f8133",
+  "a44_source_head": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+  "all_98_production_files_match_published_commit": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+  "assignment": 46,
+  "binary_bytes": 3707640,
+  "binary_sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+  "build_inventory_sha256": "7188e8d9a7c994e3072bda1cd52d4b200cf26dc16a776d34cc0476d869e70b67",
+  "capture_preflight_git": {
+    "committed_tree": "e11bd68d6051f663631579ef235325a8775f8133",
+    "head": "8673713a484c40e26ac7810c7c4cbc22fa874426"
+  },
+  "production_a44_path_nul_sha_newline_digest": "ddf4f7658cfa9ed49ddac87902788c65531697551faab4dadd1dd57709d9e9ad",
+  "production_size_and_sha_inventory_sha256": "6addb1ff056e07a8dd50d587552814a99fd05921a1512ace39396a232efdfd4c",
+  "production_source_is_uncommitted_overlay": false,
+  "qualification_method": "Matched current files and executable to A44 source, configured target-build and final package/relocation records; no configure, compilation or independent rebuild performed by A46. A44 MIDI-on target-build invocation was already up to date.",
+  "qualified_source_count": 10,
+  "schema": "a46-qualified-native-gallery-source-v1",
+  "scope": "source_sha256 intentionally pins the ten harness-required renderer/model/drawing/inspection/main/reference files only. The full 98-file product observation is in a46-source-before.json and gallery provenance. Neither subset nor full observation proves the entire source/build/dependency graph or signed source-to-binary reproducibility. CMake test budgets, workflow, reports and unrelated docs are outside the rendered product inventory.",
+  "selected_configuration": {
+    "ALSA_INCLUDE_DIR": "/workspace/scratch/641ca55ce6de/native-sysroot/usr/include",
+    "ALSA_LIBRARY": "/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so",
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+    "CMAKE_CXX_FLAGS": "",
+    "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+    "HAMMOND_BUILD_STANDALONE": "ON",
+    "HAMMOND_ENABLE_MIDI": "ON",
+    "HAMMOND_RTMIDI_ROOT": "/workspace/scratch/cd4bd06ce68f/rtmidi",
+    "HAMMOND_SDL2_ROOT": "/workspace/scratch/7ffc2842608b/SDL2",
+    "SDL_ALSA": "OFF"
+  },
+  "source_reference": "Original cover/page 409; docs/design/atlas-cover-reference.jpg, unchanged generated concept, not a native application frame.",
+  "source_sha256": {
+    "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+    "apps/standalone/InstrumentView.cpp": "920f58ca287eca607632698c52a1e1fa819eb623a0be4828f082b2c6b0701912",
+    "apps/standalone/InstrumentView.h": "416b9b6679901326cdf30370a37f3c2c13d720f6fc24fa904d182fe12ddb7932",
+    "apps/standalone/UiModel.cpp": "c3aa5756e0edac899d0d608cb451695926d970eedcfaa247948c7ce699077258",
+    "apps/standalone/UiModel.h": "1c51aaa46ee12be91ae8729fa739d7f4d102dc030bae61dbf15fd0cc1692a98d",
+    "apps/standalone/main.cpp": "3c3ed7e237830e6a11176ca2b6e39e85fa007ac51b8044aee6aca6110fec66d3",
+    "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+  },
+  "supporting_reports": {
+    "a44-build-result.json": {
+      "bytes": 12318,
+      "sha256": "38016f574bed183a4fa2a0f93de73108c6b724127e1838d38ecbdd2856a10a3c"
+    },
+    "a44-final-package-result.json": {
+      "bytes": 3486,
+      "sha256": "738ac4970c5cb225e9b3fda8933f6145eebb557e0c2d5ecb46de08a8b9095047"
+    },
+    "a44-midi-on-source-after-build.json": {
+      "bytes": 12922,
+      "sha256": "be4e95a863048b650790999957aa6cd21ce47a66a32e2d548cef5286c1e38c02"
+    },
+    "a44-package-refresh.json": {
+      "bytes": 20439,
+      "sha256": "b130cfde2a5b2feafbe44cea0474da2764778cd077f5b868b06be6a6e76816a3"
+    },
+    "a46-source-before.json": {
+      "bytes": 21107,
+      "sha256": "ef457769f8ec3eafd20f8d2377fe8199453fefb47ade173259a9422bb30400b8"
+    }
+  },
+  "worker": "/root/w08_a46_final_native_gallery"
+}

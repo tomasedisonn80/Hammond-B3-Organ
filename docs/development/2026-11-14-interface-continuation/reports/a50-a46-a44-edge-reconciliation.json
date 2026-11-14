@@ -1,0 +1,75 @@
+{
+  "affected_edges": [
+    {
+      "actual": {
+        "bytes": 3509,
+        "sha256": "332055972738e624a9ca75bae87557a96b45a8b4426c70006bcf1c906e9e12fd"
+      },
+      "expected": {
+        "bytes": 3486,
+        "sha256": "738ac4970c5cb225e9b3fda8933f6145eebb557e0c2d5ecb46de08a8b9095047"
+      },
+      "matches": false,
+      "owner": "a46-source-before.json",
+      "target": "docs/development/2026-11-14-interface-continuation/reports/a44-final-package-result.json"
+    },
+    {
+      "actual": {
+        "bytes": 3509,
+        "sha256": "332055972738e624a9ca75bae87557a96b45a8b4426c70006bcf1c906e9e12fd"
+      },
+      "expected": {
+        "bytes": 3486,
+        "sha256": "738ac4970c5cb225e9b3fda8933f6145eebb557e0c2d5ecb46de08a8b9095047"
+      },
+      "matches": false,
+      "owner": "a46-source-qualification.json",
+      "target": "docs/development/2026-11-14-interface-continuation/reports/a44-final-package-result.json"
+    },
+    {
+      "actual": {
+        "bytes": 3509,
+        "sha256": "332055972738e624a9ca75bae87557a96b45a8b4426c70006bcf1c906e9e12fd"
+      },
+      "expected": {
+        "bytes": 3486,
+        "sha256": "738ac4970c5cb225e9b3fda8933f6145eebb557e0c2d5ecb46de08a8b9095047"
+      },
+      "matches": false,
+      "owner": "v2/inputs/source-qualification.json",
+      "target": "docs/development/2026-11-14-interface-continuation/reports/a44-final-package-result.json"
+    }
+  ],
+  "earlier_pin": {
+    "bytes": 3486,
+    "sha256": "738ac4970c5cb225e9b3fda8933f6145eebb557e0c2d5ecb46de08a8b9095047"
+  },
+  "kind": "additive independently derived reconciliation; original capture records unchanged",
+  "limits": "This establishes exact JSON ancestry under two key renames. It does not prove when or who changed that report, independently archive the earlier file, rebuild the binary, or regenerate any capture.",
+  "ordinary_serialization_variants_of_unrenamed_final_matching_pin": [],
+  "original_archive_found": false,
+  "published_commit": "cdbb2beaa28bf136f9a8db6213819129514e2ae9",
+  "published_final": {
+    "bytes": 3509,
+    "path": "docs/development/2026-11-14-interface-continuation/reports/a44-final-package-result.json",
+    "sha256": "332055972738e624a9ca75bae87557a96b45a8b4426c70006bcf1c906e9e12fd"
+  },
+  "reconstruction": {
+    "all_values_identical_under_renames": true,
+    "bytes": 3486,
+    "final_to_earlier_key_renames": {
+      "build_install_drift_during_runtime": "build_install_drift",
+      "runtime_packages": "packages"
+    },
+    "method": "Rename exactly the two top-level keys below in the published final JSON; json.dumps(indent=2, sort_keys=True), default ensure_ascii=True, UTF-8 plus LF.",
+    "path": "docs/development/2026-11-14-interface-continuation/reports/a50-reconstructed-a44-at-capture.json",
+    "sha256": "738ac4970c5cb225e9b3fda8933f6145eebb557e0c2d5ecb46de08a8b9095047",
+    "status": "Reconstructed bytes match the original pin exactly; not an independently archived original."
+  },
+  "schema": "a50-a46-a44-report-edge-reconciliation-v1",
+  "semantic_checks": {
+    "98_product_map_matches": true,
+    "final_guide_and_payload_records_consistent": true,
+    "midi_on_binary_matches_v2": true
+  }
+}

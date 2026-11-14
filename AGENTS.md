@@ -5,8 +5,9 @@
 The newest [interface session](docs/development/2026-11-14-interface-continuation/README.md)
 starts from published `d493e998`. Its sixty fresh workers in ten waves have their
 own [actual manifest](docs/development/2026-11-14-interface-continuation/assignments.json).
-Read [its scope](docs/INTERFACE_CONTINUATION_SCOPE.md), current checkpoint and
-reviewed workspace/geometry/inspection contracts before changing the native UI.
+Read [its scope](docs/INTERFACE_CONTINUATION_SCOPE.md), the current
+[operator/developer handoff](docs/INTERFACE_HANDOFF.md), checkpoint and reviewed
+workspace/geometry/inspection contracts before changing the native UI.
 It owns dependency-ready M9 Play/Rotary/Service presentation, reference-led live
 geometry, truthful copied-state inspection and repairs to observed platform
 failures. Preserve all 47 sound parameters, state4 and readers 1-3, nominal models,

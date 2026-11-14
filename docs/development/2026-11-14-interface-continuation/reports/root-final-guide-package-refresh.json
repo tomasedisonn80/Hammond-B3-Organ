@@ -1,0 +1,526 @@
+{
+  "basis": "a44-package-refresh.json",
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+        "-B",
+        "/workspace/scratch/601951e27dc3/build-native"
+      ],
+      "log": "root-final-guide-midi-on-configure.txt",
+      "log_identity": {
+        "bytes": 9456,
+        "sha256": "ab7279402b96e6c1802d0a68cbf599db875724d922e49b6a4b93eb235309de05"
+      },
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "--install",
+        "/workspace/scratch/601951e27dc3/build-native",
+        "--config",
+        "Release",
+        "--component",
+        "Standalone",
+        "--prefix",
+        "/workspace/scratch/601951e27dc3/root-final-guide-packages-configured/midi-on"
+      ],
+      "elapsed_seconds": 0.0984,
+      "log": "root-final-guide-midi-on-install.txt",
+      "log_identity": {
+        "bytes": 2778,
+        "sha256": "9e05272fb2c292a64419b60a49f0ec5142d0fe456b534133cbeca92e928d53f0"
+      },
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+        "-B",
+        "/workspace/scratch/601951e27dc3/build-native-midi-off"
+      ],
+      "log": "root-final-guide-midi-off-configure.txt",
+      "log_identity": {
+        "bytes": 8676,
+        "sha256": "c6b3b254118aed574fe8d9ba1cd9facd1f8759a8ec93afdab8df242bdfdf0a6a"
+      },
+      "returncode": 0
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "--install",
+        "/workspace/scratch/601951e27dc3/build-native-midi-off",
+        "--config",
+        "Release",
+        "--component",
+        "Standalone",
+        "--prefix",
+        "/workspace/scratch/601951e27dc3/root-final-guide-packages-configured/midi-off"
+      ],
+      "elapsed_seconds": 0.0742,
+      "log": "root-final-guide-midi-off-install.txt",
+      "log_identity": {
+        "bytes": 2193,
+        "sha256": "edb792eed0a39dd800be0786647de174c314309fdb703d22675cec1c29b287f7"
+      },
+      "returncode": 0
+    }
+  ],
+  "configures": 2,
+  "first_attempt": "root-guide-first-attempt/root-final-guide-package-refresh.json",
+  "first_attempt_outcome": "Installer correctly rejected stale configured guide identity. Reconfigure required; original failure and script retained.",
+  "guide_identity": {
+    "bytes": 18279,
+    "sha256": "f16a8b7b16bf9014dd4061b5e1dc8e82803d3816d3927fc04062afca514ae981"
+  },
+  "native_invocations": 0,
+  "packages": {
+    "midi-off": {
+      "binary_unchanged": true,
+      "installed_relative_links": [
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "MIDI_UI_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "STANDALONE_INSTALL.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "MIDI_UI_RUNBOOK.md#prerequisites-and-platform-backends"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "INTERFACE_RUNBOOK.md#read-service-and-rotary-correctly"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "STANDALONE_APP.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "MIDI_UI_RUNBOOK.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "PRESET_RUNBOOK.md#build-from-source"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "STANDALONE_INSTALL.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "PRESET_RUNBOOK.md#select-edit-and-play"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "STANDALONE_APP.md#scripted-interaction-and-observations"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "STANDALONE_APP.md"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "MIDI_UI_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_APP.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_INSTALL.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_INSTALL.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "STANDALONE_MODEL.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_MODEL.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_MODEL.md",
+          "target": "MIDI_UI_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_MODEL.md",
+          "target": "INTERFACE_RUNBOOK.md#midi-discovery-and-recovery"
+        },
+        {
+          "source": "PRESET_RUNBOOK.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        }
+      ],
+      "only_payload_change": {
+        "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+          "after": {
+            "bytes": 18279,
+            "sha256": "f16a8b7b16bf9014dd4061b5e1dc8e82803d3816d3927fc04062afca514ae981"
+          },
+          "before": {
+            "bytes": 17618,
+            "sha256": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0"
+          }
+        }
+      },
+      "payload": {
+        "bin/hammond_standalone": {
+          "bytes": 3624104,
+          "sha256": "a09c9127b54ad1efae1ba0c332e4fecff5385d27a834a24ad6c3f7b47d474117"
+        },
+        "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+          "bytes": 18279,
+          "sha256": "f16a8b7b16bf9014dd4061b5e1dc8e82803d3816d3927fc04062afca514ae981"
+        },
+        "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt": {
+          "bytes": 2345,
+          "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+        },
+        "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt": {
+          "bytes": 884,
+          "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+        },
+        "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md": {
+          "bytes": 25136,
+          "sha256": "f51b2c32f5f6e6aa062885bd2b1b64fee24faf85712f4bca9a3b8f1a600695a1"
+        },
+        "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md": {
+          "bytes": 17137,
+          "sha256": "aab73b054b7cb90fb140fea0257c36c3752c33b3032cc6899d7c5b398a209361"
+        },
+        "share/hammond-b3-organ/standalone/STANDALONE_APP.md": {
+          "bytes": 26725,
+          "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262"
+        },
+        "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md": {
+          "bytes": 12330,
+          "sha256": "7d121ce847ecb90dccbe01b7a3b9bd0917c29ebf0c13955c5c442efa1117aa7c"
+        },
+        "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md": {
+          "bytes": 9182,
+          "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3"
+        },
+        "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md": {
+          "bytes": 21983,
+          "sha256": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb"
+        },
+        "share/hammond-b3-organ/standalone/atlas-reference.json": {
+          "bytes": 811,
+          "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+        },
+        "share/hammond-b3-organ/standalone/font-source-manifest.json": {
+          "bytes": 1428,
+          "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+        },
+        "share/hammond-b3-organ/standalone/reference-source-manifest.json": {
+          "bytes": 3816,
+          "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87"
+        },
+        "share/hammond-b3-organ/standalone/sdl2-lock.json": {
+          "bytes": 375,
+          "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+        },
+        "share/hammond-b3-organ/standalone/standalone-capabilities.json": {
+          "bytes": 1411,
+          "sha256": "0aa7e692d1986def4e8f5f31f0104e49ec1e50dca162fb2a14343f458a6bb204"
+        }
+      },
+      "payload_bytes": 3765946,
+      "payload_files": 15,
+      "prefix": "/workspace/scratch/601951e27dc3/root-final-guide-packages-configured/midi-off"
+    },
+    "midi-on": {
+      "binary_unchanged": true,
+      "installed_relative_links": [
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "MIDI_UI_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "STANDALONE_INSTALL.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "MIDI_UI_RUNBOOK.md#prerequisites-and-platform-backends"
+        },
+        {
+          "source": "STANDALONE_APP.md",
+          "target": "INTERFACE_RUNBOOK.md#read-service-and-rotary-correctly"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "STANDALONE_APP.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "MIDI_UI_RUNBOOK.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "PRESET_RUNBOOK.md#build-from-source"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "STANDALONE_INSTALL.md"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "PRESET_RUNBOOK.md#select-edit-and-play"
+        },
+        {
+          "source": "INTERFACE_RUNBOOK.md",
+          "target": "STANDALONE_APP.md#scripted-interaction-and-observations"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "STANDALONE_APP.md"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "MIDI_UI_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_INSTALL.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_APP.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_INSTALL.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_INSTALL.md"
+        },
+        {
+          "source": "MIDI_UI_RUNBOOK.md",
+          "target": "STANDALONE_MODEL.md"
+        },
+        {
+          "source": "STANDALONE_MODEL.md",
+          "target": "PRESET_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_MODEL.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_MODEL.md",
+          "target": "MIDI_UI_RUNBOOK.md"
+        },
+        {
+          "source": "STANDALONE_MODEL.md",
+          "target": "INTERFACE_RUNBOOK.md#midi-discovery-and-recovery"
+        },
+        {
+          "source": "PRESET_RUNBOOK.md",
+          "target": "INTERFACE_RUNBOOK.md"
+        }
+      ],
+      "only_payload_change": {
+        "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+          "after": {
+            "bytes": 18279,
+            "sha256": "f16a8b7b16bf9014dd4061b5e1dc8e82803d3816d3927fc04062afca514ae981"
+          },
+          "before": {
+            "bytes": 17618,
+            "sha256": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0"
+          }
+        }
+      },
+      "payload": {
+        "bin/hammond_standalone": {
+          "bytes": 3707640,
+          "sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2"
+        },
+        "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md": {
+          "bytes": 18279,
+          "sha256": "f16a8b7b16bf9014dd4061b5e1dc8e82803d3816d3927fc04062afca514ae981"
+        },
+        "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt": {
+          "bytes": 2345,
+          "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+        },
+        "share/hammond-b3-organ/standalone/LICENSE-RtMidi.txt": {
+          "bytes": 1349,
+          "sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364"
+        },
+        "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt": {
+          "bytes": 884,
+          "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+        },
+        "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md": {
+          "bytes": 25136,
+          "sha256": "f51b2c32f5f6e6aa062885bd2b1b64fee24faf85712f4bca9a3b8f1a600695a1"
+        },
+        "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md": {
+          "bytes": 17137,
+          "sha256": "aab73b054b7cb90fb140fea0257c36c3752c33b3032cc6899d7c5b398a209361"
+        },
+        "share/hammond-b3-organ/standalone/STANDALONE_APP.md": {
+          "bytes": 26725,
+          "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262"
+        },
+        "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md": {
+          "bytes": 12330,
+          "sha256": "7d121ce847ecb90dccbe01b7a3b9bd0917c29ebf0c13955c5c442efa1117aa7c"
+        },
+        "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md": {
+          "bytes": 9182,
+          "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3"
+        },
+        "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md": {
+          "bytes": 21983,
+          "sha256": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb"
+        },
+        "share/hammond-b3-organ/standalone/atlas-reference.json": {
+          "bytes": 811,
+          "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+        },
+        "share/hammond-b3-organ/standalone/font-source-manifest.json": {
+          "bytes": 1428,
+          "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+        },
+        "share/hammond-b3-organ/standalone/reference-source-manifest.json": {
+          "bytes": 3816,
+          "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87"
+        },
+        "share/hammond-b3-organ/standalone/rtmidi-coremidi-zero-init.patch": {
+          "bytes": 728,
+          "sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad"
+        },
+        "share/hammond-b3-organ/standalone/rtmidi-lock.json": {
+          "bytes": 1161,
+          "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+        },
+        "share/hammond-b3-organ/standalone/rtmidi-prepared-source.json": {
+          "bytes": 1996,
+          "sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae"
+        },
+        "share/hammond-b3-organ/standalone/sdl2-lock.json": {
+          "bytes": 375,
+          "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+        },
+        "share/hammond-b3-organ/standalone/standalone-capabilities.json": {
+          "bytes": 2062,
+          "sha256": "57ccbbb25c2f868db64ff7aa17cf691e9fd92917b2e640b4fd1d5a623edcbc48"
+        }
+      },
+      "payload_bytes": 3855367,
+      "payload_files": 19,
+      "prefix": "/workspace/scratch/601951e27dc3/root-final-guide-packages-configured/midi-on"
+    }
+  },
+  "production_inputs_unchanged": 98,
+  "rebuilds": 0,
+  "schema": "root-final-guide-package-refresh-v1",
+  "scope": "Fresh component install and exact payload comparison only. Existing A44 runtime and relocation evidence remains separately identified.",
+  "status": "passed"
+}

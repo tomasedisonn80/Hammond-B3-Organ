@@ -1,0 +1,231 @@
+# Native interface continuation: operator and developer handoff
+
+The usable result is a live instrument interface over the existing **nominal dry
+organ**, with preserved sound/state contracts and explicit model limits.
+
+## Source and acceptance boundary
+
+The published checkpoint is **`cdbb2beaa28bf136f9a8db6213819129514e2ae9`**, tree
+**`b4d71c1f574ab17ba1a3f37b24667c1ff3f9c527`**
+([publication](development/2026-11-14-interface-continuation/reports/publication-5.json)).
+Its product inputs match polished source
+`8673713a484c40e26ac7810c7c4cbc22fa874426`, whose
+[eleven hosted jobs](reviews/INTERFACE_HOSTED_PLATFORM_EVIDENCE.md) passed.
+Root subsequently observed [all twelve jobs successful at `cdbb2be`](development/2026-11-14-interface-continuation/reports/root-checkpoint5-hosted.json),
+including the new native sanitizer/leak job. Detailed A58 runtime extraction
+remains pending; the earlier eleven-job evidence retains its original revision.
+
+The [final eight-view native gallery](../examples/demos/standalone-interface-preview-v2/README.md)
+uses executable SHA-256
+`bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2`.
+Its 98 product inputs match both commits, with no product overlay. It records
+dummy SDL/software rendering, not physical display or device qualification.
+[A50's additive reconciliation](development/2026-11-14-interface-continuation/reports/a50-a46-a44-edge-reconciliation.json)
+explains three older A46 report-hash references through two A44 key renames;
+values and original capture evidence remain unchanged. Root's
+[applied addendum record](development/2026-11-14-interface-continuation/reports/root-gallery-provenance-addendum.json)
+confirms both checks. Reconstructed old bytes are explicitly derived.
+[Independent visual acceptance](reviews/INTERFACE_FINAL_VISUAL_ACCEPTANCE.md)
+is partial: literal 1:1 concept equality remains unmet.
+
+[A49's complete Release run](development/2026-11-14-interface-continuation/reports/a49-final-result.json)
+executed 147 suites: **146 passed, one failed, zero skipped**. Workspace replay's
+synthetic MIDI/UI case sampled initial state at 191 ms against a `<180 ms`
+assertion. This is a new retained failure, separate from the earlier 146/147
+native-MIDI observation failure and its
+[focused repair](development/2026-11-14-interface-continuation/reports/root-ui-repair-closure.json).
+The coherent gate remains open pending a separately identified closure.
+
+All [500 atlas pages](research/INTERFACE_ATLAS_REVIEW.md) were reviewed in six
+fresh assignments. The requested session is sixty actual workers in ten waves;
+at A53's dispatch boundary, 52 were dispatched and 49 accepted. The
+[manifest](development/2026-11-14-interface-continuation/assignments.json) owns
+current accounting. This handoff does not declare all sixty accepted.
+
+## Implemented behavior and protected contracts
+
+Play, Rotary and Service are real workspaces; F4/F5/F6 select them, and F7 toggles
+transient Flat presentation. Play retains 68 ordinary controls, including 24
+reversed preset keys, 147 playing keys and 71 focus stops. Rotary/Service retain
+ten common controls and read-only bodies. Perspective keys share paint/hit/focus
+geometry; Flat preserves the same instrument. Service displays bounded copied
+state, explicit freshness, applied versus desired controls, availability and
+evidence classes. Unavailable volts/rpm and unacquired geometry stay unknown.
+Rotary audio is not connected; artwork supplies decoration.
+
+Preserve **47 sound parameters**, the **`B3CONTROLS4`** writer and readers 1–3,
+91 shared free-running sources, two 61-key manuals, 25 pedals, four nine-drawbar
+banks, eighteen fixed registrations and existing VST3 identities. C cancels
+routing while retaining notes/memory; C#–A select fixed rows; A# selects bank A
+and B selects bank B. Edit A/B changes retained-bank editing, independently of
+the sounding route. Upper-B percussion eligibility and continuing histories
+retain their existing meaning.
+
+View changes issue no sound command, recall no controls and preserve original
+key/pointer release ownership. Hidden controls cannot receive new activation.
+Opening Help/Audio/MIDI deliberately releases UI holds; MIDI ownership remains
+separate. Save is explicit; Load changes musical controls, not presentation or
+transient engine history. [Paired-session acceptance](development/2026-11-14-interface-continuation/session26-musical-continuity.md)
+retains 719,289 equal PCM frames through 1,662 presentation transitions.
+Use the [operating guide](INTERFACE_RUNBOOK.md) for complete shortcuts,
+snapshot banners, pending controls and recovery.
+
+## Reproduce setup, operation and packaging
+
+Commands below are future procedures, checked against source interfaces and
+the retained [package qualification](reviews/INTERFACE_FINAL_PACKAGE.md).
+A53 performed no build or application execution. Work from the repository root
+with C++20, CMake/CTest 3.21+, Python 3.10+, Git, a C compiler and platform
+desktop/audio development libraries. Use fresh build/output destinations;
+coordinate shared-build ownership first. Windows uses `.exe`; multi-configuration
+executables add `Release/`.
+
+Acquire locked SDL 2.32.10 into an absent external directory; an existing checkout
+uses `python3 tools/acquire_sdl2.py --verify-existing ../SDL2` instead:
+
+```sh
+python3 tools/acquire_sdl2.py --destination ../SDL2
+cmake -S . -B build-interface -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+  -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT="$PWD/../SDL2" \
+  -DHAMMOND_ENABLE_MIDI=OFF -DHAMMOND_BUILD_VST3=OFF
+cmake --build build-interface --config Release --parallel 2
+ctest --test-dir build-interface -C Release -N
+ctest --test-dir build-interface -C Release --output-on-failure \
+  --no-tests=error -R '^test_standalone_'
+```
+
+Discovery supplies the selected revision's inventory. Run affected gates after
+changes and the required coherent gate on the fixed candidate; do not repeatedly
+run unchanged passing suites. The SDK-free configuration sets
+`HAMMOND_BUILD_STANDALONE=OFF`, MIDI OFF and VST3 OFF. The
+[preset build guide](PRESET_RUNBOOK.md#build-from-source) supplies its full
+commands and optional VST3 acquisition/`check_vst3` procedure.
+
+For MIDI, acquire pinned RtMidi 6.0.0 and configure a separate directory:
+
+```sh
+python3 tools/acquire_rtmidi.py --destination ../rtmidi-6.0.0
+cmake -S . -B build-interface-midi -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \
+  -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_SDL2_ROOT="$PWD/../SDL2" \
+  -DHAMMOND_ENABLE_MIDI=ON -DHAMMOND_RTMIDI_ROOT="$PWD/../rtmidi-6.0.0" \
+  -DHAMMOND_BUILD_VST3=OFF
+cmake --build build-interface-midi --config Release --parallel 2
+```
+
+Native backends are ALSA/WinMM/CoreMIDI; see [prerequisites](MIDI_UI_RUNBOOK.md#prerequisites-and-platform-backends).
+Choose one exact input and distinct channels, then Apply after discovery.
+No port connects automatically. Dummy SDL does not bypass native ALSA discovery:
+the retained [operator failure](development/2026-11-14-interface-continuation/session30-operator-runbook.md)
+requires keeping No input, Apply/Disconnect and Close available. Recorded replay
+errors remain failures after recovery.
+
+```sh
+cmake -E make_directory out
+build-interface/apps/standalone/hammond_standalone \
+  --state "$PWD/out/my-controls.b3controls" --workspace play
+cmake --install build-interface --config Release --component Standalone \
+  --prefix "$PWD/out/interface-install"
+cmake -E rename "$PWD/out/interface-install" "$PWD/out/interface-moved"
+"$PWD/out/interface-moved/bin/hammond_standalone" \
+  --state "$PWD/out/my-controls.b3controls" --workspace service --flat
+```
+
+An absent state file starts the documented audition registration; closing never
+saves automatically. Keep the whole payload together. Final MIDI-on/off packages
+contain **19/15 files**, including six installed guides. Both qualified packages
+ran with source/build/dependency paths inaccessible; system runtime libraries
+remain required. This handoff is repository documentation, outside that inventory.
+
+For a bounded dummy check, substitute `SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy`
+before the native command and add `--smoke-ms 600 --screenshot out/service.bmp
+--diagnostics out/service.json`, using fresh outputs. This qualifies no hardware.
+
+For gallery authoring, install Pillow in the authoring environment. This complete
+command uses the unchanged retained local build; its relative build path is an
+optional workspace convenience:
+
+```sh
+python3 -B tools/capture_standalone_interface.py \
+  --exe ../build-native/apps/standalone/hammond_standalone \
+  --source-root . --build-root ../build-native \
+  --source-qualification examples/demos/standalone-interface-preview-v2/inputs/source-qualification.json \
+  --expected-exe-sha256 bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2 \
+  --dummy-sdl --output out/interface-new
+```
+
+For a different build, supply its reviewed qualification and digest; never reuse
+an old digest for changed bytes. The [v2 README](../examples/demos/standalone-interface-preview-v2/README.md#reproduce-into-a-new-directory)
+details the procedure. Its qualification is a ten-file admission subset, with the broader
+98-file comparison retained separately. Preserve both galleries; a fresh run
+requires a new absent destination and does not promise identical callback text.
+
+### Optional current workspace conveniences
+
+These reusable paths are session observations, not installation prerequisites:
+
+| Resource | Current path |
+|---|---|
+| Checkout | `/workspace/scratch/601951e27dc3/Hammond-B3-Organ` |
+| CMake/CTest | `/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/` |
+| SDL / RtMidi | `/workspace/scratch/7ffc2842608b/SDL2` / `/workspace/scratch/cd4bd06ce68f/rtmidi` |
+| Native ON/OFF builds | `/workspace/scratch/601951e27dc3/build-native` / `/workspace/scratch/601951e27dc3/build-native-midi-off` |
+| SDK-free / sanitizer builds | `/workspace/scratch/601951e27dc3/build-a13-sdkfree` / `/workspace/scratch/601951e27dc3/build-interface-asan` |
+| ALSA/X11 development root | `/workspace/scratch/641ca55ce6de/native-sysroot/usr/` |
+| VST3 SDK | `/workspace/scratch/1742da7072be/vst3sdk` |
+| Python | `/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12` |
+| Final moved packages | `/workspace/scratch/601951e27dc3/a44-final-packages-docs/`, each mode's `relocated final Ω` directory |
+
+Consult the [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md)
+for leases. Existing SDL compiles dummy/offscreen, without X11/Wayland; a cache
+request alone proves no backend. A57's backend-capable attempt remains pending.
+
+## Complete plan and next bounded work
+
+The [M0–M9 plan](PLAN.md) governs these separate dependencies:
+
+| Milestone | Present engineering and remaining exit |
+|---|---|
+| M0 | Provenance/contracts exist; specimen, revision, permissions and physical uncertainty need acquisition. |
+| M1 | Prepared core, scheduling and offline tools exist; retain lifecycle/rollback/allocation boundaries. |
+| M2 | Shared nominal sine sources and corroborated routing exist; gearing, pickups, levels/phases and leakage need evidence. |
+| M3 | Banks, fixed selectors, pedals and nominal percussion exist; physical contacts, tap loading, expression and reactor behavior remain. |
+| M4 | Scanner graph/references/line/rotor exist separately; [G5 same-hertz failure](SCANNER_AC_PARITY.md) blocks policy approval and Engine integration. |
+| M5 | Complete revision-specific AO-28 graph, transformers/loads and dry G-G validation remain required. |
+| M6 | Separate Leslie 122/147 electronics require identified circuits, driver impedances and measured boundaries. |
+| M7 | Nominal rotary foundation has separate ownership; qualify motion/propagation before integration, retaining missing M5/M6 inputs. |
+| M8 | Capture/readiness tooling exists; actual admitted immutable captures, held-out groups and calibration remain. |
+| M9 | Standalone/UI/MIDI and headless VST3 exist; devices/DAWs, semantics, deadlines, visual equality, rights/signing remain separate release gates. |
+
+A52 owns fixture-only diagnosis/repair of A49's startup-baseline assumption,
+then its bounded native burst after the CPU lease. Preserve assertion intent,
+product bytes and timeouts; root records qualified repair separately. A58 must
+extract detailed native thirteen-suite ASan/UBSan/leak evidence at `cdbb2be`,
+run **43597589820**, job **132455309517**. Its successful completion is observed;
+[A48's earlier pending record](development/2026-11-14-interface-continuation/reports/a48-checkpoint5-initial.json)
+remains historical. Preserve local leak thread-attach failure and the original
+three sanitizer raster timeouts.
+
+Next use A57's identified backend build for the
+[blocked desktop flow](reviews/INTERFACE_DESKTOP_POINTER.md): visible window,
+held owners through navigation/resize, off-window release and joined cleanup.
+Persistent capture remains **not run** after `x11 not available`. Then qualify
+compact text on an actual display; refine one measured layout/material gap at
+a time. The singular “1 targets” wording is a bounded later copy fix.
+
+Session closure requires actual accepted accounting, exact-source affected and
+coherent evidence, observed hosted results, current gallery/package links and
+guarded publication. [Release readiness](RELEASE_READINESS.md) additionally
+requires real host/device, native accessibility, timing, distribution and rights
+evidence. Neither this interface slice nor atlas coverage implements the whole
+physical organ or closes measured fidelity.
+
+## Standing continuation workflow
+
+Every future agent reads [AGENTS.md](../AGENTS.md), current plan/status/next steps,
+scope, checkpoint and actual source evidence; claims bounded ownership; preserves
+other tracks; and documents changes, setup, results, failures and next actions.
+Refresh README with verified native screenshots after interface changes. Root
+integrates shared records and commits/pushes authorized completed work to `main`
+with a fresh expected-head guard, no force, and remote revision verification.
+Retain compact evidence and context checkpoints, reuse dependencies/builds, and
+delete only owned reproducible intermediates. Count actual workers only.

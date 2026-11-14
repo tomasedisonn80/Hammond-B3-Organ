@@ -87,9 +87,10 @@ expression, device settings and explicit Save/Load. The current
 [interface continuation](development/2026-11-14-interface-continuation/README.md)
 adds Play/Rotary/Service workspaces, shared perspective hit/paint geometry,
 transient Flat presentation and truthful copied-state inspection. Its
-[provisional actual gallery](../examples/demos/standalone-interface-preview-v1/README.md)
-records native pixels, musical diagnostics and exact overlay identities. Earlier
-MIDI/chapel galleries remain historical evidence. The exact source cabinet
+[final actual gallery](../examples/demos/standalone-interface-preview-v2/README.md)
+records eight native views from published product source, with exact musical,
+source, executable and pixel identities. The provisional interface v1 and earlier
+MIDI/chapel galleries remain unchanged historical evidence. The exact source cabinet
 artwork supplies decoration; controls and state remain live. Full reference
 image equality, connected rotary audio, native semantic accessibility and real
 display/controller/audio-device acceptance retain separate product gates.

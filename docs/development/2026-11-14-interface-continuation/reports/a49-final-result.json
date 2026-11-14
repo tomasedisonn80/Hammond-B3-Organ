@@ -1,0 +1,805 @@
+{
+  "accepted": false,
+  "configuration": "Linux GCC 14.2 Release; native MIDI ON; SDL_ALSA OFF; RtMidi ALSA ON; sanitizers OFF; dummy video/audio; serial complete CTest",
+  "discovered": 147,
+  "executed": 147,
+  "failed": 1,
+  "historical_gate": "root-ui-coherent-gate.json remains the original 146/147 result; no retries or relabeling",
+  "junit": {
+    "bytes": 114864,
+    "path": "a49-release-junit.xml",
+    "sha256": "b83a4a4ea597007602cdafd5b18cf48028e6161a136a40d35e79942692db0995"
+  },
+  "limitations": [
+    "No VST3 target is built here; its unchanged boundary and hosted qualification remain separate.",
+    "No physical audio/MIDI device, DAW, desktop pointer/display, accessibility, deadline, literal pixel equality or physical fidelity claim follows.",
+    "SDK-free tests execute within the combined native-enabled tree; a separately configured SDK-free platform gate has its own evidence."
+  ],
+  "native_application": {
+    "bytes": 3707640,
+    "sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2"
+  },
+  "passed": 146,
+  "process": {
+    "command": [
+      "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/601951e27dc3/build-native",
+      "-C",
+      "Release",
+      "--verbose",
+      "--output-on-failure",
+      "--no-tests=error",
+      "--parallel",
+      "1",
+      "--output-junit",
+      "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a49-release-junit.xml"
+    ],
+    "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+    "environment_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "SDL_AUDIODRIVER": "dummy",
+      "SDL_VIDEODRIVER": "dummy"
+    },
+    "finished_at_utc": "2026-11-14T13:16:31.087240+00:00",
+    "log": {
+      "bytes": 301886,
+      "path": "a49-release-ctest.log",
+      "sha256": "0ae23075b4ce349880368ddb37d915ef7b2ecd741098667f0a10799a0f559e6c"
+    },
+    "returncode": 8,
+    "seconds": 525.619002,
+    "started_at_utc": "2026-11-14T13:07:45.468246+00:00"
+  },
+  "recorded_at_utc": "2026-11-14T13:16:34.906573+00:00",
+  "schema": "interface-final-coherent-gate-a49-v1",
+  "skipped": 0,
+  "source_commit": "cdbb2beaa28bf136f9a8db6213819129514e2ae9",
+  "source_tree": "b4d71c1f574ab17ba1a3f37b24667c1ff3f9c527",
+  "stability": {
+    "dependencies": true,
+    "executables": true,
+    "generated_and_libraries": true,
+    "production_inputs": true,
+    "protected_boundary": true,
+    "source_test_build_workflow_inputs": true,
+    "supplemental_inputs": true
+  },
+  "tests": [
+    {
+      "name": "test_console_engine",
+      "seconds": 0.466861,
+      "status": "passed"
+    },
+    {
+      "name": "test_contact_bank",
+      "seconds": 0.0719793,
+      "status": "passed"
+    },
+    {
+      "name": "test_contact_rate",
+      "seconds": 0.0770893,
+      "status": "passed"
+    },
+    {
+      "name": "test_control_io",
+      "seconds": 0.104295,
+      "status": "passed"
+    },
+    {
+      "name": "test_controls",
+      "seconds": 0.227287,
+      "status": "passed"
+    },
+    {
+      "name": "test_core_robustness",
+      "seconds": 0.0258696,
+      "status": "passed"
+    },
+    {
+      "name": "test_decimal",
+      "seconds": 0.0361851,
+      "status": "passed"
+    },
+    {
+      "name": "test_engine",
+      "seconds": 0.20378,
+      "status": "passed"
+    },
+    {
+      "name": "test_engine_rate",
+      "seconds": 1.16314,
+      "status": "passed"
+    },
+    {
+      "name": "test_factory_runtime",
+      "seconds": 0.463259,
+      "status": "passed"
+    },
+    {
+      "name": "test_fixed_registration_data",
+      "seconds": 0.00614457,
+      "status": "passed"
+    },
+    {
+      "name": "test_fixed_registration_engine",
+      "seconds": 1.58812,
+      "status": "passed"
+    },
+    {
+      "name": "test_fixed_registration_lifecycle",
+      "seconds": 1.0928,
+      "status": "passed"
+    },
+    {
+      "name": "test_host_timeline",
+      "seconds": 0.722621,
+      "status": "passed"
+    },
+    {
+      "name": "test_input_processor",
+      "seconds": 1.32627,
+      "status": "passed"
+    },
+    {
+      "name": "test_note_ownership",
+      "seconds": 0.0404306,
+      "status": "passed"
+    },
+    {
+      "name": "test_numerics",
+      "seconds": 1.58396,
+      "status": "passed"
+    },
+    {
+      "name": "test_owned_lifecycle",
+      "seconds": 0.352849,
+      "status": "passed"
+    },
+    {
+      "name": "test_parameter_bridge",
+      "seconds": 0.0138168,
+      "status": "passed"
+    },
+    {
+      "name": "test_partial_key",
+      "seconds": 0.340311,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_controls",
+      "seconds": 0.00936754,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_engine",
+      "seconds": 0.024749,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_integration",
+      "seconds": 0.114782,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_note_ownership",
+      "seconds": 0.00767211,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_realtime",
+      "seconds": 0.00638832,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_reference",
+      "seconds": 0.0461788,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_routing",
+      "seconds": 0.00775672,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_sources",
+      "seconds": 0.150983,
+      "status": "passed"
+    },
+    {
+      "name": "test_pedal_voice",
+      "seconds": 0.0085406,
+      "status": "passed"
+    },
+    {
+      "name": "test_percussion",
+      "seconds": 0.0132055,
+      "status": "passed"
+    },
+    {
+      "name": "test_percussion_controls",
+      "seconds": 0.0514133,
+      "status": "passed"
+    },
+    {
+      "name": "test_percussion_rate",
+      "seconds": 0.0155459,
+      "status": "passed"
+    },
+    {
+      "name": "test_performance_acceptance",
+      "seconds": 0.846814,
+      "status": "passed"
+    },
+    {
+      "name": "test_performance_input",
+      "seconds": 0.129024,
+      "status": "passed"
+    },
+    {
+      "name": "test_preset_parameter_boundaries",
+      "seconds": 0.00985821,
+      "status": "passed"
+    },
+    {
+      "name": "test_preset_realtime",
+      "seconds": 0.112777,
+      "status": "passed"
+    },
+    {
+      "name": "test_profile",
+      "seconds": 0.412894,
+      "status": "passed"
+    },
+    {
+      "name": "test_realtime",
+      "seconds": 0.617194,
+      "status": "passed"
+    },
+    {
+      "name": "test_realtime_console",
+      "seconds": 1.21231,
+      "status": "passed"
+    },
+    {
+      "name": "test_realtime_pedals",
+      "seconds": 1.01095,
+      "status": "passed"
+    },
+    {
+      "name": "test_scanner_line",
+      "seconds": 0.608258,
+      "status": "passed"
+    },
+    {
+      "name": "test_scanner_rotor",
+      "seconds": 0.108794,
+      "status": "passed"
+    },
+    {
+      "name": "test_source_rate",
+      "seconds": 0.254655,
+      "status": "passed"
+    },
+    {
+      "name": "test_state_exchange",
+      "seconds": 0.0609298,
+      "status": "passed"
+    },
+    {
+      "name": "test_tonewheel",
+      "seconds": 0.757307,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_audio_analysis",
+      "seconds": 1.17575,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_calibration_session_records",
+      "seconds": 1.57104,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture",
+      "seconds": 1.59163,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_audio",
+      "seconds": 0.765722,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_audio_admission",
+      "seconds": 2.82936,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_cli_pipeline",
+      "seconds": 9.72509,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_common",
+      "seconds": 0.280379,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_comparison",
+      "seconds": 0.863975,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_corpus",
+      "seconds": 1.46745,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_corpus_admission",
+      "seconds": 2.10966,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_demo",
+      "seconds": 2.09399,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_graph_scale",
+      "seconds": 5.37964,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_install",
+      "seconds": 9.84895,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_job",
+      "seconds": 6.44503,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_metadata_read",
+      "seconds": 1.84205,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_numerics",
+      "seconds": 1.06861,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_policy",
+      "seconds": 0.71317,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_readiness",
+      "seconds": 1.0325,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_replay",
+      "seconds": 10.6221,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_capture_study",
+      "seconds": 8.85552,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_chapel_controls",
+      "seconds": 19.364,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_chapel_presets",
+      "seconds": 8.8082,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_cli_unicode",
+      "seconds": 1.37287,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_compile_fixed_registrations",
+      "seconds": 2.66699,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_compile_pedal_routing",
+      "seconds": 3.88209,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_compile_profile",
+      "seconds": 6.40614,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_console_benchmark",
+      "seconds": 1.12122,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_console_catalog",
+      "seconds": 1.17585,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_console_evidence",
+      "seconds": 4.85115,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_console_trace",
+      "seconds": 6.51966,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_continuation_ledger",
+      "seconds": 0.432295,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_demo_bundle",
+      "seconds": 1.00237,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_factory_reference",
+      "seconds": 0.827807,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_fixed_registration_source_admission",
+      "seconds": 0.827295,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_fixture_catalog",
+      "seconds": 2.84479,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_install",
+      "seconds": 8.57212,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_model_info",
+      "seconds": 0.220876,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_native_bundle_inventory",
+      "seconds": 0.629491,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_parameter_bridge",
+      "seconds": 1.1575,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_parameters",
+      "seconds": 1.46583,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_partial_key_render",
+      "seconds": 0.76544,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_pedal_catalog",
+      "seconds": 4.95378,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_pedal_demo",
+      "seconds": 2.81846,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_pedal_map",
+      "seconds": 0.574627,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_pedal_render_cli",
+      "seconds": 2.8152,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_pedal_render_evidence",
+      "seconds": 1.90419,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_pedal_session",
+      "seconds": 0.941699,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_pedal_trace",
+      "seconds": 7.0709,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_plot_console_trace",
+      "seconds": 8.61957,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_plot_pedal_trace",
+      "seconds": 18.0241,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_preset_parameter_oracle",
+      "seconds": 1.17036,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_render",
+      "seconds": 4.20506,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_render_fixture",
+      "seconds": 9.54596,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_repository_integrity",
+      "seconds": 4.00967,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_rotary_profile",
+      "seconds": 2.64944,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_rotary_reference",
+      "seconds": 4.22925,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_scanner_ac_reference",
+      "seconds": 4.1696,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_scanner_line_profile",
+      "seconds": 5.90772,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_scanner_native_ac",
+      "seconds": 3.04161,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_scanner_transient_reference",
+      "seconds": 3.90799,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_sdl2_dependency",
+      "seconds": 1.94989,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_standalone_session_records",
+      "seconds": 1.1688,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_verify_render",
+      "seconds": 3.92106,
+      "status": "passed"
+    },
+    {
+      "name": "python_test_vst3_build_tools",
+      "seconds": 4.07716,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_install",
+      "seconds": 9.74691,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_concurrency",
+      "seconds": 0.187176,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_external_control",
+      "seconds": 0.00781835,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_inspection_acceptance",
+      "seconds": 0.00814212,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_inspection_author",
+      "seconds": 0.00494617,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_midi_concurrency",
+      "seconds": 0.316394,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_midi_discovery",
+      "seconds": 0.00956632,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_midi_input",
+      "seconds": 0.0032689,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_midi_replay",
+      "seconds": 0.0322651,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_midi_session",
+      "seconds": 0.0674016,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_preset_concurrency",
+      "seconds": 0.0429203,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_preset_ui",
+      "seconds": 0.611978,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_projection",
+      "seconds": 0.265238,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_session",
+      "seconds": 0.347374,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_state_files",
+      "seconds": 0.00813588,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_ui",
+      "seconds": 0.0520113,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_workspace_acceptance",
+      "seconds": 0.0543064,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_workspace_continuity",
+      "seconds": 5.18176,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_workspaces_author",
+      "seconds": 0.00688997,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_midi_backend",
+      "seconds": 0.0113635,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_midi_backend_quarantine",
+      "seconds": 0.00580254,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_benchmark",
+      "seconds": 3.29616,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_drawing",
+      "seconds": 0.1586,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_quad_drawing",
+      "seconds": 0.00501167,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_workspace_raster",
+      "seconds": 9.57255,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_scaled_view",
+      "seconds": 20.4773,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_preset_raster",
+      "seconds": 17.3346,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_audio_device",
+      "seconds": 2.94073,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_device_removal",
+      "seconds": 0.229883,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_callback_allocation",
+      "seconds": 1.0165,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_app",
+      "seconds": 15.7225,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_midi_cli",
+      "seconds": 11.2747,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_native_midi_replay",
+      "seconds": 30.4714,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_workflows",
+      "seconds": 65.0086,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_workspace_replay",
+      "seconds": 39.9815,
+      "status": "failed"
+    },
+    {
+      "name": "test_standalone_replay_boundaries",
+      "seconds": 5.9743,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_chapel",
+      "seconds": 21.6131,
+      "status": "passed"
+    },
+    {
+      "name": "test_standalone_input_replay",
+      "seconds": 0.0191007,
+      "status": "passed"
+    }
+  ]
+}

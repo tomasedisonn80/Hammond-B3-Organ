@@ -1,0 +1,444 @@
+{
+  "additional_runs": 0,
+  "created_at_utc": "2026-11-14T13:19:05.358568+00:00",
+  "diagnosis": "The test requires a copied, acknowledged startup observation before the first 180 ms sound action. This run first retained the loaded applied sequence 3 at 191 ms, with first note sequence 4 already submitted. No source/output drift or CTest timeout occurred. The evidence identifies an unmet observation precondition; it does not establish a lost note, sound-state mutation or specific scheduling cause.",
+  "executable": {
+    "bytes": 3707640,
+    "sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2"
+  },
+  "failed_method": "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize",
+  "failed_test": "test_standalone_workspace_replay",
+  "failure_assertion": "self.assertLess(initial[\"elapsed_ms\"], 180, \"A pre-action loaded-state observation is required\")",
+  "failure_source": "apps/standalone/native_tests/test_standalone_workspace_replay.py:254",
+  "final_replay": {
+    "accepted_note_off_commands": 5,
+    "accepted_note_on_commands": 5,
+    "before_shutdown": {
+      "controls": {
+        "expression": 0.375,
+        "fixed_registrations": [
+          6,
+          8
+        ],
+        "manual_drawbars": [
+          [
+            [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            [
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              3,
+              5,
+              7,
+              0,
+              2,
+              4,
+              6,
+              8
+            ],
+            [
+              8,
+              6,
+              4,
+              2,
+              0,
+              7,
+              5,
+              3,
+              1
+            ]
+          ]
+        ],
+        "pedal_drawbars": [
+          2,
+          7
+        ],
+        "percussion": {
+          "decay": 1,
+          "enabled": true,
+          "harmonic": 1,
+          "volume": 1
+        },
+        "preset_selections": [
+          6,
+          8
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "selected_banks": [
+          0,
+          1
+        ]
+      },
+      "last_applied_sequence": 13,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 13
+    },
+    "completed": true,
+    "final_acknowledged": true,
+    "last_submitted_sequence": 13,
+    "observations_truncated": false,
+    "passed": true
+  },
+  "first_sound_action_ms": 180,
+  "midi_replay": {
+    "accepted_packets": 6,
+    "completed": true,
+    "connected_before_shutdown": true,
+    "dropped_packets": 0,
+    "final_acknowledged": true,
+    "passed": true
+  },
+  "next_action": "Independently diagnose and repair the startup-baseline observation protocol while preserving exact command counts and ownership paths. Raising the 180 ms bound alone cannot fix the subsequent submitted/applied mismatch. Retain this original failure and qualify changed inputs with a new identified gate.",
+  "observations": [
+    {
+      "elapsed_ms": 191,
+      "last_applied_sequence": 3,
+      "last_submitted_sequence": 4,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 3
+    },
+    {
+      "elapsed_ms": 337,
+      "last_applied_sequence": 4,
+      "last_submitted_sequence": 5,
+      "manual_notes": [
+        [
+          60
+        ],
+        []
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 4
+    },
+    {
+      "elapsed_ms": 452,
+      "last_applied_sequence": 5,
+      "last_submitted_sequence": 6,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          60
+        ]
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 5
+    },
+    {
+      "elapsed_ms": 554,
+      "last_applied_sequence": 6,
+      "last_submitted_sequence": 6,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          60
+        ]
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 6
+    },
+    {
+      "elapsed_ms": 656,
+      "last_applied_sequence": 6,
+      "last_submitted_sequence": 7,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          60
+        ]
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 6
+    },
+    {
+      "elapsed_ms": 750,
+      "last_applied_sequence": 7,
+      "last_submitted_sequence": 7,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          60,
+          64
+        ]
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 7
+    },
+    {
+      "elapsed_ms": 940,
+      "last_applied_sequence": 7,
+      "last_submitted_sequence": 8,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          60,
+          64
+        ]
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 7
+    },
+    {
+      "elapsed_ms": 1033,
+      "last_applied_sequence": 8,
+      "last_submitted_sequence": 8,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          60,
+          64
+        ]
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 8
+    },
+    {
+      "elapsed_ms": 1915,
+      "last_applied_sequence": 8,
+      "last_submitted_sequence": 9,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          60,
+          64
+        ]
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 8
+    },
+    {
+      "elapsed_ms": 1940,
+      "last_applied_sequence": 9,
+      "last_submitted_sequence": 9,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          64
+        ]
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 9
+    },
+    {
+      "elapsed_ms": 2108,
+      "last_applied_sequence": 9,
+      "last_submitted_sequence": 10,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          64
+        ]
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 9
+    },
+    {
+      "elapsed_ms": 2134,
+      "last_applied_sequence": 10,
+      "last_submitted_sequence": 10,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          64
+        ]
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 10
+    },
+    {
+      "elapsed_ms": 2354,
+      "last_applied_sequence": 10,
+      "last_submitted_sequence": 11,
+      "manual_notes": [
+        [
+          60
+        ],
+        [
+          64
+        ]
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 10
+    },
+    {
+      "elapsed_ms": 2374,
+      "last_applied_sequence": 11,
+      "last_submitted_sequence": 11,
+      "manual_notes": [
+        [],
+        [
+          64
+        ]
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 11
+    },
+    {
+      "elapsed_ms": 2566,
+      "last_applied_sequence": 11,
+      "last_submitted_sequence": 12,
+      "manual_notes": [
+        [],
+        [
+          64
+        ]
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 11
+    },
+    {
+      "elapsed_ms": 2585,
+      "last_applied_sequence": 12,
+      "last_submitted_sequence": 12,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 12
+    },
+    {
+      "elapsed_ms": 2763,
+      "last_applied_sequence": 12,
+      "last_submitted_sequence": 13,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": [
+        25
+      ],
+      "resolved_sequence": 12
+    },
+    {
+      "elapsed_ms": 2783,
+      "last_applied_sequence": 13,
+      "last_submitted_sequence": 13,
+      "manual_notes": [
+        [],
+        []
+      ],
+      "pedal_ids": [],
+      "resolved_sequence": 13
+    }
+  ],
+  "observed_initial_elapsed_ms": 191,
+  "original_junit": {
+    "bytes": 114864,
+    "path": "a49-release-junit.xml",
+    "sha256": "b83a4a4ea597007602cdafd5b18cf48028e6161a136a40d35e79942692db0995"
+  },
+  "original_log": {
+    "bytes": 301886,
+    "path": "a49-release-ctest.log",
+    "sha256": "0ae23075b4ce349880368ddb37d915ef7b2ecd741098667f0a10799a0f559e6c"
+  },
+  "retained_case": {
+    "diagnostics": {
+      "basis": "JSON object extracted from original JUnit failure output; pretty-print serialization is derived",
+      "bytes": 81873,
+      "path": "a49-workspace-failed-diagnostics.json",
+      "sha256": "5097f71c784f6cfccc0e7823d231ed51e73e2a79ec84bcb02b34a889f60c0bde"
+    },
+    "fixture": {
+      "bytes": 41796,
+      "path": "apps/standalone/native_tests/test_standalone_workflows.py",
+      "sha256": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124"
+    },
+    "midi": {
+      "basis": "ASCII input copied from original failure diagnostic",
+      "bytes": 159,
+      "path": "a49-workspace-failed-midi.b3midi",
+      "sha256": "4cbf9900dd6ee9b32634a4e491cdef4457291e8aed6496e56b2361e1d137cace"
+    },
+    "state": {
+      "basis": "Exact FIXED_STATE byte literal extracted with AST from the identified source fixture, not the removed private runtime file",
+      "bytes": 452,
+      "path": "a49-workspace-state-from-fixture.b3controls",
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    "ui": {
+      "basis": "ASCII input copied from original failure diagnostic",
+      "bytes": 411,
+      "path": "a49-workspace-failed-input.b3ui",
+      "sha256": "9d4770809137535ad3085b2ff07cc0087dc98ce548282996e333e0517f45de43"
+    }
+  },
+  "schema": "interface-coherent-workspace-failure-a49-v1",
+  "source_commit": "cdbb2beaa28bf136f9a8db6213819129514e2ae9",
+  "subsequent_assertion_would_also_fail": {
+    "actual_submitted": 4,
+    "assertion": "self.assertEqual(initial[\"last_submitted_sequence\"], startup_sequence)",
+    "startup_sequence_from_first_applied": 3
+  },
+  "test_reachability": "Schema/lifecycle, complete control path, complete hold path and accepted five On/five Off assertions completed before the failure. Later ownership-window, MIDI count, view-path and saved-state assertions were not reached in this method; raw diagnostics are observations, not substitute passes."
+}

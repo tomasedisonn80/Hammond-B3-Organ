@@ -1,0 +1,59 @@
+{
+  "authorization": "Root explicitly authorized the zero-packet branch and a separately retained corrected workspace suite run.",
+  "authorized_corrected_suite_runs": 1,
+  "corrected_suite": "a52-workspace-corrected/result.json",
+  "corrected_suite_methods_passed": 6,
+  "corrected_suite_native_processes": 16,
+  "corrected_suite_sha256": "0158dd501821fd36b5dc3adfe17754a7d9b8234f557a2bdff9e429f63b452652",
+  "current_helper": {
+    "bytes": 23385,
+    "sha256": "9aa6b92566c0c86c0ddaad79bd363d1d73476cc947969ed04c668daf51bdead0"
+  },
+  "diagnosis": "The new connect-only startup prefix correctly reports zero offered packets and last_arrival_ns=0. Reused NativeMidiReplayAcceptance.assert_common unconditionally requires last_arrival_ns>0, so the valid native prefix is rejected before the original journey. This is an A52 harness coverage omission; no native retry has run.",
+  "fixture_patch_sha256": "2d1ab8ba10a7cbcdc43b7ebfd265313eb7edd893f69cfbad24c9d2e73fdff9bc",
+  "midi_helper_after": {
+    "bytes": 48023,
+    "sha256": "7675ea52acf4ea808b062eacf05e5a23a32f1b9b2c5e7239ad747aee1197b0a6"
+  },
+  "midi_helper_before_sha256": "1cdaa5a6669b79ed19f26c170ef77a0181162a18649d0d81deed7f53f5a9fb8e",
+  "native_application_failures": 0,
+  "native_processes": 15,
+  "native_retries_so_far": 0,
+  "original_attempt": "a52-workspace-suite",
+  "original_full_combined_journey_reached": false,
+  "preserved_first_attempt_helper": {
+    "bytes": 21973,
+    "sha256": "6cbffc2b9d1e9fcb812bed91c2b339c40a201ccfd0d997685b63cc2d9b93c6e1"
+  },
+  "proposed_correction": "Retain >0 for any offered packet, require exact 0 otherwise. Source main.cpp feed_midi_replay_bytes sets last_arrival_ns and increments offered_packets together; connect-only invokes neither.",
+  "retained_files": {
+    "a52-workspace-suite/cases/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1/diagnostics.json": {
+      "bytes": 9591,
+      "sha256": "7dbbe72d6beb9958f17a97700d484f589502ee1146fc2ce903c651c565f33b2d"
+    },
+    "a52-workspace-suite/process.json": {
+      "bytes": 1077,
+      "sha256": "7e65ba866cb1d6d0b4ed5e91023965d4b3335c7a2379fba1e8bb65cb27cdad5e"
+    },
+    "a52-workspace-suite/result.json": {
+      "bytes": 15835,
+      "sha256": "c4f7e76838d71aae36941509751cba087c9e2bab08b536ac93ef6fa40c67cc1b"
+    },
+    "a52-workspace-suite/stderr.txt": {
+      "bytes": 14225,
+      "sha256": "07c9b65fe41d7b07543b5a0a2246e841b3a678ba6f49a9fb21877a7f09c9a7ad"
+    },
+    "a52-workspace-suite/stdout.txt": {
+      "bytes": 143,
+      "sha256": "3c63584421f5161e1921d9300a727f03829f4d1fff6feb04322417d6c2ed2db2"
+    }
+  },
+  "retained_oracle": "a52-retained-oracle/result.json",
+  "retained_oracle_sha256": "7216badf8333c964b57e097262b7172232af3f472a238152422beb9fdd6aade1",
+  "schema": "a52-authoring-correction-v1",
+  "source_boundary": "No product, event timing, duration, process timeout, ownership assertion or original A49 evidence changes.",
+  "status": "corrected and qualified; both attempts preserved",
+  "unittest_methods_failed": 1,
+  "unittest_methods_passed": 5,
+  "zero_packet_retained_prefix_common_checks": "passed without native execution"
+}

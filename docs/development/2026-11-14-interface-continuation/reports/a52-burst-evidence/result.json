@@ -1,0 +1,142 @@
+{
+  "acknowledged_prefixes_seen": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "assignment": 52,
+  "authorization": "Root released CPU after A49 and authorized one repaired six-method suite, retained-trace checks and one bounded burst; no native retry",
+  "baseline_diagnostics": {
+    "bytes": 13118,
+    "path": "docs/development/2026-11-14-interface-continuation/reports/a52-workspace-corrected/cases/test_capture_failure_closes_parameter_gesture_before_view_and_resize-1/diagnostics.json",
+    "sha256": "ddd39ac0b0514cdb998d1c9a24269d31147b0dd2be9dbd6c2dca480d5fceb105"
+  },
+  "budget": {
+    "application_replay_drain_ms": 2000,
+    "duration_ms": 5400,
+    "expected_note_off_commands": 3,
+    "expected_note_on_commands": 3,
+    "expected_other_post_startup_session_commands": 0,
+    "intended_presentation_toggles": 31,
+    "intended_workspace_changes": 90,
+    "main_loop_polled_event_limit_per_turn": 256,
+    "maximum_scheduled_equal_time_actions": 228,
+    "musical_observation_capacity": 512,
+    "parser_action_limit": 256,
+    "parser_byte_limit": 65536,
+    "parser_duration_range_ms": [
+      250,
+      10000
+    ],
+    "presentation_observation_capacity": 512,
+    "process_timeout_seconds": 20,
+    "script_actions": 256,
+    "script_bytes": 5673,
+    "session_command_capacity": 256
+  },
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "docs/development/2026-11-14-interface-continuation/reports/a52-qualification.py",
+    "burst",
+    "--executable",
+    "../a36-status-bin/hammond_standalone",
+    "--suite-output",
+    "docs/development/2026-11-14-interface-continuation/reports/a52-workspace-corrected",
+    "--output",
+    "docs/development/2026-11-14-interface-continuation/reports/a52-burst-evidence"
+  ],
+  "failure": null,
+  "final_focus_behavior": "Space auditions original remembered Lower C4 while F3 targets Pedals; original A Upper60 and S Lower62 owners remain until their modified-key releases",
+  "limits": [
+    "1280x900 dummy drawable only; no giant surface or physical display qualification",
+    "228 equal-time actions are scheduled, not a measured per-turn SDL dispatch count",
+    "121 shortcut activations are the admitted script intent; intermediate unpainted views are not individually observed",
+    "No pointer actions or persistent OS capture; earlier dummy capture failure is not OS-pointer coverage",
+    "No MIDI selection or discovery, physical audio, semantic accessibility, callback deadline, leak or fidelity claim"
+  ],
+  "musical_observations": 13,
+  "native_processes": 1,
+  "output_files": {
+    "controls.b3controls": {
+      "bytes": 452,
+      "sha256": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf"
+    },
+    "diagnostics.json": {
+      "bytes": 15124,
+      "sha256": "744a6f4825e38c0c73ccaba692f3f05f2920bb4ee953e42d9e91559558b45f6c"
+    },
+    "input.b3uireplay": {
+      "bytes": 5673,
+      "sha256": "f926148eef823b70c6b0159a519071afd4de28c93d4ac54487b6a9026500ea45"
+    },
+    "process.json": {
+      "bytes": 1286,
+      "sha256": "5808b723d3f4035d86280386aefef285903aecfcd3bc8fa3922902eb2b890f08"
+    },
+    "source-after.json": {
+      "bytes": 18970,
+      "sha256": "3de728e14963871576b0a843a4e0c6c314574ae161cc8e09c3e843abf5aeb862"
+    },
+    "source-before.json": {
+      "bytes": 18970,
+      "sha256": "3de728e14963871576b0a843a4e0c6c314574ae161cc8e09c3e843abf5aeb862"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "passed": true,
+  "phase": "burst",
+  "pre_shutdown_sequence": 9,
+  "presentation_observations": 10,
+  "process": {
+    "command": [
+      "/workspace/scratch/601951e27dc3/a36-status-bin/hammond_standalone",
+      "--state",
+      "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a52-burst-evidence/controls.b3controls",
+      "--input-script",
+      "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a52-burst-evidence/input.b3uireplay",
+      "--diagnostics",
+      "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a52-burst-evidence/diagnostics.json",
+      "--width",
+      "1280",
+      "--height",
+      "900",
+      "--sample-rate",
+      "48000",
+      "--buffer-frames",
+      "512"
+    ],
+    "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+    "elapsed_seconds": 5.511467058997368,
+    "environment_overrides": {
+      "SDL_AUDIODRIVER": "dummy",
+      "SDL_VIDEODRIVER": "dummy"
+    },
+    "linux_wait4": {
+      "max_rss_kib": 34748,
+      "system_seconds": 0.049790999999999995,
+      "user_seconds": 4.222865
+    },
+    "resource_scope": "one observed child process; suite child usage includes its reaped children; 10 ms polling quantization; no performance/leak/deadline inference",
+    "returncode": 0,
+    "timed_out": false,
+    "timeout_seconds": 20.0
+  },
+  "python": "3.12.14",
+  "recorded_at_utc": "2026-11-14T13:32:28.527808+00:00",
+  "schema": "a52-native-input-qualification-v1",
+  "shutdown_discarded_commands": 1,
+  "source_executable_and_inputs_unchanged": true,
+  "startup_sequence": 3,
+  "worker": "/root/w09_a52_bounded_native_burst"
+}

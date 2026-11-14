@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "operation": "guarded main publication through Git Data API",
+  "parent": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+  "commit": "cdbb2beaa28bf136f9a8db6213819129514e2ae9",
+  "tree": "b4d71c1f574ab17ba1a3f37b24667c1ff3f9c527",
+  "files_in_checkpoint": 110,
+  "expected_head_verified": true,
+  "force": false,
+  "remote_fetch_verified": true,
+  "staged_tree_equal_remote_tree": true,
+  "local_head_aligned_softly": true,
+  "unfinished_work_preserved": true,
+  "qualification": [
+    "a41-result.json",
+    "a43-native-sanitizer-ci.json",
+    "root-sanitizer-budgets.json",
+    "root-a43-static-recheck.json",
+    "a44-final-package-result.json",
+    "a45-documentation-audit.json",
+    "root-ui-polish-hosted.json"
+  ],
+  "notes": [
+    "New focused native SDL sanitizer/leak job is published; its exact hosted execution remains pending.",
+    "Completed scoped native ASan/UBSan diagnostics, original CTest timeouts and local leak attach failures remain distinct.",
+    "A46 final gallery/README and A47/A48 independent evidence were unfinished and excluded.",
+    "All eleven existing hosted jobs succeeded on parent8673713; do not transfer that result automatically to this commit."
+  ]
+}

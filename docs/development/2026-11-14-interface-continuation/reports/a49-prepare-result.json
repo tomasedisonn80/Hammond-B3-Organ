@@ -1,0 +1,92 @@
+{
+  "application_byte_identical": true,
+  "build": {
+    "command": [
+      "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/601951e27dc3/build-native",
+      "--parallel",
+      "2"
+    ],
+    "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+    "environment_overrides": {},
+    "finished_at_utc": "2026-11-14T13:07:35.716166+00:00",
+    "log": {
+      "bytes": 5339,
+      "path": "a49-build.log",
+      "sha256": "602b91263520385609e4746f276437a9dbd12546c706c61a6558c48b89c81ea6"
+    },
+    "returncode": 0,
+    "seconds": 3.398718,
+    "started_at_utc": "2026-11-14T13:07:32.317462+00:00"
+  },
+  "configure": {
+    "command": [
+      "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+      "-S",
+      "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "-B",
+      "/workspace/scratch/601951e27dc3/build-native",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_TESTING=ON",
+      "-DHAMMOND_BUILD_STANDALONE=ON",
+      "-DHAMMOND_BUILD_VST3=OFF",
+      "-DHAMMOND_ENABLE_SANITIZERS=OFF",
+      "-DHAMMOND_ENABLE_MIDI=ON",
+      "-DSDL_ALSA=OFF",
+      "-DHAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2",
+      "-DHAMMOND_RTMIDI_ROOT=/workspace/scratch/cd4bd06ce68f/rtmidi",
+      "-DALSA_INCLUDE_DIR=/workspace/scratch/641ca55ce6de/native-sysroot/usr/include",
+      "-DALSA_LIBRARY=/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so"
+    ],
+    "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+    "environment_overrides": {},
+    "finished_at_utc": "2026-11-14T13:07:32.316568+00:00",
+    "log": {
+      "bytes": 9456,
+      "path": "a49-configure.log",
+      "sha256": "8e364e2569e32ccaa4aa96a6d8e6385b9ce734f8b6eadb46bb370494ee472aef"
+    },
+    "returncode": 0,
+    "seconds": 2.131255,
+    "started_at_utc": "2026-11-14T13:07:30.185350+00:00"
+  },
+  "ctest_parallelism": 1,
+  "discovered_tests": 147,
+  "inventory_command": [
+    "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/601951e27dc3/build-native",
+    "-C",
+    "Release",
+    "--show-only=json-v1"
+  ],
+  "inventory_file": {
+    "bytes": 147623,
+    "path": "a49-ctest-inventory.json",
+    "sha256": "c42a17f5d0d71c5e4638c1cb6c79ac91d4b4bb0bda9e39ee5b264941ea93ec5e"
+  },
+  "native_application": {
+    "bytes": 3707640,
+    "sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2"
+  },
+  "ordinary_release_timeouts": {
+    "test_standalone_native_midi_replay": 90,
+    "test_standalone_preset_raster": 30,
+    "test_standalone_scaled_view": 60,
+    "test_standalone_workflows": 90,
+    "test_standalone_workspace_raster": 60,
+    "test_standalone_workspace_replay": 90
+  },
+  "parallelism_basis": "Existing standalone CI uses --parallel 1. Original complete gate's workflow suite consumed 64.69 of its 90-second limit; no parallel native timing contract was established. Preserve serial execution and existing per-test limits.",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "recorded_at_utc": "2026-11-14T13:07:39.125944+00:00",
+  "schema": "interface-final-coherent-prepare-a49-v1",
+  "source_inputs_unchanged": true,
+  "toolchain": {
+    "cmake": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "ctest": "ctest version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "cxx": "c++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "python": "Python 3.12.14"
+  }
+}

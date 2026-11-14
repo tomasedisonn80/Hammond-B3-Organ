@@ -2,30 +2,31 @@
 
 ## Current interface continuation
 
-Resume the [current session](development/2026-11-14-interface-continuation/README.md)
+Resume the [handoff](INTERFACE_HANDOFF.md), [session](development/2026-11-14-interface-continuation/README.md)
 and [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md).
-The complete atlas review, workspace/geometry/inspection implementation, actual
-packages, protected musical continuity and platform repairs are retained.
+The complete atlas reading, interface implementation, final native gallery,
+protected musical continuity and source-identified qualification are retained.
 
-1. Publish and observe the new thirteen-suite native SDL sanitizer/leak job.
-   The polished product and strict Windows fixtures are already published at
-   `8673713`, with all eleven existing hosted jobs successful. Preserve the local
-   leak-runtime blocker and original raster timeouts separately from later runs.
-2. Finish the actual final gallery, full coherent source and VST3 boundary.
-   Final on/off packages and source-absent relocation pass, including the current
-   guide refresh. The local SDL lacks X11/Wayland; existing development headers
-   are available in the shared sysroot for an identified backend-capable build
-   before any actual pointer-capture claim.
-3. Complete all sixty actual assignments and their strict record, refresh the
-   README/setup/status/handoff, and publish completed work to main with a fresh
-   expected-head guard. The first UI gate’s 146/147 result, later repairs and
-   original sanitizer timeouts remain separate facts.
+1. Publish the reviewed two-fixture startup repair, final gallery and current
+   guides with a fresh expected-head guard. Preserve A49's original146/147 and
+   A52's separate6/6-method/16-process closure, seven rejected corruptions and
+   256-action burst. Product code and executable bytes remain unchanged.
+2. Finish A57's actual X11 desktop flow on its identified separate build. Report
+   only observed window, input, resize/release and cleanup behavior. Physical
+   audio/MIDI, DPI and native accessibility require their own acceptance.
+3. Finish A58's primary thirteen-suite sanitizer/leak report and observe all
+   twelve jobs on the newly published source. Existing cdbb2be successes and
+   the local LSan attachment blocker retain their original scope.
+4. Complete A59/A60 accounting and handoff acceptance, run the strict real-session
+   checker after all sixty actual assignments are accepted, publish the final
+   evidence and verify clean local/remote main.
 
-Keep 47 parameter identities, saved-state compatibility, nominal models and all
-other tracks unchanged. The [full M0–M9 plan](PLAN.md) retains physical capture,
-scanner integration, complete AO-28/Leslie, native accessibility and reference
-matching as their own evidence gates. Historical sequences below are context;
-do not restart or recount their workers.
+After this bounded continuation, refine the measured reference gaps and the
+Service singular-count copy, then qualify real devices/hosts and native semantic
+accessibility. Preserve the 47 parameters, saved-state meanings and nominal
+models. The [M0–M9 plan](PLAN.md) keeps scanner G5 resolution, revision-specific
+AO-28/Leslie, physical captures and calibration as separate dependency gates.
+Historical sequences below are context; do not restart or recount their workers.
 
 ## Historical preset continuation sequence
 

@@ -1,0 +1,18 @@
+{
+  "schema": "interface-startup-prefix-proposal-review-a49-v1",
+  "reviewed_at_utc": "2026-11-14T13:23:33.324041+00:00",
+  "reviewer": "/root/w09_a49_final_coherent_gate",
+  "repair_owner": "/root/w09_a52_bounded_native_burst",
+  "basis": "A52 proposal received after original A49 146/147 gate and after CPU/build lease release",
+  "proposal": "Run one completed 250 ms original pre-180 ms UI/MIDI prefix (two Shift+Tab taps and connect at 50 ms), establish its acknowledged pre-shutdown startup sequence, then use that sequence for the unchanged 3200 ms combined journey.",
+  "review_result": "No flaw identified subject to the explicit conditions below; proposal review only, not repair execution or acceptance.",
+  "required_conditions": [
+    "Prefix and complete journey use identical executable hash, state bytes, 1280x900 initial dimensions, dummy environment and MIDI-present startup path.",
+    "Prefix retains original event times, literal controls, empty holds, zero On/Off, completed/final-acknowledged state and exactly one device start.",
+    "Measure the baseline from pre-shutdown replay submitted=applied=resolved; joined shutdown introduces retirement commands and cannot supply the baseline.",
+    "Keep the full journey five-On/five-Off counts, exact final-minus-startup sequence delta of ten, complete held/control/view paths, ownership window, packet and saved-state assertions.",
+    "Preserve original durations, process timeout, CTest timeout and A49 failure artifacts; qualify all six affected methods after the repair."
+  ],
+  "additional_executions_by_a49": 0,
+  "original_a49_result_unchanged": "146/147; startup assertion at 191 ms versus required <180 ms; no retry"
+}

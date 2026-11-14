@@ -1,0 +1,1024 @@
+{
+  "schema": 1,
+  "agent": "/root/w08_a48_hosted_platform_evidence",
+  "agent_number": 48,
+  "wave": 8,
+  "result": "pass_exact_8673713_platform_audit_checkpoint5_pending",
+  "observed_at_utc": "2026-11-14T13:00:31.123Z",
+  "completed_at_utc": "2026-11-14T13:05:09.500391+00:00",
+  "source": {
+    "commit": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+    "tree": "e11bd68d6051f663631579ef235325a8775f8133",
+    "commit_api_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/commits/8673713a484c40e26ac7810c7c4cbc22fa874426",
+    "git_commit_and_tree_independently_observed": true,
+    "published_workflow_sha256": "527d1cdb692cd5d837f0436ee68b2026878b10c5db1553459ca623060e4c1d34",
+    "published_standalone_cmake_sha256": "6661ddf975af37b0b8720140afa857b6537c069d07f388ce0e8524befed97ffe",
+    "a40_repair_files": [
+      {
+        "path": "apps/standalone/tests/test_standalone_workspace_acceptance.cpp",
+        "published_sha256": "7f25ce7d5cf2adedafed3ab2eef5ff59c832d0ea5fc440021a1d6cee4df2eba0",
+        "matches_a40_qualified_repair": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_scaled_view.cpp",
+        "published_sha256": "bbffea029ec96c3b611f0fa49ed1089fcf9c535ba7642c18992c87454539af99",
+        "matches_a40_qualified_repair": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_workspace_raster.cpp",
+        "published_sha256": "077820d47d6cefec2544a248d25033439fac5d34e013401558df8fca80630e51",
+        "matches_a40_qualified_repair": true
+      }
+    ]
+  },
+  "method": {
+    "primary_read_tools": [
+      "github_fetch",
+      "github_fetch_workflow_run_jobs",
+      "github_fetch_workflow_job_logs",
+      "github_fetch_workflow_run_artifacts"
+    ],
+    "workflow_observation": "One bounded complete published audit; raw REST jobs pages validate head_sha and total_count omitted by compact wrapper.",
+    "log_storage": "/workspace/scratch/601951e27dc3/a48-hosted-primary",
+    "raw_api_json_sha256": "cdb314dca03a01e6e03c3f3808501e59f85f17028940fb3ddabeb42abf6d5ccd",
+    "vst3_scope": "Three job identities and completed-success conclusions only; detailed native VST3 qualification belongs to A47, whose logs were not downloaded here."
+  },
+  "jobs_expected": 11,
+  "jobs_completed_success": 11,
+  "workflow_runs": [
+    {
+      "id": 43596362824,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "event": "push",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362824",
+      "created_at": "2026-11-14T12:45:22Z",
+      "run_started_at": "2026-11-14T12:45:22Z",
+      "updated_at": "2026-11-14T12:51:25Z"
+    },
+    {
+      "id": 43596362938,
+      "name": "Native standalone",
+      "path": ".github/workflows/standalone.yml",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "event": "push",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362938",
+      "created_at": "2026-11-14T12:45:23Z",
+      "run_started_at": "2026-11-14T12:45:23Z",
+      "updated_at": "2026-11-14T12:53:04Z"
+    },
+    {
+      "id": 43596362881,
+      "name": "Native VST3",
+      "path": ".github/workflows/native-vst3.yml",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "event": "push",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362881",
+      "created_at": "2026-11-14T12:45:22Z",
+      "run_started_at": "2026-11-14T12:45:22Z",
+      "updated_at": "2026-11-14T12:47:12Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 132451604362,
+      "run_id": 43596362824,
+      "workflow_name": "CI",
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362824/job/132451604362",
+      "started_at": "2026-11-14T12:45:25Z",
+      "completed_at": "2026-11-14T12:51:24Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_name": "GitHub Actions 1000000810",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604598,
+      "run_id": 43596362824,
+      "workflow_name": "CI",
+      "name": "Release (Linux GCC)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362824/job/132451604598",
+      "started_at": "2026-11-14T12:45:25Z",
+      "completed_at": "2026-11-14T12:47:55Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_name": "GitHub Actions 1000000817",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604636,
+      "run_id": 43596362824,
+      "workflow_name": "CI",
+      "name": "Release (macOS AppleClang)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362824/job/132451604636",
+      "started_at": "2026-11-14T12:45:26Z",
+      "completed_at": "2026-11-14T12:49:26Z",
+      "labels": [
+        "macos-15"
+      ],
+      "runner_name": "GitHub Actions 1000000819",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604650,
+      "run_id": 43596362824,
+      "workflow_name": "CI",
+      "name": "Release (Windows MSVC)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362824/job/132451604650",
+      "started_at": "2026-11-14T12:45:25Z",
+      "completed_at": "2026-11-14T12:51:07Z",
+      "labels": [
+        "windows-2022"
+      ],
+      "runner_name": "GitHub Actions 1000000820",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604316,
+      "run_id": 43596362938,
+      "workflow_name": "Native standalone",
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362938/job/132451604316",
+      "started_at": "2026-11-14T12:45:25Z",
+      "completed_at": "2026-11-14T12:50:31Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_name": "GitHub Actions 1000000812",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604523,
+      "run_id": 43596362938,
+      "workflow_name": "Native standalone",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362938/job/132451604523",
+      "started_at": "2026-11-14T12:45:25Z",
+      "completed_at": "2026-11-14T12:53:04Z",
+      "labels": [
+        "windows-2022"
+      ],
+      "runner_name": "GitHub Actions 1000000814",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604553,
+      "run_id": 43596362938,
+      "workflow_name": "Native standalone",
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362938/job/132451604553",
+      "started_at": "2026-11-14T12:45:26Z",
+      "completed_at": "2026-11-14T12:52:14Z",
+      "labels": [
+        "macos-15"
+      ],
+      "runner_name": "GitHub Actions 1000000816",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604586,
+      "run_id": 43596362938,
+      "workflow_name": "Native standalone",
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362938/job/132451604586",
+      "started_at": "2026-11-14T12:45:25Z",
+      "completed_at": "2026-11-14T12:51:22Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_name": "GitHub Actions 1000000818",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604200,
+      "run_id": 43596362881,
+      "workflow_name": "Native VST3",
+      "name": "Native VST3 (Linux GCC)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362881/job/132451604200",
+      "started_at": "2026-11-14T12:45:25Z",
+      "completed_at": "2026-11-14T12:46:25Z",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_name": "GitHub Actions 1000000811",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604376,
+      "run_id": 43596362881,
+      "workflow_name": "Native VST3",
+      "name": "Native VST3 (Windows MSVC x64)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362881/job/132451604376",
+      "started_at": "2026-11-14T12:45:25Z",
+      "completed_at": "2026-11-14T12:47:12Z",
+      "labels": [
+        "windows-2022"
+      ],
+      "runner_name": "GitHub Actions 1000000813",
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 132451604377,
+      "run_id": 43596362881,
+      "workflow_name": "Native VST3",
+      "name": "Native VST3 (macOS AppleClang)",
+      "head_sha": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43596362881/job/132451604377",
+      "started_at": "2026-11-14T12:45:26Z",
+      "completed_at": "2026-11-14T12:46:37Z",
+      "labels": [
+        "macos-15"
+      ],
+      "runner_name": "GitHub Actions 1000000815",
+      "runner_group_name": "GitHub Actions"
+    }
+  ],
+  "required_standalone_names_from_published_workflow": [
+    "test_standalone_drawing",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author",
+    "test_standalone_install",
+    "test_standalone_midi_backend",
+    "test_standalone_midi_backend_quarantine",
+    "test_standalone_midi_cli",
+    "test_standalone_midi_concurrency",
+    "test_standalone_midi_discovery",
+    "test_standalone_midi_input",
+    "test_standalone_midi_replay",
+    "test_standalone_midi_session",
+    "test_standalone_native_midi_replay",
+    "test_standalone_projection",
+    "test_standalone_quad_drawing",
+    "test_standalone_scaled_view",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_workspace_raster",
+    "test_standalone_workspace_replay",
+    "test_standalone_workspaces_author"
+  ],
+  "native_labelled_names_from_published_cmake": [
+    "test_standalone_app",
+    "test_standalone_chapel",
+    "test_standalone_device_removal",
+    "test_standalone_drawing",
+    "test_standalone_midi_cli",
+    "test_standalone_native_midi_replay",
+    "test_standalone_preset_raster",
+    "test_standalone_quad_drawing",
+    "test_standalone_replay_boundaries",
+    "test_standalone_scaled_view",
+    "test_standalone_workflows",
+    "test_standalone_workspace_raster",
+    "test_standalone_workspace_replay"
+  ],
+  "standalone_shared_executed_names": [
+    "test_standalone_app",
+    "test_standalone_audio_device",
+    "test_standalone_benchmark",
+    "test_standalone_callback_allocation",
+    "test_standalone_chapel",
+    "test_standalone_concurrency",
+    "test_standalone_device_removal",
+    "test_standalone_drawing",
+    "test_standalone_external_control",
+    "test_standalone_input_replay",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author",
+    "test_standalone_install",
+    "test_standalone_midi_backend",
+    "test_standalone_midi_backend_quarantine",
+    "test_standalone_midi_cli",
+    "test_standalone_midi_concurrency",
+    "test_standalone_midi_discovery",
+    "test_standalone_midi_input",
+    "test_standalone_midi_replay",
+    "test_standalone_midi_session",
+    "test_standalone_native_midi_replay",
+    "test_standalone_preset_concurrency",
+    "test_standalone_preset_raster",
+    "test_standalone_preset_ui",
+    "test_standalone_projection",
+    "test_standalone_quad_drawing",
+    "test_standalone_replay_boundaries",
+    "test_standalone_scaled_view",
+    "test_standalone_session",
+    "test_standalone_state_files",
+    "test_standalone_ui",
+    "test_standalone_workflows",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_workspace_raster",
+    "test_standalone_workspace_replay",
+    "test_standalone_workspaces_author"
+  ],
+  "logs": [
+    {
+      "job_id": 132451604650,
+      "complete_log_local_path": "/workspace/scratch/601951e27dc3/a48-hosted-primary/job-132451604650.log",
+      "decoded_log_format": "Exact connector-decoded text re-encoded as UTF-8; BOM and original CRLF/LF retained; no newline normalization.",
+      "decoded_log_sha256": "a041f55ea342de6217a97034004819ddcf21b4e6386af821702e59c41c2e2056",
+      "decoded_log_bytes": 356570,
+      "utf8_bom_present": true,
+      "crlf_count": 2297,
+      "lf_count": 2304,
+      "compiler": "MSVC 19.44.35230.0",
+      "discovered_and_passed": 130,
+      "failed": 0,
+      "skipped": 0,
+      "ctest_real_seconds": 185.34,
+      "ctest_no_tests_error_observed": true,
+      "executed_test_names_sha256": "f5af97c058be374d07d33a7be768e64eddad15891f50cf33e026da689a2fbaea",
+      "executed_test_name_inventory": [
+        "python_test_audio_analysis",
+        "python_test_calibration_session_records",
+        "python_test_capture",
+        "python_test_capture_audio",
+        "python_test_capture_audio_admission",
+        "python_test_capture_cli_pipeline",
+        "python_test_capture_common",
+        "python_test_capture_comparison",
+        "python_test_capture_corpus",
+        "python_test_capture_corpus_admission",
+        "python_test_capture_demo",
+        "python_test_capture_graph_scale",
+        "python_test_capture_install",
+        "python_test_capture_job",
+        "python_test_capture_metadata_read",
+        "python_test_capture_numerics",
+        "python_test_capture_policy",
+        "python_test_capture_readiness",
+        "python_test_capture_replay",
+        "python_test_capture_study",
+        "python_test_chapel_controls",
+        "python_test_chapel_presets",
+        "python_test_cli_unicode",
+        "python_test_compile_fixed_registrations",
+        "python_test_compile_pedal_routing",
+        "python_test_compile_profile",
+        "python_test_console_benchmark",
+        "python_test_console_catalog",
+        "python_test_console_evidence",
+        "python_test_console_trace",
+        "python_test_continuation_ledger",
+        "python_test_demo_bundle",
+        "python_test_factory_reference",
+        "python_test_fixed_registration_source_admission",
+        "python_test_fixture_catalog",
+        "python_test_install",
+        "python_test_model_info",
+        "python_test_native_bundle_inventory",
+        "python_test_parameter_bridge",
+        "python_test_parameters",
+        "python_test_partial_key_render",
+        "python_test_pedal_catalog",
+        "python_test_pedal_demo",
+        "python_test_pedal_map",
+        "python_test_pedal_render_cli",
+        "python_test_pedal_render_evidence",
+        "python_test_pedal_session",
+        "python_test_pedal_trace",
+        "python_test_plot_console_trace",
+        "python_test_plot_pedal_trace",
+        "python_test_preset_parameter_oracle",
+        "python_test_render",
+        "python_test_render_fixture",
+        "python_test_repository_integrity",
+        "python_test_rotary_profile",
+        "python_test_rotary_reference",
+        "python_test_scanner_ac_reference",
+        "python_test_scanner_line_profile",
+        "python_test_scanner_native_ac",
+        "python_test_scanner_transient_reference",
+        "python_test_sdl2_dependency",
+        "python_test_standalone_session_records",
+        "python_test_verify_render",
+        "python_test_vst3_build_tools",
+        "test_console_engine",
+        "test_contact_bank",
+        "test_contact_rate",
+        "test_control_io",
+        "test_controls",
+        "test_core_robustness",
+        "test_decimal",
+        "test_engine",
+        "test_engine_rate",
+        "test_factory_runtime",
+        "test_fixed_registration_data",
+        "test_fixed_registration_engine",
+        "test_fixed_registration_lifecycle",
+        "test_host_timeline",
+        "test_input_processor",
+        "test_note_ownership",
+        "test_numerics",
+        "test_owned_lifecycle",
+        "test_parameter_bridge",
+        "test_partial_key",
+        "test_pedal_controls",
+        "test_pedal_engine",
+        "test_pedal_integration",
+        "test_pedal_note_ownership",
+        "test_pedal_realtime",
+        "test_pedal_reference",
+        "test_pedal_routing",
+        "test_pedal_sources",
+        "test_pedal_voice",
+        "test_percussion",
+        "test_percussion_controls",
+        "test_percussion_rate",
+        "test_performance_acceptance",
+        "test_performance_input",
+        "test_preset_parameter_boundaries",
+        "test_preset_realtime",
+        "test_profile",
+        "test_realtime",
+        "test_realtime_console",
+        "test_realtime_pedals",
+        "test_scanner_line",
+        "test_scanner_rotor",
+        "test_source_rate",
+        "test_standalone_benchmark",
+        "test_standalone_concurrency",
+        "test_standalone_external_control",
+        "test_standalone_inspection_acceptance",
+        "test_standalone_inspection_author",
+        "test_standalone_midi_backend",
+        "test_standalone_midi_backend_quarantine",
+        "test_standalone_midi_concurrency",
+        "test_standalone_midi_discovery",
+        "test_standalone_midi_input",
+        "test_standalone_midi_replay",
+        "test_standalone_midi_session",
+        "test_standalone_preset_concurrency",
+        "test_standalone_preset_ui",
+        "test_standalone_projection",
+        "test_standalone_session",
+        "test_standalone_state_files",
+        "test_standalone_ui",
+        "test_standalone_workspace_acceptance",
+        "test_standalone_workspace_continuity",
+        "test_standalone_workspaces_author",
+        "test_state_exchange",
+        "test_tonewheel"
+      ],
+      "passed_result_line_span": [
+        1977,
+        2234
+      ],
+      "repaired_fixture_passes": [
+        {
+          "name": "test_standalone_workspace_acceptance",
+          "test_number": 125,
+          "seconds": 0.06,
+          "line": 2223
+        }
+      ],
+      "excerpts": [
+        {
+          "line": 169,
+          "text": "2026-11-14T12:45:35.4768256Z 8673713a484c40e26ac7810c7c4cbc22fa874426"
+        },
+        {
+          "line": 198,
+          "text": "2026-11-14T12:45:50.8349072Z -- The CXX compiler identification is MSVC 19.44.35230.0"
+        },
+        {
+          "line": 2236,
+          "text": "2026-11-14T12:51:03.5553168Z 100% tests passed, 0 tests failed out of 130"
+        },
+        {
+          "line": 2245,
+          "text": "2026-11-14T12:51:03.5555454Z Total Test time (real) = 185.34 sec"
+        }
+      ],
+      "strict_windows_build": {
+        "compile_commands": [
+          {
+            "path": "apps/standalone/tests/test_standalone_workspace_acceptance.cpp",
+            "line": 1746,
+            "strict_flags": [
+              "/W4",
+              "/WX"
+            ],
+            "exact_compile_line": "2026-11-14T12:47:32.6635330Z          C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\tests\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\include\" /nologo /W4 /WX /diagnostics:column /O2 /Ob2 /D _MBCS /D WIN32 /D _WINDOWS /D NDEBUG /D \"HAMMOND_TEST_PROFILE=\\\"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-release/nominal.b3p\\\"\" /D \"HAMMOND_SOURCE_DIR=\\\"D:/a/Hammond-B3-Organ/Hammond-B3-Organ\\\"\" /D \"CMAKE_INTDIR=\\\"Release\\\"\" /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++20 /permissive- /Fo\"test_standalone_workspace_acceptance.dir\\Release\\\\\" /Fd\"test_standalone_workspace_acceptance.dir\\Release\\vc143.pdb\" /external:W4 /Gd /TP /errorReport:queue  /Zc:__cplusplus \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\tests\\test_standalone_workspace_acceptance.cpp\""
+          }
+        ],
+        "build_summary": [
+          {
+            "line": 1956,
+            "text": "2026-11-14T12:47:58.1008613Z Build succeeded."
+          },
+          {
+            "line": 1957,
+            "text": "2026-11-14T12:47:58.1008873Z     0 Warning(s)"
+          },
+          {
+            "line": 1958,
+            "text": "2026-11-14T12:47:58.1009082Z     0 Error(s)"
+          }
+        ],
+        "c4244_or_c4996_diagnostics": 0
+      }
+    },
+    {
+      "job_id": 132451604523,
+      "complete_log_local_path": "/workspace/scratch/601951e27dc3/a48-hosted-primary/job-132451604523.log",
+      "decoded_log_format": "Exact connector-decoded text re-encoded as UTF-8; BOM and original CRLF/LF retained; no newline normalization.",
+      "decoded_log_sha256": "f6d040a23611f22594bde878d6e06355c2e4ae8c251a706642d7201227e6d16b",
+      "decoded_log_bytes": 434182,
+      "utf8_bom_present": true,
+      "crlf_count": 3404,
+      "lf_count": 3416,
+      "compiler": "MSVC 19.44.35230.0",
+      "discovered_and_passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "ctest_real_seconds": 270.58,
+      "ctest_no_tests_error_observed": true,
+      "executed_test_names_sha256": "6a4cd86230bdfed41cc5a073f7db5f04e10aa2935715cff6ee9ab84dd31d6745",
+      "executed_test_name_inventory": "standalone_shared_executed_names",
+      "passed_result_line_span": [
+        2377,
+        2997
+      ],
+      "repaired_fixture_passes": [
+        {
+          "name": "test_standalone_workspace_acceptance",
+          "test_number": 126,
+          "seconds": 0.06,
+          "line": 2520
+        },
+        {
+          "name": "test_standalone_workspace_raster",
+          "test_number": 134,
+          "seconds": 8.75,
+          "line": 2671
+        },
+        {
+          "name": "test_standalone_scaled_view",
+          "test_number": 135,
+          "seconds": 21.54,
+          "line": 2736
+        }
+      ],
+      "excerpts": [
+        {
+          "line": 126,
+          "text": "2026-11-14T12:45:34.4626514Z 8673713a484c40e26ac7810c7c4cbc22fa874426"
+        },
+        {
+          "line": 369,
+          "text": "2026-11-14T12:46:05.3306756Z -- The CXX compiler identification is MSVC 19.44.35230.0"
+        },
+        {
+          "line": 3039,
+          "text": "2026-11-14T12:52:54.4182707Z 100% tests passed, 0 tests failed out of 38"
+        },
+        {
+          "line": 3052,
+          "text": "2026-11-14T12:52:54.4187636Z Total Test time (real) = 270.58 sec"
+        },
+        {
+          "line": 2339,
+          "text": "2026-11-14T12:48:23.7900186Z Discovered 38 standalone tests, including required MIDI, workspace, inspection and drawing gates."
+        },
+        {
+          "line": 3318,
+          "text": "2026-11-14T12:52:57.4427644Z Verified 19 installed files, MIDI WinMM, relocated help/dummy smoke, and the archived bytes."
+        }
+      ],
+      "strict_windows_build": {
+        "compile_commands": [
+          {
+            "path": "apps/standalone/tests/test_standalone_workspace_acceptance.cpp",
+            "line": 1714,
+            "strict_flags": [
+              "/W4",
+              "/WX"
+            ],
+            "exact_compile_line": "2026-11-14T12:47:41.9199825Z          C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\tests\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\include\" /nologo /W4 /WX /diagnostics:column /O2 /Ob2 /D _MBCS /D WIN32 /D _WINDOWS /D NDEBUG /D \"HAMMOND_TEST_PROFILE=\\\"D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/nominal.b3p\\\"\" /D \"HAMMOND_SOURCE_DIR=\\\"D:/a/Hammond-B3-Organ/Hammond-B3-Organ\\\"\" /D \"CMAKE_INTDIR=\\\"Release\\\"\" /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++20 /permissive- /Fo\"test_standalone_workspace_acceptance.dir\\Release\\\\\" /Fd\"test_standalone_workspace_acceptance.dir\\Release\\vc143.pdb\" /external:W4 /Gd /TP /errorReport:queue  /Zc:__cplusplus \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\tests\\test_standalone_workspace_acceptance.cpp\""
+          },
+          {
+            "path": "apps/standalone/native_tests/test_standalone_scaled_view.cpp",
+            "line": 1698,
+            "strict_flags": [
+              "/W4",
+              "/WX"
+            ],
+            "exact_compile_line": "2026-11-14T12:47:41.6077987Z          C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\include\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\_sdl2\\include\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\_sdl2\\include\\SDL2\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\_sdl2\\include-config-release\\SDL2\" /nologo /W4 /WX /diagnostics:column /O2 /Ob2 /D _MBCS /D WIN32 /D _WINDOWS /D NDEBUG /D SDL_MAIN_HANDLED /D \"CMAKE_INTDIR=\\\"Release\\\"\" /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++20 /permissive- /Fo\"test_standalone_scaled_view.dir\\Release\\\\\" /Fd\"test_standalone_scaled_view.dir\\Release\\vc143.pdb\" /external:W4 /Gd /TP /errorReport:queue  /Zc:__cplusplus \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\native_tests\\test_standalone_scaled_view.cpp\" \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\InstrumentView.cpp\""
+          },
+          {
+            "path": "apps/standalone/native_tests/test_standalone_workspace_raster.cpp",
+            "line": 1692,
+            "strict_flags": [
+              "/W4",
+              "/WX"
+            ],
+            "exact_compile_line": "2026-11-14T12:47:39.1049759Z          C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC\\14.44.35207\\bin\\HostX64\\x64\\CL.exe /c /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\include\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\_sdl2\\include\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\_sdl2\\include\\SDL2\" /I\"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\build-standalone\\_sdl2\\include-config-release\\SDL2\" /nologo /W4 /WX /diagnostics:column /O2 /Ob2 /D _MBCS /D WIN32 /D _WINDOWS /D NDEBUG /D SDL_MAIN_HANDLED /D \"CMAKE_INTDIR=\\\"Release\\\"\" /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++20 /permissive- /Fo\"test_standalone_workspace_raster.dir\\Release\\\\\" /Fd\"test_standalone_workspace_raster.dir\\Release\\vc143.pdb\" /external:W4 /Gd /TP /errorReport:queue  /Zc:__cplusplus \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\native_tests\\test_standalone_workspace_raster.cpp\" \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\InstrumentView.cpp\""
+          }
+        ],
+        "build_summary": [
+          {
+            "line": 2186,
+            "text": "2026-11-14T12:48:23.2010888Z Build succeeded."
+          },
+          {
+            "line": 2187,
+            "text": "2026-11-14T12:48:23.2011324Z     0 Warning(s)"
+          },
+          {
+            "line": 2188,
+            "text": "2026-11-14T12:48:23.2011694Z     0 Error(s)"
+          }
+        ],
+        "c4244_or_c4996_diagnostics": 0
+      },
+      "required_tests_passed": 21,
+      "native_labelled_tests_passed": 13,
+      "same_38_name_inventory_as_other_standalone_jobs": true,
+      "install_test_payload": {
+        "binary_sha256": "6d88f238cc3c04ff358cbac0a92d5ada11bddb73116ea8e86be05d4d69e97e1d",
+        "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+        "midi_enabled": true,
+        "midi_backend": "WinMM",
+        "payload_files": 19,
+        "audio_driver": "dummy",
+        "render_status": "ok"
+      },
+      "package_artifact": {
+        "id": 14114787477,
+        "name": "standalone-windows-2022-X64-midi-ON-release-package-8673713a484c40e26ac7810c7c4cbc22fa874426-1",
+        "size_in_bytes": 1572041,
+        "digest": "sha256:c5314ca0f4f07657691098b18d155b101df05b6bfaf90a6275b92be5af079ce0",
+        "created_at": "2026-11-14T12:53:00Z",
+        "expires_at": "2026-11-28T12:52:58Z",
+        "expired": false,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14114787477",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14114787477/zip",
+        "upload_log_matches_api_metadata": true
+      }
+    },
+    {
+      "job_id": 132451604316,
+      "complete_log_local_path": "/workspace/scratch/601951e27dc3/a48-hosted-primary/job-132451604316.log",
+      "decoded_log_format": "Exact connector-decoded text re-encoded as UTF-8; BOM and original CRLF/LF retained; no newline normalization.",
+      "decoded_log_sha256": "dfbfbae44dd2bf3f244da7a284e718b577b76d021e9b1ac13e420af05975f0ce",
+      "decoded_log_bytes": 725797,
+      "utf8_bom_present": true,
+      "crlf_count": 0,
+      "lf_count": 3789,
+      "compiler": "GNU 13.3.0",
+      "discovered_and_passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "ctest_real_seconds": 207.43,
+      "ctest_no_tests_error_observed": true,
+      "executed_test_names_sha256": "6a4cd86230bdfed41cc5a073f7db5f04e10aa2935715cff6ee9ab84dd31d6745",
+      "executed_test_name_inventory": "standalone_shared_executed_names",
+      "passed_result_line_span": [
+        2765,
+        3385
+      ],
+      "repaired_fixture_passes": [
+        {
+          "name": "test_standalone_workspace_acceptance",
+          "test_number": 126,
+          "seconds": 0.02,
+          "line": 2909
+        },
+        {
+          "name": "test_standalone_workspace_raster",
+          "test_number": 134,
+          "seconds": 4.0,
+          "line": 3060
+        },
+        {
+          "name": "test_standalone_scaled_view",
+          "test_number": 135,
+          "seconds": 8.8,
+          "line": 3125
+        }
+      ],
+      "excerpts": [
+        {
+          "line": 139,
+          "text": "2026-11-14T12:45:29.5061461Z 8673713a484c40e26ac7810c7c4cbc22fa874426"
+        },
+        {
+          "line": 680,
+          "text": "2026-11-14T12:45:46.8182732Z -- The CXX compiler identification is GNU 13.3.0"
+        },
+        {
+          "line": 3427,
+          "text": "2026-11-14T12:50:24.8454415Z 100% tests passed, 0 tests failed out of 38"
+        },
+        {
+          "line": 3440,
+          "text": "2026-11-14T12:50:24.8457650Z Total Test time (real) = 207.43 sec"
+        },
+        {
+          "line": 2727,
+          "text": "2026-11-14T12:46:57.4124678Z Discovered 38 standalone tests, including required MIDI, workspace, inspection and drawing gates."
+        },
+        {
+          "line": 3692,
+          "text": "2026-11-14T12:50:26.7393042Z Verified 19 installed files, MIDI ALSA, relocated help/dummy smoke, and the archived bytes."
+        }
+      ],
+      "required_tests_passed": 21,
+      "native_labelled_tests_passed": 13,
+      "same_38_name_inventory_as_other_standalone_jobs": true,
+      "install_test_payload": {
+        "binary_sha256": "6d3466cce1b4e74a77b403227141c6f667542f917883f72822032ea4982317ef",
+        "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+        "midi_enabled": true,
+        "midi_backend": "ALSA",
+        "payload_files": 19,
+        "audio_driver": "dummy",
+        "render_status": "ok"
+      },
+      "package_artifact": {
+        "id": 14114517880,
+        "name": "standalone-ubuntu-24.04-X64-midi-ON-release-package-8673713a484c40e26ac7810c7c4cbc22fa874426-1",
+        "size_in_bytes": 1842601,
+        "digest": "sha256:132ef476d5cc3972c22ad99537c96a395b322bbe541ba5f2959fc665aa7d4da2",
+        "created_at": "2026-11-14T12:50:29Z",
+        "expires_at": "2026-11-28T12:50:28Z",
+        "expired": false,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14114517880",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14114517880/zip",
+        "upload_log_matches_api_metadata": true
+      }
+    },
+    {
+      "job_id": 132451604553,
+      "complete_log_local_path": "/workspace/scratch/601951e27dc3/a48-hosted-primary/job-132451604553.log",
+      "decoded_log_format": "Exact connector-decoded text re-encoded as UTF-8; BOM and original CRLF/LF retained; no newline normalization.",
+      "decoded_log_sha256": "7163e75dff963a17930d121e3fcba37f3d8fc03ee751e0df3be3d10d9b212367",
+      "decoded_log_bytes": 708118,
+      "utf8_bom_present": true,
+      "crlf_count": 0,
+      "lf_count": 3302,
+      "compiler": "AppleClang 17.0.0.17000013",
+      "discovered_and_passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "ctest_real_seconds": 243.77,
+      "ctest_no_tests_error_observed": true,
+      "executed_test_names_sha256": "6a4cd86230bdfed41cc5a073f7db5f04e10aa2935715cff6ee9ab84dd31d6745",
+      "executed_test_name_inventory": "standalone_shared_executed_names",
+      "passed_result_line_span": [
+        2281,
+        2901
+      ],
+      "repaired_fixture_passes": [
+        {
+          "name": "test_standalone_workspace_acceptance",
+          "test_number": 126,
+          "seconds": 0.03,
+          "line": 2425
+        },
+        {
+          "name": "test_standalone_workspace_raster",
+          "test_number": 134,
+          "seconds": 6.85,
+          "line": 2576
+        },
+        {
+          "name": "test_standalone_scaled_view",
+          "test_number": 135,
+          "seconds": 14.41,
+          "line": 2641
+        }
+      ],
+      "excerpts": [
+        {
+          "line": 123,
+          "text": "2026-11-14T12:45:32.6207460Z 8673713a484c40e26ac7810c7c4cbc22fa874426"
+        },
+        {
+          "line": 345,
+          "text": "2026-11-14T12:45:40.8007150Z -- The CXX compiler identification is AppleClang 17.0.0.17000013"
+        },
+        {
+          "line": 2943,
+          "text": "2026-11-14T12:51:59.7788850Z 100% tests passed out of 38"
+        },
+        {
+          "line": 2956,
+          "text": "2026-11-14T12:51:59.7793640Z Total Test time (real) = 243.77 sec"
+        },
+        {
+          "line": 2246,
+          "text": "2026-11-14T12:47:55.9946310Z Discovered 38 standalone tests, including required MIDI, workspace, inspection and drawing gates."
+        },
+        {
+          "line": 3206,
+          "text": "2026-11-14T12:52:04.9711160Z Verified 19 installed files, MIDI CoreMIDI, relocated help/dummy smoke, and the archived bytes."
+        }
+      ],
+      "required_tests_passed": 21,
+      "native_labelled_tests_passed": 13,
+      "same_38_name_inventory_as_other_standalone_jobs": true,
+      "install_test_payload": {
+        "binary_sha256": "1bb8d69e61a259666965631e2ed8a32584567f8eeb8ba72f60b79e85a21ca43d",
+        "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+        "midi_enabled": true,
+        "midi_backend": "CoreMIDI",
+        "payload_files": 19,
+        "audio_driver": "dummy",
+        "render_status": "ok"
+      },
+      "package_artifact": {
+        "id": 14115061756,
+        "name": "standalone-macos-15-ARM64-midi-ON-release-package-8673713a484c40e26ac7810c7c4cbc22fa874426-1",
+        "size_in_bytes": 1463474,
+        "digest": "sha256:99139b07266601dfd4ce8c85aad14891e70867466171c27c72a7cb387e433d3a",
+        "created_at": "2026-11-14T12:52:08Z",
+        "expires_at": "2026-11-28T12:52:07Z",
+        "expired": false,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14115061756",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14115061756/zip",
+        "upload_log_matches_api_metadata": true
+      }
+    },
+    {
+      "job_id": 132451604586,
+      "complete_log_local_path": "/workspace/scratch/601951e27dc3/a48-hosted-primary/job-132451604586.log",
+      "decoded_log_format": "Exact connector-decoded text re-encoded as UTF-8; BOM and original CRLF/LF retained; no newline normalization.",
+      "decoded_log_sha256": "f4eae5cb8feaf5f6ef5dce7debd39be013c19528c183168aeae74fc439fa8af1",
+      "decoded_log_bytes": 714272,
+      "utf8_bom_present": true,
+      "crlf_count": 0,
+      "lf_count": 3727,
+      "compiler": "GNU 13.3.0",
+      "discovered_and_passed": 38,
+      "failed": 0,
+      "skipped": 0,
+      "ctest_real_seconds": 229.06,
+      "ctest_no_tests_error_observed": true,
+      "executed_test_names_sha256": "6a4cd86230bdfed41cc5a073f7db5f04e10aa2935715cff6ee9ab84dd31d6745",
+      "executed_test_name_inventory": "standalone_shared_executed_names",
+      "passed_result_line_span": [
+        2708,
+        3328
+      ],
+      "repaired_fixture_passes": [
+        {
+          "name": "test_standalone_workspace_acceptance",
+          "test_number": 126,
+          "seconds": 0.03,
+          "line": 2852
+        },
+        {
+          "name": "test_standalone_workspace_raster",
+          "test_number": 134,
+          "seconds": 6.84,
+          "line": 3003
+        },
+        {
+          "name": "test_standalone_scaled_view",
+          "test_number": 135,
+          "seconds": 15.11,
+          "line": 3068
+        }
+      ],
+      "excerpts": [
+        {
+          "line": 139,
+          "text": "2026-11-14T12:45:31.6851944Z 8673713a484c40e26ac7810c7c4cbc22fa874426"
+        },
+        {
+          "line": 642,
+          "text": "2026-11-14T12:45:53.5771328Z -- The CXX compiler identification is GNU 13.3.0"
+        },
+        {
+          "line": 3370,
+          "text": "2026-11-14T12:51:15.0468010Z 100% tests passed, 0 tests failed out of 38"
+        },
+        {
+          "line": 3383,
+          "text": "2026-11-14T12:51:15.0471253Z Total Test time (real) = 229.06 sec"
+        },
+        {
+          "line": 2670,
+          "text": "2026-11-14T12:47:25.9797277Z Discovered 38 standalone tests, including required MIDI, workspace, inspection and drawing gates."
+        },
+        {
+          "line": 3630,
+          "text": "2026-11-14T12:51:17.1364556Z Verified 15 installed files, MIDI unavailable, relocated help/dummy smoke, and the archived bytes."
+        }
+      ],
+      "required_tests_passed": 21,
+      "native_labelled_tests_passed": 13,
+      "same_38_name_inventory_as_other_standalone_jobs": true,
+      "install_test_payload": {
+        "binary_sha256": "5beef501fa3f0d7386dd2f4633e4a58af65aa4af7b3e013320ed15ac5e5eca05",
+        "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+        "midi_enabled": false,
+        "midi_backend": "unavailable",
+        "payload_files": 15,
+        "audio_driver": "dummy",
+        "render_status": "ok"
+      },
+      "package_artifact": {
+        "id": 14115280266,
+        "name": "standalone-ubuntu-24.04-X64-midi-OFF-release-package-8673713a484c40e26ac7810c7c4cbc22fa874426-1",
+        "size_in_bytes": 1808671,
+        "digest": "sha256:30f8e1e69fa9e3bdb52c0110ab35e4f418847412bd18bca57eb3a526d4678265",
+        "created_at": "2026-11-14T12:51:19Z",
+        "expires_at": "2026-11-28T12:51:18Z",
+        "expired": false,
+        "url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14115280266",
+        "archive_download_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/actions/artifacts/14115280266/zip",
+        "upload_log_matches_api_metadata": true
+      }
+    }
+  ],
+  "artifact_counts_by_run": {
+    "43596362824": 4,
+    "43596362938": 8,
+    "43596362881": 6
+  },
+  "artifact_scope": "Artifact metadata and upload digest/size agreement observed; package ZIP bytes were not downloaded or independently rehashed by A48. Installed-file and relocation claims are the successful hosted job assertions.",
+  "prior_windows_failure": {
+    "commit": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+    "retained_report": "root-ui-ci-windows-failures.json",
+    "original_jobs": [
+      132445644167,
+      132445644432
+    ],
+    "repair_report": "a40-result.json",
+    "closure_jobs": [
+      132451604650,
+      132451604523
+    ],
+    "original_failures_preserved": true
+  },
+  "next_checkpoint_report": "a48-checkpoint5-initial.json",
+  "limits": [
+    "This exact-source pass does not qualify later checkpoint 5 or final source.",
+    "The existing core sanitizer job is distinct from the new native SDL sanitizer/leak job.",
+    "Standalone acceptance uses dummy SDL audio/video and injected/replayed input; no physical audio/MIDI device, persistent desktop pointer, native semantic accessibility, DAW, deadline or measured sound-fidelity claim follows.",
+    "No literal reference-pixel equality, signing or whole-M9 production-readiness claim.",
+    "No workflow rerun, dispatch, source edit, build, index edit or publication performed by A48."
+  ]
+}

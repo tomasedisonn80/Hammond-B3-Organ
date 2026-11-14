@@ -141,6 +141,13 @@ controls while preserving the existing histories; it does not return to a saved
 UI workspace. An audio restart preserves acknowledged controls but deliberately
 clears notes and starts a new audio lifecycle.
 
+**UNSAVED** in the footer marks controls changed from the current clean reference;
+it is independent of pending acknowledgment. The audition baseline can be clean
+before any file exists, so Save explicitly to create one. **Loaded saved
+controls.** confirms file loading; pending indicators show whether audio has
+applied the request. A Save success message confirms the write. A cancelled or
+timed-out Save requires a new Save request.
+
 ## Read Service and Rotary correctly
 
 The banner identifies what kind of copied software observation is visible:
@@ -232,9 +239,11 @@ racks below height 820. Both presentations retain the complete instrument.
 Perspective manual keys use the same visible shape for painting, pointer input
 and inset focus. Flat supplies rectangular playing keys.
 
-The [actual eight-image preview and reproduction commands](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v1/README.md)
+The [current eight-image preview and reproduction commands](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v2/README.md)
 cover Play at reference/default/minimum sizes, Rotary and Service at
-reference/minimum sizes, and minimum Flat Play. The source
+reference/minimum sizes, and minimum Flat Play. The
+[provisional v1 gallery](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v1/README.md)
+remains unchanged historical evidence. The source
 [capture utility](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/tools/capture_standalone_interface.py)
 requires a matching source qualification report and expected executable digest,
 then writes a fresh gallery. Use the exact source-specific command in that
@@ -262,8 +271,9 @@ the existing `B3UIREPLAY1` grammar with F4–F7 admitted, and its wall-clock tim
 is not sample-accurate automation. See the
 [application guide](STANDALONE_APP.md#scripted-interaction-and-observations).
 
-The gallery is an actual source-overlay preview with its own identities; it
-does not qualify a later build. Current publication and execution evidence is
+The current gallery records published product source and its exact executable
+identity; it does not automatically qualify a changed executable. Current
+publication and execution evidence is
 in the [status](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STATUS.md)
 and [interface session](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-interface-continuation/README.md).
 Literal 1:1 equality with the concept remains open: the live full key/pedal

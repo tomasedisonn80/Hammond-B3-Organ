@@ -2,80 +2,69 @@
 
 ## Current native interface continuation
 
-The [interface session](development/2026-11-14-interface-continuation/README.md)
-starts at `d493e998`. Six fresh readers completed
-[all 500 atlas pages](research/INTERFACE_ATLAS_REVIEW.md). The unchanged combined
-Release baseline passed 136/136 suites. This session's requested sixty actual
-agents in ten logical waves have their own
-[manifest](development/2026-11-14-interface-continuation/assignments.json).
+The [current handoff](INTERFACE_HANDOFF.md) contains the complete M0–M9 map,
+portable setup, exact evidence and remaining gates. Six fresh readers covered
+[all 500 atlas pages](research/INTERFACE_ATLAS_REVIEW.md). The
+[actual manifest](development/2026-11-14-interface-continuation/assignments.json)
+currently records 58 dispatched workers, 55 accepted, toward the requested sixty
+in ten logical waves. A56 publication review, A57 desktop setup and A58 hosted
+closure are active; the final accounting and handoff assignments follow.
 
-The platform repairs are published at `5d81199a9822874b55f3b0a124715cbd6eadf0e5`.
-All eleven hosted Linux, Windows and macOS jobs pass at that exact revision,
-including native standalone, core/sanitizer and VST3 jobs. The
-[hosted record](development/2026-11-14-interface-continuation/reports/platform-repair-hosted.json)
-closes the original Windows C-runtime oracle and macOS synchronous MIDI discovery
-failures. Those results do not qualify a later interface revision automatically.
+The implemented [M9 interface slice](INTERFACE_CONTINUATION_SCOPE.md) supplies
+Play/Rotary/Service, transient Flat presentation, shared perspective paint/hit
+geometry, per-workspace focus and bounded copied-state inspection. Play retains
+68 control records **including** 24 preset keys, 147 playing keys and 71 focus
+stops. The 47 sound parameters, state4/readers1–3, 91-source core and VST3 boundary
+remain unchanged. Current sound is nominal dry and unmeasured.
 
-The implemented [M9 interface slice](INTERFACE_CONTINUATION_SCOPE.md) provides
-Play/Rotary/Service, transient Flat presentation, shared perspective hit/paint
-geometry, per-workspace focus memory and bounded copied-state inspection. Play
-retains 68 ordinary records, 24 preset keys, 147 playing keys and 71 focus stops;
-Rotary and Service expose ten common controls and read-only bodies. All 47 sound
-parameters, state4/readers 1–3, core models and VST3 identities remain preserved.
+Product polish and strict Windows fixture repairs are published at `8673713`,
+with all eleven then-existing hosted jobs successful. The native sanitizer/leak
+workflow and sanitizer-only measured budgets are published at `cdbb2be`, where
+[all twelve jobs succeeded](development/2026-11-14-interface-continuation/reports/root-checkpoint5-hosted.json).
+A58 has independently read job 132455309517's primary log: thirteen selected
+native-interface sanitizer suites pass with leak checking enabled. Its detailed
+report is being prepared. These successes identify their source revision;
+the next fixture/gallery/documentation publication needs its own hosted results.
 
-Independent acceptance includes 288 geometry layouts, workspace ownership and
-rollback checks, all inspector rows, 150 native raster frames and 719,289 paired
-PCM frames matching exactly through 1,662 presentation transitions. The
-[provisional eight-view gallery](../examples/demos/standalone-interface-preview-v1/README.md)
-contains actual native runs with precise earlier source identities. Both actual
-MIDI-on and MIDI-off packages have named-version relocation evidence; the current
-[operating guide](INTERFACE_RUNBOOK.md) explains their capability distinctions.
+Independent implementation acceptance covers 288 geometry layouts, workspace
+ownership/rollback, all inspection rows, 150 raster frames and 719,289 paired
+PCM frames equal through 1,662 presentation transitions. Scale repairs pass five
+affected raster suites, including 298 full-surface checks across 18.3 million
+pixels. Final title/accidental labels and the Load notice are corrected, with two
+actual final operator journeys passing.
 
-The first full UI [coherent gate](development/2026-11-14-interface-continuation/reports/root-ui-coherent-gate.json)
-ran 147 suites: 146 passed and one native MIDI suite failed two observation
-assertions. Its complete failures remain retained. Independent A35 diagnosis
-replaced wall-clock/co-dispatch assumptions with exact acknowledged script
-prefixes, command deltas and genuine pending observations. All twelve methods
-then passed on the same frozen application, and the two affected methods passed
-on the later surface-repair application. The original drain and timeouts remain.
+The [final eight-image gallery](../examples/demos/standalone-interface-preview-v2/README.md)
+and README now show the published polished product, with98 matching product
+inputs and unchanged executable identity. Original v1 remains historical.
+Independent provenance and visual review are accepted. **Literal 1:1 reference
+equality remains unmet**; keyboard depth, materials, lighting and composition
+need further measured refinement. The minor Service “1 targets” copy remains a
+bounded follow-up. Dummy captures do not qualify a desktop, hardware or accessibility.
 
-A28 repaired physical clip restoration around scaled preset focus. A31 repaired
-fractional-scale gaps in gradients/rounded panels and an omitted one-pixel span;
-all five affected raster suites pass, including 298 full-surface checks across
-18.3 million pixels. Root inspected the repaired 150% frames. The
-[incremental closure record](development/2026-11-14-interface-continuation/reports/root-ui-repair-closure.json)
-identifies every changed input and qualification; it does not rename the original
-146/147 run as a full pass.
+[A49's final serial Release gate](reviews/INTERFACE_FINAL_COHERENT_GATE.md)
+ran147 suites:146 passed, one workspace startup-observation assertion failed,
+zero skipped. The original failure remains intact. A52's
+[fixture-only repair](reviews/INTERFACE_BOUNDED_INPUT.md) measures the original
+nonmusical startup prefix and preserves the full journey, command counts and
+ownership checks. All six workspace methods / 16 native processes pass; seven
+corrupt traces are rejected and one 256-action burst passes. Root's
+[incremental closure](development/2026-11-14-interface-continuation/reports/root-final-incremental-closure.json)
+verifies the only two changed test inputs, unchanged 98 product inputs,
+114 protected files and82 executables. It does not relabel the full gate147/147.
 
-The workspace checkpoint is published at `aea58bb85bc66a5feaff66a0b8a388e7c3f9e630`;
-its completed readability/status and Windows repairs are published at
-`8673713a484c40e26ac7810c7c4cbc22fa874426`.
-A34's stacked accidental labels and centered title are complete; A36's Load
-notice now agrees with its acknowledgment. A37's two actual operator journeys
-pass on the resulting application. A40 repaired observed strict Windows test
-compilation with explicit conversions and SDL's portable environment lookup;
-three affected native suites and all 130 SDK-free Release suites pass locally.
-All eleven hosted jobs now pass at that exact polished revision, including both
-strict Windows builds and Linux/macOS standalone. The
-[observed job record](development/2026-11-14-interface-continuation/reports/root-ui-polish-hosted.json)
-retains each job and its completed steps.
+A41's local leak-runtime attach failure and original three sanitizer raster
+timeouts remain historical, with separate successful unchanged direct checks.
+A44's19-file MIDI-on and 15-file MIDI-off packages pass source-absent relocation.
+The latest [guide-only package refresh](development/2026-11-14-interface-continuation/reports/root-final-guide-package-refresh.json)
+changes only INTERFACE_RUNBOOK.md; both binary hashes remain exact. Its initial
+stale-configured-guide refusal is retained separately from the successful
+reconfigure/install. A57 has enabled verified X11 build configuration in a separate tree using
+existing dependencies; actual desktop interaction is still pending.
 
-A41’s fully instrumented native run retains ten passes and three raster timeouts
-under normal limits. All three subsequently completed their unchanged assertions
-in separately bounded direct diagnostics without ASan/UBSan findings. Root
-added measured sanitizer-only budgets while preserving Release deadlines. Local
-leak checking is blocked by thread-attach restrictions; A43’s new focused hosted
-leak job is awaiting publication and observation. A42's actual desktop launch exposes
-missing compiled X11 support, so persistent pointer capture remains unrun. A44’s final 19-file MIDI-on and 15-file MIDI-off packages pass actual relocation
-with source/build/SDK paths inaccessible; a corrected installed guide has its
-own final inventory refresh. Final gallery, coherent-source qualification,
-native leak coverage and sixty assignments
-continue; [the checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md)
-records current ownership and the separate follow-ups. The
-[reference comparison](reviews/INTERFACE_REFERENCE_COMPARISON.md) records that
-literal 1:1 equality is not yet met. Local dummy drivers do not establish
-physical devices, persistent native pointer capture, native semantic accessibility
-or physical sound-model fidelity. Earlier sections below retain dated history.
+The [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md)
+owns active leases and publication. No full physical organ, connected scanner/
+AO-28/Leslie, real-device, DAW, native accessibility, deadline or release-rights
+claim follows from this interface work.
 
 ## Historical fixed-registration and preset-key continuation
 

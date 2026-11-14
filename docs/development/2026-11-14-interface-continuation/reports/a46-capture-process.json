@@ -1,0 +1,43 @@
+{
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "tools/capture_standalone_interface.py",
+    "--exe",
+    "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+    "--source-root",
+    ".",
+    "--build-root",
+    "/workspace/scratch/601951e27dc3/build-native",
+    "--source-qualification",
+    "docs/development/2026-11-14-interface-continuation/reports/a46-source-qualification.json",
+    "--expected-exe-sha256",
+    "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+    "--dummy-sdl",
+    "--output",
+    "examples/demos/standalone-interface-preview-v2"
+  ],
+  "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "exit_code": 0,
+  "finished_at_utc": "2026-11-14T12:56:33.545698+00:00",
+  "harness_unchanged": true,
+  "native_invocations": 8,
+  "qualification": "Only actual dummy-SDL software-rendered app captures; full test suite not repeated.",
+  "schema": "a46-capture-process-v1",
+  "source_git_after": {
+    "committed_tree": "e11bd68d6051f663631579ef235325a8775f8133",
+    "head": "8673713a484c40e26ac7810c7c4cbc22fa874426"
+  },
+  "source_git_before": {
+    "committed_tree": "e11bd68d6051f663631579ef235325a8775f8133",
+    "head": "8673713a484c40e26ac7810c7c4cbc22fa874426"
+  },
+  "started_at_utc": "2026-11-14T12:56:13.186408+00:00",
+  "stderr": "",
+  "stdout": {
+    "captures": 8,
+    "failure": null,
+    "identity_failure": null,
+    "output": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v2",
+    "status": "passed"
+  }
+}

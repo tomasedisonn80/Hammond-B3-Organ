@@ -1,0 +1,15 @@
+{
+  "assignment": 46,
+  "cause": "The initial ad hoc preflight mistakenly compared a compact sorted JSON SHA-only map digest with A44 digest, which instead hashes sorted path + NUL + SHA + newline records. The 98 individual file digests already matched.",
+  "correction": "Read A44 digest implementation and retain the correct explicit algorithm in a46-prepare-capture.py; corrected preflight exited 0. Capture harness and product source unchanged.",
+  "evidence": {
+    "a44_path_nul_sha_newline_digest": "ddf4f7658cfa9ed49ddac87902788c65531697551faab4dadd1dd57709d9e9ad",
+    "harness_size_and_sha_json_digest": "6addb1ff056e07a8dd50d587552814a99fd05921a1512ace39396a232efdfd4c",
+    "individual_product_maps_equal": true
+  },
+  "failed_gallery_created": false,
+  "initial_preflight_result": "AssertionError before any qualification or gallery file was written; the following harness admission returned exit 2 because the qualification file did not exist. No native process was launched.",
+  "native_runs_in_initial_failed_admission": 0,
+  "schema": "a46-preflight-correction-v1",
+  "status": "corrected"
+}

@@ -1,0 +1,80 @@
+{
+  "assignment": 52,
+  "authorization": "Root released CPU after A49 and authorized one repaired six-method suite, retained-trace checks and one bounded burst; no native retry",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "docs/development/2026-11-14-interface-continuation/reports/a52-qualification.py",
+    "retained",
+    "--executable",
+    "../a36-status-bin/hammond_standalone",
+    "--suite-output",
+    "docs/development/2026-11-14-interface-continuation/reports/a52-workspace-corrected",
+    "--output",
+    "docs/development/2026-11-14-interface-continuation/reports/a52-retained-oracle"
+  ],
+  "failure": null,
+  "measured_startup_sequence": 3,
+  "native_processes": 0,
+  "negative_checks": [
+    {
+      "assertion": "1 != 0",
+      "mutation": "invented_zero_packet_arrival",
+      "rejected": true
+    },
+    {
+      "assertion": "0 not greater than 0",
+      "mutation": "missing_positive_packet_arrival",
+      "rejected": true
+    },
+    {
+      "assertion": "2 != 3",
+      "mutation": "unacknowledged_prefix",
+      "rejected": true
+    },
+    {
+      "assertion": "11 != 10 : Navigation must not inject a sound command or release",
+      "mutation": "extra_command",
+      "rejected": true
+    },
+    {
+      "assertion": "4 != 5",
+      "mutation": "missing_note_off",
+      "rejected": true
+    },
+    {
+      "assertion": "Lists differ: [((),[136 chars]), ((60,), (64,), (25,)), ((), (64,), (25,)), [25 chars] ())] != [((),[136 chars]), ((), (), (25,)), ((), (), ())]\n\nFirst differing element 7:\n((60,), (64,), (25,))\n((), (), (25,))\n\nFirst list contains 2 additional elements.\nFirst extra element 9:\n((), (), (25,))\n\n  [((), (), ()),\n   ((60,), (), ()),\n   ((60,), (60,), ()),\n   ((60,), (60, 64), ()),\n   ((60,), (60, 64), (25,)),\n   ((60,), (64,), (25,)),\n   ((), (64,), (25,)),\n-  ((60,), (64,), (25,)),\n-  ((), (64,), (25,)),\n   ((), (), (25,)),\n   ((), (), ())]",
+      "mutation": "lost_independent_midi_owner",
+      "rejected": true
+    },
+    {
+      "assertion": "1 != 0",
+      "mutation": "dropped_packet",
+      "rejected": true
+    }
+  ],
+  "original_oracle_failure_reproduced_without_native_run": "191 not less than 180 : A pre-action loaded-state observation is required",
+  "output_files": {
+    "source-after.json": {
+      "bytes": 18970,
+      "sha256": "3de728e14963871576b0a843a4e0c6c314574ae161cc8e09c3e843abf5aeb862"
+    },
+    "source-before.json": {
+      "bytes": 18970,
+      "sha256": "3de728e14963871576b0a843a4e0c6c314574ae161cc8e09c3e843abf5aeb862"
+    }
+  },
+  "passed": true,
+  "phase": "retained",
+  "prefix_diagnostics": {
+    "bytes": 9591,
+    "path": "docs/development/2026-11-14-interface-continuation/reports/a52-workspace-corrected/cases/test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize-1/diagnostics.json",
+    "sha256": "005c818be4b259c188a66fe8652c0bfd30500de6a42388a289fabd0743d4f9d2"
+  },
+  "python": "3.12.14",
+  "recorded_at_utc": "2026-11-14T13:32:23.383720+00:00",
+  "repaired_method_accepts_retained_trace": true,
+  "schema": "a52-native-input-qualification-v1",
+  "shared_midi_checker_accepts_zero_and_positive_packet_traces": true,
+  "source_executable_and_inputs_unchanged": true,
+  "worker": "/root/w09_a52_bounded_native_burst"
+}

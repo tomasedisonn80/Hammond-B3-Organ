@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a52-qualification.py", line 371, in main
+    {"suite": suite, "retained": retained, "burst": burst}[args.phase](args, result)
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a52-qualification.py", line 151, in suite
+    result["process"] = run_process([sys.executable, "-B", str(ROOT / FIXTURE)],
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a52-qualification.py", line 142, in run_process
+    CASE.assertEqual(process.returncode, 0)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 885, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 878, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 1 != 0

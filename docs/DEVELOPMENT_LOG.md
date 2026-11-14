@@ -1,5 +1,32 @@
 # Development log
 
+## 2026-11-14 — Accept final native gallery and preserve coherent-gate repair
+
+All twelve hosted jobs at `cdbb2be` succeeded, including the new native-interface
+sanitizer/leak gate. A58's independent primary log confirms13/13 selected suites;
+its final report and later-source observation remain separate. A46's eight real
+v2 captures match98 published product inputs; A50's provenance reconciliation and
+A51's explicitly partial reference comparison are accepted. README now shows
+these actual images and preserves the literal 1:1 gap.
+
+A49 completed the serial147-suite Release gate with146 passes and one workspace
+startup-baseline assertion failure. A52 retained that failure, measured the
+original nonmusical startup prefix, and minimally corrected the zero-packet MIDI
+timestamp oracle. The unchanged full journey passes within the complete6/6
+workspace suite/16processes. Seven corrupted traces are rejected and one 256-action
+burst preserves musical owners, exact controls and cleanup. Root verifies two
+changed test files and unchanged 98 product/114 protected/82 executable inputs.
+No original failed gate is relabelled as passing.
+
+A55's five guide/caption replacements are integrated. Fresh19/15 file installs
+change only INTERFACE_RUNBOOK.md and retain exact executable bytes. The first
+install correctly rejected a stale configured guide identity; that failure is
+archived, then intentional reconfiguration and install passed. A53's authored
+handoff snapshot is retained while root resolves current outcomes. A54's strict
+record checker passes51 independent CLI cases; final completion still waits for
+all 60 actual accepted assignments. A57 is qualifying a separately built X11
+backend using existing headers/libraries, with no product edits or downloads.
+
 ## 2026-11-14 — Close polished UI platform gates and final package relocation
 
 Published and fetched `8673713`, tree `e11bd68d`, with readable preset labels,

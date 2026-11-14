@@ -1,0 +1,113 @@
+JOB 132451604200 | Native VST3 (Linux GCC) | 8673713a484c40e26ac7810c7c4cbc22fa874426
+Complete job name: Native VST3 (Linux GCC)
+-- The CXX compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+1/8 Test #110: test_native_install ..............   Passed    0.98 sec
+111: Result: 47 tests passed, 0 tests failed
+2/8 Test #111: hammond_vst3_validator ...........   Passed    1.29 sec
+3/8 Test #112: test_native_controller ...........   Passed    0.02 sec
+4/8 Test #113: test_native_abi ..................   Passed    0.81 sec
+5/8 Test #114: test_native_behavior .............   Passed    1.42 sec
+6/8 Test #115: test_native_automation ...........   Passed    0.44 sec
+7/8 Test #116: test_native_concurrency ..........   Passed    0.26 sec
+8/8 Test #117: test_native_realtime .............   Passed    0.77 sec
+100% tests passed, 0 tests failed out of 8
+Total Test time (real) =   6.05 sec
+112: native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600
+114: native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f
+115: native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03
+116: native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+116: native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=1420 rejected_callbacks=24 zero_callbacks=280 compared_frames=65379 audible_frames=65379 future_frames=6168 accepted_loads=3174 full_loads=8511 malformed_loads=462 successful_saves=15123 busy_saves=35 pending_saves=11976 published_saves=3099 maximum_audio_error=0
+117: regions=193 overload_calibration=12/12 exact_channel_samples=423762 audible_samples=420414 reference_frames=212265 state_reads=204 rollback_cases=30 future_channel_samples=18114 moving_contact_checks=4 owner_capacity_checks=2 assertions=8945157 checksum=fbea92c63d86af53
+117: Scope: Linux calling-thread global C++ new/delete; timings are observations, not device deadlines.
+validator diagnostic count: teardown_messages=16
+validator diagnostic count: unsupported_rate_errors=9
+validator diagnostic count: unsupported_float64_notices=15
+validator capability (1): Info: No snapshots in Bundle.
+validator capability (1): Info:  No bypass parameter found. This is an instrument.
+validator capability (1): Info:  No MIDI Mapping interface supplied!
+validator capability (1): Info:  No MIDI Learn interface supplied!
+validator capability (1): Info:  This component has no units.
+validator capability (1): Info:  This component does not export any programs.
+validator capability (1): Info:  This component does not support IUnitInfo!
+validator capability (15): Info:  64bit Audio Processing not supported.
+validator capability (1): Info:  No Note Expression interface supplied!
+validator capability (1): Info:  No Keyswitch interface supplied!
+validator capability (1): Info:  ProcessContextRequirements:
+validator capability (1): Info:   - None
+validator capability (1): Info:  This plugin does not have a bypass parameter!!!
+validator capability (1): Info:      Mono Output-SpeakerArrangement is not supported. Plug-in suggests: Stereo.
+
+JOB 132451604376 | Native VST3 (Windows MSVC x64) | 8673713a484c40e26ac7810c7c4cbc22fa874426
+Complete job name: Native VST3 (Windows MSVC x64)
+-- The CXX compiler identification is MSVC 19.44.35230.0
+-- The C compiler identification is MSVC 19.44.35230.0
+1/7 Test #110: test_native_install ..............   Passed    1.65 sec
+111: Result: 47 tests passed, 0 tests failed
+2/7 Test #111: hammond_vst3_validator ...........   Passed    1.08 sec
+3/7 Test #112: test_native_controller ...........   Passed    0.16 sec
+4/7 Test #113: test_native_abi ..................   Passed    0.71 sec
+5/7 Test #114: test_native_behavior .............   Passed    1.75 sec
+6/7 Test #115: test_native_automation ...........   Passed    0.46 sec
+7/7 Test #116: test_native_concurrency ..........   Passed    0.36 sec
+100% tests passed, 0 tests failed out of 7
+Total Test time (real) =   6.25 sec
+112: native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600
+114: native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f
+115: native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03
+116: native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+116: native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=2241 rejected_callbacks=24 zero_callbacks=444 compared_frames=99656 audible_frames=99656 future_frames=6168 accepted_loads=3174 full_loads=1724 malformed_loads=462 successful_saves=8342 busy_saves=82 pending_saves=5169 published_saves=3125 maximum_audio_error=0
+validator diagnostic count: teardown_messages=16
+validator diagnostic count: unsupported_rate_errors=9
+validator diagnostic count: unsupported_float64_notices=15
+validator capability (1): Info: No snapshots in Bundle.
+validator capability (1): Info:  No bypass parameter found. This is an instrument.
+validator capability (1): Info:  No MIDI Mapping interface supplied!
+validator capability (1): Info:  No MIDI Learn interface supplied!
+validator capability (1): Info:  This component has no units.
+validator capability (1): Info:  This component does not export any programs.
+validator capability (1): Info:  This component does not support IUnitInfo!
+validator capability (15): Info:  64bit Audio Processing not supported.
+validator capability (1): Info:  No Note Expression interface supplied!
+validator capability (1): Info:  No Keyswitch interface supplied!
+validator capability (1): Info:  ProcessContextRequirements:
+validator capability (1): Info:   - None
+validator capability (1): Info:  This plugin does not have a bypass parameter!!!
+validator capability (1): Info:      Mono Output-SpeakerArrangement is not supported. Plug-in suggests: Stereo.
+
+JOB 132451604377 | Native VST3 (macOS AppleClang) | 8673713a484c40e26ac7810c7c4cbc22fa874426
+Complete job name: Native VST3 (macOS AppleClang)
+-- The CXX compiler identification is AppleClang 17.0.0.17000013
+-- The C compiler identification is AppleClang 17.0.0.17000013
+1/7 Test #110: test_native_install ..............   Passed    1.15 sec
+111: Result: 47 tests passed, 0 tests failed
+2/7 Test #111: hammond_vst3_validator ...........   Passed    0.83 sec
+3/7 Test #112: test_native_controller ...........   Passed    0.02 sec
+4/7 Test #113: test_native_abi ..................   Passed    0.48 sec
+5/7 Test #114: test_native_behavior .............   Passed    1.09 sec
+6/7 Test #115: test_native_automation ...........   Passed    0.32 sec
+7/7 Test #116: test_native_concurrency ..........   Passed    0.26 sec
+100% tests passed out of 7
+Total Test time (real) =   4.19 sec
+112: native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600
+114: native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f
+115: native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03
+116: native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+116: native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=2099 rejected_callbacks=24 zero_callbacks=416 compared_frames=93676 audible_frames=93676 future_frames=6168 accepted_loads=3174 full_loads=3158 malformed_loads=462 successful_saves=9776 busy_saves=19 pending_saves=6624 published_saves=3104 maximum_audio_error=0
+validator diagnostic count: teardown_messages=16
+validator diagnostic count: unsupported_rate_errors=9
+validator diagnostic count: unsupported_float64_notices=15
+validator capability (1): Info: No snapshots in Bundle.
+validator capability (1): Info:  No bypass parameter found. This is an instrument.
+validator capability (1): Info:  No MIDI Mapping interface supplied!
+validator capability (1): Info:  No MIDI Learn interface supplied!
+validator capability (1): Info:  This component has no units.
+validator capability (1): Info:  This component does not export any programs.
+validator capability (1): Info:  This component does not support IUnitInfo!
+validator capability (15): Info:  64bit Audio Processing not supported.
+validator capability (1): Info:  No Note Expression interface supplied!
+validator capability (1): Info:  No Keyswitch interface supplied!
+validator capability (1): Info:  ProcessContextRequirements:
+validator capability (1): Info:   - None
+validator capability (1): Info:  This plugin does not have a bypass parameter!!!
+validator capability (1): Info:      Mono Output-SpeakerArrangement is not supported. Plug-in suggests: Stereo.

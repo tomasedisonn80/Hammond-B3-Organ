@@ -1,0 +1,31 @@
+{
+  "command": [
+    "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/601951e27dc3/build-native",
+    "-C",
+    "Release",
+    "--verbose",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "1",
+    "--output-junit",
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a49-release-junit.xml"
+  ],
+  "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_VIDEODRIVER": "dummy"
+  },
+  "finished_at_utc": "2026-11-14T13:16:31.087240+00:00",
+  "log": {
+    "bytes": 301886,
+    "path": "a49-release-ctest.log",
+    "sha256": "0ae23075b4ce349880368ddb37d915ef7b2ecd741098667f0a10799a0f559e6c"
+  },
+  "returncode": 8,
+  "seconds": 525.619002,
+  "started_at_utc": "2026-11-14T13:07:45.468246+00:00"
+}

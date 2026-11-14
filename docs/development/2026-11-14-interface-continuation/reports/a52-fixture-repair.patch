@@ -1,0 +1,89 @@
+diff --git a/apps/standalone/native_tests/test_standalone_midi_replay.py b/apps/standalone/native_tests/test_standalone_midi_replay.py
+index 520d2c5..03dcd10 100644
+--- a/apps/standalone/native_tests/test_standalone_midi_replay.py
++++ b/apps/standalone/native_tests/test_standalone_midi_replay.py
+@@ -363,7 +363,12 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
+         self.assertLessEqual(replay["maximum_events_per_turn"], 512)
+         self.assertEqual(replay["arrival_time_source"], "synthetic_main_thread_steady_clock_receipt")
+         self.assertFalse(replay["arrival_time_is_sample_time"])
+-        self.assertGreater(replay["last_arrival_ns"], 0)
++        # A connect-only prefix has no byte receipt timestamp. Once any packet
++        # is offered, retain the existing positive-arrival requirement.
++        if replay["offered_packets"] > 0:
++            self.assertGreater(replay["last_arrival_ns"], 0)
++        else:
++            self.assertEqual(replay["last_arrival_ns"], 0)
+         self.assertFalse(replay["connected_after_shutdown"])
+         self.assertEqual(replay["pending_packets_before_shutdown"], 0)
+         self.assertFalse(replay["pending_connect_before_shutdown"])
+diff --git a/apps/standalone/native_tests/test_standalone_workspace_replay.py b/apps/standalone/native_tests/test_standalone_workspace_replay.py
+index 3df047f..80a69c4 100644
+--- a/apps/standalone/native_tests/test_standalone_workspace_replay.py
++++ b/apps/standalone/native_tests/test_standalone_workspace_replay.py
+@@ -246,14 +246,25 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
+                          "Joined shutdown must not substitute for the scripted release")
+ 
+     def assert_commands(self, run: workflow_fixture.WorkflowRun, *, on: int, off: int,
+-                        control_changes: int = 0) -> None:
++                        control_changes: int = 0, startup_sequence: int | None = None) -> None:
+         observed = run.diagnostics["replay"]
+         self.assertEqual(observed["accepted_note_on_commands"], on)
+         self.assertEqual(observed["accepted_note_off_commands"], off)
+-        initial = observed["observations"][0]
+-        self.assertLess(initial["elapsed_ms"], 180, "A pre-action loaded-state observation is required")
+-        startup_sequence = initial["last_applied_sequence"]
+-        self.assertEqual(initial["last_submitted_sequence"], startup_sequence)
++        if startup_sequence is None:
++            initial = observed["observations"][0]
++            self.assertLess(initial["elapsed_ms"], 180, "A pre-action loaded-state observation is required")
++            startup_sequence = initial["last_applied_sequence"]
++            self.assertEqual(initial["last_submitted_sequence"], startup_sequence)
++        else:
++            # A separately completed prefix supplies the acknowledged origin.
++            # The full journey can first sample that applied state while its
++            # first note is already submitted; submission is not application.
++            self.assertGreater(startup_sequence, 0)
++            for item in observed["observations"]:
++                self.assertGreaterEqual(item["last_applied_sequence"], startup_sequence)
++                self.assertEqual(item["resolved_sequence"], item["last_applied_sequence"])
++                self.assertGreaterEqual(item["last_submitted_sequence"], item["last_applied_sequence"])
++                self.assertLessEqual(item["last_submitted_sequence"], observed["last_submitted_sequence"])
+         final = observed["last_submitted_sequence"]
+         self.assertEqual(final - startup_sequence, on + off + control_changes,
+                          "Navigation must not inject a sound command or release")
+@@ -409,6 +420,26 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
+         midi_events = [(50, "connect"), (450, "bytes 90 3C 64"), (650, "bytes 91 40 64"),
+                        (850, "bytes 92 3C 64"), (2350, "bytes 80 3C 00"),
+                        (2550, "bytes 81 40 00"), (2750, "bytes 82 3C 00")]
++        # Finish the original nonmusical startup prefix before measuring its
++        # sequence origin. The replay minimum is 250 ms; retain only actions
++        # before the unchanged first note at 180 ms. A sampled elapsed time
++        # cannot prove that no later command has already been submitted.
++        prefix_ui = [event for event in events if event[0] < 180]
++        prefix_midi = [event for event in midi_events if event[0] < 180]
++        with self.run_native(250, prefix_ui, midi_events=prefix_midi) as prefix:
++            self.assert_control_path(prefix, [CONTROLS])
++            self.assert_hold_path(prefix, [EMPTY])
++            observed = prefix.diagnostics["replay"]
++            self.assertEqual(observed["accepted_note_on_commands"], 0)
++            self.assertEqual(observed["accepted_note_off_commands"], 0)
++            startup_sequence = observed["last_submitted_sequence"]
++            self.assertGreater(startup_sequence, 0)
++            self.assertEqual(observed["before_shutdown"]["last_applied_sequence"], startup_sequence)
++            self.assertEqual(observed["before_shutdown"]["resolved_sequence"], startup_sequence)
++            self.assertEqual(prefix.diagnostics["midi_replay"]["accepted_packets"], 0)
++            self.assertEqual(prefix.diagnostics["midi_replay"]["dropped_packets"], 0)
++            self.assertTrue(prefix.diagnostics["midi_replay"]["connected_before_shutdown"])
++            self.assertEqual(prefix.saved_bytes, STATE)
+         with self.run_native(3200, events, final_size=(960, 700), midi_events=midi_events) as run:
+             self.assert_control_path(run, [CONTROLS])
+             self.assert_hold_path(run, [
+@@ -416,7 +447,7 @@ class NativeWorkspaceReplayAcceptance(unittest.TestCase):
+                 ((60,), (60, 64), (25,)), ((60,), (64,), (25,)),
+                 ((), (64,), (25,)), ((), (), (25,)), EMPTY,
+             ])
+-            self.assert_commands(run, on=5, off=5)
++            self.assert_commands(run, on=5, off=5, startup_sequence=startup_sequence)
+             acknowledged_after_ui_release = [item for item in run.diagnostics["replay"]["observations"]
+                                             if 2100 <= item["elapsed_ms"] < 2350
+                                             and item["last_applied_sequence"] == item["last_submitted_sequence"]]

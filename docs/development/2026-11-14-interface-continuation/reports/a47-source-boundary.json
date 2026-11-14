@@ -1,0 +1,1329 @@
+{
+  "schema": "interface-vst3-boundary-a47-v1",
+  "agent": "/root/w08_a47_vst3_boundary",
+  "observed_utc": "2026-11-14T13:05:14.527791+00:00",
+  "evidence_kind": "read-only source/hash and exact hosted-log audit; no new build or runtime execution",
+  "baseline_commit": "d493e998e5dd7cf44db46854e87309745063ac54",
+  "published_commit": "8673713a484c40e26ac7810c7c4cbc22fa874426",
+  "published_tree": "e11bd68d6051f663631579ef235325a8775f8133",
+  "observed_head": "cdbb2beaa28bf136f9a8db6213819129514e2ae9",
+  "observed_head_tree": "b4d71c1f574ab17ba1a3f37b24667c1ff3f9c527",
+  "inventory_path": "docs/development/2026-11-14-interface-continuation/reports/a12-boundary-inventory.json",
+  "inventory_sha256": "7ad223f5efd79e3a1e676e9453c0c69aa5d9a5566bcfa1ade2bc65140d3f90c6",
+  "protected_files_checked": 114,
+  "protected_mismatches": [],
+  "groups": {
+    "core": {
+      "files": 44,
+      "identity_sha256": "02f90189b52ecf184e7322ccd3bf3cfa152ad7fca661e77fdd56096509d91e70",
+      "unchanged": true
+    },
+    "data": {
+      "files": 29,
+      "identity_sha256": "20ef744551f2ab5d48348b80980ffaa035599311ab259b998c6f263824291f90",
+      "unchanged": true
+    },
+    "native_audio_state": {
+      "files": 6,
+      "identity_sha256": "5613e369a5247225f1885970cf09f40bf67bf49618fa8cfcf38f37feff307f3d",
+      "unchanged": true
+    },
+    "retained_assets": {
+      "files": 11,
+      "identity_sha256": "3f65bd4595fc5f8e077710cbf2c9913cec6382cfa5b1a777bdcda2e185814b83",
+      "unchanged": true
+    },
+    "source_provenance": {
+      "files": 4,
+      "identity_sha256": "7590aa49058f6c423e940aaec7d157dd7d25f40edaadd1802f2a6fc54ccd0940",
+      "unchanged": true
+    },
+    "vst3": {
+      "files": 20,
+      "identity_sha256": "08df9b4f3579c746892af04d291e8703f8505e0dac610f856db7cc8d59f08e5b",
+      "unchanged": true
+    }
+  },
+  "protected_vst3_and_core": [
+    {
+      "path": "include/hammond/ConsoleModel.h",
+      "group": "core",
+      "bytes": 1721,
+      "baseline_sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+      "baseline_git_blob": "0411c93e18d6b91d255a590d4b58a3e695e4ebf1",
+      "current_sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "0411c93e18d6b91d255a590d4b58a3e695e4ebf1"
+    },
+    {
+      "path": "include/hammond/ContactBank.h",
+      "group": "core",
+      "bytes": 7646,
+      "baseline_sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+      "baseline_git_blob": "737ed7f08511728a014e2c289d9b4ff32570d308",
+      "current_sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "737ed7f08511728a014e2c289d9b4ff32570d308"
+    },
+    {
+      "path": "include/hammond/ControlState.h",
+      "group": "core",
+      "bytes": 5751,
+      "baseline_sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "baseline_git_blob": "b6563e6f16c35cee18ac9e20ac533bcdb7ff782e",
+      "current_sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "b6563e6f16c35cee18ac9e20ac533bcdb7ff782e"
+    },
+    {
+      "path": "include/hammond/ControlStateIO.h",
+      "group": "core",
+      "bytes": 2070,
+      "baseline_sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+      "baseline_git_blob": "c6d3e4bfa22fdc11e506ad009764da72e8902beb",
+      "current_sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "c6d3e4bfa22fdc11e506ad009764da72e8902beb"
+    },
+    {
+      "path": "include/hammond/Engine.h",
+      "group": "core",
+      "bytes": 9841,
+      "baseline_sha256": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6",
+      "baseline_git_blob": "de3b31c172041e4ea686e6b333a9d61faa55dee2",
+      "current_sha256": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "de3b31c172041e4ea686e6b333a9d61faa55dee2"
+    },
+    {
+      "path": "include/hammond/FixedRegistration.h",
+      "group": "core",
+      "bytes": 1822,
+      "baseline_sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+      "baseline_git_blob": "460470552bc2342d0adc40e3bae6b182d31821bd",
+      "current_sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "460470552bc2342d0adc40e3bae6b182d31821bd"
+    },
+    {
+      "path": "include/hammond/HostTimeline.h",
+      "group": "core",
+      "bytes": 7260,
+      "baseline_sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+      "baseline_git_blob": "c065e31e783cae1cd34b7d5c25cb0f6707971a42",
+      "current_sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "c065e31e783cae1cd34b7d5c25cb0f6707971a42"
+    },
+    {
+      "path": "include/hammond/InputProcessor.h",
+      "group": "core",
+      "bytes": 2317,
+      "baseline_sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+      "baseline_git_blob": "2ba54388f8d06a2a8ae4b24ee52b1879bf927e74",
+      "current_sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "2ba54388f8d06a2a8ae4b24ee52b1879bf927e74"
+    },
+    {
+      "path": "include/hammond/NoteOwnership.h",
+      "group": "core",
+      "bytes": 5037,
+      "baseline_sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+      "baseline_git_blob": "402796b446e5386561602a640395dea17910ba9d",
+      "current_sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "402796b446e5386561602a640395dea17910ba9d"
+    },
+    {
+      "path": "include/hammond/ParameterBridge.h",
+      "group": "core",
+      "bytes": 2952,
+      "baseline_sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "baseline_git_blob": "c8e75c6cd4faa52afbd80d722ba2f50bf1325d1d",
+      "current_sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "c8e75c6cd4faa52afbd80d722ba2f50bf1325d1d"
+    },
+    {
+      "path": "include/hammond/PedalNoteOwnership.h",
+      "group": "core",
+      "bytes": 4596,
+      "baseline_sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+      "baseline_git_blob": "203b4d4756b08933fa382cdb79d4b83606d5a2b8",
+      "current_sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "203b4d4756b08933fa382cdb79d4b83606d5a2b8"
+    },
+    {
+      "path": "include/hammond/PedalRouting.h",
+      "group": "core",
+      "bytes": 6909,
+      "baseline_sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+      "baseline_git_blob": "fc37eafb14a97d7aca37107981e0feb733e264e6",
+      "current_sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "fc37eafb14a97d7aca37107981e0feb733e264e6"
+    },
+    {
+      "path": "include/hammond/PedalVoice.h",
+      "group": "core",
+      "bytes": 3384,
+      "baseline_sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+      "baseline_git_blob": "6bd5c7763ad8d40fa01a042b089c847e25d50397",
+      "current_sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "6bd5c7763ad8d40fa01a042b089c847e25d50397"
+    },
+    {
+      "path": "include/hammond/Percussion.h",
+      "group": "core",
+      "bytes": 6395,
+      "baseline_sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+      "baseline_git_blob": "25f9ae2fb58955674464ea9752d1e8abdc41ef80",
+      "current_sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "25f9ae2fb58955674464ea9752d1e8abdc41ef80"
+    },
+    {
+      "path": "include/hammond/PerformanceInput.h",
+      "group": "core",
+      "bytes": 3220,
+      "baseline_sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+      "baseline_git_blob": "2ed074ee66ad171a2572e0fd9af78742e0a9b120",
+      "current_sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "2ed074ee66ad171a2572e0fd9af78742e0a9b120"
+    },
+    {
+      "path": "include/hammond/Profile.h",
+      "group": "core",
+      "bytes": 2250,
+      "baseline_sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+      "baseline_git_blob": "7af2338a9230ad627fc8e8f4c4fcc3409e149df2",
+      "current_sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "7af2338a9230ad627fc8e8f4c4fcc3409e149df2"
+    },
+    {
+      "path": "include/hammond/RotaryMotion.h",
+      "group": "core",
+      "bytes": 6314,
+      "baseline_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+      "baseline_git_blob": "dac7f902599f8b6256361d1d5b2cc8ce8fe6930a",
+      "current_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "dac7f902599f8b6256361d1d5b2cc8ce8fe6930a"
+    },
+    {
+      "path": "include/hammond/RotaryTypes.h",
+      "group": "core",
+      "bytes": 8414,
+      "baseline_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+      "baseline_git_blob": "7731c8aee10020c2bb9b4fc11d647cd9bc1fbb88",
+      "current_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "7731c8aee10020c2bb9b4fc11d647cd9bc1fbb88"
+    },
+    {
+      "path": "include/hammond/ScannerLine.h",
+      "group": "core",
+      "bytes": 6451,
+      "baseline_sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+      "baseline_git_blob": "e217d2dcdd57021db5b24c65b1f8a711c8de2b50",
+      "current_sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "e217d2dcdd57021db5b24c65b1f8a711c8de2b50"
+    },
+    {
+      "path": "include/hammond/ScannerRotor.h",
+      "group": "core",
+      "bytes": 6041,
+      "baseline_sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+      "baseline_git_blob": "1abdd20e0aad31a40c6cc7969966b601bcc538c8",
+      "current_sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "1abdd20e0aad31a40c6cc7969966b601bcc538c8"
+    },
+    {
+      "path": "include/hammond/StateExchange.h",
+      "group": "core",
+      "bytes": 6878,
+      "baseline_sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+      "baseline_git_blob": "1ee1a926028e74e28f96dc4d36fe51396261534e",
+      "current_sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "1ee1a926028e74e28f96dc4d36fe51396261534e"
+    },
+    {
+      "path": "include/hammond/TonewheelBank.h",
+      "group": "core",
+      "bytes": 2760,
+      "baseline_sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+      "baseline_git_blob": "7ec35afd15d944fa9730bef3111380aa828aac38",
+      "current_sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "7ec35afd15d944fa9730bef3111380aa828aac38"
+    },
+    {
+      "path": "include/hammond/Types.h",
+      "group": "core",
+      "bytes": 6015,
+      "baseline_sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "baseline_git_blob": "6c5bbbcd57e6eb0359c8401f11c3f26f618e85d0",
+      "current_sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "6c5bbbcd57e6eb0359c8401f11c3f26f618e85d0"
+    },
+    {
+      "path": "include/hammond/detail/Decimal.h",
+      "group": "core",
+      "bytes": 3736,
+      "baseline_sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+      "baseline_git_blob": "6847e6215f129486af0f667d1ac12340485fdad0",
+      "current_sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "6847e6215f129486af0f667d1ac12340485fdad0"
+    },
+    {
+      "path": "plugins/vst3/CMakeLists.txt",
+      "group": "vst3",
+      "bytes": 10678,
+      "baseline_sha256": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545",
+      "baseline_git_blob": "203b41fb97684545da18fe98d46ca9277f4b8412",
+      "current_sha256": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "203b41fb97684545da18fe98d46ca9277f4b8412"
+    },
+    {
+      "path": "plugins/vst3/Controller.cpp",
+      "group": "vst3",
+      "bytes": 9847,
+      "baseline_sha256": "2978813561b9702b560e227a9ff27b62a19c0c4f9a7b05823a2c40e3112d3be7",
+      "baseline_git_blob": "1c319c7d705d19bada01e041915c4a993787ec6f",
+      "current_sha256": "2978813561b9702b560e227a9ff27b62a19c0c4f9a7b05823a2c40e3112d3be7",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "1c319c7d705d19bada01e041915c4a993787ec6f"
+    },
+    {
+      "path": "plugins/vst3/Controller.h",
+      "group": "vst3",
+      "bytes": 2008,
+      "baseline_sha256": "c5377f380ddb1a1c006482e138cdd6f4736a0258803d8ae9dd0f735ff72570bb",
+      "baseline_git_blob": "a2bd6b84343b6b913fb56a4b42969c42eb7c2b7b",
+      "current_sha256": "c5377f380ddb1a1c006482e138cdd6f4736a0258803d8ae9dd0f735ff72570bb",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "a2bd6b84343b6b913fb56a4b42969c42eb7c2b7b"
+    },
+    {
+      "path": "plugins/vst3/Factory.cpp",
+      "group": "vst3",
+      "bytes": 1134,
+      "baseline_sha256": "880d4d24d4d6fbf104e441400ebf571a77c15019ae5bc43571a4524c242250d1",
+      "baseline_git_blob": "c8bbcbde9ef8eef27a100ba72b7de37cc6971fd4",
+      "current_sha256": "880d4d24d4d6fbf104e441400ebf571a77c15019ae5bc43571a4524c242250d1",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "c8bbcbde9ef8eef27a100ba72b7de37cc6971fd4"
+    },
+    {
+      "path": "plugins/vst3/PluginIds.h",
+      "group": "vst3",
+      "bytes": 746,
+      "baseline_sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+      "baseline_git_blob": "100ae32acb21c15432fdefdec2e40d26a99669aa",
+      "current_sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "100ae32acb21c15432fdefdec2e40d26a99669aa"
+    },
+    {
+      "path": "plugins/vst3/Processor.cpp",
+      "group": "vst3",
+      "bytes": 19914,
+      "baseline_sha256": "a61e567798e7435c9d73ddab9bf925b6995396954e772c13f31571ad0a96f20b",
+      "baseline_git_blob": "d25ea10fbf1a359e117d57b465e39f95be85e698",
+      "current_sha256": "a61e567798e7435c9d73ddab9bf925b6995396954e772c13f31571ad0a96f20b",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "d25ea10fbf1a359e117d57b465e39f95be85e698"
+    },
+    {
+      "path": "plugins/vst3/Processor.h",
+      "group": "vst3",
+      "bytes": 4713,
+      "baseline_sha256": "e85cdc6f7aaf70c05eda61630a5e3acee7c7f2fef2796a2c5f557ce034a54e72",
+      "baseline_git_blob": "df2d450de076cd893e40c4f461d8d0907aea24cb",
+      "current_sha256": "e85cdc6f7aaf70c05eda61630a5e3acee7c7f2fef2796a2c5f557ce034a54e72",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "df2d450de076cd893e40c4f461d8d0907aea24cb"
+    },
+    {
+      "path": "plugins/vst3/StateStream.cpp",
+      "group": "vst3",
+      "bytes": 2719,
+      "baseline_sha256": "c83fbf22ea26c0b7a89974d4c0aa590c1e46f44f4a6c457d6fee512740d02117",
+      "baseline_git_blob": "3589b99c4e1a765fb4e87b526a00a2157c3eea74",
+      "current_sha256": "c83fbf22ea26c0b7a89974d4c0aa590c1e46f44f4a6c457d6fee512740d02117",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "3589b99c4e1a765fb4e87b526a00a2157c3eea74"
+    },
+    {
+      "path": "plugins/vst3/StateStream.h",
+      "group": "vst3",
+      "bytes": 1348,
+      "baseline_sha256": "6493aa859427ad55cf81c84df29b4669f038828eb4d2c53f04e442aefadeea8e",
+      "baseline_git_blob": "b56bf09056a554386474542b60c8e47a0d1f192a",
+      "current_sha256": "6493aa859427ad55cf81c84df29b4669f038828eb4d2c53f04e442aefadeea8e",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "b56bf09056a554386474542b60c8e47a0d1f192a"
+    },
+    {
+      "path": "plugins/vst3/tests/NativeAllocationProbe.h",
+      "group": "vst3",
+      "bytes": 10810,
+      "baseline_sha256": "e61fbceddf7fa3df138b534117daf9cdb49a10098ef6864bdadac65335ab57d4",
+      "baseline_git_blob": "1309479898949410782ee6375eb1d0a1ae203244",
+      "current_sha256": "e61fbceddf7fa3df138b534117daf9cdb49a10098ef6864bdadac65335ab57d4",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "1309479898949410782ee6375eb1d0a1ae203244"
+    },
+    {
+      "path": "plugins/vst3/tests/NativeHarness.cpp",
+      "group": "vst3",
+      "bytes": 15072,
+      "baseline_sha256": "899d504d842e2e1b83d7f629e0bb4335b0c4f4191d7568df90980f27c09828b7",
+      "baseline_git_blob": "58b19fccbdb8d61093f0da29cb4d2cc48dc69a7c",
+      "current_sha256": "899d504d842e2e1b83d7f629e0bb4335b0c4f4191d7568df90980f27c09828b7",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "58b19fccbdb8d61093f0da29cb4d2cc48dc69a7c"
+    },
+    {
+      "path": "plugins/vst3/tests/NativeHarness.h",
+      "group": "vst3",
+      "bytes": 8411,
+      "baseline_sha256": "0067515c5259288f1f711e4ce8c0921721682209863ca62ccbee4f50dbb2752a",
+      "baseline_git_blob": "3ce67bc92b0e2549dd7a5ffedf0e6fa488c9110f",
+      "current_sha256": "0067515c5259288f1f711e4ce8c0921721682209863ca62ccbee4f50dbb2752a",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "3ce67bc92b0e2549dd7a5ffedf0e6fa488c9110f"
+    },
+    {
+      "path": "plugins/vst3/tests/NativePresetOracle.h",
+      "group": "vst3",
+      "bytes": 1182,
+      "baseline_sha256": "3b620c607814fc9b686ff5e8e56292956649ab35cd42f0cf9df3426d26196dad",
+      "baseline_git_blob": "ae1cfaa743fb8f56f3eb25467475aa1d2173e0a1",
+      "current_sha256": "3b620c607814fc9b686ff5e8e56292956649ab35cd42f0cf9df3426d26196dad",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "ae1cfaa743fb8f56f3eb25467475aa1d2173e0a1"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_abi.cpp",
+      "group": "vst3",
+      "bytes": 33747,
+      "baseline_sha256": "f93a59fc0cdb99b8b016f77ff78baac6f78a083de674fed49ee194cc12d766f7",
+      "baseline_git_blob": "0a9e145a6c97baaa7973f38489a7190cbd4b6dea",
+      "current_sha256": "f93a59fc0cdb99b8b016f77ff78baac6f78a083de674fed49ee194cc12d766f7",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "0a9e145a6c97baaa7973f38489a7190cbd4b6dea"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_automation.cpp",
+      "group": "vst3",
+      "bytes": 43940,
+      "baseline_sha256": "51b4ae6fa84d6895c4ddd0b378223aa132fe5ea8b74016bf262f3147736fcdf9",
+      "baseline_git_blob": "413b55bb49cb5e313919899d45f98dad786519f3",
+      "current_sha256": "51b4ae6fa84d6895c4ddd0b378223aa132fe5ea8b74016bf262f3147736fcdf9",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "413b55bb49cb5e313919899d45f98dad786519f3"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_behavior.cpp",
+      "group": "vst3",
+      "bytes": 54155,
+      "baseline_sha256": "8e9dbfa48663fb316e0f2e5d4d1df9492259c1e5efaaaa461cd193263c095f39",
+      "baseline_git_blob": "402bc2b1a68256d104e6a28be8725a0d676f6a63",
+      "current_sha256": "8e9dbfa48663fb316e0f2e5d4d1df9492259c1e5efaaaa461cd193263c095f39",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "402bc2b1a68256d104e6a28be8725a0d676f6a63"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_concurrency.cpp",
+      "group": "vst3",
+      "bytes": 28000,
+      "baseline_sha256": "c863a9b6ad514163d3ff3645b43aa04171995ddbf7992d9fdf6aeca88af5027f",
+      "baseline_git_blob": "0f041b7737025aecf2eb6cb99369d1236affe4cf",
+      "current_sha256": "c863a9b6ad514163d3ff3645b43aa04171995ddbf7992d9fdf6aeca88af5027f",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "0f041b7737025aecf2eb6cb99369d1236affe4cf"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_controller.cpp",
+      "group": "vst3",
+      "bytes": 35235,
+      "baseline_sha256": "fae0af12a9fc272c1ffbb302666db78aca8c176083b07e0f8a818a97353db640",
+      "baseline_git_blob": "35f1749d3d44ae3153d1e43ffa55fa562ae65c65",
+      "current_sha256": "fae0af12a9fc272c1ffbb302666db78aca8c176083b07e0f8a818a97353db640",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "35f1749d3d44ae3153d1e43ffa55fa562ae65c65"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_install.py",
+      "group": "vst3",
+      "bytes": 11704,
+      "baseline_sha256": "3f2a2e8b52ca2d647e4da45218ed68c748b7a5d5212b8254fad57e3b6965366e",
+      "baseline_git_blob": "c258cbcd029031096d662bde44adb66a3d44f44e",
+      "current_sha256": "3f2a2e8b52ca2d647e4da45218ed68c748b7a5d5212b8254fad57e3b6965366e",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "c258cbcd029031096d662bde44adb66a3d44f44e"
+    },
+    {
+      "path": "plugins/vst3/tests/test_native_realtime.cpp",
+      "group": "vst3",
+      "bytes": 33338,
+      "baseline_sha256": "56c47d677c838c7543121c9738e191abe3f2e3437b900df607b6606be8fb53d4",
+      "baseline_git_blob": "5b73d598091fdfb1252cae5984c58a5a6ee116a3",
+      "current_sha256": "56c47d677c838c7543121c9738e191abe3f2e3437b900df607b6606be8fb53d4",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "5b73d598091fdfb1252cae5984c58a5a6ee116a3"
+    },
+    {
+      "path": "src/ContactBank.cpp",
+      "group": "core",
+      "bytes": 9665,
+      "baseline_sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+      "baseline_git_blob": "b4ada52978aa342f86d82250eb6d477c51a9732c",
+      "current_sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "b4ada52978aa342f86d82250eb6d477c51a9732c"
+    },
+    {
+      "path": "src/ControlState.cpp",
+      "group": "core",
+      "bytes": 7673,
+      "baseline_sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "baseline_git_blob": "2041989eceb1c519323d374a874bfe6ce356403a",
+      "current_sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "2041989eceb1c519323d374a874bfe6ce356403a"
+    },
+    {
+      "path": "src/ControlStateIO.cpp",
+      "group": "core",
+      "bytes": 13152,
+      "baseline_sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "baseline_git_blob": "6fcec8fd5cc71be5ce76cbab6b08b1cd4a50e948",
+      "current_sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "6fcec8fd5cc71be5ce76cbab6b08b1cd4a50e948"
+    },
+    {
+      "path": "src/Engine.cpp",
+      "group": "core",
+      "bytes": 25291,
+      "baseline_sha256": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a",
+      "baseline_git_blob": "43f75c7f08e71d14fc8f12104e47a10c4b994a04",
+      "current_sha256": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "43f75c7f08e71d14fc8f12104e47a10c4b994a04"
+    },
+    {
+      "path": "src/FixedRegistration.cpp",
+      "group": "core",
+      "bytes": 1630,
+      "baseline_sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+      "baseline_git_blob": "3d22bc88389175691f245dea64c1131b02d05433",
+      "current_sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "3d22bc88389175691f245dea64c1131b02d05433"
+    },
+    {
+      "path": "src/HostTimeline.cpp",
+      "group": "core",
+      "bytes": 21374,
+      "baseline_sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+      "baseline_git_blob": "50c981e9601afbeae49d1ff203dea4481c618c4f",
+      "current_sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "50c981e9601afbeae49d1ff203dea4481c618c4f"
+    },
+    {
+      "path": "src/InputProcessor.cpp",
+      "group": "core",
+      "bytes": 1257,
+      "baseline_sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+      "baseline_git_blob": "6c6d67f34a1cee6c3132c4954c9dbb3f85d65398",
+      "current_sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "6c6d67f34a1cee6c3132c4954c9dbb3f85d65398"
+    },
+    {
+      "path": "src/NoteOwnership.cpp",
+      "group": "core",
+      "bytes": 8856,
+      "baseline_sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+      "baseline_git_blob": "54613163fff3d3ebd61f48c8454cbb5583b85e3a",
+      "current_sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "54613163fff3d3ebd61f48c8454cbb5583b85e3a"
+    },
+    {
+      "path": "src/ParameterBridge.cpp",
+      "group": "core",
+      "bytes": 11334,
+      "baseline_sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+      "baseline_git_blob": "7896111e5f007f6a7db2c4b6e2407fa57089f459",
+      "current_sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "7896111e5f007f6a7db2c4b6e2407fa57089f459"
+    },
+    {
+      "path": "src/PedalNoteOwnership.cpp",
+      "group": "core",
+      "bytes": 7419,
+      "baseline_sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+      "baseline_git_blob": "8d30cf0c52e15d42912b62d9e41726ff50e7ce58",
+      "current_sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "8d30cf0c52e15d42912b62d9e41726ff50e7ce58"
+    },
+    {
+      "path": "src/PedalRouting.cpp",
+      "group": "core",
+      "bytes": 3983,
+      "baseline_sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+      "baseline_git_blob": "a89ff69f0acd4fb667d30442278cd1b4c09a97c1",
+      "current_sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "a89ff69f0acd4fb667d30442278cd1b4c09a97c1"
+    },
+    {
+      "path": "src/PedalVoice.cpp",
+      "group": "core",
+      "bytes": 1171,
+      "baseline_sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+      "baseline_git_blob": "27de4a3e0bd34ee8ea8bc15264ea232b9981bb3a",
+      "current_sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "27de4a3e0bd34ee8ea8bc15264ea232b9981bb3a"
+    },
+    {
+      "path": "src/Percussion.cpp",
+      "group": "core",
+      "bytes": 4837,
+      "baseline_sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+      "baseline_git_blob": "3bf89614341890bdf82465a56b3e4755a28e41b1",
+      "current_sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "3bf89614341890bdf82465a56b3e4755a28e41b1"
+    },
+    {
+      "path": "src/PerformanceInput.cpp",
+      "group": "core",
+      "bytes": 4219,
+      "baseline_sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+      "baseline_git_blob": "a71ecd92ac896169949c4f33a8447dac1919e4e4",
+      "current_sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "a71ecd92ac896169949c4f33a8447dac1919e4e4"
+    },
+    {
+      "path": "src/Profile.cpp",
+      "group": "core",
+      "bytes": 11655,
+      "baseline_sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+      "baseline_git_blob": "7e5939678bbee778ad6e0db5ace18486a3dcbee1",
+      "current_sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "7e5939678bbee778ad6e0db5ace18486a3dcbee1"
+    },
+    {
+      "path": "src/RotaryMotion.cpp",
+      "group": "core",
+      "bytes": 16042,
+      "baseline_sha256": "9c8c98dc66a66088d39b43a52d025289d4dd241ebba583bd4200aba3b539ac4d",
+      "baseline_git_blob": "25b8d5f8783fbccd76f4291a1fb4587fa5e95c25",
+      "current_sha256": "9c8c98dc66a66088d39b43a52d025289d4dd241ebba583bd4200aba3b539ac4d",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "25b8d5f8783fbccd76f4291a1fb4587fa5e95c25"
+    },
+    {
+      "path": "src/ScannerLine.cpp",
+      "group": "core",
+      "bytes": 20512,
+      "baseline_sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+      "baseline_git_blob": "b82b21f5289eee8f09aaba22afeb88c961394afa",
+      "current_sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "b82b21f5289eee8f09aaba22afeb88c961394afa"
+    },
+    {
+      "path": "src/ScannerRotor.cpp",
+      "group": "core",
+      "bytes": 5383,
+      "baseline_sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+      "baseline_git_blob": "dd5bbebe753ed9f805b73530dc574830219c7608",
+      "current_sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "dd5bbebe753ed9f805b73530dc574830219c7608"
+    },
+    {
+      "path": "src/StateExchange.cpp",
+      "group": "core",
+      "bytes": 9473,
+      "baseline_sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+      "baseline_git_blob": "9e21010b543cb954c19c793510f5f8e8a2923ce4",
+      "current_sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "9e21010b543cb954c19c793510f5f8e8a2923ce4"
+    },
+    {
+      "path": "src/TonewheelBank.cpp",
+      "group": "core",
+      "bytes": 4390,
+      "baseline_sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+      "baseline_git_blob": "3a601121f67a1d2f8e73d0f4d05dc6baee9c9b80",
+      "current_sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+      "all_four_byte_identical": true,
+      "all_hashes_equal_inventory": true,
+      "published_git_blob": "3a601121f67a1d2f8e73d0f4d05dc6baee9c9b80"
+    }
+  ],
+  "additional_native_inputs": [
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "1c569b0dc5d5afbe5b99ff8529d457ca736ad8e82a36105336badbd4e9841e53",
+      "equals_published": true,
+      "equals_baseline": true
+    },
+    {
+      "path": ".github/workflows/native-vst3.yml",
+      "sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+      "equals_published": true,
+      "equals_baseline": true
+    },
+    {
+      "path": "cmake/VerifyVst3Sdk.cmake",
+      "sha256": "4feeb4cfabf1560cfd3487859b88d40974b47801753aeccf848517717443e6eb",
+      "equals_published": true,
+      "equals_baseline": true
+    },
+    {
+      "path": "tools/acquire_vst3_sdk.py",
+      "sha256": "7e25134bde98d5a1886bd3724331495d1a07856526f87da606ae250b57f5bf86",
+      "equals_published": true,
+      "equals_baseline": true
+    },
+    {
+      "path": "tools/embed_profile.py",
+      "sha256": "f190b1bd45c1f1c8497293d9154d19982429cc07b3b1f45613e9e62c97556da9",
+      "equals_published": true,
+      "equals_baseline": true
+    },
+    {
+      "path": "tools/compile_profile.py",
+      "sha256": "2ca649de88a3f267970e4ed00fa6c08b7c234bffcc1b4c24b47a89be608fb2a8",
+      "equals_published": true,
+      "equals_baseline": true
+    },
+    {
+      "path": "tools/compile_pedal_routing.py",
+      "sha256": "f34bcb9cd9641359b188c5f33c807256e70d23a8f66e513f544d8eb5dc0582b9",
+      "equals_published": true,
+      "equals_baseline": true
+    },
+    {
+      "path": "tools/compile_scanner_line.py",
+      "sha256": "56c60cf511144d552fdeb2708711b32469f350593b391c7619ebb92b41b6dd7e",
+      "equals_published": true,
+      "equals_baseline": true
+    }
+  ],
+  "parameter_registry_sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+  "parameter_registry_schema": 4,
+  "parameters": [
+    {
+      "id": 4096,
+      "path": "manual.upper.bank.A.drawbar.16ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4097,
+      "path": "manual.upper.bank.A.drawbar.5_1/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4098,
+      "path": "manual.upper.bank.A.drawbar.8ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4099,
+      "path": "manual.upper.bank.A.drawbar.4ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4100,
+      "path": "manual.upper.bank.A.drawbar.2_2/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4101,
+      "path": "manual.upper.bank.A.drawbar.2ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4102,
+      "path": "manual.upper.bank.A.drawbar.1_3/5ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4103,
+      "path": "manual.upper.bank.A.drawbar.1_1/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4104,
+      "path": "manual.upper.bank.A.drawbar.1ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4112,
+      "path": "manual.upper.bank.B.drawbar.16ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4113,
+      "path": "manual.upper.bank.B.drawbar.5_1/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4114,
+      "path": "manual.upper.bank.B.drawbar.8ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4115,
+      "path": "manual.upper.bank.B.drawbar.4ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4116,
+      "path": "manual.upper.bank.B.drawbar.2_2/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4117,
+      "path": "manual.upper.bank.B.drawbar.2ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4118,
+      "path": "manual.upper.bank.B.drawbar.1_3/5ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4119,
+      "path": "manual.upper.bank.B.drawbar.1_1/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4120,
+      "path": "manual.upper.bank.B.drawbar.1ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4128,
+      "path": "manual.lower.bank.A.drawbar.16ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4129,
+      "path": "manual.lower.bank.A.drawbar.5_1/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4130,
+      "path": "manual.lower.bank.A.drawbar.8ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4131,
+      "path": "manual.lower.bank.A.drawbar.4ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4132,
+      "path": "manual.lower.bank.A.drawbar.2_2/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4133,
+      "path": "manual.lower.bank.A.drawbar.2ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4134,
+      "path": "manual.lower.bank.A.drawbar.1_3/5ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4135,
+      "path": "manual.lower.bank.A.drawbar.1_1/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4136,
+      "path": "manual.lower.bank.A.drawbar.1ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4144,
+      "path": "manual.lower.bank.B.drawbar.16ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4145,
+      "path": "manual.lower.bank.B.drawbar.5_1/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4146,
+      "path": "manual.lower.bank.B.drawbar.8ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4147,
+      "path": "manual.lower.bank.B.drawbar.4ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4148,
+      "path": "manual.lower.bank.B.drawbar.2_2/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4149,
+      "path": "manual.lower.bank.B.drawbar.2ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4150,
+      "path": "manual.lower.bank.B.drawbar.1_3/5ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4151,
+      "path": "manual.lower.bank.B.drawbar.1_1/3ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 4152,
+      "path": "manual.lower.bank.B.drawbar.1ft",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 8192,
+      "path": "global.expression",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "step_count": 0
+    },
+    {
+      "id": 8208,
+      "path": "manual.upper.selected_bank",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "step_count": 1
+    },
+    {
+      "id": 8209,
+      "path": "manual.lower.selected_bank",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "step_count": 1
+    },
+    {
+      "id": 12288,
+      "path": "percussion.enabled",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "step_count": 1
+    },
+    {
+      "id": 12289,
+      "path": "percussion.harmonic",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "step_count": 1
+    },
+    {
+      "id": 12290,
+      "path": "percussion.volume",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "step_count": 1
+    },
+    {
+      "id": 12291,
+      "path": "percussion.decay",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "step_count": 1
+    },
+    {
+      "id": 16384,
+      "path": "pedal.drawbar.mixture1",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 16385,
+      "path": "pedal.drawbar.mixture2",
+      "minimum": 0,
+      "maximum": 8,
+      "default": 0,
+      "step_count": 8
+    },
+    {
+      "id": 20480,
+      "path": "manual.upper.preset_selection",
+      "minimum": 0,
+      "maximum": 11,
+      "default": 11,
+      "step_count": 11
+    },
+    {
+      "id": 20481,
+      "path": "manual.lower.preset_selection",
+      "minimum": 0,
+      "maximum": 11,
+      "default": 11,
+      "step_count": 11
+    }
+  ],
+  "compiled_and_independent_controller_oracle_match_registry": true,
+  "state_writer": "B3CONTROLS4",
+  "state_readers": [
+    "B3CONTROLS1",
+    "B3CONTROLS2",
+    "B3CONTROLS3",
+    "B3CONTROLS4"
+  ],
+  "native_source_count": 20,
+  "native_standalone_or_sdl_mentions": [],
+  "core_source_count": 44,
+  "native_or_core_added_or_removed_paths": [],
+  "native_link_targets": [
+    "hammond_core",
+    "sdk"
+  ],
+  "custom_editor": false,
+  "build_scope": "hammond_core uses src/*.cpp; HammondB3 lists Processor/Controller/Factory/StateStream and embedded profile; standalone support is a separate consumer of core",
+  "published_to_head_changed_paths": [
+    ".github/workflows/standalone.yml",
+    "apps/standalone/CMakeLists.txt",
+    "docs/DEVELOPMENT_LOG.md",
+    "docs/INTERFACE_CONTINUATION_SCOPE.md",
+    "docs/MIDI_UI_RUNBOOK.md",
+    "docs/NEXT_STEPS.md",
+    "docs/PROJECT_GUIDE.md",
+    "docs/STATUS.md",
+    "docs/development/2026-11-14-interface-continuation/CHECKPOINT.md",
+    "docs/development/2026-11-14-interface-continuation/README.md",
+    "docs/development/2026-11-14-interface-continuation/assignments.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-asan-ubsan.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-asan-ubsan.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-asan-ubsan.xml",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-build.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-build.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-configure.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-configure.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-direct-preset-raster.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-direct-preset-raster.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-direct-scaled-view.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-direct-scaled-view.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-direct-workspace-raster.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-direct-workspace-raster.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-discovery.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-discovery.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-final-identity.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-instrumentation.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-leak-runtime-diagnostic.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-leak-runtime-diagnostic.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-post-run.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-result.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-run.py",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-runtime-probe.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-runtime-probe.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-runtime-probe.xml",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-setup.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-source-after-build.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-source-after-test.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a41-source-before.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a43-native-sanitizer-ci.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a43-verify-ci.py",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-build-packages.py",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-build-result-first.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-build-result.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-evidence-check.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-final-package-result.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-input-comparison.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-isolation-probe.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-build.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-configure.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-install-ctest.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-navigation-diagnostics.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-navigation.b3ui",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-refresh-configure.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-refresh-install.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-release-raster-discovery.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-relocated-service.png",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-relocation.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-smoke-diagnostics.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-smoke-loader.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-off-source-after-build.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-build.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-configure.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-install-ctest.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-navigation-diagnostics.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-navigation.b3ui",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-refresh-configure.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-refresh-install.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-release-raster-discovery.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-relocated-play.png",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-relocation-first.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-relocation-strace-blocked.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-relocation.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-smoke-diagnostics.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-smoke-loader.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-midi-on-source-after-build.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-package-refresh.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-probe-corrections.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-qualify-relocation.py",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-refresh-package-docs.py",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-runtime-package-result.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-source-after-build-tests.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-source-after-guide-refresh.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-source-after-relocation.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-source-before-guide-refresh.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-source-before.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a44-toolchain.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a45-audit.py",
+    "docs/development/2026-11-14-interface-continuation/reports/a45-closing-check.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a45-correction-evidence-check.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a45-documentation-audit.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a45-gallery-identity.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a45-proposed-guide-edits.json",
+    "docs/development/2026-11-14-interface-continuation/reports/a45-proposed-navigation-edits.json",
+    "docs/development/2026-11-14-interface-continuation/reports/publication-4.json",
+    "docs/development/2026-11-14-interface-continuation/reports/root-a43-static-recheck.json",
+    "docs/development/2026-11-14-interface-continuation/reports/root-guide-freshness.json",
+    "docs/development/2026-11-14-interface-continuation/reports/root-navigation-freshness.json",
+    "docs/development/2026-11-14-interface-continuation/reports/root-sanitizer-budgets.json",
+    "docs/development/2026-11-14-interface-continuation/reports/root-sanitizer-property-configure.txt",
+    "docs/development/2026-11-14-interface-continuation/reports/root-ui-polish-hosted.json",
+    "docs/development/2026-11-14-interface-continuation/session41-native-sanitizers.md",
+    "docs/development/2026-11-14-interface-continuation/session43-native-leak-ci.md",
+    "docs/development/2026-11-14-interface-continuation/session44-final-package.md",
+    "docs/development/2026-11-14-interface-continuation/session45-documentation-freshness.md",
+    "docs/reviews/INTERFACE_DOCUMENTATION_FRESHNESS.md",
+    "docs/reviews/INTERFACE_FINAL_PACKAGE.md",
+    "docs/reviews/INTERFACE_NATIVE_SANITIZER_CI.md",
+    "docs/reviews/INTERFACE_SANITIZER_QUALIFICATION.md"
+  ],
+  "read_scope": [
+    "AGENTS.md",
+    "docs/PLAN.md",
+    "docs/INTERFACE_CONTINUATION_SCOPE.md",
+    "docs/INTERFACE_WORKSPACE_CONTRACT.md",
+    "docs/INTERFACE_INSPECTION_CONTRACT.md",
+    "docs/development/2026-11-14-interface-continuation/CHECKPOINT.md",
+    "docs/VST3_ABI_ACCEPTANCE.md",
+    "plugins/vst3",
+    "include/hammond/ParameterBridge.h",
+    "src/ParameterBridge.cpp",
+    "src/ControlStateIO.cpp",
+    "CMakeLists.txt",
+    "apps/standalone/CMakeLists.txt",
+    ".github/workflows/native-vst3.yml"
+  ]
+}

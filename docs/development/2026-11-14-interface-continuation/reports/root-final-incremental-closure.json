@@ -1,0 +1,132 @@
+{
+  "a52_artifact_identities_checked": 158,
+  "a52_artifact_mismatches": {},
+  "a52_report_identity": {
+    "bytes": 57445,
+    "sha256": "40a862d44d5f0b3343ce89c68c37b468bcf7572ba1f24ac3ffe439615188baa3"
+  },
+  "base_head": "cdbb2beaa28bf136f9a8db6213819129514e2ae9",
+  "burst": {
+    "actions": 256,
+    "off": 3,
+    "on": 3,
+    "seconds": 5.511467058997368,
+    "source": {
+      "bytes": 5673,
+      "sha256": "f926148eef823b70c6b0159a519071afd4de28c93d4ac54487b6a9026500ea45"
+    }
+  },
+  "claim": "Original147-suite run remains146/147. Two fixture-only changes have focused six-method/16-process closure and rejected-corruption evidence on the unchanged application. Other source/executable gates are inherited only through exact matching inputs. New publication hosted results remain a separately identified gate.",
+  "corrected_workspace_suite": {
+    "elapsed_seconds": 40.345931428993936,
+    "full_journey_accepted_off": 5,
+    "full_journey_accepted_on": 5,
+    "full_journey_dropped_packets": 0,
+    "full_journey_submitted": 13,
+    "methods_passed": 6,
+    "native_processes": 16,
+    "original_full_ui_midi_state_bytes_equal_a49": true,
+    "prefix_applied": 3,
+    "prefix_duration_ms": 250,
+    "prefix_last_arrival_ns": 0,
+    "prefix_offered_packets": 0,
+    "prefix_resolved": 3,
+    "prefix_submitted": 3
+  },
+  "executable_inputs_checked": 82,
+  "executable_mismatches": {},
+  "generated_input_changes_after_guide_reconfigure": {},
+  "new_native_execution_by_root": false,
+  "only_changed_test_inputs": {
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": {
+      "a49": {
+        "bytes": 47753,
+        "sha256": "1cdaa5a6669b79ed19f26c170ef77a0181162a18649d0d81deed7f53f5a9fb8e"
+      },
+      "current": {
+        "bytes": 48023,
+        "sha256": "7675ea52acf4ea808b062eacf05e5a23a32f1b9b2c5e7239ad747aee1197b0a6"
+      }
+    },
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": {
+      "a49": {
+        "bytes": 25854,
+        "sha256": "482f2d7b9075358782e966c12c7117c5fd1bd5d10a52682cffa3c0d4c459e891"
+      },
+      "current": {
+        "bytes": 28183,
+        "sha256": "485de6fd6e3da49bbac1f523d4cb277557ee4b94ee1b7ce098f7188466d2cbf3"
+      }
+    }
+  },
+  "original_full_gate": {
+    "changed_outcome": false,
+    "executed": 147,
+    "failed": 1,
+    "passed": 146,
+    "report": "a49-final-result.json",
+    "skipped": 0
+  },
+  "package_refresh": "root-final-guide-package-refresh.json",
+  "product_inputs_checked": 98,
+  "product_mismatches": {},
+  "protected_inputs_checked": 114,
+  "protected_mismatches": {},
+  "retained_trace": {
+    "native_processes": 0,
+    "negative_checks": [
+      {
+        "assertion": "1 != 0",
+        "mutation": "invented_zero_packet_arrival",
+        "rejected": true
+      },
+      {
+        "assertion": "0 not greater than 0",
+        "mutation": "missing_positive_packet_arrival",
+        "rejected": true
+      },
+      {
+        "assertion": "2 != 3",
+        "mutation": "unacknowledged_prefix",
+        "rejected": true
+      },
+      {
+        "assertion": "11 != 10 : Navigation must not inject a sound command or release",
+        "mutation": "extra_command",
+        "rejected": true
+      },
+      {
+        "assertion": "4 != 5",
+        "mutation": "missing_note_off",
+        "rejected": true
+      },
+      {
+        "assertion": "Lists differ: [((),[136 chars]), ((60,), (64,), (25,)), ((), (64,), (25,)), [25 chars] ())] != [((),[136 chars]), ((), (), (25,)), ((), (), ())]\n\nFirst differing element 7:\n((60,), (64,), (25,))\n((), (), (25,))\n\nFirst list contains 2 additional elements.\nFirst extra element 9:\n((), (), (25,))\n\n  [((), (), ()),\n   ((60,), (), ()),\n   ((60,), (60,), ()),\n   ((60,), (60, 64), ()),\n   ((60,), (60, 64), (25,)),\n   ((60,), (64,), (25,)),\n   ((), (64,), (25,)),\n-  ((60,), (64,), (25,)),\n-  ((), (64,), (25,)),\n   ((), (), (25,)),\n   ((), (), ())]",
+        "mutation": "lost_independent_midi_owner",
+        "rejected": true
+      },
+      {
+        "assertion": "1 != 0",
+        "mutation": "dropped_packet",
+        "rejected": true
+      }
+    ],
+    "old_oracle_failure_reproduced": "191 not less than 180 : A pre-action loaded-state observation is required",
+    "repaired_complete_method_accepts_original_trace": true,
+    "zero_and_positive_packet_common_checks_pass": true
+  },
+  "schema": "root-final-incremental-closure-v1",
+  "source_test_build_workflow_inputs_checked": 327,
+  "supplemental_input_changes": {
+    "docs/INTERFACE_RUNBOOK.md": {
+      "a49": {
+        "bytes": 17618,
+        "sha256": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0"
+      },
+      "current": {
+        "bytes": 18279,
+        "sha256": "f16a8b7b16bf9014dd4061b5e1dc8e82803d3816d3927fc04062afca514ae981"
+      }
+    }
+  }
+}

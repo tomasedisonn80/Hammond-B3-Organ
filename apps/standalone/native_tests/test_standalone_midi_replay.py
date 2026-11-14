@@ -363,7 +363,12 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
         self.assertLessEqual(replay["maximum_events_per_turn"], 512)
         self.assertEqual(replay["arrival_time_source"], "synthetic_main_thread_steady_clock_receipt")
         self.assertFalse(replay["arrival_time_is_sample_time"])
-        self.assertGreater(replay["last_arrival_ns"], 0)
+        # A connect-only prefix has no byte receipt timestamp. Once any packet
+        # is offered, retain the existing positive-arrival requirement.
+        if replay["offered_packets"] > 0:
+            self.assertGreater(replay["last_arrival_ns"], 0)
+        else:
+            self.assertEqual(replay["last_arrival_ns"], 0)
         self.assertFalse(replay["connected_after_shutdown"])
         self.assertEqual(replay["pending_packets_before_shutdown"], 0)
         self.assertFalse(replay["pending_connect_before_shutdown"])
