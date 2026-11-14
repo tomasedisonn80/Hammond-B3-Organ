@@ -1,0 +1,74 @@
+{
+  "command": [
+    "/usr/bin/c++",
+    "-DSDL_MAIN_HANDLED",
+    "-I/workspace/scratch/a472c29da8b3/build-native/apps/standalone/generated",
+    "-I/workspace/scratch/a472c29da8b3/baseline-mac-compile/apps/standalone",
+    "-I/workspace/scratch/a472c29da8b3/baseline-mac-compile/include",
+    "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include",
+    "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include/SDL2",
+    "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include-config-release/SDL2",
+    "-O3",
+    "-DNDEBUG",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wshadow",
+    "-Werror",
+    "/workspace/scratch/a472c29da8b3/baseline-mac-compile/apps/standalone/InstrumentView.cpp",
+    "-fsyntax-only",
+    "-Wunused-const-variable=2"
+  ],
+  "results": [
+    {
+      "step": "original",
+      "returncode": 0,
+      "output": ""
+    },
+    {
+      "step": "removed-unused-color",
+      "returncode": 0,
+      "output": ""
+    }
+  ],
+  "object_command": [
+    "/usr/bin/c++",
+    "-DSDL_MAIN_HANDLED",
+    "-I/workspace/scratch/a472c29da8b3/build-native/apps/standalone/generated",
+    "-I/workspace/scratch/a472c29da8b3/baseline-mac-compile/apps/standalone",
+    "-I/workspace/scratch/a472c29da8b3/baseline-mac-compile/include",
+    "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include",
+    "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include/SDL2",
+    "-I/workspace/scratch/a472c29da8b3/build-native/_sdl2/include-config-release/SDL2",
+    "-O3",
+    "-DNDEBUG",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wshadow",
+    "-Werror",
+    "/workspace/scratch/a472c29da8b3/baseline-mac-compile/apps/standalone/InstrumentView.cpp",
+    "-Wunused-const-variable=2",
+    "-c",
+    "-o",
+    "/workspace/scratch/a472c29da8b3/baseline-mac-compile/InstrumentView.o"
+  ],
+  "object_results": [
+    {
+      "step": "original",
+      "returncode": 1,
+      "output": "/workspace/scratch/a472c29da8b3/baseline-mac-compile/apps/standalone/InstrumentView.cpp:12:19: error: \u2018hammond::standalone::{anonymous}::kDark\u2019 defined but not used [-Werror=unused-const-variable=]\n   12 | constexpr UiColor kDark{16, 17, 15};\n      |                   ^~~~~\ncc1plus: all warnings being treated as errors\n"
+    },
+    {
+      "step": "removed-unused-color",
+      "returncode": 0,
+      "output": ""
+    }
+  ]
+}

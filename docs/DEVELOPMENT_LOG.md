@@ -1,5 +1,15 @@
 # Development log
 
+## 2026-11-14 — Repair observed hosted macOS baseline build
+
+The new source/contract checkpoint `70b3354` exposed an existing unused private
+`kDark` constant in the native renderer under AppleClang's strict warning policy.
+Removed only that unreferenced declaration. A coherent copy of the published
+baseline reproduced the failure with strict GCC object compilation and passed
+after removal. [The actual hosted failure and local check](development/2026-11-14-preset-continuation/BASELINE_MACOS_REPAIR.md)
+remain distinct from the pending hosted repair qualification and in-progress
+47-parameter preset work.
+
 ## 2026-11-14: fixed-registration continuation and complete source reading
 
 Started from verified remote main `b79086f6bb0c42b97130c721c5c73c7c97a13887`
