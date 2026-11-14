@@ -31,16 +31,12 @@ Use [CHECKPOINT.md](CHECKPOINT.md) and the [current handoff](../../INTERFACE_REC
 The exact qualified replay repair is published at
 `6f69c68ed5bf51d77dba1ae4f75d4bc75d144747`, tree
 `daa6195fd3cfc4e56dd0d99b46972c68ae3c7e81`.
-Its [primary hosted review](../../reviews/INTERFACE_HOSTED_RECOVERY.md) records
-nine successful Linux/Windows jobs and three macOS cancellations without
-runners or executed steps. The repaired macOS gate remains unexecuted; the
-cancellation cause is unverified. The completed records publication introduces
-a strict Linux Release accounting step and receives its own platform matrix.
+The later records/checker checkpoint `a517203` passed [all twelve hosted jobs](reports/a58-final-head-hosted.json), including macOS standalone 38/38 with six workspace methods and thirty actual subprocesses. The [executed strict report](completion-check.json) passed sixty accepted records and substantive notes, ten waves and zero errors. The [earlier primary review](../../reviews/INTERFACE_HOSTED_RECOVERY.md) preserves 6f's nine successes and three unexecuted macOS cancellations. A517 changes no product or replay source; it adds records and the required Linux accounting step.
 
 The [sixty-assignment checker](../../../tools/check_interface_session.py) requires
 all sixty accepted notes by default and retains exact manifest/note hashes in
-`ci-logs/interface-session-completion.json`. Read its actual hosted result;
-a configured step alone is not execution. Root's dispatch attestation and
+`ci-logs/interface-session-completion.json`. Its [actual observed output](completion-check.json) and [extraction provenance](reports/a58-final-completion-extraction.json)
+are retained; a configured step alone would not establish execution. Root's dispatch attestation and
 substantive acceptance remain separate from consistency validation.
 
 The initial native baseline passed 136/136. Later checkpoints are preserved:

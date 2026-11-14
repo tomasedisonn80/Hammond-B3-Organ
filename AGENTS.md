@@ -4,6 +4,8 @@
 
 Read the [current recovery handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) and [checkpoint](docs/development/2026-11-14-interface-continuation/CHECKPOINT.md) first. All sixty actual assignments in ten waves are accepted, with partial product gates explicitly retained. The exact qualified fixture is published, while final raw local evidence remains unavailable. Preserve the old index if the workspace returns and reconcile it in isolation before updating a local checkout; do not reset it away, recount completed workers, or describe new recovery prose as original artifact bytes. The Linux Release workflow requires the strict session checker and retains its exact JSON report. Inspect the actual job result; record consistency does not prove dispatch or visual/physical fidelity.
 
+The [strict sixty-record result](docs/development/2026-11-14-interface-continuation/completion-check.json) and [all twelve hosted jobs](docs/development/2026-11-14-interface-continuation/reports/a58-final-head-hosted.json) passed at `a517203`. Those records qualify their exact source and input hashes. Preserve the completed ledger; a later requested session has its own actual identities. The next interface work is the full desktop journey and measured reference refinement, with physical models and real-device qualification kept separate.
+
 The newest [interface session](docs/development/2026-11-14-interface-continuation/README.md)
 starts from published `d493e998`. Its sixty fresh workers in ten waves have their
 own [actual manifest](docs/development/2026-11-14-interface-continuation/assignments.json).

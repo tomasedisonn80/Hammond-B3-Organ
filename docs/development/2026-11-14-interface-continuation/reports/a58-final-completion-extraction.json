@@ -1,0 +1,106 @@
+{
+  "schema": "interface-final-completion-log-extraction-a58-v1",
+  "agent": "/root/w10_a58_hosted_closure",
+  "source": {
+    "repository": "tomasedisonn80/Hammond-B3-Organ",
+    "commit": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+    "tree": "ec41cb64fb0edd79e8dbf9d24f6ae1781e3e9e3e",
+    "parent": "6f69c68ed5bf51d77dba1ae4f75d4bc75d144747"
+  },
+  "observed_at_utc": "2026-11-14T14:57:14.840Z",
+  "primary_job": {
+    "id": 132483419603,
+    "run_id": 43606911966,
+    "run_attempt": 1,
+    "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+    "name": "Release (Linux GCC)",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911966/job/132483419603",
+    "started_at": "2026-11-14T14:50:04Z",
+    "completed_at": "2026-11-14T14:52:37Z"
+  },
+  "executed_step": {
+    "name": "Verify the completed interface session",
+    "status": "completed",
+    "conclusion": "success",
+    "number": 9,
+    "started_at": "2026-11-14T14:52:34Z",
+    "completed_at": "2026-11-14T14:52:34Z"
+  },
+  "command": "python tools/check_interface_session.py --repo . --json | tee ci-logs/interface-session-completion.json",
+  "shell_policy": "The recorded shell used -e -o pipefail and the script set -o pipefail; the step and complete job succeeded.",
+  "actual_output": {
+    "status": "passed",
+    "mode": "strict_completion",
+    "record_consistency_valid": true,
+    "completion_valid": true,
+    "counts": {
+      "accepted": 60,
+      "distinct_agents": 60,
+      "distinct_numbers": 60,
+      "invalid_status": 0,
+      "malformed_rows": 0,
+      "recorded": 60,
+      "running": 0,
+      "substantive_accepted_notes": 60
+    },
+    "accepted_waves": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "error_count": 0,
+    "checker": {
+      "path": "tools/check_interface_session.py",
+      "sha256": "1af6b63e4fb1d5bc9ded110c50a41dd6cf3046a9c200026941d83104d7679430"
+    },
+    "manifest": {
+      "bytes": 32186,
+      "path": "docs/development/2026-11-14-interface-continuation/assignments.json",
+      "sha256": "f7af18dadc375ca2e0d2cbc23c5886b03bda1fade4d998e4152b99ebbe282ec9"
+    },
+    "checked_notes": 60,
+    "checked_notes_sha256": "2a779c37303153a645e0b87747ae6e0690deb661d335324f52dd5f1696dd408f",
+    "scope": "retained_accounting_consistency_only",
+    "claim": "Retained record consistency only. This does not attest actual dispatch, substantive acceptance, semantic truth, test execution, publication, product readiness or physical/model fidelity."
+  },
+  "extraction": {
+    "raw_log_utf8_bytes": 325618,
+    "raw_log_sha256": "ba3a17e97368dd16b4062da4cd8c15a11408862d67529c52a40f2576fddc93fa",
+    "raw_log_crlf_count": 0,
+    "source_command_line": 1611,
+    "json_first_line": 1622,
+    "json_last_line": 2157,
+    "first_timestamp": "2026-11-14T14:52:34.9063315Z",
+    "last_timestamp": "2026-11-14T14:52:34.9189119Z",
+    "extracted_utf8_bytes": 15443,
+    "extracted_sha256": "8d1a40bc828763ba0b8afb2b667cfadec5b372d9d6e6b9f50f7eb6bfd778ec57",
+    "normalization": "Removed exactly one leading GitHub timestamp and one following space from every JSON output line; joined the lines with LF and appended one LF. JSON indentation, keys, values, order and escaped content were preserved. No pretty-printing or field rewriting.",
+    "artifact_byte_identity_claimed": false,
+    "checker_source_hash_verified": true,
+    "manifest_source_hash_verified": true,
+    "note_aggregate_recomputed": true,
+    "individual_note_source_reads": "All sixty hashes are actual executed checker output. A58 independently compared its own published note and checked every note number/path against the exact manifest; it did not independently re-fetch all sixty note bodies in this extraction."
+  },
+  "output": {
+    "path": "docs/development/2026-11-14-interface-continuation/completion-check.json",
+    "blob_sha": "e3b24cc0dcc03da5ca016ba4f9df8cd10cc046d9",
+    "content_sha256": "8d1a40bc828763ba0b8afb2b667cfadec5b372d9d6e6b9f50f7eb6bfd778ec57",
+    "bytes": 15443
+  },
+  "boundaries": [
+    "This file documents log-extracted actual executed JSON. It does not claim the original CI artifact file's byte identity or independent download of an artifact ZIP.",
+    "All sixty individual note hashes are preserved unchanged in completion-check.json. Their aggregate was recomputed; full individual note-body source verification is separate.",
+    "The original unpublished local staged candidate and raw recovery files remain unavailable.",
+    "Record consistency does not establish external dispatch, substantive acceptance, product readiness, platform execution or physical/model fidelity.",
+    "No workflow retry/cancel or tree, commit or branch reference mutation was performed by A58."
+  ]
+}

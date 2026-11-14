@@ -32,11 +32,22 @@ copy and an actual pending-state visual capture remain open.
 
 ### Exact source and executed qualification
 
+The qualified records/source checkpoint is [a517203b2adc44f7b802d6b46219cb6c80e89d40](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/a517203b2adc44f7b802d6b46219cb6c80e89d40),
+tree `ec41cb64fb0edd79e8dbf9d24f6ae1781e3e9e3e`.
+[All twelve hosted jobs passed](development/2026-11-14-interface-continuation/reports/a58-final-head-hosted.json),
+including the newly executed macOS standalone gate. All four standalone Release
+logs show 38/38, twelve MIDI methods and six workspace methods / thirty native
+processes. The native sanitizer job passes thirteen selected suites with ASan,
+UBSan and leak checking enabled. The [strict completion output](development/2026-11-14-interface-continuation/completion-check.json)
+passes all sixty accepted records and notes in ten waves, with zero errors.
+Root independently matched every reported note hash and byte count, checker,
+manifest and canonical note aggregate against this exact GitHub source.
+
 The recovery source is [6f69c68ed5bf51d77dba1ae4f75d4bc75d144747](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/6f69c68ed5bf51d77dba1ae4f75d4bc75d144747),
 tree `daa6195fd3cfc4e56dd0d99b46972c68ae3c7e81`. Its seven-file diff changes one
 test fixture, scoped raw-evidence attributes, one corrected CLI option and
 recovery navigation/records. Product, CMake and workflow source did not change
-in that commit. At this exact recovered source, all nine Linux/Windows jobs passed. The three macOS jobs were cancelled without a runner or any executed step; all three workflow runs therefore concluded failure. The cancellation cause is unverified, and the repaired macOS gate remains unexecuted. These results are not an all-platform pass.
+in that commit. The earlier recovery attempt at 6f had nine successful Linux/Windows jobs and three macOS cancellations without runners or steps; the cancellation cause remains unverified. The later a517 matrix executed and passed all three macOS jobs, closing that nonexecution gate without changing the fixture. Both attempts retain their original outcomes.
 The [primary recovery review](reviews/INTERFACE_HOSTED_RECOVERY.md) preserves
 exact runs/jobs, previous failures and sanitizer scope.
 
@@ -82,8 +93,10 @@ name the missing raw evidence and safe reconciliation procedure. No current
 clean local-tree or local/remote alignment claim is made. The last observed
 free space was **36.673 GiB**; no out-of-space event was observed.
 
-The completed ledger is checked in strict mode by the Linux Release workflow;
-its log and artifact identify the exact manifest and sixty note hashes.
+The completed ledger passed strict mode in the Linux Release workflow at a517;
+its [extracted actual output and provenance](development/2026-11-14-interface-continuation/reports/a58-final-completion-extraction.json)
+identify the exact manifest and sixty note hashes. Timestamp removal and LF
+normalization are documented; original artifact-file byte identity is not claimed.
 This accounting check does not authenticate dispatch or certify product
 readiness. [Next steps](NEXT_STEPS.md) prioritize evidence recovery, the full
 desktop journey and measured reference refinement before separate real-device,

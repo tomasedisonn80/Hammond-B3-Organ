@@ -45,9 +45,10 @@ source-specific results are published. The following work remains concrete.
    with admitted real specimens, immutable recordings and held-out splits for
    calibration. The [M0–M9 plan](PLAN.md) and active track handoffs own these gates.
 
-The Linux Release workflow now requires the strict interface-session checker
-after its complete Release suite and retains its JSON in the existing CI
-artifact. Inspect the exact commit's job before reporting success. The checker
+The [strict interface-session result](development/2026-11-14-interface-continuation/completion-check.json)
+passed at a517 alongside [all twelve hosted jobs](development/2026-11-14-interface-continuation/reports/a58-final-head-hosted.json).
+Future Linux Release runs continue to require this checker after the complete
+Release suite and retain its JSON in the existing CI artifact. Inspect the exact commit's job before reporting success. The checker
 validates the sixty retained notes and manifest; root's dispatch attestation
 and substantive reviews remain separate. Preserve original local 146/147,
 b1 macOS 37/38, the separate repaired results and all prior failures.
@@ -78,7 +79,7 @@ Keep original failures, all historical fixtures and the first 45 parameter recor
 The separate scanner, rotary and calibration tracks retain their own scope.
 A focused or first integrated gate is not a physical or whole-project pass.
 
-## Current continuation: external MIDI and reference-led UI
+## Historical MIDI and native visual continuation
 
 The new [MIDI/UI session](development/2026-11-14-midi-ui/README.md) has implemented the dependency-ready standalone work below: bounded MIDI ownership/ingress, the optional native backend, explicit lifecycle and synthetic replay, and the atlas-inspired live renderer. Continue independent native replay/ownership acceptance, the reproduced small-glyph correction, actual reference comparison and complete coherent-source/platform gates. Then publish the current screenshots, source identities and resumable handoff. Preserve all prior models, control/state identities and source limits. The [actual manifest](development/2026-11-14-midi-ui/assignments.json) tracks only newly dispatched workers.
 
@@ -136,7 +137,7 @@ and the separate audible-policy dependencies visible. Consult the actual
 manifest before taking rotary-specific ownership. The first 12 assignments
 are accepted; later work is recorded only when actually dispatched.
 
-## Resume here
+## Historical standalone completion checkpoint
 
 The [standalone handoff](STANDALONE_HANDOFF.md), actual
 [session manifest](development/2026-11-13-next-phases/assignments.json) and
@@ -170,7 +171,7 @@ concrete independent adapter/model work below while preserving the scanner,
 rotary and calibration tracks. The benchmark's raw intervals are observations,
 not physical deadline passes; the existing actual screenshots use dummy drivers.
 
-## Next standalone development
+## Historical standalone development sequence
 
 The current external MIDI implementation lives in `apps/standalone/` under the
 [input](MIDI_INPUT.md), [backend](MIDI_BACKEND.md) and [replay](MIDI_REPLAY.md)
@@ -192,17 +193,15 @@ technology calls. [UI ownership](STANDALONE_UI.md) and the
 [milestone reconciliation](reviews/STANDALONE_MILESTONE_RECONCILIATION.md)
 provide the current boundary and concrete exit criteria.
 
-For the next M3 model slice, specify a typed exclusive fixed-registration selector
-using the admitted eighteen chapel rows, while retaining four A/B banks, Cancel,
-existing note owners and explicit upper-B percussion eligibility/history. Agree
-append-only parameter IDs and saved-state migration before editing shared fixed
-structures or native adapters. Compare each selection with an independently
-initialized equivalent bank at continuing source phase; cover held chords,
-inactive-bank edits, partly recovered percussion, B-to-fixed-to-B transitions,
-same-offset ordering, block partition invariance and failed-call rollback.
-Acquire and independently compare the underlying factory Table IV before
-upgrading the documentary catalog's source status. Physical latch/contact
-networks and loaded gains remain a separate contract and measurement gate.
+The exclusive fixed-registration selector proposed in this historical sequence
+is now implemented: eighteen documentary rows, four retained banks, Cancel,
+original note owners and Upper-B percussion eligibility/history are preserved
+under the current 47-parameter/state4 contract. The next M3 model work is an
+identified physical contact/latch and transformer tap-loading contract, with
+measured trajectories, expression/percussion behavior and loaded gains. Acquire
+and independently compare the underlying factory Table IV before upgrading the
+documentary catalog's source status. Preserve existing selector, phase, owner,
+rollback and state-compatibility acceptance while developing that physical model.
 
 Read [STATUS.md](STATUS.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [PLAN.md](PLAN.md), [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) and [AGENTS.md](../AGENTS.md), then inspect the actual checkout and remote head. The [current manifest](development/2026-11-13-scanner/assignments.json) belongs to the new sixty-assignment scanner session. The earlier original, console and pedal sessions are completed history and are not counted again.
 

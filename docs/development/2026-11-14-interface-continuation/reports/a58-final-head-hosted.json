@@ -1,0 +1,1058 @@
+{
+  "schema": "interface-final-head-hosted-a58-v1",
+  "agent": {
+    "identity": "/root/w10_a58_hosted_closure",
+    "number": 58,
+    "wave": 10,
+    "continued_identity": true,
+    "new_worker_spawned": false
+  },
+  "observed_at_utc": "2026-11-14T14:59:52.754Z",
+  "source": {
+    "repository": "tomasedisonn80/Hammond-B3-Organ",
+    "commit": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+    "tree": "ec41cb64fb0edd79e8dbf9d24f6ae1781e3e9e3e",
+    "parent": "6f69c68ed5bf51d77dba1ae4f75d4bc75d144747",
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/a517203b2adc44f7b802d6b46219cb6c80e89d40",
+    "changed_path_count": 28,
+    "workflow_change": {
+      "path": ".github/workflows/ci.yml",
+      "git_blob": "829b6276eddce59bdebbd2d924f90d9fc9799bd4",
+      "added_lines": 6,
+      "purpose": "Strict completion checker in Linux Release after existing tests; pipefail and existing artifact retention."
+    },
+    "workspace_fixture": {
+      "path": "apps/standalone/native_tests/test_standalone_workspace_replay.py",
+      "sha256": "0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692",
+      "bytes": 31885,
+      "source": "a517203b2adc44f7b802d6b46219cb6c80e89d40"
+    },
+    "fixture_changed": false,
+    "checker_sha256": "1af6b63e4fb1d5bc9ded110c50a41dd6cf3046a9c200026941d83104d7679430",
+    "manifest_sha256": "f7af18dadc375ca2e0d2cbc23c5886b03bda1fade4d998e4152b99ebbe282ec9",
+    "unchanged_categories": [
+      "product C++",
+      "CMake",
+      "native standalone workflow",
+      "native VST3 workflow"
+    ]
+  },
+  "conclusion": {
+    "all_twelve_jobs_completed_successfully": true,
+    "job_count": 12,
+    "successful": 12,
+    "failed": 0,
+    "cancelled": 0,
+    "workflow_count": 3,
+    "successful_workflows": 3,
+    "attempt": 1,
+    "strict_completion_passed": true,
+    "macos_workspace_repair_executed_and_passed": true
+  },
+  "runs": [
+    {
+      "id": 43606911932,
+      "name": "Native standalone",
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932",
+      "updated_at": "2026-11-14T14:57:47Z",
+      "job_metadata_observed_at_utc": "2026-11-14T14:57:52.013Z"
+    },
+    {
+      "id": 43606911966,
+      "name": "CI",
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911966",
+      "updated_at": "2026-11-14T14:55:58Z",
+      "job_metadata_observed_at_utc": "2026-11-14T14:57:52.036Z"
+    },
+    {
+      "id": 43606911891,
+      "name": "Native VST3",
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911891",
+      "updated_at": "2026-11-14T14:51:31Z",
+      "job_metadata_observed_at_utc": "2026-11-14T14:57:51.948Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 132483419382,
+      "run_id": 43606911932,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932/job/132483419382",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:56:38Z",
+      "runner_id": 1000000865,
+      "runner_name": "GitHub Actions 1000000865"
+    },
+    {
+      "id": 132483419569,
+      "run_id": 43606911932,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932/job/132483419569",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:57:47Z",
+      "runner_id": 1000000868,
+      "runner_name": "GitHub Actions 1000000868"
+    },
+    {
+      "id": 132483419596,
+      "run_id": 43606911932,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932/job/132483419596",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:55:18Z",
+      "runner_id": 1000000873,
+      "runner_name": "GitHub Actions 1000000873"
+    },
+    {
+      "id": 132483419598,
+      "run_id": 43606911932,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932/job/132483419598",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:55:18Z",
+      "runner_id": 1000000872,
+      "runner_name": "GitHub Actions 1000000872"
+    },
+    {
+      "id": 132483419641,
+      "run_id": 43606911932,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932/job/132483419641",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:57:00Z",
+      "runner_id": 1000000870,
+      "runner_name": "GitHub Actions 1000000870"
+    },
+    {
+      "id": 132483419335,
+      "run_id": 43606911966,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911966/job/132483419335",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:53:40Z",
+      "runner_id": 1000000866,
+      "runner_name": "GitHub Actions 1000000866"
+    },
+    {
+      "id": 132483419558,
+      "run_id": 43606911966,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Release (Windows MSVC)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911966/job/132483419558",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:55:58Z",
+      "runner_id": 1000000869,
+      "runner_name": "GitHub Actions 1000000869"
+    },
+    {
+      "id": 132483419574,
+      "run_id": 43606911966,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Release (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911966/job/132483419574",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:53:25Z",
+      "runner_id": 1000000871,
+      "runner_name": "GitHub Actions 1000000871"
+    },
+    {
+      "id": 132483419603,
+      "run_id": 43606911966,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Release (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911966/job/132483419603",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:52:37Z",
+      "runner_id": 1000000874,
+      "runner_name": "GitHub Actions 1000000874"
+    },
+    {
+      "id": 132483419114,
+      "run_id": 43606911891,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native VST3 (Windows MSVC x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911891/job/132483419114",
+      "started_at": "2026-11-14T14:50:03Z",
+      "completed_at": "2026-11-14T14:51:31Z",
+      "runner_id": 1000000863,
+      "runner_name": "GitHub Actions 1000000863"
+    },
+    {
+      "id": 132483419316,
+      "run_id": 43606911891,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native VST3 (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911891/job/132483419316",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:51:12Z",
+      "runner_id": 1000000867,
+      "runner_name": "GitHub Actions 1000000867"
+    },
+    {
+      "id": 132483419331,
+      "run_id": 43606911891,
+      "run_attempt": 1,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native VST3 (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911891/job/132483419331",
+      "started_at": "2026-11-14T14:50:03Z",
+      "completed_at": "2026-11-14T14:50:57Z",
+      "runner_id": 1000000864,
+      "runner_name": "GitHub Actions 1000000864"
+    }
+  ],
+  "primary_log_scope": {
+    "detailed_standalone_job_ids": [
+      132483419598,
+      132483419596,
+      132483419569,
+      132483419641,
+      132483419382
+    ],
+    "strict_checker_job_id": 132483419603,
+    "other_jobs": "Successful exact-source primary GitHub job metadata; no new detailed core or VST3 log-content audit is claimed here."
+  },
+  "release_inventory": {
+    "ctest_total": 38,
+    "ctest_names": [
+      "test_standalone_app",
+      "test_standalone_audio_device",
+      "test_standalone_benchmark",
+      "test_standalone_callback_allocation",
+      "test_standalone_chapel",
+      "test_standalone_concurrency",
+      "test_standalone_device_removal",
+      "test_standalone_drawing",
+      "test_standalone_external_control",
+      "test_standalone_input_replay",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author",
+      "test_standalone_install",
+      "test_standalone_midi_backend",
+      "test_standalone_midi_backend_quarantine",
+      "test_standalone_midi_cli",
+      "test_standalone_midi_concurrency",
+      "test_standalone_midi_discovery",
+      "test_standalone_midi_input",
+      "test_standalone_midi_replay",
+      "test_standalone_midi_session",
+      "test_standalone_native_midi_replay",
+      "test_standalone_preset_concurrency",
+      "test_standalone_preset_raster",
+      "test_standalone_preset_ui",
+      "test_standalone_projection",
+      "test_standalone_quad_drawing",
+      "test_standalone_replay_boundaries",
+      "test_standalone_scaled_view",
+      "test_standalone_session",
+      "test_standalone_state_files",
+      "test_standalone_ui",
+      "test_standalone_workflows",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster",
+      "test_standalone_workspace_replay",
+      "test_standalone_workspaces_author"
+    ],
+    "native_label_count": 14,
+    "native_labelled_names": [
+      "test_standalone_app",
+      "test_standalone_chapel",
+      "test_standalone_device_removal",
+      "test_standalone_drawing",
+      "test_standalone_install",
+      "test_standalone_midi_cli",
+      "test_standalone_native_midi_replay",
+      "test_standalone_preset_raster",
+      "test_standalone_quad_drawing",
+      "test_standalone_replay_boundaries",
+      "test_standalone_scaled_view",
+      "test_standalone_workflows",
+      "test_standalone_workspace_raster",
+      "test_standalone_workspace_replay"
+    ],
+    "affected_method_names": {
+      "test_standalone_workspace_replay": [
+        "test_capture_failure_closes_parameter_gesture_before_view_and_resize",
+        "test_focus_memory_restores_drawbar_save_and_load_after_returns",
+        "test_hidden_play_regions_cannot_edit_redirect_or_audition",
+        "test_pointer_capture_failure_preserves_keyboard_owner_during_navigation",
+        "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+        "test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize"
+      ],
+      "test_standalone_native_midi_replay": [
+        "test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect",
+        "test_cc11_and_bank_b_edits_share_pending_ui_controls",
+        "test_cc123_releases_only_its_external_division_and_preserves_ui",
+        "test_division_channel_range_routing_and_ignored_packets",
+        "test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner",
+        "test_focus_resize_help_and_midi_apply_preserve_external_owners",
+        "test_full_inbox_drains_in_bounded_batches_without_overflow",
+        "test_global_panic_retires_midi_and_suppresses_old_ui_press",
+        "test_interruption_is_a_failed_replay_but_shutdown_still_joins",
+        "test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection",
+        "test_real_overflow_discards_stale_packets_and_requires_reconnect",
+        "test_repeated_fifo_owners_velocity_zero_and_both_release_orders"
+      ]
+    },
+    "label_correction": "Full Release includes top-level test_standalone_install as the fourteenth native-labelled registration. The focused sanitizer is thirteen total suites, five native-labelled."
+  },
+  "primary_release_audits": [
+    {
+      "job_id": 132483419598,
+      "decoded_log": {
+        "utf8_bytes": 714264,
+        "sha256": "ff3b4ea31736d4434a4227264129add7eda0b681fd52603acde88295a0e0ea63",
+        "bom": true,
+        "crlf_count": 0,
+        "storage": "Primary connector response retained in cloud memory; no unavailable local file or ZIP read."
+      },
+      "ctest": {
+        "passed": 38,
+        "failed": 0,
+        "all_38_unique_names_verified": true,
+        "native_label_count": 14,
+        "total_time": "Total Test time (real) = 214.00 sec"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is GNU 13.3.0",
+        "-- The C compiler identification is GNU 13.3.0"
+      ],
+      "affected_suites": {
+        "test_standalone_workspace_replay": {
+          "all_expected_method_names_passed": true,
+          "methods_passed": 6,
+          "actual_native_processes": 30,
+          "summary": "144: Ran 6 tests in 43.153s",
+          "exact_excerpts": [
+            {
+              "line": 3272,
+              "text": "2026-11-14T14:54:45.6328185Z 144: test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok"
+            },
+            {
+              "line": 3273,
+              "text": "2026-11-14T14:54:49.2066331Z 144: test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok"
+            },
+            {
+              "line": 3274,
+              "text": "2026-11-14T14:54:49.2066871Z 144: Actual native workspace subprocesses: 30"
+            },
+            {
+              "line": 3277,
+              "text": "2026-11-14T14:54:49.2087544Z 144: Ran 6 tests in 43.153s"
+            },
+            {
+              "line": 3279,
+              "text": "2026-11-14T14:54:49.2088106Z 144: OK"
+            },
+            {
+              "line": 3280,
+              "text": "2026-11-14T14:54:49.2198804Z 35/38 Test #144: test_standalone_workspace_replay ..........   Passed   43.26 sec"
+            }
+          ]
+        },
+        "test_standalone_native_midi_replay": {
+          "all_expected_method_names_passed": true,
+          "methods_passed": 12,
+          "actual_native_processes": null,
+          "summary": "142: Ran 12 tests in 28.137s",
+          "exact_excerpts": [
+            {
+              "line": 3230,
+              "text": "2026-11-14T14:53:03.6737088Z 142: Ran 12 tests in 28.137s"
+            },
+            {
+              "line": 3232,
+              "text": "2026-11-14T14:53:03.6737446Z 142: OK"
+            },
+            {
+              "line": 3233,
+              "text": "2026-11-14T14:53:03.6853751Z 33/38 Test #142: test_standalone_native_midi_replay ........   Passed   28.24 sec"
+            }
+          ]
+        }
+      },
+      "exact_ctest_summary": [
+        {
+          "line": 3370,
+          "text": "2026-11-14T14:55:12.1736436Z 100% tests passed, 0 tests failed out of 38"
+        },
+        {
+          "line": 3379,
+          "text": "2026-11-14T14:55:12.1738193Z native                    = 205.06 sec*proc (14 tests)"
+        },
+        {
+          "line": 3383,
+          "text": "2026-11-14T14:55:12.1738827Z Total Test time (real) = 214.00 sec"
+        }
+      ],
+      "package_assertion": "Verified 15 installed files, MIDI unavailable, relocated help/dummy smoke, and the archived bytes.",
+      "scope": "Exact hosted dummy-driver/synthetic-replay acceptance; physical devices and independent execution of packages are not qualified here."
+    },
+    {
+      "job_id": 132483419596,
+      "decoded_log": {
+        "utf8_bytes": 725789,
+        "sha256": "8fe022c10a75a4fb571810fb5ebfd3fd0fee128166608334f6c1fc0347b477d7",
+        "bom": true,
+        "crlf_count": 0,
+        "storage": "Primary connector response retained in cloud memory; no unavailable local file or ZIP read."
+      },
+      "ctest": {
+        "passed": 38,
+        "failed": 0,
+        "all_38_unique_names_verified": true,
+        "native_label_count": 14,
+        "total_time": "Total Test time (real) = 213.14 sec"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is GNU 13.3.0",
+        "-- The C compiler identification is GNU 13.3.0"
+      ],
+      "affected_suites": {
+        "test_standalone_workspace_replay": {
+          "all_expected_method_names_passed": true,
+          "methods_passed": 6,
+          "actual_native_processes": 30,
+          "summary": "144: Ran 6 tests in 43.121s",
+          "exact_excerpts": [
+            {
+              "line": 3329,
+              "text": "2026-11-14T14:54:44.7532234Z 144: test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok"
+            },
+            {
+              "line": 3330,
+              "text": "2026-11-14T14:54:48.3178420Z 144: test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok"
+            },
+            {
+              "line": 3331,
+              "text": "2026-11-14T14:54:48.3179120Z 144: Actual native workspace subprocesses: 30"
+            },
+            {
+              "line": 3334,
+              "text": "2026-11-14T14:54:48.3200561Z 144: Ran 6 tests in 43.121s"
+            },
+            {
+              "line": 3336,
+              "text": "2026-11-14T14:54:48.3200847Z 144: OK"
+            },
+            {
+              "line": 3337,
+              "text": "2026-11-14T14:54:48.3304265Z 35/38 Test #144: test_standalone_workspace_replay ..........   Passed   43.21 sec"
+            }
+          ]
+        },
+        "test_standalone_native_midi_replay": {
+          "all_expected_method_names_passed": true,
+          "methods_passed": 12,
+          "actual_native_processes": null,
+          "summary": "142: Ran 12 tests in 28.029s",
+          "exact_excerpts": [
+            {
+              "line": 3287,
+              "text": "2026-11-14T14:53:02.9404650Z 142: Ran 12 tests in 28.029s"
+            },
+            {
+              "line": 3289,
+              "text": "2026-11-14T14:53:02.9404996Z 142: OK"
+            },
+            {
+              "line": 3290,
+              "text": "2026-11-14T14:53:02.9507581Z 33/38 Test #142: test_standalone_native_midi_replay ........   Passed   28.13 sec"
+            }
+          ]
+        }
+      },
+      "exact_ctest_summary": [
+        {
+          "line": 3427,
+          "text": "2026-11-14T14:55:11.1581823Z 100% tests passed, 0 tests failed out of 38"
+        },
+        {
+          "line": 3436,
+          "text": "2026-11-14T14:55:11.1583281Z native                    = 204.42 sec*proc (14 tests)"
+        },
+        {
+          "line": 3440,
+          "text": "2026-11-14T14:55:11.1583797Z Total Test time (real) = 213.14 sec"
+        }
+      ],
+      "package_assertion": "Verified 19 installed files, MIDI ALSA, relocated help/dummy smoke, and the archived bytes.",
+      "scope": "Exact hosted dummy-driver/synthetic-replay acceptance; physical devices and independent execution of packages are not qualified here."
+    },
+    {
+      "job_id": 132483419569,
+      "decoded_log": {
+        "utf8_bytes": 434290,
+        "sha256": "d92038fb1570c269fbb8f39e8942f00cb171137e05217ab8c04979097a656e7d",
+        "bom": true,
+        "crlf_count": 3408,
+        "storage": "Primary connector response retained in cloud memory; no unavailable local file or ZIP read."
+      },
+      "ctest": {
+        "passed": 38,
+        "failed": 0,
+        "all_38_unique_names_verified": true,
+        "native_label_count": 14,
+        "total_time": "Total Test time (real) = 273.81 sec"
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is MSVC 19.44.35230.0",
+        "-- The C compiler identification is MSVC 19.44.35230.0"
+      ],
+      "affected_suites": {
+        "test_standalone_workspace_replay": {
+          "all_expected_method_names_passed": true,
+          "methods_passed": 6,
+          "actual_native_processes": 30,
+          "summary": "144: Ran 6 tests in 46.217s",
+          "exact_excerpts": [
+            {
+              "line": 2944,
+              "text": "2026-11-14T14:57:03.4569533Z 144: test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok"
+            },
+            {
+              "line": 2945,
+              "text": "2026-11-14T14:57:07.2383625Z 144: test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok"
+            },
+            {
+              "line": 2946,
+              "text": "2026-11-14T14:57:07.2384743Z 144: Actual native workspace subprocesses: 30"
+            },
+            {
+              "line": 2949,
+              "text": "2026-11-14T14:57:07.2385796Z 144: Ran 6 tests in 46.217s"
+            },
+            {
+              "line": 2951,
+              "text": "2026-11-14T14:57:07.2386247Z 144: OK"
+            },
+            {
+              "line": 2952,
+              "text": "2026-11-14T14:57:07.2539216Z 35/38 Test #144: test_standalone_workspace_replay ..........   Passed   46.39 sec"
+            }
+          ]
+        },
+        "test_standalone_native_midi_replay": {
+          "all_expected_method_names_passed": true,
+          "methods_passed": 12,
+          "actual_native_processes": null,
+          "summary": "142: Ran 12 tests in 30.769s",
+          "exact_excerpts": [
+            {
+              "line": 2902,
+              "text": "2026-11-14T14:55:13.1241212Z 142: Ran 12 tests in 30.769s"
+            },
+            {
+              "line": 2904,
+              "text": "2026-11-14T14:55:13.1241570Z 142: OK"
+            },
+            {
+              "line": 2905,
+              "text": "2026-11-14T14:55:13.1394539Z 33/38 Test #142: test_standalone_native_midi_replay ........   Passed   30.94 sec"
+            }
+          ]
+        }
+      },
+      "exact_ctest_summary": [
+        {
+          "line": 3043,
+          "text": "2026-11-14T14:57:35.9009266Z 100% tests passed, 0 tests failed out of 38"
+        },
+        {
+          "line": 3052,
+          "text": "2026-11-14T14:57:35.9013229Z native                    = 261.48 sec*proc (14 tests)"
+        },
+        {
+          "line": 3056,
+          "text": "2026-11-14T14:57:35.9014920Z Total Test time (real) = 273.81 sec"
+        }
+      ],
+      "package_assertion": "Verified 19 installed files, MIDI WinMM, relocated help/dummy smoke, and the archived bytes.",
+      "scope": "Exact hosted dummy-driver/synthetic-replay acceptance; physical devices and independent execution of packages are not qualified here."
+    },
+    {
+      "job_id": 132483419641,
+      "decoded_log": {
+        "utf8_bytes": 710769,
+        "sha256": "9c1f488bb20c3d62f5bec787e36a3dc1025fc10269fc2355d03e32a191db0218",
+        "bom": true,
+        "crlf_count": 0,
+        "storage": "Primary connector response retained in cloud memory; no unavailable local file or ZIP read."
+      },
+      "ctest": {
+        "passed": 38,
+        "failed": 0,
+        "all_38_unique_names_verified": true,
+        "native_label_count": 14,
+        "total_time": "Total Test time (real) = 248.36 sec",
+        "parser_note": "This CTest log says '100% tests passed out of 38' without the redundant zero-failures phrase. All thirty-eight distinct Passed records and both detailed Python suite success blocks were independently required."
+      },
+      "compiler_identification": [
+        "-- The CXX compiler identification is AppleClang 17.0.0.17000013",
+        "-- The C compiler identification is AppleClang 17.0.0.17000013"
+      ],
+      "affected_suites": {
+        "test_standalone_workspace_replay": {
+          "all_expected_method_names_passed": true,
+          "methods_passed": 6,
+          "actual_native_processes": 30,
+          "summary": "144: Ran 6 tests in 44.374s",
+          "exact_excerpts": [
+            {
+              "line": 2888,
+              "text": "2026-11-14T14:56:15.2636370Z 144: test_pointer_header_matrix_preserves_keyboard_space_and_exact_save (__main__.NativeWorkspaceReplayAcceptance.test_pointer_header_matrix_preserves_keyboard_space_and_exact_save) ... ok"
+            },
+            {
+              "line": 2889,
+              "text": "2026-11-14T14:56:18.9014190Z 144: test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize (__main__.NativeWorkspaceReplayAcceptance.test_synthetic_midi_and_ui_owners_survive_pointer_navigation_and_resize) ... ok"
+            },
+            {
+              "line": 2890,
+              "text": "2026-11-14T14:56:18.9154400Z 144: Actual native workspace subprocesses: 30"
+            },
+            {
+              "line": 2893,
+              "text": "2026-11-14T14:56:18.9204870Z 144: Ran 6 tests in 44.374s"
+            },
+            {
+              "line": 2895,
+              "text": "2026-11-14T14:56:18.9205830Z 144: OK"
+            },
+            {
+              "line": 2896,
+              "text": "2026-11-14T14:56:18.9297060Z 35/38 Test #144: test_standalone_workspace_replay ..........   Passed   44.63 sec"
+            }
+          ]
+        },
+        "test_standalone_native_midi_replay": {
+          "all_expected_method_names_passed": true,
+          "methods_passed": 12,
+          "actual_native_processes": null,
+          "summary": "142: Ran 12 tests in 29.341s",
+          "exact_excerpts": [
+            {
+              "line": 2846,
+              "text": "2026-11-14T14:54:29.3168670Z 142: Ran 12 tests in 29.341s"
+            },
+            {
+              "line": 2848,
+              "text": "2026-11-14T14:54:29.3169210Z 142: OK"
+            },
+            {
+              "line": 2849,
+              "text": "2026-11-14T14:54:29.3514940Z 33/38 Test #142: test_standalone_native_midi_replay ........   Passed   29.58 sec"
+            }
+          ]
+        }
+      },
+      "exact_ctest_summary": [
+        {
+          "line": 2986,
+          "text": "2026-11-14T14:56:44.6715800Z 100% tests passed out of 38"
+        },
+        {
+          "line": 2995,
+          "text": "2026-11-14T14:56:44.6719850Z native                    = 237.80 sec*proc (14 tests)"
+        },
+        {
+          "line": 2999,
+          "text": "2026-11-14T14:56:44.6721230Z Total Test time (real) = 248.36 sec"
+        }
+      ],
+      "package_assertion": "Verified 19 installed files, MIDI CoreMIDI, relocated help/dummy smoke, and the archived bytes.",
+      "scope": "Exact hosted dummy-driver/synthetic-replay acceptance; physical devices and independent execution of packages are not qualified here."
+    }
+  ],
+  "primary_native_sanitizer_audit": {
+    "job": {
+      "id": 132483419382,
+      "run_id": 43606911932,
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932/job/132483419382",
+      "started_at": "2026-11-14T14:50:04Z",
+      "completed_at": "2026-11-14T14:56:38Z"
+    },
+    "decoded_log": {
+      "utf8_bytes": 772795,
+      "sha256": "a76b90c217014643323278d77f13998073971a4113d20f8cc831c6d61ce1f96c",
+      "storage": "Primary connector response retained in cloud memory; unavailable local files/ZIPs were not read."
+    },
+    "tests_passed": 13,
+    "failed": 0,
+    "test_results": [
+      {
+        "name": "test_standalone_inspection_acceptance",
+        "seconds": 0.04,
+        "log_line": 3292
+      },
+      {
+        "name": "test_standalone_inspection_author",
+        "seconds": 0.02,
+        "log_line": 3300
+      },
+      {
+        "name": "test_standalone_preset_ui",
+        "seconds": 2.83,
+        "log_line": 3308
+      },
+      {
+        "name": "test_standalone_projection",
+        "seconds": 1.14,
+        "log_line": 3317
+      },
+      {
+        "name": "test_standalone_ui",
+        "seconds": 0.14,
+        "log_line": 3325
+      },
+      {
+        "name": "test_standalone_workspace_acceptance",
+        "seconds": 0.26,
+        "log_line": 3333
+      },
+      {
+        "name": "test_standalone_workspace_continuity",
+        "seconds": 7.14,
+        "log_line": 3404
+      },
+      {
+        "name": "test_standalone_workspaces_author",
+        "seconds": 0.01,
+        "log_line": 3412
+      },
+      {
+        "name": "test_standalone_drawing",
+        "seconds": 0.48,
+        "log_line": 3421
+      },
+      {
+        "name": "test_standalone_quad_drawing",
+        "seconds": 0.03,
+        "log_line": 3429
+      },
+      {
+        "name": "test_standalone_workspace_raster",
+        "seconds": 36.77,
+        "log_line": 3437
+      },
+      {
+        "name": "test_standalone_scaled_view",
+        "seconds": 84.1,
+        "log_line": 3502
+      },
+      {
+        "name": "test_standalone_preset_raster",
+        "seconds": 61.85,
+        "log_line": 3510
+      }
+    ],
+    "selected_targets_verified": [
+      "test_standalone_drawing",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author",
+      "test_standalone_preset_raster",
+      "test_standalone_preset_ui",
+      "test_standalone_projection",
+      "test_standalone_quad_drawing",
+      "test_standalone_scaled_view",
+      "test_standalone_ui",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster",
+      "test_standalone_workspaces_author"
+    ],
+    "native_label_count": 5,
+    "native_label_summary": "native        = 183.24 sec*proc (5 tests)",
+    "total_test_time": "Total Test time (real) = 194.91 sec",
+    "environment": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23",
+      "SDL_AUDIODRIVER": "dummy",
+      "SDL_VIDEODRIVER": "dummy",
+      "SDL_RENDER_DRIVER": "software"
+    },
+    "successful_enforcement_steps": [
+      {
+        "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+        "conclusion": "success"
+      },
+      {
+        "name": "Discover exactly thirteen gates and run with leak checking",
+        "conclusion": "success"
+      },
+      {
+        "name": "Reverify source and locked SDL2 after acceptance",
+        "conclusion": "success"
+      }
+    ],
+    "diagnostic_matches": [],
+    "exact_excerpts": [
+      {
+        "line": 3272,
+        "text": "2026-11-14T14:53:19.3747600Z Discovered exactly 13 built interface gates; job sanitizer policy applies to every gate."
+      },
+      {
+        "line": 3292,
+        "text": "2026-11-14T14:53:19.4770220Z  1/13 Test #113: test_standalone_inspection_acceptance ...   Passed    0.04 sec"
+      },
+      {
+        "line": 3300,
+        "text": "2026-11-14T14:53:19.4943623Z  2/13 Test #114: test_standalone_inspection_author .......   Passed    0.02 sec"
+      },
+      {
+        "line": 3308,
+        "text": "2026-11-14T14:53:22.3255534Z  3/13 Test #121: test_standalone_preset_ui ...............   Passed    2.83 sec"
+      },
+      {
+        "line": 3317,
+        "text": "2026-11-14T14:53:23.4646813Z  4/13 Test #122: test_standalone_projection ..............   Passed    1.14 sec"
+      },
+      {
+        "line": 3325,
+        "text": "2026-11-14T14:53:23.6050404Z  5/13 Test #125: test_standalone_ui ......................   Passed    0.14 sec"
+      },
+      {
+        "line": 3333,
+        "text": "2026-11-14T14:53:23.8665597Z  6/13 Test #126: test_standalone_workspace_acceptance ....   Passed    0.26 sec"
+      },
+      {
+        "line": 3404,
+        "text": "2026-11-14T14:53:31.0110949Z  7/13 Test #127: test_standalone_workspace_continuity ....   Passed    7.14 sec"
+      },
+      {
+        "line": 3412,
+        "text": "2026-11-14T14:53:31.0559812Z  8/13 Test #128: test_standalone_workspaces_author .......   Passed    0.01 sec"
+      },
+      {
+        "line": 3421,
+        "text": "2026-11-14T14:53:31.5335328Z  9/13 Test #132: test_standalone_drawing .................   Passed    0.48 sec"
+      },
+      {
+        "line": 3429,
+        "text": "2026-11-14T14:53:31.5648779Z 10/13 Test #133: test_standalone_quad_drawing ............   Passed    0.03 sec"
+      },
+      {
+        "line": 3437,
+        "text": "2026-11-14T14:54:08.3374442Z 11/13 Test #134: test_standalone_workspace_raster ........   Passed   36.77 sec"
+      },
+      {
+        "line": 3502,
+        "text": "2026-11-14T14:55:32.4405325Z 12/13 Test #135: test_standalone_scaled_view .............   Passed   84.10 sec"
+      },
+      {
+        "line": 3510,
+        "text": "2026-11-14T14:56:34.2934640Z 13/13 Test #136: test_standalone_preset_raster ...........   Passed   61.85 sec"
+      },
+      {
+        "line": 3527,
+        "text": "2026-11-14T14:56:34.2941665Z 100% tests passed, 0 tests failed out of 13"
+      },
+      {
+        "line": 3531,
+        "text": "2026-11-14T14:56:34.2942379Z native        = 183.24 sec*proc (5 tests)"
+      },
+      {
+        "line": 3535,
+        "text": "2026-11-14T14:56:34.2943182Z Total Test time (real) = 194.91 sec"
+      },
+      {
+        "line": 3602,
+        "text": "2026-11-14T14:56:35.3673109Z SHA256 digest of uploaded artifact is d61a3a1ebd5d9c03f649c002852c05cc8d1f6a7af5c50bbe7a4605101962e9ca"
+      },
+      {
+        "line": 3606,
+        "text": "2026-11-14T14:56:35.7867561Z Artifact download URL: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932/artifacts/14119236129"
+      }
+    ],
+    "scope": "Selected project C++ and pinned SDL C instrumentation, object/archive/link/runtime enforcement and exact discovery are hosted successful-step evidence. This cloud-only audit does not independently inspect or rehash the uploaded ZIP contents. System libraries, physical devices, performance and whole-product leak freedom are outside scope.",
+    "artifact_metadata": {
+      "id": 14119236129,
+      "name": "standalone-linux-gcc-sanitizers-a517203b2adc44f7b802d6b46219cb6c80e89d40-1",
+      "bytes": 125921,
+      "digest": "sha256:d61a3a1ebd5d9c03f649c002852c05cc8d1f6a7af5c50bbe7a4605101962e9ca",
+      "created_at": "2026-11-14T14:56:35Z",
+      "expires_at": "2026-11-28T14:56:34Z",
+      "head_sha": "a517203b2adc44f7b802d6b46219cb6c80e89d40",
+      "api_digest_matches_primary_upload_log": true,
+      "independent_zip_download_or_rehash_in_cloud_recovery": false,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911932/artifacts/14119236129"
+    },
+    "instrumentation_primary": {
+      "flags": "-fsanitize=address,undefined -fno-omit-frame-pointer",
+      "configure_midi_and_sanitizers": {
+        "line": 603,
+        "text": "2026-11-14T14:50:25.7578146Z \u001b[36;1m  -DHAMMOND_ENABLE_MIDI=OFF -DHAMMOND_ENABLE_SANITIZERS=ON \\\u001b[0m"
+      },
+      "project_cxx_compile": {
+        "line": 1349,
+        "text": "2026-11-14T14:50:43.6097229Z /usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -MF CMakeFiles/hammond_core.dir/src/ControlState.cpp.o.d -o CMakeFiles/hammond_core.dir/src/ControlState.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ControlState.cpp"
+      },
+      "sdl_c_compile": {
+        "line": 2181,
+        "text": "2026-11-14T14:51:30.9932895Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2 && /usr/bin/gcc -DSDL_STATIC_LIB -DUSING_GENERATED_CONFIG_H -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include/SDL2 -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include-config-release/SDL2 -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include-config-release -fsanitize=address,undefined -fno-omit-frame-pointer -idirafter \"/home/runner/work/_temp/hammond-sdl2/src/video/khronos\" -DHAVE_LINUX_VERSION_H  -Wall -Wundef -fno-strict-aliasing -Wdeclaration-after-statement -fvisibility=hidden -Wshadow -Wno-unused-local-typedefs -fdiagnostics-color=always -mmmx -msse -msse2 -msse3  -isystem/usr/include -D_REENTRANT  -DSDL_BUILD_MAJOR_VERSION=2 -DSDL_BUILD_MINOR_VERSION=32 -DSDL_BUILD_MICRO_VERSION=10 -O3 -DNDEBUG -MD -MT _sdl2/CMakeFiles/SDL2-static.dir/src/SDL.c.o -MF CMakeFiles/SDL2-static.dir/src/SDL.c.o.d -o CMakeFiles/SDL2-static.dir/src/SDL.c.o -c /home/runner/work/_temp/hammond-sdl2/src/SDL.c"
+      },
+      "interpretation": "Actual verbose compile commands plus successful hosted object/archive/runtime enforcement; no independent current ZIP inspection."
+    }
+  },
+  "strict_completion": {
+    "job_id": 132483419603,
+    "run_id": 43606911966,
+    "job_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43606911966/job/132483419603",
+    "step_name": "Verify the completed interface session",
+    "status": "passed",
+    "mode": "strict_completion",
+    "completion_valid": true,
+    "record_consistency_valid": true,
+    "counts": {
+      "accepted": 60,
+      "distinct_agents": 60,
+      "distinct_numbers": 60,
+      "invalid_status": 0,
+      "malformed_rows": 0,
+      "recorded": 60,
+      "running": 0,
+      "substantive_accepted_notes": 60
+    },
+    "accepted_waves": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "error_count": 0,
+    "checker": {
+      "path": "tools/check_interface_session.py",
+      "sha256": "1af6b63e4fb1d5bc9ded110c50a41dd6cf3046a9c200026941d83104d7679430"
+    },
+    "manifest": {
+      "bytes": 32186,
+      "path": "docs/development/2026-11-14-interface-continuation/assignments.json",
+      "sha256": "f7af18dadc375ca2e0d2cbc23c5886b03bda1fade4d998e4152b99ebbe282ec9"
+    },
+    "checked_notes": 60,
+    "checked_notes_sha256": "2a779c37303153a645e0b87747ae6e0690deb661d335324f52dd5f1696dd408f",
+    "output": {
+      "path": "docs/development/2026-11-14-interface-continuation/completion-check.json",
+      "blob_sha": "e3b24cc0dcc03da5ca016ba4f9df8cd10cc046d9",
+      "content_sha256": "8d1a40bc828763ba0b8afb2b667cfadec5b372d9d6e6b9f50f7eb6bfd778ec57",
+      "bytes": 15443,
+      "roundtrip_verified": true
+    },
+    "extraction_provenance": {
+      "path": "docs/development/2026-11-14-interface-continuation/reports/a58-final-completion-extraction.json",
+      "blob_sha": "0a0f6676a142c33ed5f7036bad6ac83e986d9603",
+      "content_sha256": "7cee953a0c33cb5ea2e87aeecd8c826f0054c77677353b459c0cfca404c04a26",
+      "bytes": 4848,
+      "roundtrip_verified": true
+    },
+    "claim": "Retained record consistency only. This does not attest actual dispatch, substantive acceptance, semantic truth, test execution, publication, product readiness or physical/model fidelity."
+  },
+  "macos_scope": {
+    "job_id": 132483419641,
+    "ctest_passed": 38,
+    "workspace_methods_passed": 6,
+    "actual_workspace_subprocesses": 30,
+    "native_midi_methods_passed": 12,
+    "source_fixture_sha256": "0488bc549bbe4475fac8daa4f5d69c76a58db5ca7a94f1ff7e146f7ac11c0692",
+    "specific_passed_method": "test_pointer_header_matrix_preserves_keyboard_space_and_exact_save",
+    "meaning": "The exact repaired fixture executed successfully on macOS at a517203. Seven header sizes each run the original startup prefix, first-Upper prefix and full journey; the remaining methods bring the actual native subprocess count to thirty. Passing assertions cover the source's literal applied-command states, held ownership, exact original-prefix state bytes and canonical full Save within the hosted test.",
+    "limit": "Individual macOS saved-state, BMP and prefix-diagnostic files were not independently retrieved or inspected in this cloud audit. This is exact-source executed assertion evidence from the primary log; it is not a reconstruction of old b1 macOS artifacts."
+  },
+  "preserved_history": [
+    {
+      "commit": "cdbb2beaa28bf136f9a8db6213819129514e2ae9",
+      "native_job_id": 132455309517,
+      "result": "Thirteen selected sanitizer suites passed with leak checking enabled; five native-labelled.",
+      "detail_path": "docs/development/2026-11-14-interface-continuation/reports/a58-recovery-hosted-6f69c68.json"
+    },
+    {
+      "commit": "b1efcdfc34cde92e07f2f6bcb563fc12701dfc01",
+      "result": "Eleven jobs passed; actual macOS standalone failure remained 37/38.",
+      "detail_path": "docs/development/2026-11-14-interface-continuation/reports/a58-recovery-checkpoint6-primary.json"
+    },
+    {
+      "commit": "6f69c68ed5bf51d77dba1ae4f75d4bc75d144747",
+      "attempt": 1,
+      "result": "Nine jobs passed; three macOS jobs cancelled without runners or steps, workflow conclusions failure, cause unverified.",
+      "detail_path": "docs/development/2026-11-14-interface-continuation/reports/a58-recovery-hosted-6f69c68.json"
+    }
+  ],
+  "retention": {
+    "raw_log_hashing": "SHA-256 over exact decoded-log UTF-8 bytes, preserving BOM and CRLF. Parsing strips timestamp/ANSI prefixes without replacing the stored raw strings. Bounded line excerpts omit line delimiters.",
+    "raw_log_files": "Primary responses remain in cloud memory; no unavailable original local file is represented as recovered.",
+    "artifact_limits": "Native artifact API/upload-log digest agreement is recorded. No current artifact ZIP was downloaded or independently rehashed.",
+    "completion_output": "Actual executed JSON extracted from the timestamped Linux primary log, with separate normalization provenance. Original artifact-file byte identity is not claimed.",
+    "original_local_candidate": "Unpublished 137-file tree 655b1f17577af95ea2c5cacea9eacfa60088d341 and its original raw artifacts remain unavailable."
+  },
+  "scope_limits": [
+    "Passing hosted dummy/software replay and package assertions do not establish physical audio/MIDI, real DAW, desktop capture, accessibility, timing, literal 1:1 reference or physical-model fidelity.",
+    "Selected native sanitizer success does not prove whole-product or system-library leak freedom; the full replay Python fixtures are qualified by the four Release runs, not by claiming they are among the thirteen sanitizer suites.",
+    "The checker attests retained record consistency; external dispatch and substantive acceptance remain separately attributed to root's actual dispatch and acceptance record.",
+    "This report qualifies a517203 and its exact named inputs. A later evidence-only commit can retain this historical proof without changing the tested product, fixture, workflows, checker, manifest or accepted notes; it must not relabel the earlier failures.",
+    "A58 performed no local build/test, workflow retry/cancel, or tree/commit/ref mutation during cloud recovery. Accepted notes, manifest, checker and workflows were not changed by this audit."
+  ]
+}

@@ -1,5 +1,43 @@
 # Development log
 
+## 2026-11-14 — Close recovered macOS and strict sixty-assignment gates
+
+The published final-records checkpoint `a517203b2adc44f7b802d6b46219cb6c80e89d40`,
+tree `ec41cb64fb0edd79e8dbf9d24f6ae1781e3e9e3e`, passed
+[all twelve hosted jobs](development/2026-11-14-interface-continuation/reports/a58-final-head-hosted.json).
+All three macOS jobs acquired runners and succeeded. Each of the four standalone
+Release logs shows 38/38, twelve MIDI methods and six workspace methods using
+thirty actual native processes. The repaired header-matrix method is explicitly
+successful on macOS. The focused native sanitizer job passes thirteen selected
+suites, five native-labelled, with ASan/UBSan and leak detection enabled.
+
+The Linux Release strict checker passed at 14:52:34 UTC: sixty accepted rows,
+sixty distinct within-session names, sixty substantive notes, all ten waves and
+zero errors. [The actual JSON](development/2026-11-14-interface-continuation/completion-check.json)
+and [extraction provenance](development/2026-11-14-interface-continuation/reports/a58-final-completion-extraction.json)
+retain the executed output. A58 removed timestamp prefixes and normalized LF;
+no original ZIP/artifact-file byte identity is claimed. Root independently
+fetched all sixty note bodies and matched every SHA-256 and byte count, the
+32,186-byte manifest, checker source and canonical note aggregate. The checker
+continues to attest consistency only; root's actual dispatch observation and
+substantive reviews remain separate.
+
+A60 independently inspected all 28 published paths, all sixty note identities,
+all 27 prepublication content identities, exact authored archives, 102 local
+references and the six-line workflow insertion. Its [remote review](development/2026-11-14-interface-continuation/reports/a60-published-recovery-audit.json)
+found two wording improvements, applied in this closeout: explicit historical
+NEXT_STEPS headings and physical M3 continuation after the implemented selector,
+plus unambiguous thirty-process zero-exit wording.
+
+The closing publication retains these observed reports and updates current
+navigation. It does not change product code, tests, workflow, checker, accepted
+manifest or any of the sixty accepted notes. Earlier b1's executed macOS 37/38
+failure, 6f's nine successes/three macOS cancellations without execution and
+A49's local 146/147 remain historical. The last storage observation remains
+36.673 GiB free; the workspace and original final local raw artifacts remain
+unavailable. Literal 1:1 reference equality and the complete desktop/physical
+product gates remain documented next work.
+
 ## 2026-11-14 — Recover the exact repaired source and complete the sixty-worker record
 
 The original publication-6 candidate was published as `b1efcdfc34cde92e07f2f6bcb563fc12701dfc01`,
