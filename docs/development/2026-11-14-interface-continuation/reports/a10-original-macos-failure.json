@@ -1,0 +1,45 @@
+{
+  "source_commit": "d493e998e5dd7cf44db46854e87309745063ac54",
+  "workflow_run": 43580730364,
+  "job": 132404712542,
+  "job_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43580730364/job/132404712542",
+  "platform": "macOS 15.8.2 arm64 / AppleClang / native MIDI ON",
+  "full_log_sha256": "2897b31e1948b7eadbe260f43578136a0f184df7d69895231716a23d1fcedde1",
+  "original_diagnostic_line": 2494,
+  "failing_test": "test_modal_ctrl_and_command_m_open_then_escape_restores_playing (modifier=meta)",
+  "replay": {
+    "duration_ms": 600,
+    "scheduled_events": 8,
+    "pushed_events": 3,
+    "completed": false,
+    "delivered": false,
+    "passed": false,
+    "accepted_note_on_commands": 0,
+    "accepted_note_off_commands": 0,
+    "final_acknowledged": true,
+    "observations_truncated": false
+  },
+  "observation_elapsed_ms": [
+    44,
+    4746
+  ],
+  "audio": {
+    "callback_count": 370,
+    "rendered_frames": 189440,
+    "render_failures": 0,
+    "format_failures": 0,
+    "overrange_failures": 0,
+    "nonfinite_failures": 0
+  },
+  "errors": {
+    "count": 2,
+    "last": "Native input replay failed or was interrupted; inspect the copied diagnostics"
+  },
+  "diagnosis_scope": "Observed stall across synchronous open-MIDI-modal enumeration boundary; no instrumentation identifies which RtMidi/CoreMIDI subcall consumed the time.",
+  "retained_error_lines": [
+    "2026-11-14T09:31:43.8857290Z 131: AssertionError: False is not true : completed: hammond_standalone: Input replay could not finish delivery and acknowledgment within its bounded drain interval",
+    "2026-11-14T09:31:43.8858110Z 131: hammond_standalone: Native input replay failed or was interrupted; inspect the copied diagnostics",
+    "2026-11-14T09:31:43.8930900Z 131: AssertionError: Native MIDI modal: False is not true : completed: hammond_standalone: Input replay could not finish delivery and acknowledgment within its bounded drain interval",
+    "2026-11-14T09:31:43.8955640Z 131: hammond_standalone: Native input replay failed or was interrupted; inspect the copied diagnostics"
+  ]
+}

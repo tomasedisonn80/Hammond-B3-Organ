@@ -1,8 +1,9 @@
 # Host-independent adapters are tested by the ordinary build. SDL2 is entered
 # only when the user explicitly enables the native application.
+find_package(Threads REQUIRED)
 add_library(hammond_standalone_support STATIC
     Session.cpp UiModel.cpp StateFiles.cpp MidiInput.cpp MidiDevice.cpp MidiReplay.cpp)
-target_link_libraries(hammond_standalone_support PUBLIC hammond_core)
+target_link_libraries(hammond_standalone_support PUBLIC hammond_core Threads::Threads)
 target_include_directories(hammond_standalone_support PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_compile_definitions(hammond_standalone_support PRIVATE
     HAMMOND_HAS_RTMIDI=$<BOOL:${HAMMOND_ENABLE_MIDI}>)
@@ -20,7 +21,6 @@ hammond_configure_target(hammond_standalone_support)
 
 set(HAMMOND_STANDALONE_TEST_TARGETS)
 if(BUILD_TESTING)
-    find_package(Threads REQUIRED)
     file(GLOB HAMMOND_STANDALONE_CPP_TESTS CONFIGURE_DEPENDS
         "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_*.cpp")
     foreach(test_source IN LISTS HAMMOND_STANDALONE_CPP_TESTS)

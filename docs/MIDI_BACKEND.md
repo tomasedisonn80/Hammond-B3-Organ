@@ -46,20 +46,59 @@ defines the relevant dependency behavior.
 ## Public ownership and enumeration
 
 One long-lived `MidiDevice` belongs to the application main thread. Its PIMPL
-keeps RtMidi and native types out of the public header. All public methods,
-including diagnostics, are main-thread operations. Enumeration, connection,
+keeps RtMidi and native types out of the public header. All instance methods,
+including diagnostics, are main-thread operations. Connection,
 file-independent error formatting, allocation and destruction never run on the
 audio callback. The caller-owned `MidiInbox` must outlive the device and every
 backend callback; declare it before the device in an aggregate so reverse member
 destruction closes the device first.
 
-`enumerate_input_ports(destination, error)` constructs an ephemeral client for
+`enumerate_input_ports(destination, error)` constructs its own ephemeral RtMidi query object for
 the selected backend and returns exact backend names in enumeration order.
 Successful zero-port enumeration is different from a failed or unavailable API.
 Failure preserves the caller's vector. Reject the entire query for more than
 256 ports, an empty name, a name above 1,024 bytes or an embedded NUL; do not
 truncate, silently omit entries or select another API. Names are retained as the
 backend's UTF-8 byte strings. Building strings and vectors here is permitted.
+
+The native MIDI settings modal dispatches that value-owned query to one exclusively
+owned [`MidiDiscovery`](../apps/standalone/MidiDiscovery.h) worker. The worker owns
+only its ephemeral enumeration object and value result; it never accesses a live
+`MidiDevice`, inbox, Session, UI, or SDL object. This is an exception only to the
+static query's earlier main-thread placement. Instance operations keep their
+existing ownership. Native query construction, enumeration and teardown can block
+in the OS. The retained macOS replay stopped delivering events across this
+synchronous modal boundary; the log does not identify an individual native
+subcall. See the [interface repair](development/2026-11-14-interface-continuation/10-macos-replay-repair.md).
+
+The pinned RtMidi CoreMIDI implementation shares a process-level native client;
+an owned RtMidi query object does not imply a separate native client. Startup
+connection finishes before the event loop. Nonempty modal Apply requires a
+completed discovery, and only one discovery can run at once, so first-client
+initialization is not concurrent. Existing instance operations remain on main.
+Real CoreMIDI behavior and physical hotplug still require platform evidence.
+
+Opening settings requests a nonwrapping discovery generation. The main loop polls
+without waiting for an unfinished query. Closing a modal invalidates its UI
+result; reopening queues only the newest explicit generation, with at most one
+native query in flight. A completed stale result cannot replace the new choices
+or connect anything. Failed enumeration remains an observed error even after
+the modal closes. There is no automatic retry of a failed generation.
+
+While discovery is pending, explicit No input and Disconnect remain usable.
+Apply cannot connect a nonempty name until the current generation has successfully
+enumerated it. Later connection still performs the existing exact-name admission
+again. Modal settings do not automatically connect the first returned port.
+
+At shutdown, audio stops before an outstanding discovery is joined and its late
+failure is recorded. Portable OS cancellation or a bound on native constructor/
+teardown duration is not provided; the worker is never detached across backend
+lifetime. This removes query waiting from event delivery without relaxing the
+two-second replay drain policy. Separate discovery counters in diagnostic schema
+3 record requests, actual starts/completions, discarded results, failures, and
+whether an outstanding worker/result required the shutdown join. Here pending
+means joinable and unconsumed; the OS query may already have returned. Unchanged
+original fields retain their meanings.
 
 The chosen name is a selection token for the current enumeration, **not a
 persistent hardware identity**. ALSA includes client/port numbers; WinMM normally

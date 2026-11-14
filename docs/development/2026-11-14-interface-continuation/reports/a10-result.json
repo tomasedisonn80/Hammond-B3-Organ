@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "assignment": "/root/w02_a10_macos_replay_repair",
+  "date": "2026-11-14",
+  "source_manifest": "a10-source.json",
+  "base_commit": "c83fe2336be931385f0d7ab82c55b30bfdfc8fc6",
+  "build_directory": "/workspace/scratch/601951e27dc3/build-midi-checkpoint",
+  "configuration": "Release",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "compiler": "GNU 14.2.0",
+  "python": "3.12.14",
+  "cmake": "4.4.4",
+  "native_midi": true,
+  "audio_video_drivers": "SDL dummy",
+  "sdl_alsa_audio_backend": false,
+  "sdl2": {
+    "version": "2.32.10",
+    "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71"
+  },
+  "rtmidi": {
+    "version": "6.0.0",
+    "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+    "patch": "coremidi-zero-initialize-v1"
+  },
+  "executable_sha256": "1630dd3edeacc7ea3013b84b32c56c95eaa3bceb61f26e1f9b7446db75f870f7",
+  "comment_only_final_rebuild_preserved_tested_executable": true,
+  "tests": [
+    {
+      "name": "test_standalone_midi_discovery",
+      "passed": true,
+      "seconds": 0.01,
+      "blocked_owner_polls": 4096,
+      "sequential_generations": 32
+    },
+    {
+      "name": "test_standalone_app",
+      "passed": true,
+      "seconds": 8.94,
+      "python_cases": 18,
+      "native_processes": 164
+    },
+    {
+      "name": "test_standalone_midi_cli",
+      "passed": true,
+      "seconds": 11.09,
+      "python_cases": 15,
+      "native_processes": 95,
+      "enumeration_errors": 13,
+      "successful_ui_replays": 0,
+      "expected_failed_ui_replays": 11
+    },
+    {
+      "name": "test_standalone_native_midi_replay",
+      "passed": true,
+      "seconds": 23.18,
+      "python_cases": 12,
+      "native_processes": 17,
+      "expected_interrupted_replays": 1
+    },
+    {
+      "name": "test_standalone_replay_boundaries",
+      "passed": true,
+      "seconds": 5.06,
+      "python_cases": 9,
+      "native_processes": 29,
+      "preserved_setup_rejections": 19
+    }
+  ],
+  "ctest_passed": 5,
+  "ctest_failed": 0,
+  "ctest_total_seconds": 48.28,
+  "scope": "Linux engineering tests; compiled ALSA enumeration is unavailable in this container. Existing error acceptance remained strict. No macOS or physical MIDI qualification is claimed.",
+  "next_gate": "Publish coherent repair and observe macOS AppleClang native MIDI ON job, including original Ctrl/Cmd-M then Escape and note-delivery acceptance, with unchanged drain deadline.",
+  "source_manifest_sha256": "8301a5d9831d06692dacdef66ca9da28f5262939a7a6ab3cf117f510e773e38d",
+  "retained_evidence_sha256": {
+    "a10-original-macos-failure.json": "9d4d9332cdc051fb2d3ad6068e6c65c0f613df2308308176bbdd264587660a45",
+    "a10-ctest.txt": "81c30a08a93db9cabd74f69d3936d2e4e91a999ac6427bfebbd47e34dff2549c",
+    "a10-targeted-tests.txt": "5617fb1a98a726746081e1a6a68a20c3c8221053dbd204b5b10557eb818989d7",
+    "a10-linux-original-sequence.json": "50e6bf1282a1278fc2c95cd42f3c952187972c482d4f7650e9ad2698d6d842ac"
+  }
+}

@@ -102,6 +102,11 @@ MIDI_SCHEMA = {
     "release_commands_accepted": int, "release_sequence": int,
     "release_pending": bool, "parameter_messages": int, "retired_fault_bits": int,
     "last_submit_status": str, "status": str,
+    "discovery": {
+        "requests": int, "started": int, "completed": int, "discarded_results": int,
+        "failures": int, "pending_before_shutdown": bool, "shutdown_join_performed": bool,
+        "pending_after_shutdown": bool,
+    },
     "device": {
         "callback_messages": int, "forwarded_messages": int,
         "filtered_messages": int, "admission_failures": int,
@@ -175,6 +180,11 @@ def assert_no_midi_input(case: unittest.TestCase, report: dict) -> None:
         "release_pending": False, "parameter_messages": 0, "retired_fault_bits": 0,
         "last_submit_status": "ok",
         "status": "No MIDI input selected." if available else "MIDI backend unavailable in this build.",
+        "discovery": {
+            "requests": 0, "started": 0, "completed": 0, "discarded_results": 0,
+            "failures": 0, "pending_before_shutdown": False, "shutdown_join_performed": False,
+            "pending_after_shutdown": False,
+        },
         "device": {
             "callback_messages": 0, "forwarded_messages": 0, "filtered_messages": 0,
             "admission_failures": 0, "backend_errors": 0, "callback_contentions": 0,

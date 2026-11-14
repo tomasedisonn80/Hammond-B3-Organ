@@ -1,0 +1,169 @@
+Start testing: Nov 14 03:40 MST
+----------------------------------------------------------
+114/137 Testing: test_standalone_midi_discovery
+114/137 Test: test_standalone_midi_discovery
+Command: "/workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone/test_standalone_midi_discovery"
+Directory: /workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone
+"test_standalone_midi_discovery" start time: Nov 14 03:40 MST
+Output:
+----------------------------------------------------------
+MIDI discovery: blocked probe permits 4096 owner polls; exact results, failures, exceptions, single-worker admission, 32 generations and joined cleanup passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_standalone_midi_discovery" end time: Nov 14 03:40 MST
+"test_standalone_midi_discovery" time elapsed: 00:00:00
+----------------------------------------------------------
+
+131/137 Testing: test_standalone_app
+131/137 Test: test_standalone_app
+Command: "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake" "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/601951e27dc3/midi-checkpoint-source/apps/standalone/native_tests/test_standalone_app.py"
+Directory: /workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone
+"test_standalone_app" start time: Nov 14 03:40 MST
+Output:
+----------------------------------------------------------
+Native executable SHA-256: 1630dd3edeacc7ea3013b84b32c56c95eaa3bceb61f26e1f9b7446db75f870f7
+test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+ok
+test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+test_late_malformed_startup_preserves_file_and_audition_controls (__main__.NativeAppAcceptance.test_late_malformed_startup_preserves_file_and_audition_controls) ... ok
+test_list_audio_needs_no_video_or_file_writes (__main__.NativeAppAcceptance.test_list_audio_needs_no_video_or_file_writes) ... ok
+test_missing_and_empty_values_reject_before_output (__main__.NativeAppAcceptance.test_missing_and_empty_values_reject_before_output) ... ok
+test_no_audio_fails_bounded_with_zero_callback_claims (__main__.NativeAppAcceptance.test_no_audio_fails_bounded_with_zero_callback_claims) ... ok
+test_noninteger_and_overflow_values_reject_before_output (__main__.NativeAppAcceptance.test_noninteger_and_overflow_values_reject_before_output) ... ok
+test_output_directory_leaves_reject_before_writes (__main__.NativeAppAcceptance.test_output_directory_leaves_reject_before_writes) ... ok
+test_output_symlinks_cannot_create_or_overwrite_musical_state (__main__.NativeAppAcceptance.test_output_symlinks_cannot_create_or_overwrite_musical_state) ... ok
+test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) ... ok
+test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) ... ok
+test_screenshot_failure_joins_audio_and_preserves_musical_file (__main__.NativeAppAcceptance.test_screenshot_failure_joins_audio_and_preserves_musical_file) ... ok
+test_state_symlinks_cannot_be_filled_by_outputs_or_loaded (__main__.NativeAppAcceptance.test_state_symlinks_cannot_be_filled_by_outputs_or_loaded) ... ok
+test_unknown_and_combined_options_reject_before_output (__main__.NativeAppAcceptance.test_unknown_and_combined_options_reject_before_output) ... ok
+test_unsupported_numeric_values_reject_before_output (__main__.NativeAppAcceptance.test_unsupported_numeric_values_reject_before_output) ... ok
+Actual native application subprocesses: 164
+
+----------------------------------------------------------------------
+Ran 18 tests in 8.758s
+
+OK
+<end of output>
+Test time =   8.94 sec
+----------------------------------------------------------
+Test Passed.
+"test_standalone_app" end time: Nov 14 03:40 MST
+"test_standalone_app" time elapsed: 00:00:08
+----------------------------------------------------------
+
+132/137 Testing: test_standalone_midi_cli
+132/137 Test: test_standalone_midi_cli
+Command: "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake" "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/601951e27dc3/midi-checkpoint-source/apps/standalone/native_tests/test_standalone_midi_cli.py"
+Directory: /workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone
+"test_standalone_midi_cli" start time: Nov 14 03:40 MST
+Output:
+----------------------------------------------------------
+MIDI CLI/modal executable SHA-256: 1630dd3edeacc7ea3013b84b32c56c95eaa3bceb61f26e1f9b7446db75f870f7
+test_cli_distinct_channels_and_all_boundary_positions (__main__.NativeMidiAcceptance.test_cli_distinct_channels_and_all_boundary_positions) ... ok
+test_cli_exact_port_argument_bytes_and_no_name_coercion (__main__.NativeMidiAcceptance.test_cli_exact_port_argument_bytes_and_no_name_coercion) ... ok
+test_cli_list_midi_precedes_sdl_initialization (__main__.NativeMidiAcceptance.test_cli_list_midi_precedes_sdl_initialization) ... ok
+test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name (__main__.NativeMidiAcceptance.test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name) ... ok
+test_cli_numeric_channels_are_strict_and_bounded (__main__.NativeMidiAcceptance.test_cli_numeric_channels_are_strict_and_bounded) ... ok
+test_cli_repeated_options_and_conflicting_lists (__main__.NativeMidiAcceptance.test_cli_repeated_options_and_conflicting_lists) ... ok
+test_cli_startup_defaults_to_no_input_with_custom_routing (__main__.NativeMidiAcceptance.test_cli_startup_defaults_to_no_input_with_custom_routing) ... ok
+test_modal_all_eight_keyboard_controls_and_no_port_auto_open (__main__.NativeMidiAcceptance.test_modal_all_eight_keyboard_controls_and_no_port_auto_open) ... ok
+test_modal_channels_wrap_and_home_end_apply_without_connecting (__main__.NativeMidiAcceptance.test_modal_channels_wrap_and_home_end_apply_without_connecting) ... ok
+test_modal_ctrl_and_command_m_open_then_escape_restores_playing (__main__.NativeMidiAcceptance.test_modal_ctrl_and_command_m_open_then_escape_restores_playing) ... ok
+test_modal_escape_discards_unapplied_channels (__main__.NativeMidiAcceptance.test_modal_escape_discards_unapplied_channels) ... ok
+test_modal_focus_wraps_forward_and_reverse_across_eight_controls (__main__.NativeMidiAcceptance.test_modal_focus_wraps_forward_and_reverse_across_eight_controls) ... ok
+test_modal_invalid_apply_preserves_active_routing_and_edit_intent (__main__.NativeMidiAcceptance.test_modal_invalid_apply_preserves_active_routing_and_edit_intent) ... ok
+test_modal_pointer_open_apply_disconnect_close_at_two_sizes (__main__.NativeMidiAcceptance.test_modal_pointer_open_apply_disconnect_close_at_two_sizes) ... ok
+test_modal_shortcut_and_navigation_ignore_repeat_and_alt (__main__.NativeMidiAcceptance.test_modal_shortcut_and_navigation_ignore_repeat_and_alt) ... ok
+Actual MIDI CLI/modal subprocesses: 95; enumeration errors: 13; successful UI replays: 0; expected failed UI replays: 11
+
+----------------------------------------------------------------------
+Ran 15 tests in 10.966s
+
+OK
+<end of output>
+Test time =  11.09 sec
+----------------------------------------------------------
+Test Passed.
+"test_standalone_midi_cli" end time: Nov 14 03:40 MST
+"test_standalone_midi_cli" time elapsed: 00:00:11
+----------------------------------------------------------
+
+133/137 Testing: test_standalone_native_midi_replay
+133/137 Test: test_standalone_native_midi_replay
+Command: "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake" "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/601951e27dc3/midi-checkpoint-source/apps/standalone/native_tests/test_standalone_midi_replay.py"
+Directory: /workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone
+"test_standalone_native_midi_replay" start time: Nov 14 03:40 MST
+Output:
+----------------------------------------------------------
+Native MIDI replay executable SHA-256: 1630dd3edeacc7ea3013b84b32c56c95eaa3bceb61f26e1f9b7446db75f870f7
+test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect) ... ok
+test_cc11_and_bank_b_edits_share_pending_ui_controls (__main__.NativeMidiReplayAcceptance.test_cc11_and_bank_b_edits_share_pending_ui_controls) ... ok
+test_cc123_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui) ... ok
+test_division_channel_range_routing_and_ignored_packets (__main__.NativeMidiReplayAcceptance.test_division_channel_range_routing_and_ignored_packets) ... ok
+test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner (__main__.NativeMidiReplayAcceptance.test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner) ... ok
+test_focus_resize_help_and_midi_apply_preserve_external_owners (__main__.NativeMidiReplayAcceptance.test_focus_resize_help_and_midi_apply_preserve_external_owners) ... ok
+test_full_inbox_drains_in_bounded_batches_without_overflow (__main__.NativeMidiReplayAcceptance.test_full_inbox_drains_in_bounded_batches_without_overflow) ... ok
+test_global_panic_retires_midi_and_suppresses_old_ui_press (__main__.NativeMidiReplayAcceptance.test_global_panic_retires_midi_and_suppresses_old_ui_press) ... ok
+test_interruption_is_a_failed_replay_but_shutdown_still_joins (__main__.NativeMidiReplayAcceptance.test_interruption_is_a_failed_replay_but_shutdown_still_joins) ... ok
+test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection (__main__.NativeMidiReplayAcceptance.test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection) ... ok
+test_real_overflow_discards_stale_packets_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_real_overflow_discards_stale_packets_and_requires_reconnect) ... ok
+test_repeated_fifo_owners_velocity_zero_and_both_release_orders (__main__.NativeMidiReplayAcceptance.test_repeated_fifo_owners_velocity_zero_and_both_release_orders) ... ok
+Actual native MIDI replay subprocesses: 17; expected interrupted replays: 1
+
+----------------------------------------------------------------------
+Ran 12 tests in 23.037s
+
+OK
+<end of output>
+Test time =  23.18 sec
+----------------------------------------------------------
+Test Passed.
+"test_standalone_native_midi_replay" end time: Nov 14 03:41 MST
+"test_standalone_native_midi_replay" time elapsed: 00:00:23
+----------------------------------------------------------
+
+135/137 Testing: test_standalone_replay_boundaries
+135/137 Test: test_standalone_replay_boundaries
+Command: "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake" "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/workspace/scratch/601951e27dc3/midi-checkpoint-source/apps/standalone/native_tests/test_standalone_replay_boundaries.py"
+Directory: /workspace/scratch/601951e27dc3/build-midi-checkpoint/apps/standalone
+"test_standalone_replay_boundaries" start time: Nov 14 03:41 MST
+Output:
+----------------------------------------------------------
+Replay boundary executable SHA-256: 1630dd3edeacc7ea3013b84b32c56c95eaa3bceb61f26e1f9b7446db75f870f7
+test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ok
+test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) ... ok
+test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner) ... ok
+test_zero_and_maximum_nonmutating_events_have_no_smoke_note (__main__.ReplayBoundaryAcceptance.test_zero_and_maximum_nonmutating_events_have_no_smoke_note) ... ok
+Actual replay boundary subprocesses: 29; preserved setup rejections: 19
+
+----------------------------------------------------------------------
+Ran 9 tests in 4.953s
+
+OK
+<end of output>
+Test time =   5.06 sec
+----------------------------------------------------------
+Test Passed.
+"test_standalone_replay_boundaries" end time: Nov 14 03:41 MST
+"test_standalone_replay_boundaries" time elapsed: 00:00:05
+----------------------------------------------------------
+
+End testing: Nov 14 03:41 MST
+
+midi =  34.26 sec*proc
+
+native =  48.26 sec*proc
+
+standalone =  48.26 sec*proc
+

@@ -1,0 +1,40 @@
+{
+  "qualification": "Linux replay of original event sequence; native ALSA enumeration error is retained, not a macOS pass.",
+  "input_script": "B3UIREPLAY1\nduration_ms 600\n80 key_down M meta 0\n84 key_up M meta\n98 key_down A none 0\n198 key_up A none\n228 key_down Escape none 0\n232 key_up Escape none\n246 key_down A none 0\n346 key_up A none\n",
+  "executable_sha256": "1630dd3edeacc7ea3013b84b32c56c95eaa3bceb61f26e1f9b7446db75f870f7",
+  "process_exit": 1,
+  "stderr": "ALSA lib seq_hw.c:540:(snd_seq_hw_open) open /dev/snd/seq failed: No such file or directory\n\nMidiInAlsa::initialize: error creating ALSA sequencer client object.\n\nhammond_standalone: Cannot enumerate MIDI input ports: MIDI input enumeration failed: MidiInAlsa::initialize: error creating ALSA sequencer client object.\nhammond_standalone: Native input replay failed or was interrupted; inspect the copied diagnostics\n",
+  "replay": {
+    "scheduled_events": 8,
+    "pushed_events": 8,
+    "delivered": true,
+    "completed": true,
+    "accepted_note_on_commands": 1,
+    "accepted_note_off_commands": 1,
+    "final_acknowledged": true,
+    "passed": false
+  },
+  "observation_elapsed_ms": [
+    78,
+    118,
+    194,
+    259,
+    308,
+    349,
+    403
+  ],
+  "discovery": {
+    "requests": 1,
+    "started": 1,
+    "completed": 1,
+    "discarded_results": 0,
+    "failures": 1,
+    "pending_before_shutdown": false,
+    "shutdown_join_performed": false,
+    "pending_after_shutdown": false
+  },
+  "errors": {
+    "count": 2,
+    "last": "Native input replay failed or was interrupted; inspect the copied diagnostics"
+  }
+}

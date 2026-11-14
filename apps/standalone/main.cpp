@@ -7,6 +7,7 @@
 #include "EmbeddedProfile.h"
 #include "InstrumentView.h"
 #include "MidiDevice.h"
+#include "MidiDiscovery.h"
 #include "MidiInput.h"
 #include "MidiReplay.h"
 #include "ScriptedInput.h"
@@ -511,6 +512,7 @@ public:
             }
             observe();
             monitor_audio();
+            poll_midi_discovery();
             if (running_) {
                 pump_midi_replay(SDL_GetTicks64() - started);
                 process_midi();
@@ -575,6 +577,13 @@ public:
         }
         audio_.close();
         commands_enabled_ = false;
+        // Native enumeration can outlast a short modal/replay. The event loop
+        // and audio have finished before joining; preserve any late failure in
+        // diagnostics instead of hiding it when a modal was closed.
+        midi_discovery_pending_before_shutdown_ = midi_discovery_.pending();
+        midi_discovery_requested_ = false;
+        MidiDiscoveryResult discovery_result;
+        if (midi_discovery_.finish(discovery_result)) accept_midi_discovery(std::move(discovery_result));
         observe();
         final_diagnostics_ = audio_.diagnostics(); // Joined: stable copied counters.
         copy_midi_diagnostics(); // Quarantine, if any, remains explicitly nonquiescent.
@@ -809,6 +818,14 @@ private:
                << ",\"last_submit_status\":";
         json_string(output, status_name(midi_last_submit_status_));
         output << ",\"status\":"; json_string(output, midi_status_);
+        output << ",\"discovery\":{\"requests\":" << midi_discovery_generation_
+               << ",\"started\":" << midi_discovery_started_
+               << ",\"completed\":" << midi_discovery_completed_
+               << ",\"discarded_results\":" << midi_discovery_discarded_
+               << ",\"failures\":" << midi_discovery_failures_
+               << ",\"pending_before_shutdown\":" << midi_discovery_pending_before_shutdown_
+               << ",\"shutdown_join_performed\":" << midi_discovery_pending_before_shutdown_
+               << ",\"pending_after_shutdown\":" << midi_discovery_.pending() << '}';
         output << ",\"device\":{\"callback_messages\":" << midi_final_device_.callback_messages
                << ",\"forwarded_messages\":" << midi_final_device_.forwarded_messages
                << ",\"filtered_messages\":" << midi_final_device_.filtered_messages
@@ -1670,6 +1687,69 @@ private:
         return true;
     }
 
+    void begin_midi_discovery() {
+        if (!midi_discovery_requested_ || midi_discovery_.pending() ||
+            midi_discovery_attempted_generation_ == midi_discovery_generation_) return;
+        // Attempt each explicitly requested generation once, including a failed
+        // thread start. Only reopening the modal requests another generation.
+        midi_discovery_attempted_generation_ = midi_discovery_generation_;
+        midi_discovery_job_action_revision_ = midi_discovery_action_revision_;
+        midi_discovery_previous_status_ = midi_status_;
+        std::string error;
+        if (midi_discovery_.start(midi_discovery_generation_, error)) {
+            increment_counter(midi_discovery_started_);
+        } else {
+            increment_counter(midi_discovery_failures_);
+            midi_status_ = "Cannot enumerate MIDI input ports: " + error;
+            fail(midi_status_);
+        }
+    }
+
+    void accept_midi_discovery(MidiDiscoveryResult result) {
+        increment_counter(midi_discovery_completed_);
+        const bool current = midi_discovery_requested_ && overlay_ == ViewOverlay::Midi &&
+            result.generation == midi_discovery_generation_;
+        if (!current) increment_counter(midi_discovery_discarded_);
+        // A late discovery must not replace the result of Apply, Disconnect,
+        // recovery or a later dialog. Its failure is still retained globally.
+        const bool may_update_status = result.generation == midi_discovery_generation_ &&
+            midi_discovery_job_action_revision_ == midi_discovery_action_revision_ &&
+            midi_status_ == midi_discovery_previous_status_;
+        if (!result.success) {
+            increment_counter(midi_discovery_failures_);
+            const auto error = "Cannot enumerate MIDI input ports: " + result.error;
+            if (may_update_status) midi_status_ = error;
+            fail(error);
+            return;
+        }
+        if (may_update_status && !midi_input_.active()) {
+            midi_status_ = result.ports.empty() ? "No MIDI input ports were found." : "No MIDI input selected.";
+        }
+        if (!current) return;
+        // Preserve the user's current exact-name/No-input selection. A saved
+        // name is not automatically opened, and a disappeared name is not
+        // replaced by the first enumerated device.
+        const std::string selected = selected_midi_port_ > 0 && selected_midi_port_ < midi_choices_.size() ?
+            midi_choices_[selected_midi_port_] : std::string{};
+        midi_choices_.clear();
+        midi_choices_.emplace_back("No input");
+        for (auto& port : result.ports) midi_choices_.push_back(std::move(port));
+        selected_midi_port_ = 0;
+        if (!selected.empty()) {
+            const auto found = std::find(midi_choices_.begin() + 1, midi_choices_.end(), selected);
+            if (found != midi_choices_.end()) selected_midi_port_ = static_cast<std::size_t>(found - midi_choices_.begin());
+        }
+        midi_discovery_choices_generation_ = result.generation;
+    }
+
+    void poll_midi_discovery() {
+        MidiDiscoveryResult result;
+        if (midi_discovery_.poll(result)) accept_midi_discovery(std::move(result));
+        // A close/reopen while an old query was pending schedules just the
+        // newest explicit generation, after the old worker has been reaped.
+        begin_midi_discovery();
+    }
+
     void open_overlay(ViewOverlay overlay) {
         lose_input(UiReleaseReason::FocusLost);
         overlay_ = overlay;
@@ -1686,26 +1766,25 @@ private:
                 return;
             }
             midi_choices_.emplace_back("No input");
-            std::vector<std::string> names;
-            std::string error;
+            selected_midi_port_ = 0;
+            midi_discovery_choices_generation_ = 0;
+            midi_discovery_requested_ = false;
+            if (!midi_requested_port_.empty()) {
+                midi_choices_.push_back(midi_requested_port_);
+                selected_midi_port_ = 1;
+            }
             if (midi_shutdown_failed_) {
                 midi_status_ = "MIDI shutdown failed; restart the application before using MIDI.";
             } else if (MidiDevice::backend_available()) {
-                if (MidiDevice::enumerate_input_ports(names, error)) {
-                    for (auto& name : names) midi_choices_.push_back(std::move(name));
-                    if (names.empty() && !midi_input_.active()) midi_status_ = "No MIDI input ports were found.";
-                } else {
-                    midi_status_ = "Cannot enumerate MIDI input ports: " + error;
+                if (midi_discovery_generation_ == std::numeric_limits<std::uint64_t>::max()) {
+                    midi_status_ = "MIDI discovery request identity exhausted; restart the application.";
                     fail(midi_status_);
+                } else {
+                    ++midi_discovery_generation_;
+                    midi_discovery_requested_ = true;
+                    begin_midi_discovery();
                 }
             } else midi_status_ = "MIDI backend unavailable in this build.";
-            selected_midi_port_ = 0;
-            if (!midi_requested_port_.empty()) {
-                const auto found = std::find(midi_choices_.begin() + 1, midi_choices_.end(), midi_requested_port_);
-                if (found != midi_choices_.end()) {
-                    selected_midi_port_ = static_cast<std::size_t>(found - midi_choices_.begin());
-                }
-            }
             message("MIDI: choose an exact port and distinct channels; Apply connects; Disconnect releases MIDI notes.");
             return;
         }
@@ -1732,6 +1811,7 @@ private:
     }
 
     void close_overlay() {
+        if (overlay_ == ViewOverlay::Midi) midi_discovery_requested_ = false;
         overlay_ = ViewOverlay::None;
         ui_.set_text_entry_active(false);
         // Physical-key records are intentionally retained until their actual Up.
@@ -1783,6 +1863,7 @@ private:
             if (modal_focus_ == 7) { close_overlay(); return; }
             if (modal_focus_ < 5) { change_modal_value(modal_focus_ == 0 ? -1 : 1); return; }
             if (modal_focus_ == 6) {
+                increment_counter(midi_discovery_action_revision_);
                 retire_midi("MIDI disconnected by request. MIDI owners are being released.");
                 midi_requested_port_.clear();
                 selected_midi_port_ = 0;
@@ -1798,11 +1879,17 @@ private:
             }
             if (selected_midi_port_ >= midi_choices_.size()) return;
             std::string port = selected_midi_port_ == 0 ? std::string{} : midi_choices_[selected_midi_port_];
+            if (!port.empty() && (midi_discovery_choices_generation_ == 0 ||
+                                  midi_discovery_choices_generation_ != midi_discovery_generation_)) {
+                message("Wait for MIDI input discovery before connecting a port. No input and Disconnect remain available.");
+                return;
+            }
             if (!port.empty() && std::count(midi_choices_.begin() + 1, midi_choices_.end(), port) != 1) {
                 midi_status_ = "The selected MIDI name is ambiguous. Reopen MIDI settings after resolving duplicate names.";
                 fail(midi_status_);
                 return;
             }
+            increment_counter(midi_discovery_action_revision_);
             const bool requested = request_midi(std::move(port), selected_midi_routing_);
             (void)requested;
             return; // Keep the selected configuration and connection result reviewable.
@@ -2007,7 +2094,11 @@ private:
         information.midi_port = midi_replay_requested() ?
             (midi_replay_.connected ? "Synthetic replay (active)" : "Synthetic replay (disconnected)") :
             std::string_view{midi_device.port_name};
-        information.midi_status = midi_replay_requested() ? replay_status : midi_status_;
+        const bool discovering = overlay_ == ViewOverlay::Midi && midi_discovery_requested_ &&
+            (midi_discovery_.pending() || midi_discovery_attempted_generation_ != midi_discovery_generation_);
+        information.midi_status = midi_replay_requested() ? std::string_view{replay_status} : discovering ?
+            "Searching MIDI inputs. Playing resumes when this dialog closes; No input and Disconnect remain available." :
+            std::string_view{midi_status_};
         information.midi_choices = midi_choices_;
         information.selected_midi_port = selected_midi_port_;
         information.selected_midi_channels = {selected_midi_routing_.upper_channel,
@@ -2056,6 +2147,7 @@ private:
     Session session_;
     AudioDevice audio_; // Destruction precedes Session.
     MidiLifetime midi_; // The sole inbox outlives its backend, including quarantine.
+    MidiDiscovery midi_discovery_; // Own query object; joined after audio stops at shutdown.
     MidiInput midi_input_;
     MidiReplayState midi_replay_;
     UiModel ui_;
@@ -2089,6 +2181,7 @@ private:
     std::vector<std::string> midi_choices_;
     std::string midi_requested_port_;
     std::string midi_status_{"No MIDI input selected."};
+    std::string midi_discovery_previous_status_;
     std::string status_;
     std::string last_error_;
     std::string renderer_name_;
@@ -2126,6 +2219,15 @@ private:
     std::uint64_t midi_release_sequence_{0};
     std::uint64_t midi_retirement_recovery_{0};
     std::uint64_t midi_parameter_messages_{0};
+    std::uint64_t midi_discovery_generation_{0};
+    std::uint64_t midi_discovery_attempted_generation_{0};
+    std::uint64_t midi_discovery_choices_generation_{0};
+    std::uint64_t midi_discovery_action_revision_{0};
+    std::uint64_t midi_discovery_job_action_revision_{0};
+    std::uint64_t midi_discovery_started_{0};
+    std::uint64_t midi_discovery_completed_{0};
+    std::uint64_t midi_discovery_discarded_{0};
+    std::uint64_t midi_discovery_failures_{0};
     std::uint32_t midi_retired_faults_{0};
     SessionStatus midi_last_submit_status_{SessionStatus::Ok};
     int window_width_{0};
@@ -2136,6 +2238,8 @@ private:
     bool initial_from_file_{false};
     bool commands_enabled_{false};
     bool running_{true};
+    bool midi_discovery_requested_{false};
+    bool midi_discovery_pending_before_shutdown_{false};
     bool captured_{false};
     bool snapshot_available_{false};
     bool fatal_failure_{false};

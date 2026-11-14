@@ -49,7 +49,7 @@ struct MidiDeviceDiagnostics {
     std::uint64_t last_arrival_ns{0}; // Absolute steady_clock acquisition time.
 };
 
-// Optional one-port transport. Every public method, including diagnostics(),
+// Optional one-port transport. Every instance method, including diagnostics(),
 // belongs to the main thread; the only concurrent access is its private input
 // callback to the caller-owned MidiInbox and atomic diagnostic cells. No public
 // method is an audio-callback operation. Construction, enumeration, open, poll,
@@ -77,7 +77,9 @@ public:
     [[nodiscard]] static bool backend_available() noexcept;
     [[nodiscard]] static std::string_view backend_name() noexcept;
 
-    // Main-thread OS query. Success may return an empty list. Failure preserves
+    // Value-owned OS query, on the main thread or one exclusively owned discovery
+    // worker. It creates/tears down its own RtMidi query object and never touches a live
+    // MidiDevice. Success may return an empty list. Failure preserves
     // destination and reports an error; an unavailable build is a failure, not
     // a fabricated successful empty list. Retain exact UTF-8 backend names and
     // their order. More than 256 ports or a zero/overlong/NUL-containing name
