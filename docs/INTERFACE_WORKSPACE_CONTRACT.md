@@ -131,8 +131,9 @@ audition from a hidden manual/pedal key. Arrow/Home/End navigation cannot reach
 or edit a hidden performance control.
 
 The three tabs occupy the left header group. The existing six tools occupy two
-rows of three on the right: Save/Load/Help above Audio/MIDI/Panic. The title fits
-between those groups; the nominal-output caption and the Flat toggle fit below
+rows of three on the right: Save/Load/Help above Audio/MIDI/Panic. The title's
+measured text width is centered on the window midpoint, retaining the existing
+fit and clamp between those groups; the nominal-output caption and Flat toggle fit below
 the title. The toggle's label is `FLAT`, with a visible selected state when Flat
 is active. A service/rotary body uses `layout.workspace_panel`, spanning the
 content width below the header and above the existing footer. It does not paint

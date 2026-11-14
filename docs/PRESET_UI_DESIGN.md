@@ -167,11 +167,18 @@ accidental following n naturals:
 ```
 
 Derive both natural edges from their ordinal to avoid accumulated gaps. Each
-key has one `UiControlGeometry`. Its `bounds` is the rectangle above;
-`label_bounds = {x+1, y+height−13, width−2, 11}`, and `value_bounds`/`track`
-are empty. Center the pitch name at a nominal 9-unit font using the existing
-measured-fit text routine; never extend a label into another key. The narrow
-accidental labels require actual raster inspection at minimum size.
+key has one `UiControlGeometry`. Its `bounds` is the rectangle above, and
+`value_bounds`/`track` are empty. Natural labels retain
+`label_bounds = {x+1, y+height−13, width−2, 11}` and their centered 9-unit
+single letter. The interface continuation's A34 readability correction gives
+accidentals `label_bounds = {x+1, y+height−22, width−2, 20}`. Center the canonical
+pitch letter and `#` separately at 9-unit Sans in 11-unit line boxes, with
+the second line beginning nine units below the first. Both glyphs fit the
+minimum ten-unit label width without shrinking; the glyph ink does not overlap.
+Keep the complete pitch name in semantic selection and focus captions. Labels
+remain inside their original keys, with unchanged hit bounds and selection.
+Actual minimum-size and 1400×820 raster inspection is required in both modes,
+including the clipped focus stroke above the taller accidental label region.
 
 Keep existing playing-key generation: its own panel has left inset8, top22,
 width−16 and height−30; 36 naturals and 25 accidentals per manual. Presets and

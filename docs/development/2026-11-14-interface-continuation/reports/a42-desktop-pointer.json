@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w07_a42_desktop_pointer",
+  "assignment": "A42",
+  "logical_wave": 7,
+  "recorded_at_utc": "2026-11-14T12:38:00.985212+00:00",
+  "head_at_inspection": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+  "outcome": "blocked_before_native_initialization",
+  "persistent_native_pointer_capture": "not_run",
+  "blocker": "Pinned statically linked SDL application has no X11 video backend; actual desktop launch returned x11 not available.",
+  "attempted_launches": 1,
+  "native_interaction_flows_executed": 0,
+  "native_application_frames_inspected": 0,
+  "executable": {
+    "path": "/workspace/scratch/601951e27dc3/a42-desktop-bin/hammond_standalone",
+    "sha256_before": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+    "sha256_after": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+    "bytes": 3707640
+  },
+  "source_identity": {
+    "a36_build_report_sha256": "6a985f1f21009cad8e5d21ac7e66a7357a921808c749bf64aea4eaa59be328bc",
+    "input_count": 327,
+    "changed_paths_before": [
+      ".github/workflows/standalone.yml",
+      "apps/standalone/native_tests/test_standalone_scaled_view.cpp",
+      "apps/standalone/native_tests/test_standalone_workspace_raster.cpp",
+      "apps/standalone/tests/test_standalone_workspace_acceptance.cpp"
+    ],
+    "changed_paths_after": [
+      ".github/workflows/standalone.yml",
+      "apps/standalone/native_tests/test_standalone_scaled_view.cpp",
+      "apps/standalone/native_tests/test_standalone_workspace_raster.cpp",
+      "apps/standalone/tests/test_standalone_workspace_acceptance.cpp"
+    ]
+  },
+  "display_observation": {
+    "method": "cua.getState first; documented Sky native APIs afterward",
+    "initial_existing_windows": 0,
+    "desktop_raster_width": 1365,
+    "desktop_raster_height": 1024,
+    "terminal_window_width": 817,
+    "terminal_window_height": 485,
+    "terminal_window_id": 10485763,
+    "terminal_title": "Terminal",
+    "terminal_display_visible": ":0",
+    "initial_scratch_executor_display": null,
+    "initial_scratch_executor_x11_socket_names": [],
+    "desktop_process": {
+      "display": ":0",
+      "wayland_display": null,
+      "hostname": "2b85fe4e0adc",
+      "x11_socket_names": [
+        "X0"
+      ],
+      "python": "3.13.5 (main, Aug 10 2026, 12:06:59) [GCC 14.2.0]"
+    },
+    "input_observations": [
+      "Sky type_text failed after actual click: text entry requires a focused application window",
+      "Documented Sky press_key successfully typed display/path checks and one launch"
+    ],
+    "inspected_pixels": [
+      "Terminal visibly printed DISPLAY=:0 and an existing executable path",
+      "Terminal visibly printed returncode 1, x11 not available, and Diagnostics written: False"
+    ],
+    "native_app_window_seen": false,
+    "cua_completion_summary_sent_once": true,
+    "unrelated_windows_changed": false,
+    "cleanup": "Application process exited 1; own diagnostic terminal left visible; no further CUA exploration after completion."
+  },
+  "requested_native": {
+    "video_driver": "x11",
+    "audio_driver": "dummy",
+    "initial_window": [
+      1280,
+      900
+    ],
+    "later_resize": [
+      960,
+      700
+    ],
+    "render_driver_override": null,
+    "physical_midi_port": null,
+    "runtime_video_driver": null,
+    "runtime_renderer": null,
+    "drawable_size": null,
+    "observed_scale": null,
+    "physical_gpu_qualified": false
+  },
+  "execution": {
+    "returncode": 1,
+    "elapsed_seconds": 0.006452463996538427,
+    "timed_out": false,
+    "stderr": "hammond_standalone: Cannot initialize video: x11 not available\n",
+    "native_diagnostics_written": false,
+    "native_screenshot_written": false,
+    "audio_device_started": false,
+    "replay_events_delivered": 0,
+    "capture_request_observed": false,
+    "capture_success_count": null,
+    "capture_failure_count": null,
+    "owned_note_release_observed": false,
+    "joined_unheld_session_observed": false
+  },
+  "capture_counter_limit": "Current diagnostics do not expose native capture success/failure counters; unavailable is not zero.",
+  "unexecuted_assertions": [
+    "Keyboard Upper note 60 remains independent of pointer Upper note 36.",
+    "Pointer original note 36 remains held through F6, F7, move, F4, resize, and off-window move until original Up.",
+    "Off-window Up releases note 36 without releasing note 60; later original keyboard Up releases note 60.",
+    "Navigation and geometry changes emit no controls or note transfers; exactly two note On and two note Off commands.",
+    "Successful native capture is established on a focused visible window, followed by released capture and joined unheld shutdown."
+  ],
+  "next_gate": "Build the identified product source with actual SDL X11 support, without replacing the source/input contract, then execute the retained bounded flow with visible focused window and capture-return evidence.",
+  "retained_prior_scope": {
+    "A18": "SDK-free model persistent ownership and release only",
+    "A21": "Dummy native capture-failure/CaptureLost cleanup only"
+  },
+  "limitations": [
+    "No persistent native pointer qualification",
+    "No physical mouse input claim: prepared replay injects SDL events",
+    "No hardware or software renderer ran; no physical GPU claim",
+    "No physical audio or MIDI, native accessibility, deadlines, reference equality, or specimen fidelity qualification"
+  ],
+  "artifacts": {
+    "docs/development/2026-11-14-interface-continuation/reports/a42-desktop-probe.py": {
+      "sha256": "387331e193f5575f8c06e4fe01e0a9e52d5653da1899b9f647214a4b022405e9",
+      "bytes": 4841
+    },
+    "docs/development/2026-11-14-interface-continuation/reports/a42-desktop-pointer.b3uireplay": {
+      "sha256": "cfd77ca03bd7170e26c427be205c0258da6579b633994e3e04c339c3407a09de",
+      "bytes": 323
+    },
+    "docs/development/2026-11-14-interface-continuation/reports/a42-desktop-launch.json": {
+      "sha256": "237277ee1fddea08547f653484e9dc33707165f1696db07b4c3a6b7446efa0c6",
+      "bytes": 5937
+    },
+    "docs/development/2026-11-14-interface-continuation/reports/a42-desktop-evidence/stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/development/2026-11-14-interface-continuation/reports/a42-desktop-evidence/stderr.txt": {
+      "sha256": "51a737508b502a2c3e353a0d0857155aebb6675f4fb3e5dac2ec4cc7e8e00af2",
+      "bytes": 63
+    }
+  }
+}

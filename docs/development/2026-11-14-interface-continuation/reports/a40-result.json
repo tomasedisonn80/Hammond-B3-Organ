@@ -1,0 +1,273 @@
+{
+  "schema": "interface-sdkfree-windows-qualification-v1",
+  "agent": "/root/w07_a40_sdkfree_windows_qualification",
+  "agent_number": 40,
+  "wave": 7,
+  "completed_utc": "2026-11-14T12:35:22.885650+00:00",
+  "result": "pass_local_sdkfree_and_focused_native_windows_hosted_pending",
+  "base_commit": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+  "source_digest": "0a988b9ad1519255ff98da3133e1b9ff670e6aacde138566aedc94359f901c2d",
+  "source_file_count": 335,
+  "source_manifest": "a40-source-freeze.json",
+  "qualified_overlay": {
+    "path": "a40-qualified-source-overlay.patch",
+    "sha256": "c8e79c45221a98dee1869ab108c0bd6dbfc48f958db0efdb934eab1f6713bf53"
+  },
+  "owned_source_changes": [
+    {
+      "path": "apps/standalone/tests/test_standalone_workspace_acceptance.cpp",
+      "before_sha256": "9e050bb3da027e2221659bc6c0e59d5a81bd096ad9ca899514647bce73c38505",
+      "after_sha256": "7f25ce7d5cf2adedafed3ab2eef5ff59c832d0ea5fc440021a1d6cee4df2eba0"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_scaled_view.cpp",
+      "before_sha256": "8d2fbaa61ba9ffba1c2056307e32a3c1de6848a0bd24bde1efdb594a02c38f42",
+      "after_sha256": "bbffea029ec96c3b611f0fa49ed1089fcf9c535ba7642c18992c87454539af99"
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_workspace_raster.cpp",
+      "before_sha256": "4013b25b53d15ee649804056d817e0936c8251fd5894656cef319e832bfe6c23",
+      "after_sha256": "077820d47d6cefec2544a248d25033439fac5d34e013401558df8fca80630e51"
+    }
+  ],
+  "repair": {
+    "explicit_resize_conversion_values": [
+      819,
+      820,
+      1399,
+      1400
+    ],
+    "native_environment_api": "SDL_getenv",
+    "production_changes": false,
+    "warning_suppression_changes": false,
+    "assertion_or_timeout_changes": false,
+    "exact_diff": "a40-repair-diff.patch",
+    "preservation_report": "a40-repair-preservation.json"
+  },
+  "original_windows_failure_report": "root-ui-ci-windows-failures.json",
+  "original_windows_failures": {
+    "commit": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+    "jobs": [
+      {
+        "job_id": 132445644167,
+        "run_id": 43594375882,
+        "name": "Release (Windows MSVC)",
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43594375882/job/132445644167",
+        "status": "completed",
+        "conclusion": "failure",
+        "decoded_log_sha256": "f851442ee5d3e0cbcfc2e70c68b45e133e8053dc836c3db3c71c82f1584d1bb0",
+        "complete_log_local_path": "/workspace/scratch/601951e27dc3/ui-ci-windows-core.log"
+      },
+      {
+        "job_id": 132445644432,
+        "run_id": 43594375938,
+        "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43594375938/job/132445644432",
+        "status": "completed",
+        "conclusion": "failure",
+        "decoded_log_sha256": "8441c3d9ffab7c8e225f84946565cfc6aacd8f9120f81cb834ba343f716b9947",
+        "complete_log_local_path": "/workspace/scratch/601951e27dc3/ui-ci-windows-native.log"
+      }
+    ]
+  },
+  "toolchain": {
+    "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+    "cmake": "cmake version 4.4.4",
+    "python": "Python 3.12.14"
+  },
+  "commands": {
+    "native-build": {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/601951e27dc3/build-native",
+        "--target",
+        "test_standalone_workspace_acceptance",
+        "test_standalone_scaled_view",
+        "test_standalone_workspace_raster",
+        "--parallel",
+        "3",
+        "--verbose"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T12:30:38.175667+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 13.209101374995953,
+      "log": "a40-native-build.txt",
+      "log_sha256": "100256fb4bc1b52a15488c15f30fb47ae381f14dadb86cf2b786ac715b005088"
+    },
+    "native-focused": {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/601951e27dc3/build-native",
+        "-R",
+        "^test_standalone_(workspace_acceptance|scaled_view|workspace_raster)$",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "1",
+        "-V"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T12:30:59.915742+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 29.759040673001437,
+      "log": "a40-native-focused.txt",
+      "log_sha256": "201e7b5ed26f1877b31758f15dc38b088d51549bfa8fa715d076eaa96a7b1a60"
+    },
+    "sdkfree-configure": {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+        "-B",
+        "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_TESTING=ON",
+        "-DHAMMOND_BUILD_STANDALONE=OFF",
+        "-DHAMMOND_BUILD_VST3=OFF",
+        "-DHAMMOND_ENABLE_MIDI=OFF",
+        "-DHAMMOND_ENABLE_SANITIZERS=OFF",
+        "-DHAMMOND_SDL2_ROOT=",
+        "-DHAMMOND_RTMIDI_ROOT=",
+        "-DHAMMOND_VST3_SDK_ROOT=",
+        "-DPython3_EXECUTABLE=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T12:31:33.597210+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.4731921950005926,
+      "log": "a40-sdkfree-configure.txt",
+      "log_sha256": "28df11b929d7be546219474a826f92c0fb6d2c3f211b90f71b2d1e476605ec43"
+    },
+    "sdkfree-build": {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+        "--parallel",
+        "3",
+        "--verbose"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T12:31:49.590470+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 61.73031957200146,
+      "log": "a40-sdkfree-build.txt",
+      "log_sha256": "c747a80b586f3ecf12839bcc0e50939ce787d2e61df287d6e534cac62dae0171"
+    },
+    "sdkfree-ctest": {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+        "--test-dir",
+        "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "3",
+        "--output-junit",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a40-sdkfree-ctest.xml"
+      ],
+      "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "started_utc": "2026-11-14T12:33:16.729928+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 85.0079956940026,
+      "log": "a40-sdkfree-ctest.txt",
+      "log_sha256": "0ea08e172fb052e01e99ad5e36863f06a1546152e2f58065c517cf0fcfe11ef3"
+    }
+  },
+  "native_focused": {
+    "selected": 3,
+    "passed": 3,
+    "ctest_real_seconds": 29.75,
+    "workspace_acceptance": {
+      "layouts": 42,
+      "hidden_rejections": 5740,
+      "focus_returns": 56,
+      "invalid_operations": 2041,
+      "session_ownership_runs": 14,
+      "closed_gestures": 63,
+      "shortcut_gates": 120
+    },
+    "workspace_raster": {
+      "frames": 150,
+      "held": 108,
+      "held_focus": 108,
+      "front_flat": 108,
+      "occlusion": 54,
+      "sloped_corners": 12,
+      "hidden_body": 12,
+      "failures": 0
+    },
+    "scaled_view": {
+      "frames": 168,
+      "renderer_states": 168,
+      "clipped_frames": 90,
+      "scaled_focus": 16,
+      "service_values": 56,
+      "service_lines": 58,
+      "failures": 0
+    },
+    "inputs": "a40-native-inputs.json"
+  },
+  "sdkfree_release": {
+    "discovered": 130,
+    "passed": 130,
+    "failed": 0,
+    "skipped": 0,
+    "ctest_real_seconds": 85.0,
+    "parallel": 3,
+    "no_tests_error": true,
+    "compile_entries": 101,
+    "external_sdk_compile_entries": 0,
+    "artifacts_and_profile": 75,
+    "inputs": "a40-sdkfree-inputs.json",
+    "discovery": "a40-sdkfree-discovery.json",
+    "junit": "a40-sdkfree-ctest.xml"
+  },
+  "post_gate": {
+    "schema": 1,
+    "captured_at_utc": "2026-11-14T12:35:22.885650+00:00",
+    "head": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+    "source_file_count": 335,
+    "source_digest": "0a988b9ad1519255ff98da3133e1b9ff670e6aacde138566aedc94359f901c2d",
+    "source_mismatches": [],
+    "protected_count": 114,
+    "protected_mismatches": [],
+    "sdkfree_binaries_and_profile_count": 75,
+    "sdkfree_binary_mismatches": [],
+    "workflow_sha256": "527d1cdb692cd5d837f0436ee68b2026878b10c5db1553459ca623060e4c1d34",
+    "junit": {
+      "root_attributes": {
+        "name": "Linux-c++",
+        "tests": "130",
+        "failures": "0",
+        "disabled": "0",
+        "skipped": "0",
+        "hostname": "2b85fe4e0adc",
+        "time": "84",
+        "timestamp": "2026-11-14T05:33:16"
+      },
+      "cases": 130,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "leases_released": [
+    "build-native",
+    "build-a13-sdkfree"
+  ],
+  "limits": [
+    "Local Linux GCC qualification; no MSVC or clang-cl is installed.",
+    "Original Windows jobs remain failures; root publication plus observed hosted rerun is required for closure.",
+    "Focused native software rendering does not qualify a display, audio/MIDI device, host deadline or physical model."
+  ],
+  "next_action": "Root publishes the frozen three-fixture repair; A48 observes both hosted Windows jobs at that exact revision and retains their result.",
+  "original_windows_failure_report_sha256": "a54343def1ea789594ab55df59c6e8b90004bf4029b59ba6d5ddc9c17c7b77a9",
+  "documents": [
+    "docs/reviews/INTERFACE_SDKFREE_QUALIFICATION.md",
+    "docs/development/2026-11-14-interface-continuation/session40-sdkfree-windows-qualification.md"
+  ]
+}

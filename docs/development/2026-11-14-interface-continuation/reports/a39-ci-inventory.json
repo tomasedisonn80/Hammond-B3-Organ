@@ -1,0 +1,361 @@
+{
+  "assignment": 39,
+  "base_commit": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+  "base_tree": "19e61b344fc8dfd3146588a6058994ff351d2cc5",
+  "build_input_wiring": {
+    "existing_expanded_suite_names": [
+      "test_standalone_drawing",
+      "test_standalone_preset_raster"
+    ],
+    "inspection_only": true,
+    "scaled_view": "Explicit native target appended to HAMMOND_STANDALONE_TEST_TARGETS",
+    "target": "hammond_standalone_test_inputs",
+    "workspace_continuity": "tests/test_*.cpp CONFIGURE_DEPENDS glob creates target, CTest registration and appends to HAMMOND_STANDALONE_TEST_TARGETS",
+    "workspace_raster": "Explicit native target appended to HAMMOND_STANDALONE_TEST_TARGETS"
+  },
+  "discovery": {
+    "all_count": 147,
+    "broad_filter": "^test_standalone_",
+    "command": [
+      "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/601951e27dc3/build-native",
+      "-C",
+      "Release",
+      "--show-only=json-v1"
+    ],
+    "configuration": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_HOME_DIRECTORY": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_BUILD_VST3": "OFF",
+      "HAMMOND_ENABLE_MIDI": "ON",
+      "HAMMOND_ENABLE_SANITIZERS": "OFF"
+    },
+    "duplicate_registered_names": [],
+    "missing_required_names": [],
+    "new_required_names": [
+      "test_standalone_scaled_view",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster"
+    ],
+    "new_standalone_names_since_a24": [
+      "test_standalone_scaled_view",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster"
+    ],
+    "removed_standalone_names_since_a24": [],
+    "report": "a39-ctest-discovery.json",
+    "required_after": 21,
+    "required_before": 18,
+    "required_names": [
+      "test_standalone_drawing",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author",
+      "test_standalone_install",
+      "test_standalone_midi_backend",
+      "test_standalone_midi_backend_quarantine",
+      "test_standalone_midi_cli",
+      "test_standalone_midi_concurrency",
+      "test_standalone_midi_discovery",
+      "test_standalone_midi_input",
+      "test_standalone_midi_replay",
+      "test_standalone_midi_session",
+      "test_standalone_native_midi_replay",
+      "test_standalone_projection",
+      "test_standalone_quad_drawing",
+      "test_standalone_scaled_view",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster",
+      "test_standalone_workspace_replay",
+      "test_standalone_workspaces_author"
+    ],
+    "standalone_count": 38,
+    "tests_executed": 0
+  },
+  "head_at_report": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+  "hosted": {
+    "a39_dispatched": false,
+    "aea58_jobs_observed": false,
+    "next_owners": [
+      "A48",
+      "A58"
+    ],
+    "old_passes_do_not_qualify_a39_or_aea58": true,
+    "platform_repair_commit": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+    "platform_repair_passed_jobs": 11,
+    "platform_repair_record": "platform-repair-hosted.json"
+  },
+  "limits": [
+    "CTest --show-only is configured-name discovery, not build readiness or a test pass.",
+    "Native CTest count 147 / standalone 38 belongs to the observed local MIDI-on Release build, not a prediction of another configured build.",
+    "No configure, build, application execution, package staging, CI dispatch, index update or commit performed.",
+    "A24/A29 runtime passes retain earlier overlay and executable identities; package name equality does not qualify later guide or executable bytes.",
+    "Hosted results, physical devices, native display/accessibility, deadlines, source-reference equality, signed release and measured fidelity remain separate gates."
+  ],
+  "observed_utc": "2026-11-14T12:28:21.946021+00:00",
+  "other_workflows": {
+    "ci_release": [
+      {
+        "compiler": "g++",
+        "os": "ubuntu-24.04",
+        "platform": "Linux GCC"
+      },
+      {
+        "compiler": "clang++",
+        "os": "macos-15",
+        "platform": "macOS AppleClang"
+      },
+      {
+        "compiler": "cl",
+        "os": "windows-2022",
+        "platform": "Windows MSVC"
+      }
+    ],
+    "ci_sanitizers_runner": "ubuntu-24.04",
+    "ci_tests": "Every registered test in the selected SDK-free preset; native standalone disabled by defaults.",
+    "native_vst3": [
+      {
+        "compiler": "g++",
+        "os": "ubuntu-24.04",
+        "platform": "Linux GCC"
+      },
+      {
+        "compiler": "clang++",
+        "os": "macos-15",
+        "platform": "macOS AppleClang"
+      },
+      {
+        "compiler": "cl",
+        "os": "windows-2022",
+        "platform": "Windows MSVC x64"
+      }
+    ],
+    "native_vst3_is_separate_from_standalone": true,
+    "vst3_filter": "^(hammond_vst3_validator|test_native_)"
+  },
+  "package": {
+    "a24_inventory_names_match": true,
+    "a29_actual_disabled_inventory_names_match": true,
+    "common_payload_files": 15,
+    "common_payload_paths": [
+      "bin/hammond_standalone[.exe]",
+      "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md",
+      "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt",
+      "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt",
+      "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md",
+      "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md",
+      "share/hammond-b3-organ/standalone/STANDALONE_APP.md",
+      "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md",
+      "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md",
+      "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md",
+      "share/hammond-b3-organ/standalone/atlas-reference.json",
+      "share/hammond-b3-organ/standalone/font-source-manifest.json",
+      "share/hammond-b3-organ/standalone/reference-source-manifest.json",
+      "share/hammond-b3-organ/standalone/sdl2-lock.json",
+      "share/hammond-b3-organ/standalone/standalone-capabilities.json"
+    ],
+    "guides_and_notice": [
+      {
+        "bytes": 12330,
+        "in_all_three_inventories": true,
+        "name": "STANDALONE_INSTALL.md",
+        "sha256": "7d121ce847ecb90dccbe01b7a3b9bd0917c29ebf0c13955c5c442efa1117aa7c",
+        "source": "docs/STANDALONE_INSTALL.md"
+      },
+      {
+        "bytes": 26725,
+        "in_all_three_inventories": true,
+        "name": "STANDALONE_APP.md",
+        "sha256": "1b811ae61e58e0429d77942f70e189c402ce13082a49f183aa5204d342a14262",
+        "source": "docs/STANDALONE_APP.md"
+      },
+      {
+        "bytes": 9182,
+        "in_all_three_inventories": true,
+        "name": "STANDALONE_MODEL.md",
+        "sha256": "4a55fa2437c3b988f8ecfa347ea8122d72002504b3bde3420d128783215f31f3",
+        "source": "docs/STANDALONE_MODEL.md"
+      },
+      {
+        "bytes": 24106,
+        "in_all_three_inventories": true,
+        "name": "MIDI_UI_RUNBOOK.md",
+        "sha256": "bc088e41621a0fa5363b3206e1ca71bbf4518a0492f46d842c415ab116bb779d",
+        "source": "docs/MIDI_UI_RUNBOOK.md"
+      },
+      {
+        "bytes": 17137,
+        "in_all_three_inventories": true,
+        "name": "PRESET_RUNBOOK.md",
+        "sha256": "aab73b054b7cb90fb140fea0257c36c3752c33b3032cc6899d7c5b398a209361",
+        "source": "docs/PRESET_RUNBOOK.md"
+      },
+      {
+        "bytes": 17618,
+        "in_all_three_inventories": true,
+        "name": "INTERFACE_RUNBOOK.md",
+        "sha256": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0",
+        "source": "docs/INTERFACE_RUNBOOK.md"
+      },
+      {
+        "bytes": 21983,
+        "in_all_three_inventories": true,
+        "name": "THIRD_PARTY_NOTICES.md",
+        "sha256": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb",
+        "source": "THIRD_PARTY_NOTICES.md"
+      }
+    ],
+    "historical_a24_on_execution": "a24-setup-package.json",
+    "historical_a29_off_execution": "a29-midi-off-relocation.json",
+    "independent_inventories_agree": [
+      "workflow expected mapping",
+      "InstallStandalone metadata names",
+      "test_standalone_install SOURCE_FILES/MIDI_FILES"
+    ],
+    "licenses": [
+      {
+        "bytes": 884,
+        "locked_identity_matches": true,
+        "midi_on_only": false,
+        "name": "LICENSE-SDL2.txt",
+        "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+        "source": "/workspace/scratch/7ffc2842608b/SDL2/LICENSE.txt"
+      },
+      {
+        "bytes": 2345,
+        "locked_identity_matches": true,
+        "midi_on_only": false,
+        "name": "LICENSE-DejaVu.txt",
+        "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6",
+        "source": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/assets/standalone/fonts/LICENSE-DejaVu.txt"
+      },
+      {
+        "bytes": 1349,
+        "locked_identity_matches": true,
+        "midi_on_only": true,
+        "name": "LICENSE-RtMidi.txt",
+        "sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364",
+        "source": "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_rtmidi-prepared/LICENSE"
+      }
+    ],
+    "metadata_common": [
+      "INTERFACE_RUNBOOK.md",
+      "LICENSE-DejaVu.txt",
+      "LICENSE-SDL2.txt",
+      "MIDI_UI_RUNBOOK.md",
+      "PRESET_RUNBOOK.md",
+      "STANDALONE_APP.md",
+      "STANDALONE_INSTALL.md",
+      "STANDALONE_MODEL.md",
+      "THIRD_PARTY_NOTICES.md",
+      "atlas-reference.json",
+      "font-source-manifest.json",
+      "reference-source-manifest.json",
+      "sdl2-lock.json",
+      "standalone-capabilities.json"
+    ],
+    "metadata_midi_additional": [
+      "LICENSE-RtMidi.txt",
+      "rtmidi-coremidi-zero-init.patch",
+      "rtmidi-lock.json",
+      "rtmidi-prepared-source.json"
+    ],
+    "midi_additional_paths": [
+      "share/hammond-b3-organ/standalone/LICENSE-RtMidi.txt",
+      "share/hammond-b3-organ/standalone/rtmidi-coremidi-zero-init.patch",
+      "share/hammond-b3-organ/standalone/rtmidi-lock.json",
+      "share/hammond-b3-organ/standalone/rtmidi-prepared-source.json"
+    ],
+    "midi_enabled_payload_files": 19,
+    "new_package_execution_performed": false
+  },
+  "result": "pass_static_inventory_and_discovery",
+  "runtime": {
+    "ctest": "ctest version 4.4.4",
+    "python": "3.12.14",
+    "pyyaml": "6.0.3"
+  },
+  "schema_version": 1,
+  "source_sha256": {
+    ".github/workflows/ci.yml": "4835cbd72231c81c082c6545bde58e1514843626ffe4c9b88078c380f79dc87e",
+    ".github/workflows/native-vst3.yml": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+    ".github/workflows/standalone.yml": "527d1cdb692cd5d837f0436ee68b2026878b10c5db1553459ca623060e4c1d34",
+    "CMakeLists.txt": "1c569b0dc5d5afbe5b99ff8529d457ca736ad8e82a36105336badbd4e9841e53",
+    "CMakePresets.json": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+    "apps/standalone/CMakeLists.txt": "6661ddf975af37b0b8720140afa857b6537c069d07f388ce0e8524befed97ffe",
+    "apps/standalone/native_tests/test_standalone_install.py": "00b13d32ace65ec160d9709fb838ba4fcd1b4a17c32de451b3e021ef088f3bb1",
+    "cmake/InstallStandalone.cmake": "079543943e5259a3d3375521015716cd66dd99d5452a21df9af39de8a8382091"
+  },
+  "standalone_matrix": [
+    {
+      "c_compiler": "gcc",
+      "cxx_compiler": "g++",
+      "midi": "ON",
+      "midi_backend": "ALSA",
+      "os": "ubuntu-24.04",
+      "platform": "Linux GCC"
+    },
+    {
+      "c_compiler": "clang",
+      "cxx_compiler": "clang++",
+      "midi": "ON",
+      "midi_backend": "CoreMIDI",
+      "os": "macos-15",
+      "platform": "macOS AppleClang"
+    },
+    {
+      "c_compiler": "cl",
+      "cxx_compiler": "cl",
+      "midi": "ON",
+      "midi_backend": "WinMM",
+      "os": "windows-2022",
+      "platform": "Windows MSVC x64"
+    },
+    {
+      "c_compiler": "gcc",
+      "cxx_compiler": "g++",
+      "midi": "OFF",
+      "midi_backend": "unavailable",
+      "os": "ubuntu-24.04",
+      "platform": "Linux GCC"
+    }
+  ],
+  "syntax": [
+    {
+      "bash_run_steps_parsed": 9,
+      "path": ".github/workflows/ci.yml",
+      "python_blocks_parsed": 0,
+      "sha256": "4835cbd72231c81c082c6545bde58e1514843626ffe4c9b88078c380f79dc87e",
+      "yaml_parsed": true
+    },
+    {
+      "bash_run_steps_parsed": 7,
+      "path": ".github/workflows/native-vst3.yml",
+      "python_blocks_parsed": 2,
+      "sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+      "yaml_parsed": true
+    },
+    {
+      "bash_run_steps_parsed": 12,
+      "path": ".github/workflows/standalone.yml",
+      "python_blocks_parsed": 6,
+      "sha256": "527d1cdb692cd5d837f0436ee68b2026878b10c5db1553459ca623060e4c1d34",
+      "yaml_parsed": true
+    }
+  ],
+  "unchanged_gates": [
+    "Build complete hammond_standalone_test_inputs before discovery and tests",
+    "Required-name subset check and --no-tests=error",
+    "Single-process standalone CTest execution and existing timeouts",
+    "All-input configured metadata SHA-256 and required nonempty ordinary files",
+    "Exact 19/15-file sets, exact directories, no symlinks/reparse/special payload",
+    "Byte and mode checks before/after relocation and smoke and inside archive",
+    "Always-upload standalone diagnostics, success-only package artifact",
+    "Source/dependency re-verification and capability/backend provenance"
+  ],
+  "wave": 7,
+  "worker": "/root/w07_a39_ci_inventory",
+  "workflow_only_change": "Required-name literal adds precisely the three implemented suites; remainder byte-identical to base."
+}

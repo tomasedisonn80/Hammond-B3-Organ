@@ -7,18 +7,17 @@ and [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md).
 The complete atlas review, workspace/geometry/inspection implementation, actual
 packages, protected musical continuity and platform repairs are retained.
 
-1. Finish A34's readable stacked accidental preset labels and bounded title
-   centering, preserving all musical identities, hit rectangles and focus ink.
-   Correct A36's observed stale Load waiting sentence using the existing dynamic
-   pending/snapshot indicators. Keep original failing evidence.
-2. Qualify the resulting complete source: final native operator flow, CI inventory,
-   SDK-free/sanitizer/VST3 boundaries, real display/pointer behavior where available,
-   package relocation and an independently reviewed final native gallery. Preserve
-   capability and physical-evidence limits.
+1. Publish completed label/title/status and strict Windows fixture repairs; retain
+   their original failures and source identities. Observe hosted Windows results
+   on the repaired revision, without substituting Linux success.
+2. Close the exact remaining qualification: A41's separate native sanitizer
+   measurements, hosted leak runtime, final on/off package and actual gallery,
+   final coherent source and VST3 boundary. The local SDL lacks X11/Wayland;
+   qualify a backend-capable build before claiming actual pointer capture.
 3. Complete all sixty actual assignments and their strict record, refresh the
-   README/setup/status/handoff, publish completed source to main with a fresh
-   expected-head guard, and observe the resulting hosted jobs. The first full UI
-   gate's 146/147 result and its subsequent targeted repairs remain separate facts.
+   README/setup/status/handoff, and publish completed work to main with a fresh
+   expected-head guard. The first UI gate's 146/147 result, later repairs and
+   original sanitizer timeouts remain separate facts.
 
 Keep 47 parameter identities, saved-state compatibility, nominal models and all
 other tracks unchanged. The [full M0–M9 plan](PLAN.md) retains physical capture,

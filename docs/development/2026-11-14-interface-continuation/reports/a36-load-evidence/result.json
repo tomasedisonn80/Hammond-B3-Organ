@@ -1,0 +1,295 @@
+{
+  "agent": "A36",
+  "kind": "single live-Load operator observation",
+  "published_base_at_run": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "qualification_scope": "Working source recorded by A36 build identities; no new inspection-model gate",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a36-load-observation.py",
+    "--executable",
+    "/workspace/scratch/601951e27dc3/a36-status-bin/hammond_standalone",
+    "--expected-sha256",
+    "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+    "--output",
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence"
+  ],
+  "command_cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "executable": "/workspace/scratch/601951e27dc3/a36-status-bin/hammond_standalone",
+  "executable_sha256_before": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+  "python": "3.12.14",
+  "pillow": "13.0.0",
+  "source_and_input_sha256_before": {
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-observation.py": "123fa0719144e3cd3a33c46ca0734c179dc7fa36d310bf3b895c9a318ab10dfe",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-journey.py": "4d32408114f8904ffd2e53e6348893eeed2b153e7428f753de79df23d3cab296",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "1cdaa5a6669b79ed19f26c170ef77a0181162a18649d0d81deed7f53f5a9fb8e",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "482f2d7b9075358782e966c12c7117c5fd1bd5d10a52682cffa3c0d4c459e891",
+    "docs/INTERFACE_RUNBOOK.md": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0",
+    "docs/INTERFACE_INSPECTION_CONTRACT.md": "cc506683e10e3c6b1bd8fdd9851c70e20fab0797057d9be929ccfeb8226d4608",
+    "apps/standalone/main.cpp": "3c3ed7e237830e6a11176ca2b6e39e85fa007ac51b8044aee6aca6110fec66d3",
+    "apps/standalone/InstrumentView.cpp": "920f58ca287eca607632698c52a1e1fa819eb623a0be4828f082b2c6b0701912",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/UiModel.cpp": "c3aa5756e0edac899d0d608cb451695926d970eedcfaa247948c7ce699077258",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/input.b3uireplay": "7048be1ae12f01124a54132e5530b1fcbe3fdc50df54e7c068c93df6e5b6f756",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/initial.b3controls": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/controls.b3controls": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/diagnostics.json": "5ac48ef252627486fcea8cc3afc4362c2eb5638d60bac0341b49911492aabffa",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/frame.png": "c600ecd937baead0253adf3f153b6e87d45b343cd789a2a681b880e0579fc26d",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/process.json": "23e70f93e41ddd56c259e4255d47a1f40a589eb3e1338b611f4983a415006784"
+  },
+  "runs": [
+    {
+      "name": "02-edit-save-live-load",
+      "command": [
+        "/workspace/scratch/601951e27dc3/a36-status-bin/hammond_standalone",
+        "--state",
+        "/tmp/a30-02-edit-save-live-load-kxxgkcwm/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-02-edit-save-live-load-kxxgkcwm/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-02-edit-save-live-load-kxxgkcwm/diagnostics.json",
+        "--screenshot",
+        "/tmp/a30-02-edit-save-live-load-kxxgkcwm/frame.bmp"
+      ],
+      "cwd": "/tmp/a30-02-edit-save-live-load-kxxgkcwm",
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "timeout_seconds": 9,
+      "executable_sha256_before": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+      "returncode": 0,
+      "elapsed_seconds": 3.2290706839994527,
+      "capture": {
+        "png": "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/frame.png",
+        "bmp_sha256": "8166d63c0b048500ed1916fd98554d0dade9d1e61c1ba27c34a2424ec5b3b2da",
+        "png_sha256": "27ed3d5c5652e61bdce6c5b2bc8fbfdb21007cc299d2b3ff1df08e2297a71089",
+        "decoded_mode": "RGBA",
+        "size": [
+          960,
+          700
+        ],
+        "decoded_pixels_sha256": "4705c71b5d992774715702f8281909c413eec1231079a7d881ffd238bc733e67",
+        "decoded_pixels_equal": true
+      },
+      "native_result": "passed",
+      "state_existed_at_start": true,
+      "state_exists_after": true,
+      "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+      "painted_views": [
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "service",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          960,
+          700
+        ],
+        [
+          "service",
+          "flat",
+          "none",
+          960,
+          700
+        ]
+      ],
+      "note_on_commands": 1,
+      "note_off_commands": 1,
+      "device_starts": 1,
+      "audio_callbacks": 288,
+      "held_before_shutdown": [
+        [],
+        [],
+        []
+      ],
+      "executable_sha256_after": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2"
+    }
+  ],
+  "failure": null,
+  "operator_assertions_completed": true,
+  "observation": {
+    "load_requested_at_ms": 2100,
+    "first_restored_acknowledgment": {
+      "elapsed_ms": 2189,
+      "last_submitted_sequence": 7,
+      "manual_notes": [
+        [
+          60
+        ],
+        []
+      ],
+      "pedal_ids": [],
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              8,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            [
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              3,
+              5,
+              7,
+              0,
+              2,
+              4,
+              6,
+              8
+            ],
+            [
+              8,
+              6,
+              4,
+              2,
+              0,
+              7,
+              5,
+              3,
+              1
+            ]
+          ]
+        ],
+        "selected_banks": [
+          0,
+          1
+        ],
+        "fixed_registrations": [
+          6,
+          8
+        ],
+        "preset_selections": [
+          6,
+          8
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.375,
+        "pedal_drawbars": [
+          2,
+          7
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 1,
+          "volume": 1,
+          "decay": 1
+        }
+      },
+      "resolved_sequence": 7,
+      "last_applied_sequence": 7
+    },
+    "screenshot": {
+      "elapsed_ms": 3162,
+      "rendered_image": 91,
+      "workspace": "service",
+      "presentation": "flat",
+      "overlay": "none",
+      "window_width": 960,
+      "window_height": 700,
+      "inspection": {
+        "snapshot_available": true,
+        "snapshot_read_succeeded": true,
+        "snapshot_state": "current",
+        "controls_pending": false,
+        "frame_clock": 146432,
+        "publication_revision": 576
+      }
+    },
+    "note": "The PNG is reviewed separately for the displayed static status. Diagnostics do not record that string.",
+    "status_visual_review": "pending",
+    "original_a30_evidence_preserved": true,
+    "exact_original_saved_bytes": true,
+    "retained_status_expiry_ms_from_load": 6000
+  },
+  "executable_sha256_after": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+  "source_and_input_sha256_after": {
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-observation.py": "123fa0719144e3cd3a33c46ca0734c179dc7fa36d310bf3b895c9a318ab10dfe",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-journey.py": "4d32408114f8904ffd2e53e6348893eeed2b153e7428f753de79df23d3cab296",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "1cdaa5a6669b79ed19f26c170ef77a0181162a18649d0d81deed7f53f5a9fb8e",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "482f2d7b9075358782e966c12c7117c5fd1bd5d10a52682cffa3c0d4c459e891",
+    "docs/INTERFACE_RUNBOOK.md": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0",
+    "docs/INTERFACE_INSPECTION_CONTRACT.md": "cc506683e10e3c6b1bd8fdd9851c70e20fab0797057d9be929ccfeb8226d4608",
+    "apps/standalone/main.cpp": "3c3ed7e237830e6a11176ca2b6e39e85fa007ac51b8044aee6aca6110fec66d3",
+    "apps/standalone/InstrumentView.cpp": "920f58ca287eca607632698c52a1e1fa819eb623a0be4828f082b2c6b0701912",
+    "apps/standalone/InspectionModel.cpp": "59df4b36e7b565a6f07f2efee63634953b55112b24927292d2f884ddddda8645",
+    "apps/standalone/UiModel.cpp": "c3aa5756e0edac899d0d608cb451695926d970eedcfaa247948c7ce699077258",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/input.b3uireplay": "7048be1ae12f01124a54132e5530b1fcbe3fdc50df54e7c068c93df6e5b6f756",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/initial.b3controls": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/controls.b3controls": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/diagnostics.json": "5ac48ef252627486fcea8cc3afc4362c2eb5638d60bac0341b49911492aabffa",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/frame.png": "c600ecd937baead0253adf3f153b6e87d45b343cd789a2a681b880e0579fc26d",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-evidence/02-edit-save-live-load/process.json": "23e70f93e41ddd56c259e4255d47a1f40a589eb3e1338b611f4983a415006784"
+  },
+  "source_inputs_unchanged_during_run": true,
+  "executable_unchanged_during_run": true,
+  "output_sha256": {
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/controls.b3controls": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/diagnostics.json": "399331ebfd0ca6b6963c03ab962ddb5d2fb49193eb1209986f41083f471a4993",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/frame.png": "27ed3d5c5652e61bdce6c5b2bc8fbfdb21007cc299d2b3ff1df08e2297a71089",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/initial.b3controls": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/input.b3uireplay": "7048be1ae12f01124a54132e5530b1fcbe3fdc50df54e7c068c93df6e5b6f756",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/process.json": "4076040653635d1ba1d49cb500c4849c73331298c1d2c5366a0ce9d7d33845bb",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

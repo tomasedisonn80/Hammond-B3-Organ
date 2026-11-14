@@ -1,0 +1,13 @@
+diff --git a/apps/standalone/main.cpp b/apps/standalone/main.cpp
+index 70de297..c17a288 100644
+--- a/apps/standalone/main.cpp
++++ b/apps/standalone/main.cpp
+@@ -1797,7 +1797,7 @@ private:
+             message("State read. Open AUDIO settings to apply these controls.");
+             return;
+         }
+-        if (dispatch(ui_.load_controls(candidate))) message("Loaded controls; waiting for the audio callback.");
++        if (dispatch(ui_.load_controls(candidate))) message("Loaded saved controls.");
+     }
+ 
+     void release_capture() noexcept {

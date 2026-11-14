@@ -325,10 +325,11 @@ void add_preset_keys(UiLayout& layout, Manual manual, UiRect panel) noexcept {
             bounds = {left, panel.y, right - left, panel.height};
             ++natural;
         }
+        const float label_height = accidental(index) ? 20.0F : 11.0F;
         layout.controls[layout.control_count++] = {
             {UiControlKind::PresetKey, manual, DrawbarBank::A, static_cast<std::uint8_t>(index)},
-            bounds, {bounds.x + 1.0F, bounds.y + bounds.height - 13.0F,
-                     bounds.width - 2.0F, 11.0F}, {}, {}};
+            bounds, {bounds.x + 1.0F, bounds.y + bounds.height - label_height - 2.0F,
+                     bounds.width - 2.0F, label_height}, {}, {}};
     }
 }
 

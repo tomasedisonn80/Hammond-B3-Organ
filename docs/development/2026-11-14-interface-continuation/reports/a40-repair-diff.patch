@@ -1,0 +1,50 @@
+diff --git a/apps/standalone/native_tests/test_standalone_scaled_view.cpp b/apps/standalone/native_tests/test_standalone_scaled_view.cpp
+index 75feeb5..d1bb81d 100644
+--- a/apps/standalone/native_tests/test_standalone_scaled_view.cpp
++++ b/apps/standalone/native_tests/test_standalone_scaled_view.cpp
+@@ -503,7 +503,7 @@ int main(int argc, char** argv) {
+     SDL_SetMainReady();
+     try {
+         require(argc == 1 || argc == 2, "optional argument is a fresh capture directory");
+-        const char* capture_environment = std::getenv("HAMMOND_SCALED_VIEW_CAPTURE_DIR");
++        const char* capture_environment = SDL_getenv("HAMMOND_SCALED_VIEW_CAPTURE_DIR");
+         const std::filesystem::path captures = argc == 2 ? std::filesystem::path(argv[1]) :
+             capture_environment != nullptr ? std::filesystem::path(capture_environment) : std::filesystem::path{};
+         if (!captures.empty()) require(std::filesystem::create_directory(captures), "create fresh proof directory");
+diff --git a/apps/standalone/native_tests/test_standalone_workspace_raster.cpp b/apps/standalone/native_tests/test_standalone_workspace_raster.cpp
+index 4cc5323..070fbd4 100644
+--- a/apps/standalone/native_tests/test_standalone_workspace_raster.cpp
++++ b/apps/standalone/native_tests/test_standalone_workspace_raster.cpp
+@@ -436,7 +436,7 @@ int main(int argc, char** argv) {
+     const auto started = std::chrono::steady_clock::now();
+     try {
+         require(argc == 1 || argc == 2, "usage: test_standalone_workspace_raster [capture-directory]");
+-        const char* capture_option = argc == 2 ? argv[1] : std::getenv("HAMMOND_WORKSPACE_RASTER_CAPTURE_DIR");
++        const char* capture_option = argc == 2 ? argv[1] : SDL_getenv("HAMMOND_WORKSPACE_RASTER_CAPTURE_DIR");
+         const std::filesystem::path capture_directory = capture_option == nullptr ? "" : capture_option;
+         if (!capture_directory.empty()) std::filesystem::create_directories(capture_directory);
+         require(SDL_Init(0) == 0, "initialize SDL without hardware subsystems");
+diff --git a/apps/standalone/tests/test_standalone_workspace_acceptance.cpp b/apps/standalone/tests/test_standalone_workspace_acceptance.cpp
+index 108d25a..48b70d7 100644
+--- a/apps/standalone/tests/test_standalone_workspace_acceptance.cpp
++++ b/apps/standalone/tests/test_standalone_workspace_acceptance.cpp
+@@ -305,7 +305,8 @@ void outgoing_memory_and_return() {
+         CHECK(model.pointer({UiPointerKind::Down, center(geometry(model, common[9]).bounds)}).count == 0);
+         CHECK(model.pointer({UiPointerKind::Up, {}}).count == 0);
+         CHECK(model.view().focus == service_focus && model.view().workspace_focus == memories_before);
+-        CHECK(model.resize(size.x < 1400 ? 1400 : 1399, size.y < 820 ? 820 : 819));
++        CHECK(model.resize(static_cast<float>(size.x < 1400 ? 1400 : 1399),
++                           static_cast<float>(size.y < 820 ? 820 : 819)));
+         CHECK(model.view().focus == service_focus && model.view().workspace_focus == memories_before);
+         CHECK(tap(model, UiKey::F4).count == 0 && model.view().focus == remembered);
+         CHECK(model.view().edited_banks == play_view.edited_banks);
+@@ -533,7 +534,8 @@ void closed_gestures_require_new_down() {
+         const auto desired = model.view();
+         if (transition == 0) CHECK(model.set_workspace(UiWorkspace::Rotary));
+         if (transition == 1) CHECK(model.set_presentation(UiPresentation::Dimensional));
+-        if (transition == 2) CHECK(model.resize(size.x < 1400 ? 1400 : 1399, size.y < 820 ? 820 : 819));
++        if (transition == 2) CHECK(model.resize(static_cast<float>(size.x < 1400 ? 1400 : 1399),
++                                              static_cast<float>(size.y < 820 ? 820 : 819)));
+         CHECK(model.set_workspace(UiWorkspace::Play));
+         CHECK(model.activate({UiControlKind::EditBank, Manual::Upper, DrawbarBank::B}).count == 0);
+         for (const auto point : {low, high, playing_point(model, manual_key(Manual::Lower, 48)),

@@ -1,0 +1,409 @@
+diff --git a/.github/workflows/standalone.yml b/.github/workflows/standalone.yml
+index d861eac..3d44252 100644
+--- a/.github/workflows/standalone.yml
++++ b/.github/workflows/standalone.yml
+@@ -386,7 +386,8 @@ jobs:
+                       "test_standalone_workspaces_author", "test_standalone_workspace_acceptance",
+                       "test_standalone_projection", "test_standalone_quad_drawing",
+                       "test_standalone_inspection_author", "test_standalone_inspection_acceptance",
+-                      "test_standalone_workspace_replay"}
++                      "test_standalone_workspace_replay", "test_standalone_workspace_raster",
++                      "test_standalone_workspace_continuity", "test_standalone_scaled_view"}
+           assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
+           print("Discovered", len(names), "standalone tests, including required MIDI, workspace, inspection and drawing gates.", flush=True)
+           PY
+diff --git a/apps/standalone/InstrumentView.cpp b/apps/standalone/InstrumentView.cpp
+index 61d30d0..b54aba0 100644
+--- a/apps/standalone/InstrumentView.cpp
++++ b/apps/standalone/InstrumentView.cpp
+@@ -341,6 +341,22 @@ void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
+             bounds.width - 2.0F * amount, bounds.height * 0.38F - 2.0F * amount};
+ }
+ 
++void paint_preset_label(Drawing& drawing, const UiControlGeometry& geometry) {
++    const auto label = preset_selection_label(static_cast<PresetSelection>(geometry.id.index));
++    const auto& bounds = geometry.label_bounds;
++    if (preset_accidental(geometry.id.index)) {
++        // The narrow ivory caps retain both characters at full size. Two
++        // 11-unit line boxes at a 9-unit pitch have separated glyph ink while
++        // leaving the top focus stroke visible even at the shortest breakpoint.
++        centered(drawing, label.substr(0, 1), {bounds.x, bounds.y, bounds.width, 11.0F},
++                 9.0F, {37, 29, 20}, TextFace::Sans, 0.0F);
++        centered(drawing, label.substr(1), {bounds.x, bounds.y + 9.0F, bounds.width, 11.0F},
++                 9.0F, {37, 29, 20}, TextFace::Sans, 0.0F);
++        return;
++    }
++    centered(drawing, label, bounds, 9.0F, kUiIvory, TextFace::Sans, 0.0F);
++}
++
+ void paint_preset_key(Drawing& drawing, const UiControlGeometry& geometry, bool selected, bool flat) {
+     const auto& bounds = geometry.bounds;
+     const bool ivory = preset_accidental(geometry.id.index);
+@@ -351,9 +367,7 @@ void paint_preset_key(Drawing& drawing, const UiControlGeometry& geometry, bool
+         drawing.outline(bounds, {6, 7, 6});
+         if (selected) drawing.rect({bounds.x + 2.0F, bounds.y + 3.0F,
+             std::max(1.0F, bounds.width - 4.0F), 2.0F}, kUiBrass);
+-        centered(drawing, preset_selection_label(static_cast<PresetSelection>(geometry.id.index)),
+-                 geometry.label_bounds, 9.0F, ivory ? UiColor{37, 29, 20} : kUiIvory,
+-                 TextFace::Sans, 0.0F);
++        paint_preset_label(drawing, geometry);
+         return;
+     }
+     const float recess = selected ? 2.0F : 0.0F;
+@@ -379,9 +393,7 @@ void paint_preset_key(Drawing& drawing, const UiControlGeometry& geometry, bool
+         drawing.rect({face.x + 1.0F, face.y + 3.0F,
+                       std::max(1.0F, face.width - 2.0F), 2.0F}, kUiBrass);
+     }
+-    centered(drawing, preset_selection_label(static_cast<PresetSelection>(geometry.id.index)),
+-             geometry.label_bounds, 9.0F, ivory ? UiColor{37, 29, 20} : kUiIvory,
+-             TextFace::Sans, 0.0F);
++    paint_preset_label(drawing, geometry);
+ }
+ 
+ void paint_preset_focus(Drawing& drawing, const UiControlGeometry& geometry) {
+@@ -998,7 +1010,7 @@ void paint_header(Drawing& drawing, const UiLayout& layout) {
+     const float natural_width = drawing.text_width(title, size, TextFace::Serif);
+     if (natural_width > title_right - title_left) size *= (title_right - title_left) / natural_width;
+     const float width = drawing.text_width(title, size, TextFace::Serif);
+-    const float desired_x = title_left + (title_right - title_left - width) / 2.0F;
++    const float desired_x = (layout.width - width) / 2.0F;
+     const float x = std::clamp(desired_x, title_left, std::max(title_left, title_right - width));
+     const float y = layout.header.y + (layout.show_cabinet ? 4.0F : 8.0F);
+     drawing.text(title, x + 1.0F, y + 2.0F, size, {4, 5, 4}, TextFace::Serif);
+diff --git a/apps/standalone/UiModel.cpp b/apps/standalone/UiModel.cpp
+index 0f64893..72d804a 100644
+--- a/apps/standalone/UiModel.cpp
++++ b/apps/standalone/UiModel.cpp
+@@ -325,10 +325,11 @@ void add_preset_keys(UiLayout& layout, Manual manual, UiRect panel) noexcept {
+             bounds = {left, panel.y, right - left, panel.height};
+             ++natural;
+         }
++        const float label_height = accidental(index) ? 20.0F : 11.0F;
+         layout.controls[layout.control_count++] = {
+             {UiControlKind::PresetKey, manual, DrawbarBank::A, static_cast<std::uint8_t>(index)},
+-            bounds, {bounds.x + 1.0F, bounds.y + bounds.height - 13.0F,
+-                     bounds.width - 2.0F, 11.0F}, {}, {}};
++            bounds, {bounds.x + 1.0F, bounds.y + bounds.height - label_height - 2.0F,
++                     bounds.width - 2.0F, label_height}, {}, {}};
+     }
+ }
+ 
+diff --git a/apps/standalone/main.cpp b/apps/standalone/main.cpp
+index 70de297..c17a288 100644
+--- a/apps/standalone/main.cpp
++++ b/apps/standalone/main.cpp
+@@ -1797,7 +1797,7 @@ private:
+             message("State read. Open AUDIO settings to apply these controls.");
+             return;
+         }
+-        if (dispatch(ui_.load_controls(candidate))) message("Loaded controls; waiting for the audio callback.");
++        if (dispatch(ui_.load_controls(candidate))) message("Loaded saved controls.");
+     }
+ 
+     void release_capture() noexcept {
+diff --git a/apps/standalone/native_tests/test_standalone_preset_raster.cpp b/apps/standalone/native_tests/test_standalone_preset_raster.cpp
+index 6a2dd34..80f57f9 100644
+--- a/apps/standalone/native_tests/test_standalone_preset_raster.cpp
++++ b/apps/standalone/native_tests/test_standalone_preset_raster.cpp
+@@ -21,6 +21,7 @@ using namespace hammond::standalone;
+ 
+ std::size_t failures = 0;
+ std::size_t label_cases = 0;
++std::size_t readable_glyph_cases = 0;
+ std::size_t isolation_cases = 0;
+ std::size_t state_cases = 0;
+ 
+@@ -121,9 +122,7 @@ InkComparison compare_pitch_ink(const Frame& before, const Frame& after,
+     return result;
+ }
+ 
+-Frame render(Drawing& drawing, const UiModel& model, int width, int height) {
+-    InstrumentViewInfo info;
+-    paint_instrument(drawing, model, info);
++Frame read_frame(Drawing& drawing, int width, int height) {
+     SDL_RenderPresent(drawing.renderer());
+     Frame frame{width, height, std::vector<std::uint8_t>(
+         static_cast<std::size_t>(width) * static_cast<std::size_t>(height) * 4)};
+@@ -132,9 +131,16 @@ Frame render(Drawing& drawing, const UiModel& model, int width, int height) {
+     return frame;
+ }
+ 
+-UiModel prepared(int width, int height) {
++Frame render(Drawing& drawing, const UiModel& model, int width, int height) {
++    InstrumentViewInfo info;
++    paint_instrument(drawing, model, info);
++    return read_frame(drawing, width, height);
++}
++
++UiModel prepared(int width, int height, UiPresentation presentation) {
+     UiModel model;
+     require(model.resize(static_cast<float>(width), static_cast<float>(height)), "resize model");
++    require(model.set_presentation(presentation), "select complete presentation");
+     SessionSnapshot snapshot;
+     snapshot.publication_revision = 2;
+     snapshot.controls.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::None};
+@@ -144,9 +150,89 @@ UiModel prepared(int width, int height) {
+     return model;
+ }
+ 
+-void focus_labels(Drawing& drawing, int width, int height) {
+-    auto model = prepared(width, height);
++void readable_accidentals(Drawing& drawing, const UiModel& model, const Frame& actual) {
++    constexpr std::array<unsigned, 5> indices{1, 3, 6, 8, 10};
++    constexpr std::array<std::string_view, 5> letters{"C", "D", "F", "G", "A"};
++    // An independent native glyph template fixes the required size, characters
++    // and two row positions. The material is uniform across each interior row,
++    // so an unlettered adjacent pixel supplies its actual background. Recompose
++    // the expected glyph on that material to check every antialiased sample.
++    require(SDL_SetRenderDrawColor(drawing.renderer(), 255, 255, 255, 255) == 0,
++            "set glyph template background");
++    require(SDL_RenderClear(drawing.renderer()) == 0, "clear glyph template target");
++    for (unsigned manual = 0; manual < 2; ++manual) {
++        for (std::size_t index = 0; index < indices.size(); ++index) {
++            const auto& label = geometry(model, preset(manual, indices[index])).label_bounds;
++            for (unsigned row = 0; row < 2; ++row) {
++                const auto glyph = row == 0 ? letters[index] : std::string_view{"#"};
++                const float advance = drawing.text_width(glyph, 9.0F);
++                check(advance <= label.width, "full-size accidental glyph fits without shrinking");
++                drawing.text(glyph, label.x + (label.width - advance) / 2.0F,
++                    label.y + 0.1F + 9.0F * static_cast<float>(row), 9.0F, {0, 0, 0});
++            }
++        }
++    }
++    const auto mask = read_frame(drawing, actual.width, actual.height);
++    require(SDL_RenderClear(drawing.renderer()) == 0, "clear material template target");
++    for (unsigned manual = 0; manual < 2; ++manual) {
++        for (std::size_t index = 0; index < indices.size(); ++index) {
++            const auto& key = geometry(model, preset(manual, indices[index]));
++            const auto& label = key.label_bounds;
++            const int left = static_cast<int>(std::floor(key.bounds.x)) + 2;
++            const int right = static_cast<int>(std::floor(key.bounds.x + key.bounds.width)) - 2;
++            const int sample_x = right - 1;
++            for (int y = static_cast<int>(std::floor(label.y));
++                 y < static_cast<int>(std::ceil(label.y + label.height)); ++y) {
++                const auto i = actual.index(sample_x, y);
++                check(mask.rgba[i] == 255, "material sample is outside the full-size glyph");
++                drawing.rect({static_cast<float>(left), static_cast<float>(y),
++                              static_cast<float>(right - left), 1.0F},
++                             {actual.rgba[i], actual.rgba[i + 1], actual.rgba[i + 2]});
++            }
++            for (unsigned row = 0; row < 2; ++row) {
++                const auto glyph = row == 0 ? letters[index] : std::string_view{"#"};
++                const float advance = drawing.text_width(glyph, 9.0F);
++                drawing.text(glyph, label.x + (label.width - advance) / 2.0F,
++                    label.y + 0.1F + 9.0F * static_cast<float>(row), 9.0F, {37, 29, 20});
++            }
++        }
++    }
++    const auto expected = read_frame(drawing, actual.width, actual.height);
++    for (unsigned manual = 0; manual < 2; ++manual) {
++        for (const auto index : indices) {
++            const auto& key = geometry(model, preset(manual, index));
++            const auto& label = key.label_bounds;
++            for (unsigned row = 0; row < 2; ++row) {
++                auto area = interior({label.x, label.y + 9.0F * static_cast<float>(row),
++                                      label.width, 9.0F});
++                area.left = static_cast<int>(std::floor(key.bounds.x)) + 2;
++                area.right = static_cast<int>(std::floor(key.bounds.x + key.bounds.width)) - 2;
++                std::size_t ink = 0;
++                std::size_t mismatches = 0;
++                for (int y = area.top; y < area.bottom; ++y) {
++                    for (int x = area.left; x < area.right; ++x) {
++                        const auto i = actual.index(x, y);
++                        if (mask.rgba[i] < 255) ++ink;
++                        if (expected.rgba[i] != actual.rgba[i] ||
++                            expected.rgba[i + 1] != actual.rgba[i + 1] ||
++                            expected.rgba[i + 2] != actual.rgba[i + 2]) ++mismatches;
++                    }
++                }
++                check(ink > 0 && mismatches == 0,
++                      std::to_string(actual.width) + "x" + std::to_string(actual.height) +
++                      " manual " + std::to_string(manual) + " accidental " + std::to_string(index) +
++                      " row " + std::to_string(row) + " matches independently rendered 9-unit glyph pixels (" +
++                      std::to_string(ink) + " ink, " + std::to_string(mismatches) + " mismatches)");
++                ++readable_glyph_cases;
++            }
++        }
++    }
++}
++
++void focus_labels(Drawing& drawing, int width, int height, UiPresentation presentation) {
++    auto model = prepared(width, height, presentation);
+     const auto unfocused = render(drawing, model, width, height);
++    readable_accidentals(drawing, model, unfocused);
+     constexpr std::array<unsigned, 5> sharps{1, 3, 6, 8, 10};
+     for (unsigned manual = 0; manual < 2; ++manual) {
+         for (unsigned index = 0; index < 12; ++index) {
+@@ -196,9 +282,9 @@ void acknowledge(UiModel& model, const UiActions& actions, std::uint64_t revisio
+     model.observe(applied);
+ }
+ 
+-void pending_cancel_rejection(Drawing& drawing, int width, int height) {
++void pending_cancel_rejection(Drawing& drawing, int width, int height, UiPresentation presentation) {
+     constexpr UiColor pending_color{235, 169, 73};
+-    auto model = prepared(width, height);
++    auto model = prepared(width, height, presentation);
+     focus(model, {UiControlKind::SaveControls});
+     const auto baseline = render(drawing, model, width, height);
+     const auto upper = model.layout().preset_key_panels[0];
+@@ -274,8 +360,10 @@ int main() {
+             Drawing drawing(renderer.get());
+             std::string error;
+             require(drawing.initialize(error), "initialize native Drawing: " + error);
+-            focus_labels(drawing, width, height);
+-            pending_cancel_rejection(drawing, width, height);
++            for (const auto presentation : {UiPresentation::Dimensional, UiPresentation::Flat}) {
++                focus_labels(drawing, width, height, presentation);
++                pending_cancel_rejection(drawing, width, height, presentation);
++            }
+         }
+         SDL_Quit();
+     } catch (const std::exception& error) {
+@@ -284,6 +372,7 @@ int main() {
+         return EXIT_FAILURE;
+     }
+     std::cout << "Native preset raster: " << label_cases << " preserved label/focus cases, "
++              << readable_glyph_cases << " full-size accidental glyph cases, "
+               << isolation_cases << " other-manual/accidental isolation cases, "
+               << state_cases << " applied/pending/Cancel/rejection checks; failures="
+               << failures << "; SDL software surface, no window/audio\n";
+diff --git a/apps/standalone/native_tests/test_standalone_scaled_view.cpp b/apps/standalone/native_tests/test_standalone_scaled_view.cpp
+index 75feeb5..d1bb81d 100644
+--- a/apps/standalone/native_tests/test_standalone_scaled_view.cpp
++++ b/apps/standalone/native_tests/test_standalone_scaled_view.cpp
+@@ -503,7 +503,7 @@ int main(int argc, char** argv) {
+     SDL_SetMainReady();
+     try {
+         require(argc == 1 || argc == 2, "optional argument is a fresh capture directory");
+-        const char* capture_environment = std::getenv("HAMMOND_SCALED_VIEW_CAPTURE_DIR");
++        const char* capture_environment = SDL_getenv("HAMMOND_SCALED_VIEW_CAPTURE_DIR");
+         const std::filesystem::path captures = argc == 2 ? std::filesystem::path(argv[1]) :
+             capture_environment != nullptr ? std::filesystem::path(capture_environment) : std::filesystem::path{};
+         if (!captures.empty()) require(std::filesystem::create_directory(captures), "create fresh proof directory");
+diff --git a/apps/standalone/native_tests/test_standalone_workspace_raster.cpp b/apps/standalone/native_tests/test_standalone_workspace_raster.cpp
+index 4cc5323..070fbd4 100644
+--- a/apps/standalone/native_tests/test_standalone_workspace_raster.cpp
++++ b/apps/standalone/native_tests/test_standalone_workspace_raster.cpp
+@@ -436,7 +436,7 @@ int main(int argc, char** argv) {
+     const auto started = std::chrono::steady_clock::now();
+     try {
+         require(argc == 1 || argc == 2, "usage: test_standalone_workspace_raster [capture-directory]");
+-        const char* capture_option = argc == 2 ? argv[1] : std::getenv("HAMMOND_WORKSPACE_RASTER_CAPTURE_DIR");
++        const char* capture_option = argc == 2 ? argv[1] : SDL_getenv("HAMMOND_WORKSPACE_RASTER_CAPTURE_DIR");
+         const std::filesystem::path capture_directory = capture_option == nullptr ? "" : capture_option;
+         if (!capture_directory.empty()) std::filesystem::create_directories(capture_directory);
+         require(SDL_Init(0) == 0, "initialize SDL without hardware subsystems");
+diff --git a/apps/standalone/tests/test_standalone_preset_ui.cpp b/apps/standalone/tests/test_standalone_preset_ui.cpp
+index 31dc87e..f2317c7 100644
+--- a/apps/standalone/tests/test_standalone_preset_ui.cpp
++++ b/apps/standalone/tests/test_standalone_preset_ui.cpp
+@@ -205,7 +205,11 @@ void geometry_and_occlusion() {
+                 CHECK(key.bounds.width >= 11.99F);
+                 CHECK(key.label_bounds.x >= key.bounds.x);
+                 CHECK(key.label_bounds.x + key.label_bounds.width <= key.bounds.x + key.bounds.width);
+-                CHECK(key.label_bounds.height == 11);
++                CHECK(key.label_bounds.height == (is_sharp(pitch) ? 20 : 11));
++                CHECK_NEAR(key.label_bounds.y,
++                    key.bounds.y + key.bounds.height - key.label_bounds.height - 2, 0.001F);
++                CHECK(key.label_bounds.y >= key.bounds.y);
++                CHECK(key.label_bounds.y + key.label_bounds.height <= key.bounds.y + key.bounds.height);
+                 CHECK(ui_hit_test(layout, exposed_point(model, manual, pitch)) == preset(manual, pitch));
+                 std::uint32_t parameter = 0;
+                 CHECK(ui_parameter_id(key.id, parameter));
+diff --git a/apps/standalone/tests/test_standalone_ui.cpp b/apps/standalone/tests/test_standalone_ui.cpp
+index 8ee464c..7f77b0c 100644
+--- a/apps/standalone/tests/test_standalone_ui.cpp
++++ b/apps/standalone/tests/test_standalone_ui.cpp
+@@ -813,7 +813,9 @@ void check_control_regions(const UiLayout& layout) {
+         case UiControlKind::PresetKey:
+             parent = layout.preset_key_panels[static_cast<std::size_t>(entry.id.manual)];
+             CHECK(entry.id.bank == DrawbarBank::A && entry.id.index < 12);
+-            CHECK(entry.label_bounds.height == 11);
++            CHECK(entry.label_bounds.height ==
++                ((entry.id.index == 1 || entry.id.index == 3 || entry.id.index == 6 ||
++                  entry.id.index == 8 || entry.id.index == 10) ? 20 : 11));
+             CHECK(empty(entry.value_bounds) && empty(entry.track));
+             break;
+         case UiControlKind::ManualDrawbar:
+@@ -910,9 +912,11 @@ void check_preset_keys(const UiLayout& layout) {
+             const auto identity = preset_key(manual, index);
+             const auto& entry = layout.controls[12 + division * 23 + index];
+             CHECK(entry.id == identity); // EDIT A, EDIT B, C..B, drawbars.
++            const bool sharp = std::find(sharps.begin(), sharps.end(), index) != sharps.end();
++            const float label_height = sharp ? 20.0F : 11.0F;
+             near_rect(entry.label_bounds,
+-                      {entry.bounds.x + 1, entry.bounds.y + entry.bounds.height - 13,
+-                       entry.bounds.width - 2, 11});
++                      {entry.bounds.x + 1, entry.bounds.y + entry.bounds.height - label_height - 2,
++                       entry.bounds.width - 2, label_height});
+             std::uint32_t parameter = 0;
+             CHECK(ui_parameter_id(identity, parameter));
+             CHECK(parameter == (manual == Manual::Upper ? 20480U : 20481U));
+diff --git a/apps/standalone/tests/test_standalone_workspace_acceptance.cpp b/apps/standalone/tests/test_standalone_workspace_acceptance.cpp
+index 108d25a..48b70d7 100644
+--- a/apps/standalone/tests/test_standalone_workspace_acceptance.cpp
++++ b/apps/standalone/tests/test_standalone_workspace_acceptance.cpp
+@@ -305,7 +305,8 @@ void outgoing_memory_and_return() {
+         CHECK(model.pointer({UiPointerKind::Down, center(geometry(model, common[9]).bounds)}).count == 0);
+         CHECK(model.pointer({UiPointerKind::Up, {}}).count == 0);
+         CHECK(model.view().focus == service_focus && model.view().workspace_focus == memories_before);
+-        CHECK(model.resize(size.x < 1400 ? 1400 : 1399, size.y < 820 ? 820 : 819));
++        CHECK(model.resize(static_cast<float>(size.x < 1400 ? 1400 : 1399),
++                           static_cast<float>(size.y < 820 ? 820 : 819)));
+         CHECK(model.view().focus == service_focus && model.view().workspace_focus == memories_before);
+         CHECK(tap(model, UiKey::F4).count == 0 && model.view().focus == remembered);
+         CHECK(model.view().edited_banks == play_view.edited_banks);
+@@ -533,7 +534,8 @@ void closed_gestures_require_new_down() {
+         const auto desired = model.view();
+         if (transition == 0) CHECK(model.set_workspace(UiWorkspace::Rotary));
+         if (transition == 1) CHECK(model.set_presentation(UiPresentation::Dimensional));
+-        if (transition == 2) CHECK(model.resize(size.x < 1400 ? 1400 : 1399, size.y < 820 ? 820 : 819));
++        if (transition == 2) CHECK(model.resize(static_cast<float>(size.x < 1400 ? 1400 : 1399),
++                                              static_cast<float>(size.y < 820 ? 820 : 819)));
+         CHECK(model.set_workspace(UiWorkspace::Play));
+         CHECK(model.activate({UiControlKind::EditBank, Manual::Upper, DrawbarBank::B}).count == 0);
+         for (const auto point : {low, high, playing_point(model, manual_key(Manual::Lower, 48)),
+diff --git a/docs/INTERFACE_WORKSPACE_CONTRACT.md b/docs/INTERFACE_WORKSPACE_CONTRACT.md
+index 0ec764c..7b81d0f 100644
+--- a/docs/INTERFACE_WORKSPACE_CONTRACT.md
++++ b/docs/INTERFACE_WORKSPACE_CONTRACT.md
+@@ -131,8 +131,9 @@ audition from a hidden manual/pedal key. Arrow/Home/End navigation cannot reach
+ or edit a hidden performance control.
+ 
+ The three tabs occupy the left header group. The existing six tools occupy two
+-rows of three on the right: Save/Load/Help above Audio/MIDI/Panic. The title fits
+-between those groups; the nominal-output caption and the Flat toggle fit below
++rows of three on the right: Save/Load/Help above Audio/MIDI/Panic. The title's
++measured text width is centered on the window midpoint, retaining the existing
++fit and clamp between those groups; the nominal-output caption and Flat toggle fit below
+ the title. The toggle's label is `FLAT`, with a visible selected state when Flat
+ is active. A service/rotary body uses `layout.workspace_panel`, spanning the
+ content width below the header and above the existing footer. It does not paint
+diff --git a/docs/PRESET_UI_DESIGN.md b/docs/PRESET_UI_DESIGN.md
+index d89b339..6272a89 100644
+--- a/docs/PRESET_UI_DESIGN.md
++++ b/docs/PRESET_UI_DESIGN.md
+@@ -167,11 +167,18 @@ accidental following n naturals:
+ ```
+ 
+ Derive both natural edges from their ordinal to avoid accumulated gaps. Each
+-key has one `UiControlGeometry`. Its `bounds` is the rectangle above;
+-`label_bounds = {x+1, y+height−13, width−2, 11}`, and `value_bounds`/`track`
+-are empty. Center the pitch name at a nominal 9-unit font using the existing
+-measured-fit text routine; never extend a label into another key. The narrow
+-accidental labels require actual raster inspection at minimum size.
++key has one `UiControlGeometry`. Its `bounds` is the rectangle above, and
++`value_bounds`/`track` are empty. Natural labels retain
++`label_bounds = {x+1, y+height−13, width−2, 11}` and their centered 9-unit
++single letter. The interface continuation's A34 readability correction gives
++accidentals `label_bounds = {x+1, y+height−22, width−2, 20}`. Center the canonical
++pitch letter and `#` separately at 9-unit Sans in 11-unit line boxes, with
++the second line beginning nine units below the first. Both glyphs fit the
++minimum ten-unit label width without shrinking; the glyph ink does not overlap.
++Keep the complete pitch name in semantic selection and focus captions. Labels
++remain inside their original keys, with unchanged hit bounds and selection.
++Actual minimum-size and 1400×820 raster inspection is required in both modes,
++including the clipped focus stroke above the taller accidental label region.
+ 
+ Keep existing playing-key generation: its own panel has left inset8, top22,
+ width−16 and height−30; 36 naturals and 25 accidentals per manual. Presets and

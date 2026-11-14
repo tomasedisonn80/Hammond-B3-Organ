@@ -1,5 +1,27 @@
 # Development log
 
+## 2026-11-14 — Finish native readability and operator fixes; qualify strict test portability
+
+Published the workspace and independent acceptance checkpoint as `aea58bb` with
+verified tree identity. A34 enlarged accidental preset legends using two lines
+and aligned the title, preserving natural labels, key hits and focus behavior.
+Its actual before/after image evidence isolates intended changes. A36 corrected
+the stale Load waiting notice; A37’s two native operator journeys verify the
+acknowledged notice, held-note continuity, saved controls and Flat focus.
+
+Hosted Windows builds exposed strict conversion and deprecated environment
+lookup warnings in new tests. A40 repaired those expressions without suppressing
+warnings or weakening assertions/time limits; three affected native suites and
+all 130 SDK-free Release suites pass locally. Hosted Windows closure is pending
+the repaired publication. A39 adds three missing names to the required native
+CI inventory, preserving execution and package behavior.
+
+A41 retains the local leak-runtime attach failure and original instrumented
+10-pass/3-timeout result; separate diagnostics and hosted leak coverage follow.
+A42 actually attempted desktop startup, but the local SDL lacks X11. The pointer
+gate remains unrun. These concrete boundaries, next actions and current leases
+are preserved in the [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md).
+
 ## 2026-11-14 — Integrate native interface acceptance and observed rendering repairs
 
 The complete 147-suite UI Release gate retained 146 passes and two failed
@@ -19,8 +41,8 @@ Five affected raster suites pass, including 298 full-surface checks across
 18,309,120 pixels. The same Service patch changes from 9,500 clear gaps to zero.
 Actual 19-file MIDI-on and 15-file MIDI-off relocations pass at their named
 source identities. The operating guide now explains dummy SDL versus real native
-MIDI enumeration. A27/A32's small preset legend and title-offset findings and
-A30's stale Load status remain assigned corrections before final visual handoff.
+MIDI enumeration. A27/A32’s small preset legend and title-offset findings and
+A30’s stale Load status were subsequently corrected by A34/A36 as recorded above.
 
 
 ## 2026-11-14 — Qualify platform repairs and integrate the workspace interface

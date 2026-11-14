@@ -1,0 +1,131 @@
+{
+  "agent": "/root/w06_a34_preset_label_polish",
+  "assignment": 34,
+  "wave": 6,
+  "status": "completed_for_integrator_review",
+  "owned_source_sha256": {
+    "apps/standalone/UiModel.cpp": "c3aa5756e0edac899d0d608cb451695926d970eedcfaa247948c7ce699077258",
+    "apps/standalone/InstrumentView.cpp": "920f58ca287eca607632698c52a1e1fa819eb623a0be4828f082b2c6b0701912",
+    "apps/standalone/tests/test_standalone_ui.cpp": "4caa497d5579dbab05c6038c8e008578bdc5d6e408b4a49f56b37e2381951f69",
+    "apps/standalone/tests/test_standalone_preset_ui.cpp": "e7a0b59be9e3dbd9684bc077db2ddcc8a36ba5f7284f511862227ddf9b36f072",
+    "apps/standalone/native_tests/test_standalone_preset_raster.cpp": "e3fe978c9c8e37a1915b10c4586d3f178414828954016eae5de58af4994b48e6",
+    "docs/PRESET_UI_DESIGN.md": "378a6ce8dd536f481a81506524d58fd09e6cf1b2311e279d581f557a80d0cb4f",
+    "docs/INTERFACE_WORKSPACE_CONTRACT.md": "a64e59e3f46fa8d1320a17cb92a710128c327b0a1c3a44b06bbf8516b47eb6b2",
+    "docs/reviews/INTERFACE_PRESET_READABILITY.md": "ff6ab5a8a07e96be6e9a675515cb7d3be3264a3ec7c5435a62db52a49abffe9e",
+    "docs/development/2026-11-14-interface-continuation/session34-preset-label-polish.md": "59ac01249ab76496ec2ce374d8b0b06c7001bfe1f30f3f09c7a84e1b1e5c2e33"
+  },
+  "records_sha256": {
+    "a34-source-before.json": "63b8adea3b831b7ff0cc543ea02d3497920aa8c386c746730528345c5863ae7c",
+    "a34-source-after-build.json": "50ddeb4ccb6c0b203d3844cc02dbef700cf8cc9029c093b49aa6c1ca3151ce9d",
+    "a34-build-first.json": "568988a2c72ae895cd0efbf7bc2faaa32c341f424a7b94057fdbdebd417ae79a",
+    "a34-build-first.txt": "d04206df570ae3fc7642b0d0bab78765db6b93222f4a9e0073ecdd93b43993e8",
+    "a34-ctest-first.json": "2d6e67a50bd6946902801229192c3ce7bece00859671bcd14b2bb911e0a14cf8",
+    "a34-ctest-first.txt": "d94850e9233cf8570eddfd07dc74bd90321dae2849a067844eca944c78c568fc",
+    "a34-first-oracle-identity.json": "5d8baf02dacfe740d40b3587ca24dd07488b17018113b68d60a78c7e71446e19",
+    "a34-build-glyph-oracle.txt": "6ab02e8245533d1706d981ac23d800229f5932311a14d5ce2395ed60901f05fb",
+    "a34-ctest-glyph-oracle.txt": "a5a2c0912b79ebdb91b90ee60c53968a58478954394ad511022dfe0ac6c0bdfe",
+    "a34-preset-final-output.txt": "4a6b1947ff5a2b2ac39159e66b81096df2825d5048ee1ca2de321906a9ecf810",
+    "a34-captures-before.json": "187986239344a49011ce55a4a855a548dc4439f4befc0bd0ae668b9f33eab074",
+    "a34-captures-after.json": "b2b44d1689dab73a9fee95cae22a2ab031c4b6dcd1a7a0240c1f6c7ab0fd7b93",
+    "a34-layout-fonts.json": "bf8dcfebba7a6bfb4c8c7387f131908a7b4b23d2f535d5884ccb4842d819cb31",
+    "a34-proof-first-failure.json": "c2d9b545d20466f331b9d1cefd282c6c04797b70528547b87de52b69b0cc9182",
+    "a34-proof.json": "be603a0e0b36ca94bdee308362d7ed7f5413007ab168e39122b881b8ab8bdda6",
+    "a34-capture.py": "b8a0b05e14babfe40d2d6a05add3e8747530af01b715e7b30c519c5c69485dd1",
+    "a34-proof.py": "fa77ec22b525d6a979111fb13ae5f9b85fd15ef5719a2784b1f4ce8318706162",
+    "a34-layout-probe.cpp": "59ecd8b43bfd3639b7c73c0373098fc3109e6cc771d4754ced2a7010b7785e47",
+    "a34-focus-dsharp.b3uireplay": "44156ab687e8ecdb2c872f541019526fb240d854da1018fe314cc91da4c7fdc8"
+  },
+  "source_boundary": "A34 owns only two presentation-source changes, existing related tests and affected documentation. Later A36 main.cpp load-status correction is not part of the pinned A34 executable. No stage, commit, core/state/assets/Drawing/main/CMake edit by A34.",
+  "before_app_sha256": "968938196bcf291270e1b1e32e36f08535281a959fb47ea731a216c56486d270",
+  "after_app": {
+    "sha256": "fa58e1245c10ab0282fe6e5b67b3cce708f5fe6e1438e43a499e953702192961",
+    "preserved_path": "/workspace/scratch/601951e27dc3/a34-captures/hammond_standalone"
+  },
+  "unchanged_a28_focus_function_sha256": "901174fca6cf045720224387a97c9a8ba0b442ff6950416f97b35c7447699dbe",
+  "gates": {
+    "initial_five_suite_gate": "4 passed; new glyph oracle failed96 rows because its fully-opaque-pixel premise was wrong. Retained original source identity and output.",
+    "revised_preset_gate": "passed1/1; production source unchanged between initial gate and revised oracle recheck",
+    "passed_affected_suites": [
+      "test_standalone_ui",
+      "test_standalone_preset_ui",
+      "test_standalone_workspace_raster",
+      "test_standalone_scaled_view",
+      "test_standalone_preset_raster"
+    ],
+    "preset_counts": {
+      "preserved_label_focus": 192,
+      "full_size_glyph_rows": 160,
+      "manual_accidental_isolation": 752,
+      "applied_pending_cancel_rejection": 96,
+      "failures": 0
+    },
+    "no_weakened_existing_focus_containment_or_state_assertions": true
+  },
+  "captures": {
+    "actual_app_processes": 16,
+    "before_after_pairs": 8,
+    "sizes": [
+      [
+        960,
+        700
+      ],
+      [
+        1280,
+        900
+      ],
+      [
+        1400,
+        820
+      ],
+      [
+        1672,
+        941
+      ]
+    ],
+    "presentations": [
+      "dimensional",
+      "flat"
+    ],
+    "dummy_audio_video": true,
+    "software_renderer": true,
+    "stable_inputs_and_executable": true,
+    "all_changed_pixels_only_in_accidental_hit_rectangles_or_title": true,
+    "natural_label_regions_identical": 112,
+    "all24_preset_ids_retained": true,
+    "playing_counts": [
+      61,
+      61,
+      25
+    ],
+    "smallest_accidental_label_top_clearance_logical": 4.411988,
+    "smallest_actual_focused_dsharp_cyan_pixels": 6,
+    "header_advance_centers": [
+      480,
+      640,
+      700,
+      836
+    ],
+    "wide_header_shift_native_pixels": -33,
+    "all10_header_action_bounds_disjoint_from_title": true,
+    "images": {
+      "a34-header-before-after.png": {
+        "bytes": 188835,
+        "sha256": "33c9c8086add67436f1245ba2587643898ef8c2ef9db8cb8cff7106fcf5ffb8d"
+      },
+      "a34-preset-before-after.png": {
+        "bytes": 50142,
+        "sha256": "c1584b8a82febe8160a69da3f633247d448e6f12b43f23c09b8e4831bff10f03"
+      },
+      "a34-play-reference-after.png": {
+        "bytes": 642253,
+        "sha256": "7cb9df734ad59c36c560a16ab01f9989d9df35852953a11b7e5616d17de709eb"
+      }
+    }
+  },
+  "limitations": [
+    "Nine-unit cap labels remain small; no native display/DPI/GPU or human-accessibility certification.",
+    "Larger row proportions, lighting/materials and literal1:1 atlas fidelity remain unclosed.",
+    "Pending/applied/Cancel/rejection covered by injected native raster; app screenshots intentionally show acknowledged fixed routing and focused D#.",
+    "A36 and later executable changes need their own source-qualified gallery."
+  ]
+}

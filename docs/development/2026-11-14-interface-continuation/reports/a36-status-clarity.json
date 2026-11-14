@@ -1,0 +1,255 @@
+{
+  "schema": "interface-status-clarity-v1",
+  "assignment": {
+    "number": 36,
+    "worker": "/root/w06_a36_status_clarity",
+    "logical_wave": 6,
+    "session_requested_workers": 60,
+    "session_requested_waves": 10
+  },
+  "timestamp_utc": "2026-11-14T12:25:43.635539+00:00",
+  "result": "pass: A30-G2 corrected and observed after acknowledgment",
+  "scope": "Single successful-Load notice literal, one unchanged A30 native journey, human review of one PNG; no added CTest or mechanical string test",
+  "published_base_at_build": "5d81199a9822874b55f3b0a124715cbd6eadf0e5",
+  "current_head_at_record": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+  "production_change": {
+    "path": "apps/standalone/main.cpp",
+    "function": "Application::load_state()",
+    "before": "Loaded controls; waiting for the audio callback.",
+    "after": "Loaded saved controls.",
+    "sha256_before": "4906f4d1a097bcbcec70a3e28e1ec901a62110dd618548cd2fd0c94d84679689",
+    "sha256_after": "3c3ed7e237830e6a11176ca2b6e39e85fa007ac51b8044aee6aca6110fec66d3",
+    "changed_paths_from_A34_release": [
+      "apps/standalone/main.cpp"
+    ],
+    "other_recorded_paths_unchanged": 326,
+    "semantics": "Successful file-load event; actual application timing remains in existing desired/applied pending and snapshot signals",
+    "notice_duration_ms_unchanged": 6000,
+    "untouched": [
+      "audio and control dispatch",
+      "acknowledgment algorithm",
+      "model and ABI",
+      "state4 and readers 1-3",
+      "47 parameter identities",
+      "failure and last-error retention",
+      "unit and unknown-physical labels",
+      "InspectionModel and InstrumentView source"
+    ]
+  },
+  "coordination": {
+    "source_build_release_from": "A34 explicit release after its final build/captures and visual review",
+    "A34_app_sha256": "fa58e1245c10ab0282fe6e5b67b3cce708f5fe6e1438e43a499e953702192961",
+    "A36_exclusive_build_scope": "hammond_standalone only; no configure, no broad test rerun",
+    "released": "Source/build released to root and A34 immediately after native PNG inspection",
+    "staging_commits_publication": "None by A36; root integration ownership"
+  },
+  "identity_reports": {
+    "docs/development/2026-11-14-interface-continuation/reports/a36-source-before-edit.json": "0f404f867a02c3ddaaffd582ab6261243e4cad3ee625a668c36dce4f3e0b1068",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-build.json": "6a985f1f21009cad8e5d21ac7e66a7357a921808c749bf64aea4eaa59be328bc",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/result.json": "8ff99b168b4d5fee2ea20774a9c6197ef866c5e15ece3a44398de557e2082ec2"
+  },
+  "source_inventory": {
+    "paths": 327,
+    "basis": "Fresh A36 hashes of root coherent 327-path inventory; not an inherited pass",
+    "stable_during_build": true,
+    "unchanged_through_observation_and_record": true,
+    "retained_libraries_and_build_configuration_stable": true
+  },
+  "executable": {
+    "built_path": "/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+    "pinned_path": "/workspace/scratch/601951e27dc3/a36-status-bin/hammond_standalone",
+    "sha256": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+    "bytes": 3707640,
+    "stable_during_run": true
+  },
+  "executed": {
+    "build": {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/601951e27dc3/build-native",
+        "--target",
+        "hammond_standalone",
+        "--parallel",
+        "2"
+      ],
+      "working_directory": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+      "returncode": 0,
+      "elapsed_seconds": 7.744088885003293
+    },
+    "native": {
+      "observation_command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a36-load-observation.py",
+        "--executable",
+        "/workspace/scratch/601951e27dc3/a36-status-bin/hammond_standalone",
+        "--expected-sha256",
+        "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+        "--output",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence"
+      ],
+      "native_command": [
+        "/workspace/scratch/601951e27dc3/a36-status-bin/hammond_standalone",
+        "--state",
+        "/tmp/a30-02-edit-save-live-load-kxxgkcwm/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-02-edit-save-live-load-kxxgkcwm/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-02-edit-save-live-load-kxxgkcwm/diagnostics.json",
+        "--screenshot",
+        "/tmp/a30-02-edit-save-live-load-kxxgkcwm/frame.bmp"
+      ],
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "native_working_directory": "/tmp/a30-02-edit-save-live-load-kxxgkcwm",
+      "timeout_seconds": 9,
+      "native_processes": 1,
+      "returncode": 0,
+      "elapsed_seconds": 3.2290706839994527,
+      "strict_schema_and_lifecycle_assertions": true,
+      "source_helpers_and_inputs_unchanged": true,
+      "load_requested_at_ms": 2100,
+      "first_restored_acknowledgment_ms": 2189,
+      "acknowledged_sequence": 7,
+      "held_upper_note_at_ack": [
+        60
+      ],
+      "screenshot": {
+        "elapsed_ms": 3162,
+        "rendered_image": 91,
+        "workspace": "service",
+        "presentation": "flat",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 146432,
+          "publication_revision": 576
+        }
+      },
+      "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+      "state_bytes_equal_to_A30": true,
+      "controls_path": "Fixed F# -> same F# after bank edit -> explicit B -> Load restores saved F#",
+      "note_path": "Upper note 60 remains held through Load, then releases on its original key-up",
+      "audio_callbacks": 288,
+      "application_errors": {
+        "count": 0,
+        "last": ""
+      },
+      "stdout_empty": true,
+      "stderr_empty": true
+    },
+    "visual": {
+      "reviewer": "A36",
+      "opened_png": "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/frame.png",
+      "result": "pass",
+      "visible_static_notice": "Loaded saved controls.",
+      "visible_snapshot_banner": "CURRENT SNAPSHOT",
+      "desired_controls_pending_banner_visible": false,
+      "retained_controls": "Sound Fixed F# / Edit B",
+      "physical_unknowns": "Unavailable V; Unavailable rpm; Not acquired m; no connected cabinet/scanner/full AO-28 claim",
+      "capture_identity": {
+        "png": "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/frame.png",
+        "bmp_sha256": "8166d63c0b048500ed1916fd98554d0dade9d1e61c1ba27c34a2424ec5b3b2da",
+        "png_sha256": "27ed3d5c5652e61bdce6c5b2bc8fbfdb21007cc299d2b3ff1df08e2297a71089",
+        "decoded_mode": "RGBA",
+        "size": [
+          960,
+          700
+        ],
+        "decoded_pixels_sha256": "4705c71b5d992774715702f8281909c413eec1231079a7d881ffd238bc733e67",
+        "decoded_pixels_equal": true
+      },
+      "observation_method": "Opened actual native PNG with view_image; diagnostics separately identify snapshot state/pending, not status text",
+      "retained_png_count": 1,
+      "retained_bmp_count": 0,
+      "bmp_removed_only_after_decoded_png_equality": true
+    },
+    "diff_check": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "apps/standalone/main.cpp",
+        "docs/reviews/INTERFACE_STATUS_CLARITY.md",
+        "docs/development/2026-11-14-interface-continuation/session36-status-clarity.md",
+        "docs/development/2026-11-14-interface-continuation/reports/a36-load-observation.py"
+      ],
+      "returncode": 0
+    }
+  },
+  "original_A30_failure": {
+    "finding": "A30-G2",
+    "load_requested_at_ms": 2100,
+    "acknowledged_at_ms": 2186,
+    "screenshot_at_ms": 3166,
+    "snapshot_state": "current",
+    "controls_pending": false,
+    "visible_notice": "Loaded controls; waiting for the audio callback.",
+    "retained_payload_files_checked": 40,
+    "changed_files": [],
+    "audit_path": "docs/development/2026-11-14-interface-continuation/reports/a30-operator-audit.json",
+    "audit_sha256": "96c48ac05946827ee7570d9bc63ac2cd44e39f48dab58d5a8bb128e1d497d566"
+  },
+  "source_inspection_only": {
+    "snapshot_precedence": [
+      "unavailable: no coherent copy",
+      "unprepared: copied but not prepared",
+      "retained: prepared copy, failed latest read",
+      "stopped: successful prepared stopped copy",
+      "current: successful prepared running copy"
+    ],
+    "current_does_not_imply_controls_acknowledged": true,
+    "static_notice_not_freshness_or_measurement": true,
+    "availability_and_evidence_independent": true,
+    "Save_waiting_notice": "Complete_save replaces it on success, cancellation, timeout or write failure; unchanged",
+    "stopped_audio_Load_notice": "Explicit instruction to open Audio settings; unchanged",
+    "native_MIDI_retirement_wording": "Unexecuted review candidate only: request_midi/Disconnect may set scoped-release waiting text, while observe_midi_retirement clears flags; no additional defect claim or edit"
+  },
+  "prior_gates_not_repeated": {
+    "docs/development/2026-11-14-interface-continuation/reports/a23-inspection-acceptance.json": "89a709dbfd190840eeeb73f4cd3dff72c7b31e8d669e1dfaf6398b9a4ec942d2",
+    "docs/development/2026-11-14-interface-continuation/reports/a28-scale-text-audit.json": "6dd70f4d7f4191294c55f73302d717f26c2851b3c28b8aa5af17d4ec11771e09"
+  },
+  "limits": [
+    "Dummy SDL software observation only; no physical audio/MIDI device",
+    "No real display/DPI, native accessibility or callback deadline qualification",
+    "No new forced-state inspection or value-differential gate; A23/A28 keep their own source identities",
+    "No hardware measurements, connected scanner/AO-28/Leslie, calibration/fidelity or literal reference equality claim",
+    "No native MIDI scoped-release follow-through was executed"
+  ],
+  "next_step": "A37 final operator flow on exact A36 app/source; review any native MIDI retirement wording only with its own actual evidence",
+  "owned_paths": [
+    "apps/standalone/main.cpp",
+    "docs/reviews/INTERFACE_STATUS_CLARITY.md",
+    "docs/development/2026-11-14-interface-continuation/session36-status-clarity.md",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-observation.py",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-*"
+  ],
+  "payload_sha256": {
+    "docs/development/2026-11-14-interface-continuation/reports/a36-build.json": "6a985f1f21009cad8e5d21ac7e66a7357a921808c749bf64aea4eaa59be328bc",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-build.txt": "1df39e05ecc2e7040ca11ee9ec07544e084bf331235f7e790b5b4a058078b310",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-observation.py": "123fa0719144e3cd3a33c46ca0734c179dc7fa36d310bf3b895c9a318ab10dfe",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-observation.txt": "25f34415a95e3564a8c1a5b89f14d59f5f7424e0a9df8881795150ce20c46470",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-production-diff.txt": "5f2f373a48c453d604acf7da97b357eb153db7f8bbe9fe660781ae02c7564bd0",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-source-before-edit.json": "0f404f867a02c3ddaaffd582ab6261243e4cad3ee625a668c36dce4f3e0b1068",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/controls.b3controls": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/diagnostics.json": "399331ebfd0ca6b6963c03ab962ddb5d2fb49193eb1209986f41083f471a4993",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/frame.png": "27ed3d5c5652e61bdce6c5b2bc8fbfdb21007cc299d2b3ff1df08e2297a71089",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/initial.b3controls": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/input.b3uireplay": "7048be1ae12f01124a54132e5530b1fcbe3fdc50df54e7c068c93df6e5b6f756",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/process.json": "4076040653635d1ba1d49cb500c4849c73331298c1d2c5366a0ce9d7d33845bb",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/02-edit-save-live-load/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-load-evidence/result.json": "8ff99b168b4d5fee2ea20774a9c6197ef866c5e15ece3a44398de557e2082ec2",
+    "docs/reviews/INTERFACE_STATUS_CLARITY.md": "43fd46142d455310ae7de1c704267ecff50d31c5ef2e3d4bb5628bf55c9fd6c1",
+    "docs/development/2026-11-14-interface-continuation/session36-status-clarity.md": "fffaa1790d94e689e00aca4462a98da1e4532a86ef45a5b0f110675ce782e7ac"
+  },
+  "retained_report_payload_bytes": 252598
+}

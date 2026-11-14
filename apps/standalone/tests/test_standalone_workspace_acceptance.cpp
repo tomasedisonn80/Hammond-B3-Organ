@@ -305,7 +305,8 @@ void outgoing_memory_and_return() {
         CHECK(model.pointer({UiPointerKind::Down, center(geometry(model, common[9]).bounds)}).count == 0);
         CHECK(model.pointer({UiPointerKind::Up, {}}).count == 0);
         CHECK(model.view().focus == service_focus && model.view().workspace_focus == memories_before);
-        CHECK(model.resize(size.x < 1400 ? 1400 : 1399, size.y < 820 ? 820 : 819));
+        CHECK(model.resize(static_cast<float>(size.x < 1400 ? 1400 : 1399),
+                           static_cast<float>(size.y < 820 ? 820 : 819)));
         CHECK(model.view().focus == service_focus && model.view().workspace_focus == memories_before);
         CHECK(tap(model, UiKey::F4).count == 0 && model.view().focus == remembered);
         CHECK(model.view().edited_banks == play_view.edited_banks);
@@ -533,7 +534,8 @@ void closed_gestures_require_new_down() {
         const auto desired = model.view();
         if (transition == 0) CHECK(model.set_workspace(UiWorkspace::Rotary));
         if (transition == 1) CHECK(model.set_presentation(UiPresentation::Dimensional));
-        if (transition == 2) CHECK(model.resize(size.x < 1400 ? 1400 : 1399, size.y < 820 ? 820 : 819));
+        if (transition == 2) CHECK(model.resize(static_cast<float>(size.x < 1400 ? 1400 : 1399),
+                                              static_cast<float>(size.y < 820 ? 820 : 819)));
         CHECK(model.set_workspace(UiWorkspace::Play));
         CHECK(model.activate({UiControlKind::EditBank, Manual::Upper, DrawbarBank::B}).count == 0);
         for (const auto point : {low, high, playing_point(model, manual_key(Manual::Lower, 48)),

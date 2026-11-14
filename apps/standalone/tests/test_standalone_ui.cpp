@@ -813,7 +813,9 @@ void check_control_regions(const UiLayout& layout) {
         case UiControlKind::PresetKey:
             parent = layout.preset_key_panels[static_cast<std::size_t>(entry.id.manual)];
             CHECK(entry.id.bank == DrawbarBank::A && entry.id.index < 12);
-            CHECK(entry.label_bounds.height == 11);
+            CHECK(entry.label_bounds.height ==
+                ((entry.id.index == 1 || entry.id.index == 3 || entry.id.index == 6 ||
+                  entry.id.index == 8 || entry.id.index == 10) ? 20 : 11));
             CHECK(empty(entry.value_bounds) && empty(entry.track));
             break;
         case UiControlKind::ManualDrawbar:
@@ -910,9 +912,11 @@ void check_preset_keys(const UiLayout& layout) {
             const auto identity = preset_key(manual, index);
             const auto& entry = layout.controls[12 + division * 23 + index];
             CHECK(entry.id == identity); // EDIT A, EDIT B, C..B, drawbars.
+            const bool sharp = std::find(sharps.begin(), sharps.end(), index) != sharps.end();
+            const float label_height = sharp ? 20.0F : 11.0F;
             near_rect(entry.label_bounds,
-                      {entry.bounds.x + 1, entry.bounds.y + entry.bounds.height - 13,
-                       entry.bounds.width - 2, 11});
+                      {entry.bounds.x + 1, entry.bounds.y + entry.bounds.height - label_height - 2,
+                       entry.bounds.width - 2, label_height});
             std::uint32_t parameter = 0;
             CHECK(ui_parameter_id(identity, parameter));
             CHECK(parameter == (manual == Manual::Upper ? 20480U : 20481U));

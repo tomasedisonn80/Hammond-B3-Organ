@@ -1,0 +1,1280 @@
+{
+  "phase": "before",
+  "binary": "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+  "binary_sha256": "968938196bcf291270e1b1e32e36f08535281a959fb47ea731a216c56486d270",
+  "environment": {
+    "PATH": "/bin:/usr/bin",
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "SDL_VIDEODRIVER": "dummy",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software"
+  },
+  "inputs_sha256": {
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558",
+    "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay": "44156ab687e8ecdb2c872f541019526fb240d854da1018fe314cc91da4c7fdc8"
+  },
+  "qualification": "Actual app windows captured with dummy audio/video and software renderer; no physical-display or accessibility claim.",
+  "cases": [
+    {
+      "name": "960x700-dimensional",
+      "command": [
+        "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/960x700-dimensional.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/960x700-dimensional.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9968571669960511,
+      "diagnostics_sha256": "4b0702399d3d4b4459ce8eac22115d3ad04ae9459f240fb7a49913a4eb798b68",
+      "paint_observation": {
+        "elapsed_ms": 929,
+        "rendered_image": 30,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 42496,
+          "publication_revision": 170
+        }
+      },
+      "runtime": {
+        "video_driver": "dummy",
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "window_width": 960,
+        "window_height": 700,
+        "drawable_width": 960,
+        "drawable_height": 700,
+        "rendered_images": 30,
+        "screenshot_written": true,
+        "screenshot_while_held": false
+      },
+      "session": {
+        "snapshot_available": true,
+        "prepared": true,
+        "running_after_shutdown": false,
+        "sample_rate": 48000,
+        "frame_clock": 44032,
+        "publication_revision": 178,
+        "resolved_sequence": 2,
+        "last_applied_sequence": 1,
+        "recovery_count": 0,
+        "queue_overflows": 0,
+        "rejected_commands": 0,
+        "discarded_commands": 1,
+        "fault_flags": 0,
+        "held_after_shutdown": false,
+        "maximum_observed_peak": 0
+      },
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              0
+            ],
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          0
+        ],
+        "fixed_registrations": [
+          1,
+          0
+        ],
+        "preset_selections": [
+          1,
+          10
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.75,
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        }
+      },
+      "png": "/workspace/scratch/601951e27dc3/a34-captures/before/960x700-dimensional.png",
+      "png_sha256": "1b799951ef06b091ce7d4e7d75f3236307e0c72d33ec75a197dce098a6fb8100",
+      "native_bmp_sha256": "af8cba58a57921e049929b6435a613b67bdc3b30c3ba5e316a7acf4210090ce3",
+      "decoded_sha256": "a16753b12deae3186b4b90d378c809ee196994b3cf19022017ac88adcc4123d0",
+      "lossless_conversion": true
+    },
+    {
+      "name": "960x700-flat",
+      "command": [
+        "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/960x700-flat.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/960x700-flat.json",
+        "--flat"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9751789260044461,
+      "diagnostics_sha256": "9cdba974b855326d4d28241be60372af65b7d8e2ece6bb34637de386e4d32e76",
+      "paint_observation": {
+        "elapsed_ms": 912,
+        "rendered_image": 60,
+        "workspace": "play",
+        "presentation": "flat",
+        "overlay": "none",
+        "window_width": 960,
+        "window_height": 700,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 41472,
+          "publication_revision": 166
+        }
+      },
+      "runtime": {
+        "video_driver": "dummy",
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "window_width": 960,
+        "window_height": 700,
+        "drawable_width": 960,
+        "drawable_height": 700,
+        "rendered_images": 60,
+        "screenshot_written": true,
+        "screenshot_while_held": false
+      },
+      "session": {
+        "snapshot_available": true,
+        "prepared": true,
+        "running_after_shutdown": false,
+        "sample_rate": 48000,
+        "frame_clock": 43008,
+        "publication_revision": 174,
+        "resolved_sequence": 2,
+        "last_applied_sequence": 1,
+        "recovery_count": 0,
+        "queue_overflows": 0,
+        "rejected_commands": 0,
+        "discarded_commands": 1,
+        "fault_flags": 0,
+        "held_after_shutdown": false,
+        "maximum_observed_peak": 0
+      },
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              0
+            ],
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          0
+        ],
+        "fixed_registrations": [
+          1,
+          0
+        ],
+        "preset_selections": [
+          1,
+          10
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.75,
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        }
+      },
+      "png": "/workspace/scratch/601951e27dc3/a34-captures/before/960x700-flat.png",
+      "png_sha256": "4b2842c274f10745907073c37babe1817f0d886288c3b569303a115917b2b4c3",
+      "native_bmp_sha256": "a22943109fd3332b841dadd00fd71c5b7e59a54013a49c19c10cbcd86389e344",
+      "decoded_sha256": "5326c6e88d559f492887560e9a7005682b0d996dc6d1bd6ba88cd9defbd8727d",
+      "lossless_conversion": true
+    },
+    {
+      "name": "1280x900-dimensional",
+      "command": [
+        "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1280",
+        "--height",
+        "900",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1280x900-dimensional.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1280x900-dimensional.json"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0393544789985754,
+      "diagnostics_sha256": "c311602f50fa90b4a556c00da9ee75d1d9f4dac6bae99db3e42600990f988742",
+      "paint_observation": {
+        "elapsed_ms": 942,
+        "rendered_image": 20,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 1280,
+        "window_height": 900,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 43520,
+          "publication_revision": 174
+        }
+      },
+      "runtime": {
+        "video_driver": "dummy",
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "window_width": 1280,
+        "window_height": 900,
+        "drawable_width": 1280,
+        "drawable_height": 900,
+        "rendered_images": 20,
+        "screenshot_written": true,
+        "screenshot_while_held": false
+      },
+      "session": {
+        "snapshot_available": true,
+        "prepared": true,
+        "running_after_shutdown": false,
+        "sample_rate": 48000,
+        "frame_clock": 46080,
+        "publication_revision": 186,
+        "resolved_sequence": 2,
+        "last_applied_sequence": 1,
+        "recovery_count": 0,
+        "queue_overflows": 0,
+        "rejected_commands": 0,
+        "discarded_commands": 1,
+        "fault_flags": 0,
+        "held_after_shutdown": false,
+        "maximum_observed_peak": 0
+      },
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              0
+            ],
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          0
+        ],
+        "fixed_registrations": [
+          1,
+          0
+        ],
+        "preset_selections": [
+          1,
+          10
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.75,
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        }
+      },
+      "png": "/workspace/scratch/601951e27dc3/a34-captures/before/1280x900-dimensional.png",
+      "png_sha256": "b57b2ac86a7bbcae52c7d8378e11bdce43f948d3cf18611acd17ef0ff470f651",
+      "native_bmp_sha256": "eece7cb474de7933471adc4eca11f658fcdf0cbb76b207203fed79d4bbd1a532",
+      "decoded_sha256": "9893179012151aafb218ec69dfee5c4f11387ef7954a91fd817d3b48669f47cb",
+      "lossless_conversion": true
+    },
+    {
+      "name": "1280x900-flat",
+      "command": [
+        "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1280",
+        "--height",
+        "900",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1280x900-flat.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1280x900-flat.json",
+        "--flat"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9985230550009874,
+      "diagnostics_sha256": "9f8ba88d1df1f9378bd653cc8014cda9dfeb66ab874a3f1f2de0e14648b36c2c",
+      "paint_observation": {
+        "elapsed_ms": 923,
+        "rendered_image": 42,
+        "workspace": "play",
+        "presentation": "flat",
+        "overlay": "none",
+        "window_width": 1280,
+        "window_height": 900,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 42496,
+          "publication_revision": 170
+        }
+      },
+      "runtime": {
+        "video_driver": "dummy",
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "window_width": 1280,
+        "window_height": 900,
+        "drawable_width": 1280,
+        "drawable_height": 900,
+        "rendered_images": 42,
+        "screenshot_written": true,
+        "screenshot_while_held": false
+      },
+      "session": {
+        "snapshot_available": true,
+        "prepared": true,
+        "running_after_shutdown": false,
+        "sample_rate": 48000,
+        "frame_clock": 44032,
+        "publication_revision": 178,
+        "resolved_sequence": 2,
+        "last_applied_sequence": 1,
+        "recovery_count": 0,
+        "queue_overflows": 0,
+        "rejected_commands": 0,
+        "discarded_commands": 1,
+        "fault_flags": 0,
+        "held_after_shutdown": false,
+        "maximum_observed_peak": 0
+      },
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              0
+            ],
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          0
+        ],
+        "fixed_registrations": [
+          1,
+          0
+        ],
+        "preset_selections": [
+          1,
+          10
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.75,
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        }
+      },
+      "png": "/workspace/scratch/601951e27dc3/a34-captures/before/1280x900-flat.png",
+      "png_sha256": "04894dc1c7904e185476a1d8e6d9dae27f369e98572cb95644962416c47bded2",
+      "native_bmp_sha256": "4278877059a4d30d8d7535d65934c42d51a1fcf63552ee675ffb7cdcd90338d9",
+      "decoded_sha256": "79271df07f1ad0e9ab3bdc0d530c8bfce3b83dbb045d06e97c04b3e77468bf1d",
+      "lossless_conversion": true
+    },
+    {
+      "name": "1400x820-dimensional",
+      "command": [
+        "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1400",
+        "--height",
+        "820",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1400x820-dimensional.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1400x820-dimensional.json"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0232536289986456,
+      "diagnostics_sha256": "e1cb91f6df9533704ef4c22cc04f1d61b4a5aa9d961339efdcc1f3c096966079",
+      "paint_observation": {
+        "elapsed_ms": 926,
+        "rendered_image": 20,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 1400,
+        "window_height": 820,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 43008,
+          "publication_revision": 172
+        }
+      },
+      "runtime": {
+        "video_driver": "dummy",
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "window_width": 1400,
+        "window_height": 820,
+        "drawable_width": 1400,
+        "drawable_height": 820,
+        "rendered_images": 20,
+        "screenshot_written": true,
+        "screenshot_while_held": false
+      },
+      "session": {
+        "snapshot_available": true,
+        "prepared": true,
+        "running_after_shutdown": false,
+        "sample_rate": 48000,
+        "frame_clock": 45568,
+        "publication_revision": 184,
+        "resolved_sequence": 2,
+        "last_applied_sequence": 1,
+        "recovery_count": 0,
+        "queue_overflows": 0,
+        "rejected_commands": 0,
+        "discarded_commands": 1,
+        "fault_flags": 0,
+        "held_after_shutdown": false,
+        "maximum_observed_peak": 0
+      },
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              0
+            ],
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          0
+        ],
+        "fixed_registrations": [
+          1,
+          0
+        ],
+        "preset_selections": [
+          1,
+          10
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.75,
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        }
+      },
+      "png": "/workspace/scratch/601951e27dc3/a34-captures/before/1400x820-dimensional.png",
+      "png_sha256": "1ad1c194069b68419d46877e551fe5ca6e9e2be20b0a53e21e6777970bb97bbc",
+      "native_bmp_sha256": "ca779ef26753ff6143e2df0a72c04e17b1199152ec78fbfc69844de1ea39d51d",
+      "decoded_sha256": "68dd5e6de1f716c32507d4baf79bed83e14f5665bad43c99a8f8aa765f227023",
+      "lossless_conversion": true
+    },
+    {
+      "name": "1400x820-flat",
+      "command": [
+        "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1400",
+        "--height",
+        "820",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1400x820-flat.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1400x820-flat.json",
+        "--flat"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9887418500002241,
+      "diagnostics_sha256": "54debfa539f88d296a482142728c6f50d2ca3a0e4109c965ab40d8958046c34a",
+      "paint_observation": {
+        "elapsed_ms": 902,
+        "rendered_image": 49,
+        "workspace": "play",
+        "presentation": "flat",
+        "overlay": "none",
+        "window_width": 1400,
+        "window_height": 820,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 40960,
+          "publication_revision": 164
+        }
+      },
+      "runtime": {
+        "video_driver": "dummy",
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "window_width": 1400,
+        "window_height": 820,
+        "drawable_width": 1400,
+        "drawable_height": 820,
+        "rendered_images": 49,
+        "screenshot_written": true,
+        "screenshot_while_held": false
+      },
+      "session": {
+        "snapshot_available": true,
+        "prepared": true,
+        "running_after_shutdown": false,
+        "sample_rate": 48000,
+        "frame_clock": 43520,
+        "publication_revision": 176,
+        "resolved_sequence": 2,
+        "last_applied_sequence": 1,
+        "recovery_count": 0,
+        "queue_overflows": 0,
+        "rejected_commands": 0,
+        "discarded_commands": 1,
+        "fault_flags": 0,
+        "held_after_shutdown": false,
+        "maximum_observed_peak": 0
+      },
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              0
+            ],
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          0
+        ],
+        "fixed_registrations": [
+          1,
+          0
+        ],
+        "preset_selections": [
+          1,
+          10
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.75,
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        }
+      },
+      "png": "/workspace/scratch/601951e27dc3/a34-captures/before/1400x820-flat.png",
+      "png_sha256": "a170ebb0b527e07c7190d95d11674761f507dd565d7325b5513450806ddd3853",
+      "native_bmp_sha256": "36ae0e6a66731ca1b9514d07e45417b9357fba347e720bea43920cfc4109540d",
+      "decoded_sha256": "5c4d6c88e93bb49cbde3a5dd79ce7129c6d162549616756b7b7524c9cffa650e",
+      "lossless_conversion": true
+    },
+    {
+      "name": "1672x941-dimensional",
+      "command": [
+        "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1672x941-dimensional.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1672x941-dimensional.json"
+      ],
+      "exit_code": 0,
+      "seconds": 1.084817529997963,
+      "diagnostics_sha256": "7d2bd40b24c0c33c530a2f44a98984f880e1b69f7229d717ec64e619c019e710",
+      "paint_observation": {
+        "elapsed_ms": 960,
+        "rendered_image": 16,
+        "workspace": "play",
+        "presentation": "dimensional",
+        "overlay": "none",
+        "window_width": 1672,
+        "window_height": 941,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 43520,
+          "publication_revision": 174
+        }
+      },
+      "runtime": {
+        "video_driver": "dummy",
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "window_width": 1672,
+        "window_height": 941,
+        "drawable_width": 1672,
+        "drawable_height": 941,
+        "rendered_images": 16,
+        "screenshot_written": true,
+        "screenshot_while_held": false
+      },
+      "session": {
+        "snapshot_available": true,
+        "prepared": true,
+        "running_after_shutdown": false,
+        "sample_rate": 48000,
+        "frame_clock": 47616,
+        "publication_revision": 192,
+        "resolved_sequence": 2,
+        "last_applied_sequence": 1,
+        "recovery_count": 0,
+        "queue_overflows": 0,
+        "rejected_commands": 0,
+        "discarded_commands": 1,
+        "fault_flags": 0,
+        "held_after_shutdown": false,
+        "maximum_observed_peak": 0
+      },
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              0
+            ],
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          0
+        ],
+        "fixed_registrations": [
+          1,
+          0
+        ],
+        "preset_selections": [
+          1,
+          10
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.75,
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        }
+      },
+      "png": "/workspace/scratch/601951e27dc3/a34-captures/before/1672x941-dimensional.png",
+      "png_sha256": "88edebb127ba41122ca2ec66fbafd8bef51e14367ca02e93dc8d57f35315fa9f",
+      "native_bmp_sha256": "5c99b8be8d3e40e06d6fc06750effe3f94ba128e21b0d3ee8ba2f5c67da43f2b",
+      "decoded_sha256": "b1513fe54e1d69af06b7ab41902481468e99409199b2ab03d333c5798356d267",
+      "lossless_conversion": true
+    },
+    {
+      "name": "1672x941-flat",
+      "command": [
+        "/workspace/scratch/601951e27dc3/coherent-surface-bin/hammond_standalone",
+        "--state",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/docs/development/2026-11-14-interface-continuation/reports/a34-focus-dsharp.b3uireplay",
+        "--workspace",
+        "play",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--sample-rate",
+        "48000",
+        "--buffer-frames",
+        "512",
+        "--screenshot",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1672x941-flat.bmp",
+        "--diagnostics",
+        "/workspace/scratch/601951e27dc3/a34-captures/before/1672x941-flat.json",
+        "--flat"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9930825679984991,
+      "diagnostics_sha256": "0a4f315425c89db0531f23686acfdbd4f39fb71ac5921ae0a23017b9d6fc79f5",
+      "paint_observation": {
+        "elapsed_ms": 919,
+        "rendered_image": 36,
+        "workspace": "play",
+        "presentation": "flat",
+        "overlay": "none",
+        "window_width": 1672,
+        "window_height": 941,
+        "inspection": {
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current",
+          "controls_pending": false,
+          "frame_clock": 41472,
+          "publication_revision": 166
+        }
+      },
+      "runtime": {
+        "video_driver": "dummy",
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "window_width": 1672,
+        "window_height": 941,
+        "drawable_width": 1672,
+        "drawable_height": 941,
+        "rendered_images": 36,
+        "screenshot_written": true,
+        "screenshot_while_held": false
+      },
+      "session": {
+        "snapshot_available": true,
+        "prepared": true,
+        "running_after_shutdown": false,
+        "sample_rate": 48000,
+        "frame_clock": 43008,
+        "publication_revision": 174,
+        "resolved_sequence": 2,
+        "last_applied_sequence": 1,
+        "recovery_count": 0,
+        "queue_overflows": 0,
+        "rejected_commands": 0,
+        "discarded_commands": 1,
+        "fault_flags": 0,
+        "held_after_shutdown": false,
+        "maximum_observed_peak": 0
+      },
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              0
+            ],
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              7,
+              6,
+              5,
+              4,
+              3,
+              4,
+              2,
+              4,
+              2
+            ],
+            [
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          0
+        ],
+        "fixed_registrations": [
+          1,
+          0
+        ],
+        "preset_selections": [
+          1,
+          10
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.75,
+        "pedal_drawbars": [
+          8,
+          0
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        }
+      },
+      "png": "/workspace/scratch/601951e27dc3/a34-captures/before/1672x941-flat.png",
+      "png_sha256": "7e1d0b135f09ffd64fdb9a2f0850d3f6be1951d234720055c98ef89d91146afd",
+      "native_bmp_sha256": "2c5f4ed569437716198cea7701134d082128bdf74d9be53c6d6ca67b6cb517f2",
+      "decoded_sha256": "4ba9ae035d60a1e40305dfe4872a3750c544216e77a1b8d90b7952e0bd21d8c4",
+      "lossless_conversion": true
+    }
+  ]
+}

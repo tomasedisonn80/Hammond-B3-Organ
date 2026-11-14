@@ -1,0 +1,939 @@
+{
+  "all_count": 147,
+  "all_names": [
+    "test_console_engine",
+    "test_contact_bank",
+    "test_contact_rate",
+    "test_control_io",
+    "test_controls",
+    "test_core_robustness",
+    "test_decimal",
+    "test_engine",
+    "test_engine_rate",
+    "test_factory_runtime",
+    "test_fixed_registration_data",
+    "test_fixed_registration_engine",
+    "test_fixed_registration_lifecycle",
+    "test_host_timeline",
+    "test_input_processor",
+    "test_note_ownership",
+    "test_numerics",
+    "test_owned_lifecycle",
+    "test_parameter_bridge",
+    "test_partial_key",
+    "test_pedal_controls",
+    "test_pedal_engine",
+    "test_pedal_integration",
+    "test_pedal_note_ownership",
+    "test_pedal_realtime",
+    "test_pedal_reference",
+    "test_pedal_routing",
+    "test_pedal_sources",
+    "test_pedal_voice",
+    "test_percussion",
+    "test_percussion_controls",
+    "test_percussion_rate",
+    "test_performance_acceptance",
+    "test_performance_input",
+    "test_preset_parameter_boundaries",
+    "test_preset_realtime",
+    "test_profile",
+    "test_realtime",
+    "test_realtime_console",
+    "test_realtime_pedals",
+    "test_scanner_line",
+    "test_scanner_rotor",
+    "test_source_rate",
+    "test_state_exchange",
+    "test_tonewheel",
+    "python_test_audio_analysis",
+    "python_test_calibration_session_records",
+    "python_test_capture",
+    "python_test_capture_audio",
+    "python_test_capture_audio_admission",
+    "python_test_capture_cli_pipeline",
+    "python_test_capture_common",
+    "python_test_capture_comparison",
+    "python_test_capture_corpus",
+    "python_test_capture_corpus_admission",
+    "python_test_capture_demo",
+    "python_test_capture_graph_scale",
+    "python_test_capture_install",
+    "python_test_capture_job",
+    "python_test_capture_metadata_read",
+    "python_test_capture_numerics",
+    "python_test_capture_policy",
+    "python_test_capture_readiness",
+    "python_test_capture_replay",
+    "python_test_capture_study",
+    "python_test_chapel_controls",
+    "python_test_chapel_presets",
+    "python_test_cli_unicode",
+    "python_test_compile_fixed_registrations",
+    "python_test_compile_pedal_routing",
+    "python_test_compile_profile",
+    "python_test_console_benchmark",
+    "python_test_console_catalog",
+    "python_test_console_evidence",
+    "python_test_console_trace",
+    "python_test_continuation_ledger",
+    "python_test_demo_bundle",
+    "python_test_factory_reference",
+    "python_test_fixed_registration_source_admission",
+    "python_test_fixture_catalog",
+    "python_test_install",
+    "python_test_model_info",
+    "python_test_native_bundle_inventory",
+    "python_test_parameter_bridge",
+    "python_test_parameters",
+    "python_test_partial_key_render",
+    "python_test_pedal_catalog",
+    "python_test_pedal_demo",
+    "python_test_pedal_map",
+    "python_test_pedal_render_cli",
+    "python_test_pedal_render_evidence",
+    "python_test_pedal_session",
+    "python_test_pedal_trace",
+    "python_test_plot_console_trace",
+    "python_test_plot_pedal_trace",
+    "python_test_preset_parameter_oracle",
+    "python_test_render",
+    "python_test_render_fixture",
+    "python_test_repository_integrity",
+    "python_test_rotary_profile",
+    "python_test_rotary_reference",
+    "python_test_scanner_ac_reference",
+    "python_test_scanner_line_profile",
+    "python_test_scanner_native_ac",
+    "python_test_scanner_transient_reference",
+    "python_test_sdl2_dependency",
+    "python_test_standalone_session_records",
+    "python_test_verify_render",
+    "python_test_vst3_build_tools",
+    "test_standalone_install",
+    "test_standalone_concurrency",
+    "test_standalone_external_control",
+    "test_standalone_inspection_acceptance",
+    "test_standalone_inspection_author",
+    "test_standalone_midi_concurrency",
+    "test_standalone_midi_discovery",
+    "test_standalone_midi_input",
+    "test_standalone_midi_replay",
+    "test_standalone_midi_session",
+    "test_standalone_preset_concurrency",
+    "test_standalone_preset_ui",
+    "test_standalone_projection",
+    "test_standalone_session",
+    "test_standalone_state_files",
+    "test_standalone_ui",
+    "test_standalone_workspace_acceptance",
+    "test_standalone_workspace_continuity",
+    "test_standalone_workspaces_author",
+    "test_standalone_midi_backend",
+    "test_standalone_midi_backend_quarantine",
+    "test_standalone_benchmark",
+    "test_standalone_drawing",
+    "test_standalone_quad_drawing",
+    "test_standalone_workspace_raster",
+    "test_standalone_scaled_view",
+    "test_standalone_preset_raster",
+    "test_standalone_audio_device",
+    "test_standalone_device_removal",
+    "test_standalone_callback_allocation",
+    "test_standalone_app",
+    "test_standalone_midi_cli",
+    "test_standalone_native_midi_replay",
+    "test_standalone_workflows",
+    "test_standalone_workspace_replay",
+    "test_standalone_replay_boundaries",
+    "test_standalone_chapel",
+    "test_standalone_input_replay"
+  ],
+  "command": [
+    "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/ctest",
+    "--test-dir",
+    "/workspace/scratch/601951e27dc3/build-native",
+    "-C",
+    "Release",
+    "--show-only=json-v1"
+  ],
+  "execution_performed": false,
+  "output_sha256": "e8ede052a1dbafb8cde6b8f8c1743e1a5132392d9fbcf65e5de3dd754bd9abc5",
+  "schema_version": 1,
+  "standalone_count": 38,
+  "standalone_tests": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_install.py"
+      ],
+      "name": "test_standalone_install",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "PYTHONDONTWRITEBYTECODE=1",
+            "HAMMOND_TEST_CMAKE=/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+            "HAMMOND_TEST_BUILD_DIR=/workspace/scratch/601951e27dc3/build-native",
+            "HAMMOND_TEST_CONFIG=Release",
+            "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+            "HAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2",
+            "HAMMOND_INSTALL_BINDIR=bin",
+            "HAMMOND_INSTALL_DATADIR=share",
+            "HAMMOND_TEST_ENABLE_MIDI=1",
+            "HAMMOND_STANDALONE_CAPABILITIES=/workspace/scratch/601951e27dc3/build-native/generated/standalone-capabilities.json",
+            "HAMMOND_RTMIDI_PREPARED_ROOT=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_rtmidi-prepared",
+            "HAMMOND_RTMIDI_BACKEND=ALSA"
+          ]
+        },
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_concurrency"
+      ],
+      "name": "test_standalone_concurrency",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_external_control"
+      ],
+      "name": "test_standalone_external_control",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_inspection_acceptance"
+      ],
+      "name": "test_standalone_inspection_acceptance",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_inspection_author"
+      ],
+      "name": "test_standalone_inspection_author",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_midi_concurrency"
+      ],
+      "name": "test_standalone_midi_concurrency",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "concurrency",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 45.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_midi_discovery"
+      ],
+      "name": "test_standalone_midi_discovery",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_midi_input"
+      ],
+      "name": "test_standalone_midi_input",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_midi_replay"
+      ],
+      "name": "test_standalone_midi_replay",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_midi_session"
+      ],
+      "name": "test_standalone_midi_session",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_preset_concurrency"
+      ],
+      "name": "test_standalone_preset_concurrency",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_preset_ui"
+      ],
+      "name": "test_standalone_preset_ui",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_projection"
+      ],
+      "name": "test_standalone_projection",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_session"
+      ],
+      "name": "test_standalone_session",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_state_files"
+      ],
+      "name": "test_standalone_state_files",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_ui"
+      ],
+      "name": "test_standalone_ui",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_workspace_acceptance"
+      ],
+      "name": "test_standalone_workspace_acceptance",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_workspace_continuity"
+      ],
+      "name": "test_standalone_workspace_continuity",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_workspaces_author"
+      ],
+      "name": "test_standalone_workspaces_author",
+      "properties": [
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_midi_backend",
+        "--ordinary"
+      ],
+      "name": "test_standalone_midi_backend",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "backend",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 30.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_midi_backend",
+        "--quarantine"
+      ],
+      "name": "test_standalone_midi_backend_quarantine",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "ASAN_OPTIONS=detect_leaks=0:halt_on_error=1"
+          ]
+        },
+        {
+          "name": "LABELS",
+          "value": [
+            "backend",
+            "intentional-quarantine",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 30.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "HAMMOND_STANDALONE_BENCHMARK_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone_benchmark",
+        "HAMMOND_TEST_PROFILE=/workspace/scratch/601951e27dc3/build-native/nominal.b3p",
+        "HAMMOND_STANDALONE_BENCHMARK_SOURCE_MANIFEST=/workspace/scratch/601951e27dc3/build-native/apps/standalone/standalone-benchmark-source-manifest.json",
+        "HAMMOND_SOURCE_DIR=/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+        "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_CONFIGURATION=Release",
+        "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_COMPILER_ID=GNU",
+        "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_COMPILER_VERSION=14.2.0",
+        "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_TARGET_SYSTEM=Linux",
+        "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_TARGET_PROCESSOR=x86_64",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/tests/test_standalone_benchmark.py"
+      ],
+      "name": "test_standalone_benchmark",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "benchmark",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_drawing"
+      ],
+      "name": "test_standalone_drawing",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 15.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_quad_drawing"
+      ],
+      "name": "test_standalone_quad_drawing",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "geometry",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 30.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_workspace_raster"
+      ],
+      "name": "test_standalone_workspace_raster",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "geometry",
+            "native",
+            "standalone",
+            "workspace"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 60.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_scaled_view"
+      ],
+      "name": "test_standalone_scaled_view",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone",
+            "workspace"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 60.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_preset_raster"
+      ],
+      "name": "test_standalone_preset_raster",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 30.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_audio_device"
+      ],
+      "name": "test_standalone_audio_device",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "SDL_AUDIODRIVER=dummy"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 15.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_device_removal"
+      ],
+      "name": "test_standalone_device_removal",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "SDL_AUDIODRIVER=dummy"
+          ]
+        },
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 15.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_callback_allocation"
+      ],
+      "name": "test_standalone_callback_allocation",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "SDL_AUDIODRIVER=dummy"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 15.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_app.py"
+      ],
+      "name": "test_standalone_app",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 60.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_cli.py"
+      ],
+      "name": "test_standalone_midi_cli",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "midi",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_midi_replay.py"
+      ],
+      "name": "test_standalone_native_midi_replay",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "midi",
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workflows.py"
+      ],
+      "name": "test_standalone_workflows",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_workspace_replay.py"
+      ],
+      "name": "test_standalone_workspace_replay",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone",
+            "workspace"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_replay_boundaries.py"
+      ],
+      "name": "test_standalone_replay_boundaries",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 60.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/7ffc2842608b/build-tools/cmake/data/bin/cmake",
+        "-E",
+        "env",
+        "HAMMOND_STANDALONE_EXECUTABLE=/workspace/scratch/601951e27dc3/build-native/apps/standalone/hammond_standalone",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/601951e27dc3/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_chapel.py"
+      ],
+      "name": "test_standalone_chapel",
+      "properties": [
+        {
+          "name": "LABELS",
+          "value": [
+            "native",
+            "standalone"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 90.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    },
+    {
+      "command": [
+        "/workspace/scratch/601951e27dc3/build-native/apps/standalone/test_standalone_input_replay"
+      ],
+      "name": "test_standalone_input_replay",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "SDL_VIDEODRIVER=dummy"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 15.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/workspace/scratch/601951e27dc3/build-native/apps/standalone"
+        }
+      ]
+    }
+  ]
+}

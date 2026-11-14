@@ -341,6 +341,22 @@ void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
             bounds.width - 2.0F * amount, bounds.height * 0.38F - 2.0F * amount};
 }
 
+void paint_preset_label(Drawing& drawing, const UiControlGeometry& geometry) {
+    const auto label = preset_selection_label(static_cast<PresetSelection>(geometry.id.index));
+    const auto& bounds = geometry.label_bounds;
+    if (preset_accidental(geometry.id.index)) {
+        // The narrow ivory caps retain both characters at full size. Two
+        // 11-unit line boxes at a 9-unit pitch have separated glyph ink while
+        // leaving the top focus stroke visible even at the shortest breakpoint.
+        centered(drawing, label.substr(0, 1), {bounds.x, bounds.y, bounds.width, 11.0F},
+                 9.0F, {37, 29, 20}, TextFace::Sans, 0.0F);
+        centered(drawing, label.substr(1), {bounds.x, bounds.y + 9.0F, bounds.width, 11.0F},
+                 9.0F, {37, 29, 20}, TextFace::Sans, 0.0F);
+        return;
+    }
+    centered(drawing, label, bounds, 9.0F, kUiIvory, TextFace::Sans, 0.0F);
+}
+
 void paint_preset_key(Drawing& drawing, const UiControlGeometry& geometry, bool selected, bool flat) {
     const auto& bounds = geometry.bounds;
     const bool ivory = preset_accidental(geometry.id.index);
@@ -351,9 +367,7 @@ void paint_preset_key(Drawing& drawing, const UiControlGeometry& geometry, bool 
         drawing.outline(bounds, {6, 7, 6});
         if (selected) drawing.rect({bounds.x + 2.0F, bounds.y + 3.0F,
             std::max(1.0F, bounds.width - 4.0F), 2.0F}, kUiBrass);
-        centered(drawing, preset_selection_label(static_cast<PresetSelection>(geometry.id.index)),
-                 geometry.label_bounds, 9.0F, ivory ? UiColor{37, 29, 20} : kUiIvory,
-                 TextFace::Sans, 0.0F);
+        paint_preset_label(drawing, geometry);
         return;
     }
     const float recess = selected ? 2.0F : 0.0F;
@@ -379,9 +393,7 @@ void paint_preset_key(Drawing& drawing, const UiControlGeometry& geometry, bool 
         drawing.rect({face.x + 1.0F, face.y + 3.0F,
                       std::max(1.0F, face.width - 2.0F), 2.0F}, kUiBrass);
     }
-    centered(drawing, preset_selection_label(static_cast<PresetSelection>(geometry.id.index)),
-             geometry.label_bounds, 9.0F, ivory ? UiColor{37, 29, 20} : kUiIvory,
-             TextFace::Sans, 0.0F);
+    paint_preset_label(drawing, geometry);
 }
 
 void paint_preset_focus(Drawing& drawing, const UiControlGeometry& geometry) {
@@ -998,7 +1010,7 @@ void paint_header(Drawing& drawing, const UiLayout& layout) {
     const float natural_width = drawing.text_width(title, size, TextFace::Serif);
     if (natural_width > title_right - title_left) size *= (title_right - title_left) / natural_width;
     const float width = drawing.text_width(title, size, TextFace::Serif);
-    const float desired_x = title_left + (title_right - title_left - width) / 2.0F;
+    const float desired_x = (layout.width - width) / 2.0F;
     const float x = std::clamp(desired_x, title_left, std::max(title_left, title_right - width));
     const float y = layout.header.y + (layout.show_cabinet ? 4.0F : 8.0F);
     drawing.text(title, x + 1.0F, y + 2.0F, size, {4, 5, 4}, TextFace::Serif);

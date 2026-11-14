@@ -205,7 +205,11 @@ void geometry_and_occlusion() {
                 CHECK(key.bounds.width >= 11.99F);
                 CHECK(key.label_bounds.x >= key.bounds.x);
                 CHECK(key.label_bounds.x + key.label_bounds.width <= key.bounds.x + key.bounds.width);
-                CHECK(key.label_bounds.height == 11);
+                CHECK(key.label_bounds.height == (is_sharp(pitch) ? 20 : 11));
+                CHECK_NEAR(key.label_bounds.y,
+                    key.bounds.y + key.bounds.height - key.label_bounds.height - 2, 0.001F);
+                CHECK(key.label_bounds.y >= key.bounds.y);
+                CHECK(key.label_bounds.y + key.label_bounds.height <= key.bounds.y + key.bounds.height);
                 CHECK(ui_hit_test(layout, exposed_point(model, manual, pitch)) == preset(manual, pitch));
                 std::uint32_t parameter = 0;
                 CHECK(ui_parameter_id(key.id, parameter));

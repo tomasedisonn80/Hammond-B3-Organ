@@ -1,0 +1,442 @@
+{
+  "agent": "A37",
+  "kind": "two bounded final native operator cases",
+  "published_head_at_run": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+  "qualification_scope": "A34+A36 working source, independently matched to all 327 A36 build inputs; published HEAD alone does not identify these edits",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-flow.py",
+    "--executable",
+    "/workspace/scratch/601951e27dc3/a37-operator-bin/hammond_standalone",
+    "--expected-sha256",
+    "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+    "--source-report",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-build.json",
+    "--output",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence"
+  ],
+  "cwd": "/workspace/scratch/601951e27dc3/Hammond-B3-Organ",
+  "executable": "/workspace/scratch/601951e27dc3/a37-operator-bin/hammond_standalone",
+  "executable_sha256_before": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+  "source_qualification_report": "docs/development/2026-11-14-interface-continuation/reports/a36-build.json",
+  "source_qualification_report_sha256": "6a985f1f21009cad8e5d21ac7e66a7357a921808c749bf64aea4eaa59be328bc",
+  "build_source_count": 327,
+  "all_build_sources_match_before": true,
+  "toolchain": {
+    "cmake": "cmake version 4.4.4",
+    "compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+    "python": "3.12.14"
+  },
+  "configuration": {
+    "build_type": "Release",
+    "standalone": true,
+    "midi": true,
+    "vst3": false,
+    "sdl_alsa": false,
+    "native_rtmidi_alsa": true
+  },
+  "python": "3.12.14",
+  "pillow": "13.0.0",
+  "input_sha256_before": {
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-flow.py": "1933dfd490af8c222bad2d46e15c3f3639a7fd205c97e8129ca9aeba80effe46",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-journey.py": "4d32408114f8904ffd2e53e6348893eeed2b153e7428f753de79df23d3cab296",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-build.json": "6a985f1f21009cad8e5d21ac7e66a7357a921808c749bf64aea4eaa59be328bc",
+    "docs/INTERFACE_RUNBOOK.md": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0",
+    "docs/STANDALONE_INPUT_REPLAY.md": "da2f71ee6047bd175361376c9ef826ecd6407e5c434d708a8e1d5fe880c9cf5b",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "1cdaa5a6669b79ed19f26c170ef77a0181162a18649d0d81deed7f53f5a9fb8e",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "482f2d7b9075358782e966c12c7117c5fd1bd5d10a52682cffa3c0d4c459e891"
+  },
+  "runs": [
+    {
+      "name": "01-navigation-edit-save-load",
+      "command": [
+        "/workspace/scratch/601951e27dc3/a37-operator-bin/hammond_standalone",
+        "--state",
+        "/tmp/a30-01-navigation-edit-save-load-j8y6_7ge/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-01-navigation-edit-save-load-j8y6_7ge/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-01-navigation-edit-save-load-j8y6_7ge/diagnostics.json",
+        "--screenshot",
+        "/tmp/a30-01-navigation-edit-save-load-j8y6_7ge/frame.bmp"
+      ],
+      "cwd": "/tmp/a30-01-navigation-edit-save-load-j8y6_7ge",
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "timeout_seconds": 9,
+      "executable_sha256_before": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+      "returncode": 0,
+      "elapsed_seconds": 3.663241902999289,
+      "capture": {
+        "png": "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/frame.png",
+        "bmp_sha256": "d98319cbf3a521cc5211b426712a034185d14159afe85ead31e7b8cdf3a731a4",
+        "png_sha256": "07f642cd2ae556dfe1ffa6531fcde6b9ca316d883d3dbfa881a082b9fd2fad0e",
+        "decoded_mode": "RGBA",
+        "size": [
+          960,
+          700
+        ],
+        "decoded_pixels_sha256": "04d6cf2ecb02ea1c9aca2dcb1e07a2645b39052ef53434b4e8eca1204aaf9285",
+        "decoded_pixels_equal": true
+      },
+      "native_result": "passed",
+      "state_existed_at_start": true,
+      "state_exists_after": true,
+      "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+      "painted_views": [
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "service",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "service",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "rotary",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "dimensional",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          1280,
+          900
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          960,
+          700
+        ],
+        [
+          "service",
+          "flat",
+          "none",
+          960,
+          700
+        ]
+      ],
+      "note_on_commands": 1,
+      "note_off_commands": 1,
+      "device_starts": 1,
+      "audio_callbacks": 323,
+      "held_before_shutdown": [
+        [],
+        [],
+        []
+      ],
+      "executable_sha256_after": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2"
+    },
+    {
+      "name": "02-minimum-focused-dsharp",
+      "command": [
+        "/workspace/scratch/601951e27dc3/a37-operator-bin/hammond_standalone",
+        "--state",
+        "/tmp/a30-02-minimum-focused-dsharp-z2tunir7/controls.b3controls",
+        "--input-script",
+        "/tmp/a30-02-minimum-focused-dsharp-z2tunir7/input.b3uireplay",
+        "--diagnostics",
+        "/tmp/a30-02-minimum-focused-dsharp-z2tunir7/diagnostics.json",
+        "--width",
+        "960",
+        "--height",
+        "700",
+        "--flat",
+        "--screenshot",
+        "/tmp/a30-02-minimum-focused-dsharp-z2tunir7/frame.bmp"
+      ],
+      "cwd": "/tmp/a30-02-minimum-focused-dsharp-z2tunir7",
+      "environment": {
+        "SDL_AUDIODRIVER": "dummy",
+        "SDL_VIDEODRIVER": "dummy"
+      },
+      "timeout_seconds": 9,
+      "executable_sha256_before": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+      "returncode": 0,
+      "elapsed_seconds": 1.455390871000418,
+      "capture": {
+        "png": "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/frame.png",
+        "bmp_sha256": "ce0e8b7a790f971805350a9ccb0acc8650375c638a6b2740fbc4634c8b1b3fb3",
+        "png_sha256": "ded13d6686687f9e3902907cd9a2dadb080323fb55120cc0cf9947fd0fb8b6bb",
+        "decoded_mode": "RGBA",
+        "size": [
+          960,
+          700
+        ],
+        "decoded_pixels_sha256": "bfe56c70c8b5db9d272e9f35b064e0744a428276777e1aba8835528a1d53d93d",
+        "decoded_pixels_equal": true
+      },
+      "native_result": "passed",
+      "state_existed_at_start": true,
+      "state_exists_after": true,
+      "state_sha256_after": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+      "painted_views": [
+        [
+          "play",
+          "flat",
+          "none",
+          960,
+          700
+        ],
+        [
+          "service",
+          "flat",
+          "none",
+          960,
+          700
+        ],
+        [
+          "rotary",
+          "flat",
+          "none",
+          960,
+          700
+        ],
+        [
+          "play",
+          "flat",
+          "none",
+          960,
+          700
+        ]
+      ],
+      "note_on_commands": 1,
+      "note_off_commands": 1,
+      "device_starts": 1,
+      "audio_callbacks": 128,
+      "held_before_shutdown": [
+        [],
+        [],
+        []
+      ],
+      "executable_sha256_after": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2"
+    }
+  ],
+  "checks": [
+    "Held note 60 survives workspace/Flat navigation, retained-bank edit, explicit preset selection and live Load until its original release; one audio lifecycle.",
+    "Only Upper A drawbar 1 changes 0->8 while Fixed F# remains sounding; preset B deliberately changes the route; canonical Save and live Load restore exact controls.",
+    "Minimum Flat launch restores exact saved controls; focusing D# and returning from Service/Rotary do not select it or rewrite state; the second PNG requires inspection of restored focus and full caption."
+  ],
+  "visual_review": {
+    "reviewer": "A37 actual image inspection",
+    "01-navigation-edit-save-load": {
+      "reviewed": true,
+      "observed_banner": "CURRENT SNAPSHOT",
+      "observed_notice": "Loaded saved controls.",
+      "observed_upper_row": "Sound Fixed F# / Edit B",
+      "observed_lower_row": "Sound Fixed G# / Edit B",
+      "held_counts": [
+        0,
+        0,
+        0
+      ],
+      "six_cards_and_ten_header_actions_visible": true,
+      "unconnected_models_and_unacquired_physical_values_remain_explicit": true
+    },
+    "02-minimum-focused-dsharp": {
+      "reviewed": true,
+      "observed_focused_preset": "Upper D# with separate inset cyan focus stroke",
+      "observed_footer_prefix": "Upper preset D#: fixed registration / EDIT B / SOUNDING FIXED F#",
+      "stacked_accidental_pitch_and_sharp_glyphs_visible": true,
+      "upper_and_lower_manuals_and_pedals_visible": true,
+      "focus_does_not_imply_selection": true,
+      "qualification": "Nine-unit cap text remains small; no physical-display or accessibility acceptance inferred."
+    }
+  },
+  "failure": null,
+  "operator_assertions_completed": true,
+  "load_observation": {
+    "requested_at_ms": 2460,
+    "first_restored_acknowledgment": {
+      "elapsed_ms": 2548,
+      "last_submitted_sequence": 7,
+      "manual_notes": [
+        [
+          60
+        ],
+        []
+      ],
+      "pedal_ids": [],
+      "controls": {
+        "manual_drawbars": [
+          [
+            [
+              8,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            [
+              8,
+              7,
+              6,
+              5,
+              4,
+              3,
+              2,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              3,
+              5,
+              7,
+              0,
+              2,
+              4,
+              6,
+              8
+            ],
+            [
+              8,
+              6,
+              4,
+              2,
+              0,
+              7,
+              5,
+              3,
+              1
+            ]
+          ]
+        ],
+        "selected_banks": [
+          0,
+          1
+        ],
+        "fixed_registrations": [
+          6,
+          8
+        ],
+        "preset_selections": [
+          6,
+          8
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.375,
+        "pedal_drawbars": [
+          2,
+          7
+        ],
+        "percussion": {
+          "enabled": true,
+          "harmonic": 1,
+          "volume": 1,
+          "decay": 1
+        }
+      },
+      "resolved_sequence": 7,
+      "last_applied_sequence": 7
+    },
+    "screenshot": {
+      "elapsed_ms": 3550,
+      "rendered_image": 115,
+      "workspace": "service",
+      "presentation": "flat",
+      "overlay": "none",
+      "window_width": 960,
+      "window_height": 700,
+      "inspection": {
+        "snapshot_available": true,
+        "snapshot_read_succeeded": true,
+        "snapshot_state": "current",
+        "controls_pending": false,
+        "frame_clock": 163328,
+        "publication_revision": 642
+      }
+    },
+    "expected_visible_notice": "Loaded saved controls.",
+    "notice_requires_separate_visual_review": true,
+    "exact_canonical_saved_sha256": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3"
+  },
+  "executable_sha256_after": "bd4991a3b45543a01c9ce435da140af848d45f28ff535699397706e5d3925dc2",
+  "executable_unchanged": true,
+  "all_build_sources_match_after": true,
+  "input_sha256_after": {
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-flow.py": "1933dfd490af8c222bad2d46e15c3f3639a7fd205c97e8129ca9aeba80effe46",
+    "docs/development/2026-11-14-interface-continuation/reports/a30-operator-journey.py": "4d32408114f8904ffd2e53e6348893eeed2b153e7428f753de79df23d3cab296",
+    "docs/development/2026-11-14-interface-continuation/reports/a36-build.json": "6a985f1f21009cad8e5d21ac7e66a7357a921808c749bf64aea4eaa59be328bc",
+    "docs/INTERFACE_RUNBOOK.md": "74c1572b5d1d8697a46db38c07e7b8e2ae59c60a0f31988de7767300cda95db0",
+    "docs/STANDALONE_INPUT_REPLAY.md": "da2f71ee6047bd175361376c9ef826ecd6407e5c434d708a8e1d5fe880c9cf5b",
+    "apps/standalone/native_tests/test_standalone_app.py": "7e4df0bb2f891db4bcb78c9e7125ea2db5c6d18b046d11010d116dbcd1e633bf",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "1cdaa5a6669b79ed19f26c170ef77a0181162a18649d0d81deed7f53f5a9fb8e",
+    "apps/standalone/native_tests/test_standalone_workflows.py": "598d47281c936a37cb94a50b9dc83b2243f5b15a621afdad79ad343e1e738124",
+    "apps/standalone/native_tests/test_standalone_workspace_replay.py": "482f2d7b9075358782e966c12c7117c5fd1bd5d10a52682cffa3c0d4c459e891"
+  },
+  "inputs_unchanged": true,
+  "native_processes": 2,
+  "native_successes": 2,
+  "native_failures_preserved": 0,
+  "output_sha256": {
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/controls.b3controls": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/diagnostics.json": "153370d2e700dc98a93872d41f94c2c39b7f0052a4ae2df5f0bdb3e64ead8bc8",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/frame.png": "07f642cd2ae556dfe1ffa6531fcde6b9ca316d883d3dbfa881a082b9fd2fad0e",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/initial.b3controls": "4ccbf8d166b3dacf34a06ef50641d4c48fafa9507e19ccd0707b852af25a24cf",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/input.b3uireplay": "9f5ef6b76f4e2e87175d24d47f3629a7e7dfda57f55cbbc2862d236a994998c6",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/process.json": "cab891258cc8e71d591886fbd95fbef71acca718d6e784645523286e30ce5702",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/01-navigation-edit-save-load/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/controls.b3controls": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/diagnostics.json": "42a79333dc2e9f6650715a3c04cafafd1217e2d4b78ad3d28390a779d7e268c5",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/frame.png": "ded13d6686687f9e3902907cd9a2dadb080323fb55120cc0cf9947fd0fb8b6bb",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/initial.b3controls": "c921ed04fd743fdde01ac300bf4cab34b7f6406f4007cc497f2a873e689e46a3",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/input.b3uireplay": "4066964a67e6ffc854d4d6fa4b892d4ce379b84e81bc145f6959865ba8e5d750",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/process.json": "3d0cc5bf85aa7ed41982326257668f94da5bdfd80d89abdd19e76e5a48968a26",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/development/2026-11-14-interface-continuation/reports/a37-operator-evidence/02-minimum-focused-dsharp/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "limits": [
+    "Dummy SDL software renderer; no physical audio/MIDI or display/DPI qualification",
+    "MIDI modal not opened; prior A30 ALSA discovery failure remains separate",
+    "No persistent native pointer capture; A42 owns that gate",
+    "Wall-clock replay is not sample-accurate automation or a callback deadline test",
+    "No repeated PCM/model/raster matrix, native accessibility or literal reference equality claim"
+  ]
+}

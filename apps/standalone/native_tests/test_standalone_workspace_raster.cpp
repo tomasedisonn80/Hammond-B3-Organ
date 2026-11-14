@@ -436,7 +436,7 @@ int main(int argc, char** argv) {
     const auto started = std::chrono::steady_clock::now();
     try {
         require(argc == 1 || argc == 2, "usage: test_standalone_workspace_raster [capture-directory]");
-        const char* capture_option = argc == 2 ? argv[1] : std::getenv("HAMMOND_WORKSPACE_RASTER_CAPTURE_DIR");
+        const char* capture_option = argc == 2 ? argv[1] : SDL_getenv("HAMMOND_WORKSPACE_RASTER_CAPTURE_DIR");
         const std::filesystem::path capture_directory = capture_option == nullptr ? "" : capture_option;
         if (!capture_directory.empty()) std::filesystem::create_directories(capture_directory);
         require(SDL_Init(0) == 0, "initialize SDL without hardware subsystems");

@@ -503,7 +503,7 @@ int main(int argc, char** argv) {
     SDL_SetMainReady();
     try {
         require(argc == 1 || argc == 2, "optional argument is a fresh capture directory");
-        const char* capture_environment = std::getenv("HAMMOND_SCALED_VIEW_CAPTURE_DIR");
+        const char* capture_environment = SDL_getenv("HAMMOND_SCALED_VIEW_CAPTURE_DIR");
         const std::filesystem::path captures = argc == 2 ? std::filesystem::path(argv[1]) :
             capture_environment != nullptr ? std::filesystem::path(capture_environment) : std::filesystem::path{};
         if (!captures.empty()) require(std::filesystem::create_directory(captures), "create fresh proof directory");

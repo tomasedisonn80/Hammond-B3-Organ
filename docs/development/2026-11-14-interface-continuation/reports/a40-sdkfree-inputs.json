@@ -1,0 +1,642 @@
+{
+  "schema": 1,
+  "build": "/workspace/scratch/601951e27dc3/build-a13-sdkfree",
+  "cache_selected": [
+    "BUILD_TESTING:BOOL=ON",
+    "CMAKE_BUILD_TYPE:STRING=Release",
+    "CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++",
+    "CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-14",
+    "CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-14",
+    "CMAKE_CXX_FLAGS:STRING=",
+    "CMAKE_CXX_FLAGS_DEBUG:STRING=-g",
+    "CMAKE_CXX_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG",
+    "CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG",
+    "CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG",
+    "HAMMOND_BUILD_STANDALONE:BOOL=OFF",
+    "HAMMOND_BUILD_VST3:BOOL=OFF",
+    "HAMMOND_ENABLE_MIDI:BOOL=OFF",
+    "HAMMOND_ENABLE_SANITIZERS:BOOL=OFF",
+    "HAMMOND_RTMIDI_ROOT:PATH=",
+    "HAMMOND_SDL2_ROOT:PATH=",
+    "HAMMOND_VST3_SDK_ROOT:PATH=",
+    "Python3_EXECUTABLE:UNINITIALIZED=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "CMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_COMPILER_RANLIB-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1",
+    "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1",
+    "CMAKE_GENERATOR:INTERNAL=Unix Makefiles",
+    "CMAKE_GENERATOR_INSTANCE:INTERNAL=",
+    "CMAKE_GENERATOR_PLATFORM:INTERNAL=",
+    "CMAKE_GENERATOR_TOOLSET:INTERNAL="
+  ],
+  "cache_sha256": "8a4f7f6a813ac45f44fd9f1c1751668f53bb968a6d4bb16127343d392e8ac424",
+  "compile_commands_sha256": "2f6cdef31ed047979bcb50f728ea9f9b68640c0c034749b508431d68ab530335",
+  "compile_entries": 101,
+  "external_sdk_compile_entries": [],
+  "binaries_and_profile": {
+    "apps/standalone/hammond_standalone_benchmark": {
+      "sha256": "95e73dd59403ecc526b28bd2c16131bb258a6a7340b4bff1a36b1c0dd8aaa6b5",
+      "bytes": 159696
+    },
+    "apps/standalone/libhammond_standalone_support.a": {
+      "sha256": "268d23eb609ed13926b084cb61b75d8ebae443646618316caafe4307a06b687a",
+      "bytes": 213120
+    },
+    "apps/standalone/test_standalone_concurrency": {
+      "sha256": "38391436519e17ac08f54a7f70a65c7561fbc031c44d3e5946735130ac04db00",
+      "bytes": 170896
+    },
+    "apps/standalone/test_standalone_external_control": {
+      "sha256": "72ecf536ad4d19052c741cfdddd4fb99ded58601320546e69c21c3bb96df5225",
+      "bytes": 170608
+    },
+    "apps/standalone/test_standalone_inspection_acceptance": {
+      "sha256": "1551bfdf1836f4186877e1afcf74af06602cf91740eb6e5d0040664ef6d8bbd6",
+      "bytes": 233416
+    },
+    "apps/standalone/test_standalone_inspection_author": {
+      "sha256": "37512d878941600db15b40159acfe1a94be08470cd2f615e2930b4259fa3f68a",
+      "bytes": 125552
+    },
+    "apps/standalone/test_standalone_midi_backend": {
+      "sha256": "fa43e0fb213c150b8d201e4f744d35611e5f0e3ae8175b43b92d9589fb0e0b12",
+      "bytes": 179368
+    },
+    "apps/standalone/test_standalone_midi_concurrency": {
+      "sha256": "d6edf3d517ec0fcee8cb0864be70b5ca706ae582c7f4d437bb99aa734c81d171",
+      "bytes": 62512
+    },
+    "apps/standalone/test_standalone_midi_discovery": {
+      "sha256": "d2b9f234e02a6576512ce145fde5a0863e04ea7d5465dfba46ff7c36a08545a1",
+      "bytes": 43528
+    },
+    "apps/standalone/test_standalone_midi_input": {
+      "sha256": "3889a7dbf0035ac9a8bda71de5dafd59a2a75f53413771f9b03699a9b178c83e",
+      "bytes": 57648
+    },
+    "apps/standalone/test_standalone_midi_replay": {
+      "sha256": "fdd120e1431e9021a33f3708c16076b797c47cafc2ef6749a50f3e2730dee7d9",
+      "bytes": 101048
+    },
+    "apps/standalone/test_standalone_midi_session": {
+      "sha256": "898de8017f61fafc38090a0964b3470777ba44078cc40602033529c8bc08ffe7",
+      "bytes": 240984
+    },
+    "apps/standalone/test_standalone_preset_concurrency": {
+      "sha256": "21f8348788ee5c89d99af5f5780d064d3352edcf5693ee20a56596a2ac2f25c1",
+      "bytes": 183128
+    },
+    "apps/standalone/test_standalone_preset_ui": {
+      "sha256": "038e9c5d1050b3e30782b677696047879613ab3eba548f67f52947072d118ba9",
+      "bytes": 189904
+    },
+    "apps/standalone/test_standalone_projection": {
+      "sha256": "e7d1187f7b5b4378ed2ea28ea8be9b13da379a1863866f190858d691d7c15a2f",
+      "bytes": 124040
+    },
+    "apps/standalone/test_standalone_session": {
+      "sha256": "2a5a2fd67eab64f30b9fd1afb0ee20d4a2312798e2ef48cd00c6f915ba700a93",
+      "bytes": 202984
+    },
+    "apps/standalone/test_standalone_state_files": {
+      "sha256": "71af31f5ebe911d904a40d64451664ebc37703953baf2c910064cd9caa3873de",
+      "bytes": 152720
+    },
+    "apps/standalone/test_standalone_ui": {
+      "sha256": "78cad5f8b3d33b05afe43df0fd87cb4ffe93f10b4f236d7dc00d4712620f3630",
+      "bytes": 266200
+    },
+    "apps/standalone/test_standalone_workspace_acceptance": {
+      "sha256": "5cbbe02bc9de766e0345af4913aa15ea1dc2923c47da20787e2a11d3c1d23017",
+      "bytes": 219440
+    },
+    "apps/standalone/test_standalone_workspace_continuity": {
+      "sha256": "bfb01d3cb64130acdb5a89b0cb4fdcc2e4433c6c0590e9e23895c0e21426a433",
+      "bytes": 302192
+    },
+    "apps/standalone/test_standalone_workspaces_author": {
+      "sha256": "6c571a0f514d232b42b32fd88c2dc626852b9bcd9a23717261becc7f62f1b911",
+      "bytes": 93376
+    },
+    "hammond_benchmark": {
+      "sha256": "370c01a194d8495f9c0abf01bf098d6c88a443346a9dfbeb4a21a7ac2db1315b",
+      "bytes": 143936
+    },
+    "hammond_console_trace": {
+      "sha256": "13d41e1bc68f3ceff8e43d3dd06636c754d338c7af3424d3d00bc373e6caef41",
+      "bytes": 127840
+    },
+    "hammond_model_info": {
+      "sha256": "3471217c9f35530ea19c10fcff8508fa6a8dd4ae29c920e6ef5e8d1cb6bcc991",
+      "bytes": 46976
+    },
+    "hammond_parameter_info": {
+      "sha256": "f3f56ede7fcd93a81423ac78ea86cf959e34ef821d812f1396f607808d93992e",
+      "bytes": 41248
+    },
+    "hammond_pedal_trace": {
+      "sha256": "fba2f313e2d0f584b4a73d2f50b1868ba15ae735320ee4f0b039f87660c211b6",
+      "bytes": 131992
+    },
+    "hammond_render": {
+      "sha256": "ade81c8062b28a862a01c48f86220320558d893f19ab78a073deb1acf754f93b",
+      "bytes": 140456
+    },
+    "hammond_scanner_line_probe": {
+      "sha256": "c038fb6b9feb1fd3a852bfaa7ba58e5ff7b1de48032c5df777841027ddb55173",
+      "bytes": 69712
+    },
+    "libhammond_core.a": {
+      "sha256": "5f9e77044925821c9c7f6896352f704ecd93fa30d21b788be27c9e3650680930",
+      "bytes": 290476
+    },
+    "nominal.b3p": {
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "bytes": 4545
+    },
+    "test_console_engine": {
+      "sha256": "b18e6b73046dae1bbaa7f0ef7f48d965085946ca942829968f3be656be8c5dfc",
+      "bytes": 125024
+    },
+    "test_contact_bank": {
+      "sha256": "882470fe097f741ff69be3313a834d5ce3b376195dcdabe38a73d664431f16e5",
+      "bytes": 57112
+    },
+    "test_contact_rate": {
+      "sha256": "752bf76c326e3155b43dce7b1e55db588a14fe2386744fa94928db6d9494a153",
+      "bytes": 52816
+    },
+    "test_control_io": {
+      "sha256": "6a6bac5d363cb718f7e20634d0fb0e13122ee152eaaefda0ceb096c0c085f6b6",
+      "bytes": 178496
+    },
+    "test_controls": {
+      "sha256": "9ddcfac590187ecd406ae523cb4490491965e51c8729be67bb5bf14c9e08f582",
+      "bytes": 156560
+    },
+    "test_core_robustness": {
+      "sha256": "c6a71abd3e73e3c8b1ef66bcff728c9c4317a0712698315c8f0d7f230054ee06",
+      "bytes": 71608
+    },
+    "test_decimal": {
+      "sha256": "580849cf75e4f3b4b101f7dc8e9d195298a19b3195c9790168d2ba6166268cf8",
+      "bytes": 44568
+    },
+    "test_engine": {
+      "sha256": "0346fc7d9cd1cc63c167865f489299d4b1c3c8b64eefeed92eea073285699e55",
+      "bytes": 156088
+    },
+    "test_engine_rate": {
+      "sha256": "3ee4ee294aa14b3725a71f890a8a2c5cf3de2ad141c905f939a60c227df20010",
+      "bytes": 170216
+    },
+    "test_factory_runtime": {
+      "sha256": "104be7f085420b78932d6ec07b11fe9bf666af06a27607a6f1cf9e0f466524f2",
+      "bytes": 134832
+    },
+    "test_fixed_registration_data": {
+      "sha256": "298cdcc7c5de63393b5b1ceeebc4ed5e9f3d82c4818c3723c0c66064d4528bd3",
+      "bytes": 17840
+    },
+    "test_fixed_registration_engine": {
+      "sha256": "7cbe34d90239766e06a640dc7f362fcaffe771eb5e0a58a77648a94b86be2c70",
+      "bytes": 154240
+    },
+    "test_fixed_registration_lifecycle": {
+      "sha256": "62c2db48d95521a5a6b6b04098ea0fa65d80be8e10e33d849dfe66dea726070a",
+      "bytes": 180792
+    },
+    "test_host_timeline": {
+      "sha256": "b8ea4663d320813565e318c95239bcd18b6b5766acb7a173d1f1ebe030e11643",
+      "bytes": 202352
+    },
+    "test_input_processor": {
+      "sha256": "1c675af9a8636355d4442e3de3ccc89831285602014fe4f73e04c07252423e14",
+      "bytes": 152096
+    },
+    "test_note_ownership": {
+      "sha256": "cc916e79f15867f86e2ed00d9e7b047890ac116a7305d152a4bbedeb41281ce7",
+      "bytes": 58888
+    },
+    "test_numerics": {
+      "sha256": "e3d2cae0c6c7d762cb1bfffe45b530df8f2b2c6ccb79e38f3a8cb77abd7c2fed",
+      "bytes": 114800
+    },
+    "test_owned_lifecycle": {
+      "sha256": "2c57f86193304bce8dc7b19ee3bac04dae384a7935ed46c799caeb228380ca15",
+      "bytes": 140320
+    },
+    "test_parameter_bridge": {
+      "sha256": "72d00abb01970d7efb830f33a4d787e18b5dd23c12adea0b03cf6746605604eb",
+      "bytes": 132808
+    },
+    "test_partial_key": {
+      "sha256": "f0a2c5b5d10486c0eb1fcf0c99ae9c32a63d6b2e6bdc2a313493c71b1fa4bef6",
+      "bytes": 120792
+    },
+    "test_pedal_controls": {
+      "sha256": "26a71f06fd39eb341b0c60ee7d4048dc6f5e50ed11a2233c14ffc1dbe5896808",
+      "bytes": 111056
+    },
+    "test_pedal_engine": {
+      "sha256": "b3d94c599be562fb72e2bd16ac716ad616c1b7e352394a27856c2d3e9fe6b460",
+      "bytes": 116008
+    },
+    "test_pedal_integration": {
+      "sha256": "770f39e84949ed148566a1341bb48bc20a86c0fa367abe22974d22ca29fc4d3e",
+      "bytes": 174376
+    },
+    "test_pedal_note_ownership": {
+      "sha256": "6fdeba2e1c88c1dee288b82daed4a845811b3fadd60fe265dddd5294df1ad2ed",
+      "bytes": 53712
+    },
+    "test_pedal_realtime": {
+      "sha256": "01381a30a54998cf990a4f93e97a2c235154775ae7bec33661b1b9e5f4b39e0c",
+      "bytes": 41160
+    },
+    "test_pedal_reference": {
+      "sha256": "52473e83707faaa18120969ea21831264cd37cad2a5e09b1670824e6f46ded1d",
+      "bytes": 45384
+    },
+    "test_pedal_routing": {
+      "sha256": "61bc07135521ee606a5535e106a9a1e3d0b5d72b8a7cefb9056ab36438acc6c0",
+      "bytes": 34568
+    },
+    "test_pedal_sources": {
+      "sha256": "af606e5e120a765494119a9444b6b8309acbf17cad4f92fc6f3e0ed9ea051753",
+      "bytes": 80072
+    },
+    "test_pedal_voice": {
+      "sha256": "690939083f8fcb7d5a2625865bdc9628d43ba30e5ecfdbeaef9c49eb29c5f25e",
+      "bytes": 26304
+    },
+    "test_percussion": {
+      "sha256": "70a1ea5cf072c988bd5dc75ca7173f937672fe16cab1f8563d8a689df0718c5a",
+      "bytes": 39576
+    },
+    "test_percussion_controls": {
+      "sha256": "cb5d6e92955c4a1e2ab3d96d8ac7a1056a14844b7839b4d643ede001558bc266",
+      "bytes": 138248
+    },
+    "test_percussion_rate": {
+      "sha256": "13c8c3d63de7cac2279420776d4d2e83f9ed09eac2771b91b4b21a74321528aa",
+      "bytes": 35528
+    },
+    "test_performance_acceptance": {
+      "sha256": "a6762218b491cebac1341dc048c3e0f94940891d6cd18df74c2b4fa02ec26785",
+      "bytes": 153680
+    },
+    "test_performance_input": {
+      "sha256": "f978c8603ccde5512419698bd1a8197c7426aa34defebf47b91ab11af2782e9e",
+      "bytes": 144464
+    },
+    "test_preset_parameter_boundaries": {
+      "sha256": "f613ff6ff88986ca0755faca0a6bf7560b0848e24b84a5050c39187a10a5cdad",
+      "bytes": 36576
+    },
+    "test_preset_realtime": {
+      "sha256": "d20f30dd86d1304511c287a061cdd6610185f5fe761096d25bfc48c5e12e4d9e",
+      "bytes": 176136
+    },
+    "test_profile": {
+      "sha256": "4a44b2fb81d95112efcad187ec0a86ae28c64174dcca392c0edc1b224c785696",
+      "bytes": 126632
+    },
+    "test_realtime": {
+      "sha256": "077b6d3c1c742ea05a8121b238fe5922923e09e1b1a9b1ed7dfc28e5daa4c3eb",
+      "bytes": 121480
+    },
+    "test_realtime_console": {
+      "sha256": "b72148348da6faceecfafb572d9998bddcdb52f9d338be03667c64f04e5cc16e",
+      "bytes": 152472
+    },
+    "test_realtime_pedals": {
+      "sha256": "5564590c467501e60eed8659f17a6589f26588c2e14cf8a61a60c9076747bcff",
+      "bytes": 259024
+    },
+    "test_scanner_line": {
+      "sha256": "e377f2a75e662fbb3b067d75bd582d15c16456d42ea38916db55de642f174aa6",
+      "bytes": 83336
+    },
+    "test_scanner_rotor": {
+      "sha256": "a46d414029602c6526931caabeae0cb12698e842fb777da3987af23ffe8d7182",
+      "bytes": 62328
+    },
+    "test_source_rate": {
+      "sha256": "4b3d997fd894dc721bef3212a987121f83dca4039298022b45513bb26a27b71a",
+      "bytes": 78832
+    },
+    "test_state_exchange": {
+      "sha256": "4f7a0003c8bb88886de0cc6dbeba8e5fa9cbcf6d97f39eaf97104780bc53c226",
+      "bytes": 176896
+    },
+    "test_tonewheel": {
+      "sha256": "c61256ef79f078a294620e20ea2bcb7599e95dec610bf74215227f254fb4d389",
+      "bytes": 74920
+    }
+  },
+  "test_count": 130,
+  "link_recipes": [
+    {
+      "path": "CMakeFiles/hammond_benchmark.dir/link.txt",
+      "sha256": "eac2f9f193e8108692ff46eab1a40c3cae33983b241e78b71f04cfbe5193801a"
+    },
+    {
+      "path": "CMakeFiles/hammond_console_trace.dir/link.txt",
+      "sha256": "c0c31bc9ae6c561ca49411dc92a5803f8603e5d3effd54c30d7e71f91a5e8595"
+    },
+    {
+      "path": "CMakeFiles/hammond_core.dir/link.txt",
+      "sha256": "e1cb1ce310ed822fadfc340dd38e86e19346d5798e532ffc4bcf67b34cef4f24"
+    },
+    {
+      "path": "CMakeFiles/hammond_model_info.dir/link.txt",
+      "sha256": "c45087572d93ce8de4daebd3c201f015dc1890026a16aa56329987c0a2a83e3a"
+    },
+    {
+      "path": "CMakeFiles/hammond_parameter_info.dir/link.txt",
+      "sha256": "f22538e05cfba34e6ef9de48f866c90cd78a35df69c69c10b818091238526b1d"
+    },
+    {
+      "path": "CMakeFiles/hammond_pedal_trace.dir/link.txt",
+      "sha256": "e9bf901941d2f98e02ddc529d00a2450367da39aee79c206e099421b52229949"
+    },
+    {
+      "path": "CMakeFiles/hammond_render.dir/link.txt",
+      "sha256": "3aa54fc6a04396f16756f5b1d02aae8e241611c017e595b132d3a89797fc26ed"
+    },
+    {
+      "path": "CMakeFiles/hammond_scanner_line_probe.dir/link.txt",
+      "sha256": "8a00c71a6c7927181f4e102d02174001707168ae38bd491a7055415bc9c729e7"
+    },
+    {
+      "path": "CMakeFiles/test_console_engine.dir/link.txt",
+      "sha256": "8485663da26b7abf215ca0daeabeb2f28e324b9c31090ffe445840f3ab57dd52"
+    },
+    {
+      "path": "CMakeFiles/test_contact_bank.dir/link.txt",
+      "sha256": "c1f9f491b7f59f2a72ab2bcdd905c638e210ee6610fff5ea554b88489e018e45"
+    },
+    {
+      "path": "CMakeFiles/test_contact_rate.dir/link.txt",
+      "sha256": "f43771be379237402b518f988cdc622d80cac78930d45bade30b4f453e838135"
+    },
+    {
+      "path": "CMakeFiles/test_control_io.dir/link.txt",
+      "sha256": "2b66aa5f41e329b9b0d3b3e198e68c85c895550d5a184e3ed781775599edfbe7"
+    },
+    {
+      "path": "CMakeFiles/test_controls.dir/link.txt",
+      "sha256": "6af162b0f0248b36577dec058bdfe2f3519e4bf76fb3cc91f5b25e5b1123a54f"
+    },
+    {
+      "path": "CMakeFiles/test_core_robustness.dir/link.txt",
+      "sha256": "04493732ea39a62a7cd15ed4c76d02526617a58ef361048ed82a1d6f4a12b10f"
+    },
+    {
+      "path": "CMakeFiles/test_decimal.dir/link.txt",
+      "sha256": "a372dc3807ac5c9aafde33292e7d61bb8fd0e2b3d993f6c88d8697502af9b463"
+    },
+    {
+      "path": "CMakeFiles/test_engine.dir/link.txt",
+      "sha256": "9874264fd8837f023e198dabaf2c39bc13d48fe009ac24676f661abddb3e709d"
+    },
+    {
+      "path": "CMakeFiles/test_engine_rate.dir/link.txt",
+      "sha256": "bd512a63a07c21144adf6d56766acb92ad47ef77e3fc780509ce23f89b48789c"
+    },
+    {
+      "path": "CMakeFiles/test_factory_runtime.dir/link.txt",
+      "sha256": "f9a8d1f1d931d1bc635a2ee3112407679a70dc9c3b2bc76d9e2c47a0cfc01a02"
+    },
+    {
+      "path": "CMakeFiles/test_fixed_registration_data.dir/link.txt",
+      "sha256": "65c39db18f5964de11f98622a8dc028d6248c469c5c0d50d7b86a88aa5c5acb9"
+    },
+    {
+      "path": "CMakeFiles/test_fixed_registration_engine.dir/link.txt",
+      "sha256": "52f8561bcfb1f0e14821a911a7404b29b3f7de07df050544d71601ba8a149b9d"
+    },
+    {
+      "path": "CMakeFiles/test_fixed_registration_lifecycle.dir/link.txt",
+      "sha256": "d0a13f263b48fa8a27d610f5a4e2378b7f9536aa68a587e970ff17e2630bb8d5"
+    },
+    {
+      "path": "CMakeFiles/test_host_timeline.dir/link.txt",
+      "sha256": "1297e98bb19f3c397a6bbebae917bac6ea93e4c02413cc5cdbbce7f8a641f026"
+    },
+    {
+      "path": "CMakeFiles/test_input_processor.dir/link.txt",
+      "sha256": "a7fba6e4589b0c8bcb3232a457ff4699b775cd83b5f9d6c197726e87c0cfa559"
+    },
+    {
+      "path": "CMakeFiles/test_note_ownership.dir/link.txt",
+      "sha256": "6a3bcb9affe197def71b7ce030990c9738a9b592e4a6c839a66625ceb864faa7"
+    },
+    {
+      "path": "CMakeFiles/test_numerics.dir/link.txt",
+      "sha256": "6bc1a17ffc26bb67276c28892a5b64e59fa860b0aa67eb4cb7dc33132969256d"
+    },
+    {
+      "path": "CMakeFiles/test_owned_lifecycle.dir/link.txt",
+      "sha256": "90cb1d799adcce72df466d785d690573a6a6134978f0bfe3184c9fb9fdf23b6a"
+    },
+    {
+      "path": "CMakeFiles/test_parameter_bridge.dir/link.txt",
+      "sha256": "75c0d8ddf6d61ede94ee1714595bb7c40aa3d511668e7d272f8ca83593c1359b"
+    },
+    {
+      "path": "CMakeFiles/test_partial_key.dir/link.txt",
+      "sha256": "401f5980b8d2d80fe80f5fe437f94e66bd3e8470eeae1dbf8383f5ee1a13ba28"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_controls.dir/link.txt",
+      "sha256": "e69f17632b3897240c5081c16fecd1288b0f8a57c6e3bf2b7f04280ba3cf7b05"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_engine.dir/link.txt",
+      "sha256": "6ceb161dc1cf38c05e571425f36302972b3bc60d227760319f0bff815910809a"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_integration.dir/link.txt",
+      "sha256": "3b5424ef4be15fbf45daf5437948d01d23ab6523f7197b9beba5fb27dd6fb8f9"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_note_ownership.dir/link.txt",
+      "sha256": "eca5e6b5e6f8befe5d25e87c8e25de75591e2f192b5626770325f6efe83173cb"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_realtime.dir/link.txt",
+      "sha256": "2a58c054ca86328548172555f7c18e04149bc017530805535e25250e432306b3"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_reference.dir/link.txt",
+      "sha256": "52628ff1b2a43a738d1bae915c842999af8a5845d763f0a875b1f95d58cce6c8"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_routing.dir/link.txt",
+      "sha256": "11fd23a5ad28e605b28a9c3830808a0e80c0a0441ea47e1756b25b4194873add"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_sources.dir/link.txt",
+      "sha256": "41ac948441aa15c4c39cc6a0d776dfdf98ec355dc96af1e6875ca74f88a3139c"
+    },
+    {
+      "path": "CMakeFiles/test_pedal_voice.dir/link.txt",
+      "sha256": "71f99d1a411656f0f463e2a2e85e9c0969bbe46fd067ccb58eb0e41542c901d2"
+    },
+    {
+      "path": "CMakeFiles/test_percussion.dir/link.txt",
+      "sha256": "f50926690beab7e48552987abfae3caf02247b96009c55e9cc66b1877f96ce18"
+    },
+    {
+      "path": "CMakeFiles/test_percussion_controls.dir/link.txt",
+      "sha256": "646602b88a7a56c509007e239ff7c1902f5d5d31736001b6e289a78ec1ea5d0c"
+    },
+    {
+      "path": "CMakeFiles/test_percussion_rate.dir/link.txt",
+      "sha256": "8d760042039c6a05a84ac36f303bbe5681f5df931790e9e97cc5c3f2457daed7"
+    },
+    {
+      "path": "CMakeFiles/test_performance_acceptance.dir/link.txt",
+      "sha256": "d5eedd9ef2ffa7ad33b94b6ac8addc79675bd109a79deae0e1c5a210442efd98"
+    },
+    {
+      "path": "CMakeFiles/test_performance_input.dir/link.txt",
+      "sha256": "4c6849cc7320d94b2f9963ad9b49a8f257c1ffd417578b7b208d1fd5bade0505"
+    },
+    {
+      "path": "CMakeFiles/test_preset_parameter_boundaries.dir/link.txt",
+      "sha256": "fc8f8985e2cf58e0e3aa648971dda88e287b3d6534b8256d5e1032568884b376"
+    },
+    {
+      "path": "CMakeFiles/test_preset_realtime.dir/link.txt",
+      "sha256": "7e19a25c95342eb6b01fe580966964f4f53567a5d96ca8ca6819ec8ff1fc9486"
+    },
+    {
+      "path": "CMakeFiles/test_profile.dir/link.txt",
+      "sha256": "48131a384fe423eadb08f2a0d8b82ed7f4f2b3b97000d20c8bf6c8e7661ace50"
+    },
+    {
+      "path": "CMakeFiles/test_realtime.dir/link.txt",
+      "sha256": "14b4f8abf1046e3ed795155460f05b07790da6dc416f361bb703687f3a815b01"
+    },
+    {
+      "path": "CMakeFiles/test_realtime_console.dir/link.txt",
+      "sha256": "ef5c1142875e5375261e075a91bb0a14510acc53fb03d09eb552006ba89188be"
+    },
+    {
+      "path": "CMakeFiles/test_realtime_pedals.dir/link.txt",
+      "sha256": "aa360757a05579773c54b9edf55faa6bce49e243c7d3db322f21f6d1fad3c033"
+    },
+    {
+      "path": "CMakeFiles/test_scanner_line.dir/link.txt",
+      "sha256": "4d03ff6a71ba2c5bf74c5705d575e37a42f32f4ede3c89c4a40a4dc65da5c9c3"
+    },
+    {
+      "path": "CMakeFiles/test_scanner_rotor.dir/link.txt",
+      "sha256": "ce3af3ac66fd48605e32168913cd25d14df668dd6f8704e3158d5d1889282005"
+    },
+    {
+      "path": "CMakeFiles/test_source_rate.dir/link.txt",
+      "sha256": "faa34cea462eb37a6e644ccd9615ac76dafbcc25e0c2c9304cc1c8ffbe0c55bd"
+    },
+    {
+      "path": "CMakeFiles/test_state_exchange.dir/link.txt",
+      "sha256": "98edf10263533d7e6b3a0ec80ab9fdb6f17d12f73aec6d47b1a783ada3cd4eef"
+    },
+    {
+      "path": "CMakeFiles/test_tonewheel.dir/link.txt",
+      "sha256": "7417dfaf6fabbdd0063bb1c33829b7eba7a3181a7aee30742e53938038c9d9c9"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/hammond_standalone_benchmark.dir/link.txt",
+      "sha256": "954f6d45755eb45e62c181c6def811618fdaa1993d59dfdab4e63b5721cc9ad4"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/hammond_standalone_support.dir/link.txt",
+      "sha256": "60477f260ac5a5ea4f4742c2c1203ef0d21a630212b65b43304380043c208976"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_concurrency.dir/link.txt",
+      "sha256": "55f44e24c0c5eadefe14d76b0ccaa82220bf08d6d36b92a28f53394c45fdebc9"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_external_control.dir/link.txt",
+      "sha256": "3e09b3041ff7caf8dd8a95415f117d4810ec3c6afda288f945ded662fea8b08f"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_inspection_acceptance.dir/link.txt",
+      "sha256": "79ea45cf7c24ec1247df1a9fe744a6e5155d4ff2b398bead6dab9b44712c6f47"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_inspection_author.dir/link.txt",
+      "sha256": "2b7a9fe12f9625ce80b2b5e93ac8b85a239c56872472c6a981398dda62d41d10"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_midi_backend.dir/link.txt",
+      "sha256": "61a8333fa26dd08328624644aec7df9dc77f9746b7dca6db9d312f831b0eba21"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_midi_concurrency.dir/link.txt",
+      "sha256": "b04c9865024b1dedcba79c087ebad5f24d4ccf6a2b805c4e5b1644400c86f146"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_midi_discovery.dir/link.txt",
+      "sha256": "989a5d2dcf25c486a8785637093b85233464042392d5527cbb9320f8fee6a53d"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_midi_input.dir/link.txt",
+      "sha256": "e18f47cbc938e833580f67ca379947796e4ea0f71e310e077743847f5c08b0f3"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_midi_replay.dir/link.txt",
+      "sha256": "18ccb1592437266794d4f7b73899ebc3d8b0b12dd805aa9b49cc73904894fc32"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_midi_session.dir/link.txt",
+      "sha256": "b05946db127c1965e49749bc9b59dd456112b4c6d70cfb6ffb095bc92bdca1b4"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_preset_concurrency.dir/link.txt",
+      "sha256": "324f504d203b88a5c1818c38a6a1cc958a313052068ad33bcb265be6a6dea50b"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_preset_ui.dir/link.txt",
+      "sha256": "d07ec0468dff8918d50d24b58886448d6a514e1d64d763340b60fe258e42a68e"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_projection.dir/link.txt",
+      "sha256": "0a314de513e83ec0923c1285bdbdcf849543a83665d0988bf36f9cba67d57a7f"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_session.dir/link.txt",
+      "sha256": "1dea0c9732a600fb2184ff4a943b5377f1dae19be901145ba0adb76b56370b59"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_state_files.dir/link.txt",
+      "sha256": "53f0839169ca420430bf6e1055c1bc6099e5708b2a7f6ddd9221024863111ea2"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_ui.dir/link.txt",
+      "sha256": "26d0c81c27276a41e262ed13420340a01e2061219608f6f3caaf8d8df11ac9cc"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_workspace_acceptance.dir/link.txt",
+      "sha256": "25a55f3284a3a8388263efe45d8c1a9f3698f4bfe60bc35bf6ed3fcfc5c0802a"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_workspace_continuity.dir/link.txt",
+      "sha256": "e4ddde6c7296f0fed4d7b5c6f75ffcc51db8eb9d0eb24094cc6c25334d09c051"
+    },
+    {
+      "path": "apps/standalone/CMakeFiles/test_standalone_workspaces_author.dir/link.txt",
+      "sha256": "f0542ef850b0b47260b9f9e662e650a1b85fb3672ad6754fa392566803859f5a"
+    }
+  ],
+  "sdkfree_runtime_dependencies": "\tlinux-vdso.so.1 (0x00007fce73c1e000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007fce7395e000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fce7386e000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007fce73841000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fce7364d000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fce73c20000)\n"
+}

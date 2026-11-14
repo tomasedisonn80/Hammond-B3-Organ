@@ -47,9 +47,21 @@ all five affected raster suites pass, including 298 full-surface checks across
 identifies every changed input and qualification; it does not rename the original
 146/147 run as a full pass.
 
-Minimum accidental preset readability and reference-size title centering are the
-current A34 work. A36 addresses a stale post-Load status sentence. Final gallery,
-coherent-source/platform qualification and all sixty assignments continue. The
+The workspace checkpoint is published at `aea58bb85bc66a5feaff66a0b8a388e7c3f9e630`.
+A34's stacked accidental labels and centered title are complete; A36's Load
+notice now agrees with its acknowledgment. A37's two actual operator journeys
+pass on the resulting application. A40 repaired observed strict Windows test
+compilation with explicit conversions and SDL's portable environment lookup;
+three affected native suites and all 130 SDK-free Release suites pass locally.
+Hosted Windows closure follows publication of those exact repairs.
+
+A41's fully instrumented native run retains ten passes and three raster timeouts
+under normal limits. Local leak checking is blocked by thread-attach restrictions;
+A43 is adding an identified hosted leak gate. A42's actual desktop launch exposes
+missing compiled X11 support, so persistent pointer capture remains unrun. Final
+package/gallery, coherent-source/platform qualification and sixty assignments
+continue; [the checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md)
+records current ownership and the separate follow-ups. The
 [reference comparison](reviews/INTERFACE_REFERENCE_COMPARISON.md) records that
 literal 1:1 equality is not yet met. Local dummy drivers do not establish
 physical devices, persistent native pointer capture, native semantic accessibility

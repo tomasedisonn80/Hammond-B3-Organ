@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "base_commit": "aea58bb85bc66a5feaff66a0b8a388e7c3f9e630",
+  "files": [
+    {
+      "path": "apps/standalone/tests/test_standalone_workspace_acceptance.cpp",
+      "only_expected_replacement": true,
+      "checks_before": {
+        "CHECK(": 186,
+        "check(": 0,
+        "require(": 0
+      },
+      "checks_after": {
+        "CHECK(": 186,
+        "check(": 0,
+        "require(": 0
+      }
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_scaled_view.cpp",
+      "only_expected_replacement": true,
+      "checks_before": {
+        "CHECK(": 0,
+        "check(": 8,
+        "require(": 24
+      },
+      "checks_after": {
+        "CHECK(": 0,
+        "check(": 8,
+        "require(": 24
+      }
+    },
+    {
+      "path": "apps/standalone/native_tests/test_standalone_workspace_raster.cpp",
+      "only_expected_replacement": true,
+      "checks_before": {
+        "CHECK(": 0,
+        "check(": 14,
+        "require(": 16
+      },
+      "checks_after": {
+        "CHECK(": 0,
+        "check(": 14,
+        "require(": 16
+      }
+    }
+  ],
+  "integer_resize_choices": [
+    819,
+    820,
+    1399,
+    1400
+  ],
+  "all_choices_exactly_representable_as_ieee_binary32": true
+}

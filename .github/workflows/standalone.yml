@@ -386,7 +386,8 @@ jobs:
                       "test_standalone_workspaces_author", "test_standalone_workspace_acceptance",
                       "test_standalone_projection", "test_standalone_quad_drawing",
                       "test_standalone_inspection_author", "test_standalone_inspection_acceptance",
-                      "test_standalone_workspace_replay"}
+                      "test_standalone_workspace_replay", "test_standalone_workspace_raster",
+                      "test_standalone_workspace_continuity", "test_standalone_scaled_view"}
           assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
           print("Discovered", len(names), "standalone tests, including required MIDI, workspace, inspection and drawing gates.", flush=True)
           PY

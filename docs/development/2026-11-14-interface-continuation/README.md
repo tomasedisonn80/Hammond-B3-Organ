@@ -19,7 +19,7 @@ The current organ remains nominal and unmeasured. Scanner integration, full AO-2
 | 5 | Raster acceptance, musical continuity, responsive inventory, scale/text audit, relocation, native operator smoke | Close distinct rendering, input and distribution risks. |
 | 6 | Integrated gates and repairs, reference comparison, resource budget, visual corrections, keyboard/pointer audit, failure-state clarity | Reconcile observed behavior and appearance with the contracts. |
 | 7 | Operator flow, source/evidence claims, CI inventory, SDK-free qualification, sanitizer qualification, display/responsive verification | Qualify the whole supported slice and preserve platform distinctions. |
-| 8 | Code audit, packaged replay, documentation freshness, final gallery, VST3 boundary, hosted results | Make the implementation reproducible and its claims traceable. |
+| 8 | Hosted native leak gate, packaged replay, documentation freshness, final gallery, VST3 boundary, hosted results | Make the implementation reproducible and its claims traceable. |
 | 9 | Final coherent qualification, provenance, independent visual comparison, bounded stress, handoff, strict session checker | Verify the exact deliverable and the real assignment record. |
 | 10 | Final UX acceptance, publication review, setup reproduction, hosted closure, accounting audit, final handoff acceptance | Complete guarded main publication and leave precise next steps. |
 
@@ -29,7 +29,7 @@ Future assignments may be refined to resolve concrete findings. A planned task i
 
 See [CHECKPOINT.md](CHECKPOINT.md) for exact current revisions, active ownership, dependency paths and reusable builds. The initial unchanged combined Release baseline passed **136/136 tests**. Its executable and report identities are retained in `reports/` and the original binaries remain outside the repository for comparisons.
 
-Published checkpoint `c83fe2336be931385f0d7ab82c55b30bfdfc8fc6` contains the atlas review, contracts and Windows oracle repair; hosted Windows Release succeeded. Published checkpoint `5d81199a9822874b55f3b0a124715cbd6eadf0e5` contains the nonblocking MIDI discovery repair after five targeted local gates. All eleven hosted jobs now pass at that exact repair revision, including macOS standalone; [the hosted record](reports/platform-repair-hosted.json) closes both original platform failures. The new UI is currently an explicitly recorded working overlay and will be published after coherent integration checks.
+Published checkpoint `c83fe2336be931385f0d7ab82c55b30bfdfc8fc6` contains the atlas review, contracts and Windows oracle repair; hosted Windows Release succeeded. Published checkpoint `5d81199a9822874b55f3b0a124715cbd6eadf0e5` contains the nonblocking MIDI discovery repair after five targeted local gates. All eleven hosted jobs now pass at that exact repair revision, including macOS standalone; [the hosted record](reports/platform-repair-hosted.json) closes both original platform failures. The workspace UI and accepted incremental repairs are published at `aea58bb85bc66a5feaff66a0b8a388e7c3f9e630` ([publication](reports/publication-3.json)). Subsequent label/status polish and strict Windows fixture repairs are complete working changes, qualified locally and awaiting their own guarded publication. The checkpoint records exact outstanding sanitizer, desktop, final gallery and hosted gates.
 
 ## Standing continuation rule
 
