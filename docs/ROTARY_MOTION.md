@@ -219,10 +219,26 @@ their input hashes identify the qualified source, not HEAD alone. The original
 historical evidence. Reproduction commands, the implemented R3 boundary and the
 next R4 task are in [ROTARY_PROPAGATION.md](ROTARY_PROPAGATION.md).
 
+The subsequent hosted qualification is source-specific:
+`26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8`, tree
+`530d5fcf777003f470f64558de9e5631d31a21a4`, is a documentation-only child of
+`f9c11a4`. Every A16/A19 numerical source, header, oracle and frozen-contract
+hash matches that revision. The [A44 sanitizer audit](development/2026-11-14-reference-refinement/notes/A44-hosted-sanitizer-audit.md)
+confirms core Debug job `132598497275` passed **137/137**, including native
+motion, propagation, the repaired allocation fixture and both independent
+Python acceptance gates with ASan/UBSan and leak detection enabled. The existing
+MIDI failed-close quarantine test has its own leak-check exception; it does not
+apply to these rotary gates. A27's original local LSan/EPERM failure remains
+retained, separately from this hosted pass.
+
 These results require the qualified floating-point behavior: preserve gradual
 underflow and avoid fast-math/reassociation. CMake's warning flags do not prevent
 externally supplied incompatible flags or a caller changing the floating-point
-environment. Windows/MSVC and AppleClang need their own numerical runs;
+environment. The same revision's Windows/MSVC and macOS/AppleClang Release jobs
+also passed the native rotary and independent Python gates; the
+[A43 matrix](development/2026-11-14-reference-refinement/reports/A43-hosted-fixture-closure.json)
+retains their exact primary results. Other source/toolchain/flag combinations
+still require their own qualification;
 same-executable partition identity does not require cross-platform output hashes.
 R4 waveform rendering, R5 audible policy, R6 integration/device deadlines and
 physical measurements remain separate. Nothing here connects the dry Engine or

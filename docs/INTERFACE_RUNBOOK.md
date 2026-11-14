@@ -125,6 +125,14 @@ from the applied snapshot, while **Edit** identifies the UI bank selection.
 **DESIRED CONTROLS PENDING** means a desired edit is still awaiting the ordinary
 control acknowledgment. It does not relabel that desired value as applied.
 
+The ordinary v5 gallery shows acknowledged endpoints, with painted held-target
+counts of **Upper 2 / Lower 1 / Pedals 1**. Genuine pending rendering has separate
+[six-frame Session-harness evidence](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-reference-refinement/notes/A18-pending-raster-implementation.md)
+and an [independent replay](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-reference-refinement/notes/A23-pending-independent.md):
+the requested preset is queued before a zero-frame render acknowledges it,
+without an application window or audio device. Those original images retain
+their own source identity; they are not pending frames from the newer gallery.
+
 Service shows the four retained bank strings in Upper A/B then Lower A/B order.
 These memories are not the connection taps of a sounding fixed registration.
 Cancel disconnects the route while retaining bank/fixed memory and held notes.
@@ -235,20 +243,53 @@ discovery dialog each remain separate from physical controller qualification.
 The default size is 1280×900 logical units; the minimum is 960×700, with each
 dimension limited to 8192. The reference comparison size is 1672×941. Play hides
 its optional cabinet column below width 1400 and moves Edit controls into the
-racks below height 820. Both presentations retain the complete instrument.
-Perspective manual keys use the same visible shape for painting, pointer input
-and inset focus. Flat supplies rectangular playing keys.
+racks below height 820. **Both width ≥1400 and height ≥820** enable the deeper
+manual allocation and pedals below the cabinet; a short, wide window retains
+the lower pedal row. At 1672×941 both full manuals have 144.12-pixel key depth.
+The refined two-line title/caption applies only to the wide/tall Dimensional
+header. Flat and non-sidebar header paths retain their accepted prior output.
+Both presentations retain the complete instrument. Perspective manual keys
+use the same visible shape for painting, pointer input and inset focus; Flat
+supplies rectangular playing keys.
 
-The [current eight-image preview and reproduction commands](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v2/README.md)
+The [current v5 gallery and exact reproduction commands](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v5/README.md)
 cover Play at reference/default/minimum sizes, Rotary and Service at
-reference/minimum sizes, and minimum Flat Play. The
-[provisional v1 gallery](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v1/README.md)
-remains unchanged historical evidence. The source
+reference/minimum sizes, and minimum Flat Play. Its published product source is
+`487064d2400b9f39d0ee66ed136a09c9e372379e`, tree
+`ae75093a76ff19c2e7f9189a92cf2faa63f4d8b6`; executable SHA-256 is
+`0b2fe36e1ff9a76e12bbd0bf97e633a424fcfd67cd78b9987e0b1b75e8e6f040`.
+The [provenance](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v5/provenance.json)
+retains named source/build inventories, replay/diagnostics and decoded pixel
+identities. All eight actual application captures use dummy SDL audio/video,
+software rendering and equal logical/drawable dimensions; the build selects no
+MIDI input and makes no discovery request. Earlier
+[v1](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v1/README.md),
+[v2](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v2/README.md)
+[v3](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v3/README.md)
+and [v4](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/examples/demos/standalone-interface-preview-v4/README.md)
+remain unchanged historical evidence. The source
 [capture utility](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/tools/capture_standalone_interface.py)
 requires a matching source qualification report and expected executable digest,
 then writes a fresh gallery. Use the exact source-specific command in that
 preview; a later renderer needs a new matching report and a new output directory.
 Python/Pillow are capture-authoring dependencies, not runtime requirements.
+
+For the recorded v5 source/build layout, create `out/` if needed and choose a
+new output directory. From repository root:
+
+```sh
+python3 -B tools/capture_standalone_interface.py \
+  --exe ../build-desktop/apps/standalone/hammond_standalone \
+  --source-root . --build-root ../build-desktop \
+  --source-qualification examples/demos/standalone-interface-preview-v5/inputs/source-qualification.json \
+  --expected-exe-sha256 0b2fe36e1ff9a76e12bbd0bf97e633a424fcfd67cd78b9987e0b1b75e8e6f040 \
+  --dummy-sdl --output out/interface-v5-repeat
+```
+
+Use the matching v5 producer and qualified binary; rebuilding later source does
+not inherit this digest or qualification. Existing output directories are
+rejected. Callback clocks and revision text can vary, so a fresh capture does
+not promise byte-identical images. Preserve the original galleries.
 
 For a bounded single-view check, choose new distinct output names and an absent
 state path. Run this from a built source checkout:
@@ -265,19 +306,35 @@ SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy \
 This exercises the actual native renderer and copied-state path with dummy
 drivers. Native diagnostics retain schema 3 and a separate `presentation`
 object: initial choices, observations, last painted view, screenshot view and
-the view before shutdown. The screenshot record names the view actually painted;
-final shutdown controls cannot substitute for that observation. UI replay uses
+the view before shutdown. Painted `held_targets` are copied from the exact
+applied view used for that frame; they count logical targets, not independent
+owners or audible voices. `pointer_capture` records the application/SDL flags
+and bounded attempt/admission/loss/release-call counters. A capture admission
+alone does not establish persistent operating-system delivery. The screenshot
+record names the view actually painted; final shutdown controls cannot
+substitute for that observation. UI replay uses
 the existing `B3UIREPLAY1` grammar with F4–F7 admitted, and its wall-clock timing
 is not sample-accurate automation. See the
 [application guide](STANDALONE_APP.md#scripted-interaction-and-observations).
 
-The current gallery records published product source and its exact executable
-identity; it does not automatically qualify a changed executable. Current
-publication and execution evidence is
-in the [status](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STATUS.md)
-and [interface session](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-interface-continuation/README.md).
-Literal 1:1 equality with the concept remains open: the live full key/pedal
-inventory, control labels, panel proportions, materials and cabinet composition
-retain differences. Native display/DPI behavior, screen-reader integration,
-physical MIDI/audio, callback deadlines, connected scanner/AO-28/Leslie models,
-calibration, signing and release rights each require their own evidence.
+The current gallery records a named source and executable; it does not
+automatically qualify a changed binary. Use the
+[status](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/STATUS.md),
+[reference-refinement checkpoint](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-reference-refinement/CHECKPOINT.md)
+and newer [waveform checkpoint](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+for their separate current work and evidence. The earlier
+[X11 input journey](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-reference-refinement/reports/root-desktop-acceptance-review.json)
+records actual pointer/resize observations with its own binary and explicit
+keyboard-transition limits; dummy gallery frames do not extend that result.
+
+**Literal 1:1 equality with the concept remains unmet.** The
+[independent header comparison](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/development/2026-11-14-reference-refinement/notes/A41-header-independent-acceptance.md)
+finds equal title/caption top and height, with one-pixel width differences at
+1672×941. The caption stays **NOMINAL DRY ORGAN**. The
+[composition review](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/reviews/REFERENCE_REFINEMENT_VISUAL.md)
+retains the remaining manual/rack positions, material, lighting and control
+inventory differences. Logical/drawable 1:1 capture scale is a different claim
+from reference-image equality. Native display/DPI behavior, screen-reader
+integration, physical MIDI/audio, callback deadlines, connected
+scanner/AO-28/Leslie models, calibration, signing and release rights each require
+their own evidence.

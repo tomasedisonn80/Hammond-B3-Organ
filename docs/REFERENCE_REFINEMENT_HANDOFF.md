@@ -1,5 +1,10 @@
 # Reference refinement: setup and continuation handoff
 
+**Combined-source continuation:** the [completion and integration record](REFERENCE_REFINEMENT_CLOSURE.md)
+records all 60 accepted agents, the integrated `487064d` R4/material source,
+the fresh v5 native gallery and its separate qualification. Source-specific
+`0881d1f4`/v4 results below remain historical evidence for those exact inputs.
+
 The current playable instrument is a **nominal dry organ**. This continuation
 adds the reference-led wide layout, material and inspection repairs, copied
 input observations, and independently tested native **R2 motion / R3 historical
@@ -13,10 +18,18 @@ Start each continuation with [AGENTS.md](../AGENTS.md),
 [current status](STATUS.md), [next steps](NEXT_STEPS.md), the
 [live checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md)
 and [actual manifest](development/2026-11-14-reference-refinement/assignments.json).
-Those records own progress after this source-specific handoff. The requested
-sixty workers in ten logical waves are still being completed at A37; historical
-workers do not count toward this session. All 500 atlas pages have already been
-read in six complete assignments; use the
+Also read the separate [waveform checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+and [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md).
+Those records own later progress and build ownership. **All sixty actual
+assignments are accepted in ten waves of six**, and root's
+[strict completion result](development/2026-11-14-reference-refinement/completion-check.json)
+passes with zero errors. This verifies retained record consistency only.
+Final documentation integrity, closing publication and actual final-head CI
+remain root's separate steps; the
+[closure-verification receipt](development/2026-11-14-reference-refinement/reports/root-closure-verification.json)
+owns their recorded outcomes. Historical and concurrent waveform workers never
+count toward this session. All 500 atlas pages have already been read in six
+complete assignments; use the
 [retained full review](research/REFERENCE_REFINEMENT_ATLAS_REVIEW.md) rather
 than restarting it after a context reset.
 
@@ -25,43 +38,96 @@ than restarting it after a context reset.
 | Item | Retained identity or evidence |
 | --- | --- |
 | Session starting source | `8bd999efc13e309b932e6ac41d72ceb7b9b80a5f` |
-| Published native/acceptance checkpoint | [`2e161dc3a60fc3442051799574feed37bffbfc5c`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/2e161dc3a60fc3442051799574feed37bffbfc5c), tree `17f8e4d698f903c37bff09deee196ea73e0da108`; [independent publication receipt](development/2026-11-14-reference-refinement/reports/root-native-publication.json) |
+| Published accepted header/checker/R4-review source | [`0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b), tree `f8144b771cda1264a8788f8297f5bfec999f4a08`, parent `26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8`; [verified publication receipt](development/2026-11-14-reference-refinement/reports/root-header-publication.json) |
 | PDF | `Hammond_B3_Leslie_Research_Atlas_500pp.pdf`, 500 pages; SHA-256 `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769` |
 | Original visual target | [Cover/page-409 reference](design/atlas-cover-reference.jpg), 1672×941; SHA-256 `9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187`; [ancestry](design/atlas-reference.json) |
-| Actual native v3 gallery | [Eight views and reproduction](../examples/demos/standalone-interface-preview-v3/README.md), captured from `2e161dc`; executable SHA-256 `97ed35cbf618792155c15106862d8bc5f416b7cf6d073c9e37e94babdf8bc9a9` |
+| Actual accepted native v4 gallery | [Eight views and reproduction](../examples/demos/standalone-interface-preview-v4/README.md), captured from `0881d1f4`; MIDI-enabled desktop executable SHA-256 `01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f` |
+| Final local Release execution | [A49 exact-source result](development/2026-11-14-reference-refinement/notes/A49-coherent-final-build.md); separate MIDI-OFF native executable SHA-256 `7945754c1551a0c3c143c7b180cb2ef1ab74da9981bb7901c8724f46bbf8eb0b` |
 
-The [A31 capture](development/2026-11-14-reference-refinement/notes/A31-native-gallery.md)
-matched all 111 qualified product/build-source entries before and after its
-incremental target build and eight native processes. The
-[A32 independent audit](development/2026-11-14-reference-refinement/notes/A32-gallery-independent.md)
-checks retained payloads, decoded pixels, input identities and exact painted
-2/1/1 held targets. This is source-identified capture evidence, not a hermetic
-build attestation. A changed executable needs new qualification and a fresh
-gallery directory; preserve v1/v2/v3 and their original provenance.
+### Current local execution, capture and hosted scope
 
-The integrated GCC Release run passed **154/155** suites. Its sole failure was
-the capture-install fixture omitting the two newly declared native probe files
-from its private source copy. Adding those files closed the affected gate in a
-separate **1/1** recheck; [both results and the source delta](development/2026-11-14-reference-refinement/reports/coherent-result.json)
-remain retained. This was not a second complete 155-suite run. Test counts
-change with configuration and new registered sources; discover the current set.
+Accepted A49 performed **one incremental all-target build in 11.381 seconds**
+and **one full discovered CTest run, 157/157 in 146.97 seconds**, with no rerun.
+All **2,625 repository files**, including **912 Markdown files**, remained
+unchanged through build/test/post-run snapshots. All **368 named product/test/
+build-source files** matched `0881d1f4`; all **1,758 SDL2 files** and post-build
+execution inputs stayed unchanged. The configuration was GCC 14.2 Release,
+standalone/testing ON, MIDI/VST3/sanitizers OFF. This reused a configured build;
+it does not establish a clean rebuild or hermetic operating-system image.
+The [original report](development/2026-11-14-reference-refinement/reports/A49-coherent-final-build.json)
+retains commands, inputs and unmodified logs. Its frozen documentation included
+accepted unpublished changes, and the freeze ended at 22:23:12 UTC. Later
+records need the final affected documentation check; neither the commit alone
+nor A49's earlier Markdown snapshot identifies those later bytes.
 
-The local allocation/lifetime workload passes, while its complete local
-sanitizer process still has the original LSan thread-attachment EPERM failure.
-At `2e161dc`, the hosted
-[core sanitizer job](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43641918154/job/132591142914)
-and [sixteen-target native sanitizer job](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43641918142/job/132591142854)
-completed successfully with their leak-enabled workflow steps. A37 independently
-observed those job statuses; its [report](development/2026-11-14-reference-refinement/reports/A37-setup-handoff.json)
-retains the metadata and limits. Preserve the local failure and inspect the
-exact revision's full matrix before reporting broader hosted completion.
+[A46's v4 capture](development/2026-11-14-reference-refinement/notes/A46-final-native-gallery.md)
+retains 111 qualified product/build-source entries unchanged around the desktop
+target invocation and eight native processes. The existing target refreshed
+CMake and reported no work to do. [A50's independent admission](reviews/REFERENCE_REFINEMENT_FINAL_GALLERY.md)
+passes **611 checks**, covering source/build identities, all 41 files, all eight
+decoded PNGs, exact painted **2/1/1** holds and the accepted measured header.
+These settled keyboard-replay endpoints use SDL dummy audio/video and software
+rendering, with no selected physical MIDI input. The six genuine pending frames
+from A18/A23 use a separate windowless Session harness. A new executable needs
+its own qualification and gallery; preserve v1/v2/v3/v4 and original provenance.
 
-The same checkpoint's Windows core Release run retains **135/136**, with
-`test_rotary_propagation_allocation` reporting a segmentation fault after
-0.02 seconds in the [primary job log](development/2026-11-14-reference-refinement/reports/root-windows-2e.log).
-A38 owns the bounded fixture-stack investigation; no product failure is
-established by that symptom alone. Preserve this original result and qualify
-any repair separately. The manifest and current status own its later outcome.
+[A56's completed primary-log audit](reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md)
+qualifies all twelve jobs at the exact **`0881d1f4` header source**: core
+Linux/macOS/Windows Release and Linux sanitizer **138/138 each**, four native
+Release configurations **41/41 each**, native sanitizer **16/16**, and VST3
+**8/8 Linux, 7/7 macOS and Windows**, with **47/47 SDK-validator checks** on
+each platform. All five native jobs report **1,071 material checks**, zero
+failures: 901 legacy plus 170 header checks. Required rotary gates and all
+sixteen selected native sanitizer gates retain leak checking and verified
+instrumentation. The core `test_standalone_midi_backend_quarantine` alone
+retains its explicit `detect_leaks=0` failed-close exception.
+
+[A43/A44's preceding 26ff review](reviews/REFERENCE_REFINEMENT_HOSTED.md) remains
+separate pre-header evidence with 137 core/901 material checks. A56 closes the
+former metadata-only gap at 0881 without transferring those earlier results.
+The later documentation/workflow candidate still needs root's final checks
+and publication: **0881 did not execute A55's new strict sixty-record CI step**.
+Use the exact final-head outcome before claiming that final records passed CI.
+
+### Retained history and actual OS-input limits
+
+The earlier [native checkpoint](development/2026-11-14-reference-refinement/reports/root-native-publication.json)
+is `2e161dc3a60fc3442051799574feed37bffbfc5c`, tree
+`17f8e4d698f903c37bff09deee196ea73e0da108`. Its
+[A31/A32 v3 gallery](../examples/demos/standalone-interface-preview-v3/README.md)
+uses executable `97ed35cbf618792155c15106862d8bc5f416b7cf6d073c9e37e94babdf8bc9a9`.
+The [earlier integrated execution](development/2026-11-14-reference-refinement/reports/coherent-result.json)
+retains **154/155 in 145.94 seconds**, then the separate affected **1/1 in
+5.25 seconds** after adding two omitted probe sources to the capture-install
+fixture's private copy. That repair was not a second full 155-suite execution.
+
+The [original 2e Windows primary log](development/2026-11-14-reference-refinement/reports/root-windows-2e.log)
+retains **135/136**, with allocation SEGFAULT at **0.02 seconds**. A38's fixture
+stack repair preserves all 82,320 queries. A43 records the separate actual
+MSVC 19.44 Windows **137/137** completion at 26ff, with allocation passing in
+0.14 seconds; the original crash's exact mechanism was not established. At
+`f9c11a4`, six jobs passed and six were cancelled; Windows passed the repaired
+allocation gate but reached only 69/137 before cancellation. Preserve those
+outcomes, the earlier apt stall, A27's full local LSan thread-attachment EPERM
+failure and both original material-timing observations. Later success does not
+rewrite them.
+
+[A51's retained OS-input audit](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md)
+passes 33 checks and finds **159/161 source paths unchanged** at `0881d1f4`.
+The older X11 executable is
+`6eea84ba830ea8710b550c14561b4dd887bea8aac489fa82a467e3708e071b13`;
+its source record is base `e4968b2a` plus a 161-path inventory. The two changed
+paths are reviewed Flat-modal/header paint and material-test registration.
+Input dispatch, ownership, Session, Engine and control-state bytes remain
+unchanged. This supports source applicability, not a new OS run on the v4 binary.
+Its retained observations prove a **keyboard-held** pedal across 1400→1180
+resize, persistent admitted capture through inside/outside/inside/outside with
+ordinary target changes, explicit release and stopped/unheld joined cleanup.
+Keyboard transitions lack a painted pre-held prefix; pointer-held pedal,
+deliberate focus loss and post-release fresh press remain open. Root observed
+Alt+F4, but no separate numeric exit receipt was retained. The diagnostics retain
+one discarded command of unassigned identity. See the review's concrete next
+journey; dummy gallery, pending harness and old OS evidence remain distinct.
 
 ## Build a fresh checkout
 
@@ -158,12 +224,21 @@ define exact inventories, refusal behavior and moved-prefix examples.
 CaptureTools refuses an existing package leaf; it is not selected by another
 component. These components do not install the rotary C++ headers as a public SDK.
 
+| Explicit component | Exact installed inventory |
+| --- | --- |
+| `Standalone` | 15 files with MIDI disabled; 19 with MIDI enabled |
+| `OfflineTools` | 23 files: five native tools, two plotters, compiled profile and fixtures |
+| `CaptureTools` | 57 files: ten Python modules, eight schema/declaration files, sixteen synthetic demo files, twenty-one guides and two root files |
+
 [A35](development/2026-11-14-reference-refinement/reports/A35-install-relocation.json)
 co-installed the MIDI-off configuration's 95 disjoint files, moved them through
 Unicode/space paths and checked sixteen command outcomes. The actual render,
 trace/plot, capture study/replay and bounded dummy application smoke passed;
 missing installed resources refused without output. Its source/payload byte
-identities predate A37's two guide corrections. That same-machine evidence
+identities predate later guide corrections and A47's current runbook update.
+A49's frozen-source full suite includes the native and CaptureTools installation
+gates, but does not replay A35's complete moved-prefix journey on later guides.
+That same-machine relocation evidence
 does not become a clean-OS or cross-platform binary distribution qualification.
 
 ## Resume this managed workspace
@@ -182,6 +257,14 @@ the committed handoff, source and reports are the resumption authority.
 | `../build-native` | GCC Release, standalone ON, MIDI OFF, VST3 OFF; dummy native fixtures, effective X11/SDL ALSA OFF |
 | `../build-desktop` | GCC Release, standalone and MIDI ON, VST3 OFF, X11 capable, SDL ALSA OFF; extracted development inputs under `../native-sysroot` |
 
+Both trees were released after A49/A46. A54 inspected their existing cache and
+generated SDL configuration without configuring, building or executing tests.
+The `SDL_X11=ON` cache request alone does not prove compiled support: generated
+`SDL_config.h` leaves X11 undefined in `build-native` and defines it in
+`build-desktop`. Both retain dummy video/audio support. The separate waveform
+owner uses `/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ` and its sibling
+`../build`; this session owns neither that checkout nor its build.
+
 Coordinate exclusive configure/build/CTest access to each shared tree. Reuse its
 existing configuration instead of substituting another compiler or header set.
 After ownership is granted, from the repository root:
@@ -194,29 +277,34 @@ After ownership is granted, from the repository root:
 
 For a desktop/gallery rebuild, the corresponding command is
 `../build-tools/cmake/data/bin/cmake --build ../build-desktop --config Release --parallel 3 --target hammond_standalone`.
-The [A31 report](development/2026-11-14-reference-refinement/reports/A31-native-gallery.json)
-and gallery provenance retain actual build options, qualified source entries,
-commands and pre/post executable identities. Do not copy its qualification
-report onto later source or overwrite its gallery.
+The [A46 report](development/2026-11-14-reference-refinement/reports/A46-final-native-gallery.json),
+[v4 provenance](../examples/demos/standalone-interface-preview-v4/provenance.json)
+and A50 admission retain actual build options, qualified sources, commands and
+pre/post executable identities. Do not copy their qualification onto a changed
+source or executable, or overwrite an accepted gallery. The older A31/v3
+reports retain their separate source and build identities.
 
 The shell and desktop share `/workspace` but have different display/process
 namespaces. Root's real X11 journey launched through the desktop terminal and
 used Sky; a shell without a display does not prove that native windows are
-unavailable. [Retained desktop evidence](development/2026-11-14-reference-refinement/reports/root-desktop-acceptance-review.json)
-proves held-pedal breakpoint resize, persistent mouse capture outside/inside/
-outside, release and ordinary Alt+F4 cleanup for its identified executable.
-Its keyboard chords show holds after view transitions without an independent
-painted pre-held keyboard frame. The replay/model tests cover that separate
-sequence. The later Flat-modal fix has its own
+unavailable. Use A51's exact OS-input limits above and the
+[desktop contract](REFERENCE_REFINEMENT_DESKTOP.md) for the next actual journey.
+The later Flat-modal fix also retains its own
 [A26 raster evidence](development/2026-11-14-reference-refinement/notes/A26-material-boundary-repair.md).
-Dummy gallery pixels, genuine pending rendering-harness images and OS input
-observations remain distinct evidence.
 
-At the retained resource checkpoint, approximately 58 GB was free; the checkout
-was about 120 MB and the two shared builds about 74/26 MB. Check disk use at wave
-boundaries. Preserve compact logs, original failures, source hashes and lossless
-selected images before removing only session-owned reproducible intermediates.
-Do not duplicate dependency trees or remove another session's checkout/index.
+At **2026-11-14 22:30 UTC**, A54 observed **57.46 GiB available**. Allocated
+sizes were approximately **150.38 MiB** for this checkout, **73.79 MiB** for
+`build-native`, **47.02 MiB** for `build-desktop`, 78.86 MiB for shared SDL2,
+2.12 MiB for RtMidi, 86.93 MiB for tools and 11.89 MiB for the sysroot. The
+[resource/baseline record](development/2026-11-14-reference-refinement/reports/A54-current-baseline.json)
+retains exact bytes; concurrent record creation may advance them. The earlier
+58 GB / 120 MB / 74/26 MB observation remains historical. No cleanup was
+performed. Check resource use at wave boundaries and before long work. Retain
+compact logs, original failures, source hashes and selected lossless images
+before removing only owned reproducible intermediates that are no longer
+needed. Do not duplicate dependencies or delete another checkout, index or
+evidence. Lost raw bytes must be labelled unavailable, never reconstructed as
+original evidence.
 
 ## Where this sits in the whole plan
 
@@ -232,18 +320,36 @@ session's sixty actual assignments are separate organizations of work.
 | M4 — scanner | Documentary graph and numerical modules exist. Resolve the retained **G5 same-hertz failure** under the [frozen scanner contract](SCANNER_NUMERICAL_CONTRACT.md) before Engine integration. |
 | M5 — AO-28 | Build and validate revision-specific connectivity, loading, operating points and dry outputs before fitting downstream effects. |
 | M6 — Leslie electronics | Preserve separate 122/147 electrical identities and acquire amplifier, transformer, crossover and driver boundaries. |
-| M7 — rotary acoustics | Native R2/R3 primitives now pass their named numerical workloads. Implement R4 waveform rendering next; R5 audible policy and R6 integration have separate gates. |
+| M7 — rotary acoustics | Native R2/R3 primitives pass their named numerical workloads. The concurrent waveform owner implements R4 under the frozen contract; R5 audible policy, R6 integration and physical cabinet fidelity have separate gates. |
 | M8 — calibration | Movable capture/corpus/comparison/study/replay tooling exists. Acquire immutable real captures and declared held-out groups; synthetic pass/fail examples are engineering fixtures. |
 | M9 — product/release | Native workspaces, complete controls, Flat mode, copied inspection and VST3 adapter exist. Measured visual refinement, physical devices/DAWs, accessibility, callback deadlines, packaging rights and signing remain separate qualification. |
 
-### Next numerical implementation: R4
+### Concurrent numerical implementation: R4
 
-Read [ROTARY_PROPAGATION.md](ROTARY_PROPAGATION.md), the immutable-view lifetime
-rules and sections 4–6 of the [frozen numerical contract](ROTARY_NUMERICAL_CONTRACT.md).
-Implement a separately owned renderer with independent horn/drum waveform and
+The [waveform owner](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+owns implementation and its actual assignment ledger. Read
+[ROTARY_PROPAGATION.md](ROTARY_PROPAGATION.md), the immutable-view lifetime
+rules, [R4 brief](ROTARY_RENDERER_PLAN.md),
+[independent implementation review](ROTARY_RENDERER_IMPLEMENTATION_PLAN.md),
+[A57's final readiness review](reviews/ROTARY_RENDERER_IMPLEMENTATION_READINESS.md)
+and sections 4–6 of the [frozen numerical contract](ROTARY_NUMERICAL_CONTRACT.md).
+Continue that separately owned renderer with independent horn/drum waveform and
 streaming motion histories. Prepare storage and rollback resources outside
 processing; the immutable 4,097-segment fixture view is not a growing event queue.
-The waveform capacity is `ceil(Fs*rmax/c)+2+4`, bounded by 16,384 frames.
+With `D=ceil(Fs*rmax/c)`, the proposed per-rotor capacity is **`D+6`**, at most
+**12,806 frames** over admitted rates/distances and below the frozen 16,384 cap.
+The proposed per-write undo journal needs at most **8,192 entries** for a
+4,096-frame call, even when one slot is overwritten repeatedly. A57's arithmetic
+supports these bounds; it is not a native renderer execution or allocation pass.
+
+Before implementation acceptance, bind each streaming path to its admitted
+trajectory/geometry, end all borrowed windows before any cell mutation or
+rollback, and define representation-safe restoration of initialized cells,
+metadata, journals and persistent diagnostics. Define flush ownership explicitly:
+the caller supplies **`max(D)+4` zero-input frames** through bounded ordinary
+calls with motion continuing. Per-call atomicity does not make a multi-call
+flush one transaction. Preserve actual arithmetic, the event/timeline limits
+and the separate failure-observation contract identified by A57.
 
 Write input sample `n`, observe at `n-2`, solve all four paths and read cubic
 nodes `k-1,k,k+1,k+2` at the solved emission fraction. Negative audio is zero;
@@ -262,9 +368,22 @@ Engine/host/device integration. Connecting the present R2/R3 diagnostic
 primitives directly to dry Engine output would skip these required signal,
 transaction, latency and effect-ownership contracts.
 
+The concurrent owner's next code packets are the reviewed trajectory/history
+boundary, solver seam and transactional renderer, followed by an independent
+same-cubic oracle and the complete frozen acceptance matrix. Stress changes to
+both rotors every frame in **calls of at most 512 frames** under the unchanged
+1,024-event cap, continuing across repeated ring wraps. Separately test the
+maximum 4,096-frame call with at most 1,024 events. A 4,096-frame/8,192-event
+input is a rejection case, not legal dense-load acceptance. Retain all sixteen
+ordered sample-rate pairs, exact rollback/future-continuation evidence and
+complete flush/epoch-overflow behavior. R4 implementation and its R5/R6/physical
+successors remain separate unclosed gates.
+
 ### Next interface and session closure
 
-Use the exact reference and native v3 views for measured comparison. The wide
+Integrate the accepted `0881d1f4` header before changing overlapping paint or
+material files. Use the exact reference and independently admitted native v4
+views for measured comparison. The wide
 branch gives both full manuals 144.12-pixel key depth at 1672×941 and moves all
 25 pedals beneath the disjoint cabinet. Functional completeness, real header
 tools, status text and unconnected-model labels differ from the concept.
@@ -272,11 +391,31 @@ tools, status text and unconnected-model labels differ from the concept.
 readability changes must preserve shared hit/paint geometry, Flat operation,
 all 24 presets, 147 playing keys and owner release semantics.
 
-Finish dependency-ready assignments under the actual manifest, retain concrete
-review outcomes, qualify any changed product source, update README with accepted
-native captures and execute the session's own strict accounting check once all
-sixty actual results are accepted. The old session's checker cannot count this
-one. Root owns shared status, next steps, log, manifest and publication.
+The sixty accepted records and A56's exact-source primary hosted audit are now
+complete. Keep the strict result separate from A49's completed product execution
+and the final documentation gate: neither older source freezes nor hosted
+success identify later Markdown/workflow bytes. Root must finish affected
+repository integrity on the final stable files, retain its result in the closure
+receipt, inspect the owned diff and reconcile remote advances before guarded
+publication. These commands reproduce the affected documentation and actual
+record gates from this repository root with coordinated native-tree ownership:
+
+```sh
+../build-tools/cmake/data/bin/ctest --test-dir ../build-native -C Release \
+  --output-on-failure --no-tests=error -R '^python_test_repository_integrity$'
+python3 tools/check_refinement_session.py --repo . --json
+```
+
+Retain exact final reports and source/record identities. The actual strict
+checker has passed this session's sixty accepted records; rerun it if its
+counted inputs change. A49's synthetic checker-regression pass, partial
+`--in-progress` output and older session checkers are separate. No repeat full
+product suite is needed without changed relevant inputs or a concrete
+unresolved risk.
+Qualify any actual product change and refresh README only from its admitted
+native captures. Root owns final acceptance, shared records, manifest/checkpoint,
+strict validation, commits and publication. A54's scoped documentation checks
+do not perform those final gates.
 
 For every later task, agree owned paths, preserve historical evidence, verify the
 affected coherent source, update setup/status/next actions and publish completed
@@ -286,3 +425,7 @@ lacked credentials; root successfully published exact staged trees through the
 connected GitHub Git-data tools, then independently fetched and checked the
 remote parent/tree before advancing local main without resetting worker files.
 Never claim publication from an API request alone or discard unfinished work.
+After final publication, inspect the actual final-head hosted runs and retain
+their outcomes, including the actual strict-step JSON. A56's complete primary
+audit at `0881d1f4` cannot qualify a later records/workflow/source commit
+automatically.

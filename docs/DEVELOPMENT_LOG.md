@@ -1,5 +1,47 @@
 # Development log
 
+## 2026-11-14 — Preserve both sessions while integrating published waveform source
+
+Remote main advanced from `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b` to direct
+child `487064d2400b9f39d0ee66ed136a09c9e372379e`, tree
+`ae75093a76ff19c2e7f9189a92cf2faa63f4d8b6`. Root protected the accepted
+reference-refinement closing tree `948b0f514398bb8217a169d0b92da7102dc8e580`
+at `refs/checkpoints/reference-refinement-before-487064` before integration.
+The same A54 worker manually resolves README, STATUS, NEXT_STEPS and this log
+from retained base/ours/incoming versions. The [merge receipt](development/2026-11-14-reference-refinement/reports/A54-concurrent-487064-merge.json)
+retains the four input/output identities and history-preservation checks.
+No accepted note, earlier report, staging entry or HEAD is changed by A54.
+
+The incoming session contains implemented R4 history, streaming propagation,
+transactional stereo rendering, the offline CLI/profile compiler and the combined
+header/drawbar/key-front paint. Its full waveform experiment is already complete:
+24 rate/partition cases, 22,806,000 native frames, 38,010,000 exact alternate
+sample comparisons and maximum normalized error 1.935740205876292e-9. The
+[original receipt](development/2026-11-14-waveform-continuation/reports/full-waveform/qualification.json)
+binds 82 frozen inputs at 0881 plus overlay; later CLI CMake wiring is outside
+that build-metadata identity. Independent lifecycle, scene/receiver symmetry,
+calibrated allocation and CLI acceptance remain open. Its incoming manifest
+records 29 actual dispatches and 26 accepted results, separately from this
+session's sixty accepted workers and strict record pass.
+
+Both sessions' dated entries and failures are retained below. The older local
+155/155, 157/157 and hosted 26ff/0881 passes are not transferred to new code;
+the waveform 160/161 plus separate 2/2 repair and 3/3 combined gates retain their
+own source boundaries. The v4 gallery remains accepted historical `0881d1f4`
+evidence. Root's fresh incoming-source all-target build passed in 18.733 seconds.
+Its [actual v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
+now captures all eight views at exact 487064, with 117 inputs and executable
+`0b2fe36e1ff9a76e12bbd0bf97e633a424fcfd67cd78b9987e0b1b75e8e6f040`.
+The [capture receipt](development/2026-11-14-reference-refinement/reports/root-integration487064-final-native-gallery.json)
+records successful endpoint/payload checks and direct review of all original
+PNGs; independent A60 admission is underway. README now uses these actual v5
+images. Fresh full-suite qualification, observed incoming platform failures,
+final records, guarded publication and actual final-head CI remain separate.
+This documentation
+merge performs no build, CTest, application run or publication. The playable
+Engine stays dry; 47 parameters, state4/readers 1–3, musical ownership, scanner
+G5 and separate R5/R6/physical/literal-1:1 gates remain preserved.
+
 ## 2026-11-14 — Complete waveform experiment and offline developer tool
 
 The frozen R4 build-before-run experiment passed in 649.663 seconds: all four
@@ -57,6 +99,122 @@ All twelve hosted jobs pass at published `26ff2fb`. Later source has its own
 pending qualification. The local history LSan environment failure and separate
 leak-disabled sanitizer success remain distinct. Disk use remains bounded with
 about 58 GiB free; a renderer's fixed heap storage is 2,721,712 bytes on this ABI.
+
+## 2026-11-14 — Complete actual records and refresh final source-specific navigation
+
+All **60 actual reference-refinement assignments are accepted in ten waves of
+six**, independently of the concurrent waveform session. Root ran the actual
+[strict completion checker](development/2026-11-14-reference-refinement/completion-check.json):
+exit 0, `completion_valid=true`, zero errors and all ten complete waves.
+This is retained record consistency, not a product/fidelity or external-dispatch
+attestation. The [root closure receipt](development/2026-11-14-reference-refinement/reports/root-closure-verification.json)
+still records the final documentation gate as pending at this entry. Closing
+publication and actual final-head CI, including A55's new strict Linux step,
+remain upcoming root-owned work.
+
+[A56's completed primary audit](reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md)
+qualifies all twelve jobs at `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
+`f8144b771cda1264a8788f8297f5bfec999f4a08`: core Release Linux/macOS/Windows and
+Linux sanitizer 138/138 each, four native Release configurations 41/41 each,
+native sanitizer 16/16, and VST3 8/8 Linux plus 7/7 macOS/Windows with 47/47
+SDK-validator checks on each. All five native jobs report 1,071 material checks
+and zero failures. Required rotary and sixteen native sanitizer gates retain
+instrumentation/leak checking; only the pre-existing core quarantine gate has
+its explicit leak exception. The audit closes the earlier metadata-only gap
+without transferring 26ff's 137-core/901-material result to the header source.
+Original local/Windows failures, f9c cancellations and source-specific timing
+observations remain unchanged.
+
+[A57's final readiness review](reviews/ROTARY_RENDERER_IMPLEMENTATION_READINESS.md)
+confirms the proposed `D+6` capacity, maximum 12,806 frames, at most 8,192
+per-write journal entries and `max(D)+4` flush frames. It requires trajectory
+binding, borrow scopes ending before mutation, representation-safe restoration
+and explicit per-call flush ownership. Legal every-frame changes to both rotors
+use calls of at most 512 frames under the unchanged 1,024-event cap. These are
+design/arithmetic preconditions for the concurrent owner's R4 implementation;
+R4 acceptance, R5 audible policy, R6 integration and physical cabinet fidelity
+remain separate.
+
+A60 identified two misleading navigation claims. Under the **same A54 identity**,
+the final refresh labels README's 155/155 as the waveform `2e161dc` baseline and
+links A49's separate later 157/157 frozen execution. The acceptance matrix now
+starts with current PLAN/handoff/release authority, 47/state4 and exclusive
+selectors, accepted R2/R3 and Standalone 15/19-file inventories. Its older
+standalone rows and 110/110 plus 14/14 results remain intact and explicitly
+historical. Current STATUS/NEXT_STEPS/setup references now name completed
+A56/A57 evidence, accepted records and the precise final root actions.
+
+The [A54 follow-up receipt](development/2026-11-14-reference-refinement/reports/A54-final-navigation-refresh.json)
+retains focused link/source checks and preservation hashes. The accepted A54
+note and every earlier A54 report remain unchanged; README beyond its opening,
+both waveform prefixes, every old matrix row/result and every previous dated
+log body are preserved. No build, test suite, app, install, full integrity gate,
+strict checker rerun or publication was performed by A54. The dry Engine,
+47 parameters/state4/readers 1–3 and note ownership remain unchanged; scanner
+G5, connected models, devices/DAWs/accessibility/deadlines and literal 1:1
+reference equality retain their open gates.
+
+## 2026-11-14 — Record current source, final local execution and resumable closure
+
+The accepted measured-header/checker/R4-review source is published and fetched
+as `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
+`f8144b771cda1264a8788f8297f5bfec999f4a08`; the
+[receipt](development/2026-11-14-reference-refinement/reports/root-header-publication.json)
+retains expected-head publication and exact parent/tree verification. A46's
+eight actual v4 captures use executable
+`01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f`.
+[A50](development/2026-11-14-reference-refinement/notes/A50-final-gallery-admission.md)
+passes 611 independent admission checks. A47 updates README/current UI guidance
+from those acknowledged dummy-SDL/software-rendered views; earlier galleries
+and genuine pending harness evidence remain separate.
+
+[A49](development/2026-11-14-reference-refinement/notes/A49-coherent-final-build.md)
+completed one incremental all-target GCC Release build in 11.381 seconds and
+one complete CTest run, **157/157 in 146.97 seconds**, without a rerun. Its
+whole-repository freeze retained 2,625 files including 912 Markdown files;
+all 368 named product/test/build-source files matched published `0881d1f4`,
+and all 1,758 SDL2 files stayed unchanged. Source, post-build execution inputs,
+exact commands and original logs are retained. The freeze ended at 22:23:12
+UTC, before subsequent records were added. Later documentation therefore needs
+its affected final integrity check. The old 154/155 plus repaired 1/1 remains
+an earlier, separate execution.
+
+[A43](development/2026-11-14-reference-refinement/notes/A43-hosted-fixture-closure.md)
+and [A44](development/2026-11-14-reference-refinement/notes/A44-hosted-sanitizer-audit.md)
+retain all twelve passing primary-log results at preceding `26ff2fbe`, including
+Windows 137/137 and the required rotary/sixteen native sanitizer gates.
+The core quarantine test alone keeps its explicit leak-detection exception.
+Root observes twelve successful hosted job statuses at `0881d1f4`; A56's
+primary-log audit remains the next exact-count/instrumentation check at this
+entry. The original Windows 135/136, f9c partial/cancelled jobs, apt stall and
+A27's local LSan thread-attachment EPERM failure remain unchanged history.
+
+[A51](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md) passes 33 offline checks and
+finds 159/161 old OS-input source paths unchanged. The old executable supports
+keyboard-held pedal resize, persistent mouse capture with ordinary target
+changes, explicit release and joined cleanup. It lacks the painted pre-held
+keyboard prefix and a separate numeric exit receipt; no new v4 OS journey is
+claimed. Pointer-held pedal, focus-loss, fresh-press and physical-device work
+remain concrete follow-up in the review.
+
+A54 refreshed only the current reference-refinement status/next-step sections
+and setup handoff, preserving the concurrent waveform prefixes and every prior
+dated log body. Its [scoped report](development/2026-11-14-reference-refinement/reports/A54-current-handoff-status.json)
+records local links, source/report identities, protected-history hashes and
+actual build/resource inspection; no build or CTest was rerun. At 22:30 UTC,
+the checkout occupied about 150.38 MiB, `build-native` 73.79 MiB and
+`build-desktop` 47.02 MiB, with 57.46 GiB available. Both builds had been
+released after A49/A46; later use needs a coordinated owner. No files were
+deleted. Root retains manifest/checkpoint, acceptance and publication.
+
+The session is still in progress: finish wave 9 review and actual A55–A60
+closures, run the strict sixty-record checker and affected repository-integrity
+gate on final records, publish using a fresh expected head, then inspect actual
+final CI. The separate waveform owner integrates the accepted header before
+overlapping visuals and implements R4 under the frozen numerical contract.
+R5/R6, scanner G5, connected models, physical/device/accessibility/deadline
+gates and literal 1:1 reference equality remain open. The 47 parameters,
+state4/readers 1–3, musical ownership and dry Engine remain unchanged.
 
 ## 2026-11-14 — Accept measured native header and preserve concurrent R4 work
 

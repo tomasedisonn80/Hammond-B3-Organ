@@ -1,0 +1,703 @@
+{
+  "schema_version": 1,
+  "assignment": "A44",
+  "worker": "/root/w08_a44_hosted_sanitizer_audit",
+  "audit_completed_utc": "2026-11-14T22:04:01.136245+00:00",
+  "result": "PASS for hosted R2/R3/allocation and exact sixteen native sanitizer gates; preserve named core quarantine exception and historical local failure.",
+  "method": "Read-only GitHub primary job log/status retrieval, source/hash comparison and log inspection. No local configure/build/test/dependency operation or remote write. A43 primary decoded cache reused after independent fetch of both jobs; bounded line extracts and complete decoded-log hashes retained.",
+  "tested_source": {
+    "commit": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+    "tree": "530d5fcf777003f470f64558de9e5631d31a21a4",
+    "parent": "f9c11a498ecd88886349415205fc5dccc627033e",
+    "parent_difference": "18 documentation/record-only paths; all audited product, tests, workflows, dependency and contract inputs identical.",
+    "changed_paths": [
+      "AGENTS.md",
+      "README.md",
+      "docs/DEVELOPMENT_LOG.md",
+      "docs/NEXT_STEPS.md",
+      "docs/ROTARY_RENDERER_PLAN.md",
+      "docs/STATUS.md",
+      "docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md",
+      "docs/development/2026-11-14-waveform-continuation/README.md",
+      "docs/development/2026-11-14-waveform-continuation/assignments.json",
+      "docs/development/2026-11-14-waveform-continuation/notes/A01-atlas-foundations.md",
+      "docs/development/2026-11-14-waveform-continuation/notes/A02-atlas-console.md",
+      "docs/development/2026-11-14-waveform-continuation/notes/A03-atlas-electronics.md",
+      "docs/development/2026-11-14-waveform-continuation/notes/A04-atlas-rotary.md",
+      "docs/development/2026-11-14-waveform-continuation/notes/A05-atlas-ui-runtime.md",
+      "docs/development/2026-11-14-waveform-continuation/notes/A06-atlas-release.md",
+      "docs/development/2026-11-14-waveform-continuation/reports/baseline-ctest.txt",
+      "docs/development/2026-11-14-waveform-continuation/reports/baseline.json",
+      "docs/research/WAVEFORM_ATLAS_REVIEW.md"
+    ],
+    "audited_inputs": {
+      ".github/workflows/ci.yml": {
+        "tested_sha256": "dff4199953804baf7f6bab50f5642952ef0fb407baec6968a0c5d96396a884c3",
+        "working_sha256": "dff4199953804baf7f6bab50f5642952ef0fb407baec6968a0c5d96396a884c3",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      ".github/workflows/standalone.yml": {
+        "tested_sha256": "d43c847855e375936c15b68731031ce37393b93b073173e67b1c8e8f67075610",
+        "working_sha256": "d43c847855e375936c15b68731031ce37393b93b073173e67b1c8e8f67075610",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "CMakeLists.txt": {
+        "tested_sha256": "a1865e59816ed4a63c9a0d8ed95c9aaea1951960f969fe209a3309cc3f2f99e7",
+        "working_sha256": "a1865e59816ed4a63c9a0d8ed95c9aaea1951960f969fe209a3309cc3f2f99e7",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "CMakePresets.json": {
+        "tested_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+        "working_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "apps/standalone/CMakeLists.txt": {
+        "tested_sha256": "3d3bcf0bd6ee595bed01e9d6090fe9e1ac221e1963795dfbaf23e630d4c2fa62",
+        "working_sha256": "3d3bcf0bd6ee595bed01e9d6090fe9e1ac221e1963795dfbaf23e630d4c2fa62",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "tested_sha256": "428f74c4b2aae72e1ee048d1fa878575d0cd2edc064b1a3865ba40c446c30da2",
+        "working_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+        "tested_equals_parent": true,
+        "working_equals_tested": false
+      },
+      "apps/standalone/native_tests/test_standalone_inspection_raster.cpp": {
+        "tested_sha256": "d04873c3d4d7d2b76c2c678e592ac8bc8e13f01af64faafce581fbf69b35950d",
+        "working_sha256": "d04873c3d4d7d2b76c2c678e592ac8bc8e13f01af64faafce581fbf69b35950d",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": {
+        "tested_sha256": "cc00920fa567460999821d9118d3b8c752b9df22be83d63969dd810f5273b252",
+        "working_sha256": "66963058652bd0673a043e03f342c94d71fd3c07e2f37a0d1d94093cc4d4a134",
+        "tested_equals_parent": true,
+        "working_equals_tested": false
+      },
+      "apps/standalone/tests/test_standalone_reference_layout.cpp": {
+        "tested_sha256": "e053edf405d11470db92396fdeabed111aeb5debe38c16632884f21eac32bdbf",
+        "working_sha256": "e053edf405d11470db92396fdeabed111aeb5debe38c16632884f21eac32bdbf",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "data/dependencies/sdl2-lock.json": {
+        "tested_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+        "working_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "docs/ROTARY_NUMERICAL_CONTRACT.md": {
+        "tested_sha256": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+        "working_sha256": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "docs/ROTARY_PROPAGATION_CONTRACT.md": {
+        "tested_sha256": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+        "working_sha256": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "include/hammond/RotaryMotion.h": {
+        "tested_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+        "working_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "include/hammond/RotaryPropagation.h": {
+        "tested_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+        "working_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "include/hammond/RotaryTypes.h": {
+        "tested_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+        "working_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "src/RotaryMotion.cpp": {
+        "tested_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+        "working_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "src/RotaryPropagation.cpp": {
+        "tested_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+        "working_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tests/TestSupport.h": {
+        "tested_sha256": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5",
+        "working_sha256": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tests/probes/rotary_motion_probe.cpp": {
+        "tested_sha256": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e",
+        "working_sha256": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tests/probes/rotary_propagation_probe.cpp": {
+        "tested_sha256": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768",
+        "working_sha256": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tests/test_rotary_motion.cpp": {
+        "tested_sha256": "e8095db59203e88023bd4d3cd56b75882b6cf88b111b3bf8af77574fa1de2a82",
+        "working_sha256": "e8095db59203e88023bd4d3cd56b75882b6cf88b111b3bf8af77574fa1de2a82",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tests/test_rotary_motion_acceptance.py": {
+        "tested_sha256": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366",
+        "working_sha256": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tests/test_rotary_propagation.cpp": {
+        "tested_sha256": "71f39ed739a6b86832c20ad69d5c5453c528f4ef4b6cc8a6408e5a97b4a24856",
+        "working_sha256": "71f39ed739a6b86832c20ad69d5c5453c528f4ef4b6cc8a6408e5a97b4a24856",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tests/test_rotary_propagation_acceptance.py": {
+        "tested_sha256": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+        "working_sha256": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tests/test_rotary_propagation_allocation.cpp": {
+        "tested_sha256": "022845759fe2e604ad4c8003dc0acf4e2b693d79933da86e25a0ac8e0f9f39d7",
+        "working_sha256": "022845759fe2e604ad4c8003dc0acf4e2b693d79933da86e25a0ac8e0f9f39d7",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      },
+      "tools/rotary_reference.py": {
+        "tested_sha256": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d",
+        "working_sha256": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d",
+        "tested_equals_parent": true,
+        "working_equals_tested": true
+      }
+    },
+    "A16_A19_source_hash_comparisons": {
+      "A16-r2-native.json": {
+        "include/hammond/RotaryTypes.h": true,
+        "include/hammond/RotaryMotion.h": true,
+        "src/RotaryMotion.cpp": true,
+        "tools/rotary_reference.py": true,
+        "tests/probes/rotary_motion_probe.cpp": true,
+        "tests/test_rotary_motion_acceptance.py": true,
+        "docs/ROTARY_NUMERICAL_CONTRACT.md": true,
+        "docs/ROTARY_PROPAGATION_CONTRACT.md": true
+      },
+      "A19-r3-native.json": {
+        "include/hammond/RotaryTypes.h": true,
+        "include/hammond/RotaryMotion.h": true,
+        "include/hammond/RotaryPropagation.h": true,
+        "src/RotaryMotion.cpp": true,
+        "src/RotaryPropagation.cpp": true,
+        "tools/rotary_reference.py": true,
+        "tests/probes/rotary_propagation_probe.cpp": true,
+        "tests/test_rotary_propagation_acceptance.py": true,
+        "docs/ROTARY_NUMERICAL_CONTRACT.md": true,
+        "docs/ROTARY_PROPAGATION_CONTRACT.md": true
+      }
+    },
+    "repaired_fixture_matches_A38": true
+  },
+  "jobs": [
+    {
+      "kind": "core",
+      "job_id": 132598497275,
+      "run_id": 43644278142,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43644278142/job/132598497275",
+      "job_status": {
+        "id": 132598497275,
+        "name": "Linux GCC ASan + UBSan + leaks",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 43644278142,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Check out the tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Record the revision and tools",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Configure Debug with ASan and UBSan",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Build with sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run every registered test with leak checking",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Retain configure, build, and test diagnostics",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Check out the tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      "tested_commit_visible_in_log": true,
+      "configuration": "Debug",
+      "toolchain": "Ubuntu GCC 13.3.0-6ubuntu2~24.04.1; Python 3.12.16",
+      "runner": "Ubuntu 24.04.5, image ubuntu-24.04 20261111.370.1",
+      "scope": "All registered core Debug CTest gates; explicit pre-existing MIDI quarantine leak exception recorded below.",
+      "ctest_total": 137,
+      "ctest_passed": 137,
+      "seconds": 268.61,
+      "required_tests": {
+        "test_rotary_motion": {
+          "test_number": 41,
+          "seconds": 0.44,
+          "log_line": 1521
+        },
+        "test_rotary_propagation": {
+          "test_number": 42,
+          "seconds": 0.13,
+          "log_line": 1523
+        },
+        "test_rotary_propagation_allocation": {
+          "test_number": 43,
+          "seconds": 0.57,
+          "log_line": 1525
+        },
+        "python_test_rotary_motion_acceptance": {
+          "test_number": 104,
+          "seconds": 1.06,
+          "log_line": 1647
+        },
+        "python_test_rotary_propagation_acceptance": {
+          "test_number": 106,
+          "seconds": 21.39,
+          "log_line": 1659
+        }
+      },
+      "additional_rotary_gates": {
+        "python_test_rotary_profile": {
+          "test_number": 105,
+          "seconds": 2.91,
+          "log_line": 1649
+        },
+        "python_test_rotary_reference": {
+          "test_number": 107,
+          "seconds": 2.34,
+          "log_line": 1653
+        }
+      },
+      "ctest_failed_skipped_not_run_disabled_lines": [],
+      "visible_sanitizer_errors": [],
+      "job_environment": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+        "LSAN_OPTIONS": "exitcode=23"
+      },
+      "full_decoded_log": {
+        "sha256": "438fedadf7aee07d62363a9cf866e6e06b267b74851a49ca990abe200f331018",
+        "utf8_bytes": 323342,
+        "unicode_characters": 323340,
+        "retained_in_git": false,
+        "independent_connector_fetch_character_count_matches_A43_cache": true
+      },
+      "extract": {
+        "path": "docs/development/2026-11-14-reference-refinement/reports/A44-core-sanitizer-extract.log",
+        "sha256": "2a8b106229544ab8bce31e107a50b38ba7208e5d8a6e6dd3b9f8d2c2f8a2f36e",
+        "utf8_bytes": 13698,
+        "selected_original_line_count": 95
+      }
+    },
+    {
+      "kind": "native",
+      "job_id": 132598531735,
+      "run_id": 43644278159,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43644278159/job/132598531735",
+      "job_status": {
+        "id": 132598531735,
+        "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 43644278159,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Record the revision, sanitizer policy and tools",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Explicitly acquire and locally verify locked external SDL2",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Install Ubuntu desktop and audio development headers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Configure native Release with project and SDL sanitizers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Build only the sixteen interface acceptance targets",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Discover exactly sixteen gates and run with leak checking",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Reverify source and locked SDL2 after acceptance",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Retain native sanitizer diagnostics",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Post Set up Python 3.12",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          },
+          {
+            "name": "Post Check out the exact tested revision",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          }
+        ]
+      },
+      "tested_commit_visible_in_log": true,
+      "configuration": "Release",
+      "toolchain": "Ubuntu GCC 13.3.0-6ubuntu2~24.04.1; Python 3.12.16",
+      "runner": "Ubuntu 24.04.5, image ubuntu-24.04 20261111.370.1",
+      "scope": "Exactly sixteen selected native Release gates with project C++ and pinned SDL2 C instrumentation; dummy software backend.",
+      "ctest_total": 16,
+      "ctest_passed": 16,
+      "seconds": 272.49,
+      "required_tests": {
+        "test_standalone_ui": {
+          "test_number": 132,
+          "seconds": 0.38,
+          "log_line": 3623
+        },
+        "test_standalone_preset_ui": {
+          "test_number": 127,
+          "seconds": 4.24,
+          "log_line": 3598
+        },
+        "test_standalone_workspaces_author": {
+          "test_number": 135,
+          "seconds": 0.02,
+          "log_line": 3710
+        },
+        "test_standalone_workspace_acceptance": {
+          "test_number": 133,
+          "seconds": 0.33,
+          "log_line": 3631
+        },
+        "test_standalone_projection": {
+          "test_number": 128,
+          "seconds": 1.44,
+          "log_line": 3607
+        },
+        "test_standalone_inspection_author": {
+          "test_number": 120,
+          "seconds": 0.02,
+          "log_line": 3590
+        },
+        "test_standalone_inspection_acceptance": {
+          "test_number": 119,
+          "seconds": 0.22,
+          "log_line": 3582
+        },
+        "test_standalone_workspace_continuity": {
+          "test_number": 134,
+          "seconds": 8.92,
+          "log_line": 3702
+        },
+        "test_standalone_drawing": {
+          "test_number": 139,
+          "seconds": 0.66,
+          "log_line": 3719
+        },
+        "test_standalone_quad_drawing": {
+          "test_number": 140,
+          "seconds": 0.04,
+          "log_line": 3727
+        },
+        "test_standalone_workspace_raster": {
+          "test_number": 141,
+          "seconds": 46.69,
+          "log_line": 3735
+        },
+        "test_standalone_scaled_view": {
+          "test_number": 144,
+          "seconds": 104.79,
+          "log_line": 3817
+        },
+        "test_standalone_preset_raster": {
+          "test_number": 145,
+          "seconds": 79.15,
+          "log_line": 3825
+        },
+        "test_standalone_reference_layout": {
+          "test_number": 129,
+          "seconds": 0.25,
+          "log_line": 3615
+        },
+        "test_standalone_inspection_raster": {
+          "test_number": 142,
+          "seconds": 3.18,
+          "log_line": 3744
+        },
+        "test_standalone_material_acceptance": {
+          "test_number": 143,
+          "seconds": 22.14,
+          "log_line": 3752
+        }
+      },
+      "additional_rotary_gates": {},
+      "ctest_failed_skipped_not_run_disabled_lines": [],
+      "visible_sanitizer_errors": [],
+      "job_environment": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+        "LSAN_OPTIONS": "exitcode=23"
+      },
+      "full_decoded_log": {
+        "sha256": "b844c0091e79bcf118d24106a5ec02a6d708234e4a11d9ebc027d25483c36f70",
+        "utf8_bytes": 837575,
+        "unicode_characters": 837573,
+        "retained_in_git": false,
+        "independent_connector_fetch_character_count_matches_A43_cache": true
+      },
+      "extract": {
+        "path": "docs/development/2026-11-14-reference-refinement/reports/A44-native-sanitizer-extract.log",
+        "sha256": "32cbb0edec12e6aa39e441e0435af6c290af3f79a644064fee407f71c69e75b9",
+        "utf8_bytes": 27371,
+        "selected_original_line_count": 197
+      }
+    }
+  ],
+  "native_policy_guards": {
+    "instrumentation_step_observed_success": true,
+    "objects": "Every compile_commands entry in the required 16 targets plus SDL2-static, hammond_core, hammond_standalone_support and hammond_standalone_drawing must contain ASan/UBSan and frame-pointer flags; output objects must exist and be nonempty.",
+    "archives": "nm must expose ASan and UBSan references in all four archives.",
+    "links": "Every one of 16 link commands must include ASan/UBSan; ldd must find libasan and libubsan.",
+    "backends": "Dummy video/audio plus X11, ALSA and PulseAudio macros are required; execution uses dummy audio/video and software rendering.",
+    "discovery": "Exactly sixteen unique required tests with built command, no DISABLED flag, no ASAN/UBSAN/LSAN environment overrides/modifications, and --no-tests=error.",
+    "timeouts_seconds": {
+      "test_standalone_workspace_raster": 180,
+      "test_standalone_scaled_view": 360,
+      "test_standalone_preset_raster": 300,
+      "test_standalone_inspection_raster": 60,
+      "test_standalone_material_acceptance": 60
+    },
+    "new_target_observations": {
+      "reference_layout": "78 layouts; 11,466 playing-key records; 5,304 control records including 1,872 presets; passed.",
+      "inspection_raster": "Six real Session pending/acknowledged frames; q=2; frame clocks 32/32; publications 6/8; 947 assertions; passed.",
+      "material_acceptance": "901 checks, zero failures, 56 frames; passed under the published pre-A40/A41 fixture."
+    },
+    "scope_limit": "Guard source plus successful primary job steps were inspected. No binary/artifact payload or instrumentation.json was downloaded. System libraries were not rebuilt."
+  },
+  "core_policy_boundaries": {
+    "job_default": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23"
+    },
+    "required_rotary_gates": "All five named R2/R3/allocation and independent oracle gates passed with job leak policy inherited; no disabled/skip property or runtime-policy override in their registrations. Missing native probes raise RuntimeError and do not skip.",
+    "existing_exception": {
+      "test": "test_standalone_midi_backend_quarantine",
+      "source": "apps/standalone/CMakeLists.txt",
+      "source_lines": [
+        61,
+        66
+      ],
+      "override": "ASAN_OPTIONS=detect_leaks=0:halt_on_error=1",
+      "reason": "Injected failed-close cases deliberately retain callback contexts until process exit. Ordinary backend destruction retains normal leak checking; ASan/UBSan instrumentation remains active.",
+      "in_native_sixteen": false,
+      "changed_by_A44": false
+    },
+    "no_overgeneralization": "137/137 is the core suite result, not a claim that every one of those tests individually enables leak detection. No required rotary/native gate was skipped or waived, and no new exception or relaxed budget was introduced.",
+    "no_relaxed_budgets": "Every A16/A19 source, oracle and frozen numerical/propagation-contract hash equals the tested published source. A38 fixture only changes storage outside measured intervals and is byte-exact here.",
+    "local_A27_policy_distinction": "A27 used additional one-off stack-use-after-return/scope, abort, strict-string and no-recovery flags/options. The hosted standard policy is recorded exactly and is not represented as a byte-identical repeat of that direct compile."
+  },
+  "history_preserved": {
+    "local_A27_complete_sanitizer_gate": "FAIL/environment-blocked: workload completed then LSan thread attachment EPERM, failed suspending threads, PTY exit134. Its original source fixture hash b7329be0... remains distinct from repaired A38 02284575...; exact historical report bytes retained.",
+    "A27_complete_sanitizer_pass_original_value": false,
+    "original_windows": "2e161dc Windows Release 135/136, allocation SEGFAULT at0.02s remains original failed evidence. Later success does not retrospectively prove the exact original crash mechanism.",
+    "parent_cancellations": "f9c11a4 incomplete/cancelled runs remain distinct from completed26ff2fb success; A43 owns the complete matrix and primary cancellation evidence.",
+    "files": {
+      "docs/development/2026-11-14-reference-refinement/notes/A27-rotary-realtime.md": {
+        "sha256": "689c9c055a5497b60e1d7ff15b10ab529475c25fb2bf512ce139680a5d28dfb4",
+        "working_equals_tested_commit": true
+      },
+      "docs/development/2026-11-14-reference-refinement/notes/A29-hosted-gate-wiring.md": {
+        "sha256": "dcecfc48b0918e9a522fc649bb0360760dfc6a4d0b29ce5db39a46c8a20ccb1f",
+        "working_equals_tested_commit": true
+      },
+      "docs/development/2026-11-14-reference-refinement/notes/A38-windows-allocation-repair.md": {
+        "sha256": "aa404d90aace3f20aba345aa8a1f6333ae123895678356f1d802139b5715cd30",
+        "working_equals_tested_commit": true
+      },
+      "docs/development/2026-11-14-reference-refinement/reports/A27-r3-summary.json": {
+        "sha256": "edf175ffbded733f6e9383cb96f321e53a8b3471d166ee93b4d08d963a8b85aa",
+        "working_equals_tested_commit": true
+      },
+      "docs/development/2026-11-14-reference-refinement/reports/A27-r3-realtime.json": {
+        "sha256": "b9f65dccca86a848fa5b6f1f3d61be8f51c24b10e2b8d4bfeddfe3c4b16166b2",
+        "working_equals_tested_commit": true
+      },
+      "docs/development/2026-11-14-reference-refinement/reports/A27-r3-sanitizer-environment.json": {
+        "sha256": "00b4aa0a7e2b7dec8573292da47de54b75c23c956f47aa6bb2413ec92bd4a7e7",
+        "working_equals_tested_commit": true
+      },
+      "docs/development/2026-11-14-reference-refinement/reports/A27-r3-sanitizer-pty.json": {
+        "sha256": "abb548b79579c9b223a2e05de6a2a81bd02ab04fb8699f109382bb8463df9032",
+        "working_equals_tested_commit": true
+      },
+      "docs/development/2026-11-14-reference-refinement/reports/A38-windows-allocation-repair.json": {
+        "sha256": "9d0e198d0fbbb28a793ab53eda0a56ba7addc77a97d13c20760538254921c792",
+        "working_equals_tested_commit": true
+      }
+    }
+  },
+  "unpublished_exclusions": {
+    "apps/standalone/InstrumentView.cpp": {
+      "tested_sha256": "428f74c4b2aae72e1ee048d1fa878575d0cd2edc064b1a3865ba40c446c30da2",
+      "working_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+      "tested_equals_parent": true,
+      "working_equals_tested": false
+    },
+    "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": {
+      "tested_sha256": "cc00920fa567460999821d9118d3b8c752b9df22be83d63969dd810f5273b252",
+      "working_sha256": "66963058652bd0673a043e03f342c94d71fd3c07e2f37a0d1d94093cc4d4a134",
+      "tested_equals_parent": true,
+      "working_equals_tested": false
+    }
+  },
+  "remaining_boundaries": [
+    "Concurrent waveform-continuation session owns R4; no R4 completion follows from these jobs.",
+    "R5 audible policy, R6 Engine/host/device integration, callback deadlines and physical cabinet fidelity remain separate.",
+    "No dry Engine, 47 parameter/state4/readers1-3 identity or scanner G5 claim changes."
+  ],
+  "related_matrix_report": "docs/development/2026-11-14-reference-refinement/reports/A43-hosted-fixture-closure.json",
+  "document_edit_scope": [
+    "docs/ROTARY_MOTION.md current qualification wording",
+    "docs/ROTARY_PROPAGATION.md current qualification and sanitizer reproduction status wording",
+    "docs/ROTARY_SCOPE.md current status rows/source boundary"
+  ],
+  "audit_validation": {
+    "git_diff_check_owned_documents": "passed",
+    "note_word_count": 451,
+    "all_local_links_in_owned_documents_exist": true,
+    "retained_extract_hashes_match": true,
+    "audited_working_source_hashes_unchanged_during_audit": true,
+    "historical_A27_A29_A38_bytes_unchanged": true,
+    "application_test_execution_by_A44": false
+  }
+}

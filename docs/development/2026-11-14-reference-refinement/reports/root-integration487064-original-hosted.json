@@ -1,0 +1,186 @@
+{
+  "schema": "reference-refinement-incoming-hosted-observation-v1",
+  "source": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+  "jobs": [
+    {
+      "run_id": 43651384583,
+      "job_id": 132620406255,
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:17:19Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384583,
+      "job_id": 132620406485,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:10:45Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384583,
+      "job_id": 132620406546,
+      "name": "Release (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:48Z",
+      "completed_at": "2026-11-14T23:08:16Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384583,
+      "job_id": 132620406632,
+      "name": "Release (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:08:47Z",
+      "failed_steps": [
+        "Run every registered Release test"
+      ]
+    },
+    {
+      "run_id": 43651384583,
+      "job_id": 132620406726,
+      "name": "Release (Windows MSVC)",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:12:49Z",
+      "failed_steps": [
+        "Run every registered Release test"
+      ]
+    },
+    {
+      "run_id": 43651384713,
+      "job_id": 132620406582,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:12:31Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384713,
+      "job_id": 132620406776,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:07:06Z",
+      "failed_steps": [
+        "Build the application and every standalone acceptance input"
+      ]
+    },
+    {
+      "run_id": 43651384713,
+      "job_id": 132620406856,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:11:30Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384713,
+      "job_id": 132620406868,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:13:12Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384713,
+      "job_id": 132620406886,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:48Z",
+      "completed_at": "2026-11-14T23:11:58Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384571,
+      "job_id": 132620406209,
+      "name": "Native VST3 (macOS AppleClang)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:48Z",
+      "completed_at": "2026-11-14T23:06:51Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384571,
+      "job_id": 132620406424,
+      "name": "Native VST3 (Windows MSVC x64)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:07:04Z",
+      "failed_steps": []
+    },
+    {
+      "run_id": 43651384571,
+      "job_id": 132620406443,
+      "name": "Native VST3 (Linux GCC)",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-14T23:04:47Z",
+      "completed_at": "2026-11-14T23:05:45Z",
+      "failed_steps": []
+    }
+  ],
+  "successful_jobs": 10,
+  "total_jobs": 13,
+  "original_failures": [
+    {
+      "job_id": 132620406632,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43651384583/job/132620406632",
+      "retrieved_primary_log_characters": 306726,
+      "first_excerpt_line": 1370,
+      "exact_lines": [
+        "2026-11-14T23:08:13.3476760Z 114/146 Test #115: python_test_rotary_waveform_acceptance ............***Failed    2.58 sec",
+        "2026-11-14T23:08:13.3484320Z {\"status\": \"fail\", \"mode\": \"smoke\", \"qualification_json\": \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-release/rotary-waveform/Release/smoke/smoke-20261114T230810.844329Z-55b001b5/qualification.json\", \"wall_seconds\": 2.48877600000003, \"failures\": [{\"stage\": \"native_report_admission\", \"type\": \"AdmissionError\", \"message\": \"rate[44100].worst_error: inconsistent recorded values\"}]}",
+        "2026-11-14T23:08:13.3485960Z ",
+        "2026-11-14T23:08:13.3486300Z         Start 116: python_test_scanner_ac_reference",
+        "2026-11-14T23:08:16.5190400Z 115/146 Test #116: python_test_scanner_ac_reference ..................   Passed    3.17 sec"
+      ]
+    },
+    {
+      "job_id": 132620406726,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43651384583/job/132620406726",
+      "retrieved_primary_log_characters": 412254,
+      "first_excerpt_line": 2494,
+      "exact_lines": [
+        "2026-11-14T23:11:56.0448370Z 114/146 Test #115: python_test_rotary_waveform_acceptance ............***Failed    4.91 sec\r",
+        "2026-11-14T23:11:56.0452182Z {\"status\": \"fail\", \"mode\": \"smoke\", \"qualification_json\": \"D:\\\\a\\\\Hammond-B3-Organ\\\\Hammond-B3-Organ\\\\build-release\\\\rotary-waveform\\\\Release\\\\smoke\\\\smoke-20261114T231151.306041Z-5e114762\\\\qualification.json\", \"wall_seconds\": 4.7029999999999745, \"failures\": [{\"stage\": \"native_report_admission\", \"type\": \"AdmissionError\", \"message\": \"rate[44100].worst_error: inconsistent recorded values\"}]}\r",
+        "2026-11-14T23:11:56.0453982Z \r",
+        "2026-11-14T23:11:56.0454115Z         Start 116: python_test_scanner_ac_reference\r",
+        "2026-11-14T23:12:00.9224550Z 115/146 Test #116: python_test_scanner_ac_reference ..................   Passed    4.88 sec\r"
+      ]
+    },
+    {
+      "job_id": 132620406776,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43651384713/job/132620406776",
+      "retrieved_primary_log_characters": 577276,
+      "first_excerpt_line": 2108,
+      "exact_lines": [
+        "2026-11-14T23:06:59.6437990Z cd /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone && /usr/bin/clang++ -DSDL_MAIN_HANDLED -I/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone -I/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/_sdl2/include -I/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/_sdl2/include/SDL2 -I/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/_sdl2/include-config-release/SDL2 -O3 -DNDEBUG -std=c++20 -arch arm64 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -MD -MT apps/standalone/CMakeFiles/test_standalone_waveform_material.dir/native_tests/test_standalone_waveform_material.cpp.o -MF CMakeFiles/test_standalone_waveform_material.dir/native_tests/test_standalone_waveform_material.cpp.o.d -o CMakeFiles/test_standalone_waveform_material.dir/native_tests/test_standalone_waveform_material.cpp.o -c /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_waveform_material.cpp",
+        "2026-11-14T23:07:00.4259240Z /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_waveform_material.cpp:38:23: error: unused variable 'kKeyCount' [-Werror,-Wunused-const-variable]",
+        "2026-11-14T23:07:00.4262380Z    38 | constexpr std::size_t kKeyCount = 2 * kManualKeyCount + kPedalCount;",
+        "2026-11-14T23:07:00.4262950Z       |                       ^~~~~~~~~",
+        "2026-11-14T23:07:00.4459120Z 1 error generated."
+      ]
+    }
+  ],
+  "boundary": "Original hosted observation at incoming source. Three failing primary logs were directly retrieved; these exact bounded excerpts are retained, not full logs. Existing owner repairs were inspected read-only and are not represented as a repaired hosted result. Full Linux waveform success is job-level observation here; its primary numerical report retains separate source identity."
+}

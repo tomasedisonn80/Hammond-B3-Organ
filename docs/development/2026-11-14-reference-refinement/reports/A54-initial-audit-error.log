@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A54-check-current-handoff.py", line 194, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/A54-check-current-handoff.py", line 154, in main
+    setups[directory] = {"cache": {key: cache[key] for key in keys}, "effective_x11": effective_x11, "effective_sdl_alsa": effective_alsa, "executable": identity(executable)}
+                                        ~~~~~^^^^^
+KeyError: 'CMAKE_BUILD_TYPE'

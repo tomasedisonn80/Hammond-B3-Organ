@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "session": "2026-11-14-reference-refinement",
+  "status": "passed",
+  "created_utc": "2026-11-14T22:54:28.752027+00:00",
+  "qualified_product_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "scope": "Root final strict record check and affected repository-integrity gate; product qualification remains A49 and A56 exact sources.",
+  "strict_completion": {
+    "command": "python3 tools/check_refinement_session.py --repo . --json",
+    "exit_code": 0,
+    "mode": "strict_completion",
+    "completion_valid": true,
+    "counts": {
+      "accepted": 60,
+      "distinct_agents": 60,
+      "distinct_ids": 60,
+      "distinct_note_paths": 60,
+      "invalid_status": 0,
+      "malformed_rows": 0,
+      "recorded": 60,
+      "running": 0,
+      "verified_accepted_notes": 60
+    },
+    "accepted_waves": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "report": "docs/development/2026-11-14-reference-refinement/completion-check.json",
+    "report_sha256": "a83d3fe69a8426dd01e4dc2f0efaa606a56ff9146b77372b1bd9af1116c36f1e",
+    "manifest_sha256": "bd56eae6857e7de74899f1810c740bb02a1f4db326ca44dcd1277d6d205ce610",
+    "checked_notes_sha256": "cece9ec98036a7ec555f7a95cc415e2f545ff5453caee6b20c40371c33978ef3",
+    "observed_utc": "2026-11-14T22:57:24.434090+00:00"
+  },
+  "documentation_integrity": {
+    "command": [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/1bb6ee17ad7e/build-native",
+      "-C",
+      "Release",
+      "--output-on-failure",
+      "--no-tests=error",
+      "-R",
+      "^python_test_repository_integrity$"
+    ],
+    "started_utc": "2026-11-14T23:04:42.522229+00:00",
+    "finished_utc": "2026-11-14T23:04:45.331855+00:00",
+    "elapsed_seconds": 2.809616102998916,
+    "exit_code": 0,
+    "markdown_count": 931,
+    "markdown_unchanged": true,
+    "markdown_inventory_sha256": "fbc1308e08beeb4e80cfd5faff2251d1d65793b8c7f415791193617db1801cd4",
+    "log_sha256": "e35e4f04c3ceeb5b05290c1ea80e21db26f829a4dd82b700b39e4f537d9073d0",
+    "ctest_result": "1/1 passed",
+    "ctest_seconds": 2.71,
+    "retained_log": "docs/development/2026-11-14-reference-refinement/reports/root-final-documentation.log",
+    "retained_markdown_inventory": "docs/development/2026-11-14-reference-refinement/reports/root-final-markdown-inventory.json"
+  },
+  "publication": {
+    "snapshot_scope": "Pre-publication local verification. The enclosing Git commit and observed GitHub Actions identify subsequent publication.",
+    "method": "Create exact indexed Git tree/commit; fresh expected-head guarded main update with force=false; independent fetch and commit/tree/parent verification.",
+    "qualified_product_revision": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b"
+  },
+  "assembly_notes": [
+    "The first root report-assembly wrapper expected mode string strict and raised AssertionError before writing this receipt. Direct inspection showed the checker schema uses strict_completion; only that wrapper expectation was corrected. The original checker exit0/completion_valid true report was unchanged and was not rerun."
+  ],
+  "independent_closing_review": {
+    "worker": "/root/w10_a59_publication_preflight",
+    "followup_observed_utc": "2026-11-14 23:03:02\u201323:03:03 UTC",
+    "result": "No new material publication blocker found; final affected documentation gate and actual publication/CI remained root-owned.",
+    "stable_inspected_files": 451,
+    "unchanged_product_inputs": 365,
+    "notes_verified": 60,
+    "waves_verified": 10,
+    "workflow_addition_lines": 6,
+    "repo_writes_by_review": false
+  },
+  "post_review_editorial_corrections": [
+    {
+      "path": "docs/NEXT_STEPS.md",
+      "change": "Clarified that the separate reference-refinement scope has published source, preserving waveform ownership and remote-inspection instruction."
+    },
+    {
+      "path": "docs/ACCEPTANCE_MATRIX.md",
+      "change": "Clarified47 sound parameters to distinguish them from the68 UI controls."
+    }
+  ],
+  "finished_utc": "2026-11-14T23:07:42.843360+00:00",
+  "staging_metadata_adjustment": {
+    "initial_staged_diff_check_exit": 2,
+    "retained_diagnostic": "docs/development/2026-11-14-reference-refinement/reports/root-initial-staged-whitespace-diagnostic.log",
+    "diagnostic_scope": "Retained unchanged-input reproduction of the initial staged whitespace output; no project test was rerun.",
+    "cause": "Three source-identified decoded primary-log excerpt text files intentionally retain timestamp-only lines with trailing spaces.",
+    "change": "Added -text -whitespace for these three exact files, extending the existing byte-preserving raw-log policy without altering any evidence or source formatting rule.",
+    "artifact_sha256_before_and_after": {
+      "docs/development/2026-11-14-reference-refinement/reports/A43-26ff-primary-log-excerpts.txt": "ed995a7707addb3b7651f460c31bfa0261e5efc01b8cf44fa3aa82ca14c70428",
+      "docs/development/2026-11-14-reference-refinement/reports/A43-f9c-primary-log-excerpts.txt": "7a723f6bbd87c4d288b4a108cef0994a0953268c6f6bb5a05544bf7e54ddbec7",
+      "docs/development/2026-11-14-reference-refinement/reports/A56-primary-log-excerpts.txt": "fc63760f91f304db03f1c432cab3f2df92cab8418b99b1c0832a196dc80fb6f8"
+    },
+    "accepted_notes_unchanged": true,
+    "markdown_gate_inputs_unchanged": true
+  }
+}

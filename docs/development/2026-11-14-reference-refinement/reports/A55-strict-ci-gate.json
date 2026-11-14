@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "agent": "/root/w10_a55_strict_ci_gate",
+  "started_utc": "2026-11-14T22:37:36.523782+00:00",
+  "completed_utc": "2026-11-14T22:37:36.565734+00:00",
+  "working_directory": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+  "source_head": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "source_tree": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+  "observed_remote_tracking_head": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "fresh_remote_query_performed": false,
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "PyYAML": "6.0.3",
+    "bash": "GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)"
+  },
+  "reproduce_command": "PYTHONDONTWRITEBYTECODE=1 python3 docs/development/2026-11-14-reference-refinement/reports/A55-verify-strict-ci-gate.py",
+  "result": "passed_focused_local_wiring_checks",
+  "check_count": 16,
+  "checks": [
+    {
+      "name": "only_six_line_addition",
+      "passed": true,
+      "detail": "Removing the exact six added lines restores every published workflow byte."
+    },
+    {
+      "name": "one_refinement_step",
+      "passed": true,
+      "detail": "Exactly one dedicated completion step is in Release."
+    },
+    {
+      "name": "strict_linux_command",
+      "passed": true,
+      "detail": "The only step fields are name, Linux condition and the exact strict pipefail pipeline."
+    },
+    {
+      "name": "after_historical_interface_before_upload",
+      "passed": true,
+      "detail": "The historical checker immediately precedes the new gate and retention immediately follows."
+    },
+    {
+      "name": "all_existing_workflow_structure_preserved",
+      "passed": true,
+      "detail": "All earlier jobs, matrices, timeouts, pins, commands, sanitizer policy and budgets are unchanged."
+    },
+    {
+      "name": "historical_interface_strict_command_preserved",
+      "passed": true,
+      "detail": "The separate completed historical interface gate remains required on Linux."
+    },
+    {
+      "name": "failed_step_artifact_retention_preserved",
+      "passed": true,
+      "detail": "Existing retention includes the exact JSON on success or failure; cancellation remains excluded."
+    },
+    {
+      "name": "bash_and_log_directory_available",
+      "passed": true,
+      "detail": "Existing Bash shell and earlier ci-logs creation serve the added pipeline."
+    },
+    {
+      "name": "bash_syntax",
+      "passed": true,
+      "detail": "bash -n parsed the extracted run block without invoking any command."
+    },
+    {
+      "name": "synthetic_transport_exit_0",
+      "passed": true,
+      "detail": "The literal pipeline preserves producer exit and exact JSON through tee in a private directory."
+    },
+    {
+      "name": "synthetic_transport_exit_31",
+      "passed": true,
+      "detail": "The literal pipeline preserves producer exit and exact JSON through tee in a private directory."
+    },
+    {
+      "name": "checker_tests_and_historical_ledger_preserved",
+      "passed": true,
+      "detail": "Refinement checker/tests and historical interface checker/manifest match the named published source."
+    },
+    {
+      "name": "workflow_diff_check",
+      "passed": true,
+      "detail": "git diff --check -- .github/workflows/ci.yml returned zero with no diagnostics."
+    },
+    {
+      "name": "assigned_note_substance",
+      "passed": true,
+      "detail": "The A55 note contains 685 whitespace-separated narrative words excluding fenced code."
+    },
+    {
+      "name": "owned_text_whitespace",
+      "passed": true,
+      "detail": "Workflow, new note and audit source have final newlines and no trailing whitespace."
+    },
+    {
+      "name": "A53_has_no_blocking_defect",
+      "passed": true,
+      "detail": "A53 supports checker use within record consistency; its 54/51 snapshot remains explicitly partial."
+    }
+  ],
+  "baseline_workflow": {
+    "commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "path": ".github/workflows/ci.yml",
+    "bytes": 6140,
+    "sha256": "dff4199953804baf7f6bab50f5642952ef0fb407baec6968a0c5d96396a884c3"
+  },
+  "modified_workflow": {
+    "path": ".github/workflows/ci.yml",
+    "bytes": 6385,
+    "sha256": "7ab2a791b0c4b9a0c1b04127b4159f2565e088ffedff0591c875ff538361b536"
+  },
+  "workflow_diff": "diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml\nindex 829b627..e6d4525 100644\n--- a/.github/workflows/ci.yml\n+++ b/.github/workflows/ci.yml\n@@ -92,6 +92,12 @@ jobs:\n           set -o pipefail\n           python tools/check_interface_session.py --repo . --json | tee ci-logs/interface-session-completion.json\n \n+      - name: Verify the completed refinement session\n+        if: runner.os == 'Linux'\n+        run: |\n+          set -o pipefail\n+          python tools/check_refinement_session.py --repo . --json | tee ci-logs/refinement-session-completion.json\n+\n       - name: Retain configure, build, and test diagnostics\n         if: ${{ always() && !cancelled() }}\n         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2\n",
+  "new_step": {
+    "name": "Verify the completed refinement session",
+    "if": "runner.os == 'Linux'",
+    "run": "set -o pipefail\npython tools/check_refinement_session.py --repo . --json | tee ci-logs/refinement-session-completion.json\n"
+  },
+  "artifact_retention": {
+    "name": "Retain configure, build, and test diagnostics",
+    "if": "${{ always() && !cancelled() }}",
+    "uses": "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+    "with": {
+      "name": "ci-${{ matrix.os }}-release-${{ github.run_attempt }}",
+      "retention-days": "14",
+      "if-no-files-found": "warn",
+      "path": "ci-logs/\nbuild-release/CMakeCache.txt\nbuild-release/CMakeFiles/CMakeConfigureLog.yaml\nbuild-release/CMakeFiles/CMakeOutput.log\nbuild-release/CMakeFiles/CMakeError.log\nbuild-release/Testing/Temporary/LastTest.log\nbuild-release/Testing/Temporary/LastTestsFailed.log\n"
+    }
+  },
+  "synthetic_transport_probes": [
+    {
+      "producer_exit": 0,
+      "pipeline_exit": 0,
+      "stdout": "{\"A55_synthetic_transport_probe\": true, \"producer_exit\": 0}\n",
+      "stderr": "A55 synthetic stderr remains outside the JSON artifact.\n",
+      "retained_json": "{\"A55_synthetic_transport_probe\": true, \"producer_exit\": 0}\n",
+      "artifact_sha256": "1f1dc5efef3480a51363c7ee145f17847f5271d74614775de70ccd0542b8646e",
+      "exact_stdout_retained": true,
+      "stderr_kept_separate": true,
+      "actual_checker_executed": false
+    },
+    {
+      "producer_exit": 31,
+      "pipeline_exit": 31,
+      "stdout": "{\"A55_synthetic_transport_probe\": true, \"producer_exit\": 31}\n",
+      "stderr": "A55 synthetic stderr remains outside the JSON artifact.\n",
+      "retained_json": "{\"A55_synthetic_transport_probe\": true, \"producer_exit\": 31}\n",
+      "artifact_sha256": "8a75ada6a2969818fec46aa6ade45b92b1e0ce636636f2944ebb1625d9f5e164",
+      "exact_stdout_retained": true,
+      "stderr_kept_separate": true,
+      "actual_checker_executed": false
+    }
+  ],
+  "protected_source_records": [
+    {
+      "path": "tools/check_refinement_session.py",
+      "bytes": 18798,
+      "sha256": "5bd5f420bd8bbad37f7e469b94f9695cd38106d7de8c2c5d9cdb8a2faf453e42",
+      "matches_published_source": true
+    },
+    {
+      "path": "tests/test_refinement_session.py",
+      "bytes": 24048,
+      "sha256": "33c5e845971af9396a50a03c9550af8a9e93df59086b34fe19f92046b9522df7",
+      "matches_published_source": true
+    },
+    {
+      "path": "tools/check_interface_session.py",
+      "bytes": 15343,
+      "sha256": "1af6b63e4fb1d5bc9ded110c50a41dd6cf3046a9c200026941d83104d7679430",
+      "matches_published_source": true
+    },
+    {
+      "path": "docs/development/2026-11-14-interface-continuation/assignments.json",
+      "bytes": 32186,
+      "sha256": "f7af18dadc375ca2e0d2cbc23c5886b03bda1fade4d998e4152b99ebbe282ec9",
+      "matches_published_source": true
+    }
+  ],
+  "A53_observed_snapshot": {
+    "as_of_utc": "2026-11-14T22:29:22.828994+00:00",
+    "recorded": 54,
+    "accepted": 51,
+    "completion_valid": false
+  },
+  "input_records": [
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/notes/A39-refinement-ledger-checker.md",
+      "bytes": 3593,
+      "sha256": "cfbfbc9565fe3b0c5abb5d4d5b39ad3bb6e1ffae8b0d968d0f038c227ef29c37"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/notes/A53-completion-checker-review.md",
+      "bytes": 4779,
+      "sha256": "7b5ff40fff4c0a2324f716fd120ee0e6a7d6c20287ab1c08365cb85f4a7d73ce"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A53-completion-checker-review.json",
+      "bytes": 14538,
+      "sha256": "23b4585bdeef8e40eab8d444cefc0d2c6ea608e04a41c6bb7ce02cd59df53caa"
+    },
+    {
+      "path": "docs/reviews/REFERENCE_REFINEMENT_COMPLETION_GATE.md",
+      "bytes": 12088,
+      "sha256": "fd0e1e424b25d27d34a44921f9b8098d85e155c4eeb6f2b57dc728f8a5eaa2eb"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/notes/A55-strict-ci-gate.md",
+      "bytes": 5786,
+      "sha256": "1649d25c93dea6765ff022a8b04f7c316d1d0b84f6e6c0cb2920392f1e7aa050"
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A55-verify-strict-ci-gate.py",
+      "bytes": 12150,
+      "sha256": "abf3d162167833312cd3e6de982513964e50bfc5c8cadb8c02502d0de9e582c0"
+    }
+  ],
+  "note_narrative_words_excluding_fences": 685,
+  "actual_strict_completion_executed": false,
+  "actual_progress_checker_executed": false,
+  "new_checker_suite_runs": 0,
+  "build_or_ctest_runs": 0,
+  "hosted_workflow_executed_or_dispatched": false,
+  "publication_performed": false,
+  "publication_prerequisite": "Root acceptance of all sixty actual results and successful strict completion on stable final records.",
+  "limits": [
+    "Local YAML structure and shell transport probes do not prove hosted runner execution or artifact upload.",
+    "An earlier failed step can skip this ordinary required step; cancellation is excluded by the unchanged retention condition.",
+    "A53's earlier 54-record/51-accepted snapshot is partial and does not describe later live counts.",
+    "Completion consistency cannot authenticate dispatch, acceptance truth, product readiness or physical/visual fidelity.",
+    "The concurrent session owns R4; no product, checker, test, manifest or current shared documentation was edited by A55."
+  ]
+}

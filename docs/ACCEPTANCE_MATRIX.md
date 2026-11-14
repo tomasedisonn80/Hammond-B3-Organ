@@ -1,6 +1,29 @@
 # Milestone acceptance and evidence matrix
 
-## Current continuation matrix
+**Combined-source continuation:** the [completion and integration record](REFERENCE_REFINEMENT_CLOSURE.md)
+records all 60 accepted agents, the integrated `487064d` R4/material source,
+the fresh v5 native gallery and its separate qualification. Source-specific
+`0881d1f4`/v4 results below remain historical evidence for those exact inputs.
+
+**Current authority:** use the [complete M0–M9 plan](PLAN.md),
+[reference-refinement setup/handoff](REFERENCE_REFINEMENT_HANDOFF.md) and
+[release readiness](RELEASE_READINESS.md) for present engineering scope, named
+source qualification and remaining gates. Current M3 includes exclusive fixed
+registration selectors, four retained A/B banks and Cancel, with **47 sound parameters**,
+the **`B3CONTROLS4`** writer and readers 1–3. Native **R2 motion/R3 historical
+propagation** are implemented and independently qualified; the concurrent
+waveform session owns the separate R4 renderer, with R5/R6 and physical gates
+still distinct. The [current Standalone inventory](STANDALONE_INSTALL.md) is
+**15 files with MIDI OFF or 19 with MIDI ON**. The nominal dry Engine and
+scanner G5 limitation remain unchanged.
+
+## Retained standalone continuation history
+
+The unchanged rows and result paragraphs in this section describe the earlier
+standalone checkpoint at their named sources. In particular, its **110/110
+Release** and **14/14 ASan/UBSan** results and nine-file installation are
+historical evidence; they do not state today's package inventory or qualify
+later product/documentation inputs. The current authority is linked above.
 
 The [project plan](PLAN.md) remains the M0–M9 authority. The matrix below
 supersedes the historical pedal-session implementation/next-task descriptions

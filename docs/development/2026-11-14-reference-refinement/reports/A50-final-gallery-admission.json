@@ -1,0 +1,852 @@
+{
+  "build": {
+    "executable": {
+      "bytes": 3860368,
+      "sha256": "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f"
+    },
+    "extra_files": 9,
+    "producer": {
+      "bytes": 29923,
+      "sha256": "92ae0be31a6ef21eb696c87d4f9dacd8ea8a6732d6c1033e0d7457ca3a76d16b"
+    },
+    "producer_build": {
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/1bb6ee17ad7e/build-desktop",
+        "--parallel",
+        "3",
+        "--target",
+        "hammond_standalone"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+      "elapsed_seconds": 1.016513632999704,
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-14T22:11:28.025220+00:00",
+      "log": {
+        "bytes": 10122,
+        "path": "docs/development/2026-11-14-reference-refinement/reports/A46-build.log",
+        "sha256": "65591a861177b5f6a68b1a25ce8ed4a8001656044ba82132e28fd476a1f1c4e8"
+      },
+      "started_at_utc": "2026-11-14T22:11:27.008717+00:00"
+    },
+    "producer_capture": {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_standalone_interface.py",
+        "--exe",
+        "/workspace/scratch/1bb6ee17ad7e/build-desktop/apps/standalone/hammond_standalone",
+        "--source-root",
+        "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+        "--build-root",
+        "/workspace/scratch/1bb6ee17ad7e/build-desktop",
+        "--source-qualification",
+        "/workspace/scratch/1bb6ee17ad7e/a46-source-qualification.json",
+        "--expected-exe-sha256",
+        "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f",
+        "--dummy-sdl",
+        "--output",
+        "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v4"
+      ],
+      "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+      "elapsed_seconds": 19.144155263000357,
+      "exit_code": 0,
+      "finished_at_utc": "2026-11-14T22:11:47.253938+00:00",
+      "log": {
+        "bytes": 188,
+        "path": "docs/development/2026-11-14-reference-refinement/reports/A46-capture.log",
+        "sha256": "5078739cf6431a0c61c62ea94ff8677e4f28ab6815d500a98b0dae8fc1d04e8b"
+      },
+      "started_at_utc": "2026-11-14T22:11:28.109789+00:00"
+    },
+    "root": "/workspace/scratch/1bb6ee17ad7e/build-desktop",
+    "selected_configuration": {
+      "ALSA_INCLUDE_DIR": "/workspace/scratch/1bb6ee17ad7e/native-sysroot/usr/include",
+      "ALSA_LIBRARY": "/workspace/scratch/1bb6ee17ad7e/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_CXX_FLAGS": "",
+      "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_ENABLE_MIDI": "ON",
+      "HAMMOND_RTMIDI_ROOT": "/workspace/scratch/1bb6ee17ad7e/rtmidi",
+      "HAMMOND_SDL2_ROOT": "/workspace/scratch/1bb6ee17ad7e/SDL2",
+      "SDL_ALSA": "OFF"
+    },
+    "selected_files": 13,
+    "selected_inventory_sha256": "4799c5b0dcf4d1d95e4f71f032449670cd355fa99f05a0e4375df381b48f6113"
+  },
+  "cases": [
+    {
+      "callbacks": 180,
+      "decoded_rgba8_sha256": "7558bb24c7ed18c2d40f5e07a83714c5075a46e84219400291336540c327436f",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "name": "play-reference-1672x941",
+      "painted": {
+        "elapsed_ms": 1870,
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 86528,
+          "publication_revision": 342,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 27,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "play"
+      },
+      "png": {
+        "bytes": 675220,
+        "sha256": "ea5173f8d505da12be1002bfb06fc705578b654cb234ed43fd6476a71909a04b"
+      },
+      "rendered_frames": 92160,
+      "session_discarded_commands_after_shutdown": 1,
+      "ui_events": 66
+    },
+    {
+      "callbacks": 172,
+      "decoded_rgba8_sha256": "adbcc4f325d6c03d55df87f6273659efbd723db9033c066ef524670a80c3c23c",
+      "dimensions": [
+        1280,
+        900
+      ],
+      "name": "play-default-1280x900",
+      "painted": {
+        "elapsed_ms": 1813,
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 83968,
+          "publication_revision": 332,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 32,
+        "window_height": 900,
+        "window_width": 1280,
+        "workspace": "play"
+      },
+      "png": {
+        "bytes": 176267,
+        "sha256": "7ff19445d781f30953a618b429056726a095f7cc25fd6b762ef56cb6924191a5"
+      },
+      "rendered_frames": 88064,
+      "session_discarded_commands_after_shutdown": 1,
+      "ui_events": 66
+    },
+    {
+      "callbacks": 168,
+      "decoded_rgba8_sha256": "a0c83f72520943ad99318e09fba928266c32c0360dfc1483230682c62b47ecfd",
+      "dimensions": [
+        960,
+        700
+      ],
+      "name": "play-minimum-960x700",
+      "painted": {
+        "elapsed_ms": 1800,
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 83968,
+          "publication_revision": 332,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 50,
+        "window_height": 700,
+        "window_width": 960,
+        "workspace": "play"
+      },
+      "png": {
+        "bytes": 141425,
+        "sha256": "a5fc7ec4aeec9b33ff62ea94e9399c84d8d00fddb915e1edcf0a4f1c7ab69952"
+      },
+      "rendered_frames": 86016,
+      "session_discarded_commands_after_shutdown": 1,
+      "ui_events": 66
+    },
+    {
+      "callbacks": 171,
+      "decoded_rgba8_sha256": "45bb21455b05c3f2819ff1fd5d7335530db33ce6936ff5f5252a4d2942929770",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "name": "service-reference-1672x941",
+      "painted": {
+        "elapsed_ms": 1810,
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 83456,
+          "publication_revision": 330,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 27,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "service"
+      },
+      "png": {
+        "bytes": 412541,
+        "sha256": "478746a4c7ae6ba7f7939c642b2eb5472f0c26fa45f72808b805e5f42d5e7eb3"
+      },
+      "rendered_frames": 87552,
+      "session_discarded_commands_after_shutdown": 1,
+      "ui_events": 66
+    },
+    {
+      "callbacks": 170,
+      "decoded_rgba8_sha256": "59ada0fc17a607f81234cc7b386e31d0d8f4d794ad6f3c148622de7706f43331",
+      "dimensions": [
+        960,
+        700
+      ],
+      "name": "service-minimum-960x700",
+      "painted": {
+        "elapsed_ms": 1833,
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 85504,
+          "publication_revision": 338,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 51,
+        "window_height": 700,
+        "window_width": 960,
+        "workspace": "service"
+      },
+      "png": {
+        "bytes": 175234,
+        "sha256": "750e24ae09e6aa5c10bffe539a53bc989b05569254d15aec86904bb4c2a9c55d"
+      },
+      "rendered_frames": 87040,
+      "session_discarded_commands_after_shutdown": 1,
+      "ui_events": 66
+    },
+    {
+      "callbacks": 172,
+      "decoded_rgba8_sha256": "51d19f1c7c034c64dd5a306adda224dc0a25ea51b4bcef5c9fa6feadfeb9afb8",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "name": "rotary-reference-1672x941",
+      "painted": {
+        "elapsed_ms": 1849,
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 84480,
+          "publication_revision": 334,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 27,
+        "window_height": 941,
+        "window_width": 1672,
+        "workspace": "rotary"
+      },
+      "png": {
+        "bytes": 774578,
+        "sha256": "456ac6207862fcc826a2dda4f2f7b5ebabc8dd3133a8168512baadc00571cd5a"
+      },
+      "rendered_frames": 88064,
+      "session_discarded_commands_after_shutdown": 1,
+      "ui_events": 66
+    },
+    {
+      "callbacks": 165,
+      "decoded_rgba8_sha256": "c62278008f9b339c2c38fae25565931b33c856f805701144c1269f16c6facada",
+      "dimensions": [
+        960,
+        700
+      ],
+      "name": "rotary-minimum-960x700",
+      "painted": {
+        "elapsed_ms": 1804,
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 81920,
+          "publication_revision": 324,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "rendered_image": 48,
+        "window_height": 700,
+        "window_width": 960,
+        "workspace": "rotary"
+      },
+      "png": {
+        "bytes": 317564,
+        "sha256": "fdefcb6f28b649f6fe2be8cb8b105922bd89b51bb07ccfa67d6bd3b68a1e0dd2"
+      },
+      "rendered_frames": 84480,
+      "session_discarded_commands_after_shutdown": 1,
+      "ui_events": 66
+    },
+    {
+      "callbacks": 165,
+      "decoded_rgba8_sha256": "32e91671ad4641130e89bbd91e005294d3ea6d2165b4bf83319cfd53c9592eeb",
+      "dimensions": [
+        960,
+        700
+      ],
+      "name": "flat-minimum-960x700",
+      "painted": {
+        "elapsed_ms": 1814,
+        "held_targets": {
+          "lower": 1,
+          "pedals": 1,
+          "upper": 2
+        },
+        "inspection": {
+          "controls_pending": false,
+          "frame_clock": 83968,
+          "publication_revision": 332,
+          "snapshot_available": true,
+          "snapshot_read_succeeded": true,
+          "snapshot_state": "current"
+        },
+        "overlay": "none",
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "rendered_image": 66,
+        "window_height": 700,
+        "window_width": 960,
+        "workspace": "play"
+      },
+      "png": {
+        "bytes": 49621,
+        "sha256": "a7dd6b6a5e158d81bd469299a3380fde98a83c6d0c74b0cd7dee44f7ad3c99fd"
+      },
+      "rendered_frames": 84480,
+      "session_discarded_commands_after_shutdown": 1,
+      "ui_events": 68
+    }
+  ],
+  "check_groups": {
+    "build": 6,
+    "cases": 1,
+    "cleanup": 8,
+    "commands": 8,
+    "diagnostics": 8,
+    "extra_build_inputs": 9,
+    "fonts": 7,
+    "gallery": 7,
+    "header": 10,
+    "historical_blobs": 123,
+    "history": 3,
+    "inputs": 10,
+    "payload": 39,
+    "pixels": 17,
+    "producer": 2,
+    "producer_endpoint": 8,
+    "reference": 5,
+    "replay": 8,
+    "retained_records": 6,
+    "selected_build_inputs": 13,
+    "source": 11,
+    "source_current": 111,
+    "source_published": 111,
+    "streams": 16,
+    "typed_capture": 24,
+    "typed_holds": 24,
+    "typed_state": 16
+  },
+  "checker_identity": {
+    "bytes": 23075,
+    "sha256": "0272f6609c552b9c8136fcc45b5b2852306aff3ad5669b7fd0e0aa328e58ef93"
+  },
+  "checks": 611,
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "/workspace/scratch/1bb6ee17ad7e/A50-check-final-gallery.py",
+    "--repo",
+    "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "--output",
+    "/workspace/scratch/1bb6ee17ad7e/A50-final-gallery-admission.json"
+  ],
+  "elapsed_seconds": 1.451083636000476,
+  "failures": [],
+  "finished_at_utc": "2026-11-14T22:21:10.840069+00:00",
+  "gallery": {
+    "all_files_inventory_sha256": "551a6f3f3c72586021bde02347c32be8e587d7a91efbb5af8cc27ca4c9637511",
+    "bytes": 2948483,
+    "files": 41,
+    "manifest": {
+      "bytes": 6528,
+      "sha256": "2ed031aa1ecda5a67fa32a4268676602d709250c596ed2be0a24b69c682da5e8"
+    },
+    "path": "examples/demos/standalone-interface-preview-v4",
+    "payload_files": 39,
+    "provenance": {
+      "bytes": 68057,
+      "sha256": "f106efc20838c1acb3a392e3d39989ed34b770829a3859deaa95e64cd8a657be"
+    },
+    "readme": {
+      "bytes": 11080,
+      "sha256": "1b27d34bb5f4aac40ea355ee2ed3ed5f1af7bba53bf8f0aadf05fc6e70f09bf3"
+    }
+  },
+  "git_observed": {
+    "cached_origin_main": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "head": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "tree": "f8144b771cda1264a8788f8297f5bfec999f4a08"
+  },
+  "header_measurement": {
+    "images": {
+      "play-reference-1672x941": {
+        "image": {
+          "bytes": 675220,
+          "sha256": "ea5173f8d505da12be1002bfb06fc705578b654cb234ed43fd6476a71909a04b"
+        },
+        "subtitle": {
+          "bbox_half_open": [
+            650,
+            71,
+            1020,
+            83
+          ],
+          "center_x": 835.0,
+          "height": 12,
+          "occupied_column_runs": 15,
+          "pixels": 747,
+          "roi_half_open": [
+            600,
+            60,
+            1100,
+            106
+          ],
+          "width": 370
+        },
+        "title": {
+          "bbox_half_open": [
+            602,
+            20,
+            1065,
+            53
+          ],
+          "center_x": 833.5,
+          "height": 33,
+          "occupied_column_runs": 13,
+          "pixels": 3685,
+          "roi_half_open": [
+            595,
+            10,
+            1081,
+            65
+          ],
+          "width": 463
+        }
+      },
+      "reference": {
+        "image": {
+          "bytes": 412664,
+          "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+        },
+        "subtitle": {
+          "bbox_half_open": [
+            650,
+            71,
+            1021,
+            83
+          ],
+          "center_x": 835.5,
+          "height": 12,
+          "occupied_column_runs": 20,
+          "pixels": 765,
+          "roi_half_open": [
+            600,
+            60,
+            1100,
+            106
+          ],
+          "width": 371
+        },
+        "title": {
+          "bbox_half_open": [
+            603,
+            20,
+            1067,
+            53
+          ],
+          "center_x": 835.0,
+          "height": 33,
+          "occupied_column_runs": 13,
+          "pixels": 5052,
+          "roi_half_open": [
+            595,
+            10,
+            1081,
+            65
+          ],
+          "width": 464
+        }
+      },
+      "rotary-reference-1672x941": {
+        "image": {
+          "bytes": 774578,
+          "sha256": "456ac6207862fcc826a2dda4f2f7b5ebabc8dd3133a8168512baadc00571cd5a"
+        },
+        "subtitle": {
+          "bbox_half_open": [
+            650,
+            71,
+            1020,
+            83
+          ],
+          "center_x": 835.0,
+          "height": 12,
+          "occupied_column_runs": 15,
+          "pixels": 747,
+          "roi_half_open": [
+            600,
+            60,
+            1100,
+            106
+          ],
+          "width": 370
+        },
+        "title": {
+          "bbox_half_open": [
+            602,
+            20,
+            1065,
+            53
+          ],
+          "center_x": 833.5,
+          "height": 33,
+          "occupied_column_runs": 13,
+          "pixels": 3685,
+          "roi_half_open": [
+            595,
+            10,
+            1081,
+            65
+          ],
+          "width": 463
+        }
+      },
+      "service-reference-1672x941": {
+        "image": {
+          "bytes": 412541,
+          "sha256": "478746a4c7ae6ba7f7939c642b2eb5472f0c26fa45f72808b805e5f42d5e7eb3"
+        },
+        "subtitle": {
+          "bbox_half_open": [
+            650,
+            71,
+            1020,
+            83
+          ],
+          "center_x": 835.0,
+          "height": 12,
+          "occupied_column_runs": 15,
+          "pixels": 747,
+          "roi_half_open": [
+            600,
+            60,
+            1100,
+            106
+          ],
+          "width": 370
+        },
+        "title": {
+          "bbox_half_open": [
+            602,
+            20,
+            1065,
+            53
+          ],
+          "center_x": 833.5,
+          "height": 33,
+          "occupied_column_runs": 13,
+          "pixels": 3685,
+          "roi_half_open": [
+            595,
+            10,
+            1081,
+            65
+          ],
+          "width": 463
+        }
+      }
+    },
+    "limit": "Ink measures match the cited A41 observations; no whole-frame or literal source-reference equality follows.",
+    "mask": "A36: R>=130, G>=105, R>=G, B<=0.9R inside named half-open ROI; no resampling or image registration.",
+    "unchanged_A41_thresholds": {
+      "caption_center_x": [
+        833.5,
+        837.5
+      ],
+      "caption_height": [
+        11,
+        13
+      ],
+      "caption_nonspace_runs": 15,
+      "caption_top": [
+        70,
+        72
+      ],
+      "caption_width": [
+        367,
+        375
+      ],
+      "title_center_x": [
+        833,
+        837
+      ],
+      "title_height": [
+        32,
+        34
+      ],
+      "title_top": [
+        19,
+        21
+      ],
+      "title_width": [
+        461,
+        467
+      ]
+    }
+  },
+  "historical_galleries": {
+    "v1": {
+      "bytes": 2855783,
+      "compared_to_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "files": 41,
+      "inventory_sha256": "73d68484579a3a48160f3b989e55623d26f1b66b652b0fa51e7c851c15a13991"
+    },
+    "v2": {
+      "bytes": 2857322,
+      "compared_to_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "files": 41,
+      "inventory_sha256": "287027532134f24902e87d8278e331e8ab4a876468790b1f141da82c8c4dbe5f"
+    },
+    "v3": {
+      "bytes": 2930464,
+      "compared_to_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "files": 41,
+      "inventory_sha256": "21d275f822732dafb27f9c0a068a7aff3459758fe02deea5449c50af0b17b2cc"
+    }
+  },
+  "limits": [
+    "Raw native BMPs were removed by the producer after its recorded lossless comparison; only retained PNG decoding is independently rechecked here.",
+    "The existing desktop target build refreshed CMake and reported no work to do; this audit does not establish independent compilation/linking or a hermetic source-to-binary proof.",
+    "Current named input hashes and local published blobs are checked; cached origin/main is not an independent network observation.",
+    "All v4 frames are acknowledged, overlay-free keyboard-replay endpoints under dummy SDL/software rendering; pending harness, modal overlays and real OS-window/input evidence retain separate scope.",
+    "One discarded shutdown command is retained in each diagnostic; zero faults/rejections and clear joined endpoints do not mean every counter is zero.",
+    "No physical audio/MIDI device, real display/DPI, semantic accessibility, audio deadline, connected Leslie render or measured physical fidelity is established."
+  ],
+  "qualified_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "qualified_tree": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+  "reference": {
+    "jpeg": {
+      "bytes": 412664,
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    },
+    "object": 3,
+    "pages": [
+      1,
+      409
+    ],
+    "pdf": {
+      "bytes": 21248265,
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+    },
+    "provenance": {
+      "bytes": 811,
+      "sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50"
+    }
+  },
+  "retained_evidence": {
+    "docs/development/2026-11-14-reference-refinement/reports/A32-gallery-independent.json": {
+      "bytes": 17827,
+      "sha256": "51308a32d646fac08a00a826b8dd442b5cb45902fe3eb6be5673e1b5f1fa0204"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A40-reference-header-refinement.json": {
+      "bytes": 8220,
+      "sha256": "0aa332fe45dc8dcfea7d0b1fbe6fe085e752bb73b5735feb862277c6f147cb3a"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A41-final-acceptance.json": {
+      "bytes": 22078,
+      "sha256": "8474977e7326c8f1ac14032894b6a75970d6fdd6a3094a0af8737ce7321efe36"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A41-raster-acceptance.json": {
+      "bytes": 7098,
+      "sha256": "9d62bda81b2bb1b6e4ca554808fabb440c451212f70cb92f8a8157396e809cec"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A46-after-build.json": {
+      "bytes": 25695,
+      "sha256": "411059385e2347cd1c1b83a8823045c60996dfe7edafc6fb595c204a0143d118"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A46-after-capture.json": {
+      "bytes": 25906,
+      "sha256": "30ab00606cc8edab46bb192aed7082578bb6b9959cd90bd96468bb03db66f599"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A46-before-build.json": {
+      "bytes": 25537,
+      "sha256": "2c60c6c57da02916c95f72f802f7a56644b202c45548b41cf27edd2c0d5e4f04"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A46-build.log": {
+      "bytes": 10122,
+      "sha256": "65591a861177b5f6a68b1a25ce8ed4a8001656044ba82132e28fd476a1f1c4e8"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A46-capture.log": {
+      "bytes": 188,
+      "sha256": "5078739cf6431a0c61c62ea94ff8677e4f28ab6815d500a98b0dae8fc1d04e8b"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/A46-final-native-gallery.json": {
+      "bytes": 25559,
+      "sha256": "878de8fe2c10866feebd258702d2c3faa830ad1b29df660036fe5db30e6ab6ca"
+    },
+    "docs/development/2026-11-14-reference-refinement/reports/root-header-publication.json": {
+      "bytes": 793,
+      "sha256": "88206860cbaeff305ab2764281cbcf855d3baa08db56cfcc9a69c3abc7a4465a"
+    }
+  },
+  "runtime": {
+    "pillow": "13.0.0",
+    "pymupdf": "1.26.6",
+    "python": "3.12.14"
+  },
+  "schema": "a50-final-gallery-admission-v1",
+  "scope": "Read-only independent retained-file/source/build-input/decoded-pixel and typed endpoint admission; no native run, compile, CTest, synthetic mutation, image composite or hermetic rebuild.",
+  "source": {
+    "cmake_files": 11,
+    "font_files": 7,
+    "inventory_sha256": "bffd31d6a2caa65872ece2cb4614902608c30c3dffc9af0c21aa4bd0a3a110fd",
+    "painter_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+    "production_files": 100,
+    "production_inventory_sha256": "af45e17d8b9a32bac44d4d1d356ab9d73e8c0a90f8fd4d97acb1cfaa5610e341",
+    "qualified_files": 111
+  },
+  "started_at_utc": "2026-11-14T22:21:09.388987+00:00",
+  "status": "passed",
+  "whole_worktree_clean_claimed": false,
+  "worker": "/root/w09_a50_final_gallery_admission"
+}

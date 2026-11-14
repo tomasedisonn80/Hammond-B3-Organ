@@ -1,0 +1,103 @@
+A44 primary decoded workflow-job log extract
+Source: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43644278142/job/132598497275
+Tested commit: 26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8
+Full connector-decoded UTF-8 log SHA-256: 438fedadf7aee07d62363a9cf866e6e06b267b74851a49ca990abe200f331018
+Full decoded log bytes: 323342
+Original line numbers are 1-based. Timestamped selected records follow; ANSI escapes are preserved.
+This is a bounded extract, not original ZIP bytes or a new test execution.
+
+0011: 2026-11-14T21:43:18.0824510Z ##[group]Operating System
+0012: 2026-11-14T21:43:18.0825258Z Ubuntu
+0013: 2026-11-14T21:43:18.0826054Z 24.04.5
+0014: 2026-11-14T21:43:18.0826974Z LTS
+0015: 2026-11-14T21:43:18.0827571Z ##[endgroup]
+0016: 2026-11-14T21:43:18.0828149Z ##[group]Runner Image
+0017: 2026-11-14T21:43:18.0828824Z Image: ubuntu-24.04
+0018: 2026-11-14T21:43:18.0829390Z Version: 20261111.370.1
+0019: 2026-11-14T21:43:18.0830761Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+0020: 2026-11-14T21:43:18.0832414Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+0192: 2026-11-14T21:43:23.6314777Z 26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8
+0193: 2026-11-14T21:43:24.1300137Z cmake version 3.31.6
+0194: 2026-11-14T21:43:24.1301136Z 
+0195: 2026-11-14T21:43:24.1301412Z CMake suite maintained and supported by Kitware (kitware.com/cmake).
+0196: 2026-11-14T21:43:24.7201183Z ctest version 3.31.6
+0197: 2026-11-14T21:43:24.7201479Z 
+0198: 2026-11-14T21:43:24.7201941Z CMake suite maintained and supported by Kitware (kitware.com/cmake).
+0199: 2026-11-14T21:43:24.7436248Z Python 3.12.16
+0200: 2026-11-14T21:43:24.7491648Z g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+0201: 2026-11-14T21:43:24.7492535Z Copyright (C) 2023 Free Software Foundation, Inc.
+0202: 2026-11-14T21:43:24.7493383Z This is free software; see the source for copying conditions.  There is NO
+0203: 2026-11-14T21:43:24.7494334Z warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+0205: 2026-11-14T21:43:24.7541348Z ##[group]Run cmake --preset sanitizers -G "Unix Makefiles" \
+0206: 2026-11-14T21:43:24.7541856Z [36;1mcmake --preset sanitizers -G "Unix Makefiles" \[0m
+0207: 2026-11-14T21:43:24.7542225Z [36;1m  -DCMAKE_CXX_COMPILER=g++ \[0m
+0208: 2026-11-14T21:43:24.7542653Z [36;1m  -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log[0m
+0209: 2026-11-14T21:43:24.7565802Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+0210: 2026-11-14T21:43:24.7566322Z env:
+0211: 2026-11-14T21:43:24.7566645Z   PYTHONDONTWRITEBYTECODE: 1
+0212: 2026-11-14T21:43:24.7567139Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+0213: 2026-11-14T21:43:24.7567717Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+0214: 2026-11-14T21:43:24.7568211Z   LSAN_OPTIONS: exitcode=23
+0223: 2026-11-14T21:43:25.1661379Z Preset CMake variables:
+0224: 2026-11-14T21:43:25.1661709Z 
+0225: 2026-11-14T21:43:25.1661874Z   BUILD_TESTING="ON"
+0226: 2026-11-14T21:43:25.2670056Z   CMAKE_BUILD_TYPE="Debug"
+0227: 2026-11-14T21:43:25.2670823Z   HAMMOND_ENABLE_SANITIZERS="ON"
+0228: 2026-11-14T21:43:25.2671185Z 
+0229: 2026-11-14T21:43:25.2671442Z -- The CXX compiler identification is GNU 13.3.0
+0230: 2026-11-14T21:43:25.2672119Z -- Detecting CXX compiler ABI info
+0231: 2026-11-14T21:43:25.4869630Z -- Detecting CXX compiler ABI info - done
+0232: 2026-11-14T21:43:25.5048137Z -- Check for working CXX compiler: /usr/bin/g++ - skipped
+0233: 2026-11-14T21:43:25.5097495Z -- Detecting CXX compile features
+0234: 2026-11-14T21:43:25.5156669Z -- Detecting CXX compile features - done
+0235: 2026-11-14T21:43:25.6855368Z -- Found Python3: /opt/hostedtoolcache/Python/3.12.16/x64/bin/python (found suitable version "3.12.16", minimum required is "3.10") found components: Interpreter
+0236: 2026-11-14T21:43:25.7166432Z -- Performing Test HAMMOND_SANITIZERS_AVAILABLE
+0237: 2026-11-14T21:43:26.0318876Z -- Performing Test HAMMOND_SANITIZERS_AVAILABLE - Success
+0238: 2026-11-14T21:43:26.0510224Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+0239: 2026-11-14T21:43:26.1451576Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+0240: 2026-11-14T21:43:26.1462738Z -- Found Threads: TRUE
+0241: 2026-11-14T21:43:26.1857856Z -- Configuring done (1.4s)
+0242: 2026-11-14T21:43:26.3269416Z -- Generating done (0.1s)
+0358: 2026-11-14T21:43:30.6558346Z /usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/generated -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o -MF CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o.d -o CMakeFiles/hammond_core.dir/src/RotaryMotion.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryMotion.cpp
+0360: 2026-11-14T21:43:31.0113314Z /usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/generated -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o -MF CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o.d -o CMakeFiles/hammond_core.dir/src/RotaryPropagation.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/RotaryPropagation.cpp
+0469: 2026-11-14T21:43:39.0109248Z /usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_rotary_motion_probe.dir/tests/probes/rotary_motion_probe.cpp.o -MF CMakeFiles/hammond_rotary_motion_probe.dir/tests/probes/rotary_motion_probe.cpp.o.d -o CMakeFiles/hammond_rotary_motion_probe.dir/tests/probes/rotary_motion_probe.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/probes/rotary_motion_probe.cpp
+0472: 2026-11-14T21:43:39.9194630Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/hammond_rotary_motion_probe.dir/link.d CMakeFiles/hammond_rotary_motion_probe.dir/tests/probes/rotary_motion_probe.cpp.o -o hammond_rotary_motion_probe  libhammond_core.a
+0482: 2026-11-14T21:43:39.9322668Z /usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_rotary_propagation_probe.dir/tests/probes/rotary_propagation_probe.cpp.o -MF CMakeFiles/hammond_rotary_propagation_probe.dir/tests/probes/rotary_propagation_probe.cpp.o.d -o CMakeFiles/hammond_rotary_propagation_probe.dir/tests/probes/rotary_propagation_probe.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/probes/rotary_propagation_probe.cpp
+0498: 2026-11-14T21:43:41.3625142Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/hammond_rotary_propagation_probe.dir/link.d CMakeFiles/hammond_rotary_propagation_probe.dir/tests/probes/rotary_propagation_probe.cpp.o -o hammond_rotary_propagation_probe  libhammond_core.a
+1015: 2026-11-14T21:44:13.6911433Z /usr/bin/g++ -DHAMMOND_SOURCE_DIR=\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ\" -DHAMMOND_TEST_PROFILE=\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/nominal.b3p\" -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/test_rotary_motion.dir/tests/test_rotary_motion.cpp.o -MF CMakeFiles/test_rotary_motion.dir/tests/test_rotary_motion.cpp.o.d -o CMakeFiles/test_rotary_motion.dir/tests/test_rotary_motion.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_rotary_motion.cpp
+1018: 2026-11-14T21:44:15.0583927Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/test_rotary_motion.dir/link.d CMakeFiles/test_rotary_motion.dir/tests/test_rotary_motion.cpp.o -o test_rotary_motion  libhammond_core.a
+1028: 2026-11-14T21:44:15.0700616Z /usr/bin/g++ -DHAMMOND_SOURCE_DIR=\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ\" -DHAMMOND_TEST_PROFILE=\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/nominal.b3p\" -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/test_rotary_propagation.dir/tests/test_rotary_propagation.cpp.o -MF CMakeFiles/test_rotary_propagation.dir/tests/test_rotary_propagation.cpp.o.d -o CMakeFiles/test_rotary_propagation.dir/tests/test_rotary_propagation.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_rotary_propagation.cpp
+1033: 2026-11-14T21:44:16.8926239Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/test_rotary_propagation.dir/link.d CMakeFiles/test_rotary_propagation.dir/tests/test_rotary_propagation.cpp.o -o test_rotary_propagation  libhammond_core.a
+1043: 2026-11-14T21:44:16.9047638Z /usr/bin/g++ -DHAMMOND_SOURCE_DIR=\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ\" -DHAMMOND_TEST_PROFILE=\"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-sanitizers/nominal.b3p\" -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/test_rotary_propagation_allocation.dir/tests/test_rotary_propagation_allocation.cpp.o -MF CMakeFiles/test_rotary_propagation_allocation.dir/tests/test_rotary_propagation_allocation.cpp.o.d -o CMakeFiles/test_rotary_propagation_allocation.dir/tests/test_rotary_propagation_allocation.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_rotary_propagation_allocation.cpp
+1059: 2026-11-14T21:44:18.3587519Z /usr/bin/g++ -g -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/test_rotary_propagation_allocation.dir/link.d CMakeFiles/test_rotary_propagation_allocation.dir/tests/test_rotary_propagation_allocation.cpp.o -o test_rotary_propagation_allocation  libhammond_core.a
+1424: 2026-11-14T21:44:52.0174370Z ##[group]Run ctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error \
+1425: 2026-11-14T21:44:52.0175008Z [36;1mctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error \[0m
+1426: 2026-11-14T21:44:52.0175941Z [36;1m  --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log[0m
+1427: 2026-11-14T21:44:52.0196864Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+1428: 2026-11-14T21:44:52.0197199Z env:
+1429: 2026-11-14T21:44:52.0197399Z   PYTHONDONTWRITEBYTECODE: 1
+1430: 2026-11-14T21:44:52.0197683Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+1431: 2026-11-14T21:44:52.0198008Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+1432: 2026-11-14T21:44:52.0198316Z   LSAN_OPTIONS: exitcode=23
+1521: 2026-11-14T21:45:29.6359954Z  40/137 Test  #41: test_rotary_motion ................................   Passed    0.44 sec
+1523: 2026-11-14T21:45:29.7695713Z  41/137 Test  #42: test_rotary_propagation ...........................   Passed    0.13 sec
+1525: 2026-11-14T21:45:30.3420628Z  42/137 Test  #43: test_rotary_propagation_allocation ................   Passed    0.57 sec
+1647: 2026-11-14T21:48:01.1776132Z 103/137 Test #104: python_test_rotary_motion_acceptance ..............   Passed    1.06 sec
+1649: 2026-11-14T21:48:04.0859433Z 104/137 Test #105: python_test_rotary_profile ........................   Passed    2.91 sec
+1653: 2026-11-14T21:48:06.9274461Z 106/137 Test #107: python_test_rotary_reference ......................   Passed    2.34 sec
+1659: 2026-11-14T21:48:25.4733091Z 109/137 Test #106: python_test_rotary_propagation_acceptance .........   Passed   21.39 sec
+1711: 2026-11-14T21:48:56.5554521Z 135/137 Test #136: test_standalone_midi_backend_quarantine ...........   Passed    0.01 sec
+1712: 2026-11-14T21:48:56.5556478Z         Start 137: test_standalone_benchmark
+1713: 2026-11-14T21:49:10.6856471Z 136/137 Test #137: test_standalone_benchmark .........................   Passed   14.13 sec
+1714: 2026-11-14T21:49:20.6496738Z 137/137 Test #133: test_standalone_workspace_continuity ..............   Passed   25.32 sec
+1715: 2026-11-14T21:49:20.6501728Z 
+1716: 2026-11-14T21:49:20.6501992Z 100% tests passed, 0 tests failed out of 137
+1717: 2026-11-14T21:49:20.6502386Z 
+1718: 2026-11-14T21:49:20.6502529Z Label Time Summary:
+1719: 2026-11-14T21:49:20.6502995Z backend                   =   0.05 sec*proc (2 tests)
+1720: 2026-11-14T21:49:20.6503406Z benchmark                 =  14.13 sec*proc (1 test)
+1721: 2026-11-14T21:49:20.6504305Z concurrency               =   0.83 sec*proc (1 test)
+1722: 2026-11-14T21:49:20.6504938Z intentional-quarantine    =   0.01 sec*proc (1 test)
+1723: 2026-11-14T21:49:20.6505784Z standalone                =  15.01 sec*proc (4 tests)
+1724: 2026-11-14T21:49:20.6506153Z 
+1725: 2026-11-14T21:49:20.6506319Z Total Test time (real) = 268.61 sec

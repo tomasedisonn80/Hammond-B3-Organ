@@ -2,32 +2,144 @@
 
 ## Current R4 waveform continuation
 
-Continue the [current checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
-and [actual assignment manifest](development/2026-11-14-waveform-continuation/assignments.json).
-The full atlas reading, API freeze and history implementation are complete.
-Next qualify the complete renderer against the independent same-cubic reference
-for ten seconds at all four rates and every prescribed partition. Independently
-exercise nonzero-history late rejection, repeated-wrap partial-frame rollback,
-all stopped rate pairs, exact event order, signed input/receiver symmetries and
-calibrated allocation/deallocation checks. Keep smoke and full results distinct;
-close R4 only after the complete frozen experiments pass.
+The [combined-source closure](REFERENCE_REFINEMENT_CLOSURE.md) owns the latest
+merged-source verification and remaining platform/publication outcomes.
 
-Add the bounded offline developer renderer, integrate its build and command
-acceptance, and retain reproducible examples. UI timing has passed; finish the actual
-coherent-source gallery, then update README screenshots and measured residual
-reference differences. Complete all sixty newly dispatched assignments in their
-ten logical waves and verify their substantive notes, final build and remote
-publication. Preserve the current dry Engine and all sound/state identities.
+Continue the [waveform checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+and [actual manifest](development/2026-11-14-waveform-continuation/assignments.json).
+Incoming published `487064d2400b9f39d0ee66ed136a09c9e372379e` contains the
+implemented histories, streaming paths, transactional renderer, offline CLI
+and profile compiler. Its snapshot has **29 actual workers dispatched and 26
+accepted**; planned rows do not count. The full four-rate/24-partition waveform
+experiment has already passed, with 22,806,000 native frames and 38,010,000 exact
+alternate sample comparisons in its [source-bound receipt](development/2026-11-14-waveform-continuation/reports/full-waveform/qualification.json).
+Do not rerun or describe that completed experiment as pending merely to recover
+context. The bounded smoke and later CLI build metadata remain separate.
 
-Earlier unpublished reference-refinement work is a separate scope. Inspect each
-remote advance before publication and preserve its original source/evidence.
-R5/R6, scanner G5, complete M5/M6 models and physical acquisition remain separate.
+The waveform owner next completes independent lifecycle/all-sixteen-rate-pair,
+signed-input/receiver/scene symmetry, calibrated allocation/deallocation and CLI
+acceptance under the [renderer contract](ROTARY_RENDERER_CONTRACT.md) and
+[frozen acceptance specification](ROTARY_WAVEFORM_ACCEPTANCE.md). The offline
+[developer tool](ROTARY_RENDER_CLI.md) already exists; validate its real command,
+profile/input/output/refusal paths and retained examples rather than planning
+its implementation again. Finish the remaining authorized waves using actual
+assignments and substantive acceptance; this session is not yet complete.
 
-## Earlier reference refinement and propagation work
+Root's incoming-source all-target build has passed in 18.733 seconds and the
+eight-view [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
+now captures exact `487064d2` with 117 qualified inputs and executable
+`0b2fe36e1ff9a76e12bbd0bf97e633a424fcfd67cd78b9987e0b1b75e8e6f040`.
+Complete its independent admission and the fresh full integrated suite; keep
+observed incoming hosted platform failures open until their repairs qualify.
+The retained v4 views still qualify only `0881d1f4`.
+Keep the original 160/161 suite, separate 2/2 replay repair, 3/3 combined gates
+and numerical source-bound results distinct. Preserve both paint slices, all
+47 sound parameters, state4/readers 1–3, note ownership and dry Engine sound.
 
-Continue the [live checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and [scope](REFERENCE_REFINEMENT_SCOPE.md). Full atlas review, current UI/inspection implementation, real pending raster, native R2/R3 and their independent acceptance are complete through thirty-eight accepted actual assignments. Publish the accepted v3 gallery, setup/relocation evidence and allocation-fixture stack repair; qualify that repair on actual Windows. Finish the measured wide-header refinement with independent raster/timing acceptance, then capture the final published product and refresh README. Preserve the successful hosted sanitizer gates, original Windows failure, earlier apt stall and local LSan failure. Complete the remaining twenty-two requested actual assignments across waves7–10, including audio/state isolation, packaging, visual comparison, setup, strict current-session accounting, final coherent verification and exact remote publication review.
+Reference refinement has **60 accepted actual assignments and a strict record
+pass** in its separate manifest. Its closing records are protected and being
+integrated with this remote advance; they are not an unimplemented earlier
+scope or extra waveform workers. Inspect each subsequent remote advance before
+publication and preserve its exact source/evidence. R5/R6, scanner G5, complete
+M5/M6 models, physical acquisition and literal visual equality remain separate.
 
-For subsequent model development, [R4](ROTARY_PROPAGATION.md#next-concrete-phase-r4-waveform-history-and-rendering) owns bounded waveform history, cubic fractional delay, two-input rendering and whole-call transactions under the frozen contract. R5 audible policy and R6 runtime/integration follow their own gates. Preserve dry Engine sound, all parameter/state identities and the unresolved scanner G5 boundary. Literal 1:1 rendering and physical product qualification remain measurable open work; do not convert the completed numerical primitives into an audio/physical claim.
+## Current reference-refinement closure and shared continuation
+
+Resume the [current handoff](REFERENCE_REFINEMENT_HANDOFF.md),
+[live checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md),
+[actual manifest](development/2026-11-14-reference-refinement/assignments.json)
+and [concurrent ownership record](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md).
+The earlier accepted measured header is published at
+`0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
+`f8144b771cda1264a8788f8297f5bfec999f4a08`. A46's v4 capture, A50's **611-check**
+admission and A49's single full **157/157** run are complete. A51 supplies a
+bounded retained OS-input/source review. **All sixty actual assignments are
+accepted**, and root's [strict completion result](development/2026-11-14-reference-refinement/completion-check.json)
+passes all ten waves with zero errors. [A56's completed primary audit](reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md)
+qualifies all twelve `0881d1f4` jobs: core **138/138 each**, native Release
+**41/41 each**, native sanitizer **16/16**, VST3 **8/7/7** and SDK **47/47**
+on every platform. All five native jobs report **1,071 material checks**;
+the core quarantine-only leak exception remains explicit. Remaining work is
+concrete:
+
+1. **Qualify the integrated source and publish the preserved closing records.**
+   The fresh all-target build has passed. Root next verifies the actual merged
+   `487064d2` product/workflow inputs with the full coherent suite and any
+   affected acceptance required by further repairs, then checks final
+   documentation and retained records. The older A49/A56
+   passes do not qualify this incoming renderer, CLI or paint. Retain the new
+   source-specific results and [closure-verification receipt](development/2026-11-14-reference-refinement/reports/root-closure-verification.json).
+   The strict result qualifies the accepted notes/manifest; it does not
+   substitute for integrated-source execution, documentation integrity or
+   actual final-head CI.
+   A49's product inputs matched `0881d1f4`; its 2,625-file freeze ended before
+   later notes and documentation were added. Record the new documentation
+   identity and avoid inferring its verification from that earlier snapshot.
+   Inspect the owned diff, fetch and reconcile remote advances, publish with a
+   fresh expected head and `force=false`, then fetch and verify commit/tree/
+   parent. Observe the **actual final publication's CI**, preserving failures,
+   cancellations and nonexecution. Verify A55's new strict Linux step and its
+   retained JSON in that actual final run; it was not present at 0881. Preserve
+   26ff's earlier primary audit, original Windows 135/136, f9c cancellations,
+   154/155 plus affected 1/1 and local LSan EPERM. Earlier-head success cannot
+   close a later-head gate.
+2. **Complete admission of the fresh combined native gallery.** Incoming `487064d2` already
+   preserves both the accepted `0881d1f4` header and the waveform owner's
+   drawbar/key-front changes. Root's [v5 capture receipt](development/2026-11-14-reference-refinement/reports/root-integration487064-final-native-gallery.json)
+   retains all eight original PNGs, source/binary identities, typed endpoint
+   checks and direct visual review. README uses those actual v5 images;
+   independent A60 admission remains underway. The
+   [accepted v4 views](../examples/demos/standalone-interface-preview-v4/README.md)
+   remain immutable historical `0881d1f4` evidence. Compare the fresh application
+   with the original reference and preserve Flat, shared hit/paint geometry,
+   all 24 presets, 147 playing keys and owner release semantics. Further visual
+   work belongs to the waveform owner after coordination. **Literal 1:1
+   reference equality remains unmet.**
+3. **Complete independent R4 acceptance under its separate owner.** The
+   [implemented renderer contract](ROTARY_RENDERER_CONTRACT.md),
+   [acceptance specification](ROTARY_WAVEFORM_ACCEPTANCE.md) and
+   [A57 readiness review](reviews/ROTARY_RENDERER_IMPLEMENTATION_READINESS.md)
+   retain trajectory binding, borrows ending before mutation, representation-safe
+   storage/metadata restoration and explicit per-call flush ownership. Confirm
+   those requirements against the implemented code and remaining independent
+   lifecycle/symmetry/allocation/CLI tests. The full same-cubic experiment is
+   already complete; its finite source-bound result does not close those gates.
+   Preserve `D+6` capacity (maximum 12,806), an 8,192-entry per-write journal,
+   `max(D)+4` flush and all sixteen ordered stopped rate pairs. Dense changes
+   to both rotors every frame require calls of at most 512 frames under the
+   1,024-event cap; separately exercise legal 4,096-frame calls and repeated
+   wraps, full flush and epoch overflow. R5 reconstruction/filter/alias policy,
+   R6 runtime/Engine integration and physical cabinet fidelity need their own
+   evidence. The independent renderer is not connected to playable Engine audio.
+4. **Execute the missing actual display/device journey when its inputs exist.**
+   [A51's sequence](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md#concrete-next-actual-displaydevice-journey)
+   requires identified source/executable and hardware, painted pre-held
+   keyboard/pointer frames through both directions of navigation/resize,
+   pointer-held pedal resize, outside release/reentry/fresh press, deliberate
+   focus loss, per-step lossless frames and an actual exit/status receipt.
+   Existing dummy v4 endpoints, pending harness and old X11 observations retain
+   their own scopes. Devices, DAWs, accessibility and audio deadlines require
+   separately observed results.
+
+From this repository root, after coordinated ownership of `../build-native`
+and after the actual integrated product has been qualified and all final records
+are present, these commands cover only root's affected documentation/accounting
+gates:
+
+```sh
+../build-tools/cmake/data/bin/ctest --test-dir ../build-native -C Release \
+  --output-on-failure --no-tests=error -R '^python_test_repository_integrity$'
+python3 tools/check_refinement_session.py --repo . --json
+```
+
+The actual strict result now passes the sixty accepted records. Revalidate
+after changing any counted note, manifest or checker input. Its regression
+suite and `--in-progress` mode do not substitute for that completed result;
+the checker does not authenticate dispatch or certify product fidelity.
+Preserve **47 parameters**, `B3CONTROLS4`, readers 1–3, 91 free-running sources,
+musical ownership and dry Engine sound. Resolve scanner **G5 same-hertz failure**
+before scanner integration, and retain revision-specific AO-28/Leslie electrical
+and real-capture dependencies under the [whole M0–M9 plan](PLAN.md).
 
 ## Historical interface continuation next steps
 

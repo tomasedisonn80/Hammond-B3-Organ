@@ -1,0 +1,3458 @@
+{
+  "assignment": "A56",
+  "audit_utc": "2026-11-14T22:43:52.050913+00:00",
+  "core_sanitizer_policy": {
+    "boundary": "138/138 is not an exception-free leak-detection claim. Passing core stdout is suppressed; detailed allocation workload remains earlier A27/A38 evidence for the exact unchanged repaired source. No original Windows stack trace is inferred.",
+    "existing_exception": {
+      "in_native_sixteen": false,
+      "new_exception": false,
+      "override": "ASAN_OPTIONS=detect_leaks=0:halt_on_error=1",
+      "reason": "Injected failed-close tests intentionally retain callback contexts until process exit; normal destruction and required rotary/native gates retain leak checks.",
+      "source": "apps/standalone/CMakeLists.txt",
+      "test": "test_standalone_midi_backend_quarantine"
+    },
+    "required_gates_inherit_leak_policy": true,
+    "required_rotary_gates": [
+      "test_rotary_motion",
+      "test_rotary_propagation",
+      "test_rotary_propagation_allocation",
+      "python_test_rotary_motion_acceptance",
+      "python_test_rotary_propagation_acceptance",
+      "python_test_rotary_profile",
+      "python_test_rotary_reference"
+    ]
+  },
+  "historical_records_observed": {
+    "A27-r3-sanitizer-environment.json": {
+      "bytes": 18511,
+      "sha256": "00b4aa0a7e2b7dec8573292da47de54b75c23c956f47aa6bb2413ec92bd4a7e7"
+    },
+    "A27-r3-sanitizer-pty.json": {
+      "bytes": 1737,
+      "sha256": "abb548b79579c9b223a2e05de6a2a81bd02ab04fb8699f109382bb8463df9032"
+    },
+    "A27-r3-summary.json": {
+      "bytes": 6377,
+      "sha256": "edf175ffbded733f6e9383cb96f321e53a8b3471d166ee93b4d08d963a8b85aa"
+    },
+    "A38-windows-allocation-repair.json": {
+      "bytes": 43196,
+      "sha256": "9d0e198d0fbbb28a793ab53eda0a56ba7addc77a97d13c20760538254921c792"
+    },
+    "A43-f9c-windows-release-decoded.log": {
+      "bytes": 366827,
+      "sha256": "0212a2201e187829f3d44e0d82dd0c53df6218de40c428f2944af770fbc28323"
+    },
+    "A43-hosted-fixture-closure.json": {
+      "bytes": 240372,
+      "sha256": "a30871857ba3f88d54049ade008d8e593ef6a6b586762f3a9575968fc2de4d47"
+    },
+    "A44-hosted-sanitizer-audit.json": {
+      "bytes": 31023,
+      "sha256": "a8ba98590f7945c5e4ece6fd1b0ccede5c2d094d02c17802fa69e9450db7a38e"
+    },
+    "root-windows-2e.log": {
+      "bytes": 383399,
+      "sha256": "54cf09b82e8344b47fc0cbc4135b4fb2be04e2cbc1ebb365d648ac33dddbdeff"
+    }
+  },
+  "history_preserved": [
+    "A27 original complete local sanitizer remains failed/environment-blocked at LSan thread-attach EPERM, including PTY exit 134 and its stricter one-off policy.",
+    "2e161dc Windows remains 135/136 with allocation SEGFAULT at 0.02 seconds.",
+    "f9c11a4 remains six successful jobs and six cancellations; Windows allocation passed before cancellation of its 69/137 partial suite.",
+    "26ff2fbe remains a separate passing pre-header 137-core/901-material result under A43/A44."
+  ],
+  "jobs": [
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 1354,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 138,
+        "seconds": 147.8,
+        "summary_line": 1345,
+        "total": 138,
+        "unique_test_ids": 138,
+        "unique_test_names": 138
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605474588,
+      "log": {
+        "bytes_utf8": 284057,
+        "checkout_identity_lines": [
+          111,
+          123,
+          183
+        ],
+        "decoded_characters": 284055,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 1411,
+        "retained_excerpt_lines": 183,
+        "sha256_utf8": "198b626d30a7f56ad2c6ccb10fe0e2c8e5ffb7c9b3776feefb3c580e34412dc7"
+      },
+      "name": "Release (macOS AppleClang)",
+      "quarantine_result": {
+        "line": 1340,
+        "name": "test_standalone_midi_backend_quarantine",
+        "ordinal": 136,
+        "seconds": 0.0,
+        "status": "Passed",
+        "test_id": 137,
+        "total": 138
+      },
+      "refinement_checker_regression": {
+        "line": 1268,
+        "name": "python_test_refinement_session",
+        "ordinal": 100,
+        "seconds": 2.27,
+        "status": "Passed",
+        "test_id": 101,
+        "total": 138
+      },
+      "required_rotary_results": [
+        {
+          "line": 1148,
+          "name": "test_rotary_motion",
+          "ordinal": 40,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 41,
+          "total": 138
+        },
+        {
+          "line": 1150,
+          "name": "test_rotary_propagation",
+          "ordinal": 41,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 42,
+          "total": 138
+        },
+        {
+          "line": 1152,
+          "name": "test_rotary_propagation_allocation",
+          "ordinal": 42,
+          "seconds": 0.12,
+          "status": "Passed",
+          "test_id": 43,
+          "total": 138
+        },
+        {
+          "line": 1278,
+          "name": "python_test_rotary_motion_acceptance",
+          "ordinal": 105,
+          "seconds": 0.76,
+          "status": "Passed",
+          "test_id": 105,
+          "total": 138
+        },
+        {
+          "line": 1292,
+          "name": "python_test_rotary_propagation_acceptance",
+          "ordinal": 112,
+          "seconds": 19.62,
+          "status": "Passed",
+          "test_id": 107,
+          "total": 138
+        },
+        {
+          "line": 1280,
+          "name": "python_test_rotary_profile",
+          "ordinal": 106,
+          "seconds": 2.43,
+          "status": "Passed",
+          "test_id": 106,
+          "total": 138
+        },
+        {
+          "line": 1282,
+          "name": "python_test_rotary_reference",
+          "ordinal": 107,
+          "seconds": 2.78,
+          "status": "Passed",
+          "test_id": 108,
+          "total": 138
+        }
+      ],
+      "run_id": 43646527300,
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record the revision and tools",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure Release on Linux or macOS",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure Release on Windows",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build Release",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run every registered Release test",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Verify the completed interface session",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain configure, build, and test diagnostics",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 19,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the tested revision",
+          "number": 20,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 21,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "cmake": "4.4.5",
+        "ctest": "4.4.5",
+        "cxx": "AppleClang 17.0.0.17000013",
+        "python": "3.12.10",
+        "runner_image": "macos-15-arm64",
+        "runner_image_version": "20261104.0514.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527300/job/132605474588",
+      "warnings": []
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 1704,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 138,
+        "seconds": 106.54,
+        "summary_line": 1695,
+        "total": 138,
+        "unique_test_ids": 138,
+        "unique_test_names": 138
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605474816,
+      "log": {
+        "bytes_utf8": 344986,
+        "checkout_identity_lines": [
+          110,
+          122,
+          183
+        ],
+        "decoded_characters": 344984,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 2310,
+        "retained_excerpt_lines": 183,
+        "sha256_utf8": "0354491d1f5395bea760fb6cb786dea82893783b46269850973e85c3673fc54c"
+      },
+      "name": "Release (Linux GCC)",
+      "quarantine_result": {
+        "line": 1690,
+        "name": "test_standalone_midi_backend_quarantine",
+        "ordinal": 136,
+        "seconds": 0.0,
+        "status": "Passed",
+        "test_id": 137,
+        "total": 138
+      },
+      "refinement_checker_regression": {
+        "line": 1618,
+        "name": "python_test_refinement_session",
+        "ordinal": 100,
+        "seconds": 1.95,
+        "status": "Passed",
+        "test_id": 101,
+        "total": 138
+      },
+      "required_rotary_results": [
+        {
+          "line": 1498,
+          "name": "test_rotary_motion",
+          "ordinal": 40,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 41,
+          "total": 138
+        },
+        {
+          "line": 1500,
+          "name": "test_rotary_propagation",
+          "ordinal": 41,
+          "seconds": 0.01,
+          "status": "Passed",
+          "test_id": 42,
+          "total": 138
+        },
+        {
+          "line": 1502,
+          "name": "test_rotary_propagation_allocation",
+          "ordinal": 42,
+          "seconds": 0.06,
+          "status": "Passed",
+          "test_id": 43,
+          "total": 138
+        },
+        {
+          "line": 1626,
+          "name": "python_test_rotary_motion_acceptance",
+          "ordinal": 104,
+          "seconds": 0.62,
+          "status": "Passed",
+          "test_id": 105,
+          "total": 138
+        },
+        {
+          "line": 1642,
+          "name": "python_test_rotary_propagation_acceptance",
+          "ordinal": 112,
+          "seconds": 14.44,
+          "status": "Passed",
+          "test_id": 107,
+          "total": 138
+        },
+        {
+          "line": 1630,
+          "name": "python_test_rotary_profile",
+          "ordinal": 106,
+          "seconds": 1.93,
+          "status": "Passed",
+          "test_id": 106,
+          "total": 138
+        },
+        {
+          "line": 1632,
+          "name": "python_test_rotary_reference",
+          "ordinal": 107,
+          "seconds": 1.98,
+          "status": "Passed",
+          "test_id": 108,
+          "total": 138
+        }
+      ],
+      "run_id": 43646527300,
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record the revision and tools",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure Release on Linux or macOS",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure Release on Windows",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build Release",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run every registered Release test",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify the completed interface session",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain configure, build, and test diagnostics",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 19,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the tested revision",
+          "number": 20,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 21,
+          "status": "completed"
+        }
+      ],
+      "strict_current_refinement_session_step_executed": false,
+      "toolchain": {
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16",
+        "runner_image": "ubuntu-24.04",
+        "runner_image_version": "20261111.370.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527300/job/132605474816",
+      "warnings": []
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 2411,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 138,
+        "seconds": 244.01,
+        "summary_line": 2402,
+        "total": 138,
+        "unique_test_ids": 138,
+        "unique_test_names": 138
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605474823,
+      "log": {
+        "bytes_utf8": 382767,
+        "checkout_identity_lines": [
+          97,
+          109,
+          169
+        ],
+        "decoded_characters": 382765,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 2470,
+        "retained_excerpt_lines": 192,
+        "sha256_utf8": "279fe8205f06baeee8603d478ad3fe17ff6e90e1aeba01bc00be63575b6810d4"
+      },
+      "name": "Release (Windows MSVC)",
+      "quarantine_result": {
+        "line": 2397,
+        "name": "test_standalone_midi_backend_quarantine",
+        "ordinal": 136,
+        "seconds": 0.01,
+        "status": "Passed",
+        "test_id": 137,
+        "total": 138
+      },
+      "refinement_checker_regression": {
+        "line": 2325,
+        "name": "python_test_refinement_session",
+        "ordinal": 100,
+        "seconds": 5.33,
+        "status": "Passed",
+        "test_id": 101,
+        "total": 138
+      },
+      "required_rotary_results": [
+        {
+          "line": 2207,
+          "name": "test_rotary_motion",
+          "ordinal": 41,
+          "seconds": 0.08,
+          "status": "Passed",
+          "test_id": 41,
+          "total": 138
+        },
+        {
+          "line": 2209,
+          "name": "test_rotary_propagation",
+          "ordinal": 42,
+          "seconds": 0.07,
+          "status": "Passed",
+          "test_id": 42,
+          "total": 138
+        },
+        {
+          "line": 2211,
+          "name": "test_rotary_propagation_allocation",
+          "ordinal": 43,
+          "seconds": 0.17,
+          "status": "Passed",
+          "test_id": 43,
+          "total": 138
+        },
+        {
+          "line": 2333,
+          "name": "python_test_rotary_motion_acceptance",
+          "ordinal": 104,
+          "seconds": 1.22,
+          "status": "Passed",
+          "test_id": 105,
+          "total": 138
+        },
+        {
+          "line": 2349,
+          "name": "python_test_rotary_propagation_acceptance",
+          "ordinal": 112,
+          "seconds": 27.27,
+          "status": "Passed",
+          "test_id": 107,
+          "total": 138
+        },
+        {
+          "line": 2335,
+          "name": "python_test_rotary_profile",
+          "ordinal": 105,
+          "seconds": 3.29,
+          "status": "Passed",
+          "test_id": 106,
+          "total": 138
+        },
+        {
+          "line": 2339,
+          "name": "python_test_rotary_reference",
+          "ordinal": 107,
+          "seconds": 3.04,
+          "status": "Passed",
+          "test_id": 108,
+          "total": 138
+        }
+      ],
+      "run_id": 43646527300,
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record the revision and tools",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure Release on Linux or macOS",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure Release on Windows",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build Release",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run every registered Release test",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Verify the completed interface session",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain configure, build, and test diagnostics",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 19,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the tested revision",
+          "number": 20,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 21,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "MSVC 19.44.35230.0",
+        "msvc_toolset_directory": "14.44.35207",
+        "python": "3.12.10",
+        "runner_image": "windows-2022",
+        "runner_image_version": "20261112.366.7"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527300/job/132605474823",
+      "warnings": [
+        {
+          "line": 214,
+          "text": "CMake Warning:"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 1727,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 138,
+        "seconds": 272.44,
+        "summary_line": 1718,
+        "total": 138,
+        "unique_test_ids": 138,
+        "unique_test_names": 138
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "instrumented_required_cpp_compile_lines": {
+        "src/RotaryMotion.cpp": 358,
+        "src/RotaryPropagation.cpp": 360,
+        "tests/probes/rotary_motion_probe.cpp": 469,
+        "tests/probes/rotary_propagation_probe.cpp": 482,
+        "tests/test_rotary_motion.cpp": 1015,
+        "tests/test_rotary_propagation.cpp": 1028,
+        "tests/test_rotary_propagation_allocation.cpp": 1049
+      },
+      "job_id": 132605474892,
+      "log": {
+        "bytes_utf8": 323542,
+        "checkout_identity_lines": [
+          113,
+          125,
+          192
+        ],
+        "decoded_characters": 323540,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 1787,
+        "retained_excerpt_lines": 193,
+        "sha256_utf8": "9689eda1be43293f9936c565cae78562b14271372d9c899a09b48b4a140a5e9f"
+      },
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "quarantine_result": {
+        "line": 1713,
+        "name": "test_standalone_midi_backend_quarantine",
+        "ordinal": 136,
+        "seconds": 0.01,
+        "status": "Passed",
+        "test_id": 137,
+        "total": 138
+      },
+      "refinement_checker_regression": {
+        "line": 1641,
+        "name": "python_test_refinement_session",
+        "ordinal": 100,
+        "seconds": 2.16,
+        "status": "Passed",
+        "test_id": 101,
+        "total": 138
+      },
+      "required_rotary_results": [
+        {
+          "line": 1521,
+          "name": "test_rotary_motion",
+          "ordinal": 40,
+          "seconds": 0.45,
+          "status": "Passed",
+          "test_id": 41,
+          "total": 138
+        },
+        {
+          "line": 1523,
+          "name": "test_rotary_propagation",
+          "ordinal": 41,
+          "seconds": 0.15,
+          "status": "Passed",
+          "test_id": 42,
+          "total": 138
+        },
+        {
+          "line": 1525,
+          "name": "test_rotary_propagation_allocation",
+          "ordinal": 42,
+          "seconds": 0.57,
+          "status": "Passed",
+          "test_id": 43,
+          "total": 138
+        },
+        {
+          "line": 1649,
+          "name": "python_test_rotary_motion_acceptance",
+          "ordinal": 104,
+          "seconds": 0.94,
+          "status": "Passed",
+          "test_id": 105,
+          "total": 138
+        },
+        {
+          "line": 1661,
+          "name": "python_test_rotary_propagation_acceptance",
+          "ordinal": 110,
+          "seconds": 21.69,
+          "status": "Passed",
+          "test_id": 107,
+          "total": 138
+        },
+        {
+          "line": 1651,
+          "name": "python_test_rotary_profile",
+          "ordinal": 105,
+          "seconds": 2.82,
+          "status": "Passed",
+          "test_id": 106,
+          "total": 138
+        },
+        {
+          "line": 1655,
+          "name": "python_test_rotary_reference",
+          "ordinal": 107,
+          "seconds": 2.62,
+          "status": "Passed",
+          "test_id": 108,
+          "total": 138
+        }
+      ],
+      "run_id": 43646527300,
+      "sanitizer_job_defaults": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "LSAN_OPTIONS": "exitcode=23",
+        "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+      },
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record the revision and tools",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure Debug with ASan and UBSan",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build with sanitizers",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run every registered test with leak checking",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain configure, build, and test diagnostics",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the tested revision",
+          "number": 16,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16",
+        "runner_image": "ubuntu-24.04",
+        "runner_image_version": "20261111.370.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527300/job/132605474892",
+      "warnings": []
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 3855,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 16,
+        "seconds": 278.47,
+        "summary_line": 3845,
+        "total": 16,
+        "unique_test_ids": 16,
+        "unique_test_names": 16
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605474865,
+      "layout_acceptance": {
+        "line": 3614,
+        "text": "130: Independent reference layout: 78 layouts, 11466 playing-key records, 5304 control records including 1872 presets, 2366 unique focus stops, 144 empty-gap hits, 8 old-location classifications, 24 literal landmark layouts; passed"
+      },
+      "log": {
+        "bytes_utf8": 840906,
+        "checkout_identity_lines": [
+          116,
+          144
+        ],
+        "decoded_characters": 840904,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 3943,
+        "retained_excerpt_lines": 79,
+        "sha256_utf8": "9fd88c85cbb7eb5128e0697b3a5fe9371e47db3eea790338c8a9af0251aef237"
+      },
+      "material_acceptance": {
+        "backend": "SDL software surface; no window/audio",
+        "checks": 1071,
+        "clip_frames": 88,
+        "failures": 0,
+        "frames": 88,
+        "header_checks": 170,
+        "legacy_checks": 901,
+        "line": 3751,
+        "state_checks": 88
+      },
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "pending_acknowledged_acceptance": {
+        "line": 3742,
+        "text": "143: Native inspection rendering harness: 6 frames; q=2; frame clock pending/acknowledged=32/32; publication pending/acknowledged=6/8; changed pixels=5317,2918,2698; assertions=947; no application window or audio device"
+      },
+      "required_native_results": [
+        {
+          "line": 3623,
+          "name": "test_standalone_ui",
+          "ordinal": 6,
+          "seconds": 0.31,
+          "status": "Passed",
+          "test_id": 133,
+          "total": 16
+        },
+        {
+          "line": 3598,
+          "name": "test_standalone_preset_ui",
+          "ordinal": 3,
+          "seconds": 3.38,
+          "status": "Passed",
+          "test_id": 128,
+          "total": 16
+        },
+        {
+          "line": 3710,
+          "name": "test_standalone_workspaces_author",
+          "ordinal": 9,
+          "seconds": 0.01,
+          "status": "Passed",
+          "test_id": 136,
+          "total": 16
+        },
+        {
+          "line": 3631,
+          "name": "test_standalone_workspace_acceptance",
+          "ordinal": 7,
+          "seconds": 0.24,
+          "status": "Passed",
+          "test_id": 134,
+          "total": 16
+        },
+        {
+          "line": 3607,
+          "name": "test_standalone_projection",
+          "ordinal": 4,
+          "seconds": 1.13,
+          "status": "Passed",
+          "test_id": 129,
+          "total": 16
+        },
+        {
+          "line": 3590,
+          "name": "test_standalone_inspection_author",
+          "ordinal": 2,
+          "seconds": 0.01,
+          "status": "Passed",
+          "test_id": 121,
+          "total": 16
+        },
+        {
+          "line": 3582,
+          "name": "test_standalone_inspection_acceptance",
+          "ordinal": 1,
+          "seconds": 0.06,
+          "status": "Passed",
+          "test_id": 120,
+          "total": 16
+        },
+        {
+          "line": 3702,
+          "name": "test_standalone_workspace_continuity",
+          "ordinal": 8,
+          "seconds": 7.42,
+          "status": "Passed",
+          "test_id": 135,
+          "total": 16
+        },
+        {
+          "line": 3719,
+          "name": "test_standalone_drawing",
+          "ordinal": 10,
+          "seconds": 0.48,
+          "status": "Passed",
+          "test_id": 140,
+          "total": 16
+        },
+        {
+          "line": 3727,
+          "name": "test_standalone_quad_drawing",
+          "ordinal": 11,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 141,
+          "total": 16
+        },
+        {
+          "line": 3735,
+          "name": "test_standalone_workspace_raster",
+          "ordinal": 12,
+          "seconds": 46.73,
+          "status": "Passed",
+          "test_id": 142,
+          "total": 16
+        },
+        {
+          "line": 3817,
+          "name": "test_standalone_scaled_view",
+          "ordinal": 15,
+          "seconds": 108.6,
+          "status": "Passed",
+          "test_id": 145,
+          "total": 16
+        },
+        {
+          "line": 3825,
+          "name": "test_standalone_preset_raster",
+          "ordinal": 16,
+          "seconds": 79.09,
+          "status": "Passed",
+          "test_id": 146,
+          "total": 16
+        },
+        {
+          "line": 3615,
+          "name": "test_standalone_reference_layout",
+          "ordinal": 5,
+          "seconds": 0.19,
+          "status": "Passed",
+          "test_id": 130,
+          "total": 16
+        },
+        {
+          "line": 3744,
+          "name": "test_standalone_inspection_raster",
+          "ordinal": 13,
+          "seconds": 3.32,
+          "status": "Passed",
+          "test_id": 143,
+          "total": 16
+        },
+        {
+          "line": 3752,
+          "name": "test_standalone_material_acceptance",
+          "ordinal": 14,
+          "seconds": 27.46,
+          "status": "Passed",
+          "test_id": 144,
+          "total": 16
+        }
+      ],
+      "run_id": 43646527323,
+      "sanitizer_job_defaults": {
+        "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+        "LSAN_OPTIONS": "exitcode=23",
+        "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+      },
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record the revision, sanitizer policy and tools",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure native Release with project and SDL sanitizers",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build only the sixteen interface acceptance targets",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Require instrumented SDL C and project C++ objects and linked runtimes",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Discover exactly sixteen gates and run with leak checking",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Reverify source and locked SDL2 after acceptance",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain native sanitizer diagnostics",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 25,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "c": "GNU 13.3.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16",
+        "runner_image": "ubuntu-24.04",
+        "runner_image_version": "20261111.127.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527323/job/132605474865",
+      "warnings": [
+        {
+          "line": 1116,
+          "text": "CMake Deprecation Warning at /home/runner/work/_temp/hammond-sdl2/CMakeLists.txt:3300 (cmake_minimum_required):"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 3021,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 41,
+        "seconds": 244.62,
+        "summary_line": 3006,
+        "total": 41,
+        "unique_test_ids": 41,
+        "unique_test_names": 41
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605475094,
+      "layout_acceptance": {
+        "line": 2432,
+        "text": "130: Independent reference layout: 78 layouts, 11466 playing-key records, 5304 control records including 1872 presets, 2366 unique focus stops, 144 empty-gap hits, 8 old-location classifications, 24 literal landmark layouts; passed"
+      },
+      "log": {
+        "bytes_utf8": 732965,
+        "checkout_identity_lines": [
+          112,
+          123
+        ],
+        "decoded_characters": 732963,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 3367,
+        "retained_excerpt_lines": 110,
+        "sha256_utf8": "c9584b19763f4645526371aa3b064ac6fb13ffc8a77cd982ee51930fea08874f"
+      },
+      "material_acceptance": {
+        "backend": "SDL software surface; no window/audio",
+        "checks": 1071,
+        "clip_frames": 88,
+        "failures": 0,
+        "frames": 88,
+        "header_checks": 170,
+        "legacy_checks": 901,
+        "line": 2635,
+        "state_checks": 88
+      },
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "pending_acknowledged_acceptance": {
+        "line": 2626,
+        "text": "143: Native inspection rendering harness: 6 frames; q=2; frame clock pending/acknowledged=32/32; publication pending/acknowledged=6/8; changed pixels=5317,2918,2698; assertions=947; no application window or audio device"
+      },
+      "relocated_payload": {
+        "line": 3271,
+        "scope": "Hosted guard execution and primary output; no downloaded package reinspection by A56.",
+        "text": "Verified 19 installed files, MIDI CoreMIDI, relocated help/dummy smoke, and the archived bytes."
+      },
+      "required_native_results": [
+        {
+          "line": 2460,
+          "name": "test_standalone_ui",
+          "ordinal": 17,
+          "seconds": 0.06,
+          "status": "Passed",
+          "test_id": 133,
+          "total": 41
+        },
+        {
+          "line": 2416,
+          "name": "test_standalone_preset_ui",
+          "ordinal": 12,
+          "seconds": 0.5,
+          "status": "Passed",
+          "test_id": 128,
+          "total": 41
+        },
+        {
+          "line": 2547,
+          "name": "test_standalone_workspaces_author",
+          "ordinal": 20,
+          "seconds": 0.01,
+          "status": "Passed",
+          "test_id": 136,
+          "total": 41
+        },
+        {
+          "line": 2468,
+          "name": "test_standalone_workspace_acceptance",
+          "ordinal": 18,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 134,
+          "total": 41
+        },
+        {
+          "line": 2425,
+          "name": "test_standalone_projection",
+          "ordinal": 13,
+          "seconds": 0.15,
+          "status": "Passed",
+          "test_id": 129,
+          "total": 41
+        },
+        {
+          "line": 2358,
+          "name": "test_standalone_inspection_author",
+          "ordinal": 5,
+          "seconds": 0.32,
+          "status": "Passed",
+          "test_id": 121,
+          "total": 41
+        },
+        {
+          "line": 2350,
+          "name": "test_standalone_inspection_acceptance",
+          "ordinal": 4,
+          "seconds": 0.01,
+          "status": "Passed",
+          "test_id": 120,
+          "total": 41
+        },
+        {
+          "line": 2539,
+          "name": "test_standalone_workspace_continuity",
+          "ordinal": 19,
+          "seconds": 2.36,
+          "status": "Passed",
+          "test_id": 135,
+          "total": 41
+        },
+        {
+          "line": 2603,
+          "name": "test_standalone_drawing",
+          "ordinal": 24,
+          "seconds": 0.1,
+          "status": "Passed",
+          "test_id": 140,
+          "total": 41
+        },
+        {
+          "line": 2611,
+          "name": "test_standalone_quad_drawing",
+          "ordinal": 25,
+          "seconds": 0.04,
+          "status": "Passed",
+          "test_id": 141,
+          "total": 41
+        },
+        {
+          "line": 2619,
+          "name": "test_standalone_workspace_raster",
+          "ordinal": 26,
+          "seconds": 6.07,
+          "status": "Passed",
+          "test_id": 142,
+          "total": 41
+        },
+        {
+          "line": 2701,
+          "name": "test_standalone_scaled_view",
+          "ordinal": 29,
+          "seconds": 13.18,
+          "status": "Passed",
+          "test_id": 145,
+          "total": 41
+        },
+        {
+          "line": 2709,
+          "name": "test_standalone_preset_raster",
+          "ordinal": 30,
+          "seconds": 9.46,
+          "status": "Passed",
+          "test_id": 146,
+          "total": 41
+        },
+        {
+          "line": 2433,
+          "name": "test_standalone_reference_layout",
+          "ordinal": 14,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 130,
+          "total": 41
+        },
+        {
+          "line": 2628,
+          "name": "test_standalone_inspection_raster",
+          "ordinal": 27,
+          "seconds": 0.45,
+          "status": "Passed",
+          "test_id": 143,
+          "total": 41
+        },
+        {
+          "line": 2636,
+          "name": "test_standalone_material_acceptance",
+          "ordinal": 28,
+          "seconds": 3.9,
+          "status": "Passed",
+          "test_id": 144,
+          "total": 41
+        }
+      ],
+      "run_id": 43646527323,
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run all required standalone acceptance tests",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "c": "AppleClang 17.0.0.17000013",
+        "cmake": "4.4.5",
+        "ctest": "4.4.5",
+        "cxx": "AppleClang 17.0.0.17000013",
+        "python": "3.12.10",
+        "runner_image": "macos-15-arm64",
+        "runner_image_version": "20261104.0514.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527323/job/132605475094",
+      "warnings": [
+        {
+          "line": 724,
+          "text": "CMake Warning (deprecated) at /Users/runner/work/_temp/hammond-sdl2/CMakeLists.txt:3300 (cmake_minimum_required):"
+        },
+        {
+          "line": 1553,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:498:27: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1560,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:628:27: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1567,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:794:24: warning: 'controllerPausedHandler' is deprecated: first deprecated in macOS 10.15 - Use the Menu button found on the controller's input profile, if it exists. [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1573,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1013:28: warning: 'controllerPausedHandler' is deprecated: first deprecated in macOS 10.15 - Use the Menu button found on the controller's input profile, if it exists. [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1579,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1255:31: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1586,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1257:13: warning: 'GCGamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1593,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1257:45: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1600,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1797:24: warning: 'controllerPausedHandler' is deprecated: first deprecated in macOS 10.15 - Use the Menu button found on the controller's input profile, if it exists. [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1606,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:2029:20: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1613,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:2030:27: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1643,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoaevents.m:305:36: warning: 'NSApplicationActivateIgnoringOtherApps' is deprecated: first deprecated in macOS 14.0 - ignoringOtherApps is deprecated in macOS 14 and will have no effect. [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1661,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:93:23: warning: 'CVDisplayLinkGetNominalOutputVideoRefreshPeriod' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1667,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:122:23: warning: 'CGDisplayModeCopyPixelEncoding' is deprecated: first deprecated in macOS 10.11 - No longer supported [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1673,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:284:32: warning: 'CGDisplayIOServicePort' is deprecated: first deprecated in macOS 10.9 - No longer supported [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1679,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:354:13: warning: 'CVDisplayLinkCreateWithCGDisplay' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1685,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:360:17: warning: 'CVDisplayLinkRelease' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1691,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:367:13: warning: 'CVDisplayLinkRelease' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1697,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:512:5: warning: 'CVDisplayLinkCreateWithCGDisplay' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1703,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:580:5: warning: 'CVDisplayLinkRelease' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1724,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoashape.m:67:38: warning: 'graphicsContext' is deprecated: first deprecated in macOS 10.14 - Add instances of NSView to display content in a window. [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1741,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:164:47: warning: 'NSFilenamesPboardType' is deprecated: first deprecated in macOS 10.14 - Create multiple pasteboard items with NSPasteboardTypeFileURL or kUTTypeFileURL instead [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1747,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:182:45: warning: 'NSFilenamesPboardType' is deprecated: first deprecated in macOS 10.14 - Create multiple pasteboard items with NSPasteboardTypeFileURL or kUTTypeFileURL instead [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1753,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:534:11: warning: 'setAcceptsTouchEvents:' is deprecated: first deprecated in macOS 10.12.2 - Use allowedTouchTypes instead [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1760,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:1758:15: warning: 'setOneShot:' is deprecated: first deprecated in macOS 10.14 - This property does not do anything and should not be used [-Wdeprecated-declarations]"
+        },
+        {
+          "line": 1767,
+          "text": "/Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:2503:85: warning: 'kUTTypeFileURL' is deprecated: first deprecated in macOS 12.0 - Use UTTypeFileURL or UTType.fileURL (swift) instead. [-Wdeprecated-declarations]"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 3175,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 41,
+        "seconds": 285.97,
+        "summary_line": 3160,
+        "total": 41,
+        "unique_test_ids": 41,
+        "unique_test_names": 41
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605475118,
+      "layout_acceptance": {
+        "line": 2586,
+        "text": "130: Independent reference layout: 78 layouts, 11466 playing-key records, 5304 control records including 1872 presets, 2366 unique focus stops, 144 empty-gap hits, 8 old-location classifications, 24 literal landmark layouts; passed"
+      },
+      "log": {
+        "bytes_utf8": 460353,
+        "checkout_identity_lines": [
+          98,
+          126
+        ],
+        "decoded_characters": 460351,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 3539,
+        "retained_excerpt_lines": 105,
+        "sha256_utf8": "ee440daaa7a4e1a246f508811200220124a9f12c24186347ea7a7e43dc194e15"
+      },
+      "material_acceptance": {
+        "backend": "SDL software surface; no window/audio",
+        "checks": 1071,
+        "clip_frames": 88,
+        "failures": 0,
+        "frames": 88,
+        "header_checks": 170,
+        "legacy_checks": 901,
+        "line": 2788,
+        "state_checks": 88
+      },
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "pending_acknowledged_acceptance": {
+        "line": 2779,
+        "text": "143: Native inspection rendering harness: 6 frames; q=2; frame clock pending/acknowledged=32/32; publication pending/acknowledged=6/8; changed pixels=5317,2918,2698; assertions=947; no application window or audio device"
+      },
+      "relocated_payload": {
+        "line": 3441,
+        "scope": "Hosted guard execution and primary output; no downloaded package reinspection by A56.",
+        "text": "Verified 19 installed files, MIDI WinMM, relocated help/dummy smoke, and the archived bytes."
+      },
+      "required_native_results": [
+        {
+          "line": 2613,
+          "name": "test_standalone_ui",
+          "ordinal": 17,
+          "seconds": 0.13,
+          "status": "Passed",
+          "test_id": 133,
+          "total": 41
+        },
+        {
+          "line": 2570,
+          "name": "test_standalone_preset_ui",
+          "ordinal": 12,
+          "seconds": 0.64,
+          "status": "Passed",
+          "test_id": 128,
+          "total": 41
+        },
+        {
+          "line": 2700,
+          "name": "test_standalone_workspaces_author",
+          "ordinal": 20,
+          "seconds": 0.01,
+          "status": "Passed",
+          "test_id": 136,
+          "total": 41
+        },
+        {
+          "line": 2621,
+          "name": "test_standalone_workspace_acceptance",
+          "ordinal": 18,
+          "seconds": 0.06,
+          "status": "Passed",
+          "test_id": 134,
+          "total": 41
+        },
+        {
+          "line": 2579,
+          "name": "test_standalone_projection",
+          "ordinal": 13,
+          "seconds": 0.4,
+          "status": "Passed",
+          "test_id": 129,
+          "total": 41
+        },
+        {
+          "line": 2512,
+          "name": "test_standalone_inspection_author",
+          "ordinal": 5,
+          "seconds": 0.01,
+          "status": "Passed",
+          "test_id": 121,
+          "total": 41
+        },
+        {
+          "line": 2504,
+          "name": "test_standalone_inspection_acceptance",
+          "ordinal": 4,
+          "seconds": 0.01,
+          "status": "Passed",
+          "test_id": 120,
+          "total": 41
+        },
+        {
+          "line": 2692,
+          "name": "test_standalone_workspace_continuity",
+          "ordinal": 19,
+          "seconds": 3.7,
+          "status": "Passed",
+          "test_id": 135,
+          "total": 41
+        },
+        {
+          "line": 2756,
+          "name": "test_standalone_drawing",
+          "ordinal": 24,
+          "seconds": 0.15,
+          "status": "Passed",
+          "test_id": 140,
+          "total": 41
+        },
+        {
+          "line": 2764,
+          "name": "test_standalone_quad_drawing",
+          "ordinal": 25,
+          "seconds": 0.02,
+          "status": "Passed",
+          "test_id": 141,
+          "total": 41
+        },
+        {
+          "line": 2772,
+          "name": "test_standalone_workspace_raster",
+          "ordinal": 26,
+          "seconds": 8.73,
+          "status": "Passed",
+          "test_id": 142,
+          "total": 41
+        },
+        {
+          "line": 2854,
+          "name": "test_standalone_scaled_view",
+          "ordinal": 29,
+          "seconds": 20.48,
+          "status": "Passed",
+          "test_id": 145,
+          "total": 41
+        },
+        {
+          "line": 2862,
+          "name": "test_standalone_preset_raster",
+          "ordinal": 30,
+          "seconds": 15.0,
+          "status": "Passed",
+          "test_id": 146,
+          "total": 41
+        },
+        {
+          "line": 2587,
+          "name": "test_standalone_reference_layout",
+          "ordinal": 14,
+          "seconds": 0.07,
+          "status": "Passed",
+          "test_id": 130,
+          "total": 41
+        },
+        {
+          "line": 2781,
+          "name": "test_standalone_inspection_raster",
+          "ordinal": 27,
+          "seconds": 0.59,
+          "status": "Passed",
+          "test_id": 143,
+          "total": 41
+        },
+        {
+          "line": 2789,
+          "name": "test_standalone_material_acceptance",
+          "ordinal": 28,
+          "seconds": 5.64,
+          "status": "Passed",
+          "test_id": 144,
+          "total": 41
+        }
+      ],
+      "run_id": 43646527323,
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run all required standalone acceptance tests",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "c": "MSVC 19.44.35230.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "MSVC 19.44.35230.0",
+        "msvc_toolset_directory": "14.44.35207",
+        "python": "3.12.10",
+        "runner_image": "windows-2022",
+        "runner_image_version": "20261112.366.7"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527323/job/132605475118",
+      "warnings": [
+        {
+          "line": 446,
+          "text": "CMake Deprecation Warning at D:/a/_temp/hammond-sdl2/CMakeLists.txt:3300 (cmake_minimum_required):"
+        },
+        {
+          "line": 3357,
+          "text": "CMake Warning (dev) at build-standalone/cmake_install.cmake:620 (execute_process):"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 3465,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 41,
+        "seconds": 215.36,
+        "summary_line": 3450,
+        "total": 41,
+        "unique_test_ids": 41,
+        "unique_test_names": 41
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605475127,
+      "layout_acceptance": {
+        "line": 2876,
+        "text": "130: Independent reference layout: 78 layouts, 11466 playing-key records, 5304 control records including 1872 presets, 2366 unique focus stops, 144 empty-gap hits, 8 old-location classifications, 24 literal landmark layouts; passed"
+      },
+      "log": {
+        "bytes_utf8": 739633,
+        "checkout_identity_lines": [
+          111,
+          139
+        ],
+        "decoded_characters": 739631,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 3809,
+        "retained_excerpt_lines": 84,
+        "sha256_utf8": "2bfa64fc4f5e25c751bae4ef000366d352c72e65f9edbf6ed42dc90d9f4de685"
+      },
+      "material_acceptance": {
+        "backend": "SDL software surface; no window/audio",
+        "checks": 1071,
+        "clip_frames": 88,
+        "failures": 0,
+        "frames": 88,
+        "header_checks": 170,
+        "legacy_checks": 901,
+        "line": 3079,
+        "state_checks": 88
+      },
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "pending_acknowledged_acceptance": {
+        "line": 3070,
+        "text": "143: Native inspection rendering harness: 6 frames; q=2; frame clock pending/acknowledged=32/32; publication pending/acknowledged=6/8; changed pixels=5317,2918,2698; assertions=947; no application window or audio device"
+      },
+      "relocated_payload": {
+        "line": 3712,
+        "scope": "Hosted guard execution and primary output; no downloaded package reinspection by A56.",
+        "text": "Verified 15 installed files, MIDI unavailable, relocated help/dummy smoke, and the archived bytes."
+      },
+      "required_native_results": [
+        {
+          "line": 2904,
+          "name": "test_standalone_ui",
+          "ordinal": 17,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 133,
+          "total": 41
+        },
+        {
+          "line": 2860,
+          "name": "test_standalone_preset_ui",
+          "ordinal": 12,
+          "seconds": 0.23,
+          "status": "Passed",
+          "test_id": 128,
+          "total": 41
+        },
+        {
+          "line": 2991,
+          "name": "test_standalone_workspaces_author",
+          "ordinal": 20,
+          "seconds": 0.0,
+          "status": "Passed",
+          "test_id": 136,
+          "total": 41
+        },
+        {
+          "line": 2912,
+          "name": "test_standalone_workspace_acceptance",
+          "ordinal": 18,
+          "seconds": 0.02,
+          "status": "Passed",
+          "test_id": 134,
+          "total": 41
+        },
+        {
+          "line": 2869,
+          "name": "test_standalone_projection",
+          "ordinal": 13,
+          "seconds": 0.09,
+          "status": "Passed",
+          "test_id": 129,
+          "total": 41
+        },
+        {
+          "line": 2802,
+          "name": "test_standalone_inspection_author",
+          "ordinal": 5,
+          "seconds": 0.0,
+          "status": "Passed",
+          "test_id": 121,
+          "total": 41
+        },
+        {
+          "line": 2794,
+          "name": "test_standalone_inspection_acceptance",
+          "ordinal": 4,
+          "seconds": 0.0,
+          "status": "Passed",
+          "test_id": 120,
+          "total": 41
+        },
+        {
+          "line": 2983,
+          "name": "test_standalone_workspace_continuity",
+          "ordinal": 19,
+          "seconds": 2.63,
+          "status": "Passed",
+          "test_id": 135,
+          "total": 41
+        },
+        {
+          "line": 3047,
+          "name": "test_standalone_drawing",
+          "ordinal": 24,
+          "seconds": 0.05,
+          "status": "Passed",
+          "test_id": 140,
+          "total": 41
+        },
+        {
+          "line": 3055,
+          "name": "test_standalone_quad_drawing",
+          "ordinal": 25,
+          "seconds": 0.0,
+          "status": "Passed",
+          "test_id": 141,
+          "total": 41
+        },
+        {
+          "line": 3063,
+          "name": "test_standalone_workspace_raster",
+          "ordinal": 26,
+          "seconds": 4.09,
+          "status": "Passed",
+          "test_id": 142,
+          "total": 41
+        },
+        {
+          "line": 3145,
+          "name": "test_standalone_scaled_view",
+          "ordinal": 29,
+          "seconds": 8.72,
+          "status": "Passed",
+          "test_id": 145,
+          "total": 41
+        },
+        {
+          "line": 3153,
+          "name": "test_standalone_preset_raster",
+          "ordinal": 30,
+          "seconds": 6.87,
+          "status": "Passed",
+          "test_id": 146,
+          "total": 41
+        },
+        {
+          "line": 2877,
+          "name": "test_standalone_reference_layout",
+          "ordinal": 14,
+          "seconds": 0.02,
+          "status": "Passed",
+          "test_id": 130,
+          "total": 41
+        },
+        {
+          "line": 3072,
+          "name": "test_standalone_inspection_raster",
+          "ordinal": 27,
+          "seconds": 0.29,
+          "status": "Passed",
+          "test_id": 143,
+          "total": 41
+        },
+        {
+          "line": 3080,
+          "name": "test_standalone_material_acceptance",
+          "ordinal": 28,
+          "seconds": 2.55,
+          "status": "Passed",
+          "test_id": 144,
+          "total": 41
+        }
+      ],
+      "run_id": 43646527323,
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run all required standalone acceptance tests",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "c": "GNU 13.3.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16",
+        "runner_image": "ubuntu-24.04",
+        "runner_image_version": "20261111.370.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527323/job/132605475127",
+      "warnings": [
+        {
+          "line": 1131,
+          "text": "CMake Deprecation Warning at /home/runner/work/_temp/hammond-sdl2/CMakeLists.txt:3300 (cmake_minimum_required):"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 3522,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 41,
+        "seconds": 253.54,
+        "summary_line": 3507,
+        "total": 41,
+        "unique_test_ids": 41,
+        "unique_test_names": 41
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605475146,
+      "layout_acceptance": {
+        "line": 2933,
+        "text": "130: Independent reference layout: 78 layouts, 11466 playing-key records, 5304 control records including 1872 presets, 2366 unique focus stops, 144 empty-gap hits, 8 old-location classifications, 24 literal landmark layouts; passed"
+      },
+      "log": {
+        "bytes_utf8": 751335,
+        "checkout_identity_lines": [
+          111,
+          139
+        ],
+        "decoded_characters": 751333,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 3871,
+        "retained_excerpt_lines": 85,
+        "sha256_utf8": "4869d9192547bee3622688f6cc088f2b0f9401fae7788461ab1dbc32df114d75"
+      },
+      "material_acceptance": {
+        "backend": "SDL software surface; no window/audio",
+        "checks": 1071,
+        "clip_frames": 88,
+        "failures": 0,
+        "frames": 88,
+        "header_checks": 170,
+        "legacy_checks": 901,
+        "line": 3136,
+        "state_checks": 88
+      },
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "pending_acknowledged_acceptance": {
+        "line": 3127,
+        "text": "143: Native inspection rendering harness: 6 frames; q=2; frame clock pending/acknowledged=32/32; publication pending/acknowledged=6/8; changed pixels=5317,2918,2698; assertions=947; no application window or audio device"
+      },
+      "relocated_payload": {
+        "line": 3774,
+        "scope": "Hosted guard execution and primary output; no downloaded package reinspection by A56.",
+        "text": "Verified 19 installed files, MIDI ALSA, relocated help/dummy smoke, and the archived bytes."
+      },
+      "required_native_results": [
+        {
+          "line": 2961,
+          "name": "test_standalone_ui",
+          "ordinal": 17,
+          "seconds": 0.05,
+          "status": "Passed",
+          "test_id": 133,
+          "total": 41
+        },
+        {
+          "line": 2917,
+          "name": "test_standalone_preset_ui",
+          "ordinal": 12,
+          "seconds": 0.4,
+          "status": "Passed",
+          "test_id": 128,
+          "total": 41
+        },
+        {
+          "line": 3048,
+          "name": "test_standalone_workspaces_author",
+          "ordinal": 20,
+          "seconds": 0.0,
+          "status": "Passed",
+          "test_id": 136,
+          "total": 41
+        },
+        {
+          "line": 2969,
+          "name": "test_standalone_workspace_acceptance",
+          "ordinal": 18,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 134,
+          "total": 41
+        },
+        {
+          "line": 2926,
+          "name": "test_standalone_projection",
+          "ordinal": 13,
+          "seconds": 0.16,
+          "status": "Passed",
+          "test_id": 129,
+          "total": 41
+        },
+        {
+          "line": 2859,
+          "name": "test_standalone_inspection_author",
+          "ordinal": 5,
+          "seconds": 0.0,
+          "status": "Passed",
+          "test_id": 121,
+          "total": 41
+        },
+        {
+          "line": 2851,
+          "name": "test_standalone_inspection_acceptance",
+          "ordinal": 4,
+          "seconds": 0.0,
+          "status": "Passed",
+          "test_id": 120,
+          "total": 41
+        },
+        {
+          "line": 3040,
+          "name": "test_standalone_workspace_continuity",
+          "ordinal": 19,
+          "seconds": 4.02,
+          "status": "Passed",
+          "test_id": 135,
+          "total": 41
+        },
+        {
+          "line": 3104,
+          "name": "test_standalone_drawing",
+          "ordinal": 24,
+          "seconds": 0.08,
+          "status": "Passed",
+          "test_id": 140,
+          "total": 41
+        },
+        {
+          "line": 3112,
+          "name": "test_standalone_quad_drawing",
+          "ordinal": 25,
+          "seconds": 0.0,
+          "status": "Passed",
+          "test_id": 141,
+          "total": 41
+        },
+        {
+          "line": 3120,
+          "name": "test_standalone_workspace_raster",
+          "ordinal": 26,
+          "seconds": 8.23,
+          "status": "Passed",
+          "test_id": 142,
+          "total": 41
+        },
+        {
+          "line": 3202,
+          "name": "test_standalone_scaled_view",
+          "ordinal": 29,
+          "seconds": 17.96,
+          "status": "Passed",
+          "test_id": 145,
+          "total": 41
+        },
+        {
+          "line": 3210,
+          "name": "test_standalone_preset_raster",
+          "ordinal": 30,
+          "seconds": 13.85,
+          "status": "Passed",
+          "test_id": 146,
+          "total": 41
+        },
+        {
+          "line": 2934,
+          "name": "test_standalone_reference_layout",
+          "ordinal": 14,
+          "seconds": 0.03,
+          "status": "Passed",
+          "test_id": 130,
+          "total": 41
+        },
+        {
+          "line": 3129,
+          "name": "test_standalone_inspection_raster",
+          "ordinal": 27,
+          "seconds": 0.58,
+          "status": "Passed",
+          "test_id": 143,
+          "total": 41
+        },
+        {
+          "line": 3137,
+          "name": "test_standalone_material_acceptance",
+          "ordinal": 28,
+          "seconds": 5.15,
+          "status": "Passed",
+          "test_id": 144,
+          "total": 41
+        }
+      ],
+      "run_id": 43646527323,
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record exact source and dependency identities",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install Ubuntu desktop and audio development headers",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build the application and every standalone acceptance input",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run all required standalone acceptance tests",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Reverify source and dependencies after acceptance",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "number": 15,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "number": 16,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain the successful executable package and byte inventory",
+          "number": 17,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 33,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 34,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 35,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "c": "GNU 13.3.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16",
+        "runner_image": "ubuntu-24.04",
+        "runner_image_version": "20261111.370.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527323/job/132605475146",
+      "warnings": [
+        {
+          "line": 1172,
+          "text": "CMake Deprecation Warning at /home/runner/work/_temp/hammond-sdl2/CMakeLists.txt:3300 (cmake_minimum_required):"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 1585,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 8,
+        "seconds": 4.96,
+        "summary_line": 1583,
+        "total": 8,
+        "unique_test_ids": 8,
+        "unique_test_names": 8
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605474498,
+      "log": {
+        "bytes_utf8": 287949,
+        "checkout_identity_lines": [
+          110,
+          122
+        ],
+        "decoded_characters": 287867,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 1712,
+        "retained_excerpt_lines": 44,
+        "sha256_utf8": "afd2c5ff4bea7f739a332b62996bf5f62f2bf1d793e68774247c410fa6453f39"
+      },
+      "name": "Native VST3 (Linux GCC)",
+      "run_id": 43646527347,
+      "sdk_validator": {
+        "failed": 0,
+        "line": 1505,
+        "passed": 47
+      },
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record actual source and runner provenance",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build the bundle and every native test input",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Validate the actual module and run the native tests",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Inventory and archive the validated native bundle",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain the qualified bundle and byte inventory",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 25,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "c": "GNU 13.3.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16",
+        "runner_image": "ubuntu-24.04",
+        "runner_image_version": "20261111.370.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527347/job/132605474498",
+      "warnings": [
+        {
+          "line": 374,
+          "text": "/home/runner/work/_temp/hammond-vst3-sdk/pluginterfaces/base/ustring.cpp:228:41: warning: format \u2018%lld\u2019 expects argument of type \u2018long long int*\u2019, but argument 3 has type \u2018Steinberg::int64*\u2019 {aka \u2018long int*\u2019} [-Wformat=]"
+        },
+        {
+          "line": 382,
+          "text": "/home/runner/work/_temp/hammond-vst3-sdk/pluginterfaces/base/ustring.cpp:256:56: warning: format \u2018%lld\u2019 expects argument of type \u2018long long int\u2019, but argument 4 has type \u2018Steinberg::int64\u2019 {aka \u2018long int\u2019} [-Wformat=]"
+        },
+        {
+          "line": 410,
+          "text": "/home/runner/work/_temp/hammond-vst3-sdk/base/source/fstring.cpp:1389:35: warning: format \u2018%lld\u2019 expects argument of type \u2018long long int*\u2019, but argument 3 has type \u2018Steinberg::int64*\u2019 {aka \u2018long int*\u2019} [-Wformat=]"
+        },
+        {
+          "line": 420,
+          "text": "/home/runner/work/_temp/hammond-vst3-sdk/base/source/fstring.cpp:1415:35: warning: format \u2018%llu\u2019 expects argument of type \u2018long long unsigned int*\u2019, but argument 3 has type \u2018Steinberg::uint64*\u2019 {aka \u2018long unsigned int*\u2019} [-Wformat=]"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 1410,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 7,
+        "seconds": 3.78,
+        "summary_line": 1408,
+        "total": 7,
+        "unique_test_ids": 7,
+        "unique_test_names": 7
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605474721,
+      "log": {
+        "bytes_utf8": 292651,
+        "checkout_identity_lines": [
+          111,
+          123
+        ],
+        "decoded_characters": 292649,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 1535,
+        "retained_excerpt_lines": 39,
+        "sha256_utf8": "4d9d986f21821d288307d7ca792f9acf7d38c0af4c623458d6f060a24f8d3b11"
+      },
+      "name": "Native VST3 (macOS AppleClang)",
+      "run_id": 43646527347,
+      "sdk_validator": {
+        "failed": 0,
+        "line": 1354,
+        "passed": 47
+      },
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record actual source and runner provenance",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure native Release on Windows",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build the bundle and every native test input",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Validate the actual module and run the native tests",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Inventory and archive the validated native bundle",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain the qualified bundle and byte inventory",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 25,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "c": "AppleClang 17.0.0.17000013",
+        "cmake": "4.4.5",
+        "ctest": "4.4.5",
+        "cxx": "AppleClang 17.0.0.17000013",
+        "python": "3.12.10",
+        "runner_image": "macos-15-arm64",
+        "runner_image_version": "20261104.0514.1"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527347/job/132605474721",
+      "warnings": []
+    },
+    {
+      "conclusion": "success",
+      "ctest": {
+        "duration_line": 1750,
+        "failed": 0,
+        "ordinal_sequence_complete": true,
+        "passed": 7,
+        "seconds": 4.68,
+        "summary_line": 1748,
+        "total": 7,
+        "unique_test_ids": 7,
+        "unique_test_names": 7
+      },
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "job_id": 132605474799,
+      "log": {
+        "bytes_utf8": 198614,
+        "checkout_identity_lines": [
+          97,
+          109
+        ],
+        "decoded_characters": 198612,
+        "excerpt_file": "A56-primary-log-excerpts.txt",
+        "lines": 1878,
+        "retained_excerpt_lines": 41,
+        "sha256_utf8": "f5d8981834c509e878a0b9ac644a89e27f458c961df501b17d39b543559e724a"
+      },
+      "name": "Native VST3 (Windows MSVC x64)",
+      "run_id": 43646527347,
+      "sdk_validator": {
+        "failed": 0,
+        "line": 1694,
+        "passed": 47
+      },
+      "source_tree_from_run": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Check out the exact tested revision",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Set up Python 3.12",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Record actual source and runner provenance",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Explicitly acquire and verify the locked external SDK",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "skipped",
+          "name": "Configure native Release on Linux or macOS",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure native Release on Windows",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build the bundle and every native test input",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Validate the actual module and run the native tests",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Inventory and archive the validated native bundle",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain complete source, dependency, build and test diagnostics",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Retain the qualified bundle and byte inventory",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Set up Python 3.12",
+          "number": 23,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Check out the exact tested revision",
+          "number": 24,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 25,
+          "status": "completed"
+        }
+      ],
+      "toolchain": {
+        "c": "MSVC 19.44.35230.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "MSVC 19.44.35230.0",
+        "msvc_toolset_directory": "14.44.35207",
+        "python": "3.12.10",
+        "runner_image": "windows-2022",
+        "runner_image_version": "20261112.366.7"
+      },
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527347/job/132605474799",
+      "warnings": []
+    }
+  ],
+  "limitations": [
+    "This result qualifies only source 0881d1f4 and the named unchanged current inputs. Final documentation, workflow, sixty-record completion and later publication CI need their own observations.",
+    "Native tests and relocated smoke use dummy SDL audio/video; compiled platform backends are not physical audio/MIDI/display or DAW tests.",
+    "SDK validator and package guard success are bounded hosted execution evidence; A56 did not download or independently inspect executable/package payloads.",
+    "Literal 1:1 visual equality, accessibility, deadline, signing and physical fidelity remain unestablished. R4, R5, R6/Engine and scanner G5 remain separate gates."
+  ],
+  "native_sanitizer_policy": {
+    "guards_observed_success": [
+      "Instrumented objects for all sixteen targets plus SDL2-static, hammond_core, hammond_standalone_support and hammond_standalone_drawing; objects exist and are nonempty.",
+      "ASan/UBSan references in four static archives; all sixteen executable link flags and ldd runtime dependencies required.",
+      "Exactly sixteen unique discovered built commands; disabled tests and ASan/UBSan/LSan environment overrides rejected; --no-tests=error.",
+      "Exact existing raster timeouts 180/360/300 seconds and inspection/material timeouts 60/60 seconds."
+    ],
+    "required_tests": [
+      "test_standalone_ui",
+      "test_standalone_preset_ui",
+      "test_standalone_workspaces_author",
+      "test_standalone_workspace_acceptance",
+      "test_standalone_projection",
+      "test_standalone_inspection_author",
+      "test_standalone_inspection_acceptance",
+      "test_standalone_workspace_continuity",
+      "test_standalone_drawing",
+      "test_standalone_quad_drawing",
+      "test_standalone_workspace_raster",
+      "test_standalone_scaled_view",
+      "test_standalone_preset_raster",
+      "test_standalone_reference_layout",
+      "test_standalone_inspection_raster",
+      "test_standalone_material_acceptance"
+    ],
+    "scope": "Source and successful primary guard steps inspected; no artifact instrumentation.json or binaries downloaded. Selected project C++ and pinned SDL C are instrumented; system libraries are not rebuilt. Dummy surfaces do not qualify real devices."
+  },
+  "outcome": "PASS for the exact published header source; named core leak exception retained",
+  "prior_numerical_inputs": {
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63"
+    },
+    "docs/ROTARY_PROPAGATION_CONTRACT.md": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc"
+    },
+    "include/hammond/RotaryMotion.h": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36"
+    },
+    "include/hammond/RotaryPropagation.h": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a"
+    },
+    "include/hammond/RotaryTypes.h": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4"
+    },
+    "src/RotaryMotion.cpp": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1"
+    },
+    "src/RotaryPropagation.cpp": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e"
+    },
+    "tests/TestSupport.h": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5"
+    },
+    "tests/probes/rotary_motion_probe.cpp": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e"
+    },
+    "tests/probes/rotary_propagation_probe.cpp": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768"
+    },
+    "tests/test_rotary_motion.cpp": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "e8095db59203e88023bd4d3cd56b75882b6cf88b111b3bf8af77574fa1de2a82"
+    },
+    "tests/test_rotary_motion_acceptance.py": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366"
+    },
+    "tests/test_rotary_propagation.cpp": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "71f39ed739a6b86832c20ad69d5c5453c528f4ef4b6cc8a6408e5a97b4a24856"
+    },
+    "tests/test_rotary_propagation_acceptance.py": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a"
+    },
+    "tests/test_rotary_propagation_allocation.cpp": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "022845759fe2e604ad4c8003dc0acf4e2b693d79933da86e25a0ac8e0f9f39d7"
+    },
+    "tools/rotary_reference.py": {
+      "equals_26ff_parent_bytes": true,
+      "equals_A44_tested_input": true,
+      "published_sha256": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d"
+    }
+  },
+  "retained_files": {
+    "A56-audit-published-header.py": {
+      "bytes": 25665,
+      "sha256": "44ce53edbe70c4b1f86da675d3043511ac9f40b549e8db12311bfe479cb416ba"
+    },
+    "A56-primary-log-excerpts.txt": {
+      "bytes": 185247,
+      "sha256": "fc63760f91f304db03f1c432cab3f2df92cab8418b99b1c0832a196dc80fb6f8"
+    },
+    "A56-source-comparison.json": {
+      "bytes": 72641,
+      "sha256": "89c0a9622235bdc823eed28375633eb48c86eb155d61b423c89691b59d66a21d"
+    }
+  },
+  "retrieval": {
+    "artifact_payloads_downloaded": false,
+    "excerpt_normalization": "Numbered original lines; ANSI escapes removed and line endings normalized to LF. Intervening lines omitted.",
+    "full_logs": "Scratch cache only; bounded excerpts retained in this repository.",
+    "log_identity": "SHA-256 of exact connector-decoded text encoded as UTF-8, preserving BOM and original line endings; not original ZIP or binary payload bytes.",
+    "metadata_fetched_at": "2026-11-14T22:36:54.996Z",
+    "method": "Connected GitHub GET workflow metadata, job steps and github_fetch_workflow_job_logs for each of twelve jobs.",
+    "product_build_or_tests_executed_by_auditor": false,
+    "remote_mutations": false
+  },
+  "runs": [
+    {
+      "conclusion": "success",
+      "created_at": "2026-11-14T22:08:49Z",
+      "event": "push",
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527300",
+      "id": 43646527300,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "run_attempt": 1,
+      "status": "completed",
+      "updated_at": "2026-11-14T22:16:21Z"
+    },
+    {
+      "conclusion": "success",
+      "created_at": "2026-11-14T22:08:49Z",
+      "event": "push",
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527323",
+      "id": 43646527323,
+      "name": "Native standalone",
+      "path": ".github/workflows/standalone.yml",
+      "run_attempt": 1,
+      "status": "completed",
+      "updated_at": "2026-11-14T22:17:14Z"
+    },
+    {
+      "conclusion": "success",
+      "created_at": "2026-11-14T22:08:49Z",
+      "event": "push",
+      "head_sha": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43646527347",
+      "id": 43646527347,
+      "name": "Native VST3",
+      "path": ".github/workflows/native-vst3.yml",
+      "run_attempt": 1,
+      "status": "completed",
+      "updated_at": "2026-11-14T22:10:15Z"
+    }
+  ],
+  "schema_version": 1,
+  "selected_source_hashes": {
+    ".github/workflows/ci.yml": {
+      "published_sha256": "dff4199953804baf7f6bab50f5642952ef0fb407baec6968a0c5d96396a884c3",
+      "working_sha256": "7ab2a791b0c4b9a0c1b04127b4159f2565e088ffedff0591c875ff538361b536"
+    },
+    ".github/workflows/standalone.yml": {
+      "published_sha256": "d43c847855e375936c15b68731031ce37393b93b073173e67b1c8e8f67075610",
+      "working_sha256": "d43c847855e375936c15b68731031ce37393b93b073173e67b1c8e8f67075610"
+    },
+    "CMakeLists.txt": {
+      "published_sha256": "a1865e59816ed4a63c9a0d8ed95c9aaea1951960f969fe209a3309cc3f2f99e7",
+      "working_sha256": "a1865e59816ed4a63c9a0d8ed95c9aaea1951960f969fe209a3309cc3f2f99e7"
+    },
+    "CMakePresets.json": {
+      "published_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      "working_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "published_sha256": "3d3bcf0bd6ee595bed01e9d6090fe9e1ac221e1963795dfbaf23e630d4c2fa62",
+      "working_sha256": "3d3bcf0bd6ee595bed01e9d6090fe9e1ac221e1963795dfbaf23e630d4c2fa62"
+    },
+    "apps/standalone/InstrumentView.cpp": {
+      "published_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+      "working_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a"
+    },
+    "apps/standalone/native_tests/test_standalone_inspection_raster.cpp": {
+      "published_sha256": "d04873c3d4d7d2b76c2c678e592ac8bc8e13f01af64faafce581fbf69b35950d",
+      "working_sha256": "d04873c3d4d7d2b76c2c678e592ac8bc8e13f01af64faafce581fbf69b35950d"
+    },
+    "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": {
+      "published_sha256": "66963058652bd0673a043e03f342c94d71fd3c07e2f37a0d1d94093cc4d4a134",
+      "working_sha256": "66963058652bd0673a043e03f342c94d71fd3c07e2f37a0d1d94093cc4d4a134"
+    },
+    "apps/standalone/tests/test_standalone_reference_layout.cpp": {
+      "published_sha256": "e053edf405d11470db92396fdeabed111aeb5debe38c16632884f21eac32bdbf",
+      "working_sha256": "e053edf405d11470db92396fdeabed111aeb5debe38c16632884f21eac32bdbf"
+    },
+    "data/dependencies/rtmidi-lock.json": {
+      "published_sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa",
+      "working_sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+    },
+    "data/dependencies/sdl2-lock.json": {
+      "published_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "working_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    "data/dependencies/vst3-sdk-lock.json": {
+      "published_sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965",
+      "working_sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965"
+    },
+    "docs/ROTARY_NUMERICAL_CONTRACT.md": {
+      "published_sha256": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+      "working_sha256": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63"
+    },
+    "docs/ROTARY_PROPAGATION_CONTRACT.md": {
+      "published_sha256": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+      "working_sha256": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc"
+    },
+    "include/hammond/RotaryMotion.h": {
+      "published_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+      "working_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36"
+    },
+    "include/hammond/RotaryPropagation.h": {
+      "published_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+      "working_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a"
+    },
+    "include/hammond/RotaryTypes.h": {
+      "published_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+      "working_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4"
+    },
+    "src/RotaryMotion.cpp": {
+      "published_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+      "working_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1"
+    },
+    "src/RotaryPropagation.cpp": {
+      "published_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+      "working_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e"
+    },
+    "tests/TestSupport.h": {
+      "published_sha256": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5",
+      "working_sha256": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5"
+    },
+    "tests/probes/rotary_motion_probe.cpp": {
+      "published_sha256": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e",
+      "working_sha256": "2af57d1ade547be7d8ea97c5c272e8bff7b76490f1b5eaffa718a76bb195848e"
+    },
+    "tests/probes/rotary_propagation_probe.cpp": {
+      "published_sha256": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768",
+      "working_sha256": "55c7b97cb6db53d8bf061a55d46dfd43ec46f4a0ed90b394df0d79f29b966768"
+    },
+    "tests/test_refinement_session.py": {
+      "published_sha256": "33c5e845971af9396a50a03c9550af8a9e93df59086b34fe19f92046b9522df7",
+      "working_sha256": "33c5e845971af9396a50a03c9550af8a9e93df59086b34fe19f92046b9522df7"
+    },
+    "tests/test_rotary_motion.cpp": {
+      "published_sha256": "e8095db59203e88023bd4d3cd56b75882b6cf88b111b3bf8af77574fa1de2a82",
+      "working_sha256": "e8095db59203e88023bd4d3cd56b75882b6cf88b111b3bf8af77574fa1de2a82"
+    },
+    "tests/test_rotary_motion_acceptance.py": {
+      "published_sha256": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366",
+      "working_sha256": "c29d2856b456dd485b81edfe7481c7cce450c674a503e15c5c35e7e19945d366"
+    },
+    "tests/test_rotary_propagation.cpp": {
+      "published_sha256": "71f39ed739a6b86832c20ad69d5c5453c528f4ef4b6cc8a6408e5a97b4a24856",
+      "working_sha256": "71f39ed739a6b86832c20ad69d5c5453c528f4ef4b6cc8a6408e5a97b4a24856"
+    },
+    "tests/test_rotary_propagation_acceptance.py": {
+      "published_sha256": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a",
+      "working_sha256": "032c410e4176e8f00a4e70a8446784f12bca89257e1f647faae7ee49e13e6c9a"
+    },
+    "tests/test_rotary_propagation_allocation.cpp": {
+      "published_sha256": "022845759fe2e604ad4c8003dc0acf4e2b693d79933da86e25a0ac8e0f9f39d7",
+      "working_sha256": "022845759fe2e604ad4c8003dc0acf4e2b693d79933da86e25a0ac8e0f9f39d7"
+    },
+    "tools/check_refinement_session.py": {
+      "published_sha256": "5bd5f420bd8bbad37f7e469b94f9695cd38106d7de8c2c5d9cdb8a2faf453e42",
+      "working_sha256": "5bd5f420bd8bbad37f7e469b94f9695cd38106d7de8c2c5d9cdb8a2faf453e42"
+    },
+    "tools/rotary_reference.py": {
+      "published_sha256": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d",
+      "working_sha256": "4c8bbcdf279f87aaad5b730d60a82958321ba3c1a92e5318eb5e37b1e83c8b0d"
+    }
+  },
+  "source_comparison": {
+    "all_selected_working_bytes_equal_published": true,
+    "boundary": "The .github workflows are compared separately. Documentation, session records, reports and gallery files are excluded; no complete-worktree, final candidate, frozen Markdown or final CI equality is claimed.",
+    "future_strict_gate": "A55 adds Linux-only strict current-session checker in the unpublished ci.yml candidate. The 0881 logs execute the refinement checker regression test and historical interface strict checker, not that future refinement sixty-record step.",
+    "report": "A56-source-comparison.json",
+    "selected_count": 365,
+    "workflows": {
+      ".github/workflows/ci.yml": {
+        "tested_sha256": "dff4199953804baf7f6bab50f5642952ef0fb407baec6968a0c5d96396a884c3",
+        "working_equals_tested": false,
+        "working_sha256": "7ab2a791b0c4b9a0c1b04127b4159f2565e088ffedff0591c875ff538361b536"
+      },
+      ".github/workflows/native-vst3.yml": {
+        "tested_sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+        "working_equals_tested": true,
+        "working_sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721"
+      },
+      ".github/workflows/standalone.yml": {
+        "tested_sha256": "d43c847855e375936c15b68731031ce37393b93b073173e67b1c8e8f67075610",
+        "working_equals_tested": true,
+        "working_sha256": "d43c847855e375936c15b68731031ce37393b93b073173e67b1c8e8f67075610"
+      }
+    }
+  },
+  "tested_source": {
+    "commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "parent": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+    "tree": "f8144b771cda1264a8788f8297f5bfec999f4a08"
+  },
+  "validation": {
+    "all_five_native_material_results_1071_equals_901_plus_170": true,
+    "all_four_core_test_name_sets_identical": true,
+    "all_four_native_release_test_name_sets_identical": true,
+    "all_three_run_trees_match": true,
+    "all_three_validator_results_47_pass_0_fail": true,
+    "all_twelve_checkout_logs_match_source": true,
+    "all_twelve_unique_full_test_counts_match_summaries": true,
+    "no_product_tests_run_by_A56": true,
+    "original_2e_log_matches_A38_identity": true
+  },
+  "worker": "/root/w10_a56_published_header_hosted_audit"
+}

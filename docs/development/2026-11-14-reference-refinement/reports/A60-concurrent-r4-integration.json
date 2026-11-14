@@ -1,0 +1,372 @@
+{
+  "A57_reconciliation": [
+    {
+      "assessment": "Addressed structurally: matching MotionProfile, original-seed/targets speed envelope and runtime epoch-seed admission; rate-independent geometry plus history rate supports stopped reconfiguration without discarding reset envelope.",
+      "precondition": "trajectory binding"
+    },
+    {
+      "assessment": "Addressed structurally: path retains no history pointer; all path queries finish before next mutation or rollback. Immutable R3 views remain unchanged.",
+      "precondition": "borrow lifetime"
+    },
+    {
+      "assessment": "Documented scope differs from A57 proposal: incoming owner-reviewed contract excludes struct padding, output scratch and inactive journal bytes. Persistent slots/metadata/owners/configuration/diagnostics and caller bytes are restored; independent tests compare floating fields by bits. Do not describe this as whole-storage/scratch-byte identity or silently edit A57 historical review. No runtime defect identified from this deliberate observable-state contract choice.",
+      "precondition": "exact storage restoration"
+    },
+    {
+      "assessment": "Addressed structurally: tail_flush_frames returns D+4; caller supplies explicit zeros in legal calls, motion/time continue and ordinary overflow rules apply. Complete all-rate lifecycle evidence remains separately owned.",
+      "precondition": "flush ownership"
+    },
+    {
+      "assessment": "Resolved: ProcessResult maxima contain only completed solves; failed staged PathResult is never read to invent failure residual/count. Persistent diagnostics remain unchanged on rejection.",
+      "precondition": "failed solve observations"
+    }
+  ],
+  "accepted_A60_records_preserved": [
+    {
+      "accepted_identity_unchanged": true,
+      "path": "docs/development/2026-11-14-reference-refinement/notes/A60-final-handoff-acceptance.md",
+      "sha256": "d3be81d25ec57afae138681b85b2ae06c45b3c72b8c185ab0aba8b3c8d1460c5"
+    },
+    {
+      "accepted_identity_unchanged": true,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A60-final-handoff-acceptance.json",
+      "sha256": "0c9008d94092de24676b2bf1cee8fc59b40448be0d487bf43ffd335879283c06"
+    }
+  ],
+  "implemented": [
+    "Fixed owned waveform and original-anchor motion histories, all four cubic taps, declared negative-time policies and O(1) ring queries.",
+    "PreparedStreamingPath admits full-orbit geometry, rejects incompatible motion profiles and excessive epoch seed speed, reads rate from admitted history, borrows only during solve and preserves existing R2/R3 APIs.",
+    "Heap-owned serialized RotaryRenderer stages owners/diagnostics/output; logs both rotors before partial writes, reverses every overwrite, restores four clocks, preserves persistent state/caller outputs and commits only after final boundary events.",
+    "Two-frame lag, separate horn/drum inputs, four retarded paths, signed Horn-then-Drum stereo sum without clipping; reset and stopped same/different-rate epoch semantics.",
+    "Explicit D+4 zero-input flush getter and ordinary bounded processing; no multi-call atomic-flush claim.",
+    "Nominal-profile compiler and bounded offline developer CLI producing raw interleaved f64le plus JSON; no Engine connection or listening-level conversion."
+  ],
+  "incoming": {
+    "commit": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+    "direct_child_of_0881": true,
+    "identity_limit": "Incoming commit blobs are the reviewed source. Local overlay/shared-doc integration and index are root-owned; local HEAD alone does not identify the combined candidate.",
+    "local_HEAD_at_receipt": "487064d2400b9f39d0ee66ed136a09c9e372379e",
+    "local_tree_at_receipt": "ae75093a76ff19c2e7f9189a92cf2faa63f4d8b6",
+    "parent": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "saved_incoming_root": "/workspace/scratch/1bb6ee17ad7e/closing-487064-integration/incoming",
+    "tree": "ae75093a76ff19c2e7f9189a92cf2faa63f4d8b6"
+  },
+  "inspection_setup_note": "One optional source-read command used the wrong material-test directory and returned file-not-found; corrected to apps/standalone/native_tests before inspecting the actual one-line fix. No project execution failed in this review.",
+  "integration_assessment": "No additional R4 production integration defect found in this bounded source review. Preserve successful nominal Linux waveform evidence separately from open platform test gates and incomplete full R4 lifecycle/allocation/CLI acceptance. Explicitly reconcile A57 stronger scratch/padding wording in current handoff without rewriting accepted history.",
+  "next_actions": [
+    "Root/A54 describe implemented R4 foundation and exact full-run overlay, preserve original platform failures and name pending owner gates.",
+    "Coordinate adoption of the other owner's tested fixes, verify exact source and execute affected native/platform gates without claiming old passes for changed files.",
+    "Independently admit the newly captured v5 source/binary/pixels/endpoint scope; keep v1-v4 immutable and literal1:1 equality unmet.",
+    "Root qualifies combined accepted source, final shared records and strict CI/publication using its own observed evidence."
+  ],
+  "observed_utc": "2026-11-14T23:27:09.917745+00:00",
+  "platform_failures_and_repairs": {
+    "directly_read_owner_artifacts": [
+      {
+        "artifact_id": 14136740173,
+        "compressed_and_decoded_receipts_match_owner_record": true,
+        "job_id": 132620406632,
+        "long_double_digits": 53,
+        "native_exit": 0,
+        "native_status": "pass",
+        "original_failures": [
+          {
+            "message": "rate[44100].worst_error: inconsistent recorded values",
+            "stage": "native_report_admission",
+            "type": "AdmissionError"
+          }
+        ],
+        "original_receipt_status": "fail",
+        "owner_repair_is_offline_readmission_not_new_platform_run": true,
+        "owner_unpublished_repaired_admission": "pass",
+        "platform": "macos"
+      },
+      {
+        "artifact_id": 14135784437,
+        "compressed_and_decoded_receipts_match_owner_record": true,
+        "job_id": 132620406726,
+        "long_double_digits": 53,
+        "native_exit": 0,
+        "native_status": "pass",
+        "original_failures": [
+          {
+            "message": "rate[44100].worst_error: inconsistent recorded values",
+            "stage": "native_report_admission",
+            "type": "AdmissionError"
+          }
+        ],
+        "original_receipt_status": "fail",
+        "owner_repair_is_offline_readmission_not_new_platform_run": true,
+        "owner_unpublished_repaired_admission": "pass",
+        "platform": "windows"
+      }
+    ],
+    "disposition": "Concrete published test/report-admission and native test compilation gates remain failed until repaired source is integrated and actually rerun on affected platforms. Owner-held offline artifact re-admission and Linux4/4 are scoped later evidence, not repaired hosted success. Do not duplicate or overwrite owner fixes.",
+    "owner_material_fix": {
+      "only_change_is_unused_kKeyCount_removal": true,
+      "path": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/apps/standalone/native_tests/test_standalone_waveform_material.cpp",
+      "sha256": "1b6449143afd636e48b6be5e422b591e4dee26e29592b98a2394665916cdfead"
+    },
+    "owner_precision_receipt": {
+      "binary64_policy": {
+        "accepted_result_error_ulps": 0,
+        "canonical_token_check": "Decimal(token) == Decimal(format(float(token), \".17g\"))",
+        "precision_metadata": {
+          "digits": 53,
+          "digits10": 15,
+          "is_iec559": true,
+          "max_digits10": 17,
+          "radix": 2
+        },
+        "rounding_policy": "native round-to-nearest required; Python radix2/mant_dig53/rounds1 required",
+        "subtraction_check": "abs(float(actual) - float(reference)) == float(recorded)",
+        "wider_references": "original Decimal consistency floors unchanged"
+      },
+      "fresh_integrated_linux_check": {
+        "log": {
+          "bytes": 894,
+          "path": "docs/development/2026-11-14-waveform-continuation/reports/wave6-repaired-gates.txt",
+          "sha256": "6cdeb425c0d69a3de7adc90dbd97f026dd13f734e83d84777512ab2331c7f132"
+        },
+        "observed_by_root": "4/4 in 7.34s: fresh native waveform smoke, report admission, offline CLI, capture validator",
+        "owner": "root",
+        "source_boundary": "separate fresh execution from the original frozen full receipt"
+      },
+      "path": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/docs/development/2026-11-14-waveform-continuation/reports/a32-precision-admission.json",
+      "scope": "offline precision-aware report admission repair; no native rerun or changed numerical model",
+      "self_tests": {
+        "command": "PYTHONDONTWRITEBYTECODE=1 python tests/test_rotary_waveform_acceptance.py --self-test",
+        "exit_code": 0,
+        "first_development_run": {
+          "cause": "The coarse -0.1490543 token is a valid 17-significant-digit rendering with omitted terminal zeros; exact replay correctly rejected its changed value. The test initially expected only a noncanonical-token rejection, then was corrected to accept either AdmissionError without changing admission logic.",
+          "status": "failed_test_expectation"
+        },
+        "observed_final_wall_seconds": 0.485,
+        "test_count": 14
+      },
+      "sha256": "7892ad7805726f669c8bb6b9d74dba2537c805893c61008461bfd1859bcdf7b5",
+      "status": "pass"
+    },
+    "owner_test_source": {
+      "inspection": "Canonical17-digit binary64 tokens replay the native subtraction exactly; wider-reference floors and waveform/solver budgets remain unchanged. One-ULP/coarse-token/precision metadata cases retained.",
+      "path": "/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ/tests/test_rotary_waveform_acceptance.py",
+      "sha256": "e2a21f1b5181ae7b46c776e96041a95b24ca2e2391f1e55ff5aed3e0d03e688d"
+    },
+    "root_latest_observation": "Root reports10/13 hosted jobs passing at487064, core macOS and Windows145/146 with native_report_admission worst_error inconsistency, native macOS unused kKeyCount compile failure; full Linux R4 job passes. This latest aggregate is root-provided, not an A60 network audit."
+  },
+  "preserved_invariants": [
+    {
+      "path": "src/Engine.cpp",
+      "sha256": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a",
+      "unchanged_from_0881": true
+    },
+    {
+      "path": "include/hammond/ParameterBridge.h",
+      "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+      "unchanged_from_0881": true
+    },
+    {
+      "path": "src/ParameterBridge.cpp",
+      "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+      "unchanged_from_0881": true
+    },
+    {
+      "path": "src/ControlStateIO.cpp",
+      "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "unchanged_from_0881": true
+    },
+    {
+      "path": "src/RotaryMotion.cpp",
+      "sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+      "unchanged_from_0881": true
+    },
+    {
+      "path": "src/RotaryPropagation.cpp",
+      "sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+      "unchanged_from_0881": true
+    },
+    {
+      "path": "docs/ROTARY_NUMERICAL_CONTRACT.md",
+      "sha256": "4c060088f0718586a7c6810e5c055c652d8924db4474db770237193ab459bd63",
+      "unchanged_from_0881": true
+    },
+    {
+      "path": "docs/ROTARY_PROPAGATION_CONTRACT.md",
+      "sha256": "0834909ad8ea4b2b9696f0047d739d03976da3adb4a2eb48f2b7556737bccdcc",
+      "unchanged_from_0881": true
+    }
+  ],
+  "remaining_at_incoming_checkpoint": [
+    "A27 complete all-rate lifecycle and structural scene-symmetry evidence is not retained as completed in incoming checkpoint.",
+    "A28 independent full-receipt admission and A29 calibrated allocation/deallocation, stopped allocation-failure and runtime evidence remain separately assigned there.",
+    "Independent offline CLI acceptance and final coherent/platform qualification are separate from author83-case and basic4800-frame integration.",
+    "R5 audible reconstruction/alias/filter policy, R6 Engine/host/device integration and deadlines, M5/M6 electrical inputs and physical M7 remain open; scanner G5 and 47-parameter/state4 nominal dry Engine boundary unchanged.",
+    "Current source paint changed; historical v4/0881 captures and A49/A56 results retain old-source scope. Root reports new exact487064 v5 capture; A60 offline admission follows separately."
+  ],
+  "retained_full_run": {
+    "cmake_difference_boundary": "Later offline CLI/compiler registration was integrated after this full-run freeze; exact CMake hash differs. Named renderer/history/streaming/probe/reference files match.",
+    "exact_incoming_blob_matches": 80,
+    "executable": {
+      "bytes": 199272,
+      "path": "/workspace/scratch/e3cacb90cc81/build/hammond_rotary_waveform_probe",
+      "sha256": "3c057118d714f5131d1d8c01278d441830fc218acde3044c9a0e55f0cbe037a3"
+    },
+    "executable_before_equals_after": true,
+    "finished_utc": "2026-11-14T22:56:32.443771+00:00",
+    "frozen_source_count": 82,
+    "groups": {
+      "build_metadata_after": "pass",
+      "build_metadata_before": "pass",
+      "build_metadata_stability": "pass",
+      "build_options": "pass",
+      "executable_after": "pass",
+      "executable_before": "pass",
+      "executable_stability": "pass",
+      "native_json": "pass",
+      "native_process_capture": "pass",
+      "native_process_exit": "pass",
+      "native_report_admission": "pass",
+      "retained_static_grid": "pass",
+      "selected_decimal_crosscheck": "pass",
+      "source_after": "pass",
+      "source_before": "pass",
+      "source_stability": "pass"
+    },
+    "maximum_normalized_error": "1.93574020587629201495E-9",
+    "native_totals": {
+      "auxiliary_convergence_path_solutions": 576,
+      "completed_partitions": 24,
+      "convergence_pairs": 288,
+      "native_events_consumed": 840,
+      "native_frames": 22806000,
+      "native_path_solutions": 91224000,
+      "partition_compared_samples": 38010000,
+      "partition_equal_samples": 38010000,
+      "rate_count": 4,
+      "reference_frames": 3801000,
+      "reference_path_solutions": 15204000,
+      "reference_scalar_comparisons": 7602000,
+      "selected_trace_paths": 176
+    },
+    "normalized_limit": "2e-5",
+    "original_artifact_checks": [
+      {
+        "bytes": 9584,
+        "matches": true,
+        "path": "build-before-run.log",
+        "sha256": "a56ea1992b34ef72f62d538c52a94241a1cea64c83d7f7ed4fcdbb3814a2ed63"
+      },
+      {
+        "bytes": 2311,
+        "matches": true,
+        "path": "native.stderr.txt",
+        "sha256": "300bb98557529b89f721fb3aeb6634aa27e307aefc743c68165a90007e4665ad"
+      },
+      {
+        "bytes": 405105,
+        "matches": true,
+        "path": "native.stdout.json",
+        "sha256": "afa432188a5085022db6d50c7d4f24e13a19fdfcfeb8d7962098469a2d4a7343"
+      },
+      {
+        "bytes": 71928,
+        "matches": true,
+        "path": "qualification.json",
+        "sha256": "39ee53a378eac3a3798f680564c786fa70b1c41980a62639b8585bd4d5fe23fe"
+      }
+    ],
+    "run_id": "full-20261114T224542.780923Z-d7532bf3",
+    "runner_original_reconstructs_by_one_LF": true,
+    "selected_decimal_paths": 176,
+    "selected_decimal_status": "pass",
+    "separate_gates": {
+      "R5_audible_policy": "not_run",
+      "R6_device_deadlines": "not_run",
+      "physical_fidelity": "not_run",
+      "transaction_lifecycle": "not_run"
+    },
+    "source_before_equals_after": true,
+    "source_boundary": "0881 HEAD plus the exact frozen dirty 82-file overlay; not a full test of every eventual 487064 file.",
+    "source_differences": [
+      {
+        "incoming_sha256": "c5cd031cb4b4d0fed9804e35da4a38868b414efd8a84b1dbc9907f4ff11b192c",
+        "path": "CMakeLists.txt",
+        "qualified_sha256": "167342e2e0a406c4cb3c684abada08cc2cfb98c875144bf4c15f0405febfa4ed"
+      },
+      {
+        "incoming_sha256": "bdfbee1a4f126f9ed660b7953730b7111c61f1427dca22f28eff3f4d3712e2d5",
+        "path": "tests/test_rotary_waveform_acceptance.py",
+        "qualified_sha256": "8f04debc59982303b986c3200bc2b11df5070ce68f4989d8640b1514bb3516c2"
+      }
+    ],
+    "started_utc": "2026-11-14T22:45:42.781020+00:00",
+    "status": "pass",
+    "wall_seconds": 649.6627628130009
+  },
+  "review_scope": "Bounded read-only incoming R4 source/contracts, retained evidence and owner-held unpublished platform repairs; no build, native execution, complete experiment, strict checker, source/index/manifest edit or remote query.",
+  "same_accepted_identity_followup": true,
+  "schema_version": 1,
+  "selected_inputs": [
+    {
+      "path": "include/hammond/RotaryHistory.h",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b"
+    },
+    {
+      "path": "include/hammond/RotaryRenderer.h",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0"
+    },
+    {
+      "path": "src/RotaryHistory.cpp",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5"
+    },
+    {
+      "path": "src/RotaryRenderer.cpp",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04"
+    },
+    {
+      "path": "src/RotaryRendererInternal.h",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796"
+    },
+    {
+      "path": "src/RotaryStreamingPath.cpp",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50"
+    },
+    {
+      "path": "docs/ROTARY_RENDERER_CONTRACT.md",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "52eaaeda293376abd47af3f788e3bd5967452b176cba021f23ab7bc3b1e141a9"
+    },
+    {
+      "path": "docs/ROTARY_WAVEFORM_ACCEPTANCE.md",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "fa4288d586a2a40d803740408177f9c0a085bd4deb9ae0bdfc832e6d58b0c1aa"
+    },
+    {
+      "path": "tools/rotary_render.cpp",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "3fd1a4e2a79cea4a0964394193aa4e993df5d91ff257415e380523206d514a97"
+    },
+    {
+      "path": "tools/compile_rotary_profile.py",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "7f17c3a516f678834dcabdb3ef3637d4ee90db03476b4815388d3f78fe733620"
+    },
+    {
+      "path": "tests/probes/rotary_waveform_probe.cpp",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "922c92ab81d2fcc8a5a0948c7c85ee496cf6816bdc57b20dddba7474899ef577"
+    },
+    {
+      "path": "tests/reference/rotary_waveform_reference.h",
+      "saved_incoming_matches_git_blob": true,
+      "sha256": "3c24792f80f86f903926622f4bf016984caf44d727ad3913e4570738ac9c8f21"
+    }
+  ],
+  "worker": "/root/w10_a60_final_handoff_acceptance"
+}

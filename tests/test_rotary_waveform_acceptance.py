@@ -236,6 +236,29 @@ def assert_close(actual, expected, tolerance, name):
             f"{name}: inconsistent recorded values")
 
 
+def assert_recorded_difference(actual, reference, recorded, precision, tolerance, name):
+    """Replay a binary64 subtraction from its round-trip decimal tokens.
+
+    At 53 bits, subtracting the *printed decimals* can lose the cancellation
+    retained by the native operation.  max_digits10=17 recovers each binary64
+    operand exactly, so require the same result with no numerical allowance.
+    Canonical numeric tokens prevent shortened/fabricated decimal precision
+    from adding any uncertainty.  Wider references keep their existing checks.
+    """
+    values = [number(value, name) for value in (actual, reference, recorded)]
+    if precision["digits"] == 53:
+        require(sys.float_info.radix == 2 and sys.float_info.mant_dig == 53
+                and sys.float_info.rounds == 1, "Python binary64 round-to-nearest replay required")
+        replay = [float(value) for value in values]
+        for value, binary in zip(values, replay):
+            require(value == Decimal(format(binary, ".17g")),
+                    f"{name}: noncanonical binary64 max_digits10 token")
+        require(abs(replay[0] - replay[1]) == replay[2],
+                f"{name}: inconsistent recorded binary64 difference")
+    else:
+        assert_close(abs(values[0] - values[1]), values[2], tolerance, name)
+
+
 def successful(value, name, *, completed=False):
     object_value(value, name)
     require(value.get("status") == "pass", f"{name}: status is not pass")
@@ -369,6 +392,12 @@ def validate_precision(environment):
         require(type(precision["is_iec559"]) is bool, name + ": IEC559 fact missing")
     require(environment["double"]["digits"] == 53 and environment["double"]["sizeof"] == 8,
             "binary64 double required")
+    for name in ("double", "long_double"):
+        precision = environment[name]
+        if precision["digits"] == 53:
+            require(precision["digits10"] == 15 and precision["max_digits10"] == 17
+                    and precision["is_iec559"] is True,
+                    name + ": inconsistent binary64 precision metadata")
     require(environment["long_double"]["digits"] >= 53, "reference precision below double")
     require(environment["wider_than_double"] is (environment["long_double"]["digits"] > 53),
             "false extra-precision claim")
@@ -440,14 +469,14 @@ def _validate_report(report, mode):
     rates = array_value(report["rates"], "rates", 4)
     require([row["rate"] for row in rates] == list(RATES), "missing, repeated or reordered rate")
     for row in rates:
-        validate_rate(row, mode)
+        validate_rate(row, mode, report["precision_environment"]["long_double"])
     return {"status": "pass", "mode": mode, "fixture_id": FIXTURE_IDS[mode],
             "totals": totals,
             "maximum_normalized_error": max(number(channel["maximum_normalized_error"], "error")
                                               for row in rates for channel in row["channels"])}
 
 
-def validate_rate(row, mode):
+def validate_rate(row, mode, precision):
     rate, frames = row["rate"], frames_for(mode, row["rate"])
     name = f"rate[{rate}]"
     successful(row, name, completed=True)
@@ -480,8 +509,8 @@ def validate_rate(row, mode):
         assert_close(normalized_rms, rms / normalization, "1e-19", name + ".normalized_rms")
         worst = integer(channel["worst_frame"], name + ".worst_frame")
         require(worst < frames, name + ": worst frame out of range")
-        difference = abs(number(channel["worst_actual"], name + ".worst_actual") - number(channel["worst_reference"], name + ".worst_reference"))
-        assert_close(difference, maximum, "1e-18", name + ".worst_error")
+        assert_recorded_difference(channel["worst_actual"], channel["worst_reference"],
+                                   maximum, precision, "1e-18", name + ".worst_error")
         no_frame_failures(channel["failures"], name + ".waveform_failures")
     solver = row["reference_solver"]
     integer(solver["path_solutions"], name + ".reference_path_solutions", exact=4 * frames)
@@ -546,10 +575,10 @@ def validate_rate(row, mode):
             limit = Decimal("5e-12") + Decimal(slope) * abs(number(final[reference_key], name + ".final.reference"))
             assert_close(final[f"{metric}_limit_{suffix}"], limit, "1e-24", name + ".final.limit")
             number(final[f"{metric}_error_{suffix}"], name + ".final.error", minimum=0, maximum=limit)
-    validate_selected_paths(row, mode)
+    validate_selected_paths(row, mode, precision)
 
 
-def validate_selected_paths(row, mode):
+def validate_selected_paths(row, mode, precision):
     rate, name = row["rate"], f"rate[{row['rate']}]"
     traces = array_value(row["selected_traces"], name + ".selected_traces", 4 * len(selected_frames(rate, mode)))
     expected = {(frame, rotor, channel) for frame in selected_frames(rate, mode) for rotor in range(2) for channel in range(2)}
@@ -582,7 +611,8 @@ def validate_selected_paths(row, mode):
         require(pair["passed"] is True, name + ": convergence comparison failed")
         require(pair["reference_path_index"] == 2 * pair["channel"] + pair["rotor"], name + ": convergence path order wrong")
         difference = number(pair["difference_s"], name + ".convergence.difference", minimum=0, maximum="2e-14")
-        assert_close(difference, abs(number(pair["contractive_delay_s"], name + ".contractive_delay") - number(pair["bisection_delay_s"], name + ".bisection_delay")), "1e-22", name + ".convergence.recorded_difference")
+        assert_recorded_difference(pair["contractive_delay_s"], pair["bisection_delay_s"],
+                                   difference, precision, "1e-22", name + ".convergence.recorded_difference")
         for prefix, limit in (("contractive", "5e-15"), ("bisection", "1e-16")):
             require(abs(number(pair[prefix + "_residual_s"], name + ".residual")) <= Decimal(limit), name + ": convergence residual target failed")
             require(1 <= integer(pair[prefix + "_evaluations"], name + ".evaluations") <= 122, name + ": convergence evaluations outside cap")
@@ -1236,6 +1266,99 @@ def protocol_fixture(mode):
 class ReportAdmissionTests(unittest.TestCase):
     def setUp(self):
         self.fixture = protocol_fixture("smoke")
+
+    def binary64_fixture(self):
+        """Schema-only fixture serialized at the actual 53-bit report precision."""
+        report = copy.deepcopy(self.fixture)
+        environment = report["precision_environment"]
+        environment["long_double"] = copy.deepcopy(environment["double"])
+        environment["wider_than_double"] = False
+        for row in report["rates"]:
+            for pair in row["reference_convergence"]["pairs"]:
+                for key in ("contractive_delay_s", "bisection_delay_s"):
+                    pair[key] = Decimal(format(float(pair[key]), ".17g"))
+        return report
+
+    def test_actual_hosted_binary64_cancellation(self):
+        # Exact tokens shared by the macOS arm64 and Windows MSVC artifacts
+        # 14136740173 / 14135784437, run 43651384583 at published 487064d.
+        report = self.binary64_fixture()
+        channel = report["rates"][0]["channels"][0]
+        channel.update(parse_probe_json(b'''{
+            "normalization_G":1.3017406088759063,
+            "maximum_absolute_error":3.3640093488607192e-10,
+            "rms_absolute_error":6.9060749589231244e-11,
+            "maximum_normalized_error":2.5842393837322525e-10,
+            "rms_normalized_error":5.3052619791025582e-11,
+            "worst_actual":-0.1490543302277674,
+            "worst_reference":-0.14905433056416834}'''))
+        pair = report["rates"][0]["reference_convergence"]["pairs"][0]
+        pair.update(parse_probe_json(b'''{
+            "contractive_delay_s":0.0046545491618496812,
+            "bisection_delay_s":0.0046545491618498035,
+            "difference_s":1.222980050563649e-16}'''))
+        # Preserve the original failures; the repair does not widen either
+        # decimal consistency floor or any waveform/solver acceptance budget.
+        for actual, reference, difference, tolerance in (
+            (channel["worst_actual"], channel["worst_reference"], channel["maximum_absolute_error"], "1e-18"),
+            (pair["contractive_delay_s"], pair["bisection_delay_s"], pair["difference_s"], "1e-22"),
+        ):
+            with self.subTest(tolerance=tolerance), self.assertRaises(AdmissionError):
+                assert_close(abs(actual - reference), difference, tolerance, "original decimal subtraction")
+        self.assertEqual(validate_report(report, "smoke")["status"], "pass")
+
+    def test_binary64_difference_rejects_changed_and_coarse_tokens(self):
+        precision = self.fixture["precision_environment"]["double"]
+        actual, reference, recorded = map(Decimal, (
+            "-0.1490543302277674", "-0.14905433056416834", "3.3640093488607192e-10"))
+        assert_recorded_difference(actual, reference, recorded, precision, "1e-18", "actual hosted maximum")
+        # A single result ULP is far below the old 1e-18 consistency floor,
+        # but must now fail.  Every mutated token is still full precision.
+        for index in range(3):
+            values = [actual, reference, recorded]
+            values[index] = Decimal(format(math.nextafter(float(values[index]), math.inf), ".17g"))
+            with self.subTest(changed_operand=index), self.assertRaises(AdmissionError):
+                assert_recorded_difference(*values, precision, "1e-18", "changed binary64 subtraction")
+        for coarse in (Decimal("-0.149054330227767"), Decimal("-0.1490543")):
+            with self.subTest(coarse=coarse), self.assertRaises(AdmissionError):
+                assert_recorded_difference(coarse, reference, recorded, precision, "1e-18", "coarse token")
+        # Legal short tokens are exact values, not permission for a wider bin.
+        assert_recorded_difference(Decimal("0.5"), Decimal("0.25"), Decimal("0.25"),
+                                   precision, "1e-18", "exact short tokens")
+        for invalid in (Decimal("NaN"), Decimal("Infinity"), float("nan")):
+            with self.subTest(nonfinite=invalid), self.assertRaises(AdmissionError):
+                assert_recorded_difference(invalid, reference, recorded, precision, "1e-18", "nonfinite")
+
+    def test_binary64_convergence_rejects_one_ulp_change(self):
+        report = self.binary64_fixture()
+        pair = report["rates"][0]["reference_convergence"]["pairs"][0]
+        pair.update(parse_probe_json(b'''{
+            "contractive_delay_s":0.0046545491618496812,
+            "bisection_delay_s":0.0046545491618498035,
+            "difference_s":1.222980050563649e-16}'''))
+        self.assertEqual(validate_report(report, "smoke")["status"], "pass")
+        pair["difference_s"] = Decimal(format(math.nextafter(float(pair["difference_s"]), math.inf), ".17g"))
+        with self.assertRaisesRegex(AdmissionError, "inconsistent recorded binary64 difference"):
+            validate_report(report, "smoke")
+
+    def test_binary64_precision_metadata_cannot_inflate_allowance(self):
+        for name in ("double", "long_double"):
+            for key, value in (("radix", 10), ("digits10", 14), ("max_digits10", 6),
+                               ("max_digits10", 21), ("is_iec559", False)):
+                report = self.binary64_fixture()
+                report["precision_environment"][name][key] = value
+                with self.subTest(type=name, field=key, value=value), self.assertRaises(AdmissionError):
+                    validate_report(report, "smoke")
+
+    def test_wider_precision_keeps_original_difference_floors(self):
+        precision = self.fixture["precision_environment"]["long_double"]
+        for tolerance in ("1e-18", "1e-22"):
+            floor = Decimal(tolerance)
+            assert_recorded_difference(Decimal("0.5"), Decimal("0.5"), floor,
+                                       precision, tolerance, "unchanged wider precision floor")
+            with self.subTest(tolerance=tolerance), self.assertRaises(AdmissionError):
+                assert_recorded_difference(Decimal("0.5"), Decimal("0.5"), floor * Decimal("1.01"),
+                                           precision, tolerance, "beyond wider precision floor")
 
     def test_complete_schema_fixture_for_each_mode(self):
         for mode in ("smoke", "full"):

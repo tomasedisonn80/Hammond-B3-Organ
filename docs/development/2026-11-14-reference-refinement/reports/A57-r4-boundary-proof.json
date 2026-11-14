@@ -1,0 +1,188 @@
+{
+  "worker": "/root/w10_a57_r4_plan_independent_review",
+  "recorded_utc": "2026-11-14T22:48:01.053038+00:00",
+  "scratch_working_directory": "/workspace/scratch/1bb6ee17ad7e",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "results": {
+    "scope": "Exact rational index algebra, bounded integer bookkeeping and Python binary64 arithmetic only; no native execution, DSP simulation, waveform or runtime observation.",
+    "maximum_capacity_rows": [
+      {
+        "rate_hz": 44100,
+        "maximum_D": 2940,
+        "capacity": 2946,
+        "flush_frames": 2944,
+        "epoch_frames": 3810240000,
+        "mathematical_widening_frames": 1.6711965145077556e-11,
+        "python_binary64_maximum_upper_frames": 2940.0000000000164,
+        "python_binary64_maximum_upper_hex": "0x1.6f80000000024p+11",
+        "python_binary64_excess_over_D": 1.6370904631912708e-11
+      },
+      {
+        "rate_hz": 48000,
+        "maximum_D": 3200,
+        "capacity": 3206,
+        "flush_frames": 3204,
+        "epoch_frames": 4147200000,
+        "mathematical_widening_frames": 1.8189894035458565e-11,
+        "python_binary64_maximum_upper_frames": 3200.0000000000177,
+        "python_binary64_maximum_upper_hex": "0x1.9000000000027p+11",
+        "python_binary64_excess_over_D": 1.77351466845721e-11
+      },
+      {
+        "rate_hz": 96000,
+        "maximum_D": 6400,
+        "capacity": 6406,
+        "flush_frames": 6404,
+        "epoch_frames": 8294400000,
+        "mathematical_widening_frames": 3.637978807091713e-11,
+        "python_binary64_maximum_upper_frames": 6400.0000000000355,
+        "python_binary64_maximum_upper_hex": "0x1.9000000000027p+12",
+        "python_binary64_excess_over_D": 3.54702933691442e-11
+      },
+      {
+        "rate_hz": 192000,
+        "maximum_D": 12800,
+        "capacity": 12806,
+        "flush_frames": 12804,
+        "epoch_frames": 16588800000,
+        "mathematical_widening_frames": 7.275957614183426e-11,
+        "python_binary64_maximum_upper_frames": 12800.000000000071,
+        "python_binary64_maximum_upper_hex": "0x1.9000000000027p+13",
+        "python_binary64_excess_over_D": 7.09405867382884e-11
+      }
+    ],
+    "half_ulp_rounding_terms_frames": [
+      1.1368683772161603e-12,
+      1.3322676295501878e-12,
+      9.094947017729282e-13,
+      7.761021455128988e-13,
+      9.094947017729282e-13
+    ],
+    "half_ulp_rounding_sum_frames": 5.0642275558251035e-12,
+    "conservative_three_ulp_allowance_frames": 5.4569682106375694e-12,
+    "combined_upper_excess_bound_frames": 7.821654435247183e-11,
+    "support_cases_checked": 75,
+    "support_case_scope": "Five D/rate pairs, three frame indices and five abstract delays inside 0<d<D+1; not an exhaustive numerical qualification.",
+    "minimum_capacity": 9,
+    "maximum_block_smallest_ring": {
+      "frames": 4096,
+      "capacity": 9,
+      "whole_wraps": 455,
+      "extra_writes": 1,
+      "maximum_visits_one_slot": 456,
+      "journal_entries_two_rotors": 8192
+    },
+    "reverse_replay_example": {
+      "old_values_write_order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "reverse_final": "A",
+      "forward_final": "C",
+      "scope": "Symbolic overwritten-slot bookkeeping only."
+    },
+    "flush_boundary": {
+      "last_input_index": 100000,
+      "flush_frames": 12804,
+      "last_flush_oldest_tap": 100000,
+      "last_flush_oldest_weight_nonzero_negative": true,
+      "next_frame_oldest_tap": 100001,
+      "scope": "Abstract support counterexample to requiring the final flush output to be zero; no native waveform was calculated."
+    },
+    "maximum_dense_both_rotor_frames_per_call": 512,
+    "ordered_rate_pairs": [
+      [
+        44100,
+        44100
+      ],
+      [
+        44100,
+        48000
+      ],
+      [
+        44100,
+        96000
+      ],
+      [
+        44100,
+        192000
+      ],
+      [
+        48000,
+        44100
+      ],
+      [
+        48000,
+        48000
+      ],
+      [
+        48000,
+        96000
+      ],
+      [
+        48000,
+        192000
+      ],
+      [
+        96000,
+        44100
+      ],
+      [
+        96000,
+        48000
+      ],
+      [
+        96000,
+        96000
+      ],
+      [
+        96000,
+        192000
+      ],
+      [
+        192000,
+        44100
+      ],
+      [
+        192000,
+        48000
+      ],
+      [
+        192000,
+        96000
+      ],
+      [
+        192000,
+        192000
+      ]
+    ],
+    "same_rate_pairs": [
+      [
+        44100,
+        44100
+      ],
+      [
+        48000,
+        48000
+      ],
+      [
+        96000,
+        96000
+      ],
+      [
+        192000,
+        192000
+      ]
+    ]
+  },
+  "reproducer_code": "from fractions import Fraction\nimport json\nimport math\n\nrates = (44100, 48000, 96000, 192000)\nmargin_m = Fraction(1, 2**43)\n# Round-to-nearest half-ulp bounds at the admitted largest intermediates:\n# widened-distance addition; /c then *Fs; and Fs*R then /c for capacity.\nrounding_terms = (\n    Fraction(1, 2**49) * 192000 / 300,\n    Fraction(1, 2**57) * 192000,\n    Fraction(1, 2**40),\n    Fraction(1, 2**32) / 300,\n    Fraction(1, 2**40),\n)\nrounding_allowance = Fraction(3, 2**39)\nassert sum(rounding_terms) < rounding_allowance\ncombined_bound = margin_m * 192000 / 300 + rounding_allowance\nassert combined_bound < Fraction(1, 10**10)\nrows = []\nfor rate in rates:\n    D = math.ceil(Fraction(rate * 20, 300))\n    actual_margin = 32.0 * math.ulp(20.0)\n    upper = ((20.0 + actual_margin) / 300.0) * rate\n    assert upper < D + 1 and upper < 13000\n    rows.append({\n        'rate_hz': rate, 'maximum_D': D, 'capacity': D + 6,\n        'flush_frames': D + 4, 'epoch_frames': 86400 * rate,\n        'mathematical_widening_frames': float(margin_m * rate / 300),\n        'python_binary64_maximum_upper_frames': upper,\n        'python_binary64_maximum_upper_hex': upper.hex(),\n        'python_binary64_excess_over_D': upper - D,\n    })\nassert max(row['capacity'] for row in rows) == 12806\nminimum_D = math.ceil(Fraction(44100, 19000))\nassert minimum_D == 3\n# Probe the conservative theorem interval, not a native/profile trajectory.\nepsilon = Fraction(1, 2**48)\ncases = [(44100, minimum_D)] + [(row['rate_hz'], row['maximum_D']) for row in rows]\nchecked_support_cases = 0\nfor rate, D in cases:\n    for n in (0, D + 4, 86400 * rate - 1):\n        for d in (epsilon, D - epsilon, Fraction(D), D + epsilon, D + 1 - epsilon):\n            assert 0 < d < D + 1\n            emission = n - 2 - d\n            k = emission.numerator // emission.denominator\n            assert n - D - 3 <= k <= n - 3\n            assert k - 1 >= n - D - 4 and k + 2 <= n - 1\n            retained_oldest = max(0, n - D - 5)\n            assert all(tap < 0 or retained_oldest <= tap <= n for tap in range(k - 1, k + 3))\n            checked_support_cases += 1\n# An abstract upper-bracket emission illustrates the final possible support.\nL = 100000\nD = 12800\nF = D + 4\nd = D + epsilon\nlast_emission = L + F - 2 - d\nnext_emission = L + F + 1 - 2 - d\nlast_floor = last_emission.numerator // last_emission.denominator\nnext_floor = next_emission.numerator // next_emission.denominator\nmu = last_emission - last_floor\nouter_weight = -mu * (mu - 1) * (mu - 2) / 6\nassert last_floor - 1 == L and outer_weight < 0\nassert next_floor - 1 == L + 1\nwhole_wraps, extra_writes = divmod(4096, 9)\nassert whole_wraps == 455 and extra_writes == 1\nold_values = ('A', 'B', 'C')\nassert tuple(reversed(old_values))[-1] == 'A'\nrate_pairs = [(old_rate, new_rate) for old_rate in rates for new_rate in rates]\nassert len(rate_pairs) == 16 and sum(a == b for a, b in rate_pairs) == 4\nRESULT = {\n    'scope': 'Exact rational index algebra, bounded integer bookkeeping and Python binary64 arithmetic only; no native execution, DSP simulation, waveform or runtime observation.',\n    'maximum_capacity_rows': rows,\n    'half_ulp_rounding_terms_frames': [float(term) for term in rounding_terms],\n    'half_ulp_rounding_sum_frames': float(sum(rounding_terms)),\n    'conservative_three_ulp_allowance_frames': float(rounding_allowance),\n    'combined_upper_excess_bound_frames': float(combined_bound),\n    'support_cases_checked': checked_support_cases,\n    'support_case_scope': 'Five D/rate pairs, three frame indices and five abstract delays inside 0<d<D+1; not an exhaustive numerical qualification.',\n    'minimum_capacity': minimum_D + 6,\n    'maximum_block_smallest_ring': {'frames': 4096, 'capacity': 9, 'whole_wraps': whole_wraps, 'extra_writes': extra_writes, 'maximum_visits_one_slot': whole_wraps + 1, 'journal_entries_two_rotors': 8192},\n    'reverse_replay_example': {'old_values_write_order': old_values, 'reverse_final': tuple(reversed(old_values))[-1], 'forward_final': old_values[-1], 'scope': 'Symbolic overwritten-slot bookkeeping only.'},\n    'flush_boundary': {'last_input_index': L, 'flush_frames': F, 'last_flush_oldest_tap': last_floor - 1, 'last_flush_oldest_weight_nonzero_negative': outer_weight < 0, 'next_frame_oldest_tap': next_floor - 1, 'scope': 'Abstract support counterexample to requiring the final flush output to be zero; no native waveform was calculated.'},\n    'maximum_dense_both_rotor_frames_per_call': 1024 // 2,\n    'ordered_rate_pairs': rate_pairs,\n    'same_rate_pairs': [pair for pair in rate_pairs if pair[0] == pair[1]],\n}\nif __name__ == '__main__':\n    print(json.dumps(RESULT, indent=2))\n",
+  "reproducer_sha256": "f385729c25ad5540dcb4be8df0acd549fd309d98c33e672c19e367b4df45b4db",
+  "reproduction_command_from_repo": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\np = Path('docs/development/2026-11-14-reference-refinement/reports/A57-r4-boundary-proof.json')\nexec(compile(json.loads(p.read_text())['reproducer_code'], 'A57-replay', 'exec'))\nPY",
+  "limitations": [
+    "No C++ build or native probe.",
+    "No waveform output or acoustic simulation.",
+    "Boundary arithmetic does not execute renderer rollback.",
+    "Rounding proof assumes qualified binary64 round-to-nearest and the recorded expression order."
+  ]
+}

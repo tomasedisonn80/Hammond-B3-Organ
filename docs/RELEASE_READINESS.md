@@ -1,6 +1,76 @@
 # Release readiness and retained assessments
 
-## Current continuation assessment
+**Combined-source continuation:** the [completion and integration record](REFERENCE_REFINEMENT_CLOSURE.md)
+records all 60 accepted agents, the integrated `487064d` R4/material source,
+the fresh v5 native gallery and its separate qualification. Source-specific
+`0881d1f4`/v4 results below remain historical evidence for those exact inputs.
+
+## Current assessment — 2026-11-14
+
+The repository supports a **nominal dry organ** through offline tools, an optional
+native standalone instrument and an optional VST3 adapter. The current interface
+has Play/Rotary/Service workspaces, transient Flat presentation, both full manuals,
+25 pedals, 24 preset keys and copied desired/applied inspection. Its **47 sound
+parameters, `B3CONTROLS4` and readers 1–3** retain their identities. Physical
+calibration, connected organ/cabinet models and complete product release remain
+separate work. See the [complete M0–M9 plan](PLAN.md),
+[parameter contract](PARAMETERS.md) and [current setup handoff](REFERENCE_REFINEMENT_HANDOFF.md).
+
+Use the [reference-refinement checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md)
+and [actual manifest](development/2026-11-14-reference-refinement/assignments.json)
+for that session's actual acceptance and publication state. Final closure needs
+the strict refinement checker and affected integrity checks on the final records;
+[A55's required Linux CI step](development/2026-11-14-reference-refinement/notes/A55-strict-ci-gate.md)
+has its own future published-source execution gate. The concurrent
+[waveform session](development/2026-11-14-waveform-continuation/README.md) owns
+actual R4 implementation under its separate
+[checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md).
+Neither session supplies workers or completion credit to the other. The dated
+assessments below retain their original claims and next steps as history.
+
+### Exact qualification boundaries
+
+| Evidence | Observed result and source | Limit retained |
+| --- | --- | --- |
+| Published header hosted matrix | At `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree `f8144b771cda1264a8788f8297f5bfec999f4a08`, [A56's primary-log audit](reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md) records all **12 successful jobs**: three core Release jobs and core sanitizer **138/138** each; four native Release configurations **41/41** each; native sanitizer **16/16**; VST3 Linux **8/8**, Windows/macOS **7/7**, with each SDK validator **47/47**. | These results qualify that published source and its recorded settings. The later documentation/gallery/report closure and A55 strict CI step need their own final integrity, completion and hosted observations; they do not inherit this run's exact runtime result. |
+| Sanitizer execution | [A56's retained report](development/2026-11-14-reference-refinement/reports/A56-published-header-hosted-audit.json) identifies the published header's ASan/UBSan settings and required R2/R3/allocation results; all **16 selected native sanitizer gates** retain leak checking. | The core `test_standalone_midi_backend_quarantine` alone retains its existing individual LSan override. [A27's local full-run LSan thread-attachment EPERM failure](development/2026-11-14-reference-refinement/reports/A27-r3-summary.json) remains failed/environment-blocked. [A44's earlier primary audit](development/2026-11-14-reference-refinement/reports/A44-hosted-sanitizer-audit.json) retains its separate 26ff scope. |
+| Measured header and material acceptance | The published header's `InstrumentView.cpp` SHA-256 is `f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a`. [A40](development/2026-11-14-reference-refinement/notes/A40-reference-header-refinement.md) passes six local native raster gates; [A41](development/2026-11-14-reference-refinement/reports/A41-final-acceptance.json) passes **1,897 independent checks**. A56 records **1,071 material checks, zero failures**, in each of the five native configurations. | The 1,071 assertions retain 901 legacy plus 170 header checks. A41's initial timing-threshold trigger and single nonreproducing reverse-order repeat remain distinct finite painter observations, with no device deadline conclusion. |
+| Accepted v4 native gallery | [Eight actual views](../examples/demos/standalone-interface-preview-v4/README.md) use the same published `0881d1f4` product source and executable SHA-256 `01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f`. [A50's independent admission](reviews/REFERENCE_REFINEMENT_FINAL_GALLERY.md) passes **611 checks**, verifying all 41 retained files, pixels, named source/build inputs and typed endpoint state. | These are acknowledged endpoints using SDL dummy audio/video, software rendering and equal logical/drawable dimensions. They supply no new real-display or OS-input journey. **Literal whole-interface 1:1 equality remains unmet**; v1/v2/v3 remain unchanged historical evidence. |
+| Full local coherent execution | [A49](development/2026-11-14-reference-refinement/notes/A49-coherent-final-build.md) records one all-target GCC Release build in **11.381 seconds** and one full **157/157** CTest run in **146.97 seconds**. Its 368 named product/test/build inputs match `0881d1f4`; all 2,625 repository files, including 912 Markdown files, stayed frozen through the run. | Standalone was ON; MIDI, VST3 and sanitizers were OFF. This binary differs from the MIDI-enabled v4 capture binary. The freeze ended at 22:23:12 UTC before later documentation/records were added. Root must verify those affected final inputs; no second full run or clean-worktree claim is implied. |
+| Earlier hosted matrix | At `26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8`, tree `530d5fcf777003f470f64558de9e5631d31a21a4`, all **12 jobs succeed**: three core Release jobs and core sanitizer **137/137** each; four native Release configurations **41/41** each; native sanitizer **16/16**; VST3 Linux **8/8**, Windows/macOS **7/7**, with each SDK validator **47/47**. [Earlier primary matrix review](reviews/REFERENCE_REFINEMENT_HOSTED.md). | This documentation-only child of `f9c11a4` predates the header/material change. The original `2e161dc` Windows **135/136** allocation-fixture crash and incomplete/cancelled `f9c11a4` matrix retain their own outcomes. |
+| Earlier gallery and local baselines | [A32's accepted v3 gallery](development/2026-11-14-reference-refinement/reports/A32-gallery-independent.json) qualifies `2e161dc`. The refinement [coherent result](development/2026-11-14-reference-refinement/reports/coherent-result.json) retains **154/155**, followed by the separately repaired capture-install **1/1**. The waveform session's [independent baseline](development/2026-11-14-waveform-continuation/reports/baseline.json) records **155/155** at its named starting product inputs. | These are distinct executions. Neither baseline qualifies new R4 waveform implementation or a later source change; the v3 images predate the measured header. |
+
+### Practical readiness and next evidence
+
+| Surface | Available engineering result | Remaining qualification / next action |
+| --- | --- | --- |
+| Native operation and setup | SDL2 2.32.10 instrument with keyboard/pointer input, retained controls, explicit Save/Load, device lifecycle and replay. [Fresh setup](REFERENCE_REFINEMENT_HANDOFF.md), [application guide](STANDALONE_APP.md). | Use the exact configuration's capability record. Physical audio/MIDI and supported-system operation require their own observed runs. |
+| Standalone installation | `Standalone` stages **15 files with MIDI OFF / 19 with MIDI ON**; executable, guides, notices and provenance stay together. [Exact inventory](STANDALONE_INSTALL.md). [A56's primary excerpts](development/2026-11-14-reference-refinement/reports/A56-primary-log-excerpts.txt) retain the Windows CMake path-escape warning alongside the successful 19-file installation/relocation step. | Reconfigure after metadata changes before staging. The observed warning was nonfatal; the result is not warning-free. Platform runtimes and enabled MIDI services remain external; local copying does not establish clean-machine installation. |
+| Offline and capture installation | `OfflineTools` has **23 files**; `CaptureTools` has **57** and uses Python 3.10+ standard library. [Offline guide](OFFLINE_INSTALL.md), [capture guide](CAPTURE_TOOLS_INSTALL.md). | Pass the moved compiled profile explicitly to offline tools; retain all capture modules. CaptureTools has its own explicit component and refuses an existing package leaf. Neither component installs a public rotary C++ SDK. |
+| Actual relocation | [A35](development/2026-11-14-reference-refinement/reports/A35-install-relocation.json) co-installs **95 disjoint files** at `2e161dc`, moves them through Unicode/space paths and records **16 expected exit outcomes**, including the deliberate failed study and missing-resource refusals. | This is MIDI-OFF, same-machine evidence with a dummy native smoke. Its exact payload predates [A37's guide corrections](development/2026-11-14-reference-refinement/notes/A37-setup-handoff.md); preserve the original bytes and result. |
+| Optional physical MIDI | Prepared RtMidi 6.0.0 builds explicitly select ALSA, WinMM or CoreMIDI; MIDI-OFF remains supported. Synthetic input and hosted ON/OFF checks exercise software ownership/lifecycle. [Mapping and setup](MIDI_UI_RUNBOOK.md), [dependency preparation](RTMIDI_BUILD.md). | Compiled capability does not identify an available service or controller. Qualify exact device selection, disconnect/reconnect and musical ownership on actual hardware. |
+| Optional VST3 | External pinned SDK 3.8.1 build 84; implemented headless instrument, 47 controls and generic host UI. `NativeVST3` explicitly stages the complete built bundle. [Build](VST3_BUILD.md), [staging](VST3_LOCAL_INSTALL.md). | SDK/native harness and validator results above do not supply actual DAW projects. Retain host/OS/version, routing, automation, state migration, save/reopen and lifecycle results; a custom plugin editor is separate work. |
+| Committed font and decorative assets | The unchanged DejaVu 2.37 inputs, [complete font notice](../assets/standalone/fonts/LICENSE-DejaVu.txt), generated [glyph data](../apps/standalone/FontData.h) and [font manifest](../assets/standalone/fonts/atlas-manifest.json) retain their identities. The [three decorative crops](../assets/standalone/reference/manifest.json) retain exact atlas/JPEG ancestry. [CMake](../apps/standalone/CMakeLists.txt) verifies/embeds profile and reference resources; normal builds and runtime do not need font-authoring Pillow/FreeType. [Font boundary](STANDALONE_FONTS.md). | The v4 gallery records application output using those existing assets; it creates no new artwork or rights grant. The inventory's existing atlas/embedded-art publication decision remains open, separately from source identity and reproducibility. |
+| Numerical M7 versus audible cabinet | Native [R2 motion](ROTARY_MOTION.md) and [R3 historical propagation](ROTARY_PROPAGATION.md) have independent nominal acceptance. R4 waveform history/rendering belongs to the concurrent waveform session. | R4 discrete parity, R5 audible reconstruction policy, R6 runtime/Engine integration and measured cabinet fidelity remain separate. The Engine remains dry; cabinet artwork and numerical roots do not connect cabinet audio. |
+| Retained real-window interaction | [A51's independent old-executable review](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md) passes **33 checks** and finds **159/161** retained source paths unchanged at `0881d1f4`. It supports keyboard-held pedal resize, persistent pointer capture with ordinary inside/outside target changes, explicit release and joined cleanup. | This is source-applicability evidence, with no new v4 OS run. Painted pre-held keyboard prefixes, pointer-held pedal resize, focus-loss/fresh-press journeys and a numeric exit receipt remain absent. The original unassigned discarded command remains recorded; root's review supplies the ordinary Alt+F4 observation. |
+| Display and accessibility | Finite geometry/raster, keyboard/focus, Flat mode and scale checks are retained in the native evidence above. | Actual display/DPI legibility and pointer correspondence need identified displays and scaling changes. Native semantic accessibility/assistive-technology acceptance remains open. [Product exits](PLAN.md). |
+| Audio devices, hosts and deadlines | Finite allocation, lifecycle, state and software-callback checks exist for their named workloads. | Retain real audio/MIDI device and DAW journeys, hotplug, underruns, latency and callback deadlines on selected systems. Software painter timings and dummy audio supply no physical deadline qualification. [Host contract](HOST_INTEGRATION.md), [native boundaries](STANDALONE_MODEL.md). |
+| Physical M0–M8 fidelity | Documentary routing, nominal source/console behavior, scanner numerical modules and synthetic capture/replay tools exist. [Plan](PLAN.md), [scanner handoff](SCANNER_HANDOFF.md), [calibration handoff](CALIBRATION_HANDOFF.md). | Resolve scanner G5 same-hertz failure before integration; establish revision-specific AO-28 and separate Leslie 122/147 graphs, specimen captures and held-out physical validation. Numerical and synthetic engineering acceptance cannot close those acquisition gates. |
+| Distribution, notices and rights | Development components, dependency locks and source notices are retained. [Inventory](DEPENDENCIES_AND_RIGHTS.md), [notices](../THIRD_PARTY_NOTICES.md), [source-rights record](research/RIGHTS_AND_SOURCES.md). | Record selected runtime targets/payloads, clean-target install/update/uninstall and signing/notarization. Existing project-license, atlas/embedded-art, recording/asset and Windows SDK-logo branding decisions remain open. OfflineTools' local layout still omits notices; any distribution package needs its applicable recorded notice payload. |
+
+The closure candidate adds documentation, gallery and report evidence plus A55's
+strict CI step. Its final hosted run is future work and cannot inherit `0881d1f4`'s
+exact execution result. Root owns the final accepted sixty-record check, affected
+integrity gate and verified publication; the live checkpoint records each actual
+outcome. No release version, signed-distribution approval or physical-fidelity
+conclusion is created by this assessment. Product follow-up is concrete in each
+row, and the separate waveform owner retains R4 implementation.
+
+## Historical standalone/scanner assessment — retained 2026-11-14, through `27209a7f`
+
+The following text is preserved from the earlier continuation assessment.
+Its nine-file package, named sources, test counts and then-current navigation
+describe that historical checkpoint, not the current table above.
 
 The repository now includes an optional native standalone instrument window,
 keyboard/pointer playing, retained controls, audio-device lifecycle management,
@@ -42,7 +112,7 @@ asset and branding rights retain their separate recorded review requirements.
 No release version, production-readiness or physical-fidelity claim is created
 by these engineering checkpoints.
 
-## Preserved pedal session assessment at `0ad7240`
+## Historical pedal session assessment — 2026-11-13, at `0ad7240`
 
 The following assessment and tables are retained as historical evidence for
 that named source. Its statements about what existed or was next apply to the

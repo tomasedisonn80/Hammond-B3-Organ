@@ -19,11 +19,17 @@ storage-lifetime, query-boundary, rejection and reproduction handoff.
 | R2 | A16/A24 pass seven Python methods with 3,780 native requests and 327,720 separate bit-identical owner-state comparisons. All 66 original underflow failures were independently replayed successfully; original reports remain retained. |
 | R3 | A19 passes six independent methods including 1,440 geometry fixtures and 4,466 roots; maximum native residual `9.980e-15 s`, maximum 41 of 48 evaluations. A28 audits admission and adds a passing late-rejection regression. |
 | Primitive allocation/lifetime | A27 observes zero C++ allocations/deallocations in the named prepared/query/copy/rejection intervals. This is not a callback or device-deadline qualification. |
-| Sanitizers | The local instrumented workload completes, then LSan fails with EPERM attaching to its thread. The full gate failed/environment-blocked; hosted leak-enabled qualification remains pending. |
-| R4 → R5 → R6 | Next implement bounded fractional-delay waveform histories and a transactional two-input renderer under the frozen R4 contract; then qualify audible policy and actual runtime/integration separately. |
+| Sanitizers | A44 confirms `26ff2fb` core **137/137** and native **16/16**. Required R2/R3/allocation/oracle gates and all sixteen native gates pass with leak checking enabled; the core suite retains its separate pre-existing MIDI quarantine leak exception. A27's original local full LSan/EPERM failure remains unchanged. |
+| R4 → R5 → R6 | The concurrent waveform continuation owns bounded fractional-delay histories and the transactional two-input R4 renderer; R4 acceptance, audible policy and runtime/integration remain separate gates. |
 
-The reports hash the tested numerical sources added on top of observed HEAD
-`e4968b2`; that commit alone is not the tested worktree identity. The current
+The original reports hash numerical sources added on top of observed HEAD
+`e4968b2`; that commit alone is not their tested worktree identity. The later
+[A44 hosted audit](development/2026-11-14-reference-refinement/notes/A44-hosted-sanitizer-audit.md)
+qualifies their unchanged numerical inputs and A38's repaired allocation fixture
+at `26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8`, tree
+`530d5fcf777003f470f64558de9e5631d31a21a4`, a documentation-only child of
+`f9c11a4`. The unpublished A40/A41 header refinement is outside those jobs.
+The current
 [checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) owns
 publication status. The original
 [2026-11-13 session](development/2026-11-13-rotary/README.md) remains historical.

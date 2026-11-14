@@ -1,0 +1,771 @@
+{
+  "agent": "/root/w08_a46_final_native_gallery",
+  "all_capture_payload_hashes_recomputed": 39,
+  "assignment": "A46",
+  "binary_after_build": {
+    "bytes": 3860368,
+    "sha256": "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f"
+  },
+  "binary_after_capture": {
+    "bytes": 3860368,
+    "sha256": "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f"
+  },
+  "binary_before_build": {
+    "bytes": 3860368,
+    "sha256": "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f"
+  },
+  "boundaries": [
+    "Actual native dummy-audio/dummy-video/software-renderer process screenshots.",
+    "Distinct from actual OS-window input, physical audio/MIDI devices, display/DPI, accessibility and deadline qualification.",
+    "Settled acknowledged endpoints; A18 retains the distinct genuine pending-state rendering evidence.",
+    "No literal reference equality, R4 audio integration, measured instrument or physical calibration claim.",
+    "No compiler/dependency-complete, hermetic or clean-rebuild source-to-binary attestation.",
+    "No A46 GUI use, full CTest, commit, push, image generation, compositing or pixel editing."
+  ],
+  "build": {
+    "command": [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "/workspace/scratch/1bb6ee17ad7e/build-desktop",
+      "--parallel",
+      "3",
+      "--target",
+      "hammond_standalone"
+    ],
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "elapsed_seconds": 1.016513632999704,
+    "exit_code": 0,
+    "finished_at_utc": "2026-11-14T22:11:28.025220+00:00",
+    "log": {
+      "bytes": 10122,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A46-build.log",
+      "sha256": "65591a861177b5f6a68b1a25ce8ed4a8001656044ba82132e28fd476a1f1c4e8"
+    },
+    "started_at_utc": "2026-11-14T22:11:27.008717+00:00"
+  },
+  "build_observation": {
+    "all_observed_input_snapshots_equal": true,
+    "automatic_cmake_refresh": true,
+    "compile_or_link_commands_executed": false,
+    "final_build_output": "ninja: no work to do.",
+    "original_warning_retained": "SDL CMake compatibility below 3.10 deprecation warning.",
+    "reason": "Ninja detected the published tests/test_refinement_session.py glob addition.",
+    "separate_configure_request": false
+  },
+  "capture": {
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/tools/capture_standalone_interface.py",
+      "--exe",
+      "/workspace/scratch/1bb6ee17ad7e/build-desktop/apps/standalone/hammond_standalone",
+      "--source-root",
+      "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+      "--build-root",
+      "/workspace/scratch/1bb6ee17ad7e/build-desktop",
+      "--source-qualification",
+      "/workspace/scratch/1bb6ee17ad7e/a46-source-qualification.json",
+      "--expected-exe-sha256",
+      "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f",
+      "--dummy-sdl",
+      "--output",
+      "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/examples/demos/standalone-interface-preview-v4"
+    ],
+    "cwd": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+    "elapsed_seconds": 19.144155263000357,
+    "exit_code": 0,
+    "finished_at_utc": "2026-11-14T22:11:47.253938+00:00",
+    "log": {
+      "bytes": 188,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A46-capture.log",
+      "sha256": "5078739cf6431a0c61c62ea94ff8677e4f28ab6815d500a98b0dae8fc1d04e8b"
+    },
+    "started_at_utc": "2026-11-14T22:11:28.109789+00:00"
+  },
+  "capture_producer": {
+    "bytes": 29923,
+    "sha256": "92ae0be31a6ef21eb696c87d4f9dacd8ea8a6732d6c1033e0d7457ca3a76d16b"
+  },
+  "cases": [
+    {
+      "callbacks": 180,
+      "decoded_sha256": "7558bb24c7ed18c2d40f5e07a83714c5075a46e84219400291336540c327436f",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "held_manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          67
+        ]
+      ],
+      "held_pedal_ids": [
+        3
+      ],
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "live_edit": {
+        "after": 8,
+        "before": 7,
+        "target": "Upper B 16-foot retained drawbar"
+      },
+      "midi_backend": "ALSA",
+      "midi_source": "none",
+      "name": "play-reference-1672x941",
+      "png": {
+        "bytes": 675220,
+        "sha256": "ea5173f8d505da12be1002bfb06fc705578b654cb234ed43fd6476a71909a04b"
+      },
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "rendered_frames": 92160,
+      "runtime_backend": {
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "video_driver": "dummy"
+      },
+      "status": "passed",
+      "ui_events": 66
+    },
+    {
+      "callbacks": 172,
+      "decoded_sha256": "adbcc4f325d6c03d55df87f6273659efbd723db9033c066ef524670a80c3c23c",
+      "dimensions": [
+        1280,
+        900
+      ],
+      "held_manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          67
+        ]
+      ],
+      "held_pedal_ids": [
+        3
+      ],
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "live_edit": {
+        "after": 8,
+        "before": 7,
+        "target": "Upper B 16-foot retained drawbar"
+      },
+      "midi_backend": "ALSA",
+      "midi_source": "none",
+      "name": "play-default-1280x900",
+      "png": {
+        "bytes": 176267,
+        "sha256": "7ff19445d781f30953a618b429056726a095f7cc25fd6b762ef56cb6924191a5"
+      },
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "rendered_frames": 88064,
+      "runtime_backend": {
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "video_driver": "dummy"
+      },
+      "status": "passed",
+      "ui_events": 66
+    },
+    {
+      "callbacks": 168,
+      "decoded_sha256": "a0c83f72520943ad99318e09fba928266c32c0360dfc1483230682c62b47ecfd",
+      "dimensions": [
+        960,
+        700
+      ],
+      "held_manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          67
+        ]
+      ],
+      "held_pedal_ids": [
+        3
+      ],
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "live_edit": {
+        "after": 8,
+        "before": 7,
+        "target": "Upper B 16-foot retained drawbar"
+      },
+      "midi_backend": "ALSA",
+      "midi_source": "none",
+      "name": "play-minimum-960x700",
+      "png": {
+        "bytes": 141425,
+        "sha256": "a5fc7ec4aeec9b33ff62ea94e9399c84d8d00fddb915e1edcf0a4f1c7ab69952"
+      },
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "rendered_frames": 86016,
+      "runtime_backend": {
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "video_driver": "dummy"
+      },
+      "status": "passed",
+      "ui_events": 66
+    },
+    {
+      "callbacks": 171,
+      "decoded_sha256": "45bb21455b05c3f2819ff1fd5d7335530db33ce6936ff5f5252a4d2942929770",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "held_manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          67
+        ]
+      ],
+      "held_pedal_ids": [
+        3
+      ],
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "live_edit": {
+        "after": 8,
+        "before": 7,
+        "target": "Upper B 16-foot retained drawbar"
+      },
+      "midi_backend": "ALSA",
+      "midi_source": "none",
+      "name": "service-reference-1672x941",
+      "png": {
+        "bytes": 412541,
+        "sha256": "478746a4c7ae6ba7f7939c642b2eb5472f0c26fa45f72808b805e5f42d5e7eb3"
+      },
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "rendered_frames": 87552,
+      "runtime_backend": {
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "video_driver": "dummy"
+      },
+      "status": "passed",
+      "ui_events": 66
+    },
+    {
+      "callbacks": 170,
+      "decoded_sha256": "59ada0fc17a607f81234cc7b386e31d0d8f4d794ad6f3c148622de7706f43331",
+      "dimensions": [
+        960,
+        700
+      ],
+      "held_manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          67
+        ]
+      ],
+      "held_pedal_ids": [
+        3
+      ],
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "live_edit": {
+        "after": 8,
+        "before": 7,
+        "target": "Upper B 16-foot retained drawbar"
+      },
+      "midi_backend": "ALSA",
+      "midi_source": "none",
+      "name": "service-minimum-960x700",
+      "png": {
+        "bytes": 175234,
+        "sha256": "750e24ae09e6aa5c10bffe539a53bc989b05569254d15aec86904bb4c2a9c55d"
+      },
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "rendered_frames": 87040,
+      "runtime_backend": {
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "video_driver": "dummy"
+      },
+      "status": "passed",
+      "ui_events": 66
+    },
+    {
+      "callbacks": 172,
+      "decoded_sha256": "51d19f1c7c034c64dd5a306adda224dc0a25ea51b4bcef5c9fa6feadfeb9afb8",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "held_manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          67
+        ]
+      ],
+      "held_pedal_ids": [
+        3
+      ],
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "live_edit": {
+        "after": 8,
+        "before": 7,
+        "target": "Upper B 16-foot retained drawbar"
+      },
+      "midi_backend": "ALSA",
+      "midi_source": "none",
+      "name": "rotary-reference-1672x941",
+      "png": {
+        "bytes": 774578,
+        "sha256": "456ac6207862fcc826a2dda4f2f7b5ebabc8dd3133a8168512baadc00571cd5a"
+      },
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "rendered_frames": 88064,
+      "runtime_backend": {
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "video_driver": "dummy"
+      },
+      "status": "passed",
+      "ui_events": 66
+    },
+    {
+      "callbacks": 165,
+      "decoded_sha256": "c62278008f9b339c2c38fae25565931b33c856f805701144c1269f16c6facada",
+      "dimensions": [
+        960,
+        700
+      ],
+      "held_manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          67
+        ]
+      ],
+      "held_pedal_ids": [
+        3
+      ],
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "live_edit": {
+        "after": 8,
+        "before": 7,
+        "target": "Upper B 16-foot retained drawbar"
+      },
+      "midi_backend": "ALSA",
+      "midi_source": "none",
+      "name": "rotary-minimum-960x700",
+      "png": {
+        "bytes": 317564,
+        "sha256": "fdefcb6f28b649f6fe2be8cb8b105922bd89b51bb07ccfa67d6bd3b68a1e0dd2"
+      },
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "rendered_frames": 84480,
+      "runtime_backend": {
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "video_driver": "dummy"
+      },
+      "status": "passed",
+      "ui_events": 66
+    },
+    {
+      "callbacks": 165,
+      "decoded_sha256": "32e91671ad4641130e89bbd91e005294d3ea6d2165b4bf83319cfd53c9592eeb",
+      "dimensions": [
+        960,
+        700
+      ],
+      "held_manual_notes": [
+        [
+          60,
+          64
+        ],
+        [
+          67
+        ]
+      ],
+      "held_pedal_ids": [
+        3
+      ],
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "live_edit": {
+        "after": 8,
+        "before": 7,
+        "target": "Upper B 16-foot retained drawbar"
+      },
+      "midi_backend": "ALSA",
+      "midi_source": "none",
+      "name": "flat-minimum-960x700",
+      "png": {
+        "bytes": 49621,
+        "sha256": "a7dd6b6a5e158d81bd469299a3380fde98a83c6d0c74b0cd7dee44f7ad3c99fd"
+      },
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "rendered_frames": 84480,
+      "runtime_backend": {
+        "renderer": "software",
+        "sdl_version": "2.32.10",
+        "video_driver": "dummy"
+      },
+      "status": "passed",
+      "ui_events": 68
+    }
+  ],
+  "cmake_sources_before_and_after": {
+    "CMakeLists.txt": {
+      "bytes": 18968,
+      "sha256": "a1865e59816ed4a63c9a0d8ed95c9aaea1951960f969fe209a3309cc3f2f99e7"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 22360,
+      "sha256": "3d3bcf0bd6ee595bed01e9d6090fe9e1ac221e1963795dfbaf23e630d4c2fa62"
+    },
+    "cmake/CompileChapelCatalog.cmake": {
+      "bytes": 1139,
+      "sha256": "0af69e3d2d779c86a0b646545a6377b41ce0d5c4fff79f02e890a9d35e7d552e"
+    },
+    "cmake/CompileFixedRegistrations.cmake": {
+      "bytes": 1790,
+      "sha256": "c9dba11f08dac36317a02028bb706d73fc39a91ede3776e9fcdce0d08cea5e1c"
+    },
+    "cmake/InstallCaptureTools.cmake": {
+      "bytes": 11069,
+      "sha256": "b7658c5ac2083e7661dd01d6ebf1cb66ee838a73e71fa2300c6d9b1affd5f015"
+    },
+    "cmake/InstallHammondTools.cmake": {
+      "bytes": 10971,
+      "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355"
+    },
+    "cmake/InstallStandalone.cmake": {
+      "bytes": 16296,
+      "sha256": "079543943e5259a3d3375521015716cd66dd99d5452a21df9af39de8a8382091"
+    },
+    "cmake/StandaloneBenchmark.cmake": {
+      "bytes": 6084,
+      "sha256": "737fdac548210959ccc4d7fbb59bed892237da78076884c6485b86105053d871"
+    },
+    "cmake/VerifyRtMidi.cmake": {
+      "bytes": 4591,
+      "sha256": "fe2f76f57ca3384aedf05da1afbe0cc3fd3989bee29120bbb252249368bbccdd"
+    },
+    "cmake/VerifySdl2.cmake": {
+      "bytes": 1334,
+      "sha256": "21e3bb4fd75cbcc2879f321dae3437a609cd08d88ff98120a8aade19126ffc7e"
+    },
+    "cmake/VerifyVst3Sdk.cmake": {
+      "bytes": 977,
+      "sha256": "4feeb4cfabf1560cfd3487859b88d40974b47801753aeccf848517717443e6eb"
+    }
+  },
+  "decoded_pngs_recomputed": 8,
+  "finalized_at_utc": "2026-11-14T22:15:11.181082+00:00",
+  "finished_capture_at_utc": "2026-11-14T22:11:47.772296+00:00",
+  "font_sources_and_atlas_before_and_after": {
+    "apps/standalone/FontData.h": {
+      "bytes": 204816,
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+    },
+    "assets/standalone/fonts/DejaVuSans.ttf": {
+      "bytes": 759720,
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+    },
+    "assets/standalone/fonts/DejaVuSerif.ttf": {
+      "bytes": 380660,
+      "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7"
+    },
+    "assets/standalone/fonts/LICENSE-DejaVu.txt": {
+      "bytes": 2345,
+      "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+    },
+    "assets/standalone/fonts/atlas-manifest.json": {
+      "bytes": 1487,
+      "sha256": "8b9413cc6acdf32f40ba272f04d0b984f9909772c295ca8c35f88f85bceb0469"
+    },
+    "assets/standalone/fonts/requirements-authoring.txt": {
+      "bytes": 90,
+      "sha256": "3f309f723b3bbd26e0455988913d43c28b25de63f45a4d89973b95fbefcdf280"
+    },
+    "assets/standalone/fonts/source-manifest.json": {
+      "bytes": 1428,
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+    }
+  },
+  "gallery": "examples/demos/standalone-interface-preview-v4",
+  "gallery_bytes_before_readme": 2937403,
+  "gallery_bytes_final": 2948483,
+  "gallery_files_final": 41,
+  "gallery_manifest": {
+    "bytes": 6528,
+    "sha256": "2ed031aa1ecda5a67fa32a4268676602d709250c596ed2be0a24b69c682da5e8"
+  },
+  "gallery_provenance": {
+    "bytes": 68057,
+    "sha256": "f106efc20838c1acb3a392e3d39989ed34b770829a3859deaa95e64cd8a657be"
+  },
+  "gallery_readme": {
+    "bytes": 11080,
+    "sha256": "1b27d34bb5f4aac40ea355ee2ed3ed5f1af7bba53bf8f0aadf05fc6e70f09bf3"
+  },
+  "historical_galleries_unchanged": {
+    "v1": {
+      "all_files_match_published_blobs": true,
+      "files": 41,
+      "inventory_sha256": "73d68484579a3a48160f3b989e55623d26f1b66b652b0fa51e7c851c15a13991"
+    },
+    "v2": {
+      "all_files_match_published_blobs": true,
+      "files": 41,
+      "inventory_sha256": "287027532134f24902e87d8278e331e8ab4a876468790b1f141da82c8c4dbe5f"
+    },
+    "v3": {
+      "all_files_match_published_blobs": true,
+      "files": 41,
+      "inventory_sha256": "21d275f822732dafb27f9c0a068a7aff3459758fe02deea5449c50af0b17b2cc"
+    }
+  },
+  "note": {
+    "bytes": 6591,
+    "path": "docs/development/2026-11-14-reference-refinement/notes/A46-final-native-gallery.md",
+    "sha256": "bd4379cfaf31b8b7f4a323671fddda98cf281751c5b412b6d4feaf60c71daf8b"
+  },
+  "note_word_count": 741,
+  "observed_inventory_digests": {
+    "cmake_sources": {
+      "after_build": "1ca5abb055d73f34384c59b62719ff1a70c1075a7b3e3ad82028e2d8b530cf67",
+      "after_capture": "1ca5abb055d73f34384c59b62719ff1a70c1075a7b3e3ad82028e2d8b530cf67",
+      "before_build": "1ca5abb055d73f34384c59b62719ff1a70c1075a7b3e3ad82028e2d8b530cf67"
+    },
+    "extra_build_inputs": {
+      "after_build": "fda9bb33b405fa263b7814678d0561d4474fb1f9bb2a3a97aa52d2fed7628853",
+      "after_capture": "fda9bb33b405fa263b7814678d0561d4474fb1f9bb2a3a97aa52d2fed7628853",
+      "before_build": "fda9bb33b405fa263b7814678d0561d4474fb1f9bb2a3a97aa52d2fed7628853"
+    },
+    "font_sources_and_atlas": {
+      "after_build": "7de010d5247f3d41f6655645712adb8248a9b5bd6c2b3bdcb7a0d550fd9f6509",
+      "after_capture": "7de010d5247f3d41f6655645712adb8248a9b5bd6c2b3bdcb7a0d550fd9f6509",
+      "before_build": "7de010d5247f3d41f6655645712adb8248a9b5bd6c2b3bdcb7a0d550fd9f6509"
+    },
+    "production": {
+      "after_build": "af45e17d8b9a32bac44d4d1d356ab9d73e8c0a90f8fd4d97acb1cfaa5610e341",
+      "after_capture": "af45e17d8b9a32bac44d4d1d356ab9d73e8c0a90f8fd4d97acb1cfaa5610e341",
+      "before_build": "af45e17d8b9a32bac44d4d1d356ab9d73e8c0a90f8fd4d97acb1cfaa5610e341"
+    },
+    "selected_build_inputs": {
+      "after_build": "4799c5b0dcf4d1d95e4f71f032449670cd355fa99f05a0e4375df381b48f6113",
+      "after_capture": "4799c5b0dcf4d1d95e4f71f032449670cd355fa99f05a0e4375df381b48f6113",
+      "before_build": "4799c5b0dcf4d1d95e4f71f032449670cd355fa99f05a0e4375df381b48f6113"
+    }
+  },
+  "painter_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+  "png_bytes_total": 2722450,
+  "published_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "published_tree": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+  "runner": {
+    "bytes": 15296,
+    "path": "docs/development/2026-11-14-reference-refinement/reports/A46-run-gallery.py",
+    "sha256": "a5a67518bbb7f0d8bd507aef4f14c8cbedb021948adaf64db848d8076a559ca0"
+  },
+  "schema": "a46-native-gallery-v1",
+  "selected_configuration": {
+    "ALSA_INCLUDE_DIR": "/workspace/scratch/1bb6ee17ad7e/native-sysroot/usr/include",
+    "ALSA_LIBRARY": "/workspace/scratch/1bb6ee17ad7e/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so",
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+    "CMAKE_CXX_FLAGS": "",
+    "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+    "HAMMOND_BUILD_STANDALONE": "ON",
+    "HAMMOND_ENABLE_MIDI": "ON",
+    "HAMMOND_RTMIDI_ROOT": "/workspace/scratch/1bb6ee17ad7e/rtmidi",
+    "HAMMOND_SDL2_ROOT": "/workspace/scratch/1bb6ee17ad7e/SDL2",
+    "SDL_ALSA": "OFF"
+  },
+  "snapshots": {
+    "after_build": {
+      "bytes": 25695,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A46-after-build.json",
+      "sha256": "411059385e2347cd1c1b83a8823045c60996dfe7edafc6fb595c204a0143d118"
+    },
+    "after_capture": {
+      "bytes": 25906,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A46-after-capture.json",
+      "sha256": "30ab00606cc8edab46bb192aed7082578bb6b9959cd90bd96468bb03db66f599"
+    },
+    "before_build": {
+      "bytes": 25537,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A46-before-build.json",
+      "sha256": "2c60c6c57da02916c95f72f802f7a56644b202c45548b41cf27edd2c0d5e4f04"
+    }
+  },
+  "source_qualification": {
+    "all_files_match_published_blobs": true,
+    "file_count": 111,
+    "inventory_sha256_after_build": "bffd31d6a2caa65872ece2cb4614902608c30c3dffc9af0c21aa4bd0a3a110fd",
+    "inventory_sha256_after_capture": "bffd31d6a2caa65872ece2cb4614902608c30c3dffc9af0c21aa4bd0a3a110fd",
+    "inventory_sha256_before_build": "bffd31d6a2caa65872ece2cb4614902608c30c3dffc9af0c21aa4bd0a3a110fd",
+    "sha256": "5b93d414ca03295f52298f6520dbd5ac3554164db4ba09142145891ebac536c6",
+    "source_files_definition": "Observed production_paths plus repository files in the native Ninja input closure and repository CMake configuration files; a conservative product/build-source set."
+  },
+  "status": "passed",
+  "strict_endpoint_validation_repeated": true,
+  "visual_review": {
+    "comparison_inputs": {
+      "docs/design/atlas-cover-reference.jpg": {
+        "bytes": 412664,
+        "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+      },
+      "examples/demos/standalone-interface-preview-v3/images/play-reference-1672x941.png": {
+        "bytes": 669904,
+        "sha256": "4e2113423745e938a88e90bb60e23f62131b479f6e255687d193839c4813403f"
+      }
+    },
+    "inspected_images": [
+      {
+        "name": "play-reference-1672x941",
+        "observation": "Refined wide title and spaced nominal caption fit; complete manuals/preset rails, separate sidebar pedals, focused Upper B drawbar and four held-note marks remain visible.",
+        "png_sha256": "ea5173f8d505da12be1002bfb06fc705578b654cb234ed43fd6476a71909a04b"
+      },
+      {
+        "name": "play-default-1280x900",
+        "observation": "Compact header and composition retain both full manuals, preset rails, bottom pedals, four held-note marks and drawbar focus.",
+        "png_sha256": "7ff19445d781f30953a618b429056726a095f7cc25fd6b762ef56cb6924191a5"
+      },
+      {
+        "name": "play-minimum-960x700",
+        "observation": "Compact minimum layout retains Edit controls, manuals, preset rails and bottom pedals; small legends remain an actual display/DPI review boundary.",
+        "png_sha256": "a5fc7ec4aeec9b33ff62ea94e9399c84d8d00fddb915e1edcf0a4f1c7ab69952"
+      },
+      {
+        "name": "service-reference-1672x941",
+        "observation": "Refined wide header and six cards/28 rows fit; 2 targets / 1 target / 1 target, applied sound versus Edit B, bank memory and unavailable model facts remain visible.",
+        "png_sha256": "478746a4c7ae6ba7f7939c642b2eb5472f0c26fa45f72808b805e5f42d5e7eb3"
+      },
+      {
+        "name": "service-minimum-960x700",
+        "observation": "Six complete cards retain singular counts and applied/edit distinctions; bank-memory text wraps inside its card without row overlap.",
+        "png_sha256": "750e24ae09e6aa5c10bffe539a53bc989b05569254d15aec86904bb4c2a9c55d"
+      },
+      {
+        "name": "rotary-reference-1672x941",
+        "observation": "Refined wide header, decorative artwork and all six read-only facts fit; cabinet audio stays unconnected, speeds/geometry unavailable and stop/brake unmodeled.",
+        "png_sha256": "456ac6207862fcc826a2dda4f2f7b5ebabc8dd3133a8168512baadc00571cd5a"
+      },
+      {
+        "name": "rotary-minimum-960x700",
+        "observation": "All six read-only facts, decorative artwork, wrapped unconnected-audio caption and footer remain visible inside panels.",
+        "png_sha256": "fdefcb6f28b649f6fe2be8cb8b105922bd89b51bb07ccfa67d6bd3b68a1e0dd2"
+      },
+      {
+        "name": "flat-minimum-960x700",
+        "observation": "Plain controls and rectangular keys preserve the complete playing inventory, four held-note marks and focused Upper B drawbar.",
+        "png_sha256": "a7dd6b6a5e158d81bd469299a3380fde98a83c6d0c74b0cd7dee44f7ad3c99fd"
+      }
+    ],
+    "literal_reference_equality_claimed": false,
+    "method": "Directly opened all eight unchanged original v4 PNGs and the unchanged original source JPEG/v3 Play PNG using the local image viewer; no additional native process or image transformation.",
+    "no_observed_crop_or_panel_overlap": true,
+    "remaining_differences": "Live tools, complete key/preset inventory, pedalboard, truthful status, texture, lighting and bevels differ from the concept. Real display/DPI and tiny legend assessment remain separate.",
+    "status": "completed"
+  },
+  "whole_worktree_clean_claimed": false
+}

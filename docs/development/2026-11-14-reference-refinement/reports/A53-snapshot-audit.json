@@ -1,0 +1,358 @@
+{
+  "accepted_waves": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "agent": "/root/w09_a53_completion_checker_review",
+  "checked_notes_sha256": "edf05d1f03c8048738895090ae671bd5d16cda3830b7b525dd67eb203c5e71f3",
+  "claim": "Retained record consistency only. This does not prove actual dispatch, substantive acceptance, semantic truth, test execution, publication, visual fidelity, product readiness or physical/model fidelity. The narrative floor is a structural check, not substantive review.",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "/workspace/scratch/1bb6ee17ad7e/A53-refinement-ledger-ghaf41iy/tools/check_refinement_session.py",
+    "--repo",
+    "/workspace/scratch/1bb6ee17ad7e/A53-refinement-ledger-ghaf41iy",
+    "--in-progress",
+    "--json"
+  ],
+  "completion_valid": false,
+  "counts": {
+    "accepted": 51,
+    "distinct_agents": 54,
+    "distinct_ids": 54,
+    "distinct_note_paths": 51,
+    "invalid_status": 0,
+    "malformed_rows": 0,
+    "recorded": 54,
+    "running": 3,
+    "verified_accepted_notes": 51
+  },
+  "error_count": 0,
+  "exit_code": 0,
+  "manifest_snapshot": {
+    "bytes": 30757,
+    "path": "docs/development/2026-11-14-reference-refinement/reports/A53-manifest-snapshot.json",
+    "sha256": "b057202555602d1904bcd93e358f2a6a1f2d0482f097d6523001e6877978c589"
+  },
+  "missing_ids": [
+    "A55",
+    "A56",
+    "A57",
+    "A58",
+    "A59",
+    "A60"
+  ],
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "record_consistency_valid": true,
+  "result_report": {
+    "bytes": 27998,
+    "path": "docs/development/2026-11-14-reference-refinement/reports/A53-in-progress.json",
+    "sha256": "a8b0becfea4535fd7c290002458ff7e56977b37f0f53a9003f8a6e3c379b984a"
+  },
+  "reviewed_test_source": {
+    "bytes": 24048,
+    "path": "tests/test_refinement_session.py",
+    "sha256": "33c5e845971af9396a50a03c9550af8a9e93df59086b34fe19f92046b9522df7"
+  },
+  "schema_version": 1,
+  "scope": "One real read-only in-progress check of copied actual partial ledger; no synthetic worker rows and no new checker test run.",
+  "snapshot_finished_utc": "2026-11-14T22:29:22.932239+00:00",
+  "snapshot_inputs": {
+    "docs/development/2026-11-14-reference-refinement/assignments.json": {
+      "bytes": 30757,
+      "sha256": "b057202555602d1904bcd93e358f2a6a1f2d0482f097d6523001e6877978c589"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A01-atlas-foundation.md": {
+      "bytes": 10893,
+      "sha256": "a03c6902200763ff4090c7df1cc7a8edaa93c61c8685132c9e737a0bfa574656"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A02-atlas-console.md": {
+      "bytes": 11999,
+      "sha256": "edc7945d108efb338290ababfa6128f8012e8a0a9bec6cc33262740648f52ff5"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A03-atlas-electronics.md": {
+      "bytes": 11264,
+      "sha256": "1273d0ad67a2746b3261094f22483c781bdb687549ed76942420513b4df864c5"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A04-atlas-acoustics.md": {
+      "bytes": 18965,
+      "sha256": "7d045771c62cc29810b936ab0e5945fbb138b7112141a77c2eb98001c2f66e8e"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A05-atlas-interface.md": {
+      "bytes": 20230,
+      "sha256": "e620c52611ef85f934773f346812cf0437cfc080b63f09971af806660484bc7c"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A06-atlas-implementation.md": {
+      "bytes": 41352,
+      "sha256": "345f4ff7352f3f815823d98b9d52ae36973707377d6a70f0b7a62e5472418c0b"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A07-layout-contract.md": {
+      "bytes": 2114,
+      "sha256": "a628c87b7cf9b08ee19a055845fb092ee6f5888ba6594368907da9f1e524541e"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A08-material-contract.md": {
+      "bytes": 1819,
+      "sha256": "fc6eb25a40f9adde74b18b4796c8458fea86f0644188d26189ca515fd9d91d10"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A09-desktop-contract.md": {
+      "bytes": 1470,
+      "sha256": "561a113178f9385c4226356e5e3c8ec6ba281ca9bfe2403de269153257c09917"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A10-rotary-api.md": {
+      "bytes": 2186,
+      "sha256": "3d669ef32b203cf3aa2b2fa9335ebdc2ceabdf8fdd31a1a08e01b61cfb80e1d3"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A11-inspection-pending.md": {
+      "bytes": 2008,
+      "sha256": "7ccbc821c791136dfd45ea4a8701def580b4c2aa543c35515c759b36ca1da81a"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A12-scope-setup-review.md": {
+      "bytes": 5287,
+      "sha256": "74cde2dda72962f16afdc0ad5135833f76b8d933cf72f94516f32b779a670d11"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A13-layout-implementation.md": {
+      "bytes": 4513,
+      "sha256": "333d48292794adb73e5478272e1277d319b7b0dd5e84aa750709b39ee1e8b3ae"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A14-material-implementation.md": {
+      "bytes": 4803,
+      "sha256": "b8dc774e0051a81955a52211dba123878423be474bcc582928a5eed00376552c"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A15-inspection-implementation.md": {
+      "bytes": 4416,
+      "sha256": "e92bbfe00bc2b431e7f38474745a9e15d4346daf917ac74e77eb79282bb49ef3"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A16-rotary-motion-qualification.md": {
+      "bytes": 13242,
+      "sha256": "3d7914bf2752365d5764338af56413b58637b01b25cccfbcdc5c832319114cd1"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A17-rotary-propagation-implementation.md": {
+      "bytes": 4510,
+      "sha256": "956ac73d6393e267ba2676d2df98c45de974f6273ad9052d605ebe0af6142a75"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A18-pending-raster-implementation.md": {
+      "bytes": 4710,
+      "sha256": "4c4564567a46a873bc1740b1b984a443d0eae9e114a47759da2592520349dbab"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A19-rotary-independent-oracle.md": {
+      "bytes": 5246,
+      "sha256": "b93b1d820213294e5d010932ce6b12fd0bfe1b3c6f3dbbb1aef6d88b76c7a47d"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A20-native-observation.md": {
+      "bytes": 4367,
+      "sha256": "c70f116387e3f0c0f4b2216a60d41375453ed11a07be433c3a10a66ae9da36ea"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A21-layout-independent.md": {
+      "bytes": 4264,
+      "sha256": "865fef74fb68934a4468d330e98d25e18c04c1ae1b1a658b9814e66ec223ec6e"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A22-material-independent.md": {
+      "bytes": 8651,
+      "sha256": "aed4adb08ec3f9eb0bc0f5ca05f80615b7267a48449bc4965de63e00df3b5057"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A23-pending-independent.md": {
+      "bytes": 5421,
+      "sha256": "c89cc0d9897da18e3a14922bdc75b9b5f0ab7e56d0c914154a4fb0c2249e6a44"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A24-motion-independent-review.md": {
+      "bytes": 8293,
+      "sha256": "bf8d45fbeef8edb9f27c511c0690ee3a6d4a7a1a1507a310023a372e391ecd24"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A25-material-performance.md": {
+      "bytes": 6142,
+      "sha256": "f9ee859bae5b7bba219a5e8d6d45e18531a09ab6b94ff4c5f43dddd1e1e4d706"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A26-material-boundary-repair.md": {
+      "bytes": 5507,
+      "sha256": "1bf0346c24269c0fbf1d915395e01edf5d36a1adeed70b8108d190099b66ccf6"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A27-rotary-realtime.md": {
+      "bytes": 4637,
+      "sha256": "689c9c055a5497b60e1d7ff15b10ab529475c25fb2bf512ce139680a5d28dfb4"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A28-contract-admission-audit.md": {
+      "bytes": 3910,
+      "sha256": "03701dc7ffb58d81c701ba2d99eb5d69a8a72d52c5c496d122ac5391d6132b4b"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A29-hosted-gate-wiring.md": {
+      "bytes": 3727,
+      "sha256": "dcecfc48b0918e9a522fc649bb0360760dfc6a4d0b29ce5db39a46c8a20ccb1f"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A30-rotary-docs-handoff.md": {
+      "bytes": 3869,
+      "sha256": "f114d9e54e83d9569d31c3b4a7dc703fc3ae365f81ba3c5af7007267c6aeb200"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A31-native-gallery.md": {
+      "bytes": 4262,
+      "sha256": "7211e080f5c88c02ca2c06f200e99f77dd7688348a015636ca885bbebe82d7af"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A32-gallery-independent.md": {
+      "bytes": 4298,
+      "sha256": "9ff830eff578f00fa62a89367eb74d2945d1461c20255b3ab9ebadd97496c266"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A33-portable-native-review.md": {
+      "bytes": 3724,
+      "sha256": "f2a65e9c0b2c738a9696b85d7f4bc3881e5bd8d3a5cfa81e501ea9cfc56b140f"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A34-audio-state-isolation.md": {
+      "bytes": 3972,
+      "sha256": "1743d98b0b3dacce3dfc81019fd88da0f3f39e7f8742adebd812a047b96afac6"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A35-install-relocation.md": {
+      "bytes": 4247,
+      "sha256": "183039c44fb6af5cbe255042d39032ca0db07c2cf7af81f35422b9eeeec264b9"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A36-reference-visual-review.md": {
+      "bytes": 3832,
+      "sha256": "4a953e58cf466197629c33d61d1f2ed6fdadb14733c7cc969fd913d7351af1d8"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A37-setup-handoff.md": {
+      "bytes": 3938,
+      "sha256": "a8023eb9fe851b3d946bcd69033c5cd0621078290c5578c4752b984a89bfc9e0"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A38-windows-allocation-repair.md": {
+      "bytes": 3910,
+      "sha256": "aa404d90aace3f20aba345aa8a1f6333ae123895678356f1d802139b5715cd30"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A39-refinement-ledger-checker.md": {
+      "bytes": 3593,
+      "sha256": "cfbfbc9565fe3b0c5abb5d4d5b39ad3bb6e1ffae8b0d968d0f038c227ef29c37"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A40-reference-header-refinement.md": {
+      "bytes": 4330,
+      "sha256": "98626bc438a4f165006e6b900f1091065cc9281494053b79a1d2a9dd98ef7fda"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A41-header-independent-acceptance.md": {
+      "bytes": 4790,
+      "sha256": "7045c15c1e133aa5713c14757f05da0fb7dc30c51010a874b47c76218dddd797"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A42-rotary-renderer-next-plan.md": {
+      "bytes": 3970,
+      "sha256": "33c1bae026ee2f3fc762318987078c5c291370ce4bc77bd67043bbc3d2ed00c3"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A43-hosted-fixture-closure.md": {
+      "bytes": 3929,
+      "sha256": "a234c02a0c84b781954f67cf05a3c538347752b7cbd1e3722e4676b449031953"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A44-hosted-sanitizer-audit.md": {
+      "bytes": 3892,
+      "sha256": "a2095cf0f1e5e92374386a36ab256b96a93bcba995c9dea39588f59b156fb4a1"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A45-release-readiness.md": {
+      "bytes": 3923,
+      "sha256": "eb5f0c1737a92a6caba42680beb360498132a86bad2b723c6ffa68754c2543b3"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A46-final-native-gallery.md": {
+      "bytes": 6591,
+      "sha256": "bd4379cfaf31b8b7f4a323671fddda98cf281751c5b412b6d4feaf60c71daf8b"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A47-readme-current-ui.md": {
+      "bytes": 5898,
+      "sha256": "1189587abd512b7fc0f9ee6d4a1752b3fb50ba5e6e5cba71ba6fc978ea295cf2"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A48-future-agent-instructions.md": {
+      "bytes": 4936,
+      "sha256": "4cee5b79ff0c577bbec01e594b378628fd754e07736ed115346370f9fff61bf2"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A49-coherent-final-build.md": {
+      "bytes": 6643,
+      "sha256": "031279a1f443b1a0a8cc0c5540f0ce5baa587454e5c30a2630e2e13cacd860c2"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A50-final-gallery-admission.md": {
+      "bytes": 5707,
+      "sha256": "169d8c45fc097ff751d37587ad82db90dc8f9054feac47c6dc97f55e05e2732a"
+    },
+    "docs/development/2026-11-14-reference-refinement/notes/A51-native-input-evidence-review.md": {
+      "bytes": 6358,
+      "sha256": "a02cd85c06c2957683c13905e3b74e9a753d781edc2bebb8ffb2d5f2847f8163"
+    },
+    "tools/check_refinement_session.py": {
+      "bytes": 18798,
+      "sha256": "5bd5f420bd8bbad37f7e469b94f9695cd38106d7de8c2c5d9cdb8a2faf453e42"
+    }
+  },
+  "snapshot_inputs_unchanged_after_check": true,
+  "snapshot_root": "/workspace/scratch/1bb6ee17ad7e/A53-refinement-ledger-ghaf41iy",
+  "snapshot_started_utc": "2026-11-14T22:29:22.828994+00:00",
+  "source_head": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "source_manifest_stable_during_copy": true,
+  "source_repository": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+  "source_tree": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+  "status": "incomplete",
+  "stderr": {
+    "bytes": 0,
+    "path": "docs/development/2026-11-14-reference-refinement/reports/A53-in-progress.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "strict_completion_executed": false,
+  "synthetic_tests_rerun": false,
+  "wave_counts": [
+    {
+      "accepted": 6,
+      "recorded": 6,
+      "running": 0,
+      "wave": 1
+    },
+    {
+      "accepted": 6,
+      "recorded": 6,
+      "running": 0,
+      "wave": 2
+    },
+    {
+      "accepted": 6,
+      "recorded": 6,
+      "running": 0,
+      "wave": 3
+    },
+    {
+      "accepted": 6,
+      "recorded": 6,
+      "running": 0,
+      "wave": 4
+    },
+    {
+      "accepted": 6,
+      "recorded": 6,
+      "running": 0,
+      "wave": 5
+    },
+    {
+      "accepted": 6,
+      "recorded": 6,
+      "running": 0,
+      "wave": 6
+    },
+    {
+      "accepted": 6,
+      "recorded": 6,
+      "running": 0,
+      "wave": 7
+    },
+    {
+      "accepted": 6,
+      "recorded": 6,
+      "running": 0,
+      "wave": 8
+    },
+    {
+      "accepted": 3,
+      "recorded": 6,
+      "running": 3,
+      "wave": 9
+    },
+    {
+      "accepted": 0,
+      "recorded": 0,
+      "running": 0,
+      "wave": 10
+    }
+  ],
+  "working_directory": "/workspace/scratch/1bb6ee17ad7e/A53-refinement-ledger-ghaf41iy"
+}

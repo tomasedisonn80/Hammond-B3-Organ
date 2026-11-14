@@ -1,0 +1,906 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w08_a45_release_readiness_refresh",
+  "wave": 8,
+  "observed_utc": "2026-11-14T22:10:22.197024+00:00",
+  "working_directory": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ",
+  "observed_head": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "qualified_hosted_head": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+  "result": "pass",
+  "checks_passed": 26,
+  "checks_total": 26,
+  "owned_files": [
+    "docs/RELEASE_READINESS.md",
+    "docs/development/2026-11-14-reference-refinement/notes/A45-release-readiness.md",
+    "docs/development/2026-11-14-reference-refinement/reports/A45-release-readiness.json"
+  ],
+  "document": {
+    "path": "docs/RELEASE_READINESS.md",
+    "sha256": "25ce61256067f48cb03e62d41c907ce248855715e1aba92af0129ee0679690c1",
+    "bytes": 39516
+  },
+  "note": {
+    "path": "docs/development/2026-11-14-reference-refinement/notes/A45-release-readiness.md",
+    "sha256": "eb5f0c1737a92a6caba42680beb360498132a86bad2b723c6ffa68754c2543b3",
+    "bytes": 3923
+  },
+  "historical_body_comparison": [
+    {
+      "section": "standalone_scanner",
+      "original_sha256": "72abd127d0fb6d5e777c5ed51c4b25c12a41d40bf430f49d66e61a1739dcb0f4",
+      "retained_sha256": "72abd127d0fb6d5e777c5ed51c4b25c12a41d40bf430f49d66e61a1739dcb0f4",
+      "bytes": 2859
+    },
+    {
+      "section": "pedal",
+      "original_sha256": "6190cb35fcf141de38ed36e2a7402db7978dcd206f70caf65884492de14c465e",
+      "retained_sha256": "6190cb35fcf141de38ed36e2a7402db7978dcd206f70caf65884492de14c465e",
+      "bytes": 24847
+    }
+  ],
+  "current_section_links": [
+    {
+      "target": "PLAN.md",
+      "exists": true
+    },
+    {
+      "target": "PARAMETERS.md",
+      "exists": true
+    },
+    {
+      "target": "REFERENCE_REFINEMENT_HANDOFF.md",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/CHECKPOINT.md",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/assignments.json",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/reports/A39-refinement-ledger-checker.json",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-waveform-continuation/README.md",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-waveform-continuation/CHECKPOINT.md",
+      "exists": true
+    },
+    {
+      "target": "reviews/REFERENCE_REFINEMENT_HOSTED.md",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/reports/A44-hosted-sanitizer-audit.json",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/reports/A27-r3-summary.json",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/notes/A40-reference-header-refinement.md",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/reports/A41-final-acceptance.json",
+      "exists": true
+    },
+    {
+      "target": "../examples/demos/standalone-interface-preview-v3/README.md",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/reports/A32-gallery-independent.json",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/reports/coherent-result.json",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-waveform-continuation/reports/baseline.json",
+      "exists": true
+    },
+    {
+      "target": "REFERENCE_REFINEMENT_HANDOFF.md",
+      "exists": true
+    },
+    {
+      "target": "STANDALONE_APP.md",
+      "exists": true
+    },
+    {
+      "target": "STANDALONE_INSTALL.md",
+      "exists": true
+    },
+    {
+      "target": "OFFLINE_INSTALL.md",
+      "exists": true
+    },
+    {
+      "target": "CAPTURE_TOOLS_INSTALL.md",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/reports/A35-install-relocation.json",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/notes/A37-setup-handoff.md",
+      "exists": true
+    },
+    {
+      "target": "MIDI_UI_RUNBOOK.md",
+      "exists": true
+    },
+    {
+      "target": "RTMIDI_BUILD.md",
+      "exists": true
+    },
+    {
+      "target": "VST3_BUILD.md",
+      "exists": true
+    },
+    {
+      "target": "VST3_LOCAL_INSTALL.md",
+      "exists": true
+    },
+    {
+      "target": "../apps/standalone/FontData.h",
+      "exists": true
+    },
+    {
+      "target": "../assets/standalone/fonts/atlas-manifest.json",
+      "exists": true
+    },
+    {
+      "target": "../assets/standalone/reference/manifest.json",
+      "exists": true
+    },
+    {
+      "target": "../apps/standalone/CMakeLists.txt",
+      "exists": true
+    },
+    {
+      "target": "STANDALONE_FONTS.md",
+      "exists": true
+    },
+    {
+      "target": "ROTARY_MOTION.md",
+      "exists": true
+    },
+    {
+      "target": "ROTARY_PROPAGATION.md",
+      "exists": true
+    },
+    {
+      "target": "development/2026-11-14-reference-refinement/reports/root-desktop-acceptance-review.json",
+      "exists": true
+    },
+    {
+      "target": "PLAN.md",
+      "exists": true
+    },
+    {
+      "target": "HOST_INTEGRATION.md",
+      "exists": true
+    },
+    {
+      "target": "STANDALONE_MODEL.md",
+      "exists": true
+    },
+    {
+      "target": "PLAN.md",
+      "exists": true
+    },
+    {
+      "target": "SCANNER_HANDOFF.md",
+      "exists": true
+    },
+    {
+      "target": "CALIBRATION_HANDOFF.md",
+      "exists": true
+    },
+    {
+      "target": "DEPENDENCIES_AND_RIGHTS.md",
+      "exists": true
+    },
+    {
+      "target": "../THIRD_PARTY_NOTICES.md",
+      "exists": true
+    },
+    {
+      "target": "research/RIGHTS_AND_SOURCES.md",
+      "exists": true
+    }
+  ],
+  "source_evidence": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "0e1ec12983d8804ef7c281b4713f66511dca317e373d65a2cb0e2c93a0925902",
+      "bytes": 22725
+    },
+    {
+      "path": "docs/PLAN.md",
+      "sha256": "5a7f8ecda549cbc1e5f738c00b8dbfb88356caa424c39de4d5c10031d389bd07",
+      "bytes": 9296
+    },
+    {
+      "path": "docs/REFERENCE_REFINEMENT_SCOPE.md",
+      "sha256": "0b8bc11317ee155ac6793401517aa331da8dc10a5c73a605c8981cfcde5e729a",
+      "bytes": 3783
+    },
+    {
+      "path": "docs/STANDALONE_INSTALL.md",
+      "sha256": "7d121ce847ecb90dccbe01b7a3b9bd0917c29ebf0c13955c5c442efa1117aa7c",
+      "bytes": 12330
+    },
+    {
+      "path": "docs/OFFLINE_INSTALL.md",
+      "sha256": "fa73ec5f084ab2b096581248715e91a3960554afcfb98268cdb334d526468334",
+      "bytes": 16327
+    },
+    {
+      "path": "docs/CAPTURE_TOOLS_INSTALL.md",
+      "sha256": "9e7d89d1763ec887a848a96eb1c477d7edac2f74a6009f0b33468310738ed2c3",
+      "bytes": 17818
+    },
+    {
+      "path": "docs/STANDALONE_FONTS.md",
+      "sha256": "ca4f3fcf2ab4595ed47e0cb57ef366ce3b8408a5da9fb1392b83277e5534fc4f",
+      "bytes": 4582
+    },
+    {
+      "path": "docs/CONTROL_STATE_FORMAT.md",
+      "sha256": "3919a828acc343d83e765111f67ac14d06d6ceba3b5407bb6dc4d36a81e3152a",
+      "bytes": 15127
+    },
+    {
+      "path": "data/parameter-registry.json",
+      "sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+      "bytes": 36882
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb",
+      "bytes": 21983
+    },
+    {
+      "path": "docs/DEPENDENCIES_AND_RIGHTS.md",
+      "sha256": "6e49d4470e205d21ec6b3348e64a8a74b4ef57ff49144d0e0073899872fad9a1",
+      "bytes": 25664
+    },
+    {
+      "path": "docs/research/RIGHTS_AND_SOURCES.md",
+      "sha256": "d8ea89bd61eb64463e584a27d1d2d208dd8cb56ebe39953976e3a17d0ee24947",
+      "bytes": 8027
+    },
+    {
+      "path": "docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md",
+      "sha256": "a1c54e6d8ca2392123470ca2ce3fd42f96ab4a14ca4bd75dff12dcf677630f25",
+      "bytes": 1966
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A35-install-relocation.json",
+      "sha256": "f48892f844de2097daa2b3d12803af91a6c38717ad853e0ebef3f57303130e3f",
+      "bytes": 78111
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A37-setup-handoff.json",
+      "sha256": "3b91ca564ed1527952e40a3a48fff410ae65d1a7eaf959226d29bea64ebbcb32",
+      "bytes": 21095
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A39-refinement-ledger-checker.json",
+      "sha256": "621578786d4f6111d14b643e2ea9a258cde6d1e8fbfd32f38ef8c3159cc51f6d",
+      "bytes": 4157
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A40-reference-header-refinement.json",
+      "sha256": "0aa332fe45dc8dcfea7d0b1fbe6fe085e752bb73b5735feb862277c6f147cb3a",
+      "bytes": 8220
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A41-final-acceptance.json",
+      "sha256": "8474977e7326c8f1ac14032894b6a75970d6fdd6a3094a0af8737ce7321efe36",
+      "bytes": 22078
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A43-hosted-fixture-closure.json",
+      "sha256": "a30871857ba3f88d54049ade008d8e593ef6a6b586762f3a9575968fc2de4d47",
+      "bytes": 240372
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A44-hosted-sanitizer-audit.json",
+      "sha256": "a8ba98590f7945c5e4ece6fd1b0ccede5c2d094d02c17802fa69e9450db7a38e",
+      "bytes": 31023
+    },
+    {
+      "path": "docs/development/2026-11-14-reference-refinement/reports/root-desktop-acceptance-review.json",
+      "sha256": "ff6b371a6b3e796c758551c9ec53101015097d7af364760b69724a60f275255a",
+      "bytes": 2336
+    },
+    {
+      "path": "examples/demos/standalone-interface-preview-v3/README.md",
+      "sha256": "f8bc50b053afdec84270dfce4a64b98c2782ac508e0533e10e89c5fd8de715b8",
+      "bytes": 10337
+    }
+  ],
+  "tracked_assets": [
+    {
+      "path": "apps/standalone/FontData.h",
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+      "bytes": 204816,
+      "tracked": true,
+      "matches_qualified_source": true
+    },
+    {
+      "path": "assets/standalone/fonts/DejaVuSans.ttf",
+      "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+      "bytes": 759720,
+      "tracked": true,
+      "matches_qualified_source": true
+    },
+    {
+      "path": "assets/standalone/fonts/DejaVuSerif.ttf",
+      "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7",
+      "bytes": 380660,
+      "tracked": true,
+      "matches_qualified_source": true
+    },
+    {
+      "path": "assets/standalone/fonts/atlas-manifest.json",
+      "sha256": "8b9413cc6acdf32f40ba272f04d0b984f9909772c295ca8c35f88f85bceb0469",
+      "bytes": 1487,
+      "tracked": true,
+      "matches_qualified_source": true
+    },
+    {
+      "path": "assets/standalone/fonts/source-manifest.json",
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb",
+      "bytes": 1428,
+      "tracked": true,
+      "matches_qualified_source": true
+    },
+    {
+      "path": "assets/standalone/reference/manifest.json",
+      "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+      "bytes": 3816,
+      "tracked": true,
+      "matches_qualified_source": true
+    },
+    {
+      "path": "assets/standalone/reference/cabinet.rgb.gz",
+      "sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e",
+      "bytes": 369409,
+      "tracked": true,
+      "matches_qualified_source": true
+    },
+    {
+      "path": "assets/standalone/reference/left-wood-cheek.rgb.gz",
+      "sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4",
+      "bytes": 52070,
+      "tracked": true,
+      "matches_qualified_source": true
+    },
+    {
+      "path": "assets/standalone/reference/right-wood-cheek.rgb.gz",
+      "sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6",
+      "bytes": 142330,
+      "tracked": true,
+      "matches_qualified_source": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "historical_standalone_scanner_body_unchanged",
+      "passed": true,
+      "observed": {
+        "section": "standalone_scanner",
+        "original_sha256": "72abd127d0fb6d5e777c5ed51c4b25c12a41d40bf430f49d66e61a1739dcb0f4",
+        "retained_sha256": "72abd127d0fb6d5e777c5ed51c4b25c12a41d40bf430f49d66e61a1739dcb0f4",
+        "bytes": 2859
+      }
+    },
+    {
+      "name": "historical_pedal_body_unchanged",
+      "passed": true,
+      "observed": {
+        "section": "pedal",
+        "original_sha256": "6190cb35fcf141de38ed36e2a7402db7978dcd206f70caf65884492de14c465e",
+        "retained_sha256": "6190cb35fcf141de38ed36e2a7402db7978dcd206f70caf65884492de14c465e",
+        "bytes": 24847
+      }
+    },
+    {
+      "name": "current_local_links",
+      "passed": true,
+      "observed": {
+        "occurrences": 45,
+        "unique_targets": 42,
+        "missing": []
+      }
+    },
+    {
+      "name": "current_parameter_count",
+      "passed": true,
+      "observed": {
+        "parameters": 47
+      }
+    },
+    {
+      "name": "state_writer_and_reader_contract",
+      "passed": true,
+      "observed": {
+        "writer": "B3CONTROLS4",
+        "retained_readers": [
+          1,
+          2,
+          3
+        ],
+        "evidence": "docs/CONTROL_STATE_FORMAT.md"
+      }
+    },
+    {
+      "name": "standalone_current_payload_source",
+      "passed": true,
+      "observed": {
+        "fixed_metadata": 13,
+        "generated_capability": 1,
+        "executable": 1,
+        "midi_off": 15,
+        "midi_additions": 4,
+        "midi_on": 19
+      }
+    },
+    {
+      "name": "retained_relocation_payload",
+      "passed": true,
+      "observed": {
+        "source": "2e161dc3a60fc3442051799574feed37bffbfc5c",
+        "components": {
+          "OfflineTools": 23,
+          "CaptureTools": 57,
+          "Standalone": 15
+        },
+        "total": 95
+      }
+    },
+    {
+      "name": "retained_relocation_expected_exits",
+      "passed": true,
+      "observed": {
+        "commands": 16,
+        "matching_exits": 16,
+        "expected_nonzero": [
+          "missing-installed-profile",
+          "relocated-capture-study",
+          "missing-local-Python-dependency"
+        ]
+      }
+    },
+    {
+      "name": "current_install_definitions_match_qualified_source",
+      "passed": true,
+      "observed": [
+        {
+          "path": "cmake/InstallStandalone.cmake",
+          "working_sha256": "079543943e5259a3d3375521015716cd66dd99d5452a21df9af39de8a8382091",
+          "published_sha256": "079543943e5259a3d3375521015716cd66dd99d5452a21df9af39de8a8382091",
+          "equal": true
+        },
+        {
+          "path": "cmake/InstallCaptureTools.cmake",
+          "working_sha256": "b7658c5ac2083e7661dd01d6ebf1cb66ee838a73e71fa2300c6d9b1affd5f015",
+          "published_sha256": "b7658c5ac2083e7661dd01d6ebf1cb66ee838a73e71fa2300c6d9b1affd5f015",
+          "equal": true
+        },
+        {
+          "path": "CMakeLists.txt",
+          "working_sha256": "a1865e59816ed4a63c9a0d8ed95c9aaea1951960f969fe209a3309cc3f2f99e7",
+          "published_sha256": "a1865e59816ed4a63c9a0d8ed95c9aaea1951960f969fe209a3309cc3f2f99e7",
+          "equal": true
+        }
+      ]
+    },
+    {
+      "name": "committed_generated_asset_provenance",
+      "passed": true,
+      "observed": {
+        "tracked_assets": 9,
+        "all_match_qualified_source": true
+      }
+    },
+    {
+      "name": "primary_hosted_matrix_summary",
+      "passed": true,
+      "observed": {
+        "head": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+        "tree": "530d5fcf777003f470f64558de9e5631d31a21a4",
+        "jobs": [
+          {
+            "job_id": 132598496957,
+            "name": "Release (macOS AppleClang)",
+            "conclusion": "success",
+            "passed": 137,
+            "selected": 137,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598497240,
+            "name": "Release (Linux GCC)",
+            "conclusion": "success",
+            "passed": 137,
+            "selected": 137,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598497275,
+            "name": "Linux GCC ASan + UBSan + leaks",
+            "conclusion": "success",
+            "passed": 137,
+            "selected": 137,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598497386,
+            "name": "Release (Windows MSVC)",
+            "conclusion": "success",
+            "passed": 137,
+            "selected": 137,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598531735,
+            "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+            "conclusion": "success",
+            "passed": 16,
+            "selected": 16,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598532058,
+            "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+            "conclusion": "success",
+            "passed": 41,
+            "selected": 41,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598532092,
+            "name": "Native standalone (Linux GCC, MIDI ON)",
+            "conclusion": "success",
+            "passed": 41,
+            "selected": 41,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598532165,
+            "name": "Native standalone (macOS AppleClang, MIDI ON)",
+            "conclusion": "success",
+            "passed": 41,
+            "selected": 41,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598532193,
+            "name": "Native standalone (Linux GCC, MIDI OFF)",
+            "conclusion": "success",
+            "passed": 41,
+            "selected": 41,
+            "log_complete": true,
+            "sdk_validator": null
+          },
+          {
+            "job_id": 132598446162,
+            "name": "Native VST3 (Linux GCC)",
+            "conclusion": "success",
+            "passed": 8,
+            "selected": 8,
+            "log_complete": true,
+            "sdk_validator": "2026-11-14T21:44:07.9452148Z 117: Result: 47 tests passed, 0 tests failed"
+          },
+          {
+            "job_id": 132598446402,
+            "name": "Native VST3 (Windows MSVC x64)",
+            "conclusion": "success",
+            "passed": 7,
+            "selected": 7,
+            "log_complete": true,
+            "sdk_validator": "2026-11-14T21:44:41.0181108Z 117: Result: 47 tests passed, 0 tests failed"
+          },
+          {
+            "job_id": 132598446423,
+            "name": "Native VST3 (macOS AppleClang)",
+            "conclusion": "success",
+            "passed": 7,
+            "selected": 7,
+            "log_complete": true,
+            "sdk_validator": "2026-11-14T21:44:20.7980690Z 117: Result: 47 tests passed, 0 tests failed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "validator_internal_count",
+      "passed": true,
+      "observed": {
+        "three_validator_results": [
+          "2026-11-14T21:44:07.9452148Z 117: Result: 47 tests passed, 0 tests failed",
+          "2026-11-14T21:44:41.0181108Z 117: Result: 47 tests passed, 0 tests failed",
+          "2026-11-14T21:44:20.7980690Z 117: Result: 47 tests passed, 0 tests failed"
+        ]
+      }
+    },
+    {
+      "name": "hosted_parent_difference_is_documentary",
+      "passed": true,
+      "observed": {
+        "changed_paths": 18,
+        "parent": "f9c11a498ecd88886349415205fc5dccc627033e"
+      }
+    },
+    {
+      "name": "sanitizer_scope_preserves_existing_exception",
+      "passed": true,
+      "observed": {
+        "test": "test_standalone_midi_backend_quarantine",
+        "source": "apps/standalone/CMakeLists.txt",
+        "source_lines": [
+          61,
+          66
+        ],
+        "override": "ASAN_OPTIONS=detect_leaks=0:halt_on_error=1",
+        "reason": "Injected failed-close cases deliberately retain callback contexts until process exit. Ordinary backend destruction retains normal leak checking; ASan/UBSan instrumentation remains active.",
+        "in_native_sixteen": false,
+        "changed_by_A44": false
+      }
+    },
+    {
+      "name": "selected_hosted_sanitizer_counts",
+      "passed": true,
+      "observed": {
+        "jobs": [
+          {
+            "kind": "core",
+            "job_id": 132598497275,
+            "passed": 137,
+            "total": 137,
+            "environment": {
+              "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+              "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+              "LSAN_OPTIONS": "exitcode=23"
+            }
+          },
+          {
+            "kind": "native",
+            "job_id": 132598531735,
+            "passed": 16,
+            "total": 16,
+            "environment": {
+              "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+              "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+              "LSAN_OPTIONS": "exitcode=23"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "local_header_independent_source_and_count",
+      "passed": true,
+      "observed": {
+        "candidate_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+        "raster_summary": {
+          "kind": "summary",
+          "checks": 1897,
+          "failures": 0,
+          "full_pairs": 156,
+          "focus_pairs": 120,
+          "clip_pairs": 12,
+          "compared_pixels": 352552950
+        },
+        "qualification": "A40/A41 local acceptance; exact f323 source published at 0881d1f4; new-head hosted qualification and A46 v4 gallery pending."
+      }
+    },
+    {
+      "name": "retained_header_six_gate_result",
+      "passed": true,
+      "observed": {
+        "evidence": "docs/development/2026-11-14-reference-refinement/reports/A40-candidate-ctest.log",
+        "summary": "100% tests passed out of 6",
+        "six_passed_rows": [
+          "test_standalone_drawing",
+          "test_standalone_quad_drawing",
+          "test_standalone_workspace_raster",
+          "test_standalone_material_acceptance",
+          "test_standalone_scaled_view",
+          "test_standalone_preset_raster"
+        ],
+        "new_execution": false
+      }
+    },
+    {
+      "name": "strict_ledger_partial_boundary",
+      "passed": true,
+      "observed": {
+        "retained_progress": {
+          "accepted": 38,
+          "distinct_agents": 41,
+          "distinct_ids": 41,
+          "distinct_note_paths": 38,
+          "invalid_status": 0,
+          "malformed_rows": 0,
+          "recorded": 41,
+          "running": 3,
+          "verified_accepted_notes": 38
+        },
+        "retained_strict_exit": 1,
+        "both_completion_valid": false
+      }
+    },
+    {
+      "name": "actual_current_manifest_incomplete",
+      "passed": true,
+      "observed": {
+        "recorded": 47,
+        "status_counts": {
+          "accepted": 44,
+          "running": 3
+        },
+        "sha256": "50573aee8e03fd75656868784e91a48c6f57e2c02a0f3639d4b6c5a4c3e2f6b4"
+      }
+    },
+    {
+      "name": "retained_desktop_observation_boundary",
+      "passed": true,
+      "observed": {
+        "observed_checks": {
+          "native_x11": true,
+          "pedal_held_before_branch": true,
+          "pedal_held_after_branch": true,
+          "pedal_release_observed": true,
+          "captured_inside_outside_return": true,
+          "capture_release": true,
+          "session_stopped": true,
+          "held_after_shutdown_clear": true
+        },
+        "limits": [
+          "The two keyboard chords show held Upper targets after navigation; no painted pre-held frame precedes those workspace/presentation transitions. Existing replay/model gates separately cover pre-held repeated navigation.",
+          "The startup1400px window extends41px beyond the1364px desktop; the interactive interior was visible. Automated reference captures cover the entire logical window.",
+          "Dummy audio and no physical MIDI input; no physical display/DPI, DAW, semantic accessibility or acoustic fidelity claim.",
+          "CUA desktop images were observed live; retained PNG is the application startup capture."
+        ]
+      }
+    },
+    {
+      "name": "retained_v3_source_and_dummy_scope",
+      "passed": true,
+      "observed": {
+        "gallery": "examples/demos/standalone-interface-preview-v3/README.md",
+        "header_candidate_gallery": false
+      }
+    },
+    {
+      "name": "no_project_license_decision_inferred",
+      "passed": true,
+      "observed": {
+        "root_license_paths": [],
+        "boundary": "records existing absence; no new rights/legal conclusion"
+      }
+    },
+    {
+      "name": "whole_plan_milestones_retained",
+      "passed": true,
+      "observed": {
+        "milestones": [
+          "M0",
+          "M1",
+          "M2",
+          "M3",
+          "M4",
+          "M5",
+          "M6",
+          "M7",
+          "M8",
+          "M9"
+        ]
+      }
+    },
+    {
+      "name": "bounded_note",
+      "passed": true,
+      "observed": {
+        "words": 475,
+        "maximum": 700
+      }
+    },
+    {
+      "name": "document_diff_whitespace",
+      "passed": true,
+      "observed": {
+        "command": [
+          "git",
+          "diff",
+          "--check",
+          "--",
+          "docs/RELEASE_READINESS.md"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "published_header_commit_identity",
+      "passed": true,
+      "observed": {
+        "commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+        "tree": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+        "parent": "26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8",
+        "published_instrument_view_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+        "accepted_A41_source_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+        "remote_tracking_refs": [
+          "refs/remotes/origin/main 0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b"
+        ],
+        "root_message": "Commit/ref publication succeeded; staged tree independently matched API tree.",
+        "local_verification": [
+          "git show --format=%H%n%T%n%P --no-patch 0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+          "git show 0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b:apps/standalone/InstrumentView.cpp"
+        ],
+        "hosted_qualification": "pending at this new header head",
+        "v4_gallery": "pending A46"
+      }
+    }
+  ],
+  "method": "Read-only Python JSON/text/link/hash checks plus git show, ls-files, rev-parse and diff --check. Primary execution evidence is attributed to A35/A39/A40/A41/A43/A44/root; none was rerun here.",
+  "limitations": [
+    "Source-specific document assessment; no configure, build, CTest, new acceptance run, native process, dependency change, commit or push.",
+    "The f323 header is published at 0881d1f4 with retained local A40/A41 acceptance; hosted qualification at that head and A46 v4 gallery remain pending. The complete hosted matrix qualifies 26ff only.",
+    "R4 implementation belongs to the concurrent waveform continuation; no R4/R5/R6 or physical product gate is closed by these edits.",
+    "Manifest counts are this exact observed snapshot and are not a strict sixty-worker completion result."
+  ],
+  "initial_document_check": {
+    "result": "failed",
+    "checks_passed": 24,
+    "checks_total": 25,
+    "report_sha256": "a76ff2bb91f7d5c8cb0a7201cb34780f44a0e67b5918e6bbb018e0e76e04853b",
+    "failed_checks": [
+      {
+        "name": "retained_header_six_gate_result",
+        "passed": true,
+        "observed": {
+          "evidence": "docs/development/2026-11-14-reference-refinement/reports/A40-candidate-ctest.log",
+          "summary": "100% tests passed out of 6",
+          "six_passed_rows": [
+            "test_standalone_drawing",
+            "test_standalone_quad_drawing",
+            "test_standalone_workspace_raster",
+            "test_standalone_material_acceptance",
+            "test_standalone_scaled_view",
+            "test_standalone_preset_raster"
+          ],
+          "new_execution": false
+        }
+      }
+    ],
+    "explanation": "The read-only document validator expected the older CTest spelling \"100% tests passed, 0 tests failed out of 6\". The retained CMake 4.4 log actually says \"100% tests passed out of 6\" and contains all six passed result rows. No underlying acceptance run failed or was rerun."
+  },
+  "source_evidence_unchanged_after_correction": true,
+  "latest_published_header_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+  "publication_update": "Root published the accepted header after the initial A45 document check. Current table, note and document hashes now identify 0881d1f4; 26ff matrix remains scoped to its earlier unchanged inputs. No v4 or new-head CI pass is inferred."
+}

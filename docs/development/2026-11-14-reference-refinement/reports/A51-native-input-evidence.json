@@ -1,0 +1,804 @@
+{
+  "admissible_claims": [
+    "Old executable ran on native X11/software with dummy audio and no replay/smoke; 19 untruncated typed painted observations remain.",
+    "Keyboard Upper targets appear after Service and Flat transitions and release; no painted pre-held keyboard prefix proves continuity across either transition.",
+    "A keyboard-held pedal remains across 1400x820 to 1180x820, then releases; it was not an app-pointer-held pedal.",
+    "One successfully admitted pointer capture persists through observed inside/outside/inside/outside movement, with Upper counts 1/0/1/0, then explicit release.",
+    "Final painted and joined snapshots are unheld, Session is stopped, faults/overflows/rejections are zero; one discarded command remains separately recorded and unidentified."
+  ],
+  "agent": "/root/w09_a51_native_input_evidence_review",
+  "assignment": "A51",
+  "audit_environment": {
+    "argv": [
+      "docs/development/2026-11-14-reference-refinement/reports/A51-audit-native-input.py",
+      "--repo",
+      ".",
+      "--published",
+      "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+      "--startup-bmp",
+      "../desktop-acceptance-startup.bmp",
+      "--current-app",
+      "../build-desktop/apps/standalone/hammond_standalone",
+      "--output",
+      "docs/development/2026-11-14-reference-refinement/reports/A51-native-input-evidence.json"
+    ],
+    "auditor_sha256": "187d2aa28a99bc3b5c54dfd4518e037eb0cdfdd1a07eceeecad85002f61463cb",
+    "git_head": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "initial_manual_image_read_failure": "A preliminary read used Path('.').parent, resolving the BMP in the repository and raising FileNotFoundError. Using Path.cwd().parent corrected the audit path; no product process ran.",
+    "published_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "published_tree": "f8144b771cda1264a8788f8297f5bfec999f4a08",
+    "python": "3.12.14",
+    "repo": "/workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ"
+  },
+  "checks": {
+    "159_retained_paths_match_published_source": true,
+    "19_observations_untruncated_in_512_capacity": true,
+    "all_161_live_paths_match_published_source": true,
+    "all_named_input_session_state_and_ownership_sources_unchanged": true,
+    "all_observation_snapshots_available_current_and_read_successful": true,
+    "base_commit_painter_matches_retained_inventory": true,
+    "capture_persists_through_upper_1_0_1_0": true,
+    "current_app_bytes_match_v4_record_and_differ_from_old_os_run": true,
+    "explicit_pointer_release_and_unheld_final_paint": true,
+    "final_snapshot_stopped_unheld_and_fault_free": true,
+    "flat_keyboard_transition_has_no_painted_preheld_prefix": true,
+    "native_x11_software_dummy_audio": true,
+    "no_application_errors": true,
+    "no_physical_midi_selected": true,
+    "no_replay_or_smoke_in_runner_or_diagnostics": true,
+    "old_binary_identity_agrees_between_records": true,
+    "only_painter_and_standalone_cmake_differ_in_inventory": true,
+    "paint_image_elapsed_clock_and_capture_counters_monotonic": true,
+    "painter_bytes_outside_midi_audio_help_and_header_region_unchanged": true,
+    "pedal_held_1400_to_1180_then_released_without_app_pointer_capture": true,
+    "positive_callbacks_and_frames_without_sample_failures": true,
+    "presentation_counts_and_capture_relationships_bounded": true,
+    "presentation_records_have_exact_scalar_types_and_fields": true,
+    "recorded_one_discard_and_sequence_gap_preserved": true,
+    "removing_only_material_test_registration_reproduces_old_cmake_hash": true,
+    "retained_diagnostics_hash_matches_root_review": true,
+    "retained_inventory_count_161": true,
+    "retained_startup_png_hash_matches_root_review": true,
+    "scratch_startup_bmp_matches_recorded_hash": true,
+    "service_keyboard_transition_has_no_painted_preheld_prefix": true,
+    "startup_bmp_png_all_rgba_pixels_equal": true,
+    "startup_capture_is_first_unheld_frame": true,
+    "stdout_and_stderr_empty": true
+  },
+  "checks_passed": 33,
+  "checks_total": 33,
+  "current_v4": {
+    "capture_environment": "dummy audio / dummy video / software renderer",
+    "new_native_os_input_run_by_A51": false,
+    "read_only_file_identity": {
+      "bytes": 3860368,
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-desktop/apps/standalone/hammond_standalone",
+      "sha256": "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f"
+    },
+    "recorded_published_commit": "0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b",
+    "recorded_v4_sha256": "01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f"
+  },
+  "gaps": [
+    "No new OS-input qualification for the current 01fe78 executable; v4 is a separate dummy-driver endpoint gallery.",
+    "No retained per-step lossless desktop frames, pointer-coordinate trace or physical press identities; locations/actions use root's contemporaneous observed review.",
+    "No simultaneous pre-held keyboard+pointer navigation, pointer-held pedal resize, focus-loss/reentry or post-release fresh-press journey is retained here.",
+    "No complete 1672x941 to 960x700 and reverse actual display journey; the old startup window exceeded the observed desktop width by 41 pixels.",
+    "No physical audio/MIDI, display scaling, DAW, semantic accessibility, audio deadline or acoustic fidelity qualification.",
+    "A18/A23 pending/acknowledged Session rendering evidence is a separate windowless/device-free harness, not this OS run or current v4."
+  ],
+  "image_evidence": {
+    "decoded_rgba_equal": true,
+    "dimensions": [
+      1400,
+      820
+    ],
+    "interactive_desktop_screenshots_retained_in_primary_bundle": false,
+    "pillow_version": "13.0.0",
+    "rgba_sha256": "b5a67cf3b065dd742ab89e7137c05cb901628e2ffda9bfa43c8dcde090fcdc37",
+    "startup_bmp": {
+      "bytes": 4592122,
+      "path": "/workspace/scratch/1bb6ee17ad7e/desktop-acceptance-startup.bmp",
+      "sha256": "656af3b42fb3a588c48cb780c77049347ea140eda28b25195d9338e83db2f2d6"
+    },
+    "startup_png_visual_review": "A51 inspected the retained full image: 1400x820 Dimensional Play, old header, no held-key highlight."
+  },
+  "next_actual_journey": [
+    "Reserve one native build/display owner, freeze intended published source, retain source/dependency/configuration/executable hashes and an exact ordinary argv with fresh outputs.",
+    "Use an identified physical display, OS scale, keyboard/pointer, audio device/backend and MIDI device/port; omit dummy drivers and replay/smoke for the real-device claim.",
+    "At 1672x941 retain painted keyboard Upper C4 plus pointer Upper C2 holds before F5/F7/F6/F4, then resize to 960x700 and repeat in reverse.",
+    "Record suppressed-pointer hold through navigation, outside movement/release, button-up return and fresh press/release; separately retain unsuppressed inside/outside hit-target behavior.",
+    "Repeat branch crossing while the pointer itself holds a pedal; record before/after hold and final release, deliberate focus loss and no resurrection on return.",
+    "Exercise hardware MIDI/UI overlapping owners and both release orders with exact routing; capture the chosen actual audio path separately from UI indicators.",
+    "Close an ordinary separate launch via the actual close control; retain exact process exit/status, joined diagnostics, all per-step lossless frames and untruncated typed records."
+  ],
+  "old_native_run": {
+    "audio": {
+      "buffer_bytes": 4096,
+      "buffer_frames": 512,
+      "callback_count": 7420,
+      "channels": 2,
+      "device_name": "Default output",
+      "driver": "dummy",
+      "format_failures": 0,
+      "last_lifecycle_status": "ok",
+      "last_render_status": "ok",
+      "native_float32_format": 33056,
+      "nonfinite_failures": 0,
+      "nonfinite_samples": 0,
+      "open_before_shutdown": true,
+      "overrange_failures": 0,
+      "overrange_samples": 0,
+      "render_failures": 0,
+      "rendered_frames": 3799040,
+      "requested_buffer_frames": 512,
+      "requested_device": "",
+      "requested_sample_rate": 48000,
+      "running_before_shutdown": true,
+      "sample_format": 33056,
+      "sample_rate": 48000
+    },
+    "base_commit_only": "e4968b2acd37b6f79683704356350070fe2fc329",
+    "configuration": "build-desktop; GCC Release; pinned SDL2/RtMidi; X11 software rendering; dummy audio",
+    "discarded_command_identity": "unassigned; the retained diagnostics do not identify the command",
+    "exit_code_receipt_in_primary_bundle": null,
+    "historical_executable_rehashed": false,
+    "last_painted": {
+      "elapsed_ms": 81716,
+      "held_targets": {
+        "lower": 0,
+        "pedals": 0,
+        "upper": 0
+      },
+      "inspection": {
+        "controls_pending": false,
+        "frame_clock": 3798016,
+        "publication_revision": 14840,
+        "snapshot_available": true,
+        "snapshot_read_succeeded": true,
+        "snapshot_state": "current"
+      },
+      "overlay": "none",
+      "pointer_capture": {
+        "attempts": 1,
+        "losses": 0,
+        "release_calls": 1,
+        "sdl_captured": false,
+        "successes": 1,
+        "ui_captured": false
+      },
+      "presentation": "flat",
+      "rendered_image": 2828,
+      "window_height": 820,
+      "window_width": 1180,
+      "workspace": "service"
+    },
+    "observations": [
+      {
+        "elapsed_ms": 1,
+        "frame_clock": 0,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 1,
+        "index": 0,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 89,
+        "frame_clock": 4096,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 2,
+        "index": 1,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 12656,
+        "frame_clock": 587264,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 195,
+        "index": 2,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "service"
+      },
+      {
+        "elapsed_ms": 12714,
+        "frame_clock": 589824,
+        "held_upper_lower_pedals": [
+          1,
+          0,
+          0
+        ],
+        "image": 196,
+        "index": 3,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "service"
+      },
+      {
+        "elapsed_ms": 14194,
+        "frame_clock": 658944,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 224,
+        "index": 4,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "service"
+      },
+      {
+        "elapsed_ms": 14238,
+        "frame_clock": 660992,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 225,
+        "index": 5,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "dimensional",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 14398,
+        "frame_clock": 668160,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 228,
+        "index": 6,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 14424,
+        "frame_clock": 669696,
+        "held_upper_lower_pedals": [
+          1,
+          0,
+          0
+        ],
+        "image": 229,
+        "index": 7,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 15893,
+        "frame_clock": 738304,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 290,
+        "index": 8,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 37060,
+        "frame_clock": 1721344,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          1
+        ],
+        "image": 1040,
+        "index": 9,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "size": [
+          1400,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 37424,
+        "frame_clock": 1738752,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          1
+        ],
+        "image": 1041,
+        "index": 10,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 37478,
+        "frame_clock": 1740800,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 1043,
+        "index": 11,
+        "pointer_capture": {
+          "attempts": 0,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": false,
+          "successes": 0,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 72492,
+        "frame_clock": 3368448,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 2391,
+        "index": 12,
+        "pointer_capture": {
+          "attempts": 1,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": true,
+          "successes": 1,
+          "ui_captured": true
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 72508,
+        "frame_clock": 3368960,
+        "held_upper_lower_pedals": [
+          1,
+          0,
+          0
+        ],
+        "image": 2392,
+        "index": 13,
+        "pointer_capture": {
+          "attempts": 1,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": true,
+          "successes": 1,
+          "ui_captured": true
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 72688,
+        "frame_clock": 3377152,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 2406,
+        "index": 14,
+        "pointer_capture": {
+          "attempts": 1,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": true,
+          "successes": 1,
+          "ui_captured": true
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 72846,
+        "frame_clock": 3384832,
+        "held_upper_lower_pedals": [
+          1,
+          0,
+          0
+        ],
+        "image": 2418,
+        "index": 15,
+        "pointer_capture": {
+          "attempts": 1,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": true,
+          "successes": 1,
+          "ui_captured": true
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 73125,
+        "frame_clock": 3397632,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 2439,
+        "index": 16,
+        "pointer_capture": {
+          "attempts": 1,
+          "losses": 0,
+          "release_calls": 0,
+          "sdl_captured": true,
+          "successes": 1,
+          "ui_captured": true
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 73204,
+        "frame_clock": 3401216,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 2445,
+        "index": 17,
+        "pointer_capture": {
+          "attempts": 1,
+          "losses": 0,
+          "release_calls": 1,
+          "sdl_captured": false,
+          "successes": 1,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "play"
+      },
+      {
+        "elapsed_ms": 73306,
+        "frame_clock": 3405824,
+        "held_upper_lower_pedals": [
+          0,
+          0,
+          0
+        ],
+        "image": 2450,
+        "index": 18,
+        "pointer_capture": {
+          "attempts": 1,
+          "losses": 0,
+          "release_calls": 1,
+          "sdl_captured": false,
+          "successes": 1,
+          "ui_captured": false
+        },
+        "presentation": "flat",
+        "size": [
+          1180,
+          820
+        ],
+        "workspace": "service"
+      }
+    ],
+    "ordinary_close_evidence": "Root review records actual Alt+F4 and return to Terminal. Final typed diagnostics plus identical shutdown source establish stopped/unheld joined cleanup; no numeric exit code is manufactured.",
+    "recorded_executable_sha256": "6eea84ba830ea8710b550c14561b4dd887bea8aac489fa82a467e3708e071b13",
+    "root_post_run_161_equal_attestation": 161,
+    "runner": "#!/bin/sh\nset -eu\nexport SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=x11 SDL_RENDER_DRIVER=software\nexport LD_LIBRARY_PATH=/workspace/scratch/1bb6ee17ad7e/native-sysroot/usr/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}\n/workspace/scratch/1bb6ee17ad7e/build-desktop/apps/standalone/hammond_standalone --width 1400 --height 820 --state /workspace/scratch/1bb6ee17ad7e/desktop-acceptance-controls.b3controls --diagnostics /workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/desktop-acceptance.json --screenshot /workspace/scratch/1bb6ee17ad7e/desktop-acceptance-startup.bmp > /workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/desktop-acceptance.stdout.txt 2> /workspace/scratch/1bb6ee17ad7e/Hammond-B3-Organ/docs/development/2026-11-14-reference-refinement/reports/desktop-acceptance.stderr.txt\n",
+    "runtime": {
+      "drawable_height": 820,
+      "drawable_width": 1180,
+      "rendered_images": 2828,
+      "renderer": "software",
+      "screenshot_while_held": false,
+      "screenshot_written": true,
+      "sdl_version": "2.32.10",
+      "video_driver": "x11",
+      "window_height": 820,
+      "window_width": 1180
+    },
+    "session": {
+      "discarded_commands": 1,
+      "fault_flags": 0,
+      "frame_clock": 3799040,
+      "held_after_shutdown": false,
+      "last_applied_sequence": 137,
+      "maximum_observed_peak": 0.08994736522436142,
+      "prepared": true,
+      "publication_revision": 14846,
+      "queue_overflows": 0,
+      "recovery_count": 0,
+      "rejected_commands": 0,
+      "resolved_sequence": 138,
+      "running_after_shutdown": false,
+      "sample_rate": 48000,
+      "snapshot_available": true
+    }
+  },
+  "primary_evidence": {
+    "desktop-acceptance-startup.png": {
+      "bytes": 494984,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/desktop-acceptance-startup.png",
+      "sha256": "9cb1ac834a30855cd2e15162854f256c38326dcc3361be93fc53b8070fbba54a"
+    },
+    "desktop-acceptance.json": {
+      "bytes": 14502,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/desktop-acceptance.json",
+      "sha256": "60aab57cd4a5d134765db921e111586299902cda9c02b8358579b06cb9ed7326"
+    },
+    "desktop-acceptance.stderr.txt": {
+      "bytes": 0,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/desktop-acceptance.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "desktop-acceptance.stdout.txt": {
+      "bytes": 0,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/desktop-acceptance.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "root-desktop-acceptance-review.json": {
+      "bytes": 2336,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/root-desktop-acceptance-review.json",
+      "sha256": "ff6b371a6b3e796c758551c9ec53101015097d7af364760b69724a60f275255a"
+    },
+    "root-desktop-acceptance-source.json": {
+      "bytes": 19532,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/root-desktop-acceptance-source.json",
+      "sha256": "6e6970c797fd6f55bc736e9a5486a72f1739d4f44a0d779d39eae4b24e9dff74"
+    }
+  },
+  "result": "pass_with_explicit_provenance_limits",
+  "schema": "a51-retained-native-input-evidence-v1",
+  "scope": "Read-only retained-evidence and current-source audit; no desktop, build, CTest, app or device execution.",
+  "source_comparison": {
+    "all_live_match_published": true,
+    "changed": [
+      {
+        "live_sha256": "3d3bcf0bd6ee595bed01e9d6090fe9e1ac221e1963795dfbaf23e630d4c2fa62",
+        "path": "apps/standalone/CMakeLists.txt",
+        "published_sha256": "3d3bcf0bd6ee595bed01e9d6090fe9e1ac221e1963795dfbaf23e630d4c2fa62",
+        "retained_sha256": "8edd6058b6be2a4aa2e0370cc722c8ce30a3b9a4b425639a3e1559331ec22c27"
+      },
+      {
+        "live_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+        "path": "apps/standalone/InstrumentView.cpp",
+        "published_sha256": "f323c8c2f5529b03c25deccb74f482d8b6312487492a45d14b94ef0e24cfbb6a",
+        "retained_sha256": "4127c0b2feb9b04f591fa9af82e4a6f3bbc162228205d7d92c8bdcca911ac45f"
+      }
+    ],
+    "comparison_canonical_sha256": "0b99557fe4bd806b824f7aeef7df105070d490d540b2220b83dcc6b2f175552e",
+    "critical_unchanged_sha256": {
+      "apps/standalone/AudioDevice.cpp": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0",
+      "apps/standalone/AudioDevice.h": "75ac25e462afb85c64b0298bf4e8c30d4979d3d30f231edec75c8ba41818673a",
+      "apps/standalone/MidiInput.cpp": "32e135e84a870dc0e7d6cd9f5a9804b6c75031d4b2fd8dcfcf4d0959bd210802",
+      "apps/standalone/MidiInput.h": "00a1e6d43f8db1721f7042b6c37b081f192dd85f55dc1bb999c81ee0a4014038",
+      "apps/standalone/Session.cpp": "196bc1872b526854a801ae09fcebf408a76c746e7d8e5f0ebd11d066e978f5af",
+      "apps/standalone/Session.h": "8c26342cafcad2022aabba273cdc8d22432fa3c450819f238fa8d546bc22528b",
+      "apps/standalone/StateFiles.cpp": "6cd0d2f26bb2f938781561d278f15f9230e5d84b6052e8554761dc8e96dfd3b6",
+      "apps/standalone/StateFiles.h": "ccf0aa7cb6d88df7c5e582a6154a12d28d9db97ab97d2833529ba8a328354a67",
+      "apps/standalone/UiModel.cpp": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+      "apps/standalone/UiModel.h": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+      "apps/standalone/main.cpp": "c8a802218ea0980651c7fb46b1a2afd4a0da63a600385cbfc41fe0e865af9f5b",
+      "data/parameter-registry.json": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+      "include/hammond/Engine.h": "da1adc2e635e5acfa3f214447b722122c3a162eb9ec602ba14fa744eb9d39ba6",
+      "include/hammond/NoteOwnership.h": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+      "include/hammond/PedalNoteOwnership.h": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+      "src/ControlStateIO.cpp": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+      "src/Engine.cpp": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a",
+      "src/NoteOwnership.cpp": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+      "src/PedalNoteOwnership.cpp": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde"
+    },
+    "inventory_paths": 161,
+    "painter_change": "Audio/MIDI/Help Flat material forwarding and wide Dimensional header typography; exact source outside the contiguous three-function region is identical.",
+    "qualification_boundary": "159 matching retained paths establish source identity, not a native OS rerun of a different executable. The 161-path inventory is not a complete compiler/dependency/build closure.",
+    "removed_cmake_block_sha256": "67ef26149c4ce4b4bdbe2d93d633eaa87c693465e2b6bbb65658662ca07fa6c5",
+    "standalone_cmake_change": "Only the ten-line material-acceptance test registration; removing it reproduces the retained old CMake SHA-256 exactly.",
+    "unchanged_paths": 159
+  },
+  "supporting_evidence": {
+    "A18-result.json": {
+      "bytes": 4090,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A18-result.json",
+      "sha256": "839e548d456e67235ee32eed0cb0feae2aed1527af0b732b6bee5a1889646d63"
+    },
+    "A20-result.json": {
+      "bytes": 56488,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A20-result.json",
+      "sha256": "732767386cd716937c28caefcd076a3700e5529b59342884ac3592895657269c"
+    },
+    "A23-pending-independent.json": {
+      "bytes": 13592,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A23-pending-independent.json",
+      "sha256": "2339aa76fec9c6b5366a7e77189dc55503ac3aff37fb9f4bffd8c9237884fa79"
+    },
+    "A26-identities.json": {
+      "bytes": 16466,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A26-identities.json",
+      "sha256": "f7eb055c51c90b158036438ac6d8fea2e0575c2a67f44c385cdc5ad0f4816879"
+    },
+    "A34-audio-state-isolation.json": {
+      "bytes": 29778,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A34-audio-state-isolation.json",
+      "sha256": "c22708054c4907b0ace65dbc256503414c395fd7c3915182c9708fb8b1da30fe"
+    },
+    "A40-reference-header-refinement.json": {
+      "bytes": 8220,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A40-reference-header-refinement.json",
+      "sha256": "0aa332fe45dc8dcfea7d0b1fbe6fe085e752bb73b5735feb862277c6f147cb3a"
+    },
+    "A46-final-native-gallery.json": {
+      "bytes": 25559,
+      "path": "docs/development/2026-11-14-reference-refinement/reports/A46-final-native-gallery.json",
+      "sha256": "878de8fe2c10866feebd258702d2c3faa830ad1b29df660036fe5db30e6ab6ca"
+    }
+  },
+  "wave": 9
+}

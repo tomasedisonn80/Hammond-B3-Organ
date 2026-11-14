@@ -35,7 +35,6 @@ using namespace hammond;
 using namespace hammond::standalone;
 using Pixel = std::array<std::uint8_t, 4>;
 using Painter = void (*)(Drawing&, const UiModel&, const InstrumentViewInfo&);
-constexpr std::size_t kKeyCount = 2 * kManualKeyCount + kPedalCount;
 constexpr Pixel kCyan{165, 228, 223, 255};
 
 struct Counts {

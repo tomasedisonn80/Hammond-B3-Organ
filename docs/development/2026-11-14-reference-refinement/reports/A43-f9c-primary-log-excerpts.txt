@@ -1,0 +1,1376 @@
+A43 primary job-log extracts for f9c11a498ecd88886349415205fc5dccc627033e
+Line endings are normalized in this excerpt file. Full decoded-log hashes refer to the original UTF-8 bytes.
+
+=== Job 132597197934 | run 43643877469 | Linux GCC ASan + UBSan + leaks ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=success sha256_utf8=965bf87b39944b6aa424439761df0a060ef90817035b1858629b11c32fe315d3 bytes_utf8=323337
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:27.4445063Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:27.4466477Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:27.4467246Z Hosted Compute Agent
+4: 2026-11-14T21:38:27.4467852Z Version: 20261103.629
+5: 2026-11-14T21:38:27.4468342Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:27.4469142Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:27.4469667Z Worker ID: {c2239c8b-d930-4124-bc96-bd75e51d0cfd}
+8: 2026-11-14T21:38:27.4470212Z Region: centralus
+9: 2026-11-14T21:38:27.4470680Z Cloud: Azure
+10: 2026-11-14T21:38:27.4471088Z ##[endgroup]
+11: 2026-11-14T21:38:27.4472431Z ##[group]Operating System
+12: 2026-11-14T21:38:27.4472987Z Ubuntu
+13: 2026-11-14T21:38:27.4473384Z 24.04.5
+14: 2026-11-14T21:38:27.4474091Z LTS
+15: 2026-11-14T21:38:27.4474512Z ##[endgroup]
+16: 2026-11-14T21:38:27.4474913Z ##[group]Runner Image
+17: 2026-11-14T21:38:27.4475447Z Image: ubuntu-24.04
+18: 2026-11-14T21:38:27.4475878Z Version: 20261111.370.1
+19: 2026-11-14T21:38:27.4476893Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+20: 2026-11-14T21:38:27.4478043Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+21: 2026-11-14T21:38:27.4479196Z ##[endgroup]
+53: 2026-11-14T21:38:28.2201273Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+54: 2026-11-14T21:38:28.2201936Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+55: 2026-11-14T21:38:28.2202489Z   LSAN_OPTIONS: exitcode=23
+56: 2026-11-14T21:38:28.2203022Z ##[endgroup]
+57: 2026-11-14T21:38:28.4777525Z Syncing repository: tomasedisonn80/Hammond-B3-Organ
+113: 2026-11-14T21:38:32.5424029Z f9c11a498ecd88886349415205fc5dccc627033e
+125: 2026-11-14T21:38:32.8834432Z f9c11a498ecd88886349415205fc5dccc627033e
+165: 2026-11-14T21:38:32.9860567Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+166: 2026-11-14T21:38:32.9860906Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+167: 2026-11-14T21:38:32.9861224Z   LSAN_OPTIONS: exitcode=23
+168: 2026-11-14T21:38:32.9861473Z ##[endgroup]
+169: 2026-11-14T21:38:33.0800450Z ##[group]Installed versions
+182: 2026-11-14T21:38:33.1018980Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+183: 2026-11-14T21:38:33.1019319Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+184: 2026-11-14T21:38:33.1019648Z   LSAN_OPTIONS: exitcode=23
+185: 2026-11-14T21:38:33.1020085Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+186: 2026-11-14T21:38:33.1020501Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+192: 2026-11-14T21:38:33.1118375Z f9c11a498ecd88886349415205fc5dccc627033e
+205: 2026-11-14T21:38:34.4103274Z ##[group]Run cmake --preset sanitizers -G "Unix Makefiles" \
+206: 2026-11-14T21:38:34.4103740Z [36;1mcmake --preset sanitizers -G "Unix Makefiles" \[0m
+207: 2026-11-14T21:38:34.4104088Z [36;1m  -DCMAKE_CXX_COMPILER=g++ \[0m
+208: 2026-11-14T21:38:34.4104551Z [36;1m  -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log[0m
+212: 2026-11-14T21:38:34.4119973Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+213: 2026-11-14T21:38:34.4120350Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+214: 2026-11-14T21:38:34.4120664Z   LSAN_OPTIONS: exitcode=23
+215: 2026-11-14T21:38:34.4120994Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+216: 2026-11-14T21:38:34.4121462Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+229: 2026-11-14T21:38:34.6502046Z -- The CXX compiler identification is GNU 13.3.0
+244: 2026-11-14T21:38:35.7876869Z ##[group]Run cmake --build --preset sanitizers --parallel 2 --verbose 2>&1 | tee ci-logs/build.log
+245: 2026-11-14T21:38:35.7877469Z [36;1mcmake --build --preset sanitizers --parallel 2 --verbose 2>&1 | tee ci-logs/build.log[0m
+246: 2026-11-14T21:38:35.7889308Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+247: 2026-11-14T21:38:35.7889688Z env:
+249: 2026-11-14T21:38:35.7890586Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+250: 2026-11-14T21:38:35.7890925Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+251: 2026-11-14T21:38:35.7891217Z   LSAN_OPTIONS: exitcode=23
+252: 2026-11-14T21:38:35.7891519Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+253: 2026-11-14T21:38:35.7891875Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+1424: 2026-11-14T21:39:39.7200081Z ##[group]Run ctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error \
+1425: 2026-11-14T21:39:39.7200651Z [36;1mctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error \[0m
+1426: 2026-11-14T21:39:39.7201237Z [36;1m  --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log[0m
+1427: 2026-11-14T21:39:39.7214501Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+1430: 2026-11-14T21:39:39.7215545Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+1431: 2026-11-14T21:39:39.7215900Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+1432: 2026-11-14T21:39:39.7216225Z   LSAN_OPTIONS: exitcode=23
+1433: 2026-11-14T21:39:39.7216759Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+1434: 2026-11-14T21:39:39.7217226Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+1443: 2026-11-14T21:39:40.5980388Z   1/137 Test   #2: test_contact_bank .................................   Passed    0.81 sec
+1445: 2026-11-14T21:39:41.5838191Z   2/137 Test   #1: test_console_engine ...............................   Passed    1.79 sec
+1447: 2026-11-14T21:39:41.6879956Z   3/137 Test   #3: test_contact_rate .................................   Passed    1.09 sec
+1449: 2026-11-14T21:39:42.2684819Z   4/137 Test   #5: test_controls .....................................   Passed    0.58 sec
+1451: 2026-11-14T21:39:42.3002040Z   5/137 Test   #6: test_core_robustness ..............................   Passed    0.03 sec
+1453: 2026-11-14T21:39:42.4143171Z   6/137 Test   #7: test_decimal ......................................   Passed    0.11 sec
+1455: 2026-11-14T21:39:42.5436457Z   7/137 Test   #4: test_control_io ...................................   Passed    0.96 sec
+1457: 2026-11-14T21:39:43.3290633Z   8/137 Test   #8: test_engine .......................................   Passed    0.91 sec
+1459: 2026-11-14T21:39:44.7168765Z   9/137 Test  #10: test_factory_runtime ..............................   Passed    1.39 sec
+1461: 2026-11-14T21:39:44.7496211Z  10/137 Test  #11: test_fixed_registration_data ......................   Passed    0.03 sec
+1463: 2026-11-14T21:39:48.7989435Z  11/137 Test   #9: test_engine_rate ..................................   Passed    6.26 sec
+1465: 2026-11-14T21:39:49.6874986Z  12/137 Test  #12: test_fixed_registration_engine ....................   Passed    4.94 sec
+1467: 2026-11-14T21:39:51.7459181Z  13/137 Test  #14: test_host_timeline ................................   Passed    2.06 sec
+1469: 2026-11-14T21:39:52.9736617Z  14/137 Test  #13: test_fixed_registration_lifecycle .................   Passed    4.17 sec
+1471: 2026-11-14T21:39:53.3713907Z  15/137 Test  #16: test_note_ownership ...............................   Passed    0.40 sec
+1473: 2026-11-14T21:39:55.6145539Z  16/137 Test  #17: test_numerics .....................................   Passed    2.24 sec
+1475: 2026-11-14T21:39:57.0665907Z  17/137 Test  #15: test_input_processor ..............................   Passed    5.32 sec
+1477: 2026-11-14T21:39:57.1204723Z  18/137 Test  #19: test_parameter_bridge .............................   Passed    0.05 sec
+1479: 2026-11-14T21:39:57.5760319Z  19/137 Test  #18: test_owned_lifecycle ..............................   Passed    1.94 sec
+1481: 2026-11-14T21:39:57.6547494Z  20/137 Test  #21: test_pedal_controls ...............................   Passed    0.07 sec
+1483: 2026-11-14T21:39:57.7471601Z  21/137 Test  #22: test_pedal_engine .................................   Passed    0.10 sec
+1485: 2026-11-14T21:39:58.1625922Z  22/137 Test  #23: test_pedal_integration ............................   Passed    0.41 sec
+1487: 2026-11-14T21:39:58.1823553Z  23/137 Test  #24: test_pedal_note_ownership .........................   Passed    0.02 sec
+1489: 2026-11-14T21:39:58.2102990Z  24/137 Test  #20: test_partial_key ..................................   Passed    1.09 sec
+1491: 2026-11-14T21:39:58.2343519Z  25/137 Test  #25: test_pedal_realtime ...............................   Passed    0.05 sec
+1493: 2026-11-14T21:39:58.2681029Z  26/137 Test  #27: test_pedal_routing ................................   Passed    0.03 sec
+1495: 2026-11-14T21:39:58.5265256Z  27/137 Test  #26: test_pedal_reference ..............................   Passed    0.32 sec
+1497: 2026-11-14T21:39:58.6191540Z  28/137 Test  #29: test_pedal_voice ..................................   Passed    0.09 sec
+1499: 2026-11-14T21:39:58.7302831Z  29/137 Test  #30: test_percussion ...................................   Passed    0.11 sec
+1501: 2026-11-14T21:39:58.8851152Z  30/137 Test  #31: test_percussion_controls ..........................   Passed    0.15 sec
+1503: 2026-11-14T21:39:58.9989530Z  31/137 Test  #32: test_percussion_rate ..............................   Passed    0.11 sec
+1505: 2026-11-14T21:39:59.8050762Z  32/137 Test  #28: test_pedal_sources ................................   Passed    1.54 sec
+1507: 2026-11-14T21:40:00.2051378Z  33/137 Test  #34: test_performance_input ............................   Passed    0.40 sec
+1509: 2026-11-14T21:40:00.2151827Z  34/137 Test  #35: test_preset_parameter_boundaries ..................   Passed    0.01 sec
+1511: 2026-11-14T21:40:00.8087927Z  35/137 Test  #36: test_preset_realtime ..............................   Passed    0.59 sec
+1513: 2026-11-14T21:40:02.0525868Z  36/137 Test  #33: test_performance_acceptance .......................   Passed    3.05 sec
+1515: 2026-11-14T21:40:03.6886417Z  37/137 Test  #38: test_realtime .....................................   Passed    1.64 sec
+1517: 2026-11-14T21:40:04.2019523Z  38/137 Test  #37: test_profile ......................................   Passed    3.39 sec
+1519: 2026-11-14T21:40:07.7601657Z  39/137 Test  #39: test_realtime_console .............................   Passed    4.07 sec
+1521: 2026-11-14T21:40:08.0558917Z  40/137 Test  #41: test_rotary_motion ................................   Passed    0.30 sec
+1523: 2026-11-14T21:40:08.1465719Z  41/137 Test  #42: test_rotary_propagation ...........................   Passed    0.09 sec
+1525: 2026-11-14T21:40:08.5023274Z  42/137 Test  #43: test_rotary_propagation_allocation ................   Passed    0.36 sec
+1527: 2026-11-14T21:40:09.0845740Z  43/137 Test  #40: test_realtime_pedals ..............................   Passed    4.88 sec
+1529: 2026-11-14T21:40:09.6888908Z  44/137 Test  #45: test_scanner_rotor ................................   Passed    0.60 sec
+1531: 2026-11-14T21:40:10.3336871Z  45/137 Test  #46: test_source_rate ..................................   Passed    0.64 sec
+1533: 2026-11-14T21:40:10.5144122Z  46/137 Test  #47: test_state_exchange ...............................   Passed    0.18 sec
+1535: 2026-11-14T21:40:12.7869845Z  47/137 Test  #48: test_tonewheel ....................................   Passed    2.27 sec
+1537: 2026-11-14T21:40:13.8601314Z  48/137 Test  #49: python_test_audio_analysis ........................   Passed    1.07 sec
+1539: 2026-11-14T21:40:15.0949858Z  49/137 Test  #50: python_test_calibration_session_records ...........   Passed    1.23 sec
+1541: 2026-11-14T21:40:15.9235662Z  50/137 Test  #51: python_test_capture ...............................   Passed    0.83 sec
+1543: 2026-11-14T21:40:16.3732604Z  51/137 Test  #52: python_test_capture_audio .........................   Passed    0.45 sec
+1545: 2026-11-14T21:40:18.2879212Z  52/137 Test  #53: python_test_capture_audio_admission ...............   Passed    1.91 sec
+1547: 2026-11-14T21:40:19.2631191Z  53/137 Test  #44: test_scanner_line .................................   Passed   10.76 sec
+1549: 2026-11-14T21:40:19.4763327Z  54/137 Test  #55: python_test_capture_common ........................   Passed    0.21 sec
+1551: 2026-11-14T21:40:20.0222898Z  55/137 Test  #56: python_test_capture_comparison ....................   Passed    0.55 sec
+1553: 2026-11-14T21:40:20.7077395Z  56/137 Test  #57: python_test_capture_corpus ........................   Passed    0.69 sec
+1555: 2026-11-14T21:40:22.1262894Z  57/137 Test  #58: python_test_capture_corpus_admission ..............   Passed    1.42 sec
+1557: 2026-11-14T21:40:23.1828724Z  58/137 Test  #54: python_test_capture_cli_pipeline ..................   Passed    4.89 sec
+1559: 2026-11-14T21:40:23.2784486Z  59/137 Test  #59: python_test_capture_demo ..........................   Passed    1.15 sec
+1561: 2026-11-14T21:40:27.0884222Z  60/137 Test  #60: python_test_capture_graph_scale ...................   Passed    3.91 sec
+1563: 2026-11-14T21:40:27.4793129Z  61/137 Test  #61: python_test_capture_install .......................   Passed    4.20 sec
+1565: 2026-11-14T21:40:28.6695301Z  62/137 Test  #63: python_test_capture_metadata_read .................   Passed    1.19 sec
+1567: 2026-11-14T21:40:29.4388240Z  63/137 Test  #64: python_test_capture_numerics ......................   Passed    0.77 sec
+1569: 2026-11-14T21:40:29.8378074Z  64/137 Test  #65: python_test_capture_policy ........................   Passed    0.40 sec
+1571: 2026-11-14T21:40:30.4830593Z  65/137 Test  #66: python_test_capture_readiness .....................   Passed    0.65 sec
+1573: 2026-11-14T21:40:30.8972335Z  66/137 Test  #62: python_test_capture_job ...........................   Passed    3.81 sec
+1575: 2026-11-14T21:40:31.0102545Z  67/137 Test  #68: python_test_capture_standalone_interface ..........   Passed    0.11 sec
+1577: 2026-11-14T21:40:36.1445360Z  68/137 Test  #69: python_test_capture_study .........................   Passed    5.13 sec
+1579: 2026-11-14T21:40:36.5174635Z  69/137 Test  #67: python_test_capture_replay ........................   Passed    6.03 sec
+1581: 2026-11-14T21:40:41.3082929Z  70/137 Test  #71: python_test_chapel_presets ........................   Passed    4.79 sec
+1583: 2026-11-14T21:40:43.6739809Z  71/137 Test  #72: python_test_cli_unicode ...........................   Passed    2.37 sec
+1585: 2026-11-14T21:40:45.3246381Z  72/137 Test  #73: python_test_compile_fixed_registrations ...........   Passed    1.65 sec
+1587: 2026-11-14T21:40:48.1727119Z  73/137 Test  #74: python_test_compile_pedal_routing .................   Passed    2.85 sec
+1589: 2026-11-14T21:40:48.7383775Z  74/137 Test  #70: python_test_chapel_controls .......................   Passed   12.59 sec
+1591: 2026-11-14T21:40:52.1498585Z  75/137 Test  #75: python_test_compile_profile .......................   Passed    3.98 sec
+1593: 2026-11-14T21:40:52.9890499Z  76/137 Test  #76: python_test_console_benchmark .....................   Passed    4.25 sec
+1595: 2026-11-14T21:40:55.1209320Z  77/137 Test  #77: python_test_console_catalog .......................   Passed    2.97 sec
+1597: 2026-11-14T21:41:01.6865477Z  78/137 Test  #79: python_test_console_trace .........................   Passed    6.57 sec
+1599: 2026-11-14T21:41:01.8968840Z  79/137 Test  #80: python_test_continuation_ledger ...................   Passed    0.21 sec
+1601: 2026-11-14T21:41:02.6440459Z  80/137 Test  #81: python_test_demo_bundle ...........................   Passed    0.75 sec
+1603: 2026-11-14T21:41:03.0471869Z  81/137 Test  #82: python_test_factory_reference .....................   Passed    0.40 sec
+1605: 2026-11-14T21:41:03.1753132Z  82/137 Test  #78: python_test_console_evidence ......................   Passed   10.19 sec
+1607: 2026-11-14T21:41:03.4530424Z  83/137 Test  #83: python_test_fixed_registration_source_admission ...   Passed    0.41 sec
+1609: 2026-11-14T21:41:07.8833073Z  84/137 Test  #84: python_test_fixture_catalog .......................   Passed    4.71 sec
+1611: 2026-11-14T21:41:08.1081166Z  85/137 Test  #86: python_test_model_info ............................   Passed    0.22 sec
+1613: 2026-11-14T21:41:08.4739234Z  86/137 Test  #87: python_test_native_bundle_inventory ...............   Passed    0.37 sec
+1615: 2026-11-14T21:41:10.0399861Z  87/137 Test  #88: python_test_parameter_bridge ......................   Passed    1.57 sec
+1617: 2026-11-14T21:41:11.1225066Z  88/137 Test  #89: python_test_parameters ............................   Passed    1.08 sec
+1619: 2026-11-14T21:41:12.0224828Z  89/137 Test  #85: python_test_install ...............................   Passed    8.57 sec
+1621: 2026-11-14T21:41:12.4328951Z  90/137 Test  #90: python_test_partial_key_render ....................   Passed    1.31 sec
+1623: 2026-11-14T21:41:18.1371274Z  91/137 Test  #92: python_test_pedal_demo ............................   Passed    5.70 sec
+1625: 2026-11-14T21:41:18.4638939Z  92/137 Test  #93: python_test_pedal_map .............................   Passed    0.33 sec
+1627: 2026-11-14T21:41:21.4639905Z  93/137 Test  #91: python_test_pedal_catalog .........................   Passed    9.44 sec
+1629: 2026-11-14T21:41:23.7242848Z  94/137 Test  #95: python_test_pedal_render_evidence .................   Passed    2.26 sec
+1631: 2026-11-14T21:41:24.5460362Z  95/137 Test  #96: python_test_pedal_session .........................   Passed    0.82 sec
+1633: 2026-11-14T21:41:25.4913357Z  96/137 Test  #94: python_test_pedal_render_cli ......................   Passed    7.03 sec
+1635: 2026-11-14T21:41:31.6053084Z  97/137 Test  #97: python_test_pedal_trace ...........................   Passed    7.06 sec
+1637: 2026-11-14T21:41:31.8320798Z  98/137 Test  #98: python_test_plot_console_trace ....................   Passed    6.34 sec
+1639: 2026-11-14T21:41:33.0626553Z  99/137 Test #100: python_test_preset_parameter_oracle ...............   Passed    1.23 sec
+1641: 2026-11-14T21:41:47.7631113Z 100/137 Test #101: python_test_render ................................   Passed   14.70 sec
+1643: 2026-11-14T21:41:49.0410970Z 101/137 Test  #99: python_test_plot_pedal_trace ......................   Passed   17.44 sec
+1645: 2026-11-14T21:41:51.5620986Z 102/137 Test #103: python_test_repository_integrity ..................   Passed    2.52 sec
+1647: 2026-11-14T21:41:52.2313225Z 103/137 Test #104: python_test_rotary_motion_acceptance ..............   Passed    0.67 sec
+1649: 2026-11-14T21:41:54.2198566Z 104/137 Test #105: python_test_rotary_profile ........................   Passed    1.99 sec
+1651: 2026-11-14T21:41:56.6814915Z 105/137 Test #102: python_test_render_fixture ........................   Passed    8.92 sec
+1653: 2026-11-14T21:41:58.6069897Z 106/137 Test #107: python_test_rotary_reference ......................   Passed    1.93 sec
+1655: 2026-11-14T21:42:01.1337797Z 107/137 Test #108: python_test_scanner_ac_reference ..................   Passed    2.53 sec
+1657: 2026-11-14T21:42:04.0291991Z 108/137 Test #109: python_test_scanner_line_profile ..................   Passed    2.90 sec
+1659: 2026-11-14T21:42:09.8819764Z 109/137 Test #106: python_test_rotary_propagation_acceptance .........   Passed   15.66 sec
+1661: 2026-11-14T21:42:12.1928184Z 110/137 Test #111: python_test_scanner_transient_reference ...........   Passed    2.31 sec
+1663: 2026-11-14T21:42:12.9635112Z 111/137 Test #112: python_test_sdl2_dependency .......................   Passed    0.77 sec
+1665: 2026-11-14T21:42:13.5534573Z 112/137 Test #113: python_test_standalone_session_records ............   Passed    0.59 sec
+1667: 2026-11-14T21:42:17.3134130Z 113/137 Test #114: python_test_verify_render .........................   Passed    3.76 sec
+1669: 2026-11-14T21:42:18.9147100Z 114/137 Test #115: python_test_vst3_build_tools ......................   Passed    1.60 sec
+1671: 2026-11-14T21:42:19.6742037Z 115/137 Test #116: test_standalone_concurrency .......................   Passed    0.76 sec
+1673: 2026-11-14T21:42:19.6904272Z 116/137 Test #117: test_standalone_external_control ..................   Passed    0.02 sec
+1675: 2026-11-14T21:42:19.7265294Z 117/137 Test #118: test_standalone_inspection_acceptance .............   Passed    0.04 sec
+1677: 2026-11-14T21:42:19.7460174Z 118/137 Test #119: test_standalone_inspection_author .................   Passed    0.02 sec
+1679: 2026-11-14T21:42:20.2249888Z 119/137 Test #120: test_standalone_midi_concurrency ..................   Passed    0.48 sec
+1681: 2026-11-14T21:42:20.2427118Z 120/137 Test #121: test_standalone_midi_discovery ....................   Passed    0.02 sec
+1683: 2026-11-14T21:42:20.2634476Z 121/137 Test #122: test_standalone_midi_input ........................   Passed    0.02 sec
+1685: 2026-11-14T21:42:20.3885598Z 122/137 Test #123: test_standalone_midi_replay .......................   Passed    0.13 sec
+1687: 2026-11-14T21:42:20.6076160Z 123/137 Test #124: test_standalone_midi_session ......................   Passed    0.22 sec
+1689: 2026-11-14T21:42:20.7822797Z 124/137 Test #125: test_standalone_preset_concurrency ................   Passed    0.17 sec
+1691: 2026-11-14T21:42:27.3239350Z 125/137 Test #110: python_test_scanner_native_ac .....................   Passed   23.29 sec
+1693: 2026-11-14T21:42:29.9108654Z 126/137 Test #126: test_standalone_preset_ui .........................   Passed    9.13 sec
+1695: 2026-11-14T21:42:30.4087227Z 127/137 Test #128: test_standalone_reference_layout ..................   Passed    0.50 sec
+1697: 2026-11-14T21:42:30.5711461Z 128/137 Test #127: test_standalone_projection ........................   Passed    3.25 sec
+1699: 2026-11-14T21:42:30.6428782Z 129/137 Test #130: test_standalone_state_files .......................   Passed    0.07 sec
+1701: 2026-11-14T21:42:31.5362393Z 130/137 Test #131: test_standalone_ui ................................   Passed    0.89 sec
+1703: 2026-11-14T21:42:31.7777763Z 131/137 Test #129: test_standalone_session ...........................   Passed    1.37 sec
+1705: 2026-11-14T21:42:32.3963957Z 132/137 Test #132: test_standalone_workspace_acceptance ..............   Passed    0.86 sec
+1707: 2026-11-14T21:42:32.4227445Z 133/137 Test #134: test_standalone_workspaces_author .................   Passed    0.03 sec
+1709: 2026-11-14T21:42:32.4472468Z 134/137 Test #135: test_standalone_midi_backend ......................   Passed    0.02 sec
+1711: 2026-11-14T21:42:32.4549589Z 135/137 Test #136: test_standalone_midi_backend_quarantine ...........   Passed    0.01 sec
+1713: 2026-11-14T21:42:42.9254040Z 136/137 Test #137: test_standalone_benchmark .........................   Passed   10.47 sec
+1714: 2026-11-14T21:42:50.6426261Z 137/137 Test #133: test_standalone_workspace_continuity ..............   Passed   18.86 sec
+1716: 2026-11-14T21:42:50.6432277Z 100% tests passed, 0 tests failed out of 137
+1725: 2026-11-14T21:42:50.6435206Z Total Test time (real) = 190.90 sec
+1745: 2026-11-14T21:42:50.6539454Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+1746: 2026-11-14T21:42:50.6539763Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+1747: 2026-11-14T21:42:50.6540024Z   LSAN_OPTIONS: exitcode=23
+1748: 2026-11-14T21:42:50.6540388Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+1749: 2026-11-14T21:42:50.6540720Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+
+=== Job 132597198149 | run 43643877469 | Release (macOS AppleClang) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=success sha256_utf8=9e47fd00e26ea46aa6a32feae63168a71722a368408ee2f12e98ed1083fa13d7 bytes_utf8=283857
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:28.3269100Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:28.3288210Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:28.3288810Z Hosted Compute Agent
+4: 2026-11-14T21:38:28.3289180Z Version: 20261103.629
+5: 2026-11-14T21:38:28.3289610Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:28.3290110Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:28.3291690Z Worker ID: {17be1ca5-a565-4967-9b38-35e007eaacee}
+8: 2026-11-14T21:38:28.3292210Z Region: westus
+9: 2026-11-14T21:38:28.3292560Z Cloud: MacCloud
+10: 2026-11-14T21:38:28.3292900Z ##[endgroup]
+11: 2026-11-14T21:38:28.3294030Z ##[group]Operating System
+12: 2026-11-14T21:38:28.3294420Z macOS
+13: 2026-11-14T21:38:28.3294730Z 15.8.2
+14: 2026-11-14T21:38:28.3295060Z 24H232
+15: 2026-11-14T21:38:28.3295410Z ##[endgroup]
+16: 2026-11-14T21:38:28.3295770Z ##[group]Runner Image
+17: 2026-11-14T21:38:28.3296170Z Image: macos-15-arm64
+18: 2026-11-14T21:38:28.3296540Z Version: 20261104.0514.1
+19: 2026-11-14T21:38:28.3297430Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20261104.0514/images/macos/macos-15-arm64-Readme.md
+20: 2026-11-14T21:38:28.3298570Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20261104.0514
+21: 2026-11-14T21:38:28.3299340Z ##[endgroup]
+111: 2026-11-14T21:38:34.7943310Z f9c11a498ecd88886349415205fc5dccc627033e
+123: 2026-11-14T21:38:35.6893980Z f9c11a498ecd88886349415205fc5dccc627033e
+183: 2026-11-14T21:38:36.8024000Z f9c11a498ecd88886349415205fc5dccc627033e
+193: 2026-11-14T21:38:37.4064730Z ##[group]Run cmake --preset release -G "Unix Makefiles" \
+194: 2026-11-14T21:38:37.4065290Z [36;1mcmake --preset release -G "Unix Makefiles" \[0m
+195: 2026-11-14T21:38:37.4065680Z [36;1m  -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \[0m
+196: 2026-11-14T21:38:37.4066120Z [36;1m  -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log[0m
+208: 2026-11-14T21:38:42.1952900Z -- The CXX compiler identification is AppleClang 17.0.0.17000013
+221: 2026-11-14T21:38:46.7525260Z ##[group]Run cmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log
+222: 2026-11-14T21:38:46.7526070Z [36;1mcmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log[0m
+223: 2026-11-14T21:38:46.7580380Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+224: 2026-11-14T21:38:46.7580860Z env:
+1055: 2026-11-14T21:40:04.9983330Z ##[group]Run ctest --preset release --parallel 2 --timeout 300 --no-tests=error \
+1056: 2026-11-14T21:40:04.9983880Z [36;1mctest --preset release --parallel 2 --timeout 300 --no-tests=error \[0m
+1057: 2026-11-14T21:40:04.9984320Z [36;1m  --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log[0m
+1058: 2026-11-14T21:40:05.0040280Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+1070: 2026-11-14T21:40:05.1599860Z   1/137 Test   #2: test_contact_bank .................................   Passed    0.05 sec
+1072: 2026-11-14T21:40:05.2924240Z   2/137 Test   #3: test_contact_rate .................................   Passed    0.12 sec
+1074: 2026-11-14T21:40:05.3734980Z   3/137 Test   #1: test_console_engine ...............................   Passed    0.26 sec
+1076: 2026-11-14T21:40:05.4533930Z   4/137 Test   #4: test_control_io ...................................   Passed    0.15 sec
+1078: 2026-11-14T21:40:05.4602450Z   5/137 Test   #6: test_core_robustness ..............................   Passed    0.01 sec
+1080: 2026-11-14T21:40:05.4780150Z   6/137 Test   #5: test_controls .....................................   Passed    0.10 sec
+1082: 2026-11-14T21:40:05.4898950Z   7/137 Test   #7: test_decimal ......................................   Passed    0.03 sec
+1084: 2026-11-14T21:40:05.5666020Z   8/137 Test   #8: test_engine .......................................   Passed    0.09 sec
+1086: 2026-11-14T21:40:05.7412400Z   9/137 Test  #10: test_factory_runtime ..............................   Passed    0.17 sec
+1088: 2026-11-14T21:40:05.7656200Z  10/137 Test  #11: test_fixed_registration_data ......................   Passed    0.02 sec
+1090: 2026-11-14T21:40:06.0466000Z  11/137 Test   #9: test_engine_rate ..................................   Passed    0.55 sec
+1092: 2026-11-14T21:40:06.6208840Z  12/137 Test  #13: test_fixed_registration_lifecycle .................   Passed    0.58 sec
+1094: 2026-11-14T21:40:06.6511540Z  13/137 Test  #12: test_fixed_registration_engine ....................   Passed    0.87 sec
+1096: 2026-11-14T21:40:06.9950810Z  14/137 Test  #14: test_host_timeline ................................   Passed    0.38 sec
+1098: 2026-11-14T21:40:07.0444020Z  15/137 Test  #16: test_note_ownership ...............................   Passed    0.05 sec
+1100: 2026-11-14T21:40:07.5217120Z  16/137 Test  #15: test_input_processor ..............................   Passed    0.87 sec
+1102: 2026-11-14T21:40:07.6722950Z  17/137 Test  #18: test_owned_lifecycle ..............................   Passed    0.15 sec
+1104: 2026-11-14T21:40:07.6924420Z  18/137 Test  #19: test_parameter_bridge .............................   Passed    0.01 sec
+1106: 2026-11-14T21:40:07.7090030Z  19/137 Test  #17: test_numerics .....................................   Passed    0.65 sec
+1108: 2026-11-14T21:40:07.7090750Z  20/137 Test  #21: test_pedal_controls ...............................   Passed    0.01 sec
+1110: 2026-11-14T21:40:07.7190110Z  21/137 Test  #22: test_pedal_engine .................................   Passed    0.01 sec
+1112: 2026-11-14T21:40:07.7647440Z  22/137 Test  #23: test_pedal_integration ............................   Passed    0.05 sec
+1114: 2026-11-14T21:40:07.7704410Z  23/137 Test  #24: test_pedal_note_ownership .........................   Passed    0.01 sec
+1116: 2026-11-14T21:40:07.8063520Z  24/137 Test  #20: test_partial_key ..................................   Passed    0.12 sec
+1118: 2026-11-14T21:40:07.8315930Z  25/137 Test  #26: test_pedal_reference ..............................   Passed    0.02 sec
+1120: 2026-11-14T21:40:07.8389880Z  26/137 Test  #27: test_pedal_routing ................................   Passed    0.01 sec
+1122: 2026-11-14T21:40:07.9530120Z  27/137 Test  #28: test_pedal_sources ................................   Passed    0.11 sec
+1124: 2026-11-14T21:40:07.9582530Z  28/137 Test  #29: test_pedal_voice ..................................   Passed    0.00 sec
+1126: 2026-11-14T21:40:07.9703880Z  29/137 Test  #30: test_percussion ...................................   Passed    0.01 sec
+1128: 2026-11-14T21:40:08.0012410Z  30/137 Test  #31: test_percussion_controls ..........................   Passed    0.03 sec
+1130: 2026-11-14T21:40:08.0134280Z  31/137 Test  #32: test_percussion_rate ..............................   Passed    0.01 sec
+1132: 2026-11-14T21:40:08.1459020Z  32/137 Test  #25: test_pedal_realtime ...............................   Passed    0.38 sec
+1134: 2026-11-14T21:40:08.2116340Z  33/137 Test  #34: test_performance_input ............................   Passed    0.06 sec
+1136: 2026-11-14T21:40:08.2161540Z  34/137 Test  #35: test_preset_parameter_boundaries ..................   Passed    0.00 sec
+1138: 2026-11-14T21:40:08.2782640Z  35/137 Test  #36: test_preset_realtime ..............................   Passed    0.06 sec
+1140: 2026-11-14T21:40:08.4372460Z  36/137 Test  #33: test_performance_acceptance .......................   Passed    0.42 sec
+1142: 2026-11-14T21:40:08.5994220Z  37/137 Test  #37: test_profile ......................................   Passed    0.32 sec
+1144: 2026-11-14T21:40:08.7150330Z  38/137 Test  #38: test_realtime .....................................   Passed    0.28 sec
+1146: 2026-11-14T21:40:09.0582100Z  39/137 Test  #39: test_realtime_console .............................   Passed    0.46 sec
+1148: 2026-11-14T21:40:09.0801980Z  40/137 Test  #41: test_rotary_motion ................................   Passed    0.02 sec
+1150: 2026-11-14T21:40:09.0937510Z  41/137 Test  #42: test_rotary_propagation ...........................   Passed    0.01 sec
+1152: 2026-11-14T21:40:09.1563960Z  42/137 Test  #43: test_rotary_propagation_allocation ................   Passed    0.06 sec
+1154: 2026-11-14T21:40:09.2349310Z  43/137 Test  #40: test_realtime_pedals ..............................   Passed    0.52 sec
+1156: 2026-11-14T21:40:09.2517420Z  44/137 Test  #45: test_scanner_rotor ................................   Passed    0.02 sec
+1158: 2026-11-14T21:40:09.3708420Z  45/137 Test  #46: test_source_rate ..................................   Passed    0.12 sec
+1160: 2026-11-14T21:40:09.4317730Z  46/137 Test  #47: test_state_exchange ...............................   Passed    0.06 sec
+1162: 2026-11-14T21:40:09.5312590Z  47/137 Test  #44: test_scanner_line .................................   Passed    0.37 sec
+1164: 2026-11-14T21:40:09.7433500Z  48/137 Test  #48: test_tonewheel ....................................   Passed    0.31 sec
+1166: 2026-11-14T21:40:10.4217930Z  49/137 Test  #49: python_test_audio_analysis ........................   Passed    0.89 sec
+1168: 2026-11-14T21:40:10.9953790Z  50/137 Test  #50: python_test_calibration_session_records ...........   Passed    1.25 sec
+1170: 2026-11-14T21:40:11.3733770Z  51/137 Test  #51: python_test_capture ...............................   Passed    0.95 sec
+1172: 2026-11-14T21:40:11.4994210Z  52/137 Test  #52: python_test_capture_audio .........................   Passed    0.50 sec
+1174: 2026-11-14T21:40:13.8425310Z  53/137 Test  #53: python_test_capture_audio_admission ...............   Passed    2.47 sec
+1176: 2026-11-14T21:40:13.9715130Z  54/137 Test  #55: python_test_capture_common ........................   Passed    0.13 sec
+1178: 2026-11-14T21:40:14.4147940Z  55/137 Test  #56: python_test_capture_comparison ....................   Passed    0.44 sec
+1180: 2026-11-14T21:40:15.3342420Z  56/137 Test  #57: python_test_capture_corpus ........................   Passed    0.92 sec
+1182: 2026-11-14T21:40:16.8998340Z  57/137 Test  #58: python_test_capture_corpus_admission ..............   Passed    1.56 sec
+1184: 2026-11-14T21:40:17.8603940Z  58/137 Test  #54: python_test_capture_cli_pipeline ..................   Passed    6.36 sec
+1186: 2026-11-14T21:40:18.2204400Z  59/137 Test  #59: python_test_capture_demo ..........................   Passed    1.33 sec
+1188: 2026-11-14T21:40:23.8955920Z  60/137 Test  #60: python_test_capture_graph_scale ...................   Passed    6.03 sec
+1190: 2026-11-14T21:40:28.8499670Z  61/137 Test  #62: python_test_capture_job ...........................   Passed    4.95 sec
+1192: 2026-11-14T21:40:30.5818170Z  62/137 Test  #63: python_test_capture_metadata_read .................   Passed    1.72 sec
+1194: 2026-11-14T21:40:31.3789140Z  63/137 Test  #64: python_test_capture_numerics ......................   Passed    0.80 sec
+1196: 2026-11-14T21:40:31.8119590Z  64/137 Test  #65: python_test_capture_policy ........................   Passed    0.43 sec
+1198: 2026-11-14T21:40:32.6330380Z  65/137 Test  #66: python_test_capture_readiness .....................   Passed    0.83 sec
+1200: 2026-11-14T21:40:33.0419110Z  66/137 Test  #61: python_test_capture_install .......................   Passed   14.82 sec
+1202: 2026-11-14T21:40:33.1546620Z  67/137 Test  #68: python_test_capture_standalone_interface ..........   Passed    0.11 sec
+1204: 2026-11-14T21:40:40.5945650Z  68/137 Test  #69: python_test_capture_study .........................   Passed    7.43 sec
+1206: 2026-11-14T21:40:40.8267550Z  69/137 Test  #67: python_test_capture_replay ........................   Passed    8.19 sec
+1208: 2026-11-14T21:40:46.9801040Z  70/137 Test  #71: python_test_chapel_presets ........................   Passed    6.15 sec
+1210: 2026-11-14T21:40:48.4139010Z  71/137 Test  #72: python_test_cli_unicode ...........................   Passed    1.43 sec
+1212: 2026-11-14T21:40:50.3564820Z  72/137 Test  #73: python_test_compile_fixed_registrations ...........   Passed    1.94 sec
+1214: 2026-11-14T21:40:53.7813270Z  73/137 Test  #74: python_test_compile_pedal_routing .................   Passed    3.42 sec
+1216: 2026-11-14T21:40:56.0574070Z  74/137 Test  #70: python_test_chapel_controls .......................   Passed   15.47 sec
+1218: 2026-11-14T21:40:56.6135560Z  75/137 Test  #76: python_test_console_benchmark .....................   Passed    0.56 sec
+1220: 2026-11-14T21:40:57.2691050Z  76/137 Test  #77: python_test_console_catalog .......................   Passed    0.65 sec
+1222: 2026-11-14T21:40:58.6413610Z  77/137 Test  #75: python_test_compile_profile .......................   Passed    4.86 sec
+1224: 2026-11-14T21:41:01.0197080Z  78/137 Test  #78: python_test_console_evidence ......................   Passed    3.75 sec
+1226: 2026-11-14T21:41:01.2644640Z  79/137 Test  #80: python_test_continuation_ledger ...................   Passed    0.24 sec
+1228: 2026-11-14T21:41:01.8748720Z  80/137 Test  #81: python_test_demo_bundle ...........................   Passed    0.61 sec
+1230: 2026-11-14T21:41:02.3583690Z  81/137 Test  #82: python_test_factory_reference .....................   Passed    0.48 sec
+1232: 2026-11-14T21:41:02.8433260Z  82/137 Test  #83: python_test_fixed_registration_source_admission ...   Passed    0.48 sec
+1234: 2026-11-14T21:41:03.1671420Z  83/137 Test  #79: python_test_console_trace .........................   Passed    4.53 sec
+1236: 2026-11-14T21:41:04.0675180Z  84/137 Test  #84: python_test_fixture_catalog .......................   Passed    1.22 sec
+1238: 2026-11-14T21:41:04.1815090Z  85/137 Test  #86: python_test_model_info ............................   Passed    0.11 sec
+1240: 2026-11-14T21:41:04.5279560Z  86/137 Test  #87: python_test_native_bundle_inventory ...............   Passed    0.35 sec
+1242: 2026-11-14T21:41:05.3066400Z  87/137 Test  #88: python_test_parameter_bridge ......................   Passed    0.78 sec
+1244: 2026-11-14T21:41:06.3464280Z  88/137 Test  #89: python_test_parameters ............................   Passed    1.04 sec
+1246: 2026-11-14T21:41:06.7822560Z  89/137 Test  #90: python_test_partial_key_render ....................   Passed    0.44 sec
+1248: 2026-11-14T21:41:08.9238840Z  90/137 Test  #91: python_test_pedal_catalog .........................   Passed    2.14 sec
+1250: 2026-11-14T21:41:09.3935310Z  91/137 Test  #85: python_test_install ...............................   Passed    6.22 sec
+1252: 2026-11-14T21:41:09.6744160Z  92/137 Test  #93: python_test_pedal_map .............................   Passed    0.28 sec
+1254: 2026-11-14T21:41:10.1941420Z  93/137 Test  #92: python_test_pedal_demo ............................   Passed    1.27 sec
+1256: 2026-11-14T21:41:11.6531600Z  94/137 Test  #94: python_test_pedal_render_cli ......................   Passed    1.98 sec
+1258: 2026-11-14T21:41:11.8957810Z  95/137 Test  #95: python_test_pedal_render_evidence .................   Passed    1.70 sec
+1260: 2026-11-14T21:41:12.2789850Z  96/137 Test  #96: python_test_pedal_session .........................   Passed    0.63 sec
+1262: 2026-11-14T21:41:17.5674110Z  97/137 Test  #97: python_test_pedal_trace ...........................   Passed    5.67 sec
+1264: 2026-11-14T21:41:17.7585990Z  98/137 Test  #98: python_test_plot_console_trace ....................   Passed    5.48 sec
+1266: 2026-11-14T21:41:18.4858720Z  99/137 Test #100: python_test_preset_parameter_oracle ...............   Passed    0.73 sec
+1268: 2026-11-14T21:41:21.5682410Z 100/137 Test #101: python_test_render ................................   Passed    3.08 sec
+1270: 2026-11-14T21:41:29.8749910Z 101/137 Test #102: python_test_render_fixture ........................   Passed    8.31 sec
+1272: 2026-11-14T21:41:30.7077410Z 102/137 Test  #99: python_test_plot_pedal_trace ......................   Passed   13.14 sec
+1274: 2026-11-14T21:41:31.2813780Z 103/137 Test #104: python_test_rotary_motion_acceptance ..............   Passed    0.57 sec
+1276: 2026-11-14T21:41:32.6972350Z 104/137 Test #103: python_test_repository_integrity ..................   Passed    2.82 sec
+1278: 2026-11-14T21:41:33.1087270Z 105/137 Test #105: python_test_rotary_profile ........................   Passed    1.83 sec
+1280: 2026-11-14T21:41:34.9668950Z 106/137 Test #107: python_test_rotary_reference ......................   Passed    1.86 sec
+1282: 2026-11-14T21:41:37.5802860Z 107/137 Test #108: python_test_scanner_ac_reference ..................   Passed    2.61 sec
+1284: 2026-11-14T21:41:41.2407570Z 108/137 Test #109: python_test_scanner_line_profile ..................   Passed    3.66 sec
+1286: 2026-11-14T21:41:42.5523680Z 109/137 Test #110: python_test_scanner_native_ac .....................   Passed    1.31 sec
+1288: 2026-11-14T21:41:44.6479690Z 110/137 Test #111: python_test_scanner_transient_reference ...........   Passed    2.09 sec
+1290: 2026-11-14T21:41:47.3143750Z 111/137 Test #106: python_test_rotary_propagation_acceptance .........   Passed   14.62 sec
+1292: 2026-11-14T21:41:47.5594460Z 112/137 Test #112: python_test_sdl2_dependency .......................   Passed    2.92 sec
+1294: 2026-11-14T21:41:47.9403240Z 113/137 Test #113: python_test_standalone_session_records ............   Passed    0.63 sec
+1296: 2026-11-14T21:41:51.6891140Z 114/137 Test #114: python_test_verify_render .........................   Passed    4.13 sec
+1298: 2026-11-14T21:41:51.7602860Z 115/137 Test #116: test_standalone_concurrency .......................   Passed    0.07 sec
+1300: 2026-11-14T21:41:51.7648240Z 116/137 Test #117: test_standalone_external_control ..................   Passed    0.00 sec
+1302: 2026-11-14T21:41:51.7726170Z 117/137 Test #118: test_standalone_inspection_acceptance .............   Passed    0.01 sec
+1304: 2026-11-14T21:41:51.7842050Z 118/137 Test #119: test_standalone_inspection_author .................   Passed    0.01 sec
+1306: 2026-11-14T21:41:51.8088000Z 119/137 Test #120: test_standalone_midi_concurrency ..................   Passed    0.02 sec
+1308: 2026-11-14T21:41:51.8133440Z 120/137 Test #121: test_standalone_midi_discovery ....................   Passed    0.00 sec
+1310: 2026-11-14T21:41:51.8161560Z 121/137 Test #122: test_standalone_midi_input ........................   Passed    0.00 sec
+1312: 2026-11-14T21:41:51.8243620Z 122/137 Test #123: test_standalone_midi_replay .......................   Passed    0.01 sec
+1314: 2026-11-14T21:41:51.8446390Z 123/137 Test #124: test_standalone_midi_session ......................   Passed    0.02 sec
+1316: 2026-11-14T21:41:51.9097210Z 124/137 Test #125: test_standalone_preset_concurrency ................   Passed    0.06 sec
+1318: 2026-11-14T21:41:52.4219480Z 125/137 Test #126: test_standalone_preset_ui .........................   Passed    0.51 sec
+1320: 2026-11-14T21:41:52.5622360Z 126/137 Test #127: test_standalone_projection ........................   Passed    0.14 sec
+1322: 2026-11-14T21:41:52.5878900Z 127/137 Test #128: test_standalone_reference_layout ..................   Passed    0.03 sec
+1324: 2026-11-14T21:41:52.7355730Z 128/137 Test #129: test_standalone_session ...........................   Passed    0.15 sec
+1326: 2026-11-14T21:41:52.7480090Z 129/137 Test #130: test_standalone_state_files .......................   Passed    0.01 sec
+1328: 2026-11-14T21:41:52.7979080Z 130/137 Test #131: test_standalone_ui ................................   Passed    0.05 sec
+1330: 2026-11-14T21:41:52.8270870Z 131/137 Test #132: test_standalone_workspace_acceptance ..............   Passed    0.03 sec
+1332: 2026-11-14T21:41:53.9823710Z 132/137 Test #115: python_test_vst3_build_tools ......................   Passed    6.04 sec
+1334: 2026-11-14T21:41:53.9897180Z 133/137 Test #134: test_standalone_workspaces_author .................   Passed    0.01 sec
+1336: 2026-11-14T21:41:53.9938720Z 134/137 Test #135: test_standalone_midi_backend ......................   Passed    0.01 sec
+1338: 2026-11-14T21:41:53.9961040Z 135/137 Test #136: test_standalone_midi_backend_quarantine ...........   Passed    0.00 sec
+1340: 2026-11-14T21:41:55.0070520Z 136/137 Test #133: test_standalone_workspace_continuity ..............   Passed    2.17 sec
+1341: 2026-11-14T21:41:55.6207410Z 137/137 Test #137: test_standalone_benchmark .........................   Passed    1.62 sec
+1343: 2026-11-14T21:41:55.6213980Z 100% tests passed out of 137
+1352: 2026-11-14T21:41:55.6217500Z Total Test time (real) = 110.51 sec
+
+=== Job 132597198177 | run 43643877469 | Release (Linux GCC) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=success sha256_utf8=d3cd9fc36910ace470eab6a7d0cbf92c77276f037e4802544992ce45b0e38ee6 bytes_utf8=344788
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:27.1352754Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:27.1376783Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:27.1377621Z Hosted Compute Agent
+4: 2026-11-14T21:38:27.1378143Z Version: 20261103.629
+5: 2026-11-14T21:38:27.1378689Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:27.1379466Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:27.1380078Z Worker ID: {9306c2ec-3b8e-4f97-8b36-237950f2ae59}
+8: 2026-11-14T21:38:27.1380670Z Region: centralus
+9: 2026-11-14T21:38:27.1381220Z Cloud: Azure
+10: 2026-11-14T21:38:27.1381689Z ##[endgroup]
+11: 2026-11-14T21:38:27.1383474Z ##[group]Operating System
+12: 2026-11-14T21:38:27.1384118Z Ubuntu
+13: 2026-11-14T21:38:27.1384546Z 24.04.5
+14: 2026-11-14T21:38:27.1385062Z LTS
+15: 2026-11-14T21:38:27.1385518Z ##[endgroup]
+16: 2026-11-14T21:38:27.1386193Z ##[group]Runner Image
+17: 2026-11-14T21:38:27.1386733Z Image: ubuntu-24.04
+18: 2026-11-14T21:38:27.1387205Z Version: 20261111.370.1
+19: 2026-11-14T21:38:27.1388354Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+20: 2026-11-14T21:38:27.1389697Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+21: 2026-11-14T21:38:27.1390502Z ##[endgroup]
+110: 2026-11-14T21:38:32.7094572Z f9c11a498ecd88886349415205fc5dccc627033e
+122: 2026-11-14T21:38:33.1520904Z f9c11a498ecd88886349415205fc5dccc627033e
+183: 2026-11-14T21:38:33.4831114Z f9c11a498ecd88886349415205fc5dccc627033e
+193: 2026-11-14T21:38:35.4507107Z ##[group]Run cmake --preset release -G "Unix Makefiles" \
+194: 2026-11-14T21:38:35.4507499Z [36;1mcmake --preset release -G "Unix Makefiles" \[0m
+195: 2026-11-14T21:38:35.4507795Z [36;1m  -DCMAKE_CXX_COMPILER="$CXX_COMPILER" \[0m
+196: 2026-11-14T21:38:35.4508141Z [36;1m  -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log[0m
+214: 2026-11-14T21:38:36.6655420Z -- The CXX compiler identification is GNU 13.3.0
+227: 2026-11-14T21:38:37.9829426Z ##[group]Run cmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log
+228: 2026-11-14T21:38:37.9829941Z [36;1mcmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log[0m
+229: 2026-11-14T21:38:37.9848893Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+230: 2026-11-14T21:38:37.9849166Z env:
+1404: 2026-11-14T21:39:53.2470209Z ##[group]Run ctest --preset release --parallel 2 --timeout 300 --no-tests=error \
+1405: 2026-11-14T21:39:53.2470729Z [36;1mctest --preset release --parallel 2 --timeout 300 --no-tests=error \[0m
+1406: 2026-11-14T21:39:53.2471201Z [36;1m  --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log[0m
+1407: 2026-11-14T21:39:53.2490999Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+1420: 2026-11-14T21:39:53.4973963Z   1/137 Test   #2: test_contact_bank .................................   Passed    0.05 sec
+1422: 2026-11-14T21:39:53.5430014Z   2/137 Test   #3: test_contact_rate .................................   Passed    0.05 sec
+1424: 2026-11-14T21:39:53.5979460Z   3/137 Test   #4: test_control_io ...................................   Passed    0.05 sec
+1426: 2026-11-14T21:39:53.7148962Z   4/137 Test   #5: test_controls .....................................   Passed    0.12 sec
+1428: 2026-11-14T21:39:53.7185137Z   5/137 Test   #6: test_core_robustness ..............................   Passed    0.00 sec
+1430: 2026-11-14T21:39:53.7391195Z   6/137 Test   #1: test_console_engine ...............................   Passed    0.29 sec
+1432: 2026-11-14T21:39:53.7411870Z   7/137 Test   #7: test_decimal ......................................   Passed    0.02 sec
+1434: 2026-11-14T21:39:53.8982970Z   8/137 Test   #8: test_engine .......................................   Passed    0.16 sec
+1436: 2026-11-14T21:39:54.1149138Z   9/137 Test  #10: test_factory_runtime ..............................   Passed    0.22 sec
+1438: 2026-11-14T21:39:54.1174832Z  10/137 Test  #11: test_fixed_registration_data ......................   Passed    0.00 sec
+1440: 2026-11-14T21:39:54.3932151Z  11/137 Test   #9: test_engine_rate ..................................   Passed    0.65 sec
+1442: 2026-11-14T21:39:54.9793400Z  12/137 Test  #13: test_fixed_registration_lifecycle .................   Passed    0.59 sec
+1444: 2026-11-14T21:39:54.9866608Z  13/137 Test  #12: test_fixed_registration_engine ....................   Passed    0.87 sec
+1446: 2026-11-14T21:39:55.3234696Z  14/137 Test  #14: test_host_timeline ................................   Passed    0.34 sec
+1448: 2026-11-14T21:39:55.3417142Z  15/137 Test  #16: test_note_ownership ...............................   Passed    0.02 sec
+1450: 2026-11-14T21:39:55.8857903Z  16/137 Test  #15: test_input_processor ..............................   Passed    0.90 sec
+1452: 2026-11-14T21:39:56.0728447Z  17/137 Test  #18: test_owned_lifecycle ..............................   Passed    0.19 sec
+1454: 2026-11-14T21:39:56.0785881Z  18/137 Test  #19: test_parameter_bridge .............................   Passed    0.01 sec
+1456: 2026-11-14T21:39:56.2588631Z  19/137 Test  #20: test_partial_key ..................................   Passed    0.18 sec
+1458: 2026-11-14T21:39:56.2641584Z  20/137 Test  #21: test_pedal_controls ...............................   Passed    0.01 sec
+1460: 2026-11-14T21:39:56.2737252Z  21/137 Test  #22: test_pedal_engine .................................   Passed    0.01 sec
+1462: 2026-11-14T21:39:56.3271831Z  22/137 Test  #17: test_numerics .....................................   Passed    0.99 sec
+1464: 2026-11-14T21:39:56.4338285Z  23/137 Test  #23: test_pedal_integration ............................   Passed    0.16 sec
+1466: 2026-11-14T21:39:56.4358829Z  24/137 Test  #24: test_pedal_note_ownership .........................   Passed    0.00 sec
+1468: 2026-11-14T21:39:56.4374876Z  25/137 Test  #25: test_pedal_realtime ...............................   Passed    0.00 sec
+1470: 2026-11-14T21:39:56.4406974Z  26/137 Test  #27: test_pedal_routing ................................   Passed    0.00 sec
+1472: 2026-11-14T21:39:56.4628207Z  27/137 Test  #26: test_pedal_reference ..............................   Passed    0.03 sec
+1474: 2026-11-14T21:39:56.4695876Z  28/137 Test  #29: test_pedal_voice ..................................   Passed    0.01 sec
+1476: 2026-11-14T21:39:56.4773458Z  29/137 Test  #30: test_percussion ...................................   Passed    0.01 sec
+1478: 2026-11-14T21:39:56.5126085Z  30/137 Test  #31: test_percussion_controls ..........................   Passed    0.04 sec
+1480: 2026-11-14T21:39:56.5186884Z  31/137 Test  #32: test_percussion_rate ..............................   Passed    0.01 sec
+1482: 2026-11-14T21:39:56.5782283Z  32/137 Test  #28: test_pedal_sources ................................   Passed    0.14 sec
+1484: 2026-11-14T21:39:56.6415593Z  33/137 Test  #34: test_performance_input ............................   Passed    0.06 sec
+1486: 2026-11-14T21:39:56.6437331Z  34/137 Test  #35: test_preset_parameter_boundaries ..................   Passed    0.00 sec
+1488: 2026-11-14T21:39:56.7037504Z  35/137 Test  #36: test_preset_realtime ..............................   Passed    0.06 sec
+1490: 2026-11-14T21:39:56.9246052Z  36/137 Test  #37: test_profile ......................................   Passed    0.22 sec
+1492: 2026-11-14T21:39:57.0083102Z  37/137 Test  #33: test_performance_acceptance .......................   Passed    0.49 sec
+1494: 2026-11-14T21:39:57.2656211Z  38/137 Test  #38: test_realtime .....................................   Passed    0.34 sec
+1496: 2026-11-14T21:39:57.7306949Z  39/137 Test  #39: test_realtime_console .............................   Passed    0.72 sec
+1498: 2026-11-14T21:39:57.7675651Z  40/137 Test  #41: test_rotary_motion ................................   Passed    0.04 sec
+1500: 2026-11-14T21:39:57.7831823Z  41/137 Test  #42: test_rotary_propagation ...........................   Passed    0.02 sec
+1502: 2026-11-14T21:39:57.8480719Z  42/137 Test  #43: test_rotary_propagation_allocation ................   Passed    0.06 sec
+1504: 2026-11-14T21:39:57.8561110Z  43/137 Test  #40: test_realtime_pedals ..............................   Passed    0.59 sec
+1506: 2026-11-14T21:39:57.9058101Z  44/137 Test  #45: test_scanner_rotor ................................   Passed    0.05 sec
+1508: 2026-11-14T21:39:58.1241575Z  45/137 Test  #46: test_source_rate ..................................   Passed    0.22 sec
+1510: 2026-11-14T21:39:58.1401655Z  46/137 Test  #47: test_state_exchange ...............................   Passed    0.02 sec
+1512: 2026-11-14T21:39:58.2921918Z  47/137 Test  #44: test_scanner_line .................................   Passed    0.44 sec
+1514: 2026-11-14T21:39:58.7377293Z  48/137 Test  #48: test_tonewheel ....................................   Passed    0.60 sec
+1516: 2026-11-14T21:39:59.0698997Z  49/137 Test  #49: python_test_audio_analysis ........................   Passed    0.78 sec
+1518: 2026-11-14T21:40:00.0473767Z  50/137 Test  #50: python_test_calibration_session_records ...........   Passed    1.31 sec
+1520: 2026-11-14T21:40:00.1216336Z  51/137 Test  #51: python_test_capture ...............................   Passed    1.05 sec
+1522: 2026-11-14T21:40:00.6356457Z  52/137 Test  #52: python_test_capture_audio .........................   Passed    0.59 sec
+1524: 2026-11-14T21:40:02.5319848Z  53/137 Test  #53: python_test_capture_audio_admission ...............   Passed    2.41 sec
+1526: 2026-11-14T21:40:02.7670271Z  54/137 Test  #55: python_test_capture_common ........................   Passed    0.23 sec
+1528: 2026-11-14T21:40:03.4139201Z  55/137 Test  #56: python_test_capture_comparison ....................   Passed    0.65 sec
+1530: 2026-11-14T21:40:04.3052908Z  56/137 Test  #57: python_test_capture_corpus ........................   Passed    0.89 sec
+1532: 2026-11-14T21:40:06.1114675Z  57/137 Test  #58: python_test_capture_corpus_admission ..............   Passed    1.81 sec
+1534: 2026-11-14T21:40:06.6784982Z  58/137 Test  #54: python_test_capture_cli_pipeline ..................   Passed    6.04 sec
+1536: 2026-11-14T21:40:07.4931809Z  59/137 Test  #59: python_test_capture_demo ..........................   Passed    1.38 sec
+1538: 2026-11-14T21:40:11.7411347Z  60/137 Test  #60: python_test_capture_graph_scale ...................   Passed    5.06 sec
+1540: 2026-11-14T21:40:13.1582220Z  61/137 Test  #61: python_test_capture_install .......................   Passed    5.66 sec
+1542: 2026-11-14T21:40:14.5937834Z  62/137 Test  #63: python_test_capture_metadata_read .................   Passed    1.44 sec
+1544: 2026-11-14T21:40:15.3972460Z  63/137 Test  #64: python_test_capture_numerics ......................   Passed    0.80 sec
+1546: 2026-11-14T21:40:15.8661560Z  64/137 Test  #65: python_test_capture_policy ........................   Passed    0.47 sec
+1548: 2026-11-14T21:40:17.0130785Z  65/137 Test  #66: python_test_capture_readiness .....................   Passed    1.15 sec
+1550: 2026-11-14T21:40:17.2101566Z  66/137 Test  #62: python_test_capture_job ...........................   Passed    5.47 sec
+1552: 2026-11-14T21:40:17.3438322Z  67/137 Test  #68: python_test_capture_standalone_interface ..........   Passed    0.13 sec
+1554: 2026-11-14T21:40:23.8863864Z  68/137 Test  #69: python_test_capture_study .........................   Passed    6.54 sec
+1556: 2026-11-14T21:40:25.6990420Z  69/137 Test  #67: python_test_capture_replay ........................   Passed    8.69 sec
+1558: 2026-11-14T21:40:31.5387811Z  70/137 Test  #71: python_test_chapel_presets ........................   Passed    5.84 sec
+1560: 2026-11-14T21:40:32.3199284Z  71/137 Test  #72: python_test_cli_unicode ...........................   Passed    0.78 sec
+1562: 2026-11-14T21:40:34.5152896Z  72/137 Test  #73: python_test_compile_fixed_registrations ...........   Passed    2.20 sec
+1564: 2026-11-14T21:40:38.5198197Z  73/137 Test  #74: python_test_compile_pedal_routing .................   Passed    4.00 sec
+1566: 2026-11-14T21:40:40.1672251Z  74/137 Test  #70: python_test_chapel_controls .......................   Passed   16.28 sec
+1568: 2026-11-14T21:40:40.8784255Z  75/137 Test  #76: python_test_console_benchmark .....................   Passed    0.71 sec
+1570: 2026-11-14T21:40:41.7720545Z  76/137 Test  #77: python_test_console_catalog .......................   Passed    0.89 sec
+1572: 2026-11-14T21:40:42.9321512Z  77/137 Test  #75: python_test_compile_profile .......................   Passed    4.41 sec
+1574: 2026-11-14T21:40:45.3307372Z  78/137 Test  #78: python_test_console_evidence ......................   Passed    3.56 sec
+1576: 2026-11-14T21:40:45.7802723Z  79/137 Test  #80: python_test_continuation_ledger ...................   Passed    0.45 sec
+1578: 2026-11-14T21:40:46.5877960Z  80/137 Test  #81: python_test_demo_bundle ...........................   Passed    0.81 sec
+1580: 2026-11-14T21:40:47.1413937Z  81/137 Test  #82: python_test_factory_reference .....................   Passed    0.55 sec
+1582: 2026-11-14T21:40:47.7190485Z  82/137 Test  #83: python_test_fixed_registration_source_admission ...   Passed    0.58 sec
+1584: 2026-11-14T21:40:47.9202910Z  83/137 Test  #79: python_test_console_trace .........................   Passed    4.99 sec
+1586: 2026-11-14T21:40:49.4091000Z  84/137 Test  #84: python_test_fixture_catalog .......................   Passed    1.69 sec
+1588: 2026-11-14T21:40:49.5307274Z  85/137 Test  #86: python_test_model_info ............................   Passed    0.12 sec
+1590: 2026-11-14T21:40:50.1461536Z  86/137 Test  #87: python_test_native_bundle_inventory ...............   Passed    0.62 sec
+1592: 2026-11-14T21:40:50.6589087Z  87/137 Test  #88: python_test_parameter_bridge ......................   Passed    0.51 sec
+1594: 2026-11-14T21:40:52.1121928Z  88/137 Test  #89: python_test_parameters ............................   Passed    1.45 sec
+1596: 2026-11-14T21:40:52.6456376Z  89/137 Test  #90: python_test_partial_key_render ....................   Passed    0.53 sec
+1598: 2026-11-14T21:40:53.9657318Z  90/137 Test  #85: python_test_install ...............................   Passed    6.05 sec
+1600: 2026-11-14T21:40:55.5966169Z  91/137 Test  #91: python_test_pedal_catalog .........................   Passed    2.95 sec
+1602: 2026-11-14T21:40:55.6719617Z  92/137 Test  #92: python_test_pedal_demo ............................   Passed    1.71 sec
+1604: 2026-11-14T21:40:55.9555594Z  93/137 Test  #93: python_test_pedal_map .............................   Passed    0.36 sec
+1606: 2026-11-14T21:40:57.1284210Z  94/137 Test  #94: python_test_pedal_render_cli ......................   Passed    1.46 sec
+1608: 2026-11-14T21:40:57.5859683Z  95/137 Test  #95: python_test_pedal_render_evidence .................   Passed    1.63 sec
+1610: 2026-11-14T21:40:57.8234905Z  96/137 Test  #96: python_test_pedal_session .........................   Passed    0.69 sec
+1612: 2026-11-14T21:41:02.6667327Z  97/137 Test  #97: python_test_pedal_trace ...........................   Passed    5.08 sec
+1614: 2026-11-14T21:41:05.0910887Z  98/137 Test  #98: python_test_plot_console_trace ....................   Passed    7.27 sec
+1616: 2026-11-14T21:41:05.8346777Z  99/137 Test #100: python_test_preset_parameter_oracle ...............   Passed    0.74 sec
+1618: 2026-11-14T21:41:08.3131389Z 100/137 Test #101: python_test_render ................................   Passed    2.48 sec
+1620: 2026-11-14T21:41:14.7160623Z 101/137 Test #102: python_test_render_fixture ........................   Passed    6.40 sec
+1622: 2026-11-14T21:41:17.5707314Z 102/137 Test  #99: python_test_plot_pedal_trace ......................   Passed   14.90 sec
+1624: 2026-11-14T21:41:17.7570339Z 103/137 Test #103: python_test_repository_integrity ..................   Passed    3.04 sec
+1626: 2026-11-14T21:41:18.1989743Z 104/137 Test #104: python_test_rotary_motion_acceptance ..............   Passed    0.63 sec
+1628: 2026-11-14T21:41:19.7856894Z 105/137 Test #105: python_test_rotary_profile ........................   Passed    2.03 sec
+1630: 2026-11-14T21:41:21.8178199Z 106/137 Test #107: python_test_rotary_reference ......................   Passed    2.03 sec
+1632: 2026-11-14T21:41:24.8689824Z 107/137 Test #108: python_test_scanner_ac_reference ..................   Passed    3.05 sec
+1634: 2026-11-14T21:41:28.5764539Z 108/137 Test #109: python_test_scanner_line_profile ..................   Passed    3.71 sec
+1636: 2026-11-14T21:41:30.3272453Z 109/137 Test #110: python_test_scanner_native_ac .....................   Passed    1.75 sec
+1638: 2026-11-14T21:41:32.4964983Z 110/137 Test #106: python_test_rotary_propagation_acceptance .........   Passed   14.30 sec
+1640: 2026-11-14T21:41:32.9549454Z 111/137 Test #111: python_test_scanner_transient_reference ...........   Passed    2.63 sec
+1642: 2026-11-14T21:41:33.6047122Z 112/137 Test #112: python_test_sdl2_dependency .......................   Passed    1.11 sec
+1644: 2026-11-14T21:41:33.6088854Z 113/137 Test #113: python_test_standalone_session_records ............   Passed    0.65 sec
+1646: 2026-11-14T21:41:35.6771370Z 114/137 Test #115: python_test_vst3_build_tools ......................   Passed    2.07 sec
+1648: 2026-11-14T21:41:36.0011395Z 115/137 Test #116: test_standalone_concurrency .......................   Passed    0.32 sec
+1650: 2026-11-14T21:41:36.0043165Z 116/137 Test #117: test_standalone_external_control ..................   Passed    0.00 sec
+1652: 2026-11-14T21:41:36.0086476Z 117/137 Test #118: test_standalone_inspection_acceptance .............   Passed    0.00 sec
+1654: 2026-11-14T21:41:36.0120215Z 118/137 Test #119: test_standalone_inspection_author .................   Passed    0.00 sec
+1656: 2026-11-14T21:41:36.0381483Z 119/137 Test #120: test_standalone_midi_concurrency ..................   Passed    0.03 sec
+1658: 2026-11-14T21:41:36.0417690Z 120/137 Test #121: test_standalone_midi_discovery ....................   Passed    0.00 sec
+1660: 2026-11-14T21:41:36.0439834Z 121/137 Test #122: test_standalone_midi_input ........................   Passed    0.00 sec
+1662: 2026-11-14T21:41:36.0492417Z 122/137 Test #123: test_standalone_midi_replay .......................   Passed    0.01 sec
+1664: 2026-11-14T21:41:36.0763509Z 123/137 Test #124: test_standalone_midi_session ......................   Passed    0.03 sec
+1666: 2026-11-14T21:41:36.0902975Z 124/137 Test #125: test_standalone_preset_concurrency ................   Passed    0.01 sec
+1668: 2026-11-14T21:41:36.4295042Z 125/137 Test #126: test_standalone_preset_ui .........................   Passed    0.34 sec
+1670: 2026-11-14T21:41:36.5677570Z 126/137 Test #127: test_standalone_projection ........................   Passed    0.14 sec
+1672: 2026-11-14T21:41:36.5939671Z 127/137 Test #128: test_standalone_reference_layout ..................   Passed    0.03 sec
+1674: 2026-11-14T21:41:36.8357878Z 128/137 Test #129: test_standalone_session ...........................   Passed    0.24 sec
+1676: 2026-11-14T21:41:36.8458668Z 129/137 Test #130: test_standalone_state_files .......................   Passed    0.01 sec
+1678: 2026-11-14T21:41:36.8753278Z 130/137 Test #114: python_test_verify_render .........................   Passed    3.27 sec
+1680: 2026-11-14T21:41:36.8844915Z 131/137 Test #131: test_standalone_ui ................................   Passed    0.04 sec
+1682: 2026-11-14T21:41:36.9043653Z 132/137 Test #132: test_standalone_workspace_acceptance ..............   Passed    0.03 sec
+1684: 2026-11-14T21:41:36.9066834Z 133/137 Test #134: test_standalone_workspaces_author .................   Passed    0.00 sec
+1686: 2026-11-14T21:41:36.9087351Z 134/137 Test #135: test_standalone_midi_backend ......................   Passed    0.00 sec
+1688: 2026-11-14T21:41:36.9108064Z 135/137 Test #136: test_standalone_midi_backend_quarantine ...........   Passed    0.00 sec
+1690: 2026-11-14T21:41:39.0926363Z 136/137 Test #137: test_standalone_benchmark .........................   Passed    2.18 sec
+1691: 2026-11-14T21:41:40.3185215Z 137/137 Test #133: test_standalone_workspace_continuity ..............   Passed    3.43 sec
+1693: 2026-11-14T21:41:40.3190135Z 100% tests passed, 0 tests failed out of 137
+1702: 2026-11-14T21:41:40.3192884Z Total Test time (real) = 107.05 sec
+
+=== Job 132597198333 | run 43643877469 | Release (Windows MSVC) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=cancelled sha256_utf8=0212a2201e187829f3d44e0d82dd0c53df6218de40c428f2944af770fbc28323 bytes_utf8=366827
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:26.6344434Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:26.6371415Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:26.6372195Z Hosted Compute Agent
+4: 2026-11-14T21:38:26.6372766Z Version: 20261103.629
+5: 2026-11-14T21:38:26.6373325Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:26.6373986Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:26.6374600Z Worker ID: {a7440359-97b5-4a0b-8a00-207ccf633b0d}
+8: 2026-11-14T21:38:26.6375220Z Region: centralus
+9: 2026-11-14T21:38:26.6375702Z Cloud: Azure
+10: 2026-11-14T21:38:26.6376170Z ##[endgroup]
+11: 2026-11-14T21:38:26.6377456Z ##[group]Operating System
+12: 2026-11-14T21:38:26.6378100Z Microsoft Windows Server 2022
+13: 2026-11-14T21:38:26.6378642Z 10.0.20348
+14: 2026-11-14T21:38:26.6379124Z Datacenter
+15: 2026-11-14T21:38:26.6379573Z ##[endgroup]
+16: 2026-11-14T21:38:26.6380044Z ##[group]Runner Image
+17: 2026-11-14T21:38:26.6380567Z Image: windows-2022
+18: 2026-11-14T21:38:26.6381047Z Version: 20261112.366.7
+19: 2026-11-14T21:38:26.6382442Z Included Software: https://github.com/actions/runner-images/blob/win22/20261112.366/images/windows/Windows2022-Readme.md
+20: 2026-11-14T21:38:26.6383903Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20261112.366
+21: 2026-11-14T21:38:26.6384803Z ##[endgroup]
+97: 2026-11-14T21:38:32.8466730Z f9c11a498ecd88886349415205fc5dccc627033e
+109: 2026-11-14T21:38:33.8100619Z f9c11a498ecd88886349415205fc5dccc627033e
+169: 2026-11-14T21:38:36.0385676Z f9c11a498ecd88886349415205fc5dccc627033e
+179: 2026-11-14T21:38:38.6528427Z ##[group]Run cmake --preset release -G "Visual Studio 17 2022" -A x64 \
+180: 2026-11-14T21:38:38.6528989Z [36;1mcmake --preset release -G "Visual Studio 17 2022" -A x64 \[0m
+181: 2026-11-14T21:38:38.6529680Z [36;1m  -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" 2>&1 | tee ci-logs/configure.log[0m
+182: 2026-11-14T21:38:38.6544364Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+198: 2026-11-14T21:38:48.9465007Z -- The CXX compiler identification is MSVC 19.44.35230.0
+214: 2026-11-14T21:38:54.0139069Z CMake Warning:
+215: 2026-11-14T21:38:54.0139558Z   Manually-specified variables were not used by the project:
+216: 2026-11-14T21:38:54.0140011Z 
+217: 2026-11-14T21:38:54.0140164Z     CMAKE_BUILD_TYPE
+218: 2026-11-14T21:38:54.0140348Z 
+219: 2026-11-14T21:38:54.0140354Z 
+221: 2026-11-14T21:38:54.0610799Z ##[group]Run cmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log
+222: 2026-11-14T21:38:54.0611519Z [36;1mcmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log[0m
+223: 2026-11-14T21:38:54.0625181Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+224: 2026-11-14T21:38:54.0625560Z env:
+2131: 2026-11-14T21:41:42.2005907Z Build succeeded.
+2132: 2026-11-14T21:41:42.2006149Z     0 Warning(s)
+2133: 2026-11-14T21:41:42.2006341Z     0 Error(s)
+2137: 2026-11-14T21:41:42.2493481Z ##[group]Run ctest --preset release --parallel 2 --timeout 300 --no-tests=error \
+2138: 2026-11-14T21:41:42.2494165Z [36;1mctest --preset release --parallel 2 --timeout 300 --no-tests=error \[0m
+2139: 2026-11-14T21:41:42.2494741Z [36;1m  --output-junit "$GITHUB_WORKSPACE/ci-logs/ctest.xml" 2>&1 | tee ci-logs/ctest.log[0m
+2140: 2026-11-14T21:41:42.2508211Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+2152: 2026-11-14T21:41:42.4662204Z   1/137 Test   #2: test_contact_bank .................................   Passed    0.09 sec
+2154: 2026-11-14T21:41:42.5599454Z   2/137 Test   #3: test_contact_rate .................................   Passed    0.08 sec
+2156: 2026-11-14T21:41:42.6852033Z   3/137 Test   #1: test_console_engine ...............................   Passed    0.30 sec
+2158: 2026-11-14T21:41:42.7788870Z   4/137 Test   #4: test_control_io ...................................   Passed    0.22 sec
+2160: 2026-11-14T21:41:42.7944973Z   5/137 Test   #6: test_core_robustness ..............................   Passed    0.01 sec
+2162: 2026-11-14T21:41:42.8258349Z   6/137 Test   #5: test_controls .....................................   Passed    0.14 sec
+2164: 2026-11-14T21:41:42.8749227Z   7/137 Test   #7: test_decimal ......................................   Passed    0.08 sec
+2166: 2026-11-14T21:41:43.0447530Z   8/137 Test   #8: test_engine .......................................   Passed    0.22 sec
+2168: 2026-11-14T21:41:43.2946696Z   9/137 Test  #10: test_factory_runtime ..............................   Passed    0.26 sec
+2170: 2026-11-14T21:41:43.3102446Z  10/137 Test  #11: test_fixed_registration_data ......................   Passed    0.01 sec
+2172: 2026-11-14T21:41:43.6697040Z  11/137 Test   #9: test_engine_rate ..................................   Passed    0.79 sec
+2174: 2026-11-14T21:41:44.2499055Z  12/137 Test  #12: test_fixed_registration_engine ....................   Passed    0.94 sec
+2176: 2026-11-14T21:41:44.3749124Z  13/137 Test  #13: test_fixed_registration_lifecycle .................   Passed    0.71 sec
+2178: 2026-11-14T21:41:44.6411359Z  14/137 Test  #14: test_host_timeline ................................   Passed    0.39 sec
+2180: 2026-11-14T21:41:44.6883583Z  15/137 Test  #16: test_note_ownership ...............................   Passed    0.05 sec
+2182: 2026-11-14T21:41:45.5320180Z  16/137 Test  #15: test_input_processor ..............................   Passed    1.16 sec
+2184: 2026-11-14T21:41:45.5789097Z  17/137 Test  #17: test_numerics .....................................   Passed    0.88 sec
+2186: 2026-11-14T21:41:45.5790232Z  18/137 Test  #19: test_parameter_bridge .............................   Passed    0.01 sec
+2188: 2026-11-14T21:41:45.7824736Z  19/137 Test  #18: test_owned_lifecycle ..............................   Passed    0.26 sec
+2190: 2026-11-14T21:41:45.7981077Z  20/137 Test  #20: test_partial_key ..................................   Passed    0.21 sec
+2192: 2026-11-14T21:41:45.8138288Z  21/137 Test  #21: test_pedal_controls ...............................   Passed    0.03 sec
+2194: 2026-11-14T21:41:45.8140002Z  22/137 Test  #22: test_pedal_engine .................................   Passed    0.02 sec
+2196: 2026-11-14T21:41:45.8293481Z  23/137 Test  #24: test_pedal_note_ownership .........................   Passed    0.01 sec
+2198: 2026-11-14T21:41:45.8294922Z  24/137 Test  #25: test_pedal_realtime ...............................   Passed    0.01 sec
+2200: 2026-11-14T21:41:45.8763022Z  25/137 Test  #26: test_pedal_reference ..............................   Passed    0.03 sec
+2202: 2026-11-14T21:41:45.8764813Z  26/137 Test  #27: test_pedal_routing ................................   Passed    0.01 sec
+2204: 2026-11-14T21:41:45.8918690Z  27/137 Test  #23: test_pedal_integration ............................   Passed    0.08 sec
+2206: 2026-11-14T21:41:45.9076788Z  28/137 Test  #29: test_pedal_voice ..................................   Passed    0.01 sec
+2208: 2026-11-14T21:41:45.9079111Z  29/137 Test  #30: test_percussion ...................................   Passed    0.01 sec
+2210: 2026-11-14T21:41:45.9544054Z  30/137 Test  #31: test_percussion_controls ..........................   Passed    0.03 sec
+2212: 2026-11-14T21:41:45.9545595Z  31/137 Test  #32: test_percussion_rate ..............................   Passed    0.01 sec
+2214: 2026-11-14T21:41:46.0015252Z  32/137 Test  #28: test_pedal_sources ................................   Passed    0.12 sec
+2216: 2026-11-14T21:41:46.1106880Z  33/137 Test  #34: test_performance_input ............................   Passed    0.11 sec
+2218: 2026-11-14T21:41:46.1263333Z  34/137 Test  #35: test_preset_parameter_boundaries ..................   Passed    0.01 sec
+2220: 2026-11-14T21:41:46.2356790Z  35/137 Test  #36: test_preset_realtime ..............................   Passed    0.12 sec
+2222: 2026-11-14T21:41:46.6108206Z  36/137 Test  #33: test_performance_acceptance .......................   Passed    0.65 sec
+2224: 2026-11-14T21:41:46.9713214Z  37/137 Test  #37: test_profile ......................................   Passed    0.74 sec
+2226: 2026-11-14T21:41:47.0026061Z  38/137 Test  #38: test_realtime .....................................   Passed    0.40 sec
+2228: 2026-11-14T21:41:47.7378503Z  39/137 Test  #40: test_realtime_pedals ..............................   Passed    0.73 sec
+2230: 2026-11-14T21:41:47.8316852Z  40/137 Test  #41: test_rotary_motion ................................   Passed    0.08 sec
+2232: 2026-11-14T21:41:47.8317998Z  41/137 Test  #39: test_realtime_console .............................   Passed    0.85 sec
+2234: 2026-11-14T21:41:47.8788672Z  42/137 Test  #42: test_rotary_propagation ...........................   Passed    0.05 sec
+2236: 2026-11-14T21:41:47.9724000Z  43/137 Test  #43: test_rotary_propagation_allocation ................   Passed    0.15 sec
+2238: 2026-11-14T21:41:48.0661862Z  44/137 Test  #45: test_scanner_rotor ................................   Passed    0.08 sec
+2240: 2026-11-14T21:41:48.2536433Z  45/137 Test  #46: test_source_rate ..................................   Passed    0.19 sec
+2242: 2026-11-14T21:41:48.2848749Z  46/137 Test  #47: test_state_exchange ...............................   Passed    0.03 sec
+2244: 2026-11-14T21:41:48.5504515Z  47/137 Test  #44: test_scanner_line .................................   Passed    0.68 sec
+2246: 2026-11-14T21:41:48.7853887Z  48/137 Test  #48: test_tonewheel ....................................   Passed    0.51 sec
+2248: 2026-11-14T21:41:50.2231318Z  49/137 Test  #49: python_test_audio_analysis ........................   Passed    1.67 sec
+2250: 2026-11-14T21:41:51.9750969Z  50/137 Test  #51: python_test_capture ...............................   Passed    1.75 sec
+2252: 2026-11-14T21:41:52.5535351Z  51/137 Test  #50: python_test_calibration_session_records ...........   Passed    3.77 sec
+2254: 2026-11-14T21:41:52.9292277Z  52/137 Test  #52: python_test_capture_audio .........................   Passed    0.95 sec
+2256: 2026-11-14T21:41:57.2603994Z  53/137 Test  #53: python_test_capture_audio_admission ...............   Passed    4.70 sec
+2258: 2026-11-14T21:41:57.6981847Z  54/137 Test  #55: python_test_capture_common ........................   Passed    0.44 sec
+2260: 2026-11-14T21:41:58.5895184Z  55/137 Test  #56: python_test_capture_comparison ....................   Passed    0.89 sec
+2262: 2026-11-14T21:42:00.5916973Z  56/137 Test  #57: python_test_capture_corpus ........................   Passed    2.00 sec
+2264: 2026-11-14T21:42:04.6894703Z  57/137 Test  #58: python_test_capture_corpus_admission ..............   Passed    4.09 sec
+2266: 2026-11-14T21:42:05.1438793Z  58/137 Test  #54: python_test_capture_cli_pipeline ..................   Passed   12.22 sec
+2268: 2026-11-14T21:42:07.8478034Z  59/137 Test  #59: python_test_capture_demo ..........................   Passed    3.16 sec
+2270: 2026-11-14T21:42:24.6764849Z  60/137 Test  #60: python_test_capture_graph_scale ...................   Passed   19.54 sec
+2272: 2026-11-14T21:42:36.0773797Z  61/137 Test  #62: python_test_capture_job ...........................   Passed   11.39 sec
+2274: 2026-11-14T21:42:39.5972594Z  62/137 Test  #63: python_test_capture_metadata_read .................   Passed    3.51 sec
+2276: 2026-11-14T21:42:40.8796019Z  63/137 Test  #64: python_test_capture_numerics ......................   Passed    1.29 sec
+2278: 2026-11-14T21:42:41.6140226Z  64/137 Test  #65: python_test_capture_policy ........................   Passed    0.73 sec
+2280: 2026-11-14T21:42:43.3340755Z  65/137 Test  #66: python_test_capture_readiness .....................   Passed    1.73 sec
+2282: 2026-11-14T21:42:49.8574606Z  66/137 Test  #61: python_test_capture_install .......................   Passed   42.01 sec
+2284: 2026-11-14T21:42:50.0458770Z  67/137 Test  #68: python_test_capture_standalone_interface ..........   Passed    0.19 sec
+2286: 2026-11-14T21:43:00.6025816Z  68/137 Test  #67: python_test_capture_replay ........................   Passed   17.26 sec
+2288: 2026-11-14T21:43:09.1266114Z  69/137 Test  #69: python_test_capture_study .........................   Passed   19.08 sec
+2289: 2026-11-14T21:43:09.1266960Z         Start  71: python_test_chapel_presets
+2290: 2026-11-14T21:43:10.4593137Z ##[error]The operation was canceled.
+2291: 2026-11-14T21:43:10.5428767Z Post job cleanup.
+2292: 2026-11-14T21:43:10.8200443Z [command]"C:\Program Files\Git\bin\git.exe" version
+
+=== Job 132597198275 | run 43643877495 | Native VST3 (Windows MSVC x64) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=success sha256_utf8=6a94af5a43e26a88af8a9ecae899084a2bab1a75886d82bf05f2142c1104c4d9 bytes_utf8=198224
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:26.5608609Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:26.5633165Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:26.5633992Z Hosted Compute Agent
+4: 2026-11-14T21:38:26.5634499Z Version: 20261103.629
+5: 2026-11-14T21:38:26.5635089Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:26.5635765Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:26.5636323Z Worker ID: {0a924428-0ef2-4529-ba58-0c23f55db781}
+8: 2026-11-14T21:38:26.5636972Z Region: northcentralus
+9: 2026-11-14T21:38:26.5637462Z Cloud: Azure
+10: 2026-11-14T21:38:26.5638387Z ##[endgroup]
+11: 2026-11-14T21:38:26.5639645Z ##[group]Operating System
+12: 2026-11-14T21:38:26.5640200Z Microsoft Windows Server 2022
+13: 2026-11-14T21:38:26.5640728Z 10.0.20348
+14: 2026-11-14T21:38:26.5641276Z Datacenter
+15: 2026-11-14T21:38:26.5641793Z ##[endgroup]
+16: 2026-11-14T21:38:26.5642264Z ##[group]Runner Image
+17: 2026-11-14T21:38:26.5642771Z Image: windows-2022
+18: 2026-11-14T21:38:26.5643275Z Version: 20261112.366.7
+19: 2026-11-14T21:38:26.5644884Z Included Software: https://github.com/actions/runner-images/blob/win22/20261112.366/images/windows/Windows2022-Readme.md
+20: 2026-11-14T21:38:26.5646332Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20261112.366
+21: 2026-11-14T21:38:26.5647146Z ##[endgroup]
+97: 2026-11-14T21:38:33.4272097Z f9c11a498ecd88886349415205fc5dccc627033e
+109: 2026-11-14T21:38:34.2950303Z f9c11a498ecd88886349415205fc5dccc627033e
+266: 2026-11-14T21:38:54.9735218Z -- The CXX compiler identification is MSVC 19.44.35230.0
+275: 2026-11-14T21:38:58.0707202Z -- The C compiler identification is MSVC 19.44.35230.0
+1275: 2026-11-14T21:40:00.2717613Z Build succeeded.
+1276: 2026-11-14T21:40:00.2718129Z     0 Warning(s)
+1277: 2026-11-14T21:40:00.2718610Z     0 Error(s)
+1330: 2026-11-14T21:40:02.2886452Z 1/7 Test #116: test_native_install ..............   Passed    1.83 sec
+1686: 2026-11-14T21:40:03.4964981Z 117: Result: 47 tests passed, 0 tests failed
+1688: 2026-11-14T21:40:03.5087215Z 2/7 Test #117: hammond_vst3_validator ...........   Passed    1.21 sec
+1696: 2026-11-14T21:40:03.5557133Z 3/7 Test #118: test_native_controller ...........   Passed    0.06 sec
+1704: 2026-11-14T21:40:04.3849790Z 4/7 Test #119: test_native_abi ..................   Passed    0.83 sec
+1712: 2026-11-14T21:40:06.4649759Z 5/7 Test #120: test_native_behavior .............   Passed    2.08 sec
+1720: 2026-11-14T21:40:06.9967829Z 6/7 Test #121: test_native_automation ...........   Passed    0.53 sec
+1729: 2026-11-14T21:40:07.4200215Z 7/7 Test #122: test_native_concurrency ..........   Passed    0.42 sec
+1740: 2026-11-14T21:40:07.4202546Z 100% tests passed, 0 tests failed out of 7
+1742: 2026-11-14T21:40:07.4202819Z Total Test time (real) =   7.01 sec
+
+=== Job 132597198542 | run 43643877495 | Native VST3 (macOS AppleClang) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=success sha256_utf8=2374d0db2dbb9cf0d953f35404619b3a8973398e92068594bd9b0b9c4d7bc382 bytes_utf8=292651
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:27.7027700Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:27.7056360Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:27.7057310Z Hosted Compute Agent
+4: 2026-11-14T21:38:27.7057800Z Version: 20261103.629
+5: 2026-11-14T21:38:27.7058410Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:27.7065070Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:27.7067530Z Worker ID: {b60152b3-07f7-4a71-84aa-3458b6f48744}
+8: 2026-11-14T21:38:27.7068420Z Region: westus
+9: 2026-11-14T21:38:27.7069060Z Cloud: MacCloud
+10: 2026-11-14T21:38:27.7069700Z ##[endgroup]
+11: 2026-11-14T21:38:27.7087890Z ##[group]Operating System
+12: 2026-11-14T21:38:27.7090020Z macOS
+13: 2026-11-14T21:38:27.7092140Z 15.8.2
+14: 2026-11-14T21:38:27.7094950Z 24H232
+15: 2026-11-14T21:38:27.7096830Z ##[endgroup]
+16: 2026-11-14T21:38:27.7097550Z ##[group]Runner Image
+17: 2026-11-14T21:38:27.7100290Z Image: macos-15-arm64
+18: 2026-11-14T21:38:27.7101520Z Version: 20261104.0514.1
+19: 2026-11-14T21:38:27.7104160Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20261104.0514/images/macos/macos-15-arm64-Readme.md
+20: 2026-11-14T21:38:27.7107040Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20261104.0514
+21: 2026-11-14T21:38:27.7109080Z ##[endgroup]
+111: 2026-11-14T21:38:34.6410460Z f9c11a498ecd88886349415205fc5dccc627033e
+123: 2026-11-14T21:38:35.4609190Z f9c11a498ecd88886349415205fc5dccc627033e
+270: 2026-11-14T21:38:44.6227100Z -- The CXX compiler identification is AppleClang 17.0.0.17000013
+283: 2026-11-14T21:38:48.3475410Z -- The C compiler identification is AppleClang 17.0.0.17000013
+998: 2026-11-14T21:39:33.2787890Z 1/7 Test #116: test_native_install ..............   Passed    1.10 sec
+1354: 2026-11-14T21:39:34.2375320Z 117: Result: 47 tests passed, 0 tests failed
+1356: 2026-11-14T21:39:34.2376720Z 2/7 Test #117: hammond_vst3_validator ...........   Passed    0.95 sec
+1364: 2026-11-14T21:39:34.2723510Z 3/7 Test #118: test_native_controller ...........   Passed    0.04 sec
+1372: 2026-11-14T21:39:34.8018410Z 4/7 Test #119: test_native_abi ..................   Passed    0.53 sec
+1380: 2026-11-14T21:39:36.0347670Z 5/7 Test #120: test_native_behavior .............   Passed    1.22 sec
+1388: 2026-11-14T21:39:36.3212260Z 6/7 Test #121: test_native_automation ...........   Passed    0.30 sec
+1397: 2026-11-14T21:39:36.5771450Z 7/7 Test #122: test_native_concurrency ..........   Passed    0.26 sec
+1408: 2026-11-14T21:39:36.5774080Z 100% tests passed out of 7
+1410: 2026-11-14T21:39:36.5774260Z Total Test time (real) =   4.40 sec
+
+=== Job 132597198550 | run 43643877495 | Native VST3 (Linux GCC) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=success sha256_utf8=287f0f5bc012ce16680eab1366774ea677c146cba513b8705dd754c220f887bc bytes_utf8=287951
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:27.6017760Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:27.6037701Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:27.6038689Z Hosted Compute Agent
+4: 2026-11-14T21:38:27.6039611Z Version: 20261103.629
+5: 2026-11-14T21:38:27.6040259Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:27.6040854Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:27.6041496Z Worker ID: {820d009a-bb14-48cc-9136-2e160f241b7c}
+8: 2026-11-14T21:38:27.6042101Z Region: westus3
+9: 2026-11-14T21:38:27.6042592Z Cloud: Azure
+10: 2026-11-14T21:38:27.6043119Z ##[endgroup]
+11: 2026-11-14T21:38:27.6044457Z ##[group]Operating System
+12: 2026-11-14T21:38:27.6045052Z Ubuntu
+13: 2026-11-14T21:38:27.6045508Z 24.04.5
+14: 2026-11-14T21:38:27.6045941Z LTS
+15: 2026-11-14T21:38:27.6046514Z ##[endgroup]
+16: 2026-11-14T21:38:27.6046985Z ##[group]Runner Image
+17: 2026-11-14T21:38:27.6047523Z Image: ubuntu-24.04
+18: 2026-11-14T21:38:27.6048017Z Version: 20261111.370.1
+19: 2026-11-14T21:38:27.6049391Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+20: 2026-11-14T21:38:27.6050653Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+21: 2026-11-14T21:38:27.6051512Z ##[endgroup]
+110: 2026-11-14T21:38:32.7193182Z f9c11a498ecd88886349415205fc5dccc627033e
+122: 2026-11-14T21:38:33.0527134Z f9c11a498ecd88886349415205fc5dccc627033e
+290: 2026-11-14T21:38:37.9422085Z -- The CXX compiler identification is GNU 13.3.0
+299: 2026-11-14T21:38:38.3971045Z -- The C compiler identification is GNU 13.3.0
+374: 2026-11-14T21:38:39.6315925Z /home/runner/work/_temp/hammond-vst3-sdk/pluginterfaces/base/ustring.cpp:228:41: warning: format ‘%lld’ expects argument of type ‘long long int*’, but argument 3 has type ‘Steinberg::int64*’ {aka ‘long int*’} [-Wformat=]
+375: 2026-11-14T21:38:39.6317290Z   228 |         return sscanf (str.data (), "%lld", &value) == 1;
+376: 2026-11-14T21:38:39.6317758Z       |                                      ~~~^   ~~~~~~
+377: 2026-11-14T21:38:39.6318425Z       |                                         |   |
+378: 2026-11-14T21:38:39.6318881Z       |                                         |   Steinberg::int64* {aka long int*}
+379: 2026-11-14T21:38:39.6319331Z       |                                         long long int*
+382: 2026-11-14T21:38:39.6323348Z /home/runner/work/_temp/hammond-vst3-sdk/pluginterfaces/base/ustring.cpp:256:56: warning: format ‘%lld’ expects argument of type ‘long long int’, but argument 4 has type ‘Steinberg::int64’ {aka ‘long int’} [-Wformat=]
+383: 2026-11-14T21:38:39.6324725Z   256 |         auto len = snprintf (utf8Buffer, thisSize, "%lld", value);
+384: 2026-11-14T21:38:39.6325242Z       |                                                     ~~~^   ~~~~~
+385: 2026-11-14T21:38:39.6325917Z       |                                                        |   |
+386: 2026-11-14T21:38:39.6326396Z       |                                                        |   Steinberg::int64 {aka long int}
+387: 2026-11-14T21:38:39.6326892Z       |                                                        long long int
+397: 2026-11-14T21:38:40.3027554Z /home/runner/work/_temp/hammond-vst3-sdk/base/source/fstring.cpp:1389:35: warning: format ‘%lld’ expects argument of type ‘long long int*’, but argument 3 has type ‘Steinberg::int64*’ {aka ‘long int*’} [-Wformat=]
+398: 2026-11-14T21:38:40.3029508Z  1389 |                 if (sscanf (text, "%" FORMAT_INT64A, &value) == 1)
+399: 2026-11-14T21:38:40.3029976Z       |                                                      ~~~~~~
+400: 2026-11-14T21:38:40.3030376Z       |                                                      |
+401: 2026-11-14T21:38:40.3030827Z       |                                                      Steinberg::int64* {aka long int*}
+402: 2026-11-14T21:38:40.3031483Z In file included from /home/runner/work/_temp/hammond-vst3-sdk/base/source/fstring.h:21,
+407: 2026-11-14T21:38:40.3037375Z /home/runner/work/_temp/hammond-vst3-sdk/base/source/fstring.cpp:1415:35: warning: format ‘%llu’ expects argument of type ‘long long unsigned int*’, but argument 3 has type ‘Steinberg::uint64*’ {aka ‘long unsigned int*’} [-Wformat=]
+408: 2026-11-14T21:38:40.3039058Z  1415 |                 if (sscanf (text, "%" FORMAT_UINT64A, &value) == 1)
+409: 2026-11-14T21:38:40.3039518Z       |                                                       ~~~~~~
+410: 2026-11-14T21:38:40.3039918Z       |                                                       |
+411: 2026-11-14T21:38:40.3040429Z       |                                                       Steinberg::uint64* {aka long unsigned int*}
+412: 2026-11-14T21:38:40.3041213Z /home/runner/work/_temp/hammond-vst3-sdk/pluginterfaces/base/fstrdefs.h:52:27: note: format string is defined here
+1149: 2026-11-14T21:39:14.4854229Z 1/8 Test #116: test_native_install ..............   Passed    0.89 sec
+1505: 2026-11-14T21:39:15.6705213Z 117: Result: 47 tests passed, 0 tests failed
+1507: 2026-11-14T21:39:15.6705773Z 2/8 Test #117: hammond_vst3_validator ...........   Passed    1.18 sec
+1515: 2026-11-14T21:39:15.6848599Z 3/8 Test #118: test_native_controller ...........   Passed    0.02 sec
+1523: 2026-11-14T21:39:16.4209655Z 4/8 Test #119: test_native_abi ..................   Passed    0.74 sec
+1531: 2026-11-14T21:39:17.7106567Z 5/8 Test #120: test_native_behavior .............   Passed    1.29 sec
+1539: 2026-11-14T21:39:18.1157900Z 6/8 Test #121: test_native_automation ...........   Passed    0.40 sec
+1548: 2026-11-14T21:39:18.3388759Z 7/8 Test #122: test_native_concurrency ..........   Passed    0.22 sec
+1571: 2026-11-14T21:39:19.0589222Z 8/8 Test #123: test_native_realtime .............   Passed    0.72 sec
+1583: 2026-11-14T21:39:19.0592545Z 100% tests passed, 0 tests failed out of 8
+1585: 2026-11-14T21:39:19.0592789Z Total Test time (real) =   5.47 sec
+
+=== Job 132597198294 | run 43643877502 | Native standalone (Linux GCC ASan + UBSan + leaks) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=cancelled sha256_utf8=a3f89a28d03de9b9932257ef46152dc959db4307dc8bd7bc5897ef86a554babf bytes_utf8=820243
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:28.2956226Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:28.2981967Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:28.2982863Z Hosted Compute Agent
+4: 2026-11-14T21:38:28.2983585Z Version: 20261103.629
+5: 2026-11-14T21:38:28.2984646Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:28.2985411Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:28.2986234Z Worker ID: {afd0744a-c7a0-4c95-860d-b221c559a1d5}
+8: 2026-11-14T21:38:28.2986993Z Region: westcentralus
+9: 2026-11-14T21:38:28.2987637Z Cloud: Azure
+10: 2026-11-14T21:38:28.2988281Z ##[endgroup]
+11: 2026-11-14T21:38:28.2989790Z ##[group]Operating System
+12: 2026-11-14T21:38:28.2990557Z Ubuntu
+13: 2026-11-14T21:38:28.2991126Z 24.04.5
+14: 2026-11-14T21:38:28.2991709Z LTS
+15: 2026-11-14T21:38:28.2992367Z ##[endgroup]
+16: 2026-11-14T21:38:28.2992999Z ##[group]Runner Image
+17: 2026-11-14T21:38:28.2993694Z Image: ubuntu-24.04
+18: 2026-11-14T21:38:28.2994608Z Version: 20261111.370.1
+19: 2026-11-14T21:38:28.2996017Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+20: 2026-11-14T21:38:28.2997669Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+21: 2026-11-14T21:38:28.2998750Z ##[endgroup]
+54: 2026-11-14T21:38:29.0825274Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+55: 2026-11-14T21:38:29.0825924Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+56: 2026-11-14T21:38:29.0826542Z   LSAN_OPTIONS: exitcode=23
+57: 2026-11-14T21:38:29.0827033Z   SDL_AUDIODRIVER: dummy
+58: 2026-11-14T21:38:29.0827503Z   SDL_VIDEODRIVER: dummy
+116: 2026-11-14T21:38:33.1131268Z f9c11a498ecd88886349415205fc5dccc627033e
+141: 2026-11-14T21:38:33.5445717Z HEAD is now at f9c11a4 Publish verified native gallery and portable fixture storage
+144: 2026-11-14T21:38:33.5544164Z f9c11a498ecd88886349415205fc5dccc627033e
+184: 2026-11-14T21:38:33.7284319Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+185: 2026-11-14T21:38:33.7285369Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+186: 2026-11-14T21:38:33.7286581Z   LSAN_OPTIONS: exitcode=23
+187: 2026-11-14T21:38:33.7287472Z   SDL_AUDIODRIVER: dummy
+188: 2026-11-14T21:38:33.7288363Z   SDL_VIDEODRIVER: dummy
+232: 2026-11-14T21:38:33.8923090Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+233: 2026-11-14T21:38:33.8924444Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+234: 2026-11-14T21:38:33.8925839Z   LSAN_OPTIONS: exitcode=23
+235: 2026-11-14T21:38:33.8927274Z   SDL_AUDIODRIVER: dummy
+236: 2026-11-14T21:38:33.8928566Z   SDL_VIDEODRIVER: dummy
+277: 2026-11-14T21:38:34.6949386Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+278: 2026-11-14T21:38:34.6949736Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+279: 2026-11-14T21:38:34.6950057Z   LSAN_OPTIONS: exitcode=23
+280: 2026-11-14T21:38:34.6950345Z   SDL_AUDIODRIVER: dummy
+281: 2026-11-14T21:38:34.6950591Z   SDL_VIDEODRIVER: dummy
+330: 2026-11-14T21:38:37.0514731Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+331: 2026-11-14T21:38:37.0515077Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+332: 2026-11-14T21:38:37.0515395Z   LSAN_OPTIONS: exitcode=23
+333: 2026-11-14T21:38:37.0515642Z   SDL_AUDIODRIVER: dummy
+334: 2026-11-14T21:38:37.0515874Z   SDL_VIDEODRIVER: dummy
+615: 2026-11-14T21:38:49.3584314Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+616: 2026-11-14T21:38:49.3584705Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+617: 2026-11-14T21:38:49.3585017Z   LSAN_OPTIONS: exitcode=23
+618: 2026-11-14T21:38:49.3585261Z   SDL_AUDIODRIVER: dummy
+619: 2026-11-14T21:38:49.3585490Z   SDL_VIDEODRIVER: dummy
+630: 2026-11-14T21:38:49.5165173Z -- The CXX compiler identification is GNU 13.3.0
+644: 2026-11-14T21:38:51.0726584Z -- The C compiler identification is GNU 13.3.0
+1275: 2026-11-14T21:39:10.5129770Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+1276: 2026-11-14T21:39:10.5130103Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+1277: 2026-11-14T21:39:10.5130417Z   LSAN_OPTIONS: exitcode=23
+1278: 2026-11-14T21:39:10.5130659Z   SDL_AUDIODRIVER: dummy
+1279: 2026-11-14T21:39:10.5130915Z   SDL_VIDEODRIVER: dummy
+3495: 2026-11-14T21:42:46.5515040Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+3496: 2026-11-14T21:42:46.5515384Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+3497: 2026-11-14T21:42:46.5515702Z   LSAN_OPTIONS: exitcode=23
+3498: 2026-11-14T21:42:46.5515951Z   SDL_AUDIODRIVER: dummy
+3499: 2026-11-14T21:42:46.5516185Z   SDL_VIDEODRIVER: dummy
+3548: 2026-11-14T21:42:47.6746233Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+3549: 2026-11-14T21:42:47.6746773Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+3550: 2026-11-14T21:42:47.6747271Z   LSAN_OPTIONS: exitcode=23
+3551: 2026-11-14T21:42:47.6747888Z   SDL_AUDIODRIVER: dummy
+3552: 2026-11-14T21:42:47.6748124Z   SDL_VIDEODRIVER: dummy
+3582: 2026-11-14T21:42:47.9850040Z  1/16 Test #119: test_standalone_inspection_acceptance ...   Passed    0.25 sec
+3590: 2026-11-14T21:42:48.0066798Z  2/16 Test #120: test_standalone_inspection_author .......   Passed    0.02 sec
+3598: 2026-11-14T21:42:52.0563156Z  3/16 Test #127: test_standalone_preset_ui ...............   Passed    4.05 sec
+3607: 2026-11-14T21:42:53.5135492Z  4/16 Test #128: test_standalone_projection ..............   Passed    1.46 sec
+3615: 2026-11-14T21:42:53.7688121Z  5/16 Test #129: test_standalone_reference_layout ........   Passed    0.26 sec
+3623: 2026-11-14T21:42:54.1411723Z  6/16 Test #132: test_standalone_ui ......................   Passed    0.37 sec
+3631: 2026-11-14T21:42:54.4639447Z  7/16 Test #133: test_standalone_workspace_acceptance ....   Passed    0.32 sec
+3702: 2026-11-14T21:43:03.7296958Z  8/16 Test #134: test_standalone_workspace_continuity ....   Passed    9.27 sec
+3710: 2026-11-14T21:43:03.7523093Z  9/16 Test #135: test_standalone_workspaces_author .......   Passed    0.02 sec
+3719: 2026-11-14T21:43:04.3975508Z 10/16 Test #139: test_standalone_drawing .................   Passed    0.64 sec
+3727: 2026-11-14T21:43:04.4320809Z 11/16 Test #140: test_standalone_quad_drawing ............   Passed    0.03 sec
+3732: 2026-11-14T21:43:04.4325037Z 141: Working Directory: /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/apps/standalone
+3733: 2026-11-14T21:43:04.4325971Z 141: Test timeout computed to be: 180
+3734: 2026-11-14T21:43:15.4773417Z ##[error]The operation was canceled.
+3735: 2026-11-14T21:43:15.4875421Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+3736: 2026-11-14T21:43:15.4875867Z with:
+3755: 2026-11-14T21:43:15.4881876Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+3756: 2026-11-14T21:43:15.4882211Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+3757: 2026-11-14T21:43:15.4882525Z   LSAN_OPTIONS: exitcode=23
+3758: 2026-11-14T21:43:15.4882768Z   SDL_AUDIODRIVER: dummy
+3759: 2026-11-14T21:43:15.4883003Z   SDL_VIDEODRIVER: dummy
+
+=== Job 132597198613 | run 43643877502 | Native standalone (Linux GCC, MIDI OFF) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=cancelled sha256_utf8=fe5967d0db9e7d5ff069f40d8affdf242dd2635d3b1b1bb503084be658436999 bytes_utf8=695312
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:27.1168896Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:27.1190705Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:27.1191416Z Hosted Compute Agent
+4: 2026-11-14T21:38:27.1192031Z Version: 20261103.629
+5: 2026-11-14T21:38:27.1192770Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:27.1193516Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:27.1194142Z Worker ID: {f261a873-57a7-4684-8feb-e0236e456653}
+8: 2026-11-14T21:38:27.1194724Z Region: westus2
+9: 2026-11-14T21:38:27.1195259Z Cloud: Azure
+10: 2026-11-14T21:38:27.1195744Z ##[endgroup]
+11: 2026-11-14T21:38:27.1196923Z ##[group]Operating System
+12: 2026-11-14T21:38:27.1197503Z Ubuntu
+13: 2026-11-14T21:38:27.1197961Z 24.04.5
+14: 2026-11-14T21:38:27.1198453Z LTS
+15: 2026-11-14T21:38:27.1198911Z ##[endgroup]
+16: 2026-11-14T21:38:27.1199441Z ##[group]Runner Image
+17: 2026-11-14T21:38:27.1199992Z Image: ubuntu-24.04
+18: 2026-11-14T21:38:27.1200479Z Version: 20261111.370.1
+19: 2026-11-14T21:38:27.1201588Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+20: 2026-11-14T21:38:27.1203033Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+21: 2026-11-14T21:38:27.1203846Z ##[endgroup]
+111: 2026-11-14T21:38:32.6118979Z f9c11a498ecd88886349415205fc5dccc627033e
+136: 2026-11-14T21:38:33.0068550Z HEAD is now at f9c11a4 Publish verified native gallery and portable fixture storage
+139: 2026-11-14T21:38:33.0173325Z f9c11a498ecd88886349415205fc5dccc627033e
+647: 2026-11-14T21:39:00.4147406Z -- The CXX compiler identification is GNU 13.3.0
+659: 2026-11-14T21:39:03.0049468Z -- The C compiler identification is GNU 13.3.0
+2760: 2026-11-14T21:40:49.5696831Z  1/41 Test #116: test_standalone_install ...................   Passed    4.20 sec
+2778: 2026-11-14T21:40:49.6939903Z  2/41 Test #117: test_standalone_concurrency ...............   Passed    0.10 sec
+2786: 2026-11-14T21:40:49.6954998Z  3/41 Test #118: test_standalone_external_control ..........   Passed    0.00 sec
+2794: 2026-11-14T21:40:49.6993154Z  4/41 Test #119: test_standalone_inspection_acceptance .....   Passed    0.00 sec
+2802: 2026-11-14T21:40:49.7017315Z  5/41 Test #120: test_standalone_inspection_author .........   Passed    0.00 sec
+2812: 2026-11-14T21:40:49.7298800Z  6/41 Test #121: test_standalone_midi_concurrency ..........   Passed    0.03 sec
+2820: 2026-11-14T21:40:49.7331020Z  7/41 Test #122: test_standalone_midi_discovery ............   Passed    0.00 sec
+2828: 2026-11-14T21:40:49.7352925Z  8/41 Test #123: test_standalone_midi_input ................   Passed    0.00 sec
+2836: 2026-11-14T21:40:49.7403596Z  9/41 Test #124: test_standalone_midi_replay ...............   Passed    0.00 sec
+2844: 2026-11-14T21:40:49.7671647Z 10/41 Test #125: test_standalone_midi_session ..............   Passed    0.03 sec
+2852: 2026-11-14T21:40:49.7794976Z 11/41 Test #126: test_standalone_preset_concurrency ........   Passed    0.01 sec
+2860: 2026-11-14T21:40:50.1157496Z 12/41 Test #127: test_standalone_preset_ui .................   Passed    0.34 sec
+2869: 2026-11-14T21:40:50.2527506Z 13/41 Test #128: test_standalone_projection ................   Passed    0.14 sec
+2877: 2026-11-14T21:40:50.2784541Z 14/41 Test #129: test_standalone_reference_layout ..........   Passed    0.03 sec
+2885: 2026-11-14T21:40:50.5184937Z 15/41 Test #130: test_standalone_session ...................   Passed    0.24 sec
+2896: 2026-11-14T21:40:50.5284936Z 16/41 Test #131: test_standalone_state_files ...............   Passed    0.01 sec
+2904: 2026-11-14T21:40:50.5662592Z 17/41 Test #132: test_standalone_ui ........................   Passed    0.04 sec
+2912: 2026-11-14T21:40:50.5945560Z 18/41 Test #133: test_standalone_workspace_acceptance ......   Passed    0.03 sec
+2983: 2026-11-14T21:40:54.0392454Z 19/41 Test #134: test_standalone_workspace_continuity ......   Passed    3.44 sec
+2991: 2026-11-14T21:40:54.0395582Z 20/41 Test #135: test_standalone_workspaces_author .........   Passed    0.00 sec
+3014: 2026-11-14T21:40:54.0418857Z 21/41 Test #136: test_standalone_midi_backend ..............   Passed    0.00 sec
+3025: 2026-11-14T21:40:54.0433327Z 22/41 Test #137: test_standalone_midi_backend_quarantine ...   Passed    0.00 sec
+3038: 2026-11-14T21:40:56.1996924Z 23/41 Test #138: test_standalone_benchmark .................   Passed    2.16 sec
+3047: 2026-11-14T21:40:56.2643338Z 24/41 Test #139: test_standalone_drawing ...................   Passed    0.06 sec
+3055: 2026-11-14T21:40:56.2679594Z 25/41 Test #140: test_standalone_quad_drawing ..............   Passed    0.00 sec
+3063: 2026-11-14T21:41:03.1996641Z 26/41 Test #141: test_standalone_workspace_raster ..........   Passed    6.93 sec
+3072: 2026-11-14T21:41:03.6853598Z 27/41 Test #142: test_standalone_inspection_raster .........   Passed    0.49 sec
+3080: 2026-11-14T21:41:07.1202856Z 28/41 Test #143: test_standalone_material_acceptance .......   Passed    3.43 sec
+3145: 2026-11-14T21:41:22.2565179Z 29/41 Test #144: test_standalone_scaled_view ...............   Passed   15.14 sec
+3153: 2026-11-14T21:41:33.9950659Z 30/41 Test #145: test_standalone_preset_raster .............   Passed   11.74 sec
+3179: 2026-11-14T21:41:36.8208552Z 31/41 Test #146: test_standalone_audio_device ..............   Passed    2.82 sec
+3190: 2026-11-14T21:41:37.0397783Z 32/41 Test #147: test_standalone_device_removal ............   Passed    0.22 sec
+3219: 2026-11-14T21:41:37.9675394Z 33/41 Test #148: test_standalone_callback_allocation .......   Passed    0.92 sec
+3255: 2026-11-14T21:41:52.4322772Z 34/41 Test #149: test_standalone_app .......................   Passed   14.47 sec
+3284: 2026-11-14T21:42:03.0966929Z 35/41 Test #150: test_standalone_midi_cli ..................   Passed   10.66 sec
+3310: 2026-11-14T21:42:32.4657913Z 36/41 Test #151: test_standalone_native_midi_replay ........   Passed   29.37 sec
+3324: 2026-11-14T21:43:08.5320300Z 152: test_focus_loss_suppresses_repeat_and_duplicate_down_until_release (__main__.NativeWorkflowAcceptance.test_focus_loss_suppresses_repeat_and_duplicate_down_until_release) ... ok
+3325: 2026-11-14T21:43:13.9769767Z 152: test_help_open_close_releases_notes_without_retriggering_held_keys (__main__.NativeWorkflowAcceptance.test_help_open_close_releases_notes_without_retriggering_held_keys) ... ok
+3326: 2026-11-14T21:43:15.4795572Z ##[error]The operation was canceled.
+3327: 2026-11-14T21:43:15.4905375Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+3328: 2026-11-14T21:43:15.4905899Z with:
+
+=== Job 132597198642 | run 43643877502 | Native standalone (Windows MSVC x64, MIDI ON) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=cancelled sha256_utf8=249bda833bc82d13259f12dd0a7826e7af17a0eba2686b5b1cd6f024c017c548 bytes_utf8=380016
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:26.4431442Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:26.4458636Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:26.4459519Z Hosted Compute Agent
+4: 2026-11-14T21:38:26.4462024Z Version: 20261103.629
+5: 2026-11-14T21:38:26.4462619Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:26.4463301Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:26.4463930Z Worker ID: {b73931b1-bb68-45d8-af14-5bdaa1944f21}
+8: 2026-11-14T21:38:26.4464593Z Region: eastus
+9: 2026-11-14T21:38:26.4465104Z Cloud: Azure
+10: 2026-11-14T21:38:26.4465581Z ##[endgroup]
+11: 2026-11-14T21:38:26.4466998Z ##[group]Operating System
+12: 2026-11-14T21:38:26.4467635Z Microsoft Windows Server 2022
+13: 2026-11-14T21:38:26.4468223Z 10.0.20348
+14: 2026-11-14T21:38:26.4468698Z Datacenter
+15: 2026-11-14T21:38:26.4469213Z ##[endgroup]
+16: 2026-11-14T21:38:26.4469958Z ##[group]Runner Image
+17: 2026-11-14T21:38:26.4470478Z Image: windows-2022
+18: 2026-11-14T21:38:26.4470979Z Version: 20261112.366.7
+19: 2026-11-14T21:38:26.4472468Z Included Software: https://github.com/actions/runner-images/blob/win22/20261112.366/images/windows/Windows2022-Readme.md
+20: 2026-11-14T21:38:26.4474035Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20261112.366
+21: 2026-11-14T21:38:26.4474925Z ##[endgroup]
+98: 2026-11-14T21:38:36.6436994Z f9c11a498ecd88886349415205fc5dccc627033e
+123: 2026-11-14T21:38:37.6359870Z HEAD is now at f9c11a4 Publish verified native gallery and portable fixture storage
+126: 2026-11-14T21:38:37.7661203Z f9c11a498ecd88886349415205fc5dccc627033e
+369: 2026-11-14T21:39:18.8834257Z -- The CXX compiler identification is MSVC 19.44.35230.0
+388: 2026-11-14T21:39:29.1916615Z -- The C compiler identification is MSVC 19.44.35230.0
+2261: 2026-11-14T21:42:32.2918103Z Build succeeded.
+2262: 2026-11-14T21:42:32.2918443Z     0 Warning(s)
+2263: 2026-11-14T21:42:32.2918721Z     0 Error(s)
+2454: 2026-11-14T21:42:46.2648850Z  1/41 Test #116: test_standalone_install ...................   Passed   13.12 sec
+2472: 2026-11-14T21:42:46.4099322Z  2/41 Test #117: test_standalone_concurrency ...............   Passed    0.14 sec
+2480: 2026-11-14T21:42:46.4102377Z  3/41 Test #118: test_standalone_external_control ..........   Passed    0.01 sec
+2488: 2026-11-14T21:42:46.4241290Z  4/41 Test #119: test_standalone_inspection_acceptance .....   Passed    0.01 sec
+2496: 2026-11-14T21:42:46.4394964Z  5/41 Test #120: test_standalone_inspection_author .........   Passed    0.01 sec
+2506: 2026-11-14T21:42:46.4713353Z  6/41 Test #121: test_standalone_midi_concurrency ..........   Passed    0.05 sec
+2514: 2026-11-14T21:42:46.4866045Z  7/41 Test #122: test_standalone_midi_discovery ............   Passed    0.01 sec
+2522: 2026-11-14T21:42:46.5021440Z  8/41 Test #123: test_standalone_midi_input ................   Passed    0.01 sec
+2530: 2026-11-14T21:42:46.5335204Z  9/41 Test #124: test_standalone_midi_replay ...............   Passed    0.03 sec
+2538: 2026-11-14T21:42:46.5647079Z 10/41 Test #125: test_standalone_midi_session ..............   Passed    0.04 sec
+2546: 2026-11-14T21:42:46.5961416Z 11/41 Test #126: test_standalone_preset_concurrency ........   Passed    0.02 sec
+2554: 2026-11-14T21:42:47.2211288Z 12/41 Test #127: test_standalone_preset_ui .................   Passed    0.63 sec
+2563: 2026-11-14T21:42:47.6118923Z 13/41 Test #128: test_standalone_projection ................   Passed    0.40 sec
+2571: 2026-11-14T21:42:47.6743860Z 14/41 Test #129: test_standalone_reference_layout ..........   Passed    0.06 sec
+2579: 2026-11-14T21:42:47.9558786Z 15/41 Test #130: test_standalone_session ...................   Passed    0.27 sec
+2589: 2026-11-14T21:42:48.0495824Z 16/41 Test #131: test_standalone_state_files ...............   Passed    0.09 sec
+2597: 2026-11-14T21:42:48.1743646Z 17/41 Test #132: test_standalone_ui ........................   Passed    0.12 sec
+2605: 2026-11-14T21:42:48.2370554Z 18/41 Test #133: test_standalone_workspace_acceptance ......   Passed    0.06 sec
+2676: 2026-11-14T21:42:52.0405366Z 19/41 Test #134: test_standalone_workspace_continuity ......   Passed    3.81 sec
+2684: 2026-11-14T21:42:52.0518844Z 20/41 Test #135: test_standalone_workspaces_author .........   Passed    0.01 sec
+2707: 2026-11-14T21:42:52.0532401Z 21/41 Test #136: test_standalone_midi_backend ..............   Passed    0.01 sec
+2718: 2026-11-14T21:42:52.0676521Z 22/41 Test #137: test_standalone_midi_backend_quarantine ...   Passed    0.01 sec
+2731: 2026-11-14T21:42:54.7884317Z 23/41 Test #138: test_standalone_benchmark .................   Passed    2.72 sec
+2740: 2026-11-14T21:42:54.9134871Z 24/41 Test #139: test_standalone_drawing ...................   Passed    0.14 sec
+2748: 2026-11-14T21:42:54.9290781Z 25/41 Test #140: test_standalone_quad_drawing ..............   Passed    0.01 sec
+2756: 2026-11-14T21:43:03.7479105Z 26/41 Test #141: test_standalone_workspace_raster ..........   Passed    8.81 sec
+2765: 2026-11-14T21:43:04.3735951Z 27/41 Test #142: test_standalone_inspection_raster .........   Passed    0.62 sec
+2773: 2026-11-14T21:43:08.8004396Z 28/41 Test #143: test_standalone_material_acceptance .......   Passed    4.42 sec
+2778: 2026-11-14T21:43:08.8007682Z 144: Working Directory: D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone
+2779: 2026-11-14T21:43:08.8008433Z 144: Test timeout computed to be: 60
+2780: 2026-11-14T21:43:10.5175036Z ##[error]The operation was canceled.
+2781: 2026-11-14T21:43:10.5946508Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2782: 2026-11-14T21:43:10.5947298Z with:
+
+=== Job 132597198650 | run 43643877502 | Native standalone (Linux GCC, MIDI ON) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=cancelled sha256_utf8=e8422d0cbcb37f67a930e1ea3ea490bd84fa19cdf4441321dad471b4c9890303 bytes_utf8=704067
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:28.3280864Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:28.3306975Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:28.3307851Z Hosted Compute Agent
+4: 2026-11-14T21:38:28.3308532Z Version: 20261103.629
+5: 2026-11-14T21:38:28.3309216Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:28.3310000Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:28.3310813Z Worker ID: {2f7b57d8-7f36-4189-af35-6bb28cb2dba5}
+8: 2026-11-14T21:38:28.3311548Z Region: westus
+9: 2026-11-14T21:38:28.3312135Z Cloud: Azure
+10: 2026-11-14T21:38:28.3312705Z ##[endgroup]
+11: 2026-11-14T21:38:28.3314688Z ##[group]Operating System
+12: 2026-11-14T21:38:28.3315493Z Ubuntu
+13: 2026-11-14T21:38:28.3316029Z 24.04.5
+14: 2026-11-14T21:38:28.3316539Z LTS
+15: 2026-11-14T21:38:28.3317133Z ##[endgroup]
+16: 2026-11-14T21:38:28.3317742Z ##[group]Runner Image
+17: 2026-11-14T21:38:28.3318426Z Image: ubuntu-24.04
+18: 2026-11-14T21:38:28.3319006Z Version: 20261111.370.1
+19: 2026-11-14T21:38:28.3320337Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+20: 2026-11-14T21:38:28.3321935Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261111.370
+21: 2026-11-14T21:38:28.3323025Z ##[endgroup]
+111: 2026-11-14T21:38:34.9521738Z f9c11a498ecd88886349415205fc5dccc627033e
+136: 2026-11-14T21:38:35.3549773Z HEAD is now at f9c11a4 Publish verified native gallery and portable fixture storage
+139: 2026-11-14T21:38:35.3659291Z f9c11a498ecd88886349415205fc5dccc627033e
+685: 2026-11-14T21:38:56.0511892Z -- The CXX compiler identification is GNU 13.3.0
+701: 2026-11-14T21:38:58.6194768Z -- The C compiler identification is GNU 13.3.0
+2817: 2026-11-14T21:41:16.4855274Z  1/41 Test #116: test_standalone_install ...................   Passed    6.08 sec
+2835: 2026-11-14T21:41:16.6190494Z  2/41 Test #117: test_standalone_concurrency ...............   Passed    0.12 sec
+2843: 2026-11-14T21:41:16.6209683Z  3/41 Test #118: test_standalone_external_control ..........   Passed    0.00 sec
+2851: 2026-11-14T21:41:16.6256162Z  4/41 Test #119: test_standalone_inspection_acceptance .....   Passed    0.00 sec
+2859: 2026-11-14T21:41:16.6285301Z  5/41 Test #120: test_standalone_inspection_author .........   Passed    0.00 sec
+2869: 2026-11-14T21:41:16.6626845Z  6/41 Test #121: test_standalone_midi_concurrency ..........   Passed    0.03 sec
+2877: 2026-11-14T21:41:16.6664025Z  7/41 Test #122: test_standalone_midi_discovery ............   Passed    0.00 sec
+2885: 2026-11-14T21:41:16.6691419Z  8/41 Test #123: test_standalone_midi_input ................   Passed    0.00 sec
+2893: 2026-11-14T21:41:16.6773220Z  9/41 Test #124: test_standalone_midi_replay ...............   Passed    0.01 sec
+2901: 2026-11-14T21:41:16.7109712Z 10/41 Test #125: test_standalone_midi_session ..............   Passed    0.03 sec
+2909: 2026-11-14T21:41:16.7256961Z 11/41 Test #126: test_standalone_preset_concurrency ........   Passed    0.01 sec
+2917: 2026-11-14T21:41:17.1304738Z 12/41 Test #127: test_standalone_preset_ui .................   Passed    0.40 sec
+2926: 2026-11-14T21:41:17.2958824Z 13/41 Test #128: test_standalone_projection ................   Passed    0.17 sec
+2934: 2026-11-14T21:41:17.3276795Z 14/41 Test #129: test_standalone_reference_layout ..........   Passed    0.03 sec
+2942: 2026-11-14T21:41:17.6159353Z 15/41 Test #130: test_standalone_session ...................   Passed    0.29 sec
+2953: 2026-11-14T21:41:17.6268665Z 16/41 Test #131: test_standalone_state_files ...............   Passed    0.01 sec
+2961: 2026-11-14T21:41:17.6781119Z 17/41 Test #132: test_standalone_ui ........................   Passed    0.05 sec
+2969: 2026-11-14T21:41:17.7126835Z 18/41 Test #133: test_standalone_workspace_acceptance ......   Passed    0.03 sec
+3040: 2026-11-14T21:41:21.9005474Z 19/41 Test #134: test_standalone_workspace_continuity ......   Passed    4.19 sec
+3048: 2026-11-14T21:41:21.9010406Z 20/41 Test #135: test_standalone_workspaces_author .........   Passed    0.00 sec
+3071: 2026-11-14T21:41:21.9036682Z 21/41 Test #136: test_standalone_midi_backend ..............   Passed    0.00 sec
+3082: 2026-11-14T21:41:21.9053449Z 22/41 Test #137: test_standalone_midi_backend_quarantine ...   Passed    0.00 sec
+3095: 2026-11-14T21:41:24.4820627Z 23/41 Test #138: test_standalone_benchmark .................   Passed    2.58 sec
+3104: 2026-11-14T21:41:24.5575611Z 24/41 Test #139: test_standalone_drawing ...................   Passed    0.08 sec
+3112: 2026-11-14T21:41:24.5626564Z 25/41 Test #140: test_standalone_quad_drawing ..............   Passed    0.00 sec
+3120: 2026-11-14T21:41:32.4502606Z 26/41 Test #141: test_standalone_workspace_raster ..........   Passed    7.89 sec
+3129: 2026-11-14T21:41:32.9996480Z 27/41 Test #142: test_standalone_inspection_raster .........   Passed    0.55 sec
+3137: 2026-11-14T21:41:36.9279115Z 28/41 Test #143: test_standalone_material_acceptance .......   Passed    3.93 sec
+3202: 2026-11-14T21:41:54.4495047Z 29/41 Test #144: test_standalone_scaled_view ...............   Passed   17.52 sec
+3210: 2026-11-14T21:42:07.8714691Z 30/41 Test #145: test_standalone_preset_raster .............   Passed   13.42 sec
+3236: 2026-11-14T21:42:10.7263281Z 31/41 Test #146: test_standalone_audio_device ..............   Passed    2.85 sec
+3247: 2026-11-14T21:42:10.9485093Z 32/41 Test #147: test_standalone_device_removal ............   Passed    0.22 sec
+3276: 2026-11-14T21:42:11.8893216Z 33/41 Test #148: test_standalone_callback_allocation .......   Passed    0.94 sec
+3312: 2026-11-14T21:42:26.9323984Z 34/41 Test #149: test_standalone_app .......................   Passed   15.04 sec
+3341: 2026-11-14T21:42:37.9431614Z 35/41 Test #150: test_standalone_midi_cli ..................   Passed   11.01 sec
+3367: 2026-11-14T21:43:07.4321087Z 36/41 Test #151: test_standalone_native_midi_replay ........   Passed   29.49 sec
+3373: 2026-11-14T21:43:07.4329340Z 152: Test timeout computed to be: 90
+3374: 2026-11-14T21:43:07.5612483Z 152: Workflow executable SHA-256: 8dd0ffe6b056c31b0829b4184c35045490e4120ead469a8c3bf6a79e024fcfee
+3375: 2026-11-14T21:43:15.4897287Z ##[error]The operation was canceled.
+3376: 2026-11-14T21:43:15.4998844Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+3377: 2026-11-14T21:43:15.4999297Z with:
+
+=== Job 132597198727 | run 43643877502 | Native standalone (macOS AppleClang, MIDI ON) ===
+head=f9c11a498ecd88886349415205fc5dccc627033e conclusion=cancelled sha256_utf8=e4e8471ccd9ac10c43991d000957eb9d81c3071c3c7f100e1c22fa833debbaab bytes_utf8=687063
+The following numbered lines are selected from the decoded primary log; intervening lines are omitted.
+1: ﻿2026-11-14T21:38:26.6491780Z Current runner version: '2.338.2'
+2: 2026-11-14T21:38:26.6506760Z ##[group]Runner Image Provisioner
+3: 2026-11-14T21:38:26.6507690Z Hosted Compute Agent
+4: 2026-11-14T21:38:26.6508060Z Version: 20261103.629
+5: 2026-11-14T21:38:26.6508470Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+6: 2026-11-14T21:38:26.6508930Z Build Date: 2026-11-03T17:26:59Z
+7: 2026-11-14T21:38:26.6509360Z Worker ID: {954e8c1f-76f7-4695-992b-ed5981160754}
+8: 2026-11-14T21:38:26.6509810Z Region: westus
+9: 2026-11-14T21:38:26.6510150Z Cloud: MacCloud
+10: 2026-11-14T21:38:26.6510500Z ##[endgroup]
+11: 2026-11-14T21:38:26.6511340Z ##[group]Operating System
+12: 2026-11-14T21:38:26.6511720Z macOS
+13: 2026-11-14T21:38:26.6512220Z 15.8.2
+14: 2026-11-14T21:38:26.6512550Z 24H232
+15: 2026-11-14T21:38:26.6512870Z ##[endgroup]
+16: 2026-11-14T21:38:26.6513230Z ##[group]Runner Image
+17: 2026-11-14T21:38:26.6513600Z Image: macos-15-arm64
+18: 2026-11-14T21:38:26.6513980Z Version: 20261104.0514.1
+19: 2026-11-14T21:38:26.6514930Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20261104.0514/images/macos/macos-15-arm64-Readme.md
+20: 2026-11-14T21:38:26.6515990Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20261104.0514
+21: 2026-11-14T21:38:26.6516650Z ##[endgroup]
+112: 2026-11-14T21:38:32.6647970Z f9c11a498ecd88886349415205fc5dccc627033e
+120: 2026-11-14T21:38:33.2750230Z HEAD is now at f9c11a4 Publish verified native gallery and portable fixture storage
+123: 2026-11-14T21:38:33.2973350Z f9c11a498ecd88886349415205fc5dccc627033e
+345: 2026-11-14T21:38:41.8193410Z -- The CXX compiler identification is AppleClang 17.0.0.17000013
+360: 2026-11-14T21:38:44.8984920Z -- The C compiler identification is AppleClang 17.0.0.17000013
+724: 2026-11-14T21:39:23.7026380Z CMake Warning (deprecated) at /Users/runner/work/_temp/hammond-sdl2/CMakeLists.txt:3300 (cmake_minimum_required):
+725: 2026-11-14T21:39:23.7027970Z   Compatibility with CMake < 3.10 will be removed from a future version of
+726: 2026-11-14T21:39:23.7029030Z   CMake.
+727: 2026-11-14T21:39:23.7029330Z 
+728: 2026-11-14T21:39:23.7029830Z   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+729: 2026-11-14T21:39:23.7030960Z   to tell CMake that the project requires at least <min> but has been updated
+1553: 2026-11-14T21:40:01.6356480Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:498:27: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]
+1554: 2026-11-14T21:40:01.6455660Z   498 |     } else if (controller.gamepad) {
+1555: 2026-11-14T21:40:01.6556650Z       |                           ^~~~~~~
+1556: 2026-11-14T21:40:01.6658330Z       |                           extendedGamepad
+1557: 2026-11-14T21:40:01.6761650Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:230:62: note: 'gamepad' has been explicitly marked deprecated here
+1558: 2026-11-14T21:40:01.6865380Z   230 | @property (nonatomic, strong, readonly, nullable) GCGamepad *gamepad API_DEPRECATED_WITH_REPLACEMENT("extendedGamepad", macos(10.9, 10.12), ios(7.0, 10.0), tvos(7.0, 10.0));
+1560: 2026-11-14T21:40:01.7069560Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:628:27: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]
+1561: 2026-11-14T21:40:01.7170980Z   628 |     } else if (controller.gamepad) {
+1562: 2026-11-14T21:40:01.7293070Z       |                           ^~~~~~~
+1563: 2026-11-14T21:40:01.7429510Z       |                           extendedGamepad
+1564: 2026-11-14T21:40:01.7530490Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:230:62: note: 'gamepad' has been explicitly marked deprecated here
+1565: 2026-11-14T21:40:01.7632880Z   230 | @property (nonatomic, strong, readonly, nullable) GCGamepad *gamepad API_DEPRECATED_WITH_REPLACEMENT("extendedGamepad", macos(10.9, 10.12), ios(7.0, 10.0), tvos(7.0, 10.0));
+1567: 2026-11-14T21:40:01.7850610Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:794:24: warning: 'controllerPausedHandler' is deprecated: first deprecated in macOS 10.15 - Use the Menu button found on the controller's input profile, if it exists. [-Wdeprecated-declarations]
+1568: 2026-11-14T21:40:01.7953610Z   794 |             controller.controllerPausedHandler = nil;
+1569: 2026-11-14T21:40:01.8055320Z       |                        ^
+1570: 2026-11-14T21:40:01.8158490Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:159:46: note: 'controllerPausedHandler' has been explicitly marked deprecated here
+1571: 2026-11-14T21:40:01.8262470Z   159 | @property (nonatomic, copy, nullable) void (^controllerPausedHandler)(GCController *controller) API_DEPRECATED("Use the Menu button found on the controller's input profile, if it exists.", macos(10.9, 10.15), ios(7.0, 13.0), tvos(9.0, 13.0));
+1572: 2026-11-14T21:40:01.8371940Z       |                                              ^
+1573: 2026-11-14T21:40:01.8473960Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1013:28: warning: 'controllerPausedHandler' is deprecated: first deprecated in macOS 10.15 - Use the Menu button found on the controller's input profile, if it exists. [-Wdeprecated-declarations]
+1574: 2026-11-14T21:40:01.8577890Z  1013 |                 controller.controllerPausedHandler = ^(GCController *c) {
+1575: 2026-11-14T21:40:01.8679580Z       |                            ^
+1576: 2026-11-14T21:40:01.8799750Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:159:46: note: 'controllerPausedHandler' has been explicitly marked deprecated here
+1577: 2026-11-14T21:40:01.8902230Z   159 | @property (nonatomic, copy, nullable) void (^controllerPausedHandler)(GCController *controller) API_DEPRECATED("Use the Menu button found on the controller's input profile, if it exists.", macos(10.9, 10.15), ios(7.0, 13.0), tvos(9.0, 13.0));
+1578: 2026-11-14T21:40:01.9004000Z       |                                              ^
+1579: 2026-11-14T21:40:01.9106890Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1255:31: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]
+1580: 2026-11-14T21:40:01.9210360Z  1255 |         } else if (controller.gamepad) {
+1581: 2026-11-14T21:40:01.9312370Z       |                               ^~~~~~~
+1582: 2026-11-14T21:40:01.9415510Z       |                               extendedGamepad
+1583: 2026-11-14T21:40:01.9582920Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:230:62: note: 'gamepad' has been explicitly marked deprecated here
+1584: 2026-11-14T21:40:01.9686640Z   230 | @property (nonatomic, strong, readonly, nullable) GCGamepad *gamepad API_DEPRECATED_WITH_REPLACEMENT("extendedGamepad", macos(10.9, 10.12), ios(7.0, 10.0), tvos(7.0, 10.0));
+1586: 2026-11-14T21:40:01.9891660Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1257:13: warning: 'GCGamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]
+1587: 2026-11-14T21:40:01.9993550Z  1257 |             GCGamepad *gamepad = controller.gamepad;
+1588: 2026-11-14T21:40:02.0095560Z       |             ^~~~~~~~~
+1589: 2026-11-14T21:40:02.0197900Z       |             GCExtendedGamepad
+1590: 2026-11-14T21:40:02.0300080Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCGamepad.h:27:12: note: 'GCGamepad' has been explicitly marked deprecated here
+1591: 2026-11-14T21:40:02.0402800Z    27 | @interface GCGamepad : GCPhysicalInputProfile
+1593: 2026-11-14T21:40:02.0515790Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1257:45: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]
+1594: 2026-11-14T21:40:02.0618330Z  1257 |             GCGamepad *gamepad = controller.gamepad;
+1595: 2026-11-14T21:40:02.0720200Z       |                                             ^~~~~~~
+1596: 2026-11-14T21:40:02.0821680Z       |                                             extendedGamepad
+1597: 2026-11-14T21:40:02.0916900Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:230:62: note: 'gamepad' has been explicitly marked deprecated here
+1598: 2026-11-14T21:40:02.1020650Z   230 | @property (nonatomic, strong, readonly, nullable) GCGamepad *gamepad API_DEPRECATED_WITH_REPLACEMENT("extendedGamepad", macos(10.9, 10.12), ios(7.0, 10.0), tvos(7.0, 10.0));
+1600: 2026-11-14T21:40:02.1255220Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:1797:24: warning: 'controllerPausedHandler' is deprecated: first deprecated in macOS 10.15 - Use the Menu button found on the controller's input profile, if it exists. [-Wdeprecated-declarations]
+1601: 2026-11-14T21:40:02.1395390Z  1797 |             controller.controllerPausedHandler = nil;
+1602: 2026-11-14T21:40:02.1518930Z       |                        ^
+1603: 2026-11-14T21:40:02.1621230Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:159:46: note: 'controllerPausedHandler' has been explicitly marked deprecated here
+1604: 2026-11-14T21:40:02.1728930Z   159 | @property (nonatomic, copy, nullable) void (^controllerPausedHandler)(GCController *controller) API_DEPRECATED("Use the Menu button found on the controller's input profile, if it exists.", macos(10.9, 10.15), ios(7.0, 13.0), tvos(9.0, 13.0));
+1605: 2026-11-14T21:40:02.1840060Z       |                                              ^
+1606: 2026-11-14T21:40:02.1943780Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:2029:20: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]
+1607: 2026-11-14T21:40:02.2080900Z  2029 |     if (controller.gamepad) {
+1608: 2026-11-14T21:40:02.2202760Z       |                    ^~~~~~~
+1609: 2026-11-14T21:40:02.2324860Z       |                    extendedGamepad
+1610: 2026-11-14T21:40:02.2426610Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:230:62: note: 'gamepad' has been explicitly marked deprecated here
+1611: 2026-11-14T21:40:02.2527100Z   230 | @property (nonatomic, strong, readonly, nullable) GCGamepad *gamepad API_DEPRECATED_WITH_REPLACEMENT("extendedGamepad", macos(10.9, 10.12), ios(7.0, 10.0), tvos(7.0, 10.0));
+1613: 2026-11-14T21:40:02.2728830Z /Users/runner/work/_temp/hammond-sdl2/src/joystick/iphoneos/SDL_mfijoystick.m:2030:27: warning: 'gamepad' is deprecated: first deprecated in macOS 10.12 [-Wdeprecated-declarations]
+1614: 2026-11-14T21:40:02.2829540Z  2030 |         return controller.gamepad.dpad;
+1615: 2026-11-14T21:40:02.2929730Z       |                           ^~~~~~~
+1616: 2026-11-14T21:40:02.3031130Z       |                           extendedGamepad
+1617: 2026-11-14T21:40:02.3134500Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h:230:62: note: 'gamepad' has been explicitly marked deprecated here
+1618: 2026-11-14T21:40:02.3238930Z   230 | @property (nonatomic, strong, readonly, nullable) GCGamepad *gamepad API_DEPRECATED_WITH_REPLACEMENT("extendedGamepad", macos(10.9, 10.12), ios(7.0, 10.0), tvos(7.0, 10.0));
+1646: 2026-11-14T21:40:04.7235180Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoaevents.m:305:36: warning: 'NSApplicationActivateIgnoringOtherApps' is deprecated: first deprecated in macOS 14.0 - ignoringOtherApps is deprecated in macOS 14 and will have no effect. [-Wdeprecated-declarations]
+1647: 2026-11-14T21:40:04.7468930Z   305 |             [i activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+1648: 2026-11-14T21:40:04.7571160Z       |                                    ^
+1649: 2026-11-14T21:40:04.7673190Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSRunningApplication.h:27:5: note: 'NSApplicationActivateIgnoringOtherApps' has been explicitly marked deprecated here
+1650: 2026-11-14T21:40:04.7777410Z    27 |     NSApplicationActivateIgnoringOtherApps API_DEPRECATED("ignoringOtherApps is deprecated in macOS 14 and will have no effect.", macos(10.6, 14.0)) = 1 << 1
+1651: 2026-11-14T21:40:04.7880380Z       |     ^
+1667: 2026-11-14T21:40:07.3755220Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:93:23: warning: 'CVDisplayLinkGetNominalOutputVideoRefreshPeriod' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]
+1668: 2026-11-14T21:40:07.3860120Z    93 |         CVTime time = CVDisplayLinkGetNominalOutputVideoRefreshPeriod(link);
+1669: 2026-11-14T21:40:07.3967470Z       |                       ^
+1670: 2026-11-14T21:40:07.4070630Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVDisplayLink.h:182:18: note: 'CVDisplayLinkGetNominalOutputVideoRefreshPeriod' has been explicitly marked deprecated here
+1671: 2026-11-14T21:40:07.4173100Z   182 | CV_EXPORT CVTime CVDisplayLinkGetNominalOutputVideoRefreshPeriod( CVDisplayLinkRef CV_NONNULL displayLink );
+1672: 2026-11-14T21:40:07.4241810Z       |                  ^
+1673: 2026-11-14T21:40:07.4343830Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:122:23: warning: 'CGDisplayModeCopyPixelEncoding' is deprecated: first deprecated in macOS 10.11 - No longer supported [-Wdeprecated-declarations]
+1674: 2026-11-14T21:40:07.4445390Z   122 |     CFStringRef fmt = CGDisplayModeCopyPixelEncoding(vidmode);
+1675: 2026-11-14T21:40:07.4561680Z       |                       ^
+1676: 2026-11-14T21:40:07.4672400Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGDirectDisplay.h:177:34: note: 'CGDisplayModeCopyPixelEncoding' has been explicitly marked deprecated here
+1677: 2026-11-14T21:40:07.4785870Z   177 | CG_EXTERN CFStringRef __nullable CGDisplayModeCopyPixelEncoding(
+1678: 2026-11-14T21:40:07.4924130Z       |                                  ^
+1679: 2026-11-14T21:40:07.5030300Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:284:32: warning: 'CGDisplayIOServicePort' is deprecated: first deprecated in macOS 10.9 - No longer supported [-Wdeprecated-declarations]
+1680: 2026-11-14T21:40:07.5175430Z   284 |     io_service_t servicePort = CGDisplayIOServicePort(displayID);
+1681: 2026-11-14T21:40:07.5279950Z       |                                ^
+1682: 2026-11-14T21:40:07.5381760Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGDisplayConfiguration.h:372:24: note: 'CGDisplayIOServicePort' has been explicitly marked deprecated here
+1683: 2026-11-14T21:40:07.5482110Z   372 | CG_EXTERN io_service_t CGDisplayIOServicePort(CGDirectDisplayID display)
+1684: 2026-11-14T21:40:07.5582360Z       |                        ^
+1685: 2026-11-14T21:40:07.5685840Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:354:13: warning: 'CVDisplayLinkCreateWithCGDisplay' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]
+1686: 2026-11-14T21:40:07.5791440Z   354 |             CVDisplayLinkCreateWithCGDisplay(displays[i], &link);
+1687: 2026-11-14T21:40:07.5892210Z       |             ^
+1688: 2026-11-14T21:40:07.5995630Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVDisplayLink.h:89:20: note: 'CVDisplayLinkCreateWithCGDisplay' has been explicitly marked deprecated here
+1689: 2026-11-14T21:40:07.6094470Z    89 | CV_EXPORT CVReturn CVDisplayLinkCreateWithCGDisplay(
+1690: 2026-11-14T21:40:07.6195570Z       |                    ^
+1691: 2026-11-14T21:40:07.6299320Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:360:17: warning: 'CVDisplayLinkRelease' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]
+1692: 2026-11-14T21:40:07.6399820Z   360 |                 CVDisplayLinkRelease(link);
+1693: 2026-11-14T21:40:07.6500040Z       |                 ^
+1694: 2026-11-14T21:40:07.6603500Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVDisplayLink.h:249:16: note: 'CVDisplayLinkRelease' has been explicitly marked deprecated here
+1695: 2026-11-14T21:40:07.6707100Z   249 | CV_EXPORT void CVDisplayLinkRelease( CV_RELEASES_ARGUMENT CVDisplayLinkRef CV_NULLABLE displayLink );
+1696: 2026-11-14T21:40:07.6822990Z       |                ^
+1697: 2026-11-14T21:40:07.6934130Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:367:13: warning: 'CVDisplayLinkRelease' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]
+1698: 2026-11-14T21:40:07.7058690Z   367 |             CVDisplayLinkRelease(link);
+1699: 2026-11-14T21:40:07.7160450Z       |             ^
+1700: 2026-11-14T21:40:07.7262740Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVDisplayLink.h:249:16: note: 'CVDisplayLinkRelease' has been explicitly marked deprecated here
+1701: 2026-11-14T21:40:07.7364750Z   249 | CV_EXPORT void CVDisplayLinkRelease( CV_RELEASES_ARGUMENT CVDisplayLinkRef CV_NULLABLE displayLink );
+1702: 2026-11-14T21:40:07.7467610Z       |                ^
+1703: 2026-11-14T21:40:07.7573990Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:512:5: warning: 'CVDisplayLinkCreateWithCGDisplay' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]
+1704: 2026-11-14T21:40:07.7676630Z   512 |     CVDisplayLinkCreateWithCGDisplay(data->display, &link);
+1705: 2026-11-14T21:40:07.7778270Z       |     ^
+1706: 2026-11-14T21:40:07.7879920Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVDisplayLink.h:89:20: note: 'CVDisplayLinkCreateWithCGDisplay' has been explicitly marked deprecated here
+1707: 2026-11-14T21:40:07.7979880Z    89 | CV_EXPORT CVReturn CVDisplayLinkCreateWithCGDisplay(
+1708: 2026-11-14T21:40:07.8080970Z       |                    ^
+1709: 2026-11-14T21:40:07.8182970Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoamodes.m:580:5: warning: 'CVDisplayLinkRelease' is deprecated: first deprecated in macOS 15.0 - use NSView.displayLink(target:selector:), NSWindow.displayLink(target:selector:), or NSScreen.displayLink(target:selector:)  [-Wdeprecated-declarations]
+1710: 2026-11-14T21:40:07.8283040Z   580 |     CVDisplayLinkRelease(link);
+1711: 2026-11-14T21:40:07.8384830Z       |     ^
+1712: 2026-11-14T21:40:07.8491150Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreVideo.framework/Headers/CVDisplayLink.h:249:16: note: 'CVDisplayLinkRelease' has been explicitly marked deprecated here
+1713: 2026-11-14T21:40:07.8590550Z   249 | CV_EXPORT void CVDisplayLinkRelease( CV_RELEASES_ARGUMENT CVDisplayLinkRef CV_NULLABLE displayLink );
+1714: 2026-11-14T21:40:07.8692810Z       |                ^
+1724: 2026-11-14T21:40:09.0271060Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoashape.m:67:38: warning: 'graphicsContext' is deprecated: first deprecated in macOS 10.14 - Add instances of NSView to display content in a window. [-Wdeprecated-declarations]
+1725: 2026-11-14T21:40:09.0374840Z    67 |     data.context = [windata.nswindow graphicsContext];
+1726: 2026-11-14T21:40:09.0477200Z       |                                      ^
+1727: 2026-11-14T21:40:09.0578060Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSWindow.h:1019:59: note: property 'graphicsContext' is declared deprecated here
+1728: 2026-11-14T21:40:09.0678370Z  1019 | @property (nullable, readonly, strong) NSGraphicsContext *graphicsContext API_DEPRECATED("Add instances of NSView to display content in a window.", macos(10.0,10.14));
+1729: 2026-11-14T21:40:09.0780360Z       |                                                           ^
+1741: 2026-11-14T21:40:10.0292240Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:164:47: warning: 'NSFilenamesPboardType' is deprecated: first deprecated in macOS 10.14 - Create multiple pasteboard items with NSPasteboardTypeFileURL or kUTTypeFileURL instead [-Wdeprecated-declarations]
+1742: 2026-11-14T21:40:10.0352620Z   164 |     NSArray *types = [NSArray arrayWithObject:NSFilenamesPboardType];
+1743: 2026-11-14T21:40:10.0353540Z       |                                               ^
+1744: 2026-11-14T21:40:10.0354780Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSPasteboard.h:433:32: note: 'NSFilenamesPboardType' has been explicitly marked deprecated here
+1745: 2026-11-14T21:40:10.0356710Z   433 | APPKIT_EXTERN NSPasteboardType NSFilenamesPboardType API_DEPRECATED("Create multiple pasteboard items with NSPasteboardTypeFileURL or kUTTypeFileURL instead", macos(10.0,10.14));
+1746: 2026-11-14T21:40:10.0357570Z       |                                ^
+1747: 2026-11-14T21:40:10.0359070Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:182:45: warning: 'NSFilenamesPboardType' is deprecated: first deprecated in macOS 10.14 - Create multiple pasteboard items with NSPasteboardTypeFileURL or kUTTypeFileURL instead [-Wdeprecated-declarations]
+1748: 2026-11-14T21:40:10.0362230Z   182 |     SDL_assert([desiredType isEqualToString:NSFilenamesPboardType]);
+1749: 2026-11-14T21:40:10.0362970Z       |                                             ^
+1750: 2026-11-14T21:40:10.0364080Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSPasteboard.h:433:32: note: 'NSFilenamesPboardType' has been explicitly marked deprecated here
+1751: 2026-11-14T21:40:10.0367020Z   433 | APPKIT_EXTERN NSPasteboardType NSFilenamesPboardType API_DEPRECATED("Create multiple pasteboard items with NSPasteboardTypeFileURL or kUTTypeFileURL instead", macos(10.0,10.14));
+1752: 2026-11-14T21:40:10.0369340Z       |                                ^
+1753: 2026-11-14T21:40:10.0372250Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:534:11: warning: 'setAcceptsTouchEvents:' is deprecated: first deprecated in macOS 10.12.2 - Use allowedTouchTypes instead [-Wdeprecated-declarations]
+1754: 2026-11-14T21:40:10.0375560Z   534 |     [view setAcceptsTouchEvents:YES];
+1755: 2026-11-14T21:40:10.0376780Z       |           ^
+1756: 2026-11-14T21:40:10.0379190Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSView.h:231:16: note: property 'acceptsTouchEvents' is declared deprecated here
+1757: 2026-11-14T21:40:10.0382320Z   231 | @property BOOL acceptsTouchEvents API_DEPRECATED("Use allowedTouchTypes instead", macos(10.6,10.12.2));
+1758: 2026-11-14T21:40:10.0384030Z       |                ^
+1760: 2026-11-14T21:40:10.0435100Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:1758:15: warning: 'setOneShot:' is deprecated: first deprecated in macOS 10.14 - This property does not do anything and should not be used [-Wdeprecated-declarations]
+1761: 2026-11-14T21:40:10.0436480Z  1758 |     [nswindow setOneShot:NO];
+1762: 2026-11-14T21:40:10.0436910Z       |               ^
+1763: 2026-11-14T21:40:10.0438300Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSWindow.h:1021:35: note: property 'oneShot' is declared deprecated here
+1764: 2026-11-14T21:40:10.0439660Z  1021 | @property (getter=isOneShot) BOOL oneShot API_DEPRECATED("This property does not do anything and should not be used", macos(10.0,10.14));
+1765: 2026-11-14T21:40:10.0440330Z       |                                   ^
+1767: 2026-11-14T21:40:10.0492040Z /Users/runner/work/_temp/hammond-sdl2/src/video/cocoa/SDL_cocoawindow.m:2503:85: warning: 'kUTTypeFileURL' is deprecated: first deprecated in macOS 12.0 - Use UTTypeFileURL or UTType.fileURL (swift) instead. [-Wdeprecated-declarations]
+1768: 2026-11-14T21:40:10.0502380Z  2503 |         [data.nswindow registerForDraggedTypes:[NSArray arrayWithObject:(NSString *)kUTTypeFileURL]];
+1769: 2026-11-14T21:40:10.0503130Z       |                                                                                     ^
+1770: 2026-11-14T21:40:10.0504290Z /Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Headers/UTCoreTypes.h:211:26: note: 'kUTTypeFileURL' has been explicitly marked deprecated here
+1771: 2026-11-14T21:40:10.0506150Z   211 | extern const CFStringRef kUTTypeFileURL                              API_DEPRECATED("Use UTTypeFileURL or UTType.fileURL (swift) instead.", ios(3.0, 15.0), macos(10.4, 12.0), tvos(9.0, 15.0), watchos(1.0, 8.0));
+1772: 2026-11-14T21:40:10.0507110Z       |                          ^
+2316: 2026-11-14T21:40:57.9421420Z  1/41 Test #116: test_standalone_install ...................   Passed    8.03 sec
+2334: 2026-11-14T21:40:58.0241980Z  2/41 Test #117: test_standalone_concurrency ...............   Passed    0.08 sec
+2342: 2026-11-14T21:40:58.0302880Z  3/41 Test #118: test_standalone_external_control ..........   Passed    0.01 sec
+2350: 2026-11-14T21:40:58.0419280Z  4/41 Test #119: test_standalone_inspection_acceptance .....   Passed    0.01 sec
+2358: 2026-11-14T21:40:58.2898460Z  5/41 Test #120: test_standalone_inspection_author .........   Passed    0.25 sec
+2368: 2026-11-14T21:40:58.3440040Z  6/41 Test #121: test_standalone_midi_concurrency ..........   Passed    0.05 sec
+2376: 2026-11-14T21:40:58.3517880Z  7/41 Test #122: test_standalone_midi_discovery ............   Passed    0.01 sec
+2384: 2026-11-14T21:40:58.3576350Z  8/41 Test #123: test_standalone_midi_input ................   Passed    0.01 sec
+2392: 2026-11-14T21:40:58.3686170Z  9/41 Test #124: test_standalone_midi_replay ...............   Passed    0.01 sec
+2400: 2026-11-14T21:40:58.3932440Z 10/41 Test #125: test_standalone_midi_session ..............   Passed    0.02 sec
+2408: 2026-11-14T21:40:58.4099180Z 11/41 Test #126: test_standalone_preset_concurrency ........   Passed    0.02 sec
+2416: 2026-11-14T21:40:58.9149080Z 12/41 Test #127: test_standalone_preset_ui .................   Passed    0.50 sec
+2425: 2026-11-14T21:40:59.0566410Z 13/41 Test #128: test_standalone_projection ................   Passed    0.15 sec
+2433: 2026-11-14T21:40:59.0870530Z 14/41 Test #129: test_standalone_reference_layout ..........   Passed    0.03 sec
+2441: 2026-11-14T21:40:59.2355870Z 15/41 Test #130: test_standalone_session ...................   Passed    0.15 sec
+2452: 2026-11-14T21:40:59.2536450Z 16/41 Test #131: test_standalone_state_files ...............   Passed    0.02 sec
+2460: 2026-11-14T21:40:59.3054250Z 17/41 Test #132: test_standalone_ui ........................   Passed    0.05 sec
+2468: 2026-11-14T21:40:59.3363590Z 18/41 Test #133: test_standalone_workspace_acceptance ......   Passed    0.03 sec
+2539: 2026-11-14T21:41:01.5639280Z 19/41 Test #134: test_standalone_workspace_continuity ......   Passed    2.22 sec
+2547: 2026-11-14T21:41:01.5669030Z 20/41 Test #135: test_standalone_workspaces_author .........   Passed    0.01 sec
+2570: 2026-11-14T21:41:01.5761870Z 21/41 Test #136: test_standalone_midi_backend ..............   Passed    0.01 sec
+2581: 2026-11-14T21:41:01.5781990Z 22/41 Test #137: test_standalone_midi_backend_quarantine ...   Passed    0.00 sec
+2594: 2026-11-14T21:41:03.5004180Z 23/41 Test #138: test_standalone_benchmark .................   Passed    1.92 sec
+2603: 2026-11-14T21:41:03.5980500Z 24/41 Test #139: test_standalone_drawing ...................   Passed    0.10 sec
+2611: 2026-11-14T21:41:03.6117090Z 25/41 Test #140: test_standalone_quad_drawing ..............   Passed    0.01 sec
+2619: 2026-11-14T21:41:08.4912670Z 26/41 Test #141: test_standalone_workspace_raster ..........   Passed    4.88 sec
+2628: 2026-11-14T21:41:08.7983420Z 27/41 Test #142: test_standalone_inspection_raster .........   Passed    0.31 sec
+2636: 2026-11-14T21:41:11.0481000Z 28/41 Test #143: test_standalone_material_acceptance .......   Passed    2.25 sec
+2701: 2026-11-14T21:41:22.3076210Z 29/41 Test #144: test_standalone_scaled_view ...............   Passed   11.23 sec
+2709: 2026-11-14T21:41:30.6705620Z 30/41 Test #145: test_standalone_preset_raster .............   Passed    8.39 sec
+2735: 2026-11-14T21:41:33.8413170Z 31/41 Test #146: test_standalone_audio_device ..............   Passed    3.17 sec
+2746: 2026-11-14T21:41:34.1113690Z 32/41 Test #147: test_standalone_device_removal ............   Passed    0.27 sec
+2775: 2026-11-14T21:41:35.1489350Z 33/41 Test #148: test_standalone_callback_allocation .......   Passed    1.04 sec
+2811: 2026-11-14T21:41:51.1131100Z 34/41 Test #149: test_standalone_app .......................   Passed   15.96 sec
+2840: 2026-11-14T21:42:07.7605620Z 35/41 Test #150: test_standalone_midi_cli ..................   Passed   16.65 sec
+2866: 2026-11-14T21:42:37.0993660Z 36/41 Test #151: test_standalone_native_midi_replay ........   Passed   29.33 sec
+2879: 2026-11-14T21:43:11.3616410Z 152: test_fixed_cancel_save_live_load_cold_load_and_audio_restart (__main__.NativeWorkflowAcceptance.test_fixed_cancel_save_live_load_cold_load_and_audio_restart) ... ok
+2880: 2026-11-14T21:43:13.4658550Z 152: test_focus_loss_suppresses_repeat_and_duplicate_down_until_release (__main__.NativeWorkflowAcceptance.test_focus_loss_suppresses_repeat_and_duplicate_down_until_release) ... ok
+2881: 2026-11-14T21:43:15.6171340Z ##[error]The operation was canceled.
+2882: 2026-11-14T21:43:15.6345120Z ##[group]Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+2883: 2026-11-14T21:43:15.6345520Z with:

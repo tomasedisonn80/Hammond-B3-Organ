@@ -255,7 +255,47 @@ The instrumented workload finished, then LeakSanitizer could not attach to its
 thread (`errno 1`, EPERM), failed to suspend threads and aborted; PTY retry
 exited 134. Leak checking remained enabled and no finding was waived. The
 precise policy causing EPERM is unresolved. A hosted run permitting thread
-inspection remains pending; there is no complete sanitizer or leak-freedom pass.
+inspection subsequently passed for the published repaired fixture below; that
+does not relabel this original local process or its one-off flags as successful.
+
+### Hosted sanitizer follow-up — 14 November 2026
+
+[A44's primary-log audit](development/2026-11-14-reference-refinement/reports/A44-hosted-sanitizer-audit.json)
+qualifies commit `26ff2fbe66a50260bd7601cbfa54c1f5d35ff3a8`, tree
+`530d5fcf777003f470f64558de9e5631d31a21a4`. Its eighteen changes from parent
+`f9c11a4` are documentation/records only. All A16/A19 source, oracle and frozen
+contract hashes match; the hosted allocation fixture is A38's exact repaired
+`022845759fe2e604ad4c8003dc0acf4e2b693d79933da86e25a0ac8e0f9f39d7` source.
+
+| Hosted GCC 13.3 job | Primary result and covered workload |
+| --- | --- |
+| [Core Debug, run 43644278142 / job 132598497275](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43644278142/job/132598497275) | **137/137**, 268.61 s. Native R2, R3, repaired allocation and both independent Python acceptance gates pass; allocation CTest takes 0.57 s. |
+| [Native Release, run 43644278159 / job 132598531735](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43644278159/job/132598531735) | **16/16**, 272.49 s. Includes reference layout, six-frame pending/acknowledged inspection and 901-check material acceptance. Uses dummy audio/video and SDL software surfaces. |
+
+Both jobs retain `ASAN_OPTIONS=detect_leaks=1:halt_on_error=1`,
+`UBSAN_OPTIONS=print_stacktrace=1:halt_on_error=1` and `LSAN_OPTIONS=exitcode=23`.
+The core suite's pre-existing `test_standalone_midi_backend_quarantine` exception
+sets `detect_leaks=0` for intentionally retained failed-close contexts; therefore
+137/137 is not a claim that every core test individually enables leak detection.
+All five required rotary gates and all sixteen selected native gates retain leak
+checking, with no skipped or waived gate and no relaxed numerical budget.
+
+The native job successfully checks instrumented project C++ and pinned SDL2 C
+objects, ASan/UBSan archive symbols, executable link flags and loaded runtimes.
+Its exact-sixteen discovery rejects missing commands, disabled tests and
+sanitizer environment overrides; pending/material timeouts remain 60 seconds.
+These are successful hosted workload gates, not a general proof of leak freedom.
+The bounded extracts retain complete decoded-log hashes; passing core output
+does not print the fixture's detailed workload JSON.
+
+The [A43 matrix](development/2026-11-14-reference-refinement/reports/A43-hosted-fixture-closure.json)
+keeps the original `2e161dc` Windows **135/136** failure and `f9c11a4`
+cancellations distinct from the completed `26ff2fb` results. The unpublished
+A40/A41 header (`InstrumentView.cpp` SHA-256 beginning `f323c8c2`) and changed
+material fixture are outside these jobs. The concurrent
+[waveform continuation](development/2026-11-14-waveform-continuation/README.md)
+owns R4; no waveform, audible-policy, Engine/integration or physical gate is
+closed by this sanitizer audit.
 
 ## Reproduce the native and Python gates
 
@@ -285,13 +325,14 @@ CTest supplies the two probe paths through
 probes are unavailable; there is no skipped or Python-only substitute.
 Report paths above are new replay artifacts and do not overwrite original evidence.
 
-For the pending sanitizer gate, use a separate GCC/Clang build with
+For a sanitizer replay, use a separate GCC/Clang build with
 `HAMMOND_ENABLE_SANITIZERS=ON`, build `test_rotary_propagation_allocation`, and
 run that exact CTest target with `--no-tests=error` and leak detection enabled.
 [A27](development/2026-11-14-reference-refinement/notes/A27-rotary-realtime.md)
 retains the direct compile flags, runtime options, diagnostics and hashes.
-Preserve gradual underflow; qualify other compilers/platforms and floating-point
-environments separately rather than requiring this Linux executable's hashes.
+Preserve gradual underflow; qualify changed source, compiler options and
+floating-point environments separately rather than requiring this Linux
+executable's hashes.
 
 ## Next concrete phase: R4 waveform history and rendering
 
