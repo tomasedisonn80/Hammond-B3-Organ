@@ -92,6 +92,44 @@
 
 ## 2026-11-13 — Independent capture/calibration-readiness scope
 
+- Accepted assignments 29-30, completing five waves and 30 distinct results.
+  Numerical acceptance passes 19 methods using 90-digit independent references
+  and an actual maximum-frame sparse comparison. Schema review executes 665
+  cases. It reproduces terminal-LF admission in five old v1 schema string
+  families; root's schema-only repair preserves all v1 fields and runtime
+  meaning. The optional audit package's absent date-time checker caused four
+  initial audit expectation failures, retained and correctly classified.
+- Inspected completed hosted jobs at `779fb6e`. All Linux/macOS/Windows native
+  standalone and VST3 jobs and the Linux sanitizer job succeeded. General
+  Release failed: Windows CLI byte translation, macOS/Windows fault-fixture
+  ancestor aliases, and one separate Linux standalone scheduling assumption.
+  Root repaired canonical UTF-8/LF output in audio/corpus, made test hooks target
+  canonical paths and prove interception, and made in-place mutation stamps
+  explicitly observable. New CRLF/ASCII-wrapper and real ancestor-alias probes
+  reproduce the old defects and pass the repairs. See
+  [retained hosted diagnosis](reviews/CALIBRATION_HOSTED_PORTABILITY.md).
+  Root did not edit the concurrently owned standalone C++ test; its committed
+  progress repair will be integrated after publication.
+
+- Accepted assignments 25-28. File jobs bind declared original metadata, audit
+  the whole corpus, compare explicit untransformed windows and retain complete
+  policy/corpus outcomes. A 14-line private corpus-core extraction preserves
+  its public API and passes both existing corpus suites (47 and 57 methods).
+  Independent job acceptance passes 81 methods with no skips or defects.
+- Declaration readiness reads one unchanged v1 manifest, reports exactly 21
+  checks plus three per channel, preserves original reasons and retains seven
+  unestablished evidence claims. Independent acceptance passes 65 methods,
+  repeated by root in 0.580 seconds with no skips. A complete declaration is
+  not an artifact, calibration, permission or fidelity pass. The supplied plan
+  intentionally exits 3 with 20 missing declarations.
+
+- Published the reviewed wave-3/4 toolchain as
+  `779fb6e13b8f60236cad4aedb9999ba16198f920`, tree
+  `f9baccbb54f51063b01a0859d2c10cdadfbd238b`, using an expected-head guarded,
+  non-forcing update from `649b12c`. Fetched remote identity and exact tree
+  equality were verified before aligning this checkout. Ongoing wave-5 files
+  were preserved and excluded from that publication.
+
 - Frozen wave-4 commit `1c2ea32` passed 11/11 focused suites in 12.57 seconds.
   Remote standalone main then advanced to `649b12c`; root inspected and merged
   its device/portability changes. Fresh combined source `45f875d`, tree

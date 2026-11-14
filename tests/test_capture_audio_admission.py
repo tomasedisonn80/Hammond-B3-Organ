@@ -103,7 +103,9 @@ class AdmissionCase(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix="capture-audio-admission-")
         self.addCleanup(self.temporary.cleanup)
-        self.directory = Path(self.temporary.name)
+        # Production canonicalizes ancestors. Target the same directory when
+        # injecting metadata on macOS /var aliases or Windows short TEMP names.
+        self.directory = Path(self.temporary.name).resolve(strict=True)
 
     def write(self, payload, name="capture.wav"):
         path = self.directory / name
@@ -704,6 +706,7 @@ class FilesystemAdmission(AdmissionCase):
         for identity_change in (False, True):
             with self.subTest(identity_change=identity_change):
                 read_started = False
+                intercepted = []
 
                 def read_hook(*unused):
                     nonlocal read_started
@@ -712,6 +715,7 @@ class FilesystemAdmission(AdmissionCase):
                 def parent_info(selected):
                     info = REAL_LSTAT(selected)
                     if selected == path.parent and read_started:
+                        intercepted.append(selected)
                         fields = {"st_ino": info.st_ino + 1} if identity_change else {
                             "st_mtime_ns": info.st_mtime_ns + 1,
                             "st_ctime_ns": info.st_ctime_ns + 1, "st_size": info.st_size + 1}
@@ -723,6 +727,7 @@ class FilesystemAdmission(AdmissionCase):
                         self.reject("file_changed", audio.inspect_audio, path)
                     else:
                         self.assertEqual(audio.inspect_audio(path)["frame_count"], 4)
+                self.assertTrue(intercepted, "canonical parent metadata hook must be reached")
 
     def test_real_timestamp_change_overrides_content_error(self):
         for payload in (pcm(), wave(struct.pack("<f", math.nan), 32, floating=True)):
@@ -816,6 +821,30 @@ class FilesystemAdmission(AdmissionCase):
 
 
 class CommandLineAdmission(AdmissionCase):
+    def test_json_bytes_bypass_text_newline_and_encoding_translation(self):
+        path = self.write(pcm(), name="capture-é.wav")
+        for arguments, expected_status in ((["--input", str(path)], 0),
+                                           (["--input", str(path), "--unknown-é"], 2)):
+            with self.subTest(arguments=arguments):
+                out_bytes, error_bytes = io.BytesIO(), io.BytesIO()
+                out = io.TextIOWrapper(out_bytes, encoding="ascii", newline="\r\n")
+                error = io.TextIOWrapper(error_bytes, encoding="ascii", newline="\r\n")
+                try:
+                    with redirect_stdout(out), redirect_stderr(error):
+                        self.assertEqual(audio.main(arguments), expected_status)
+                    out.flush()
+                    error.flush()
+                    actual = (out_bytes if expected_status == 0 else error_bytes).getvalue()
+                    unused = (error_bytes if expected_status == 0 else out_bytes).getvalue()
+                    expected = (json.dumps(json.loads(actual), sort_keys=True,
+                                           separators=(",", ":"), ensure_ascii=True,
+                                           allow_nan=False) + "\n").encode("utf-8")
+                    self.assertEqual(actual, expected)
+                    self.assertEqual(unused, b"")
+                finally:
+                    out.close()
+                    error.close()
+
     def test_integer_cli_grammar_rejects_non_ascii_signs_whitespace_and_long_tokens(self):
         path = self.write(pcm())
         for token in ("-1", "+1", " 1", "1 ", "1.0", "1e1", "1_0", "١", "１２", "", "9" * 21):

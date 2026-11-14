@@ -686,6 +686,20 @@ def audit_corpus(path: str | Path, *, check_files: bool = False,
     _require(not check_audio or check_files, "mode", "check_audio requires check_files")
     index, index_hash, root, chosen_root, before_root = _load_index(path)
     loaded = _load_manifests(index, root)
+    return _audit_loaded(index, index_hash, root, chosen_root, before_root, loaded,
+                         check_files=check_files, check_audio=check_audio)
+
+
+def _audit_loaded(index: dict, index_hash: str, root: Path, chosen_root: Path,
+                   before_root, loaded: list[tuple], *, check_files: bool,
+                   check_audio: bool) -> dict:
+    """Audit freshly admitted metadata without reopening its index/manifests.
+
+    The public auditor and the stricter file-job wrapper share this one core.
+    A caller must retain the exact validated, hash-bound parsed metadata and
+    root observations for this operation. No prior artifact observations enter
+    this interface: every requested byte/audio check below performs its reads.
+    """
     # All declarations and aggregate work limits are checked before any artifact
     # opens. The declared graph is bounded before file hashing or decoding.
     captures, work = _inventory(loaded, check_audio=check_audio)
@@ -730,6 +744,21 @@ def audit_corpus(path: str | Path, *, check_files: bool = False,
     return report
 
 
+def _write_utf8(stream, text: str) -> None:
+    # Preserve canonical UTF-8 and LF bytes on Windows and under non-UTF-8
+    # terminal encodings; StringIO-style API redirection remains supported.
+    binary = getattr(stream, "buffer", None)
+    if binary is not None:
+        payload = text.encode("utf-8")
+        if binary.write(payload) != len(payload):
+            raise OSError("incomplete corpus stream write")
+        binary.flush()
+    else:
+        if stream.write(text) != len(text):
+            raise OSError("incomplete corpus stream write")
+        stream.flush()
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--input", required=True, type=Path, help="capture corpus index JSON")
@@ -742,9 +771,9 @@ def main(argv: list[str] | None = None) -> int:
         report = audit_corpus(args.input, check_files=args.check_files, check_audio=args.check_audio)
         output = json.dumps(report, sort_keys=True, indent=2, ensure_ascii=False, allow_nan=False) + "\n"
     except CorpusError as error:
-        print(f"corpus error: {error}", file=sys.stderr)
+        _write_utf8(sys.stderr, f"corpus error: {error}\n")
         return 1
-    sys.stdout.write(output)
+    _write_utf8(sys.stdout, output)
     return {"pass": 0, "failed": 1, "inconclusive": 3}[report["status"]]
 
 

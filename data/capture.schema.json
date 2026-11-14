@@ -542,18 +542,30 @@
           "pattern": "\\S"
         },
         {
-          "pattern": "^[^\\u0000-\\u001f\\u007f-\\u009f\\ud800-\\udfff]+$"
+          "not": {
+            "pattern": "[\\u0000-\\u001f\\u007f-\\u009f\\ud800-\\udfff]"
+          }
         }
       ]
     },
     "id": {
       "type": "string",
-      "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+      "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+      "minLength": 1,
+      "maxLength": 64,
+      "not": {
+        "pattern": "[^a-z0-9_-]"
+      }
     },
     "utc": {
       "type": "string",
       "format": "date-time",
-      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,6})?Z$"
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]{1,6})?Z$",
+      "minLength": 20,
+      "maxLength": 27,
+      "not": {
+        "pattern": "[^0-9TZ:.-]"
+      }
     },
     "known_text": {
       "type": "object",
@@ -1389,7 +1401,11 @@
           "type": "string",
           "maxLength": 240,
           "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}(?:/[A-Za-z0-9][A-Za-z0-9._-]{0,63}){0,7}$",
-          "$comment": "The checker additionally rejects trailing dots, Windows device names and case-folded aliases."
+          "$comment": "The checker additionally rejects trailing dots, Windows device names and case-folded aliases.",
+          "minLength": 1,
+          "not": {
+            "pattern": "[^A-Za-z0-9._/-]"
+          }
         },
         "size_bytes": {
           "type": "integer",
@@ -1398,7 +1414,9 @@
         },
         "sha256": {
           "type": "string",
-          "pattern": "^[0-9a-f]{64}$"
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
         },
         "parents": {
           "type": "array",

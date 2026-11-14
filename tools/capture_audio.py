@@ -608,6 +608,21 @@ def _json_line(value):
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False) + "\n"
 
 
+def _write_utf8(stream, text):
+    # Real standard streams must not translate the contract's LF bytes to CRLF
+    # or re-encode UTF-8 through the current terminal's text configuration.
+    binary = getattr(stream, "buffer", None)
+    if binary is not None:
+        payload = text.encode("utf-8")
+        if binary.write(payload) != len(payload):
+            raise OSError("incomplete JSON stream write")
+        binary.flush()
+    else:
+        if stream.write(text) != len(text):
+            raise OSError("incomplete JSON stream write")
+        stream.flush()
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = _Parser(description=__doc__, allow_abbrev=False)
     parser.add_argument("--input", required=True, help="regular WAV or explicitly described raw audio file")
@@ -628,13 +643,13 @@ def main(argv: list[str] | None = None) -> int:
             report = inspect_audio(args.input, **options)
         else:
             report = read_audio_window(args.input, args.start_frame, args.frame_count, **options)
-        sys.stdout.write(_json_line(report))
+        _write_utf8(sys.stdout, _json_line(report))
         return 0
     except _HelpRequested:
         return 0
     except AudioError as exc:
-        sys.stderr.write(_json_line({"error": {"code": exc.code, "message": exc.message, "details": exc.details},
-                                     "inspector_version": INSPECTOR_VERSION, "status": "rejected"}))
+        _write_utf8(sys.stderr, _json_line({"error": {"code": exc.code, "message": exc.message, "details": exc.details},
+                                          "inspector_version": INSPECTOR_VERSION, "status": "rejected"}))
         return 2 if exc.code == "invalid_argument" else 1
 
 

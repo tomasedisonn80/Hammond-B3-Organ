@@ -11,6 +11,7 @@ from __future__ import annotations
 from contextlib import contextmanager
 import copy
 import hashlib
+import io
 import json
 import os
 from pathlib import Path
@@ -139,7 +140,9 @@ class CorpusAdmission(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix="corpus-admission-")
         self.addCleanup(self.temporary.cleanup)
-        self.work = Path(self.temporary.name)
+        # The confined reader resolves ancestors before observing descendants.
+        # Match those paths on macOS /var aliases and Windows short TEMP names.
+        self.work = Path(self.temporary.name).resolve(strict=True)
         self.archive = _Archive(self.work / "archive")
         self.archive.add("a")
         self.path = self.archive.write()
@@ -609,11 +612,16 @@ class CorpusAdmission(unittest.TestCase):
         original = Path.lstat
         for target in (self.archive.root, self.path, self.manifest.parent,
                        self.manifest, self.raw.parent, self.raw):
+            intercepted = []
             def changed(path, *args, **kwargs):
                 info = original(path, *args, **kwargs)
-                return StatView(info, st_file_attributes=0x400) if path == target else info
+                if path == target:
+                    intercepted.append(path)
+                    return StatView(info, st_file_attributes=0x400)
+                return info
             with self.subTest(target=str(target)), mock.patch.object(Path, "lstat", changed):
                 self.reject(subject.audit_corpus, self.path, check_files=True, contains="reparse")
+                self.assertTrue(intercepted, "confined reparse hook must be reached")
 
     def test_within_manifest_hardlink_aliases_reject_for_all_kinds(self):
         for kind in ("derived", "support"):
@@ -646,21 +654,26 @@ class CorpusAdmission(unittest.TestCase):
     def identity_hook(self, *, path_zero=False, fd_zero=False, device_zero=False, mismatch=False, reparse=False):
         path_stat, fd_stat = Path.lstat, os.fstat
         original = self.raw.stat(); identity = original.st_dev, original.st_ino
+        intercepted = {"path": 0, "descriptor": 0}
         def path_info(path, *args, **kwargs):
             info = path_stat(path, *args, **kwargs)
             if path == self.raw:
+                intercepted["path"] += 1
                 return StatView(info, st_ino=0 if path_zero else info.st_ino,
                                 st_dev=0 if device_zero else info.st_dev)
             return info
         def fd_info(fd):
             info = fd_stat(fd)
             if (info.st_dev, info.st_ino) == identity:
+                intercepted["descriptor"] += 1
                 return StatView(info, st_ino=0 if fd_zero else info.st_ino + int(mismatch),
                                 st_dev=0 if device_zero else info.st_dev,
                                 st_file_attributes=0x400 if reparse else 0)
             return info
         with mock.patch.object(Path, "lstat", path_info), mock.patch.object(os, "fstat", fd_info):
             yield
+        self.assertGreater(intercepted["path"], 0, "path identity hook must be reached")
+        self.assertGreater(intercepted["descriptor"], 0, "descriptor identity hook must be reached")
 
     def test_usable_path_or_descriptor_identity_fallback_and_zero_device(self):
         for options in ({"path_zero": True}, {"fd_zero": True}, {"device_zero": True}):
@@ -840,6 +853,7 @@ class CorpusAdmission(unittest.TestCase):
     def test_file_mutation_during_metadata_or_artifact_read_rejects(self):
         for target in (self.path, self.manifest, self.raw):
             original = target.read_bytes(); changed = False
+            before = target.stat()
             def mutate(stream, size):
                 nonlocal changed
                 payload = stream.read(size)
@@ -847,12 +861,17 @@ class CorpusAdmission(unittest.TestCase):
                     try:
                         with target.open("r+b") as writer:
                             writer.seek(0); writer.write(bytes([original[0] ^ 1]))
+                        # Require an observable stamp change even when native
+                        # write timestamps are coarser than this tiny fixture.
+                        os.utime(target, ns=(before.st_atime_ns, before.st_mtime_ns + 2000000000))
                     except OSError as error:
                         self.skipTest(f"native mutation while reading unavailable: {error}")
                     changed = True
+                    self.assertNotEqual(target.stat().st_mtime_ns, before.st_mtime_ns)
                 return payload
             with self.stream_hook(target, read_action=mutate):
                 self.reject(subject.audit_corpus, self.path, check_files=True)
+            self.assertTrue(changed, "the actual in-place mutation must execute")
             target.write_bytes(original)
 
     def test_path_replacement_after_read_is_detected(self):
@@ -967,6 +986,35 @@ class CorpusAdmission(unittest.TestCase):
         after = {str(path.relative_to(self.work)): path.read_bytes() if path.is_file() else None
                  for path in self.work.rglob("*")}
         self.assertEqual(after, before)
+
+    def test_cli_bytes_bypass_text_newline_and_encoding_translation(self):
+        for target, expected_status in ((self.path, 0), (self.work / "missing-é.json", 1)):
+            with self.subTest(target=target.name):
+                out_bytes, error_bytes = io.BytesIO(), io.BytesIO()
+                out = io.TextIOWrapper(out_bytes, encoding="ascii", newline="\r\n")
+                error = io.TextIOWrapper(error_bytes, encoding="ascii", newline="\r\n")
+                try:
+                    with mock.patch.object(sys, "stdout", out), mock.patch.object(sys, "stderr", error):
+                        self.assertEqual(subject.main(["--input", str(target), "--check-files"]),
+                                         expected_status)
+                    out.flush()
+                    error.flush()
+                    if expected_status == 0:
+                        actual = out_bytes.getvalue()
+                        expected = (json.dumps(json.loads(actual), sort_keys=True, indent=2,
+                                               ensure_ascii=False, allow_nan=False) + "\n").encode("utf-8")
+                        self.assertEqual(actual, expected)
+                        self.assertEqual(error_bytes.getvalue(), b"")
+                    else:
+                        self.assertEqual(out_bytes.getvalue(), b"")
+                        message = error_bytes.getvalue().decode("utf-8")
+                        self.assertIn("corpus error:", message)
+                        self.assertIn("missing-é.json", message)
+                        self.assertTrue(message.endswith("\n"))
+                        self.assertNotIn("\r\n", message)
+                finally:
+                    out.close()
+                    error.close()
 
 
 if __name__ == "__main__":

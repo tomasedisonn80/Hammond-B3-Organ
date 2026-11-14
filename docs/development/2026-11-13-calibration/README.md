@@ -34,7 +34,7 @@ limitations, integrates concurrent main changes and publishes reviewable commits
 
 ## Current work
 
-Waves 1–4 are complete: **twenty-four new accepted assignments**. Six readers
+Waves 1–5 are complete, with **thirty new assignments accepted**. Six readers
 covered all 500 text pages and selected original page images; the
 [consolidated review](../../research/CALIBRATION_ATLAS_REVIEW.md) records coverage.
 The audio, corpus and comparison contracts are frozen and independently reviewed.
@@ -51,5 +51,12 @@ contract binds metadata, policy bytes, complete input snapshots and six source
 files before composing existing tools. Adversarial corpus admission passes 57
 methods; audio admission passes 60 with two explicit platform skips. Both suites
 retain the production failures they exposed and verify the integrator's repairs.
-Wave 5 implements file jobs and declaration readiness with independent acceptance.
+File jobs now pass 81 independent methods, preserving original policy bytes and
+whole-corpus meaning. Declaration readiness passes 65 methods, retains unknown
+reasons and reads no artifact/evidence locator. Numerical review adds 19 methods;
+schema review executes 665 cases and verifies the v1 string-pattern repair.
+Wave 6 implements bounded studies, a reproducible synthetic archive and replay.
+Hosted failures and subsequent portability repairs are retained in the
+[platform follow-up](../../reviews/CALIBRATION_HOSTED_PORTABILITY.md); local
+passes do not erase the need to observe the repaired hosted jobs.
 Physical calibration and full M8 acceptance remain open.
