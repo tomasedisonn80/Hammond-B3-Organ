@@ -133,7 +133,9 @@ later job implementation shares the corpus audit core without changing its
 public API; both existing corpus suites still pass. The
 [combined wave-5 source](reviews/CALIBRATION_WAVE5_INTEGRATION.md) passes 99/99
 SDK-free Release suites, preserving the standalone advance from `0085e33`.
-Study/demo changes are later source and receive a separate focused gate.
+The later [study/demo source](reviews/CALIBRATION_STUDY_DEMO_INTEGRATION.md)
+passes its separate 16/16 focused gate. Both tested trees are retained as
+distinct GitHub commits, with the exact mapping in their reports.
 
 Readiness, numerical and schema acceptance are complete. The
 [hosted portability follow-up](reviews/CALIBRATION_HOSTED_PORTABILITY.md) records

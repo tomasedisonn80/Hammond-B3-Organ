@@ -31,8 +31,8 @@ The bounded study passes 61 independent methods and the reproducible synthetic
 demo passes 43; every complete failed/inconclusive job remains visible. The
 [combined wave-5 source](reviews/CALIBRATION_WAVE5_INTEGRATION.md) passed 99/99
 SDK-free Release suites, including the separately owned standalone progress
-repair. That source excludes the later study/demo extension, which receives its
-own focused gate. The actual manifest distinguishes accepted and running work.
+repair. The later [study/demo source](reviews/CALIBRATION_STUDY_DEMO_INTEGRATION.md)
+passes its own 16/16 focused suites. The actual manifest distinguishes accepted and running work.
 Physical calibration remains unqualified.
 
 Hosted checks at `779fb6e` passed all three native standalone and VST3 platform

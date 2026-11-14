@@ -11,8 +11,8 @@ jobs and declaration readiness are implemented and independently qualified.
 The numerical/schema and observed portability repairs pass the combined 99-suite
 local gate, including the preserved standalone progress repair from `0085e33`.
 The bounded fixed-job study and reproducible synthetic archive now pass independent
-acceptance. Qualify their coherent source, publish completed work and inspect
-fresh hosted outcomes. Complete exact report replay and its independent corruption
+acceptance and their coherent source passes 16/16 focused suites. Publish the
+completed checkpoints and inspect fresh hosted outcomes. Complete exact report replay and its independent corruption
 checks, then the separate CaptureTools installation, relocation and operating
 guide. Preserve original identities, all valid outcomes and complete snapshots.
 No step fits physical model

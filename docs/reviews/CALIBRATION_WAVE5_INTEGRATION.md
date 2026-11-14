@@ -12,7 +12,9 @@ historical evidence remain intact.
 
 The combined frozen source is local commit
 `fd0fb58d2f882aa76c7e40e510f44766f762727c`, tree
-`3329cf68bb9ea84479e254934778935bb5c44773`. Root extracted it with `git archive`
+`3329cf68bb9ea84479e254934778935bb5c44773`. The retained GitHub commit
+`340903a333ecfa5c684620ae8ac54e2e917a6217` has that exact verified tree.
+Root extracted the local source with `git archive`
 into a separate source directory before configuring. Active study, demo, replay
 and installation worker files are excluded. No live changed headers were mixed
 with this build's objects.
@@ -25,8 +27,9 @@ legacy tool and SDK-free standalone support suites. Suite counts are not
 individual method counts or an assertion that every native capability ran.
 
 The toolchain was GCC 14.2.0, CMake/CTest 4.4.4 and Python 3.12.14 on Linux
-x86_64. The source was frozen on 2026-11-13 UTC and the observed gate completed
-across the 2026-11-14 UTC boundary. The session identity remains its original
+x86_64. The source was frozen on 2026-11-13 UTC and the completed JUnit observation
+was written at 23:59:46 UTC that day. This report was recorded on 2026-11-14.
+The session identity remains its original
 `2026-11-13-calibration`; no worker is recounted because the date changed.
 
 ## Reproduction

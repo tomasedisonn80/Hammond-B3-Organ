@@ -14,6 +14,11 @@
   Release build and **99/99 suites in 180.68 seconds**. See the
   [wave-5 evidence](reviews/CALIBRATION_WAVE5_INTEGRATION.md). This source
   excludes the later study/demo/private job extension and their focused gate.
+- The later study/demo source `1aef68489fc18b860bbab8fd06a65fdde8a4d6cd`,
+  tree `5ed86b2f0eeee4e00926aebaaf4432ec61760328`, passes **16/16 focused
+  suites in 40.21 seconds** from a fresh archive after building the renderer.
+  The [focused report](reviews/CALIBRATION_STUDY_DEMO_INTEGRATION.md) records
+  scope and the separately retained GitHub source commits for both tested trees.
 - Bounded studies preserve all ordered jobs and complete shared snapshots.
   Independent acceptance passes 61 methods plus the unchanged 81-method public
   job regression. Fourteen temporary-source mutation processes test both

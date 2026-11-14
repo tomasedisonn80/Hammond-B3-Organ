@@ -59,8 +59,8 @@ schema review executes 665 cases and verifies the v1 string-pattern repair.
 Bounded studies pass 61 independent methods; the deterministic 16-file synthetic
 archive passes 43. Replay and its separate acceptance complete wave 6 while the
 dependency-ready installation component begins. The combined wave-5 source
-passes 99/99 SDK-free Release suites; later study/demo source receives a separate
-focused gate.
+passes 99/99 SDK-free Release suites; later study/demo source passes its separate
+16/16 focused gate.
 Hosted failures and subsequent portability repairs are retained in the
 [platform follow-up](../../reviews/CALIBRATION_HOSTED_PORTABILITY.md); local
 passes do not erase the need to observe the repaired hosted jobs.
