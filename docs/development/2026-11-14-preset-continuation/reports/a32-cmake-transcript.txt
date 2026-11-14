@@ -1,0 +1,117 @@
+{"case": "final-configure", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "-S", "/tmp/hammond-preset-a32/final-source", "-B", "/tmp/hammond-preset-a32/final-build", "-G", "Unix Makefiles"], "exit": 0}
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/hammond-preset-a32/final-build
+{"case": "final-clean", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "final-no-change", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "input-0-mutated", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 2}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+fixed-registration compile error: authoring raw SHA-256 differs from the frozen fixed-registration model
+gmake[3]: *** [CMakeFiles/hammond_fixed_registration_data.dir/build.make:79: generated/hammond/generated/FixedRegistrationData.h] Error 1
+gmake[2]: *** [CMakeFiles/Makefile2:120: CMakeFiles/hammond_fixed_registration_data.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:95: CMakeFiles/hammond_core.dir/rule] Error 2
+gmake: *** [Makefile:124: hammond_core] Error 2
+{"case": "input-0-restored", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "input-0-missing", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 2}
+gmake[3]: *** No rule to make target '/tmp/hammond-preset-a32/final-source/data/registrations/atlas-chapel-nominal-v1.json', needed by 'generated/hammond/generated/FixedRegistrationData.h'.  Stop.
+gmake[2]: *** [CMakeFiles/Makefile2:120: CMakeFiles/hammond_fixed_registration_data.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:95: CMakeFiles/hammond_core.dir/rule] Error 2
+gmake: *** [Makefile:124: hammond_core] Error 2
+{"case": "input-0-recreated", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "input-1-mutated", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 2}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+fixed-registration compile error: review A: requires the exact header and 18 ordered rows
+gmake[3]: *** [CMakeFiles/hammond_fixed_registration_data.dir/build.make:79: generated/hammond/generated/FixedRegistrationData.h] Error 1
+gmake[2]: *** [CMakeFiles/Makefile2:120: CMakeFiles/hammond_fixed_registration_data.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:95: CMakeFiles/hammond_core.dir/rule] Error 2
+gmake: *** [Makefile:124: hammond_core] Error 2
+{"case": "input-1-restored", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "input-1-missing", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 2}
+gmake[3]: *** No rule to make target '/tmp/hammond-preset-a32/final-source/data/registrations/review-a-chapel.csv', needed by 'generated/hammond/generated/FixedRegistrationData.h'.  Stop.
+gmake[2]: *** [CMakeFiles/Makefile2:120: CMakeFiles/hammond_fixed_registration_data.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:95: CMakeFiles/hammond_core.dir/rule] Error 2
+gmake: *** [Makefile:124: hammond_core] Error 2
+{"case": "input-1-recreated", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "input-2-mutated", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 2}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+fixed-registration compile error: review B: requires the exact header and 18 ordered rows
+gmake[3]: *** [CMakeFiles/hammond_fixed_registration_data.dir/build.make:79: generated/hammond/generated/FixedRegistrationData.h] Error 1
+gmake[2]: *** [CMakeFiles/Makefile2:120: CMakeFiles/hammond_fixed_registration_data.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:95: CMakeFiles/hammond_core.dir/rule] Error 2
+gmake: *** [Makefile:124: hammond_core] Error 2
+{"case": "input-2-restored", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "input-2-missing", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 2}
+gmake[3]: *** No rule to make target '/tmp/hammond-preset-a32/final-source/data/registrations/review-b-chapel.csv', needed by 'generated/hammond/generated/FixedRegistrationData.h'.  Stop.
+gmake[2]: *** [CMakeFiles/Makefile2:120: CMakeFiles/hammond_fixed_registration_data.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:95: CMakeFiles/hammond_core.dir/rule] Error 2
+gmake: *** [Makefile:124: hammond_core] Error 2
+{"case": "input-2-recreated", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "review-hardlink-alias", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 2}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+fixed-registration compile error: authoring and both review inputs must be distinct files
+gmake[3]: *** [CMakeFiles/hammond_fixed_registration_data.dir/build.make:79: generated/hammond/generated/FixedRegistrationData.h] Error 1
+gmake[2]: *** [CMakeFiles/Makefile2:120: CMakeFiles/hammond_fixed_registration_data.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:95: CMakeFiles/hammond_core.dir/rule] Error 2
+gmake: *** [Makefile:124: hammond_core] Error 2
+{"case": "review-distinct-restored", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "dependency-0", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "dependency-1", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "dependency-2", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "dependency-3", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "dependency-4", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "dependency-5", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core
+{"case": "fixed-stale-cache-rejected", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 2}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+fixed-registration compile error: authoring.registrations[17].drawbars: must equal '427866243' for atlas-chapel-nominal-v1
+gmake[3]: *** [CMakeFiles/hammond_fixed_registration_data.dir/build.make:79: generated/hammond/generated/FixedRegistrationData.h] Error 1
+gmake[2]: *** [CMakeFiles/Makefile2:120: CMakeFiles/hammond_fixed_registration_data.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:95: CMakeFiles/hammond_core.dir/rule] Error 2
+gmake: *** [Makefile:124: hammond_core] Error 2
+{"case": "fixed-source-restored", "command": ["/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake", "--build", "/tmp/hammond-preset-a32/final-build", "--target", "hammond_core"], "exit": 0}
+[100%] Admitting both chapel readings and compiling the frozen fixed registrations
+[100%] Built target hammond_fixed_registration_data
+[100%] Built target hammond_core

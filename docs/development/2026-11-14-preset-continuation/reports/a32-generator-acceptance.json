@@ -1,0 +1,42 @@
+{
+  "generator_sha256": "770eff9d031961de81d4520136d1781795a9e2b494f2a9c4a44c727b5c0f1644",
+  "test_sha256": "0dbb1417444d6cd314128f31d10a1c743c5462577bebc1717f8d2fba72d552a7",
+  "current_regression": {
+    "command": [
+      "python",
+      "-B",
+      "tests/test_fixed_registration_source_admission.py"
+    ],
+    "exit": 0,
+    "methods": 1,
+    "subcases": 4,
+    "subprocesses": 8,
+    "reported_seconds": 0.477,
+    "source": "observed tool result, no raw transcript retained for this initial successful invocation"
+  },
+  "existing_regression": {
+    "command": [
+      "python",
+      "-B",
+      "tests/test_compile_fixed_registrations.py",
+      "-v"
+    ],
+    "exit": 0,
+    "methods": 17,
+    "reported_seconds": 2.287,
+    "source": "observed tool result, no raw transcript retained for this initial successful invocation"
+  },
+  "original_generator_regression": {
+    "exit": 1,
+    "methods": 1,
+    "failed_subcases": 4,
+    "subprocesses": 8,
+    "log": "a32-regression-before.txt"
+  },
+  "cmake_gate": "a32-boundary-result.json",
+  "historical_initial_probe": "The first near-second-boundary timestamp fixture did not reproduce stale reuse; the retained reproduction uses verified quarter/three-quarter integer-second timestamps.",
+  "cmake_probe_script": {
+    "file": "a32-cmake-boundary-probe.py",
+    "sha256": "7bec3e4109a7952d41df72295ce967b9fd01ebe02c02181e6def4e24d88eff91"
+  }
+}

@@ -2,29 +2,30 @@
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The current playable product is a **nominal dry organ** with an offline renderer, an optional VST3 adapter, and a native standalone application.
 
-**Current development:** the standalone has a reference-led instrument interface and optional external MIDI input. Its 91 shared, continuously running sources serve two 61-key manuals and 25 pedals. Four retained A/B drawbar banks, percussion, expression and two nominal pedal mixtures retain the existing **45 public sound parameters** and **`B3CONTROLS3`** saved controls.
+**Current development:** eighteen documentary fixed registrations now join four retained A/B drawbar banks, Cancel, percussion, expression and two nominal pedal mixtures. The native interface has twelve reversed preset keys beside each manual. The registry exposes **47 sound parameters**, preserving the original 45 records, and **`B3CONTROLS4`** retains readers for versions 1–3. Its 91 continuously running sources still serve two 61-key manuals and 25 pedals.
 
-[Build and operate the instrument](docs/MIDI_UI_RUNBOOK.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [Complete M0–M9 plan](docs/PLAN.md) · [Current development record](docs/development/2026-11-14-midi-ui/README.md)
+[Build and operate the instrument](docs/PRESET_RUNBOOK.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [Complete M0–M9 plan](docs/PLAN.md) · [Current development record](docs/development/2026-11-14-preset-continuation/README.md)
 
 ## Native interface and UI/UX design
 
-The visual target is the atlas's [original cover/page-409 reference](docs/design/atlas-cover-reference.jpg), retained with [exact provenance](docs/design/atlas-reference.json). The live design uses walnut cheeks, charcoal and brass panels, a centered serif title, raised tablets and drawbar caps, adjacent drawbar racks, two manuals with bank controls, and a cabinet composition at wide window sizes.
+The visual target is the atlas's [original cover/page-409 reference](docs/design/atlas-cover-reference.jpg), retained with [exact provenance](docs/design/atlas-reference.json). The live design uses walnut cheeks, charcoal and brass panels, a centered serif title, raised tablets and drawbar caps, adjacent drawbar racks, two manuals with reversed preset keys and independent bank editing, and a cabinet composition at wide window sizes.
 
-![Actual native reference-layout instrument with held upper and lower notes](examples/demos/standalone-midi-ui-v1/images/reference-1672x941.png)
+![Actual native instrument with fixed C# selected and held upper notes](examples/demos/standalone-presets-preview-v1/images/reference-1672x941.png)
 
-This is an **application-rendered capture**. The [capture gallery and provenance](examples/demos/standalone-midi-ui-v1/README.md) identify the executable, source files, scripts, dimensions, decoded pixels and explicit SDL dummy drivers. The initial gallery precedes the separately tracked small-text refinement; its source identity remains attached to its images.
+This is an **actual application capture after the preset-focus repairs**. The [preview and provenance](examples/demos/standalone-presets-preview-v1/README.md) identify its source overlay, executable, scripts, 1672×941 pixels and explicit SDL dummy drivers. It shows Upper fixed C#, Lower adjustable A# and held Upper notes 60/64. Additional responsive captures and material refinement remain in the current development sequence; the [earlier gallery](examples/demos/standalone-midi-ui-v1/README.md) retains its original source identity.
 
 | Interface area | Implemented interaction | Relationship to the reference |
 |---|---|---|
 | Header | Save, Load, Help, Audio, MIDI and Panic; keyboard shortcuts and visible focus. | The reference's material, title and tablet treatment guide the live header. |
 | Performance strip | Four verified percussion choices, nominal expression and two pedal-mixture drawbars. | Actual controls retain their correct legends; the concept's incorrect percussion legends are corrected. |
-| Drawbar racks | Nine live drawbars per manual, independent edited and sounding A/B banks, visible values and drag/keyboard adjustment. | Adjacent racks retain the reference's proportions and cap colors; correct footage and zero-to-eight direction remain authoritative. |
+| Drawbar racks | Nine visible drawbars per manual, four retained A/B banks, independent EDIT selection, values and drag/keyboard adjustment. A fixed registration leaves those editable banks intact. | Adjacent racks use the reference cap colors and deeper sockets; correct footage and zero-to-eight direction remain authoritative. |
+| Reversed preset keys | Each manual has C Cancel, nine fixed keys C#–A, A# for adjustable A and B for adjustable B. Applied, pending and focused states are distinct. | The twelve-key octave follows the atlas body; all 24 keys work without creating or releasing note owners. |
 | Manuals and pedals | 61 + 61 manual keys and 25 pedals with pointer/computer-keyboard playing and held-state feedback. | Real key counts and a playable pedal row are preserved. |
 | Cabinet | Exact decorative cabinet/microphone artwork with factual device and signal-path status. | Cabinet artwork is a preview; scanner and rotary audio remain separate development work. |
 | MIDI settings | Exact input selection, three distinct channels, explicit Apply/Disconnect and keyboard navigation. | A functional native settings surface follows the same material language. |
-| Resize | Reference capture at 1672×941, default 1280×900, minimum 960×700; cabinet hides below width 1400 and compact bank controls move into the racks. | Musical ownership and control state survive layout changes. |
+| Resize | Reference capture at 1672×941, default 1280×900, minimum 960×700; cabinet hides below width 1400 and compact EDIT controls move into the racks; both preset octaves stay visible. | Musical ownership and control state survive layout changes. |
 
-All control text, cap positions, values, focus and held-key indicators are painted from live state. The retained image assets supply decoration. The [design specification](docs/REFERENCE_UI_DESIGN.md) and [independent visual comparison](docs/reviews/MIDI_UI_REFERENCE_REVIEW.md) record exact geometry, corrected source legends and remaining differences. **Literal pixel equality remains open**, including procedural material/perspective differences and the reference's incompatible generated legends and key counts. Keyboard operation is implemented; native screen-reader semantics remain a distinct product gate.
+All control text, cap positions, values, focus and held-key indicators are painted from copied live state. Image assets supply decoration. The [preset design](docs/PRESET_UI_DESIGN.md), [renderer record](docs/reviews/PRESET_RENDERER_IMPLEMENTATION.md) and [independent UI/raster acceptance](docs/reviews/PRESET_UI_ACCEPTANCE.md) document geometry, interactions, repaired focus defects and remaining differences. **Literal 1:1 equality is still open:** the reference has different keyboard perspective, panel heights, tablet density and cabinet controls. The current application preserves its real playable inventory and correct functional legends. Keyboard operation is implemented with 67 focus stops; native screen-reader semantics and broad tiny-label readability remain separate gates.
 
 ## External MIDI and playing
 
@@ -38,28 +39,28 @@ MIDI is an explicitly enabled build option using locked RtMidi 6.0.0 with a reco
 
 Choose three distinct channels from 1–16. CC11 adjusts shared expression; CC123 releases the selected MIDI division. Steady organ gain does not follow Note On velocity. MIDI and UI have separate note owners, so disconnecting the controller preserves an independently held UI note. Device faults retire old packets and notes; reconnect is explicit after a fault, Panic or audio restart. Arrival order is retained and admitted events apply at the next audio callback boundary.
 
-Computer keys `A W S E D F T G Y H U J K O L P ;` play notes. F1/F2/F3 choose Upper/Lower/Pedals; `[` and `]` change octave. EDIT A/B chooses the bank being edited; PLAY A/B chooses the sounding bank. Cancel mutes one manual route while preserving its held notes. Save/Load retain musical controls and exclude note owners, device selections and transient DSP history.
+Computer keys `A W S E D F T G Y H U J K O L P ;` play notes. F1/F2/F3 choose Upper/Lower/Pedals; `[` and `]` change octave. EDIT A/B chooses the bank being edited. Preset A# sounds adjustable bank A and preset B sounds bank B; C# through A select the nine fixed rows for that manual. C momentarily cancels its route while retaining the fixed choice, bank memory and held notes. Fixed selections preserve all four editable banks. Upper percussion sounds only on the enabled adjustable Upper B route; switching selections preserves its musical history. Save/Load retain raw control memory and exclude note owners, device selections and transient DSP history.
 
-See the [operating guide](docs/MIDI_UI_RUNBOOK.md), [exact input mapping](docs/MIDI_INPUT.md), [backend lifetime contract](docs/MIDI_BACKEND.md) and [optional dependency setup](docs/RTMIDI_BUILD.md). Bounded [`B3MIDIREPLAY1`](docs/MIDI_REPLAY.md) scripts exercise the actual application input path for acceptance; their diagnostics explicitly identify synthetic input.
+See the [operating guide](docs/PRESET_RUNBOOK.md), [exact input mapping](docs/MIDI_INPUT.md), [backend lifetime contract](docs/MIDI_BACKEND.md) and [optional dependency setup](docs/RTMIDI_BUILD.md). Bounded [`B3MIDIREPLAY1`](docs/MIDI_REPLAY.md) scripts exercise the actual application input path for acceptance; their diagnostics explicitly identify synthetic input.
 
 ## Plan, qualification and parallel tracks
 
-The [complete atlas review](docs/research/MIDI_UI_ATLAS_REVIEW.md) covers all 500 pages in six disjoint readings. The atlas's ten research waves, implementation milestones M0–M9 and each requested sixty-worker development session have separate meanings. The [current manifest](docs/development/2026-11-14-midi-ui/assignments.json) records actual dispatched workers and accepted evidence; earlier sessions remain historical.
+The [complete atlas review](docs/research/PRESET_ATLAS_REVIEW.md) covers all 500 pages in six disjoint readings. The atlas's ten research waves, implementation milestones M0–M9 and each requested sixty-worker development session have separate meanings. The [current manifest](docs/development/2026-11-14-preset-continuation/assignments.json) records actual dispatched workers and accepted evidence; earlier sessions remain historical.
 
-The active M9 work advances native MIDI input and the reference interface while preserving the existing engine, profile, state and parameter identities. Current engineering evidence includes independent decoder/inbox acceptance, concurrent allocation probes, injected transport failures, real Session/Engine ownership comparisons, native CLI/modal runs and all retained native musical workflows. Individual reports name exact source and dependency identities. Dummy-driver and synthetic runs establish their declared software behavior; physical MIDI/audio, host deadlines, native accessibility, signed distribution and specimen fidelity retain separate gates.
+The current M3/M9 work integrates exclusive fixed selection through core routing, saved state, raw publication, host automation, VST3, offline scores and native controls. Focused records cover independent source rows, legacy migration, exact numerical thresholds, realtime allocation, concurrent publication and actual native workflows. The first complete integrated-source gate and renewed platform qualification are in progress. Individual reports name exact source and dependency identities. Dummy-driver and synthetic runs establish their declared software behavior; physical MIDI/audio, host deadlines, native accessibility, signed distribution and specimen fidelity retain separate gates.
 
 | Track | Current boundary and continuation |
 |---|---|
-| Dry organ and console | Working nominal generator, manuals, pedals, retained banks, percussion and control-state migration. Physical contact, gain/loading, expression and circuit calibration remain open. |
+| Dry organ and console | Working nominal generator, manuals, pedals, eighteen fixed registrations, retained banks, percussion and control-state migration. Physical contact, gain/loading, expression and circuit calibration remain open. |
 | Scanner | Graph/compiler, references and prepared numerical modules exist. Resolve the observed G5 same-hertz failure under the [frozen numerical contract](docs/SCANNER_NUMERICAL_CONTRACT.md) before Engine integration; see [handoff](docs/SCANNER_HANDOFF.md). |
 | AO-28 and Leslie electronics | Complete revision-specific electrical graphs, operating points and measured signal boundaries remain required by M5/M6. |
 | Rotary acoustics | The independent [motion/propagation track](docs/ROTARY_SCOPE.md) retains separate horn/drum inputs and numerical references; it does not change the current dry output. |
 | Capture and calibration | The completed [toolchain](docs/CALIBRATION_HANDOFF.md) validates audio/corpora, declared splits, policies, studies and exact report replay. The [next acquisition plan](docs/CALIBRATION_NEXT_ACQUISITION.md) names the missing real inputs. |
-| VST3 | Three event inputs, 45 stable controls, sample-linear automation and concurrent state handoff have separate [ABI](docs/VST3_ABI_ACCEPTANCE.md), [behavior](docs/VST3_BEHAVIOR_ACCEPTANCE.md) and [build](docs/VST3_BUILD.md) records. Its custom editor and actual host/device qualification remain product work. |
+| VST3 | Three event inputs, 47 controls, sample-linear automation and concurrent state handoff have [current integration](docs/reviews/PRESET_VST3_INTEGRATION.md), [independent acceptance](docs/reviews/PRESET_VST3_ACCEPTANCE.md) and [build](docs/VST3_BUILD.md) records. Its custom editor and actual host/device qualification remain product work. |
 
 ### Earlier source-identified qualifications
 
-These records qualify their named revisions and preserve earlier failures and platform distinctions. They do not substitute for testing the current MIDI/UI source.
+These records qualify their named revisions and preserve earlier failures and platform distinctions. They do not substitute for testing the current preset implementation.
 
 | Record | Retained evidence |
 |---|---|
@@ -114,7 +115,7 @@ relocatable prefix of your choice.
 
 ### Native application with MIDI
 
-Install the platform development prerequisites in the [operating guide](docs/MIDI_UI_RUNBOOK.md), then explicitly acquire the two locked dependencies outside the repository:
+Install the platform development prerequisites in the [operating guide](docs/PRESET_RUNBOOK.md), then explicitly acquire the two locked dependencies outside the repository:
 
 ```sh
 python3 tools/acquire_sdl2.py --destination ../SDL2

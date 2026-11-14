@@ -91,6 +91,7 @@ enum class UiControlKind : std::uint8_t {
     ManualKey,
     PedalKey,
     MidiSettings,
+    PresetKey = 19,
 };
 
 // Semantic identity, independent of rectangle, ordinal in a list or focus.
@@ -98,7 +99,9 @@ enum class UiControlKind : std::uint8_t {
 // Percussion: index 0 enabled, 1 harmonic, 2 volume, 3 decay.
 // PedalDrawbar: index 0..1. KeyboardTarget: index Upper=0, Lower=1, Pedals=2.
 // ManualKey: manual/index 0..60. PedalKey: index 0..24. Irrelevant fields are
-// canonical defaults. Cancel is a command, not an added parameter identity.
+// canonical defaults. PresetKey: manual/index 0..11, canonical unused bank A;
+// all twelve keys of a manual target its one preset-selection parameter.
+// SoundingBank and CancelManual remain semantic compatibility actions only.
 struct UiControlId {
     UiControlKind kind{UiControlKind::None};
     Manual manual{Manual::Upper};
@@ -124,7 +127,9 @@ struct UiKeyGeometry {
 
 // A single layout owns every visible/hit rectangle. Draw naturals first and
 // accidentals last; hit-test accidentals first. Arrays are in ascending pitch
-// or pedal-ID order. The 64 control slots exclude the 147 playing-key slots.
+// or pedal-ID order. The 64 control slots include 24 PresetKey controls and
+// exclude the 147 playing-key slots. Presets also paint natural-first and hit
+// accidental-first, independently of their semantic insertion order.
 struct UiLayout {
     float width{kUiReferenceWidth}, height{kUiReferenceHeight};
     bool show_cabinet{false};
@@ -143,6 +148,7 @@ struct UiLayout {
     std::size_t control_count{0};
     std::array<std::array<UiKeyGeometry, kManualKeyCount>, kManualCount> manual_keys{};
     std::array<UiKeyGeometry, kPedalCount> pedal_keys{};
+    std::array<UiRect, kManualCount> preset_key_panels{};
 };
 
 // Validation failure preserves destination. The same function supplies the
@@ -187,8 +193,9 @@ struct UiKeyInput {
 
 enum class UiPointerKind : std::uint8_t { Down, Move, Up, CaptureLost };
 
-// One primary mouse pointer only in v1; multi-touch is a later adapter. App
-// requests OS capture on Down and forwards Up even outside the window. Capture
+// One primary mouse pointer only in v1; multi-touch is a later adapter. The app
+// requests capture for playing/drag gestures and forwards Up outside the window.
+// Preset keys create no capture or note owner. Capture
 // failure is delivered as CaptureLost. Coordinates already use logical units.
 struct UiPointerInput {
     UiPointerKind kind{UiPointerKind::Move};
@@ -309,6 +316,9 @@ private:
 
 static_assert(kUiVisibleDrawbars == 18);
 static_assert(kManualKeyCount == 61 && kPedalCount == 25);
-static_assert(kParameterCount == 45);
+static_assert(static_cast<std::uint8_t>(UiControlKind::MidiSettings) == 18);
+static_assert(static_cast<std::uint8_t>(UiControlKind::PresetKey) == 19);
+static_assert(kPresetSelectionCount == 12);
+static_assert(kParameterCount == 47);
 
 } // namespace hammond::standalone

@@ -1,4 +1,5 @@
 #include "NativeHarness.h"
+#include "NativePresetOracle.h"
 
 #include "hammond/ConsoleModel.h"
 #include "hammond/Engine.h"
@@ -25,17 +26,17 @@ using Steinberg::int32;
 constexpr float kSentinel = -93.25F;
 constexpr std::uint32_t kScoreFrames = 4096;
 constexpr int kUnit = 8192;
-using Values = std::array<int, 45>;
+using LegacyValues = std::array<int, 45>;
 
 // Permanent native identities written independently of the compiled registry.
 // Array positions below describe physical targets, not descriptor enumeration.
-constexpr std::array<std::uint32_t, 45> kIds{{
+constexpr std::array<std::uint32_t, 45> kLegacyIds{{
     0x1000, 0x1001, 0x1002, 0x1003, 0x1004, 0x1005, 0x1006, 0x1007, 0x1008,
     0x1010, 0x1011, 0x1012, 0x1013, 0x1014, 0x1015, 0x1016, 0x1017, 0x1018,
     0x1020, 0x1021, 0x1022, 0x1023, 0x1024, 0x1025, 0x1026, 0x1027, 0x1028,
     0x1030, 0x1031, 0x1032, 0x1033, 0x1034, 0x1035, 0x1036, 0x1037, 0x1038,
     0x2000, 0x2010, 0x2011, 0x3000, 0x3001, 0x3002, 0x3003, 0x4000, 0x4001}};
-static_assert(kIds.size() == 45);
+static_assert(kLegacyIds.size() == 45);
 static_assert(kScoreFrames > 1024);
 
 struct Statistics {
@@ -49,10 +50,15 @@ struct Statistics {
     std::uint64_t nonzero_channel_samples{0};
     std::uint64_t long_callbacks{0};
     std::uint64_t guaranteed_expression_events{0};
-    std::uint64_t score_cases{0};
+    std::uint64_t legacy45_score_cases{0};
     std::uint64_t restore_cases{0};
     std::uint64_t gap_cases{0};
     std::uint64_t isolated_windows{0};
+    std::uint64_t preset_commands{0};
+    std::uint64_t preset_thresholds{0};
+    std::uint64_t preset_alias_cases{0};
+    std::uint64_t preset_restore_cases{0};
+    std::uint64_t preset_partition_cases{0};
     std::uint64_t checksum{1469598103934665603ULL};
     std::array<double, 3> division_min_rms{{1.0, 1.0, 1.0}};
     double maximum_error{0.0};
@@ -78,15 +84,20 @@ Event physical_control(std::size_t index, int units) {
         return {0, EventType::SelectBank, index == 37 ? Manual::Upper : Manual::Lower,
                 0, selected};
     }
-    if (index < 43) {
+    if (index >= 39 && index < 43) {
         return {0, EventType::Percussion, Manual::Upper,
                 static_cast<std::uint8_t>(index - 39), selected};
     }
-    return {0, EventType::PedalDrawbar, Manual::Lower,
-            static_cast<std::uint8_t>(index - 43), bar};
+    if (index == 43 || index == 44) {
+        return {0, EventType::PedalDrawbar, Manual::Lower,
+                static_cast<std::uint8_t>(index - 43), bar};
+    }
+    require(index == 45 || index == 46, "unknown independent physical control index");
+    return {0, EventType::SelectPreset, index == 45 ? Manual::Upper : Manual::Lower,
+            0, static_cast<double>(preset_oracle::plain(normalized(units)))};
 }
 
-ControlSnapshot controls_from(const Values& values) {
+ControlSnapshot controls_from(const LegacyValues& values) {
     ControlSnapshot controls;
     for (std::size_t index = 0; index < 36; ++index) {
         controls.drawbars[index / 18][(index % 18) / 9][index % 9] =
@@ -104,7 +115,7 @@ ControlSnapshot controls_from(const Values& values) {
     return controls;
 }
 
-std::vector<Event> controls_at(const Values& values, bool lower_selector = true) {
+std::vector<Event> controls_at(const LegacyValues& values, bool lower_selector = true) {
     std::vector<Event> events;
     events.reserve(56);
     for (std::size_t index = 0; index < values.size(); ++index) {
@@ -218,12 +229,12 @@ public:
 
 // q[-1]=0. The four 1024-sample legs rise, fall, rise, fall. All values
 // are exact multiples of 1/8192, including endpoints at arbitrary partitions.
-Values score_values(std::uint32_t sample_plus_one) {
+LegacyValues score_values(std::uint32_t sample_plus_one) {
     const auto cycle = sample_plus_one % 2048U;
     const int tick = static_cast<int>(cycle <= 1024U ? cycle : 2048U - cycle);
     constexpr std::array<unsigned, 4> patterns{{0b101010101U, 0b001110001U,
                                                0b011001100U, 0b110100010U}};
-    Values result{};
+    LegacyValues result{};
     for (std::size_t i = 0; i < 36; ++i) {
         const bool rising = ((patterns[i / 9] >> (i % 9)) & 1U) != 0;
         result[i] = 8 * (rising ? tick : 1024 - tick);
@@ -312,8 +323,8 @@ void retained_gap(Session& session, std::vector<float>& joined) {
     // at q=17/1024 on sample 15 (not N), leaving no parameter carry. Retain
     // this noncanonical normalized anchor through absent AND empty queues.
     ParameterChanges first;
-    for (std::size_t i = 0; i < kIds.size(); ++i) {
-        first.add_queue(kIds[i]).points = {{15, normalized(score_values(4113)[i])}};
+    for (std::size_t i = 0; i < kLegacyIds.size(); ++i) {
+        first.add_queue(kLegacyIds[i]).points = {{15, normalized(score_values(4113)[i])}};
     }
     session.native(16, &first, nullptr);
     std::vector<float> expected;
@@ -325,15 +336,15 @@ void retained_gap(Session& session, std::vector<float>& joined) {
     const auto absent = session.process(13);
     joined.insert(joined.end(), absent.begin(), absent.end());
     ParameterChanges empty;
-    for (auto it = kIds.rbegin(); it != kIds.rend(); ++it) (void)empty.add_queue(*it);
+    for (auto it = kLegacyIds.rbegin(); it != kLegacyIds.rend(); ++it) (void)empty.add_queue(*it);
     const auto empty_output = session.process(7, {}, &empty);
     joined.insert(joined.end(), empty_output.begin(), empty_output.end());
 
     // q[i] = (17 + 25*(i+1))/1024, i=0..31. Restoring an anchor from the
     // rounded drawbar/switch value would move thresholds by actual samples.
     ParameterChanges resumed;
-    for (std::size_t i = 0; i < kIds.size(); ++i) {
-        resumed.add_queue(kIds[i]).points = {{31, normalized(score_values(4913)[i])}};
+    for (std::size_t i = 0; i < kLegacyIds.size(); ++i) {
+        resumed.add_queue(kLegacyIds[i]).points = {{31, normalized(score_values(4913)[i])}};
     }
     session.native(32, &resumed, nullptr);
     expected.clear();
@@ -350,7 +361,7 @@ void retained_gap(Session& session, std::vector<float>& joined) {
     ++stats.gap_cases;
 }
 
-std::vector<float> all_curves(const std::string& bundle, const RuntimeProfile& profile,
+std::vector<float> legacy45_curves(const std::string& bundle, const RuntimeProfile& profile,
                               double rate, const std::vector<std::uint32_t>& partition) {
     Session session(bundle, profile, rate, controls_from(score_values(0)), "all 45 curves");
     audible_prelude(session);
@@ -361,9 +372,9 @@ std::vector<float> all_curves(const std::string& bundle, const RuntimeProfile& p
     for (const auto count : partition) {
         const auto end = start + count;
         ParameterChanges parameters;
-        for (std::size_t j = 0; j < kIds.size(); ++j) {
-            const auto i = (17 * j + start) % kIds.size(); // Queue enumeration is not ID order.
-            auto& queue = parameters.add_queue(kIds[i]);
+        for (std::size_t j = 0; j < kLegacyIds.size(); ++j) {
+            const auto i = (17 * j + start) % kLegacyIds.size(); // Queue enumeration is not ID order.
+            auto& queue = parameters.add_queue(kLegacyIds[i]);
             for (const std::uint32_t knot : {1023U, 2047U, 3071U, 4095U}) {
                 if (knot >= start && knot < end) {
                     queue.points.push_back({static_cast<int32>(knot - start),
@@ -419,7 +430,7 @@ std::vector<float> all_curves(const std::string& bundle, const RuntimeProfile& p
             "slicing continuation was vacuous silence");
     joined.insert(joined.end(), future.begin(), future.end());
     retained_gap(session, joined);
-    ++stats.score_cases;
+    ++stats.legacy45_score_cases;
     return joined;
 }
 
@@ -435,7 +446,7 @@ void restored_curves(const std::string& bundle, const RuntimeProfile& profile, d
     constexpr std::array<int, 4> carried_units{{7168, 7168, 8192, 6144}};
     ParameterChanges prime;
     for (std::size_t i = 0; i < carried_indices.size(); ++i) {
-        prime.add_queue(kIds[carried_indices[i]]).points = {{31, normalized(carried_units[i])}};
+        prime.add_queue(kLegacyIds[carried_indices[i]]).points = {{31, normalized(carried_units[i])}};
     }
     EventList old_notes;
     old_notes.events = {note_on(0, 76, 31, 0, 21), note_off(1, 48, 31, 1, 2),
@@ -452,7 +463,7 @@ void restored_curves(const std::string& bundle, const RuntimeProfile& profile, d
     }
     session.compare(primed);
 
-    Values loaded{};
+    LegacyValues loaded{};
     for (int state = 0; state < 4; ++state) {
         for (std::size_t i = 0; i < 36; ++i) loaded[i] = (1 + (static_cast<int>(i) + 2 * state) % 7) * 1024;
         loaded[36] = (state + 1) * 1024;
@@ -469,23 +480,23 @@ void restored_curves(const std::string& bundle, const RuntimeProfile& profile, d
     require(session.reference.active_key_count() == 2 && session.reference.active_pedal_count() == 1,
             "reference restore altered owners/held targets");
 
-    Values target{};
+    LegacyValues target{};
     for (std::size_t i = 0; i < target.size(); ++i) target[i] = 8192 - loaded[i];
     target[9] = 1024;
     target[36] = 5120;
     target[37] = 8192;
     target[38] = 8192;
     target[43] = 8192;
-    Values fresh = loaded;
+    LegacyValues fresh = loaded;
     fresh[9] = 5120;
     fresh[36] = 3072;
     fresh[37] = 8192;
     fresh[43] = 2048;
     ParameterChanges curves;
-    for (std::size_t reverse = kIds.size(); reverse != 0; --reverse) {
+    for (std::size_t reverse = kLegacyIds.size(); reverse != 0; --reverse) {
         const auto i = reverse - 1;
         if (i == 38) continue; // Absent lower selector must retain Cancel through all other curves.
-        auto& queue = curves.add_queue(kIds[i]);
+        auto& queue = curves.add_queue(kLegacyIds[i]);
         if (std::find(carried_indices.begin(), carried_indices.end(), i) != carried_indices.end()) {
             queue.points = {{0, 0.125}, {0, normalized(fresh[i])}, {128, normalized(target[i])}};
         } else {
@@ -502,7 +513,7 @@ void restored_curves(const std::string& bundle, const RuntimeProfile& profile, d
     session.native(128, &curves, &current);
     std::vector<float> expected;
     for (int frame = 0; frame < 128; ++frame) {
-        Values values{};
+        LegacyValues values{};
         for (std::size_t i = 0; i < values.size(); ++i) {
             const bool carried = std::find(carried_indices.begin(), carried_indices.end(), i) !=
                                  carried_indices.end();
@@ -556,6 +567,202 @@ void restored_curves(const std::string& bundle, const RuntimeProfile& profile, d
     ++stats.restore_cases;
 }
 
+void preset_commands_and_aliases(const std::string& bundle, const RuntimeProfile& profile, double rate) {
+    auto initial = controls_from(score_values(0));
+    initial.fixed_registrations = {FixedRegistration::FSharp, FixedRegistration::CSharp};
+    initial.route_enabled = {false, true};
+    Session session(bundle, profile, rate, initial, "fixed selectors, aliases and raw controller cache");
+    EventList held;
+    held.events = {note_on(0, 60, 0, 0, 1), note_on(1, 48, 0, 1, 2), note_on(2, 48, 0, 2, 3)};
+    const std::array<Event, 3> on{{key(Manual::Upper, 60, true), key(Manual::Lower, 48, true), pedal(13, true)}};
+    (void)session.process(257, on, nullptr, &held);
+    const auto send = [&](std::uint32_t id, double value, Event event) {
+        ParameterChanges point;
+        point.add_queue(id).points = {{0, value}};
+        const std::array<Event, 1> physical{{event}};
+        (void)session.process(0, physical, &point);
+    };
+    require_ok(session.plugin.controller->setParamNormalized(0x2010U, 0.6), "cache legacy bank");
+    require_ok(session.plugin.controller->setParamNormalized(0x5000U, 0.12345678901234567), "cache raw selector");
+    require_ok(session.plugin.controller->setParamNormalized(0x5001U, -0.0), "cache raw negative zero");
+    for (const auto index : {45U, 46U}) {
+        for (int selection = 0; selection < 12; ++selection) {
+            const int units = (selection * kUnit + 5) / 11;
+            const auto event = physical_control(index, units);
+            require(event.type == EventType::SelectPreset && event.index == 0 &&
+                    event.value == static_cast<double>(selection), "new selector became a pedal or wrong key");
+            send(index == 45 ? 0x5000U : 0x5001U, normalized(units), event);
+            (void)session.process(13);
+            ++stats.preset_commands;
+        }
+    }
+    for (const auto id : {0x5000U, 0x5001U}) {
+        for (std::size_t lower = 0; lower < preset_oracle::thresholds.size(); ++lower) {
+            const auto threshold = preset_oracle::thresholds[lower];
+            const std::array<double, 3> values{{std::nextafter(threshold, 0.0), threshold,
+                                               std::nextafter(threshold, 1.0)}};
+            for (std::size_t at = 0; at < values.size(); ++at) {
+                send(id, values[at], {0, EventType::SelectPreset,
+                    id == 0x5000U ? Manual::Upper : Manual::Lower, 0,
+                    static_cast<double>(lower + (at == 0 ? 0U : 1U))});
+                (void)session.process(1);
+                ++stats.preset_thresholds;
+            }
+        }
+    }
+    ParameterChanges conflict;
+    conflict.add_queue(0x5001U).points = {{0, preset_oracle::canonical[5]}};
+    conflict.add_queue(0x5000U).points = {{0, preset_oracle::canonical[3]}};
+    conflict.add_queue(0x2011U).points = {{0, 0.61}};
+    conflict.add_queue(0x2010U).points = {{0, 0.6}};
+    const std::array<Event, 4> ordered{{
+        {0, EventType::SelectBank, Manual::Upper, 0, 1.0},
+        {0, EventType::SelectBank, Manual::Lower, 0, 1.0},
+        {0, EventType::SelectPreset, Manual::Upper, 0, 3.0},
+        {0, EventType::SelectPreset, Manual::Lower, 0, 5.0}}};
+    (void)session.process(0, ordered, &conflict);
+    require(session.saved().fixed_registrations ==
+            std::array<FixedRegistration, 2>{FixedRegistration::DSharp, FixedRegistration::F},
+            "higher selector IDs did not win reverse-enumerated same-sample aliases");
+    (void)session.process(17);
+    ParameterChanges empty;
+    (void)empty.add_queue(0x5000U);
+    (void)empty.add_queue(0x2010U);
+    (void)session.process(19, {}, &empty);
+
+    // The old bank's raw 0.6 anchor is still B. A changed normalized plateau
+    // does not reassert B until its explicit endpoint becomes a carried point.
+    ParameterChanges old_plateau;
+    old_plateau.add_queue(0x2010U).points = {{7, 0.61}};
+    (void)session.process(7, {}, &old_plateau);
+    require(session.saved().fixed_registrations[0] == FixedRegistration::DSharp,
+            "unchanged old-bank plateau reasserted routing");
+    const std::array<Event, 1> old_endpoint{{{0, EventType::SelectBank, Manual::Upper, 0, 1.0}}};
+    (void)session.process(0, old_endpoint);
+    require(session.saved().fixed_registrations[0] == FixedRegistration::None,
+            "explicit carried old-bank endpoint failed to exit fixed mode");
+
+    // Conversely the new selector retains raw 3/11 even while the old bank
+    // command has selected B. Its same-plain plateau must leave B connected.
+    ParameterChanges new_plateau;
+    new_plateau.add_queue(0x5000U).points = {{7, 0.28}};
+    (void)session.process(7, {}, &new_plateau);
+    require(session.saved().fixed_registrations[0] == FixedRegistration::None,
+            "unchanged new-selector plateau reasserted fixed mode");
+    const std::array<Event, 1> new_endpoint{{{0, EventType::SelectPreset, Manual::Upper, 0, 3.0}}};
+    (void)session.process(0, new_endpoint);
+    send(0x5000U, -0.0, {0, EventType::SelectPreset, Manual::Upper, 0, 0.0});
+    require(session.saved().fixed_registrations[0] == FixedRegistration::DSharp &&
+            !session.saved().route_enabled[0], "Cancel discarded remembered fixed mode");
+    (void)session.process(23);
+    send(0x2010U, 0.61, {0, EventType::SelectBank, Manual::Upper, 0, 1.0});
+    require(session.saved().fixed_registrations[0] == FixedRegistration::None &&
+            session.saved().route_enabled[0], "same-value old bank did not reconnect and clear fixed mode");
+    ++stats.preset_alias_cases;
+
+    // Prime a real selector curve and a boundary note. Four complete restores
+    // then precede carry/fresh commands, with fresh duplicate selectors last.
+    ParameterChanges prime;
+    prime.add_queue(0x5000U).points = {{0, preset_oracle::canonical[2]},
+                                     {16, preset_oracle::canonical[7]}};
+    EventList boundary_note;
+    boundary_note.events = {note_on(0, 76, 16, 0, 4)};
+    session.native(16, &prime, &boundary_note);
+    std::vector<float> primed;
+    for (std::uint32_t frame = 0; frame < 16; ++frame) {
+        const auto value = preset_oracle::canonical[2] + (static_cast<double>(frame) / 16.0) *
+                           (preset_oracle::canonical[7] - preset_oracle::canonical[2]);
+        const std::array<Event, 1> event{{{0, EventType::SelectPreset, Manual::Upper, 0,
+                                         static_cast<double>(preset_oracle::plain(value))}}};
+        primed.push_back(session.render(1, event)[0]);
+    }
+    session.compare(primed);
+    for (unsigned index = 0; index < 4; ++index) {
+        auto restored = initial;
+        restored.fixed_registrations = {static_cast<FixedRegistration>(index + 1), FixedRegistration::A};
+        restored.selected_banks = {DrawbarBank::A, DrawbarBank::B};
+        restored.route_enabled = {false, false};
+        require_ok(session.plugin.load_state(snapshot_text(restored)), "fixed state with pending carry");
+        require(session.saved() == restored, "pending fixed save lost raw mode");
+        require(session.reference.restore_controls(restored), "fixed direct restore failed");
+    }
+    ParameterChanges fresh;
+    fresh.add_queue(0x5001U).points = {{0, 0.0}};
+    fresh.add_queue(0x5000U).points = {{0, preset_oracle::canonical[1]}, {0, preset_oracle::canonical[4]}};
+    fresh.add_queue(0x2010U).points = {{0, 0.6}};
+    EventList releases;
+    releases.events = {note_off(0, 76, 0, 0, 4)};
+    const std::array<Event, 5> restored_events{{
+        {0, EventType::SelectBank, Manual::Upper, 0, 1.0},
+        {0, EventType::SelectPreset, Manual::Upper, 0, 4.0},
+        {0, EventType::SelectPreset, Manual::Lower, 0, 0.0},
+        key(Manual::Upper, 76, true), key(Manual::Upper, 76, false)}};
+    const auto clock = session.reference.frame_clock();
+    (void)session.process(0, restored_events, &fresh, &releases);
+    (void)session.process(0);
+    require(session.reference.frame_clock() == clock && session.reference.active_key_count() == 2 &&
+            session.reference.active_pedal_count() == 1, "zero restore/carry changed elapsed time or held targets");
+    (void)session.process(257, {}, nullptr, nullptr, true);
+    require(session.saved().fixed_registrations ==
+            std::array<FixedRegistration, 2>{FixedRegistration::E, FixedRegistration::A} &&
+            session.saved().route_enabled == std::array<bool, 2>{true, false},
+            "restore/carry/fresh selector precedence lost retained state");
+    ++stats.preset_restore_cases;
+
+    require(std::bit_cast<std::uint64_t>(session.plugin.controller->getParamNormalized(0x2010U)) ==
+            std::bit_cast<std::uint64_t>(0.6), "audio changed the controller raw bank cache");
+    require(std::bit_cast<std::uint64_t>(session.plugin.controller->getParamNormalized(0x5000U)) ==
+            std::bit_cast<std::uint64_t>(0.12345678901234567), "audio changed the controller raw selector cache");
+    require(std::signbit(session.plugin.controller->getParamNormalized(0x5001U)),
+            "audio canonicalized raw cached negative zero");
+    MemoryStream component_state(snapshot_text(session.saved()));
+    require_ok(session.plugin.controller->setComponentState(&component_state), "explicit controller state refresh");
+    require(session.plugin.controller->getParamNormalized(0x5000U) == preset_oracle::canonical[4] &&
+            session.plugin.controller->getParamNormalized(0x5001U) == 0.0 &&
+            session.plugin.controller->getParamNormalized(0x2010U) == 1.0 &&
+            session.plugin.controller->getParamNormalized(0x2011U) == 1.0,
+            "controller state refresh did not separate effective selection and retained bank");
+}
+
+std::vector<float> preset_curve_partition(const std::string& bundle, const RuntimeProfile& profile,
+                                         double rate, const std::vector<std::uint32_t>& partition) {
+    auto initial = controls_from(score_values(0));
+    initial.selected_banks = {DrawbarBank::B, DrawbarBank::B};
+    initial.route_enabled = {true, false};
+    Session session(bundle, profile, rate, initial, "new selector curve partitions");
+    EventList held;
+    held.events = {note_on(0, 60, 0, 0, 1), note_on(1, 48, 0, 1, 2), note_on(2, 48, 0, 2, 3)};
+    const std::array<Event, 3> on{{key(Manual::Upper, 60, true), key(Manual::Lower, 48, true), pedal(13, true)}};
+    (void)session.process(257, on, nullptr, &held);
+    std::vector<float> joined;
+    std::uint32_t start = 0;
+    for (const auto frames : partition) {
+        ParameterChanges curves;
+        const auto endpoint = static_cast<double>(start + frames) / 512.0;
+        curves.add_queue(0x5001U).points = {{static_cast<int32>(frames - 1), endpoint}};
+        curves.add_queue(0x5000U).points = {{static_cast<int32>(frames - 1), 1.0 - endpoint}};
+        session.native(frames, &curves, nullptr);
+        std::vector<float> expected;
+        for (std::uint32_t frame = 0; frame < frames; ++frame) {
+            const auto lower = static_cast<double>(start + frame + 1) / 512.0;
+            const std::array<Event, 2> events{{
+                {0, EventType::SelectPreset, Manual::Upper, 0,
+                 static_cast<double>(preset_oracle::plain(1.0 - lower))},
+                {0, EventType::SelectPreset, Manual::Lower, 0,
+                 static_cast<double>(preset_oracle::plain(lower))}}};
+            expected.push_back(session.render(1, events)[0]);
+        }
+        session.compare(expected);
+        joined.insert(joined.end(), expected.begin(), expected.end());
+        start += frames;
+    }
+    require(start == 512, "preset partitions do not cover their complete curve");
+    const auto future = session.process(257, {}, nullptr, nullptr, true);
+    joined.insert(joined.end(), future.begin(), future.end());
+    ++stats.preset_partition_cases;
+    return joined;
+}
+
 } // namespace
 
 int main(int argc, char** argv) {
@@ -566,8 +773,8 @@ int main(int argc, char** argv) {
         require(load_runtime_profile_file(argv[2], profile, error), error);
         const std::string bundle = argv[1];
         for (const double rate : {44100.0, 48000.0, 96000.0}) {
-            const auto whole = all_curves(bundle, profile, rate, {kScoreFrames});
-            const auto partitioned = all_curves(bundle, profile, rate, irregular_partition());
+            const auto whole = legacy45_curves(bundle, profile, rate, {kScoreFrames});
+            const auto partitioned = legacy45_curves(bundle, profile, rate, irregular_partition());
             require(whole.size() == partitioned.size(), "partition length differs");
             for (std::size_t i = 0; i < whole.size(); ++i) {
                 require(std::bit_cast<std::uint32_t>(whole[i]) == std::bit_cast<std::uint32_t>(partitioned[i]),
@@ -575,10 +782,27 @@ int main(int argc, char** argv) {
                 ++stats.partition_samples;
             }
             restored_curves(bundle, profile, rate);
+            preset_commands_and_aliases(bundle, profile, rate);
+            const auto preset_whole = preset_curve_partition(bundle, profile, rate, {512});
+            for (const auto& partition : std::array<std::vector<std::uint32_t>, 2>{{
+                     {1, 7, 13, 29, 63, 127, 272}, {17, 31, 2, 63, 15, 128, 256}}}) {
+                const auto divided = preset_curve_partition(bundle, profile, rate, partition);
+                require(divided.size() == preset_whole.size(), "preset partition length differs");
+                for (std::size_t i = 0; i < divided.size(); ++i) {
+                    require(std::bit_cast<std::uint32_t>(divided[i]) == std::bit_cast<std::uint32_t>(preset_whole[i]),
+                            "preset partition/future audio differs");
+                    ++stats.partition_samples;
+                }
+            }
         }
         require(stats.maximum_error == 0.0 && stats.maximum_peak < 1.0, "reference error or clipping");
-        std::cout << "native automation: score_cases=" << stats.score_cases
+        std::cout << "native automation: legacy45_score_cases=" << stats.legacy45_score_cases
                   << " restore_cases=" << stats.restore_cases << " gap_cases=" << stats.gap_cases
+                  << " preset_commands=" << stats.preset_commands
+                  << " preset_thresholds=" << stats.preset_thresholds
+                  << " preset_alias_cases=" << stats.preset_alias_cases
+                  << " preset_restore_cases=" << stats.preset_restore_cases
+                  << " preset_partition_cases=" << stats.preset_partition_cases
                   << " callbacks=" << stats.callbacks
                   << " zero_callbacks=" << stats.zero_callbacks << " state_reads=" << stats.state_reads
                   << " direct_reference_frames=" << stats.reference_frames

@@ -348,6 +348,93 @@ class VerifyRenderTests(unittest.TestCase):
                     manifest["parameters"]["event_count"] = 1
                     self.reject(directory, manifest, "events")
 
+    def test_all_eighteen_presets_verify_and_match_literal_bank_evidence(self):
+        # Independent literal page-122 readings retained by A10; never ask the
+        # production catalog compiler/lookup for the expected audio registration.
+        rows = {
+            "upper": ("005320000", "004432000", "008740000", "004544222", "005403000",
+                      "004675300", "005644320", "006876540", "327645222"),
+            "lower": ("004545440", "004423220", "007373430", "004544220", "006644322",
+                      "005642200", "006845433", "008030000", "427866244"),
+        }
+        prefix = "0 expression upper 0 .125\n" + "".join(
+            f"0 note_on {manual} {note} 100\n"
+            for manual in rows for note in (36, 60, 96))
+        fixed, bank = prefix, prefix
+        starts = []
+        for manual, registrations in rows.items():
+            for selection, digits in enumerate(registrations, 1):
+                frame = 37 + len(starts) * 257
+                starts.append(frame)
+                if manual == "lower" and selection == 1:
+                    fixed += f"{frame} cancel upper 0 0\n"
+                    bank += f"{frame} cancel upper 0 0\n"
+                fixed += f"{frame} select_preset {manual} 0 {selection}.0\n"
+                bank += "".join(f"{frame} bank_drawbar {manual} {index} {digit}\n"
+                                for index, digit in enumerate(digits))
+                bank += f"{frame} select_bank {manual} 0 0\n"
+        end = starts[-1] + 257
+        fixed += f"{end} select_preset lower 0 -0.0\n"
+        bank += f"{end} cancel lower 0 0\n"
+        bundles = []
+        for label, score, block in (("selectors", fixed, 17), ("literal-banks", bank, 127)):
+            source = self.work / f"{label}.events"
+            raw = score.encode("ascii")
+            source.write_bytes(raw)
+            directory = self.work / label
+            manifest = producer.run_fixture(
+                renderer=self.renderer, output_dir=directory, profile_json=self.profile,
+                events=source, frames=end + 104, sample_rate=48000, block_size=block,
+                seed=7, drawbars="000000000", percussion="off")
+            self.assertEqual(manifest["status"], "succeeded", manifest["error"])
+            self.assertEqual(manifest["schema_version"], 3)
+            self.assertEqual(len(manifest["parameters"]), 14)
+            self.assertEqual(len(manifest["renderer_metrics"]), 31)
+            self.assertEqual(manifest["inputs"]["events"]["sha256"], hashlib.sha256(raw).hexdigest())
+            self.assertEqual((directory / "events.txt").read_bytes(), raw)
+            with mock.patch.object(producer, "validate_events", side_effect=AssertionError("producer parser")), \
+                 mock.patch.object(producer, "inspect_wav", side_effect=AssertionError("producer WAV check")):
+                report = consumer.verify_bundle(directory)
+            self.assertEqual(report["schema_version"], 3)
+            self.assertEqual(report["renderer"]["status"], "matched")
+            self.assertEqual(report["replay"]["status"], "not_performed")
+            self.assertEqual(report["wav_sha256"], manifest["wav"]["sha256"])
+            bundles.append((directory, manifest))
+        actual, expected = ((directory / "render.wav").read_bytes() for directory, _ in bundles)
+        self.assertEqual(actual, expected)
+        samples = struct.unpack(f"<{(end + 104) * 2}h", actual[44:])[::2]
+        for start in starts:
+            self.assertTrue(any(samples[start:start + 257]), f"silent row at frame {start}")
+        self.assertFalse(any(samples[end:]), "Negative-zero Cancel must mute the held lower route")
+
+    def test_current_schema_rejects_rehashed_invalid_preset_scores(self):
+        invalid = [f"128 select_preset {manual} 0 {value}"
+                   for manual in ("upper", "lower")
+                   for value in ("-1", "12", ".5", "11.000001", "nan", "inf", "-inf",
+                                 "1e999", "1e-999", "0x1")]
+        invalid += [f"128 select_preset upper {index} 1"
+                    for index in ("1", "255", "-0", "+0", "0.0", "18446744073709551616")]
+        invalid += ["128 select_preset pedals 0 1", "128 select_preset Upper 0 1",
+                    "128 SelectPreset upper 0 1", "128 select_preset upper 0 1 extra"]
+        for bad in invalid:
+            with self.subTest(event=bad):
+                directory, manifest = self.clone(self.event_base)
+                raw = ("0 note_on upper 60 100\n0 select_preset upper 0 1\n" + bad + "\n").encode()
+                self.rewrite(directory, manifest["inputs"]["events"], raw)
+                manifest["parameters"]["event_count"] = 3
+                self.reject(directory, manifest, "events")
+
+    def test_historical_schemas_reject_rehashed_preset_events(self):
+        for source in (self.legacy_event_base, self.schema2_event_base):
+            for manual in ("upper", "lower"):
+                for value in ("-0.0", "1", "9", "10", "11"):
+                    with self.subTest(schema=source.name, manual=manual, value=value):
+                        directory, manifest = self.clone(source)
+                        raw = f"0 select_preset {manual} 0 {value}\n".encode("ascii")
+                        self.rewrite(directory, manifest["inputs"]["events"], raw)
+                        manifest["parameters"]["event_count"] = 1
+                        self.reject(directory, manifest, "events")
+
     def test_consumer_does_not_call_producer_verification_helpers(self):
         with mock.patch.object(producer, "inspect_wav", side_effect=AssertionError("producer WAV helper")), \
              mock.patch.object(producer, "validate_events", side_effect=AssertionError("producer event helper")), \

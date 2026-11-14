@@ -43,6 +43,8 @@ ControlSnapshot pattern(std::uint64_t tag) {
                         static_cast<PercussionDecay>((tag >> 7U) & 1U)};
     state.pedal_drawbars = {static_cast<std::uint8_t>((tag * 2 + 1) % 9),
                             static_cast<std::uint8_t>((tag * 4 + 2) % 9)};
+    state.fixed_registrations = {static_cast<FixedRegistration>(tag % 10),
+                                static_cast<FixedRegistration>((tag / 10) % 10)};
     return state;
 }
 
@@ -183,6 +185,14 @@ void test_invalid_values_tokens_and_signed_zero() {
     invalid = pattern(1);
     invalid.percussion.decay = static_cast<PercussionDecay>(2);
     reject(invalid);
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        for (unsigned value = 10; value <= 255; ++value) {
+            invalid = pattern(1);
+            invalid.route_enabled[manual] = false; // Hidden invalid modes still reject.
+            invalid.fixed_registrations[manual] = static_cast<FixedRegistration>(value);
+            reject(invalid);
+        }
+    }
 
     // Validation precedes capacity failure and preserves every pending record.
     for (std::uint64_t seq = 2; seq <= 4; ++seq) CHECK(exchange.ui_enqueue(pattern(seq)));
@@ -206,6 +216,44 @@ void test_invalid_values_tokens_and_signed_zero() {
         CHECK(exchange.ui_snapshot_for_save(saved));
         same(saved, exact);
     }
+}
+
+void test_every_retained_preset_publication() {
+    static_assert(kStatePublicationCellCount == 50);
+    StateExchange exchange;
+    std::uint64_t sequence = 0;
+    for (unsigned upper = 0; upper < 10; ++upper) {
+        for (unsigned lower = 0; lower < 10; ++lower) {
+            for (unsigned routing = 0; routing < 16; ++routing) {
+                auto expected = pattern(upper * 160 + lower * 16 + routing + 1);
+                expected.fixed_registrations = {static_cast<FixedRegistration>(upper),
+                                                static_cast<FixedRegistration>(lower)};
+                expected.selected_banks = {static_cast<DrawbarBank>(routing & 1U),
+                                           static_cast<DrawbarBank>((routing >> 1U) & 1U)};
+                expected.route_enabled = {(routing & 4U) != 0, (routing & 8U) != 0};
+                expected.expression = (routing & 1U) != 0 ? -0.0 : 0.0;
+                const auto before = published(exchange);
+                CHECK(exchange.ui_enqueue(expected).sequence == ++sequence);
+                auto saved = pattern(65000);
+                CHECK(exchange.ui_snapshot_for_save(saved));
+                same(saved, expected); // Pending saves use a copied UI snapshot.
+                same(published(exchange), before);
+                const auto batch = peek(exchange);
+                CHECK(batch.size() == 1 && batch.last_sequence() == sequence);
+                same(batch.snapshots()[0], expected);
+                CHECK(exchange.audio_can_commit(batch) == ok);
+                CHECK(exchange.audio_commit(batch, expected) == ok);
+                const auto applied = published(exchange);
+                CHECK(applied.acknowledged_sequence == sequence);
+                CHECK(applied.publication_revision == sequence * 2);
+                same(applied.controls, expected); // This read decodes all atomic cells.
+                saved = pattern(64000);
+                CHECK(exchange.ui_snapshot_for_save(saved));
+                same(saved, expected); // Acknowledged save must retain cancelled modes.
+            }
+        }
+    }
+    CHECK(sequence == 1600);
 }
 
 void test_finite_lifetimes() {
@@ -271,6 +319,13 @@ constexpr std::string_view manual_records =
     "bank B 8 6 4 2 0 7 5 3 1\nend\n";
 constexpr std::string_view percussion_record =
     "percussion enabled 1 harmonic third volume soft decay fast\n";
+constexpr std::string_view current_manual_records =
+    "manual upper selected A fixed_registration none route_enabled 0\n"
+    "bank A 0 1 2 3 4 5 6 7 8\n"
+    "bank B 8 7 6 5 4 3 2 1 0\n"
+    "manual lower selected B fixed_registration none route_enabled 1\n"
+    "bank A 1 3 5 7 0 2 4 6 8\n"
+    "bank B 8 6 4 2 0 7 5 3 1\nend\n";
 
 ControlSnapshot historical(std::uint32_t version) {
     std::string bytes = "B3CONTROLS" + std::to_string(version) + "\nexpression 0.375\n";
@@ -352,6 +407,7 @@ void test_state_formats_and_candidate_engine() {
                        make_nominal_console_model()) == Status::Ok);
     auto controls = pattern(8192);
     controls.selected_banks = {DrawbarBank::B, DrawbarBank::B};
+    controls.fixed_registrations = {FixedRegistration::None, FixedRegistration::None};
     controls.route_enabled = {true, true};
     controls.percussion.enabled = true;
     CHECK(live.restore_controls(controls));
@@ -410,8 +466,9 @@ void test_state_formats_and_candidate_engine() {
     std::string bytes;
     std::string error;
     CHECK(serialize_controls(save, bytes, error));
-    CHECK(bytes == std::string("B3CONTROLS3\nexpression 0.375\n") +
-        std::string(percussion_record) + "pedal drawbars 2 7\n" + std::string(manual_records));
+    CHECK(bytes == std::string("B3CONTROLS4\nregistration_catalog atlas-chapel-nominal-v1 sha256 "
+        "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\nexpression 0.375\n") +
+        std::string(percussion_record) + "pedal drawbars 2 7\n" + std::string(current_manual_records));
     std::istringstream restored_stream(bytes);
     auto parsed_again = pattern(401);
     CHECK(parse_controls(restored_stream, parsed_again, error));
@@ -426,7 +483,7 @@ void test_state_formats_and_candidate_engine() {
     CHECK(live.active_key_count() == 3 && live.active_pedal_count() == 2);
 
     // Unsupported persisted versions fail before any enqueue or DSP mutation.
-    std::istringstream future("B3CONTROLS4\nend\n");
+    std::istringstream future("B3CONTROLS5\nend\n");
     const auto saved_before = save;
     CHECK(!parse_controls(future, save, error));
     same(save, saved_before);
@@ -578,6 +635,7 @@ void test_concurrent_producer_audio_and_observer() {
 int main() {
     test_defaults_queue_and_save();
     test_invalid_values_tokens_and_signed_zero();
+    test_every_retained_preset_publication();
     test_finite_lifetimes();
     test_state_formats_and_candidate_engine();
     test_delayed_reader();

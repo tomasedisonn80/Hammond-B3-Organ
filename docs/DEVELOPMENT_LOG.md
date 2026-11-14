@@ -1,5 +1,24 @@
 # Development log
 
+## 2026-11-14 — Implement the exclusive fixed-registration path
+
+The reviewed M3 selector now has immutable generated rows, retained A/B/Cancel
+memory, phase-preserving core routing, upper-B percussion eligibility, state4
+with legacy readers, append-only 47 parameters, exact new-selector binary64
+conversion, raw StateExchange/Session transport, host anchors and 24 native preset
+keys. Independent source, lifecycle, persistence and numerical checks retain
+focused evidence in the [current session](development/2026-11-14-preset-continuation/README.md).
+Native VST3 passes 8/8 suites and the offline validators pass 107 methods in 3/3 suites.
+Initial failures and source identities remain in their individual records.
+The renderer has actual three-size captures; final gallery/refinement and
+integrated/platform gates remain pending. These changes are a development overlay
+until a later publication record names their exact tree.
+
+The published macOS startup repair at 35554c0 passes startup and installation.
+The remaining 22/24 native result contains two replay failures, retained with
+copied diagnostics and job identities for explicit diagnosis; ten other hosted
+jobs pass. No unqualified unchanged retry is counted as a repair.
+
 ## 2026-11-14 — Repair macOS comparison of new output paths
 
 The hosted renderer compile repair passed compilation and exposed a distinct

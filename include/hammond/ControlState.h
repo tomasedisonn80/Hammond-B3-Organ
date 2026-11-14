@@ -1,5 +1,6 @@
 #pragma once
 
+#include "hammond/FixedRegistration.h"
 #include "hammond/Percussion.h"
 #include "hammond/PedalVoice.h"
 #include "hammond/Types.h"
@@ -28,6 +29,8 @@ struct ControlSnapshot {
     double expression{1.0}; // Global normalized linear-gain surrogate, finite 0..1.
     PercussionSettings percussion{}; // Retained controls; no readiness/history.
     PedalDrawbarPositions pedal_drawbars{}; // Mixture 1/2 positions 0..8, initially muted.
+    std::array<FixedRegistration, kManualCount> fixed_registrations{
+        FixedRegistration::None, FixedRegistration::None};
 
     [[nodiscard]] bool operator==(const ControlSnapshot&) const noexcept = default;
 };
@@ -38,7 +41,13 @@ struct ControlSnapshot {
 
 [[nodiscard]] bool is_valid_control_snapshot(const ControlSnapshot& snapshot) noexcept;
 
-// Early exclusive A/B selector; not a physical multi-preset latch/loading model.
+// Effective selection from a completely validated copy. Cancel preserves both
+// the remembered bank and fixed mode; invalid input preserves destination.
+[[nodiscard]] bool control_preset_selection(const ControlSnapshot& snapshot,
+                                            Manual manual,
+                                            PresetSelection& destination) noexcept;
+
+// Exclusive fixed/A/B selector; not a physical multi-preset latch/loading model.
 // Owns fixed-size values only. All operations are allocation-free and require
 // same-processing-thread or stopped access; there is no concurrent UI protocol.
 class ControlState {
@@ -52,8 +61,10 @@ public:
                                         std::size_t index, std::uint8_t position) noexcept;
     [[nodiscard]] bool set_drawbar(Manual manual, std::size_t index,
                                    std::uint8_t position) noexcept;
-    // Selection reconnects the manual; Cancel only disconnects its route.
+    // Bank selection clears fixed mode and reconnects the manual. Fixed
+    // selection preserves the remembered bank; Cancel only disconnects routing.
     [[nodiscard]] bool select_bank(Manual manual, DrawbarBank bank) noexcept;
+    [[nodiscard]] bool select_preset(Manual manual, PresetSelection selection) noexcept;
     [[nodiscard]] bool cancel(Manual manual) noexcept;
     [[nodiscard]] bool set_expression(double expression) noexcept;
     // Stores controls independently of upper-B eligibility and dynamic q.
@@ -75,13 +86,15 @@ public:
     [[nodiscard]] bool bank_drawbar_position(Manual manual, DrawbarBank bank,
                                              std::size_t index,
                                              std::uint8_t& destination) const noexcept;
-    // The selected bank's retained position, including while cancelled.
+    // The remembered bank's position, including while fixed or cancelled.
     [[nodiscard]] bool drawbar_position(Manual manual, std::size_t index,
                                        std::uint8_t& destination) const noexcept;
-    // Position for the nominal gain lookup: zero while the route is cancelled.
+    // Nominal gain position: zero when cancelled, otherwise fixed or bank mode.
     [[nodiscard]] bool active_drawbar_position(Manual manual, std::size_t index,
                                               std::uint8_t& destination) const noexcept;
     [[nodiscard]] bool selected_bank(Manual manual, DrawbarBank& destination) const noexcept;
+    [[nodiscard]] bool selected_preset(Manual manual,
+                                       PresetSelection& destination) const noexcept;
     [[nodiscard]] bool route_enabled(Manual manual, bool& destination) const noexcept;
     [[nodiscard]] bool pedal_drawbar_position(std::size_t index,
                                              std::uint8_t& destination) const noexcept;

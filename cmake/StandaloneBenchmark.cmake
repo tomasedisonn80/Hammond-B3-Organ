@@ -18,6 +18,11 @@ function(hammond_add_standalone_benchmark)
         "${HAMMOND_PEDAL_REVIEW_A}" "${HAMMOND_PEDAL_REVIEW_B}"
         "${HAMMOND_SCANNER_COMPILER}" "${HAMMOND_SCANNER_AUTHORING}"
         "${PROJECT_SOURCE_DIR}/data/scanner-line.schema.json"
+        "${HAMMOND_FIXED_REGISTRATION_COMPILER}"
+        "${PROJECT_SOURCE_DIR}/tools/compile_chapel_presets.py"
+        "${PROJECT_SOURCE_DIR}/data/chapel-presets.schema.json"
+        "${HAMMOND_FIXED_REGISTRATION_AUTHORING}"
+        "${HAMMOND_FIXED_REGISTRATION_REVIEW_A}" "${HAMMOND_FIXED_REGISTRATION_REVIEW_B}"
         "${HAMMOND_PROFILE_COMPILER}" "${HAMMOND_AUTHORING_PROFILE}")
     list(REMOVE_DUPLICATES benchmark_inputs)
     set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${benchmark_inputs})

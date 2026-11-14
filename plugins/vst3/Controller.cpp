@@ -112,6 +112,12 @@ using Steinberg::Vst::TChar;
     case EventType::SelectBank:
         destination = static_cast<double>(snapshot.selected_banks[manual]);
         return true;
+    case EventType::SelectPreset: {
+        PresetSelection selection{};
+        if (!control_preset_selection(snapshot, descriptor.manual, selection)) return false;
+        destination = static_cast<double>(selection);
+        return true;
+    }
     case EventType::Expression:
         destination = snapshot.expression;
         return true;
@@ -182,8 +188,9 @@ Steinberg::tresult PLUGIN_API Controller::setComponentState(Steinberg::IBStream*
     }
     // One fixed value assignment follows complete validation. This generic
     // controller has no custom-view observers; no reentrant partial update or
-    // IComponentHandler gesture is emitted. Route-enable bits stay exclusively
-    // in processor state, so reflecting Cancel invents no selector gesture.
+    // IComponentHandler gesture is emitted. New selector values reflect the
+    // effective route, including Cancel; old bank values retain the edit bank.
+    // Subsequent host writes continue to cache their accepted raw value.
     values_ = values;
     return Steinberg::kResultOk;
 }

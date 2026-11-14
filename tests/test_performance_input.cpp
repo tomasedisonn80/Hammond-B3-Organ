@@ -316,6 +316,112 @@ void test_flush_disconnect_and_route_retention() {
     CHECK(runtime.manuals.owner_count() == 1 && runtime.pedals.owner_count() == 0);
 }
 
+void test_preset_controls_and_mixed_ties() {
+    auto runtime = prepared();
+    auto direct = prepared();
+    // PerformanceInput preserves the supplied mixed-alternative order. Unlike
+    // host parameter queues, a later old-bank command wins over an earlier
+    // preset command at the same sample.
+    const std::array<Input, 10> mixed{
+        Event{0, EventType::Percussion, Manual::Upper, 0, 1.0},
+        Event{0, EventType::SelectPreset, Manual::Upper, 0, 1.0},
+        manual_on(0, 0, 0, 60, 101),
+        Event{0, EventType::SelectBank, Manual::Upper, 0, 1.0},
+        pedal_on(0, 0, 0, 1, 102),
+        Event{0, EventType::SelectPreset, Manual::Lower, 0, 3.0},
+        manual_on(0, 1, 0, 48, 103),
+        Event{0, EventType::SelectPreset, Manual::Lower, 0, 0.0},
+        Event{7, EventType::SelectPreset, Manual::Upper, 0, 9.0},
+        Event{7, EventType::Drawbar, Manual::Upper, 4, 8.0}};
+    const std::array<Event, 10> physical{{
+        {0, EventType::Percussion, Manual::Upper, 0, 1.0},
+        {0, EventType::SelectPreset, Manual::Upper, 0, 1.0},
+        {0, EventType::NoteOn, Manual::Upper, 60, 100.0},
+        {0, EventType::SelectBank, Manual::Upper, 0, 1.0},
+        {0, EventType::PedalOn, Manual::Lower, 1, 100.0},
+        {0, EventType::SelectPreset, Manual::Lower, 0, 3.0},
+        {0, EventType::NoteOn, Manual::Lower, 48, 100.0},
+        {0, EventType::SelectPreset, Manual::Lower, 0, 0.0},
+        {7, EventType::SelectPreset, Manual::Upper, 0, 9.0},
+        {7, EventType::Drawbar, Manual::Upper, 4, 8.0}}};
+    std::array<float, 32> actual{}, expected{};
+    accepted(runtime, 32, actual, mixed, physical.size());
+    CHECK(direct.engine.process(32, expected, physical));
+    equal_audio(actual, expected);
+    equal_state(runtime.engine, direct.engine);
+    CHECK(runtime.manuals.owner_count() == 2 && runtime.pedals.owner_count() == 1);
+    auto controls = runtime.engine.controls_snapshot();
+    CHECK(controls.fixed_registrations[0] == FixedRegistration::A);
+    CHECK(controls.fixed_registrations[1] == FixedRegistration::DSharp);
+    CHECK(!controls.route_enabled[1]);
+    CHECK(controls.drawbars[0][1][4] == 8);
+
+    for (const bool fixed_last : {false, true}) {
+        std::array<Input, 4> tie{
+            Event{0, EventType::SelectPreset, Manual::Upper, 0, 1.0},
+            manual_on(0, 0, 0, 60, 101),
+            Event{0, EventType::SelectBank, Manual::Upper, 0, 1.0},
+            pedal_on(0, 0, 0, 1, 102)};
+        std::array<Event, 2> ordered{{
+            {0, EventType::SelectPreset, Manual::Upper, 0, 1.0},
+            {0, EventType::SelectBank, Manual::Upper, 0, 1.0}}};
+        if (fixed_last) {
+            std::swap(tie[0], tie[2]);
+            std::swap(ordered[0], ordered[1]);
+        }
+        accepted(runtime, 0, {}, tie, 2); // Interleaved identified duplicates emit no notes.
+        CHECK(direct.engine.process(0, {}, ordered));
+        equal_state(runtime.engine, direct.engine);
+        PresetSelection applied = PresetSelection::Cancel;
+        CHECK(runtime.engine.selected_preset(Manual::Upper, applied));
+        CHECK(applied == (fixed_last ? PresetSelection::CSharp : PresetSelection::BankB));
+    }
+    const auto manual_owners = runtime.manuals;
+    const auto pedal_owners = runtime.pedals;
+    const auto before = state(runtime.engine);
+    for (const auto manual : {Manual::Upper, Manual::Lower}) {
+        for (unsigned selection = 0; selection <= 11; ++selection) {
+            const Event event{0, EventType::SelectPreset, manual, 0,
+                              static_cast<double>(selection)};
+            const std::array<Input, 1> input{event};
+            accepted(runtime, 0, {}, input, 1);
+            CHECK(direct.engine.process(0, {}, std::span<const Event>{&event, 1}));
+            equal_state(runtime.engine, direct.engine);
+            CHECK(runtime.manuals == manual_owners && runtime.pedals == pedal_owners);
+            CHECK(state(runtime.engine).phase_bits == before.phase_bits);
+            CHECK(runtime.engine.frame_clock() == before.frame);
+            CHECK(runtime.engine.percussion_diagnostics().readiness == before.percussion.readiness);
+            PresetSelection applied = PresetSelection::Cancel;
+            CHECK(runtime.engine.selected_preset(manual, applied));
+            CHECK(static_cast<unsigned>(applied) == selection);
+        }
+    }
+    const std::array<Input, 1> negative_zero{
+        Event{0, EventType::SelectPreset, Manual::Upper, 0, -0.0}};
+    accepted(runtime, 0, {}, negative_zero, 1);
+    CHECK(!runtime.engine.controls_snapshot().route_enabled[0]);
+
+    const std::array<Event, 11> invalid{{
+        {0, EventType::SelectPreset, static_cast<Manual>(2), 0, 1.0},
+        {0, EventType::SelectPreset, static_cast<Manual>(255), 0, 1.0},
+        {0, EventType::SelectPreset, Manual::Upper, 1, 1.0},
+        {0, EventType::SelectPreset, Manual::Lower, 255, 1.0},
+        {0, EventType::SelectPreset, Manual::Upper, 0, -1.0},
+        {0, EventType::SelectPreset, Manual::Lower, 0, 12.0},
+        {0, EventType::SelectPreset, Manual::Upper, 0, 0.5},
+        {0, EventType::SelectPreset, Manual::Lower, 0, 11.5},
+        {0, EventType::SelectPreset, Manual::Upper, 0, std::numeric_limits<double>::quiet_NaN()},
+        {0, EventType::SelectPreset, Manual::Lower, 0, std::numeric_limits<double>::infinity()},
+        {0, EventType::SelectPreset, Manual::Upper, 0, -std::numeric_limits<double>::infinity()}}};
+    for (const auto event : invalid) {
+        const std::array<Input, 4> input{
+            manual_on(0, 0, 1, 64, 104), pedal_on(0, 1, 0, 12, 105),
+            Event{0, EventType::SelectPreset, Manual::Upper, 0, 6.0}, event};
+        rejected(runtime, 0, input, Status::InvalidEvent);
+        rejected(runtime, 64, input, Status::InvalidEvent);
+    }
+}
+
 void test_all_physical_notes() {
     auto runtime = prepared(96000.0, false);
     auto direct = prepared(96000.0, false);
@@ -467,6 +573,7 @@ void test_capacity_and_scoped_panics() {
 int main() {
     test_actual_engine_and_partition();
     test_flush_disconnect_and_route_retention();
+    test_preset_controls_and_mixed_ties();
     test_all_physical_notes();
     test_rejections_and_admission_order();
     test_capacity_and_scoped_panics();

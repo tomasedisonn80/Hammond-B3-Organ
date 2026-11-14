@@ -585,7 +585,17 @@ void write_controls(std::ostream& output, const hammond::ControlSnapshot& contro
     output << ",\"lower_b\":"; write_numbers(output, controls.drawbars[1][1]);
     output << ",\"selected_banks\":[" << static_cast<unsigned int>(controls.selected_banks[0])
         << ',' << static_cast<unsigned int>(controls.selected_banks[1])
-        << "],\"route_enabled\":[" << controls.route_enabled[0] << ',' << controls.route_enabled[1]
+        << "],\"fixed_registrations\":[" << static_cast<unsigned int>(controls.fixed_registrations[0])
+        << ',' << static_cast<unsigned int>(controls.fixed_registrations[1])
+        << "],\"preset_selections\":[";
+    for (std::size_t manual = 0; manual < hammond::kManualCount; ++manual) {
+        if (manual != 0) output << ',';
+        hammond::PresetSelection selection{};
+        if (hammond::control_preset_selection(controls, static_cast<hammond::Manual>(manual), selection)) {
+            output << static_cast<unsigned int>(selection);
+        } else output << "null";
+    }
+    output << "],\"route_enabled\":[" << controls.route_enabled[0] << ',' << controls.route_enabled[1]
         << "],\"pedal_drawbars\":";
     write_numbers(output, controls.pedal_drawbars);
     output << ",\"expression\":" << controls.expression << ",\"percussion\":{\"enabled\":"
@@ -645,7 +655,7 @@ void write_distribution(std::ostream& output, const Distribution& values, double
     output.imbue(std::locale::classic());
     output << std::setprecision(std::numeric_limits<double>::max_digits10) << std::boolalpha;
     const double period_ns = static_cast<double>(options.buffer_frames) * 1.0e9 / options.sample_rate;
-    output << "{\"schema\":\"hammond-standalone-benchmark-v1\",\"status\":\"ok\","
+    output << "{\"schema\":\"hammond-standalone-benchmark-v2\",\"status\":\"ok\","
         "\"scope\":\"offline observed wall-clock intervals around actual Session::render\","
         "\"workload\":";
     write_string(output, options.workload);

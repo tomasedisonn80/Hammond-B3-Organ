@@ -29,6 +29,8 @@ namespace {
         return valid_manual(id.manual) && is_valid_drawbar_bank(id.bank) && id.index == 0;
     case UiControlKind::CancelManual:
         return valid_manual(id.manual) && id.bank == DrawbarBank::A && id.index == 0;
+    case UiControlKind::PresetKey:
+        return valid_manual(id.manual) && id.bank == DrawbarBank::A && id.index < kPresetSelectionCount;
     case UiControlKind::ManualDrawbar:
         return valid_manual(id.manual) && is_valid_drawbar_bank(id.bank) && id.index < kDrawbarCount;
     case UiControlKind::ManualKey:
@@ -139,6 +141,10 @@ void focus_control(UiViewState& view, UiControlId id) noexcept {
         valid = candidate.select_bank(event.manual,
             event.value == 0.0 ? DrawbarBank::A : DrawbarBank::B);
         break;
+    case EventType::SelectPreset:
+        valid = candidate.select_preset(event.manual,
+            static_cast<PresetSelection>(static_cast<std::uint8_t>(event.value)));
+        break;
     case EventType::Expression:
         valid = candidate.set_expression(event.value);
         break;
@@ -177,6 +183,12 @@ void focus_control(UiViewState& view, UiControlId id) noexcept {
     case UiControlKind::SoundingBank:
         result = static_cast<double>(controls.selected_banks[manual_index(id.manual)]);
         return true;
+    case UiControlKind::PresetKey: {
+        PresetSelection selection{};
+        if (!control_preset_selection(controls, id.manual, selection)) return false;
+        result = static_cast<double>(selection);
+        return true;
+    }
     case UiControlKind::Percussion:
         switch (id.index) {
         case 0: result = controls.percussion.enabled ? 1.0 : 0.0; break;
@@ -257,6 +269,59 @@ void add_button(UiLayout& layout, UiControlId id, UiRect bounds) noexcept {
         id, bounds, {bounds.x + 4.0F, bounds.y + 4.0F, bounds.width - 8.0F, bounds.height - 8.0F}, {}, {}};
 }
 
+void add_preset_keys(UiLayout& layout, Manual manual, UiRect panel) noexcept {
+    constexpr float natural_count = 7.0F;
+    const float natural_width = panel.width / natural_count;
+    std::size_t natural = 0;
+    for (std::size_t index = 0; index < kPresetSelectionCount; ++index) {
+        UiRect bounds;
+        if (accidental(index)) {
+            bounds = {panel.x + static_cast<float>(natural) * natural_width - 0.30F * natural_width,
+                      panel.y, 0.60F * natural_width, 0.62F * panel.height};
+        } else {
+            const float left = panel.x + panel.width * static_cast<float>(natural) / natural_count;
+            const float right = panel.x + panel.width * static_cast<float>(natural + 1) / natural_count;
+            bounds = {left, panel.y, right - left, panel.height};
+            ++natural;
+        }
+        layout.controls[layout.control_count++] = {
+            {UiControlKind::PresetKey, manual, DrawbarBank::A, static_cast<std::uint8_t>(index)},
+            bounds, {bounds.x + 1.0F, bounds.y + bounds.height - 13.0F,
+                     bounds.width - 2.0F, 11.0F}, {}, {}};
+    }
+}
+
+[[nodiscard]] bool valid_layout(const UiLayout& layout) noexcept {
+    constexpr std::size_t expected_controls =
+        6 + kManualCount * (2 + kPresetSelectionCount + kDrawbarCount) +
+        4 + 1 + kPedalDrawbarCount + 3 + 2;
+    static_assert(expected_controls == kUiMaxControls);
+    if (layout.control_count != expected_controls) return false;
+    const auto visible = [&layout](UiRect bounds) noexcept {
+        return std::isfinite(bounds.x) && std::isfinite(bounds.y) &&
+               std::isfinite(bounds.width) && std::isfinite(bounds.height) &&
+               bounds.x >= 0.0F && bounds.y >= 0.0F &&
+               bounds.width > 0.0F && bounds.height > 0.0F &&
+               bounds.x + bounds.width <= layout.width &&
+               bounds.y + bounds.height <= layout.height;
+    };
+    for (const auto& control : layout.controls) {
+        if (!valid_control(control.id) || !visible(control.bounds) ||
+            !visible(control.label_bounds)) return false;
+    }
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        if (!visible(layout.manual_rail_panels[manual]) ||
+            !visible(layout.preset_key_panels[manual])) return false;
+        for (const auto& key : layout.manual_keys[manual]) {
+            if (!visible(key.bounds)) return false;
+        }
+    }
+    for (const auto& key : layout.pedal_keys) {
+        if (!visible(key.bounds)) return false;
+    }
+    return true;
+}
+
 void move_tab_focus(UiViewState& view, const UiLayout& layout, bool backwards) noexcept {
     const std::size_t count = layout.control_count + kManualCount + 1;
     std::array<UiControlId, kUiMaxControls + kManualCount + 1> order{};
@@ -324,13 +389,16 @@ bool make_ui_layout(float width, float height,
     layout.registration_panels[1] = {margin + registration_width + gap, rack_top, registration_width, rack_height};
     layout.keyboard_toolbar = {margin, rack_top + rack_height + gap, player_width, toolbar_height};
     const float manual_top = layout.keyboard_toolbar.y + layout.keyboard_toolbar.height + gap;
-    const float rail_width = layout.bank_controls_in_cheeks ? std::clamp(player_width * 0.15F, 112.0F, 156.0F) : 0.0F;
-    const float keyboard_x = layout.bank_controls_in_cheeks ? margin + rail_width + gap : margin;
-    const float keyboard_width = layout.bank_controls_in_cheeks ? player_width - rail_width - gap : player_width;
+    const float rail_width = std::clamp(player_width * 0.15F, 156.0F, 168.0F);
+    const float keyboard_x = margin + rail_width + gap;
+    const float keyboard_width = player_width - rail_width - gap;
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         const float y = manual_top + static_cast<float>(manual) * (manual_height + gap);
-        if (layout.bank_controls_in_cheeks) layout.manual_rail_panels[manual] = {margin, y, rail_width, manual_height};
+        layout.manual_rail_panels[manual] = {margin, y, rail_width, manual_height};
         layout.manual_panels[manual] = {keyboard_x, y, keyboard_width, manual_height};
+        layout.preset_key_panels[manual] = {
+            margin + 8.0F, y + (dense ? 22.0F : 54.0F),
+            rail_width - 16.0F, manual_height - (dense ? 30.0F : 62.0F)};
     }
     layout.pedal_panel = {margin, manual_top + 2.0F * (manual_height + gap), player_width, pedal_height};
     layout.footer = {margin, layout.pedal_panel.y + pedal_height + gap, content_width, footer_height};
@@ -370,27 +438,24 @@ bool make_ui_layout(float width, float height,
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         const auto identity = static_cast<Manual>(manual);
         const auto& panel = layout.registration_panels[manual];
-        const std::array<UiControlId, 5> buttons{{
+        const std::array<UiControlId, 2> buttons{{
             {UiControlKind::EditBank, identity, DrawbarBank::A},
-            {UiControlKind::EditBank, identity, DrawbarBank::B},
-            {UiControlKind::SoundingBank, identity, DrawbarBank::A},
-            {UiControlKind::SoundingBank, identity, DrawbarBank::B},
-            {UiControlKind::CancelManual, identity}}};
+            {UiControlKind::EditBank, identity, DrawbarBank::B}}};
         for (std::size_t index = 0; index < buttons.size(); ++index) {
             if (layout.bank_controls_in_cheeks) {
                 const auto& rail = layout.manual_rail_panels[manual];
                 const float button_width = (rail.width - 20.0F) / 2.0F;
                 add_button(layout, buttons[index],
-                    {rail.x + 8.0F + static_cast<float>(index % 2) * (button_width + 4.0F),
-                     rail.y + 22.0F + static_cast<float>(index / 2) * 28.0F,
-                     index == 4 ? rail.width - 16.0F : button_width, 24.0F});
+                    {rail.x + 8.0F + static_cast<float>(index) * (button_width + 4.0F),
+                     rail.y + 22.0F, button_width, 24.0F});
             } else {
-                const float button_width = (panel.width - 40.0F) / 5.0F;
+                const float button_width = std::min(76.0F, (panel.width - 28.0F) / 2.0F);
                 add_button(layout, buttons[index],
                     {panel.x + 12.0F + static_cast<float>(index) * (button_width + 4.0F),
                      panel.y + 28.0F, button_width, 26.0F});
             }
         }
+        add_preset_keys(layout, identity, layout.preset_key_panels[manual]);
         const float column_width = (panel.width - 24.0F) / static_cast<float>(kDrawbarCount);
         const float label_top = dense ? 60.0F : 32.0F;
         for (std::size_t index = 0; index < kDrawbarCount; ++index) {
@@ -451,12 +516,23 @@ bool make_ui_layout(float width, float height,
     make_keys(layout.manual_keys[0], layout.manual_panels[0], UiTarget::Upper, 36);
     make_keys(layout.manual_keys[1], layout.manual_panels[1], UiTarget::Lower, 36);
     make_keys(layout.pedal_keys, layout.pedal_panel, UiTarget::Pedals, 15);
+    if (!valid_layout(layout)) return false;
     destination = layout;
     return true;
 }
 
 UiControlId ui_hit_test(const UiLayout& layout, UiPoint point) noexcept {
     if (!std::isfinite(point.x) || !std::isfinite(point.y)) return {};
+    const auto count = std::min(layout.control_count, layout.controls.size());
+    // Preset semantic order is pitch order, so explicitly give short ivory
+    // accidentals precedence over the overlapping dark natural rectangles.
+    for (const bool sharp : {true, false}) {
+        for (std::size_t index = 0; index < count; ++index) {
+            const auto& control = layout.controls[index];
+            if (control.id.kind == UiControlKind::PresetKey &&
+                accidental(control.id.index) == sharp && control.bounds.contains(point)) return control.id;
+        }
+    }
     // Accidentals have visual and hit precedence over their underlying naturals.
     for (const bool black : {true, false}) {
         for (const auto& manual : layout.manual_keys) {
@@ -468,9 +544,9 @@ UiControlId ui_hit_test(const UiLayout& layout, UiPoint point) noexcept {
             if (key.accidental == black && key.bounds.contains(point)) return note_control(key.note);
         }
     }
-    const auto count = std::min(layout.control_count, layout.controls.size());
     for (std::size_t index = 0; index < count; ++index) {
-        if (layout.controls[index].bounds.contains(point)) return layout.controls[index].id;
+        if (layout.controls[index].id.kind != UiControlKind::PresetKey &&
+            layout.controls[index].bounds.contains(point)) return layout.controls[index].id;
     }
     return {};
 }
@@ -484,6 +560,7 @@ bool ui_parameter_id(UiControlId control, std::uint32_t& destination) noexcept {
                     16U * static_cast<std::uint32_t>(control.bank) + control.index;
         break;
     case UiControlKind::SoundingBank: parameter = 8208U + static_cast<std::uint32_t>(control.manual); break;
+    case UiControlKind::PresetKey: parameter = 20480U + static_cast<std::uint32_t>(control.manual); break;
     case UiControlKind::Expression: parameter = 8192U; break;
     case UiControlKind::Percussion: parameter = 12288U + control.index; break;
     case UiControlKind::PedalDrawbar: parameter = 16384U + control.index; break;
@@ -525,17 +602,20 @@ UiActions UiModel::activate(UiControlId control) noexcept {
         return {};
     }
     case UiControlKind::SoundingBank:
+    case UiControlKind::PresetKey:
     case UiControlKind::Percussion: {
         std::uint32_t parameter = 0;
         double plain = 0.0;
         if (!ui_parameter_id(control, parameter) || !control_plain(view_.controls, control, plain)) return {};
-        plain = control.kind == UiControlKind::SoundingBank ?
-            static_cast<double>(control.bank) : (plain == 0.0 ? 1.0 : 0.0);
+        if (control.kind == UiControlKind::PresetKey) plain = control.index;
+        else if (control.kind == UiControlKind::SoundingBank) plain = static_cast<double>(control.bank);
+        else plain = plain == 0.0 ? 1.0 : 0.0;
         double normalized = 0.0;
         ControlSnapshot candidate;
         if (!plain_to_normalized(parameter, plain, normalized) ||
             !apply_parameter(view_.controls, parameter, normalized, candidate)) return {};
-        return publish_controls(view_, saved_controls_, pending_control_sequence_, candidate);
+        return publish_controls(view_, saved_controls_, pending_control_sequence_, candidate,
+                                control.kind == UiControlKind::PresetKey);
     }
     case UiControlKind::CancelManual: {
         ControlState candidate;
@@ -611,6 +691,22 @@ UiActions UiModel::key(const UiKeyInput& input) noexcept {
     default: break;
     }
     if (!navigation_key(input.key) || !valid_control(view_.focus)) return {};
+    if (view_.focus.kind == UiControlKind::PresetKey) {
+        auto focus = view_.focus;
+        int next = focus.index;
+        switch (input.key) {
+        case UiKey::Left: --next; break;
+        case UiKey::Right: ++next; break;
+        case UiKey::Up: focus.manual = Manual::Upper; break;
+        case UiKey::Down: focus.manual = Manual::Lower; break;
+        case UiKey::Home: next = 0; break;
+        case UiKey::End: next = static_cast<int>(kPresetSelectionCount) - 1; break;
+        default: break;
+        }
+        focus.index = static_cast<std::uint8_t>(std::clamp(next, 0, static_cast<int>(kPresetSelectionCount) - 1));
+        focus_control(view_, focus);
+        return {};
+    }
     if (is_playing_control(view_.focus)) {
         const int last = view_.focus.kind == UiControlKind::ManualKey ?
             static_cast<int>(kManualKeyCount) - 1 : static_cast<int>(kPedalCount) - 1;

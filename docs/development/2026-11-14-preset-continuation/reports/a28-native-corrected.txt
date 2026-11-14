@@ -1,0 +1,77 @@
+UpdateCTestConfiguration  from :/tmp/hammond-preset-a28/build/DartConfiguration.tcl
+Parse Config file:/tmp/hammond-preset-a28/build/DartConfiguration.tcl
+Test project /tmp/hammond-preset-a28/build
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 129
+    Start 129: test_standalone_app
+
+129: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_app.py"
+129: Working Directory: /tmp/hammond-preset-a28/build/apps/standalone
+129: Test timeout computed to be: 60
+test 133
+    Start 133: test_standalone_replay_boundaries
+
+133: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py"
+133: Working Directory: /tmp/hammond-preset-a28/build/apps/standalone
+133: Test timeout computed to be: 60
+129: Native executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+129: test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+133: Replay boundary executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+129: ok
+129: test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+129: test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+129: test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+129: test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+133: test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+129: test_late_malformed_startup_preserves_file_and_audition_controls (__main__.NativeAppAcceptance.test_late_malformed_startup_preserves_file_and_audition_controls) ... ok
+129: test_list_audio_needs_no_video_or_file_writes (__main__.NativeAppAcceptance.test_list_audio_needs_no_video_or_file_writes) ... ok
+129: test_missing_and_empty_values_reject_before_output (__main__.NativeAppAcceptance.test_missing_and_empty_values_reject_before_output) ... ok
+133: test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+133: test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+133: test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+129: test_no_audio_fails_bounded_with_zero_callback_claims (__main__.NativeAppAcceptance.test_no_audio_fails_bounded_with_zero_callback_claims) ... ok
+129: test_noninteger_and_overflow_values_reject_before_output (__main__.NativeAppAcceptance.test_noninteger_and_overflow_values_reject_before_output) ... ok
+129: test_output_directory_leaves_reject_before_writes (__main__.NativeAppAcceptance.test_output_directory_leaves_reject_before_writes) ... ok
+129: test_output_symlinks_cannot_create_or_overwrite_musical_state (__main__.NativeAppAcceptance.test_output_symlinks_cannot_create_or_overwrite_musical_state) ... ok
+133: test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+133: test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ok
+133: test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) ... ok
+133: test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner) ... ok
+133: test_zero_and_maximum_nonmutating_events_have_no_smoke_note (__main__.ReplayBoundaryAcceptance.test_zero_and_maximum_nonmutating_events_have_no_smoke_note) ... ok
+133: Actual replay boundary subprocesses: 29; preserved setup rejections: 19
+133: 
+133: ----------------------------------------------------------------------
+133: Ran 9 tests in 4.974s
+133: 
+133: OK
+1/2 Test #133: test_standalone_replay_boundaries ...   Passed    5.16 sec
+129: test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) ... ok
+129: test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) ... ok
+129: test_screenshot_failure_joins_audio_and_preserves_musical_file (__main__.NativeAppAcceptance.test_screenshot_failure_joins_audio_and_preserves_musical_file) ... ok
+129: test_state_symlinks_cannot_be_filled_by_outputs_or_loaded (__main__.NativeAppAcceptance.test_state_symlinks_cannot_be_filled_by_outputs_or_loaded) ... ok
+129: test_unknown_and_combined_options_reject_before_output (__main__.NativeAppAcceptance.test_unknown_and_combined_options_reject_before_output) ... ok
+129: test_unsupported_numeric_values_reject_before_output (__main__.NativeAppAcceptance.test_unsupported_numeric_values_reject_before_output) ... ok
+129: Actual native application subprocesses: 164
+129: 
+129: ----------------------------------------------------------------------
+129: Ran 18 tests in 8.870s
+129: 
+129: OK
+2/2 Test #129: test_standalone_app .................   Passed    9.03 sec
+
+The following tests passed:
+	test_standalone_replay_boundaries
+	test_standalone_app
+
+100% tests passed out of 2
+
+Label Time Summary:
+native        =  14.20 sec*proc (2 tests)
+standalone    =  14.20 sec*proc (2 tests)
+
+Total Test time (real) =   9.04 sec

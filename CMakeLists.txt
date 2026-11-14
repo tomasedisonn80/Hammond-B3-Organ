@@ -118,9 +118,10 @@ add_custom_command(
     VERBATIM)
 add_custom_target(hammond_profile ALL DEPENDS "${HAMMOND_COMPILED_PROFILE}")
 
-# Admit the independently transcribed chapel matrix as documentary data only.
-# Nothing in Engine or saved-state identity consumes this catalog implicitly.
+# Preserve the documentary catalog and compile its separately frozen native
+# fixed-registration table through the same strict three-input admission.
 include(cmake/CompileChapelCatalog.cmake)
+include(cmake/CompileFixedRegistrations.cmake)
 
 file(GLOB HAMMOND_RENDER_SOURCE CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/tools/render.cpp")
 if(HAMMOND_RENDER_SOURCE)
@@ -248,6 +249,13 @@ if(BUILD_TESTING)
         set_property(TEST python_test_parameter_bridge APPEND PROPERTY ENVIRONMENT
             "HAMMOND_PARAMETER_INFO_EXECUTABLE=$<TARGET_FILE:hammond_parameter_info>")
         list(APPEND HAMMOND_TEST_TARGETS hammond_parameter_info)
+    endif()
+
+    if(TEST python_test_preset_parameter_oracle)
+        set_property(TEST python_test_preset_parameter_oracle APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_PARAMETER_INFO_EXECUTABLE=$<TARGET_FILE:hammond_parameter_info>"
+            "HAMMOND_PRESET_PARAMETER_BOUNDARIES_EXECUTABLE=$<TARGET_FILE:test_preset_parameter_boundaries>")
+        list(APPEND HAMMOND_TEST_TARGETS hammond_parameter_info test_preset_parameter_boundaries)
     endif()
 
     if(TEST python_test_console_benchmark)

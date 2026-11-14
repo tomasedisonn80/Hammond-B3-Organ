@@ -1,4 +1,5 @@
 #include "NativeHarness.h"
+#include "NativePresetOracle.h"
 
 #include "hammond/ConsoleModel.h"
 #include "hammond/Engine.h"
@@ -103,8 +104,8 @@ void factory_and_parameters(const std::string& bundle) {
     check(unexpected == nullptr, "failed factory creation did not clear output");
 
     const auto descriptors = parameter_descriptors();
-    check(descriptors.size() == 45 && plugin.controller->getParameterCount() == 45,
-          "native controller does not export exactly 45 controls");
+    check(descriptors.size() == 47 && plugin.controller->getParameterCount() == 47,
+          "native controller does not export exactly 47 controls");
     for (std::size_t index = 0; index < descriptors.size(); ++index) {
         const auto& expected = descriptors[index];
         sv::ParameterInfo info{};
@@ -130,7 +131,8 @@ void factory_and_parameters(const std::string& bundle) {
         if (steps != 0) {
             for (std::uint32_t position = 0; position <= steps; ++position) {
                 const double plain = static_cast<double>(position);
-                const double normalized = plain / static_cast<double>(steps);
+                const double normalized = steps == 11 ? preset_oracle::canonical[position]
+                    : plain / static_cast<double>(steps);
                 check(plugin.controller->plainParamToNormalized(expected.id, plain) == normalized,
                       "native plain-to-normalized conversion changed");
                 check(plugin.controller->normalizedParamToPlain(expected.id, normalized) == plain,
@@ -146,8 +148,8 @@ void factory_and_parameters(const std::string& bundle) {
                 ++counts.conversions;
             }
             for (std::uint32_t lower = 0; lower < steps; ++lower) {
-                const double boundary = (static_cast<double>(lower) + 0.5) /
-                    static_cast<double>(steps);
+                const double boundary = steps == 11 ? preset_oracle::thresholds[lower]
+                    : (static_cast<double>(lower) + 0.5) / static_cast<double>(steps);
                 for (const auto value : {std::nextafter(boundary, 0.0), boundary,
                                          std::nextafter(boundary, 1.0)}) {
                     const double plain = value < boundary ? static_cast<double>(lower)
@@ -176,7 +178,7 @@ void factory_and_parameters(const std::string& bundle) {
     sv::ParameterInfo sentinel{};
     sentinel.id = 0xabcdefU;
     reject(plugin.controller->getParameterInfo(-1, sentinel), "negative parameter index accepted");
-    reject(plugin.controller->getParameterInfo(45, sentinel), "out-of-range parameter index accepted");
+    reject(plugin.controller->getParameterInfo(47, sentinel), "out-of-range parameter index accepted");
     check(sentinel.id == 0xabcdefU, "failed parameter query changed destination");
     reject(plugin.controller->setParamNormalized(0xffffffffU, 0.5), "unknown parameter accepted");
 }
@@ -292,6 +294,22 @@ std::string old_state(unsigned version) {
     return bytes;
 }
 
+std::string expected_state4(unsigned version) {
+    std::string bytes =
+        "B3CONTROLS4\nregistration_catalog atlas-chapel-nominal-v1 sha256 "
+        "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n"
+        "expression 0.375\n";
+    bytes += version == 1 ? "percussion enabled 0 harmonic second volume normal decay slow\n" :
+                            "percussion enabled 1 harmonic third volume soft decay fast\n";
+    bytes += version < 3 ? "pedal drawbars 0 0\n" : "pedal drawbars 2 7\n";
+    bytes +=
+        "manual upper selected B fixed_registration none route_enabled 0\n"
+        "bank A 8 0 0 2 0 0 0 0 0\nbank B 0 1 2 3 4 5 6 7 8\n"
+        "manual lower selected A fixed_registration none route_enabled 1\n"
+        "bank A 8 7 6 5 4 3 2 1 0\nbank B 0 0 0 0 0 4 0 0 0\nend\n";
+    return bytes;
+}
+
 void native_state(const std::string& bundle) {
     NativePlugin plugin(bundle);
     ++counts.instances;
@@ -308,7 +326,8 @@ void native_state(const std::string& bundle) {
         MemoryStream saved;
         saved.write_chunk = 13;
         require_ok(plugin.component->getState(&saved), "pending native state save");
-        check(saved.bytes.starts_with("B3CONTROLS3\n"), "native writer emitted a historical grammar");
+        check(saved.bytes.starts_with("B3CONTROLS4\n"), "native writer emitted a historical grammar");
+        check(saved.bytes == expected_state4(version), "legacy state did not save exact independent state4 bytes");
         check(parse_snapshot(saved.bytes) == expected, "pending state/migration/route bits changed");
         check(input.read_calls > 1 && saved.write_calls > 1, "partial native stream fixture was vacuous");
         ++counts.state_round_trips;
@@ -325,11 +344,48 @@ void native_state(const std::string& bundle) {
         check(parse_snapshot(committed) == expected, "zero-frame acknowledgement changed saved controls");
         check(parse_snapshot(committed).route_enabled == expected.route_enabled,
               "absent parameter queues reconnected a cancelled route");
+        check(committed == expected_state4(version), "acknowledged migration changed canonical bytes");
         ++counts.state_round_trips;
         reject(plugin.load_state("B3CONTROLS99\nend\n"), "future state grammar accepted");
         std::string after_invalid;
         require_ok(plugin.save_state(after_invalid), "save after rejected state");
         check(after_invalid == committed, "invalid native state replaced controls");
+    }
+    // Exercise the native pending and decoded publication paths, including raw
+    // fixed memory behind Cancel, for every valid fixed/bank/route combination.
+    for (unsigned upper = 0; upper < 10; ++upper) {
+        for (unsigned lower = 0; lower < 10; ++lower) {
+            for (unsigned mask = 0; mask < 16; ++mask) {
+                auto state = expected_state(3);
+                state.fixed_registrations = {static_cast<FixedRegistration>(upper),
+                                             static_cast<FixedRegistration>(lower)};
+                state.selected_banks = {(mask & 1U) != 0 ? DrawbarBank::B : DrawbarBank::A,
+                                       (mask & 2U) != 0 ? DrawbarBank::B : DrawbarBank::A};
+                state.route_enabled = {(mask & 4U) != 0, (mask & 8U) != 0};
+                const auto canonical = snapshot_text(state);
+                require_ok(plugin.load_state(canonical), "native state4 fixed-mode load");
+                std::string pending;
+                require_ok(plugin.save_state(pending), "native state4 pending save");
+                check(pending == canonical, "pending fixed memory changed");
+                ++counts.state_round_trips;
+                accepted(plugin, block);
+                std::string acknowledged;
+                require_ok(plugin.save_state(acknowledged), "native state4 acknowledged save");
+                check(acknowledged == canonical, "decoded fixed publication changed");
+                ++counts.state_round_trips;
+                MemoryStream controller_input(canonical);
+                require_ok(plugin.controller->setComponentState(&controller_input), "native selector restore");
+                for (std::size_t manual = 0; manual < 2; ++manual) {
+                    const auto fixed = static_cast<std::size_t>(state.fixed_registrations[manual]);
+                    const auto selection = !state.route_enabled[manual] ? 0U : fixed != 0 ? fixed :
+                        state.selected_banks[manual] == DrawbarBank::A ? 10U : 11U;
+                    check(plugin.controller->getParamNormalized(manual == 0 ? 0x5000U : 0x5001U) ==
+                              preset_oracle::canonical[selection], "effective native selector restore changed");
+                    check(plugin.controller->getParamNormalized(manual == 0 ? 0x2010U : 0x2011U) ==
+                              static_cast<double>(state.selected_banks[manual]), "retained native bank changed");
+                }
+            }
+        }
     }
     for (unsigned index = 0; index < 4; ++index) {
         auto state = expected_state(3);

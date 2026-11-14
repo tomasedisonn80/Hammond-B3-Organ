@@ -1,0 +1,60 @@
+UpdateCTestConfiguration  from :/tmp/hammond-preset-a31/build/DartConfiguration.tcl
+Parse Config file:/tmp/hammond-preset-a31/build/DartConfiguration.tcl
+Test project /tmp/hammond-preset-a31/build
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 39
+    Start  39: test_realtime_console
+
+39: Test command: /tmp/hammond-preset-a31/build/test_realtime_console
+39: Working Directory: /tmp/hammond-preset-a31/build
+39: Test timeout computed to be: 1500
+39: Enabled Engine processing: 63 accepted, 18 rejected; 218193 rendered frames, 15042 input events, 0 physical events; zero C++ allocations/deallocations.
+39: Standalone ownership translation: 3 accepted, 3 rejected; 0 rendered frames, 1312 input events, 1268 physical events; zero C++ allocations/deallocations.
+39: Owned-input processing: 24 accepted, 21 rejected; 204636 rendered frames, 7011 input events, 6879 physical events; zero C++ allocations/deallocations.
+39: Parameter APIs (rate independent): 142 accepted, 7 rejected; 0 rendered frames, 0 input events, 0 physical events; zero C++ allocations/deallocations.
+39: Stopped sample-rate lifecycle: 6 accepted, 8 rejected; 0 rendered frames, 0 input events, 0 physical events; zero C++ allocations/deallocations.
+39: Calibration separately observed 12 allocations and 12 deallocations.
+1/2 Test  #39: test_realtime_console ............   Passed    0.93 sec
+test 109
+    Start 109: test_standalone_install
+
+109: Test command: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 "/tmp/hammond-preset-a31/source/apps/standalone/native_tests/test_standalone_install.py"
+109: Working Directory: /tmp/hammond-preset-a31/build
+109: Environment variables: 
+109:  PYTHONDONTWRITEBYTECODE=1
+109:  HAMMOND_TEST_CMAKE=/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake
+109:  HAMMOND_TEST_BUILD_DIR=/tmp/hammond-preset-a31/build
+109:  HAMMOND_TEST_CONFIG=Release
+109:  HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a31/build/apps/standalone/hammond_standalone
+109:  HAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2
+109:  HAMMOND_INSTALL_BINDIR=bin
+109:  HAMMOND_INSTALL_DATADIR=share
+109:  HAMMOND_TEST_ENABLE_MIDI=1
+109:  HAMMOND_STANDALONE_CAPABILITIES=/tmp/hammond-preset-a31/build/generated/standalone-capabilities.json
+109:  HAMMOND_RTMIDI_PREPARED_ROOT=/tmp/hammond-preset-a31/build/apps/standalone/hammond_rtmidi-prepared
+109:  HAMMOND_RTMIDI_BACKEND=ALSA
+109: Test timeout computed to be: 90
+109: ........
+109: ----------------------------------------------------------------------
+109: Ran 8 tests in 6.541s
+109: 
+109: OK
+109: {"binary_sha256": "8ced1de1771b98c938a84149055437b3807c393c7ecd8048d335979a3d3fc89a", "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6", "midi_backend": "ALSA", "midi_enabled": true, "payload_files": 17, "relocated_smoke": {"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 57, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 29184, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "errors": {"count": 0, "last": ""}, "midi": {"active_after_shutdown": false, "active_before_shutdown": false, "arrival_time_is_sample_time": false, "arrival_time_source": "none", "arrival_time_unit": "steady_clock_nanoseconds", "backend": "ALSA", "backend_available": true, "channels": {"lower": 2, "pedals": 3, "upper": 1}, "decoder": {"actions": 0, "epochs": 0, "inactive": 0, "malformed": 0, "out_of_range": 0, "packets": 0, "timestamp_regressions": 0, "unmapped_channels": 0, "unsupported": 0}, "device": {"admission_failures": 0, "backend_errors": 0, "callback_contentions": 0, "callback_messages": 0, "close_errors": 0, "disconnects": 0, "filtered_messages": 0, "forwarded_messages": 0, "last_arrival_ns": 0}, "diagnostics_stable_after_shutdown": true, "drain_budget": 32, "fault_retirements": 0, "generation": 0, "inbox": {"accepted_packets": 0, "capacity": 256, "discarded_packets": 0, "fault_bits": 0, "faulted_packets": 0, "invalid_size_packets": 0, "overflow_events": 0, "pending_packets": 0, "popped_packets": 0, "received_packets": 0, "resets": 0}, "last_submit_status": "ok", "maximum_drained_per_turn": 0, "open_failures": 0, "opened_port_index": 0, "parameter_messages": 0, "port_name": "", "quiescent_after_shutdown": true, "release_batches": 0, "release_commands_accepted": 0, "release_pending": false, "release_sequence": 0, "requested_port": "", "retired_fault_bits": 0, "retirements": 0, "session_recoveries_observed": 0, "shutdown_failed": false, "source": "none", "startup_failed": false, "state_after_shutdown": "closed", "state_before_shutdown": "closed", "status": "No MIDI input selected.", "submit_failures": 0, "timing_policy": "arrival_order_next_callback_boundary"}, "profile": {"authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83", "id": "nominal-unmeasured-v1"}, "runtime": {"drawable_height": 700, "drawable_width": 960, "rendered_images": 20, "renderer": "software", "screenshot_while_held": true, "screenshot_written": true, "sdl_version": "2.32.10", "video_driver": "dummy", "window_height": 700, "window_width": 960}, "schema_version": 3, "session": {"discarded_commands": 1, "fault_flags": 0, "frame_clock": 29184, "held_after_shutdown": false, "last_applied_sequence": 5, "maximum_observed_peak": 0.08340194821357727, "prepared": true, "publication_revision": 120, "queue_overflows": 0, "recovery_count": 0, "rejected_commands": 0, "resolved_sequence": 6, "running_after_shutdown": false, "sample_rate": 48000, "snapshot_available": true}, "smoke": {"completed": true, "duration_ms": 600, "held_observed": true, "note_off_sent": true, "note_on_sent": true, "passed": true, "release_observed": true, "requested": true}, "state_path": "/tmp/hammond standalone install 40fm9uyy/unrelated cwd/absent controls.b3controls", "status": "Proposed audition registration: Upper B 888000000 / Lower B 008000000 / Pedals 80."}, "sdl_license_sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127", "suite": "standalone-install-v2"}
+2/2 Test #109: test_standalone_install ..........   Passed    6.69 sec
+
+The following tests passed:
+	test_realtime_console
+	test_standalone_install
+
+100% tests passed out of 2
+
+Label Time Summary:
+native        =   6.69 sec*proc (1 test)
+standalone    =   6.69 sec*proc (1 test)
+
+Total Test time (real) =   7.63 sec

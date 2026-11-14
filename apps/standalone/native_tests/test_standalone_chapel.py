@@ -49,10 +49,28 @@ def expected_controls(upper: str, lower: str, bank: str, expression: float) -> d
         "manual_drawbars": [[u, zero] if bank == "A" else [zero, u],
                             [l, zero] if bank == "A" else [zero, l]],
         "selected_banks": [0 if bank == "A" else 1] * 2,
+        "fixed_registrations": [0, 0],
+        "preset_selections": [0 if key == "off" else 10 if bank == "A" else 11 for key in (upper, lower)],
         "route_enabled": [upper != "off", lower != "off"],
         "expression": expression, "pedal_drawbars": [0, 0],
         "percussion": {"enabled": False, "harmonic": 0, "volume": 0, "decay": 0},
     }
+
+
+
+def expected_saved_state(upper: str, lower: str, bank: str, expression: str) -> bytes:
+    """Independent state4 grammar; the bank-copy export remains historical v3."""
+    lines = ["B3CONTROLS4", "registration_catalog atlas-chapel-nominal-v1 sha256 "
+             "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf",
+             f"expression {expression}",
+             "percussion enabled 0 harmonic second volume normal decay slow", "pedal drawbars 0 0"]
+    for manual, key, rows in (("upper", upper, ORACLE.UPPER), ("lower", lower, ORACLE.LOWER)):
+        row = rows[ORACLE.KEYS.index(key)] if key != "off" else "000000000"
+        lines.append(f"manual {manual} selected {bank} fixed_registration none route_enabled {int(key != 'off')}")
+        for letter in ("A", "B"):
+            values = row if letter == bank else "000000000"
+            lines.append(f"bank {letter} " + " ".join(values))
+    return ("\n".join([*lines, "end"]) + "\n").encode("ascii")
 
 
 def holds(snapshot: dict) -> tuple:
@@ -175,7 +193,7 @@ class NativeChapelAcceptance(unittest.TestCase):
             data = json.loads(diagnostics.read_text(encoding="utf-8"), object_pairs_hook=unique_object,
                               parse_constant=reject_nonfinite)
             expected = expected_controls(upper, lower, bank, numeric)
-            self.assertEqual(data["schema_version"], 2)
+            self.assertEqual(data["schema_version"], 3)
             assert_no_midi_input(self, data)
             self.assertEqual(data["controls"], expected)
             self.assertEqual(data["errors"], {"count": 0, "last": ""})
@@ -218,7 +236,7 @@ class NativeChapelAcceptance(unittest.TestCase):
             self.assertFalse(data["smoke"]["requested"] or data["smoke"]["note_on_sent"])
             # Ctrl+S traverses actual C++ serialization while a note is held. Its
             # complete canonical bytes must equal the independent grammar fixture.
-            self.assertEqual(state.read_bytes(), canonical)
+            self.assertEqual(state.read_bytes(), expected_saved_state(upper, lower, bank, serialized))
             self.assertEqual(catalog.read_bytes(), self.catalog_bytes)
             self.assertEqual(script.read_text(encoding="ascii"), source)
             self.assertEqual({p.name for p in directory.iterdir()},

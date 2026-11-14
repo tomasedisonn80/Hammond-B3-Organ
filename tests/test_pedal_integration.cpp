@@ -394,18 +394,47 @@ void division_routing_and_percussion(const RuntimeProfile& profile, const CsvRou
     }
 }
 
-std::string old_control_text(const std::string& current, unsigned version) {
-    CHECK(version == 1 || version == 2);
-    std::istringstream input(current);
-    std::string line;
-    CHECK(static_cast<bool>(std::getline(input, line)) && line == "B3CONTROLS3");
-    std::string result = "B3CONTROLS" + std::to_string(version) + '\n';
-    while (std::getline(input, line)) {
-        if (line.starts_with("pedal ") || (version == 1 && line.starts_with("percussion ")))
-            continue;
-        result += line + '\n';
+// Frozen legacy grammars are independent of the current serializer. These are
+// the same controls used by the original live-history migration scenario;
+// removing fields from production state4 would not qualify an old reader.
+constexpr std::string_view kLegacyHistoryManualRecords =
+    "manual upper selected B route_enabled 1\n"
+    "bank A 0 7 0 0 0 0 0 0 0\n"
+    "bank B 0 0 0 0 0 0 0 0 0\n"
+    "manual lower selected B route_enabled 1\n"
+    "bank A 0 0 0 0 0 0 0 0 0\n"
+    "bank B 0 0 0 0 0 0 0 0 0\n"
+    "end\n";
+constexpr std::string_view kHistoryPercussion =
+    "percussion enabled 1 harmonic second volume normal decay slow\n";
+constexpr std::string_view kCurrentHistoryDocument =
+    "B3CONTROLS4\n"
+    "registration_catalog atlas-chapel-nominal-v1 sha256 "
+    "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n"
+    "expression 0.375\n"
+    "percussion enabled 1 harmonic second volume normal decay slow\n"
+    "pedal drawbars 6 2\n"
+    "manual upper selected A fixed_registration C# route_enabled 0\n"
+    "bank A 0 7 0 0 0 0 0 0 0\n"
+    "bank B 0 0 0 0 0 0 0 0 0\n"
+    "manual lower selected B fixed_registration G# route_enabled 1\n"
+    "bank A 0 0 0 0 0 0 0 0 0\n"
+    "bank B 0 0 0 0 0 0 0 0 0\n"
+    "end\n";
+
+std::string legacy_control_text(unsigned version) {
+    CHECK(version >= 1 && version <= 3);
+    if (version == 1) {
+        return std::string("B3CONTROLS1\nexpression 0.375\n") +
+            std::string(kLegacyHistoryManualRecords);
     }
-    return result;
+    if (version == 2) {
+        return std::string("B3CONTROLS2\nexpression 0.375\n") +
+            std::string(kHistoryPercussion) + std::string(kLegacyHistoryManualRecords);
+    }
+    return std::string("B3CONTROLS3\nexpression 0.375\n") +
+        std::string(kHistoryPercussion) + "pedal drawbars 6 2\n" +
+        std::string(kLegacyHistoryManualRecords);
 }
 
 void controls_rates_and_historical_diagnostics(const RuntimeProfile& profile,
@@ -461,35 +490,63 @@ void controls_rates_and_historical_diagnostics(const RuntimeProfile& profile,
         Event{0, EventType::NoteOff, lower, 36, 0}};
     process_ok(moving, 73, {}, lift);
     CHECK(moving.percussion_diagnostics().readiness < 1.0);
-    auto saved = moving.controls_snapshot();
-    saved.expression = 0.375;
-    saved.drawbars[0][0][1] = 7;
+    auto legacy_expected = moving.controls_snapshot();
+    legacy_expected.expression = 0.375;
+    legacy_expected.drawbars[0][0][1] = 7;
+    auto saved = legacy_expected;
+    saved.selected_banks = {hammond::DrawbarBank::A, hammond::DrawbarBank::B};
+    saved.fixed_registrations = {hammond::FixedRegistration::CSharp,
+                                 hammond::FixedRegistration::GSharp};
+    saved.route_enabled = {false, true};
     std::string current, error;
     CHECK(hammond::serialize_controls(saved, current, error));
-    CHECK(current.starts_with("B3CONTROLS3\n"));
-    for (const unsigned version : {3U, 2U, 1U}) {
-        auto destination = saved; // Deliberately starts with nonzero pedals.
-        std::istringstream input(version == 3 ? current : old_control_text(current, version));
+    CHECK(error.empty() && current == kCurrentHistoryDocument);
+    for (const unsigned version : {4U, 3U, 2U, 1U}) {
+        // Every old reader starts with cancelled fixed memory and nonzero pedals.
+        auto destination = saved;
+        std::istringstream input(version == 4 ? current : legacy_control_text(version));
         CHECK(hammond::parse_controls(input, destination, error));
-        CHECK(destination.pedal_drawbars == (version == 3 ? saved.pedal_drawbars :
-                                              hammond::PedalDrawbarPositions{0, 0}));
-        if (version == 1) CHECK(destination.percussion == hammond::PercussionSettings{});
+        CHECK(error.empty());
+        auto expected_controls = version == 4 ? saved : legacy_expected;
+        if (version < 3) expected_controls.pedal_drawbars = {0, 0};
+        if (version == 1) expected_controls.percussion = {};
+        CHECK(destination == expected_controls);
         const auto before = histories(moving);
         CHECK(moving.restore_controls(destination));
         CHECK(histories(moving) == before);
         CHECK(moving.controls_snapshot() == destination);
+        auto selection = hammond::PresetSelection::A;
+        CHECK(moving.selected_preset(upper, selection));
+        CHECK(selection == (version == 4 ? hammond::PresetSelection::Cancel :
+                                            hammond::PresetSelection::BankB));
+        CHECK(moving.selected_preset(lower, selection));
+        CHECK(selection == (version == 4 ? hammond::PresetSelection::GSharp :
+                                            hammond::PresetSelection::BankB));
         CHECK(moving.pedal_down(PedalId{25}));
         CHECK(moving.last_pedal_frame().positions == saved.pedal_drawbars);
     }
+    // Preserve the original version-1 -> upper-B percussion re-enable check.
     const auto before_reenable = histories(moving);
-    CHECK(moving.restore_controls(saved));
+    CHECK(moving.restore_controls(legacy_expected));
     CHECK(histories(moving) == before_reenable);
+    CHECK(moving.percussion_diagnostics().eligible);
     auto twin = moving;
     process_ok(moving, 0); // Empty flush is also a strict history no-op.
     CHECK(histories(moving) == histories(twin));
     std::array<float, 128> actual{}, expected{};
     process_ok(moving, 128, actual);
     process_ok(twin, 128, expected);
+    same_audio(actual, expected);
+
+    const auto before_fixed_restore = histories(moving);
+    CHECK(moving.restore_controls(saved));
+    CHECK(histories(moving) == before_fixed_restore);
+    CHECK(!moving.percussion_diagnostics().eligible);
+    auto fixed_twin = moving;
+    process_ok(moving, 0);
+    CHECK(histories(moving) == histories(fixed_twin));
+    process_ok(moving, 128, actual);
+    process_ok(fixed_twin, 128, expected);
     same_audio(actual, expected);
 
     const auto last = engine.last_pedal_frame();

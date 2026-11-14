@@ -1,0 +1,1094 @@
+{
+  "schema_version": 1,
+  "agent": "/root/w06_a31_integrated_gate",
+  "scope": "First complete combined Release gate; original full run plus two affected corrections, not a final single 143/143 execution.",
+  "source": {
+    "head": "35554c068492fe2b20c1f8a602d8354ae762dc42",
+    "head_tree": "6a6881eeee1943665694e988208b2d6710731919",
+    "source": "/tmp/hammond-preset-a31/source",
+    "files": 1287,
+    "manifest_sha256": "1f805c9257e2843c8ac1345938ff28603e2780e93831f0e2c02c907cc420ac8b",
+    "copy_verified_against_live": true
+  },
+  "corrected_source_manifest_sha256": "db1001d3ab1b506c205aed06a347d2279d6aea0afa6f72b59949cf13e57eb8e5",
+  "source_corrections": [
+    {
+      "path": "tests/test_realtime_console.cpp",
+      "before": {
+        "bytes": 37306,
+        "executable": false,
+        "sha256": "6de6a93ccdde9c008df7b76187852fe74e49a180c2762177c6ae2d18ab8c37cd"
+      },
+      "after": {
+        "sha256": "f5178b98aa90e96c01555c9d45fb55b7496b2528a086d16265680865d14c5cc4",
+        "bytes": 37742,
+        "executable": false
+      }
+    },
+    {
+      "path": "docs/STANDALONE_APP.md",
+      "before": {
+        "bytes": 23548,
+        "executable": false,
+        "sha256": "8889d2526d6328463f728dbb64d4fdd0acc312c5446ffe82169cc89cd74e7ad3"
+      },
+      "after": {
+        "sha256": "5b77885e90bcafb9746a778b07e96b1bab9436dc9826f481e0b638b2877a733c",
+        "bytes": 23614,
+        "executable": false
+      }
+    }
+  ],
+  "build": {
+    "toolchain": {
+      "cxx": "c++ (Debian 14.2.0-19) 14.2.0",
+      "cmake": "cmake version 4.4.4",
+      "python": "3.12.14",
+      "system": "Linux",
+      "machine": "x86_64",
+      "configuration": "Release",
+      "ctest_parallelism": 1
+    },
+    "dependencies": {
+      "SDL2": {
+        "path": "/workspace/scratch/7ffc2842608b/SDL2",
+        "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71"
+      },
+      "RtMidi": {
+        "path": "/workspace/scratch/cd4bd06ce68f/rtmidi",
+        "commit": "1e5b49925aa60065db52de44c366d446a902547b"
+      },
+      "VST3": {
+        "path": "/workspace/scratch/1742da7072be/vst3sdk",
+        "commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96"
+      },
+      "VST3/base": {
+        "path": "/workspace/scratch/1742da7072be/vst3sdk/base",
+        "commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477"
+      },
+      "VST3/cmake": {
+        "path": "/workspace/scratch/1742da7072be/vst3sdk/cmake",
+        "commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5"
+      },
+      "VST3/pluginterfaces": {
+        "path": "/workspace/scratch/1742da7072be/vst3sdk/pluginterfaces",
+        "commit": "4f547e8e102b47de4a8b8aaf343c73b700786372"
+      },
+      "VST3/public.sdk": {
+        "path": "/workspace/scratch/1742da7072be/vst3sdk/public.sdk",
+        "commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da"
+      }
+    },
+    "artifacts": [
+      {
+        "path": "hammond_render",
+        "sha256": "1f41ef4a9023c31228f86d851ae3220f1d1d78d48707b54875a6249949904730",
+        "bytes": 140456
+      },
+      {
+        "path": "hammond_parameter_info",
+        "sha256": "f3f56ede7fcd93a81423ac78ea86cf959e34ef821d812f1396f607808d93992e",
+        "bytes": 41248
+      },
+      {
+        "path": "apps/standalone/hammond_standalone",
+        "sha256": "8ced1de1771b98c938a84149055437b3807c393c7ecd8048d335979a3d3fc89a",
+        "bytes": 3613960
+      },
+      {
+        "path": "apps/standalone/hammond_standalone_benchmark",
+        "sha256": "a58775b357ba0fe0fdd262ed8ff52c87fac1584fb01c59b50b07a7b53e9658ae",
+        "bytes": 155600
+      },
+      {
+        "path": "generated/hammond/generated/FixedRegistrationData.h",
+        "sha256": "66cbb1a23cb5ebf14844afd6f98e13829c9f69c1511b09d5974ca5a4527157c6",
+        "bytes": 2099
+      },
+      {
+        "path": "nominal.b3p",
+        "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+        "bytes": 4545
+      },
+      {
+        "path": "generated/standalone-capabilities.json",
+        "sha256": "57ccbbb25c2f868db64ff7aa17cf691e9fd92917b2e640b4fd1d5a623edcbc48",
+        "bytes": 2062
+      },
+      {
+        "path": "VST3/Release/HammondB3.vst3/Contents/x86_64-linux/HammondB3.so",
+        "sha256": "36d02646e039d0748a2f01aa9e89dda07c5be816a3ab040b40ae694faad9889e",
+        "bytes": 442424
+      },
+      {
+        "path": "VST3/Release/HammondB3.vst3/Contents/Resources/moduleinfo.json",
+        "sha256": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184",
+        "bytes": 1090
+      },
+      {
+        "path": "apps/standalone/standalone-benchmark-source-manifest.json",
+        "sha256": "ed6087529c26057f049a59271b42c2c31643f322559ee3651699798dd1b0ee11",
+        "bytes": 7984
+      },
+      {
+        "path": "test_realtime_console",
+        "sha256": "8aa62dae0074b1002fca810cfcfdefab93fe1dd1fd42e16fed2c975f3de058a5",
+        "bytes": 152472
+      }
+    ]
+  },
+  "commands": [
+    {
+      "label": "configure",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "-S",
+        "/tmp/hammond-preset-a31/source",
+        "-B",
+        "/tmp/hammond-preset-a31/build",
+        "-G",
+        "Unix Makefiles",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_TESTING=ON",
+        "-DHAMMOND_BUILD_STANDALONE=ON",
+        "-DHAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2",
+        "-DHAMMOND_ENABLE_MIDI=ON",
+        "-DHAMMOND_RTMIDI_ROOT=/workspace/scratch/cd4bd06ce68f/rtmidi",
+        "-DSDL_ALSA=OFF",
+        "-DALSA_INCLUDE_DIR=/workspace/scratch/641ca55ce6de/native-sysroot/usr/include",
+        "-DALSA_LIBRARY=/workspace/scratch/641ca55ce6de/native-sysroot/usr/lib/x86_64-linux-gnu/libasound.so",
+        "-DHAMMOND_BUILD_VST3=ON",
+        "-DHAMMOND_VST3_SDK_ROOT=/workspace/scratch/1742da7072be/vst3sdk"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 20.442
+    },
+    {
+      "label": "discovery",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/ctest",
+        "--test-dir",
+        "/tmp/hammond-preset-a31/build",
+        "-C",
+        "Release",
+        "--show-only=json-v1",
+        "--no-tests=error"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.018
+    },
+    {
+      "label": "build",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a31/build",
+        "--parallel",
+        "4",
+        "--target",
+        "all",
+        "hammond_standalone_test_inputs",
+        "hammond_vst3_test_inputs"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 118.131
+    },
+    {
+      "label": "ctest-first",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/ctest",
+        "--test-dir",
+        "/tmp/hammond-preset-a31/build",
+        "-C",
+        "Release",
+        "--verbose",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "1",
+        "--output-junit",
+        "/tmp/hammond-preset-a31/ctest-first.xml"
+      ],
+      "exit_code": 8,
+      "wall_seconds": 385.922
+    },
+    {
+      "label": "build-correction",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a31/build",
+        "--parallel",
+        "4",
+        "--target",
+        "test_realtime_console"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 4.702
+    },
+    {
+      "label": "ctest-corrected",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/ctest",
+        "--test-dir",
+        "/tmp/hammond-preset-a31/build",
+        "-C",
+        "Release",
+        "--verbose",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "1",
+        "-R",
+        "^(test_realtime_console|test_standalone_install)$",
+        "--output-junit",
+        "/tmp/hammond-preset-a31/ctest-corrected.xml"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 7.642
+    }
+  ],
+  "ctest": {
+    "first": {
+      "count": 143,
+      "failed": [
+        "test_realtime_console",
+        "test_standalone_install"
+      ],
+      "skipped_suites": [],
+      "tests": [
+        {
+          "name": "test_console_engine",
+          "seconds": 0.362445,
+          "result": "passed"
+        },
+        {
+          "name": "test_contact_bank",
+          "seconds": 0.218226,
+          "result": "passed"
+        },
+        {
+          "name": "test_contact_rate",
+          "seconds": 0.0985614,
+          "result": "passed"
+        },
+        {
+          "name": "test_control_io",
+          "seconds": 0.073706,
+          "result": "passed"
+        },
+        {
+          "name": "test_controls",
+          "seconds": 0.140783,
+          "result": "passed"
+        },
+        {
+          "name": "test_core_robustness",
+          "seconds": 0.00495369,
+          "result": "passed"
+        },
+        {
+          "name": "test_decimal",
+          "seconds": 0.0279425,
+          "result": "passed"
+        },
+        {
+          "name": "test_engine",
+          "seconds": 0.210423,
+          "result": "passed"
+        },
+        {
+          "name": "test_engine_rate",
+          "seconds": 1.0557,
+          "result": "passed"
+        },
+        {
+          "name": "test_factory_runtime",
+          "seconds": 0.320163,
+          "result": "passed"
+        },
+        {
+          "name": "test_fixed_registration_data",
+          "seconds": 0.0040304,
+          "result": "passed"
+        },
+        {
+          "name": "test_fixed_registration_engine",
+          "seconds": 1.13213,
+          "result": "passed"
+        },
+        {
+          "name": "test_fixed_registration_lifecycle",
+          "seconds": 0.811696,
+          "result": "passed"
+        },
+        {
+          "name": "test_host_timeline",
+          "seconds": 0.452931,
+          "result": "passed"
+        },
+        {
+          "name": "test_input_processor",
+          "seconds": 1.05812,
+          "result": "passed"
+        },
+        {
+          "name": "test_note_ownership",
+          "seconds": 0.0291791,
+          "result": "passed"
+        },
+        {
+          "name": "test_numerics",
+          "seconds": 1.18939,
+          "result": "passed"
+        },
+        {
+          "name": "test_owned_lifecycle",
+          "seconds": 0.26438,
+          "result": "passed"
+        },
+        {
+          "name": "test_parameter_bridge",
+          "seconds": 0.00757831,
+          "result": "passed"
+        },
+        {
+          "name": "test_partial_key",
+          "seconds": 0.253248,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_controls",
+          "seconds": 0.00692898,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_engine",
+          "seconds": 0.0123303,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_integration",
+          "seconds": 0.076665,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_note_ownership",
+          "seconds": 0.00353068,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_realtime",
+          "seconds": 0.00418146,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_reference",
+          "seconds": 0.0406643,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_routing",
+          "seconds": 0.0037901,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_sources",
+          "seconds": 0.15046,
+          "result": "passed"
+        },
+        {
+          "name": "test_pedal_voice",
+          "seconds": 0.00692692,
+          "result": "passed"
+        },
+        {
+          "name": "test_percussion",
+          "seconds": 0.0084836,
+          "result": "passed"
+        },
+        {
+          "name": "test_percussion_controls",
+          "seconds": 0.0304097,
+          "result": "passed"
+        },
+        {
+          "name": "test_percussion_rate",
+          "seconds": 0.00842647,
+          "result": "passed"
+        },
+        {
+          "name": "test_performance_acceptance",
+          "seconds": 0.619501,
+          "result": "passed"
+        },
+        {
+          "name": "test_performance_input",
+          "seconds": 0.0800269,
+          "result": "passed"
+        },
+        {
+          "name": "test_preset_parameter_boundaries",
+          "seconds": 0.00304805,
+          "result": "passed"
+        },
+        {
+          "name": "test_preset_realtime",
+          "seconds": 0.0858801,
+          "result": "passed"
+        },
+        {
+          "name": "test_profile",
+          "seconds": 0.323305,
+          "result": "passed"
+        },
+        {
+          "name": "test_realtime",
+          "seconds": 0.423388,
+          "result": "passed"
+        },
+        {
+          "name": "test_realtime_console",
+          "seconds": 0.0111838,
+          "result": "failed"
+        },
+        {
+          "name": "test_realtime_pedals",
+          "seconds": 0.699722,
+          "result": "passed"
+        },
+        {
+          "name": "test_scanner_line",
+          "seconds": 0.415741,
+          "result": "passed"
+        },
+        {
+          "name": "test_scanner_rotor",
+          "seconds": 0.062585,
+          "result": "passed"
+        },
+        {
+          "name": "test_source_rate",
+          "seconds": 0.232217,
+          "result": "passed"
+        },
+        {
+          "name": "test_state_exchange",
+          "seconds": 0.0262763,
+          "result": "passed"
+        },
+        {
+          "name": "test_tonewheel",
+          "seconds": 0.735656,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_audio_analysis",
+          "seconds": 0.927673,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_calibration_session_records",
+          "seconds": 1.11124,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture",
+          "seconds": 1.24606,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_audio",
+          "seconds": 0.62306,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_audio_admission",
+          "seconds": 2.68704,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_cli_pipeline",
+          "seconds": 6.68867,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_common",
+          "seconds": 0.191353,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_comparison",
+          "seconds": 0.518031,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_corpus",
+          "seconds": 1.14776,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_corpus_admission",
+          "seconds": 1.70052,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_demo",
+          "seconds": 1.4448,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_graph_scale",
+          "seconds": 4.65456,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_install",
+          "seconds": 6.85622,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_job",
+          "seconds": 4.92361,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_metadata_read",
+          "seconds": 1.54555,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_numerics",
+          "seconds": 0.974625,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_policy",
+          "seconds": 0.513155,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_readiness",
+          "seconds": 0.729945,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_replay",
+          "seconds": 8.07205,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_capture_study",
+          "seconds": 8.17039,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_chapel_controls",
+          "seconds": 18.9378,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_chapel_presets",
+          "seconds": 8.70141,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_cli_unicode",
+          "seconds": 1.43409,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_compile_fixed_registrations",
+          "seconds": 2.92281,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_compile_pedal_routing",
+          "seconds": 4.88985,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_compile_profile",
+          "seconds": 7.25691,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_console_benchmark",
+          "seconds": 1.34315,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_console_catalog",
+          "seconds": 1.43858,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_console_evidence",
+          "seconds": 3.82167,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_console_trace",
+          "seconds": 5.79403,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_continuation_ledger",
+          "seconds": 0.340146,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_demo_bundle",
+          "seconds": 0.761285,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_factory_reference",
+          "seconds": 0.538426,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_fixture_catalog",
+          "seconds": 2.54306,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_install",
+          "seconds": 8.58251,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_model_info",
+          "seconds": 0.211355,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_native_bundle_inventory",
+          "seconds": 0.539657,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_parameter_bridge",
+          "seconds": 1.12998,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_parameters",
+          "seconds": 1.69582,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_partial_key_render",
+          "seconds": 0.57629,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_pedal_catalog",
+          "seconds": 4.53182,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_pedal_demo",
+          "seconds": 2.00795,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_pedal_map",
+          "seconds": 0.360751,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_pedal_render_cli",
+          "seconds": 1.9565,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_pedal_render_evidence",
+          "seconds": 1.63983,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_pedal_session",
+          "seconds": 0.734265,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_pedal_trace",
+          "seconds": 5.97311,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_plot_console_trace",
+          "seconds": 7.25763,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_plot_pedal_trace",
+          "seconds": 17.2946,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_preset_parameter_oracle",
+          "seconds": 0.823136,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_render",
+          "seconds": 3.38939,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_render_fixture",
+          "seconds": 5.22742,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_repository_integrity",
+          "seconds": 3.22323,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_rotary_profile",
+          "seconds": 3.08601,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_rotary_reference",
+          "seconds": 3.01721,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_scanner_ac_reference",
+          "seconds": 3.86222,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_scanner_line_profile",
+          "seconds": 4.21773,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_scanner_native_ac",
+          "seconds": 1.83301,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_scanner_transient_reference",
+          "seconds": 3.17638,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_sdl2_dependency",
+          "seconds": 1.48116,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_standalone_session_records",
+          "seconds": 0.675116,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_verify_render",
+          "seconds": 2.92104,
+          "result": "passed"
+        },
+        {
+          "name": "python_test_vst3_build_tools",
+          "seconds": 2.71486,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_install",
+          "seconds": 6.03323,
+          "result": "failed"
+        },
+        {
+          "name": "test_native_install",
+          "seconds": 1.13057,
+          "result": "passed"
+        },
+        {
+          "name": "hammond_vst3_validator",
+          "seconds": 1.48813,
+          "result": "passed"
+        },
+        {
+          "name": "test_native_controller",
+          "seconds": 0.0254406,
+          "result": "passed"
+        },
+        {
+          "name": "test_native_abi",
+          "seconds": 0.952423,
+          "result": "passed"
+        },
+        {
+          "name": "test_native_behavior",
+          "seconds": 1.68678,
+          "result": "passed"
+        },
+        {
+          "name": "test_native_automation",
+          "seconds": 0.538433,
+          "result": "passed"
+        },
+        {
+          "name": "test_native_concurrency",
+          "seconds": 0.328417,
+          "result": "passed"
+        },
+        {
+          "name": "test_native_realtime",
+          "seconds": 0.962547,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_concurrency",
+          "seconds": 0.125601,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_external_control",
+          "seconds": 0.00627385,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_midi_concurrency",
+          "seconds": 0.215798,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_midi_input",
+          "seconds": 0.00414245,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_midi_replay",
+          "seconds": 0.01031,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_midi_session",
+          "seconds": 0.0385971,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_preset_concurrency",
+          "seconds": 0.0175929,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_preset_ui",
+          "seconds": 0.0743938,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_session",
+          "seconds": 0.333307,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_state_files",
+          "seconds": 0.00806251,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_ui",
+          "seconds": 0.0106017,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_midi_backend",
+          "seconds": 0.00391047,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_midi_backend_quarantine",
+          "seconds": 0.00583046,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_benchmark",
+          "seconds": 2.79316,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_drawing",
+          "seconds": 0.033062,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_preset_raster",
+          "seconds": 11.5,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_audio_device",
+          "seconds": 2.87324,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_device_removal",
+          "seconds": 0.226746,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_callback_allocation",
+          "seconds": 0.94783,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_app",
+          "seconds": 8.86664,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_midi_cli",
+          "seconds": 11.023,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_native_midi_replay",
+          "seconds": 23.2844,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_workflows",
+          "seconds": 64.0718,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_replay_boundaries",
+          "seconds": 5.0196,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_chapel",
+          "seconds": 19.8088,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_input_replay",
+          "seconds": 0.0183319,
+          "result": "passed"
+        }
+      ]
+    },
+    "corrected": {
+      "count": 2,
+      "failed": [],
+      "skipped_suites": [],
+      "tests": [
+        {
+          "name": "test_realtime_console",
+          "seconds": 0.934759,
+          "result": "passed"
+        },
+        {
+          "name": "test_standalone_install",
+          "seconds": 6.69379,
+          "result": "passed"
+        }
+      ]
+    }
+  },
+  "suite_inventory_counts": {
+    "all": 143,
+    "standalone_named": 27,
+    "vst3_named": 8,
+    "root_python": 63
+  },
+  "capability_skips": {
+    "ctest_suites": 0,
+    "capture_audio_admission_methods": 2,
+    "method_identification": "Native Windows-reparse and Unix-domain-socket fixture methods, mapped from retained unittest progress in standard class/method discovery order; detailed native error text was not printed."
+  },
+  "sdk": {
+    "build_time_selftest_passed": 51,
+    "validator_internal_passed": 47,
+    "validator_internal_failed": 0,
+    "teardown_messages": 16,
+    "public_parameter_count": 47,
+    "public_count_is_not_internal_test_count": true
+  },
+  "correction_compiled_objects": [
+    "CMakeFiles/test_realtime_console.dir/tests/test_realtime_console.cpp.o"
+  ],
+  "later_generator_delta": {
+    "worker": "A32",
+    "generated_header_bytes": 2099,
+    "generated_header_sha256": "66cbb1a23cb5ebf14844afd6f98e13829c9f69c1511b09d5974ca5a4527157c6",
+    "basis": "A32 independently executed valid-output equality against this unchanged header; later repaired generator is not part of this copied source.",
+    "repaired_generator_sha256": "770eff9d031961de81d4520136d1781795a9e2b494f2a9c4a44c727b5c0f1644"
+  },
+  "limits": [
+    "Linux Release only; SDL dummy audio/video and software rendering, native RtMidi ALSA enabled but no physical controller/device qualification.",
+    "No sanitizer, macOS, Windows or DAW run by A31. Existing hosted macOS modal timeout remains unclassified.",
+    "Known scanner G5 same-hertz numerical failure and physical acquisition gates remain open.",
+    "Later live source changes, gallery producer, CI assertions and package/runbook changes need their own affected acceptance.",
+    "No claim of literal 1:1 UI fidelity, semantic accessibility, arbitrary allocator freedom or physical deadlines."
+  ],
+  "infrastructure": "A read-only final summary command failed during a transient exec-server disconnect after completed gates. A following read succeeded; no test rerun was performed for infrastructure recovery.",
+  "retained_files": [
+    {
+      "path": "a31-source-first.json",
+      "sha256": "1f805c9257e2843c8ac1345938ff28603e2780e93831f0e2c02c907cc420ac8b",
+      "bytes": 237312
+    },
+    {
+      "path": "a31-source-corrected.json",
+      "sha256": "db1001d3ab1b506c205aed06a347d2279d6aea0afa6f72b59949cf13e57eb8e5",
+      "bytes": 237312
+    },
+    {
+      "path": "a31-configure.txt",
+      "sha256": "f83619977c1739779acb7f4e87054d170c66123a3da4003251b55df8b64ba91f",
+      "bytes": 24396
+    },
+    {
+      "path": "a31-build.txt",
+      "sha256": "31fa3a1d4d979a3ff77ce315255d371def4f622e246ad0df9297fac21db2939c",
+      "bytes": 63363
+    },
+    {
+      "path": "a31-ctest-first.txt",
+      "sha256": "b4f8a41a8dbd3b01f71e0123cf39bda9dbe1dd05672c923bd5354cb6d4fdb339",
+      "bytes": 218808
+    },
+    {
+      "path": "a31-ctest-first.xml",
+      "sha256": "06042a8e8fec367f7f5214643f58ff884b7e26242f088991d113d1782d99c524",
+      "bytes": 80845
+    },
+    {
+      "path": "a31-build-correction.txt",
+      "sha256": "9cc7ac727e8d70ad7462863604de58bbc19bdf7c45712a2bd2ab8bee9fd9c432",
+      "bytes": 10594
+    },
+    {
+      "path": "a31-ctest-corrected.txt",
+      "sha256": "b3ce0b4213b4e4ed26522ae6a37619e2c3b08bf50e6521ad65dd48a49c6bcc23",
+      "bytes": 7369
+    },
+    {
+      "path": "a31-ctest-corrected.xml",
+      "sha256": "66b5eab39257011fbe856164032da6f670b6b454fbdb794220490b9755a2e245",
+      "bytes": 2543
+    },
+    {
+      "path": "a31-test-inventory.json",
+      "sha256": "4f9946b7db1fa339efb8c6fdb6b1647ae5a9beb695091d3a7c2eb29e20aa32b7",
+      "bytes": 121653
+    },
+    {
+      "path": "a31-realtime-correction.patch",
+      "sha256": "2aa20b051e3513a6f3ca7ab641e3015cd6c5196dad5b912d8753fde581b954e8",
+      "bytes": 1161
+    },
+    {
+      "path": "a31-guide-link-correction.patch",
+      "sha256": "eb14f3ec8ff60709778f1c9308ff588f55b206e90331a0c48b37ce47b055764b",
+      "bytes": 695
+    }
+  ]
+}

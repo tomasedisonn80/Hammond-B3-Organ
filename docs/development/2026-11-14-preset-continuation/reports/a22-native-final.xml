@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="8"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname="2b85fe4e0adc"
+	time="2"
+	timestamp="2026-11-14T01:22:11"
+	>
+	<testcase name="test_native_install" classname="test_native_install" time="1.60041" status="run">
+		<properties/>
+		<system-out>..
+----------------------------------------------------------------------
+Ran 2 tests in 1.370s
+
+OK
+{"bundle_sha256": {"Contents/Resources/THIRD_PARTY_NOTICES.md": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb", "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e", "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184", "Contents/x86_64-linux/HammondB3.so": "36d02646e039d0748a2f01aa9e89dda07c5be816a3ab040b40ae694faad9889e"}, "payload_files": 4, "relocated_abi": {"accepted_callbacks": 1673, "assertions": 701642, "audible_frames": 217972, "compared_frames": 229725, "conversions": 2140, "descriptors": 47, "float_hash": "af029009868faa04", "instances": 9, "lifecycle_sequences": 6, "maximum_audio_error": 0, "rejected_calls": 88, "state_round_trips": 3207, "suite": "native-abi-v1"}, "suite": "native-install-v1"}
+</system-out>
+	</testcase>
+	<testcase name="hammond_vst3_validator" classname="hammond_vst3_validator" time="1.91994" status="run">
+		<properties/>
+		<system-out>* Loading module...
+
+	/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3
+
+* Check valid bundle structure...
+
+* Scanning classes...
+
+  Factory Info:
+	vendor = Hammond B3 Organ project
+	url = https://github.com/tomasedisonn80/Hammond-B3-Organ
+	email = 
+
+  Class Info 0:
+	name = Hammond B3 Nominal
+	category = Audio Module Class
+	subCategories = Instrument|Synth
+	version = 0.1.0
+	sdkVersion = VST 3.8.1
+	cid = 19F9ADC0533F42B4B96BD51D6547E838
+
+  Class Info 1:
+	name = Hammond B3 Nominal Controller
+	category = Component Controller Class
+	subCategories = 
+	version = 0.1.0
+	sdkVersion = VST 3.8.1
+	cid = 0DEE76AB26BC475ABF64F138C89FB0E0
+
+* Checking snapshots...
+
+Info: No snapshots in Bundle.
+
+* Creating tests...
+
+* Running tests...
+
+-------------------------------------------------------------
+TestSuite : Hammond B3 Nominal
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+TestSuite : General Tests
+------------------------------------...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_native_controller" classname="test_native_controller" time="0.0300304" status="run">
+		<properties/>
+		<system-out>native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600
+</system-out>
+	</testcase>
+	<testcase name="test_native_abi" classname="test_native_abi" time="1.40682" status="run">
+		<properties/>
+		<system-out>{"suite":"native-abi-v1","instances":9,"assertions":701642,"descriptors":47,"conversions":2140,"accepted_callbacks":1673,"rejected_calls":88,"state_round_trips":3207,"lifecycle_sequences":6,"compared_frames":229725,"audible_frames":217972,"maximum_audio_error":0,"float_hash":"af029009868faa04"}
+</system-out>
+	</testcase>
+	<testcase name="test_native_behavior" classname="test_native_behavior" time="2.12403" status="run">
+		<properties/>
+		<system-out>native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f
+</system-out>
+	</testcase>
+	<testcase name="test_native_automation" classname="test_native_automation" time="0.91104" status="run">
+		<properties/>
+		<system-out>native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03
+</system-out>
+	</testcase>
+	<testcase name="test_native_concurrency" classname="test_native_concurrency" time="0.341301" status="run">
+		<properties/>
+		<system-out>native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=1453 rejected_callbacks=24 zero_callbacks=287 compared_frames=66651 audible_frames=66651 future_frames=6168 accepted_loads=3174 full_loads=10605 malformed_loads=462 successful_saves=17218 busy_saves=51 pending_saves=14069 published_saves=3101 maximum_audio_error=0
+</system-out>
+	</testcase>
+	<testcase name="test_native_realtime" classname="test_native_realtime" time="1.06718" status="run">
+		<properties/>
+		<system-out>module calibration processor create new=1 delete=0; release new=0 delete=1 refs=0
+module calibration controller create new=1 delete=0; release new=0 delete=1 refs=0
+enabled rate 44100: manual, pedal, moving contacts, percussion and independent audio verified
+enabled rate 48000: manual, pedal, moving contacts, percussion and independent audio verified
+enabled rate 96000: manual, pedal, moving contacts, percussion and independent audio verified
+path accepted rejected frames fresh_raw carried_raw queued_restores new delete total_us max_us
+enabled 40 0 13793 9 0 28 0 0 33702.750 4832.181
+preset 54 0 456 90 3 24 0 0 1639.507 211.203
+dense 5 0 224 4608 0 4 0 0 1510.168 654.163
+maximum 3 0 196608 6 0 0 0 0 449817.944 161440.407
+carry 13 0 32 2054 1027 0 0 0 439.870 227.611
+output-shape 24 0 1152 0 0 0 0 0 3734.547 1027.368
+rejected 0 33 0 0 0 0 0 0 25.260 3.833
+setProcessing 15 6 0 0 0 0 0 0 1.158 0.112
+regions=193 overload_calibration=12/12 exact_channel_samples=423762 audible_samples=420414 reference_frames=212265...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

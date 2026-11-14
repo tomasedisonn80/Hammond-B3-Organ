@@ -51,7 +51,7 @@ class Engine {
 public:
     // Success installs an owned profile and starts a new seeded source field.
     // Initial controls: no keys/pedals, all banks and both pedal mixtures zero,
-    // bank B selected, routes enabled,
+    // bank B selected, no fixed modes, routes enabled,
     // expression one, percussion Off/Second/Normal/Slow, and readiness one.
     // The two-argument overload uses ideal contacts. Any failure preserves the
     // complete previous engine, including contact/readiness histories and clock.
@@ -120,13 +120,15 @@ public:
         return pedal_frame_;
     }
     // Checked control queries require preparation. drawbar_position returns the
-    // selected bank's retained position, including while its route is cancelled.
+    // remembered bank's retained position, including while fixed or cancelled.
     [[nodiscard]] bool drawbar_position(Manual manual, std::size_t index,
                                         std::uint8_t& destination) const noexcept;
     [[nodiscard]] bool bank_drawbar_position(Manual manual, DrawbarBank bank,
                                              std::size_t index,
                                              std::uint8_t& destination) const noexcept;
     [[nodiscard]] bool selected_bank(Manual manual, DrawbarBank& destination) const noexcept;
+    [[nodiscard]] bool selected_preset(Manual manual,
+                                       PresetSelection& destination) const noexcept;
     [[nodiscard]] bool route_enabled(Manual manual, bool& destination) const noexcept;
     [[nodiscard]] double expression() const noexcept { return controls_.expression(); }
     [[nodiscard]] bool source_phase_turns(ToneId id, double& destination) const noexcept;

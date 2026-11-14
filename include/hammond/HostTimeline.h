@@ -25,7 +25,7 @@ struct HostParameterPoint {
 };
 
 // Views are borrowed only for process(); no pointer into host storage survives.
-// IDs must be one of the 45 compiled descriptors. Duplicate queues reject,
+// IDs must be one of the 47 compiled descriptors. Duplicate queues reject,
 // including duplicate empty queues; points are nondecreasing, with last-wins
 // ties. Values must be finite and in [0,1].
 struct HostParameterQueue {
@@ -84,19 +84,24 @@ public:
                                      std::uint32_t max_block_frames) noexcept;
 
     // Total fresh points + fresh musical records + retained carry <=1024.
-    // Queue count <=45; state restores <=4. Musical offsets are globally sorted
+    // Queue count <=47; state restores <=4. Musical offsets are globally sorted
     // in 0..N. All payload/identity/capacity/control/output/clock errors reject
     // the whole callback, preserving live state and every caller output sample.
     // Counts are all zero on failure; only opaque fixed scratch may change.
     //
-    // Restores run first, preserving histories and resetting all curve anchors.
+    // Restores run first, preserving histories and resetting all curve anchors:
+    // remembered bank for old bank IDs, effective selection for new preset IDs.
     // Carried parameter points at0 precede new points at0 for that ID. Evaluate
     // all curves in parameter-ID order before musical events at that sample.
     // Carried musical events precede fresh same-offset music; each list is stable.
-    // Previous rendered values form sample-1 anchors; absent queues hold them.
-    // Discrete values use the existing exact half-up ParameterBridge thresholds.
+    // Previous raw rendered values form sample-1 anchors; absent queues hold
+    // them without reasserting commands. Ordinary callback completion does not
+    // derive anchors from applied controls. Discrete conversion is delegated to
+    // ParameterBridge, including its frozen binary64 preset thresholds.
     // An explicit point applies its control even if its plain value is unchanged
-    // (in particular a selector point can reconnect its retained manual route).
+    // (an old bank point clears fixed mode and reconnects its manual route).
+    // The higher-ID new preset command runs after old bank controls at a tie;
+    // unchanged interpolation plateaus do not reassert either selection.
     //
     // Candidate-only slices sum to N; bounded zero-frame flushes may handle a
     // dense same-sample group. Caller output, Engine, owners, anchors and carry
@@ -116,7 +121,8 @@ public:
     [[nodiscard]] const PedalNoteOwnership& pedal_ownership() const noexcept { return pedal_; }
     [[nodiscard]] std::uint32_t max_block_frames() const noexcept { return max_block_frames_; }
     [[nodiscard]] std::size_t carry_count() const noexcept { return retained_.carry_count; }
-    // Checked copied diagnostics, never concurrent UI publication.
+    // Checked copied diagnostics, never concurrent UI publication. An anchor
+    // is the last raw normalized curve value, not the current applied route.
     [[nodiscard]] bool normalized_anchor(std::uint32_t parameter_id,
                                           double& destination) const noexcept;
     [[nodiscard]] bool carry_event(std::size_t index, HostCarryEvent& destination) const noexcept;

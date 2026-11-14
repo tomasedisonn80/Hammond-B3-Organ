@@ -29,6 +29,15 @@ constexpr std::string_view kManualRecords =
     "end\n";
 constexpr std::string_view kPercussion =
     "percussion enabled 1 harmonic third volume soft decay fast\n";
+// Independent current-output oracle; keep the legacy manual records above.
+constexpr std::string_view kCurrentManualRecords =
+    "manual upper selected A fixed_registration none route_enabled 0\n"
+    "bank A 0 1 2 3 4 5 6 7 8\n"
+    "bank B 8 7 6 5 4 3 2 1 0\n"
+    "manual lower selected B fixed_registration none route_enabled 1\n"
+    "bank A 1 3 5 7 0 2 4 6 8\n"
+    "bank B 8 6 4 2 0 7 5 3 1\n"
+    "end\n";
 
 std::size_t round_trips = 0;
 std::size_t migrations = 0;
@@ -51,6 +60,7 @@ ControlSnapshot reference() {
 }
 
 void same(const ControlSnapshot& actual, const ControlSnapshot& expected) {
+    // Defaulted semantic equality includes both retained fixed modes.
     CHECK(actual == expected);
     CHECK(std::bit_cast<std::uint64_t>(actual.expression) ==
           std::bit_cast<std::uint64_t>(expected.expression));
@@ -69,6 +79,15 @@ std::string version3(std::uint8_t first = 2, std::uint8_t second = 7) {
     return std::string("B3CONTROLS3\nexpression 0.375\n") + std::string(kPercussion) +
            "pedal drawbars " + std::to_string(first) + ' ' + std::to_string(second) + '\n' +
            std::string(kManualRecords);
+}
+
+std::string version4(std::uint8_t first = 2, std::uint8_t second = 7) {
+    return std::string("B3CONTROLS4\n"
+        "registration_catalog atlas-chapel-nominal-v1 sha256 "
+        "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n"
+        "expression 0.375\n") + std::string(kPercussion) +
+        "pedal drawbars " + std::to_string(first) + ' ' + std::to_string(second) + '\n' +
+        std::string(kCurrentManualRecords);
 }
 
 std::string encode(const ControlSnapshot& state) {
@@ -103,6 +122,7 @@ void reject(const std::string& bytes) {
     auto destination = reference();
     destination.expression = -0.0;
     destination.pedal_drawbars = {8, 6};
+    destination.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
     const auto before = destination;
     std::istringstream input(bytes);
     std::string error = "old error";
@@ -184,25 +204,30 @@ void test_roundtrip_and_legacy_migration() {
     CHECK(tokenize(version1()).size() == 60);
     CHECK(tokenize(version2()).size() == 69);
     CHECK(tokenize(version3()).size() == 73);
-    CHECK(encode(reference()) == version3());
+    CHECK(tokenize(version4()).size() == 81);
+    CHECK(encode(reference()) == version4());
     for (std::uint8_t first = 0; first <= 8; ++first) {
         for (std::uint8_t second = 0; second <= 8; ++second) {
             auto candidate = reference();
             candidate.pedal_drawbars = {first, second};
             const auto bytes = version3(first, second);
-            CHECK(encode(candidate) == bytes);
+            CHECK(encode(candidate) == version4(first, second));
             same(decode(bytes), candidate);
             same(decode(encode(candidate)), candidate);
             ++round_trips;
-            for (const unsigned version : {1U, 2U}) {
+            for (const unsigned version : {1U, 2U, 3U}) {
                 auto expected = reference();
-                expected.pedal_drawbars = {};
+                expected.pedal_drawbars = version == 3 ? candidate.pedal_drawbars
+                                                       : PedalDrawbarPositions{};
                 if (version == 1) expected.percussion = {};
                 // Every previous pair, including nonzero destination controls,
-                // must load identical explicit defaults from each old grammar.
-                const auto restored = decode(version == 1 ? version1() : version2(), candidate);
+                // must load the old grammar's defaults and reset fixed modes.
+                auto destination = candidate;
+                destination.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
+                const auto restored = decode(version == 1 ? version1()
+                                             : version == 2 ? version2() : bytes, destination);
                 same(restored, expected);
-                CHECK(encode(restored).starts_with("B3CONTROLS3\n"));
+                CHECK(encode(restored).starts_with("B3CONTROLS4\n"));
                 ++migrations;
             }
         }
@@ -235,7 +260,7 @@ void test_roundtrip_and_legacy_migration() {
     CHECK(std::fesetround(original_mode) == 0);
 }
 
-void test_current_grammar_rejection() {
+void test_legacy_version3_grammar_rejection() {
     const auto original = tokenize(version3());
     auto change = [&](std::size_t index, std::string_view value) {
         auto changed = original;
@@ -243,7 +268,7 @@ void test_current_grammar_rejection() {
         reject(join(changed));
     };
     for (const auto version : {"B3CONTROLS0", "B3CONTROLS1", "B3CONTROLS2",
-                               "B3CONTROLS4", "B3CONTROLS03", "B3CONTROLS3.0"}) change(0, version);
+                               "B3CONTROLS4", "B3CONTROLS5", "B3CONTROLS03", "B3CONTROLS3.0"}) change(0, version);
     change(12, "pedals");
     change(13, "drawbar");
     for (const std::size_t index : {std::size_t{14}, std::size_t{15}}) {
@@ -298,7 +323,7 @@ int main() {
     try {
         test_retained_controls();
         test_roundtrip_and_legacy_migration();
-        test_current_grammar_rejection();
+        test_legacy_version3_grammar_rejection();
         std::cout << "Pedal controls passed: " << round_trips << " round trips, "
                   << migrations << " legacy migrations, " << rejected_documents
                   << " rejected documents, " << rejected_snapshots

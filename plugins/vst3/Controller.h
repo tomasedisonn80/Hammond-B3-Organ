@@ -8,7 +8,7 @@
 
 namespace hammond::vst3 {
 
-// Generic host controls for the 45 immutable compiled descriptors. All methods
+// Generic host controls for the 47 immutable compiled descriptors. All methods
 // belong to the host's serialized UI/control thread, never the audio callback.
 // No custom editor, processor pointer, stream retention or automation echo.
 class Controller final : public Steinberg::Vst::EditController {

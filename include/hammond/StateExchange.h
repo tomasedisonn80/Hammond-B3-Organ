@@ -17,6 +17,8 @@ inline constexpr std::string_view kStateExchangeModelId =
     "bounded-spsc-control-state-exchange-v1";
 inline constexpr std::size_t kStateQueueCapacity = 4;
 inline constexpr std::size_t kStateReadAttempts = 8;
+// Ordinary control cells include raw fixed modes, not the derived effective
+// selector parameters; the two route bits and acknowledgement follow them.
 inline constexpr std::size_t kStatePublicationCellCount = kParameterCount + 3;
 
 // No counter wraps or resets within an object's lifetime. Smaller limits are

@@ -4,11 +4,13 @@
 from __future__ import annotations
 
 import copy
+from fractions import Fraction
 import hashlib
 import importlib.util
 import json
 import math
 from pathlib import Path
+import struct
 import subprocess
 import sys
 import tempfile
@@ -38,6 +40,26 @@ VERSION_2_PATH = ROOT / "data" / "references" / "parameter-registry-v2.json"
 VERSION_2_IDS = LEGACY_IDS | {12288, 12289, 12290, 12291}
 VERSION_2_FILE_SHA256 = "658858a8e0f3e722ae1deef1c80e799ab5761c60213af22d5e80696996fd50f5"
 VERSION_2_RECORDS_SHA256 = "5e161206e203cce130330b993590d892182c4ead62daba50b468b5348d70bed2"
+VERSION_3_IDS = VERSION_2_IDS | {16384, 16385}
+VERSION_3_RECORDS_SHA256 = "13ba488bec90154c960c3fd700dc4a774aff5664caf5d68472821493f22d1cad"
+
+
+def nearest_binary64(numerator, denominator):
+    """Independent rational oracle: compare neighboring bit patterns exactly."""
+    target = Fraction(numerator, denominator)
+    low, high = 0, 0x3ff0000000000000
+    decode = lambda bits: struct.unpack("!d", struct.pack("!Q", bits))[0]
+    while low + 1 < high:
+        middle = (low + high) // 2
+        if Fraction.from_float(decode(middle)) <= target:
+            low = middle
+        else:
+            high = middle
+    low_distance = target - Fraction.from_float(decode(low))
+    high_distance = Fraction.from_float(decode(high)) - target
+    return decode(low if low_distance < high_distance or
+                  (low_distance == high_distance and low % 2 == 0) else high)
+
 
 
 def legacy_records_digest(parameters):
@@ -69,20 +91,91 @@ class ParameterTests(unittest.TestCase):
         with self.assertRaises(validator.ParameterError):
             validator.validate_registry(registry)
 
-    def test_exact_45_id_inventory_and_defaults(self):
-        expected = VERSION_2_IDS | {16384, 16385}
+    def test_exact_47_id_inventory_and_defaults(self):
+        expected = VERSION_3_IDS | {20480, 20481}
         self.assertEqual(set(self.by_id), expected)
-        self.assertEqual(len(self.registry["parameters"]), 45)
+        self.assertEqual(len(self.registry["parameters"]), 47)
         self.assertIsNone(validator.validate_registry(self.registry))
         self.assertEqual(validator.load_registry(REGISTRY_PATH), self.registry)
         for identifier, parameter in self.by_id.items():
-            expected_default = 1 if identifier in (8192, 8208, 8209) else 0
+            expected_default = 11 if identifier in (20480, 20481) else (1 if identifier in (8192, 8208, 8209) else 0)
             self.assertEqual(parameter["default"], expected_default)
-            self.assertEqual(parameter["normalized"]["default"], float(expected_default))
+            self.assertEqual(parameter["normalized"]["default"], float(expected_default / parameter["maximum"]))
         self.assertEqual(sum(p["kind"] == "drawbar_position" for p in self.by_id.values()), 36)
         self.assertEqual(sum(p["kind"] == "bank_selector" for p in self.by_id.values()), 2)
         self.assertEqual(sum(p["kind"] == "percussion_switch" for p in self.by_id.values()), 4)
         self.assertEqual(sum(p["kind"] == "pedal_drawbar_position" for p in self.by_id.values()), 2)
+        self.assertEqual(sum(p["kind"] == "preset_selector" for p in self.by_id.values()), 2)
+        self.assertEqual(sum(p["step_count"] != 0 for p in self.by_id.values()), 46)
+
+    def test_all_45_previous_complete_records_keep_the_frozen_digest(self):
+        records = sorted((p for p in self.registry["parameters"] if p["id"] in VERSION_3_IDS),
+                         key=lambda p: p["id"])
+        self.assertEqual(len(records), 45)
+        canonical = json.dumps(records, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+        self.assertEqual(hashlib.sha256(canonical.encode("ascii")).hexdigest(), VERSION_3_RECORDS_SHA256)
+        self.registry["parameters"].reverse()
+        self.assertEqual(records, sorted((p for p in self.registry["parameters"] if p["id"] in VERSION_3_IDS),
+                                        key=lambda p: p["id"]))
+        self.by_id[16384]["normalized"]["meaning"] = "audio-amplitude"
+        changed = json.dumps(records, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+        self.assertNotEqual(hashlib.sha256(changed.encode("ascii")).hexdigest(), VERSION_3_RECORDS_SHA256)
+
+    def test_preset_records_have_exact_metadata_and_exclusive_targets(self):
+        for manual, identifier in (("upper", 20480), ("lower", 20481)):
+            parameter = self.by_id[identifier]
+            self.assertEqual(parameter, {
+                "id": identifier, "path": f"manual.{manual}.preset_selection",
+                "label": f"{manual.title()} preset selection", "kind": "preset_selector",
+                "unit": "preset-key-index", "minimum": 0, "maximum": 11,
+                "default": 11, "step_count": 11,
+                "normalized": {"minimum": 0.0, "maximum": 1.0, "default": 1.0,
+                               "to_plain": "count(u >= nearest-binary64((2*k+1)/22), k=0..10)",
+                               "to_normalized": "nearest-binary64(x / 11)",
+                               "meaning": "exclusive-preset-key-index-fraction"},
+                "engine_event": {"type": "select_preset", "manual": manual, "index": 0},
+                "evidence_class": "proposed",
+                "source_pages": [50, 52, 121, 122, 124, 126, 153, 389, 397, 398, 401, 402, 410, 415, 418]})
+            for plain in range(12):
+                normalized = nearest_binary64(plain, 11)
+                self.assertEqual(validator.value_to_normalized(parameter, plain).hex(), normalized.hex())
+                self.assertEqual(validator.normalized_to_event(self.registry, identifier, normalized),
+                                 {"type": "select_preset", "manual": manual, "index": 0, "value": plain})
+            self.assertEqual(validator.normalized_to_value(parameter, -0.0), 0)
+            self.assertEqual(math.copysign(1, validator.value_to_normalized(parameter, -0.0)), 1)
+
+    def test_preset_thresholds_and_canonical_values_match_independent_exact_rationals(self):
+        thresholds = tuple(nearest_binary64(2 * k + 1, 22) for k in range(11))
+        canonical = tuple(nearest_binary64(k, 11) for k in range(12))
+        self.assertEqual(validator.PRESET_THRESHOLDS, thresholds)
+        self.assertEqual(validator.PRESET_CANONICAL, canonical)
+        downward = []
+        for lower, threshold in enumerate(thresholds):
+            rational = Fraction(2 * lower + 1, 22)
+            if Fraction.from_float(threshold) < rational:
+                downward.append(2 * lower + 1)
+            for identifier in (20480, 20481):
+                parameter = self.by_id[identifier]
+                self.assertEqual(validator.normalized_to_value(parameter, math.nextafter(threshold, 0.0)), lower)
+                self.assertEqual(validator.normalized_to_value(parameter, threshold), lower + 1)
+                self.assertEqual(validator.normalized_to_value(parameter, math.nextafter(threshold, 1.0)), lower + 1)
+                numerator, denominator = threshold.as_integer_ratio()
+                legacy_half_up = (2 * numerator * 11 + denominator) // (2 * denominator)
+                self.assertEqual(legacy_half_up, lower if Fraction.from_float(threshold) < rational else lower + 1)
+        self.assertEqual(downward, [3, 5, 7, 15, 17])
+
+    def test_preset_metadata_rejects_reinterpretation(self):
+        for index in (45, 46):
+            for key, value in (("id", 20482), ("label", "Factory voice"),
+                               ("kind", "bank_selector"), ("unit", "host-program-index"),
+                               ("maximum", 10), ("default", 10), ("step_count", 12),
+                               ("source_pages", [122]), ("evidence_class", "measured")):
+                self.reject_change(("parameters", index, key), value)
+            for key, value in (("type", "select_bank"), ("manual", "pedal"), ("index", 1)):
+                self.reject_change(("parameters", index, "engine_event", key), value)
+            for key, value in (("to_plain", "floor(u * 11 + 0.5)"),
+                               ("to_normalized", "x / 11"), ("meaning", "host-program-fraction")):
+                self.reject_change(("parameters", index, "normalized", key), value)
 
     def test_all_43_earlier_whole_records_match_immutable_committed_fixture(self):
         raw = VERSION_2_PATH.read_bytes()
@@ -222,7 +315,7 @@ class ParameterTests(unittest.TestCase):
         self.assertEqual(validator.normalized_to_event(self.registry, 8192, 0.37),
                          {"type": "expression", "manual": "upper", "index": 0, "value": 0.37})
 
-    def test_selectors_are_exclusive_ab_and_cancel_is_excluded(self):
+    def test_legacy_selectors_retain_exclusive_ab_and_their_binary_law(self):
         for identifier, manual in ((8208, "upper"), (8209, "lower")):
             self.assertEqual(self.by_id[identifier]["unit"], "bank-index-0=A-1=B")
             self.assertEqual(self.by_id[identifier]["step_count"], 1)
@@ -230,7 +323,7 @@ class ParameterTests(unittest.TestCase):
                              {"type": "select_bank", "manual": manual, "index": 0, "value": 0})
             self.assertEqual(validator.normalized_to_event(self.registry, identifier, 1.0)["value"], 1)
         self.assertEqual({p["engine_event"]["type"] for p in self.by_id.values()},
-                         {"bank_drawbar", "select_bank", "expression", "percussion", "pedal_drawbar"})
+                         {"bank_drawbar", "select_bank", "expression", "percussion", "pedal_drawbar", "select_preset"})
         self.assertTrue(all("cancel" not in p["path"] for p in self.by_id.values()))
 
     def test_proposed_evidence_and_pending_host_scope(self):
@@ -255,7 +348,7 @@ class ParameterTests(unittest.TestCase):
 
     def test_version_model_scope_and_status_are_exact(self):
         for key, bad in (("schema_version", 1), ("schema_version", 2),
-                         ("schema_version", 4), ("schema_version", 3.0), ("schema_version", True),
+                         ("schema_version", 3), ("schema_version", 5), ("schema_version", 4.0), ("schema_version", True),
                          ("model", "measured-console"), ("scope", "full-62-parameter-atlas"),
                          ("status", "exported-vst3")):
             with self.subTest(key=key, value=bad):
@@ -366,7 +459,9 @@ class ParameterTests(unittest.TestCase):
                  ("parameters", 39), ("parameters", 39, "normalized"),
                  ("parameters", 39, "engine_event"),
                  ("parameters", 43), ("parameters", 43, "normalized"),
-                 ("parameters", 43, "engine_event"))
+                 ("parameters", 43, "engine_event"),
+                 ("parameters", 45), ("parameters", 45, "normalized"),
+                 ("parameters", 45, "engine_event"))
         for path in paths:
             for operation in ("unknown", "missing"):
                 candidate = copy.deepcopy(REGISTRY)
@@ -379,7 +474,7 @@ class ParameterTests(unittest.TestCase):
                     validator.validate_registry(candidate)
 
     def test_nonfinite_domains_and_boolean_numbers_reject(self):
-        for index in (0, 36, 37, 39, 40, 41, 42, 43, 44):
+        for index in (0, 36, 37, 39, 40, 41, 42, 43, 44, 45, 46):
             for path in (("minimum",), ("maximum",), ("default",),
                          ("normalized", "minimum"), ("normalized", "maximum"), ("normalized", "default")):
                 for value in (float("nan"), float("inf"), -float("inf"), True, 10 ** 400):
@@ -406,14 +501,14 @@ class ParameterTests(unittest.TestCase):
         for identifier, parameter in self.by_id.items():
             count = parameter["step_count"]
             for lower in range(count):
-                threshold = (lower + 0.5) / count
+                threshold = nearest_binary64(2 * lower + 1, 2 * count)
                 with self.subTest(identifier=identifier, threshold=threshold):
                     self.assertEqual(validator.normalized_to_value(parameter, math.nextafter(threshold, 0.0)), lower)
                     self.assertEqual(validator.normalized_to_value(parameter, threshold), lower + 1)
                     self.assertEqual(validator.normalized_to_value(parameter, math.nextafter(threshold, 1.0)), lower + 1)
 
     def test_conversion_rejects_nonfinite_and_out_of_range_without_clipping(self):
-        for identifier in (4096, 8192, 8208, 12288, 12289, 12290, 12291, 16384, 16385):
+        for identifier in (4096, 8192, 8208, 12288, 12289, 12290, 12291, 16384, 16385, 20480, 20481):
             parameter = self.by_id[identifier]
             for invalid in (-0.001, math.nextafter(0.0, -math.inf), math.nextafter(1.0, math.inf), float("nan"),
                             float("inf"), -float("inf"), True, "0.5", None, 10 ** 400):
@@ -426,12 +521,12 @@ class ParameterTests(unittest.TestCase):
                             -float("inf"), True, "1", None, 10 ** 400):
                 with self.assertRaises(validator.ParameterError):
                     validator.value_to_normalized(parameter, invalid)
-        for identifier in (4096, 8208, 12288, 12289, 12290, 12291, 16384, 16385):
+        for identifier in (4096, 8208, 12288, 12289, 12290, 12291, 16384, 16385, 20480, 20481):
             with self.assertRaises(validator.ParameterError):
                 validator.value_to_normalized(self.by_id[identifier], 0.5)
 
     def test_event_mapping_rejects_unknown_id_and_returns_an_independent_payload(self):
-        for invalid in (4105, 12287, 12292, 16383, 16386, -1, 1 << 32, True, 4096.0, "4096"):
+        for invalid in (4105, 12287, 12292, 16383, 16386, 20479, 20482, -1, 1 << 32, True, 4096.0, "4096"):
             with self.subTest(identifier=invalid), self.assertRaises(validator.ParameterError):
                 validator.normalized_to_event(self.registry, invalid, 0.5)
         event = validator.normalized_to_event(self.registry, 4096, 0.5)
@@ -472,8 +567,8 @@ class ParameterTests(unittest.TestCase):
         result = subprocess.run([sys.executable, str(VALIDATOR_PATH), str(REGISTRY_PATH)],
                                 capture_output=True, text=True, check=False)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("45 proposed internal parameters", result.stdout)
-        self.assertIn("exclusive-ab-percussion-pedal-console-v3", result.stdout)
+        self.assertIn("47 proposed internal parameters", result.stdout)
+        self.assertIn("exclusive-fixed-percussion-pedal-console-v4", result.stdout)
         self.assertIn("host mapping remains pending", result.stdout)
         with tempfile.TemporaryDirectory(prefix="hammond parameters cli ") as directory:
             path = Path(directory) / "bad.json"

@@ -28,7 +28,7 @@ DEFAULT_CONTROLS = {
         [[0] * 9, [8, 8, 8, 0, 0, 0, 0, 0, 0]],
         [[0] * 9, [0, 0, 8, 0, 0, 0, 0, 0, 0]],
     ],
-    "selected_banks": [1, 1], "route_enabled": [True, True], "expression": 1,
+    "selected_banks": [1, 1], "fixed_registrations": [0, 0], "preset_selections": [11, 11], "route_enabled": [True, True], "expression": 1,
     "pedal_drawbars": [8, 0],
     "percussion": {"enabled": False, "harmonic": 0, "volume": 0, "decay": 0},
 }
@@ -155,7 +155,7 @@ class ReplayBoundaryAcceptance(unittest.TestCase):
         return data, image_path
 
     def assert_joined(self, data: dict) -> None:
-        self.assertEqual(data["schema_version"], 2)
+        self.assertEqual(data["schema_version"], 3)
         assert_no_midi_input(self, data)
         self.assertEqual(data["application"], "hammond_standalone")
         self.assertEqual(data["runtime"]["video_driver"], "dummy")
@@ -242,13 +242,13 @@ class ReplayBoundaryAcceptance(unittest.TestCase):
                 self.assertEqual(data["replay"]["accepted_note_off_commands"], off)
 
     def test_tied_resizes_preserve_each_pointer_geometry_and_note_owner(self) -> None:
-        # Independent literal points: (36,560) is Lower C2 at 960x700;
-        # (202,580) is Upper C2 at 1280x900, beyond its new bank rail.
+        # Independent literal points beyond each permanent preset rail:
+        # (198,560) is Lower C2 at960x700; (214,580) is Upper C2 at1280x900.
         # Each tied resize marker must apply before its following pointer
         # events. Space retains the original Lower owner after Upper refocus.
-        actions = ["resize 960 700", "mouse_down 36 560", "mouse_up 36 560",
+        actions = ["resize 960 700", "mouse_down 198 560", "mouse_up 198 560",
                    "key_down Space none 0", "resize 1280 900",
-                   "mouse_down 202 580", "mouse_up 202 580"]
+                   "mouse_down 214 580", "mouse_up 214 580"]
         data, _ = self.invoke(script([(200, action) for action in actions], 550))
         self.assert_holds(data, [], [36], [])
         self.assertEqual(data["replay"]["accepted_note_on_commands"], 3)

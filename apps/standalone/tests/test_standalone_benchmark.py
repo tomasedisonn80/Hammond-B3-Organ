@@ -44,14 +44,14 @@ WORK = {
 DEFAULT_CONTROLS = {
     "upper_a": [0] * 9, "upper_b": [0] * 9,
     "lower_a": [0] * 9, "lower_b": [0] * 9,
-    "selected_banks": [1, 1], "route_enabled": [True, True],
+    "selected_banks": [1, 1], "fixed_registrations": [0, 0], "preset_selections": [11, 11], "route_enabled": [True, True],
     "pedal_drawbars": [0, 0], "expression": 1.0,
     "percussion": {"enabled": False, "harmonic": 0, "volume": 0, "decay": 0},
 }
 PERFORMANCE_CONTROLS = {
     "upper_a": [0] * 9, "upper_b": [8, 8, 8, 0, 0, 0, 0, 0, 0],
     "lower_a": [0] * 9, "lower_b": [0, 0, 8, 8, 0, 0, 0, 0, 0],
-    "selected_banks": [1, 1], "route_enabled": [True, True],
+    "selected_banks": [1, 1], "fixed_registrations": [0, 0], "preset_selections": [11, 11], "route_enabled": [True, True],
     "pedal_drawbars": [8, 5], "expression": 0.75,
     "percussion": {"enabled": True, "harmonic": 1, "volume": 1, "decay": 1},
 }
@@ -158,7 +158,7 @@ class StandaloneBenchmarkTests(unittest.TestCase):
         self.assertIs(type(report), dict)
         self.assertEqual(set(report), TOP_KEYS)
         expected_top = {
-            "schema": "hammond-standalone-benchmark-v1", "status": "ok",
+            "schema": "hammond-standalone-benchmark-v2", "status": "ok",
             "scope": "offline observed wall-clock intervals around actual Session::render",
             "workload": workload, "workload_version": 1, "sample_rate_hz": rate,
             "buffer_frames": block, "iterations": iterations, "warmup": warmup,
@@ -390,7 +390,13 @@ class StandaloneBenchmarkTests(unittest.TestCase):
         self.assertEqual(paths, sorted(set(paths)))
         self.assertTrue({"apps/standalone/Session.h", "apps/standalone/Session.cpp",
                          "apps/standalone/benchmark.cpp", "tools/CliArguments.h",
-                         "src/Engine.cpp", "include/hammond/Engine.h"} <= set(paths))
+                         "src/Engine.cpp", "include/hammond/Engine.h",
+                         "src/FixedRegistration.cpp", "include/hammond/FixedRegistration.h",
+                         "tools/compile_fixed_registrations.py", "tools/compile_chapel_presets.py",
+                         "data/chapel-presets.schema.json",
+                         "data/registrations/atlas-chapel-nominal-v1.json",
+                         "data/registrations/review-a-chapel.csv",
+                         "data/registrations/review-b-chapel.csv"} <= set(paths))
         fingerprint = hashlib.sha256("".join(records).encode("utf-8")).hexdigest()
         self.assertEqual(manifest["source_manifest_sha256"], fingerprint)
         self.assertEqual(report["build"]["source_manifest_sha256"], fingerprint)

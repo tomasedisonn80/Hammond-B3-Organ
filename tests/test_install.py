@@ -24,6 +24,10 @@ import xml.etree.ElementTree as ET
 
 
 ROOT = Path(__file__).resolve().parents[1]
+HISTORICAL_PARAMETER_IDS = (set(range(4096, 4105)) | set(range(4112, 4121)) |
+                            set(range(4128, 4137)) | set(range(4144, 4153)) |
+                            {8192, 8208, 8209, 12288, 12289, 12290, 12291, 16384, 16385})
+HISTORICAL_PARAMETER_HASH = "13ba488bec90154c960c3fd700dc4a774aff5664caf5d68472821493f22d1cad"
 FIXTURE_NAMES = {
     "catalog-v1.json",
     "a4-fundamental-v1.events",
@@ -225,7 +229,9 @@ class OfflineInstallTests(unittest.TestCase):
                     self.assertIs(metadata["host_exports_verified"], False)
                     self.assertIs(metadata["native_host_curves_verified"], False)
                     self.assertNotIn("native_host_curves_implemented", metadata)
-                    self.assertEqual(len(metadata["parameters"]), 45)
+                    self.assertEqual(len(metadata["parameters"]), 47)
+                    self.assertEqual(metadata["registry_schema_version"], 4)
+                    self.assertEqual(metadata["model"], "exclusive-fixed-percussion-pedal-console-v4")
                     self.assertEqual(metadata["normalized"], 0.49999999999999994)
                     compiled_parameters = metadata
 
@@ -279,11 +285,7 @@ class OfflineInstallTests(unittest.TestCase):
             self.assertEqual(model["routing"]["model_id"], pedal_catalog["models"]["pedal_routing"])
             self.assertEqual(model["voice"]["model_id"], pedal_catalog["models"]["pedal_voice"])
             self.assertEqual(model["voice"]["gain_law_id"], pedal_catalog["models"]["pedal_gain"])
-            self.assertEqual(compiled_parameters["registry_schema_version"],
-                             pedal_catalog["control_model"]["registry_schema_version"])
-            self.assertEqual(compiled_parameters["model"], pedal_catalog["control_model"]["registry_model"])
-            self.assertEqual(len(compiled_parameters["parameters"]),
-                             pedal_catalog["control_model"]["parameter_count"])
+            self.assert_historical_parameter_compatibility(compiled_parameters, pedal_catalog)
             pedal_ids = [{"id": item["id"], "path": item["path"]}
                          for item in compiled_parameters["parameters"]
                          if item["path"].startswith("pedal.")]
@@ -446,6 +448,34 @@ class OfflineInstallTests(unittest.TestCase):
                 self.assertFalse(missing_pedal_trace.exists(), "Pedal trace used an implicit profile fallback")
             finally:
                 installed_profile.write_bytes(profile_bytes)
+
+    def assert_historical_parameter_compatibility(self, compiled_parameters, pedal_catalog):
+        # Preserve the catalog's original v3/count45 evidence and compare
+        # its frozen full-record digest with the explicit historical subset.
+        control_model = pedal_catalog["control_model"]
+        self.assertEqual(control_model["registry_schema_version"], 3)
+        self.assertEqual(control_model["registry_model"], "exclusive-ab-percussion-pedal-console-v3")
+        self.assertEqual(control_model["parameter_count"], 45)
+        self.assertEqual(control_model["parameter_records_canonical_sha256"], HISTORICAL_PARAMETER_HASH)
+        registry = json.loads((ROOT / "data/parameter-registry.json").read_bytes())
+        historical = sorted((p for p in registry["parameters"] if p["id"] in HISTORICAL_PARAMETER_IDS),
+                            key=lambda p: p["id"])
+        self.assertEqual(len(historical), 45)
+        canonical = json.dumps(historical, sort_keys=True, separators=(",", ":"),
+                               ensure_ascii=True, allow_nan=False).encode("ascii")
+        self.assertEqual(hashlib.sha256(canonical).hexdigest(), HISTORICAL_PARAMETER_HASH)
+        compiled_by_id = {p["id"]: p for p in compiled_parameters["parameters"]}
+        self.assertEqual(set(compiled_by_id), HISTORICAL_PARAMETER_IDS | {20480, 20481})
+        self.assertEqual(compiled_parameters["registry_schema_version"], registry["schema_version"])
+        self.assertEqual(compiled_parameters["model"], registry["model"])
+        for record in historical:
+            compiled = compiled_by_id[record["id"]]
+            for field in ("path", "kind", "unit", "minimum", "maximum", "step_count"):
+                self.assertEqual(compiled[field], record[field])
+            self.assertEqual(compiled["default_plain"], record["default"])
+            self.assertEqual(compiled["default_normalized"], record["normalized"]["default"])
+            for field in ("type", "manual", "index"):
+                self.assertEqual(compiled["event"][field], record["engine_event"][field])
 
     def assert_pedal_identity(self, document, catalog):
         for field in ("profile_id", "authoring_sha256"):

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Linux-c++"
+	tests="8"
+	failures="2"
+	disabled="0"
+	skipped="0"
+	hostname="2b85fe4e0adc"
+	time="82"
+	timestamp="2026-11-14T01:44:25"
+	>
+	<testcase name="test_standalone_install" classname="test_standalone_install" time="7.57054" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>........
+----------------------------------------------------------------------
+Ran 8 tests in 7.370s
+
+OK
+{"binary_sha256": "557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82", "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6", "midi_backend": "ALSA", "midi_enabled": true, "payload_files": 17, "relocated_smoke": {"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 55, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 28160, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"exp...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_benchmark" classname="test_standalone_benchmark" time="3.17515" status="run">
+		<properties>
+			<property name="cmake_labels" value="benchmark;standalone"/>
+		</properties>
+		<system-out>.........
+----------------------------------------------------------------------
+Ran 9 tests in 3.015s
+
+OK
+standalone benchmark CLI calls: 111; no elapsed-time correctness threshold applied
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_app" classname="test_standalone_app" time="9.14022" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+ok
+test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+test_late_malformed_startup_preserves_file_and_audition_controls (__main__.NativeAppAcceptance.test_late_malformed_startup_preserves_file_and_audition_controls) ... ok
+test_list_audio_needs_no_video_or_file_writes (__main__.NativeAppAcceptance.test_list_audio_needs_no_video_or_file_writes) ... ok
+test_missing_and_empty_values_reject_before_output (__main__.NativeAppAcceptance.test_missing_and_empty_values_reject_before_output) ... ok
+test_no_audio_fails_bounded_with_zero_callback_claims (__main__.NativeAppAcceptance.test_no_audio_fails_bounded_with_zero_callback_claims) ... ok
+test_noninteger_and_overflow_values_reject_before_output (__main__.NativeAppAcceptance.test_noninteger_and_overflow_values_reject_before_output) ... ok
+test_output_directory_leaves_reject_before_writes (__main__.NativeAppAcceptance.test_output_directory_leaves_reject_before_writes) ... ok
+test_output_symlinks_cannot_create_or_overwrite_musical_state (__main__.NativeAppAcceptance.test_output_symlinks_cannot_create_or_overwrite_musical_state) ... ok
+test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) ... 
+  test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) (width=960, height=700, rate=48000, buffer=512) ... FAIL
+test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) ... ok
+test_screenshot_failure_joins_audio_and_preserves_musical_file (__main__.NativeAppAcceptance.test_screenshot_failure_joins_audio_and_preserves_musical_file) ... ok
+test_state_symlinks_cannot_be_filled_by_outputs_or_loaded (__main__.NativeAppAcceptance.test_state_symlinks_cannot_be_filled_by_outputs_or_loaded) ... ok
+test_unknown_and_combined_options_reject_before_output (__main__.NativeAppAcceptance.test_unknown_and_combined_options_reject_before_output) ... ok
+test_unsupported_numeric_values_reject_before_output (__main__.NativeAppAcceptance.test_unsupported_numeric_values_reject_before_output) ... ok
+Actual native application subprocesses: 164
+
+======================================================================
+FAIL: test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) (width=960, height=700, rate=48000, buffer=512)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_app.py", line 618, in test_reference_minimum_and_extreme_audio_smokes
+    self.assert_bmp(screenshot, width, height, held_middle_c=True)
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_app.py", line 518, in assert_bmp
+    self.assertNotEqual(pixel(c4), pixel(d4),
+AssertionError: b'\xcc\xea\xf9' == b'\xcc\xea\xf9' : The screenshot did not paint Upper MIDI 60 as held
+
+----------------------------------------------------------------------
+Ran 18 tests in 9.001s
+
+FAILED (failures=1)
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_midi_cli" classname="test_standalone_midi_cli" time="11.0156" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>MIDI CLI/modal executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+test_cli_distinct_channels_and_all_boundary_positions (__main__.NativeMidiAcceptance.test_cli_distinct_channels_and_all_boundary_positions) ... ok
+test_cli_exact_port_argument_bytes_and_no_name_coercion (__main__.NativeMidiAcceptance.test_cli_exact_port_argument_bytes_and_no_name_coercion) ... ok
+test_cli_list_midi_precedes_sdl_initialization (__main__.NativeMidiAcceptance.test_cli_list_midi_precedes_sdl_initialization) ... ok
+test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name (__main__.NativeMidiAcceptance.test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name) ... ok
+test_cli_numeric_channels_are_strict_and_bounded (__main__.NativeMidiAcceptance.test_cli_numeric_channels_are_strict_and_bounded) ... ok
+test_cli_repeated_options_and_conflicting_lists (__main__.NativeMidiAcceptance.test_cli_repeated_options_and_conflicting_lists) ... ok
+test_cli_startup_defaults_to_no_input_with_custom_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_native_midi_replay" classname="test_standalone_native_midi_replay" time="23.4134" status="run">
+		<properties>
+			<property name="cmake_labels" value="midi;native;standalone"/>
+		</properties>
+		<system-out>Native MIDI replay executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect) ... ok
+test_cc11_and_bank_b_edits_share_pending_ui_controls (__main__.NativeMidiReplayAcceptance.test_cc11_and_bank_b_edits_share_pending_ui_controls) ... ok
+test_cc123_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui) ... ok
+test_division_channel_range_routing_and_ignored_packets (__main__.NativeMidiReplayAcceptance.test_division_channel_range_routing_and_ignored_packets) ... ok
+test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner (__main__.NativeMidiReplayAcceptance.test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner) ... ok
+test_focus_resize_help_and_midi_apply_preserve_external_owners (__main__.Nati...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_workflows" classname="test_standalone_workflows" time="64.3619" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Workflow executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+test_all_twenty_four_presets_at_minimum_size_preserve_owners (__main__.NativeWorkflowAcceptance.test_all_twenty_four_presets_at_minimum_size_preserve_owners) ... ok
+test_cancel_retains_held_notes_and_panic_releases_every_ui_part (__main__.NativeWorkflowAcceptance.test_cancel_retains_held_notes_and_panic_releases_every_ui_part) ... ok
+test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes (__main__.NativeWorkflowAcceptance.test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes) ... ok
+test_edit_bank_and_sounding_bank_remain_independent (__main__.NativeWorkflowAcceptance.test_edit_bank_and_sounding_bank_remain_independent) ... ok
+test_empty_replay_has_no_automatic_smoke_note_or_file_write (__main__.NativeWorkflowAcceptance.test_empty_replay_has_no_automatic_smoke_note_or_file_write) ... ok
+test_fixed_cancel_save_live_load_cold_load_and_audio_restart (__main__.NativeWorkflowAcceptance.test_fixed_...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_replay_boundaries" classname="test_standalone_replay_boundaries" time="5.28451" status="fail">
+		<failure message="Failed"/>
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Replay boundary executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ok
+test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) ... ok
+test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner) ... FAIL
+test_zero_and_maximum_nonmutating_events_have_no_smoke_note (__main__.ReplayBoundaryAcceptance.test_zero_and_maximum_nonmutating_events_have_no_smoke_note) ... ok
+Actual replay boundary subprocesses: 29; preserved setup rejections: 19
+
+======================================================================
+FAIL: test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 252, in test_tied_resizes_preserve_each_pointer_geometry_and_note_owner
+    data, _ = self.invoke(script([(200, action) for action in actions], 550))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 141, in invoke
+    self.assert_joined(data)
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 182, in assert_joined
+    self.assertEqual(data["controls"], DEFAULT_CONTROLS)
+AssertionError: {'man[215 chars][11, 0], 'route_enabled': [True, False], 'expr[106 chars]: 0}} != {'man[215 chars][11, 11], 'route_enabled': [True, True], 'expr[106 chars]: 0}}
+Diff is 646 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 9 tests in 5.108s
+
+FAILED (failures=1)
+</system-out>
+	</testcase>
+	<testcase name="test_standalone_chapel" classname="test_standalone_chapel" time="20.1451" status="run">
+		<properties>
+			<property name="cmake_labels" value="native;standalone"/>
+		</properties>
+		<system-out>Native chapel executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+Native chapel main SHA-256: bda52bd9ff0d2bcb60e14bb606fbaeb46cd7dcf3416fa4a2ba3b42a6561db7bf
+..Native chapel acceptance: 22 exported states, 22 actual SDL application invocations
+
+----------------------------------------------------------------------
+Ran 2 tests in 19.932s
+
+OK
+</system-out>
+	</testcase>
+</testsuite>

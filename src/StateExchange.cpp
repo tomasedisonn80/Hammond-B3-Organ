@@ -6,16 +6,20 @@
 namespace hammond {
 namespace {
 
-static_assert(kParameterCount == 45, "Update the explicit state payload for a registry change");
+static_assert(kParameterCount == 47, "Update the explicit state payload for a registry change");
+static_assert(kStatePublicationCellCount == 50);
 static_assert(kManualCount == 2 && kDrawbarBankCount == 2 && kDrawbarCount == 9);
+static_assert(static_cast<std::uint8_t>(FixedRegistration::A) == 9);
 static_assert(sizeof(double) == sizeof(std::uint64_t));
 static_assert(std::numeric_limits<double>::is_iec559);
 
 using Payload = std::array<std::uint64_t, kStatePublicationCellCount>;
 
-// Cells follow compiled descriptor order, not external parameter IDs. Integer
-// controls retain their exact plain values; expression retains binary64 bits
-// (including signed zero). Route bits and the acknowledgement follow them.
+// Cells 0..44 retain the original control layout. Cells 45/46 contain raw
+// fixed modes, NOT effective preset parameter values: a cancelled fixed route
+// must retain its fixed choice as well as its remembered bank. Route bits are
+// cells 47/48 and the acknowledgement is cell 49. Expression retains binary64
+// bits (including signed zero); every other control retains its plain value.
 [[nodiscard]] Payload encode(const ControlSnapshot& snapshot, std::uint64_t ack) noexcept {
     Payload cells{};
     std::size_t index = 0;
@@ -33,6 +37,9 @@ using Payload = std::array<std::uint64_t, kStatePublicationCellCount>;
     cells[index++] = static_cast<std::uint64_t>(snapshot.percussion.volume);
     cells[index++] = static_cast<std::uint64_t>(snapshot.percussion.decay);
     for (const auto position : snapshot.pedal_drawbars) cells[index++] = position;
+    for (const auto fixed : snapshot.fixed_registrations) {
+        cells[index++] = static_cast<std::uint64_t>(fixed);
+    }
     for (const auto enabled : snapshot.route_enabled) cells[index++] = enabled ? 1 : 0;
     cells[index] = ack;
     return cells;
@@ -67,6 +74,10 @@ using Payload = std::array<std::uint64_t, kStatePublicationCellCount>;
     for (auto& position : candidate.controls.pedal_drawbars) {
         if (cells[index] > 8) return false;
         position = static_cast<std::uint8_t>(cells[index++]);
+    }
+    for (auto& fixed : candidate.controls.fixed_registrations) {
+        if (cells[index] > 9) return false;
+        fixed = static_cast<FixedRegistration>(cells[index++]);
     }
     for (auto& enabled : candidate.controls.route_enabled) {
         if (cells[index] > 1) return false;

@@ -16,7 +16,7 @@ inline constexpr std::string_view kPerformanceInputModelId =
 
 // One global timeline. The active alternative owns its complete offset/payload.
 // The Event alternative accepts only Drawbar, BankDrawbar, SelectBank, Cancel,
-// Expression, Percussion and PedalDrawbar. Physical note/partial-key/panic Event
+// Expression, Percussion, PedalDrawbar and SelectPreset. Physical note/partial-key/panic Event
 // alternatives reject: manual and pedal note authority belongs to the two typed
 // ownership adapters. Values and their variant carry no dynamic storage.
 using PerformanceInputEvent = std::variant<HostNoteEvent, PedalNoteEvent, Event>;

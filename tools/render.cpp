@@ -431,6 +431,11 @@ struct AbsoluteEvent {
         if (index != 0 || value < 0.0 || value > 1.0 || std::trunc(value) != value) {
             fail("Select-bank index must be zero and integer value 0=A or 1=B.");
         }
+    } else if (tokens[1] == "select_preset") {
+        result.event.type = EventType::SelectPreset;
+        if (index != 0 || value < 0.0 || value > 11.0 || std::trunc(value) != value) {
+            fail("Select-preset index must be zero and integer value in 0..11.");
+        }
     } else if (tokens[1] == "cancel") {
         result.event.type = EventType::Cancel;
         if (index != 0 || value != 0.0) {
@@ -859,11 +864,13 @@ static int renderer_main(int argc, char* argv[]) {
                 "Scores: at most 16 MiB, 262144 events, 4096 bytes/line, 1024 events/frame.\n"
                 "Score fields: frame type upper|lower index value (five fields).\n"
                 "Types: note_on, note_off, drawbar, expression, all_notes_off,\n"
-                "       bank_drawbar, select_bank, cancel, percussion, key_position,\n"
+                "       bank_drawbar, select_bank, select_preset, cancel, percussion, key_position,\n"
                 "       pedal_on, pedal_off, pedal_drawbar, pedal_all_notes_off.\n"
                 "bank_drawbar: index bank*9+drawbar (A=0, B=1), integer value 0..8.\n"
-                "select_bank: index 0, integer value 0=A or 1=B; reconnects the manual.\n"
-                "cancel: index/value 0; retains held keys and banks. Drawbar edits selected bank.\n"
+                "select_bank: index 0, integer value 0=A or 1=B; clears fixed mode and reconnects.\n"
+                "select_preset: either manual, index 0, integer value 0=Cancel, 1..9=C#..A, 10=A#, 11=B.\n"
+                "Fixed presets retain A/B banks; A# selects bank A, B selects bank B.\n"
+                "cancel: index/value 0; retains held keys, fixed mode and banks. Drawbar edits retained bank.\n"
                 "percussion: upper only; indices 0=enable, 1=third, 2=soft, 3=fast; value 0|1.\n"
                 "key_position: either manual, MIDI36..96, target 0..1; ideal contacts require 0|1.\n"
                 "Pedal events require lower as an unused-field convention, not lower-manual keys.\n"

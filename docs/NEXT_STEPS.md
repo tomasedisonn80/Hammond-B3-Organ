@@ -4,16 +4,20 @@
 
 Follow the [new session](development/2026-11-14-preset-continuation/README.md)
 and its [actual manifest](development/2026-11-14-preset-continuation/assignments.json).
-The complete atlas has been freshly read. Freeze the reviewed
-[core](PRESET_CORE_API.md) and [state/parameter](PRESET_STATE_PARAMETER_CONTRACT.md)
-contracts, then implement the [exclusive selector](PRESET_SELECTION_CONTRACT.md),
-its immutable admitted data, both snapshot encodings, existing host/native
-adapters and twelve reversed preset keys per manual. Use the independent
-literal oracle for all eighteen fixed registrations, preserve every historical
-fixture and first 45 parameter record, then retain actual native comparisons and
-updated README screenshots. Keep the existing scanner, rotary, calibration and
-MIDI tracks intact. The shared status and current contract distinguish what is
-implemented from proposed work; do not treat this plan as an executed pass.
+The complete atlas reading, frozen contracts and core/state/parameter/publication/
+native-VST3/offline implementation are complete. Independent UI, allocation,
+concurrent publication and native state/ownership acceptance pass. The first
+combined 143-suite source has its original 141-pass result and corrected 2-suite
+recheck retained; 63 old/current legacy audio comparisons also pass.
+
+Finish the reusable current gallery, install the current preset runbook with
+matching package/workflow inventories, and inspect the new hosted CoreMIDI
+replay diagnostics. Refine the remaining reference appearance, then qualify
+sanitizers, all platforms, relocation and final coherent source. Reconcile the
+README/current guides and finish the sixty actual assignments and final handoff.
+Keep original failures, all historical fixtures and the first 45 parameter records.
+The separate scanner, rotary and calibration tracks retain their own scope.
+A focused or first integrated gate is not a physical or whole-project pass.
 
 ## Current continuation: external MIDI and reference-led UI
 

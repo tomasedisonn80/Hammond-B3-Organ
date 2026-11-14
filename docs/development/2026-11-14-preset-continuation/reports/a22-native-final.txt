@@ -1,0 +1,468 @@
+UpdateCTestConfiguration  from :/tmp/hammond-preset-a22/build-make/DartConfiguration.tcl
+Parse Config file:/tmp/hammond-preset-a22/build-make/DartConfiguration.tcl
+Test project /tmp/hammond-preset-a22/build-make
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 110
+    Start 110: test_native_controller
+
+110: Test command: /tmp/hammond-preset-a22/build-make/bin/Release/test_native_controller
+110: Working Directory: /tmp/hammond-preset-a22/build-make/plugins/vst3
+110: Test timeout computed to be: 1500
+test 112
+    Start 112: test_native_behavior
+
+112: Test command: /tmp/hammond-preset-a22/build-make/bin/Release/test_native_behavior "/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3" "/tmp/hammond-preset-a22/build-make/nominal.b3p"
+112: Working Directory: /tmp/hammond-preset-a22/build-make/plugins/vst3
+112: Test timeout computed to be: 180
+test 108
+    Start 108: test_native_install
+
+108: Test command: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 "/tmp/hammond-preset-a22/source/plugins/vst3/tests/test_native_install.py"
+108: Working Directory: /tmp/hammond-preset-a22/build-make
+108: Environment variables: 
+108:  PYTHONDONTWRITEBYTECODE=1
+108:  HAMMOND_TEST_CMAKE=/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake
+108:  HAMMOND_TEST_BUILD_DIR=/tmp/hammond-preset-a22/build-make
+108:  HAMMOND_TEST_CONFIG=Release
+108:  HAMMOND_TEST_PROFILE=/tmp/hammond-preset-a22/build-make/nominal.b3p
+108:  HAMMOND_TEST_VST3_BUNDLE=/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3
+108:  HAMMOND_TEST_NATIVE_MODULE=/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3/Contents/x86_64-linux/HammondB3.so
+108:  HAMMOND_TEST_NATIVE_ABI=/tmp/hammond-preset-a22/build-make/bin/Release/test_native_abi
+108:  HAMMOND_INSTALL_LIBDIR=lib
+108: Test timeout computed to be: 240
+test 109
+    Start 109: hammond_vst3_validator
+
+109: Test command: /tmp/hammond-preset-a22/build-make/bin/Release/validator "/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3"
+109: Working Directory: /tmp/hammond-preset-a22/build-make/plugins/vst3
+109: Test timeout computed to be: 180
+109: * Loading module...
+109: 
+109: 	/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3
+109: 
+109: * Check valid bundle structure...
+109: 
+109: * Scanning classes...
+109: 
+109:   Factory Info:
+109: 	vendor = Hammond B3 Organ project
+109: 	url = https://github.com/tomasedisonn80/Hammond-B3-Organ
+109: 	email = 
+109: 
+109:   Class Info 0:
+109: 	name = Hammond B3 Nominal
+109: 	category = Audio Module Class
+109: 	subCategories = Instrument|Synth
+109: 	version = 0.1.0
+109: 	sdkVersion = VST 3.8.1
+109: 	cid = 19F9ADC0533F42B4B96BD51D6547E838
+109: 
+109:   Class Info 1:
+109: 	name = Hammond B3 Nominal Controller
+109: 	category = Component Controller Class
+109: 	subCategories = 
+109: 	version = 0.1.0
+109: 	sdkVersion = VST 3.8.1
+109: 	cid = 0DEE76AB26BC475ABF64F138C89FB0E0
+109: 
+109: * Checking snapshots...
+109: 
+109: Info: No snapshots in Bundle.
+109: 
+109: * Creating tests...
+109: 
+109: * Running tests...
+109: 
+109: -------------------------------------------------------------
+109: TestSuite : Hammond B3 Nominal
+109: -------------------------------------------------------------
+109: 
+109: -------------------------------------------------------------
+109: TestSuite : General Tests
+109: -------------------------------------------------------------
+109: 
+109: [Scan Editor Classes]
+109: Info:  ===Scan Editor Classes ====================================
+109: Info:  This component has an edit controller class
+109: Info:     Controller CID: {0DEE76AB-26BC-475A-BF64-F138C89FB0E0}
+109: [Succeeded]
+109: 
+109: [Scan Buses]
+109: Info:  ===Scan Buses ====================================
+109: Info:  => Audio Buses: [0 In(s) => 1 Out(s)]
+109: Info:       Out[0]: "Dry stereo" (Main-Default Active) 
+109: Info:  => Event Buses: [3 In(s) => 0 Out(s)]
+109: Info:       In [0]: "Upper" (Main-Default Active) 
+109: Info:       In [1]: "Lower" (Aux-Default Active) 
+109: Info:       In [2]: "Pedals" (Aux-Default Active) 
+109: [Succeeded]
+109: 
+109: [Scan Parameters]
+109: Info:  ===Scan Parameters ====================================
+109: Info:  This component exports 47 parameter(s)
+109: Info:  Note: it could be better to use UnitInfo in order to sort Parameters (>20).
+109: Info:     Parameter 000 (id=4096): [title="manual.upper.bank.A.drawbar.16ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 001 (id=4097): [title="manual.upper.bank.A.drawbar.5_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 002 (id=4098): [title="manual.upper.bank.A.drawbar.8ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 003 (id=4099): [title="manual.upper.bank.A.drawbar.4ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 004 (id=4100): [title="manual.upper.bank.A.drawbar.2_2/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 005 (id=4101): [title="manual.upper.bank.A.drawbar.2ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 006 (id=4102): [title="manual.upper.bank.A.drawbar.1_3/5ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 007 (id=4103): [title="manual.upper.bank.A.drawbar.1_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 008 (id=4104): [title="manual.upper.bank.A.drawbar.1ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 009 (id=4112): [title="manual.upper.bank.B.drawbar.16ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 010 (id=4113): [title="manual.upper.bank.B.drawbar.5_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 011 (id=4114): [title="manual.upper.bank.B.drawbar.8ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 012 (id=4115): [title="manual.upper.bank.B.drawbar.4ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 013 (id=4116): [title="manual.upper.bank.B.drawbar.2_2/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 014 (id=4117): [title="manual.upper.bank.B.drawbar.2ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 015 (id=4118): [title="manual.upper.bank.B.drawbar.1_3/5ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 016 (id=4119): [title="manual.upper.bank.B.drawbar.1_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 017 (id=4120): [title="manual.upper.bank.B.drawbar.1ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 018 (id=4128): [title="manual.lower.bank.A.drawbar.16ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 019 (id=4129): [title="manual.lower.bank.A.drawbar.5_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 020 (id=4130): [title="manual.lower.bank.A.drawbar.8ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 021 (id=4131): [title="manual.lower.bank.A.drawbar.4ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 022 (id=4132): [title="manual.lower.bank.A.drawbar.2_2/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 023 (id=4133): [title="manual.lower.bank.A.drawbar.2ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 024 (id=4134): [title="manual.lower.bank.A.drawbar.1_3/5ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 025 (id=4135): [title="manual.lower.bank.A.drawbar.1_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 026 (id=4136): [title="manual.lower.bank.A.drawbar.1ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 027 (id=4144): [title="manual.lower.bank.B.drawbar.16ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 028 (id=4145): [title="manual.lower.bank.B.drawbar.5_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 029 (id=4146): [title="manual.lower.bank.B.drawbar.8ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 030 (id=4147): [title="manual.lower.bank.B.drawbar.4ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 031 (id=4148): [title="manual.lower.bank.B.drawbar.2_2/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 032 (id=4149): [title="manual.lower.bank.B.drawbar.2ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 033 (id=4150): [title="manual.lower.bank.B.drawbar.1_3/5ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 034 (id=4151): [title="manual.lower.bank.B.drawbar.1_1/3ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 035 (id=4152): [title="manual.lower.bank.B.drawbar.1ft"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 036 (id=8192): [title="global.expression"] [unit="normalized-linear-gain-surrogate"] [type = Float, default = 1.000000, unit = 0]
+109: Info:     Parameter 037 (id=8208): [title="manual.upper.selected_bank"] [unit="bank-index-0=A-1=B"] [type = Toggle, default = 1.000000, unit = 0]
+109: Info:     Parameter 038 (id=8209): [title="manual.lower.selected_bank"] [unit="bank-index-0=A-1=B"] [type = Toggle, default = 1.000000, unit = 0]
+109: Info:     Parameter 039 (id=12288): [title="percussion.enabled"] [unit="enabled-index-0=off-1=on"] [type = Toggle, default = 0.000000, unit = 0]
+109: Info:     Parameter 040 (id=12289): [title="percussion.harmonic"] [unit="harmonic-index-0=second-1=third"] [type = Toggle, default = 0.000000, unit = 0]
+109: Info:     Parameter 041 (id=12290): [title="percussion.volume"] [unit="volume-index-0=normal-1=soft"] [type = Toggle, default = 0.000000, unit = 0]
+109: Info:     Parameter 042 (id=12291): [title="percussion.decay"] [unit="decay-index-0=slow-1=fast"] [type = Toggle, default = 0.000000, unit = 0]
+109: Info:     Parameter 043 (id=16384): [title="pedal.drawbar.mixture1"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 044 (id=16385): [title="pedal.drawbar.mixture2"] [unit="drawbar-position"] [type = Discrete, default = 0.000000, unit = 0]
+109: Info:     Parameter 045 (id=20480): [title="manual.upper.preset_selection"] [unit="preset-key-index"] [type = Discrete, default = 1.000000, unit = 0]
+109: Info:     Parameter 046 (id=20481): [title="manual.lower.preset_selection"] [unit="preset-key-index"] [type = Discrete, default = 1.000000, unit = 0]
+109: Info:  No bypass parameter found. This is an instrument.
+109: [Succeeded]
+109: 
+109: [MIDI Mapping]
+109: Info:  ===MIDI Mapping ====================================
+109: Info:  No MIDI Mapping interface supplied!
+109: [Succeeded]
+109: 
+109: [MIDI Learn]
+109: Info:  ===MIDI Learn ====================================
+109: Info:  No MIDI Learn interface supplied!
+109: [Succeeded]
+109: 
+109: [Scan Units]
+109: Info:  ===Scan Units ====================================
+109: Info:  This component has no units.
+109: [Succeeded]
+109: 
+109: [Scan Programs]
+109: Info:  ===Scan Programs ====================================
+109: Info:  This component does not export any programs.
+109: [Succeeded]
+109: 
+109: [Terminate/Initialize]
+109: Info:  ===Terminate/Initialize ====================================
+109: [Succeeded]
+109: 
+109: [Check Unit Structure]
+109: Info:  ===Check Unit Structure ====================================
+109: Info:  This component does not support IUnitInfo!
+109: [Succeeded]
+109: 
+109: [Valid State Transition 32bits]
+109: Info:  ===Valid State Transition 32bits ====================================
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Valid State Transition 64bits]
+109: Info:  ===Valid State Transition 64bits ====================================
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Bus Consistency]
+109: Info:  ===Bus Consistency ====================================
+109: [Succeeded]
+109: 
+109: [Bus Activation]
+109: Info:  ===Bus Activation ====================================
+109: Info:     Bus Activation: Output Audio Bus (0) (kMain)
+109: Info:     Bus Activation: Input Event Bus (0) (kMain)
+109: Info:     Bus Activation: Input Event Bus (1) (kAux)
+109: Info:     Bus Activation: Input Event Bus (2) (kAux)
+109: [Succeeded]
+109: 
+109: [Check Audio Bus Arrangement]
+109: Info:  ===Check Audio Bus Arrangement ====================================
+109: Info:     Check Output Audio Bus Arrangement (0)
+109: [Succeeded]
+109: 
+109: [SideChain Arrangement]
+109: Info:  ===SideChain Arrangement ====================================
+109: [Succeeded]
+109: 
+109: [Suspend/Resume]
+109: Info:  ===Suspend/Resume ====================================
+109: [Succeeded]
+109: 
+109: [Note Expression]
+109: Info:  ===Note Expression ====================================
+109: Info:  No Note Expression interface supplied!
+109: [Succeeded]
+109: 
+109: [Keyswitch]
+109: Info:  ===Keyswitch ====================================
+109: Info:  No Keyswitch interface supplied!
+109: [Succeeded]
+109: 
+109: [ProcessContext Requirements]
+109: Info:  ===ProcessContext Requirements ====================================
+109: Info:  ProcessContextRequirements:
+109: Info:   - None
+109: [Succeeded]
+109: 
+109: -------------------------------------------------------------
+109: TestSuite : Single Precision (32 bit) Tests
+109: -------------------------------------------------------------
+109: 
+109: [Process Test]
+109: [Succeeded]
+109: 
+109: [Process function running in another thread]
+109: Info:  ===Process function running in another thread ====================================
+110: native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600
+1/8 Test #110: test_native_controller ...........   Passed    0.03 sec
+test 115
+    Start 115: test_native_realtime
+
+115: Test command: /tmp/hammond-preset-a22/build-make/bin/Release/test_native_realtime "/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3" "/tmp/hammond-preset-a22/build-make/nominal.b3p"
+115: Working Directory: /tmp/hammond-preset-a22/build-make/plugins/vst3
+115: Test timeout computed to be: 180
+115: module calibration processor create new=1 delete=0; release new=0 delete=1 refs=0
+115: module calibration controller create new=1 delete=0; release new=0 delete=1 refs=0
+115: enabled rate 44100: manual, pedal, moving contacts, percussion and independent audio verified
+115: enabled rate 48000: manual, pedal, moving contacts, percussion and independent audio verified
+115: enabled rate 96000: manual, pedal, moving contacts, percussion and independent audio verified
+115: path accepted rejected frames fresh_raw carried_raw queued_restores new delete total_us max_us
+115: enabled 40 0 13793 9 0 28 0 0 33702.750 4832.181
+115: preset 54 0 456 90 3 24 0 0 1639.507 211.203
+115: dense 5 0 224 4608 0 4 0 0 1510.168 654.163
+115: maximum 3 0 196608 6 0 0 0 0 449817.944 161440.407
+115: carry 13 0 32 2054 1027 0 0 0 439.870 227.611
+115: output-shape 24 0 1152 0 0 0 0 0 3734.547 1027.368
+115: rejected 0 33 0 0 0 0 0 0 25.260 3.833
+115: setProcessing 15 6 0 0 0 0 0 0 1.158 0.112
+115: regions=193 overload_calibration=12/12 exact_channel_samples=423762 audible_samples=420414 reference_frames=212265 state_reads=204 rollback_cases=30 future_channel_samples=18114 moving_contact_checks=4 owner_capacity_checks=2 assertions=8945157 checksum=fbea92c63d86af53
+115: Scope: Linux calling-thread global C++ new/delete; timings are observations, not device deadlines.
+2/8 Test #115: test_native_realtime .............   Passed    1.07 sec
+test 111
+    Start 111: test_native_abi
+
+111: Test command: /tmp/hammond-preset-a22/build-make/bin/Release/test_native_abi "/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3" "/tmp/hammond-preset-a22/build-make/nominal.b3p"
+111: Working Directory: /tmp/hammond-preset-a22/build-make/plugins/vst3
+111: Test timeout computed to be: 180
+109: [Succeeded]
+109: 
+109: [Silence Flags]
+109: Info:  ===Silence Flags ====================================
+109: [Succeeded]
+109: 
+109: [Silence Processing]
+109: Info:  ===Silence Processing ====================================
+109: [Succeeded]
+109: 
+109: [Parameters Flush (no Buffer)]
+109: Info:  ===Parameters Flush (no Buffer) ====================================
+109: [Succeeded]
+109: 
+109: [Parameters Flush 2 (only numChannel==0)]
+109: Info:  ===Parameters Flush 2 (only numChannel==0) ====================================
+109: [Succeeded]
+109: 
+109: [Parameters Flush 2 (no Buffer, no parameter change)]
+109: Info:  ===Parameters Flush 2 (no Buffer, no parameter change) ====================================
+109: [Succeeded]
+109: 
+109: [Variable Block Size]
+109: Info:  ===Variable Block Size ====================================
+108: ..
+108: ----------------------------------------------------------------------
+108: Ran 2 tests in 1.370s
+108: 
+108: OK
+108: {"bundle_sha256": {"Contents/Resources/THIRD_PARTY_NOTICES.md": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb", "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e", "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184", "Contents/x86_64-linux/HammondB3.so": "36d02646e039d0748a2f01aa9e89dda07c5be816a3ab040b40ae694faad9889e"}, "payload_files": 4, "relocated_abi": {"accepted_callbacks": 1673, "assertions": 701642, "audible_frames": 217972, "compared_frames": 229725, "conversions": 2140, "descriptors": 47, "float_hash": "af029009868faa04", "instances": 9, "lifecycle_sequences": 6, "maximum_audio_error": 0, "rejected_calls": 88, "state_round_trips": 3207, "suite": "native-abi-v1"}, "suite": "native-install-v1"}
+3/8 Test #108: test_native_install ..............   Passed    1.60 sec
+test 113
+    Start 113: test_native_automation
+
+113: Test command: /tmp/hammond-preset-a22/build-make/bin/Release/test_native_automation "/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3" "/tmp/hammond-preset-a22/build-make/nominal.b3p"
+113: Working Directory: /tmp/hammond-preset-a22/build-make/plugins/vst3
+113: Test timeout computed to be: 180
+109: [Succeeded]
+109: 
+109: [Process Format]
+109: Info:  ===Process Format ====================================
+109: Info:  ***Tested Sample Rates***
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 22050.000 Hz! 
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 32000.000 Hz! 
+109: Info:        44100 Hz - processed successfully!
+109: Info:        48000 Hz - processed successfully!
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 88200.000 Hz! 
+109: Info:        96000 Hz - processed successfully!
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 192000.000 Hz! 
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 384000.000 Hz! 
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 1234.568 Hz! 
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 12345.678 Hz! 
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 123456.780 Hz! 
+109: ERROR: IAudioProcessor::setupProcessing (..) failed for samplerate 1234567.800 Hz! 
+109: [Succeeded]
+109: 
+109: [Parameter Bypass persistence]
+109: Info:  ===Parameter Bypass persistence ====================================
+109: Info:  This plugin does not have a bypass parameter!!!
+109: [Succeeded]
+109: 
+109: [In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+109: Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+109: [Succeeded]
+109: 
+109: [In: Mono: 1 Channels, Out: Mono: 1 Channels]
+109: Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+109: Info:      Mono Output-SpeakerArrangement is not supported. Plug-in suggests: Stereo.
+109: [Succeeded]
+109: 
+109: [Accuracy: Block, 1 Parameters, Change every100 Samples]
+109: Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+109: [Succeeded]
+109: 
+109: [Accuracy: Sample, 1 Parameters, Change every100 Samples]
+109: Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+109: [Succeeded]
+109: 
+109: -------------------------------------------------------------
+109: TestSuite : Double Precision (64 bit) Tests
+109: -------------------------------------------------------------
+109: 
+109: [Process Test]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Process function running in another thread]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Silence Flags]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Silence Processing]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Parameters Flush (no Buffer)]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Parameters Flush 2 (only numChannel==0)]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Parameters Flush 2 (no Buffer, no parameter change)]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Variable Block Size]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Process Format]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Parameter Bypass persistence]
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [In: Stereo: 2 Channels, Out: Stereo: 2 Channels]
+109: Info:  ===In: Stereo: 2 Channels, Out: Stereo: 2 Channels ====================================
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [In: Mono: 1 Channels, Out: Mono: 1 Channels]
+109: Info:  ===In: Mono: 1 Channels, Out: Mono: 1 Channels ====================================
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Accuracy: Block, 1 Parameters, Change every100 Samples]
+109: Info:  ===Accuracy: Block, 1 Parameters, Change every100 Samples ====================================
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: [Accuracy: Sample, 1 Parameters, Change every100 Samples]
+109: Info:  ===Accuracy: Sample, 1 Parameters, Change every100 Samples ====================================
+109: Info:  64bit Audio Processing not supported.
+109: [Succeeded]
+109: Failed to teardown test!
+109: 
+109: -------------------------------------------------------------
+109: Result: 47 tests passed, 0 tests failed
+109: -------------------------------------------------------------
+4/8 Test #109: hammond_vst3_validator ...........   Passed    1.92 sec
+test 114
+    Start 114: test_native_concurrency
+
+114: Test command: /tmp/hammond-preset-a22/build-make/bin/Release/test_native_concurrency "/tmp/hammond-preset-a22/build-make/VST3/Release/HammondB3.vst3" "/tmp/hammond-preset-a22/build-make/nominal.b3p"
+114: Working Directory: /tmp/hammond-preset-a22/build-make/plugins/vst3
+114: Test timeout computed to be: 240
+112: native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f
+5/8 Test #112: test_native_behavior .............   Passed    2.12 sec
+114: native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+114: native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=1453 rejected_callbacks=24 zero_callbacks=287 compared_frames=66651 audible_frames=66651 future_frames=6168 accepted_loads=3174 full_loads=10605 malformed_loads=462 successful_saves=17218 busy_saves=51 pending_saves=14069 published_saves=3101 maximum_audio_error=0
+6/8 Test #114: test_native_concurrency ..........   Passed    0.34 sec
+111: {"suite":"native-abi-v1","instances":9,"assertions":701642,"descriptors":47,"conversions":2140,"accepted_callbacks":1673,"rejected_calls":88,"state_round_trips":3207,"lifecycle_sequences":6,"compared_frames":229725,"audible_frames":217972,"maximum_audio_error":0,"float_hash":"af029009868faa04"}
+7/8 Test #111: test_native_abi ..................   Passed    1.41 sec
+113: native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03
+8/8 Test #113: test_native_automation ...........   Passed    0.91 sec
+
+The following tests passed:
+	test_native_controller
+	test_native_realtime
+	test_native_install
+	hammond_vst3_validator
+	test_native_behavior
+	test_native_concurrency
+	test_native_abi
+	test_native_automation
+
+100% tests passed out of 8
+
+Total Test time (real) =   2.52 sec

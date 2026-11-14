@@ -19,6 +19,8 @@ import tempfile
 import unittest
 import uuid
 
+from test_standalone_app import diagnostic_excerpt
+
 
 TIMEOUT = 12
 CHANNEL_OPTIONS = (
@@ -175,89 +177,95 @@ class NativeMidiAcceptance(unittest.TestCase):
             path.write_bytes(source)
             command += ["--input-script", str(path)]
             expected_files.add(path.name)
-        process = self.execute(directory, command)
-        self.assertTrue(diagnostics.is_file(), process.stdout + "\n" + process.stderr)
-        data = json.loads(diagnostics.read_text(encoding="utf-8"),
-                          object_pairs_hook=unique_members, parse_constant=invalid_number)
-        self.assertEqual(data["schema_version"], 2)
-        self.assertEqual(data["application"], "hammond_standalone")
-        self.assertEqual(data["runtime"]["video_driver"], "dummy")
-        self.assertGreater(data["runtime"]["rendered_images"], 0)
-        audio, session, midi = data["audio"], data["session"], data["midi"]
-        self.assertEqual(audio["driver"], "dummy")
-        self.assertTrue(audio["open_before_shutdown"])
-        self.assertTrue(audio["running_before_shutdown"])
-        self.assertGreater(audio["callback_count"], 0)
-        self.assertGreater(audio["rendered_frames"], 0)
-        for key in ("render_failures", "format_failures", "overrange_failures", "nonfinite_failures"):
-            self.assertEqual(audio[key], 0, key)
-        self.assertTrue(session["snapshot_available"])
-        self.assertFalse(session["running_after_shutdown"])
-        self.assertFalse(session["held_after_shutdown"])
-        self.assertEqual(session["fault_flags"], 0)
-        self.assertFalse(midi["active_before_shutdown"])
-        self.assertFalse(midi["active_after_shutdown"])
-        self.assertTrue(midi["quiescent_after_shutdown"])
-        self.assertTrue(midi["diagnostics_stable_after_shutdown"])
-        self.assertFalse(midi["shutdown_failed"])
-        self.assertEqual(midi["generation"], 0)
-        self.assertEqual(midi["port_name"], "")
-        self.assertNotEqual(midi["state_before_shutdown"], "open")
-        self.assertNotEqual(midi["state_after_shutdown"], "open")
-        self.assertEqual(midi["device"]["callback_messages"], 0)
-        self.assertEqual(midi["device"]["forwarded_messages"], 0)
-        self.assertEqual(midi["inbox"]["received_packets"], 0)
-        self.assertEqual(midi["inbox"]["pending_packets"], 0)
-        self.assertEqual(midi["decoder"]["packets"], 0)
-        self.assertFalse(state.exists(), "MIDI settings must not save controls automatically")
-        self.assertEqual({path.name for path in directory.iterdir()}, expected_files)
-        if source is not None:
-            self.assertEqual(path.read_bytes(), source)
-        return process, data
+        try:
+            process = self.execute(directory, command)
+            self.assertTrue(diagnostics.is_file(), process.stdout + "\n" + process.stderr)
+            data = json.loads(diagnostics.read_text(encoding="utf-8"),
+                              object_pairs_hook=unique_members, parse_constant=invalid_number)
+            self.assertEqual(data["schema_version"], 3)
+            self.assertEqual(data["application"], "hammond_standalone")
+            self.assertEqual(data["runtime"]["video_driver"], "dummy")
+            self.assertGreater(data["runtime"]["rendered_images"], 0)
+            audio, session, midi = data["audio"], data["session"], data["midi"]
+            self.assertEqual(audio["driver"], "dummy")
+            self.assertTrue(audio["open_before_shutdown"])
+            self.assertTrue(audio["running_before_shutdown"])
+            self.assertGreater(audio["callback_count"], 0)
+            self.assertGreater(audio["rendered_frames"], 0)
+            for key in ("render_failures", "format_failures", "overrange_failures", "nonfinite_failures"):
+                self.assertEqual(audio[key], 0, key)
+            self.assertTrue(session["snapshot_available"])
+            self.assertFalse(session["running_after_shutdown"])
+            self.assertFalse(session["held_after_shutdown"])
+            self.assertEqual(session["fault_flags"], 0)
+            self.assertFalse(midi["active_before_shutdown"])
+            self.assertFalse(midi["active_after_shutdown"])
+            self.assertTrue(midi["quiescent_after_shutdown"])
+            self.assertTrue(midi["diagnostics_stable_after_shutdown"])
+            self.assertFalse(midi["shutdown_failed"])
+            self.assertEqual(midi["generation"], 0)
+            self.assertEqual(midi["port_name"], "")
+            self.assertNotEqual(midi["state_before_shutdown"], "open")
+            self.assertNotEqual(midi["state_after_shutdown"], "open")
+            self.assertEqual(midi["device"]["callback_messages"], 0)
+            self.assertEqual(midi["device"]["forwarded_messages"], 0)
+            self.assertEqual(midi["inbox"]["received_packets"], 0)
+            self.assertEqual(midi["inbox"]["pending_packets"], 0)
+            self.assertEqual(midi["decoder"]["packets"], 0)
+            self.assertFalse(state.exists(), "MIDI settings must not save controls automatically")
+            self.assertEqual({path.name for path in directory.iterdir()}, expected_files)
+            if source is not None:
+                self.assertEqual(path.read_bytes(), source)
+            return process, data
+        except Exception as error:
+            raise AssertionError(f"Native MIDI runtime: {error}\n" + diagnostic_excerpt(diagnostics)) from error
 
     def modal(self, replay: InputScript, *, arguments: list[str] | None = None,
               invalid_applies: int = 0, openings: int = 1,
               notes: int = 0) -> dict:
         source = replay.source()
         process, data = self.runtime(arguments or [], source)
-        midi, observed = data["midi"], data["replay"]
-        enum_errors = process.stderr.count(ENUMERATION_ERROR)
-        self.__class__.enumeration_failures += enum_errors
-        self.assertLessEqual(enum_errors, openings)
-        if not midi["backend_available"]:
-            self.assertEqual(enum_errors, 0, "Unavailable builds must not enumerate a native backend")
-            self.assertEqual(midi["backend"], "unavailable")
-        else:
-            self.assertIn(midi["backend"], ("ALSA", "WinMM", "CoreMIDI"))
-        self.assertEqual(process.stderr.count(INVALID_CHANNEL_ERROR), invalid_applies)
-        expected_errors = enum_errors + invalid_applies
-        for key in ("completed", "delivered", "final_acknowledged"):
-            self.assertTrue(observed[key], key + ": " + process.stderr)
-        self.assertFalse(observed["observations_truncated"])
-        self.assertEqual(observed["scheduled_events"], len(replay.events))
-        self.assertEqual(observed["pushed_events"], len(replay.events))
-        self.assertEqual(observed["accepted_note_on_commands"], notes)
-        self.assertEqual(observed["accepted_note_off_commands"], notes)
-        self.assertEqual(observed["before_shutdown"]["manual_notes"], [[], []])
-        self.assertEqual(observed["before_shutdown"]["pedal_ids"], [])
-        self.assertEqual(observed["device_starts"], 1)
-        self.assertFalse(data["smoke"]["requested"])
-        self.assertFalse(midi["startup_failed"])
-        self.assertEqual(midi["requested_port"], "")
-        self.assertEqual(midi["open_failures"], 0)
-        self.assertEqual(midi["decoder"]["epochs"], 0)
-        self.assertEqual(process.stdout, "")
-        self.assertEqual(process.returncode, 1 if expected_errors else 0, process.stderr)
-        self.assertEqual(observed["passed"], expected_errors == 0)
-        if expected_errors:
-            self.__class__.expected_failed_replays += 1
-            self.assertEqual(data["errors"]["count"], expected_errors + 1)
-            self.assertEqual(data["errors"]["last"], REPLAY_ERROR.removeprefix("hammond_standalone: "))
-            self.assertEqual(process.stderr.count(REPLAY_ERROR), 1)
-        else:
-            self.__class__.successful_replays += 1
-            self.assertEqual(data["errors"], {"count": 0, "last": ""})
-        return data
+        try:
+            midi, observed = data["midi"], data["replay"]
+            enum_errors = process.stderr.count(ENUMERATION_ERROR)
+            self.__class__.enumeration_failures += enum_errors
+            self.assertLessEqual(enum_errors, openings)
+            if not midi["backend_available"]:
+                self.assertEqual(enum_errors, 0, "Unavailable builds must not enumerate a native backend")
+                self.assertEqual(midi["backend"], "unavailable")
+            else:
+                self.assertIn(midi["backend"], ("ALSA", "WinMM", "CoreMIDI"))
+            self.assertEqual(process.stderr.count(INVALID_CHANNEL_ERROR), invalid_applies)
+            expected_errors = enum_errors + invalid_applies
+            for key in ("completed", "delivered", "final_acknowledged"):
+                self.assertTrue(observed[key], key + ": " + process.stderr)
+            self.assertFalse(observed["observations_truncated"])
+            self.assertEqual(observed["scheduled_events"], len(replay.events))
+            self.assertEqual(observed["pushed_events"], len(replay.events))
+            self.assertEqual(observed["accepted_note_on_commands"], notes)
+            self.assertEqual(observed["accepted_note_off_commands"], notes)
+            self.assertEqual(observed["before_shutdown"]["manual_notes"], [[], []])
+            self.assertEqual(observed["before_shutdown"]["pedal_ids"], [])
+            self.assertEqual(observed["device_starts"], 1)
+            self.assertFalse(data["smoke"]["requested"])
+            self.assertFalse(midi["startup_failed"])
+            self.assertEqual(midi["requested_port"], "")
+            self.assertEqual(midi["open_failures"], 0)
+            self.assertEqual(midi["decoder"]["epochs"], 0)
+            self.assertEqual(process.stdout, "")
+            self.assertEqual(process.returncode, 1 if expected_errors else 0, process.stderr)
+            self.assertEqual(observed["passed"], expected_errors == 0)
+            if expected_errors:
+                self.__class__.expected_failed_replays += 1
+                self.assertEqual(data["errors"]["count"], expected_errors + 1)
+                self.assertEqual(data["errors"]["last"], REPLAY_ERROR.removeprefix("hammond_standalone: "))
+                self.assertEqual(process.stderr.count(REPLAY_ERROR), 1)
+            else:
+                self.__class__.successful_replays += 1
+                self.assertEqual(data["errors"], {"count": 0, "last": ""})
+            return data
+        except Exception as error:
+            raise AssertionError(f"Native MIDI modal: {error}\n" + diagnostic_excerpt(data)) from error
 
     def test_cli_numeric_channels_are_strict_and_bounded(self) -> None:
         lexical = ("-1", "+1", " 1", "1 ", "1.0", "1e0", "0x1", "NaN", "inf",

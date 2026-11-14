@@ -145,10 +145,30 @@ constexpr std::array<ParameterDescriptor, kParameterCount> kDescriptors{{
     {16385U, "pedal.drawbar.mixture2", "pedal_drawbar_position",
      "drawbar-position", 8.0, 0.0, 8,
      EventType::PedalDrawbar, Manual::Lower, 1},
+    {20480U, "manual.upper.preset_selection", "preset_selector",
+     "preset-key-index", 11.0, 11.0, 11,
+     EventType::SelectPreset, Manual::Upper, 0},
+    {20481U, "manual.lower.preset_selection", "preset_selector",
+     "preset-key-index", 11.0, 11.0, 11,
+     EventType::SelectPreset, Manual::Lower, 0},
 }};
 
 constexpr std::array<double, 8> kDrawbarThresholds{
     0.0625, 0.1875, 0.3125, 0.4375, 0.5625, 0.6875, 0.8125, 0.9375};
+
+// Frozen nearest binary64 values from fixed-registration-state-parameters-v1.
+// Equality at even a downward-rounded mathematical midpoint selects the next
+// key. Arithmetic quantization or runtime division by 11 would change this law.
+constexpr std::array<double, 11> kPresetThresholds{
+    0x1.745d1745d1746p-5, 0x1.1745d1745d174p-3, 0x1.d1745d1745d17p-3,
+    0x1.45d1745d1745dp-2, 0x1.a2e8ba2e8ba2fp-2, 0x1.0000000000000p-1,
+    0x1.2e8ba2e8ba2e9p-1, 0x1.5d1745d1745d1p-1, 0x1.8ba2e8ba2e8bap-1,
+    0x1.ba2e8ba2e8ba3p-1, 0x1.e8ba2e8ba2e8cp-1};
+constexpr std::array<double, 12> kPresetCanonical{
+    0x0.0p+0, 0x1.745d1745d1746p-4, 0x1.745d1745d1746p-3,
+    0x1.1745d1745d174p-2, 0x1.745d1745d1746p-2, 0x1.d1745d1745d17p-2,
+    0x1.1745d1745d174p-1, 0x1.45d1745d1745dp-1, 0x1.745d1745d1746p-1,
+    0x1.a2e8ba2e8ba2fp-1, 0x1.d1745d1745d17p-1, 0x1.0000000000000p+0};
 
 [[nodiscard]] const ParameterDescriptor* find_descriptor(std::uint32_t id) noexcept {
     for (const auto& descriptor : kDescriptors) {
@@ -162,6 +182,14 @@ constexpr std::array<double, 8> kDrawbarThresholds{
                                double normalized) noexcept {
     if (descriptor.step_count == 0) return normalized;
     if (descriptor.step_count == 1) return normalized >= 0.5 ? 1.0 : 0.0;
+    if (descriptor.event_type == EventType::SelectPreset) {
+        std::size_t selection = 0;
+        while (selection < kPresetThresholds.size() &&
+               normalized >= kPresetThresholds[selection]) {
+            ++selection;
+        }
+        return static_cast<double>(selection);
+    }
     std::size_t position = 0;
     while (position < kDrawbarThresholds.size() &&
            normalized >= kDrawbarThresholds[position]) {
@@ -202,7 +230,11 @@ bool plain_to_normalized(std::uint32_t id, double plain, double& destination) no
         (descriptor->step_count != 0 && std::trunc(plain) != plain)) {
         return false;
     }
-    // Every discrete valid value divided by 8 or 1 is exactly representable;
+    if (descriptor->event_type == EventType::SelectPreset) {
+        destination = kPresetCanonical[static_cast<std::size_t>(plain)];
+        return true;
+    }
+    // Every older discrete valid value divided by 8 or 1 is exactly representable;
     // expression is deliberately passed through without arithmetic.
     destination = descriptor->step_count == 0 ? plain : plain / descriptor->maximum;
     return true;

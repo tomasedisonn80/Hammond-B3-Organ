@@ -1,0 +1,49 @@
+{
+  "purpose": "Actual native feature preview after A25 focus repairs; not final gallery or literal pixel-equality evidence",
+  "capture_dimensions": [
+    1672,
+    941
+  ],
+  "application_exit": 0,
+  "diagnostics_schema": 3,
+  "drivers": {
+    "audio": "dummy",
+    "video": "dummy"
+  },
+  "source_context_commit": "35554c068492fe2b20c1f8a602d8354ae762dc42",
+  "tested_source_manifest": "../../../docs/development/2026-11-14-preset-continuation/reports/a28-source-final.json",
+  "tested_source_manifest_sha256": "72874cd7ceeaada3da152297d265b501dc33517896b14d02883256508d48c6cd",
+  "executable_sha256": "557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82",
+  "profile": {
+    "id": "nominal-unmeasured-v1",
+    "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83"
+  },
+  "renderer_source_sha256": "c4be416d5a0e715d26d0d582d6f4539224561e591220bbae165ea2b00a0246e7",
+  "source_reference_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+  "input_state_sha256": "d30f0e8d7faf9b98c9de0f24f9a6045a9e8de28d8dadfc4c972fd70b29d828cc",
+  "input_script_sha256": "d33fb938752851e20623a0075138a156f318b355d6b7369f7219de6193bfa36c",
+  "original_bmp_sha256": "cd6fac8df6ad4bb83b60981c849d5804b6b4f4b78951cd9ed73e04294edba11b",
+  "decoded_rgb_sha256": "b3cff5e003a9eafb177200e05e6675051db211f5c9f3729f7266bab26b4bd1e4",
+  "png_sha256": "1e668a4191b3a189969c8e17213611d6ffe7ead64f20f423d115a3e2effae1c7",
+  "command": [
+    "/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone",
+    "--state",
+    "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/examples/demos/standalone-presets-preview-v1/inputs/controls.b3controls",
+    "--input-script",
+    "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/examples/demos/standalone-presets-preview-v1/inputs/input.b3uireplay",
+    "--width",
+    "1672",
+    "--height",
+    "941",
+    "--screenshot",
+    "/tmp/hammond-preset-preview-brqfsjdk/frame.bmp",
+    "--diagnostics",
+    "/workspace/scratch/a472c29da8b3/Hammond-B3-Organ/examples/demos/standalone-presets-preview-v1/reports/native.json"
+  ],
+  "initial_command_failure": "Unsupported --profile option rejected with exit2 before SDL; help inspected and corrected invocation succeeded. Raw initial error is retained.",
+  "limitations": [
+    "SDL dummy drivers and software drawing",
+    "No physical audio or MIDI controller acceptance",
+    "Reference perspective, proportions, tiny accidental labels and literal 1:1 remain open"
+  ]
+}

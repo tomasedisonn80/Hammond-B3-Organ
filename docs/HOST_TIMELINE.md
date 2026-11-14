@@ -3,15 +3,20 @@
 `HostTimeline`, model `bounded-linear-host-timeline-v1`, is the SDK-independent
 whole-callback transaction specified in
 [VST3_SPIKE_CONTRACT.md](VST3_SPIKE_CONTRACT.md), sections 3–5. It owns an Engine,
-both note-owner adapters, 45 normalized automation anchors, retained boundary
+both note-owner adapters, 47 normalized automation anchors, retained boundary
 records and fixed candidate/output storage. It accepts native-adapter inputs
-without including a native SDK. The implementation adds no instrument model,
-parameter ID, saved-state field or physical-fidelity claim.
+without including a native SDK. The fixed-registration continuation consumes
+the two appended selector identities from the shared
+[state/parameter contract](PRESET_STATE_PARAMETER_CONTRACT.md); the timeline
+does not add another instrument model or physical-fidelity claim.
 
 The public interface is [HostTimeline.h](../include/hammond/HostTimeline.h);
 [HostTimeline.cpp](../src/HostTimeline.cpp) implements it. This document records
-the frozen assignment-28 interface. Its executed evidence and source identities
-are in [the assignment note](development/2026-11-13-pedals/28-host-timeline.md).
+the assignment-28 interface with its appended preset descriptors. The original
+execution and source identities remain in
+[the assignment note](development/2026-11-13-pedals/28-host-timeline.md); current
+preset-specific checks are recorded in
+[A17](development/2026-11-14-preset-continuation/17-host-publication.md).
 
 ## Inputs, ownership and lifecycle
 
@@ -46,7 +51,7 @@ HostTimelineResult process(
 | --- | --- |
 | Frame count | `0 <= N <= prepared host maximum <= 65536`; source-clock addition must fit `uint64_t`. |
 | Output | Empty means disconnected. Otherwise the valid caller span has at least `N` samples. Only the first `N` samples are written after success; its tail is preserved. |
-| Parameter queue | One of the exact 45 compiled IDs; at most one queue per ID, including empty queues. A view is borrowed only during this call. |
+| Parameter queue | One of the exact 47 compiled IDs; at most one queue per ID, including empty queues. A view is borrowed only during this call. |
 | Parameter point | Signed offset in `0..N`; finite normalized value in `[0,1]`. Points within a queue are nondecreasing. Last same-offset point wins. |
 | Musical stream | A fixed-storage variant of `HostNoteEvent` and `PedalNoteEvent`, globally nondecreasing in `0..N`. All original tie order is preserved within this stream. |
 | Raw work | Fresh parameter points + fresh musical records + all retained carry must total at most 1,024. Restores have a separate bound. |
@@ -81,26 +86,37 @@ a + ((b - a) * (i - l)) / (r - l)
 An explicit endpoint uses its exact supplied double. After the final endpoint,
 hold that value. An absent or empty queue with no carry preserves the existing
 anchor and emits nothing. A state restore resets every anchor from the restored
-plain controls before queued automation is evaluated.
+plain controls before queued automation is evaluated. Old bank IDs derive from
+the remembered bank. New preset IDs derive from the checked effective-selection
+helper: Cancel while disabled, a fixed key when enabled with a fixed mode,
+otherwise bank A/B. Preparation uses the same extraction for defaults.
 
 The implementation uses binary64 arithmetic, multiplying before division. It
 clamps interpolation roundoff to the two admitted endpoint values. This is a
 normalized-curve roundoff guard, not an audio limiter. An anchor tracks the
-normalized curve even when its mapped discrete control has not changed.
+normalized curve even when its mapped discrete control has not changed. Ordinary
+callback completion never reconstructs anchors from Engine controls. For example,
+an old bank anchor of 0.6 remains exactly 0.6 after a new selector chooses a fixed
+route. Applied selection and raw host anchors are separate diagnostics.
 
 All controls, including discrete ones, follow the same piecewise-linear curve.
 Each evaluated normalized value then passes through the existing
 `normalized_to_event()` law. Drawbars use the existing exact half-up thresholds
-`1/16, 3/16, ..., 15/16`; Boolean/selectors use `1/2`; expression retains the
-normalized double. No alternate smoothing, quantizer, gain law or hysteresis is
+`1/16, 3/16, ..., 15/16`; Boolean/old bank selectors use `1/2`; the two new preset
+selectors use the eleven frozen nearest-binary64 midpoint thresholds specified
+in the shared contract, with equality selecting the higher key. Expression
+retains the normalized double. No alternate smoothing, quantizer, gain law or hysteresis is
 introduced. Mapped unchanged values need no emitted event, except at explicit
 points: an explicit point applies its control even when the mapped value is
-unchanged. In particular an explicit selector point can reconnect a retained
-Cancel route, while an absent selector queue cannot.
+unchanged. An explicit old-bank point clears fixed mode and reconnects that bank
+even if the remembered bank and raw anchor were unchanged. An absent/empty queue
+or unchanged discrete interpolation plateau does not reassert that command.
 
-The 45-ID order is the compiled ascending stable order: 36 manual bank bars,
-expression, Upper/Lower selectors, four percussion controls and two pedal
-mixtures. Unsupported IDs, duplicate queues, decreasing offsets, nonfinite
+The 47-ID order is the compiled ascending stable order: 36 manual bank bars,
+expression, Upper/Lower bank selectors, four percussion controls, two pedal
+mixtures, then Upper/Lower preset selectors. At a sample with both old bank and
+new preset commands, the higher-ID preset command acts last regardless of host
+queue enumeration. Unsupported IDs, duplicate queues, decreasing offsets, nonfinite
 values and out-of-range values reject the complete callback.
 
 ### Boundary points, zero frames and tie order
@@ -160,7 +176,7 @@ The raw work budget does not silently become a release-dropping policy.
 The implementation uses the existing `NoteOwnership` and `PedalNoteOwnership`
 translators directly to form these physical slices. The existing
 [`process_performance_input()` facade](PERFORMANCE_INPUT.md) retains its
-single-call contract and is unchanged. Calling that facade separately for each
+single-call contract and also admits `SelectPreset`. Calling that facade separately for each
 owner domain would advance Engine twice; the host timeline instead owns one
 common cursor. Positive slice lengths sum to exactly `N`; zero-frame flushes
 sum to zero. Every source and musical history advances once per elapsed sample.
@@ -225,7 +241,7 @@ no owning heap pointer, host view or SDK object. `process()` contains no allocat
 lock, logging, file access, parsing, unbounded retry or SDK call. Construct the
 large object outside callback stack frames and hold it for the instance lifetime.
 
-Observed Linux/GCC 14.2 sizes from the exact tested source are:
+Historical Linux/GCC 14.2 sizes from the original 45-ID source are:
 
 | Object | Bytes |
 | --- | ---: |
@@ -238,12 +254,14 @@ Observed Linux/GCC 14.2 sizes from the exact tested source are:
 | One retained anchor/carry set | 24,944 |
 | Complete HostTimeline, including live and candidate state | 416,632 |
 
-These are ABI observations, not a portable serialized format. Workspace copying
+These original ABI observations are retained as history, not current preset-build
+sizes or a portable serialized format. A17 records the current build's sizes.
+Workspace copying
 occurs at callback transaction boundaries; Engine is not copied for every
 automated sample. Each musical record is previewed and then translated using
 the existing bounded owner algorithms. Curve scanning has at most
-`45 * max(N,1)` parameter visits. A conservative emitted-event bound is
-`45 * max(N,1) + 122 * 1024`, safely within result counters; emitted storage is
+`47 * max(N,1)` parameter visits. A conservative emitted-event bound is
+`47 * max(N,1) + 122 * 1024`, safely within result counters; emitted storage is
 still 1,024 records per slice. These finite bounds establish capacity, not an
 audio-device deadline.
 
@@ -257,6 +275,15 @@ comparisons use an explicitly bounded tolerance; equivalent host curves supplied
 with differently rounded/reparameterized endpoints are not promised universally
 bit-identical. Signed zero is preserved for explicit values/restores; no claim
 is made that every interpolated signed-zero representation is invariant.
+
+The preset extension preserves the named old45 threshold oracle and adds a
+separate literal preset oracle plus reverse-enumerated current47 queues. It
+checks both new IDs at all eleven thresholds and their adjacent binary64 values,
+all twelve canonical values, all 1,600 restored fixed/bank/route combinations,
+raw fractional old-bank anchors, explicit repeats, absent/empty queues, both
+directions of alias plateaus, Cancel memory, restore-before-carry/fresh ties,
+complete rejection continuation and 42 additional selector-curve partitions
+across both console models and all supported rates.
 
 The separate enabled-path instrumentation and native SDK harness must qualify
 allocation counts, copy cost, composed state exchange, actual plugin processing,

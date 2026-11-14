@@ -100,7 +100,7 @@ physical-key target command, with duplicate positive NoteOn idempotent; this tex
 format is not a host note-ID ownership protocol.
 
 Supported event names are `note_on`, `note_off`, `drawbar`, `expression`,
-`all_notes_off`, `bank_drawbar`, `select_bank`, `cancel`, `percussion`,
+`all_notes_off`, `bank_drawbar`, `select_bank`, `select_preset`, `cancel`, `percussion`,
 `key_position`, `pedal_on`, `pedal_off`, `pedal_drawbar` and
 `pedal_all_notes_off`.
 The manual is `upper` or `lower`; percussion controls require `upper`, and every
@@ -119,9 +119,22 @@ extends them as follows:
 
 A percussion event rejects lower-manual selection, any other index, and any value
 that is not a finite integer 0 or 1. It changes retained controls, without resetting
-shared readiness. Eligibility remains `enabled && upper route enabled && upper B`.
+shared readiness. Eligibility requires enabled percussion, an enabled upper route,
+no fixed registration and retained upper bank B.
 The physical detector uses upper contact index 8 independently of the audible
 1-foot drawbar and its percussion mask.
+
+`select_preset` requires either manual, unsigned index `0`, and a finite integral
+value in `0..11`. Value `0` (including signed negative zero) means Cancel;
+`1..9` select fixed C#, D, D#, E, F, F#, G, G#, A respectively; `10` selects
+adjustable A# / bank A and `11` selects bank B. A fixed selection enables its
+route and preserves both retained banks. Cancel disables that manual's route
+while retaining its fixed choice, banks and held notes. Existing `select_bank`
+and selector values 10/11 clear fixed mode and reconnect the requested bank,
+even if that bank was already remembered. Drawbar edits keep their existing
+remembered-bank targets. Equal-frame commands retain file order, and every
+score is fully admitted before output creation. The fixed catalog identity,
+example and current-schema evidence rules are in [PRESET_OFFLINE.md](PRESET_OFFLINE.md).
 
 `key_position` uses either manual, MIDI note `36..96` as its index, and a finite
 normalized target in `0..1`. With `--contacts nominal`, it commands the existing
@@ -255,10 +268,12 @@ calibration. The two denominator fields are JSON integers, not quoted strings.
 
 Existing scores keep their meanings. Historical schema-2 bundles retain their
 console grammar, including `percussion` and `key_position`; they reject the four
-new pedal commands and have no pedal flag or pedal metadata. Historical schema-1
-bundles retain their original eight-event grammar. The evidence producer emits
+new pedal commands and `select_preset`, and have no pedal flag or pedal metadata.
+Historical schema-1 bundles retain their original eight-event grammar and also
+reject `select_preset`. The evidence producer emits
 schema 3, while the independent verifier checks each retained format under its
-own explicit contract.
+own explicit contract. Fixed selection extends only the current schema-3 event
+grammar; its parameter, invocation and metric fields are unchanged.
 
 `model` remains `ideal-shared-sine-v1`, identifying the source generator. It does
 not describe the entire organ. `evidence_status` remains `unmeasured`. Model

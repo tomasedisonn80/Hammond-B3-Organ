@@ -33,6 +33,8 @@ void shared_pending_state() {
 
     // Neither a callback nor an observation occurs between these independent
     // controller and on-screen edits. Later snapshots must retain both values.
+    post(model.external_parameter(20480, 0x1.745d1745d1746p-4)); // C# / selector 1.
+    post(model.external_parameter(20481, 0x1.a2e8ba2e8ba2fp-1)); // A / selector 9.
     post(model.external_parameter(8192, 0.25));
     post(model.external_parameter(4112, 1.0));
     post(model.activate({UiControlKind::Percussion, Manual::Upper, DrawbarBank::A, 0}));
@@ -40,6 +42,8 @@ void shared_pending_state() {
     CHECK(model.view().controls.expression == 0.25);
     CHECK(model.view().controls.drawbars[0][1][0] == 8);
     CHECK(model.view().controls.percussion.enabled);
+    CHECK(model.view().controls.fixed_registrations[0] == FixedRegistration::CSharp);
+    CHECK(model.view().controls.fixed_registrations[1] == FixedRegistration::A);
 
     // An older, still valid applied observation cannot undo queued intent.
     model.observe(before);
@@ -53,8 +57,31 @@ void shared_pending_state() {
     CHECK(after.controls.expression == 0.25);
     CHECK(after.controls.drawbars[0][1][0] == 8);
     CHECK(after.controls.percussion.enabled);
+    CHECK(after.controls.fixed_registrations[0] == FixedRegistration::CSharp);
+    CHECK(after.controls.fixed_registrations[1] == FixedRegistration::A);
     CHECK(after.frame_clock == before.frame_clock);
     CHECK(after.held_keys == before.held_keys && after.held_pedals == before.held_pedals);
+
+    // Acknowledged fixed modes survive a later unrelated copied UI edit and a
+    // permanent MIDI B-bank drawbar edit, including retained Cancel memory.
+    post(model.external_parameter(20480, 0.0));
+    post(model.external_parameter(4112, 0.5));
+    post(model.activate({UiControlKind::Percussion, Manual::Upper, DrawbarBank::A, 1}));
+    CHECK(session.render(0, {}).ok());
+    CHECK(session.read_snapshot(after));
+    model.observe(after);
+    CHECK(after.controls.fixed_registrations[0] == FixedRegistration::CSharp);
+    CHECK(!after.controls.route_enabled[0] && after.controls.selected_banks[0] == DrawbarBank::B);
+    CHECK(after.controls.fixed_registrations[1] == FixedRegistration::A);
+    CHECK(after.controls.drawbars[0][1][0] == 4);
+    CHECK(after.controls.expression == 0.25);
+    CHECK(after.controls.percussion.harmonic == PercussionHarmonic::Third);
+    post(model.external_parameter(8208, 1.0)); // Remembered B must explicitly leave fixed mode.
+    CHECK(session.render(0, {}).ok());
+    CHECK(session.read_snapshot(after));
+    model.observe(after);
+    CHECK(after.controls.fixed_registrations[0] == FixedRegistration::None && after.controls.route_enabled[0]);
+    CHECK(after.controls.fixed_registrations[1] == FixedRegistration::A);
     CHECK(session.stop() == SessionStatus::Ok);
 }
 

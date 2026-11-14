@@ -57,6 +57,9 @@ MAP_CANONICAL = "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb
 PEDAL_CSV_HASH = "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1"
 MANUAL_CSV_HASH = "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6"
 PARAMETER_HASH = "13ba488bec90154c960c3fd700dc4a774aff5664caf5d68472821493f22d1cad"
+HISTORICAL_PARAMETER_IDS = (set(range(4096, 4105)) | set(range(4112, 4121)) |
+                            set(range(4128, 4137)) | set(range(4144, 4153)) |
+                            {8192, 8208, 8209, 12288, 12289, 12290, 12291, 16384, 16385})
 # Original fixed engineering fixture from PEDAL_INTEGRATION_CONTRACT, not
 # recovered electrical values. Contact-to-bus membership follows atlas p.140.
 NUMERATORS = ((4, 2, 1, 1), (1, 4, 2, 1))
@@ -254,9 +257,20 @@ def validate_catalog(catalog, compiled):
                         "weight_policy": "all-200-unit-positive-v1"}
     exact(catalog["control_model"], expected_control, "control identities")
     registry = decode_json(read_bounded(ROOT / "data/parameter-registry.json", 128 * 1024))
-    require(registry["schema_version"] == 3 and registry["model"] == expected_control["registry_model"]
-            and len(registry["parameters"]) == 45 and digest(canonical(registry["parameters"])) == PARAMETER_HASH,
-            "registry record identities")
+    # This catalog remains immutable schema-3/count-45 evidence. The active
+    # registry appends two controls; compare the complete historical records by
+    # explicit identity, independently of current record order and root schema.
+    require(registry["schema_version"] == 4 and
+            registry["model"] == "exclusive-fixed-percussion-pedal-console-v4" and
+            len(registry["parameters"]) == 47 and
+            {p["id"] for p in registry["parameters"]} == HISTORICAL_PARAMETER_IDS | {20480, 20481},
+            "current registry inventory")
+    historical = sorted((p for p in registry["parameters"] if p["id"] in HISTORICAL_PARAMETER_IDS),
+                        key=lambda p: p["id"])
+    historical_bytes = json.dumps(historical, sort_keys=True, separators=(",", ":"),
+                                  ensure_ascii=True, allow_nan=False).encode("ascii")
+    require(len(historical) == 45 and digest(historical_bytes) == PARAMETER_HASH,
+            "historical registry record identities")
     provenance = catalog["provenance"]
     require(set(provenance) == {"evidence_class", "source_document", "source_sha256", "source_pages",
                                 "uncertainty", "reason"} and provenance["evidence_class"] == "proposed"

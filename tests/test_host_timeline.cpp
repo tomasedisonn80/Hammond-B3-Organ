@@ -236,7 +236,7 @@ void rejected(HostTimeline& timeline, Status expected, std::uint32_t frames,
     return result;
 }
 
-void test_all_ids_and_thresholds(const RuntimeProfile& profile) {
+void test_legacy45_ids_and_thresholds(const RuntimeProfile& profile) {
     auto timeline = std::make_unique<HostTimeline>();
     CHECK(timeline->prepare(profile, {48000.0, 64, 28, 0}) == Status::Ok);
     Engine reference;
@@ -250,7 +250,7 @@ void test_all_ids_and_thresholds(const RuntimeProfile& profile) {
                           0x3003U, 0x4000U, 0x4001U}) ids[index++] = id;
     CHECK(index == ids.size());
     for (const auto id : ids) {
-        const auto discrete_eight = id < 0x2000U || id >= 0x4000U;
+        const auto discrete_eight = id < 0x2000U || (id >= 0x4000U && id <= 0x4001U);
         const auto steps = discrete_eight ? 8U : 1U;
         for (unsigned step = 0; step < steps; ++step) {
             const auto threshold = discrete_eight ? static_cast<double>(2 * step + 1) / 16.0 : 0.5;
@@ -287,6 +287,367 @@ void test_all_ids_and_thresholds(const RuntimeProfile& profile) {
     exact_audio(std::span<const float>{output}.first(16), oracle);
     for (std::size_t i = 16; i < output.size(); ++i) CHECK(output[i] == sentinel);
     phases(timeline->engine(), reference);
+}
+
+// Independent frozen selector expectations, separate from the preserved old45
+// oracle above. These are the reviewed nearest-binary64 contract values, not
+// values read back from ParameterBridge or generated descriptor metadata.
+constexpr std::array<double, 12> preset_values{
+    0x0.0p+0, 0x1.745d1745d1746p-4, 0x1.745d1745d1746p-3,
+    0x1.1745d1745d174p-2, 0x1.745d1745d1746p-2, 0x1.d1745d1745d17p-2,
+    0x1.1745d1745d174p-1, 0x1.45d1745d1745dp-1, 0x1.745d1745d1746p-1,
+    0x1.a2e8ba2e8ba2fp-1, 0x1.d1745d1745d17p-1, 0x1.0p+0};
+constexpr std::array<double, 11> preset_thresholds{
+    0x1.745d1745d1746p-5, 0x1.1745d1745d174p-3, 0x1.d1745d1745d17p-3,
+    0x1.45d1745d1745dp-2, 0x1.a2e8ba2e8ba2fp-2, 0x1.0p-1,
+    0x1.2e8ba2e8ba2e9p-1, 0x1.5d1745d1745d1p-1, 0x1.8ba2e8ba2e8bap-1,
+    0x1.ba2e8ba2e8ba3p-1, 0x1.e8ba2e8ba2e8cp-1};
+
+[[nodiscard]] Event preset_oracle_event(std::uint32_t id, double normalized) {
+    CHECK(id == 0x5000U || id == 0x5001U);
+    const auto selection = std::count_if(preset_thresholds.begin(), preset_thresholds.end(),
+        [normalized](double threshold) { return normalized >= threshold; });
+    return {0, EventType::SelectPreset, id == 0x5000U ? Manual::Upper : Manual::Lower,
+            0, static_cast<double>(selection)};
+}
+
+void anchor_is(const HostTimeline& timeline, std::uint32_t id, double expected) {
+    double actual = -1.0;
+    CHECK(timeline.normalized_anchor(id, actual));
+    CHECK(bits(actual, expected));
+}
+
+void selected_is(const HostTimeline& timeline, Manual manual, PresetSelection expected) {
+    PresetSelection actual = PresetSelection::Cancel;
+    CHECK(timeline.engine().selected_preset(manual, actual));
+    CHECK(actual == expected);
+}
+
+[[nodiscard]] HostTimelineResult parameter_point(HostTimeline& timeline,
+                                                  std::uint32_t id, double value) {
+    const std::array<HostParameterPoint, 1> point{{{0, value}}};
+    const std::array<HostParameterQueue, 1> queue{{{id, point}}};
+    return accepted(timeline, 0, {}, queue);
+}
+
+void test_current47_and_preset_thresholds(const RuntimeProfile& profile) {
+    static_assert(kParameterCount == 47);
+    auto timeline = std::make_unique<HostTimeline>();
+    CHECK(timeline->prepare(profile, {48000.0, 64, 28, 0}, make_nominal_console_model()) == Status::Ok);
+    Engine reference;
+    CHECK(reference.prepare(profile, {48000.0, 65536, 28, 0}, make_nominal_console_model()) == Status::Ok);
+    anchor_is(*timeline, 0x5000U, 1.0);
+    anchor_is(*timeline, 0x5001U, 1.0);
+    for (const auto id : {0x5000U, 0x5001U}) {
+        for (std::size_t step = 0; step < preset_thresholds.size(); ++step) {
+            const auto threshold = preset_thresholds[step];
+            for (const auto value : {std::nextafter(threshold, 0.0), threshold,
+                                     std::nextafter(threshold, 1.0)}) {
+                const auto result = parameter_point(*timeline, id, value);
+                CHECK(result.physical_events_applied == 1);
+                const auto expected = preset_oracle_event(id, value);
+                CHECK(expected.value == static_cast<double>(step + (value >= threshold ? 1U : 0U)));
+                CHECK(reference.process(0, {}, std::span<const Event>{&expected, 1}));
+                CHECK(timeline->engine().controls_snapshot() == reference.controls_snapshot());
+                anchor_is(*timeline, id, value);
+                ++counts.threshold_cases;
+            }
+        }
+        for (unsigned selection = 0; selection <= 11; ++selection) {
+            (void)parameter_point(*timeline, id, preset_values[selection]);
+            const Event expected{0, EventType::SelectPreset,
+                id == 0x5000U ? Manual::Upper : Manual::Lower, 0, static_cast<double>(selection)};
+            CHECK(reference.process(0, {}, std::span<const Event>{&expected, 1}));
+            CHECK(timeline->engine().controls_snapshot() == reference.controls_snapshot());
+            anchor_is(*timeline, id, preset_values[selection]);
+        }
+    }
+    std::array<std::uint32_t, 47> ids{};
+    std::size_t index = 0;
+    for (std::uint32_t group = 0; group < 4; ++group) {
+        for (std::uint32_t bar = 0; bar < 9; ++bar) ids[index++] = 0x1000U + group * 0x10U + bar;
+    }
+    for (const auto id : {0x2000U, 0x2010U, 0x2011U, 0x3000U, 0x3001U, 0x3002U,
+                          0x3003U, 0x4000U, 0x4001U, 0x5000U, 0x5001U}) ids[index++] = id;
+    CHECK(index == ids.size());
+    std::array<HostParameterPoint, 47> points{};
+    std::array<HostParameterQueue, 47> queues{};
+    std::array<Event, 50> expected{};
+    const auto descriptors = parameter_descriptors();
+    for (std::size_t i = 0; i < ids.size(); ++i) {
+        CHECK(descriptors[i].id == ids[i]);
+        points[i] = {0, i % 2 == 0 ? 0.5 : 0.875};
+        if (ids[i] == 0x5000U) points[i].normalized = preset_values[9];
+        if (ids[i] == 0x5001U) points[i].normalized = preset_values[1];
+        queues[ids.size() - 1 - i] = {ids[i], std::span<const HostParameterPoint>{&points[i], 1}};
+        expected[i] = ids[i] >= 0x5000U ? preset_oracle_event(ids[i], points[i].normalized)
+                                       : oracle_event(ids[i], points[i].normalized);
+    }
+    const std::array<HostMusicalEvent, 3> notes{{
+        HostNoteEvent{0, HostNoteKind::On, 0, 0, 60, 100, 1},
+        HostNoteEvent{0, HostNoteKind::On, 1, 0, 48, 100, 2},
+        PedalNoteEvent{0, PedalNoteKind::On, 0, 0, PedalId{1}, 100, 3}}};
+    expected[47] = {0, EventType::NoteOn, Manual::Upper, 60, 100};
+    expected[48] = {0, EventType::NoteOn, Manual::Lower, 48, 100};
+    expected[49] = {0, EventType::PedalOn, Manual::Lower, 1, 100};
+    const auto controls = registration();
+    std::array<float, 32> output{}, oracle{};
+    const auto result = accepted(*timeline, 32, output, queues, notes,
+                                 std::span<const ControlSnapshot>{&controls, 1});
+    CHECK(result.physical_events_applied == 50);
+    CHECK(reference.restore_controls(controls));
+    CHECK(reference.process(32, oracle, expected));
+    CHECK(timeline->engine().controls_snapshot() == reference.controls_snapshot());
+    selected_is(*timeline, Manual::Upper, PresetSelection::A);
+    selected_is(*timeline, Manual::Lower, PresetSelection::CSharp);
+    for (std::size_t i = 0; i < ids.size(); ++i) anchor_is(*timeline, ids[i], points[i].normalized);
+    exact_audio(output, oracle);
+    phases(timeline->engine(), reference);
+}
+
+void test_preset_restore_anchors(const RuntimeProfile& profile) {
+    auto timeline = std::make_unique<HostTimeline>();
+    CHECK(timeline->prepare(profile, {48000.0, 16, 28, 0}) == Status::Ok);
+    for (unsigned upper = 0; upper < 10; ++upper) {
+        for (unsigned lower = 0; lower < 10; ++lower) {
+            for (unsigned routing = 0; routing < 16; ++routing) {
+                auto controls = registration();
+                controls.fixed_registrations = {static_cast<FixedRegistration>(upper),
+                                                static_cast<FixedRegistration>(lower)};
+                controls.selected_banks = {static_cast<DrawbarBank>(routing & 1U),
+                                           static_cast<DrawbarBank>((routing >> 1U) & 1U)};
+                controls.route_enabled = {(routing & 4U) != 0, (routing & 8U) != 0};
+                (void)accepted(*timeline, 0, {}, {}, {},
+                               std::span<const ControlSnapshot>{&controls, 1});
+                CHECK(timeline->engine().controls_snapshot() == controls);
+                for (unsigned manual = 0; manual < 2; ++manual) {
+                    const auto fixed = manual == 0 ? upper : lower;
+                    const auto bank = (routing >> manual) & 1U;
+                    const auto enabled = (routing & (4U << manual)) != 0;
+                    const auto effective = !enabled ? 0U : fixed != 0 ? fixed : 10U + bank;
+                    anchor_is(*timeline, 0x2010U + manual, static_cast<double>(bank));
+                    anchor_is(*timeline, 0x5000U + manual, preset_values[effective]);
+                }
+            }
+        }
+    }
+}
+
+void test_preset_aliases_and_raw_anchors(const RuntimeProfile& profile) {
+    auto timeline = std::make_unique<HostTimeline>();
+    CHECK(timeline->prepare(profile, {48000.0, 64, 28, 0}, make_nominal_console_model()) == Status::Ok);
+    const auto controls = registration();
+    const std::array<HostMusicalEvent, 3> notes{{
+        HostNoteEvent{0, HostNoteKind::On, 0, 0, 60, 100, 1},
+        HostNoteEvent{0, HostNoteKind::On, 1, 0, 48, 100, 2},
+        PedalNoteEvent{0, PedalNoteKind::On, 0, 0, PedalId{1}, 100, 3}}};
+    (void)accepted(*timeline, 16, {}, {}, notes, std::span<const ControlSnapshot>{&controls, 1});
+    CHECK(parameter_point(*timeline, 0x2010U, 0.6).physical_events_applied == 1);
+    CHECK(parameter_point(*timeline, 0x5000U, preset_values[6]).physical_events_applied == 1);
+    selected_is(*timeline, Manual::Upper, PresetSelection::FSharp);
+    anchor_is(*timeline, 0x2010U, 0.6);
+    const auto owners = timeline->manual_ownership();
+    const auto pedals = timeline->pedal_ownership();
+    CHECK(accepted(*timeline, 8, {}).physical_events_applied == 0);
+    const std::array<HostParameterQueue, 2> empty{{{0x5000U, {}}, {0x2010U, {}}}};
+    CHECK(accepted(*timeline, 8, {}, empty).physical_events_applied == 0);
+    selected_is(*timeline, Manual::Upper, PresetSelection::FSharp);
+    anchor_is(*timeline, 0x2010U, 0.6);
+    anchor_is(*timeline, 0x5000U, preset_values[6]);
+
+    // A changing raw old-bank plateau remains B in plain space. It does not
+    // cancel the fixed route before the explicit endpoint reaches sample zero.
+    const std::array<HostParameterPoint, 1> old_plateau{{{4, 0.61}}};
+    const std::array<HostParameterQueue, 1> old_queue{{{0x2010U, old_plateau}}};
+    CHECK(accepted(*timeline, 4, {}, old_queue).physical_events_applied == 0);
+    selected_is(*timeline, Manual::Upper, PresetSelection::FSharp);
+    double old_anchor = 0.0;
+    CHECK(timeline->normalized_anchor(0x2010U, old_anchor));
+    CHECK(old_anchor > 0.6 && old_anchor < 0.61);
+    CHECK(timeline->carry_count() == 1);
+    CHECK(accepted(*timeline, 0, {}).physical_events_applied == 1);
+    selected_is(*timeline, Manual::Upper, PresetSelection::BankB);
+    CHECK(timeline->engine().controls_snapshot().fixed_registrations[0] == FixedRegistration::None);
+    anchor_is(*timeline, 0x2010U, 0.61);
+    anchor_is(*timeline, 0x5000U, preset_values[6]);
+
+    // The reverse alias has the same plateau rule. A cached fixed anchor must
+    // not defeat an explicit old-bank command until a new selector point emits.
+    const std::array<HostParameterPoint, 1> preset_plateau{{{4, preset_values[6]}}};
+    const std::array<HostParameterQueue, 1> preset_queue{{{0x5000U, preset_plateau}}};
+    CHECK(accepted(*timeline, 4, {}, preset_queue).physical_events_applied == 0);
+    selected_is(*timeline, Manual::Upper, PresetSelection::BankB);
+    CHECK(accepted(*timeline, 0, {}).physical_events_applied == 1);
+    selected_is(*timeline, Manual::Upper, PresetSelection::FSharp);
+    CHECK(parameter_point(*timeline, 0x2010U, 0.61).physical_events_applied == 1);
+    selected_is(*timeline, Manual::Upper, PresetSelection::BankB);
+    (void)parameter_point(*timeline, 0x5000U, preset_values[6]);
+    (void)parameter_point(*timeline, 0x5000U, -0.0);
+    selected_is(*timeline, Manual::Upper, PresetSelection::Cancel);
+    CHECK(timeline->engine().controls_snapshot().fixed_registrations[0] == FixedRegistration::FSharp);
+    anchor_is(*timeline, 0x5000U, -0.0);
+    anchor_is(*timeline, 0x2010U, 0.61);
+    CHECK(parameter_point(*timeline, 0x2010U, 0.61).physical_events_applied == 1);
+    selected_is(*timeline, Manual::Upper, PresetSelection::BankB);
+
+    const std::array<HostParameterPoint, 1> bank{{{0, 0.2}}};
+    const std::array<HostParameterPoint, 3> fixed{{
+        {0, preset_values[2]}, {0, preset_values[5]}, {0, preset_values[9]}}};
+    const std::array<HostParameterQueue, 2> reversed{{{0x5000U, fixed}, {0x2010U, bank}}};
+    CHECK(accepted(*timeline, 0, {}, reversed).physical_events_applied == 2);
+    selected_is(*timeline, Manual::Upper, PresetSelection::A);
+    CHECK(timeline->engine().controls_snapshot().selected_banks[0] == DrawbarBank::A);
+    anchor_is(*timeline, 0x2010U, 0.2);
+    anchor_is(*timeline, 0x5000U, preset_values[9]);
+    CHECK(timeline->manual_ownership() == owners && timeline->pedal_ownership() == pedals);
+    CHECK(timeline->engine().active_key_count() == 2 && timeline->engine().active_pedal_count() == 1);
+}
+
+void test_preset_restore_carry_and_rejection(const RuntimeProfile& profile) {
+    auto timeline = std::make_unique<HostTimeline>();
+    CHECK(timeline->prepare(profile, {48000.0, 64, 28, 0}, make_nominal_console_model()) == Status::Ok);
+    const auto controls = registration();
+    const std::array<HostMusicalEvent, 3> notes{{
+        HostNoteEvent{0, HostNoteKind::On, 0, 0, 60, 100, 1},
+        HostNoteEvent{0, HostNoteKind::On, 1, 0, 48, 100, 2},
+        PedalNoteEvent{0, PedalNoteKind::On, 0, 0, PedalId{1}, 100, 3}}};
+    (void)accepted(*timeline, 16, {}, {}, notes, std::span<const ControlSnapshot>{&controls, 1});
+    const std::array<HostParameterPoint, 1> old_bank{{{8, 0.6}}};
+    const std::array<HostParameterPoint, 2> upper{{{8, preset_values[2]}, {8, preset_values[9]}}};
+    const std::array<HostParameterPoint, 1> lower{{{8, 0.0}}};
+    const std::array<HostParameterQueue, 3> endpoints{{
+        {0x5001U, lower}, {0x5000U, upper}, {0x2010U, old_bank}}};
+    const std::array<HostMusicalEvent, 1> release{{HostNoteEvent{8, HostNoteKind::Off, 0, 0, 60, 0, 1}}};
+    (void)accepted(*timeline, 8, {}, endpoints, release);
+    CHECK(timeline->carry_count() == 5); // Duplicate endpoints retain their raw budget.
+    const auto before = std::make_unique<HostTimeline>(*timeline);
+
+    // A valid prefix, queued restore and existing boundary work must all roll
+    // back when a later new-selector point rejects. The helper also compares
+    // the next accepted audio and complete live state with an untouched copy.
+    for (const auto value : {-1.0, 1.01, std::numeric_limits<double>::infinity(),
+                             std::numeric_limits<double>::quiet_NaN()}) {
+        auto copy = std::make_unique<HostTimeline>(*timeline);
+        const std::array<HostParameterPoint, 2> invalid{{{0, preset_values[1]}, {7, value}}};
+        const std::array<HostParameterQueue, 1> queue{{{0x5000U, invalid}}};
+        rejected(*copy, Status::InvalidEvent, 8, queue, {},
+                 std::span<const ControlSnapshot>{&controls, 1});
+    }
+    for (const unsigned manual : {0U, 1U}) {
+        auto copy = std::make_unique<HostTimeline>(*timeline);
+        std::array<ControlSnapshot, 2> bad_restores{controls, controls};
+        bad_restores[1].route_enabled[manual] = false;
+        bad_restores[1].fixed_registrations[manual] = static_cast<FixedRegistration>(255);
+        rejected(*copy, Status::InvalidEvent, 8, {}, {}, bad_restores);
+    }
+    {
+        auto copy = std::make_unique<HostTimeline>(*timeline);
+        const std::array<HostParameterQueue, 2> duplicates{{{0x5000U, {}}, {0x5000U, {}}}};
+        rejected(*copy, Status::InvalidEvent, 8, duplicates);
+    }
+    {
+        auto copy = std::make_unique<HostTimeline>(*timeline);
+        const std::array<HostParameterQueue, 1> unknown{{{0x5002U, {}}}};
+        rejected(*copy, Status::InvalidEvent, 8, unknown);
+    }
+    live_equal(*timeline, *before);
+
+    std::array<ControlSnapshot, 4> restores{controls, controls, controls, controls};
+    restores[0].fixed_registrations = {FixedRegistration::A, FixedRegistration::CSharp};
+    restores[1].selected_banks = {DrawbarBank::A, DrawbarBank::A};
+    restores[2].fixed_registrations = {FixedRegistration::F, FixedRegistration::GSharp};
+    restores[3].expression = -0.0;
+    restores[3].selected_banks = {DrawbarBank::A, DrawbarBank::A};
+    restores[3].route_enabled = {false, false};
+    restores[3].fixed_registrations = {FixedRegistration::D, FixedRegistration::G};
+    const std::array<HostParameterPoint, 2> fresh_upper{{{0, preset_values[3]}, {0, preset_values[6]}}};
+    const std::array<HostParameterPoint, 1> fresh_old{{{0, 0.6}}};
+    const std::array<HostParameterQueue, 2> fresh{{{0x5000U, fresh_upper}, {0x2010U, fresh_old}}};
+    const std::array<HostMusicalEvent, 1> retrigger{{HostNoteEvent{0, HostNoteKind::On, 0, 0, 60, 100, 1}}};
+    const auto result = accepted(*timeline, 0, {}, fresh, retrigger, restores);
+    CHECK(result.carried_records_consumed == 5 && result.physical_events_applied == 5);
+    CHECK(timeline->carry_count() == 0);
+    auto expected = restores[3];
+    expected.selected_banks[0] = DrawbarBank::B;
+    expected.fixed_registrations[0] = FixedRegistration::FSharp;
+    expected.route_enabled[0] = true;
+    CHECK(timeline->engine().controls_snapshot() == expected);
+    anchor_is(*timeline, 0x2010U, 0.6);
+    anchor_is(*timeline, 0x2011U, 0.0);
+    anchor_is(*timeline, 0x5000U, preset_values[6]);
+    anchor_is(*timeline, 0x5001U, 0.0);
+    anchor_is(*timeline, 0x2000U, -0.0);
+    selected_is(*timeline, Manual::Upper, PresetSelection::FSharp);
+    selected_is(*timeline, Manual::Lower, PresetSelection::Cancel);
+    CHECK(timeline->engine().controls_snapshot().fixed_registrations[1] == FixedRegistration::G);
+    CHECK(timeline->engine().key_down(Manual::Upper, 60));
+    CHECK(timeline->engine().key_down(Manual::Lower, 48));
+    CHECK(timeline->engine().pedal_down(PedalId{1}));
+    CHECK(timeline->manual_ownership().owner_count() == 2);
+    CHECK(timeline->pedal_ownership() == before->pedal_ownership());
+    CHECK(timeline->engine().frame_clock() == before->engine().frame_clock());
+    CHECK(timeline->engine().percussion_diagnostics().readiness ==
+          before->engine().percussion_diagnostics().readiness);
+    phases(timeline->engine(), before->engine());
+    CHECK(accepted(*timeline, 0, {}).physical_events_applied == 0);
+    CHECK(timeline->engine().controls_snapshot() == expected);
+}
+
+void test_preset_curve_partitions(const RuntimeProfile& profile) {
+    constexpr std::uint32_t length = 128;
+    const std::array<HostParameterPoint, 2> preset{{{0, 1.0 / 128.0}, {127, 1.0}}};
+    // Old-bank commands coincide with the initial explicit selector, the
+    // selector's exact 0.5 threshold crossing and the last explicit selector.
+    // Extra callback endpoints therefore describe the same applied timeline.
+    const std::array<HostParameterPoint, 3> bank{{{0, 0.6}, {63, 0.6}, {127, 0.6}}};
+    const std::array<HostParameterQueue, 2> queues{{{0x5000U, preset}, {0x2010U, bank}}};
+    const std::array<HostMusicalEvent, 3> notes{{
+        HostNoteEvent{0, HostNoteKind::On, 0, 0, 60, 100, 1},
+        HostNoteEvent{0, HostNoteKind::On, 1, 0, 48, 100, 2},
+        PedalNoteEvent{0, PedalNoteKind::On, 0, 0, PedalId{1}, 100, 3}}};
+    auto controls = registration();
+    controls.route_enabled[0] = false;
+    controls.fixed_registrations[1] = FixedRegistration::GSharp;
+    controls.expression = 0.75;
+    for (const auto rate : {44100.0, 48000.0, 96000.0}) {
+        for (const bool nominal : {false, true}) {
+            const auto model = nominal ? make_nominal_console_model() : make_legacy_console_model();
+            auto whole = std::make_unique<HostTimeline>();
+            CHECK(whole->prepare(profile, {rate, length, 91, 0}, model) == Status::Ok);
+            std::array<float, length> expected{};
+            (void)accepted(*whole, length, expected, queues, notes,
+                           std::span<const ControlSnapshot>{&controls, 1});
+            for (const auto size : {1U, 7U, 15U, 31U, 64U, 97U, 128U}) {
+                auto split = std::make_unique<HostTimeline>();
+                CHECK(split->prepare(profile, {rate, length, 91, 0}, model) == Status::Ok);
+                std::array<float, length> actual{};
+                for (std::uint32_t start = 0; start < length;) {
+                    const auto count = std::min(size, length - start);
+                    std::vector<HostParameterPoint> preset_points;
+                    if (start == 0) preset_points.push_back({0, 1.0 / 128.0});
+                    preset_points.push_back({static_cast<std::int32_t>(count - 1),
+                                             static_cast<double>(start + count) / 128.0});
+                    std::vector<HostParameterPoint> bank_points;
+                    for (const auto point : bank) {
+                        if (point.offset >= static_cast<std::int32_t>(start) &&
+                            point.offset < static_cast<std::int32_t>(start + count)) {
+                            bank_points.push_back({point.offset - static_cast<std::int32_t>(start),
+                                                   point.normalized});
+                        }
+                    }
+                    const std::array<HostParameterQueue, 2> part{{
+                        {0x5000U, preset_points}, {0x2010U, bank_points}}};
+                    (void)accepted(*split, count, std::span<float>{actual}.subspan(start, count), part,
+                        start == 0 ? std::span<const HostMusicalEvent>{notes} : std::span<const HostMusicalEvent>{},
+                        start == 0 ? std::span<const ControlSnapshot>{&controls, 1} : std::span<const ControlSnapshot>{});
+                    start += count;
+                }
+                exact_audio(actual, expected);
+                live_equal(*whole, *split);
+                ++counts.partitions;
+            }
+        }
+    }
 }
 
 void test_interpolation_and_boundary(const RuntimeProfile& profile) {
@@ -652,7 +1013,7 @@ void test_atomic_failures(const RuntimeProfile& profile) {
     rejected(*timeline, Status::InvalidEvent, 16, duplicate);
     const std::array<HostParameterQueue, 2> duplicate_empty{{{0x2000U, {}}, {0x2000U, {}}}};
     rejected(*timeline, Status::InvalidEvent, 16, duplicate_empty);
-    std::array<HostParameterQueue, 46> excessive_queues{};
+    std::array<HostParameterQueue, kParameterCount + 1> excessive_queues{};
     rejected(*timeline, Status::TooManyEvents, 16, excessive_queues);
     std::array<HostParameterPoint, 1025> excessive_points{};
     const std::array<HostParameterQueue, 1> excessive{{{0x2000U, excessive_points}}};
@@ -716,7 +1077,12 @@ void test_atomic_failures(const RuntimeProfile& profile) {
 
 int main() {
     const auto profile = load_test_profile();
-    test_all_ids_and_thresholds(profile);
+    test_legacy45_ids_and_thresholds(profile);
+    test_current47_and_preset_thresholds(profile);
+    test_preset_restore_anchors(profile);
+    test_preset_aliases_and_raw_anchors(profile);
+    test_preset_restore_carry_and_rejection(profile);
+    test_preset_curve_partitions(profile);
     test_interpolation_and_boundary(profile);
     test_partitions(profile);
     test_capacity_and_dense_slices(profile);

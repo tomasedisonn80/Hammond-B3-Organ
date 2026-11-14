@@ -39,21 +39,27 @@ and `physical_events_consumed`, with `ok()` and an explicit Boolean conversion.
 | --- | --- |
 | `HostNoteEvent` | Existing two-origin, sixteen-channel manual ownership policy; releases retain their original manual after a bus remap. |
 | `PedalNoteEvent` | Distinct checked `PedalId` values and two pedal-origin namespaces; no manual MIDI or native-bus convention is inferred. |
-| `Event` | Ordinary controls only: `Drawbar`, `BankDrawbar`, `SelectBank`, `Cancel`, `Expression`, `Percussion` and `PedalDrawbar`. |
+| `Event` | Ordinary controls only: `Drawbar`, `BankDrawbar`, `SelectBank`, `Cancel`, `Expression`, `Percussion`, `PedalDrawbar` and `SelectPreset`. |
 
 Direct physical note, `KeyPosition` and division-panic `Event` alternatives
 reject with `InvalidEvent`, even if they would be valid for Engine alone.
 They would bypass the two external owner ledgers. Scoped releases instead use
 the corresponding typed `AllNotesOff` command; another channel's owners survive.
 Control payloads retain Engine's existing rules, including canonical Lower for
-pedal mixtures and Upper for percussion.
+pedal mixtures and Upper for percussion. `SelectPreset` accepts either manual,
+index zero and a finite integral value 0–11 under the
+[core selection contract](PRESET_CORE_API.md#4-event-and-engine-integration).
+Engine remains the authoritative payload validator; a later invalid selector
+rejects the entire candidate owner/control transaction.
 
 ## Ordering and counts
 
 Offsets must be globally nondecreasing across the variant stream. Equal offsets
 preserve the supplied order across all alternatives; the facade neither sorts
 the stream nor inserts a control-before-note priority. A host adapter that needs
-a priority must establish that input order explicitly.
+a priority must establish that input order explicitly. A later old-bank command
+therefore overrides an earlier fixed selection at the same offset here. The
+separate host parameter timeline orders descriptor commands by numeric ID.
 
 Positive blocks require `offset < frames`. Zero-frame calls admit only offset
 zero. There is no retained offset-at-end carry here; the implemented
@@ -148,6 +154,14 @@ events, without generating the expectations through either ownership adapter.
 It covers both contact models at all three supported rates, all 122 manual keys
 and 25 pedals, overlapping origins, Cancel, route retention, zero-frame flushes,
 disconnected output, exact output tails and 42 block-partition cases.
+
+The [A17 extension](development/2026-11-14-preset-continuation/17-host-publication.md)
+adds direct mixed-note/pedal/preset event expectations, fixed/old-bank tie order,
+retained bank editing and cancelled fixed memory. It exercises all twelve preset
+commands on both manuals as zero-frame flushes with held owners and checks
+unchanged phase, readiness and clock. Eleven invalid manual/index/value payloads
+each reject both zero-frame and positive calls after otherwise valid owner and
+selector changes; every rejection compares the future audio to an untouched copy.
 
 Late malformed controls/notes, identities, timing, buffers, clock bounds,
 256-owner exhaustion, 1,024 raw events and expanded 1,024/1,025 boundaries are

@@ -1,4 +1,5 @@
 #include "NativeAllocationProbe.h"
+#include "NativePresetOracle.h"
 
 #include "hammond/ConsoleModel.h"
 #include "hammond/Engine.h"
@@ -38,9 +39,9 @@ constexpr sv::ParamID kPedalTwo = 0x4001U;
 constexpr std::size_t kCapacity = static_cast<std::size_t>(kHardMaxBlockFrames) + 4;
 static_assert(std::chrono::steady_clock::is_steady);
 
-enum class Path : std::size_t { Enabled, Dense, Maximum, Carry, OutputShape, Rejected, Lifecycle, Count };
+enum class Path : std::size_t { Enabled, Preset, Dense, Maximum, Carry, OutputShape, Rejected, Lifecycle, Count };
 constexpr std::array<const char*, static_cast<std::size_t>(Path::Count)> kNames{
-    "enabled", "dense", "maximum", "carry", "output-shape", "rejected", "setProcessing"};
+    "enabled", "preset", "dense", "maximum", "carry", "output-shape", "rejected", "setProcessing"};
 struct Totals {
     std::uint64_t accepted{}, rejected{}, frames{}, fresh_records{}, carried_records{}, restores{};
     std::size_t allocations{}, deallocations{};
@@ -409,6 +410,63 @@ void lifecycle(Session& session) {
     session.process(257, Path::Enabled, {}, nullptr, nullptr, 0, 0, 0, true);
 }
 
+void preset_paths(Session& session) {
+    auto state = session.reference.controls_snapshot();
+    state.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
+    state.route_enabled = {false, true};
+    session.four_restores(state);
+    session.restore(state);
+    session.process(0, Path::Preset, {}, nullptr, nullptr, 0, 0, 4);
+    session.process(64, Path::Preset);
+    const auto clock = session.reference.frame_clock();
+    for (std::size_t selection = 0; selection < preset_oracle::canonical.size(); ++selection) {
+        ParameterChanges points;
+        points.add_queue(0x5001U).points = {{0, preset_oracle::canonical[selection]}};
+        points.add_queue(0x5000U).points = {{0, preset_oracle::canonical[selection]}};
+        const std::array<Event, 2> physical{{
+            {0, EventType::SelectPreset, Manual::Upper, 0, static_cast<double>(selection)},
+            {0, EventType::SelectPreset, Manual::Lower, 0, static_cast<double>(selection)}}};
+        session.process(0, Path::Preset, physical, nullptr, &points, 2);
+    }
+    check(session.reference.frame_clock() == clock && session.reference.active_key_count() == 2 &&
+          session.reference.active_pedal_count() == 1, "zero selectors reset elapsed time or held targets");
+
+    ParameterChanges prime;
+    prime.add_queue(0x5000U).points = {{0, preset_oracle::canonical[1]}, {8, preset_oracle::canonical[1]}};
+    const std::array<Event, 1> first{{{0, EventType::SelectPreset, Manual::Upper, 0, 1.0}}};
+    session.process(8, Path::Preset, first, nullptr, &prime, 2);
+    state = session.reference.controls_snapshot();
+    state.fixed_registrations = {FixedRegistration::A, FixedRegistration::FSharp};
+    state.route_enabled = {false, true};
+    session.four_restores(state);
+    session.restore(state);
+    ParameterChanges fresh;
+    fresh.add_queue(0x5000U).points = {{0, preset_oracle::canonical[5]}};
+    fresh.add_queue(0x2010U).points = {{0, 0.6}};
+    const std::array<Event, 2> ordered{{
+        {0, EventType::SelectBank, Manual::Upper, 0, 1.0},
+        {0, EventType::SelectPreset, Manual::Upper, 0, 5.0}}};
+    session.process(0, Path::Preset, ordered, nullptr, &fresh, 2, 1, 4);
+    session.process(64, Path::Preset);
+
+    ParameterChanges invalid;
+    invalid.add_queue(0x5001U).points = {{0, preset_oracle::canonical[9]},
+                                       {63, std::numeric_limits<double>::quiet_NaN()}};
+    reset(session.block, 64, nullptr, &invalid);
+    reject_and_resume(session, "late invalid fixed selector preserves route and history");
+
+    ParameterChanges old;
+    old.add_queue(0x2011U).points = {{0, 1.0}};
+    old.add_queue(0x2010U).points = {{0, 0.6}};
+    const std::array<Event, 2> banks{{
+        {0, EventType::SelectBank, Manual::Upper, 0, 1.0},
+        {0, EventType::SelectBank, Manual::Lower, 0, 1.0}}};
+    session.process(16, Path::Preset, banks, nullptr, &old, 2);
+    check(saved(session.plugin).fixed_registrations ==
+          std::array<FixedRegistration, 2>{FixedRegistration::None, FixedRegistration::None},
+          "same-value old bank commands retained fixed mode");
+}
+
 void enabled_rate(const std::string& bundle, const RuntimeProfile& profile, double rate) {
     Session session(bundle, profile, rate);
     const auto controls = registration();
@@ -432,6 +490,7 @@ void enabled_rate(const std::string& bundle, const RuntimeProfile& profile, doub
     check(session.reference.percussion_diagnostics().routed_detector &&
           session.reference.percussion_diagnostics().readiness < 1.0,
           "reference did not exercise enabled routed percussion");
+    preset_paths(session);
 
     ParameterChanges flush;
     flush.add_queue(kExpression).points = {{0, 0.75}};

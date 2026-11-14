@@ -533,6 +533,44 @@ class RenderFixtureTests(unittest.TestCase):
                     invoked.assert_not_called()
                 self.assertFalse(output.exists())
 
+    def test_preset_events_retain_exact_bytes_and_current_schema(self):
+        tokens = ("-0.0", "1.0", "+2", "3e0", "4.", "5", "6.000", "7e+0",
+                  "+8.0", "9", "1e1", "11.0")
+        raw = b"\xef\xbb\xbf# schema 3 fixed selectors; preserve CRLF bytes\r\n" + b"".join(
+            f"{selection} select_preset {manual} 0 {value}\r\n".encode("ascii")
+            for selection, value in enumerate(tokens) for manual in ("upper", "lower"))
+        events = self.score(raw)
+        directory, manifest = self.render(events=events, drawbars="000000000")
+        self.assert_success(directory, manifest)
+        self.assertEqual(manifest["parameters"]["event_count"], 24)
+        self.assertEqual((directory / "events.txt").read_bytes(), raw)
+        self.assertEqual(events.read_bytes(), raw)
+        self.assertEqual(manifest["inputs"]["events"]["sha256"], hashlib.sha256(raw).hexdigest())
+        self.assertEqual(manifest["wav"]["pcm_peak_integer"], 0)
+
+    def test_invalid_preset_score_is_rejected_before_launch_or_creation(self):
+        malformed = [f"128 select_preset {manual} 0 {value}"
+                     for manual in ("upper", "lower")
+                     for value in ("-1", "12", ".5", "11.000001", "nan", "inf", "-inf",
+                                   "1e999", "1e-999", "0x1")]
+        malformed += [f"128 select_preset upper {index} 1"
+                      for index in ("1", "255", "-0", "+0", "0.0", "18446744073709551616")]
+        malformed += ["128 select_preset pedals 0 1", "128 select_preset Upper 0 1",
+                      "128 SelectPreset upper 0 1", "128 select_preset upper 0 1 extra"]
+        for bad in malformed:
+            with self.subTest(event=bad):
+                output = self.new_output()
+                raw = ("0 note_on upper 60 100\n0 select_preset upper 0 1\n" + bad + "\n").encode()
+                events = self.score(raw)
+                before = set(self.work.iterdir())
+                with mock.patch.object(fixture, "_invoke") as invoked:
+                    with self.assertRaises(fixture.FixtureError):
+                        self.render(output_dir=output, events=events)
+                    invoked.assert_not_called()
+                self.assertFalse(output.exists())
+                self.assertEqual(set(self.work.iterdir()), before)
+                self.assertEqual(events.read_bytes(), raw)
+
     def test_console_cli_choices_are_forwarded_and_strictly_parsed(self):
         output = self.new_output()
         arguments = [sys.executable, str(ROOT / "tools/render_fixture.py"),

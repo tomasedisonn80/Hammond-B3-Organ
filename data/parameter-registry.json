@@ -1,6 +1,6 @@
 {
-  "schema_version": 3,
-  "model": "exclusive-ab-percussion-pedal-console-v3",
+  "schema_version": 4,
+  "model": "exclusive-fixed-percussion-pedal-console-v4",
   "scope": "implemented-console-subset",
   "status": "proposed-internal",
   "provenance": {
@@ -8,6 +8,12 @@
     "applicable_variant": "nominal B-3/AO-28 console engineering subset",
     "atlas_file": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
     "atlas_pages": [
+      50,
+      52,
+      121,
+      122,
+      124,
+      126,
       127,
       128,
       134,
@@ -15,6 +21,7 @@
       140,
       142,
       150,
+      153,
       389,
       397,
       398,
@@ -22,12 +29,17 @@
       400,
       401,
       402,
+      410,
+      415,
       418
     ],
     "implementation_sources": [
       "docs/CONSOLE_EXTENSION.md",
       "docs/CONSOLE_DYNAMICS.md",
       "docs/PEDAL_INTEGRATION_CONTRACT.md",
+      "docs/PRESET_SELECTION_CONTRACT.md",
+      "docs/PRESET_STATE_PARAMETER_CONTRACT.md",
+      "include/hammond/FixedRegistration.h",
       "include/hammond/ControlState.h",
       "include/hammond/Percussion.h",
       "include/hammond/PedalVoice.h",
@@ -37,7 +49,7 @@
     "host_exports_verified": false,
     "native_host_curves_implemented": false,
     "uncertainty": null,
-    "reason": "Retains all 43 earlier internal console and percussion records unchanged and adds two nominal pedal mixture positions. IDs, defaults and conversions are internal engineering choices, not manufacturer calibration. The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed."
+    "reason": "Retains all 45 earlier internal console, percussion and pedal records unchanged and adds two exclusive fixed-registration selectors. IDs, defaults and conversions are internal engineering choices, not manufacturer calibration. The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed."
   },
   "parameters": [
     {
@@ -1493,6 +1505,90 @@
         398,
         401,
         402,
+        418
+      ]
+    },
+    {
+      "id": 20480,
+      "path": "manual.upper.preset_selection",
+      "label": "Upper preset selection",
+      "kind": "preset_selector",
+      "unit": "preset-key-index",
+      "minimum": 0,
+      "maximum": 11,
+      "default": 11,
+      "step_count": 11,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 1.0,
+        "to_plain": "count(u >= nearest-binary64((2*k+1)/22), k=0..10)",
+        "to_normalized": "nearest-binary64(x / 11)",
+        "meaning": "exclusive-preset-key-index-fraction"
+      },
+      "engine_event": {
+        "type": "select_preset",
+        "manual": "upper",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        50,
+        52,
+        121,
+        122,
+        124,
+        126,
+        153,
+        389,
+        397,
+        398,
+        401,
+        402,
+        410,
+        415,
+        418
+      ]
+    },
+    {
+      "id": 20481,
+      "path": "manual.lower.preset_selection",
+      "label": "Lower preset selection",
+      "kind": "preset_selector",
+      "unit": "preset-key-index",
+      "minimum": 0,
+      "maximum": 11,
+      "default": 11,
+      "step_count": 11,
+      "normalized": {
+        "minimum": 0.0,
+        "maximum": 1.0,
+        "default": 1.0,
+        "to_plain": "count(u >= nearest-binary64((2*k+1)/22), k=0..10)",
+        "to_normalized": "nearest-binary64(x / 11)",
+        "meaning": "exclusive-preset-key-index-fraction"
+      },
+      "engine_event": {
+        "type": "select_preset",
+        "manual": "lower",
+        "index": 0
+      },
+      "evidence_class": "proposed",
+      "source_pages": [
+        50,
+        52,
+        121,
+        122,
+        124,
+        126,
+        153,
+        389,
+        397,
+        398,
+        401,
+        402,
+        410,
+        415,
         418
       ]
     }

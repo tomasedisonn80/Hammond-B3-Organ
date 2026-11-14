@@ -58,7 +58,7 @@ outside-interval work and must contain the sum of measured render intervals.
 
 ## Report and verification contract
 
-Schema `hammond-standalone-benchmark-v1` includes every chronological raw interval
+Schema `hammond-standalone-benchmark-v2` includes every chronological raw interval
 in `timing.samples_ns`, plus unadjusted minimum, median, p95, p99, maximum and sum
 in nanoseconds. Median averages the two middle observations for even counts;
 p95/p99 use nearest rank `ceil(p*N)-1`. No outliers are removed. The separate
@@ -73,6 +73,11 @@ output is finite with bit-identical L/R, and its actual peak matches publication
 Setup/warmup/measured stage counts reconcile accepted/applied/discarded commands,
 expected failed posts, recoveries, zero/positive calls, sequences and frames.
 All four retained snapshots expose exact controls, holds, clock and sticky faults.
+Version 2 adds raw `fixed_registrations` and separately derived
+`preset_selections` to every controls object; remembered `selected_banks` and
+`route_enabled` keep their meanings. The four workload definitions remain version
+1 and use no fixed row, so this report migration does not change their scores.
+Archived benchmark-v1 reports retain their original bytes and schema.
 Stop must clear holds/peak without advancing time or changing retained controls.
 Any failed check exits nonzero before constructing a success report; stdout write
 failure also returns nonzero. Timing alone never turns a workload failure into success.
@@ -81,7 +86,7 @@ Build identity includes compiler/version, configuration, target OS/processor,
 C++ version, `NDEBUG`, project sanitizer option and a SHA-256 source manifest.
 The manifest hashes sorted `relative-path:sha256\n` records for core sources and
 headers, Session, this benchmark, CLI path handling and the actual profile/pedal/
-scanner generation inputs named by CMake; content changes trigger reconfiguration.
+scanner/fixed-registration generation inputs named by CMake; content changes trigger reconfiguration.
 The project sanitizer flag does not discover arbitrary external flags; retain
 `compile_commands.json` and the CMake cache with a comparison. Profile identity
 contains its ID, retained authoring SHA-256, and byte count/FNV-1a64 over the exact

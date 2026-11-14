@@ -7,6 +7,7 @@ are failures; these are internal mapping checks, not native host qualification.
 
 from __future__ import annotations
 
+from fractions import Fraction
 import hashlib
 import importlib.util
 import json
@@ -37,9 +38,11 @@ EVENT_KEYS = frozenset(("offset", "type", "manual", "index", "value"))
 LEGACY_IDS = (set(range(4096, 4105)) | set(range(4112, 4121)) |
               set(range(4128, 4137)) | set(range(4144, 4153)) | {8192, 8208, 8209})
 VERSION_2_IDS = LEGACY_IDS | {12288, 12289, 12290, 12291}
-ALL_IDS = VERSION_2_IDS | {16384, 16385}
+VERSION_3_IDS = VERSION_2_IDS | {16384, 16385}
+ALL_IDS = VERSION_3_IDS | {20480, 20481}
 LEGACY_DIGEST = "61669b54e0a0499da950ece28c855e70ab4cb815d204f625f0aee8542d8b4f1b"
 VERSION_2_DIGEST = "5e161206e203cce130330b993590d892182c4ead62daba50b468b5348d70bed2"
+VERSION_3_DIGEST = "13ba488bec90154c960c3fd700dc4a774aff5664caf5d68472821493f22d1cad"
 
 
 def unique_object(pairs):
@@ -70,6 +73,27 @@ def exact_discrete(value, steps):
     return (2 * numerator * steps + denominator) // (2 * denominator)
 
 
+def nearest_binary64(numerator, denominator):
+    # Independent integer-rational nearest-even oracle, not a production table.
+    target = Fraction(numerator, denominator)
+    low, high = 0, 0x3ff0000000000000
+    decode = lambda raw: struct.unpack("!d", struct.pack("!Q", raw))[0]
+    while low + 1 < high:
+        middle = (low + high) // 2
+        if Fraction.from_float(decode(middle)) <= target:
+            low = middle
+        else:
+            high = middle
+    low_distance = target - Fraction.from_float(decode(low))
+    high_distance = Fraction.from_float(decode(high)) - target
+    return decode(low if low_distance < high_distance or
+                  (low_distance == high_distance and low % 2 == 0) else high)
+
+
+PRESET_THRESHOLDS = tuple(nearest_binary64(2 * k + 1, 22) for k in range(11))
+PRESET_CANONICAL = tuple(nearest_binary64(k, 11) for k in range(12))
+
+
 class ParameterBridgeTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -81,8 +105,8 @@ class ParameterBridgeTests(unittest.TestCase):
         cls.executable = Path(raw).resolve()
         cls.registry = registry_api.load_registry(ROOT / "data" / "parameter-registry.json")
         cls.by_id = {record["id"]: record for record in cls.registry["parameters"]}
-        if set(cls.by_id) != ALL_IDS or len(cls.by_id) != 45:
-            raise RuntimeError("The independent 45-ID compatibility inventory has changed")
+        if set(cls.by_id) != ALL_IDS or len(cls.by_id) != 47:
+            raise RuntimeError("The independent 47-ID compatibility inventory has changed")
         cls.calls = 0
 
     @classmethod
@@ -111,8 +135,8 @@ class ParameterBridgeTests(unittest.TestCase):
         self.assertIs(type(data["schema_version"]), int)
         self.assertEqual(data["schema_version"], 2)
         self.assertIs(type(data["registry_schema_version"]), int)
-        self.assertEqual(data["registry_schema_version"], 3)
-        self.assertEqual(data["model"], "exclusive-ab-percussion-pedal-console-v3")
+        self.assertEqual(data["registry_schema_version"], 4)
+        self.assertEqual(data["model"], "exclusive-fixed-percussion-pedal-console-v4")
         self.assertEqual(data["scope"], "implemented-console-subset")
         self.assertEqual(data["status"], "proposed-internal")
         self.assertEqual(data["verification_scope"], "sdk-free-core-parameter-mapping")
@@ -121,7 +145,7 @@ class ParameterBridgeTests(unittest.TestCase):
         self.assertIn(type(data["normalized"]), (int, float))
         self.assertEqual(bits(data["normalized"]), bits(normalized))
         self.assertIs(type(data["parameters"]), list)
-        self.assertEqual(len(data["parameters"]), 45)
+        self.assertEqual(len(data["parameters"]), 47)
         self.assertEqual([record["id"] for record in data["parameters"]], sorted(ALL_IDS))
         for record in data["parameters"]:
             self.assertEqual(set(record), RECORD_KEYS)
@@ -147,7 +171,10 @@ class ParameterBridgeTests(unittest.TestCase):
             self.assertTrue(math.isfinite(event["value"]))
             self.assertEqual(event["value"], python_plain)
             if original["step_count"]:
-                self.assertEqual(event["value"], exact_discrete(normalized, original["step_count"]))
+                oracle = (sum(normalized >= threshold for threshold in PRESET_THRESHOLDS)
+                          if original["kind"] == "preset_selector" else
+                          exact_discrete(normalized, original["step_count"]))
+                self.assertEqual(event["value"], oracle)
                 if event["value"] == 0:
                     self.assertEqual(math.copysign(1, event["value"]), 1)
             else:
@@ -169,7 +196,7 @@ class ParameterBridgeTests(unittest.TestCase):
                              expected_event)
 
     def test_every_half_step_and_immediate_binary64_neighbor(self):
-        thresholds = [index / 16 for index in range(1, 16, 2)] + [0.5]
+        thresholds = [index / 16 for index in range(1, 16, 2)] + [0.5] + list(PRESET_THRESHOLDS)
         for threshold in thresholds:
             for value in (math.nextafter(threshold, 0), threshold,
                           math.nextafter(threshold, 1)):
@@ -177,7 +204,7 @@ class ParameterBridgeTests(unittest.TestCase):
                     self.successful(value)
 
     def test_canonical_positions_expression_and_subnormal_boundaries(self):
-        values = [index / 8 for index in range(9)]
+        values = [index / 8 for index in range(9)] + list(PRESET_CANONICAL)
         values += [-0.0, math.nextafter(0.0, 1.0), float.fromhex("0x1.0p-1022"),
                    math.nextafter(1.0, 0.0), 0.12345678901234567]
         for value in values:
@@ -219,6 +246,7 @@ class ParameterBridgeTests(unittest.TestCase):
         self.assertEqual(help_result.returncode, 0, help_result.stderr)
         self.assertEqual(help_result.stderr, b"")
         self.assertIn(b"--normalized", help_result.stdout)
+        self.assertIn(b"47 compiled internal parameter mappings", help_result.stdout)
         self.assertLess(len(help_result.stdout), 4096)
         baseline = self.invoke()
         for locale_name in ("C", "de_DE.UTF-8", "fr_FR.UTF-8"):
@@ -280,6 +308,32 @@ class ParameterBridgeTests(unittest.TestCase):
         self.assertEqual(hashlib.sha256(canonical).hexdigest(), VERSION_2_DIGEST)
         frozen = json.loads((ROOT / "data" / "references" / "parameter-registry-v2.json").read_bytes())
         self.assertEqual(historical, sorted(frozen["parameters"], key=lambda record: record["id"]))
+
+    def test_all_45_previous_records_keep_their_independent_compatibility_digest(self):
+        historical = sorted((record for record in self.registry["parameters"]
+                             if record["id"] in VERSION_3_IDS), key=lambda record: record["id"])
+        self.assertEqual(len(historical), 45)
+        canonical = json.dumps(historical, sort_keys=True, separators=(",", ":"),
+                               ensure_ascii=True).encode("ascii")
+        self.assertEqual(hashlib.sha256(canonical).hexdigest(), VERSION_3_DIGEST)
+
+    def test_presets_export_exact_targets_and_downward_rounded_equality(self):
+        for numerator in (3, 5, 7, 15, 17):
+            threshold = nearest_binary64(numerator, 22)
+            self.assertLess(Fraction.from_float(threshold), Fraction(numerator, 22))
+            result = self.successful(threshold)
+            by_id = {record["id"]: record for record in result["parameters"]}
+            for identifier, manual in ((20480, "upper"), (20481, "lower")):
+                record = by_id[identifier]
+                self.assertEqual(record["path"], f"manual.{manual}.preset_selection")
+                self.assertEqual(record["kind"], "preset_selector")
+                self.assertEqual(record["unit"], "preset-key-index")
+                self.assertEqual(record["step_count"], 11)
+                self.assertEqual(record["default_plain"], 11)
+                self.assertEqual(record["default_normalized"], 1)
+                self.assertEqual(record["event"], {"offset": 0, "type": "select_preset",
+                                                   "manual": manual, "index": 0,
+                                                   "value": (numerator + 1) // 2})
 
     def test_pedal_mixture_records_export_canonical_lower_targets(self):
         converted = self.successful(0.5)

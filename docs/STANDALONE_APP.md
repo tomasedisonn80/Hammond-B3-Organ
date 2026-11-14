@@ -92,7 +92,7 @@ coherent acknowledgment of all accepted commands, completed Save, a running
 device and fault-free joined shutdown. A two-second bounded drain follows the
 declared duration; interruption or a missed gate returns 1.
 
-Only a requested UI script adds a `replay` object to schema-2 diagnostics. It retains
+Only a requested UI script adds a `replay` object to schema-3 diagnostics. It retains
 delivery/completion, accepted note-command counts, successful device starts, the
 last submitted sequence, the snapshot before shutdown and up to 512 changed
 musical observations with elapsed wall time. Each observation contains absolute
@@ -251,15 +251,18 @@ the directory for `controls.b3controls`. A missing file starts the proposed
 registration. A malformed or unreadable existing file displays an error and
 preserves that proposal and the file. Save is explicit; exit never saves.
 
-Load validates the whole existing B3CONTROLS1/2/3 file through `StateFiles` on
+Load validates the whole existing B3CONTROLS1/2/3/4 file through `StateFiles` on
 the main thread, then submits a copied snapshot. Loading while offline retains
 the validated controls for the next explicit device start. Save uses only an
 acknowledged coherent `SessionSnapshot.controls`. If edits are pending, it
 waits at most two seconds; changed controls, rejection or recovery cancel the
 request. The exact successfully written copy becomes the clean-file reference.
 Held keys, owners, MIDI port/channel selections, audio/window settings and DSP
-histories are never saved. All 45 public parameter identities and the existing
-`B3CONTROLS3` format remain unchanged.
+histories are never saved. All 45 previous parameter records retain their meanings;
+two appended preset selectors bring the current count to 47. The writer emits
+`B3CONTROLS4`, while readers 1/2/3 remain available. See the
+[fixed-registration native workflow contract](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/PRESET_NATIVE_WORKFLOWS.md) for raw
+fixed memory, effective selection and independent migration checks.
 
 The main thread owns SDL initialization, window/events, UI, painting, parsing
 and file I/O. Only `AudioDevice` and `Session` enter the audio callback. Device
@@ -289,14 +292,21 @@ not the callback's concurrently changing state at the instant the file is writte
 The time bound describes the event-loop interval;
 window/device setup, shutdown and file writing are additional work.
 
-JSON schema version 2 records `profile`, `runtime`, `audio`, `midi`, `session`,
+JSON schema version 3 records `profile`, `runtime`, `audio`, `midi`, `session`,
 `controls`, `smoke`, `state_path`, `status`, and `errors`. Runtime includes the
 actual video driver, renderer, window/drawable sizes and rendered image count.
 Audio includes requested and obtained configurations, native float32 format,
 callback/frame counts and all format/render/nonfinite/overrange counters.
 Session includes the final coherent revision, sequence/recovery/fault counters,
 frame clock, maximum observed peak and held state after shutdown. Controls
-include all four banks, selections, routes, expression, percussion and pedals.
+include all four banks, remembered `selected_banks`, raw `fixed_registrations`,
+separately derived `preset_selections`, routes, expression, percussion and pedals.
+The new raw values 0–9 retain fixed memory during Cancel; effective values 0–11
+report Cancel/fixed/bank routing. Archived schema-2 reports remain unchanged.
+Replay records also retain the pre-shutdown snapshot/running, pending-control
+and pending-save predicates and desired controls used by the acknowledgment
+barrier. These copied values make a failed replay diagnosable before shutdown
+cleanup changes state; they do not weaken the completion requirement.
 The final device counters are copied after callbacks have joined.
 
 `midi` identifies the compiled backend, requested and observed port, selected

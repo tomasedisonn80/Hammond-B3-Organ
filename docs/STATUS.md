@@ -10,16 +10,44 @@ diagrams inspected. The existing production baseline passes 113/113 SDK-free
 Release suites; its [record](development/2026-11-14-preset-continuation/reports/baseline.json)
 separates production identity from the new documentation overlay.
 
-The [selection contract](PRESET_SELECTION_CONTRACT.md),
-[core API](PRESET_CORE_API.md) and
-[state/parameter contract](PRESET_STATE_PARAMETER_CONTRACT.md) define eighteen
-immutable fixed rows, retained A/B banks, phase/note/percussion preservation,
-B3CONTROLS4 with legacy 1/2/3 migration and two appended parameter IDs. The
-independent source-read test oracle contains all 162 tap positions. Contract
-review, baseline native qualification and UI geometry are in progress; this
-paragraph does not claim the proposed production APIs are already implemented.
+The frozen [selection contract](PRESET_SELECTION_CONTRACT.md),
+[core API](PRESET_CORE_API.md), [state/parameter contract](PRESET_STATE_PARAMETER_CONTRACT.md)
+and [UI contract](PRESET_UI_DESIGN.md) are implemented in the current development
+worktree. Eighteen immutable documentary rows now connect through exclusive
+selection, four retained A/B banks, Cancel memory, core routing, raw snapshot
+publication, host automation, native VST3 and offline event admission. The writer
+emits `B3CONTROLS4` and retains readers 1/2/3. The two appended selector parameters
+bring the registry to 47 while preserving the first 45 records exactly.
+
+Focused source-identified gates cover all 162 source taps, 1,600 new-state
+combinations, 4,800 legacy migrations, independent binary64 thresholds, continuing
+musical histories and raw host publication. Native VST3 passes eight suites,
+including its 47 internal SDK checks; this is separate from its 47 exported
+parameters. Offline admission passes 107 methods in three suites. Each worker's
+record retains its own copied-source identity and limitations; these are not a
+substitute for the pending integrated-source gate.
+
+The standalone exposes 24 reversed preset keys, 147 playing keys and 67 keyboard
+focus stops. Independent model, actual raster and concurrent Session gates pass;
+two observed focus defects were repaired. The [first combined Release gate](reviews/PRESET_FIRST_INTEGRATED_GATE.md)
+ran 143 suites: 141 passed initially, then the two affected suites passed after
+reviewed test/documentation corrections. Production binaries were unchanged.
+A later exact-source generator repair preserves every generated table byte,
+and 63 old/current legacy audio cases match in full PCM16 and comparable summaries.
+
+The README includes an [actual current preview](../examples/demos/standalone-presets-preview-v1/README.md)
+and describes the new controls. The [runbook](PRESET_RUNBOOK.md) and initial
+[handoff](PRESET_HANDOFF.md) are available. Reusable gallery generation, package
+updates, renewed hosted/platform qualification, further visual refinement and
+final session closure remain in progress. Literal visual equality, native
+semantic accessibility and physical instrument fidelity are not established.
+
+The published baseline has received two concrete macOS compile/startup repairs.
+At `35554c0`, ten of eleven hosted jobs pass; the remaining macOS standalone job
+passes 22/24 suites with two [retained replay failures](development/2026-11-14-preset-continuation/BASELINE_REPLAY_FOLLOWUP.md).
+The current feature worktree is not identified by that baseline commit.
 The [actual manifest](development/2026-11-14-preset-continuation/assignments.json)
-records this session's own real assignments and acceptance. Earlier and parallel
+records this session's dispatched identities and acceptance. Earlier and parallel
 tracks below retain their source identities and separate evidence gates.
 
 ## Active MIDI and native visual continuation

@@ -28,6 +28,7 @@ struct Panic {};
 
 // Offset-zero input, one whole control restore, scoped UI release, or global
 // panic. No pointer, parser, device handle, string, or dynamic payload is owned.
+// Ordinary control input includes SelectPreset; preset selection owns no notes.
 using SessionCommand =
     std::variant<PerformanceInputEvent, ControlSnapshot, ReleaseUiNotes, Panic>;
 
@@ -86,6 +87,7 @@ enum class SessionFault : std::uint32_t {
 // One coherent copied observation. Held values are logical physical targets,
 // not individual owners, contact positions or an audibility claim. Array key
 // index is MIDI note minus kMinManualMidiNote; pedal index is PedalId minus one.
+// controls retains both raw fixed modes, including while a route is cancelled.
 struct SessionSnapshot {
     ControlSnapshot controls{};
     std::array<std::array<bool, kManualKeyCount>, kManualCount> held_keys{};

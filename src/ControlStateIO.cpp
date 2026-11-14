@@ -16,6 +16,8 @@ constexpr std::array<std::string_view, kDrawbarBankCount> kBankNames{"A", "B"};
 constexpr std::array<std::string_view, 2> kHarmonicNames{"second", "third"};
 constexpr std::array<std::string_view, 2> kVolumeNames{"normal", "soft"};
 constexpr std::array<std::string_view, 2> kDecayNames{"slow", "fast"};
+constexpr std::array<std::string_view, kFixedRegistrationCount + 1> kFixedNames{
+    "none", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A"};
 static_assert(kManualCount == 2 && kDrawbarBankCount == 2 && kDrawbarCount == 9);
 static_assert(kPedalDrawbarCount == 2);
 
@@ -97,7 +99,24 @@ private:
     return true;
 }
 
-[[nodiscard]] bool parse_manual(Tokens& tokens, std::size_t manual,
+[[nodiscard]] bool parse_fixed_registration(Tokens& tokens,
+                                           FixedRegistration& destination,
+                                           std::string& error) {
+    if (!tokens.expect("fixed_registration", error)) return false;
+    std::string_view token;
+    if (tokens.next(token)) {
+        for (std::size_t index = 0; index < kFixedNames.size(); ++index) {
+            if (token == kFixedNames[index]) {
+                destination = static_cast<FixedRegistration>(index);
+                return true;
+            }
+        }
+    }
+    error = "Control fixed_registration must be none, C#, D, D#, E, F, F#, G, G# or A.";
+    return false;
+}
+
+[[nodiscard]] bool parse_manual(Tokens& tokens, std::size_t manual, bool has_fixed,
                                 ControlSnapshot& candidate, std::string& error) {
     if (!tokens.expect("manual", error) || !tokens.expect(kManualNames[manual], error) ||
         !tokens.expect("selected", error)) return false;
@@ -107,6 +126,10 @@ private:
         return false;
     }
     candidate.selected_banks[manual] = token == "A" ? DrawbarBank::A : DrawbarBank::B;
+    if (has_fixed &&
+        !parse_fixed_registration(tokens, candidate.fixed_registrations[manual], error)) {
+        return false;
+    }
     if (!tokens.expect("route_enabled", error)) return false;
     if (!tokens.next(token) || (token != "0" && token != "1")) {
         error = "Control route_enabled must be 0 or 1.";
@@ -148,24 +171,34 @@ private:
     ControlSnapshot candidate;
     std::string_view version;
     if (!tokens.next(version) || (version != "B3CONTROLS1" && version != "B3CONTROLS2" &&
-                                  version != "B3CONTROLS3")) {
-        error = "Unsupported control version; expected B3CONTROLS1, B3CONTROLS2 or B3CONTROLS3.";
+                                  version != "B3CONTROLS3" && version != "B3CONTROLS4")) {
+        error = "Unsupported control version; expected B3CONTROLS1, B3CONTROLS2, B3CONTROLS3 or B3CONTROLS4.";
+        return false;
+    }
+    const bool has_fixed = version == "B3CONTROLS4";
+    // Identity is mandatory even if both retained fixed modes are None. Never
+    // substitute a different catalog or infer legacy migration from omissions.
+    if (has_fixed && (!tokens.expect("registration_catalog", error) ||
+                      !tokens.expect(fixed_registration_catalog_id(), error) ||
+                      !tokens.expect("sha256", error) ||
+                      !tokens.expect(fixed_registration_catalog_sha256(), error))) {
         return false;
     }
     if (!tokens.expect("expression", error) ||
         !parse_expression(tokens, candidate.expression, error)) return false;
     // A fresh candidate gives historical version 1 explicit Off/Second/Normal/
-    // Slow defaults, and versions 1/2 explicit muted pedal defaults, independent
-    // of the caller's destination. Newer formats must supply all their records;
-    // a missing version-3 pedal record never activates legacy migration.
+    // Slow defaults, versions 1/2 explicit muted pedal defaults, and versions
+    // 1/2/3 fixed modes None, independent of the caller's destination. Newer
+    // formats must supply all their records; omissions never activate migration.
     if (version != "B3CONTROLS1" && !parse_percussion(tokens, candidate.percussion, error)) {
         return false;
     }
-    if (version == "B3CONTROLS3" && !parse_pedals(tokens, candidate.pedal_drawbars, error)) {
+    if ((version == "B3CONTROLS3" || version == "B3CONTROLS4") &&
+        !parse_pedals(tokens, candidate.pedal_drawbars, error)) {
         return false;
     }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
-        if (!parse_manual(tokens, manual, candidate, error)) return false;
+        if (!parse_manual(tokens, manual, has_fixed, candidate, error)) return false;
     }
     if (!tokens.expect("end", error)) return false;
     std::string_view trailing;
@@ -203,7 +236,9 @@ bool serialize_controls(const ControlSnapshot& snapshot, std::string& destinatio
             return false;
         }
         output << std::setprecision(std::numeric_limits<double>::max_digits10)
-               << "B3CONTROLS3\nexpression " << snapshot.expression << '\n';
+               << "B3CONTROLS4\nregistration_catalog " << fixed_registration_catalog_id()
+               << " sha256 " << fixed_registration_catalog_sha256()
+               << "\nexpression " << snapshot.expression << '\n';
     }
     output << "percussion enabled " << (snapshot.percussion.enabled ? '1' : '0')
            << " harmonic " << kHarmonicNames[static_cast<std::size_t>(snapshot.percussion.harmonic)]
@@ -217,6 +252,8 @@ bool serialize_controls(const ControlSnapshot& snapshot, std::string& destinatio
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         output << "manual " << kManualNames[manual] << " selected "
                << kBankNames[static_cast<std::size_t>(snapshot.selected_banks[manual])]
+               << " fixed_registration "
+               << kFixedNames[static_cast<std::size_t>(snapshot.fixed_registrations[manual])]
                << " route_enabled " << (snapshot.route_enabled[manual] ? '1' : '0') << '\n';
         for (std::size_t bank = 0; bank < kDrawbarBankCount; ++bank) {
             output << "bank " << kBankNames[bank];

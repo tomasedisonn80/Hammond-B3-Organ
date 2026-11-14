@@ -15,6 +15,7 @@ namespace {
     case EventType::Expression:
     case EventType::Percussion:
     case EventType::PedalDrawbar:
+    case EventType::SelectPreset:
         return true;
     default:
         return false;

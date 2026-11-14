@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Strict, standard-library validator for the proposed internal console registry.
 
-This checks one named 45-parameter engineering model, not VST3 exports or the
+This checks one named 47-parameter engineering model, not VST3 exports or the
 absent atlas companion. File parsing, validation and conversion run off the
 audio thread. Validation never modifies its argument. Public functions reject
 malformed input with ParameterError (a ValueError subclass).
@@ -17,11 +17,11 @@ import sys
 from typing import Any
 
 
-SCHEMA_VERSION = 3
-MODEL = "exclusive-ab-percussion-pedal-console-v3"
+SCHEMA_VERSION = 4
+MODEL = "exclusive-fixed-percussion-pedal-console-v4"
 SCOPE = "implemented-console-subset"
 STATUS = "proposed-internal"
-PARAMETER_COUNT = 45
+PARAMETER_COUNT = 47
 UINT32_MAX = (1 << 32) - 1
 MAX_INPUT_BYTES = 256 * 1024
 DEFAULT_REGISTRY_PATH = Path(__file__).resolve().parents[1] / "data" / "parameter-registry.json"
@@ -32,9 +32,13 @@ PROVENANCE = {
     "evidence_class": "proposed",
     "applicable_variant": "nominal B-3/AO-28 console engineering subset",
     "atlas_file": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
-    "atlas_pages": [127, 128, 134, 139, 140, 142, 150, 389, 397, 398, 399, 400, 401, 402, 418],
+    "atlas_pages": [50, 52, 121, 122, 124, 126, 127, 128, 134, 139, 140, 142, 150, 153,
+                    389, 397, 398, 399, 400, 401, 402, 410, 415, 418],
     "implementation_sources": ["docs/CONSOLE_EXTENSION.md", "docs/CONSOLE_DYNAMICS.md",
                                "docs/PEDAL_INTEGRATION_CONTRACT.md",
+                               "docs/PRESET_SELECTION_CONTRACT.md",
+                               "docs/PRESET_STATE_PARAMETER_CONTRACT.md",
+                               "include/hammond/FixedRegistration.h",
                                "include/hammond/ControlState.h", "include/hammond/Percussion.h",
                                "include/hammond/PedalVoice.h",
                                "include/hammond/Types.h"],
@@ -42,7 +46,7 @@ PROVENANCE = {
     "host_exports_verified": False,
     "native_host_curves_implemented": False,
     "uncertainty": None,
-    "reason": "Retains all 43 earlier internal console and percussion records unchanged and adds two nominal pedal mixture positions. "
+    "reason": "Retains all 45 earlier internal console, percussion and pedal records unchanged and adds two exclusive fixed-registration selectors. "
               "IDs, defaults and conversions are internal engineering choices, not manufacturer calibration. "
               "The absent 62-entry atlas companion was not recovered; no hardware calibration or host mapping is claimed.",
 }
@@ -52,6 +56,20 @@ PARAMETER_KEYS = frozenset(("id", "path", "label", "kind", "unit", "minimum", "m
                             "evidence_class", "source_pages"))
 NORMALIZED_KEYS = frozenset(("minimum", "maximum", "default", "to_plain", "to_normalized", "meaning"))
 EVENT_KEYS = frozenset(("type", "manual", "index"))
+
+# Exact binary64 values from fixed-registration-state-parameters-v1. Only the
+# appended preset_selector kind uses these tables. Existing kinds retain their
+# integer-ratio half-up law and original plain-conversion arithmetic.
+PRESET_THRESHOLDS = tuple(map(float.fromhex, (
+    "0x1.745d1745d1746p-5", "0x1.1745d1745d174p-3", "0x1.d1745d1745d17p-3",
+    "0x1.45d1745d1745dp-2", "0x1.a2e8ba2e8ba2fp-2", "0x1.0000000000000p-1",
+    "0x1.2e8ba2e8ba2e9p-1", "0x1.5d1745d1745d1p-1", "0x1.8ba2e8ba2e8bap-1",
+    "0x1.ba2e8ba2e8ba3p-1", "0x1.e8ba2e8ba2e8cp-1")))
+PRESET_CANONICAL = tuple(map(float.fromhex, (
+    "0x0.0p+0", "0x1.745d1745d1746p-4", "0x1.745d1745d1746p-3",
+    "0x1.1745d1745d174p-2", "0x1.745d1745d1746p-2", "0x1.d1745d1745d17p-2",
+    "0x1.1745d1745d174p-1", "0x1.45d1745d1745dp-1", "0x1.745d1745d1746p-1",
+    "0x1.a2e8ba2e8ba2fp-1", "0x1.d1745d1745d17p-1", "0x1.0000000000000p+0")))
 
 
 class ParameterError(ValueError):
@@ -118,9 +136,12 @@ def _specifications() -> dict[int, dict]:
             "minimum": 0, "maximum": maximum, "default": default, "step_count": steps,
             "normalized": {
                 "minimum": 0.0, "maximum": 1.0, "default": default / maximum,
-                "to_plain": ("floor(u * 8 + 0.5)" if kind in ("drawbar_position", "pedal_drawbar_position") else
+                "to_plain": ("count(u >= nearest-binary64((2*k+1)/22), k=0..10)"
+                             if kind == "preset_selector" else
+                             "floor(u * 8 + 0.5)" if kind in ("drawbar_position", "pedal_drawbar_position") else
                              "floor(u + 0.5)" if kind in ("bank_selector", "percussion_switch") else "u"),
-                "to_normalized": "x / 8" if kind in ("drawbar_position", "pedal_drawbar_position") else "x",
+                "to_normalized": ("nearest-binary64(x / 11)" if kind == "preset_selector" else
+                                  "x / 8" if kind in ("drawbar_position", "pedal_drawbar_position") else "x"),
                 "meaning": meaning,
             },
             "engine_event": target, "evidence_class": "proposed", "source_pages": pages,
@@ -154,6 +175,12 @@ def _specifications() -> dict[int, dict]:
             "position-fraction-not-amplitude",
             {"type": "pedal_drawbar", "manual": "lower", "index": index},
             [139, 140, 142, 150, 397, 398, 401, 402, 418])
+    for manual, identifier in (("upper", 20480), ("lower", 20481)):
+        add(identifier, f"manual.{manual}.preset_selection", f"{manual.title()} preset selection",
+            "preset_selector", "preset-key-index", 11, 11, 11,
+            "exclusive-preset-key-index-fraction",
+            {"type": "select_preset", "manual": manual, "index": 0},
+            [50, 52, 121, 122, 124, 126, 153, 389, 397, 398, 401, 402, 410, 415, 418])
     return result
 
 
@@ -184,10 +211,10 @@ def _validate_parameter(parameter: Any, path: str) -> None:
 
 
 def validate_registry(registry: Any) -> None:
-    """Validate only the version-3 subset without changes; record order is free.
+    """Validate only the version-4 subset without changes; record order is free.
 
-    Version-1 and version-2 registry documents are intentionally rejected. The
-    earlier 43 records retain their exact identity and meaning in this model;
+    Version-1/2/3 registry documents are intentionally rejected. The
+    earlier 45 records retain their exact identity and meaning in this model;
     registry metadata is not the separately migrated B3CONTROLS save format.
     """
     _object(registry, ROOT_KEYS, "registry")
@@ -247,14 +274,16 @@ def load_registry(path: str | Path = DEFAULT_REGISTRY_PATH) -> dict:
 def normalized_to_value(parameter: dict, normalized: float) -> int | float:
     """Convert a finite normalized scalar; reject instead of clipping.
 
-    Discrete rounding is exact for the supplied binary64 value. Integer-ratio
-    arithmetic avoids rounding a float immediately below a half-step upward
-    during an intermediate floating-point addition of 0.5.
+    Existing discrete kinds use exact integer-ratio rounding for the supplied
+    binary64 value. Preset selectors use frozen nearest-binary64 thresholds,
+    including equality at the five downward-rounded mathematical midpoints.
     """
     _validate_parameter(parameter, "parameter")
     value = _number(normalized, "normalized")
     if not 0.0 <= value <= 1.0:
         _fail("normalized", "must be in [0, 1]")
+    if parameter["kind"] == "preset_selector":
+        return sum(value >= threshold for threshold in PRESET_THRESHOLDS)
     steps = parameter["step_count"]
     if steps:
         numerator, denominator = value.as_integer_ratio()
@@ -271,6 +300,8 @@ def value_to_normalized(parameter: dict, value: int | float) -> float:
         _fail("value", f"must be in [{minimum}, {maximum}]")
     if parameter["step_count"] and not plain.is_integer():
         _fail("value", "must be an integer-valued discrete control")
+    if parameter["kind"] == "preset_selector":
+        return PRESET_CANONICAL[int(plain)]
     return (plain - minimum) / (maximum - minimum)
 
 

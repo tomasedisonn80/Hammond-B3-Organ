@@ -1,6 +1,6 @@
 # Native VST3 controller and bounded state streams
 
-The optional instrument's controller exposes **45 native parameters** through
+The optional instrument's controller exposes **47 native parameters** through
 the pinned SDK's `IEditController` interface. IDs, bounds, defaults, units and
 discrete conversions come from the existing compiled
 [parameter bridge](PARAMETER_BRIDGE.md). The controller does not change the
@@ -25,7 +25,7 @@ the separate component-controller class. FUID conversion belongs to the SDK,
 including its platform-dependent byte representation.
 
 `Controller` derives from the actual SDK `EditController` and implements the
-complete native parameter interface directly over a fixed array of 45 doubles.
+complete native parameter interface directly over a fixed array of 47 doubles.
 It creates no SDK `RangeParameter` objects, whose general conversion law is
 not the repository's exact discrete law. It also creates no custom view or
 parameter-observer graph. `createView` returns null so a host can present its
@@ -43,8 +43,11 @@ defaults. Factory creation catches allocation failure and returns null.
 
 Enumeration follows increasing stable parameter ID. Full descriptor paths are
 the title and short title; units are copied without rewriting their meaning.
-All records use the root unit and `kCanAutomate`. There is no new Cancel,
-per-key, panic or bypass parameter, and all initially muted drawbars stay muted.
+All records use the root unit and `kCanAutomate`. The original 45 records retain
+their identities and meanings. Two appended manual preset selectors include
+Cancel as value zero; there is no separate Cancel, per-key, panic, bypass or
+host-program surface. All initially muted drawbars stay muted. The
+[fixed-selection contract](PRESET_SELECTION_CONTRACT.md) governs the addition.
 
 | Control family | Count | Plain range | Native steps |
 | --- | ---: | --- | ---: |
@@ -53,12 +56,18 @@ per-key, panic or bypass parameter, and all initially muted drawbars stay muted.
 | Upper/lower bank selectors | 2 | 0=A, 1=B | 1 |
 | Retained percussion switches | 4 | The existing two named states | 1 |
 | Nominal pedal mixtures | 2 | Integer positions 0–8 | 8 |
+| Upper/lower preset selectors, IDs 20480/20481 | 2 | Integer keys 0–11; default 11 | 11 |
 
 Normalized-to-plain conversion calls `normalized_to_event`; plain-to-normalized
 calls `plain_to_normalized`. Thus an exact drawbar midpoint selects the higher
 position, with the same adjacent-binary64 and rounding-mode behavior as Engine
 input. Bank and percussion midpoint `0.5` selects state 1. Plain discrete input
-must be an exact integer. The SDK's scalar-return conversion methods cannot
+must be an exact integer. The appended selectors use eleven frozen binary64
+thresholds and twelve canonical normalized values from the
+[state/parameter contract](PRESET_STATE_PARAMETER_CONTRACT.md); equality at a
+threshold selects the higher key independently of the caller's rounding mode.
+Their plain negative zero canonicalizes to positive zero without changing the
+old controls' signed-zero behavior. The SDK's scalar-return conversion methods cannot
 return an error code; invalid IDs, invalid values and uninitialized calls return
 the documented finite sentinel zero. Result-returning methods reject invalid
 input and preserve their output/value destination.
@@ -66,7 +75,10 @@ input and preserve their output/value destination.
 `setParamNormalized` stores the admitted normalized scalar, including signed
 zero. The host still receives the exact plain conversion when it requests a
 display. No `beginEdit`, `performEdit`, `endEdit` or restart notification is sent
-back to the host while reflecting a host change.
+back to the host while reflecting a host change. Interacting bank and preset
+writes retain their own raw cache entries: neither rewrites the other, and
+audio execution does not acknowledge or quantize this controller cache. Only
+explicit component-state restoration refreshes all entries from saved controls.
 
 Display strings are numeric plain values in the classic locale. Expression
 uses `max_digits10`, with the existing nearest-rounding guard during formatting
@@ -80,7 +92,7 @@ changes a musical control.
 ## Complete component-state restoration
 
 `setComponentState` first parses a complete copied
-[B3CONTROLS1/2/3 state](CONTROL_STATE_FORMAT.md). It then computes all 45
+[B3CONTROLS1/2/3/4 state](CONTROL_STATE_FORMAT.md). It then computes all 47
 normalized values in a temporary fixed array. Only after every value succeeds
 does one array assignment replace the controller values. This is an
 all-or-nothing UI-thread operation; the absence of observers or host gestures
@@ -88,14 +100,21 @@ also prevents reentrant observation of a partially installed set.
 
 Version 1 migrates percussion to Off/Second/Normal/Slow and both pedal mixtures
 to zero. Version 2 preserves its percussion choices and migrates pedals to
-zero. Version 3 preserves all current musical controls. A failed or truncated
-load leaves all previously displayed values unchanged.
+zero. Version 3 also reads the pedal positions. All three legacy versions
+initialize both raw fixed modes to `None`. Version 4 additionally validates the
+pinned catalog identity and reads raw fixed modes, including modes hidden by
+Cancel. A failed or truncated load leaves all previously displayed values
+unchanged. The current writer emits canonical `B3CONTROLS4`.
 
-The two manual route-enable bits remain processor state. A snapshot with a
-cancelled manual still displays its retained selected bank and retained
-drawbars. Loading that controller state does not invent a selector gesture that
-would reconnect the route. Held keys/pedals, ownership, contacts, readiness,
-source phases and clock never enter this controller state projection.
+The route bit, remembered adjustable bank and raw fixed mode remain separate
+processor state. `setComponentState` maps each new selector through checked
+`control_preset_selection`: disabled route to Cancel/0, otherwise fixed key 1–9,
+otherwise adjustable bank A/B as 10/11. The old bank parameter still displays
+the remembered A/B value. A cancelled fixed registration therefore displays
+selector zero while its raw mode and all retained drawbars survive in processor
+state. Loading this projection emits no gesture and cannot reconnect the route.
+Held keys/pedals, ownership, contacts, readiness, source phases and clock never
+enter this controller state projection.
 
 ## Shared native stream helpers
 
@@ -132,16 +151,27 @@ Both helpers map `std::bad_alloc` to `kOutOfMemory` and other caught exceptions
 to `kInternalError`. Null streams return `kInvalidArgument`. The bounded loops
 require progress on each nonterminal iteration and cannot retry indefinitely.
 
-## Executed focused evidence
+## Current selector integration evidence
+
+The [preset integration record](reviews/PRESET_VST3_INTEGRATION.md) identifies
+the coherent Linux source on which all eight native suites passed. Its
+controller test checks 47 independent metadata records, 1,600 restored-selector
+combinations, raw host caches, exact state4 output and literal legacy inputs.
+The later [independent acceptance](reviews/PRESET_VST3_ACCEPTANCE.md) reviews
+the native boundary and classifies the unchanged validator diagnostics. These
+records retain their own source and execution scope.
+
+## Historical 45-parameter focused evidence
 
 The maintained test is
 [`plugins/vst3/tests/test_native_controller.cpp`](../plugins/vst3/tests/test_native_controller.cpp).
 It compiles the actual controller and stream helper against the pinned SDK and
-core. Its expected 45 metadata records are independent literals read from the
-versioned JSON registry, not the production compiled table. Its stream fixture
+core. In the original qualification below, its expected 45 metadata records
+were independent literals read from the versioned JSON registry, not the
+production compiled table. Its stream fixture
 implements `IBStream` with deliberate short transfers and malformed replies.
 
-The coherent GCC 14.2.0 Release execution passed **41,795 checks**, including
+That earlier coherent GCC 14.2.0 Release execution passed **41,795 checks**, including
 **3,720 exact discrete-threshold cases across all four standard rounding
 modes**, **387 native string round trips**, and **306 rejected stream/load
 cases**. It covers all 45 descriptors, defaults and valid discrete positions;
@@ -162,7 +192,7 @@ With the optional build integration and a verified SDK checkout:
 cmake -S . -B build-vst3 -DCMAKE_BUILD_TYPE=Release \
   -DHAMMOND_BUILD_VST3=ON -DHAMMOND_VST3_SDK_ROOT=/path/to/vst3sdk
 cmake --build build-vst3 --target test_native_controller --parallel 2
-ctest --test-dir build-vst3 -C Release -R '^test_native_controller$' --output-on-failure
+ctest --test-dir build-vst3 -C Release -R '^test_native_controller$' --output-on-failure --no-tests=error
 ```
 
 The implementation was checked against the pinned primary SDK definitions for

@@ -314,7 +314,7 @@ class StandaloneInstallTests(unittest.TestCase):
                                  unrelated, environment)
             self.assert_success(result)
             report = json.loads(diagnostics.read_text(encoding="utf-8"))
-            self.assertEqual(report["schema_version"], 2)
+            self.assertEqual(report["schema_version"], 3)
             self.assertEqual(report["profile"], {"id": "nominal-unmeasured-v1",
                                                  "authoring_sha256": self.authoring_hash})
             self.assertEqual(report["runtime"]["sdl_version"], self.lock["version"])

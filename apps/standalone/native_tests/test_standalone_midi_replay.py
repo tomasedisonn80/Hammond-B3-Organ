@@ -24,6 +24,7 @@ import time
 import unittest
 
 from test_standalone_app import SCHEMA, assert_schema, reject_nonfinite, unique_object
+from test_standalone_workflows import FIXED_STATE, FIXED_CONTROLS
 
 
 PROCESS_TIMEOUT = 9.0
@@ -33,7 +34,7 @@ DEFAULT_CONTROLS = {
         [[0] * 9, [8, 8, 8, 0, 0, 0, 0, 0, 0]],
         [[0] * 9, [0, 0, 8, 0, 0, 0, 0, 0, 0]],
     ],
-    "selected_banks": [1, 1], "route_enabled": [True, True], "expression": 1,
+    "selected_banks": [1, 1], "fixed_registrations": [0, 0], "preset_selections": [11, 11], "route_enabled": [True, True], "expression": 1,
     "pedal_drawbars": [8, 0],
     "percussion": {"enabled": False, "harmonic": 0, "volume": 0, "decay": 0},
 }
@@ -59,6 +60,9 @@ SNAPSHOT_SCHEMA = {
 }
 RESULT_SCHEMA = {
     "final_acknowledged": bool, "last_submitted_sequence": int,
+    "snapshot_available_before_shutdown": bool, "session_running_before_shutdown": bool,
+    "controls_pending_before_shutdown": bool, "save_pending_before_shutdown": bool,
+    "desired_controls_before_shutdown": SCHEMA["controls"],
     "accepted_note_on_commands": int, "accepted_note_off_commands": int,
     "device_starts": int, "observation_capacity": int, "observations_truncated": bool,
     "before_shutdown": SNAPSHOT_SCHEMA, "observations": [],
@@ -268,7 +272,7 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
         if ui_events is not None:
             schema["replay"] = replay_schema(data["replay"], UI_REPLAY_SCHEMA)
         assert_schema(self, data, schema)
-        self.assertEqual(data["schema_version"], 2)
+        self.assertEqual(data["schema_version"], 3)
         self.assertEqual(data["application"], "hammond_standalone")
         self.assertEqual(data["state_path"], str(state_path))
         audio, session, midi, replay = data["audio"], data["session"], data["midi"], data["midi_replay"]
@@ -394,8 +398,12 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
         if successful:
             self.assertEqual(data["errors"], {"count": 0, "last": ""})
             self.assertEqual(replay["failure_count"], 0)
-            for field in ("completed", "delivered", "passed", "final_acknowledged"):
+            for field in ("completed", "delivered", "passed", "final_acknowledged",
+                          "snapshot_available_before_shutdown", "session_running_before_shutdown"):
                 self.assertTrue(replay[field], field)
+            self.assertFalse(replay["controls_pending_before_shutdown"])
+            self.assertFalse(replay["save_pending_before_shutdown"])
+            self.assertEqual(replay["desired_controls_before_shutdown"], replay["before_shutdown"]["controls"])
             self.assertEqual(replay["delivered_events"], len(midi_events))
             self.assertEqual(replay["scheduled_packets"], replay["offered_packets"] + replay["ignored_while_closed"])
             self.assertEqual(replay["scheduled_packets"], decoder["packets"] + replay["dropped_packets"])
@@ -484,12 +492,15 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
     def test_cc11_and_bank_b_edits_share_pending_ui_controls(self) -> None:
         expected = deepcopy(DEFAULT_CONTROLS)
         expected["selected_banks"] = [0, 0]
+        expected["preset_selections"] = [0, 10]
         expected["route_enabled"] = [False, True]
         expected["manual_drawbars"][1][0] = [1, 2, 3, 4, 5, 6, 7, 8, 0]
         events = [(0, "connect"), bytes_event(150, 0x90, 60, 100)]
-        # EDIT A is the independent literal cheek center; five Tabs select its
-        # first drawbar. Sounding A remains Cancelled throughout the CC edits.
-        ui = click(100, 58, 508) + tabs(180, 5)
+        # EDIT A is the independent literal cheek center; fourteen Tabs pass
+        # EDIT B and the twelve presets to its first drawbar. Each Up precedes
+        # the next Down; finish navigation before the first paired edit.
+        ui = click(100, 58, 508) + [event for index in range(14)
+            for event in tap(140 + 10 * index, "Tab")]
         for index, at in enumerate((350, 500, 650, 800)):
             high = index % 2 == 0
             ui += tap(at, "End" if high else "Home")
@@ -521,6 +532,35 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
             self.assertTrue(all(item["controls"]["selected_banks"] == [0, 0]
                                 and item["controls"]["route_enabled"] == [False, True]
                                 for item in run.midi["observations"]))
+
+    def test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection(self) -> None:
+        events = [(0, "connect"), bytes_event(150, 0x90, 60, 100),
+                  bytes_event(150, 0x91, 64, 100), bytes_event(150, 0x92, 36, 100),
+                  bytes_event(350, 0xB0, 11, 64), bytes_event(350, 0xB0, 16, 32),
+                  bytes_event(350, 0xB1, 24, 127), bytes_event(750, 0xB0, 17, 0)]
+        ui = click(600, 35, 590) + click(1050, 165, 590)
+        for endpoint in (950, 1400):
+            with self.subTest(endpoint_ms=endpoint):
+                expected = deepcopy(FIXED_CONTROLS)
+                expected["expression"] = 64 / 127
+                expected["manual_drawbars"][0][1][0:2] = [2, 0]
+                expected["manual_drawbars"][1][1][8] = 8
+                expected["route_enabled"][0] = endpoint == 1400
+                expected["preset_selections"][0] = 11 if endpoint == 1400 else 0
+                if endpoint == 1400:
+                    expected["selected_banks"][0] = 1
+                    expected["fixed_registrations"][0] = 0
+                with self.run_native(endpoint, events,
+                        ui_events=[event for event in ui if event[0] < endpoint], state=FIXED_STATE) as run:
+                    self.assert_final(run, ((60,), (64,), (1,)), on=3, controls=expected)
+                    self.assertEqual(run.data["midi"]["parameter_messages"], 4)
+                    self.assertEqual(run.midi["desired_controls_before_shutdown"], expected)
+                    self.assertFalse(run.midi["controls_pending_before_shutdown"])
+                    self.assertEqual(run.midi["connections_started"], 1)
+                    for observed in run.midi["observations"]:
+                        self.assertEqual(observed["controls"]["manual_drawbars"][0][0],
+                                         FIXED_CONTROLS["manual_drawbars"][0][0])
+                        self.assertEqual(observed["controls"]["fixed_registrations"][1], 8)
 
     def test_cc123_releases_only_its_external_division_and_preserves_ui(self) -> None:
         ui = [(100, "key_down A none 0")] + tap(220, "F2")
@@ -615,16 +655,23 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
         ui += tap(600, "Slash", "shift") + tap(850, "Return") + tap(1000, "M", "ctrl")
         ui += tabs(1100, 2) + tap(1150, "End") + tabs(1200, 3) + tap(1300, "Return")
         ui += tap(1450, "Escape") + [(1550, "key_up A none")]
-        with self.run_native(1750, events, ui_events=ui) as run:
-            self.assert_window(run, 150, 380, ((60, 67), (64,), (1,)))
-            self.assert_window(run, 400, 590, ((67,), (64,), (1,)))
-            self.assert_window(run, 600, 990, ((67,), (64,), (1,)))
-            self.assert_final(run, ((67,), (64,), (1,)), on=4)
-            self.assertEqual(run.data["midi"]["channels"], {"upper": 1, "lower": 2, "pedals": 3})
-            self.assertEqual(run.midi["connections_started"], 1)
-            self.assertEqual(run.data["midi"]["retirements"], 1)
-            self.assertTrue(run.midi["connected_before_shutdown"])
-            self.assertEqual((run.data["runtime"]["window_width"], run.data["runtime"]["window_height"]), (960, 700))
+        # A coherent UI snapshot is sampled once per rendered main-loop turn.
+        # Require each critical state as a separately completed/acknowledged
+        # script prefix, rather than assuming a sample in a 190 ms wall window.
+        # The complete original event order and final owner checks remain.
+        for endpoint in (380, 590, 990, 1750):
+            with self.subTest(endpoint_ms=endpoint):
+                prefix_events = [event for event in events if event[0] < endpoint]
+                prefix_ui = [event for event in ui if event[0] < endpoint]
+                with self.run_native(endpoint, prefix_events, ui_events=prefix_ui) as run:
+                    wanted = ((60, 67), (64,), (1,)) if endpoint == 380 else ((67,), (64,), (1,))
+                    self.assert_final(run, wanted, on=4)
+                    self.assertEqual(run.data["midi"]["channels"], {"upper": 1, "lower": 2, "pedals": 3})
+                    self.assertEqual(run.midi["connections_started"], 1)
+                    self.assertEqual(run.data["midi"]["retirements"], 1)
+                    self.assertTrue(run.midi["connected_before_shutdown"])
+                    size = (1280, 900) if endpoint == 380 else (960, 700)
+                    self.assertEqual((run.data["runtime"]["window_width"], run.data["runtime"]["window_height"]), size)
 
     def test_global_panic_retires_midi_and_suppresses_old_ui_press(self) -> None:
         events = [(0, "connect"), bytes_event(150, 0x90, 64, 100),

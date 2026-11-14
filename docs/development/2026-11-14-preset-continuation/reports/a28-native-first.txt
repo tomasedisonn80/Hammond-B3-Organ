@@ -1,0 +1,318 @@
+UpdateCTestConfiguration  from :/tmp/hammond-preset-a28/build/DartConfiguration.tcl
+Parse Config file:/tmp/hammond-preset-a28/build/DartConfiguration.tcl
+Test project /tmp/hammond-preset-a28/build
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 123
+    Start 123: test_standalone_benchmark
+
+123: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "PYTHONDONTWRITEBYTECODE=1" "HAMMOND_STANDALONE_BENCHMARK_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone_benchmark" "HAMMOND_TEST_PROFILE=/tmp/hammond-preset-a28/build/nominal.b3p" "HAMMOND_STANDALONE_BENCHMARK_SOURCE_MANIFEST=/tmp/hammond-preset-a28/build/apps/standalone/standalone-benchmark-source-manifest.json" "HAMMOND_SOURCE_DIR=/tmp/hammond-preset-a28/source" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_CONFIGURATION=Release" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_COMPILER_ID=GNU" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_COMPILER_VERSION=14.2.0" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_TARGET_SYSTEM=Linux" "HAMMOND_STANDALONE_BENCHMARK_EXPECTED_TARGET_PROCESSOR=x86_64" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/tests/test_standalone_benchmark.py"
+123: Working Directory: /tmp/hammond-preset-a28/source
+123: Test timeout computed to be: 90
+test 109
+    Start 109: test_standalone_install
+
+109: Test command: /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12 "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_install.py"
+109: Working Directory: /tmp/hammond-preset-a28/build
+109: Environment variables: 
+109:  PYTHONDONTWRITEBYTECODE=1
+109:  HAMMOND_TEST_CMAKE=/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake
+109:  HAMMOND_TEST_BUILD_DIR=/tmp/hammond-preset-a28/build
+109:  HAMMOND_TEST_CONFIG=Release
+109:  HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone
+109:  HAMMOND_SDL2_ROOT=/workspace/scratch/7ffc2842608b/SDL2
+109:  HAMMOND_INSTALL_BINDIR=bin
+109:  HAMMOND_INSTALL_DATADIR=share
+109:  HAMMOND_TEST_ENABLE_MIDI=1
+109:  HAMMOND_STANDALONE_CAPABILITIES=/tmp/hammond-preset-a28/build/generated/standalone-capabilities.json
+109:  HAMMOND_RTMIDI_PREPARED_ROOT=/tmp/hammond-preset-a28/build/apps/standalone/hammond_rtmidi-prepared
+109:  HAMMOND_RTMIDI_BACKEND=ALSA
+109: Test timeout computed to be: 90
+123: .........
+123: ----------------------------------------------------------------------
+123: Ran 9 tests in 3.015s
+123: 
+123: OK
+123: standalone benchmark CLI calls: 111; no elapsed-time correctness threshold applied
+1/8 Test #123: test_standalone_benchmark ............   Passed    3.18 sec
+test 129
+    Start 129: test_standalone_app
+
+129: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_app.py"
+129: Working Directory: /tmp/hammond-preset-a28/build/apps/standalone
+129: Test timeout computed to be: 60
+129: Native executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+129: test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+129: ok
+129: test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+129: test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+129: test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+129: test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+129: test_late_malformed_startup_preserves_file_and_audition_controls (__main__.NativeAppAcceptance.test_late_malformed_startup_preserves_file_and_audition_controls) ... ok
+129: test_list_audio_needs_no_video_or_file_writes (__main__.NativeAppAcceptance.test_list_audio_needs_no_video_or_file_writes) ... ok
+129: test_missing_and_empty_values_reject_before_output (__main__.NativeAppAcceptance.test_missing_and_empty_values_reject_before_output) ... ok
+129: test_no_audio_fails_bounded_with_zero_callback_claims (__main__.NativeAppAcceptance.test_no_audio_fails_bounded_with_zero_callback_claims) ... ok
+129: test_noninteger_and_overflow_values_reject_before_output (__main__.NativeAppAcceptance.test_noninteger_and_overflow_values_reject_before_output) ... ok
+129: test_output_directory_leaves_reject_before_writes (__main__.NativeAppAcceptance.test_output_directory_leaves_reject_before_writes) ... ok
+129: test_output_symlinks_cannot_create_or_overwrite_musical_state (__main__.NativeAppAcceptance.test_output_symlinks_cannot_create_or_overwrite_musical_state) ... ok
+109: ........
+109: ----------------------------------------------------------------------
+109: Ran 8 tests in 7.370s
+109: 
+109: OK
+109: {"binary_sha256": "557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82", "font_license_sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6", "midi_backend": "ALSA", "midi_enabled": true, "payload_files": 17, "relocated_smoke": {"application": "hammond_standalone", "audio": {"buffer_bytes": 4096, "buffer_frames": 512, "callback_count": 55, "channels": 2, "device_name": "Default output", "driver": "dummy", "format_failures": 0, "last_lifecycle_status": "ok", "last_render_status": "ok", "native_float32_format": 33056, "nonfinite_failures": 0, "nonfinite_samples": 0, "open_before_shutdown": true, "overrange_failures": 0, "overrange_samples": 0, "render_failures": 0, "rendered_frames": 28160, "requested_buffer_frames": 512, "requested_device": "", "requested_sample_rate": 48000, "running_before_shutdown": true, "sample_format": 33056, "sample_rate": 48000}, "controls": {"expression": 1, "fixed_registrations": [0, 0], "manual_drawbars": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], "pedal_drawbars": [8, 0], "percussion": {"decay": 0, "enabled": false, "harmonic": 0, "volume": 0}, "preset_selections": [11, 11], "route_enabled": [true, true], "selected_banks": [1, 1]}, "errors": {"count": 0, "last": ""}, "midi": {"active_after_shutdown": false, "active_before_shutdown": false, "arrival_time_is_sample_time": false, "arrival_time_source": "none", "arrival_time_unit": "steady_clock_nanoseconds", "backend": "ALSA", "backend_available": true, "channels": {"lower": 2, "pedals": 3, "upper": 1}, "decoder": {"actions": 0, "epochs": 0, "inactive": 0, "malformed": 0, "out_of_range": 0, "packets": 0, "timestamp_regressions": 0, "unmapped_channels": 0, "unsupported": 0}, "device": {"admission_failures": 0, "backend_errors": 0, "callback_contentions": 0, "callback_messages": 0, "close_errors": 0, "disconnects": 0, "filtered_messages": 0, "forwarded_messages": 0, "last_arrival_ns": 0}, "diagnostics_stable_after_shutdown": true, "drain_budget": 32, "fault_retirements": 0, "generation": 0, "inbox": {"accepted_packets": 0, "capacity": 256, "discarded_packets": 0, "fault_bits": 0, "faulted_packets": 0, "invalid_size_packets": 0, "overflow_events": 0, "pending_packets": 0, "popped_packets": 0, "received_packets": 0, "resets": 0}, "last_submit_status": "ok", "maximum_drained_per_turn": 0, "open_failures": 0, "opened_port_index": 0, "parameter_messages": 0, "port_name": "", "quiescent_after_shutdown": true, "release_batches": 0, "release_commands_accepted": 0, "release_pending": false, "release_sequence": 0, "requested_port": "", "retired_fault_bits": 0, "retirements": 0, "session_recoveries_observed": 0, "shutdown_failed": false, "source": "none", "startup_failed": false, "state_after_shutdown": "closed", "state_before_shutdown": "closed", "status": "No MIDI input selected.", "submit_failures": 0, "timing_policy": "arrival_order_next_callback_boundary"}, "profile": {"authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83", "id": "nominal-unmeasured-v1"}, "runtime": {"drawable_height": 700, "drawable_width": 960, "rendered_images": 16, "renderer": "software", "screenshot_while_held": true, "screenshot_written": true, "sdl_version": "2.32.10", "video_driver": "dummy", "window_height": 700, "window_width": 960}, "schema_version": 3, "session": {"discarded_commands": 1, "fault_flags": 0, "frame_clock": 28160, "held_after_shutdown": false, "last_applied_sequence": 5, "maximum_observed_peak": 0.08312442898750305, "prepared": true, "publication_revision": 116, "queue_overflows": 0, "recovery_count": 0, "rejected_commands": 0, "resolved_sequence": 6, "running_after_shutdown": false, "sample_rate": 48000, "snapshot_available": true}, "smoke": {"completed": true, "duration_ms": 600, "held_observed": true, "note_off_sent": true, "note_on_sent": true, "passed": true, "release_observed": true, "requested": true}, "state_path": "/tmp/hammond standalone install or_up4b4/unrelated cwd/absent controls.b3controls", "status": "Proposed audition registration: Upper B 888000000 / Lower B 008000000 / Pedals 80."}, "sdl_license_sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127", "suite": "standalone-install-v2"}
+2/8 Test #109: test_standalone_install ..............   Passed    7.57 sec
+test 130
+    Start 130: test_standalone_midi_cli
+
+130: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_midi_cli.py"
+130: Working Directory: /tmp/hammond-preset-a28/build/apps/standalone
+130: Test timeout computed to be: 90
+129: test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) ... 
+129:   test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) (width=960, height=700, rate=48000, buffer=512) ... FAIL
+130: MIDI CLI/modal executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+130: test_cli_distinct_channels_and_all_boundary_positions (__main__.NativeMidiAcceptance.test_cli_distinct_channels_and_all_boundary_positions) ... ok
+130: test_cli_exact_port_argument_bytes_and_no_name_coercion (__main__.NativeMidiAcceptance.test_cli_exact_port_argument_bytes_and_no_name_coercion) ... ok
+130: test_cli_list_midi_precedes_sdl_initialization (__main__.NativeMidiAcceptance.test_cli_list_midi_precedes_sdl_initialization) ... ok
+130: test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name (__main__.NativeMidiAcceptance.test_cli_nonexistent_exact_name_fails_finitely_and_preserves_name) ... ok
+130: test_cli_numeric_channels_are_strict_and_bounded (__main__.NativeMidiAcceptance.test_cli_numeric_channels_are_strict_and_bounded) ... ok
+130: test_cli_repeated_options_and_conflicting_lists (__main__.NativeMidiAcceptance.test_cli_repeated_options_and_conflicting_lists) ... ok
+130: test_cli_startup_defaults_to_no_input_with_custom_routing (__main__.NativeMidiAcceptance.test_cli_startup_defaults_to_no_input_with_custom_routing) ... ok
+130: test_modal_all_eight_keyboard_controls_and_no_port_auto_open (__main__.NativeMidiAcceptance.test_modal_all_eight_keyboard_controls_and_no_port_auto_open) ... ok
+129: test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) ... ok
+130: test_modal_channels_wrap_and_home_end_apply_without_connecting (__main__.NativeMidiAcceptance.test_modal_channels_wrap_and_home_end_apply_without_connecting) ... ok
+129: test_screenshot_failure_joins_audio_and_preserves_musical_file (__main__.NativeAppAcceptance.test_screenshot_failure_joins_audio_and_preserves_musical_file) ... ok
+129: test_state_symlinks_cannot_be_filled_by_outputs_or_loaded (__main__.NativeAppAcceptance.test_state_symlinks_cannot_be_filled_by_outputs_or_loaded) ... ok
+129: test_unknown_and_combined_options_reject_before_output (__main__.NativeAppAcceptance.test_unknown_and_combined_options_reject_before_output) ... ok
+129: test_unsupported_numeric_values_reject_before_output (__main__.NativeAppAcceptance.test_unsupported_numeric_values_reject_before_output) ... ok
+129: Actual native application subprocesses: 164
+129: 
+129: ======================================================================
+129: FAIL: test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) (width=960, height=700, rate=48000, buffer=512)
+129: ----------------------------------------------------------------------
+129: Traceback (most recent call last):
+129:   File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_app.py", line 618, in test_reference_minimum_and_extreme_audio_smokes
+129:     self.assert_bmp(screenshot, width, height, held_middle_c=True)
+129:   File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_app.py", line 518, in assert_bmp
+129:     self.assertNotEqual(pixel(c4), pixel(d4),
+129: AssertionError: b'\xcc\xea\xf9' == b'\xcc\xea\xf9' : The screenshot did not paint Upper MIDI 60 as held
+129: 
+129: ----------------------------------------------------------------------
+129: Ran 18 tests in 9.001s
+129: 
+129: FAILED (failures=1)
+3/8 Test #129: test_standalone_app ..................***Failed    9.14 sec
+Native executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs (__main__.NativeAppAcceptance.test_absent_leaf_parent_alias_collisions_cannot_create_state_or_outputs) ... Absent-leaf parent-alias regression: directory symlink
+ok
+test_diagnostics_failure_returns_cleanly_and_preserves_musical_file (__main__.NativeAppAcceptance.test_diagnostics_failure_returns_cleanly_and_preserves_musical_file) ... ok
+test_duplicate_options_reject_before_output (__main__.NativeAppAcceptance.test_duplicate_options_reject_before_output) ... ok
+test_existing_direct_lexical_and_hardlink_collisions_preserve_files (__main__.NativeAppAcceptance.test_existing_direct_lexical_and_hardlink_collisions_preserve_files) ... ok
+test_help_does_not_initialize_either_driver_or_write_files (__main__.NativeAppAcceptance.test_help_does_not_initialize_either_driver_or_write_files) ... ok
+test_late_malformed_startup_preserves_file_and_audition_controls (__main__.NativeAppAcceptance.test_late_malformed_startup_preserves_file_and_audition_controls) ... ok
+test_list_audio_needs_no_video_or_file_writes (__main__.NativeAppAcceptance.test_list_audio_needs_no_video_or_file_writes) ... ok
+test_missing_and_empty_values_reject_before_output (__main__.NativeAppAcceptance.test_missing_and_empty_values_reject_before_output) ... ok
+test_no_audio_fails_bounded_with_zero_callback_claims (__main__.NativeAppAcceptance.test_no_audio_fails_bounded_with_zero_callback_claims) ... ok
+test_noninteger_and_overflow_values_reject_before_output (__main__.NativeAppAcceptance.test_noninteger_and_overflow_values_reject_before_output) ... ok
+test_output_directory_leaves_reject_before_writes (__main__.NativeAppAcceptance.test_output_directory_leaves_reject_before_writes) ... ok
+test_output_symlinks_cannot_create_or_overwrite_musical_state (__main__.NativeAppAcceptance.test_output_symlinks_cannot_create_or_overwrite_musical_state) ... ok
+test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) ... 
+  test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) (width=960, height=700, rate=48000, buffer=512) ... FAIL
+test_saved_controls_and_legacy_startup_on_unicode_paths (__main__.NativeAppAcceptance.test_saved_controls_and_legacy_startup_on_unicode_paths) ... ok
+test_screenshot_failure_joins_audio_and_preserves_musical_file (__main__.NativeAppAcceptance.test_screenshot_failure_joins_audio_and_preserves_musical_file) ... ok
+test_state_symlinks_cannot_be_filled_by_outputs_or_loaded (__main__.NativeAppAcceptance.test_state_symlinks_cannot_be_filled_by_outputs_or_loaded) ... ok
+test_unknown_and_combined_options_reject_before_output (__main__.NativeAppAcceptance.test_unknown_and_combined_options_reject_before_output) ... ok
+test_unsupported_numeric_values_reject_before_output (__main__.NativeAppAcceptance.test_unsupported_numeric_values_reject_before_output) ... ok
+Actual native application subprocesses: 164
+
+======================================================================
+FAIL: test_reference_minimum_and_extreme_audio_smokes (__main__.NativeAppAcceptance.test_reference_minimum_and_extreme_audio_smokes) (width=960, height=700, rate=48000, buffer=512)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_app.py", line 618, in test_reference_minimum_and_extreme_audio_smokes
+    self.assert_bmp(screenshot, width, height, held_middle_c=True)
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_app.py", line 518, in assert_bmp
+    self.assertNotEqual(pixel(c4), pixel(d4),
+AssertionError: b'\xcc\xea\xf9' == b'\xcc\xea\xf9' : The screenshot did not paint Upper MIDI 60 as held
+
+----------------------------------------------------------------------
+Ran 18 tests in 9.001s
+
+FAILED (failures=1)
+
+test 131
+    Start 131: test_standalone_native_midi_replay
+
+131: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_midi_replay.py"
+131: Working Directory: /tmp/hammond-preset-a28/build/apps/standalone
+131: Test timeout computed to be: 90
+131: Native MIDI replay executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+130: test_modal_ctrl_and_command_m_open_then_escape_restores_playing (__main__.NativeMidiAcceptance.test_modal_ctrl_and_command_m_open_then_escape_restores_playing) ... ok
+130: test_modal_escape_discards_unapplied_channels (__main__.NativeMidiAcceptance.test_modal_escape_discards_unapplied_channels) ... ok
+131: test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_audio_restart_retires_midi_preserves_controls_and_requires_reconnect) ... ok
+130: test_modal_focus_wraps_forward_and_reverse_across_eight_controls (__main__.NativeMidiAcceptance.test_modal_focus_wraps_forward_and_reverse_across_eight_controls) ... ok
+131: test_cc11_and_bank_b_edits_share_pending_ui_controls (__main__.NativeMidiReplayAcceptance.test_cc11_and_bank_b_edits_share_pending_ui_controls) ... ok
+130: test_modal_invalid_apply_preserves_active_routing_and_edit_intent (__main__.NativeMidiAcceptance.test_modal_invalid_apply_preserves_active_routing_and_edit_intent) ... ok
+130: test_modal_pointer_open_apply_disconnect_close_at_two_sizes (__main__.NativeMidiAcceptance.test_modal_pointer_open_apply_disconnect_close_at_two_sizes) ... ok
+131: test_cc123_releases_only_its_external_division_and_preserves_ui (__main__.NativeMidiReplayAcceptance.test_cc123_releases_only_its_external_division_and_preserves_ui) ... ok
+130: test_modal_shortcut_and_navigation_ignore_repeat_and_alt (__main__.NativeMidiAcceptance.test_modal_shortcut_and_navigation_ignore_repeat_and_alt) ... ok
+130: Actual MIDI CLI/modal subprocesses: 95; enumeration errors: 13; successful UI replays: 0; expected failed UI replays: 11
+130: 
+130: ----------------------------------------------------------------------
+130: Ran 15 tests in 10.879s
+130: 
+130: OK
+4/8 Test #130: test_standalone_midi_cli .............   Passed   11.02 sec
+test 132
+    Start 132: test_standalone_workflows
+
+132: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_workflows.py"
+132: Working Directory: /tmp/hammond-preset-a28/build/apps/standalone
+132: Test timeout computed to be: 90
+132: Workflow executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+131: test_division_channel_range_routing_and_ignored_packets (__main__.NativeMidiReplayAcceptance.test_division_channel_range_routing_and_ignored_packets) ... ok
+131: test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner (__main__.NativeMidiReplayAcceptance.test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner) ... ok
+131: test_focus_resize_help_and_midi_apply_preserve_external_owners (__main__.NativeMidiReplayAcceptance.test_focus_resize_help_and_midi_apply_preserve_external_owners) ... ok
+131: test_full_inbox_drains_in_bounded_batches_without_overflow (__main__.NativeMidiReplayAcceptance.test_full_inbox_drains_in_bounded_batches_without_overflow) ... ok
+131: test_global_panic_retires_midi_and_suppresses_old_ui_press (__main__.NativeMidiReplayAcceptance.test_global_panic_retires_midi_and_suppresses_old_ui_press) ... ok
+131: test_interruption_is_a_failed_replay_but_shutdown_still_joins (__main__.NativeMidiReplayAcceptance.test_interruption_is_a_failed_replay_but_shutdown_still_joins) ... ok
+131: test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection (__main__.NativeMidiReplayAcceptance.test_midi_bank_edits_preserve_fixed_cancel_memory_until_bank_reselection) ... ok
+131: test_real_overflow_discards_stale_packets_and_requires_reconnect (__main__.NativeMidiReplayAcceptance.test_real_overflow_discards_stale_packets_and_requires_reconnect) ... ok
+131: test_repeated_fifo_owners_velocity_zero_and_both_release_orders (__main__.NativeMidiReplayAcceptance.test_repeated_fifo_owners_velocity_zero_and_both_release_orders) ... ok
+131: Actual native MIDI replay subprocesses: 17; expected interrupted replays: 1
+131: 
+131: ----------------------------------------------------------------------
+131: Ran 12 tests in 23.272s
+131: 
+131: OK
+5/8 Test #131: test_standalone_native_midi_replay ...   Passed   23.41 sec
+test 133
+    Start 133: test_standalone_replay_boundaries
+
+133: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py"
+133: Working Directory: /tmp/hammond-preset-a28/build/apps/standalone
+133: Test timeout computed to be: 60
+133: Replay boundary executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+133: test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+133: test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+133: test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+133: test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+132: test_all_twenty_four_presets_at_minimum_size_preserve_owners (__main__.NativeWorkflowAcceptance.test_all_twenty_four_presets_at_minimum_size_preserve_owners) ... ok
+133: test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+133: test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ok
+133: test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) ... ok
+133: test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner) ... FAIL
+133: test_zero_and_maximum_nonmutating_events_have_no_smoke_note (__main__.ReplayBoundaryAcceptance.test_zero_and_maximum_nonmutating_events_have_no_smoke_note) ... ok
+133: Actual replay boundary subprocesses: 29; preserved setup rejections: 19
+133: 
+133: ======================================================================
+133: FAIL: test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner)
+133: ----------------------------------------------------------------------
+133: Traceback (most recent call last):
+133:   File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 252, in test_tied_resizes_preserve_each_pointer_geometry_and_note_owner
+133:     data, _ = self.invoke(script([(200, action) for action in actions], 550))
+133:               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+133:   File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 141, in invoke
+133:     self.assert_joined(data)
+133:   File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 182, in assert_joined
+133:     self.assertEqual(data["controls"], DEFAULT_CONTROLS)
+133: AssertionError: {'man[215 chars][11, 0], 'route_enabled': [True, False], 'expr[106 chars]: 0}} != {'man[215 chars][11, 11], 'route_enabled': [True, True], 'expr[106 chars]: 0}}
+133: Diff is 646 characters long. Set self.maxDiff to None to see it.
+133: 
+133: ----------------------------------------------------------------------
+133: Ran 9 tests in 5.108s
+133: 
+133: FAILED (failures=1)
+6/8 Test #133: test_standalone_replay_boundaries ....***Failed    5.28 sec
+Replay boundary executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+test_equal_time_actions_preserve_source_order (__main__.ReplayBoundaryAcceptance.test_equal_time_actions_preserve_source_order) ... ok
+test_held_completion_captures_before_joined_shutdown (__main__.ReplayBoundaryAcceptance.test_held_completion_captures_before_joined_shutdown) ... ok
+test_input_aliases_never_overwrite_input_or_other_destinations (__main__.ReplayBoundaryAcceptance.test_input_aliases_never_overwrite_input_or_other_destinations) ... ok
+test_maximum_byte_file_preserves_unicode_path_and_loads (__main__.ReplayBoundaryAcceptance.test_maximum_byte_file_preserves_unicode_path_and_loads) ... ok
+test_maximum_resize_plan_drains_without_extending_grace (__main__.ReplayBoundaryAcceptance.test_maximum_resize_plan_drains_without_extending_grace) ... ok
+test_quit_interrupts_and_does_not_handle_later_save_or_note (__main__.ReplayBoundaryAcceptance.test_quit_interrupts_and_does_not_handle_later_save_or_note) ... ok
+test_rejected_input_files_and_mixed_mode_preserve_sentinels (__main__.ReplayBoundaryAcceptance.test_rejected_input_files_and_mixed_mode_preserve_sentinels) ... ok
+test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner) ... FAIL
+test_zero_and_maximum_nonmutating_events_have_no_smoke_note (__main__.ReplayBoundaryAcceptance.test_zero_and_maximum_nonmutating_events_have_no_smoke_note) ... ok
+Actual replay boundary subprocesses: 29; preserved setup rejections: 19
+
+======================================================================
+FAIL: test_tied_resizes_preserve_each_pointer_geometry_and_note_owner (__main__.ReplayBoundaryAcceptance.test_tied_resizes_preserve_each_pointer_geometry_and_note_owner)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 252, in test_tied_resizes_preserve_each_pointer_geometry_and_note_owner
+    data, _ = self.invoke(script([(200, action) for action in actions], 550))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 141, in invoke
+    self.assert_joined(data)
+  File "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_replay_boundaries.py", line 182, in assert_joined
+    self.assertEqual(data["controls"], DEFAULT_CONTROLS)
+AssertionError: {'man[215 chars][11, 0], 'route_enabled': [True, False], 'expr[106 chars]: 0}} != {'man[215 chars][11, 11], 'route_enabled': [True, True], 'expr[106 chars]: 0}}
+Diff is 646 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 9 tests in 5.108s
+
+FAILED (failures=1)
+
+test 134
+    Start 134: test_standalone_chapel
+
+134: Test command: /workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake "-E" "env" "HAMMOND_STANDALONE_EXECUTABLE=/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone" "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12" "/tmp/hammond-preset-a28/source/apps/standalone/native_tests/test_standalone_chapel.py"
+134: Working Directory: /tmp/hammond-preset-a28/build/apps/standalone
+134: Test timeout computed to be: 90
+134: Native chapel executable SHA-256: 557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82
+134: Native chapel main SHA-256: bda52bd9ff0d2bcb60e14bb606fbaeb46cd7dcf3416fa4a2ba3b42a6561db7bf
+132: test_cancel_retains_held_notes_and_panic_releases_every_ui_part (__main__.NativeWorkflowAcceptance.test_cancel_retains_held_notes_and_panic_releases_every_ui_part) ... ok
+132: test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes (__main__.NativeWorkflowAcceptance.test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes) ... ok
+132: test_edit_bank_and_sounding_bank_remain_independent (__main__.NativeWorkflowAcceptance.test_edit_bank_and_sounding_bank_remain_independent) ... ok
+132: test_empty_replay_has_no_automatic_smoke_note_or_file_write (__main__.NativeWorkflowAcceptance.test_empty_replay_has_no_automatic_smoke_note_or_file_write) ... ok
+132: test_fixed_cancel_save_live_load_cold_load_and_audio_restart (__main__.NativeWorkflowAcceptance.test_fixed_cancel_save_live_load_cold_load_and_audio_restart) ... ok
+132: test_focus_loss_suppresses_repeat_and_duplicate_down_until_release (__main__.NativeWorkflowAcceptance.test_focus_loss_suppresses_repeat_and_duplicate_down_until_release) ... ok
+132: test_help_open_close_releases_notes_without_retriggering_held_keys (__main__.NativeWorkflowAcceptance.test_help_open_close_releases_notes_without_retriggering_held_keys) ... ok
+134: ..Native chapel acceptance: 22 exported states, 22 actual SDL application invocations
+134: 
+134: ----------------------------------------------------------------------
+134: Ran 2 tests in 19.932s
+134: 
+134: OK
+7/8 Test #134: test_standalone_chapel ...............   Passed   20.15 sec
+132: test_keyboard_audio_apply_retains_all_controls_and_clears_notes (__main__.NativeWorkflowAcceptance.test_keyboard_audio_apply_retains_all_controls_and_clears_notes) ... ok
+132: test_off_window_pointer_release_preserves_independent_keyboard_owner (__main__.NativeWorkflowAcceptance.test_off_window_pointer_release_preserves_independent_keyboard_owner) ... ok
+132: test_original_note_ownership_survives_target_and_octave_changes (__main__.NativeWorkflowAcceptance.test_original_note_ownership_survives_target_and_octave_changes) ... ok
+132: test_replay_cli_errors_preserve_state_and_output_sentinels (__main__.NativeWorkflowAcceptance.test_replay_cli_errors_preserve_state_and_output_sentinels) ... ok
+132: test_resize_preserves_control_focus_and_original_note_release (__main__.NativeWorkflowAcceptance.test_resize_preserves_control_focus_and_original_note_release) ... ok
+132: Actual native workflow subprocesses: 52
+132: 
+132: ----------------------------------------------------------------------
+132: Ran 13 tests in 64.230s
+132: 
+132: OK
+8/8 Test #132: test_standalone_workflows ............   Passed   64.36 sec
+
+The following tests passed:
+	test_standalone_benchmark
+	test_standalone_install
+	test_standalone_midi_cli
+	test_standalone_native_midi_replay
+	test_standalone_chapel
+	test_standalone_workflows
+
+75% tests passed, 2 tests failed out of 8
+
+Label Time Summary:
+benchmark     =   3.18 sec*proc (1 test)
+midi          =  34.43 sec*proc (2 tests)
+native        = 140.93 sec*proc (7 tests)
+standalone    = 144.11 sec*proc (8 tests)
+
+Total Test time (real) =  82.95 sec
+
+The following tests FAILED:
+	129 - test_standalone_app (Failed)                      native standalone
+	133 - test_standalone_replay_boundaries (Failed)        native standalone
+Errors while running CTest

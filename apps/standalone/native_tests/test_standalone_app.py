@@ -35,7 +35,7 @@ AUDITION_CONTROLS = {
         [[0] * 9, [8, 8, 8, 0, 0, 0, 0, 0, 0]],
         [[0] * 9, [0, 0, 8, 0, 0, 0, 0, 0, 0]],
     ],
-    "selected_banks": [1, 1],
+    "selected_banks": [1, 1], "fixed_registrations": [0, 0], "preset_selections": [11, 11],
     "route_enabled": [True, True],
     "expression": 1,
     "pedal_drawbars": [8, 0],
@@ -46,7 +46,7 @@ VARIED_CONTROLS = {
         [[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]],
         [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]],
     ],
-    "selected_banks": [0, 1],
+    "selected_banks": [0, 1], "fixed_registrations": [0, 0], "preset_selections": [0, 11],
     "route_enabled": [False, True],
     "expression": 0.375,
     "pedal_drawbars": [2, 7],
@@ -225,7 +225,7 @@ SCHEMA = {
     },
     "controls": {
         "manual_drawbars": [[[int] * 9, [int] * 9], [[int] * 9, [int] * 9]],
-        "selected_banks": [int, int], "route_enabled": [bool, bool],
+        "selected_banks": [int, int], "fixed_registrations": [int, int], "preset_selections": [int, int], "route_enabled": [bool, bool],
         "expression": "number", "pedal_drawbars": [int, int],
         "percussion": {"enabled": bool, "harmonic": int, "volume": int, "decay": int},
     },
@@ -380,7 +380,7 @@ class NativeAppAcceptance(unittest.TestCase):
         report = json.loads(path.read_text(encoding="utf-8"),
                             object_pairs_hook=unique_object, parse_constant=reject_nonfinite)
         assert_schema(self, report, SCHEMA)
-        self.assertEqual(report["schema_version"], 2)
+        self.assertEqual(report["schema_version"], 3)
         assert_no_midi_input(self, report)
         self.assertEqual(report["application"], "hammond_standalone")
         self.assertEqual(report["profile"], PROFILE)
@@ -399,6 +399,11 @@ class NativeAppAcceptance(unittest.TestCase):
                 self.assertTrue(all(0 <= position <= 8 for position in bank))
         self.assertTrue(all(0 <= position <= 8 for position in controls["pedal_drawbars"]))
         self.assertTrue(all(bank in (0, 1) for bank in controls["selected_banks"]))
+        self.assertTrue(all(0 <= fixed <= 9 for fixed in controls["fixed_registrations"]))
+        self.assertEqual(controls["preset_selections"], [
+            0 if not enabled else fixed if fixed else 10 + bank
+            for bank, fixed, enabled in zip(controls["selected_banks"],
+                controls["fixed_registrations"], controls["route_enabled"], strict=True)])
         self.assertTrue(all(controls["percussion"][key] in (0, 1)
                             for key in ("harmonic", "volume", "decay")))
         self.assertGreaterEqual(controls["expression"], 0)
@@ -502,14 +507,15 @@ class NativeAppAcceptance(unittest.TestCase):
         self.assertGreater(len(colors), 8, "Rendered screenshot is blank or nearly uniform")
         if held_middle_c:
             # Literal interior points below the upper manual's accidentals in
-            # reference-player layout v1. The keyboard begins at (188,496)
-            # with 1068 units of natural-key width at 1280x900, or (24,424)
-            # with width 912 at 960x700. C4/D4/E4 are naturals 14/15/16.
-            # Fresh held/idle native captures verified these points; each
+            # the preset-key layout. The playing keyboard begins at (200,496)
+            # with 1056 units of natural-key width at 1280x900, or (188,424)
+            # with width748 at960x700. The preset rail now exists at both sizes.
+            # C4/D4/E4 are naturals14/15/16. Actual held captures verify these
+            # interior points; each
             # invocation still checks its own new BMP, never a retained image.
             # No production layout/paint code or diagnostic flag is imported.
-            c4, d4, e4, y = {(1280, 900): (618, 648, 678, 580),
-                              (960, 700): (391, 417, 442, 466)}[(width, height)]
+            c4, d4, e4, y = {(1280, 900): (625, 655, 684, 580),
+                              (960, 700): (489, 510, 531, 466)}[(width, height)]
             row = offset + (height - 1 - y if actual_height > 0 else y) * stride
             def pixel(x: int) -> bytes:
                 start = row + x * bytes_per_pixel

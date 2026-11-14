@@ -376,7 +376,17 @@ void write_controls_json(std::ostream& output, const ControlSnapshot& controls) 
         output << ']';
     }
     output << "],\"selected_banks\":[" << static_cast<unsigned int>(controls.selected_banks[0]) << ','
-           << static_cast<unsigned int>(controls.selected_banks[1]) << "],\"route_enabled\":["
+           << static_cast<unsigned int>(controls.selected_banks[1]) << "],\"fixed_registrations\":["
+           << static_cast<unsigned int>(controls.fixed_registrations[0]) << ','
+           << static_cast<unsigned int>(controls.fixed_registrations[1]) << "],\"preset_selections\":[";
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        if (manual != 0) output << ',';
+        PresetSelection selection{};
+        if (control_preset_selection(controls, static_cast<Manual>(manual), selection)) {
+            output << static_cast<unsigned int>(selection);
+        } else output << "null"; // Invalid copied controls must not masquerade as Cancel.
+    }
+    output << "],\"route_enabled\":["
            << controls.route_enabled[0] << ',' << controls.route_enabled[1] << "],\"expression\":"
            << controls.expression << ",\"pedal_drawbars\":[" << static_cast<unsigned int>(controls.pedal_drawbars[0])
            << ',' << static_cast<unsigned int>(controls.pedal_drawbars[1]) << "],\"percussion\":{\"enabled\":"
@@ -537,6 +547,10 @@ public:
         // Retain script results before ordinary close cleanup can release held
         // keys or resolve additional commands. A held final script state is legal.
         replay_before_shutdown_ = snapshot_;
+        replay_desired_controls_ = ui_.view().controls;
+        replay_snapshot_available_ = snapshot_available_;
+        replay_controls_pending_ = ui_.view().controls_pending;
+        replay_save_pending_ = pending_save_.has_value();
         replay_last_submitted_sequence_ = last_submitted_sequence_;
         replay_final_acknowledged_ = replay_acknowledged();
         replay_finalized_ = true;
@@ -618,7 +632,7 @@ public:
         output << std::boolalpha << std::setprecision(17);
         SDL_version linked{};
         SDL_GetVersion(&linked);
-        output << "{\n  \"schema_version\":2,\n  \"application\":\"hammond_standalone\",\n  \"profile\":{\"id\":";
+        output << "{\n  \"schema_version\":3,\n  \"application\":\"hammond_standalone\",\n  \"profile\":{\"id\":";
         json_string(output, profile_.profile_id.data());
         output << ",\"authoring_sha256\":"; json_string(output, profile_.authoring_sha256.data());
         output << "},\n  \"runtime\":{\"video_driver\":"; json_string(output, video_driver_);
@@ -951,7 +965,13 @@ private:
     // The existing UI replay event/delivery fields keep their original meaning.
     void write_replay_results(std::ostream& output) const {
         output << ",\"final_acknowledged\":" << replay_final_acknowledged_
-               << ",\"last_submitted_sequence\":" << replay_last_submitted_sequence_
+               << ",\"snapshot_available_before_shutdown\":" << replay_snapshot_available_
+               << ",\"session_running_before_shutdown\":" << replay_before_shutdown_.running
+               << ",\"controls_pending_before_shutdown\":" << replay_controls_pending_
+               << ",\"save_pending_before_shutdown\":" << replay_save_pending_
+               << ",\"desired_controls_before_shutdown\":";
+        write_controls_json(output, replay_desired_controls_);
+        output << ",\"last_submitted_sequence\":" << replay_last_submitted_sequence_
                << ",\"accepted_note_on_commands\":" << replay_accepted_note_on_
                << ",\"accepted_note_off_commands\":" << replay_accepted_note_off_
                << ",\"device_starts\":" << device_starts_
@@ -2050,6 +2070,10 @@ private:
     ControlSnapshot retained_controls_{};
     SessionSnapshot snapshot_{};
     SessionSnapshot replay_before_shutdown_{};
+    ControlSnapshot replay_desired_controls_{};
+    bool replay_snapshot_available_{false};
+    bool replay_controls_pending_{false};
+    bool replay_save_pending_{false};
     std::optional<PendingSave> pending_save_;
     std::optional<MidiRequest> pending_midi_open_;
     AudioDeviceInfo audio_before_close_{};

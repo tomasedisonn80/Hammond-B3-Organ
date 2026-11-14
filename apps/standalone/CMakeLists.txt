@@ -151,6 +151,16 @@ if(HAMMOND_BUILD_STANDALONE)
         set_tests_properties(test_standalone_drawing PROPERTIES
             TIMEOUT 15 LABELS "standalone;native")
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_drawing)
+        add_executable(test_standalone_preset_raster
+            native_tests/test_standalone_preset_raster.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_preset_raster PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_preset_raster PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_preset_raster)
+        add_test(NAME test_standalone_preset_raster COMMAND test_standalone_preset_raster)
+        set_tests_properties(test_standalone_preset_raster PROPERTIES
+            TIMEOUT 30 LABELS "standalone;native")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_preset_raster)
         add_executable(test_standalone_audio_device native_tests/test_standalone_audio_device.cpp)
         target_link_libraries(test_standalone_audio_device PRIVATE hammond_standalone_audio)
         target_include_directories(test_standalone_audio_device PRIVATE "${PROJECT_SOURCE_DIR}/tests")

@@ -38,6 +38,12 @@ namespace {
         case EventType::SelectBank:
             plain = static_cast<double>(snapshot.selected_banks[manual]);
             break;
+        case EventType::SelectPreset: {
+            PresetSelection selection{};
+            if (!control_preset_selection(snapshot, descriptor.manual, selection)) return false;
+            plain = static_cast<double>(selection);
+            break;
+        }
         case EventType::Expression:
             plain = snapshot.expression;
             break;

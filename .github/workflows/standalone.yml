@@ -502,7 +502,7 @@ jobs:
           run_logged([binary, "--smoke-ms", "600", "--state", state, "--screenshot", screenshot,
                       "--diagnostics", diagnostics], "relocated-smoke.log", work, 20)
           report = json.loads(diagnostics.read_text(encoding="utf-8"))
-          assert report["schema_version"] == 2
+          assert report["schema_version"] == 3
           assert report["smoke"]["passed"] is True and report["smoke"]["duration_ms"] == 600
           assert report["runtime"]["video_driver"] == report["audio"]["driver"] == "dummy"
           assert report["runtime"]["screenshot_written"] is True and screenshot.read_bytes()[:2] == b"BM"

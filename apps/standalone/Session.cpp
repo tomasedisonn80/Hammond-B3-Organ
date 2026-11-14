@@ -57,6 +57,7 @@ void increment(std::atomic<std::uint64_t>& value) noexcept {
             case EventType::Expression:
             case EventType::Percussion:
             case EventType::PedalDrawbar:
+            case EventType::SelectPreset:
                 return true;
             default:
                 return false;
@@ -75,6 +76,19 @@ void increment(std::atomic<std::uint64_t>& value) noexcept {
 // representation. Every concurrently accessed payload word is itself atomic.
 constexpr std::size_t kSnapshotWords = 22;
 using SnapshotWords = std::array<std::uint64_t, kSnapshotWords>;
+constexpr std::uint64_t kSnapshotByteMask = 0xffU;
+constexpr std::size_t kFixedModeWord = 4;
+constexpr unsigned kUpperFixedModeShift = 32;
+constexpr unsigned kLowerFixedModeShift = 40;
+static_assert(kManualCount == 2 && kDrawbarBankCount == 2 && kDrawbarCount == 9);
+static_assert(kManualCount * kDrawbarBankCount * kDrawbarCount == 36);
+static_assert(kFixedModeWord * 8 + kUpperFixedModeShift / 8 == 36);
+static_assert(kLowerFixedModeShift == kUpperFixedModeShift + 8);
+static_assert(kLowerFixedModeShift + 8 <= 64);
+static_assert(std::is_same_v<std::underlying_type_t<FixedRegistration>, std::uint8_t>);
+static_assert(kFixedRegistrationCount == 9);
+static_assert(static_cast<std::uint8_t>(FixedRegistration::A) == 9);
+static_assert(static_cast<std::uint8_t>(FixedRegistration::A) <= kSnapshotByteMask);
 
 [[nodiscard]] SnapshotWords pack(const SessionSnapshot& snapshot) noexcept {
     SnapshotWords words{};
@@ -88,6 +102,14 @@ using SnapshotWords = std::array<std::uint64_t, kSnapshotWords>;
         }
     }
     const auto& controls = snapshot.controls;
+    // The first 36 bytes retain all four banks; word 4's next two bytes retain
+    // raw fixed modes independently of the route bits and remembered banks.
+    words[kFixedModeWord] |=
+        (static_cast<std::uint64_t>(controls.fixed_registrations[0]) & kSnapshotByteMask)
+        << kUpperFixedModeShift;
+    words[kFixedModeWord] |=
+        (static_cast<std::uint64_t>(controls.fixed_registrations[1]) & kSnapshotByteMask)
+        << kLowerFixedModeShift;
     words[5] = static_cast<std::uint64_t>(controls.selected_banks[0]) |
                (static_cast<std::uint64_t>(controls.selected_banks[1]) << 8) |
                (static_cast<std::uint64_t>(controls.route_enabled[0]) << 16) |
@@ -136,6 +158,10 @@ using SnapshotWords = std::array<std::uint64_t, kSnapshotWords>;
         }
     }
     auto& controls = snapshot.controls;
+    controls.fixed_registrations[0] = static_cast<FixedRegistration>(
+        (words[kFixedModeWord] >> kUpperFixedModeShift) & kSnapshotByteMask);
+    controls.fixed_registrations[1] = static_cast<FixedRegistration>(
+        (words[kFixedModeWord] >> kLowerFixedModeShift) & kSnapshotByteMask);
     controls.selected_banks[0] = static_cast<DrawbarBank>(words[5] & 255U);
     controls.selected_banks[1] = static_cast<DrawbarBank>((words[5] >> 8) & 255U);
     controls.route_enabled[0] = ((words[5] >> 16) & 1U) != 0;

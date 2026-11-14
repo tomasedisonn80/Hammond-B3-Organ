@@ -27,6 +27,15 @@ PROFILE_OVERRIDE = None
 BLOCK_SIZES = (1, 17, 64, 127, 512, 1024)
 HALF_PCM_STEP = 0.5 / 32768.0
 
+# Literal page-122 oracle retained by A10 in PresetTestOracle.h. These strings
+# are documentary tap indices, not production-generated rows or measured gains.
+PRESET_ROWS = {
+    "upper": ("005320000", "004432000", "008740000", "004544222", "005403000",
+              "004675300", "005644320", "006876540", "327645222"),
+    "lower": ("004545440", "004423220", "007373430", "004544220", "006644322",
+              "005642200", "006845433", "008030000", "427866244"),
+}
+
 
 def required_file(explicit, candidates, description, environment_name):
     """An explicit configuration error must not silently use a different build."""
@@ -207,8 +216,104 @@ class RendererTests(unittest.TestCase):
         self.assertEqual(result.stderr, "")
         self.assertIn("--profile", result.stdout)
         self.assertIn("--events", result.stdout)
+        self.assertIn("select_preset", result.stdout)
         self.assertIn("unmeasured", result.stdout)
         self.assertEqual(self.paths(), before)
+
+    def test_all_eighteen_presets_match_literal_bank_events(self):
+        for manual, rows in PRESET_ROWS.items():
+            held = "0 expression upper 0 .125\n" + "".join(
+                f"0 note_on {manual} {note} 100\n" for note in (36, 48, 60, 84, 96))
+            release = "".join(f"401 note_off {manual} {note} 0\n"
+                              for note in (36, 48, 60, 84, 96))
+            for selection, digits in enumerate(rows, 1):
+                with self.subTest(manual=manual, selection=selection, digits=digits):
+                    fixed = self.score(held + f"37 select_preset {manual} 0 {selection}\n" +
+                                       release, "fixed.events")
+                    bank = self.score(held + "".join(
+                        f"37 bank_drawbar {manual} {index} {digit}\n"
+                        for index, digit in enumerate(digits)) +
+                        f"37 select_bank {manual} 0 0\n" + release, "literal-bank.events")
+                    actual = self.render(frames=523, seed=7, block=17,
+                                         drawbars="000000000", events=fixed)
+                    expected = self.render(frames=523, seed=7, block=127,
+                                           drawbars="000000000", events=bank)
+                    self.assert_same_render(actual, expected)
+                    self.assertTrue(any(actual[1][37:401]), "Fixed row must be audible")
+                    self.assertFalse(any(actual[1][:37]), "Selection must retain its sample time")
+
+    def test_preset_same_frame_order_cancel_and_bank_aliases(self):
+        for manual, rows in PRESET_ROWS.items():
+            prefix = (f"0 bank_drawbar {manual} 2 4\n"
+                      f"0 bank_drawbar {manual} 11 8\n"
+                      f"0 note_on {manual} 60 100\n")
+            fixed = f"37 select_preset {manual} 0 3\n"
+            old_b = f"37 select_bank {manual} 0 1\n"
+            cancel = f"37 select_preset {manual} 0 -0.0\n"
+            references = {
+                "fixed": "".join(f"37 bank_drawbar {manual} {i} {digit}\n"
+                                   for i, digit in enumerate(rows[2])) +
+                         f"37 select_bank {manual} 0 0\n",
+                "bank_b": old_b,
+                "bank_a": f"37 select_bank {manual} 0 0\n",
+                "cancel": f"37 cancel {manual} 0 0\n",
+            }
+            cases = ((fixed + old_b, "bank_b"), (old_b + fixed, "fixed"),
+                     (fixed + cancel, "cancel"), (cancel + fixed, "fixed"),
+                     (fixed + f"37 select_preset {manual} 0 10.0\n", "bank_a"),
+                     (fixed + f"37 select_preset {manual} 0 11e0\n", "bank_b"))
+            for commands, expected_route in cases:
+                with self.subTest(manual=manual, commands=commands):
+                    actual = self.render(frames=193, drawbars="000000000", events=self.score(
+                        prefix + commands, "ordered.events"))
+                    expected = self.render(frames=193, drawbars="000000000", events=self.score(
+                        prefix + references[expected_route], "ordered-reference.events"))
+                    self.assert_same_render(actual, expected)
+                    if expected_route == "cancel":
+                        self.assertFalse(any(actual[1][37:]))
+
+    def test_preset_cancel_edit_and_existing_bank_return_keep_held_note(self):
+        for manual, rows in PRESET_ROWS.items():
+            with self.subTest(manual=manual):
+                prefix = (f"0 bank_drawbar {manual} 11 8\n"
+                          f"0 note_on {manual} 60 100\n")
+                tail = (f"128 select_preset {manual} 0 -0\n"
+                        f"160 bank_drawbar {manual} 11 4\n"
+                        f"192 select_bank {manual} 0 1\n")
+                actual = self.render(frames=319, block=17, drawbars="000000000",
+                                     events=self.score(prefix +
+                                     f"64 select_preset {manual} 0 1\n" + tail, "return.events"))
+                reference = self.render(frames=319, block=127, drawbars="000000000",
+                                       events=self.score(prefix + "".join(
+                                           f"64 bank_drawbar {manual} {i} {digit}\n"
+                                           for i, digit in enumerate(rows[0])) +
+                                           f"64 select_bank {manual} 0 0\n" +
+                                           tail.replace("select_preset", "cancel"),
+                                           "return-reference.events"))
+                self.assert_same_render(actual, reference)
+                self.assertFalse(any(actual[1][128:192]))
+                self.assertTrue(any(actual[1][192:]), "Old B must reconnect the still-held note")
+
+    def test_invalid_preset_score_rejects_whole_file_without_output(self):
+        invalid = [f"128 select_preset {manual} 0 {value}"
+                   for manual in ("upper", "lower")
+                   for value in ("-1", "12", "0.5", "11.000001", "nan", "inf", "-inf",
+                                 "1e999", "1e-999", "0x1")]
+        invalid += [f"128 select_preset upper {index} 1"
+                    for index in ("1", "255", "-0", "+0", "0.0", "18446744073709551616")]
+        invalid += ["128 select_preset pedals 0 1", "128 select_preset Upper 0 1",
+                    "128 SelectPreset upper 0 1", "128 select_preset upper 0 1 extra"]
+        for bad in invalid:
+            with self.subTest(event=bad):
+                raw = ("0 note_on upper 60 100\n0 select_preset upper 0 1\n" + bad + "\n")
+                events = self.score(raw)
+                self.assert_rejected(self.arguments(self.new_output()) + ["--events", events])
+                self.assertEqual(events.read_bytes(), raw.encode("utf-8"))
+        output = self.new_output()
+        sentinel = b"preexisting output must survive invalid selector input\n"
+        output.write_bytes(sentinel)
+        self.assert_rejected(self.arguments(output) + ["--events", events])
+        self.assertEqual(output.read_bytes(), sentinel)
 
     def test_help_and_summary_stdout_failures_are_not_success(self):
         sink = self.work / "readonly stdout"

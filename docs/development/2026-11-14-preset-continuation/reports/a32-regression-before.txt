@@ -1,0 +1,43 @@
+Fixed admission-source subprocesses: 8
+test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) ... 
+  test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) (mode='TIMESTAMP', current_valid=False) ... FAIL
+  test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) (mode='TIMESTAMP', current_valid=True) ... FAIL
+  test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) (mode='UNCHECKED_HASH', current_valid=False) ... FAIL
+  test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) (mode='UNCHECKED_HASH', current_valid=True) ... FAIL
+
+======================================================================
+FAIL: test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) (mode='TIMESTAMP', current_valid=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hammond-preset-a32/regression-before/tests/test_fixed_registration_source_admission.py", line 118, in test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode
+    self.assertEqual(result.returncode, 1, result.stderr)
+AssertionError: 0 != 1 : b''
+
+======================================================================
+FAIL: test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) (mode='TIMESTAMP', current_valid=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hammond-preset-a32/regression-before/tests/test_fixed_registration_source_admission.py", line 113, in test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 1 != 0 : b"fixed-registration compile error: authoring.registrations[17].drawbars: must equal '427866243' for atlas-chapel-nominal-v1\n"
+
+======================================================================
+FAIL: test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) (mode='UNCHECKED_HASH', current_valid=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hammond-preset-a32/regression-before/tests/test_fixed_registration_source_admission.py", line 118, in test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode
+    self.assertEqual(result.returncode, 1, result.stderr)
+AssertionError: 0 != 1 : b''
+
+======================================================================
+FAIL: test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode (__main__.FixedRegistrationSourceAdmission.test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode) (mode='UNCHECKED_HASH', current_valid=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hammond-preset-a32/regression-before/tests/test_fixed_registration_source_admission.py", line 113, in test_current_source_wins_over_timestamp_and_unchecked_hash_bytecode
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 1 != 0 : b"fixed-registration compile error: authoring.registrations[17].drawbars: must equal '427866243' for atlas-chapel-nominal-v1\n"
+
+----------------------------------------------------------------------
+Ran 1 test in 0.651s
+
+FAILED (failures=4)

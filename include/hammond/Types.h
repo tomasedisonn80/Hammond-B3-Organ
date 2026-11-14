@@ -39,6 +39,7 @@ enum class EventType : std::uint8_t {
     PedalOff = 11,
     PedalDrawbar = 12,
     PedalAllNotesOff = 13,
+    SelectPreset = 14,
 };
 
 // Offsets are relative to the current block; equal offsets retain input order.
@@ -52,6 +53,8 @@ enum class EventType : std::uint8_t {
 // Drawbar index: physical order 0..8 in the selected bank; value: integer 0..8.
 // BankDrawbar index: bank*9 + drawbar, 0..17 (A=0, B=1); value: integer 0..8.
 // SelectBank index: 0; value: integer 0=A or 1=B. Selection enables the route.
+// SelectPreset index: 0; value: integer 0..11 for Cancel, nine fixed keys,
+// bank A, bank B. Fixed/bank selection enables the route; banks clear fixed mode.
 // Cancel index/value: 0. Disconnects one manual without releasing held keys.
 // Percussion is Upper only, value: integer 0 or 1. Index 0: Off/On;
 // 1: Second/Third harmonic; 2: Normal/Soft volume; 3: Slow/Fast decay.

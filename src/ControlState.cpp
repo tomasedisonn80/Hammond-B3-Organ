@@ -20,7 +20,8 @@ bool is_valid_control_snapshot(const ControlSnapshot& snapshot) noexcept {
         if (position >= kDrawbarPositionCount) return false;
     }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
-        if (!is_valid_drawbar_bank(snapshot.selected_banks[manual])) {
+        if (!is_valid_drawbar_bank(snapshot.selected_banks[manual]) ||
+            !is_valid_fixed_registration(snapshot.fixed_registrations[manual])) {
             return false;
         }
         for (const auto& bank : snapshot.drawbars[manual]) {
@@ -30,6 +31,23 @@ bool is_valid_control_snapshot(const ControlSnapshot& snapshot) noexcept {
                 }
             }
         }
+    }
+    return true;
+}
+
+bool control_preset_selection(const ControlSnapshot& snapshot, Manual manual,
+                               PresetSelection& destination) noexcept {
+    if (!is_valid_manual(manual) || !is_valid_control_snapshot(snapshot)) {
+        return false;
+    }
+    const auto manual_index = static_cast<std::size_t>(manual);
+    if (!snapshot.route_enabled[manual_index]) {
+        destination = PresetSelection::Cancel;
+    } else if (snapshot.fixed_registrations[manual_index] != FixedRegistration::None) {
+        destination = static_cast<PresetSelection>(snapshot.fixed_registrations[manual_index]);
+    } else {
+        destination = snapshot.selected_banks[manual_index] == DrawbarBank::A
+                          ? PresetSelection::BankA : PresetSelection::BankB;
     }
     return true;
 }
@@ -60,8 +78,29 @@ bool ControlState::select_bank(Manual manual, DrawbarBank bank) noexcept {
     }
     const auto manual_index = static_cast<std::size_t>(manual);
     state_.selected_banks[manual_index] = bank;
+    state_.fixed_registrations[manual_index] = FixedRegistration::None;
     state_.route_enabled[manual_index] = true;
     return true;
+}
+
+bool ControlState::select_preset(Manual manual, PresetSelection selection) noexcept {
+    if (!is_valid_manual(manual) || !is_valid_preset_selection(selection)) {
+        return false;
+    }
+    switch (selection) {
+    case PresetSelection::Cancel:
+        return cancel(manual);
+    case PresetSelection::BankA:
+        return select_bank(manual, DrawbarBank::A);
+    case PresetSelection::BankB:
+        return select_bank(manual, DrawbarBank::B);
+    default: {
+        const auto manual_index = static_cast<std::size_t>(manual);
+        state_.fixed_registrations[manual_index] = static_cast<FixedRegistration>(selection);
+        state_.route_enabled[manual_index] = true;
+        return true;
+    }
+    }
 }
 
 bool ControlState::cancel(Manual manual) noexcept {
@@ -129,10 +168,19 @@ bool ControlState::active_drawbar_position(Manual manual, std::size_t index,
         return false;
     }
     const auto manual_index = static_cast<std::size_t>(manual);
+    if (!state_.route_enabled[manual_index]) {
+        destination = 0;
+        return true;
+    }
+    const auto fixed = state_.fixed_registrations[manual_index];
+    if (fixed != FixedRegistration::None) {
+        FixedRegistrationPositions positions{};
+        if (!fixed_registration_positions(manual, fixed, positions)) return false;
+        destination = positions[index];
+        return true;
+    }
     const auto bank_index = static_cast<std::size_t>(state_.selected_banks[manual_index]);
-    destination = state_.route_enabled[manual_index]
-                      ? state_.drawbars[manual_index][bank_index][index]
-                      : std::uint8_t{0};
+    destination = state_.drawbars[manual_index][bank_index][index];
     return true;
 }
 
@@ -142,6 +190,11 @@ bool ControlState::selected_bank(Manual manual, DrawbarBank& destination) const 
     }
     destination = state_.selected_banks[static_cast<std::size_t>(manual)];
     return true;
+}
+
+bool ControlState::selected_preset(Manual manual,
+                                   PresetSelection& destination) const noexcept {
+    return control_preset_selection(state_, manual, destination);
 }
 
 bool ControlState::route_enabled(Manual manual, bool& destination) const noexcept {

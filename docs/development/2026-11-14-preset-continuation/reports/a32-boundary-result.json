@@ -1,0 +1,378 @@
+{
+  "scope": "Isolated actual CMake custom-command and dependency boundary; no C++ consumer compilation",
+  "context_commit": "35554c068492fe2b20c1f8a602d8354ae762dc42",
+  "source_inputs": {
+    "tools/compile_fixed_registrations.py": {
+      "sha256": "770eff9d031961de81d4520136d1781795a9e2b494f2a9c4a44c727b5c0f1644",
+      "bytes": 5624
+    },
+    "tools/compile_chapel_presets.py": {
+      "sha256": "ae54bbc196d779b2b1b369aa2c2e7db4268dd175201d6b193fed8256e6420826",
+      "bytes": 15395
+    },
+    "cmake/CompileFixedRegistrations.cmake": {
+      "sha256": "c9dba11f08dac36317a02028bb706d73fc39a91ede3776e9fcdce0d08cea5e1c",
+      "bytes": 1790
+    },
+    "data/chapel-presets.schema.json": {
+      "sha256": "07676c32411b34a4c8b683f251a2f3599a1ef19d294fa2bcc03551a933e2decd",
+      "bytes": 23050
+    },
+    "data/registrations/atlas-chapel-nominal-v1.json": {
+      "sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf",
+      "bytes": 4298
+    },
+    "data/registrations/review-a-chapel.csv": {
+      "sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+      "bytes": 466
+    },
+    "data/registrations/review-b-chapel.csv": {
+      "sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+      "bytes": 466
+    }
+  },
+  "input_manifest_sha256": "f259a11d57ed2d05ff8b5de4927302e40ff335880db65dd51ec624f0af1ec8a7",
+  "cmake": "cmake version 4.4.4",
+  "python": "3.12.14",
+  "generator": "Unix Makefiles",
+  "records": [
+    {
+      "case": "final-configure",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "-S",
+        "/tmp/hammond-preset-a32/final-source",
+        "-B",
+        "/tmp/hammond-preset-a32/final-build",
+        "-G",
+        "Unix Makefiles"
+      ],
+      "exit": 0,
+      "log": "final-configure.txt",
+      "sha256": "7d318c9096019b0382ca1a62a38ec5f88c68b6dbc995f39e8c89bc2fa3ce4d09"
+    },
+    {
+      "case": "final-clean",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "final-clean.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "final-no-change",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "final-no-change.txt",
+      "sha256": "056893d9b397d80608d3db79b6876fdcb1e5135e75ef49d985923a4a362cc896"
+    },
+    {
+      "case": "input-0-mutated",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 2,
+      "log": "input-0-mutated.txt",
+      "sha256": "217407ef1e1b334fa97f7dc3e64c5941f3595b69263f20192f44aeea7923114d"
+    },
+    {
+      "case": "input-0-restored",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "input-0-restored.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "input-0-missing",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 2,
+      "log": "input-0-missing.txt",
+      "sha256": "d0e1d50c4539560d3b8c901d508e7a3d11b40452f4b6afc349dc46b8a73aa5d0"
+    },
+    {
+      "case": "input-0-recreated",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "input-0-recreated.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "input-1-mutated",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 2,
+      "log": "input-1-mutated.txt",
+      "sha256": "7696f5dc6b40ee06262ab5e08f9e2ffd5fe8b64f9ab4bb2356129ef9feaf5515"
+    },
+    {
+      "case": "input-1-restored",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "input-1-restored.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "input-1-missing",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 2,
+      "log": "input-1-missing.txt",
+      "sha256": "3f8afd93d3c191815bba8b5dd5953f5ffa04148997ec49bd6f5858dfca65b17e"
+    },
+    {
+      "case": "input-1-recreated",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "input-1-recreated.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "input-2-mutated",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 2,
+      "log": "input-2-mutated.txt",
+      "sha256": "e90f36a3f2a679fcb6666b51af0f15ad3980b5ff961bf159a7e1ea01cd1d3c3e"
+    },
+    {
+      "case": "input-2-restored",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "input-2-restored.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "input-2-missing",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 2,
+      "log": "input-2-missing.txt",
+      "sha256": "6fe3032abaf9531751fb65ad57c26dca908bf670a3b03c43854e591d720841df"
+    },
+    {
+      "case": "input-2-recreated",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "input-2-recreated.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "review-hardlink-alias",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 2,
+      "log": "review-hardlink-alias.txt",
+      "sha256": "4dcbf0f2c685c5453ba971f18349dfd8fa5cec42e95f839394f48d9140ee8d90"
+    },
+    {
+      "case": "review-distinct-restored",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "review-distinct-restored.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "dependency-0",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "dependency-0.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "dependency-1",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "dependency-1.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "dependency-2",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "dependency-2.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "dependency-3",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "dependency-3.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "dependency-4",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "dependency-4.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "dependency-5",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "dependency-5.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    },
+    {
+      "case": "fixed-stale-cache-rejected",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 2,
+      "log": "fixed-stale-cache-rejected.txt",
+      "sha256": "1eea23daf9573f8e78ed472c3aecda23c86f8dff6afdfc5b9dd8be4d13fd5a29"
+    },
+    {
+      "case": "fixed-source-restored",
+      "command": [
+        "/workspace/scratch/641ca55ce6de/native-toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/tmp/hammond-preset-a32/final-build",
+        "--target",
+        "hammond_core"
+      ],
+      "exit": 0,
+      "log": "fixed-source-restored.txt",
+      "sha256": "7d8b15af564d455bfb8a6f292e9defe5ab7da60101c9c4fed7a695b0b805132d"
+    }
+  ],
+  "commands": 25,
+  "expected_rejections": 8,
+  "header_sha256": "66cbb1a23cb5ebf14844afd6f98e13829c9f69c1511b09d5974ca5a4527157c6",
+  "header_bytes": 2099,
+  "a31_header_equal": true,
+  "a31_header_sha256": "66cbb1a23cb5ebf14844afd6f98e13829c9f69c1511b09d5974ca5a4527157c6",
+  "consumer_blocked_on_every_rejection": true,
+  "old_header_preserved_on_every_rejection": true,
+  "temporary_outputs_clean": true,
+  "valid_output_unchanged": true,
+  "original_repository_inputs_unchanged": true
+}

@@ -228,6 +228,7 @@ def validate_events(raw: bytes, frames: int, contacts: str = "ideal") -> int:
                 "all_notes_off": index == 0 and value == 0,
                 "bank_drawbar": index <= 17 and 0 <= value <= 8 and value.is_integer(),
                 "select_bank": index == 0 and value in (0, 1),
+                "select_preset": index == 0 and 0 <= value <= 11 and value.is_integer(),
                 "cancel": index == 0 and value == 0,
                 "percussion": manual == "upper" and index <= 3 and value in (0, 1),
                 "pedal_on": manual == "lower" and 1 <= index <= 25 and

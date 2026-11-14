@@ -20,6 +20,7 @@ constexpr auto expression = EventType::Expression;
 constexpr auto selector = EventType::SelectBank;
 constexpr auto percussion = EventType::Percussion;
 constexpr auto pedal_drawbar = EventType::PedalDrawbar;
+constexpr auto preset_selector = EventType::SelectPreset;
 
 struct Expected {
     std::uint32_t id;
@@ -30,9 +31,9 @@ struct Expected {
     double initial;
 };
 
-// Independent inventory transcribed from the version-3 registry contract.
+// Independent inventory transcribed from the version-4 registry contract.
 // It is deliberately not derived from the native descriptor array or lookup.
-constexpr std::array<Expected, 45> expected{{
+constexpr std::array<Expected, 47> expected{{
     {4096, drawbar, upper, 0, 8, 0}, {4097, drawbar, upper, 1, 8, 0},
     {4098, drawbar, upper, 2, 8, 0}, {4099, drawbar, upper, 3, 8, 0},
     {4100, drawbar, upper, 4, 8, 0}, {4101, drawbar, upper, 5, 8, 0},
@@ -58,7 +59,25 @@ constexpr std::array<Expected, 45> expected{{
     {12288, percussion, upper, 0, 1, 0}, {12289, percussion, upper, 1, 1, 0},
     {12290, percussion, upper, 2, 1, 0}, {12291, percussion, upper, 3, 1, 0},
     {16384, pedal_drawbar, lower, 0, 8, 0}, {16385, pedal_drawbar, lower, 1, 8, 0},
+    {20480, preset_selector, upper, 0, 11, 11}, {20481, preset_selector, lower, 0, 11, 11},
 }};
+
+// Independent literal oracle transcribed from the frozen conversion contract.
+// Python acceptance separately proves these binary64 choices with exact rationals.
+constexpr std::array preset_thresholds{
+    0x1.745d1745d1746p-5, 0x1.1745d1745d174p-3, 0x1.d1745d1745d17p-3,
+    0x1.45d1745d1745dp-2, 0x1.a2e8ba2e8ba2fp-2, 0x1.0000000000000p-1,
+    0x1.2e8ba2e8ba2e9p-1, 0x1.5d1745d1745d1p-1, 0x1.8ba2e8ba2e8bap-1,
+    0x1.ba2e8ba2e8ba3p-1, 0x1.e8ba2e8ba2e8cp-1};
+constexpr std::array preset_canonical{
+    0x0.0p+0, 0x1.745d1745d1746p-4, 0x1.745d1745d1746p-3,
+    0x1.1745d1745d174p-2, 0x1.745d1745d1746p-2, 0x1.d1745d1745d17p-2,
+    0x1.1745d1745d174p-1, 0x1.45d1745d1745dp-1, 0x1.745d1745d1746p-1,
+    0x1.a2e8ba2e8ba2fp-1, 0x1.d1745d1745d17p-1, 0x1.0000000000000p+0};
+
+constexpr double maximum(const Expected& spec) {
+    return spec.steps == 0 ? 1.0 : static_cast<double>(spec.steps);
+}
 
 std::size_t successful_conversions = 0;
 std::size_t rejected_conversions = 0;
@@ -101,10 +120,11 @@ void plain_rejected(std::uint32_t id, double plain) {
 }
 
 void test_inventory() {
-    CHECK(hammond::kParameterCount == 45);
-    CHECK(hammond::kParameterRegistrySchemaVersion == 3);
-    CHECK(hammond::kParameterRegistryModel == "exclusive-ab-percussion-pedal-console-v3");
+    CHECK(hammond::kParameterCount == 47);
+    CHECK(hammond::kParameterRegistrySchemaVersion == 4);
+    CHECK(hammond::kParameterRegistryModel == "exclusive-fixed-percussion-pedal-console-v4");
     CHECK(static_cast<std::uint8_t>(pedal_drawbar) == 12);
+    CHECK(static_cast<std::uint8_t>(preset_selector) == 14);
     const auto actual = hammond::parameter_descriptors();
     CHECK(actual.size() == expected.size());
     CHECK(actual.data() == hammond::parameter_descriptors().data());
@@ -118,7 +138,7 @@ void test_inventory() {
         CHECK(descriptor.manual == spec.manual);
         CHECK(descriptor.index == spec.index);
         CHECK(descriptor.step_count == spec.steps);
-        CHECK(descriptor.maximum == (spec.steps == 8 ? 8.0 : 1.0));
+        CHECK(descriptor.maximum == maximum(spec));
         CHECK(descriptor.default_plain == spec.initial);
         CHECK(!descriptor.path.empty() && !descriptor.kind.empty() && !descriptor.unit.empty());
         CHECK(paths.insert(descriptor.path).second);
@@ -130,7 +150,7 @@ void test_inventory() {
         converted(spec, normalized, spec.initial);
         discrete_count += spec.steps != 0 ? 1U : 0U;
     }
-    CHECK(discrete_count == 44);
+    CHECK(discrete_count == 46);
 }
 
 void test_id_holes_and_atomic_rejection() {
@@ -142,7 +162,7 @@ void test_id_holes_and_atomic_rejection() {
         rejected(id, 0.5);
         plain_rejected(id, 0.0);
     };
-    for (std::uint32_t id = 0; id <= 16386; ++id) {
+    for (std::uint32_t id = 0; id <= 20482; ++id) {
         bool known = false;
         for (const auto& spec : expected) known = known || spec.id == id;
         if (!known) unknown(id);
@@ -161,8 +181,9 @@ void test_id_holes_and_atomic_rejection() {
                                  std::numeric_limits<double>::quiet_NaN()}) {
             plain_rejected(spec.id, value);
         }
-        const double maximum = spec.steps == 8 ? 8.0 : 1.0;
-        plain_rejected(spec.id, std::nextafter(maximum, maximum * 2));
+        const double bound = maximum(spec);
+        plain_rejected(spec.id, std::nextafter(bound, bound * 2));
+        plain_rejected(spec.id, -std::numeric_limits<double>::denorm_min());
         if (spec.steps != 0) {
             for (const auto value : {std::numeric_limits<double>::denorm_min(),
                                      0.25, 0.5, std::nextafter(1.0, 0.0)}) {
@@ -182,11 +203,19 @@ void test_thresholds_and_rounding_modes() {
         for (const auto& spec : expected) {
             converted(spec, 0.0, 0.0, 0);
             converted(spec, -0.0, spec.steps == 0 ? -0.0 : 0.0);
-            converted(spec, 1.0, spec.steps == 8 ? 8.0 : 1.0,
+            converted(spec, 1.0, maximum(spec),
                       std::numeric_limits<std::uint32_t>::max());
             const double small = std::numeric_limits<double>::denorm_min();
             converted(spec, small, spec.steps == 0 ? small : 0.0);
-            if (spec.steps == 8) {
+            if (spec.steps == 11) {
+                for (std::size_t index = 0; index < preset_thresholds.size(); ++index) {
+                    converted(spec, std::nextafter(preset_thresholds[index], 0.0),
+                              static_cast<double>(index));
+                    converted(spec, preset_thresholds[index], static_cast<double>(index + 1));
+                    converted(spec, std::nextafter(preset_thresholds[index], 1.0),
+                              static_cast<double>(index + 1));
+                }
+            } else if (spec.steps == 8) {
                 for (std::size_t index = 0; index < thresholds.size(); ++index) {
                     const double before = static_cast<double>(index);
                     const double after = static_cast<double>(index + 1);
@@ -214,12 +243,23 @@ void test_thresholds_and_rounding_modes() {
                 for (std::uint8_t plain = 0; plain <= spec.steps; ++plain) {
                     double normalized = -999.0;
                     CHECK(hammond::plain_to_normalized(spec.id, plain, normalized));
-                    const double canonical = spec.steps == 8 ?
-                        static_cast<double>(plain) * 0.125 : static_cast<double>(plain);
-                    CHECK(normalized == canonical);
+                    const double canonical = spec.steps == 11 ? preset_canonical[plain] :
+                        (spec.steps == 8 ? static_cast<double>(plain) * 0.125 :
+                         static_cast<double>(plain));
+                    CHECK(std::bit_cast<std::uint64_t>(normalized) ==
+                          std::bit_cast<std::uint64_t>(canonical));
                     converted(spec, normalized, static_cast<double>(plain));
                 }
             }
+            double negative_zero = 1.0;
+            CHECK(hammond::plain_to_normalized(spec.id, -0.0, negative_zero));
+            CHECK(std::bit_cast<std::uint64_t>(negative_zero) ==
+                  std::bit_cast<std::uint64_t>(spec.steps == 11 ? 0.0 : -0.0));
+            rejected(spec.id, std::nextafter(1.0, 2.0));
+            rejected(spec.id, std::numeric_limits<double>::quiet_NaN());
+            plain_rejected(spec.id, std::numeric_limits<double>::infinity());
+            plain_rejected(spec.id, std::numeric_limits<double>::quiet_NaN());
+            if (spec.steps != 0) plain_rejected(spec.id, 0.5);
             CHECK(std::fegetround() == mode);
         }
         rejected(8192, std::numeric_limits<double>::quiet_NaN());
@@ -236,7 +276,9 @@ void test_native_events_reach_their_retained_engine_targets() {
     const auto initial = engine.controls_snapshot();
     for (const auto& spec : expected) {
         Event event;
-        CHECK(hammond::normalized_to_event(spec.id, spec.initial, 0, event));
+        double normalized = -1.0;
+        CHECK(hammond::plain_to_normalized(spec.id, spec.initial, normalized));
+        CHECK(hammond::normalized_to_event(spec.id, normalized, 0, event));
         CHECK(engine.process(0, {}, std::span<const Event>(&event, 1)));
     }
     CHECK(engine.controls_snapshot() == initial);
@@ -261,8 +303,9 @@ void test_native_events_reach_their_retained_engine_targets() {
         const auto manual = static_cast<std::size_t>(spec.manual);
         if (spec.type == drawbar) {
             controls.drawbars[manual][spec.index / 9][spec.index % 9] = 8;
-        } else if (spec.type == selector) {
+        } else if (spec.type == selector || spec.type == preset_selector) {
             controls.selected_banks[manual] = hammond::DrawbarBank::B;
+            controls.fixed_registrations[manual] = hammond::FixedRegistration::None;
             controls.route_enabled[manual] = true;
         } else if (spec.type == expression) {
             controls.expression = 1;
@@ -313,6 +356,76 @@ void test_native_events_reach_their_retained_engine_targets() {
     CHECK(result.status == hammond::Status::InvalidEvent && result.events_consumed == 0);
     CHECK(output[0] == 42);
     CHECK(engine.controls_snapshot() == before_reject && engine.frame_clock() == clock);
+}
+
+void test_preset_parameters_retain_banks_and_all_other_live_history() {
+    hammond::Engine engine;
+    CHECK(engine.prepare(load_test_profile(), {48000.0, 1024, 53, 777},
+                         hammond::make_nominal_console_model()) == hammond::Status::Ok);
+    const std::array held{Event{0, EventType::NoteOn, upper, 60, 100},
+                          Event{0, EventType::NoteOn, lower, 67, 100},
+                          Event{0, EventType::PedalOn, lower, 1, 100},
+                          Event{0, EventType::Percussion, upper, 0, 1},
+                          Event{0, EventType::BankDrawbar, upper, 0, 7},
+                          Event{0, EventType::BankDrawbar, lower, 9, 6}};
+    CHECK(engine.process(128, {}, held));
+    auto retained = engine.controls_snapshot();
+    const auto clock = engine.frame_clock();
+    const auto readiness = engine.percussion_diagnostics().readiness;
+    hammond::ContactKeySnapshot upper_contacts{}, lower_contacts{};
+    hammond::PedalContactStates pedal_contacts{};
+    CHECK(engine.contact_snapshot(upper, 60, upper_contacts));
+    CHECK(engine.contact_snapshot(lower, 67, lower_contacts));
+    CHECK(engine.pedal_contacts_snapshot(pedal_contacts));
+    std::array<double, hammond::kToneSourceCount> phases{};
+    for (std::size_t i = 0; i < phases.size(); ++i) {
+        CHECK(engine.source_phase_turns(static_cast<hammond::ToneId>(i + 1), phases[i]));
+    }
+    for (const auto& spec : {expected[45], expected[46]}) {
+        const auto manual = static_cast<std::size_t>(spec.manual);
+        // Visit fixed modes, Cancel with a retained row, adjustable A and B.
+        for (const auto selection : std::array<std::uint8_t, 12>{1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 10, 11}) {
+            Event event;
+            CHECK(hammond::normalized_to_event(spec.id, preset_canonical[selection], 0, event));
+            CHECK(engine.process(0, {}, std::span<const Event>(&event, 1)));
+            if (selection == 0) {
+                retained.route_enabled[manual] = false;
+            } else if (selection < 10) {
+                retained.fixed_registrations[manual] = static_cast<hammond::FixedRegistration>(selection);
+                retained.route_enabled[manual] = true;
+            } else {
+                retained.selected_banks[manual] = selection == 10 ?
+                    hammond::DrawbarBank::A : hammond::DrawbarBank::B;
+                retained.fixed_registrations[manual] = hammond::FixedRegistration::None;
+                retained.route_enabled[manual] = true;
+            }
+            CHECK(engine.controls_snapshot() == retained);
+            CHECK(engine.frame_clock() == clock);
+            CHECK(engine.percussion_diagnostics().readiness == readiness);
+            CHECK(engine.key_down(upper, 60) && engine.key_down(lower, 67));
+            CHECK(engine.pedal_down(hammond::PedalId{1}));
+            hammond::ContactKeySnapshot current_upper{}, current_lower{};
+            hammond::PedalContactStates current_pedals{};
+            CHECK(engine.contact_snapshot(upper, 60, current_upper));
+            CHECK(engine.contact_snapshot(lower, 67, current_lower));
+            CHECK(engine.pedal_contacts_snapshot(current_pedals));
+            CHECK(current_upper == upper_contacts && current_lower == lower_contacts);
+            CHECK(current_pedals == pedal_contacts);
+        }
+        // A repeated legacy B command must leave fixed mode even though its
+        // remembered bank and enabled route already match the old command.
+        Event fixed, reselect;
+        CHECK(hammond::normalized_to_event(spec.id, preset_canonical[3], 0, fixed));
+        CHECK(hammond::normalized_to_event(manual == 0 ? 8208U : 8209U, 1.0, 0, reselect));
+        CHECK(engine.process(0, {}, std::span<const Event>(&fixed, 1)));
+        CHECK(engine.process(0, {}, std::span<const Event>(&reselect, 1)));
+        CHECK(engine.controls_snapshot() == retained);
+    }
+    for (std::size_t i = 0; i < phases.size(); ++i) {
+        double phase = -1;
+        CHECK(engine.source_phase_turns(static_cast<hammond::ToneId>(i + 1), phase));
+        CHECK(phase == phases[i]);
+    }
 }
 
 void test_pedal_parameters_remain_independent_of_manual_routes_and_live_contacts() {
@@ -370,8 +483,9 @@ int main() {
     test_thresholds_and_rounding_modes();
     test_native_events_reach_their_retained_engine_targets();
     test_pedal_parameters_remain_independent_of_manual_routes_and_live_contacts();
+    test_preset_parameters_retain_banks_and_all_other_live_history();
     std::cout << "parameter bridge: " << successful_conversions << " independent conversions, "
-              << rejected_conversions << " atomic conversion rejections; 45 live Engine targets; "
+              << rejected_conversions << " atomic conversion rejections; 47 live Engine targets; "
               << "all four rounding modes passed\n";
     return EXIT_SUCCESS;
 }

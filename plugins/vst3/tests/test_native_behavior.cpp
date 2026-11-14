@@ -1,4 +1,5 @@
 #include "NativeHarness.h"
+#include "NativePresetOracle.h"
 
 #include "hammond/ConsoleModel.h"
 #include "hammond/Engine.h"
@@ -79,7 +80,7 @@ ControlSnapshot saved(NativePlugin& plugin) {
     std::string bytes;
     check(plugin.save_state(bytes) == Steinberg::kResultOk, "native getState failed");
     ++stats.state_reads;
-    check(bytes.starts_with("B3CONTROLS3\n"), "native save did not write controls v3");
+    check(bytes.starts_with("B3CONTROLS4\n"), "native save did not write controls v4");
     return parse_snapshot(bytes);
 }
 
@@ -446,7 +447,7 @@ void control_mapping_and_cancel(const std::string& bundle, const RuntimeProfile&
           "selector did not reconnect only its own route");
     (void)session.process(67);
 
-    // All 45 IDs enter the actual processor in reverse queue enumeration order.
+    // All 47 IDs enter the actual processor in reverse queue enumeration order.
     // Expected fields and ID arithmetic follow the permanent registry contract,
     // without calling the production parameter descriptor/conversion routines.
     ParameterChanges all;
@@ -464,15 +465,17 @@ void control_mapping_and_cancel(const std::string& bundle, const RuntimeProfile&
     expected.selected_banks = {DrawbarBank::A, DrawbarBank::B};
     expected.percussion = {true, PercussionHarmonic::Third, PercussionVolume::Soft, PercussionDecay::Fast};
     expected.pedal_drawbars = {6, 5};
+    expected.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
     values.insert(values.end(), {{kExpression, 0.375}, {kUpperSelector, 0.0}, {kLowerSelector, 1.0},
         {0x3000U, 1.0}, {0x3001U, 1.0}, {0x3002U, 1.0}, {0x3003U, 1.0},
-        {kPedalOne, 0.75}, {kPedalTwo, 0.625}});
-    check(values.size() == 45, "independent native mapping fixture is not 45 parameters");
+        {kPedalOne, 0.75}, {kPedalTwo, 0.625},
+        {0x5000U, preset_oracle::canonical[1]}, {0x5001U, preset_oracle::canonical[9]}});
+    check(values.size() == 47, "independent native mapping fixture is not 47 parameters");
     for (auto it = values.rbegin(); it != values.rend(); ++it) {
         all.add_queue(it->first).points = {{0, 0.0}, {0, it->second}};
     }
     restore(session.engine, expected);
-    (void)session.process(0, nullptr, {}, &all, "all 45 actual native parameter targets");
+    (void)session.process(0, nullptr, {}, &all, "all 47 actual native parameter targets");
     (void)session.process(257);
 
     for (const auto id : {0x1012U, kPedalOne, kPedalTwo}) {
@@ -556,17 +559,16 @@ void partition_curves(const std::string& bundle, const RuntimeProfile& profile, 
     }
 }
 
-std::string legacy_text(const ControlSnapshot& controls, int version) {
-    std::istringstream current(snapshot_text(controls));
-    std::ostringstream output;
-    output << "B3CONTROLS" << version << '\n';
-    std::string line;
-    (void)std::getline(current, line);
-    while (std::getline(current, line)) {
-        if (line.starts_with("pedal ") || (version == 1 && line.starts_with("percussion "))) continue;
-        output << line << '\n';
-    }
-    return output.str();
+std::string legacy_text(int version) {
+    check(version >= 1 && version <= 3, "legacy fixture version");
+    std::string text = "B3CONTROLS" + std::to_string(version) + "\nexpression 0.625\n";
+    if (version >= 2) text += "percussion enabled 1 harmonic third volume soft decay fast\n";
+    if (version == 3) text += "pedal drawbars 8 7\n";
+    text += "manual upper selected B route_enabled 0\n"
+        "bank A 0 0 0 0 0 0 0 0 0\nbank B 0 0 4 0 0 0 0 0 0\n"
+        "manual lower selected B route_enabled 1\n"
+        "bank A 0 0 0 0 0 0 0 0 0\nbank B 0 0 3 0 0 0 0 0 0\nend\n";
+    return text;
 }
 
 void active_state(const std::string& bundle, const RuntimeProfile& profile, double rate) {
@@ -582,6 +584,8 @@ void active_state(const std::string& bundle, const RuntimeProfile& profile, doub
         queued[i].expression = 0.125 + static_cast<double>(i) / 8.0;
         queued[i].pedal_drawbars = {static_cast<std::uint8_t>(i + 1), 1};
         queued[i].route_enabled[1] = i != 3;
+        queued[i].fixed_registrations = {static_cast<FixedRegistration>(i + 1),
+                                          static_cast<FixedRegistration>(9 - i)};
         check(session.plugin.load_state(snapshot_text(queued[i])) == Steinberg::kResultOk, "active queued load failed");
         same_controls(saved(session.plugin), queued[i], "newest pending state save");
     }
@@ -608,14 +612,14 @@ void active_state(const std::string& bundle, const RuntimeProfile& profile, doub
         return std::vector<Event>{expression(0.5 + static_cast<double>(i + 1) / 64.0)};
     }, "active restores retain held notes/contact/percussion histories");
 
-    for (const int version : {2, 1}) {
+    for (const int version : {3, 2, 1}) {
         auto legacy = registration();
         legacy.route_enabled = {false, true};
-        legacy.pedal_drawbars = {8, 7}; // These fields must be absent and migrate to zero.
+        legacy.pedal_drawbars = {8, 7}; // Only state3 supplies these fields.
         legacy.percussion = {true, PercussionHarmonic::Third, PercussionVolume::Soft, PercussionDecay::Fast};
-        const auto text = legacy_text(legacy, version);
+        const auto text = legacy_text(version);
         auto migrated = legacy;
-        migrated.pedal_drawbars = {0, 0};
+        if (version < 3) migrated.pedal_drawbars = {0, 0};
         if (version == 1) migrated.percussion = {};
         check(session.plugin.load_state(text) == Steinberg::kResultOk, "native legacy state load failed");
         same_controls(saved(session.plugin), migrated, "pending migrated state");
@@ -813,6 +817,8 @@ void rejection_case(const std::string& bundle, std::string_view name, const Muta
         newest = registration();
         newest.expression = 0.25 + static_cast<double>(i) / 8.0;
         newest.drawbars[0][1][2] = static_cast<std::uint8_t>(i + 1);
+        newest.fixed_registrations = {static_cast<FixedRegistration>(i + 1), FixedRegistration::A};
+        newest.route_enabled[1] = false;
         for (auto* instance : {&subject, &control}) {
             check(instance->load_state(snapshot_text(newest)) == Steinberg::kResultOk, "rollback queued restore failed");
         }
@@ -881,9 +887,16 @@ void native_rejections(const std::string& bundle) {
         {"negative event count", [](BadInput& b) { b.notes.count_override = -1; }},
         {"native event count over limit", [](BadInput& b) { b.notes.count_override = 1025; }},
         {"negative queue count", [](BadInput& b) { b.parameters.count_override = -1; }},
-        {"too many parameter queues", [](BadInput& b) { b.parameters.count_override = 46; }},
+        {"too many parameter queues", [](BadInput& b) { b.parameters.count_override = 48; }},
         {"missing parameter queue", [](BadInput& b) { b.parameters.null_index = 0; }},
         {"unknown parameter ID", [](BadInput& b) { b.parameters.queues[0]->id = 0xDEADU; }},
+        {"first ID after new selectors", [](BadInput& b) { b.parameters.queues[0]->id = 0x5002U; }},
+        {"late invalid upper preset", [nan](BadInput& b) {
+            b.parameters.add_queue(0x5000U).points = {{0, preset_oracle::canonical[1]}, {31, nan}};
+        }},
+        {"late invalid lower preset", [](BadInput& b) {
+            b.parameters.add_queue(0x5001U).points = {{0, preset_oracle::canonical[9]}, {31, 1.01}};
+        }},
         {"duplicate parameter queue", [](BadInput& b) { b.parameters.add_queue(kExpression).points = {{0, 0.5}}; }},
         {"duplicate empty queue", [](BadInput& b) { b.parameters.queues[0]->points.clear(); (void)b.parameters.add_queue(kExpression); }},
         {"negative point count", [](BadInput& b) { b.parameters.queues[0]->count_override = -1; }},

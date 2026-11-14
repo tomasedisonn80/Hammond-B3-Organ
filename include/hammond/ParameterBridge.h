@@ -9,10 +9,10 @@
 
 namespace hammond {
 
-inline constexpr std::size_t kParameterCount = 45;
-inline constexpr std::uint32_t kParameterRegistrySchemaVersion = 3;
+inline constexpr std::size_t kParameterCount = 47;
+inline constexpr std::uint32_t kParameterRegistrySchemaVersion = 4;
 inline constexpr std::string_view kParameterRegistryModel =
-    "exclusive-ab-percussion-pedal-console-v3";
+    "exclusive-fixed-percussion-pedal-console-v4";
 
 // Immutable compiled descriptors for the proposed internal registry. Text views
 // refer only to program-lifetime literals; no JSON or host SDK is needed here.
@@ -38,13 +38,15 @@ struct ParameterDescriptor {
 parameter_descriptors() noexcept;
 
 // Unknown ID rejects and leaves the destination unchanged. Holes in ID ranges
-// are not valid controls. No Cancel, AllNotesOff or per-key control is invented.
+// are not valid controls. Preset selectors include Cancel as value 0; no
+// AllNotesOff, per-key control or host program identity is invented.
 [[nodiscard]] bool parameter_descriptor(std::uint32_t id,
                                        ParameterDescriptor& destination) noexcept;
 
 // Convert one finite normalized scalar in [0,1] into a fixed-identity event.
 // Discrete half thresholds choose the higher value, using exact comparisons so
 // adjacent binary64 inputs and the caller's rounding mode cannot shift a step.
+// The new preset selectors compare against frozen nearest-binary64 midpoints.
 // Expression is passed through, including signed zero. Offset is copied exactly;
 // the caller/Engine owns block bounds and stable event ordering. No state, clock,
 // trajectory, gesture, smoothing or native automation curve is changed here.
@@ -53,7 +55,9 @@ parameter_descriptors() noexcept;
                                        std::uint32_t offset, Event& destination) noexcept;
 
 // Validate a plain scalar and return its canonical normalized representation.
-// Discrete values must be exact integers. Failure leaves destination unchanged.
+// Discrete values must be exact integers. Preset selectors use frozen canonical
+// binary64 values and canonicalize plain -0 to +0. All older signed-zero behavior
+// is retained. Failure leaves destination unchanged; rounding mode is untouched.
 [[nodiscard]] bool plain_to_normalized(std::uint32_t id, double plain,
                                        double& destination) noexcept;
 

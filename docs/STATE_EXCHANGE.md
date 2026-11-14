@@ -26,7 +26,7 @@ in section 5, not physical Hammond specifications.
 
 Methods perform no allocation, parsing, I/O, locks, waits or dynamic retry loop.
 The eight-attempt reader is bounded. Audio publication has one fixed pass over
-48 cells and does not wait for a reader. This is an algorithmic work bound, not
+50 cells and does not wait for a reader. This is an algorithmic work bound, not
 a platform audio-deadline measurement. Instrumented callback allocation and
 timing qualification are a separate gate.
 
@@ -101,7 +101,7 @@ Repeated peek, processing failure and delayed consumption do not release slots.
 
 ## Atomic publication proof
 
-The payload contains exactly 48 `atomic<uint64_t>` cells:
+The payload contains exactly 50 `atomic<uint64_t>` cells:
 
 | Cells | Meaning |
 | --- | --- |
@@ -110,8 +110,9 @@ The payload contains exactly 48 `atomic<uint64_t>` cells:
 | 37–38 | Upper/lower selected bank |
 | 39–42 | Percussion enable, harmonic, volume and decay |
 | 43–44 | Two pedal drawbar positions |
-| 45–46 | Upper/lower route-enable bits, additional to the 45 exposed parameters |
-| 47 | Last state sequence acknowledged by this publication |
+| 45–46 | Raw upper/lower `FixedRegistration` values, 0–9 |
+| 47–48 | Upper/lower route-enable bits |
+| 49 | Last state sequence acknowledged by this publication |
 
 The mapping does not introduce or change any stable parameter ID. Discrete
 values retain their plain integer representation. Expression uses `bit_cast`,
@@ -119,6 +120,15 @@ not a numeric integer conversion. A compile-time assertion rejects a registry
 count change until the explicit mapping is reviewed. A second set of assertions
 requires binary64 and always-lock-free 64-bit atomics; an unsupported target
 does not silently fall back to a library mutex.
+
+Cells 45/46 are not the effective values of preset parameter IDs 20480/20481.
+A cancelled C# route stores raw fixed mode 1 and route false; its effective
+selector is Cancel/0. Both raw modes and both remembered banks must survive
+publication so a save can retain that state. Encode copies the stored enums;
+decode checks the full 64-bit cell against 0–9 before narrowing it. A whole
+snapshot is validated before any enqueue or publication, including fixed modes
+hidden by cancelled routes. The layout follows the
+[fixed-registration publication contract](PRESET_STATE_PARAMETER_CONTRACT.md#5-host-curves-aliases-and-publication).
 
 Publication uses sequentially consistent operations throughout. The sole audio
 writer stores an odd revision, stores every atomic payload cell, then stores
@@ -155,9 +165,11 @@ never replaces the UI's pending save value.
 `ControlStateIO` remains the byte boundary off audio. Parse bounded state bytes
 into a local value, then enqueue only a completely validated result. Versions
 1 and 2 migrate to muted pedal controls; version 1 also supplies the existing
-percussion defaults. Serialize a successfully selected save snapshot as
-`B3CONTROLS3`. Parsing errors and stream lifetime do not enter this queue. The
-snapshot retains both route bits but contains no held keys, pedal contacts,
+percussion defaults. Versions 1–3 initialize both fixed modes to None,
+independently of the destination. Serialize a successfully selected save snapshot
+as `B3CONTROLS4`, including its frozen catalog identity and both raw fixed modes.
+Parsing errors and stream lifetime do not enter this queue. The snapshot retains
+both route bits but contains no held keys, pedal contacts,
 source phases, percussion readiness or processing clock.
 
 `StateExchangeLimits` is immutable. Defaults allow `UINT64_MAX` accepted states
@@ -181,11 +193,20 @@ not establish safe destruction or authorize resetting a live counter.
 `tests/test_state_exchange.cpp` checks four-slot saturation, copied ownership,
 stale and foreign tokens, append-after-preflight, rejected callback retention,
 signed-zero bits, invalid whole snapshots, defaults, exact finite lifetime
-boundaries, canonical v1/v2/v3 state migration and serialization, and 24,000
+boundaries, literal v1/v2/v3 input migration and canonical v4 serialization, and 24,000
 publications while the UI performs no reads. Three threads exercise 12,000
 accepted loads, audio batches, same-producer saves and a separate atomic-only
 observer; all successful reads must match independently generated complete
 control values. Busy reads must preserve caller sentinels.
+
+The fixed-registration continuation extends those patterns with both raw modes.
+Its exhaustive test covers all 100 fixed-mode pairs with all 16 remembered-bank
+and route-bit combinations, including positive and negative expression zero.
+Each case checks the pending UI save, copied batch, atomic published value and
+acknowledged save separately. Both manual positions reject every byte-valued
+invalid mode 10–255 while cancelled, preserving the queued batch and publication.
+The existing queue-full, finite-lifetime and concurrent tests now vary fixed
+modes as well. See [A17's exact-source checks](development/2026-11-14-preset-continuation/17-host-publication.md).
 
 The actual Engine integration holds manual keys and pedals with moving contacts
 and decayed percussion readiness. Restores preserve every manual contact,
@@ -194,8 +215,8 @@ last-rendered pedal diagnostics. An invalid candidate callback does not
 acknowledge its batch. A successful restore's subsequent audio matches an
 independent Engine copy exactly.
 
-See the [assignment 29 record](development/2026-11-13-pedals/29-state-exchange.md)
-for frozen inputs, commands, observed results and sanitizer qualification.
+See the historical [assignment 29 record](development/2026-11-13-pedals/29-state-exchange.md)
+for its original frozen inputs, commands, observed results and sanitizer qualification.
 This is a core state-exchange gate. Native wrapper integration, SDK validation,
 host lifecycle tests, cross-platform builds and callback allocation/timing
 measurement retain their separately assigned gates.

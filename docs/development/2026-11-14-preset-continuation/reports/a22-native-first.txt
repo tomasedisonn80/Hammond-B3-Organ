@@ -1,0 +1,27 @@
+Test project /tmp/hammond-preset-a22/build-make
+    Start 108: test_native_install
+    Start 109: hammond_vst3_validator
+    Start 110: test_native_controller
+    Start 111: test_native_abi
+1/8 Test #110: test_native_controller ...........***Failed    0.01 sec
+native-controller failure: line 611: serialize(read) == wanted_text
+
+    Start 112: test_native_behavior
+2/8 Test #111: test_native_abi ..................   Passed    1.05 sec
+    Start 113: test_native_automation
+3/8 Test #109: hammond_vst3_validator ...........   Passed    1.58 sec
+    Start 114: test_native_concurrency
+4/8 Test #113: test_native_automation ...........   Passed    0.72 sec
+    Start 115: test_native_realtime
+5/8 Test #108: test_native_install ..............   Passed    1.90 sec
+6/8 Test #114: test_native_concurrency ..........   Passed    0.38 sec
+7/8 Test #112: test_native_behavior .............   Passed    2.71 sec
+8/8 Test #115: test_native_realtime .............   Passed    1.25 sec
+
+88% tests passed, 1 tests failed out of 8
+
+Total Test time (real) =   3.03 sec
+
+The following tests FAILED:
+	110 - test_native_controller (Failed)
+Errors while running CTest

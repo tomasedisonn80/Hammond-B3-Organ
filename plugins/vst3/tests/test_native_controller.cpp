@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "NativePresetOracle.h"
 #include "PluginIds.h"
 #include "StateStream.h"
 
@@ -25,6 +26,7 @@ namespace {
 using namespace Steinberg;
 using namespace Steinberg::Vst;
 using hammond::ControlSnapshot;
+namespace preset = hammond::native_test::preset_oracle;
 using hammond::vst3::Controller;
 using hammond::vst3::read_control_state;
 using hammond::vst3::write_control_state;
@@ -33,6 +35,7 @@ std::size_t checks = 0;
 std::size_t threshold_cases = 0;
 std::size_t string_cases = 0;
 std::size_t rejected_streams = 0;
+std::size_t selector_restores = 0;
 
 #define CHECK(condition) do { ++checks; if (!(condition)) { \
     throw std::runtime_error(std::string("line ") + std::to_string(__LINE__) + ": " #condition); \
@@ -49,7 +52,7 @@ struct Expected {
 
 // Independent literal reading of all records in data/parameter-registry.json.
 // Expected identities/text/limits do not come from the production C++ table.
-constexpr std::array<Expected, 45> expected{{
+constexpr std::array<Expected, 47> expected{{
     {4096U, "manual.upper.bank.A.drawbar.16ft", "drawbar-position", 8.0, 0.0, 8},
     {4097U, "manual.upper.bank.A.drawbar.5_1/3ft", "drawbar-position", 8.0, 0.0, 8},
     {4098U, "manual.upper.bank.A.drawbar.8ft", "drawbar-position", 8.0, 0.0, 8},
@@ -95,6 +98,8 @@ constexpr std::array<Expected, 45> expected{{
     {12291U, "percussion.decay", "decay-index-0=slow-1=fast", 1.0, 0.0, 1},
     {16384U, "pedal.drawbar.mixture1", "drawbar-position", 8.0, 0.0, 8},
     {16385U, "pedal.drawbar.mixture2", "drawbar-position", 8.0, 0.0, 8},
+    {20480U, "manual.upper.preset_selection", "preset-key-index", 11.0, 11.0, 11},
+    {20481U, "manual.lower.preset_selection", "preset-key-index", 11.0, 11.0, 11},
 }};
 
 std::string ascii(const TChar* text) {
@@ -242,22 +247,22 @@ public:
     tresult PLUGIN_API restartComponent(int32) override { ++calls; return kResultOk; }
 };
 
-std::array<double, 45> values(IEditController& controller) {
-    std::array<double, 45> result{};
+std::array<double, 47> values(IEditController& controller) {
+    std::array<double, 47> result{};
     for (std::size_t index = 0; index < expected.size(); ++index) {
         result[index] = controller.getParamNormalized(expected[index].id);
     }
     return result;
 }
 
-void check_equal(const std::array<double, 45>& first, const std::array<double, 45>& second) {
+void check_equal(const std::array<double, 47>& first, const std::array<double, 47>& second) {
     for (std::size_t index = 0; index < first.size(); ++index) {
         CHECK(bits_equal(first[index], second[index]));
     }
 }
 
 void descriptors_and_conversions(IEditController& controller) {
-    CHECK(controller.getParameterCount() == 45);
+    CHECK(controller.getParameterCount() == 47);
     for (std::size_t index = 0; index < expected.size(); ++index) {
         const auto& record = expected[index];
         ParameterInfo info{};
@@ -275,7 +280,8 @@ void descriptors_and_conversions(IEditController& controller) {
         for (int plain_index = 0; plain_index <= last; ++plain_index) {
             const auto plain = record.steps == 0 ? static_cast<double>(plain_index) / 8.0
                                                 : static_cast<double>(plain_index);
-            const auto normalized = plain / record.maximum;
+            const auto normalized = record.steps == 11
+                ? preset::canonical[static_cast<std::size_t>(plain_index)] : plain / record.maximum;
             CHECK(controller.plainParamToNormalized(record.id, plain) == normalized);
             CHECK(controller.normalizedParamToPlain(record.id, normalized) == plain);
             String128 text{};
@@ -295,7 +301,7 @@ void descriptors_and_conversions(IEditController& controller) {
     ParameterInfo marker{};
     marker.id = 17;
     CHECK(controller.getParameterInfo(-1, marker) != kResultOk && marker.id == 17);
-    CHECK(controller.getParameterInfo(45, marker) != kResultOk && marker.id == 17);
+    CHECK(controller.getParameterInfo(47, marker) != kResultOk && marker.id == 17);
 
     const int original_rounding = std::fegetround();
     CHECK(original_rounding != -1);
@@ -303,8 +309,17 @@ void descriptors_and_conversions(IEditController& controller) {
         CHECK(std::fesetround(mode) == 0);
         for (const auto& record : expected) {
             if (record.steps == 0) continue;
+            if (record.steps == 11) {
+                for (std::size_t index = 0; index < preset::canonical.size(); ++index) {
+                    CHECK(bits_equal(controller.plainParamToNormalized(record.id, static_cast<double>(index)),
+                                     preset::canonical[index]));
+                    CHECK(std::fegetround() == mode);
+                }
+            }
             for (int index = 0; index < record.steps; ++index) {
-                const auto threshold = (static_cast<double>(index) + 0.5) / record.maximum;
+                const auto threshold = record.steps == 11
+                    ? preset::thresholds[static_cast<std::size_t>(index)]
+                    : (static_cast<double>(index) + 0.5) / record.maximum;
                 const std::array<double, 3> points{
                     std::nextafter(threshold, 0.0), threshold, std::nextafter(threshold, 1.0)};
                 for (std::size_t at = 0; at < points.size(); ++at) {
@@ -369,6 +384,14 @@ void invalid_values(IEditController& controller) {
     CHECK(destination == 0.123);
     CHECK(controller.setParamNormalized(8192U, -0.0) == kResultOk);
     CHECK(std::signbit(controller.getParamNormalized(8192U)));
+    for (const auto id : {20480U, 20481U}) {
+        for (auto text : {std::u16string{u"12"}, std::u16string{u"0.5"}, std::u16string{u"-1"}}) {
+            destination = 0.123;
+            CHECK(controller.getParamValueByString(id, text.data(), destination) != kResultOk);
+            CHECK(destination == 0.123);
+        }
+        CHECK(bits_equal(controller.plainParamToNormalized(id, -0.0), 0.0));
+    }
 }
 
 ControlSnapshot rich_snapshot() {
@@ -387,6 +410,7 @@ ControlSnapshot rich_snapshot() {
     result.percussion = {true, hammond::PercussionHarmonic::Third,
         hammond::PercussionVolume::Soft, hammond::PercussionDecay::Fast};
     result.pedal_drawbars = {7, 3};
+    result.fixed_registrations = {hammond::FixedRegistration::CSharp, hammond::FixedRegistration::A};
     return result;
 }
 
@@ -407,25 +431,87 @@ void check_snapshot(IEditController& controller, const ControlSnapshot& snapshot
     CHECK(controller.getParamNormalized(12291U) == static_cast<double>(snapshot.percussion.decay));
     CHECK(controller.getParamNormalized(16384U) == static_cast<double>(snapshot.pedal_drawbars[0]) / 8.0);
     CHECK(controller.getParamNormalized(16385U) == static_cast<double>(snapshot.pedal_drawbars[1]) / 8.0);
+    for (std::size_t manual = 0; manual < 2; ++manual) {
+        const auto fixed = static_cast<std::size_t>(snapshot.fixed_registrations[manual]);
+        const auto selection = !snapshot.route_enabled[manual] ? 0U : fixed != 0 ? fixed :
+            snapshot.selected_banks[manual] == hammond::DrawbarBank::A ? 10U : 11U;
+        CHECK(bits_equal(controller.getParamNormalized(manual == 0 ? 20480U : 20481U),
+                         preset::canonical[selection]));
+    }
 }
 
-std::string old_state(std::string current, int version) {
-    CHECK(version == 1 || version == 2);
-    current[10] = static_cast<char>('0' + version);
-    const auto pedal = current.find("pedal drawbars");
-    CHECK(pedal != std::string::npos);
-    current.erase(pedal, current.find('\n', pedal) + 1 - pedal);
-    if (version == 1) {
-        const auto percussion = current.find("percussion enabled");
-        CHECK(percussion != std::string::npos);
-        current.erase(percussion, current.find('\n', percussion) + 1 - percussion);
+// Retained input grammars are independent literal bytes, never downgraded from
+// the current writer. A new catalog/fixed record cannot contaminate an old input.
+std::string_view old_state(int version) {
+    constexpr std::array<std::string_view, 3> fixtures{{
+        "B3CONTROLS1\nexpression -0\n"
+        "manual upper selected A route_enabled 0\n"
+        "bank A 0 1 2 3 4 5 6 7 8\nbank B 2 3 4 5 6 7 8 0 1\n"
+        "manual lower selected B route_enabled 0\n"
+        "bank A 4 5 6 7 8 0 1 2 3\nbank B 6 7 8 0 1 2 3 4 5\nend\n",
+        "B3CONTROLS2\nexpression -0\n"
+        "percussion enabled 1 harmonic third volume soft decay fast\n"
+        "manual upper selected A route_enabled 0\n"
+        "bank A 0 1 2 3 4 5 6 7 8\nbank B 2 3 4 5 6 7 8 0 1\n"
+        "manual lower selected B route_enabled 0\n"
+        "bank A 4 5 6 7 8 0 1 2 3\nbank B 6 7 8 0 1 2 3 4 5\nend\n",
+        "B3CONTROLS3\nexpression -0\n"
+        "percussion enabled 1 harmonic third volume soft decay fast\npedal drawbars 7 3\n"
+        "manual upper selected A route_enabled 0\n"
+        "bank A 0 1 2 3 4 5 6 7 8\nbank B 2 3 4 5 6 7 8 0 1\n"
+        "manual lower selected B route_enabled 0\n"
+        "bank A 4 5 6 7 8 0 1 2 3\nbank B 6 7 8 0 1 2 3 4 5\nend\n"}};
+    CHECK(version >= 1 && version <= 3);
+    return fixtures[static_cast<std::size_t>(version - 1)];
+}
+
+constexpr std::string_view kCanonicalRichState =
+    "B3CONTROLS4\n"
+    "registration_catalog atlas-chapel-nominal-v1 sha256 "
+    "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n"
+    "expression -0\npercussion enabled 1 harmonic third volume soft decay fast\n"
+    "pedal drawbars 7 3\n"
+    "manual upper selected A fixed_registration C# route_enabled 0\n"
+    "bank A 0 1 2 3 4 5 6 7 8\nbank B 2 3 4 5 6 7 8 0 1\n"
+    "manual lower selected B fixed_registration A route_enabled 0\n"
+    "bank A 4 5 6 7 8 0 1 2 3\nbank B 6 7 8 0 1 2 3 4 5\nend\n";
+
+void selector_restore_and_cache_tests(IEditController& controller, QuietHandler& handler) {
+    for (unsigned upper = 0; upper < 10; ++upper) {
+        for (unsigned lower = 0; lower < 10; ++lower) {
+            for (unsigned mask = 0; mask < 16; ++mask) {
+                auto snapshot = rich_snapshot();
+                snapshot.fixed_registrations = {static_cast<hammond::FixedRegistration>(upper),
+                                                static_cast<hammond::FixedRegistration>(lower)};
+                snapshot.selected_banks = {(mask & 1U) != 0 ? hammond::DrawbarBank::B : hammond::DrawbarBank::A,
+                                           (mask & 2U) != 0 ? hammond::DrawbarBank::B : hammond::DrawbarBank::A};
+                snapshot.route_enabled = {(mask & 4U) != 0, (mask & 8U) != 0};
+                TestStream input(serialize(snapshot));
+                CHECK(controller.setComponentState(&input) == kResultOk);
+                check_snapshot(controller, snapshot);
+                ++selector_restores;
+            }
+        }
     }
-    return current;
+    // The cache records host writes, not an acknowledgment of audio routing.
+    // Interacting old/new commands do not rewrite each other's accepted value.
+    CHECK(controller.setParamNormalized(8208U, 0.6) == kResultOk);
+    CHECK(controller.setParamNormalized(8209U, 0.61) == kResultOk);
+    CHECK(controller.setParamNormalized(20480U, 0.12345678901234567) == kResultOk);
+    CHECK(controller.setParamNormalized(20481U, -0.0) == kResultOk);
+    CHECK(bits_equal(controller.getParamNormalized(8208U), 0.6));
+    CHECK(bits_equal(controller.getParamNormalized(8209U), 0.61));
+    CHECK(bits_equal(controller.getParamNormalized(20480U), 0.12345678901234567));
+    CHECK(bits_equal(controller.getParamNormalized(20481U), -0.0));
+    CHECK(controller.setParamNormalized(8208U, 1.0) == kResultOk);
+    CHECK(bits_equal(controller.getParamNormalized(20480U), 0.12345678901234567));
+    CHECK(handler.calls == 0);
 }
 
 void stream_and_restore_tests(IEditController& controller, QuietHandler& handler) {
     const auto snapshot = rich_snapshot();
     const auto canonical = serialize(snapshot);
+    CHECK(canonical == kCanonicalRichState);
     for (const std::size_t chunk : {1U, 7U, 512U, 32768U}) {
         for (const auto eof : {TestStream::Fault::None, TestStream::Fault::EofFalse}) {
             TestStream input(canonical);
@@ -502,14 +588,30 @@ void stream_and_restore_tests(IEditController& controller, QuietHandler& handler
     CHECK(offset_input.seek_calls == 0);
 
     for (const int version : {1, 2, 3}) {
-        const auto text = version == 3 ? canonical : old_state(canonical, version);
+        const auto text = old_state(version);
         auto wanted = snapshot;
+        wanted.fixed_registrations = {hammond::FixedRegistration::None, hammond::FixedRegistration::None};
         if (version < 3) wanted.pedal_drawbars = {0, 0};
         if (version == 1) wanted.percussion = {};
         TestStream input(text);
         input.chunk = 3;
         CHECK(controller.setComponentState(&input) == kResultOk);
         check_snapshot(controller, wanted);
+        TestStream legacy_read(text);
+        auto read = snapshot; // Both hidden nonzero fixed modes must be cleared.
+        CHECK(read_control_state(&legacy_read, read) == kResultOk);
+        CHECK(read == wanted && std::signbit(read.expression));
+        auto wanted_text = std::string(kCanonicalRichState);
+        wanted_text.replace(wanted_text.find("fixed_registration C#"),
+            std::string_view{"fixed_registration C#"}.size(), "fixed_registration none");
+        wanted_text.replace(wanted_text.find("fixed_registration A"),
+            std::string_view{"fixed_registration A"}.size(), "fixed_registration none");
+        if (version < 3) wanted_text.replace(wanted_text.find("pedal drawbars 7 3"),
+            std::string_view{"pedal drawbars 7 3"}.size(), "pedal drawbars 0 0");
+        if (version == 1) wanted_text.replace(wanted_text.find("percussion enabled"),
+            std::string_view{"percussion enabled 1 harmonic third volume soft decay fast"}.size(),
+            "percussion enabled 0 harmonic second volume normal decay slow");
+        CHECK(serialize(read) == wanted_text);
         CHECK(handler.calls == 0);
     }
     const auto before = values(controller);
@@ -524,7 +626,12 @@ void stream_and_restore_tests(IEditController& controller, QuietHandler& handler
     }
     auto malformed = canonical;
     malformed.replace(malformed.find("pedal drawbars 7"), 15, "pedal drawbars 9");
-    for (const auto& bad : std::vector<std::string>{malformed, canonical + "trailing", "B3CONTROLS4\n", "\xEF\xBB\xBF" + canonical}) {
+    auto bad_catalog = canonical;
+    bad_catalog[bad_catalog.find("c9f1dd2d")] = 'd';
+    auto bad_fixed = canonical;
+    bad_fixed.replace(bad_fixed.find("fixed_registration C#"), 21, "fixed_registration 1");
+    for (const auto& bad : std::vector<std::string>{malformed, bad_catalog, bad_fixed,
+            canonical + "trailing", "B3CONTROLS4\n", "B3CONTROLS5\n", "\xEF\xBB\xBF" + canonical}) {
         TestStream input(bad);
         CHECK(controller.setComponentState(&input) != kResultOk);
         check_equal(before, values(controller));
@@ -547,6 +654,7 @@ int main() {
         descriptors_and_conversions(native);
         invalid_values(native);
         stream_and_restore_tests(native, handler);
+        selector_restore_and_cache_tests(native, handler);
         CHECK(native.createView(ViewType::kEditor) == nullptr);
         CHECK(handler.calls == 0);
         CHECK(controller.terminate() == kResultOk);
@@ -554,7 +662,7 @@ int main() {
         CHECK(handler.references == 1);
         CHECK(controller.terminate() != kResultOk);
         CHECK(controller.initialize(nullptr) == kResultOk);
-        CHECK(native.getParameterCount() == 45);
+        CHECK(native.getParameterCount() == 47);
         CHECK(native.getParamNormalized(8192U) == 1.0);
         CHECK(native.getParamNormalized(16384U) == 0.0);
         CHECK(controller.terminate() == kResultOk);
@@ -564,14 +672,15 @@ int main() {
         CHECK(created->queryInterface(IEditController::iid, reinterpret_cast<void**>(&native_interface)) == kResultOk);
         CHECK(native_interface != nullptr);
         CHECK(native_interface->initialize(nullptr) == kResultOk);
-        CHECK(native_interface->getParameterCount() == 45);
+        CHECK(native_interface->getParameterCount() == 47);
         CHECK(native_interface->terminate() == kResultOk);
         native_interface->release();
         created->release();
         std::cout << "native-controller: checks=" << checks
                   << " threshold_cases=" << threshold_cases
                   << " string_roundtrips=" << string_cases
-                  << " rejected_streams=" << rejected_streams << '\n';
+                  << " rejected_streams=" << rejected_streams
+                  << " selector_restores=" << selector_restores << '\n';
         return 0;
     } catch (const std::exception& error) {
         std::cerr << "native-controller failure: " << error.what() << '\n';

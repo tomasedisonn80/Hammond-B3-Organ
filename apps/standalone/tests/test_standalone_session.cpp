@@ -38,6 +38,7 @@ struct Counts {
     std::uint64_t rejected_renders{};
     std::uint64_t future_probes{};
     std::uint64_t score_runs{};
+    std::uint64_t fixed_mode_publications{};
 } counts;
 
 [[nodiscard]] Event e(EventType type, Manual manual, std::uint8_t index, double value) {
@@ -670,6 +671,15 @@ void test_producer_rejections(const RuntimeProfile& profile) {
     bad = registration();
     bad.pedal_drawbars[1] = 9;
     invalid.emplace_back(bad);
+    invalid.emplace_back(PerformanceInputEvent{Event{1, EventType::SelectPreset, Manual::Upper, 0, 1}});
+    for (std::size_t manual = 0; manual < 2; ++manual) {
+        for (unsigned value = 10; value <= 255; ++value) {
+            bad = registration();
+            bad.route_enabled[manual] = false;
+            bad.fixed_registrations[manual] = static_cast<FixedRegistration>(value);
+            invalid.emplace_back(bad);
+        }
+    }
     for (const auto& command : invalid) {
         failed_post(rig.session, command, SessionStatus::InvalidCommand);
         same_snapshot(read(rig.session), before);
@@ -842,6 +852,14 @@ void test_consumer_rejections(const RuntimeProfile& profile) {
         c(e(EventType::Expression, Manual::Upper, 0, std::numeric_limits<double>::quiet_NaN())),
         c(e(EventType::Drawbar, Manual::Upper, 2, 2.5)),
         c(e(EventType::PedalDrawbar, Manual::Upper, 0, 8)),
+        c(e(EventType::SelectPreset, static_cast<Manual>(2), 0, 1)),
+        c(e(EventType::SelectPreset, Manual::Upper, 1, 1)),
+        c(e(EventType::SelectPreset, Manual::Upper, 0, -1)),
+        c(e(EventType::SelectPreset, Manual::Lower, 0, 12)),
+        c(e(EventType::SelectPreset, Manual::Upper, 0, 1.5)),
+        c(e(EventType::SelectPreset, Manual::Lower, 0, std::numeric_limits<double>::quiet_NaN())),
+        c(e(EventType::SelectPreset, Manual::Upper, 0, std::numeric_limits<double>::infinity())),
+        c(e(EventType::SelectPreset, Manual::Lower, 0, -std::numeric_limits<double>::infinity())),
         m(HostNoteKind::On, 2, 0, 60, 9, 100),
         m(HostNoteKind::On, 0, 16, 60, 9, 100),
         m(HostNoteKind::On, 0, 0, 35, 9, 100),
@@ -1015,6 +1033,62 @@ void test_unclipped_stereo(const RuntimeProfile& profile) {
     CHECK(read(rig.session).peak > 1.0F);
 }
 
+void test_fixed_mode_publication_and_selection(const RuntimeProfile& profile) {
+    Rig rig(profile);
+    precharge(rig);
+    const auto held_before = read(rig.session);
+    for (unsigned upper = 0; upper < 10; ++upper) {
+        for (unsigned lower = 0; lower < 10; ++lower) {
+            for (unsigned bits = 0; bits < 16; ++bits) {
+                auto value = registration(upper * 10 + lower);
+                value.fixed_registrations = {static_cast<FixedRegistration>(upper),
+                                            static_cast<FixedRegistration>(lower)};
+                value.selected_banks = {(bits & 1U) != 0 ? DrawbarBank::B : DrawbarBank::A,
+                                        (bits & 2U) != 0 ? DrawbarBank::B : DrawbarBank::A};
+                value.route_enabled = {(bits & 4U) != 0, (bits & 8U) != 0};
+                value.expression = (bits & 1U) != 0 ? -0.0 : 0.75;
+                const auto before = read(rig.session);
+                rig.restore(value);
+                same_snapshot(read(rig.session), before);
+                rig.render(0);
+                const auto after = read(rig.session);
+                CHECK(after.controls == value);
+                CHECK(std::bit_cast<std::uint64_t>(after.controls.expression) ==
+                      std::bit_cast<std::uint64_t>(value.expression));
+                CHECK(after.held_keys == held_before.held_keys && after.held_pedals == held_before.held_pedals);
+                CHECK(after.frame_clock == held_before.frame_clock);
+                CHECK(after.resolved_sequence == rig.last_sequence && after.last_applied_sequence == rig.last_sequence);
+                ++counts.fixed_mode_publications;
+            }
+        }
+    }
+    rig.control(e(EventType::Expression, Manual::Upper, 0, 0.75));
+    for (const auto manual : {Manual::Upper, Manual::Lower}) {
+        for (unsigned selection = 0; selection < 12; ++selection) {
+            rig.control(e(EventType::SelectPreset, manual, 0, selection));
+            rig.render(0);
+            const auto after = read(rig.session);
+            PresetSelection effective{};
+            CHECK(control_preset_selection(after.controls, manual, effective));
+            CHECK(static_cast<unsigned>(effective) == selection);
+            CHECK(after.held_keys == held_before.held_keys && after.held_pedals == held_before.held_pedals);
+            CHECK(after.frame_clock == held_before.frame_clock);
+        }
+    }
+    // Stable FIFO is observable across new selectors and the legacy bank alias.
+    rig.control(e(EventType::SelectPreset, Manual::Upper, 0, 9));
+    rig.control(e(EventType::SelectBank, Manual::Upper, 0, 1));
+    rig.render(0);
+    CHECK(read(rig.session).controls.fixed_registrations[0] == FixedRegistration::None);
+    rig.control(e(EventType::SelectBank, Manual::Upper, 0, 1));
+    rig.control(e(EventType::SelectPreset, Manual::Upper, 0, 9));
+    rig.control(e(EventType::SelectPreset, Manual::Upper, 0, -0.0));
+    rig.render(0);
+    CHECK(read(rig.session).controls.fixed_registrations[0] == FixedRegistration::A);
+    CHECK(!read(rig.session).controls.route_enabled[0]);
+    rig.future_probe();
+}
+
 } // namespace
 
 int main() {
@@ -1031,12 +1105,14 @@ int main() {
     test_command_exhaustion(profile);
     test_publication_exhaustion(profile);
     test_unclipped_stereo(profile);
+    test_fixed_mode_publication_and_selection(profile);
     std::cout << "standalone Session acceptance: " << counts.score_runs << " rate/partition scores, "
               << counts.renders << " successful renders, " << counts.stereo_samples
               << " bit-exact stereo samples, " << counts.partition_samples
               << " partition samples, " << counts.snapshots << " coherent snapshots, "
               << counts.accepted_posts << " accepted posts, " << counts.rejected_posts
               << " rejected posts, " << counts.rejected_renders << " rejected renders, "
-              << counts.future_probes << " future-output probes\n";
+              << counts.future_probes << " future-output probes, "
+              << counts.fixed_mode_publications << " fixed-mode publications\n";
     return 0;
 }

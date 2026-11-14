@@ -1,6 +1,7 @@
 #include "TestSupport.h"
 #include "hammond/ControlStateIO.h"
 
+#include <algorithm>
 #include <array>
 #include <bit>
 #include <cfenv>
@@ -16,6 +17,7 @@
 namespace {
 using hammond::ControlSnapshot;
 using hammond::DrawbarBank;
+using hammond::FixedRegistration;
 using Tokens = std::vector<std::string>;
 std::size_t rejected_inputs = 0;
 
@@ -56,6 +58,23 @@ constexpr std::string_view kCanonicalV3 =
     "bank B 8 6 4 2 0 7 5 3 1\n"
     "end\n";
 
+// Independent current-output oracle. The legacy fixtures above remain literal
+// inputs; none are made by deleting fields from the current serializer.
+constexpr std::string_view kCanonicalV4 =
+    "B3CONTROLS4\n"
+    "registration_catalog atlas-chapel-nominal-v1 sha256 "
+    "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n"
+    "expression 0.375\n"
+    "percussion enabled 0 harmonic second volume normal decay slow\n"
+    "pedal drawbars 0 0\n"
+    "manual upper selected A fixed_registration none route_enabled 0\n"
+    "bank A 0 1 2 3 4 5 6 7 8\n"
+    "bank B 8 7 6 5 4 3 2 1 0\n"
+    "manual lower selected B fixed_registration none route_enabled 1\n"
+    "bank A 1 3 5 7 0 2 4 6 8\n"
+    "bank B 8 6 4 2 0 7 5 3 1\n"
+    "end\n";
+
 ControlSnapshot varied_snapshot() {
     ControlSnapshot result;
     result.expression = 0.375;
@@ -69,7 +88,7 @@ ControlSnapshot varied_snapshot() {
 }
 
 void same_snapshot(const ControlSnapshot& actual, const ControlSnapshot& expected) {
-    // Check all controls, including retained percussion and both route bits;
+    // Check all controls, including cancelled fixed modes and both route bits;
     // no object-representation/padding comparison is a state oracle.
     CHECK(actual.drawbars == expected.drawbars);
     CHECK(actual.selected_banks == expected.selected_banks);
@@ -78,6 +97,7 @@ void same_snapshot(const ControlSnapshot& actual, const ControlSnapshot& expecte
     CHECK(std::signbit(actual.expression) == std::signbit(expected.expression));
     CHECK(actual.percussion == expected.percussion);
     CHECK(actual.pedal_drawbars == expected.pedal_drawbars);
+    CHECK(actual.fixed_registrations == expected.fixed_registrations);
 }
 
 std::string encoded(const ControlSnapshot& state) {
@@ -92,6 +112,7 @@ std::string encoded(const ControlSnapshot& state) {
 ControlSnapshot accepted(std::istream& input) {
     auto destination = varied_snapshot();
     destination.pedal_drawbars = {8, 7};
+    destination.fixed_registrations = {FixedRegistration::FSharp, FixedRegistration::DSharp};
     std::string error = "stale error";
     if (!hammond::parse_controls(input, destination, error)) {
         throw std::runtime_error("Valid controls rejected: " + error);
@@ -112,6 +133,7 @@ void rejected(std::istream& input, std::string_view label) {
     destination.route_enabled = {true, false};
     destination.percussion = {true, hammond::PercussionHarmonic::Third,
                              hammond::PercussionVolume::Soft, hammond::PercussionDecay::Fast};
+    destination.fixed_registrations = {FixedRegistration::GSharp, FixedRegistration::D};
     const auto before = destination;
     std::string error = "stale error";
     if (hammond::parse_controls(input, destination, error)) {
@@ -145,20 +167,25 @@ std::string joined(const Tokens& tokens, std::string_view separator = " ") {
 
 void test_roundtrip() {
     const auto varied = varied_snapshot();
-    CHECK(encoded(varied) == kCanonicalV3);
+    CHECK(encoded(varied) == kCanonicalV4);
     same_snapshot(accepted(std::string(kLegacyCanonical)), varied);
-    CHECK(encoded(accepted(std::string(kLegacyCanonical))) == kCanonicalV3);
+    CHECK(encoded(accepted(std::string(kLegacyCanonical))) == kCanonicalV4);
     same_snapshot(accepted(std::string(kCanonicalV2)), varied);
-    CHECK(encoded(accepted(std::string(kCanonicalV2))) == kCanonicalV3);
+    CHECK(encoded(accepted(std::string(kCanonicalV2))) == kCanonicalV4);
     same_snapshot(accepted(std::string(kCanonicalV3)), varied);
-    CHECK(encoded(accepted(std::string(kCanonicalV3))) == kCanonicalV3);
+    CHECK(encoded(accepted(std::string(kCanonicalV3))) == kCanonicalV4);
+    same_snapshot(accepted(std::string(kCanonicalV4)), varied);
+    CHECK(encoded(accepted(std::string(kCanonicalV4))) == kCanonicalV4);
     CHECK(encoded(ControlSnapshot{}) ==
-          "B3CONTROLS3\nexpression 1\n"
+          "B3CONTROLS4\n"
+          "registration_catalog atlas-chapel-nominal-v1 sha256 "
+          "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n"
+          "expression 1\n"
           "percussion enabled 0 harmonic second volume normal decay slow\n"
           "pedal drawbars 0 0\n"
-          "manual upper selected B route_enabled 1\n"
+          "manual upper selected B fixed_registration none route_enabled 1\n"
           "bank A 0 0 0 0 0 0 0 0 0\nbank B 0 0 0 0 0 0 0 0 0\n"
-          "manual lower selected B route_enabled 1\n"
+          "manual lower selected B fixed_registration none route_enabled 1\n"
           "bank A 0 0 0 0 0 0 0 0 0\nbank B 0 0 0 0 0 0 0 0 0\nend\n");
     for (const auto upper : {DrawbarBank::A, DrawbarBank::B}) {
         for (const auto lower : {DrawbarBank::A, DrawbarBank::B}) {
@@ -212,6 +239,7 @@ void test_rounding_mode_isolation() {
     CHECK(std::fesetround(FE_TONEAREST) == 0);
     for (std::size_t i = 0; i < expressions.size(); ++i) {
         auto state = varied_snapshot();
+        state.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
         state.expression = std::bit_cast<double>(expressions[i]);
         nearest_bytes[i] = encoded(state);
     }
@@ -219,6 +247,7 @@ void test_rounding_mode_isolation() {
         CHECK(std::fesetround(mode) == 0);
         for (std::size_t i = 0; i < expressions.size(); ++i) {
             auto state = varied_snapshot();
+            state.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
             state.expression = std::bit_cast<double>(expressions[i]);
             const auto bytes = encoded(state);
             CHECK(std::fegetround() == mode);
@@ -239,7 +268,7 @@ void test_rounding_mode_isolation() {
         CHECK(!hammond::serialize_controls(varied_snapshot(), aliased, aliased));
         CHECK(aliased == "preserved alias");
         CHECK(std::fegetround() == mode);
-        for (const auto canonical : {kLegacyCanonical, kCanonicalV2, kCanonicalV3}) {
+        for (const auto canonical : {kLegacyCanonical, kCanonicalV2, kCanonicalV3, kCanonicalV4}) {
             auto underflow = std::string(canonical);
             underflow.replace(underflow.find("0.375"), 5, "1e-9999");
             rejected(underflow, "nonzero expression underflow under caller rounding mode");
@@ -300,7 +329,7 @@ void test_percussion_semantics_and_migration() {
         auto fixture = std::string(kCanonicalV2);
         fixture.replace(fixture.find(default_record), default_record.size(), record);
         same_snapshot(accepted(fixture), expected);
-        auto current_fixture = std::string(kCanonicalV3);
+        auto current_fixture = std::string(kCanonicalV4);
         current_fixture.replace(current_fixture.find(default_record), default_record.size(), record);
         CHECK(encoded(expected) == current_fixture);
         same_snapshot(accepted(encoded(expected)), expected);
@@ -310,6 +339,7 @@ void test_percussion_semantics_and_migration() {
         destination.expression = 0.875;
         destination.selected_banks = {DrawbarBank::B, DrawbarBank::A};
         destination.pedal_drawbars = {6, 8};
+        destination.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
         std::istringstream legacy{std::string(kLegacyCanonical)};
         std::string error = "stale error";
         CHECK(hammond::parse_controls(legacy, destination, error));
@@ -319,7 +349,7 @@ void test_percussion_semantics_and_migration() {
         CHECK(destination.percussion.harmonic == hammond::PercussionHarmonic::Second);
         CHECK(destination.percussion.volume == hammond::PercussionVolume::Normal);
         CHECK(destination.percussion.decay == hammond::PercussionDecay::Slow);
-        CHECK(encoded(destination) == kCanonicalV3);
+        CHECK(encoded(destination) == kCanonicalV4);
     }
 }
 
@@ -492,7 +522,247 @@ void test_text_rejection(const Tokens& original) {
     rejected(std::string(hammond::kMaxControlStateBytes + 1, 'x'), "oversized token");
 }
 
-void test_transport(const Tokens& tokens, std::string_view input_fixture) {
+void test_fixed_registration_roundtrip_and_migration(const Tokens& original) {
+    // Literal spellings and line boundaries are a grammar oracle independent
+    // of the production fixed-registration label and table accessors.
+    constexpr std::array<std::string_view, 10> names{
+        "none", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A"};
+    constexpr std::array<std::size_t, 12> line_ends{
+        0, 4, 6, 15, 19, 27, 38, 49, 57, 68, 79, 80};
+    CHECK(std::count(kCanonicalV4.begin(), kCanonicalV4.end(), '\n') == 12);
+
+    // Historical variants use their literal grammar, never the new writer.
+    constexpr std::string_view disabled_percussion =
+        "percussion enabled 0 harmonic second volume normal decay slow";
+    constexpr std::string_view enabled_percussion =
+        "percussion enabled 1 harmonic third volume soft decay fast";
+    std::array<std::string, 3> legacy_inputs{
+        std::string(kLegacyCanonical), std::string(kCanonicalV2), std::string(kCanonicalV3)};
+    for (std::size_t index : {std::size_t{1}, std::size_t{2}}) {
+        const auto at = legacy_inputs[index].find(disabled_percussion);
+        CHECK(at != std::string::npos);
+        legacy_inputs[index].replace(at, disabled_percussion.size(), enabled_percussion);
+    }
+    const auto pedal_at = legacy_inputs[2].find("pedal drawbars 0 0");
+    CHECK(pedal_at != std::string::npos);
+    legacy_inputs[2].replace(pedal_at, std::string_view("pedal drawbars 0 0").size(),
+                             "pedal drawbars 2 7");
+
+    std::size_t combinations = 0;
+    std::size_t legacy_migrations = 0;
+    for (unsigned upper = 0; upper <= 9; ++upper) {
+        for (unsigned lower = 0; lower <= 9; ++lower) {
+            for (unsigned routing = 0; routing < 16; ++routing) {
+                auto expected = varied_snapshot();
+                expected.fixed_registrations = {static_cast<FixedRegistration>(upper),
+                                                 static_cast<FixedRegistration>(lower)};
+                expected.selected_banks = {
+                    (routing & 1U) != 0 ? DrawbarBank::B : DrawbarBank::A,
+                    (routing & 2U) != 0 ? DrawbarBank::B : DrawbarBank::A};
+                expected.route_enabled = {(routing & 4U) != 0, (routing & 8U) != 0};
+                expected.expression = -0.0;
+                expected.percussion = {true, hammond::PercussionHarmonic::Third,
+                                        hammond::PercussionVolume::Soft,
+                                        hammond::PercussionDecay::Fast};
+                expected.pedal_drawbars = {2, 7};
+
+                auto literal = original;
+                literal[6] = "-0";
+                literal[9] = "1";
+                literal[11] = "third";
+                literal[13] = "soft";
+                literal[15] = "fast";
+                literal[18] = "2";
+                literal[19] = "7";
+                literal[23] = (routing & 1U) != 0 ? "B" : "A";
+                literal[25] = names[upper];
+                literal[27] = (routing & 4U) != 0 ? "1" : "0";
+                literal[53] = (routing & 2U) != 0 ? "B" : "A";
+                literal[55] = names[lower];
+                literal[57] = (routing & 8U) != 0 ? "1" : "0";
+                std::string canonical;
+                std::size_t line = 0;
+                for (std::size_t index = 0; index < literal.size(); ++index) {
+                    canonical += literal[index];
+                    if (index == line_ends[line]) {
+                        canonical += '\n';
+                        ++line;
+                    } else {
+                        canonical += ' ';
+                    }
+                }
+                CHECK(line == line_ends.size());
+                CHECK(encoded(expected) == canonical);
+                same_snapshot(accepted(canonical), expected);
+                same_snapshot(accepted(encoded(expected)), expected);
+
+                // Saving only effective Cancel would lose these retained modes.
+                for (std::size_t manual = 0; manual < hammond::kManualCount; ++manual) {
+                    hammond::PresetSelection selection = hammond::PresetSelection::BankB;
+                    CHECK(hammond::control_preset_selection(expected,
+                        static_cast<hammond::Manual>(manual), selection));
+                    if (!expected.route_enabled[manual]) {
+                        CHECK(selection == hammond::PresetSelection::Cancel);
+                    }
+                }
+                ++combinations;
+
+                for (std::size_t version = 0; version < legacy_inputs.size(); ++version) {
+                    auto destination = expected;
+                    auto legacy_expected = varied_snapshot();
+                    if (version != 0) legacy_expected.percussion = expected.percussion;
+                    if (version == 2) legacy_expected.pedal_drawbars = {2, 7};
+                    std::istringstream input(legacy_inputs[version]);
+                    std::string error = "stale error";
+                    CHECK(hammond::parse_controls(input, destination, error));
+                    CHECK(error.empty());
+                    same_snapshot(destination, legacy_expected);
+                    CHECK(encoded(destination).starts_with("B3CONTROLS4\n"));
+                    ++legacy_migrations;
+                }
+            }
+        }
+    }
+    CHECK(combinations == 1600);
+    CHECK(legacy_migrations == 4800);
+}
+
+void test_fixed_registration_enum_rejection() {
+    for (std::size_t manual = 0; manual < hammond::kManualCount; ++manual) {
+        for (unsigned value = 10; value <= 255; ++value) {
+            for (bool enabled : {false, true}) {
+                auto invalid = varied_snapshot();
+                invalid.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
+                invalid.fixed_registrations[manual] = static_cast<FixedRegistration>(value);
+                invalid.route_enabled[manual] = enabled;
+                rejected(invalid);
+            }
+        }
+    }
+}
+
+void test_version4_text_rejection(const Tokens& original) {
+    const auto change = [&](std::size_t at, std::string_view value) {
+        auto tokens = original;
+        tokens.at(at) = value;
+        rejected(joined(tokens), "version 4 token " + std::to_string(at) + " = " + std::string(value));
+    };
+    for (const auto version : {"B3CONTROLS", "B3CONTROLS0", "B3CONTROLS1", "B3CONTROLS2",
+                               "B3CONTROLS3", "B3CONTROLS5", "B3CONTROLS04", "B3CONTROLS4.0",
+                               "B3CONTROLS 4", "b3controls4"}) change(0, version);
+    for (std::size_t at : {1U, 3U, 5U, 7U, 8U, 10U, 12U, 14U, 16U, 17U, 20U, 21U,
+                           22U, 24U, 26U, 28U, 29U, 39U, 40U, 50U, 51U, 52U, 54U,
+                           56U, 58U, 59U, 69U, 70U, 80U}) change(at, "unknown");
+    for (std::size_t at : {25U, 55U}) {
+        for (const auto fixed : {"None", "NONE", "C", "A#", "B", "Db", "Eb", "Gb", "Ab",
+                                 "Bb", "c#", "d", "a", "CSharp", "Cancel", "BankA", "BankB",
+                                 "-1", "+0", "00", "1.0", "0x1", "nan", "inf", "C#junk", ""}) {
+            change(at, fixed);
+        }
+        for (unsigned value = 0; value <= 11; ++value) change(at, std::to_string(value));
+    }
+
+    // Both modes are None in the base fixture: exact identity binding remains
+    // mandatory. Valid hexadecimal changes reject, not only malformed digests.
+    for (std::size_t index = 0; index < original[2].size(); ++index) {
+        auto catalog = original[2];
+        catalog[index] = catalog[index] == 'x' ? 'y' : 'x';
+        change(2, catalog);
+    }
+    for (const auto catalog : {"", "atlas-chapel-nominal-v2", "ATLAS-CHAPEL-NOMINAL-V1",
+                               "atlas-chapel-nominal-v1/", "unknown"}) change(2, catalog);
+    for (std::size_t index = 0; index < original[4].size(); ++index) {
+        auto digest = original[4];
+        digest[index] = digest[index] == '0' ? '1' : '0';
+        change(4, digest);
+        digest[index] = 'g';
+        change(4, digest);
+        if (original[4][index] >= 'a' && original[4][index] <= 'f') {
+            digest = original[4];
+            digest[index] = static_cast<char>(digest[index] - 'a' + 'A');
+            change(4, digest);
+        }
+    }
+    for (const auto& digest : {std::string{}, std::string("0"), original[4].substr(0, 63),
+                               original[4] + '0', std::string(64, '0')}) change(4, digest);
+    auto active = original;
+    active[25] = "C#";
+    active[55] = "A";
+    active[2] = "atlas-chapel-nominal-v2";
+    rejected(joined(active), "unknown catalog with remembered fixed registrations");
+    active[2] = original[2];
+    active[4][0] = '0';
+    rejected(joined(active), "mismatched catalog hash with remembered fixed registrations");
+
+    for (std::size_t at : {23U, 53U}) change(at, "C");
+    for (std::size_t at : {9U, 27U, 57U}) {
+        for (const auto value : {"2", "true", "-1", "+0", "00", "1.0"}) change(at, value);
+    }
+    for (std::size_t at : {11U, 13U, 15U}) change(at, "invalid");
+    for (std::size_t at : {18U, 19U, 30U, 31U, 32U, 33U, 34U, 35U, 36U, 37U, 38U,
+                           41U, 42U, 43U, 44U, 45U, 46U, 47U, 48U, 49U, 60U, 61U,
+                           62U, 63U, 64U, 65U, 66U, 67U, 68U, 71U, 72U, 73U, 74U,
+                           75U, 76U, 77U, 78U, 79U}) change(at, "9");
+    for (const auto expression : {"nan", "inf", "-inf", "1e9999", "1e-9999", "-0.1",
+                                  "1.0000000000000002", "0,375", "0.375junk"}) change(6, expression);
+
+    std::string prefix;
+    for (std::size_t at = 0; at < original.size(); ++at) {
+        rejected(prefix, "version 4 truncation before token " + std::to_string(at));
+        prefix += original[at] + ' ';
+        auto missing = original;
+        missing.erase(missing.begin() + static_cast<Tokens::difference_type>(at));
+        rejected(joined(missing), "version 4 missing token " + std::to_string(at));
+        auto extra = original;
+        extra.insert(extra.begin() + static_cast<Tokens::difference_type>(at), "extension");
+        rejected(joined(extra), "version 4 extra token " + std::to_string(at));
+    }
+    for (const auto& [first, last] : {std::pair{1U, 5U}, std::pair{7U, 16U},
+                                    std::pair{16U, 20U}, std::pair{24U, 26U},
+                                    std::pair{54U, 56U}}) {
+        auto missing = original;
+        missing.erase(missing.begin() + first, missing.begin() + last);
+        rejected(joined(missing), "version 4 missing mandatory record");
+        auto duplicate = original;
+        duplicate.insert(duplicate.begin() + last, original.begin() + first,
+                          original.begin() + last);
+        rejected(joined(duplicate), "version 4 duplicate record");
+    }
+    auto reordered = original;
+    std::rotate(reordered.begin() + 1, reordered.begin() + 5, reordered.begin() + 7);
+    rejected(joined(reordered), "catalog after expression");
+    for (const auto start : {24U, 54U}) {
+        reordered = original;
+        std::rotate(reordered.begin() + start, reordered.begin() + start + 2,
+                     reordered.begin() + start + 4);
+        rejected(joined(reordered), "fixed mode after route bit");
+    }
+    const std::string catalog_record = joined(Tokens(original.begin() + 1, original.begin() + 5));
+    for (const auto canonical : {kLegacyCanonical, kCanonicalV2, kCanonicalV3}) {
+        auto extended = std::string(canonical);
+        extended.insert(extended.find('\n') + 1, catalog_record);
+        rejected(extended, "catalog record is not supported in legacy formats");
+        for (const auto manual : {"manual upper", "manual lower"}) {
+            extended = canonical;
+            const auto at = extended.find(" route_enabled", extended.find(manual));
+            CHECK(at != std::string::npos);
+            extended.insert(at, " fixed_registration none");
+            rejected(extended, "fixed record is not supported in legacy formats");
+        }
+    }
+    for (const auto suffix : {"end", "fixed_registration none", "registration_catalog",
+                              "# comment", "extension 1"}) rejected(prefix + suffix, "version 4 trailing data");
+    rejected(std::string("\xef\xbb\xbf") + prefix, "version 4 UTF-8 BOM");
+    rejected(prefix + std::string(1, '\0'), "version 4 embedded NUL");
+    rejected(prefix + std::string("\xc2\xa0"), "version 4 non-ASCII whitespace");
+    auto exact = prefix;
+    exact.resize(hammond::kMaxControlStateBytes, ' ');
+    same_snapshot(accepted(exact), varied_snapshot());
+    rejected(exact + ' ', "version 4 one byte over limit");
+}
+
+void test_transport(const Tokens& tokens, std::string_view input_fixture,
+                    std::size_t expression_index = 2) {
     struct CommaDecimal : std::numpunct<char> {
         char do_decimal_point() const override { return ','; }
     };
@@ -504,7 +774,7 @@ void test_transport(const Tokens& tokens, std::string_view input_fixture) {
     const auto old_global = std::locale::global(localized_locale);
     const auto canonical = encoded(varied_snapshot());
     std::locale::global(old_global);
-    CHECK(canonical == kCanonicalV3);
+    CHECK(canonical == kCanonicalV4);
     std::istringstream throwing{std::string(input_fixture)};
     const auto mask = std::ios::eofbit | std::ios::failbit | std::ios::badbit;
     throwing.exceptions(mask);
@@ -548,10 +818,10 @@ void test_transport(const Tokens& tokens, std::string_view input_fixture) {
     }
     auto decimals = tokens;
     for (const char* expression : {"+3.75e-1", ".375", "0.3750", "000.375", "3.75E-01"}) {
-        decimals[2] = expression;
+        decimals[expression_index] = expression;
         same_snapshot(accepted(joined(decimals)), varied_snapshot());
     }
-    decimals[2] = "1.";
+    decimals[expression_index] = "1.";
     auto expected = varied_snapshot();
     expected.expression = 1.0;
     same_snapshot(accepted(joined(decimals)), expected);
@@ -587,6 +857,14 @@ int main() {
                                std::istream_iterator<std::string>()};
         CHECK(tokens_v3.size() == 73);
         test_transport(tokens_v3, kCanonicalV3);
+        std::istringstream fixture_v4{std::string(kCanonicalV4)};
+        const Tokens tokens_v4{std::istream_iterator<std::string>(fixture_v4),
+                               std::istream_iterator<std::string>()};
+        CHECK(tokens_v4.size() == 81);
+        test_fixed_registration_roundtrip_and_migration(tokens_v4);
+        test_fixed_registration_enum_rejection();
+        test_version4_text_rejection(tokens_v4);
+        test_transport(tokens_v4, kCanonicalV4, 6);
         std::cout << "Control persistence tests passed; " << rejected_inputs
                   << " malformed inputs preserved destination semantics.\n";
         return 0;

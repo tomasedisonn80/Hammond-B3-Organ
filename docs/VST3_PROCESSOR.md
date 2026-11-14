@@ -37,7 +37,7 @@ percussion Off. A useful audible fixture must supply a registration.
 | Audio output | One stereo `Dry stereo` bus; the two channels receive identical dry float32 samples. |
 | Event inputs | `Upper` main bus 0, `Lower` auxiliary bus 1 and `Pedals` auxiliary bus 2; 16 channels each. All advertise `kDefaultActive`; the host activates buses through `activateBus`. |
 | Event outputs | None. Supplied output event/parameter interfaces are not written or retained. |
-| Parameters | Exactly the existing 45 compiled IDs; duplicate queues reject, including duplicate empty queues. |
+| Parameters | Exactly 47 compiled IDs: the unchanged original 45 plus upper/lower preset selectors 20480/20481. Duplicate queues reject, including duplicate empty queues. |
 | Rates | 44,100, 48,000 and 96,000 Hz. Other rates reject during setup. |
 | Blocks | Host maximum 1–65,536; actual callback 0 through that maximum. |
 | Precision | Float32 only. Float64 and unknown symbolic sizes reject. |
@@ -95,7 +95,7 @@ input in the current call; only admitted musical/parameter records need carry.
 
 ## Bounded automation and common time
 
-Native queue count is signed and must be 0–45. Each queue pointer must be valid,
+Native queue count is signed and must be 0–47. Each queue pointer must be valid,
 its ID must be a compiled descriptor, and its signed point count must fit the
 remaining capacity. Each `getPoint` must succeed; its signed offset must be
 nondecreasing in `0..N`, with finite normalized value in `[0,1]`. No host queue
@@ -118,6 +118,16 @@ musical stream. Offset-`N` parameter values serve as current interpolation
 endpoints and retained next-boundary values. Zero frames apply admitted
 offset-zero input once without advancing or recarrying it. The native wrapper
 does not add smoothing, rerender separate divisions or adjust the source clock.
+
+The two appended preset parameters are ordinary routing commands, not host
+programs. At one sample, numeric-ID order places the old bank commands before
+the higher-ID preset commands. An explicit repeated bank value exits fixed
+mode and reconnects its bank. Absent queues and unchanged discrete interpolation
+plateaus do not continually reassert either route. Raw automation anchors remain
+separate from the applied route; whole-state restore reinitializes anchors using
+remembered banks for old IDs and checked effective selections for new IDs.
+The [fixed-selection contract](PRESET_SELECTION_CONTRACT.md) specifies Cancel,
+retained bank data and percussion eligibility without changing note ownership.
 
 ## Output shapes and failure atomicity
 
@@ -167,9 +177,12 @@ load while pending, then the coherent published audio controls after
 acknowledgement. Bounded publication-read contention can return explicit failure
 without writing the destination stream; retry belongs to the host/UI side.
 
-The writer emits `B3CONTROLS3`; readers accept 1/2/3 and the existing migrations.
-Both route-enable bits survive, even though Cancel is not one of the 45 native
-parameters. Restore never resets held owners, moving contacts, percussion
+The writer emits `B3CONTROLS4`; readers accept 1/2/3/4 with the explicit
+[migrations](CONTROL_STATE_FORMAT.md). Legacy input initializes raw fixed modes
+to `None`; version 4 also requires the pinned catalog identity. StateExchange
+preserves both raw fixed modes, remembered banks, route bits and every retained
+bank value. The effective Cancel/0 parameter value alone cannot reconstruct
+that memory. Restore never resets held owners, moving contacts, percussion
 readiness, phases or frame count. Controller synchronization uses its own
 `setComponentState`, without an echoed automation gesture.
 
@@ -201,7 +214,7 @@ does not establish a linked module or host behavior. The composed core's earlier
 allocation/concurrency tests likewise do not qualify a native callback.
 
 That syntax result is historical. The complete [optional native bundle](VST3_BUILD.md)
-now has executed [loaded-module ABI](VST3_ABI_ACCEPTANCE.md) and
+has historical [loaded-module ABI](VST3_ABI_ACCEPTANCE.md) and
 [behavior](VST3_BEHAVIOR_ACCEPTANCE.md) gates covering the three event buses,
 45 descriptors, block boundaries, alias admission, active state migration,
 late rejection and stopped rate changes against independent core references.
@@ -211,6 +224,14 @@ and [bundle relocation](VST3_LOCAL_INSTALL.md) records identify their own code,
 module, dependency, compiler and instrumentation scopes. The [pinned validator record](VST3_BUILD.md#recorded-local-qualification-and-current-gates)
 retains its actual summary together with the unsupported-rate and teardown
 diagnostics; it is not a warning-free or arbitrary-format result.
+
+The current [preset integration](reviews/PRESET_VST3_INTEGRATION.md) qualifies
+47 exports, state4/legacy streams, held-note selector/alias histories, callback
+allocation and concurrent raw publication in eight native suites. The
+[independent acceptance](reviews/PRESET_VST3_ACCEPTANCE.md) compares its retained
+validator diagnostics with the baseline and exact SDK source. Neither the
+processor lifecycle nor supported precision/rates was expanded to silence those
+messages. These newer records do not rewrite the earlier 45-parameter results.
 
 The [coherent wave-8 integration](reviews/PEDAL_WAVE8_INTEGRATION.md) passed
 71 ordinary and eight focused native suites locally. Use [current status](STATUS.md)

@@ -1,0 +1,127 @@
+{
+  "assignment": "/root/w05_a25_ui_acceptance",
+  "date": "2026-11-14",
+  "base_commit": "35554c068492fe2b20c1f8a602d8354ae762dc42",
+  "scope": "Independent SDK-free UI acceptance, native SDL software raster acceptance, two focus-rendering repairs; not full application or physical-device qualification.",
+  "source": {
+    "final_manifest_sha256": "85f93c43931f416479fb67dc9e4d6fd268f03062fcac70df39e7b22430c7d906",
+    "manifest_source_files": 1249,
+    "local_manifest": "/tmp/hammond-preset-a25/source-final-manifest.json",
+    "verified_live_core_ui_and_test_inputs": 56,
+    "different_live_inputs": [],
+    "sdk_initial_manifest_sha256": "eb03191c843c03232750b24d5030bcaba2d07e0e634cd73b4f44785434e795f9",
+    "native_initial_manifest_sha256": "801cd3fe78e8022fede7e230cc829ef30f614e77da165ef0f52978df9ff3e690",
+    "owned_input_sha256": {
+      "apps/standalone/InstrumentView.cpp": "c4be416d5a0e715d26d0d582d6f4539224561e591220bbae165ea2b00a0246e7",
+      "apps/standalone/CMakeLists.txt": "6dd7841c5ae1c8f4cfeb2a25a5a8f0279a38fe55b44d51f29f1a0a0b445f0f11",
+      "apps/standalone/tests/test_standalone_preset_ui.cpp": "a8108266f262fca841bb6adfc5301e8dc6e93e43e5e3f1771815d7dcd23d25c2",
+      "apps/standalone/native_tests/test_standalone_preset_raster.cpp": "2aa032b2e26fa136d2da785f3a74f6da1dc0216a7b15a0de61817abbe2d8356b"
+    }
+  },
+  "environment": {
+    "compiler": "GNU C++ 14.2.0",
+    "cmake": "4.4.4",
+    "python": "3.12.14",
+    "configuration": "C++20 Release, strict project warnings",
+    "SDL2": "2.32.10",
+    "SDL2_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+    "surface": "SDL software renderer to RGBA surface; SDL_Init(0), no window or audio",
+    "midi": false,
+    "vst3": false
+  },
+  "results": {
+    "sdk_initial": {
+      "target": "test_preset_ui_acceptance",
+      "passed": 1,
+      "failed": 0,
+      "seconds": 0.07
+    },
+    "sdk_final": {
+      "target": "test_standalone_preset_ui",
+      "passed": 1,
+      "failed": 0,
+      "seconds": 0.07,
+      "layouts": 12,
+      "classified_hit_points": 549388,
+      "route_transitions": 288,
+      "keyboard_activations": 48,
+      "focus_only_moves": 144,
+      "invalid_id_rejections": 753,
+      "single_command_pointer_acknowledgments": 288,
+      "sha256": "37b5204614828740179ca71f5532cbe05a61fae1a24f55ad9ef77f04cfa23cf9"
+    },
+    "raster_first": {
+      "passed": 0,
+      "failed": 1,
+      "seconds": 11.55,
+      "assertions_failed": 32,
+      "classification": {
+        "natural_focus_missing": 14,
+        "fractional_accidental_label_differences": 14,
+        "cancel_oracle_included_overlapping_sharp": 4
+      },
+      "renderer_sha256": "23e8a2421dbec36dd96b0cbc0839612bab236b2b17ee6ead733327eaa9f453cb",
+      "test_sha256": "7f14ff231402404c90bceb25807c53d8666834edabd7578a197a3baaadadac2c"
+    },
+    "raster_natural_candidate": {
+      "passed": 0,
+      "failed": 1,
+      "seconds": 12.06,
+      "assertions_failed": 14,
+      "classification": "All natural focus and corrected Cancel checks pass; 14 accidental cases still change high-contrast original pitch ink."
+    },
+    "raster_final": {
+      "target": "test_standalone_preset_raster",
+      "passed": 1,
+      "failed": 0,
+      "seconds": 15.45,
+      "label_and_focus_cases": 96,
+      "isolation_cases": 376,
+      "state_checks": 48,
+      "failures": 0,
+      "dimensions": [
+        [
+          960,
+          700
+        ],
+        [
+          1280,
+          900
+        ],
+        [
+          1672,
+          941
+        ],
+        [
+          1400,
+          820
+        ]
+      ],
+      "sha256": "d5a81932916e17825e6fce1586f7dfc6033af356a4b615ca7c143adffe400fea"
+    }
+  },
+  "visual_review": {
+    "source_reference_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "a23_captures_inspected": [
+      "fixed-focus-960x700.png",
+      "fixed-focus-1280x900.png",
+      "fixed-focus-1672x941.png",
+      "cancel-1672x941.png",
+      "help-960x700.png"
+    ],
+    "a23_capture_executable_sha256": "c06d6f77b07efc9f30ec4644de123d7a9714029b1ce3ffe26091f79710ee2bd0",
+    "a23_capture_limitation": "These complete app captures precede the A25 focus fixes. Recapture after integration.",
+    "repaired_surface_inspections": {
+      "focus-1400x820.png": "f3693ba5389f7ae57c011829a7a3bc80c7f81138c3554a9444cd8772a04077f3",
+      "focus-1280x900.png": "4535dbff88dd66a8fe8a63178eca72dc0f93c6d71a8a379ba89e3ccf1319e13f"
+    },
+    "repaired_surface_limitation": "Actual paint_instrument/Drawing pixels in a software-surface harness, not full application window captures. QA crops enlarged by nearest neighbor.",
+    "remaining": [
+      "Very small accidental pitch labels",
+      "Rectangular rather than perspective manuals",
+      "Material and composition differences from source artwork",
+      "Native semantic accessibility and real display/device qualification",
+      "Literal 1:1 equivalence not established"
+    ]
+  }
+}

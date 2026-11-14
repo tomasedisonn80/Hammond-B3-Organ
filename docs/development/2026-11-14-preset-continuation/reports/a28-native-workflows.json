@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "assignment": 28,
+  "agent": "/root/w05_a28_native_workflows",
+  "scope": "Linux GNU Release native standalone schema3 and benchmark-v2 integration; SDL dummy audio/video; RtMidi ALSA enabled",
+  "context_commit": "35554c068492fe2b20c1f8a602d8354ae762dc42",
+  "context_tree": "6a6881eeee1943665694e988208b2d6710731919",
+  "source_file_count": 1260,
+  "source_manifest": "a28-source-final.json",
+  "source_manifest_sha256": "72874cd7ceeaada3da152297d265b501dc33517896b14d02883256508d48c6cd",
+  "source_comparison": {
+    "frozen_files_checked": 1260,
+    "different_current_files": [
+      "docs/STANDALONE_APP.md",
+      "docs/VST3_CONTROLLER.md",
+      "docs/VST3_PROCESSOR.md",
+      "docs/development/2026-11-14-preset-continuation/assignments.json"
+    ],
+    "compiled_source_changes": []
+  },
+  "toolchain": {
+    "cmake": "4.4.4",
+    "compiler": "GNU C++ 14.2.0",
+    "python": "3.12.14",
+    "system": "Linux x86_64",
+    "configuration": "Release",
+    "generator": "Unix Makefiles",
+    "midi": "ALSA",
+    "audio_video": "SDL dummy"
+  },
+  "dependencies": {
+    "sdl_version": "2.32.10",
+    "sdl_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+    "rtmidi_version": "6.0.0",
+    "rtmidi_commit": "1e5b49925aa60065db52de44c366d446a902547b",
+    "rtmidi_prepared_cpp_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a"
+  },
+  "initial_gate": {
+    "suites": 8,
+    "passed": 6,
+    "failed": 2,
+    "skipped": 0,
+    "wall_seconds": 82.95,
+    "junit": "a28-native-first.xml"
+  },
+  "correction_gate": {
+    "suites": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "wall_seconds": 9.04,
+    "junit": "a28-native-corrected.xml",
+    "production_changes": false,
+    "changed_files": [
+      "apps/standalone/native_tests/test_standalone_app.py",
+      "apps/standalone/native_tests/test_standalone_replay_boundaries.py"
+    ]
+  },
+  "accepted_suite_methods": {
+    "test_standalone_benchmark": 9,
+    "test_standalone_install": 8,
+    "test_standalone_app": 18,
+    "test_standalone_midi_cli": 15,
+    "test_standalone_native_midi_replay": 12,
+    "test_standalone_workflows": 13,
+    "test_standalone_replay_boundaries": 9,
+    "test_standalone_chapel": 2
+  },
+  "accepted_method_count": 86,
+  "no_final_eight_suite_repeat": true,
+  "named_cli_launch_counters": {
+    "native_app": 164,
+    "midi_cli": 95,
+    "native_midi_replay": 17,
+    "native_workflows": 52,
+    "replay_boundaries": 29,
+    "chapel_native": 22,
+    "scope": "Accepted suite set; excludes installation child commands and benchmark invocations; initial failed runs retained separately"
+  },
+  "minimum_pixel_proof": {
+    "coordinate_y": 466,
+    "old_c4_d4_e4_x": [
+      391,
+      417,
+      442
+    ],
+    "old_bgr_hex": [
+      "cceaf9",
+      "cceaf9",
+      "cceaf9"
+    ],
+    "current_c4_d4_e4_x": [
+      489,
+      510,
+      531
+    ],
+    "current_bgr_hex": [
+      "8ecbe4",
+      "cceaf9",
+      "cceaf9"
+    ],
+    "screenshot_while_held": true
+  },
+  "baseline_macos_modal_timeout": "Still unclassified; not reproduced by one local ALSA test with two expected enumeration errors. New schema3 acknowledgment predicates and copied failures require actual CoreMIDI hosted inspection.",
+  "claims": {
+    "physical_device": false,
+    "physical_fidelity": false,
+    "pixel_equality": false,
+    "macos_tested": false,
+    "windows_tested": false,
+    "sanitizers_tested": false,
+    "replay_timeout_extended": false
+  },
+  "artifacts": {
+    "a28-source-native-first.json": {
+      "sha256": "6c4491586e4e0c48a8e88dbe92712077da9db50e25985a1b117dec3507443be8",
+      "bytes": 200273
+    },
+    "a28-source-final.json": {
+      "sha256": "72874cd7ceeaada3da152297d265b501dc33517896b14d02883256508d48c6cd",
+      "bytes": 200273
+    },
+    "a28-native-first.txt": {
+      "sha256": "f90120e7dee0d720c0104be19e2d03630bd04d5cdbd6955f858cd57c24a75532",
+      "bytes": 34263
+    },
+    "a28-native-corrected.txt": {
+      "sha256": "d455b97faa7f36775ad9be18a06364537fab0433795165438be4c0fc95984782",
+      "bytes": 6797
+    },
+    "a28-native-first.xml": {
+      "sha256": "c83dd7f3f306ccc2fa3605aad0151b856e668e898a056dbddeb09002035bd843",
+      "bytes": 14346
+    },
+    "a28-native-corrected.xml": {
+      "sha256": "ba097785f28575178c7f1eacea59fc3ccc4c93a9ca20525cf124d9cc5af3d17e",
+      "bytes": 2929
+    },
+    "a28-preliminary-workflow-failure.txt": {
+      "sha256": "4c5bd03b8324c7029bdbf618b7a1eceb0774dcc0f8b594999bf1b97108e53ab9",
+      "bytes": 17741
+    },
+    "a28-fixed-save-corrected.txt": {
+      "sha256": "43e3a4a7b0ab6c7eda18a7f39dd61ffb31ec7f7b4bf450b0dcd06be1a3331fd0",
+      "bytes": 395
+    },
+    "a28-modal-alsa.txt": {
+      "sha256": "99322a89350eaf1334f18763b78eca96f2e2e79e4494e73f7af29d0dfb740e06",
+      "bytes": 446
+    }
+  },
+  "standalone": {
+    "path": "/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone",
+    "sha256": "557acb27d16cfc77815c278778335f8418b471b563d1b93a47bf3051eae68c82",
+    "bytes": 3613960
+  },
+  "benchmark": {
+    "path": "/tmp/hammond-preset-a28/build/apps/standalone/hammond_standalone_benchmark",
+    "sha256": "30447605aa6f913699e8f51a6148243ca68a8115e4bf356807314a02dc24574d",
+    "bytes": 159696
+  },
+  "compiled_profile": {
+    "path": "/tmp/hammond-preset-a28/build/nominal.b3p",
+    "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+    "bytes": 4545
+  },
+  "benchmark_source_manifest": {
+    "path": "/tmp/hammond-preset-a28/build/apps/standalone/standalone-benchmark-source-manifest.json",
+    "sha256": "ed6087529c26057f049a59271b42c2c31643f322559ee3651699798dd1b0ee11",
+    "bytes": 7984
+  }
+}

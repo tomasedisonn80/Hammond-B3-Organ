@@ -1,4 +1,5 @@
 #include "NativeHarness.h"
+#include "NativePresetOracle.h"
 
 #include "hammond/ConsoleModel.h"
 #include "hammond/Engine.h"
@@ -63,6 +64,7 @@ ControlSnapshot pattern(std::uint32_t generation, bool audio) {
         }
         result.selected_banks[manual] = static_cast<DrawbarBank>((generation + manual) % 2U);
         result.route_enabled[manual] = audio || (generation + manual) % 3U != 0;
+        result.fixed_registrations[manual] = static_cast<FixedRegistration>((generation + 3U * manual) % 10U);
     }
     result.expression = audio ? 0.5 + static_cast<double>(generation + 1U) / 32768.0
                               : 0.125 + static_cast<double>(generation + 1U) / 65536.0;
@@ -99,10 +101,10 @@ void build_queues(nt::ParameterChanges& changes) {
         }
     }
     for (const sv::ParamID id : {8192U, 8208U, 8209U, 12288U, 12289U,
-                                  12290U, 12291U, 16384U, 16385U}) {
+                                  12290U, 12291U, 16384U, 16385U, 20480U, 20481U}) {
         changes.add_queue(id).points.push_back({0, 0.0});
     }
-    nt::require(changes.queues.size() == 45, "independent all-control queue count");
+    nt::require(changes.queues.size() == 47, "independent all-control queue count");
 }
 
 void write_queues(nt::ParameterChanges& changes, const ControlSnapshot& snapshot) {
@@ -122,7 +124,13 @@ void write_queues(nt::ParameterChanges& changes, const ControlSnapshot& snapshot
     put(static_cast<double>(snapshot.percussion.decay));
     put(static_cast<double>(snapshot.pedal_drawbars[0]) / 8.0);
     put(static_cast<double>(snapshot.pedal_drawbars[1]) / 8.0);
-    nt::require(index == 45, "all independent native queues populated");
+    for (std::size_t manual = 0; manual < 2; ++manual) {
+        const auto fixed = static_cast<std::size_t>(snapshot.fixed_registrations[manual]);
+        const auto selection = fixed != 0 ? fixed : snapshot.selected_banks[manual] == DrawbarBank::A ? 10U : 11U;
+        nt::require(snapshot.route_enabled[manual], "audio family must be connected");
+        put(nt::preset_oracle::canonical[selection]);
+    }
+    nt::require(index == 47, "all independent native queues populated");
 }
 
 std::array<Event, 3> physical_notes() {

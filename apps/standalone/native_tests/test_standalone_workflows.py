@@ -47,25 +47,65 @@ INITIAL_CONTROLS = {
         [[0, 1, 2, 3, 4, 5, 6, 7, 8], [8, 7, 6, 5, 4, 3, 2, 1, 0]],
         [[1, 3, 5, 7, 0, 2, 4, 6, 8], [8, 6, 4, 2, 0, 7, 5, 3, 1]],
     ],
-    "selected_banks": [0, 1],
+    "selected_banks": [0, 1], "fixed_registrations": [0, 0], "preset_selections": [0, 11],
     "route_enabled": [False, True],
     "expression": 0.375,
     "pedal_drawbars": [2, 7],
     "percussion": {"enabled": True, "harmonic": 1, "volume": 1, "decay": 1},
 }
 
-SAVED_STATE = b"""B3CONTROLS3
+SAVED_STATE = b"""B3CONTROLS4
+registration_catalog atlas-chapel-nominal-v1 sha256 c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf
 expression 0.375
 percussion enabled 1 harmonic third volume soft decay fast
 pedal drawbars 2 7
-manual upper selected A route_enabled 0
+manual upper selected A fixed_registration none route_enabled 0
 bank A 0 1 2 3 4 5 6 7 8
 bank B 0 7 6 5 4 3 2 1 0
-manual lower selected B route_enabled 1
+manual lower selected B fixed_registration none route_enabled 1
 bank A 1 3 5 7 0 2 4 6 8
 bank B 8 6 4 2 0 7 5 3 1
 end
 """
+
+
+# Independent state4 input exercises remembered banks distinct from fixed rows.
+FIXED_STATE = b"""B3CONTROLS4
+registration_catalog atlas-chapel-nominal-v1 sha256 c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf
+expression 0.375
+percussion enabled 1 harmonic third volume soft decay fast
+pedal drawbars 2 7
+manual upper selected A fixed_registration F# route_enabled 1
+bank A 0 1 2 3 4 5 6 7 8
+bank B 8 7 6 5 4 3 2 1 0
+manual lower selected B fixed_registration G# route_enabled 1
+bank A 1 3 5 7 0 2 4 6 8
+bank B 8 6 4 2 0 7 5 3 1
+end
+"""
+FIXED_CONTROLS = deepcopy(INITIAL_CONTROLS)
+FIXED_CONTROLS.update(fixed_registrations=[6, 8], preset_selections=[6, 8], route_enabled=[True, True])
+FIXED_SAVED_STATE = b"""B3CONTROLS4
+registration_catalog atlas-chapel-nominal-v1 sha256 c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf
+expression 0.375
+percussion enabled 1 harmonic third volume soft decay fast
+pedal drawbars 2 7
+manual upper selected A fixed_registration F# route_enabled 0
+bank A 0 1 2 3 4 5 6 7 8
+bank B 8 7 6 5 4 3 2 1 0
+manual lower selected A fixed_registration none route_enabled 1
+bank A 1 3 5 7 0 2 4 6 8
+bank B 8 6 4 2 0 7 5 3 1
+end
+"""
+# Independent literal points in the exposed naturals/accidentals at 960x700.
+# Order is C, C#, D, D#, E, F, F#, G, G#, A, A#, B.
+PRESET_POINTS_MINIMUM = (
+    ((34, 469), (44, 440), (54, 469), (64, 440), (74, 469), (94, 469),
+     (104, 440), (114, 469), (124, 440), (134, 469), (144, 440), (154, 469)),
+    ((34, 559), (44, 530), (54, 559), (64, 530), (74, 559), (94, 559),
+     (104, 530), (114, 559), (124, 530), (134, 559), (144, 530), (154, 559)),
+)
 
 EMPTY_HOLDS = ((), (), ())
 
@@ -175,7 +215,8 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.run_count = 0
 
     def invoke(self, source: str, *, state: bytes = INITIAL_STATE,
-               size: tuple[int, int] = (1280, 900)) -> WorkflowRun:
+               size: tuple[int, int] = (1280, 900),
+               initial_size: tuple[int, int] = (1280, 900)) -> WorkflowRun:
         self.run_count += 1
         directory = self.root / f"run-{self.run_count}"
         directory.mkdir()
@@ -191,6 +232,7 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         try:
             process = subprocess.run(
                 [str(self.executable), "--state", str(state_path), "--input-script", str(script_path),
+                 "--width", str(initial_size[0]), "--height", str(initial_size[1]),
                  "--diagnostics", str(diagnostics_path)],
                 cwd=directory, env=environment, stdin=subprocess.DEVNULL,
                 capture_output=True, text=True, errors="replace", timeout=PROCESS_TIMEOUT, check=False,
@@ -219,7 +261,7 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         return WorkflowRun(data, state_path.read_bytes(), elapsed)
 
     def assert_common(self, data: dict, source: str, state_path: Path, size: tuple[int, int]) -> None:
-        self.assertEqual(data["schema_version"], 2)
+        self.assertEqual(data["schema_version"], 3)
         assert_no_midi_input(self, data)
         self.assertEqual(data["application"], "hammond_standalone")
         self.assertEqual(data["state_path"], str(state_path))
@@ -479,17 +521,18 @@ class NativeWorkflowAcceptance(unittest.TestCase):
 
     def test_edit_bank_and_sounding_bank_remain_independent(self) -> None:
         # Literal centers in the default-size Upper cheek: EDIT A (58,508),
-        # EDIT B (130,508), PLAY B (130,536). Tab keeps its semantic UI order;
+        # EDIT B (130,508), preset B (165,590). Tab keeps its semantic UI order;
         # no production layout calculation is reused as an oracle.
         events = [(200, "key_down A none 0")] + click(400, 58, 508)
-        events += tabs(500, 5) + tap(700, "End")
-        events += click(1000, 130, 536) + click(1200, 130, 508)
-        events += tabs(1300, 4) + tap(1500, "Home") + [(1900, "key_up A ctrl+meta")]
+        events += tabs(500, 14) + tap(800, "End")
+        events += click(1000, 165, 590) + click(1200, 130, 508)
+        events += tabs(1300, 13) + tap(1600, "Home") + [(1900, "key_up A ctrl+meta")]
         run = self.invoke(replay(2300, events))
         edited_a = deepcopy(INITIAL_CONTROLS)
         edited_a["manual_drawbars"][0][0][0] = 8
         sounding_b = deepcopy(edited_a)
         sounding_b["selected_banks"][0] = 1
+        sounding_b["preset_selections"][0] = 11
         sounding_b["route_enabled"][0] = True
         edited_b = deepcopy(sounding_b)
         edited_b["manual_drawbars"][0][1][0] = 0
@@ -501,12 +544,12 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.assertEqual(run.saved_bytes, INITIAL_STATE)
 
     def test_cancel_retains_held_notes_and_panic_releases_every_ui_part(self) -> None:
-        events = click(200, 130, 536) + [(400, "key_down A none 0")]
+        events = click(200, 165, 590) + [(400, "key_down A none 0")]
         events += tap(600, "F2") + [(700, "key_down S none 0")]
         events += tap(850, "F3") + [(950, "key_down D none 0")]
-        events += click(1150, 94, 564)
-        # Shift+Tab from Cancel focuses Sounding B; Return reconnects it.
-        events += tap(1400, "Tab", "shift") + tap(1500, "Return")
+        events += click(1150, 35, 590)
+        # End moves preset focus from C to B without routing; Return reconnects B.
+        events += tap(1400, "End") + tap(1500, "Return")
         events += click(1750, 1228, 66)
         events += [(1900, "key_down A none 1"), (1910, "key_down S none 1"),
                    (1920, "key_down D none 1"), (2000, "key_up A none"),
@@ -515,9 +558,11 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         run = self.invoke(replay(2600, events))
         sounding_b = deepcopy(INITIAL_CONTROLS)
         sounding_b["selected_banks"][0] = 1
+        sounding_b["preset_selections"][0] = 11
         sounding_b["route_enabled"][0] = True
         cancelled = deepcopy(sounding_b)
         cancelled["route_enabled"][0] = False
+        cancelled["preset_selections"][0] = 0
         transitions = self.assert_control_path(run, [INITIAL_CONTROLS, sounding_b, cancelled, sounding_b])
         held_all = ((60,), (62,), (5,))
         self.assertEqual(self.holds(transitions[2]), held_all, "Cancel must preserve every original part")
@@ -528,7 +573,13 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.assertEqual(run.saved_bytes, INITIAL_STATE)
 
     def test_ctrl_save_load_roundtrip_exact_bytes_excludes_transient_notes(self) -> None:
-        run = self.invoke((EXAMPLES / "save-controls.b3ui").read_text(encoding="ascii"))
+        # The archived input-v2 fixture retains its old four-Tab geometry.
+        # Current literal order from EDIT B: twelve presets, then the drawbar.
+        events = click(200, 130, 508) + tabs(300, 13) + tap(600, "Home")
+        events += [(750, "key_down A none 0")] + tap(1000, "S", "ctrl")
+        events += tap(1300, "End") + tap(1600, "O", "ctrl")
+        events += [(1900, "key_down A none 1")]
+        run = self.invoke(replay(2300, events))
         saved_controls = deepcopy(INITIAL_CONTROLS)
         saved_controls["manual_drawbars"][0][1][0] = 0
         transitions = self.assert_control_path(run, [INITIAL_CONTROLS, saved_controls, INITIAL_CONTROLS, saved_controls])
@@ -543,12 +594,70 @@ class NativeWorkflowAcceptance(unittest.TestCase):
         self.assert_note_commands(reloaded, 0, 0)
         self.assertEqual(reloaded.saved_bytes, SAVED_STATE)
 
+    def test_all_twenty_four_presets_at_minimum_size_preserve_owners(self) -> None:
+        for manual, points in enumerate(PRESET_POINTS_MINIMUM):
+            for selection, point in enumerate(points):
+                with self.subTest(manual=manual, selection=selection):
+                    events = tap(50, "F1") + [(100, "key_down A none 0")]
+                    events += tap(140, "F2") + [(180, "key_down S none 0")]
+                    events += click(350, *point)
+                    run = self.invoke(replay(750, events), state=FIXED_STATE,
+                                      size=(960, 700), initial_size=(960, 700))
+                    with retain_workflow_failure(run, f"Preset manual={manual}, key={selection}"):
+                        expected = deepcopy(FIXED_CONTROLS)
+                        expected["preset_selections"][manual] = selection
+                        expected["route_enabled"][manual] = selection != 0
+                        if 1 <= selection <= 9:
+                            expected["fixed_registrations"][manual] = selection
+                        elif selection >= 10:
+                            expected["fixed_registrations"][manual] = 0
+                            expected["selected_banks"][manual] = selection - 10
+                        self.assertEqual(run.diagnostics["controls"], expected)
+                        observed = run.diagnostics["replay"]
+                        self.assertEqual(observed["before_shutdown"]["controls"], expected)
+                        self.assertEqual(observed["desired_controls_before_shutdown"], expected)
+                        self.assertFalse(observed["controls_pending_before_shutdown"])
+                        self.assertEqual(self.holds(observed["before_shutdown"]), ((60,), (62,), ()))
+                        self.assert_note_commands(run, 2, 0)
+                        self.assertEqual(run.saved_bytes, FIXED_STATE, "Preset keys never save implicitly")
+
+    def test_fixed_cancel_save_live_load_cold_load_and_audio_restart(self) -> None:
+        events = tap(50, "F1") + [(100, "key_down A none 0")]
+        events += tap(140, "F2") + [(180, "key_down D none 0")]
+        events += click(450, 35, 590) + click(650, 154, 700)
+        events += tap(900, "S", "ctrl")
+        events += click(1200, 165, 590) + click(1400, 45, 700)
+        events += tap(1700, "O", "ctrl")
+        run = self.invoke(replay(2150, events), state=FIXED_STATE)
+        expected = deepcopy(FIXED_CONTROLS)
+        expected.update(selected_banks=[0, 0], fixed_registrations=[6, 0],
+                        preset_selections=[0, 10], route_enabled=[False, True])
+        with retain_workflow_failure(run, "Fixed selection live save/load"):
+            self.assertEqual(run.diagnostics["controls"], expected)
+            self.assertEqual(self.holds(run.diagnostics["replay"]["before_shutdown"]), ((60,), (64,), ()))
+            self.assert_note_commands(run, 2, 0)
+            self.assertEqual(run.saved_bytes, FIXED_SAVED_STATE)
+        cold = self.invoke(replay(400, []), state=run.saved_bytes)
+        self.assertEqual(cold.diagnostics["controls"], expected)
+        self.assert_hold_path(cold, [EMPTY_HOLDS])
+        self.assert_note_commands(cold, 0, 0)
+        self.assertEqual(cold.saved_bytes, FIXED_SAVED_STATE)
+        restarted = self.invoke((EXAMPLES / "audio-settings.b3ui").read_text(encoding="ascii"),
+                                state=run.saved_bytes)
+        with retain_workflow_failure(restarted, "Fixed memory across audio restart"):
+            self.assertEqual(restarted.diagnostics["controls"], expected)
+            self.assertEqual(restarted.diagnostics["replay"]["device_starts"], 2)
+            self.assertEqual(restarted.diagnostics["audio"]["sample_rate"], 96000)
+            self.assertEqual(restarted.diagnostics["audio"]["buffer_frames"], 128)
+            self.assertEqual(self.holds(restarted.diagnostics["replay"]["before_shutdown"]), EMPTY_HOLDS)
+            self.assertEqual(restarted.saved_bytes, FIXED_SAVED_STATE)
+
     def test_resize_preserves_control_focus_and_original_note_release(self) -> None:
         for width, height in ((960, 700), (1600, 1000)):
             with self.subTest(width=width, height=height):
-                # Six header buttons, including MIDI, then five Upper bank
-                # controls put the first drawbar at the twelfth Tab.
-                events = tabs(200, 12) + tap(500, "Home")
+                # Six header controls, two EDIT buttons and twelve presets
+                # put the first Upper drawbar at the twenty-first Tab.
+                events = tabs(100, 21) + tap(550, "Home")
                 events += [(650, "key_down A none 0"), (850, f"resize {width} {height}")]
                 events += tap(1050, "Right")
                 zero = deepcopy(INITIAL_CONTROLS)

@@ -310,6 +310,8 @@ def _events(raw, frames, schema_version, contacts="ideal"):
             valid = index == 0 and 0 <= number <= 1
         elif kind == "select_bank":
             valid = index == 0 and number in (0, 1)
+        elif kind == "select_preset" and schema_version == 3:
+            valid = index == 0 and 0 <= number <= 11 and number.is_integer()
         elif kind in ("all_notes_off", "cancel"):
             valid = index == 0 and number == 0
         elif kind == "percussion" and schema_version >= 2:

@@ -28,6 +28,7 @@ namespace {
 namespace fs = std::filesystem;
 using hammond::ControlSnapshot;
 using hammond::DrawbarBank;
+using hammond::FixedRegistration;
 using hammond::standalone::load_control_file;
 using hammond::standalone::save_control_file;
 
@@ -45,7 +46,7 @@ constexpr std::string_view kPercussion =
     "percussion enabled 1 harmonic third volume soft decay fast\n";
 constexpr std::string_view kDefaultPercussion =
     "percussion enabled 0 harmonic second volume normal decay slow\n";
-constexpr std::string_view kDefaultDocument =
+constexpr std::string_view kLegacyDefaultDocument =
     "B3CONTROLS3\n"
     "expression 1\n"
     "percussion enabled 0 harmonic second volume normal decay slow\n"
@@ -54,6 +55,31 @@ constexpr std::string_view kDefaultDocument =
     "bank A 0 0 0 0 0 0 0 0 0\n"
     "bank B 0 0 0 0 0 0 0 0 0\n"
     "manual lower selected B route_enabled 1\n"
+    "bank A 0 0 0 0 0 0 0 0 0\n"
+    "bank B 0 0 0 0 0 0 0 0 0\n"
+    "end\n";
+constexpr std::string_view kCatalogRecord =
+    "registration_catalog atlas-chapel-nominal-v1 sha256 "
+    "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n";
+constexpr std::string_view kCurrentManualRecords =
+    "manual upper selected A fixed_registration none route_enabled 0\n"
+    "bank A 8 0 3 1 6 2 7 4 5\n"
+    "bank B 1 2 3 4 5 6 7 8 0\n"
+    "manual lower selected B fixed_registration none route_enabled 1\n"
+    "bank A 2 4 6 8 0 1 3 5 7\n"
+    "bank B 7 5 3 1 8 6 4 2 0\n"
+    "end\n";
+constexpr std::string_view kDefaultDocument =
+    "B3CONTROLS4\n"
+    "registration_catalog atlas-chapel-nominal-v1 sha256 "
+    "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n"
+    "expression 1\n"
+    "percussion enabled 0 harmonic second volume normal decay slow\n"
+    "pedal drawbars 0 0\n"
+    "manual upper selected B fixed_registration none route_enabled 1\n"
+    "bank A 0 0 0 0 0 0 0 0 0\n"
+    "bank B 0 0 0 0 0 0 0 0 0\n"
+    "manual lower selected B fixed_registration none route_enabled 1\n"
     "bank A 0 0 0 0 0 0 0 0 0\n"
     "bank B 0 0 0 0 0 0 0 0 0\n"
     "end\n";
@@ -111,6 +137,7 @@ ControlSnapshot varied_controls() {
     result.percussion = {true, hammond::PercussionHarmonic::Third,
                          hammond::PercussionVolume::Soft, hammond::PercussionDecay::Fast};
     result.pedal_drawbars = {6, 2};
+    result.fixed_registrations = {FixedRegistration::CSharp, FixedRegistration::A};
     return result;
 }
 
@@ -121,12 +148,39 @@ ControlSnapshot sentinel_controls() {
     result.route_enabled = {true, false};
     result.pedal_drawbars = {8, 7};
     result.drawbars[1][1][8] = 8;
+    result.fixed_registrations = {FixedRegistration::G, FixedRegistration::DSharp};
     return result;
 }
 
-std::string canonical_document() {
+std::string legacy_version3_document() {
     return std::string("B3CONTROLS3\nexpression 0.625\n") +
         std::string(kPercussion) + "pedal drawbars 6 2\n" + std::string(kManualRecords);
+}
+
+std::string canonical_document() {
+    return
+        "B3CONTROLS4\n"
+        "registration_catalog atlas-chapel-nominal-v1 sha256 "
+        "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf\n"
+        "expression 0.625\n"
+        "percussion enabled 1 harmonic third volume soft decay fast\n"
+        "pedal drawbars 6 2\n"
+        "manual upper selected A fixed_registration C# route_enabled 0\n"
+        "bank A 8 0 3 1 6 2 7 4 5\n"
+        "bank B 1 2 3 4 5 6 7 8 0\n"
+        "manual lower selected B fixed_registration A route_enabled 1\n"
+        "bank A 2 4 6 8 0 1 3 5 7\n"
+        "bank B 7 5 3 1 8 6 4 2 0\n"
+        "end\n";
+}
+
+std::string replaced(std::string document, std::string_view from, std::string_view to) {
+    const auto position = document.find(from);
+    require(position != std::string::npos &&
+            document.find(from, position + from.size()) == std::string::npos,
+            "Fixture mutation must identify exactly one literal field");
+    document.replace(position, from.size(), to);
+    return document;
 }
 
 void same_controls(const ControlSnapshot& actual, const ControlSnapshot& expected) {
@@ -208,40 +262,74 @@ void normal_roundtrip_and_overwrite(const fs::path& root) {
     const auto controls = varied_controls();
     expect_save(root, path, controls, canonical_document());
     expect_load(root, path, controls);
+
+    // A cancelled route is not enough to reconstruct either retained fixed row
+    // or remembered bank. Save both cancelled rows, with expression negative zero.
+    auto cancelled = controls;
+    cancelled.expression = -0.0;
+    cancelled.route_enabled[1] = false;
+    const auto signed_zero_document = replaced(replaced(canonical_document(),
+        "expression 0.625\n", "expression -0\n"),
+        "manual lower selected B fixed_registration A route_enabled 1\n",
+        "manual lower selected B fixed_registration A route_enabled 0\n");
+    expect_save(root, path, cancelled, signed_zero_document);
+    expect_load(root, path, cancelled);
+
     expect_save(root, path, ControlSnapshot{}, kDefaultDocument);
     expect_load(root, path, ControlSnapshot{});
     require(read_bytes(path) == kDefaultDocument, "Overwrite retained old file bytes");
 }
 
 void historical_migration(const fs::path& root) {
-    const std::array<std::string, 2> historical{
+    const std::array<std::string, 3> historical{
         std::string("B3CONTROLS1\nexpression 0.625\n") + std::string(kManualRecords),
         std::string("B3CONTROLS2\nexpression 0.625\n") +
-            std::string(kPercussion) + std::string(kManualRecords)};
+            std::string(kPercussion) + std::string(kManualRecords),
+        legacy_version3_document()};
     for (std::size_t index = 0; index < historical.size(); ++index) {
         const auto path = root / ("legacy-" + std::to_string(index + 1) + ".b3controls");
         write_bytes(path, historical[index]);
         auto expected = varied_controls();
-        expected.pedal_drawbars = {0, 0};
+        expected.fixed_registrations = {FixedRegistration::None, FixedRegistration::None};
+        if (index < 2) expected.pedal_drawbars = {0, 0};
         if (index == 0) expected.percussion = {};
         expect_load(root, path, expected);
         require(read_bytes(path) == historical[index], "Loading rewrote an old-format file");
-        const auto upgraded = std::string("B3CONTROLS3\nexpression 0.625\n") +
+        const auto upgraded = std::string("B3CONTROLS4\n") + std::string(kCatalogRecord) +
+            "expression 0.625\n" +
             std::string(index == 0 ? kDefaultPercussion : kPercussion) +
-            "pedal drawbars 0 0\n" + std::string(kManualRecords);
+            (index < 2 ? "pedal drawbars 0 0\n" : "pedal drawbars 6 2\n") +
+            std::string(kCurrentManualRecords);
         expect_save(root, path, expected, upgraded);
         expect_load(root, path, expected);
     }
+    // Retain the complete former default-writer literal as a version-3 input.
+    const auto defaults = root / "legacy-default-3.b3controls";
+    write_bytes(defaults, kLegacyDefaultDocument);
+    expect_load(root, defaults, ControlSnapshot{});
+    require(read_bytes(defaults) == kLegacyDefaultDocument, "Loading rewrote legacy defaults");
+    expect_save(root, defaults, ControlSnapshot{}, kDefaultDocument);
 }
 
 void rejected_documents_preserve_destination(const fs::path& root) {
     const auto valid = canonical_document();
-    const std::array<std::string, 7> invalid{
+    const std::array<std::string, 13> invalid{
         "", "not a control-state file\n", valid.substr(0, valid.size() - 5),
         valid + "held_note upper 60\n",
-        std::string("B3CONTROLS4") + valid.substr(std::string_view("B3CONTROLS3").size()),
+        replaced(valid, "B3CONTROLS4\n", "B3CONTROLS5\n"),
         valid.substr(0, valid.rfind("end")) + "bank B 9\nend\n",
-        valid + std::string(hammond::kMaxControlStateBytes + 1 - valid.size(), ' ')};
+        valid + std::string(hammond::kMaxControlStateBytes + 1 - valid.size(), ' '),
+        // The historical bare version-4 mutation remains malformed, and cannot
+        // fall back to a legacy reader when its new mandatory fields are absent.
+        std::string("B3CONTROLS4") +
+            legacy_version3_document().substr(std::string_view("B3CONTROLS3").size()),
+        // Validate catalog binding even when BOTH retained modes are none.
+        replaced(std::string(kDefaultDocument), "atlas-chapel-nominal-v1",
+                 "atlas-chapel-nominal-v2"),
+        replaced(std::string(kDefaultDocument), "c9f1dd2d", "d9f1dd2d"),
+        replaced(std::string(kDefaultDocument), "e7b72ebcbf722cf\n", "e7b72ebcbf722c\n"),
+        replaced(std::string(kDefaultDocument), kCatalogRecord, ""),
+        replaced(valid, "fixed_registration C#", "fixed_registration c#")};
     const auto path = root / "rejected.b3controls";
     for (const auto& document : invalid) {
         write_bytes(path, document);
@@ -258,7 +346,7 @@ void invalid_controls_preserve_target(const fs::path& root) {
     const auto path = root / "keep-existing.b3controls";
     const std::string original = "existing user bytes\r\nincluding an unrelated suffix\n";
     write_bytes(path, original);
-    std::array<ControlSnapshot, 8> invalid;
+    std::array<ControlSnapshot, 10> invalid;
     invalid.fill(varied_controls());
     invalid[0].drawbars[1][0][8] = 9;
     invalid[1].selected_banks[0] = static_cast<DrawbarBank>(255);
@@ -268,12 +356,15 @@ void invalid_controls_preserve_target(const fs::path& root) {
     invalid[5].percussion.volume = static_cast<hammond::PercussionVolume>(255);
     invalid[6].percussion.decay = static_cast<hammond::PercussionDecay>(255);
     invalid[7].pedal_drawbars[1] = 9;
+    invalid[8].fixed_registrations[0] = static_cast<FixedRegistration>(10);
+    invalid[9].fixed_registrations[1] = static_cast<FixedRegistration>(255);
+    invalid[9].route_enabled[1] = false;
     for (const auto& controls : invalid) {
         reject_save(root, path, controls);
         require(read_bytes(path) == original, "Invalid controls changed the existing target");
     }
     const auto absent = root / "invalid-must-not-create.b3controls";
-    reject_save(root, absent, invalid[0]);
+    reject_save(root, absent, invalid[8]);
     require(!fs::exists(absent), "Invalid controls created a target");
 }
 
@@ -402,6 +493,9 @@ void failure_after_temporary_creation(const fs::path& root) {
     {
         FileSizeLimit limit;
         reject_save(root, path, ControlSnapshot{});
+        const auto absent = root / "failed-write-must-not-create.b3controls";
+        reject_save(root, absent);
+        require(!fs::exists(absent), "Failed temporary write created a target");
         limit.restore();
     }
     std::cout << "TESTED: failed write under RLIMIT_FSIZE and temporary cleanup\n"

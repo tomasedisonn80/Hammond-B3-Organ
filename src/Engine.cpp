@@ -10,6 +10,12 @@ namespace {
     return value >= 0.0 && value <= maximum && std::trunc(value) == value;
 }
 
+[[nodiscard]] bool upper_percussion_eligible(const ControlSnapshot& controls) noexcept {
+    return controls.percussion.enabled && controls.route_enabled[0] &&
+           controls.fixed_registrations[0] == FixedRegistration::None &&
+           controls.selected_banks[0] == DrawbarBank::B;
+}
+
 [[nodiscard]] bool valid_event_payload(const Event& event, ContactMode mode) noexcept {
     if (!is_valid_manual(event.manual) || !std::isfinite(event.value)) {
         return false;
@@ -36,6 +42,8 @@ namespace {
                is_integer_in_range(event.value, 8.0);
     case EventType::SelectBank:
         return event.index == 0 && is_integer_in_range(event.value, 1.0);
+    case EventType::SelectPreset:
+        return event.index == 0 && is_integer_in_range(event.value, 11.0);
     case EventType::Cancel:
         return event.index == 0 && event.value == 0.0;
     case EventType::Percussion:
@@ -339,12 +347,23 @@ void Engine::apply_event(const Event& event) noexcept {
     }
     case EventType::SelectBank: {
         const auto bank = static_cast<DrawbarBank>(static_cast<std::uint8_t>(event.value));
-        DrawbarBank previous = DrawbarBank::B;
-        bool enabled = false;
-        (void)controls_.selected_bank(event.manual, previous);
-        (void)controls_.route_enabled(event.manual, enabled);
-        if (previous != bank || !enabled) {
+        const auto previous = controls_.snapshot();
+        if (previous.selected_banks[manual] != bank || !previous.route_enabled[manual] ||
+            previous.fixed_registrations[manual] != FixedRegistration::None) {
             (void)controls_.select_bank(event.manual, bank);
+            coefficients_dirty_ = true;
+        }
+        break;
+    }
+    case EventType::SelectPreset: {
+        const auto selection =
+            static_cast<PresetSelection>(static_cast<std::uint8_t>(event.value));
+        const auto previous = controls_.snapshot();
+        (void)controls_.select_preset(event.manual, selection);
+        const auto current = controls_.snapshot();
+        if (previous.selected_banks[manual] != current.selected_banks[manual] ||
+            previous.fixed_registrations[manual] != current.fixed_registrations[manual] ||
+            previous.route_enabled[manual] != current.route_enabled[manual]) {
             coefficients_dirty_ = true;
         }
         break;
@@ -411,8 +430,7 @@ void Engine::rebuild_coefficients() noexcept {
     coefficients_.fill(0.0);
     percussion_coefficients_.fill(0.0);
     const auto controls = controls_.snapshot();
-    percussion_eligible_ = controls.percussion.enabled && controls.route_enabled[0] &&
-                           controls.selected_banks[0] == DrawbarBank::B;
+    percussion_eligible_ = upper_percussion_eligible(controls);
     const std::size_t harmonic_contact =
         controls.percussion.harmonic == PercussionHarmonic::Second ? 3 : 4;
     const double upper_sustain_gain = percussion_state_.upper_sustain_gain(controls.percussion);
@@ -421,6 +439,13 @@ void Engine::rebuild_coefficients() noexcept {
             continue;
         }
         const auto bank = static_cast<std::size_t>(controls.selected_banks[manual]);
+        auto positions = controls.drawbars[manual][bank];
+        if (controls.fixed_registrations[manual] != FixedRegistration::None) {
+            // Resolve once per enabled manual. The installed snapshot is valid,
+            // and the immutable row uses the same nominal profile gain indices.
+            (void)fixed_registration_positions(static_cast<Manual>(manual),
+                                                controls.fixed_registrations[manual], positions);
+        }
         for (std::size_t key = 0; key < kManualKeyCount; ++key) {
             const auto midi_note = static_cast<std::uint32_t>(key) + kMinManualMidiNote;
             for (std::size_t drawbar = 0; drawbar < kDrawbarCount; ++drawbar) {
@@ -431,8 +456,7 @@ void Engine::rebuild_coefficients() noexcept {
                     continue;
                 }
                 const auto tone = static_cast<std::size_t>(profile_.manual_map[key][drawbar]) - 1;
-                const auto position =
-                    static_cast<std::size_t>(controls.drawbars[manual][bank][drawbar]);
+                const auto position = static_cast<std::size_t>(positions[drawbar]);
                 if (manual == 0 && percussion_eligible_) {
                     if (drawbar == harmonic_contact) {
                         // Each currently connected branch shares its existing
@@ -520,6 +544,10 @@ bool Engine::selected_bank(Manual manual, DrawbarBank& destination) const noexce
     return prepared_ && controls_.selected_bank(manual, destination);
 }
 
+bool Engine::selected_preset(Manual manual, PresetSelection& destination) const noexcept {
+    return prepared_ && controls_.selected_preset(manual, destination);
+}
+
 bool Engine::route_enabled(Manual manual, bool& destination) const noexcept {
     return prepared_ && controls_.route_enabled(manual, destination);
 }
@@ -550,8 +578,7 @@ PercussionRoutingDiagnostics Engine::percussion_diagnostics() const noexcept {
     const auto controls = controls_.snapshot();
     bool physical_detector = false;
     (void)contact_bank_.any_closed(Manual::Upper, kDrawbarCount - 1, physical_detector);
-    const bool eligible = controls.percussion.enabled && controls.route_enabled[0] &&
-                          controls.selected_banks[0] == DrawbarBank::B;
+    const bool eligible = upper_percussion_eligible(controls);
     return {true, percussion_state_.readiness(), physical_detector, eligible,
             eligible && physical_detector,
             eligible ? percussion_state_.gain(controls.percussion) : 0.0,

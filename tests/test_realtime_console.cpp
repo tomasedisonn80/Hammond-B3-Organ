@@ -375,12 +375,18 @@ void owned_process(Engine& engine, NoteOwnership& owners, std::uint32_t frames,
 }
 
 constexpr std::size_t key_count = kManualCount * kManualKeyCount;
+// Preserve the original manual workload's 45 control events and ordering. The
+// current-registry probe below independently covers the two appended selectors;
+// their musical realtime paths also have test_preset_realtime coverage.
+constexpr std::size_t legacy_control_count = 45;
+static_assert(kParameterCount == legacy_control_count + 2,
+              "Review the retained workload when the append-only registry changes");
 struct Fixtures {
-    std::array<Event, kParameterCount> controls{};
+    std::array<Event, legacy_control_count> controls{};
     std::array<Event, key_count> full{};
     std::array<Event, key_count> partial{};
     std::array<Event, key_count> release{};
-    std::array<Event, kParameterCount + key_count> first{};
+    std::array<Event, legacy_control_count + key_count> first{};
     std::array<Event, kMaxEventsPerBlock> dense{};
     std::array<Event, kMaxEventsPerBlock> flush{};
     std::array<Event, kMaxEventsPerBlock> invalid_tail{};
