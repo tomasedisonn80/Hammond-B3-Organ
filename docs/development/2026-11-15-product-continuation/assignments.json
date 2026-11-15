@@ -375,40 +375,131 @@
       "wave": 5,
       "agent": "/root/w05_a26_native_calibration_lifecycle",
       "task": "Real native calibration and reconnect lifecycle through isolated thread-safe test dependency",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A26-native-calibration-lifecycle.md",
       "owned_files": [
         "apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
         "apps/standalone/native_tests/fake_calibration/RtMidi.h",
         "apps/standalone/native_tests/test_standalone_native_calibration.py",
         "docs/development/2026-11-15-product-continuation/notes/A26-native-calibration-lifecycle.md"
-      ]
+      ],
+      "note_sha256": "2be9daf4ea2a9afdf5cd8b647974c1a29ec97e84aab37077c6104eaf64d1fb15",
+      "acceptance": "Real native fixture9tests/10processes/7lifecycles accepted; root coordinated CMake build and integratedCTest passed20.56s. Production main/MidiDevice/painter source unchanged; no hardware or callback-concurrency claim."
     },
     {
       "id": "A27",
       "wave": 5,
       "agent": "/root/w05_a27_paint_performance",
       "task": "Paired before/after native paint timing and bounded-resource qualification",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A27-paint-performance.md",
       "owned_files": [
         "tools/standalone_paint_benchmark.cpp",
         "docs/development/2026-11-15-product-continuation/notes/A27-paint-performance.md",
         "docs/development/2026-11-15-product-continuation/reports/A27-paint-performance.json"
-      ]
+      ],
+      "note_sha256": "d5fe12583e97aa6d33c24a47acb3c20c1dc9cdd8be28b2b6e62de852586b93e6",
+      "acceptance": "Paired30warmup/300measurement six-case report reviewed; largestmedian+1.23%; calibratedheapwide21to19; manualCMake targetwired"
     },
     {
       "id": "A28",
       "wave": 5,
       "agent": "/root/w05_a28_crossover_characterization",
       "task": "Same-Hz electrical characterization, reproducible plot and next numerical gate",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A28-crossover-characterization.md",
       "owned_files": [
         "docs/LESLIE_CROSSOVER_CHARACTERIZATION.md",
         "tools/plot_crossover_characterization.py",
         "docs/design/crossover/",
         "docs/development/2026-11-15-product-continuation/notes/A28-crossover-characterization.md"
+      ],
+      "note_sha256": "930d3546d63a6d3caae6af4c22ec6a28b096fd6794257eb9dc47d8f2d0d464aa",
+      "acceptance": "Source-bound same-Hz characterization and deterministicplot reviewed; rootvisuallyinspectedPNG; noaudible orphysicalpassclaimed"
+    },
+    {
+      "id": "A29",
+      "wave": 5,
+      "agent": "/root/w05_a29_compatibility",
+      "task": "Independent musical-state, core, parameter and VST3 compatibility review",
+      "status": "accepted",
+      "note": "notes/A29-compatibility.md",
+      "owned_files": [
+        "docs/PRODUCT_COMPATIBILITY.md",
+        "docs/development/2026-11-15-product-continuation/notes/A29-compatibility.md"
+      ],
+      "note_sha256": "86ad3615bc40de087851a5d944e77327326b9f1eb4568fd924dd3e55ccb1ae16",
+      "acceptance": "Independent source comparison verified unchanged 47-parameter/state4/readers1-3/core/VST3 contracts; complete file-set and receipt checks retained."
+    },
+    {
+      "id": "A30",
+      "wave": 5,
+      "agent": "/root/w05_a30_portability_review",
+      "task": "Independent numerical/native code and portability review",
+      "status": "accepted",
+      "note": "notes/A30-portability-review.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_CONTINUATION_CODE_REVIEW.md",
+        "docs/development/2026-11-15-product-continuation/notes/A30-portability-review.md",
+        "tools/standalone_paint_benchmark.cpp (paired-dependent metadata correction only)"
+      ],
+      "note_sha256": "9cbc76fbd2e2a3d92f5712a12ec9eb8ba2d07ac2ec0c942d05a32ff6d77472d1",
+      "acceptance": "Independent portability review completed; one ordinary benchmark metadata defect repaired and actual bounded output check passed. Original measured source/report archived in99b3634; no production defect confirmed."
+    },
+    {
+      "id": "A31",
+      "wave": 6,
+      "agent": "/root/w06_a31_crossover_install",
+      "task": "Relocatable explicit CrossoverTools component, preflight and installed workflow acceptance",
+      "status": "accepted",
+      "note": "notes/A31-crossover-install.md",
+      "owned_files": [
+        "cmake/InstallCrossoverTools.cmake",
+        "tests/test_crossover_install.py",
+        "docs/CROSSOVER_INSTALL.md",
+        "docs/development/2026-11-15-product-continuation/notes/A31-crossover-install.md"
+      ],
+      "note_sha256": "490cb2ca292f5d35e0d746cb02799e1c2322d8c433259f195d1c03853078bf21",
+      "acceptance": "Private installation fixture14/14 passed; root CMake integration and discovered CTest passed1/1 in1.61s; source and payload hashes recorded."
+    },
+    {
+      "id": "A32",
+      "wave": 6,
+      "agent": "/root/w06_a32_midi_operating_guide",
+      "task": "Current native MIDI calibration operating guide and runbook reconciliation",
+      "status": "running",
+      "note": "notes/A32-midi-operating-guide.md",
+      "owned_files": [
+        "docs/MIDI_EXPRESSION_GUIDE.md",
+        "docs/INTERFACE_RUNBOOK.md",
+        "docs/PRESET_RUNBOOK.md",
+        "docs/MIDI_UI_RUNBOOK.md",
+        "docs/development/2026-11-15-product-continuation/notes/A32-midi-operating-guide.md"
+      ]
+    },
+    {
+      "id": "A33",
+      "wave": 6,
+      "agent": "/root/w06_a33_crossover_developer_guide",
+      "task": "Independent crossover developer API and reproducible workflow guide",
+      "status": "running",
+      "note": "notes/A33-crossover-developer-guide.md",
+      "owned_files": [
+        "docs/CROSSOVER_DEVELOPER_GUIDE.md",
+        "docs/development/2026-11-15-product-continuation/notes/A33-crossover-developer-guide.md"
+      ]
+    },
+    {
+      "id": "A34",
+      "wave": 6,
+      "agent": "/root/w06_a34_reference_gap_review",
+      "task": "Independent reference comparison and current visual acceptance/gap record",
+      "status": "running",
+      "note": "notes/A34-reference-gap-review.md",
+      "owned_files": [
+        "docs/design/PRODUCT_REFERENCE_GAPS.md",
+        "docs/PRODUCT_VISUAL_REFINEMENT.md",
+        "docs/development/2026-11-15-product-continuation/notes/A34-reference-gap-review.md"
       ]
     }
   ]

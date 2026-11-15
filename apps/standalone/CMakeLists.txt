@@ -142,6 +142,13 @@ if(HAMMOND_BUILD_STANDALONE)
     target_compile_definitions(hammond_standalone PRIVATE SDL_MAIN_HANDLED)
     hammond_configure_target(hammond_standalone)
     add_dependencies(hammond_standalone hammond_profile)
+    # Manual software-paint measurement; deliberately not a timing CTest gate.
+    add_executable(hammond_standalone_paint_benchmark
+        "${PROJECT_SOURCE_DIR}/tools/standalone_paint_benchmark.cpp" InstrumentView.cpp)
+    target_link_libraries(hammond_standalone_paint_benchmark PRIVATE
+        hammond_standalone_drawing hammond_standalone_support)
+    target_compile_definitions(hammond_standalone_paint_benchmark PRIVATE SDL_MAIN_HANDLED)
+    hammond_configure_target(hammond_standalone_paint_benchmark)
     if(BUILD_TESTING)
         add_executable(test_standalone_drawing native_tests/test_standalone_drawing.cpp)
         target_link_libraries(test_standalone_drawing PRIVATE hammond_standalone_drawing)
@@ -309,6 +316,30 @@ if(HAMMOND_BUILD_STANDALONE)
                 "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_expression_diagnostics.py")
         set_tests_properties(test_standalone_expression_diagnostics PROPERTIES
             TIMEOUT 90 LABELS "standalone;native;midi")
+        # Test-only dependency substitution around the unchanged native app and
+        # transport; the shipped executable retains its configured backend.
+        if((CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT ANDROID) OR
+           CMAKE_SYSTEM_NAME STREQUAL "Windows" OR CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+            add_executable(hammond_standalone_calibration_probe
+                native_tests/calibration_lifecycle_driver.cpp MidiDevice.cpp
+                InstrumentView.cpp "${HAMMOND_STANDALONE_PROFILE}")
+            target_include_directories(hammond_standalone_calibration_probe BEFORE PRIVATE
+                "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/fake_calibration"
+                "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/generated")
+            target_compile_definitions(hammond_standalone_calibration_probe PRIVATE
+                SDL_MAIN_HANDLED HAMMOND_HAS_RTMIDI=1)
+            target_link_libraries(hammond_standalone_calibration_probe PRIVATE
+                hammond_standalone_audio hammond_standalone_replay hammond_standalone_drawing)
+            hammond_configure_target(hammond_standalone_calibration_probe)
+            add_dependencies(hammond_standalone_calibration_probe hammond_profile)
+            add_test(NAME test_standalone_native_calibration
+                COMMAND "${CMAKE_COMMAND}" -E env
+                    "HAMMOND_STANDALONE_CALIBRATION_PROBE=$<TARGET_FILE:hammond_standalone_calibration_probe>"
+                    "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_native_calibration.py")
+            set_tests_properties(test_standalone_native_calibration PROPERTIES
+                TIMEOUT 90 LABELS "standalone;native;midi")
+            list(APPEND HAMMOND_STANDALONE_TEST_TARGETS hammond_standalone_calibration_probe)
+        endif()
         add_test(NAME test_standalone_native_midi_replay
             COMMAND "${CMAKE_COMMAND}" -E env
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"

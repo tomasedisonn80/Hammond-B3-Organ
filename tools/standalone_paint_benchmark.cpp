@@ -563,7 +563,8 @@ int run(int argc, char** argv) {
               << ",\"height\":" << height << ",\"presentation\":\"" << presentation_name
               << "\",\"scenario\":\"" << scenario_name << "\",\"overlay\":\"none\",\"workspace\":\"Play\""
               << ",\"paired\":" << (paired ? "true" : "false")
-              << ",\"alternating_order\":true,\"warmup_each\":" << kWarmup << ",\"samples_each\":" << kSamples
+              << ",\"alternating_order\":" << (paired ? "true" : "false")
+              << ",\"warmup_each\":" << kWarmup << ",\"samples_each\":" << kSamples
               << ",\"renderer\":\"" << renderer_info.name << "\",\"renderer_flags\":" << renderer_info.flags
               << ",\"sdl_version\":\"" << static_cast<unsigned>(version.major) << '.'
               << static_cast<unsigned>(version.minor) << '.' << static_cast<unsigned>(version.patch)

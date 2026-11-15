@@ -389,6 +389,7 @@ endif()
 
 # Component-scoped installation is defined after all targets and tests.
 include(cmake/InstallHammondTools.cmake)
+include(cmake/InstallCrossoverTools.cmake)
 include(cmake/InstallCaptureTools.cmake)
 include(cmake/InstallStandalone.cmake)
 
