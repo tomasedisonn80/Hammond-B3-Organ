@@ -118,16 +118,22 @@ RuntimeProfile aligned_profile(const RuntimeProfile& nominal, double rate, doubl
 void whole_field_headroom(const RuntimeProfile& nominal) {
     const auto graph = full_field();
     CHECK(std::nextafter(kLargestGain, 1.0) == kNextGain);
-    // Literal outcomes frozen from independent binary64 arithmetic before any
-    // execution of this test. Pedal 1 has two connected +1 branches on each bus.
-    // At 9*eta each source is 17*eta; bus 34*eta becomes mixture 33*eta because
-    // the nominal 1/4 and 1/8 multiplications round in the subnormal domain.
-    struct Fixture { double gain, bound, bus, mixture; };
+    // Pedal 1 has two connected +1 branches on each bus. At 9*eta each source
+    // is exactly 17*eta and each bus is 34*eta. The unchanged pedal mixer permits
+    // same-expression contraction: independently enumerating every per-term
+    // rounding choice gives exactly 33*eta or 34*eta for either mixture row.
+    // Rows need not contract identically. Normal fixtures retain one exact
+    // result; no leakage bound, gain threshold or tolerance is changed.
+    // See docs/reviews/SOURCE_LEAKAGE_PORTABILITY.md for the retained failure
+    // and exact rational derivation of the permitted downstream tuples.
+    struct Fixture { double gain, bound, bus; std::array<double, 2> mixtures; };
     constexpr std::array<Fixture, 3> fixtures{{
         {0x0.0000000000009p-1022, 0x0.000000000001fp-1022,
-         0x0.0000000000022p-1022, 0x0.0000000000021p-1022},
-        {0.5, 0x1.8000000000041p-1, 1.5, 1.5},
-        {kLargestGain, 1.0, 0x1.fffffffffffacp+0, 0x1.fffffffffffacp+0},
+         0x0.0000000000022p-1022,
+         {0x0.0000000000021p-1022, 0x0.0000000000022p-1022}},
+        {0.5, 0x1.8000000000041p-1, 1.5, {1.5, 1.5}},
+        {kLargestGain, 1.0, 0x1.fffffffffffacp+0,
+         {0x1.fffffffffffacp+0, 0x1.fffffffffffacp+0}},
     }};
     for (const double rate : {44100.0, 48000.0, 96000.0}) {
         for (const double sign : {1.0, -1.0}) {
@@ -160,12 +166,23 @@ void whole_field_headroom(const RuntimeProfile& nominal) {
                     CHECK(actual.valid && actual.frame == 19 && actual.sample_rate == rate);
                     CHECK(actual.positions == positions);
                     for (const double bus : actual.buses) CHECK(bus == sign * fixture.bus);
-                    for (const double mixture : actual.voice.mixtures)
-                        CHECK(mixture == sign * fixture.mixture);
-                    const double expected_voice = sign * fixture.mixture *
-                        (positions[0] == positions[1] ? 2.0 : 1.0);
-                    CHECK(actual.voice.output == expected_voice);
-                    CHECK(output[0] == static_cast<float>(expected_voice * profile.output_gain));
+                    bool matched_exact_tuple = false;
+                    for (const double first : fixture.mixtures) {
+                        for (const double second : fixture.mixtures) {
+                            const double expected_first = sign * first;
+                            const double expected_second = sign * second;
+                            const double expected_voice =
+                                (positions[0] == 8 ? expected_first : 0.0) +
+                                (positions[1] == 8 ? expected_second : 0.0);
+                            matched_exact_tuple |=
+                                actual.voice.mixtures[0] == expected_first &&
+                                actual.voice.mixtures[1] == expected_second &&
+                                actual.voice.output == expected_voice &&
+                                output[0] == static_cast<float>(
+                                    expected_voice * profile.output_gain);
+                        }
+                    }
+                    CHECK(matched_exact_tuple);
                 }
             }
         }

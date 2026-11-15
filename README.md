@@ -129,6 +129,7 @@ default/empty-gain-one control, and preserves all commands, profiles, scores,
 hashes and receipts. Its independent solo PCM calculation observed zero error
 within the frozen one-step allowance. [Core/data contract](docs/SOURCE_LEAKAGE_CONTRACT.md)
 · [Engine/offline contract](docs/SOURCE_LEAKAGE_AUDITION_CONTRACT.md).
+[Install and run the relocatable tools](docs/SOURCE_LEAKAGE_INSTALL.md).
 
 Other development paths have their own setup: [optional VST3 and pinned SDK](docs/VST3_BUILD.md), [independent crossover targets](docs/CROSSOVER_DEVELOPER_GUIDE.md), [CrossoverTools installation](docs/CROSSOVER_INSTALL.md), [rotary waveform CLI](docs/ROTARY_RENDER_CLI.md) and [capture/calibration tools](docs/CALIBRATION_RUNBOOK.md). VST3 requires CMake 3.25+ and its separately acquired SDK; the native interface shown here is the standalone application.
 

@@ -301,7 +301,7 @@ if(BUILD_TESTING)
             "HAMMOND_SOURCE_LEAKAGE_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_source_leakage_probe>")
         set_tests_properties(python_test_source_leakage_roundtrip PROPERTIES
             TIMEOUT 90 LABELS "source;leakage;data")
-        list(APPEND HAMMOND_TEST_TARGETS hammond_source_leakage_probe)
+        list(APPEND HAMMOND_TEST_TARGETS hammond_source_leakage_probe hammond_source_leakage_benchmark)
     endif()
 
     if(TEST python_test_crossover_acceptance)
@@ -426,6 +426,7 @@ endif()
 
 # Component-scoped installation is defined after all targets and tests.
 include(cmake/InstallHammondTools.cmake)
+include(cmake/InstallSourceLeakageTools.cmake)
 include(cmake/InstallCrossoverTools.cmake)
 include(cmake/InstallCaptureTools.cmake)
 include(cmake/InstallStandalone.cmake)

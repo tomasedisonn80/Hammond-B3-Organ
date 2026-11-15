@@ -26,3 +26,11 @@ Capture the actual changed app, compare the original reference and baseline unde
 10. Independent final acceptance and sixty-record closure.
 
 Later assignments may adapt to findings while preserving actual dispatch identities. Three worker slots execute each logical wave in two tranches. Earlier sessions and follow-ups never add new worker credit. The integrator owns shared docs/build/publication; other checkouts and unfinished work are read-only.
+
+## Next phase after the first published implementation
+
+Checkpoint `9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994` publishes the originally admitted M2 and percussion work. Its original contracts, captures and acceptance remain source-specific historical evidence. The user's whole-interface reference requirement is still active. A29's independent review identifies coordinated panel allocation as the next useful development phase, so wave 6 adds a separately reviewed canonical wide-Dimensional-Play layout contract (A32/A33); subsequent waves may implement and independently qualify that contract.
+
+The extension can reposition the header/performance/racks/manuals/preset cheeks and cabinet utility controls within the active wide Play branch to approach measured reference anchors, while preserving every real control, sound/state meaning, playable key, input owner and inactive mode. It must preserve truthful scanner/Leslie capability presentation and correct musical labels. Current narrow-contract tests may receive explicit new-contract expectations; their old source and original results must remain recoverable from the published checkpoint, never retroactively called proof of changed code. New active geometry, interaction, raster and actual application evidence is required. Root owns source reconciliation and verifies fresh remote history before publication; unpublished work in other sessions is preserved and not imported implicitly.
+
+Waves 7–8 therefore include coordinated reference implementation and its independent evidence as well as the originally planned portability/adversarial and recovery work. Waves 9–10 retain final actual hosted qualification and independent sixty-worker closure. Only actual dispatches count; the fixed total and six-worker grouping remain unchanged.

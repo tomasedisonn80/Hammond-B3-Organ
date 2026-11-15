@@ -1,0 +1,5286 @@
+{
+  "schema": 1,
+  "worker": "/root/w06_a35_subnormal_portability",
+  "wave": 6,
+  "recorded_utc": "2026-11-15T12:54:47.384663+00:00",
+  "status": "approved-test-correction; syntax-and-isolated-native-probes-pass; primary-linked-and-repaired-hosted-pending",
+  "observed_head": "a0aec2cdb08699e6da9ee8690be78d814e0b9bdf",
+  "failure": {
+    "commit": "9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994",
+    "job_id": 132814560364,
+    "job_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43715019795/job/132814560364",
+    "retained_log": "docs/development/2026-11-15-audio-continuation/reports/implementation-macos-first.log.gz",
+    "retained_log_sha256": "a86d3e433bc7d9ea9c4d46dd4334e991163fd89244f01b8d93b22436d5d562e9",
+    "original_test_sha256": "bfe916f1d377b984b518ea8d063dcba83d8a1f63eb83111687ab5ba5cb6ef192",
+    "excerpts": [
+      "2026-11-15T12:40:28.8199990Z -- The CXX compiler identification is AppleClang 17.0.0.17000013",
+      "2026-11-15T12:40:35.0399750Z /usr/bin/clang++  -I/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-release/generated -O3 -DNDEBUG -std=c++20 -arch arm64 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -MD -MT CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o -MF CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o.d -o CMakeFiles/hammond_core.dir/src/PedalVoice.cpp.o -c /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/PedalVoice.cpp",
+      "2026-11-15T12:41:45.6380560Z /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_source_leakage_lifecycle.cpp:164: CHECK failed: mixture == sign * fixture.mixture"
+    ],
+    "reported_actual_mixture": "not printed by original CHECK; cannot claim directly observed Apple33/34value"
+  },
+  "primary_reference": {
+    "url": "https://clang.llvm.org/docs/UsersManual.html#cmdoption-ffp-contract",
+    "retrieved_utc_date": "2026-11-15",
+    "scope": "Clang documents default same-statement contraction and precise mode allowing FMA; no claim that upstream documentation independently observes Apple code generation."
+  },
+  "derivation": {
+    "model": "exact rational arithmetic; binary64 nearest ties-to-even",
+    "tiny_cases": [
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 0,
+        "trace_eta": [
+          17,
+          25,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 1,
+        "trace_eta": [
+          17,
+          25,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 2,
+        "trace_eta": [
+          17,
+          26,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 3,
+        "trace_eta": [
+          17,
+          26,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 4,
+        "trace_eta": [
+          17,
+          25,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 5,
+        "trace_eta": [
+          17,
+          25,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 6,
+        "trace_eta": [
+          17,
+          26,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 7,
+        "trace_eta": [
+          17,
+          26,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 8,
+        "trace_eta": [
+          17,
+          25,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 9,
+        "trace_eta": [
+          17,
+          25,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 10,
+        "trace_eta": [
+          17,
+          26,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 11,
+        "trace_eta": [
+          17,
+          26,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 12,
+        "trace_eta": [
+          17,
+          25,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 13,
+        "trace_eta": [
+          17,
+          25,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 14,
+        "trace_eta": [
+          17,
+          26,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 0,
+        "fused_mask": 15,
+        "trace_eta": [
+          17,
+          26,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 0,
+        "trace_eta": [
+          4,
+          21,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 1,
+        "trace_eta": [
+          4,
+          21,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 2,
+        "trace_eta": [
+          4,
+          21,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 3,
+        "trace_eta": [
+          4,
+          21,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 4,
+        "trace_eta": [
+          4,
+          21,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 5,
+        "trace_eta": [
+          4,
+          21,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 6,
+        "trace_eta": [
+          4,
+          21,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 7,
+        "trace_eta": [
+          4,
+          21,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 8,
+        "trace_eta": [
+          4,
+          21,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 9,
+        "trace_eta": [
+          4,
+          21,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 10,
+        "trace_eta": [
+          4,
+          21,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 11,
+        "trace_eta": [
+          4,
+          21,
+          29,
+          33
+        ],
+        "mixture_eta": 33
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 12,
+        "trace_eta": [
+          4,
+          21,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 13,
+        "trace_eta": [
+          4,
+          21,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 14,
+        "trace_eta": [
+          4,
+          21,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": 1,
+        "row": 1,
+        "fused_mask": 15,
+        "trace_eta": [
+          4,
+          21,
+          30,
+          34
+        ],
+        "mixture_eta": 34
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 0,
+        "trace_eta": [
+          -17,
+          -25,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 1,
+        "trace_eta": [
+          -17,
+          -25,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 2,
+        "trace_eta": [
+          -17,
+          -26,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 3,
+        "trace_eta": [
+          -17,
+          -26,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 4,
+        "trace_eta": [
+          -17,
+          -25,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 5,
+        "trace_eta": [
+          -17,
+          -25,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 6,
+        "trace_eta": [
+          -17,
+          -26,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 7,
+        "trace_eta": [
+          -17,
+          -26,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 8,
+        "trace_eta": [
+          -17,
+          -25,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 9,
+        "trace_eta": [
+          -17,
+          -25,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 10,
+        "trace_eta": [
+          -17,
+          -26,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 11,
+        "trace_eta": [
+          -17,
+          -26,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 12,
+        "trace_eta": [
+          -17,
+          -25,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 13,
+        "trace_eta": [
+          -17,
+          -25,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 14,
+        "trace_eta": [
+          -17,
+          -26,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 0,
+        "fused_mask": 15,
+        "trace_eta": [
+          -17,
+          -26,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 0,
+        "trace_eta": [
+          -4,
+          -21,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 1,
+        "trace_eta": [
+          -4,
+          -21,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 2,
+        "trace_eta": [
+          -4,
+          -21,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 3,
+        "trace_eta": [
+          -4,
+          -21,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 4,
+        "trace_eta": [
+          -4,
+          -21,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 5,
+        "trace_eta": [
+          -4,
+          -21,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 6,
+        "trace_eta": [
+          -4,
+          -21,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 7,
+        "trace_eta": [
+          -4,
+          -21,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 8,
+        "trace_eta": [
+          -4,
+          -21,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 9,
+        "trace_eta": [
+          -4,
+          -21,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 10,
+        "trace_eta": [
+          -4,
+          -21,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 11,
+        "trace_eta": [
+          -4,
+          -21,
+          -29,
+          -33
+        ],
+        "mixture_eta": -33
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 12,
+        "trace_eta": [
+          -4,
+          -21,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 13,
+        "trace_eta": [
+          -4,
+          -21,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 14,
+        "trace_eta": [
+          -4,
+          -21,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      },
+      {
+        "sign": -1,
+        "row": 1,
+        "fused_mask": 15,
+        "trace_eta": [
+          -4,
+          -21,
+          -30,
+          -34
+        ],
+        "mixture_eta": -34
+      }
+    ],
+    "normal_cases": [
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 0,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 1,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 2,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 3,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 4,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 5,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 6,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 7,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 8,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 9,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 10,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 11,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 12,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 13,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 14,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 15,
+        "trace_hex": [
+          "0x1.8000000000000p-1",
+          "0x1.2000000000000p+0",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 0,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 1,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 2,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 3,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 4,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 5,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 6,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 7,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 8,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 9,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 10,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 11,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 12,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 13,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 14,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 15,
+        "trace_hex": [
+          "0x1.8000000000000p-3",
+          "0x1.e000000000000p-1",
+          "0x1.5000000000000p+0",
+          "0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 0,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 1,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 2,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 3,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 4,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 5,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 6,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 7,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 8,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 9,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 10,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 11,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 12,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 13,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 14,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 0,
+        "fused_mask": 15,
+        "trace_hex": [
+          "-0x1.8000000000000p-1",
+          "-0x1.2000000000000p+0",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 0,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 1,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 2,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 3,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 4,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 5,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 6,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 7,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 8,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 9,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 10,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 11,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 12,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 13,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 14,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "-0x1.8000000000000p+0",
+        "row": 1,
+        "fused_mask": 15,
+        "trace_hex": [
+          "-0x1.8000000000000p-3",
+          "-0x1.e000000000000p-1",
+          "-0x1.5000000000000p+0",
+          "-0x1.8000000000000p+0"
+        ],
+        "mixture_hex": "-0x1.8000000000000p+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 0,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 1,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 2,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 3,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 4,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 5,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 6,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 7,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 8,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 9,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 10,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 11,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 12,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 13,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 14,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 15,
+        "trace_hex": [
+          "0x1.fffffffffffacp-1",
+          "0x1.7ffffffffffc1p+0",
+          "0x1.bffffffffffb6p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 0,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 1,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 2,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 3,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 4,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 5,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 6,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 7,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 8,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 9,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 10,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 11,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 12,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 13,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 14,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 15,
+        "trace_hex": [
+          "0x1.fffffffffffacp-3",
+          "0x1.3ffffffffffccp+0",
+          "0x1.bffffffffffb7p+0",
+          "0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 0,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 1,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 2,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 3,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 4,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 5,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 6,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 7,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 8,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 9,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 10,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 11,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 12,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 13,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 14,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 0,
+        "fused_mask": 15,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-1",
+          "-0x1.7ffffffffffc1p+0",
+          "-0x1.bffffffffffb6p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 0,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 1,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 2,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 3,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 4,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 5,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 6,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 7,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 8,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 9,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 10,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 11,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 12,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 13,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 14,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      },
+      {
+        "bus_hex": "-0x1.fffffffffffacp+0",
+        "row": 1,
+        "fused_mask": 15,
+        "trace_hex": [
+          "-0x1.fffffffffffacp-3",
+          "-0x1.3ffffffffffccp+0",
+          "-0x1.bffffffffffb7p+0",
+          "-0x1.fffffffffffacp+0"
+        ],
+        "mixture_hex": "-0x1.fffffffffffacp+0"
+      }
+    ],
+    "source_cases": [
+      {
+        "sign": 1,
+        "fused_mask": 0,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 1,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 2,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 3,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 4,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 5,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 6,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 7,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 8,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 9,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 10,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 11,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 12,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 13,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 14,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 15,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 16,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 17,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 18,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 19,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 20,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 21,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 22,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 23,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 24,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 25,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 26,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 27,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 28,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 29,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 30,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 31,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 32,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 33,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 34,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 35,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 36,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 37,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 38,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 39,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 40,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 41,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 42,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 43,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 44,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 45,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 46,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 47,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 48,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 49,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 50,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 51,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 52,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 53,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 54,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 55,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 56,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 57,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 58,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 59,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 60,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 61,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 62,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 63,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 64,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 65,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 66,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 67,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 68,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 69,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 70,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 71,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 72,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 73,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 74,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 75,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 76,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 77,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 78,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 79,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 80,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 81,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 82,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 83,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 84,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 85,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 86,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 87,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 88,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 89,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 90,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 91,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 92,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 93,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 94,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 95,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 96,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 97,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 98,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 99,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 100,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 101,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 102,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 103,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 104,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 105,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 106,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 107,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 108,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 109,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 110,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 111,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 112,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 113,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 114,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 115,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 116,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 117,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 118,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 119,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 120,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 121,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 122,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 123,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 124,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 125,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 126,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 127,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 128,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 129,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 130,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 131,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 132,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 133,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 134,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 135,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 136,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 137,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 138,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 139,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 140,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 141,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 142,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 143,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 144,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 145,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 146,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 147,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 148,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 149,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 150,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 151,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 152,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 153,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 154,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 155,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 156,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 157,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 158,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 159,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 160,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 161,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 162,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 163,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 164,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 165,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 166,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 167,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 168,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 169,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 170,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 171,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 172,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 173,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 174,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 175,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 176,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 177,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 178,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 179,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 180,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 181,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 182,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 183,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 184,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 185,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 186,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 187,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 188,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 189,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 190,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 191,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 192,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 193,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 194,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 195,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 196,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 197,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 198,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 199,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 200,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 201,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 202,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 203,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 204,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 205,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 206,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 207,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 208,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 209,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 210,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 211,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 212,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 213,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 214,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 215,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 216,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 217,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 218,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 219,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 220,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 221,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 222,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 223,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 224,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 225,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 226,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 227,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 228,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 229,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 230,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 231,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 232,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 233,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 234,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 235,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 236,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 237,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 238,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 239,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 240,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 241,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 242,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 243,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 244,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 245,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 246,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 247,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 248,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 249,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 250,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 251,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 252,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 253,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 254,
+        "source_eta": 17
+      },
+      {
+        "sign": 1,
+        "fused_mask": 255,
+        "source_eta": 17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 0,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 1,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 2,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 3,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 4,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 5,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 6,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 7,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 8,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 9,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 10,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 11,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 12,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 13,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 14,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 15,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 16,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 17,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 18,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 19,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 20,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 21,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 22,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 23,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 24,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 25,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 26,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 27,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 28,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 29,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 30,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 31,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 32,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 33,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 34,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 35,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 36,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 37,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 38,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 39,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 40,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 41,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 42,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 43,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 44,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 45,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 46,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 47,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 48,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 49,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 50,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 51,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 52,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 53,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 54,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 55,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 56,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 57,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 58,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 59,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 60,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 61,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 62,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 63,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 64,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 65,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 66,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 67,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 68,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 69,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 70,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 71,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 72,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 73,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 74,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 75,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 76,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 77,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 78,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 79,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 80,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 81,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 82,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 83,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 84,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 85,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 86,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 87,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 88,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 89,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 90,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 91,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 92,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 93,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 94,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 95,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 96,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 97,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 98,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 99,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 100,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 101,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 102,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 103,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 104,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 105,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 106,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 107,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 108,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 109,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 110,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 111,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 112,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 113,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 114,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 115,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 116,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 117,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 118,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 119,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 120,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 121,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 122,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 123,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 124,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 125,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 126,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 127,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 128,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 129,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 130,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 131,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 132,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 133,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 134,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 135,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 136,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 137,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 138,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 139,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 140,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 141,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 142,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 143,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 144,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 145,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 146,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 147,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 148,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 149,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 150,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 151,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 152,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 153,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 154,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 155,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 156,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 157,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 158,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 159,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 160,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 161,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 162,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 163,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 164,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 165,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 166,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 167,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 168,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 169,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 170,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 171,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 172,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 173,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 174,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 175,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 176,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 177,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 178,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 179,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 180,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 181,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 182,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 183,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 184,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 185,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 186,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 187,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 188,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 189,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 190,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 191,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 192,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 193,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 194,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 195,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 196,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 197,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 198,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 199,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 200,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 201,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 202,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 203,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 204,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 205,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 206,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 207,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 208,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 209,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 210,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 211,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 212,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 213,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 214,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 215,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 216,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 217,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 218,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 219,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 220,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 221,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 222,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 223,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 224,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 225,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 226,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 227,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 228,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 229,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 230,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 231,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 232,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 233,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 234,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 235,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 236,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 237,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 238,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 239,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 240,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 241,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 242,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 243,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 244,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 245,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 246,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 247,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 248,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 249,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 250,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 251,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 252,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 253,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 254,
+        "source_eta": -17
+      },
+      {
+        "sign": -1,
+        "fused_mask": 255,
+        "source_eta": -17
+      }
+    ],
+    "independently_permitted_tuples": [
+      {
+        "sign": 1,
+        "mixture0_eta": 33,
+        "mixture1_eta": 33,
+        "both_output_eta": 66,
+        "first_output_eta": 33,
+        "second_output_eta": 33
+      },
+      {
+        "sign": 1,
+        "mixture0_eta": 33,
+        "mixture1_eta": 34,
+        "both_output_eta": 67,
+        "first_output_eta": 33,
+        "second_output_eta": 34
+      },
+      {
+        "sign": 1,
+        "mixture0_eta": 34,
+        "mixture1_eta": 33,
+        "both_output_eta": 67,
+        "first_output_eta": 34,
+        "second_output_eta": 33
+      },
+      {
+        "sign": 1,
+        "mixture0_eta": 34,
+        "mixture1_eta": 34,
+        "both_output_eta": 68,
+        "first_output_eta": 34,
+        "second_output_eta": 34
+      },
+      {
+        "sign": -1,
+        "mixture0_eta": -34,
+        "mixture1_eta": -34,
+        "both_output_eta": -68,
+        "first_output_eta": -34,
+        "second_output_eta": -34
+      },
+      {
+        "sign": -1,
+        "mixture0_eta": -34,
+        "mixture1_eta": -33,
+        "both_output_eta": -67,
+        "first_output_eta": -34,
+        "second_output_eta": -33
+      },
+      {
+        "sign": -1,
+        "mixture0_eta": -33,
+        "mixture1_eta": -34,
+        "both_output_eta": -67,
+        "first_output_eta": -33,
+        "second_output_eta": -34
+      },
+      {
+        "sign": -1,
+        "mixture0_eta": -33,
+        "mixture1_eta": -33,
+        "both_output_eta": -66,
+        "first_output_eta": -33,
+        "second_output_eta": -33
+      }
+    ],
+    "positive_outcomes": [
+      33,
+      34
+    ],
+    "negative_outcomes": [
+      -34,
+      -33
+    ]
+  },
+  "isolated_probes": [
+    {
+      "mode": "off",
+      "compile_command": [
+        "g++",
+        "-std=c++20",
+        "-O3",
+        "-DNDEBUG",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-Wshadow",
+        "-Werror",
+        "-mfma",
+        "-ffp-contract=off",
+        "-I/workspace/scratch/7802a6528f89/Hammond-B3-Organ/include",
+        "/workspace/scratch/7802a6528f89/a35-portability/probe.cpp",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/src/PedalVoice.cpp",
+        "-o",
+        "/workspace/scratch/7802a6528f89/a35-portability/probe-off"
+      ],
+      "compile_exit": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_exit": 0,
+      "stdout": "{\"sign\":1,\"rows\":[{\"separate_eta\":33,\"fused_eta\":34,\"actual_eta\":33,\"actual_bits\":33},{\"separate_eta\":33,\"fused_eta\":34,\"actual_eta\":33,\"actual_bits\":33}],\"actual_output_eta\":66}\n{\"sign\":-1,\"rows\":[{\"separate_eta\":-33,\"fused_eta\":-34,\"actual_eta\":-33,\"actual_bits\":9223372036854775841},{\"separate_eta\":-33,\"fused_eta\":-34,\"actual_eta\":-33,\"actual_bits\":9223372036854775841}],\"actual_output_eta\":-66}\n",
+      "stderr": "",
+      "fma_instructions": [
+        "    11f7:\tc4 e2 f9 b9 15 c8 0e \tvfmadd231sd 0xec8(%rip),%xmm0,%xmm2        # 20c8 <C.0.0+0x58>",
+        "    1200:\tc4 e2 f9 b9 15 c7 0e \tvfmadd231sd 0xec7(%rip),%xmm0,%xmm2        # 20d0 <C.0.0+0x60>",
+        "    1209:\tc4 e2 f9 b9 15 c6 0e \tvfmadd231sd 0xec6(%rip),%xmm0,%xmm2        # 20d8 <C.0.0+0x68>",
+        "    1212:\tc4 e2 f9 b9 15 bd 0e \tvfmadd231sd 0xebd(%rip),%xmm0,%xmm2        # 20d8 <C.0.0+0x68>",
+        "    1369:\tc4 e2 f1 b9 05 66 0d \tvfmadd231sd 0xd66(%rip),%xmm1,%xmm0        # 20d8 <C.0.0+0x68>",
+        "    1372:\tc4 e2 f1 b9 05 4d 0d \tvfmadd231sd 0xd4d(%rip),%xmm1,%xmm0        # 20c8 <C.0.0+0x58>",
+        "    137b:\tc4 e2 f1 b9 05 4c 0d \tvfmadd231sd 0xd4c(%rip),%xmm1,%xmm0        # 20d0 <C.0.0+0x60>",
+        "    1390:\tc4 e2 f9 99 0d 3f 0d \tvfmadd132sd 0xd3f(%rip),%xmm0,%xmm1        # 20d8 <C.0.0+0x68>"
+      ],
+      "binary_sha256": "11a64c30d2865fd571f92cdbe1ad68f018751cf899218ebe4f7df863d6a51b35",
+      "actual_pedal_function_fma_instructions": [],
+      "actual_pedal_function_multiply_add_instructions": [
+        "    1749:\tc5 f9 59 05 3f 09 00 \tvmulpd 0x93f(%rip),%xmm0,%xmm0        # 2090 <C.0.0+0x20>",
+        "    1751:\tc5 f1 59 0d 47 09 00 \tvmulpd 0x947(%rip),%xmm1,%xmm1        # 20a0 <C.0.0+0x30>",
+        "    1759:\tc5 e9 59 15 4f 09 00 \tvmulpd 0x94f(%rip),%xmm2,%xmm2        # 20b0 <C.0.0+0x40>",
+        "    1761:\tc5 e3 59 1d 2f 09 00 \tvmulsd 0x92f(%rip),%xmm3,%xmm3        # 2098 <C.0.0+0x28>",
+        "    1769:\tc5 f9 58 c4          \tvaddpd %xmm4,%xmm0,%xmm0",
+        "    176d:\tc5 f9 58 c1          \tvaddpd %xmm1,%xmm0,%xmm0",
+        "    1775:\tc5 f9 58 c2          \tvaddpd %xmm2,%xmm0,%xmm0",
+        "    1779:\tc5 f9 58 c3          \tvaddpd %xmm3,%xmm0,%xmm0",
+        "    1791:\tc5 f3 59 c8          \tvmulsd %xmm0,%xmm1,%xmm1",
+        "    1799:\tc5 fb 59 04 ce       \tvmulsd (%rsi,%rcx,8),%xmm0,%xmm0",
+        "    179e:\tc5 f3 58 c8          \tvaddsd %xmm0,%xmm1,%xmm1"
+      ],
+      "observations": [
+        {
+          "sign": 1,
+          "rows": [
+            {
+              "separate_eta": 33,
+              "fused_eta": 34,
+              "actual_eta": 33,
+              "actual_bits": 33
+            },
+            {
+              "separate_eta": 33,
+              "fused_eta": 34,
+              "actual_eta": 33,
+              "actual_bits": 33
+            }
+          ],
+          "actual_output_eta": 66
+        },
+        {
+          "sign": -1,
+          "rows": [
+            {
+              "separate_eta": -33,
+              "fused_eta": -34,
+              "actual_eta": -33,
+              "actual_bits": 9223372036854775841
+            },
+            {
+              "separate_eta": -33,
+              "fused_eta": -34,
+              "actual_eta": -33,
+              "actual_bits": 9223372036854775841
+            }
+          ],
+          "actual_output_eta": -66
+        }
+      ]
+    },
+    {
+      "mode": "fast",
+      "compile_command": [
+        "g++",
+        "-std=c++20",
+        "-O3",
+        "-DNDEBUG",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-Wshadow",
+        "-Werror",
+        "-mfma",
+        "-ffp-contract=fast",
+        "-I/workspace/scratch/7802a6528f89/Hammond-B3-Organ/include",
+        "/workspace/scratch/7802a6528f89/a35-portability/probe.cpp",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/src/PedalVoice.cpp",
+        "-o",
+        "/workspace/scratch/7802a6528f89/a35-portability/probe-fast"
+      ],
+      "compile_exit": 0,
+      "compile_stdout": "",
+      "compile_stderr": "",
+      "run_exit": 0,
+      "stdout": "{\"sign\":1,\"rows\":[{\"separate_eta\":33,\"fused_eta\":34,\"actual_eta\":34,\"actual_bits\":34},{\"separate_eta\":33,\"fused_eta\":34,\"actual_eta\":34,\"actual_bits\":34}],\"actual_output_eta\":68}\n{\"sign\":-1,\"rows\":[{\"separate_eta\":-33,\"fused_eta\":-34,\"actual_eta\":-34,\"actual_bits\":9223372036854775842},{\"separate_eta\":-33,\"fused_eta\":-34,\"actual_eta\":-34,\"actual_bits\":9223372036854775842}],\"actual_output_eta\":-68}\n",
+      "stderr": "",
+      "fma_instructions": [
+        "    11f7:\tc4 e2 f9 b9 15 c8 0e \tvfmadd231sd 0xec8(%rip),%xmm0,%xmm2        # 20c8 <C.0.0+0x58>",
+        "    1200:\tc4 e2 f9 b9 15 c7 0e \tvfmadd231sd 0xec7(%rip),%xmm0,%xmm2        # 20d0 <C.0.0+0x60>",
+        "    1209:\tc4 e2 f9 b9 15 c6 0e \tvfmadd231sd 0xec6(%rip),%xmm0,%xmm2        # 20d8 <C.0.0+0x68>",
+        "    1212:\tc4 e2 f9 b9 15 bd 0e \tvfmadd231sd 0xebd(%rip),%xmm0,%xmm2        # 20d8 <C.0.0+0x68>",
+        "    1369:\tc4 e2 f1 b9 05 66 0d \tvfmadd231sd 0xd66(%rip),%xmm1,%xmm0        # 20d8 <C.0.0+0x68>",
+        "    1372:\tc4 e2 f1 b9 05 4d 0d \tvfmadd231sd 0xd4d(%rip),%xmm1,%xmm0        # 20c8 <C.0.0+0x58>",
+        "    137b:\tc4 e2 f1 b9 05 4c 0d \tvfmadd231sd 0xd4c(%rip),%xmm1,%xmm0        # 20d0 <C.0.0+0x60>",
+        "    1390:\tc4 e2 f9 99 0d 3f 0d \tvfmadd132sd 0xd3f(%rip),%xmm0,%xmm1        # 20d8 <C.0.0+0x68>",
+        "    1749:\tc4 e2 d9 98 0d 3e 09 \tvfmadd132pd 0x93e(%rip),%xmm4,%xmm1        # 2090 <C.0.0+0x20>",
+        "    1752:\tc4 e2 f1 98 15 45 09 \tvfmadd132pd 0x945(%rip),%xmm1,%xmm2        # 20a0 <C.0.0+0x30>",
+        "    1763:\tc4 e2 e9 98 1d 44 09 \tvfmadd132pd 0x944(%rip),%xmm2,%xmm3        # 20b0 <C.0.0+0x40>",
+        "    1790:\tc4 e2 f1 b9 04 c6    \tvfmadd231sd (%rsi,%rax,8),%xmm1,%xmm0"
+      ],
+      "binary_sha256": "a03854f22bbe6a99635ea4e79c75870627984d2d2524577fe66d7371ae8420d4",
+      "actual_pedal_function_fma_instructions": [
+        "    1749:\tc4 e2 d9 98 0d 3e 09 \tvfmadd132pd 0x93e(%rip),%xmm4,%xmm1        # 2090 <C.0.0+0x20>",
+        "    1752:\tc4 e2 f1 98 15 45 09 \tvfmadd132pd 0x945(%rip),%xmm1,%xmm2        # 20a0 <C.0.0+0x30>",
+        "    1763:\tc4 e2 e9 98 1d 44 09 \tvfmadd132pd 0x944(%rip),%xmm2,%xmm3        # 20b0 <C.0.0+0x40>",
+        "    1790:\tc4 e2 f1 b9 04 c6    \tvfmadd231sd (%rsi,%rax,8),%xmm1,%xmm0"
+      ],
+      "actual_pedal_function_multiply_add_instructions": [
+        "    1749:\tc4 e2 d9 98 0d 3e 09 \tvfmadd132pd 0x93e(%rip),%xmm4,%xmm1        # 2090 <C.0.0+0x20>",
+        "    1752:\tc4 e2 f1 98 15 45 09 \tvfmadd132pd 0x945(%rip),%xmm1,%xmm2        # 20a0 <C.0.0+0x30>",
+        "    175b:\tc5 fb 59 05 35 09 00 \tvmulsd 0x935(%rip),%xmm0,%xmm0        # 2098 <C.0.0+0x28>",
+        "    1763:\tc4 e2 e9 98 1d 44 09 \tvfmadd132pd 0x944(%rip),%xmm2,%xmm3        # 20b0 <C.0.0+0x40>",
+        "    1770:\tc5 f9 58 c3          \tvaddpd %xmm3,%xmm0,%xmm0",
+        "    178b:\tc5 fb 59 04 ce       \tvmulsd (%rsi,%rcx,8),%xmm0,%xmm0",
+        "    1790:\tc4 e2 f1 b9 04 c6    \tvfmadd231sd (%rsi,%rax,8),%xmm1,%xmm0"
+      ],
+      "observations": [
+        {
+          "sign": 1,
+          "rows": [
+            {
+              "separate_eta": 33,
+              "fused_eta": 34,
+              "actual_eta": 34,
+              "actual_bits": 34
+            },
+            {
+              "separate_eta": 33,
+              "fused_eta": 34,
+              "actual_eta": 34,
+              "actual_bits": 34
+            }
+          ],
+          "actual_output_eta": 68
+        },
+        {
+          "sign": -1,
+          "rows": [
+            {
+              "separate_eta": -33,
+              "fused_eta": -34,
+              "actual_eta": -34,
+              "actual_bits": 9223372036854775842
+            },
+            {
+              "separate_eta": -33,
+              "fused_eta": -34,
+              "actual_eta": -34,
+              "actual_bits": 9223372036854775842
+            }
+          ],
+          "actual_output_eta": -68
+        }
+      ]
+    }
+  ],
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "platform": "Linux 6.18.57 x86_64",
+  "explicit_constraints": {
+    "production_modified": false,
+    "main_build_modified": false,
+    "global_fp_flags_modified": false,
+    "skip_added": false,
+    "epsilon_changed": false,
+    "source_bound_changed": false,
+    "source_gain_boundary_changed": false,
+    "normal_exact_literals_changed": false,
+    "unfused_and_fused_local_native_results_observed": true,
+    "mixed_row_tuples_permitted_by_exact_derivation_not_observed_in_compiler_output": true,
+    "repaired_apple_execution_observed_by_worker": false
+  },
+  "root_admission": "Root explicitly approved exact independent per-row tuple enumeration before test edit; original failure and assumptions retained.",
+  "syntax": {
+    "command": [
+      "g++",
+      "-std=c++20",
+      "-O3",
+      "-DNDEBUG",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror",
+      "-Iinclude",
+      "-Itests",
+      "-DHAMMOND_TEST_PROFILE=\"unused-syntax-only.b3p\"",
+      "-DHAMMOND_SOURCE_DIR=\".\"",
+      "-fsyntax-only",
+      "tests/test_source_leakage_lifecycle.cpp"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "source_sha256": {
+    "tests/test_source_leakage_lifecycle.cpp": "b4e6c21443220a8984dd5afcfbd8cf0e243435a98d9293179d27fc658ebdc4a1",
+    "src/PedalVoice.cpp": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+    "include/hammond/PedalVoice.h": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+    "src/Engine.cpp": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+    "src/SourceLeakage.cpp": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+    "docs/SOURCE_LEAKAGE_CONTRACT.md": "277e82d3aa9ec6a4b57dbbbc50fdce4990de5042b745234bcf8fdecd6b55a7c3",
+    "docs/SOURCE_LEAKAGE_AUDITION_CONTRACT.md": "33eed6ace40adf98e91bac4d42d4d98f0d46e0c3e5203ee8ff96f656e94f0569"
+  },
+  "retained_helper_sources": {
+    "probe.cpp": "#include \"hammond/PedalVoice.h\"\n#include <array>\n#include <bit>\n#include <cfenv>\n#include <cmath>\n#include <cstdint>\n#include <iomanip>\n#include <iostream>\n#include <limits>\n\nint main() {\n    constexpr double eta = std::numeric_limits<double>::denorm_min();\n    if (std::fegetround() != FE_TONEAREST) return 2;\n    constexpr std::array<std::array<double, 4>, 2> weights{{\n        {{0.5, 0.25, 0.125, 0.125}}, {{0.125, 0.5, 0.25, 0.125}}}};\n    for (const double sign : {1.0, -1.0}) {\n        hammond::PedalBusFrame buses{};\n        buses.fill(sign * 0x0.0000000000022p-1022);\n        hammond::PedalVoiceFrame actual;\n        if (hammond::render_nominal_pedal_voice(buses, {8, 8}, actual) !=\n            hammond::Status::Ok) return 3;\n        std::cout << \"{\\\"sign\\\":\" << sign << \",\\\"rows\\\":[\";\n        for (std::size_t row = 0; row < weights.size(); ++row) {\n            double separate = 0, fused = 0;\n            for (const double weight : weights[row]) {\n                volatile double product = weight * buses[0];\n                separate += product;\n                fused = std::fma(weight, buses[0], fused);\n            }\n            if (row) std::cout << ',';\n            std::cout << \"{\\\"separate_eta\\\":\" << separate / eta\n                      << \",\\\"fused_eta\\\":\" << fused / eta\n                      << \",\\\"actual_eta\\\":\" << actual.mixtures[row] / eta\n                      << \",\\\"actual_bits\\\":\"\n                      << std::bit_cast<std::uint64_t>(actual.mixtures[row]) << '}';\n        }\n        std::cout << \"],\\\"actual_output_eta\\\":\" << actual.output / eta << \"}\\n\";\n    }\n}\n",
+    "derive.py": "from fractions import Fraction\nimport json\n\n\ndef nearest_even(value):\n    sign = -1 if value < 0 else 1\n    numerator, denominator = abs(value.numerator), value.denominator\n    quotient, remainder = divmod(numerator, denominator)\n    twice = remainder * 2\n    if twice > denominator or (twice == denominator and quotient % 2):\n        quotient += 1\n    return sign * quotient\n\n\nweights = [[Fraction(1, 2), Fraction(1, 4), Fraction(1, 8), Fraction(1, 8)],\n           [Fraction(1, 8), Fraction(1, 2), Fraction(1, 4), Fraction(1, 8)]]\ncases = []\nfor sign in [1, -1]:\n    for row, gains in enumerate(weights):\n        for mask in range(16):\n            value = 0\n            trace = []\n            for bus, gain in enumerate(gains):\n                product = gain * (sign * 34)\n                value = nearest_even(value + (product if mask & (1 << bus)\n                                               else nearest_even(product)))\n                trace.append(value)\n            cases.append(dict(sign=sign, row=row, fused_mask=mask,\n                              trace_eta=trace, mixture_eta=value))\nnormal_cases = []\nfor magnitude in [float.fromhex('0x1.8p+0'), float.fromhex('0x1.fffffffffffacp+0')]:\n    for sign in [1, -1]:\n        exact_bus = Fraction.from_float(sign * magnitude)\n        for row, gains in enumerate(weights):\n            for mask in range(16):\n                value = 0.0\n                trace = []\n                for bus, gain in enumerate(gains):\n                    product = exact_bus * gain\n                    term = product if mask & (1 << bus) else Fraction.from_float(float(product))\n                    value = float(Fraction.from_float(value) + term)\n                    trace.append(value.hex())\n                assert value == sign * magnitude\n                normal_cases.append(dict(bus_hex=(sign*magnitude).hex(), row=row,\n                                         fused_mask=mask, trace_hex=trace,\n                                         mixture_hex=value.hex()))\nsource_cases = []\nfor sign in [1, -1]:\n    for mask in range(256):\n        value = sign * 9\n        for edge in range(8):\n            product = Fraction(sign * 9, 16)\n            value = nearest_even(value + (product if mask & (1 << edge)\n                                           else nearest_even(product)))\n        assert value == sign * 17\n        source_cases.append(dict(sign=sign, fused_mask=mask, source_eta=value))\npairs = []\nfor sign in [1, -1]:\n    first = [x for x in cases if x['sign'] == sign and x['row'] == 0]\n    second = [x for x in cases if x['sign'] == sign and x['row'] == 1]\n    outcomes = sorted({(a['mixture_eta'], b['mixture_eta']) for a in first for b in second})\n    for left, right in outcomes:\n        pairs.append(dict(sign=sign, mixture0_eta=left, mixture1_eta=right,\n                          both_output_eta=left + right,\n                          first_output_eta=left, second_output_eta=right))\nprint(json.dumps(dict(model='exact rational arithmetic; binary64 nearest ties-to-even',\n                     tiny_cases=cases, normal_cases=normal_cases,\n                     source_cases=source_cases, independently_permitted_tuples=pairs,\n                     positive_outcomes=sorted({x['mixture_eta'] for x in cases\n                                               if x['sign'] == 1}),\n                     negative_outcomes=sorted({x['mixture_eta'] for x in cases\n                                               if x['sign'] == -1})), indent=2))\n"
+  },
+  "test_diff": "diff --git a/tests/test_source_leakage_lifecycle.cpp b/tests/test_source_leakage_lifecycle.cpp\nindex d28e47e..7e4cc9e 100644\n--- a/tests/test_source_leakage_lifecycle.cpp\n+++ b/tests/test_source_leakage_lifecycle.cpp\n@@ -118,16 +118,22 @@ RuntimeProfile aligned_profile(const RuntimeProfile& nominal, double rate, doubl\n void whole_field_headroom(const RuntimeProfile& nominal) {\n     const auto graph = full_field();\n     CHECK(std::nextafter(kLargestGain, 1.0) == kNextGain);\n-    // Literal outcomes frozen from independent binary64 arithmetic before any\n-    // execution of this test. Pedal 1 has two connected +1 branches on each bus.\n-    // At 9*eta each source is 17*eta; bus 34*eta becomes mixture 33*eta because\n-    // the nominal 1/4 and 1/8 multiplications round in the subnormal domain.\n-    struct Fixture { double gain, bound, bus, mixture; };\n+    // Pedal 1 has two connected +1 branches on each bus. At 9*eta each source\n+    // is exactly 17*eta and each bus is 34*eta. The unchanged pedal mixer permits\n+    // same-expression contraction: independently enumerating every per-term\n+    // rounding choice gives exactly 33*eta or 34*eta for either mixture row.\n+    // Rows need not contract identically. Normal fixtures retain one exact\n+    // result; no leakage bound, gain threshold or tolerance is changed.\n+    // See docs/reviews/SOURCE_LEAKAGE_PORTABILITY.md for the retained failure\n+    // and exact rational derivation of the permitted downstream tuples.\n+    struct Fixture { double gain, bound, bus; std::array<double, 2> mixtures; };\n     constexpr std::array<Fixture, 3> fixtures{{\n         {0x0.0000000000009p-1022, 0x0.000000000001fp-1022,\n-         0x0.0000000000022p-1022, 0x0.0000000000021p-1022},\n-        {0.5, 0x1.8000000000041p-1, 1.5, 1.5},\n-        {kLargestGain, 1.0, 0x1.fffffffffffacp+0, 0x1.fffffffffffacp+0},\n+         0x0.0000000000022p-1022,\n+         {0x0.0000000000021p-1022, 0x0.0000000000022p-1022}},\n+        {0.5, 0x1.8000000000041p-1, 1.5, {1.5, 1.5}},\n+        {kLargestGain, 1.0, 0x1.fffffffffffacp+0,\n+         {0x1.fffffffffffacp+0, 0x1.fffffffffffacp+0}},\n     }};\n     for (const double rate : {44100.0, 48000.0, 96000.0}) {\n         for (const double sign : {1.0, -1.0}) {\n@@ -160,12 +166,23 @@ void whole_field_headroom(const RuntimeProfile& nominal) {\n                     CHECK(actual.valid && actual.frame == 19 && actual.sample_rate == rate);\n                     CHECK(actual.positions == positions);\n                     for (const double bus : actual.buses) CHECK(bus == sign * fixture.bus);\n-                    for (const double mixture : actual.voice.mixtures)\n-                        CHECK(mixture == sign * fixture.mixture);\n-                    const double expected_voice = sign * fixture.mixture *\n-                        (positions[0] == positions[1] ? 2.0 : 1.0);\n-                    CHECK(actual.voice.output == expected_voice);\n-                    CHECK(output[0] == static_cast<float>(expected_voice * profile.output_gain));\n+                    bool matched_exact_tuple = false;\n+                    for (const double first : fixture.mixtures) {\n+                        for (const double second : fixture.mixtures) {\n+                            const double expected_first = sign * first;\n+                            const double expected_second = sign * second;\n+                            const double expected_voice =\n+                                (positions[0] == 8 ? expected_first : 0.0) +\n+                                (positions[1] == 8 ? expected_second : 0.0);\n+                            matched_exact_tuple |=\n+                                actual.voice.mixtures[0] == expected_first &&\n+                                actual.voice.mixtures[1] == expected_second &&\n+                                actual.voice.output == expected_voice &&\n+                                output[0] == static_cast<float>(\n+                                    expected_voice * profile.output_gain);\n+                        }\n+                    }\n+                    CHECK(matched_exact_tuple);\n                 }\n             }\n         }\n",
+  "limits": [
+    "Local compiler is GCC14.2 on Linuxx86_64 with FMA; no local AppleClang executable.",
+    "The isolated probe compiled the unchanged PedalVoice.cpp directly, not the Engine or main build.",
+    "Apple contraction diagnosis is a supported inference from exact source/flags/failure and controlled same-source probes until an actual repaired hosted run.",
+    "No physical, audio fidelity, callback deadline, whole-UI or cross-compiler-bitwise product acceptance is claimed."
+  ],
+  "next_root_commands": [
+    [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+      "--build",
+      "../build-native",
+      "--parallel",
+      "3",
+      "--target",
+      "test_source_leakage_lifecycle"
+    ],
+    [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "../build-native",
+      "-C",
+      "Release",
+      "--output-on-failure",
+      "--no-tests=error",
+      "-V",
+      "-R",
+      "^test_source_leakage_lifecycle$"
+    ]
+  ],
+  "scratch_inventory_before_cleanup": [
+    {
+      "path": "derive.py",
+      "bytes": 3478,
+      "sha256": "9a7b3abc66b9c276115f2dec04113fcc13a9ac9cc74354b4a0b29c46ce89fa4a"
+    },
+    {
+      "path": "probe-fast",
+      "bytes": 16648,
+      "sha256": "a03854f22bbe6a99635ea4e79c75870627984d2d2524577fe66d7371ae8420d4"
+    },
+    {
+      "path": "probe-off",
+      "bytes": 16648,
+      "sha256": "11a64c30d2865fd571f92cdbe1ad68f018751cf899218ebe4f7df863d6a51b35"
+    },
+    {
+      "path": "probe-runs.json",
+      "bytes": 4677,
+      "sha256": "1828e30231ccde4138b58f320967b5cbea019232a1f45501b8307a3e3b331033"
+    },
+    {
+      "path": "probe.cpp",
+      "bytes": 1592,
+      "sha256": "445fc1da1ce80331adc7493bed1e93c164a42d8d5e99f9b3e4bda3dc605fe38b"
+    },
+    {
+      "path": "rational-derivation.json",
+      "bytes": 91026,
+      "sha256": "f1247e2166c3425b14e1d401c0846020836128444f4e9578b8a3041a59460978"
+    },
+    {
+      "path": "syntax.json",
+      "bytes": 436,
+      "sha256": "ae4c1fd88a67b89374b4fda33060598c5549acb8afb907642c0c2e5f15ea511f"
+    }
+  ],
+  "scratch_cleanup": "Only own reproducible binaries/helper files removed after embedded helper sources, outputs, identities and all results retained; original hosted log remains in repository."
+}

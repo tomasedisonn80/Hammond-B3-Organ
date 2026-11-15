@@ -2,6 +2,17 @@
 
 ## 2026-11-15 — Audio continuation: leakage and reference percussion
 
+Implementation checkpoint **9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994** is
+published and independently fetched. Exact production bytes bind all eleven
+native captures and six audio files to that commit. Independent Engine/PCM and
+resource evidence paths are preserved; current 196-test inventory has passed
+across partitioned runs, with the original incomplete-gallery integrity failure
+and its successful completed-gallery rerun retained. New moving-contact
+composition passes six fixtures, and explicit SourceLeakageTools installation
+passes fourteen methods. Those later additions remain separate from the first
+commit until their next publication. A32/A33 now review a coordinated wide-Play
+reflow toward the original reference; no new visual completion is claimed.
+
 Created the independent [audio session](development/2026-11-15-audio-continuation/README.md)
 from `fe4f103f135cefebfe6d320f275d035d1b514f45`, preserving other active checkouts.
 Six actual readers covered all 500 atlas pages; the clean native Release

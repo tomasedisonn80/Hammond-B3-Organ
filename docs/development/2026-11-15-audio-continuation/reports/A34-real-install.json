@@ -1,0 +1,1285 @@
+{
+  "schema_version": 1,
+  "assignment": "A34",
+  "status": "passed_with_optional_tracing_unavailable",
+  "purpose": "Independent actual main-project SourceLeakageTools installation and relocated execution",
+  "source": {
+    "repository": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ",
+    "build": "/workspace/scratch/7802a6528f89/build-native",
+    "head": "9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994",
+    "head_tree": "f58729afb40c9adbae6233c226dc27c019ffe86b",
+    "origin_main_observed": "9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994",
+    "expected_published_base": "9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994",
+    "working_tree_status_at_start": "M CMakeLists.txt\n M README.md\n M docs/DEVELOPMENT_LOG.md\n M docs/development/2026-11-15-audio-continuation/CHECKPOINT.md\n M docs/development/2026-11-15-audio-continuation/SCOPE.md\n M docs/development/2026-11-15-audio-continuation/assignments.json\n?? cmake/InstallSourceLeakageTools.cmake\n?? docs/SOURCE_LEAKAGE_INSTALL.md\n?? docs/development/2026-11-15-audio-continuation/notes/A30.md\n?? docs/development/2026-11-15-audio-continuation/notes/A31.md\n?? docs/development/2026-11-15-audio-continuation/reports/A31-install-first.log.gz\n?? docs/development/2026-11-15-audio-continuation/reports/A34-real-install.json\n?? docs/development/2026-11-15-audio-continuation/reports/implementation-evidence-binding.json\n?? docs/development/2026-11-15-audio-continuation/reports/implementation-publication.json\n?? docs/development/2026-11-15-audio-continuation/reports/w06-contact-composition-first.log.gz\n?? docs/development/2026-11-15-audio-continuation/reports/w06-contact-install-input-build.log.gz\n?? tests/test_source_leakage_contacts.cpp\n?? tests/test_source_leakage_install.py",
+    "root_cmake_patch": "diff --git a/CMakeLists.txt b/CMakeLists.txt\nindex 6f13348..0aeb092 100644\n--- a/CMakeLists.txt\n+++ b/CMakeLists.txt\n@@ -301,7 +301,7 @@ if(BUILD_TESTING)\n             \"HAMMOND_SOURCE_LEAKAGE_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_source_leakage_probe>\")\n         set_tests_properties(python_test_source_leakage_roundtrip PROPERTIES\n             TIMEOUT 90 LABELS \"source;leakage;data\")\n-        list(APPEND HAMMOND_TEST_TARGETS hammond_source_leakage_probe)\n+        list(APPEND HAMMOND_TEST_TARGETS hammond_source_leakage_probe hammond_source_leakage_benchmark)\n     endif()\n \n     if(TEST python_test_crossover_acceptance)\n@@ -426,6 +426,7 @@ endif()\n \n # Component-scoped installation is defined after all targets and tests.\n include(cmake/InstallHammondTools.cmake)\n+include(cmake/InstallSourceLeakageTools.cmake)\n include(cmake/InstallCrossoverTools.cmake)\n include(cmake/InstallCaptureTools.cmake)\n include(cmake/InstallStandalone.cmake)",
+    "read_only_input_identities": {
+      "/workspace/scratch/7802a6528f89/build-native/hammond_render": {
+        "bytes": 172528,
+        "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf",
+        "mode": "0755"
+      },
+      "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_probe": {
+        "bytes": 63608,
+        "sha256": "c416986c7cd3492705fac9850eb3ecb55431d5795e2d129d3cd89ec4a0db58bb",
+        "mode": "0755"
+      },
+      "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_benchmark": {
+        "bytes": 125952,
+        "sha256": "c909383e69478f9c595987ef019fab5d19afdfb5da8503aa7851f49cca6457b4",
+        "mode": "0755"
+      },
+      "/workspace/scratch/7802a6528f89/build-native/nominal.b3p": {
+        "bytes": 4545,
+        "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+        "mode": "0600"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/compile_source_leakage.py": {
+        "bytes": 11808,
+        "sha256": "ea5c4827c3e711b1f03f4de7c9b670720435e8a100d866b6d7d683a940160d14",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage.schema.json": {
+        "bytes": 2547,
+        "sha256": "2820389ceab777769d4f8f7d0e0feec33fe7f7cc1c812fa5d68c358fa91b33c2",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage/synthetic-pair-demo-v1.json": {
+        "bytes": 909,
+        "sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage/synthetic-identity-v1.json": {
+        "bytes": 757,
+        "sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/docs/SOURCE_LEAKAGE_INSTALL.md": {
+        "bytes": 13071,
+        "sha256": "25fe10058c335ed4210f3066f69a367f0c127640bc2c01cbcae592244412ce45",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/CMakeLists.txt": {
+        "bytes": 25847,
+        "sha256": "bdc7e0bdcf605646eee3f098829e498561a555264d74d345b40c8dda554eed01",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/cmake/InstallHammondTools.cmake": {
+        "bytes": 10971,
+        "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/cmake/InstallSourceLeakageTools.cmake": {
+        "bytes": 9498,
+        "sha256": "1307f47bba569812e2f94b42a23eb5184fb188f87071c1470754f84c0ef69cd1",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tests/test_source_leakage_install.py": {
+        "bytes": 30034,
+        "sha256": "98b5c61959af374cb1d63689d87d1c191c8848e26f3bf7153f163b4c760c38b0",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/docs/SOURCE_LEAKAGE_CONTRACT.md": {
+        "bytes": 15097,
+        "sha256": "277e82d3aa9ec6a4b57dbbbc50fdce4990de5042b745234bcf8fdecd6b55a7c3",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/docs/SOURCE_LEAKAGE_AUDITION_CONTRACT.md": {
+        "bytes": 16588,
+        "sha256": "33eed6ace40adf98e91bac4d42d4d98f0d46e0c3e5203ee8ff96f656e94f0569",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/build-native/CMakeCache.txt": {
+        "bytes": 54187,
+        "sha256": "f1f00f9c2c9debebf3d98a02934c5039e6b8d92690dc7e87d2a573e8b60cac7a",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/build-native/build.ninja": {
+        "bytes": 764023,
+        "sha256": "a22edefc84107d960281e9f46b37ad040b1ee24dee7085ea52e651f00f0fcf0b",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/build-native/cmake_install.cmake": {
+        "bytes": 55835,
+        "sha256": "2307cede9123b9718c289536cadc6e8189eb148fef0a9dc429d5553e5615c5e0",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/build-native/CMakeFiles/rules.ninja": {
+        "bytes": 266581,
+        "sha256": "ab603aa1b1728069e4862af1ea39d39803330d1e9841b1ec2f501fc65a61fc9f",
+        "mode": "0644"
+      },
+      "/workspace/scratch/7802a6528f89/build-native/libhammond_core.a": {
+        "bytes": 452908,
+        "sha256": "f8f579ef30af221645f998ac3240d7382b02241b57a2c9cf770c1979c219b443",
+        "mode": "0644"
+      }
+    },
+    "runtime_production_inputs": {
+      "include/hammond/ConsoleModel.h": {
+        "sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+        "matches_base": true
+      },
+      "include/hammond/ContactBank.h": {
+        "sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+        "matches_base": true
+      },
+      "include/hammond/ControlState.h": {
+        "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+        "matches_base": true
+      },
+      "include/hammond/ControlStateIO.h": {
+        "sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+        "matches_base": true
+      },
+      "include/hammond/Engine.h": {
+        "sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+        "matches_base": true
+      },
+      "include/hammond/FixedRegistration.h": {
+        "sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+        "matches_base": true
+      },
+      "include/hammond/HostTimeline.h": {
+        "sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+        "matches_base": true
+      },
+      "include/hammond/InputProcessor.h": {
+        "sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+        "matches_base": true
+      },
+      "include/hammond/LeslieCrossover.h": {
+        "sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+        "matches_base": true
+      },
+      "include/hammond/NoteOwnership.h": {
+        "sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+        "matches_base": true
+      },
+      "include/hammond/ParameterBridge.h": {
+        "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+        "matches_base": true
+      },
+      "include/hammond/PedalNoteOwnership.h": {
+        "sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+        "matches_base": true
+      },
+      "include/hammond/PedalRouting.h": {
+        "sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+        "matches_base": true
+      },
+      "include/hammond/PedalVoice.h": {
+        "sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+        "matches_base": true
+      },
+      "include/hammond/Percussion.h": {
+        "sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+        "matches_base": true
+      },
+      "include/hammond/PerformanceInput.h": {
+        "sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+        "matches_base": true
+      },
+      "include/hammond/Profile.h": {
+        "sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+        "matches_base": true
+      },
+      "include/hammond/RotaryHistory.h": {
+        "sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+        "matches_base": true
+      },
+      "include/hammond/RotaryMotion.h": {
+        "sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+        "matches_base": true
+      },
+      "include/hammond/RotaryPropagation.h": {
+        "sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+        "matches_base": true
+      },
+      "include/hammond/RotaryRenderer.h": {
+        "sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+        "matches_base": true
+      },
+      "include/hammond/RotaryTypes.h": {
+        "sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+        "matches_base": true
+      },
+      "include/hammond/ScannerLine.h": {
+        "sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+        "matches_base": true
+      },
+      "include/hammond/ScannerLineFoh.h": {
+        "sha256": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+        "matches_base": true
+      },
+      "include/hammond/ScannerRotor.h": {
+        "sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+        "matches_base": true
+      },
+      "include/hammond/SourceLeakage.h": {
+        "sha256": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+        "matches_base": true
+      },
+      "include/hammond/StateExchange.h": {
+        "sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+        "matches_base": true
+      },
+      "include/hammond/TonewheelBank.h": {
+        "sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+        "matches_base": true
+      },
+      "include/hammond/Types.h": {
+        "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+        "matches_base": true
+      },
+      "include/hammond/detail/Decimal.h": {
+        "sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+        "matches_base": true
+      },
+      "src/ContactBank.cpp": {
+        "sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+        "matches_base": true
+      },
+      "src/ControlState.cpp": {
+        "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+        "matches_base": true
+      },
+      "src/ControlStateIO.cpp": {
+        "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+        "matches_base": true
+      },
+      "src/Engine.cpp": {
+        "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+        "matches_base": true
+      },
+      "src/FixedRegistration.cpp": {
+        "sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+        "matches_base": true
+      },
+      "src/HostTimeline.cpp": {
+        "sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+        "matches_base": true
+      },
+      "src/InputProcessor.cpp": {
+        "sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+        "matches_base": true
+      },
+      "src/LeslieCrossover.cpp": {
+        "sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+        "matches_base": true
+      },
+      "src/NoteOwnership.cpp": {
+        "sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+        "matches_base": true
+      },
+      "src/ParameterBridge.cpp": {
+        "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+        "matches_base": true
+      },
+      "src/PedalNoteOwnership.cpp": {
+        "sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+        "matches_base": true
+      },
+      "src/PedalRouting.cpp": {
+        "sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+        "matches_base": true
+      },
+      "src/PedalVoice.cpp": {
+        "sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+        "matches_base": true
+      },
+      "src/Percussion.cpp": {
+        "sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+        "matches_base": true
+      },
+      "src/PerformanceInput.cpp": {
+        "sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+        "matches_base": true
+      },
+      "src/Profile.cpp": {
+        "sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+        "matches_base": true
+      },
+      "src/RotaryHistory.cpp": {
+        "sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+        "matches_base": true
+      },
+      "src/RotaryMotion.cpp": {
+        "sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+        "matches_base": true
+      },
+      "src/RotaryPropagation.cpp": {
+        "sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+        "matches_base": true
+      },
+      "src/RotaryRenderer.cpp": {
+        "sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+        "matches_base": true
+      },
+      "src/RotaryRendererInternal.h": {
+        "sha256": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+        "matches_base": true
+      },
+      "src/RotaryStreamingPath.cpp": {
+        "sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+        "matches_base": true
+      },
+      "src/ScannerLine.cpp": {
+        "sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+        "matches_base": true
+      },
+      "src/ScannerLineFoh.cpp": {
+        "sha256": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+        "matches_base": true
+      },
+      "src/ScannerRotor.cpp": {
+        "sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+        "matches_base": true
+      },
+      "src/SourceLeakage.cpp": {
+        "sha256": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+        "matches_base": true
+      },
+      "src/SourceLeakageIO.cpp": {
+        "sha256": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+        "matches_base": true
+      },
+      "src/StateExchange.cpp": {
+        "sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+        "matches_base": true
+      },
+      "src/TonewheelBank.cpp": {
+        "sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+        "matches_base": true
+      },
+      "tools/compile_source_leakage.py": {
+        "sha256": "ea5c4827c3e711b1f03f4de7c9b670720435e8a100d866b6d7d683a940160d14",
+        "matches_base": true
+      },
+      "tools/render.cpp": {
+        "sha256": "0445bb80e40e832692a69689a83607aeacd55dd15264599a9fdfe219448bd37e",
+        "matches_base": true
+      },
+      "tools/source_leakage_benchmark.cpp": {
+        "sha256": "3b501bcbf0561f8676f67cda5c2e7c386051c1af3b0de0e6d2127b4f063f0336",
+        "matches_base": true
+      },
+      "tools/source_leakage_probe.cpp": {
+        "sha256": "f2a61b897c2875d352748a742cc342c754ec898fcc0391aca0ab0adfd6a8fd62",
+        "matches_base": true
+      }
+    }
+  },
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python_executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "free_bytes_at_start": 45478256640,
+    "cmake_version": "cmake version 4.4.5\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+    "cxx_version": "c++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "selected_cmake_cache": [
+      "CMAKE_BUILD_TYPE:STRING=Release",
+      "CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++",
+      "CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc",
+      "CMAKE_INSTALL_BINDIR:PATH=bin",
+      "CMAKE_INSTALL_DATADIR:PATH=share",
+      "CMAKE_INSTALL_PREFIX:PATH=/usr/local",
+      "CMAKE_MAKE_PROGRAM:UNINITIALIZED=/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+      "HAMMOND_BUILD_STANDALONE:BOOL=ON",
+      "HAMMOND_BUILD_VST3:BOOL=OFF",
+      "HAMMOND_ENABLE_MIDI:BOOL=OFF",
+      "HAMMOND_ENABLE_SANITIZERS:BOOL=OFF",
+      "CMAKE_GENERATOR:INTERNAL=Ninja"
+    ]
+  },
+  "installed_inventory": {
+    "bin/hammond_render": {
+      "bytes": 172528,
+      "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf",
+      "mode": "0755",
+      "original_path": "/workspace/scratch/7802a6528f89/build-native/hammond_render",
+      "expected_install_mode": "0755"
+    },
+    "bin/hammond_source_leakage_probe": {
+      "bytes": 63608,
+      "sha256": "c416986c7cd3492705fac9850eb3ecb55431d5795e2d129d3cd89ec4a0db58bb",
+      "mode": "0755",
+      "original_path": "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_probe",
+      "expected_install_mode": "0755"
+    },
+    "bin/hammond_source_leakage_benchmark": {
+      "bytes": 125952,
+      "sha256": "c909383e69478f9c595987ef019fab5d19afdfb5da8503aa7851f49cca6457b4",
+      "mode": "0755",
+      "original_path": "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_benchmark",
+      "expected_install_mode": "0755"
+    },
+    "share/hammond-b3-organ/source-leakage/profiles/nominal.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "mode": "0644",
+      "original_path": "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+      "expected_install_mode": "0644"
+    },
+    "share/hammond-b3-organ/source-leakage/tools/compile_source_leakage.py": {
+      "bytes": 11808,
+      "sha256": "ea5c4827c3e711b1f03f4de7c9b670720435e8a100d866b6d7d683a940160d14",
+      "mode": "0644",
+      "original_path": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/compile_source_leakage.py",
+      "expected_install_mode": "0644"
+    },
+    "share/hammond-b3-organ/source-leakage/data/source-leakage.schema.json": {
+      "bytes": 2547,
+      "sha256": "2820389ceab777769d4f8f7d0e0feec33fe7f7cc1c812fa5d68c358fa91b33c2",
+      "mode": "0644",
+      "original_path": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage.schema.json",
+      "expected_install_mode": "0644"
+    },
+    "share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-pair-demo-v1.json": {
+      "bytes": 909,
+      "sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299",
+      "mode": "0644",
+      "original_path": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage/synthetic-pair-demo-v1.json",
+      "expected_install_mode": "0644"
+    },
+    "share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-identity-v1.json": {
+      "bytes": 757,
+      "sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385",
+      "mode": "0644",
+      "original_path": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage/synthetic-identity-v1.json",
+      "expected_install_mode": "0644"
+    },
+    "share/hammond-b3-organ/source-leakage/docs/SOURCE_LEAKAGE_INSTALL.md": {
+      "bytes": 13071,
+      "sha256": "25fe10058c335ed4210f3066f69a367f0c127640bc2c01cbcae592244412ce45",
+      "mode": "0644",
+      "original_path": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/docs/SOURCE_LEAKAGE_INSTALL.md",
+      "expected_install_mode": "0644"
+    }
+  },
+  "initial_observations": {
+    "prior_component_manifest_exists": false,
+    "generated_component_manifest": {
+      "path": "/workspace/scratch/7802a6528f89/build-native/install_manifest_SourceLeakageTools.txt",
+      "sha256": "6cb12241a5e34e64fd7872b886fefa4bd8351b37415d6c73045142d71ae98bc6",
+      "bytes": 1058,
+      "entries": [
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/bin/hammond_render",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/bin/hammond_source_leakage_probe",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/bin/hammond_source_leakage_benchmark",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/profiles/nominal.b3p",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/tools/compile_source_leakage.py",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/data/source-leakage.schema.json",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-pair-demo-v1.json",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-identity-v1.json",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/docs/SOURCE_LEAKAGE_INSTALL.md"
+      ],
+      "scope": "Normal generated install output; no configure/build input was changed."
+    }
+  },
+  "read_only_input_identities_after_actual_install": {
+    "/workspace/scratch/7802a6528f89/build-native/hammond_render": {
+      "bytes": 172528,
+      "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf",
+      "mode": "0755"
+    },
+    "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_probe": {
+      "bytes": 63608,
+      "sha256": "c416986c7cd3492705fac9850eb3ecb55431d5795e2d129d3cd89ec4a0db58bb",
+      "mode": "0755"
+    },
+    "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_benchmark": {
+      "bytes": 125952,
+      "sha256": "c909383e69478f9c595987ef019fab5d19afdfb5da8503aa7851f49cca6457b4",
+      "mode": "0755"
+    },
+    "/workspace/scratch/7802a6528f89/build-native/nominal.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+      "mode": "0600"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/compile_source_leakage.py": {
+      "bytes": 11808,
+      "sha256": "ea5c4827c3e711b1f03f4de7c9b670720435e8a100d866b6d7d683a940160d14",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage.schema.json": {
+      "bytes": 2547,
+      "sha256": "2820389ceab777769d4f8f7d0e0feec33fe7f7cc1c812fa5d68c358fa91b33c2",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage/synthetic-pair-demo-v1.json": {
+      "bytes": 909,
+      "sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/source-leakage/synthetic-identity-v1.json": {
+      "bytes": 757,
+      "sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/docs/SOURCE_LEAKAGE_INSTALL.md": {
+      "bytes": 13071,
+      "sha256": "25fe10058c335ed4210f3066f69a367f0c127640bc2c01cbcae592244412ce45",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/CMakeLists.txt": {
+      "bytes": 25847,
+      "sha256": "bdc7e0bdcf605646eee3f098829e498561a555264d74d345b40c8dda554eed01",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/cmake/InstallHammondTools.cmake": {
+      "bytes": 10971,
+      "sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/cmake/InstallSourceLeakageTools.cmake": {
+      "bytes": 9498,
+      "sha256": "1307f47bba569812e2f94b42a23eb5184fb188f87071c1470754f84c0ef69cd1",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tests/test_source_leakage_install.py": {
+      "bytes": 30034,
+      "sha256": "98b5c61959af374cb1d63689d87d1c191c8848e26f3bf7153f163b4c760c38b0",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/docs/SOURCE_LEAKAGE_CONTRACT.md": {
+      "bytes": 15097,
+      "sha256": "277e82d3aa9ec6a4b57dbbbc50fdce4990de5042b745234bcf8fdecd6b55a7c3",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/docs/SOURCE_LEAKAGE_AUDITION_CONTRACT.md": {
+      "bytes": 16588,
+      "sha256": "33eed6ace40adf98e91bac4d42d4d98f0d46e0c3e5203ee8ff96f656e94f0569",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/build-native/CMakeCache.txt": {
+      "bytes": 54187,
+      "sha256": "f1f00f9c2c9debebf3d98a02934c5039e6b8d92690dc7e87d2a573e8b60cac7a",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/build-native/build.ninja": {
+      "bytes": 764023,
+      "sha256": "a22edefc84107d960281e9f46b37ad040b1ee24dee7085ea52e651f00f0fcf0b",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/build-native/cmake_install.cmake": {
+      "bytes": 55835,
+      "sha256": "2307cede9123b9718c289536cadc6e8189eb148fef0a9dc429d5553e5615c5e0",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/build-native/CMakeFiles/rules.ninja": {
+      "bytes": 266581,
+      "sha256": "ab603aa1b1728069e4862af1ea39d39803330d1e9841b1ec2f501fc65a61fc9f",
+      "mode": "0644"
+    },
+    "/workspace/scratch/7802a6528f89/build-native/libhammond_core.a": {
+      "bytes": 452908,
+      "sha256": "f8f579ef30af221645f998ac3240d7382b02241b57a2c9cf770c1979c219b443",
+      "mode": "0644"
+    }
+  },
+  "original_attempts": [
+    {
+      "classification": "Optional tracing setup blocked before product execution",
+      "report_sha256": "f0195e8cb8852e41650fcfa45475d33c9640bbc1bb38e45150e8814f1fa1eb0f",
+      "report_bytes": 31906,
+      "report_json_utf8_base64": "ewogICJzY2hlbWFfdmVyc2lvbiI6IDEsCiAgImFzc2lnbm1lbnQiOiAiQTM0IiwKICAic3RhdHVzIjogImZhaWxlZCIsCiAgInB1cnBvc2UiOiAiSW5kZXBlbmRlbnQgYWN0dWFsIG1haW4tcHJvamVjdCBTb3VyY2VMZWFrYWdlVG9vbHMgaW5zdGFsbGF0aW9uIGFuZCByZWxvY2F0ZWQgZXhlY3V0aW9uIiwKICAic3RhcnRlZF91dGMiOiAiMjAyNi0xMS0xNVQxMjo0MzozNloiLAogICJjb21tYW5kcyI6IFsKICAgIHsKICAgICAgImxhYmVsIjogImNtYWtlX3ZlcnNpb24iLAogICAgICAiYXJndiI6IFsKICAgICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzFiYjZlZTE3YWQ3ZS9idWlsZC10b29scy9jbWFrZS9kYXRhL2Jpbi9jbWFrZSIsCiAgICAgICAgIi0tdmVyc2lvbiIKICAgICAgXSwKICAgICAgImFjdHVhbF9hcmd2IjogWwogICAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvMWJiNmVlMTdhZDdlL2J1aWxkLXRvb2xzL2NtYWtlL2RhdGEvYmluL2NtYWtlIiwKICAgICAgICAiLS12ZXJzaW9uIgogICAgICBdLAogICAgICAiY3dkIjogIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvdW5yZWxhdGVkIHdvcmtpbmcgZGlyZWN0b3J5IiwKICAgICAgInJldHVybmNvZGUiOiAwLAogICAgICAiZWxhcHNlZF9zZWNvbmRzIjogMC4wMjk1NjAzNDYwMDM1NjM2MSwKICAgICAgInN0ZG91dCI6ICJjbWFrZSB2ZXJzaW9uIDQuNC41XG5cbkNNYWtlIHN1aXRlIG1haW50YWluZWQgYW5kIHN1cHBvcnRlZCBieSBLaXR3YXJlIChraXR3YXJlLmNvbS9jbWFrZSkuXG4iLAogICAgICAic3RkZXJyIjogIiIKICAgIH0sCiAgICB7CiAgICAgICJsYWJlbCI6ICJjeHhfdmVyc2lvbiIsCiAgICAgICJhcmd2IjogWwogICAgICAgICIvdXNyL2Jpbi9jKysiLAogICAgICAgICItLXZlcnNpb24iCiAgICAgIF0sCiAgICAgICJhY3R1YWxfYXJndiI6IFsKICAgICAgICAiL3Vzci9iaW4vYysrIiwKICAgICAgICAiLS12ZXJzaW9uIgogICAgICBdLAogICAgICAiY3dkIjogIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvdW5yZWxhdGVkIHdvcmtpbmcgZGlyZWN0b3J5IiwKICAgICAgInJldHVybmNvZGUiOiAwLAogICAgICAiZWxhcHNlZF9zZWNvbmRzIjogMC4wMDE3MjY3MzgwMDI2MTY5MTIxLAogICAgICAic3Rkb3V0IjogImMrKyAoRGViaWFuIDE0LjIuMC0xOSkgMTQuMi4wXG5Db3B5cmlnaHQgKEMpIDIwMjQgRnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uLCBJbmMuXG5UaGlzIGlzIGZyZWUgc29mdHdhcmU7IHNlZSB0aGUgc291cmNlIGZvciBjb3B5aW5nIGNvbmRpdGlvbnMuICBUaGVyZSBpcyBOT1xud2FycmFudHk7IG5vdCBldmVuIGZvciBNRVJDSEFOVEFCSUxJVFkgb3IgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UuXG5cbiIsCiAgICAgICJzdGRlcnIiOiAiIgogICAgfSwKICAgIHsKICAgICAgImxhYmVsIjogImFjdHVhbF9wcm9qZWN0X2luc3RhbGwiLAogICAgICAiYXJndiI6IFsKICAgICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzFiYjZlZTE3YWQ3ZS9idWlsZC10b29scy9jbWFrZS9kYXRhL2Jpbi9jbWFrZSIsCiAgICAgICAgIi0taW5zdGFsbCIsCiAgICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYnVpbGQtbmF0aXZlIiwKICAgICAgICAiLS1jb25maWciLAogICAgICAgICJSZWxlYXNlIiwKICAgICAgICAiLS1jb21wb25lbnQiLAogICAgICAgICJTb3VyY2VMZWFrYWdlVG9vbHMiLAogICAgICAgICItLXByZWZpeCIsCiAgICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvb3JpZ2luYWwgdG9vbHMiCiAgICAgIF0sCiAgICAgICJhY3R1YWxfYXJndiI6IFsKICAgICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzFiYjZlZTE3YWQ3ZS9idWlsZC10b29scy9jbWFrZS9kYXRhL2Jpbi9jbWFrZSIsCiAgICAgICAgIi0taW5zdGFsbCIsCiAgICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYnVpbGQtbmF0aXZlIiwKICAgICAgICAiLS1jb25maWciLAogICAgICAgICJSZWxlYXNlIiwKICAgICAgICAiLS1jb21wb25lbnQiLAogICAgICAgICJTb3VyY2VMZWFrYWdlVG9vbHMiLAogICAgICAgICItLXByZWZpeCIsCiAgICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvb3JpZ2luYWwgdG9vbHMiCiAgICAgIF0sCiAgICAgICJjd2QiOiAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC91bnJlbGF0ZWQgd29ya2luZyBkaXJlY3RvcnkiLAogICAgICAicmV0dXJuY29kZSI6IDAsCiAgICAgICJlbGFwc2VkX3NlY29uZHMiOiAwLjAwODM4NjA2NTAwNDc0MjcwNCwKICAgICAgInN0ZG91dCI6ICItLSBTb3VyY2VMZWFrYWdlVG9vbHMgcHJlZmxpZ2h0IHBhc3NlZDsgY29weWluZyBiZWdpbnMuIEEgbGF0ZXIgZmFpbHVyZSBjYW4gbGVhdmUgYSBwYXJ0aWFsIG5ldyBpbnN0YWxsYXRpb247IG5vIGF1dG9tYXRpYyBjbGVhbnVwIGlzIHBlcmZvcm1lZC5cbi0tIEluc3RhbGxpbmc6IC93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvb3JpZ2luYWwgdG9vbHMvYmluL2hhbW1vbmRfcmVuZGVyXG4tLSBJbnN0YWxsaW5nOiAvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL29yaWdpbmFsIHRvb2xzL2Jpbi9oYW1tb25kX3NvdXJjZV9sZWFrYWdlX3Byb2JlXG4tLSBJbnN0YWxsaW5nOiAvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL29yaWdpbmFsIHRvb2xzL2Jpbi9oYW1tb25kX3NvdXJjZV9sZWFrYWdlX2JlbmNobWFya1xuLS0gSW5zdGFsbGluZzogL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC9vcmlnaW5hbCB0b29scy9zaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL3Byb2ZpbGVzL25vbWluYWwuYjNwXG4tLSBJbnN0YWxsaW5nOiAvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL29yaWdpbmFsIHRvb2xzL3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvdG9vbHMvY29tcGlsZV9zb3VyY2VfbGVha2FnZS5weVxuLS0gSW5zdGFsbGluZzogL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC9vcmlnaW5hbCB0b29scy9zaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RhdGEvc291cmNlLWxlYWthZ2Uuc2NoZW1hLmpzb25cbi0tIEluc3RhbGxpbmc6IC93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvb3JpZ2luYWwgdG9vbHMvc2hhcmUvaGFtbW9uZC1iMy1vcmdhbi9zb3VyY2UtbGVha2FnZS9kYXRhL3NvdXJjZS1sZWFrYWdlL3N5bnRoZXRpYy1wYWlyLWRlbW8tdjEuanNvblxuLS0gSW5zdGFsbGluZzogL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC9vcmlnaW5hbCB0b29scy9zaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RhdGEvc291cmNlLWxlYWthZ2Uvc3ludGhldGljLWlkZW50aXR5LXYxLmpzb25cbi0tIEluc3RhbGxpbmc6IC93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvb3JpZ2luYWwgdG9vbHMvc2hhcmUvaGFtbW9uZC1iMy1vcmdhbi9zb3VyY2UtbGVha2FnZS9kb2NzL1NPVVJDRV9MRUFLQUdFX0lOU1RBTEwubWRcbiIsCiAgICAgICJzdGRlcnIiOiAiIgogICAgfSwKICAgIHsKICAgICAgImxhYmVsIjogImNvbXBpbGVfcGFpciIsCiAgICAgICJhcmd2IjogWwogICAgICAgICIvb3B0L2NvZGV4L3J1bnRpbWVzL2NvZGV4LXByaW1hcnktcnVudGltZS9kZXBlbmRlbmNpZXMvcHl0aG9uL2Jpbi9weXRob24iLAogICAgICAgICItSSIsCiAgICAgICAgIi1CIiwKICAgICAgICAiLVMiLAogICAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL01vdmVkIFNvdXJjZSBMZWFrYWdlIFRvb2xzLcOp6Z+zL3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvdG9vbHMvY29tcGlsZV9zb3VyY2VfbGVha2FnZS5weSIsCiAgICAgICAgIi0taW5wdXQiLAogICAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL01vdmVkIFNvdXJjZSBMZWFrYWdlIFRvb2xzLcOp6Z+zL3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvZGF0YS9zb3VyY2UtbGVha2FnZS9zeW50aGV0aWMtcGFpci1kZW1vLXYxLmpzb24iLAogICAgICAgICItLW91dHB1dCIsCiAgICAgICAgInBhaXIuYjNsZWFrYWdlIgogICAgICBdLAogICAgICAiYWN0dWFsX2FyZ3YiOiBbCiAgICAgICAgIi91c3IvYmluL3N0cmFjZSIsCiAgICAgICAgIi1mIiwKICAgICAgICAiLXFxIiwKICAgICAgICAiLWUiLAogICAgICAgICJ0cmFjZT0lZmlsZSIsCiAgICAgICAgIi1vIiwKICAgICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC9jb21waWxlX3BhaXIudHJhY2UiLAogICAgICAgICItLSIsCiAgICAgICAgIi9vcHQvY29kZXgvcnVudGltZXMvY29kZXgtcHJpbWFyeS1ydW50aW1lL2RlcGVuZGVuY2llcy9weXRob24vYmluL3B5dGhvbiIsCiAgICAgICAgIi1JIiwKICAgICAgICAiLUIiLAogICAgICAgICItUyIsCiAgICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvTW92ZWQgU291cmNlIExlYWthZ2UgVG9vbHMtw6npn7Mvc2hhcmUvaGFtbW9uZC1iMy1vcmdhbi9zb3VyY2UtbGVha2FnZS90b29scy9jb21waWxlX3NvdXJjZV9sZWFrYWdlLnB5IiwKICAgICAgICAiLS1pbnB1dCIsCiAgICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvTW92ZWQgU291cmNlIExlYWthZ2UgVG9vbHMtw6npn7Mvc2hhcmUvaGFtbW9uZC1iMy1vcmdhbi9zb3VyY2UtbGVha2FnZS9kYXRhL3NvdXJjZS1sZWFrYWdlL3N5bnRoZXRpYy1wYWlyLWRlbW8tdjEuanNvbiIsCiAgICAgICAgIi0tb3V0cHV0IiwKICAgICAgICAicGFpci5iM2xlYWthZ2UiCiAgICAgIF0sCiAgICAgICJjd2QiOiAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC91bnJlbGF0ZWQgd29ya2luZyBkaXJlY3RvcnkiLAogICAgICAicmV0dXJuY29kZSI6IDEsCiAgICAgICJlbGFwc2VkX3NlY29uZHMiOiAwLjAxMDI4OTk2NTAwMDk5MzEwNywKICAgICAgInN0ZG91dCI6ICIiLAogICAgICAic3RkZXJyIjogIi91c3IvYmluL3N0cmFjZTogdGVzdF9wdHJhY2VfZ2V0X3N5c2NhbGxfaW5mbzogUFRSQUNFX1RSQUNFTUU6IE9wZXJhdGlvbiBub3QgcGVybWl0dGVkXG4vdXNyL2Jpbi9zdHJhY2U6IHB0cmFjZShQVFJBQ0VfVFJBQ0VNRSwgLi4uKTogT3BlcmF0aW9uIG5vdCBwZXJtaXR0ZWRcbi91c3IvYmluL3N0cmFjZTogUFRSQUNFX1NFVE9QVElPTlM6IE9wZXJhdGlvbiBub3QgcGVybWl0dGVkXG4vdXNyL2Jpbi9zdHJhY2U6IGNsZWFudXA6IHdhaXRwaWQoLTEsIF9fV0FMTCk6IE5vIGNoaWxkIHByb2Nlc3Nlc1xuIiwKICAgICAgImZpbGVfdHJhY2UiOiB7CiAgICAgICAgInNoYTI1NiI6ICJlM2IwYzQ0Mjk4ZmMxYzE0OWFmYmY0Yzg5OTZmYjkyNDI3YWU0MWU0NjQ5YjkzNGNhNDk1OTkxYjc4NTJiODU1IiwKICAgICAgICAiYnl0ZXMiOiAwLAogICAgICAgICJzb3VyY2VfcGF0aF9tZW50aW9ucyI6IDAsCiAgICAgICAgImJ1aWxkX3BhdGhfbWVudGlvbnMiOiAwLAogICAgICAgICJ0ZXh0IjogIiIKICAgICAgfQogICAgfQogIF0sCiAgImNoZWNrcyI6IFsKICAgIHsKICAgICAgImNoZWNrIjogIm93bmVkX3NjcmF0Y2hfYW5kX25ld19vdXRwdXRzIiwKICAgICAgInBhc3NlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICJwdWJsaXNoZWRfYmFzZV9wcmVzZW50IiwKICAgICAgInBhc3NlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICJydW50aW1lX3Byb2R1Y3Rpb25faW5wdXRzX21hdGNoX3B1Ymxpc2hlZF9iYXNlIiwKICAgICAgInBhc3NlZCI6IHRydWUsCiAgICAgICJmYWN0cyI6IHsKICAgICAgICAiY291bnQiOiA2MwogICAgICB9CiAgICB9LAogICAgewogICAgICAiY2hlY2siOiAiY21ha2VfdmVyc2lvbl9yZXR1cm5jb2RlIiwKICAgICAgInBhc3NlZCI6IHRydWUsCiAgICAgICJmYWN0cyI6IHsKICAgICAgICAiZXhwZWN0ZWQiOiAwLAogICAgICAgICJvYnNlcnZlZCI6IDAKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogImN4eF92ZXJzaW9uX3JldHVybmNvZGUiLAogICAgICAicGFzc2VkIjogdHJ1ZSwKICAgICAgImZhY3RzIjogewogICAgICAgICJleHBlY3RlZCI6IDAsCiAgICAgICAgIm9ic2VydmVkIjogMAogICAgICB9CiAgICB9LAogICAgewogICAgICAiY2hlY2siOiAiYWN0dWFsX3Byb2plY3RfaW5zdGFsbF9yZXR1cm5jb2RlIiwKICAgICAgInBhc3NlZCI6IHRydWUsCiAgICAgICJmYWN0cyI6IHsKICAgICAgICAiZXhwZWN0ZWQiOiAwLAogICAgICAgICJvYnNlcnZlZCI6IDAKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogImFjdHVhbF9wcm9qZWN0X2V4YWN0X25pbmVfZmlsZV9pbnZlbnRvcnkiLAogICAgICAicGFzc2VkIjogdHJ1ZSwKICAgICAgImZhY3RzIjogewogICAgICAgICJleHBlY3RlZF9jb3VudCI6IDksCiAgICAgICAgIm9ic2VydmVkX2NvdW50IjogOQogICAgICB9CiAgICB9LAogICAgewogICAgICAiY2hlY2siOiAiaW5zdGFsbGVkX3RyZWVfaGFzX25vX2xpbmtzIiwKICAgICAgInBhc3NlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICJpbnN0YWxsZWRfY29weV9iaW4vaGFtbW9uZF9yZW5kZXIiLAogICAgICAicGFzc2VkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogImluc3RhbGxlZF9jb3B5X2Jpbi9oYW1tb25kX3NvdXJjZV9sZWFrYWdlX3Byb2JlIiwKICAgICAgInBhc3NlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICJpbnN0YWxsZWRfY29weV9iaW4vaGFtbW9uZF9zb3VyY2VfbGVha2FnZV9iZW5jaG1hcmsiLAogICAgICAicGFzc2VkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogImluc3RhbGxlZF9jb3B5X3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvcHJvZmlsZXMvbm9taW5hbC5iM3AiLAogICAgICAicGFzc2VkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogImluc3RhbGxlZF9jb3B5X3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvdG9vbHMvY29tcGlsZV9zb3VyY2VfbGVha2FnZS5weSIsCiAgICAgICJwYXNzZWQiOiB0cnVlCiAgICB9LAogICAgewogICAgICAiY2hlY2siOiAiaW5zdGFsbGVkX2NvcHlfc2hhcmUvaGFtbW9uZC1iMy1vcmdhbi9zb3VyY2UtbGVha2FnZS9kYXRhL3NvdXJjZS1sZWFrYWdlLnNjaGVtYS5qc29uIiwKICAgICAgInBhc3NlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICJpbnN0YWxsZWRfY29weV9zaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RhdGEvc291cmNlLWxlYWthZ2Uvc3ludGhldGljLXBhaXItZGVtby12MS5qc29uIiwKICAgICAgInBhc3NlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICJpbnN0YWxsZWRfY29weV9zaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RhdGEvc291cmNlLWxlYWthZ2Uvc3ludGhldGljLWlkZW50aXR5LXYxLmpzb24iLAogICAgICAicGFzc2VkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogImluc3RhbGxlZF9jb3B5X3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvZG9jcy9TT1VSQ0VfTEVBS0FHRV9JTlNUQUxMLm1kIiwKICAgICAgInBhc3NlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICJhY3R1YWxfcHJvamVjdF9jb21wb25lbnRfbWFuaWZlc3RfZXhhY3QiLAogICAgICAicGFzc2VkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImNoZWNrIjogInByZWZpeF9yZWxvY2F0ZWRfb3JpZ2luYWxfYWJzZW50IiwKICAgICAgInBhc3NlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJjaGVjayI6ICJjb21waWxlX3BhaXJfcmV0dXJuY29kZSIsCiAgICAgICJwYXNzZWQiOiBmYWxzZSwKICAgICAgImZhY3RzIjogewogICAgICAgICJleHBlY3RlZCI6IDAsCiAgICAgICAgIm9ic2VydmVkIjogMQogICAgICB9CiAgICB9CiAgXSwKICAic291cmNlIjogewogICAgInJlcG9zaXRvcnkiOiAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9IYW1tb25kLUIzLU9yZ2FuIiwKICAgICJidWlsZCI6ICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2J1aWxkLW5hdGl2ZSIsCiAgICAiaGVhZCI6ICI5ZjU2MTBiNmE3Zjk2NDhkZDdiOGIxYmNiMjVjMmZkMzg2MTViOTk0IiwKICAgICJoZWFkX3RyZWUiOiAiZjU4NzI5YWZiNDBjOWFkYmFlNjIzM2MyMjZkYzI3YzAxOWZmZTg2YiIsCiAgICAib3JpZ2luX21haW5fb2JzZXJ2ZWQiOiAiOWY1NjEwYjZhN2Y5NjQ4ZGQ3YjhiMWJjYjI1YzJmZDM4NjE1Yjk5NCIsCiAgICAiZXhwZWN0ZWRfcHVibGlzaGVkX2Jhc2UiOiAiOWY1NjEwYjZhN2Y5NjQ4ZGQ3YjhiMWJjYjI1YzJmZDM4NjE1Yjk5NCIsCiAgICAid29ya2luZ190cmVlX3N0YXR1c19hdF9zdGFydCI6ICJNIENNYWtlTGlzdHMudHh0XG4gTSBSRUFETUUubWRcbiBNIGRvY3MvREVWRUxPUE1FTlRfTE9HLm1kXG4gTSBkb2NzL2RldmVsb3BtZW50LzIwMjYtMTEtMTUtYXVkaW8tY29udGludWF0aW9uL0NIRUNLUE9JTlQubWRcbiBNIGRvY3MvZGV2ZWxvcG1lbnQvMjAyNi0xMS0xNS1hdWRpby1jb250aW51YXRpb24vU0NPUEUubWRcbiBNIGRvY3MvZGV2ZWxvcG1lbnQvMjAyNi0xMS0xNS1hdWRpby1jb250aW51YXRpb24vYXNzaWdubWVudHMuanNvblxuPz8gY21ha2UvSW5zdGFsbFNvdXJjZUxlYWthZ2VUb29scy5jbWFrZVxuPz8gZG9jcy9TT1VSQ0VfTEVBS0FHRV9JTlNUQUxMLm1kXG4/PyBkb2NzL2RldmVsb3BtZW50LzIwMjYtMTEtMTUtYXVkaW8tY29udGludWF0aW9uL25vdGVzL0EzMC5tZFxuPz8gZG9jcy9kZXZlbG9wbWVudC8yMDI2LTExLTE1LWF1ZGlvLWNvbnRpbnVhdGlvbi9ub3Rlcy9BMzEubWRcbj8/IGRvY3MvZGV2ZWxvcG1lbnQvMjAyNi0xMS0xNS1hdWRpby1jb250aW51YXRpb24vcmVwb3J0cy9BMzEtaW5zdGFsbC1maXJzdC5sb2cuZ3pcbj8/IGRvY3MvZGV2ZWxvcG1lbnQvMjAyNi0xMS0xNS1hdWRpby1jb250aW51YXRpb24vcmVwb3J0cy9BMzQtcmVhbC1pbnN0YWxsLmpzb25cbj8/IGRvY3MvZGV2ZWxvcG1lbnQvMjAyNi0xMS0xNS1hdWRpby1jb250aW51YXRpb24vcmVwb3J0cy9pbXBsZW1lbnRhdGlvbi1ldmlkZW5jZS1iaW5kaW5nLmpzb25cbj8/IGRvY3MvZGV2ZWxvcG1lbnQvMjAyNi0xMS0xNS1hdWRpby1jb250aW51YXRpb24vcmVwb3J0cy9pbXBsZW1lbnRhdGlvbi1wdWJsaWNhdGlvbi5qc29uXG4/PyBkb2NzL2RldmVsb3BtZW50LzIwMjYtMTEtMTUtYXVkaW8tY29udGludWF0aW9uL3JlcG9ydHMvdzA2LWNvbnRhY3QtY29tcG9zaXRpb24tZmlyc3QubG9nLmd6XG4/PyBkb2NzL2RldmVsb3BtZW50LzIwMjYtMTEtMTUtYXVkaW8tY29udGludWF0aW9uL3JlcG9ydHMvdzA2LWNvbnRhY3QtaW5zdGFsbC1pbnB1dC1idWlsZC5sb2cuZ3pcbj8/IHRlc3RzL3Rlc3Rfc291cmNlX2xlYWthZ2VfY29udGFjdHMuY3BwXG4/PyB0ZXN0cy90ZXN0X3NvdXJjZV9sZWFrYWdlX2luc3RhbGwucHkiLAogICAgInJvb3RfY21ha2VfcGF0Y2giOiAiZGlmZiAtLWdpdCBhL0NNYWtlTGlzdHMudHh0IGIvQ01ha2VMaXN0cy50eHRcbmluZGV4IDZmMTMzNDguLjBhZWIwOTIgMTAwNjQ0XG4tLS0gYS9DTWFrZUxpc3RzLnR4dFxuKysrIGIvQ01ha2VMaXN0cy50eHRcbkBAIC0zMDEsNyArMzAxLDcgQEAgaWYoQlVJTERfVEVTVElORylcbiAgICAgICAgICAgICBcIkhBTU1PTkRfU09VUkNFX0xFQUtBR0VfUFJPQkVfRVhFQ1VUQUJMRT0kPFRBUkdFVF9GSUxFOmhhbW1vbmRfc291cmNlX2xlYWthZ2VfcHJvYmU+XCIpXG4gICAgICAgICBzZXRfdGVzdHNfcHJvcGVydGllcyhweXRob25fdGVzdF9zb3VyY2VfbGVha2FnZV9yb3VuZHRyaXAgUFJPUEVSVElFU1xuICAgICAgICAgICAgIFRJTUVPVVQgOTAgTEFCRUxTIFwic291cmNlO2xlYWthZ2U7ZGF0YVwiKVxuLSAgICAgICAgbGlzdChBUFBFTkQgSEFNTU9ORF9URVNUX1RBUkdFVFMgaGFtbW9uZF9zb3VyY2VfbGVha2FnZV9wcm9iZSlcbisgICAgICAgIGxpc3QoQVBQRU5EIEhBTU1PTkRfVEVTVF9UQVJHRVRTIGhhbW1vbmRfc291cmNlX2xlYWthZ2VfcHJvYmUgaGFtbW9uZF9zb3VyY2VfbGVha2FnZV9iZW5jaG1hcmspXG4gICAgIGVuZGlmKClcbiBcbiAgICAgaWYoVEVTVCBweXRob25fdGVzdF9jcm9zc292ZXJfYWNjZXB0YW5jZSlcbkBAIC00MjYsNiArNDI2LDcgQEAgZW5kaWYoKVxuIFxuICMgQ29tcG9uZW50LXNjb3BlZCBpbnN0YWxsYXRpb24gaXMgZGVmaW5lZCBhZnRlciBhbGwgdGFyZ2V0cyBhbmQgdGVzdHMuXG4gaW5jbHVkZShjbWFrZS9JbnN0YWxsSGFtbW9uZFRvb2xzLmNtYWtlKVxuK2luY2x1ZGUoY21ha2UvSW5zdGFsbFNvdXJjZUxlYWthZ2VUb29scy5jbWFrZSlcbiBpbmNsdWRlKGNtYWtlL0luc3RhbGxDcm9zc292ZXJUb29scy5jbWFrZSlcbiBpbmNsdWRlKGNtYWtlL0luc3RhbGxDYXB0dXJlVG9vbHMuY21ha2UpXG4gaW5jbHVkZShjbWFrZS9JbnN0YWxsU3RhbmRhbG9uZS5jbWFrZSkiLAogICAgInJlYWRfb25seV9pbnB1dF9pZGVudGl0aWVzIjogewogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9idWlsZC1uYXRpdmUvaGFtbW9uZF9yZW5kZXIiOiB7CiAgICAgICAgImJ5dGVzIjogMTcyNTI4LAogICAgICAgICJzaGEyNTYiOiAiOTI4MjA1ZGMzYjMxZTU3ZmFhNzY2NGNiMzllNjkxNjU5ZDFjN2Y3NDMwYjU1NTVhZGU3MGI0YTk4MzA4MzViZiIsCiAgICAgICAgIm1vZGUiOiAiMDc1NSIKICAgICAgfSwKICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYnVpbGQtbmF0aXZlL2hhbW1vbmRfc291cmNlX2xlYWthZ2VfcHJvYmUiOiB7CiAgICAgICAgImJ5dGVzIjogNjM2MDgsCiAgICAgICAgInNoYTI1NiI6ICJjNDE2OTg2YzdjZDM0OTI3MDVmYWM5ODUwZWIzZWNiNTU0MzFkNTc5NWUyZDEyOWQzY2Q4OWVjNGEwZGI1OGJiIiwKICAgICAgICAibW9kZSI6ICIwNzU1IgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9idWlsZC1uYXRpdmUvaGFtbW9uZF9zb3VyY2VfbGVha2FnZV9iZW5jaG1hcmsiOiB7CiAgICAgICAgImJ5dGVzIjogMTI1OTUyLAogICAgICAgICJzaGEyNTYiOiAiYzkwOTM4M2U2OTQ3OGY5YzU5NTk4N2VmMDE5ZmFiNWQxOWFmZGZiNWRhODUwM2FhNzg1MWY0OWNjYTY0NTdiNCIsCiAgICAgICAgIm1vZGUiOiAiMDc1NSIKICAgICAgfSwKICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYnVpbGQtbmF0aXZlL25vbWluYWwuYjNwIjogewogICAgICAgICJieXRlcyI6IDQ1NDUsCiAgICAgICAgInNoYTI1NiI6ICJiMzZiMDc3M2ZhMDZhYWMzZWUyNjczNjJmOTdjZTc5OGQwYzFmNDE2OTVlNjY2ZjcxYzRhOGE1MmFlMzYzODlmIiwKICAgICAgICAibW9kZSI6ICIwNjAwIgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9IYW1tb25kLUIzLU9yZ2FuL3Rvb2xzL2NvbXBpbGVfc291cmNlX2xlYWthZ2UucHkiOiB7CiAgICAgICAgImJ5dGVzIjogMTE4MDgsCiAgICAgICAgInNoYTI1NiI6ICJlYTVjNDgyN2MzZTcxMWIxZjAzZjRkZTdjOWI2NzA3MjA0MzVlOGExMDBkODY2YjZkN2Q2ODNhOTQwMTYwZDE0IiwKICAgICAgICAibW9kZSI6ICIwNjQ0IgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9IYW1tb25kLUIzLU9yZ2FuL2RhdGEvc291cmNlLWxlYWthZ2Uuc2NoZW1hLmpzb24iOiB7CiAgICAgICAgImJ5dGVzIjogMjU0NywKICAgICAgICAic2hhMjU2IjogIjI4MjAzODljZWFiNzc3NzY5ZDRmOGY3ZDBlMGZlZWMzM2ZlN2Y3Y2MxYzgxMmZhNWQ2OGMzNThmYTkxYjMzYzIiLAogICAgICAgICJtb2RlIjogIjA2NDQiCiAgICAgIH0sCiAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L0hhbW1vbmQtQjMtT3JnYW4vZGF0YS9zb3VyY2UtbGVha2FnZS9zeW50aGV0aWMtcGFpci1kZW1vLXYxLmpzb24iOiB7CiAgICAgICAgImJ5dGVzIjogOTA5LAogICAgICAgICJzaGEyNTYiOiAiZTkzMTAwNjE4MzYyNTAzMjQ1ZjljMGQxOTI0MTljOWE3M2RkYWY2MDIyNzI1Y2YxNTc3ZmU2OTViZTE4MzI5OSIsCiAgICAgICAgIm1vZGUiOiAiMDY0NCIKICAgICAgfSwKICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvSGFtbW9uZC1CMy1Pcmdhbi9kYXRhL3NvdXJjZS1sZWFrYWdlL3N5bnRoZXRpYy1pZGVudGl0eS12MS5qc29uIjogewogICAgICAgICJieXRlcyI6IDc1NywKICAgICAgICAic2hhMjU2IjogIjhlNGNmMGNlN2JmNWQwZWE1ZjA4N2I5NTYxZjljNGM5NGVkZjk3MDE4OWRjZDY0OTRkMTA5MDYyODc2MDQzODUiLAogICAgICAgICJtb2RlIjogIjA2NDQiCiAgICAgIH0sCiAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L0hhbW1vbmQtQjMtT3JnYW4vZG9jcy9TT1VSQ0VfTEVBS0FHRV9JTlNUQUxMLm1kIjogewogICAgICAgICJieXRlcyI6IDEzMDcxLAogICAgICAgICJzaGEyNTYiOiAiMjVmZTEwMDU4YzMzNWVkNDIxMGYzMDY2ZjY5YTM2N2YwYzEyNzY0MGJjMmMwMWNiY2FlNTkyMjQ0NDEyY2U0NSIsCiAgICAgICAgIm1vZGUiOiAiMDY0NCIKICAgICAgfSwKICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvSGFtbW9uZC1CMy1Pcmdhbi9DTWFrZUxpc3RzLnR4dCI6IHsKICAgICAgICAiYnl0ZXMiOiAyNTg0NywKICAgICAgICAic2hhMjU2IjogImJkYzdlMGJkY2Y2MDU2NDZlZWUzZjA5ODgyOWU0OTg1NjFhNTU1MjY0ZDc0ZDM0NWI0MGM4ZGRhNTU0ZWVkMDEiLAogICAgICAgICJtb2RlIjogIjA2NDQiCiAgICAgIH0sCiAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L0hhbW1vbmQtQjMtT3JnYW4vY21ha2UvSW5zdGFsbEhhbW1vbmRUb29scy5jbWFrZSI6IHsKICAgICAgICAiYnl0ZXMiOiAxMDk3MSwKICAgICAgICAic2hhMjU2IjogIjk3Y2I2ZWMyYzcwNzNlM2M1MGExYjAwMTA2MzE3ZGRkNzI2YTJmYjAxZTU4MGRjOTZiNTViZTAwNDQxNDAzNTUiLAogICAgICAgICJtb2RlIjogIjA2NDQiCiAgICAgIH0sCiAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L0hhbW1vbmQtQjMtT3JnYW4vY21ha2UvSW5zdGFsbFNvdXJjZUxlYWthZ2VUb29scy5jbWFrZSI6IHsKICAgICAgICAiYnl0ZXMiOiA5NDk4LAogICAgICAgICJzaGEyNTYiOiAiMTMwN2Y0N2JiYTU2OTgxMmUyZjk0YjQyYTIzZWI1MTg0ZmIxODhmODcwNzFjMTQ3MDc1NGY4NGMwZWY2OWNkMSIsCiAgICAgICAgIm1vZGUiOiAiMDY0NCIKICAgICAgfSwKICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvSGFtbW9uZC1CMy1Pcmdhbi90ZXN0cy90ZXN0X3NvdXJjZV9sZWFrYWdlX2luc3RhbGwucHkiOiB7CiAgICAgICAgImJ5dGVzIjogMzAwMzQsCiAgICAgICAgInNoYTI1NiI6ICI5OGI1YzYxOTU5YWYzNzRjYjFkNjM2ODlkODdkMWMxOTFjODg0OGUyNmYzYmY3MTUzZjE2M2I0Yzc2MGMzOGIwIiwKICAgICAgICAibW9kZSI6ICIwNjQ0IgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9IYW1tb25kLUIzLU9yZ2FuL2RvY3MvU09VUkNFX0xFQUtBR0VfQ09OVFJBQ1QubWQiOiB7CiAgICAgICAgImJ5dGVzIjogMTUwOTcsCiAgICAgICAgInNoYTI1NiI6ICIyNzdlODJkM2FhOWVjNmE0YjU3ZGJiYmM1MGZkY2U0OTkwZGU1MDQyYjc0NTIzNGJjZjhmZGVjZDZiNTVhN2MzIiwKICAgICAgICAibW9kZSI6ICIwNjQ0IgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9IYW1tb25kLUIzLU9yZ2FuL2RvY3MvU09VUkNFX0xFQUtBR0VfQVVESVRJT05fQ09OVFJBQ1QubWQiOiB7CiAgICAgICAgImJ5dGVzIjogMTY1ODgsCiAgICAgICAgInNoYTI1NiI6ICIzM2VlZDZhY2U0MGFkZjk4ZTkxYmFjNGQ0MmQ0ZDk4ZjBkNDZlMGMzZTUyMDNlZThmZjk2ZjY1NmU5NGYwNTY5IiwKICAgICAgICAibW9kZSI6ICIwNjQ0IgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9idWlsZC1uYXRpdmUvQ01ha2VDYWNoZS50eHQiOiB7CiAgICAgICAgImJ5dGVzIjogNTQxODcsCiAgICAgICAgInNoYTI1NiI6ICJmMWYwMGY5YzJjOWRlYmViZjNkOThhMDI5MzRjNTAzOWU2YjhkOTI2OTBkYzdlODdkMmE1NzNlOGI2MGNhYzdhIiwKICAgICAgICAibW9kZSI6ICIwNjQ0IgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9idWlsZC1uYXRpdmUvYnVpbGQubmluamEiOiB7CiAgICAgICAgImJ5dGVzIjogNzY0MDIzLAogICAgICAgICJzaGEyNTYiOiAiYTIyZWRlZmM4NDEwN2Q5NjAyODFlOWY0NmIzN2FkMDQwYjFlZTI0ZGVlNzA4NWVhNTJlNjUxZjAwZjBmY2YwYiIsCiAgICAgICAgIm1vZGUiOiAiMDY0NCIKICAgICAgfSwKICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYnVpbGQtbmF0aXZlL2NtYWtlX2luc3RhbGwuY21ha2UiOiB7CiAgICAgICAgImJ5dGVzIjogNTU4MzUsCiAgICAgICAgInNoYTI1NiI6ICIyMzA3Y2VkZTkxMjNiOTcxOGMyODk1MzZjYWRjNmU4MTg5ZWIxNDhmZWYwYTlkYzQyOWQ1NTUzZTU2MTVjNWUwIiwKICAgICAgICAibW9kZSI6ICIwNjQ0IgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9idWlsZC1uYXRpdmUvQ01ha2VGaWxlcy9ydWxlcy5uaW5qYSI6IHsKICAgICAgICAiYnl0ZXMiOiAyNjY1ODEsCiAgICAgICAgInNoYTI1NiI6ICJhYjYwM2FhMWIxNzI4MDY5ZTQ4NjJhZjFlYTM5ZDM5ODAzMzMwZDFlOTg0MWIxZWMyZjUwMWZjNjVhNjFmYzlmIiwKICAgICAgICAibW9kZSI6ICIwNjQ0IgogICAgICB9LAogICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9idWlsZC1uYXRpdmUvbGliaGFtbW9uZF9jb3JlLmEiOiB7CiAgICAgICAgImJ5dGVzIjogNDUyOTA4LAogICAgICAgICJzaGEyNTYiOiAiZjhmNTc5ZWYzMGFmMjIxNjQ1Zjk5OGFjMzI0MGQ3MzgyYjAyMjQxYjU3YTJjOWNmNzcwYzE5NzljMjE5YjQ0MyIsCiAgICAgICAgIm1vZGUiOiAiMDY0NCIKICAgICAgfQogICAgfSwKICAgICJydW50aW1lX3Byb2R1Y3Rpb25faW5wdXRzIjogewogICAgICAiaW5jbHVkZS9oYW1tb25kL0NvbnNvbGVNb2RlbC5oIjogewogICAgICAgICJzaGEyNTYiOiAiZTZlZjkxMTk2MWMxYWNhMWNlNzJiY2E4ZDJjZmJhOWM3NjU2NjVkN2NlZjMwNDQ2YWRmZTUzYjliYTU5ZGI1MSIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9Db250YWN0QmFuay5oIjogewogICAgICAgICJzaGEyNTYiOiAiYTA4M2RjZDY1ZDk4OWNjNWJlNzhhMzkzZmFkNzRmNDBjYmI1MzBlMzNmODk0OTJkNTIzZTQwNmY0NzdiZTk5ZCIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9Db250cm9sU3RhdGUuaCI6IHsKICAgICAgICAic2hhMjU2IjogImFhYjgyYjA4MmY5Y2Y3N2RhZGY3NjMxNDhjYWRlOWVhZTA0ZjZmN2RmNjhiMzAyYjE4MzJmMjFmNzgwMzQ4NTYiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJpbmNsdWRlL2hhbW1vbmQvQ29udHJvbFN0YXRlSU8uaCI6IHsKICAgICAgICAic2hhMjU2IjogIjdlOTZjN2IyNzkwNmY3ZGZlMGI5ZTgzMzc4ODhkNTMwNWZjNDYxMGY1MDA5MzAxYjQyY2ZhZTU2M2UzYWIwODEiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJpbmNsdWRlL2hhbW1vbmQvRW5naW5lLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICJiYjg2ZmY2NmVkMzAzYmIwMGZlZDI5NTY0YWVlZWZhMGM2ODQwMWQzMmYwMDRjNzkyMTNiYmM1YWU5N2QwNDA4IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL0ZpeGVkUmVnaXN0cmF0aW9uLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICI0NTQ4MjQwY2UyNWY1MjAwNDQyYmZlNDYwN2JhNzU1ZmVlZTgyMmE5MWM4YjFhOTdhZjliZjc4MzdlMzYzNGEwIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL0hvc3RUaW1lbGluZS5oIjogewogICAgICAgICJzaGEyNTYiOiAiOWFmNGM5NGNlMjI0MjViZDZiZTg3OGM5NzZkY2U0OTUwYzRiYmY1MjIxOWZjODU1NWE2ODJjZTJlZjlkMjMxNiIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9JbnB1dFByb2Nlc3Nvci5oIjogewogICAgICAgICJzaGEyNTYiOiAiMmE0NTRlMDU2NTJkMTY2NjAyMTIwZjVlZDkxMmJhODU1NzU3MzhkNjViNWZhOTU2M2NlMjBkYzkyZmMxYzhkZiIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9MZXNsaWVDcm9zc292ZXIuaCI6IHsKICAgICAgICAic2hhMjU2IjogIjU0ZWZmZjIxOGY4NzMwNDViZDA3YTJlYjMyNzBkMDc2MzdlM2YzZmM1ZDJkNTFiYWMwMzJiN2VmY2E1MzU1OWMiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJpbmNsdWRlL2hhbW1vbmQvTm90ZU93bmVyc2hpcC5oIjogewogICAgICAgICJzaGEyNTYiOiAiMDNiYWFhNDZkZThjMjRkMzQ2Yzg2YTY0YTA5ZTA1MDNlODViNzg4NTRkMTQzYTFjZDYxNmFlZGEzOGU0YjFkYyIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9QYXJhbWV0ZXJCcmlkZ2UuaCI6IHsKICAgICAgICAic2hhMjU2IjogImNkMzEzNzExNzM3Zjk0ZTVmN2Y3YjBkZDczODUxMzQ3YjljNGU1M2IzOTYyZDVkNDBkN2U3YzM3ODgzMjkzZDMiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJpbmNsdWRlL2hhbW1vbmQvUGVkYWxOb3RlT3duZXJzaGlwLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICIzZGY1OTBjNjc0N2YwMWExOTY1MWIyMjIwYjNjMDAyNDIyYzg5MzRmZjA2NzEwYmM5N2JlOGY0N2M0NzQ3ZDMzIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1BlZGFsUm91dGluZy5oIjogewogICAgICAgICJzaGEyNTYiOiAiZTc3YzUyZjFjNTQxZWYzMDFmZmY0YzhiMGZiOWE5NDQ5ZjkzYmU2MzI2MzAzMjZmMmQ3NjQwNjk0Mzg0YmVhOCIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9QZWRhbFZvaWNlLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICI2OTQ5NjE5NDZlYWM4MzhjNjg5NTQ3ZmM0MDNjODRlNDlhNDI5ZjMzMzc4MTZlYTlhZDNhNzUxYmYzMDVkZGFmIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1BlcmN1c3Npb24uaCI6IHsKICAgICAgICAic2hhMjU2IjogIjVlYjg3ZmRkMjM0MjQxMGI2M2Y3ZTZlYzU1YWMxMWM2NDVkMmI3MTg1Mjg3ZmI0OWZmOGU1ZTUzMDk1YTI3MjIiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJpbmNsdWRlL2hhbW1vbmQvUGVyZm9ybWFuY2VJbnB1dC5oIjogewogICAgICAgICJzaGEyNTYiOiAiMDIyOWJjOGE4OGM0M2M1N2YzOTBhNzM0MjkwOGViMjI1MzdmMDM3NjQyMDQwYWRhN2UxNDU1ZDQ1YWMzYWQ3NyIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9Qcm9maWxlLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICJiMTE4MGIzZGMwNDAzMGUwNTU1ZWYzZWI0NGEyMTYxN2ZjMDZlOTMxNTBhOWVjYjQ4ZWJiMDU5NTViM2U1ZmQwIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1JvdGFyeUhpc3RvcnkuaCI6IHsKICAgICAgICAic2hhMjU2IjogIjllNjkzMDM0MmE1YzgzYmRjZjk5MTAyYWFlYjBkYzliMDcxNGU4NTU2MWJkODIwNWE1MzE1NWE3ZmNhNGEyNWIiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJpbmNsdWRlL2hhbW1vbmQvUm90YXJ5TW90aW9uLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICI3YmM4MTMzMWY4NGI3Y2U0OTBiZjkwNDcxMTQzMzZlNjMzZjNkYTkxYTM5YmJmZDJhMTNlM2ZkNDA2ZjYxZDM2IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1JvdGFyeVByb3BhZ2F0aW9uLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICJjMzA0YTFhYzk5ZWVkNmU2ZTNmODBiNTEwN2QwMjY4ODBhZWIyYjViMTg0OTlhZjBhNmE3ZWQzMDE4NTIxYTRhIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1JvdGFyeVJlbmRlcmVyLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICI1Zjc0YWYwYTdjYTYyOWI0MzNmZTdmM2Q3MmE0NGEyYjM5ZGFmOTBmZDJkNjRhZmE1NzlhZWNkMjZmNDhjY2QwIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1JvdGFyeVR5cGVzLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICJiMjdjZTQ5MzQxODhjMjRlYmU1NTc0NjlmYTUxOTFkZDdjZGNkOThhMWMzZmRiZTI3NGIwZDc1ODVlNDU3OGI0IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1NjYW5uZXJMaW5lLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICJjMjQ5ZjdjNTU1NmQ2YTZjOGM1ODk3ODkyOGYwYjg2MGJlNDQyY2IxMTg4ZDM1ZTQ5YzU5NTc1NzI5YWYwMGM3IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1NjYW5uZXJMaW5lRm9oLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICJjN2NmNDQzYjlmZTg1ZjBmZTU0NDYwNWIyYTE1ZmJjMjUzOTY2MWY3MzVjYTYyNzYwZGJiNTEwZjcxMTFiODg3IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1NjYW5uZXJSb3Rvci5oIjogewogICAgICAgICJzaGEyNTYiOiAiM2NhODQ2ZmM3MjIyNDExNDE5NGQ3MzI3MmY0MTBmYTJjYmUzYzBjYWU5NGM0ZmIyMzEwNTUzNmM3YWZiNGQ1YSIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9Tb3VyY2VMZWFrYWdlLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICIwYmYzM2ExZmM5OWQ1M2Q4ODhiOWE1ODFiODc4N2FmMWFhZjc4ODJkMDE0NDFlOWU1NzBiYzMwNTBiODE3NDgyIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAiaW5jbHVkZS9oYW1tb25kL1N0YXRlRXhjaGFuZ2UuaCI6IHsKICAgICAgICAic2hhMjU2IjogIjEwNmRlYzdkZjM2N2E0ZGQzMzUxZDI0M2NhY2QyNmE2YzgwNDFjN2FjOGU4NzRiYmE5OWE2ZmEyNmE0YWMxZDAiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJpbmNsdWRlL2hhbW1vbmQvVG9uZXdoZWVsQmFuay5oIjogewogICAgICAgICJzaGEyNTYiOiAiNjk0YWNhZWNlOTAxZTE4YjRlMDg5MjY0MjE4ZDhmMjE3Y2ZlM2QyZjhlYTJhOWFkZmI1ZmY2NzczYjJmNzU2YiIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9UeXBlcy5oIjogewogICAgICAgICJzaGEyNTYiOiAiMGFiZWNkOTYwYzUwMTg2ZGE1MzQ4NTcwYmZhZDgyMGNmMGY3ZjNjODljNjc1NzQzZWI4MTBiMmViZGEwZGRhOCIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgImluY2x1ZGUvaGFtbW9uZC9kZXRhaWwvRGVjaW1hbC5oIjogewogICAgICAgICJzaGEyNTYiOiAiYWUyYzYzZWM2MWU4MjNmZGExOThhNDk1MWUwMjlkZjExMTg0OTgwYzliYzgzOTQxNDJhMmQ0Njk1MTMzOGM0MiIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9Db250YWN0QmFuay5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICI5MTc0N2Q5NjNkNmNlYzc0YjNiZTEyNTQ5YWJkOGU4MTZmNGMxNzZjZTE3MmZiYTUyZjljZGJjNTkzYzZlOWUxIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL0NvbnRyb2xTdGF0ZS5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICI5MDI2YWEwMzM4YjkwNWEwMDU5MTJlNGM3NzM0ZWVkZDM2Y2JmMjA0YWU0M2ZhNDYzMWJkYzVhYWRhYTg2YTVkIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL0NvbnRyb2xTdGF0ZUlPLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogIjNhOTViNjc1MGZjNjE1YjcyMThkYTVkZDljYjU0MGIzMGQ4YTgzOTg0Mzc0ZDQ0MWYyNzU0YzdlNjZkZTM0ZmIiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJzcmMvRW5naW5lLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogImUxZjg5MDIzNGJkMDllZGZiMGYwYWVjNGY3NGNiNzc4YTk1MGJiYzkyYTQ4ZTNlNzlhOTlkMmVhNzcxMDI5ZjMiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJzcmMvRml4ZWRSZWdpc3RyYXRpb24uY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiNjkwZTQ1ZTU3MzhjM2MyNWFlMTA4MmUzMWE0OWRlYmRmYmNhOTk0YjY4ZDZiMGEyOGVmODY1ZGY3OTkxNzY5ZCIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9Ib3N0VGltZWxpbmUuY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiZjBhM2Y4ODM5NmYwZjliNzQzZjkxMjc3Y2EzMWI4NWEzMmRlZGE5OGFiYWU1M2QwMjJkYmY2MDFkMjIyNjE0OSIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9JbnB1dFByb2Nlc3Nvci5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICJkNTU0M2EyZTRmYmQzNDExNGRhMzBhYzI4NDMwMTMwZTRiNWI1ZDAwMTEwYzhjMjljYWU4MGM4NTk4NmE3NmZjIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL0xlc2xpZUNyb3Nzb3Zlci5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICIxYTFiZGRlNzJhZjk1NzA5MTQzYWZjNGY2Mjk5MWMxMzhmZjM0NThjYzc4NzY1ZmJlNDlhMjI5ZDgyNjkzNTI1IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL05vdGVPd25lcnNoaXAuY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiZjE2ZTdhMmYxNjk4ODk4YTU1NTJmNzMwMDQ5OTJmYjE2MjI1YjEyNDdkNGUwZjMxNzBjY2EyMDFlNzhiNTc1MSIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9QYXJhbWV0ZXJCcmlkZ2UuY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiMjk2YzY3NGVmMzlkNTQ3NTFmNjYyMjkzYjRjZTRiMDdmNjAyYmI0MDczNDk5ODFmOGIwM2UxYjVhNDc1NzIyMCIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9QZWRhbE5vdGVPd25lcnNoaXAuY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiYTkzOGY5ZDAzYTFhMDVkMjBjZGY1ZDQxNTY3YmQ5YzQ0YmQzZjU1ODFlYzQ0Njg5N2VmNzkzODZkMTQ4YWNkZSIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9QZWRhbFJvdXRpbmcuY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiOGQwNWRlZGI5MDE1ODYzZGZkODg2NjhlNWVhMjdkNmJlNDJlYTFmY2RiNjAwY2YzNDc4N2U0NDZlMTRkMjJhZiIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9QZWRhbFZvaWNlLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogIjg4ZmI1YWZhOTM2Nzg0YmUzNTFiMjk0MGVlNmY4MTIxNjk3NTExMmY4NjBiMDA3ZDQwZjNiNmEzZDlmN2M2YmEiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJzcmMvUGVyY3Vzc2lvbi5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICI4MjM2ODViODc5ZmFkMTI0OTJmODZiYmY1ZTc4Mjk0NjY4ZWU5YjA1NjdjNThjMjZhYzBiNDRhYTI4YjEzOTBhIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL1BlcmZvcm1hbmNlSW5wdXQuY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiODBiOWI3N2JjYTllMTdmOGI5YTg2NmRhY2EzMjQ2OGQ2NDlhZTRkNmI5NzVmMWYwYzY2Y2VlYmJhNjQ2YjE4OSIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9Qcm9maWxlLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogIjgwZjVjNzQ1NjMxMWM3N2E4M2RmMjNjNTQ4YzAyY2FiYmY5YzFjZjE2MjFjZmY4OTg2N2QwZDBjNjg4ZWJlNTQiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJzcmMvUm90YXJ5SGlzdG9yeS5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICI0ZjNjNGZiZDk1N2Y3Y2M5MTMxYjFmNGU3YzZlNzdmNjlkZjFiN2U4NWM5YmE0MDczZGU1OWZlNTIzMjJhMGY1IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL1JvdGFyeU1vdGlvbi5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICJhM2Y5ODY4OTIwNzgyNTRmNmRmYWU5MzZiYmJmMWI1ZTFjNDk2Nzg4MmQwNmMxM2IzYjI4NjQ5ZjIyNzNjZmExIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL1JvdGFyeVByb3BhZ2F0aW9uLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogImRjYzM2ODE5NzQ3YjhkMjE1MTMwYzUwMzFhOTU1ZTRiMDBhZjI5YTExNDgzMmQwYmYyNzNjYTYwZWFhZjBjMmUiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJzcmMvUm90YXJ5UmVuZGVyZXIuY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiYjQ4ZDgyZGVhZTk4ZDA4NzQ5M2EyNTk3NmY3NjdjOTk1ZDRlMWRiMGFlNzlhY2I4YzY5OWE2MmRjMjFjN2QwNCIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9Sb3RhcnlSZW5kZXJlckludGVybmFsLmgiOiB7CiAgICAgICAgInNoYTI1NiI6ICI1NmEyZmI2ZTBjM2FmNWI3ZjY4NmUyZDJkYzJmYWQwN2ZkNzg1ODkyMDY1NzgxMmJhNmQ0ZTI4MTUzNjM3Nzk2IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL1JvdGFyeVN0cmVhbWluZ1BhdGguY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiZWQ3OWQ2Y2UzNjUzZjUyZjVmOWE3ZDQzZDRmNWNmOTc0M2YxOGNjM2M5NDU4ZWU3NzM0OTI4ZTQyZGNiYWU1MCIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9TY2FubmVyTGluZS5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICI0MjgwZGIzY2FhM2Y3YWEyMjVjNThhMGZhNjRlYzRjYTMxYWRkNTVhYjhiYjQ2YTI3YWNhMmRlYmE0NTQ0MzM2IiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL1NjYW5uZXJMaW5lRm9oLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogIjlmNWZmM2YyNWYzNTY0Nzc0ZWNhYWNlMjkyZWI5Mjk5YjNkNzVlODk3Y2U3ZmU2YjMwYTU5NTc1YWRkYzI0ZGYiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJzcmMvU2Nhbm5lclJvdG9yLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogImYxZGJkNjVhOTIwMzZmZWY5OTU3ZDI4MGQyYWFmZTliZDg1Nzk0MTRlZjYzMmE2ZTJjNTI1ZTM3MDkwN2IyYTAiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJzcmMvU291cmNlTGVha2FnZS5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICJmZDUxMTJjN2YwNzIwMjg0ODgyOGI0Yzk3NWYyNmU4NmNjNWEwMjg0NTYyODA1OGVjOWFiYjBhZDg5NzJiYjhjIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL1NvdXJjZUxlYWthZ2VJTy5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICIwYWQ2ZDljOGI1NzY4MTMxZTE5NDUxYzJlNjVlZGE1MzQyNDVmOTlmZjBhNmVmYTRkZTczMzg1OTMzNTE4YzdlIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAic3JjL1N0YXRlRXhjaGFuZ2UuY3BwIjogewogICAgICAgICJzaGEyNTYiOiAiM2Y2NjFlYWIxNmNkMTY0ZTVkMTI5OWVlNTllYTdjMjdlOWUxY2ZkMmY3ZDhkMmQyNTIxOGUyNDczNDg4NDgzNyIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInNyYy9Ub25ld2hlZWxCYW5rLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogImViYzI2ZTJlNjFjYzg4ZDU1MjVlMzkwYWJmMzg5N2ViZWFlMzhlNjUyYzEzZWEzZWYwMjgxOGIyYjM4NDllMGIiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJ0b29scy9jb21waWxlX3NvdXJjZV9sZWFrYWdlLnB5IjogewogICAgICAgICJzaGEyNTYiOiAiZWE1YzQ4MjdjM2U3MTFiMWYwM2Y0ZGU3YzliNjcwNzIwNDM1ZThhMTAwZDg2NmI2ZDdkNjgzYTk0MDE2MGQxNCIsCiAgICAgICAgIm1hdGNoZXNfYmFzZSI6IHRydWUKICAgICAgfSwKICAgICAgInRvb2xzL3JlbmRlci5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICIwNDQ1YmI4MGU0MGU4MzI2OTJhNjk2ODlhODM2MDdhZWFjZDU1ZGQxNTI2NDU5OWE5ZmRmZTIxOTQ0OGJkMzdlIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9LAogICAgICAidG9vbHMvc291cmNlX2xlYWthZ2VfYmVuY2htYXJrLmNwcCI6IHsKICAgICAgICAic2hhMjU2IjogIjNiNTAxYmNiZjA1NjFmODY3NmY2N2NkYTVjMmU3YzM4NjA1MWMxYWYzYjBkZTBlNmQyMTI3YjRmMDYzZjAzMzYiLAogICAgICAgICJtYXRjaGVzX2Jhc2UiOiB0cnVlCiAgICAgIH0sCiAgICAgICJ0b29scy9zb3VyY2VfbGVha2FnZV9wcm9iZS5jcHAiOiB7CiAgICAgICAgInNoYTI1NiI6ICJmMmE2MWI4OTdjMjg3NWQzNTI3NDhhNzQyY2MzNDJjNzU0ZWM4OThmY2MwMzkxYWNhMGFiMGFkZmQ2YThmZDYyIiwKICAgICAgICAibWF0Y2hlc19iYXNlIjogdHJ1ZQogICAgICB9CiAgICB9CiAgfSwKICAib2JzZXJ2YXRpb25zIjogewogICAgInByaW9yX2NvbXBvbmVudF9tYW5pZmVzdF9leGlzdHMiOiBmYWxzZSwKICAgICJnZW5lcmF0ZWRfY29tcG9uZW50X21hbmlmZXN0IjogewogICAgICAicGF0aCI6ICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2J1aWxkLW5hdGl2ZS9pbnN0YWxsX21hbmlmZXN0X1NvdXJjZUxlYWthZ2VUb29scy50eHQiLAogICAgICAic2hhMjU2IjogIjZjYjEyMjQxYTVlMzRlNjRmZDc4NzJiODg2ZmVmYTRiZDgzNTFiMzc0MTVkNmM3MzA0NTE0MmQ3MWFlOThiYzYiLAogICAgICAiYnl0ZXMiOiAxMDU4LAogICAgICAiZW50cmllcyI6IFsKICAgICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC9vcmlnaW5hbCB0b29scy9iaW4vaGFtbW9uZF9yZW5kZXIiLAogICAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL29yaWdpbmFsIHRvb2xzL2Jpbi9oYW1tb25kX3NvdXJjZV9sZWFrYWdlX3Byb2JlIiwKICAgICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC9vcmlnaW5hbCB0b29scy9iaW4vaGFtbW9uZF9zb3VyY2VfbGVha2FnZV9iZW5jaG1hcmsiLAogICAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL29yaWdpbmFsIHRvb2xzL3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvcHJvZmlsZXMvbm9taW5hbC5iM3AiLAogICAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL29yaWdpbmFsIHRvb2xzL3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvdG9vbHMvY29tcGlsZV9zb3VyY2VfbGVha2FnZS5weSIsCiAgICAgICAgIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYTM0LWluc3RhbGwvb3JpZ2luYWwgdG9vbHMvc2hhcmUvaGFtbW9uZC1iMy1vcmdhbi9zb3VyY2UtbGVha2FnZS9kYXRhL3NvdXJjZS1sZWFrYWdlLnNjaGVtYS5qc29uIiwKICAgICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC9vcmlnaW5hbCB0b29scy9zaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RhdGEvc291cmNlLWxlYWthZ2Uvc3ludGhldGljLXBhaXItZGVtby12MS5qc29uIiwKICAgICAgICAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9hMzQtaW5zdGFsbC9vcmlnaW5hbCB0b29scy9zaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RhdGEvc291cmNlLWxlYWthZ2Uvc3ludGhldGljLWlkZW50aXR5LXYxLmpzb24iLAogICAgICAgICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2EzNC1pbnN0YWxsL29yaWdpbmFsIHRvb2xzL3NoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvZG9jcy9TT1VSQ0VfTEVBS0FHRV9JTlNUQUxMLm1kIgogICAgICBdLAogICAgICAic2NvcGUiOiAiTm9ybWFsIGdlbmVyYXRlZCBpbnN0YWxsIG91dHB1dDsgbm8gY29uZmlndXJlL2J1aWxkIGlucHV0IHdhcyBjaGFuZ2VkLiIKICAgIH0KICB9LAogICJlbnZpcm9ubWVudCI6IHsKICAgICJwbGF0Zm9ybSI6ICJMaW51eC02LjE4LjU3LXg4Nl82NC13aXRoLWdsaWJjMi40MSIsCiAgICAicHl0aG9uIjogIjMuMTIuMTQgKG1haW4sIEF1ZyAyNSAyMDI2LCAxNDowMDo0OSkgW0NsYW5nIDIyLjEuMyBdIiwKICAgICJweXRob25fZXhlY3V0YWJsZSI6ICIvb3B0L2NvZGV4L3J1bnRpbWVzL2NvZGV4LXByaW1hcnktcnVudGltZS9kZXBlbmRlbmNpZXMvcHl0aG9uL2Jpbi9weXRob24iLAogICAgImZyZWVfYnl0ZXNfYXRfc3RhcnQiOiA0NTQ3ODI1NjY0MCwKICAgICJjbWFrZV92ZXJzaW9uIjogImNtYWtlIHZlcnNpb24gNC40LjVcblxuQ01ha2Ugc3VpdGUgbWFpbnRhaW5lZCBhbmQgc3VwcG9ydGVkIGJ5IEtpdHdhcmUgKGtpdHdhcmUuY29tL2NtYWtlKS5cbiIsCiAgICAiY3h4X3ZlcnNpb24iOiAiYysrIChEZWJpYW4gMTQuMi4wLTE5KSAxNC4yLjBcbkNvcHlyaWdodCAoQykgMjAyNCBGcmVlIFNvZnR3YXJlIEZvdW5kYXRpb24sIEluYy5cblRoaXMgaXMgZnJlZSBzb2Z0d2FyZTsgc2VlIHRoZSBzb3VyY2UgZm9yIGNvcHlpbmcgY29uZGl0aW9ucy4gIFRoZXJlIGlzIE5PXG53YXJyYW50eTsgbm90IGV2ZW4gZm9yIE1FUkNIQU5UQUJJTElUWSBvciBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS5cblxuIiwKICAgICJzZWxlY3RlZF9jbWFrZV9jYWNoZSI6IFsKICAgICAgIkNNQUtFX0JVSUxEX1RZUEU6U1RSSU5HPVJlbGVhc2UiLAogICAgICAiQ01BS0VfQ1hYX0NPTVBJTEVSOkZJTEVQQVRIPS91c3IvYmluL2MrKyIsCiAgICAgICJDTUFLRV9DX0NPTVBJTEVSOkZJTEVQQVRIPS91c3IvYmluL2NjIiwKICAgICAgIkNNQUtFX0lOU1RBTExfQklORElSOlBBVEg9YmluIiwKICAgICAgIkNNQUtFX0lOU1RBTExfREFUQURJUjpQQVRIPXNoYXJlIiwKICAgICAgIkNNQUtFX0lOU1RBTExfUFJFRklYOlBBVEg9L3Vzci9sb2NhbCIsCiAgICAgICJDTUFLRV9NQUtFX1BST0dSQU06VU5JTklUSUFMSVpFRD0vd29ya3NwYWNlL3NjcmF0Y2gvMWJiNmVlMTdhZDdlL2J1aWxkLXRvb2xzL2Jpbi9uaW5qYSIsCiAgICAgICJIQU1NT05EX0JVSUxEX1NUQU5EQUxPTkU6Qk9PTD1PTiIsCiAgICAgICJIQU1NT05EX0JVSUxEX1ZTVDM6Qk9PTD1PRkYiLAogICAgICAiSEFNTU9ORF9FTkFCTEVfTUlESTpCT09MPU9GRiIsCiAgICAgICJIQU1NT05EX0VOQUJMRV9TQU5JVElaRVJTOkJPT0w9T0ZGIiwKICAgICAgIkNNQUtFX0dFTkVSQVRPUjpJTlRFUk5BTD1OaW5qYSIKICAgIF0KICB9LAogICJpbnN0YWxsZWRfaW52ZW50b3J5IjogewogICAgImJpbi9oYW1tb25kX3JlbmRlciI6IHsKICAgICAgImJ5dGVzIjogMTcyNTI4LAogICAgICAic2hhMjU2IjogIjkyODIwNWRjM2IzMWU1N2ZhYTc2NjRjYjM5ZTY5MTY1OWQxYzdmNzQzMGI1NTU1YWRlNzBiNGE5ODMwODM1YmYiLAogICAgICAibW9kZSI6ICIwNzU1IiwKICAgICAgIm9yaWdpbmFsX3BhdGgiOiAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9idWlsZC1uYXRpdmUvaGFtbW9uZF9yZW5kZXIiLAogICAgICAiZXhwZWN0ZWRfaW5zdGFsbF9tb2RlIjogIjA3NTUiCiAgICB9LAogICAgImJpbi9oYW1tb25kX3NvdXJjZV9sZWFrYWdlX3Byb2JlIjogewogICAgICAiYnl0ZXMiOiA2MzYwOCwKICAgICAgInNoYTI1NiI6ICJjNDE2OTg2YzdjZDM0OTI3MDVmYWM5ODUwZWIzZWNiNTU0MzFkNTc5NWUyZDEyOWQzY2Q4OWVjNGEwZGI1OGJiIiwKICAgICAgIm1vZGUiOiAiMDc1NSIsCiAgICAgICJvcmlnaW5hbF9wYXRoIjogIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvYnVpbGQtbmF0aXZlL2hhbW1vbmRfc291cmNlX2xlYWthZ2VfcHJvYmUiLAogICAgICAiZXhwZWN0ZWRfaW5zdGFsbF9tb2RlIjogIjA3NTUiCiAgICB9LAogICAgImJpbi9oYW1tb25kX3NvdXJjZV9sZWFrYWdlX2JlbmNobWFyayI6IHsKICAgICAgImJ5dGVzIjogMTI1OTUyLAogICAgICAic2hhMjU2IjogImM5MDkzODNlNjk0NzhmOWM1OTU5ODdlZjAxOWZhYjVkMTlhZmRmYjVkYTg1MDNhYTc4NTFmNDljY2E2NDU3YjQiLAogICAgICAibW9kZSI6ICIwNzU1IiwKICAgICAgIm9yaWdpbmFsX3BhdGgiOiAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9idWlsZC1uYXRpdmUvaGFtbW9uZF9zb3VyY2VfbGVha2FnZV9iZW5jaG1hcmsiLAogICAgICAiZXhwZWN0ZWRfaW5zdGFsbF9tb2RlIjogIjA3NTUiCiAgICB9LAogICAgInNoYXJlL2hhbW1vbmQtYjMtb3JnYW4vc291cmNlLWxlYWthZ2UvcHJvZmlsZXMvbm9taW5hbC5iM3AiOiB7CiAgICAgICJieXRlcyI6IDQ1NDUsCiAgICAgICJzaGEyNTYiOiAiYjM2YjA3NzNmYTA2YWFjM2VlMjY3MzYyZjk3Y2U3OThkMGMxZjQxNjk1ZTY2NmY3MWM0YThhNTJhZTM2Mzg5ZiIsCiAgICAgICJtb2RlIjogIjA2NDQiLAogICAgICAib3JpZ2luYWxfcGF0aCI6ICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L2J1aWxkLW5hdGl2ZS9ub21pbmFsLmIzcCIsCiAgICAgICJleHBlY3RlZF9pbnN0YWxsX21vZGUiOiAiMDY0NCIKICAgIH0sCiAgICAic2hhcmUvaGFtbW9uZC1iMy1vcmdhbi9zb3VyY2UtbGVha2FnZS90b29scy9jb21waWxlX3NvdXJjZV9sZWFrYWdlLnB5IjogewogICAgICAiYnl0ZXMiOiAxMTgwOCwKICAgICAgInNoYTI1NiI6ICJlYTVjNDgyN2MzZTcxMWIxZjAzZjRkZTdjOWI2NzA3MjA0MzVlOGExMDBkODY2YjZkN2Q2ODNhOTQwMTYwZDE0IiwKICAgICAgIm1vZGUiOiAiMDY0NCIsCiAgICAgICJvcmlnaW5hbF9wYXRoIjogIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvSGFtbW9uZC1CMy1Pcmdhbi90b29scy9jb21waWxlX3NvdXJjZV9sZWFrYWdlLnB5IiwKICAgICAgImV4cGVjdGVkX2luc3RhbGxfbW9kZSI6ICIwNjQ0IgogICAgfSwKICAgICJzaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RhdGEvc291cmNlLWxlYWthZ2Uuc2NoZW1hLmpzb24iOiB7CiAgICAgICJieXRlcyI6IDI1NDcsCiAgICAgICJzaGEyNTYiOiAiMjgyMDM4OWNlYWI3Nzc3NjlkNGY4ZjdkMGUwZmVlYzMzZmU3ZjdjYzFjODEyZmE1ZDY4YzM1OGZhOTFiMzNjMiIsCiAgICAgICJtb2RlIjogIjA2NDQiLAogICAgICAib3JpZ2luYWxfcGF0aCI6ICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L0hhbW1vbmQtQjMtT3JnYW4vZGF0YS9zb3VyY2UtbGVha2FnZS5zY2hlbWEuanNvbiIsCiAgICAgICJleHBlY3RlZF9pbnN0YWxsX21vZGUiOiAiMDY0NCIKICAgIH0sCiAgICAic2hhcmUvaGFtbW9uZC1iMy1vcmdhbi9zb3VyY2UtbGVha2FnZS9kYXRhL3NvdXJjZS1sZWFrYWdlL3N5bnRoZXRpYy1wYWlyLWRlbW8tdjEuanNvbiI6IHsKICAgICAgImJ5dGVzIjogOTA5LAogICAgICAic2hhMjU2IjogImU5MzEwMDYxODM2MjUwMzI0NWY5YzBkMTkyNDE5YzlhNzNkZGFmNjAyMjcyNWNmMTU3N2ZlNjk1YmUxODMyOTkiLAogICAgICAibW9kZSI6ICIwNjQ0IiwKICAgICAgIm9yaWdpbmFsX3BhdGgiOiAiL3dvcmtzcGFjZS9zY3JhdGNoLzc4MDJhNjUyOGY4OS9IYW1tb25kLUIzLU9yZ2FuL2RhdGEvc291cmNlLWxlYWthZ2Uvc3ludGhldGljLXBhaXItZGVtby12MS5qc29uIiwKICAgICAgImV4cGVjdGVkX2luc3RhbGxfbW9kZSI6ICIwNjQ0IgogICAgfSwKICAgICJzaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RhdGEvc291cmNlLWxlYWthZ2Uvc3ludGhldGljLWlkZW50aXR5LXYxLmpzb24iOiB7CiAgICAgICJieXRlcyI6IDc1NywKICAgICAgInNoYTI1NiI6ICI4ZTRjZjBjZTdiZjVkMGVhNWYwODdiOTU2MWY5YzRjOTRlZGY5NzAxODlkY2Q2NDk0ZDEwOTA2Mjg3NjA0Mzg1IiwKICAgICAgIm1vZGUiOiAiMDY0NCIsCiAgICAgICJvcmlnaW5hbF9wYXRoIjogIi93b3Jrc3BhY2Uvc2NyYXRjaC83ODAyYTY1MjhmODkvSGFtbW9uZC1CMy1Pcmdhbi9kYXRhL3NvdXJjZS1sZWFrYWdlL3N5bnRoZXRpYy1pZGVudGl0eS12MS5qc29uIiwKICAgICAgImV4cGVjdGVkX2luc3RhbGxfbW9kZSI6ICIwNjQ0IgogICAgfSwKICAgICJzaGFyZS9oYW1tb25kLWIzLW9yZ2FuL3NvdXJjZS1sZWFrYWdlL2RvY3MvU09VUkNFX0xFQUtBR0VfSU5TVEFMTC5tZCI6IHsKICAgICAgImJ5dGVzIjogMTMwNzEsCiAgICAgICJzaGEyNTYiOiAiMjVmZTEwMDU4YzMzNWVkNDIxMGYzMDY2ZjY5YTM2N2YwYzEyNzY0MGJjMmMwMWNiY2FlNTkyMjQ0NDEyY2U0NSIsCiAgICAgICJtb2RlIjogIjA2NDQiLAogICAgICAib3JpZ2luYWxfcGF0aCI6ICIvd29ya3NwYWNlL3NjcmF0Y2gvNzgwMmE2NTI4Zjg5L0hhbW1vbmQtQjMtT3JnYW4vZG9jcy9TT1VSQ0VfTEVBS0FHRV9JTlNUQUxMLm1kIiwKICAgICAgImV4cGVjdGVkX2luc3RhbGxfbW9kZSI6ICIwNjQ0IgogICAgfQogIH0sCiAgImVycm9yIjogewogICAgInR5cGUiOiAiQXNzZXJ0aW9uRXJyb3IiLAogICAgIm1lc3NhZ2UiOiAiY29tcGlsZV9wYWlyX3JldHVybmNvZGUiCiAgfSwKICAiZmluaXNoZWRfdXRjIjogIjIwMjYtMTEtMTVUMTI6NDM6MzZaIiwKICAic2NyaXB0X3NoYTI1NiI6ICI0YmFmMDVkNTE0N2JiODE5OTBlYzc3ZDBhYzM1YThiZThhNjdlNDg3NDk1ZjZkMzkzZjA5ZDIyODRjOTBhNTA0Igp9Cg==",
+      "reason": "strace PTRACE_TRACEME and PTRACE_SETOPTIONS returned Operation not permitted",
+      "product_command_executed": false,
+      "scope": "Only the compile_pair tracing attempt failed; actual install/inventory/relocation checks had passed."
+    }
+  ],
+  "initial_successful_commands": [
+    {
+      "label": "cmake_version",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--version"
+      ],
+      "actual_argv": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory",
+      "returncode": 0,
+      "elapsed_seconds": 0.02956034600356361,
+      "stdout": "cmake version 4.4.5\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+      "stderr": ""
+    },
+    {
+      "label": "cxx_version",
+      "argv": [
+        "/usr/bin/c++",
+        "--version"
+      ],
+      "actual_argv": [
+        "/usr/bin/c++",
+        "--version"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory",
+      "returncode": 0,
+      "elapsed_seconds": 0.0017267380026169121,
+      "stdout": "c++ (Debian 14.2.0-19) 14.2.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stderr": ""
+    },
+    {
+      "label": "actual_project_install",
+      "argv": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--install",
+        "/workspace/scratch/7802a6528f89/build-native",
+        "--config",
+        "Release",
+        "--component",
+        "SourceLeakageTools",
+        "--prefix",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools"
+      ],
+      "actual_argv": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--install",
+        "/workspace/scratch/7802a6528f89/build-native",
+        "--config",
+        "Release",
+        "--component",
+        "SourceLeakageTools",
+        "--prefix",
+        "/workspace/scratch/7802a6528f89/a34-install/original tools"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory",
+      "returncode": 0,
+      "elapsed_seconds": 0.008386065004742704,
+      "stdout": "-- SourceLeakageTools preflight passed; copying begins. A later failure can leave a partial new installation; no automatic cleanup is performed.\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/bin/hammond_render\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/bin/hammond_source_leakage_probe\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/bin/hammond_source_leakage_benchmark\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/profiles/nominal.b3p\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/tools/compile_source_leakage.py\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/data/source-leakage.schema.json\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-pair-demo-v1.json\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-identity-v1.json\n-- Installing: /workspace/scratch/7802a6528f89/a34-install/original tools/share/hammond-b3-organ/source-leakage/docs/SOURCE_LEAKAGE_INSTALL.md\n",
+      "stderr": ""
+    }
+  ],
+  "initial_passed_checks": [
+    {
+      "check": "owned_scratch_and_new_outputs",
+      "passed": true
+    },
+    {
+      "check": "published_base_present",
+      "passed": true
+    },
+    {
+      "check": "runtime_production_inputs_match_published_base",
+      "passed": true,
+      "facts": {
+        "count": 63
+      }
+    },
+    {
+      "check": "cmake_version_returncode",
+      "passed": true,
+      "facts": {
+        "expected": 0,
+        "observed": 0
+      }
+    },
+    {
+      "check": "cxx_version_returncode",
+      "passed": true,
+      "facts": {
+        "expected": 0,
+        "observed": 0
+      }
+    },
+    {
+      "check": "actual_project_install_returncode",
+      "passed": true,
+      "facts": {
+        "expected": 0,
+        "observed": 0
+      }
+    },
+    {
+      "check": "actual_project_exact_nine_file_inventory",
+      "passed": true,
+      "facts": {
+        "expected_count": 9,
+        "observed_count": 9
+      }
+    },
+    {
+      "check": "installed_tree_has_no_links",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_bin/hammond_render",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_bin/hammond_source_leakage_probe",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_bin/hammond_source_leakage_benchmark",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_share/hammond-b3-organ/source-leakage/profiles/nominal.b3p",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_share/hammond-b3-organ/source-leakage/tools/compile_source_leakage.py",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_share/hammond-b3-organ/source-leakage/data/source-leakage.schema.json",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-pair-demo-v1.json",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-identity-v1.json",
+      "passed": true
+    },
+    {
+      "check": "installed_copy_share/hammond-b3-organ/source-leakage/docs/SOURCE_LEAKAGE_INSTALL.md",
+      "passed": true
+    },
+    {
+      "check": "actual_project_component_manifest_exact",
+      "passed": true
+    },
+    {
+      "check": "prefix_relocated_original_absent",
+      "passed": true
+    }
+  ],
+  "commands": [
+    {
+      "label": "literal_installed_posix_guide",
+      "argv": [
+        "/bin/sh",
+        "-eu",
+        "-c",
+        "leakage_prefix=$1\nleakage_package=\"$leakage_prefix/share/hammond-b3-organ/source-leakage\"\nmkdir \"leakage audition\"\ncd \"leakage audition\"\n\npython3 -I -B -S \"$leakage_package/tools/compile_source_leakage.py\" \\\n  --input \"$leakage_package/data/source-leakage/synthetic-pair-demo-v1.json\" \\\n  --output pair.b3leakage\npython3 -I -B -S \"$leakage_package/tools/compile_source_leakage.py\" \\\n  --input \"$leakage_package/data/source-leakage/synthetic-identity-v1.json\" \\\n  --output identity.b3leakage\n\"$leakage_prefix/bin/hammond_source_leakage_probe\" --input pair.b3leakage\n\n\"$leakage_prefix/bin/hammond_render\" \\\n  --profile \"$leakage_package/profiles/nominal.b3p\" --output pair.wav \\\n  --frames 96000 --sample-rate 48000 --block-size 64 --seed 1939 \\\n  --drawbars 008000000 --note 48 --contacts ideal --percussion off \\\n  --source-leakage pair.b3leakage --leakage-input-gain 0.75 --fail-on-clip\n\"$leakage_prefix/bin/hammond_render\" \\\n  --profile \"$leakage_package/profiles/nominal.b3p\" --output identity.wav \\\n  --frames 96000 --sample-rate 48000 --block-size 64 --seed 1939 \\\n  --drawbars 008000000 --note 48 --contacts ideal --percussion off \\\n  --source-leakage identity.b3leakage --leakage-input-gain 0.75 --fail-on-clip",
+        "source-leakage-install-guide",
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory",
+      "returncode": 0,
+      "elapsed_seconds": 0.46031743600178743,
+      "stdout": "{\"boundary\":\"normalized-generator-precontact-v1\",\"compiled_bytes\":379,\"compiled_sha256\":\"ac9207269dc1ad6f612b3b3c58dcc4a3fc7d419d76bc1e577f13561dbf9b539b\",\"edge_count\":2,\"evidence_status\":\"synthetic\",\"input_sha256\":\"e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299\",\"maximum_row_absolute_gain_sum\":0.0625,\"model\":\"static-source-leakage-v1\",\"profile_id\":\"synthetic-pair-demo-v1\",\"schema_version\":1,\"source_content\":\"excludes-leakage\",\"status\":\"compiled\"}\n{\"boundary\":\"normalized-generator-precontact-v1\",\"compiled_bytes\":292,\"compiled_sha256\":\"6b7b18d4839bde4f25c2e6a0eb48f920c2c4506ba5ed3c817a877d82af155467\",\"edge_count\":0,\"evidence_status\":\"synthetic\",\"input_sha256\":\"8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385\",\"maximum_row_absolute_gain_sum\":0.0,\"model\":\"static-source-leakage-v1\",\"profile_id\":\"synthetic-identity-v1\",\"schema_version\":1,\"source_content\":\"excludes-leakage\",\"status\":\"compiled\"}\n{\"schema_version\":1,\"probe_id\":\"source-leakage-profile-probe-v1\",\"status\":\"ok\",\"model\":\"static-source-leakage-v1\",\"profile_id\":\"synthetic-pair-demo-v1\",\"evidence_status\":\"synthetic\",\"boundary\":\"normalized-generator-precontact-v1\",\"source_content\":\"excludes-leakage\",\"authoring_sha256\":\"e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299\",\"authoring_digest_verification\":\"file-supplied-unverified\",\"source_count\":91,\"edge_count\":2,\"maximum_row_absolute_gain_sum\":0.0625,\"edges\":[{\"destination\":25,\"source\":37,\"gain\":0.0625},{\"destination\":37,\"source\":25,\"gain\":-0.03125}],\"rows\":[{\"destination\":1,\"absolute_gain_sum\":0},{\"destination\":2,\"absolute_gain_sum\":0},{\"destination\":3,\"absolute_gain_sum\":0},{\"destination\":4,\"absolute_gain_sum\":0},{\"destination\":5,\"absolute_gain_sum\":0},{\"destination\":6,\"absolute_gain_sum\":0},{\"destination\":7,\"absolute_gain_sum\":0},{\"destination\":8,\"absolute_gain_sum\":0},{\"destination\":9,\"absolute_gain_sum\":0},{\"destination\":10,\"absolute_gain_sum\":0},{\"destination\":11,\"absolute_gain_sum\":0},{\"destination\":12,\"absolute_gain_sum\":0},{\"destination\":13,\"absolute_gain_sum\":0},{\"destination\":14,\"absolute_gain_sum\":0},{\"destination\":15,\"absolute_gain_sum\":0},{\"destination\":16,\"absolute_gain_sum\":0},{\"destination\":17,\"absolute_gain_sum\":0},{\"destination\":18,\"absolute_gain_sum\":0},{\"destination\":19,\"absolute_gain_sum\":0},{\"destination\":20,\"absolute_gain_sum\":0},{\"destination\":21,\"absolute_gain_sum\":0},{\"destination\":22,\"absolute_gain_sum\":0},{\"destination\":23,\"absolute_gain_sum\":0},{\"destination\":24,\"absolute_gain_sum\":0},{\"destination\":25,\"absolute_gain_sum\":0.0625},{\"destination\":26,\"absolute_gain_sum\":0},{\"destination\":27,\"absolute_gain_sum\":0},{\"destination\":28,\"absolute_gain_sum\":0},{\"destination\":29,\"absolute_gain_sum\":0},{\"destination\":30,\"absolute_gain_sum\":0},{\"destination\":31,\"absolute_gain_sum\":0},{\"destination\":32,\"absolute_gain_sum\":0},{\"destination\":33,\"absolute_gain_sum\":0},{\"destination\":34,\"absolute_gain_sum\":0},{\"destination\":35,\"absolute_gain_sum\":0},{\"destination\":36,\"absolute_gain_sum\":0},{\"destination\":37,\"absolute_gain_sum\":0.03125},{\"destination\":38,\"absolute_gain_sum\":0},{\"destination\":39,\"absolute_gain_sum\":0},{\"destination\":40,\"absolute_gain_sum\":0},{\"destination\":41,\"absolute_gain_sum\":0},{\"destination\":42,\"absolute_gain_sum\":0},{\"destination\":43,\"absolute_gain_sum\":0},{\"destination\":44,\"absolute_gain_sum\":0},{\"destination\":45,\"absolute_gain_sum\":0},{\"destination\":46,\"absolute_gain_sum\":0},{\"destination\":47,\"absolute_gain_sum\":0},{\"destination\":48,\"absolute_gain_sum\":0},{\"destination\":49,\"absolute_gain_sum\":0},{\"destination\":50,\"absolute_gain_sum\":0},{\"destination\":51,\"absolute_gain_sum\":0},{\"destination\":52,\"absolute_gain_sum\":0},{\"destination\":53,\"absolute_gain_sum\":0},{\"destination\":54,\"absolute_gain_sum\":0},{\"destination\":55,\"absolute_gain_sum\":0},{\"destination\":56,\"absolute_gain_sum\":0},{\"destination\":57,\"absolute_gain_sum\":0},{\"destination\":58,\"absolute_gain_sum\":0},{\"destination\":59,\"absolute_gain_sum\":0},{\"destination\":60,\"absolute_gain_sum\":0},{\"destination\":61,\"absolute_gain_sum\":0},{\"destination\":62,\"absolute_gain_sum\":0},{\"destination\":63,\"absolute_gain_sum\":0},{\"destination\":64,\"absolute_gain_sum\":0},{\"destination\":65,\"absolute_gain_sum\":0},{\"destination\":66,\"absolute_gain_sum\":0},{\"destination\":67,\"absolute_gain_sum\":0},{\"destination\":68,\"absolute_gain_sum\":0},{\"destination\":69,\"absolute_gain_sum\":0},{\"destination\":70,\"absolute_gain_sum\":0},{\"destination\":71,\"absolute_gain_sum\":0},{\"destination\":72,\"absolute_gain_sum\":0},{\"destination\":73,\"absolute_gain_sum\":0},{\"destination\":74,\"absolute_gain_sum\":0},{\"destination\":75,\"absolute_gain_sum\":0},{\"destination\":76,\"absolute_gain_sum\":0},{\"destination\":77,\"absolute_gain_sum\":0},{\"destination\":78,\"absolute_gain_sum\":0},{\"destination\":79,\"absolute_gain_sum\":0},{\"destination\":80,\"absolute_gain_sum\":0},{\"destination\":81,\"absolute_gain_sum\":0},{\"destination\":82,\"absolute_gain_sum\":0},{\"destination\":83,\"absolute_gain_sum\":0},{\"destination\":84,\"absolute_gain_sum\":0},{\"destination\":85,\"absolute_gain_sum\":0},{\"destination\":86,\"absolute_gain_sum\":0},{\"destination\":87,\"absolute_gain_sum\":0},{\"destination\":88,\"absolute_gain_sum\":0},{\"destination\":89,\"absolute_gain_sum\":0},{\"destination\":90,\"absolute_gain_sum\":0},{\"destination\":91,\"absolute_gain_sum\":0}],\"frame_id\":\"dyadic-permuted-ramp-v1\",\"frame_definition\":\"x[i]=(((37*i)%129)-64)/64; tone IDs i=1..91\",\"input_frame\":[-0.421875,0.15625,0.734375,-0.703125,-0.125,0.453125,-0.984375,-0.40625,0.171875,0.75,-0.6875,-0.109375,0.46875,-0.96875,-0.390625,0.1875,0.765625,-0.671875,-0.09375,0.484375,-0.953125,-0.375,0.203125,0.78125,-0.65625,-0.078125,0.5,-0.9375,-0.359375,0.21875,0.796875,-0.640625,-0.0625,0.515625,-0.921875,-0.34375,0.234375,0.8125,-0.625,-0.046875,0.53125,-0.90625,-0.328125,0.25,0.828125,-0.609375,-0.03125,0.546875,-0.890625,-0.3125,0.265625,0.84375,-0.59375,-0.015625,0.5625,-0.875,-0.296875,0.28125,0.859375,-0.578125,0,0.578125,-0.859375,-0.28125,0.296875,0.875,-0.5625,0.015625,0.59375,-0.84375,-0.265625,0.3125,0.890625,-0.546875,0.03125,0.609375,-0.828125,-0.25,0.328125,0.90625,-0.53125,0.046875,0.625,-0.8125,-0.234375,0.34375,0.921875,-0.515625,0.0625,0.640625,-0.796875],\"output_frame\":[-0.421875,0.15625,0.734375,-0.703125,-0.125,0.453125,-0.984375,-0.40625,0.171875,0.75,-0.6875,-0.109375,0.46875,-0.96875,-0.390625,0.1875,0.765625,-0.671875,-0.09375,0.484375,-0.953125,-0.375,0.203125,0.78125,-0.6416015625,-0.078125,0.5,-0.9375,-0.359375,0.21875,0.796875,-0.640625,-0.0625,0.515625,-0.921875,-0.34375,0.2548828125,0.8125,-0.625,-0.046875,0.53125,-0.90625,-0.328125,0.25,0.828125,-0.609375,-0.03125,0.546875,-0.890625,-0.3125,0.265625,0.84375,-0.59375,-0.015625,0.5625,-0.875,-0.296875,0.28125,0.859375,-0.578125,0,0.578125,-0.859375,-0.28125,0.296875,0.875,-0.5625,0.015625,0.59375,-0.84375,-0.265625,0.3125,0.890625,-0.546875,0.03125,0.609375,-0.828125,-0.25,0.328125,0.90625,-0.53125,0.046875,0.625,-0.8125,-0.234375,0.34375,0.921875,-0.515625,0.0625,0.640625,-0.796875]}\n{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":5,\"contact_model\":\"ideal-contacts-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":64,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.02352578192949295,\"rms\":0.013809615716554646,\"clipped_frames\":0,\"clipped_channel_samples\":0,\"source_leakage_model\":\"static-source-leakage-v1\",\"source_leakage_integration\":\"source-leakage-audition-v1\",\"source_leakage_profile_id\":\"synthetic-pair-demo-v1\",\"source_leakage_authoring_sha256\":\"e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299\",\"source_leakage_evidence_status\":\"synthetic\",\"source_leakage_boundary\":\"normalized-generator-precontact-v1\",\"source_leakage_source_content\":\"excludes-leakage\",\"source_leakage_input_gain\":0.75,\"source_leakage_edge_count\":2,\"source_leakage_maximum_row_absolute_gain_sum\":0.0625,\"source_leakage_guarded_output_bound\":0.79687500000001077,\"source_leakage_identity_bypass\":false}\n{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":5,\"contact_model\":\"ideal-contacts-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":64,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.022500000894069672,\"rms\":0.013783127713155529,\"clipped_frames\":0,\"clipped_channel_samples\":0,\"source_leakage_model\":\"static-source-leakage-v1\",\"source_leakage_integration\":\"source-leakage-audition-v1\",\"source_leakage_profile_id\":\"synthetic-identity-v1\",\"source_leakage_authoring_sha256\":\"8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385\",\"source_leakage_evidence_status\":\"synthetic\",\"source_leakage_boundary\":\"normalized-generator-precontact-v1\",\"source_leakage_source_content\":\"excludes-leakage\",\"source_leakage_input_gain\":0.75,\"source_leakage_edge_count\":0,\"source_leakage_maximum_row_absolute_gain_sum\":0,\"source_leakage_guarded_output_bound\":0.75,\"source_leakage_identity_bypass\":false}\n",
+      "stderr": ""
+    },
+    {
+      "label": "installed_identity_probe",
+      "argv": [
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/bin/hammond_source_leakage_probe",
+        "--input",
+        "identity.b3leakage"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory/leakage audition",
+      "returncode": 0,
+      "elapsed_seconds": 0.002375144998950418,
+      "stdout": "{\"schema_version\":1,\"probe_id\":\"source-leakage-profile-probe-v1\",\"status\":\"ok\",\"model\":\"static-source-leakage-v1\",\"profile_id\":\"synthetic-identity-v1\",\"evidence_status\":\"synthetic\",\"boundary\":\"normalized-generator-precontact-v1\",\"source_content\":\"excludes-leakage\",\"authoring_sha256\":\"8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385\",\"authoring_digest_verification\":\"file-supplied-unverified\",\"source_count\":91,\"edge_count\":0,\"maximum_row_absolute_gain_sum\":0,\"edges\":[],\"rows\":[{\"destination\":1,\"absolute_gain_sum\":0},{\"destination\":2,\"absolute_gain_sum\":0},{\"destination\":3,\"absolute_gain_sum\":0},{\"destination\":4,\"absolute_gain_sum\":0},{\"destination\":5,\"absolute_gain_sum\":0},{\"destination\":6,\"absolute_gain_sum\":0},{\"destination\":7,\"absolute_gain_sum\":0},{\"destination\":8,\"absolute_gain_sum\":0},{\"destination\":9,\"absolute_gain_sum\":0},{\"destination\":10,\"absolute_gain_sum\":0},{\"destination\":11,\"absolute_gain_sum\":0},{\"destination\":12,\"absolute_gain_sum\":0},{\"destination\":13,\"absolute_gain_sum\":0},{\"destination\":14,\"absolute_gain_sum\":0},{\"destination\":15,\"absolute_gain_sum\":0},{\"destination\":16,\"absolute_gain_sum\":0},{\"destination\":17,\"absolute_gain_sum\":0},{\"destination\":18,\"absolute_gain_sum\":0},{\"destination\":19,\"absolute_gain_sum\":0},{\"destination\":20,\"absolute_gain_sum\":0},{\"destination\":21,\"absolute_gain_sum\":0},{\"destination\":22,\"absolute_gain_sum\":0},{\"destination\":23,\"absolute_gain_sum\":0},{\"destination\":24,\"absolute_gain_sum\":0},{\"destination\":25,\"absolute_gain_sum\":0},{\"destination\":26,\"absolute_gain_sum\":0},{\"destination\":27,\"absolute_gain_sum\":0},{\"destination\":28,\"absolute_gain_sum\":0},{\"destination\":29,\"absolute_gain_sum\":0},{\"destination\":30,\"absolute_gain_sum\":0},{\"destination\":31,\"absolute_gain_sum\":0},{\"destination\":32,\"absolute_gain_sum\":0},{\"destination\":33,\"absolute_gain_sum\":0},{\"destination\":34,\"absolute_gain_sum\":0},{\"destination\":35,\"absolute_gain_sum\":0},{\"destination\":36,\"absolute_gain_sum\":0},{\"destination\":37,\"absolute_gain_sum\":0},{\"destination\":38,\"absolute_gain_sum\":0},{\"destination\":39,\"absolute_gain_sum\":0},{\"destination\":40,\"absolute_gain_sum\":0},{\"destination\":41,\"absolute_gain_sum\":0},{\"destination\":42,\"absolute_gain_sum\":0},{\"destination\":43,\"absolute_gain_sum\":0},{\"destination\":44,\"absolute_gain_sum\":0},{\"destination\":45,\"absolute_gain_sum\":0},{\"destination\":46,\"absolute_gain_sum\":0},{\"destination\":47,\"absolute_gain_sum\":0},{\"destination\":48,\"absolute_gain_sum\":0},{\"destination\":49,\"absolute_gain_sum\":0},{\"destination\":50,\"absolute_gain_sum\":0},{\"destination\":51,\"absolute_gain_sum\":0},{\"destination\":52,\"absolute_gain_sum\":0},{\"destination\":53,\"absolute_gain_sum\":0},{\"destination\":54,\"absolute_gain_sum\":0},{\"destination\":55,\"absolute_gain_sum\":0},{\"destination\":56,\"absolute_gain_sum\":0},{\"destination\":57,\"absolute_gain_sum\":0},{\"destination\":58,\"absolute_gain_sum\":0},{\"destination\":59,\"absolute_gain_sum\":0},{\"destination\":60,\"absolute_gain_sum\":0},{\"destination\":61,\"absolute_gain_sum\":0},{\"destination\":62,\"absolute_gain_sum\":0},{\"destination\":63,\"absolute_gain_sum\":0},{\"destination\":64,\"absolute_gain_sum\":0},{\"destination\":65,\"absolute_gain_sum\":0},{\"destination\":66,\"absolute_gain_sum\":0},{\"destination\":67,\"absolute_gain_sum\":0},{\"destination\":68,\"absolute_gain_sum\":0},{\"destination\":69,\"absolute_gain_sum\":0},{\"destination\":70,\"absolute_gain_sum\":0},{\"destination\":71,\"absolute_gain_sum\":0},{\"destination\":72,\"absolute_gain_sum\":0},{\"destination\":73,\"absolute_gain_sum\":0},{\"destination\":74,\"absolute_gain_sum\":0},{\"destination\":75,\"absolute_gain_sum\":0},{\"destination\":76,\"absolute_gain_sum\":0},{\"destination\":77,\"absolute_gain_sum\":0},{\"destination\":78,\"absolute_gain_sum\":0},{\"destination\":79,\"absolute_gain_sum\":0},{\"destination\":80,\"absolute_gain_sum\":0},{\"destination\":81,\"absolute_gain_sum\":0},{\"destination\":82,\"absolute_gain_sum\":0},{\"destination\":83,\"absolute_gain_sum\":0},{\"destination\":84,\"absolute_gain_sum\":0},{\"destination\":85,\"absolute_gain_sum\":0},{\"destination\":86,\"absolute_gain_sum\":0},{\"destination\":87,\"absolute_gain_sum\":0},{\"destination\":88,\"absolute_gain_sum\":0},{\"destination\":89,\"absolute_gain_sum\":0},{\"destination\":90,\"absolute_gain_sum\":0},{\"destination\":91,\"absolute_gain_sum\":0}],\"frame_id\":\"dyadic-permuted-ramp-v1\",\"frame_definition\":\"x[i]=(((37*i)%129)-64)/64; tone IDs i=1..91\",\"input_frame\":[-0.421875,0.15625,0.734375,-0.703125,-0.125,0.453125,-0.984375,-0.40625,0.171875,0.75,-0.6875,-0.109375,0.46875,-0.96875,-0.390625,0.1875,0.765625,-0.671875,-0.09375,0.484375,-0.953125,-0.375,0.203125,0.78125,-0.65625,-0.078125,0.5,-0.9375,-0.359375,0.21875,0.796875,-0.640625,-0.0625,0.515625,-0.921875,-0.34375,0.234375,0.8125,-0.625,-0.046875,0.53125,-0.90625,-0.328125,0.25,0.828125,-0.609375,-0.03125,0.546875,-0.890625,-0.3125,0.265625,0.84375,-0.59375,-0.015625,0.5625,-0.875,-0.296875,0.28125,0.859375,-0.578125,0,0.578125,-0.859375,-0.28125,0.296875,0.875,-0.5625,0.015625,0.59375,-0.84375,-0.265625,0.3125,0.890625,-0.546875,0.03125,0.609375,-0.828125,-0.25,0.328125,0.90625,-0.53125,0.046875,0.625,-0.8125,-0.234375,0.34375,0.921875,-0.515625,0.0625,0.640625,-0.796875],\"output_frame\":[-0.421875,0.15625,0.734375,-0.703125,-0.125,0.453125,-0.984375,-0.40625,0.171875,0.75,-0.6875,-0.109375,0.46875,-0.96875,-0.390625,0.1875,0.765625,-0.671875,-0.09375,0.484375,-0.953125,-0.375,0.203125,0.78125,-0.65625,-0.078125,0.5,-0.9375,-0.359375,0.21875,0.796875,-0.640625,-0.0625,0.515625,-0.921875,-0.34375,0.234375,0.8125,-0.625,-0.046875,0.53125,-0.90625,-0.328125,0.25,0.828125,-0.609375,-0.03125,0.546875,-0.890625,-0.3125,0.265625,0.84375,-0.59375,-0.015625,0.5625,-0.875,-0.296875,0.28125,0.859375,-0.578125,0,0.578125,-0.859375,-0.28125,0.296875,0.875,-0.5625,0.015625,0.59375,-0.84375,-0.265625,0.3125,0.890625,-0.546875,0.03125,0.609375,-0.828125,-0.25,0.328125,0.90625,-0.53125,0.046875,0.625,-0.8125,-0.234375,0.34375,0.921875,-0.515625,0.0625,0.640625,-0.796875]}\n",
+      "stderr": ""
+    },
+    {
+      "label": "installed_render_default",
+      "argv": [
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/bin/hammond_render",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/profiles/nominal.b3p",
+        "--output",
+        "default.wav",
+        "--frames",
+        "96000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "64",
+        "--seed",
+        "1939",
+        "--drawbars",
+        "008000000",
+        "--note",
+        "48",
+        "--contacts",
+        "ideal",
+        "--percussion",
+        "off",
+        "--fail-on-clip"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory/leakage audition",
+      "returncode": 0,
+      "elapsed_seconds": 0.17789603699930012,
+      "stdout": "{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":3,\"contact_model\":\"ideal-contacts-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":64,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.029999999329447746,\"rms\":0.018377503619995003,\"clipped_frames\":0,\"clipped_channel_samples\":0}\n",
+      "stderr": ""
+    },
+    {
+      "label": "installed_render_identity_unity",
+      "argv": [
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/bin/hammond_render",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/profiles/nominal.b3p",
+        "--output",
+        "identity_unity.wav",
+        "--frames",
+        "96000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "64",
+        "--seed",
+        "1939",
+        "--drawbars",
+        "008000000",
+        "--note",
+        "48",
+        "--contacts",
+        "ideal",
+        "--percussion",
+        "off",
+        "--fail-on-clip",
+        "--source-leakage",
+        "identity.b3leakage",
+        "--leakage-input-gain",
+        "1"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory/leakage audition",
+      "returncode": 0,
+      "elapsed_seconds": 0.1629417759977514,
+      "stdout": "{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":5,\"contact_model\":\"ideal-contacts-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":64,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.029999999329447746,\"rms\":0.018377503619995003,\"clipped_frames\":0,\"clipped_channel_samples\":0,\"source_leakage_model\":\"static-source-leakage-v1\",\"source_leakage_integration\":\"source-leakage-audition-v1\",\"source_leakage_profile_id\":\"synthetic-identity-v1\",\"source_leakage_authoring_sha256\":\"8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385\",\"source_leakage_evidence_status\":\"synthetic\",\"source_leakage_boundary\":\"normalized-generator-precontact-v1\",\"source_leakage_source_content\":\"excludes-leakage\",\"source_leakage_input_gain\":1,\"source_leakage_edge_count\":0,\"source_leakage_maximum_row_absolute_gain_sum\":0,\"source_leakage_guarded_output_bound\":1,\"source_leakage_identity_bypass\":true}\n",
+      "stderr": ""
+    },
+    {
+      "label": "installed_benchmark_function",
+      "argv": [
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/bin/hammond_source_leakage_benchmark",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/profiles/nominal.b3p",
+        "--sample-rate",
+        "48000",
+        "--blocks",
+        "2",
+        "--repetitions",
+        "1",
+        "--seed",
+        "739"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory/leakage audition",
+      "returncode": 0,
+      "elapsed_seconds": 0.04248411599837709,
+      "stdout": "{\"schema_version\":1,\"benchmark\":\"source-leakage-cost-v1\",\"status\":\"completed\",\"sanity_passed\":true,\"configuration\":\"Release\",\"compiler_id\":\"GNU\",\"compiler_version\":\"14.2.0\",\"target_system\":\"Linux\",\"target_processor\":\"x86_64\",\"sanitizers\":false,\"profile_id\":\"nominal-unmeasured-v1\",\"declared_authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"profile_digest_verification\":\"file-supplied-unverified\",\"clock\":\"steady_clock\",\"clock_call_overhead_included\":true,\"timed_region\":\"64 core frame calls with status branches, or one Engine block call\",\"preparation_timed\":false,\"input_generation_timed\":false,\"checksum_timed\":false,\"note_events_timed\":false,\"warmup_blocks\":16,\"block_frames\":64,\"blocks_per_trial\":2,\"measured_frames_per_trial\":128,\"repetitions\":1,\"sample_rate\":48000,\"seed\":739,\"row_order\":\"(offset+7*repetition)%19\",\"core_input\":\"seed xor0x9e3779b97f4a7c15,zero->1;xorshift64(13,7,17);low16 centered/65536;fresh[-0.5,0.5) inputs\",\"pair_edges\":\"37->25:+1/16;25->37:-1/32\",\"maximum_edges\":\"destination d=1..91;source=((d-1+j)%91)+1;j=1..8;odd:-1/16,even:+1/16\",\"polyphony\":\"122 manual keys plus25 pedals;selected B drawbars888888888;both pedal mixtures8;expression0.5;percussion on/second/normal/slow\",\"floating_point\":\"round-to-nearest and gradual underflow checked\",\"identity_checksums_match\":true,\"source_leakage_bytes\":13128,\"engine_bytes\":51832,\"stack_high_water_measured\":false,\"callback_deadlines_measured\":false,\"shared_runner_pinning_and_frequency_control\":\"not performed\",\"limits\":\"Synthetic offline workload; timing is not a CTest gate or physical/host/device qualification\",\"elapsed_seconds\":0.039073233999999998,\"rows\":[{\"index\":0,\"kind\":\"core\",\"selection\":\"empty\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"none\",\"workload\":\"dense-input-frames\",\"nanoseconds_per_frame_samples\":[125.1015625],\"median_nanoseconds_per_frame\":125.1015625,\"relative_to_unconfigured\":null,\"output_word_checksum\":\"2e02dbd045d3f125\",\"warmup_word_checksum\":\"62e078283a609325\",\"maximum_observed_magnitude\":0.4999237060546875,\"final_source1_phase\":null},{\"index\":1,\"kind\":\"core\",\"selection\":\"pair\",\"input_gain\":1,\"edge_count\":2,\"contacts\":\"none\",\"workload\":\"dense-input-frames\",\"nanoseconds_per_frame_samples\":[125.109375],\"median_nanoseconds_per_frame\":125.109375,\"relative_to_unconfigured\":null,\"output_word_checksum\":\"b9d0cf4245d3f125\",\"warmup_word_checksum\":\"e9af1a683a609325\",\"maximum_observed_magnitude\":0.50972270965576172,\"final_source1_phase\":null},{\"index\":2,\"kind\":\"core\",\"selection\":\"maximum-728\",\"input_gain\":1,\"edge_count\":728,\"contacts\":\"none\",\"workload\":\"dense-input-frames\",\"nanoseconds_per_frame_samples\":[339.09375],\"median_nanoseconds_per_frame\":339.09375,\"relative_to_unconfigured\":null,\"output_word_checksum\":\"0dde845e45d3f125\",\"warmup_word_checksum\":\"c1dedf763a609325\",\"maximum_observed_magnitude\":0.64815807342529297,\"final_source1_phase\":null},{\"index\":3,\"kind\":\"engine\",\"selection\":\"unconfigured\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"ideal\",\"workload\":\"silence\",\"nanoseconds_per_frame_samples\":[1575.609375],\"median_nanoseconds_per_frame\":1575.609375,\"relative_to_unconfigured\":1,\"output_word_checksum\":\"8421ae126c7ced25\",\"warmup_word_checksum\":\"51d88627df287325\",\"maximum_observed_magnitude\":0,\"final_source1_phase\":0.39007938366581296},{\"index\":4,\"kind\":\"engine\",\"selection\":\"empty-gain-one\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"ideal\",\"workload\":\"silence\",\"nanoseconds_per_frame_samples\":[1560.03125],\"median_nanoseconds_per_frame\":1560.03125,\"relative_to_unconfigured\":0.99011295232995167,\"output_word_checksum\":\"8421ae126c7ced25\",\"warmup_word_checksum\":\"51d88627df287325\",\"maximum_observed_magnitude\":0,\"final_source1_phase\":0.39007938366581296},{\"index\":5,\"kind\":\"engine\",\"selection\":\"pair-gain-0.75\",\"input_gain\":0.75,\"edge_count\":2,\"contacts\":\"ideal\",\"workload\":\"silence\",\"nanoseconds_per_frame_samples\":[1707.6015625],\"median_nanoseconds_per_frame\":1707.6015625,\"relative_to_unconfigured\":1.0837721516476759,\"output_word_checksum\":\"8421ae126c7ced25\",\"warmup_word_checksum\":\"51d88627df287325\",\"maximum_observed_magnitude\":0,\"final_source1_phase\":0.39007938366581296},{\"index\":6,\"kind\":\"engine\",\"selection\":\"maximum-728-gain-0.5\",\"input_gain\":0.5,\"edge_count\":728,\"contacts\":\"ideal\",\"workload\":\"silence\",\"nanoseconds_per_frame_samples\":[1942.796875],\"median_nanoseconds_per_frame\":1942.796875,\"relative_to_unconfigured\":1.2330447545096639,\"output_word_checksum\":\"8421ae126c7ced25\",\"warmup_word_checksum\":\"51d88627df287325\",\"maximum_observed_magnitude\":0,\"final_source1_phase\":0.39007938366581296},{\"index\":7,\"kind\":\"engine\",\"selection\":\"unconfigured\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"ideal\",\"workload\":\"sustained-polyphony\",\"nanoseconds_per_frame_samples\":[1559.6484375],\"median_nanoseconds_per_frame\":1559.6484375,\"relative_to_unconfigured\":1,\"output_word_checksum\":\"cc729eea7f924721\",\"warmup_word_checksum\":\"2d72d603c9cdbe20\",\"maximum_observed_magnitude\":4.1753478050231934,\"final_source1_phase\":0.39007938366581296},{\"index\":8,\"kind\":\"engine\",\"selection\":\"empty-gain-one\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"ideal\",\"workload\":\"sustained-polyphony\",\"nanoseconds_per_frame_samples\":[1562.140625],\"median_nanoseconds_per_frame\":1562.140625,\"relative_to_unconfigured\":1.0015979161970596,\"output_word_checksum\":\"cc729eea7f924721\",\"warmup_word_checksum\":\"2d72d603c9cdbe20\",\"maximum_observed_magnitude\":4.1753478050231934,\"final_source1_phase\":0.39007938366581296},{\"index\":9,\"kind\":\"engine\",\"selection\":\"pair-gain-0.75\",\"input_gain\":0.75,\"edge_count\":2,\"contacts\":\"ideal\",\"workload\":\"sustained-polyphony\",\"nanoseconds_per_frame_samples\":[1697.578125],\"median_nanoseconds_per_frame\":1697.578125,\"relative_to_unconfigured\":1.0884363964234729,\"output_word_checksum\":\"4a7170085e22a645\",\"warmup_word_checksum\":\"cf8342da0306d283\",\"maximum_observed_magnitude\":3.1355669498443604,\"final_source1_phase\":0.39007938366581296},{\"index\":10,\"kind\":\"engine\",\"selection\":\"maximum-728-gain-0.5\",\"input_gain\":0.5,\"edge_count\":728,\"contacts\":\"ideal\",\"workload\":\"sustained-polyphony\",\"nanoseconds_per_frame_samples\":[1941.859375],\"median_nanoseconds_per_frame\":1941.859375,\"relative_to_unconfigured\":1.2450622385854184,\"output_word_checksum\":\"ee7c1a9df63e9349\",\"warmup_word_checksum\":\"97b69357f19af612\",\"maximum_observed_magnitude\":2.0815873146057129,\"final_source1_phase\":0.39007938366581296},{\"index\":11,\"kind\":\"engine\",\"selection\":\"unconfigured\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"nominal\",\"workload\":\"silence\",\"nanoseconds_per_frame_samples\":[1609.9453125],\"median_nanoseconds_per_frame\":1609.9453125,\"relative_to_unconfigured\":1,\"output_word_checksum\":\"8421ae126c7ced25\",\"warmup_word_checksum\":\"51d88627df287325\",\"maximum_observed_magnitude\":0,\"final_source1_phase\":0.39007938366581296},{\"index\":12,\"kind\":\"engine\",\"selection\":\"empty-gain-one\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"nominal\",\"workload\":\"silence\",\"nanoseconds_per_frame_samples\":[1609.171875],\"median_nanoseconds_per_frame\":1609.171875,\"relative_to_unconfigured\":0.99951958771891514,\"output_word_checksum\":\"8421ae126c7ced25\",\"warmup_word_checksum\":\"51d88627df287325\",\"maximum_observed_magnitude\":0,\"final_source1_phase\":0.39007938366581296},{\"index\":13,\"kind\":\"engine\",\"selection\":\"pair-gain-0.75\",\"input_gain\":0.75,\"edge_count\":2,\"contacts\":\"nominal\",\"workload\":\"silence\",\"nanoseconds_per_frame_samples\":[1760.7265625],\"median_nanoseconds_per_frame\":1760.7265625,\"relative_to_unconfigured\":1.0936561315650279,\"output_word_checksum\":\"8421ae126c7ced25\",\"warmup_word_checksum\":\"51d88627df287325\",\"maximum_observed_magnitude\":0,\"final_source1_phase\":0.39007938366581296},{\"index\":14,\"kind\":\"engine\",\"selection\":\"maximum-728-gain-0.5\",\"input_gain\":0.5,\"edge_count\":728,\"contacts\":\"nominal\",\"workload\":\"silence\",\"nanoseconds_per_frame_samples\":[2016.09375],\"median_nanoseconds_per_frame\":2016.09375,\"relative_to_unconfigured\":1.2522746793611972,\"output_word_checksum\":\"8421ae126c7ced25\",\"warmup_word_checksum\":\"51d88627df287325\",\"maximum_observed_magnitude\":0,\"final_source1_phase\":0.39007938366581296},{\"index\":15,\"kind\":\"engine\",\"selection\":\"unconfigured\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"nominal\",\"workload\":\"sustained-polyphony\",\"nanoseconds_per_frame_samples\":[2163.1171875],\"median_nanoseconds_per_frame\":2163.1171875,\"relative_to_unconfigured\":1,\"output_word_checksum\":\"1c5072e7496ebd3f\",\"warmup_word_checksum\":\"f2eafcf0eeb618b1\",\"maximum_observed_magnitude\":4.176307201385498,\"final_source1_phase\":0.39007938366581296},{\"index\":16,\"kind\":\"engine\",\"selection\":\"empty-gain-one\",\"input_gain\":1,\"edge_count\":0,\"contacts\":\"nominal\",\"workload\":\"sustained-polyphony\",\"nanoseconds_per_frame_samples\":[1608.15625],\"median_nanoseconds_per_frame\":1608.15625,\"relative_to_unconfigured\":0.74344388704090958,\"output_word_checksum\":\"1c5072e7496ebd3f\",\"warmup_word_checksum\":\"f2eafcf0eeb618b1\",\"maximum_observed_magnitude\":4.176307201385498,\"final_source1_phase\":0.39007938366581296},{\"index\":17,\"kind\":\"engine\",\"selection\":\"pair-gain-0.75\",\"input_gain\":0.75,\"edge_count\":2,\"contacts\":\"nominal\",\"workload\":\"sustained-polyphony\",\"nanoseconds_per_frame_samples\":[1767.53125],\"median_nanoseconds_per_frame\":1767.53125,\"relative_to_unconfigured\":0.81712228085192451,\"output_word_checksum\":\"b8626d53620f71c7\",\"warmup_word_checksum\":\"5b7f894cf6a52c31\",\"maximum_observed_magnitude\":3.1362876892089844,\"final_source1_phase\":0.39007938366581296},{\"index\":18,\"kind\":\"engine\",\"selection\":\"maximum-728-gain-0.5\",\"input_gain\":0.5,\"edge_count\":728,\"contacts\":\"nominal\",\"workload\":\"sustained-polyphony\",\"nanoseconds_per_frame_samples\":[2299.5625],\"median_nanoseconds_per_frame\":2299.5625,\"relative_to_unconfigured\":1.0630780954857537,\"output_word_checksum\":\"a658b9d88a250e59\",\"warmup_word_checksum\":\"ecac81467cdd3c06\",\"maximum_observed_magnitude\":2.0820741653442383,\"final_source1_phase\":0.39007938366581296}]}\n",
+      "stderr": ""
+    },
+    {
+      "label": "dynamic_hammond_render",
+      "argv": [
+        "/usr/bin/readelf",
+        "-d",
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/bin/hammond_render"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory/leakage audition",
+      "returncode": 0,
+      "elapsed_seconds": 0.001869127998361364,
+      "stdout": "\nDynamic section at offset 0x22da8 contains 29 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000000c (INIT)               0x3000\n 0x000000000000000d (FINI)               0x1a388\n 0x0000000000000019 (INIT_ARRAY)         0x229f0\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x229f8\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0xef8\n 0x0000000000000006 (SYMTAB)             0x460\n 0x000000000000000a (STRSZ)              4342 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x22fe8\n 0x0000000000000002 (PLTRELSZ)           2040 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x2790\n 0x0000000000000007 (RELA)               0x2220\n 0x0000000000000008 (RELASZ)             1392 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x20d0\n 0x000000006fffffff (VERNEEDNUM)         4\n 0x000000006ffffff0 (VERSYM)             0x1fee\n 0x000000006ffffff9 (RELACOUNT)          37\n 0x0000000000000000 (NULL)               0x0\n",
+      "stderr": ""
+    },
+    {
+      "label": "dynamic_hammond_source_leakage_probe",
+      "argv": [
+        "/usr/bin/readelf",
+        "-d",
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/bin/hammond_source_leakage_probe"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory/leakage audition",
+      "returncode": 0,
+      "elapsed_seconds": 0.0018695990002015606,
+      "stdout": "\nDynamic section at offset 0xbda8 contains 29 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000000c (INIT)               0x3000\n 0x000000000000000d (FINI)               0x92b8\n 0x0000000000000019 (INIT_ARRAY)         0xcac0\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0xcac8\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0xc88\n 0x0000000000000006 (SYMTAB)             0x460\n 0x000000000000000a (STRSZ)              3434 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0xcfe8\n 0x0000000000000002 (PLTRELSZ)           1392 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x1e58\n 0x0000000000000007 (RELA)               0x1bd0\n 0x0000000000000008 (RELASZ)             648 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x1aa0\n 0x000000006fffffff (VERNEEDNUM)         4\n 0x000000006ffffff0 (VERSYM)             0x19f2\n 0x000000006ffffff9 (RELACOUNT)          7\n 0x0000000000000000 (NULL)               0x0\n",
+      "stderr": ""
+    },
+    {
+      "label": "dynamic_hammond_source_leakage_benchmark",
+      "argv": [
+        "/usr/bin/readelf",
+        "-d",
+        "/workspace/scratch/7802a6528f89/a34-install/Moved Source Leakage Tools-é音/bin/hammond_source_leakage_benchmark"
+      ],
+      "cwd": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory/leakage audition",
+      "returncode": 0,
+      "elapsed_seconds": 0.0013394470006460324,
+      "stdout": "\nDynamic section at offset 0x18d90 contains 29 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]\n 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000000c (INIT)               0x3000\n 0x000000000000000d (FINI)               0x136a8\n 0x0000000000000019 (INIT_ARRAY)         0x19910\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x19918\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0xd68\n 0x0000000000000006 (SYMTAB)             0x468\n 0x000000000000000a (STRSZ)              3682 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x19fe8\n 0x0000000000000002 (PLTRELSZ)           1560 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x2270\n 0x0000000000000007 (RELA)               0x1df0\n 0x0000000000000008 (RELASZ)             1152 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006ffffffb (FLAGS_1)            Flags: PIE\n 0x000000006ffffffe (VERNEED)            0x1c90\n 0x000000006fffffff (VERNEEDNUM)         4\n 0x000000006ffffff0 (VERSYM)             0x1bca\n 0x000000006ffffff9 (RELACOUNT)          23\n 0x0000000000000000 (NULL)               0x0\n",
+      "stderr": ""
+    }
+  ],
+  "checks": [
+    {
+      "check": "first_failure_preserved_exactly",
+      "passed": true
+    },
+    {
+      "check": "relocated_runtime_outputs_are_new",
+      "passed": true
+    },
+    {
+      "check": "installed_inventory_still_exact",
+      "passed": true
+    },
+    {
+      "check": "exact_posix_guide_block_selected",
+      "passed": true
+    },
+    {
+      "check": "literal_installed_posix_guide_returncode",
+      "passed": true
+    },
+    {
+      "check": "guide_emitted_five_tool_receipts",
+      "passed": true
+    },
+    {
+      "check": "compiler_pair_exact_byte_provenance",
+      "passed": true
+    },
+    {
+      "check": "compiler_identity_exact_byte_provenance",
+      "passed": true
+    },
+    {
+      "check": "installed_identity_probe_returncode",
+      "passed": true
+    },
+    {
+      "check": "probe_pair_exact_published_fixture",
+      "passed": true
+    },
+    {
+      "check": "probe_identity_exact_published_fixture",
+      "passed": true
+    },
+    {
+      "check": "installed_render_default_returncode",
+      "passed": true
+    },
+    {
+      "check": "installed_render_identity_unity_returncode",
+      "passed": true
+    },
+    {
+      "check": "render_pair_unclipped_and_schema",
+      "passed": true
+    },
+    {
+      "check": "render_pair_explicit_facts",
+      "passed": true
+    },
+    {
+      "check": "render_pair_pcm_shape",
+      "passed": true
+    },
+    {
+      "check": "render_pair_dry_stereo",
+      "passed": true
+    },
+    {
+      "check": "render_identity_unclipped_and_schema",
+      "passed": true
+    },
+    {
+      "check": "render_identity_explicit_facts",
+      "passed": true
+    },
+    {
+      "check": "render_identity_pcm_shape",
+      "passed": true
+    },
+    {
+      "check": "render_identity_dry_stereo",
+      "passed": true
+    },
+    {
+      "check": "render_default_unclipped_and_schema",
+      "passed": true
+    },
+    {
+      "check": "render_default_pcm_shape",
+      "passed": true
+    },
+    {
+      "check": "render_default_dry_stereo",
+      "passed": true
+    },
+    {
+      "check": "render_identity_unity_unclipped_and_schema",
+      "passed": true
+    },
+    {
+      "check": "render_identity_unity_explicit_facts",
+      "passed": true
+    },
+    {
+      "check": "render_identity_unity_pcm_shape",
+      "passed": true
+    },
+    {
+      "check": "render_identity_unity_dry_stereo",
+      "passed": true
+    },
+    {
+      "check": "same_gain_pair_differs",
+      "passed": true,
+      "facts": {
+        "changed_frames": 71500,
+        "maximum_pcm16_difference": 47
+      }
+    },
+    {
+      "check": "default_and_explicit_identity_unity_byte_exact",
+      "passed": true
+    },
+    {
+      "check": "installed_benchmark_function_returncode",
+      "passed": true
+    },
+    {
+      "check": "benchmark_functional_nineteen_cases",
+      "passed": true
+    },
+    {
+      "check": "dynamic_hammond_render_returncode",
+      "passed": true
+    },
+    {
+      "check": "no_embedded_runtime_search_path_hammond_render",
+      "passed": true
+    },
+    {
+      "check": "dynamic_hammond_source_leakage_probe_returncode",
+      "passed": true
+    },
+    {
+      "check": "no_embedded_runtime_search_path_hammond_source_leakage_probe",
+      "passed": true
+    },
+    {
+      "check": "dynamic_hammond_source_leakage_benchmark_returncode",
+      "passed": true
+    },
+    {
+      "check": "no_embedded_runtime_search_path_hammond_source_leakage_benchmark",
+      "passed": true
+    },
+    {
+      "check": "installed_payload_unchanged_by_all_runtime_commands",
+      "passed": true
+    },
+    {
+      "check": "all_twenty_source_build_inputs_unchanged_through_install",
+      "passed": true
+    },
+    {
+      "check": "scratch_under_three_mib",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Linux x86-64 GCC 14.2 Release only; Windows/PowerShell inspected but not executed.",
+    "Source/build remain present and read-only; runtime uses only installed and output paths, but syscall tracing and filesystem isolation are unqualified.",
+    "SourceLeakageTools preflight is not transactional against concurrent filesystem writers or later I/O failures.",
+    "Functional benchmark invocation carries no timing, callback deadline, stack or physical-fidelity acceptance.",
+    "No primary configure/build or production modification; CMake generated its normal component install manifest."
+  ],
+  "audio_outputs": {
+    "pair": {
+      "bytes": 384044,
+      "sha256": "76bb70dc3627a7736f685dea75d1ceb93a77956ac504d90a71a1c4110073297e",
+      "mode": "0644",
+      "shape": [
+        2,
+        2,
+        48000,
+        96000
+      ]
+    },
+    "identity": {
+      "bytes": 384044,
+      "sha256": "fa25666a9f8340455062590b1f7b6f8a38f968d66439e2720b944fa230748837",
+      "mode": "0644",
+      "shape": [
+        2,
+        2,
+        48000,
+        96000
+      ]
+    },
+    "default": {
+      "bytes": 384044,
+      "sha256": "914d16b69b93d2458162c74db3a5fa583b358af01b3c58a1c05f0d2be89f4fc1",
+      "mode": "0644",
+      "shape": [
+        2,
+        2,
+        48000,
+        96000
+      ]
+    },
+    "identity_unity": {
+      "bytes": 384044,
+      "sha256": "914d16b69b93d2458162c74db3a5fa583b358af01b3c58a1c05f0d2be89f4fc1",
+      "mode": "0644",
+      "shape": [
+        2,
+        2,
+        48000,
+        96000
+      ]
+    }
+  },
+  "observations": {
+    "actual_runtime_tool_invocations": 9,
+    "literal_guide_substitution": "Only prefix placeholder replaced by a positional shell argument; complete block executed by /bin/sh -eu.",
+    "native_dependency_inspection": "readelf dynamic sections contain ordinary runtime dependencies and no RPATH/RUNPATH.",
+    "original_prefix_absent": true,
+    "unrelated_working_directory": "/workspace/scratch/7802a6528f89/a34-install/unrelated working directory/leakage audition",
+    "installed_payload_bytes": 395725,
+    "scratch_file_bytes_before_cleanup": 1998203,
+    "no_syscall_trace_or_isolation_acceptance": true
+  },
+  "finished_utc": "2026-11-15T12:45:50Z",
+  "qualification_scripts": {
+    "qualify.py": {
+      "sha256": "4baf05d5147bb81990ec77d0ac35a8be8a67e487495f6d393f09d2284c90a504",
+      "bytes": 16773,
+      "source": "#!/usr/bin/env python3\n\"\"\"A34 independent actual-project install observation; owned scratch only.\"\"\"\nfrom pathlib import Path\nimport array\nimport hashlib\nimport json\nimport os\nimport platform\nimport shutil\nimport stat\nimport subprocess\nimport sys\nimport time\nimport wave\n\nROOT = Path('/workspace/scratch/7802a6528f89/Hammond-B3-Organ')\nBUILD = ROOT.parent / 'build-native'\nSCRATCH = ROOT.parent / 'a34-install'\nCMAKE = Path('/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake')\nPREFIX = SCRATCH / 'original tools'\nMOVED = SCRATCH / 'Moved Source Leakage Tools-é音'\nFOREIGN = SCRATCH / 'unrelated working directory'\nREPORT = ROOT / 'docs/development/2026-11-15-audio-continuation/reports/A34-real-install.json'\nPACKAGE = Path('share/hammond-b3-organ/source-leakage')\nEXPECTED_BASE = '9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994'\n\ndef digest(data):\n    return hashlib.sha256(data).hexdigest()\n\ndef file_fact(path):\n    data = path.read_bytes()\n    return {'bytes': len(data), 'sha256': digest(data),\n            'mode': f'{stat.S_IMODE(path.stat().st_mode):04o}'}\n\ndef git(*args):\n    return subprocess.check_output(['git', *args], cwd=ROOT, text=True).strip()\n\ndef environment():\n    env = {k: v for k, v in os.environ.items() if not k.startswith('HAMMOND_')}\n    for k in ('PYTHONPATH', 'PYTHONHOME', 'DESTDIR', 'CMAKE_INSTALL_MODE'):\n        env.pop(k, None)\n    env['PYTHONDONTWRITEBYTECODE'] = '1'\n    return env\n\nresult = {'schema_version': 1, 'assignment': 'A34', 'status': 'running',\n          'purpose': 'Independent actual main-project SourceLeakageTools installation and relocated execution',\n          'started_utc': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),\n          'commands': [], 'checks': [], 'source': {}, 'observations': {}}\n\ndef save():\n    REPORT.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\\n')\n\ndef check(name, condition, facts=None):\n    entry = {'check': name, 'passed': bool(condition)}\n    if facts is not None:\n        entry['facts'] = facts\n    result['checks'].append(entry)\n    save()\n    if not condition:\n        raise AssertionError(name)\n\ndef run(label, argv, *, cwd=FOREIGN, traced=False, expect=0):\n    argv = [str(x) for x in argv]\n    actual = argv\n    trace_path = SCRATCH / f'{label}.trace'\n    if traced:\n        actual = ['/usr/bin/strace', '-f', '-qq', '-e', 'trace=%file',\n                  '-o', str(trace_path), '--', *argv]\n    start = time.monotonic()\n    p = subprocess.run(actual, cwd=cwd, env=environment(), capture_output=True, timeout=45)\n    record = {'label': label, 'argv': argv, 'actual_argv': actual, 'cwd': str(cwd),\n              'returncode': p.returncode, 'elapsed_seconds': time.monotonic() - start,\n              'stdout': p.stdout.decode('utf-8', 'replace'),\n              'stderr': p.stderr.decode('utf-8', 'replace')}\n    if traced:\n        raw = trace_path.read_bytes()\n        trace = raw.decode('utf-8', 'replace')\n        record['file_trace'] = {'sha256': digest(raw), 'bytes': len(raw),\n                               'source_path_mentions': trace.count(str(ROOT)),\n                               'build_path_mentions': trace.count(str(BUILD)),\n                               'text': trace}\n    result['commands'].append(record)\n    save()\n    check(label + '_returncode', p.returncode == expect, {'expected': expect, 'observed': p.returncode})\n    if traced:\n        check(label + '_no_source_or_build_file_references',\n              str(ROOT) not in trace and str(BUILD) not in trace)\n    return record\n\ntry:\n    check('owned_scratch_and_new_outputs', SCRATCH.is_dir() and not PREFIX.exists()\n          and not MOVED.exists() and not FOREIGN.exists() and not REPORT.exists())\n    FOREIGN.mkdir()\n    result['source'] = {'repository': str(ROOT), 'build': str(BUILD),\n                        'head': git('rev-parse', 'HEAD'), 'head_tree': git('rev-parse', 'HEAD^{tree}'),\n                        'origin_main_observed': git('rev-parse', 'origin/main'),\n                        'expected_published_base': EXPECTED_BASE,\n                        'working_tree_status_at_start': git('status', '--short'),\n                        'root_cmake_patch': git('diff', '--', 'CMakeLists.txt')}\n    check('published_base_present', git('rev-parse', EXPECTED_BASE + '^{tree}') == result['source']['head_tree'])\n    payload = {\n        Path('bin/hammond_render'): BUILD / 'hammond_render',\n        Path('bin/hammond_source_leakage_probe'): BUILD / 'hammond_source_leakage_probe',\n        Path('bin/hammond_source_leakage_benchmark'): BUILD / 'hammond_source_leakage_benchmark',\n        PACKAGE / 'profiles/nominal.b3p': BUILD / 'nominal.b3p',\n        **{PACKAGE / p: ROOT / p for p in ('tools/compile_source_leakage.py',\n              'data/source-leakage.schema.json', 'data/source-leakage/synthetic-pair-demo-v1.json',\n              'data/source-leakage/synthetic-identity-v1.json', 'docs/SOURCE_LEAKAGE_INSTALL.md')},\n    }\n    read_only = list(payload.values()) + [ROOT / p for p in ('CMakeLists.txt',\n                'cmake/InstallHammondTools.cmake', 'cmake/InstallSourceLeakageTools.cmake',\n                'tests/test_source_leakage_install.py', 'docs/SOURCE_LEAKAGE_CONTRACT.md',\n                'docs/SOURCE_LEAKAGE_AUDITION_CONTRACT.md')]\n    read_only += [BUILD / p for p in ('CMakeCache.txt', 'build.ninja', 'cmake_install.cmake',\n                                    'CMakeFiles/rules.ninja', 'libhammond_core.a')]\n    before = {str(p): file_fact(p) for p in read_only}\n    result['source']['read_only_input_identities'] = before\n    production_paths = git('ls-files', 'include/hammond', 'src', 'tools/render.cpp',\n                           'tools/source_leakage_probe.cpp', 'tools/source_leakage_benchmark.cpp',\n                           'tools/compile_source_leakage.py').splitlines()\n    production = {}\n    for p in production_paths:\n        data = (ROOT / p).read_bytes()\n        committed = subprocess.check_output(['git', 'show', EXPECTED_BASE + ':' + p], cwd=ROOT)\n        production[p] = {'sha256': digest(data), 'matches_base': data == committed}\n    result['source']['runtime_production_inputs'] = production\n    check('runtime_production_inputs_match_published_base', all(p['matches_base'] for p in production.values()),\n          {'count': len(production)})\n    manifest = BUILD / 'install_manifest_SourceLeakageTools.txt'\n    result['observations']['prior_component_manifest_exists'] = manifest.exists()\n    if manifest.exists():\n        result['observations']['prior_component_manifest'] = file_fact(manifest)\n    result['environment'] = {'platform': platform.platform(), 'python': sys.version,\n                             'python_executable': sys.executable,\n                             'free_bytes_at_start': shutil.disk_usage(SCRATCH).free}\n    result['environment']['cmake_version'] = run('cmake_version', [CMAKE, '--version'])['stdout']\n    result['environment']['cxx_version'] = run('cxx_version', ['/usr/bin/c++', '--version'])['stdout']\n    cache = (BUILD / 'CMakeCache.txt').read_text().splitlines()\n    keys = {'CMAKE_BUILD_TYPE', 'CMAKE_CXX_COMPILER', 'CMAKE_C_COMPILER', 'CMAKE_GENERATOR',\n            'CMAKE_MAKE_PROGRAM', 'CMAKE_INSTALL_BINDIR', 'CMAKE_INSTALL_DATADIR', 'CMAKE_INSTALL_PREFIX',\n            'HAMMOND_BUILD_STANDALONE', 'HAMMOND_BUILD_VST3', 'HAMMOND_ENABLE_MIDI', 'HAMMOND_ENABLE_SANITIZERS'}\n    result['environment']['selected_cmake_cache'] = [x for x in cache if x.split(':', 1)[0] in keys]\n    run('actual_project_install', [CMAKE, '--install', BUILD, '--config', 'Release',\n                                  '--component', 'SourceLeakageTools', '--prefix', PREFIX])\n    inventory = {p.relative_to(PREFIX): p for p in PREFIX.rglob('*') if p.is_file()}\n    check('actual_project_exact_nine_file_inventory', set(inventory) == set(payload),\n          {'expected_count': len(payload), 'observed_count': len(inventory)})\n    check('installed_tree_has_no_links', not any(p.is_symlink() for p in PREFIX.rglob('*')))\n    result['installed_inventory'] = {}\n    for relative, original in payload.items():\n        installed = inventory[relative]\n        facts = file_fact(installed)\n        expected_mode = '0755' if relative.parts[0] == 'bin' else '0644'\n        check('installed_copy_' + relative.as_posix(), facts['sha256'] == before[str(original)]['sha256']\n              and facts['mode'] == expected_mode and not os.path.samefile(installed, original))\n        result['installed_inventory'][relative.as_posix()] = {**facts, 'original_path': str(original),\n                                                            'expected_install_mode': expected_mode}\n    manifest_raw = manifest.read_bytes()\n    manifest_paths = manifest_raw.decode().splitlines()\n    check('actual_project_component_manifest_exact', set(manifest_paths) == {str(PREFIX / p) for p in payload})\n    result['observations']['generated_component_manifest'] = {'path': str(manifest),\n               'sha256': digest(manifest_raw), 'bytes': len(manifest_raw), 'entries': manifest_paths,\n               'scope': 'Normal generated install output; no configure/build input was changed.'}\n    PREFIX.rename(MOVED)\n    check('prefix_relocated_original_absent', MOVED.is_dir() and not PREFIX.exists())\n    installed_before = {p.relative_to(MOVED).as_posix(): file_fact(p)\n                        for p in MOVED.rglob('*') if p.is_file()}\n    package = MOVED / PACKAGE\n    # Wrong data in the unrelated CWD catches implicit relative defaults.\n    (FOREIGN / 'nominal.b3p').write_bytes(b'wrong cwd profile\\n')\n    (FOREIGN / 'synthetic-pair-demo-v1.json').write_bytes(b'{\"wrong\":\"cwd\"}\\n')\n    graph_receipts = {}\n    for name, count in (('pair', 2), ('identity', 0)):\n        author = package / 'data/source-leakage' / (\n            'synthetic-pair-demo-v1.json' if count else 'synthetic-identity-v1.json')\n        record = run('compile_' + name, [sys.executable, '-I', '-B', '-S',\n                    package / 'tools/compile_source_leakage.py', '--input', author,\n                    '--output', name + '.b3leakage'], traced=True)\n        receipt = json.loads(record['stdout'])\n        check('compiler_' + name + '_byte_provenance', receipt['input_sha256'] == digest(author.read_bytes())\n              and receipt['compiled_sha256'] == digest((FOREIGN / (name + '.b3leakage')).read_bytes())\n              and receipt['edge_count'] == count and receipt['evidence_status'] == 'synthetic')\n        graph_receipts[name] = receipt\n        probe = run('probe_' + name, [MOVED / 'bin/hammond_source_leakage_probe',\n                                    '--input', name + '.b3leakage'], traced=True)\n        facts = json.loads(probe['stdout'])\n        expected_edges = ([{'destination': 25, 'source': 37, 'gain': 0.0625},\n                           {'destination': 37, 'source': 25, 'gain': -0.03125}] if count else [])\n        expected_input = [(i - 45) / 64 for i in range(91)]\n        expected_output = expected_input.copy()\n        for edge in expected_edges:\n            expected_output[edge['destination'] - 1] += edge['gain'] * expected_input[edge['source'] - 1]\n        check('probe_' + name + '_exact_fixture_algebra', facts['edges'] == expected_edges\n              and facts['input_frame'] == expected_input and facts['output_frame'] == expected_output\n              and facts['authoring_sha256'] == receipt['input_sha256']\n              and facts['authoring_digest_verification'] == 'file-supplied-unverified')\n    outputs = {}\n    common = ['--profile', package / 'profiles/nominal.b3p', '--frames', '96000',\n              '--sample-rate', '48000', '--block-size', '64', '--seed', '1939',\n              '--drawbars', '008000000', '--note', '48', '--contacts', 'ideal',\n              '--percussion', 'off', '--fail-on-clip']\n    for name, graph, gain in (('pair', 'pair', '0.75'), ('identity', 'identity', '0.75'),\n                             ('default', None, None), ('identity_unity', 'identity', '1')):\n        args = [MOVED / 'bin/hammond_render', *common, '--output', name + '.wav']\n        if graph:\n            args += ['--source-leakage', graph + '.b3leakage', '--leakage-input-gain', gain]\n        record = run('render_' + name, args, traced=True)\n        facts = json.loads(record['stdout'])\n        check('render_' + name + '_successful_unclipped', facts['status'] == 'ok'\n              and facts['clipped_channel_samples'] == 0 and facts['peak'] > 0\n              and facts['render_schema_version'] == (5 if graph else 3))\n        if graph:\n            check('render_' + name + '_explicit_graph_facts',\n                  facts['source_leakage_input_gain'] == float(gain)\n                  and facts['source_leakage_edge_count'] == (2 if graph == 'pair' else 0)\n                  and facts['source_leakage_authoring_sha256'] == graph_receipts[graph]['input_sha256']\n                  and facts['source_leakage_guarded_output_bound'] <= 1\n                  and facts['source_leakage_identity_bypass'] == (graph == 'identity' and gain == '1'))\n        output = FOREIGN / (name + '.wav')\n        with wave.open(str(output), 'rb') as wav:\n            shape = [wav.getnchannels(), wav.getsampwidth(), wav.getframerate(), wav.getnframes()]\n            pcm = wav.readframes(wav.getnframes())\n        check('render_' + name + '_pcm_shape', shape == [2, 2, 48000, 96000])\n        samples = array.array('h', pcm)\n        if sys.byteorder != 'little':\n            samples.byteswap()\n        check('render_' + name + '_dry_stereo_equality', samples[0::2] == samples[1::2])\n        outputs[name] = {'bytes': output.read_bytes(), 'samples': samples,\n                         'facts': {**file_fact(output), 'shape': shape}}\n    changed = [abs(a - b) for a, b in zip(outputs['pair']['samples'][0::2], outputs['identity']['samples'][0::2])]\n    check('same_gain_pair_changes_audio', any(changed),\n          {'changed_frames': sum(x != 0 for x in changed), 'maximum_pcm16_difference': max(changed)})\n    check('legacy_and_explicit_unity_identity_byte_exact', outputs['default']['bytes'] == outputs['identity_unity']['bytes'])\n    result['audio_outputs'] = {name: item['facts'] for name, item in outputs.items()}\n    benchmark = run('installed_benchmark', [MOVED / 'bin/hammond_source_leakage_benchmark',\n                    '--profile', package / 'profiles/nominal.b3p', '--sample-rate', '48000',\n                    '--blocks', '2', '--repetitions', '1', '--seed', '739'], traced=True)\n    facts = json.loads(benchmark['stdout'])\n    check('benchmark_functional_nineteen_cases', facts['sanity_passed'] and len(facts['rows']) == 19\n          and not facts['callback_deadlines_measured'])\n    for name in ('hammond_render', 'hammond_source_leakage_probe', 'hammond_source_leakage_benchmark'):\n        dynamic = run('dynamic_' + name, ['/usr/bin/readelf', '-d', MOVED / 'bin' / name])\n        check('no_runtime_search_path_' + name, 'RPATH' not in dynamic['stdout'] and 'RUNPATH' not in dynamic['stdout'])\n    installed_after = {p.relative_to(MOVED).as_posix(): file_fact(p)\n                       for p in MOVED.rglob('*') if p.is_file()}\n    check('installed_package_unchanged_after_runtime', installed_before == installed_after)\n    after = {str(p): file_fact(p) for p in read_only}\n    check('all_read_only_inputs_unchanged', before == after, {'count': len(before)})\n    result['source']['read_only_input_identities_after'] = after\n    result['observations']['traced_runtime_processes'] = sum('file_trace' in x for x in result['commands'])\n    result['observations']['total_runtime_trace_bytes'] = sum(x.get('file_trace', {}).get('bytes', 0) for x in result['commands'])\n    result['observations']['source_build_dependence_scope'] = (\n        'Source/build remained present and read-only; strace file-system traces for all nine actual runtime commands contain zero original source/build path references. '\n        'No repository/build isolation, physical device, performance threshold or platform other than this Linux Release is claimed.')\n    result['observations']['scratch_peak_retained_file_bytes'] = sum(p.stat().st_size for p in SCRATCH.rglob('*') if p.is_file())\n    check('scratch_under_three_mib', result['observations']['scratch_peak_retained_file_bytes'] < 3 * 1024 * 1024)\n    result['status'] = 'passed'\nexcept Exception as error:\n    result['status'] = 'failed'\n    result['error'] = {'type': type(error).__name__, 'message': str(error)}\n    raise\nfinally:\n    result['finished_utc'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())\n    result['script_sha256'] = digest(Path(__file__).read_bytes())\n    save()\n    print(json.dumps({'status': result['status'], 'checks': len(result['checks']),\n                      'commands': len(result['commands']), 'report': str(REPORT),\n                      'error': result.get('error')}, indent=2))\n"
+    },
+    "resume.py": {
+      "sha256": "0f49268d810a063dc3cc35412f47eba0ee75f5d089ecf33dfa3da406062b2955",
+      "bytes": 12751,
+      "source": "#!/usr/bin/env python3\n\"\"\"Continue A34 after an unavailable optional syscall tracer; preserve attempt.\"\"\"\nfrom pathlib import Path\nimport array\nimport base64\nimport hashlib\nimport json\nimport os\nimport shutil\nimport stat\nimport subprocess\nimport sys\nimport time\nimport wave\n\nROOT = Path('/workspace/scratch/7802a6528f89/Hammond-B3-Organ')\nSCRATCH = ROOT.parent / 'a34-install'\nMOVED = SCRATCH / 'Moved Source Leakage Tools-é音'\nFOREIGN = SCRATCH / 'unrelated working directory'\nOUT = FOREIGN / 'leakage audition'\nPACKAGE = MOVED / 'share/hammond-b3-organ/source-leakage'\nREPORT = ROOT / 'docs/development/2026-11-15-audio-continuation/reports/A34-real-install.json'\nfirst_raw = (SCRATCH / 'first-attempt-original.json').read_bytes()\nfirst = json.loads(first_raw)\n\ndef sha(data):\n    return hashlib.sha256(data).hexdigest()\n\ndef fact(path):\n    data = path.read_bytes()\n    return {'bytes': len(data), 'sha256': sha(data), 'mode': f'{stat.S_IMODE(path.stat().st_mode):04o}'}\n\nresult = {'schema_version': 1, 'assignment': 'A34', 'status': 'running',\n          'purpose': first['purpose'], 'source': first['source'],\n          'environment': first['environment'], 'installed_inventory': first['installed_inventory'],\n          'initial_observations': first['observations'],\n          'read_only_input_identities_after_actual_install': json.loads((SCRATCH / 'post-install-read-only.json').read_text()),\n          'original_attempts': [{'classification': 'Optional tracing setup blocked before product execution',\n               'report_sha256': sha(first_raw), 'report_bytes': len(first_raw),\n               'report_json_utf8_base64': base64.b64encode(first_raw).decode(),\n               'reason': 'strace PTRACE_TRACEME and PTRACE_SETOPTIONS returned Operation not permitted',\n               'product_command_executed': False,\n               'scope': 'Only the compile_pair tracing attempt failed; actual install/inventory/relocation checks had passed.'}],\n          'initial_successful_commands': first['commands'][:-1],\n          'initial_passed_checks': [x for x in first['checks'] if x['passed']],\n          'commands': [], 'checks': [], 'limitations': [\n               'Linux x86-64 GCC 14.2 Release only; Windows/PowerShell inspected but not executed.',\n               'Source/build remain present and read-only; runtime uses only installed and output paths, but syscall tracing and filesystem isolation are unqualified.',\n               'SourceLeakageTools preflight is not transactional against concurrent filesystem writers or later I/O failures.',\n               'Functional benchmark invocation carries no timing, callback deadline, stack or physical-fidelity acceptance.',\n               'No primary configure/build or production modification; CMake generated its normal component install manifest.']}\n\ndef save():\n    REPORT.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\\n')\n\ndef check(name, passed, facts=None):\n    item = {'check': name, 'passed': bool(passed)}\n    if facts is not None:\n        item['facts'] = facts\n    result['checks'].append(item)\n    save()\n    if not passed:\n        raise AssertionError(name)\n\ndef run(label, argv, cwd):\n    env = {k: v for k, v in os.environ.items() if not k.startswith('HAMMOND_')}\n    for name in ('PYTHONHOME', 'PYTHONPATH', 'DESTDIR', 'CMAKE_INSTALL_MODE'):\n        env.pop(name, None)\n    env['PYTHONDONTWRITEBYTECODE'] = '1'\n    command = list(map(str, argv))\n    start = time.monotonic()\n    p = subprocess.run(command, cwd=cwd, env=env, capture_output=True, timeout=45)\n    record = {'label': label, 'argv': command, 'cwd': str(cwd), 'returncode': p.returncode,\n              'elapsed_seconds': time.monotonic() - start,\n              'stdout': p.stdout.decode('utf-8', 'replace'), 'stderr': p.stderr.decode('utf-8', 'replace')}\n    result['commands'].append(record)\n    check(label + '_returncode', p.returncode == 0)\n    return record\n\ntry:\n    check('first_failure_preserved_exactly', first['error']['message'] == 'compile_pair_returncode'\n          and first['commands'][-1]['stdout'] == '' and not (FOREIGN / 'pair.b3leakage').exists())\n    check('relocated_runtime_outputs_are_new', not OUT.exists())\n    installed_before = {p.relative_to(MOVED).as_posix(): fact(p) for p in MOVED.rglob('*') if p.is_file()}\n    check('installed_inventory_still_exact', len(installed_before) == 9\n          and all(installed_before[k] == {q: v for q, v in item.items() if q in ('bytes', 'sha256', 'mode')}\n                  for k, item in result['installed_inventory'].items()))\n    guide = (PACKAGE / 'docs/SOURCE_LEAKAGE_INSTALL.md').read_text()\n    marker = 'leakage_prefix=\"/absolute/path/Source Leakage Tools\"'\n    posix = guide.split('```sh\\n', 2)[2].split('\\n```', 1)[0]\n    check('exact_posix_guide_block_selected', posix.startswith(marker)\n          and '--output identity.wav' in posix and '--frames 96000' in posix)\n    posix = posix.replace(marker, 'leakage_prefix=$1', 1)\n    # Only substitute the user's chosen prefix. The operating block is otherwise literal.\n    record = run('literal_installed_posix_guide', ['/bin/sh', '-eu', '-c', posix,\n                 'source-leakage-install-guide', MOVED], FOREIGN)\n    lines = [json.loads(x) for x in record['stdout'].splitlines() if x.strip()]\n    check('guide_emitted_five_tool_receipts', len(lines) == 5)\n    compile_pair, compile_identity, pair_probe, pair_render, identity_render = lines\n    graph_receipts = {'pair': compile_pair, 'identity': compile_identity}\n    for name, filename, count in [('pair', 'synthetic-pair-demo-v1.json', 2),\n                                  ('identity', 'synthetic-identity-v1.json', 0)]:\n        receipt = graph_receipts[name]\n        author = PACKAGE / 'data/source-leakage' / filename\n        compiled = OUT / (name + '.b3leakage')\n        check('compiler_' + name + '_exact_byte_provenance', receipt['input_sha256'] == sha(author.read_bytes())\n              and receipt['compiled_sha256'] == sha(compiled.read_bytes()) and receipt['edge_count'] == count\n              and receipt['evidence_status'] == 'synthetic')\n    record = run('installed_identity_probe', [MOVED / 'bin/hammond_source_leakage_probe',\n                                            '--input', 'identity.b3leakage'], OUT)\n    identity_probe = json.loads(record['stdout'])\n    expected_input = [((((i + 1) * 37) % 129) - 64) / 64 for i in range(91)]\n    for name, facts in [('pair', pair_probe), ('identity', identity_probe)]:\n        edges = ([{'destination': 25, 'source': 37, 'gain': 0.0625},\n                  {'destination': 37, 'source': 25, 'gain': -0.03125}] if name == 'pair' else [])\n        expected = expected_input.copy()\n        for edge in edges:\n            expected[edge['destination'] - 1] += edge['gain'] * expected_input[edge['source'] - 1]\n        check('probe_' + name + '_exact_published_fixture', facts['edges'] == edges\n              and facts['input_frame'] == expected_input and facts['output_frame'] == expected\n              and facts['authoring_sha256'] == graph_receipts[name]['input_sha256']\n              and facts['authoring_digest_verification'] == 'file-supplied-unverified')\n    renders = {'pair': pair_render, 'identity': identity_render}\n    for name, selected in [('default', False), ('identity_unity', True)]:\n        args = [MOVED / 'bin/hammond_render', '--profile', PACKAGE / 'profiles/nominal.b3p',\n                '--output', name + '.wav', '--frames', '96000', '--sample-rate', '48000',\n                '--block-size', '64', '--seed', '1939', '--drawbars', '008000000',\n                '--note', '48', '--contacts', 'ideal', '--percussion', 'off', '--fail-on-clip']\n        if selected:\n            args += ['--source-leakage', 'identity.b3leakage', '--leakage-input-gain', '1']\n        renders[name] = json.loads(run('installed_render_' + name, args, OUT)['stdout'])\n    audio = {}\n    for name, facts in renders.items():\n        selected = name != 'default'\n        graph = 'pair' if name == 'pair' else 'identity'\n        check('render_' + name + '_unclipped_and_schema', facts['status'] == 'ok'\n              and facts['clipped_channel_samples'] == 0 and facts['peak'] > 0\n              and facts['render_schema_version'] == (5 if selected else 3))\n        if selected:\n            gain = 1 if name == 'identity_unity' else 0.75\n            check('render_' + name + '_explicit_facts', facts['source_leakage_input_gain'] == gain\n                  and facts['source_leakage_edge_count'] == (2 if graph == 'pair' else 0)\n                  and facts['source_leakage_authoring_sha256'] == graph_receipts[graph]['input_sha256']\n                  and facts['source_leakage_guarded_output_bound'] <= 1\n                  and facts['source_leakage_identity_bypass'] == (name == 'identity_unity'))\n        path = OUT / (name + '.wav')\n        with wave.open(str(path), 'rb') as wav:\n            shape = [wav.getnchannels(), wav.getsampwidth(), wav.getframerate(), wav.getnframes()]\n            pcm = wav.readframes(wav.getnframes())\n        check('render_' + name + '_pcm_shape', shape == [2, 2, 48000, 96000])\n        samples = array.array('h', pcm)\n        if sys.byteorder != 'little':\n            samples.byteswap()\n        check('render_' + name + '_dry_stereo', samples[0::2] == samples[1::2])\n        audio[name] = {'bytes': path.read_bytes(), 'samples': samples,\n                       'facts': {**fact(path), 'shape': shape}}\n    differences = [abs(a - b) for a, b in zip(audio['pair']['samples'][0::2], audio['identity']['samples'][0::2])]\n    check('same_gain_pair_differs', any(differences),\n          {'changed_frames': sum(x != 0 for x in differences), 'maximum_pcm16_difference': max(differences)})\n    check('default_and_explicit_identity_unity_byte_exact', audio['default']['bytes'] == audio['identity_unity']['bytes'])\n    result['audio_outputs'] = {name: item['facts'] for name, item in audio.items()}\n    record = run('installed_benchmark_function', [MOVED / 'bin/hammond_source_leakage_benchmark',\n                 '--profile', PACKAGE / 'profiles/nominal.b3p', '--sample-rate', '48000',\n                 '--blocks', '2', '--repetitions', '1', '--seed', '739'], OUT)\n    facts = json.loads(record['stdout'])\n    check('benchmark_functional_nineteen_cases', facts['sanity_passed'] and len(facts['rows']) == 19\n          and not facts['callback_deadlines_measured'])\n    for name in ('hammond_render', 'hammond_source_leakage_probe', 'hammond_source_leakage_benchmark'):\n        record = run('dynamic_' + name, ['/usr/bin/readelf', '-d', MOVED / 'bin' / name], OUT)\n        check('no_embedded_runtime_search_path_' + name, 'RPATH' not in record['stdout'] and 'RUNPATH' not in record['stdout'])\n    after = {p.relative_to(MOVED).as_posix(): fact(p) for p in MOVED.rglob('*') if p.is_file()}\n    check('installed_payload_unchanged_by_all_runtime_commands', installed_before == after)\n    check('all_twenty_source_build_inputs_unchanged_through_install',\n          result['source']['read_only_input_identities'] == result['read_only_input_identities_after_actual_install'])\n    result['observations'] = {'actual_runtime_tool_invocations': 9,\n           'literal_guide_substitution': 'Only prefix placeholder replaced by a positional shell argument; complete block executed by /bin/sh -eu.',\n           'native_dependency_inspection': 'readelf dynamic sections contain ordinary runtime dependencies and no RPATH/RUNPATH.',\n           'original_prefix_absent': not (SCRATCH / 'original tools').exists(),\n           'unrelated_working_directory': str(OUT),\n           'installed_payload_bytes': sum(item['bytes'] for item in installed_before.values()),\n           'scratch_file_bytes_before_cleanup': sum(p.stat().st_size for p in SCRATCH.rglob('*') if p.is_file()),\n           'no_syscall_trace_or_isolation_acceptance': True}\n    check('scratch_under_three_mib', result['observations']['scratch_file_bytes_before_cleanup'] < 3 * 1024 * 1024)\n    result['status'] = 'passed_with_optional_tracing_unavailable'\nexcept Exception as error:\n    result['status'] = 'failed'\n    result['error'] = {'type': type(error).__name__, 'message': str(error)}\n    raise\nfinally:\n    result['finished_utc'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())\n    result['qualification_scripts'] = {p.name: {'sha256': sha(p.read_bytes()),\n         'bytes': p.stat().st_size, 'source': p.read_text()} for p in (SCRATCH / 'qualify.py', Path(__file__))}\n    save()\n    print(json.dumps({'status': result['status'], 'initial_checks': len(result['initial_passed_checks']),\n                      'runtime_checks': len(result['checks']), 'commands': len(result['commands']),\n                      'audio_outputs': result.get('audio_outputs'), 'error': result.get('error')}, indent=2))\n"
+    }
+  },
+  "guide_and_policy_review": {
+    "posix": "Executed the installed guide shell block literally; only its absolute-prefix placeholder was replaced by a quoted positional argument. All five tool receipts were parsed.",
+    "powershell": "Inspected only: quoted absolute package paths, .exe suffixes, native call operator, isolated Python flags and Release configuration agree with the package. No Windows execution claim.",
+    "existing_components": "Read both actual install modules and ten generated SourceLeakageTools-only guards. The inherited OfflineTools and Standalone files are unchanged relative to the observed published base. The default/legacy install path does not include the new component; no second ordinary install was executed.",
+    "renderer_name_collision": "Both actual installers target CMAKE_INSTALL_BINDIR/hammond_render. SourceLeakageTools checks that full destination before its first copy and the guide requires a fresh prefix. A31 executed collisions; A34 independently inspected this real shared target without repeating the fault matrix.",
+    "runtime_requirements": "Python standard library plus normal native C/C++ runtime; no SDK/source/build lookup is requested by the installed commands. No RPATH/RUNPATH in any of the three ELF executables.",
+    "source_binding": "63 runtime production files match published9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994; package installer, guide and root wiring are separate recorded working-overlay identities. This is not an assertion that the new install component was already published."
+  },
+  "cleanup": {
+    "owned_scratch_path": "/workspace/scratch/7802a6528f89/a34-install",
+    "removed": true,
+    "removed_file_count": 22,
+    "removed_file_bytes": 1998203,
+    "inventory": [
+      {
+        "path": "Moved Source Leakage Tools-é音/bin/hammond_render",
+        "bytes": 172528,
+        "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf"
+      },
+      {
+        "path": "Moved Source Leakage Tools-é音/bin/hammond_source_leakage_benchmark",
+        "bytes": 125952,
+        "sha256": "c909383e69478f9c595987ef019fab5d19afdfb5da8503aa7851f49cca6457b4"
+      },
+      {
+        "path": "Moved Source Leakage Tools-é音/bin/hammond_source_leakage_probe",
+        "bytes": 63608,
+        "sha256": "c416986c7cd3492705fac9850eb3ecb55431d5795e2d129d3cd89ec4a0db58bb"
+      },
+      {
+        "path": "Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-identity-v1.json",
+        "bytes": 757,
+        "sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385"
+      },
+      {
+        "path": "Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/data/source-leakage/synthetic-pair-demo-v1.json",
+        "bytes": 909,
+        "sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299"
+      },
+      {
+        "path": "Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/data/source-leakage.schema.json",
+        "bytes": 2547,
+        "sha256": "2820389ceab777769d4f8f7d0e0feec33fe7f7cc1c812fa5d68c358fa91b33c2"
+      },
+      {
+        "path": "Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/docs/SOURCE_LEAKAGE_INSTALL.md",
+        "bytes": 13071,
+        "sha256": "25fe10058c335ed4210f3066f69a367f0c127640bc2c01cbcae592244412ce45"
+      },
+      {
+        "path": "Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/profiles/nominal.b3p",
+        "bytes": 4545,
+        "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+      },
+      {
+        "path": "Moved Source Leakage Tools-é音/share/hammond-b3-organ/source-leakage/tools/compile_source_leakage.py",
+        "bytes": 11808,
+        "sha256": "ea5c4827c3e711b1f03f4de7c9b670720435e8a100d866b6d7d683a940160d14"
+      },
+      {
+        "path": "compile_pair.trace",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "first-attempt-original.json",
+        "bytes": 31906,
+        "sha256": "f0195e8cb8852e41650fcfa45475d33c9640bbc1bb38e45150e8814f1fa1eb0f"
+      },
+      {
+        "path": "post-install-read-only.json",
+        "bytes": 4167,
+        "sha256": "28b6915bd48050640f2fbc4049ac2c0ddecc053e26684c95540f2c02db885ed0"
+      },
+      {
+        "path": "qualify.py",
+        "bytes": 16773,
+        "sha256": "4baf05d5147bb81990ec77d0ac35a8be8a67e487495f6d393f09d2284c90a504"
+      },
+      {
+        "path": "resume.py",
+        "bytes": 12751,
+        "sha256": "0f49268d810a063dc3cc35412f47eba0ee75f5d089ecf33dfa3da406062b2955"
+      },
+      {
+        "path": "unrelated working directory/leakage audition/default.wav",
+        "bytes": 384044,
+        "sha256": "914d16b69b93d2458162c74db3a5fa583b358af01b3c58a1c05f0d2be89f4fc1"
+      },
+      {
+        "path": "unrelated working directory/leakage audition/identity.b3leakage",
+        "bytes": 292,
+        "sha256": "6b7b18d4839bde4f25c2e6a0eb48f920c2c4506ba5ed3c817a877d82af155467"
+      },
+      {
+        "path": "unrelated working directory/leakage audition/identity.wav",
+        "bytes": 384044,
+        "sha256": "fa25666a9f8340455062590b1f7b6f8a38f968d66439e2720b944fa230748837"
+      },
+      {
+        "path": "unrelated working directory/leakage audition/identity_unity.wav",
+        "bytes": 384044,
+        "sha256": "914d16b69b93d2458162c74db3a5fa583b358af01b3c58a1c05f0d2be89f4fc1"
+      },
+      {
+        "path": "unrelated working directory/leakage audition/pair.b3leakage",
+        "bytes": 379,
+        "sha256": "ac9207269dc1ad6f612b3b3c58dcc4a3fc7d419d76bc1e577f13561dbf9b539b"
+      },
+      {
+        "path": "unrelated working directory/leakage audition/pair.wav",
+        "bytes": 384044,
+        "sha256": "76bb70dc3627a7736f685dea75d1ceb93a77956ac504d90a71a1c4110073297e"
+      },
+      {
+        "path": "unrelated working directory/nominal.b3p",
+        "bytes": 18,
+        "sha256": "04fdbaed9fef2ca4469141d6e752c866c1344cb0a86acfad9000996d421d12df"
+      },
+      {
+        "path": "unrelated working directory/synthetic-pair-demo-v1.json",
+        "bytes": 16,
+        "sha256": "010ad7df02b5277b743507a76952f4c01ed48cb7a3bc5c2bef479c240913f04a"
+      }
+    ],
+    "preserved": "Both qualification scripts and exact original failed report bytes are embedded in this receipt. Temporary PCM/installed copies were removed after retaining identities and full command outputs. Main build manifest and every other session remain untouched."
+  }
+}
