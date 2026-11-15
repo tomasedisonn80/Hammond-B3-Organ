@@ -2,7 +2,16 @@
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The playable instrument is a **nominal dry organ** with a native standalone application, an offline renderer and an optional VST3 adapter. Its musical core has 91 continuously running sources, two 61-key manuals, 25 pedals, eighteen documentary fixed registrations, four retained drawbar banks, percussion and shared expression.
 
-The current [product continuation](docs/development/2026-11-15-product-continuation/README.md) advances three practical areas:
+**Current development:** the [playable continuation](docs/development/2026-11-15-playable-continuation/README.md)
+starts from `3767b64`. All 500 atlas pages have been read for this new session;
+the clean baseline passes 183/183 tests. Next work is a prepared harmonic
+generator with explicit offline audition (M2) and a closer reference drawbar-rack
+composition (M9). [Scope](docs/development/2026-11-15-playable-continuation/SCOPE.md)
+· [Live checkpoint](docs/development/2026-11-15-playable-continuation/CHECKPOINT.md)
+· [Complete reading record](docs/research/PLAYABLE_ATLAS_REVIEW.md).
+These features are under development, not yet claimed as implemented here.
+
+The earlier [product continuation](docs/development/2026-11-15-product-continuation/README.md) delivered three practical areas:
 
 | Area | Available now |
 | --- | --- |

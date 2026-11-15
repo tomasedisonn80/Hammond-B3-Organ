@@ -1,5 +1,24 @@
 # Development log
 
+## 2026-11-15 — Playable continuation: full atlas and clean baseline
+
+Verified remote main at `3767b645e010066d63ca0b7fc1af8310a6f7e5ad` and created
+an independent local clone preserving the other owners' dirty checkouts. Six
+actual readers covered PDF pages 1–500, retaining source/extract hashes and
+chapter findings in the [new session](development/2026-11-15-playable-continuation/README.md).
+Selected prepared harmonic-source/offline work (M2) and reference-rack composition
+(M9); contracts and independent reviews precede implementation.
+
+Configured and built all targets coherently with GCC 14.2, CMake 4.4.5, Ninja,
+Release, standalone ON, MIDI OFF, VST3 OFF and borrowed pinned SDL2. All
+**183/183 CTests passed in 179.06 s**. The current interface capture utility
+passed eight actual dummy-SDL views. An initial use of the older reference
+capture tool rejected diagnostics schema 3 after one capture; its failure remains
+separate and is not relabeled a pass. Exact inputs/logs and paths are in the
+[checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md).
+Source is about 182 MiB, build 96 MiB, and approximately 51 GiB remains free.
+No harmonic/interface implementation or completed fidelity result is claimed yet.
+
 ## 2026-11-15 — Product batch qualified; all sixty accepted and thirteen hosted jobs pass
 
 Published tested source is **`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`**, tree

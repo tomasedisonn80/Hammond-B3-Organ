@@ -1,6 +1,21 @@
 # Next steps
 
-## Current source and remaining user requirement
+## Current playable-continuation work
+
+Recover the [session](development/2026-11-15-playable-continuation/README.md),
+[checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md),
+[actual assignments](development/2026-11-15-playable-continuation/assignments.json)
+and [selected scope](development/2026-11-15-playable-continuation/SCOPE.md).
+Six direct readings cover all 500 pages; the clean native baseline passes 183/183.
+Next: independently admit the harmonic source, explicit offline integration and
+reference-rack contracts, then implement and run declared numerical, interaction
+and source-bound visual checks. Preserve nominal default sound, state/parameter
+identities and other owners' unfinished scanner/library/crossover/MIDI/R4 work.
+Root coordinates this session's build and publication; workers edit assigned
+paths and retain actual outcomes. Capture changed UI and refresh README, verify
+publication, and checkpoint every wave.
+
+## Earlier product source and remaining user requirement
 
 All **60 actual workers in ten waves are accepted**, and the strict product
 checker passes. The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) preserves

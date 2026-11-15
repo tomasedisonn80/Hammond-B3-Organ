@@ -1,5 +1,25 @@
 # Standing instructions for every development agent
 
+## Current playable-continuation session — 2026-11-15
+
+The new owner-requested sixty-agent, ten-wave session starts from published
+`3767b645e010066d63ca0b7fc1af8310a6f7e5ad` in
+`/workspace/scratch/3d3981dcf371/Hammond-B3-Organ`. Read its
+[entry](docs/development/2026-11-15-playable-continuation/README.md),
+[checkpoint](docs/development/2026-11-15-playable-continuation/CHECKPOINT.md) and
+[actual assignments](docs/development/2026-11-15-playable-continuation/assignments.json).
+Earlier ledgers are separate history and do not count toward this request.
+The integrator owns shared navigation, build configuration, its one coordinated
+build and publication. Workers own only their assigned files. Existing other
+checkouts, indexes, dependencies and builds are read-only; preserve unfinished
+scanner, library/browser, crossover, MIDI retirement and rotary-waveform work.
+Read the full plan, retain actual source-bound outcomes and update concrete
+setup/status/next actions after each wave. Publish accepted work to `main` under
+the owner's standing authorization after verification, without force-pushing,
+and independently verify the remote commit. The literal reference-match objective
+remains active; actual live-interface captures and honest comparisons are required.
+All standing preservation, engineering and bounded-storage rules below apply.
+
 ## Parallel next-phase session — 2026-11-15
 
 The owner's new sixty-agent/ten-wave request is being implemented in

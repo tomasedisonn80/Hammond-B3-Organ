@@ -1,6 +1,25 @@
 # Development status
 
-## Current product continuation — 15 November 2026
+## Current playable continuation — 15 November 2026
+
+Start source is `3767b645e010066d63ca0b7fc1af8310a6f7e5ad`. The new
+[session](development/2026-11-15-playable-continuation/README.md) accepted six
+complete atlas readings covering pages 1–500. Its clean native Release baseline
+passes **183/183 CTests in 179.06 s**; eight actual dummy-SDL captures pass the
+current interface capture utility. Source identities and original logs are in
+the [checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md).
+
+The [selected scope](development/2026-11-15-playable-continuation/SCOPE.md) is a
+separately identified prepared harmonic source and explicit offline audition,
+plus reference-rack composition. Contracts are being drafted and independently
+reviewed; these features are not yet implemented or accepted. The
+[actual ledger](development/2026-11-15-playable-continuation/assignments.json)
+does not reuse earlier workers. Other checkouts and unfinished scanner, library,
+crossover, MIDI-retirement and R4 work remain preserved.
+
+The following sections retain earlier source-specific product evidence.
+
+## Earlier product continuation — 15 November 2026
 
 The active [product continuation](development/2026-11-15-product-continuation/README.md)
 starts at `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb`. It owns native M9 MIDI

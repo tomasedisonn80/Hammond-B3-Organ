@@ -1,6 +1,16 @@
 # Project plan: Hammond B-3 and Leslie
 
-**Current authority — 15 November 2026:** the
+**Current playable continuation — 15 November 2026:** read the new
+[session](development/2026-11-15-playable-continuation/README.md),
+[scope](development/2026-11-15-playable-continuation/SCOPE.md) and
+[checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md).
+Six direct readers covered the entire atlas; the clean 3767b64 native baseline
+passes 183/183 tests. New work targets M2 harmonic source/offline audition and
+M9 reference-rack composition. These features remain under reviewed development.
+All M0–M9 exit criteria below remain in force; sixty workers do not establish
+physical or visual fidelity. Other active sessions retain their assigned scope.
+
+**Earlier product authority — 15 November 2026:** the
 [product continuation](development/2026-11-15-product-continuation/README.md)
 advances M9 native MIDI channel modes, expression-controller calibration and
 measured visual refinement, together with an independent M6 passive crossover.
