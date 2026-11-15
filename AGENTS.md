@@ -1,6 +1,32 @@
 # Standing instructions for every development agent
 
-## Active routing — product continuation, 2026-11-15
+## Active routing — fidelity continuation, 2026-11-15
+
+The current owner-requested session starts from `878d3ce82a10a0ae335dab377683ec543f194957`.
+Read its [entry](docs/development/2026-11-15-fidelity-continuation/README.md),
+[checkpoint](docs/development/2026-11-15-fidelity-continuation/CHECKPOINT.md) and
+[actual assignments](docs/development/2026-11-15-fidelity-continuation/assignments.json).
+It owns a new sixty-agent, ten-wave continuation. Earlier sixty-agent ledgers are
+completed history and never count toward this request. All standing evidence,
+architecture, bounded-storage, source-preservation and publication rules below apply.
+
+Writable source is `/workspace/scratch/63071f51f1e4/Hammond-B3-Organ`; root exclusively
+coordinates `/workspace/scratch/63071f51f1e4/build-native`. Existing checkouts,
+dependencies and builds are read-only references. Root owns shared navigation,
+manifest/checkpoint, all configure/build operations and publication. Workers edit
+only assigned files; request a build or use an explicitly assigned private scratch
+experiment. Full atlas review is underway in six complete contiguous page ranges.
+The current scope is frozen after those findings: native reference refinement,
+independent M6 same-Hz numerical continuation and a bounded native MIDI close study.
+The original 1:1 objective remains active. Describe actual visual, numerical and
+platform acceptance separately; completed worker counts do not prove them.
+
+## Historical product continuation — completed 2026-11-15
+
+The source-specific product routing below is preserved history. The fidelity
+session above owns current continuation; its references supersede operational
+paths and current-session language in the older section.
+
 
 Read **this entire file and the complete [M0–M9 plan](docs/PLAN.md)** before
 choosing work. Recover [README.md](README.md), [STATUS.md](docs/STATUS.md),
