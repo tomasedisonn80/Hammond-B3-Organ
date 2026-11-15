@@ -331,6 +331,9 @@ if(HAMMOND_BUILD_STANDALONE)
             target_link_libraries(hammond_standalone_calibration_probe PRIVATE
                 hammond_standalone_audio hammond_standalone_replay hammond_standalone_drawing)
             hammond_configure_target(hammond_standalone_calibration_probe)
+            if(MINGW)
+                target_link_options(hammond_standalone_calibration_probe PRIVATE -municode)
+            endif()
             add_dependencies(hammond_standalone_calibration_probe hammond_profile)
             add_test(NAME test_standalone_native_calibration
                 COMMAND "${CMAKE_COMMAND}" -E env
@@ -338,6 +341,11 @@ if(HAMMOND_BUILD_STANDALONE)
                     "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_native_calibration.py")
             set_tests_properties(test_standalone_native_calibration PROPERTIES
                 TIMEOUT 90 LABELS "standalone;native;midi")
+            if(HAMMOND_ENABLE_SANITIZERS)
+                # Ten instrumented subprocesses retain their individual 15 s
+                # limits; leave bounded room for the complete lifecycle suite.
+                set_tests_properties(test_standalone_native_calibration PROPERTIES TIMEOUT 180)
+            endif()
             list(APPEND HAMMOND_STANDALONE_TEST_TARGETS hammond_standalone_calibration_probe)
         endif()
         add_test(NAME test_standalone_native_midi_replay

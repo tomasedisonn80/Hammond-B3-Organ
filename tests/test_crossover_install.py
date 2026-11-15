@@ -489,7 +489,10 @@ class CrossoverInstallTests(unittest.TestCase):
         result = self.reference(package, foreign, "--output", report_path)
         self.success(result)
         self.assertEqual(result.stdout, b"")
-        self.assertEqual(report_path.read_bytes(), stdout.stdout)
+        # The atomic file writer specifies LF; Windows text stdout emits CRLF.
+        # Normalize only that platform representation, retaining exact content.
+        stdout_report = stdout.stdout.replace(b"\r\n", b"\n") if os.name == "nt" else stdout.stdout
+        self.assertEqual(report_path.read_bytes(), stdout_report)
         for destination in (package / SCRIPT, package / REGISTRY):
             result = self.reference(package, foreign, "--output", destination)
             self.assertEqual(result.returncode, 2, diagnostic(result))

@@ -62,16 +62,22 @@ bool write_trace(const char* path, std::string_view scenario, const fixture::Sta
 }
 
 int fixture_application(int argc, char** argv) {
-    const char* selected = SDL_getenv("HAMMOND_CALIBRATION_SCENARIO");
-    const char* trace = SDL_getenv("HAMMOND_CALIBRATION_TRACE");
+    // SDL's Windows getenv may reuse one buffer, and application startup also
+    // reads the environment. Own each value before another read can replace it.
+    const auto copy_environment = [](const char* name) {
+        const char* value = SDL_getenv(name);
+        return value == nullptr ? std::string{} : std::string{value};
+    };
+    const std::string selected = copy_environment("HAMMOND_CALIBRATION_SCENARIO");
+    const std::string trace = copy_environment("HAMMOND_CALIBRATION_TRACE");
     fixture::Scenario scenario{};
-    if (selected == nullptr || trace == nullptr || *trace == '\0' || !select_scenario(selected, scenario)) {
+    if (selected.empty() || trace.empty() || !select_scenario(selected, scenario)) {
         std::cerr << "calibration fixture requires a declared scenario and trace destination\n";
         return 2;
     }
     const auto state = fixture::install(scenario);
     const int result = hammond::standalone::guarded_application(argc, argv);
-    const bool written = write_trace(trace, selected, *state, result);
+    const bool written = write_trace(trace.c_str(), selected, *state, result);
     fixture::installed.reset();
     if (!written) {
         std::cerr << "calibration fixture could not write its native dependency trace\n";

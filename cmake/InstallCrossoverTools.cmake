@@ -82,7 +82,9 @@ if(TARGET hammond_crossover_probe)
             # System ancestors outside the caller's prefix are not inspected.
             get_filename_component(_hammond_crossover_parent
                 "${_hammond_crossover_destination}" DIRECTORY)
-            while(TRUE)
+            # Install scripts do not inherit the configure-time policy scope.
+            # Numeric truth remains valid when older CMake leaves CMP0012 unset.
+            while(1)
                 if(IS_SYMLINK "${_hammond_crossover_parent}" OR
                    (EXISTS "${_hammond_crossover_parent}" AND
                     NOT IS_DIRECTORY "${_hammond_crossover_parent}"))

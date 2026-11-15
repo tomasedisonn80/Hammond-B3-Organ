@@ -1,5 +1,114 @@
 # Development log
 
+## 2026-11-15 — Product continuation through wave 6; current roadmap reconciliation
+
+The new owner-requested session starts from
+`647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb`; its
+[scope](development/2026-11-15-product-continuation/README.md),
+[actual assignments](development/2026-11-15-product-continuation/assignments.json)
+and [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md) are
+separate from every historical sixty-worker ledger. A01–A06 read all 500 atlas
+pages in six contiguous ranges, retaining the original PDF SHA-256
+`4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`
+and each extract identity. At A36's checked snapshot, 38 actual workers have
+been dispatched: A01–A34 accepted, A35 review-complete awaiting acceptance,
+and A36–A38 running. This is an in-progress session, not sixty completed agents.
+
+### Implemented scope and retained results
+
+Reviewed contracts and independent acceptance advance M9 with native scoped
+CC120, global-expression reset CC121, immutable per-epoch CC11 endpoint/inversion
+calibration, CLI options and an eleven-stop modal. Reconfiguration retains the
+joined transport retirement, stale-packet discard and scoped-release barrier.
+Wide Dimensional paint adds fitted footage, 32-pixel caps, separate edited/applied
+registration rows and restrained key lighting. Correct 61+61+25 playing keys,
+24 presets and 68 controls including presets remain. Compact/Flat pixels retain
+their scoped independent acceptance; a fresh final gallery is still pending.
+
+M6 adds an independent four-state ideal crossover, strict documentary registry,
+separate series/graph references, actual native probe, transactional lifecycle,
+energy/resource acceptance and explicit movable six-file CrossoverTools.
+Default loads are ideal 16-ohm resistors. [Same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md)
+retains numerical error separately from warped-reference parity; physical source,
+load/loss and acoustic data remain unknown. No Engine route was added.
+
+The [feature publication](development/2026-11-15-product-continuation/reports/implementation-publication.json)
+is `ff41d412d03f2c5767aa4057b29fa8ec1627449b`, tree
+`6462343bb34a7d70d59de75ab349f8530196988c`. Root's coherent GCC 14.2 Release
+all-target build and **176/176 CTest run in 177.92 s** qualify its recorded
+inputs with standalone ON, native MIDI backend OFF, VST3 OFF and explicit dummy
+SDL. The [thirteen hosted job statuses](development/2026-11-15-product-continuation/reports/implementation-hosted-status.json)
+report success for that source; source-specific primary-log audit remains
+pending. No detailed current platform test count is inferred from those statuses.
+
+A26's real-main/substituted synchronous MIDI fixture passes nine tests, ten
+processes and seven native lifecycles; root's [integrated native CTest](development/2026-11-15-product-continuation/reports/wave5-integrated-ctest.txt)
+passes in **20.56 s**. It qualifies neither hardware nor asynchronous driver
+races. A31's fourteen private install checks pass under local CMake 4.4.5;
+root's [integrated install CTest](development/2026-11-15-product-continuation/reports/wave6-crossover-install-ctest.txt)
+passes in **1.61 s**. A27's six paired paint cases pass the declared relative
+budget, with largest median increase about 1.23%; absolute wide software draws
+remain about 112–114 ms. Its measured source was archived before A30's ordinary
+current-only benchmark metadata correction. No interactive frame-rate claim
+follows. The local leak-enabled sanitizer and empty-main control remain
+ptrace-blocked; their failures are retained separately from hosted evidence.
+
+### Later publication and observed install portability failure
+
+The [fixture/install checkpoint](development/2026-11-15-product-continuation/reports/calibration-install-publication.json)
+is published as `b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree
+`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`, parent `99b363438b3c4f217e0acb5361c0aea52ad7d0e3`.
+The receipt verifies the non-force update and fetched identities. Its Linux
+Release job `132659897764` records **154/155**, with three negative subcases
+failing inside `python_test_crossover_install`. The
+[original primary excerpt](development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt)
+shows `while(TRUE)` being skipped when the generated install script leaves
+CMP0012 unset on the older runner CMake. Linked ancestors were not rejected,
+and one file-ancestor rejection mutated its destination. Root changed only the
+loop to policy-independent `while(1)` with an explanatory comment; the separate
+local install recheck passes **14/14 in 1.370 s**. Subsequent primary logs also
+show Linux core sanitizer and Windows core install failures, a Windows
+stdout-CRLF/file-LF fixture comparison error, and a **47/48 Windows native**
+result with eight calibration-fixture cases exiting 2 during scenario/trace
+setup. A38 owns narrow fixture/environment-string and newline-comparison repairs;
+those repairs leave production application code unchanged. Linux/macOS
+native and all three VST3 job statuses succeed at `b9d352a`; the matrix is not
+all green. Repaired-source publication/hosted acceptance remains pending. The
+live checkpoint retains later volatile outcomes, and the original local A31
+pass is not rewritten as a cross-version pass. A37 separately reviews and
+extends native sanitizer selection; selection changes are not executed
+sanitizer acceptance.
+
+### Current documentation and concrete continuation
+
+A32/A33 provide [native MIDI operations](MIDI_EXPRESSION_GUIDE.md) and the
+[crossover developer workflow](CROSSOVER_DEVELOPER_GUIDE.md), linked to
+installation, characterization and compatibility evidence. A34's
+[reference-gap review](design/PRODUCT_REFERENCE_GAPS.md) distinguishes current
+provisional previews from admitted historical galleries. A35 owns README and
+later image promotion; A36 owns STATUS, NEXT_STEPS, PLAN, PROJECT_GUIDE and this
+entry. A36 reviewed the complete AGENTS/plan and active notes, replaced obsolete
+operational pointers, retained the full M0–M9 roadmap, and preserved all earlier
+STATUS/log result paragraphs behind an explicit historical boundary. Existing
+v5 images remain `487064d2` captures. No fresh gallery or literal 1:1 equality
+is claimed.
+
+Current closure requires the observed install repair, coherent/instrumented
+qualification, fresh admitted native gallery/modal evidence, installed workflows,
+exact-source primary platform review, all sixty actual accepted records, strict
+record validation and verified publication. The next independent model phase
+then freezes an M6 same-Hz electrical-accuracy protocol and evaluates a separately
+identified candidate, using existing ideal-circuit/reference inputs. Physical
+source/load acquisition and coupled M6 remain distinct prerequisites.
+
+A36 performs documentation/source inspection and owned-file integrity checks
+only, with results in its assigned note; no application build, runtime test,
+commit or publication is attributed to this reconciliation. The nominal dry
+Engine, 47 parameters, state4/readers 1–3, 91 sources and musical ownership are
+unchanged. Preserve scanner G5's failure, separate R4 ownership in the other
+checkout, R5/R6 gates, real-device/DAW/accessibility/deadline requirements and
+all unresolved physical and rights evidence.
+
 ## 2026-11-14 — Publish completed refinement and observe all thirteen hosted passes
 
 The closing source `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`, tree

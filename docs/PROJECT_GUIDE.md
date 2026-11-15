@@ -1,235 +1,157 @@
 # Project guide
 
-**Combined-source continuation:** the [completion and integration record](REFERENCE_REFINEMENT_CLOSURE.md)
-records all 60 accepted agents, the integrated `487064d` R4/material source,
-the fresh v5 native gallery and its separate qualification. Source-specific
-`0881d1f4`/v4 results below remain historical evidence for those exact inputs.
+The repository provides a nominal dry-organ Engine, offline evidence tools,
+an optional VST3 instrument and a native standalone window. Two 61-key manuals
+and 25 pedals share 91 free-running sources: **147 playing keys**, separate
+from **24 reversed presets**. Four retained drawbar banks, fixed registrations,
+contacts, percussion and typed note ownership are implemented. The **47 sound
+parameters**, **`B3CONTROLS4`** writer and readers 1–3 retain their meanings.
+Physical organ/cabinet fidelity and full product release remain separate gates.
 
-The available programs include a nominal dry-organ engine, offline tools, an
-optional actual VST3 instrument and a native standalone instrument window. Two
-full 61-key manuals and 25 pedals share the same 91 free-running sources:
-**147 playing keys**, separate from **24 reversed presets**. Four retained
-drawbar banks, fixed registrations, independent contact travel, partial keys,
-shared percussion, typed note ownership and phase-preserving rate changes are
-implemented. The **47 sound parameters**, **`B3CONTROLS4`** writer and readers
-1–3 retain their meanings. The source, console and fixed pedal mixtures remain
-unmeasured; the playable Engine remains nominal and dry.
+The active [product continuation](development/2026-11-15-product-continuation/README.md)
+adds scoped native CC120/121, adapter-only CC11 endpoint/inversion calibration,
+wide native legibility/material refinement and an independent ideal Leslie
+crossover. Start with the [MIDI operating guide](MIDI_EXPRESSION_GUIDE.md) for
+playing/configuration or the [crossover developer guide](CROSSOVER_DEVELOPER_GUIDE.md)
+for the separate electrical research tools. Before development, read
+[AGENTS.md](../AGENTS.md), the [whole M0–M9 plan](PLAN.md) and the
+[active checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md).
+The default core remains SDK-free; the playable Engine remains dry.
 
-Start with the [interface operating guide](INTERFACE_RUNBOOK.md) and
-[reference-refinement setup handoff](REFERENCE_REFINEMENT_HANDOFF.md).
-Before development, read the [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
-and both current checkpoints: [reference refinement](development/2026-11-14-reference-refinement/CHECKPOINT.md)
-owns its accepted UI/R2/R3 work and remaining closure; [waveform continuation](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
-owns independent R4 implementation and separately qualified subsequent visual
-work. Use the [scanner handoff](SCANNER_HANDOFF.md) or
-[calibration handoff](CALIBRATION_HANDOFF.md) for those distinct model/acquisition
-tracks. The [earlier interface recovery](INTERFACE_RECOVERY_HANDOFF.md) and
-[standalone handoff](STANDALONE_HANDOFF.md) retain their named historical sources
-and limits. The [pedal handoff](PEDAL_HANDOFF.md) retains offline rendering and
-VST3 commands. The default build stays SDK-free.
-**Full M3, actual DAW/device qualification, a native accessibility tree, calibrated
-physical fidelity and signed distribution remain open.** The [full plan](PLAN.md) keeps
-their separate dependencies visible; a built and tested module does not close
-those product gates.
-
-## Start with the question you need to answer
+## Find the right entry point
 
 | Question | Read |
 | --- | --- |
-| What is the full product plan? | [PLAN.md](PLAN.md): M0-M9 deliverables, dependencies and exit evidence. |
-| What works, and what has actually passed? | [STATUS.md](STATUS.md), both live checkpoints below, the [current source and evidence map](#current-source-and-evidence-map), and the named source-specific reports. |
-| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md), [M3 requirements](M3_ACCEPTANCE_CONTRACT.md), and the [session ledgers below](#session-ledgers-and-continuation) for current ownership. |
-| How do I resume with exact commands and evidence? | [Current setup handoff](REFERENCE_REFINEMENT_HANDOFF.md), [operating guide](INTERFACE_RUNBOOK.md), [reference checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md), [waveform checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md), and the [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md); use the scanner/calibration/pedal handoff for that selected task. |
-| Where are the actual current UI and input observations? | [Current eight-view v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md), [historical v4/A50 admission](reviews/REFERENCE_REFINEMENT_FINAL_GALLERY.md) and [A51 native-input review](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md). Settled dummy-driver frames and the earlier X11 journey have separate source and execution limits. |
-| Who owns the next rotary phase? | The [waveform session](development/2026-11-14-waveform-continuation/README.md) owns R4; read its [brief](ROTARY_RENDERER_PLAN.md), the [independent implementation review](ROTARY_RENDERER_IMPLEMENTATION_PLAN.md), and qualified [R2](ROTARY_MOTION.md)/[R3](ROTARY_PROPAGATION.md) primitives. R5/R6 and Engine integration remain separate. |
-| Which milestone gates are actually closed? | [ACCEPTANCE_MATRIX.md](ACCEPTANCE_MATRIX.md): software, documentary, specimen and product evidence remain distinct. |
-| What prevents a release or physical-fidelity claim? | [Release readiness](RELEASE_READINESS.md), [rights inventory](DEPENDENCIES_AND_RIGHTS.md) and the [physical acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md); each names its required evidence. |
-| Why was a choice made, and what failed? | [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md) and the linked assignment notes. |
-| What must every development session preserve? | [AGENTS.md](../AGENTS.md): source review, declared evidence, file ownership, coherent builds, shared handoff and the standing commit/push workflow. |
-
-Current status and each owning session's live ledger own the latest implementation
-and observed results. A historical review, proposed contract or configured
-workflow does not supersede them. The [original handoff](SESSION_HANDOFF.md),
-[console continuation handoff](CONTINUATION_HANDOFF.md) and
-[original CI qualification](CI_QUALIFICATION.md) retain their dated scopes.
+| What works and what has actually passed? | [STATUS.md](STATUS.md): current behavior, source-bound local/hosted observations, milestone position and preserved historical results. |
+| What is the complete product roadmap? | [PLAN.md](PLAN.md): all M0–M9 deliverables, dependencies and engineering/physical exits. |
+| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md): current session closure, then the independent M6 electrical-accuracy protocol/candidate and separate acquisition/product tracks. |
+| How do I build and play with MIDI/calibration? | [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_GUIDE.md), [INTERFACE_RUNBOOK.md](INTERFACE_RUNBOOK.md) and [PRESET_RUNBOOK.md](PRESET_RUNBOOK.md): platform prerequisites, exact options, eleven modal stops, applied-state observations, recovery and Save/Load. |
+| How do I build or install the crossover tools? | [Developer guide](CROSSOVER_DEVELOPER_GUIDE.md), [explicit CrossoverTools installation](CROSSOVER_INSTALL.md), [contract](LESLIE_CROSSOVER_CONTRACT.md) and [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md). The component is separate from Engine and the standalone. |
+| Where is current UI evidence? | [Visual contract](PRODUCT_VISUAL_REFINEMENT.md), [reference-gap review](design/PRODUCT_REFERENCE_GAPS.md) and the active checkpoint. The new gallery remains pending at this reconciliation; the admitted [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md) is historical `487064d2` evidence. |
+| Who owns R4? | The separate [waveform session](development/2026-11-14-waveform-continuation/README.md) and its [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md). R5 audible policy and R6 runtime/Engine integration have distinct gates. |
+| What prevents a physical or release claim? | [Acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md), [release readiness](RELEASE_READINESS.md), [rights inventory](DEPENDENCIES_AND_RIGHTS.md) and current milestone rows in STATUS/PLAN. |
+| Why did something change, and what failed? | [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md), the owning session's actual notes and original source-bound reports. |
 
 ## Current source and evidence map
 
-The accepted measured-header product source is
-`0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
-`f8144b771cda1264a8788f8297f5bfec999f4a08`. The
-[publication receipt](development/2026-11-14-reference-refinement/reports/root-header-publication.json)
-retains its observed remote commit/tree/parent. Later local documents and
-another session's work require their own identities and acceptance.
+This 15 November 2026 wave-6 reconciliation observes published
+`b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree
+`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`. Inspect the live checkpoint and
+actual checkout/remote before resuming; a dated document is not a live query.
 
-| Evidence | What it establishes and what to preserve |
+| Record | What it establishes |
 | --- | --- |
-| [A49 coherent build and full CTest](development/2026-11-14-reference-refinement/notes/A49-coherent-final-build.md) | One all-target GCC Release build and one full **157/157** run against frozen inputs; all 368 recorded product/test/build-source paths match `0881d1f4`. Later Markdown/ledger edits fall outside that frozen document snapshot. Retain the earlier 154/155 and separate repaired 1/1 observations. |
-| [A50 final gallery admission](reviews/REFERENCE_REFINEMENT_FINAL_GALLERY.md) | **611** independent retained-evidence checks over eight actual v4 views, named sources/build inputs and lossless pixels. The desktop executable is `01fe78a55b7a9bc72228dafe175f5a8eb48481c063f217606474d4dff682320f`; captures use dummy SDL audio/video and software rendering. They contain acknowledged copied state and no open modal overlay. |
-| [Measured reference comparison](reviews/REFERENCE_REFINEMENT_VISUAL.md) and [header acceptance](development/2026-11-14-reference-refinement/notes/A41-header-independent-acceptance.md) | The deeper manuals and accepted wide header have measured evidence. A50 reproduces the header targets on actual v4 pixels. **Literal whole-interface 1:1 visual equality remains unmet**; retain the material/layout differences, truthful nominal caption and original timing observations. |
-| [A51 native-input review](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md) | The older X11 executable establishes keyboard-held pedal continuity across a resize, persistent mouse capture through in/out target changes, release and joined cleanup. It has no painted pre-held keyboard prefix for Service/Flat, no retained numeric process-exit receipt and no new v4 OS-input execution. Source applicability does not transfer the run to the later binary. |
-| [Live reference checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and [release review](RELEASE_READINESS.md) | Track subsequent hosted observations and final record gates by exact source. Primary logs determine test counts, instrumentation and named policy exceptions. Earlier hosted success does not qualify a later revision. |
+| [Current publication receipt](development/2026-11-15-product-continuation/reports/calibration-install-publication.json), [original Linux failure](development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt) and [live repair checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md) | Verified `b9d352a` publication, with observed install/core/native portability failures. The policy-independent ancestor-loop repair passes a separate 14/14 local recheck; narrow Windows fixture repairs and repaired-source hosted qualification remain pending. The original local A31 result retains its tested CMake scope. |
+| [Feature build](development/2026-11-15-product-continuation/reports/wave4-coherent-build.json) and [hosted statuses](development/2026-11-15-product-continuation/reports/implementation-hosted-status.json) | The earlier `ff41d412` feature source passed 176/176 local Release tests; thirteen hosted job statuses are successful. Primary-log audit remains separate and later changed inputs do not inherit the result. |
+| [Product compatibility](PRODUCT_COMPATIBILITY.md) and [code review](reviews/PRODUCT_CONTINUATION_CODE_REVIEW.md) | Named-source preservation of musical/core/VST3 boundaries, reviewed native behavior and the scoped benchmark metadata correction. |
+| [A26 lifecycle evidence](development/2026-11-15-product-continuation/reports/A26-root-native-calibration.json) | Real application and adapter with an isolated synchronous MIDI dependency: nine tests, ten processes, seven lifecycles. It is not physical-device or asynchronous driver-race evidence. |
+| [Visual gap record](design/PRODUCT_REFERENCE_GAPS.md) | Current provisional native previews, accepted scoped raster/timing evidence and remaining differences. Fresh final gallery admission and actual display journeys remain separate. |
+| [Completed reference-refinement closure](REFERENCE_REFINEMENT_CLOSURE.md) | Earlier `fd2f606` combined-source qualification, its sixty accepted assignments, original failures and the `487064d2` v5 capture boundary. It does not close this new session. |
 
-Preserve v1/v2/v3 and all prior failed, cancelled or blocked evidence. The current
-gallery, windowless pending-state harness, real OS-input observations, hosted
-jobs and physical-device acceptance establish different scopes. New interface
-work needs its own source/executable identity, actual captures and measured
-comparison before a stronger visual or device claim.
+Preserve the original failed, blocked and cancelled observations. A successful
+build, job status, retained image, native input journey and physical device test
+answer different questions. Source/executable identity binds a result to inputs;
+it does not establish calibrated fidelity or native accessibility.
 
 ## Build, render, inspect and install
 
-The default tools use a C++20 compiler, CMake 3.21+ and Python 3.10+. The core has
-no audio/GUI framework or host-SDK dependency. The optional VST3 build requires
-CMake 3.25+ and its explicitly acquired, verified SDK; the standalone build uses
-CMake 3.21+ and pinned SDL2. Follow the selected adapter's actual prerequisites.
+The default tools use a C++20 compiler, CMake 3.21+ and Python 3.10+. Optional
+standalone and VST3 adapters have their own pinned dependencies and prerequisites.
+Use the selected guide's complete recipe and keep dependency checkouts separate
+from builds. The active checkpoint records the managed environment's exact
+compiler, CMake/CTest/Ninja and read-only dependency paths.
 
 | Task | Practical reference |
 | --- | --- |
-| Play the standalone window | [Interface runbook](INTERFACE_RUNBOOK.md), [current setup](REFERENCE_REFINEMENT_HANDOFF.md), [preset/build guide](PRESET_RUNBOOK.md) and [standalone app](STANDALONE_APP.md): Play/Rotary/Service, Flat, keyboard/pointer/MIDI, saved controls and bounded replay. |
-| Reproduce native R2/R3 numerical acceptance | [Motion runbook](ROTARY_MOTION.md), [propagation runbook](ROTARY_PROPAGATION.md#reproduce-the-native-and-python-gates) and [frozen numerical contract](ROTARY_NUMERICAL_CONTRACT.md). Build both native probes before their Python comparisons; these modules return motion/path facts without Engine audio insertion. |
-| Audition documentary chapel registrations | [Chapel export](CHAPEL_CONTROLS.md): explicit ordinary B3CONTROLS3 files, with physical preset/loading limits retained. |
-| Measure the Session render workload | [Standalone benchmark](STANDALONE_BENCHMARK.md): four fixed workloads, source identity and raw intervals without a timing pass threshold. |
-| Inspect, compare and replay acquisition evidence | [Calibration runbook](CALIBRATION_RUNBOOK.md) and [handoff](CALIBRATION_HANDOFF.md): actual commands, complete reports, expected outcomes, source/runtime identities and recovery. |
-| Prepare the next physical acquisition | [A1–A6 sequence](CALIBRATION_NEXT_ACQUISITION.md): required real inputs, roles, artifacts and separate physical acceptance. |
-| Install and move the capture pipeline | [CaptureTools installation](CAPTURE_TOOLS_INSTALL.md): 57 Python/data/documentation files, separate from the 23-file native OfflineTools component. |
-| Build and test on Linux, macOS or Windows | [BUILD.md](BUILD.md): presets, explicit commands, generated profile, configurations and sanitizer limits. |
-| Render a registration or event score | [RENDER_FORMAT.md](RENDER_FORMAT.md): CLI options, event grammar, sample timing, output format and errors. |
-| Hear the pedals with both manuals | [Pedal demo](PEDAL_DEMO.md) and [retained three-second example](../examples/demos/pedal-phrase-v1/README.md): actual schema-3 bundle, score, source inventory, PCM reports and replay commands. |
-| Inspect actual pedal buses, mixtures and contacts | [Pedal traces](PEDAL_TRACE.md) and [pedal plots](PEDAL_TRACE_PLOTS.md): three fixed 120 ms scenarios, same-frame CSV and bounded standalone SVG. These are distinct from the three-second musical score. |
-| Hear the current console and reproduce its bundle | [Two-second console demo](../examples/rendered/nominal-console-v2/README.md): partial travel, shared readiness, Cancel and masking, with schema-2 provenance and independent PCM checks. |
-| Inspect contact/readiness transitions | [Console traces](CONSOLE_TRACE.md) and [trace plots](CONSOLE_TRACE_PLOTS.md): bounded sample CSV and standalone SVG. The demo's partial-key plot is a separate 120 ms scenario, not a trace of its two-second score. |
-| Try the earlier ideal-contact behavior | [Five original fixtures](../examples/README.md), [four-second demo](../examples/rendered/nominal-two-manual-v1/README.md) and [original replay](DEMO_REPLAY.md). Their retained identities remain intact. |
-| Retain inputs, logs and serialized audio evidence | [RENDER_EVIDENCE.md](RENDER_EVIDENCE.md), [PCM measurements](AUDIO_MEASUREMENTS.md) and [independent bundle verification](RENDER_VERIFICATION.md). |
-| Inspect compiled nominal models and control mappings | [Model metadata](MODEL_METADATA.md) and [parameter bridge](PARAMETER_BRIDGE.md): console/pedal identities, units and all 47 compiled mappings. Offline metadata does not inspect a native module. |
-| Install or move the offline tools locally | [OFFLINE_INSTALL.md](OFFLINE_INSTALL.md): exact current component payload, five native tools, explicit data paths and relocation checks. |
-| Build, test and stage the actual VST3 | [Native build](VST3_BUILD.md), [native CI](VST3_CI.md) and [explicit local bundle installation](VST3_LOCAL_INSTALL.md). The core/default build remains independent. |
-| Time bounded workloads | [BENCHMARKING.md](BENCHMARKING.md): legacy cases and opt-in `console_motion`, `owned_input` and `console_all` cases; elapsed observations have no deadline pass threshold. |
+| Build core or platform configurations | [BUILD.md](BUILD.md), [core CI](CI.md), [standalone CI](STANDALONE_CI.md) and [VST3 build](VST3_BUILD.md). |
+| Play and configure the current standalone | [MIDI/expression guide](MIDI_EXPRESSION_GUIDE.md), [interface runbook](INTERFACE_RUNBOOK.md), [preset runbook](PRESET_RUNBOOK.md) and [standalone app](STANDALONE_APP.md). |
+| Install a local standalone or VST3 | [Standalone component](STANDALONE_INSTALL.md), [VST3 local bundle](VST3_LOCAL_INSTALL.md) and [native CI](VST3_CI.md). Follow their explicit manifests and destination rules; staging is separate from DAW/device qualification. |
+| Develop or install the ideal crossover | [CROSSOVER_DEVELOPER_GUIDE.md](CROSSOVER_DEVELOPER_GUIDE.md) and [CROSSOVER_INSTALL.md](CROSSOVER_INSTALL.md). The explicit copy-only component contains six files and preserves the registry-relative reference layout. |
+| Reproduce nominal rotary numerical work | [Motion](ROTARY_MOTION.md), [propagation](ROTARY_PROPAGATION.md), [renderer contract](ROTARY_RENDERER_CONTRACT.md) and [offline renderer](ROTARY_RENDER_CLI.md). Coordinate with the independent R4 owner. |
+| Render registrations or sample-timed events | [Render format](RENDER_FORMAT.md), [offline installation](OFFLINE_INSTALL.md), [render evidence](RENDER_EVIDENCE.md) and [independent verification](RENDER_VERIFICATION.md). |
+| Inspect console or pedal transitions | [Console trace](CONSOLE_TRACE.md), [console plots](CONSOLE_TRACE_PLOTS.md), [pedal trace](PEDAL_TRACE.md) and [pedal plots](PEDAL_TRACE_PLOTS.md). Bounded diagnostic scenarios remain separate from musical demos. |
+| Replay retained musical examples | [Original examples](../examples/README.md), [two-second console](../examples/rendered/nominal-console-v2/README.md), [pedal phrase](../examples/demos/pedal-phrase-v1/README.md) and [chapel controls](CHAPEL_CONTROLS.md). Preserve each source/profile/schema identity. |
+| Inspect model metadata and parameters | [Model metadata](MODEL_METADATA.md), [parameter bridge](PARAMETER_BRIDGE.md) and [parameters](PARAMETERS.md). Offline metadata is not runtime inspection of a native module. |
+| Run capture/corpus/comparison workflows | [Calibration runbook](CALIBRATION_RUNBOOK.md), [handoff](CALIBRATION_HANDOFF.md) and [CaptureTools installation](CAPTURE_TOOLS_INSTALL.md). |
+| Acquire the next physical evidence | [A1–A6 acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md), [capture protocol](CAPTURE_PROTOCOL.md) and [validation](CAPTURE_VALIDATION.md). |
+| Measure declared workloads | [Standalone benchmark](STANDALONE_BENCHMARK.md), [core benchmark](BENCHMARKING.md) and [current paint observations](development/2026-11-15-product-continuation/notes/A27-paint-performance.md). Relative regression results and raw intervals do not qualify device deadlines. |
 
-Agree one configure/build/CTest owner per build tree and freeze the relevant
-source before qualification. The current setup handoff distinguishes the
-reference session's MIDI-OFF `build-native` and MIDI-ON `build-desktop`; the
-waveform session has its own checkout/build. Reuse pinned dependencies and
-retain exact source, configuration and dependency identities. Never mix an older
-library with later live headers or reset another session's work.
-
-Build before running CTest; CTest does not compile executables or create the
-generated profile. Discover the selected configuration's actual tests and use
-`--no-tests=error` for a required filtered gate. Render to a new filename: the CLI
-preserves existing outputs
-and requires hard-link support for publication. The `OfflineTools` install
-component contains the offline tools and its declared data/scripts. The separate,
-opt-in `NativeVST3` component stages a complete built bundle to a new local
-destination. The separate opt-in [Standalone component](STANDALONE_INSTALL.md)
-stages 15 files with MIDI disabled or 19 with MIDI enabled, including the app
-and six operating/model/install guides. These explicit
-local components do not register a plugin in a DAW scan directory. Use the current install manifests rather
-than carrying forward a historical console-only file count.
+Agree one configure/build/CTest owner per build tree. The product integrator
+owns `/workspace/scratch/5b7d983ac078/build-native`; the waveform owner has a
+separate checkout/build under `/workspace/scratch/e3cacb90cc81/`. Reuse pinned
+dependencies, freeze relevant source and rebuild changed consumers coherently.
+Build required inputs before CTest and use `--no-tests=error` for required
+filtered gates. Never mix an old library with changed live headers or reset
+another session's working files. Use current install manifests instead of
+copying a historical payload count into a new package claim.
 
 ## Find the contract behind a claim
 
-| Area | Contracts and retained evidence |
+| Area | Contracts and evidence boundary |
 | --- | --- |
-| Initial architecture and sources | [Implementation contract](IMPLEMENTATION_CONTRACT.md), [profile format](PROFILE_FORMAT.md) and [engine API](ENGINE_API.md). The nominal sources are shared and free-running; source IDs, MIDI notes and indices are distinct. |
-| Controls and saved state | [Console extension](CONSOLE_EXTENSION.md), [control-state format](CONTROL_STATE_FORMAT.md) and [parameters](PARAMETERS.md). There are 47 permanent IDs, preserving the earlier 45 records. The writer emits `B3CONTROLS4`; readers 1–3 retain their existing migrations and initialize fixed modes to None. Saved controls exclude keys, owners, source phase and transient DSP histories. |
-| Integrated nominal console | [Console dynamics](CONSOLE_DYNAMICS.md), [console acceptance](CONSOLE_ACCEPTANCE.md), [M3 requirements](M3_ACCEPTANCE_CONTRACT.md) and [model metadata](MODEL_METADATA.md). Independent contacts and shared percussion run in the Engine and renderer; the selected values are unmeasured. |
-| Typed input and lifecycle | [Parameter bridge](PARAMETER_BRIDGE.md), [manual ownership](NOTE_OWNERSHIP.md), [pedal ownership](PEDAL_NOTE_OWNERSHIP.md), [combined input](PERFORMANCE_INPUT.md) and [sample-rate lifecycle](SAMPLE_RATE_LIFECYCLE.md). Native callback qualification is recorded separately from the core adapters. |
-| Manual and pedal routing | [Factory comparison](FACTORY_REFERENCE.md), [pedal routing](PEDAL_ROUTING.md), [Engine integration](PEDAL_ENGINE.md), [fixed nominal voice](PEDAL_VOICE.md) and [independent audio acceptance](PEDAL_AUDIO_ACCEPTANCE.md). The implemented 200-position map preserves five disconnected contacts; documentary routing is distinct from measured electrical shaping. |
-| Actual native callback and state handoff | [Processor](VST3_PROCESSOR.md), [controller](VST3_CONTROLLER.md), [automation timeline](HOST_TIMELINE.md), [state exchange](STATE_EXCHANGE.md), [actual ABI](VST3_ABI_ACCEPTANCE.md) and [behavior](VST3_BEHAVIOR_ACCEPTANCE.md). Three event buses and 47 controls drive the existing Engine, with generic host controls; historical native reports retain their original source/count. |
-| Native allocation, automation and concurrency | [Allocation audit](VST3_REALTIME.md), [dense automation review](VST3_AUTOMATION_REVIEW.md) and [concurrency/TSAN evidence](VST3_CONCURRENCY.md). Their recorded workloads, interposition and instrumentation boundaries remain explicit. |
-| Diagnostic traces | [Trace contract](CONSOLE_TRACE.md) and [plot contract](CONSOLE_TRACE_PLOTS.md): state timing, retained input hashes, limits and display reductions. Diagnostics do not establish physical authenticity. |
-| Native presentation and input evidence | [Workspace](INTERFACE_WORKSPACE_CONTRACT.md), [geometry](INTERFACE_GEOMETRY_CONTRACT.md), [inspection](INTERFACE_INSPECTION_CONTRACT.md), [refinement layout](REFERENCE_REFINEMENT_LAYOUT.md), [materials](REFERENCE_REFINEMENT_MATERIALS.md) and [desktop acceptance](REFERENCE_REFINEMENT_DESKTOP.md). [A50](reviews/REFERENCE_REFINEMENT_FINAL_GALLERY.md) and [A51](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md) preserve separate current-gallery and earlier OS-input scopes. |
-| Rotary numerical primitives and next renderer | [Motion](ROTARY_MOTION.md), [propagation](ROTARY_PROPAGATION.md), [frozen numerical contract](ROTARY_NUMERICAL_CONTRACT.md), [R4 brief](ROTARY_RENDERER_PLAN.md) and [independent R4 review](ROTARY_RENDERER_IMPLEMENTATION_PLAN.md). R2/R3 are implemented nominal research primitives. The waveform owner must qualify R4; R5 audible policy, R6 runtime/Engine integration and physical cabinet fidelity remain open. |
-| Scanner and upstream electrical boundaries | [Scanner handoff](SCANNER_HANDOFF.md) and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md) retain the unresolved **G5 same-hertz failure**. The M4–M6 rows in [PLAN.md](PLAN.md) retain scanner integration and revision-specific AO-28/Leslie electrical prerequisites. |
-| Processing limits | [Callback audit](REALTIME.md), [numerical bounds](NUMERICAL_BOUNDS.md) and [benchmark](BENCHMARKING.md). Each states its observed scope; none alone qualifies a live device deadline. |
-| Physical acquisitions | [Capture format](CAPTURE_FORMAT.md), [capture validation](CAPTURE_VALIDATION.md) and [acquisition protocol](CAPTURE_PROTOCOL.md). Planned metadata, actual recordings, byte integrity and physical admission are separate states. |
-| Repository and platforms | [Repository checks](REPOSITORY_CHECKS.md), [core/native CI](CI.md), [standalone CI](STANDALONE_CI.md) and the active handoffs. A pass belongs to its named revision, job and artifact scope. |
-| Historical final continuation reviews | [Core runtime](reviews/FINAL_CONTINUATION_RUNTIME.md), [input and persistence](reviews/FINAL_CONTINUATION_INPUT.md), [offline evidence](reviews/FINAL_CONTINUATION_EVIDENCE.md), [handoff](reviews/FINAL_CONTINUATION_HANDOFF.md), [platforms](reviews/FINAL_CONTINUATION_PLATFORM.md) and [readiness](reviews/FINAL_CONTINUATION_READINESS.md). Each retains its actual inspected revision, observed findings, checks and limits. The [legacy audio comparison](reviews/CONTINUATION_LEGACY_AUDIO.md) remains separate compatibility evidence. |
-| Original session's final reviews | [Core](reviews/FINAL_CORE_REVIEW.md), [evidence tooling](reviews/FINAL_EVIDENCE_REVIEW.md), [claims](reviews/FINAL_CLAIMS_REVIEW.md), [integration](reviews/FINAL_INTEGRATION_REVIEW.md), [platforms](reviews/FINAL_PLATFORM_REVIEW.md) and [readiness](reviews/FINAL_READINESS_REVIEW.md). Preserve these as historical evidence for their original snapshots. |
-| Remaining product host, device and editor work | [Native contract](VST3_SPIKE_CONTRACT.md), [host integration proposal](HOST_INTEGRATION.md) and the M9 row in [ACCEPTANCE_MATRIX.md](ACCEPTANCE_MATRIX.md). An actual module test does not close DAW save/reopen, device deadlines, native accessibility or signed release gates. |
+| Architecture and source identity | [Implementation contract](IMPLEMENTATION_CONTRACT.md), [profile format](PROFILE_FORMAT.md), [Engine API](ENGINE_API.md) and [factory routing comparison](FACTORY_REFERENCE.md). Source IDs, terminals, MIDI notes and indices remain distinct. |
+| Musical controls and persistence | [State format](CONTROL_STATE_FORMAT.md), [parameters](PARAMETERS.md), [preset contract](PRESET_SELECTION_CONTRACT.md) and [compatibility review](PRODUCT_COMPATIBILITY.md). Saved controls exclude key owners, source phase and transient DSP history. |
+| Console and pedals | [Console dynamics](CONSOLE_DYNAMICS.md), [M3 acceptance](M3_ACCEPTANCE_CONTRACT.md), [pedal routing](PEDAL_ROUTING.md), [pedal Engine](PEDAL_ENGINE.md) and [pedal audio acceptance](PEDAL_AUDIO_ACCEPTANCE.md). Nominal behavior is distinct from physical loading. |
+| Input ownership and native calibration | [Performance input](PERFORMANCE_INPUT.md), [manual ownership](NOTE_OWNERSHIP.md), [pedal ownership](PEDAL_NOTE_OWNERSHIP.md), [channel modes](MIDI_CHANNEL_MODE_CONTRACT.md), [expression calibration](MIDI_EXPRESSION_CALIBRATION.md) and [sample-rate lifecycle](SAMPLE_RATE_LIFECYCLE.md). Calibration belongs to the adapter, outside sound state. |
+| Native UI and copied inspection | [Workspace](INTERFACE_WORKSPACE_CONTRACT.md), [geometry](INTERFACE_GEOMETRY_CONTRACT.md), [inspection](INTERFACE_INSPECTION_CONTRACT.md), [visual refinement](PRODUCT_VISUAL_REFINEMENT.md) and [remaining reference gaps](design/PRODUCT_REFERENCE_GAPS.md). Keep 147 playing keys, 24 presets and 68 controls including presets. |
+| VST3 audio/state/automation | [Processor](VST3_PROCESSOR.md), [controller](VST3_CONTROLLER.md), [timeline](HOST_TIMELINE.md), [state exchange](STATE_EXCHANGE.md), [ABI](VST3_ABI_ACCEPTANCE.md) and [behavior](VST3_BEHAVIOR_ACCEPTANCE.md). Native MIDI channel-mode changes do not add a VST3 mapping. |
+| Runtime resources and concurrency | [Core callback audit](REALTIME.md), [native allocation](VST3_REALTIME.md), [automation review](VST3_AUTOMATION_REVIEW.md), [VST3 concurrency](VST3_CONCURRENCY.md) and [numerical bounds](NUMERICAL_BOUNDS.md). Each result retains its instrumented workload and exclusions. |
+| Scanner | [Scanner handoff](SCANNER_HANDOFF.md), [numerical contract](SCANNER_NUMERICAL_CONTRACT.md) and [AC parity](SCANNER_AC_PARITY.md). Preserve the unresolved G5 same-Hz failure before live integration. |
+| Leslie crossover | [Frozen circuit contract](LESLIE_CROSSOVER_CONTRACT.md), [developer workflow](CROSSOVER_DEVELOPER_GUIDE.md) and [same-Hz observations](LESLIE_CROSSOVER_CHARACTERIZATION.md). Ideal 16-ohm defaults are not driver measurements; no Engine route exists. |
+| Rotary | [Numerical contract](ROTARY_NUMERICAL_CONTRACT.md), [R4 renderer](ROTARY_RENDERER_CONTRACT.md) and [waveform acceptance](ROTARY_WAVEFORM_ACCEPTANCE.md). R4 discrete parity, R5 audible policy, R6 runtime integration and physical fidelity are distinct. |
+| Physical and release evidence | [Capture format](CAPTURE_FORMAT.md), [acquisition protocol](CAPTURE_PROTOCOL.md), [release readiness](RELEASE_READINESS.md) and [dependencies/rights](DEPENDENCIES_AND_RIGHTS.md). Tool acceptance does not establish hardware or distribution permission. |
 
 Evidence classes describe inputs: `documented`, `measured`, `derived`, `proposed`
-and `unknown`. Test outcomes describe execution: `pass`, `failed`, `blocked`,
-`not_run` and `inconclusive`. Keep the exact code/data identity, setup, criterion,
-observed result and limitation with every acceptance claim.
+and `unknown`. Outcomes describe execution: `pass`, `failed`, `blocked`,
+`not_run` and `inconclusive`. Keep the input identity, setup, criterion, actual
+result and limitation together. The [acceptance matrix](ACCEPTANCE_MATRIX.md)
+retains earlier milestone assessments; current STATUS/PLAN own the new M6/M9 scope.
 
-## Read the source and complete reviews
+## Source and reading records
 
-The unchanged [500-page atlas](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf) is the
-supplied source. Its [manifest](research/source-manifest.json) retains the exact
-identity and absence of referenced companion files at baseline. The
-[chapter index](research/chapter-index.json) covers all 80 chapters;
-[errata](research/ERRATA.md) records implementation hazards.
+The unchanged [500-page atlas](../Hammond_B3_Leslie_Research_Atlas_500pp.pdf) has
+SHA-256 `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
+The [source manifest](research/source-manifest.json), [chapter index](research/chapter-index.json)
+and [errata](research/ERRATA.md) retain its provenance, 80 chapters and known
+implementation hazards. Current A01–A06 retain complete textual coverage:
 
-The [complete atlas review](research/ATLAS_REVIEW.md) consolidates the original six
-disjoint review ranges. The independent continuation retained another complete
-six-range review in its own ledger; completed pedal work and the separate
-standalone/scanner/rotary/calibration sessions retain their own complete readings. Later [factory comparison](FACTORY_REFERENCE.md)
-adds documentary routing corroboration; current engineering results belong in
-[STATUS.md](STATUS.md). Neither reading recovers absent companion data or replaces
-acquired instrument measurements.
-
-For the two current owners, use the completed
-[reference-refinement atlas review](research/REFERENCE_REFINEMENT_ATLAS_REVIEW.md)
-and the separate [waveform atlas review](research/WAVEFORM_ATLAS_REVIEW.md).
-They preserve their actual reading coverage and source limits. Resume from those
-records after context recovery; do not recount their workers or replace the
-original atlas facts with a later engineering result.
-
-## Check rights and distributed material
-
-The [dependency and rights inventory](DEPENDENCIES_AND_RIGHTS.md) distinguishes
-repository contents, the local install, CI dependencies and generated outputs.
-[Third-party notices](../THIRD_PARTY_NOTICES.md) and the
-[source-rights record](research/RIGHTS_AND_SOURCES.md) preserve identified sources
-and unresolved permissions. No project-wide license has been selected. Source
-identity, public availability and build/test passes do not establish redistribution
-rights. Record provenance and applicable rights before adding a release payload.
-
-## Session ledgers and continuation
-
-| Session | Assignment and evidence records |
+| Pages | Current session reading |
 | --- | --- |
-| Current reference refinement, starting `8bd999efc13e309b932e6ac41d72ceb7b9b80a5f` | [Session](development/2026-11-14-reference-refinement/README.md), [actual manifest](development/2026-11-14-reference-refinement/assignments.json), [checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and [setup](REFERENCE_REFINEMENT_HANDOFF.md); accepted M9 refinement/R2/R3 evidence and remaining closure. |
-| Concurrent waveform continuation, starting `2e161dc3a60fc3442051799574feed37bffbfc5c` | [Session/scope](development/2026-11-14-waveform-continuation/README.md), [actual manifest](development/2026-11-14-waveform-continuation/assignments.json) and [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md); independent R4 implementation and separately verified subsequent native visual work. |
-| Historical 2026-11-14 interface continuation | [Session](development/2026-11-14-interface-continuation/README.md), [actual manifest](development/2026-11-14-interface-continuation/assignments.json) and [checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md); retained earlier M9 implementation, source-specific qualification and recovery limits. |
-| Original ten-wave implementation | [Original agent ledger](development/AGENT_LEDGER.md), [wave log](development/WAVE_LOG.md), [agent notes](development/agent-notes/) and [historical handoff](SESSION_HANDOFF.md). Their original assignment IDs 01-60 remain unchanged. |
-| Completed 2026-11-13 console continuation | [Separate continuation ledger](development/2026-11-13-continuation/README.md), [actual-state manifest](development/2026-11-13-continuation/assignments.json), numbered evidence notes and [historical handoff](CONTINUATION_HANDOFF.md). The [continuation checker](CONTINUATION_CHECKS.md) validates that session's own 60-assignment, ten-wave records. |
-| Completed 2026-11-13 pedal/native session | [Retained ledger](development/2026-11-13-pedals/README.md), [actual-state manifest](development/2026-11-13-pedals/assignments.json), substantive numbered notes and [operational handoff](PEDAL_HANDOFF.md). Its sixty new assignments and ten waves are independent of both completed sessions. |
-| Native standalone session | [Actual ledger](development/2026-11-13-next-phases/README.md), [manifest](development/2026-11-13-next-phases/assignments.json) and [handoff](STANDALONE_HANDOFF.md); sixty distinct assignments in ten waves for this user request. |
-| Scanner session | [Actual ledger](development/2026-11-13-scanner/README.md) and [handoff](SCANNER_HANDOFF.md); retain its independent numerical gates and ownership. |
-| Rotary session | [Actual ledger](development/2026-11-13-rotary/README.md) and [scope](ROTARY_SCOPE.md); separate nominal M7 development. |
-| Completed calibration session | [Sixty actual workers / ten waves](development/2026-11-13-calibration/README.md), [strict completion](development/2026-11-13-calibration/completion-check.json) and [handoff](CALIBRATION_HANDOFF.md); qualified M0/M8 tooling with separate physical acquisition/fitting gates. |
+| 1–84 | [A01 foundations and generator](development/2026-11-15-product-continuation/notes/A01-atlas-foundation.md) |
+| 85–168 | [A02 console](development/2026-11-15-product-continuation/notes/A02-atlas-console.md) |
+| 169–252 | [A03 electronics](development/2026-11-15-product-continuation/notes/A03-atlas-electronics.md) |
+| 253–336 | [A04 electrical cabinet and rotary boundaries](development/2026-11-15-product-continuation/notes/A04-atlas-rotary.md) |
+| 337–420 | [A05 calibration/runtime and native visuals](development/2026-11-15-product-continuation/notes/A05-atlas-visual.md) |
+| 421–500 | [A06 product, full milestones and acceptance](development/2026-11-15-product-continuation/notes/A06-atlas-product.md) |
 
-The console continuation's sixty assignments are complete, with sixty distinct actual
-identities and retained notes. Its explicit final gate passes; original-session
-notes contribute no credit to that count. These completed assignment scopes do
-not imply full M3 or physical product completion.
+Each note retains its extract hash and specific findings. This coverage does
+not independently verify every external source/figure or recover missing
+companions. Earlier [atlas review](research/ATLAS_REVIEW.md),
+[reference-refinement review](research/REFERENCE_REFINEMENT_ATLAS_REVIEW.md)
+and [waveform review](research/WAVEFORM_ATLAS_REVIEW.md) remain separate records.
 
-Read both current ledgers, the concurrent handoff and shared status before
-claiming a task. Contacts, percussion, pedals, typed core adapters and an optional
-native module are already implemented; current integration, acquisition and product gates are in
-[NEXT_STEPS.md](NEXT_STEPS.md). Assignment numbers
-belong to their session. Planned rows do not prove dispatched or completed work.
-Research waves, development waves and M0-M9 milestones describe different things.
+## Ownership, historical records and continuation
 
-Preserve existing history when `main` advances. Record actual changes, commands,
-failures and unrun gates in the assigned note; each integrator owns its manifest,
-shared-status updates and publication under the agreed ownership. Check affected
-source integrity and the selected session independently. From the repository
-root, the current refinement record commands are:
+| Session | Recovery records |
+| --- | --- |
+| Active product continuation | [Scope](development/2026-11-15-product-continuation/README.md), [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-15-product-continuation/assignments.json) and [ten-wave plan](development/2026-11-15-product-continuation/WAVES.md). Only actual accepted work counts toward its sixty assignments. |
+| Separate waveform continuation | [Scope](development/2026-11-14-waveform-continuation/README.md), [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md) and [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). It retains R4 and its other checkout. |
+| Completed reference refinement | [Closure](REFERENCE_REFINEMENT_CLOSURE.md), [checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and [strict completion result](development/2026-11-14-reference-refinement/completion-check.json). Preserve its sixty accepted workers and exact-source qualification. |
+| Earlier product sessions | [Interface recovery](INTERFACE_RECOVERY_HANDOFF.md), [preset session](development/2026-11-14-preset-continuation/README.md), [MIDI/UI handoff](MIDI_UI_HANDOFF.md), [standalone handoff](STANDALONE_HANDOFF.md) and [pedal handoff](PEDAL_HANDOFF.md). |
+| Independent research/acquisition tracks | [Scanner](SCANNER_HANDOFF.md), [rotary foundation](ROTARY_SCOPE.md) and [completed calibration tooling](CALIBRATION_HANDOFF.md). Physical acquisition remains separate. |
+| Original and console histories | [Original ledger](development/AGENT_LEDGER.md), [wave log](development/WAVE_LOG.md), [original handoff](SESSION_HANDOFF.md) and [console continuation](CONTINUATION_HANDOFF.md). |
 
-```sh
-python3 -B tools/check_repository.py --json
-python3 -B tools/check_refinement_session.py --repo . --in-progress --json
-```
+The [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
+retains cross-session ownership boundaries. Recover the full plan and actual
+source, choose a dependency-ready task, retain exact verification and update
+setup/status/next steps/log through the assigned owner. Interface changes need
+new actual captures before README promotion. Checkpoint each wave; preserve
+compact evidence before removing only owned reproducible intermediates.
 
-The first checks its documented [navigation/data scope](REPOSITORY_CHECKS.md)
-and the original session's notes. The second checks partial consistency of the
-reference-refinement manifest and notes only; it cannot close the session. Once
-all sixty actual refinement results are accepted, omit `--in-progress` and
-retain the exact strict JSON result. The waveform owner uses its own manifest
-and completion procedure; neither session receives credit from the other or
-from a historical checker. Planned rows do not establish dispatch or acceptance.
-These checks validate retained records, not product, external execution or
-physical calibration. The integrator must observe publication and the exact
-revision's hosted results separately.
+The integrator completes this session's own actual records and strict checker,
+then commits and publishes authorized accepted work with a fresh expected head
+and no force. Verify the fetched commit/tree and required hosted results.
+Historical checkers, planned assignments and a publication request do not prove
+new acceptance. No project-wide license has been selected; the
+[notices](../THIRD_PARTY_NOTICES.md) and [source-rights record](research/RIGHTS_AND_SOURCES.md)
+retain the applicable provenance and unresolved distribution decisions.

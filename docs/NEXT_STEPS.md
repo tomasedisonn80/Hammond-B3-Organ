@@ -1,349 +1,150 @@
 # Next steps
 
-**Completed and published:** all 60 reference-refinement agents are accepted.
-Source [`fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/fd2f6060b1f03b6d902ff0547441c07d6e74ba4f),
-tree `89c0fb214b018ca43ec9c8b413d3030284a54ec2`, passes
-[166/166 local tests](development/2026-11-14-reference-refinement/reports/integration487064-coherent-result.json)
-and [all 13 hosted jobs](development/2026-11-14-reference-refinement/reports/root-final-hosted.json).
-The [publication receipt](development/2026-11-14-reference-refinement/reports/root-closing-publication.json)
-records the verified remote commit/tree and passed 967-Markdown gate;
-[A59's published integrity audit](development/2026-11-14-reference-refinement/reports/A59-final-published-integrity.json)
-preserves the accepted records and source identities. The
-[closure record](REFERENCE_REFINEMENT_CLOSURE.md) owns the complete qualification
-and remaining product gates. The current v5 images retain their actual `487064d2`
-capture source; they are not a new capture at `fd2f606`.
+## Resume the active product continuation
 
-## Current R4 waveform continuation
+Read the [complete M0–M9 plan](PLAN.md), [current status](STATUS.md),
+[product checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
+and [actual assignments](development/2026-11-15-product-continuation/assignments.json).
+This session owns native MIDI channel modes, expression calibration, measured
+visual refinement and an independent ideal M6 crossover. Its sixty-agent,
+ten-wave request remains in progress. The completed reference-refinement
+ledger stays closed; the other checkout retains independent R4 ownership.
 
-Continue the separate [waveform checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
-and [actual manifest](development/2026-11-14-waveform-continuation/assignments.json).
-Incoming `487064d2400b9f39d0ee66ed136a09c9e372379e` introduced the implemented
-histories, streaming paths, transactional renderer, offline CLI/profile compiler
-and native material changes; these are retained in qualified `fd2f606`.
-The incoming waveform snapshot records **29 actual workers dispatched and 26
-accepted**. Follow its live ledger for later progress; its workers remain
-separate from the completed **60 reference-refinement assignments**.
+The published checkpoint at the 15 November wave-6 reconciliation is
+`b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree
+`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`. Its
+[receipt](development/2026-11-15-product-continuation/reports/calibration-install-publication.json)
+records the observed publication. The earlier `ff41d412` feature source passed
+176/176 local tests and has thirteen successful hosted job statuses; those
+results do not qualify later fixture/install changes. Follow the checkpoint
+for subsequent source and execution rather than treating this dated snapshot
+as a live remote query.
 
-The original four-rate/24-partition waveform experiment already passed with
-22,806,000 native frames and 38,010,000 exact alternate sample comparisons in its
-[source-bound receipt](development/2026-11-14-waveform-continuation/reports/full-waveform/qualification.json).
-The final `fd2f606` hosted full-waveform job separately passes in **513.538 seconds**,
-with mode `full`, no failures and **14/14** report-admission checks. The local
-**166/166**, final **967-Markdown**, expected-head publication and **13/13 hosted**
-gates are complete, including the exact Linux strict sixty-record output.
-Do not repeat this completed reference-refinement closure to recover context.
+## Finish the current authorized session
 
-The admitted [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
-retains its actual **`487064d2` capture source**, 117 qualified inputs and executable
-`0b2fe36e1ff9a76e12bbd0bf97e633a424fcfd67cd78b9987e0b1b75e8e6f040`.
-The [capture receipt](development/2026-11-14-reference-refinement/reports/root-integration487064-final-native-gallery.json)
-and [A60 independent admission](development/2026-11-14-reference-refinement/reports/A60-integration-gallery-admission.json)
-pass for all eight original PNGs. These are not new `fd2f606` captures.
-The [original 487064 hosted failures](development/2026-11-14-reference-refinement/reports/root-integration487064-original-hosted.json),
-160/161 suite, separate 2/2 replay repair, 3/3 combined gates and numerical
-source-bound results remain unchanged historical observations.
+The [wave plan](development/2026-11-15-product-continuation/WAVES.md) names intended
+work, while the manifest records actual dispatch and acceptance. At A36's
+checked snapshot, 38 workers have been dispatched and A01–A34 are accepted;
+A35 is review-complete awaiting acceptance and A36–A38 are running.
+Complete the remaining real assignments; neither planned IDs nor historical
+workers count toward this request.
 
-## Current reference-refinement closure and shared continuation
+| Next work | Required inputs | Acceptance before closure |
+| --- | --- | --- |
+| Close observed `b9d352a` portability failures | [Original Linux Release excerpt](development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt), root's policy-independent `while(1)` ancestor-loop repair, narrow Windows fixture repairs and the [live checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md) | Preserve original install/core/native failures and root's separate 14/14 local install recheck in 1.370 s. Qualify the older hosted CMake path, linked ancestors/existing files, newline comparison and Windows calibration scenario/trace handling. Publish and identify repaired-source outcomes separately. |
+| Integrate remaining wave-6 documentation | Current MIDI/crossover guides, reference-gap review, README owner and this plan/status reconciliation | Owned diffs agree with the implementation, source-specific receipts and current inventory; all local links resolve. Existing captures retain their original identities. |
+| Qualify integration and instrumentation in wave 7 | Frozen accepted source/build inputs, registered native calibration and crossover gates, actual sanitizer selection | Build all required test inputs coherently; run affected/full required gates with `--no-tests=error`. Audit instrumentation and leak policy for the new paths. Preserve the local ptrace-blocked result and any original failures; no global leak exception. |
+| Admit current native capture and modal evidence | Actual changed executable, source/build receipt, capture-tool admission for its MIDI configuration, original atlas image and frozen visual contract | Retain minimum/default/reference/Flat and relevant workspace/overlay frames with source, executable, state and pixel identities. Independently inspect the eleven-stop calibration modal, selected/active/pending facts, clipping, focus and release behavior. Update README only from admitted actual captures. A40's gallery is planned, not yet accepted at this snapshot. |
+| Complete installed workflows and lifecycle/evidence review in wave 8 | Explicit install manifests, relocated prefixes, current guides, native fault/reconnect fixture, crossover reports, actual assignment notes | Check the requested payloads and source-independent execution, document provenance/license limits, review recovery and numerical boundaries, and provide this session's strict record validator. Keep storage bounded and retain original compact evidence. |
+| Audit the published platform source in wave 9 | Exact commit/tree, actual Linux/macOS/Windows core/native/VST3 jobs, primary logs and relevant artifacts | Record real job/test/instrumentation outcomes and installed-payload scope. The thirteen successful `ff41d412` statuses need their source-specific primary-log audit; later fixture/install gates need their own execution. A dispatch or old pass is insufficient. |
+| Close actual records and publication in wave 10 | All sixty distinct accepted results, ten six-worker waves, final source/current docs/images, current remote head and unresolved-gate list | Run the strict checker against the completed records, retain the exact result, qualify the final coherent inputs and publish with an expected-head guard and no force. Fetch and verify commit/tree/parent; observe required hosted outcomes. Keep unfinished or other-checkout work intact. |
 
-The [current handoff](REFERENCE_REFINEMENT_HANDOFF.md),
-[completed checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md),
-[actual manifest](development/2026-11-14-reference-refinement/assignments.json)
-and [concurrent ownership record](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
-retain the sixty accepted results and exact ownership. The
-[strict completion result](development/2026-11-14-reference-refinement/completion-check.json)
-passes all ten waves with zero errors; the final hosted Linux output matches it.
-The [closure record](REFERENCE_REFINEMENT_CLOSURE.md) links completed local,
-publication, integrity and hosted evidence. Later record-only edits retain their
-own affected documentation checks and do not become a new product build or capture.
+The current operating references are [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_GUIDE.md),
+[INTERFACE_RUNBOOK.md](INTERFACE_RUNBOOK.md),
+[CROSSOVER_DEVELOPER_GUIDE.md](CROSSOVER_DEVELOPER_GUIDE.md) and
+[CROSSOVER_INSTALL.md](CROSSOVER_INSTALL.md). The integrator alone owns the
+shared build tree listed in the active checkpoint. Existing narrow fixture
+passes are retained observations, not a replacement for the later coherent gate.
 
-**Historical header evidence:** `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
-`f8144b771cda1264a8788f8297f5bfec999f4a08`, remains the source for A46/v4,
-A50's **611-check** admission and A49's single full **157/157** run. A51 supplies
-a bounded retained OS-input/source review. [A56](reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md)
-qualifies that earlier twelve-job matrix: core **138/138 each**, four native
-Release jobs **41/41 each**, native sanitizer **16/16**, VST3 **8/7/7**, SDK
-**47/47 each** and **1,071 material checks** in all five native jobs. The named
-core quarantine-only leak exception remains explicit. Preserve 26ff's primary
-audit, original Windows 135/136, f9c cancellations, 154/155 plus separate 1/1
-and local LSan EPERM. These historical receipts do not supply the later source's
-qualification; the completed final receipts above do.
+## Next dependency-ready phase after session closure
 
-The next product tasks belong to the waveform owner and their separately
-qualified continuations:
+**Begin the M6 electrical-accuracy phase:** freeze a versioned same-Hz protocol,
+then implement and independently evaluate a separately identified numerical
+candidate. The current ideal circuit, analog references and characterization
+already supply the inputs for this engineering work. No new hardware data is
+needed to compare declared numerical methods; physical-fidelity claims still
+require acquisition.
 
-1. **Complete independent R4 acceptance.** Use the implemented
-   [renderer contract](ROTARY_RENDERER_CONTRACT.md),
-   [acceptance specification](ROTARY_WAVEFORM_ACCEPTANCE.md) and
-   [A57 readiness review](reviews/ROTARY_RENDERER_IMPLEMENTATION_READINESS.md).
-   Verify lifecycle/all sixteen ordered stopped-rate pairs, signed-input and
-   receiver/scene symmetries, calibrated allocation/deallocation and independent
-   [CLI acceptance](ROTARY_RENDER_CLI.md), including real command, profile,
-   input/output/refusal paths and retained examples. Check trajectory binding,
-   borrows ending before mutation, representation-safe storage/metadata rollback
-   and explicit per-call flush ownership. Preserve `D+6` capacity (maximum
-   12,806), the 8,192-entry per-write journal and `max(D)+4` flush. Dense changes
-   to both rotors every frame require calls of at most 512 frames under the
-   1,024-event cap; separately exercise legal 4,096-frame calls, repeated wraps,
-   complete flush and epoch overflow. The completed full numerical experiment
-   does not replace these independent gates. R5 audible policy, R6 live
-   integration/deadlines and physical cabinet fidelity remain separate.
-2. **Continue measured UI refinement from the admitted v5 application.** The
-   accepted header and waveform drawbar/key-front paint are already integrated.
-   Compare the actual application with the [original reference](design/atlas-cover-reference.jpg),
-   prioritize small-label readability and remaining material/composition gaps,
-   and preserve Flat, shared hit/paint geometry, all 24 presets, 147 playing
-   keys and release ownership. Coordinate overlapping paint files with the
-   waveform owner. A further visual change needs a fresh actual capture,
-   source/executable/pixel identities and independent comparison before README
-   promotion. Preserve all v1–v5 evidence. **Literal 1:1 equality remains unmet.**
-3. **Execute the missing actual display/device journey when its inputs exist.**
-   [A51's sequence](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md#concrete-next-actual-displaydevice-journey)
-   requires identified source/executable and hardware, painted pre-held keyboard
-   and pointer frames in both navigation/resize directions, pointer-held pedal
-   resize, outside release/reentry/fresh press, deliberate focus loss, per-step
-   lossless frames and an actual exit/status receipt. Dummy v4/v5 endpoints,
-   the pending harness and older X11 observations retain their separate scopes.
-   Devices, DAWs, accessibility and audio deadlines need observed results.
+### Inputs and affected boundaries
 
-Preserve **47 parameters**, `B3CONTROLS4`, readers 1–3, 91 free-running sources,
-musical ownership and dry Engine sound. Resolve scanner **G5 same-hertz failure**
-before scanner integration, and retain revision-specific AO-28/Leslie electrical
-and real-capture dependencies under the [whole M0–M9 plan](PLAN.md). Coordinate
-build-tree ownership and verify the affected inputs when new product work changes
-them. Completed worker accounting stays closed unless its counted records change.
+Use the [frozen crossover contract](LESLIE_CROSSOVER_CONTRACT.md),
+[fixed registry](../data/crossover/leslie-122-ideal-v1.json),
+[retained native/reference report](development/2026-11-15-product-continuation/reports/crossover-response-acceptance.json)
+and [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md).
+The [developer workflow](CROSSOVER_DEVELOPER_GUIDE.md#5-continue-m6-through-explicit-gates)
+gives the ordered numerical, acquisition and coupled-model gates. Relevant
+modules are `LeslieCrossover`, the independent Python reference/native probe,
+the response/lifecycle/allocation tests and their report identities. Agree
+ownership before changing them. Preserve the fixed v1 registry, realization,
+reports and nominal dry Engine as reproducible baselines.
 
-## Historical interface continuation next steps
+### Concrete sequence and acceptance
 
-Resume the [current handoff](INTERFACE_RECOVERY_HANDOFF.md),
-[session](development/2026-11-14-interface-continuation/README.md) and
-[recovery checkpoint](development/2026-11-14-interface-continuation/CHECKPOINT.md).
-All 500 atlas pages were reviewed and all sixty actual assignments are accepted.
-The implementation, real native gallery, preserved musical contracts and
-source-specific results are published. The following work remains concrete.
+1. **Freeze the experiment before changing the realization.** Declare input
+   hold/reconstruction, external sample rates, signal boundaries, frequency band,
+   load family and an independent check grid. Set justified magnitude/phase
+   tolerances above a stated gain floor, absolute complex tolerances below it,
+   and a separate input-admittance criterion. Record their engineering basis;
+   no measured or audible threshold exists in the present report. An independent
+   review must accept the protocol and the preserved failure/limitation record.
+2. **Evaluate one explicit candidate.** State its realization identity and
+   physical-state semantics. Compare actual processed output as well as response
+   functions, with independent steady-state and precharged transient references.
+   A higher internal rate requires explicit input reconstruction, conversion
+   filters, latency and clock/history handling. The admitted v1 rates do not
+   include 176.4 kHz; a 44.1 kHz fourfold path needs a reviewed extension or a
+   different candidate. Preserve documentary L/C values instead of retuning them
+   to hide numerical error.
+3. **Accept only the declared result.** Retain all grid points and failures,
+   signed port/polarity and admittance errors, transient-convergence evidence,
+   energy behavior, stopped-rate state preservation, partition equivalence,
+   late-failure rollback and subsequent continuation. Measure bounded storage,
+   allocation scope and runtime cost on identified builds. A candidate passes
+   only its frozen criteria; inconclusive or failed comparisons stay visible.
+4. **Leave live integration for its own contract.** A better ideal curve does
+   not supply amplifier source impedance, measured driver loading, acoustic
+   response or a calibrated cabinet. Coupled M6 and runtime/Engine integration
+   require their own ports, ownership and acceptance after the prerequisite
+   electrical and dry-organ work.
 
-1. **Recover the original final evidence when the workspace returns.** Preserve
-   the old index and working files before fetching the newer remote main.
-   Reconcile the unpublished 137-file candidate in an isolated checkout or
-   worktree, using the [machine recovery record](development/2026-11-14-interface-continuation/reports/root-workspace-recovery.json).
-   Retrieve the actual A52 thirty-process result and existing artifacts plus
-   A56/A57/A59/A60 records; do not fabricate never-created packaging files or
-   reset away the old index. Verify artifact hashes and deliberately preserved
-   CRLF/control-state bytes before an additive publication. The exact repaired
-   fixture is already published; do not redo or overwrite it from an older tree.
-2. **Finish the desktop pointer journey.** Inspect A57's generated X11 settings
-   and same-product executable identity, then exercise held owners through
-   workspace/Flat changes and resize, off-window release, capture return and
-   ordinary joined shutdown. Retain lossless frames and exact replay/diagnostic
-   evidence. Existing click/focus and released-endpoint observations do not
-   satisfy these missing assertions. Physical audio/MIDI and high DPI remain
-   separate from this bounded display/input test.
-3. **Close the measured reference gaps.** Compare actual 1672×941 native output
-   with the preserved cover/page-409 image. Refine the shallower manuals
-   (approximately 108 versus 144 reference pixels in the recorded comparison),
-   materials, lighting, bevels and cabinet/panel composition. Preserve the
-   correct 24 preset keys, 147 playing keys, 68 control records, all parameter
-   and state meanings, hit/focus geometry and note release ownership. Correct
-   the Service singular-count wording and retain a truly pending-state capture.
-   Refresh the actual eight-view README gallery only after affected acceptance;
-   keep old captures and never substitute concept art for application output.
-4. **Qualify physical product behavior separately.** Real MIDI/audio devices,
-   supported DAWs, display scale, native accessibility semantics and audio
-   deadlines need identified systems, repeatable journeys and observed results.
-   Signing, distribution and asset rights remain explicit release gates.
-5. **Continue dependency-ready model work.** Resolve the scanner G5 same-hertz
-   failure under its frozen numerical contract before Engine integration.
-   Build revision-specific AO-28 and Leslie electrical boundaries, then qualify
-   rotary propagation with its actual required inputs. Use the capture toolchain
-   with admitted real specimens, immutable recordings and held-out splits for
-   calibration. The [M0–M9 plan](PLAN.md) and active track handoffs own these gates.
+## Separately owned and acquisition-dependent work
 
-The [strict interface-session result](development/2026-11-14-interface-continuation/completion-check.json)
-passed at a517 alongside [all twelve hosted jobs](development/2026-11-14-interface-continuation/reports/a58-final-head-hosted.json).
-Future Linux Release runs continue to require this checker after the complete
-Release suite and retain its JSON in the existing CI artifact. Inspect the exact commit's job before reporting success. The checker
-validates the sixty retained notes and manifest; root's dispatch attestation
-and substantive reviews remain separate. Preserve original local 146/147,
-b1 macOS 37/38, the separate repaired results and all prior failures.
+| Track | Next concrete action and inputs | Exit evidence |
+| --- | --- | --- |
+| M4 scanner | Coordinate with the [scanner owner](SCANNER_HANDOFF.md); recover its graph, matched-input transient reference and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md). Complete combined line/rotor research and investigate an explicitly identified realization for G5. | Six modes/four tablet combinations, one continuing phase, Q outside modulation, one chorus return, precharged transitions and transactional continuation; then same-Hz/transient/sideband/filter/latency evidence under unchanged declared budgets. Preserve the existing G5 failure at every investigated rate. |
+| M5 and physical M6 | Select the applicable primary drawings and actual AO-28/Leslie assembly; independently trace endpoints, differential signs, loads and revision boundaries. Acquire missing transformer, operating-point, source/load and component-loss data. | Reviewed connected topology and explicit unknowns before numerical export; independent loaded AC/nonlinear/alias tests and complete dry G–G validation before cabinet fitting. Leslie 122/147 remain separate. |
+| M0/M3/M8 acquisition | Use [A1–A6](CALIBRATION_NEXT_ACQUISITION.md) with identified specimen, permission, calibrated chain/clock and repeatability plan. Begin an external-output pilot archive, then boundary-specific captures. | Immutable originals, source/condition/uncertainty records, admission and acquisition-group splits; justified fitting and untouched held-out/listening outcomes. Contact/latch/tap loading, physical expression and pedal-reactor behavior remain unmeasured. |
+| M9 display and device behavior | Use the current native guides and [desktop journey](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md#concrete-next-actual-displaydevice-journey) on an identified display/controller/audio system. Preserve painted pre-held input, both navigation/resize directions, off-window release/fresh press, deliberate focus loss and joined shutdown. | Actual step frames, input/diagnostic records and numeric exit status, with OS/backend/device identities. Dummy SDL and synchronous dependency fixtures do not qualify physical timing or driver concurrency. |
+| M9 accessibility and further visual work | Use [remaining reference gaps](design/PRODUCT_REFERENCE_GAPS.md) and the current layout/inspection contracts. After gallery admission, measure small-label display usability and response; specify one platform's native semantic bridge before implementation. | Correct live inventory, focus/actions/value/status semantics, actual screen-reader journeys and source-bound visual comparisons. The relative paint budget does not establish frame rate; literal 1:1 equality remains unmet. |
+| M9 release | Review [release readiness](RELEASE_READINESS.md), [dependencies and rights](DEPENDENCIES_AND_RIGHTS.md), actual installed artifacts and named DAW workflows. | Device deadlines, DAW save/reopen, redistribution/branding decisions, platform signing/notarization and qualified distribution remain separately observed gates. |
 
-For every bounded next task, inspect current main and any restored local work,
-agree owned paths, run affected checks on coherent source, update setup/status/
-next steps/log and real UI images where applicable, then commit and push under
-the standing authorization with a fresh expected head and no force. Do not
-repeat atlas reading or recount the completed workers after a context reset.
-Historical sequences below retain their dated scope.
+## Preserve the independent R4 owner
 
-## Historical preset continuation sequence
+The [waveform session](development/2026-11-14-waveform-continuation/README.md)
+and its [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
+retain their other checkout and actual worker ledger. The implemented
+[renderer contract](ROTARY_RENDERER_CONTRACT.md) and
+[waveform acceptance](ROTARY_WAVEFORM_ACCEPTANCE.md) govern its remaining
+lifecycle, scene/receiver symmetry, calibrated allocation and independent
+[offline CLI](ROTARY_RENDER_CLI.md) acceptance. Its completed source-bound
+full-waveform experiment does not close those gates or transfer ownership.
 
-Follow the [new session](development/2026-11-14-preset-continuation/README.md)
-and its [actual manifest](development/2026-11-14-preset-continuation/assignments.json).
-The complete atlas reading, frozen contracts and core/state/parameter/publication/
-native-VST3/offline implementation are complete. Independent UI, allocation,
-concurrent publication and native state/ownership acceptance pass. The first
-combined 143-suite source has its original 141-pass result and corrected 2-suite
-recheck retained; 63 old/current legacy audio comparisons also pass.
+Preserve `D+6` history capacity (maximum 12,806), the 8,192-entry per-write
+journal, `max(D)+4` flush and the reviewed trajectory/borrow/rollback boundary.
+Dense changes to both rotors every frame require calls of at most 512 frames
+under the 1,024-event cap; legal 4,096-frame calls, repeated wraps, all sixteen
+ordered stopped-rate pairs and overflow retain distinct acceptance. R5 audible
+policy, R6 runtime/Engine integration and physical cabinet fidelity stay separate.
+Inspect compatible remote advances before publication; never edit or remove the
+other owner's checkout to simplify integration.
 
-Finish the reusable current gallery, install the current preset runbook with
-matching package/workflow inventories, and inspect the new hosted CoreMIDI
-replay diagnostics. Refine the remaining reference appearance, then qualify
-sanitizers, all platforms, relocation and final coherent source. Reconcile the
-README/current guides and finish the sixty actual assignments and final handoff.
-Keep original failures, all historical fixtures and the first 45 parameter records.
-The separate scanner, rotary and calibration tracks retain their own scope.
-A focused or first integrated gate is not a physical or whole-project pass.
+## Historical qualification and completion workflow
 
-## Historical MIDI and native visual continuation
+Earlier source-bound results remain in [STATUS.md](STATUS.md#historical-results-and-source-boundaries)
+and the chronological [development log](DEVELOPMENT_LOG.md). Use the
+[completed reference-refinement closure](REFERENCE_REFINEMENT_CLOSURE.md),
+[interface recovery](INTERFACE_RECOVERY_HANDOFF.md),
+[standalone handoff](STANDALONE_HANDOFF.md), [pedal handoff](PEDAL_HANDOFF.md)
+and [calibration handoff](CALIBRATION_HANDOFF.md) for their named inputs and
+original failures. The v1–v5 galleries keep their actual capture sources.
+Do not repeat a completed session or use its strict checker to count this one.
 
-The new [MIDI/UI session](development/2026-11-14-midi-ui/README.md) has implemented the dependency-ready standalone work below: bounded MIDI ownership/ingress, the optional native backend, explicit lifecycle and synthetic replay, and the atlas-inspired live renderer. Continue independent native replay/ownership acceptance, the reproduced small-glyph correction, actual reference comparison and complete coherent-source/platform gates. Then publish the current screenshots, source identities and resumable handoff. Preserve all prior models, control/state identities and source limits. The [actual manifest](development/2026-11-14-midi-ui/assignments.json) tracks only newly dispatched workers.
-
-## Continue after the completed calibration-tooling phase
-
-The [completed calibration session](development/2026-11-13-calibration/README.md)
-owns the next offline evidence-tooling work under [CALIBRATION_SCOPE.md](CALIBRATION_SCOPE.md).
-The fresh 500-page reading and independently reviewed audio/corpus/comparison
-contracts and independent decoder/corpus/metric acceptance are complete.
-Fixed policy evaluation, adversarial audio/corpus admission, identity-bound file
-jobs and declaration readiness are implemented and independently qualified.
-The accepted replay and separate 57-file CaptureTools package now pass the
-[coherent 103-suite local gate](reviews/CALIBRATION_INSTALL_REPLAY_INTEGRATION.md).
-All sixty actual assignments are accepted in ten logical waves. The metadata allocation change,
-independent graph qualification, real-pipe process repair and evidence-boundary
-review are complete. The [combined frozen source](reviews/CALIBRATION_WAVE8_INTEGRATION.md), including
-the exact-byte Windows installation fixture and raw .f32 Git classification,
-passes 106/106 suites. Its code is published and fetched at `d7f6100`;
-[all ten hosted jobs](reviews/CALIBRATION_FINAL_HOSTED.md) now succeed at that
-exact source, including 106/106 Windows suites and the actual repaired fixtures.
-The [operating guide](CALIBRATION_RUNBOOK.md),
-[acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md) and
-[report-identity audit](reviews/CALIBRATION_REPORT_IDENTITY_AUDIT.md) are complete.
-The [final integration record](reviews/CALIBRATION_FINAL_INTEGRATION.md) and
-[strict completion output](development/2026-11-13-calibration/completion-check.json)
-close this requested session. Start the next bounded task below with new
-ownership and accounting; do not count an earlier worker again.
-
-The next physical output is an identified external-output pilot archive with
-chain, physical-clock, repeatability, uncertainty and disposition records.
-Follow A1–A6 in the acquisition sequence; actual inputs and assigned ownership
-precede boundary-specific fitting. Independent software can address a named
-archive-format/scale gap or the separately owned scanner, rotary and M9 contracts.
-Preserve original identities, all valid outcomes and complete snapshots.
-No step fits physical model
-parameters or clears an acquisition gate through synthetic fixtures.
-Existing v1 metadata validation remains valid; the new companion tools provide
-separate audio and corpus checks without changing its meaning.
-The actual session manifest owns dispatch counts. Physical acquisitions,
-reviewed calibrations and specimen-specific fitting remain separate gates.
-
-## Parallel rotary work
-
-The [rotary session](development/2026-11-13-rotary/README.md) develops the
-independent M7 numerical foundation under [ROTARY_SCOPE.md](ROTARY_SCOPE.md).
-Its complete source reading, numerical contract, strict profile, independent
-reference and native motion foundation are retained. Next qualify native motion
-against the independent 80-digit reference, complete full-orbit historical
-propagation and bounded cubic waveform history, then build the transactional
-dual-rotor renderer. Apply the frozen R2-R4 experiments and retain failed cases;
-author checks alone do not close those gates.
-
-Preserve the scanner and standalone tracks, and keep M5/M6 input/physical
-and the separate audible-policy dependencies visible. Consult the actual
-manifest before taking rotary-specific ownership. The first 12 assignments
-are accepted; later work is recorded only when actually dispatched.
-
-## Historical standalone completion checkpoint
-
-The [standalone handoff](STANDALONE_HANDOFF.md), actual
-[session manifest](development/2026-11-13-next-phases/assignments.json) and
-[scope](STANDALONE_SCOPE.md) describe the implemented M9 adapter. The native
-window, Session/UI/state/device acceptance, callback/concurrency handling,
-relocatable component, bounded replay, documentary chapel audition and retained
-benchmark now exist. All sixty requested assignments were actually dispatched;
-final acceptance and publication are recorded in the manifest and status.
-
-Published code `6214032f3565f9e221fcf3988e33a22a73bb4ea8` contains the final
-workflow and Windows demo-fixture corrections. The preceding coherent source
-passes [110/110 combined Release suites](reviews/STANDALONE_COMBINED_FINAL_GATE.md);
-the final changed native tests pass
-[14/14 ASan/UBSan suites](reviews/STANDALONE_FINAL_INTEGRATION.md). Exact hosted
-results and downloaded packages belong to the
-[final platform audit](reviews/STANDALONE_FINAL_PLATFORM_AUDIT.md). Earlier
-105/105, both failed 13/14 native gates, Windows 92/96 and 100/101, and Linux
-89/90 retain their own identities and concrete repair evidence. No failed
-unchanged retry is promoted to acceptance.
-
-The completed integrated closure at `27209a7f` preserves calibration 3b and the
-sixty accepted standalone records. All ten hosted jobs succeed with core 103/103,
-standalone 14/14 per platform and VST3 8/8 Linux / 7/7 Windows/macOS. The
-[closure evidence](reviews/STANDALONE_CLOSURE_HOSTED_RESULTS.json) keeps this later
-source distinct from the actual 621 package audit. No standalone session work
-remains pending; begin the successor contracts below.
-
-The [milestone reconciliation](reviews/STANDALONE_MILESTONE_RECONCILIATION.md)
-connects these product advances to the complete M0–M9 plan. Continue the
-concrete independent adapter/model work below while preserving the scanner,
-rotary and calibration tracks. The benchmark's raw intervals are observations,
-not physical deadline passes; the existing actual screenshots use dummy drivers.
-
-## Historical standalone development sequence
-
-The current external MIDI implementation lives in `apps/standalone/` under the
-[input](MIDI_INPUT.md), [backend](MIDI_BACKEND.md) and [replay](MIDI_REPLAY.md)
-contracts. RtMidi callbacks publish only to a bounded inbox; the main thread
-remains the sole Session producer. UI and MIDI owners remain independent, faults
-retire stale packets and device-owned notes, and reconnect is explicit. Receipt
-timestamps are diagnostic; admitted events apply at callback boundaries.
-Complete the current independent native replay and exact-source platform gates,
-then qualify a named physical controller/audio device using the
-[operating guide](MIDI_UI_RUNBOOK.md). Record its OS/backend, actual timing,
-dropout and hotplug observations separately from synthetic events.
-
-In parallel, select one native accessibility bridge and map the existing controls
-to semantic names, roles, values, focus and actions using copied UI state. Verify
-actual screen-reader navigation, value editing, status/error announcements and
-scale changes. The current keyboard-operable canvas does not supply that bridge.
-Keep audio processing, Engine access and UI lifetime independent of assistive
-technology calls. [UI ownership](STANDALONE_UI.md) and the
-[milestone reconciliation](reviews/STANDALONE_MILESTONE_RECONCILIATION.md)
-provide the current boundary and concrete exit criteria.
-
-The exclusive fixed-registration selector proposed in this historical sequence
-is now implemented: eighteen documentary rows, four retained banks, Cancel,
-original note owners and Upper-B percussion eligibility/history are preserved
-under the current 47-parameter/state4 contract. The next M3 model work is an
-identified physical contact/latch and transformer tap-loading contract, with
-measured trajectories, expression/percussion behavior and loaded gains. Acquire
-and independently compare the underlying factory Table IV before upgrading the
-documentary catalog's source status. Preserve existing selector, phase, owner,
-rollback and state-compatibility acceptance while developing that physical model.
-
-Read [STATUS.md](STATUS.md), [SCANNER_HANDOFF.md](SCANNER_HANDOFF.md), [PLAN.md](PLAN.md), [SCANNER_NUMERICAL_CONTRACT.md](SCANNER_NUMERICAL_CONTRACT.md) and [AGENTS.md](../AGENTS.md), then inspect the actual checkout and remote head. The [current manifest](development/2026-11-13-scanner/assignments.json) belongs to the new sixty-assignment scanner session. The earlier original, console and pedal sessions are completed history and are not counted again.
-
-## Completed scanner foundation
-
-The strict [graph/compiler](SCANNER_GRAPH.md), [primary-source review](research/SCANNER_PRIMARY_REVIEW.md) and [independent AC reference](SCANNER_AC_REFERENCE.md) now exist. Independent tests check every component/output, exact-rational DC, the full 282-bin positive grid in both modes, literal resistor power, loading/polarity and misleading same-DC topology mutations. These are new implementations, not recovered missing atlas companions. Preserve the canonical fixture identity and its physical unknowns.
-
-## Active qualification: prepared line and independent references
-
-The bounded [C++ line](SCANNER_LINE.md) and independently stamped [full-circuit transient reference](SCANNER_TRANSIENT_REFERENCE.md) are implemented. The [native probe](SCANNER_PROBE.md), full-grid frequency/process comparison and independent transient regression are complete. Finish the matched-step native trajectory comparison and combined line/rotor routing, state and allocation acceptance under the same input reconstruction. Keep factorization/operators outside processing.
-
-The frozen `scanner-numerics-v1` contract specifies rates, grids, signs, residual/conditioning checks, warp-matched complex bounds, DC, initial-energy, mode/rate migration and complete failure-state preservation. A frequency-response helper must be supplemented by actual processing. Passing a discrete model does not automatically pass the separately declared same-hertz, transient, sideband or output-filter criteria. Keep failures and inconclusive convergence visible. The [executed frequency comparison](SCANNER_AC_PARITY.md) passes G3 frequency/process checks but fails G5 same-hertz at every investigated rate, including the largest allowed multiplier. A new identified realization or justified policy must address that measured numerical failure under the unchanged budgets before Engine integration.
-
-## Following dependencies
-
-| Stage | Concrete exit evidence |
-| --- | --- |
-| Rotor and six modes | One continuing phase, three reviewed depth maps, all 16 centers/intervals/wrap, signed weighting and return counted exactly once. Use the chosen repository phase origin explicitly; 412rpm remains documentary nominal. |
-| Combined nominal module | Shared line/rotor state, meaningful traces, nonzero-history lifecycle and rejection tests, bounded storage/work and calibrated allocation probe. |
-| Audible numerical policy | Same-hertz accuracy, independently converged transients/sidebands, actual internal-rate/interpolation/filter/latency evidence. A base-rate research demo may retain explicit failures here. |
-| Engine/native integration | Append-only parameter/state migration, both tablets, exact U/L/P/Q ownership, literal legacy dry arithmetic when disabled, precharged whole-callback rollback, actual native allocation/concurrency/automation checks. |
-
-Keep all 45 existing public controls, old state migrations, source/profile/maps, UUIDs and legacy fixtures stable until that integration is explicitly implemented and tested. Native audio remains the dry prototype at this foundation checkpoint.
-
-## Physical and later product work
-
-Physical M3 still needs preset latch/loading, continuous drawbar conductance, switching bandwidth, loaded expression and the pedal reactor network. Scanner physical admission requires an identified production/AO-28 revision, winding/coupling/loading, calibrated voltage/time and actual stationary/rotating captures. Follow [CAPTURE_PROTOCOL.md](CAPTURE_PROTOCOL.md); a numerical fixture is not a measured specimen.
-
-M5 connected AO-28 precedes complete dry-organ validation; M6 selects a specific Leslie 122 circuit/load while 147 stays separate. M7 owns independent horn/drum motion and propagation without duplicating filters or room effects. M8 requires held-out measured evidence. M9 still needs physical audio/MIDI and DAW workflows, native semantic accessibility, further custom UI work, distribution, license/branding and signing qualification. [RELEASE_READINESS.md](RELEASE_READINESS.md) retains those separate gates.
-
-## Required completion workflow
-
-Build the exact selected inputs before CTest; use `--no-tests=error` for a required filtered gate. Record the source/data/tool identities, actual commands, failures, fixes and unrun scopes. Update status, next steps, development log and affected contracts. The integrator accepts actual worker results and owns shared documents. Commit and push completed authorized work to main, inspect/integrate concurrent changes, never force-push, and verify the fetched remote commit. No additional permission is required by these documents.
+Every future agent reads the whole plan and [AGENTS.md](../AGENTS.md), claims a
+dependency-ready bounded task, records actual source/data/tool identities and
+outcomes, and updates the relevant setup/status/next steps/log. Build selected
+inputs before CTest and require nonempty required selections. Preserve 47 sound
+identities, state4/readers 1–3, 91 shared sources and musical ownership. The
+integrator accepts the owned diff, preserves concurrent advances, commits and
+publishes authorized work with a fresh expected head and no force, then verifies
+publication and its actual required results. Checkpoint each wave and retain
+compact evidence before removing only owned reproducible intermediates.

@@ -11,10 +11,13 @@ Use this guide for the current interface. The installed
 [preset guide](PRESET_RUNBOOK.md) gives source-build commands and complete
 registration/state workflows; the [application guide](STANDALONE_APP.md) lists
 CLI options and diagnostic fields; the [model guide](STANDALONE_MODEL.md)
-defines the nominal sound. The [MIDI guide](MIDI_UI_RUNBOOK.md) retains the
-controller map and platform prerequisites. The current discovery procedure is
-also described below. Source-only references use repository URLs so links in
-the installed guides remain usable; those references require network access.
+defines the nominal sound. The [MIDI guide](MIDI_UI_RUNBOOK.md) gives the
+controller map and platform prerequisites; the
+[expression and channel-mode guide](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/MIDI_EXPRESSION_GUIDE.md)
+explains endpoint calibration, its connection lifecycle and bounded checks.
+The current discovery procedure is also described below. Source-only references
+use repository URLs so links in the installed guides remain usable; those
+references require network access.
 
 ## Start and play
 
@@ -144,9 +147,11 @@ inspected value.
 **LOAD / Ctrl+O** validates supported state versions before applying controls.
 Versions 1–3 migrate the fixed modes to None; the next explicit Save writes
 version 4. Save/Load excludes held notes, phase, contact/percussion histories,
-device selections, workspaces, presentation and focus. Live Load changes musical
-controls while preserving the existing histories; it does not return to a saved
-UI workspace. An audio restart preserves acknowledged controls but deliberately
+device selections, MIDI expression endpoints/direction, workspaces, presentation
+and focus. Musical expression itself is saved; its MIDI calibration is volatile
+adapter configuration. Live Load changes musical controls while preserving the
+existing histories; it does not return to a saved UI workspace. An audio restart
+preserves acknowledged controls but deliberately
 clears notes and starts a new audio lifecycle.
 
 **UNSAVED** in the footer marks controls changed from the current clean reference;
@@ -205,11 +210,37 @@ after it closes. Existing external MIDI ownership follows its own connection
 lifecycle.
 
 Select one exact, unique input name and distinct Upper/Lower/Pedal channels
-1–16 (defaults 1/2/3), then Apply. A physical port can be applied only after
-the current discovery finishes and audio is running. While discovery is pending,
+1–16 (defaults 1/2/3). **EXPRESSION MIN**, **EXPRESSION MAX** and
+**EXPRESSION DIRECTION** stage raw CC11 endpoints and Normal/Inverted direction.
+Defaults are 0/127/Normal; a valid pair requires minimum < maximum, both 0–127.
+Tab/Shift+Tab wraps through eleven stops: previous port, next port, Upper,
+Lower, Pedal, minimum, maximum, direction, Apply, Disconnect and Close.
+Endpoint arrows change by one without wrapping, Home/End choose 0/127, and
+click/Enter/Space increments. Direction activation or an arrow toggles it;
+Home chooses Normal and End Inverted. Closing does not apply edits.
+
+Apply explicitly. A physical port can be applied only after the current discovery
+finishes and audio is running. While discovery is pending,
 **No input**, **Apply** for that No input choice, **Disconnect**, and **Close**
 remain usable. Closing and reopening requests an explicit refresh. A late result
 does not automatically connect a port or replace a later Apply/Disconnect result.
+
+The selected values are staged choices; **ACTIVE CALIBRATION** identifies the
+current decoder's settings, or **none (inactive)**. **MIDI RECONNECT PENDING**
+means a request is waiting for the old MIDI releases to be acknowledged.
+Invalid Apply preserves the existing connection and configured values. Applying
+the same exact port/channels/calibration to a healthy active input is a no-op.
+Changing any of them retires old packets and releases MIDI owners before opening
+a new epoch. Apply itself does not change musical expression; the next admitted
+CC11 uses the new mapping. CC121 or an ordinary control edit can also change
+expression through its usual path.
+
+CC11 from any mapped division edits the **single global expression**. Native
+CC121 value 0 resets it to 1.0 regardless of calibration or inversion, without
+releasing notes or changing other settings. CC120 value 0 and CC123 release only
+the addressed division's MIDI owners; CC120's immediate contribution removal is
+limited to this standalone's ideal-contact model. These messages do not perform
+global Panic. See the expression guide for the exact subset and saturation examples.
 
 No port is selected automatically at ordinary startup. A build with MIDI disabled
 says its backend is unavailable; keyboard/pointer and explicit synthetic replay
@@ -235,6 +266,13 @@ Normal Disconnect releases MIDI owners while preserving independently held UI
 notes. A fault, Panic or audio restart retires old MIDI input; resolve the cause
 and explicitly Apply again. Reconnection needs fresh Note Ons. A failed shutdown
 that cannot establish callback quiescence requires an application restart.
+An open failure leaves calibration inactive and requires another explicit Apply;
+configured values may remain for that retry. Calibration survives ordinary
+MIDI reconnect and audio restart within the process, but is not saved in musical
+state. Use `--expression-min N --expression-max N` and optional
+`--expression-invert` to reproduce startup settings. Synthetic replay uses those
+CLI values; modal Apply validates selected values but retains the script-owned
+configuration, while Disconnect remains operational.
 Compiled backend availability, a successful synthetic replay and a responsive
 discovery dialog each remain separate from physical controller qualification.
 

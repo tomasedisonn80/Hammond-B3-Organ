@@ -1,0 +1,249 @@
+{
+  "agent": "/root/w07_a39_capture_admission",
+  "all_recorded_native_inputs_unchanged": true,
+  "assignment": "A39",
+  "backend_facts": {
+    "backend": "unavailable",
+    "backend_available": false,
+    "source": "none",
+    "state_after_shutdown": "unavailable",
+    "state_before_shutdown": "unavailable"
+  },
+  "build_configuration": {
+    "CMAKE_BUILD_TYPE": "Release",
+    "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+    "CMAKE_CXX_FLAGS": "",
+    "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+    "HAMMOND_BUILD_STANDALONE": "ON",
+    "HAMMOND_ENABLE_MIDI": "OFF",
+    "HAMMOND_RTMIDI_ROOT": "",
+    "HAMMOND_SDL2_ROOT": "/workspace/scratch/1bb6ee17ad7e/SDL2",
+    "SDL_ALSA": "OFF"
+  },
+  "build_inventory_sha256": "18dcb78e92676383c3f1750bf1bb337ac7e96b5cc5063ccae10b56d29aa087b6",
+  "command": [
+    "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/hammond_standalone",
+    "--state",
+    "/workspace/scratch/5b7d983ac078/a39-capture-case/controls.b3controls",
+    "--input-script",
+    "/workspace/scratch/5b7d983ac078/a39-capture-case/play-dimensional.b3uireplay",
+    "--workspace",
+    "play",
+    "--width",
+    "960",
+    "--height",
+    "700",
+    "--sample-rate",
+    "48000",
+    "--buffer-frames",
+    "512",
+    "--screenshot",
+    "/workspace/scratch/5b7d983ac078/a39-capture-case/native.bmp",
+    "--diagnostics",
+    "/workspace/scratch/5b7d983ac078/a39-capture-case/native.json"
+  ],
+  "diagnostics": {
+    "bytes": 22854,
+    "retained_path": "docs/development/2026-11-15-product-continuation/reports/A39-midi-off-diagnostics.json",
+    "sha256": "2c55baa50577f793fbf4d5ee071d0860268765f4307af71f8bd4dbae73cc4811",
+    "temporary_path": "/workspace/scratch/5b7d983ac078/a39-capture-case/native.json"
+  },
+  "elapsed_seconds": 1.9341466029982257,
+  "environment": {
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "PATH": "/bin:/usr/bin",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_RENDER_DRIVER": "software",
+    "SDL_VIDEODRIVER": "dummy"
+  },
+  "executable": {
+    "bytes": 3646480,
+    "path": "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/hammond_standalone",
+    "sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852"
+  },
+  "exit_code": 0,
+  "image": {
+    "decoded_mode": "RGBA",
+    "decoded_sha256": "4e8b40672cf34aead5bce1ac54bde93c7b1ea4dc441aac3c7f839d9faef13344",
+    "height": 700,
+    "lossless_bmp_to_png": true,
+    "native_bmp": {
+      "bytes": 2688122,
+      "sha256": "462e310312cc8d3fba98a973d07a400a8e96eb98f921f637cc3f9f87773af648"
+    },
+    "png": {
+      "bytes": 143242,
+      "sha256": "608b71f032b0ec0ae05769e88ec5c8a3c24249f36b9229d9c6a615d9571ed895"
+    },
+    "temporary_path": "/workspace/scratch/5b7d983ac078/a39-capture-case/native.png",
+    "width": 960
+  },
+  "inputs": {
+    "controls.b3controls": {
+      "bytes": 456,
+      "sha256": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+    },
+    "play-dimensional.b3uireplay": {
+      "bytes": 1690,
+      "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+    }
+  },
+  "limits": [
+    "One actual 960x700 Play dimensional replay only; full eight-case gallery belongs to A40.",
+    "The retained PNG is a temporary native lossless conversion, not a new published gallery.",
+    "Dummy audio/video and software rendering do not qualify hardware MIDI, physical displays, callback deadlines, accessibility or literal 1:1 reference equality.",
+    "A39 did not rebuild, change production source, mutate the shared build, commit or publish. Source-to-binary provenance is the checked integrator report, not an independent attestation."
+  ],
+  "original_admission": {
+    "failure": "capture unexpectedly opened/enumerated a native MIDI device",
+    "passed": false
+  },
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "repaired_admission": {
+    "actual_painted_view": {
+      "elapsed_ms": 1836,
+      "expression_calibration": {
+        "active": null,
+        "configured": {
+          "inverted": false,
+          "maximum": 127,
+          "minimum": 0
+        },
+        "model": "midi-expression-endpoints-v1",
+        "pending": null,
+        "reconnect_pending": false,
+        "release_pending": false,
+        "selected": {
+          "inverted": false,
+          "maximum": 127,
+          "minimum": 0
+        },
+        "selected_valid": true
+      },
+      "held_targets": {
+        "lower": 1,
+        "pedals": 1,
+        "upper": 2
+      },
+      "inspection": {
+        "controls_pending": false,
+        "frame_clock": 84992,
+        "publication_revision": 336,
+        "snapshot_available": true,
+        "snapshot_read_succeeded": true,
+        "snapshot_state": "current"
+      },
+      "modal_focus": 0,
+      "overlay": "none",
+      "pointer_capture": {
+        "attempts": 0,
+        "losses": 0,
+        "release_calls": 0,
+        "sdl_captured": false,
+        "successes": 0,
+        "ui_captured": false
+      },
+      "presentation": "dimensional",
+      "rendered_image": 48,
+      "window_height": 700,
+      "window_width": 960,
+      "workspace": "play"
+    },
+    "callbacks": 170,
+    "complete_control_state_checked": true,
+    "held_manual_notes": [
+      [
+        60,
+        64
+      ],
+      [
+        67
+      ]
+    ],
+    "held_pedal_ids": [
+      3
+    ],
+    "input_state_file_unchanged": true,
+    "joined_shutdown_clear": true,
+    "live_edit": {
+      "after": 8,
+      "before": 7,
+      "target": "Upper B 16-foot retained drawbar"
+    },
+    "midi_backend": "unavailable",
+    "midi_backend_available": false,
+    "midi_source": "none",
+    "midi_state": "unavailable",
+    "passed": true,
+    "rendered_frames": 87040,
+    "ui_events": 66
+  },
+  "schema_version": 1,
+  "scope": "One bounded actual native MIDI-OFF capture admission; dummy audio/video/software only.",
+  "scoped_diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "--",
+      "tools/capture_standalone_interface.py",
+      "tests/test_capture_standalone_interface.py"
+    ],
+    "exit_code": 0
+  },
+  "source_head": {
+    "committed_tree": "b3b8b68e4c1f8312d46962924b5096f4ea10c4d2",
+    "head": "b9d352a82ac1afdec70c76ec5b1987785a37762e"
+  },
+  "source_inventory_sha256": "cac932dbe83f14884ab8328482e6bfb7ee81f4cc37412055fbb0a8ecaffaa6bd",
+  "source_qualification": {
+    "binary_sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852",
+    "path": "docs/development/2026-11-15-product-continuation/reports/capture-qualified-build.json",
+    "sha256": "485cb81c9337d4bf0b4a2e9c185cc90a8e3b7d11e74ad43ee14ee618ec3b67cc",
+    "source_count": 108
+  },
+  "status": "passed",
+  "stderr_bytes": 0,
+  "stdout_bytes": 0,
+  "strict_current_native_schemas": {
+    "assert_no_midi_input": "passed",
+    "assert_presentation": "passed",
+    "new_native_processes": 0,
+    "sha256": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+    "source": "apps/standalone/native_tests/test_standalone_app.py"
+  },
+  "tests": {
+    "bytes": 13167,
+    "sha256": "2f2f32be77cf2832435d1eb0adf089f779c8d575b437859f33a1c11a7f126d83"
+  },
+  "timeout_seconds": 12,
+  "tool_after": {
+    "bytes": 31765,
+    "sha256": "83c214d6f0d6b0fc06910412f41f13a0f3286bebd034280a19d4e5e397875b1f"
+  },
+  "tool_before": {
+    "bytes": 29923,
+    "sha256": "92ae0be31a6ef21eb696c87d4f9dacd8ea8a6732d6c1033e0d7457ca3a76d16b"
+  },
+  "unit_suite": {
+    "command": [
+      "python3",
+      "tests/test_capture_standalone_interface.py",
+      "-v"
+    ],
+    "coverage": "Original painted-hold/pointer mutations retained; backend identity/types, exact before/after inert states, port/activity/discovery types and shutdown mutations cover both backend modes. Backend contract variants are copied dictionaries, not native captures.",
+    "elapsed_seconds": 0.244,
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit_code": 0,
+    "methods": 13,
+    "passed": 13,
+    "retained_real_v3_positive_cases": 8,
+    "working_directory": "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"
+  },
+  "wave": 7,
+  "working_directory": "/workspace/scratch/5b7d983ac078/a39-capture-case"
+}

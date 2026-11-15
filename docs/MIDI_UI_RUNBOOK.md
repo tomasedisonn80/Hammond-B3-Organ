@@ -5,12 +5,17 @@ SDL2. Optional RtMidi input controls that same engine. The reference-oriented
 view adds dynamic player controls and decorative source art; it does not add
 scanner, AO-28 or Leslie sound. The current instrument has 47 public parameter
 identities and a `B3CONTROLS4` writer, with readers for versions 1–3. The first
-45 parameter records retain their meanings.
+45 parameter records retain their meanings. Expression endpoint calibration and
+CC120/121/123 below belong to the native adapter; they do not add VST3 controller
+support or change the nominal Engine.
 
 This guide covers source setup, installed use, connection, recovery and bounded
 engineering checks. The [interface guide](INTERFACE_RUNBOOK.md) covers current
 Play/Rotary/Service, Flat and background MIDI discovery; the
 [preset guide](PRESET_RUNBOOK.md) covers fixed registrations and saved controls.
+The [expression operating guide](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/MIDI_EXPRESSION_GUIDE.md)
+gives current endpoint/direction setup, selected/configured/active diagnostics,
+reconnect examples and bounded calibration checks.
 The sibling [application guide](STANDALONE_APP.md),
 [model guide](STANDALONE_MODEL.md) and [installation guide](STANDALONE_INSTALL.md)
 provide the complete application, musical and staging contracts. Links to other
@@ -147,6 +152,14 @@ through 16**, matching the controller's transmitted channels. Defaults are upper
 1, lower 2 and pedals 3. These wire channels are independent of the internal
 UI/MIDI ownership namespaces and are not saved in a musical control file.
 
+Optional `--expression-min N` and `--expression-max N` set raw CC11 endpoints;
+`--expression-invert` reverses their direction. Defaults are **0/127/Normal**.
+Each endpoint must be an integer from 0 through 127, with minimum < maximum.
+For example, `--expression-min 20 --expression-max 100 --expression-invert`
+maps raw 40 to expression 0.75; those numbers are illustrative, not measured
+pedal settings. Invalid or repeated options reject before SDL/output writes.
+The calibration is volatile adapter configuration, not saved musical state.
+
 The application opens SDL's default output unless `--device "EXACT AUDIO NAME"`
 is supplied. Supported rates are 44100, 48000 and 96000 Hz; supported buffers
 are 128, 256, 512, 1024 and 2048 frames. Defaults are 48000 Hz and 512 frames.
@@ -159,22 +172,38 @@ Select **MIDI** or press **Ctrl+M**; Command is also accepted for Ctrl. Opening
 the modal starts background discovery; completed results list native ports
 after **No input**. While searching, No input/Apply, Disconnect and Close remain
 available. Applying a physical port requires the current discovery to finish.
-Tab/Shift+Tab cycles these eight controls, with wraparound:
+Tab/Shift+Tab cycles these eleven controls, with wraparound:
 
 | Focus order | Control and action |
 | ---: | --- |
 | 1–2 | Previous/next exact port. Arrow keys browse; Home/End choose the first/last entry. |
 | 3–5 | Upper/lower/pedal wire channel. Arrows adjust, Home selects 1, End selects 16. |
-| 6 | **APPLY / CONNECT** validates all staged choices and requests a connection. |
-| 7 | **DISCONNECT** retires MIDI input and releases its notes. |
-| 8 | **CLOSE** closes the dialog. |
+| 6 | **EXPRESSION MIN**: arrows adjust the raw lower endpoint by one, clamped to 0–127. Home/End choose 0/127. |
+| 7 | **EXPRESSION MAX**: the same operations adjust the raw upper endpoint. |
+| 8 | **EXPRESSION DIRECTION**: activation or any arrow toggles Normal/Inverted; Home selects Normal, End selects Inverted. |
+| 9 | **APPLY / CONNECT** validates all staged choices and requests a connection. |
+| 10 | **DISCONNECT** retires MIDI input and releases its notes. |
+| 11 | **CLOSE** closes the dialog. |
 
 Enter/Space activates the focused control; clicking uses the same controls.
 Clicking a channel advances its value. Left/Down decrement, Right/Up increment,
-and channel values wrap at 1/16. Escape or Close discards unapplied choices;
-Apply leaves the dialog open so its result can be inspected. Duplicate channels
-reject without replacing active routing or losing the staged choices needed to
-correct the error. Audio must be running before Apply can open an input.
+and channel values wrap at 1/16. Clicking or activating an endpoint increments
+it, with clamping rather than wraparound. Escape or Close leaves edits unapplied;
+reopening copies configured settings into the selection. Apply leaves the dialog
+open so its result can be inspected. Duplicate channels and invalid endpoint
+pairs reject without replacing active routing/calibration or losing the staged
+choices needed to correct the error. Endpoints are never silently swapped.
+Audio must be running before Apply can open an input.
+
+Selected settings are staged edits. Configured settings are retained for this
+process; they can exist while disconnected. **ACTIVE CALIBRATION** identifies
+the current decoder's values, or **none (inactive)**. **MIDI RECONNECT PENDING**
+means a copied request is waiting for the old scoped MIDI releases to be
+acknowledged. A healthy identical port/channel/calibration Apply is a no-op;
+changing any of them retires old packets and releases all three divisions'
+MIDI owners before opening a new epoch. Apply itself sends no expression edit:
+the next admitted CC11 uses the new mapping, while CC121 or an ordinary control
+edit/Load can also change musical expression through their existing paths.
 
 There is currently no separate Refresh button: close and reopen the dialog to
 enumerate again. Long names may be elided and the embedded font has limited
@@ -193,20 +222,32 @@ transposition or pitch clamping.
 | --- | --- |
 | Note On, velocity 1–127 | Adds one note owner for that division. Velocity uses the existing organ gesture contract, without piano-like sustained gain. |
 | Note On velocity 0, or Note Off | Releases the oldest matching MIDI owner. Repeated Note Ons need corresponding releases. |
-| CC11, value 0–127 | Edits the single shared nominal expression using `value / 127.0`, from any mapped division. |
+| CC11, value 0–127 | Edits the single global expression using active minimum/maximum/direction calibration, from any mapped division. Defaults give exactly `value / 127.0`. |
 | Upper CC16–24 | Edits the nine retained upper **B** drawbars in footage order. |
 | Lower CC16–24 | Edits the nine retained lower **B** drawbars in footage order. |
 | Pedal CC16/17 | Edits nominal **Mix 1 / Mix 2**; pedal CC18–24 has no mapping. |
+| CC120, value 0 only | All Sound Off retires the addressed division's MIDI owners. Their final-owner contributions disappear from the first rendered sample after application in this standalone's ideal-contact model. |
+| CC121, value 0 only | Reset All Controllers resets the single declared expressive controller, global expression, to normalized 1.0, bypassing calibration and inversion. Notes, calibration and other settings remain unchanged. |
 | CC123, any value 0–127 | Ordinary All Notes Off scoped to this division's MIDI owners; it does not release UI or another division's owners. |
 
 Manual drawbar order is **16′, 5⅓′, 8′, 4′, 2⅔′, 2′, 1⅗′, 1⅓′, 1′**.
-CC values pass through `value / 127.0` and the existing parameter bridge's
+Drawbar CC values pass through `value / 127.0` and the existing parameter bridge's
 discrete 0–8 conversion. The adapter adds no alternate rounding law. CC123 is
-a musical release, not immediate physical sound suppression or global Panic.
+a musical release; its MIDI-defined wire value is 0, with other values retained
+as this receiver's compatibility extension. Nonzero CC120/121 values are counted
+as out of range and perform no action. CC120 and CC123 preserve a same-pitch UI
+owner and all other divisions' owners; neither retires the connection or creates
+a persistent mute. A fresh Note On can play. CC121 affects the whole instrument's
+expression without recalling a registration or replacing concurrent pending UI
+edits. CC120's immediate-contribution guarantee is limited to the admitted ideal
+contacts, not finite-travel contacts, shared effect tails or physical sound.
+Global Panic has its separate scope below. The
+[channel-mode contract](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/MIDI_CHANNEL_MODE_CONTRACT.md)
+defines this native subset, not full MIDI/General MIDI conformance.
 
-**Unsupported:** sustain CC64, All Sound Off CC120, Reset Controllers CC121,
-bank/program changes, pitch bend, channel/polyphonic pressure, every other
-controller, SysEx, system/common/realtime and active sensing. No unsupported
+**Unsupported:** sustain CC64, CC122, CC124–127, bank/program changes, pitch bend,
+channel/polyphonic pressure, every other controller, SysEx,
+system/common/realtime and active sensing. No unsupported
 message recalls a registration, changes tuning, extends sustain or provides a
 disconnect heartbeat. The backend supplies complete short messages; the
 adapter does not reconstruct a running-status byte stream. The exact
@@ -236,10 +277,17 @@ the four drawbar banks, remembered banks, raw fixed choices, route bits,
 expression, percussion and pedal mixtures, with the pinned registration catalog
 identity. Readers 1–3 remain supported and migrate fixed modes to None; the
 next explicit Save writes version 4. It does not store held notes, source
-phases, transient envelopes, MIDI port/channels, audio settings, window geometry,
-workspace, Flat presentation or focus. An absent selected state file gives the
+phases, transient envelopes, MIDI port/channels or expression endpoint/direction
+calibration, audio settings, window geometry, workspace, Flat presentation or
+focus. An absent selected state file gives the
 proposed upper B `888000000`, lower B `008000000`, pedals `80`; this is an audition
 choice, not a factory preset.
+
+Musical expression is saved, but its MIDI calibration is not. Configured
+calibration survives MIDI reconnect and audio restart in the same process;
+there is no calibration preference file. Supply the same CLI arguments on the
+next application launch to reproduce it. Save/Load does not connect MIDI or
+restore its adapter settings.
 
 ### Reference view and sound boundaries
 
@@ -266,6 +314,8 @@ or measured instrument sound.
 
 | Situation | Result and next action |
 | --- | --- |
+| Changed port, wire channels or expression calibration | Validate first, then retire the old epoch and release its MIDI owners. Open the copied request only after the release acknowledgment barrier. An identical healthy request is a no-op. |
+| Failed open | Remain inactive, with no automatic retry. Configured settings may remain for a later explicit Apply; read active status separately from configuration. |
 | Normal MIDI Disconnect, missing port or backend/inbox fault | Retire the input epoch, discard old packets and release MIDI-owned notes. Wait for the release acknowledgment; resolve the device problem, reopen MIDI settings, select the current exact name and Apply. |
 | **PANIC** | Globally release notes and retire MIDI so old queued Note Ons cannot undo Panic. Explicitly Apply to reconnect when ready. |
 | Audio Apply/Restart, output removal or audio failure | Retire MIDI; restart working audio first, then explicitly Apply MIDI. Acknowledged controls survive an audio restart, while notes and transient DSP history reset. |
@@ -334,7 +384,8 @@ duration_ms 1200
 ```
 
 It explicitly connects, plays upper 60/lower 64/pedal 36 on the default channels,
-sets shared expression to 64/127, releases those notes and disconnects. Run:
+sets shared expression to 64/127 with the default 0/127/Normal calibration,
+releases those notes and disconnects. Run:
 
 ```sh
 SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy \
@@ -374,8 +425,10 @@ defines fault injection and all parsing limits.
 `--midi-script` excludes `--midi-port`, `--list-midi` and `--smoke-ms`.
 A paired `--input-script` must declare the same duration; each stream retains its
 own order, without a sample-accurate ordering promise across streams. In this
-mode modal Apply leaves script routing unchanged; only a later script `connect`
-opens a synthetic epoch. Modal Disconnect still retires it. Current standalone
+mode modal Apply validates selected channels/endpoints first; valid Apply leaves
+the script-owned routing and calibration unchanged. Use CLI calibration options
+for the replay. Only a later script `connect` opens a synthetic epoch, using
+those configured settings. Modal Disconnect still retires it. Current standalone
 UI fixtures live under
 [`examples/standalone-input-v2/`](https://github.com/tomasedisonn80/Hammond-B3-Organ/tree/main/examples/standalone-input-v2)
 and still use `B3UIREPLAY1`; the original directory is retained historical input.
@@ -386,7 +439,7 @@ and still use `B3UIREPLAY1`; the original directory is retained historical input
 | --- | ---: |
 | Successful help, enumeration (including an empty list), smoke or replay | 0 |
 | Failed CLI enumeration or requested startup MIDI open, invalid script/path, unequal paired durations or failed/incomplete bounded run | 1 |
-| Unknown/duplicate option, malformed/out-of-range integer, duplicate wire channels or mutually exclusive CLI options | 2 |
+| Unknown/duplicate option, malformed/out-of-range integer, invalid expression interval, duplicate wire channels or mutually exclusive CLI options | 2 |
 
 For example, `--midi-upper-channel 2` conflicts with the default lower channel
 and returns 2. `--midi-script ./example.b3midi --smoke-ms 600` also returns 2.

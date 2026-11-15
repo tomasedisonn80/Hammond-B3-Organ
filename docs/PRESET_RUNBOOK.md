@@ -11,6 +11,8 @@ defines the behavior and source limits.
 This guide supplies the current preset, state and diagnostic instructions.
 The [interface runbook](INTERFACE_RUNBOOK.md) covers Play/Rotary/Service, Flat,
 focus, copied-state inspection and current background MIDI discovery.
+The [native MIDI expression guide](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/MIDI_EXPRESSION_GUIDE.md)
+covers endpoint/direction setup, channel-mode messages and reconnect behavior.
 Earlier galleries, state files and reports retain their original versions.
 Links below use repository URLs so this guide remains navigable when installed
 beside the application. Those linked references require network access.
@@ -40,7 +42,12 @@ discovery; close and reopen for an explicit refresh. No input/Apply, Disconnect
 and Close remain available while discovery is pending. Connect a physical port
 only after the current discovery finishes. Upper/Lower/Pedal channels default to 1/2/3
 and must be distinct values from 1 through 16. Apply staged device choices
-explicitly. The obtained buffer setting is not a measured latency result.
+explicitly. MIDI settings also stage CC11 minimum/maximum/direction, defaulting
+to 0/127/Normal; minimum must be below maximum. A changed port, channel map or
+calibration releases MIDI-owned notes before reopening. Apply itself leaves the
+musical expression unchanged until a later CC11 or another ordinary expression
+action. An identical healthy request is a no-op. The obtained buffer setting is
+not a measured latency result.
 
 ## Build from source
 
@@ -167,6 +174,13 @@ MIDI program changes and MIDI-note preset switching are not mapped. The two new
 host parameters are Upper **20480** and Lower **20481**, plain values 0–11.
 They are ordinary routing parameters, not host programs or whole-state recall.
 
+Native CC11 from any mapped division edits the single global expression using
+the active endpoint/direction calibration. CC121 value 0 resets that expression
+to 1.0, bypassing calibration; it does not recall a preset, change the four banks,
+clear fixed selections or release notes. CC120 value 0 and CC123 release the
+addressed division's MIDI owners without changing the preset selection. These
+native adapter mappings do not add VST3 controller support.
+
 Click a preset once, or focus it with Tab and activate with Enter/Space.
 Left/Right moves preset focus; Home/End focuses C/B; Up/Down focuses the same
 pitch on the other manual. Those navigation keys do not select a route.
@@ -200,8 +214,13 @@ bits, expression, percussion and pedal mixtures. It pins catalog
 `atlas-chapel-nominal-v1` to its exact authoring SHA-256. A mismatched catalog or
 malformed file rejects instead of substituting another table. Cancelled fixed
 memory survives Save/Load. Held notes, phase, contact/readiness history, devices,
-workspace, presentation and UI focus are not saved. Live Load changes controls while preserving current
-histories; cold Load creates no held notes. Audio restart preserves controls
+MIDI endpoint minimum/maximum/direction, wire-channel map, workspace, presentation
+and UI focus are not saved. Musical expression is saved; its MIDI calibration
+is volatile adapter configuration. Calibration remains configured across MIDI
+reconnect and audio restart in the same process. Reproduce it on a later launch
+with `--expression-min N --expression-max N` and optional `--expression-invert`;
+Save/Load does not restore those options. Live Load changes controls while
+preserving current histories; cold Load creates no held notes. Audio restart preserves controls
 but deliberately releases notes and restarts the existing audio lifecycle.
 The [format contract](https://github.com/tomasedisonn80/Hammond-B3-Organ/blob/main/docs/CONTROL_STATE_FORMAT.md)
 contains exact grammar and migration rules.

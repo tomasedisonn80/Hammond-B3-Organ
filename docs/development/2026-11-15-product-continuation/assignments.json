@@ -467,7 +467,7 @@
       "wave": 6,
       "agent": "/root/w06_a32_midi_operating_guide",
       "task": "Current native MIDI calibration operating guide and runbook reconciliation",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A32-midi-operating-guide.md",
       "owned_files": [
         "docs/MIDI_EXPRESSION_GUIDE.md",
@@ -475,31 +475,155 @@
         "docs/PRESET_RUNBOOK.md",
         "docs/MIDI_UI_RUNBOOK.md",
         "docs/development/2026-11-15-product-continuation/notes/A32-midi-operating-guide.md"
-      ]
+      ],
+      "note_sha256": "3da6aef43041e63eaa4ea76a01e6f02473eee958039cf30d7d7b3b1deb04eab4",
+      "acceptance": "Guide and three runbooks reconciled; 2help acceptances,5parser refusals,3real dummy-native examples verified plus77links and29code fences; physical devices untested."
     },
     {
       "id": "A33",
       "wave": 6,
       "agent": "/root/w06_a33_crossover_developer_guide",
       "task": "Independent crossover developer API and reproducible workflow guide",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A33-crossover-developer-guide.md",
       "owned_files": [
         "docs/CROSSOVER_DEVELOPER_GUIDE.md",
         "docs/development/2026-11-15-product-continuation/notes/A33-crossover-developer-guide.md"
-      ]
+      ],
+      "note_sha256": "3e3f7b35c998775e725cf74dfc429389bf8d43f164ccfeb951b41aaea8439432",
+      "acceptance": "Source-checked developer guide; exact tiny native and124point reference examples passed,6source/probe identities and21links verified; no new full-build or platform claim."
     },
     {
       "id": "A34",
       "wave": 6,
       "agent": "/root/w06_a34_reference_gap_review",
       "task": "Independent reference comparison and current visual acceptance/gap record",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A34-reference-gap-review.md",
       "owned_files": [
         "docs/design/PRODUCT_REFERENCE_GAPS.md",
         "docs/PRODUCT_VISUAL_REFINEMENT.md",
         "docs/development/2026-11-15-product-continuation/notes/A34-reference-gap-review.md"
+      ],
+      "note_sha256": "7538b7282979de4f612215310165eb2b8d4d2edff49b1d06efc28b86b4cabb8f",
+      "acceptance": "Direct reference/v5/current preview inspection, source identities and measured header masks reviewed; exact frozen-contract preservation and27links checked; literal1:1 and finalgallery remain unproved."
+    },
+    {
+      "id": "A35",
+      "wave": 6,
+      "agent": "/root/w06_a35_readme_current_design",
+      "task": "Current README product design, setup and evidence navigation; follow-up actual gallery promotion",
+      "status": "review_complete",
+      "note": "notes/A35-readme-current-design.md",
+      "owned_files": [
+        "README.md",
+        "docs/development/2026-11-15-product-continuation/notes/A35-readme-current-design.md"
+      ],
+      "note_sha256": "3e92b0cd4d71c4c81f1af0449548e178d21b74a670e69c2c7c0fc21e7f65d683",
+      "acceptance": "First README product/setup/roadmap rewrite accepted with134validlinks; gallery replacement and final note hash remain pending A40/A41."
+    },
+    {
+      "id": "A36",
+      "wave": 6,
+      "agent": "/root/w06_a36_plan_status_reconciliation",
+      "task": "Full M0-M9 plan, current state, next-step and project navigation reconciliation",
+      "status": "accepted",
+      "note": "notes/A36-plan-status-reconciliation.md",
+      "owned_files": [
+        "docs/STATUS.md",
+        "docs/NEXT_STEPS.md",
+        "docs/PLAN.md",
+        "docs/DEVELOPMENT_LOG.md",
+        "docs/PROJECT_GUIDE.md",
+        "docs/development/2026-11-15-product-continuation/notes/A36-plan-status-reconciliation.md"
+      ],
+      "note_sha256": "591f5a275313462f82ccd604a70c40bca0cbab55c26b3921db6af0504adb3525",
+      "acceptance": "Five current/navigation docs reconciled with unchanged fullplan exit table and preserved historical log/status body;546local targets/7heading links verified; dated ongoing source/count/CI scope explicit."
+    },
+    {
+      "id": "A37",
+      "wave": 7,
+      "agent": "/root/w07_a37_sanitizer_ci_coverage",
+      "task": "Meaningful native sanitizer build/discovery coverage for new product paths",
+      "status": "accepted",
+      "note": "notes/A37-sanitizer-ci-coverage.md",
+      "owned_files": [
+        ".github/workflows/standalone.yml",
+        "apps/standalone/CMakeLists.txt (approved sanitizer timeout properties only)",
+        "docs/reviews/PRODUCT_SANITIZER_COVERAGE.md",
+        "docs/development/2026-11-15-product-continuation/notes/A37-sanitizer-ci-coverage.md"
+      ],
+      "note_sha256": "f3de53a6082381c3b4148930640fd17992f6cb818f67957f3ec06e752b85ea22",
+      "acceptance": "Explicit21native sanitizer gates, mapping/instrumentation/evidence checks source-verified;42Bash/13Python blocks and six diagnostic mutations pass. Expanded hosted execution pending; no leak exception added."
+    },
+    {
+      "id": "A38",
+      "wave": 7,
+      "agent": "/root/w07_a38_integration_review",
+      "task": "Independent integrated target, fixture and portable install-preflight review",
+      "status": "accepted",
+      "note": "notes/A38-integration-review.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_INTEGRATION_REVIEW.md",
+        "docs/development/2026-11-15-product-continuation/notes/A38-integration-review.md",
+        "apps/standalone/native_tests/calibration_lifecycle_driver.cpp (own environment strings across SDL calls)",
+        "tests/test_crossover_install.py (Windows stdout newline representation)"
+      ],
+      "note_sha256": "6578e115dab190dadbc626c1292031fbf4f00ef8bac39216549a9cdc91870f2b",
+      "acceptance": "Integrated inventory178tests/source isolation reviewed; Windows SDL environment ownership and strict newline representation repaired; root coordinated build/focusedCTest2/2passed21.92s. Originalhostedfailures preserved; replacement platform execution pending."
+    },
+    {
+      "id": "A39",
+      "wave": 7,
+      "agent": "/root/w07_a39_capture_admission",
+      "task": "Strict actual MIDI-OFF native capture admission and regression validation",
+      "status": "accepted",
+      "note": "notes/A39-capture-admission.md",
+      "owned_files": [
+        "tools/capture_standalone_interface.py",
+        "tests/test_capture_standalone_interface.py",
+        "docs/development/2026-11-15-product-continuation/notes/A39-capture-admission.md",
+        "docs/development/2026-11-15-product-continuation/reports/A39-capture-admission.json",
+        "docs/development/2026-11-15-product-continuation/reports/A39-midi-off-diagnostics.json"
+      ],
+      "note_sha256": "48ac2bd5067b58516f8b1f12823798f8cef053530206dd74cb1226ed8cad4ec6",
+      "acceptance": "Strict compiled backend/inert state admission;13Pythonmethods passed including8actualretainedpositives;one1.934snativeMIDI-OFFrun rejectedbefore/admittedafter onidenticaldiagnostics;A22cross-schema checks passed."
+    },
+    {
+      "id": "A40",
+      "wave": 7,
+      "agent": "/root/w07_a40_native_product_gallery",
+      "task": "Actual source-qualified eight-view native gallery and three separate MIDI overlay captures",
+      "status": "running",
+      "note": "notes/A40-native-product-gallery.md",
+      "owned_files": [
+        "examples/demos/standalone-product-preview-v1/",
+        "docs/development/2026-11-15-product-continuation/notes/A40-native-product-gallery.md"
+      ]
+    },
+    {
+      "id": "A41",
+      "wave": 7,
+      "agent": "/root/w07_a41_gallery_admission",
+      "task": "Independent source, state, pixel and visual admission of actual new gallery",
+      "status": "running",
+      "note": "notes/A41-gallery-admission.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_GALLERY_ADMISSION.md",
+        "docs/development/2026-11-15-product-continuation/reports/A41-gallery-admission.json",
+        "docs/development/2026-11-15-product-continuation/notes/A41-gallery-admission.md"
+      ]
+    },
+    {
+      "id": "A42",
+      "wave": 7,
+      "agent": "/root/w07_a42_calibration_modal_raster",
+      "task": "Independent raster acceptance for three calibration controls in expanded MIDI modal",
+      "status": "running",
+      "note": "notes/A42-calibration-modal-raster.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_material_acceptance.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A42-calibration-modal-raster.md"
       ]
     }
   ]

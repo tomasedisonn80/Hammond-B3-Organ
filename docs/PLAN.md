@@ -1,9 +1,14 @@
 # Project plan: Hammond B-3 and Leslie
 
-**Combined-source continuation:** the [completion and integration record](REFERENCE_REFINEMENT_CLOSURE.md)
-records all 60 accepted agents, the integrated `487064d` R4/material source,
-the fresh v5 native gallery and its separate qualification. Source-specific
-`0881d1f4`/v4 results below remain historical evidence for those exact inputs.
+**Current authority — 15 November 2026:** the
+[product continuation](development/2026-11-15-product-continuation/README.md)
+advances M9 native MIDI channel modes, expression-controller calibration and
+measured visual refinement, together with an independent M6 passive crossover.
+Read its [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md),
+[actual assignments](development/2026-11-15-product-continuation/assignments.json),
+[current status](STATUS.md) and [next actions](NEXT_STEPS.md) before choosing work.
+The separately owned waveform session retains R4. Earlier completed sessions
+remain source-specific history; their worker counts do not close this session.
 
 ## Product objective and evidence boundary
 
@@ -24,6 +29,13 @@ measurement corpus or plugin. The PDF explicitly states that its original resear
 included no newly acquired instrument measurements (p. 2). New implementations and
 reconstructions retain their own provenance; absent companion results are not tests
 that this repository has executed.
+
+The current session's A01–A06 notes retain complete textual coverage of pages
+1–500, with individual page ranges and extract hashes in the
+[reading map](PROJECT_GUIDE.md#source-and-reading-records). The unchanged PDF
+SHA-256 is `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
+Reading the atlas does not independently verify every cited drawing or supply
+missing specimen measurements.
 
 ## Milestones and exit evidence
 
@@ -54,28 +66,30 @@ filters and room responses are not counted twice. M8 calibration is incremental,
 but only acquired evidence can close a specimen-specific fidelity gate. An M9
 adapter smoke test may start after M1/M2; that does not complete product release.
 
-## Current ownership and accepted source
+## Current ownership and source
 
-Two owner-requested sessions continue different parts of this plan. Each retains
-its own actual assignment manifest; neither supplies workers or completion credit
-to the other. Read the [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
-before overlapping interface, build, gallery or shared-documentation work.
-
-| Session and starting source | Current responsibility and live records |
+| Session | Responsibility and recovery authority |
 | --- | --- |
-| Reference refinement, `8bd999efc13e309b932e6ac41d72ceb7b9b80a5f` | Accepted M9 layout/material/inspection and measured-header work, native R2/R3 qualification, exact-source capture/admission and remaining session closure; [scope](REFERENCE_REFINEMENT_SCOPE.md), [checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md), [actual manifest](development/2026-11-14-reference-refinement/assignments.json). |
-| Waveform continuation, `2e161dc3a60fc3442051799574feed37bffbfc5c` | Independent R4 waveform implementation and its separately verified subsequent native visual work; [scope](development/2026-11-14-waveform-continuation/README.md), [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). |
+| Product continuation, starting `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb` | Active M9 MIDI/calibration/visual work and independent M6 crossover; [scope](development/2026-11-15-product-continuation/README.md), [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-15-product-continuation/assignments.json). Its own 60-agent, ten-wave request is still in progress. |
+| Waveform continuation, starting `2e161dc3a60fc3442051799574feed37bffbfc5c` | Separate R4 implementation and acceptance; [scope](development/2026-11-14-waveform-continuation/README.md), [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). Preserve its other checkout and unfinished work. |
+| Completed reference refinement | Historical M9/R2/R3 and combined-source qualification; [closure](REFERENCE_REFINEMENT_CLOSURE.md) and [completed checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md). All 60 accepted workers remain closed historical records. |
 
-The accepted measured-header product source is
-`0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
-`f8144b771cda1264a8788f8297f5bfec999f4a08`; its
-[publication receipt](development/2026-11-14-reference-refinement/reports/root-header-publication.json)
-retains the observed remote identity. Use the
-[setup handoff](REFERENCE_REFINEMENT_HANDOFF.md),
-[operating guide](INTERFACE_RUNBOOK.md) and both live checkpoints for exact
-commands and subsequent accepted results. The [complete refinement atlas review](research/REFERENCE_REFINEMENT_ATLAS_REVIEW.md)
-preserves the completed 500-page reading; later session work does not replace
-the milestone exits above or the original source facts.
+The published product checkpoint at this reconciliation is
+`b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree
+`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`; its
+[publication receipt](development/2026-11-15-product-continuation/reports/calibration-install-publication.json)
+records the verified parent and non-force update. The earlier `ff41d412` feature
+source has its own 176/176 local result and 13 successful hosted job statuses;
+later fixture/install work needs its own qualification. [STATUS.md](STATUS.md)
+keeps those boundaries, the observed `b9d352a` install failure/repair and the
+pending feature-source primary-log audit explicit.
+
+The integrator owns the current checkout/build and shared publication. Read the
+active checkpoint and [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
+before overlapping source, paint, gallery or build work. Use the
+[native operating guide](MIDI_EXPRESSION_GUIDE.md) and
+[crossover developer guide](CROSSOVER_DEVELOPER_GUIDE.md) for current commands;
+an old setup path or test count is not a current acceptance result.
 
 ## Current implementation design choices
 
@@ -98,6 +112,26 @@ velocity does not scale steady organ loudness. Drawbar branches add coherently;
 polyphony-dependent normalization must not disguise source-sharing mistakes.
 Data loading and profile replacement happen with processing stopped until a
 separately tested publication/retirement protocol exists.
+
+## Current M6 foundation and next numerical phase
+
+The [ideal Leslie crossover](LESLIE_CROSSOVER_CONTRACT.md) is implemented as an
+independent four-state electrical module, with fixed documentary L/C values,
+floating treble A–H output, bass W–B output and ideal 16-ohm default loads.
+Independent analog/reference, actual recurrence/sine, lifecycle, energy and
+allocation checks are retained. [CrossoverTools](CROSSOVER_INSTALL.md) supplies
+an explicit six-file copy-only component. Neither the module nor its installation
+connects an amplifier, driver or cabinet to Engine.
+
+The [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md) retains the
+frequency differences separately from accepted warped-reference parity. After
+this session's closure, the first independent M6 task is to freeze a versioned
+electrical-accuracy protocol, then evaluate a separately identified realization
+against it. [NEXT_STEPS.md](NEXT_STEPS.md#next-dependency-ready-phase-after-session-closure)
+names the available inputs, affected modules and acceptance. Preserve v1 and its
+documentary values. Component losses, source impedance, complex driver loads and
+assembly/specimen applicability remain acquisition-dependent unknowns; numerical
+improvement cannot close full M6 or authorize a live audio route.
 
 ## Current rotary implementation and remaining model gates
 
@@ -147,25 +181,26 @@ banks, fixed registrations, percussion, expression, device settings and explicit
 Save/Load. All **47 sound parameters**, the **`B3CONTROLS4`** writer and readers
 1–3 preserve their meanings; presentation changes do not migrate sound state.
 
-The current [reference refinement](development/2026-11-14-reference-refinement/README.md)
-adds deeper wide manuals, a disjoint cabinet/pedal arrangement, live material
-refinement, singular inspection labels and the accepted measured wide header.
-The preceding [v4 gallery](../examples/demos/standalone-interface-preview-v4/README.md)
-contains eight native views from the published `0881d1f4` source above.
-[A50's independent admission](reviews/REFERENCE_REFINEMENT_FINAL_GALLERY.md)
-passes 611 retained-evidence checks and records exact musical, source,
-executable and pixel identities. Its dummy SDL audio/video and software-renderer
-captures establish their stated application scope. The
-[native-input review](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md) separately
-audits the earlier X11 executable: keyboard-held pedal resize and persistent
-mouse capture/release are observed. That OS journey has no painted pre-held
-keyboard prefix for Service/Flat; it supplies no new v4 OS-input run. Preserve
-those distinct scopes.
+The current [visual refinement](PRODUCT_VISUAL_REFINEMENT.md) adds fitted
+footage legends, 32-pixel manual caps, distinct EDIT BANK/SOUNDING rows and
+restrained natural-key lighting in wide Dimensional views. Compact/Flat paths
+retain their accepted pixels. The separate MIDI modal adds endpoint/inversion
+settings and eleven focus stops; the [operating guide](MIDI_EXPRESSION_GUIDE.md)
+explains selected, configured, active and pending state. Calibration is adapter
+configuration, not a saved musical parameter or an AO-28 expression model.
 
-The v1/v2/v3 and earlier MIDI/chapel galleries remain unchanged historical
-evidence. The exact source cabinet artwork supplies decoration; controls and
-state remain live. **Literal whole-interface 1:1 visual equality remains unmet**,
-including after the measured header improvement. Connected rotary audio,
+The [reference-gap review](design/PRODUCT_REFERENCE_GAPS.md) distinguishes the
+scoped raster/timing results from provisional current previews. A fresh actual
+gallery and independent admission remain pending at this wave-6 reconciliation.
+The admitted [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
+is historical `487064d2` capture evidence; v4 belongs to `0881d1f4`, and earlier
+galleries retain their original identities. No older image is a capture of the
+new calibration modal or painter. The [earlier native-input review](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md)
+retains its distinct X11 scope and incomplete desktop journeys.
+
+The reference supplies visual direction, while the engineering inventory remains
+61+61+25 playing keys, 24 presets and 68 controls including those presets.
+**Literal whole-interface 1:1 visual equality remains unmet.** Connected rotary audio,
 native semantic accessibility, real display/controller/audio-device acceptance,
 DAW journeys, callback deadlines and signed distribution retain separate
 product gates in [release readiness](RELEASE_READINESS.md).
@@ -182,11 +217,10 @@ result names its code and data identities; changing a dependency can invalidate
 only the affected claims. Never change a status to pass merely because a plan or
 an interface exists.
 
-[A49's full 157/157 CTest result](development/2026-11-14-reference-refinement/notes/A49-coherent-final-build.md)
-qualifies its recorded frozen repository inputs and `0881d1f4` product sources.
-Later documentation and ledger changes require their affected integrity checks;
-they do not inherit that frozen Markdown identity. The live checkpoint owns
-later hosted observations, and exact primary logs own test/instrumentation
-claims. Preserve the earlier 154/155 run, separate 1/1 repair and all original
-failures. Finish each active session with its own actual acceptance records and
-strict completion gate; historical ledgers do not close a new session.
+The active checkpoint owns subsequent observed publication and hosted results;
+primary logs own detailed test/instrumentation claims. Preserve original failures,
+source-bound timings and the [completed refinement evidence](REFERENCE_REFINEMENT_CLOSURE.md).
+Later documentation or ledger changes require their affected integrity checks,
+and changed build/test sources require appropriate coherent qualification.
+Finish this product session with its own 60 actual accepted records and strict
+completion gate; historical checkers and planned assignments cannot close it.

@@ -1,0 +1,118 @@
+Source commit: b9d352a82ac1afdec70c76ec5b1987785a37762e
+GitHub run: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43664212086
+Job: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43664212086/job/132659897764
+Original relevant decoded job-log excerpt follows, with trailing whitespace removed for repository formatting; the primary job retains the original. The whole job ran155tests,154passed; python_test_crossover_install failed with3subcase failures. No later pass replaces this observation.
+
+2026-11-15T01:43:49.5050317Z         Start  92: python_test_crossover_reference
+2026-11-15T01:43:49.6501621Z  91/155 Test  #91: python_test_crossover_install .....................***Failed    1.54 sec
+2026-11-15T01:43:49.6502100Z ...FF...F......
+2026-11-15T01:43:49.6502351Z ======================================================================
+2026-11-15T01:43:49.6503217Z FAIL: test_destination_and_parent_links_do_not_redirect_copy (__main__.CrossoverInstallTests.test_destination_and_parent_links_do_not_redirect_copy) (location='binary_parent', dangling=False)
+2026-11-15T01:43:49.6504294Z ----------------------------------------------------------------------
+2026-11-15T01:43:49.6504965Z Traceback (most recent call last):
+2026-11-15T01:43:49.6515202Z   File "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_crossover_install.py", line 423, in test_destination_and_parent_links_do_not_redirect_copy
+2026-11-15T01:43:49.6516665Z     self.unchanged_rejection(self.project, prefix)
+2026-11-15T01:43:49.6518247Z   File "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_crossover_install.py", line 220, in unchanged_rejection
+2026-11-15T01:43:49.6519485Z     self.assertNotEqual(result.returncode, 0, diagnostic(result))
+2026-11-15T01:43:49.6520933Z AssertionError: 0 == 0 : -- CrossoverTools preflight passed; copying begins. A later failure can leave a partial new installation; no automatic cleanup is performed.
+2026-11-15T01:43:49.6522561Z -- Installing: /tmp/crossover-install-n5hf2qo9/020-linked prefix/bin/hammond_crossover_probe
+2026-11-15T01:43:49.6524000Z -- Installing: /tmp/crossover-install-n5hf2qo9/020-linked prefix/share/hammond-b3-organ/crossover/tools/crossover_reference.py
+2026-11-15T01:43:49.6526281Z -- Installing: /tmp/crossover-install-n5hf2qo9/020-linked prefix/share/hammond-b3-organ/crossover/data/crossover/leslie-122-ideal-v1.json
+2026-11-15T01:43:49.6531150Z -- Installing: /tmp/crossover-install-n5hf2qo9/020-linked prefix/share/hammond-b3-organ/crossover/docs/CROSSOVER_INSTALL.md
+2026-11-15T01:43:49.6532926Z -- Installing: /tmp/crossover-install-n5hf2qo9/020-linked prefix/share/hammond-b3-organ/crossover/docs/LESLIE_CROSSOVER_CONTRACT.md
+2026-11-15T01:43:49.6534632Z -- Installing: /tmp/crossover-install-n5hf2qo9/020-linked prefix/share/hammond-b3-organ/crossover/THIRD_PARTY_NOTICES.md
+2026-11-15T01:43:49.6535821Z CMake Warning (dev) at build/cmake_install.cmake:77 (while):
+2026-11-15T01:43:49.6536624Z   Policy CMP0130 is not set: while() diagnoses condition evaluation errors.
+2026-11-15T01:43:49.6537811Z   Run "cmake --help-policy CMP0130" for policy details.  Use the cmake_policy
+2026-11-15T01:43:49.6538575Z   command to set the policy and suppress this warning.
+2026-11-15T01:43:49.6538996Z
+2026-11-15T01:43:49.6539793Z   while() given incorrect arguments:
+2026-11-15T01:43:49.6540343Z
+2026-11-15T01:43:49.6540651Z     "TRUE"
+2026-11-15T01:43:49.6541020Z
+2026-11-15T01:43:49.6541537Z   An argument named "TRUE" appears in a conditional statement.  Policy
+2026-11-15T01:43:49.6542621Z   CMP0012 is not set: if() recognizes numbers and boolean constants.  Run
+2026-11-15T01:43:49.6543735Z   "cmake --help-policy CMP0012" for policy details.  Use the cmake_policy
+2026-11-15T01:43:49.6544751Z   command to set the policy and suppress this warning.
+2026-11-15T01:43:49.6545721Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-11-15T01:43:49.6546462Z
+2026-11-15T01:43:49.6546949Z CMake Warning (dev) at build/cmake_install.cmake:77 (while):
+2026-11-15T01:43:49.6548246Z   Policy CMP0130 is not set: while() diagnoses condition evaluation errors.
+2026-11-15T01:43:49.6549398Z   Run "cmake --help-policy CMP0130" for policy details.  Use the cmake_policy
+2026-11-15T01:43:49.6550456Z   command to set the policy and suppress this warning.
+2026-11-15T01:43:49.6551099Z
+2026-11-15T01:43:49.6551467Z   while() given incorrect arguments:
+2026-11-15T01:43:49.6551998Z
+2026-11-15T01:43:49.6552320Z     "TRUE"
+2026-11-15T01:43:49.6552718Z
+2026-11-15T01:43:49.6553255Z   An argument named "TRUE" appears in a conditional statement.  Policy
+2026-11-15T01:43:49.6554328Z   CMP0012 is not set: if() recognizes numbers and boolean constants.  Run
+2026-11-15T01:43:49.6555422Z   "cmake --help-policy CMP0012" for policy details.  Use the cmake_policy
+2026-11-15T01:43:49.6556460Z   command to set the policy and suppress this warning.
+2026-11-15T01:43:49.6557415Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-11-15T01:43:49.6558422Z
+2026-11-15T01:43:49.6558610Z
+2026-11-15T01:43:49.6558798Z
+2026-11-15T01:43:49.6559208Z ======================================================================
+2026-11-15T01:43:49.6560998Z FAIL: test_destination_and_parent_links_do_not_redirect_copy (__main__.CrossoverInstallTests.test_destination_and_parent_links_do_not_redirect_copy) (location='prefix', dangling=False)
+2026-11-15T01:43:49.6562896Z ----------------------------------------------------------------------
+2026-11-15T01:43:49.6563803Z Traceback (most recent call last):
+2026-11-15T01:43:49.6565421Z   File "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_crossover_install.py", line 423, in test_destination_and_parent_links_do_not_redirect_copy
+2026-11-15T01:43:49.6567074Z     self.unchanged_rejection(self.project, prefix)
+2026-11-15T01:43:49.6568926Z   File "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_crossover_install.py", line 220, in unchanged_rejection
+2026-11-15T01:43:49.6570523Z     self.assertNotEqual(result.returncode, 0, diagnostic(result))
+2026-11-15T01:43:49.6572249Z AssertionError: 0 == 0 : -- CrossoverTools preflight passed; copying begins. A later failure can leave a partial new installation; no automatic cleanup is performed.
+2026-11-15T01:43:49.6574729Z -- Installing: /tmp/crossover-install-n5hf2qo9/024-linked prefix/bin/hammond_crossover_probe
+2026-11-15T01:43:49.6576564Z -- Installing: /tmp/crossover-install-n5hf2qo9/024-linked prefix/share/hammond-b3-organ/crossover/tools/crossover_reference.py
+2026-11-15T01:43:49.6578916Z -- Installing: /tmp/crossover-install-n5hf2qo9/024-linked prefix/share/hammond-b3-organ/crossover/data/crossover/leslie-122-ideal-v1.json
+2026-11-15T01:43:49.6581001Z -- Installing: /tmp/crossover-install-n5hf2qo9/024-linked prefix/share/hammond-b3-organ/crossover/docs/CROSSOVER_INSTALL.md
+2026-11-15T01:43:49.6583048Z -- Installing: /tmp/crossover-install-n5hf2qo9/024-linked prefix/share/hammond-b3-organ/crossover/docs/LESLIE_CROSSOVER_CONTRACT.md
+2026-11-15T01:43:49.6585036Z -- Installing: /tmp/crossover-install-n5hf2qo9/024-linked prefix/share/hammond-b3-organ/crossover/THIRD_PARTY_NOTICES.md
+2026-11-15T01:43:49.6586450Z CMake Warning (dev) at build/cmake_install.cmake:77 (while):
+2026-11-15T01:43:49.6587816Z   Policy CMP0130 is not set: while() diagnoses condition evaluation errors.
+2026-11-15T01:43:49.6589088Z   Run "cmake --help-policy CMP0130" for policy details.  Use the cmake_policy
+2026-11-15T01:43:49.6590177Z   command to set the policy and suppress this warning.
+2026-11-15T01:43:49.6590867Z
+2026-11-15T01:43:49.6591254Z   while() given incorrect arguments:
+2026-11-15T01:43:49.6591823Z
+2026-11-15T01:43:49.6592158Z     "TRUE"
+2026-11-15T01:43:49.6592545Z
+2026-11-15T01:43:49.6593088Z   An argument named "TRUE" appears in a conditional statement.  Policy
+2026-11-15T01:43:49.6594228Z   CMP0012 is not set: if() recognizes numbers and boolean constants.  Run
+2026-11-15T01:43:49.6595351Z   "cmake --help-policy CMP0012" for policy details.  Use the cmake_policy
+2026-11-15T01:43:49.6596402Z   command to set the policy and suppress this warning.
+2026-11-15T01:43:49.6597761Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-11-15T01:43:49.6598591Z
+2026-11-15T01:43:49.6599100Z CMake Warning (dev) at build/cmake_install.cmake:77 (while):
+2026-11-15T01:43:49.6600159Z   Policy CMP0130 is not set: while() diagnoses condition evaluation errors.
+2026-11-15T01:43:49.6601357Z   Run "cmake --help-policy CMP0130" for policy details.  Use the cmake_policy
+2026-11-15T01:43:49.6602432Z   command to set the policy and suppress this warning.
+2026-11-15T01:43:49.6603120Z
+2026-11-15T01:43:49.6603533Z   while() given incorrect arguments:
+2026-11-15T01:43:49.6604097Z
+2026-11-15T01:43:49.6604415Z     "TRUE"
+2026-11-15T01:43:49.6605010Z
+2026-11-15T01:43:49.6605640Z   An argument named "TRUE" appears in a conditional statement.  Policy
+2026-11-15T01:43:49.6606769Z   CMP0012 is not set: if() recognizes numbers and boolean constants.  Run
+2026-11-15T01:43:49.6608186Z   "cmake --help-policy CMP0012" for policy details.  Use the cmake_policy
+2026-11-15T01:43:49.6609292Z   command to set the policy and suppress this warning.
+2026-11-15T01:43:49.6610341Z This warning is for project developers.  Use -Wno-dev to suppress it.
+2026-11-15T01:43:49.6611115Z
+2026-11-15T01:43:49.6611320Z
+2026-11-15T01:43:49.6611521Z
+2026-11-15T01:43:49.6611981Z ======================================================================
+2026-11-15T01:43:49.6613887Z FAIL: test_existing_outputs_and_file_ancestors_are_preserved (__main__.CrossoverInstallTests.test_existing_outputs_and_file_ancestors_are_preserved) (location='package_parent', kind='file')
+2026-11-15T01:43:49.6615849Z ----------------------------------------------------------------------
+2026-11-15T01:43:49.6616748Z Traceback (most recent call last):
+2026-11-15T01:43:49.6618706Z   File "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_crossover_install.py", line 405, in test_existing_outputs_and_file_ancestors_are_preserved
+2026-11-15T01:43:49.6620430Z     self.unchanged_rejection(self.project, prefix)
+2026-11-15T01:43:49.6621900Z   File "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_crossover_install.py", line 222, in unchanged_rejection
+2026-11-15T01:43:49.6623760Z     self.assertEqual(state(prefix), before, "Rejected install mutated its destination")
+2026-11-15T01:43:49.6625730Z AssertionError: {'.':[13 chars],), 'bin': ('directory',), 'share': ('director[201147 chars]\n')} != {'.':[13 chars],), 'share': ('directory',), 'share/hammond-b3[40 chars]\n')}
+2026-11-15T01:43:49.6627840Z Diff is 418717 characters long. Set self.maxDiff to None to see it. : Rejected install mutated its destination
+2026-11-15T01:43:49.6629031Z
+2026-11-15T01:43:49.6629546Z ----------------------------------------------------------------------
+2026-11-15T01:43:49.6630388Z Ran 14 tests in 1.433s
+2026-11-15T01:43:49.6630850Z
+2026-11-15T01:43:49.6631194Z FAILED (failures=3)
+2026-11-15T01:43:49.6631645Z

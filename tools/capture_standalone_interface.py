@@ -236,12 +236,35 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
         require(session[key] == 0, f"session.{key} is nonzero")
     require(session["held_after_shutdown"] is False and session["running_after_shutdown"] is False,
             "joined shutdown did not clear owners/running state")
-    require(midi["source"] == "none" and midi["generation"] == 0 and midi["requested_port"] == ""
-            and midi["port_name"] == "" and midi["state_before_shutdown"] == midi["state_after_shutdown"] == "closed"
-            and all(value == 0 for value in midi["device"].values()) and midi["discovery"]["requests"] == 0,
+    # These facts come from MidiDevice's compiled backend, not from whether a
+    # port happened to be opened. An unavailable build cannot report "closed",
+    # and an available backend must remain closed throughout this UI-only run.
+    available, backend = midi.get("backend_available"), midi.get("backend")
+    require(type(available) is bool and type(backend) is str
+            and (backend in ("ALSA", "CoreMIDI", "WinMM") if available else backend == "unavailable"),
+            "missing, malformed or contradictory compiled MIDI backend facts")
+    expected_midi_state = "closed" if available else "unavailable"
+    require(midi.get("state_before_shutdown") == midi.get("state_after_shutdown") == expected_midi_state,
+            "capture MIDI state differs from the declared compiled backend")
+    device = midi.get("device")
+    device_counters = ("callback_messages", "forwarded_messages", "filtered_messages", "admission_failures",
+                       "backend_errors", "callback_contentions", "disconnects", "close_errors", "last_arrival_ns")
+    discovery = midi.get("discovery")
+    discovery_counters = ("requests", "started", "completed", "discarded_results", "failures")
+    discovery_flags = ("pending_before_shutdown", "shutdown_join_performed", "pending_after_shutdown")
+    require(midi["source"] == "none" and "midi_replay" not in data
+            and type(midi["generation"]) is int and midi["generation"] == 0
+            and type(midi["opened_port_index"]) is int and midi["opened_port_index"] == 0
+            and midi["requested_port"] == midi["port_name"] == "" and midi["active_before_shutdown"] is False
+            and device == dict.fromkeys(device_counters, 0)
+            and all(type(device[key]) is int for key in device_counters)
+            and discovery == {**dict.fromkeys(discovery_counters, 0), **dict.fromkeys(discovery_flags, False)}
+            and all(type(discovery[key]) is int for key in discovery_counters)
+            and all(discovery[key] is False for key in discovery_flags),
             "capture unexpectedly opened/enumerated a native MIDI device")
     require(midi["quiescent_after_shutdown"] is True and midi["diagnostics_stable_after_shutdown"] is True
-            and midi["active_after_shutdown"] is False and not midi["shutdown_failed"] and not midi["startup_failed"],
+            and midi["active_after_shutdown"] is False and midi["shutdown_failed"] is False
+            and midi["startup_failed"] is False,
             "MIDI shutdown was not clean and quiescent")
     record = data["replay"]
     for key in ("completed", "delivered", "passed", "final_acknowledged", "snapshot_available_before_shutdown",
@@ -295,7 +318,8 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
             "held_manual_notes": endpoint["manual_notes"], "held_pedal_ids": endpoint["pedal_ids"],
             "live_edit": {"target": "Upper B 16-foot retained drawbar", "before": 7, "after": 8},
             "complete_control_state_checked": True, "input_state_file_unchanged": True,
-            "joined_shutdown_clear": True, "midi_source": midi["source"]}
+            "joined_shutdown_clear": True, "midi_source": midi["source"],
+            "midi_backend_available": available, "midi_backend": backend, "midi_state": expected_midi_state}
 
 
 def main() -> int:

@@ -1,0 +1,32 @@
+{
+  "source_commit": "b9d352a82ac1afdec70c76ec5b1987785a37762e",
+  "job_id": 132659897861,
+  "run_id": 43664212086,
+  "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43664212086/job/132659897861",
+  "observation": "Crossover install suite had the same three policy failures as Linux plus one Windows stdout CRLF/file LF assertion mismatch; one of155core CTest gates failed.",
+  "primary_log_excerpt": [
+    "2026-11-15T01:46:46.8002746Z FAIL: test_installed_reference_output_and_native_rejection_safety (__main__.CrossoverInstallTests.test_installed_reference_output_and_native_rejection_safety)\r",
+    "2026-11-15T01:46:46.8003447Z ----------------------------------------------------------------------\r",
+    "2026-11-15T01:46:46.8003761Z Traceback (most recent call last):\r",
+    "2026-11-15T01:46:46.8004442Z   File \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\tests\\test_crossover_install.py\", line 492, in test_installed_reference_output_and_native_rejection_safety\r",
+    "2026-11-15T01:46:46.8005130Z     self.assertEqual(report_path.read_bytes(), stdout.stdout)\r",
+    "2026-11-15T01:46:46.8005740Z AssertionError: b'{\\n  \"acceptance\": {\\n    \"maximum_errors\":[141600 chars]n}\\n' != b'{\\r\\n  \"acceptance\": {\\r\\n    \"maximum_erro[151284 chars]\\r\\n'\r",
+    "2026-11-15T01:46:46.8006213Z \r",
+    "2026-11-15T01:46:46.8006347Z ----------------------------------------------------------------------\r",
+    "2026-11-15T01:46:46.8006654Z Ran 14 tests in 12.357s\r",
+    "2026-11-15T01:46:46.8006787Z \r",
+    "2026-11-15T01:46:46.8006871Z FAILED (failures=4, skipped=1)\r"
+  ],
+  "failure_names": [
+    "2026-11-15T01:46:46.7946210Z FAIL: test_destination_and_parent_links_do_not_redirect_copy (__main__.CrossoverInstallTests.test_destination_and_parent_links_do_not_redirect_copy) (location='binary_parent', dangling=False)",
+    "2026-11-15T01:46:46.7975675Z FAIL: test_destination_and_parent_links_do_not_redirect_copy (__main__.CrossoverInstallTests.test_destination_and_parent_links_do_not_redirect_copy) (location='prefix', dangling=False)",
+    "2026-11-15T01:46:46.7996183Z FAIL: test_existing_outputs_and_file_ancestors_are_preserved (__main__.CrossoverInstallTests.test_existing_outputs_and_file_ancestors_are_preserved) (location='package_parent', kind='file')",
+    "2026-11-15T01:46:46.8002746Z FAIL: test_installed_reference_output_and_native_rejection_safety (__main__.CrossoverInstallTests.test_installed_reference_output_and_native_rejection_safety)"
+  ],
+  "summary": [
+    "2026-11-15T01:46:46.8006871Z FAILED (failures=4, skipped=1)\r",
+    "2026-11-15T01:48:47.4027063Z 99% tests passed, 1 tests failed out of 155\r",
+    "2026-11-15T01:48:47.4034043Z Total Test time (real) = 259.31 sec\r"
+  ],
+  "boundary": "Selected primary-log excerpt and actual failure list retained; later repairs do not erase this result."
+}

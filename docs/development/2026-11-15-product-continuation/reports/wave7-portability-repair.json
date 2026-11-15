@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "changed_inputs_sha256": {
+    "cmake/InstallCrossoverTools.cmake": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844",
+    "tests/test_crossover_install.py": "8daf656ad24f812d9d11920c35c846ec46d344e4b7fc78ed330ae9f764ffcd03",
+    "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": "e33b17f3f9642d17e21e5d645f8f3d82a176ca030b78164521af2e530ce57dd6",
+    "apps/standalone/CMakeLists.txt": "772f75acd307d955cd632afc01ec7c5221859aa997aa97bd4d108a69deafc94c"
+  },
+  "configure_exit": 0,
+  "fixture_build_exit": 0,
+  "focused_ctest": {
+    "selected": 2,
+    "passed": 2,
+    "elapsed_seconds": 21.92,
+    "log": "wave7-portability-repair-ctest.txt"
+  },
+  "calibration_summary": "A38-root-native-calibration.json",
+  "original_failures": [
+    "b9-linux-crossover-install-failure.txt",
+    "b9-windows-install-newline-failure.json",
+    "b9-windows-native-fixture-failure.json"
+  ],
+  "repairs": [
+    "Use numeric while(1) in policy-unscoped CMake install preflight",
+    "Own each SDL_getenv result before another read or application startup",
+    "Normalize only Windows stdout CRLF in the test before exact JSON file-byte equality",
+    "Mirror production MinGW Unicode entry link option on the test probe"
+  ],
+  "boundaries": [
+    "Actual local GCC14.2/CMake4.4.5 Release execution only",
+    "CMake3.31.6 and Windows hosted replacement execution pending",
+    "MinGW link option source-reviewed, no MinGW runtime qualification",
+    "Production main, painter, musical core and reference oracle unchanged"
+  ]
+}

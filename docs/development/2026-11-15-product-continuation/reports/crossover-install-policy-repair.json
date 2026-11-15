@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "failed_source": "b9d352a82ac1afdec70c76ec5b1987785a37762e",
+  "failed_run": 43664212086,
+  "failed_job": 132659897764,
+  "runner": "Linux GCC Release",
+  "runner_cmake_version": "3.31.6",
+  "result": "154/155CTest passed; python_test_crossover_install failed in3negative subcases",
+  "cause": "Generated install script did not inherit configure-time policy scope; with CMP0012 unset while(TRUE) was diagnosed and skipped, bypassing destination-ancestor preflight.",
+  "repair": "Use policy-independent numeric while(1); preserve all input/destination checks and all14test cases.",
+  "changed_file": "cmake/InstallCrossoverTools.cmake",
+  "changed_sha256": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844",
+  "local_recheck": {
+    "cmake_version": "4.4.5",
+    "tests": 14,
+    "passed": 14,
+    "elapsed_seconds": 1.37,
+    "log": "crossover-install-policy-repair-local.txt",
+    "scope": "Current local CMake confirms unchanged installation assertions; older-runner repair requires replacement hosted execution."
+  },
+  "primary_failure_excerpt": "b9-linux-crossover-install-failure.txt",
+  "fixed_source_hosted_status": "pending publication and execution"
+}

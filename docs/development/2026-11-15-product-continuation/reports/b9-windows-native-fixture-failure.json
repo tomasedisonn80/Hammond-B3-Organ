@@ -1,0 +1,38 @@
+{
+  "source_commit": "b9d352a82ac1afdec70c76ec5b1987785a37762e",
+  "job_id": 132659898014,
+  "run_id": 43664212019,
+  "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43664212019/job/132659898014",
+  "observation": "Eight of nine test-only calibration fixture cases refused before application startup; one of48native CTest gates failed.",
+  "primary_log_excerpt": [
+    "2026-11-15T01:46:34.3741774Z 172: FAIL: test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11)\r",
+    "2026-11-15T01:46:34.3743090Z 172: ----------------------------------------------------------------------\r",
+    "2026-11-15T01:46:34.3743606Z 172: Traceback (most recent call last):\r",
+    "2026-11-15T01:46:34.3744725Z 172:   File \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\native_tests\\test_standalone_native_calibration.py\", line 388, in test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11\r",
+    "2026-11-15T01:46:34.3745973Z 172:     data, trace = self.run_case(\"calibration\", calibration_edit(), 2600)\r",
+    "2026-11-15T01:46:34.3746562Z 172:                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r",
+    "2026-11-15T01:46:34.3747476Z 172:   File \"D:\\a\\Hammond-B3-Organ\\Hammond-B3-Organ\\apps\\standalone\\native_tests\\test_standalone_native_calibration.py\", line 217, in run_case\r",
+    "2026-11-15T01:46:34.3748467Z 172:     self.assertEqual(process.returncode, expected_exit, process.stderr)\r",
+    "2026-11-15T01:46:34.3749402Z 172: AssertionError: 2 != 0 : calibration fixture requires a declared scenario and trace destination\r",
+    "2026-11-15T01:46:34.3750078Z 172: \r",
+    "2026-11-15T01:46:34.3750361Z 172: \r",
+    "2026-11-15T01:46:34.3750735Z 172: ======================================================================\r",
+    "2026-11-15T01:46:34.3751834Z 172: FAIL: test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration)\r"
+  ],
+  "failure_names": [
+    "2026-11-15T01:46:34.3741774Z 172: FAIL: test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11)",
+    "2026-11-15T01:46:34.3751834Z 172: FAIL: test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration)",
+    "2026-11-15T01:46:34.3762814Z 172: FAIL: test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel)",
+    "2026-11-15T01:46:34.3775532Z 172: FAIL: test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry)",
+    "2026-11-15T01:46:34.3788370Z 172: FAIL: test_fixture_inventory_calibrates_real_enumeration_without_audio (__main__.NativeCalibrationLifecycle.test_fixture_inventory_calibrates_real_enumeration_without_audio)",
+    "2026-11-15T01:46:34.3796953Z 172: FAIL: test_healthy_identical_apply_preserves_epoch_notes_and_expression (__main__.NativeCalibrationLifecycle.test_healthy_identical_apply_preserves_epoch_notes_and_expression)",
+    "2026-11-15T01:46:34.3808815Z 172: FAIL: test_native_fault_retires_midi_owners_while_original_ui_owner_survives (__main__.NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives)",
+    "2026-11-15T01:46:34.3821131Z 172: FAIL: test_no_input_apply_retains_calibration_without_touching_expression (__main__.NativeCalibrationLifecycle.test_no_input_apply_retains_calibration_without_touching_expression)"
+  ],
+  "summary": [
+    "2026-11-15T01:46:34.3832783Z 172: FAILED (failures=8)\r",
+    "2026-11-15T01:49:45.1704726Z 98% tests passed, 1 tests failed out of 48\r",
+    "2026-11-15T01:49:45.1710066Z Total Test time (real) = 344.01 sec\r"
+  ],
+  "boundary": "Selected primary-log excerpt and actual failure list retained; later repairs do not erase this result."
+}

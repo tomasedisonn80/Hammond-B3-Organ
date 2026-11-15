@@ -1,5 +1,131 @@
 # Development status
 
+## Current product continuation — 15 November 2026
+
+The active [product continuation](development/2026-11-15-product-continuation/README.md)
+starts at `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb`. It owns native M9 MIDI
+channel modes, expression endpoint/inversion calibration and measured visual
+refinement, plus the independent M6 passive-crossover foundation. At A36's
+wave-6 reconciliation snapshot, **38 actual workers have been dispatched:
+A01–A34 are accepted, A35 is review-complete awaiting acceptance, and A36–A38
+are in progress**. Dependency-ready wave-7 work overlaps the remaining wave-6
+handoffs. The requested 60 agents in
+ten waves are not complete. The [live checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
+and [actual manifest](development/2026-11-15-product-continuation/assignments.json)
+own later progress. A01–A06 covered all 500 atlas pages; their
+[reading records](PROJECT_GUIDE.md#source-and-reading-records) preserve the
+original PDF and extract hashes.
+
+The playable Engine remains a **nominal dry organ** with 91 shared free-running
+sources, 47 musical parameters, the `B3CONTROLS4` writer and readers 1–3.
+The [compatibility review](PRODUCT_COMPATIBILITY.md) verifies the preserved core,
+state, VST3 and control boundaries for its named source. The separate
+[waveform session](development/2026-11-14-waveform-continuation/README.md) retains
+R4 ownership in its other checkout. Its unfinished work and actual assignments
+are neither replaced nor counted here.
+
+### Source and executed evidence
+
+Latest published checkpoint at this snapshot:
+**`b9d352a82ac1afdec70c76ec5b1987785a37762e`**, tree
+`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`. The
+[publication receipt](development/2026-11-15-product-continuation/reports/calibration-install-publication.json)
+records its verified parent and non-force update. This adds accepted fixture,
+install, characterization and review work after the main feature publication.
+Its Linux Release job returned **154/155**, with three negative-case failures
+inside `python_test_crossover_install`. The
+[original primary excerpt](development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt)
+records the policy-dependent `while(TRUE)` ancestor guard being skipped when
+CMP0012 was unset in the generated install script. Root changed that loop to
+policy-independent `while(1)` and observed a local **14/14 recheck in 1.370 s**.
+Linux core sanitizers and Windows core also expose the install failure; Windows
+adds a stdout-CRLF versus atomic-file-LF fixture comparison failure. Windows
+native returns **47/48**, with eight cases in the new calibration fixture
+exiting 2 at scenario/trace setup. Narrow fixture repairs and their qualification
+are in progress. Linux/macOS native and all three VST3 job statuses succeed at
+`b9d352a`, but this is not an all-green matrix. Use the live checkpoint for
+subsequent primary-log and repair receipts; repaired-source publication/hosted
+acceptance remains pending. The earlier A31 local pass below retains its
+CMake 4.4.5 scope.
+
+| Evidence | Observed result and boundary |
+| --- | --- |
+| [Feature publication](development/2026-11-15-product-continuation/reports/implementation-publication.json), [coherent build receipt](development/2026-11-15-product-continuation/reports/wave4-coherent-build.json) and [full CTest log](development/2026-11-15-product-continuation/reports/wave4-full-ctest.txt) | `ff41d412d03f2c5767aa4057b29fa8ec1627449b`, tree `6462343bb34a7d70d59de75ab349f8530196988c`: all-target GCC 14.2 Release build and **176/176 tests in 177.92 s** passed. Standalone ON, native MIDI backend OFF, VST3 OFF, explicit dummy SDL. Later fixture/install inputs are outside this full-suite result. |
+| [Hosted status receipt](development/2026-11-15-product-continuation/reports/implementation-hosted-status.json) | All **13 job statuses report success at `ff41d412`**, across core, standalone and VST3 workflows. Source-specific primary-log audit remains pending; this is not yet a detailed audit of suite counts, instrumentation or installed artifacts and does not qualify `b9d352a`. |
+| [A26 native calibration fixture](development/2026-11-15-product-continuation/notes/A26-native-calibration-lifecycle.md), [retained lifecycle evidence](development/2026-11-15-product-continuation/reports/A26-root-native-calibration.json) and [integrated CTest](development/2026-11-15-product-continuation/reports/wave5-integrated-ctest.txt) | **9 tests, 10 processes, 7 native lifecycles** pass; root's integrated test passes in **20.56 s**. The unchanged real application and MIDI adapter use a substituted synchronous MIDI dependency with real dummy SDL callbacks. Physical hardware and asynchronous driver races remain unqualified. |
+| [A31 CrossoverTools](development/2026-11-15-product-continuation/notes/A31-crossover-install.md) and [integrated install CTest](development/2026-11-15-product-continuation/reports/wave6-crossover-install-ctest.txt) | **14 private fixture checks** pass; root's integrated test passes in **1.61 s**. The explicit copy-only component contains six files. Existing components remain distinct; this is not a signed or general-distribution release. |
+| [Independent visual acceptance](development/2026-11-15-product-continuation/notes/A23-visual-acceptance.md) and [paint experiment](development/2026-11-15-product-continuation/notes/A27-paint-performance.md) | **19,712 checks across 110 cases** retain zero escaped pixels and 34 identical compact/Flat/hidden pairs. The six-case relative timing budget passes; largest median growth is about **1.23%**, while wide software draws remain about **112–114 ms**. This does not establish interactive frame rate or native display latency. |
+| [Crossover response](development/2026-11-15-product-continuation/reports/crossover-response-acceptance.json), [lifecycle](development/2026-11-15-product-continuation/notes/A20-crossover-lifecycle.md) and [allocation](development/2026-11-15-product-continuation/notes/A25-crossover-allocation.md) | Independent warped response and actual sine-processing agreement, physical-state/rate transitions, transactional rejection, energy checks and calibrated current-thread C++ allocation observations pass their declared scopes. Same-Hz analog accuracy is separately characterized and has no accepted audible/physical threshold. |
+
+The local leak-enabled sanitizer and independent empty-main control were
+**blocked by the ptrace environment**, not passed. Preserve their
+[original failure](development/2026-11-15-product-continuation/reports/A25-local-sanitizer-blocked.txt)
+and [control result](development/2026-11-15-product-continuation/reports/A25-local-sanitizer-control.txt).
+Hosted leak-enabled evidence is separate; the historical named core quarantine
+exception must not become a general exception for new paths.
+
+### Implemented product behavior
+
+- **Native MIDI:** zero-valued CC120 retires the addressed MIDI owners under
+  the current ideal-contact Session contract, preserving other owners and source
+  phase. Zero-valued CC121 resets global expression to 1.0 through the existing
+  desired-control path and bypasses calibration. CC123 retains its earlier
+  all-value compatibility. See the [channel-mode contract](MIDI_CHANNEL_MODE_CONTRACT.md).
+- **Expression calibration:** CC11 endpoint/inversion settings are immutable
+  within an input epoch. The CLI and eleven-stop MIDI modal distinguish selected,
+  configured, active and pending settings. Changed native requests retire/join,
+  discard stale packets and await scoped releases before reopening; healthy
+  identical requests preserve the epoch. Configuration stays outside musical
+  saved state. The [operating guide](MIDI_EXPRESSION_GUIDE.md) gives exact setup
+  and recovery; this does not calibrate the physical AO-28 expression law.
+- **Native visual refinement:** wide Dimensional views have readable complete
+  footage, 32-pixel manual caps, separate edited/applied registration rows and
+  restrained natural-key lighting. Inventory remains **61 Upper + 61 Lower +
+  25 pedals, 24 reversed presets and 68 controls including those presets**.
+  The [reference-gap review](design/PRODUCT_REFERENCE_GAPS.md) identifies
+  provisional current previews and remaining material/display differences.
+  A fresh source-bound gallery and independent admission are still pending.
+  The admitted [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
+  remains historical `487064d2` evidence. **Literal 1:1 equality is unmet.**
+- **Independent M6 crossover:** four electrical states preserve the floating
+  treble A–H and bass W–B ports with ideal 16-ohm default loads. The
+  [developer guide](CROSSOVER_DEVELOPER_GUIDE.md),
+  [installation guide](CROSSOVER_INSTALL.md) and
+  [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md) provide
+  reproducible workflows. It has no Engine connection, amplifier, real driver
+  loading or acoustic response. Physical losses, source impedance and complex
+  loads remain unknown.
+
+### Position against the complete M0–M9 plan
+
+| Milestone | Current engineering position | Remaining exit |
+| --- | --- | --- |
+| M0 | Source identities, complete readings, nominal profiles and evidence contracts exist. | Identified specimen/revision, permissions, calibrated boundaries and unresolved source/measurement inputs. |
+| M1 | Prepared SDK-free Engine, bounded input/lifecycle and offline rendering are implemented and tested. | New runtime routes and actual device deadlines need their own acceptance. |
+| M2 | 91 shared, free-running nominal sources and documentary manual/pedal routing are implemented. | Production gearing, pickup waves/levels/phases, loading, leakage and measured tuning. |
+| M3 | Nominal contacts, four banks, exclusive fixed registrations, Cancel, percussion, pedals and expression are implemented. | Physical latch/tap loading, continuous conductance, switching, loaded expression and pedal-reactor evidence. |
+| M4 | Independent scanner graph, AC/transient references, line and rotor research exist. | **G5 same-Hz failure remains unresolved**; combined-stage, audible-policy and physical gates precede Engine integration. |
+| M5 | Documentary preparation; no connected AO-28 model in Engine. | Revision-specific graph, operating points, source/load/feedback, nonlinear/alias checks and dry G–G validation. |
+| M6 | New independently qualified ideal passive crossover and movable research tools. | Versioned same-Hz accuracy policy/candidate; measured source/load/loss data and coupled 122 amplifier/transformer/driver model. Keep 147 separate. |
+| M7 | Qualified nominal R2/R3 primitives; implemented independent R4 renderer with source-bound waveform evidence. | R4's remaining acceptance belongs to the waveform owner; R5 audible policy, R6 runtime/Engine integration and physical acoustics remain separate. |
+| M8 | Capture/corpus/comparison/replay/readiness tools and acquisition procedures exist. | Identified real captures, calibrated clocks/chains, held-out fitting, uncertainty and listening evidence. |
+| M9 | Native standalone, VST3 adapter, state/automation, input/calibration and reference-led UI are implemented in bounded scopes. | Current session closure, actual device/DAW/display journeys, semantic accessibility, deadlines, rights and signed distribution. |
+
+The [complete plan](PLAN.md) owns milestone exits. The
+[next actions](NEXT_STEPS.md) distinguish the current session's remaining
+gallery/platform/accounting/publication work from the next independent M6
+numerical phase and acquisition-dependent physical work.
+
+## Historical results and source boundaries
+
+Everything below preserves earlier source-specific checkpoints. Their words
+“current,” “active,” older parameter counts and pending tasks describe those
+recorded sessions. Use the current section above and the owning live checkpoint
+for present work. Do not transfer an earlier pass, capture or completed agent
+count to changed inputs.
+
+### Completed 2026-11-14 reference-refinement publication
+
 **Completed and published:** all 60 reference-refinement agents are accepted.
 Source [`fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/fd2f6060b1f03b6d902ff0547441c07d6e74ba4f),
 tree `89c0fb214b018ca43ec9c8b413d3030284a54ec2`, passes
@@ -13,7 +139,7 @@ preserves the accepted records and source identities. The
 and remaining product gates. The current v5 images retain their actual `487064d2`
 capture source; they are not a new capture at `fd2f606`.
 
-## Current waveform rendering and native design continuation
+## Historical combined-source waveform and native design checkpoint
 
 The [waveform session](development/2026-11-14-waveform-continuation/README.md)
 starts at `2e161dc`. Its published incoming source is
@@ -92,7 +218,7 @@ physical acquisition and literal visual equality have separate gates. The
 [current checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
 records exact paths, current commands, concurrent-source ownership and publication.
 
-## Current reference refinement and nominal propagation qualification
+## Historical reference refinement and nominal propagation qualification
 
 The [reference-refinement session](development/2026-11-14-reference-refinement/README.md)
 is complete; the separately owned waveform session above continues product work.

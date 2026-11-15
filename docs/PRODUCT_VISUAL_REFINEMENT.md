@@ -1,12 +1,48 @@
 # Product continuation: native visual refinement
 
 Design identity: `standalone-wide-legibility-v1`. This is the implementation
-contract for the product continuation's paint slice, subject to integrator
-acceptance and independent execution. It does not claim an implemented result.
+contract for the product continuation's paint slice. The frozen paint behavior
+below is implemented with the bounded qualification recorded here; current
+gallery admission and literal whole-interface equality remain separate gates.
 It amends the text-size/cap-footprint preservation clauses of the earlier
 [material contract](REFERENCE_REFINEMENT_MATERIALS.md) and
 [waveform paint contract](WAVEFORM_UI_DESIGN.md) only within the scope below.
 The [layout contract](REFERENCE_REFINEMENT_LAYOUT.md) remains unchanged.
+
+## Implementation and evidence status — 15 November 2026
+
+[A15's implementation](development/2026-11-15-product-continuation/notes/A15-visual-implementation.md)
+adds complete fitted footage, 32-pixel manual caps with eight-pixel fronts,
+14-pixel numeric ink, separate EDIT BANK/applied SOUNDING rows, and restrained
+idle-natural edge lighting/reduced rear recess. The wide Dimensional activation
+and all unchanged-layout requirements below remain in force. The later MIDI
+overlay occupies a separately owned paint path; it is not part of the fixed-state
+whole-frame comparison.
+
+| Evidence | Observed result | Qualification boundary |
+| --- | --- | --- |
+| [A23 independent raster report](development/2026-11-15-product-continuation/reports/A23-visual-acceptance.json) | 19,712 checks, 110 paired cases and 336,015,828 compared pixels; zero escaped pixels and readout-shadow leaks; 34 byte-identical compact/Flat/hidden pairs. Complete literal glyphs, cap separation, applied captions, held/focus/pending states, scale and clipping are witnessed. | Identified SDL software surfaces and fixed copied state, overlay None. This establishes containment and preserved paths in the tested cases, not perceptual resemblance, display readability or native accessibility. |
+| [A23 retained material fixture](development/2026-11-15-product-continuation/notes/A23-visual-acceptance.md) | 1,917 checks in 55 cases pass with 32/8 wide caps, unchanged compact/pedal expectations and unchanged front contrast. | Exact source and fixture identities remain in the report, including initial harness failures and their corrections. |
+| [A27 paired paint report](development/2026-11-15-product-continuation/reports/A27-paint-performance.json) | All six scale-1 cases stay within the declared regression budget; largest median increase is 1.380 ms / 1.228%. Wide Dimensional observed C++ allocations/frees fall 21 to 19 per draw; compact and Flat counts are unchanged. | Thirty warmups and 300 measured draws per painter; a separate calibrated heap observer. Absolute current wide medians are 112.441–113.713 ms on the pinned shared-host software fixture. This is not a 60-fps, display-latency, audio-deadline, leak-freedom or hardware-resource pass. |
+| [A34 current reference review](design/PRODUCT_REFERENCE_GAPS.md) | Direct inspection of the original reference, historical v5 and two provisional current application images confirms the visible local changes and documents remaining differences. Current source/executable and image bytes were independently rehashed. | The two current images are review previews, not an admitted product gallery. The minimum-size MIDI preview does not extend wide-painter or real-device qualification. |
+
+The before painter is `af006b0ae293c7c9a5f44b5dfe1dc9942fe9e12d`'s
+`InstrumentView.cpp`, SHA-256
+`aae710a6e4eb8d7eccfe8fd7e5cf3cb98109ee1bc0143229e5b5b8b63f3c7a4c`.
+Both A23 and A27 identify the after painter as
+`3687f96db4490e600d6107e6b39d7b7d568bdeb183f16f6aa397535a5f688567`;
+A34 verified those after bytes remain present. A23 retains the original
+contract-document hash; both reports retain their original execution context.
+This status addition does not rewrite those identities or change the frozen
+contract below.
+
+**Next UI gate:** admit fresh source/executable/pixel-bound application captures
+at reference/default/minimum sizes and Flat, plus the separate MIDI overlay,
+then refresh README from the accepted images. The
+[prioritized gap record](design/PRODUCT_REFERENCE_GAPS.md#next-ui-gates)
+defines the remaining display/usability and material work. Preserve v1–v5 and
+their actual capture identities; a newly reviewed preview is not a recapture
+of historical evidence.
 
 ## Source and exact scope
 
