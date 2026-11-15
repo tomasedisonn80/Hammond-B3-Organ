@@ -1,0 +1,38 @@
+{
+  "schema": "next-phase-baseline-v1",
+  "source_commit": "138fca9af7feca46d10b0e2b65d891f4751a3904",
+  "source_tree": "d26e7ca86197750629b5e6f85fc548e03a815dd8",
+  "source_changes_at_build": "only current-session documentation; no implementation changes",
+  "cwd": "/workspace/scratch/116ca0948095",
+  "configuration": "Release; BUILD_TESTING=ON; native standalone ON; MIDI OFF; VST3 OFF",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "cmake": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+  "ninja": "/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+  "dependency_sdl2": "/workspace/scratch/1bb6ee17ad7e/SDL2",
+  "dependency_sysroot": "/workspace/scratch/1bb6ee17ad7e/native-sysroot/usr",
+  "test_result": {
+    "percent_passed": 100,
+    "failed": 0,
+    "total": 180,
+    "elapsed_seconds": 173.9
+  },
+  "logs": {
+    "baseline-configure.log": {
+      "sha256": "ee6c25e63b11248555fdd9f438a10b35abd7a97a50da6cdb5100ad5b2bb1d334",
+      "bytes": 23533
+    },
+    "baseline-build.log": {
+      "sha256": "c30dee2798b2c86489602eb138df0925e40dfe12fb804ce05329f4aeb79df781",
+      "bytes": 47127
+    },
+    "baseline-ctest.log": {
+      "sha256": "0e224fdd75e8caa0982418175775c6de12d6e043ecdd45f391506ea9bf752f34",
+      "bytes": 26195
+    }
+  },
+  "limitations": [
+    "Native acceptance uses dummy SDL unless an individual test states otherwise.",
+    "No new feature, real device, physical fidelity, accessibility or VST3 claim.",
+    "Initial bare cmake invocation failed because cmake was absent from PATH; retry used observed read-only CMake/Ninja tooling."
+  ]
+}

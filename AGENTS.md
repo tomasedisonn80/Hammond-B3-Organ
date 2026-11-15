@@ -1,5 +1,22 @@
 # Standing instructions for every development agent
 
+## Parallel next-phase session — 2026-11-15
+
+The owner's new sixty-agent/ten-wave request is being implemented in
+`/workspace/scratch/116ca0948095/Hammond-B3-Organ`, starting from published
+`138fca9af7feca46d10b0e2b65d891f4751a3904`. Read this session's
+[entry](docs/development/2026-11-15-next-phase/README.md),
+[checkpoint](docs/development/2026-11-15-next-phase/CHECKPOINT.md) and
+[actual assignments](docs/development/2026-11-15-next-phase/assignments.json).
+This is a separate concurrent owner, not a continuation of another worker ledger.
+Root owns this checkout's shared navigation, build configuration, coordinated
+build and publication. Workers edit only explicitly assigned files. All other
+checkouts and builds are read-only references; preserve their unfinished work.
+The fidelity session below still owns its visual-deck, M6 FOH and native MIDI
+close work; the waveform session owns R4. Freeze this session's independent
+implementation scope after the complete atlas reading and source assessment.
+Retain all standing evidence, preservation, storage and publication rules below.
+
 ## Active routing — fidelity continuation, 2026-11-15
 
 The current owner-requested session starts from `878d3ce82a10a0ae335dab377683ec543f194957`.
