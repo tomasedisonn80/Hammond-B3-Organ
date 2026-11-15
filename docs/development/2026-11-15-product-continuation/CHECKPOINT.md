@@ -1,136 +1,139 @@
 # Product continuation checkpoint
 
-## Current recovery authority
+## Current outcome and recovery authority
 
-**All 60 actual workers are accepted in ten logical waves of six.** The
-[manifest](assignments.json), [strict local result](reports/product-session-strict.json)
-and [integrator dispatch account](reports/integrator-dispatch-reconciliation.json)
-retain current-session identities and note hashes. Historical workers and
-followups are not counted. At most three workers ran concurrently; dependency-ready
-work could overlap wave boundaries. The strict checker validates records, not
-external dispatch or semantic acceptance.
+**All 60 actual workers are accepted in ten logical waves of six. All thirteen
+required hosted jobs pass at the published repaired source.** The
+[manifest](assignments.json), [strict actual-record result](reports/product-session-strict.json),
+[integrator dispatch account](reports/integrator-dispatch-reconciliation.json)
+and [final primary qualification](reports/root-final-hosted.json) retain exact
+identities and scope. At most three workers ran concurrently; dependency-ready
+work could overlap logical wave boundaries. Historical workers and followups do
+not create new credit. The record checker validates retained records; it does
+not independently attest dispatch, semantic acceptance or physical fidelity.
 
 The [batch record](../../PRODUCT_CONTINUATION_CLOSURE.md) and
 [final requirements audit](../../reviews/PRODUCT_FINAL_REQUIREMENTS_REVIEW.md)
-state the remaining original requirement plainly: **literal whole-interface
-1:1 reference equality is unmet and unwaived**. Selected M9/M6 work is accepted;
-complete physical fidelity, the whole milestones and release are not claimed.
+keep the remaining original requirement explicit: **literal whole-interface
+1:1 reference equality is unmet and unwaived**. Selected M9 MIDI/calibration/UI
+work and the independent ideal M6 foundation are accepted. Neither the entire
+original request, whole M6/M9 milestones nor physical fidelity/release is claimed.
 
-All workers have delivered and released ownership. Root owns the frozen notes,
-ledger, shared docs, primary build, publication and final hosted qualification.
-The only current integration work is the final publication/CI/evidence sequence
-below. Do not invent more worker credit or rewrite historical failed outcomes.
+All worker and followup ownership is released. Root owns the closing current
+documents and evidence. The next agent must inspect actual checkout/index/remote,
+read [AGENTS.md](../../../AGENTS.md), the whole [M0–M9 plan](../../PLAN.md),
+[current status](../../STATUS.md), [next steps](../../NEXT_STEPS.md) and the
+[setup handoff](../../PRODUCT_HANDOFF.md), then claim a bounded next assignment.
 
-## Source and executed gates
+## Exact qualified source and closing evidence
 
-The latest published checkpoint is
-**`c4486bafccbcfbcd9bcd9492e8949ddd44ea1340`**, tree
-`2d21135e570c5b328a7f54d17582ffc7ac62a489`, parent
-`d8c39f7986746eacc991747153c7dbb012bb9a32`.
-[The publication receipt](reports/final-source-publication.json) records the
-expected-head/nonforced update, exact-tree/blob verification and preserved local
-predecessor65e9ea5 under `refs/checkpoints/local-product-final-source`.
-All sixty accepted records and the strict CI invocation are published.
+Tested source: **`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`**.
 
-Required source runs are **CI43672641490**, **Native standalone43672641506**
-and **Native VST343672641501**. At 03:38 UTC, macOS core job132685867386
-**failed**: 156/157 CTests pass, with four assertions failing inside the new
-`python_test_product_session` module. A51 reproduced those exact four failures
-through a private symlinked temporary directory and repaired the fixture's
-canonical path. Its original 19 methods then pass for both ordinary and aliased
-directories. Windows core job132685867528 separately **failed** 156/157 with
-111 assertions (one existing FIFO skip) because the checker compares Windows
-path-stat creation time with descriptor-stat change time. A50 owns the narrow
-portable reader repair and meaningful regression additions, building on A51's
-released fixture change. The published c448 matrix is not fully qualified.
-All thirteen c448 jobs have now completed: **eleven success and two failed core
-jobs**. Linux core Release/sanitizers, four native Release configurations,
-native sanitizers (21/21), R4 and all three VST3 jobs pass their named source.
-The [root status receipt](reports/c448-hosted-status.json) retains the complete
-failed-matrix observation; it must not be relabeled as overall success.
-A49/A50/A51/A52 followups add no worker/wave credit.
-The c448 runs are finished, so the reviewed portability repair can be published
-without cancelling their evidence. The earlier d8 thirteen-job success
-remains historical; it does not qualify this new source by inheritance.
+Tree: `d310be065db2bb9b0012c11a0c5ec2beda4c9384`.
 
-That source includes A46's record checker, A48's report-admission repair,
-identical-pixel plot metadata refresh, all notes/reviews and current handoffs.
-The strict local check was rerun after root removed four formatting-only EOF
-blank lines; the [formatting receipt](reports/final-eof-formatting.json) records
-reconstructable before/after identities, and A50's note hash is current.
+Parent: `c4486bafccbcfbcd9bcd9492e8949ddd44ea1340`.
 
-The [coherent local receipt](reports/wave8-coherent-build.json) records successful
-reconfigure/all-target build and **180/180 CTest in 507.55 seconds** over d8 plus
-A46/A48. All **366 code/test/build/data hashes** remained unchanged throughout
-during that run. The portable checker/test changes now differ in exactly two
-of those inputs; all other 364 and all three binaries still match. The
-[focused root verification](reports/checker-portability-root-verification.json)
-passes the registered affected CTest in 1.31 seconds and current actual strict
-records (60 accepted/verified, ten waves, zero errors). Only checker identity
-changes in the strict JSON; manifest and note hashes remain unchanged. The
-current production binaries are:
+[The source publication receipt](reports/checker-portability-publication.json)
+records expected-head protection, `force:false`, exact local/remote tree,
+fetched parent and clean worktree at verification. Local same-tree predecessor
+`03723e24a89c73124340785df20c1b0f6392312c` remains under
+`refs/checkpoints/local-product-checker-portability`. The surrounding closing
+commit contains documentation and evidence only; 80b8cce is the code actually
+tested. Its publication identity is the containing Git commit, not a fabricated
+self-referential hash in this file. Inspect current Git metadata before resuming.
 
+| Required run | Actual source-specific outcome |
+| --- | --- |
+| [CI 43674212267](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212267) | Core 157/157 on Linux/Windows/macOS and Linux sanitizers; full R4 passes with 14 report-admission checks; actual Linux strict product JSON passes. |
+| [Native standalone 43674212230](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212230) | Four Release configurations pass 48/48 each; instrumented Linux native selection passes 21/21. |
+| [Native VST3 43674212303](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212303) | Linux/macOS/Windows pass 8/7/7 CTests, 47 plug-in-validator checks each and separate 51 SDK self-tests each; relocated ABI checks pass. |
+
+The [Linux](reports/A49-portability-hosted.json),
+[Windows](reports/A50-portability-hosted.json),
+[macOS](reports/A51-portability-hosted.json) and
+[VST3](reports/A52-portability-hosted.json) auditors inspected primary logs.
+Root independently retrieved all thirteen completed-success statuses at 80b8cce.
+The 59,441-byte hosted strict JSON is byte-identical to the retained result:
+SHA-256 `48580dd10fd6b39cc639ae4bab5172f90e98db3d2b31bdd364dac067b377682c`,
+60 accepted/verified notes, ten waves, zero errors. The strict ledger step is
+Linux-only; successful nonverbose core output does not enumerate every unittest
+method or skip. Preserve that evidence boundary.
+
+## Original failures and local input identity
+
+The preceding c448 source remains **11 successful / two failed core jobs** in
+[its receipt](reports/c448-hosted-status.json). The
+[macOS alias reproduction](reports/final-source-macos-portability-repair.json)
+and [Windows metadata reproduction](reports/final-source-windows-portability-repair.json)
+retain the original failures and narrow fixes. All 19 original methods remain;
+four added reader methods cover 30 subcases. The full 23-method module passes
+locally and its complete CTest module now passes on each hosted core platform.
+[Independent acceptance](reports/final-checker-portability-independent-review.json)
+preserves safe paths, raw-byte hashes, bounds and full same-API change detection.
+
+The [earlier coherent local run](reports/wave8-coherent-build.json) passed
+**180/180 in 507.55 s** at its original 366 inputs. The checker and its tests
+subsequently changed; the other **364 inputs and all three binaries remain
+identical**. The [affected local gate](reports/checker-portability-root-verification.json)
+passes the registered CTest in 1.31 s and strict actual records. Do not reassign
+the original 180-test result to the changed input set.
+
+Current frozen identities:
+
+- Checker: `3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631`.
+- Checker tests: `d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11`.
 - Application: `7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
 - Calibration probe: `16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335`.
 - Crossover probe: `da09640f7520cd887a836961658ed8a79d6b6bff28f0e33a0ce44cf76f992eac`.
 
-The unchanged eleven-frame gallery was captured at d556 and independently
-admitted; all 108 production inputs match current bytes. README uses those
-actual captures. Original BMP intermediates are unavailable after recorded
-lossless conversion. Original failures, 277 historical gallery files and earlier
-session records retain their identities.
+The eleven admitted native frames remain actual d556 captures with unchanged
+application/production inputs. README uses those frames; original BMP
+intermediates remain unavailable. Preserve all historical galleries, original
+b9/d556/A42 failures and local ptrace-blocked sanitizer/control evidence. Hosted
+leak checking retains only the original named core quarantine exception.
 
-## Immediate next actions
+## Concrete next assignments
 
-1. The portability code is frozen: checker SHA-256
-   `3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631`;
-   test module `d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11`.
-   A50's repair passes four reader methods / 30 synthetic subcases and all 23
-   current methods locally. A46 independently accepts the narrow repair for
-   integration and new hosted qualification. Preserve the exact original
-   [c448 strict result](reports/c448-product-session-strict.json), primary failures,
-   A51 alias reproduction and A50 metadata reproduction.
-2. Finish accepting the bounded A50/A46 followup receipts, stage only their
-   agreed paths and the root records, and publish the coherent repair with
-   expected head c448 and no force. Fetch and verify exact commit/tree/parent.
-   The old runs have finished. New Windows/macOS core success is mandatory;
-   observe the entire newly dispatched matrix and strict actual-record step.
-3. After all repaired-source outcomes are known, retain the compact root hosted
-   receipt and reconcile current README/status/next/log/handoff/plan/checkpoint.
-   Identify the replacement revision as the tested source. Earlier results stay
-   attached to their own inputs, including the failed c448 matrix.
-4. Verify the final evidence diff contains no further code/test/build/workflow
-   change before using `[skip ci]` for its publication. Recheck strict records,
-   source identities and changed document links. Preserve raw evidence bytes;
-   document any exact whitespace-only log exclusions rather than altering them.
-5. Publish with a fresh expected head and `force:false`, compare local/remote
-   trees, fetch, preserve the same-tree local predecessor and update local main
-   with an expected old SHA. Finish with clean local main and matching remote.
-6. Report the completed sixty-worker/development batch with the still-unmet,
-   unwaived 1:1 UI requirement and concrete next engineering gates. Do not label
-   the whole original request or physical/product milestones complete.
+1. **Finish the requested visual work through its native acceptance gate.** Use
+   [A54](../../reviews/PRODUCT_UI_ACCEPTANCE.md) and the
+   [reference gaps](../../design/PRODUCT_REFERENCE_GAPS.md). Record identified
+   display/DPI/input journeys, then claim the next rack/deck/rim/key/text candidate.
+   Compare actual same-state renders with the original reference, preserve live
+   controls/note ownership and update README with independently admitted captures.
+   Correct hardware counts do not waive 1:1 matching.
+2. **Start the independent M6 same-Hz protocol.** Follow
+   [A56's work orders](../../reviews/PRODUCT_PHASE_READINESS.md): freeze justified
+   gain floors, magnitude/phase/absolute-complex/admittance criteria, grid,
+   transients/state and resource acceptance before evaluating a separate numerical
+   candidate. Preserve v1 documentary L/C and do not connect the ideal model to Engine.
+3. **Qualify native callback retirement.** Execute
+   [A47-N1](../../reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) below RtMidi: inject
+   native-close failures and retain handles/storage/context before destructive
+   cleanup. Require checked-close, poison/no-reopen/no-reset and ordinary leak-free
+   teardown. The source-proven gap is not an observed hardware failure or use-after-free.
 
-## Build, preservation and next engineering task
+Preserve 47 sound parameters, state4/readers1–3, 91 shared sources, nominal dry
+Engine and scanner G5's retained same-Hz failure. R4 owner integration/publication/
+final acceptance, R5/R6, acquisition, actual device/DAW/display/accessibility/
+deadline and signed-release work retain separate ownership and exit evidence.
 
-Only `/workspace/scratch/5b7d983ac078/Hammond-B3-Organ` is writable by this session.
-Root exclusively coordinates `/workspace/scratch/5b7d983ac078/build-native`:
-GCC 14.2 Release, standalone ON, physical MIDI backend OFF, VST3 OFF; SDL X11,
-Wayland and ALSA OFF, explicit dummy drivers. CMake/CTest 4.4.5 are under
+## Exact workspace and storage recovery
+
+Writable source is `/workspace/scratch/5b7d983ac078/Hammond-B3-Organ`.
+Root coordinated `/workspace/scratch/5b7d983ac078/build-native`: GCC14.2 Release,
+standalone ON, physical MIDI backend OFF, VST3 OFF; SDL X11/Wayland/ALSA OFF,
+explicit dummy drivers. CMake/CTest4.4.5 are under
 `/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/`; Ninja is under
 `/workspace/scratch/1bb6ee17ad7e/build-tools/bin/`. SDL2.32.10 and RtMidi6.0.0
-sources in that workspace are borrowed read-only. The
-[recovery handoff](../../PRODUCT_HANDOFF.md) also provides normal clean-clone setup.
+sources in that workspace are borrowed read-only. The handoff supplies normal
+clean-checkout and workspace-specific recipes separately.
 
-The separate R4 checkout `/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ`
-retains its owner's staged/untracked progress. Its local results are distinct
-from integration/publication/final acceptance; do not replace them with d8's
-published full-mode result. About 56 GiB remains free; checkout roughly181 MiB,
-primary build93 MiB. No cleanup is needed. Keep bounded evidence and checkpoint
-before context changes; preserve all other sessions.
-
-Next development is specified by [A56](../../reviews/PRODUCT_PHASE_READINESS.md):
-a declared M6 same-Hz protocol/floors before a separate numerical candidate;
-A47's below-RtMidi checked-close/callback-retirement experiment; and A54's native
-visual/input gate before the next scoped reference candidate. Preserve scanner
-G5's same-Hz failure, 47 parameters, state4/readers1–3, 91 sources, nominal dry
-Engine and separate R4/R5/R6/physical/DAW/accessibility/deadline gates.
+The [closing resource/preservation observation](reports/closing-resource-and-preservation.json)
+records **55.996 GiB free**, a **184.28 MiB checkout**, **92.24 MiB primary build**,
+and no cleanup. The separate R4 checkout at
+`/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ` retains its observed fd2f606
+head, 151 staged entries and four untracked entries; it was not changed or cleaned.
+Its actual owner-local results are distinct from this source's published R4 pass.
+Checkpoint before context changes and retain bounded original evidence. Future
+publication uses a fresh expected remote head and no force, followed by exact
+fetch/identity verification; another session's files/index/build are never cleanup targets.

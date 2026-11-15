@@ -1,0 +1,170 @@
+# A52 followup — repaired-source Native VST3 primary excerpts
+
+Source 80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe; run 43674212303.
+Selected original numbered lines. Whole decoded-log hashes preserve UTF-8 BOM and newline form.
+Omitted lines are not recreated; artifact archives were not downloaded.
+
+## linux / job 132690668355
+https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212303/job/132690668355
+Decoded UTF-8 SHA-256: a6773fb28d0a378d2096b4899193ddcb1391733b0358dc9b80bba712a476251b
+11: 2026-11-15T03:51:35.2602764Z ##[group]Operating System
+12: 2026-11-15T03:51:35.2603854Z Ubuntu
+13: 2026-11-15T03:51:35.2604844Z 24.04.5
+14: 2026-11-15T03:51:35.2605781Z LTS
+15: 2026-11-15T03:51:35.2606901Z ##[endgroup]
+16: 2026-11-15T03:51:35.2607829Z ##[group]Runner Image
+17: 2026-11-15T03:51:35.2609040Z Image: ubuntu-24.04
+18: 2026-11-15T03:51:35.2610007Z Version: 20261111.370.1
+19: 2026-11-15T03:51:35.2612186Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261111.370/images/ubuntu/Ubuntu2404-Readme.md
+110: 2026-11-15T03:51:42.9437110Z 80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe
+122: 2026-11-15T03:51:43.4691098Z 80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe
+207: 2026-11-15T03:51:45.3480617Z cmake version 3.31.6
+213: 2026-11-15T03:51:45.7823197Z Python 3.12.16
+290: 2026-11-15T03:51:49.0209980Z -- The CXX compiler identification is GNU 13.3.0
+297: 2026-11-15T03:51:49.7281093Z -- Pinned VST3 SDK verified: {"embedded_json_verified": true, "network_used": false, "primary_licenses_verified": 5, "schema_version": 1, "sdk_root": "/home/runner/work/_temp/hammond-vst3-sdk", "verified_checkouts": [{"commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96", "path": "."}, {"commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477", "path": "base"}, {"commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5", "path": "cmake"}, {"commit": "4f547e8e102b47de4a8b8aaf343c73b700786372", "path": "pluginterfaces"}, {"commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da", "path": "public.sdk"}]}
+1033: 2026-11-15T03:52:34.9923727Z Executed 51 Tests.
+1034: 2026-11-15T03:52:34.9923929Z 0 failed test(s).
+1153: 2026-11-15T03:52:44.4517282Z 133: Ran 2 tests in 0.981s
+1155: 2026-11-15T03:52:44.4517703Z 133: OK
+1156: 2026-11-15T03:52:44.4520907Z 133: {"bundle_sha256": {"Contents/Resources/THIRD_PARTY_NOTICES.md": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb", "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e", "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184", "Contents/x86_64-linux/HammondB3.so": "3205e1d2979cfe474f4dbfe76eecb57d3a4042bd6f1734fde1a682d90da8dd7b"}, "payload_files": 4, "relocated_abi": {"accepted_callbacks": 1673, "assertions": 701642, "audible_frames": 217972, "compared_frames": 229725, "conversions": 2140, "descriptors": 47, "float_hash": "af029009868faa04", "instances": 9, "lifecycle_sequences": 6, "maximum_audio_error": 0, "rejected_calls": 88, "state_round_trips": 3207, "suite": "native-abi-v1"}, "suite": "native-install-v1"}
+1157: 2026-11-15T03:52:44.4628437Z 1/8 Test #133: test_native_install ..............   Passed    1.20 sec
+1281: 2026-11-15T03:52:44.4727340Z 134: Info:  No MIDI Mapping interface supplied!
+1286: 2026-11-15T03:52:44.4728560Z 134: Info:  No MIDI Learn interface supplied!
+1296: 2026-11-15T03:52:44.4730971Z 134: Info:  This component does not export any programs.
+1513: 2026-11-15T03:52:45.9197493Z 134: Result: 47 tests passed, 0 tests failed
+1515: 2026-11-15T03:52:45.9198210Z 2/8 Test #134: hammond_vst3_validator ...........   Passed    1.46 sec
+1522: 2026-11-15T03:52:45.9420070Z 135: native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600
+1523: 2026-11-15T03:52:45.9422100Z 3/8 Test #135: test_native_controller ...........   Passed    0.02 sec
+1530: 2026-11-15T03:52:46.8334246Z 136: {"suite":"native-abi-v1","instances":9,"assertions":701642,"descriptors":47,"conversions":2140,"accepted_callbacks":1673,"rejected_calls":88,"state_round_trips":3207,"lifecycle_sequences":6,"compared_frames":229725,"audible_frames":217972,"maximum_audio_error":0,"float_hash":"af029009868faa04"}
+1531: 2026-11-15T03:52:46.8339230Z 4/8 Test #136: test_native_abi ..................   Passed    0.89 sec
+1538: 2026-11-15T03:52:48.4243763Z 137: native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f
+1539: 2026-11-15T03:52:48.4247008Z 5/8 Test #137: test_native_behavior .............   Passed    1.59 sec
+1546: 2026-11-15T03:52:48.9180899Z 138: native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03
+1547: 2026-11-15T03:52:48.9185150Z 6/8 Test #138: test_native_automation ...........   Passed    0.49 sec
+1554: 2026-11-15T03:52:49.2016904Z 139: native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+1555: 2026-11-15T03:52:49.2018858Z 139: native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=1475 rejected_callbacks=24 zero_callbacks=291 compared_frames=67678 audible_frames=67678 future_frames=6168 accepted_loads=3174 full_loads=7544 malformed_loads=462 successful_saves=14163 busy_saves=19 pending_saves=11013 published_saves=3102 maximum_audio_error=0
+1556: 2026-11-15T03:52:49.2021483Z 7/8 Test #139: test_native_concurrency ..........   Passed    0.28 sec
+1563: 2026-11-15T03:52:50.0847145Z 140: module calibration processor create new=1 delete=0; release new=0 delete=1 refs=0
+1564: 2026-11-15T03:52:50.0848143Z 140: module calibration controller create new=1 delete=0; release new=0 delete=1 refs=0
+1568: 2026-11-15T03:52:50.0851646Z 140: path accepted rejected frames fresh_raw carried_raw queued_restores new delete total_us max_us
+1569: 2026-11-15T03:52:50.0852133Z 140: enabled 40 0 13793 9 0 28 0 0 28161.654 4395.540
+1570: 2026-11-15T03:52:50.0852450Z 140: preset 54 0 456 90 3 24 0 0 1333.933 171.559
+1571: 2026-11-15T03:52:50.0853013Z 140: dense 5 0 224 4608 0 4 0 0 1411.737 619.042
+1572: 2026-11-15T03:52:50.0853544Z 140: maximum 3 0 196608 6 0 0 0 0 385484.498 132610.375
+1573: 2026-11-15T03:52:50.0854078Z 140: carry 13 0 32 2054 1027 0 0 0 234.695 91.410
+1574: 2026-11-15T03:52:50.0854418Z 140: output-shape 24 0 1152 0 0 0 0 0 2407.330 144.940
+1575: 2026-11-15T03:52:50.0854719Z 140: rejected 0 33 0 0 0 0 0 0 11.872 1.813
+1576: 2026-11-15T03:52:50.0855020Z 140: setProcessing 15 6 0 0 0 0 0 0 1.002 0.091
+1577: 2026-11-15T03:52:50.0856078Z 140: regions=193 overload_calibration=12/12 exact_channel_samples=423762 audible_samples=420414 reference_frames=212265 state_reads=204 rollback_cases=30 future_channel_samples=18114 moving_contact_checks=4 owner_capacity_checks=2 assertions=8945157 checksum=fbea92c63d86af53
+1578: 2026-11-15T03:52:50.0857875Z 140: Scope: Linux calling-thread global C++ new/delete; timings are observations, not device deadlines.
+1579: 2026-11-15T03:52:50.0858472Z 8/8 Test #140: test_native_realtime .............   Passed    0.88 sec
+1591: 2026-11-15T03:52:50.0860820Z 100% tests passed, 0 tests failed out of 8
+1593: 2026-11-15T03:52:50.0861109Z Total Test time (real) =   6.86 sec
+1630: 2026-11-15T03:52:50.2060582Z inventoried 4 files, 479087 bytes; linux x86_64
+1631: 2026-11-15T03:52:50.2612177Z inventoried 4 files, 479087 bytes; linux x86_64
+1668: 2026-11-15T03:52:50.9257491Z SHA256 digest of uploaded artifact is bc2ecac28ea064c602ca55af1eb47d6eaebe778bd160491e2025d917689ce4dc
+1670: 2026-11-15T03:52:51.2508702Z Artifact native-vst3-ubuntu-24.04-X64-release-diagnostics-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1 successfully finalized. Artifact ID 14145413969
+1699: 2026-11-15T03:52:51.7623533Z SHA256 digest of uploaded artifact is b14c4ecd2aaff834f61c0de052eca4a712e6fdbc8788b0c641101c39159c9e25
+1701: 2026-11-15T03:52:52.1046978Z Artifact native-vst3-ubuntu-24.04-X64-release-bundle-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1 successfully finalized. Artifact ID 14146035308
+
+## macos / job 132690668269
+https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212303/job/132690668269
+Decoded UTF-8 SHA-256: e11620cdcfb6d1d7fd515afcbb4f32926d00a5230014a3f471d5f7492b52e95a
+11: 2026-11-15T03:51:37.9368640Z ##[group]Operating System
+12: 2026-11-15T03:51:37.9369040Z macOS
+13: 2026-11-15T03:51:37.9369380Z 15.8.2
+14: 2026-11-15T03:51:37.9369730Z 24H232
+15: 2026-11-15T03:51:37.9370070Z ##[endgroup]
+16: 2026-11-15T03:51:37.9370500Z ##[group]Runner Image
+17: 2026-11-15T03:51:37.9370930Z Image: macos-15-arm64
+18: 2026-11-15T03:51:37.9371310Z Version: 20261104.0514.1
+19: 2026-11-15T03:51:37.9372170Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20261104.0514/images/macos/macos-15-arm64-Readme.md
+111: 2026-11-15T03:51:48.0952840Z 80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe
+146: 2026-11-15T03:51:50.0393590Z 80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe
+230: 2026-11-15T03:51:53.2749510Z cmake version 4.4.5
+236: 2026-11-15T03:51:53.5075890Z Python 3.12.10
+290: 2026-11-15T03:52:02.4703000Z Target: arm64-apple-darwin24.6.0
+293: 2026-11-15T03:52:03.6252370Z -- The CXX compiler identification is AppleClang 17.0.0.17000013
+300: 2026-11-15T03:52:07.0414740Z -- Pinned VST3 SDK verified: {"embedded_json_verified": true, "network_used": false, "primary_licenses_verified": 5, "schema_version": 1, "sdk_root": "/Users/runner/work/_temp/hammond-vst3-sdk", "verified_checkouts": [{"commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96", "path": "."}, {"commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477", "path": "base"}, {"commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5", "path": "cmake"}, {"commit": "4f547e8e102b47de4a8b8aaf343c73b700786372", "path": "pluginterfaces"}, {"commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da", "path": "public.sdk"}]}
+726: 2026-11-15T03:53:27.6082670Z cd /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/plugins/vst3 && codesign --force --verbose --sign - /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/VST3/Release/HammondB3.vst3
+792: 2026-11-15T03:53:37.8209960Z cd /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/_vst3sdk/public.sdk/samples/vst-hosting/validator && codesign --force --verbose --sign - /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-native/bin/Release/validator
+951: 2026-11-15T03:53:37.9610970Z Executed 51 Tests.
+952: 2026-11-15T03:53:37.9611330Z 0 failed test(s).
+1025: 2026-11-15T03:53:42.2154380Z 133: Ran 2 tests in 1.330s
+1027: 2026-11-15T03:53:42.2155650Z 133: OK
+1028: 2026-11-15T03:53:42.2164930Z 133: {"bundle_sha256": {"Contents/Info.plist": "92a94a48600eae1a98b7ed19dbba5a41d9b5018fcc38495f0b80b6dcf4f9263d", "Contents/MacOS/HammondB3": "41e75f25a2b0bd5741553803a750f9616960fecf2db8f15b3552db1cae452488", "Contents/Resources/THIRD_PARTY_NOTICES.md": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb", "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e", "Contents/Resources/moduleinfo.json": "d621a2149b6c8b8bac9a84d40bed21ed8de9fbeb9a8708ad44cf890050e56184", "Contents/_CodeSignature/CodeResources": "426810c45797fdf1b3537563bc3ae920e9d36e04d36edc226c3b155817053aad"}, "payload_files": 6, "relocated_abi": {"accepted_callbacks": 1673, "assertions": 701642, "audible_frames": 217972, "compared_frames": 229725, "conversions": 2140, "descriptors": 47, "float_hash": "af029009868faa04", "instances": 9, "lifecycle_sequences": 6, "maximum_audio_error": 0, "rejected_calls": 88, "state_round_trips": 3207, "suite": "native-abi-v1"}, "suite": "native-install-v1"}
+1029: 2026-11-15T03:53:42.2283080Z 1/7 Test #133: test_native_install ..............   Passed    1.60 sec
+1153: 2026-11-15T03:53:42.2681520Z 134: Info:  No MIDI Mapping interface supplied!
+1158: 2026-11-15T03:53:42.2684310Z 134: Info:  No MIDI Learn interface supplied!
+1168: 2026-11-15T03:53:42.2690080Z 134: Info:  This component does not export any programs.
+1385: 2026-11-15T03:53:43.2874950Z 134: Result: 47 tests passed, 0 tests failed
+1387: 2026-11-15T03:53:43.2876550Z 2/7 Test #134: hammond_vst3_validator ...........   Passed    1.04 sec
+1394: 2026-11-15T03:53:43.3350410Z 135: native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600
+1395: 2026-11-15T03:53:43.3364620Z 3/7 Test #135: test_native_controller ...........   Passed    0.06 sec
+1402: 2026-11-15T03:53:43.9396570Z 136: {"suite":"native-abi-v1","instances":9,"assertions":701642,"descriptors":47,"conversions":2140,"accepted_callbacks":1673,"rejected_calls":88,"state_round_trips":3207,"lifecycle_sequences":6,"compared_frames":229725,"audible_frames":217972,"maximum_audio_error":0,"float_hash":"af029009868faa04"}
+1403: 2026-11-15T03:53:43.9397700Z 4/7 Test #136: test_native_abi ..................   Passed    0.60 sec
+1410: 2026-11-15T03:53:45.5013670Z 137: native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f
+1411: 2026-11-15T03:53:45.5021170Z 5/7 Test #137: test_native_behavior .............   Passed    1.56 sec
+1418: 2026-11-15T03:53:45.9387150Z 138: native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03
+1419: 2026-11-15T03:53:45.9394370Z 6/7 Test #138: test_native_automation ...........   Passed    0.44 sec
+1426: 2026-11-15T03:53:46.7540920Z 139: native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+1427: 2026-11-15T03:53:46.7543100Z 139: native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=5054 rejected_callbacks=24 zero_callbacks=1007 compared_frames=217195 audible_frames=217195 future_frames=6168 accepted_loads=3174 full_loads=3278 malformed_loads=462 successful_saves=9905 busy_saves=13 pending_saves=6738 published_saves=3119 maximum_audio_error=0
+1428: 2026-11-15T03:53:46.7544810Z 7/7 Test #139: test_native_concurrency ..........   Passed    0.81 sec
+1439: 2026-11-15T03:53:46.7552270Z 100% tests passed out of 7
+1441: 2026-11-15T03:53:46.7553090Z Total Test time (real) =   6.14 sec
+1477: 2026-11-15T03:53:47.1793270Z inventoried 6 files, 475598 bytes; macos arm64
+1478: 2026-11-15T03:53:47.3237660Z inventoried 6 files, 475598 bytes; macos arm64
+1514: 2026-11-15T03:53:48.8845680Z SHA256 digest of uploaded artifact is 68ee4be1ecfbc09e016003489cc149a0b9a36ade1b49e637388cdfc9bae2a05a
+1516: 2026-11-15T03:53:49.3912810Z Artifact native-vst3-macos-15-ARM64-release-diagnostics-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1 successfully finalized. Artifact ID 14145369278
+1544: 2026-11-15T03:53:50.7409950Z SHA256 digest of uploaded artifact is 31594dbde37a1df8cbedd694aa216ddfe781c0634d95fe73e46d0b1d5d5bd11c
+1546: 2026-11-15T03:53:51.2524820Z Artifact native-vst3-macos-15-ARM64-release-bundle-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1 successfully finalized. Artifact ID 14145349128
+
+## windows / job 132690668108
+https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212303/job/132690668108
+Decoded UTF-8 SHA-256: 03ce300bf6b3a755a98d23d21b11b221e13e3f2284dcb5c52701e15ec34c3d98
+11: 2026-11-15T03:51:35.9197652Z ##[group]Operating System
+12: 2026-11-15T03:51:35.9198246Z Microsoft Windows Server 2022
+13: 2026-11-15T03:51:35.9198803Z 10.0.20348
+14: 2026-11-15T03:51:35.9199267Z Datacenter
+15: 2026-11-15T03:51:35.9199744Z ##[endgroup]
+16: 2026-11-15T03:51:35.9200200Z ##[group]Runner Image
+17: 2026-11-15T03:51:35.9200702Z Image: windows-2022
+18: 2026-11-15T03:51:35.9201253Z Version: 20261112.366.7
+19: 2026-11-15T03:51:35.9202604Z Included Software: https://github.com/actions/runner-images/blob/win22/20261112.366/images/windows/Windows2022-Readme.md
+97: 2026-11-15T03:51:46.6423501Z 80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe
+109: 2026-11-15T03:51:47.7955941Z 80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe
+193: 2026-11-15T03:51:52.6159229Z cmake version 3.31.6
+199: 2026-11-15T03:51:53.2814533Z Python 3.12.10
+265: 2026-11-15T03:51:58.2150893Z -- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.20348.
+266: 2026-11-15T03:52:08.5359385Z -- The CXX compiler identification is MSVC 19.44.35230.0
+273: 2026-11-15T03:52:10.8191869Z -- Pinned VST3 SDK verified: {"embedded_json_verified": true, "network_used": false, "primary_licenses_verified": 5, "schema_version": 1, "sdk_root": "D:\\a\\_temp\\hammond-vst3-sdk", "verified_checkouts": [{"commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96", "path": "."}, {"commit": "fcf9da0bd27a16f7f03773a3a39822f28f5c8477", "path": "base"}, {"commit": "054c9143cbb8d47fc4694e473f2ee3b4d951a8f5", "path": "cmake"}, {"commit": "4f547e8e102b47de4a8b8aaf343c73b700786372", "path": "pluginterfaces"}, {"commit": "586dc5e6c8012c3e4b01c79389375cbe96bdb1da", "path": "public.sdk"}]}
+1226: 2026-11-15T03:53:15.0971259Z          Executed 51 Tests.
+1227: 2026-11-15T03:53:15.0971559Z          0 failed test(s).
+1340: 2026-11-15T03:53:25.2233634Z 133: Ran 2 tests in 1.692s
+1342: 2026-11-15T03:53:25.2234490Z 133: OK
+1343: 2026-11-15T03:53:25.2239864Z 133: {"bundle_sha256": {"Contents/Resources/THIRD_PARTY_NOTICES.md": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb", "Contents/Resources/VST3_SDK_LICENSE.txt": "e86d79e19e4a33ebc442d2e0d083887dfc75a2a8de9fe17eeddedb84810ad74e", "Contents/Resources/moduleinfo.json": "cae494617ea5020908b1867994db49823da2a13467374bd38f6489eda29f6b5d", "Contents/x86_64-win/HammondB3.vst3": "00a8c579c3feee8f86e386e935e2e6b3130b6a65c70233bdc8bf1e72948cc574", "PlugIn.ico": "1dda09aceb9fa930a3894cce4ad57edd8fa48ce58157c97ba5f971d2d4e79821", "desktop.ini": "3f3d19c85c40231d4dec0c6526b77d8325031eb7d52fcf141d68feaa3a88547f"}, "payload_files": 6, "relocated_abi": {"accepted_callbacks": 1673, "assertions": 701642, "audible_frames": 217972, "compared_frames": 229725, "conversions": 2140, "descriptors": 47, "float_hash": "af029009868faa04", "instances": 9, "lifecycle_sequences": 6, "maximum_audio_error": 0, "rejected_calls": 88, "state_round_trips": 3207, "suite": "native-abi-v1"}, "suite": "native-install-v1"}
+1344: 2026-11-15T03:53:25.2387797Z 1/7 Test #133: test_native_install ..............   Passed    1.88 sec
+1468: 2026-11-15T03:53:25.2617802Z 134: Info:  No MIDI Mapping interface supplied!
+1473: 2026-11-15T03:53:25.2619523Z 134: Info:  No MIDI Learn interface supplied!
+1483: 2026-11-15T03:53:25.2622918Z 134: Info:  This component does not export any programs.
+1700: 2026-11-15T03:53:26.4621127Z 134: Result: 47 tests passed, 0 tests failed
+1702: 2026-11-15T03:53:26.4621747Z 2/7 Test #134: hammond_vst3_validator ...........   Passed    1.22 sec
+1709: 2026-11-15T03:53:26.5213310Z 135: native-controller: checks=138215 threshold_cases=3984 string_roundtrips=411 rejected_streams=469 selector_restores=1600
+1710: 2026-11-15T03:53:26.5213956Z 3/7 Test #135: test_native_controller ...........   Passed    0.06 sec
+1717: 2026-11-15T03:53:27.3666757Z 136: {"suite":"native-abi-v1","instances":9,"assertions":701642,"descriptors":47,"conversions":2140,"accepted_callbacks":1673,"rejected_calls":88,"state_round_trips":3207,"lifecycle_sequences":6,"compared_frames":229725,"audible_frames":217972,"maximum_audio_error":0,"float_hash":"af029009868faa04"}
+1718: 2026-11-15T03:53:27.3670270Z 4/7 Test #136: test_native_abi ..................   Passed    0.85 sec
+1725: 2026-11-15T03:53:29.5241171Z 137: native behavior checks=29455970 accepted_callbacks=1066 rejected_callbacks=75 zero_callbacks=123 direct_reference_frames=234185 exact_channel_samples=618550 paired_setup_channel_samples=64480 future_audio_samples=85436 audible_samples=576696 state_reads=560 rejected_state_loads=71 threshold_cases=90 rollback_cases=62 partition_cases=9 rate_changes=3 isolated_division_cases=9 division_peaks=0.015,0.015,0.0096094 peak=0.0906279 checksum=77364d031ab2c10f
+1726: 2026-11-15T03:53:29.5242960Z 5/7 Test #137: test_native_behavior .............   Passed    2.15 sec
+1733: 2026-11-15T03:53:30.0563923Z 138: native automation: legacy45_score_cases=6 restore_cases=3 gap_cases=6 preset_commands=72 preset_thresholds=198 preset_alias_cases=3 preset_restore_cases=3 preset_partition_cases=9 callbacks=879 zero_callbacks=309 state_reads=954 direct_reference_frames=102156 exact_channel_samples=204312 partition_mono_samples=24021 future_channel_samples=46116 nonzero_channel_samples=181504 long_callbacks=3 guaranteed_expression_events=12288 isolated_windows=18 division_min_rms=0.00402141,0.00655038,0.00172213 reconnect_difference=0.0238609 maximum_error=0 peak=0.198746 checksum=c7f3f16ed488cb03
+1734: 2026-11-15T03:53:30.0566009Z 6/7 Test #138: test_native_automation ...........   Passed    0.53 sec
+1741: 2026-11-15T03:53:30.4784024Z 139: native-concurrency cleanup_probe=exception-unwind stop_observed=1 worker_joined=1
+1742: 2026-11-15T03:53:30.4786443Z 139: native-concurrency rates=3 controlled_rounds=24 stress_accepted_loads=3072 publication_only_saves=3072 reader_pause_callbacks=96 callbacks=2343 rejected_callbacks=24 zero_callbacks=465 compared_frames=103790 audible_frames=103790 future_frames=6168 accepted_loads=3174 full_loads=1551 malformed_loads=462 successful_saves=8165 busy_saves=66 pending_saves=5003 published_saves=3114 maximum_audio_error=0
+1743: 2026-11-15T03:53:30.4788725Z 7/7 Test #139: test_native_concurrency ..........   Passed    0.42 sec
+1754: 2026-11-15T03:53:30.4791875Z 100% tests passed, 0 tests failed out of 7
+1756: 2026-11-15T03:53:30.4792279Z Total Test time (real) =   7.18 sec
+1792: 2026-11-15T03:53:30.7688677Z inventoried 6 files, 674712 bytes; windows x86_64
+1793: 2026-11-15T03:53:30.8820178Z inventoried 6 files, 674712 bytes; windows x86_64
+1829: 2026-11-15T03:53:31.5404717Z SHA256 digest of uploaded artifact is b4678f396327b55a2d44662df9a5f3abc06da5cad7a47341e4a79bb7ea026dac
+1831: 2026-11-15T03:53:31.9051352Z Artifact native-vst3-windows-2022-X64-release-diagnostics-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1 successfully finalized. Artifact ID 14145408876
+1859: 2026-11-15T03:53:32.5181552Z SHA256 digest of uploaded artifact is 3e2f44d9ef874ce98b446fcbd85930ad402362871dd2a91d7aede0eff0524a02
+1861: 2026-11-15T03:53:32.8475104Z Artifact native-vst3-windows-2022-X64-release-bundle-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1 successfully finalized. Artifact ID 14145975507

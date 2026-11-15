@@ -1,0 +1,731 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w09_a51_macos_hosted",
+  "followup": true,
+  "new_worker_credit": false,
+  "observed_date_utc": "2026-11-15",
+  "result": "Both assigned macOS jobs passed at the new repaired source; the c4486ba core failure remains preserved.",
+  "source": {
+    "commit": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+    "tree": "d310be065db2bb9b0012c11a0c5ec2beda4c9384",
+    "parent": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "commit_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+    "tree_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/trees/d310be065db2bb9b0012c11a0c5ec2beda4c9384",
+    "tree_response_truncated": false,
+    "local_head": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+    "local_tree": "d310be065db2bb9b0012c11a0c5ec2beda4c9384",
+    "inspected_files": [
+      {
+        "path": "tests/test_product_session.py",
+        "bytes": 26558,
+        "sha256": "d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11",
+        "worktree_matches": true
+      },
+      {
+        "path": "tools/check_product_session.py",
+        "bytes": 20983,
+        "sha256": "3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631",
+        "worktree_matches": true
+      },
+      {
+        "path": "tests/test_plot_crossover_characterization.py",
+        "bytes": 12324,
+        "sha256": "dd7ff3d635c54e680594fd8af6771cfe2af66871570a0cd5b1cb9df28f50b360",
+        "worktree_matches": true
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "bytes": 9253,
+        "sha256": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+        "worktree_matches": true
+      },
+      {
+        "path": ".github/workflows/standalone.yml",
+        "bytes": 60379,
+        "sha256": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a",
+        "worktree_matches": true
+      }
+    ],
+    "native_source_build_dependency_workflow_changes_from_c448": [],
+    "native_comparison_scope": [
+      "apps/standalone",
+      "cmake",
+      "CMakeLists.txt",
+      "CMakePresets.json",
+      "data/dependencies",
+      ".github/workflows/standalone.yml",
+      "tools/acquire_rtmidi.py",
+      "tools/acquire_sdl2.py"
+    ]
+  },
+  "evidence": {
+    "method": "Commit/tree/run/job/artifact API JSON plus both decoded primary job logs; exact checkout SHAs match. No inherited test result.",
+    "core_run_id": 43674212267,
+    "native_run_id": 43674212230,
+    "run_attempt": 1,
+    "scope": "Both exact macOS jobs completed; this receipt does not assert completion of the other jobs in either run.",
+    "excerpts": "A51-portability-primary-excerpts.txt",
+    "decoded_log_characters": {
+      "core": 329920,
+      "native": 782063
+    },
+    "binary_artifacts_downloaded": false
+  },
+  "toolchain": {
+    "operating_system": "macOS 15.8.2 (24H232)",
+    "architecture": "arm64",
+    "runner_image": "macos-15-arm64",
+    "image_version": "20261104.0514.1",
+    "cmake": "4.4.5",
+    "ctest": "4.4.5",
+    "python": "3.12.10",
+    "cxx_compiler": "AppleClang 17.0.0.17000013",
+    "compiler_banner": "Apple clang version 17.0.0 (clang-1700.0.13.5)",
+    "target": "arm64-apple-darwin24.6.0",
+    "xcode": "16.4",
+    "generator": "Unix Makefiles",
+    "configuration": "Release",
+    "macos_sanitizer_result": false
+  },
+  "core": {
+    "job": {
+      "id": 132690668155,
+      "run_id": 43674212267,
+      "name": "Release (macOS AppleClang)",
+      "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-15T03:51:35Z",
+      "completed_at": "2026-11-15T03:55:51Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212267/job/132690668155",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "configure": "cmake --preset release -G 'Unix Makefiles' with clang++ and Python 3.12.10",
+    "build": "cmake --build --preset release --parallel 2 --verbose",
+    "ctest": "ctest --preset release --parallel 2 --timeout 300 --no-tests=error --output-junit <ci-logs/ctest.xml>",
+    "total": 157,
+    "passed": 157,
+    "failed": 0,
+    "unique_pass_records": 157,
+    "wall_seconds": 144.91,
+    "new_module_results": [
+      {
+        "id": 111,
+        "name": "python_test_plot_crossover_characterization",
+        "status": "passed",
+        "seconds": 0.47,
+        "primary_line": 1456
+      },
+      {
+        "id": 114,
+        "name": "python_test_product_session",
+        "status": "passed",
+        "seconds": 2.05,
+        "primary_line": 1460
+      }
+    ],
+    "product_module": {
+      "source_defined_methods": 23,
+      "method_roster": [
+        {
+          "name": "test_partial_progress_never_certifies_completion",
+          "line": 107,
+          "decorators": []
+        },
+        {
+          "name": "test_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves",
+          "line": 118,
+          "decorators": []
+        },
+        {
+          "name": "test_running_optional_notes_but_declared_evidence_must_match",
+          "line": 137,
+          "decorators": []
+        },
+        {
+          "name": "test_id_agent_and_wave_identity_mutations",
+          "line": 154,
+          "decorators": []
+        },
+        {
+          "name": "test_schema_count_and_actual_status_are_not_coercible",
+          "line": 174,
+          "decorators": []
+        },
+        {
+          "name": "test_required_task_acceptance_and_owned_fields",
+          "line": 195,
+          "decorators": []
+        },
+        {
+          "name": "test_hash_tampering_and_crlf_use_raw_bytes",
+          "line": 213,
+          "decorators": []
+        },
+        {
+          "name": "test_substantive_floor_does_not_impose_retroactive_word_ceiling",
+          "line": 226,
+          "decorators": []
+        },
+        {
+          "name": "test_note_paths_cannot_leave_current_session_or_change_identity",
+          "line": 244,
+          "decorators": []
+        },
+        {
+          "name": "test_ownership_supports_actual_scopes_and_directories",
+          "line": 257,
+          "decorators": []
+        },
+        {
+          "name": "test_ownership_traversal_globs_malformed_scopes_and_special_paths_fail",
+          "line": 274,
+          "decorators": []
+        },
+        {
+          "name": "test_missing_accepted_notes_and_nonregular_files_fail_closed",
+          "line": 291,
+          "decorators": []
+        },
+        {
+          "name": "test_symlink_leaf_parent_ownership_and_root_are_rejected",
+          "line": 305,
+          "decorators": []
+        },
+        {
+          "name": "test_fifo_inputs_are_rejected_before_open",
+          "line": 329,
+          "decorators": [
+            "unittest.skipUnless(hasattr(os, 'mkfifo'), 'runner has no FIFO support')"
+          ]
+        },
+        {
+          "name": "test_reparse_points_are_rejected_on_windows_metadata",
+          "line": 338,
+          "decorators": []
+        },
+        {
+          "name": "test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth",
+          "line": 349,
+          "decorators": []
+        },
+        {
+          "name": "test_byte_bounds_are_exact_and_have_no_word_ceiling",
+          "line": 366,
+          "decorators": []
+        },
+        {
+          "name": "test_changed_inputs_during_open_are_rejected",
+          "line": 379,
+          "decorators": []
+        },
+        {
+          "name": "test_windows_reader_accepts_only_cross_api_representation_differences",
+          "line": 415,
+          "decorators": []
+        },
+        {
+          "name": "test_windows_reader_rejects_changes_to_compatible_opening_fields",
+          "line": 435,
+          "decorators": []
+        },
+        {
+          "name": "test_windows_reader_keeps_full_same_api_change_detection",
+          "line": 452,
+          "decorators": []
+        },
+        {
+          "name": "test_posix_reader_preserves_full_cross_api_signature",
+          "line": 466,
+          "decorators": []
+        },
+        {
+          "name": "test_cli_progress_success_and_strict_failure_are_machine_readable",
+          "line": 479,
+          "decorators": []
+        }
+      ],
+      "runner": "CMakeLists.txt:258-264 invokes the Python file directly; its __main__ invokes unittest.main() without test-name filtering.",
+      "evidence_boundary": "The primary CTest line proves successful execution of the complete module. The 23-method inventory comes from exact-source static inspection. Successful core CTest output is nonverbose and does not print a Python 'Ran 23 tests' footer or individual method/subcase results; no such primary line is claimed.",
+      "retained_alias_fault_cases": [
+        "test_changed_inputs_during_open_are_rejected",
+        "test_reparse_points_are_rejected_on_windows_metadata"
+      ],
+      "canonical_temp_fixture": "Path(self.temp.name).resolve(strict=True)",
+      "new_metadata_regressions": [
+        "test_windows_reader_accepts_only_cross_api_representation_differences",
+        "test_windows_reader_rejects_changes_to_compatible_opening_fields",
+        "test_windows_reader_keeps_full_same_api_change_detection",
+        "test_posix_reader_preserves_full_cross_api_signature"
+      ],
+      "posix_boundary": "On sys.platform != win32, _opening_signature returns the full original _signature. The source retains changed-open, linked/reparse paths, same-API change detection and strict actual-session rules."
+    },
+    "strict_actual_session_steps": {
+      "executed_on_macos": false,
+      "observed_steps": [
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the actual product session records",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ],
+      "workflow_condition": "if: runner.os == 'Linux'",
+      "product_command": "python tools/check_product_session.py --repo . --json",
+      "boundary": "All three actual-ledger steps are Linux-only and skipped on macOS. Synthetic module acceptance is not strict validation of the real 60-record ledger."
+    }
+  },
+  "native": {
+    "job": {
+      "id": 132690667924,
+      "run_id": 43674212230,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-15T03:51:34Z",
+      "completed_at": "2026-11-15T03:58:51Z",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212230/job/132690667924",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run all required standalone acceptance tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "configuration": {
+      "testing": true,
+      "standalone": true,
+      "vst3": false,
+      "midi": true,
+      "backend": "CoreMIDI",
+      "compiled_sdl_required": [
+        "Cocoa",
+        "CoreAudio",
+        "dummy audio",
+        "dummy video"
+      ],
+      "executed_audio_driver": "dummy",
+      "executed_video_driver": "dummy"
+    },
+    "ctest": "ctest --test-dir build-standalone -C Release -V --parallel 1 --no-tests=error --timeout 180 -R '^test_standalone_' --output-junit <standalone-ci-logs/ctest.xml>",
+    "discovered": 48,
+    "total": 48,
+    "passed": 48,
+    "failed": 0,
+    "unique_pass_records": 48,
+    "wall_seconds": 314.14,
+    "selected_results": [
+      {
+        "ordinal": 1,
+        "id": 133,
+        "name": "test_standalone_install",
+        "seconds": 7.69,
+        "line": 2389
+      },
+      {
+        "ordinal": 2,
+        "id": 134,
+        "name": "test_standalone_channel_acceptance",
+        "seconds": 0.01,
+        "line": 2397
+      },
+      {
+        "ordinal": 3,
+        "id": 135,
+        "name": "test_standalone_channel_modes",
+        "seconds": 0.01,
+        "line": 2405
+      },
+      {
+        "ordinal": 5,
+        "id": 137,
+        "name": "test_standalone_expression_calibration",
+        "seconds": 0.01,
+        "line": 2431
+      },
+      {
+        "ordinal": 31,
+        "id": 163,
+        "name": "test_standalone_material_acceptance",
+        "seconds": 4.19,
+        "line": 2733
+      },
+      {
+        "ordinal": 41,
+        "id": 173,
+        "name": "test_standalone_expression_diagnostics",
+        "seconds": 3,
+        "line": 2977
+      },
+      {
+        "ordinal": 42,
+        "id": 174,
+        "name": "test_standalone_native_calibration",
+        "seconds": 20.26,
+        "line": 3000
+      }
+    ],
+    "calibration": {
+      "methods": 9,
+      "python_seconds": 20.157,
+      "ctest_seconds": 20.26,
+      "subprocesses": 10,
+      "native_lifecycles": 7,
+      "deliberately_failed_replays": 2,
+      "fixture_binary_sha256": "c5c646d83507f49353247169c0ed176f5ca097c2a51fe52d3636236e91ef9384",
+      "boundary": "Real main/adapter code, substituted RtMidi and synchronous callback offers at native API boundaries, real SDL dummy audio callbacks; no physical CoreMIDI driver/fault/timing result."
+    },
+    "material": {
+      "checks": 1293,
+      "failures": 0,
+      "frames": 109,
+      "ctest_seconds": 4.19,
+      "legacy_checks": 901,
+      "header_checks": 170,
+      "calibration_modal": {
+        "checks": 222,
+        "scenes": 4,
+        "frames": 21,
+        "controls": 44,
+        "literal_glyph_regions": 96,
+        "changed_values": 12,
+        "focused_controls": 8,
+        "invalid_frames": 2,
+        "long_text_frames": 2,
+        "clipped_frames": 1,
+        "intersected_glyphs": 38,
+        "resampled_pixels": 212,
+        "unexplained_pixels": 0,
+        "literal_mismatches": 0
+      },
+      "criterion": "Independent exact full/clipped RGBA plates and exact difference set only at individually identified boundary-crossing glyph rectangles. Complete glyphs, nontext and focus remain identical. No numeric tolerance or whole text-band exclusion."
+    },
+    "dependencies": {
+      "configured_rtmidi": {
+        "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+        "manifest_sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae",
+        "network_used": false,
+        "patch_sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad",
+        "prepared_copy_reused": false,
+        "prepared_cpp_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a",
+        "prepared_root": "/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/hammond_rtmidi-prepared",
+        "primary_licenses_verified": 1,
+        "repository": "https://github.com/thestk/rtmidi.git",
+        "rtmidi_root": "/Users/runner/work/_temp/hammond-rtmidi",
+        "schema_version": 1,
+        "source_files_verified": 2,
+        "tag": "6.0.0",
+        "version": "6.0.0"
+      },
+      "configured_sdl2": {
+        "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+        "network_used": false,
+        "primary_licenses_verified": 1,
+        "repository": "https://github.com/libsdl-org/SDL.git",
+        "schema_version": 1,
+        "sdl2_root": "/Users/runner/work/_temp/hammond-sdl2",
+        "tag": "release-2.32.10",
+        "version": "2.32.10"
+      },
+      "post_acceptance_rtmidi": {
+        "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+        "manifest_sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae",
+        "network_used": false,
+        "patch_sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad",
+        "prepared_copy_reused": true,
+        "prepared_cpp_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a",
+        "prepared_root": "/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/hammond_rtmidi-prepared",
+        "primary_licenses_verified": 1,
+        "repository": "https://github.com/thestk/rtmidi.git",
+        "rtmidi_root": "/Users/runner/work/_temp/hammond-rtmidi",
+        "schema_version": 1,
+        "source_files_verified": 2,
+        "tag": "6.0.0",
+        "version": "6.0.0"
+      },
+      "post_acceptance_sdl2": {
+        "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+        "network_used": false,
+        "primary_licenses_verified": 1,
+        "repository": "https://github.com/libsdl-org/SDL.git",
+        "schema_version": 1,
+        "sdl2_root": "/Users/runner/work/_temp/hammond-sdl2",
+        "tag": "release-2.32.10",
+        "version": "2.32.10"
+      },
+      "boundary": "Prepared static CoreMIDI source and locked two-site zero-initialization patch verified/compiled; no physical port shutdown, OS failure/hotplug or asynchronous driver timing claim."
+    },
+    "installed": {
+      "python_methods": 8,
+      "python_seconds": 7.613,
+      "ctest_seconds": 7.69,
+      "payload_files": 20,
+      "midi_backend": "CoreMIDI",
+      "binary_sha256": "1cf70c4169b8bf7c9ae7431947cbc7481336da54a61fcab994a129efab10bbfa",
+      "new_guide_included": "MIDI_EXPRESSION_GUIDE.md",
+      "private_fixture_scope": "The unchanged executed eight-method source includes private relocation/source-copy removal, installed guide links, synthetic inverted CC11 result0.75 and four component-namespace preservation sentinels; these are not physical MIDI execution.",
+      "printed_install_smoke": {
+        "ms": 600,
+        "passed": true,
+        "audio_driver": "dummy",
+        "video_driver": "dummy",
+        "callbacks": 50,
+        "frames": 25600,
+        "images": 24,
+        "native_midi_callback_messages": 0
+      },
+      "separate_stage": {
+        "verified_files": 20,
+        "relocated_help_passed": true,
+        "dummy_smoke_ms": 600,
+        "callbacks": 49,
+        "frames": 25088,
+        "images": 16,
+        "archive_member_paths_bytes_hashes_modes_verified": true,
+        "files": [
+          "HammondB3-Standalone-Release.tar.gz",
+          "inventory.json",
+          "SHA256SUMS"
+        ]
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "id": 14145204934,
+      "name": "ci-macos-15-release-1",
+      "bytes": 126157,
+      "digest": "sha256:d8d9ddee0d195d21cdb80d6f35e82eef6cb634dab50cf7c41a3fd28b7830cb37",
+      "expired": false,
+      "created_at": "2026-11-15T03:55:46Z",
+      "run_id": 43674212267,
+      "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212267/artifacts/14145204934"
+    },
+    {
+      "id": 14145268502,
+      "name": "standalone-macos-15-ARM64-midi-ON-release-diagnostics-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1",
+      "bytes": 345383,
+      "digest": "sha256:fd4dcb36e545ada0eafe380b1290ac4152b4373f08d2eebb509a3c1c1da7f998",
+      "expired": false,
+      "created_at": "2026-11-15T03:58:45Z",
+      "run_id": 43674212230,
+      "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212230/artifacts/14145268502"
+    },
+    {
+      "id": 14144824537,
+      "name": "standalone-macos-15-ARM64-midi-ON-release-package-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1",
+      "bytes": 1487417,
+      "digest": "sha256:9b9e3a2ce3dc0018c69222004ca1544ff013dbd228c0cfd3308aa45b8f21a81c",
+      "expired": false,
+      "created_at": "2026-11-15T03:58:47Z",
+      "run_id": 43674212230,
+      "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212230/artifacts/14144824537"
+    }
+  ],
+  "previous_failure": {
+    "source": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "core_result": "156/157, sole failed CTest python_test_product_session, four assertions",
+    "primary_receipt": "A51-final-source-hosted.json",
+    "repair_receipt": "final-source-macos-portability-repair.json",
+    "boundary": "Those original observations are unchanged. This is a new successful execution at 80b8cce, including both authorized portability repairs."
+  },
+  "limits": [
+    "No macOS actual-ledger strict execution; the dedicated step runs only on Linux.",
+    "These are Release jobs, not macOS ASan/UBSan/leak results. No general leak exception is inferred from the named quarantine fixture.",
+    "No physical CoreMIDI controller, native OS fault/hotplug, actual Cocoa/Retina display, screen-reader, DAW, callback-deadline, signing/notarization or literal whole-interface1:1 equality claim.",
+    "Artifact metadata and on-runner byte/mode verification are primary observations; binary artifacts were not downloaded or independently unpacked by A51.",
+    "Other platforms and VST3 retain separate followup audits."
+  ],
+  "ownership": {
+    "new_reports_only": true,
+    "code_tests_workflows_reviews_old_reports_notes_ledger_changed": false,
+    "local_suite_or_application_executed": false,
+    "commit_or_push": false
+  },
+  "next_gate": "Root integrates the repaired-source platform audits, observes the actual Linux strict 60-record step and remaining workflow jobs, then publishes only appropriately qualified closure evidence. Physical macOS display/controller/audio and full product/visual gates remain separate."
+}

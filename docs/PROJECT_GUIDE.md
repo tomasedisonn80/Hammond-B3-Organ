@@ -24,9 +24,9 @@ The default core remains SDK-free; the playable Engine remains dry.
 | --- | --- |
 | What works and what has actually passed? | [STATUS.md](STATUS.md): current behavior, source-bound local/hosted observations, milestone position and preserved historical results. |
 | What is the complete product roadmap? | [PLAN.md](PLAN.md): all M0–M9 deliverables, dependencies and engineering/physical exits. |
-| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md): current session closure, then the independent M6 electrical-accuracy protocol/candidate and separate acquisition/product tracks. |
+| What should happen next? | [NEXT_STEPS.md](NEXT_STEPS.md): the remaining requested UI match, independent M6 electrical-accuracy protocol/candidate, native callback retirement and separate acquisition/product tracks. |
 | How does a future agent recover this workspace? | [PRODUCT_HANDOFF.md](PRODUCT_HANDOFF.md): clean-checkout setup, exact shared-build/tool/dependency paths, ownership and resource rules. Its dated evidence is superseded only by subsequent observed results in the active checkpoint. |
-| How are this session's actual records checked? | [Product checker commands](NEXT_STEPS.md#validate-this-sessions-actual-records): progress mode now; strict mode after all sixty actual acceptances in ten waves. No historical checker or partial result closes this ledger. |
+| How are this session's actual records checked? | [Product checker commands](NEXT_STEPS.md#validate-this-sessions-actual-records): strict mode now verifies all sixty accepted records in ten waves. Historical checkers, followups and progress-mode results do not supply new worker credit. |
 | How do I build and play with MIDI/calibration? | [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_GUIDE.md), [INTERFACE_RUNBOOK.md](INTERFACE_RUNBOOK.md) and [PRESET_RUNBOOK.md](PRESET_RUNBOOK.md): platform prerequisites, exact options, eleven modal stops, applied-state observations, recovery and Save/Load. |
 | How do I build or install the crossover tools? | [Developer guide](CROSSOVER_DEVELOPER_GUIDE.md), [explicit CrossoverTools installation](CROSSOVER_INSTALL.md), [contract](LESLIE_CROSSOVER_CONTRACT.md) and [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md). The component is separate from Engine and the standalone. |
 | Where is current UI evidence? | [Eight normal views](../examples/demos/standalone-product-preview-v1/README.md), [three MIDI overlays](../examples/demos/standalone-product-preview-v1/midi-overlay/README.md) and [independent admission](reviews/PRODUCT_GALLERY_ADMISSION.md) at actual capture source `d556da01`. The [visual contract](PRODUCT_VISUAL_REFINEMENT.md) and [reference gaps](design/PRODUCT_REFERENCE_GAPS.md) retain remaining limits; [v5](../examples/demos/standalone-interface-preview-v5/README.md) remains historical `487064d2` evidence. |
@@ -36,25 +36,31 @@ The default core remains SDK-free; the playable Engine remains dry.
 
 ## Current source and evidence map
 
-This 15 November 2026 reconciliation observes published
-`d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
-`edf67b978f93e8dbea6537ce92d3928c171bc1f3`. Inspect the live checkpoint and
-actual checkout/remote before resuming; a dated document is not a live query.
+Current published source is
+`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`, tree
+`d310be065db2bb9b0012c11a0c5ec2beda4c9384`, with verified parent c4486ba.
+All sixty actual worker results are accepted and strict record validation passes.
+All thirteen required hosted jobs pass at that exact source. Inspect the live checkpoint and
+actual checkout/remote before resuming; dated evidence does not qualify changed
+inputs. The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) retains the unmet,
+unwaived 1:1 UI requirement and the exact next work orders.
 
 | Record | What it establishes |
 | --- | --- |
-| [Current publication](development/2026-11-15-product-continuation/reports/gallery-publication.json) and [hosted statuses](development/2026-11-15-product-continuation/reports/d8-hosted-status.json) | Verified d8 commit/tree/parent and expected-head/non-force update; all thirteen hosted jobs succeed at that source. Later checker/plot-admission changes are outside those inputs. |
+| [Repaired publication](development/2026-11-15-product-continuation/reports/checker-portability-publication.json) and [required hosted gate](development/2026-11-15-product-continuation/reports/root-final-hosted.json) | Exact 80b8cce commit/tree/parent and guarded nonforced update. All thirteen required jobs pass at 80b8cce, including strict actual-sixty execution; original c448 remains eleven successful / two failed jobs. |
+| [Portable checker review](development/2026-11-15-product-continuation/reports/final-checker-portability-independent-review.json) and [root affected gate](development/2026-11-15-product-continuation/reports/checker-portability-root-verification.json) | Mac temporary-path fault targets and Windows cross-API metadata are repaired. The current 23-method module, four reader methods / 30 subcases and registered affected CTest pass locally. All actual sixty notes/identities remain unchanged and strict validation passes. |
+| [Earlier d8 publication](development/2026-11-15-product-continuation/reports/gallery-publication.json) and [hosted statuses](development/2026-11-15-product-continuation/reports/d8-hosted-status.json) | Verified d8 commit/tree/parent and expected-head/non-force update; all thirteen hosted jobs succeed at that source. Later checker/plot-admission changes are outside those inputs. |
 | Primary [Linux](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md), [Windows](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md), [macOS](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) and [VST3](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) reviews | At d8: core Release 155/155 on each platform; Linux core sanitizers 155/155; four native Release configurations 48/48 each; expanded Linux native sanitizers 21/21; VST3 8/7/7 with 47/47 plug-in validator checks per platform. The full R4 pass qualifies its published inputs without closing another owner's unfinished work. |
-| [Later coherent local build/CTest](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json) and [full log](development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt) | d8 plus accepted A46/A48 changes passes 180/180 in 507.55 s, with 366 frozen code/test/build/data inputs unchanged. GCC 14.2 Release, standalone ON, native MIDI backend OFF, VST3 OFF and dummy SDL. Those changes still need their own publication/hosted result. |
+| [Later coherent local build/CTest](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json) and [full log](development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt) | d8 plus accepted A46/A48 changes passes 180/180 in 507.55 s, with 366 frozen code/test/build/data inputs unchanged. GCC 14.2 Release, standalone ON, native MIDI backend OFF, VST3 OFF and dummy SDL. Those original inputs were published at c448; the subsequent checker/test portability changes retain separate qualification above. |
 | [Original b9 Linux failure](development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt), [Windows history](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md) and [d556 sanitizer build failure](development/2026-11-15-product-continuation/reports/d556-native-sanitizer-build-failure.json) | Earlier failed outcomes remain intact beside the d8 repaired-source passes. The numeric ancestor-loop, owned SDL environment strings, Windows newline comparison and test-facade clear/push-back repairs retain their exact scopes; no new sanitizer exception was added. |
 | [Earlier feature build](development/2026-11-15-product-continuation/reports/wave4-coherent-build.json) and [statuses](development/2026-11-15-product-continuation/reports/implementation-hosted-status.json) | `ff41d412` passed 176/176 local Release tests and has thirteen successful hosted statuses. Its earlier fixture/install inputs stay distinct from d8 and subsequent changes. |
 | [Product compatibility](PRODUCT_COMPATIBILITY.md) and [code review](reviews/PRODUCT_CONTINUATION_CODE_REVIEW.md) | Named-source preservation of musical/core/VST3 boundaries, reviewed native behavior and the scoped benchmark metadata correction. |
 | [A26 lifecycle evidence](development/2026-11-15-product-continuation/reports/A26-root-native-calibration.json) | Real application and adapter with an isolated synchronous MIDI dependency: nine tests, ten processes, seven lifecycles. It is not physical-device or asynchronous driver-race evidence. |
-| [Gallery admission](reviews/PRODUCT_GALLERY_ADMISSION.md), [modal raster receipt](development/2026-11-15-product-continuation/reports/A42-calibration-modal-raster.json) and [visual gap record](design/PRODUCT_REFERENCE_GAPS.md) | Eleven admitted d556 native frames and current 1,293 material assertions/109 frames retain source, state and pixel identities. README uses these captures; original BMPs remain unavailable. Literal 1:1 equality and actual display/accessibility journeys remain unproved. |
+| [Gallery admission](reviews/PRODUCT_GALLERY_ADMISSION.md), [modal raster receipt](development/2026-11-15-product-continuation/reports/A42-calibration-modal-raster.json) and [visual gap record](design/PRODUCT_REFERENCE_GAPS.md) | Eleven admitted d556 native frames and current 1,293 material assertions/109 frames retain source, state and pixel identities. README uses these captures; original BMPs remain unavailable. Literal 1:1 equality remains unmet; actual display/accessibility journeys remain unqualified. |
 | [Installed workflow](STANDALONE_INSTALL.md), [A43 receipt](development/2026-11-15-product-continuation/reports/A43-root-installed-ctest.txt) and primary native reviews | Current Standalone inventory is 16 files MIDI-OFF / 20 MIDI-ON, including the calibration guide. Local eight-method acceptance and hosted relocation/package assertions pass in their named configurations; CrossoverTools remains six files. |
 | [Native recovery review](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) | A47-N1 identifies suppressed WinMM/CoreMIDI native-close failures before the wrapper can establish callback retirement. This is a source-proven gap and unexecuted risk model, not an observed hardware failure/use-after-free. The next gate is below-RtMidi fault injection and checked-close/lifetime acceptance. |
 | [Numerical admission review](reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md) and [plot refresh](development/2026-11-15-product-continuation/reports/crossover-plot-admission-refresh.json) | The repaired admission tool rejects incomplete/contradictory reports while retaining numerical source/probe/thresholds. The grid is 126 in-band / 130 total points per group. Refreshed plot pixels are identical; only generator-hash metadata changed. |
-| [Completed reference-refinement closure](REFERENCE_REFINEMENT_CLOSURE.md) | Earlier `fd2f606` combined-source qualification, its sixty accepted assignments, original failures and the `487064d2` v5 capture boundary. It does not close this new session. |
+| [Completed reference-refinement closure](REFERENCE_REFINEMENT_CLOSURE.md) | Earlier `fd2f606` combined-source qualification, its sixty accepted assignments, original failures and the `487064d2` v5 capture boundary. Its worker credit and source qualification remain separate from this session. |
 
 Preserve the original failed, blocked and cancelled observations. A successful
 build, job status, retained image, native input journey and physical device test
@@ -142,7 +148,7 @@ and [waveform review](research/WAVEFORM_ATLAS_REVIEW.md) remain separate records
 
 | Session | Recovery records |
 | --- | --- |
-| Active product continuation | [Scope](development/2026-11-15-product-continuation/README.md), [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-15-product-continuation/assignments.json) and [ten-wave plan](development/2026-11-15-product-continuation/WAVES.md). Only actual accepted work counts toward its sixty assignments. |
+| Active product continuation | [Scope](development/2026-11-15-product-continuation/README.md), [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-15-product-continuation/assignments.json) and [ten-wave plan](development/2026-11-15-product-continuation/WAVES.md). All sixty actual results are accepted in ten waves; its remaining 1:1 UI objective is explicit in the batch record. |
 | Separate waveform continuation | [Scope](development/2026-11-14-waveform-continuation/README.md), [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md) and [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). It retains R4 and its other checkout. |
 | Completed reference refinement | [Closure](REFERENCE_REFINEMENT_CLOSURE.md), [checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md) and [strict completion result](development/2026-11-14-reference-refinement/completion-check.json). Preserve its sixty accepted workers and exact-source qualification. |
 | Earlier product sessions | [Interface recovery](INTERFACE_RECOVERY_HANDOFF.md), [preset session](development/2026-11-14-preset-continuation/README.md), [MIDI/UI handoff](MIDI_UI_HANDOFF.md), [standalone handoff](STANDALONE_HANDOFF.md) and [pedal handoff](PEDAL_HANDOFF.md). |
@@ -156,11 +162,12 @@ setup/status/next steps/log through the assigned owner. Interface changes need
 new actual captures before README promotion. Checkpoint each wave; preserve
 compact evidence before removing only owned reproducible intermediates.
 
-The integrator uses the accepted [product checker](NEXT_STEPS.md#validate-this-sessions-actual-records)
-in progress mode until this session's own sixty actual records are accepted,
-then retains the strict result and commits/publishes authorized accepted work
-with a fresh expected head and no force. Verify the fetched commit/tree and
-required hosted results.
+The integrator retains the passing strict [product-checker result](NEXT_STEPS.md#validate-this-sessions-actual-records)
+for the completed sixty-worker batch and all thirteen required results at 80b8cce.
+New work starts from the remaining UI/M6/native-close assignments. Continue
+updating the actual source/evidence and publishing authorized accepted work
+with a fresh expected head and no force; verify the fetched commit/tree and
+its required hosted results. Do not recount this completed batch.
 Historical checkers, planned assignments and a publication request do not prove
 new acceptance. No project-wide license has been selected; the
 [notices](../THIRD_PARTY_NOTICES.md) and [source-rights record](research/RIGHTS_AND_SOURCES.md)

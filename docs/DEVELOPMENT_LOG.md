@@ -1,5 +1,75 @@
 # Development log
 
+## 2026-11-15 — Product batch qualified; all sixty accepted and thirteen hosted jobs pass
+
+Published tested source is **`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`**, tree
+`d310be065db2bb9b0012c11a0c5ec2beda4c9384`, parent
+`c4486bafccbcfbcd9bcd9492e8949ddd44ea1340`. The
+[publication receipt](development/2026-11-15-product-continuation/reports/checker-portability-publication.json)
+and [final root hosted record](development/2026-11-15-product-continuation/reports/root-final-hosted.json)
+retain guarded nonforced publication, fetched identities and all thirteen
+completed-success jobs. The closing commit changes documentation/evidence only.
+All sixty actual worker results in ten logical waves are accepted. The actual
+Linux strict-checker JSON matches the retained 59,441-byte result byte for byte:
+60 accepted/verified notes and distinct agents, ten waves, zero errors. Followups
+add no worker credit; record validation does not independently attest dispatch,
+semantic truth, execution or product fidelity.
+
+Core Release passes **157/157** on Linux/Windows/macOS, and Linux core sanitizers
+pass **157/157**. Four native Release configurations pass **48/48** each; Linux
+native sanitizers pass **21/21**, with 260 actual instrumented objects and 21
+verified runtime-linked executables. VST3 passes **8/7/7** and **47 plug-in-validator
+checks** per platform, alongside separate **51 SDK self-tests** per platform and
+relocated ABI gates. The full R4 run passes in **532.1546176459999 s**, preceded
+by fourteen passing report-admission checks. Primary audits are retained for
+[Linux](development/2026-11-15-product-continuation/reports/A49-portability-hosted.json),
+[Windows](development/2026-11-15-product-continuation/reports/A50-portability-hosted.json),
+[macOS](development/2026-11-15-product-continuation/reports/A51-portability-hosted.json) and
+[VST3](development/2026-11-15-product-continuation/reports/A52-portability-hosted.json).
+The complete Python modules pass; nonverbose successful core output does not
+print individual unittest outcomes or current internal skip counts.
+
+The preceding c448 matrix remains **eleven success / two failed core jobs**.
+A51 reproduced four macOS fault-injection misses caused by temporary-directory
+aliases and canonicalized the test fixture. A50 reproduced Windows false
+changed-file rejections and fixed only the opening comparison between compatible
+path/descriptor metadata. POSIX and full same-API signatures remain unchanged.
+All nineteen original methods are preserved; four new methods cover thirty
+reader subcases. The full 23-method module passes locally, and A46's
+[independent review](development/2026-11-15-product-continuation/reports/final-checker-portability-independent-review.json)
+accepts the narrow repair before new-source hosted execution. Original failures,
+CPython primary-source diagnosis, before/after outputs and the original c448
+strict JSON remain available. No application/model/build/workflow source changed.
+
+The earlier local **180/180 in 507.55 s** remains scoped to its original 366 inputs.
+Only the checker and its test module now differ; 364 inputs and all three binaries
+remain unchanged. The affected registered CTest passes in 1.31 s, and current
+strict records pass. Native evidence remains 1,293 material assertions/109 frames,
+nine calibration methods/ten processes/seven lifecycles/two intentional failed
+replays, and 16-file MIDI-OFF/20-file MIDI-ON Standalone packages. The six-file
+CrossoverTools component remains separate. The existing nonfatal Windows
+installer path warning is retained in its audit; no unrelated build repair or
+new leak exception was introduced.
+
+Root reconciles current README, AGENTS, whole-plan routing, status, next steps,
+project guide, handoff, batch record and checkpoint. The admitted eleven native
+captures, original PDF, M0–M9 exit table, historical statuses/logs and A59 setup
+body are preserved. A pre-existing historical link to README's UI design heading
+is restored with a legacy anchor; the original historical review stays unchanged.
+The [resource observation](development/2026-11-15-product-continuation/reports/closing-resource-and-preservation.json)
+records 55.996 GiB free, 184.28 MiB source checkout and 92.24 MiB primary build. The
+other R4 checkout and its 151 staged/four untracked entries are untouched.
+
+**The original request remains partial because literal whole-interface 1:1
+matching is unmet and unwaived.** The [batch record](PRODUCT_CONTINUATION_CLOSURE.md)
+and [next steps](NEXT_STEPS.md) prioritize the native visual/input gate and
+remaining reference work, an independent M6 same-Hz protocol, and below-RtMidi
+checked-close/callback-retirement acceptance. Preserve scanner G5's failure,
+47 parameter identities, state4/readers1–3, 91 shared sources and the dry Engine.
+Physical acquisition, the R4 owner's remaining integration/publication/acceptance,
+R5/R6, actual DAW/device/display/accessibility/deadline and signed release retain
+their own evidence requirements. Complete model/product release is not claimed.
+
 ## 2026-11-15 — Sixty actual product workers accepted; final-source gate pending
 
 Root accepted A01–A60 in ten logical six-worker waves and ran the strict product

@@ -81,6 +81,8 @@ The output is stereo PCM16 with identical dry channels. Existing output files ar
 
 Other development paths have their own setup: [optional VST3 and pinned SDK](docs/VST3_BUILD.md), [independent crossover targets](docs/CROSSOVER_DEVELOPER_GUIDE.md), [CrossoverTools installation](docs/CROSSOVER_INSTALL.md), [rotary waveform CLI](docs/ROTARY_RENDER_CLI.md) and [capture/calibration tools](docs/CALIBRATION_RUNBOOK.md). VST3 requires CMake 3.25+ and its separately acquired SDK; the native interface shown here is the standalone application.
 
+<a id="native-interface-and-uiux-design"></a>
+
 ## Native interface and UI/UX
 
 The application follows the atlas's walnut, charcoal and brass [cover/page-409 concept](docs/design/atlas-cover-reference.jpg), with [retained source provenance](docs/design/atlas-reference.json). Controls, labels, drawbar positions, held notes and focus are live application output. The cabinet image supplies decoration; it does not indicate connected Leslie audio.
@@ -116,7 +118,7 @@ The calibration dialog at the minimum 960×700 window shows illustrative raw end
 
 The captures use SDL dummy audio/video, a software renderer and equal logical/drawable dimensions. Source, executable, replay, control state and decoded image identities are retained. The admission records the earlier build-receipt boundary and the unavailable original BMP intermediates; retained PNGs match their recorded native-pixel hashes. The [historical v5 gallery at `487064d2`](examples/demos/standalone-interface-preview-v5/README.md) and all earlier galleries remain preserved.
 
-**Literal whole-interface 1:1 equality remains unproved.** The [reference-gap review](docs/design/PRODUCT_REFERENCE_GAPS.md) identifies remaining rack composition, deck/rim shading, key material and small-text differences. Complete manuals, 24 presets, 25 pedals, real utilities and the **NOMINAL DRY ORGAN** caption preserve correct product meaning. The existing relative paint-cost check does not establish an interactive frame rate; native display usability, semantic accessibility, physical devices and measured cabinet fidelity remain separate gates.
+**Literal whole-interface 1:1 equality remains unmet and unwaived.** The [reference-gap review](docs/design/PRODUCT_REFERENCE_GAPS.md) identifies remaining rack composition, deck/rim shading, key material and small-text differences. Complete manuals, 24 presets, 25 pedals, real utilities and the **NOMINAL DRY ORGAN** caption preserve correct product meaning. The existing relative paint-cost check does not establish an interactive frame rate; native display usability, semantic accessibility, physical devices and measured cabinet fidelity remain separate gates.
 
 ## Playing, expression and external MIDI
 
@@ -182,27 +184,66 @@ The objective remains one inspectable engine for an identified B-3/AO-28 and Les
 | **M6 — Leslie electronics** | Independent ideal passive crossover and numerical/lifecycle evidence. | Declare same-Hz criteria, evaluate a separately identified numerical candidate, acquire real loads/losses, then qualify the coupled amplifier/transformer/crossover/driver model. |
 | **M7 — Rotary acoustics** | Independent R2 motion/R3 propagation and implemented R4 waveform renderer/CLI. | Complete the waveform owner's remaining independent acceptance; R5 audible policy, R6 runtime integration and physical cabinet evidence remain separate. |
 | **M8 — Calibration** | Capture/corpus/split tools, declared comparison policies, studies and report replay. | Execute the [physical acquisition sequence](docs/CALIBRATION_NEXT_ACQUISITION.md), then fit and evaluate held-out evidence with uncertainty. |
-| **M9 — Product and release** | Standalone workspaces, MIDI calibration/channel modes, optional VST3, stable automation/state, admitted current captures and source-qualified install components. | Close actual session records and later-source qualification; qualify native callback retirement, real displays/devices/hosts, accessibility, callback deadlines, licensing and distribution. |
+| **M9 — Product and release** | Standalone workspaces, MIDI calibration/channel modes, optional VST3, stable automation/state, admitted current captures and source-qualified install components. | Complete the requested 1:1 visual match and qualify native callback retirement, real displays/devices/hosts, accessibility, callback deadlines, licensing and distribution. |
 
 The next concrete work is:
 
-1. **Finish current source and session qualification.** Preserve the admitted eleven native captures, 1,293-check modal/material evidence and 16-file MIDI-OFF / 20-file MIDI-ON installed workflows. Publish the accepted record-checker and plot-admission repairs with their local 180/180 result, then inspect that exact source's required hosted outcomes. The active checkpoint owns actual worker progress; sixty-worker closure is still pending.
-2. **Assess display usability before further decoration.** Check the smallest legends and status/helper text on an identified native display/DPI; exercise focus, held-note resize, drawbar endpoints, pending/applied captions and calibration. The [gap review](docs/design/PRODUCT_REFERENCE_GAPS.md) identifies deck/rim lighting as a later bounded material candidate.
-3. **Continue M6 through an explicit numerical and physical protocol.** Freeze frequency band, load family, magnitude/phase/complex-error criteria and independent check grid before comparing a new realization. Preserve the current same-Hz results and fixed documentary registry. [Crossover next gates](docs/CROSSOVER_DEVELOPER_GUIDE.md#5-continue-m6-through-explicit-gates)
-4. **Preserve the independent model tracks.** Resolve scanner G5; continue R4 acceptance with its owner; acquire complete AO-28/Leslie electrical and cabinet inputs. Validate the dry organ before fitting downstream cabinet or room effects.
-5. **Complete native and release gates with observed evidence.** The [recovery review](docs/reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) identifies a source-proven WinMM/CoreMIDI close-error observability gap. A narrow below-RtMidi fault-injection and checked-close task must establish native callback retirement; no hardware failure or use-after-free was observed by that review. Actual DAW/device journeys, native semantic accessibility, deadlines, rights and signed distribution retain separate evidence requirements.
+1. **Continue toward the requested 1:1 interface.** The present application still differs from the reference in rack geometry, dark wells/rims, materials, typography and functional panel contents. The [UI acceptance review](docs/reviews/PRODUCT_UI_ACCEPTANCE.md) requires an identified native display/DPI journey for the smallest legends, focus, held-note resize, drawbar endpoints, pending/applied captions and calibration before the next scoped visual candidate. Preserve actual comparison captures and the [remaining gap record](docs/design/PRODUCT_REFERENCE_GAPS.md); correct control counts do not waive the visual requirement.
+2. **Continue M6 through an explicit numerical and physical protocol.** Freeze frequency band, load family, magnitude/phase/complex-error criteria and independent check grid before comparing a new realization. Preserve the current same-Hz results and fixed documentary registry. [Crossover next gates](docs/CROSSOVER_DEVELOPER_GUIDE.md#5-continue-m6-through-explicit-gates)
+3. **Preserve the independent model tracks.** Resolve scanner G5; continue R4 integration/publication/final acceptance with its owner; acquire complete AO-28/Leslie electrical and cabinet inputs. Validate the dry organ before fitting downstream cabinet or room effects.
+4. **Complete native and release gates with observed evidence.** The [recovery review](docs/reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) identifies a source-proven WinMM/CoreMIDI close-error observability gap. A narrow below-RtMidi fault-injection and checked-close task must establish native callback retirement; no hardware failure or use-after-free was observed by that review. Actual DAW/device journeys, native semantic accessibility, deadlines, rights and signed distribution retain separate evidence requirements.
 
 The [active checkpoint](docs/development/2026-11-15-product-continuation/CHECKPOINT.md) records current source and actual progress; its [manifest](docs/development/2026-11-15-product-continuation/assignments.json) records real work and acceptance. The [recovery handoff](docs/PRODUCT_HANDOFF.md) gives setup and shared-build ownership, and [record-checker commands](docs/NEXT_STEPS.md#validate-this-sessions-actual-records) distinguish progress from strict closure. The [waveform checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md) owns R4. The atlas's research waves, M0–M9 milestones and each development session's worker waves are different organizations.
 
 ## Source-specific qualification
 
-The published source at this 15 November reconciliation is **`d8c39f7986746eacc991747153c7dbb012bb9a32`**, tree **`edf67b978f93e8dbea6537ce92d3928c171bc1f3`**. Its [publication receipt](docs/development/2026-11-15-product-continuation/reports/gallery-publication.json) verifies commit/tree/parent, and all **13 hosted jobs succeeded** in the [exact-source status receipt](docs/development/2026-11-15-product-continuation/reports/d8-hosted-status.json). The [Linux](docs/reviews/PRODUCT_LINUX_HOSTED_REVIEW.md), [Windows](docs/reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md), [macOS](docs/reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) and [VST3](docs/reviews/PRODUCT_VST3_HOSTED_REVIEW.md) reviews retain the primary logs and their scopes.
+The published repaired source is **[`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe)**,
+tree **`d310be065db2bb9b0012c11a0c5ec2beda4c9384`**, with parent c4486ba.
+The [publication receipt](docs/development/2026-11-15-product-continuation/reports/checker-portability-publication.json)
+records the guarded nonforced update and fetched identity. Its
+[required primary hosted qualification](docs/development/2026-11-15-product-continuation/reports/root-final-hosted.json)
+passes **all thirteen required jobs** at that exact source. The closing commit
+contains documentation and evidence only; the tested code remains 80b8cce.
 
-Core Release passes **155/155** on all three platforms; Linux core sanitizers pass **155/155**. The four native Release configurations pass **48/48** each, and the expanded Linux native sanitizer selection actually executes and passes **21/21**. Current material evidence is **1,293 assertions / 109 frames**, and installed Standalone payloads are **16 files MIDI-OFF / 20 MIDI-ON**. VST3 passes **8/8 Linux and 7/7 macOS/Windows**, with **47/47 plug-in validator checks** per platform. The full Linux R4 experiment also passes its named inputs; it does not close another owner's unfinished R4 work or R5/R6 integration.
+| Required final-source gate | Actual result |
+| --- | --- |
+| Core Release — Linux, Windows and macOS | **157/157 on each platform** |
+| Linux core ASan/UBSan/leak checks | **157/157** |
+| Native Release — Linux MIDI ON/OFF, Windows and macOS | **48/48 in each of four configurations** |
+| Linux native ASan/UBSan/leak checks | **21/21**, with verified instrumented inputs/runtime links |
+| Native VST3 — Linux / macOS / Windows | **8/8 / 7/7 / 7/7**; **47/47 plug-in-validator checks** on each platform |
+| Complete R4 waveform experiment | **Full mode passed**, with 14 report-admission checks |
+| Actual product-session records — Linux Release | **60 accepted/verified agents and notes, ten waves, zero errors** |
 
-A later [coherent local build and CTest result](docs/development/2026-11-15-product-continuation/reports/wave8-coherent-build.json) passes **180/180 in 507.55 s** at `d8c39f7` plus the accepted A46/A48 checker/admission changes, with all **366 frozen code/test/build/data inputs unchanged**. It uses GCC 14.2 Release, standalone ON, physical MIDI backend OFF, VST3 OFF and dummy SDL. Those later repairs are locally qualified but await their own publication and hosted result; they do not inherit d8's platform qualification.
+[Core and full R4 CI](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212267) · [Native standalone CI](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212230) · [Native VST3 CI](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212303)
 
-Original [b9 install failures](docs/development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt), [d556 native-sanitizer build failure](docs/development/2026-11-15-product-continuation/reports/d556-native-sanitizer-build-failure.json), and the earlier [ff41 feature result](docs/development/2026-11-15-product-continuation/reports/wave4-coherent-build.json) remain retained. Local leak-enabled execution was blocked by ptrace; its [failure and empty-main control](docs/development/2026-11-15-product-continuation/notes/A25-crossover-allocation.md) remain separate from hosted success. No new leak exception was added. Dummy SDL, software raster and synchronous MIDI fixtures do not establish physical devices, OS callback races, native accessibility or runtime deadlines. Follow [Status](docs/STATUS.md) and the live checkpoint for subsequent source-specific outcomes.
+The previous c448 matrix completed **11 successful / two failed jobs**. Its new
+record checker exposed a macOS temporary-path alias in the failure-injection
+tests and incompatible Windows path/descriptor timestamp meanings. The
+[macOS reproduction](docs/development/2026-11-15-product-continuation/reports/final-source-macos-portability-repair.json),
+[Windows repair](docs/development/2026-11-15-product-continuation/reports/final-source-windows-portability-repair.json)
+and [independent review](docs/development/2026-11-15-product-continuation/reports/final-checker-portability-independent-review.json)
+retain the original failures and narrow fixes. Four new reader methods cover
+30 synthetic subcases; the current 23-method module passes locally. The actual
+strict ledger still verifies **60 accepted agents, 60 notes, ten waves and zero
+errors**, with unchanged manifest/note identities.
+
+The earlier [coherent local build](docs/development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
+passed **180/180 in 507.55 s** over its 366 recorded inputs. The portable checker
+and test module now differ in two files; **364 inputs and all three recorded
+binaries remain unchanged**. The [affected registered CTest](docs/development/2026-11-15-product-continuation/reports/checker-portability-root-verification.json)
+passes in **1.31 s**. No application, model, build or workflow code changed in
+this repair. The old 180-test result is not attributed to changed inputs.
+
+Current native material evidence is **1,293 assertions / 109 frames**, and
+installed Standalone payloads contain **16 files MIDI-OFF / 20 MIDI-ON**.
+Original b9 installation failures, d556 sanitizer build failure and c448 checker
+failures remain in [Status](docs/STATUS.md) and the source-specific reports.
+Local leak-enabled execution was blocked by ptrace; the
+[failure and empty-main control](docs/development/2026-11-15-product-continuation/notes/A25-crossover-allocation.md)
+remain separate from hosted success. No new leak exception was added. Dummy SDL,
+software raster and synchronous MIDI fixtures do not establish physical devices,
+OS callback races, native accessibility, DAW journeys or runtime deadlines.
 
 ### Historical evidence retained
 

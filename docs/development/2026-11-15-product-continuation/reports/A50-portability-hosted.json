@@ -1,0 +1,334 @@
+{
+  "schema": "b3-a50-windows-portability-hosted-audit-v1",
+  "author": "/root/w09_a50_windows_hosted",
+  "worker_id": "A50",
+  "followup": true,
+  "worker_credit": "Reuse of accepted A50; no new worker or wave.",
+  "source": {
+    "commit": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+    "tree": "d310be065db2bb9b0012c11a0c5ec2beda4c9384",
+    "parent": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "verification": "GitHub git/commits metadata agrees with local Git objects; exact checker/test bytes match frozen reviewed hashes."
+  },
+  "source_files": [
+    {
+      "path": "tools/check_product_session.py",
+      "bytes": 20983,
+      "sha256": "3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631",
+      "worktree_matches": true
+    },
+    {
+      "path": "tests/test_product_session.py",
+      "bytes": 26558,
+      "sha256": "d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11",
+      "worktree_matches": true
+    },
+    {
+      "path": "tests/test_plot_crossover_characterization.py",
+      "bytes": 12324,
+      "sha256": "dd7ff3d635c54e680594fd8af6771cfe2af66871570a0cd5b1cb9df28f50b360",
+      "worktree_matches": true
+    },
+    {
+      "path": "tools/plot_crossover_characterization.py",
+      "bytes": 19918,
+      "sha256": "3bc78b38516de384cf07e94b1cd9f33dbd71c0a6057b2012617814dfbd29ccf4",
+      "worktree_matches": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 9253,
+      "sha256": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+      "worktree_matches": true
+    },
+    {
+      "path": ".github/workflows/standalone.yml",
+      "bytes": 60379,
+      "sha256": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a",
+      "worktree_matches": true
+    },
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 23638,
+      "sha256": "36c17341aae955e55a482f6434ee563d4646a76027252797d53945e470d48aa2",
+      "worktree_matches": true
+    },
+    {
+      "path": "CMakePresets.json",
+      "bytes": 1711,
+      "sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      "worktree_matches": true
+    }
+  ],
+  "native_production_changes": [],
+  "earlier_failed_source": {
+    "commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "tree": "2d21135e570c5b328a7f54d17582ffc7ac62a489",
+    "core": {
+      "run": 43672641490,
+      "job": 132685867528,
+      "ctest_passed": 156,
+      "ctest_selected": 157,
+      "product_methods": 19,
+      "failure_entries": 111,
+      "skipped": 1
+    },
+    "native": {
+      "run": 43672641506,
+      "job": 132685867505,
+      "ctest_passed": 48,
+      "ctest_selected": 48
+    },
+    "report": "A50-final-source-hosted.json",
+    "boundary": "These failed/successful c448 results remain unchanged; the repaired source is qualified only by its own fresh primary logs."
+  },
+  "repair": {
+    "report": "final-source-windows-portability-repair.json",
+    "report_sha256": "6ddcf4b41f867915205b05fcf536e2d4290ee0aef1fbaf1fe034a20821d4c765",
+    "independent_review": "final-checker-portability-independent-review.json",
+    "description": "Opening-only Windows signature normalizes incompatible ctime and filename-derived execute bits while retaining identity, all other mode bits, size, mtime and available birthtime. Full POSIX and same-API signatures remain unchanged. A51 canonical temporary-path injection is preserved."
+  },
+  "declared_product_module": {
+    "methods": 23,
+    "added_reader_methods": 4,
+    "added_reader_subcases": 30,
+    "new_skips_added": 0,
+    "existing_skip_paths": [
+      "FIFO test is skipped when os.mkfifo is absent.",
+      "Symlink helper can skip if the runner cannot create symlinks."
+    ],
+    "transcript_boundary": "Successful unittest stdout is not printed by the core CTest preset; source-declared method/skip policy is distinguished from actually printed job-log results."
+  },
+  "declared_plot_module": {
+    "methods": 11,
+    "new_skips_added": 0
+  },
+  "windows_actual_ledger_boundary": "The separate strict actual-sixty-record workflow step is Linux-only. Windows CTest executes synthetic regression modules; this audit does not attribute that actual-ledger check to Windows.",
+  "limits": [
+    "MSVC x64 Release only; no MinGW, Windows Debug/sanitizer, hardware MIDI/audio, real display or OS callback-race qualification.",
+    "Actual Windows native configuration is MIDI ON/WinMM. The16-file MIDI-OFF imported-target installer fixture is not a separate Windows MIDI-OFF executable or runtime run.",
+    "Material uses SDL software surfaces and runtime automation uses dummy drivers; literal whole-interface equality, accessibility, physical/model fidelity, signing and DAW gates remain separate.",
+    "A50 inspected source and primary hosted logs only in this follow-up. No local suite, build, workflow dispatch, code/test/review/old-report/accepted-note/ledger edit, commit or publication."
+  ],
+  "core": {
+    "run": 43674212267,
+    "job": 132690668138,
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212267/job/132690668138",
+    "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-11-15T03:51:34Z",
+    "completed_at": "2026-11-15T03:58:50Z",
+    "log_decoded_utf8_sha256": "02eb7e046d3263fc690830dc1e5e0fece8c4a833513c40ea63f0932cee38e927",
+    "log_decoded_characters": 442065,
+    "ctest": {
+      "selected": 157,
+      "passed": 157,
+      "failed": 0,
+      "seconds": 236
+    },
+    "product_session": {
+      "ctest_number": 114,
+      "status": "passed",
+      "ctest_seconds": 3.6,
+      "source_declared_methods": 23,
+      "observed_unittest_method_total": null,
+      "observed_unittest_skip_total": null,
+      "skip_boundary": "Success output is hidden by the CTest output-on-failure preset. No new skip condition appears in the exact-source diff; the original Windows FIFO skip and conditional symlink skip remain. Do not claim a newly observed per-method/skip transcript from this console."
+    },
+    "plot_admission": {
+      "ctest_number": 111,
+      "status": "passed",
+      "ctest_seconds": 0.77,
+      "source_declared_methods": 11,
+      "observed_unittest_method_total": null
+    },
+    "crossover_install": {
+      "ctest_number": 91,
+      "status": "passed",
+      "ctest_seconds": 10.86
+    },
+    "skipped_workflow_steps": [
+      "Configure Release on Linux or macOS",
+      "Verify the completed interface session",
+      "Verify the completed refinement session",
+      "Verify the actual product session records"
+    ],
+    "artifact": {
+      "id": 14145631265,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212267/artifacts/14145631265",
+      "bytes": 122758,
+      "digest": "sha256:e38837be421e4fc97c84011c3359083cdf99d7392a3b5de98c0e87ac1b20d7f7",
+      "boundary": "Upload and artifact metadata inspected. Retained JUnit/LastTest.log content is not independently downloaded/read by this audit."
+    }
+  },
+  "protected_files": [
+    {
+      "protected_path": "docs/development/2026-11-15-product-continuation/notes/A50-windows-hosted.md",
+      "sha256": "b710b886e25a6b789fc72bf3169178e8a20f891574b5ec5fe06a7652bee8e1c2"
+    },
+    {
+      "protected_path": "docs/development/2026-11-15-product-continuation/reports/A50-final-source-hosted.json",
+      "sha256": "ac93c548de61a5acd0fcc638fc083113c5c664c97a63b772736e107a1a1d17a8"
+    },
+    {
+      "protected_path": "docs/development/2026-11-15-product-continuation/reports/A50-final-source-primary.txt",
+      "sha256": "18d9e6b5c60587f9afd85e0a5374154ed5e0045d15cf61834dee0048c67d8a13"
+    },
+    {
+      "protected_path": "docs/development/2026-11-15-product-continuation/reports/final-source-windows-portability-repair.json",
+      "sha256": "6ddcf4b41f867915205b05fcf536e2d4290ee0aef1fbaf1fe034a20821d4c765"
+    }
+  ],
+  "changed_non_documentation_files": [
+    "tests/test_product_session.py",
+    "tools/check_product_session.py"
+  ],
+  "recorded_at_utc": "2026-11-15T04:03:58.777Z",
+  "qualification": "Passed for the named exact-source Windows MSVC x64 Release core and native jobs. This is not an all-platform/VST3 or hardware acceptance claim.",
+  "native": {
+    "run": 43674212230,
+    "job": 132690667933,
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212230/job/132690667933",
+    "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+    "status": "completed",
+    "conclusion": "success",
+    "started_at": "2026-11-15T03:51:34Z",
+    "completed_at": "2026-11-15T04:01:50Z",
+    "log_decoded_utf8_sha256": "cba1e0133c8386f2058492602982c31b2f618cc19911e5f8f40cd029bf4aaccf",
+    "log_decoded_characters": 509075,
+    "ctest": {
+      "selected": 48,
+      "passed": 48,
+      "failed": 0,
+      "seconds": 379.16
+    },
+    "calibration": {
+      "ctest_number": 174,
+      "methods_observed": 9,
+      "skips_observed": 0,
+      "python_seconds": 20.868,
+      "ctest_seconds": 21.07,
+      "subprocesses": 10,
+      "native_lifecycles": 7,
+      "intentional_failed_replays": 2,
+      "fixture_binary_sha256": "85f5dc7c3fb9c5eb5e3d1ba364cdc38bf8699fdc897464afa8f9f6cb7786c2e7",
+      "scope": "Actual compiled native App with controlled RtMidi facade and dummy SDL, including the unchanged earlier Windows SDL_getenv borrowed-buffer ownership repair. No physical WinMM callback or actual OS race is attested."
+    },
+    "material": {
+      "ctest_number": 163,
+      "ctest_seconds": 7.98,
+      "source_primary_line": 2956,
+      "checks": 1293,
+      "failures": 0,
+      "frames": 109,
+      "legacy_checks": 901,
+      "header_checks": 170,
+      "backend": "SDL software surface; no window/audio",
+      "modal": {
+        "checks": 222,
+        "scenes": 4,
+        "frames": 21,
+        "resampled_pixels": 212,
+        "intersected_glyphs": 38,
+        "unexplained_pixels": 0,
+        "literal_mismatches": 0
+      }
+    },
+    "install": {
+      "ctest_number": 133,
+      "methods_observed": 8,
+      "skips_observed": 0,
+      "python_seconds": 14.978,
+      "ctest_seconds": 15.18,
+      "source_primary_line": 2608,
+      "payload_files": 20,
+      "midi_backend": "WinMM",
+      "midi_enabled": true,
+      "binary_sha256": "447b8642505ea51d6e050b34a5904e9a098c2e08f4efc414342474e32d080a98",
+      "smoke": {
+        "audio_driver": "dummy",
+        "video_driver": "dummy",
+        "duration_ms": 600,
+        "passed": true,
+        "error_count": 0
+      },
+      "guide_installed": "MIDI_EXPRESSION_GUIDE.md",
+      "post_test_workflow": {
+        "verified_files": 20,
+        "relocated_help_passed": true,
+        "relocated_dummy_smoke_ms": 600,
+        "archived_bytes_verified": true
+      },
+      "private_midi_off_fixture": {
+        "files": 16,
+        "boundary": "Source-inspected imported-target install-rule fixture covered by the8method gate; it does not build or exercise a separate Windows MIDI-OFF executable."
+      },
+      "source_assertions_covered": "Unchanged installer suite checks custom directories, deleted private source/build/dependency trees, guide20/100/Inverted calibration with rawCC11 40 expected0.75, package byte preservation, and four unrelated-component namespace sentinels. These are source-inspected assertions, not separate numerical console reports."
+    },
+    "artifacts": [
+      {
+        "id": 14146385246,
+        "name": "standalone-windows-2022-X64-midi-ON-release-package-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1",
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212230/artifacts/14146385246",
+        "bytes": 1595759,
+        "digest": "sha256:306506d049ee5d15ad4d911b74313bfff727899fc2d975f4714e48579ebd3959",
+        "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+        "expired": false
+      },
+      {
+        "id": 14145970892,
+        "name": "standalone-windows-2022-X64-midi-ON-release-diagnostics-80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe-1",
+        "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43674212230/artifacts/14145970892",
+        "bytes": 322975,
+        "digest": "sha256:169a76d11129eedc0cb14468d39f5107c2d80f3f05b615874da416d079a08bcd",
+        "head_sha": "80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe",
+        "expired": false
+      }
+    ],
+    "artifact_boundary": "Primary upload and artifact metadata inspected; hosted workflow verifies archive bytes. A50 did not independently download or re-extract these artifacts.",
+    "skipped_workflow_steps": [
+      "Install Ubuntu desktop and audio development headers",
+      "Configure native Release on Linux or macOS"
+    ]
+  },
+  "toolchain": {
+    "observed_in": "Both exact-source Windows primary logs",
+    "system": "Windows Server2022 10.0.20348 AMD64",
+    "image": "windows-2022 20261112.366.7",
+    "generator": "Visual Studio 17 2022",
+    "architecture": "x64",
+    "configuration": "Release",
+    "msvc": "19.44.35230.0",
+    "msbuild": "17.14.60+43b635718",
+    "sdk": "10.0.26100.0",
+    "cmake": "3.31.6",
+    "ctest": "3.31.6",
+    "python": "3.12.10"
+  },
+  "configurations": {
+    "core": "release preset; BUILD_TESTING ON; registered C++ and Python tests; standalone and VST3 disabled by defaults",
+    "native": "BUILD_TESTING ON; HAMMOND_BUILD_STANDALONE ON; HAMMOND_BUILD_VST3 OFF; HAMMOND_ENABLE_MIDI ON / WinMM; locked external SDL2/RtMidi; bin/share install directories; verbose selected CTest with Release configuration."
+  },
+  "dependencies": {
+    "sdl2": {
+      "version": "2.32.10",
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71"
+    },
+    "rtmidi": {
+      "version": "6.0.0",
+      "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "prepared_cpp_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a"
+    },
+    "validation": "Primary before/after acceptance locked dependency verification succeeds at this exact source."
+  },
+  "warnings": [
+    {
+      "kind": "nonfatal existing generated installer warning",
+      "native_primary_lines": "3599-3613",
+      "detail": "CMake3.31.6 reports CMP0010 invalid escape sequence in the Windows Python path (backslash-h). The subsequent install, relocation, dummy smoke and archived-byte checks succeed. This warning remains separate from the historically repaired b9 CMP0012/while(TRUE) failure."
+    }
+  ],
+  "count_boundary": "157 and48 are observed fresh CTest totals. Product23 and plot11 are exact-source method counts; successful unittest stdout is hidden in the primary core console. Calibration9 and install8, their no-skip OK summaries and timings are observed in the verbose native console. No new skip condition was introduced by the repair.",
+  "next_gate": "Integrator reconciles this exact-source Windows qualification with the separate Linux/macOS and A52 VST3 audits. Read the retained core LastTest.log/JUnit artifact if an observed per-method/skip transcript is required. Hardware MIDI/audio, real-display, callback-race, DAW and physical-model gates remain separate; changed source requires its own appropriate evidence."
+}

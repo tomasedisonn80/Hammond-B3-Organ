@@ -10,19 +10,26 @@ and unwaived.** The [final requirements audit](reviews/PRODUCT_FINAL_REQUIREMENT
 and [UI acceptance](reviews/PRODUCT_UI_ACCEPTANCE.md) identify that gap plainly.
 There is no claim that M6, M9, physical fidelity or product release is complete.
 
-The latest published checkpoint is **`c4486bafccbcfbcd9bcd9492e8949ddd44ea1340`**,
-tree `2d21135e570c5b328a7f54d17582ffc7ac62a489`, with verified parent d8.
-[The publication receipt](development/2026-11-15-product-continuation/reports/final-source-publication.json)
-records the guarded update. Its hosted matrix has failed in the new product
-record-checker module on macOS and Windows. A51 reproduced and repaired macOS
-temporary-directory alias handling in the test fixture; A50 repaired the
-checker's comparison of incompatible Windows path/descriptor timestamp meanings.
-Original primary failures are retained, and a new source-specific hosted gate
-is required. All thirteen c448 jobs are now complete: eleven success and those two core failures. The earlier published source is
-`d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
-`edf67b978f93e8dbea6537ce92d3928c171bc1f3`. Its thirteen hosted jobs passed,
-while the subsequently added checker and numerical-report admission repairs
-have their own locally qualified inputs and need the new-source hosted gate.
+The repaired source is published as **`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`**,
+tree `d310be065db2bb9b0012c11a0c5ec2beda4c9384`, with verified parent c4486ba.
+[The publication receipt](development/2026-11-15-product-continuation/reports/checker-portability-publication.json)
+records the guarded update, exact tree and clean fetched checkout. Its
+[required primary hosted qualification](development/2026-11-15-product-continuation/reports/root-final-hosted.json)
+passes **all thirteen required jobs** at that exact source. The closing commit
+changes documentation and evidence only. The original c448 matrix remains
+**eleven success / two failed core
+jobs** in the [retained observation](development/2026-11-15-product-continuation/reports/c448-hosted-status.json).
+
+The [macOS fixture repair](development/2026-11-15-product-continuation/reports/final-source-macos-portability-repair.json)
+reproduces and fixes four temporary-path alias failures. The
+[Windows reader repair](development/2026-11-15-product-continuation/reports/final-source-windows-portability-repair.json)
+compares compatible opening metadata while preserving full same-API change
+checks. All 19 original test methods remain; four added methods cover 30 reader
+subcases. The 23-method module passes locally, and
+[independent review](development/2026-11-15-product-continuation/reports/final-checker-portability-independent-review.json)
+accepts the narrow changes. Exactly two earlier coherent inputs differ; the
+other 364 and all three binaries remain unchanged. The current strict JSON
+changes only checker identity and still verifies all sixty accepted notes.
 
 ## What the full atlas plan calls for
 
@@ -78,9 +85,10 @@ checker cannot prove fresh dispatch by itself. The CI invocation is now strict.
 
 | Input set | Executed evidence |
 | --- | --- |
+| 80b8cce repaired published source | [All thirteen jobs pass](development/2026-11-15-product-continuation/reports/root-final-hosted.json): core 157/157 on three platforms and Linux sanitizers, four native Release selections 48/48, native sanitizers 21/21, VST3 8/7/7 and 47 plug-in-validator checks each, full R4 plus 14 admission checks. Actual Linux strict JSON is byte-identical to the retained current report: sixty accepted/verified notes, ten waves, zero errors. |
 | d8 published checkpoint | [All thirteen hosted job statuses](development/2026-11-15-product-continuation/reports/d8-hosted-status.json), independently audited in [Linux](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md), [Windows](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md), [macOS](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) and [VST3](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) primary logs. Core 155/155, native 48/48 in all four Release configurations, expanded native sanitizers 21/21, VST3 8/7/7 and 47 plug-in-validator passes each; full R4 numerical job passes its named inputs. |
 | d8 plus frozen A46/A48 working repairs | [Successful coherent reconfigure/all-target build and 180/180 CTest](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json) in **507.55 seconds**, with all **366 code/test/build/data inputs unchanged**. GCC 14.2 Release, native MIDI backend OFF and explicit dummy SDL. All three recorded binaries retain their hashes. |
-| Current actual records | Strict local completion passes after A60 acceptance and the portable checker repair. The c448 Linux strict JSON passes with its old checker identity; fresh repaired-source hosted execution is required. |
+| Current actual records | Strict local completion passes after A60 acceptance and the portable checker repair. The c448 Linux strict JSON remains preserved with its old checker identity; repaired-source qualification is recorded in the current hosted receipt. |
 
 The original b9 CMake/Windows installer and fixture failures, d556 GCC13 native
 sanitizer build failure, and A42's two original clipping-oracle failures remain
@@ -132,8 +140,10 @@ manifest. The handoff supplies normal clean-checkout commands and the exact
 current workspace toolchain separately. Root owns shared-build coordination,
 accepted commits and expected-head/nonforced publication.
 
-The closing read-only audit observed approximately **56 GiB free**, a **181 MiB
-checkout** and **93 MiB primary build**. No cleanup of other sessions was needed
+The [closing read-only audit](development/2026-11-15-product-continuation/reports/closing-resource-and-preservation.json)
+observed **55.996 GiB free**, a **184.28 MiB checkout** and **92.24 MiB primary
+build**. No cleanup of other sessions was needed
 or performed. Original PDF, historical galleries, original failures and bounded
-recovery records are retained. Final publication must make the accepted working
-files available before a clean clone can reproduce this later input set.
+recovery records are retained. The accepted source and portability repairs are published and qualified. This
+closing evidence commit preserves that tested code and retains the exact
+required outcomes; its own publication identity is the containing Git commit.

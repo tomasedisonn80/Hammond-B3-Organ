@@ -6,9 +6,13 @@ Started from `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb` on 14 November 2026 clie
 
 All 60 actual workers are accepted and the [strict record check](reports/product-session-strict.json) passes.
 The [batch record](../../PRODUCT_CONTINUATION_CLOSURE.md) distinguishes completed
-selected development from the unmet, unwaived 1:1 UI objective. Final-source
-publication/hosted qualification remains pending at this candidate; the
-[checkpoint](CHECKPOINT.md) owns subsequent observations.
+selected development from the unmet, unwaived 1:1 UI objective. The portable checker repair is
+published as `80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`; its
+[required hosted qualification](reports/root-final-hosted.json) passes all thirteen
+jobs, including the actual strict sixty-record step. The closing commit adds
+only documentation and evidence. The
+[checkpoint](CHECKPOINT.md) owns subsequent observations. Earlier c448 failures
+remain retained and are not converted into passes.
 
 ## Selected scope
 

@@ -1,87 +1,71 @@
 # Next steps
 
-## Current integration gate
+## Current source and remaining user requirement
 
-All 60 actual workers are accepted and the strict local product checker passes.
-The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) preserves the **unmet, unwaived
-1:1 UI requirement**. Root must publish the frozen source and inspect its strict
-record step, both added Python modules and full required hosted jobs. The
-pre-closure sequence below records how this candidate was assembled; remaining
-engineering work starts at the next dependency-ready phase section.
+All **60 actual workers in ten waves are accepted**, and the strict product
+checker passes. The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) preserves
+selected M9/M6 implementation, the complete 500-page reading and the **unmet,
+unwaived 1:1 UI requirement**. The published repaired source is
+`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`, tree
+`d310be065db2bb9b0012c11a0c5ec2beda4c9384`. Its
+[required hosted gate](development/2026-11-15-product-continuation/reports/root-final-hosted.json)
+passes all thirteen jobs, including Linux actual-record validation. Original
+c448 macOS/Windows checker failures remain separate from this repaired-source
+qualification. See the [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
+for current observations and the [setup handoff](PRODUCT_HANDOFF.md) for commands.
 
+## Resume development from the verified source
 
-## Resume the active product continuation
+The worker batch and required source qualification are complete. Recover the
+actual checkout/remote, read [AGENTS.md](../AGENTS.md) and the whole plan, then
+claim one bounded assignment from the table below. The remaining original user
+requirement is the visual match. Independent M6 protocol work and native MIDI
+retirement can proceed under separate ownership. Preserve the accepted source,
+original failures, unchanged actual worker records and other sessions' work.
 
-Read the [complete M0–M9 plan](PLAN.md), [current status](STATUS.md),
-[product checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
-and [actual assignments](development/2026-11-15-product-continuation/assignments.json).
-This session owns native MIDI channel modes, expression calibration, measured
-visual refinement and an independent ideal M6 crossover. Its sixty-agent,
-ten-wave request remains in progress. The completed reference-refinement
-ledger stays closed; the other checkout retains independent R4 ownership.
+Each new candidate needs its own affected tests, actual UI captures when paint
+changes, source identities, current setup/status/next steps and authorized
+commit/publication. The current closing evidence commit does not rerun or
+reattribute 80b8cce's code qualification.
 
-The published checkpoint at this 15 November reconciliation is
-`d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
-`edf67b978f93e8dbea6537ce92d3928c171bc1f3`. Its
-[receipt](development/2026-11-15-product-continuation/reports/gallery-publication.json)
-and [thirteen successful hosted jobs](development/2026-11-15-product-continuation/reports/d8-hosted-status.json)
-retain exact-source qualification, including the executed 21-test native
-sanitizer selection. The later [coherent local result](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
-passes **180/180 in 507.55 s** at d8 plus accepted A46/A48 changes, with all
-366 frozen code/test/build/data inputs unchanged. Those later changes still
-need publication and their own hosted result. Follow the live checkpoint for
-subsequent observations and the [recovery handoff](PRODUCT_HANDOFF.md) for exact
-setup and ownership; a dated snapshot is not a live remote query.
+## Next engineering assignments
 
-## Finish the current authorized session
-
-The [wave plan](development/2026-11-15-product-continuation/WAVES.md) names intended
-work, while the manifest records actual dispatch and acceptance. Its live counts
-govern completion; this documentation does not preaccept forthcoming workers.
-The gallery, expanded modal, installed workflow, primary d8 platform audits,
-record checker and numerical admission repair now have retained results.
-Complete the remaining real reviews and acceptance; neither planned IDs nor
-historical workers count toward the requested sixty.
-
-| Next work | Required inputs | Acceptance before closure |
+| Priority | Concrete task | Required acceptance |
 | --- | --- | --- |
-| Publish the accepted A46/A48 repairs and current handoff | [Record checker](development/2026-11-15-product-continuation/notes/A46-session-validator.md), [numerical admission review](reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md), exact 180-test local receipt, current remote head and owned diffs | Publish a coherent accepted tree with expected-head/no-force protection. Observe that exact source's required hosted jobs, including the two newly discovered Python modules and progress record step. Preserve d8 qualification separately; changes do not inherit it. |
-| Complete current documentation and final visual review | Admitted [eleven-frame gallery](reviews/PRODUCT_GALLERY_ADMISSION.md), current README, [reference gaps](design/PRODUCT_REFERENCE_GAPS.md), 1,293-check/109-frame material evidence and 16-OFF/20-ON install scope | Links, source identities, selected/active/pending captions and remaining limits agree. Preserve the `d556da01` capture identity and all historical galleries; a later documentation commit is not a new capture or literal 1:1 claim. |
-| Admit remaining actual wave-9/10 work | Live manifest, primary [Linux](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md), [Windows](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md), [macOS](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) and [VST3](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) reviews, code/whole-plan/recovery audits | Review each delivered result, ownership, note hash, actual verification and limits. Keep original b9/d556 failures, local ptrace blocks and named quarantine-only leak policy. No planned worker or partial checker result counts as completed work. |
-| Close actual records and final publication | All sixty distinct accepted results, ten six-worker waves, final source/current docs/images, current remote head and unresolved-gate list | Run and retain the strict product checker, switch its CI gate from progress to strict, qualify affected final inputs and publish with expected-head/no-force protection. Fetch and verify commit/tree/parent and required hosted outcomes. Preserve unfinished work and the independent R4 checkout. |
+| Requested visual match | Execute the [native visual/input gate](reviews/PRODUCT_UI_ACCEPTANCE.md), then scope the next reference candidate from [remaining gaps](design/PRODUCT_REFERENCE_GAPS.md). Address rack placement/deck/rim/key materials and small text using actual same-state captures. | Identified display/DPI/input journey; source/executable/state/pixel identities; original-reference comparison; preserved live controls and note ownership; affected material/input tests and updated README. Literal 1:1 remains open until actually met. |
+| M6 electrical accuracy | Freeze a versioned same-Hz protocol and justified floors before implementing a separate numerical candidate; detailed sequence below. | Independently accepted criteria, original baseline retained, processed-output/transient/energy/resource evidence at declared rates/loads. Do not connect the ideal model to Engine. |
+| Native MIDI retirement | Execute [A47-N1](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) with injected WinMM/CoreMIDI close failures below RtMidi before changing callback/storage lifetime. | Checked close preserves native handles and callback context on failure; poison/no-reopen/no-reset behavior; ordinary leak-free teardown and actual platform callback-retirement evidence. |
 
+The [whole M0–M9 plan](PLAN.md) and [phase-readiness review](reviews/PRODUCT_PHASE_READINESS.md)
+retain every remaining model, acquisition, release and separately owned gate.
 The current operating references are [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_GUIDE.md),
 [INTERFACE_RUNBOOK.md](INTERFACE_RUNBOOK.md),
 [CROSSOVER_DEVELOPER_GUIDE.md](CROSSOVER_DEVELOPER_GUIDE.md) and
-[CROSSOVER_INSTALL.md](CROSSOVER_INSTALL.md). The integrator alone owns the
-shared build tree listed in the active checkpoint. Existing narrow fixture
-passes are retained observations, not a replacement for the later coherent gate.
+[CROSSOVER_INSTALL.md](CROSSOVER_INSTALL.md). Claim paths and one coordinated
+build before continuing; follow [AGENTS.md](../AGENTS.md) through publication.
 
 ### Validate this session's actual records
 
-From the repository root, use the accepted product-specific checker while
-assignments are still being dispatched or accepted:
-
-```sh
-python3 -B tools/check_product_session.py --repo . --allow-incomplete --json
-```
-
-This verifies current record consistency and explicitly declines closure. It
-does not attest external dispatch, substantive acceptance, execution or product
-readiness. A46's 19-method regression result and the later 180-test suite qualify
-the checker implementation; neither result supplies missing accepted workers.
-
-Only after all **A01–A60** are actually accepted in their ten six-worker waves,
-run strict mode and retain its JSON result:
+From the repository root, the current completed batch uses strict mode:
 
 ```sh
 python3 -B tools/check_product_session.py --repo . --json
 ```
 
-The integrator then removes `--allow-incomplete` from the product CI record
-step and observes the exact published strict result. Historical session checkers
-cannot substitute for this session. The [setup/recovery handoff](PRODUCT_HANDOFF.md#this-workspaces-recovery-setup)
-gives the coordinated workspace and read-only dependency paths.
+It verifies the retained sixty accepted notes/identities and ten waves. The
+[retained JSON](development/2026-11-15-product-continuation/reports/product-session-strict.json)
+and Linux CI use strict mode. The checker does not attest external dispatch,
+semantic acceptance, execution or physical/product fidelity. Historical session
+checkers cannot substitute for this session, and followups add no worker credit.
+
+For consistency checking during a separately declared incomplete phase only:
+
+```sh
+python3 -B tools/check_product_session.py --repo . --allow-incomplete --json
+```
+
+Progress mode explicitly declines closure. It does not replace the strict
+completed-batch result or authorize inventing/recounting workers.
 
 ## Next dependency-ready phase after session closure
 

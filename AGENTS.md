@@ -22,14 +22,21 @@ and evidence, then update it through its assigned owner.
 | **Waveform continuation**, starting `2e161dc3a60fc3442051799574feed37bffbfc5c` | Independent R4 implementation and remaining acceptance in its separate checkout. Preserve its [entry](docs/development/2026-11-14-waveform-continuation/README.md), [checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md), [actual assignments](docs/development/2026-11-14-waveform-continuation/assignments.json) and unfinished work. |
 | **Completed reference refinement** | Its sixty accepted records, [closure](docs/REFERENCE_REFINEMENT_CLOSURE.md) and source-specific gallery/platform evidence remain history. Do not reopen or recount them to satisfy the product session. |
 
-The [current recovery acceptance](docs/reviews/PRODUCT_RECOVERY_ACCEPTANCE.md)
-separates the published `d8c39f7` thirteen-job hosted qualification from the later
-**180/180 local gate at d8 plus accepted A46/A48 changes**. At that dated audit,
-those later files and final actual-sixty publication were still pending. The
-live checkpoint owns subsequent source, counts and closure. A clean clone of
-published d8 does not contain that later working overlay; input hashes cannot
-recreate missing original files. Preserve the actual assigned working files
-and index until their integrator verifies publication.
+The product batch now has all sixty accepted worker results and a passing strict
+record check. Published repaired source is `80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`;
+its [publication receipt](docs/development/2026-11-15-product-continuation/reports/checker-portability-publication.json)
+and [current hosted gate](docs/development/2026-11-15-product-continuation/reports/root-final-hosted.json)
+are the current source authorities. All thirteen required jobs completed
+successfully at that exact source; the closing commit retains documentation and
+evidence only. The [batch record](docs/PRODUCT_CONTINUATION_CLOSURE.md)
+and live checkpoint own later observations and remaining user requirements.
+
+The [dated recovery acceptance](docs/reviews/PRODUCT_RECOVERY_ACCEPTANCE.md)
+retains A59's d8/180-test observations. Later c448 core failures on Windows/macOS,
+portable checker/test repairs and their new source remain separate evidence.
+Do not reattribute the old 180-test run to changed checker/test bytes, discard
+original failures or recount the completed batch. Inspect current files and
+remote state before assuming a dated report is still applicable.
 
 The integrator assigns paths, owns shared status/plan/README/checkpoint/manifest
 and publication, and exclusively coordinates each build tree. Workers modify

@@ -70,30 +70,33 @@ adapter smoke test may start after M1/M2; that does not complete product release
 
 | Session | Responsibility and recovery authority |
 | --- | --- |
-| Product continuation, starting `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb` | Active M9 MIDI/calibration/visual work and independent M6 crossover; [scope](development/2026-11-15-product-continuation/README.md), [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-15-product-continuation/assignments.json). Its own 60-agent, ten-wave request is still in progress. |
+| Product continuation, starting `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb` | Active M9 MIDI/calibration/visual work and independent M6 crossover; [scope](development/2026-11-15-product-continuation/README.md), [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-15-product-continuation/assignments.json). All sixty actual results in ten waves are accepted; the literal 1:1 UI requirement remains unmet and unwaived. |
 | Waveform continuation, starting `2e161dc3a60fc3442051799574feed37bffbfc5c` | Separate R4 implementation and acceptance; [scope](development/2026-11-14-waveform-continuation/README.md), [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). Preserve its other checkout and unfinished work. |
 | Completed reference refinement | Historical M9/R2/R3 and combined-source qualification; [closure](REFERENCE_REFINEMENT_CLOSURE.md) and [completed checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md). All 60 accepted workers remain closed historical records. |
 
-The published product checkpoint at this reconciliation is
-`d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
-`edf67b978f93e8dbea6537ce92d3928c171bc1f3`; its
-[publication receipt](development/2026-11-15-product-continuation/reports/gallery-publication.json)
-records the verified parent and non-force update. All
-[13 hosted jobs succeeded](development/2026-11-15-product-continuation/reports/d8-hosted-status.json),
-with primary [Linux](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md),
-[Windows](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md),
-[macOS](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) and
-[VST3](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) evidence. The expanded native
-sanitizer selection actually passed 21/21; the material fixture is 1,293
-assertions/109 frames and Standalone inventory is 16 files MIDI-OFF/20 MIDI-ON.
+The current published source is
+`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`, tree
+`d310be065db2bb9b0012c11a0c5ec2beda4c9384`. Its
+[publication receipt](development/2026-11-15-product-continuation/reports/checker-portability-publication.json)
+records the verified c448 parent and guarded nonforced update. The
+[required primary hosted gate](development/2026-11-15-product-continuation/reports/root-final-hosted.json)
+passes all thirteen jobs at that exact source. Core passes 157/157 on all
+three platforms and Linux sanitizers; native Release passes 48/48 in all four
+configurations and native sanitizers pass 21/21. VST3 passes 8/7/7 with 47
+plug-in-validator checks each; full R4 passes. All sixty actual records and the
+strict Linux CI execution are verified. The closing change is documentation and
+evidence only.
 
-The later [coherent local run](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
-passed 180/180 in 507.55 s at d8 plus accepted A46/A48 checker/admission changes,
-with 366 frozen code/test/build/data inputs unchanged. Those repairs still
-need publication and their own hosted result. [STATUS.md](STATUS.md) preserves
-the original b9 install/Windows failures, d556 sanitizer build failure and
-earlier ff41 feature result under their exact source identities. The live
-checkpoint owns later progress; sixty-worker closure is still pending.
+The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) distinguishes accepted M9/M6
+work from incomplete milestones, physical fidelity and the user's remaining 1:1
+UI requirement. The original d8 thirteen-job pass, c448 eleven-pass/two-failure
+matrix, macOS alias and Windows timestamp repairs retain separate identities.
+The [180-test local run](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
+remains evidence for its original 366 inputs. The portable checker and test now
+differ in two files; the [focused gate](development/2026-11-15-product-continuation/reports/checker-portability-root-verification.json)
+qualifies those local changes and strict actual records. No application, model,
+build or workflow source changes in this repair. Current setup and continuation
+are in [STATUS.md](STATUS.md), [NEXT_STEPS.md](NEXT_STEPS.md) and the live checkpoint.
 
 The integrator owns the current checkout/build and shared publication. Read the
 active checkpoint and [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
@@ -260,8 +263,10 @@ primary logs own detailed test/instrumentation claims. Preserve original failure
 source-bound timings and the [completed refinement evidence](REFERENCE_REFINEMENT_CLOSURE.md).
 Later documentation or ledger changes require their affected integrity checks,
 and changed build/test sources require appropriate coherent qualification.
-Finish this product session with its own 60 actual accepted records and strict
-[product-checker gate](NEXT_STEPS.md#validate-this-sessions-actual-records).
-Progress mode is available during acceptance; strict mode is required only after
-all ten six-worker waves are accepted. Historical checkers, planned assignments
-and an in-progress result cannot close this session.
+This batch has its own 60 actual accepted records, ten six-worker waves and a
+passing strict [product-checker gate](NEXT_STEPS.md#validate-this-sessions-actual-records),
+plus all thirteen required jobs at 80b8cce. Preserve that completed accounting
+and continue the remaining UI/M6/native-close work under a new bounded assignment.
+Progress mode remains available for incomplete records and never certifies
+closure. Historical checkers, planned assignments and followups cannot create
+new worker credit.

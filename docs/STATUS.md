@@ -25,12 +25,51 @@ are neither replaced nor counted here.
 
 The [batch closure record](PRODUCT_CONTINUATION_CLOSURE.md) records the completed
 worker batch, selected implementation and the **unmet, unwaived 1:1 requirement**.
-Final-source publication and hosted qualification are the remaining integration
-gates at this candidate.
+The portable checker repair is published and fully qualified as `80b8cce`.
+The closing commit retains documentation/evidence only; subsequent development
+starts from the concrete next assignments.
 
-### Source and executed evidence
+### Current repaired-source qualification
 
-Latest published checkpoint at this reconciliation:
+Published **`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`**, tree
+`d310be065db2bb9b0012c11a0c5ec2beda4c9384`, has verified parent c4486ba in the
+[publication receipt](development/2026-11-15-product-continuation/reports/checker-portability-publication.json).
+Its [required primary hosted gate](development/2026-11-15-product-continuation/reports/root-final-hosted.json)
+passes **all thirteen required jobs**. The old c448 matrix is **11 success / two failed core jobs**, retained
+in the [root status](development/2026-11-15-product-continuation/reports/c448-hosted-status.json).
+
+The [macOS alias reproduction](development/2026-11-15-product-continuation/reports/final-source-macos-portability-repair.json)
+and [Windows metadata repair](development/2026-11-15-product-continuation/reports/final-source-windows-portability-repair.json)
+change only `tests/test_product_session.py` and `tools/check_product_session.py`.
+The [independent review](development/2026-11-15-product-continuation/reports/final-checker-portability-independent-review.json)
+accepts the preserved admission semantics: all 19 original methods remain and
+four new methods cover 30 reader subcases. All 23 methods pass locally. Root's
+[affected CTest/strict check](development/2026-11-15-product-continuation/reports/checker-portability-root-verification.json)
+passes in 1.31 s; strict records remain 60 accepted/verified, ten waves, zero
+errors. Exactly two of the earlier 366 coherent inputs change; 364 inputs and
+all three recorded binaries remain identical. The actual gallery is unchanged.
+
+| Final-source job group | Primary result at 80b8cce |
+| --- | --- |
+| Core Release, three platforms; Linux core sanitizers | **157/157** in each of four jobs |
+| Native Release, Linux ON/OFF, Windows and macOS | **48/48** in each of four jobs |
+| Native Linux sanitizers | **21/21**; 260 instrumented objects, 21 runtime-linked executables |
+| VST3 Linux/macOS/Windows | **8/7/7 CTests**, 47 plug-in-validator passes each; separate 51 SDK self-tests each |
+| Full R4 | **Full pass**, failures empty, 14 report-admission checks |
+| Actual strict product records in Linux Release | **60 accepted/verified notes and distinct agents, ten waves, zero errors**; hosted JSON byte-identical to retained report |
+
+The primary [Linux](development/2026-11-15-product-continuation/reports/A49-portability-hosted.json),
+[Windows](development/2026-11-15-product-continuation/reports/A50-portability-hosted.json),
+[macOS](development/2026-11-15-product-continuation/reports/A51-portability-hosted.json) and
+[VST3](development/2026-11-15-product-continuation/reports/A52-portability-hosted.json)
+audits retain exact job identities, logs, toolchains, artifacts and limitations.
+Successful nonverbose core logs prove module passes; they do not print every
+unittest method or skip. Physical/display/DAW/deadline/fidelity and literal 1:1
+acceptance remain outside these results.
+
+### Previous source and executed evidence — d8 and original local overlay
+
+The preceding d8 reconciliation observed:
 **`d8c39f7986746eacc991747153c7dbb012bb9a32`**, tree
 `edf67b978f93e8dbea6537ce92d3928c171bc1f3`, parent
 `d556da017ea0a5d4f2d231416782dbc5066e58c2`. The
@@ -50,8 +89,9 @@ code/test/build/data inputs unchanged**. Configuration: GCC 14.2 Release,
 standalone ON, physical MIDI backend OFF, VST3 OFF and explicit dummy SDL.
 The production application remains
 `7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
-These later repairs await publication and their own required hosted results;
-the local result is not a new d8-only or cross-platform pass.
+Those original checker/admission inputs were subsequently published at c448;
+the original 180-test result remains scoped to them. The two later portability
+changes and their required hosted gate are recorded above.
 
 | Evidence | Observed result and boundary |
 | --- | --- |
@@ -62,7 +102,7 @@ the local result is not a new d8-only or cross-platform pass.
 | [A42 modal raster receipt](development/2026-11-15-product-continuation/reports/A42-calibration-modal-raster.json) and d8 primary native reviews | **1,293 assertions / 109 paint frames** pass. All **212** clipping differences match exact independent literal plates within **38** boundary-crossing glyphs; unexplained pixels and literal mismatches are zero. The original two failed attempts remain retained. |
 | [A43 installed workflows](development/2026-11-15-product-continuation/notes/A43-installed-workflows.md), [root installed gate](development/2026-11-15-product-continuation/reports/A43-root-installed-ctest.txt) and d8 primary reviews | **Eight methods / one local CTest in 5.31 s** pass. Hosted Linux qualifies **16-file MIDI-OFF and 20-file MIDI-ON** payloads; Windows/macOS qualify the **20-file MIDI-ON** package. Private relocation checks synthetic calibrated expression **0.75** and component namespace preservation. Six-file CrossoverTools remains distinct. |
 | [A26 lifecycle evidence](development/2026-11-15-product-continuation/reports/A26-root-native-calibration.json) and current primary native reviews | Current d8 native gates execute **9 methods, 10 processes, 7 lifecycles and 2 intentionally failed replays** successfully. The real application/adapter uses a substituted synchronous MIDI dependency and dummy SDL callbacks. This does not qualify asynchronous OS-driver races. |
-| [A46 record checker](development/2026-11-15-product-continuation/notes/A46-session-validator.md) and [verification](development/2026-11-15-product-continuation/reports/A46-verification.json) | **19 focused regression methods** pass; progress checks consistency without closure and strict mode rejects incomplete actual records. The later 180-test run includes this module. No all-sixty completion is claimed; use the [current commands](NEXT_STEPS.md#validate-this-sessions-actual-records). |
+| [A46 record checker](development/2026-11-15-product-continuation/notes/A46-session-validator.md) and [verification](development/2026-11-15-product-continuation/reports/A46-verification.json) | **19 focused regression methods** pass; progress checks consistency without closure and strict mode rejects incomplete actual records. The later 180-test run includes this module. This historical focused result does not itself attest sixty workers; use the [current commands](NEXT_STEPS.md#validate-this-sessions-actual-records). |
 | [A48 numerical admission review](reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md) and [plot refresh](development/2026-11-15-product-continuation/reports/crossover-plot-admission-refresh.json) | Three demonstrated incomplete/contradictory report admissions are repaired; **11 focused regression methods** pass and the module passes in the later 180-test run. The numerical report, six source identities, probe and thresholds are unchanged. The refreshed plot has identical decoded pixels and only a generator-hash metadata change; the response grid is **126 in-band / 130 total points per group**. |
 | [Independent visual acceptance](development/2026-11-15-product-continuation/notes/A23-visual-acceptance.md) and [paint experiment](development/2026-11-15-product-continuation/notes/A27-paint-performance.md) | **19,712 checks across 110 cases** retain zero escaped pixels and 34 identical compact/Flat/hidden pairs. The six-case relative timing budget passes; largest median growth is about **1.23%**, while wide software draws remain about **112–114 ms**. This does not establish interactive frame rate or native display latency. |
 | [Crossover response](development/2026-11-15-product-continuation/reports/crossover-response-acceptance.json), [lifecycle](development/2026-11-15-product-continuation/notes/A20-crossover-lifecycle.md) and [allocation](development/2026-11-15-product-continuation/notes/A25-crossover-allocation.md) | Independent warped response and actual sine-processing agreement, physical-state/rate transitions, transactional rejection, energy checks and calibrated current-thread C++ allocation observations pass their declared scopes. Same-Hz analog accuracy is separately characterized and has no accepted audible/physical threshold. |
@@ -163,12 +203,13 @@ exception must not become a general exception for new paths.
 | M6 | New independently qualified ideal passive crossover and movable research tools. | Versioned same-Hz accuracy policy/candidate; measured source/load/loss data and coupled 122 amplifier/transformer/driver model. Keep 147 separate. |
 | M7 | Qualified nominal R2/R3 primitives; implemented independent R4 renderer with source-bound waveform evidence. | R4's remaining acceptance belongs to the waveform owner; R5 audible policy, R6 runtime/Engine integration and physical acoustics remain separate. |
 | M8 | Capture/corpus/comparison/replay/readiness tools and acquisition procedures exist. | Identified real captures, calibrated clocks/chains, held-out fitting, uncertainty and listening evidence. |
-| M9 | Native standalone, VST3 adapter, state/automation, input/calibration, admitted reference-led UI and source-qualified installed workflows exist. | Current session/final-source closure, below-RtMidi checked-close/retirement qualification, actual device/DAW/display journeys, semantic accessibility, deadlines, rights and signed distribution. |
+| M9 | Native standalone, VST3 adapter, state/automation, input/calibration, admitted reference-led UI and source-qualified installed workflows exist. | Literal 1:1 UI matching, below-RtMidi checked-close/retirement qualification, actual device/DAW/display journeys, semantic accessibility, deadlines, rights and signed distribution. |
 
 The [complete plan](PLAN.md) owns milestone exits. The
-[next actions](NEXT_STEPS.md) distinguish the current session's remaining
-final review/accounting/publication work from the next independent M6
-numerical phase and acquisition-dependent physical work.
+[next actions](NEXT_STEPS.md) begin with the remaining requested UI match,
+the independent M6 numerical protocol and native callback-retirement work.
+The sixty-worker batch and all thirteen required source-specific jobs are
+complete; acquisition-dependent physical work retains its own prerequisites.
 
 ## Historical results and source boundaries
 

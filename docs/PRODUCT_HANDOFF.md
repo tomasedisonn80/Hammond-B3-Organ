@@ -1,5 +1,36 @@
 # Product continuation: setup and recovery handoff
 
+## Current recovery authority — portability publication
+
+All **60 actual workers in ten logical waves are accepted**. The strict actual
+record check passes with the repaired checker and unchanged manifest/notes.
+Published source is **`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`**, tree
+`d310be065db2bb9b0012c11a0c5ec2beda4c9384`, parent c4486ba. The
+[publication receipt](development/2026-11-15-product-continuation/reports/checker-portability-publication.json)
+verifies the guarded update and fetched identity. Its
+[required hosted qualification](development/2026-11-15-product-continuation/reports/root-final-hosted.json)
+passes all thirteen required jobs at that exact source. The closing commit
+contains documentation and retained evidence only; 80b8cce remains the tested
+code. The active checkpoint owns later observations and the next assignment.
+
+The c448 checkpoint retains **11 successful / two failed jobs**. Its new checker
+failed macOS alias-path fault injection and Windows cross-API timestamp checks.
+The reviewed portability repair changes only the checker and its tests; all
+application/model/build/workflow inputs and the three local binaries remain
+unchanged. The earlier 180-test local run retains its own original 366-input
+identity; 364 inputs still match and the two repairs have their own focused gate.
+
+The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) preserves the **unmet,
+unwaived 1:1 UI requirement**. Use the current [next steps](NEXT_STEPS.md),
+[phase review](reviews/PRODUCT_PHASE_READINESS.md), [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
+and standing [AGENTS.md](../AGENTS.md). Next work includes the native visual/input
+gate and remaining reference geometry/materials, a declared M6 same-Hz protocol,
+and below-RtMidi checked-close/callback-retirement qualification. Preserve the
+separate R4 checkout. All normal clean-checkout and coordinated-workspace commands
+below remain available; their dated verification statements retain their sources.
+
+## Dated A59 recovery audit — retained evidence
+
 **A59 recovery audit: 15 November 2026, during wave 10.** The active session advances
 native M9 MIDI channel modes, expression-controller calibration and measured
 visual refinement, plus an independent M6 passive crossover. The observed
