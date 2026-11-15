@@ -5,14 +5,13 @@
 The active [product continuation](development/2026-11-15-product-continuation/README.md)
 starts at `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb`. It owns native M9 MIDI
 channel modes, expression endpoint/inversion calibration and measured visual
-refinement, plus the independent M6 passive-crossover foundation. At A36's
-wave-6 reconciliation snapshot, **38 actual workers have been dispatched:
-A01–A34 are accepted, A35 is review-complete awaiting acceptance, and A36–A38
-are in progress**. Dependency-ready wave-7 work overlaps the remaining wave-6
-handoffs. The requested 60 agents in
-ten waves are not complete. The [live checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
+refinement, plus the independent M6 passive-crossover foundation. The requested
+**60 actual workers in ten waves are accepted; the strict local record gate passes**. The
+[live checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
 and [actual manifest](development/2026-11-15-product-continuation/assignments.json)
-own later progress. A01–A06 covered all 500 atlas pages; their
+own exact dispatch and acceptance counts; planned workers and earlier ledgers
+do not count. Use the [recovery handoff](PRODUCT_HANDOFF.md) for setup and
+build ownership. A01–A06 covered all 500 atlas pages; their
 [reading records](PROJECT_GUIDE.md#source-and-reading-records) preserve the
 original PDF and extract hashes.
 
@@ -24,38 +23,83 @@ state, VST3 and control boundaries for its named source. The separate
 R4 ownership in its other checkout. Its unfinished work and actual assignments
 are neither replaced nor counted here.
 
+The [batch closure record](PRODUCT_CONTINUATION_CLOSURE.md) records the completed
+worker batch, selected implementation and the **unmet, unwaived 1:1 requirement**.
+Final-source publication and hosted qualification are the remaining integration
+gates at this candidate.
+
 ### Source and executed evidence
 
-Latest published checkpoint at this snapshot:
-**`b9d352a82ac1afdec70c76ec5b1987785a37762e`**, tree
-`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`. The
-[publication receipt](development/2026-11-15-product-continuation/reports/calibration-install-publication.json)
-records its verified parent and non-force update. This adds accepted fixture,
-install, characterization and review work after the main feature publication.
-Its Linux Release job returned **154/155**, with three negative-case failures
-inside `python_test_crossover_install`. The
-[original primary excerpt](development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt)
-records the policy-dependent `while(TRUE)` ancestor guard being skipped when
-CMP0012 was unset in the generated install script. Root changed that loop to
-policy-independent `while(1)` and observed a local **14/14 recheck in 1.370 s**.
-Linux core sanitizers and Windows core also expose the install failure; Windows
-adds a stdout-CRLF versus atomic-file-LF fixture comparison failure. Windows
-native returns **47/48**, with eight cases in the new calibration fixture
-exiting 2 at scenario/trace setup. Narrow fixture repairs and their qualification
-are in progress. Linux/macOS native and all three VST3 job statuses succeed at
-`b9d352a`, but this is not an all-green matrix. Use the live checkpoint for
-subsequent primary-log and repair receipts; repaired-source publication/hosted
-acceptance remains pending. The earlier A31 local pass below retains its
-CMake 4.4.5 scope.
+Latest published checkpoint at this reconciliation:
+**`d8c39f7986746eacc991747153c7dbb012bb9a32`**, tree
+`edf67b978f93e8dbea6537ce92d3928c171bc1f3`, parent
+`d556da017ea0a5d4f2d231416782dbc5066e58c2`. The
+[publication receipt](development/2026-11-15-product-continuation/reports/gallery-publication.json)
+records the expected-head/non-force update and fetched commit/tree/parent.
+All **13 hosted jobs succeeded** at that exact source in the
+[status receipt](development/2026-11-15-product-continuation/reports/d8-hosted-status.json).
+The Linux, Windows, macOS and VST3 reviews below inspect primary logs; they do
+not qualify later working inputs.
+
+Root subsequently reconfigured and built all targets at `d8c39f7` plus the
+accepted A46/A48 checker/admission repairs. The
+[coherent receipt](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
+and [full log](development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt)
+record **180/180 passing tests in 507.55 s**, with all **366 frozen
+code/test/build/data inputs unchanged**. Configuration: GCC 14.2 Release,
+standalone ON, physical MIDI backend OFF, VST3 OFF and explicit dummy SDL.
+The production application remains
+`7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
+These later repairs await publication and their own required hosted results;
+the local result is not a new d8-only or cross-platform pass.
 
 | Evidence | Observed result and boundary |
 | --- | --- |
-| [Feature publication](development/2026-11-15-product-continuation/reports/implementation-publication.json), [coherent build receipt](development/2026-11-15-product-continuation/reports/wave4-coherent-build.json) and [full CTest log](development/2026-11-15-product-continuation/reports/wave4-full-ctest.txt) | `ff41d412d03f2c5767aa4057b29fa8ec1627449b`, tree `6462343bb34a7d70d59de75ab349f8530196988c`: all-target GCC 14.2 Release build and **176/176 tests in 177.92 s** passed. Standalone ON, native MIDI backend OFF, VST3 OFF, explicit dummy SDL. Later fixture/install inputs are outside this full-suite result. |
-| [Hosted status receipt](development/2026-11-15-product-continuation/reports/implementation-hosted-status.json) | All **13 job statuses report success at `ff41d412`**, across core, standalone and VST3 workflows. Source-specific primary-log audit remains pending; this is not yet a detailed audit of suite counts, instrumentation or installed artifacts and does not qualify `b9d352a`. |
-| [A26 native calibration fixture](development/2026-11-15-product-continuation/notes/A26-native-calibration-lifecycle.md), [retained lifecycle evidence](development/2026-11-15-product-continuation/reports/A26-root-native-calibration.json) and [integrated CTest](development/2026-11-15-product-continuation/reports/wave5-integrated-ctest.txt) | **9 tests, 10 processes, 7 native lifecycles** pass; root's integrated test passes in **20.56 s**. The unchanged real application and MIDI adapter use a substituted synchronous MIDI dependency with real dummy SDL callbacks. Physical hardware and asynchronous driver races remain unqualified. |
-| [A31 CrossoverTools](development/2026-11-15-product-continuation/notes/A31-crossover-install.md) and [integrated install CTest](development/2026-11-15-product-continuation/reports/wave6-crossover-install-ctest.txt) | **14 private fixture checks** pass; root's integrated test passes in **1.61 s**. The explicit copy-only component contains six files. Existing components remain distinct; this is not a signed or general-distribution release. |
+| [Linux primary review](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md) | At d8, core Release **155/155 in 80.57 s**, core ASan/UBSan/leaks **155/155 in 234.39 s**, native MIDI ON/OFF **48/48 each**, and the expanded native sanitizer selection **21/21 in 342.06 s** actually execute and pass. The full R4 job passes its named inputs in **722.029333257 s**; another owner's remaining work and R5/R6 are separate. |
+| [Windows primary review](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md) and [macOS primary review](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) | At d8, Windows MSVC core/native pass **155/155 and 48/48**; macOS arm64 AppleClang core/native pass **155/155 and 48/48**. Compiled WinMM/CoreMIDI backends and installed workflows are qualified with dummy SDL. No Windows/macOS sanitizer or physical-device result follows. |
+| [VST3 primary review](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) | At d8, Linux **8/8**, macOS **7/7** and Windows **7/7** CTest pass; each plug-in validator reports **47 passed / 0 failed**. The separate build-time SDK selftest is **51/0**. Relocated bundles pass ABI checks. No VST3 MIDI mapping or native calibration interface is advertised; DAW journeys remain separate. |
+| [A40 actual gallery](../examples/demos/standalone-product-preview-v1/README.md) and [A41 independent admission](reviews/PRODUCT_GALLERY_ADMISSION.md) | **Eleven actual native frames**: eight normal plus three MIDI overlays at `d556da01`, production executable `7ded143b…`. README displays admitted Play/MIDI views. Source/state/replay and PNG/native-pixel identities pass; original BMP intermediates are unavailable. All earlier galleries keep their capture identities. |
+| [A42 modal raster receipt](development/2026-11-15-product-continuation/reports/A42-calibration-modal-raster.json) and d8 primary native reviews | **1,293 assertions / 109 paint frames** pass. All **212** clipping differences match exact independent literal plates within **38** boundary-crossing glyphs; unexplained pixels and literal mismatches are zero. The original two failed attempts remain retained. |
+| [A43 installed workflows](development/2026-11-15-product-continuation/notes/A43-installed-workflows.md), [root installed gate](development/2026-11-15-product-continuation/reports/A43-root-installed-ctest.txt) and d8 primary reviews | **Eight methods / one local CTest in 5.31 s** pass. Hosted Linux qualifies **16-file MIDI-OFF and 20-file MIDI-ON** payloads; Windows/macOS qualify the **20-file MIDI-ON** package. Private relocation checks synthetic calibrated expression **0.75** and component namespace preservation. Six-file CrossoverTools remains distinct. |
+| [A26 lifecycle evidence](development/2026-11-15-product-continuation/reports/A26-root-native-calibration.json) and current primary native reviews | Current d8 native gates execute **9 methods, 10 processes, 7 lifecycles and 2 intentionally failed replays** successfully. The real application/adapter uses a substituted synchronous MIDI dependency and dummy SDL callbacks. This does not qualify asynchronous OS-driver races. |
+| [A46 record checker](development/2026-11-15-product-continuation/notes/A46-session-validator.md) and [verification](development/2026-11-15-product-continuation/reports/A46-verification.json) | **19 focused regression methods** pass; progress checks consistency without closure and strict mode rejects incomplete actual records. The later 180-test run includes this module. No all-sixty completion is claimed; use the [current commands](NEXT_STEPS.md#validate-this-sessions-actual-records). |
+| [A48 numerical admission review](reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md) and [plot refresh](development/2026-11-15-product-continuation/reports/crossover-plot-admission-refresh.json) | Three demonstrated incomplete/contradictory report admissions are repaired; **11 focused regression methods** pass and the module passes in the later 180-test run. The numerical report, six source identities, probe and thresholds are unchanged. The refreshed plot has identical decoded pixels and only a generator-hash metadata change; the response grid is **126 in-band / 130 total points per group**. |
 | [Independent visual acceptance](development/2026-11-15-product-continuation/notes/A23-visual-acceptance.md) and [paint experiment](development/2026-11-15-product-continuation/notes/A27-paint-performance.md) | **19,712 checks across 110 cases** retain zero escaped pixels and 34 identical compact/Flat/hidden pairs. The six-case relative timing budget passes; largest median growth is about **1.23%**, while wide software draws remain about **112–114 ms**. This does not establish interactive frame rate or native display latency. |
 | [Crossover response](development/2026-11-15-product-continuation/reports/crossover-response-acceptance.json), [lifecycle](development/2026-11-15-product-continuation/notes/A20-crossover-lifecycle.md) and [allocation](development/2026-11-15-product-continuation/notes/A25-crossover-allocation.md) | Independent warped response and actual sine-processing agreement, physical-state/rate transitions, transactional rejection, energy checks and calibrated current-thread C++ allocation observations pass their declared scopes. Same-Hz analog accuracy is separately characterized and has no accepted audible/physical threshold. |
+
+### Earlier product checkpoints and retained failures
+
+The earlier [feature publication](development/2026-11-15-product-continuation/reports/implementation-publication.json),
+[coherent build](development/2026-11-15-product-continuation/reports/wave4-coherent-build.json)
+and [full log](development/2026-11-15-product-continuation/reports/wave4-full-ctest.txt)
+retain `ff41d412d03f2c5767aa4057b29fa8ec1627449b`, tree
+`6462343bb34a7d70d59de75ab349f8530196988c`, with **176/176 in 177.92 s** and
+[13 successful hosted statuses](development/2026-11-15-product-continuation/reports/implementation-hosted-status.json).
+Those inputs precede later fixture/install changes. A26's original integrated
+native gate remains **20.56 s**, and A31's [local install result](development/2026-11-15-product-continuation/reports/wave6-crossover-install-ctest.txt)
+remains **14 private checks / 1.61 s CTest** under its local CMake 4.4.5 scope.
+
+Published `b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree
+`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`, retains its
+[receipt](development/2026-11-15-product-continuation/reports/calibration-install-publication.json)
+and [Linux Release failure](development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt):
+**154/155**, with three negative install subcases caused by the generated
+`while(TRUE)` ancestor guard when CMP0012 was unset. The numeric `while(1)`
+repair separately passed **14/14 locally in 1.370 s**. Linux core sanitizers
+and Windows core also failed installation; Windows added the stdout-CRLF/file-LF
+comparison error. Windows native returned **47/48**, with eight calibration
+fixture cases exiting 2 during scenario/trace setup. A38's owned environment
+strings and Windows-only newline normalization preserve the intended checks.
+The later d8 primary reviews qualify the repaired older-CMake and Windows paths;
+they do not rewrite these failures.
+
+The [d556 status receipt](development/2026-11-15-product-continuation/reports/d556-hosted-status.json)
+retains **12 successful jobs and one failed native sanitizer build**. GCC 13's
+test-facade vector-assignment warning prevented all 21 selected gates from
+executing. Its [original failure](development/2026-11-15-product-continuation/reports/d556-native-sanitizer-build-failure.json)
+and [same-value clear/push-back repair](development/2026-11-15-product-continuation/reports/gcc13-facade-repair.json)
+remain retained; ordinary local calibration passed **20.50 s** before d8's
+actual hosted **21/21** execution closed that specific build/selection gap.
 
 The local leak-enabled sanitizer and independent empty-main control were
 **blocked by the ptrace environment**, not passed. Preserve their
@@ -78,13 +122,23 @@ exception must not become a general exception for new paths.
   identical requests preserve the epoch. Configuration stays outside musical
   saved state. The [operating guide](MIDI_EXPRESSION_GUIDE.md) gives exact setup
   and recovery; this does not calibrate the physical AO-28 expression law.
+- **Native recovery boundary:** the [A47 source review](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md)
+  found no additional application-level calibration/ownership defect, but pinned
+  WinMM/CoreMIDI close paths can suppress native failure results before clearing
+  connection state. A callback can touch dependency storage before the wrapper's
+  counter. This is a source-proven observability gap and risk model, **not an
+  observed hardware failure or use-after-free**. The next bounded gate injects
+  failures below RtMidi and reviews checked close plus callback retirement;
+  synchronous fixtures and ASan/UBSan do not close that gate.
 - **Native visual refinement:** wide Dimensional views have readable complete
   footage, 32-pixel manual caps, separate edited/applied registration rows and
   restrained natural-key lighting. Inventory remains **61 Upper + 61 Lower +
   25 pedals, 24 reversed presets and 68 controls including those presets**.
   The [reference-gap review](design/PRODUCT_REFERENCE_GAPS.md) identifies
-  provisional current previews and remaining material/display differences.
-  A fresh source-bound gallery and independent admission are still pending.
+  remaining material/display differences. The admitted
+  [current gallery](../examples/demos/standalone-product-preview-v1/README.md)
+  and [three MIDI overlays](../examples/demos/standalone-product-preview-v1/midi-overlay/README.md)
+  retain actual `d556da01` captures and the unchanged `7ded143b…` application.
   The admitted [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
   remains historical `487064d2` evidence. **Literal 1:1 equality is unmet.**
 - **Independent M6 crossover:** four electrical states preserve the floating
@@ -109,11 +163,11 @@ exception must not become a general exception for new paths.
 | M6 | New independently qualified ideal passive crossover and movable research tools. | Versioned same-Hz accuracy policy/candidate; measured source/load/loss data and coupled 122 amplifier/transformer/driver model. Keep 147 separate. |
 | M7 | Qualified nominal R2/R3 primitives; implemented independent R4 renderer with source-bound waveform evidence. | R4's remaining acceptance belongs to the waveform owner; R5 audible policy, R6 runtime/Engine integration and physical acoustics remain separate. |
 | M8 | Capture/corpus/comparison/replay/readiness tools and acquisition procedures exist. | Identified real captures, calibrated clocks/chains, held-out fitting, uncertainty and listening evidence. |
-| M9 | Native standalone, VST3 adapter, state/automation, input/calibration and reference-led UI are implemented in bounded scopes. | Current session closure, actual device/DAW/display journeys, semantic accessibility, deadlines, rights and signed distribution. |
+| M9 | Native standalone, VST3 adapter, state/automation, input/calibration, admitted reference-led UI and source-qualified installed workflows exist. | Current session/final-source closure, below-RtMidi checked-close/retirement qualification, actual device/DAW/display journeys, semantic accessibility, deadlines, rights and signed distribution. |
 
 The [complete plan](PLAN.md) owns milestone exits. The
 [next actions](NEXT_STEPS.md) distinguish the current session's remaining
-gallery/platform/accounting/publication work from the next independent M6
+final review/accounting/publication work from the next independent M6
 numerical phase and acquisition-dependent physical work.
 
 ## Historical results and source boundaries

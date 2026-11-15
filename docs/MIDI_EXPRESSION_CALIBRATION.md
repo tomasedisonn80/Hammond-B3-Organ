@@ -1,7 +1,10 @@
 # MIDI expression endpoint calibration
 
-Contract identity: **`midi-expression-endpoints-v1`**. Specified in product
-continuation wave 2; implementation and independent acceptance are pending.
+Contract identity: **`midi-expression-endpoints-v1`**. Frozen behavior contract
+from product continuation wave 2. The current native implementation and its
+independent acceptance are recorded in [current status](STATUS.md), the
+[operating guide](MIDI_EXPRESSION_GUIDE.md) and the
+[source-specific Linux platform review](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md).
 This is adapter configuration for the native standalone's single MIDI input,
 not an AO-28 electrical model, factory measurement or sound-state migration.
 

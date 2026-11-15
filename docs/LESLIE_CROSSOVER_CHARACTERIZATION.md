@@ -57,8 +57,10 @@ normalized error directly into an absolute-error column would be incorrect.
 The figure uses **six retained checkpoints per rate**: 400, 800, 1,600, 5,000,
 10,000 and 20,000 Hz. Markers identify the observations; joining lines are visual
 guides. It is not a new native sweep or a continuous-frequency error envelope.
-The source report separately records maxima over its 124-point 10–20,000 Hz grid;
-those finite-grid maxima are not proofs of a maximum between samples.
+The source report separately records maxima over **126 points in 10–20,000 Hz**,
+within its 130-point response grid per rate/load group. The in-band grid includes
+the reference's 124 points plus 5,000 and 10,000 Hz. Those finite-grid maxima are
+not proofs of a maximum between samples.
 
 At the atlas's 800 Hz reference point, the differences are:
 
@@ -159,10 +161,22 @@ python3 tools/plot_crossover_characterization.py \
   --output out/crossover/same-hz-nominal-v1.png
 ```
 
-An existing output is refused. Changed report source identities are refused;
+An existing output is refused. The complete six-source identity set, binary hash
+syntax, experimental groups/counts, strict success/independence flags and declared
+numerical budgets are required. Missing or stale identities, failed gates and
+inconsistent group/summary maxima are refused. This admission check does not
+authenticate a report's execution or independently bind a binary to its sources.
+Changed report source identities are refused;
 regenerate and review the affected acceptance evidence before publishing a new
 characterization. The PNG embeds the exact report, source, binary and plotter
 SHA-256 identities, the 24 plotted observations and Matplotlib version. These
 are reproducibility metadata, not an independent source-to-binary attestation.
 The [A28 handoff](development/2026-11-15-product-continuation/notes/A28-crossover-characterization.md)
 records the actual authoring and verification results.
+
+The [A48 admission review](reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md) and its
+regressions close the incomplete-report admission gap without changing the
+numerical reference, probe, report or budgets. Root regenerated this figure from
+the same retained report after the repair: [the refresh receipt](development/2026-11-15-product-continuation/reports/crossover-plot-admission-refresh.json)
+confirms byte-for-byte identical decoded pixels; only the embedded plotter hash
+changed. The original A28 figure and generator remain available in Git history.

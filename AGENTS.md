@@ -22,6 +22,15 @@ and evidence, then update it through its assigned owner.
 | **Waveform continuation**, starting `2e161dc3a60fc3442051799574feed37bffbfc5c` | Independent R4 implementation and remaining acceptance in its separate checkout. Preserve its [entry](docs/development/2026-11-14-waveform-continuation/README.md), [checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md), [actual assignments](docs/development/2026-11-14-waveform-continuation/assignments.json) and unfinished work. |
 | **Completed reference refinement** | Its sixty accepted records, [closure](docs/REFERENCE_REFINEMENT_CLOSURE.md) and source-specific gallery/platform evidence remain history. Do not reopen or recount them to satisfy the product session. |
 
+The [current recovery acceptance](docs/reviews/PRODUCT_RECOVERY_ACCEPTANCE.md)
+separates the published `d8c39f7` thirteen-job hosted qualification from the later
+**180/180 local gate at d8 plus accepted A46/A48 changes**. At that dated audit,
+those later files and final actual-sixty publication were still pending. The
+live checkpoint owns subsequent source, counts and closure. A clean clone of
+published d8 does not contain that later working overlay; input hashes cannot
+recreate missing original files. Preserve the actual assigned working files
+and index until their integrator verifies publication.
+
 The integrator assigns paths, owns shared status/plan/README/checkpoint/manifest
 and publication, and exclusively coordinates each build tree. Workers modify
 only assigned files and report substantive results in their own notes. A past
@@ -30,6 +39,15 @@ before overlapping paint, captures, build rules or shared documentation. The
 [product handoff](docs/PRODUCT_HANDOFF.md#this-workspaces-recovery-setup) names
 this session’s writable checkout, primary build and read-only dependencies;
 borrowing a dependency grants no rights over another session’s source or build.
+
+The normal clean-checkout recipe and this workspace's dummy-SDL recovery recipe
+are distinct. The [phase-readiness review](docs/reviews/PRODUCT_PHASE_READINESS.md)
+names the next M6 same-Hz protocol and A47 native-close/callback-retirement gates.
+The user's literal whole-interface **1:1 objective remains unmet and unwaived**
+under the [current UI review](docs/reviews/PRODUCT_UI_ACCEPTANCE.md); accepted
+scoped raster evidence does not close it. Separate R4 owner-local results also
+require that owner's final integration/publication/acceptance, without implying
+that its recorded local experiments never ran.
 
 ## Standing continuation and completion workflow
 
@@ -79,11 +97,13 @@ repeated permission requests; preserve the user’s later directions.
 5. **Count actual work in the matching session.** Record distinct dispatched
    identities, wave, owned paths, substantive note/hash, verification and
    integrator acceptance. Plans and follow-ups do not create new workers; older
-   sixty-worker ledgers do not count toward this session. Use the active session’s
-   own accepted validator named by its checkpoint. Until it exists, record that
-   gate as pending; do not substitute a historical checker. In-progress validation
-   checks consistency only. Strict closure requires the requested actual accepted
-   set, all ten six-worker waves for this product session and its retained result.
+   sixty-worker ledgers do not count toward this session. The accepted product
+   validator is `tools/check_product_session.py`; its
+   [progress and strict commands](docs/PRODUCT_HANDOFF.md#validate-this-sessions-actual-records)
+   use this session's ledger. Do not substitute a historical checker.
+   In-progress validation checks consistency only. Strict closure requires the
+   requested actual accepted set, all ten six-worker waves for this product
+   session and its retained result.
    Record checks cannot attest dispatch, implementation quality or fidelity.
 6. **Commit and publish authorized accepted work.** The integrator reviews the
    owned diff, runs the necessary affected/coherent gates and commits reviewable

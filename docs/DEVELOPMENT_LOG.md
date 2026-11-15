@@ -1,5 +1,134 @@
 # Development log
 
+## 2026-11-15 — Sixty actual product workers accepted; final-source gate pending
+
+Root accepted A01–A60 in ten logical six-worker waves and ran the strict product
+checker: sixty accepted/verified notes, all ten waves, zero errors. CI now invokes
+the strict default. The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) separates
+selected M9/M6 implementation and local 180/180 qualification from the final
+publication/hosted gate. The entire original request remains partial because
+literal 1:1 UI equality is unmet and unwaived. A58/A59/A60 close the publication,
+recovery and requirements reviews without changing production or claiming
+physical/display/DAW acceptance.
+
+
+## 2026-11-15 — Product gallery, repaired hosted qualification and current handoff
+
+Published source is `d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
+`edf67b978f93e8dbea6537ce92d3928c171bc1f3`, parent
+`d556da017ea0a5d4f2d231416782dbc5066e58c2`. The
+[publication receipt](development/2026-11-15-product-continuation/reports/gallery-publication.json)
+retains the expected-head/non-force update, fetched identities and verified
+eleven binary blobs. The [active checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-15-product-continuation/assignments.json)
+own subsequent counts and publication; this entry does not claim all sixty
+workers or ten waves complete.
+
+### Current product and hosted evidence
+
+A40 captured eight normal native views and three separate MIDI overlays;
+A41 [independently admitted all eleven](reviews/PRODUCT_GALLERY_ADMISSION.md).
+Their actual source remains `d556da01`, executable SHA-256
+`7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
+README displays current Play and MIDI frames and links to the complete gallery.
+Retained PNGs match their native-pixel identities; original BMP intermediates
+are unavailable. Earlier galleries remain unchanged. These dummy-SDL captures
+do not establish literal 1:1 equality or physical display usability.
+
+A42's expanded [material/modal fixture](development/2026-11-15-product-continuation/reports/A42-calibration-modal-raster.json)
+passes **1,293 assertions over 109 paint frames**, preserving its original
+failure/diagnostic attempts. Exactly 212 clipped resampling differences belong
+to 38 boundary-crossing glyphs and match independent literal plates; unexplained
+pixels and literal mismatches are zero. A43 adds the operating guide to the
+explicit Standalone payload: **16 files MIDI-OFF / 20 MIDI-ON**. Root's
+[complete installed gate](development/2026-11-15-product-continuation/reports/A43-root-installed-ctest.txt)
+passes eight methods / one CTest in **5.31 s**, including private relocation,
+synthetic calibrated expression 0.75 and namespace preservation. CrossoverTools
+remains a distinct six-file component. A44 reconciles provenance/rights and
+A45 supplies the standing [setup/recovery handoff](PRODUCT_HANDOFF.md).
+
+All **13 d8 hosted jobs succeed** in the
+[status receipt](development/2026-11-15-product-continuation/reports/d8-hosted-status.json).
+A49's [primary Linux audit](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md) establishes
+core Release **155/155 in 80.57 s**, core ASan/UBSan/leaks **155/155 in
+234.39 s**, native MIDI ON/OFF **48/48 each**, expanded native sanitizers
+**21/21 in 342.06 s**, and the full R4 experiment in **722.029333257 s**.
+The native audit verifies actual instrumented compilation/link/runtime inputs
+and execution of all 21 selected names. A50's
+[Windows primary audit](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md) establishes
+**155/155 core / 48/48 native**, and A51's
+[macOS primary audit](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) establishes the same
+counts on arm64 AppleClang. Native jobs execute the current 1,293-check fixture
+and installed 16/20 scope in their named configurations. Calibration retains
+nine methods, ten processes, seven lifecycles and two expected failed replays
+against real application/adapter code with a synchronous substituted dependency.
+A52's [VST3 primary audit](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) records **8/8
+Linux, 7/7 macOS and 7/7 Windows**, **47/47 plug-in validator checks** per
+platform, separate **51/0 SDK selftests** and relocated-bundle ABI gates.
+
+The earlier b9 install/Windows fixture failures and d556 GCC 13 sanitizer
+**build** failure remain retained under their original identities. The d556
+21-test selection did not execute; d8 now qualifies the same-value facade
+repair and actual expanded execution. Local ptrace-blocked sanitizer/control
+results remain blocked. Only the existing named core quarantine leak exception
+applies; no new exception was added. Hosted dummy/synchronous fixtures do not
+establish real devices, asynchronous OS races, DAW journeys or deadlines.
+
+### Accepted later repairs and coherent local result
+
+A46 delivers the product-specific actual-record validator with **19 passing
+regression methods**. Progress mode verifies declared consistency and declines
+closure; strict mode rejects the incomplete actual ledger. Its CI step remains
+in progress mode until sixty actual acceptances. The
+[next-step commands](NEXT_STEPS.md#validate-this-sessions-actual-records) make
+both modes explicit without substituting a historical checker.
+
+A48's [numerical admission review](reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md)
+demonstrates and repairs three incomplete/contradictory replacement-report
+admissions; **11 regression methods** pass. The numerical report, six source
+identities, native probe and thresholds are unchanged. The correct response
+grid is **126 in-band / 130 total points per group**. Root's
+[plot refresh](development/2026-11-15-product-continuation/reports/crossover-plot-admission-refresh.json)
+changes only generator-hash metadata and preserves every decoded pixel. It
+launches no native process and does not repeat the numerical sweep.
+
+After reconfigure and an all-target build, root executes the complete local
+CTest selection at d8 plus the accepted A46/A48 changes: **180/180 pass in
+507.55 s**. The [coherent receipt](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
+and [original log](development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt)
+retain exact commands and all **366 frozen code/test/build/data inputs**,
+unchanged throughout. Configuration is GCC 14.2 Release, standalone ON,
+physical MIDI backend OFF, VST3 OFF, explicit dummy SDL; production app remains
+`7ded143b…`. These later inputs still need publication and their own required
+hosted outcomes. The local run is not reattributed to unmodified d8.
+
+### Remaining native gate and documentation reconciliation
+
+A47's [native recovery review](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) finds
+no additional application-level calibration/ownership defect, but identifies
+suppressed WinMM/CoreMIDI native-close failures before connection state is
+cleared. A native callback can access dependency storage before the wrapper's
+counter. This is a source-proven observability gap and risk model, **not an
+observed hardware failure or use-after-free**. The narrow next gate injects
+platform failures below RtMidi, then reviews checked close preserving native
+handle/storage/context/inbox before destructive cleanup, poison/no-reopen/no-reset
+behavior and ordinary leak-free teardown. Successful native callback retirement
+still needs platform-specific evidence.
+
+A53 reconciles README, STATUS, NEXT_STEPS, PLAN and PROJECT_GUIDE with these
+results and prepends this log entry. The complete M0–M9 exit table, all prior
+log text, the historical STATUS body and README's actual capture section are
+preserved. Verification is bounded document/link/claim/shell-syntax inspection,
+recorded in [A53's note](development/2026-11-15-product-continuation/notes/A53-current-docs.md);
+no build, tests, capture, commit or publication is attributed to A53.
+
+The next independent M6 task remains a declared same-Hz electrical protocol and
+justified floors before a separately identified numerical candidate. Preserve
+47 musical parameters, state4/readers 1–3, 91 shared sources and the dry Engine.
+Scanner G5 remains failed; published full R4 success does not close the other
+owner's unfinished checkout. R5/R6, physical acquisition, display/device/DAW,
+semantic accessibility and signed-release gates remain separate.
+
 ## 2026-11-15 — Product continuation through wave 6; current roadmap reconciliation
 
 The new owner-requested session starts from

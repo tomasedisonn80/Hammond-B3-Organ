@@ -98,6 +98,13 @@ jobs:
           set -o pipefail
           python tools/check_refinement_session.py --repo . --json | tee ci-logs/refinement-session-completion.json
 
+      - name: Verify the actual product session records
+        if: runner.os == 'Linux'
+        run: |
+          set -o pipefail
+          # All 60 actual product-session results are accepted; closure is strict.
+          python tools/check_product_session.py --repo . --json | tee ci-logs/product-session-records.json
+
       - name: Retain configure, build, and test diagnostics
         if: ${{ always() && !cancelled() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

@@ -97,7 +97,7 @@
         "docs/MIDI_CHANNEL_MODE_CONTRACT.md",
         "docs/development/2026-11-15-product-continuation/notes/A07-channel-contract.md"
       ],
-      "result": "Complete contract delivered; independent A10 review underway",
+      "result": "Contract delivered; independent review completed and final integration acceptance is recorded below.",
       "note_sha256": "0af6bd03df20eba3508220007c6d31c62904d7808b8df8dba0c2ec5b4c69717f",
       "acceptance": "Contract/review read; independent concerns integrated in root amendments; no runtime claims"
     },
@@ -112,7 +112,7 @@
         "docs/MIDI_EXPRESSION_CALIBRATION.md",
         "docs/development/2026-11-15-product-continuation/notes/A08-expression-contract.md"
       ],
-      "result": "Complete contract delivered; independent A10 review underway",
+      "result": "Contract delivered; independent review completed and final integration acceptance is recorded below.",
       "note_sha256": "090c9843d6edc6aaa39425e9bd7fd2ce00602e36566d823ec77bbfe0cf96ad80",
       "acceptance": "Contract/review read; independent concerns integrated in root amendments; no runtime claims"
     },
@@ -279,7 +279,7 @@
         "tools/crossover_reference.py (near-DC KCL fix)",
         "tests/test_crossover_reference.py (near-DC regression)"
       ],
-      "result": "Independent review caught near-DC cancellation in Python nodal current; ground-return KCL fix authorized and17reference/3native acceptance tests passed; final note pending",
+      "result": "Independent review caught near-DC cancellation in the Python nodal current; the ground-return KCL fix passed17reference and3native acceptance tests. Final note and acceptance are retained.",
       "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations. Near-DC nodal-reference cancellation and authorized A19 correction retained explicitly.",
       "note_sha256": "983e6e679deb3a4573e10461c788a4c001096324d0e1c56e3bdefec23ecf7c43"
     },
@@ -686,38 +686,223 @@
       "wave": 8,
       "agent": "/root/w08_a46_session_validator",
       "task": "Strict actual product-session ledger validation and meaningful negative tests",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A46-session-validator.md",
       "owned_files": [
         "tools/check_product_session.py",
         "tests/test_product_session.py",
         ".github/workflows/ci.yml (product record gate only)",
         "docs/development/2026-11-15-product-continuation/notes/A46-session-validator.md"
-      ]
+      ],
+      "acceptance": "Source-reviewed strict/progress accounting checker and19meaningful Pythonmethods pass1.191s; actual48-row progress accepted without closure, strict rejects missingworkers; CIprogressgate added. Checker explicitly cannot attest dispatch, semanticacceptance orproductreadiness.",
+      "note_sha256": "ff268e38bc0aa0f4450a10fbb5a3f1e5b90b0dc1d5e76e329923f81d93d2dffc"
     },
     {
       "id": "A47",
       "wave": 8,
       "agent": "/root/w08_a47_native_recovery_review",
       "task": "Independent native callback ownership, epoch retirement and recovery audit",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A47-native-recovery-review.md",
       "owned_files": [
         "docs/reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md",
         "docs/development/2026-11-15-product-continuation/notes/A47-native-recovery-review.md"
-      ]
+      ],
+      "acceptance": "Independent nativecallback/retirement audit matches14currentfixture inputs and pinneddependency transform. Found source-proven WinMM/CoreMIDI native-close error-observability gap; explicit unobservedrisk/nextfault-injectiongate retained. No additional app-levelcalibration ownershipdefect found; nohardwareclaim.",
+      "note_sha256": "9b1fa12d0063945d6b638e4dec9a58e2e09de197c649779d5c8c26657760ad25"
     },
     {
       "id": "A48",
       "wave": 8,
       "agent": "/root/w08_a48_numerical_admission",
       "task": "Independent numerical-boundary and source-bound M6 report/plot admission audit",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A48-numerical-admission.md",
       "owned_files": [
+        "tools/plot_crossover_characterization.py",
+        "tests/test_plot_crossover_characterization.py",
         "docs/reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md",
         "docs/development/2026-11-15-product-continuation/notes/A48-numerical-admission.md"
-      ]
+      ],
+      "acceptance": "Three demonstrated incomplete/contradictory report admissions repaired;11meaningful regression methods pass0.280s. Original numerical report/source/probe/budgets unchanged; root refreshed plot with exactly identical decodedpixels and only generator-hash metadata change.",
+      "note_sha256": "0862bbb49f705ea3dbf6a68723a2eb26c85bae7c778e3fa31f466013b0b9936d"
+    },
+    {
+      "id": "A49",
+      "wave": 9,
+      "agent": "/root/w09_a49_linux_hosted",
+      "task": "Primary Linux Release, sanitizer, native and R4 hosted evidence audit",
+      "status": "accepted",
+      "note": "notes/A49-linux-hosted.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_LINUX_HOSTED_REVIEW.md",
+        "docs/development/2026-11-15-product-continuation/notes/A49-linux-hosted.md"
+      ],
+      "acceptance": "All six Linux jobs independently audited from primary logs atd8:155core/155coreleaks,48nativeON/48OFF,21nativeASan andfullR4pass. Actual260instrumentedobjects,21links,sixarchives andprobe/scenario/stderrverification proved. Originald556failure preserved.",
+      "note_sha256": "97a10fd19a3f1b5ec53b47e7a1fcd67cb1da3841bafc1c6eb43c5af70d979438"
+    },
+    {
+      "id": "A50",
+      "wave": 9,
+      "agent": "/root/w09_a50_windows_hosted",
+      "task": "Primary Windows MSVC core/native repair and installed-product evidence audit",
+      "status": "accepted",
+      "note": "notes/A50-windows-hosted.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md",
+        "docs/development/2026-11-15-product-continuation/notes/A50-windows-hosted.md"
+      ],
+      "acceptance": "Independent exact-source Windows primary logs verify155/155core and48/48native,1293materialchecks,9calibrationmethods/10processes/7lifecycles/2deliberatefailures and20-fileWinMMinstalledworkflow; originalb9failures/d556scope retained. No MinGW/hardware/sanitizerclaim.",
+      "note_sha256": "b710b886e25a6b789fc72bf3169178e8a20f891574b5ec5fe06a7652bee8e1c2"
+    },
+    {
+      "id": "A51",
+      "wave": 9,
+      "agent": "/root/w09_a51_macos_hosted",
+      "task": "Primary macOS AppleClang core/native, CoreMIDI packaging and installed workflow audit",
+      "status": "accepted",
+      "note": "notes/A51-macos-hosted.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_MACOS_HOSTED_REVIEW.md",
+        "docs/development/2026-11-15-product-continuation/notes/A51-macos-hosted.md"
+      ],
+      "acceptance": "Independent exact-source macOS primary logs:155/155core,48/48native;9calibrationmethods/10processes/7lifecycles/2deliberatefailures;1293materialchecks109frames;8installmethods/20-fileCoreMIDIpackage,relocation/archivechecks. Physical/macOS-sanitizer limits preserved.",
+      "note_sha256": "f6eb1ac0fed668e38f31d8035c81d366fe89cae07bbdff260d6ffa7fe2028e82"
+    },
+    {
+      "id": "A52",
+      "wave": 9,
+      "agent": "/root/w09_a52_vst3_hosted",
+      "task": "Primary Linux/macOS/Windows VST3 SDK, validator, package and compatibility evidence audit",
+      "status": "accepted",
+      "note": "notes/A52-vst3-hosted.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_VST3_HOSTED_REVIEW.md",
+        "docs/development/2026-11-15-product-continuation/notes/A52-vst3-hosted.md"
+      ],
+      "acceptance": "Three VST3 primary logs verify8/7/7selectedtests,47pluginvalidatorpasses and51separateSDKselftests each. VerifiedSDK/submodules,47literaldescriptors and unchanged20VST3/54core/30authoringfiles; packaging/platform/DAWlimits preserved.",
+      "note_sha256": "876310c38b9f2569c18bf52119cacf4c78ae7626e090a88b648d50ebbb496843"
+    },
+    {
+      "id": "A53",
+      "wave": 9,
+      "agent": "/root/w09_a53_current_docs",
+      "task": "Reconcile current plan, status, next tasks, README and documentation claims",
+      "status": "accepted",
+      "note": "notes/A53-current-docs.md",
+      "owned_files": [
+        "README.md",
+        "docs/STATUS.md",
+        "docs/NEXT_STEPS.md",
+        "docs/PLAN.md",
+        "docs/DEVELOPMENT_LOG.md",
+        "docs/PROJECT_GUIDE.md",
+        "docs/development/2026-11-15-product-continuation/notes/A53-current-docs.md"
+      ],
+      "acceptance": "Current README/status/plan/next/log/guide reconciled to source-specific d8hosted and d8+A46/A48local180results.786local/19headinglinks,eightshellsyntaxblocks andfourhistorical/capture preservationhashes pass; dynamicactualcount defers tocheckpoint.",
+      "note_sha256": "008f8d8480c413f026899b419e635dd6666b70deb67c7d46de92a2a3d7816de7"
+    },
+    {
+      "id": "A54",
+      "wave": 9,
+      "agent": "/root/w09_a54_ui_acceptance",
+      "task": "Independent current native UI versus original reference acceptance and remaining gaps",
+      "status": "accepted",
+      "note": "notes/A54-ui-acceptance.md",
+      "owned_files": [
+        "docs/design/PRODUCT_REFERENCE_GAPS.md",
+        "docs/PRODUCT_VISUAL_REFINEMENT.md (current front matter only; preserve historical contract)",
+        "docs/reviews/PRODUCT_UI_ACCEPTANCE.md",
+        "docs/development/2026-11-15-product-continuation/notes/A54-ui-acceptance.md"
+      ],
+      "acceptance": "Personally inspected originalreference and all11 currentPNGframes; no new crop/collision/capture defect. Current gap/refinement docs reconcile1293/109 and three-platform evidence while explicitly keeping1:1 unmet.74links and8215-byte frozencontract suffix verify unchanged.",
+      "note_sha256": "762c8a3a5326382955e6238558d24fd12c57c70aa765c084bdee5c6ab3aea67f"
+    },
+    {
+      "id": "A55",
+      "wave": 10,
+      "agent": "/root/w10_a55_code_acceptance",
+      "task": "Final independent source and feature acceptance with concrete failure-boundary review",
+      "status": "accepted",
+      "note": "notes/A55-code-acceptance.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_FINAL_CODE_ACCEPTANCE.md",
+        "docs/development/2026-11-15-product-continuation/notes/A55-code-acceptance.md"
+      ],
+      "acceptance": "Final independent source audit found no additional code blocker;366frozen inputs,threeoriginal logs,binaries and106protectedbaselinefiles match. Reviewed MIDI/rollback/admission/installfailure boundaries; rootresolvedstalecontractstatus with identicalnormativesuffix; A47/final-sourcegates retained.",
+      "note_sha256": "957ea8742cfada8b8e3466115710c8eefd28d00f2efaa5410b46610e229205c6"
+    },
+    {
+      "id": "A56",
+      "wave": 10,
+      "agent": "/root/w10_a56_phase_readiness",
+      "task": "Whole-atlas M0\u2013M9 phase readiness and concrete next engineering work order",
+      "status": "accepted",
+      "note": "notes/A56-phase-readiness.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_PHASE_READINESS.md",
+        "docs/development/2026-11-15-product-continuation/notes/A56-phase-readiness.md"
+      ],
+      "acceptance": "Whole500-page-plan readiness reconciles everyM0\u2013M9 exit and concrete M6/native/device/acquisition work orders without inventingbudgets.366inputs,threebinaries,sixnumericalsources/PDF and50links match; foreignR4localresults distinguished fromownerintegration/publication. Routingfindings resolved byroot.",
+      "note_sha256": "a9120b622bc2ab2a7d09b63411f3e344d7e30530377e518b41adbee2619bf2bc"
+    },
+    {
+      "id": "A57",
+      "wave": 10,
+      "agent": "/root/w10_a57_ledger_audit",
+      "task": "Independent actual-session ledger, note evidence and strict validator audit",
+      "status": "accepted",
+      "note": "notes/A57-ledger-audit.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_SESSION_LEDGER_AUDIT.md",
+        "docs/development/2026-11-15-product-continuation/notes/A57-ledger-audit.md"
+      ],
+      "acceptance": "Independent checker/ledger audit readall54acceptednotes atfrozen57record snapshot; progressvalid and strictexpectedincomplete. Reviewed19tests withoutrepeat; no historical-note byte reuse; tasknameuniqueness session-scoped. Staleresultnarratives repaired; actualdispatchattestation remainsroot/toolhistory.",
+      "note_sha256": "8b8595f528bf663829c42b426b23b676c47bdb058980bdb63ca65482af2c083b"
+    },
+    {
+      "id": "A58",
+      "wave": 10,
+      "agent": "/root/w10_a58_publication_audit",
+      "task": "Independent exact publication ancestry/tree, pending-scope and preserved-work audit",
+      "status": "accepted",
+      "note": "notes/A58-publication-audit.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_PUBLICATION_AUDIT.md",
+        "docs/development/2026-11-15-product-continuation/notes/A58-publication-audit.md"
+      ],
+      "acceptance": "Independently verified live d8/main/tree/parent,sevenpublicationobjects/localrefs,108production/366coherent inputs,62gallery/277historicalgallery/1746olderrecords andforeignindex preservation. Exact raw-config log whitespace exclusion recorded forfinalpreflight. No publication blocker; final update stillrequired.",
+      "note_sha256": "013da06ee982cccd0417be00fca3550164f4e1890971b4285d1b311432808a42"
+    },
+    {
+      "id": "A59",
+      "wave": 10,
+      "agent": "/root/w10_a59_recovery_audit",
+      "task": "Independent recoverability, standing workflow, setup and resource acceptance",
+      "status": "accepted",
+      "note": "notes/A59-recovery-audit.md",
+      "owned_files": [
+        "AGENTS.md (active routing and checker/recovery; preserve historical constraints)",
+        "docs/PRODUCT_HANDOFF.md",
+        "docs/reviews/PRODUCT_RECOVERY_ACCEPTANCE.md",
+        "docs/development/2026-11-15-product-continuation/notes/A59-recovery-audit.md"
+      ],
+      "acceptance": "Recovery/standing instructions updated and independently checked:366coherent/108captureinputs,threebinaries/cache/logs/offlinelocks match;151links/13headings/nineshellblocks pass. HistoricalAGENTSsuffix preserved; no runtime blocker or foreign mutation. Final strict/publication remainsroot.",
+      "note_sha256": "54f76990118d3ab93638ef62512bda4ec96eba9aed4ffb9d5f067c819f330da9"
+    },
+    {
+      "id": "A60",
+      "wave": 10,
+      "agent": "/root/w10_a60_final_requirements",
+      "task": "Final original-requirements and concrete closure-gate audit",
+      "status": "accepted",
+      "note": "notes/A60-final-requirements.md",
+      "owned_files": [
+        "docs/reviews/PRODUCT_FINAL_REQUIREMENTS_REVIEW.md",
+        "docs/development/2026-11-15-product-continuation/notes/A60-final-requirements.md"
+      ],
+      "acceptance": "Final original-request audit accepts bounded M9/M6 work and60current records for root closure, while explicitly finding1:1UNMET/unwaived. PDF500/hash,366inputs/threebinaries/cache,A58/A59deliveries and19links verify. No blanket all-requirements-complete claim; strict/publication/hosted gates assignedroot.",
+      "note_sha256": "fb7fcb7b68aa52f2fbb3f64750a16feb47c445850d4d9e1f610b3160a90700de"
     }
   ]
 }

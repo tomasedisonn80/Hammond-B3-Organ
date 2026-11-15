@@ -2,6 +2,14 @@
 
 Started from `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb` on 14 November 2026 client time (15 November UTC). This new owner-requested session has its own actual worker records and never recounts an earlier session.
 
+## Current batch result
+
+All 60 actual workers are accepted and the [strict record check](reports/product-session-strict.json) passes.
+The [batch record](../../PRODUCT_CONTINUATION_CLOSURE.md) distinguishes completed
+selected development from the unmet, unwaived 1:1 UI objective. Final-source
+publication/hosted qualification remains pending at this candidate; the
+[checkpoint](CHECKPOINT.md) owns subsequent observations.
+
 ## Selected scope
 
 - Read every page of the unchanged 500-page atlas across six non-overlapping assignments, retaining page coverage and source hashes.
@@ -14,7 +22,8 @@ Started from `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb` on 14 November 2026 clie
 
 Each feature requires a reviewed behavior contract, implementation and meaningful independent acceptance. Required evidence includes coherent-source builds, affected regression tests, actual native captures, source/executable identities, clear limitations and concrete next steps. No test count or screenshot claims physical fidelity, hardware latency, accessibility or literal 1:1 visual equality.
 
-The integrator owns shared README/AGENTS/status/plan/next steps/log, the [actual manifest](assignments.json), [checkpoint](CHECKPOINT.md), commits and main publication. Workers own assigned files and short evidence notes. Three workers run at a time; each logical wave contains six actual workers in two tranches.
+The integrator owns shared README/AGENTS/status/plan/next steps/log, the [actual manifest](assignments.json), [checkpoint](CHECKPOINT.md), commits and main publication. Workers own assigned files and short evidence notes. At most three workers run concurrently. Each logical wave contains six actual
+workers; dependency-ready trailing work may overlap wave boundaries.
 
 ## Resource policy
 

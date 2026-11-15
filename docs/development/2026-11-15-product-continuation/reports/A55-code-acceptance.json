@@ -1,0 +1,466 @@
+{
+  "agent": "/root/w10_a55_code_acceptance",
+  "claim_limits": [
+    "Only inspected source bytes and matching retained evidence are accepted",
+    "No future-source, physical, DAW, deadline, native-accessibility or literal1:1 acceptance",
+    "No all-sixty ledger or whole-project closure is supplied by this review"
+  ],
+  "coherent_evidence": {
+    "a55_runtime_execution": false,
+    "configuration": "GCC14.2 Release;standaloneON;MIDI-OFF;VST3OFF;SDL X11/Wayland/ALSAOFF;explicitdummySDL native tests",
+    "input_hash_map_sha256": "a093da3780e3e5e3d3c430d4e6fd0c286a59f66a55b24382cda3134cef94979a",
+    "log_identity_checks": [
+      {
+        "bytes": 8282,
+        "matches_retained_identity": true,
+        "path": "docs/development/2026-11-15-product-continuation/reports/wave8-configure.txt",
+        "sha256": "abe0a48328fc642b9f3c8c6aefb660dd80c7ea22e61039a9411925f1f5b06d23"
+      },
+      {
+        "bytes": 63,
+        "matches_retained_identity": true,
+        "path": "docs/development/2026-11-15-product-continuation/reports/wave8-all-target-build.txt",
+        "sha256": "c2ed93ffd93c840755c0e91392ae593b1b52de9b7aaf6c208123feaceb1dde2e"
+      },
+      {
+        "bytes": 26195,
+        "matches_retained_identity": true,
+        "path": "docs/development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt",
+        "sha256": "9d285b3d9abe478d9bba874dd5953e373c9009c4f5db06d1c48aa438c8fd93e0"
+      }
+    ],
+    "matching_inputs": 366,
+    "mismatches": [],
+    "receipt": {
+      "bytes": 42734,
+      "path": "docs/development/2026-11-15-product-continuation/reports/wave8-coherent-build.json",
+      "sha256": "a6a842a019a6f4d9260bf9e4c6609a2a0ed42412b4958e9d3440c876dcf54818"
+    },
+    "retained_ctest_summary": {
+      "failed": 0,
+      "passed": 180,
+      "selection": "all registered tests, serial execution",
+      "wall_seconds": 507.55
+    },
+    "selected_retained_execution_entries": [
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_leslie_crossover",
+        "result": "Passed",
+        "seconds": 0.16,
+        "test_number": 16
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_leslie_crossover_allocation",
+        "result": "Passed",
+        "seconds": 0.02,
+        "test_number": 17
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_leslie_crossover_lifecycle",
+        "result": "Passed",
+        "seconds": 0.01,
+        "test_number": 18
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "python_test_crossover_acceptance",
+        "result": "Passed",
+        "seconds": 1.62,
+        "test_number": 90
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "python_test_crossover_install",
+        "result": "Passed",
+        "seconds": 1.2,
+        "test_number": 91
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "python_test_crossover_reference",
+        "result": "Passed",
+        "seconds": 0.59,
+        "test_number": 92
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "python_test_plot_crossover_characterization",
+        "result": "Passed",
+        "seconds": 0.39,
+        "test_number": 111
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "python_test_product_session",
+        "result": "Passed",
+        "seconds": 1.29,
+        "test_number": 114
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_standalone_channel_acceptance",
+        "result": "Passed",
+        "seconds": 0.0,
+        "test_number": 134
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_standalone_channel_modes",
+        "result": "Passed",
+        "seconds": 0.01,
+        "test_number": 135
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_standalone_expression_calibration",
+        "result": "Passed",
+        "seconds": 0.0,
+        "test_number": 137
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_standalone_expression_diagnostics",
+        "result": "Passed",
+        "seconds": 2.96,
+        "test_number": 173
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_standalone_native_calibration",
+        "result": "Passed",
+        "seconds": 20.39,
+        "test_number": 174
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_control_io",
+        "result": "Passed",
+        "seconds": 0.05,
+        "test_number": 4
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_parameter_bridge",
+        "result": "Passed",
+        "seconds": 0.01,
+        "test_number": 22
+      },
+      {
+        "evidence": "retained root execution; not rerun by A55",
+        "name": "test_host_timeline",
+        "result": "Passed",
+        "seconds": 0.38,
+        "test_number": 14
+      }
+    ]
+  },
+  "decision": "Accepted inspected bounded implementation and evidence-admission repair; no additional code blocker found. Final-source hosted execution and actual strict ledger closure remain required.",
+  "head": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+  "inspected_input_identities": [
+    {
+      "bytes": 10569,
+      "path": "apps/standalone/MidiInput.h",
+      "sha256": "4024723a91c28c8884ca065d167524c599d6816d047bcc834ea025b1dd734394"
+    },
+    {
+      "bytes": 12250,
+      "path": "apps/standalone/MidiInput.cpp",
+      "sha256": "4ddd655fb4a21040f2f83228fb23e38f98d0abe21d5bce7f0e28d064b5b7477c"
+    },
+    {
+      "bytes": 8982,
+      "path": "apps/standalone/Session.h",
+      "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929"
+    },
+    {
+      "bytes": 31176,
+      "path": "apps/standalone/Session.cpp",
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3"
+    },
+    {
+      "bytes": 144215,
+      "path": "apps/standalone/main.cpp",
+      "sha256": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027"
+    },
+    {
+      "bytes": 22400,
+      "path": "apps/standalone/MidiDevice.cpp",
+      "sha256": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324"
+    },
+    {
+      "bytes": 91563,
+      "path": "apps/standalone/InstrumentView.cpp",
+      "sha256": "3687f96db4490e600d6107e6b39d7b7d568bdeb183f16f6aa397535a5f688567"
+    },
+    {
+      "bytes": 5331,
+      "path": "include/hammond/LeslieCrossover.h",
+      "sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c"
+    },
+    {
+      "bytes": 18694,
+      "path": "src/LeslieCrossover.cpp",
+      "sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525"
+    },
+    {
+      "bytes": 25291,
+      "path": "src/Engine.cpp",
+      "sha256": "ea94f27be2ce6e374537c616bdde34c32c3276df6f7f24e112f52a35d1a4bd3a"
+    },
+    {
+      "bytes": 13152,
+      "path": "src/ControlStateIO.cpp",
+      "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb"
+    },
+    {
+      "bytes": 11334,
+      "path": "src/ParameterBridge.cpp",
+      "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220"
+    },
+    {
+      "bytes": 36882,
+      "path": "data/parameter-registry.json",
+      "sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2"
+    },
+    {
+      "bytes": 746,
+      "path": "plugins/vst3/PluginIds.h",
+      "sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc"
+    },
+    {
+      "bytes": 10082,
+      "path": "apps/standalone/tests/test_standalone_channel_modes.cpp",
+      "sha256": "fad048ad48995d300c348d8b346ca0174b8b46dce615ee9314d3527277914037"
+    },
+    {
+      "bytes": 16647,
+      "path": "apps/standalone/tests/test_standalone_channel_acceptance.cpp",
+      "sha256": "22dc6f09c3c89395dfb7c2cf24a7655649fbf020c140f68d32285ac26896533d"
+    },
+    {
+      "bytes": 8850,
+      "path": "apps/standalone/tests/test_standalone_expression_calibration.cpp",
+      "sha256": "bde29561dba7853b96c6eb92f32b8fff12b2c99dd4891dbe6c9be951245dc061"
+    },
+    {
+      "bytes": 15622,
+      "path": "apps/standalone/native_tests/test_standalone_expression_diagnostics.py",
+      "sha256": "8a6e5bd218a36858af1a7ce2269f3b1c73fcbd20a607d037c62f380b27de3fea"
+    },
+    {
+      "bytes": 31325,
+      "path": "apps/standalone/native_tests/test_standalone_native_calibration.py",
+      "sha256": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85"
+    },
+    {
+      "bytes": 17473,
+      "path": "tests/test_leslie_crossover.cpp",
+      "sha256": "69a78b1abc9fc79c9404065d060a1a96144fb9e60179a2dd34dfbd8cd4eb7866"
+    },
+    {
+      "bytes": 17440,
+      "path": "tests/test_leslie_crossover_lifecycle.cpp",
+      "sha256": "b618ae41356a081891b1ab23e8a84feff508996f5c2c2a9360f9db2fe4004138"
+    },
+    {
+      "bytes": 23696,
+      "path": "tests/test_leslie_crossover_allocation.cpp",
+      "sha256": "4d652c1d39e504a64e5febab9b52ae8e78ee5c40276e2b0f4bb697ebe5f77950"
+    },
+    {
+      "bytes": 21802,
+      "path": "tests/test_crossover_acceptance.py",
+      "sha256": "cf9d8e94e4b57a623fa7fcfaa91d50e81ad19818d151f7dc7f5a1ead69070f95"
+    },
+    {
+      "bytes": 8325,
+      "path": "cmake/InstallCrossoverTools.cmake",
+      "sha256": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844"
+    },
+    {
+      "bytes": 20345,
+      "path": "tools/check_product_session.py",
+      "sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c"
+    },
+    {
+      "bytes": 21474,
+      "path": "tests/test_product_session.py",
+      "sha256": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55"
+    },
+    {
+      "bytes": 19918,
+      "path": "tools/plot_crossover_characterization.py",
+      "sha256": "3bc78b38516de384cf07e94b1cd9f33dbd71c0a6057b2012617814dfbd29ccf4"
+    },
+    {
+      "bytes": 12324,
+      "path": "tests/test_plot_crossover_characterization.py",
+      "sha256": "dd7ff3d635c54e680594fd8af6771cfe2af66871570a0cd5b1cb9df28f50b360"
+    },
+    {
+      "bytes": 9276,
+      "path": ".github/workflows/ci.yml",
+      "sha256": "dc0ca8ca102d099a3874d93837c9279ab7af66e92b9de03bc0c5c39642ce6d9e"
+    }
+  ],
+  "next_gates": [
+    "Accept all actual workers and retain strict product checker result; change CI invocation to strict",
+    "Publish accepted final tree and inspect exact-source hosted execution of new Python modules and strict record step",
+    "Below-RtMidi native close/disposal fault injection, checked close and platform callback-retirement evidence",
+    "Freeze M6 same-Hz electrical protocol/floors before separately identified candidate; preserve independent model/physical gates"
+  ],
+  "not_performed": [
+    "configure",
+    "build",
+    "CTest",
+    "Python test suites",
+    "native executable launch",
+    "new numerical sweep",
+    "hardware/DAW/display test",
+    "git index mutation",
+    "commit",
+    "push"
+  ],
+  "owned_document_checks": {
+    "local_markdown_links_checked": 20,
+    "missing_local_links": [],
+    "note": {
+      "bytes": 2536,
+      "path": "docs/development/2026-11-15-product-continuation/notes/A55-code-acceptance.md",
+      "sha256": "957ea8742cfada8b8e3466115710c8eefd28d00f2efaa5410b46610e229205c6"
+    },
+    "note_words": 301,
+    "review": {
+      "bytes": 15101,
+      "path": "docs/reviews/PRODUCT_FINAL_CODE_ACCEPTANCE.md",
+      "sha256": "7eaafe24f185c0fc4cd81431a20fa3aac113900389b721d491d9d93e730d04a1"
+    },
+    "trailing_whitespace_errors": 0,
+    "word_limit": 400
+  },
+  "parent": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+  "protected_comparison": {
+    "against": "current file bytes",
+    "baseline": "af006b0ae293c7c9a5f44b5dfe1dc9942fe9e12d",
+    "groups": [
+      {
+        "changed": [],
+        "existing_files": 52,
+        "path_hash_map_sha256": "99bec0e96440933bd8f2a7080cb228f2fbed9e6d62a5f861959358a671f81b7e",
+        "paths": [
+          "include/hammond",
+          "src"
+        ]
+      },
+      {
+        "changed": [],
+        "existing_files": 20,
+        "path_hash_map_sha256": "ce952a8180774d9e2e4e16d7d480b08be7652d30d160af61e4d7644f9e949aec",
+        "paths": [
+          "plugins/vst3"
+        ]
+      },
+      {
+        "changed": [],
+        "existing_files": 30,
+        "path_hash_map_sha256": "7490b2f7a6ed3ef02c9a697c8fb37d0f54d72d504fdc706009c4c663f14ed9f8",
+        "paths": [
+          "data"
+        ]
+      },
+      {
+        "changed": [],
+        "existing_files": 4,
+        "path_hash_map_sha256": "ce2e36a09a23fe48a9cb956c2047b304fa4751f7d711ff1f10e393c9bc19aff4",
+        "paths": [
+          "apps/standalone/UiModel.h",
+          "apps/standalone/UiModel.cpp",
+          "apps/standalone/StateFiles.h",
+          "apps/standalone/StateFiles.cpp"
+        ]
+      }
+    ],
+    "parameter_records": 47,
+    "parameter_schema": 4,
+    "unchanged_contracts": [
+      "47 parameter records",
+      "B3CONTROLS4 writer/readers1-3",
+      "91 shared free-running sources",
+      "VST3 identifiers/state/timeline",
+      "nominal dry Engine"
+    ]
+  },
+  "python": "3.12.14",
+  "recorded_at_utc": "2026-11-15T03:07:11.414798+00:00",
+  "remote_observation": {
+    "command": "git ls-remote origin refs/heads/main",
+    "matches_local_head": true,
+    "observed_at_utc": "2026-11-15T03:07:07.854262+00:00",
+    "output": "d8c39f7986746eacc991747153c7dbb012bb9a32\trefs/heads/main",
+    "publishes_working_changes": false
+  },
+  "resolved_findings": [
+    {
+      "amendment_receipt": {
+        "bytes": 742,
+        "path": "docs/development/2026-11-15-product-continuation/reports/contract-status-amendment.json",
+        "sha256": "3f3b59fb728582a0ff8e9dc7636165711c5459efd75d29128ddebc4e67dc304e"
+      },
+      "behavior_or_criteria_changed": false,
+      "contract": {
+        "bytes": 10469,
+        "path": "docs/MIDI_EXPRESSION_CALIBRATION.md",
+        "sha256": "89bf331714abaad494cc4bd629a573fe57ad9d574482d0b2b1c136a02717213d"
+      },
+      "id": "A55-D1",
+      "kind": "stale documentation status",
+      "normative_suffix_identical_to_head": true,
+      "normative_suffix_sha256": "7324ddf64023e9eab0662460db7f75caedb186269f48e5342b617b03460594e6",
+      "resolution": "Root replaced pending sentence with frozen-contract/current-evidence pointers; entire normative suffix unchanged."
+    }
+  ],
+  "retained_binary_checks": [
+    {
+      "bytes": 3646480,
+      "matches_retained_identity": true,
+      "path": "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/hammond_standalone",
+      "sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852"
+    },
+    {
+      "bytes": 3696912,
+      "matches_retained_identity": true,
+      "path": "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/hammond_standalone_calibration_probe",
+      "sha256": "16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335"
+    },
+    {
+      "bytes": 64520,
+      "matches_retained_identity": true,
+      "path": "/workspace/scratch/5b7d983ac078/build-native/hammond_crossover_probe",
+      "sha256": "da09640f7520cd887a836961658ed8a79d6b6bff28f0e33a0ce44cf76f992eac"
+    },
+    {
+      "bytes": 4545,
+      "path": "/workspace/scratch/5b7d983ac078/build-native/nominal.b3p",
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    }
+  ],
+  "retained_open_gate": {
+    "hardware_failure_or_uaf_observed": false,
+    "id": "A47-N1",
+    "reference": "docs/reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md",
+    "scope": "Native callbacks may access dependency storage before wrapper entry; synchronous fake offers and ASan/UBSan do not establish OS retirement.",
+    "state": "source-proven native-close error-observability gap; unreproduced native callback-retirement risk"
+  },
+  "reviewed_overlay": [
+    "A46 checker, tests and CI progress step",
+    "A48 plot admission and tests"
+  ],
+  "schema": "b3-product-final-code-acceptance-v1",
+  "tree": "edf67b978f93e8dbea6537ce92d3928c171bc1f3",
+  "wave": 10,
+  "worker": "A55",
+  "working_directory": "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"
+}

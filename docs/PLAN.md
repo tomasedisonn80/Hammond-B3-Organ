@@ -75,19 +75,30 @@ adapter smoke test may start after M1/M2; that does not complete product release
 | Completed reference refinement | Historical M9/R2/R3 and combined-source qualification; [closure](REFERENCE_REFINEMENT_CLOSURE.md) and [completed checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md). All 60 accepted workers remain closed historical records. |
 
 The published product checkpoint at this reconciliation is
-`b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree
-`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`; its
-[publication receipt](development/2026-11-15-product-continuation/reports/calibration-install-publication.json)
-records the verified parent and non-force update. The earlier `ff41d412` feature
-source has its own 176/176 local result and 13 successful hosted job statuses;
-later fixture/install work needs its own qualification. [STATUS.md](STATUS.md)
-keeps those boundaries, the observed `b9d352a` install failure/repair and the
-pending feature-source primary-log audit explicit.
+`d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
+`edf67b978f93e8dbea6537ce92d3928c171bc1f3`; its
+[publication receipt](development/2026-11-15-product-continuation/reports/gallery-publication.json)
+records the verified parent and non-force update. All
+[13 hosted jobs succeeded](development/2026-11-15-product-continuation/reports/d8-hosted-status.json),
+with primary [Linux](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md),
+[Windows](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md),
+[macOS](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) and
+[VST3](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) evidence. The expanded native
+sanitizer selection actually passed 21/21; the material fixture is 1,293
+assertions/109 frames and Standalone inventory is 16 files MIDI-OFF/20 MIDI-ON.
+
+The later [coherent local run](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
+passed 180/180 in 507.55 s at d8 plus accepted A46/A48 checker/admission changes,
+with 366 frozen code/test/build/data inputs unchanged. Those repairs still
+need publication and their own hosted result. [STATUS.md](STATUS.md) preserves
+the original b9 install/Windows failures, d556 sanitizer build failure and
+earlier ff41 feature result under their exact source identities. The live
+checkpoint owns later progress; sixty-worker closure is still pending.
 
 The integrator owns the current checkout/build and shared publication. Read the
 active checkpoint and [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
 before overlapping source, paint, gallery or build work. Use the
-[native operating guide](MIDI_EXPRESSION_GUIDE.md) and
+[setup/recovery handoff](PRODUCT_HANDOFF.md), [native operating guide](MIDI_EXPRESSION_GUIDE.md) and
 [crossover developer guide](CROSSOVER_DEVELOPER_GUIDE.md) for current commands;
 an old setup path or test count is not a current acceptance result.
 
@@ -133,6 +144,14 @@ documentary values. Component losses, source impedance, complex driver loads and
 assembly/specimen applicability remain acquisition-dependent unknowns; numerical
 improvement cannot close full M6 or authorize a live audio route.
 
+The [numerical admission review](reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md)
+repairs acceptance of incomplete or contradictory replacement reports while
+preserving the original numerical report, six source identities, probe and
+thresholds. The response grid is 126 in-band points out of 130 per group.
+Root's [plot refresh](development/2026-11-15-product-continuation/reports/crossover-plot-admission-refresh.json)
+changes only generator-hash metadata; every decoded pixel remains identical.
+This is evidence admission, not a new numerical realization or physical result.
+
 ## Current rotary implementation and remaining model gates
 
 Native [R2 motion](ROTARY_MOTION.md) and
@@ -154,6 +173,10 @@ experiment has passed its exact frozen inputs; remaining lifecycle, symmetry,
 allocation, CLI and platform acceptance stays with the waveform owner. R5 audible
 policy and R6 runtime/Engine integration retain separate gates. The playable
 Engine remains nominal and dry.
+
+The later full R4 job in the [d8 Linux audit](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md)
+also passes its published inputs. It does not close the other owner's unfinished
+checkout or transfer its acceptance and worker-ledger ownership.
 
 The scanner's [G5 same-hertz failure](SCANNER_HANDOFF.md) remains unresolved
 under its [numerical contract](SCANNER_NUMERICAL_CONTRACT.md); do not connect
@@ -189,9 +212,16 @@ settings and eleven focus stops; the [operating guide](MIDI_EXPRESSION_GUIDE.md)
 explains selected, configured, active and pending state. Calibration is adapter
 configuration, not a saved musical parameter or an AO-28 expression model.
 
-The [reference-gap review](design/PRODUCT_REFERENCE_GAPS.md) distinguishes the
-scoped raster/timing results from provisional current previews. A fresh actual
-gallery and independent admission remain pending at this wave-6 reconciliation.
+The [reference-gap review](design/PRODUCT_REFERENCE_GAPS.md) and
+[independent gallery admission](reviews/PRODUCT_GALLERY_ADMISSION.md) distinguish
+scoped raster/timing evidence from physical display acceptance. The current
+[eight normal views](../examples/demos/standalone-product-preview-v1/README.md)
+and [three MIDI overlays](../examples/demos/standalone-product-preview-v1/midi-overlay/README.md)
+are admitted actual `d556da01` captures from application `7ded143b…`; README
+displays current Play and MIDI views. Their source, executable, replay, state and
+PNG/native-pixel identities remain retained; original BMP intermediates are
+unavailable. No new capture at the later publication is claimed.
+
 The admitted [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
 is historical `487064d2` capture evidence; v4 belongs to `0881d1f4`, and earlier
 galleries retain their original identities. No older image is a capture of the
@@ -204,6 +234,14 @@ The reference supplies visual direction, while the engineering inventory remains
 native semantic accessibility, real display/controller/audio-device acceptance,
 DAW journeys, callback deadlines and signed distribution retain separate
 product gates in [release readiness](RELEASE_READINESS.md).
+
+The [native recovery review](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) also
+retains A47-N1: pinned WinMM/CoreMIDI close paths can suppress native failure
+results before clearing state. It is a source-proven observability gap and risk
+model, not an observed hardware failure or use-after-free. The next bounded
+adapter task injects faults below RtMidi and reviews checked close with preserved
+dependency storage and platform callback-retirement evidence. The existing
+synchronous fixtures and sanitizers do not establish that OS lifetime guarantee.
 Use [NEXT_STEPS.md](NEXT_STEPS.md) for the next concrete adapter/model contracts;
 the implementation milestones above remain the complete project plan.
 
@@ -223,4 +261,7 @@ source-bound timings and the [completed refinement evidence](REFERENCE_REFINEMEN
 Later documentation or ledger changes require their affected integrity checks,
 and changed build/test sources require appropriate coherent qualification.
 Finish this product session with its own 60 actual accepted records and strict
-completion gate; historical checkers and planned assignments cannot close it.
+[product-checker gate](NEXT_STEPS.md#validate-this-sessions-actual-records).
+Progress mode is available during acceptance; strict mode is required only after
+all ten six-worker waves are accepted. Historical checkers, planned assignments
+and an in-progress result cannot close this session.

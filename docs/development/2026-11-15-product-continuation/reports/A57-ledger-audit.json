@@ -1,0 +1,627 @@
+{
+  "schema": "b3-product-ledger-independent-audit-v1",
+  "worker": "A57",
+  "agent": "/root/w10_a57_ledger_audit",
+  "recorded_at_utc": "2026-11-15T03:07:22.794314+00:00",
+  "working_directory": "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ",
+  "python": "3.12.14",
+  "inputs": {
+    "tools/check_product_session.py": {
+      "bytes": 20345,
+      "sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c"
+    },
+    "tests/test_product_session.py": {
+      "bytes": 21474,
+      "sha256": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55"
+    },
+    "docs/development/2026-11-15-product-continuation/assignments.json": {
+      "bytes": 45037,
+      "sha256": "03644d673b3ac41dd83419f175184ab59fb9f2c691af0d26f529868d733b61a1"
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 9276,
+      "sha256": "dc0ca8ca102d099a3874d93837c9279ab7af66e92b9de03bc0c5c39642ce6d9e"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "tools/check_product_session.py",
+        "--repo",
+        ".",
+        "--allow-incomplete",
+        "--json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_seconds": 0.1095159699980286,
+      "stderr": "",
+      "output": "docs/development/2026-11-15-product-continuation/reports/A57-progress-records.json",
+      "output_bytes": 55813,
+      "output_sha256": "cd0e61826a04f08ff83a7d34b3bfe3b4c7bd506bb25e7028d611691888d824d3",
+      "status": "incomplete",
+      "record_consistency_valid": true,
+      "completion_valid": false,
+      "counts": {
+        "accepted": 54,
+        "distinct_agents": 57,
+        "distinct_ids": 57,
+        "distinct_note_paths": 57,
+        "invalid_status": 0,
+        "recorded": 57,
+        "review_complete": 0,
+        "running": 3,
+        "verified_accepted_notes": 54
+      },
+      "missing_ids": [
+        "A58",
+        "A59",
+        "A60"
+      ],
+      "accepted_waves": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "error_codes": [],
+      "manifest": {
+        "bytes": 45037,
+        "path": "docs/development/2026-11-15-product-continuation/assignments.json",
+        "sha256": "03644d673b3ac41dd83419f175184ab59fb9f2c691af0d26f529868d733b61a1"
+      },
+      "checker": {
+        "bytes": 20345,
+        "path": "tools/check_product_session.py",
+        "sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c"
+      },
+      "checked_notes_sha256": "af3ef22dc6bcd37256b1eda9fce9facf105ae1cfb04c36e408dd2c933bea4f3e"
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "tools/check_product_session.py",
+        "--repo",
+        ".",
+        "--json"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "elapsed_seconds": 0.11190668899871525,
+      "stderr": "",
+      "output": "docs/development/2026-11-15-product-continuation/reports/A57-strict-incomplete.json",
+      "output_bytes": 56279,
+      "output_sha256": "7196e68cee8b4e7c2b6094697cb476802ef5db2fe812463d2243d326e050141b",
+      "status": "failed",
+      "record_consistency_valid": true,
+      "completion_valid": false,
+      "counts": {
+        "accepted": 54,
+        "distinct_agents": 57,
+        "distinct_ids": 57,
+        "distinct_note_paths": 57,
+        "invalid_status": 0,
+        "recorded": 57,
+        "review_complete": 0,
+        "running": 3,
+        "verified_accepted_notes": 54
+      },
+      "missing_ids": [
+        "A58",
+        "A59",
+        "A60"
+      ],
+      "accepted_waves": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "error_codes": [
+        "completion_count",
+        "completion_status",
+        "completion_waves"
+      ],
+      "manifest": {
+        "bytes": 45037,
+        "path": "docs/development/2026-11-15-product-continuation/assignments.json",
+        "sha256": "03644d673b3ac41dd83419f175184ab59fb9f2c691af0d26f529868d733b61a1"
+      },
+      "checker": {
+        "bytes": 20345,
+        "path": "tools/check_product_session.py",
+        "sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c"
+      },
+      "checked_notes_sha256": "af3ef22dc6bcd37256b1eda9fce9facf105ae1cfb04c36e408dd2c933bea4f3e"
+    }
+  ],
+  "manifest_stable_across_both_cli_reads": true,
+  "checked_notes_identical_across_cli_reads": true,
+  "claim": "Independent source/record audit only; neither these files nor checker success attest actual tool dispatch or substantive review, execution, publication, product readiness or fidelity.",
+  "strict_mode_executed": true,
+  "successful_strict_closure_observed": false,
+  "observed_git": {
+    "head": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "tree": "edf67b978f93e8dbea6537ce92d3928c171bc1f3",
+    "local_origin_main": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "live_remote_command": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/main"
+    ],
+    "live_remote_stdout": "d8c39f7986746eacc991747153c7dbb012bb9a32\trefs/heads/main\n",
+    "live_remote_exit_code": 0,
+    "index_diff_empty": true,
+    "scope": "Read-only observation before the frozen checker reads; later shared-working changes are not described as HEAD bytes."
+  },
+  "notes_audit": {
+    "read_in_full_ids": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A09",
+      "A10",
+      "A11",
+      "A12",
+      "A13",
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18",
+      "A19",
+      "A20",
+      "A21",
+      "A22",
+      "A23",
+      "A24",
+      "A25",
+      "A26",
+      "A27",
+      "A28",
+      "A29",
+      "A30",
+      "A31",
+      "A32",
+      "A33",
+      "A34",
+      "A35",
+      "A36",
+      "A37",
+      "A38",
+      "A39",
+      "A40",
+      "A41",
+      "A42",
+      "A43",
+      "A44",
+      "A45",
+      "A46",
+      "A47",
+      "A48",
+      "A49",
+      "A50",
+      "A51",
+      "A52",
+      "A53",
+      "A54"
+    ],
+    "accepted_notes": 54,
+    "distinct_raw_hashes": 54,
+    "all_hashes_match": true,
+    "accepted_note_bytes_unchanged_at_finalization": true,
+    "atlas_whitespace_word_counts": {
+      "A01": 761,
+      "A02": 834,
+      "A03": 877,
+      "A04": 753,
+      "A05": 898,
+      "A06": 920
+    },
+    "new_400_word_target_not_applied_retroactively": true,
+    "semantic_execution_attested": false
+  },
+  "historical_comparison": {
+    "manifests": [
+      {
+        "path": "docs/development/2026-11-13-calibration/assignments.json",
+        "bytes": 27357,
+        "sha256": "e8596a4f998867c3c70586b6cdedc10be977bac410d4cf682faf162390a2c4bf",
+        "identity_field_count": 60,
+        "matching_task_names": []
+      },
+      {
+        "path": "docs/development/2026-11-13-continuation/assignments.json",
+        "bytes": 14097,
+        "sha256": "3e60721d3743321aae88310fdddd5c894c81321d17af6093e2df81264c2e15cf",
+        "identity_field_count": 60,
+        "matching_task_names": []
+      },
+      {
+        "path": "docs/development/2026-11-13-next-phases/assignments.json",
+        "bytes": 27403,
+        "sha256": "073cd86db6be3278c19aa9abacbae575b70ae92c45fa7480b70153a85076105b",
+        "identity_field_count": 60,
+        "matching_task_names": [
+          "/root/w01_a02_atlas_console",
+          "/root/w01_a03_atlas_electronics"
+        ]
+      },
+      {
+        "path": "docs/development/2026-11-13-pedals/assignments.json",
+        "bytes": 16003,
+        "sha256": "c77121b23bed9400ae82be13d778ef7a59b60a6de66d133c4e926d620af6ed8f",
+        "identity_field_count": 60,
+        "matching_task_names": [
+          "/root/w01_a02_atlas_console",
+          "/root/w01_a03_atlas_electronics"
+        ]
+      },
+      {
+        "path": "docs/development/2026-11-13-rotary/assignments.json",
+        "bytes": 15666,
+        "sha256": "ed7a1516aa1c5f7251e2e846ecda600a42994ed4acf24ba8cb14dfa353d20d8f",
+        "identity_field_count": 15,
+        "matching_task_names": []
+      },
+      {
+        "path": "docs/development/2026-11-13-scanner/assignments.json",
+        "bytes": 6181,
+        "sha256": "cb0ebabdca6b1eb96269f011abd445923e75a5ccfab302a0afa68149768b7bdf",
+        "identity_field_count": 23,
+        "matching_task_names": [
+          "/root/w01_a01_atlas_foundation"
+        ]
+      },
+      {
+        "path": "docs/development/2026-11-14-interface-continuation/assignments.json",
+        "bytes": 32186,
+        "sha256": "f7af18dadc375ca2e0d2cbc23c5886b03bda1fade4d998e4152b99ebbe282ec9",
+        "identity_field_count": 60,
+        "matching_task_names": [
+          "/root/w01_a01_atlas_foundation",
+          "/root/w01_a02_atlas_console",
+          "/root/w01_a03_atlas_electronics",
+          "/root/w01_a04_atlas_rotary"
+        ]
+      },
+      {
+        "path": "docs/development/2026-11-14-midi-ui/assignments.json",
+        "bytes": 16796,
+        "sha256": "9e5be6d2a1f37aef2ae8a6d13ff9b530644a007fd1906c38fd80a356c9bd9138",
+        "identity_field_count": 34,
+        "matching_task_names": [
+          "/root/w01_a02_atlas_console",
+          "/root/w01_a03_atlas_electronics",
+          "/root/w01_a04_atlas_rotary",
+          "/root/w01_a06_atlas_product"
+        ]
+      },
+      {
+        "path": "docs/development/2026-11-14-preset-continuation/assignments.json",
+        "bytes": 15560,
+        "sha256": "9c10a6fbd7e49bfc81e7822f0c7d056880d19966a00103941d29f0552dd3e2e0",
+        "identity_field_count": 35,
+        "matching_task_names": [
+          "/root/w01_a01_atlas_foundation",
+          "/root/w01_a02_atlas_console"
+        ]
+      },
+      {
+        "path": "docs/development/2026-11-14-reference-refinement/assignments.json",
+        "bytes": 36131,
+        "sha256": "bd56eae6857e7de74899f1810c740bb02a1f4db326ca44dcd1277d6d205ce610",
+        "identity_field_count": 60,
+        "matching_task_names": [
+          "/root/w01_a01_atlas_foundation",
+          "/root/w01_a02_atlas_console",
+          "/root/w01_a03_atlas_electronics"
+        ]
+      },
+      {
+        "path": "docs/development/2026-11-14-waveform-continuation/assignments.json",
+        "bytes": 17105,
+        "sha256": "1540d73b6525b4cefcdee485a41c2a8af16c5715b023126f5463cb6561fec812",
+        "identity_field_count": 29,
+        "matching_task_names": [
+          "/root/w01_a02_atlas_console",
+          "/root/w01_a03_atlas_electronics",
+          "/root/w01_a04_atlas_rotary"
+        ]
+      }
+    ],
+    "manifest_count": 11,
+    "historical_identity_fields": 496,
+    "reused_canonical_task_names": [
+      "/root/w01_a01_atlas_foundation",
+      "/root/w01_a02_atlas_console",
+      "/root/w01_a03_atlas_electronics",
+      "/root/w01_a04_atlas_rotary",
+      "/root/w01_a06_atlas_product"
+    ],
+    "reuse_occurrences": 21,
+    "historical_markdown_count": 570,
+    "historical_markdown_identity_list_sha256": "ed9ae75ab3e18eccbfdcfa418b17ac9c97063c48c1542babb7ef173d8992e652",
+    "accepted_note_hash_matches": [],
+    "scope": "Compares the frozen 57 product IDs only. Reused task-name spelling is session-scoped and neither establishes recounting nor authenticates new dispatch."
+  },
+  "ownership_audit": {
+    "repeated_exact_paths": {
+      "docs/PRODUCT_VISUAL_REFINEMENT.md": [
+        {
+          "id": "A11",
+          "scope": null
+        },
+        {
+          "id": "A34",
+          "scope": null
+        },
+        {
+          "id": "A54",
+          "scope": "current front matter only; preserve historical contract"
+        }
+      ],
+      "apps/standalone/InstrumentView.cpp": [
+        {
+          "id": "A15",
+          "scope": null
+        },
+        {
+          "id": "A18",
+          "scope": "MIDI overlay only"
+        }
+      ],
+      "tools/crossover_reference.py": [
+        {
+          "id": "A17",
+          "scope": null
+        },
+        {
+          "id": "A19",
+          "scope": "near-DC KCL fix"
+        }
+      ],
+      "tests/test_crossover_reference.py": [
+        {
+          "id": "A17",
+          "scope": null
+        },
+        {
+          "id": "A19",
+          "scope": "near-DC regression"
+        }
+      ],
+      "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": [
+        {
+          "id": "A26",
+          "scope": null
+        },
+        {
+          "id": "A38",
+          "scope": "own environment strings across SDL calls"
+        }
+      ],
+      "tools/standalone_paint_benchmark.cpp": [
+        {
+          "id": "A27",
+          "scope": null
+        },
+        {
+          "id": "A30",
+          "scope": "paired-dependent metadata correction only"
+        }
+      ],
+      "tools/plot_crossover_characterization.py": [
+        {
+          "id": "A28",
+          "scope": null
+        },
+        {
+          "id": "A48",
+          "scope": null
+        }
+      ],
+      "tests/test_crossover_install.py": [
+        {
+          "id": "A31",
+          "scope": null
+        },
+        {
+          "id": "A38",
+          "scope": "Windows stdout newline representation"
+        }
+      ],
+      "docs/design/PRODUCT_REFERENCE_GAPS.md": [
+        {
+          "id": "A34",
+          "scope": null
+        },
+        {
+          "id": "A54",
+          "scope": null
+        }
+      ],
+      "README.md": [
+        {
+          "id": "A35",
+          "scope": null
+        },
+        {
+          "id": "A53",
+          "scope": null
+        }
+      ],
+      "docs/STATUS.md": [
+        {
+          "id": "A36",
+          "scope": null
+        },
+        {
+          "id": "A53",
+          "scope": null
+        }
+      ],
+      "docs/NEXT_STEPS.md": [
+        {
+          "id": "A36",
+          "scope": null
+        },
+        {
+          "id": "A53",
+          "scope": null
+        }
+      ],
+      "docs/PLAN.md": [
+        {
+          "id": "A36",
+          "scope": null
+        },
+        {
+          "id": "A53",
+          "scope": null
+        }
+      ],
+      "docs/DEVELOPMENT_LOG.md": [
+        {
+          "id": "A36",
+          "scope": null
+        },
+        {
+          "id": "A53",
+          "scope": null
+        }
+      ],
+      "docs/PROJECT_GUIDE.md": [
+        {
+          "id": "A36",
+          "scope": null
+        },
+        {
+          "id": "A53",
+          "scope": null
+        }
+      ],
+      ".github/workflows/standalone.yml": [
+        {
+          "id": "A37",
+          "scope": null
+        },
+        {
+          "id": "A43",
+          "scope": "installed payload dictionary/count only"
+        }
+      ]
+    },
+    "repeated_exact_path_count": 16,
+    "running_audit_paths_distinct": true,
+    "directory_overlap": "A40 gallery directory contains A41 explicit authorized overlay README and author-review identity changes.",
+    "limits": "Declared path existence/scopes are not proof of actual modified-file compliance or temporal ownership authorization."
+  },
+  "test_source_review": {
+    "methods_read": [
+      "test_partial_progress_never_certifies_completion",
+      "test_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves",
+      "test_running_optional_notes_but_declared_evidence_must_match",
+      "test_id_agent_and_wave_identity_mutations",
+      "test_schema_count_and_actual_status_are_not_coercible",
+      "test_required_task_acceptance_and_owned_fields",
+      "test_hash_tampering_and_crlf_use_raw_bytes",
+      "test_substantive_floor_does_not_impose_retroactive_word_ceiling",
+      "test_note_paths_cannot_leave_current_session_or_change_identity",
+      "test_ownership_supports_actual_scopes_and_directories",
+      "test_ownership_traversal_globs_malformed_scopes_and_special_paths_fail",
+      "test_missing_accepted_notes_and_nonregular_files_fail_closed",
+      "test_symlink_leaf_parent_ownership_and_root_are_rejected",
+      "test_fifo_inputs_are_rejected_before_open",
+      "test_reparse_points_are_rejected_on_windows_metadata",
+      "test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth",
+      "test_byte_bounds_are_exact_and_have_no_word_ceiling",
+      "test_changed_inputs_during_open_are_rejected",
+      "test_cli_progress_success_and_strict_failure_are_machine_readable"
+    ],
+    "executed_again_by_A57": false,
+    "additional_mutations": [],
+    "reason": "Existing complete/partial fixture and identity/schema/hash/path/status/read-boundary/CLI coverage resolves the reviewed risks; no concrete uncovered defect warranted a repeated suite or new mutation.",
+    "same_hashes_in_A46_and_root_qualification": [
+      "tools/check_product_session.py",
+      "tests/test_product_session.py"
+    ],
+    "root_ctest_original_line": "114/180 Test #114: python_test_product_session .......................   Passed    1.29 sec",
+    "A46_verification": {
+      "path": "docs/development/2026-11-15-product-continuation/reports/A46-verification.json",
+      "bytes": 4135,
+      "sha256": "bbc5788cff4445241ee0412b3163ecf9024a81a66fcd65dcff323b683b253127"
+    },
+    "root_coherent_receipt": {
+      "path": "docs/development/2026-11-15-product-continuation/reports/wave8-coherent-build.json",
+      "bytes": 42734,
+      "sha256": "a6a842a019a6f4d9260bf9e4c6609a2a0ed42412b4958e9d3440c876dcf54818"
+    },
+    "root_ctest_log": {
+      "path": "docs/development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt",
+      "bytes": 26195,
+      "sha256": "9d285b3d9abe478d9bba874dd5953e373c9009c4f5db06d1c48aa438c8fd93e0"
+    }
+  },
+  "finding": {
+    "id": "A57-L1",
+    "severity": "low",
+    "state": "corrected by root before frozen reads",
+    "summary": "Accepted A07/A08/A19 retained stale pending-review/final-note result prose. Root changed only these three strings.",
+    "repair_receipt": {
+      "path": "docs/development/2026-11-15-product-continuation/reports/ledger-narrative-repair.json",
+      "bytes": 1297,
+      "sha256": "c36ae1eb0b61c79cc149b22aeb5c0c89025356c4d00c0d38099405cddebb900c"
+    },
+    "checker_change_required": false
+  },
+  "path_safety_limit": "Reviewed local-file admission and per-read change detection, not an adversarial filesystem transaction or source-freeze attestation. Windows reparse tests use mocked metadata; no A57 Windows execution.",
+  "verification": {
+    "owned_markdown_links": 8,
+    "owned_markdown_whitespace_and_fences": "passed",
+    "owned_shell_examples_bash_n": "passed",
+    "current_product_ci_step_bash_n": "passed",
+    "note_whitespace_words": 324,
+    "note_under_400_words": true
+  },
+  "closure_required": "Actual A58-A60 dispatch and acceptance of all remaining delivered work; freeze all60notes/manifest; retain strict success; remove only product CI progress flag; publish with fresh expected head/no force; verify exact commit/tree and required hosted strict result. Later ledger/note changes require a new strict receipt.",
+  "not_run": [
+    "19-method checker suite (source-reviewed, retained prior execution reused)",
+    "shared configure/build/CTest",
+    "native app/capture/device or physical experiment",
+    "final strict completion after actual A60 acceptance",
+    "hosted CI or publication"
+  ],
+  "delivered_documents": [
+    {
+      "path": "docs/reviews/PRODUCT_SESSION_LEDGER_AUDIT.md",
+      "bytes": 11989,
+      "sha256": "a7d2782651837c17e8b33277928df600d6fc76e0a8c2f0ecc64efb1f63a72506"
+    },
+    {
+      "path": "docs/development/2026-11-15-product-continuation/notes/A57-ledger-audit.md",
+      "bytes": 2780,
+      "sha256": "8b8595f528bf663829c42b426b23b676c47bdb058980bdb63ca65482af2c083b"
+    }
+  ],
+  "finalized_at_utc": "2026-11-15T03:11:25.441950+00:00"
+}

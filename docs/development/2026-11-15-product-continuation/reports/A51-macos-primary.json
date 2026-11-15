@@ -1,0 +1,2458 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/w09_a51_macos_hosted",
+  "scope": "Independent primary macOS core and native Standalone hosted audit; VST3 belongs to A52.",
+  "last_run_status_checked_utc": "2026-11-15T02:47:04Z",
+  "source": {
+    "repository": "tomasedisonn80/Hammond-B3-Organ",
+    "commit": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "tree": "edf67b978f93e8dbea6537ce92d3928c171bc1f3",
+    "parent": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+    "commit_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "tree_url": "https://api.github.com/repos/tomasedisonn80/Hammond-B3-Organ/git/trees/edf67b978f93e8dbea6537ce92d3928c171bc1f3",
+    "tree_response_truncated": false,
+    "queried_main_sha": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "local_head_matches": true,
+    "local_tree_matches": true,
+    "worktree_note": "The integrator has later A46/A48 and documentation/ledger changes. This audit qualifies d8c39f7 only; .github/workflows/ci.yml differs in the worktree. All native source paths inspected below match the commit.",
+    "files": [
+      {
+        "path": "CMakePresets.json",
+        "source_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+        "source_bytes": 1711,
+        "current_worktree_matches": true
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "source_sha256": "29b519f04334200ed391a945e324c6e2af5a75d0ba129eebe59abcf5487fc1fe",
+        "source_bytes": 8932,
+        "current_worktree_matches": false
+      },
+      {
+        "path": ".github/workflows/standalone.yml",
+        "source_sha256": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a",
+        "source_bytes": 60379,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "data/dependencies/rtmidi-lock.json",
+        "source_sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa",
+        "source_bytes": 1161,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "data/dependencies/sdl2-lock.json",
+        "source_sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+        "source_bytes": 375,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "tools/acquire_rtmidi.py",
+        "source_sha256": "b5b436be15a7a1aa807ec342793741eaefbbc2df0dbe5f315fc7f97a690809bf",
+        "source_bytes": 14094,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "cmake/InstallStandalone.cmake",
+        "source_sha256": "43bc6780b688bfc2bcadb9ef09bc81056b0be5fb91f0ad68cef4de6238ce4036",
+        "source_bytes": 16653,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_install.py",
+        "source_sha256": "5510eb68f0babfb28c72cc06471d01fb829845621610414fd2fcca7e9d9579b5",
+        "source_bytes": 43704,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_material_acceptance.cpp",
+        "source_sha256": "439d50f5990025fa09350283cb63f0bbb15ce0a526c561e742b6f5365b91a9c8",
+        "source_bytes": 67285,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "apps/standalone/native_tests/test_standalone_native_calibration.py",
+        "source_sha256": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85",
+        "source_bytes": 31325,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "apps/standalone/native_tests/fake_calibration/RtMidi.h",
+        "source_sha256": "15a24319a27cb6df6440b758902b8b9917e3ad317b93bc725e915049f4633041",
+        "source_bytes": 12049,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "docs/MIDI_EXPRESSION_GUIDE.md",
+        "source_sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c",
+        "source_bytes": 23478,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "docs/STANDALONE_INSTALL.md",
+        "source_sha256": "d9c9d97bf7f1c71b333b326f4457ee0dacc233e100c356546877fc4f72039808",
+        "source_bytes": 18345,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "apps/standalone/main.cpp",
+        "source_sha256": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+        "source_bytes": 144215,
+        "current_worktree_matches": true
+      },
+      {
+        "path": "apps/standalone/MidiDevice.cpp",
+        "source_sha256": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324",
+        "source_bytes": 22400,
+        "current_worktree_matches": true
+      }
+    ]
+  },
+  "method": {
+    "identity": "GET commit, Git tree, main ref, run metadata, run jobs collections and run artifact collections; JSON parsed from structuredContent.content.",
+    "primary_logs": "github_fetch_workflow_job_logs returned decoded primary job text. Results below derive from observed output, not workflow dispatch or historical status.",
+    "local_actions": "Read/hash exact source and write only assigned review, note and A51 report. No configure, build, CTest, application launch, source/workflow/shared-status edits, commit or push.",
+    "artifacts_boundary": "Observed upload logs and artifact API metadata. Archive member/byte assertions executed on the hosted runner; binary archives were not downloaded or independently unpacked by A51."
+  },
+  "jobs": [
+    {
+      "run_id": 43668397337,
+      "run_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397337",
+      "run_attempt": 1,
+      "run_status": "completed",
+      "run_conclusion": "success",
+      "head_sha": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "job_id": 132672792051,
+      "job_name": "Release (macOS AppleClang)",
+      "job_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397337/job/132672792051",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-15T02:34:10Z",
+      "completed_at": "2026-11-15T02:37:53Z",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 7,
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 8,
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 10,
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 11,
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 21,
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 22,
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 23,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 43668397338,
+      "run_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338",
+      "run_attempt": 1,
+      "run_status": "completed",
+      "run_conclusion": "success",
+      "head_sha": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "job_id": 132672792209,
+      "job_name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "job_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/job/132672792209",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-15T02:34:10Z",
+      "completed_at": "2026-11-15T02:42:11Z",
+      "steps": [
+        {
+          "number": 1,
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 2,
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 3,
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 4,
+          "name": "Record exact source and dependency identities",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 5,
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 6,
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 7,
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 8,
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 9,
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "number": 10,
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 11,
+          "name": "Build the application and every standalone acceptance input",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 12,
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 13,
+          "name": "Run all required standalone acceptance tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 14,
+          "name": "Reverify source and dependencies after acceptance",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 15,
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 16,
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 17,
+          "name": "Retain the successful executable package and byte inventory",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 33,
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 34,
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "number": 35,
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "toolchain": {
+    "os": "macOS 15.8.2 (24H232)",
+    "arch": "arm64",
+    "image": "macos-15-arm64",
+    "image_version": "20261104.0514.1",
+    "compiler_id": "AppleClang",
+    "compiler_cmake_version": "17.0.0.17000013",
+    "compiler_banner": "Apple clang version 17.0.0 (clang-1700.0.13.5)",
+    "target": "arm64-apple-darwin24.6.0",
+    "xcode": "16.4",
+    "cmake": "4.4.5",
+    "ctest": "4.4.5",
+    "python": "3.12.10",
+    "generator": "Unix Makefiles",
+    "configuration": "Release",
+    "macos_sanitizers_executed": false
+  },
+  "configurations": {
+    "core": "cmake --preset release -G 'Unix Makefiles' -DCMAKE_CXX_COMPILER=clang++ -DPython3_EXECUTABLE=<Python 3.12.10>; cmake --build --preset release --parallel 2 --verbose; ctest --preset release --parallel 2 --timeout 300 --no-tests=error --output-junit <ci-logs/ctest.xml>",
+    "native": "Release; BUILD_TESTING=ON; HAMMOND_BUILD_STANDALONE=ON; HAMMOND_BUILD_VST3=OFF; HAMMOND_ENABLE_MIDI=ON; locked external SDL2/RtMidi; bindir=bin, datadir=share. Built hammond_standalone and hammond_standalone_test_inputs. ctest --test-dir build-standalone -C Release -V --parallel 1 --no-tests=error --timeout 180 -R '^test_standalone_' --output-junit <standalone-ci-logs/ctest.xml>",
+    "compiled_sdl_backends_required_and_step_passed": [
+      "SDL_VIDEO_DRIVER_COCOA",
+      "SDL_AUDIO_DRIVER_COREAUDIO",
+      "SDL_VIDEO_DRIVER_DUMMY",
+      "SDL_AUDIO_DRIVER_DUMMY"
+    ],
+    "executed_native_sdl_audio": "dummy",
+    "executed_native_sdl_video": "dummy"
+  },
+  "results": {
+    "core": {
+      "passed": 155,
+      "total": 155,
+      "unique_pass_records": 155,
+      "wall_seconds": 120.47,
+      "selected": [
+        {
+          "ordinal": 15,
+          "ctest_id": 16,
+          "name": "test_leslie_crossover",
+          "seconds": 0.07,
+          "line": 1247
+        },
+        {
+          "ordinal": 16,
+          "ctest_id": 17,
+          "name": "test_leslie_crossover_allocation",
+          "seconds": 0.41,
+          "line": 1249
+        },
+        {
+          "ordinal": 17,
+          "ctest_id": 18,
+          "name": "test_leslie_crossover_lifecycle",
+          "seconds": 0.01,
+          "line": 1251
+        },
+        {
+          "ordinal": 89,
+          "ctest_id": 90,
+          "name": "python_test_crossover_acceptance",
+          "seconds": 1.33,
+          "line": 1395
+        },
+        {
+          "ordinal": 91,
+          "ctest_id": 92,
+          "name": "python_test_crossover_reference",
+          "seconds": 0.7,
+          "line": 1399
+        },
+        {
+          "ordinal": 93,
+          "ctest_id": 91,
+          "name": "python_test_crossover_install",
+          "seconds": 3.02,
+          "line": 1403
+        },
+        {
+          "ordinal": 131,
+          "ctest_id": 132,
+          "name": "test_standalone_channel_modes",
+          "seconds": 0.01,
+          "line": 1479
+        },
+        {
+          "ordinal": 133,
+          "ctest_id": 134,
+          "name": "test_standalone_expression_calibration",
+          "seconds": 0,
+          "line": 1483
+        }
+      ]
+    },
+    "native": {
+      "passed": 48,
+      "total": 48,
+      "discovered": 48,
+      "unique_pass_records": 48,
+      "wall_seconds": 312.67,
+      "selected": [
+        {
+          "ordinal": 1,
+          "ctest_id": 131,
+          "name": "test_standalone_install",
+          "seconds": 9.5,
+          "line": 2389
+        },
+        {
+          "ordinal": 2,
+          "ctest_id": 132,
+          "name": "test_standalone_channel_acceptance",
+          "seconds": 0.01,
+          "line": 2397
+        },
+        {
+          "ordinal": 3,
+          "ctest_id": 133,
+          "name": "test_standalone_channel_modes",
+          "seconds": 0.01,
+          "line": 2405
+        },
+        {
+          "ordinal": 5,
+          "ctest_id": 135,
+          "name": "test_standalone_expression_calibration",
+          "seconds": 0.01,
+          "line": 2431
+        },
+        {
+          "ordinal": 24,
+          "ctest_id": 154,
+          "name": "test_standalone_midi_backend",
+          "seconds": 0.01,
+          "line": 2667
+        },
+        {
+          "ordinal": 25,
+          "ctest_id": 155,
+          "name": "test_standalone_midi_backend_quarantine",
+          "seconds": 0,
+          "line": 2678
+        },
+        {
+          "ordinal": 31,
+          "ctest_id": 161,
+          "name": "test_standalone_material_acceptance",
+          "seconds": 3.96,
+          "line": 2733
+        },
+        {
+          "ordinal": 33,
+          "ctest_id": 163,
+          "name": "test_standalone_product_visual",
+          "seconds": 13.22,
+          "line": 2749
+        },
+        {
+          "ordinal": 38,
+          "ctest_id": 168,
+          "name": "test_standalone_callback_allocation",
+          "seconds": 1.09,
+          "line": 2888
+        },
+        {
+          "ordinal": 41,
+          "ctest_id": 171,
+          "name": "test_standalone_expression_diagnostics",
+          "seconds": 3.16,
+          "line": 2977
+        },
+        {
+          "ordinal": 42,
+          "ctest_id": 172,
+          "name": "test_standalone_native_calibration",
+          "seconds": 20.61,
+          "line": 3000
+        }
+      ]
+    }
+  },
+  "calibration": {
+    "primary_log_job": 132672792209,
+    "primary_log_lines": [
+      2984,
+      3000
+    ],
+    "fixture_binary_sha256": "c5c646d83507f49353247169c0ed176f5ca097c2a51fe52d3636236e91ef9384",
+    "methods": 9,
+    "subprocesses": 10,
+    "native_lifecycles": 7,
+    "deliberately_failed_replays": 2,
+    "python_seconds": 20.426,
+    "ctest_seconds": 20.61,
+    "all_methods_ok": true,
+    "boundary": "Unchanged real main.cpp and MidiDevice.cpp with substituted test-only RtMidi API; synchronous callback offers at native API boundaries, real SDL dummy callbacks. No physical CoreMIDI driver, hardware timing or OS fault-injection claim."
+  },
+  "material": {
+    "primary_log_job": 132672792209,
+    "primary_log_line": 2732,
+    "ctest_seconds": 3.96,
+    "checks": 1293,
+    "failures": 0,
+    "frames": 109,
+    "legacy_checks": 901,
+    "header_checks": 170,
+    "backend": "SDL software surface; no window/audio",
+    "calibration_modal": {
+      "checks": 222,
+      "scenes": 4,
+      "frames": 21,
+      "controls": 44,
+      "literal_glyph_regions": 96,
+      "changed_values": 12,
+      "focused_controls": 8,
+      "invalid_frames": 2,
+      "long_text_frames": 2,
+      "clipped_frames": 1,
+      "intersected_glyphs": 38,
+      "resampled_pixels": 212,
+      "unexplained_pixels": 0,
+      "literal_mismatches": 0,
+      "cut_glyphs": [
+        {
+          "line": 2,
+          "character": 0,
+          "ascii": 69,
+          "physical_rect": [
+            481,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 2,
+          "character": 1,
+          "ascii": 88,
+          "physical_rect": [
+            489,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 2,
+          "character": 2,
+          "ascii": 80,
+          "physical_rect": [
+            499,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 2,
+          "character": 3,
+          "ascii": 82,
+          "physical_rect": [
+            508,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 2
+        },
+        {
+          "line": 2,
+          "character": 4,
+          "ascii": 69,
+          "physical_rect": [
+            517,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 2,
+          "character": 5,
+          "ascii": 83,
+          "physical_rect": [
+            525,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 11
+        },
+        {
+          "line": 2,
+          "character": 6,
+          "ascii": 83,
+          "physical_rect": [
+            534,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 11
+        },
+        {
+          "line": 2,
+          "character": 7,
+          "ascii": 73,
+          "physical_rect": [
+            543,
+            464,
+            1,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 2,
+          "character": 8,
+          "ascii": 79,
+          "physical_rect": [
+            546,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 10
+        },
+        {
+          "line": 2,
+          "character": 9,
+          "ascii": 78,
+          "physical_rect": [
+            557,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 3
+        },
+        {
+          "line": 2,
+          "character": 11,
+          "ascii": 77,
+          "physical_rect": [
+            572,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 3
+        },
+        {
+          "line": 2,
+          "character": 12,
+          "ascii": 65,
+          "physical_rect": [
+            583,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 2,
+          "character": 13,
+          "ascii": 88,
+          "physical_rect": [
+            593,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 4,
+          "character": 0,
+          "ascii": 69,
+          "physical_rect": [
+            776,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 1,
+          "ascii": 88,
+          "physical_rect": [
+            784,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 4,
+          "character": 2,
+          "ascii": 80,
+          "physical_rect": [
+            794,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 3,
+          "ascii": 82,
+          "physical_rect": [
+            803,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 2
+        },
+        {
+          "line": 4,
+          "character": 4,
+          "ascii": 69,
+          "physical_rect": [
+            812,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 5,
+          "ascii": 83,
+          "physical_rect": [
+            820,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 11
+        },
+        {
+          "line": 4,
+          "character": 6,
+          "ascii": 83,
+          "physical_rect": [
+            829,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 11
+        },
+        {
+          "line": 4,
+          "character": 7,
+          "ascii": 73,
+          "physical_rect": [
+            838,
+            464,
+            1,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 8,
+          "ascii": 79,
+          "physical_rect": [
+            841,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 10
+        },
+        {
+          "line": 4,
+          "character": 9,
+          "ascii": 78,
+          "physical_rect": [
+            852,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 3
+        },
+        {
+          "line": 4,
+          "character": 11,
+          "ascii": 68,
+          "physical_rect": [
+            867,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 4,
+          "character": 12,
+          "ascii": 73,
+          "physical_rect": [
+            878,
+            464,
+            1,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 13,
+          "ascii": 82,
+          "physical_rect": [
+            882,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 2
+        },
+        {
+          "line": 4,
+          "character": 14,
+          "ascii": 69,
+          "physical_rect": [
+            891,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 15,
+          "ascii": 67,
+          "physical_rect": [
+            899,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 13
+        },
+        {
+          "line": 4,
+          "character": 16,
+          "ascii": 84,
+          "physical_rect": [
+            907,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 17,
+          "ascii": 73,
+          "physical_rect": [
+            918,
+            464,
+            1,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 18,
+          "ascii": 79,
+          "physical_rect": [
+            921,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 10
+        },
+        {
+          "line": 4,
+          "character": 19,
+          "ascii": 78,
+          "physical_rect": [
+            932,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 3
+        },
+        {
+          "line": 6,
+          "character": 14,
+          "ascii": 84,
+          "physical_rect": [
+            312,
+            624,
+            9,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 7,
+          "character": 19,
+          "ascii": 110,
+          "physical_rect": [
+            315,
+            556,
+            6,
+            7
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 8,
+          "character": 12,
+          "ascii": 69,
+          "physical_rect": [
+            313,
+            599,
+            7,
+            10
+          ],
+          "changed_pixels": 5
+        },
+        {
+          "line": 9,
+          "character": 15,
+          "ascii": 97,
+          "physical_rect": [
+            313,
+            652,
+            7,
+            8
+          ],
+          "changed_pixels": 14
+        },
+        {
+          "line": 10,
+          "character": 4,
+          "ascii": 89,
+          "physical_rect": [
+            315,
+            729,
+            8,
+            9
+          ],
+          "changed_pixels": 22
+        },
+        {
+          "line": 12,
+          "character": 18,
+          "ascii": 100,
+          "physical_rect": [
+            315,
+            774,
+            7,
+            10
+          ],
+          "changed_pixels": 26
+        }
+      ]
+    },
+    "criterion": "Exact full/clipped literal RGBA plates and exact changed-pixel set only at individually identified boundary-crossing glyph rectangles; full/cut pixels outside them must remain identical, including complete glyphs/nontext/focus. Surviving and hidden focus required. No whole-textbox exclusion or numeric pixel tolerance. Final literal_mismatches sums pixel and difference-set mismatches."
+  },
+  "dependencies": {
+    "sdl2": {
+      "version": "2.32.10",
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "offline_verify_after_acquisition": true,
+      "post_acceptance_verified": true
+    },
+    "rtmidi": {
+      "version": "6.0.0",
+      "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "backend": "CoreMIDI",
+      "compiler_define": "__MACOSX_CORE__",
+      "prepared_source_compiled": true,
+      "patch_id": "coremidi-zero-initialize-v1",
+      "patch_occurrences": 2,
+      "patch_before": "CoreMidiData *data = (CoreMidiData *) new CoreMidiData;",
+      "patch_after": "CoreMidiData *data = (CoreMidiData *) new CoreMidiData{};",
+      "patch_sha256": "80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad",
+      "prepared_cpp_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a",
+      "prepared_manifest_sha256": "481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae",
+      "prepared_copy_reverified_after_acceptance": true,
+      "boundary": "Locked zero-initialization of two CoreMidiData allocations in the prepared build copy; does not establish physical connection/close, OS-driver failure, hotplug or asynchronous-driver safety."
+    }
+  },
+  "installed": {
+    "primary_log_job": 132672792209,
+    "python_methods": 8,
+    "python_seconds": 9.405,
+    "ctest_seconds": 9.5,
+    "payload_files": 20,
+    "paths": [
+      "bin/hammond_standalone",
+      "share/hammond-b3-organ/standalone/STANDALONE_INSTALL.md",
+      "share/hammond-b3-organ/standalone/STANDALONE_APP.md",
+      "share/hammond-b3-organ/standalone/STANDALONE_MODEL.md",
+      "share/hammond-b3-organ/standalone/MIDI_UI_RUNBOOK.md",
+      "share/hammond-b3-organ/standalone/PRESET_RUNBOOK.md",
+      "share/hammond-b3-organ/standalone/INTERFACE_RUNBOOK.md",
+      "share/hammond-b3-organ/standalone/THIRD_PARTY_NOTICES.md",
+      "share/hammond-b3-organ/standalone/LICENSE-SDL2.txt",
+      "share/hammond-b3-organ/standalone/LICENSE-DejaVu.txt",
+      "share/hammond-b3-organ/standalone/sdl2-lock.json",
+      "share/hammond-b3-organ/standalone/font-source-manifest.json",
+      "share/hammond-b3-organ/standalone/reference-source-manifest.json",
+      "share/hammond-b3-organ/standalone/atlas-reference.json",
+      "share/hammond-b3-organ/standalone/standalone-capabilities.json",
+      "share/hammond-b3-organ/standalone/MIDI_EXPRESSION_GUIDE.md",
+      "share/hammond-b3-organ/standalone/LICENSE-RtMidi.txt",
+      "share/hammond-b3-organ/standalone/rtmidi-lock.json",
+      "share/hammond-b3-organ/standalone/rtmidi-prepared-source.json",
+      "share/hammond-b3-organ/standalone/rtmidi-coremidi-zero-init.patch"
+    ],
+    "binary_sha256": "1cf70c4169b8bf7c9ae7431947cbc7481336da54a61fcab994a129efab10bbfa",
+    "midi_enabled": true,
+    "midi_backend": "CoreMIDI",
+    "private_calibration_method": "test_custom_directories_copy_mode_and_disabled_component",
+    "private_calibration_source_assertions": {
+      "source_build_dependency_private_copies_removed": true,
+      "guide_links_resolve": true,
+      "synthetic_replay_ms": 800,
+      "minimum": 20,
+      "maximum": 100,
+      "inverted": true,
+      "raw_cc11": 40,
+      "expected_expression": 0.75,
+      "native_callback_messages": 0,
+      "preserved_other_component_sentinels": 4,
+      "installed_bytes_preserved": true,
+      "musical_state_not_implicitly_saved": true
+    },
+    "private_calibration_evidence_boundary": "These assertions are in the exact source of the executed eight-method test; the method's private diagnostics are not printed or separately downloaded.",
+    "printed_install_smoke": {
+      "passed": true,
+      "requested_ms": 600,
+      "audio_driver": "dummy",
+      "video_driver": "dummy",
+      "renderer": "software",
+      "callback_count": 50,
+      "rendered_frames": 25600,
+      "images": 22,
+      "native_midi_callback_messages": 0,
+      "midi_active_before_shutdown": false,
+      "held_after_shutdown": false
+    },
+    "separate_workflow_stage": {
+      "verified_files": 20,
+      "help_passed": true,
+      "dummy_smoke_ms": 600,
+      "callback_count": 50,
+      "rendered_frames": 25600,
+      "images": 15,
+      "source_and_relocated_bytes_modes_equal": true,
+      "no_active_midi_or_callback_traffic": true,
+      "archive": "HammondB3-Standalone-Release.tar.gz",
+      "archive_root": "HammondB3-Standalone",
+      "archive_regular_members_and_exact_paths_verified": true,
+      "archive_hash_bytes_modes_match": true,
+      "retained_files": [
+        "HammondB3-Standalone-Release.tar.gz",
+        "inventory.json",
+        "SHA256SUMS"
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "id": 14143013792,
+      "name": "ci-macos-15-release-1",
+      "size_in_bytes": 125899,
+      "digest": "sha256:8c0fd0bcedc277f394096f94528594ba2fda5645897feb02df854209aa501bd4",
+      "expired": false,
+      "created_at": "2026-11-15T02:37:50Z",
+      "run_id": 43668397337,
+      "head_sha": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397337/artifacts/14143013792"
+    },
+    {
+      "id": 14143117766,
+      "name": "standalone-macos-15-ARM64-midi-ON-release-package-d8c39f7986746eacc991747153c7dbb012bb9a32-1",
+      "size_in_bytes": 1487410,
+      "digest": "sha256:d7fb9575ed663371882af35bcf09c4aeb2189d0b2a5e29dd16e3b68a57bccf7b",
+      "expired": false,
+      "created_at": "2026-11-15T02:42:06Z",
+      "run_id": 43668397338,
+      "head_sha": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/artifacts/14143117766"
+    },
+    {
+      "id": 14142713230,
+      "name": "standalone-macos-15-ARM64-midi-ON-release-diagnostics-d8c39f7986746eacc991747153c7dbb012bb9a32-1",
+      "size_in_bytes": 345523,
+      "digest": "sha256:77ae83647fc37e0bc8d4472f0aaefb69fe5d1aa41e4b4b812df44b02c068271b",
+      "expired": false,
+      "created_at": "2026-11-15T02:42:04Z",
+      "run_id": 43668397338,
+      "head_sha": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/artifacts/14142713230"
+    }
+  ],
+  "historical_boundary": "The prior b9 install/Windows fixture failures and d556 GCC13 native-sanitizer build failure retain their original source-specific outcomes. This new macOS d8 execution neither rewrites them nor independently audits the Linux sanitizer/R4 or VST3 jobs.",
+  "limits": [
+    "No macOS sanitizer result from these Release jobs.",
+    "Backend fault/quarantine tests use fake RtMidi; quarantine's ASAN_OPTIONS=detect_leaks=0 is a named existing test setting, not blanket leak qualification.",
+    "Native Cocoa/CoreAudio and CoreMIDI are compiled and metadata-checked; runtime acceptance here uses dummy SDL and no physical MIDI port.",
+    "No physical hardware/hotplug/OS fault, real display or Retina/DPI journey, screen-reader semantics, DAW, callback-deadline, signed/notarized distribution or literal 1:1 reference equality claim.",
+    "This exact-source result does not qualify later A46/A48 source/workflow edits or final session closure."
+  ],
+  "next_gate": "Integrator accepts this audit and the separate Linux/Windows/VST3 audits, then qualifies the actual next publication. M9 physical macOS acceptance must exercise the relocated exact installed build on an identified Cocoa/CoreAudio display/controller/device with real port callbacks, calibration/change/reconnect/fault journeys, held-note/focus/resize/release evidence and numeric exit status; preserve the dummy/fake boundaries.",
+  "excerpts": [
+    {
+      "job_id": 132672792051,
+      "decoded_log_characters": 328456,
+      "decoded_log_lines": 1605,
+      "retention": "Selected original decoded log lines only. Text and ANSI sequences are preserved in JSON strings; full logs and binary artifacts are not retained here.",
+      "lines": [
+        {
+          "line": 11,
+          "text": "2026-11-15T02:34:11.3153080Z ##[group]Operating System"
+        },
+        {
+          "line": 12,
+          "text": "2026-11-15T02:34:11.3153450Z macOS"
+        },
+        {
+          "line": 13,
+          "text": "2026-11-15T02:34:11.3153770Z 15.8.2"
+        },
+        {
+          "line": 14,
+          "text": "2026-11-15T02:34:11.3154080Z 24H232"
+        },
+        {
+          "line": 15,
+          "text": "2026-11-15T02:34:11.3154390Z ##[endgroup]"
+        },
+        {
+          "line": 16,
+          "text": "2026-11-15T02:34:11.3154790Z ##[group]Runner Image"
+        },
+        {
+          "line": 17,
+          "text": "2026-11-15T02:34:11.3155180Z Image: macos-15-arm64"
+        },
+        {
+          "line": 18,
+          "text": "2026-11-15T02:34:11.3155570Z Version: 20261104.0514.1"
+        },
+        {
+          "line": 19,
+          "text": "2026-11-15T02:34:11.3156450Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20261104.0514/images/macos/macos-15-arm64-Readme.md"
+        },
+        {
+          "line": 20,
+          "text": "2026-11-15T02:34:11.3157510Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20261104.0514"
+        },
+        {
+          "line": 194,
+          "text": "2026-11-15T02:34:23.5573510Z d8c39f7986746eacc991747153c7dbb012bb9a32"
+        },
+        {
+          "line": 195,
+          "text": "2026-11-15T02:34:23.7380010Z cmake version 4.4.5"
+        },
+        {
+          "line": 196,
+          "text": "2026-11-15T02:34:23.7457860Z "
+        },
+        {
+          "line": 197,
+          "text": "2026-11-15T02:34:23.7458650Z CMake suite maintained and supported by Kitware (kitware.com/cmake)."
+        },
+        {
+          "line": 198,
+          "text": "2026-11-15T02:34:23.7971900Z ctest version 4.4.5"
+        },
+        {
+          "line": 199,
+          "text": "2026-11-15T02:34:23.7972100Z "
+        },
+        {
+          "line": 200,
+          "text": "2026-11-15T02:34:23.7972290Z CMake suite maintained and supported by Kitware (kitware.com/cmake)."
+        },
+        {
+          "line": 201,
+          "text": "2026-11-15T02:34:23.9148130Z Python 3.12.10"
+        },
+        {
+          "line": 202,
+          "text": "2026-11-15T02:34:24.0651350Z macOS-15.8.2-arm64-arm-64bit"
+        },
+        {
+          "line": 203,
+          "text": "2026-11-15T02:34:24.0651840Z arm64"
+        },
+        {
+          "line": 204,
+          "text": "2026-11-15T02:34:24.1029010Z ##[group]Run cmake --preset release -G \"Unix Makefiles\" \\"
+        },
+        {
+          "line": 205,
+          "text": "2026-11-15T02:34:24.1029480Z \u001b[36;1mcmake --preset release -G \"Unix Makefiles\" \\\u001b[0m"
+        },
+        {
+          "line": 206,
+          "text": "2026-11-15T02:34:24.1029790Z \u001b[36;1m  -DCMAKE_CXX_COMPILER=\"$CXX_COMPILER\" \\\u001b[0m"
+        },
+        {
+          "line": 207,
+          "text": "2026-11-15T02:34:24.1030150Z \u001b[36;1m  -DPython3_EXECUTABLE=\"$PYTHON_EXECUTABLE\" 2>&1 | tee ci-logs/configure.log\u001b[0m"
+        },
+        {
+          "line": 217,
+          "text": "2026-11-15T02:34:24.1073780Z   CXX_COMPILER: clang++"
+        },
+        {
+          "line": 218,
+          "text": "2026-11-15T02:34:24.1073970Z ##[endgroup]"
+        },
+        {
+          "line": 219,
+          "text": "2026-11-15T02:34:26.3045340Z -- The CXX compiler identification is AppleClang 17.0.0.17000013"
+        },
+        {
+          "line": 220,
+          "text": "2026-11-15T02:34:26.9506150Z -- Detecting CXX compiler ABI info"
+        },
+        {
+          "line": 221,
+          "text": "2026-11-15T02:34:27.6537270Z -- Detecting CXX compiler ABI info - done"
+        },
+        {
+          "line": 222,
+          "text": "2026-11-15T02:34:27.6735860Z -- Check for working CXX compiler: /usr/bin/clang++ - skipped"
+        },
+        {
+          "line": 223,
+          "text": "2026-11-15T02:34:27.6743450Z -- Detecting CXX compile features"
+        },
+        {
+          "line": 224,
+          "text": "2026-11-15T02:34:27.6756760Z -- Detecting CXX compile features - done"
+        },
+        {
+          "line": 225,
+          "text": "2026-11-15T02:34:27.8459560Z -- Found Python3: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/bin/python (found suitable version \"3.12.10\", minimum required is \"3.10\") found components: Interpreter"
+        },
+        {
+          "line": 232,
+          "text": "2026-11-15T02:34:29.7317700Z ##[group]Run cmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log"
+        },
+        {
+          "line": 233,
+          "text": "2026-11-15T02:34:29.7318660Z \u001b[36;1mcmake --build --preset release --parallel 2 --verbose 2>&1 | tee ci-logs/build.log\u001b[0m"
+        },
+        {
+          "line": 1204,
+          "text": "2026-11-15T02:35:48.2552610Z ##[group]Run ctest --preset release --parallel 2 --timeout 300 --no-tests=error \\"
+        },
+        {
+          "line": 1205,
+          "text": "2026-11-15T02:35:48.2554050Z \u001b[36;1mctest --preset release --parallel 2 --timeout 300 --no-tests=error \\\u001b[0m"
+        },
+        {
+          "line": 1206,
+          "text": "2026-11-15T02:35:48.2555250Z \u001b[36;1m  --output-junit \"$GITHUB_WORKSPACE/ci-logs/ctest.xml\" 2>&1 | tee ci-logs/ctest.log\u001b[0m"
+        },
+        {
+          "line": 1247,
+          "text": "2026-11-15T02:35:50.1273680Z  15/155 Test  #16: test_leslie_crossover .............................   Passed    0.07 sec"
+        },
+        {
+          "line": 1248,
+          "text": "2026-11-15T02:35:50.1377270Z         Start  17: test_leslie_crossover_allocation"
+        },
+        {
+          "line": 1249,
+          "text": "2026-11-15T02:35:50.5290250Z  16/155 Test  #17: test_leslie_crossover_allocation ..................   Passed    0.41 sec"
+        },
+        {
+          "line": 1250,
+          "text": "2026-11-15T02:35:50.5291220Z         Start  18: test_leslie_crossover_lifecycle"
+        },
+        {
+          "line": 1251,
+          "text": "2026-11-15T02:35:50.5356960Z  17/155 Test  #18: test_leslie_crossover_lifecycle ...................   Passed    0.01 sec"
+        },
+        {
+          "line": 1395,
+          "text": "2026-11-15T02:36:42.9859490Z  89/155 Test  #90: python_test_crossover_acceptance ..................   Passed    1.33 sec"
+        },
+        {
+          "line": 1396,
+          "text": "2026-11-15T02:36:42.9961740Z         Start  91: python_test_crossover_install"
+        },
+        {
+          "line": 1397,
+          "text": "2026-11-15T02:36:44.4028180Z  90/155 Test  #88: python_test_console_trace .........................   Passed    4.38 sec"
+        },
+        {
+          "line": 1398,
+          "text": "2026-11-15T02:36:44.4029390Z         Start  92: python_test_crossover_reference"
+        },
+        {
+          "line": 1399,
+          "text": "2026-11-15T02:36:45.1068640Z  91/155 Test  #92: python_test_crossover_reference ...................   Passed    0.70 sec"
+        },
+        {
+          "line": 1400,
+          "text": "2026-11-15T02:36:45.1069950Z         Start  93: python_test_demo_bundle"
+        },
+        {
+          "line": 1401,
+          "text": "2026-11-15T02:36:45.7183360Z  92/155 Test  #93: python_test_demo_bundle ...........................   Passed    0.61 sec"
+        },
+        {
+          "line": 1402,
+          "text": "2026-11-15T02:36:45.7184500Z         Start  94: python_test_factory_reference"
+        },
+        {
+          "line": 1403,
+          "text": "2026-11-15T02:36:46.0038110Z  93/155 Test  #91: python_test_crossover_install .....................   Passed    3.02 sec"
+        },
+        {
+          "line": 1483,
+          "text": "2026-11-15T02:37:44.8811610Z 133/155 Test #134: test_standalone_expression_calibration ............   Passed    0.00 sec"
+        },
+        {
+          "line": 1525,
+          "text": "2026-11-15T02:37:48.2813710Z 154/155 Test #151: test_standalone_workspace_continuity ..............   Passed    2.20 sec"
+        },
+        {
+          "line": 1526,
+          "text": "2026-11-15T02:37:48.8651300Z 155/155 Test #155: test_standalone_benchmark .........................   Passed    1.80 sec"
+        },
+        {
+          "line": 1527,
+          "text": "2026-11-15T02:37:48.8660090Z "
+        },
+        {
+          "line": 1528,
+          "text": "2026-11-15T02:37:48.8660540Z 100% tests passed out of 155"
+        },
+        {
+          "line": 1546,
+          "text": "2026-11-15T02:37:48.8676670Z Total Test time (real) = 120.47 sec"
+        },
+        {
+          "line": 1582,
+          "text": "2026-11-15T02:37:50.0517880Z SHA256 digest of uploaded artifact is 8c0fd0bcedc277f394096f94528594ba2fda5645897feb02df854209aa501bd4"
+        },
+        {
+          "line": 1583,
+          "text": "2026-11-15T02:37:50.0619660Z Finalizing artifact upload"
+        },
+        {
+          "line": 1584,
+          "text": "2026-11-15T02:37:50.4728650Z Artifact ci-macos-15-release-1 successfully finalized. Artifact ID 14143013792"
+        },
+        {
+          "line": 1585,
+          "text": "2026-11-15T02:37:50.4729900Z Artifact ci-macos-15-release-1 has been successfully uploaded! Final size is 125899 bytes. Artifact ID is 14143013792"
+        },
+        {
+          "line": 1586,
+          "text": "2026-11-15T02:37:50.4739760Z Artifact download URL: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397337/artifacts/14143013792"
+        }
+      ]
+    },
+    {
+      "job_id": 132672792209,
+      "decoded_log_characters": 782050,
+      "decoded_log_lines": 3544,
+      "retention": "Selected original decoded log lines only. Text and ANSI sequences are preserved in JSON strings; full logs and binary artifacts are not retained here.",
+      "lines": [
+        {
+          "line": 11,
+          "text": "2026-11-15T02:34:10.8104660Z ##[group]Operating System"
+        },
+        {
+          "line": 12,
+          "text": "2026-11-15T02:34:10.8105080Z macOS"
+        },
+        {
+          "line": 13,
+          "text": "2026-11-15T02:34:10.8105430Z 15.8.2"
+        },
+        {
+          "line": 14,
+          "text": "2026-11-15T02:34:10.8105760Z 24H232"
+        },
+        {
+          "line": 15,
+          "text": "2026-11-15T02:34:10.8106140Z ##[endgroup]"
+        },
+        {
+          "line": 16,
+          "text": "2026-11-15T02:34:10.8106500Z ##[group]Runner Image"
+        },
+        {
+          "line": 17,
+          "text": "2026-11-15T02:34:10.8106980Z Image: macos-15-arm64"
+        },
+        {
+          "line": 18,
+          "text": "2026-11-15T02:34:10.8107380Z Version: 20261104.0514.1"
+        },
+        {
+          "line": 19,
+          "text": "2026-11-15T02:34:10.8108280Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20261104.0514/images/macos/macos-15-arm64-Readme.md"
+        },
+        {
+          "line": 20,
+          "text": "2026-11-15T02:34:10.8109360Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20261104.0514"
+        },
+        {
+          "line": 309,
+          "text": "2026-11-15T02:34:25.4377610Z ##[group]Run set -euo pipefail"
+        },
+        {
+          "line": 310,
+          "text": "2026-11-15T02:34:25.4377920Z \u001b[36;1mset -euo pipefail\u001b[0m"
+        },
+        {
+          "line": 311,
+          "text": "2026-11-15T02:34:25.4378360Z \u001b[36;1m\"$C_COMPILER\" --version 2>&1 | tee -a standalone-ci-logs/toolchain.log\u001b[0m"
+        },
+        {
+          "line": 312,
+          "text": "2026-11-15T02:34:25.4378800Z \u001b[36;1m\"$CXX_COMPILER\" --version 2>&1 | tee -a standalone-ci-logs/toolchain.log\u001b[0m"
+        },
+        {
+          "line": 313,
+          "text": "2026-11-15T02:34:25.4379210Z \u001b[36;1mcmake -S . -B build-standalone -G \"Unix Makefiles\" \\\u001b[0m"
+        },
+        {
+          "line": 314,
+          "text": "2026-11-15T02:34:25.4380110Z \u001b[36;1m  -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \\\u001b[0m"
+        },
+        {
+          "line": 315,
+          "text": "2026-11-15T02:34:25.4380600Z \u001b[36;1m  -DCMAKE_C_COMPILER=\"$C_COMPILER\" -DCMAKE_CXX_COMPILER=\"$CXX_COMPILER\" \\\u001b[0m"
+        },
+        {
+          "line": 316,
+          "text": "2026-11-15T02:34:25.4381000Z \u001b[36;1m  -DPython3_EXECUTABLE=\"$PYTHON_EXECUTABLE\" \\\u001b[0m"
+        },
+        {
+          "line": 317,
+          "text": "2026-11-15T02:34:25.4381330Z \u001b[36;1m  -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \\\u001b[0m"
+        },
+        {
+          "line": 318,
+          "text": "2026-11-15T02:34:25.4381700Z \u001b[36;1m  -DHAMMOND_SDL2_ROOT=\"$RUNNER_TEMP/hammond-sdl2\" \\\u001b[0m"
+        },
+        {
+          "line": 319,
+          "text": "2026-11-15T02:34:25.4381990Z \u001b[36;1m  -DHAMMOND_ENABLE_MIDI=\"$HAMMOND_CI_MIDI\" \\\u001b[0m"
+        },
+        {
+          "line": 320,
+          "text": "2026-11-15T02:34:25.4382360Z \u001b[36;1m  -DHAMMOND_RTMIDI_ROOT=\"$RUNNER_TEMP/hammond-rtmidi\" \\\u001b[0m"
+        },
+        {
+          "line": 321,
+          "text": "2026-11-15T02:34:25.4382810Z \u001b[36;1m  -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \\\u001b[0m"
+        },
+        {
+          "line": 322,
+          "text": "2026-11-15T02:34:25.4383190Z \u001b[36;1m  2>&1 | tee standalone-ci-logs/configure.log\u001b[0m"
+        },
+        {
+          "line": 326,
+          "text": "2026-11-15T02:34:25.4433020Z   HAMMOND_CI_MIDI: ON"
+        },
+        {
+          "line": 327,
+          "text": "2026-11-15T02:34:25.4433500Z   HAMMOND_CI_MIDI_BACKEND: CoreMIDI"
+        },
+        {
+          "line": 337,
+          "text": "2026-11-15T02:34:27.0428950Z Apple clang version 17.0.0 (clang-1700.0.13.5)"
+        },
+        {
+          "line": 338,
+          "text": "2026-11-15T02:34:27.0429840Z Target: arm64-apple-darwin24.6.0"
+        },
+        {
+          "line": 339,
+          "text": "2026-11-15T02:34:27.0430240Z Thread model: posix"
+        },
+        {
+          "line": 340,
+          "text": "2026-11-15T02:34:27.0430860Z InstalledDir: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
+        },
+        {
+          "line": 341,
+          "text": "2026-11-15T02:34:27.5747240Z Apple clang version 17.0.0 (clang-1700.0.13.5)"
+        },
+        {
+          "line": 342,
+          "text": "2026-11-15T02:34:27.5747870Z Target: arm64-apple-darwin24.6.0"
+        },
+        {
+          "line": 343,
+          "text": "2026-11-15T02:34:27.5748230Z Thread model: posix"
+        },
+        {
+          "line": 344,
+          "text": "2026-11-15T02:34:27.5748780Z InstalledDir: /Applications/Xcode_16.4.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin"
+        },
+        {
+          "line": 345,
+          "text": "2026-11-15T02:34:28.1351650Z -- The CXX compiler identification is AppleClang 17.0.0.17000013"
+        },
+        {
+          "line": 355,
+          "text": "2026-11-15T02:34:30.6236550Z -- Pinned RtMidi verified: {\"commit\": \"1e5b49925aa60065db52de44c366d446a902547b\", \"manifest_sha256\": \"481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae\", \"network_used\": false, \"patch_sha256\": \"80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad\", \"prepared_copy_reused\": false, \"prepared_cpp_sha256\": \"240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a\", \"prepared_root\": \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/hammond_rtmidi-prepared\", \"primary_licenses_verified\": 1, \"repository\": \"https://github.com/thestk/rtmidi.git\", \"rtmidi_root\": \"/Users/runner/work/_temp/hammond-rtmidi\", \"schema_version\": 1, \"source_files_verified\": 2, \"tag\": \"6.0.0\", \"version\": \"6.0.0\"}"
+        },
+        {
+          "line": 356,
+          "text": "2026-11-15T02:34:30.6239370Z "
+        },
+        {
+          "line": 357,
+          "text": "2026-11-15T02:34:30.6239660Z -- Optional RtMidi backend: CoreMIDI (prepared static source)"
+        },
+        {
+          "line": 358,
+          "text": "2026-11-15T02:34:31.1867120Z -- Pinned SDL2 verified: {\"commit\": \"5d249570393f7a37e037abf22cd6012a4cc56a71\", \"network_used\": false, \"primary_licenses_verified\": 1, \"repository\": \"https://github.com/libsdl-org/SDL.git\", \"schema_version\": 1, \"sdl2_root\": \"/Users/runner/work/_temp/hammond-sdl2\", \"tag\": \"release-2.32.10\", \"version\": \"2.32.10\"}"
+        },
+        {
+          "line": 897,
+          "text": "2026-11-15T02:35:15.0291520Z \u001b[36;1mexpected_id = {\"Linux\": \"GNU\", \"macOS\": \"AppleClang\", \"Windows\": \"MSVC\"}[os.environ[\"RUNNER_OS\"]]\u001b[0m"
+        },
+        {
+          "line": 898,
+          "text": "2026-11-15T02:35:15.0292070Z \u001b[36;1massert all(value[\"compiler_id\"] == expected_id for value in toolchain.values()), toolchain\u001b[0m"
+        },
+        {
+          "line": 899,
+          "text": "2026-11-15T02:35:15.0292560Z \u001b[36;1mconfig = build / \"_sdl2/include-config-release/SDL2/SDL_config.h\"\u001b[0m"
+        },
+        {
+          "line": 900,
+          "text": "2026-11-15T02:35:15.0292950Z \u001b[36;1mshutil.copyfile(config, logs / \"SDL_config-Release.h\")\u001b[0m"
+        },
+        {
+          "line": 901,
+          "text": "2026-11-15T02:35:15.0293460Z \u001b[36;1mmacros = dict(re.findall(r\"^#define (SDL_(?:AUDIO|VIDEO)_DRIVER_\\w+)\\s+([^\\r\\n]+)\", config.read_text(), re.M))\u001b[0m"
+        },
+        {
+          "line": 902,
+          "text": "2026-11-15T02:35:15.0293860Z \u001b[36;1mrequired = {\u001b[0m"
+        },
+        {
+          "line": 903,
+          "text": "2026-11-15T02:35:15.0294190Z \u001b[36;1m    \"Linux\": [\"SDL_VIDEO_DRIVER_X11\", \"SDL_AUDIO_DRIVER_ALSA\", \"SDL_AUDIO_DRIVER_PULSEAUDIO\"],\u001b[0m"
+        },
+        {
+          "line": 904,
+          "text": "2026-11-15T02:35:15.0294650Z \u001b[36;1m    \"macOS\": [\"SDL_VIDEO_DRIVER_COCOA\", \"SDL_AUDIO_DRIVER_COREAUDIO\"],\u001b[0m"
+        },
+        {
+          "line": 905,
+          "text": "2026-11-15T02:35:15.0295040Z \u001b[36;1m    \"Windows\": [\"SDL_VIDEO_DRIVER_WINDOWS\", \"SDL_AUDIO_DRIVER_WASAPI\"],\u001b[0m"
+        },
+        {
+          "line": 906,
+          "text": "2026-11-15T02:35:15.0295500Z \u001b[36;1m}[os.environ[\"RUNNER_OS\"]] + [\"SDL_VIDEO_DRIVER_DUMMY\", \"SDL_AUDIO_DRIVER_DUMMY\"]\u001b[0m"
+        },
+        {
+          "line": 907,
+          "text": "2026-11-15T02:35:15.0296510Z \u001b[36;1mbackends = {\"required\": required, \"compiled_macros\": macros,\u001b[0m"
+        },
+        {
+          "line": 908,
+          "text": "2026-11-15T02:35:15.0297030Z \u001b[36;1m            \"config_sha256\": hashlib.sha256(config.read_bytes()).hexdigest()}\u001b[0m"
+        },
+        {
+          "line": 909,
+          "text": "2026-11-15T02:35:15.0297580Z \u001b[36;1m(logs / \"sdl-backends.json\").write_text(json.dumps(backends, sort_keys=True, indent=2) + \"\\n\")\u001b[0m"
+        },
+        {
+          "line": 910,
+          "text": "2026-11-15T02:35:15.0298110Z \u001b[36;1mprovenance.update(toolchain=toolchain, sdl_backends=backends)\u001b[0m"
+        },
+        {
+          "line": 911,
+          "text": "2026-11-15T02:35:15.0298680Z \u001b[36;1mprovenance_path.write_text(json.dumps(provenance, sort_keys=True, indent=2) + \"\\n\", encoding=\"utf-8\")\u001b[0m"
+        },
+        {
+          "line": 912,
+          "text": "2026-11-15T02:35:15.0299340Z \u001b[36;1mmissing = [name for name in required if macros.get(name, \"\").strip() != \"1\"]\u001b[0m"
+        },
+        {
+          "line": 913,
+          "text": "2026-11-15T02:35:15.0300210Z \u001b[36;1massert not missing, \"SDL2 did not compile required backends: \" + \", \".join(missing)\u001b[0m"
+        },
+        {
+          "line": 978,
+          "text": "2026-11-15T02:35:15.5170840Z cd /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone && /usr/bin/clang++ -D__MACOSX_CORE__ -F/Applications/Xcode_16.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -isystem /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/hammond_rtmidi-prepared -O3 -DNDEBUG -arch arm64 -fPIC -MD -MT apps/standalone/CMakeFiles/hammond_rtmidi.dir/hammond_rtmidi-prepared/RtMidi.cpp.o -MF CMakeFiles/hammond_rtmidi.dir/hammond_rtmidi-prepared/RtMidi.cpp.o.d -o CMakeFiles/hammond_rtmidi.dir/hammond_rtmidi-prepared/RtMidi.cpp.o -c /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/hammond_rtmidi-prepared/RtMidi.cpp"
+        },
+        {
+          "line": 2310,
+          "text": "2026-11-15T02:36:44.7942560Z {\"commit\": \"1e5b49925aa60065db52de44c366d446a902547b\", \"manifest_sha256\": \"481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae\", \"network_used\": false, \"patch_sha256\": \"80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad\", \"prepared_copy_reused\": true, \"prepared_cpp_sha256\": \"240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a\", \"prepared_root\": \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/hammond_rtmidi-prepared\", \"primary_licenses_verified\": 1, \"repository\": \"https://github.com/thestk/rtmidi.git\", \"rtmidi_root\": \"/Users/runner/work/_temp/hammond-rtmidi\", \"schema_version\": 1, \"source_files_verified\": 2, \"tag\": \"6.0.0\", \"version\": \"6.0.0\"}"
+        },
+        {
+          "line": 2337,
+          "text": "2026-11-15T02:36:44.8570610Z \u001b[36;1mctest --test-dir build-standalone -C Release -V --parallel 1 \\\u001b[0m"
+        },
+        {
+          "line": 2338,
+          "text": "2026-11-15T02:36:44.8571060Z \u001b[36;1m  --no-tests=error --timeout 180 -R '^test_standalone_' \\\u001b[0m"
+        },
+        {
+          "line": 2339,
+          "text": "2026-11-15T02:36:44.8571440Z \u001b[36;1m  --output-junit \"$GITHUB_WORKSPACE/standalone-ci-logs/ctest.xml\" \\\u001b[0m"
+        },
+        {
+          "line": 2340,
+          "text": "2026-11-15T02:36:44.8571790Z \u001b[36;1m  2>&1 | tee standalone-ci-logs/ctest.log\u001b[0m"
+        },
+        {
+          "line": 2351,
+          "text": "2026-11-15T02:36:44.8612770Z   SDL_AUDIODRIVER: dummy"
+        },
+        {
+          "line": 2352,
+          "text": "2026-11-15T02:36:44.8612950Z   SDL_VIDEODRIVER: dummy"
+        },
+        {
+          "line": 2353,
+          "text": "2026-11-15T02:36:44.8613140Z ##[endgroup]"
+        },
+        {
+          "line": 2354,
+          "text": "2026-11-15T02:36:44.9896570Z Discovered 48 standalone tests, including required MIDI, calibration, workspace, inspection and product drawing gates."
+        },
+        {
+          "line": 2377,
+          "text": "2026-11-15T02:36:45.0029760Z 131:  HAMMOND_INSTALL_DATADIR=share"
+        },
+        {
+          "line": 2378,
+          "text": "2026-11-15T02:36:45.0030030Z 131:  HAMMOND_TEST_ENABLE_MIDI=1"
+        },
+        {
+          "line": 2379,
+          "text": "2026-11-15T02:36:45.0030560Z 131:  HAMMOND_STANDALONE_CAPABILITIES=/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/generated/standalone-capabilities.json"
+        },
+        {
+          "line": 2380,
+          "text": "2026-11-15T02:36:45.0031410Z 131:  HAMMOND_RTMIDI_PREPARED_ROOT=/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/hammond_rtmidi-prepared"
+        },
+        {
+          "line": 2381,
+          "text": "2026-11-15T02:36:45.0031940Z 131:  HAMMOND_RTMIDI_BACKEND=CoreMIDI"
+        },
+        {
+          "line": 2382,
+          "text": "2026-11-15T02:36:45.0032160Z 131: Test timeout computed to be: 90"
+        },
+        {
+          "line": 2383,
+          "text": "2026-11-15T02:36:54.4969250Z 131: ........"
+        },
+        {
+          "line": 2384,
+          "text": "2026-11-15T02:36:54.4970150Z 131: ----------------------------------------------------------------------"
+        },
+        {
+          "line": 2385,
+          "text": "2026-11-15T02:36:54.4970800Z 131: Ran 8 tests in 9.405s"
+        },
+        {
+          "line": 2386,
+          "text": "2026-11-15T02:36:54.4971160Z 131: "
+        },
+        {
+          "line": 2387,
+          "text": "2026-11-15T02:36:54.4971350Z 131: OK"
+        },
+        {
+          "line": 2388,
+          "text": "2026-11-15T02:36:54.5007580Z 131: {\"binary_sha256\": \"1cf70c4169b8bf7c9ae7431947cbc7481336da54a61fcab994a129efab10bbfa\", \"font_license_sha256\": \"22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6\", \"midi_backend\": \"CoreMIDI\", \"midi_enabled\": true, \"payload_files\": 20, \"relocated_smoke\": {\"application\": \"hammond_standalone\", \"audio\": {\"buffer_bytes\": 4096, \"buffer_frames\": 512, \"callback_count\": 50, \"channels\": 2, \"device_name\": \"Default output\", \"driver\": \"dummy\", \"format_failures\": 0, \"last_lifecycle_status\": \"ok\", \"last_render_status\": \"ok\", \"native_float32_format\": 33056, \"nonfinite_failures\": 0, \"nonfinite_samples\": 0, \"open_before_shutdown\": true, \"overrange_failures\": 0, \"overrange_samples\": 0, \"render_failures\": 0, \"rendered_frames\": 25600, \"requested_buffer_frames\": 512, \"requested_device\": \"\", \"requested_sample_rate\": 48000, \"running_before_shutdown\": true, \"sample_format\": 33056, \"sample_rate\": 48000}, \"controls\": {\"expression\": 1, \"fixed_registrations\": [0, 0], \"manual_drawbars\": [[[0, 0, 0, 0, 0, 0, 0, 0, 0], [8, 8, 8, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 8, 0, 0, 0, 0, 0, 0]]], \"pedal_drawbars\": [8, 0], \"percussion\": {\"decay\": 0, \"enabled\": false, \"harmonic\": 0, \"volume\": 0}, \"preset_selections\": [11, 11], \"route_enabled\": [true, true], \"selected_banks\": [1, 1]}, \"errors\": {\"count\": 0, \"last\": \"\"}, \"midi\": {\"active_after_shutdown\": false, \"active_before_shutdown\": false, \"arrival_time_is_sample_time\": false, \"arrival_time_source\": \"none\", \"arrival_time_unit\": \"steady_clock_nanoseconds\", \"backend\": \"CoreMIDI\", \"backend_available\": true, \"channels\": {\"lower\": 2, \"pedals\": 3, \"upper\": 1}, \"decoder\": {\"actions\": 0, \"epochs\": 0, \"inactive\": 0, \"malformed\": 0, \"out_of_range\": 0, \"packets\": 0, \"timestamp_regressions\": 0, \"unmapped_channels\": 0, \"unsupported\": 0}, \"device\": {\"admission_failures\": 0, \"backend_errors\": 0, \"callback_contentions\": 0, \"callback_messages\": 0, \"close_errors\": 0, \"disconnects\": 0, \"filtered_messages\": 0, \"forwarded_messages\": 0, \"last_arrival_ns\": 0}, \"diagnostics_stable_after_shutdown\": true, \"discovery\": {\"completed\": 0, \"discarded_results\": 0, \"failures\": 0, \"pending_after_shutdown\": false, \"pending_before_shutdown\": false, \"requests\": 0, \"shutdown_join_performed\": false, \"started\": 0}, \"drain_budget\": 32, \"expression_calibration\": {\"active\": null, \"configured\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"model\": \"midi-expression-endpoints-v1\", \"pending\": null, \"pre_shutdown_active\": null, \"reconnect_pending\": false, \"release_pending\": false, \"selected\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"selected_valid\": true}, \"fault_retirements\": 0, \"generation\": 0, \"inbox\": {\"accepted_packets\": 0, \"capacity\": 256, \"discarded_packets\": 0, \"fault_bits\": 0, \"faulted_packets\": 0, \"invalid_size_packets\": 0, \"overflow_events\": 0, \"pending_packets\": 0, \"popped_packets\": 0, \"received_packets\": 0, \"resets\": 0}, \"last_submit_status\": \"ok\", \"maximum_drained_per_turn\": 0, \"open_failures\": 0, \"opened_port_index\": 0, \"parameter_messages\": 0, \"port_name\": \"\", \"quiescent_after_shutdown\": true, \"release_batches\": 0, \"release_commands_accepted\": 0, \"release_pending\": false, \"release_sequence\": 0, \"requested_port\": \"\", \"retired_fault_bits\": 0, \"retirements\": 0, \"session_recoveries_observed\": 0, \"shutdown_failed\": false, \"source\": \"none\", \"startup_failed\": false, \"state_after_shutdown\": \"closed\", \"state_before_shutdown\": \"closed\", \"status\": \"No MIDI input selected.\", \"submit_failures\": 0, \"timing_policy\": \"arrival_order_next_callback_boundary\"}, \"presentation\": {\"before_shutdown\": {\"elapsed_ms\": 618, \"expression_calibration\": {\"active\": null, \"configured\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"model\": \"midi-expression-endpoints-v1\", \"pending\": null, \"reconnect_pending\": false, \"release_pending\": false, \"selected\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"selected_valid\": true}, \"held_targets\": {\"lower\": 0, \"pedals\": 0, \"upper\": 0}, \"inspection\": {\"controls_pending\": false, \"frame_clock\": 25088, \"publication_revision\": 102, \"snapshot_available\": true, \"snapshot_read_succeeded\": true, \"snapshot_state\": \"current\"}, \"modal_focus\": 0, \"overlay\": \"none\", \"pointer_capture\": {\"attempts\": 0, \"losses\": 0, \"release_calls\": 0, \"sdl_captured\": false, \"successes\": 0, \"ui_captured\": false}, \"presentation\": \"dimensional\", \"rendered_image\": 22, \"window_height\": 700, \"window_width\": 960, \"workspace\": \"play\"}, \"initial_presentation\": \"dimensional\", \"initial_workspace\": \"play\", \"last_painted\": {\"elapsed_ms\": 618, \"expression_calibration\": {\"active\": null, \"configured\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"model\": \"midi-expression-endpoints-v1\", \"pending\": null, \"reconnect_pending\": false, \"release_pending\": false, \"selected\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"selected_valid\": true}, \"held_targets\": {\"lower\": 0, \"pedals\": 0, \"upper\": 0}, \"inspection\": {\"controls_pending\": false, \"frame_clock\": 25088, \"publication_revision\": 102, \"snapshot_available\": true, \"snapshot_read_succeeded\": true, \"snapshot_state\": \"current\"}, \"modal_focus\": 0, \"overlay\": \"none\", \"pointer_capture\": {\"attempts\": 0, \"losses\": 0, \"release_calls\": 0, \"sdl_captured\": false, \"successes\": 0, \"ui_captured\": false}, \"presentation\": \"dimensional\", \"rendered_image\": 22, \"window_height\": 700, \"window_width\": 960, \"workspace\": \"play\"}, \"observation_capacity\": 512, \"observations\": [{\"elapsed_ms\": 0, \"expression_calibration\": {\"active\": null, \"configured\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"model\": \"midi-expression-endpoints-v1\", \"pending\": null, \"reconnect_pending\": false, \"release_pending\": false, \"selected\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"selected_valid\": true}, \"held_targets\": {\"lower\": 0, \"pedals\": 0, \"upper\": 0}, \"inspection\": {\"controls_pending\": true, \"frame_clock\": 0, \"publication_revision\": 4, \"snapshot_available\": true, \"snapshot_read_succeeded\": true, \"snapshot_state\": \"current\"}, \"modal_focus\": 0, \"overlay\": \"none\", \"pointer_capture\": {\"attempts\": 0, \"losses\": 0, \"release_calls\": 0, \"sdl_captured\": false, \"successes\": 0, \"ui_captured\": false}, \"presentation\": \"dimensional\", \"rendered_image\": 1, \"window_height\": 700, \"window_width\": 960, \"workspace\": \"play\"}, {\"elapsed_ms\": 32, \"expression_calibration\": {\"active\": null, \"configured\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"model\": \"midi-expression-endpoints-v1\", \"pending\": null, \"reconnect_pending\": false, \"release_pending\": false, \"selected\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"selected_valid\": true}, \"held_targets\": {\"lower\": 0, \"pedals\": 0, \"upper\": 0}, \"inspection\": {\"controls_pending\": false, \"frame_clock\": 1024, \"publication_revision\": 8, \"snapshot_available\": true, \"snapshot_read_succeeded\": true, \"snapshot_state\": \"current\"}, \"modal_focus\": 0, \"overlay\": \"none\", \"pointer_capture\": {\"attempts\": 0, \"losses\": 0, \"release_calls\": 0, \"sdl_captured\": false, \"successes\": 0, \"ui_captured\": false}, \"presentation\": \"dimensional\", \"rendered_image\": 2, \"window_height\": 700, \"window_width\": 960, \"workspace\": \"play\"}, {\"elapsed_ms\": 80, \"expression_calibration\": {\"active\": null, \"configured\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"model\": \"midi-expression-endpoints-v1\", \"pending\": null, \"reconnect_pending\": false, \"release_pending\": false, \"selected\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"selected_valid\": true}, \"held_targets\": {\"lower\": 0, \"pedals\": 0, \"upper\": 1}, \"inspection\": {\"controls_pending\": false, \"frame_clock\": 3072, \"publication_revision\": 16, \"snapshot_available\": true, \"snapshot_read_succeeded\": true, \"snapshot_state\": \"current\"}, \"modal_focus\": 0, \"overlay\": \"none\", \"pointer_capture\": {\"attempts\": 0, \"losses\": 0, \"release_calls\": 0, \"sdl_captured\": false, \"successes\": 0, \"ui_captured\": false}, \"presentation\": \"dimensional\", \"rendered_image\": 4, \"window_height\": 700, \"window_width\": 960, \"workspace\": \"play\"}, {\"elapsed_ms\": 467, \"expression_calibration\": {\"active\": null, \"configured\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"model\": \"midi-expression-endpoints-v1\", \"pending\": null, \"reconnect_pending\": false, \"release_pending\": false, \"selected\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"selected_valid\": true}, \"held_targets\": {\"lower\": 0, \"pedals\": 0, \"upper\": 0}, \"inspection\": {\"controls_pending\": false, \"frame_clock\": 18944, \"publication_revision\": 78, \"snapshot_available\": true, \"snapshot_read_succeeded\": true, \"snapshot_state\": \"current\"}, \"modal_focus\": 0, \"overlay\": \"none\", \"pointer_capture\": {\"attempts\": 0, \"losses\": 0, \"release_calls\": 0, \"sdl_captured\": false, \"successes\": 0, \"ui_captured\": false}, \"presentation\": \"dimensional\", \"rendered_image\": 17, \"window_height\": 700, \"window_width\": 960, \"workspace\": \"play\"}], \"observations_truncated\": false, \"screenshot\": {\"elapsed_ms\": 80, \"expression_calibration\": {\"active\": null, \"configured\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"model\": \"midi-expression-endpoints-v1\", \"pending\": null, \"reconnect_pending\": false, \"release_pending\": false, \"selected\": {\"inverted\": false, \"maximum\": 127, \"minimum\": 0}, \"selected_valid\": true}, \"held_targets\": {\"lower\": 0, \"pedals\": 0, \"upper\": 1}, \"inspection\": {\"controls_pending\": false, \"frame_clock\": 3072, \"publication_revision\": 16, \"snapshot_available\": true, \"snapshot_read_succeeded\": true, \"snapshot_state\": \"current\"}, \"modal_focus\": 0, \"overlay\": \"none\", \"pointer_capture\": {\"attempts\": 0, \"losses\": 0, \"release_calls\": 0, \"sdl_captured\": false, \"successes\": 0, \"ui_captured\": false}, \"presentation\": \"dimensional\", \"rendered_image\": 4, \"window_height\": 700, \"window_width\": 960, \"workspace\": \"play\"}}, \"profile\": {\"authoring_sha256\": \"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\", \"id\": \"nominal-unmeasured-v1\"}, \"runtime\": {\"drawable_height\": 700, \"drawable_width\": 960, \"rendered_images\": 22, \"renderer\": \"software\", \"screenshot_while_held\": true, \"screenshot_written\": true, \"sdl_version\": \"2.32.10\", \"video_driver\": \"dummy\", \"window_height\": 700, \"window_width\": 960}, \"schema_version\": 3, \"session\": {\"discarded_commands\": 1, \"fault_flags\": 0, \"frame_clock\": 25600, \"held_after_shutdown\": false, \"last_applied_sequence\": 7, \"maximum_observed_peak\": 0.08269336074590683, \"prepared\": true, \"publication_revision\": 106, \"queue_overflows\": 0, \"recovery_count\": 0, \"rejected_commands\": 0, \"resolved_sequence\": 8, \"running_after_shutdown\": false, \"sample_rate\": 48000, \"snapshot_available\": true}, \"smoke\": {\"completed\": true, \"duration_ms\": 600, \"held_observed\": true, \"note_off_sent\": true, \"note_on_sent\": true, \"passed\": true, \"release_observed\": true, \"requested\": true}, \"state_path\": \"/private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/hammond standalone install n5ma_6nx/unrelated cwd/absent controls.b3controls\", \"status\": \"Proposed audition registration: Upper B 888000000 / Lower B 008000000 / Pedals 80.\"}, \"sdl_license_sha256\": \"97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127\", \"suite\": \"standalone-install-v2\"}"
+        },
+        {
+          "line": 2389,
+          "text": "2026-11-15T02:36:54.5055350Z  1/48 Test #131: test_standalone_install ...................   Passed    9.50 sec"
+        },
+        {
+          "line": 2430,
+          "text": "2026-11-15T02:36:54.6036410Z 135: standalone expression calibration: endpoints, immutable epochs and reset pipeline passed"
+        },
+        {
+          "line": 2431,
+          "text": "2026-11-15T02:36:54.6050350Z  5/48 Test #135: test_standalone_expression_calibration ....   Passed    0.01 sec"
+        },
+        {
+          "line": 2462,
+          "text": "2026-11-15T02:36:54.9917630Z 139: Standalone MIDI concurrency: 262436 FIFO transfers across 4 epochs; 8 joined fault races; explicit capacity overflow passed."
+        },
+        {
+          "line": 2463,
+          "text": "2026-11-15T02:36:54.9919130Z 139: Observed 281887 pushes, 282175 pops, 279113 decodes, 1026 fault signals: zero C++ allocations/deallocations in every measured operation."
+        },
+        {
+          "line": 2464,
+          "text": "2026-11-15T02:36:54.9920410Z 139: Calibration separately observed all 12 C++ allocation and deallocation overload paths on the main thread and each worker; no physical/backend/timing qualification implied."
+        },
+        {
+          "line": 2663,
+          "text": "2026-11-15T02:36:58.6734920Z 154: PASS ordinary: bounded worker callback during native close"
+        },
+        {
+          "line": 2664,
+          "text": "2026-11-15T02:36:58.6735370Z 154: PASS ordinary: poll scope and no automatic reconnect"
+        },
+        {
+          "line": 2665,
+          "text": "2026-11-15T02:36:58.6735690Z 154: PASS ordinary: ordinary destruction exactly once"
+        },
+        {
+          "line": 2666,
+          "text": "2026-11-15T02:36:58.6736200Z 154: PASS 15 backend groups on CoreMIDI; actual MidiDevice.cpp with fake RtMidi API; no native driver claim"
+        },
+        {
+          "line": 2667,
+          "text": "2026-11-15T02:36:58.6736760Z 24/48 Test #154: test_standalone_midi_backend ..............   Passed    0.01 sec"
+        },
+        {
+          "line": 2673,
+          "text": "2026-11-15T02:36:58.6805060Z 155: Environment variables: "
+        },
+        {
+          "line": 2674,
+          "text": "2026-11-15T02:36:58.6805360Z 155:  ASAN_OPTIONS=detect_leaks=0:halt_on_error=1"
+        },
+        {
+          "line": 2675,
+          "text": "2026-11-15T02:36:58.6805640Z 155: Test timeout computed to be: 30"
+        },
+        {
+          "line": 2676,
+          "text": "2026-11-15T02:36:58.6816180Z 155: PASS quarantine: six failure paths retain context/inbox and refuse reopen"
+        },
+        {
+          "line": 2677,
+          "text": "2026-11-15T02:36:58.6816950Z 155: PASS 1 backend groups on CoreMIDI; actual MidiDevice.cpp with fake RtMidi API; no native driver claim"
+        },
+        {
+          "line": 2678,
+          "text": "2026-11-15T02:36:58.6817700Z 25/48 Test #155: test_standalone_midi_backend_quarantine ...   Passed    0.00 sec"
+        },
+        {
+          "line": 2730,
+          "text": "2026-11-15T02:37:06.2397640Z 161: Working Directory: /Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone"
+        },
+        {
+          "line": 2731,
+          "text": "2026-11-15T02:37:06.2398710Z 161: Test timeout computed to be: 60"
+        },
+        {
+          "line": 2732,
+          "text": "2026-11-15T02:37:10.1930240Z 161: {\"checks\":1293,\"failures\":0,\"frames\":109,\"state_checks\":109,\"clip_frames\":109,\"outside_pixels\":10745908,\"held_keys\":588,\"focused_keys\":24,\"surfaces\":72,\"sloped_corners\":8,\"cut_clips\":4,\"status_frames\":4,\"status_ink_pixels\":10246,\"last_row_ink_pixels\":2048,\"minimum_natural_top_front_srgb_levels\":91.4469,\"minimum_accidental_top_front_srgb_levels\":14.6426,\"overlay_panels\":12,\"overlay_buttons\":60,\"backend\":\"SDL software surface; no window/audio\",\"overlays\":[{\"overlay\":\"Audio\",\"flat\":false,\"scale\":1,\"panel_pixels\":2130,\"panel_nonflat_pixels\":2130,\"button_pixels\":504,\"button_nonflat_pixels\":492,\"rgba_fnv1a64\":\"ec0dbbb1d36ad324\"},{\"overlay\":\"MIDI\",\"flat\":false,\"scale\":1,\"panel_pixels\":3090,\"panel_nonflat_pixels\":3090,\"button_pixels\":726,\"button_nonflat_pixels\":708,\"rgba_fnv1a64\":\"d8949a33a37c8590\"},{\"overlay\":\"Help\",\"flat\":false,\"scale\":1,\"panel_pixels\":2130,\"panel_nonflat_pixels\":2130,\"button_pixels\":72,\"button_nonflat_pixels\":72,\"rgba_fnv1a64\":\"5a0b2c37a422e2e3\"},{\"overlay\":\"Audio\",\"flat\":true,\"scale\":1,\"panel_pixels\":2130,\"panel_nonflat_pixels\":0,\"button_pixels\":504,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"8a179daa33ebe770\"},{\"overlay\":\"MIDI\",\"flat\":true,\"scale\":1,\"panel_pixels\":3090,\"panel_nonflat_pixels\":0,\"button_pixels\":726,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"4682535255564d60\"},{\"overlay\":\"Help\",\"flat\":true,\"scale\":1,\"panel_pixels\":2130,\"panel_nonflat_pixels\":0,\"button_pixels\":72,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"b2cda43aea277ca2\"},{\"overlay\":\"Audio\",\"flat\":false,\"scale\":1.25,\"panel_pixels\":3101,\"panel_nonflat_pixels\":3101,\"button_pixels\":848,\"button_nonflat_pixels\":832,\"rgba_fnv1a64\":\"ea624ba896313047\"},{\"overlay\":\"MIDI\",\"flat\":false,\"scale\":1.25,\"panel_pixels\":4501,\"panel_nonflat_pixels\":4501,\"button_pixels\":1208,\"button_nonflat_pixels\":1184,\"rgba_fnv1a64\":\"19abbbfb74202aba\"},{\"overlay\":\"Help\",\"flat\":false,\"scale\":1.25,\"panel_pixels\":3101,\"panel_nonflat_pixels\":3101,\"button_pixels\":120,\"button_nonflat_pixels\":120,\"rgba_fnv1a64\":\"546d41ea105a004e\"},{\"overlay\":\"Audio\",\"flat\":true,\"scale\":1.25,\"panel_pixels\":3101,\"panel_nonflat_pixels\":0,\"button_pixels\":848,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"eb483e930ac58252\"},{\"overlay\":\"MIDI\",\"flat\":true,\"scale\":1.25,\"panel_pixels\":4501,\"panel_nonflat_pixels\":0,\"button_pixels\":1208,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"9653d1ac2ed9c338\"},{\"overlay\":\"Help\",\"flat\":true,\"scale\":1.25,\"panel_pixels\":3101,\"panel_nonflat_pixels\":0,\"button_pixels\":120,\"button_nonflat_pixels\":0,\"rgba_fnv1a64\":\"c59a24083c09d3af\"}],\"legacy_checks\":901,\"header_checks\":170,\"headers\":[{\"size\":[1400,820],\"scale\":1,\"workspace\":0,\"title\":[466,20,463,33],\"caption\":[514,71,370,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":1,\"workspace\":1,\"title\":[466,20,463,33],\"caption\":[514,71,370,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":1,\"workspace\":2,\"title\":[466,20,463,33],\"caption\":[514,71,370,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":1.25,\"workspace\":0,\"title\":[466.4,20,463.2,32.8],\"caption\":[514.4,71.2,369.6,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":1.25,\"workspace\":1,\"title\":[466.4,20,463.2,32.8],\"caption\":[514.4,71.2,369.6,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":1.25,\"workspace\":2,\"title\":[466.4,20,463.2,32.8],\"caption\":[514.4,71.2,369.6,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":1.5,\"workspace\":0,\"title\":[466,20,464,32.6667],\"caption\":[514,70.6667,370.667,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":1.5,\"workspace\":1,\"title\":[466,20,464,32.6667],\"caption\":[514,70.6667,370.667,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":1.5,\"workspace\":2,\"title\":[466,20,464,32.6667],\"caption\":[514,70.6667,370.667,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":2,\"workspace\":0,\"title\":[466,20,464,33],\"caption\":[514.5,71,370.5,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":2,\"workspace\":1,\"title\":[466,20,464,33],\"caption\":[514.5,71,370.5,12],\"caption_letters\":15},{\"size\":[1400,820],\"scale\":2,\"workspace\":2,\"title\":[466,20,464,33],\"caption\":[514.5,71,370.5,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1,\"workspace\":0,\"title\":[602,20,463,33],\"caption\":[650,71,370,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1,\"workspace\":1,\"title\":[602,20,463,33],\"caption\":[650,71,370,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1,\"workspace\":2,\"title\":[602,20,463,33],\"caption\":[650,71,370,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1.25,\"workspace\":0,\"title\":[602.4,20,463.2,32.8],\"caption\":[650.4,71.2,369.6,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1.25,\"workspace\":1,\"title\":[602.4,20,463.2,32.8],\"caption\":[650.4,71.2,369.6,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1.25,\"workspace\":2,\"title\":[602.4,20,463.2,32.8],\"caption\":[650.4,71.2,369.6,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1.5,\"workspace\":0,\"title\":[602,20,464,32.6667],\"caption\":[650,70.6667,370.667,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1.5,\"workspace\":1,\"title\":[602,20,464,32.6667],\"caption\":[650,70.6667,370.667,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":1.5,\"workspace\":2,\"title\":[602,20,464,32.6667],\"caption\":[650,70.6667,370.667,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":2,\"workspace\":0,\"title\":[602,20,464,33],\"caption\":[650.5,71,370.5,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":2,\"workspace\":1,\"title\":[602,20,464,33],\"caption\":[650.5,71,370.5,12],\"caption_letters\":15},{\"size\":[1672,941],\"scale\":2,\"workspace\":2,\"title\":[602,20,464,33],\"caption\":[650.5,71,370.5,12],\"caption_letters\":15}],\"calibration_modal\":{\"checks\":222,\"scenes\":4,\"frames\":21,\"controls\":44,\"literal_glyph_regions\":96,\"changed_values\":12,\"focused_controls\":8,\"invalid_frames\":2,\"long_text_frames\":2,\"clipped_frames\":1,\"intersected_glyphs\":38,\"resampled_pixels\":212,\"unexplained_pixels\":0,\"literal_mismatches\":0,\"cut_glyphs\":[{\"line\":2,\"character\":0,\"ascii\":69,\"physical_rect\":[481,464,6,9],\"changed_pixels\":0},{\"line\":2,\"character\":1,\"ascii\":88,\"physical_rect\":[489,464,8,9],\"changed_pixels\":8},{\"line\":2,\"character\":2,\"ascii\":80,\"physical_rect\":[499,464,6,9],\"changed_pixels\":0},{\"line\":2,\"character\":3,\"ascii\":82,\"physical_rect\":[508,464,8,9],\"changed_pixels\":2},{\"line\":2,\"character\":4,\"ascii\":69,\"physical_rect\":[517,464,6,9],\"changed_pixels\":0},{\"line\":2,\"character\":5,\"ascii\":83,\"physical_rect\":[525,464,7,9],\"changed_pixels\":11},{\"line\":2,\"character\":6,\"ascii\":83,\"physical_rect\":[534,464,7,9],\"changed_pixels\":11},{\"line\":2,\"character\":7,\"ascii\":73,\"physical_rect\":[543,464,1,9],\"changed_pixels\":0},{\"line\":2,\"character\":8,\"ascii\":79,\"physical_rect\":[546,464,9,9],\"changed_pixels\":10},{\"line\":2,\"character\":9,\"ascii\":78,\"physical_rect\":[557,464,7,9],\"changed_pixels\":3},{\"line\":2,\"character\":11,\"ascii\":77,\"physical_rect\":[572,464,9,9],\"changed_pixels\":3},{\"line\":2,\"character\":12,\"ascii\":65,\"physical_rect\":[583,464,9,9],\"changed_pixels\":8},{\"line\":2,\"character\":13,\"ascii\":88,\"physical_rect\":[593,464,8,9],\"changed_pixels\":8},{\"line\":4,\"character\":0,\"ascii\":69,\"physical_rect\":[776,464,6,9],\"changed_pixels\":0},{\"line\":4,\"character\":1,\"ascii\":88,\"physical_rect\":[784,464,8,9],\"changed_pixels\":8},{\"line\":4,\"character\":2,\"ascii\":80,\"physical_rect\":[794,464,6,9],\"changed_pixels\":0},{\"line\":4,\"character\":3,\"ascii\":82,\"physical_rect\":[803,464,8,9],\"changed_pixels\":2},{\"line\":4,\"character\":4,\"ascii\":69,\"physical_rect\":[812,464,6,9],\"changed_pixels\":0},{\"line\":4,\"character\":5,\"ascii\":83,\"physical_rect\":[820,464,7,9],\"changed_pixels\":11},{\"line\":4,\"character\":6,\"ascii\":83,\"physical_rect\":[829,464,7,9],\"changed_pixels\":11},{\"line\":4,\"character\":7,\"ascii\":73,\"physical_rect\":[838,464,1,9],\"changed_pixels\":0},{\"line\":4,\"character\":8,\"ascii\":79,\"physical_rect\":[841,464,9,9],\"changed_pixels\":10},{\"line\":4,\"character\":9,\"ascii\":78,\"physical_rect\":[852,464,7,9],\"changed_pixels\":3},{\"line\":4,\"character\":11,\"ascii\":68,\"physical_rect\":[867,464,8,9],\"changed_pixels\":8},{\"line\":4,\"character\":12,\"ascii\":73,\"physical_rect\":[878,464,1,9],\"changed_pixels\":0},{\"line\":4,\"character\":13,\"ascii\":82,\"physical_rect\":[882,464,8,9],\"changed_pixels\":2},{\"line\":4,\"character\":14,\"ascii\":69,\"physical_rect\":[891,464,6,9],\"changed_pixels\":0},{\"line\":4,\"character\":15,\"ascii\":67,\"physical_rect\":[899,464,8,9],\"changed_pixels\":13},{\"line\":4,\"character\":16,\"ascii\":84,\"physical_rect\":[907,464,9,9],\"changed_pixels\":0},{\"line\":4,\"character\":17,\"ascii\":73,\"physical_rect\":[918,464,1,9],\"changed_pixels\":0},{\"line\":4,\"character\":18,\"ascii\":79,\"physical_rect\":[921,464,9,9],\"changed_pixels\":10},{\"line\":4,\"character\":19,\"ascii\":78,\"physical_rect\":[932,464,7,9],\"changed_pixels\":3},{\"line\":6,\"character\":14,\"ascii\":84,\"physical_rect\":[312,624,9,9],\"changed_pixels\":0},{\"line\":7,\"character\":19,\"ascii\":110,\"physical_rect\":[315,556,6,7],\"changed_pixels\":0},{\"line\":8,\"character\":12,\"ascii\":69,\"physical_rect\":[313,599,7,10],\"changed_pixels\":5},{\"line\":9,\"character\":15,\"ascii\":97,\"physical_rect\":[313,652,7,8],\"changed_pixels\":14},{\"line\":10,\"character\":4,\"ascii\":89,\"physical_rect\":[315,729,8,9],\"changed_pixels\":22},{\"line\":12,\"character\":18,\"ascii\":100,\"physical_rect\":[315,774,7,10],\"changed_pixels\":26}]}}"
+        },
+        {
+          "line": 2733,
+          "text": "2026-11-15T02:37:10.1954370Z 31/48 Test #161: test_standalone_material_acceptance .......   Passed    3.96 sec"
+        },
+        {
+          "line": 2748,
+          "text": "2026-11-15T02:37:27.9805510Z 163: {\"schema_version\":1,\"checks\":12952,\"failures\":0,\"cases\":76,\"frames\":148,\"cap_measurements\":1296,\"literal_glyphs\":8717,\"strong_text_pixels\":367154,\"compared_pairs\":0,\"compared_pixels\":0,\"changed_pixels\":0,\"rack_changes\":0,\"idle_top_changes\":0,\"escaped_pixels\":0,\"byte_identical_pairs\":0,\"clipped_cases\":4,\"pending_cases\":42,\"focused_cases\":76,\"changed_idle_keys\":0,\"readout_shadow_leaks\":0,\"backend\":\"SDL software surface; fixed copied state; no audio/window\"}"
+        },
+        {
+          "line": 2749,
+          "text": "2026-11-15T02:37:28.0214180Z 33/48 Test #163: test_standalone_product_visual ............   Passed   13.22 sec"
+        },
+        {
+          "line": 2886,
+          "text": "2026-11-15T02:37:58.6592240Z 168: Calibrated standalone callback allocation: 18 workload observations, 48 real SDL dummy callbacks, 1152 positive calibration allocations and frees, 1070 main-thread posts, 131 main-thread snapshot reads; production regions C++ new=0/delete=0."
+        },
+        {
+          "line": 2887,
+          "text": "2026-11-15T02:37:58.6628220Z 168: Scope excludes C/system allocation, locks, deadlines, physical devices, and other platforms."
+        },
+        {
+          "line": 2888,
+          "text": "2026-11-15T02:37:58.6630100Z 38/48 Test #168: test_standalone_callback_allocation .......   Passed    1.09 sec"
+        },
+        {
+          "line": 2974,
+          "text": "2026-11-15T02:38:39.8353900Z 171: Ran 4 tests in 2.920s"
+        },
+        {
+          "line": 2975,
+          "text": "2026-11-15T02:38:39.8354190Z 171: "
+        },
+        {
+          "line": 2976,
+          "text": "2026-11-15T02:38:39.8354860Z 171: OK"
+        },
+        {
+          "line": 2977,
+          "text": "2026-11-15T02:38:39.8355520Z 41/48 Test #171: test_standalone_expression_diagnostics ....   Passed    3.16 sec"
+        },
+        {
+          "line": 2984,
+          "text": "2026-11-15T02:38:40.0000880Z 172: Native calibration fixture SHA-256: c5c646d83507f49353247169c0ed176f5ca097c2a51fe52d3636236e91ef9384"
+        },
+        {
+          "line": 2985,
+          "text": "2026-11-15T02:38:42.7213890Z 172: test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11) ... ok"
+        },
+        {
+          "line": 2986,
+          "text": "2026-11-15T02:38:45.1010240Z 172: test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration) ... ok"
+        },
+        {
+          "line": 2987,
+          "text": "2026-11-15T02:38:47.6324410Z 172: test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel) ... ok"
+        },
+        {
+          "line": 2988,
+          "text": "2026-11-15T02:38:51.0599850Z 172: test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry) ... ok"
+        },
+        {
+          "line": 2989,
+          "text": "2026-11-15T02:38:51.0719370Z 172: test_fixture_inventory_calibrates_real_enumeration_without_audio (__main__.NativeCalibrationLifecycle.test_fixture_inventory_calibrates_real_enumeration_without_audio) ... ok"
+        },
+        {
+          "line": 2990,
+          "text": "2026-11-15T02:38:51.1001720Z 172: test_fixture_rejects_missing_or_unknown_scenario_before_app_entry (__main__.NativeCalibrationLifecycle.test_fixture_rejects_missing_or_unknown_scenario_before_app_entry) ... ok"
+        },
+        {
+          "line": 2991,
+          "text": "2026-11-15T02:38:53.4427550Z 172: test_healthy_identical_apply_preserves_epoch_notes_and_expression (__main__.NativeCalibrationLifecycle.test_healthy_identical_apply_preserves_epoch_notes_and_expression) ... ok"
+        },
+        {
+          "line": 2992,
+          "text": "2026-11-15T02:38:56.7523060Z 172: test_native_fault_retires_midi_owners_while_original_ui_owner_survives (__main__.NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives) ... ok"
+        },
+        {
+          "line": 2993,
+          "text": "2026-11-15T02:39:00.4168470Z 172: test_no_input_apply_retains_calibration_without_touching_expression (__main__.NativeCalibrationLifecycle.test_no_input_apply_retains_calibration_without_touching_expression) ... ok"
+        },
+        {
+          "line": 2994,
+          "text": "2026-11-15T02:39:00.4202620Z 172: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+        },
+        {
+          "line": 2995,
+          "text": "2026-11-15T02:39:00.4239450Z 172: "
+        },
+        {
+          "line": 2996,
+          "text": "2026-11-15T02:39:00.4292390Z 172: ----------------------------------------------------------------------"
+        },
+        {
+          "line": 2997,
+          "text": "2026-11-15T02:39:00.4304940Z 172: Ran 9 tests in 20.426s"
+        },
+        {
+          "line": 2998,
+          "text": "2026-11-15T02:39:00.4323540Z 172: "
+        },
+        {
+          "line": 2999,
+          "text": "2026-11-15T02:39:00.4353870Z 172: OK"
+        },
+        {
+          "line": 3000,
+          "text": "2026-11-15T02:39:00.4414560Z 42/48 Test #172: test_standalone_native_calibration ........   Passed   20.61 sec"
+        },
+        {
+          "line": 3176,
+          "text": "2026-11-15T02:41:57.6979250Z 100% tests passed out of 48"
+        },
+        {
+          "line": 3191,
+          "text": "2026-11-15T02:41:57.6999190Z Total Test time (real) = 312.67 sec"
+        },
+        {
+          "line": 3192,
+          "text": "2026-11-15T02:41:57.7179620Z ##[group]Run set -euo pipefail"
+        },
+        {
+          "line": 3193,
+          "text": "2026-11-15T02:41:57.7180010Z \u001b[36;1mset -euo pipefail\u001b[0m"
+        },
+        {
+          "line": 3194,
+          "text": "2026-11-15T02:41:57.7180290Z \u001b[36;1mgit diff --exit-code --quiet HEAD --\u001b[0m"
+        },
+        {
+          "line": 3195,
+          "text": "2026-11-15T02:41:57.7180820Z \u001b[36;1mpython tools/acquire_sdl2.py --verify-existing \"$RUNNER_TEMP/hammond-sdl2\" \\\u001b[0m"
+        },
+        {
+          "line": 3196,
+          "text": "2026-11-15T02:41:57.7181360Z \u001b[36;1m  2>&1 | tee standalone-ci-logs/sdl-final-verification.log\u001b[0m"
+        },
+        {
+          "line": 3197,
+          "text": "2026-11-15T02:41:57.7181750Z \u001b[36;1mif [[ \"$HAMMOND_CI_MIDI\" == \"ON\" ]]; then\u001b[0m"
+        },
+        {
+          "line": 3198,
+          "text": "2026-11-15T02:41:57.7182230Z \u001b[36;1m  python tools/acquire_rtmidi.py --verify-existing \"$RUNNER_TEMP/hammond-rtmidi\" \\\u001b[0m"
+        },
+        {
+          "line": 3199,
+          "text": "2026-11-15T02:41:57.7182800Z \u001b[36;1m    --prepare-build-copy build-standalone/apps/standalone/hammond_rtmidi-prepared \\\u001b[0m"
+        },
+        {
+          "line": 3200,
+          "text": "2026-11-15T02:41:57.7183420Z \u001b[36;1m    2>&1 | tee standalone-ci-logs/rtmidi-final-verification.log\u001b[0m"
+        },
+        {
+          "line": 3201,
+          "text": "2026-11-15T02:41:57.7183790Z \u001b[36;1mfi\u001b[0m"
+        },
+        {
+          "line": 3213,
+          "text": "2026-11-15T02:41:59.7810220Z {\"commit\": \"5d249570393f7a37e037abf22cd6012a4cc56a71\", \"network_used\": false, \"primary_licenses_verified\": 1, \"repository\": \"https://github.com/libsdl-org/SDL.git\", \"schema_version\": 1, \"sdl2_root\": \"/Users/runner/work/_temp/hammond-sdl2\", \"tag\": \"release-2.32.10\", \"version\": \"2.32.10\"}"
+        },
+        {
+          "line": 3214,
+          "text": "2026-11-15T02:42:00.0183360Z {\"commit\": \"1e5b49925aa60065db52de44c366d446a902547b\", \"manifest_sha256\": \"481095a20040ffe8c824200b3b20663ebc4c392f1fc535ead7f6e679f3a5b2ae\", \"network_used\": false, \"patch_sha256\": \"80aedddee9affe1c9ab305b605c6ca1f5c2209fd5d23da843c8c3f325426c4ad\", \"prepared_copy_reused\": true, \"prepared_cpp_sha256\": \"240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a\", \"prepared_root\": \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/apps/standalone/hammond_rtmidi-prepared\", \"primary_licenses_verified\": 1, \"repository\": \"https://github.com/thestk/rtmidi.git\", \"rtmidi_root\": \"/Users/runner/work/_temp/hammond-rtmidi\", \"schema_version\": 1, \"source_files_verified\": 2, \"tag\": \"6.0.0\", \"version\": \"6.0.0\"}"
+        },
+        {
+          "line": 3232,
+          "text": "2026-11-15T02:42:00.0634120Z \u001b[36;1menabled = os.environ[\"HAMMOND_CI_MIDI\"] == \"ON\"\u001b[0m"
+        },
+        {
+          "line": 3233,
+          "text": "2026-11-15T02:42:00.0634570Z \u001b[36;1mcapability_path = repo / \"build-standalone/generated/standalone-capabilities.json\"\u001b[0m"
+        },
+        {
+          "line": 3234,
+          "text": "2026-11-15T02:42:00.0635100Z \u001b[36;1mcapability = json.loads(capability_path.read_text(encoding=\"utf-8\"))\u001b[0m"
+        },
+        {
+          "line": 3235,
+          "text": "2026-11-15T02:42:00.0635480Z \u001b[36;1massert capability[\"midi\"][\"enabled\"] is enabled\u001b[0m"
+        },
+        {
+          "line": 3236,
+          "text": "2026-11-15T02:42:00.0635870Z \u001b[36;1massert capability[\"midi\"][\"backend\"] == os.environ[\"HAMMOND_CI_MIDI_BACKEND\"]\u001b[0m"
+        },
+        {
+          "line": 3237,
+          "text": "2026-11-15T02:42:00.0636300Z \u001b[36;1mmetadata = \"share/hammond-b3-organ/standalone/\"\u001b[0m"
+        },
+        {
+          "line": 3238,
+          "text": "2026-11-15T02:42:00.0636580Z \u001b[36;1mexpected = {\u001b[0m"
+        },
+        {
+          "line": 3239,
+          "text": "2026-11-15T02:42:00.0636790Z \u001b[36;1m    \"bin/\" + executable: build_binary,\u001b[0m"
+        },
+        {
+          "line": 3240,
+          "text": "2026-11-15T02:42:00.0637160Z \u001b[36;1m    metadata + \"STANDALONE_INSTALL.md\": repo / \"docs/STANDALONE_INSTALL.md\",\u001b[0m"
+        },
+        {
+          "line": 3241,
+          "text": "2026-11-15T02:42:00.0637610Z \u001b[36;1m    metadata + \"STANDALONE_APP.md\": repo / \"docs/STANDALONE_APP.md\",\u001b[0m"
+        },
+        {
+          "line": 3242,
+          "text": "2026-11-15T02:42:00.0638040Z \u001b[36;1m    metadata + \"STANDALONE_MODEL.md\": repo / \"docs/STANDALONE_MODEL.md\",\u001b[0m"
+        },
+        {
+          "line": 3243,
+          "text": "2026-11-15T02:42:00.0638480Z \u001b[36;1m    metadata + \"MIDI_UI_RUNBOOK.md\": repo / \"docs/MIDI_UI_RUNBOOK.md\",\u001b[0m"
+        },
+        {
+          "line": 3244,
+          "text": "2026-11-15T02:42:00.0639190Z \u001b[36;1m    metadata + \"PRESET_RUNBOOK.md\": repo / \"docs/PRESET_RUNBOOK.md\",\u001b[0m"
+        },
+        {
+          "line": 3245,
+          "text": "2026-11-15T02:42:00.0639660Z \u001b[36;1m    metadata + \"INTERFACE_RUNBOOK.md\": repo / \"docs/INTERFACE_RUNBOOK.md\",\u001b[0m"
+        },
+        {
+          "line": 3246,
+          "text": "2026-11-15T02:42:00.0640080Z \u001b[36;1m    metadata + \"THIRD_PARTY_NOTICES.md\": repo / \"THIRD_PARTY_NOTICES.md\",\u001b[0m"
+        },
+        {
+          "line": 3247,
+          "text": "2026-11-15T02:42:00.0640530Z \u001b[36;1m    metadata + \"LICENSE-SDL2.txt\": temporary / \"hammond-sdl2/LICENSE.txt\",\u001b[0m"
+        },
+        {
+          "line": 3248,
+          "text": "2026-11-15T02:42:00.0641040Z \u001b[36;1m    metadata + \"LICENSE-DejaVu.txt\": repo / \"assets/standalone/fonts/LICENSE-DejaVu.txt\",\u001b[0m"
+        },
+        {
+          "line": 3249,
+          "text": "2026-11-15T02:42:00.0641520Z \u001b[36;1m    metadata + \"sdl2-lock.json\": repo / \"data/dependencies/sdl2-lock.json\",\u001b[0m"
+        },
+        {
+          "line": 3250,
+          "text": "2026-11-15T02:42:00.0642050Z \u001b[36;1m    metadata + \"font-source-manifest.json\": repo / \"assets/standalone/fonts/source-manifest.json\",\u001b[0m"
+        },
+        {
+          "line": 3251,
+          "text": "2026-11-15T02:42:00.0642640Z \u001b[36;1m    metadata + \"reference-source-manifest.json\": repo / \"assets/standalone/reference/manifest.json\",\u001b[0m"
+        },
+        {
+          "line": 3252,
+          "text": "2026-11-15T02:42:00.0643210Z \u001b[36;1m    metadata + \"atlas-reference.json\": repo / \"docs/design/atlas-reference.json\",\u001b[0m"
+        },
+        {
+          "line": 3253,
+          "text": "2026-11-15T02:42:00.0643690Z \u001b[36;1m    metadata + \"standalone-capabilities.json\": capability_path,\u001b[0m"
+        },
+        {
+          "line": 3254,
+          "text": "2026-11-15T02:42:00.0644240Z \u001b[36;1m    metadata + \"MIDI_EXPRESSION_GUIDE.md\": repo / \"docs/MIDI_EXPRESSION_GUIDE.md\",\u001b[0m"
+        },
+        {
+          "line": 3255,
+          "text": "2026-11-15T02:42:00.0644620Z \u001b[36;1m}\u001b[0m"
+        },
+        {
+          "line": 3256,
+          "text": "2026-11-15T02:42:00.0644770Z \u001b[36;1mif enabled:\u001b[0m"
+        },
+        {
+          "line": 3257,
+          "text": "2026-11-15T02:42:00.0646010Z \u001b[36;1m    prepared = repo / \"build-standalone/apps/standalone/hammond_rtmidi-prepared\"\u001b[0m"
+        },
+        {
+          "line": 3258,
+          "text": "2026-11-15T02:42:00.0646410Z \u001b[36;1m    expected.update({\u001b[0m"
+        },
+        {
+          "line": 3259,
+          "text": "2026-11-15T02:42:00.0646710Z \u001b[36;1m        metadata + \"LICENSE-RtMidi.txt\": prepared / \"LICENSE\",\u001b[0m"
+        },
+        {
+          "line": 3260,
+          "text": "2026-11-15T02:42:00.0647140Z \u001b[36;1m        metadata + \"rtmidi-lock.json\": repo / \"data/dependencies/rtmidi-lock.json\",\u001b[0m"
+        },
+        {
+          "line": 3261,
+          "text": "2026-11-15T02:42:00.0647630Z \u001b[36;1m        metadata + \"rtmidi-prepared-source.json\": prepared / \"prepared-source.json\",\u001b[0m"
+        },
+        {
+          "line": 3262,
+          "text": "2026-11-15T02:42:00.0648220Z \u001b[36;1m        metadata + \"rtmidi-coremidi-zero-init.patch\": prepared / \"rtmidi-coremidi-zero-init.patch\",\u001b[0m"
+        },
+        {
+          "line": 3263,
+          "text": "2026-11-15T02:42:00.0648780Z \u001b[36;1m    })\u001b[0m"
+        },
+        {
+          "line": 3264,
+          "text": "2026-11-15T02:42:00.0649080Z \u001b[36;1massert len(expected) == (20 if enabled else 16)\u001b[0m"
+        },
+        {
+          "line": 3282,
+          "text": "2026-11-15T02:42:00.0654990Z \u001b[36;1m            assert stat.S_ISREG(info.st_mode), \"symlink or special payload: \" + str(path)\u001b[0m"
+        },
+        {
+          "line": 3283,
+          "text": "2026-11-15T02:42:00.0656730Z \u001b[36;1m            files.append({\"path\": relative, \"bytes\": info.st_size, \"sha256\": digest(path), \"mode\": mode})\u001b[0m"
+        },
+        {
+          "line": 3284,
+          "text": "2026-11-15T02:42:00.0657810Z \u001b[36;1m    visit(prefix)\u001b[0m"
+        },
+        {
+          "line": 3285,
+          "text": "2026-11-15T02:42:00.0658820Z \u001b[36;1m    assert {entry[\"path\"] for entry in files} == set(expected), \"unexpected installed file set\"\u001b[0m"
+        },
+        {
+          "line": 3286,
+          "text": "2026-11-15T02:42:00.0660390Z \u001b[36;1m    assert {entry[\"path\"] for entry in directories} == expected_directories | {\".\"}, \"unexpected directories\"\u001b[0m"
+        },
+        {
+          "line": 3287,
+          "text": "2026-11-15T02:42:00.0661590Z \u001b[36;1m    for entry in files:\u001b[0m"
+        },
+        {
+          "line": 3288,
+          "text": "2026-11-15T02:42:00.0662440Z \u001b[36;1m        source = expected[entry[\"path\"]]\u001b[0m"
+        },
+        {
+          "line": 3289,
+          "text": "2026-11-15T02:42:00.0663530Z \u001b[36;1m        assert stat.S_ISREG(source.lstat().st_mode), \"nonregular source payload\"\u001b[0m"
+        },
+        {
+          "line": 3290,
+          "text": "2026-11-15T02:42:00.0664890Z \u001b[36;1m        assert entry[\"sha256\"] == digest(source), \"installation changed source bytes: \" + entry[\"path\"]\u001b[0m"
+        },
+        {
+          "line": 3300,
+          "text": "2026-11-15T02:42:00.0676220Z \u001b[36;1mrun_logged([\"cmake\", \"--install\", repo / \"build-standalone\", \"--config\", \"Release\",\u001b[0m"
+        },
+        {
+          "line": 3301,
+          "text": "2026-11-15T02:42:00.0676720Z \u001b[36;1m            \"--component\", \"Standalone\", \"--prefix\", staged], \"install.log\", repo, 90)\u001b[0m"
+        },
+        {
+          "line": 3302,
+          "text": "2026-11-15T02:42:00.0677110Z \u001b[36;1mbefore = inventory(staged)\u001b[0m"
+        },
+        {
+          "line": 3303,
+          "text": "2026-11-15T02:42:00.0677500Z \u001b[36;1m(logs / \"staged-inventory.json\").write_text(json.dumps(before, sort_keys=True, indent=2) + \"\\n\")\u001b[0m"
+        },
+        {
+          "line": 3304,
+          "text": "2026-11-15T02:42:00.0677930Z \u001b[36;1mstaged.rename(moved)\u001b[0m"
+        },
+        {
+          "line": 3305,
+          "text": "2026-11-15T02:42:00.0678850Z \u001b[36;1massert not os.path.lexists(staged) and inventory(moved) == before, \"relocation changed the payload\"\u001b[0m"
+        },
+        {
+          "line": 3306,
+          "text": "2026-11-15T02:42:00.0679290Z \u001b[36;1mbinary = moved / \"bin\" / executable\u001b[0m"
+        },
+        {
+          "line": 3307,
+          "text": "2026-11-15T02:42:00.0679640Z \u001b[36;1mrun_logged([binary, \"--help\"], \"relocated-help.log\", work, 15)\u001b[0m"
+        },
+        {
+          "line": 3313,
+          "text": "2026-11-15T02:42:00.0686850Z \u001b[36;1massert report[\"schema_version\"] == 3\u001b[0m"
+        },
+        {
+          "line": 3314,
+          "text": "2026-11-15T02:42:00.0687260Z \u001b[36;1massert report[\"smoke\"][\"passed\"] is True and report[\"smoke\"][\"duration_ms\"] == 600\u001b[0m"
+        },
+        {
+          "line": 3315,
+          "text": "2026-11-15T02:42:00.0687860Z \u001b[36;1massert report[\"runtime\"][\"video_driver\"] == report[\"audio\"][\"driver\"] == \"dummy\"\u001b[0m"
+        },
+        {
+          "line": 3316,
+          "text": "2026-11-15T02:42:00.0689040Z \u001b[36;1massert report[\"runtime\"][\"screenshot_written\"] is True and screenshot.read_bytes()[:2] == b\"BM\"\u001b[0m"
+        },
+        {
+          "line": 3317,
+          "text": "2026-11-15T02:42:00.0690650Z \u001b[36;1massert report[\"audio\"][\"callback_count\"] > 0 and report[\"audio\"][\"rendered_frames\"] > 0\u001b[0m"
+        },
+        {
+          "line": 3318,
+          "text": "2026-11-15T02:42:00.0691650Z \u001b[36;1mmidi = report[\"midi\"]\u001b[0m"
+        },
+        {
+          "line": 3319,
+          "text": "2026-11-15T02:42:00.0692660Z \u001b[36;1massert midi[\"backend_available\"] is enabled and midi[\"backend\"] == capability[\"midi\"][\"backend\"]\u001b[0m"
+        },
+        {
+          "line": 3320,
+          "text": "2026-11-15T02:42:00.0694260Z \u001b[36;1massert midi[\"state_before_shutdown\"] == midi[\"state_after_shutdown\"] == (\"closed\" if enabled else \"unavailable\")\u001b[0m"
+        },
+        {
+          "line": 3321,
+          "text": "2026-11-15T02:42:00.0695770Z \u001b[36;1massert not midi[\"active_before_shutdown\"] and not midi[\"active_after_shutdown\"]\u001b[0m"
+        },
+        {
+          "line": 3322,
+          "text": "2026-11-15T02:42:00.0697050Z \u001b[36;1massert midi[\"quiescent_after_shutdown\"] and midi[\"diagnostics_stable_after_shutdown\"]\u001b[0m"
+        },
+        {
+          "line": 3323,
+          "text": "2026-11-15T02:42:00.0698390Z \u001b[36;1massert not midi[\"startup_failed\"] and not midi[\"shutdown_failed\"]\u001b[0m"
+        },
+        {
+          "line": 3324,
+          "text": "2026-11-15T02:42:00.0699550Z \u001b[36;1massert midi[\"requested_port\"] == midi[\"port_name\"] == \"\" and midi[\"open_failures\"] == 0\u001b[0m"
+        },
+        {
+          "line": 3325,
+          "text": "2026-11-15T02:42:00.0700960Z \u001b[36;1massert midi[\"device\"][\"callback_messages\"] == midi[\"device\"][\"forwarded_messages\"] == 0\u001b[0m"
+        },
+        {
+          "line": 3326,
+          "text": "2026-11-15T02:42:00.0702260Z \u001b[36;1massert not os.path.lexists(state), \"smoke unexpectedly saved musical state\"\u001b[0m"
+        },
+        {
+          "line": 3327,
+          "text": "2026-11-15T02:42:00.0703470Z \u001b[36;1massert inventory(moved) == before, \"execution changed installed bytes or modes\"\u001b[0m"
+        },
+        {
+          "line": 3335,
+          "text": "2026-11-15T02:42:00.0715590Z \u001b[36;1mrecord = {\"schema_version\": 1, \"provenance\": provenance, \"payload\": before,\u001b[0m"
+        },
+        {
+          "line": 3336,
+          "text": "2026-11-15T02:42:00.0716930Z \u001b[36;1m          \"relocated_help_passed\": True, \"relocated_dummy_smoke_ms\": 600,\u001b[0m"
+        },
+        {
+          "line": 3337,
+          "text": "2026-11-15T02:42:00.0718240Z \u001b[36;1m          \"smoke_diagnostics_sha256\": digest(diagnostics), \"screenshot_sha256\": digest(screenshot)}\u001b[0m"
+        },
+        {
+          "line": 3338,
+          "text": "2026-11-15T02:42:00.0719500Z \u001b[36;1minventory_path = artifacts / \"inventory.json\"\u001b[0m"
+        },
+        {
+          "line": 3339,
+          "text": "2026-11-15T02:42:00.0720730Z \u001b[36;1minventory_path.write_text(json.dumps(record, sort_keys=True, indent=2) + \"\\n\", encoding=\"utf-8\")\u001b[0m"
+        },
+        {
+          "line": 3340,
+          "text": "2026-11-15T02:42:00.0722170Z \u001b[36;1mshutil.copyfile(inventory_path, logs / \"installed-inventory.json\")\u001b[0m"
+        },
+        {
+          "line": 3341,
+          "text": "2026-11-15T02:42:00.0724160Z \u001b[36;1marchive = artifacts / \"HammondB3-Standalone-Release.tar.gz\"\u001b[0m"
+        },
+        {
+          "line": 3342,
+          "text": "2026-11-15T02:42:00.0725170Z \u001b[36;1marchive_root = \"HammondB3-Standalone\"\u001b[0m"
+        },
+        {
+          "line": 3343,
+          "text": "2026-11-15T02:42:00.0726230Z \u001b[36;1mwith tarfile.open(archive, \"x:gz\", dereference=False) as output:\u001b[0m"
+        },
+        {
+          "line": 3344,
+          "text": "2026-11-15T02:42:00.0727660Z \u001b[36;1m    output.add(moved, arcname=archive_root)\u001b[0m"
+        },
+        {
+          "line": 3345,
+          "text": "2026-11-15T02:42:00.0728600Z \u001b[36;1mwith tarfile.open(archive, \"r:gz\") as check:\u001b[0m"
+        },
+        {
+          "line": 3346,
+          "text": "2026-11-15T02:42:00.0729420Z \u001b[36;1m    members = check.getmembers()\u001b[0m"
+        },
+        {
+          "line": 3347,
+          "text": "2026-11-15T02:42:00.0730460Z \u001b[36;1m    assert all(member.isfile() or member.isdir() for member in members)\u001b[0m"
+        },
+        {
+          "line": 3348,
+          "text": "2026-11-15T02:42:00.0731660Z \u001b[36;1m    archived = {member.name: member for member in members if member.isfile()}\u001b[0m"
+        },
+        {
+          "line": 3349,
+          "text": "2026-11-15T02:42:00.0732970Z \u001b[36;1m    assert set(archived) == {archive_root + \"/\" + name for name in expected}\u001b[0m"
+        },
+        {
+          "line": 3350,
+          "text": "2026-11-15T02:42:00.0734000Z \u001b[36;1m    for entry in before[\"files\"]:\u001b[0m"
+        },
+        {
+          "line": 3351,
+          "text": "2026-11-15T02:42:00.0735400Z \u001b[36;1m        member = archived[archive_root + \"/\" + entry[\"path\"]]\u001b[0m"
+        },
+        {
+          "line": 3352,
+          "text": "2026-11-15T02:42:00.0735900Z \u001b[36;1m        with check.extractfile(member) as stream:\u001b[0m"
+        },
+        {
+          "line": 3353,
+          "text": "2026-11-15T02:42:00.0737890Z \u001b[36;1m            assert hashlib.sha256(stream.read()).hexdigest() == entry[\"sha256\"]\u001b[0m"
+        },
+        {
+          "line": 3354,
+          "text": "2026-11-15T02:42:00.0739670Z \u001b[36;1m        assert member.size == entry[\"bytes\"] and format(member.mode, \"04o\") == entry[\"mode\"]\u001b[0m"
+        },
+        {
+          "line": 3355,
+          "text": "2026-11-15T02:42:00.0741100Z \u001b[36;1m(artifacts / \"SHA256SUMS\").write_text(\u001b[0m"
+        },
+        {
+          "line": 3356,
+          "text": "2026-11-15T02:42:00.0747400Z \u001b[36;1m    \"\".join(digest(path) + \"  \" + path.name + \"\\n\" for path in (archive, inventory_path)), encoding=\"ascii\")\u001b[0m"
+        },
+        {
+          "line": 3357,
+          "text": "2026-11-15T02:42:00.0770880Z \u001b[36;1mprint(f\"Verified {len(expected)} installed files, MIDI {capability['midi']['backend']}, \"\u001b[0m"
+        },
+        {
+          "line": 3358,
+          "text": "2026-11-15T02:42:00.0772490Z \u001b[36;1m      \"relocated help/dummy smoke, and the archived bytes.\", flush=True)\u001b[0m"
+        },
+        {
+          "line": 3445,
+          "text": "2026-11-15T02:42:01.4195980Z {\"command\": [\"/Users/runner/work/_temp/hammond standalone relocated/bin/hammond_standalone\", \"--smoke-ms\", \"600\", \"--state\", \"/Users/runner/work/_temp/hammond-standalone-smoke/absent-controls.b3controls\", \"--screenshot\", \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/standalone-ci-logs/relocated-smoke.bmp\", \"--diagnostics\", \"/Users/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/standalone-ci-logs/relocated-smoke.json\"], \"cwd\": \"/Users/runner/work/_temp/hammond-standalone-smoke\"}"
+        },
+        {
+          "line": 3446,
+          "text": "2026-11-15T02:42:01.4300340Z Native SDL smoke passed: callbacks=50, frames=25600, images=15, driver=dummy"
+        },
+        {
+          "line": 3447,
+          "text": "2026-11-15T02:42:02.0362320Z Verified 20 installed files, MIDI CoreMIDI, relocated help/dummy smoke, and the archived bytes."
+        },
+        {
+          "line": 3487,
+          "text": "2026-11-15T02:42:03.7701600Z Uploaded bytes 345523"
+        },
+        {
+          "line": 3488,
+          "text": "2026-11-15T02:42:03.8404980Z Finished uploading artifact content to blob storage!"
+        },
+        {
+          "line": 3489,
+          "text": "2026-11-15T02:42:03.8508040Z SHA256 digest of uploaded artifact is 77ae83647fc37e0bc8d4472f0aaefb69fe5d1aa41e4b4b812df44b02c068271b"
+        },
+        {
+          "line": 3490,
+          "text": "2026-11-15T02:42:03.8610180Z Finalizing artifact upload"
+        },
+        {
+          "line": 3491,
+          "text": "2026-11-15T02:42:04.3621660Z Artifact standalone-macos-15-ARM64-midi-ON-release-diagnostics-d8c39f7986746eacc991747153c7dbb012bb9a32-1 successfully finalized. Artifact ID 14142713230"
+        },
+        {
+          "line": 3492,
+          "text": "2026-11-15T02:42:04.3622970Z Artifact standalone-macos-15-ARM64-midi-ON-release-diagnostics-d8c39f7986746eacc991747153c7dbb012bb9a32-1 has been successfully uploaded! Final size is 345523 bytes. Artifact ID is 14142713230"
+        },
+        {
+          "line": 3493,
+          "text": "2026-11-15T02:42:04.3627510Z Artifact download URL: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/artifacts/14142713230"
+        },
+        {
+          "line": 3514,
+          "text": "2026-11-15T02:42:04.6251360Z With the provided path, there will be 3 files uploaded"
+        },
+        {
+          "line": 3515,
+          "text": "2026-11-15T02:42:04.6253150Z Artifact name is valid!"
+        },
+        {
+          "line": 3516,
+          "text": "2026-11-15T02:42:04.6253550Z Root directory input is valid!"
+        },
+        {
+          "line": 3517,
+          "text": "2026-11-15T02:42:04.8687520Z Uploading artifact: standalone-macos-15-ARM64-midi-ON-release-package-d8c39f7986746eacc991747153c7dbb012bb9a32-1.zip"
+        },
+        {
+          "line": 3518,
+          "text": "2026-11-15T02:42:04.8710100Z Beginning upload of artifact content to blob storage"
+        },
+        {
+          "line": 3519,
+          "text": "2026-11-15T02:42:05.7279480Z Uploaded bytes 1487410"
+        },
+        {
+          "line": 3520,
+          "text": "2026-11-15T02:42:05.8216960Z Finished uploading artifact content to blob storage!"
+        },
+        {
+          "line": 3521,
+          "text": "2026-11-15T02:42:05.8318480Z SHA256 digest of uploaded artifact is d7fb9575ed663371882af35bcf09c4aeb2189d0b2a5e29dd16e3b68a57bccf7b"
+        },
+        {
+          "line": 3522,
+          "text": "2026-11-15T02:42:05.8360520Z Finalizing artifact upload"
+        },
+        {
+          "line": 3523,
+          "text": "2026-11-15T02:42:06.3619290Z Artifact standalone-macos-15-ARM64-midi-ON-release-package-d8c39f7986746eacc991747153c7dbb012bb9a32-1 successfully finalized. Artifact ID 14143117766"
+        },
+        {
+          "line": 3524,
+          "text": "2026-11-15T02:42:06.3620990Z Artifact standalone-macos-15-ARM64-midi-ON-release-package-d8c39f7986746eacc991747153c7dbb012bb9a32-1 has been successfully uploaded! Final size is 1487410 bytes. Artifact ID is 14143117766"
+        },
+        {
+          "line": 3525,
+          "text": "2026-11-15T02:42:06.3621980Z Artifact download URL: https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/artifacts/14143117766"
+        }
+      ]
+    }
+  ]
+}

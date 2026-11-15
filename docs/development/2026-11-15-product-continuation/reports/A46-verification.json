@@ -1,0 +1,93 @@
+{
+  "schema": "b3-product-session-validator-verification-v1",
+  "worker": "A46",
+  "recorded_at_utc": "2026-11-15T02:35:38.877828+00:00",
+  "working_directory": "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ",
+  "python": "3.12.14",
+  "observed_head": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+  "observed_tree": "a3150fd2489a50a430b02c01eadd5e0c180bc7f9",
+  "working_tree_inputs": "Only the listed checker/test/CI files are qualified by this focused verification; other concurrent working changes are outside its scope.",
+  "artifacts": {
+    "tools/check_product_session.py": {
+      "bytes": 20345,
+      "sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c"
+    },
+    "tests/test_product_session.py": {
+      "bytes": 21474,
+      "sha256": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55"
+    },
+    ".github/workflows/ci.yml": {
+      "bytes": 9276,
+      "sha256": "dc0ca8ca102d099a3874d93837c9279ab7af66e92b9de03bc0c5c39642ce6d9e"
+    }
+  },
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_product_session.py -v",
+      "exit_code": 0,
+      "tests_run": 19,
+      "test_duration_seconds": 1.191,
+      "result": "OK; all 19 focused test methods passed; fixture records are synthetic and temporary."
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 tools/check_product_session.py --repo . --allow-incomplete --json > docs/development/2026-11-15-product-continuation/reports/A46-progress-records.json",
+      "exit_code": 0,
+      "result": "consistent incomplete record snapshot",
+      "recorded": 48,
+      "accepted": 45,
+      "running": 3,
+      "completion_valid": false
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 tools/check_product_session.py --repo . --json > docs/development/2026-11-15-product-continuation/reports/A46-strict-incomplete.json",
+      "exit_code": 1,
+      "result": "Expected strict rejection of unfinished session",
+      "error_codes": [
+        "completion_count",
+        "completion_status",
+        "completion_waves"
+      ]
+    },
+    {
+      "command": "git ls-remote origin refs/heads/main",
+      "exit_code": 0,
+      "observed_remote_head": "d556da017ea0a5d4f2d231416782dbc5066e58c2"
+    },
+    {
+      "command": "git diff --check -- .github/workflows/ci.yml tools/check_product_session.py tests/test_product_session.py",
+      "exit_code": 0,
+      "result": "No whitespace errors in tracked diff; new Python files also parsed with ast.parse."
+    }
+  ],
+  "additional_checks": {
+    "python_ast_files": [
+      "tools/check_product_session.py",
+      "tests/test_product_session.py"
+    ],
+    "new_ci_bash_block": "Extracted added step and executed bash -n successfully",
+    "ci_diff": "Seven added lines only; other steps/jobs retained",
+    "cmake": "Existing tests/test_*.py CONFIGURE_DEPENDS glob discovers python_test_product_session; not configured or executed by A46"
+  },
+  "retained_reports": {
+    "A46-progress-records.json": {
+      "bytes": 47081,
+      "sha256": "8d916c5ca7ddeee3ddbdb43f0869a29189d5d6b89f73c5375c4ce0e0a6c08876"
+    },
+    "A46-strict-incomplete.json": {
+      "bytes": 47928,
+      "sha256": "77afac9914abaadee62d4d40783ae5230f852feb9dfaab65e533109587fc90f2"
+    }
+  },
+  "manifest_snapshot": {
+    "bytes": 37223,
+    "path": "docs/development/2026-11-15-product-continuation/assignments.json",
+    "sha256": "f49886bc59295e091a413d3c847d12e874408b7cbc5a5a8bac45dbc7546057f7"
+  },
+  "claim_limit": "Retained record consistency only. This cannot attest actual tool dispatch, substantive integrator review, semantic truth, test execution, publication, product readiness, visual equality or physical/model fidelity. The narrative floor is a structural check; it does not replace substantive acceptance.",
+  "not_run": [
+    "Shared configure/build/CTest",
+    "Hosted CI",
+    "Strict completion after sixty accepted actual workers"
+  ],
+  "next_gate": "Root accepts delivered files and updates actual ledger/hash, reruns progress; after A60 acceptance remove --allow-incomplete from CI and retain a strict successful result."
+}

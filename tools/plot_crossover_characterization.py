@@ -15,6 +15,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import re
 import sys
 
 import crossover_reference as reference
@@ -27,6 +28,25 @@ FREQUENCIES = (400.0, 800.0, 1600.0, 5000.0, 10000.0, 20000.0)
 PORTS = ("treble_gain", "bass_gain", "input_admittance")
 METRICS = ("magnitude_error_db", "phase_error_degrees", "normalized_complex_error")
 FIGURE_ID = "leslie-crossover-same-hz-nominal-characterization-v1"
+LOADS = ((16.0, 16.0), (1.0, 1.0), (1024.0, 1024.0),
+         (1.0, 1024.0), (1024.0, 1.0), (8.0, 32.0))
+SOURCE_PATHS = {
+    "tools/crossover_probe.cpp", "tools/crossover_reference.py",
+    "tests/test_crossover_acceptance.py", "include/hammond/LeslieCrossover.h",
+    "src/LeslieCrossover.cpp", "data/crossover/leslie-122-ideal-v1.json",
+}
+REPORT_FIELDS = {
+    "schema_version", "acceptance_id", "passed", "tests_run", "failures", "errors",
+    "platform", "python", "binary_sha256", "source_sha256", "provenance_boundary",
+    "subprocesses", "response_port_comparisons", "sine_port_comparisons",
+    "maximum_warped_response_error", "maximum_warped_sine_error",
+    "maximum_response_residual", "maximum_independent_sine_tail_gain_bound",
+    "maximum_half_window_gain_difference", "limits", "same_hz_status",
+    "physical_measurement_claim", "engine_integration", "response_groups", "sine_groups",
+}
+RESPONSE_LIMIT = 2.0e-10
+SINE_LIMIT = 2.0e-8
+MAX_REPORT_BYTES = 1024 * 1024
 
 
 def require(condition: bool, message: str) -> None:
@@ -50,30 +70,162 @@ def reject_number(value: str) -> None:
     raise ValueError(f"nonfinite JSON number: {value}")
 
 
-def observations(path: Path) -> tuple[dict, dict]:
-    require(path.is_file() and path.stat().st_size <= 1024 * 1024,
-            "acceptance report must be a regular file no larger than 1 MiB")
-    raw = path.read_bytes()
-    report = json.loads(raw, object_pairs_hook=unique_members, parse_constant=reject_number)
-    require(report.get("schema_version") == 1 and report.get("acceptance_id") ==
+def fields(value: object, expected: set[str], where: str) -> None:
+    require(type(value) is dict and set(value) == expected, f"{where}: fields differ")
+
+
+def number(value: object, where: str, lower: float = 0.0,
+           upper: float = sys.float_info.max) -> None:
+    require(type(value) in (int, float) and lower <= value <= upper,
+            f"{where}: expected finite number in [{lower}, {upper}]")
+
+
+def count(value: object, expected: int, where: str) -> None:
+    require(type(value) is int and value == expected, f"{where}: expected integer {expected}")
+
+
+def sha256(value: object, where: str) -> None:
+    require(type(value) is str and re.fullmatch(r"[0-9a-f]{64}", value) is not None,
+            f"{where}: expected lowercase SHA-256 identity")
+
+
+def validate_report(report: object) -> None:
+    """Admit a complete v1 record, without asserting source-to-binary attestation.
+
+    These are the frozen producer's counts, limits and experiment families.
+    Internal consistency and matching input hashes cannot authenticate invented
+    numerical observations; the original execution record remains necessary.
+    """
+    fields(report, REPORT_FIELDS, "acceptance report")
+    count(report["schema_version"], 1, "schema_version")
+    require(report["acceptance_id"] ==
             "leslie-crossover-native-nodal-acceptance-v1", "unsupported acceptance report")
-    require(report.get("passed") is True and report.get("failures") == 0 and
-            report.get("errors") == 0, "report does not retain a successful numerical gate")
-    require(report.get("engine_integration") is False and
-            report.get("physical_measurement_claim") is False,
+    require(report["passed"] is True, "report does not retain a successful numerical gate")
+    for name, expected in (("tests_run", 3), ("failures", 0), ("errors", 0)):
+        count(report[name], expected, name)
+    require(report["engine_integration"] is False and
+            report["physical_measurement_claim"] is False,
             "report does not preserve the independent research boundary")
-    require(report.get("same_hz_status") ==
+    require(report["same_hz_status"] ==
             "characterized only; no audible acceptance threshold or physical fidelity claim",
             "same-Hz boundary differs")
-    sources = report.get("source_sha256")
-    require(isinstance(sources, dict) and "tools/crossover_reference.py" in sources and
-            "data/crossover/leslie-122-ideal-v1.json" in sources, "missing source identities")
+    require(report["provenance_boundary"] ==
+            "Observed immutable inputs, not an independent compiler/source-to-binary attestation",
+            "provenance boundary differs")
+    for name in ("platform", "python"):
+        require(type(report[name]) is str and 0 < len(report[name]) <= 512,
+                f"{name}: expected bounded nonempty text")
+    sha256(report["binary_sha256"], "binary_sha256")
+    sources = report["source_sha256"]
+    fields(sources, SOURCE_PATHS, "source_sha256")
     for name, expected in sources.items():
-        relative = Path(name)
-        require(not relative.is_absolute() and ".." not in relative.parts,
-                "source path escapes repository")
-        require(isinstance(expected, str) and digest(ROOT / relative) == expected,
+        sha256(expected, name)
+        require(digest(ROOT / name) == expected,
                 f"source differs from retained acceptance: {name}")
+    fields(report["limits"], {"warped_response", "settled_sine"}, "limits")
+    for name, expected in (("warped_response", RESPONSE_LIMIT), ("settled_sine", SINE_LIMIT)):
+        number(report["limits"][name], f"limits.{name}", expected, expected)
+    for name, limit in (("maximum_warped_response_error", RESPONSE_LIMIT),
+                        ("maximum_warped_sine_error", SINE_LIMIT),
+                        ("maximum_response_residual", 1.0e-12),
+                        ("maximum_independent_sine_tail_gain_bound", SINE_LIMIT / 100.0),
+                        ("maximum_half_window_gain_difference", SINE_LIMIT)):
+        number(report[name], name, upper=limit)
+
+    groups = report["response_groups"]
+    expected_groups = {(rate, *loads) for rate in RATES for loads in LOADS}
+    require(type(groups) is list and len(groups) == len(expected_groups),
+            "response_groups: expected 24 rate/load groups")
+    seen = set()
+    response_comparisons = 0
+    maximum_response = 0.0
+    for group in groups:
+        fields(group, {"sample_rate_hz", "treble_ohms", "bass_ohms", "frequencies",
+                       "maximum_warped_normalized_errors", "same_hz_10_to_20000_maximum_absolute_errors",
+                       "nominal_same_hz_points"}, "response group")
+        rate = group["sample_rate_hz"]
+        require(type(rate) is int and rate in RATES, "unsupported response sample rate")
+        for name in ("treble_ohms", "bass_ohms"):
+            number(group[name], name, 1.0, 1024.0)
+        key = (rate, group["treble_ohms"], group["bass_ohms"])
+        require(key in expected_groups and key not in seen, "duplicate or unsupported response load group")
+        seen.add(key)
+        frequencies = set(reference.default_frequency_grid()) | set(FREQUENCIES) | {
+            0.0, 1.0e-8, rate * 0.499999, math.nextafter(rate / 2.0, 0.0)}
+        count(group["frequencies"], len(frequencies), "response frequencies")
+        response_comparisons += len(frequencies) * len(PORTS)
+        maxima = group["maximum_warped_normalized_errors"]
+        fields(maxima, set(PORTS), "warped response maxima")
+        for port in PORTS:
+            number(maxima[port], f"warped response {port}", upper=RESPONSE_LIMIT)
+        maximum_response = max(maximum_response, *maxima.values())
+        same_hz = group["same_hz_10_to_20000_maximum_absolute_errors"]
+        fields(same_hz, set(PORTS), "same-Hz maxima")
+        for port in PORTS:
+            fields(same_hz[port], set(METRICS), f"same-Hz maxima {port}")
+            for metric in METRICS:
+                upper = 180.0 if metric == "phase_error_degrees" else sys.float_info.max
+                number(same_hz[port][metric], f"same-Hz maximum {metric}", upper=upper)
+        rows = group["nominal_same_hz_points"]
+        expected_points = len(FREQUENCIES) if key[1:] == (16.0, 16.0) else 0
+        require(type(rows) is list and len(rows) == expected_points, "nominal point count differs")
+        for frequency, row in zip(FREQUENCIES, rows):
+            fields(row, {"frequency_hz", "same_hz_errors"}, "nominal point")
+            number(row["frequency_hz"], "nominal frequency", frequency, frequency)
+            fields(row["same_hz_errors"], set(PORTS), "nominal ports")
+            for port in PORTS:
+                values = row["same_hz_errors"][port]
+                fields(values, set(METRICS), f"nominal {port}")
+                for metric in METRICS:
+                    lower = 0.0 if metric == "normalized_complex_error" else -sys.float_info.max
+                    number(values[metric], f"nominal {metric}", lower)
+                    require(abs(values[metric]) <= same_hz[port][metric],
+                            "nominal metric exceeds retained same-Hz maximum")
+    require(seen == expected_groups, "missing response rate/load group")
+    count(report["response_port_comparisons"], response_comparisons, "response_port_comparisons")
+    require(report["maximum_warped_response_error"] == maximum_response, "response summary maximum differs")
+
+    sines = report["sine_groups"]
+    expected_sines = {(rate, *loads, frequency) for rate in RATES for loads in LOADS
+                      for frequency in (400.125, 800.0, 1600.375, 0.43 * rate)}
+    require(type(sines) is list and len(sines) == len(expected_sines), "sine_groups: expected 96 experiments")
+    seen = set()
+    summaries = {"maximum_warped_sine_error": ("maximum_warped_normalized_error", SINE_LIMIT),
+                 "maximum_independent_sine_tail_gain_bound": ("independent_all_fit_tail_bound", SINE_LIMIT / 100.0),
+                 "maximum_half_window_gain_difference": ("half_window_max_difference", SINE_LIMIT)}
+    for group in sines:
+        fields(group, {"sample_rate_hz", "treble_ohms", "bass_ohms", "frequency_hz", "warmup_frames",
+                       "independent_largest_pole_modulus", *(name for name, _ in summaries.values())}, "sine group")
+        rate = group["sample_rate_hz"]
+        require(type(rate) is int and rate in RATES, "unsupported sine sample rate")
+        for name in ("treble_ohms", "bass_ohms"):
+            number(group[name], name, 1.0, 1024.0)
+        number(group["frequency_hz"], "sine frequency", 0.0, rate / 2.0)
+        key = (rate, group["treble_ohms"], group["bass_ohms"], group["frequency_hz"])
+        require(key in expected_sines and key not in seen, "duplicate or unsupported sine experiment")
+        seen.add(key)
+        require(type(group["warmup_frames"]) is int and 0 <= group["warmup_frames"] <= 2_000_000,
+                "sine warmup_frames: expected bounded integer")
+        number(group["independent_largest_pole_modulus"], "sine pole modulus", 0.0, 1.0)
+        require(0.0 < group["independent_largest_pole_modulus"] < 1.0, "sine pole must strictly decay")
+        for name, limit in summaries.values():
+            number(group[name], name, upper=limit)
+    require(seen == expected_sines, "missing sine experiment")
+    for summary, (name, _) in summaries.items():
+        require(report[summary] == max(group[name] for group in sines), f"{summary}: summary differs")
+    count(report["sine_port_comparisons"], len(sines) * 3 * len(PORTS), "sine_port_comparisons")
+    # v1 runs one process per response/sine group plus 33 refusal experiments.
+    count(report["subprocesses"], len(groups) + len(sines) + 33, "subprocesses")
+
+
+def observations(path: Path) -> tuple[dict, dict]:
+    require(path.is_file(), "acceptance report must be a regular file")
+    with path.open("rb") as stream:
+        raw = stream.read(MAX_REPORT_BYTES + 1)
+    require(len(raw) <= MAX_REPORT_BYTES, "acceptance report must be no larger than 1 MiB")
+    report = json.loads(raw, object_pairs_hook=unique_members, parse_constant=reject_number)
+    validate_report(report)
+    sources = report["source_sha256"]
     network = reference.load_network()
     analog = {frequency: reference.nodal_response(network, frequency)
               for frequency in FREQUENCIES}
@@ -200,7 +352,7 @@ def main() -> int:
                           "native_processes_launched": 0, "audible_acceptance": "not declared"},
                          sort_keys=True, allow_nan=False))
         return 0
-    except (OSError, ValueError, KeyError, TypeError, ImportError, ArithmeticError) as error:
+    except (OSError, ValueError, KeyError, TypeError, ImportError, ArithmeticError, RecursionError) as error:
         print(f"plot_crossover_characterization: {error}", file=sys.stderr)
         return 2
 

@@ -1,0 +1,120 @@
+{
+  "audit_id": "product-numerical-admission-a48-v1",
+  "current_retained_report_admitted": true,
+  "executed_regression": {
+    "command": "python3 -B tests/test_plot_crossover_characterization.py -v",
+    "duration_seconds": 0.28,
+    "errors": 0,
+    "failures": 0,
+    "matplotlib_render_calls": 0,
+    "native_processes": 0,
+    "new_numerical_sweeps": 0,
+    "tests_run": 11
+  },
+  "existing_binary": {
+    "boundary": "Read-only hash comparison; neither executed nor independently mapped to compiler/source by this audit.",
+    "matches": true,
+    "path": "/workspace/scratch/5b7d983ac078/build-native/hammond_crossover_probe",
+    "retained_sha256": "da09640f7520cd887a836961658ed8a79d6b6bff28f0e33a0ce44cf76f992eac",
+    "sha256": "da09640f7520cd887a836961658ed8a79d6b6bff28f0e33a0ce44cf76f992eac"
+  },
+  "figure_metadata": {
+    "all_24_observations_unchanged": true,
+    "binary_hash_matches": true,
+    "original_plotter_hash_matches": true,
+    "png_bytes_unchanged": true,
+    "refresh_owner": "integrator; regenerate only after freeze and compare decoded pixels",
+    "report_hash_matches": true,
+    "six_source_hashes_match": true
+  },
+  "head_at_verification": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+  "next_gate": "Freeze independently reviewed same-Hz electrical protocol, engineering basis for gain floors and magnitude/phase/absolute complex/admittance criteria, then evaluate a separately identified numerical candidate. Physical acquisition and Engine integration remain separate.",
+  "observed_head_before_repair": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+  "original_mutations": [
+    {
+      "after": "rejected",
+      "before": "admitted",
+      "id": "missing_native_source_identities",
+      "key": "source_sha256",
+      "mutated_report_sha256": "8ad73040d589d2aa389e970f5ea91c3288aecb99041b3be01043186285d71a22",
+      "points": 24,
+      "rejection": "source_sha256: fields differ",
+      "replacement": {
+        "data/crossover/leslie-122-ideal-v1.json": "f55fa98c246b4a19dce12ca829a141cff744f71242cccb68db12b404400319cc",
+        "tools/crossover_reference.py": "33eaa88da2534e52f88c044b5fbabf19828655bacb357dc55bbeb6510b580ec5"
+      }
+    },
+    {
+      "after": "rejected",
+      "before": "admitted",
+      "id": "null_binary_identity",
+      "key": "binary_sha256",
+      "mutated_report_sha256": "4b626aa1c566af20f552516ac1fd0d83da2321fcee127322b1dbd28b026d2e20",
+      "points": 24,
+      "rejection": "binary_sha256: expected lowercase SHA-256 identity",
+      "replacement": null
+    },
+    {
+      "after": "rejected",
+      "before": "admitted",
+      "id": "over_budget_summary",
+      "key": "maximum_warped_response_error",
+      "mutated_report_sha256": "a68aa731377620d59732d8c89db89a787b5e5634de9c27884de5738022c91576",
+      "points": 24,
+      "rejection": "maximum_warped_response_error: expected finite number in [0.0, 2e-10]",
+      "replacement": 1.0
+    }
+  ],
+  "original_plotter_sha256": "fecd825b3736de148926544ebd74cf7adc6994d366666d0910929d62c592822c",
+  "original_png_sha256": "6084be255054c1f11afdac26b3d8972721f9711598b13b30231ace69326bf39c",
+  "python": "3.12.14",
+  "regression_test_sha256": "dd7ff3d635c54e680594fd8af6771cfe2af66871570a0cd5b1cb9df28f50b360",
+  "relevant_source_hashes_still_match": true,
+  "repaired_plotter_sha256": "3bc78b38516de384cf07e94b1cd9f33dbd71c0a6057b2012617814dfbd29ccf4",
+  "retained_report_sha256": "2773a6fa1b7b81292296d9c29e4677cd5dfe56921ce9e34ee6d126c3ce3269d8",
+  "source_hashes_match": true,
+  "source_inspection": {
+    "model": "Fixed L/C, four rates, loads [1,1024] ohm, computational 64 V input/65536 V capacitor/256 A inductor/1e6 J bounds and 4096 frame transaction capacity match contract and registry.",
+    "probe": "Bounded finite decimal and complete option parsing; admitted rates/loads; response [0,Nyquist), sine (0,Nyquist), at most 512 response frequencies and 16777216 total sine frames; reports emitted after success. Existing negative fixtures inspected; native probe not run.",
+    "reference": "Exact recursive v1 registry schema/types/ordered topology/evidence and null-physical-fields admission; bounded duplicate/nonfinite/malformed JSON rejection; invalid CLI input preserves prior output. Not rerun."
+  },
+  "source_sha256": {
+    "data/crossover/leslie-122-ideal-v1.json": "f55fa98c246b4a19dce12ca829a141cff744f71242cccb68db12b404400319cc",
+    "include/hammond/LeslieCrossover.h": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+    "src/LeslieCrossover.cpp": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+    "tests/test_crossover_acceptance.py": "cf9d8e94e4b57a623fa7fcfaa91d50e81ad19818d151f7dc7f5a1ead69070f95",
+    "tools/crossover_probe.cpp": "e9525de45f6df95c05785f50430a049e71fcd5299a00a6b95db11337b65dc475",
+    "tools/crossover_reference.py": "33eaa88da2534e52f88c044b5fbabf19828655bacb357dc55bbeb6510b580ec5"
+  },
+  "starting_head": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+  "summary_checks": {
+    "limits": {
+      "settled_sine": 2e-08,
+      "warped_response": 2e-10
+    },
+    "maximum_half_window_gain_difference": 6.064307873515581e-13,
+    "maximum_independent_sine_tail_gain_bound": 4.014564579287608e-11,
+    "maximum_warped_response_error": 2.0923475127225402e-13,
+    "maximum_warped_sine_error": 3.429777428091277e-13,
+    "plotted_points": 24,
+    "response_frequencies_per_group": [
+      130
+    ],
+    "response_groups": 24,
+    "response_port_comparisons": 9360,
+    "same_hz_in_band_points": 126,
+    "sine_experiments": 96,
+    "sine_port_comparisons": 864,
+    "subprocesses_retained": 153
+  },
+  "unrun": [
+    "native probe or acceptance suite",
+    "full analog/numerical sweeps",
+    "configure/build/shared CTest",
+    "platform/sanitizer/device/hardware",
+    "physical or audible fidelity",
+    "PNG regeneration or decoded pixel comparison",
+    "commit or publication"
+  ],
+  "working_directory": "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"
+}

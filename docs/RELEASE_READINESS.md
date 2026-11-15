@@ -1,11 +1,29 @@
 # Release readiness and retained assessments
 
+## Current product routing — 15 November 2026
+
+Use [current status](STATUS.md), [the product recovery handoff](PRODUCT_HANDOFF.md)
+and [the active checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md)
+for current implementation, installed inventories, exact-source qualification
+and unfinished work. The [current native UI acceptance](reviews/PRODUCT_UI_ACCEPTANCE.md)
+identifies the actual product gallery and the remaining 1:1 reference gap.
+The dated source assessments below retain their own test counts, inventories,
+galleries and outstanding gates; their use of “current” is historical to the
+named source. Earlier sixty-worker records are separate from the product session.
+
+These engineering records do not close physical acquisition, real device/DAW,
+semantic accessibility, deadlines, rights or signed-distribution obligations.
+Current evidence is not a release declaration, and these boundaries add no
+permission step to the owner's authorized development and publication work.
+
+## Historical reference-refinement routing
+
 **Combined-source continuation:** the [completion and integration record](REFERENCE_REFINEMENT_CLOSURE.md)
 records all 60 accepted agents, the integrated `487064d` R4/material source,
 the fresh v5 native gallery and its separate qualification. Source-specific
 `0881d1f4`/v4 results below remain historical evidence for those exact inputs.
 
-## Current combined-source qualification — `fd2f6060`
+## Historical combined-source qualification — `fd2f6060`
 
 The [published closure](REFERENCE_REFINEMENT_CLOSURE.md) records **all 13 hosted
 jobs passing** at `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`, tree

@@ -1,39 +1,31 @@
 # Product interface: reference relation and remaining gaps
 
-Review: 15 November 2026, actual product-continuation worker A34. The current
-wide Dimensional painter visibly improves footage/readout legibility, manual
-cap depth and the distinction between edited and sounding registration. It
-retains the earlier header placement, full manuals, cabinet column and sidebar
-pedals. **Literal whole-interface 1:1 equality with the concept remains
-unmet.** Local raster acceptance and a passed relative paint-cost budget
-do not establish that stronger result.
+**Current review: 15 November 2026, A54.** The eleven actual native product
+captures are admitted and the README displays current Play and MIDI images.
+The wide Dimensional painter improves footage, cap depth and edited versus
+sounding registration. **The user's requested whole-interface 1:1 result
+remains unmet.** Gallery admission, exact scoped raster checks and successful
+platform jobs do not close that requirement or waive the remaining differences.
 
-This review updates the evidence status of
-[standalone-wide-legibility-v1](../PRODUCT_VISUAL_REFINEMENT.md); it does not
-amend its frozen paint behavior or the
-[accepted layout](../REFERENCE_REFINEMENT_LAYOUT.md).
+A54 personally viewed the original atlas JPEG and all eleven current PNGs.
+The [current UI acceptance](../reviews/PRODUCT_UI_ACCEPTANCE.md) lists each
+original image and its observations. No new recapture-blocking crop or field
+collision was found. This updates the evidence and gap record; the
+[paint contract](../PRODUCT_VISUAL_REFINEMENT.md) and
+[layout contract](../REFERENCE_REFINEMENT_LAYOUT.md) retain their frozen behavior.
 
-## Evidence actually inspected
+## Current evidence and exact source
 
-A34 directly viewed all four original images below, without editing or
-resampling them. SHA-256 values identify the image files, not physical fidelity.
+| Evidence | Observed result and boundary |
+| --- | --- |
+| [Original cover/page-409 JPEG](atlas-cover-reference.jpg), 1672×941 | Unaltered embedded concept image, SHA-256 `9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187`; [provenance](atlas-reference.json). Design direction, not measured instrument geometry. |
+| [Current eight-view gallery](../../examples/demos/standalone-product-preview-v1/README.md) and [three MIDI views](../../examples/demos/standalone-product-preview-v1/midi-overlay/README.md) | Actual captures at `d556da017ea0a5d4f2d231416782dbc5066e58c2`, tree `a3150fd2489a50a430b02c01eadd5e0c180bc7f9`. They supersede A34's temporary previews as the current gallery. |
+| [A41 independent admission](../reviews/PRODUCT_GALLERY_ADMISSION.md) | All eleven PNG/pixel identities, 39 normal plus 18 modal payload entries, 108 production inputs and 13 selected build inputs admitted. Original BMP intermediates are unavailable; retained PNGs match recorded native-pixel hashes. A54 did not repeat this complete hash/state sweep. |
+| [Published source receipt](../development/2026-11-15-product-continuation/reports/gallery-publication.json) | `d8c39f7986746eacc991747153c7dbb012bb9a32`, tree `edf67b978f93e8dbea6537ce92d3928c171bc1f3`, includes gallery/README, A42 and test/install repairs. Publication does not retag the d556 captures. |
+| [A54 direct visual review](../reviews/PRODUCT_UI_ACCEPTANCE.md) | All twelve original image files inspected; three freeze-critical inputs rehashed below. No rebuild, runtime journey, new capture or physical-display observation. |
 
-| Input | Size | File SHA-256 | Status |
-| --- | --- | --- | --- |
-| [Atlas cover/page-409 JPEG](atlas-cover-reference.jpg) | 1672×941 | `9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187` | Original embedded concept image; [provenance](atlas-reference.json). |
-| [Historical v5 Play](../../examples/demos/standalone-interface-preview-v5/images/play-reference-1672x941.png) | 1672×941 | `f5bf973c949b71d900572cffba72d617f1f2e61efb640b3e9ce97f90d2c30a19` | Admitted historical capture at `487064d2400b9f39d0ee66ed136a09c9e372379e`; [gallery provenance](../../examples/demos/standalone-interface-preview-v5/provenance.json). |
-| Integrator preview `ui-preview/play.png` | 1672×941 | `c727007376ab9067b6c101d852fb2bffdfecf4084e75adf4373138411fd2e21d` | Provisional current native Play output, one Upper held target. |
-| Integrator preview `ui-preview/midi.png` | 960×700 | `2678b686c98d81442d4a77608d877ed2541536320c4c6f18a38c590b5696a401` | Provisional current native MIDI overlay; unavailable backend, no held target. |
-
-The two preview inputs are under `/workspace/scratch/5b7d983ac078/`, outside
-the published galleries. They are intentionally named as review inputs, not
-linked as final evidence. A40's planned product gallery is still pending at
-this review. Its admission must provide actual retained files and source/state
-bindings before this document or README points to it.
-
-The integrator supplied the following capture-input identities; A34 independently
-rehashed the actual current files and found exact matches. This is a byte-identity
-check, not an independent rebuild or source-to-executable attestation.
+Current production identities remain unchanged; A54 rehashed only these three
+inputs, not the whole admitted gallery:
 
 | Input | SHA-256 |
 | --- | --- |
@@ -41,152 +33,150 @@ check, not an independent rebuild or source-to-executable attestation.
 | `apps/standalone/InstrumentView.cpp` | `3687f96db4490e600d6107e6b39d7b7d568bdeb183f16f6aa397535a5f688567` |
 | `/workspace/scratch/5b7d983ac078/build-native/apps/standalone/hammond_standalone` | `7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852` |
 
-The integrator's subsequent
-[capture-input build receipt](../development/2026-11-15-product-continuation/reports/capture-qualified-build.json)
-records a successful native target build, 108 production-file identities and
-the same executable hash at observed source
-`b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree
-`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`. It qualifies the stated build inputs;
-it does not turn these previews into new captures at that later commit or admit
-the pending gallery.
+The [capture-input build receipt](../development/2026-11-15-product-continuation/reports/capture-qualified-build.json)
+records an earlier b9 target build. A41 verified matching production inputs and
+binary; its older standalone CMake-rule hash predates later test-only changes.
+It is not a complete later build-rule attestation. Gallery frames use Linux
+Release, SDL 2.32.10 dummy audio/video, software rendering, equal logical/drawable
+dimensions and MIDI backend OFF.
 
-The current `UiModel.cpp/.h`, `Drawing.cpp/.h` and `FontData.h` also match the
-input hashes in [A23's report](../development/2026-11-15-product-continuation/reports/A23-visual-acceptance.json).
-The preview diagnostics identify SDL 2.32.10, dummy video/audio and software
-rendering. Their file hashes are
-`cf28e6d96b1ba25a7eab45ee9f92629cbab86fc5d28198be8c3c9b7765730456`
-for `play.json`, and
-`bb6db808550b6b3328c704a56807558c4814eb8ec85280c42e5036290250518a`
-for `midi.json`. No physical screen, MIDI controller or audio device was
-qualified by viewing these files.
+Normal frames retain Upper 60/64, Lower 67 and pedal 3 while editing retained
+Upper B 16-foot 7→8; Upper fixed C# and Lower A# remain the sounding routes.
+Modal frames show selected/configured **20/100/Inverted**, active calibration
+none, MIDI unavailable and Direction focused. Earlier UI owners were released
+on modal entry. These final images do not show pending edits, staged/configured
+divergence, Apply/reconnect or active hardware; separate functional fixtures
+retain their own executed claims.
 
-The v5 and current Play frames have different musical states: v5 shows Upper
-fixed C#, Lower A#, expression 75%, percussion on and held targets 2/1/1;
-the current preview shows B/B, expression 100%, percussion off and 1/0/0.
-Consequently, this review computes no whole-frame before/after change score,
-similarity percentage or apparent paint improvement from their differing
-drawbar positions, selected presets or held colors. A23's controlled comparisons
-own the fixed-state pixel claims.
+## What the measurements and platform jobs establish
 
-## What has improved, and what the measurements establish
-
-The current Play preview shows complete footage above both manual racks,
-including the correct `1 3/5'`, larger caps at both travel endpoints, distinct
-numeric rows below the tracks, and two separate EDIT BANK/SOUNDING rows. The
-idle natural tops retain their perspective and have subtle edge lighting;
-the stronger held-key marker remains visible. No overlap or crop is apparent
-in the two inspected current frames. That observation does not substitute for
-the independently executed raster masks or the missing wider capture matrix.
-
-[A23](../development/2026-11-15-product-continuation/notes/A23-visual-acceptance.md)
-reports 19,712 checks across 110 paired cases and 336,015,828 pixels: zero escaped
-changes, zero numeric-row shadow leaks, 1,296 cap measurements, 8,717 complete
-literal glyphs and 34 byte-identical compact/Flat/hidden pairs. It exercises
-all nine values, both manuals/banks, fixed/adjustable/Cancel states, pending and
-focus cues, fractional dimensions, four output scales and clipped/offset views.
-These results support the scoped implementation and preservation rules; they
-are not a percentage match to the concept or a general accessibility result.
+| Acceptance | Actual result | Limit |
+| --- | --- | --- |
+| [A23 controlled comparison](../development/2026-11-15-product-continuation/reports/A23-visual-acceptance.json) | 19,712 checks, 110 paired cases and 336,015,828 pixels; zero escaped changes/readout-shadow leaks, 1,296 cap measurements, 8,717 complete literal glyphs and 34 identical compact/Flat/hidden pairs. | Scoped containment across fixed states, extrema, pending/focus, scale and clipping. No whole-reference similarity score or displayed-readability result. |
+| [A42 modal material acceptance](../development/2026-11-15-product-continuation/reports/A42-calibration-modal-raster.json) | **1,293/1,293 assertions, 109 frames, 6.63 s** locally: 901 original + 170 header + 222 modal assertions. All 212 clipping differences exactly match literal plates within 38 boundary-crossing glyphs; zero unexplained pixels/literal mismatches. | Original failures and exact final oracle retained. No numeric tolerance or whole-textbox exclusion; no contrast-standard or semantic-accessibility result. |
+| [Linux primary audit](../reviews/PRODUCT_LINUX_HOSTED_REVIEW.md) | At d8: native Release **48/48 MIDI ON and 48/48 OFF**, native sanitizers **21/21**; material records retain **1,293 checks / 109 frames**. | Compiled native support and dummy-driver/software fixtures. Original d556 sanitizer build failure remains retained. |
+| [Windows primary audit](../reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md) | At d8: MSVC x64 native Release **48/48**, **1,293 checks / 109 frames**, installed MIDI-ON/WinMM workflow passes. | Dummy runtime; no physical WinMM/display, MinGW or Windows sanitizer result. |
+| [macOS primary audit](../reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) | At d8: AppleClang arm64 native Release **48/48**, **1,293 checks / 109 frames**, installed CoreMIDI workflow passes. | Dummy runtime; no native Retina/display/controller or macOS sanitizer result. |
+| [Root's later coherent local run](../development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt) | **180/180 in 507.55 s**, after A46/A48 checker/plot repairs over d8. | Separate local inputs from d8's hosted source; no new capture, device or 1:1 result. |
 
 [A27's six paired timing cases](../development/2026-11-15-product-continuation/reports/A27-paint-performance.json)
-pass the declared local regression threshold of growth exceeding **both 15%
-and 2 ms**. The largest median increase is 1.380 ms / 1.228%. Current wide
-software medians remain **112.441–113.713 ms**, with p95 **127.045–131.616 ms**.
-This evidence does not establish 60 fps, native display response, vsync behavior
-or audio deadlines. The separate observer saw no added C++ allocation/free calls
-in the sampled paint paths; it does not cover arbitrary C allocation, other
-threads, GPU resources or leak freedom.
+pass the regression threshold of growth exceeding **both 15% and 2 ms**.
+Largest median increase is 1.380 ms / 1.228%. Absolute wide software medians
+remain **112.441–113.713 ms**, p95 **127.045–131.616 ms**. These are not 60-fps,
+display-response, vsync or audio-deadline results. The separate observer found
+no added C++ allocation/free calls in sampled paint paths; its scope excludes
+arbitrary C allocation, other threads, GPU resources and leak freedom.
 
-### Header: inherited improvement, independently remeasured
+### Header: inherited improvement, already measured
 
-Using the original 1672×941 images, A34 selected warm light pixels with
-`R >= 130`, `G >= 105`, `R >= G`, `B <= 0.9*R`. The half-open title region is
-`[590,10,1080,65]`, excluding the concept's side rules; the subtitle region is
-`[590,65,1100,90]`. Bounding boxes below use pixel coordinates without image
-registration, scaling or adjustment for the result.
+A34 measured original 1672×941 images with warm-light thresholds
+`R >= 130`, `G >= 105`, `R >= G`, `B <= 0.9*R`; title region
+`[590,10,1080,65]`, subtitle region `[590,65,1100,90]`. A41 repeated this bounded
+measurement on admitted current Play. A54 did not rerun it.
 
-| Ink region | Reference box / size | Current Play box / size | Historical v5 |
-| --- | --- | --- | --- |
-| Title | `[603,20,1067,53]` / 464×33 | `[602,20,1065,53]` / 463×33 | Same box and identical pixels to current within the title region. |
-| Subtitle | `[650,71,1021,83]` / 371×12 | `[650,71,1020,83]` / 370×12 | Same box and identical pixels to current within the subtitle region. |
-
-The title is already close in footprint and vertical position. The reference
-title's highlight and stroke appearance still differ; equal bounds would not
-establish equal lettering. The subtitle intentionally reads **NOMINAL DRY ORGAN**,
-so its matching visual hierarchy is not matching glyph content. The older
-[v3 review](../reviews/REFERENCE_REFINEMENT_VISUAL.md) remains evidence for its
-named source: its title-size proposal has already been implemented in the later
-header and should not be repeated as unfinished work.
-
-### Composition: retained geometry with explicit differences
-
-Native coordinates below are the accepted logical allocations, checked against
-the unchanged current layout inputs and the viewed preview. The reference
-coordinates remain approximate visual landmarks from the
-[source comparison](../reviews/REFERENCE_REFINEMENT_VISUAL.md),
-not a new independent geometry extraction or measured instrument dimensions.
-
-| Landmark at 1672×941 | Reference | Current native allocation | Consequence |
-| --- | ---: | ---: | --- |
-| Cabinet panel left | x1125 ±2 | x1124.831 | Close column alignment is already retained. |
-| Upper playing-key span | y548–692 ±2 | y542.760–686.880 | Nearly the reference depth, about five pixels higher. |
-| Lower playing-key span | y720–867 ±3 | y726.880–871.000 | Starts about seven pixels lower. |
-| Drawbar-rack span | y267–509 ±2 | y240.920–472.760 | Racks remain higher and shorter; local cap growth does not change this allocation. |
-
-The application reserves space for expression and pedal mixtures, the computer
-keyboard toolbar, full preset rails, actual device status and the pedalboard.
-Changing these spans requires a separately reviewed geometry contract and shared
-hit/paint verification. It is outside this completed paint slice.
-
-## Remaining visual gaps and required distinctions
-
-| Area | Current observed relation to the concept | Action or retained boundary |
+| Ink region | Reference box / size | Current native box / size |
 | --- | --- | --- |
-| Manual racks | The larger caps and readable complete legends improve local hierarchy. Track wells remain separate hard-edged rectangles; the source has more continuous recess shading and softer cap highlights. | A later material candidate may refine local lighting only after a measured proposal, preserving centers, endpoint separation, full text and focus. Do not imitate the concept's incorrect footage or reverse the working travel. |
-| Manual keys | Correct full manuals have narrower individual keys than the concept. The top bands are now implemented, but the repeated outlines and top/front transitions still look more uniform. | Preserve 61 keys per manual and the shared projected quads. Assess any future edge/front treatment in matched idle/held/focused states; additional bevel work requires its own containment, contrast and cost evidence. |
-| Deck and panel rims | The live charcoal surfaces and thin brass frames read flatter and more regular than the source's softly varied matte deck and broader bevels. | This is the clearest remaining bounded material candidate after the current gallery gate. Compare deterministic fine grain and restrained rim-light transitions in existing interiors; retain text plates and the existing grain/work budgets. No assets or new painter are authorized by this review. |
-| Utility and performance rows | Save/Load/Help, Audio/MIDI/Panic/Flat, expression and pedal mixtures occupy areas that the concept uses for a preset selector, gear and scanner tablets. | Preserve working utilities and honest unavailable state. Unsupported scanner, microphone, Stop or cabinet-speed controls must not appear functional to satisfy resemblance. |
-| Presets, cabinet and pedals | The source has three tablets beside each manual and mic/speed furniture beneath its cabinet. The app shows 24 reversed preset keys, a status card and all 25 pedals. | These are deliberate differences required by real inventory and current model availability. Cabinet artwork remains decorative; the visible microphones and rotors establish no connected audio model. |
-| Small operational text | Wide rack labels are improved; preset legends, sidebar status, keyboard hints and minimum-size modal helper text remain visually small. The active refinement leaves compact/Flat paths unchanged. | Complete glyphs and no crop establish fit, not comfortable reading. Make minimum/default-size native-display usability the next typography gate before adding decoration. |
-| MIDI overlay | At 960×700, endpoint fields 10/115 and INVERTED, channel fields, Apply/Disconnect and focus fit visibly. Status says MIDI unavailable and active calibration none (inactive). | This is a separate product dialog without a concept counterpart. The image proves neither a working controller nor a successful Apply/reconnect. Compare configured/selected/active states through their independent functional evidence and new gallery cases. |
+| Title | `[603,20,1067,53]` / 464×33 | `[602,20,1065,53]` / 463×33 |
+| Subtitle | `[650,71,1021,83]` / 371×12 | `[650,71,1020,83]` / 370×12 |
 
-The atlas's pp.409/411/431 explicitly separate concept direction from incorrect
-counts, legends and controls, as retained by the
+Title footprint and vertical position are already close. Native stroke/highlight
+treatment still looks less full than the reference; equal bounds would not
+establish equal lettering. The correct **NOMINAL DRY ORGAN** subtitle has
+different glyph content. The older
+[v3 title-size proposal](../reviews/REFERENCE_REFINEMENT_VISUAL.md) is implemented
+and is not an outstanding task.
+
+### Composition: current geometry and remaining spatial differences
+
+Native coordinates are unchanged logical allocations from the
+[accepted layout](../REFERENCE_REFINEMENT_LAYOUT.md). Reference coordinates
+are A34's retained approximate visual landmarks from the
+[source comparison](../reviews/REFERENCE_REFINEMENT_VISUAL.md), not new A54
+measurements or physical dimensions.
+
+| Landmark at 1672×941 | Reference | Current native allocation | Remaining difference |
+| --- | ---: | ---: | --- |
+| Cabinet panel left | x1125 ±2 | x1124.831 | Close column alignment retained. |
+| Upper playing-key span | y548–692 ±2 | y542.760–686.880 | About five pixels higher. |
+| Lower playing-key span | y720–867 ±3 | y726.880–871.000 | Starts about seven pixels lower. |
+| Drawbar-rack span | y267–509 ±2 | y240.920–472.760 | Higher and shorter; larger caps did not change this allocation. |
+
+The app also reserves expression/pedal mixtures, keyboard tools, complete
+preset rails, device status and all pedals. At 960×700 and 1280×900, pedals move
+below the manuals and the cabinet column is omitted. These are responsive
+product arrangements, not matched-size replicas of the single 1672×941 concept.
+Changing spans requires a reviewed geometry proposal and shared hit/paint checks.
+
+## Remaining visual and UX gaps
+
+| Area | A54's current observation | Required next evidence or boundary |
+| --- | --- | --- |
+| Manual racks | Complete footage, 32-pixel wide caps and distinct EDIT BANK/SOUNDING rows are visible. Separate hard-edged black wells and uniform highlights differ from continuous recessed shading in the concept. | Preserve centers, 0/8 separation, complete text and focus in any local material proposal. Rack relocation is a separate geometry change. |
+| Manual keys | Full 61-key manuals have narrower keys; repeated top/front transitions and dark accidental edges are more regular than the reference. Minimum Dimensional manuals are shallow; Flat has rectangular boundaries. | Preserve 61+61+25 keys and shared projected quads. Review idle/held/focused endpoints and front contrast before accepting another bevel treatment. |
+| Deck, rims and walnut framing | Charcoal plates, narrow brass outlines and repeated straight edges look flatter than the source's broader bevels and varied matte/recess lighting. Lower wood rails differ in emphasis. | Deck/rim lighting remains the clearest bounded material candidate after displayed usability. Freeze regions, work/texture/allocation limits and a fixed-state oracle first. |
+| Typography and hierarchy | Header size is close but stroke/highlight differs. Preset legends, footer hints, edit/sounding details, minimum Service evidence rows and MIDI helpers are small. Service bank memories wrap at minimum size. | Assess actual minimum/default-size reading on an identified display/DPI. Fit and no crop do not establish comfortable reading; prioritize observed text failures before decoration. |
+| Contrast and state cues | Cyan focus, warm held markers and explicit state words are visible. Muted helper/evidence text sits on dark plates; apparent readability depends on scale. | No current standard-level text/nontext contrast, target-size or low-vision result exists. Assess default, selected, pending, focused, unavailable and error states with textual meaning intact. |
+| Utilities, presets and cabinet furniture | Save/Load/Help, Audio/MIDI/Panic/Flat, expression/mixtures, 24 reversed presets and status/pedals occupy areas used differently in the concept. Rotary/Service show read-only model facts. | Preserve real functions and unavailable state. Do not remove controls or add fake scanner, microphone, Stop or speed controls to claim resemblance. These remain recorded 1:1 differences. |
+| MIDI dialog | Minimum Dimensional and Flat show 20/100/Inverted, channels/actions and Direction focus. Both helper rows and Close fit; backend unavailable and active calibration none are explicit. | No concept counterpart. Static inactive captures do not prove staged/configured divergence, Apply/reconnect or controller behavior; native-device journeys remain separate from synchronous fixtures. |
+| Accessibility and response | Keyboard focus is visible and three-platform software tests pass. The images provide no semantic accessibility or real display/input-response journey. | Specify a platform semantic bridge and actual screen-reader journey. Adopt an absolute response criterion before measuring; retain the ~113 ms software result and avoid a 60-fps claim. |
+
+Atlas pp.409/411/431 separate art direction from incorrect concept counts,
+legends and controls; see retained
 [A05](../development/2026-11-15-product-continuation/notes/A05-atlas-visual.md) and
 [A06](../development/2026-11-15-product-continuation/notes/A06-atlas-product.md)
-page reviews. Preserve **61 Upper + 61 Lower + 25 pedal playing keys = 147**,
-**24 presets**, and **68 ordinary controls including those presets**; presets
-are not an additional 24 on top of 68. Preserve 71 Play/ten common focus stops,
-47 sound parameters, state4/readers 1–3, correct footage and 0-at-top/8-toward-player
-drawbar direction. Artwork cannot replace these live controls or their meanings.
+page reviews. Preserve **147 playing keys = 61 Upper + 61 Lower + 25 pedals**,
+**68 ordinary controls including 24 presets**, **71 Play / ten common focus
+stops**, and **eleven separate MIDI-modal stops**. Preserve correct `1 3/5'`
+footage, **0 at the top / 8 toward the player**, 47 sound parameters,
+`B3CONTROLS4` and readers 1–3. These correctness constraints do not waive the
+user's 1:1 objective or authorize calling the present result equal.
 
 ## Next UI gates
 
-1. **Admit the current product gallery.** Freeze coherent source, executable,
-   dependencies, controls, copied state and per-image diagnostics. Capture actual
-   reference/default/minimum Play, Flat, and the separate MIDI overlay; include
-   current Rotary/Service views where the gallery claims those workspaces.
-   Inspect every original lossless image for complete inventory, footprint,
-   readable route/focus/pending cues, and truthful backend/model status. Preserve
-   v1–v5 unchanged. Add final gallery links and refresh README only after admission;
-   the two previews above do not close this gate.
-2. **Qualify displayed usability and response.** On an identified native window
-   and display/DPI, read the smallest preset/status/helper text, edit a drawbar
-   through 0/8, distinguish EDIT from SOUNDING while pending, traverse focus,
-   resize with held owners, use Flat and inspect MIDI calibration states. Record
-   actual text/target problems and frame/input observations. Keep unavailable
-   hardware explicit. Adopt any absolute response target before grading it;
-   A27's relative software budget supplies no interactive frame-rate promise.
-3. **Freeze one further material candidate only after those results.** Prioritize
-   the deck/rim lighting difference above; leave layout, header placement,
-   inventory, state and existing applied-state cues intact. Specify changed
-   regions, deterministic work/texture/allocation limits and a fixed-state
-   before/after oracle before implementation. Retain independent containment,
-   contrast and 30/300 timing checks, followed by fresh current captures. If the
-   display review instead finds small-text failures, prioritize a separately
-   authorized compact typography treatment over added surface detail.
+1. **Qualify displayed usability and response on an identified native window.**
+   Use frozen production inputs and record OS, backend, display/DPI, logical/
+   drawable sizes and build. Inspect 960×700, 1280×900, 1672×941 and Flat. Read
+   preset/footage, EDIT/SOUNDING, footer, Service and MIDI helper/error text;
+   edit through 0/8, traverse 71/10/11 focus sets in both directions, and resize
+   across 1400×820 with held owners. Include off-window release, fresh press and
+   deliberate focus loss. Retain actual frames, input/paint timing, final owners
+   and numeric shutdown. Declare an absolute response criterion before grading.
+   Physical MIDI/audio and accessibility need their own identified observations.
+2. **Freeze the next change against those findings.** If small text fails,
+   prioritize scoped compact typography/contrast. Otherwise propose one deck/rim
+   treatment with fixed-state crops, containment, contrast, allocation and 30/300
+   timing checks. Production remains frozen; this review authorizes no painter/
+   layout edit or recapture.
+3. **Repeat the reference comparison after the accepted change.** Preserve the
+   atlas and correct live inventory; capture the changed app at source-bound
+   matched sizes/states, admit images independently and update README. Track
+   spatial, material and type differences above. No similarity percentage or
+   literal 1:1 claim is accepted without a declared comparison and actual result.
 
-No new build, application launch, broad test, hardware observation or publication
-was performed by A34. This review closes a documentation/evidence-comparison
-task; final gallery acceptance, literal image equality, semantic accessibility,
-physical MIDI/audio and instrument/cabinet fidelity remain separately evidenced
-product gates.
+The capture/admission/README gate is **complete** for current frozen production.
+A54 executed no build, CTest, app, browser or device session. This closes direct
+image and documentation acceptance only; displayed usability, accessibility,
+physical devices, timing and whole-reference equality remain open product gates.
+
+## Historical A34 inputs — superseded for the current gallery
+
+A34's [original note](../development/2026-11-15-product-continuation/notes/A34-reference-gap-review.md)
+preserves its source/time and preview-only scope. It viewed the atlas,
+[historical v5 Play](../../examples/demos/standalone-interface-preview-v5/images/play-reference-1672x941.png)
+and two temporary previews under `/workspace/scratch/5b7d983ac078/ui-preview/`.
+Their identities remain history:
+
+| A34 input | SHA-256 |
+| --- | --- |
+| Historical v5 Play at `487064d2400b9f39d0ee66ed136a09c9e372379e` | `f5bf973c949b71d900572cffba72d617f1f2e61efb640b3e9ce97f90d2c30a19` |
+| Temporary `play.png` | `c727007376ab9067b6c101d852fb2bffdfecf4084e75adf4373138411fd2e21d` |
+| Temporary `midi.png` | `2678b686c98d81442d4a77608d877ed2541536320c4c6f18a38c590b5696a401` |
+| Temporary `play.json` | `cf28e6d96b1ba25a7eab45ee9f92629cbab86fc5d28198be8c3c9b7765730456` |
+| Temporary `midi.json` | `bb6db808550b6b3328c704a56807558c4814eb8ec85280c42e5036290250518a` |
+
+That Play preview used B/B, expression 100%, percussion off and 1/0/0 held;
+v5 used Upper fixed C#, Lower A#, expression 75%, percussion on and 2/1/1.
+A34 computed no whole-frame score between different states. Its MIDI preview
+showed 10/115/Inverted; admitted current frames show 20/100/Inverted. A34's
+header regions were identical between its current and v5 frames. These are not
+new A54 inspections of temporary files. No historical gallery was changed.

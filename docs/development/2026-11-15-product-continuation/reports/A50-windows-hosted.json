@@ -1,0 +1,580 @@
+{
+  "schema": "b3-product-windows-hosted-audit-v1",
+  "author": "/root/w09_a50_windows_hosted",
+  "observed_utc": "2026-11-15T02:43:08Z",
+  "reviewed_source": {
+    "commit": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "tree": "edf67b978f93e8dbea6537ce92d3928c171bc1f3",
+    "parent": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+    "verification": "Exact commit/tree/parent independently fetched through GitHub commit endpoint; local Git objects match. Both current job primary logs show the exact checkout."
+  },
+  "result": "Both requested current Windows MSVC jobs succeeded, with primary-log counts and selected numeric records inspected.",
+  "source_files": {
+    ".github/workflows/ci.yml": {
+      "bytes": 8932,
+      "sha256": "29b519f04334200ed391a945e324c6e2af5a75d0ba129eebe59abcf5487fc1fe"
+    },
+    ".github/workflows/standalone.yml": {
+      "bytes": 60379,
+      "sha256": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a"
+    },
+    "CMakeLists.txt": {
+      "bytes": 23638,
+      "sha256": "36c17341aae955e55a482f6434ee563d4646a76027252797d53945e470d48aa2"
+    },
+    "CMakePresets.json": {
+      "bytes": 1711,
+      "sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8"
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 27268,
+      "sha256": "772f75acd307d955cd632afc01ec7c5221859aa997aa97bd4d108a69deafc94c"
+    },
+    "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": {
+      "bytes": 5011,
+      "sha256": "e33b17f3f9642d17e21e5d645f8f3d82a176ca030b78164521af2e530ce57dd6"
+    },
+    "apps/standalone/native_tests/fake_calibration/RtMidi.h": {
+      "bytes": 12049,
+      "sha256": "15a24319a27cb6df6440b758902b8b9917e3ad317b93bc725e915049f4633041"
+    },
+    "apps/standalone/native_tests/test_standalone_native_calibration.py": {
+      "bytes": 31325,
+      "sha256": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85"
+    },
+    "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": {
+      "bytes": 67285,
+      "sha256": "439d50f5990025fa09350283cb63f0bbb15ce0a526c561e742b6f5365b91a9c8"
+    },
+    "apps/standalone/native_tests/test_standalone_install.py": {
+      "bytes": 43704,
+      "sha256": "5510eb68f0babfb28c72cc06471d01fb829845621610414fd2fcca7e9d9579b5"
+    },
+    "cmake/InstallStandalone.cmake": {
+      "bytes": 16653,
+      "sha256": "43bc6780b688bfc2bcadb9ef09bc81056b0be5fb91f0ad68cef4de6238ce4036"
+    },
+    "cmake/InstallCrossoverTools.cmake": {
+      "bytes": 8325,
+      "sha256": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844"
+    },
+    "tests/test_crossover_install.py": {
+      "bytes": 26706,
+      "sha256": "8daf656ad24f812d9d11920c35c846ec46d344e4b7fc78ed330ae9f764ffcd03"
+    },
+    "docs/MIDI_EXPRESSION_GUIDE.md": {
+      "bytes": 23478,
+      "sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c"
+    },
+    "data/dependencies/sdl2-lock.json": {
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+    },
+    "data/dependencies/rtmidi-lock.json": {
+      "bytes": 1161,
+      "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+    }
+  },
+  "configuration": {
+    "runner": "windows-2022",
+    "runner_image": "20261112.366.7",
+    "operating_system": "Microsoft Windows Server 2022 Datacenter 10.0.20348",
+    "architecture": "x64",
+    "generator": "Visual Studio 17 2022",
+    "compiler": "MSVC 19.44.35230.0",
+    "msbuild": "17.14.60+43b635718",
+    "windows_sdk": "10.0.26100.0",
+    "cmake": "3.31.6",
+    "ctest": "3.31.6",
+    "python": "3.12.10",
+    "build_configuration": "Release",
+    "core": {
+      "standalone": false,
+      "vst3": false,
+      "sanitizers": false,
+      "notes": "Default CMake options plus the logged Release preset."
+    },
+    "native": {
+      "standalone": true,
+      "midi": true,
+      "midi_backend": "WinMM",
+      "vst3": false,
+      "sanitizers": false,
+      "sdl": "2.32.10",
+      "sdl_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "rtmidi": "6.0.0",
+      "rtmidi_commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "rtmidi_prepared_cpp_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a",
+      "runtime_drivers": "dummy audio and video for automated acceptance",
+      "native_compiled_backend_check": "Windows video and WASAPI macros were required by the successful recorded compiler/backend verification step; this is compile-time availability, not physical-device execution."
+    }
+  },
+  "current_jobs": [
+    {
+      "id": 132672791932,
+      "run_id": 43668397337,
+      "name": "Release (Windows MSVC)",
+      "head_sha": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-15T02:34:09Z",
+      "completed_at": "2026-11-15T02:40:19Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397337/job/132672791932",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record the revision and tools",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Configure Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Configure Release on Windows",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build Release",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run every registered Release test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the completed interface session",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Verify the completed refinement session",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Retain configure, build, and test diagnostics",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 132672792088,
+      "run_id": 43668397338,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "head_sha": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-15T02:34:08Z",
+      "completed_at": "2026-11-15T02:41:43Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/job/132672792088",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Record exact source and dependency identities",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external SDL2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Explicitly acquire and locally verify locked external RtMidi",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install Ubuntu desktop and audio development headers",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Configure native Release on Linux or macOS",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Configure native Release on Windows",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain actual compiler identities and require native SDL backends",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build the application and every standalone acceptance input",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the compiled MIDI backend and retain prepared identities",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run all required standalone acceptance tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reverify source and dependencies after acceptance",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Stage, relocate, smoke and archive the exact installed payload",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain complete source, dependency, build, test and smoke diagnostics",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain the successful executable package and byte inventory",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.12",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Check out the exact tested revision",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "primary_logs": [
+    {
+      "id": 132659897861,
+      "run": 43664212086,
+      "source": "b9d352a82ac1afdec70c76ec5b1987785a37762e",
+      "kind": "historical-core-failure",
+      "passed": 154,
+      "total": 155,
+      "seconds": 259.31,
+      "conclusion": "failure",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43664212086/job/132659897861",
+      "decoded_utf8_sha256": "72bf5f9b76abc44a68a4fbe1beb0aa0e7eafef728e944f6ef18b9b7ab1fb4df6",
+      "decoded_utf8_bytes": 455092,
+      "line_count": 2943
+    },
+    {
+      "id": 132659898014,
+      "run": 43664212019,
+      "source": "b9d352a82ac1afdec70c76ec5b1987785a37762e",
+      "kind": "historical-native-failure",
+      "passed": 47,
+      "total": 48,
+      "seconds": 344.01,
+      "conclusion": "failure",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43664212019/job/132659898014",
+      "decoded_utf8_sha256": "6c92b17c33698bf706a84f177b315f2e8e6bce38eebd1640855661255b5b88bf",
+      "decoded_utf8_bytes": 485700,
+      "line_count": 3584
+    },
+    {
+      "id": 132664951145,
+      "run": 43665863633,
+      "source": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+      "kind": "historical-core-repair-success",
+      "passed": 155,
+      "total": 155,
+      "seconds": 205.4,
+      "conclusion": "success",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43665863633/job/132664951145",
+      "decoded_utf8_sha256": "07bf571c57167143bc29b0dd1e93588bdc6a7a29e6de6e51138672ea3a0e2f28",
+      "decoded_utf8_bytes": 442166,
+      "line_count": 2806
+    },
+    {
+      "id": 132664950665,
+      "run": 43665863538,
+      "source": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+      "kind": "historical-native-repair-success",
+      "passed": 48,
+      "total": 48,
+      "seconds": 364.64,
+      "conclusion": "success",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43665863538/job/132664950665",
+      "decoded_utf8_sha256": "992ad1fe97af6816f28cd95b76a2be5fe94783aa9651dd91e5b8e0091ca3e04b",
+      "decoded_utf8_bytes": 504691,
+      "line_count": 3772
+    },
+    {
+      "id": 132672791932,
+      "run": 43668397337,
+      "source": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "kind": "current-core",
+      "passed": 155,
+      "total": 155,
+      "seconds": 191.07,
+      "conclusion": "success",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397337/job/132672791932",
+      "decoded_utf8_sha256": "3fabf94b0789111838fb60eb6df4d8d83be06a458012d5dc62a17e1075d0e265",
+      "decoded_utf8_bytes": 442420,
+      "line_count": 2812
+    },
+    {
+      "id": 132672792088,
+      "run": 43668397338,
+      "source": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+      "kind": "current-native",
+      "passed": 48,
+      "total": 48,
+      "seconds": 309.16,
+      "conclusion": "success",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/job/132672792088",
+      "decoded_utf8_sha256": "c0b4bd5e756ff1b6ae4bb5857b515cc155f2d8ba85ab5af8305644eb4aa61902",
+      "decoded_utf8_bytes": 508575,
+      "line_count": 3776
+    }
+  ],
+  "current_gates": {
+    "core_ctest": {
+      "passed": 155,
+      "total": 155,
+      "seconds": 191.07,
+      "command": "ctest --preset release --parallel 2 --timeout 300 --no-tests=error --output-junit <workspace>/ci-logs/ctest.xml",
+      "crossover_install_ctest_seconds": 8.94
+    },
+    "native_ctest": {
+      "discovered": 48,
+      "passed": 48,
+      "total": 48,
+      "seconds": 309.16,
+      "command": "ctest --test-dir build-standalone -C Release -V --parallel 1 --no-tests=error --timeout 180 -R '^test_standalone_' --output-junit <workspace>/standalone-ci-logs/ctest.xml"
+    },
+    "calibration": {
+      "python_methods": 9,
+      "python_seconds": 20.396,
+      "ctest_seconds": 20.51,
+      "subprocesses": 10,
+      "native_lifecycles": 7,
+      "intentionally_failed_replays": 2,
+      "probe_sha256": "097d97a1d756e07c2b93d248bb55bff640547ee93c971a8666912608257b2eb7",
+      "primary_log_lines": [
+        3198,
+        3214
+      ],
+      "boundary": "Real application/adapter and SDL dummy callbacks; substituted synchronous RtMidi dependency, not hardware or asynchronous OS driver race qualification."
+    },
+    "material": {
+      "primary_log_line": 2946,
+      "checks": 1293,
+      "failures": 0,
+      "frames": 109,
+      "legacy_checks": 901,
+      "header_checks": 170,
+      "calibration_modal": {
+        "checks": 222,
+        "scenes": 4,
+        "frames": 21,
+        "controls": 44,
+        "literal_glyph_regions": 96,
+        "changed_values": 12,
+        "focused_controls": 8,
+        "invalid_frames": 2,
+        "long_text_frames": 2,
+        "clipped_frames": 1,
+        "intersected_glyphs": 38,
+        "resampled_pixels": 212,
+        "unexplained_pixels": 0,
+        "literal_mismatches": 0
+      },
+      "ctest_seconds": 4.08,
+      "backend": "SDL software surface; no window/audio"
+    },
+    "installed": {
+      "python_methods": 8,
+      "python_seconds": 10.49,
+      "ctest_seconds": 10.67,
+      "actual_windows_midi_on": {
+        "primary_log_line": 2598,
+        "timestamp": "2026-11-15T02:36:37.3998087Z",
+        "suite": "standalone-install-v2",
+        "payload_files": 20,
+        "midi_enabled": true,
+        "midi_backend": "WinMM",
+        "binary_sha256": "7a0765fccfa81d786df9974ee3d7696f68e4ebe63c11812888cb4e9caf1d3f2f",
+        "audio_driver": "dummy",
+        "video_driver": "dummy",
+        "smoke": {
+          "completed": true,
+          "duration_ms": 600,
+          "held_observed": true,
+          "note_off_sent": true,
+          "note_on_sent": true,
+          "passed": true,
+          "release_observed": true,
+          "requested": true
+        },
+        "errors": {
+          "count": 0,
+          "last": ""
+        },
+        "callback_count": 57,
+        "rendered_frames": 29184,
+        "held_after_shutdown": false
+      },
+      "workflow_stage_verified_files": 20,
+      "workflow_smoke_ms": 600,
+      "new_guide": "MIDI_EXPRESSION_GUIDE.md",
+      "new_guide_install_log_line": 3624,
+      "inventory_verification_log_line": 3678,
+      "source_inspected_assertions": {
+        "private_sources_build_dependencies_deleted_before_calibration": true,
+        "inverted_cc11_expression": 0.75,
+        "calibration_endpoint_minimum": 20,
+        "calibration_endpoint_maximum": 100,
+        "raw_cc11_decimal": 40,
+        "namespace_sentinels_preserved": 4,
+        "installed_bytes_unchanged": true,
+        "physical_midi_callbacks": 0
+      },
+      "midi_off_scope": "The successful eight-method suite includes a 16-file MIDI-OFF imported-target install-rule fixture. No separate Windows MIDI-OFF executable/configuration was built or smoke-tested by this matrix; the actual Windows runtime/package is MIDI-ON, 20 files."
+    }
+  },
+  "artifacts": {
+    "diagnostics": {
+      "id": 14142823076,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/artifacts/14142823076",
+      "zip_bytes": 322336
+    },
+    "package": {
+      "id": 14143167615,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43668397338/artifacts/14143167615",
+      "zip_bytes": 1595674
+    },
+    "boundary": "Primary logs record successful creation/upload and in-job inventory/archive verification. A50 did not download or independently re-extract artifact bytes."
+  },
+  "repairs": {
+    "environment": "Both SDL_getenv values are copied immediately into separate owned std::strings before further SDL reads/application startup; the pinned Windows SDL implementation returns reusable SDL_envmem.",
+    "crossover_policy": "Policy-independent while(1) replaces while(TRUE); destination checks remain unchanged.",
+    "crossover_stdout": "Normalize only Windows stdout CRLF pairs before the existing exact comparison with the LF atomic file; output protections remain unchanged.",
+    "mingw": "The source -municode fix is not executed by these MSVC jobs.",
+    "crossover_skip": "test_destdir_checks_and_copies_the_staged_prefix is explicitly skipped on Windows. Successful core primary logs give CTest gate status, not a printed per-method crossover-install count."
+  },
+  "preserved_history": {
+    "b9": {
+      "source": "b9d352a82ac1afdec70c76ec5b1987785a37762e",
+      "tree": "b3b8b68e4c1f8312d46962924b5096f4ea10c4d2",
+      "core": "154/155; four installer assertion failures and one skipped method, including CMP0012/preflight and CRLF representation.",
+      "native": "47/48; eight of nine calibration methods fail during scenario/trace setup."
+    },
+    "d556": {
+      "source": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+      "tree": "a3150fd2489a50a430b02c01eadd5e0c180bc7f9",
+      "core": "155/155 in 205.40s; crossover install gate 9.43s",
+      "native": "48/48 in 364.64s; calibration 9 methods/10 processes/7 lifecycles/2 intentional failed replays, CTest21.33s",
+      "material": {
+        "primary_log_line": 2944,
+        "checks": 1071,
+        "failures": 0,
+        "frames": 88,
+        "ctest_seconds": 5.62
+      },
+      "installed": {
+        "primary_log_line": 2596,
+        "timestamp": "2026-11-15T02:06:02.5579800Z",
+        "suite": "standalone-install-v2",
+        "payload_files": 19,
+        "midi_enabled": true,
+        "midi_backend": "WinMM",
+        "binary_sha256": "59c660d07367c3b97cad7a164aef916fea54c9ea3d4e2581a1ff50ef42aaa7a6",
+        "audio_driver": "dummy",
+        "video_driver": "dummy",
+        "smoke": {
+          "completed": true,
+          "duration_ms": 600,
+          "held_observed": true,
+          "note_off_sent": true,
+          "note_on_sent": true,
+          "passed": true,
+          "release_observed": true,
+          "requested": true
+        },
+        "errors": {
+          "count": 0,
+          "last": ""
+        },
+        "callback_count": 58,
+        "rendered_frames": 29696,
+        "held_after_shutdown": false
+      },
+      "boundary": "Old 1,071-check raster and 19-file MIDI-ON payload do not qualify A42/A43 additions; the separate d556 Linux native sanitizer build failure is not a Windows failure or a later-source pass."
+    }
+  },
+  "limits": [
+    "Windows MSVC x64 Release only; no MinGW, Windows Debug or Windows sanitizer pass claimed.",
+    "No physical MIDI/audio/display, real asynchronous driver race, callback deadline, accessibility, signed distribution, DAW or literal 1:1 visual qualification.",
+    "VST3 review belongs to A52; Linux/macOS and sanitizer outcomes have their own owners.",
+    "Later source or workflow changes require their own affected qualification; d8 is not a promise about a future main tree.",
+    "No local build, test, application execution, source/workflow/shared-status edit, commit or push was performed by A50."
+  ],
+  "next_gate": "After the integrator publishes the frozen A46/A48 changes and eventual closure source, discover the actual Windows selections and audit the exact new core/native primary logs. Preserve these source-specific results; pursue identified real device/WinMM fault-lifetime qualification separately.",
+  "retained_excerpt": "A50-windows-primary-excerpts.txt"
+}

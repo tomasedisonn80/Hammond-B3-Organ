@@ -1,5 +1,15 @@
 # Next steps
 
+## Current integration gate
+
+All 60 actual workers are accepted and the strict local product checker passes.
+The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) preserves the **unmet, unwaived
+1:1 UI requirement**. Root must publish the frozen source and inspect its strict
+record step, both added Python modules and full required hosted jobs. The
+pre-closure sequence below records how this candidate was assembled; remaining
+engineering work starts at the next dependency-ready phase section.
+
+
 ## Resume the active product continuation
 
 Read the [complete M0–M9 plan](PLAN.md), [current status](STATUS.md),
@@ -10,34 +20,35 @@ visual refinement and an independent ideal M6 crossover. Its sixty-agent,
 ten-wave request remains in progress. The completed reference-refinement
 ledger stays closed; the other checkout retains independent R4 ownership.
 
-The published checkpoint at the 15 November wave-6 reconciliation is
-`b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree
-`b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`. Its
-[receipt](development/2026-11-15-product-continuation/reports/calibration-install-publication.json)
-records the observed publication. The earlier `ff41d412` feature source passed
-176/176 local tests and has thirteen successful hosted job statuses; those
-results do not qualify later fixture/install changes. Follow the checkpoint
-for subsequent source and execution rather than treating this dated snapshot
-as a live remote query.
+The published checkpoint at this 15 November reconciliation is
+`d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
+`edf67b978f93e8dbea6537ce92d3928c171bc1f3`. Its
+[receipt](development/2026-11-15-product-continuation/reports/gallery-publication.json)
+and [thirteen successful hosted jobs](development/2026-11-15-product-continuation/reports/d8-hosted-status.json)
+retain exact-source qualification, including the executed 21-test native
+sanitizer selection. The later [coherent local result](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
+passes **180/180 in 507.55 s** at d8 plus accepted A46/A48 changes, with all
+366 frozen code/test/build/data inputs unchanged. Those later changes still
+need publication and their own hosted result. Follow the live checkpoint for
+subsequent observations and the [recovery handoff](PRODUCT_HANDOFF.md) for exact
+setup and ownership; a dated snapshot is not a live remote query.
 
 ## Finish the current authorized session
 
 The [wave plan](development/2026-11-15-product-continuation/WAVES.md) names intended
-work, while the manifest records actual dispatch and acceptance. At A36's
-checked snapshot, 38 workers have been dispatched and A01–A34 are accepted;
-A35 is review-complete awaiting acceptance and A36–A38 are running.
-Complete the remaining real assignments; neither planned IDs nor historical
-workers count toward this request.
+work, while the manifest records actual dispatch and acceptance. Its live counts
+govern completion; this documentation does not preaccept forthcoming workers.
+The gallery, expanded modal, installed workflow, primary d8 platform audits,
+record checker and numerical admission repair now have retained results.
+Complete the remaining real reviews and acceptance; neither planned IDs nor
+historical workers count toward the requested sixty.
 
 | Next work | Required inputs | Acceptance before closure |
 | --- | --- | --- |
-| Close observed `b9d352a` portability failures | [Original Linux Release excerpt](development/2026-11-15-product-continuation/reports/b9-linux-crossover-install-failure.txt), root's policy-independent `while(1)` ancestor-loop repair, narrow Windows fixture repairs and the [live checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md) | Preserve original install/core/native failures and root's separate 14/14 local install recheck in 1.370 s. Qualify the older hosted CMake path, linked ancestors/existing files, newline comparison and Windows calibration scenario/trace handling. Publish and identify repaired-source outcomes separately. |
-| Integrate remaining wave-6 documentation | Current MIDI/crossover guides, reference-gap review, README owner and this plan/status reconciliation | Owned diffs agree with the implementation, source-specific receipts and current inventory; all local links resolve. Existing captures retain their original identities. |
-| Qualify integration and instrumentation in wave 7 | Frozen accepted source/build inputs, registered native calibration and crossover gates, actual sanitizer selection | Build all required test inputs coherently; run affected/full required gates with `--no-tests=error`. Audit instrumentation and leak policy for the new paths. Preserve the local ptrace-blocked result and any original failures; no global leak exception. |
-| Admit current native capture and modal evidence | Actual changed executable, source/build receipt, capture-tool admission for its MIDI configuration, original atlas image and frozen visual contract | Retain minimum/default/reference/Flat and relevant workspace/overlay frames with source, executable, state and pixel identities. Independently inspect the eleven-stop calibration modal, selected/active/pending facts, clipping, focus and release behavior. Update README only from admitted actual captures. A40's gallery is planned, not yet accepted at this snapshot. |
-| Complete installed workflows and lifecycle/evidence review in wave 8 | Explicit install manifests, relocated prefixes, current guides, native fault/reconnect fixture, crossover reports, actual assignment notes | Check the requested payloads and source-independent execution, document provenance/license limits, review recovery and numerical boundaries, and provide this session's strict record validator. Keep storage bounded and retain original compact evidence. |
-| Audit the published platform source in wave 9 | Exact commit/tree, actual Linux/macOS/Windows core/native/VST3 jobs, primary logs and relevant artifacts | Record real job/test/instrumentation outcomes and installed-payload scope. The thirteen successful `ff41d412` statuses need their source-specific primary-log audit; later fixture/install gates need their own execution. A dispatch or old pass is insufficient. |
-| Close actual records and publication in wave 10 | All sixty distinct accepted results, ten six-worker waves, final source/current docs/images, current remote head and unresolved-gate list | Run the strict checker against the completed records, retain the exact result, qualify the final coherent inputs and publish with an expected-head guard and no force. Fetch and verify commit/tree/parent; observe required hosted outcomes. Keep unfinished or other-checkout work intact. |
+| Publish the accepted A46/A48 repairs and current handoff | [Record checker](development/2026-11-15-product-continuation/notes/A46-session-validator.md), [numerical admission review](reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md), exact 180-test local receipt, current remote head and owned diffs | Publish a coherent accepted tree with expected-head/no-force protection. Observe that exact source's required hosted jobs, including the two newly discovered Python modules and progress record step. Preserve d8 qualification separately; changes do not inherit it. |
+| Complete current documentation and final visual review | Admitted [eleven-frame gallery](reviews/PRODUCT_GALLERY_ADMISSION.md), current README, [reference gaps](design/PRODUCT_REFERENCE_GAPS.md), 1,293-check/109-frame material evidence and 16-OFF/20-ON install scope | Links, source identities, selected/active/pending captions and remaining limits agree. Preserve the `d556da01` capture identity and all historical galleries; a later documentation commit is not a new capture or literal 1:1 claim. |
+| Admit remaining actual wave-9/10 work | Live manifest, primary [Linux](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md), [Windows](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md), [macOS](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) and [VST3](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) reviews, code/whole-plan/recovery audits | Review each delivered result, ownership, note hash, actual verification and limits. Keep original b9/d556 failures, local ptrace blocks and named quarantine-only leak policy. No planned worker or partial checker result counts as completed work. |
+| Close actual records and final publication | All sixty distinct accepted results, ten six-worker waves, final source/current docs/images, current remote head and unresolved-gate list | Run and retain the strict product checker, switch its CI gate from progress to strict, qualify affected final inputs and publish with expected-head/no-force protection. Fetch and verify commit/tree/parent and required hosted outcomes. Preserve unfinished work and the independent R4 checkout. |
 
 The current operating references are [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_GUIDE.md),
 [INTERFACE_RUNBOOK.md](INTERFACE_RUNBOOK.md),
@@ -45,6 +56,32 @@ The current operating references are [MIDI_EXPRESSION_GUIDE.md](MIDI_EXPRESSION_
 [CROSSOVER_INSTALL.md](CROSSOVER_INSTALL.md). The integrator alone owns the
 shared build tree listed in the active checkpoint. Existing narrow fixture
 passes are retained observations, not a replacement for the later coherent gate.
+
+### Validate this session's actual records
+
+From the repository root, use the accepted product-specific checker while
+assignments are still being dispatched or accepted:
+
+```sh
+python3 -B tools/check_product_session.py --repo . --allow-incomplete --json
+```
+
+This verifies current record consistency and explicitly declines closure. It
+does not attest external dispatch, substantive acceptance, execution or product
+readiness. A46's 19-method regression result and the later 180-test suite qualify
+the checker implementation; neither result supplies missing accepted workers.
+
+Only after all **A01–A60** are actually accepted in their ten six-worker waves,
+run strict mode and retain its JSON result:
+
+```sh
+python3 -B tools/check_product_session.py --repo . --json
+```
+
+The integrator then removes `--allow-incomplete` from the product CI record
+step and observes the exact published strict result. Historical session checkers
+cannot substitute for this session. The [setup/recovery handoff](PRODUCT_HANDOFF.md#this-workspaces-recovery-setup)
+gives the coordinated workspace and read-only dependency paths.
 
 ## Next dependency-ready phase after session closure
 
@@ -104,8 +141,9 @@ reports and nominal dry Engine as reproducible baselines.
 | M4 scanner | Coordinate with the [scanner owner](SCANNER_HANDOFF.md); recover its graph, matched-input transient reference and [frozen numerical contract](SCANNER_NUMERICAL_CONTRACT.md). Complete combined line/rotor research and investigate an explicitly identified realization for G5. | Six modes/four tablet combinations, one continuing phase, Q outside modulation, one chorus return, precharged transitions and transactional continuation; then same-Hz/transient/sideband/filter/latency evidence under unchanged declared budgets. Preserve the existing G5 failure at every investigated rate. |
 | M5 and physical M6 | Select the applicable primary drawings and actual AO-28/Leslie assembly; independently trace endpoints, differential signs, loads and revision boundaries. Acquire missing transformer, operating-point, source/load and component-loss data. | Reviewed connected topology and explicit unknowns before numerical export; independent loaded AC/nonlinear/alias tests and complete dry G–G validation before cabinet fitting. Leslie 122/147 remain separate. |
 | M0/M3/M8 acquisition | Use [A1–A6](CALIBRATION_NEXT_ACQUISITION.md) with identified specimen, permission, calibrated chain/clock and repeatability plan. Begin an external-output pilot archive, then boundary-specific captures. | Immutable originals, source/condition/uncertainty records, admission and acquisition-group splits; justified fitting and untouched held-out/listening outcomes. Contact/latch/tap loading, physical expression and pedal-reactor behavior remain unmeasured. |
+| M9 native callback retirement | Assign the [A47-N1 gate](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md): in an isolated source-identified prepared RtMidi build, inject failed WinMM reset/stop/close and CoreMIDI disposal below the wrapper while holding a callback before wrapper entry. The suppressed-error gap is source-proven; no hardware failure or use-after-free was observed. | First retain current behavior, then review checked close that reports failure and preserves native handles, callback storage, adapter context and inbox before destructive cleanup. Require poison/no-reopen/no-reset behavior and ordinary leak-free teardown. Successful close also needs platform-specific callback-retirement evidence; return-code checks alone are insufficient. |
 | M9 display and device behavior | Use the current native guides and [desktop journey](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md#concrete-next-actual-displaydevice-journey) on an identified display/controller/audio system. Preserve painted pre-held input, both navigation/resize directions, off-window release/fresh press, deliberate focus loss and joined shutdown. | Actual step frames, input/diagnostic records and numeric exit status, with OS/backend/device identities. Dummy SDL and synchronous dependency fixtures do not qualify physical timing or driver concurrency. |
-| M9 accessibility and further visual work | Use [remaining reference gaps](design/PRODUCT_REFERENCE_GAPS.md) and the current layout/inspection contracts. After gallery admission, measure small-label display usability and response; specify one platform's native semantic bridge before implementation. | Correct live inventory, focus/actions/value/status semantics, actual screen-reader journeys and source-bound visual comparisons. The relative paint budget does not establish frame rate; literal 1:1 equality remains unmet. |
+| M9 accessibility and further visual work | Use the admitted gallery, [remaining reference gaps](design/PRODUCT_REFERENCE_GAPS.md) and current layout/inspection contracts. Measure small-label display usability and response; specify one platform's native semantic bridge before implementation. | Correct live inventory, focus/actions/value/status semantics, actual screen-reader journeys and source-bound visual comparisons. The relative paint budget does not establish frame rate; literal 1:1 equality remains unmet. |
 | M9 release | Review [release readiness](RELEASE_READINESS.md), [dependencies and rights](DEPENDENCIES_AND_RIGHTS.md), actual installed artifacts and named DAW workflows. | Device deadlines, DAW save/reopen, redistribution/branding decisions, platform signing/notarization and qualified distribution remain separately observed gates. |
 
 ## Preserve the independent R4 owner
@@ -114,10 +152,17 @@ The [waveform session](development/2026-11-14-waveform-continuation/README.md)
 and its [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)
 retain their other checkout and actual worker ledger. The implemented
 [renderer contract](ROTARY_RENDERER_CONTRACT.md) and
-[waveform acceptance](ROTARY_WAVEFORM_ACCEPTANCE.md) govern its remaining
-lifecycle, scene/receiver symmetry, calibrated allocation and independent
-[offline CLI](ROTARY_RENDER_CLI.md) acceptance. Its completed source-bound
-full-waveform experiment does not close those gates or transfer ownership.
+[waveform acceptance](ROTARY_WAVEFORM_ACCEPTANCE.md) govern lifecycle,
+scene/receiver symmetry, calibrated allocation and independent
+[offline CLI](ROTARY_RENDER_CLI.md) qualification. The owner has its own local
+results for these areas; consult its actual current records. Integration,
+publication and final acceptance of that work remain with the owner. Its
+source-bound full-waveform experiment does not replace those steps or transfer
+ownership.
+The later [d8 Linux full-mode pass](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md)
+likewise qualifies only its published inputs; it does not accept or discard the
+other owner's dirty checkout, integration/publication/final acceptance of its
+separate results or actual worker ledger.
 
 Preserve `D+6` history capacity (maximum 12,806), the 8,192-entry per-write
 journal, `max(D)+4` flush and the reviewed trajectory/borrow/rollback boundary.

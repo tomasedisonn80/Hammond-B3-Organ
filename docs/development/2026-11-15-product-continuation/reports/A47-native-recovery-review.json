@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "review_id": "A47-native-recovery-review",
+  "agent": "/root/w08_a47_native_recovery_review",
+  "wave": 8,
+  "observed_at_utc": "2026-11-15T02:34:29.955010+00:00",
+  "repo": "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ",
+  "head": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+  "tree": "edf67b978f93e8dbea6537ce92d3928c171bc1f3",
+  "remote_read_only_query": {
+    "command": "git ls-remote origin refs/heads/main",
+    "observed_commit": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+    "observation_scope": "actual earlier A47 query, not a publication or worktree attestation"
+  },
+  "source_sha256": {
+    "apps/standalone/main.cpp": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+    "apps/standalone/MidiDevice.cpp": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324",
+    "apps/standalone/MidiDevice.h": "ce6c75faf49218073a369ac12a67bf0b995ec0309f1c078f23da78963865bea3",
+    "apps/standalone/MidiDiscovery.h": "414d76b9fbbdda4043f800de09da4863629c8790b2a312631cf6eb4466e5d7a6",
+    "apps/standalone/MidiInput.cpp": "4ddd655fb4a21040f2f83228fb23e38f98d0abe21d5bce7f0e28d064b5b7477c",
+    "apps/standalone/MidiInput.h": "4024723a91c28c8884ca065d167524c599d6816d047bcc834ea025b1dd734394",
+    "apps/standalone/Session.cpp": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+    "apps/standalone/Session.h": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+    "apps/standalone/AudioDevice.cpp": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0",
+    "apps/standalone/backend_tests/fake/RtMidi.h": "50853e167c6a2e32f1475fc1180210ba32fa33af5b6dfc6389c1a366442fe6f3",
+    "apps/standalone/backend_tests/test_standalone_midi_backend.cpp": "c55efada22c64bc049b8b58ac8a275047ad05a131b026774fe33ff437bf1a799",
+    "apps/standalone/native_tests/fake_calibration/RtMidi.h": "15a24319a27cb6df6440b758902b8b9917e3ad317b93bc725e915049f4633041",
+    "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": "e33b17f3f9642d17e21e5d645f8f3d82a176ca030b78164521af2e530ce57dd6",
+    "apps/standalone/native_tests/test_standalone_native_calibration.py": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "4fccad4d06dfd2875b24ba8798477089cc27f78061f7f17dd313c0aef0740fca",
+    "apps/standalone/native_tests/test_standalone_app.py": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+    "apps/standalone/tests/test_standalone_midi_concurrency.cpp": "76a5553892ed45229a51d6ec2dd5a26677103610e492e2350a9430464e678c0b",
+    "apps/standalone/tests/test_standalone_midi_discovery.cpp": "aacaa68c79de9a1fbbc79decf8b94ca764b19470d1faf5a58f58e012092b3186",
+    "apps/standalone/tests/test_standalone_expression_calibration.cpp": "bde29561dba7853b96c6eb92f32b8fff12b2c99dd4891dbe6c9be951245dc061",
+    "apps/standalone/tests/test_standalone_channel_modes.cpp": "fad048ad48995d300c348d8b346ca0174b8b46dce615ee9314d3527277914037",
+    "apps/standalone/tests/test_standalone_channel_acceptance.cpp": "22dc6f09c3c89395dfb7c2cf24a7655649fbf020c140f68d32285ac26896533d",
+    "apps/standalone/CMakeLists.txt": "772f75acd307d955cd632afc01ec7c5221859aa997aa97bd4d108a69deafc94c",
+    "data/dependencies/rtmidi-lock.json": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+  },
+  "external_dependency": {
+    "root": "/workspace/scratch/1bb6ee17ad7e/rtmidi",
+    "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+    "cpp_sha256": "184d775e88e5d73b079897363fb42af155122e879f0bc9254a1c7edae4eadb3c",
+    "header_sha256": "74f98ca172243b0b9c0c59f53c4e20285d879ffa86b3d61692109b013f4606f9",
+    "prepared_sha256_verified_in_memory": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a",
+    "prepared_bytes": 168216,
+    "allowed_corrections": 2
+  },
+  "existing_application": {
+    "path": "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/hammond_standalone",
+    "sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852",
+    "executed_by_A47": false
+  },
+  "checks": {
+    "retained_native_summary_inputs_match": {
+      "apps/standalone/MidiDevice.cpp": true,
+      "apps/standalone/MidiDevice.h": true,
+      "apps/standalone/MidiInput.cpp": true,
+      "apps/standalone/MidiInput.h": true,
+      "apps/standalone/Session.cpp": true,
+      "apps/standalone/Session.h": true,
+      "apps/standalone/UiModel.cpp": true,
+      "apps/standalone/UiModel.h": true,
+      "apps/standalone/main.cpp": true,
+      "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": true,
+      "apps/standalone/native_tests/fake_calibration/RtMidi.h": true,
+      "apps/standalone/native_tests/test_standalone_app.py": true,
+      "apps/standalone/native_tests/test_standalone_midi_replay.py": true,
+      "apps/standalone/native_tests/test_standalone_native_calibration.py": true
+    },
+    "python_ast_parsed": [
+      "apps/standalone/native_tests/test_standalone_native_calibration.py",
+      "apps/standalone/native_tests/test_standalone_midi_replay.py",
+      "apps/standalone/native_tests/test_standalone_app.py"
+    ],
+    "note_words": 335,
+    "note_limit": 400,
+    "owned_whitespace": "passed; final newline and no trailing whitespace",
+    "owned_local_links": {
+      "count": 23,
+      "passed": true
+    },
+    "git_diff_check_owned_paths": "passed; new-file whitespace also checked directly"
+  },
+  "finding": {
+    "id": "A47-N1",
+    "classification": "source-proven native-close error-observability gap; runtime occurrence unqualified",
+    "dependency_locations": {
+      "WinMM_close": "RtMidi.cpp:2910-2934",
+      "CoreMIDI_close": "RtMidi.cpp:1274-1288",
+      "WinMM_native_callback_storage": "RtMidi.cpp:2692-2707",
+      "CoreMIDI_native_callback_storage": "RtMidi.cpp:988-998"
+    },
+    "adapter_locations": [
+      "apps/standalone/MidiDevice.cpp:242-287",
+      "apps/standalone/MidiDevice.cpp:536-539",
+      "apps/standalone/main.cpp:339-346"
+    ],
+    "summary": "Ignored OS close/disposal results can clear the native stored connection flag without surfacing failure. An empty wrapper entered count does not protect RtMidi callback storage accessed before wrapper entry. Post-destructor poisoning retains wrapper/inbox but cannot retain already-freed native dependency storage.",
+    "observed_use_after_free": false,
+    "executed_reproduction": false,
+    "production_change": false,
+    "next_gate": "Own a source-identified below-RtMidi platform API fault-injection and checked-close experiment; keep callback data/context/inbox alive on failure, reject reopen/reset, and retain ordinary leak checking."
+  },
+  "retained_evidence": {
+    "A26-root-native-calibration.json": {
+      "native_lifecycles": 7,
+      "subprocesses": 10,
+      "deliberately_failed_replays": 2
+    },
+    "A38-root-native-calibration.json": {
+      "native_lifecycles": 7,
+      "subprocesses": 10,
+      "deliberately_failed_replays": 2
+    },
+    "gcc13-facade-repair.json": {
+      "ordinary_native_calibration_pass_seconds": 20.5,
+      "instrumented_hosted_replacement": "pending at reviewed receipt"
+    },
+    "d556-native-sanitizer-build-failure.json": {
+      "stage": "GCC13 test facade compilation",
+      "expanded_21_gates_executed": false
+    }
+  },
+  "external_primary_sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/mmeapi/nf-mmeapi-midiinclose",
+      "accessed": "2026-11-15",
+      "scope": "close return values and success/error distinction"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/mmeapi/nf-mmeapi-midiinreset",
+      "accessed": "2026-11-15",
+      "scope": "reset return values and pending-buffer callbacks"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/coremidi/midiportdispose(_:).md",
+      "accessed": "2026-11-15",
+      "scope": "OSStatus result; no stronger callback-join statement"
+    }
+  ],
+  "not_run_by_A47": [
+    "configuration",
+    "compilation",
+    "CTest",
+    "native application",
+    "physical MIDI/audio",
+    "ASan/UBSan/LSan/TSan",
+    "OS callback fault injection"
+  ],
+  "policy": "Existing named quarantine-only leak exception unchanged; no new exception. Root owns shared state/build/publication.",
+  "deliverables": {
+    "docs/reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md": {
+      "sha256": "d7632d7e08702a2a1a82613f1f023cd7834cad365182d12f0c47feb7735b6959",
+      "bytes": 16561
+    },
+    "docs/development/2026-11-15-product-continuation/notes/A47-native-recovery-review.md": {
+      "sha256": "9b1fa12d0063945d6b638e4dec9a58e2e09de197c649779d5c8c26657760ad25",
+      "bytes": 2924
+    }
+  },
+  "review_start": {
+    "head": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+    "tree": "a3150fd2489a50a430b02c01eadd5e0c180bc7f9"
+  },
+  "verification_head_scope": "Integrator advanced local HEAD during review; stored head/tree are final A47 source-check observation. Earlier remote query verifies only review-start commit."
+}

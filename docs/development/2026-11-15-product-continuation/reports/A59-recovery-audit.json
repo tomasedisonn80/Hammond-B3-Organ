@@ -1,0 +1,409 @@
+{
+  "schema": "b3-product-A59-recovery-acceptance-v1",
+  "worker": "A59",
+  "agent": "/root/w10_a59_recovery_audit",
+  "wave": 10,
+  "scope": "Owned recovery documentation and read-only source/tool/lock/path/hash/syntax/link/resource audit; no runtime qualification or publication.",
+  "initial_observed_at_utc": "2026-11-15T03:12:38.739904+00:00",
+  "applicability_observed_at_utc": "2026-11-15T03:13:18.549241+00:00",
+  "repo": "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ",
+  "source_identity": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD",
+      "HEAD^{tree}",
+      "origin/main"
+    ],
+    "exit": 0,
+    "stdout": "d8c39f7986746eacc991747153c7dbb012bb9a32\nedf67b978f93e8dbea6537ce92d3928c171bc1f3\nd8c39f7986746eacc991747153c7dbb012bb9a32",
+    "stderr": ""
+  },
+  "remote_main_read_only": {
+    "command": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/main"
+    ],
+    "exit": 0,
+    "stdout": "d8c39f7986746eacc991747153c7dbb012bb9a32\trefs/heads/main",
+    "stderr": ""
+  },
+  "working_overlay": {
+    "staged_diff": {
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--stat"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "observed_status_entries": 72,
+    "status_scope": "Unstaged accepted and unfinished files remain owned by their actual workers; no bulk stage/reset/clean.",
+    "initial_index_sha256": "0b77218fc53e8591133ed9df7bfea496c7f635bf3fe7d995b30c9baa54e25324",
+    "recovery_limit": "Published d8 does not contain the later A46/A48 overlay. Hashes cannot reconstruct missing original files."
+  },
+  "baseline_owned": {
+    "AGENTS.md": {
+      "bytes": 33611,
+      "sha256": "75c09828e29f5967c1fb8f50dc096215da4f8a677ced981abdcf84cec9cf4cfd"
+    },
+    "docs/PRODUCT_HANDOFF.md": {
+      "bytes": 21963,
+      "sha256": "12302c0202235a7c27849ee772e04fddbcb52cd40dfdd0995e8bc342a6df51f3"
+    }
+  },
+  "historical_AGENTS_suffix_sha256": "8386131daa17172c2fe40d38f094676002a88e660b3a8704d7914009a813ccff",
+  "tools": {
+    "cmake": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+      "exists": true,
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+        "--version"
+      ],
+      "exit": 0,
+      "version": "cmake version 4.4.5"
+    },
+    "ctest": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+      "exists": true,
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+        "--version"
+      ],
+      "exit": 0,
+      "version": "ctest version 4.4.5"
+    },
+    "ninja": {
+      "path": "/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+      "exists": true,
+      "command": [
+        "/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja",
+        "--version"
+      ],
+      "exit": 0,
+      "version": "1.13.2.git.kitware.jobserver-pipe-1"
+    },
+    "cc": {
+      "path": "/usr/bin/cc",
+      "exists": true,
+      "command": [
+        "/usr/bin/cc",
+        "--version"
+      ],
+      "exit": 0,
+      "version": "cc (Debian 14.2.0-19) 14.2.0"
+    },
+    "cxx": {
+      "path": "/usr/bin/c++",
+      "exists": true,
+      "command": [
+        "/usr/bin/c++",
+        "--version"
+      ],
+      "exit": 0,
+      "version": "c++ (Debian 14.2.0-19) 14.2.0"
+    },
+    "python": {
+      "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+      "exists": true,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "--version"
+      ],
+      "exit": 0,
+      "version": "Python 3.12.14"
+    }
+  },
+  "system_cmake_on_path": null,
+  "dependency_verifiers": {
+    "SDL": {
+      "command": [
+        "python3",
+        "-B",
+        "tools/acquire_sdl2.py",
+        "--verify-existing",
+        "/workspace/scratch/1bb6ee17ad7e/SDL2"
+      ],
+      "exit": 0,
+      "stdout": "{\"commit\": \"5d249570393f7a37e037abf22cd6012a4cc56a71\", \"network_used\": false, \"primary_licenses_verified\": 1, \"repository\": \"https://github.com/libsdl-org/SDL.git\", \"schema_version\": 1, \"sdl2_root\": \"/workspace/scratch/1bb6ee17ad7e/SDL2\", \"tag\": \"release-2.32.10\", \"version\": \"2.32.10\"}",
+      "stderr": ""
+    },
+    "RtMidi": {
+      "command": [
+        "python3",
+        "-B",
+        "tools/acquire_rtmidi.py",
+        "--verify-existing",
+        "/workspace/scratch/1bb6ee17ad7e/rtmidi"
+      ],
+      "exit": 0,
+      "stdout": "{\"commit\": \"1e5b49925aa60065db52de44c366d446a902547b\", \"network_used\": false, \"primary_licenses_verified\": 1, \"repository\": \"https://github.com/thestk/rtmidi.git\", \"rtmidi_root\": \"/workspace/scratch/1bb6ee17ad7e/rtmidi\", \"schema_version\": 1, \"source_files_verified\": 2, \"tag\": \"6.0.0\", \"version\": \"6.0.0\"}",
+      "stderr": ""
+    }
+  },
+  "dependency_lock_sha256": {
+    "data/dependencies/sdl2-lock.json": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+    "data/dependencies/rtmidi-lock.json": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+  },
+  "coherent_input_applicability": {
+    "receipt_sha256": "a6a842a019a6f4d9260bf9e4c6609a2a0ed42412b4958e9d3440c876dcf54818",
+    "inputs_checked": 366,
+    "mismatches": [],
+    "log_checks": [
+      {
+        "name": "configure",
+        "command": [
+          "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+          "-S",
+          "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ",
+          "-B",
+          "/workspace/scratch/5b7d983ac078/build-native"
+        ],
+        "exit_code": 0,
+        "seconds": 0.906,
+        "log": "docs/development/2026-11-15-product-continuation/reports/wave8-configure.txt",
+        "log_sha256": "abe0a48328fc642b9f3c8c6aefb660dd80c7ea22e61039a9411925f1f5b06d23",
+        "current_sha256": "abe0a48328fc642b9f3c8c6aefb660dd80c7ea22e61039a9411925f1f5b06d23",
+        "matches": true
+      },
+      {
+        "name": "all_target_build",
+        "command": [
+          "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake",
+          "--build",
+          "/workspace/scratch/5b7d983ac078/build-native",
+          "--parallel",
+          "3"
+        ],
+        "exit_code": 0,
+        "seconds": 0.035,
+        "log": "docs/development/2026-11-15-product-continuation/reports/wave8-all-target-build.txt",
+        "log_sha256": "c2ed93ffd93c840755c0e91392ae593b1b52de9b7aaf6c208123feaceb1dde2e",
+        "current_sha256": "c2ed93ffd93c840755c0e91392ae593b1b52de9b7aaf6c208123feaceb1dde2e",
+        "matches": true
+      },
+      {
+        "name": "full_ctest",
+        "command": [
+          "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+          "--test-dir",
+          "/workspace/scratch/5b7d983ac078/build-native",
+          "--output-on-failure",
+          "--no-tests=error"
+        ],
+        "exit_code": 0,
+        "seconds": 507.586,
+        "log": "docs/development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt",
+        "log_sha256": "9d285b3d9abe478d9bba874dd5953e373c9009c4f5db06d1c48aa438c8fd93e0",
+        "current_sha256": "9d285b3d9abe478d9bba874dd5953e373c9009c4f5db06d1c48aa438c8fd93e0",
+        "matches": true
+      }
+    ],
+    "retained_result": {
+      "passed": 180,
+      "failed": 0,
+      "wall_seconds": 507.55,
+      "selection": "all registered tests, serial execution"
+    }
+  },
+  "capture_input_applicability": {
+    "receipt_sha256": "485cb81c9337d4bf0b4a2e9c185cc90a8e3b7d11e74ad43ee14ee618ec3b67cc",
+    "inputs_checked": 108,
+    "mismatches": []
+  },
+  "binaries": {
+    "apps/standalone/hammond_standalone": {
+      "sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852",
+      "matches": true
+    },
+    "apps/standalone/hammond_standalone_calibration_probe": {
+      "sha256": "16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335",
+      "matches": true
+    },
+    "hammond_crossover_probe": {
+      "sha256": "da09640f7520cd887a836961658ed8a79d6b6bff28f0e33a0ce44cf76f992eac",
+      "matches": true
+    }
+  },
+  "cache": {
+    "sha256": "94735cbc53d80045da267e2d1451b92fc2e2a11bb53838f3b1dab2a3b50b2a35",
+    "matches_retained_coherent_cache": true,
+    "python_lines": [
+      "_Python3_EXECUTABLE:INTERNAL=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12"
+    ]
+  },
+  "retained_hosted_status": {
+    "receipt_sha256": "edde871bb1c9cb649a16b8ca7f0f4c13502732ab1e6a3ac8712a2450ae8b3cd5",
+    "source": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "tree": "edf67b978f93e8dbea6537ce92d3928c171bc1f3",
+    "jobs": 13,
+    "all_success": true
+  },
+  "atlas": {
+    "bytes": 21248265,
+    "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+  },
+  "disk_apparent_size_bytes": {
+    "repo": 180347978,
+    "primary_build": 94511597,
+    "task_workspace": 322208135
+  },
+  "disk_apparent_commands": [
+    [
+      "du",
+      "-sb",
+      "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"
+    ],
+    [
+      "du",
+      "-sb",
+      "/workspace/scratch/5b7d983ac078/build-native"
+    ],
+    [
+      "du",
+      "-sb",
+      "/workspace/scratch/5b7d983ac078"
+    ]
+  ],
+  "disk_available_bytes": 60131069952,
+  "foreign_R4_scope": {
+    "source": "docs/development/2026-11-15-product-continuation/reports/A56-phase-readiness.json",
+    "head": "fd2f6060b1f03b6d902ff0547441c07d6e74ba4f",
+    "staged_entries": 151,
+    "untracked_entries": 4,
+    "observation_owner": "A56",
+    "A59_accessed_checkout": false,
+    "boundary": "Owner-local lifecycle/allocation/CLI results remain separate from published d8 evidence, integration/publication/final acceptance and this session's ledger."
+  },
+  "next_gates": [
+    "A56 versioned same-Hz electrical protocol and justified floors/tolerances before a separately identified candidate.",
+    "A47-N1 below-RtMidi native-close failures, preserved native/dependency/context/inbox storage and platform callback-retirement evidence.",
+    "A54 identified native-display usability/response before further material work; whole-reference 1:1 unmet and unwaived."
+  ],
+  "root_remaining": [
+    "Accept remaining actual deliveries and final note hashes using the live checkpoint; no A59 closure claim.",
+    "Retain strict product-checker output and switch the CI record gate only after all sixty actual acceptances.",
+    "Publish exact accepted A46/A48/code/docs/ledger source with expected-head/no-force protection; inspect concurrent main and independently verify commit/tree/parent/intended bytes.",
+    "Observe required final-source hosted execution, including added Python modules and strict record step; d8 all-thirteen jobs cannot qualify later inputs.",
+    "Update current handoff/status/next/log/README/checkpoint to final observed identities; an evidence-only follow-up names its previously tested source."
+  ],
+  "not_executed": [
+    "Configure/build",
+    "Full or focused runtime suite",
+    "Native application/device process",
+    "Capture",
+    "Product progress/strict checker",
+    "Foreign R4 checkout/build operations",
+    "Cleanup",
+    "Index/ref mutation",
+    "Commit/push"
+  ],
+  "document_checks": {
+    "checked_at_utc": "2026-11-15T03:20:22.559958+00:00",
+    "local_links": 151,
+    "heading_links": 13,
+    "shell_blocks_bash_n": 9,
+    "historical_AGENTS_suffix_unchanged": true,
+    "historical_full_identifiers": {
+      "AGENTS.md": {
+        "original_full_id_count": 7,
+        "missing": []
+      },
+      "docs/PRODUCT_HANDOFF.md": {
+        "original_full_id_count": 7,
+        "missing": []
+      }
+    },
+    "note_words_whitespace_split": 287,
+    "note_limit": 400,
+    "git_diff_check": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "--",
+        "AGENTS.md",
+        "docs/PRODUCT_HANDOFF.md",
+        "docs/reviews/PRODUCT_RECOVERY_ACCEPTANCE.md",
+        "docs/development/2026-11-15-product-continuation/notes/A59-recovery-audit.md"
+      ],
+      "exit": 0,
+      "output": ""
+    },
+    "errors": [],
+    "passed": true,
+    "final_prose_review": {
+      "observed_at_utc": "2026-11-15T03:21:14.978167+00:00",
+      "scope": "Grammar and line-wrap cleanup only after passing full owned link/heading/shell checks; links, commands and historical bytes unchanged. Owned diff/whitespace and deliverable hashes rechecked.",
+      "git_diff_check_exit": 0
+    }
+  },
+  "deliverables": {
+    "AGENTS.md": {
+      "bytes": 34909,
+      "sha256": "b683d4e99f74aaf6ffb438efecd703883265c19d3c38ca791120aaf0b16ccce1",
+      "local_links": 70,
+      "heading_links": 3,
+      "shell_blocks_syntax_checked": 2
+    },
+    "docs/PRODUCT_HANDOFF.md": {
+      "bytes": 31078,
+      "sha256": "83d1be50b92cf5cc8f1c0144bdbddc5d4b84d9aafefeb60a241e1b22d04c3492",
+      "local_links": 62,
+      "heading_links": 8,
+      "shell_blocks_syntax_checked": 7
+    },
+    "docs/reviews/PRODUCT_RECOVERY_ACCEPTANCE.md": {
+      "bytes": 11669,
+      "sha256": "c49bd8b18a342caa7034848e1fe5335d8b515dee905e2b57cac5db60da6abd55",
+      "local_links": 17,
+      "heading_links": 2,
+      "shell_blocks_syntax_checked": 0
+    },
+    "docs/development/2026-11-15-product-continuation/notes/A59-recovery-audit.md": {
+      "bytes": 2508,
+      "sha256": "54f76990118d3ab93638ef62512bda4ec96eba9aed4ffb9d5f067c819f330da9",
+      "local_links": 2,
+      "heading_links": 0,
+      "shell_blocks_syntax_checked": 0
+    }
+  },
+  "disk_allocated_size_observation": {
+    "repo": {
+      "command": [
+        "du",
+        "-s",
+        "-B1",
+        "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"
+      ],
+      "allocated_bytes": 190103552
+    },
+    "primary_build": {
+      "command": [
+        "du",
+        "-s",
+        "-B1",
+        "/workspace/scratch/5b7d983ac078/build-native"
+      ],
+      "allocated_bytes": 97005568
+    },
+    "task_workspace": {
+      "command": [
+        "du",
+        "-s",
+        "-B1",
+        "/workspace/scratch/5b7d983ac078"
+      ],
+      "allocated_bytes": 335470592
+    }
+  },
+  "final_index_sha256": "0b77218fc53e8591133ed9df7bfea496c7f635bf3fe7d995b30c9baa54e25324",
+  "index_matches_initial": true,
+  "owned_changes_only": "Only four assigned Markdown files and this A59 receipt were written; concurrent owner files remain outside this edit scope."
+}

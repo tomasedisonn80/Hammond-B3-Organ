@@ -1,48 +1,59 @@
 # Product continuation: native visual refinement
 
-Design identity: `standalone-wide-legibility-v1`. This is the implementation
-contract for the product continuation's paint slice. The frozen paint behavior
-below is implemented with the bounded qualification recorded here; current
-gallery admission and literal whole-interface equality remain separate gates.
-It amends the text-size/cap-footprint preservation clauses of the earlier
-[material contract](REFERENCE_REFINEMENT_MATERIALS.md) and
-[waveform paint contract](WAVEFORM_UI_DESIGN.md) only within the scope below.
+Design identity: `standalone-wide-legibility-v1`. The frozen paint contract
+below is implemented and its current source-bound gallery is admitted. The
+user's requested **literal whole-interface 1:1 result remains unmet**; current
+acceptance does not waive it. This contract amends the text-size/cap-footprint
+clauses of the earlier [material contract](REFERENCE_REFINEMENT_MATERIALS.md)
+and [waveform paint contract](WAVEFORM_UI_DESIGN.md) only within its named scope.
 The [layout contract](REFERENCE_REFINEMENT_LAYOUT.md) remains unchanged.
 
-## Implementation and evidence status — 15 November 2026
+## Implementation and evidence status — 15 November 2026, A54 reconciliation
 
 [A15's implementation](development/2026-11-15-product-continuation/notes/A15-visual-implementation.md)
 adds complete fitted footage, 32-pixel manual caps with eight-pixel fronts,
 14-pixel numeric ink, separate EDIT BANK/applied SOUNDING rows, and restrained
-idle-natural edge lighting/reduced rear recess. The wide Dimensional activation
-and all unchanged-layout requirements below remain in force. The later MIDI
-overlay occupies a separately owned paint path; it is not part of the fixed-state
-whole-frame comparison.
+idle-natural edge lighting/reduced rear recess. Wide Dimensional activation
+and unchanged-layout requirements below remain in force. MIDI calibration uses
+a separately owned overlay; it is excluded from the original fixed-state
+whole-frame comparison and now has A42's own raster acceptance.
 
 | Evidence | Observed result | Qualification boundary |
 | --- | --- | --- |
-| [A23 independent raster report](development/2026-11-15-product-continuation/reports/A23-visual-acceptance.json) | 19,712 checks, 110 paired cases and 336,015,828 compared pixels; zero escaped pixels and readout-shadow leaks; 34 byte-identical compact/Flat/hidden pairs. Complete literal glyphs, cap separation, applied captions, held/focus/pending states, scale and clipping are witnessed. | Identified SDL software surfaces and fixed copied state, overlay None. This establishes containment and preserved paths in the tested cases, not perceptual resemblance, display readability or native accessibility. |
-| [A23 retained material fixture](development/2026-11-15-product-continuation/notes/A23-visual-acceptance.md) | 1,917 checks in 55 cases pass with 32/8 wide caps, unchanged compact/pedal expectations and unchanged front contrast. | Exact source and fixture identities remain in the report, including initial harness failures and their corrections. |
-| [A27 paired paint report](development/2026-11-15-product-continuation/reports/A27-paint-performance.json) | All six scale-1 cases stay within the declared regression budget; largest median increase is 1.380 ms / 1.228%. Wide Dimensional observed C++ allocations/frees fall 21 to 19 per draw; compact and Flat counts are unchanged. | Thirty warmups and 300 measured draws per painter; a separate calibrated heap observer. Absolute current wide medians are 112.441–113.713 ms on the pinned shared-host software fixture. This is not a 60-fps, display-latency, audio-deadline, leak-freedom or hardware-resource pass. |
-| [A34 current reference review](design/PRODUCT_REFERENCE_GAPS.md) | Direct inspection of the original reference, historical v5 and two provisional current application images confirms the visible local changes and documents remaining differences. Current source/executable and image bytes were independently rehashed. | The two current images are review previews, not an admitted product gallery. The minimum-size MIDI preview does not extend wide-painter or real-device qualification. |
+| [A23 independent raster report](development/2026-11-15-product-continuation/reports/A23-visual-acceptance.json) | 19,712 checks, 110 paired cases and 336,015,828 compared pixels; zero escaped changes/readout-shadow leaks; 34 identical compact/Flat/hidden pairs. Complete literal glyphs, caps, applied captions, held/focus/pending, scale and clipping are witnessed. | Identified SDL software surfaces and fixed copied state, overlay None. Scoped containment and preservation, not whole-reference similarity, displayed readability or accessibility. |
+| [A23 retained material fixture](development/2026-11-15-product-continuation/notes/A23-visual-acceptance.md) | 1,917 checks in 55 cases pass with 32/8 wide caps, unchanged compact/pedal expectations and unchanged front contrast. | Exact source/fixture identities and initial harness failures remain retained; this result is separate from A42's registered material fixture below. |
+| [A27 paired paint report](development/2026-11-15-product-continuation/reports/A27-paint-performance.json) | Six scale-1 cases satisfy the relative budget; largest median increase 1.380 ms / 1.228%. Wide Dimensional observed C++ allocations/frees fall 21→19 per draw; compact/Flat counts are unchanged. | Thirty warmups and 300 measured draws plus a separate heap observer. Wide software medians remain 112.441–113.713 ms: no 60-fps, displayed-response, audio-deadline, leak or hardware-resource pass. |
+| [A40 current native gallery](../examples/demos/standalone-product-preview-v1/README.md) and [A41 independent admission](reviews/PRODUCT_GALLERY_ADMISSION.md) | Eight normal plus three MIDI PNGs at `d556da017ea0a5d4f2d231416782dbc5066e58c2`, with admitted source/executable/replay/state/pixel identities. README displays current Play and minimum MIDI captures. | Dummy audio/video/software renderer, MIDI backend OFF. Original BMPs are unavailable; retained PNGs match recorded native-pixel hashes. Older build-receipt boundary and unexercised Apply/reconnect remain explicit. |
+| [A42 expanded modal material fixture](development/2026-11-15-product-continuation/reports/A42-calibration-modal-raster.json) | **1,293/1,293 checks, 109 frames, 6.63 s** locally: original 901 + header 170 + modal 222. All 212 fractional clipping differences exactly match literal plates in 38 boundary glyphs, with zero unexplained/literal mismatches. | Minimum Dimensional/Flat, reference fractional origin and offset scaled Flat; original failures preserved. No numeric tolerance or whole-textbox exemption. No physical display or contrast-standard claim. |
+| Hosted [Linux](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md), [Windows](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md) and [macOS](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) primary audits | At `d8c39f7986746eacc991747153c7dbb012bb9a32`: native Release **48/48** for Linux ON/OFF, Windows and macOS; each reports **1,293 material checks / 109 frames**. Linux expanded native sanitizers pass **21/21**. | Source-specific compiled-platform/dummy-runtime results. No physical display/controller, native accessibility or whole-reference equality; later checker/plot changes do not inherit d8 hosted qualification. |
+| [A54 current UI acceptance](reviews/PRODUCT_UI_ACCEPTANCE.md) and [updated gaps](design/PRODUCT_REFERENCE_GAPS.md) | Personally viewed the original atlas and all eleven admitted native PNGs; no new crop/field-collision issue requiring recapture. Correct inventory and concrete spatial/material/type gaps are retained. | Direct image review and narrow production-identity check; no new build, CTest, application/display journey or full gallery rehash. |
 
 The before painter is `af006b0ae293c7c9a5f44b5dfe1dc9942fe9e12d`'s
 `InstrumentView.cpp`, SHA-256
 `aae710a6e4eb8d7eccfe8fd7e5cf3cb98109ee1bc0143229e5b5b8b63f3c7a4c`.
-Both A23 and A27 identify the after painter as
-`3687f96db4490e600d6107e6b39d7b7d568bdeb183f16f6aa397535a5f688567`;
-A34 verified those after bytes remain present. A23 retains the original
-contract-document hash; both reports retain their original execution context.
-This status addition does not rewrite those identities or change the frozen
-contract below.
+A23/A27 identify the after painter as
+`3687f96db4490e600d6107e6b39d7b7d568bdeb183f16f6aa397535a5f688567`.
+A54 rechecked that painter, `main.cpp`
+`937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027`
+and application `7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
+Production is unchanged between the d556 captures and published d8. A23's
+original contract hash and A34's [preview review](development/2026-11-15-product-continuation/notes/A34-reference-gap-review.md)
+remain historical observations. Everything from **Source and exact scope**
+onward is preserved byte-for-byte; this reconciliation changes no requirement.
 
-**Next UI gate:** admit fresh source/executable/pixel-bound application captures
-at reference/default/minimum sizes and Flat, plus the separate MIDI overlay,
-then refresh README from the accepted images. The
-[prioritized gap record](design/PRODUCT_REFERENCE_GAPS.md#next-ui-gates)
-defines the remaining display/usability and material work. Preserve v1–v5 and
-their actual capture identities; a newly reviewed preview is not a recapture
-of historical evidence.
+Root's later [coherent local run](development/2026-11-15-product-continuation/reports/wave8-full-ctest.txt)
+passes **180/180 in 507.55 s** over d8 plus A46/A48 checker/plot repairs. It is
+separate from d8 hosted execution and supplies no new native-display result.
+
+**Next UI gate:** identified native display/DPI usability and response at
+minimum/default/reference sizes and Flat, including small preset/Service/modal
+text, 71 Play / ten common / eleven MIDI focus stops, endpoint edits and
+resize/release of held owners. Adopt an absolute response criterion before grading it.
+The [prioritized gap record](design/PRODUCT_REFERENCE_GAPS.md#next-ui-gates)
+then selects scoped compact typography/contrast or one deck/rim candidate.
+Current capture/admission/README work is complete; later production changes
+require their own accepted captures. Preserve all historical galleries and
+correct controls. No painter or layout change is authorized by this review.
 
 ## Source and exact scope
 
