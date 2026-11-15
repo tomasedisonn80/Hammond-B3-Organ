@@ -1,0 +1,50 @@
+{
+  "schema": "hammond-hosted-portability-repair-v1",
+  "failed_source_commit": "529678f9b5f94316e777f5df4f883326a8e9d6a3",
+  "original_logs": "hosted-foundation-failures/manifest.json",
+  "issues": [
+    {
+      "platform": "macOS AppleClang",
+      "observed": "std::jthread unavailable in hosted libc++; author concurrency fixture failed to compile",
+      "repair": "Use std::thread with the existing explicit joins; retain real concurrent no-replace winner assertions"
+    },
+    {
+      "platform": "Windows MSVC",
+      "observed": "CRT text stdin collapsed CRLF, bypassing raw 128-byte trace-line limit",
+      "repair": "Set only trace stdin to binary before any read; retain exact/overflow CRLF tests and add Ctrl-Z rejection",
+      "primary_source": "https://learn.microsoft.com/en-gb/cpp/c-runtime-library/reference/setmode"
+    },
+    {
+      "platform": "Windows MSVC",
+      "observed": "CON.b3registration is a device alias, so test fixture did not create its expected directory row",
+      "repair": "Use portable invalid -Bad stem for enumeration and explicitly verify reserved CON key refusal before I/O"
+    }
+  ],
+  "repaired_source_sha256": {
+    "tools/scanner_line_foh_probe.cpp": "6c39384dc5235abd84017faf834cece93bb96cabc8882f8e2e1e85168a2c8897",
+    "tests/test_scanner_foh_probe.py": "16b40506f5c076e1ccfe6265a01a552c3e2929202ae8d300b2988e047785e885",
+    "apps/standalone/tests/test_standalone_registration_library.cpp": "0ed6447077b2e694617179d3b5ad31d3f05dd9b20a078486fbd6fe7ace7eaac8"
+  },
+  "local_check": {
+    "configuration": "GCC14.2 Release; existing coherent working tree with active browser modules",
+    "command": "ctest --test-dir /workspace/scratch/116ca0948095/build-native -C Release -R '^(python_test_scanner_foh_probe|test_standalone_registration_library|test_standalone_registration_browser)$' --output-on-failure --no-tests=error",
+    "result": "3/3 passed",
+    "total_seconds": 1.98,
+    "scope": "Repaired probe/storage author tests and separate in-progress browser model; not whole staged-tree or Windows/macOS acceptance"
+  },
+  "hosted_repair_acceptance": "pending new exact-source execution",
+  "retained_logs": {
+    "docs/development/2026-11-15-next-phase/reports/root-portability-build-retry.txt": {
+      "bytes": 348,
+      "sha256": "1ae12859baa286b441638bf7558f38801cb15fc8cfee2741d235fd8acfd7fbf2"
+    },
+    "docs/development/2026-11-15-next-phase/reports/root-portability-ctest.txt": {
+      "bytes": 813,
+      "sha256": "f63dc9af9a187432a94599c8b0d30694df1b2f666a2e8156801abe4f3268327d"
+    },
+    "docs/development/2026-11-15-next-phase/reports/root-portability-native-test.txt": {
+      "bytes": 2774,
+      "sha256": "89a9215aa36893a422aa4432307ce5c387e02d26c144dfb6080b85fa50079889"
+    }
+  }
+}

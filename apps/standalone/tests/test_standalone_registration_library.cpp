@@ -198,7 +198,10 @@ void reading_and_catalogs() {
     write_file(root / "Alpha.b3registration", kDocument);
     write_file(root / "Ignored.B3REGISTRATION", kDocument);
     write_file(root / "Ignored.b3controls", kDocument);
-    write_file(root / "CON.b3registration", kDocument);
+    // A leading hyphen is invalid for the library but an ordinary filename on
+    // every platform. CON is a Win32 device alias even with this extension;
+    // reserved names are tested through validators, never by writing a device.
+    write_file(root / "-Bad.b3registration", kDocument);
     write_file(root / "bad.name.b3registration", kDocument);
 #ifdef _WIN32
     write_file(root / fs::path(L"\u00e9.b3registration"), kDocument);
@@ -227,6 +230,7 @@ void reading_and_catalogs() {
     REQUIRE(repeated.entries.size() == catalog.entries.size());
     for (std::size_t i = 0; i < catalog.entries.size(); ++i) REQUIRE(repeated.entries[i].key == catalog.entries[i].key);
     REQUIRE(!read_registration_entry(root, "../Warm.b3registration").valid());
+    REQUIRE(read_registration_entry(root, "CON.b3registration").status == LibraryEntryStatus::InvalidKey);
     REQUIRE(!read_registration_entry(root, "Warm.b3registration/child").valid());
     REQUIRE(!read_registration_entry(root, "Warm.B3REGISTRATION").valid());
     std::string changed(kDocument);
@@ -400,8 +404,9 @@ void concurrent_and_committed_warning() {
         results[i] = save_registration_entry_new(root, "Shared", RegistrationScope::Registration,
             controls, {}, [&]() { rendezvous.arrive_and_wait(); return permit(); });
     };
-    std::jthread a(worker, 0U, std::cref(first));
-    std::jthread b(worker, 1U, std::cref(second));
+    // Explicitly joined threads also support the pinned Apple libc++ baseline.
+    std::thread a(worker, 0U, std::cref(first));
+    std::thread b(worker, 1U, std::cref(second));
     a.join();
     b.join();
     REQUIRE(results[0].committed() != results[1].committed());

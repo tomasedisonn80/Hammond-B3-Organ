@@ -345,7 +345,7 @@ class ScannerFohProbe(unittest.TestCase):
     def test_trace_input_and_option_bounds_before_any_json(self):
         base = ["--operation", "trace", "--sample-rate", 48000, "--mode", "vibrato"]
         for payload in (b"", b"\n", b" \n", b"0\n\n", b"# comment\n", b"0\nNaN\n",
-                        b"0\n65\n", b"0\n-64.00001\n", b"0\n1x", b"0\x00\n",
+                        b"0\n65\n", b"0\n-64.00001\n", b"0\n1x", b"0\x00\n", b"0\n\x1a\n",
                         b"0"*129+b"\n", b"0"*128+b"\r\n"):
             with self.subTest(payload=payload[:30]):
                 self.rejected(*base, stdin=payload)

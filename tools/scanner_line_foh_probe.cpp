@@ -9,6 +9,7 @@
 #include <complex>
 #include <cstddef>
 #include <cstdint>
+#include <cstdio>
 #include <exception>
 #include <iomanip>
 #include <iostream>
@@ -21,6 +22,11 @@
 #include <string_view>
 #include <system_error>
 #include <vector>
+
+#ifdef _WIN32
+#include <fcntl.h>
+#include <io.h>
+#endif
 
 namespace {
 
@@ -471,6 +477,11 @@ void sine_report(std::ostream& output, const Options& options, ScannerLineFoh& l
 }
 
 [[nodiscard]] std::vector<double> read_inputs() {
+#ifdef _WIN32
+    // Count actual input bytes on every platform. CRT text translation would
+    // erase CR in CRLF and interpret Ctrl-Z as EOF before the bounded parser.
+    if (_setmode(_fileno(stdin), _O_BINARY) == -1) fail("Cannot set trace input to binary mode.");
+#endif
     std::vector<double> inputs;
     std::string token;
     token.reserve(128);
