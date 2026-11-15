@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "original-bytes-restored-to-index",
+  "affected_commit": "9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994",
+  "observed_hosted_job": 132814560364,
+  "cause": "Root staging used git ls-files --others --exclude-standard and omitted seven deliberately delivered files matching existing *.wav/*.b3p ignore patterns. Local filesystem/link tests saw them; the committed snapshot did not.",
+  "correction": "Narrow ignore exceptions for this declared bundle; stage its unchanged seven manifest-bound original files. Source binding alone is not artifact completeness.",
+  "files": [
+    {
+      "path": "examples/demos/source-leakage-audition-v1/nominal.b3p",
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    },
+    {
+      "path": "examples/demos/source-leakage-audition-v1/phrase-identity-g075.wav",
+      "bytes": 384044,
+      "sha256": "92d3766adb3663b83ba65cbf9e882b3fcff5f7cdc2e5088e6c2f5b4a4dc2b005"
+    },
+    {
+      "path": "examples/demos/source-leakage-audition-v1/phrase-pair-g075.wav",
+      "bytes": 384044,
+      "sha256": "7a109ee884fd99bac838d39399e3461e46138935f9224685cb31fb25d175f3fb"
+    },
+    {
+      "path": "examples/demos/source-leakage-audition-v1/solo-identity-g075.wav",
+      "bytes": 384044,
+      "sha256": "fe64ea4e2d8eebce3b2ebe5ad545a590e664aa12814b9bb7311e34266ba03855"
+    },
+    {
+      "path": "examples/demos/source-leakage-audition-v1/solo-identity-g100.wav",
+      "bytes": 384044,
+      "sha256": "b2f4f9aa3d2cd04d904134dfdca2961ca5d2fc281f04e2c2e0d8ba9cfee41da0"
+    },
+    {
+      "path": "examples/demos/source-leakage-audition-v1/solo-legacy-g100.wav",
+      "bytes": 384044,
+      "sha256": "b2f4f9aa3d2cd04d904134dfdca2961ca5d2fc281f04e2c2e0d8ba9cfee41da0"
+    },
+    {
+      "path": "examples/demos/source-leakage-audition-v1/solo-pair-g075.wav",
+      "bytes": 384044,
+      "sha256": "580247e9d2cd4b518dbbc5c8bf02cbd227dbebd2caf92032bf565a88fa23276b"
+    }
+  ],
+  "root_responsibility": true,
+  "numerical_hosted_failure_separate": "AppleClang exact tiny pedal mixture expectation remains under investigation; no bound/tolerance changed."
+}
