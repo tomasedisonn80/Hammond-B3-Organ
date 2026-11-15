@@ -4,6 +4,7 @@
 #include "hammond/ConsoleModel.h"
 #include "hammond/PedalVoice.h"
 #include "hammond/Profile.h"
+#include "hammond/SourceLeakage.h"
 #include "hammond/TonewheelBank.h"
 
 #include <array>
@@ -40,6 +41,19 @@ struct PedalRenderDiagnostics {
     [[nodiscard]] bool operator==(const PedalRenderDiagnostics&) const noexcept = default;
 };
 
+// Optional stopped source preparation, independent of musical controls/state.
+// The guarded bound applies to each shared source before contact routing, not
+// to the polyphonic output. Unconfigured preparation is the exact legacy path.
+struct SourceLeakageConfiguration {
+    bool configured{false};
+    double input_gain{1.0};
+    std::size_t edge_count{0};
+    double maximum_row_absolute_gain_sum{0.0};
+    double guarded_output_bound{1.0};
+
+    [[nodiscard]] bool operator==(const SourceLeakageConfiguration&) const noexcept = default;
+};
+
 // Nominal organ: independent contacts, retained manual drawbar banks, one shared
 // percussion readiness state, nominal ideal-contact pedals, and one free-running
 // source field. Default manual contact
@@ -73,6 +87,21 @@ public:
     // The same rate is an exact no-op. The render clock remains a count of frames,
     // so elapsed seconds across rate changes require an external segment record.
     [[nodiscard]] Status reconfigure_sample_rate(double sample_rate) noexcept;
+
+    // Stopped/same-thread setup only; neither operation is a callback/live-swap
+    // facility. Copies the prepared graph; retains no caller storage. Gain must
+    // be finite in [0,1] and leave the contracted numerical headroom. Failure
+    // preserves all state and future output. Success changes only this optional
+    // configuration, preserving source phase, controls, histories and clock.
+    // Ordinary successful prepare resets it; rate changes and control restore
+    // preserve it. An explicit empty graph at gain one uses the exact bypass.
+    [[nodiscard]] Status set_source_leakage(const SourceLeakage& prepared_leakage,
+                                           double input_gain) noexcept;
+    [[nodiscard]] Status clear_source_leakage() noexcept;
+    // Before the first successful prepare, returns the struct defaults.
+    [[nodiscard]] SourceLeakageConfiguration source_leakage_configuration() const noexcept {
+        return source_leakage_configuration_;
+    }
 
     // Preflights the entire request. Rejection changes no state or output and
     // consumes no events. Positive calls accept empty (disconnected) output or
@@ -159,6 +188,8 @@ private:
     RuntimeProfile profile_{};
     ProcessSpec spec_{};
     TonewheelBank source_bank_{};
+    SourceLeakage source_leakage_{};
+    SourceLeakageConfiguration source_leakage_configuration_{};
     ContactBank contact_bank_{};
     PercussionState percussion_state_{};
     PedalBusKernel pedal_kernel_{};

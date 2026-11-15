@@ -82,7 +82,11 @@ void verify_layout(UiModel& model) {
     std::array<unsigned, 2> presets{};
     for (const auto& control : layout.controls) {
         contained(control.bounds, window);
-        contained(control.label_bounds, control.bounds);
+        const bool exterior_percussion = control.id.kind == UiControlKind::Percussion &&
+            layout.workspace == UiWorkspace::Play && layout.sidebar_pedals &&
+            layout.presentation == UiPresentation::Dimensional;
+        contained(control.label_bounds,
+                  exterior_percussion ? layout.performance_panel : control.bounds);
         if (control.value_bounds.width > 0) contained(control.value_bounds, control.bounds);
         if (control.track.width > 0) contained(control.track, control.bounds);
         if (control.id.kind == UiControlKind::PresetKey) {

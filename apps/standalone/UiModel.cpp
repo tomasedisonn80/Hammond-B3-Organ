@@ -559,14 +559,34 @@ bool make_ui_layout(float width, float height,
     }
     const auto& performance = layout.performance_panel;
     const float percussion_group_width = performance.width * 0.46F;
-    const float percussion_width = (percussion_group_width - 48.0F) / 4.0F;
-    for (std::size_t index = 0; index < 4; ++index) {
-        const float x = performance.x + 12.0F + static_cast<float>(index) * (percussion_width + 8.0F);
-        layout.controls[layout.control_count++] = {
-            {UiControlKind::Percussion, Manual::Upper, DrawbarBank::A, static_cast<std::uint8_t>(index)},
-            {x, performance.y + 24.0F, percussion_width, 42.0F},
-            {x + 4.0F, performance.y + 28.0F, percussion_width - 8.0F, 14.0F},
-            {x + 4.0F, performance.y + 44.0F, percussion_width - 8.0F, 18.0F}, {}};
+    const bool reference_percussion = layout.workspace == UiWorkspace::Play &&
+        layout.sidebar_pedals && layout.presentation == UiPresentation::Dimensional;
+    if (reference_percussion) {
+        constexpr std::array<std::uint8_t, 4> order{0, 2, 3, 1};
+        constexpr std::array<float, 4> offsets{0.0F, 92.0F, 173.0F, 254.0F};
+        const float scale = std::clamp(percussion_group_width / 480.0F, 0.80F, 1.25F);
+        const float percussion_width = 74.0F * scale;
+        const float percussion_height = std::min(48.0F, performance.height - 43.0F);
+        const float percussion_x = performance.x + 0.535F * percussion_group_width - 164.0F * scale;
+        const float percussion_y = performance.y + 24.0F;
+        for (std::size_t slot = 0; slot < order.size(); ++slot) {
+            const float x = percussion_x + offsets[slot] * scale;
+            layout.controls[layout.control_count++] = {
+                {UiControlKind::Percussion, Manual::Upper, DrawbarBank::A, order[slot]},
+                {x, percussion_y, percussion_width, percussion_height},
+                {x - 2.0F, percussion_y + percussion_height + 2.0F, percussion_width + 4.0F, 13.0F},
+                {x + 5.0F, percussion_y + 5.0F, percussion_width - 10.0F, percussion_height - 12.0F}, {}};
+        }
+    } else {
+        const float percussion_width = (percussion_group_width - 48.0F) / 4.0F;
+        for (std::size_t index = 0; index < 4; ++index) {
+            const float x = performance.x + 12.0F + static_cast<float>(index) * (percussion_width + 8.0F);
+            layout.controls[layout.control_count++] = {
+                {UiControlKind::Percussion, Manual::Upper, DrawbarBank::A, static_cast<std::uint8_t>(index)},
+                {x, performance.y + 24.0F, percussion_width, 42.0F},
+                {x + 4.0F, performance.y + 28.0F, percussion_width - 8.0F, 14.0F},
+                {x + 4.0F, performance.y + 44.0F, percussion_width - 8.0F, 18.0F}, {}};
+        }
     }
     const float performance_right_x = performance.x + percussion_group_width + 8.0F;
     const float performance_right_width = performance.width - percussion_group_width - 8.0F;

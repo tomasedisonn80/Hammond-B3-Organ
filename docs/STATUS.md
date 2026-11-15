@@ -1,5 +1,26 @@
 # Development status
 
+## Current audio continuation — 15 November 2026
+
+The [audio session](development/2026-11-15-audio-continuation/README.md) starts
+at `fe4f103f135cefebfe6d320f275d035d1b514f45`; six complete readings cover
+all 500 atlas pages. Prepared sparse source leakage, strict author/native data
+paths, stopped Engine configuration and explicit-gain offline rendering are
+implemented, with synthetic evidence labels and an unchanged nominal default.
+Independent dense/spectral, round-trip, lifecycle, CLI and allocation gates pass.
+Reference percussion caps/captions pass geometry/input checks and a 66-pair
+identical-state native raster comparison with zero escaping pixels and 28 exact
+inactive pairs. [Actual captures](../examples/demos/standalone-audio-preview-v1/README.md)
+are now reflected in README. Whole-interface 1:1 remains unmet and unwaived.
+
+Six gain-matched audio examples and eleven actual native frames are complete.
+All 196 tests in the current inventory have passed across partitioned runs;
+the initial incomplete-gallery integrity failure and successful rerun are retained.
+Final coherent/platform qualification, relocatable installation, moving-contact
+composition and coordinated whole-reference layout work remain underway. The [checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md)
+and [ledger](development/2026-11-15-audio-continuation/assignments.json) own exact
+counts and source-bound results. Other sessions below retain their separate work.
+
 ## Current playable continuation — 15 November 2026
 
 Start source is `3767b645e010066d63ca0b7fc1af8310a6f7e5ad`. The new

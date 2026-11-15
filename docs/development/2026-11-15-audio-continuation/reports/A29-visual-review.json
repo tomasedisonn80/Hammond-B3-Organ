@@ -1,0 +1,1053 @@
+{
+  "schema": 1,
+  "review": "A29-independent-native-gallery-admission-v1",
+  "reviewed_at_utc": "2026-11-15T12:20:38.628711+00:00",
+  "reviewer": "A29",
+  "method": "Independent retained-file hashing, PNG decoding, direct inspection of the original reference and eleven actual full application frames, independently asserted final diagnostics against explicit expected control states, and fixed-state raster receipt review. No application rerun or build by this reviewer.",
+  "source_qualification": {
+    "base_commit": "276664ee8570c208bb007cca59f496963ca13ef5",
+    "base_tree": "295abfec00bdd874b89eea159f816400f994f7b6",
+    "base_is_changed_ui_source_identity": false,
+    "production_inputs": {
+      "files_verified": 115,
+      "bytes_verified": 3552815,
+      "failures": []
+    },
+    "build_inputs": {
+      "files_verified": 13,
+      "bytes_verified": 10263554,
+      "failures": []
+    },
+    "executable": {
+      "bytes": 3651200,
+      "sha256": "32cea4a90bfc3d742550ad3725c1bf007c2fdc72e111b8b5ab1e95026033daf6"
+    },
+    "author_build_receipt": {
+      "bytes": 2064,
+      "sha256": "5ef9f9ad2623636319561c6486e776a4faaa06cff1a17ba10ce7a6b9a0e5bf4b"
+    },
+    "critical_sources": {
+      "apps/standalone/UiModel.cpp": {
+        "bytes": 56398,
+        "sha256": "aa4fa2e06c4a8ccb17ba1b1cdfed498372b3626152bb2b8c6c53682b775931c9"
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "bytes": 92709,
+        "sha256": "97971753c23e7da93d84586cf66ede2a3d9a04f319ddaf4831ba83ea7955f7d6"
+      },
+      "apps/standalone/UiModel.h": {
+        "bytes": 16388,
+        "sha256": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3"
+      },
+      "docs/PERCUSSION_REFERENCE_CONTRACT.md": {
+        "bytes": 9066,
+        "sha256": "3d7e9414a6159b6c7ad966312f0d11d03ccc9e3122242735ea1df116851735d8"
+      }
+    },
+    "limit": "The 16-source author receipt plus observed 115-source overlay and 13 build inputs identify this capture, not a hermetic independent rebuild. Git 276664e is the committed base; the changed UI was dirty at capture.",
+    "author_receipt_sources_verified": 16
+  },
+  "original_gallery": {
+    "provenance": {
+      "bytes": 63629,
+      "sha256": "2af9b3a573116c19ffc86633c59a19f4a382c219603a906d5c2d82342b02968e"
+    },
+    "manifest": {
+      "bytes": 6527,
+      "sha256": "06fda1510542714ec1121bc8f4d2bbc65ce9be29d175ea16777d9666fb070050"
+    },
+    "manifest_validation": {
+      "files_verified": 39,
+      "bytes_verified": 2988503,
+      "failures": []
+    },
+    "cases": [
+      {
+        "name": "play-reference-1672x941",
+        "image_path": "examples/demos/standalone-audio-preview-v1/images/play-reference-1672x941.png",
+        "png": {
+          "bytes": 686557,
+          "sha256": "265a6b718ffb85e67be0ea0920bb7b4a40bb5233add71bfd05bec9f55c85f149"
+        },
+        "decoded_rgba_sha256": "cdce20bc98b031a34ff5dca44311759ea9766e74b6f892ed6ebfa4ee0dbc418e",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 21320,
+          "sha256": "54cdf42c563c6114c4d676e95afd6aca05a1743b990a86288b701979fc67c8c2"
+        },
+        "script": {
+          "bytes": 1690,
+          "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+        },
+        "replayed_events": 66,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 1,
+        "upper_preset_selection": 1,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "held_retained_bank_edit": {
+          "before": 7,
+          "after": 8,
+          "fixed_upper_c_sharp_remains_applied": true
+        }
+      },
+      {
+        "name": "play-default-1280x900",
+        "image_path": "examples/demos/standalone-audio-preview-v1/images/play-default-1280x900.png",
+        "png": {
+          "bytes": 177400,
+          "sha256": "7dd32ea9ac47f6367e455308ab5579faa1f811e4111b6403616e37f1ee978c72"
+        },
+        "decoded_rgba_sha256": "d886df5efb5da54d765c08360b31b48157155c966fc890e5c9c2ce41c9265baa",
+        "dimensions": [
+          1280,
+          900
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 21321,
+          "sha256": "4c3513019520d2b76100dc1a984ec32d1469c88a2bf0465382630db379d15830"
+        },
+        "script": {
+          "bytes": 1690,
+          "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+        },
+        "replayed_events": 66,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 1,
+        "upper_preset_selection": 1,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "held_retained_bank_edit": {
+          "before": 7,
+          "after": 8,
+          "fixed_upper_c_sharp_remains_applied": true
+        }
+      },
+      {
+        "name": "play-minimum-960x700",
+        "image_path": "examples/demos/standalone-audio-preview-v1/images/play-minimum-960x700.png",
+        "png": {
+          "bytes": 143240,
+          "sha256": "b110da6eb0ed0b97477e7e4cf7bc1f8f29c3997b59c17dcc640fff62993789b5"
+        },
+        "decoded_rgba_sha256": "6e7d5d596c6efccbdeb4f06f0803a557c962f15630ff2cac56742fafe861b088",
+        "dimensions": [
+          960,
+          700
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 22876,
+          "sha256": "2e25dc7cac95ebff3fef229852b0499cf01ce80ff3367bb4b20cb4b19cf0f52e"
+        },
+        "script": {
+          "bytes": 1690,
+          "sha256": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65"
+        },
+        "replayed_events": 66,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 1,
+        "upper_preset_selection": 1,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "held_retained_bank_edit": {
+          "before": 7,
+          "after": 8,
+          "fixed_upper_c_sharp_remains_applied": true
+        }
+      },
+      {
+        "name": "service-reference-1672x941",
+        "image_path": "examples/demos/standalone-audio-preview-v1/images/service-reference-1672x941.png",
+        "png": {
+          "bytes": 412370,
+          "sha256": "720f6e66e000aed012de733770002d18c57687bc99eb3c2d788097d68ceef078"
+        },
+        "decoded_rgba_sha256": "e6cf071db437288023faedef9b42f940a0bd8a5033af1af543edf886d2ed18b3",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 22110,
+          "sha256": "3026eab95b3fcb6f9482c37b31ee50deb425795c44addb7bb50a5bb6930913b0"
+        },
+        "script": {
+          "bytes": 1690,
+          "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+        },
+        "replayed_events": 66,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 1,
+        "upper_preset_selection": 1,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "held_retained_bank_edit": {
+          "before": 7,
+          "after": 8,
+          "fixed_upper_c_sharp_remains_applied": true
+        }
+      },
+      {
+        "name": "service-minimum-960x700",
+        "image_path": "examples/demos/standalone-audio-preview-v1/images/service-minimum-960x700.png",
+        "png": {
+          "bytes": 175361,
+          "sha256": "9f8dec5b0e983edba53afc01cd198aecf4d5dca1a09c35810081b8e5ae9208bc"
+        },
+        "decoded_rgba_sha256": "510ccc1822455ccc15c4711c3f882f5b715c986768fc9cdd9cdef65684f46aa6",
+        "dimensions": [
+          960,
+          700
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 22098,
+          "sha256": "a11a1eb3e4b61fc2cce90b8f4da12cee55af28bf07f9c63e569c5cb731e7ffd5"
+        },
+        "script": {
+          "bytes": 1690,
+          "sha256": "36208ed2c7fe47bd013fb5e4beaa182bce3b2c798a0f528bc33edd284cef5f38"
+        },
+        "replayed_events": 66,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 1,
+        "upper_preset_selection": 1,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "held_retained_bank_edit": {
+          "before": 7,
+          "after": 8,
+          "fixed_upper_c_sharp_remains_applied": true
+        }
+      },
+      {
+        "name": "rotary-reference-1672x941",
+        "image_path": "examples/demos/standalone-audio-preview-v1/images/rotary-reference-1672x941.png",
+        "png": {
+          "bytes": 774667,
+          "sha256": "3456f08801bcc040d477855a25e3f3a389b382d5ef77e1a7876e1aa78b4fb91e"
+        },
+        "decoded_rgba_sha256": "0d4b6b9c632c6848b8897011251e44a3f4bf2f02c5b2eb379ab9f1df3d7baacd",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 22106,
+          "sha256": "5dc3ad4e3f68352b067555c63a31b5f27cda743f246d6d9dd01da2ab25180644"
+        },
+        "script": {
+          "bytes": 1690,
+          "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+        },
+        "replayed_events": 66,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 1,
+        "upper_preset_selection": 1,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "held_retained_bank_edit": {
+          "before": 7,
+          "after": 8,
+          "fixed_upper_c_sharp_remains_applied": true
+        }
+      },
+      {
+        "name": "rotary-minimum-960x700",
+        "image_path": "examples/demos/standalone-audio-preview-v1/images/rotary-minimum-960x700.png",
+        "png": {
+          "bytes": 317277,
+          "sha256": "dc26633ad3516e5bd79872be1c122b00c22a2dac3cfb3be2919a1e43c71590cb"
+        },
+        "decoded_rgba_sha256": "5485bf294de23731dba61f06b742f3765cabc70d0c7ba855ceb11dfbb814bfc8",
+        "dimensions": [
+          960,
+          700
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 23661,
+          "sha256": "1f6efb6355ce697d42349d576687c5f5169ef30827b39b9cfcc640552ef5d383"
+        },
+        "script": {
+          "bytes": 1690,
+          "sha256": "e1e9ab81d64f6f7ac4b37e1516dc569ba1266d25f655ea4ef2397b2c7d9f5502"
+        },
+        "replayed_events": 66,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 1,
+        "upper_preset_selection": 1,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "held_retained_bank_edit": {
+          "before": 7,
+          "after": 8,
+          "fixed_upper_c_sharp_remains_applied": true
+        }
+      },
+      {
+        "name": "flat-minimum-960x700",
+        "image_path": "examples/demos/standalone-audio-preview-v1/images/flat-minimum-960x700.png",
+        "png": {
+          "bytes": 49561,
+          "sha256": "e9296d553afed67d965378c898c5bf64de1c4d823c8563bc16c043300aacd8b6"
+        },
+        "decoded_rgba_sha256": "ccb4db557194556101c07735543f2536e9dfd0da5cdb9c3ca033c4fe6c0464aa",
+        "dimensions": [
+          960,
+          700
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 23625,
+          "sha256": "041ed6d81d706ee11c612ae6cce1d8d4554f57d60eebb36213c169225407f6dd"
+        },
+        "script": {
+          "bytes": 1734,
+          "sha256": "2dc393117ab9f020e88189d508abde7b58b784ae168d0794e485316c5e7e9d74"
+        },
+        "replayed_events": 68,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 1,
+        "upper_preset_selection": 1,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "held_retained_bank_edit": {
+          "before": 7,
+          "after": 8,
+          "fixed_upper_c_sharp_remains_applied": true
+        }
+      }
+    ],
+    "scratch_original_files_byte_identical": 40,
+    "input_identities": {
+      "files_verified": 6,
+      "bytes_verified": 9324,
+      "failures": []
+    }
+  },
+  "additional_states": {
+    "provenance": {
+      "bytes": 38973,
+      "sha256": "67754ab340f356e36f57909a64f0fef033e735522199b8f9c5ac0b199bd6fa07"
+    },
+    "manifest": {
+      "bytes": 2749,
+      "sha256": "77de6386aea9782770348d395d28ab50021ee059ab4bd0db67e34da5f1e8df19"
+    },
+    "manifest_validation": {
+      "files_verified": 18,
+      "bytes_verified": 1837995,
+      "failures": []
+    },
+    "cases": [
+      {
+        "name": "eligible-upper-b",
+        "image_path": "examples/demos/standalone-audio-preview-v1/percussion-states/images/eligible-upper-b.png",
+        "png": {
+          "bytes": 684763,
+          "sha256": "8877acfc3a8ce00fcdff078a04accd71330dca0b0f1a49fb5f5536ea8d441410"
+        },
+        "decoded_rgba_sha256": "1f3a187d51da7dd0e49172cfa1b42a9b2e56fe12ab2a6e9973472855d02630c7",
+        "dimensions": [
+          1672,
+          941
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 26155,
+          "sha256": "7926c91de4afc62397f61e82a58dcd9edf5f4145a47d611071b3b3ead2d515bf"
+        },
+        "script": {
+          "bytes": 3222,
+          "sha256": "9320c6c3033bffef5abb8e036ae56409a8b6421ff98d6280636db1beead9546b"
+        },
+        "replayed_events": 138,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 1,
+          "volume": 1,
+          "decay": 1
+        },
+        "upper_route_eligible": true,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 0,
+        "upper_preset_selection": 11,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "focus": {
+          "caption": "HARM",
+          "cyan_rgba": [
+            165,
+            228,
+            223,
+            255
+          ],
+          "observed_pixels": 472,
+          "bounds_exclusive": [
+            418,
+            150,
+            492,
+            198
+          ],
+          "semantic_id_in_diagnostics": false,
+          "evidence": "Keyboard replay, footer and independent visible outline inspection; diagnostics do not expose normal semantic focus."
+        }
+      },
+      {
+        "name": "fixed-d-off",
+        "image_path": "examples/demos/standalone-audio-preview-v1/percussion-states/images/fixed-d-off.png",
+        "png": {
+          "bytes": 504125,
+          "sha256": "9e1faf37542a9e405f83293130e94281646a69cf68f2e133c5bdf644a2fc98fb"
+        },
+        "decoded_rgba_sha256": "9b239a00ba5743e748e1a433dc74be7b1509a6fff6431b364737524aeddd489d",
+        "dimensions": [
+          1400,
+          820
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 24535,
+          "sha256": "21563095158deaea9e3f7aea720df3213847ab1af2548c1e84361a223b023bd7"
+        },
+        "script": {
+          "bytes": 3060,
+          "sha256": "0c03e05ba6f36aa5007ed948573d8ab07165f9fb381727e551be32346a8d41ab"
+        },
+        "replayed_events": 130,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": false,
+          "harmonic": 0,
+          "volume": 0,
+          "decay": 0
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": true,
+        "upper_fixed_registration": 2,
+        "upper_preset_selection": 2,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "focus": {
+          "caption": "PERC",
+          "cyan_rgba": [
+            165,
+            228,
+            223,
+            255
+          ],
+          "observed_pixels": 420,
+          "bounds_exclusive": [
+            137,
+            150,
+            199,
+            197
+          ],
+          "semantic_id_in_diagnostics": false,
+          "evidence": "Keyboard replay, footer and independent visible outline inspection; diagnostics do not expose normal semantic focus."
+        }
+      },
+      {
+        "name": "cancel-stored-on",
+        "image_path": "examples/demos/standalone-audio-preview-v1/percussion-states/images/cancel-stored-on.png",
+        "png": {
+          "bytes": 505195,
+          "sha256": "b31b2769bda8c52cdd405482017d34de193cd1dee5b9d192a413986c747036df"
+        },
+        "decoded_rgba_sha256": "689141802a0a539065e8ccd5c790167a8ea4bd6ff714cc14d36bbbd1ae6ecbde",
+        "dimensions": [
+          1400,
+          820
+        ],
+        "directly_viewed_original_full_frame": true,
+        "diagnostics": {
+          "bytes": 27742,
+          "sha256": "a78bafcf3a11f9e727687cd38fc7718a5c3d130738f9dbb6979dd8e534055126"
+        },
+        "script": {
+          "bytes": 3350,
+          "sha256": "c097c850ed5c2b82c7c9ae6b6ca621b83fa29be18898fcedf6ef28b51d0d746c"
+        },
+        "replayed_events": 142,
+        "desired_applied_control_snapshot_equal": true,
+        "expected_control_snapshot_equal": true,
+        "held_manual_notes": [
+          [
+            60,
+            64
+          ],
+          [
+            67
+          ]
+        ],
+        "held_pedal_ids": [
+          3
+        ],
+        "painted_held_targets": {
+          "upper": 2,
+          "lower": 1,
+          "pedals": 1
+        },
+        "percussion": {
+          "enabled": true,
+          "harmonic": 1,
+          "volume": 1,
+          "decay": 1
+        },
+        "upper_route_eligible": false,
+        "upper_route_enabled": false,
+        "upper_fixed_registration": 0,
+        "upper_preset_selection": 0,
+        "final_painted_state_current_acknowledged": true,
+        "audio_device": "dummy",
+        "video_driver": "dummy",
+        "renderer": "software",
+        "real_display_scale_qualification": false,
+        "midi_source": "none",
+        "native_midi_backend": "unavailable",
+        "errors": [],
+        "focus": {
+          "caption": "DECAY",
+          "cyan_rgba": [
+            165,
+            228,
+            223,
+            255
+          ],
+          "observed_pixels": 420,
+          "bounds_exclusive": [
+            282,
+            150,
+            344,
+            197
+          ],
+          "semantic_id_in_diagnostics": false,
+          "evidence": "Keyboard replay, footer and independent visible outline inspection; diagnostics do not expose normal semantic focus."
+        }
+      }
+    ]
+  },
+  "historical_product_reference_frame_unchanged": {
+    "path": "examples/demos/standalone-product-preview-v1/images/play-reference-1672x941.png",
+    "bytes": 684886,
+    "sha256": "4dcb8e55dcfbc5f3e5d524bf0ea426312083f8f56e922716e6d0513fe08b9d19",
+    "directly_viewed_original_full_frame": true
+  },
+  "paired_raster_receipt_review": {
+    "report": {
+      "bytes": 227177,
+      "sha256": "ae8c8812ab95184cde16b458ad3681c6c7e2cd8fdaad0f280a9d8405d8c40634"
+    },
+    "build_receipt": {
+      "bytes": 7884,
+      "sha256": "1ecfa27dd9f77a456fffb6d52c0924cbd510badc23d59cb5f7d7e346386a768c"
+    },
+    "independently_resummed_totals": {
+      "pairs": 66,
+      "compared_pixels": 208102766,
+      "changed_pixels": 1297684,
+      "escaped_pixels": 0,
+      "identical_inactive_pairs": 28,
+      "failed_pairs": 0
+    },
+    "current_source_and_historical_git_source_hashes_verified": true,
+    "mask_policy": "Union of contracted old/new rectangles, expanded exactly1 physical pixel using pixel centers; inactive mask is empty.",
+    "independent_raster_rerun": false,
+    "limits": "Fixed copied state, SDL software surfaces; no native display, audio device or whole-interface 1:1 claim.",
+    "retained_build_input_output_identities_verified": 11
+  },
+  "minimum_wide_header_check": {
+    "roi_exclusive": [
+      62,
+      126,
+      460,
+      150
+    ],
+    "fixed_d_vs_cancel_changed_pixels": 0,
+    "conclusion": "The two 1400x820 combined headings have identical captured pixels. No Cancel-specific heading defect is demonstrated; small type remains a general readability concern."
+  },
+  "reference": {
+    "path": "docs/design/atlas-cover-reference.jpg",
+    "bytes": 412664,
+    "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "dimensions": [
+      1672,
+      941
+    ],
+    "directly_viewed_original_full_frame": true
+  },
+  "review_status": "scoped_capture_admitted_whole_reference_one_to_one_unmet",
+  "pixel_material_probe": {
+    "method": "Full unscaled RGB images; independent channel thresholds R>=160,G>=140,B>=95; largest four-connected component in declared ROIs. Separate mean-RGB text-free upper-face samples.",
+    "threshold_rgb": [
+      160,
+      140,
+      95
+    ],
+    "results": [
+      {
+        "name": "reference",
+        "image": "docs/design/atlas-cover-reference.jpg",
+        "roi_exclusive": [
+          155,
+          165,
+          242,
+          235
+        ],
+        "largest_component_bounds_exclusive": [
+          168,
+          179,
+          232,
+          226
+        ],
+        "component_span": [
+          64,
+          47
+        ],
+        "qualifying_pixels": 2560,
+        "upper_face_sample_roi_exclusive": [
+          176,
+          184,
+          224,
+          190
+        ],
+        "upper_face_sample_mean_rgb": [
+          250.68055555555554,
+          220.87152777777777,
+          170.5
+        ]
+      },
+      {
+        "name": "actual",
+        "image": "examples/demos/standalone-audio-preview-v1/images/play-reference-1672x941.png",
+        "roi_exclusive": [
+          155,
+          140,
+          244,
+          210
+        ],
+        "largest_component_bounds_exclusive": [
+          169,
+          154,
+          233,
+          192
+        ],
+        "component_span": [
+          64,
+          38
+        ],
+        "qualifying_pixels": 2032,
+        "upper_face_sample_roi_exclusive": [
+          177,
+          159,
+          225,
+          165
+        ],
+        "upper_face_sample_mean_rgb": [
+          248.16666666666666,
+          217.66666666666666,
+          161.33333333333334
+        ]
+      }
+    ],
+    "bright_face_top_delta_pixels": 25,
+    "contracted_current_outer_cap_top": 150,
+    "reference_outer_cap_top_visual_estimate": 177,
+    "reference_outer_cap_top_visual_uncertainty_pixels": 2,
+    "approximate_outer_top_delta_pixels": 27,
+    "warning": "The connected components measure thresholded brightness and JPEG/material variation, not outer bodies, hit rectangles or required physical face dimensions. The 25 and approximately 27 offsets refer to different landmarks. No image was modified or substituted."
+  },
+  "visual_decision": {
+    "scoped_native_capture_admission": "passed",
+    "whole_interface_reference_one_to_one": "unmet_and_unwaived",
+    "admitted_improvements": [
+      "Wide Dimensional percussion bodies are narrower/taller than the previous app, with larger live values and exterior legends approaching the reference hierarchy.",
+      "Correct active order PERC/VOL/DECAY/HARM retains ON/OFF, NORM/SOFT, SLOW/FAST and 2ND/3RD domains.",
+      "Three additional actual states demonstrate correct applied route eligibility independent of stored enable and visible cap focus."
+    ],
+    "exact_correspondences_limited_to": [
+      "Recorded capture bytes, decoded pixels, dimensions and source/state identities matched their retained receipts.",
+      "Title, workspace words and exterior percussion legend words correspond; typography and positions do not establish pixel equality."
+    ],
+    "remaining_differences": [
+      "Approximately 27-pixel outer cap-row offset; threshold-bright face span and material distribution also differ.",
+      "Performance band height/content and rack/manual allocation remain different.",
+      "Header controls/preset composition, actual reversed preset keyboards, target toolbar and pedalboard differ from concept.",
+      "Cabinet content retains truthful disconnected-audio status instead of unimplemented concept controls.",
+      "Typography, rounded edges, bevel/shadow transitions, material depth and compact/minimum readability need further review."
+    ],
+    "concept_errata": [
+      "NORM under DECAY in the reference is not a valid decay requirement.",
+      "FAST under HARM in the reference is not a valid harmonic requirement."
+    ],
+    "new_local_visual_blocking_defects": [],
+    "reason_no_cancel_specific_heading_defect": "Independent RGBA comparison of the two 1400x820 heading regions found zero differences.",
+    "readability_limit": "Direct PNG inspection does not qualify native display scale, semantic accessibility or physical-device usability."
+  },
+  "next_design_options": {
+    "bounded_material_experiment": {
+      "feasibility": "Plausible active-percussion-only highlight/corner/edge/front-band improvement inside existing bounds, to be demonstrated by actual captured A/B material evidence.",
+      "decision_needed": "Version 1 freezes shared button-painter reuse; define a new bounded design contract before changing this rule. Do not change the shared painter or neighboring control owners.",
+      "retain": [
+        "Outer hit/focus geometry and responsive predicate",
+        "Live correct-domain values, exterior legends and retained/applied eligibility semantics",
+        "All inactive output and neighboring active pixels"
+      ],
+      "acceptance": [
+        "Declared text-free material samples and actual old/current cap captures",
+        "No changed pixels outside permitted cap material under identical state",
+        "Selected/unselected, all values, focus, width thresholds and fractional drawable scales"
+      ],
+      "limit": "This cannot be assumed to reproduce the observed tall bright span plus border/shadow allocation inside a 48-unit body; it does not resolve the vertical offset or whole-frame composition."
+    },
+    "coordinated_reflow": {
+      "scope": "Performance-band height, rack/manual allocation, header and cabinet composition at 1672x941 with explicit responsive constraints.",
+      "retain": [
+        "47 parameter meanings",
+        "68 ordinary controls and 147 playing keys",
+        "Correct footage, drawbar travel, preset semantics and release ownership",
+        "Truthful unconnected/unmeasured capability state"
+      ],
+      "acceptance": "Measured reference landmarks with uncertainty; reviewed geometry/input/held/focus evidence; new identical-state raster qualification and independent full actual-native-frame comparison."
+    }
+  },
+  "qualification_limits": [
+    "Source/build/file rehashing and receipt review do not constitute an independent hermetic rebuild.",
+    "The captured implementation was dirty relative to base 276664e; final publication must separately bind committed source hashes.",
+    "Eleven actual frames use SDL dummy audio/video, software renderer and equal logical/drawable 1x sizes.",
+    "Normal semantic focus IDs are not present in diagnostics; focus evidence combines replay, visible outline and footer.",
+    "The original native BMPs were removed after recorded lossless conversion; retained PNG bytes and decoded pixels were independently checked.",
+    "A29 did not rerun native application or paired helper builds.",
+    "No physical device, native desktop/DPI, semantic accessibility, deadline, connected scanner/rotary audio or measured-organ fidelity claim.",
+    "No whole-interface reference pixel equality claim."
+  ],
+  "owned_documents": {
+    "docs/design/AUDIO_REFERENCE_GAPS.md": {
+      "bytes": 11243,
+      "sha256": "8572e5d6f07946652fe83143ef3c8e4f94a4b340684c40beee13efbfc1e629eb"
+    },
+    "docs/reviews/AUDIO_GALLERY_ADMISSION.md": {
+      "bytes": 11312,
+      "sha256": "77e84d7e90a50682af7c2e511c5f96092a8e8adae14540b81bda15b446b818ff"
+    },
+    "docs/development/2026-11-15-audio-continuation/notes/A29.md": {
+      "bytes": 3820,
+      "sha256": "55cf96f5e0f350f9cc1a47d47fce82cd3d7e13ec731304c7cdf3866c0ef58c8b"
+    }
+  },
+  "completed_at_utc": "2026-11-15T12:28:52.902462+00:00"
+}

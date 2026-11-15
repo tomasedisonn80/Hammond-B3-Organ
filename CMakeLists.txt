@@ -131,6 +131,10 @@ if(HAMMOND_RENDER_SOURCE)
     add_dependencies(hammond_render hammond_profile)
 endif()
 
+add_executable(hammond_source_leakage_probe tools/source_leakage_probe.cpp)
+target_link_libraries(hammond_source_leakage_probe PRIVATE hammond_core)
+hammond_configure_target(hammond_source_leakage_probe)
+
 add_executable(hammond_benchmark tools/benchmark.cpp)
 target_link_libraries(hammond_benchmark PRIVATE hammond_core)
 hammond_configure_target(hammond_benchmark)
@@ -143,6 +147,17 @@ target_compile_definitions(hammond_benchmark PRIVATE
     HAMMOND_BENCHMARK_TARGET_PROCESSOR="${CMAKE_SYSTEM_PROCESSOR}"
     HAMMOND_BENCHMARK_SANITIZERS=$<BOOL:${HAMMOND_ENABLE_SANITIZERS}>)
 add_dependencies(hammond_benchmark hammond_profile)
+
+add_executable(hammond_source_leakage_benchmark tools/source_leakage_benchmark.cpp)
+target_link_libraries(hammond_source_leakage_benchmark PRIVATE hammond_core)
+hammond_configure_target(hammond_source_leakage_benchmark)
+target_compile_definitions(hammond_source_leakage_benchmark PRIVATE
+    HAMMOND_BENCHMARK_CONFIGURATION="$<CONFIG>"
+    HAMMOND_BENCHMARK_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}"
+    HAMMOND_BENCHMARK_COMPILER_VERSION="${CMAKE_CXX_COMPILER_VERSION}"
+    HAMMOND_BENCHMARK_TARGET_SYSTEM="${CMAKE_SYSTEM_NAME}"
+    HAMMOND_BENCHMARK_TARGET_PROCESSOR="${CMAKE_SYSTEM_PROCESSOR}"
+    HAMMOND_BENCHMARK_SANITIZERS=$<BOOL:${HAMMOND_ENABLE_SANITIZERS}>)
 
 add_executable(hammond_model_info tools/model_info.cpp)
 target_link_libraries(hammond_model_info PRIVATE hammond_core)
@@ -198,7 +213,8 @@ hammond_configure_target(hammond_rotary_render)
 if(MINGW)
     foreach(cli_target hammond_render hammond_benchmark hammond_model_info
                        hammond_parameter_info hammond_console_trace hammond_pedal_trace
-                       hammond_scanner_line_probe hammond_scanner_line_foh_probe hammond_rotary_render)
+                       hammond_scanner_line_probe hammond_scanner_line_foh_probe hammond_rotary_render
+                       hammond_source_leakage_probe hammond_source_leakage_benchmark)
         if(TARGET ${cli_target})
             target_link_options(${cli_target} PRIVATE -municode)
         endif()
@@ -278,6 +294,14 @@ if(BUILD_TESTING)
     if(TEST python_test_scanner_foh_probe)
         set_tests_properties(python_test_scanner_foh_probe PROPERTIES
             TIMEOUT 90 LABELS "scanner;foh;probe")
+    endif()
+
+    if(TEST python_test_source_leakage_roundtrip)
+        set_property(TEST python_test_source_leakage_roundtrip APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_SOURCE_LEAKAGE_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_source_leakage_probe>")
+        set_tests_properties(python_test_source_leakage_roundtrip PROPERTIES
+            TIMEOUT 90 LABELS "source;leakage;data")
+        list(APPEND HAMMOND_TEST_TARGETS hammond_source_leakage_probe)
     endif()
 
     if(TEST python_test_crossover_acceptance)

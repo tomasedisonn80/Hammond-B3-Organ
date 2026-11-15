@@ -2,7 +2,18 @@
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The playable instrument is a **nominal dry organ** with a native standalone application, an offline renderer and an optional VST3 adapter. Its musical core has 91 continuously running sources, two 61-key manuals, 25 pedals, eighteen documentary fixed registrations, four retained drawbar banks, percussion and shared expression.
 
-**Current development:** the [playable continuation](docs/development/2026-11-15-playable-continuation/README.md)
+**Current audio continuation:** [this session](docs/development/2026-11-15-audio-continuation/README.md)
+read all 500 atlas pages and adds prepared sparse source leakage with explicit
+offline gain (M2), plus reference percussion cap/label composition (M9).
+The default dry sound and musical state remain compatible. Independent dense,
+spectral, native-data, lifecycle, CLI, allocation and scoped pixel checks have
+passed. Six audio examples and eleven actual application captures are qualified;
+final coherent/platform execution and the next whole-reference layout are tracked in
+the [live checkpoint](docs/development/2026-11-15-audio-continuation/CHECKPOINT.md).
+Its [actual worker ledger](docs/development/2026-11-15-audio-continuation/assignments.json)
+records the new sixty-worker, ten-wave request without reusing older workers.
+
+**Parallel playable development:** the [playable continuation](docs/development/2026-11-15-playable-continuation/README.md)
 starts from `3767b64`. All 500 atlas pages have been read for this new session;
 the clean baseline passes 183/183 tests. Next work is a prepared harmonic
 generator with explicit offline audition (M2) and a closer reference drawbar-rack
@@ -88,6 +99,37 @@ cmake -E make_directory out
 
 The output is stereo PCM16 with identical dry channels. Existing output files are preserved, so choose a new filename for another render. The renderer reports profile identity, peak, RMS and clipping. See [general builds](docs/BUILD.md), the [offline format](docs/RENDER_FORMAT.md) and [OfflineTools installation](docs/OFFLINE_INSTALL.md).
 
+### Audition synthetic source leakage
+
+The optional M2 layer mixes a prepared sparse graph over the same 91 original
+source samples before contact routing. Signed donors can contribute while their
+own keys are released. Coefficients are **synthetic numerical fixtures**; this
+does not claim measured generator coupling. The default renderer and standalone
+remain on their existing dry path.
+
+```sh
+python3 tools/compile_source_leakage.py \
+  --input data/source-leakage/synthetic-pair-demo-v1.json \
+  --output out/pair.b3leakage
+./build/hammond_source_leakage_probe --input out/pair.b3leakage
+./build/hammond_render --profile build/nominal.b3p --output out/leakage-organ.wav \
+  --frames 96000 --sample-rate 48000 --block-size 64 --seed 1939 \
+  --drawbars 008000000 --note 48 --source-leakage out/pair.b3leakage \
+  --leakage-input-gain 0.75 --fail-on-clip
+```
+
+The two leakage options are required together. Unsafe source headroom rejects
+before output creation; the renderer never reduces the requested gain for you.
+The selected path emits schema-5 provenance and bound facts. Musical controls,
+parameter identities and control-state files are unchanged.
+
+The [six-file audition](examples/demos/source-leakage-audition-v1/README.md)
+compares pair and empty graphs at the **same gain 0.75**, includes a byte-identical
+default/empty-gain-one control, and preserves all commands, profiles, scores,
+hashes and receipts. Its independent solo PCM calculation observed zero error
+within the frozen one-step allowance. [Core/data contract](docs/SOURCE_LEAKAGE_CONTRACT.md)
+· [Engine/offline contract](docs/SOURCE_LEAKAGE_AUDITION_CONTRACT.md).
+
 Other development paths have their own setup: [optional VST3 and pinned SDK](docs/VST3_BUILD.md), [independent crossover targets](docs/CROSSOVER_DEVELOPER_GUIDE.md), [CrossoverTools installation](docs/CROSSOVER_INSTALL.md), [rotary waveform CLI](docs/ROTARY_RENDER_CLI.md) and [capture/calibration tools](docs/CALIBRATION_RUNBOOK.md). VST3 requires CMake 3.25+ and its separately acquired SDK; the native interface shown here is the standalone application.
 
 <a id="native-interface-and-uiux-design"></a>
@@ -97,6 +139,22 @@ Other development paths have their own setup: [optional VST3 and pinned SDK](doc
 The application follows the atlas's walnut, charcoal and brass [cover/page-409 concept](docs/design/atlas-cover-reference.jpg), with [retained source provenance](docs/design/atlas-reference.json). Controls, labels, drawbar positions, held notes and focus are live application output. The cabinet image supplies decoration; it does not indicate connected Leslie audio.
 
 **Current wide Dimensional refinement** applies when width is at least **1400** and height at least **820**. Manual racks use complete fitted footage, **32-pixel caps**, distinct numeric readouts and separate **EDIT BANK** and **SOUNDING** rows. Sounding captions come from copied applied controls; pending edits keep their own cue. Idle natural keys gain subtle lighting within their existing projected surfaces. This manual-rack/key treatment preserves the accepted header, layout, compact and Flat rendering; the MIDI overlay is a separate change. [Scoped implementation and acceptance](docs/PRODUCT_VISUAL_REFINEMENT.md) · [Reference comparison and remaining gaps](docs/design/PRODUCT_REFERENCE_GAPS.md)
+
+**New percussion composition** uses approximately **74×48** caps at the reference
+1672×941 size, centered live values and exterior **PERC / VOL / DECAY / HARM**
+captions. Pointer targets and focus follow the caps; captions and gaps are inert.
+The correct ON/OFF, NORM/SOFT, SLOW/FAST and 2ND/3RD meanings are retained.
+[Actual state/focus gallery and reproduction](docs/AUDIO_VISUAL_REFINEMENT.md) ·
+[Independent eleven-frame admission](docs/reviews/AUDIO_GALLERY_ADMISSION.md) ·
+[Measured reference differences and next design](docs/design/AUDIO_REFERENCE_GAPS.md).
+Eligibility follows the applied Upper B route, independently of the stored ON
+switch. Compact, Flat, Rotary and Service output is unchanged under identical
+state. [Frozen design](docs/PERCUSSION_REFERENCE_CONTRACT.md) ·
+[Independent interaction evidence](docs/development/2026-11-15-audio-continuation/notes/A18.md) ·
+[66-pair pixel comparison](docs/development/2026-11-15-audio-continuation/reports/w04-a23-paired-final.json).
+The remaining approximately **27-pixel vertical difference** from the concept
+requires a coordinated performance-strip/rack reflow; this scoped change does
+not establish whole-interface 1:1 equality.
 
 The functional inventory remains **68 ordinary controls, including 24 reversed preset keys**, plus **147 playing keys: 61 Upper + 61 Lower + 25 pedals**. The correct `1 3/5'` footage and drawbar travel from **0 at the top to 8 toward the player** take precedence over errors in the concept image. Keyboard navigation has **71 Play stops**, **ten common stops** in Rotary/Service and **eleven stops** in the MIDI dialog. These counts describe separate views, not additional sound parameters. [Workspace](docs/INTERFACE_WORKSPACE_CONTRACT.md) · [Geometry](docs/INTERFACE_GEOMETRY_CONTRACT.md) · [MIDI dialog](docs/MIDI_EXPRESSION_GUIDE.md#edit-the-midi-dialog)
 
@@ -111,21 +169,38 @@ The functional inventory remains **68 ordinary controls, including 24 reversed p
 
 ### Current native interface
 
-**These are actual captures of the current product interface**, recorded at [`d556da01`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/d556da017ea0a5d4f2d231416782dbc5066e58c2). The wide Play frame shows the larger caps, complete footage, separate edited/sounding registrations and keyboard materials. It retains four held notes while a retained drawbar is edited; the sounding fixed registrations remain explicitly identified.
+**This is an actual capture of the changed standalone.** It shows the new
+percussion composition, larger manual drawbar caps, complete footage, separate
+edited/sounding registrations and keyboard materials. It retains four held notes
+while a retained drawbar is edited; the sounding fixed registrations remain
+explicitly identified. The [eight-view gallery](examples/demos/standalone-audio-preview-v1/README.md)
+retains exact source/executable hashes, replay inputs and native diagnostics.
+Capture occurred before publication from a source-identified working tree;
+the recorded base commit alone is not attributed the new code.
 
-![Current native Play at 1672 by 941 with complete footage, larger drawbar caps and explicit edited versus sounding registrations](examples/demos/standalone-product-preview-v1/images/play-reference-1672x941.png)
+![Actual native Play at 1672 by 941 with reference percussion caps, exterior captions and complete playable controls](examples/demos/standalone-audio-preview-v1/images/play-reference-1672x941.png)
 
-The calibration dialog at the minimum 960×700 window shows illustrative raw endpoints **20 / 100 / Inverted**, keyboard focus on Direction, and **no active MIDI connection**. All eleven modal focus stops were witnessed in the native painted history. These captures use the MIDI-disabled build; the setup above explains how to enable a physical backend.
+The retained calibration-dialog capture from the earlier product continuation at
+the minimum 960×700 window shows illustrative raw endpoints **20 / 100 / Inverted**,
+keyboard focus on Direction, and **no active MIDI connection**. All eleven modal
+focus stops were witnessed in that native painted history. The captures use a
+MIDI-disabled build; the setup above explains how to enable a physical backend.
 
 ![Current native MIDI calibration dialog at 960 by 700 with endpoint and direction controls and truthful inactive connection state](examples/demos/standalone-product-preview-v1/midi-overlay/images/midi-minimum-960x700.png)
 
 | More actual views | Capture and review evidence |
 | --- | --- |
-| [Play at the default size](examples/demos/standalone-product-preview-v1/images/play-default-1280x900.png) · [minimum size](examples/demos/standalone-product-preview-v1/images/play-minimum-960x700.png) · [Flat](examples/demos/standalone-product-preview-v1/images/flat-minimum-960x700.png) | [Eight-view gallery](examples/demos/standalone-product-preview-v1/README.md) · [normal provenance](examples/demos/standalone-product-preview-v1/provenance.json) |
-| [Rotary](examples/demos/standalone-product-preview-v1/images/rotary-reference-1672x941.png) · [Service](examples/demos/standalone-product-preview-v1/images/service-reference-1672x941.png) | [Three MIDI views](examples/demos/standalone-product-preview-v1/midi-overlay/README.md) · [modal provenance](examples/demos/standalone-product-preview-v1/midi-overlay/provenance.json) |
-| [Original reference image](docs/design/atlas-cover-reference.jpg) · [reference comparison](docs/design/PRODUCT_REFERENCE_GAPS.md) | [Independent admission of all eleven frames](docs/reviews/PRODUCT_GALLERY_ADMISSION.md) · [machine-readable review](docs/development/2026-11-15-product-continuation/reports/A41-gallery-admission.json) |
+| [Play at the default size](examples/demos/standalone-audio-preview-v1/images/play-default-1280x900.png) · [minimum size](examples/demos/standalone-audio-preview-v1/images/play-minimum-960x700.png) · [Flat](examples/demos/standalone-audio-preview-v1/images/flat-minimum-960x700.png) | [Eight-view gallery](examples/demos/standalone-audio-preview-v1/README.md) · [actual provenance](examples/demos/standalone-audio-preview-v1/provenance.json) |
+| [Rotary](examples/demos/standalone-audio-preview-v1/images/rotary-reference-1672x941.png) · [Service](examples/demos/standalone-audio-preview-v1/images/service-reference-1672x941.png) | [Source/build receipt](docs/development/2026-11-15-audio-continuation/reports/w03-source.json) · [identical-state pixel qualification](docs/development/2026-11-15-audio-continuation/reports/w04-a23-paired-final.json) |
+| [Original reference image](docs/design/atlas-cover-reference.jpg) · [percussion design](docs/PERCUSSION_REFERENCE_CONTRACT.md) | [Retained earlier gallery and review](docs/reviews/PRODUCT_GALLERY_ADMISSION.md) · [earlier MIDI views](examples/demos/standalone-product-preview-v1/midi-overlay/README.md) |
 
-The captures use SDL dummy audio/video, a software renderer and equal logical/drawable dimensions. Source, executable, replay, control state and decoded image identities are retained. The admission records the earlier build-receipt boundary and the unavailable original BMP intermediates; retained PNGs match their recorded native-pixel hashes. The [historical v5 gallery at `487064d2`](examples/demos/standalone-interface-preview-v5/README.md) and all earlier galleries remain preserved.
+The new captures use SDL dummy audio/video, a software renderer and equal
+logical/drawable dimensions. Source, executable, replay, control state and
+decoded image identities are retained. Their running phase/frame/status fields
+can differ across captures; exact inactive equality is established by the
+separate fixed-state raster comparison. The [earlier product gallery](examples/demos/standalone-product-preview-v1/README.md),
+[historical v5 gallery at `487064d2`](examples/demos/standalone-interface-preview-v5/README.md)
+and their source-specific admission boundaries remain preserved.
 
 **Literal whole-interface 1:1 equality remains unmet and unwaived.** The [reference-gap review](docs/design/PRODUCT_REFERENCE_GAPS.md) identifies remaining rack composition, deck/rim shading, key material and small-text differences. Complete manuals, 24 presets, 25 pedals, real utilities and the **NOMINAL DRY ORGAN** caption preserve correct product meaning. The existing relative paint-cost check does not establish an interactive frame rate; native display usability, semantic accessibility, physical devices and measured cabinet fidelity remain separate gates.
 

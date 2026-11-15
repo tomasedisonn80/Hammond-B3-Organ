@@ -1,5 +1,42 @@
 # Development log
 
+## 2026-11-15 — Audio continuation: leakage and reference percussion
+
+Created the independent [audio session](development/2026-11-15-audio-continuation/README.md)
+from `fe4f103f135cefebfe6d320f275d035d1b514f45`, preserving other active checkouts.
+Six actual readers covered all 500 atlas pages; the clean native Release
+baseline passed 183/183 CTests. Independently reviewed contracts admitted
+canonical binary64 leakage rows, an outward-rounded subnormal-safe Engine
+headroom bound, strict data provenance and scoped percussion geometry/paint.
+
+Implemented the fixed 91-source/728-edge module, strict author compiler/native
+loader and inspection probe, stopped Engine configuration and paired explicit
+offline options. The nominal default, 47 parameters and B3CONTROLS4/readers 1–3
+retain their semantics. Independent dense, coherent-module spectrum, ten real
+compiler/native round trips, maximum-capacity lifecycle and actual pedal
+diagnostics pass. Sixteen adversarial CLI methods executed 95 renders and 62
+Linux no-creation observations; failures preserve inputs/outputs. Calibrated
+allocation observation passed 2,050 core frames and 89,436 Engine frames with zero
+observed C++ allocation/deallocation in the measured production intervals.
+
+Wide Dimensional percussion now uses reference horizontal composition, taller
+ivory caps, live centered values and exterior captions. Independent geometry,
+input/focus/pending-applied behavior passed. Genuine historical/current sources
+passed 66 identical-state raster pairs covering 208,102,766 pixels with zero
+escaping changes and 28 entirely identical inactive pairs. The first broader
+integer-enclosure mask and its stricter pixel-center rerun are both retained;
+the final gate allows exactly one outward device pixel. Eight actual native
+captures and original source/executable/state/pixel identities are now in the
+[new gallery](../examples/demos/standalone-audio-preview-v1/README.md) and README.
+
+The [checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md) and
+[actual assignments](development/2026-11-15-audio-continuation/assignments.json)
+track remaining workers, full/platform gates, audio demonstrations and setup
+handoff. Focused passes are not represented as final-source qualification.
+Synthetic coefficients, the approximately 27-pixel vertical UI residual and
+unmet whole-interface 1:1 requirement remain explicit. Original logs are retained
+as bounded compressed evidence; one coordinated build preserves storage.
+
 ## 2026-11-15 — Playable continuation: full atlas and clean baseline
 
 Verified remote main at `3767b645e010066d63ca0b7fc1af8310a6f7e5ad` and created
@@ -84,7 +121,7 @@ matching is unmet and unwaived.** The [batch record](PRODUCT_CONTINUATION_CLOSUR
 and [next steps](NEXT_STEPS.md) prioritize the native visual/input gate and
 remaining reference work, an independent M6 same-Hz protocol, and below-RtMidi
 checked-close/callback-retirement acceptance. Preserve scanner G5's failure,
-47 parameter identities, state4/readers1–3, 91 shared sources and the dry Engine.
+47 parameter identities, state4/readers 1–3, 91 shared sources and the dry Engine.
 Physical acquisition, the R4 owner's remaining integration/publication/acceptance,
 R5/R6, actual DAW/device/display/accessibility/deadline and signed release retain
 their own evidence requirements. Complete model/product release is not claimed.
@@ -3125,7 +3162,7 @@ not a second claimed full68/68 run. See the wave-7 integration review.
 
 At published platform repair9403debd, native Linux/macOS completed tests and
 artifacts; Windows passed all4 actual native suites but its later inventory
-step still failed. Core Windows passed66/67, only inventory failing; the other
+step still failed. Core Windows passed 66/67, only inventory failing; the other
 three core jobs passed. Root changed directory enumeration metadata reads to
 fresh consistent path.lstat() calls, retained all mutation/identity guards,
 added actual mutation regressions and bounded changed-field diagnostics. The

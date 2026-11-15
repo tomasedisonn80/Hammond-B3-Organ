@@ -1,0 +1,1097 @@
+{
+  "artifacts": {
+    "README.md": {
+      "bytes": 5097,
+      "sha256": "c5ffacabc74f7cf0fd9f69b6963a51b6813c5c377f37c207ce349a735a6a204c"
+    },
+    "identity-authoring.json": {
+      "bytes": 757,
+      "sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385"
+    },
+    "identity.b3leakage": {
+      "bytes": 292,
+      "sha256": "6b7b18d4839bde4f25c2e6a0eb48f920c2c4506ba5ed3c817a877d82af155467"
+    },
+    "nominal-authoring.json": {
+      "bytes": 19627,
+      "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff"
+    },
+    "nominal.b3p": {
+      "bytes": 4545,
+      "sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f"
+    },
+    "pair-authoring.json": {
+      "bytes": 909,
+      "sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299"
+    },
+    "pair.b3leakage": {
+      "bytes": 379,
+      "sha256": "ac9207269dc1ad6f612b3b3c58dcc4a3fc7d419d76bc1e577f13561dbf9b539b"
+    },
+    "phrase-identity-g075.json": {
+      "bytes": 2557,
+      "sha256": "7d01411e136ed296162f4cc0afc9bec5b94a40331d7298a7e23de0a7639dbcb1"
+    },
+    "phrase-identity-g075.wav": {
+      "bytes": 384044,
+      "sha256": "92d3766adb3663b83ba65cbf9e882b3fcff5f7cdc2e5088e6c2f5b4a4dc2b005"
+    },
+    "phrase-pair-g075.json": {
+      "bytes": 2563,
+      "sha256": "e5d1b63409d674f34904a26c145b4a333532e37f303adf28f72b779a432188e6"
+    },
+    "phrase-pair-g075.wav": {
+      "bytes": 384044,
+      "sha256": "7a109ee884fd99bac838d39399e3461e46138935f9224685cb31fb25d175f3fb"
+    },
+    "phrase.events": {
+      "bytes": 617,
+      "sha256": "c53c8a4536c7b4975a3328ef22b71250c2c8617eec7f8690961c1aaa220231d5"
+    },
+    "solo-identity-g075.json": {
+      "bytes": 2922,
+      "sha256": "64b56c7b1064574cb256958a1d584049e9d1b5486eac35c4c3568da265b76015"
+    },
+    "solo-identity-g075.wav": {
+      "bytes": 384044,
+      "sha256": "fe64ea4e2d8eebce3b2ebe5ad545a590e664aa12814b9bb7311e34266ba03855"
+    },
+    "solo-identity-g100.json": {
+      "bytes": 2927,
+      "sha256": "45f8bd4dfad209eabaf86043f247f8e43d111e9f4d2ed50b035154623a16840d"
+    },
+    "solo-identity-g100.wav": {
+      "bytes": 384044,
+      "sha256": "b2f4f9aa3d2cd04d904134dfdca2961ca5d2fc281f04e2c2e0d8ba9cfee41da0"
+    },
+    "solo-legacy-g100.json": {
+      "bytes": 2221,
+      "sha256": "09236d34fc41de18559a9b29e0c11a8ef04cc88c4d67403151ad04adaa4d7437"
+    },
+    "solo-legacy-g100.wav": {
+      "bytes": 384044,
+      "sha256": "b2f4f9aa3d2cd04d904134dfdca2961ca5d2fc281f04e2c2e0d8ba9cfee41da0"
+    },
+    "solo-pair-g075.json": {
+      "bytes": 2944,
+      "sha256": "618111e7ab8f9e430df35305955e3b8f2d58dca916fb6b9aa497e5ba3745398b"
+    },
+    "solo-pair-g075.wav": {
+      "bytes": 384044,
+      "sha256": "580247e9d2cd4b518dbbc5c8bf02cbd227dbebd2caf92032bf565a88fa23276b"
+    },
+    "solo.events": {
+      "bytes": 407,
+      "sha256": "294d5503a12a2763cade3997250ce817805a429fb4f4379fb1959718cf888882"
+    }
+  },
+  "build_attestation": "not supplied by this tool; integrator qualification required",
+  "bundle_id": "source-leakage-audition-v1",
+  "comparisons": {
+    "legacy_identity_wav_byte_exact": true,
+    "maximum_solo_pcm_error": 0,
+    "pairs": [
+      {
+        "changed_frames": 71245,
+        "maximum_pcm_difference": 47,
+        "rms_pcm_difference": 22.30685549519101,
+        "same_input_gain": 0.75,
+        "score": "solo"
+      },
+      {
+        "changed_frames": 66227,
+        "maximum_pcm_difference": 63,
+        "rms_pcm_difference": 21.585103611441543,
+        "same_input_gain": 0.75,
+        "score": "phrase"
+      }
+    ]
+  },
+  "compiler_receipts": {
+    "identity": {
+      "boundary": "normalized-generator-precontact-v1",
+      "compiled_bytes": 292,
+      "compiled_sha256": "6b7b18d4839bde4f25c2e6a0eb48f920c2c4506ba5ed3c817a877d82af155467",
+      "edge_count": 0,
+      "evidence_status": "synthetic",
+      "input_sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385",
+      "maximum_row_absolute_gain_sum": 0.0,
+      "model": "static-source-leakage-v1",
+      "profile_id": "synthetic-identity-v1",
+      "schema_version": 1,
+      "source_content": "excludes-leakage",
+      "status": "compiled"
+    },
+    "pair": {
+      "boundary": "normalized-generator-precontact-v1",
+      "compiled_bytes": 379,
+      "compiled_sha256": "ac9207269dc1ad6f612b3b3c58dcc4a3fc7d419d76bc1e577f13561dbf9b539b",
+      "edge_count": 2,
+      "evidence_status": "synthetic",
+      "input_sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299",
+      "maximum_row_absolute_gain_sum": 0.0625,
+      "model": "static-source-leakage-v1",
+      "profile_id": "synthetic-pair-demo-v1",
+      "schema_version": 1,
+      "source_content": "excludes-leakage",
+      "status": "compiled"
+    }
+  },
+  "finished_at_utc": "2026-11-15T12:09:30.287293+00:00",
+  "invocations": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/compile_profile.py",
+        "--input",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/nominal-authoring.json",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/nominal.b3p"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "compiled nominal-unmeasured-v1; authoring_sha256 49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\n"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/compile_source_leakage.py",
+        "--input",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/pair-authoring.json",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/pair.b3leakage"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"boundary\":\"normalized-generator-precontact-v1\",\"compiled_bytes\":379,\"compiled_sha256\":\"ac9207269dc1ad6f612b3b3c58dcc4a3fc7d419d76bc1e577f13561dbf9b539b\",\"edge_count\":2,\"evidence_status\":\"synthetic\",\"input_sha256\":\"e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299\",\"maximum_row_absolute_gain_sum\":0.0625,\"model\":\"static-source-leakage-v1\",\"profile_id\":\"synthetic-pair-demo-v1\",\"schema_version\":1,\"source_content\":\"excludes-leakage\",\"status\":\"compiled\"}\n"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/compile_source_leakage.py",
+        "--input",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/identity-authoring.json",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/identity.b3leakage"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"boundary\":\"normalized-generator-precontact-v1\",\"compiled_bytes\":292,\"compiled_sha256\":\"6b7b18d4839bde4f25c2e6a0eb48f920c2c4506ba5ed3c817a877d82af155467\",\"edge_count\":0,\"evidence_status\":\"synthetic\",\"input_sha256\":\"8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385\",\"maximum_row_absolute_gain_sum\":0.0,\"model\":\"static-source-leakage-v1\",\"profile_id\":\"synthetic-identity-v1\",\"schema_version\":1,\"source_content\":\"excludes-leakage\",\"status\":\"compiled\"}\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/7802a6528f89/build-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/nominal.b3p",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/solo-identity-g075.wav",
+        "--events",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/solo.events",
+        "--frames",
+        "96000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "127",
+        "--seed",
+        "1939",
+        "--drawbars",
+        "008000000",
+        "--contacts",
+        "ideal",
+        "--percussion",
+        "off",
+        "--percussion-volume",
+        "normal",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "00",
+        "--fail-on-clip",
+        "--source-leakage",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/identity.b3leakage",
+        "--leakage-input-gain",
+        "0.75"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":5,\"contact_model\":\"ideal-contacts-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":127,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.022500000894069672,\"rms\":0.013782520274798125,\"clipped_frames\":0,\"clipped_channel_samples\":0,\"source_leakage_model\":\"static-source-leakage-v1\",\"source_leakage_integration\":\"source-leakage-audition-v1\",\"source_leakage_profile_id\":\"synthetic-identity-v1\",\"source_leakage_authoring_sha256\":\"8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385\",\"source_leakage_evidence_status\":\"synthetic\",\"source_leakage_boundary\":\"normalized-generator-precontact-v1\",\"source_leakage_source_content\":\"excludes-leakage\",\"source_leakage_input_gain\":0.75,\"source_leakage_edge_count\":0,\"source_leakage_maximum_row_absolute_gain_sum\":0,\"source_leakage_guarded_output_bound\":0.75,\"source_leakage_identity_bypass\":false}\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/7802a6528f89/build-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/nominal.b3p",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/solo-pair-g075.wav",
+        "--events",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/solo.events",
+        "--frames",
+        "96000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "127",
+        "--seed",
+        "1939",
+        "--drawbars",
+        "008000000",
+        "--contacts",
+        "ideal",
+        "--percussion",
+        "off",
+        "--percussion-volume",
+        "normal",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "00",
+        "--fail-on-clip",
+        "--source-leakage",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/pair.b3leakage",
+        "--leakage-input-gain",
+        "0.75"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":5,\"contact_model\":\"ideal-contacts-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":127,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.02352578192949295,\"rms\":0.013797897546868174,\"clipped_frames\":0,\"clipped_channel_samples\":0,\"source_leakage_model\":\"static-source-leakage-v1\",\"source_leakage_integration\":\"source-leakage-audition-v1\",\"source_leakage_profile_id\":\"synthetic-pair-demo-v1\",\"source_leakage_authoring_sha256\":\"e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299\",\"source_leakage_evidence_status\":\"synthetic\",\"source_leakage_boundary\":\"normalized-generator-precontact-v1\",\"source_leakage_source_content\":\"excludes-leakage\",\"source_leakage_input_gain\":0.75,\"source_leakage_edge_count\":2,\"source_leakage_maximum_row_absolute_gain_sum\":0.0625,\"source_leakage_guarded_output_bound\":0.79687500000001077,\"source_leakage_identity_bypass\":false}\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/7802a6528f89/build-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/nominal.b3p",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/solo-legacy-g100.wav",
+        "--events",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/solo.events",
+        "--frames",
+        "96000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "127",
+        "--seed",
+        "1939",
+        "--drawbars",
+        "008000000",
+        "--contacts",
+        "ideal",
+        "--percussion",
+        "off",
+        "--percussion-volume",
+        "normal",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "00",
+        "--fail-on-clip"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":3,\"contact_model\":\"ideal-contacts-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":127,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.029999999329447746,\"rms\":0.018376693701267328,\"clipped_frames\":0,\"clipped_channel_samples\":0}\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/7802a6528f89/build-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/nominal.b3p",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/solo-identity-g100.wav",
+        "--events",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/solo.events",
+        "--frames",
+        "96000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "127",
+        "--seed",
+        "1939",
+        "--drawbars",
+        "008000000",
+        "--contacts",
+        "ideal",
+        "--percussion",
+        "off",
+        "--percussion-volume",
+        "normal",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "00",
+        "--fail-on-clip",
+        "--source-leakage",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/identity.b3leakage",
+        "--leakage-input-gain",
+        "1.0"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":5,\"contact_model\":\"ideal-contacts-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":127,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.029999999329447746,\"rms\":0.018376693701267328,\"clipped_frames\":0,\"clipped_channel_samples\":0,\"source_leakage_model\":\"static-source-leakage-v1\",\"source_leakage_integration\":\"source-leakage-audition-v1\",\"source_leakage_profile_id\":\"synthetic-identity-v1\",\"source_leakage_authoring_sha256\":\"8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385\",\"source_leakage_evidence_status\":\"synthetic\",\"source_leakage_boundary\":\"normalized-generator-precontact-v1\",\"source_leakage_source_content\":\"excludes-leakage\",\"source_leakage_input_gain\":1,\"source_leakage_edge_count\":0,\"source_leakage_maximum_row_absolute_gain_sum\":0,\"source_leakage_guarded_output_bound\":1,\"source_leakage_identity_bypass\":true}\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/7802a6528f89/build-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/nominal.b3p",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/phrase-identity-g075.wav",
+        "--events",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/phrase.events",
+        "--frames",
+        "96000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "127",
+        "--seed",
+        "1939",
+        "--drawbars",
+        "008000000",
+        "--contacts",
+        "nominal",
+        "--percussion",
+        "second",
+        "--percussion-volume",
+        "normal",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "43",
+        "--fail-on-clip",
+        "--source-leakage",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/identity.b3leakage",
+        "--leakage-input-gain",
+        "0.75"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":5,\"contact_model\":\"nominal-linear-travel-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":127,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.055697623640298843,\"rms\":0.017073773614613826,\"clipped_frames\":0,\"clipped_channel_samples\":0,\"source_leakage_model\":\"static-source-leakage-v1\",\"source_leakage_integration\":\"source-leakage-audition-v1\",\"source_leakage_profile_id\":\"synthetic-identity-v1\",\"source_leakage_authoring_sha256\":\"8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385\",\"source_leakage_evidence_status\":\"synthetic\",\"source_leakage_boundary\":\"normalized-generator-precontact-v1\",\"source_leakage_source_content\":\"excludes-leakage\",\"source_leakage_input_gain\":0.75,\"source_leakage_edge_count\":0,\"source_leakage_maximum_row_absolute_gain_sum\":0,\"source_leakage_guarded_output_bound\":0.75,\"source_leakage_identity_bypass\":false}\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/7802a6528f89/build-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/nominal.b3p",
+        "--output",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/phrase-pair-g075.wav",
+        "--events",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/phrase.events",
+        "--frames",
+        "96000",
+        "--sample-rate",
+        "48000",
+        "--block-size",
+        "127",
+        "--seed",
+        "1939",
+        "--drawbars",
+        "008000000",
+        "--contacts",
+        "nominal",
+        "--percussion",
+        "second",
+        "--percussion-volume",
+        "normal",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "43",
+        "--fail-on-clip",
+        "--source-leakage",
+        "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/examples/demos/.hammond-leakage-demo-zflo0oft/pair.b3leakage",
+        "--leakage-input-gain",
+        "0.75"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "{\"status\":\"ok\",\"model\":\"ideal-shared-sine-v1\",\"render_schema_version\":5,\"contact_model\":\"nominal-linear-travel-v1\",\"percussion_model\":\"shared-readiness-v1\",\"pedal_routing_model\":\"linear-pedal-bus-reference-v1\",\"pedal_voice_model\":\"nominal-static-pedal-mixture-v1\",\"pedal_gain_law\":\"linear-pedal-position-v1\",\"pedal_contact_model\":\"ideal-eight-contact-pedal-v1\",\"pedal_map_id\":\"atlas-derived-b3-c3-pedal-v1\",\"pedal_map_raw_sha256\":\"58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd\",\"pedal_map_canonical_sha256\":\"7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2\",\"pedal_reference_a_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_reference_b_sha256\":\"b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1\",\"pedal_mixture_matrix\":\"4,2,1,1;1,4,2,1\",\"pedal_mixture_denominator\":8,\"pedal_gain_denominator\":8,\"pedal_weight_policy\":\"all-200-unit-positive-v1\",\"evidence_status\":\"unmeasured\",\"profile_id\":\"nominal-unmeasured-v1\",\"authoring_sha256\":\"49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83\",\"sample_rate\":48000,\"block_size\":127,\"frames\":96000,\"seed\":1939,\"channels\":2,\"sample_format\":\"pcm_s16le\",\"peak\":0.055913053452968597,\"rms\":0.017281625236536639,\"clipped_frames\":0,\"clipped_channel_samples\":0,\"source_leakage_model\":\"static-source-leakage-v1\",\"source_leakage_integration\":\"source-leakage-audition-v1\",\"source_leakage_profile_id\":\"synthetic-pair-demo-v1\",\"source_leakage_authoring_sha256\":\"e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299\",\"source_leakage_evidence_status\":\"synthetic\",\"source_leakage_boundary\":\"normalized-generator-precontact-v1\",\"source_leakage_source_content\":\"excludes-leakage\",\"source_leakage_input_gain\":0.75,\"source_leakage_edge_count\":2,\"source_leakage_maximum_row_absolute_gain_sum\":0.0625,\"source_leakage_guarded_output_bound\":0.79687500000001077,\"source_leakage_identity_bypass\":false}\n"
+    }
+  ],
+  "limits": [
+    "synthetic coefficients and unmeasured source profile",
+    "phrase is a listening demonstration",
+    "no physical calibration, scanner/AO-28/Leslie or harmonic composition claim",
+    "no atomic directory-visibility or power-loss durability claim"
+  ],
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "publication": "private staging, exclusive mkdir and hardlinks; provenance last; handled-failure rollback",
+  "python": "3.12.14",
+  "renderer": {
+    "bytes": 172528,
+    "path_at_capture": "/workspace/scratch/7802a6528f89/build-native/hammond_render",
+    "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf"
+  },
+  "renders": [
+    {
+      "description": "Ideal-contact C3/C4, empty graph at 0.75.",
+      "graph": "identity",
+      "id": "solo-identity-g075",
+      "independent_pcm_oracle": {
+        "channel_samples_checked": 192000,
+        "exact_silent_frames": 24000,
+        "frames_checked": 96000,
+        "maximum_allowed_integer_error": 1,
+        "maximum_integer_error": 0,
+        "oracle": "direct-time-sine-and-literal-two-edge-routing-v1",
+        "phase_method": "direct-index SplitMix64 plus n*frequency/rate; no recurrence reuse",
+        "status": "passed"
+      },
+      "input_gain": 0.75,
+      "score": "solo.events",
+      "summary": {
+        "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+        "block_size": 127,
+        "channels": 2,
+        "clipped_channel_samples": 0,
+        "clipped_frames": 0,
+        "contact_model": "ideal-contacts-v1",
+        "evidence_status": "unmeasured",
+        "frames": 96000,
+        "model": "ideal-shared-sine-v1",
+        "peak": 0.02250000089406967,
+        "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+        "pedal_gain_denominator": 8,
+        "pedal_gain_law": "linear-pedal-position-v1",
+        "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+        "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+        "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+        "pedal_mixture_denominator": 8,
+        "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+        "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_routing_model": "linear-pedal-bus-reference-v1",
+        "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+        "pedal_weight_policy": "all-200-unit-positive-v1",
+        "percussion_model": "shared-readiness-v1",
+        "profile_id": "nominal-unmeasured-v1",
+        "render_schema_version": 5,
+        "rms": 0.013782520274798125,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000,
+        "seed": 1939,
+        "source_leakage_authoring_sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385",
+        "source_leakage_boundary": "normalized-generator-precontact-v1",
+        "source_leakage_edge_count": 0,
+        "source_leakage_evidence_status": "synthetic",
+        "source_leakage_guarded_output_bound": 0.75,
+        "source_leakage_identity_bypass": false,
+        "source_leakage_input_gain": 0.75,
+        "source_leakage_integration": "source-leakage-audition-v1",
+        "source_leakage_maximum_row_absolute_gain_sum": 0,
+        "source_leakage_model": "static-source-leakage-v1",
+        "source_leakage_profile_id": "synthetic-identity-v1",
+        "source_leakage_source_content": "excludes-leakage",
+        "status": "ok"
+      },
+      "wav": {
+        "channels": 2,
+        "frames": 96000,
+        "identical_channels": true,
+        "nonzero_frames": 71971,
+        "peak_pcm": 737,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000
+      }
+    },
+    {
+      "description": "Same solo with signed synthetic donor contribution.",
+      "graph": "pair",
+      "id": "solo-pair-g075",
+      "independent_pcm_oracle": {
+        "channel_samples_checked": 192000,
+        "exact_silent_frames": 24000,
+        "frames_checked": 96000,
+        "maximum_allowed_integer_error": 1,
+        "maximum_integer_error": 0,
+        "oracle": "direct-time-sine-and-literal-two-edge-routing-v1",
+        "phase_method": "direct-index SplitMix64 plus n*frequency/rate; no recurrence reuse",
+        "status": "passed"
+      },
+      "input_gain": 0.75,
+      "score": "solo.events",
+      "summary": {
+        "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+        "block_size": 127,
+        "channels": 2,
+        "clipped_channel_samples": 0,
+        "clipped_frames": 0,
+        "contact_model": "ideal-contacts-v1",
+        "evidence_status": "unmeasured",
+        "frames": 96000,
+        "model": "ideal-shared-sine-v1",
+        "peak": 0.02352578192949295,
+        "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+        "pedal_gain_denominator": 8,
+        "pedal_gain_law": "linear-pedal-position-v1",
+        "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+        "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+        "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+        "pedal_mixture_denominator": 8,
+        "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+        "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_routing_model": "linear-pedal-bus-reference-v1",
+        "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+        "pedal_weight_policy": "all-200-unit-positive-v1",
+        "percussion_model": "shared-readiness-v1",
+        "profile_id": "nominal-unmeasured-v1",
+        "render_schema_version": 5,
+        "rms": 0.013797897546868174,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000,
+        "seed": 1939,
+        "source_leakage_authoring_sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299",
+        "source_leakage_boundary": "normalized-generator-precontact-v1",
+        "source_leakage_edge_count": 2,
+        "source_leakage_evidence_status": "synthetic",
+        "source_leakage_guarded_output_bound": 0.7968750000000108,
+        "source_leakage_identity_bypass": false,
+        "source_leakage_input_gain": 0.75,
+        "source_leakage_integration": "source-leakage-audition-v1",
+        "source_leakage_maximum_row_absolute_gain_sum": 0.0625,
+        "source_leakage_model": "static-source-leakage-v1",
+        "source_leakage_profile_id": "synthetic-pair-demo-v1",
+        "source_leakage_source_content": "excludes-leakage",
+        "status": "ok"
+      },
+      "wav": {
+        "channels": 2,
+        "frames": 96000,
+        "identical_channels": true,
+        "nonzero_frames": 71969,
+        "peak_pcm": 771,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000
+      }
+    },
+    {
+      "description": "Legacy no-flags reference, gain 1.",
+      "graph": null,
+      "id": "solo-legacy-g100",
+      "independent_pcm_oracle": {
+        "channel_samples_checked": 192000,
+        "exact_silent_frames": 24000,
+        "frames_checked": 96000,
+        "maximum_allowed_integer_error": 1,
+        "maximum_integer_error": 0,
+        "oracle": "direct-time-sine-and-literal-two-edge-routing-v1",
+        "phase_method": "direct-index SplitMix64 plus n*frequency/rate; no recurrence reuse",
+        "status": "passed"
+      },
+      "input_gain": null,
+      "score": "solo.events",
+      "summary": {
+        "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+        "block_size": 127,
+        "channels": 2,
+        "clipped_channel_samples": 0,
+        "clipped_frames": 0,
+        "contact_model": "ideal-contacts-v1",
+        "evidence_status": "unmeasured",
+        "frames": 96000,
+        "model": "ideal-shared-sine-v1",
+        "peak": 0.029999999329447746,
+        "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+        "pedal_gain_denominator": 8,
+        "pedal_gain_law": "linear-pedal-position-v1",
+        "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+        "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+        "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+        "pedal_mixture_denominator": 8,
+        "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+        "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_routing_model": "linear-pedal-bus-reference-v1",
+        "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+        "pedal_weight_policy": "all-200-unit-positive-v1",
+        "percussion_model": "shared-readiness-v1",
+        "profile_id": "nominal-unmeasured-v1",
+        "render_schema_version": 3,
+        "rms": 0.01837669370126733,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000,
+        "seed": 1939,
+        "status": "ok"
+      },
+      "wav": {
+        "channels": 2,
+        "frames": 96000,
+        "identical_channels": true,
+        "nonzero_frames": 71975,
+        "peak_pcm": 983,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000
+      }
+    },
+    {
+      "description": "Explicit identity at gain 1; byte-identical to legacy.",
+      "graph": "identity",
+      "id": "solo-identity-g100",
+      "independent_pcm_oracle": {
+        "channel_samples_checked": 192000,
+        "exact_silent_frames": 24000,
+        "frames_checked": 96000,
+        "maximum_allowed_integer_error": 1,
+        "maximum_integer_error": 0,
+        "oracle": "direct-time-sine-and-literal-two-edge-routing-v1",
+        "phase_method": "direct-index SplitMix64 plus n*frequency/rate; no recurrence reuse",
+        "status": "passed"
+      },
+      "input_gain": 1.0,
+      "score": "solo.events",
+      "summary": {
+        "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+        "block_size": 127,
+        "channels": 2,
+        "clipped_channel_samples": 0,
+        "clipped_frames": 0,
+        "contact_model": "ideal-contacts-v1",
+        "evidence_status": "unmeasured",
+        "frames": 96000,
+        "model": "ideal-shared-sine-v1",
+        "peak": 0.029999999329447746,
+        "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+        "pedal_gain_denominator": 8,
+        "pedal_gain_law": "linear-pedal-position-v1",
+        "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+        "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+        "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+        "pedal_mixture_denominator": 8,
+        "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+        "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_routing_model": "linear-pedal-bus-reference-v1",
+        "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+        "pedal_weight_policy": "all-200-unit-positive-v1",
+        "percussion_model": "shared-readiness-v1",
+        "profile_id": "nominal-unmeasured-v1",
+        "render_schema_version": 5,
+        "rms": 0.01837669370126733,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000,
+        "seed": 1939,
+        "source_leakage_authoring_sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385",
+        "source_leakage_boundary": "normalized-generator-precontact-v1",
+        "source_leakage_edge_count": 0,
+        "source_leakage_evidence_status": "synthetic",
+        "source_leakage_guarded_output_bound": 1,
+        "source_leakage_identity_bypass": true,
+        "source_leakage_input_gain": 1,
+        "source_leakage_integration": "source-leakage-audition-v1",
+        "source_leakage_maximum_row_absolute_gain_sum": 0,
+        "source_leakage_model": "static-source-leakage-v1",
+        "source_leakage_profile_id": "synthetic-identity-v1",
+        "source_leakage_source_content": "excludes-leakage",
+        "status": "ok"
+      },
+      "wav": {
+        "channels": 2,
+        "frames": 96000,
+        "identical_channels": true,
+        "nonzero_frames": 71975,
+        "peak_pcm": 983,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000
+      }
+    },
+    {
+      "description": "Manuals, percussion and pedals; empty graph at 0.75.",
+      "graph": "identity",
+      "id": "phrase-identity-g075",
+      "input_gain": 0.75,
+      "score": "phrase.events",
+      "summary": {
+        "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+        "block_size": 127,
+        "channels": 2,
+        "clipped_channel_samples": 0,
+        "clipped_frames": 0,
+        "contact_model": "nominal-linear-travel-v1",
+        "evidence_status": "unmeasured",
+        "frames": 96000,
+        "model": "ideal-shared-sine-v1",
+        "peak": 0.05569762364029884,
+        "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+        "pedal_gain_denominator": 8,
+        "pedal_gain_law": "linear-pedal-position-v1",
+        "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+        "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+        "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+        "pedal_mixture_denominator": 8,
+        "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+        "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_routing_model": "linear-pedal-bus-reference-v1",
+        "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+        "pedal_weight_policy": "all-200-unit-positive-v1",
+        "percussion_model": "shared-readiness-v1",
+        "profile_id": "nominal-unmeasured-v1",
+        "render_schema_version": 5,
+        "rms": 0.017073773614613826,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000,
+        "seed": 1939,
+        "source_leakage_authoring_sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385",
+        "source_leakage_boundary": "normalized-generator-precontact-v1",
+        "source_leakage_edge_count": 0,
+        "source_leakage_evidence_status": "synthetic",
+        "source_leakage_guarded_output_bound": 0.75,
+        "source_leakage_identity_bypass": false,
+        "source_leakage_input_gain": 0.75,
+        "source_leakage_integration": "source-leakage-audition-v1",
+        "source_leakage_maximum_row_absolute_gain_sum": 0,
+        "source_leakage_model": "static-source-leakage-v1",
+        "source_leakage_profile_id": "synthetic-identity-v1",
+        "source_leakage_source_content": "excludes-leakage",
+        "status": "ok"
+      },
+      "wav": {
+        "channels": 2,
+        "frames": 96000,
+        "identical_channels": true,
+        "nonzero_frames": 67158,
+        "peak_pcm": 1825,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000
+      }
+    },
+    {
+      "description": "Same full phrase with signed synthetic coupling.",
+      "graph": "pair",
+      "id": "phrase-pair-g075",
+      "input_gain": 0.75,
+      "score": "phrase.events",
+      "summary": {
+        "authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+        "block_size": 127,
+        "channels": 2,
+        "clipped_channel_samples": 0,
+        "clipped_frames": 0,
+        "contact_model": "nominal-linear-travel-v1",
+        "evidence_status": "unmeasured",
+        "frames": 96000,
+        "model": "ideal-shared-sine-v1",
+        "peak": 0.0559130534529686,
+        "pedal_contact_model": "ideal-eight-contact-pedal-v1",
+        "pedal_gain_denominator": 8,
+        "pedal_gain_law": "linear-pedal-position-v1",
+        "pedal_map_canonical_sha256": "7b2631a0c7d55a18f8225d4ee420e472c23b9f2809eec69865474eafce6f5fb2",
+        "pedal_map_id": "atlas-derived-b3-c3-pedal-v1",
+        "pedal_map_raw_sha256": "58a30850c08933a075cfcec04faeb2cb479f60bd9dda82ace3246552221623bd",
+        "pedal_mixture_denominator": 8,
+        "pedal_mixture_matrix": "4,2,1,1;1,4,2,1",
+        "pedal_reference_a_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_reference_b_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "pedal_routing_model": "linear-pedal-bus-reference-v1",
+        "pedal_voice_model": "nominal-static-pedal-mixture-v1",
+        "pedal_weight_policy": "all-200-unit-positive-v1",
+        "percussion_model": "shared-readiness-v1",
+        "profile_id": "nominal-unmeasured-v1",
+        "render_schema_version": 5,
+        "rms": 0.01728162523653664,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000,
+        "seed": 1939,
+        "source_leakage_authoring_sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299",
+        "source_leakage_boundary": "normalized-generator-precontact-v1",
+        "source_leakage_edge_count": 2,
+        "source_leakage_evidence_status": "synthetic",
+        "source_leakage_guarded_output_bound": 0.7968750000000108,
+        "source_leakage_identity_bypass": false,
+        "source_leakage_input_gain": 0.75,
+        "source_leakage_integration": "source-leakage-audition-v1",
+        "source_leakage_maximum_row_absolute_gain_sum": 0.0625,
+        "source_leakage_model": "static-source-leakage-v1",
+        "source_leakage_profile_id": "synthetic-pair-demo-v1",
+        "source_leakage_source_content": "excludes-leakage",
+        "status": "ok"
+      },
+      "wav": {
+        "channels": 2,
+        "frames": 96000,
+        "identical_channels": true,
+        "nonzero_frames": 67163,
+        "peak_pcm": 1832,
+        "sample_format": "pcm_s16le",
+        "sample_rate": 48000
+      }
+    }
+  ],
+  "schema_version": 1,
+  "source_root_at_capture": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ",
+  "source_sha256": {
+    "data/profiles/nominal-unmeasured-v1.json": {
+      "bytes": 19627,
+      "sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff"
+    },
+    "data/source-leakage/synthetic-identity-v1.json": {
+      "bytes": 757,
+      "sha256": "8e4cf0ce7bf5d0ea5f087b9561f9c4c94edf970189dcd6494d10906287604385"
+    },
+    "data/source-leakage/synthetic-pair-demo-v1.json": {
+      "bytes": 909,
+      "sha256": "e93100618362503245f9c0d192419c9a73ddaf6022725cf1577fe695be183299"
+    },
+    "docs/SOURCE_LEAKAGE_AUDITION_CONTRACT.md": {
+      "bytes": 16588,
+      "sha256": "33eed6ace40adf98e91bac4d42d4d98f0d46e0c3e5203ee8ff96f656e94f0569"
+    },
+    "docs/SOURCE_LEAKAGE_CONTRACT.md": {
+      "bytes": 15097,
+      "sha256": "277e82d3aa9ec6a4b57dbbbc50fdce4990de5042b745234bcf8fdecd6b55a7c3"
+    },
+    "include/hammond/ConsoleModel.h": {
+      "bytes": 1721,
+      "sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51"
+    },
+    "include/hammond/ContactBank.h": {
+      "bytes": 7646,
+      "sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d"
+    },
+    "include/hammond/ControlState.h": {
+      "bytes": 5751,
+      "sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856"
+    },
+    "include/hammond/ControlStateIO.h": {
+      "bytes": 2070,
+      "sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081"
+    },
+    "include/hammond/Engine.h": {
+      "bytes": 11513,
+      "sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408"
+    },
+    "include/hammond/FixedRegistration.h": {
+      "bytes": 1822,
+      "sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0"
+    },
+    "include/hammond/HostTimeline.h": {
+      "bytes": 7260,
+      "sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316"
+    },
+    "include/hammond/InputProcessor.h": {
+      "bytes": 2317,
+      "sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df"
+    },
+    "include/hammond/LeslieCrossover.h": {
+      "bytes": 5331,
+      "sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c"
+    },
+    "include/hammond/NoteOwnership.h": {
+      "bytes": 5037,
+      "sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc"
+    },
+    "include/hammond/ParameterBridge.h": {
+      "bytes": 2952,
+      "sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3"
+    },
+    "include/hammond/PedalNoteOwnership.h": {
+      "bytes": 4596,
+      "sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33"
+    },
+    "include/hammond/PedalRouting.h": {
+      "bytes": 6909,
+      "sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8"
+    },
+    "include/hammond/PedalVoice.h": {
+      "bytes": 3384,
+      "sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf"
+    },
+    "include/hammond/Percussion.h": {
+      "bytes": 6395,
+      "sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722"
+    },
+    "include/hammond/PerformanceInput.h": {
+      "bytes": 3220,
+      "sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77"
+    },
+    "include/hammond/Profile.h": {
+      "bytes": 2250,
+      "sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0"
+    },
+    "include/hammond/RotaryHistory.h": {
+      "bytes": 5507,
+      "sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b"
+    },
+    "include/hammond/RotaryMotion.h": {
+      "bytes": 6314,
+      "sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36"
+    },
+    "include/hammond/RotaryPropagation.h": {
+      "bytes": 3577,
+      "sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a"
+    },
+    "include/hammond/RotaryRenderer.h": {
+      "bytes": 6415,
+      "sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0"
+    },
+    "include/hammond/RotaryTypes.h": {
+      "bytes": 8414,
+      "sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4"
+    },
+    "include/hammond/ScannerLine.h": {
+      "bytes": 6451,
+      "sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7"
+    },
+    "include/hammond/ScannerLineFoh.h": {
+      "bytes": 3927,
+      "sha256": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887"
+    },
+    "include/hammond/ScannerRotor.h": {
+      "bytes": 6041,
+      "sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a"
+    },
+    "include/hammond/SourceLeakage.h": {
+      "bytes": 4287,
+      "sha256": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482"
+    },
+    "include/hammond/StateExchange.h": {
+      "bytes": 6878,
+      "sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0"
+    },
+    "include/hammond/TonewheelBank.h": {
+      "bytes": 2760,
+      "sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b"
+    },
+    "include/hammond/Types.h": {
+      "bytes": 6015,
+      "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8"
+    },
+    "include/hammond/detail/Decimal.h": {
+      "bytes": 3736,
+      "sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42"
+    },
+    "src/ContactBank.cpp": {
+      "bytes": 9665,
+      "sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1"
+    },
+    "src/ControlState.cpp": {
+      "bytes": 7673,
+      "sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d"
+    },
+    "src/ControlStateIO.cpp": {
+      "bytes": 13152,
+      "sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb"
+    },
+    "src/Engine.cpp": {
+      "bytes": 28448,
+      "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3"
+    },
+    "src/FixedRegistration.cpp": {
+      "bytes": 1630,
+      "sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d"
+    },
+    "src/HostTimeline.cpp": {
+      "bytes": 21374,
+      "sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149"
+    },
+    "src/InputProcessor.cpp": {
+      "bytes": 1257,
+      "sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc"
+    },
+    "src/LeslieCrossover.cpp": {
+      "bytes": 18694,
+      "sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525"
+    },
+    "src/NoteOwnership.cpp": {
+      "bytes": 8856,
+      "sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751"
+    },
+    "src/ParameterBridge.cpp": {
+      "bytes": 11334,
+      "sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220"
+    },
+    "src/PedalNoteOwnership.cpp": {
+      "bytes": 7419,
+      "sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde"
+    },
+    "src/PedalRouting.cpp": {
+      "bytes": 3983,
+      "sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af"
+    },
+    "src/PedalVoice.cpp": {
+      "bytes": 1171,
+      "sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba"
+    },
+    "src/Percussion.cpp": {
+      "bytes": 4837,
+      "sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a"
+    },
+    "src/PerformanceInput.cpp": {
+      "bytes": 4219,
+      "sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189"
+    },
+    "src/Profile.cpp": {
+      "bytes": 11655,
+      "sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54"
+    },
+    "src/RotaryHistory.cpp": {
+      "bytes": 8643,
+      "sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5"
+    },
+    "src/RotaryMotion.cpp": {
+      "bytes": 17599,
+      "sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1"
+    },
+    "src/RotaryPropagation.cpp": {
+      "bytes": 14495,
+      "sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e"
+    },
+    "src/RotaryRenderer.cpp": {
+      "bytes": 16388,
+      "sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04"
+    },
+    "src/RotaryStreamingPath.cpp": {
+      "bytes": 9747,
+      "sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50"
+    },
+    "src/ScannerLine.cpp": {
+      "bytes": 20512,
+      "sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336"
+    },
+    "src/ScannerLineFoh.cpp": {
+      "bytes": 28845,
+      "sha256": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df"
+    },
+    "src/ScannerRotor.cpp": {
+      "bytes": 5383,
+      "sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0"
+    },
+    "src/SourceLeakage.cpp": {
+      "bytes": 5741,
+      "sha256": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c"
+    },
+    "src/SourceLeakageIO.cpp": {
+      "bytes": 8953,
+      "sha256": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e"
+    },
+    "src/StateExchange.cpp": {
+      "bytes": 9473,
+      "sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837"
+    },
+    "src/TonewheelBank.cpp": {
+      "bytes": 4390,
+      "sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b"
+    },
+    "tools/build_source_leakage_demo.py": {
+      "bytes": 26277,
+      "sha256": "66aae525ae880212261f4cb8ce7a66eaead828755e899b48468d8d3b800f6352"
+    },
+    "tools/compile_profile.py": {
+      "bytes": 20385,
+      "sha256": "2ca649de88a3f267970e4ed00fa6c08b7c234bffcc1b4c24b47a89be608fb2a8"
+    },
+    "tools/compile_source_leakage.py": {
+      "bytes": 11808,
+      "sha256": "ea5c4827c3e711b1f03f4de7c9b670720435e8a100d866b6d7d683a940160d14"
+    },
+    "tools/render.cpp": {
+      "bytes": 45634,
+      "sha256": "0445bb80e40e832692a69689a83607aeacd55dd15264599a9fdfe219448bd37e"
+    }
+  },
+  "started_at_utc": "2026-11-15T12:09:28.138561+00:00",
+  "status": "verified_synthetic_demonstration",
+  "unchanged_inputs_and_executable": true
+}

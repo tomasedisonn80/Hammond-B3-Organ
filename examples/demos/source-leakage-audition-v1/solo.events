@@ -1,0 +1,10 @@
+# Synthetic C3/C4 single-8-foot-source fixture; 48000 Hz, 96000 frames.
+# Source25 sounds at MIDI48; source37 sounds at MIDI60. Donor key stays released.
+# Cancel/reconnect preserves the held C3 and free-running source phases.
+0 expression upper 0 1
+0 note_on upper 48 100
+24000 cancel upper 0 0
+36000 select_bank upper 0 1
+48000 note_off upper 48 0
+48000 note_on upper 60 100
+84000 all_notes_off upper 0 0

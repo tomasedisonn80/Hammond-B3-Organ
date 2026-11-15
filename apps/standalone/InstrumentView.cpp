@@ -675,8 +675,16 @@ void paint_controls(Drawing& drawing, const UiModel& model) {
             default: value = settings.decay == PercussionDecay::Slow ? "SLOW" : "FAST"; break;
             }
             button(drawing, geometry.bounds, {}, selected, false, TextFace::Serif, true, flat);
-            centered(drawing, titles[id.index], geometry.label_bounds, 10.0F, {74, 54, 35});
-            centered(drawing, value, geometry.value_bounds, 14.0F, {33, 28, 21}, TextFace::Serif);
+            const bool reference_percussion = layout.workspace == UiWorkspace::Play &&
+                layout.sidebar_pedals && layout.presentation == UiPresentation::Dimensional;
+            if (reference_percussion) {
+                constexpr std::array<std::string_view, 4> reference_titles{"PERC", "HARM", "VOL", "DECAY"};
+                centered(drawing, reference_titles[id.index], geometry.label_bounds, 10.5F, kUiIvory, TextFace::Serif);
+                centered(drawing, value, geometry.value_bounds, 17.0F, {33, 28, 21}, TextFace::Serif);
+            } else {
+                centered(drawing, titles[id.index], geometry.label_bounds, 10.0F, {74, 54, 35});
+                centered(drawing, value, geometry.value_bounds, 14.0F, {33, 28, 21}, TextFace::Serif);
+            }
         } else {
             if (id.kind == UiControlKind::EditBank) selected = view.edited_banks[manual] == id.bank;
             if (id.kind == UiControlKind::KeyboardTarget) selected = static_cast<std::uint8_t>(view.keyboard_target) == id.index;
@@ -1424,12 +1432,22 @@ void paint_instrument(Drawing& drawing, const UiModel& model, const InstrumentVi
     const bool eligible = view.applied.controls.route_enabled[0] &&
         view.applied.controls.fixed_registrations[0] == FixedRegistration::None &&
         view.applied.controls.selected_banks[0] == DrawbarBank::B;
-    const bool separate_eligibility = performance.height >= 92.0F;
+    const bool reference_percussion = layout.workspace == UiWorkspace::Play &&
+        layout.sidebar_pedals && layout.presentation == UiPresentation::Dimensional;
+    const bool separate_eligibility = performance.height >= (reference_percussion ? 104.0F : 92.0F);
     heading(drawing, separate_eligibility ? "PERCUSSION" : eligible ? "PERCUSSION / UPPER B ACTIVE" : "PERCUSSION / REQUIRES UPPER B",
             {performance.x + 17.0F, performance.y + 3.0F, divider - performance.x - 34.0F, 18.0F},
             separate_eligibility ? 13.5F : 10.5F);
-    if (separate_eligibility) centered(drawing, eligible ? "UPPER B ROUTE ACTIVE" : "REQUIRES UPPER B",
-        {performance.x + 12.0F, performance.y + 73.0F, divider - performance.x - 24.0F, 16.0F}, 10.0F, eligible ? kGreen : kMuted);
+    if (separate_eligibility) {
+        if (reference_percussion) {
+            centered(drawing, eligible ? "UPPER B ROUTE ACTIVE" : "REQUIRES UPPER B",
+                {performance.x + 12.0F, performance.y + performance.height - 16.0F,
+                 divider - performance.x - 24.0F, 11.0F}, 9.0F, eligible ? kGreen : kMuted);
+        } else {
+            centered(drawing, eligible ? "UPPER B ROUTE ACTIVE" : "REQUIRES UPPER B",
+                {performance.x + 12.0F, performance.y + 73.0F, divider - performance.x - 24.0F, 16.0F}, 10.0F, eligible ? kGreen : kMuted);
+        }
+    }
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         const auto& bounds = layout.registration_panels[manual];
         panel(drawing, bounds, true, flat);

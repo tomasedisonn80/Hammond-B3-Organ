@@ -90,32 +90,376 @@
       "wave": 2,
       "agent": "/root/w02_a07_leakage_contract",
       "task": "Sparse source leakage core/data contract",
-      "status": "dispatched",
+      "status": "accepted",
       "owned_paths": [
         "docs/SOURCE_LEAKAGE_CONTRACT.md",
         "docs/development/2026-11-15-audio-continuation/notes/A07.md"
-      ]
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A07.md",
+      "note_sha256": "d5d61836c0da74d2d91010d8bbf33a3d5c5c8a4f874fd498d271fbafcb3ae0ac",
+      "acceptance": "Integrator accepts independently admitted corrected design and explicit implementation gates; no production execution claimed by this design wave."
     },
     {
       "id": "A08",
       "wave": 2,
       "agent": "/root/w02_a08_leakage_integration_contract",
       "task": "Explicit Engine/offline audition contract",
-      "status": "dispatched",
+      "status": "accepted",
       "owned_paths": [
         "docs/SOURCE_LEAKAGE_AUDITION_CONTRACT.md",
         "docs/development/2026-11-15-audio-continuation/notes/A08.md"
-      ]
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A08.md",
+      "note_sha256": "d8563b7da060975899ad23445a36681a6724d20d7caaa77011419b0ff4ff3639",
+      "acceptance": "Integrator accepts independently admitted corrected design and explicit implementation gates; no production execution claimed by this design wave."
     },
     {
       "id": "A09",
       "wave": 2,
       "agent": "/root/w02_a09_percussion_contract",
       "task": "Reference percussion layout/paint contract",
-      "status": "dispatched",
+      "status": "accepted",
       "owned_paths": [
         "docs/PERCUSSION_REFERENCE_CONTRACT.md",
         "docs/development/2026-11-15-audio-continuation/notes/A09.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A09.md",
+      "note_sha256": "217beb4d622632f8a5eee014e669d531bd5e8c9243708000fe0cac9788365de3",
+      "acceptance": "Integrator accepts independently admitted corrected design and explicit implementation gates; no production execution claimed by this design wave."
+    },
+    {
+      "id": "A10",
+      "wave": 2,
+      "agent": "/root/w02_a10_leakage_review",
+      "task": "Independent source leakage contract admission",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/SOURCE_LEAKAGE_CONTRACT_REVIEW.md",
+        "docs/development/2026-11-15-audio-continuation/notes/A10.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A10.md",
+      "note_sha256": "5ca7fde06e1e06cbeb8b75fe31efb2d2421c42900d61a7baf4c8129932cc2cb1",
+      "acceptance": "Integrator accepts independently admitted corrected design and explicit implementation gates; no production execution claimed by this design wave."
+    },
+    {
+      "id": "A11",
+      "wave": 2,
+      "agent": "/root/w02_a11_percussion_review",
+      "task": "Independent percussion contract admission",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/PERCUSSION_REFERENCE_CONTRACT_REVIEW.md",
+        "docs/development/2026-11-15-audio-continuation/notes/A11.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A11.md",
+      "note_sha256": "ea5bb0d244cb958abb7eb0ff28859cb3fae231cadb6f5e05d97222677dd6e570",
+      "acceptance": "Integrator accepts independently admitted corrected design and explicit implementation gates; no production execution claimed by this design wave."
+    },
+    {
+      "id": "A12",
+      "wave": 2,
+      "agent": "/root/w02_a12_audition_review",
+      "task": "Independent Engine/offline admission and headroom",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/reviews/SOURCE_LEAKAGE_AUDITION_CONTRACT_REVIEW.md",
+        "docs/development/2026-11-15-audio-continuation/notes/A12.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A12.md",
+      "note_sha256": "7773d272493e0f89b8ce59348ce9952cbf1d7b231052d4b503290a8dbca12d36",
+      "acceptance": "Integrator accepts independently admitted corrected design and explicit implementation gates; no production execution claimed by this design wave."
+    },
+    {
+      "id": "A13",
+      "wave": 3,
+      "agent": "/root/w03_a13_leakage_core",
+      "task": "Source leakage numerical core/profile API and authored checks",
+      "status": "focused-pass",
+      "owned_paths": [
+        "include/hammond/SourceLeakage.h",
+        "src/SourceLeakage.cpp",
+        "tests/test_source_leakage.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A13.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A13.md",
+      "note_sha256": "7cb2ec76ee717b0d7e30b87542e9aa36184877a19ae595c62b9d95055f6b0bdc",
+      "acceptance": "Coherent Release build and 8/8 focused CTests passed; independent numerical, CLI, raster, resource and full regression gates remain."
+    },
+    {
+      "id": "A14",
+      "wave": 3,
+      "agent": "/root/w03_a14_leakage_compiler",
+      "task": "Strict author compiler/schema/synthetic fixtures and tests",
+      "status": "focused-pass",
+      "owned_paths": [
+        "tools/compile_source_leakage.py",
+        "data/source-leakage.schema.json",
+        "data/source-leakage/synthetic-pair-demo-v1.json",
+        "data/source-leakage/synthetic-identity-v1.json",
+        "tests/test_source_leakage_compiler.py",
+        "docs/development/2026-11-15-audio-continuation/notes/A14.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A14.md",
+      "note_sha256": "5cbf092e9e5b66fd828bdab8eda40e3415f3936d36cd730bb4ccab099fbce582",
+      "acceptance": "Coherent Release build and 8/8 focused CTests passed; independent numerical, CLI, raster, resource and full regression gates remain."
+    },
+    {
+      "id": "A15",
+      "wave": 3,
+      "agent": "/root/w03_a15_percussion_implementation",
+      "task": "Reference percussion geometry and painter",
+      "status": "focused-pass",
+      "owned_paths": [
+        "apps/standalone/UiModel.cpp",
+        "apps/standalone/InstrumentView.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A15.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A15.md",
+      "note_sha256": "799b8e1e78f4fc8d6617cedb1a085593b60bb685848f98028ce1280bf9031ffd",
+      "acceptance": "Coherent Release build and 8/8 focused CTests passed; independent numerical, CLI, raster, resource and full regression gates remain."
+    },
+    {
+      "id": "A16",
+      "wave": 3,
+      "agent": "/root/w03_a16_leakage_loader",
+      "task": "Strict bounded native loader and authored tests",
+      "status": "focused-pass",
+      "owned_paths": [
+        "src/SourceLeakageIO.cpp",
+        "tests/test_source_leakage_io.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A16.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A16.md",
+      "note_sha256": "22695e2a54000ef86c126ced509648de2364e581f215837b5b859ca3cceed378",
+      "acceptance": "Coherent Release build and 8/8 focused CTests passed; independent numerical, CLI, raster, resource and full regression gates remain."
+    },
+    {
+      "id": "A17",
+      "wave": 3,
+      "agent": "/root/w03_a17_leakage_engine_renderer",
+      "task": "Stopped Engine configuration and explicit offline audition",
+      "status": "focused-pass",
+      "owned_paths": [
+        "include/hammond/Engine.h",
+        "src/Engine.cpp",
+        "tools/render.cpp",
+        "tests/test_source_leakage_engine.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A17.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A17.md",
+      "note_sha256": "fbef1578dc5c7e876248d213052226b94202f3ddc332c62bd870cf49582224bb",
+      "acceptance": "Coherent Release build and 8/8 focused CTests passed; independent numerical, CLI, raster, resource and full regression gates remain."
+    },
+    {
+      "id": "A18",
+      "wave": 3,
+      "agent": "/root/w03_a18_percussion_behavior",
+      "task": "Independent percussion geometry and interaction qualification",
+      "status": "focused-pass",
+      "owned_paths": [
+        "apps/standalone/tests/test_standalone_percussion_reference.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A18.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A18.md",
+      "note_sha256": "5069f6318ede8b8433685aa1d9a34e15209932917e6037e45a450c62d70f5ffe",
+      "acceptance": "Coherent Release build and 8/8 focused CTests passed; independent numerical, CLI, raster, resource and full regression gates remain."
+    },
+    {
+      "id": "A19",
+      "wave": 4,
+      "agent": "/root/w04_a19_leakage_dense_oracle",
+      "task": "Independent dense and coherent spectral numerical oracle",
+      "status": "focused-pass",
+      "owned_paths": [
+        "tests/test_source_leakage_oracle.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A19.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A19.md",
+      "note_sha256": "5eb3f104b67cfe9467892c18a0cda861d7b98f64d19bdc7361b7243f8914e78a",
+      "acceptance": "Root coherently built and executed this independent gate successfully; exact original log retained in reports. Full regression/platform gates pending."
+    },
+    {
+      "id": "A20",
+      "wave": 4,
+      "agent": "/root/w04_a20_leakage_native_probe",
+      "task": "Native receipt probe and actual compiler/native round trips",
+      "status": "focused-pass",
+      "owned_paths": [
+        "tools/source_leakage_probe.cpp",
+        "tests/test_source_leakage_roundtrip.py",
+        "docs/development/2026-11-15-audio-continuation/notes/A20.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A20.md",
+      "note_sha256": "f631eefe287299177182e5ee46d81903315ab767daa6744cf7aca4b7422647e3",
+      "acceptance": "Root coherently built and executed this independent gate successfully; exact original log retained in reports. Full regression/platform gates pending."
+    },
+    {
+      "id": "A21",
+      "wave": 4,
+      "agent": "/root/w04_a21_engine_lifecycle_oracle",
+      "task": "Independent Engine lifecycle, actual pedal and headroom boundary oracle",
+      "status": "focused-pass",
+      "owned_paths": [
+        "tests/test_source_leakage_lifecycle.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A21.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A21.md",
+      "note_sha256": "02864465936a2dd0e8132086989409e8a5ca2955f3e1893038a2e8ce198a56f8",
+      "acceptance": "Root coherently built and executed this independent gate successfully; exact original log retained in reports. Full regression/platform gates pending."
+    },
+    {
+      "id": "A22",
+      "wave": 4,
+      "agent": "/root/w04_a22_leakage_cli_adversarial",
+      "task": "Independent renderer CLI and filesystem qualification",
+      "status": "focused-pass",
+      "owned_paths": [
+        "tests/test_source_leakage_render.py",
+        "docs/development/2026-11-15-audio-continuation/notes/A22.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A22.md",
+      "note_sha256": "b947e641a68de7ab4f56a371467a3a00e64eed69f40c18479ca5fbb20e94705c",
+      "acceptance": "Executed independent gate passed with original log retained; source and actual counts reviewed by root."
+    },
+    {
+      "id": "A23",
+      "wave": 4,
+      "agent": "/root/w04_a23_percussion_raster",
+      "task": "Identical-state native baseline/candidate raster containment",
+      "status": "focused-pass",
+      "owned_paths": [
+        "apps/standalone/native_tests/test_standalone_percussion_raster.cpp",
+        "tools/qualify_percussion_raster.py",
+        "docs/development/2026-11-15-audio-continuation/notes/A23.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A23.md",
+      "note_sha256": "dc52fd583e7ecf5461c3dc147952942eadabf29a66010724c63b3a2bf28a7b24",
+      "acceptance": "Root reviewed genuine historical/current source paired qualification:66/66, zero escapes,28 exact inactive pairs; ordinary primary CTest passed within52/52 coherent native regression."
+    },
+    {
+      "id": "A24",
+      "wave": 4,
+      "agent": "/root/w04_a24_leakage_resources",
+      "task": "Prepared allocation, capacity and resource qualification",
+      "status": "focused-pass",
+      "owned_paths": [
+        "tests/test_source_leakage_resources.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A24.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A24.md",
+      "note_sha256": "1d9b2f926bd427c208ff201d38bc094b76037c6288bd2af0bb4716e1c43131c0",
+      "acceptance": "Executed independent gate passed with original log retained; source and actual counts reviewed by root."
+    },
+    {
+      "id": "A25",
+      "wave": 5,
+      "agent": "/root/w05_a25_engine_spectral",
+      "task": "Independent actual Engine coherent spectral consumer oracle",
+      "status": "focused-pass",
+      "owned_paths": [
+        "tests/test_source_leakage_spectrum.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A25.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A25.md",
+      "note_sha256": "38d65429f484638c575b900ce3742e16c8d0bffe6bdb15283215aeb410385ba2",
+      "acceptance": "Executed source-bound gate passed; original runtime evidence archived and inspected by root. Broader qualification remains separate."
+    },
+    {
+      "id": "A26",
+      "wave": 5,
+      "agent": "/root/w05_a26_leakage_audition_bundle",
+      "task": "Reproducible explicit-gain audio audition and PCM evidence",
+      "status": "focused-pass",
+      "owned_paths": [
+        "tools/build_source_leakage_demo.py",
+        "examples/demos/source-leakage-audition-v1/",
+        "tests/test_source_leakage_demo.py",
+        "docs/development/2026-11-15-audio-continuation/notes/A26.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A26.md",
+      "note_sha256": "19fd757f88c12ba81130656e01f8f47e07c526e1aea7f4b6b23b2dbcb8c6f063",
+      "acceptance": "Executed source-bound gate passed; original runtime evidence archived and inspected by root. Broader qualification remains separate."
+    },
+    {
+      "id": "A27",
+      "wave": 5,
+      "agent": "/root/w05_a27_leakage_performance",
+      "task": "Bounded reproducible optional-path performance characterization",
+      "status": "accepted",
+      "owned_paths": [
+        "tools/source_leakage_benchmark.cpp",
+        "docs/development/2026-11-15-audio-continuation/reports/A27-performance.json",
+        "docs/development/2026-11-15-audio-continuation/notes/A27.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A27.md",
+      "note_sha256": "2c6605bf356c9ff4371b43bb9382f13d2e130ef12466cb4d76e1825413608f86",
+      "acceptance": "Root read complete bounded performance evidence and retained original optimized-build failure plus repaired execution. Shared-host characterization only, not callback deadline acceptance."
+    },
+    {
+      "id": "A28",
+      "wave": 5,
+      "agent": "/root/w05_a28_native_gallery_evidence",
+      "task": "Actual application gallery provenance and three live percussion-state captures",
+      "status": "accepted",
+      "owned_paths": [
+        "examples/demos/standalone-audio-preview-v1/percussion-states/",
+        "docs/AUDIO_VISUAL_REFINEMENT.md",
+        "docs/development/2026-11-15-audio-continuation/reports/A28-gallery.json",
+        "docs/development/2026-11-15-audio-continuation/notes/A28.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A28.md",
+      "note_sha256": "fabe4ab39e06c0535cb8b7de2a15a15a702db995b02bb0ab8cc1c1629edbd48c",
+      "acceptance": "Root read complete capture note/guide, viewed eligible B and Cancel application images and original reference, and accepts eleven native captures with independent A29 audit. Source publication binding remains separate."
+    },
+    {
+      "id": "A29",
+      "wave": 5,
+      "agent": "/root/w05_a29_reference_gallery_review",
+      "task": "Independent actual-gallery admission and original-reference gap review",
+      "status": "accepted",
+      "owned_paths": [
+        "docs/design/AUDIO_REFERENCE_GAPS.md",
+        "docs/reviews/AUDIO_GALLERY_ADMISSION.md",
+        "docs/development/2026-11-15-audio-continuation/reports/A29-visual-review.json",
+        "docs/development/2026-11-15-audio-continuation/notes/A29.md"
+      ],
+      "note": "docs/development/2026-11-15-audio-continuation/notes/A29.md",
+      "note_sha256": "55cf96f5e0f350f9cc1a47d47fce82cd3d7e13ec731304c7cdf3866c0ef58c8b",
+      "acceptance": "Root accepts independent eleven-frame/source/pixel audit and explicit whole-interface reference gaps. This does not waive the requested 1:1 match."
+    },
+    {
+      "id": "A30",
+      "wave": 5,
+      "agent": "/root/w05_a30_contact_composition",
+      "task": "Independent moving nominal-contact leakage composition",
+      "status": "dispatched",
+      "owned_paths": [
+        "tests/test_source_leakage_contacts.cpp",
+        "docs/development/2026-11-15-audio-continuation/notes/A30.md"
+      ]
+    },
+    {
+      "id": "A31",
+      "wave": 6,
+      "agent": "/root/w06_a31_leakage_installation",
+      "task": "Explicit relocatable SourceLeakageTools package and execution tests",
+      "status": "dispatched",
+      "owned_paths": [
+        "cmake/InstallSourceLeakageTools.cmake",
+        "tests/test_source_leakage_install.py",
+        "docs/SOURCE_LEAKAGE_INSTALL.md",
+        "docs/development/2026-11-15-audio-continuation/notes/A31.md"
+      ]
+    },
+    {
+      "id": "A32",
+      "wave": 6,
+      "agent": "/root/w06_a32_whole_reference_layout",
+      "task": "Concrete coordinated whole-wide-Play reference layout contract",
+      "status": "dispatched",
+      "owned_paths": [
+        "docs/WHOLE_REFERENCE_LAYOUT_CONTRACT.md",
+        "docs/development/2026-11-15-audio-continuation/notes/A32.md"
       ]
     }
   ]

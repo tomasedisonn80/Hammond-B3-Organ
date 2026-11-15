@@ -1,0 +1,922 @@
+{
+  "schema_version": 1,
+  "agent": "A27 / wave 5",
+  "purpose": "Bounded optional SourceLeakage and real Engine offline timing characterization; no timing pass threshold.",
+  "status": "characterized",
+  "command": [
+    "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_benchmark",
+    "--profile",
+    "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+    "--sample-rate",
+    "48000",
+    "--blocks",
+    "256",
+    "--repetitions",
+    "5",
+    "--seed",
+    "739"
+  ],
+  "working_directory": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ",
+  "started_utc": "2026-11-15T12:20:47.247337+00:00",
+  "finished_utc": "2026-11-15T12:20:50.124047+00:00",
+  "external_elapsed_seconds": 2.86234168199735,
+  "run": {
+    "exit_code": 0,
+    "stdout_bytes": 11477,
+    "stderr": ""
+  },
+  "git": {
+    "head": "276664ee8570c208bb007cca59f496963ca13ef5",
+    "head_tree": "295abfec00bdd874b89eea159f816400f994f7b6",
+    "working_tree_dirty": true,
+    "source_identity_basis": "Recorded actual file, executable and archive SHA-256 values; HEAD alone does not identify this dirty parallel-development build."
+  },
+  "build": {
+    "directory": "/workspace/scratch/7802a6528f89/build-native",
+    "actual_compile_entries": [
+      {
+        "directory": "/workspace/scratch/7802a6528f89/build-native",
+        "command": "/usr/bin/c++ -DHAMMOND_BENCHMARK_COMPILER_ID=\\\"GNU\\\" -DHAMMOND_BENCHMARK_COMPILER_VERSION=\\\"14.2.0\\\" -DHAMMOND_BENCHMARK_CONFIGURATION=\\\"Release\\\" -DHAMMOND_BENCHMARK_SANITIZERS=0 -DHAMMOND_BENCHMARK_TARGET_PROCESSOR=\\\"x86_64\\\" -DHAMMOND_BENCHMARK_TARGET_SYSTEM=\\\"Linux\\\" -I/workspace/scratch/7802a6528f89/Hammond-B3-Organ/include -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -o CMakeFiles/hammond_source_leakage_benchmark.dir/tools/source_leakage_benchmark.cpp.o -c /workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/source_leakage_benchmark.cpp",
+        "file": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/source_leakage_benchmark.cpp",
+        "output": "/workspace/scratch/7802a6528f89/build-native/CMakeFiles/hammond_source_leakage_benchmark.dir/tools/source_leakage_benchmark.cpp.o"
+      }
+    ],
+    "native_configuration": "Release, GCC 14.2; exact flags recorded in compile entry and benchmark metadata",
+    "root_build_result": "Root reported repaired coherent all-target build passed; initial optimized build failure retained separately.",
+    "retained_build_logs_sha256": {
+      "docs/development/2026-11-15-audio-continuation/reports/w05-spectrum-and-benchmark-build.log.gz": "17d196e9fda6252753b277ea28750b704d74b9aa4abdc2e1323480947a6cc970",
+      "docs/development/2026-11-15-audio-continuation/reports/w05-all-build-repaired.log.gz": "0de6d1b5390d49d7152c01799d0baf4b476108e3b7896e0f6cc4ffeaf54802ef"
+    }
+  },
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "uname": {
+      "system": "Linux",
+      "node": "e15497d83e17",
+      "release": "6.18.57",
+      "version": "#1 SMP Tue Oct 20 21:56:04 UTC 2026",
+      "machine": "x86_64",
+      "processor": ""
+    },
+    "cpu_model_from_proc_cpuinfo": "AMD EPYC 9V74 80-Core Processor",
+    "logical_cpu_count": 9,
+    "effective_affinity_cpu_count": 9,
+    "affinity_pinned_by_benchmark": false,
+    "frequency_controlled_by_benchmark": false,
+    "load_average_before_1m_5m_15m": [
+      0.046875,
+      0.42431640625,
+      1.63671875
+    ],
+    "load_average_after_1m_5m_15m": [
+      0.046875,
+      0.42431640625,
+      1.63671875
+    ],
+    "shared_host": true,
+    "contention": "Root paused further CTest during measurement; other host/container work and scheduler/frequency variation were not controlled.",
+    "cgroup_cpu_max": null
+  },
+  "fingerprints_before_sha256": {
+    "include/hammond/ConsoleModel.h": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+    "include/hammond/ContactBank.h": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+    "include/hammond/ControlState.h": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+    "include/hammond/ControlStateIO.h": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+    "include/hammond/Engine.h": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+    "include/hammond/FixedRegistration.h": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+    "include/hammond/HostTimeline.h": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+    "include/hammond/InputProcessor.h": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+    "include/hammond/LeslieCrossover.h": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+    "include/hammond/NoteOwnership.h": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+    "include/hammond/ParameterBridge.h": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+    "include/hammond/PedalNoteOwnership.h": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+    "include/hammond/PedalRouting.h": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+    "include/hammond/PedalVoice.h": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+    "include/hammond/Percussion.h": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+    "include/hammond/PerformanceInput.h": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+    "include/hammond/Profile.h": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+    "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+    "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "include/hammond/ScannerLine.h": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+    "include/hammond/ScannerLineFoh.h": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+    "include/hammond/ScannerRotor.h": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+    "include/hammond/SourceLeakage.h": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+    "include/hammond/StateExchange.h": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+    "include/hammond/TonewheelBank.h": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+    "include/hammond/Types.h": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+    "include/hammond/detail/Decimal.h": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+    "src/ContactBank.cpp": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+    "src/ControlState.cpp": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+    "src/ControlStateIO.cpp": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+    "src/Engine.cpp": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+    "src/FixedRegistration.cpp": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+    "src/HostTimeline.cpp": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+    "src/InputProcessor.cpp": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+    "src/LeslieCrossover.cpp": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+    "src/NoteOwnership.cpp": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+    "src/ParameterBridge.cpp": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+    "src/PedalNoteOwnership.cpp": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+    "src/PedalRouting.cpp": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+    "src/PedalVoice.cpp": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+    "src/Percussion.cpp": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+    "src/PerformanceInput.cpp": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+    "src/Profile.cpp": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+    "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+    "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+    "src/ScannerLine.cpp": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+    "src/ScannerLineFoh.cpp": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+    "src/ScannerRotor.cpp": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+    "src/SourceLeakage.cpp": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+    "src/SourceLeakageIO.cpp": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+    "src/StateExchange.cpp": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+    "src/TonewheelBank.cpp": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+    "tools/CliArguments.h": "8ac5d91ebf66c31456159f028bce3c1c4b0dcd0c09118ac8c8d55c53a8912a47",
+    "tools/source_leakage_benchmark.cpp": "3b501bcbf0561f8676f67cda5c2e7c386051c1af3b0de0e6d2127b4f063f0336",
+    "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_benchmark": "c909383e69478f9c595987ef019fab5d19afdfb5da8503aa7851f49cca6457b4",
+    "/workspace/scratch/7802a6528f89/build-native/nominal.b3p": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+    "/workspace/scratch/7802a6528f89/build-native/libhammond_core.a": "f8f579ef30af221645f998ac3240d7382b02241b57a2c9cf770c1979c219b443"
+  },
+  "fingerprints_after_sha256": {
+    "include/hammond/ConsoleModel.h": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+    "include/hammond/ContactBank.h": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+    "include/hammond/ControlState.h": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+    "include/hammond/ControlStateIO.h": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+    "include/hammond/Engine.h": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+    "include/hammond/FixedRegistration.h": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+    "include/hammond/HostTimeline.h": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+    "include/hammond/InputProcessor.h": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+    "include/hammond/LeslieCrossover.h": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+    "include/hammond/NoteOwnership.h": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+    "include/hammond/ParameterBridge.h": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+    "include/hammond/PedalNoteOwnership.h": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+    "include/hammond/PedalRouting.h": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+    "include/hammond/PedalVoice.h": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+    "include/hammond/Percussion.h": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+    "include/hammond/PerformanceInput.h": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+    "include/hammond/Profile.h": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+    "include/hammond/RotaryHistory.h": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+    "include/hammond/RotaryMotion.h": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+    "include/hammond/RotaryPropagation.h": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+    "include/hammond/RotaryRenderer.h": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+    "include/hammond/RotaryTypes.h": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+    "include/hammond/ScannerLine.h": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+    "include/hammond/ScannerLineFoh.h": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+    "include/hammond/ScannerRotor.h": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+    "include/hammond/SourceLeakage.h": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+    "include/hammond/StateExchange.h": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+    "include/hammond/TonewheelBank.h": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+    "include/hammond/Types.h": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+    "include/hammond/detail/Decimal.h": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+    "src/ContactBank.cpp": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+    "src/ControlState.cpp": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+    "src/ControlStateIO.cpp": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+    "src/Engine.cpp": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+    "src/FixedRegistration.cpp": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+    "src/HostTimeline.cpp": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+    "src/InputProcessor.cpp": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+    "src/LeslieCrossover.cpp": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+    "src/NoteOwnership.cpp": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+    "src/ParameterBridge.cpp": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+    "src/PedalNoteOwnership.cpp": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+    "src/PedalRouting.cpp": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+    "src/PedalVoice.cpp": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+    "src/Percussion.cpp": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+    "src/PerformanceInput.cpp": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+    "src/Profile.cpp": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+    "src/RotaryHistory.cpp": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+    "src/RotaryMotion.cpp": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+    "src/RotaryPropagation.cpp": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+    "src/RotaryRenderer.cpp": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+    "src/RotaryStreamingPath.cpp": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+    "src/ScannerLine.cpp": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+    "src/ScannerLineFoh.cpp": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+    "src/ScannerRotor.cpp": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+    "src/SourceLeakage.cpp": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+    "src/SourceLeakageIO.cpp": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+    "src/StateExchange.cpp": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+    "src/TonewheelBank.cpp": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+    "tools/CliArguments.h": "8ac5d91ebf66c31456159f028bce3c1c4b0dcd0c09118ac8c8d55c53a8912a47",
+    "tools/source_leakage_benchmark.cpp": "3b501bcbf0561f8676f67cda5c2e7c386051c1af3b0de0e6d2127b4f063f0336",
+    "/workspace/scratch/7802a6528f89/build-native/hammond_source_leakage_benchmark": "c909383e69478f9c595987ef019fab5d19afdfb5da8503aa7851f49cca6457b4",
+    "/workspace/scratch/7802a6528f89/build-native/nominal.b3p": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+    "/workspace/scratch/7802a6528f89/build-native/libhammond_core.a": "f8f579ef30af221645f998ac3240d7382b02241b57a2c9cf770c1979c219b443"
+  },
+  "fingerprints_unchanged_during_measurement": true,
+  "authoring_profile_evidence": {
+    "path": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/data/profiles/nominal-unmeasured-v1.json",
+    "raw_file_sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+    "canonical_authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+    "canonical_convention": "compile_profile.authoring_sha256: sorted keys, compact separators, UTF-8, ensure_ascii=False, allow_nan=False; metadata included",
+    "compiler_path": "/workspace/scratch/7802a6528f89/Hammond-B3-Organ/tools/compile_profile.py",
+    "compiler_sha256": "2ca649de88a3f267970e4ed00fa6c08b7c234bffcc1b4c24b47a89be608fb2a8",
+    "matches_declared_authoring_sha256": true,
+    "regenerated_compiled_profile_sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+    "regenerated_compiled_bytes_equal_measured_profile": true,
+    "scope": "External comparison with the actual available canonical authoring JSON and exact compiled bytes for this run; benchmark fields remain file-supplied-unverified in general."
+  },
+  "initial_optimized_build_failure": {
+    "source_sha256": "8dc2006df97cba542c56f0291bac37568dbef117a532d6b3d419b2c4b07c8eb9",
+    "retained_log": "docs/development/2026-11-15-audio-continuation/reports/w05-spectrum-and-benchmark-build.log.gz",
+    "diagnostic": "GCC 14.2 -O3/-Werror array-bounds diagnostic from std::sort of runtime prefix of array<double,9>. Syntax-only compilation did not exercise the optimizer.",
+    "repair": "Validated 1..9 sample count and explicit bounded insertion sort; no warning suppression.",
+    "repaired_source_sha256": "3b501bcbf0561f8676f67cda5c2e7c386051c1af3b0de0e6d2127b4f063f0336"
+  },
+  "interpretation": {
+    "baseline": "Unconfigured Engine in this same current binary; not a historical before-change executable.",
+    "timing_vs_correctness": "Numerical correctness and allocation evidence are separate existing tests/A24; benchmark checks finite/nonvacuous output, deterministic word checksums and frame/phase/contact sanity only.",
+    "audio_hardware_or_callback_deadline_qualification": false,
+    "actual_stack_high_water_measured": false,
+    "physical_instrument_fidelity_claimed": false
+  },
+  "measurement": {
+    "schema_version": 1,
+    "benchmark": "source-leakage-cost-v1",
+    "status": "completed",
+    "sanity_passed": true,
+    "configuration": "Release",
+    "compiler_id": "GNU",
+    "compiler_version": "14.2.0",
+    "target_system": "Linux",
+    "target_processor": "x86_64",
+    "sanitizers": false,
+    "profile_id": "nominal-unmeasured-v1",
+    "declared_authoring_sha256": "49791eac8d0b556b0abd2018b8cabc6f240161edab8a9fa0ef97905f2badda83",
+    "profile_digest_verification": "file-supplied-unverified",
+    "clock": "steady_clock",
+    "clock_call_overhead_included": true,
+    "timed_region": "64 core frame calls with status branches, or one Engine block call",
+    "preparation_timed": false,
+    "input_generation_timed": false,
+    "checksum_timed": false,
+    "note_events_timed": false,
+    "warmup_blocks": 16,
+    "block_frames": 64,
+    "blocks_per_trial": 256,
+    "measured_frames_per_trial": 16384,
+    "repetitions": 5,
+    "sample_rate": 48000,
+    "seed": 739,
+    "row_order": "(offset+7*repetition)%19",
+    "core_input": "seed xor0x9e3779b97f4a7c15,zero->1;xorshift64(13,7,17);low16 centered/65536;fresh[-0.5,0.5) inputs",
+    "pair_edges": "37->25:+1/16;25->37:-1/32",
+    "maximum_edges": "destination d=1..91;source=((d-1+j)%91)+1;j=1..8;odd:-1/16,even:+1/16",
+    "polyphony": "122 manual keys plus25 pedals;selected B drawbars888888888;both pedal mixtures8;expression0.5;percussion on/second/normal/slow",
+    "floating_point": "round-to-nearest and gradual underflow checked",
+    "identity_checksums_match": true,
+    "source_leakage_bytes": 13128,
+    "engine_bytes": 51832,
+    "stack_high_water_measured": false,
+    "callback_deadlines_measured": false,
+    "shared_runner_pinning_and_frequency_control": "not performed",
+    "limits": "Synthetic offline workload; timing is not a CTest gate or physical/host/device qualification",
+    "elapsed_seconds": 2.855128507,
+    "rows": [
+      {
+        "index": 0,
+        "kind": "core",
+        "selection": "empty",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "none",
+        "workload": "dense-input-frames",
+        "nanoseconds_per_frame_samples": [
+          136.89947509765625,
+          132.1470947265625,
+          143.23443603515625,
+          137.560791015625,
+          141.7000732421875
+        ],
+        "median_nanoseconds_per_frame": 137.560791015625,
+        "relative_to_unconfigured": null,
+        "output_word_checksum": "2d8bcb5b80092325",
+        "warmup_word_checksum": "62e078283a609325",
+        "maximum_observed_magnitude": 0.5,
+        "final_source1_phase": null
+      },
+      {
+        "index": 1,
+        "kind": "core",
+        "selection": "pair",
+        "input_gain": 1,
+        "edge_count": 2,
+        "contacts": "none",
+        "workload": "dense-input-frames",
+        "nanoseconds_per_frame_samples": [
+          130.30450439453125,
+          130.26806640625,
+          140.64508056640625,
+          147.642333984375,
+          132.12298583984375
+        ],
+        "median_nanoseconds_per_frame": 132.12298583984375,
+        "relative_to_unconfigured": null,
+        "output_word_checksum": "062559d680092325",
+        "warmup_word_checksum": "e9af1a683a609325",
+        "maximum_observed_magnitude": 0.5281476974487305,
+        "final_source1_phase": null
+      },
+      {
+        "index": 2,
+        "kind": "core",
+        "selection": "maximum-728",
+        "input_gain": 1,
+        "edge_count": 728,
+        "contacts": "none",
+        "workload": "dense-input-frames",
+        "nanoseconds_per_frame_samples": [
+          361.58624267578125,
+          352.23712158203125,
+          384.7572021484375,
+          351.57794189453125,
+          345.54736328125
+        ],
+        "median_nanoseconds_per_frame": 352.23712158203125,
+        "relative_to_unconfigured": null,
+        "output_word_checksum": "f0454fe580092325",
+        "warmup_word_checksum": "c1dedf763a609325",
+        "maximum_observed_magnitude": 0.6925773620605469,
+        "final_source1_phase": null
+      },
+      {
+        "index": 3,
+        "kind": "engine",
+        "selection": "unconfigured",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "ideal",
+        "workload": "silence",
+        "nanoseconds_per_frame_samples": [
+          1700.2638549804688,
+          1632.761962890625,
+          1664.9226684570312,
+          1769.1537475585938,
+          2090.0656127929688
+        ],
+        "median_nanoseconds_per_frame": 1700.2638549804688,
+        "relative_to_unconfigured": 1,
+        "output_word_checksum": "9c1bda7f8c872325",
+        "warmup_word_checksum": "51d88627df287325",
+        "maximum_observed_magnitude": 0,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 4,
+        "kind": "engine",
+        "selection": "empty-gain-one",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "ideal",
+        "workload": "silence",
+        "nanoseconds_per_frame_samples": [
+          1886.2510986328125,
+          1628.968505859375,
+          1660.5526733398438,
+          1714.2255859375,
+          1719.654541015625
+        ],
+        "median_nanoseconds_per_frame": 1714.2255859375,
+        "relative_to_unconfigured": 1.0082115084174341,
+        "output_word_checksum": "9c1bda7f8c872325",
+        "warmup_word_checksum": "51d88627df287325",
+        "maximum_observed_magnitude": 0,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 5,
+        "kind": "engine",
+        "selection": "pair-gain-0.75",
+        "input_gain": 0.75,
+        "edge_count": 2,
+        "contacts": "ideal",
+        "workload": "silence",
+        "nanoseconds_per_frame_samples": [
+          1824.0269165039062,
+          1769.4698486328125,
+          2575.4655151367188,
+          1889.685302734375,
+          1850.4556274414062
+        ],
+        "median_nanoseconds_per_frame": 1850.4556274414062,
+        "relative_to_unconfigured": 1.0883343911716943,
+        "output_word_checksum": "9c1bda7f8c872325",
+        "warmup_word_checksum": "51d88627df287325",
+        "maximum_observed_magnitude": 0,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 6,
+        "kind": "engine",
+        "selection": "maximum-728-gain-0.5",
+        "input_gain": 0.5,
+        "edge_count": 728,
+        "contacts": "ideal",
+        "workload": "silence",
+        "nanoseconds_per_frame_samples": [
+          2076.8482055664062,
+          2030.5925903320312,
+          2312.140869140625,
+          2132.6441040039062,
+          2187.7816162109375
+        ],
+        "median_nanoseconds_per_frame": 2132.6441040039062,
+        "relative_to_unconfigured": 1.2543018530664491,
+        "output_word_checksum": "9c1bda7f8c872325",
+        "warmup_word_checksum": "51d88627df287325",
+        "maximum_observed_magnitude": 0,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 7,
+        "kind": "engine",
+        "selection": "unconfigured",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "ideal",
+        "workload": "sustained-polyphony",
+        "nanoseconds_per_frame_samples": [
+          1663.02880859375,
+          1900.7300415039062,
+          1784.2796630859375,
+          1675.8886108398438,
+          1772.0430908203125
+        ],
+        "median_nanoseconds_per_frame": 1772.0430908203125,
+        "relative_to_unconfigured": 1,
+        "output_word_checksum": "2b7fa98c08bd80d0",
+        "warmup_word_checksum": "2d72d603c9cdbe20",
+        "maximum_observed_magnitude": 4.625348091125488,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 8,
+        "kind": "engine",
+        "selection": "empty-gain-one",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "ideal",
+        "workload": "sustained-polyphony",
+        "nanoseconds_per_frame_samples": [
+          1662.037109375,
+          2014.8394165039062,
+          1820.177001953125,
+          1674.212890625,
+          1681.8070068359375
+        ],
+        "median_nanoseconds_per_frame": 1681.8070068359375,
+        "relative_to_unconfigured": 0.9490779403436499,
+        "output_word_checksum": "2b7fa98c08bd80d0",
+        "warmup_word_checksum": "2d72d603c9cdbe20",
+        "maximum_observed_magnitude": 4.625348091125488,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 9,
+        "kind": "engine",
+        "selection": "pair-gain-0.75",
+        "input_gain": 0.75,
+        "edge_count": 2,
+        "contacts": "ideal",
+        "workload": "sustained-polyphony",
+        "nanoseconds_per_frame_samples": [
+          1826.5681762695312,
+          2252.1453857421875,
+          1916.0993041992188,
+          1811.707763671875,
+          1812.3148193359375
+        ],
+        "median_nanoseconds_per_frame": 1826.5681762695312,
+        "relative_to_unconfigured": 1.0307696160052056,
+        "output_word_checksum": "40aa4b9b7c99c6d7",
+        "warmup_word_checksum": "cf8342da0306d283",
+        "maximum_observed_magnitude": 3.4709630012512207,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 10,
+        "kind": "engine",
+        "selection": "maximum-728-gain-0.5",
+        "input_gain": 0.5,
+        "edge_count": 728,
+        "contacts": "ideal",
+        "workload": "sustained-polyphony",
+        "nanoseconds_per_frame_samples": [
+          2018.0140380859375,
+          2224.1390380859375,
+          2213.6716918945312,
+          2153.2885131835938,
+          2146.04443359375
+        ],
+        "median_nanoseconds_per_frame": 2153.2885131835938,
+        "relative_to_unconfigured": 1.2151445550834745,
+        "output_word_checksum": "864eeee1bfe3ede7",
+        "warmup_word_checksum": "97b69357f19af612",
+        "maximum_observed_magnitude": 2.300123453140259,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 11,
+        "kind": "engine",
+        "selection": "unconfigured",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "nominal",
+        "workload": "silence",
+        "nanoseconds_per_frame_samples": [
+          1734.5865478515625,
+          1971.5911254882812,
+          1815.2578735351562,
+          1790.54833984375,
+          1722.8829345703125
+        ],
+        "median_nanoseconds_per_frame": 1790.54833984375,
+        "relative_to_unconfigured": 1,
+        "output_word_checksum": "9c1bda7f8c872325",
+        "warmup_word_checksum": "51d88627df287325",
+        "maximum_observed_magnitude": 0,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 12,
+        "kind": "engine",
+        "selection": "empty-gain-one",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "nominal",
+        "workload": "silence",
+        "nanoseconds_per_frame_samples": [
+          1687.4955444335938,
+          1973.1502075195312,
+          1776.1547241210938,
+          1805.9454345703125,
+          1723.343017578125
+        ],
+        "median_nanoseconds_per_frame": 1776.1547241210938,
+        "relative_to_unconfigured": 0.9919613364228345,
+        "output_word_checksum": "9c1bda7f8c872325",
+        "warmup_word_checksum": "51d88627df287325",
+        "maximum_observed_magnitude": 0,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 13,
+        "kind": "engine",
+        "selection": "pair-gain-0.75",
+        "input_gain": 0.75,
+        "edge_count": 2,
+        "contacts": "nominal",
+        "workload": "silence",
+        "nanoseconds_per_frame_samples": [
+          2240.5931396484375,
+          1860.4954833984375,
+          1877.6766967773438,
+          1860.8414306640625,
+          1842.0505981445312
+        ],
+        "median_nanoseconds_per_frame": 1860.8414306640625,
+        "relative_to_unconfigured": 1.0392578570799416,
+        "output_word_checksum": "9c1bda7f8c872325",
+        "warmup_word_checksum": "51d88627df287325",
+        "maximum_observed_magnitude": 0,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 14,
+        "kind": "engine",
+        "selection": "maximum-728-gain-0.5",
+        "input_gain": 0.5,
+        "edge_count": 728,
+        "contacts": "nominal",
+        "workload": "silence",
+        "nanoseconds_per_frame_samples": [
+          2443.799072265625,
+          2113.40771484375,
+          2149.4681396484375,
+          2100.6212768554688,
+          2157.1136474609375
+        ],
+        "median_nanoseconds_per_frame": 2149.4681396484375,
+        "relative_to_unconfigured": 1.2004524490168236,
+        "output_word_checksum": "9c1bda7f8c872325",
+        "warmup_word_checksum": "51d88627df287325",
+        "maximum_observed_magnitude": 0,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 15,
+        "kind": "engine",
+        "selection": "unconfigured",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "nominal",
+        "workload": "sustained-polyphony",
+        "nanoseconds_per_frame_samples": [
+          1960.2449340820312,
+          1681.2918090820312,
+          1713.5939331054688,
+          1802.9486694335938,
+          1676.354248046875
+        ],
+        "median_nanoseconds_per_frame": 1713.5939331054688,
+        "relative_to_unconfigured": 1,
+        "output_word_checksum": "ef4bdd88db8aaaed",
+        "warmup_word_checksum": "f2eafcf0eeb618b1",
+        "maximum_observed_magnitude": 4.626733303070068,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 16,
+        "kind": "engine",
+        "selection": "empty-gain-one",
+        "input_gain": 1,
+        "edge_count": 0,
+        "contacts": "nominal",
+        "workload": "sustained-polyphony",
+        "nanoseconds_per_frame_samples": [
+          2265.6550903320312,
+          1854.7638549804688,
+          1679.2481079101562,
+          1738.391845703125,
+          1742.3526000976562
+        ],
+        "median_nanoseconds_per_frame": 1742.3526000976562,
+        "relative_to_unconfigured": 1.0167826615375963,
+        "output_word_checksum": "ef4bdd88db8aaaed",
+        "warmup_word_checksum": "f2eafcf0eeb618b1",
+        "maximum_observed_magnitude": 4.626733303070068,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 17,
+        "kind": "engine",
+        "selection": "pair-gain-0.75",
+        "input_gain": 0.75,
+        "edge_count": 2,
+        "contacts": "nominal",
+        "workload": "sustained-polyphony",
+        "nanoseconds_per_frame_samples": [
+          1951.788818359375,
+          1891.633544921875,
+          1851.132080078125,
+          1835.6363525390625,
+          1894.8203125
+        ],
+        "median_nanoseconds_per_frame": 1891.633544921875,
+        "relative_to_unconfigured": 1.1038983672717335,
+        "output_word_checksum": "ef9efcd3a7c26daf",
+        "warmup_word_checksum": "5b7f894cf6a52c31",
+        "maximum_observed_magnitude": 3.4720029830932617,
+        "final_source1_phase": 0.46556164805800504
+      },
+      {
+        "index": 18,
+        "kind": "engine",
+        "selection": "maximum-728-gain-0.5",
+        "input_gain": 0.5,
+        "edge_count": 728,
+        "contacts": "nominal",
+        "workload": "sustained-polyphony",
+        "nanoseconds_per_frame_samples": [
+          2375.2980346679688,
+          2125.8905029296875,
+          2158.3865356445312,
+          2183.4278564453125,
+          2167.8016357421875
+        ],
+        "median_nanoseconds_per_frame": 2167.8016357421875,
+        "relative_to_unconfigured": 1.265061455845364,
+        "output_word_checksum": "1032ee53d99bb50e",
+        "warmup_word_checksum": "ecac81467cdd3c06",
+        "maximum_observed_magnitude": 2.3008153438568115,
+        "final_source1_phase": 0.46556164805800504
+      }
+    ]
+  },
+  "strict_cli_checks": {
+    "executed_after_timing": true,
+    "case_count": 16,
+    "all_passed": true,
+    "cases": [
+      {
+        "case": "help",
+        "arguments": [
+          "--help"
+        ],
+        "expected_exit_code": 0,
+        "actual_exit_code": 0,
+        "stdout": "Usage: hammond_source_leakage_benchmark --profile FILE [options]\n  --sample-rate 44100|48000|96000 (default48000)\n  --blocks 1..512                (default256; fixed64-frame blocks)\n  --repetitions 1..9             (default5)\n  --seed UINT64                  (default739)\nRequires a regular compiled profile <=128KiB with audible polyphony.\nNineteen cases;16 warm-up blocks; rotated order; cooperative50s work budget.\nStdout JSON; no output files. Offline timing, not a callback deadline gate.\n",
+        "stderr": "",
+        "passed": true
+      },
+      {
+        "case": "missing-profile",
+        "arguments": [],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Require --profile FILE; use --help for bounded options.\n",
+        "passed": true
+      },
+      {
+        "case": "unknown-option",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--unknown",
+          "1"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Unknown benchmark argument.\n",
+        "passed": true
+      },
+      {
+        "case": "duplicate-profile",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Duplicate benchmark argument.\n",
+        "passed": true
+      },
+      {
+        "case": "missing-value",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--blocks"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Missing benchmark argument value.\n",
+        "passed": true
+      },
+      {
+        "case": "zero-blocks",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--blocks",
+          "0"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Blocks must be in 1..512.\n",
+        "passed": true
+      },
+      {
+        "case": "excess-blocks",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--blocks",
+          "513"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Blocks must be in 1..512.\n",
+        "passed": true
+      },
+      {
+        "case": "excess-repetitions",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--repetitions",
+          "10"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Repetitions must be in 1..9.\n",
+        "passed": true
+      },
+      {
+        "case": "invalid-rate",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--sample-rate",
+          "22050"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Sample rate must be 44100, 48000 or 96000.\n",
+        "passed": true
+      },
+      {
+        "case": "numeric-sign",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--blocks",
+          "+1"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Numeric arguments require 1..20 decimal digits.\n",
+        "passed": true
+      },
+      {
+        "case": "seed-overflow",
+        "arguments": [
+          "--profile",
+          "/workspace/scratch/7802a6528f89/build-native/nominal.b3p",
+          "--seed",
+          "18446744073709551616"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Numeric argument is out of range.\n",
+        "passed": true
+      },
+      {
+        "case": "missing-file",
+        "arguments": [
+          "--profile",
+          "/tmp/a27-cli-9xgecx9e/absent.b3p"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Profile must be an existing regular file.\n",
+        "passed": true
+      },
+      {
+        "case": "directory-profile",
+        "arguments": [
+          "--profile",
+          "/tmp/a27-cli-9xgecx9e"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Profile must be an existing regular file.\n",
+        "passed": true
+      },
+      {
+        "case": "fifo-profile",
+        "arguments": [
+          "--profile",
+          "/tmp/a27-cli-9xgecx9e/profile.fifo"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Profile must be an existing regular file.\n",
+        "passed": true
+      },
+      {
+        "case": "oversized-profile",
+        "arguments": [
+          "--profile",
+          "/tmp/a27-cli-9xgecx9e/oversize.b3p"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Profile exceeds the 128 KiB limit.\n",
+        "passed": true
+      },
+      {
+        "case": "invalid-profile",
+        "arguments": [
+          "--profile",
+          "/tmp/a27-cli-9xgecx9e/invalid.b3p"
+        ],
+        "expected_exit_code": 1,
+        "actual_exit_code": 1,
+        "stdout": "",
+        "stderr": "hammond_source_leakage_benchmark: Cannot load profile: Expected token 'B3PROFILE'.\n",
+        "passed": true
+      }
+    ],
+    "temporary_paths_removed": true,
+    "no_additional_performance_run": true
+  },
+  "report_consistency_checks": {
+    "median_recomputed_from_retained_samples": true,
+    "row_count": 19,
+    "measured_frames_across_all_trials": 1556480,
+    "warmup_frames_across_all_trials": 97280,
+    "source_sha256_still_matches_frozen": true,
+    "executable_sha256_still_matches_measured": true
+  }
+}

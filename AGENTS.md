@@ -6,6 +6,12 @@ The owner's new sixty-agent, ten-wave request starts at `fe4f103f135cefebfe6d320
 
 Future agents must recover the full M0–M9 plan and actual source/evidence, continue dependency-ready owned work, update setup/status/next steps/log and actual README screenshots after UI changes, and commit/push validated authorized work to `main` without force. Preserve all prior source/state identities and historical failures. Checkpoint every wave; bound storage and remove only this session's reproducible intermediates. Do not recount older workers. The original literal 1:1 UI objective remains active; scoped comparison is not whole-interface equality. All standing engineering and preservation instructions below apply.
 
+Preserve the owner's **60 distinct workers in ten waves of six** development
+workflow for later continuation requests unless the owner changes it. Limited
+concurrency changes dispatch scheduling, never the promised count. Record actual
+dispatches, owned files, source identities, executed results, acceptance and next
+actions; planned names, repeated follow-ups and older sessions are not new agents.
+
 ## Current playable-continuation session — 2026-11-15
 
 The new owner-requested sixty-agent, ten-wave session starts from published

@@ -1,5 +1,16 @@
 # Project plan: Hammond B-3 and Leslie
 
+**Current audio continuation — 15 November 2026:** the
+[new session](development/2026-11-15-audio-continuation/README.md) independently
+read all 500 pages and selected M2 static sparse source leakage/offline audition
+plus M9 reference percussion composition. The implementation preserves source
+identities and nominal defaults; its coefficients are explicitly synthetic.
+Read the [contracts and scope](development/2026-11-15-audio-continuation/SCOPE.md),
+[actual ledger](development/2026-11-15-audio-continuation/assignments.json) and
+[source-bound checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md).
+Numerical/software acceptance is separate from measured-generator evidence,
+connected M4–M7 audio and whole-interface 1:1. All exit criteria below remain.
+
 **Current playable continuation — 15 November 2026:** read the new
 [session](development/2026-11-15-playable-continuation/README.md),
 [scope](development/2026-11-15-playable-continuation/SCOPE.md) and

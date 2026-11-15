@@ -1,5 +1,6 @@
 #include "hammond/Engine.h"
 
+#include <cassert>
 #include <cmath>
 #include <limits>
 
@@ -111,6 +112,8 @@ Status Engine::prepare(const RuntimeProfile& profile, const ProcessSpec& spec,
     profile_ = profile;
     spec_ = spec;
     source_bank_ = candidate_bank;
+    source_leakage_ = {};
+    source_leakage_configuration_ = {};
     contact_bank_ = candidate_contacts;
     percussion_state_ = candidate_percussion;
     pedal_kernel_ = candidate_pedals;
@@ -124,6 +127,58 @@ Status Engine::prepare(const RuntimeProfile& profile, const ProcessSpec& spec,
     percussion_eligible_ = false;
     coefficients_dirty_ = false;
     prepared_ = true;
+    return Status::Ok;
+}
+
+Status Engine::set_source_leakage(const SourceLeakage& prepared_leakage,
+                                 double input_gain) noexcept {
+    if (!prepared_) {
+        return Status::NotPrepared;
+    }
+    if (!std::isfinite(input_gain) || input_gain < 0.0 || input_gain > 1.0) {
+        return Status::InvalidSpec;
+    }
+    if (!prepared_leakage.prepared()) {
+        return Status::InvalidProfile;
+    }
+
+    const auto edge_count = prepared_leakage.edge_count();
+    const double row_sum = prepared_leakage.max_row_absolute_gain_sum();
+    double guarded_bound = input_gain;
+    if (edge_count != 0) {
+        if (input_gain == 0.0) {
+            guarded_bound = 0.0;
+        } else {
+            // Preserve this grouping. The relative reserve encloses canonical
+            // row/product/addition rounding; the absolute allowance also covers
+            // gradual underflow. Outward rounding is part of the admission.
+            const double row_bound = (1.0 + row_sum) +
+                (64.0 * std::numeric_limits<double>::epsilon());
+            const double product_bound = input_gain * row_bound;
+            guarded_bound = std::nextafter(
+                product_bound + (16.0 * std::numeric_limits<double>::denorm_min()),
+                std::numeric_limits<double>::infinity());
+        }
+    }
+    if (!std::isfinite(guarded_bound) || guarded_bound > 1.0) {
+        return Status::InvalidSpec;
+    }
+
+    // No mutation precedes admission. All storage is fixed and value-owned;
+    // even the last pedal diagnostic remains the actual previously heard frame.
+    source_leakage_ = prepared_leakage;
+    source_leakage_configuration_ = {true, input_gain, edge_count, row_sum, guarded_bound};
+    return Status::Ok;
+}
+
+Status Engine::clear_source_leakage() noexcept {
+    if (!prepared_) {
+        return Status::NotPrepared;
+    }
+    if (source_leakage_configuration_.configured) {
+        source_leakage_ = {};
+        source_leakage_configuration_ = {};
+    }
     return Status::Ok;
 }
 
@@ -240,9 +295,25 @@ ProcessResult Engine::process(std::uint32_t frames, std::span<float> mono_output
         // Sources advance through silence and disconnected output alike. Every
         // branch referencing a tone consumes this one shared sample of that tone.
         source_bank_.process_frame(source_samples);
-        // Admitted source amplitudes are in [0,1], hence every emitted sample is
-        // in [-1,1]. Owned unit weights and fixed nominal controls keep the two
-        // pedal operations inside their admitted domains; they cannot fail here.
+        // This is the single source-field boundary: any future selected source
+        // bank must emit its bounded frame above, before this shared insertion.
+        // Default and explicit empty/gain-one paths perform no new arithmetic.
+        if (source_leakage_configuration_.configured &&
+            (source_leakage_configuration_.edge_count != 0 ||
+             source_leakage_configuration_.input_gain != 1.0)) {
+            for (double& sample : source_samples) {
+                sample *= source_leakage_configuration_.input_gain;
+            }
+            if (source_leakage_configuration_.edge_count != 0) {
+                [[maybe_unused]] const auto leakage_status =
+                    source_leakage_.process_frame(source_samples, source_samples);
+                assert(leakage_status == Status::Ok);
+            }
+        }
+        // Source preparation guarantees [-1,1]; optional installation's outward
+        // headroom bound preserves that exact pedal domain. Owned unit weights
+        // and fixed nominal controls then guarantee both pedal operations below.
+        // These invariant checks never introduce a partial-block rejection.
         // Compute even with no connected output, so the last-frame diagnostic
         // describes the same actual source sample regardless of output wiring.
         PedalRenderDiagnostics rendered_pedal;
@@ -250,9 +321,12 @@ ProcessResult Engine::process(std::uint32_t frames, std::span<float> mono_output
         rendered_pedal.frame = frame_clock_ + frame;
         rendered_pedal.sample_rate = spec_.sample_rate;
         rendered_pedal.positions = controls_.pedal_drawbar_positions();
-        (void)pedal_kernel_.render_frame(source_samples, rendered_pedal.buses);
-        (void)render_nominal_pedal_voice(rendered_pedal.buses, rendered_pedal.positions,
-                                        rendered_pedal.voice);
+        [[maybe_unused]] const auto pedal_status =
+            pedal_kernel_.render_frame(source_samples, rendered_pedal.buses);
+        assert(pedal_status == Status::Ok);
+        [[maybe_unused]] const auto voice_status = render_nominal_pedal_voice(
+            rendered_pedal.buses, rendered_pedal.positions, rendered_pedal.voice);
+        assert(voice_status == Status::Ok);
         pedal_frame_ = rendered_pedal;
         if (!mono_output.empty()) {
             double mixed = 0.0;

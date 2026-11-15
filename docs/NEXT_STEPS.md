@@ -1,5 +1,22 @@
 # Next steps
 
+## Current audio-continuation work
+
+Recover the [audio checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-15-audio-continuation/assignments.json).
+The leakage core/data/Engine/CLI and percussion geometry/paint implementations
+have independent acceptance, including actual Engine spectrum, six-file
+PCM audition, shared-host characterization and eleven-frame gallery review.
+Next finish moving-contact composition and relocatable tools, independently
+admit the coordinated wide-Play reflow, then implement and capture it. Run final
+coherent full/platform gates after the remaining source changes. Complete all
+60 distinct assignments across ten logical waves, update operating/setup and
+source-specific handoff documents, publish guarded nonforced commits and verify
+the remote. The 27-pixel percussion vertical residual and whole-interface 1:1
+objective remain open; any larger reflow must coordinate the other rack/deck
+owners and preserve complete controls. Synthetic leakage does not replace
+measured generator/circuit/cabinet evidence.
+
 ## Current playable-continuation work
 
 Recover the [session](development/2026-11-15-playable-continuation/README.md),

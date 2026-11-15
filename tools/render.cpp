@@ -69,17 +69,18 @@ constexpr std::uint32_t kPedalGainDenominator = 8;
     return result;
 }
 
-[[nodiscard]] double finite_number(std::string_view token) {
+[[nodiscard]] double finite_number(std::string_view token,
+                                    std::string_view name = "Event value") {
     if (token.empty() || token.size() > kMaxNumberBytes) {
-        fail("Event value must be a finite decimal number.");
+        fail(std::string(name) + " must be a finite decimal number.");
     }
     double result = 0.0;
     const auto parsed = hammond::detail::parse_decimal(token, result);
     if (parsed == hammond::detail::DecimalResult::InvalidSyntax) {
-        fail("Event value must be a finite decimal number.");
+        fail(std::string(name) + " must be a finite decimal number.");
     }
     if (parsed != hammond::detail::DecimalResult::Ok) {
-        fail("Event value is nonfinite or out of range.");
+        fail(std::string(name) + " is nonfinite or out of range.");
     }
     return result;
 }
@@ -88,6 +89,8 @@ struct Options {
     fs::path profile;
     fs::path output;
     fs::path events;
+    fs::path source_leakage;
+    double leakage_input_gain = 1.0;
     std::uint32_t sample_rate = 48000;
     std::uint32_t block_size = 64;
     std::uint64_t frames = 0;
@@ -98,12 +101,20 @@ struct Options {
     hammond::ContactMode contact_mode = hammond::ContactMode::Ideal;
     hammond::PercussionSettings percussion{};
     bool has_events = false;
+    bool has_source_leakage = false;
     bool fail_on_clip = false;
+};
+
+// Provenance belongs to the offline invocation, outside the numerical Engine.
+struct SourceLeakageSelection {
+    hammond::SourceLeakageProfile profile{};
+    hammond::SourceLeakageConfiguration configuration{};
 };
 
 enum class Flag : std::size_t {
     Profile, Output, SampleRate, BlockSize, Frames, Seed, Drawbars, PedalDrawbars, Note, Events,
-    Contacts, Percussion, PercussionVolume, PercussionDecay, FailOnClip, Count
+    Contacts, Percussion, PercussionVolume, PercussionDecay, SourceLeakage, LeakageInputGain,
+    FailOnClip, Count
 };
 
 [[nodiscard]] Options parse_options(int argc, char* argv[]) {
@@ -111,7 +122,8 @@ enum class Flag : std::size_t {
     constexpr std::array<std::string_view, static_cast<std::size_t>(Flag::Count)> names{
         "--profile", "--output", "--sample-rate", "--block-size", "--frames",
         "--seed", "--drawbars", "--pedal-drawbars", "--note", "--events", "--contacts", "--percussion",
-        "--percussion-volume", "--percussion-decay", "--fail-on-clip"};
+        "--percussion-volume", "--percussion-decay", "--source-leakage",
+        "--leakage-input-gain", "--fail-on-clip"};
     // One program argument, two per value-taking flag, and one valueless flag.
     // Duplicates and the mutually exclusive note/score pair still reject below.
     if (argc > static_cast<int>(names.size() * 2)) {
@@ -147,6 +159,16 @@ enum class Flag : std::size_t {
         case Flag::Events:
             options.events = hammond::cli::argument_path(value);
             options.has_events = true;
+            break;
+        case Flag::SourceLeakage:
+            options.source_leakage = hammond::cli::argument_path(value);
+            options.has_source_leakage = true;
+            break;
+        case Flag::LeakageInputGain:
+            options.leakage_input_gain = finite_number(value, "Leakage input gain");
+            if (options.leakage_input_gain < 0.0 || options.leakage_input_gain > 1.0) {
+                fail("Leakage input gain must be in [0,1].");
+            }
             break;
         case Flag::SampleRate: {
             const auto rate = unsigned_number(value, name);
@@ -245,6 +267,10 @@ enum class Flag : std::size_t {
     if (options.has_events && seen[static_cast<std::size_t>(Flag::Note)]) {
         fail("Explicit --note is incompatible with --events.");
     }
+    if (seen[static_cast<std::size_t>(Flag::SourceLeakage)] !=
+        seen[static_cast<std::size_t>(Flag::LeakageInputGain)]) {
+        fail("--source-leakage and --leakage-input-gain must be supplied together.");
+    }
     if (!seen[static_cast<std::size_t>(Flag::Frames)]) {
         options.frames = static_cast<std::uint64_t>(options.sample_rate) * 4;
     }
@@ -276,12 +302,17 @@ void preflight_paths(Options& options) {
     if (options.has_events) {
         options.events = checked_input(options.events, kMaxScoreBytes, "Event score");
     }
+    if (options.has_source_leakage) {
+        options.source_leakage = checked_input(options.source_leakage,
+            hammond::kMaxCompiledSourceLeakageBytes, "Source leakage profile");
+    }
     std::error_code error;
     const auto output = fs::weakly_canonical(options.output, error);
     if (error) {
         fail("Cannot resolve output path: " + error.message());
     }
-    if (output == options.profile || (options.has_events && output == options.events)) {
+    if (output == options.profile || (options.has_events && output == options.events) ||
+        (options.has_source_leakage && output == options.source_leakage)) {
         fail("Output path collides with an input file.");
     }
     const auto status = fs::symlink_status(options.output, error);
@@ -684,7 +715,8 @@ void encode_pcm(std::span<const float> samples, std::span<std::uint8_t> bytes,
 }
 
 [[nodiscard]] std::string summary(const Options& options, const hammond::RuntimeProfile& profile,
-                                   const Metrics& metrics, std::string_view status) {
+                                   const Metrics& metrics, std::string_view status,
+                                   const std::optional<SourceLeakageSelection>& source_leakage) {
     const double rms = static_cast<double>(std::sqrt(
         metrics.sum_squares / static_cast<long double>(options.frames)));
     std::ostringstream json;
@@ -692,7 +724,8 @@ void encode_pcm(std::span<const float> samples, std::span<std::uint8_t> bytes,
     const auto pedal_identity = hammond::compiled_pedal_identity();
     json << std::setprecision(std::numeric_limits<double>::max_digits10)
          << "{\"status\":\"" << status << "\",\"model\":\"ideal-shared-sine-v1\","
-         << "\"render_schema_version\":3,\"contact_model\":\""
+         << "\"render_schema_version\":" << (source_leakage ? 5 : 3)
+         << ",\"contact_model\":\""
          << hammond::contact_model_id(options.contact_mode)
          << "\",\"percussion_model\":\"" << hammond::kPercussionModelId << "\","
          << "\"pedal_routing_model\":\"" << pedal_identity.model_id
@@ -722,7 +755,29 @@ void encode_pcm(std::span<const float> samples, std::span<std::uint8_t> bytes,
          << ",\"seed\":" << options.seed << ",\"channels\":2,\"sample_format\":\"pcm_s16le\""
          << ",\"peak\":" << metrics.peak << ",\"rms\":" << rms
          << ",\"clipped_frames\":" << metrics.clipped_frames
-         << ",\"clipped_channel_samples\":" << metrics.clipped_frames * 2 << '}';
+         << ",\"clipped_channel_samples\":" << metrics.clipped_frames * 2;
+    if (source_leakage) {
+        const auto& selected = *source_leakage;
+        const auto& configuration = selected.configuration;
+        json << ",\"source_leakage_model\":\"" << hammond::kSourceLeakageModel
+             << "\",\"source_leakage_integration\":\"source-leakage-audition-v1\""
+             << ",\"source_leakage_profile_id\":\"" << selected.profile.profile_id.data()
+             << "\",\"source_leakage_authoring_sha256\":\""
+             << selected.profile.authoring_sha256.data()
+             << "\",\"source_leakage_evidence_status\":\""
+             << hammond::kSourceLeakageEvidenceStatus
+             << "\",\"source_leakage_boundary\":\"" << hammond::kSourceLeakageBoundary
+             << "\",\"source_leakage_source_content\":\"" << hammond::kSourceLeakageSourceContent
+             << "\",\"source_leakage_input_gain\":" << configuration.input_gain
+             << ",\"source_leakage_edge_count\":" << configuration.edge_count
+             << ",\"source_leakage_maximum_row_absolute_gain_sum\":"
+             << configuration.maximum_row_absolute_gain_sum
+             << ",\"source_leakage_guarded_output_bound\":" << configuration.guarded_output_bound
+             << ",\"source_leakage_identity_bypass\":"
+             << (configuration.edge_count == 0 && configuration.input_gain == 1.0
+                 ? "true" : "false");
+    }
+    json << '}';
     return json.str();
 }
 
@@ -734,6 +789,21 @@ int render(Options options) {
         fail("Cannot load profile: " + error);
     }
     const auto score = load_score(options);
+    std::optional<SourceLeakageSelection> source_leakage;
+    hammond::SourceLeakage prepared_leakage;
+    if (options.has_source_leakage) {
+        auto& selected = source_leakage.emplace();
+        if (!hammond::load_source_leakage_profile_file(
+                options.source_leakage, selected.profile, error)) {
+            fail("Cannot load source leakage profile: " + error);
+        }
+        const auto status = prepared_leakage.prepare(std::span<const hammond::SourceLeakageEdge>(
+            selected.profile.edges.data(), selected.profile.edge_count));
+        if (status != hammond::Status::Ok) {
+            fail("Source leakage preparation failed: " +
+                 std::string(hammond::status_name(status)));
+        }
+    }
     hammond::Engine engine;
     const hammond::ProcessSpec spec{static_cast<double>(options.sample_rate), options.block_size,
                                     options.seed, 0};
@@ -742,6 +812,14 @@ int render(Options options) {
     const auto prepared = engine.prepare(profile, spec, console_model);
     if (prepared != hammond::Status::Ok || !engine.prepared()) {
         fail("Engine preparation failed: " + std::string(hammond::status_name(prepared)));
+    }
+    if (source_leakage) {
+        const auto status = engine.set_source_leakage(prepared_leakage, options.leakage_input_gain);
+        if (status != hammond::Status::Ok) {
+            fail("Source leakage input gain/headroom admission failed: " +
+                 std::string(hammond::status_name(status)));
+        }
+        source_leakage->configuration = engine.source_leakage_configuration();
     }
     std::array<hammond::Event, hammond::kDrawbarCount + 4 + hammond::kPedalDrawbarCount>
         initial_controls{};
@@ -824,7 +902,8 @@ int render(Options options) {
     }
     output.finish();
     const bool clip_failure = options.fail_on_clip && metrics.clipped_frames != 0;
-    const auto report = summary(options, profile, metrics, clip_failure ? "clipped" : "ok");
+    const auto report = summary(options, profile, metrics, clip_failure ? "clipped" : "ok",
+                                source_leakage);
     if (!clip_failure) {
         output.publish(options.output);
     }
@@ -859,6 +938,8 @@ static int renderer_main(int argc, char* argv[]) {
                 "  --percussion off|second|third    (default off; upper-B route only)\n"
                 "  --percussion-volume normal|soft (default normal)\n"
                 "  --percussion-decay slow|fast     (default slow)\n"
+                "  --source-leakage FILE           (optional compiled synthetic coupling graph)\n"
+                "  --leakage-input-gain GAIN       (required with graph; explicit finite 0..1)\n"
                 "  --fail-on-clip                  (do not publish a clipped render)\n"
                 "Output: unmeasured dry model, stereo little-endian PCM16; existing files are rejected.\n"
                 "Scores: at most 16 MiB, 262144 events, 4096 bytes/line, 1024 events/frame.\n"
@@ -878,7 +959,9 @@ static int renderer_main(int argc, char* argv[]) {
                 "pedal_drawbar: mixture index0..1, integer position0..8; pedal_all_notes_off: index/value0.\n"
                 "Pedal Mixture 1/2 use an unmeasured static transfer; no calibrated footage is claimed.\n"
                 "Initial percussion then pedal controls follow drawbars; score events take precedence.\n"
-                "JSON schema 3 identifies source, console and nominal pedal models with map hashes.\n";
+                "JSON schema 3 identifies source, console and nominal pedal models with map hashes.\n"
+                "Selecting leakage uses schema 5 with its provenance, explicit gain and guarded bound.\n"
+                "Leakage gain is never reduced automatically; unsafe headroom rejects before output.\n";
             std::cout.flush();
             if (!std::cout) {
                 fail("Cannot write renderer help to stdout.");

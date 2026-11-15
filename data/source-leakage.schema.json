@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Synthetic static source leakage authoring profile v1",
+  "$comment": "The compiler additionally requires UTF-8 without BOM, at most 256 KiB, unique JSON object keys, lexical integer tokens for IDs/metadata/pages, finite binary64 conversion without nonzero underflow to zero, no self or duplicate edges, at most 8 donors per destination, and explicit sequential binary64 absolute-gain sums <= 0.5 in ascending source order. The atlas reference identifies algorithm discussion, not measured fixture coefficients.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "profile_id", "model", "evidence_status", "coefficient_origin", "boundary", "units", "source_content", "source_count", "algorithm_reference", "description", "edges"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "profile_id": {
+      "type": "string",
+      "minLength": 11,
+      "maxLength": 64,
+      "pattern": "^synthetic-[a-z0-9][a-z0-9-]*$",
+      "not": {"pattern": "[^a-z0-9-]"}
+    },
+    "model": {"const": "static-source-leakage-v1"},
+    "evidence_status": {"const": "synthetic"},
+    "coefficient_origin": {"const": "synthetic-fixture"},
+    "boundary": {"const": "normalized-generator-precontact-v1"},
+    "units": {"const": "normalized-amplitude-ratio"},
+    "source_content": {"const": "excludes-leakage"},
+    "source_count": {"type": "integer", "const": 91},
+    "algorithm_reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["document", "sha256", "pdf_pages"],
+      "properties": {
+        "document": {"const": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf"},
+        "sha256": {"const": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"},
+        "pdf_pages": {
+          "type": "array",
+          "const": [79, 80, 81, 82, 83, 84],
+          "items": {"type": "integer"}
+        }
+      }
+    },
+    "description": {"type": "string", "minLength": 1, "maxLength": 512},
+    "edges": {
+      "type": "array",
+      "maxItems": 728,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "destination", "gain"],
+        "properties": {
+          "source": {"type": "integer", "minimum": 1, "maximum": 91},
+          "destination": {"type": "integer", "minimum": 1, "maximum": 91},
+          "gain": {"type": "number", "minimum": -0.25, "maximum": 0.25, "not": {"const": 0}}
+        }
+      }
+    }
+  }
+}

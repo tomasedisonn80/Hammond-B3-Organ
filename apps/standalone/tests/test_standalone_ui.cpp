@@ -838,6 +838,9 @@ void check_control_regions(const UiLayout& layout) {
     std::array<std::size_t, 22> kinds{};
     for (std::size_t index = 0; index < layout.control_count; ++index) {
         const auto& entry = layout.controls[index];
+        const bool exterior_percussion = entry.id.kind == UiControlKind::Percussion &&
+            layout.workspace == UiWorkspace::Play && layout.sidebar_pedals &&
+            layout.presentation == UiPresentation::Dimensional;
         ++kinds[static_cast<std::size_t>(entry.id.kind)];
         UiRect parent;
         switch (entry.id.kind) {
@@ -863,7 +866,10 @@ void check_control_regions(const UiLayout& layout) {
         case UiControlKind::Expression:
         case UiControlKind::PedalDrawbar:
             parent = layout.performance_panel;
-            if (entry.id.kind == UiControlKind::Percussion) CHECK(entry.bounds.height == 42);
+            if (entry.id.kind == UiControlKind::Percussion) {
+                if (exterior_percussion) CHECK(entry.bounds.height > 42 && entry.bounds.height <= 48);
+                else CHECK(entry.bounds.height == 42);
+            }
             if (entry.id.kind == UiControlKind::PedalDrawbar) CHECK(entry.track.width == 4 && entry.track.height >= 24);
             if (entry.id.kind == UiControlKind::Expression) CHECK(entry.track.height == 4 && entry.track.width > 100);
             break;
@@ -887,7 +893,7 @@ void check_control_regions(const UiLayout& layout) {
             break;
         }
         contained(entry.bounds, parent);
-        contained(entry.label_bounds, entry.bounds);
+        contained(entry.label_bounds, exterior_percussion ? parent : entry.bounds);
         if (!empty(entry.value_bounds)) {
             contained(entry.value_bounds, entry.bounds);
             CHECK(!overlaps(entry.label_bounds, entry.value_bounds));
