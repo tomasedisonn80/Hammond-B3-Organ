@@ -1,27 +1,115 @@
 # Standing instructions for every development agent
 
-## Active product continuation
+## Active routing — product continuation, 2026-11-15
 
-The latest owner-requested [product continuation](docs/development/2026-11-15-product-continuation/README.md)
-starts from `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb`. Read its
-[checkpoint](docs/development/2026-11-15-product-continuation/CHECKPOINT.md) and
-[actual assignments](docs/development/2026-11-15-product-continuation/assignments.json)
-before choosing overlapping work. It owns M9 native MIDI channel modes,
-expression-controller calibration and measured visual refinement, plus the
-independent M6 passive-crossover foundation. The waveform session retains R4.
-The new sixty agents in ten waves are separate from every earlier ledger.
+Read **this entire file and the complete [M0–M9 plan](docs/PLAN.md)** before
+choosing work. Recover [README.md](README.md), [STATUS.md](docs/STATUS.md),
+[NEXT_STEPS.md](docs/NEXT_STEPS.md), the latest [development log](docs/DEVELOPMENT_LOG.md)
+entry, [PRODUCT_HANDOFF.md](docs/PRODUCT_HANDOFF.md), the active session entry,
+checkpoint and actual assignments, then the relevant reviewed contracts and
+source/evidence. Inspect the actual checkout, index, HEAD/tree and remote;
+a dated handoff is not a live remote query or proof about dirty files.
 
-The owner's standing completion rule applies to every future agent: recover the
-entire plan and current source, continue a dependency-ready phase, document actual
-changes and checks, update setup/status/next steps/log and README screenshots after
-UI changes, then commit and push authorized accepted work to `main`. Preserve
-other work, inspect concurrent advances, never force-push and verify publication.
-Checkpoint every wave and keep builds/evidence bounded. Follow the atlas's visual
-direction while retaining correct live controls; never replace them with concept
-art or claim literal 1:1 equality without measured evidence. Historical sections
-below retain their original source-specific qualification and ownership.
+This front matter routes current work. Explicitly dated historical sections
+below retain earlier evidence and engineering constraints; they do not create
+competing current authorities. The owning checkpoint records later observed
+progress. Resolve a stale or conflicting pointer from actual source, ownership
+and evidence, then update it through its assigned owner.
 
-## Historical reference-refinement evidence
+| Session | Active ownership and recovery records |
+| --- | --- |
+| **Product continuation**, starting `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb` | M9 scoped MIDI channel modes, expression-controller calibration and measured native visual refinement; independent M6 passive-crossover foundation. Read its [entry](docs/development/2026-11-15-product-continuation/README.md), [checkpoint](docs/development/2026-11-15-product-continuation/CHECKPOINT.md), [actual assignments](docs/development/2026-11-15-product-continuation/assignments.json) and [setup/recovery handoff](docs/PRODUCT_HANDOFF.md). This session’s sixty actual workers in ten waves are separate from every earlier ledger. |
+| **Waveform continuation**, starting `2e161dc3a60fc3442051799574feed37bffbfc5c` | Independent R4 implementation and remaining acceptance in its separate checkout. Preserve its [entry](docs/development/2026-11-14-waveform-continuation/README.md), [checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md), [actual assignments](docs/development/2026-11-14-waveform-continuation/assignments.json) and unfinished work. |
+| **Completed reference refinement** | Its sixty accepted records, [closure](docs/REFERENCE_REFINEMENT_CLOSURE.md) and source-specific gallery/platform evidence remain history. Do not reopen or recount them to satisfy the product session. |
+
+The integrator assigns paths, owns shared status/plan/README/checkpoint/manifest
+and publication, and exclusively coordinates each build tree. Workers modify
+only assigned files and report substantive results in their own notes. A past
+assignment does not retain ownership after handoff. Consult the actual ledger
+before overlapping paint, captures, build rules or shared documentation. The
+[product handoff](docs/PRODUCT_HANDOFF.md#this-workspaces-recovery-setup) names
+this session’s writable checkout, primary build and read-only dependencies;
+borrowing a dependency grants no rights over another session’s source or build.
+
+## Standing continuation and completion workflow
+
+The owner’s standing development/publication instruction applies to future
+agents within the authorized project scope, unless a later user instruction or
+repository protection changes the branch/review path. It is not perpetual
+permission for unrelated actions. Continue already authorized work without
+repeated permission requests; preserve the user’s later directions.
+
+1. **Recover and continue a dependency-ready phase.** Read the full plan, active
+   ownership and exact current source/evidence. Choose a bounded next task with
+   declared acceptance, record missing inputs and continue useful independent
+   work. Preserve all **47 parameter identities**, **`B3CONTROLS4` and readers
+   1–3**, **91 free-running sources**, musical ownership and the nominal dry
+   Engine. Keep scanner G5’s same-Hz failure, separately owned R4 acceptance,
+   R5 audible policy, R6 runtime/Engine integration and physical fidelity gates
+   visible. A presentation change does not migrate musical state.
+2. **Verify coherent inputs and retain actual outcomes.** Record working
+   directory, commands, compiler/configuration, dependency/data hashes and tested
+   commit or frozen tree. Build required test inputs before running CTest; use
+   `--no-tests=error` for required selections. Do not mix stale libraries with
+   changed headers. Distinguish source inspection, executed passes, setup/project
+   failures, cancellations, blocked and unrun gates. Preserve original failures,
+   thresholds and timings; a later pass does not rewrite an earlier result or
+   qualify changed inputs. A dispatch is not observed hosted execution.
+3. **Keep the product and its handoff usable.** Update affected setup/runbooks,
+   status, next steps, development log, contracts and notes through their owners.
+   Name where the project is, what changed, exactly how to set it up, what remains
+   and the next command or task with inputs and acceptance. Keep the whole M0–M9
+   plan visible. After UI changes capture the actual changed application, retain
+   source/executable/state/pixel identities, compare with the original reference,
+   independently admit the evidence and update README’s actual screenshots.
+   Preserve earlier galleries. Follow the atlas’s visual direction while keeping
+   correct live controls; concept art does not establish **literal 1:1 equality**,
+   physical fidelity, native accessibility or real-device usability.
+4. **Checkpoint context and bound storage.** Update the active checkpoint after
+   each wave and before long operations, context changes or cleanup. Retain actual
+   workers/owners, accepted and unfinished work, source identities, observed
+   outcomes/limits, exact setup, resource use and concrete next actions. Reuse one
+   checkout per active session, pinned dependencies read-only and one coordinated
+   primary build; add a separate build only for a required distinct configuration.
+   Inspect disk use before cleanup. Retain compact original logs, failures,
+   hashes and selected lossless evidence. Remove only explicitly owned,
+   reproducible intermediates after preserving their needed evidence; never
+   delete another checkout, index, source, build or evidence. If raw bytes are
+   unavailable, say so: recovery prose and recreated files are not originals.
+5. **Count actual work in the matching session.** Record distinct dispatched
+   identities, wave, owned paths, substantive note/hash, verification and
+   integrator acceptance. Plans and follow-ups do not create new workers; older
+   sixty-worker ledgers do not count toward this session. Use the active session’s
+   own accepted validator named by its checkpoint. Until it exists, record that
+   gate as pending; do not substitute a historical checker. In-progress validation
+   checks consistency only. Strict closure requires the requested actual accepted
+   set, all ten six-worker waves for this product session and its retained result.
+   Record checks cannot attest dispatch, implementation quality or fidelity.
+6. **Commit and publish authorized accepted work.** The integrator reviews the
+   owned diff, runs the necessary affected/coherent gates and commits reviewable
+   chunks. Fetch and inspect concurrent main advances, preserve both sessions,
+   resolve actual overlaps and recheck affected evidence. Publish to `main` with
+   a fresh expected remote head and **no force push**, then independently fetch
+   and verify exact commit/tree/parent and intended file contents. Keep unfinished
+   workers’ files outside the published checkpoint. Record the observed result;
+   an API request or old CI pass is insufficient. If access or a required gate
+   blocks publication, preserve useful work, the exact blocker and a concrete
+   recovery step. Do not invent a new permission requirement for authorized work.
+
+## Standing evidence and engineering boundaries
+
+Use the atlas’s source/evidence classes, units, variants and explicit unknowns.
+Preserve the unchanged source PDF, rights/dependency records and completed
+reading coverage; a context reset does not require repeating those readings or
+fabricating new ones. The [current reading map](docs/PROJECT_GUIDE.md#source-and-reading-records)
+and [original atlas review](docs/research/ATLAS_REVIEW.md) identify their real
+coverage and limits. Read task-relevant chapters and errata before implementation.
+Keep core processing independent of host/UI SDKs; preparation, allocation,
+destruction, locks, file access, logging and UI work remain outside the callback.
+Each physical effect has one owner and each claimed release, platform, host,
+device, timing, accessibility or measured-model result needs its own evidence.
+
+## Historical record — 2026-11-14 reference refinement
 
 The following closure and navigation records refer to their named earlier source.
 The active product-continuation section and linked checkpoint above govern new
@@ -40,30 +128,31 @@ run passed 166/166. Resume remaining product work; do not repeat this completed
 records all 60 accepted agents, the integrated `487064d` R4/material source,
 the fresh v5 native gallery and its separate qualification. Source-specific
 `0881d1f4`/v4 results below remain historical evidence for those exact inputs.
+The [complete refinement atlas review](docs/research/REFERENCE_REFINEMENT_ATLAS_REVIEW.md)
+preserves that session's six full readings and their evidence boundaries.
 
-## Current navigation and ownership
+### Archived navigation and ownership — 2026-11-14
 
-These instructions apply to every development agent. Read the whole file and
-the complete [M0–M9 plan](docs/PLAN.md) before selecting work. This section is
-the current navigation authority; the historical handoffs below retain their
-original source-specific wording and evidence.
+This subsection preserves the reference-refinement navigation and evidence
+recorded on 14 November. It does not assign present ownership or supersede the
+active product routing above. Read its source identities as historical facts.
 
-Two owner-requested sessions retain distinct ownership and records. Reference
+At that recorded stage, two owner-requested sessions retained distinct records. Reference
 refinement has completed its sixty actual accepted assignments in ten waves;
 its [strict result](docs/development/2026-11-14-reference-refinement/completion-check.json)
 passes. Waveform continuation remains a separate R4 owner. Neither replaces or
 counts the other. Preserve each actual manifest and do not reopen or recount
 completed workers when starting further work.
 
-| Session and starting source | Current ownership | Recovery records |
+| Session and starting source | Recorded ownership | Recovery records |
 | --- | --- | --- |
 | Reference refinement, `8bd999efc13e309b932e6ac41d72ceb7b9b80a5f` | Reviewed M9 layout/material/inspection work, native R2/R3 qualification, accepted measured header, completed source-specific capture/acceptance and retained continuation handoff | [Session entry](docs/development/2026-11-14-reference-refinement/README.md), [scope](docs/REFERENCE_REFINEMENT_SCOPE.md), [checkpoint](docs/development/2026-11-14-reference-refinement/CHECKPOINT.md), [actual manifest](docs/development/2026-11-14-reference-refinement/assignments.json), [setup/handoff](docs/REFERENCE_REFINEMENT_HANDOFF.md) |
 | Waveform continuation, `2e161dc3a60fc3442051799574feed37bffbfc5c` | Independent R4 waveform implementation and its separately verified subsequent native visual work | [Session entry/scope](docs/development/2026-11-14-waveform-continuation/README.md), [checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md), [actual manifest](docs/development/2026-11-14-waveform-continuation/assignments.json) |
 
-Read the [concurrent handoff](docs/development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
-before overlapping paint, gallery, build or shared documentation work. Integrate
-the accepted measured header and its evidence before further overlapping visual
-refinement. The [publication receipt](docs/development/2026-11-14-reference-refinement/reports/root-header-publication.json)
+The [concurrent handoff](docs/development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
+preserves the original paint, gallery, build and shared-document ownership. The
+accepted measured header and its evidence were integrated before the later
+combined-source publication; do not repeat that completed integration. The [publication receipt](docs/development/2026-11-14-reference-refinement/reports/root-header-publication.json)
 identifies published source `0881d1f4c5a26ce9c75dda7a3adde46382e5ab6b`, tree
 `f8144b771cda1264a8788f8297f5bfec999f4a08`. The [A56 primary audit](docs/reviews/REFERENCE_REFINEMENT_HEADER_HOSTED.md)
 qualifies all twelve hosted jobs at this exact header source, including the
@@ -72,92 +161,35 @@ checks are linked by the live checkpoint. Preserve the preceding 26ff matrix
 and the named core quarantine-only leak exception; never broaden a named-source
 result into an exception-free or later-source runtime claim.
 
-## Standing continuation and completion workflow
+The completed refinement ledger has its own historical strict command:
 
-1. **Recover the whole plan and actual state.** Read [README.md](README.md),
-   [STATUS.md](docs/STATUS.md), [NEXT_STEPS.md](docs/NEXT_STEPS.md), the latest
-   [development log](docs/DEVELOPMENT_LOG.md) entry and both ownership
-   records above. Read the relevant reviewed contracts and source evidence.
-   The refinement session's [complete atlas review](docs/research/REFERENCE_REFINEMENT_ATLAS_REVIEW.md)
-   preserves its six full readings; a context reset does not erase completed
-   work. Inspect the actual checkout, index, HEAD/tree and remote before acting.
-   Preserve unrelated and unfinished changes; never reset them to recover context.
-2. **Continue a dependency-ready task.** Use the complete M0–M9 dependencies,
-   current evidence and assigned paths to choose a concrete next action and its
-   acceptance criteria. Record missing inputs, then continue useful independent
-   work. Preserve all 47 parameter identities, `B3CONTROLS4` and readers 1–3,
-   91 free-running sources, musical ownership and the nominal dry Engine.
-   Preserve scanner G5's same-hertz failure. R4 discrete waveform parity, R5
-   audible policy, R6 runtime/Engine integration and physical cabinet fidelity
-   remain separately evidenced gates.
-3. **Record exact setup and results.** Keep commands, working directory,
-   toolchain/configuration, dependency/data identities and tested commit or
-   frozen tree with each meaningful result. Distinguish source inspection,
-   executed checks, setup failures, project failures, cancellations and unrun
-   gates. Retain original failures, timings, thresholds and source-specific
-   reports; a later pass does not rewrite an earlier observation. Build required
-   test inputs and use `--no-tests=error` for required filtered CTest gates.
-4. **Maintain an actionable handoff and actual UI evidence.** Update current
-   setup, status, next steps, log and affected contracts through their agreed
-   owner. Name what is complete, what remains, exact inputs and the next command
-   or task with its acceptance criteria. After interface changes, capture the
-   actual changed native application, retain executable/source/pixel identities,
-   compare with the original reference, and refresh README from accepted current
-   captures. Preserve older galleries. Literal **1:1 visual equality remains
-   unmet** until a separate comparison establishes it; artwork and passing
-   software checks cannot establish physical fidelity.
-5. **Preserve context and bound storage.** Checkpoint after each wave and before
-   long tasks, context changes or cleanup. Retain active ownership, accepted and
-   unfinished work, exact source, verification limits, build ownership, resource
-   observations and concrete next actions. Reuse one checkout per active session,
-   pinned external dependencies and bounded build trees; coordinate exclusive
-   configure/build/CTest use per tree. Before deleting only owned reproducible
-   intermediates, retain compact logs, original failures, hashes and selected
-   lossless evidence. Never delete another checkout, index or evidence. If raw
-   bytes are lost, label them unavailable; recovery prose is not original data.
-6. **Keep real assignment accounting.** Record actual distinct agent identities,
-   owned files, substantive notes, verification and integrator acceptance in the
-   matching session. Preserve historical sixty-worker ledgers unchanged. This
-   refinement session uses its [own checker](tools/check_refinement_session.py):
-   `python3 tools/check_refinement_session.py --repo . --in-progress --json`
-   checks partial consistency only. After all sixty actual results are accepted,
-   run `python3 tools/check_refinement_session.py --repo . --json` against the
-   exact completed records, retain its JSON and require that strict gate at
-   closure. Neither an older checker nor planned rows satisfy it; record
-   consistency cannot attest dispatch, product readiness or physical fidelity.
-7. **Commit and publish completed authorized work.** The owner has already
-   authorized the completion/publication workflow. The integrator verifies the
-   affected coherent source, inspects the owned diff and commits accepted work
-   in reviewable chunks. Fetch and inspect concurrent remote advances, preserve
-   both sessions, and integrate overlaps with their source-specific evidence.
-   Publish to `main` using a fresh expected remote head and no force push; fetch
-   and verify the resulting commit/tree and intended parent before claiming
-   success. Keep unfinished workers' files outside the checkpoint. If access or
-   a required gate blocks publication, retain the work and exact blocker with a
-   concrete recovery step. A request or dispatch is not an observed remote or
-   hosted success.
+```sh
+python3 tools/check_refinement_session.py --repo . --json
+```
 
-## Historical handoff boundary
+Its retained result qualifies that ledger. It cannot validate the separate
+2026-11-15 product session or count its actual workers.
 
-Everything below this boundary preserves prior session instructions and their
-original evidence. Their words “current” and “newest,” older parameter counts
-and operational entry points describe those recorded sessions. Use the current
-navigation above and each live checkpoint for present ownership and progress.
-Their architecture, evidence-preservation and publication invariants continue
-to apply; do not repeat an older migration or recount completed workers.
+## Historical records — 2026-11-12 to 2026-11-14
 
-## Current native interface continuation
+The dated session sections below preserve prior instructions and original
+evidence. Their source identities, older parameter counts and operational entry
+points belong to those sessions. Active routing and the standing workflow above
+govern present work. Preserve the engineering invariants; do not repeat an
+older migration or recount completed workers.
 
-Read the [current recovery handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) and [checkpoint](docs/development/2026-11-14-interface-continuation/CHECKPOINT.md) first. All sixty actual assignments in ten waves are accepted, with partial product gates explicitly retained. The exact qualified fixture is published, while final raw local evidence remains unavailable. Preserve the old index if the workspace returns and reconcile it in isolation before updating a local checkout; do not reset it away, recount completed workers, or describe new recovery prose as original artifact bytes. The Linux Release workflow requires the strict session checker and retains its exact JSON report. Inspect the actual job result; record consistency does not prove dispatch or visual/physical fidelity.
+### Historical native interface continuation — 2026-11-14
+
+The [interface recovery handoff](docs/INTERFACE_RECOVERY_HANDOFF.md) and [checkpoint](docs/development/2026-11-14-interface-continuation/CHECKPOINT.md) preserve this completed session’s entry point. All sixty actual assignments in ten waves are accepted, with partial product gates explicitly retained. The exact qualified fixture is published, while final raw local evidence remains unavailable. Preserve the old index if the workspace returns and reconcile it in isolation before updating a local checkout; do not reset it away, recount completed workers, or describe new recovery prose as original artifact bytes. The Linux Release workflow requires the strict session checker and retains its exact JSON report. Inspect the actual job result; record consistency does not prove dispatch or visual/physical fidelity.
 
 The [strict sixty-record result](docs/development/2026-11-14-interface-continuation/completion-check.json) and [all twelve hosted jobs](docs/development/2026-11-14-interface-continuation/reports/a58-final-head-hosted.json) passed at `a517203`. Those records qualify their exact source and input hashes. Preserve the completed ledger; a later requested session has its own actual identities. The next interface work is the full desktop journey and measured reference refinement, with physical models and real-device qualification kept separate.
 
-The newest [interface session](docs/development/2026-11-14-interface-continuation/README.md)
+The recorded [interface session](docs/development/2026-11-14-interface-continuation/README.md)
 starts from published `d493e998`. Its sixty fresh workers in ten waves have their
 own [actual manifest](docs/development/2026-11-14-interface-continuation/assignments.json).
-Read [its scope](docs/INTERFACE_CONTINUATION_SCOPE.md), the current
+Its [scope](docs/INTERFACE_CONTINUATION_SCOPE.md), recorded
 [operator/developer handoff](docs/INTERFACE_RECOVERY_HANDOFF.md), checkpoint and reviewed
-workspace/geometry/inspection contracts before changing the native UI.
+workspace/geometry/inspection contracts identify that work’s original basis.
 It owns dependency-ready M9 Play/Rotary/Service presentation, reference-led live
 geometry, truthful copied-state inspection and repairs to observed platform
 failures. Preserve all 47 sound parameters, state4 and readers 1-3, nominal models,
@@ -170,9 +202,9 @@ Keep disk use bounded: reuse shared source/dependencies/builds, checkpoint
 progress, and retain compact evidence before removing reproducible intermediates
 owned by the current session. Never delete another session's source or work.
 
-## Historical fixed-registration continuation
+### Historical fixed-registration continuation — 2026-11-14
 
-The sections below retain earlier session handoffs and their original evidence. For current source, parameter counts, UI scope and next work, the interface continuation above and the newest `STATUS.md` / `NEXT_STEPS.md` take precedence. Do not apply an older migration or recount an earlier session’s agents. The standing preservation, documentation and publication rules continue to apply.
+The sections below retain earlier session handoffs and their original evidence. The interface continuation superseded this preset session’s operational scope; present source and ownership come from the active product routing above. Do not apply an older migration or recount an earlier session’s agents. The standing preservation, documentation and publication rules continue to apply.
 
 The earlier [preset continuation](docs/development/2026-11-14-preset-continuation/README.md)
 starts at `b79086f`. Its own actual manifest records the requested sixty new
@@ -193,14 +225,14 @@ Inspect concurrent advances and verify the published revision; never force-push.
 Keep source concept art distinct from application captures and preserve explicit
 remaining visual differences until an actual 1:1 comparison passes.
 
-## Historical MIDI and visual continuation
+### Historical MIDI and visual continuation — 2026-11-14
 
 The earlier [MIDI/UI session](docs/development/2026-11-14-midi-ui/README.md) starts at `0f7b900` under [MIDI_UI_SCOPE.md](docs/MIDI_UI_SCOPE.md). Its actual workers are recorded separately from every preceding session. Continue the dependency-ready M9 MIDI input and native visual work while preserving the core, all previous parameter/state identities and concurrent model tracks. The exact UI reference is the atlas cover/page 409, [retained with provenance](docs/design/atlas-reference.json). Future agents must compare actual app screenshots with this source, keep verified dynamic controls, document residual differences, and update the README with the latest verified native captures whenever the interface changes. Never present source concept art as an application screenshot or claim 1:1 fidelity without comparison evidence.
 
 The standing completion workflow remains: update status, next steps, development log and affected setup/contracts; retain actual verification; commit and push completed authorized work to `main`, inspect concurrent advances, and verify the published revision. This instruction applies to future agents as requested by the owner.
 
 Use [MIDI_UI_HANDOFF.md](docs/MIDI_UI_HANDOFF.md) and
-[MIDI_UI_RUNBOOK.md](docs/MIDI_UI_RUNBOOK.md) for the current standalone entry
+[MIDI_UI_RUNBOOK.md](docs/MIDI_UI_RUNBOOK.md) for that session’s standalone entry
 point. Earlier standalone handoffs retain their dated source and qualification;
 they do not replace this continuation's actual manifest or current build inputs.
 
@@ -208,7 +240,7 @@ These instructions apply to the entire repository and all future agent sessions.
 They implement the owner's standing handoff and publication requests of
 2026-11-12 and 2026-11-13. Read them before modifying code or documentation.
 
-## Current session and standing continuation rule
+### Historical calibration, rotary and standalone sessions — 2026-11-13
 
 The completed [capture/calibration-readiness session](docs/development/2026-11-13-calibration/README.md)
 began at `38c1fac` and accepted **sixty actual distinct workers in ten logical
@@ -255,11 +287,14 @@ reported as physical preset latching, loaded-gain calibration or a new saved-sta
 format. Its two independent readings do not independently verify the atlas's
 underlying factory Table IV; that stronger primary-document gate stays visible.
 
-Another active track is [2026-11-13 scanner development](docs/development/2026-11-13-scanner/README.md), starting at `6dc0702`. Its [actual assignment manifest](docs/development/2026-11-13-scanner/assignments.json) belongs only to this newly requested sixty-agent, ten-wave session. The completed [pedal session](docs/development/2026-11-13-pedals/README.md), original and console ledgers remain historical and must not be rewritten or recounted. Consult the newest session together with current status and next steps before starting work.
+The then-active scanner track was [2026-11-13 scanner development](docs/development/2026-11-13-scanner/README.md), starting at `6dc0702`. Its [actual assignment manifest](docs/development/2026-11-13-scanner/assignments.json) belongs only to this newly requested sixty-agent, ten-wave session. The completed [pedal session](docs/development/2026-11-13-pedals/README.md), original and console ledgers remain historical and must not be rewritten or recounted. These historical records retain their original sources; use the active product routing for present work.
 
 For every future development session, continue the next dependency-ready phase, retain the source basis and limits of the model, run meaningful checks, update status/next steps/development log and affected contracts, then commit and push the completed work to `main` under the owner's standing authorization. Inspect and integrate concurrent changes; never force-push. A user-requested agent count is the scope of that session, not permission to invent participation. Record the real assignment identity, owned files, result and verification. Publication and physical-fidelity claims each require their own observed evidence.
 
-## Start here
+### Historical startup navigation — 2026-11-12 and 2026-11-13
+
+These recorded startup paths are retained for recovery of the earlier sessions;
+current agents begin with the active routing above.
 
 1. Read `README.md`, `docs/STATUS.md`, `docs/NEXT_STEPS.md`, the relevant current
    handoff (`docs/STANDALONE_HANDOFF.md`, `docs/CALIBRATION_HANDOFF.md`,

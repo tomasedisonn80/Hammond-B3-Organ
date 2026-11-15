@@ -1,7 +1,17 @@
 # Dependencies, distributed material and rights handoff
 
-**Current review: 2026-11-13, pedal-session assignment 52.** The current boundaries
-below include the implemented optional module, actual published Linux/Windows
+**Current scoped update: 2026-11-15, product assignment A44.** The
+[product provenance review](reviews/PRODUCT_PROVENANCE_LICENSE_REVIEW.md) checks
+the independent M6 model, actual native gallery, unchanged dependency/asset
+identities and the current local component rules. The Standalone rules include
+A43's operator-guide addition: **16 files with MIDI OFF, 20 with MIDI ON**.
+`CrossoverTools` has its separate **six-file** payload. These are source-inspected
+inventories; A44 ran no installation or new platform qualification. The
+[current component update](#product-component-and-evidence-update--2026-11-15)
+below identifies their notices and evidence limits.
+
+**Historical baseline review: 2026-11-13, pedal-session assignment 52.** Its
+boundaries included the implemented optional module, actual published Linux/Windows
 bundle artifacts and the 23-file OfflineTools rules prepared in wave 8. The
 original inventory was based on `7c2ad20`; original-session assignment 50 added
 the demo generated at `6c3dd8b`, and pedal assignment 15 selected the SDK
@@ -17,9 +27,11 @@ Evidence: tracked plus proposed nonignored files, C++ includes, Python imports, 
 
 | Boundary | Actual contents / consequence |
 | --- | --- |
-| Repository/source archive | Project C++ headers/source, Python tools/tests, build configuration, original documentation, reconstructed/proposed JSON, factual CSVs, text event fixtures, and the supplied atlas PDF. The imported SplitMix64 routine is identified below. The standalone adds two unmodified DejaVu 2.37 font inputs, their complete notice and generated glyph data, with exact manifests. No SDL2/VST3 SDK source tree, extracted atlas image or additional manual PDF is vendored. Retained demo WAVs are explicitly synthetic engineering output. |
+| Repository/source archive | Project C++ headers/source, Python tools/tests, build configuration, original documentation, reconstructed/proposed JSON, factual CSVs, text event fixtures, and the supplied atlas PDF. The imported SplitMix64 routine is identified below. The standalone retains two unmodified DejaVu 2.37 font inputs, their complete notice and generated glyph data. It also retains the unchanged atlas JPEG stream and three derived decorative crops, with exact [extraction](design/atlas-reference.json) and [crop](../assets/standalone/reference/manifest.json) records. SDL2/RtMidi/VST3 source trees and additional manual PDFs are not vendored. Retained demo WAVs are explicitly synthetic engineering output. |
 | Local `OfflineTools` install | Exactly 23 configured files: five native executables, two standalone standard-library plot scripts, the compiled nominal profile, three catalogs and twelve event scores. See the [exact layout and current qualification](OFFLINE_INSTALL.md). The atlas, factual CSVs, Python interpreter, core archive/headers and toolchain runtime libraries are not copied. |
 | Local `CaptureTools` install — 2026-11-14 update | Exactly 57 source/data/document files: ten Python modules, eight schema/example data files, the sixteen-file original synthetic demo, twenty-one guides/contracts, a generated README and unchanged project notices. See the [exact inventory and boundaries](CAPTURE_TOOLS_INSTALL.md). Runtime uses Python 3.10+ and its standard library; no interpreter, native executable, SDK, font, atlas PDF, acquired recording or third-party package is copied. The notices do not select a project license or clear unrelated research rights. |
+| Local `Standalone` install — 2026-11-15 rules | Exactly 16 files with MIDI OFF or 20 with MIDI ON, including the current expression guide, combined notices, separate SDL2/DejaVu notices and font/reference provenance. MIDI ON adds the exact RtMidi notice, lock, prepared-source record and patch. The executable embeds the profile, glyphs and decorative pixels; source PDF/JPEG/crops, TTFs, calibration test probe and third-party source trees are not separate runtime files. See [the exact inventory](STANDALONE_INSTALL.md). |
+| Local `CrossoverTools` install — 2026-11-15 rules | Exactly six files: native probe, standard-library Python reference, fixed registry, two documents and unchanged `THIRD_PARTY_NOTICES.md`. No plot, atlas, font, SDL/RtMidi library, interpreter or calibration test fixture is copied. See [the exact inventory](CROSSOVER_INSTALL.md). This separate opt-in component does not extend other component payloads. |
 | CI execution and artifacts | Both workflows fetch the three pinned actions below; setup-python selects Python `3.12`; hosted images supply compilers/CMake and platform tools. Core CI retains diagnostics. The separate [native workflow](VST3_CI.md) also uploads the actual validated platform bundle, byte inventory and archive hash. These are development artifacts, not signed release installers. Action implementations and runner images are not vendored into the repository or installed payload. |
 | Generated outputs | Profiles, diagnostic SVGs and WAV/evidence bundles are generated from declared project inputs. Original, console and pedal catalogs contain synthetic gestures without recorded samples. Retained [dry](../examples/rendered/nominal-two-manual-v1/README.md), [console](../examples/rendered/nominal-console-v2/README.md) and [pedal](../examples/demos/pedal-phrase-v1/README.md) examples include actual generated audio and evidence, with no executable or hardware recording in those example bundles. Keep their input/output identities and nominal-engine scope. |
 
@@ -37,7 +49,7 @@ a compatible platform/runtime; see the [offline](OFFLINE_INSTALL.md) and
 | Component | Current role and provenance | Current distribution treatment |
 | --- | --- | --- |
 | C++20 and its standard library | `src/`, `include/hammond/`, C++ CLI/benchmark/tests use standard headers and project headers. `hammond_core` is an internal static target; consumers link it. | The ordinary core/offline targets have zero external runtime audio, GUI or plugin-SDK dependencies. No third-party framework/library source is vendored. The separately acquired optional VST3 SDK is inventoried below. This does not mean zero OS/compiler-runtime dependencies. |
-| Python 3.10+ | Profile compiler, evidence/validation tools and Python tests use the standard library and local project modules. The apparent nonstdlib import `analyze_wav` resolves to `tools/analyze_wav.py`. | No pip dependencies, copied interpreter or Python package tree. CI selects 3.12; exact patch/runtime builds remain environment-specific. |
+| Python 3.10+ | Core/offline compilers, installed reference tools and ordinary Python tests use the standard library and local project modules. The apparent nonstdlib import `analyze_wav` resolves to `tools/analyze_wav.py`. Optional image/font/plot authoring has separately recorded Pillow/FreeType/Matplotlib inputs. | No interpreter or third-party Python package tree is copied into the local components. CI selects 3.12; exact patch/runtime builds and optional authoring versions remain environment-specific. |
 | CMake/CTest 3.21+ | Build/profile generation and test orchestration; CMake modules come from the installed toolchain. | No implicit `FetchContent`/`ExternalProject` download or bundled CMake distribution. The selected optional VST3 SDK requires CMake 3.25+ only when the implemented optional plugin target is enabled. |
 | SplitMix64 | `src/TonewheelBank.cpp::next_phase_bits` adapts the 2015 Sebastiano Vigna reference, using caller-owned state. Primary source: [splitmix.c](https://prng.di.unimi.it/splitmix.c), inspected 2026-11-13. | The primary source states a worldwide public-domain dedication to the extent possible under law, a permissive use/copy/modify/distribute grant, and an as-is disclaimer. Attribution and a linked terms summary are retained in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md). No separate upstream file is vendored. |
 
@@ -190,7 +202,11 @@ artifacts are described above; their existence does not grant redistribution
 permission for unrelated project or research material.
 
 
-## Standalone dependency update — 2026-11-13
+## Historical standalone dependency update — 2026-11-13
+
+The nine-file staging description in this retained section belongs to its dated
+standalone observation. It is not the current component inventory or a current
+installation result; the 2026-11-15 update below describes the 16/20-file rules.
 
 The independent native adapter introduces explicitly acquired, locked SDL2
 2.32.10 and source-controlled DejaVu 2.37 font inputs. Exact source/license/font
@@ -234,3 +250,53 @@ The unchanged supplied PDF, existing source-rights decisions, optional native
 dependencies and future acquired-recording permissions retain their own records.
 This update identifies the new payload and does not resolve those separate
 decisions or create an additional approval step for ordinary development.
+
+## Product component and evidence update — 2026-11-15
+
+A44 inspected source `d556da017ea0a5d4f2d231416782dbc5066e58c2` plus the
+identified A43 install-rule changes. The [bounded audit](development/2026-11-15-product-continuation/reports/A44-provenance-audit.json)
+records actual hashes. SDL2 **2.32.10**, RtMidi **6.0.0**, DejaVu **2.37**,
+the atlas/reference assets and `THIRD_PARTY_NOTICES.md` are unchanged from this
+product session's starting source. This update acquires no dependency or artwork.
+The supplied PDF still has 500 pages, 21,248,265 bytes and SHA-256
+`4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
+
+The [Standalone rules](../cmake/InstallStandalone.cmake) preserve the complete
+SDL2 and DejaVu notices, combined repository notices, dependency/asset records
+and configured capability metadata. MIDI-enabled builds additionally preserve
+the locked RtMidi notice and prepared correction history. SDL's bundled yuv2rgb,
+selected HIDAPI BSD option and conditional Sun math notices remain in the
+combined file. A43 adds `MIDI_EXPRESSION_GUIDE.md` to this component only.
+The test-only native calibration dependency and probe are project fixture
+sources, excluded from these install rules; synchronous test callbacks do not
+establish physical MIDI operation or driver scheduling behavior.
+
+The [M6 registry](../data/crossover/leslie-122-ideal-v1.json), native module and
+independent Python reference are new project implementations based on atlas
+pp. 271–276, including the explicitly ideal 16-ohm load experiment. They do not
+recover the missing companion executable or independently verify the cited
+manufacturer drawings. Actual losses, driver impedances, specimen applicability
+and uncertainty remain null. The [characterization figure](LESLIE_CROSSOVER_CHARACTERIZATION.md)
+uses 24 retained numerical observations; its PNG metadata records the report,
+six source identities, probe, plotter and Matplotlib **3.10.8**. Matplotlib is an
+authoring dependency, absent from the six-file CrossoverTools install. Its
+combined notices do not select a license for project code or the atlas.
+
+The [admitted product gallery](reviews/PRODUCT_GALLERY_ADMISSION.md) contains
+eight normal and three separately identified MIDI-overlay captures of the
+actual SDL native application at `d556da0`, executable SHA-256
+`7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
+The retained PNG/pixel hashes, diagnostics and 108 production input identities
+match; the original BMP intermediates are unavailable after verified lossless
+conversion. The images are new native captures, while the previously supplied
+atlas concept and embedded decorative pixels retain their separate origin.
+No new AI artwork or physical-device, measured-pedal, acoustic or literal 1:1
+fidelity result is supplied by these images.
+
+The [current notices](../THIRD_PARTY_NOTICES.md#embedded-reference-decoration)
+already distinguish atlas-derived decoration from application captures and
+retain the unresolved source-art permissions. No project `LICENSE` is present.
+These existing decisions remain separate from authorized development, local
+staging and source-bound verification; this update creates no license grant or
+additional approval requirement. A future distribution claim still belongs to
+the actual intended payload and its retained evidence.

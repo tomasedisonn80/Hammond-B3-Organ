@@ -1,0 +1,148 @@
+{
+  "schema": "b3-product-hosted-status-v1",
+  "source_commit": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+  "observed_utc": "2026-11-15 02:28:10 UTC",
+  "scope": "Primary workflow job status; not a primary-log audit and not qualification of later working changes.",
+  "runs": [
+    {
+      "id": 43665863633,
+      "name": "CI",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43665863633",
+      "jobs": [
+        {
+          "id": 132664950868,
+          "name": "Complete R4 waveform qualification (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:29Z",
+          "completed_at": "2026-11-15T02:13:04Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664951145,
+          "name": "Release (Windows MSVC)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:09:06Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664951148,
+          "name": "Linux GCC ASan + UBSan + leaks",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:07:19Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664951226,
+          "name": "Release (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:06:29Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664951248,
+          "name": "Release (macOS AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:29Z",
+          "completed_at": "2026-11-15T02:05:25Z",
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 43665863579,
+      "name": "Native VST3",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43665863579",
+      "jobs": [
+        {
+          "id": 132664950344,
+          "name": "Native VST3 (macOS AppleClang)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:03:50Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664950541,
+          "name": "Native VST3 (Linux GCC)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:29Z",
+          "completed_at": "2026-11-15T02:03:45Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664950594,
+          "name": "Native VST3 (Windows MSVC x64)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:04:13Z",
+          "failed_steps": []
+        }
+      ]
+    },
+    {
+      "id": 43665863538,
+      "name": "Native standalone",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43665863538",
+      "jobs": [
+        {
+          "id": 132664950472,
+          "name": "Native standalone (macOS AppleClang, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:10:20Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664950633,
+          "name": "Native standalone (Linux GCC, MIDI OFF)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:10:28Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664950656,
+          "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+          "status": "completed",
+          "conclusion": "failure",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:05:34Z",
+          "failed_steps": [
+            "Build only the twenty-one selected acceptance inputs"
+          ]
+        },
+        {
+          "id": 132664950665,
+          "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:12:03Z",
+          "failed_steps": []
+        },
+        {
+          "id": 132664950712,
+          "name": "Native standalone (Linux GCC, MIDI ON)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-11-15T02:02:28Z",
+          "completed_at": "2026-11-15T02:09:10Z",
+          "failed_steps": []
+        }
+      ]
+    }
+  ]
+}

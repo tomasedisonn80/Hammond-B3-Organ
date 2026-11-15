@@ -1,57 +1,130 @@
 # Product continuation checkpoint
 
-## Current recovery authority
+## Current authority and actual progress
 
-This session continues from `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb`. Read this file with `assignments.json`; only actual spawned workers appear there. As of this checkpoint, **A01–A34 and A36–A39 are accepted; A35 awaits gallery promotion; A40–A42 are running**. Forty-two actual workers have been dispatched; remaining assignments must continue through A60 in ten logical waves of six. Dependency-ready trailing work can overlap, with at most three workers plus the integrator.
+Read this file with [assignments.json](assignments.json), [the session entry](README.md),
+[AGENTS.md](../../../AGENTS.md), [the full M0–M9 plan](../../PLAN.md), current status
+and next steps. The integrator owns this checkpoint and the ledger. This is a
+current snapshot; earlier checkpoints remain in Git history and retained reports.
 
-The six atlas readers covered all500 pages in contiguous ranges1–84,85–168,169–252,253–336,337–420,421–500. Their source hashes and substantive readings are retained in A01–A06 notes. This is complete textual coverage, not independent manufacturer validation.
+**48 actual workers have been dispatched. A01–A45 are accepted; A46–A48 are
+running.** Continue through A60 in ten logical waves of six. Dependency-ready
+work can overlap; at most three workers plus the integrator execute concurrently.
+Never count earlier sessions' agents, followups or planned rows as new workers.
 
-## Published source and protected work
+A01–A06 read the entire unchanged 500-page atlas in contiguous ranges 1–84,
+85–168,169–252,253–336,337–420,421–500. PDF SHA-256:
+`4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
+Their notes retain complete textual coverage; this is not manufacturer validation.
 
-- Main feature publication: `ff41d412d03f2c5767aa4057b29fa8ec1627449b`, exact tree `6462343bb34a7d70d59de75ab349f8530196988c`, expected parent `af006b0ae293c7c9a5f44b5dfe1dc9942fe9e12d`.
-- Measured-source archive: `99b363438b3c4f217e0acb5361c0aea52ad7d0e3`, tree `77c65ce06378a5a25a05591226d05b2445d91b1e`. This archives A27's exact measured benchmark source and observations before A30's ordinary-output metadata repair; it adds no production change.
-- Latest published main: `b9d352a82ac1afdec70c76ec5b1987785a37762e`, tree `b3b8b68e4c1f8312d46962924b5096f4ea10c4d2`, parent99b3634. It includes accepted A26–A31 changes; local f033b68 retained under refs/checkpoints/local-calibration-install. Publication receipt: reports/calibration-install-publication.json. New hosted runs: CI43664212086, standalone43664212019, VST343664212047 (in progress when recorded).
-- Local same-tree predecessor commits are retained under `refs/checkpoints/`. Publication uses GitHub Git Data with expected head and `force:false`; CLI push has no credentials. Fetch and verify exact tree/parent before guarded local main synchronization. Never discard active working files.
-- Only this checkout `/workspace/scratch/5b7d983ac078/Hammond-B3-Organ` is writable by this session. The independent waveform session in `/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ` retains R4 ownership and its unfinished work. Preserve all other checkouts.
+## Published source, ownership and recovery
 
-## Accepted scope and verification
+Latest published and fetched main is **`d556da017ea0a5d4f2d231416782dbc5066e58c2`**,
+tree `a3150fd2489a50a430b02c01eadd5e0c180bc7f9`, parent
+`b9d352a82ac1afdec70c76ec5b1987785a37762e`.
+[Publication receipt](reports/portability-guides-publication.json) records exact
+identity. Earlier feature source `ff41d412d03f2c5767aa4057b29fa8ec1627449b` and
+paint archive `99b363438b3c4f217e0acb5361c0aea52ad7d0e3` retain their own evidence.
+Local same-tree predecessor commits are protected under `refs/checkpoints/`.
 
-M9 now includes scoped MIDI CC120, reset CC121, immutable per-epoch expression calibration, explicit native CLI/UI settings and truthful selected/configured/active/pending observations. Musical state4/readers1–3 and47sound parameters remain unchanged. Wide Dimensional paint improves manual legends,32pixel caps and natural-key materials; compact and Flat paths retain their accepted pixels. Counts remain68controls including24presets,147playing keys,71Play/10common focus stops; the MIDI modal now has11focus stops.
+The user authorized development and publication. CLI push has no credentials;
+use connected GitHub Git Data, an expected main SHA and `force:false`. Compare
+remote and local trees, fetch, preserve the local predecessor and synchronize
+main with a guarded update. Do not reset active files or amend historical proof.
 
-M6 has an **independent** four-state ideal passive crossover, strict fixed registry, Python series/graph references, native probe, transactional lifecycle, calibrated allocation checks and source-bound response/sine evidence. It is not in Engine. Nominal16ohm loads and component values are documentary ideal inputs; physical driver/source/parasite measurements and same-Hz acceptance remain open. Preserve scanner's same-Hz failure and the nominal dry sound.
+Writable checkout: `/workspace/scratch/5b7d983ac078/Hammond-B3-Organ`.
+The independent waveform checkout `/workspace/scratch/e3cacb90cc81/Hammond-B3-Organ`
+retains its R4 ownership and unfinished changes. Preserve it and all other sessions.
 
-- Root coherent Release all-target build and full176/176CTest passed177.92s at feature publication; reports/wave4-coherent-build.json and wave4-full-ctest.txt retain identities.
-- All13primary hosted jobs on `ff41d412` now report success: CI43662450591, standalone43662450626, VST343662450598. `reports/implementation-hosted-status.json` retains job IDs/status. Source-specific primary-log audit remains scheduled; these results do not qualify later fixture/install changes.
-- A26 real native calibration/reconnect dependency fixture passed9tests/10processes/7lifecycles; root integrated CTest passed20.56s with unchanged production main/MidiDevice/painter. `reports/A26-root-native-calibration.json` and wave5-integrated-ctest.txt retain scope. No physical hardware or asynchronous driver-race claim.
-- A31 explicit COPY-only six-file CrossoverTools component passed14private fixture tests and root integrated CTest1/1 in1.61s; `reports/wave6-crossover-install-ctest.txt`. Existing components remain separate; project-wide license has not been selected.
-- A27 paired30warmup/300sample six-case paint experiment passed the declared relative budget; largest median increase1.23%, absolute reference software draw~113ms. This does not establish interactive frame rate. Original tool source is archived in99b3634. A30 corrected only current-only `alternating_order` metadata and executed one parsed output check.
-- A28 generated source-bound same-Hz plot; root inspected it. A29 compatibility review and A30 portability review are accepted. No further production defect was confirmed.
-- Local leak-enabled sanitizer and empty-main control were blocked by ptrace; never relabel this as a local pass or disable leak checks. Hosted leak-enabled gates are separate evidence; retain only the existing named quarantine exception.
+## Accepted implementation and evidence
 
-## Build and resource ownership
+M9 adds scoped CC120, global-expression reset CC121, immutable per-epoch native
+expression calibration, CLI/dialog controls and truthful selected/configured/
+active/pending observations. Preserve 47 sound parameters, `B3CONTROLS4` and
+readers 1–3,91 free-running sources and nominal dry Engine behavior. Calibration
+is volatile native-adapter configuration, not saved musical or VST3 state.
+Wide Dimensional legends/caps/natural-key materials are refined; counts remain
+68 controls including24presets,147playing keys,71Play/10common focus stops and
+11 MIDI-dialog stops. Compact and Flat behavior retains its accepted boundaries.
 
-Root alone configures/builds `/workspace/scratch/5b7d983ac078/build-native`. GCC14.2 Release, standaloneON, native MIDIbackendOFF, VST3OFF; SDL X11/Wayland/ALSAOFF and explicit dummySDL. CMake/CTest: `/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/`; Ninja `/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja`; pinned SDL source `/workspace/scratch/1bb6ee17ad7e/SDL2`, RtMidi `/workspace/scratch/1bb6ee17ad7e/rtmidi`, read-only. Current app SHA256 `7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
+M6 adds an independent ideal four-state passive crossover, fixed registry,
+Python references, native probe, lifecycle/allocation tests, characterization,
+source-bound plot and explicit six-file CrossoverTools component. It is **not
+connected to Engine**. Physical loads/source/parasites and same-Hz electrical
+acceptance remain open. Preserve the scanner's failed same-Hz gate and separate
+waveform R4/R5/R6 and physical-acquisition requirements.
 
-Main CMake now includes InstallCrossoverTools after InstallHammondTools. Standalone CMake adds the test-only calibration probe and a manual paint benchmark target. These and accepted A26–A31 files are published in b9d352a; guide/navigation work remains uncommitted under its assigned owners. About57GiB remains free; one primary build is~90MiB and repo~171MiB. Use bounded evidence and do not delete other sessions.
+- Coherent feature build:176/176 CTest in177.92s at ff41d412; all13 hosted jobs
+  succeeded on that source. Those results do not qualify later fixture/install edits.
+- A40/A41 accepted eleven actual native captures: eight normal views and three
+  MIDI overlays in [the new gallery](../../../examples/demos/standalone-product-preview-v1/README.md).
+  README now displays current Play and MIDI views. All57 payload entries,
+  source identities and retained PNG/pixel hashes match; all277 historical
+  gallery files are unchanged. Original BMPs are unavailable after recorded
+  lossless conversion. Do not claim a fresh raw-BMP comparison.
+- A42 final material gate passed1293/1293 assertions,109frames,6.63s. All212
+  fractional clipping differences match exact independent literal plates within
+  38 boundary-crossing glyphs; zero unexplained pixels. The initial two failures
+  and final source are retained in [its report](reports/A42-calibration-modal-raster.json).
+- A43 root full installed gate passed8Python methods/1CTest in5.31s after guide
+  freeze and reconfigure. Standalone inventory is16files MIDI-OFF/20 MIDI-ON;
+  private relocated calibration returns0.75 and preserves namespace sentinels.
+- A44 provenance audit matches PDF, dependencies, notices, M6 source and eleven
+  captures. It repairs the stale statement excluding extracted atlas imagery;
+  project-wide licensing remains unselected, without adding a development gate.
+- A27's relative paint budget passed; absolute wide software paint~113ms is not
+  60fps. Literal full-reference1:1, native accessibility, physical displays,
+  real controllers and measured electrical/acoustic fidelity remain unproved.
 
-## Immediate remaining work
+## Current hosted result and pending publication
 
-1. A32 operating guides and A33 crossover developer guide are accepted. Finish A34 source/reference visual gap review, A35 README current-design update and A36 whole-plan/current-document reconciliation. A35 owns README; A36 exclusively owns STATUS/NEXT_STEPS/PLAN/DEVELOPMENT_LOG/PROJECT_GUIDE until delivery. Root has created reports/capture-qualified-build.json, pinning108production inputs and unchanged7ded143b executable after an actual target build; final gallery still requires A39 capture admission repair and A40 execution.
-2. Wave7: verify sanitizer selection covers new native paths, review coherent integration, qualify/fix MIDI-OFF capture admission, produce a fresh actual native gallery, independently inspect it, and qualify the expanded MIDI modal. Preserve all historical galleries.
-3. Wave8: installed docs/relocation, provenance/license, resource/recovery audit, a strict actual60-record validator, native fault/recovery review and numerical evidence admission review.
-4. Waves9/10: source-identified hosted Linux/Windows/macOS/VST3 checks, doc/current-image truth, final code/next-phase/ledger/publication/recovery audits. No invented assignments or future acceptance.
-5. Publish accepted checkpoints without force. After code/test/build setup freezes, run the necessary coherent local gate, qualify final hosted source, update README with actual source-bound captures, finalize all60actual notes/acceptances, execute strict record gate, and push/verify closure.
+[The d556 status receipt](reports/d556-hosted-status.json) records **12 successful
+jobs and one failed native sanitizer build**. Windows/Linux/macOS Release,
+Linux core leak-enabled sanitizers, R4 job and all three VST3 jobs succeeded.
+Expanded21-native sanitizer selection did not execute because GCC13/O3/Werror
+reported an array-bounds warning for a test-only vector initializer assignment.
+Root replaced it with `clear()`/`push_back()`; unchanged production app and the
+real-application calibration fixture pass locally20.50s. The next published
+source must execute the complete21-gate sanitizer job; no leak exception was added.
+Earlier b9 installer and Windows fixture failures remain recorded with their
+CMake-policy/environment-copy/newline repairs and source-specific passes.
 
-The user explicitly authorized development and publication. Continue to completion without repeated permission requests. Report exact limitations: literal1:1interface equality, real devices, physical circuit/cabinet fidelity and measured reference hardware remain unproved.
+Accepted but not yet published: gallery/README, A42 raster fixture and original
+failure evidence, A43 install guide/inventory tests/workflow counts, A44 inventory
+review, GCC13 test-facade repair and associated records. Active files belong to
+A46(product-record checker/tests/CI gate), A47(native recovery review) and A48(numerical admission). A45
+AGENTS/handoff is frozen and accepted for this publication. Publish only frozen accepted paths and update this snapshot afterward.
 
-## Installer portability repair discovered after publication
+## Build and resource boundaries
 
-Hosted b9 LinuxRelease job132659897764 used CMake3.31.6 and failed1/155CTest: three negative installation subcases bypassed the ancestor guard because generated install scripts leave CMP0012 unset and while(TRUE) did not execute. Root replaced it with numeric while(1), preserving all assertions. Local CMake4.4.5 repeated14/14 in1.370s; fixed-source hosted3.31.6 execution is still required. Reports/b9-linux-crossover-install-failure.txt and crossover-install-policy-repair.json retain original failure and repair bounds. A37 is independently extending native sanitizer coverage from16 to21 required gates and may edit only the approved sanitizer-only calibration timeout.
+Root alone configures/builds `/workspace/scratch/5b7d983ac078/build-native`:
+GCC14.2 Release, standaloneON, physical MIDI backendOFF, VST3OFF, SDL X11/Wayland/
+ALSAOFF and explicit dummySDL. CMake/CTest4.4.5:
+`/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/`; Ninja:
+`/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja`.
+Pinned SDL2.32.10 and RtMidi6.0.0 sources under that same workspace are read-only.
+Current production application SHA-256:
+`7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
 
-## Windows fixture repairs and current dispatch
+About57GiB remains free; repo~180MiB and build92MiB. Bound reports and checkpoint
+before context changes. No cleanup is needed. Local leak sanitizer and an
+empty-main control are blocked by ptrace; never report this as a pass or disable
+leak detection. Hosted checks are separate evidence with only the existing named
+quarantine exception.
 
-A36 shared-plan reconciliation is accepted; root again owns those documents. Actualdispatch is39workers: A01–A34andA36accepted, A35firstREADMEpassreview-completependingactualgallery, A37–A39active. B9 Windows native48gate run failedonlynewcalibrationfixture:8cases refusedbecause SDL_getenv mayreuseoneWindowsbuffer. A38 ownsandfixedboth environment strings before subsequentreads/appstartup. Windowscore alsofailedtheinstalltest LF/CRLF outputcomparison; A38preservesexactcontentcomparisonafterWindowsonlyCRLFnormalization. Root mirrored MinGW -municode ontestprobe (sourceonly; noMinGWexecution), reconfigured/rebuilt, andstrictfocusedCTest2/2passed21.92s. Newprobe16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335; reports/A38-root-native-calibration.json retains10processes/7lifecycles/2intentionalfailedreplays. Reports/wave7-portability-repair.json bindsrepairsandoriginalfailedlogs. No productionapp/main/painter/reference change. WaitforA37/A38finalnotes, finishA39MIDI-OFFcaptureadmission, publishcoherentrepair/workflow/guidescheckpoint, thenA40actualgallery.
+## Next concrete actions
 
-## Wave7 capture and current ownership
-
-A37 expanded21-gate sanitizer workflow and A38 portability repairs are accepted with actual local2/2 evidence; replacement hosted checks remain pending. A39 capture tool is frozen at83c214d6f0d6b0fc06910412f41f13a0f3286bebd034280a19d4e5e397875b1f;13Pythonmethods pass and the same actualMIDI-OFFdiagnostics rejectedbyoldcode are admittedbycorrectcompiled-backend/state checks. A40 owns new standalone-product-preview-v1 gallery (eight normal plus three separately identified MIDI overlays); A41 independently admits every frame. They await root publication go. A42 owns only the existing test_standalone_material_acceptance.cpp for calibration modal raster coverage and will request a coordinated build; do not mutate the primary build during capture. Root owns README/shareddocs after A35/A36 delivery and will promote actualgallery afterA41.
+1. Finish A45–A48: future-agent recovery, strict actual-record checker, native
+   callback/recovery review and numerical evidence admission. Root maintains
+   exact assignments, note hashes and this checkpoint.
+2. Publish accepted gallery/fixture/install/provenance work with the GCC13 repair
+   so source-specific hosted21-gate qualification can run. Inspect original logs.
+3. A49–A54 audit Linux/leaks, Windows, macOS, VST3, current documentation and actual
+   UI/reference acceptance. Preserve physical/unrun limits and historical records.
+4. A55–A60 audit code, complete-plan readiness, actual ledger, exact publication,
+   recoverability and closure. After actualA60 acceptance run strict60-record
+   validation, coherent final build/CTest, final-source hosted checks and push
+   the clean, exact closure tree. Do not invent future acceptance.
+5. Next engineering phase after this session: declare the M6 same-Hz electrical
+   error protocol and floors, then qualify a separate numerical candidate before
+   considering Engine integration. See the crossover developer guide and full plan.

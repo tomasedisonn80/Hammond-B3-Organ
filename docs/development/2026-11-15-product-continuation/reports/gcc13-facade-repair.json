@@ -1,0 +1,14 @@
+{
+  "source_commit_before_repair": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+  "header": "apps/standalone/native_tests/fake_calibration/RtMidi.h",
+  "header_sha256": "15a24319a27cb6df6440b758902b8b9917e3ad317b93bc725e915049f4633041",
+  "repair": "clear and push_back the same platform_api; no compiler or sanitizer policy relaxation",
+  "ordinary_native_calibration_result": {
+    "passed": true,
+    "elapsed_seconds": 20.5,
+    "summary": "gcc13-facade-root-native-calibration.json"
+  },
+  "combined_ctest_log": "wave7-material-facade-ctest.txt",
+  "combined_gate_result": "1of2passed; new independent material fixture reported1of1293assertion failure, under separateA42diagnosis",
+  "instrumented_hosted_replacement": "pending; local GCC14Release does not qualify GCC13instrumented build"
+}

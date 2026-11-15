@@ -1,4 +1,5 @@
 #include "InstrumentView.h"
+#include "FontData.h"
 
 #include <SDL.h>
 
@@ -37,6 +38,19 @@ std::array<long double, 2> minimum_contrast{
     std::numeric_limits<long double>::infinity(), std::numeric_limits<long double>::infinity()};
 std::vector<std::string> overlay_results;
 std::vector<std::string> header_results;
+struct MidiCounts {
+    std::size_t scenes{}, frames{}, controls{}, glyphs{}, value_changes{}, focused{}, invalid{}, long_text{}, clipped{};
+    std::size_t intersected_glyphs{}, resampled_pixels{}, unexplained_pixels{}, literal_mismatches{};
+} midi_counts;
+std::vector<std::string> midi_clip_results;
+
+struct LiteralText {
+    std::string value;
+    UiRect band{};
+    float x{}, top{}, size{};
+    UiColor color{};
+    UiColor background{27, 29, 28};
+};
 
 void require(bool condition, std::string_view detail) {
     if (!condition) throw std::runtime_error(std::string(detail) + ": " + SDL_GetError());
@@ -167,9 +181,12 @@ public:
         return frame;
     }
 
-    Frame paint(const UiModel& model, const InstrumentViewInfo& info = {}) {
+    Frame paint(const UiModel& model, const InstrumentViewInfo& info = {}, const UiRect* modal_focus = nullptr) {
         const auto before = state(renderer_.get());
         paint_instrument(drawing_, model, info);
+        // Application::render_frame adds this public Drawing primitive after
+        // InstrumentView. Native application tests separately own focus traversal.
+        if (modal_focus) drawing_.outline(*modal_focus, kUiFocusCyan, 2.0F);
         const auto after = state(renderer_.get());
         check(before.x == after.x && before.y == after.y &&
               equal(before.viewport, after.viewport) && equal(before.clip, after.clip) &&
@@ -200,6 +217,26 @@ public:
         drawing_.clear({19, 21, 18});
         drawing_.text("ROTARY AUDIO: NOT CONNECTED", card.x + 12.0F, card.y + 85.0F,
                       10.0F, {166, 159, 142});
+        return read();
+    }
+
+    float text_width(std::string_view value, float size) const {
+        return drawing_.text_width(value, size);
+    }
+
+    Frame literal_mask(std::span<const LiteralText> text) {
+        drawing_.clear({0, 0, 0});
+        for (const auto& line : text)
+            drawing_.text(line.value, line.x, line.top, line.size, {255, 255, 255});
+        return read();
+    }
+
+    Frame literal_plate(std::span<const LiteralText> text) {
+        drawing_.clear({0, 0, 0});
+        for (const auto& line : text) {
+            drawing_.rect(line.band, line.background);
+            drawing_.text(line.value, line.x, line.top, line.size, line.color);
+        }
         return read();
     }
 
@@ -563,6 +600,383 @@ void overlays() {
     }
 }
 
+SDL_Rect pixel_region(const Frame& frame, UiRect bounds) {
+    const auto& t = frame.transform;
+    const int left = std::clamp(static_cast<int>(std::floor(bounds.x * t.x + static_cast<float>(t.viewport.x))), 0, frame.width);
+    const int top = std::clamp(static_cast<int>(std::floor(bounds.y * t.y + static_cast<float>(t.viewport.y))), 0, frame.height);
+    const int right = std::clamp(static_cast<int>(std::ceil((bounds.x + bounds.width) * t.x + static_cast<float>(t.viewport.x))), 0, frame.width);
+    const int bottom = std::clamp(static_cast<int>(std::ceil((bounds.y + bounds.height) * t.y + static_cast<float>(t.viewport.y))), 0, frame.height);
+    return {left, top, right - left, bottom - top};
+}
+
+void literal_text_checks(Target& target, const Frame& actual, std::span<const LiteralText> text) {
+    const auto mask = target.literal_mask(text);
+    for (const auto& line : text) {
+        const auto scan = pixel_region(actual, line.band);
+        const std::array<int, 3> ink{line.color.red, line.color.green, line.color.blue};
+        std::size_t core = 0, wrong = 0;
+        for (int y = scan.y; y < scan.y + scan.h; ++y)
+            for (int x = scan.x; x < scan.x + scan.w; ++x) {
+                if (!visible(actual.transform, x, y) || !inside(line.band, logical(actual.transform, x, y))) continue;
+                const auto at = actual.offset(x, y);
+                const int coverage = mask.pixels[at][0];
+                if (coverage >= 192) ++core;
+                // Literal glyph coverage supplies a foreground interval over
+                // any dark material in [0,110]. This checks the complete shape,
+                // including empty glyph gaps, without duplicating text fitting
+                // or assuming a flat background beneath dimensional labels.
+                bool match = true;
+                for (std::size_t channel = 0; channel < ink.size(); ++channel) {
+                    const int lower = ink[channel] * coverage / 255 - 3;
+                    const int upper = (ink[channel] * coverage + 110 * (255 - coverage)) / 255 + 3;
+                    const int observed = actual.pixels[at][channel];
+                    match = match && observed >= lower && observed <= upper;
+                }
+                if (!match) ++wrong;
+            }
+        check(core > 0 && wrong == 0 && target.text_width(line.value, line.size) <= line.band.width,
+              "MIDI complete literal glyphs fit their separate band: " + line.value +
+              " mismatched_pixels=" + std::to_string(wrong));
+        ++midi_counts.glyphs;
+    }
+}
+
+std::vector<std::size_t> modal_delta(const Frame& before, const Frame& after, UiRect scope,
+                                   std::span<const UiRect> allowed, std::string_view detail) {
+    std::vector<std::size_t> changes(allowed.size());
+    std::size_t escaped = 0;
+    const auto scan = pixel_region(before, scope);
+    for (int y = scan.y; y < scan.y + scan.h; ++y)
+        for (int x = scan.x; x < scan.x + scan.w; ++x) {
+            const auto at = before.offset(x, y);
+            if (before.pixels[at] == after.pixels[at]) continue;
+            const auto p = logical(before.transform, x, y);
+            if (!inside(scope, p)) continue;
+            bool owned = false;
+            for (std::size_t index = 0; index < allowed.size(); ++index)
+                if (inside(allowed[index], p)) { ++changes[index]; owned = true; }
+            if (!owned) ++escaped;
+        }
+    check(escaped == 0 && std::all_of(changes.begin(), changes.end(), [](std::size_t n) { return n > 0; }),
+          std::string(detail) + " escaped_pixels=" + std::to_string(escaped));
+    return changes;
+}
+
+void modal_focus_check(const Frame& plain, const Frame& focused, UiRect expected) {
+    const UiRect outer{expected.x - 1.0F, expected.y - 1.0F, expected.width + 2.0F, expected.height + 2.0F};
+    const UiRect inner{expected.x + 3.0F, expected.y + 3.0F, expected.width - 6.0F, expected.height - 6.0F};
+    std::size_t changed = 0, escaped = 0, missed = 0;
+    for (int y = 0; y < focused.height; ++y)
+        for (int x = 0; x < focused.width; ++x) {
+            const auto at = focused.offset(x, y);
+            if (plain.pixels[at] == focused.pixels[at]) continue;
+            ++changed;
+            const auto p = logical(focused.transform, x, y);
+            if (!inside(outer, p) || inside(inner, p) || focused.pixels[at] != kCyan) ++escaped;
+        }
+    // Probe complete side runs, leaving the corner joins independent of SDL's
+    // fractional rectangle rounding. A misplaced or incomplete ring fails even
+    // when it happens to contain a large number of cyan pixels elsewhere.
+    for (int side = 0; side < 4; ++side) {
+        const float extent = side < 2 ? expected.width : expected.height;
+        for (float along = 4.0F; along < extent - 4.0F; along += 1.0F) {
+            const float px = side < 2 ? expected.x + along :
+                expected.x + (side == 2 ? 0.75F : expected.width - 1.25F);
+            const float py = side < 2 ? expected.y + (side == 0 ? 0.75F : expected.height - 1.25F) :
+                expected.y + along;
+            const int x = static_cast<int>(std::floor(px * focused.transform.x + static_cast<float>(focused.transform.viewport.x)));
+            const int y = static_cast<int>(std::floor(py * focused.transform.y + static_cast<float>(focused.transform.viewport.y)));
+            if (focused.pixels[focused.offset(x, y)] != kCyan) ++missed;
+        }
+    }
+    check(changed > 0 && escaped == 0 && missed == 0,
+          "MIDI focus covers the intended four sides; labels, other controls and panel stay unchanged: escaped=" +
+          std::to_string(escaped) + " missed=" + std::to_string(missed));
+    ++midi_counts.focused;
+}
+
+bool long_row_filled(const Frame& frame, UiRect band) {
+    const auto scan = pixel_region(frame, band);
+    int left = frame.width, right = 0;
+    for (int y = scan.y; y < scan.y + scan.h; ++y)
+        for (int x = scan.x; x < scan.x + scan.w; ++x) {
+            const auto& p = frame.pixels[frame.offset(x, y)];
+            if (inside(band, logical(frame.transform, x, y)) && p[0] >= 140 && p[1] >= 100 && p[2] >= 65) {
+                left = std::min(left, x); right = std::max(right, x + 1);
+            }
+        }
+    return static_cast<float>(right - left) >= band.width * frame.transform.x * 0.85F;
+}
+
+struct CutGlyph { SDL_Rect bounds{}; std::size_t line{}, character{}, changed{}; };
+
+std::vector<CutGlyph> intersected_glyphs(const Frame& frame, std::span<const LiteralText> text) {
+    std::vector<CutGlyph> result;
+    const auto& t = frame.transform;
+    const SDL_Rect cut{t.viewport.x + t.clip.x, t.viewport.y + t.clip.y, t.clip.w, t.clip.h};
+    for (std::size_t line = 0; line < text.size(); ++line) {
+        const auto& literal = text[line];
+        const auto& font = font_data::kSans;
+        const float size = literal.size / static_cast<float>(font.pixel_height);
+        float pen = literal.x;
+        for (std::size_t index = 0; index < literal.value.size(); ++index) {
+            const auto& glyph = font_data::glyph(font, static_cast<unsigned char>(literal.value[index]));
+            if (glyph.width != 0 && glyph.height != 0) {
+                // Read the frozen asset's destination footprint, including its
+                // documented two-pixel gutter for subpixel strokes. SDL's
+                // software Copy queue truncates the scaled destination before
+                // applying the physical viewport. This locates individual
+                // boundary-crossing glyphs; it does not implement blit sampling.
+                const int gx = static_cast<float>(glyph.width) * size < 1.0F ? 2 : 0;
+                const int gy = static_cast<float>(glyph.height) * size < 1.0F ? 2 : 0;
+                const float left = pen + static_cast<float>(glyph.bearing_x - gx) * size;
+                const float top = literal.top + static_cast<float>(font.ascent) * size +
+                    static_cast<float>(glyph.bearing_y - gy) * size;
+                const SDL_Rect bounds{
+                    static_cast<int>(left * t.x) + t.viewport.x, static_cast<int>(top * t.y) + t.viewport.y,
+                    static_cast<int>(static_cast<float>(glyph.width + 2 * gx) * size * t.x),
+                    static_cast<int>(static_cast<float>(glyph.height + 2 * gy) * size * t.y)};
+                const bool intersects = bounds.x < cut.x + cut.w && bounds.y < cut.y + cut.h &&
+                    bounds.x + bounds.w > cut.x && bounds.y + bounds.h > cut.y;
+                const bool crosses = bounds.x < cut.x || bounds.y < cut.y ||
+                    bounds.x + bounds.w > cut.x + cut.w || bounds.y + bounds.h > cut.y + cut.h;
+                if (intersects && crosses) result.push_back({bounds, line, index, 0});
+            }
+            pen += static_cast<float>(glyph.advance_64) * size / 64.0F;
+        }
+    }
+    return result;
+}
+
+void calibration_modals() {
+    struct Scene { int width, height; float scale; UiPresentation presentation; };
+    constexpr std::array<Scene, 4> scenes{{
+        {960, 700, 1.0F, UiPresentation::Dimensional}, {960, 700, 1.0F, UiPresentation::Flat},
+        {1672, 941, 1.0F, UiPresentation::Dimensional}, {960, 700, 1.25F, UiPresentation::Flat}}};
+    // Independent reviewed minimum-window anchors, in documented focus order.
+    // These do not call the production layout to construct the expected image.
+    constexpr std::array<UiRect, 11> anchors{{
+        {138, 163, 40, 42}, {782, 163, 40, 42}, {138, 289, 212, 38},
+        {374, 289, 212, 38}, {610, 289, 212, 38}, {138, 382, 212, 38},
+        {374, 382, 212, 38}, {610, 382, 212, 38}, {138, 560, 252, 38},
+        {406, 560, 188, 38}, {738, 74, 84, 32}}};
+    constexpr std::array<std::string_view, 3> labels{
+        "EXPRESSION MIN", "EXPRESSION MAX", "EXPRESSION DIRECTION"};
+    const std::array<std::string, 2> choices{"No input", "Calibration controller"};
+    const std::string long_text(2048, 'W');
+    const std::array<std::string, 2> long_choices{"No input", "Controller " + long_text};
+    for (std::size_t scene = 0; scene < scenes.size(); ++scene) {
+        const auto& s = scenes[scene];
+        const float dx = static_cast<float>(s.width - 960) / 2.0F;
+        const float dy = static_cast<float>(s.height - 700) / 2.0F;
+        const auto shifted = [dx, dy](UiRect b) { b.x += dx; b.y += dy; return b; };
+        const UiRect panel = shifted({110, 50, 740, 600});
+        const UiRect canvas{0, 0, static_cast<float>(s.width), static_cast<float>(s.height)};
+        const bool scaled = s.scale != 1.0F;
+        const SDL_Rect viewport{scaled ? 13 : 0, scaled ? 11 : 0,
+            static_cast<int>(static_cast<float>(s.width) * s.scale), static_cast<int>(static_cast<float>(s.height) * s.scale)};
+        Target target(viewport.w + (scaled ? 40 : 0), viewport.h + (scaled ? 40 : 0));
+        target.configure(s.scale, viewport);
+        const auto model = model_at(s.width, s.height, s.presentation);
+        const auto actual = midi_overlay_layout(static_cast<float>(s.width), static_cast<float>(s.height));
+        const std::array<UiRect, 11> controls{actual.previous_port, actual.next_port, actual.upper_channel,
+            actual.lower_channel, actual.pedal_channel, actual.expression_minimum, actual.expression_maximum,
+            actual.expression_direction, actual.apply, actual.disconnect, actual.close};
+        const auto same = [](UiRect a, UiRect b) {
+            return std::abs(a.x - b.x) < 0.001F && std::abs(a.y - b.y) < 0.001F &&
+                std::abs(a.width - b.width) < 0.001F && std::abs(a.height - b.height) < 0.001F;
+        };
+        check(same(actual.panel, panel) && panel.x >= 50.0F && panel.y >= 50.0F &&
+              panel.x + panel.width <= canvas.width - 50.0F && panel.y + panel.height <= canvas.height - 50.0F,
+              "740x600 MIDI panel retains complete minimum-window margins");
+        bool separated = true;
+        for (std::size_t index = 0; index < controls.size(); ++index) {
+            const auto& a = controls[index];
+            check(same(a, shifted(anchors[index])), "MIDI control matches independent anchor " + std::to_string(index));
+            ++midi_counts.controls;
+            separated = separated && a.width >= 32.0F && a.height >= 32.0F &&
+                a.x > panel.x && a.y > panel.y && a.x + a.width < panel.x + panel.width &&
+                a.y + a.height < panel.y + panel.height;
+            for (std::size_t other = 0; other < index; ++other) {
+                const auto& b = controls[other];
+                separated = separated && (a.x + a.width + 4.0F <= b.x || b.x + b.width + 4.0F <= a.x ||
+                    a.y + a.height + 4.0F <= b.y || b.y + b.height + 4.0F <= a.y);
+            }
+        }
+        check(separated, "all eleven MIDI targets are contained, usable size and separated by at least four pixels");
+        const std::array<UiRect, 3> expression{shifted(anchors[5]), shifted(anchors[6]), shifted(anchors[7])};
+        InstrumentViewInfo info;
+        info.overlay = ViewOverlay::Midi;
+        info.midi_available = true;
+        info.midi_open = true;
+        info.midi_choices = choices;
+        info.selected_midi_port = 1;
+        info.midi_backend = "Fixture backend";
+        info.midi_status = "Connected for raster acceptance.";
+        info.midi_expression_active = true;
+        info.active_midi_expression = {7, 111, false};
+        const auto glyphs = [&](std::array<std::string, 3> values, bool invalid = false) {
+            std::vector<LiteralText> result;
+            for (std::size_t index = 0; index < expression.size(); ++index) {
+                const auto& b = expression[index];
+                result.push_back({std::string(labels[index]), {b.x, b.y - 22.0F, b.width, 16},
+                    b.x, b.y - 22.0F, 11, {214, 182, 124}});
+                result.push_back({values[index], {b.x + 6, b.y + 6, b.width - 12, b.height - 12},
+                    b.x + 106.0F - target.text_width(values[index], 11) / 2.0F, b.y + 12.4F, 11,
+                    {242, 231, 207}, {45, 41, 36}});
+            }
+            result.push_back({"ACTIVE CALIBRATION: min 7 / max 111 / NORMAL", shifted({150, 488, 660, 17}),
+                150 + dx, 488 + dy, 11, {157, 187, 143}, {17, 19, 16}});
+            result.push_back({invalid ? "Expression minimum must be less than maximum. Change either value before Apply." :
+                "Selected calibration: raw 0-127. Arrows adjust; Home / End set bounds.", shifted({138, 432, 684, 18}),
+                138 + dx, 432 + dy, 11, invalid ? UiColor{232, 139, 110} : UiColor{166, 159, 142}});
+            return result;
+        };
+        const auto baseline = target.paint(model, info);
+        literal_text_checks(target, baseline, glyphs({"0", "127", "NORMAL"}));
+        for (const auto& b : expression) {
+            const auto material = patch(baseline, {b.x + 8, b.y + 4, 3, b.height - 8}, {45, 41, 36, 255});
+            check(material.pixels > 20 && (s.presentation == UiPresentation::Flat ? material.wrong == 0 : material.variations > 0),
+                  "each new calibration button retains the chosen Flat or dimensional material");
+        }
+        info.selected_midi_expression = {20, 100, true};
+        const auto changed = target.paint(model, info);
+        literal_text_checks(target, changed, glyphs({"20", "100", "INVERTED"}));
+        modal_delta(baseline, changed, canvas, expression,
+                    "selected endpoint/direction edits change exactly their three controls and preserve active calibration");
+        midi_counts.value_changes += 3;
+        midi_counts.frames += 2;
+        if (scene < 2) {
+            auto invalid = info;
+            invalid.selected_midi_expression = {100, 100, true};
+            const auto invalid_frame = target.paint(model, invalid);
+            literal_text_checks(target, invalid_frame, glyphs({"100", "100", "INVERTED"}, true));
+            const std::array<UiRect, 3> invalid_regions{expression[0], shifted({138, 432, 684, 18}), shifted(anchors[8])};
+            modal_delta(changed, invalid_frame, canvas, invalid_regions,
+                        "invalid endpoints retain selected/active readouts and change only minimum, error row and Apply");
+            ++midi_counts.invalid; ++midi_counts.frames;
+        }
+        if (scene == 0 || scaled) {
+            auto long_info = info;
+            long_info.midi_choices = long_choices;
+            long_info.midi_backend = long_text;
+            long_info.midi_status = long_text;
+            long_info.midi_reconnect_pending = true;
+            const auto long_frame = target.paint(model, long_info);
+            literal_text_checks(target, long_frame, glyphs({"20", "100", "INVERTED"}));
+            const std::array<UiRect, 3> text_regions{shifted({190, 148, 580, 77}),
+                shifted({150, 468, 660, 18}), shifted({150, 509, 660, 32})};
+            modal_delta(changed, long_frame, panel, text_regions,
+                        "long exact port/backend/status and pending state stay in their allotted text bands");
+            check(long_row_filled(long_frame, text_regions[1]) &&
+                  long_row_filled(long_frame, shifted({150, 509, 660, 15.525F})) &&
+                  long_row_filled(long_frame, shifted({150, 524.525F, 660, 16.475F})),
+                  "long connection and both status rows retain visible text across their allocated width");
+            ++midi_counts.long_text; ++midi_counts.frames;
+        }
+        const std::size_t first = scene < 2 ? 0 : scaled ? 0 : 2;
+        const std::size_t end = scene < 2 ? 3 : first + 1;
+        for (std::size_t index = first; index < end; ++index) {
+            const auto focused = target.paint(model, info, &controls[5 + index]);
+            modal_focus_check(changed, focused, expression[index]);
+            ++midi_counts.frames;
+            if (!scaled) continue;
+            // Deliberately cut through the minimum field and its ring, retaining
+            // part of the label/value and neighboring controls in an offset view.
+            auto clip_text = glyphs({"20", "100", "INVERTED"});
+            clip_text.push_back({"MIDI CONNECTED / Fixture backend", {150, 468, 660, 18},
+                150, 468, 12, {157, 187, 143}, {17, 19, 16}});
+            clip_text.push_back({"Connected for raster acceptance.", {150, 509, 660, 32},
+                150, 509, 11.5F, {242, 231, 207}, {17, 19, 16}});
+            clip_text.push_back({"APPLY / CONNECT", {144, 566, 240, 26},
+                264.0F - target.text_width("APPLY / CONNECT", 11) / 2.0F, 572.4F, 11,
+                {35, 29, 21}, {238, 204, 145}});
+            clip_text.push_back({"DISCONNECT", {412, 566, 176, 26},
+                500.0F - target.text_width("DISCONNECT", 11) / 2.0F, 572.4F, 11,
+                {242, 231, 207}, {45, 41, 36}});
+            clip_text.push_back({"Apply uses selected settings; reconnect and Disconnect release MIDI-owned notes.",
+                {138, 609, 684, 16}, 138, 609, 11, {166, 159, 142}});
+            clip_text.push_back({"Tab / Shift+Tab selects a control. Enter activates. Escape closes.",
+                {138, 628, 684, 14}, 138, 628, 10.5F, {166, 159, 142}});
+            const auto full_plate = target.literal_plate(clip_text);
+            const SDL_Rect cut{305, 460, 700, 340};
+            target.configure(s.scale, viewport, &cut);
+            const auto clipped = target.paint(model, info, &controls[5 + index]);
+            const auto cut_plate = target.literal_plate(clip_text);
+            auto cut_glyphs = intersected_glyphs(clipped, clip_text);
+            std::size_t mismatches = 0, surviving_focus = 0, hidden_focus = 0;
+            std::size_t unexplained = 0, wrong_literal = 0, wrong_difference_set = 0, partial_pixels = 0;
+            std::string first_wrong;
+            for (int y = 0; y < clipped.height; ++y)
+                for (int x = 0; x < clipped.width; ++x) {
+                    const auto at = clipped.offset(x, y);
+                    if (visible(clipped.transform, x, y)) {
+                        const bool different = focused.pixels[at] != clipped.pixels[at];
+                        if (different) ++mismatches;
+                        const auto owner = std::find_if(cut_glyphs.begin(), cut_glyphs.end(), [x, y](const CutGlyph& glyph) {
+                            const auto& b = glyph.bounds;
+                            return x >= b.x && y >= b.y && x < b.x + b.w && y < b.y + b.h;
+                        });
+                        bool wrong = false;
+                        if (owner == cut_glyphs.end()) {
+                            if (different) { ++unexplained; wrong = true; }
+                        } else {
+                            ++partial_pixels;
+                            if (different) ++owner->changed;
+                            if (focused.pixels[at] != full_plate.pixels[at] || clipped.pixels[at] != cut_plate.pixels[at]) {
+                                ++wrong_literal; wrong = true;
+                            }
+                            if (different != (full_plate.pixels[at] != cut_plate.pixels[at])) {
+                                ++wrong_difference_set; wrong = true;
+                            }
+                        }
+                        if (wrong && first_wrong.empty()) {
+                            std::ostringstream sample;
+                            sample << " first_wrong=" << x << ',' << y << " full/cut/literal_full/literal_cut=";
+                            for (const auto* frame : {&focused, &clipped, &full_plate, &cut_plate}) {
+                                const auto& pixel = frame->pixels[at];
+                                sample << static_cast<int>(pixel[0]) << ',' << static_cast<int>(pixel[1]) << ','
+                                       << static_cast<int>(pixel[2]) << ';';
+                            }
+                            first_wrong = sample.str();
+                        }
+                        if (clipped.pixels[at] == kCyan) ++surviving_focus;
+                    } else if (focused.pixels[at] == kCyan) ++hidden_focus;
+                }
+            // SDL 2.32.10 rescales a rounded source subrectangle when a caller
+            // clip bisects a glyph texture. Require exact literal RGBA and the
+            // exact changed-pixel set there; every complete glyph, nontext pixel
+            // and focus pixel must remain identical. No text-band exclusion or
+            // numeric pixel tolerance is applied to this cut case.
+            check(!cut_glyphs.empty() && partial_pixels > 0 && unexplained == 0 && wrong_literal == 0 &&
+                  wrong_difference_set == 0 && surviving_focus > 0 && hidden_focus > 0,
+                  "fractional cut preserves complete glyphs/primitives/focus and exactly matches literal boundary glyphs: resampled=" +
+                  std::to_string(mismatches) + " unexplained=" + std::to_string(unexplained) +
+                  " literal_mismatches=" + std::to_string(wrong_literal) + " difference_set_mismatches=" +
+                  std::to_string(wrong_difference_set) + first_wrong);
+            midi_counts.intersected_glyphs += cut_glyphs.size();
+            midi_counts.resampled_pixels += mismatches;
+            midi_counts.unexplained_pixels += unexplained;
+            midi_counts.literal_mismatches += wrong_literal + wrong_difference_set;
+            for (const auto& glyph : cut_glyphs) {
+                const auto& b = glyph.bounds;
+                std::ostringstream row;
+                row << "{\"line\":" << glyph.line << ",\"character\":" << glyph.character
+                    << ",\"ascii\":" << static_cast<unsigned>(clip_text[glyph.line].value[glyph.character])
+                    << ",\"physical_rect\":[" << b.x << ',' << b.y << ',' << b.w << ',' << b.h
+                    << "],\"changed_pixels\":" << glyph.changed << '}';
+                midi_clip_results.push_back(row.str());
+            }
+            ++midi_counts.clipped; ++midi_counts.frames;
+        }
+        ++midi_counts.scenes;
+    }
+    check(midi_counts.scenes == 4 && midi_counts.frames == 21 && midi_counts.controls == 44 &&
+          midi_counts.glyphs == 96 && midi_counts.value_changes == 12 && midi_counts.focused == 8 &&
+          midi_counts.invalid == 2 && midi_counts.long_text == 2 && midi_counts.clipped == 1,
+          "all bounded calibration-modal raster cases executed");
+}
+
 struct HeaderInk {
     UiRect bounds{};
     std::size_t pixels{}, letters{}, outside_header{}, on_controls{};
@@ -675,7 +1089,7 @@ void reference_headers() {
 
 int main() {
     SDL_SetMainReady();
-    std::size_t legacy_checks = 0;
+    std::size_t legacy_checks = 0, header_checks = 0, midi_checks = 0;
     try {
         require(SDL_Init(0) == 0, "initialize SDL without window/audio subsystems");
         key_matrix(960, 700, false);
@@ -691,6 +1105,9 @@ int main() {
         legacy_checks = counts.checks;
         check(legacy_checks == 901, "all original 901 material assertions remain executed");
         reference_headers();
+        header_checks = counts.checks - legacy_checks;
+        calibration_modals();
+        midi_checks = counts.checks - legacy_checks - header_checks;
         SDL_Quit();
     } catch (const std::exception& error) {
         std::cerr << "Material acceptance setup failed: " << error.what() << '\n';
@@ -711,9 +1128,19 @@ int main() {
     for (std::size_t index = 0; index < overlay_results.size(); ++index)
         std::cout << (index == 0 ? "" : ",") << overlay_results[index];
     std::cout << "],\"legacy_checks\":" << legacy_checks
-              << ",\"header_checks\":" << counts.checks - legacy_checks << ",\"headers\":[";
+              << ",\"header_checks\":" << header_checks << ",\"headers\":[";
     for (std::size_t index = 0; index < header_results.size(); ++index)
         std::cout << (index == 0 ? "" : ",") << header_results[index];
-    std::cout << "]}\n";
+    std::cout << "],\"calibration_modal\":{\"checks\":" << midi_checks
+              << ",\"scenes\":" << midi_counts.scenes << ",\"frames\":" << midi_counts.frames
+              << ",\"controls\":" << midi_counts.controls << ",\"literal_glyph_regions\":" << midi_counts.glyphs
+              << ",\"changed_values\":" << midi_counts.value_changes << ",\"focused_controls\":" << midi_counts.focused
+              << ",\"invalid_frames\":" << midi_counts.invalid << ",\"long_text_frames\":" << midi_counts.long_text
+              << ",\"clipped_frames\":" << midi_counts.clipped << ",\"intersected_glyphs\":" << midi_counts.intersected_glyphs
+              << ",\"resampled_pixels\":" << midi_counts.resampled_pixels << ",\"unexplained_pixels\":" << midi_counts.unexplained_pixels
+              << ",\"literal_mismatches\":" << midi_counts.literal_mismatches << ",\"cut_glyphs\":[";
+    for (std::size_t index = 0; index < midi_clip_results.size(); ++index)
+        std::cout << (index == 0 ? "" : ",") << midi_clip_results[index];
+    std::cout << "]}}\n";
     return counts.failures == 0 ? EXIT_SUCCESS : EXIT_FAILURE;
 }

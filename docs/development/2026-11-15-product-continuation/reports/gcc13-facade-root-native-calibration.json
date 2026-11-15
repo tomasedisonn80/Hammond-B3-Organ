@@ -1,0 +1,90 @@
+{
+  "binary_sha256": "16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335",
+  "boundary": "Real application/adapter and SDL dummy callbacks; substituted MIDI dependency, synchronous callback offers, no hardware or driver timing qualification",
+  "cases": [
+    {
+      "common_assertions_passed": true,
+      "decoder_epochs": 2,
+      "discarded_packets": 0,
+      "expected_exit": 0,
+      "native_opens": 2,
+      "observations": 36,
+      "scenario": "calibration"
+    },
+    {
+      "common_assertions_passed": true,
+      "decoder_epochs": 2,
+      "discarded_packets": 0,
+      "expected_exit": 0,
+      "native_opens": 2,
+      "observations": 8,
+      "scenario": "port"
+    },
+    {
+      "common_assertions_passed": true,
+      "decoder_epochs": 2,
+      "discarded_packets": 0,
+      "expected_exit": 0,
+      "native_opens": 2,
+      "observations": 10,
+      "scenario": "route"
+    },
+    {
+      "common_assertions_passed": true,
+      "decoder_epochs": 3,
+      "discarded_packets": 3,
+      "expected_exit": 1,
+      "native_opens": 3,
+      "observations": 38,
+      "scenario": "failed-reopen"
+    },
+    {
+      "common_assertions_passed": true,
+      "decoder_epochs": 1,
+      "discarded_packets": 0,
+      "expected_exit": 0,
+      "native_opens": 1,
+      "observations": 4,
+      "scenario": "identical"
+    },
+    {
+      "common_assertions_passed": true,
+      "decoder_epochs": 2,
+      "discarded_packets": 2,
+      "expected_exit": 1,
+      "native_opens": 2,
+      "observations": 12,
+      "scenario": "fault-retry"
+    },
+    {
+      "common_assertions_passed": true,
+      "decoder_epochs": 1,
+      "discarded_packets": 0,
+      "expected_exit": 0,
+      "native_opens": 1,
+      "observations": 41,
+      "scenario": "no-input"
+    }
+  ],
+  "deliberately_failed_replays": 2,
+  "fixture_id": "native-calibration-dependency-v1",
+  "native_lifecycles": 7,
+  "schema_version": 1,
+  "source_sha256": {
+    "apps/standalone/MidiDevice.cpp": "48ee8dbe72a1a243fcc3bc1037df782690894cb26ef2291ba253611b48bfc324",
+    "apps/standalone/MidiDevice.h": "ce6c75faf49218073a369ac12a67bf0b995ec0309f1c078f23da78963865bea3",
+    "apps/standalone/MidiInput.cpp": "4ddd655fb4a21040f2f83228fb23e38f98d0abe21d5bce7f0e28d064b5b7477c",
+    "apps/standalone/MidiInput.h": "4024723a91c28c8884ca065d167524c599d6816d047bcc834ea025b1dd734394",
+    "apps/standalone/Session.cpp": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+    "apps/standalone/Session.h": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+    "apps/standalone/UiModel.cpp": "49c68995aad96aa5e316613412c93931a1082d0e4a3ad3758ac63484af963064",
+    "apps/standalone/UiModel.h": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+    "apps/standalone/main.cpp": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+    "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": "e33b17f3f9642d17e21e5d645f8f3d82a176ca030b78164521af2e530ce57dd6",
+    "apps/standalone/native_tests/fake_calibration/RtMidi.h": "15a24319a27cb6df6440b758902b8b9917e3ad317b93bc725e915049f4633041",
+    "apps/standalone/native_tests/test_standalone_app.py": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "4fccad4d06dfd2875b24ba8798477089cc27f78061f7f17dd313c0aef0740fca",
+    "apps/standalone/native_tests/test_standalone_native_calibration.py": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85"
+  },
+  "subprocesses": 10
+}

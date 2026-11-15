@@ -1,0 +1,582 @@
+{
+  "agent": "/root/w08_a44_provenance_licenses",
+  "assignment": "A44",
+  "atlas": {
+    "bytes": 21248265,
+    "matches": true,
+    "pages": 500,
+    "read_pages": [
+      271,
+      272,
+      273,
+      274,
+      275,
+      276
+    ],
+    "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+  },
+  "calibration_evidence": [
+    {
+      "binary_sha256": "e498c86aa18aa21128b05e54a769e1da4ef7b9dccae6d39c42db9575b6c16378",
+      "boundary": "Real application/adapter and SDL dummy callbacks; substituted MIDI dependency, synchronous callback offers, no hardware or driver timing qualification",
+      "bytes": 3571,
+      "changed_source_paths": [
+        "apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
+        "apps/standalone/native_tests/fake_calibration/RtMidi.h"
+      ],
+      "interpretation": "Preserve as named-source historical evidence; changed fixture source does not invalidate unchanged production capture inputs.",
+      "report": "docs/development/2026-11-15-product-continuation/reports/A26-root-native-calibration.json",
+      "sha256": "7089c4d03ae6a25290b0a22c6f6a9efc16e2cad867f094ef7f1d47c8c219c209",
+      "source_count": 14
+    },
+    {
+      "binary_sha256": "16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335",
+      "boundary": "Real application/adapter and SDL dummy callbacks; substituted MIDI dependency, synchronous callback offers, no hardware or driver timing qualification",
+      "bytes": 3571,
+      "changed_source_paths": [
+        "apps/standalone/native_tests/fake_calibration/RtMidi.h"
+      ],
+      "interpretation": "Preserve as named-source historical evidence; changed fixture source does not invalidate unchanged production capture inputs.",
+      "report": "docs/development/2026-11-15-product-continuation/reports/A38-root-native-calibration.json",
+      "sha256": "0e997860e339331c071dcba9e492404b541eca1c42e7b0479dc84f613a85b4ba",
+      "source_count": 14
+    },
+    {
+      "binary_sha256": "16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335",
+      "boundary": "Real application/adapter and SDL dummy callbacks; substituted MIDI dependency, synchronous callback offers, no hardware or driver timing qualification",
+      "bytes": 3571,
+      "changed_source_paths": [],
+      "interpretation": "Preserve as named-source historical evidence; changed fixture source does not invalidate unchanged production capture inputs.",
+      "report": "docs/development/2026-11-15-product-continuation/reports/gcc13-facade-root-native-calibration.json",
+      "sha256": "8bb24d813336916e2f150285b26a56627d852f2a780dbc8c30f22f3bd96e798d",
+      "source_count": 14
+    }
+  ],
+  "capture_receipt": {
+    "boundary": "Integrator observation: current production file identities and actual target build agree with unchanged executable from the coherent176/176 stage. Does not independently attest compiler output, physical devices, deadline, reference1:1, later source changes or all newly added test/tool targets.",
+    "build_rule_differences": [
+      "apps/standalone/CMakeLists.txt"
+    ],
+    "identity": {
+      "bytes": 21827,
+      "sha256": "485cb81c9337d4bf0b4a2e9c185cc90a8e3b7d11e74ad43ee14ee618ec3b67cc"
+    },
+    "source_commit_at_observation": "b9d352a82ac1afdec70c76ec5b1987785a37762e",
+    "source_count": 108,
+    "source_mismatches": []
+  },
+  "crossover": {
+    "engine_integration": false,
+    "figure": {
+      "bytes": 278470,
+      "sha256": "6084be255054c1f11afdac26b3d8972721f9711598b13b30231ace69326bf39c"
+    },
+    "figure_binary_matches_report": true,
+    "figure_dimensions": [
+      1800,
+      1230
+    ],
+    "figure_source_map_matches_report": true,
+    "matplotlib_version": "3.10.8",
+    "physical_measurement_claim": false,
+    "plot_observations": 24,
+    "plotter": {
+      "bytes": 11062,
+      "matches": true,
+      "sha256": "fecd825b3736de148926544ebd74cf7adc6994d366666d0910929d62c592822c"
+    },
+    "registry": {
+      "bytes": 3979,
+      "sha256": "f55fa98c246b4a19dce12ca829a141cff744f71242cccb68db12b404400319cc"
+    },
+    "report": {
+      "bytes": 83786,
+      "matches": true,
+      "sha256": "2773a6fa1b7b81292296d9c29e4677cd5dfe56921ce9e34ee6d126c3ce3269d8"
+    },
+    "retained_probe": {
+      "bytes": 64520,
+      "matches": true,
+      "sha256": "da09640f7520cd887a836961658ed8a79d6b6bff28f0e33a0ce44cf76f992eac"
+    },
+    "same_hz_status": "characterized only; no audible acceptance threshold or physical fidelity claim",
+    "sources": {
+      "data/crossover/leslie-122-ideal-v1.json": {
+        "bytes": 3979,
+        "matches": true,
+        "sha256": "f55fa98c246b4a19dce12ca829a141cff744f71242cccb68db12b404400319cc"
+      },
+      "include/hammond/LeslieCrossover.h": {
+        "bytes": 5331,
+        "matches": true,
+        "sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c"
+      },
+      "src/LeslieCrossover.cpp": {
+        "bytes": 18694,
+        "matches": true,
+        "sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525"
+      },
+      "tests/test_crossover_acceptance.py": {
+        "bytes": 21802,
+        "matches": true,
+        "sha256": "cf9d8e94e4b57a623fa7fcfaa91d50e81ad19818d151f7dc7f5a1ead69070f95"
+      },
+      "tools/crossover_probe.cpp": {
+        "bytes": 15476,
+        "matches": true,
+        "sha256": "e9525de45f6df95c05785f50430a049e71fcd5299a00a6b95db11337b65dc475"
+      },
+      "tools/crossover_reference.py": {
+        "bytes": 21856,
+        "matches": true,
+        "sha256": "33eaa88da2534e52f88c044b5fbabf19828655bacb357dc55bbeb6510b580ec5"
+      }
+    }
+  },
+  "dependencies": {
+    "rtmidi": {
+      "commit_matches": true,
+      "in_memory_prepared_source": {
+        "boundary": "Recomputed in memory from locked upstream, not a new prepared tree or linked-backend qualification.",
+        "bytes": 168216,
+        "matches": true,
+        "occurrences": 2,
+        "sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a"
+      },
+      "license": {
+        "bytes": 1349,
+        "matches": true,
+        "sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364"
+      },
+      "local_commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "lock": {
+        "bytes": 1161,
+        "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa"
+      },
+      "locked_commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "retained_license": {
+        "bytes": 1349,
+        "matches": true,
+        "sha256": "7fa091d9c1aa492ebfcafa9f919d27bbce61e4f048ece2dfc3b7f93181e9e364"
+      },
+      "upstream_sources": {
+        "RtMidi.cpp": {
+          "bytes": 168212,
+          "matches": true,
+          "sha256": "184d775e88e5d73b079897363fb42af155122e879f0bc9254a1c7edae4eadb3c"
+        },
+        "RtMidi.h": {
+          "bytes": 27901,
+          "matches": true,
+          "sha256": "74f98ca172243b0b9c0c59f53c4e20285d879ffa86b3d61692109b013f4606f9"
+        }
+      },
+      "version": "6.0.0"
+    },
+    "sdl2": {
+      "commit_matches": true,
+      "license": {
+        "bytes": 884,
+        "matches": true,
+        "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+      },
+      "local_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "lock": {
+        "bytes": 375,
+        "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84"
+      },
+      "locked_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "version": "2.32.10"
+    }
+  },
+  "fonts": {
+    "complete_notice_in_generated_header": true,
+    "generated_header": {
+      "bytes": 204816,
+      "matches": true,
+      "sha256": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802"
+    },
+    "license": {
+      "bytes": 2345,
+      "matches": true,
+      "sha256": "22308e512b54800ba9fe6f9aecd6bea42b71f68f77dbc83196715aac50e631d6"
+    },
+    "source_manifest": {
+      "bytes": 1428,
+      "matches": true,
+      "sha256": "8bc668338513949846f758db5acd170dc6f73977fc14b8ba5f113a062740d4eb"
+    },
+    "sources": {
+      "DejaVuSans.ttf": {
+        "bytes": 759720,
+        "matches": true,
+        "sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e"
+      },
+      "DejaVuSerif.ttf": {
+        "bytes": 380660,
+        "matches": true,
+        "sha256": "8cb29f7db250ebb2551a6ce2c1e0bfd5a0eb520e9e233370db0493e82e1f36f7"
+      }
+    }
+  },
+  "galleries": [
+    {
+      "build_input_count": 13,
+      "build_input_failures": [],
+      "capture_source": {
+        "committed_tree": "a3150fd2489a50a430b02c01eadd5e0c180bc7f9",
+        "head": "d556da017ea0a5d4f2d231416782dbc5066e58c2"
+      },
+      "executable": {
+        "bytes": 3646480,
+        "matches": true,
+        "sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852"
+      },
+      "frames": [
+        {
+          "case": "play-reference-1672x941",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 684886,
+            "sha256": "4dcb8e55dcfbc5f3e5d524bf0ea426312083f8f56e922716e6d0513fe08b9d19"
+          },
+          "recorded_bmp_sha256": "68e94e3e36108d2577f0815556f711729f3c6cf3ebd0d0712109aa89e5ab4f18"
+        },
+        {
+          "case": "play-default-1280x900",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 177399,
+            "sha256": "2b5e0c332f0114b70cc320e885de84290f2cec9e8443e97b8233a53b6fb60f6d"
+          },
+          "recorded_bmp_sha256": "fd0984f3a3f799ed5314e5cffa80925855df205c39c57519da9ba019f9b5492d"
+        },
+        {
+          "case": "play-minimum-960x700",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 143240,
+            "sha256": "b110da6eb0ed0b97477e7e4cf7bc1f8f29c3997b59c17dcc640fff62993789b5"
+          },
+          "recorded_bmp_sha256": "9c2fb4d7181c80659f7845327a2763becaaf7d4660f16eda03250fc116235c10"
+        },
+        {
+          "case": "service-reference-1672x941",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 412428,
+            "sha256": "628e816401c9328cb21739381270ba624065c24607e65d7793eaea4ee8e72de6"
+          },
+          "recorded_bmp_sha256": "ad4fa7117d0e7fa6a1b63e7f012a78fe7bf90750306f2627a29cc61b1c27f674"
+        },
+        {
+          "case": "service-minimum-960x700",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 175335,
+            "sha256": "6dcaeef03b477e7f2feb47fe12a16613b372b79b6193898017d1c783d2f547e6"
+          },
+          "recorded_bmp_sha256": "9ae92dc2b5acd6bb86178feee212b42570888b2f974967af04763f2cc9a591b4"
+        },
+        {
+          "case": "rotary-reference-1672x941",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 774551,
+            "sha256": "87bd5df7881290c72c4e6e10199b67517f87ff39b2ad0e2ab8f0a6137d874305"
+          },
+          "recorded_bmp_sha256": "ca3bff3cdb83ff9f13a4c0c61294b722fafef03f701bc73bf7c8f215dbf4ad82"
+        },
+        {
+          "case": "rotary-minimum-960x700",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 317395,
+            "sha256": "585ef8512943b9947f99ee848e005c56cb47929cc56a404c25dee4cc8ccd899d"
+          },
+          "recorded_bmp_sha256": "717e0b6ca39fe9f973ae9e1e37b15e2f2acac70cb39adb0546fc446428fe8cbd"
+        },
+        {
+          "case": "flat-minimum-960x700",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 49561,
+            "sha256": "e9296d553afed67d965378c898c5bf64de1c4d823c8563bc16c043300aacd8b6"
+          },
+          "recorded_bmp_sha256": "2a726450ad5d8e62b17f11a3eb54fcc1cb5a0a0406056c6fd554ab4c53db7634"
+        }
+      ],
+      "manifest": {
+        "bytes": 6528,
+        "sha256": "3b3a05ff9d64eb3f14d79c4ce35041ff9e93045367619684960f181b45231d54"
+      },
+      "path": "examples/demos/standalone-product-preview-v1",
+      "payload_bytes": 3017109,
+      "payload_count": 39,
+      "payload_failures": [],
+      "production_capture_commit_failures": [],
+      "production_current_failures": [],
+      "production_source_count": 108,
+      "provenance": {
+        "bytes": 73876,
+        "sha256": "65d023105f7a553795d3ace08b888de730e2ab8a9fe555a7194ccddd49ac0f43"
+      },
+      "qualification": "Actual native screenshots with SDL dummy audio/video and software renderer; no physical device, deadline, accessibility, measured instrument or literal 1:1 reference qualification.",
+      "tool": {
+        "bytes": 31765,
+        "matches": true,
+        "sha256": "83c214d6f0d6b0fc06910412f41f13a0f3286bebd034280a19d4e5e397875b1f"
+      }
+    },
+    {
+      "build_input_count": 13,
+      "build_input_failures": [],
+      "capture_source": {
+        "committed_tree": "a3150fd2489a50a430b02c01eadd5e0c180bc7f9",
+        "head": "d556da017ea0a5d4f2d231416782dbc5066e58c2"
+      },
+      "executable": {
+        "bytes": 3646480,
+        "matches": true,
+        "sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852"
+      },
+      "frames": [
+        {
+          "case": "midi-reference-1672x941",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 438465,
+            "sha256": "2bd18ad5c4ae22751af769ebc8105e1a2e4c9a345b15a04bf33634310750a4ff"
+          },
+          "recorded_bmp_sha256": "8f378694c84dcf8885339cb27e477114ffd5a386fc04955ec12dfa51a8fd5b9e"
+        },
+        {
+          "case": "midi-minimum-960x700",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 109338,
+            "sha256": "09b143d149dfd0d1d47b72c1cfe666b819411e947eee393a79d78eb550492bd2"
+          },
+          "recorded_bmp_sha256": "2f8cf8febed3e27300c0bd434f87c4c32ffaa9a2fef69d22f4c422c0da8ac806"
+        },
+        {
+          "case": "midi-flat-minimum-960x700",
+          "dimensions_match": true,
+          "original_bmp_available": false,
+          "pixels_match": true,
+          "png": {
+            "bytes": 50466,
+            "sha256": "a29ca19522bc50da24ad07445d06e0bb1388ce3a14369b94dcdbe48d66318539"
+          },
+          "recorded_bmp_sha256": "82cef6565a3168eab93a47da72ee369003b0737d274975e2ff63e760b2ad5a65"
+        }
+      ],
+      "manifest": {
+        "bytes": 3131,
+        "sha256": "f9ffaea1363a2f7f2960d5f9e38de1d473548f4db2f3f9b1852e59931902dca4"
+      },
+      "path": "examples/demos/standalone-product-preview-v1/midi-overlay",
+      "payload_bytes": 852517,
+      "payload_count": 18,
+      "payload_failures": [],
+      "production_capture_commit_failures": [],
+      "production_current_failures": [],
+      "production_source_count": 108,
+      "provenance": {
+        "bytes": 54734,
+        "sha256": "117c2522b53e74e647e9c87cd1cc082008891fe007051a2c6ee83a506787447a"
+      },
+      "qualification": "Actual native modal pixels with explicit dummy audio/video, software renderer and compiled MIDI backend OFF. No hardware, physical display, latency/deadline, accessibility, measured pedal/instrument or literal 1:1 reference claim.",
+      "tool": {
+        "bytes": 25555,
+        "matches": true,
+        "sha256": "d23b828f721f4e8b5e8f8454088db954224bdbb4698d9a3df4f95c7832814daa"
+      }
+    }
+  ],
+  "head": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+  "install_rules": {
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 27268,
+      "sha256": "772f75acd307d955cd632afc01ec7c5221859aa997aa97bd4d108a69deafc94c"
+    },
+    "apps/standalone/native_tests/test_standalone_install.py": {
+      "bytes": 43704,
+      "sha256": "5510eb68f0babfb28c72cc06471d01fb829845621610414fd2fcca7e9d9579b5"
+    },
+    "cmake/InstallCrossoverTools.cmake": {
+      "bytes": 8325,
+      "sha256": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844"
+    },
+    "cmake/InstallStandalone.cmake": {
+      "bytes": 16653,
+      "sha256": "43bc6780b688bfc2bcadb9ef09bc81056b0be5fb91f0ad68cef4de6238ce4036"
+    },
+    "inspection": {
+      "calibration_probe_installed": false,
+      "crossover_copies_repository_notice": true,
+      "crossover_files": 6,
+      "new_install_execution": false,
+      "standalone_added_guide": "MIDI_EXPRESSION_GUIDE.md",
+      "standalone_all_variants_notices": [
+        "THIRD_PARTY_NOTICES.md",
+        "LICENSE-SDL2.txt",
+        "LICENSE-DejaVu.txt"
+      ],
+      "standalone_enabled_extra": [
+        "LICENSE-RtMidi.txt",
+        "rtmidi-lock.json",
+        "rtmidi-prepared-source.json",
+        "rtmidi-coremidi-zero-init.patch"
+      ],
+      "standalone_off_files": 16,
+      "standalone_on_files": 20
+    }
+  },
+  "notice_text_checks": {
+    "HIDAPI-BSD": {
+      "bytes": 1534,
+      "full_text_matches_after_trailing_whitespace_normalization": true,
+      "matches": true,
+      "sha256": "30eb1bef29b46f8ba7ab8b416035dbd93cb034a45481dd97815b944284582cd2",
+      "source": "src/hidapi/LICENSE-bsd.txt"
+    },
+    "SDL2": {
+      "bytes": 884,
+      "full_text_matches_after_trailing_whitespace_normalization": true,
+      "matches": true,
+      "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127",
+      "source": "LICENSE.txt"
+    },
+    "Sun-math": {
+      "bytes": 10858,
+      "full_comment_present": true,
+      "matches": true,
+      "sha256": "ac26220798ad9f92bc051aa5102ae41a0fe50b1c8750f5f90353252c5a948512"
+    },
+    "yuv2rgb": {
+      "bytes": 1480,
+      "full_text_matches_after_trailing_whitespace_normalization": true,
+      "matches": true,
+      "sha256": "f7d74004cc75778cae46c5f0139f244d67c07ef64cf51937e8272352197dcb18",
+      "source": "src/video/yuv2rgb/LICENSE"
+    }
+  },
+  "observed_integrator_install_result": {
+    "binary_sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852",
+    "bytes": 13004,
+    "ctest_passed": 1,
+    "ctest_total": 1,
+    "elapsed_seconds": 5.31,
+    "midi_enabled": false,
+    "path": "docs/development/2026-11-15-product-continuation/reports/A43-root-installed-ctest.txt",
+    "payload_files": 16,
+    "python_methods": 8,
+    "scope": "A44 read the integrator result; no A44 test run or MIDI-ON/platform inference.",
+    "sha256": "dcc210d29118c609d04995a624d571007bc552ffdd4d14e614bc12d4c2a549ba"
+  },
+  "owned_document_checks": {
+    "failures": [],
+    "local_link_targets_checked": 82,
+    "note_words": 285,
+    "paths": [
+      "docs/reviews/PRODUCT_PROVENANCE_LICENSE_REVIEW.md",
+      "docs/development/2026-11-15-product-continuation/notes/A44-provenance-licenses.md",
+      "docs/DEPENDENCIES_AND_RIGHTS.md"
+    ]
+  },
+  "project_license_files": [],
+  "reference_art": {
+    "crops": {
+      "cabinet": {
+        "bytes": 369409,
+        "decoded_bytes": 555006,
+        "decoded_sha256": "aa116739250f4924c203be1f46aae72a9e58dfb85ff5bbab6fd752778b3331e6",
+        "exact_source_crop_matches": true,
+        "matches": true,
+        "pixel_hash_matches": true,
+        "sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e"
+      },
+      "left-wood-cheek": {
+        "bytes": 52070,
+        "decoded_bytes": 67752,
+        "decoded_sha256": "d81dc7d13f2fbcd7908cc3aada7b722e4f35e9526f8c4a1065601786f2cf8b45",
+        "exact_source_crop_matches": true,
+        "matches": true,
+        "pixel_hash_matches": true,
+        "sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4"
+      },
+      "right-wood-cheek": {
+        "bytes": 142330,
+        "decoded_bytes": 191964,
+        "decoded_sha256": "7634f7468857f35e6517a3df30e18d661ee6c58c4b7bf77e1d27bfdde8a5eced",
+        "exact_source_crop_matches": true,
+        "matches": true,
+        "pixel_hash_matches": true,
+        "sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6"
+      }
+    },
+    "decoded_rgb_matches": true,
+    "manifest": {
+      "bytes": 3816,
+      "sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87"
+    },
+    "source": {
+      "bytes": 412664,
+      "matches": true,
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    }
+  },
+  "review_date": "2026-11-15",
+  "review_document_sha256": {
+    "docs/DEPENDENCIES_AND_RIGHTS.md": "d6e1ad59ad1c8da701883bdd3afe90cd3825d22ec8e452810975ff6e4bff445a",
+    "docs/development/2026-11-15-product-continuation/notes/A44-provenance-licenses.md": "2370834d04d9666ba8cbd0b88cee9fdf84d9004a816c8e0d78d7e634a5305b8e",
+    "docs/reviews/PRODUCT_PROVENANCE_LICENSE_REVIEW.md": "16cbd654666dd5cd26fbf18367d6f2fc3f0103efc3d397792fac6c28e02766b7"
+  },
+  "schema_version": 1,
+  "scope": "Read-only provenance, hashes, local source citations and install-rule inspection; no downloads, build, application process, numerical-suite rerun or new rights grant.",
+  "shared_document_reconciliation": {
+    "changed_files": [
+      "docs/DEPENDENCIES_AND_RIGHTS.md"
+    ],
+    "changes": [
+      "Corrected current source inventory to include retained atlas JPEG and three decorative crops.",
+      "Added current A43 Standalone 16-OFF/20-ON and fixed six-file CrossoverTools inventories and scoped provenance.",
+      "Preserved the dated nine-file observation under an explicit historical heading.",
+      "Qualified optional image/font/plot authoring dependencies without changing installed/runtime scope."
+    ],
+    "file_sha256": "d6e1ad59ad1c8da701883bdd3afe90cd3825d22ec8e452810975ff6e4bff445a",
+    "path": "docs/DEPENDENCIES_AND_RIGHTS.md",
+    "proposal": "Add a dated product-continuation scope update and correct the current-facing source row; preserve historical artifact observations. No new permission gate.",
+    "stale_text": "Distribution-boundaries source row says no extracted atlas image is vendored; retained JPEG/crops and current THIRD_PARTY_NOTICES contradict this current-facing inventory. Dated standalone update also retains historical nine-file staging.",
+    "status": "repaired-after-explicit-integrator-ownership-expansion"
+  },
+  "status": "passed-scoped-audit-shared-inventory-repaired",
+  "third_party_notices": {
+    "bytes": 21983,
+    "sha256": "66d493ae0799798e4957fbcba299186c8d48e899b86846fc0bb2d7b7a92a96bb"
+  },
+  "tree": "a3150fd2489a50a430b02c01eadd5e0c180bc7f9",
+  "unchanged_dependency_asset_paths_since_session_start": [],
+  "unexpected_hash_or_notice_failures": []
+}

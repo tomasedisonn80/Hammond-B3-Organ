@@ -93,19 +93,25 @@ The functional inventory remains **68 ordinary controls, including 24 reversed p
 | **Flat and resize** | Flat retains the complete controls with rectangular keys and plain surfaces. Default size is 1280×900; minimum is 960×700. Shared hit/paint geometry and original note-release ownership survive workspace and presentation changes. |
 | **MIDI settings** | Port and channel selection, expression minimum/maximum/direction, Apply, Disconnect and Close. Selected, configured, active and pending states are explicitly different; staged edits are not reported as applied. |
 
-### Historical native preview
+### Current native interface
 
-**The images below are the admitted v5 application at `487064d2`, captured on 14 November 2026. They predate the current wide-legibility and MIDI-calibration changes.** They illustrate the retained workspaces and overall layout. Fresh current-product capture and independent admission remain in the [active checkpoint](docs/development/2026-11-15-product-continuation/CHECKPOINT.md); no new screenshots are implied by the updated UI description above.
+**These are actual captures of the current product interface**, recorded at [`d556da01`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/d556da017ea0a5d4f2d231416782dbc5066e58c2). The wide Play frame shows the larger caps, complete footage, separate edited/sounding registrations and keyboard materials. It retains four held notes while a retained drawbar is edited; the sounding fixed registrations remain explicitly identified.
 
-![Historical v5 native Play at 1672 by 941, before the current wide-legibility and MIDI-calibration changes](examples/demos/standalone-interface-preview-v5/images/play-reference-1672x941.png)
+![Current native Play at 1672 by 941 with complete footage, larger drawbar caps and explicit edited versus sounding registrations](examples/demos/standalone-product-preview-v1/images/play-reference-1672x941.png)
 
-| Historical v5 Service at minimum size | Historical v5 Flat Play at minimum size |
+The calibration dialog at the minimum 960×700 window shows illustrative raw endpoints **20 / 100 / Inverted**, keyboard focus on Direction, and **no active MIDI connection**. All eleven modal focus stops were witnessed in the native painted history. These captures use the MIDI-disabled build; the setup above explains how to enable a physical backend.
+
+![Current native MIDI calibration dialog at 960 by 700 with endpoint and direction controls and truthful inactive connection state](examples/demos/standalone-product-preview-v1/midi-overlay/images/midi-minimum-960x700.png)
+
+| More actual views | Capture and review evidence |
 | --- | --- |
-| ![Historical v5 Service at 960 by 700](examples/demos/standalone-interface-preview-v5/images/service-minimum-960x700.png) | ![Historical v5 Flat Play at 960 by 700](examples/demos/standalone-interface-preview-v5/images/flat-minimum-960x700.png) |
+| [Play at the default size](examples/demos/standalone-product-preview-v1/images/play-default-1280x900.png) · [minimum size](examples/demos/standalone-product-preview-v1/images/play-minimum-960x700.png) · [Flat](examples/demos/standalone-product-preview-v1/images/flat-minimum-960x700.png) | [Eight-view gallery](examples/demos/standalone-product-preview-v1/README.md) · [normal provenance](examples/demos/standalone-product-preview-v1/provenance.json) |
+| [Rotary](examples/demos/standalone-product-preview-v1/images/rotary-reference-1672x941.png) · [Service](examples/demos/standalone-product-preview-v1/images/service-reference-1672x941.png) | [Three MIDI views](examples/demos/standalone-product-preview-v1/midi-overlay/README.md) · [modal provenance](examples/demos/standalone-product-preview-v1/midi-overlay/provenance.json) |
+| [Original reference image](docs/design/atlas-cover-reference.jpg) · [reference comparison](docs/design/PRODUCT_REFERENCE_GAPS.md) | [Independent admission of all eleven frames](docs/reviews/PRODUCT_GALLERY_ADMISSION.md) · [machine-readable review](docs/development/2026-11-15-product-continuation/reports/A41-gallery-admission.json) |
 
-The [eight-view v5 gallery](examples/demos/standalone-interface-preview-v5/README.md), [provenance](examples/demos/standalone-interface-preview-v5/provenance.json) and [independent admission](docs/development/2026-11-14-reference-refinement/reports/A60-integration-gallery-admission.json) retain exact source, executable, state and PNG identities. They used SDL dummy audio/video and software rendering with equal logical/drawable dimensions. They do not qualify a physical display, MIDI controller, audio device or high-DPI journey. All earlier galleries remain preserved.
+The captures use SDL dummy audio/video, a software renderer and equal logical/drawable dimensions. Source, executable, replay, control state and decoded image identities are retained. The admission records the earlier build-receipt boundary and the unavailable original BMP intermediates; retained PNGs match their recorded native-pixel hashes. The [historical v5 gallery at `487064d2`](examples/demos/standalone-interface-preview-v5/README.md) and all earlier galleries remain preserved.
 
-**Literal whole-interface 1:1 equality remains unproved.** The current [reference-gap review](docs/design/PRODUCT_REFERENCE_GAPS.md) identifies remaining rack composition, deck/rim shading, key material and small-text differences. Complete manuals, 24 presets, 25 pedals, real utilities and the **NOMINAL DRY ORGAN** caption deliberately preserve correct product meaning. Unsupported scanner, microphone, speed and Stop controls are not made functional by artwork. The existing relative paint-cost check also does not establish an interactive frame rate; native display usability, semantic accessibility and physical-device qualification remain separate gates.
+**Literal whole-interface 1:1 equality remains unproved.** The [reference-gap review](docs/design/PRODUCT_REFERENCE_GAPS.md) identifies remaining rack composition, deck/rim shading, key material and small-text differences. Complete manuals, 24 presets, 25 pedals, real utilities and the **NOMINAL DRY ORGAN** caption preserve correct product meaning. The existing relative paint-cost check does not establish an interactive frame rate; native display usability, semantic accessibility, physical devices and measured cabinet fidelity remain separate gates.
 
 ## Playing, expression and external MIDI
 

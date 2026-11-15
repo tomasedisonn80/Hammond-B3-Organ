@@ -105,7 +105,10 @@ inline void RtMidi::getCompiledApi(std::vector<Api>& apis) {
     if (!state) throw std::logic_error("calibration fixture was not installed");
     const std::lock_guard lock(state->mutex);
     state->append({hammond_calibration_fixture::Operation::CompiledApi});
-    apis = {hammond_calibration_fixture::platform_api};
+    // Keep the overwrite explicit: GCC 13's instrumented optimized build
+    // diagnoses the singleton initializer-list assignment in std::vector.
+    apis.clear();
+    apis.push_back(hammond_calibration_fixture::platform_api);
 }
 
 class RtMidiIn : public RtMidi {

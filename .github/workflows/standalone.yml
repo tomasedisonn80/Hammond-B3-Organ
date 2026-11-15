@@ -462,6 +462,7 @@ jobs:
               metadata + "reference-source-manifest.json": repo / "assets/standalone/reference/manifest.json",
               metadata + "atlas-reference.json": repo / "docs/design/atlas-reference.json",
               metadata + "standalone-capabilities.json": capability_path,
+              metadata + "MIDI_EXPRESSION_GUIDE.md": repo / "docs/MIDI_EXPRESSION_GUIDE.md",
           }
           if enabled:
               prepared = repo / "build-standalone/apps/standalone/hammond_rtmidi-prepared"
@@ -471,7 +472,7 @@ jobs:
                   metadata + "rtmidi-prepared-source.json": prepared / "prepared-source.json",
                   metadata + "rtmidi-coremidi-zero-init.patch": prepared / "rtmidi-coremidi-zero-init.patch",
               })
-          assert len(expected) == (19 if enabled else 15)
+          assert len(expected) == (20 if enabled else 16)
           expected_directories = {
               parent.as_posix() for name in expected
               for parent in pathlib.PurePosixPath(name).parents if parent.as_posix() != "."

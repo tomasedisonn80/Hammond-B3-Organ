@@ -152,6 +152,11 @@ if(HAMMOND_BUILD_STANDALONE AND TARGET hammond_standalone)
         CONTENT "${_hammond_standalone_capabilities}" @ONLY NEWLINE_STYLE UNIX)
     list(APPEND _hammond_standalone_metadata_sources "${HAMMOND_STANDALONE_CAPABILITIES}")
     list(APPEND _hammond_standalone_metadata_names standalone-capabilities.json)
+    # Append the current operator guide without reordering existing payloads.
+    # It uses the same configured-byte identity and complete input preflight.
+    list(APPEND _hammond_standalone_metadata_sources
+        "${_hammond_standalone_source}/docs/MIDI_EXPRESSION_GUIDE.md")
+    list(APPEND _hammond_standalone_metadata_names MIDI_EXPRESSION_GUIDE.md)
     set(_hammond_standalone_metadata_hashes)
     list(LENGTH _hammond_standalone_metadata_sources _hammond_standalone_metadata_count)
     math(EXPR _hammond_standalone_metadata_last "${_hammond_standalone_metadata_count} - 1")

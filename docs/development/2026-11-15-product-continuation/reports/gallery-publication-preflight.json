@@ -1,0 +1,38 @@
+{
+  "schema": "b3-product-publication-preflight-v1",
+  "source_parent": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+  "whitespace_check": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude)docs/development/2026-11-15-product-continuation/reports/A42-first-failure.patch",
+      ":(exclude)docs/development/2026-11-15-product-continuation/reports/A43-root-installed-ctest.txt",
+      ":(exclude)docs/development/2026-11-15-product-continuation/reports/wave7-material-facade-ctest.txt"
+    ],
+    "status": "passed",
+    "raw_evidence_exclusions": [
+      {
+        "path": "docs/development/2026-11-15-product-continuation/reports/A42-first-failure.patch",
+        "sha256": "97463d5475cd44e0ad47469091a8a94ff7a5f25b4bb120855f80e4eaef2cba5a",
+        "reason": "Preserve literal patch blank-context markers or original CTest prefix whitespace; no source whitespace exemption."
+      },
+      {
+        "path": "docs/development/2026-11-15-product-continuation/reports/A43-root-installed-ctest.txt",
+        "sha256": "dcc210d29118c609d04995a624d571007bc552ffdd4d14e614bc12d4c2a549ba",
+        "reason": "Preserve literal patch blank-context markers or original CTest prefix whitespace; no source whitespace exemption."
+      },
+      {
+        "path": "docs/development/2026-11-15-product-continuation/reports/wave7-material-facade-ctest.txt",
+        "sha256": "174ed3055995dd6095890a30428051353eedc2c738df4cf63199736eedab5dcc",
+        "reason": "Preserve literal patch blank-context markers or original CTest prefix whitespace; no source whitespace exemption."
+      }
+    ]
+  },
+  "production_changed": false,
+  "actual_workers": 48,
+  "accepted_workers": 45
+}

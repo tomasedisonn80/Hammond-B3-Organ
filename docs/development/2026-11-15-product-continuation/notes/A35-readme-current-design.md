@@ -42,3 +42,7 @@ acceptance hash. Historical source/platform/audio evidence remains linked.
 These are documentation/source-identity checks. No configure, build, CTest,
 application launch, physical-device observation, image creation, commit,
 publication, shared-file edit or new agent dispatch was performed.
+
+## Integrator gallery promotion
+
+After A41 admitted all eleven unchanged native payloads, root replaced the historical inline images with the d556da01 Play and MIDI captures and linked the complete gallery, original reference and independent evidence. The earlier README hash above identifies A35’s first pass. Current visual and physical limits remain explicit.

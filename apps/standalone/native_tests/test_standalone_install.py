@@ -34,13 +34,14 @@ SOURCE_FILES = {
     "font-source-manifest.json": Path("assets/standalone/fonts/source-manifest.json"),
     "reference-source-manifest.json": Path("assets/standalone/reference/manifest.json"),
     "atlas-reference.json": Path("docs/design/atlas-reference.json"),
+    "MIDI_EXPRESSION_GUIDE.md": Path("docs/MIDI_EXPRESSION_GUIDE.md"),
 }
 
 MIDI_FILES = {"LICENSE-RtMidi.txt", "rtmidi-lock.json", "rtmidi-prepared-source.json",
               "rtmidi-coremidi-zero-init.patch"}
 GUIDES = ("STANDALONE_INSTALL.md", "STANDALONE_APP.md", "STANDALONE_MODEL.md",
           "MIDI_UI_RUNBOOK.md", "PRESET_RUNBOOK.md", "INTERFACE_RUNBOOK.md",
-          "THIRD_PARTY_NOTICES.md")
+          "THIRD_PARTY_NOTICES.md", "MIDI_EXPRESSION_GUIDE.md")
 
 
 def metadata_inputs(source, sdl, capabilities, prepared=None):
@@ -190,6 +191,16 @@ class StandaloneInstallTests(unittest.TestCase):
                 **{(metadata / name).as_posix(): digest
                    for name, digest in (self.source_hashes if source_hashes is None else source_hashes).items()}}
 
+    def coexisting_sentinels(self, bindir, datadir):
+        """Preservation probes in other components' paths, not runnable products."""
+        return {
+            bindir / ("hammond_render" + self.executable.suffix): b"unrelated offline executable\n",
+            datadir / "hammond-b3-organ/nominal.b3p": b"invalid external profile sentinel\n",
+            bindir / ("hammond_crossover_probe" + self.executable.suffix): b"unrelated crossover executable\n",
+            datadir / "hammond-b3-organ/crossover/data/crossover/leslie-122-ideal-v1.json":
+                b"unrelated crossover registry sentinel\n",
+        }
+
     def assert_capabilities(self, metadata, midi_enabled, backend):
         document = json.loads(metadata["standalone-capabilities.json"].read_text(encoding="utf-8"))
         self.assertEqual(document["schema_version"], 1)
@@ -271,19 +282,16 @@ class StandaloneInstallTests(unittest.TestCase):
 
     def test_configured_capabilities_identify_exact_payload(self):
         self.assert_capabilities(self.metadata, self.midi_enabled, self.backend)
-        self.assertEqual(len(self.metadata) + 1, 19 if self.midi_enabled else 15)
+        self.assertEqual(len(self.metadata) + 1, 20 if self.midi_enabled else 16)
 
     def test_actual_component_relocates_and_runs(self):
         with tempfile.TemporaryDirectory(prefix="hammond standalone install ") as temporary:
             work = Path(temporary).resolve()
             prefix, moved, unrelated = work / "original organ Ω", work / "moved organ Ω", work / "unrelated cwd"
             unrelated.mkdir()
-            # Coexisting OfflineTools names must survive. This deliberately bad
+            # Both other components' namespaces survive. The deliberately bad
             # external profile also exposes accidental installed-profile lookup.
-            existing = {
-                self.bindir / ("hammond_render" + self.executable.suffix): b"unrelated offline executable\n",
-                self.datadir / "hammond-b3-organ" / "nominal.b3p": b"invalid external profile sentinel\n",
-            }
+            existing = self.coexisting_sentinels(self.bindir, self.datadir)
             for relative, content in existing.items():
                 path = prefix / relative
                 path.parent.mkdir(parents=True, exist_ok=True)
@@ -552,7 +560,7 @@ class StandaloneInstallTests(unittest.TestCase):
             prefix = work / "installed without MIDI"
             self.assert_success(self.invoke(self.install_command(fixture.build, prefix), work))
             self.assertEqual(tree_state(prefix), expected_tree(self.payload(Path("bin"), Path("share"), fixture.hashes)))
-            self.assertEqual(len(fixture.hashes) + 1, 15)
+            self.assertEqual(len(fixture.hashes) + 1, 16)
             install_text = (fixture.build / "cmake_install.cmake").read_text(encoding="utf-8")
             self.assertNotIn("prepared RtMidi", install_text)
             self.assertNotIn("rtmidi-lock.json", install_text)
@@ -570,7 +578,8 @@ class StandaloneInstallTests(unittest.TestCase):
             (prefix / "empty sentinel").mkdir(parents=True)
             (prefix / "sentinel.bin").write_bytes(b"preserve identity preflight\x00\xff")
             before = tree_state(prefix)
-            names = {"reference-source-manifest.json", "atlas-reference.json", "standalone-capabilities.json"}
+            names = {"reference-source-manifest.json", "atlas-reference.json", "standalone-capabilities.json",
+                     "MIDI_EXPRESSION_GUIDE.md"}
             names.update(MIDI_FILES.intersection(fixture.metadata))
             for name in sorted(names):
                 path = fixture.metadata[name]
@@ -632,18 +641,72 @@ class StandaloneInstallTests(unittest.TestCase):
             work = Path(temporary).resolve()
             bindir, datadir = Path("program files Ω/bin"), Path("readable data Ω/share")
             fixture = self.fixture(work / "custom", bindir=bindir, datadir=datadir)
-            source, build, binary = fixture.source, fixture.build, fixture.binary
+            build, binary = fixture.build, fixture.binary
             binary.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(self.executable, binary)
             prefix, moved = work / "prefix Ω", work / "relocated Ω"
+            existing = self.coexisting_sentinels(bindir, datadir)
+            for relative, content in existing.items():
+                path = prefix / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(content)
+            expected = self.payload(bindir, datadir, fixture.hashes)
+            expected.update({name.as_posix(): hashlib.sha256(value).hexdigest()
+                             for name, value in existing.items()})
             environment = self.environment()
             environment["CMAKE_INSTALL_MODE"] = "COPY"
             self.assert_success(self.invoke(self.install_command(build, prefix), work, environment))
-            self.assertEqual(tree_state(prefix), expected_tree(self.payload(bindir, datadir, fixture.hashes)))
+            self.assertEqual(tree_state(prefix), expected_tree(expected))
             prefix.rename(moved)
-            shutil.rmtree(source)
-            shutil.rmtree(build)
-            self.assert_success(self.invoke([moved / bindir / self.executable.name, "--help"], work))
+            shutil.rmtree(work / "custom")
+            installed_directory = moved / datadir / "hammond-b3-organ/standalone"
+            installed_metadata = {name: installed_directory / name for name in fixture.metadata}
+            self.assert_installed_guide_links(installed_metadata)
+            self.assertIn("(MIDI_EXPRESSION_GUIDE.md)",
+                          installed_metadata["STANDALONE_INSTALL.md"].read_text(encoding="utf-8"))
+            executable = moved / bindir / self.executable.name
+            help_result = self.invoke([executable, "--help"], work)
+            self.assert_success(help_result)
+            for option in ("--expression-min", "--expression-max", "--expression-invert"):
+                self.assertIn(option, help_result.stdout)
+
+            # Exercise the installed guide's bounded inverted-CC11 example
+            # after every private source/build/dependency copy has been removed.
+            # Reports and volatile calibration stay outside the package.
+            session = work / "operator session Ω"
+            session.mkdir()
+            script, diagnostics, state = (session / name for name in
+                                          ("expression.b3midi", "inverted.json", "absent.b3controls"))
+            script.write_text("B3MIDIREPLAY1\nduration_ms 800\n0 connect\n"
+                              "100 bytes 90 3C 64\n200 bytes B0 0B 28\n500 bytes 80 3C 00\n",
+                              encoding="ascii")
+            environment = self.environment()
+            environment.update(SDL_AUDIODRIVER="dummy", SDL_VIDEODRIVER="dummy")
+            result = self.invoke([executable, "--state", state, "--midi-script", script,
+                                  "--expression-min", "20", "--expression-max", "100", "--expression-invert",
+                                  "--diagnostics", diagnostics], session, environment)
+            self.assert_success(result)
+            report = json.loads(diagnostics.read_text(encoding="utf-8"))
+            self.assertEqual(report["schema_version"], 3)
+            self.assertEqual(report["midi"]["source"], "synthetic-replay")
+            for field in ("completed", "delivered", "passed", "final_acknowledged"):
+                self.assertTrue(report["midi_replay"][field], field)
+            final = report["midi_replay"]["before_shutdown"]
+            self.assertEqual(final["controls"]["expression"], 0.75)
+            self.assertEqual(final["manual_notes"], [[], []])
+            self.assertEqual(final["pedal_ids"], [])
+            calibration = report["midi"]["expression_calibration"]
+            for field in ("configured", "pre_shutdown_active"):
+                self.assertEqual(calibration[field], {"minimum": 20, "maximum": 100, "inverted": True})
+            self.assertIsNone(calibration["active"])
+            self.assertEqual(report["midi"]["generation"], 0)
+            self.assertEqual(report["midi"]["device"]["callback_messages"], 0)
+            self.assertEqual(report["errors"]["count"], 0)
+            self.assertFalse(report["session"]["held_after_shutdown"])
+            self.assertFalse(state.exists(), "Calibrated playback must not implicitly save controls")
+            self.assertEqual(tree_state(moved), expected_tree(expected),
+                             "Relocated calibration changed the installed or coexisting payload")
+            self.assertEqual(sha256(self.executable), self.binary_hash)
             # The flag-off fixture cannot create or preflight a Standalone payload.
             disabled = self.fixture(work / "disabled", enabled=False, midi_enabled=False)
             self.assert_success(self.invoke(self.install_command(disabled.build, prefix), work))

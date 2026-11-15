@@ -1,0 +1,616 @@
+{
+  "schema": "a42-calibration-modal-raster-v1",
+  "assignment": "/root/w07_a42_calibration_modal_raster",
+  "inspected_head": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+  "scope": "Existing registered SDL software material acceptance target; no production edits, no new target or timeout change.",
+  "inputs": {
+    "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": "439d50f5990025fa09350283cb63f0bbb15ce0a526c561e742b6f5365b91a9c8",
+    "apps/standalone/InstrumentView.cpp": "3687f96db4490e600d6107e6b39d7b7d568bdeb183f16f6aa397535a5f688567",
+    "apps/standalone/InstrumentView.h": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+    "apps/standalone/main.cpp": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+    "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+    "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/hammond_standalone": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852",
+    "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/test_standalone_material_acceptance": "120e7c99ef76811eb9927aaa92613dfb81a9a7d1d35b4351a82948a5bb0a48da",
+    "/workspace/scratch/1bb6ee17ad7e/SDL2/src/render/software/SDL_render_sw.c": "2e3bbc7ab7d6d59310c634d6374eabb60da185d8c7cfc8526baa45318e6d3257",
+    "/workspace/scratch/1bb6ee17ad7e/SDL2/src/video/SDL_surface.c": "e2c324858b829a0afebc0ce04c983178347c24adb08d9738118c06fc39f3bbf5"
+  },
+  "execution": {
+    "build_owner": "root",
+    "build_tree": "/workspace/scratch/5b7d983ac078/build-native",
+    "configuration": "GCC 14.2 Release; standalone ON, MIDI backend OFF; SDL software surface without window/audio",
+    "test_command": "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/test_standalone_material_acceptance",
+    "test_working_directory": "/workspace/scratch/5b7d983ac078/build-native/apps/standalone",
+    "registered_timeout_seconds": 60,
+    "syntax_check": "g++ -std=c++20 -fsyntax-only -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -Iinclude -Iapps/standalone -I/workspace/scratch/1bb6ee17ad7e/SDL2/include -I/workspace/scratch/5b7d983ac078/build-native/_deps/sdl2-build/include apps/standalone/native_tests/test_standalone_material_acceptance.cpp",
+    "syntax_result": "passed",
+    "diff_check": "passed"
+  },
+  "attempts": [
+    {
+      "fixture_sha256": "1c03a3d0cd586c2368ff36a0d15022313bc83ddc9408408eb71de3d6617f5d77",
+      "log": "docs/development/2026-11-15-product-continuation/reports/wave7-material-facade-ctest.txt",
+      "log_sha256": "174ed3055995dd6095890a30428051353eedc2c738df4cf63199736eedab5dcc",
+      "checks": 1293,
+      "failures": 1,
+      "seconds": 6.83,
+      "failure_messages": [
+        "161: FAIL: fractional caller cut preserves every surviving modal pixel and cuts, rather than relocates, focus"
+      ]
+    },
+    {
+      "fixture_sha256": "5c750fa3e03a7d3c71dc6b65afd9c4efaf64b5d7b96a93f80432cb752f283e93",
+      "log": "docs/development/2026-11-15-product-continuation/reports/A42-diagnostic-ctest.txt",
+      "log_sha256": "3c7643fa22648c71e66a996ab9a54602977b073f1b0c716d49a3066b7fe2bbdd",
+      "checks": 1293,
+      "failures": 1,
+      "seconds": 6.48,
+      "failure_messages": [
+        "161: FAIL: fractional caller cut preserves every surviving modal pixel and cuts, rather than relocates, focus: mismatches=212 surviving_focus=614 hidden_focus=618 mismatch_box=318,471-937,783 [physical=490,471 logical=382,368.4 full=206,175,120 cut=208,177,120] [physical=491,471 logical=382.8,368.4 full=91,81,61 cut=84,76,57] [physical=494,471 logical=385.2,368.4 full=92,82,61 cut=85,76,58] [physical=495,471 logical=386,368.4 full=206,175,120 cut=207,176,120] [physical=513,471 logical=400.4,368.4 full=125,109,78 cut=122,106,76] [physical=525,471 logical=410,368.4 full=117,103,74 cut=130,112,80] [physical=526,471 logical=410.8,368.4 full=66,60,48 cut=71,65,50] [physical=528,471 logical=412.4,368.4 full=30,31,29 cut=31,32,29] [physical=529,471 logical=413.2,368.4 full=92,82,61 cut=101,89,65] [physical=530,471 logical=414,368.4 full=208,177,121 cut=209,178,121] [physical=531,471 logical=414.8,368.4 full=149,128,90 cut=145,126,89] [physical=534,471 logical=417.2,368.4 full=117,103,74 cut=130,112,80]"
+      ]
+    },
+    {
+      "fixture_sha256": "439d50f5990025fa09350283cb63f0bbb15ce0a526c561e742b6f5365b91a9c8",
+      "log": "docs/development/2026-11-15-product-continuation/reports/A42-literal-ctest.txt",
+      "log_sha256": "fb82e07d1df34a48c327cfeb31249a15328f095ecb070846576feea50268ed3d",
+      "checks": 1293,
+      "failures": 0,
+      "seconds": 6.63,
+      "failure_messages": []
+    }
+  ],
+  "initial_source_recovery": {
+    "base_commit": "d556da017ea0a5d4f2d231416782dbc5066e58c2",
+    "method": "Reversed only the diagnostic addition, verified reconstructed initial bytes against the pre-run SHA-256, retained a reversible diff against the base commit.",
+    "patch": "docs/development/2026-11-15-product-continuation/reports/A42-first-failure.patch",
+    "patch_sha256": "97463d5475cd44e0ad47469091a8a94ff7a5f25b4bb120855f80e4eaef2cba5a"
+  },
+  "scenes": [
+    {
+      "logical_size": [
+        960,
+        700
+      ],
+      "presentation": "Dimensional",
+      "scale": 1
+    },
+    {
+      "logical_size": [
+        960,
+        700
+      ],
+      "presentation": "Flat",
+      "scale": 1
+    },
+    {
+      "logical_size": [
+        1672,
+        941
+      ],
+      "presentation": "Dimensional",
+      "scale": 1
+    },
+    {
+      "logical_size": [
+        960,
+        700
+      ],
+      "presentation": "Flat",
+      "scale": 1.25,
+      "physical_viewport": [
+        13,
+        11,
+        1200,
+        875
+      ],
+      "physical_clip_relative_to_viewport": [
+        305,
+        460,
+        700,
+        340
+      ]
+    }
+  ],
+  "observed": {
+    "checks": 1293,
+    "failures": 0,
+    "frames": 109,
+    "state_checks": 109,
+    "clip_frames": 109,
+    "legacy_checks": 901,
+    "header_checks": 170,
+    "calibration_modal": {
+      "checks": 222,
+      "scenes": 4,
+      "frames": 21,
+      "controls": 44,
+      "literal_glyph_regions": 96,
+      "changed_values": 12,
+      "focused_controls": 8,
+      "invalid_frames": 2,
+      "long_text_frames": 2,
+      "clipped_frames": 1,
+      "intersected_glyphs": 38,
+      "resampled_pixels": 212,
+      "unexplained_pixels": 0,
+      "literal_mismatches": 0,
+      "cut_glyphs": [
+        {
+          "line": 2,
+          "character": 0,
+          "ascii": 69,
+          "physical_rect": [
+            481,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 2,
+          "character": 1,
+          "ascii": 88,
+          "physical_rect": [
+            489,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 2,
+          "character": 2,
+          "ascii": 80,
+          "physical_rect": [
+            499,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 2,
+          "character": 3,
+          "ascii": 82,
+          "physical_rect": [
+            508,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 2
+        },
+        {
+          "line": 2,
+          "character": 4,
+          "ascii": 69,
+          "physical_rect": [
+            517,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 2,
+          "character": 5,
+          "ascii": 83,
+          "physical_rect": [
+            525,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 11
+        },
+        {
+          "line": 2,
+          "character": 6,
+          "ascii": 83,
+          "physical_rect": [
+            534,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 11
+        },
+        {
+          "line": 2,
+          "character": 7,
+          "ascii": 73,
+          "physical_rect": [
+            543,
+            464,
+            1,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 2,
+          "character": 8,
+          "ascii": 79,
+          "physical_rect": [
+            546,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 10
+        },
+        {
+          "line": 2,
+          "character": 9,
+          "ascii": 78,
+          "physical_rect": [
+            557,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 3
+        },
+        {
+          "line": 2,
+          "character": 11,
+          "ascii": 77,
+          "physical_rect": [
+            572,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 3
+        },
+        {
+          "line": 2,
+          "character": 12,
+          "ascii": 65,
+          "physical_rect": [
+            583,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 2,
+          "character": 13,
+          "ascii": 88,
+          "physical_rect": [
+            593,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 4,
+          "character": 0,
+          "ascii": 69,
+          "physical_rect": [
+            776,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 1,
+          "ascii": 88,
+          "physical_rect": [
+            784,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 4,
+          "character": 2,
+          "ascii": 80,
+          "physical_rect": [
+            794,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 3,
+          "ascii": 82,
+          "physical_rect": [
+            803,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 2
+        },
+        {
+          "line": 4,
+          "character": 4,
+          "ascii": 69,
+          "physical_rect": [
+            812,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 5,
+          "ascii": 83,
+          "physical_rect": [
+            820,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 11
+        },
+        {
+          "line": 4,
+          "character": 6,
+          "ascii": 83,
+          "physical_rect": [
+            829,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 11
+        },
+        {
+          "line": 4,
+          "character": 7,
+          "ascii": 73,
+          "physical_rect": [
+            838,
+            464,
+            1,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 8,
+          "ascii": 79,
+          "physical_rect": [
+            841,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 10
+        },
+        {
+          "line": 4,
+          "character": 9,
+          "ascii": 78,
+          "physical_rect": [
+            852,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 3
+        },
+        {
+          "line": 4,
+          "character": 11,
+          "ascii": 68,
+          "physical_rect": [
+            867,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 8
+        },
+        {
+          "line": 4,
+          "character": 12,
+          "ascii": 73,
+          "physical_rect": [
+            878,
+            464,
+            1,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 13,
+          "ascii": 82,
+          "physical_rect": [
+            882,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 2
+        },
+        {
+          "line": 4,
+          "character": 14,
+          "ascii": 69,
+          "physical_rect": [
+            891,
+            464,
+            6,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 15,
+          "ascii": 67,
+          "physical_rect": [
+            899,
+            464,
+            8,
+            9
+          ],
+          "changed_pixels": 13
+        },
+        {
+          "line": 4,
+          "character": 16,
+          "ascii": 84,
+          "physical_rect": [
+            907,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 17,
+          "ascii": 73,
+          "physical_rect": [
+            918,
+            464,
+            1,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 4,
+          "character": 18,
+          "ascii": 79,
+          "physical_rect": [
+            921,
+            464,
+            9,
+            9
+          ],
+          "changed_pixels": 10
+        },
+        {
+          "line": 4,
+          "character": 19,
+          "ascii": 78,
+          "physical_rect": [
+            932,
+            464,
+            7,
+            9
+          ],
+          "changed_pixels": 3
+        },
+        {
+          "line": 6,
+          "character": 14,
+          "ascii": 84,
+          "physical_rect": [
+            312,
+            624,
+            9,
+            9
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 7,
+          "character": 19,
+          "ascii": 110,
+          "physical_rect": [
+            315,
+            556,
+            6,
+            7
+          ],
+          "changed_pixels": 0
+        },
+        {
+          "line": 8,
+          "character": 12,
+          "ascii": 69,
+          "physical_rect": [
+            313,
+            599,
+            7,
+            10
+          ],
+          "changed_pixels": 5
+        },
+        {
+          "line": 9,
+          "character": 15,
+          "ascii": 97,
+          "physical_rect": [
+            313,
+            652,
+            7,
+            8
+          ],
+          "changed_pixels": 14
+        },
+        {
+          "line": 10,
+          "character": 4,
+          "ascii": 89,
+          "physical_rect": [
+            315,
+            729,
+            8,
+            9
+          ],
+          "changed_pixels": 22
+        },
+        {
+          "line": 12,
+          "character": 18,
+          "ascii": 100,
+          "physical_rect": [
+            315,
+            774,
+            7,
+            10
+          ],
+          "changed_pixels": 26
+        }
+      ]
+    }
+  },
+  "clip_diagnosis": {
+    "initial_different_pixels": 212,
+    "physical_difference_bounds_inclusive": [
+      318,
+      471,
+      937,
+      783
+    ],
+    "surviving_focus_pixels": 614,
+    "hidden_focus_pixels": 618,
+    "cause": "Pinned SDL 2.32.10 software SDL_PrivateUpperBlitScaled clips then rounds source/destination rectangles before scaling. Partial glyph textures can resample differently from cropping an uncut frame.",
+    "final_criterion": "Exact full/cut identity for every visible pixel outside individually proven boundary-crossing glyph destination rectangles. Within only those rectangles, exact RGBA agreement with independent literal text plates for both full and clipped views, and exact difference-set agreement. Outside-clip clear and focus ownership assertions stay exact.",
+    "production_repair": "none",
+    "numeric_pixel_tolerance_for_cut": 0
+  },
+  "limits": [
+    "Application modal-index traversal remains covered by separate native CLI tests; this fixture composes its documented public Drawing focus primitive.",
+    "No physical MIDI/display/audio, contrast-standard, semantic accessibility or literal whole-interface equivalence claim.",
+    "This execution is ordinary Release. Expanded hosted sanitizer execution is separate evidence."
+  ]
+}
