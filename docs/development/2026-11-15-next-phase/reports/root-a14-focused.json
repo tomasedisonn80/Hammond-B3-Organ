@@ -1,0 +1,44 @@
+{
+  "schema": "hammond-root-focused-build-v1",
+  "agent": "/root/w03_a14",
+  "configuration": "Linux Release GCC 14.2.0; standalone ON, MIDI OFF, VST3 OFF; coordinated build-native",
+  "tested_source_sha256": {
+    "apps/standalone/RegistrationLibrary.h": "6a3d75bd9fac8f70520c0847f8f98f4a33dd013a4d26fbaa3555e966880100eb",
+    "apps/standalone/RegistrationLibrary.cpp": "bf576627ef534e1db399c45570d0435182c18228852e915bbe7c18a7ea88ac86",
+    "apps/standalone/tests/test_standalone_registration_library.cpp": "0bbd08a531c17d29b16c2b590c3fce524b2766bb8ae6c4c81d9d52b168966f1b",
+    "apps/standalone/CMakeLists.txt": "ff149917c14dd1dafb872a4587088ef375fdd40e52e3ae5513bf4e3318e19302"
+  },
+  "build": {
+    "command": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake --build /workspace/scratch/116ca0948095/build-native --parallel 3 --target test_standalone_registration_library",
+    "exit_code": 0
+  },
+  "test": {
+    "command": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest --test-dir /workspace/scratch/116ca0948095/build-native -C Release -R '^test_standalone_registration_library$' --output-on-failure --no-tests=error --output-log /workspace/scratch/116ca0948095/a14-ctest.log",
+    "exit_code": 0,
+    "passed": 1,
+    "total": 1,
+    "total_seconds": 0.02
+  },
+  "log_sha256": {
+    "a14-build.log": "b698fb105c0286b2cdee5d10b0011fe42dc11a413236fbb52d871602035a4678",
+    "a14-ctest.log": "598cbc4d79e6ba7e562b4be44cb02410a400c910567685f8daaf1ffcf72df988"
+  },
+  "limits": [
+    "Author storage test on Linux only; independent filesystem/race and cross-platform acceptance pending.",
+    "LibraryModel/browser/main integration not yet built."
+  ],
+  "retained_logs": {
+    "docs/development/2026-11-15-next-phase/reports/root-a14-build.txt": {
+      "bytes": 9730,
+      "sha256": "b698fb105c0286b2cdee5d10b0011fe42dc11a413236fbb52d871602035a4678"
+    },
+    "docs/development/2026-11-15-next-phase/reports/root-a14-ctest.txt": {
+      "bytes": 396,
+      "sha256": "598cbc4d79e6ba7e562b4be44cb02410a400c910567685f8daaf1ffcf72df988"
+    },
+    "docs/development/2026-11-15-next-phase/reports/root-a14-native-test.txt": {
+      "bytes": 983,
+      "sha256": "de57ed1752b7467e16f8f25254733328427b6230d9977d79ed61a7e638de00fe"
+    }
+  }
+}

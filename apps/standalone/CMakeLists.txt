@@ -2,7 +2,8 @@
 # only when the user explicitly enables the native application.
 find_package(Threads REQUIRED)
 add_library(hammond_standalone_support STATIC
-    Session.cpp UiModel.cpp InspectionModel.cpp StateFiles.cpp MidiInput.cpp MidiDevice.cpp MidiReplay.cpp)
+    Session.cpp UiModel.cpp InspectionModel.cpp StateFiles.cpp RegistrationLibrary.cpp
+    MidiInput.cpp MidiDevice.cpp MidiReplay.cpp)
 target_link_libraries(hammond_standalone_support PUBLIC hammond_core Threads::Threads)
 target_include_directories(hammond_standalone_support PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
 target_compile_definitions(hammond_standalone_support PRIVATE
@@ -36,6 +37,9 @@ if(BUILD_TESTING)
         add_test(NAME ${test_name} COMMAND ${test_name})
         if(test_name STREQUAL "test_standalone_midi_concurrency")
             set_tests_properties(${test_name} PROPERTIES TIMEOUT 45 LABELS "standalone;concurrency")
+        endif()
+        if(test_name STREQUAL "test_standalone_registration_library")
+            set_tests_properties(${test_name} PROPERTIES TIMEOUT 30 LABELS "standalone;library;filesystem")
         endif()
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS ${test_name})
     endforeach()

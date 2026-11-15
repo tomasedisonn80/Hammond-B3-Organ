@@ -1,0 +1,27 @@
+{
+  "schema": "hammond-root-focused-build-v1",
+  "agent": "/root/w03_a13",
+  "configuration": "Linux Release GCC 14.2.0; standalone ON, MIDI OFF, VST3 OFF; existing root-coordinated native build",
+  "tested_source_sha256": {
+    "include/hammond/ScannerLineFoh.h": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+    "src/ScannerLineFoh.cpp": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+    "tests/test_scanner_line_foh.cpp": "f6b9bd26a2fa5460ef39f42e524d83f7cc4071c02db76596e24874f6497a0b21"
+  },
+  "build": {
+    "command": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake --build /workspace/scratch/116ca0948095/build-native --parallel 3 --target test_scanner_line_foh",
+    "exit_code": 0,
+    "result": "ScannerLineFoh core and author test compiled and linked"
+  },
+  "test": {
+    "command": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest --test-dir /workspace/scratch/116ca0948095/build-native -C Release -R '^test_scanner_line_foh$' --output-on-failure --no-tests=error",
+    "exit_code": 0,
+    "passed": 1,
+    "total": 1,
+    "test_seconds": 0.84,
+    "total_seconds": 0.87
+  },
+  "limits": [
+    "Focused author test only; full independent FOH numerical, transient, lifecycle and platform gates remain pending.",
+    "No Engine connection, complete G5 pipeline, physical fidelity or callback deadline qualification."
+  ]
+}

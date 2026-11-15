@@ -104,7 +104,7 @@
     {
       "id": "A07",
       "wave": 2,
-      "status": "dispatched",
+      "status": "accepted",
       "agent_id": "/root/w02_a07",
       "task": "Specify independent scanner FOH numerical realization and acceptance",
       "owned_paths": [
@@ -112,12 +112,15 @@
         "docs/development/2026-11-15-next-phase/notes/A07-scanner-contract.md"
       ],
       "note": "notes/A07-scanner-contract.md",
-      "verification": []
+      "verification": [
+        "Reviewed authored interface and numerical scope; mathematical freeze assigned independently to A10."
+      ],
+      "note_sha256": "f32cf20d1a05336051c5003f4e622df72e1f276585e7cc3ee707e340dde0597a"
     },
     {
       "id": "A08",
       "wave": 2,
-      "status": "dispatched",
+      "status": "accepted",
       "agent_id": "/root/w02_a08",
       "task": "Specify named registration library, recall scope, state and persistence",
       "owned_paths": [
@@ -125,12 +128,15 @@
         "docs/development/2026-11-15-next-phase/notes/A08-library-contract.md"
       ],
       "note": "notes/A08-library-contract.md",
-      "verification": []
+      "verification": [
+        "Reviewed bounded storage and recall semantics; freeze assigned independently to A11."
+      ],
+      "note_sha256": "e0f9c5fa7fdce058500cc98ea4912449083ce15ac62b195c39378937c11ab297"
     },
     {
       "id": "A09",
       "wave": 2,
-      "status": "dispatched",
+      "status": "accepted",
       "agent_id": "/root/w02_a09",
       "task": "Specify reference-styled browser header, modal and input behavior",
       "owned_paths": [
@@ -138,96 +144,161 @@
         "docs/development/2026-11-15-next-phase/notes/A09-browser-ui-contract.md"
       ],
       "note": "notes/A09-browser-ui-contract.md",
-      "verification": []
+      "verification": [
+        "Reviewed source-grounded visual/input contract and limited geometry arithmetic; independent freeze assigned to A12."
+      ],
+      "note_sha256": "b407eaf7db83323f2e9ecc613d413b2cdb23c0ef36c4bdab19945259f9f2fb01"
     },
     {
       "id": "A10",
       "wave": 2,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
-      "verification": []
+      "status": "accepted",
+      "agent_id": "/root/w02_a10",
+      "task": "Independently review and freeze scanner FOH contract",
+      "owned_paths": [
+        "docs/SCANNER_FOH_CONTRACT.md",
+        "docs/development/2026-11-15-next-phase/notes/A10-scanner-review.md"
+      ],
+      "note": "notes/A10-scanner-review.md",
+      "verification": [
+        "Independent mathematical/API review accepted contract hash90b3564497ebd669baaaf0badf1a954953f1e1322c45f3e64e37e23cb826866e; root freezes this version for A13."
+      ],
+      "note_sha256": "96b955d97022bdf29db8b744971d24428c25f753d205acb0de450473b1bdbb7e"
     },
     {
       "id": "A11",
       "wave": 2,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
-      "verification": []
+      "status": "accepted",
+      "agent_id": "/root/w02_a11",
+      "task": "Independently review and freeze registration library contract",
+      "owned_paths": [
+        "docs/REGISTRATION_LIBRARY_CONTRACT.md",
+        "docs/development/2026-11-15-next-phase/notes/A11-library-review.md"
+      ],
+      "note": "notes/A11-library-review.md",
+      "verification": [
+        "Independent library review accepted amended contract hash4760d65b27aa154fd86ee09c2cda87bd30f532874cc1a35c62a5b359889703fa; root freezes for A14/A15."
+      ],
+      "note_sha256": "0d4038517a77532afa4217febf3dfc88991517d32605116f8952302b563e93f3"
     },
     {
       "id": "A12",
       "wave": 2,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
-      "verification": []
+      "status": "accepted",
+      "agent_id": "/root/w02_a12",
+      "task": "Independently review and freeze browser geometry, semantics and input contract",
+      "owned_paths": [
+        "docs/REGISTRATION_BROWSER_UI_CONTRACT.md",
+        "docs/development/2026-11-15-next-phase/notes/A12-browser-ui-review.md"
+      ],
+      "note": "notes/A12-browser-ui-review.md",
+      "verification": [
+        "Root read complete independent review, checked reviewed geometry/input/storage boundaries and admitted frozen contract SHA 258a972f2715d200b4bd2b4482b1159feeff4f97c2be3060b05ad237439cc84c for implementation."
+      ],
+      "note_sha256": "608afac839c37c1d7439bb6d1711489b4e915c9fb8f2652a6e1ca29c827e14ae"
     },
     {
       "id": "A13",
       "wave": 3,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
-      "verification": []
+      "status": "accepted",
+      "agent_id": "/root/w03_a13",
+      "task": "Implement additive ScannerLineFoh native class and basic behavioral tests",
+      "owned_paths": [
+        "include/hammond/ScannerLineFoh.h",
+        "src/ScannerLineFoh.cpp",
+        "tests/test_scanner_line_foh.cpp",
+        "docs/development/2026-11-15-next-phase/notes/A13-scanner-implementation.md"
+      ],
+      "note": "notes/A13-scanner-implementation.md",
+      "verification": [
+        "Root inspected stable API and transactional implementation, coherently built strict GCC 14.2 Release target and ran required focused CTest: 1/1 passed. Retained source-bound receipt root-a13-focused.json; broader independent gates remain open."
+      ],
+      "note_sha256": "eb4af1ec698a2128c47386fde1745cc07429d9e3cdb762b5425a573e32848cd2"
     },
     {
       "id": "A14",
       "wave": 3,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
-      "verification": []
+      "status": "accepted",
+      "agent_id": "/root/w03_a14",
+      "task": "Implement registration storage, scope merging and atomic create-only persistence",
+      "owned_paths": [
+        "apps/standalone/RegistrationLibrary.h",
+        "apps/standalone/RegistrationLibrary.cpp",
+        "apps/standalone/tests/test_standalone_registration_library.cpp",
+        "docs/development/2026-11-15-next-phase/notes/A14-library-storage.md"
+      ],
+      "note": "notes/A14-library-storage.md",
+      "verification": [
+        "Root reviewed public storage contract/API, coherent CMake integration and strict GCC 14.2 Release build, then focused CTest 1/1 passed with 167 checks; receipt root-a14-focused.json retains exact sources and original log hashes. Independent races/faults/platform gates remain open."
+      ],
+      "note_sha256": "cef1196fd41368c526c5ff94d36cbf83e24ba002fa8c0ac7c79d537cd5f6f080"
     },
     {
       "id": "A15",
       "wave": 3,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
+      "status": "dispatched",
+      "agent_id": "/root/w03_a15",
+      "task": "Implement pure LibraryModel catalog, current reference and acknowledgment receipt authority with independent desired and failure revisions",
+      "owned_paths": [
+        "apps/standalone/LibraryModel.h",
+        "apps/standalone/LibraryModel.cpp",
+        "apps/standalone/tests/test_standalone_library_model.cpp",
+        "docs/development/2026-11-15-next-phase/notes/A15-library-model.md"
+      ],
+      "note": "notes/A15-library-model.md",
       "verification": []
     },
     {
       "id": "A16",
       "wave": 3,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
-      "verification": []
+      "status": "accepted",
+      "agent_id": "/root/w03_a16",
+      "task": "Implement ScannerLineFoh native response and offline trace probe with bounded CLI and independent schema tests",
+      "owned_paths": [
+        "tools/scanner_line_foh_probe.cpp",
+        "tests/test_scanner_foh_probe.py",
+        "docs/development/2026-11-15-next-phase/notes/A16-scanner-probe.md"
+      ],
+      "note": "notes/A16-scanner-probe.md",
+      "verification": [
+        "Root integrated target and portable startup/environment, built coherently with strict GCC 14.2 Release, inspected metadata/clock distinction and ran required CLI CTest: 1/1 with 15 tests passed. Exact source/binary/log receipt root-a16-focused.json; independent numerical qualification remains pending."
+      ],
+      "note_sha256": "73a6633867c62c8ed6c0ed78baa4b1a539a73fa03203d5ad23b9312315f349bb"
     },
     {
       "id": "A17",
       "wave": 3,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
+      "status": "dispatched",
+      "agent_id": "/root/w03_a17",
+      "task": "Implement copied-view registration browser geometry, input intents, text editing and reference-styled modal painting with model/raster tests",
+      "owned_paths": [
+        "apps/standalone/RegistrationBrowserModel.h",
+        "apps/standalone/RegistrationBrowserModel.cpp",
+        "apps/standalone/RegistrationBrowserView.h",
+        "apps/standalone/RegistrationBrowserView.cpp",
+        "apps/standalone/tests/test_standalone_registration_browser.cpp",
+        "apps/standalone/native_tests/test_standalone_registration_browser_raster.cpp",
+        "docs/development/2026-11-15-next-phase/notes/A17-registration-browser.md"
+      ],
+      "note": "notes/A17-registration-browser.md",
       "verification": []
     },
     {
       "id": "A18",
       "wave": 3,
-      "status": "planned",
-      "agent_id": null,
-      "task": null,
-      "owned_paths": [],
-      "note": null,
+      "status": "dispatched",
+      "agent_id": "/root/w03_a18",
+      "task": "Integrate reference header and browser app effects with true Session acknowledgments, preserved legacy baseline and held input ownership",
+      "owned_paths": [
+        "apps/standalone/main.cpp",
+        "apps/standalone/UiModel.h",
+        "apps/standalone/UiModel.cpp",
+        "apps/standalone/InstrumentView.h",
+        "apps/standalone/InstrumentView.cpp",
+        "apps/standalone/tests/test_standalone_library_integration.cpp",
+        "docs/development/2026-11-15-next-phase/notes/A18-library-integration.md"
+      ],
+      "note": "notes/A18-library-integration.md",
       "verification": []
     },
     {

@@ -1,0 +1,42 @@
+{
+  "schema": "hammond-root-focused-build-v1",
+  "agent": "/root/w03_a16",
+  "configuration": "Linux Release GCC 14.2.0; standalone ON, MIDI OFF, VST3 OFF; coordinated build-native",
+  "tested_source_sha256": {
+    "tools/scanner_line_foh_probe.cpp": "470597a58ba352f737119a8a75de1c2f1c50df3fe4e7dfb400e7641c14c46b2a",
+    "tests/test_scanner_foh_probe.py": "124d2a137cfb4fc3200d61e4d5d2de104863f875592a2c84da759dab4bdc2b40",
+    "CMakeLists.txt": "68194f14e49dd26fb4463aa6b81b1ddaf5e8619edef8013f0ce78dbb2bc6586d",
+    "include/hammond/ScannerLineFoh.h": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+    "src/ScannerLineFoh.cpp": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df"
+  },
+  "build": {
+    "command": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake --build /workspace/scratch/116ca0948095/build-native --parallel 3 --target hammond_scanner_line_foh_probe",
+    "exit_code": 0
+  },
+  "test": {
+    "command": "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest --test-dir /workspace/scratch/116ca0948095/build-native -C Release -R '^python_test_scanner_foh_probe$' --output-on-failure --no-tests=error --output-log /workspace/scratch/116ca0948095/a16-ctest.log",
+    "exit_code": 0,
+    "passed": 1,
+    "total": 1,
+    "test_seconds": 1.83,
+    "total_seconds": 1.84
+  },
+  "retained_logs": {
+    "docs/development/2026-11-15-next-phase/reports/root-a16-build.txt": {
+      "bytes": 9450,
+      "sha256": "bbb0230ed5c73ceb87547335b02174e2be704b3d5ab637afcbc880e5300ae854"
+    },
+    "docs/development/2026-11-15-next-phase/reports/root-a16-ctest.txt": {
+      "bytes": 374,
+      "sha256": "016e2b9a5229f9f9f36fc7ca6facea72bea3aa1a05ac0e11bbfbb9df4564f118"
+    },
+    "docs/development/2026-11-15-next-phase/reports/root-a16-native-test.txt": {
+      "bytes": 1046,
+      "sha256": "47b02e4a605a70265941505c16870c60fa09abf8d86bb021e3fc3f84744ea303"
+    }
+  },
+  "limits": [
+    "Bounded CLI and schema producer checks; independent graph-derived stationary/process/transient acceptance remains pending.",
+    "Trace subdivision is an offline same-polygon fixture adapter, not a host sample-rate converter."
+  ]
+}

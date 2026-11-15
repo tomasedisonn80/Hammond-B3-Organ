@@ -13,8 +13,14 @@ Root owns this checkout's shared navigation, build configuration, coordinated
 build and publication. Workers edit only explicitly assigned files. All other
 checkouts and builds are read-only references; preserve their unfinished work.
 The fidelity session below still owns its visual-deck, M6 FOH and native MIDI
-close work; the waveform session owns R4. Freeze this session's independent
-implementation scope after the complete atlas reading and source assessment.
+close work; the waveform session owns R4. All 500 atlas pages are read for this
+session. Its independently reviewed scope is the additive ScannerLineFoh
+research realization and native named Registration/Performance library/browser.
+Read the [scanner contract](docs/SCANNER_FOH_CONTRACT.md),
+[library contract](docs/REGISTRATION_LIBRARY_CONTRACT.md) and
+[browser contract](docs/REGISTRATION_BROWSER_UI_CONTRACT.md) before their code.
+The active checkpoint distinguishes focused author passes from independent
+acceptance, current publication and complete G5/physical/whole-interface gates.
 Retain all standing evidence, preservation, storage and publication rules below.
 
 ## Active routing — fidelity continuation, 2026-11-15
