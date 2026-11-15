@@ -1033,21 +1033,45 @@ void reference_headers() {
             auto model = model_at(size[0], size[1], UiPresentation::Dimensional);
             for (const auto workspace : {UiWorkspace::Play, UiWorkspace::Rotary, UiWorkspace::Service}) {
                 require(model.set_workspace(workspace), "select reference-header workspace");
+                const bool whole_composition = workspace == UiWorkspace::Play;
+                const float sx = width / 1672.0F;
+                const float sy = static_cast<float>(size[1]) / 941.0F;
+                const float f = std::min(sx, sy);
+                // Independent canonical regions. Geometry is anisotropically
+                // mapped, but the font uses the smaller scale on both axes.
+                const UiRect observed_title = whole_composition ?
+                    UiRect{576 * sx, 16 * sy, 520 * sx, 46 * sy} : title_region;
+                const UiRect observed_caption = whole_composition ?
+                    UiRect{616 * sx, 64 * sy, 440 * sx, 24 * sy} : caption_region;
                 const auto frame = target.paint(model);
-                const auto title = header_ink(frame, model.layout(), title_region);
-                const auto caption = header_ink(frame, model.layout(), caption_region);
+                const auto title = header_ink(frame, model.layout(), observed_title);
+                const auto caption = header_ink(frame, model.layout(), observed_caption);
                 const auto& t = title.bounds;
                 const auto& c = caption.bounds;
-                // Literal targets come from the original 1672x941 reference;
-                // the minimum sidebar preserves the same size and hierarchy.
-                check(title.pixels > 1000 && std::abs(t.width - 464.0F) <= 3.0F &&
-                      std::abs(t.height - 33.0F) <= 1.0F && std::abs(t.y - 20.0F) <= 1.0F &&
-                      std::abs(t.x + t.width / 2.0F - (width / 2.0F - 1.0F)) <= 2.0F,
-                      "wide title ink meets independently measured reference size/top/center");
-                check(caption.pixels > 300 && std::abs(c.width - 371.0F) <= 4.0F &&
-                      std::abs(c.height - 12.0F) <= 1.0F && std::abs(c.y - 71.0F) <= 1.0F &&
-                      std::abs(c.x + c.width / 2.0F - (width / 2.0F - 0.5F)) <= 2.0F,
-                      "truthful caption ink meets independently measured reference hierarchy");
+                // Keep the original measured ink tolerances. Active Play maps
+                // the canonical text origins and scales type isotropically;
+                // Rotary and Service retain their exact historical assertions.
+                if (whole_composition) {
+                    check(title.pixels > 1000 && std::abs(t.width - 464 * f) <= 3.0F &&
+                          std::abs(t.height - 33 * f) <= 1.0F &&
+                          std::abs(t.y - (11.5F * sy + 8.5F * f)) <= 1.0F &&
+                          std::abs(t.x + t.width / 2.0F - (width / 2.0F - f)) <= 2.0F,
+                          "active title ink meets independently scaled reference size/top/center");
+                    check(caption.pixels > 300 && std::abs(c.width - 371 * sx) <= 4.0F &&
+                          std::abs(c.height - 12 * f) <= 1.0F &&
+                          std::abs(c.y - (67.5F * sy + 3.5F * f)) <= 1.0F &&
+                          std::abs(c.x + c.width / 2.0F - (width / 2.0F - .5F * f)) <= 2.0F,
+                          "active truthful caption ink meets independently scaled reference hierarchy");
+                } else {
+                    check(title.pixels > 1000 && std::abs(t.width - 464.0F) <= 3.0F &&
+                          std::abs(t.height - 33.0F) <= 1.0F && std::abs(t.y - 20.0F) <= 1.0F &&
+                          std::abs(t.x + t.width / 2.0F - (width / 2.0F - 1.0F)) <= 2.0F,
+                          "wide title ink meets independently measured reference size/top/center");
+                    check(caption.pixels > 300 && std::abs(c.width - 371.0F) <= 4.0F &&
+                          std::abs(c.height - 12.0F) <= 1.0F && std::abs(c.y - 71.0F) <= 1.0F &&
+                          std::abs(c.x + c.width / 2.0F - (width / 2.0F - 0.5F)) <= 2.0F,
+                          "truthful caption ink meets independently measured reference hierarchy");
+                }
                 check(caption.letters == 15 && title.outside_header == 0 && caption.outside_header == 0 &&
                       title.on_controls == 0 && caption.on_controls == 0 &&
                       t.y + t.height < c.y,
@@ -1082,8 +1106,28 @@ void reference_headers() {
                   title.bounds.y >= 24.0F && title.outside_header == 0 && caption.outside_header == 0,
                   "fractional clipped header retains visible ink only on the surviving halves");
             ++clipped;
+            // Add the changed Play header to the same caller-clip gate. The
+            // existing Service clip above remains unchanged and still runs.
+            require(model.set_workspace(UiWorkspace::Play), "select active clipped header");
+            const float sx = width / 1672.0F;
+            const float sy = static_cast<float>(size[1]) / 941.0F;
+            const SDL_Rect active_cut{static_cast<int>(width * scale / 2.0F),
+                static_cast<int>(25.0F * sy * scale), static_cast<int>(260.0F * sx * scale),
+                static_cast<int>(60.0F * sy * scale)};
+            target.configure(scale, viewport, &active_cut);
+            const auto active_frame = target.paint(model);
+            const auto active_title = header_ink(active_frame, model.layout(),
+                {576 * sx, 16 * sy, 520 * sx, 46 * sy});
+            const auto active_caption = header_ink(active_frame, model.layout(),
+                {616 * sx, 64 * sy, 440 * sx, 24 * sy});
+            check(active_title.pixels > 300 && active_caption.pixels > 100 &&
+                  active_title.bounds.x >= width / 2.0F && active_caption.bounds.x >= width / 2.0F &&
+                  active_title.bounds.y >= 24.0F * sy &&
+                  active_title.outside_header == 0 && active_caption.outside_header == 0,
+                  "active fractional clipped header retains only surviving title/caption ink");
+            ++clipped;
         }
-    check(complete == 24 && clipped == 8, "all header sizes/workspaces/scales and cut clips executed");
+    check(complete == 24 && clipped == 16, "all header sizes/workspaces/scales and old/new cut clips executed");
 }
 } // namespace
 

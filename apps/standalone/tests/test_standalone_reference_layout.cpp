@@ -1,6 +1,7 @@
 #include "TestSupport.h"
 #include "UiModel.h"
 
+#include <algorithm>
 #include <array>
 #include <bit>
 #include <cmath>
@@ -33,6 +34,19 @@ void near_rect(UiRect actual, UiRect expected) {
     CHECK_NEAR(actual.y, expected.y, 0.002F);
     CHECK_NEAR(actual.width, expected.width, 0.002F);
     CHECK_NEAR(actual.height, expected.height, 0.002F);
+}
+
+bool whole_reference(const UiLayout& layout) {
+    return layout.workspace == UiWorkspace::Play &&
+        layout.presentation == UiPresentation::Dimensional &&
+        layout.width >= 1400.0F && layout.height >= 820.0F;
+}
+
+UiRect canonical(UiPoint size, UiRect rect) {
+    const long double sx = static_cast<long double>(size.x / 1672.0F);
+    const long double sy = static_cast<long double>(size.y / 941.0F);
+    return {static_cast<float>(rect.x * sx), static_cast<float>(rect.y * sy),
+            static_cast<float>(rect.width * sx), static_cast<float>(rect.height * sy)};
 }
 
 void contained(UiRect child, UiRect parent) {
@@ -125,9 +139,15 @@ void verify_layout(UiModel& model) {
     keyboard(layout.pedal_keys, UiTarget::Pedals, layout.pedal_panel);
 
     if (layout.sidebar_pedals) {
-        CHECK_NEAR(layout.pedal_panel.y - layout.cabinet_panel.y - layout.cabinet_panel.height,
-                   10.0F, 0.002F);
-        CHECK(layout.cabinet_panel.y + layout.cabinet_panel.height < layout.pedal_panel.y);
+        if (whole_reference(layout)) {
+            contained(layout.pedal_panel, layout.cabinet_panel);
+            contained(layout.keyboard_toolbar, layout.cabinet_panel);
+            contained(layout.cabinet_art, layout.cabinet_panel);
+        } else {
+            CHECK_NEAR(layout.pedal_panel.y - layout.cabinet_panel.y - layout.cabinet_panel.height,
+                       10.0F, 0.002F);
+            CHECK(layout.cabinet_panel.y + layout.cabinet_panel.height < layout.pedal_panel.y);
+        }
         CHECK(layout.manual_panels[0].x + layout.manual_panels[0].width < layout.pedal_panel.x);
         CHECK(layout.manual_panels[1].x + layout.manual_panels[1].width < layout.pedal_panel.x);
         for (const float fraction : {0.01F, 0.5F, 0.99F}) {
@@ -184,9 +204,14 @@ void closest_breakpoints() {
                 CHECK(layout.show_cabinet == entry.cabinet);
                 CHECK(layout.bank_controls_in_cheeks == entry.cheeks);
                 CHECK(layout.sidebar_pedals == entry.sidebar);
-                CHECK_NEAR(layout.manual_panels[0].y, entry.sidebar ? 477.2F : 445.2F, 0.001F);
-                CHECK_NEAR(layout.manual_panels[0].height, entry.sidebar ? 135.4F : 115.6F, 0.001F);
-                CHECK_NEAR(layout.pedal_panel.y, entry.sidebar ? 662.4F : 692.4F, 0.001F);
+                if (whole_reference(layout)) {
+                    near_rect(layout.manual_panels[0], canonical({entry.w, entry.h}, {232, 528, 890, 170}));
+                    near_rect(layout.pedal_panel, canonical({entry.w, entry.h}, {1138, 752, 450, 110}));
+                } else {
+                    CHECK_NEAR(layout.manual_panels[0].y, entry.sidebar ? 477.2F : 445.2F, 0.001F);
+                    CHECK_NEAR(layout.manual_panels[0].height, entry.sidebar ? 135.4F : 115.6F, 0.001F);
+                    CHECK_NEAR(layout.pedal_panel.y, entry.sidebar ? 662.4F : 692.4F, 0.001F);
+                }
                 verify_layout(model);
             }
         }
@@ -227,22 +252,45 @@ void literal_landmarks() {
                 CHECK(model.set_presentation(presentation) && model.set_workspace(workspace));
                 const auto& layout = model.layout();
                 CHECK(layout.sidebar_pedals);
-                near_rect(layout.manual_panels[0], anchor.manual);
-                near_rect(layout.manual_panels[1], anchor.lower);
-                near_rect(layout.pedal_panel, anchor.pedal);
-                near_rect(layout.cabinet_panel, anchor.cabinet);
-                near_rect(layout.cabinet_art, anchor.art);
-                // The reserved area is a geometry budget, not a raster/text pass.
-                near_rect({layout.cabinet_panel.x + 14, layout.cabinet_art.y + layout.cabinet_art.height + 61,
-                           layout.cabinet_panel.width - 28, layout.cabinet_panel.y + layout.cabinet_panel.height -
-                           layout.cabinet_art.y - layout.cabinet_art.height - 75}, anchor.status);
-                if (anchor.size.x == 1672) {
-                    for (unsigned manual = 0; manual < 2; ++manual) {
-                        const auto& first = layout.manual_keys[manual].front().hit.points;
-                        const auto& last = layout.manual_keys[manual].back().hit.points;
-                        CHECK_NEAR(first[3].y - first[0].y, 144.12F, 0.0003F);
-                        CHECK_NEAR(first[3].x, 246.3362968F, 0.0003F);
-                        CHECK_NEAR(last[2].x, 1106.831312F, 0.0003F);
+                if (whole_reference(layout)) {
+                    near_rect(layout.manual_panels[0], canonical(anchor.size, {232, 528, 890, 170}));
+                    near_rect(layout.manual_panels[1], canonical(anchor.size, {224, 698, 898, 172}));
+                    near_rect(layout.pedal_panel, canonical(anchor.size, {1138, 752, 450, 110}));
+                    near_rect(layout.cabinet_panel, canonical(anchor.size, {1126, 125, 478, 745}));
+                    const long double sx = static_cast<long double>(anchor.size.x / 1672.0F);
+                    const long double sy = static_cast<long double>(anchor.size.y / 941.0F);
+                    const long double art_scale = std::min(sx, sy);
+                    near_rect(layout.cabinet_art,
+                        {static_cast<float>(1132 * sx + 233 * (sx - art_scale)),
+                         static_cast<float>(174 * sy), static_cast<float>(466 * art_scale),
+                         static_cast<float>(397 * art_scale)});
+                    if (anchor.size.x == 1672) {
+                        CHECK_NEAR(layout.manual_keys[0].front().hit.points[0].y, 548.0F, 0.0003F);
+                        CHECK_NEAR(layout.manual_keys[0].front().hit.points[3].y, 690.0F, 0.0003F);
+                        CHECK_NEAR(layout.manual_keys[0].front().hit.points[3].x, 240.0F, 0.0003F);
+                        CHECK_NEAR(layout.manual_keys[1].front().hit.points[0].y, 718.0F, 0.0003F);
+                        CHECK_NEAR(layout.manual_keys[1].front().hit.points[3].y, 862.0F, 0.0003F);
+                        CHECK_NEAR(layout.manual_keys[1].front().hit.points[3].x, 232.0F, 0.0003F);
+                        CHECK_NEAR(layout.manual_keys[1].back().hit.points[2].x, 1114.0F, 0.0003F);
+                    }
+                } else {
+                    near_rect(layout.manual_panels[0], anchor.manual);
+                    near_rect(layout.manual_panels[1], anchor.lower);
+                    near_rect(layout.pedal_panel, anchor.pedal);
+                    near_rect(layout.cabinet_panel, anchor.cabinet);
+                    near_rect(layout.cabinet_art, anchor.art);
+                    // The reserved area is a geometry budget, not a raster/text pass.
+                    near_rect({layout.cabinet_panel.x + 14, layout.cabinet_art.y + layout.cabinet_art.height + 61,
+                               layout.cabinet_panel.width - 28, layout.cabinet_panel.y + layout.cabinet_panel.height -
+                               layout.cabinet_art.y - layout.cabinet_art.height - 75}, anchor.status);
+                    if (anchor.size.x == 1672) {
+                        for (unsigned manual = 0; manual < 2; ++manual) {
+                            const auto& first = layout.manual_keys[manual].front().hit.points;
+                            const auto& last = layout.manual_keys[manual].back().hit.points;
+                            CHECK_NEAR(first[3].y - first[0].y, 144.12F, 0.0003F);
+                            CHECK_NEAR(first[3].x, 246.3362968F, 0.0003F);
+                            CHECK_NEAR(last[2].x, 1106.831312F, 0.0003F);
+                        }
                     }
                 }
                 verify_layout(model);

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture eight real native interface views into a new, bounded gallery.
+"""Capture twelve real native interface views into a new, bounded gallery.
 
 Requires Python 3.10+, Pillow, an already built standalone and a source/build
 qualification JSON with ``binary_sha256`` and ``source_sha256`` members. The
@@ -36,7 +36,36 @@ CASES = (
     ("rotary-reference-1672x941", 1672, 941, "rotary", "dimensional"),
     ("rotary-minimum-960x700", 960, 700, "rotary", "dimensional"),
     ("flat-minimum-960x700", 960, 700, "play", "flat"),
+    ("play-minimum-active-1400x820", 1400, 820, "play", "dimensional"),
+    ("flat-reference-1672x941", 1672, 941, "play", "flat"),
+    ("play-toolbar-focus-1672x941", 1672, 941, "play", "dimensional"),
+    ("play-pedal-focus-1672x941", 1672, 941, "play", "dimensional"),
 )
+CASE_SCENES = {
+    "play-toolbar-focus-1672x941": "toolbar-focus",
+    "play-pedal-focus-1672x941": "pedal-focus",
+}
+FOCUS_SCENES = {
+    "toolbar-focus": {
+        "expected_target": "KeyboardTarget Pedals",
+        "tabs_after_drawbar": 41,
+        "pedal_ids": [2, 3],
+        "action": "Enter selects the focused Pedals toolbar target; physical W holds pedal 2.",
+        # Contract bounds (1444,616,136,26). Sample every edge away from corners.
+        "edge_probes": {"top": (1448, 616, 1576, 618), "bottom": (1448, 640, 1576, 642),
+                        "left": (1444, 620, 1446, 638), "right": (1578, 620, 1580, 638)},
+    },
+    "pedal-focus": {
+        "expected_target": "PedalKey 25",
+        "tabs_after_drawbar": 46,
+        "pedal_ids": [3, 25],
+        "action": "End selects pedal 25 in the focused pedal group; Space holds that focused key.",
+        # Last of 15 naturals: hit x1551.0666..1580,y772..854; focus inset 2,
+        # stroke 2. These literal pixel-center samples avoid fractional edges.
+        "edge_probes": {"top": (1556, 774, 1575, 776), "bottom": (1556, 850, 1575, 852),
+                        "left": (1553, 778, 1555, 848), "right": (1576, 778, 1578, 848)},
+    },
+}
 STATE = """B3CONTROLS4
 registration_catalog atlas-chapel-nominal-v1 sha256 c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf
 expression 0.75
@@ -188,7 +217,10 @@ def qualification(path: Path, source: Path, exe: dict) -> dict:
             "meaning": "Supplied author build report matched the current files and executable. This utility did not rebuild or independently attest source-to-binary provenance."}
 
 
-def replay(workspace: str, presentation: str) -> tuple[str, int]:
+def replay(workspace: str, presentation: str, scene: str = "standard") -> tuple[str, int]:
+    require(scene == "standard" or scene in FOCUS_SCENES, "unknown capture scene")
+    require(scene == "standard" or (workspace, presentation) == ("play", "dimensional"),
+            "focused scenes require Dimensional Play")
     # Keyboard-only replay works at every size and does not rely on dummy mouse
     # capture. Each held physical key owns a distinct logical target.
     events = [
@@ -207,14 +239,37 @@ def replay(workspace: str, presentation: str) -> tuple[str, int]:
     events.extend((f"1100 key_down {key} none 0", f"1110 key_up {key} none"))
     if presentation == "flat":
         events.extend(("1150 key_down F7 none 0", "1160 key_up F7 none"))
-    return (f"B3UIREPLAY1\nduration_ms {DURATION_MS}\n"
-            "# Upper 60/64, Lower 67 and pedal 3 stay held through the captured endpoint.\n"
-            "# Change retained Upper B 16-foot drawbar 7 -> 8 while notes are held.\n"
-            "# Upper fixed C# continues sounding; Lower uses adjustable A. No Save.\n"
-            + "\n".join(events) + "\n", len(events))
+    script = (f"B3UIREPLAY1\nduration_ms {DURATION_MS}\n"
+              "# Upper 60/64, Lower 67 and pedal 3 stay held through the captured endpoint.\n"
+              "# Change retained Upper B 16-foot drawbar 7 -> 8 while notes are held.\n"
+              "# Upper fixed C# continues sounding; Lower uses adjustable A. No Save.\n"
+              + "\n".join(events) + "\n")
+    if scene == "standard":
+        return script, len(events)  # Preserve the original eight replay bytes.
+    extra = []
+    # The model inserts 68 ordinary controls, then Upper/Lower/Pedal roving
+    # keys: 71 Play stops. From ordinal 25, Pedals is 66 and the pedal group 71.
+    # Short key taps remain ordered and leave a 250 ms applied/painted dwell.
+    for index in range(FOCUS_SCENES[scene]["tabs_after_drawbar"]):
+        offset = 1200 + 6 * index
+        extra.extend((f"{offset} key_down Tab none 0", f"{offset + 1} key_up Tab none"))
+    if scene == "toolbar-focus":
+        # ScriptedInput spells the physical Enter key "Return".
+        extra.extend(("1500 key_down Return none 0", "1510 key_up Return none", "1550 key_down W none 0"))
+    else:
+        extra.extend(("1500 key_down End none 0", "1510 key_up End none", "1550 key_down Space none 0"))
+    return (script + "# " + FOCUS_SCENES[scene]["action"] + "\n" + "\n".join(extra) + "\n",
+            len(events) + len(extra))
 
 
-def validate(data: dict, width: int, height: int, workspace: str, presentation: str, event_count: int) -> dict:
+def validate(data: dict, width: int, height: int, workspace: str, presentation: str, event_count: int,
+             scene: str = "standard") -> dict:
+    require(scene == "standard" or scene in FOCUS_SCENES, "unknown capture scene")
+    require(scene == "standard" or (width, height, workspace, presentation) == (1672, 941, "play", "dimensional"),
+            "focused scenes require reference-size Dimensional Play")
+    focus = FOCUS_SCENES.get(scene)
+    expected_pedals = focus["pedal_ids"] if focus else [3]
+    expected_note_ons = 5 if focus else 4
     require(data["schema_version"] == 3 and data["application"] == "hammond_standalone",
             "expected standalone diagnostics schema 3")
     require(data["errors"] == {"count": 0, "last": ""}, "native application reported errors")
@@ -272,13 +327,13 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
         require(record[key] is True, f"replay.{key} is false")
     require(record["duration_ms"] == DURATION_MS and record["scheduled_events"] == record["pushed_events"] == event_count,
             "replay duration or event delivery differs")
-    require(record["accepted_note_on_commands"] == 4 and record["accepted_note_off_commands"] == 0
+    require(record["accepted_note_on_commands"] == expected_note_ons and record["accepted_note_off_commands"] == 0
             and record["device_starts"] == 1 and record["observations_truncated"] is False,
             "held-note ownership, device or observation counts differ")
     require(record["controls_pending_before_shutdown"] is False and record["save_pending_before_shutdown"] is False,
             "capture endpoint has pending controls/save")
     endpoint = record["before_shutdown"]
-    require(endpoint["manual_notes"] == [[60, 64], [67]] and endpoint["pedal_ids"] == [3],
+    require(endpoint["manual_notes"] == [[60, 64], [67]] and endpoint["pedal_ids"] == expected_pedals,
             "expected Upper/Lower/Pedal holds missing")
     require(data["controls"] == record["desired_controls_before_shutdown"] == endpoint["controls"] == FINAL_CONTROLS,
             "final live control state differs")
@@ -288,6 +343,10 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
     require(any(item["controls"] == INITIAL_CONTROLS and item["manual_notes"] == [[60, 64], [67]]
                 and item["pedal_ids"] == [3] for item in record["observations"]),
             "no observed held state before the live drawbar edit")
+    if focus:
+        require(any(item["controls"] == FINAL_CONTROLS and item["manual_notes"] == [[60, 64], [67]]
+                    and item["pedal_ids"] == [3] for item in record["observations"]),
+                "no observed edited four-owner state before the focused fifth hold")
     view = data["presentation"]
     require(view["initial_workspace"] == "play" and view["initial_presentation"] == "dimensional"
             and view["observations_truncated"] is False, "unexpected startup view or truncated presentation history")
@@ -299,9 +358,9 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
     require(painted["elapsed_ms"] >= DURATION_MS and 0 < painted["rendered_image"] <= runtime["rendered_images"]
             and painted == view["before_shutdown"] == view["last_painted"], "capture is not the final replay-painted frame")
     held = painted.get("held_targets")
-    require(held == {"upper": 2, "lower": 1, "pedals": 1}
+    require(held == {"upper": 2, "lower": 1, "pedals": len(expected_pedals)}
             and all(type(value) is int for value in held.values()),
-            "actual painted held targets differ from Upper 2 / Lower 1 / Pedals 1")
+            "actual painted held targets differ from the requested Upper / Lower / Pedal owners")
     pointer = painted.get("pointer_capture")
     require(pointer == {"sdl_captured": False, "ui_captured": False, "attempts": 0,
                         "successes": 0, "losses": 0, "release_calls": 0}
@@ -313,13 +372,49 @@ def validate(data: dict, width: int, height: int, workspace: str, presentation: 
             and copied["snapshot_state"] == "current" and copied["controls_pending"] is False
             and copied["frame_clock"] > 0 and copied["publication_revision"] > 0,
             "captured frame lacks a current acknowledged copied state")
-    return {"passed": True, "actual_painted_view": painted, "callbacks": audio["callback_count"],
+    result = {"passed": True, "actual_painted_view": painted, "callbacks": audio["callback_count"],
             "rendered_frames": audio["rendered_frames"], "ui_events": event_count,
             "held_manual_notes": endpoint["manual_notes"], "held_pedal_ids": endpoint["pedal_ids"],
             "live_edit": {"target": "Upper B 16-foot retained drawbar", "before": 7, "after": 8},
             "complete_control_state_checked": True, "input_state_file_unchanged": True,
             "joined_shutdown_clear": True, "midi_source": midi["source"],
             "midi_backend_available": available, "midi_backend": backend, "midi_state": expected_midi_state}
+    if focus:
+        result["focus_scene"] = {"expected_target": focus["expected_target"], "action": focus["action"],
+                                 "original_four_holds_preserved": True, "accepted_note_on_commands": expected_note_ons,
+                                 "ordinary_focus_id_exported": False, "pixel_focus_check_required": True}
+    return result
+
+
+def validate_focus_pixels(mode: str, size: tuple[int, int], pixels: bytes, scene: str = "standard") -> dict | None:
+    """Check the real decoded capture; never synthesize or modify image bytes.
+
+    The app exports no ordinary-control focus ID. Exact cyan edge probes at
+    independently declared contract coordinates complement the replay's held
+    action witness. The source and PNG/native pixel hashes bind both checks.
+    These two focused scenes deliberately use canonical 1672x941 pixels only.
+    """
+    require(scene == "standard" or scene in FOCUS_SCENES, "unknown capture scene")
+    if scene == "standard":
+        return None
+    require(size == (1672, 941), "focused pixel checks require the 1672x941 reference frame")
+    channels = {"RGB": 3, "RGBA": 4}.get(mode)
+    require(channels is not None and len(pixels) == size[0] * size[1] * channels,
+            "focused pixel checks require complete RGB/RGBA decoded bytes")
+    focus = FOCUS_SCENES[scene]
+    cyan = bytes((165, 228, 223))  # Frozen focus color; not sampled from the candidate.
+    counts = {}
+    for edge, (left, top, right, bottom) in focus["edge_probes"].items():
+        matched = sum(pixels[offset:offset + 3] == cyan
+                      for y in range(top, bottom) for x in range(left, right)
+                      for offset in ((y * size[0] + x) * channels,))
+        require(matched == (right - left) * (bottom - top),
+                f"{scene}: {edge} cyan focus pixels missing from the declared target")
+        counts[edge] = matched
+    return {"passed": True, "expected_target": focus["expected_target"], "color_rgb": list(cyan),
+            "edge_probe_rectangles": focus["edge_probes"], "matched_pixels": counts,
+            "decoded_sha256": hashlib.sha256(pixels).hexdigest(),
+            "meaning": "All four declared target-edge probes contain exact cyan focus ink in the native frame. Combined with the replay action and retained held-state diagnostics; no ordinary focus ID is exported by the application."}
 
 
 def main() -> int:
@@ -382,11 +477,13 @@ def main() -> int:
         state = output / "inputs/controls.b3controls"
         state.write_text(STATE, encoding="ascii")
         plans = {}
-        for workspace, presentation in sorted(set((c[3], c[4]) for c in CASES)):
-            script, events = replay(workspace, presentation)
-            path = output / "inputs" / f"{workspace}-{presentation}.b3uireplay"
+        for workspace, presentation, scene in sorted(set(
+                (c[3], c[4], CASE_SCENES.get(c[0], "standard")) for c in CASES)):
+            script, events = replay(workspace, presentation, scene)
+            suffix = "" if scene == "standard" else f"-{scene}"
+            path = output / "inputs" / f"{workspace}-{presentation}{suffix}.b3uireplay"
             path.write_text(script, encoding="ascii")
-            plans[(workspace, presentation)] = (path, events)
+            plans[(workspace, presentation, scene)] = (path, events)
         inputs_before = inventory(list((output / "inputs").iterdir()), output)
         record["inputs"] = {"before": inputs_before}
         environment = {"PATH": os.defpath, "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8",
@@ -402,14 +499,15 @@ def main() -> int:
                     "production source/executable changed during capture; gallery invalid")
             working = output / "runs" / name
             working.mkdir()
-            script, events = plans[(workspace, presentation)]
+            scene = CASE_SCENES.get(name, "standard")
+            script, events = plans[(workspace, presentation, scene)]
             diagnostics = output / "diagnostics" / f"{name}.json"
             bmp, png = output / "images" / f"{name}.bmp", output / "images" / f"{name}.png"
             command = [str(exe), "--state", str(state), "--input-script", str(script), "--workspace", "play",
                        "--width", str(width), "--height", str(height), "--sample-rate", "48000", "--buffer-frames", "512",
                        "--screenshot", str(bmp), "--diagnostics", str(diagnostics)]
             case = {"name": name, "width": width, "height": height, "workspace": workspace,
-                    "presentation": presentation, "cwd": str(working), "command": command,
+                    "presentation": presentation, "scene": scene, "cwd": str(working), "command": command,
                     "timeout_seconds": args.timeout_seconds, "status": "incomplete"}
             record["cases"].append(case)
             started = time.monotonic()
@@ -429,7 +527,7 @@ def main() -> int:
             require(not process.stdout and not process.stderr, f"{name}: unexpected native output; logs retained")
             require(inventory(list((output / "inputs").iterdir()), output) == inputs_before,
                     f"{name}: input/state bytes changed")
-            case["validation"] = validate(read_json(diagnostics), width, height, workspace, presentation, events)
+            case["validation"] = validate(read_json(diagnostics), width, height, workspace, presentation, events, scene)
             case["diagnostics"] = {"path": str(diagnostics.relative_to(output)), **identity(diagnostics)}
             bmp_identity = identity(bmp)
             with Image.open(bmp) as native:
@@ -441,6 +539,9 @@ def main() -> int:
                 encoded.load()
                 require((encoded.mode, encoded.size, encoded.tobytes()) == (mode, size, pixels),
                         f"{name}: PNG conversion changed decoded pixels")
+            focus_pixels = validate_focus_pixels(mode, size, pixels, scene)
+            if focus_pixels is not None:
+                case["validation"]["focus_pixels"] = focus_pixels
             case["image"] = {"path": str(png.relative_to(output)), "native_bmp": bmp_identity,
                              "png": identity(png), "decoded_mode": mode, "width": width, "height": height,
                              "decoded_sha256": hashlib.sha256(pixels).hexdigest(),

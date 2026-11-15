@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w02_a12_numerical_admission",
+  "session": "2026-11-15-execution-continuation",
+  "recorded_utc": "2026-11-15T21:44:55.881703+00:00",
+  "observed_head": "33fa95d51e44234eef47ee21c03d29b2b311a5ee",
+  "observed_tree": "f5d9406ef099f6569a5d1f3fee27358b520bc928",
+  "decision": "admit_for_implementation_conditional_on_root_approved_text_corrections",
+  "pre_correction_documents": {
+    "docs/FRACTIONAL_CONTACT_REFERENCE.md": "3d72b64e752feb43dac73d3507cfa03f72fc431848e40d7bfa2977739b4817aa",
+    "docs/CONTACT_SWITCHING_VALIDATION.md": "b72cdb678c086d63ffe3fdcbdb9590e773ee2bf6f73f7c9dcfe05ea5c155edcf"
+  },
+  "conditions": [
+    "B is exact rational sum of admitted binary64 absolute gain/amplitude products, rounded outward; exact-zero status uses the exact sum.",
+    "Normalize samples by positive B before RMS/error calculations; reference eligibility compares scaled RMS with 1e-8.",
+    "Output bound is mathematical ideal only; no unspecified plus-rounding strict sample gate.",
+    "Full-window spectral residual is y256-y128, not continuous-oracle error.",
+    "Ceil-edge diagnostic uses same frozen 64 probes; widths .5/.25 and existing quadrature criteria; errors compare to fractional continuous reference; all evaluations remain within original ceiling.",
+    "A10 trajectory/data corrections and final contract hash freeze are owned separately."
+  ],
+  "executed_check": {
+    "command_kind": "python3 -B, inline standard-library arithmetic; no production imports or files",
+    "method": "GL8 roots obtained independently by Newton iteration on the degree-eight Legendre recurrence; weights 2/((1-x*x)*P8prime(x)^2). Integrate each panel by midpoint/radius mapping. Kernel and closed-form sine integrals evaluated directly from contract equations.",
+    "filters": [
+      {
+        "factor": 32,
+        "Z": 32.00014107819383,
+        "Z_over_L": 1.0000044086935571,
+        "DC_error": 0.0,
+        "absolute_sum": 1.8403452071802553,
+        "symmetry_error": 0.0,
+        "products_per_case": 296225,
+        "W_N256_K2_M6": 444832
+      },
+      {
+        "factor": 64,
+        "Z": 64.0002821564413,
+        "Z_over_L": 1.0000044086943953,
+        "DC_error": 1.1102230246251565e-16,
+        "absolute_sum": 1.8402310684221361,
+        "symmetry_error": 0.0,
+        "products_per_case": 592161,
+        "W_N256_K2_M6": 889248
+      },
+      {
+        "factor": 128,
+        "Z": 128.00056431288928,
+        "Z_over_L": 1.0000044086944475,
+        "DC_error": 0.0,
+        "absolute_sum": 1.8402455283718546,
+        "symmetry_error": 0.0,
+        "products_per_case": 1184033,
+        "W_N256_K2_M6": 1778080
+      },
+      {
+        "factor": 256,
+        "Z": 256.0011286257794,
+        "Z_over_L": 1.0000044086944508,
+        "DC_error": 0.0,
+        "absolute_sum": 1.8402427952028448,
+        "symmetry_error": 0.0,
+        "products_per_case": 2367777,
+        "W_N256_K2_M6": 3555744
+      }
+    ],
+    "continuous_normalizers_widths_1_half_quarter": [
+      1.000004408694451,
+      1.000004408694451,
+      1.000004408694451
+    ],
+    "sine_interval_checks": [
+      {
+        "nu": 0,
+        "phase": 0.25,
+        "a": -0.1,
+        "b": 0.02,
+        "formula": 0.12000000000000001,
+        "GL8": 0.12000000000000001,
+        "difference": 0.0
+      },
+      {
+        "nu": 0.4,
+        "phase": 0.137,
+        "a": 0.123,
+        "b": 0.127,
+        "formula": 0.003690675417885275,
+        "GL8": 0.0036906754178852755,
+        "difference": 4.336808689942018e-19
+      },
+      {
+        "nu": 0.45,
+        "phase": 0.997,
+        "a": 255.998,
+        "b": 256.0,
+        "formula": 0.0018882675734614974,
+        "GL8": 0.0018882675734614798,
+        "difference": -1.7564075194265172e-17
+      },
+      {
+        "nu": 0.020770833333333332,
+        "phase": 0.17,
+        "a": 0,
+        "b": 0.00390625,
+        "formula": 0.003423552497645062,
+        "GL8": 0.003423552497645062,
+        "difference": 0.0
+      },
+      {
+        "nu": 1e-06,
+        "phase": 0.21,
+        "a": 1.2,
+        "b": 1.200000001,
+        "formula": 9.685851163197598e-10,
+        "GL8": 9.685851163197598e-10,
+        "difference": 0.0
+      }
+    ],
+    "main_FIR_products": 159847056,
+    "scope": "arithmetic observations only, not candidate or full switched-oracle implementation"
+  },
+  "resource_analysis": {
+    "main_probe_panel_baseline_evaluations": 4128768,
+    "legacy_full_window_quarter_panel_baseline_evaluations": 10653696,
+    "legacy_probe_quarter_panel_baseline_evaluations": 2359296,
+    "baseline_meaning": "Each assumes 32 host frames of integration per output before actual edge subdivisions, clipping to observation support, and optional exact-zero interval skipping; these are workload illustrations, not measured counts or feasibility proofs.",
+    "caps": {
+      "W_per_invocation": 20000000,
+      "suite_FIR_products": 180000000,
+      "suite_oracle_evaluations": 10000000,
+      "suite_elapsed_seconds": 300,
+      "peak_resident_MiB": 256,
+      "retained_reports_MiB": 32
+    },
+    "performance_status": "unmeasured; any overrun is incomplete"
+  },
+  "not_executed": [
+    "candidate implementation",
+    "switched fixture convergence",
+    "full response/DFT suite",
+    "memory/time benchmark",
+    "C++ build",
+    "native audio",
+    "physical capture"
+  ],
+  "scientific_limits": [
+    "64 probes do not admit a full-window reference",
+    "finite compact-support kernel is not strictly bandlimited",
+    "zero-phase offline reference is acausal",
+    "synthetic numerical convergence does not establish hardware fidelity"
+  ],
+  "next_action": "Root incorporates approved corrections and freezes hashes; assigned implementers then execute unchanged criteria."
+}

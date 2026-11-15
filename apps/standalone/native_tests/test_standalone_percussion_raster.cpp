@@ -81,8 +81,9 @@ std::vector<Case> cases() {
         for (const unsigned clip : {1U, 2U})
             result.push_back({1672, 941, scale, 13, 0, 0, true,
                               UiPresentation::Dimensional, UiWorkspace::Play, clip});
-    // These straddle the separate-eligibility-line threshold independently of
-    // the activation threshold. Neither expected height is computed here.
+    // Retain the historical eligibility-threshold fixtures and their indices.
+    // The whole-reference composition now has a dedicated eligibility row at
+    // both heights; neither fixture may be dropped as redundant.
     for (const float height : {933.25F, 933.5F})
         for (const float scale : {1.0F, 1.5F, 2.0F})
             result.push_back({1672, height, scale, 3, 2, 3, true});
@@ -148,6 +149,12 @@ UiModel state_for(const Case& test) {
 bool active(const Case& test) {
     return test.workspace == UiWorkspace::Play && test.presentation == UiPresentation::Dimensional &&
            test.width >= 1400 && test.height >= 820;
+}
+UiRect canonical(const Case& test, float left, float top, float width, float height) {
+    // Independent contract literals: map endpoints without production helpers.
+    const float sx = test.width / 1672.0F, sy = test.height / 941.0F;
+    return {left * sx, top * sy, (left + width) * sx - left * sx,
+            (top + height) * sy - top * sy};
 }
 bool equal(SDL_Rect a, SDL_Rect b) { return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h; }
 struct Transform {
@@ -228,12 +235,13 @@ public:
         return read(before);
     }
     Frame text(std::string_view value, UiRect box, float requested, TextFace face,
-               std::vector<UiRect>& glyphs) {
+               std::vector<UiRect>& glyphs, float padding) {
         const auto coordinates = transform(renderer_.get());
         drawing_.clear({0, 0, 0, 0});
         float size = std::min(requested, box.height / 1.2F);
         const float width = drawing_.text_width(value, size, face);
-        if (width > box.width - 6 && width > 0) size *= std::max(0.1F, box.width - 6) / width;
+        if (width > box.width - 2 * padding && width > 0)
+            size *= std::max(0.1F, box.width - 2 * padding) / width;
         const float left = box.x + (box.width - drawing_.text_width(value, size, face)) / 2;
         const float top = box.y + (box.height - size * 1.2F) / 2;
         drawing_.text(value, left, top, size, {255, 255, 255}, face);
@@ -268,9 +276,9 @@ private:
 
 double light(Pixel p) { return .2126 * p[0] + .7152 * p[1] + .0722 * p[2]; }
 void literal_ink(Target& target, const Frame& actual, std::string_view value, UiRect box,
-                 float size, TextFace face, bool dark) {
+                 float size, TextFace face, bool dark, float padding) {
     std::vector<UiRect> glyphs;
-    const auto expected = target.text(value, box, size, face, glyphs);
+    const auto expected = target.text(value, box, size, face, glyphs, padding);
     const auto& t = actual.coordinates;
     for (const auto& glyph : glyphs) {
         std::size_t samples = 0, matches = 0;
@@ -303,14 +311,22 @@ void ordinary_acceptance(const Case& test, const UiModel& model, Target& target,
     }
     if (!active(test)) return;
     const auto& layout = model.layout();
+    const float sx = test.width / 1672.0F, sy = test.height / 941.0F;
+    const float font_scale = std::min(sx, sy);
+    constexpr std::array<float, 4> lefts{164, 418, 256, 337};
     constexpr std::array<std::string_view, 4> captions{"PERC", "HARM", "VOL", "DECAY"};
     const std::array<std::string_view, 4> values{
         (test.values & 1U) != 0 ? "ON" : "OFF", (test.values & 2U) != 0 ? "3RD" : "2ND",
         (test.values & 4U) != 0 ? "SOFT" : "NORM", (test.values & 8U) != 0 ? "FAST" : "SLOW"};
     for (const auto& control : std::span(layout.controls).first(layout.control_count)) {
         if (control.id.kind != UiControlKind::Percussion) continue;
-        literal_ink(target, frame, captions[control.id.index], control.label_bounds, 10.5F, TextFace::Serif, false);
-        literal_ink(target, frame, values[control.id.index], control.value_bounds, 17, TextFace::Serif, true);
+        const float left = lefts[control.id.index];
+        literal_ink(target, frame, captions[control.id.index],
+            canonical(test, left - 2, 233, 78, 14), 13.5F * font_scale,
+            TextFace::Serif, false, 3 * sx);
+        literal_ink(target, frame, values[control.id.index],
+            canonical(test, left + 5, 183, 64, 38), 20 * font_scale,
+            TextFace::Serif, true, 3 * sx);
         if (control.id.index == test.focus) {
             std::size_t cyan = 0;
             const auto& t = frame.coordinates;
@@ -324,16 +340,9 @@ void ordinary_acceptance(const Case& test, const UiModel& model, Target& target,
             ++totals.focus_cases;
         }
     }
-    const auto p = layout.performance_panel;
-    const float group = p.width * .46F;
     const bool eligible = test.route == 0;
-    if (p.height >= 104) {
-        literal_ink(target, frame, eligible ? "UPPER B ROUTE ACTIVE" : "REQUIRES UPPER B",
-            {p.x + 12, p.y + p.height - 16, group - 24, 11}, 9, TextFace::Sans, false);
-    } else {
-        literal_ink(target, frame, eligible ? "PERCUSSION / UPPER B ACTIVE" : "PERCUSSION / REQUIRES UPPER B",
-            {p.x + 17, p.y + 3, group - 34, 18}, 10.5F, TextFace::Serif, false);
-    }
+    literal_ink(target, frame, eligible ? "UPPER B ROUTE ACTIVE" : "REQUIRES UPPER B",
+        canonical(test, 90, 248, 448, 14), 12 * font_scale, TextFace::Sans, false, 3 * sx);
 }
 
 void rect(std::ostream& out, UiRect r) { out << '[' << r.x << ',' << r.y << ',' << r.width << ',' << r.height << ']'; }
@@ -359,8 +368,9 @@ void stream(std::size_t index, const Case& test, const UiModel& model, const Fra
     const auto p = model.layout().performance_panel;
     const float group = p.width * .46F;
     add({p.x + 17, p.y + 3, group - 34, 18});
-    // The two expressly admitted old/new eligibility rectangles; neither
-    // expands the mask to the whole panel or neighboring expression/divider.
+    // Schema-1 regions preserve the historical percussion-only stream format.
+    // They are not an admitted mask for whole-composition comparisons, which
+    // require the separately declared old/new furniture and parent union.
     if (p.height >= 92) add({p.x + 12, p.y + 73, group - 24, 16});
     if (active(test) && p.height >= 104) add({p.x + 12, p.y + p.height - 16, group - 24, 11});
     out << "],\"bytes\":" << frame.pixels.size() * sizeof(Pixel) << "}\n";

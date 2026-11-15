@@ -590,6 +590,24 @@ void equal_layout(const UiLayout& a, const UiLayout& b) {
     }
 }
 
+// Test-owned interpretation of the frozen 1672x941 contract. No production
+// reference-composition predicate or geometry helper supplies expected values.
+bool wide_reference(const UiLayout& layout) {
+    return layout.workspace == UiWorkspace::Play &&
+           layout.presentation == UiPresentation::Dimensional &&
+           layout.width >= 1400 && layout.width <= 8192 &&
+           layout.height >= 820 && layout.height <= 8192;
+}
+
+UiRect contract_rect(const UiLayout& layout, UiRect canonical) {
+    const float sx = layout.width / 1672.0F;
+    const float sy = layout.height / 941.0F;
+    const float left = canonical.x * sx;
+    const float top = canonical.y * sy;
+    return {left, top, (canonical.x + canonical.width) * sx - left,
+            (canonical.y + canonical.height) * sy - top};
+}
+
 void check_keyboard(const UiLayout& layout, std::span<const UiKeyGeometry> keys,
                     UiTarget target, UiRect panel, std::span<const int> naturals,
                     std::span<const int> accidentals) {
@@ -601,15 +619,23 @@ void check_keyboard(const UiLayout& layout, std::span<const UiKeyGeometry> keys,
     };
     // Evaluate the reviewed homography independently in double precision.
     // Expected coordinates do not come from UiKeyGeometry or a layout helper.
-    const double ratio = target == UiTarget::Pedals || layout.presentation == UiPresentation::Flat ? 1.0 : 0.94;
-    const double width = static_cast<double>(panel.width) - 16.0;
-    const double height = static_cast<double>(panel.height) - 30.0;
+    const bool reference = wide_reference(layout);
+    const UiRect authored = reference ?
+        (target == UiTarget::Upper ? UiRect{232, 528, 890, 170} :
+         target == UiTarget::Lower ? UiRect{224, 698, 898, 172} :
+                                    UiRect{1138, 752, 450, 110}) : panel;
+    const double ratio = target == UiTarget::Pedals || layout.presentation == UiPresentation::Flat ? 1.0 :
+        reference ? (target == UiTarget::Upper ? 24.0 / 25.0 : 19.0 / 20.0) : 0.94;
+    const double width = static_cast<double>(authored.width) - 16.0;
+    const double height = static_cast<double>(authored.height) - (reference ? 28.0 : 30.0);
     const auto project = [&](double ordinal, double depth) {
         const double denominator = 1.0 - (1.0 - ratio) * depth;
-        return UiPoint{
-            static_cast<float>(panel.x + 8.0 + width * 0.5 +
+        const UiPoint canonical{
+            static_cast<float>(authored.x + 8.0 + width * 0.5 +
                                width * ratio * (ordinal / static_cast<double>(naturals.size()) - 0.5) / denominator),
-            static_cast<float>(panel.y + 22.0 + height * ratio * depth / denominator)};
+            static_cast<float>(authored.y + (reference ? 20.0 : 22.0) + height * ratio * depth / denominator)};
+        return reference ? UiPoint{canonical.x * (layout.width / 1672.0F),
+                                   canonical.y * (layout.height / 941.0F)} : canonical;
     };
     CHECK(keys.size() == naturals.size() + accidentals.size());
     for (const auto pitches : {naturals, accidentals}) {
@@ -772,6 +798,42 @@ void check_reference_regions(const UiLayout& layout, const LayoutCase& expected)
     CHECK(layout.show_cabinet == expected.cabinet);
     CHECK(layout.bank_controls_in_cheeks == expected.cheeks);
     CHECK(layout.sidebar_pedals == sidebar);
+    if (wide_reference(layout)) {
+        near_rect(layout.header, contract_rect(layout, {72, 10, 1528, 102}));
+        near_rect(layout.performance_panel, contract_rect(layout, {72, 125, 1044, 139}));
+        near_rect(layout.keyboard_toolbar, contract_rect(layout, {1140, 614, 448, 64}));
+        near_rect(layout.pedal_panel, contract_rect(layout, {1138, 752, 450, 110}));
+        near_rect(layout.footer, contract_rect(layout, {48, 889, 1556, 36}));
+        near_rect(layout.workspace_panel, contract_rect(layout, {72, 125, 1528, 745}));
+        near_rect(layout.registration_panels[0], contract_rect(layout, {72, 269, 528, 239}));
+        near_rect(layout.registration_panels[1], contract_rect(layout, {600, 269, 516, 239}));
+        near_rect(layout.manual_panels[0], contract_rect(layout, {232, 528, 890, 170}));
+        near_rect(layout.manual_panels[1], contract_rect(layout, {224, 698, 898, 172}));
+        near_rect(layout.manual_rail_panels[0], contract_rect(layout, {48, 528, 184, 170}));
+        near_rect(layout.manual_rail_panels[1], contract_rect(layout, {32, 698, 192, 172}));
+        near_rect(layout.preset_key_panels[0], contract_rect(layout, {58, 607, 164, 81}));
+        near_rect(layout.preset_key_panels[1], contract_rect(layout, {42, 777, 172, 83}));
+        near_rect(layout.cabinet_panel, contract_rect(layout, {1126, 125, 478, 745}));
+        const auto envelope = contract_rect(layout, {1132, 174, 466, 397});
+        const double art_scale = std::min(static_cast<double>(envelope.width) / 466.0,
+                                          static_cast<double>(envelope.height) / 397.0);
+        const float art_width = static_cast<float>(466.0 * art_scale);
+        const float art_height = static_cast<float>(397.0 * art_scale);
+        near_rect(layout.cabinet_art,
+                  {envelope.x + (envelope.width - art_width) / 2.0F, envelope.y, art_width, art_height});
+        contained(layout.cabinet_art, envelope);
+        contained(layout.keyboard_toolbar, layout.cabinet_panel);
+        contained(layout.pedal_panel, layout.cabinet_panel);
+        CHECK_NEAR(layout.cabinet_art.width / layout.cabinet_art.height, 466.0F / 397.0F, 0.00001F);
+        for (const auto& panel : layout.manual_panels) {
+            CHECK(!overlaps(panel, layout.pedal_panel));
+            CHECK(!overlaps(panel, layout.cabinet_panel));
+        }
+        for (const auto& key : layout.pedal_keys) contained(key.bounds, layout.pedal_panel);
+        CHECK(ui_hit_test(layout, {layout.cabinet_art.x + layout.cabinet_art.width / 2,
+                                  layout.cabinet_art.y + layout.cabinet_art.height / 2}).kind == UiControlKind::None);
+        return;
+    }
     near_rect(layout.header, {expected.margin, expected.row_top[0], expected.content_width, expected.row_height[0]});
     near_rect(layout.performance_panel,
               {expected.margin, expected.row_top[1], expected.player_width, expected.row_height[1]});
@@ -836,6 +898,9 @@ void check_reference_regions(const UiLayout& layout, const LayoutCase& expected)
 
 void check_control_regions(const UiLayout& layout) {
     std::array<std::size_t, 22> kinds{};
+    const bool reference = wide_reference(layout);
+    const float sx = layout.width / 1672.0F;
+    const float sy = layout.height / 941.0F;
     for (std::size_t index = 0; index < layout.control_count; ++index) {
         const auto& entry = layout.controls[index];
         const bool exterior_percussion = entry.id.kind == UiControlKind::Percussion &&
@@ -848,48 +913,71 @@ void check_control_regions(const UiLayout& layout) {
             parent = layout.bank_controls_in_cheeks ?
                 layout.manual_rail_panels[static_cast<std::size_t>(entry.id.manual)] :
                 layout.registration_panels[static_cast<std::size_t>(entry.id.manual)];
-            CHECK(entry.bounds.height == (layout.bank_controls_in_cheeks ? 24 : 26));
+            if (reference) CHECK_NEAR(entry.bounds.height, 22.0F * sy, 0.001F);
+            else CHECK(entry.bounds.height == (layout.bank_controls_in_cheeks ? 24 : 26));
             break;
         case UiControlKind::PresetKey:
             parent = layout.preset_key_panels[static_cast<std::size_t>(entry.id.manual)];
             CHECK(entry.id.bank == DrawbarBank::A && entry.id.index < 12);
-            CHECK(entry.label_bounds.height ==
-                ((entry.id.index == 1 || entry.id.index == 3 || entry.id.index == 6 ||
-                  entry.id.index == 8 || entry.id.index == 10) ? 20 : 11));
+            {
+                const float label_height =
+                    (entry.id.index == 1 || entry.id.index == 3 || entry.id.index == 6 ||
+                     entry.id.index == 8 || entry.id.index == 10) ? 20.0F : 11.0F;
+                if (reference) CHECK_NEAR(entry.label_bounds.height, label_height * sy, 0.001F);
+                else CHECK(entry.label_bounds.height == label_height);
+            }
             CHECK(empty(entry.value_bounds) && empty(entry.track));
             break;
         case UiControlKind::ManualDrawbar:
             parent = layout.registration_panels[static_cast<std::size_t>(entry.id.manual)];
-            CHECK(entry.track.width == 4 && entry.track.height >= 28);
+            if (reference) {
+                CHECK_NEAR(entry.track.width, 4.0F * sx, 0.001F);
+                CHECK_NEAR(entry.track.height, 118.0F * sy, 0.001F);
+            } else CHECK(entry.track.width == 4 && entry.track.height >= 28);
             break;
         case UiControlKind::Percussion:
         case UiControlKind::Expression:
         case UiControlKind::PedalDrawbar:
             parent = layout.performance_panel;
             if (entry.id.kind == UiControlKind::Percussion) {
-                if (exterior_percussion) CHECK(entry.bounds.height > 42 && entry.bounds.height <= 48);
+                if (reference) CHECK_NEAR(entry.bounds.height, 52.0F * sy, 0.001F);
+                else if (exterior_percussion) CHECK(entry.bounds.height > 42 && entry.bounds.height <= 48);
                 else CHECK(entry.bounds.height == 42);
             }
-            if (entry.id.kind == UiControlKind::PedalDrawbar) CHECK(entry.track.width == 4 && entry.track.height >= 24);
-            if (entry.id.kind == UiControlKind::Expression) CHECK(entry.track.height == 4 && entry.track.width > 100);
+            if (entry.id.kind == UiControlKind::PedalDrawbar) {
+                if (reference) {
+                    CHECK_NEAR(entry.track.width, 4.0F * sx, 0.001F);
+                    CHECK_NEAR(entry.track.height, 43.0F * sy, 0.001F);
+                } else CHECK(entry.track.width == 4 && entry.track.height >= 24);
+            }
+            if (entry.id.kind == UiControlKind::Expression) {
+                if (reference) {
+                    CHECK_NEAR(entry.track.height, 4.0F * sy, 0.001F);
+                    CHECK_NEAR(entry.track.width, 222.0F * sx, 0.001F);
+                } else CHECK(entry.track.height == 4 && entry.track.width > 100);
+            }
             break;
         case UiControlKind::KeyboardTarget:
         case UiControlKind::OctaveDown:
         case UiControlKind::OctaveUp:
             parent = layout.keyboard_toolbar;
-            CHECK(entry.bounds.height == 28);
+            if (reference) CHECK_NEAR(entry.bounds.height, 26.0F * sy, 0.001F);
+            else CHECK(entry.bounds.height == 28);
             break;
         case UiControlKind::Workspace:
             parent = layout.header;
-            CHECK(entry.bounds.height == (layout.show_cabinet ? 42 : 32));
+            if (reference) CHECK_NEAR(entry.bounds.height, 46.0F * sy, 0.001F);
+            else CHECK(entry.bounds.height == (layout.show_cabinet ? 42 : 32));
             break;
         case UiControlKind::Presentation:
             parent = layout.header;
-            CHECK(entry.bounds.height == 24);
+            if (reference) CHECK_NEAR(entry.bounds.height, 24.0F * sy, 0.001F);
+            else CHECK(entry.bounds.height == 24);
             break;
         default:
             parent = layout.header;
-            CHECK(entry.bounds.height == (layout.show_cabinet ? 30 : 28));
+            if (reference) CHECK_NEAR(entry.bounds.height, 28.0F * sy, 0.001F);
+            else CHECK(entry.bounds.height == (layout.show_cabinet ? 30 : 28));
             break;
         }
         contained(entry.bounds, parent);
@@ -925,7 +1013,13 @@ void check_control_regions(const UiLayout& layout) {
             layout.registration_panels[static_cast<std::size_t>(manual)];
         const auto edit_a = geometry(layout, {UiControlKind::EditBank, manual, DrawbarBank::A});
         const auto edit_b = geometry(layout, {UiControlKind::EditBank, manual, DrawbarBank::B});
-        if (layout.bank_controls_in_cheeks) {
+        if (reference) {
+            const float left = manual == Manual::Upper ? 58.0F : 42.0F;
+            const float top = manual == Manual::Upper ? 579.0F : 749.0F;
+            const float width = manual == Manual::Upper ? 80.0F : 84.0F;
+            near_rect(edit_a.bounds, contract_rect(layout, {left, top, width, 22}));
+            near_rect(edit_b.bounds, contract_rect(layout, {left + width + 4, top, width, 22}));
+        } else if (layout.bank_controls_in_cheeks) {
             CHECK_NEAR(edit_a.bounds.x, source.x + 8, 0.001F);
             CHECK_NEAR(edit_b.bounds.x + edit_b.bounds.width, source.x + source.width - 8, 0.001F);
             CHECK_NEAR(edit_a.bounds.y, source.y + 22, 0.001F);
@@ -946,20 +1040,27 @@ void check_control_regions(const UiLayout& layout) {
 void check_preset_keys(const UiLayout& layout) {
     constexpr std::array<std::uint8_t, 7> naturals{0, 2, 4, 5, 7, 9, 11};
     constexpr std::array<std::uint8_t, 5> sharps{1, 3, 6, 8, 10};
+    const bool reference = wide_reference(layout);
+    const float sx = reference ? layout.width / 1672.0F : 1.0F;
+    const float sy = reference ? layout.height / 941.0F : 1.0F;
     for (const auto manual : {Manual::Upper, Manual::Lower}) {
         const auto division = static_cast<std::size_t>(manual);
         const auto& panel = layout.preset_key_panels[division];
-        CHECK(panel.width >= 140 && panel.width <= 152);
-        CHECK(panel.height >= 42.59F);
+        if (reference) {
+            near_rect(panel, contract_rect(layout, division == 0 ? UiRect{58, 607, 164, 81} : UiRect{42, 777, 172, 83}));
+        } else {
+            CHECK(panel.width >= 140 && panel.width <= 152);
+            CHECK(panel.height >= 42.59F);
+        }
         for (std::uint8_t index = 0; index < 12; ++index) {
             const auto identity = preset_key(manual, index);
             const auto& entry = layout.controls[12 + division * 23 + index];
             CHECK(entry.id == identity); // EDIT A, EDIT B, C..B, drawbars.
             const bool sharp = std::find(sharps.begin(), sharps.end(), index) != sharps.end();
-            const float label_height = sharp ? 20.0F : 11.0F;
+            const float label_height = (sharp ? 20.0F : 11.0F) * sy;
             near_rect(entry.label_bounds,
-                      {entry.bounds.x + 1, entry.bounds.y + entry.bounds.height - label_height - 2,
-                       entry.bounds.width - 2, label_height});
+                      {entry.bounds.x + sx, entry.bounds.y + entry.bounds.height - label_height - 2 * sy,
+                       entry.bounds.width - 2 * sx, label_height});
             std::uint32_t parameter = 0;
             CHECK(ui_parameter_id(identity, parameter));
             CHECK(parameter == (manual == Manual::Upper ? 20480U : 20481U));
@@ -981,7 +1082,10 @@ void check_preset_keys(const UiLayout& layout) {
         for (const auto index : sharps) {
             const auto id = preset_key(manual, index);
             const auto box = geometry(layout, id).bounds;
-            CHECK(box.width >= 12 && box.height >= 26.41F);
+            if (reference) {
+                CHECK_NEAR(box.width, (division == 0 ? 164.0F : 172.0F) * 0.60F / 7.0F * sx, 0.001F);
+                CHECK_NEAR(box.height, (division == 0 ? 81.0F : 83.0F) * 0.62F * sy, 0.001F);
+            } else CHECK(box.width >= 12 && box.height >= 26.41F);
             const auto next = geometry(layout, preset_key(manual, static_cast<std::uint8_t>(index + 1))).bounds;
             near_rect(box, {next.x - panel.width * 0.30F / 7, panel.y,
                            panel.width * 0.60F / 7, panel.height * 0.62F});
@@ -1023,7 +1127,8 @@ void layout_and_hit_boundaries() {
         std::size_t visible_drawbars = 0;
         for (std::size_t index = 0; index < layout.control_count; ++index) {
             const auto& entry = layout.controls[index];
-            CHECK(entry.bounds.width > 0 && entry.bounds.height >= 24);
+            CHECK(entry.bounds.width > 0 && entry.bounds.height > 0);
+            if (!wide_reference(layout)) CHECK(entry.bounds.height >= 24);
             CHECK(ui_hit_test(layout, {entry.bounds.x + entry.bounds.width / 2,
                                       entry.bounds.y + entry.bounds.height / 2}) == entry.id);
             CHECK(entry.bounds.x >= 0 && entry.bounds.y >= 0);
@@ -1059,12 +1164,12 @@ void layout_and_hit_boundaries() {
             near_rect(layout.manual_keys[0][0].bounds, {200, 496, 59.253333F, 108});
         }
         if (size.x == 1672) {
-            near_rect(geometry(layout, {UiControlKind::Workspace}).bounds, {71.896F, 46, 112, 42});
-            near_rect(geometry(layout, {UiControlKind::SaveControls}).bounds, {1314.104F, 26, 90, 30});
-            near_rect(geometry(layout, {UiControlKind::Help}).bounds, {1510.104F, 26, 90, 30});
-            near_rect(geometry(layout, {UiControlKind::MidiSettings}).bounds, {1412.104F, 62, 90, 30});
-            near_rect(geometry(layout, {UiControlKind::Panic}).bounds, {1510.104F, 62, 90, 30});
-            near_rect(geometry(layout, {UiControlKind::Presentation}).bounds, {1232.104F, 86, 70, 24});
+            near_rect(geometry(layout, {UiControlKind::Workspace}).bounds, {100, 50, 130, 46});
+            near_rect(geometry(layout, {UiControlKind::SaveControls}).bounds, {1312, 25, 88, 28});
+            near_rect(geometry(layout, {UiControlKind::Help}).bounds, {1506, 25, 88, 28});
+            near_rect(geometry(layout, {UiControlKind::MidiSettings}).bounds, {1409, 61, 88, 28});
+            near_rect(geometry(layout, {UiControlKind::Panic}).bounds, {1506, 61, 88, 28});
+            near_rect(geometry(layout, {UiControlKind::Presentation}).bounds, {1228, 78, 70, 24});
         }
         UiLayout flat;
         CHECK(make_ui_layout(size.x, size.y, {DrawbarBank::A, DrawbarBank::B}, flat,
@@ -1073,6 +1178,14 @@ void layout_and_hit_boundaries() {
         check_keyboard(flat, flat.manual_keys[0], UiTarget::Upper, flat.manual_panels[0], manual_naturals, manual_accidentals);
         check_keyboard(flat, flat.manual_keys[1], UiTarget::Lower, flat.manual_panels[1], manual_naturals, manual_accidentals);
         check_keyboard(flat, flat.pedal_keys, UiTarget::Pedals, flat.pedal_panel, pedal_naturals, pedal_accidentals);
+        if (size.x == 1672) {
+            near_rect(geometry(flat, {UiControlKind::Workspace}).bounds, {71.896F, 46, 112, 42});
+            near_rect(geometry(flat, {UiControlKind::SaveControls}).bounds, {1314.104F, 26, 90, 30});
+            near_rect(geometry(flat, {UiControlKind::Help}).bounds, {1510.104F, 26, 90, 30});
+            near_rect(geometry(flat, {UiControlKind::MidiSettings}).bounds, {1412.104F, 62, 90, 30});
+            near_rect(geometry(flat, {UiControlKind::Panic}).bounds, {1510.104F, 62, 90, 30});
+            near_rect(geometry(flat, {UiControlKind::Presentation}).bounds, {1232.104F, 86, 70, 24});
+        }
     }
     UiLayout layout;
     CHECK(make_ui_layout(1280, 900, {DrawbarBank::A, DrawbarBank::B}, layout));

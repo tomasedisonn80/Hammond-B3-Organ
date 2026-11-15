@@ -6,6 +6,7 @@
 #include "hammond/ParameterBridge.h"
 #include "hammond/PerformanceInput.h"
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstddef>
@@ -195,6 +196,53 @@ struct UiLayout {
     UiPresentation presentation{UiPresentation::Dimensional};
     UiRect workspace_panel{};
 };
+
+// The wide Dimensional Play composition is authored in 1672x941 logical units.
+// Keep its predicate and endpoint mapping shared by layout and painting; startup
+// dimensions above and every inactive layout retain their existing meaning.
+struct ReferenceCompositionScale { float sx, sy, f; };
+
+[[nodiscard]] inline bool reference_composition_active(const UiLayout& layout) noexcept {
+    return layout.workspace == UiWorkspace::Play &&
+           layout.presentation == UiPresentation::Dimensional &&
+           layout.width >= 1400.0F && layout.width <= kUiMaximumDimension &&
+           layout.height >= 820.0F && layout.height <= kUiMaximumDimension;
+}
+
+// Precondition: layout is a valid active reference composition.
+[[nodiscard]] inline ReferenceCompositionScale
+reference_composition_scale(const UiLayout& layout) noexcept {
+    const float sx = layout.width / 1672.0F;
+    const float sy = layout.height / 941.0F;
+    return {sx, sy, std::min(sx, sy)};
+}
+
+[[nodiscard]] inline UiPoint reference_composition_point(
+    UiPoint canonical, ReferenceCompositionScale scale) noexcept {
+    return {canonical.x * scale.sx, canonical.y * scale.sy};
+}
+
+[[nodiscard]] inline UiRect reference_composition_edges(
+    float left, float top, float right, float bottom,
+    ReferenceCompositionScale scale) noexcept {
+    const UiPoint first = reference_composition_point({left, top}, scale);
+    const UiPoint last = reference_composition_point({right, bottom}, scale);
+    return {first.x, first.y, last.x - first.x, last.y - first.y};
+}
+
+[[nodiscard]] inline UiRect reference_composition_rect(
+    UiRect canonical, ReferenceCompositionScale scale) noexcept {
+    return reference_composition_edges(canonical.x, canonical.y,
+        canonical.x + canonical.width, canonical.y + canonical.height, scale);
+}
+
+[[nodiscard]] inline UiQuad reference_composition_quad(
+    const UiQuad& canonical, ReferenceCompositionScale scale) noexcept {
+    UiQuad result;
+    for (std::size_t index = 0; index < result.points.size(); ++index)
+        result.points[index] = reference_composition_point(canonical.points[index], scale);
+    return result;
+}
 
 // Validation failure preserves destination. The same function supplies the
 // renderer and input handler; neither derives a second keyboard geometry.

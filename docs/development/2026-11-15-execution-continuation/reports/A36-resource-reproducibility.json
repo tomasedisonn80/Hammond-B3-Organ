@@ -1,0 +1,1190 @@
+{
+  "schema_version": 1,
+  "reviewer": "A36 /root/w06_a36_resource_repro",
+  "observed_at_utc": "2026-11-15T22:39:03.997001+00:00",
+  "status": "passed_with_reconstruction_and_platform_limits",
+  "failures": [],
+  "scope": "Read-only audit; no numerical/raster matrix, capture, configure, build, deletion, credential search, external publication, or production/shared-document edit. Only assigned A36 note/report written. Sizes are point-in-time measurements; concurrent root integration can change them.",
+  "source": {
+    "repository": "/workspace/scratch/ade21b726509/Hammond-B3-Organ",
+    "base_commit": "33fa95d51e44234eef47ee21c03d29b2b311a5ee",
+    "base_tree": "f5d9406ef099f6569a5d1f3fee27358b520bc928",
+    "uncommitted_overlay_required": true,
+    "base_alone_reconstructs_new_implementation": false
+  },
+  "storage": {
+    "available_bytes": 57404362752,
+    "available_GiB": 53.461978912353516,
+    "footprints": {
+      "checkout": {
+        "path": "/workspace/scratch/ade21b726509/Hammond-B3-Organ",
+        "allocated_tree_bytes": 226775040,
+        "regular_file_logical_bytes": 217946756,
+        "regular_files": 3780
+      },
+      "native_build": {
+        "path": "/workspace/scratch/ade21b726509/build-native",
+        "allocated_tree_bytes": 107069440,
+        "regular_file_logical_bytes": 104378444,
+        "regular_files": 619
+      },
+      "pinned_sdl": {
+        "path": "/workspace/scratch/ade21b726509/SDL2",
+        "allocated_tree_bytes": 82690048,
+        "regular_file_logical_bytes": 87464328,
+        "regular_files": 1782
+      },
+      "qualified_relocated_package_prefix": {
+        "path": "/workspace/scratch/ade21b726509/contact-reference-relocated-v2",
+        "allocated_tree_bytes": 417792,
+        "regular_file_logical_bytes": 263613,
+        "regular_files": 48
+      },
+      "unqualified_intermediate_package_prefix": {
+        "path": "/workspace/scratch/ade21b726509/contact-reference-install-v1",
+        "allocated_tree_bytes": 417792,
+        "regular_file_logical_bytes": 263316,
+        "regular_files": 48
+      },
+      "session_reports": {
+        "path": "/workspace/scratch/ade21b726509/Hammond-B3-Organ/docs/development/2026-11-15-execution-continuation/reports",
+        "allocated_tree_bytes": 10084352,
+        "regular_file_logical_bytes": 9918541,
+        "regular_files": 54
+      },
+      "gallery_with_readme": {
+        "path": "/workspace/scratch/ade21b726509/Hammond-B3-Organ/examples/demos/whole-reference-layout-v1",
+        "allocated_tree_bytes": 5492736,
+        "regular_file_logical_bytes": 5409803,
+        "regular_files": 59
+      },
+      "draft_capture": {
+        "path": "/workspace/scratch/ade21b726509/draft-wide-capture",
+        "allocated_tree_bytes": 7049216,
+        "regular_file_logical_bytes": 7030279,
+        "regular_files": 8
+      }
+    },
+    "native_build_cache_paths": [
+      "build-native/CMakeCache.txt"
+    ],
+    "pinned_sdl_commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+    "pinned_sdl_worktree_clean": true,
+    "native_configuration": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "HAMMOND_BUILD_STANDALONE": "ON",
+      "HAMMOND_BUILD_VST3": "OFF",
+      "HAMMOND_ENABLE_MIDI": "OFF",
+      "HAMMOND_ENABLE_SANITIZERS": "OFF",
+      "HAMMOND_SDL2_ROOT": "/workspace/scratch/ade21b726509/SDL2",
+      "SDL_ALSA": "OFF"
+    },
+    "raw_file_audit_scope": [
+      "/workspace/scratch/ade21b726509/Hammond-B3-Organ/docs/development/2026-11-15-execution-continuation",
+      "/workspace/scratch/ade21b726509/Hammond-B3-Organ/examples/demos/whole-reference-layout-v1",
+      "/workspace/scratch/ade21b726509/build-native",
+      "/workspace/scratch/ade21b726509/tmp"
+    ],
+    "raw_files_in_scope": [],
+    "retained_draft_bmp": {
+      "path": "/workspace/scratch/ade21b726509/draft-wide-capture/play.bmp",
+      "bytes": 6293530,
+      "sha256": "ea5fb43b5afa3dfc5276597c9f5672676c8e5cbc6e68273c8be206fb93065ff5",
+      "scope": "draft only, outside final gallery and 66-pair matrix",
+      "action": "root decides whether reproducible draft cleanup is appropriate; A36 deletes nothing"
+    },
+    "no_other_workspace_inspected": true
+  },
+  "study": {
+    "status": "passed",
+    "fixture_count": 36,
+    "render_count": 144,
+    "samples_per_render": 289,
+    "budgets": {
+      "external_process_wall_seconds": {
+        "observed": 21.728087337000034,
+        "ceiling": 300,
+        "passed": true
+      },
+      "exact_child_peak_resident_bytes": {
+        "observed": 36974592,
+        "ceiling": 268435456,
+        "passed": true
+      },
+      "fir_product_bound": {
+        "observed": 159847056,
+        "ceiling": 180000000,
+        "passed": true
+      },
+      "oracle_integrand_evaluations": {
+        "observed": 3385624,
+        "ceiling": 10000000,
+        "passed": true
+      },
+      "maximum_declared_invocation_work": {
+        "observed": 3555780,
+        "ceiling": 20000000,
+        "passed": true
+      },
+      "qualified_report_bytes": {
+        "observed": 2254328,
+        "ceiling": 33554432,
+        "passed": true
+      }
+    },
+    "inner_elapsed_seconds": 21.633161134000147,
+    "rss_method": "os.wait4(exact_child_pid) terminal ru_maxrss; Linux KiB converted to bytes; no aggregate earlier-child maximum",
+    "process_receipt_report_digest_matches": true,
+    "admitted_runner_sha256": "eb4d374cc46ed1c16448ab3b1c2f03c5714a27c20bfdd0c3dba6e005d8f8066e",
+    "verified_input_count": 46,
+    "verified_inputs": [
+      {
+        "path": "docs/CONTACT_SWITCHING_VALIDATION.md",
+        "bytes": 15037,
+        "sha256": "5ccbba4d08a2272bef4f7d553446a7ca9582e289fba80f9bcfa223a2d6efb2b5",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "docs/FRACTIONAL_CONTACT_REFERENCE.md",
+        "bytes": 17481,
+        "sha256": "3c05da4c3f35fcdc53fac05f1592ddc97e444f5038d9c147afae71f46e8deecd",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F00-44100-v1.json",
+        "bytes": 1225,
+        "sha256": "fa5b4a9316c9c9b5063427a93add8d9d0fe66363f8decdddca8eeb8fc8ecb113",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F00-48000-v1.json",
+        "bytes": 1224,
+        "sha256": "2a67c702245770a525dbcdb20d40c5127a511500b3ae46ce01828eb271a72717",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F00-96000-v1.json",
+        "bytes": 1224,
+        "sha256": "dc7c7554e76398c49fd9ed024a7e4037e98988f6373dbf53469337f9a4396e62",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F01-44100-v1.json",
+        "bytes": 1222,
+        "sha256": "73ca1b0542bbd60501fdea81da3411c3b4f363d086a2b6fb1688cc2f51ca3b63",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F01-48000-v1.json",
+        "bytes": 1221,
+        "sha256": "ac1ff9552af9d3db650abbac5f73edda14ee728aee0bab7865768194d9bd10f7",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F01-96000-v1.json",
+        "bytes": 1221,
+        "sha256": "3274472300ab9d42d11d34a6403a9b1695afe2b60c8bd7b3b26e2c2eded47a0d",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F02-44100-v1.json",
+        "bytes": 1239,
+        "sha256": "fb2ef23cdddedfd92152a335d146c3367cd5633f91010f335ee74944036db0e5",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F02-48000-v1.json",
+        "bytes": 1238,
+        "sha256": "edf3fddee3ca55d1ebbdf367210b1d032689a467e385cd1c0ecd66f014bad2af",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F02-96000-v1.json",
+        "bytes": 1238,
+        "sha256": "d28e76e089129483f78a7335aa408002cded5ecda5037c1d5d3fcb6ed19a85a9",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F03-44100-v1.json",
+        "bytes": 1228,
+        "sha256": "fa00711d9e0b5fce1cbe957f2b8ddccec5a516dba06eac0508db4524a5d0b3b2",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F03-48000-v1.json",
+        "bytes": 1227,
+        "sha256": "54489aa93a15ade35cc77327e662f4cd494c68c90bc3368e0f907e9571054d90",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F03-96000-v1.json",
+        "bytes": 1227,
+        "sha256": "74b881a35711f280e52cdbda6049ea704ea17b4ecfcfa04cd75d1335d7acef98",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F04-44100-v1.json",
+        "bytes": 1227,
+        "sha256": "dd6dd7af67c2386fad422bdd6239e767d9570be10521f1441a5e8ecff5026187",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F04-48000-v1.json",
+        "bytes": 1226,
+        "sha256": "e236564527eaeb037d866c941896996e106d48e857edba58675ac113f35c7b21",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F04-96000-v1.json",
+        "bytes": 1226,
+        "sha256": "17e608f406c3a63da3ea1999a6a3905e5dc59ee53282200d429e24f3184e56ea",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F05-44100-v1.json",
+        "bytes": 2256,
+        "sha256": "c912354ab3db300b6d766151d628b5db2c981d411dc41d0c06e569ceb24cee46",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F05-48000-v1.json",
+        "bytes": 2255,
+        "sha256": "0f81743e647757d7a1a3385f333333a92e73fb0e4da5c2f95faca38f66f9824f",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F05-96000-v1.json",
+        "bytes": 2254,
+        "sha256": "446af94bd19d35d89cde478c0189165a3501062690e6390dbc089ae44a886002",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F06-44100-v1.json",
+        "bytes": 1359,
+        "sha256": "6e0e7ee103055153b504ed7a063db303d234696f618d97e85ed6f2b2ce3d1ab5",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F06-48000-v1.json",
+        "bytes": 1359,
+        "sha256": "08ab2d2f380413b2ea47395dddcd2b687b547c78700d598d20fb2cd26d91c32b",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F06-96000-v1.json",
+        "bytes": 1360,
+        "sha256": "6d9cbade09e2ac03c98dd0ed269fe5b05e4525cb075593067cb3a4cbea2e215e",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F07-44100-v1.json",
+        "bytes": 1470,
+        "sha256": "093517f16f7ba55f3f56fb7b47b9d19f147641094d49cd7143c33c7b1fceb9f1",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F07-48000-v1.json",
+        "bytes": 1470,
+        "sha256": "88a287c5b6d2242929c933de180644b1e3ccf1dba0e6ec66685453d4a6f47b19",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F07-96000-v1.json",
+        "bytes": 1471,
+        "sha256": "46978a97833834b112b71a04ae3dbc3248f226450297d35e45a0a97b5146d79b",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F08-44100-v1.json",
+        "bytes": 1691,
+        "sha256": "9b30d78048828334550c03308ed35d60a66d067fe57457596cfb9773d33329fe",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F08-48000-v1.json",
+        "bytes": 1691,
+        "sha256": "e7bdaf521328cf59650d559522007b52c33683ac95f89733f6f2ac648ee5f5ed",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F08-96000-v1.json",
+        "bytes": 1696,
+        "sha256": "765e3c26745b8bb5895981ebe51c6bcf15c11d1c664dae29ff8eef41c9a66423",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F09-44100-v1.json",
+        "bytes": 2542,
+        "sha256": "a9348fb7ef67f4d4150006188b203bf7707a42465e485682f7b5aaaf75cf0455",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F09-48000-v1.json",
+        "bytes": 2522,
+        "sha256": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F09-96000-v1.json",
+        "bytes": 2522,
+        "sha256": "449fb3ea0608b653c1f8a466f55852e47d3d0c9a4b00452e2ac61253bc933185",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F10-44100-v1.json",
+        "bytes": 1226,
+        "sha256": "f992ff04092507840c0c03234988c5a9269c28d206f006bf188faab7c5c3faf8",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F10-48000-v1.json",
+        "bytes": 1226,
+        "sha256": "22934b6c567dfc06d09dabadd634a2ca22f3819bcaeb8abb16ae31e8500d6a8b",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F10-96000-v1.json",
+        "bytes": 1226,
+        "sha256": "c343c63911b58e52b83803fcd00dce0e951ed26be6582b614ecd9f4440f03775",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F11-44100-v1.json",
+        "bytes": 1377,
+        "sha256": "71b343694af63806742e3cd55260d8e8623bccaa8ec61a0d992e46c5167ede89",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F11-48000-v1.json",
+        "bytes": 1361,
+        "sha256": "11c86351c3ac242ee60ea7787137d7db1aafa9a3364340325a41cf73cedcfe1d",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F11-96000-v1.json",
+        "bytes": 1363,
+        "sha256": "b2f7969fc9e43083f2a62bb603faba2ba408fbf52412a1c7907d6117933acb90",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/manifest.json",
+        "bytes": 5119,
+        "sha256": "b80db78bb8477b683bfd2cc1013a0b600c45e8f20b7fc08f75c5efe6e10a22ec",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/probes.json",
+        "bytes": 35525,
+        "sha256": "fdcdf6430c008cd28367d3c02f125af2a37ac55ebbe875361fba2549295e7026",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "tools/contact_switching_io.py",
+        "bytes": 23707,
+        "sha256": "e3219265f1496a36b4f5d8a13941672b46ddc4116f331b7a1b99115a2dac9dc6",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "tools/contact_switching_oracle.py",
+        "bytes": 18281,
+        "sha256": "17f6d93fb5d8fbb5eb1b0d36c609449f9c8b9b94e44ab10a80450f04bb2cf9d4",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "tools/contact_switching_reference.py",
+        "bytes": 2108,
+        "sha256": "46e1967af569e4a9ee35921439351e2ce5fe50c731a2619116cc9e424f4e97f5",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "tools/contact_switching_study.py",
+        "bytes": 40349,
+        "sha256": "eb4d374cc46ed1c16448ab3b1c2f03c5714a27c20bfdd0c3dba6e005d8f8066e",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "tools/fractional_contact_reference.py",
+        "bytes": 29808,
+        "sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+        "repository_matches": true,
+        "relocated_matches": true
+      },
+      {
+        "path": "tools/make_contact_switching_fixtures.py",
+        "bytes": 4867,
+        "sha256": "7e818b414342dfabfdcf23831fbb11ae4ccf51d093a4fd4cc97d046c6c73a387",
+        "repository_matches": true,
+        "relocated_matches": true
+      }
+    ],
+    "old_report": {
+      "bytes": 2267230,
+      "sha256": "4a00633130daf77b1416cc86152e808726404edd88de45aaa840004e0d2e2a11"
+    },
+    "qualified_report": {
+      "bytes": 2254328,
+      "sha256": "87d7a5ba4dbc12d5d42754386c695ecbd046a61560dc75b5c86b17cc51121dba"
+    },
+    "both_reports_total_bytes": 4521558,
+    "numerical_comparison": {
+      "differing_fixture_leaves": 144,
+      "only_factor_elapsed_seconds_differ": true,
+      "filters_exactly_equal": true,
+      "continuous_response_exactly_equal": true
+    },
+    "count_interpretation": "FIR is the conservative full-support bound, reconstructed from all 144 records; no CPU instruction instrumentation. Oracle count is retained instrumented observation, not independently rerun."
+  },
+  "package": {
+    "component": "ContactReferenceTools",
+    "snapshot_file_count": 48,
+    "snapshot_payload_bytes": 263613,
+    "relocated_regular_files": 48,
+    "all_48_snapshot_files_reverified": true,
+    "original_prefix_absent": true,
+    "rows": [
+      {
+        "path": "data/contact-switching/reference-v1/F00-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F00-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F00-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F01-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F01-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F01-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F02-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F02-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F02-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F03-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F03-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F03-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F04-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F04-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F04-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F05-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F05-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F05-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F06-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F06-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F06-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F07-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F07-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F07-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F08-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F08-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F08-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F09-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F09-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F09-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F10-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F10-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F10-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F11-44100-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F11-48000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/F11-96000-v1.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/manifest.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "data/contact-switching/reference-v1/probes.json",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "docs/CONTACT_REFERENCE_INSTALL.md",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "docs/CONTACT_SWITCHING_GUIDE.md",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": false
+      },
+      {
+        "path": "docs/CONTACT_SWITCHING_VALIDATION.md",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "docs/FRACTIONAL_CONTACT_REFERENCE.md",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "tools/contact_switching_io.py",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "tools/contact_switching_oracle.py",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "tools/contact_switching_reference.py",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "tools/contact_switching_study.py",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "tools/fractional_contact_reference.py",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      },
+      {
+        "path": "tools/make_contact_switching_fixtures.py",
+        "installed_matches_snapshot": true,
+        "current_repository_matches_snapshot": true
+      }
+    ],
+    "declared_repository_documentation_drift": [
+      {
+        "path": "docs/CONTACT_SWITCHING_GUIDE.md",
+        "installed_snapshot": {
+          "bytes": 6518,
+          "sha256": "c94bfc231862e689aeafe5282c98e02538c1fb24506c3e368c9ad4b317da13fa"
+        },
+        "current_repository": {
+          "bytes": 8960,
+          "sha256": "633b0df2a65ce6f03556add5fe8edd3f37c83772bc9bb9bed70221d6aece51c3"
+        },
+        "classification": "explanatory documentation; outside the 46 numerical runtime/contract/fixture bindings"
+      }
+    ],
+    "guide_drift_declared_in": [
+      "docs/CONTACT_SWITCHING_RESULTS.md",
+      "docs/development/2026-11-15-execution-continuation/notes/A33.md"
+    ],
+    "install_v1_scope": "Unqualified intermediate publication-race implementation; not the qualified moved v2 package",
+    "install_v1_runner_sha256": "a7b4d409f2ccc372a98608be4ffa1ff6ecc6d22eba7b966887f6945cbfc264ad",
+    "independent_install_acceptance": "A31 records 17/17 methods, no skips, including relocation without source/build and neutral hostile-module directory; A36 did not rerun those tests."
+  },
+  "gallery_and_raster": {
+    "gallery_png_count": 12,
+    "gallery_total_files_with_readme": 59,
+    "gallery_total_bytes_with_readme": 5409803,
+    "manifest_bound_files": 57,
+    "manifest_bound_payload_bytes": 5392786,
+    "manifest_mismatches": [],
+    "gallery_bmp_count": 0,
+    "original_bmp_bytes_unavailable": true,
+    "lossless_png_and_conversion_receipts_retained": true,
+    "raster_v1_status": "failed",
+    "raster_v1_escaped_pixels": 17,
+    "raster_v2_status": "passed",
+    "raster_v2_totals": {
+      "pairs": 66,
+      "active_pairs": 38,
+      "inactive_pairs": 28,
+      "compared_pixels": 208102766,
+      "changed_pixels": 78803550,
+      "protected_pixels": 120822105,
+      "escaped_pixels": 0,
+      "identical_inactive_pairs": 28,
+      "max_raw_pair_bytes": 66355200,
+      "retained_raw_frames": 0
+    },
+    "v1_v2_masks_and_reports_total_bytes": 4949821,
+    "v2_python_peak_bytes": 194351104,
+    "v2_peak_scope": "Python process only, excludes native children; not the contact study exact-child measurement",
+    "minimum_active_protected_pixels": 34,
+    "executables": [
+      {
+        "kind": "baseline_raster",
+        "path": "/workspace/scratch/ade21b726509/baseline-percussion-raster",
+        "sha256": "9ce7df2feae93eda9f2ce5e6000504c3dac53e90ba14f3a21b7d66c170540635",
+        "matches": true
+      },
+      {
+        "kind": "current_raster",
+        "path": "/workspace/scratch/ade21b726509/build-native/apps/standalone/test_standalone_percussion_raster",
+        "sha256": "087f88b7f710239b553f794c79cc51ec4f813cb737e8c769f01866e01ff979c4",
+        "matches": true
+      },
+      {
+        "kind": "gallery_application",
+        "path": "/workspace/scratch/ade21b726509/build-native/apps/standalone/hammond_standalone",
+        "bytes": 3721112,
+        "sha256": "eb9a501ec60d5a90a398ffbf14e21a21967712589c155b54c8be164a71bd823c",
+        "matches": true
+      }
+    ],
+    "review_boundary": "A36 rehashes retained files and records; A32 owns prior full-frame visual/decoded-pixel review. Narrow active containment is not literal 1:1."
+  },
+  "reconstruction": {
+    "runtime_dependencies": "Python 3.10+ standard library; executed 3.12.14. Six tool ASTs have no external imports. Git optional metadata. Full resource acceptance also requires available resident-memory measurement and an output filesystem supporting atomic hard links.",
+    "external_imports": [],
+    "install_prerequisites": "Existing configured build, or CMake 3.21+ plus repository C++20 toolchain; native targets need not be built. Use relative data directory, ordinary copied files, complete 48-file inventory and fresh prefix. Preserve original frozen probes; fixture generator alone does not regenerate that independent freeze.",
+    "commands_reviewed": [
+      "docs/CONTACT_REFERENCE_INSTALL.md",
+      "docs/CONTACT_SWITCHING_GUIDE.md",
+      "examples/demos/whole-reference-layout-v1/README.md",
+      "docs/development/2026-11-15-execution-continuation/notes/A27.md"
+    ],
+    "commands_sufficient_for_current_retained_inputs": true,
+    "fixed_identity_requirement": "Verify 46 exact source/contract/fixture hashes in qualified report and 48 package snapshot hashes. The package base HEAD is metadata only; publish the accepted overlay before treating a commit as its reconstruction source. Current guide prose is not the originally installed guide.",
+    "native_dependencies": "Pinned SDL 2.32.10 commit 5d249570393f7a37e037abf22cd6012a4cc56a71; recorded GCC 14.2.0, CMake 3.31.6 and Ninja; exact Release/MIDI-off/VST3-off cache and software/dummy SDL. Raster/gallery additionally need Pillow (executed 13.0.0) and qualified original/current executables.",
+    "measurement_wrapper": {
+      "scratch_path": "/workspace/scratch/ade21b726509/run_final_contact_study.py",
+      "bytes": 3324,
+      "sha256": "c387d5729fbabfc66d0f0c086ba96199a036d707077af77c1cb663178b0c27c2",
+      "durable_path": "docs/development/2026-11-15-execution-continuation/reports/qualified-study-wrapper.py",
+      "durable_exact_bytes_present_at_audit": true,
+      "meaning": "Historical executed wrapper uses observed absolute session paths and refuses retained output names; a new experiment must use fresh output paths. Not an installed runtime dependency.",
+      "identity_receipt": "docs/development/2026-11-15-execution-continuation/reports/execution-helper-identities.json",
+      "identity_receipt_matches_executed_wrapper_and_unchanged_process_receipt": true
+    },
+    "platform_limits": [
+      "Full qualification observed only on Linux x86_64/Python 3.12.14; Windows/macOS and PowerShell commands are not executed here.",
+      "Original gallery BMPs and raw 66-pair frames are intentionally unavailable; hashes/PNG and reconstruction commands are not original raw bytes.",
+      "Rebuilt executables, different libm/Python, timings, counters, paths and timestamps require new source-bound receipts; report-byte or platform equality is not promised.",
+      "Native/Engine integration, physical contacts/audio/devices/display/accessibility, callback deadlines, full-window atlas accuracy and literal whole-interface 1:1 remain separate gates."
+    ],
+    "original_run_source_recovery": {
+      "status": "verified_closed",
+      "archive_path": "docs/development/2026-11-15-execution-continuation/reports/contact-study-first-driver.py",
+      "bytes": 39451,
+      "sha256": "223b56f92dfd6b6de380176cc7f4830c885378be2e02658bd857dd950185be46",
+      "matches_original_report_source_identity": true,
+      "independent_reconstruction_receipt": "docs/development/2026-11-15-execution-continuation/reports/A25-first-driver-recovery.json",
+      "all_original_46_file_identities_available_and_verified": true,
+      "original_input_checks": [
+        {
+          "report_path": "docs/CONTACT_SWITCHING_VALIDATION.md",
+          "available_source_path": "docs/CONTACT_SWITCHING_VALIDATION.md",
+          "matches": true
+        },
+        {
+          "report_path": "docs/FRACTIONAL_CONTACT_REFERENCE.md",
+          "available_source_path": "docs/FRACTIONAL_CONTACT_REFERENCE.md",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F00-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F00-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F00-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F00-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F00-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F00-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F01-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F01-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F01-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F01-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F01-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F01-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F02-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F02-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F02-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F02-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F02-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F02-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F03-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F03-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F03-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F03-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F03-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F03-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F04-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F04-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F04-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F04-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F04-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F04-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F05-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F05-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F05-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F05-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F05-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F05-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F06-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F06-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F06-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F06-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F06-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F06-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F07-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F07-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F07-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F07-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F07-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F07-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F08-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F08-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F08-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F08-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F08-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F08-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F09-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F09-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F09-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F09-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F09-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F09-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F10-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F10-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F10-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F10-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F10-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F10-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F11-44100-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F11-44100-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F11-48000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F11-48000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/F11-96000-v1.json",
+          "available_source_path": "data/contact-switching/reference-v1/F11-96000-v1.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/manifest.json",
+          "available_source_path": "data/contact-switching/reference-v1/manifest.json",
+          "matches": true
+        },
+        {
+          "report_path": "fixtures/probes.json",
+          "available_source_path": "data/contact-switching/reference-v1/probes.json",
+          "matches": true
+        },
+        {
+          "report_path": "tools/contact_switching_io.py",
+          "available_source_path": "tools/contact_switching_io.py",
+          "matches": true
+        },
+        {
+          "report_path": "tools/contact_switching_oracle.py",
+          "available_source_path": "tools/contact_switching_oracle.py",
+          "matches": true
+        },
+        {
+          "report_path": "tools/contact_switching_reference.py",
+          "available_source_path": "tools/contact_switching_reference.py",
+          "matches": true
+        },
+        {
+          "report_path": "tools/contact_switching_study.py",
+          "available_source_path": "docs/development/2026-11-15-execution-continuation/reports/contact-study-first-driver.py",
+          "matches": true
+        },
+        {
+          "report_path": "tools/fractional_contact_reference.py",
+          "available_source_path": "tools/fractional_contact_reference.py",
+          "matches": true
+        },
+        {
+          "report_path": "tools/make_contact_switching_fixtures.py",
+          "available_source_path": "tools/make_contact_switching_fixtures.py",
+          "matches": true
+        }
+      ],
+      "executed_by_A36": false,
+      "meaning": "A25 reconstructed the historical driver by reversing two known edits; A36 verified its exact recorded SHA-256 and byte count. This is a recovered byte-identical historical source archive, not a new execution or independent evidence about original timing. It needs the original tools/docs/data layout for replay; the current repaired driver remains the supported runtime."
+    }
+  },
+  "deliverable_data_review": {
+    "json_files_reviewed": 65,
+    "method": "Read bounded new report/fixture/gallery/ledger schemas and metadata; inspect synthetic row fields, declared environment and embedded path/URL provenance only. No credential locations or unrelated workspace files searched.",
+    "workspace_prefixes_observed": [
+      "/workspace/scratch/ade21b726509"
+    ],
+    "url_count": 0,
+    "urls_with_userinfo": 0,
+    "gallery_environment_keys": [
+      "LANG",
+      "LC_ALL",
+      "PATH",
+      "SDL_AUDIODRIVER",
+      "SDL_RENDER_DRIVER",
+      "SDL_VIDEODRIVER"
+    ],
+    "finding": "No credential values or unrelated workspace data observed in the 65 reviewed JSON deliverables. This is a scoped content review, not a guarantee about unexamined binary/document contents."
+  },
+  "evidence_identities": {
+    "contact-study-v1-qualified.json": {
+      "bytes": 2254328,
+      "sha256": "87d7a5ba4dbc12d5d42754386c695ecbd046a61560dc75b5c86b17cc51121dba"
+    },
+    "contact-study-v1-qualified-process.json": {
+      "bytes": 1864,
+      "sha256": "98271b6d58953ba4ed3f0cc624d8e775abde5e0edd44bf1e5de4741dfa7209a0"
+    },
+    "contact-study-v1.json": {
+      "bytes": 2267230,
+      "sha256": "4a00633130daf77b1416cc86152e808726404edd88de45aaa840004e0d2e2a11"
+    },
+    "contact-study-v1-process.json": {
+      "bytes": 1126,
+      "sha256": "40d8d06f8d696c7b22ecb47c93c4ce2ce7939a72f1d7f58f6f0789cda181b44f"
+    },
+    "contact-package-v2.json": {
+      "bytes": 10265,
+      "sha256": "03540425084b8533d892944d4cb4098f1db37eb826c8eb20dcc002337265a546"
+    },
+    "qualified-study-numeric-identity.json": {
+      "bytes": 835,
+      "sha256": "f10cd3e8c00793077aa0564a8cc8291c8777c5fe67edcc6b24c4cadebc9f649b"
+    },
+    "whole-reference-raster-comparison.json": {
+      "bytes": 72517,
+      "sha256": "31a8efc1a738402a50f6f00f8eb44e65564b9ea7e02115105ce2017408e47528"
+    },
+    "whole-reference-raster-comparison-v2.json": {
+      "bytes": 69802,
+      "sha256": "3303ee1a2a4a8a2c0634d0dab1d36d8c9371274511d4657fa880b467f01c2789"
+    },
+    "whole-reference-mask-v1.json": {
+      "bytes": 617247,
+      "sha256": "7b17af59df15e9d2b3b5c3b744349f61c95788e6a179764736112974b9a982b3"
+    },
+    "whole-reference-mask-v2.json": {
+      "bytes": 4190255,
+      "sha256": "b880a35fe9c0c253639c2bdd72c9edc5aeab362caa246647ebde6781abbc75d2"
+    },
+    "A32-gallery-admission.json": {
+      "bytes": 24627,
+      "sha256": "90a551d74e2676adda4c742e630ccc7f72f27c0c8eb7dd74f5312c3b8b130e4e"
+    },
+    "A30-study-review.json": {
+      "bytes": 199097,
+      "sha256": "bd9fac8bb8cd3b86a851a3cae8b2a41f512114555eccc5fe7bec4f4f73878712"
+    },
+    "implementation-admission.json": {
+      "bytes": 1070,
+      "sha256": "dc828bc4436023873a281fb51452792e81ddab6d8ff4fe8f630712fe9c41cc45"
+    },
+    "native-source-qualification.json": {
+      "bytes": 2244,
+      "sha256": "c3e14a77f40060730a474798fc42c5468d1b2ed0713cb8c14ac1b3e2dc6c283c"
+    },
+    "A25-first-driver-recovery.json": {
+      "bytes": 1883,
+      "sha256": "7da092bb9fc9f3d2e9e52094241f3889ea135d09061943dfe70ec4538e3339ed"
+    },
+    "execution-helper-identities.json": {
+      "bytes": 1069,
+      "sha256": "a6eb44e29149089d9c8bcf19a9091c0389f16e594df0afee9189e50817f4c489"
+    },
+    "contact-study-first-driver.py": {
+      "bytes": 39451,
+      "sha256": "223b56f92dfd6b6de380176cc7f4830c885378be2e02658bd857dd950185be46"
+    },
+    "qualified-study-wrapper.py": {
+      "bytes": 3324,
+      "sha256": "c387d5729fbabfc66d0f0c086ba96199a036d707077af77c1cb663178b0c27c2"
+    }
+  },
+  "next_actions": [
+    "Root completes source-bound coherent/platform gates and publishes accepted overlay, then refreshes checkpoint/ledger with actual wave results and source identity.",
+    "Preserve original numerical and raster failures and both recovered historical helper sources. Exact wrapper and first-driver retention gaps are closed; no study rerun was performed or needed.",
+    "Use the repaired driver and fresh output paths for new experiments. Do not silently substitute current guide prose into the installed snapshot or equate rebuilt platform output with original raw bytes.",
+    "Optional root-owned cleanup: inspect draft-wide-capture/play.bmp and associated draft evidence before removal; ample free disk makes cleanup nonurgent."
+  ],
+  "last_identity_recheck_at_utc": "2026-11-15T22:40:34.439050+00:00",
+  "context_recovery": {
+    "instructions_read": [
+      "AGENTS.md",
+      "docs/PLAN.md",
+      "docs/development/2026-11-15-execution-continuation/README.md",
+      "docs/development/2026-11-15-execution-continuation/SCOPE.md",
+      "docs/development/2026-11-15-execution-continuation/CHECKPOINT.md"
+    ],
+    "actual_assignments_at_read": 36,
+    "requested_workers": 60,
+    "requested_waves": 10,
+    "checkpoint_action": "Root updates live checkpoint at the wave boundary; earlier 33-dispatch snapshot is not a complete wave-6 record. Historical workers are not counted again."
+  }
+}

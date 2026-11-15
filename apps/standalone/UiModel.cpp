@@ -305,6 +305,79 @@ void make_keys(std::array<UiKeyGeometry, Count>& keys, UiRect panel,
     }
 }
 
+[[nodiscard]] UiRect reference_quad_bounds(const UiQuad& quad) noexcept {
+    const auto& points = quad.points;
+    const float left = std::min({points[0].x, points[1].x, points[2].x, points[3].x});
+    const float right = std::max({points[0].x, points[1].x, points[2].x, points[3].x});
+    const float top = std::min({points[0].y, points[1].y, points[2].y, points[3].y});
+    const float bottom = std::max({points[0].y, points[1].y, points[2].y, points[3].y});
+    return {left, top, right - left, bottom - top};
+}
+
+template <std::size_t Count>
+void make_reference_keys(std::array<UiKeyGeometry, Count>& keys, UiRect panel,
+                         UiTarget target, std::size_t natural_count,
+                         ReferenceCompositionScale scale) noexcept {
+    const float left = panel.x + 8.0F;
+    const float top = panel.y + 20.0F;
+    const float width = panel.width - 16.0F;
+    const float height = panel.height - 28.0F;
+    const double back = target == UiTarget::Upper ? 0.96 :
+                        target == UiTarget::Lower ? 0.95 : 1.0;
+    const double count = static_cast<double>(natural_count);
+    const auto project = [=](double u, double v) noexcept -> UiPoint {
+        const double denominator = 1.0 - (1.0 - back) * v;
+        return {static_cast<float>(left + static_cast<double>(width) / 2.0 +
+                    static_cast<double>(width) * back * (u - 0.5) / denominator),
+                static_cast<float>(top + static_cast<double>(height) * back * v / denominator)};
+    };
+    // Construct shared canonical natural boundaries once. Every mapped neighbor
+    // then has exactly the same back, split and front vertices.
+    std::array<UiPoint, Count + 1> back_edges{};
+    std::array<UiPoint, Count + 1> front_edges{};
+    for (std::size_t boundary = 0; boundary <= natural_count; ++boundary) {
+        const double u = static_cast<double>(boundary) / count;
+        back_edges[boundary] = project(u, 0.0);
+        front_edges[boundary] = project(u, 1.0);
+    }
+    std::size_t natural = 0;
+    for (std::size_t index = 0; index < Count; ++index) {
+        auto& key = keys[index];
+        key.note = {target, static_cast<std::uint8_t>(
+            target == UiTarget::Pedals ? index + 1 : kMinManualMidiNote + index)};
+        key.accidental = accidental(index);
+        UiQuad hit;
+        if (key.accidental) {
+            const double ordinal = static_cast<double>(natural);
+            const double u0 = (ordinal - 0.30) / count;
+            const double u1 = (ordinal + 0.30) / count;
+            hit.points = {{project(u0, 0.0), project(u1, 0.0),
+                           project(u1, 0.62), project(u0, 0.62)}};
+        } else {
+            hit.points = {{back_edges[natural], back_edges[natural + 1],
+                           front_edges[natural + 1], front_edges[natural]}};
+            ++natural;
+        }
+        const auto& points = hit.points;
+        const float key_height = points[3].y - points[0].y;
+        const float front_depth = std::clamp(key_height * 0.14F, 6.0F, 18.0F);
+        const float split_y = points[3].y - front_depth;
+        const float fraction = (split_y - points[0].y) / key_height;
+        const UiPoint split_left{points[0].x + (points[3].x - points[0].x) * fraction, split_y};
+        const UiPoint split_right{points[1].x + (points[2].x - points[1].x) * fraction, split_y};
+        UiQuad surface = hit;
+        surface.points[2] = split_right;
+        surface.points[3] = split_left;
+        const UiQuad front{{split_left, split_right, points[2], points[3]}};
+        // The complete canonical surfaces precede scaling, including the front
+        // clamp. A post-scale clamp would give different geometry at each size.
+        key.hit = reference_composition_quad(hit, scale);
+        key.top = reference_composition_quad(surface, scale);
+        key.front = reference_composition_quad(front, scale);
+        key.bounds = reference_quad_bounds(key.hit);
+    }
+}
+
 void add_button(UiLayout& layout, UiControlId id, UiRect bounds) noexcept {
     layout.controls[layout.control_count++] = {
         id, bounds, {bounds.x + 4.0F, bounds.y + 4.0F, bounds.width - 8.0F, bounds.height - 8.0F}, {}, {}};
@@ -331,6 +404,153 @@ void add_preset_keys(UiLayout& layout, Manual manual, UiRect panel) noexcept {
             bounds, {bounds.x + 1.0F, bounds.y + bounds.height - label_height - 2.0F,
                      bounds.width - 2.0F, label_height}, {}, {}};
     }
+}
+
+constexpr std::array<UiRect, kManualCount> kReferenceManualPanels{{
+    {232.0F, 528.0F, 890.0F, 170.0F}, {224.0F, 698.0F, 898.0F, 172.0F}}};
+constexpr std::array<UiRect, kManualCount> kReferenceCheekPanels{{
+    {48.0F, 528.0F, 184.0F, 170.0F}, {32.0F, 698.0F, 192.0F, 172.0F}}};
+constexpr std::array<UiRect, kManualCount> kReferencePresetPanels{{
+    {58.0F, 607.0F, 164.0F, 81.0F}, {42.0F, 777.0F, 172.0F, 83.0F}}};
+constexpr std::array<std::array<float, kDrawbarCount>, kManualCount> kReferenceDrawbarCenters{{
+    {158.0F, 206.0F, 254.0F, 302.0F, 351.0F, 400.0F, 449.0F, 498.0F, 548.0F},
+    {685.0F, 734.0F, 782.0F, 830.0F, 878.0F, 927.0F, 975.0F, 1024.0F, 1074.0F}}};
+constexpr UiRect kReferencePedalPanel{1138.0F, 752.0F, 450.0F, 110.0F};
+constexpr UiRect kReferenceArtEnvelope{1132.0F, 174.0F, 466.0F, 397.0F};
+
+void add_reference_control(UiLayout& layout, ReferenceCompositionScale scale,
+                           UiControlId id, UiRect bounds, UiRect label,
+                           UiRect value = {}, UiRect track = {}) noexcept {
+    layout.controls[layout.control_count++] = {
+        id, reference_composition_rect(bounds, scale), reference_composition_rect(label, scale),
+        reference_composition_rect(value, scale), reference_composition_rect(track, scale)};
+}
+
+void add_reference_button(UiLayout& layout, ReferenceCompositionScale scale,
+                          UiControlId id, UiRect bounds) noexcept {
+    add_reference_control(layout, scale, id, bounds,
+        {bounds.x + 4.0F, bounds.y + 4.0F, bounds.width - 8.0F, bounds.height - 8.0F});
+}
+
+void add_reference_presets(UiLayout& layout, ReferenceCompositionScale scale,
+                           Manual manual, UiRect panel) noexcept {
+    constexpr std::size_t natural_count = 7;
+    const float natural_width = panel.width / static_cast<float>(natural_count);
+    std::array<float, natural_count + 1> boundaries{};
+    for (std::size_t index = 0; index <= natural_count; ++index)
+        boundaries[index] = panel.x + panel.width * static_cast<float>(index) /
+                                      static_cast<float>(natural_count);
+    std::size_t natural = 0;
+    for (std::size_t index = 0; index < kPresetSelectionCount; ++index) {
+        const bool sharp = accidental(index);
+        const float left = sharp ? boundaries[natural] - 0.30F * natural_width : boundaries[natural];
+        const float right = sharp ? boundaries[natural] + 0.30F * natural_width : boundaries[natural + 1];
+        const float bottom = panel.y + (sharp ? 0.62F * panel.height : panel.height);
+        const float label_height = sharp ? 20.0F : 11.0F;
+        layout.controls[layout.control_count++] = {
+            {UiControlKind::PresetKey, manual, DrawbarBank::A, static_cast<std::uint8_t>(index)},
+            reference_composition_edges(left, panel.y, right, bottom, scale),
+            reference_composition_edges(left + 1.0F, bottom - label_height - 2.0F,
+                                        right - 1.0F, bottom - 2.0F, scale), {}, {}};
+        if (!sharp) ++natural;
+    }
+}
+
+void make_reference_composition(
+    UiLayout& layout, const std::array<DrawbarBank, kManualCount>& edited_banks) noexcept {
+    const auto scale = reference_composition_scale(layout);
+    const auto map = [scale](UiRect rect) noexcept { return reference_composition_rect(rect, scale); };
+    layout.show_cabinet = true;
+    layout.bank_controls_in_cheeks = true;
+    layout.sidebar_pedals = true;
+    layout.header = map({72.0F, 10.0F, 1528.0F, 102.0F});
+    layout.performance_panel = map({72.0F, 125.0F, 1044.0F, 139.0F});
+    layout.registration_panels = {{map({72.0F, 269.0F, 528.0F, 239.0F}),
+                                   map({600.0F, 269.0F, 516.0F, 239.0F})}};
+    layout.cabinet_panel = map({1126.0F, 125.0F, 478.0F, 745.0F});
+    layout.keyboard_toolbar = map({1140.0F, 614.0F, 448.0F, 64.0F});
+    layout.pedal_panel = map(kReferencePedalPanel);
+    layout.footer = map({48.0F, 889.0F, 1556.0F, 36.0F});
+    layout.workspace_panel = map({72.0F, 125.0F, 1528.0F, 745.0F});
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        layout.manual_panels[manual] = map(kReferenceManualPanels[manual]);
+        layout.manual_rail_panels[manual] = map(kReferenceCheekPanels[manual]);
+        layout.preset_key_panels[manual] = map(kReferencePresetPanels[manual]);
+    }
+    const UiRect envelope = map(kReferenceArtEnvelope);
+    float art_width = envelope.width;
+    float art_height = envelope.height;
+    if (static_cast<double>(envelope.width) * 397.0 <=
+        static_cast<double>(envelope.height) * 466.0)
+        art_height = static_cast<float>(static_cast<double>(envelope.width) * 397.0 / 466.0);
+    else
+        art_width = static_cast<float>(static_cast<double>(envelope.height) * 466.0 / 397.0);
+    layout.cabinet_art = {envelope.x + (envelope.width - art_width) / 2.0F,
+                          envelope.y, art_width, art_height};
+
+    // Keep the original semantic insertion order: ten common controls, then
+    // each manual's edit buttons, presets and drawbars, followed by performance
+    // and the five keyboard controls. Tab traversal still has 71 Play stops.
+    for (std::size_t index = 0; index < kUiWorkspaceCount; ++index)
+        add_reference_button(layout, scale,
+            {UiControlKind::Workspace, Manual::Upper, DrawbarBank::A, static_cast<std::uint8_t>(index)},
+            {100.0F + 140.0F * static_cast<float>(index), 50.0F, 130.0F, 46.0F});
+    constexpr std::array<UiControlKind, 6> tool_kinds{
+        UiControlKind::SaveControls, UiControlKind::LoadControls, UiControlKind::Help,
+        UiControlKind::AudioSettings, UiControlKind::MidiSettings, UiControlKind::Panic};
+    for (std::size_t index = 0; index < tool_kinds.size(); ++index)
+        add_reference_button(layout, scale, {tool_kinds[index]},
+            {1312.0F + 97.0F * static_cast<float>(index % 3),
+             25.0F + 36.0F * static_cast<float>(index / 3), 88.0F, 28.0F});
+    add_reference_button(layout, scale, {UiControlKind::Presentation}, {1228.0F, 78.0F, 70.0F, 24.0F});
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        const auto identity = static_cast<Manual>(manual);
+        const auto& cheek = kReferenceCheekPanels[manual];
+        const float button_width = (cheek.width - 24.0F) / 2.0F;
+        for (std::size_t index = 0; index < 2; ++index)
+            add_reference_button(layout, scale,
+                {UiControlKind::EditBank, identity, static_cast<DrawbarBank>(index)},
+                {cheek.x + 10.0F + static_cast<float>(index) * (button_width + 4.0F),
+                 cheek.y + 51.0F, button_width, 22.0F});
+        add_reference_presets(layout, scale, identity, kReferencePresetPanels[manual]);
+        for (std::size_t index = 0; index < kDrawbarCount; ++index) {
+            const float center = kReferenceDrawbarCenters[manual][index];
+            add_reference_control(layout, scale,
+                {UiControlKind::ManualDrawbar, identity, edited_banks[manual], static_cast<std::uint8_t>(index)},
+                {center - 23.0F, 309.0F, 46.0F, 197.0F},
+                {center - 23.0F, 467.0F, 46.0F, 23.0F},
+                {center - 23.0F, 491.0F, 46.0F, 15.0F},
+                {center - 2.0F, 327.0F, 4.0F, 118.0F});
+        }
+    }
+    constexpr std::array<std::uint8_t, 4> percussion_order{0, 2, 3, 1};
+    constexpr std::array<float, 4> percussion_lefts{164.0F, 256.0F, 337.0F, 418.0F};
+    for (std::size_t slot = 0; slot < percussion_order.size(); ++slot) {
+        const float left = percussion_lefts[slot];
+        add_reference_control(layout, scale,
+            {UiControlKind::Percussion, Manual::Upper, DrawbarBank::A, percussion_order[slot]},
+            {left, 177.0F, 74.0F, 52.0F}, {left - 2.0F, 233.0F, 78.0F, 14.0F},
+            {left + 5.0F, 183.0F, 64.0F, 38.0F});
+    }
+    add_reference_control(layout, scale, {UiControlKind::Expression},
+        {578.0F, 165.0F, 254.0F, 85.0F}, {582.0F, 165.0F, 246.0F, 16.0F},
+        {582.0F, 232.0F, 246.0F, 16.0F}, {594.0F, 200.0F, 222.0F, 4.0F});
+    for (std::size_t index = 0; index < kPedalDrawbarCount; ++index) {
+        const float left = 850.0F + 128.0F * static_cast<float>(index);
+        add_reference_control(layout, scale,
+            {UiControlKind::PedalDrawbar, Manual::Upper, DrawbarBank::A, static_cast<std::uint8_t>(index)},
+            {left, 165.0F, 112.0F, 85.0F}, {left + 4.0F, 165.0F, 104.0F, 16.0F},
+            {left + 74.0F, 200.0F, 32.0F, 40.0F}, {left + 41.0F, 193.0F, 4.0F, 43.0F});
+    }
+    for (std::size_t index = 0; index < 3; ++index)
+        add_reference_button(layout, scale,
+            {UiControlKind::KeyboardTarget, Manual::Upper, DrawbarBank::A, static_cast<std::uint8_t>(index)},
+            {1148.0F + 148.0F * static_cast<float>(index), 616.0F, 136.0F, 26.0F});
+    add_reference_button(layout, scale, {UiControlKind::OctaveDown}, {1148.0F, 648.0F, 84.0F, 26.0F});
+    add_reference_button(layout, scale, {UiControlKind::OctaveUp}, {1244.0F, 648.0F, 84.0F, 26.0F});
+    make_reference_keys(layout.manual_keys[0], kReferenceManualPanels[0], UiTarget::Upper, 36, scale);
+    make_reference_keys(layout.manual_keys[1], kReferenceManualPanels[1], UiTarget::Lower, 36, scale);
+    make_reference_keys(layout.pedal_keys, kReferencePedalPanel, UiTarget::Pedals, 15, scale);
 }
 
 [[nodiscard]] bool valid_layout(const UiLayout& layout) noexcept {
@@ -364,6 +584,228 @@ void add_preset_keys(UiLayout& layout, Manual manual, UiRect panel) noexcept {
         if (!visible(key.bounds)) return false;
     }
     return true;
+}
+
+[[nodiscard]] bool reference_rect_valid(UiRect rect) noexcept {
+    return std::isfinite(rect.x) && std::isfinite(rect.y) &&
+           std::isfinite(rect.width) && std::isfinite(rect.height) &&
+           std::isfinite(rect.x + rect.width) && std::isfinite(rect.y + rect.height) &&
+           rect.width > 0.0F && rect.height > 0.0F;
+}
+
+[[nodiscard]] bool reference_parent_edge_matches(float first, float second) noexcept {
+    // UiRect stores an extent, so reconstructing a broad parent's endpoint as
+    // left + (right - left) can land one ULP from the mapped endpoint. Only
+    // parent containment accepts this representation effect; adjacent targets
+    // and every shared key vertex below must still join exactly.
+    return first == second || first == std::nextafter(second, first);
+}
+
+[[nodiscard]] bool reference_rect_contains(UiRect owner, UiRect child) noexcept {
+    return reference_rect_valid(owner) && reference_rect_valid(child) &&
+           child.x >= owner.x && child.y >= owner.y &&
+           (child.x + child.width <= owner.x + owner.width ||
+            reference_parent_edge_matches(child.x + child.width, owner.x + owner.width)) &&
+           (child.y + child.height <= owner.y + owner.height ||
+            reference_parent_edge_matches(child.y + child.height, owner.y + owner.height));
+}
+
+[[nodiscard]] bool reference_rect_overlaps(UiRect first, UiRect second) noexcept {
+    return first.x < second.x + second.width && second.x < first.x + first.width &&
+           first.y < second.y + second.height && second.y < first.y + first.height;
+}
+
+[[nodiscard]] bool reference_same_rect(UiRect first, UiRect second) noexcept {
+    return first.x == second.x && first.y == second.y &&
+           first.width == second.width && first.height == second.height;
+}
+
+[[nodiscard]] bool reference_same_point(UiPoint first, UiPoint second) noexcept {
+    return first.x == second.x && first.y == second.y;
+}
+
+[[nodiscard]] bool valid_reference_quad(const UiQuad& quad, UiRect owner) noexcept {
+    for (const auto& point : quad.points) {
+        if (!std::isfinite(point.x) || !std::isfinite(point.y) ||
+            point.x < owner.x || point.x > owner.x + owner.width ||
+            point.y < owner.y || point.y > owner.y + owner.height) return false;
+    }
+    const auto& points = quad.points;
+    // Horizontal, positive-width edges at increasing y form a convex trapezoid
+    // of positive area. This also rules out collapsed top/front faces.
+    return points[0].y == points[1].y && points[2].y == points[3].y &&
+           points[2].y > points[0].y && points[1].x > points[0].x &&
+           points[2].x > points[3].x;
+}
+
+template <std::size_t Count>
+[[nodiscard]] bool valid_reference_keys(const std::array<UiKeyGeometry, Count>& keys,
+                                        UiRect panel, UiTarget target,
+                                        std::size_t natural_count,
+                                        const UiLayout& layout) noexcept {
+    const UiKeyGeometry* previous_natural = nullptr;
+    std::size_t naturals = 0;
+    for (std::size_t index = 0; index < Count; ++index) {
+        const auto& key = keys[index];
+        const auto note = UiNote{target, static_cast<std::uint8_t>(
+            target == UiTarget::Pedals ? index + 1 : kMinManualMidiNote + index)};
+        if (!(key.note == note) || key.accidental != accidental(index) ||
+            !reference_rect_contains(panel, key.bounds) ||
+            !reference_same_rect(key.bounds, reference_quad_bounds(key.hit)) ||
+            !valid_reference_quad(key.hit, panel) || !valid_reference_quad(key.top, panel) ||
+            !valid_reference_quad(key.front, panel)) return false;
+        if (!reference_same_point(key.top.points[0], key.hit.points[0]) ||
+            !reference_same_point(key.top.points[1], key.hit.points[1]) ||
+            !reference_same_point(key.front.points[2], key.hit.points[2]) ||
+            !reference_same_point(key.front.points[3], key.hit.points[3]) ||
+            !reference_same_point(key.top.points[2], key.front.points[1]) ||
+            !reference_same_point(key.top.points[3], key.front.points[0])) return false;
+        if (!key.accidental) {
+            if (previous_natural &&
+                (!reference_same_point(previous_natural->hit.points[1], key.hit.points[0]) ||
+                 !reference_same_point(previous_natural->hit.points[2], key.hit.points[3]) ||
+                 !reference_same_point(previous_natural->top.points[2], key.top.points[3]) ||
+                 !reference_same_point(previous_natural->front.points[1], key.front.points[0]))) return false;
+            previous_natural = &key;
+            ++naturals;
+        }
+        // Perspective keys may overlap each other's AABBs. Ordinary controls
+        // never occupy a playing surface, even at the transformed extremes.
+        for (const auto& control : layout.controls)
+            if (reference_rect_overlaps(key.bounds, control.bounds)) return false;
+    }
+    return naturals == natural_count;
+}
+
+[[nodiscard]] bool valid_reference_presets(const UiLayout& layout, Manual manual) noexcept {
+    const auto& panel = layout.preset_key_panels[manual_index(manual)];
+    const auto& canonical_panel = kReferencePresetPanels[manual_index(manual)];
+    const float expected_right = reference_composition_point(
+        {canonical_panel.x + canonical_panel.width, 0.0F}, reference_composition_scale(layout)).x;
+    const UiControlGeometry* previous_natural = nullptr;
+    std::size_t count = 0;
+    std::size_t naturals = 0;
+    for (const auto& control : layout.controls) {
+        if (control.id.kind != UiControlKind::PresetKey || control.id.manual != manual) continue;
+        if (control.id.index != count || !reference_rect_contains(panel, control.bounds) ||
+            control.bounds.y != panel.y) return false;
+        ++count;
+        if (accidental(control.id.index)) continue;
+        if (control.bounds.height != panel.height) return false;
+        if (previous_natural) {
+            if (previous_natural->bounds.x + previous_natural->bounds.width != control.bounds.x) return false;
+        } else if (control.bounds.x != panel.x) return false;
+        previous_natural = &control;
+        ++naturals;
+    }
+    return count == kPresetSelectionCount && naturals == 7 && previous_natural &&
+           previous_natural->bounds.x + previous_natural->bounds.width == expected_right;
+}
+
+[[nodiscard]] bool valid_reference_composition(const UiLayout& layout) noexcept {
+    if (!reference_composition_active(layout) || !layout.show_cabinet ||
+        !layout.bank_controls_in_cheeks || !layout.sidebar_pedals) return false;
+    const UiRect viewport{0.0F, 0.0F, layout.width, layout.height};
+    for (UiRect parent : {layout.header, layout.performance_panel, layout.keyboard_toolbar,
+                          layout.pedal_panel, layout.footer, layout.cabinet_panel,
+                          layout.cabinet_art, layout.workspace_panel})
+        if (!reference_rect_contains(viewport, parent)) return false;
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        if (!reference_rect_contains(viewport, layout.registration_panels[manual]) ||
+            !reference_rect_contains(viewport, layout.manual_panels[manual]) ||
+            !reference_rect_contains(viewport, layout.manual_rail_panels[manual]) ||
+            !reference_rect_contains(layout.manual_rail_panels[manual], layout.preset_key_panels[manual]) ||
+            !valid_reference_presets(layout, static_cast<Manual>(manual))) return false;
+    }
+    if (!reference_rect_contains(layout.cabinet_panel, layout.keyboard_toolbar) ||
+        !reference_rect_contains(layout.cabinet_panel, layout.pedal_panel)) return false;
+    const auto scale = reference_composition_scale(layout);
+    const auto map = [scale](UiRect rect) noexcept { return reference_composition_rect(rect, scale); };
+    const UiRect envelope = map(kReferenceArtEnvelope);
+    if (!reference_rect_contains(layout.cabinet_panel, envelope) ||
+        !reference_rect_contains(envelope, layout.cabinet_art) ||
+        layout.cabinet_art.y != envelope.y) return false;
+
+    std::size_t preset_overlaps = 0;
+    for (std::size_t index = 0; index < layout.control_count; ++index) {
+        const auto& control = layout.controls[index];
+        const auto kind = control.id.kind;
+        UiRect owner;
+        switch (kind) {
+        case UiControlKind::Workspace:
+        case UiControlKind::Presentation:
+        case UiControlKind::SaveControls:
+        case UiControlKind::LoadControls:
+        case UiControlKind::Help:
+        case UiControlKind::AudioSettings:
+        case UiControlKind::MidiSettings:
+        case UiControlKind::Panic: owner = layout.header; break;
+        case UiControlKind::EditBank: owner = layout.manual_rail_panels[manual_index(control.id.manual)]; break;
+        case UiControlKind::PresetKey: owner = layout.preset_key_panels[manual_index(control.id.manual)]; break;
+        case UiControlKind::ManualDrawbar: owner = layout.registration_panels[manual_index(control.id.manual)]; break;
+        case UiControlKind::Percussion:
+        case UiControlKind::PedalDrawbar:
+        case UiControlKind::Expression: owner = layout.performance_panel; break;
+        case UiControlKind::KeyboardTarget:
+        case UiControlKind::OctaveDown:
+        case UiControlKind::OctaveUp: owner = layout.keyboard_toolbar; break;
+        default: return false;
+        }
+        const bool value = kind == UiControlKind::ManualDrawbar || kind == UiControlKind::PedalDrawbar ||
+                           kind == UiControlKind::Expression || kind == UiControlKind::Percussion;
+        const bool track = kind == UiControlKind::ManualDrawbar || kind == UiControlKind::PedalDrawbar ||
+                           kind == UiControlKind::Expression;
+        if (!reference_rect_contains(owner, control.bounds) ||
+            !reference_rect_contains(kind == UiControlKind::Percussion ? owner : control.bounds,
+                                     control.label_bounds) ||
+            (value ? !reference_rect_contains(control.bounds, control.value_bounds) :
+                     !reference_same_rect(control.value_bounds, {})) ||
+            (track ? !reference_rect_contains(control.bounds, control.track) :
+                     !reference_same_rect(control.track, {}))) return false;
+        if (kind == UiControlKind::Percussion) {
+            const float cap_bottom = reference_composition_point({0.0F, 229.0F}, scale).y;
+            const float legend_top = reference_composition_point({0.0F, 233.0F}, scale).y;
+            if (control.bounds.y + control.bounds.height != cap_bottom ||
+                control.label_bounds.y != legend_top) return false;
+            for (const auto& other : layout.controls)
+                if (reference_rect_overlaps(control.label_bounds, other.bounds)) return false;
+        } else if (kind == UiControlKind::ManualDrawbar || kind == UiControlKind::PedalDrawbar) {
+            const bool manual = kind == UiControlKind::ManualDrawbar;
+            const float center = manual ? kReferenceDrawbarCenters[manual_index(control.id.manual)][control.id.index] :
+                                          893.0F + 128.0F * static_cast<float>(control.id.index);
+            const UiRect slot = map(manual ? UiRect{center - 21.0F, 311.0F, 42.0F, 150.0F} :
+                                            UiRect{center - 21.0F, 182.0F, 42.0F, 65.0F});
+            const UiRect first_cap = map(manual ? UiRect{center - 17.0F, 311.0F, 34.0F, 32.0F} :
+                                                 UiRect{center - 17.0F, 182.0F, 34.0F, 22.0F});
+            const UiRect last_cap = map(manual ? UiRect{center - 17.0F, 429.0F, 34.0F, 32.0F} :
+                                                UiRect{center - 17.0F, 225.0F, 34.0F, 22.0F});
+            const UiRect expected_track = map(manual ? UiRect{center - 2.0F, 327.0F, 4.0F, 118.0F} :
+                                                      UiRect{center - 2.0F, 193.0F, 4.0F, 43.0F});
+            if (!reference_rect_contains(control.bounds, slot) ||
+                !reference_rect_contains(slot, first_cap) || !reference_rect_contains(slot, last_cap) ||
+                !reference_same_rect(control.track, expected_track)) return false;
+            if (manual) {
+                if (slot.y + slot.height > control.label_bounds.y ||
+                    control.label_bounds.y + control.label_bounds.height > control.value_bounds.y) return false;
+            } else if (control.label_bounds.y + control.label_bounds.height > slot.y ||
+                       slot.x + slot.width > control.value_bounds.x) return false;
+        }
+        for (std::size_t other_index = index + 1; other_index < layout.control_count; ++other_index) {
+            const auto& other = layout.controls[other_index];
+            if (control.id == other.id) return false;
+            if (!reference_rect_overlaps(control.bounds, other.bounds)) continue;
+            const int pitch_distance = static_cast<int>(other.id.index) - static_cast<int>(control.id.index);
+            if (kind != UiControlKind::PresetKey || other.id.kind != UiControlKind::PresetKey ||
+                control.id.manual != other.id.manual ||
+                accidental(control.id.index) == accidental(other.id.index) ||
+                (pitch_distance != 1 && pitch_distance != -1)) return false;
+            ++preset_overlaps;
+        }
+    }
+    return preset_overlaps == 20 &&
+           valid_reference_keys(layout.manual_keys[0], layout.manual_panels[0], UiTarget::Upper, 36, layout) &&
+           valid_reference_keys(layout.manual_keys[1], layout.manual_panels[1], UiTarget::Lower, 36, layout) &&
+           valid_reference_keys(layout.pedal_keys, layout.pedal_panel, UiTarget::Pedals, 15, layout);
 }
 
 void move_tab_focus(UiViewState& view, const UiLayout& layout, bool backwards) noexcept {
@@ -418,6 +860,12 @@ bool make_ui_layout(float width, float height,
     layout.height = height;
     layout.workspace = workspace;
     layout.presentation = presentation;
+    if (reference_composition_active(layout)) {
+        make_reference_composition(layout, edited_banks);
+        if (!valid_layout(layout) || !valid_reference_composition(layout)) return false;
+        destination = layout;
+        return true;
+    }
     layout.show_cabinet = width >= 1400.0F;
     layout.bank_controls_in_cheeks = height >= 820.0F;
     layout.sidebar_pedals = layout.show_cabinet && layout.bank_controls_in_cheeks;

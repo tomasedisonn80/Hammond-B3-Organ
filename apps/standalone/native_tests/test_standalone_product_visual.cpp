@@ -60,6 +60,21 @@ void check(bool condition, const std::string& message) {
 }
 double light(Pixel pixel) { return .2126 * pixel[0] + .7152 * pixel[1] + .0722 * pixel[2]; }
 
+bool whole_composition(const UiLayout& layout) {
+    return layout.workspace == UiWorkspace::Play &&
+        layout.presentation == UiPresentation::Dimensional &&
+        layout.width >= 1400 && layout.height >= 820;
+}
+UiRect canonical(const UiLayout& layout, float left, float top, float width, float height) {
+    // Independently map the admitted specification, not production geometry.
+    const float sx = layout.width / 1672.0F, sy = layout.height / 941.0F;
+    return {left * sx, top * sy, (left + width) * sx - left * sx,
+            (top + height) * sy - top * sy};
+}
+constexpr std::array<std::array<float, 9>, 2> rail_centers{{
+    {158, 206, 254, 302, 351, 400, 449, 498, 548},
+    {685, 734, 782, 830, 878, 927, 975, 1024, 1074}}};
+
 struct Point { long double x{}, y{}; };
 bool inside(UiRect r, Point p) {
     return r.width > 0 && r.height > 0 && p.x >= r.x && p.y >= r.y &&
@@ -269,6 +284,28 @@ FixedState state_for(const Case& test) {
 }
 std::vector<Text> plans_for(const FixedState& state, int value, bool legacy_digits = false) {
     std::vector<Text> plans;
+    const auto& layout = state.model.layout();
+    if (whole_composition(layout) && !legacy_digits) {
+        const float sx = layout.width / 1672.0F, sy = layout.height / 941.0F;
+        const float font_scale = std::min(sx, sy);
+        for (std::size_t manual = 0; manual < 2; ++manual) {
+            for (std::size_t index = 0; index < 9; ++index) {
+                const float left = rail_centers[manual][index] - 23;
+                plans.push_back({std::string(footage[index]),
+                    canonical(layout, left, 467, 46, 23), 19 * font_scale, 2 * sx, TextFace::Serif});
+                plans.push_back({std::to_string(value),
+                    canonical(layout, left, 491, 46, 15), 12 * font_scale, 3 * sx, TextFace::Sans});
+            }
+            const float left = manual == 0 ? 56.0F : 40.0F;
+            const float top = manual == 0 ? 548.0F : 718.0F;
+            const float width = manual == 0 ? 168.0F : 176.0F;
+            plans.push_back({state.model.view().edited_banks[manual] == DrawbarBank::A ? "EDIT BANK A" : "EDIT BANK B",
+                canonical(layout, left, top, width, 14), 12 * font_scale, 3 * sx, TextFace::Sans});
+            plans.push_back({std::string(sounding[static_cast<std::size_t>(state.presets[manual])]),
+                canonical(layout, left, top + 14, width, 14), 12 * font_scale, 3 * sx, TextFace::Sans});
+        }
+        return plans;
+    }
     for (const auto& control : std::span(state.model.layout().controls).first(state.model.layout().control_count)) {
         if (control.id.kind != UiControlKind::ManualDrawbar) continue;
         if (!legacy_digits) plans.push_back({std::string(footage[control.id.index]),
@@ -312,6 +349,49 @@ double middle(std::vector<double> values) {
     return values[values.size() / 2];
 }
 void caps(const UiModel& model, const Frame& frame, int value) {
+    if (whole_composition(model.layout())) {
+        const float sx = model.layout().width / 1672.0F;
+        const float sy = model.layout().height / 941.0F;
+        for (std::size_t manual = 0; manual < 2; ++manual)
+            for (std::size_t index = 0; index < 9; ++index) {
+                const float x = rail_centers[manual][index] * sx;
+                const float center = (327.0F + 118.0F * static_cast<float>(value) / 8.0F) * sy;
+                const int column = static_cast<int>(x * frame.transform.sx + static_cast<float>(frame.transform.viewport.x));
+                const bool brown = index < 2;
+                const bool black = index == 4 || index == 6 || index == 7;
+                const Pixel top = brown ? Pixel{194, 142, 108, 255} : black ? Pixel{101, 100, 97, 255} : Pixel{255, 248, 224, 255};
+                const Pixel join = brown ? Pixel{163, 111, 77, 255} : black ? Pixel{70, 69, 66, 255} : Pixel{244, 224, 186, 255};
+                std::vector<double> tops, joins;
+                visit(frame, {x - sx, center - 16 * sy, 2 * sx, 32 * sy}, [&](int px, int py, Point p) {
+                    if (px != column) return;
+                    const auto pixel = frame.pixels[frame.at(px, py)];
+                    if (pixel == top) tops.push_back(static_cast<double>(p.y));
+                    if (pixel == join) joins.push_back(static_cast<double>(p.y));
+                });
+                check(!tops.empty() && !joins.empty(), "canonical cap top and front join are observable for every family/position");
+                if (!tops.empty() && !joins.empty()) {
+                    check(std::abs(middle(tops) - (center - 14 * sy)) <= 1 &&
+                          std::abs(middle(joins) - (center + 7 * sy)) <= 1,
+                          "scaled 32-unit cap retains its 8-unit front at the canonical rail center");
+                }
+                const auto& layout = model.layout();
+                const auto end = layout.controls.begin() + static_cast<std::ptrdiff_t>(layout.control_count);
+                const auto control = std::find_if(layout.controls.begin(), end, [&](const UiControlGeometry& item) {
+                    return item.id.kind == UiControlKind::ManualDrawbar &&
+                        static_cast<std::size_t>(item.id.manual) == manual && item.id.index == index;
+                });
+                require(control != end, "canonical cap has its real control record");
+                const float travel_top = control->track.y - 16 * sy;
+                const float travel_bottom = control->track.y + control->track.height + 16 * sy;
+                check(std::abs(travel_top - 311 * sy) <= .002F &&
+                      std::abs(travel_bottom - 461 * sy) <= .002F &&
+                      control->label_bounds.y - travel_bottom >= 6 * sy - .002F &&
+                      control->value_bounds.y - control->label_bounds.y - control->label_bounds.height >= sy - .002F,
+                      "complete cap travel precedes the separate footage and numeric rows");
+                ++totals.caps;
+            }
+        return;
+    }
     for (const auto& control : std::span(model.layout().controls).first(model.layout().control_count)) {
         if (control.id.kind != UiControlKind::ManualDrawbar) continue;
         const float x = control.track.x + control.track.width / 2;
@@ -478,7 +558,7 @@ void run(const Case& test) {
     const auto before = target.paint(model, paint_instrument_product_before);
 #endif
     const auto after = target.paint(model, paint_instrument);
-    const bool active = layout.sidebar_pedals && test.presentation == UiPresentation::Dimensional && test.workspace == UiWorkspace::Play;
+    const bool active = whole_composition(layout);
     Frame expected, legacy;
     if (active && !test.clipped) {
         caps(model, after, test.value);

@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstddef>
@@ -153,6 +154,21 @@ UiModel prepared(int width, int height, UiPresentation presentation) {
 void readable_accidentals(Drawing& drawing, const UiModel& model, const Frame& actual) {
     constexpr std::array<unsigned, 5> indices{1, 3, 6, 8, 10};
     constexpr std::array<std::string_view, 5> letters{"C", "D", "F", "G", "A"};
+    // Independently apply the frozen 1672x941 composition contract. Geometry
+    // and the 11-unit line boxes/9-unit row pitch use sy, while requested glyph
+    // size uses min(sx,sy). Keep the inactive 9-unit font and 0.1-unit inset
+    // literal: Flat and compact typography must retain their existing pixels.
+    const bool active = model.view().workspace == UiWorkspace::Play &&
+        model.view().presentation == UiPresentation::Dimensional &&
+        actual.width >= 1400 && actual.height >= 820;
+    const float sy = active ? static_cast<float>(actual.height) / 941.0F : 1.0F;
+    const float size = active ? 9.0F * std::min(static_cast<float>(actual.width) / 1672.0F, sy) : 9.0F;
+    const float row_pitch = 9.0F * sy;
+    const float top_inset = active ? (11.0F * sy - 1.2F * size) / 2.0F : 0.1F;
+    const auto glyph_y = [active, row_pitch, top_inset](float top, unsigned row) {
+        return active ? top + row_pitch * static_cast<float>(row) + top_inset :
+            top + 0.1F + 9.0F * static_cast<float>(row);
+    };
     // An independent native glyph template fixes the required size, characters
     // and two row positions. The material is uniform across each interior row,
     // so an unlettered adjacent pixel supplies its actual background. Recompose
@@ -165,10 +181,10 @@ void readable_accidentals(Drawing& drawing, const UiModel& model, const Frame& a
             const auto& label = geometry(model, preset(manual, indices[index])).label_bounds;
             for (unsigned row = 0; row < 2; ++row) {
                 const auto glyph = row == 0 ? letters[index] : std::string_view{"#"};
-                const float advance = drawing.text_width(glyph, 9.0F);
+                const float advance = drawing.text_width(glyph, size);
                 check(advance <= label.width, "full-size accidental glyph fits without shrinking");
                 drawing.text(glyph, label.x + (label.width - advance) / 2.0F,
-                    label.y + 0.1F + 9.0F * static_cast<float>(row), 9.0F, {0, 0, 0});
+                    glyph_y(label.y, row), size, {0, 0, 0});
             }
         }
     }
@@ -191,9 +207,9 @@ void readable_accidentals(Drawing& drawing, const UiModel& model, const Frame& a
             }
             for (unsigned row = 0; row < 2; ++row) {
                 const auto glyph = row == 0 ? letters[index] : std::string_view{"#"};
-                const float advance = drawing.text_width(glyph, 9.0F);
+                const float advance = drawing.text_width(glyph, size);
                 drawing.text(glyph, label.x + (label.width - advance) / 2.0F,
-                    label.y + 0.1F + 9.0F * static_cast<float>(row), 9.0F, {37, 29, 20});
+                    glyph_y(label.y, row), size, {37, 29, 20});
             }
         }
     }
@@ -203,8 +219,8 @@ void readable_accidentals(Drawing& drawing, const UiModel& model, const Frame& a
             const auto& key = geometry(model, preset(manual, index));
             const auto& label = key.label_bounds;
             for (unsigned row = 0; row < 2; ++row) {
-                auto area = interior({label.x, label.y + 9.0F * static_cast<float>(row),
-                                      label.width, 9.0F});
+                auto area = interior({label.x, label.y + row_pitch * static_cast<float>(row),
+                                      label.width, row_pitch});
                 area.left = static_cast<int>(std::floor(key.bounds.x)) + 2;
                 area.right = static_cast<int>(std::floor(key.bounds.x + key.bounds.width)) - 2;
                 std::size_t ink = 0;
@@ -221,7 +237,7 @@ void readable_accidentals(Drawing& drawing, const UiModel& model, const Frame& a
                 check(ink > 0 && mismatches == 0,
                       std::to_string(actual.width) + "x" + std::to_string(actual.height) +
                       " manual " + std::to_string(manual) + " accidental " + std::to_string(index) +
-                      " row " + std::to_string(row) + " matches independently rendered 9-unit glyph pixels (" +
+                      " row " + std::to_string(row) + " matches independently rendered canonical 9-unit glyph pixels (" +
                       std::to_string(ink) + " ink, " + std::to_string(mismatches) + " mismatches)");
                 ++readable_glyph_cases;
             }

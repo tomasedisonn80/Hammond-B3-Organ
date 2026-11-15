@@ -1,0 +1,41 @@
+{
+  "base_commit": "33fa95d51e44234eef47ee21c03d29b2b311a5ee",
+  "tools": {
+    "cmake": "3.31.6",
+    "gcc": "14.2.0",
+    "python": "3.12",
+    "SDL2": "2.32.10"
+  },
+  "configuration": "Release native; MIDI OFF; VST3 OFF; dummy SDL",
+  "binaries": {
+    "standalone": {
+      "path": "/workspace/scratch/ade21b726509/baseline-standalone",
+      "sha256": "b507bb6ee52bb7d9b849a8460a6034b25eec3fd5219431f2f088863ed724d1ae",
+      "bytes": 3651200
+    },
+    "percussion-raster": {
+      "path": "/workspace/scratch/ade21b726509/baseline-percussion-raster",
+      "sha256": "9ce7df2feae93eda9f2ce5e6000504c3dac53e90ba14f3a21b7d66c170540635",
+      "bytes": 3321672
+    }
+  },
+  "production_inputs": {
+    "CMakeLists.txt": "bdc7e0bdcf605646eee3f098829e498561a555264d74d345b40c8dda554eed01",
+    "apps/standalone/CMakeLists.txt": "36cfc23b38e7f2322cddd09dc9c37b5010765e0d09de1f8290113a4262bfa986",
+    "apps/standalone/UiModel.h": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+    "apps/standalone/UiModel.cpp": "aa4fa2e06c4a8ccb17ba1b1cdfed498372b3626152bb2b8c6c53682b775931c9",
+    "apps/standalone/InstrumentView.cpp": "97971753c23e7da93d84586cf66ede2a3d9a04f319ddaf4831ba83ea7955f7d6",
+    "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+    "apps/standalone/native_tests/test_standalone_percussion_raster.cpp": "7078e90485d1cd4f4fe2f473044965d33487bd86b04b4ba35851db2501206076"
+  },
+  "baseline_build": {
+    "exit_code": 0,
+    "steps": 567
+  },
+  "baseline_ctest": {
+    "exit_code": 0,
+    "passed": 198,
+    "total": 198,
+    "wall_seconds": 206.69
+  }
+}

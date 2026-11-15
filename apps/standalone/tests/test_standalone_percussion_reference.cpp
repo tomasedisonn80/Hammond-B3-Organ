@@ -12,8 +12,8 @@
 #include <tuple>
 #include <variant>
 
-// Independent host-free acceptance of PERCUSSION_REFERENCE_CONTRACT v1.
-// Numeric anchors come from the admitted A11 review, not the layout equations.
+// Independent host-free acceptance of retained percussion behavior and the
+// admitted whole-reference active allocation. Oracles use contract literals.
 // Painting, font/raster containment and physical devices have separate gates.
 namespace {
 using namespace hammond;
@@ -149,16 +149,18 @@ void targets_and_clearance(const UiLayout& layout, bool exterior) {
             CHECK(ui_hit_test(layout, miss).kind == UiControlKind::None);
         if (exterior) {
             contained(cap.label_bounds, layout.performance_panel);
-            CHECK_NEAR(cap.label_bounds.y - (box.y + box.height), 2.0F, 0.002F);
-            CHECK_NEAR(cap.label_bounds.height, 13.0F, 0.002F);
-            CHECK_NEAR(cap.label_bounds.x - box.x, -2.0F, 0.002F);
-            CHECK_NEAR(cap.label_bounds.width - box.width, 4.0F, 0.002F);
-            CHECK_NEAR(cap.value_bounds.x - box.x, 5.0F, 0.002F);
-            CHECK_NEAR(cap.value_bounds.y - box.y, 5.0F, 0.002F);
-            CHECK_NEAR(box.width - cap.value_bounds.width, 10.0F, 0.002F);
-            CHECK_NEAR(box.height - cap.value_bounds.height, 12.0F, 0.002F);
-            CHECK(layout.performance_panel.y + layout.performance_panel.height -
-                  cap.label_bounds.y - cap.label_bounds.height >= 3.998F);
+            const long double sx = static_cast<long double>(layout.width / 1672.0F);
+            const long double sy = static_cast<long double>(layout.height / 941.0F);
+            CHECK_NEAR(cap.label_bounds.y - (box.y + box.height), 4.0L * sy, 0.002F);
+            CHECK_NEAR(cap.label_bounds.height, 14.0L * sy, 0.002F);
+            CHECK_NEAR(cap.label_bounds.x - box.x, -2.0L * sx, 0.002F);
+            CHECK_NEAR(cap.label_bounds.width - box.width, 4.0L * sx, 0.002F);
+            CHECK_NEAR(cap.value_bounds.x - box.x, 5.0L * sx, 0.002F);
+            CHECK_NEAR(cap.value_bounds.y - box.y, 6.0L * sy, 0.002F);
+            CHECK_NEAR(box.width - cap.value_bounds.width, 10.0L * sx, 0.002F);
+            CHECK_NEAR(box.height - cap.value_bounds.height, 14.0L * sy, 0.002F);
+            CHECK_NEAR(layout.performance_panel.y + layout.performance_panel.height -
+                       cap.label_bounds.y - cap.label_bounds.height, 17.0L * sy, 0.002F);
             for (const UiPoint miss : {center(cap.label_bounds),
                                        UiPoint{cap.label_bounds.x, cap.label_bounds.y},
                                        UiPoint{middle.x, box.y + box.height + 1.0F}})
@@ -182,19 +184,21 @@ void targets_and_clearance(const UiLayout& layout, bool exterior) {
 }
 
 void frozen_geometry_and_predicate() {
-    struct Anchor { UiPoint size; float width, height; std::array<float, 4> left; };
-    constexpr std::array<Anchor, 5> anchors{{
-        {{1400, 820}, 61.814117F, 47.400002F, {137.718246F, 214.568237F, 282.229614F, 349.891022F}},
-        {{1672, 941}, 73.961494F, 48, {164.647720F, 256.599854F, 337.557678F, 418.515564F}},
-        {{1920, 1080}, 86.069016F, 48, {179.935196F, 286.939911F, 381.150574F, 475.361267F}},
-        {{8192, 820}, 92.5F, 47.400002F, {1229.181396F, 1344.181396F, 1445.431396F, 1546.681396F}},
-        {{8192, 8192}, 92.5F, 48, {1229.181396F, 1344.181396F, 1445.431396F, 1546.681396F}}}};
-    for (const auto& anchor : anchors) {
+    // Canonical cap endpoints are independent of the production mapper. Use
+    // binary32 scale, then long-double arithmetic for the 0.002-unit oracle.
+    constexpr std::array<UiPoint, 8> anchors{{
+        {1400, 820}, {1672, 941}, {1920, 1080}, {1400.25F, 820.25F},
+        {1672.5F, 941.25F}, {8192, 820}, {1400, 8192}, {8192, 8192}}};
+    constexpr std::array<long double, 4> lefts{164, 256, 337, 418};
+    for (const auto size : anchors) {
         UiLayout layout;
-        CHECK(make_ui_layout(anchor.size.x, anchor.size.y, kBanks, layout));
+        CHECK(make_ui_layout(size.x, size.y, kBanks, layout));
+        const long double sx = static_cast<long double>(size.x / 1672.0F);
+        const long double sy = static_cast<long double>(size.y / 941.0F);
         for (std::size_t slot = 0; slot < kReferenceOrder.size(); ++slot)
             near_rect(geometry(layout, percussion(kReferenceOrder[slot])).bounds,
-                      {anchor.left[slot], 150, anchor.width, anchor.height});
+                      {static_cast<float>(lefts[slot] * sx), static_cast<float>(177 * sy),
+                       static_cast<float>(74 * sx), static_cast<float>(52 * sy)});
         targets_and_clearance(layout, true);
     }
 
@@ -228,23 +232,23 @@ void frozen_geometry_and_predicate() {
     UiLayout active, flat;
     CHECK(make_ui_layout(1672, 941, kBanks, active));
     CHECK(make_ui_layout(1672, 941, kBanks, flat, UiWorkspace::Play, UiPresentation::Flat));
-    // Same allocation and neighboring control records in both presentations.
-    same_rect(active.performance_panel, flat.performance_panel);
-    same_rect(active.header, flat.header);
-    same_rect(active.keyboard_toolbar, flat.keyboard_toolbar);
-    same_rect(active.pedal_panel, flat.pedal_panel);
-    same_rect(active.footer, flat.footer);
-    same_rect(active.cabinet_panel, flat.cabinet_panel);
-    for (std::size_t manual = 0; manual < 2; ++manual) {
-        same_rect(active.registration_panels[manual], flat.registration_panels[manual]);
-        same_rect(active.manual_panels[manual], flat.manual_panels[manual]);
-        same_rect(active.manual_rail_panels[manual], flat.manual_rail_panels[manual]);
-        same_rect(active.preset_key_panels[manual], flat.preset_key_panels[manual]);
+    // Only the active allocation changes; semantic identity and parameter
+    // mapping remain the same across the legacy Flat presentation.
+    near_rect(active.performance_panel, {72, 125, 1044, 139});
+    near_rect(active.header, {72, 10, 1528, 102});
+    near_rect(active.keyboard_toolbar, {1140, 614, 448, 64});
+    near_rect(active.pedal_panel, {1138, 752, 450, 110});
+    near_rect(active.footer, {48, 889, 1556, 36});
+    near_rect(active.cabinet_panel, {1126, 125, 478, 745});
+    for (const auto& control : active.controls) {
+        const auto& other = geometry(flat, control.id);
+        std::uint32_t active_parameter = 0, flat_parameter = 0;
+        CHECK(ui_parameter_id(control.id, active_parameter) ==
+              ui_parameter_id(other.id, flat_parameter));
+        CHECK(active_parameter == flat_parameter);
     }
-    for (const auto& control : active.controls)
-        if (control.id.kind != UiControlKind::Percussion) same_control(control, geometry(flat, control.id));
-    CHECK(ui_hit_test(active, {200, 136}).kind == UiControlKind::None); // Heading.
-    CHECK(ui_hit_test(active, {200, 220}).kind == UiControlKind::None); // Separate eligibility.
+    CHECK(ui_hit_test(active, {200, 146}).kind == UiControlKind::None); // Heading.
+    CHECK(ui_hit_test(active, {200, 255}).kind == UiControlKind::None); // Eligibility.
     for (const auto workspace : {UiWorkspace::Rotary, UiWorkspace::Service}) {
         UiLayout hidden;
         CHECK(make_ui_layout(1672, 941, kBanks, hidden, workspace));

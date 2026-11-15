@@ -1,35 +1,26 @@
 # Project plan: Hammond B-3 and Leslie
 
-**Current audio continuation — 15 November 2026:** the
-[new session](development/2026-11-15-audio-continuation/README.md) independently
-read all 500 pages and selected M2 static sparse source leakage/offline audition
-plus M9 reference percussion composition. The implementation preserves source
-identities and nominal defaults; its coefficients are explicitly synthetic.
-Read the [contracts and scope](development/2026-11-15-audio-continuation/SCOPE.md),
-[actual ledger](development/2026-11-15-audio-continuation/assignments.json) and
-[source-bound checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md).
-Numerical/software acceptance is separate from measured-generator evidence,
-connected M4–M7 audio and whole-interface 1:1. All exit criteria below remain.
+**Current execution continuation — 15 November 2026:** the
+[session](development/2026-11-15-execution-continuation/README.md) completed six
+readings covering all 500 atlas pages and delivers the **M3 offline
+fractional-contact reference** plus **M9 canonical wide Dimensional Play
+composition**. The [installed 36×4 experiment](CONTACT_SWITCHING_RESULTS.md)
+passes its frozen numerical/resource criteria; the
+[twelve actual native views](../examples/demos/whole-reference-layout-v1/README.md)
+have independent scoped admission. The default dry Engine and established
+musical identities are preserved. The coherent local gate passed **203/203 CTests
+in 191.37 seconds**. Hosted CI, publication and completion of this requested
+sixty-worker/ten-wave session remain pending;
+use the [live checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-15-execution-continuation/assignments.json).
 
-**Current playable continuation — 15 November 2026:** read the new
-[session](development/2026-11-15-playable-continuation/README.md),
-[scope](development/2026-11-15-playable-continuation/SCOPE.md) and
-[checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md).
-Six direct readers covered the entire atlas; the clean 3767b64 native baseline
-passes 183/183 tests. New work targets M2 harmonic source/offline audition and
-M9 reference-rack composition. These features remain under reviewed development.
-All M0–M9 exit criteria below remain in force; sixty workers do not establish
-physical or visual fidelity. Other active sessions retain their assigned scope.
-
-**Earlier product authority — 15 November 2026:** the
-[product continuation](development/2026-11-15-product-continuation/README.md)
-advances M9 native MIDI channel modes, expression-controller calibration and
-measured visual refinement, together with an independent M6 passive crossover.
-Read its [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md),
-[actual assignments](development/2026-11-15-product-continuation/assignments.json),
-[current status](STATUS.md) and [next actions](NEXT_STEPS.md) before choosing work.
-The separately owned waveform session retains R4. Earlier completed sessions
-remain source-specific history; their worker counts do not close this session.
+Earlier additive source leakage, harmonic-source work, scanner/library work,
+crossover/native-retirement work and R4 retain their separate ownership and
+source-specific evidence below. The older percussion-only layout is historical;
+its allocation residual is superseded in the new active wide composition.
+**All M0–M9 exit criteria remain in force.** Numerical acceptance, software
+composition, physical fidelity, accessibility and literal whole-interface 1:1
+are separate gates.
 
 ## Product objective and evidence boundary
 
@@ -51,9 +42,11 @@ included no newly acquired instrument measurements (p. 2). New implementations a
 reconstructions retain their own provenance; absent companion results are not tests
 that this repository has executed.
 
-The current session's A01–A06 notes retain complete textual coverage of pages
-1–500, with individual page ranges and extract hashes in the
-[reading map](PROJECT_GUIDE.md#source-and-reading-records). The unchanged PDF
+The execution session's A01–A06 notes retain complete textual coverage of pages
+1–500, with individual page ranges and extract hashes in its
+[coverage receipt](development/2026-11-15-execution-continuation/reports/atlas-reading-coverage.json).
+The [reading map](PROJECT_GUIDE.md#source-and-reading-records) preserves earlier
+sessions' independent coverage. The unchanged PDF
 SHA-256 is `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
 Reading the atlas does not independently verify every cited drawing or supply
 missing specimen measurements.
@@ -91,40 +84,31 @@ adapter smoke test may start after M1/M2; that does not complete product release
 
 | Session | Responsibility and recovery authority |
 | --- | --- |
-| Product continuation, starting `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb` | Active M9 MIDI/calibration/visual work and independent M6 crossover; [scope](development/2026-11-15-product-continuation/README.md), [checkpoint](development/2026-11-15-product-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-15-product-continuation/assignments.json). All sixty actual results in ten waves are accepted; the literal 1:1 UI requirement remains unmet and unwaived. |
-| Waveform continuation, starting `2e161dc3a60fc3442051799574feed37bffbfc5c` | Separate R4 implementation and acceptance; [scope](development/2026-11-14-waveform-continuation/README.md), [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md), [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). Preserve its other checkout and unfinished work. |
-| Completed reference refinement | Historical M9/R2/R3 and combined-source qualification; [closure](REFERENCE_REFINEMENT_CLOSURE.md) and [completed checkpoint](development/2026-11-14-reference-refinement/CHECKPOINT.md). All 60 accepted workers remain closed historical records. |
+| **Execution continuation**, base `33fa95d51e44234eef47ee21c03d29b2b311a5ee` | Current bounded M3 offline contact reference and M9 canonical wide Play; [scope](development/2026-11-15-execution-continuation/SCOPE.md), [checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md), [actual ledger](development/2026-11-15-execution-continuation/assignments.json). The requested sixty-worker session is in progress. Root owns its coordinated build, final acceptance and publication. |
+| Audio continuation | Delivered additive M2 sparse source leakage and its explicit offline audition; earlier percussion-stage captures retain their identity. Preserve remaining owner-local work under its [checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md). |
+| Playable continuation | Separate harmonic-source/offline and reference-rack work; recover actual implementation/publication state from its [checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md) before integration. |
+| Next-phase continuation | Separate ScannerLineFoh and named registration/performance library/browser work; its [checkpoint](development/2026-11-15-next-phase/CHECKPOINT.md) owns numerical, integration and product acceptance. |
+| Fidelity continuation | Separate same-Hz crossover, native MIDI close/retirement and visual-deck work; preserve the [checkpoint](development/2026-11-15-fidelity-continuation/CHECKPOINT.md) and unfinished checkout. |
+| Waveform continuation | Separate R4 implementation and remaining acceptance; [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md) and [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). |
+| Completed product and reference-refinement sessions | Their [product closure](PRODUCT_CONTINUATION_CLOSURE.md) and [refinement closure](REFERENCE_REFINEMENT_CLOSURE.md) preserve accepted work, original failures and exact published/hosted identities. Their sixty-worker records are historical. |
 
-The current published source is
-`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`, tree
-`d310be065db2bb9b0012c11a0c5ec2beda4c9384`. Its
-[publication receipt](development/2026-11-15-product-continuation/reports/checker-portability-publication.json)
-records the verified c448 parent and guarded nonforced update. The
-[required primary hosted gate](development/2026-11-15-product-continuation/reports/root-final-hosted.json)
-passes all thirteen jobs at that exact source. Core passes 157/157 on all
-three platforms and Linux sanitizers; native Release passes 48/48 in all four
-configurations and native sanitizers pass 21/21. VST3 passes 8/7/7 with 47
-plug-in-validator checks each; full R4 passes. All sixty actual records and the
-strict Linux CI execution are verified. The closing change is documentation and
-evidence only.
+The execution base tree is `f5d9406ef099f6569a5d1f3fee27358b520bc928`; HEAD
+alone does not identify its later working overlay. The
+[qualified contact report/process receipts](CONTACT_SWITCHING_RESULTS.md#source-and-protocol-bindings)
+and [native gallery admission](reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md)
+identify the actual numerical and UI inputs. The clean starting native baseline
+passed 198/198 tests; the later [coherent local gate](development/2026-11-15-execution-continuation/reports/coherent-qualification.json)
+passed all 203 tests. Current-source hosted gates remain pending. Earlier all-thirteen hosted success at
+`80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe` remains solely that product source's
+qualification in [STATUS.md](STATUS.md#earlier-product-continuation--15-november-2026).
 
-The [batch record](PRODUCT_CONTINUATION_CLOSURE.md) distinguishes accepted M9/M6
-work from incomplete milestones, physical fidelity and the user's remaining 1:1
-UI requirement. The original d8 thirteen-job pass, c448 eleven-pass/two-failure
-matrix, macOS alias and Windows timestamp repairs retain separate identities.
-The [180-test local run](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json)
-remains evidence for its original 366 inputs. The portable checker and test now
-differ in two files; the [focused gate](development/2026-11-15-product-continuation/reports/checker-portability-root-verification.json)
-qualifies those local changes and strict actual records. No application, model,
-build or workflow source changes in this repair. Current setup and continuation
-are in [STATUS.md](STATUS.md), [NEXT_STEPS.md](NEXT_STEPS.md) and the live checkpoint.
-
-The integrator owns the current checkout/build and shared publication. Read the
-active checkpoint and [concurrent handoff](development/2026-11-14-reference-refinement/CONCURRENT_HANDOFF.md)
-before overlapping source, paint, gallery or build work. Use the
-[setup/recovery handoff](PRODUCT_HANDOFF.md), [native operating guide](MIDI_EXPRESSION_GUIDE.md) and
-[crossover developer guide](CROSSOVER_DEVELOPER_GUIDE.md) for current commands;
-an old setup path or test count is not a current acceptance result.
+Use [current workspace/setup](STATUS.md#current-workspace-and-setup), the
+[contact operating guide](CONTACT_SWITCHING_GUIDE.md),
+[native operating guide](MIDI_EXPRESSION_GUIDE.md) and
+[crossover developer guide](CROSSOVER_DEVELOPER_GUIDE.md) for their respective
+workflows. Claim paths before editing; do not operate another session's build or
+replace its evidence. Fresh remote advances must be inspected and reconciled
+before guarded, nonforced publication.
 
 ## Current implementation design choices
 
@@ -148,6 +132,35 @@ polyphony-dependent normalization must not disguise source-sharing mistakes.
 Data loading and profile replacement happen with processing stopped until a
 separately tested publication/retirement protocol exists.
 
+## Current M3 reference and next streaming phase
+
+The [fractional-contact model](FRACTIONAL_CONTACT_REFERENCE.md) and
+[frozen validation protocol](CONTACT_SWITCHING_VALIDATION.md) now have an
+independent Python implementation, strict CLI, continuous quadrature oracle,
+synthetic fixture/probe set and explicit relocatable
+[ContactReferenceTools](CONTACT_REFERENCE_INSTALL.md) component. Exact rational
+crossings preserve independent hysteresis and coherent source phase before
+filtering. The centered finite filter is acausal; complete immutable output
+ranges do not demonstrate streaming state.
+
+The repaired installed **36-fixture/four-factor study passes**, with zero failed
+cells, **21.728087337 s external wall** and **36,974,592 bytes exact-child peak
+RSS**. [Executed results](CONTACT_SWITCHING_RESULTS.md) bind this run to A30's
+independent numerical reconstruction and unchanged samples/metrics. Convergence
+covers all 289 output samples; continuous admission covers 64 frozen probes per
+fixture. No full-window atlas `1e-4`, measured-contact or Engine-parity grade is
+claimed. Existing ContactBank/default Engine, 91 sources, 47 parameters and
+`B3CONTROLS4`/readers 1–3 remain unchanged.
+
+The next dependency-ready M3 step is a separately reviewed **causal streaming
+contract**, followed by implementation and independent comparison. Declare
+latency, source phase, edge ordering, histories, supported rates, bounded
+work/storage, callback allocation, partition invariance, reset and tail/flush
+semantics before grading or live integration. Full-window reference admission
+and native/Engine lifecycle evidence are separate prerequisites. Physical bounce,
+resistance, tap loading and timing still require synchronized identified
+contact/source/dry captures; see [next actions](NEXT_STEPS.md).
+
 ## Current M6 foundation and next numerical phase
 
 The [ideal Leslie crossover](LESLIE_CROSSOVER_CONTRACT.md) is implemented as an
@@ -159,10 +172,10 @@ an explicit six-file copy-only component. Neither the module nor its installatio
 connects an amplifier, driver or cabinet to Engine.
 
 The [same-Hz characterization](LESLIE_CROSSOVER_CHARACTERIZATION.md) retains the
-frequency differences separately from accepted warped-reference parity. After
-this session's closure, the first independent M6 task is to freeze a versioned
-electrical-accuracy protocol, then evaluate a separately identified realization
-against it. [NEXT_STEPS.md](NEXT_STEPS.md#next-dependency-ready-phase-after-session-closure)
+frequency differences separately from accepted warped-reference parity. The separate fidelity
+continuation owns same-Hz numerical work; recover its actual checkpoint before
+assigning changes. Any further realization needs a versioned electrical-accuracy
+protocol and independent evaluation. [NEXT_STEPS.md](NEXT_STEPS.md#next-dependency-ready-phase-after-session-closure)
 names the available inputs, affected modules and acceptance. Preserve v1 and its
 documentary values. Component losses, source impedance, complex driver loads and
 assembly/specimen applicability remain acquisition-dependent unknowns; numerical
@@ -202,9 +215,10 @@ The later full R4 job in the [d8 Linux audit](reviews/PRODUCT_LINUX_HOSTED_REVIE
 also passes its published inputs. It does not close the other owner's unfinished
 checkout or transfer its acceptance and worker-ledger ownership.
 
-The scanner's [G5 same-hertz failure](SCANNER_HANDOFF.md) remains unresolved
-under its [numerical contract](SCANNER_NUMERICAL_CONTRACT.md); do not connect
-it to Engine by treating an earlier numerical pass as audible acceptance.
+The original scanner realization's [G5 same-hertz failure](SCANNER_HANDOFF.md)
+remains retained under its [numerical contract](SCANNER_NUMERICAL_CONTRACT.md).
+Separate ScannerLineFoh work has its own source and numerical gates; neither
+research path authorizes an Engine connection through an earlier numerical pass.
 Complete revision-specific M5/M6 electrical graphs, real cabinet evidence and
 the [physical acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md) remain
 separate dependencies. Numerical primitives and documentary artwork do not
@@ -228,29 +242,40 @@ banks, fixed registrations, percussion, expression, device settings and explicit
 Save/Load. All **47 sound parameters**, the **`B3CONTROLS4`** writer and readers
 1–3 preserve their meanings; presentation changes do not migrate sound state.
 
-The current [visual refinement](PRODUCT_VISUAL_REFINEMENT.md) adds fitted
-footage legends, 32-pixel manual caps, distinct EDIT BANK/SOUNDING rows and
-restrained natural-key lighting in wide Dimensional views. Compact/Flat paths
-retain their accepted pixels. The separate MIDI modal adds endpoint/inversion
-settings and eleven focus stops; the [operating guide](MIDI_EXPRESSION_GUIDE.md)
-explains selected, configured, active and pending state. Calibration is adapter
-configuration, not a saved musical parameter or an AO-28 expression model.
+The current [wide composition contract](WHOLE_REFERENCE_LAYOUT_CONTRACT.md)
+is implemented only in Dimensional Play at width ≥1400 and height ≥820. Its
+1672×941 canonical coordinates place percussion at y177, racks at y269–508,
+footage below the rails, manual starts at y548/y718 and the cabinet above the
+relocated toolbar/pedals. Shared hit/paint endpoints, edited/sounding/pending
+cues, note ownership and all live controls remain intact. Other presentation
+paths retain their established geometry; all 28 inactive paired raster frames
+are byte-identical.
 
-The [reference-gap review](design/PRODUCT_REFERENCE_GAPS.md) and
-[independent gallery admission](reviews/PRODUCT_GALLERY_ADMISSION.md) distinguish
-scoped raster/timing evidence from physical display acceptance. The current
-[eight normal views](../examples/demos/standalone-product-preview-v1/README.md)
-and [three MIDI overlays](../examples/demos/standalone-product-preview-v1/midi-overlay/README.md)
-are admitted actual `d556da01` captures from application `7ded143b…`; README
-displays current Play and MIDI views. Their source, executable, replay, state and
-PNG/native-pixel identities remain retained; original BMP intermediates are
-unavailable. No new capture at the later publication is claimed.
+The [current twelve-frame gallery](../examples/demos/whole-reference-layout-v1/README.md)
+and [independent admission](reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md) bind
+the actual application `eb9a501e…` to its working-source overlay, inputs and
+pixels. Root accepts that scoped software evidence. The genuine 66-pair v2
+comparison has zero escaping pixels, but its smallest active protected region
+is only 34 pixels. It establishes narrow containment, not whole-image parity.
+Original v1 failures and previous galleries remain preserved.
 
-The admitted [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
-is historical `487064d2` capture evidence; v4 belongs to `0881d1f4`, and earlier
-galleries retain their original identities. No older image is a capture of the
-new calibration modal or painter. The [earlier native-input review](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md)
-retains its distinct X11 scope and incomplete desktop journeys.
+The separate MIDI modal retains endpoint/inversion settings and eleven focus
+stops; its [operating guide](MIDI_EXPRESSION_GUIDE.md) distinguishes selected,
+configured, active and pending state. Calibration is adapter configuration, not
+a saved musical parameter or an AO-28 expression model. The earlier
+[product gallery and MIDI overlays](../examples/demos/standalone-product-preview-v1/README.md),
+[audio percussion gallery](../examples/demos/standalone-audio-preview-v1/README.md)
+and [v5 gallery](../examples/demos/standalone-interface-preview-v5/README.md)
+keep their original executable/source identities; they are not captures of the
+current composition.
+
+Remaining visual work needs an independent material/type comparison covering
+panel/wood illumination, key/cap bevels, shadows and small labels, followed by
+real display/DPI/input and semantic-accessibility journeys. Keep truthful
+controls and unconnected-model labels; a decorative cabinet crop's equality
+does not qualify the surrounding interface or a measured cabinet. The
+[earlier native-input review](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md)
+retains its distinct X11 scope and incomplete journeys.
 
 The reference supplies visual direction, while the engineering inventory remains
 61+61+25 playing keys, 24 presets and 68 controls including those presets.
@@ -284,10 +309,9 @@ primary logs own detailed test/instrumentation claims. Preserve original failure
 source-bound timings and the [completed refinement evidence](REFERENCE_REFINEMENT_CLOSURE.md).
 Later documentation or ledger changes require their affected integrity checks,
 and changed build/test sources require appropriate coherent qualification.
-This batch has its own 60 actual accepted records, ten six-worker waves and a
-passing strict [product-checker gate](NEXT_STEPS.md#validate-this-sessions-actual-records),
-plus all thirteen required jobs at 80b8cce. Preserve that completed accounting
-and continue the remaining UI/M6/native-close work under a new bounded assignment.
-Progress mode remains available for incomplete records and never certifies
-closure. Historical checkers, planned assignments and followups cannot create
-new worker credit.
+The current execution session remains in progress; only its own actual ledger
+can record its sixty distinct workers and ten waves. The completed product
+batch's strict checker and thirteen jobs at 80b8cce remain historical evidence,
+not validation of this session. [Record guidance](NEXT_STEPS.md#validate-this-sessions-actual-records)
+keeps the distinction explicit. Planned assignments, earlier workers and repeated
+followups cannot create new worker credit or close unfinished product gates.

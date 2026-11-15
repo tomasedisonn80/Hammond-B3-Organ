@@ -5,9 +5,14 @@ The eight positive fixtures are actual v3 application diagnostics. Mutations
 exist only in copied Python dictionaries; no native process or image is edited.
 All three final painted records are changed together so the new checks cannot
 pass merely because the existing painted-record equality guard rejects them.
+
+The four added scenes use explicitly synthetic in-memory contract variants and
+pixel buffers to test admission rules. They are never written as captures and
+do not qualify the new application; root must run the twelve-case native suite.
 """
 
 from copy import deepcopy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -29,6 +34,19 @@ CASES = (
     ("rotary-minimum-960x700", 960, 700, "rotary", "dimensional", 66),
     ("flat-minimum-960x700", 960, 700, "play", "flat", 68),
 )
+ADDED_CASES = (
+    ("play-minimum-active-1400x820", 1400, 820, "play", "dimensional", 66, "standard"),
+    ("flat-reference-1672x941", 1672, 941, "play", "flat", 68, "standard"),
+    ("play-toolbar-focus-1672x941", 1672, 941, "play", "dimensional", 151, "toolbar-focus"),
+    ("play-pedal-focus-1672x941", 1672, 941, "play", "dimensional", 161, "pedal-focus"),
+)
+# Independent literal canonical samples, not imported from the capture utility.
+FOCUS_PROBES = {
+    "toolbar-focus": {"top": (1448, 616, 1576, 618), "bottom": (1448, 640, 1576, 642),
+                      "left": (1444, 620, 1446, 638), "right": (1578, 620, 1580, 638)},
+    "pedal-focus": {"top": (1556, 774, 1575, 776), "bottom": (1556, 850, 1575, 852),
+                    "left": (1553, 778, 1555, 848), "right": (1576, 778, 1578, 848)},
+}
 HELD = {"upper": 2, "lower": 1, "pedals": 1}
 POINTER = {"sdl_captured": False, "ui_captured": False, "attempts": 0,
            "successes": 0, "losses": 0, "release_calls": 0}
@@ -68,6 +86,204 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                 self.assertIs(result["passed"], True)
                 self.assertEqual(result["actual_painted_view"]["held_targets"], HELD)
                 self.assertEqual(result["actual_painted_view"]["pointer_capture"], POINTER)
+
+    def test_twelve_case_matrix_preserves_original_identities_and_adds_required_views(self):
+        self.assertEqual(CAPTURE.CASES, tuple(case[:5] for case in (*CASES, *ADDED_CASES)))
+        self.assertEqual(CAPTURE.CASE_SCENES, {
+            "play-toolbar-focus-1672x941": "toolbar-focus",
+            "play-pedal-focus-1672x941": "pedal-focus",
+        })
+        self.assertEqual(len({case[0] for case in CAPTURE.CASES}), 12)
+
+    def test_original_replay_and_state_bytes_match_immutable_gallery(self):
+        self.assertEqual(CAPTURE.STATE.encode("ascii"), (GALLERY / "inputs/controls.b3controls").read_bytes())
+        for _, _, _, workspace, presentation, expected_events in CASES:
+            with self.subTest(workspace=workspace, presentation=presentation):
+                script, events = CAPTURE.replay(workspace, presentation)
+                self.assertEqual(script.encode("ascii"),
+                                 (GALLERY / "inputs" / f"{workspace}-{presentation}.b3uireplay").read_bytes())
+                self.assertEqual(events, expected_events)
+
+    def test_focus_replays_retain_original_prefix_and_target_exact_semantic_stops(self):
+        original, _ = CAPTURE.replay("play", "dimensional")
+        for scene, tabs, expected_events, ending in (
+            ("toolbar-focus", 66, 151,
+             ["1500 key_down Return none 0", "1510 key_up Return none", "1550 key_down W none 0"]),
+            ("pedal-focus", 71, 161,
+             ["1500 key_down End none 0", "1510 key_up End none", "1550 key_down Space none 0"]),
+        ):
+            with self.subTest(scene=scene):
+                script, events = CAPTURE.replay("play", "dimensional", scene)
+                self.assertTrue(script.startswith(original))
+                records = [line for line in script.splitlines()[2:] if line and not line.startswith("#")]
+                self.assertEqual(events, expected_events)
+                self.assertEqual(len(records), expected_events)
+                self.assertEqual(sum(" key_down Tab " in line for line in records), tabs)
+                self.assertEqual(records[-3:], ending)
+                times = [int(line.split()[0]) for line in records]
+                self.assertTrue(all(left < right for left, right in zip(times, times[1:])))
+                self.assertEqual(CAPTURE.DURATION_MS - times[-1], 250)
+                for key in ("A", "D", "G", "S", "W", "Space"):
+                    self.assertFalse(any(f" key_up {key} " in line for line in records))
+
+    def contract_variant(self, case):
+        """A dictionary-only validator input, never an observed native capture."""
+        _, width, height, workspace, presentation, event_count, scene = case
+        source = "flat-minimum-960x700" if presentation == "flat" else "play-reference-1672x941"
+        data = deepcopy(self.diagnostics[source])
+        data["runtime"].update(window_width=width, drawable_width=width,
+                               window_height=height, drawable_height=height)
+        data["replay"].update(scheduled_events=event_count, pushed_events=event_count)
+        for name in ("screenshot", "before_shutdown", "last_painted"):
+            data["presentation"][name].update(window_width=width, window_height=height,
+                                              workspace=workspace, presentation=presentation)
+        if scene != "standard":
+            data["replay"]["accepted_note_on_commands"] = 5
+            data["replay"]["before_shutdown"]["pedal_ids"] = [2, 3] if scene == "toolbar-focus" else [3, 25]
+            for name in ("screenshot", "before_shutdown", "last_painted"):
+                data["presentation"][name]["held_targets"]["pedals"] = 2
+        return data
+
+    def test_added_scene_contract_variants_reuse_complete_semantic_validation(self):
+        for case in ADDED_CASES:
+            with self.subTest(case=case[0]):
+                data = self.contract_variant(case)
+                result = CAPTURE.validate(data, *case[1:])
+                self.assertIs(result["passed"], True)
+                self.assertIs(result["complete_control_state_checked"], True)
+                self.assertEqual(result["ui_events"], case[5])
+                self.assertEqual(result["held_manual_notes"], [[60, 64], [67]])
+                self.assertEqual(result["held_pedal_ids"], data["replay"]["before_shutdown"]["pedal_ids"])
+                self.assertEqual(result["actual_painted_view"]["pointer_capture"], POINTER)
+                if case[-1] != "standard":
+                    self.assertIs(result["focus_scene"]["original_four_holds_preserved"], True)
+                    self.assertIs(result["focus_scene"]["ordinary_focus_id_exported"], False)
+                    self.assertIs(result["focus_scene"]["pixel_focus_check_required"], True)
+                else:
+                    self.assertNotIn("focus_scene", result)
+
+    def test_added_cases_reject_wrong_dimensions_and_painted_presentation(self):
+        for case in ADDED_CASES:
+            for field in ("window_width", "window_height", "drawable_width", "drawable_height"):
+                with self.subTest(case=case[0], field=field):
+                    data = self.contract_variant(case)
+                    data["runtime"][field] += 1
+                    with self.assertRaisesRegex(ValueError, "actual logical/drawable dimensions differ"):
+                        CAPTURE.validate(data, *case[1:])
+            for field, value in (("workspace", "service"), ("presentation", "flat" if case[4] == "dimensional" else "dimensional")):
+                with self.subTest(case=case[0], field=field):
+                    data = self.contract_variant(case)
+                    for name in ("screenshot", "before_shutdown", "last_painted"):
+                        data["presentation"][name][field] = value
+                    with self.assertRaisesRegex(ValueError, "actual painted screenshot is not the requested view/size"):
+                        CAPTURE.validate(data, *case[1:])
+
+    def test_added_cases_reject_changed_controls_and_loss_of_original_holds(self):
+        for case in ADDED_CASES:
+            with self.subTest(case=case[0], mutation="controls"):
+                data = self.contract_variant(case)
+                for controls in (data["controls"], data["replay"]["desired_controls_before_shutdown"],
+                                 data["replay"]["before_shutdown"]["controls"]):
+                    controls["percussion"]["enabled"] = False
+                with self.assertRaisesRegex(ValueError, "final live control state differs"):
+                    CAPTURE.validate(data, *case[1:])
+            with self.subTest(case=case[0], mutation="original hold"):
+                data = self.contract_variant(case)
+                data["replay"]["before_shutdown"]["manual_notes"][0] = [60]
+                with self.assertRaisesRegex(ValueError, "expected Upper/Lower/Pedal holds missing"):
+                    CAPTURE.validate(data, *case[1:])
+
+    def test_focus_scenes_require_exact_fifth_owner_and_zero_releases(self):
+        for case in ADDED_CASES[2:]:
+            for wrong_pedals in ([3], [2, 25], [2, 3, 25]):
+                with self.subTest(case=case[0], pedals=wrong_pedals):
+                    data = self.contract_variant(case)
+                    data["replay"]["before_shutdown"]["pedal_ids"] = wrong_pedals
+                    with self.assertRaisesRegex(ValueError, "expected Upper/Lower/Pedal holds missing"):
+                        CAPTURE.validate(data, *case[1:])
+            for field, value in (("accepted_note_on_commands", 4), ("accepted_note_on_commands", 6),
+                                 ("accepted_note_off_commands", 1)):
+                with self.subTest(case=case[0], field=field, value=value):
+                    data = self.contract_variant(case)
+                    data["replay"][field] = value
+                    with self.assertRaisesRegex(ValueError, "held-note ownership, device or observation counts differ"):
+                        CAPTURE.validate(data, *case[1:])
+            data = self.contract_variant(case)
+            for name in ("screenshot", "before_shutdown", "last_painted"):
+                data["presentation"][name]["held_targets"]["pedals"] = 1
+            with self.assertRaisesRegex(ValueError, "actual painted held targets"):
+                CAPTURE.validate(data, *case[1:])
+
+    def test_focus_scenes_require_observed_edited_four_owner_prefix(self):
+        for case in ADDED_CASES[2:]:
+            with self.subTest(case=case[0]):
+                data = self.contract_variant(case)
+                data["replay"]["observations"] = [item for item in data["replay"]["observations"]
+                                                  if item["controls"] != CAPTURE.FINAL_CONTROLS]
+                with self.assertRaisesRegex(ValueError, "no observed edited four-owner state"):
+                    CAPTURE.validate(data, *case[1:])
+
+    @staticmethod
+    def focus_pixel_contract(scene, mode="RGB"):
+        """Synthetic probe bytes for unit tests only; no image file is created."""
+        channels = 3 if mode == "RGB" else 4
+        pixels = bytearray(1672 * 941 * channels)
+        cyan = bytes((165, 228, 223) if channels == 3 else (165, 228, 223, 255))
+        for left, top, right, bottom in FOCUS_PROBES[scene].values():
+            for y in range(top, bottom):
+                start = (y * 1672 + left) * channels
+                pixels[start:start + (right - left) * channels] = cyan * (right - left)
+        return bytes(pixels)
+
+    def test_focus_pixel_receipts_check_all_four_edges_and_bind_decoded_bytes(self):
+        for scene, counts in (("toolbar-focus", {"top": 256, "bottom": 256, "left": 36, "right": 36}),
+                              ("pedal-focus", {"top": 38, "bottom": 38, "left": 140, "right": 140})):
+            for mode in ("RGB", "RGBA"):
+                with self.subTest(scene=scene, mode=mode):
+                    pixels = self.focus_pixel_contract(scene, mode)
+                    result = CAPTURE.validate_focus_pixels(mode, (1672, 941), pixels, scene)
+                    self.assertIs(result["passed"], True)
+                    self.assertEqual(result["matched_pixels"], counts)
+                    self.assertEqual(result["edge_probe_rectangles"], FOCUS_PROBES[scene])
+                    self.assertEqual(result["decoded_sha256"], hashlib.sha256(pixels).hexdigest())
+
+    def test_each_focus_edge_rejects_even_one_missing_or_wrong_color_pixel(self):
+        for scene in FOCUS_PROBES:
+            original = self.focus_pixel_contract(scene)
+            for edge, (left, top, _, _) in FOCUS_PROBES[scene].items():
+                with self.subTest(scene=scene, edge=edge):
+                    pixels = bytearray(original)
+                    offset = (top * 1672 + left) * 3
+                    pixels[offset + 2] = 222
+                    with self.assertRaisesRegex(ValueError, f"{edge} cyan focus pixels missing"):
+                        CAPTURE.validate_focus_pixels("RGB", (1672, 941), pixels, scene)
+            other_scene = "pedal-focus" if scene == "toolbar-focus" else "toolbar-focus"
+            with self.assertRaisesRegex(ValueError, "cyan focus pixels missing"):
+                CAPTURE.validate_focus_pixels("RGB", (1672, 941), original, other_scene)
+
+    def test_focus_pixel_checks_reject_wrong_size_mode_or_truncated_bytes(self):
+        pixels = self.focus_pixel_contract("toolbar-focus")
+        with self.assertRaisesRegex(ValueError, "1672x941 reference frame"):
+            CAPTURE.validate_focus_pixels("RGB", (1400, 820), pixels, "toolbar-focus")
+        for mode, value in (("L", pixels), ("RGB", pixels[:-1]), ("RGBA", pixels)):
+            with self.subTest(mode=mode, bytes=len(value)):
+                with self.assertRaisesRegex(ValueError, "complete RGB/RGBA decoded bytes"):
+                    CAPTURE.validate_focus_pixels(mode, (1672, 941), value, "toolbar-focus")
+        self.assertIsNone(CAPTURE.validate_focus_pixels("RGB", (1672, 941), pixels))
+
+    def test_unknown_or_inapplicable_focus_scenes_are_rejected(self):
+        with self.assertRaisesRegex(ValueError, "unknown capture scene"):
+            CAPTURE.replay("play", "dimensional", "unknown")
+        with self.assertRaisesRegex(ValueError, "unknown capture scene"):
+            CAPTURE.validate(self.diagnostics[CASES[0][0]], *CASES[0][1:], "unknown")
+        with self.assertRaisesRegex(ValueError, "unknown capture scene"):
+            CAPTURE.validate_focus_pixels("RGB", (1672, 941), b"", "unknown")
+        for workspace, presentation in (("rotary", "dimensional"), ("play", "flat")):
+            with self.subTest(workspace=workspace, presentation=presentation):
+                with self.assertRaisesRegex(ValueError, "focused scenes require Dimensional Play"):
+                    CAPTURE.replay(workspace, presentation, "toolbar-focus")
+        with self.assertRaisesRegex(ValueError, "reference-size Dimensional Play"):
+            CAPTURE.validate(self.diagnostics[CASES[0][0]], 1400, 820, "play", "dimensional", 151, "toolbar-focus")
 
     def backend_record(self, available, backend, state):
         # Contract variants are copied diagnostics, not newly observed captures.

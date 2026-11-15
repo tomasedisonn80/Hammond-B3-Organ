@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "reviewer": "A29",
+  "decision": "admit_prospective_exact_source_footprint_v2_only",
+  "reviewed_at_utc": "2026-11-15T22:23:39.593850+00:00",
+  "review_type": "source_and_existing_evidence_only_no_new_paired_pixels",
+  "repo": "/workspace/scratch/ade21b726509/Hammond-B3-Organ",
+  "head": "33fa95d51e44234eef47ee21c03d29b2b311a5ee",
+  "baseline_commit": "33fa95d51e44234eef47ee21c03d29b2b311a5ee",
+  "v1_mask_sha256": "7b17af59df15e9d2b3b5c3b744349f61c95788e6a179764736112974b9a982b3",
+  "v1_report_sha256": "31a8efc1a738402a50f6f00f8eb44e65564b9ea7e02115105ce2017408e47528",
+  "original_status": "failed",
+  "original_totals": {
+    "pairs": 66,
+    "active_pairs": 38,
+    "inactive_pairs": 28,
+    "compared_pixels": 208102766,
+    "changed_pixels": 78803550,
+    "protected_pixels": 120822780,
+    "escaped_pixels": 17,
+    "identical_inactive_pairs": 28,
+    "max_raw_pair_bytes": 66355200,
+    "retained_raw_frames": 0
+  },
+  "original_failure": {
+    "case": 23,
+    "logical_size": [
+      1920,
+      1080
+    ],
+    "scale": 2,
+    "escaped_pixels": 17,
+    "escaped_bounds": [
+      481,
+      2000,
+      482,
+      2035
+    ],
+    "old_lower_cheek_logical_edges": [
+      72,
+      782,
+      240,
+      1018
+    ],
+    "old_horizontal_line_device_x_span": [
+      144,
+      482
+    ],
+    "v1_lower_cheek_device_box": [
+      143,
+      1563,
+      481,
+      2037
+    ]
+  },
+  "binding_checks": {
+    "mask_hash_matches_report": true,
+    "report_source_bindings_equal_declaration": true,
+    "all_current_and_git_baseline_source_hashes_match": true,
+    "normalized_cases_state_stream_match_baseline": true,
+    "preserved_old_painter_matches_baseline": true,
+    "preserved_old_model_matches_baseline": true,
+    "baseline_build_receipt_matches": true,
+    "new_build_receipt_matches": true,
+    "all_inactive_masks_empty": true,
+    "all_inactive_complete_frames_exact": true,
+    "before_executable_hash_matches": true,
+    "after_executable_hash_matches": true
+  },
+  "source_identity": {
+    "baseline": {
+      "apps/standalone/UiModel.cpp": "aa4fa2e06c4a8ccb17ba1b1cdfed498372b3626152bb2b8c6c53682b775931c9",
+      "apps/standalone/UiModel.h": "d94e90be25812c6d21b61f37f2b0547704d14866c45fbbb21131ec70b6389bd3",
+      "apps/standalone/InstrumentView.cpp": "97971753c23e7da93d84586cf66ede2a3d9a04f319ddaf4831ba83ea7955f7d6",
+      "apps/standalone/InstrumentView.h": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+      "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+      "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+      "apps/standalone/InspectionModel.cpp": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+      "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+      "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+      "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+      "docs/design/atlas-reference.json": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "apps/standalone/native_tests/test_standalone_percussion_raster.cpp": "7078e90485d1cd4f4fe2f473044965d33487bd86b04b4ba35851db2501206076"
+    },
+    "current": {
+      "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+      "apps/standalone/InstrumentView.cpp": "0614f236e1e5bbe0cd8ac89210b27c77140724be5da49e3f2f4e67583b159c0a",
+      "apps/standalone/InstrumentView.h": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+      "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+      "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+      "apps/standalone/InspectionModel.cpp": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+      "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+      "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+      "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+      "docs/design/atlas-reference.json": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "apps/standalone/native_tests/test_standalone_percussion_raster.cpp": "a96b3c43d64aee7409249141bc1bd6b0812ca3c906b46c7f41cd8030f5390dc8"
+    },
+    "contract_sha256": "55cc841d10dc65004cbfcca83d0fb84dcf54dda779e1d82a376534e2650b730f",
+    "tool_sha256": "97c006ce1ffcd3cd36d0f11ed68d5327bd68d218f9f94923233c57c0858e1637",
+    "framing_tool_sha256": "3cf8157f0a4534deefe2c9a86358170fcc18135518c045f2d55ce181a5a848dd"
+  },
+  "harness_identity": {
+    "cases_normalized_sha256": "17c39c751cebcc73fd5d86484d26a2a96f46400f14fa7daaeb7bb498319f5a87",
+    "state_normalized_sha256": "697020c36db28983d9a68a533e15d56e583736a0595ee42bb99a90cff93d12b3",
+    "stream_normalized_sha256": "2086c64e348bb4ea6207389ada89890049bb7b7f320b9d24406bb13db3a67df7"
+  },
+  "before_executable": {
+    "path_at_declaration": "/workspace/scratch/ade21b726509/baseline-percussion-raster",
+    "sha256": "9ce7df2feae93eda9f2ce5e6000504c3dac53e90ba14f3a21b7d66c170540635"
+  },
+  "after_executable": {
+    "path_at_declaration": "/workspace/scratch/ade21b726509/build-native/apps/standalone/test_standalone_percussion_raster",
+    "sha256": "087f88b7f710239b553f794c79cc51ec4f813cb737e8c769f01866e01ff979c4"
+  },
+  "sdl_git_head": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+  "sdl_sources": {
+    "src/render/SDL_render.c": "ae904d0fd11c6122c77d78909538b26694b4d57a9b6b722c51e0417d4709be54",
+    "src/render/software/SDL_render_sw.c": "2e3bbc7ab7d6d59310c634d6374eabb60da185d8c7cfc8526baa45318e6d3257",
+    "src/render/software/SDL_blendline.c": "ec846b511f0bd2cac24d7652d6db1f83fc4b91ad6ab8fd1ff7a56fc68bbe32b8"
+  },
+  "source_locators": [
+    "../baseline-InstrumentView.cpp:184-201 wood inclusive endpoint",
+    "../baseline-InstrumentView.cpp:1476-1480 both cheek calls",
+    "../baseline-UiModel.cpp:420-462 old binary32 furniture allocation",
+    "apps/standalone/Drawing.cpp:351-354 direct SDL line",
+    "../SDL2/src/render/SDL_render.c:1146-1175 software line method",
+    "../SDL2/src/render/SDL_render.c:2943-3006 scaled horizontal rectangle",
+    "../SDL2/src/render/SDL_render.c:3201-3205 unscaled/scaled dispatch",
+    "../SDL2/src/render/software/SDL_render_sw.c:197-231 integer conversion",
+    "../SDL2/src/render/software/SDL_render_sw.c:734-780 viewport offset"
+  ],
+  "prospective_v2_rule": {
+    "retain_v1_regions_unchanged": true,
+    "target": "Both old upper/lower cheek wood line calls, every active fixture, independent of comparison results",
+    "source_geometry": "Recompute original C++ binary32 x,y,width,height; retain original height for int(height); xR=f32(x+width). Do not substitute rounded-endpoint differences for original extents.",
+    "line_rows": "For row=2;row<int(height);row+=3: u=f32(y+row); plus f32(u+1) when row%9==2. Also f32(y+1) and f32(f32(y+height)-1).",
+    "unscaled_device_box": "[o+I(x),o+I(u),o+I(xR)+1,o+I(u)+1)",
+    "scaled_device_box": "L=o+I(f32(x*s)); T=o+I(f32(u*s)); W=max(I(f32(f32(f32(xR-x)+1)*s)),1); H=max(I(s),1); box=[L,T,L+W,T+H)",
+    "rounding": "Every named f32 operation uses binary32, I truncates toward zero; all actual cheek coordinates are positive.",
+    "allowance": "Expand each exact device raster box exactly one device pixel per edge, intersect existing actual viewport/caller clip, and union with unchanged v1 regions.",
+    "inactive": "No added regions; allowed_pixels=0 and complete exact whole-frame equality required.",
+    "freeze": "Separate versioned utility/mask/report; bind original v1 hashes, this review, SDL source hashes, and unchanged production/executable hashes before fresh paired pixels.",
+    "reject": "No uniform parent-right+1 through center-membership formula; no failure-coordinate patches; no tolerance increase; no current/new source extent added by this rule."
+  },
+  "source_geometry_enumeration": {
+    "active_cases": 38,
+    "old_cheeks": 76,
+    "source_horizontal_line_calls": 6068,
+    "renderer_scales": [
+      1,
+      1.5,
+      2
+    ],
+    "physical_offsets": [
+      0,
+      7
+    ],
+    "new_masks_generated": 0,
+    "paired_executions": 0
+  },
+  "naive_rule_counterexamples": [
+    {
+      "case": 16,
+      "scale": 1.5,
+      "exact_line_device_x_span": [
+        107,
+        343
+      ],
+      "naive_right_exclusive": 345,
+      "outward_columns": 2
+    },
+    {
+      "case": 17,
+      "scale": 2,
+      "exact_line_device_x_span": [
+        143,
+        457
+      ],
+      "naive_right_exclusive": 460,
+      "outward_columns": 3
+    }
+  ],
+  "limits": {
+    "v1_minimum_active_unclipped_protected_pixels": 51,
+    "v1_case23_protected_pixels": 296,
+    "require_v2_positive_protected_pixels_and_disclosure": true,
+    "claim": "Narrow active change containment only. No 1:1, glyph/material/reference, real display/device or audio acceptance.",
+    "new_comparison_seen": false,
+    "production_change_required_for_this_failure": false,
+    "builds": 0,
+    "commits": 0
+  },
+  "note_path": "docs/development/2026-11-15-execution-continuation/notes/A29.md",
+  "note_sha256": "745ebabd07e5c08023a44aa197e30325c30f8683e9961d4e660c75a9f76b5f77",
+  "note_words": 508
+}

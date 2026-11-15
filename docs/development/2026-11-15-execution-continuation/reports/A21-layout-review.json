@@ -1,0 +1,53 @@
+{
+  "worker": "A21",
+  "wave": 4,
+  "base_commit": "33fa95d51e44234eef47ee21c03d29b2b311a5ee",
+  "review_scope": "Independent source review of active wide-Play canonical layout and painter, plus authorized migration of two superseded SDK-free active expectations",
+  "production_defects_found": [],
+  "source_sha256": {
+    "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+    "apps/standalone/InstrumentView.cpp": "0614f236e1e5bbe0cd8ac89210b27c77140724be5da49e3f2f4e67583b159c0a",
+    "apps/standalone/tests/test_standalone_preset_ui.cpp": "1e58aa81625b70451806826263b21b37d65a9ddf3136feff3070425be62a7149",
+    "apps/standalone/tests/test_standalone_ui.cpp": "72ad827400a3c530b05a967a79656da96ff591d62c179c1281bac0401fd8d6d6",
+    "docs/WHOLE_REFERENCE_LAYOUT_CONTRACT.md": "55cc841d10dc65004cbfcca83d0fb84dcf54dda779e1d82a376534e2650b730f"
+  },
+  "checks": {
+    "shared_active_predicate": "Play and Dimensional; width 1400..8192; height 820..8192; NaN/infinity rejected",
+    "transaction": "Argument rejection and both layout validators precede destination assignment; unchanged resize/mode/ownership paths inspected",
+    "identity": "68 controls, 147 notes, 24 presets; insertion order, edited-bank binding, parameter formulas and note release paths preserved",
+    "float_edges": "Mapped canonical endpoints and full key vertices; one-ULP broad-parent allowance only; exact adjacent targets and face joins",
+    "input_paint": "Stored live geometry; cabinet before children; natural-first paint and accidental-first hit precedence; overlays last",
+    "legacy_model_source_reconstruction_exact": true,
+    "legacy_painter_source_reconstruction_exact": true,
+    "diff_whitespace": "passed",
+    "numeric_tolerances_changed": false
+  },
+  "observed_root_execution": {
+    "original_log": "../wave4-sdkfree-tests.log",
+    "original_log_sha256": "4e5f5f8991d9f1e90a7594ee9599dd6093cb9d4d9ba39ec15b7b5970c22b57b9",
+    "original_results": {"passed": 23, "failed": 2},
+    "original_failures": [
+      "test_standalone_preset_ui.cpp:200: obsolete active rail 156.4402923583984375; actual canonical rail 184",
+      "test_standalone_ui.cpp:681: obsolete active header x71.89600372314453125; actual canonical x72"
+    ],
+    "build_log": "../wave4-migration-build.log",
+    "build_log_sha256": "719a0fffb4ac7f9e6783c645b9dc19b939c13f4b1310f0b2a5da3ad38c9d862c",
+    "test_log": "../wave4-migration-tests.log",
+    "selected_results": [
+      {"test": "test_standalone_ui", "status": "passed", "seconds": 0.07},
+      {"test": "test_standalone_preset_ui", "status": "passed", "seconds": 0.39}
+    ],
+    "worker_executed_build_or_ctest": false
+  },
+  "images_viewed": {
+    "../draft-wide-capture/play.png": "9bfbd674d2a50eeeb77253ce523e584240fb85f6141dacc44a17e9033ce8493b",
+    "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+  },
+  "limitations": [
+    "Literal whole-interface 1:1 equality remains unmet",
+    "Source preservation is not inactive pixel equality",
+    "Native raster/material migrations and final source-bound gallery remain separately owned acceptance",
+    "No hardware, native semantic accessibility, real-display or audio-fidelity acceptance"
+  ]
+}

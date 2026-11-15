@@ -1,0 +1,1822 @@
+{
+  "schema_version": 1,
+  "worker": "A35",
+  "agent": "/root/w06_a35_compatibility",
+  "wave": 6,
+  "reviewed_at_utc": "2026-11-15T22:37:49.734112+00:00",
+  "repo": "/workspace/scratch/ade21b726509/Hammond-B3-Organ",
+  "base_commit": "33fa95d51e44234eef47ee21c03d29b2b311a5ee",
+  "base_tree": "f5d9406ef099f6569a5d1f3fee27358b520bc928",
+  "status": "passed_byte_and_source_compatibility",
+  "concrete_regressions": [],
+  "scope": "Read-only compatibility and retained-evidence source binding. Only this report and notes/A35.md were written. No native build, new CTest run, production edit or commit.",
+  "baseline": {
+    "path": "docs/development/2026-11-15-execution-continuation/reports/compatibility-baseline.json",
+    "bytes": 9004,
+    "sha256": "e4e6a38fea5ab72f8e58bc041f97250fcfec48ec5bc44ac911a6061af8c03a73",
+    "files_checked": 84,
+    "total_current_bytes": 847492,
+    "all_current_hashes_match_recorded": true,
+    "all_current_bytes_equal_base": true,
+    "ordered_inventory_recipe": "UTF-8 concatenation of path + NUL + current SHA-256 + LF in baseline object order",
+    "ordered_inventory_sha256": "273f060df1227c671b8f04dbdf0b92ffd604ec3ee7c2bc15d2c4433740530d9c",
+    "files": {
+      "data/parameter-registry.json": {
+        "bytes": 36882,
+        "current_sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+        "base_sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2",
+        "byte_equal": true,
+        "recorded_sha256": "aedaa09e47fc2baba4a08484cce84916f2a27edac55d45f03f167f41c84bd6e2"
+      },
+      "data/profiles/nominal-unmeasured-v1.json": {
+        "bytes": 19627,
+        "current_sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+        "base_sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+        "byte_equal": true,
+        "recorded_sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff"
+      },
+      "data/registrations/atlas-chapel-nominal-v1.json": {
+        "bytes": 4298,
+        "current_sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf",
+        "base_sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf",
+        "byte_equal": true,
+        "recorded_sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf"
+      },
+      "data/registrations/review-a-chapel.csv": {
+        "bytes": 466,
+        "current_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+        "base_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+        "byte_equal": true,
+        "recorded_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694"
+      },
+      "data/registrations/review-b-chapel.csv": {
+        "bytes": 466,
+        "current_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+        "base_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+        "byte_equal": true,
+        "recorded_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694"
+      },
+      "include/hammond/ConsoleModel.h": {
+        "bytes": 1721,
+        "current_sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+        "base_sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+        "byte_equal": true,
+        "recorded_sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51"
+      },
+      "include/hammond/ContactBank.h": {
+        "bytes": 7646,
+        "current_sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+        "base_sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+        "byte_equal": true,
+        "recorded_sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d"
+      },
+      "include/hammond/ControlState.h": {
+        "bytes": 5751,
+        "current_sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+        "base_sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+        "byte_equal": true,
+        "recorded_sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856"
+      },
+      "include/hammond/ControlStateIO.h": {
+        "bytes": 2070,
+        "current_sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+        "base_sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+        "byte_equal": true,
+        "recorded_sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081"
+      },
+      "include/hammond/Engine.h": {
+        "bytes": 11513,
+        "current_sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+        "base_sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+        "byte_equal": true,
+        "recorded_sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408"
+      },
+      "include/hammond/FixedRegistration.h": {
+        "bytes": 1822,
+        "current_sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+        "base_sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+        "byte_equal": true,
+        "recorded_sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0"
+      },
+      "include/hammond/HostTimeline.h": {
+        "bytes": 7260,
+        "current_sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+        "base_sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+        "byte_equal": true,
+        "recorded_sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316"
+      },
+      "include/hammond/InputProcessor.h": {
+        "bytes": 2317,
+        "current_sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+        "base_sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+        "byte_equal": true,
+        "recorded_sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df"
+      },
+      "include/hammond/LeslieCrossover.h": {
+        "bytes": 5331,
+        "current_sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+        "base_sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+        "byte_equal": true,
+        "recorded_sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c"
+      },
+      "include/hammond/NoteOwnership.h": {
+        "bytes": 5037,
+        "current_sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+        "base_sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+        "byte_equal": true,
+        "recorded_sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc"
+      },
+      "include/hammond/ParameterBridge.h": {
+        "bytes": 2952,
+        "current_sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+        "base_sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+        "byte_equal": true,
+        "recorded_sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3"
+      },
+      "include/hammond/PedalNoteOwnership.h": {
+        "bytes": 4596,
+        "current_sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+        "base_sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+        "byte_equal": true,
+        "recorded_sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33"
+      },
+      "include/hammond/PedalRouting.h": {
+        "bytes": 6909,
+        "current_sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+        "base_sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+        "byte_equal": true,
+        "recorded_sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8"
+      },
+      "include/hammond/PedalVoice.h": {
+        "bytes": 3384,
+        "current_sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+        "base_sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+        "byte_equal": true,
+        "recorded_sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf"
+      },
+      "include/hammond/Percussion.h": {
+        "bytes": 6395,
+        "current_sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+        "base_sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+        "byte_equal": true,
+        "recorded_sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722"
+      },
+      "include/hammond/PerformanceInput.h": {
+        "bytes": 3220,
+        "current_sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+        "base_sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+        "byte_equal": true,
+        "recorded_sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77"
+      },
+      "include/hammond/Profile.h": {
+        "bytes": 2250,
+        "current_sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+        "base_sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+        "byte_equal": true,
+        "recorded_sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0"
+      },
+      "include/hammond/RotaryHistory.h": {
+        "bytes": 5507,
+        "current_sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+        "base_sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+        "byte_equal": true,
+        "recorded_sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b"
+      },
+      "include/hammond/RotaryMotion.h": {
+        "bytes": 6314,
+        "current_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+        "base_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+        "byte_equal": true,
+        "recorded_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36"
+      },
+      "include/hammond/RotaryPropagation.h": {
+        "bytes": 3577,
+        "current_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+        "base_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+        "byte_equal": true,
+        "recorded_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a"
+      },
+      "include/hammond/RotaryRenderer.h": {
+        "bytes": 6415,
+        "current_sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+        "base_sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+        "byte_equal": true,
+        "recorded_sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0"
+      },
+      "include/hammond/RotaryTypes.h": {
+        "bytes": 8414,
+        "current_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+        "base_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+        "byte_equal": true,
+        "recorded_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4"
+      },
+      "include/hammond/ScannerLine.h": {
+        "bytes": 6451,
+        "current_sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+        "base_sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+        "byte_equal": true,
+        "recorded_sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7"
+      },
+      "include/hammond/ScannerLineFoh.h": {
+        "bytes": 3927,
+        "current_sha256": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+        "base_sha256": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+        "byte_equal": true,
+        "recorded_sha256": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887"
+      },
+      "include/hammond/ScannerRotor.h": {
+        "bytes": 6041,
+        "current_sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+        "base_sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+        "byte_equal": true,
+        "recorded_sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a"
+      },
+      "include/hammond/SourceLeakage.h": {
+        "bytes": 4287,
+        "current_sha256": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+        "base_sha256": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+        "byte_equal": true,
+        "recorded_sha256": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482"
+      },
+      "include/hammond/StateExchange.h": {
+        "bytes": 6878,
+        "current_sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+        "base_sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+        "byte_equal": true,
+        "recorded_sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0"
+      },
+      "include/hammond/TonewheelBank.h": {
+        "bytes": 2760,
+        "current_sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+        "base_sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+        "byte_equal": true,
+        "recorded_sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b"
+      },
+      "include/hammond/Types.h": {
+        "bytes": 6015,
+        "current_sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+        "base_sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+        "byte_equal": true,
+        "recorded_sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8"
+      },
+      "include/hammond/detail/Decimal.h": {
+        "bytes": 3736,
+        "current_sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+        "base_sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+        "byte_equal": true,
+        "recorded_sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42"
+      },
+      "plugins/vst3/CMakeLists.txt": {
+        "bytes": 10678,
+        "current_sha256": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545",
+        "base_sha256": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545",
+        "byte_equal": true,
+        "recorded_sha256": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545"
+      },
+      "plugins/vst3/Controller.cpp": {
+        "bytes": 9847,
+        "current_sha256": "2978813561b9702b560e227a9ff27b62a19c0c4f9a7b05823a2c40e3112d3be7",
+        "base_sha256": "2978813561b9702b560e227a9ff27b62a19c0c4f9a7b05823a2c40e3112d3be7",
+        "byte_equal": true,
+        "recorded_sha256": "2978813561b9702b560e227a9ff27b62a19c0c4f9a7b05823a2c40e3112d3be7"
+      },
+      "plugins/vst3/Controller.h": {
+        "bytes": 2008,
+        "current_sha256": "c5377f380ddb1a1c006482e138cdd6f4736a0258803d8ae9dd0f735ff72570bb",
+        "base_sha256": "c5377f380ddb1a1c006482e138cdd6f4736a0258803d8ae9dd0f735ff72570bb",
+        "byte_equal": true,
+        "recorded_sha256": "c5377f380ddb1a1c006482e138cdd6f4736a0258803d8ae9dd0f735ff72570bb"
+      },
+      "plugins/vst3/Factory.cpp": {
+        "bytes": 1134,
+        "current_sha256": "880d4d24d4d6fbf104e441400ebf571a77c15019ae5bc43571a4524c242250d1",
+        "base_sha256": "880d4d24d4d6fbf104e441400ebf571a77c15019ae5bc43571a4524c242250d1",
+        "byte_equal": true,
+        "recorded_sha256": "880d4d24d4d6fbf104e441400ebf571a77c15019ae5bc43571a4524c242250d1"
+      },
+      "plugins/vst3/PluginIds.h": {
+        "bytes": 746,
+        "current_sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+        "base_sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+        "byte_equal": true,
+        "recorded_sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc"
+      },
+      "plugins/vst3/Processor.cpp": {
+        "bytes": 19914,
+        "current_sha256": "a61e567798e7435c9d73ddab9bf925b6995396954e772c13f31571ad0a96f20b",
+        "base_sha256": "a61e567798e7435c9d73ddab9bf925b6995396954e772c13f31571ad0a96f20b",
+        "byte_equal": true,
+        "recorded_sha256": "a61e567798e7435c9d73ddab9bf925b6995396954e772c13f31571ad0a96f20b"
+      },
+      "plugins/vst3/Processor.h": {
+        "bytes": 4713,
+        "current_sha256": "e85cdc6f7aaf70c05eda61630a5e3acee7c7f2fef2796a2c5f557ce034a54e72",
+        "base_sha256": "e85cdc6f7aaf70c05eda61630a5e3acee7c7f2fef2796a2c5f557ce034a54e72",
+        "byte_equal": true,
+        "recorded_sha256": "e85cdc6f7aaf70c05eda61630a5e3acee7c7f2fef2796a2c5f557ce034a54e72"
+      },
+      "plugins/vst3/StateStream.cpp": {
+        "bytes": 2719,
+        "current_sha256": "c83fbf22ea26c0b7a89974d4c0aa590c1e46f44f4a6c457d6fee512740d02117",
+        "base_sha256": "c83fbf22ea26c0b7a89974d4c0aa590c1e46f44f4a6c457d6fee512740d02117",
+        "byte_equal": true,
+        "recorded_sha256": "c83fbf22ea26c0b7a89974d4c0aa590c1e46f44f4a6c457d6fee512740d02117"
+      },
+      "plugins/vst3/StateStream.h": {
+        "bytes": 1348,
+        "current_sha256": "6493aa859427ad55cf81c84df29b4669f038828eb4d2c53f04e442aefadeea8e",
+        "base_sha256": "6493aa859427ad55cf81c84df29b4669f038828eb4d2c53f04e442aefadeea8e",
+        "byte_equal": true,
+        "recorded_sha256": "6493aa859427ad55cf81c84df29b4669f038828eb4d2c53f04e442aefadeea8e"
+      },
+      "plugins/vst3/tests/NativeAllocationProbe.h": {
+        "bytes": 10810,
+        "current_sha256": "e61fbceddf7fa3df138b534117daf9cdb49a10098ef6864bdadac65335ab57d4",
+        "base_sha256": "e61fbceddf7fa3df138b534117daf9cdb49a10098ef6864bdadac65335ab57d4",
+        "byte_equal": true,
+        "recorded_sha256": "e61fbceddf7fa3df138b534117daf9cdb49a10098ef6864bdadac65335ab57d4"
+      },
+      "plugins/vst3/tests/NativeHarness.cpp": {
+        "bytes": 15072,
+        "current_sha256": "899d504d842e2e1b83d7f629e0bb4335b0c4f4191d7568df90980f27c09828b7",
+        "base_sha256": "899d504d842e2e1b83d7f629e0bb4335b0c4f4191d7568df90980f27c09828b7",
+        "byte_equal": true,
+        "recorded_sha256": "899d504d842e2e1b83d7f629e0bb4335b0c4f4191d7568df90980f27c09828b7"
+      },
+      "plugins/vst3/tests/NativeHarness.h": {
+        "bytes": 8411,
+        "current_sha256": "0067515c5259288f1f711e4ce8c0921721682209863ca62ccbee4f50dbb2752a",
+        "base_sha256": "0067515c5259288f1f711e4ce8c0921721682209863ca62ccbee4f50dbb2752a",
+        "byte_equal": true,
+        "recorded_sha256": "0067515c5259288f1f711e4ce8c0921721682209863ca62ccbee4f50dbb2752a"
+      },
+      "plugins/vst3/tests/NativePresetOracle.h": {
+        "bytes": 1182,
+        "current_sha256": "3b620c607814fc9b686ff5e8e56292956649ab35cd42f0cf9df3426d26196dad",
+        "base_sha256": "3b620c607814fc9b686ff5e8e56292956649ab35cd42f0cf9df3426d26196dad",
+        "byte_equal": true,
+        "recorded_sha256": "3b620c607814fc9b686ff5e8e56292956649ab35cd42f0cf9df3426d26196dad"
+      },
+      "plugins/vst3/tests/test_native_abi.cpp": {
+        "bytes": 33747,
+        "current_sha256": "f93a59fc0cdb99b8b016f77ff78baac6f78a083de674fed49ee194cc12d766f7",
+        "base_sha256": "f93a59fc0cdb99b8b016f77ff78baac6f78a083de674fed49ee194cc12d766f7",
+        "byte_equal": true,
+        "recorded_sha256": "f93a59fc0cdb99b8b016f77ff78baac6f78a083de674fed49ee194cc12d766f7"
+      },
+      "plugins/vst3/tests/test_native_automation.cpp": {
+        "bytes": 43940,
+        "current_sha256": "51b4ae6fa84d6895c4ddd0b378223aa132fe5ea8b74016bf262f3147736fcdf9",
+        "base_sha256": "51b4ae6fa84d6895c4ddd0b378223aa132fe5ea8b74016bf262f3147736fcdf9",
+        "byte_equal": true,
+        "recorded_sha256": "51b4ae6fa84d6895c4ddd0b378223aa132fe5ea8b74016bf262f3147736fcdf9"
+      },
+      "plugins/vst3/tests/test_native_behavior.cpp": {
+        "bytes": 54155,
+        "current_sha256": "8e9dbfa48663fb316e0f2e5d4d1df9492259c1e5efaaaa461cd193263c095f39",
+        "base_sha256": "8e9dbfa48663fb316e0f2e5d4d1df9492259c1e5efaaaa461cd193263c095f39",
+        "byte_equal": true,
+        "recorded_sha256": "8e9dbfa48663fb316e0f2e5d4d1df9492259c1e5efaaaa461cd193263c095f39"
+      },
+      "plugins/vst3/tests/test_native_concurrency.cpp": {
+        "bytes": 28000,
+        "current_sha256": "c863a9b6ad514163d3ff3645b43aa04171995ddbf7992d9fdf6aeca88af5027f",
+        "base_sha256": "c863a9b6ad514163d3ff3645b43aa04171995ddbf7992d9fdf6aeca88af5027f",
+        "byte_equal": true,
+        "recorded_sha256": "c863a9b6ad514163d3ff3645b43aa04171995ddbf7992d9fdf6aeca88af5027f"
+      },
+      "plugins/vst3/tests/test_native_controller.cpp": {
+        "bytes": 35235,
+        "current_sha256": "fae0af12a9fc272c1ffbb302666db78aca8c176083b07e0f8a818a97353db640",
+        "base_sha256": "fae0af12a9fc272c1ffbb302666db78aca8c176083b07e0f8a818a97353db640",
+        "byte_equal": true,
+        "recorded_sha256": "fae0af12a9fc272c1ffbb302666db78aca8c176083b07e0f8a818a97353db640"
+      },
+      "plugins/vst3/tests/test_native_install.py": {
+        "bytes": 11704,
+        "current_sha256": "3f2a2e8b52ca2d647e4da45218ed68c748b7a5d5212b8254fad57e3b6965366e",
+        "base_sha256": "3f2a2e8b52ca2d647e4da45218ed68c748b7a5d5212b8254fad57e3b6965366e",
+        "byte_equal": true,
+        "recorded_sha256": "3f2a2e8b52ca2d647e4da45218ed68c748b7a5d5212b8254fad57e3b6965366e"
+      },
+      "plugins/vst3/tests/test_native_realtime.cpp": {
+        "bytes": 33338,
+        "current_sha256": "56c47d677c838c7543121c9738e191abe3f2e3437b900df607b6606be8fb53d4",
+        "base_sha256": "56c47d677c838c7543121c9738e191abe3f2e3437b900df607b6606be8fb53d4",
+        "byte_equal": true,
+        "recorded_sha256": "56c47d677c838c7543121c9738e191abe3f2e3437b900df607b6606be8fb53d4"
+      },
+      "src/ContactBank.cpp": {
+        "bytes": 9665,
+        "current_sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+        "base_sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+        "byte_equal": true,
+        "recorded_sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1"
+      },
+      "src/ControlState.cpp": {
+        "bytes": 7673,
+        "current_sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+        "base_sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+        "byte_equal": true,
+        "recorded_sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d"
+      },
+      "src/ControlStateIO.cpp": {
+        "bytes": 13152,
+        "current_sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+        "base_sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+        "byte_equal": true,
+        "recorded_sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb"
+      },
+      "src/Engine.cpp": {
+        "bytes": 28448,
+        "current_sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+        "base_sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+        "byte_equal": true,
+        "recorded_sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3"
+      },
+      "src/FixedRegistration.cpp": {
+        "bytes": 1630,
+        "current_sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+        "base_sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+        "byte_equal": true,
+        "recorded_sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d"
+      },
+      "src/HostTimeline.cpp": {
+        "bytes": 21374,
+        "current_sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+        "base_sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+        "byte_equal": true,
+        "recorded_sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149"
+      },
+      "src/InputProcessor.cpp": {
+        "bytes": 1257,
+        "current_sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+        "base_sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+        "byte_equal": true,
+        "recorded_sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc"
+      },
+      "src/LeslieCrossover.cpp": {
+        "bytes": 18694,
+        "current_sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+        "base_sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+        "byte_equal": true,
+        "recorded_sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525"
+      },
+      "src/NoteOwnership.cpp": {
+        "bytes": 8856,
+        "current_sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+        "base_sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+        "byte_equal": true,
+        "recorded_sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751"
+      },
+      "src/ParameterBridge.cpp": {
+        "bytes": 11334,
+        "current_sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+        "base_sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+        "byte_equal": true,
+        "recorded_sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220"
+      },
+      "src/PedalNoteOwnership.cpp": {
+        "bytes": 7419,
+        "current_sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+        "base_sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+        "byte_equal": true,
+        "recorded_sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde"
+      },
+      "src/PedalRouting.cpp": {
+        "bytes": 3983,
+        "current_sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+        "base_sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+        "byte_equal": true,
+        "recorded_sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af"
+      },
+      "src/PedalVoice.cpp": {
+        "bytes": 1171,
+        "current_sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+        "base_sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+        "byte_equal": true,
+        "recorded_sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba"
+      },
+      "src/Percussion.cpp": {
+        "bytes": 4837,
+        "current_sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+        "base_sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+        "byte_equal": true,
+        "recorded_sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a"
+      },
+      "src/PerformanceInput.cpp": {
+        "bytes": 4219,
+        "current_sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+        "base_sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+        "byte_equal": true,
+        "recorded_sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189"
+      },
+      "src/Profile.cpp": {
+        "bytes": 11655,
+        "current_sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+        "base_sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+        "byte_equal": true,
+        "recorded_sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54"
+      },
+      "src/RotaryHistory.cpp": {
+        "bytes": 8643,
+        "current_sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+        "base_sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+        "byte_equal": true,
+        "recorded_sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5"
+      },
+      "src/RotaryMotion.cpp": {
+        "bytes": 17599,
+        "current_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+        "base_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+        "byte_equal": true,
+        "recorded_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1"
+      },
+      "src/RotaryPropagation.cpp": {
+        "bytes": 14495,
+        "current_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+        "base_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+        "byte_equal": true,
+        "recorded_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e"
+      },
+      "src/RotaryRenderer.cpp": {
+        "bytes": 16388,
+        "current_sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+        "base_sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+        "byte_equal": true,
+        "recorded_sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04"
+      },
+      "src/RotaryRendererInternal.h": {
+        "bytes": 1020,
+        "current_sha256": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+        "base_sha256": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+        "byte_equal": true,
+        "recorded_sha256": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796"
+      },
+      "src/RotaryStreamingPath.cpp": {
+        "bytes": 9747,
+        "current_sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+        "base_sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+        "byte_equal": true,
+        "recorded_sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50"
+      },
+      "src/ScannerLine.cpp": {
+        "bytes": 20512,
+        "current_sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+        "base_sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+        "byte_equal": true,
+        "recorded_sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336"
+      },
+      "src/ScannerLineFoh.cpp": {
+        "bytes": 28845,
+        "current_sha256": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+        "base_sha256": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+        "byte_equal": true,
+        "recorded_sha256": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df"
+      },
+      "src/ScannerRotor.cpp": {
+        "bytes": 5383,
+        "current_sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+        "base_sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+        "byte_equal": true,
+        "recorded_sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0"
+      },
+      "src/SourceLeakage.cpp": {
+        "bytes": 5741,
+        "current_sha256": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+        "base_sha256": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+        "byte_equal": true,
+        "recorded_sha256": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c"
+      },
+      "src/SourceLeakageIO.cpp": {
+        "bytes": 8953,
+        "current_sha256": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+        "base_sha256": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+        "byte_equal": true,
+        "recorded_sha256": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e"
+      },
+      "src/StateExchange.cpp": {
+        "bytes": 9473,
+        "current_sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+        "base_sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+        "byte_equal": true,
+        "recorded_sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837"
+      },
+      "src/TonewheelBank.cpp": {
+        "bytes": 4390,
+        "current_sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+        "base_sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+        "byte_equal": true,
+        "recorded_sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b"
+      }
+    }
+  },
+  "extended_immutable_check": {
+    "files_checked": 94,
+    "overlaps_baseline": true,
+    "all_byte_equal": true,
+    "roots": [
+      "src",
+      "include",
+      "plugins/vst3",
+      "assets/standalone/reference",
+      "data/profiles",
+      "data/registrations",
+      "data/references"
+    ],
+    "files": {
+      "assets/standalone/reference/cabinet.rgb.gz": {
+        "bytes": 369409,
+        "current_sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e",
+        "base_sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/left-wood-cheek.rgb.gz": {
+        "bytes": 52070,
+        "current_sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4",
+        "base_sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/manifest.json": {
+        "bytes": 3816,
+        "current_sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+        "base_sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/requirements-authoring.txt": {
+        "bytes": 167,
+        "current_sha256": "98d3fbeaee859ac1b6076b2ab6495b2e3e3a7ecdcf32787de7204127e49fd254",
+        "base_sha256": "98d3fbeaee859ac1b6076b2ab6495b2e3e3a7ecdcf32787de7204127e49fd254",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/right-wood-cheek.rgb.gz": {
+        "bytes": 142330,
+        "current_sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6",
+        "base_sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6",
+        "byte_equal": true
+      },
+      "data/profiles/nominal-unmeasured-v1.json": {
+        "bytes": 19627,
+        "current_sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+        "base_sha256": "d17a266ed97cbbd3a2925ebebafafbd6c0e3f84763635732e0a9351d0eab2bff",
+        "byte_equal": true
+      },
+      "data/references/factory-table-iii.json": {
+        "bytes": 6647,
+        "current_sha256": "8c52ccca13653c6e379da33a10197bfc9ac1a1f3ab6bea6bbe8edf81f7a47b52",
+        "base_sha256": "8c52ccca13653c6e379da33a10197bfc9ac1a1f3ab6bea6bbe8edf81f7a47b52",
+        "byte_equal": true
+      },
+      "data/references/parameter-registry-v2.json": {
+        "bytes": 33049,
+        "current_sha256": "658858a8e0f3e722ae1deef1c80e799ab5761c60213af22d5e80696996fd50f5",
+        "base_sha256": "658858a8e0f3e722ae1deef1c80e799ab5761c60213af22d5e80696996fd50f5",
+        "byte_equal": true
+      },
+      "data/references/review-a-manual.csv": {
+        "bytes": 1852,
+        "current_sha256": "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6",
+        "base_sha256": "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6",
+        "byte_equal": true
+      },
+      "data/references/review-a-pedal.csv": {
+        "bytes": 677,
+        "current_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "base_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "byte_equal": true
+      },
+      "data/references/review-b-manual.csv": {
+        "bytes": 1852,
+        "current_sha256": "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6",
+        "base_sha256": "23ade40234db10d0bf99cd5acf9ee0ff29e4656e847e61409ebe8717f7cb9dc6",
+        "byte_equal": true
+      },
+      "data/references/review-b-pedal.csv": {
+        "bytes": 677,
+        "current_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "base_sha256": "b8177479a5af16f4e6b8759313d90148a1213657c83f8a6e6533422bfa104ca1",
+        "byte_equal": true
+      },
+      "data/registrations/atlas-chapel-nominal-v1.json": {
+        "bytes": 4298,
+        "current_sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf",
+        "base_sha256": "c9f1dd2d4287448325834f66f3998f4c32a41f84bc7ec7216e7b72ebcbf722cf",
+        "byte_equal": true
+      },
+      "data/registrations/review-a-chapel.csv": {
+        "bytes": 466,
+        "current_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+        "base_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+        "byte_equal": true
+      },
+      "data/registrations/review-b-chapel.csv": {
+        "bytes": 466,
+        "current_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+        "base_sha256": "dc2a8fd4e9750133c982bb42fd6cc7c12908f011154826035bb623f52d8de694",
+        "byte_equal": true
+      },
+      "include/hammond/ConsoleModel.h": {
+        "bytes": 1721,
+        "current_sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+        "base_sha256": "e6ef911961c1aca1ce72bca8d2cfba9c765665d7cef30446adfe53b9ba59db51",
+        "byte_equal": true
+      },
+      "include/hammond/ContactBank.h": {
+        "bytes": 7646,
+        "current_sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+        "base_sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+        "byte_equal": true
+      },
+      "include/hammond/ControlState.h": {
+        "bytes": 5751,
+        "current_sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+        "base_sha256": "aab82b082f9cf77dadf763148cade9eae04f6f7df68b302b1832f21f78034856",
+        "byte_equal": true
+      },
+      "include/hammond/ControlStateIO.h": {
+        "bytes": 2070,
+        "current_sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+        "base_sha256": "7e96c7b27906f7dfe0b9e8337888d5305fc4610f5009301b42cfae563e3ab081",
+        "byte_equal": true
+      },
+      "include/hammond/Engine.h": {
+        "bytes": 11513,
+        "current_sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+        "base_sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+        "byte_equal": true
+      },
+      "include/hammond/FixedRegistration.h": {
+        "bytes": 1822,
+        "current_sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+        "base_sha256": "4548240ce25f5200442bfe4607ba755feee822a91c8b1a97af9bf7837e3634a0",
+        "byte_equal": true
+      },
+      "include/hammond/HostTimeline.h": {
+        "bytes": 7260,
+        "current_sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+        "base_sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+        "byte_equal": true
+      },
+      "include/hammond/InputProcessor.h": {
+        "bytes": 2317,
+        "current_sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+        "base_sha256": "2a454e05652d166602120f5ed912ba85575738d65b5fa9563ce20dc92fc1c8df",
+        "byte_equal": true
+      },
+      "include/hammond/LeslieCrossover.h": {
+        "bytes": 5331,
+        "current_sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+        "base_sha256": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+        "byte_equal": true
+      },
+      "include/hammond/NoteOwnership.h": {
+        "bytes": 5037,
+        "current_sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+        "base_sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+        "byte_equal": true
+      },
+      "include/hammond/ParameterBridge.h": {
+        "bytes": 2952,
+        "current_sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+        "base_sha256": "cd313711737f94e5f7f7b0dd73851347b9c4e53b3962d5d40d7e7c37883293d3",
+        "byte_equal": true
+      },
+      "include/hammond/PedalNoteOwnership.h": {
+        "bytes": 4596,
+        "current_sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+        "base_sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+        "byte_equal": true
+      },
+      "include/hammond/PedalRouting.h": {
+        "bytes": 6909,
+        "current_sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+        "base_sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+        "byte_equal": true
+      },
+      "include/hammond/PedalVoice.h": {
+        "bytes": 3384,
+        "current_sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+        "base_sha256": "694961946eac838c689547fc403c84e49a429f3337816ea9ad3a751bf305ddaf",
+        "byte_equal": true
+      },
+      "include/hammond/Percussion.h": {
+        "bytes": 6395,
+        "current_sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+        "base_sha256": "5eb87fdd2342410b63f7e6ec55ac11c645d2b7185287fb49ff8e5e53095a2722",
+        "byte_equal": true
+      },
+      "include/hammond/PerformanceInput.h": {
+        "bytes": 3220,
+        "current_sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+        "base_sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+        "byte_equal": true
+      },
+      "include/hammond/Profile.h": {
+        "bytes": 2250,
+        "current_sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+        "base_sha256": "b1180b3dc04030e0555ef3eb44a21617fc06e93150a9ecb48ebb05955b3e5fd0",
+        "byte_equal": true
+      },
+      "include/hammond/RotaryHistory.h": {
+        "bytes": 5507,
+        "current_sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+        "base_sha256": "9e6930342a5c83bdcf99102aaeb0dc9b0714e85561bd8205a53155a7fca4a25b",
+        "byte_equal": true
+      },
+      "include/hammond/RotaryMotion.h": {
+        "bytes": 6314,
+        "current_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+        "base_sha256": "7bc81331f84b7ce490bf9047114336e633f3da91a39bbfd2a13e3fd406f61d36",
+        "byte_equal": true
+      },
+      "include/hammond/RotaryPropagation.h": {
+        "bytes": 3577,
+        "current_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+        "base_sha256": "c304a1ac99eed6e6e3f80b5107d026880aeb2b5b18499af0a6a7ed3018521a4a",
+        "byte_equal": true
+      },
+      "include/hammond/RotaryRenderer.h": {
+        "bytes": 6415,
+        "current_sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+        "base_sha256": "5f74af0a7ca629b433fe7f3d72a44a2b39daf90fd2d64afa579aecd26f48ccd0",
+        "byte_equal": true
+      },
+      "include/hammond/RotaryTypes.h": {
+        "bytes": 8414,
+        "current_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+        "base_sha256": "b27ce4934188c24ebe557469fa5191dd7cdcd98a1c3fdbe274b0d7585e4578b4",
+        "byte_equal": true
+      },
+      "include/hammond/ScannerLine.h": {
+        "bytes": 6451,
+        "current_sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+        "base_sha256": "c249f7c5556d6a6c8c58978928f0b860be442cb1188d35e49c59575729af00c7",
+        "byte_equal": true
+      },
+      "include/hammond/ScannerLineFoh.h": {
+        "bytes": 3927,
+        "current_sha256": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+        "base_sha256": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+        "byte_equal": true
+      },
+      "include/hammond/ScannerRotor.h": {
+        "bytes": 6041,
+        "current_sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+        "base_sha256": "3ca846fc72224114194d73272f410fa2cbe3c0cae94c4fb23105536c7afb4d5a",
+        "byte_equal": true
+      },
+      "include/hammond/SourceLeakage.h": {
+        "bytes": 4287,
+        "current_sha256": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+        "base_sha256": "0bf33a1fc99d53d888b9a581b8787af1aaf7882d01441e9e570bc3050b817482",
+        "byte_equal": true
+      },
+      "include/hammond/StateExchange.h": {
+        "bytes": 6878,
+        "current_sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+        "base_sha256": "106dec7df367a4dd3351d243cacd26a6c8041c7ac8e874bba99a6fa26a4ac1d0",
+        "byte_equal": true
+      },
+      "include/hammond/TonewheelBank.h": {
+        "bytes": 2760,
+        "current_sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+        "base_sha256": "694acaece901e18b4e089264218d8f217cfe3d2f8ea2a9adfb5ff6773b2f756b",
+        "byte_equal": true
+      },
+      "include/hammond/Types.h": {
+        "bytes": 6015,
+        "current_sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+        "base_sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+        "byte_equal": true
+      },
+      "include/hammond/detail/Decimal.h": {
+        "bytes": 3736,
+        "current_sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+        "base_sha256": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+        "byte_equal": true
+      },
+      "plugins/vst3/CMakeLists.txt": {
+        "bytes": 10678,
+        "current_sha256": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545",
+        "base_sha256": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545",
+        "byte_equal": true
+      },
+      "plugins/vst3/Controller.cpp": {
+        "bytes": 9847,
+        "current_sha256": "2978813561b9702b560e227a9ff27b62a19c0c4f9a7b05823a2c40e3112d3be7",
+        "base_sha256": "2978813561b9702b560e227a9ff27b62a19c0c4f9a7b05823a2c40e3112d3be7",
+        "byte_equal": true
+      },
+      "plugins/vst3/Controller.h": {
+        "bytes": 2008,
+        "current_sha256": "c5377f380ddb1a1c006482e138cdd6f4736a0258803d8ae9dd0f735ff72570bb",
+        "base_sha256": "c5377f380ddb1a1c006482e138cdd6f4736a0258803d8ae9dd0f735ff72570bb",
+        "byte_equal": true
+      },
+      "plugins/vst3/Factory.cpp": {
+        "bytes": 1134,
+        "current_sha256": "880d4d24d4d6fbf104e441400ebf571a77c15019ae5bc43571a4524c242250d1",
+        "base_sha256": "880d4d24d4d6fbf104e441400ebf571a77c15019ae5bc43571a4524c242250d1",
+        "byte_equal": true
+      },
+      "plugins/vst3/PluginIds.h": {
+        "bytes": 746,
+        "current_sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+        "base_sha256": "2bc93839216f52d5920046931d83ba14fd2d01e15fdbdd477b71b15ebb8415fc",
+        "byte_equal": true
+      },
+      "plugins/vst3/Processor.cpp": {
+        "bytes": 19914,
+        "current_sha256": "a61e567798e7435c9d73ddab9bf925b6995396954e772c13f31571ad0a96f20b",
+        "base_sha256": "a61e567798e7435c9d73ddab9bf925b6995396954e772c13f31571ad0a96f20b",
+        "byte_equal": true
+      },
+      "plugins/vst3/Processor.h": {
+        "bytes": 4713,
+        "current_sha256": "e85cdc6f7aaf70c05eda61630a5e3acee7c7f2fef2796a2c5f557ce034a54e72",
+        "base_sha256": "e85cdc6f7aaf70c05eda61630a5e3acee7c7f2fef2796a2c5f557ce034a54e72",
+        "byte_equal": true
+      },
+      "plugins/vst3/StateStream.cpp": {
+        "bytes": 2719,
+        "current_sha256": "c83fbf22ea26c0b7a89974d4c0aa590c1e46f44f4a6c457d6fee512740d02117",
+        "base_sha256": "c83fbf22ea26c0b7a89974d4c0aa590c1e46f44f4a6c457d6fee512740d02117",
+        "byte_equal": true
+      },
+      "plugins/vst3/StateStream.h": {
+        "bytes": 1348,
+        "current_sha256": "6493aa859427ad55cf81c84df29b4669f038828eb4d2c53f04e442aefadeea8e",
+        "base_sha256": "6493aa859427ad55cf81c84df29b4669f038828eb4d2c53f04e442aefadeea8e",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/NativeAllocationProbe.h": {
+        "bytes": 10810,
+        "current_sha256": "e61fbceddf7fa3df138b534117daf9cdb49a10098ef6864bdadac65335ab57d4",
+        "base_sha256": "e61fbceddf7fa3df138b534117daf9cdb49a10098ef6864bdadac65335ab57d4",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/NativeHarness.cpp": {
+        "bytes": 15072,
+        "current_sha256": "899d504d842e2e1b83d7f629e0bb4335b0c4f4191d7568df90980f27c09828b7",
+        "base_sha256": "899d504d842e2e1b83d7f629e0bb4335b0c4f4191d7568df90980f27c09828b7",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/NativeHarness.h": {
+        "bytes": 8411,
+        "current_sha256": "0067515c5259288f1f711e4ce8c0921721682209863ca62ccbee4f50dbb2752a",
+        "base_sha256": "0067515c5259288f1f711e4ce8c0921721682209863ca62ccbee4f50dbb2752a",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/NativePresetOracle.h": {
+        "bytes": 1182,
+        "current_sha256": "3b620c607814fc9b686ff5e8e56292956649ab35cd42f0cf9df3426d26196dad",
+        "base_sha256": "3b620c607814fc9b686ff5e8e56292956649ab35cd42f0cf9df3426d26196dad",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/test_native_abi.cpp": {
+        "bytes": 33747,
+        "current_sha256": "f93a59fc0cdb99b8b016f77ff78baac6f78a083de674fed49ee194cc12d766f7",
+        "base_sha256": "f93a59fc0cdb99b8b016f77ff78baac6f78a083de674fed49ee194cc12d766f7",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/test_native_automation.cpp": {
+        "bytes": 43940,
+        "current_sha256": "51b4ae6fa84d6895c4ddd0b378223aa132fe5ea8b74016bf262f3147736fcdf9",
+        "base_sha256": "51b4ae6fa84d6895c4ddd0b378223aa132fe5ea8b74016bf262f3147736fcdf9",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/test_native_behavior.cpp": {
+        "bytes": 54155,
+        "current_sha256": "8e9dbfa48663fb316e0f2e5d4d1df9492259c1e5efaaaa461cd193263c095f39",
+        "base_sha256": "8e9dbfa48663fb316e0f2e5d4d1df9492259c1e5efaaaa461cd193263c095f39",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/test_native_concurrency.cpp": {
+        "bytes": 28000,
+        "current_sha256": "c863a9b6ad514163d3ff3645b43aa04171995ddbf7992d9fdf6aeca88af5027f",
+        "base_sha256": "c863a9b6ad514163d3ff3645b43aa04171995ddbf7992d9fdf6aeca88af5027f",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/test_native_controller.cpp": {
+        "bytes": 35235,
+        "current_sha256": "fae0af12a9fc272c1ffbb302666db78aca8c176083b07e0f8a818a97353db640",
+        "base_sha256": "fae0af12a9fc272c1ffbb302666db78aca8c176083b07e0f8a818a97353db640",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/test_native_install.py": {
+        "bytes": 11704,
+        "current_sha256": "3f2a2e8b52ca2d647e4da45218ed68c748b7a5d5212b8254fad57e3b6965366e",
+        "base_sha256": "3f2a2e8b52ca2d647e4da45218ed68c748b7a5d5212b8254fad57e3b6965366e",
+        "byte_equal": true
+      },
+      "plugins/vst3/tests/test_native_realtime.cpp": {
+        "bytes": 33338,
+        "current_sha256": "56c47d677c838c7543121c9738e191abe3f2e3437b900df607b6606be8fb53d4",
+        "base_sha256": "56c47d677c838c7543121c9738e191abe3f2e3437b900df607b6606be8fb53d4",
+        "byte_equal": true
+      },
+      "src/ContactBank.cpp": {
+        "bytes": 9665,
+        "current_sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+        "base_sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+        "byte_equal": true
+      },
+      "src/ControlState.cpp": {
+        "bytes": 7673,
+        "current_sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+        "base_sha256": "9026aa0338b905a005912e4c7734eedd36cbf204ae43fa4631bdc5aadaa86a5d",
+        "byte_equal": true
+      },
+      "src/ControlStateIO.cpp": {
+        "bytes": 13152,
+        "current_sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+        "base_sha256": "3a95b6750fc615b7218da5dd9cb540b30d8a83984374d441f2754c7e66de34fb",
+        "byte_equal": true
+      },
+      "src/Engine.cpp": {
+        "bytes": 28448,
+        "current_sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+        "base_sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+        "byte_equal": true
+      },
+      "src/FixedRegistration.cpp": {
+        "bytes": 1630,
+        "current_sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+        "base_sha256": "690e45e5738c3c25ae1082e31a49debdfbca994b68d6b0a28ef865df7991769d",
+        "byte_equal": true
+      },
+      "src/HostTimeline.cpp": {
+        "bytes": 21374,
+        "current_sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+        "base_sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+        "byte_equal": true
+      },
+      "src/InputProcessor.cpp": {
+        "bytes": 1257,
+        "current_sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+        "base_sha256": "d5543a2e4fbd34114da30ac28430130e4b5b5d00110c8c29cae80c85986a76fc",
+        "byte_equal": true
+      },
+      "src/LeslieCrossover.cpp": {
+        "bytes": 18694,
+        "current_sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+        "base_sha256": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+        "byte_equal": true
+      },
+      "src/NoteOwnership.cpp": {
+        "bytes": 8856,
+        "current_sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+        "base_sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+        "byte_equal": true
+      },
+      "src/ParameterBridge.cpp": {
+        "bytes": 11334,
+        "current_sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+        "base_sha256": "296c674ef39d54751f662293b4ce4b07f602bb407349981f8b03e1b5a4757220",
+        "byte_equal": true
+      },
+      "src/PedalNoteOwnership.cpp": {
+        "bytes": 7419,
+        "current_sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+        "base_sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+        "byte_equal": true
+      },
+      "src/PedalRouting.cpp": {
+        "bytes": 3983,
+        "current_sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+        "base_sha256": "8d05dedb9015863dfd88668e5ea27d6be42ea1fcdb600cf34787e446e14d22af",
+        "byte_equal": true
+      },
+      "src/PedalVoice.cpp": {
+        "bytes": 1171,
+        "current_sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+        "base_sha256": "88fb5afa936784be351b2940ee6f81216975112f860b007d40f3b6a3d9f7c6ba",
+        "byte_equal": true
+      },
+      "src/Percussion.cpp": {
+        "bytes": 4837,
+        "current_sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+        "base_sha256": "823685b879fad12492f86bbf5e78294668ee9b0567c58c26ac0b44aa28b1390a",
+        "byte_equal": true
+      },
+      "src/PerformanceInput.cpp": {
+        "bytes": 4219,
+        "current_sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+        "base_sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+        "byte_equal": true
+      },
+      "src/Profile.cpp": {
+        "bytes": 11655,
+        "current_sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+        "base_sha256": "80f5c7456311c77a83df23c548c02cabbf9c1cf1621cff89867d0d0c688ebe54",
+        "byte_equal": true
+      },
+      "src/RotaryHistory.cpp": {
+        "bytes": 8643,
+        "current_sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+        "base_sha256": "4f3c4fbd957f7cc9131b1f4e7c6e77f69df1b7e85c9ba4073de59fe52322a0f5",
+        "byte_equal": true
+      },
+      "src/RotaryMotion.cpp": {
+        "bytes": 17599,
+        "current_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+        "base_sha256": "a3f986892078254f6dfae936bbbf1b5e1c4967882d06c13b3b28649f2273cfa1",
+        "byte_equal": true
+      },
+      "src/RotaryPropagation.cpp": {
+        "bytes": 14495,
+        "current_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+        "base_sha256": "dcc36819747b8d215130c5031a955e4b00af29a114832d0bf273ca60eaaf0c2e",
+        "byte_equal": true
+      },
+      "src/RotaryRenderer.cpp": {
+        "bytes": 16388,
+        "current_sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+        "base_sha256": "b48d82deae98d087493a25976f767c995d4e1db0ae79acb8c699a62dc21c7d04",
+        "byte_equal": true
+      },
+      "src/RotaryRendererInternal.h": {
+        "bytes": 1020,
+        "current_sha256": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+        "base_sha256": "56a2fb6e0c3af5b7f686e2d2dc2fad07fd7858920657812ba6d4e28153637796",
+        "byte_equal": true
+      },
+      "src/RotaryStreamingPath.cpp": {
+        "bytes": 9747,
+        "current_sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+        "base_sha256": "ed79d6ce3653f52f5f9a7d43d4f5cf9743f18cc3c9458ee7734928e42dcbae50",
+        "byte_equal": true
+      },
+      "src/ScannerLine.cpp": {
+        "bytes": 20512,
+        "current_sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+        "base_sha256": "4280db3caa3f7aa225c58a0fa64ec4ca31add55ab8bb46a27aca2deba4544336",
+        "byte_equal": true
+      },
+      "src/ScannerLineFoh.cpp": {
+        "bytes": 28845,
+        "current_sha256": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+        "base_sha256": "9f5ff3f25f3564774ecaace292eb9299b3d75e897ce7fe6b30a59575addc24df",
+        "byte_equal": true
+      },
+      "src/ScannerRotor.cpp": {
+        "bytes": 5383,
+        "current_sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+        "base_sha256": "f1dbd65a92036fef9957d280d2aafe9bd8579414ef632a6e2c525e370907b2a0",
+        "byte_equal": true
+      },
+      "src/SourceLeakage.cpp": {
+        "bytes": 5741,
+        "current_sha256": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+        "base_sha256": "fd5112c7f07202848828b4c975f26e86cc5a02845628058ec9abb0ad8972bb8c",
+        "byte_equal": true
+      },
+      "src/SourceLeakageIO.cpp": {
+        "bytes": 8953,
+        "current_sha256": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+        "base_sha256": "0ad6d9c8b5768131e19451c2e65eda534245f99ff0a6efa4de73385933518c7e",
+        "byte_equal": true
+      },
+      "src/StateExchange.cpp": {
+        "bytes": 9473,
+        "current_sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+        "base_sha256": "3f661eab16cd164e5d1299ee59ea7c27e9e1cfd2f7d8d2d25218e24734884837",
+        "byte_equal": true
+      },
+      "src/TonewheelBank.cpp": {
+        "bytes": 4390,
+        "current_sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+        "base_sha256": "ebc26e2e61cc88d5525e390abf3897ebeae38e652c13ea3ef02818b2b3849e0b",
+        "byte_equal": true
+      }
+    }
+  },
+  "original_pdf_and_reference_assets": {
+    "all_byte_equal_base": true,
+    "files": {
+      "Hammond_B3_Leslie_Research_Atlas_500pp.pdf": {
+        "bytes": 21248265,
+        "current_sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+        "base_sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+        "byte_equal": true
+      },
+      "docs/design/atlas-cover-reference.jpg": {
+        "bytes": 412664,
+        "current_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "base_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+        "byte_equal": true
+      },
+      "docs/design/atlas-reference.json": {
+        "bytes": 811,
+        "current_sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+        "base_sha256": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+        "byte_equal": true
+      },
+      "tools/compile_reference_art.py": {
+        "bytes": 12418,
+        "current_sha256": "b0e06b4a0e6312300f64d47226875ce7d997759b9d9076eeb4cd049839d5c766",
+        "base_sha256": "b0e06b4a0e6312300f64d47226875ce7d997759b9d9076eeb4cd049839d5c766",
+        "byte_equal": true
+      },
+      "docs/REFERENCE_ART_ASSETS.md": {
+        "bytes": 6860,
+        "current_sha256": "c9be37007c23c55ca96ad78b6df31ae18d271c29945d66cd0601db44ea634d5c",
+        "base_sha256": "c9be37007c23c55ca96ad78b6df31ae18d271c29945d66cd0601db44ea634d5c",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/cabinet.rgb.gz": {
+        "bytes": 369409,
+        "current_sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e",
+        "base_sha256": "4011a2d6be00dc491303dbd0e7c03ebb187ec2d7f288bc9a79ea47dc2e486c3e",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/left-wood-cheek.rgb.gz": {
+        "bytes": 52070,
+        "current_sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4",
+        "base_sha256": "1aa1e326b10e6dc6e02bfeb8229ade9842e6073cc75730dd260ced49d8225bc4",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/manifest.json": {
+        "bytes": 3816,
+        "current_sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+        "base_sha256": "bf1bec09c0dd15d09ab0129f950ccb5370532f92cb9217e347ba69e96d24bc87",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/requirements-authoring.txt": {
+        "bytes": 167,
+        "current_sha256": "98d3fbeaee859ac1b6076b2ab6495b2e3e3a7ecdcf32787de7204127e49fd254",
+        "base_sha256": "98d3fbeaee859ac1b6076b2ab6495b2e3e3a7ecdcf32787de7204127e49fd254",
+        "byte_equal": true
+      },
+      "assets/standalone/reference/right-wood-cheek.rgb.gz": {
+        "bytes": 142330,
+        "current_sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6",
+        "base_sha256": "53f2e03f2cb9858a7d4f9c9c8198188d16d5f32376a521f00eeb067c049ef1f6",
+        "byte_equal": true
+      }
+    },
+    "source_crop_verification": {
+      "command": "python3 -B tools/compile_reference_art.py --verify-source",
+      "exit_code": 0,
+      "stdout": "Verified exact source-pixel equality for 3 crops; decoder {\"libjpeg_api\": \"6.2\", \"libjpeg_turbo\": \"3.2.0\", \"pillow\": \"13.0.0\", \"python\": \"3.12.14\", \"tool\": \"tools/compile_reference_art.py\", \"tool_version\": 1, \"zlib_compile\": \"1.3.2\", \"zlib_runtime\": \"1.3.2\"}",
+      "crop_count": 3,
+      "decoded_rgb_bytes": 814722,
+      "meaning": "Original retained decorative source crop identity only; no whole-interface or physical-geometry claim."
+    }
+  },
+  "musical_compatibility": {
+    "source_count": 91,
+    "source_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91
+    ],
+    "source_ids_exact_ordered_1_to_91": true,
+    "free_running_source_evidence": "Types.h, TonewheelBank.cpp and Engine.cpp are byte-equal to base; process_frame advances every prepared source and no changed native route imports the offline reference.",
+    "parameter_count": 47,
+    "parameter_ids": [
+      4096,
+      4097,
+      4098,
+      4099,
+      4100,
+      4101,
+      4102,
+      4103,
+      4104,
+      4112,
+      4113,
+      4114,
+      4115,
+      4116,
+      4117,
+      4118,
+      4119,
+      4120,
+      4128,
+      4129,
+      4130,
+      4131,
+      4132,
+      4133,
+      4134,
+      4135,
+      4136,
+      4144,
+      4145,
+      4146,
+      4147,
+      4148,
+      4149,
+      4150,
+      4151,
+      4152,
+      8192,
+      8208,
+      8209,
+      12288,
+      12289,
+      12290,
+      12291,
+      16384,
+      16385,
+      20480,
+      20481
+    ],
+    "all_registry_bytes_and_meanings_unchanged": true,
+    "compiled_descriptors": {
+      "count": 47,
+      "all_match_registry": true,
+      "fields_independently_compared": [
+        "id",
+        "path",
+        "kind",
+        "unit",
+        "maximum",
+        "default",
+        "step_count",
+        "event.type",
+        "event.manual",
+        "event.index"
+      ],
+      "normalized_formula_meanings": "Preserved by complete registry and ParameterBridge byte equality; no fresh numerical conversion test claimed."
+    },
+    "state_writer": "B3CONTROLS4",
+    "state_readers": [
+      "B3CONTROLS1",
+      "B3CONTROLS2",
+      "B3CONTROLS3",
+      "B3CONTROLS4"
+    ],
+    "state_migration_logic_unchanged": true,
+    "profile_model": "ideal-shared-sine-v1",
+    "profile_provenance_unchanged": true,
+    "registration_count": 18,
+    "registration_model_id": "atlas-chapel-nominal-v1",
+    "registration_provenance": {
+      "document": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+      "page": 122,
+      "primary_reference": {
+        "citation": "S019-01",
+        "table": "Table IV",
+        "printed_page": "4-1",
+        "status": "not-independently-verified"
+      }
+    },
+    "registration_evidence_class": "documentary-reconstruction",
+    "vst3_checked_files": 20,
+    "vst3_ids_controller_processor_state_and_automation_mappings_unchanged": true,
+    "host_qualification_claimed": false
+  },
+  "production_diff": {
+    "native_changes": {
+      "apps/standalone/UiModel.h": {
+        "bytes": 18547,
+        "sha256": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+        "added_lines": 48,
+        "removed_lines": 0
+      },
+      "apps/standalone/UiModel.cpp": {
+        "bytes": 83758,
+        "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+        "added_lines": 448,
+        "removed_lines": 0
+      },
+      "apps/standalone/InstrumentView.cpp": {
+        "bytes": 144647,
+        "sha256": "0614f236e1e5bbe0cd8ac89210b27c77140724be5da49e3f2f4e67583b159c0a",
+        "added_lines": 789,
+        "removed_lines": 0
+      }
+    },
+    "no_other_tracked_native_production_changes": true,
+    "no_untracked_native_runtime_sources": true,
+    "activation": "Dimensional Play, width >=1400 and height >=820, bounded by 8192; shared layout/painter predicate.",
+    "meaning": "Additive canonical geometry, validation and matching painter; existing musical input/state/ownership paths and inactive source bodies retained.",
+    "base_equal_entrypoints": {
+      "apps/standalone/AudioDevice.cpp": {
+        "bytes": 12072,
+        "current_sha256": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0",
+        "base_sha256": "3565139241941d108b18289b176f25732e0c9bf4d36a60844a297ba92499f2b0",
+        "byte_equal": true
+      },
+      "apps/standalone/AudioDevice.h": {
+        "bytes": 5331,
+        "current_sha256": "75ac25e462afb85c64b0298bf4e8c30d4979d3d30f231edec75c8ba41818673a",
+        "base_sha256": "75ac25e462afb85c64b0298bf4e8c30d4979d3d30f231edec75c8ba41818673a",
+        "byte_equal": true
+      },
+      "apps/standalone/Session.cpp": {
+        "bytes": 31176,
+        "current_sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+        "base_sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+        "byte_equal": true
+      },
+      "apps/standalone/Session.h": {
+        "bytes": 8982,
+        "current_sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+        "base_sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+        "byte_equal": true
+      },
+      "apps/standalone/main.cpp": {
+        "bytes": 144215,
+        "current_sha256": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+        "base_sha256": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+        "byte_equal": true
+      },
+      "tools/render.cpp": {
+        "bytes": 45634,
+        "current_sha256": "0445bb80e40e832692a69689a83607aeacd55dd15264599a9fdfe219448bd37e",
+        "base_sha256": "0445bb80e40e832692a69689a83607aeacd55dd15264599a9fdfe219448bd37e",
+        "byte_equal": true
+      },
+      "CMakePresets.json": {
+        "bytes": 1711,
+        "current_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+        "base_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+        "byte_equal": true
+      },
+      "apps/standalone/CMakeLists.txt": {
+        "bytes": 28408,
+        "current_sha256": "36cfc23b38e7f2322cddd09dc9c37b5010765e0d09de1f8290113a4262bfa986",
+        "base_sha256": "36cfc23b38e7f2322cddd09dc9c37b5010765e0d09de1f8290113a4262bfa986",
+        "byte_equal": true
+      }
+    },
+    "cmake_change": "One additive include(cmake/InstallContactReferenceTools.cmake) after target/test discovery.",
+    "other_changes": "Offline contact Python tools, synthetic fixtures, explicit install component, raster/capture tools, tests and documentation/evidence.",
+    "default_engine_or_callback_wiring_changed": false,
+    "offline_names_referenced_by_native_or_registry": []
+  },
+  "offline_distribution": {
+    "component": "ContactReferenceTools",
+    "payload_files": 48,
+    "payload_breakdown": {
+      "python_tools": 6,
+      "documents": 4,
+      "synthetic_fixtures": 36,
+      "manifest_and_probes": 2
+    },
+    "installer": {
+      "bytes": 6900,
+      "sha256": "b9994fcc297ca4f2ae005016dd7943b8d8960b35ca5f051f5bc57feba97bc9ea"
+    },
+    "installed_by_default": false,
+    "exclusion_evidence": "Both install(CODE preflight) and every install(FILES) rule use COMPONENT ContactReferenceTools EXCLUDE_FROM_ALL.",
+    "native_targets_created": false,
+    "live_parameters_added": 0,
+    "python_modules": {
+      "tools/fractional_contact_reference.py": {
+        "bytes": 29808,
+        "sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+        "imports": [
+          "__future__",
+          "fractions",
+          "functools",
+          "hashlib",
+          "math",
+          "re",
+          "struct",
+          "typing"
+        ]
+      },
+      "tools/contact_switching_io.py": {
+        "bytes": 23707,
+        "sha256": "e3219265f1496a36b4f5d8a13941672b46ddc4116f331b7a1b99115a2dac9dc6",
+        "imports": [
+          "__future__",
+          "dataclasses",
+          "fractional_contact_reference",
+          "fractions",
+          "hashlib",
+          "json",
+          "math",
+          "os",
+          "pathlib",
+          "platform",
+          "re",
+          "resource",
+          "stat",
+          "sys",
+          "tempfile",
+          "time",
+          "typing"
+        ]
+      },
+      "tools/contact_switching_reference.py": {
+        "bytes": 2108,
+        "sha256": "46e1967af569e4a9ee35921439351e2ce5fe50c731a2619116cc9e424f4e97f5",
+        "imports": [
+          "__future__",
+          "argparse",
+          "contact_switching_io",
+          "sys",
+          "time"
+        ]
+      },
+      "tools/contact_switching_oracle.py": {
+        "bytes": 18281,
+        "sha256": "17f6d93fb5d8fbb5eb1b0d36c609449f9c8b9b94e44ab10a80450f04bb2cf9d4",
+        "imports": [
+          "__future__",
+          "dataclasses",
+          "fractions",
+          "math",
+          "typing"
+        ]
+      },
+      "tools/contact_switching_study.py": {
+        "bytes": 40349,
+        "sha256": "eb4d374cc46ed1c16448ab3b1c2f03c5714a27c20bfdd0c3dba6e005d8f8066e",
+        "imports": [
+          "__future__",
+          "argparse",
+          "contact_switching_io",
+          "contact_switching_oracle",
+          "dataclasses",
+          "datetime",
+          "fractional_contact_reference",
+          "fractions",
+          "hashlib",
+          "json",
+          "math",
+          "os",
+          "pathlib",
+          "platform",
+          "resource",
+          "stat",
+          "struct",
+          "subprocess",
+          "sys",
+          "tempfile",
+          "time"
+        ]
+      },
+      "tools/make_contact_switching_fixtures.py": {
+        "bytes": 4867,
+        "sha256": "7e818b414342dfabfdcf23831fbb11ae4ccf51d093a4fd4cc97d046c6c73a387",
+        "imports": [
+          "__future__",
+          "argparse",
+          "copy",
+          "hashlib",
+          "json",
+          "math",
+          "pathlib"
+        ]
+      }
+    },
+    "A31_retained_qualification": {
+      "methods_passed": 17,
+      "worker_A35_reran_tests": false,
+      "installer_and_test_hashes_match_A31": true,
+      "test": {
+        "bytes": 27476,
+        "sha256": "e586b3d1424235aeadb73df4544d742aec15e59a0b50120effd90983fc8a524a"
+      },
+      "includes_default_install_and_six_neighbor_components": true,
+      "scope": "Existing Linux fixture, relocation and exclusion evidence, not a new A35 install run or cross-platform result."
+    }
+  },
+  "current_source_bound_ui_evidence": {
+    "controls": 68,
+    "presets_included_in_controls": 24,
+    "playing_keys": 147,
+    "key_breakdown": {
+      "upper": 61,
+      "lower": 61,
+      "pedals": 25
+    },
+    "play_focus_stops": 71,
+    "focus_breakdown": {
+      "ordinary_controls": 68,
+      "roving_key_groups": 3
+    },
+    "A18_A21_A32_bindings": {
+      "A18": {
+        "checked_count": 6,
+        "source_sha256": {
+          "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+          "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+          "apps/standalone/tests/test_standalone_whole_reference.cpp": "dd25a86605e26d90848ef76e06e726be83cc48261218c648e509273cd3145039",
+          "apps/standalone/tests/test_standalone_percussion_reference.cpp": "6affb7c12ece9882bf0a0e34e6d81684442e39de4b9204e8fc85a25289f971d9",
+          "apps/standalone/tests/test_standalone_reference_layout.cpp": "5a18762cfef02be4cbd4f46a524e6126d848f009f9559040dfa8eb225bce3121",
+          "apps/standalone/tests/test_standalone_projection.cpp": "2546e4c294b445d4fc716f0040767924c1f218313a9af261bfc73f649d92bb6d"
+        },
+        "all_current_match": true
+      },
+      "A21": {
+        "checked_count": 6,
+        "source_sha256": {
+          "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+          "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+          "apps/standalone/InstrumentView.cpp": "0614f236e1e5bbe0cd8ac89210b27c77140724be5da49e3f2f4e67583b159c0a",
+          "apps/standalone/tests/test_standalone_preset_ui.cpp": "1e58aa81625b70451806826263b21b37d65a9ddf3136feff3070425be62a7149",
+          "apps/standalone/tests/test_standalone_ui.cpp": "72ad827400a3c530b05a967a79656da96ff591d62c179c1281bac0401fd8d6d6",
+          "docs/WHOLE_REFERENCE_LAYOUT_CONTRACT.md": "55cc841d10dc65004cbfcca83d0fb84dcf54dda779e1d82a376534e2650b730f"
+        },
+        "all_current_match": true
+      },
+      "A32": {
+        "checked_count": 10,
+        "source_sha256": {
+          "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+          "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+          "apps/standalone/InspectionModel.cpp": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+          "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+          "apps/standalone/InstrumentView.cpp": "0614f236e1e5bbe0cd8ac89210b27c77140724be5da49e3f2f4e67583b159c0a",
+          "apps/standalone/InstrumentView.h": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+          "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+          "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+          "apps/standalone/main.cpp": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027",
+          "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+        },
+        "all_current_match": true
+      }
+    },
+    "A18_retained_run": {
+      "passed": 4,
+      "total": 4,
+      "seconds": 0.43,
+      "active_layouts": 52,
+      "inactive_predicate_cases": 380,
+      "pointer_control_journeys": 544,
+      "keyboard_control_journeys": 544,
+      "pointer_note_journeys": 441,
+      "keyboard_note_journeys": 441
+    },
+    "A21_retained_migration_results": [
+      {
+        "test": "test_standalone_ui",
+        "status": "passed",
+        "seconds": 0.07
+      },
+      {
+        "test": "test_standalone_preset_ui",
+        "status": "passed",
+        "seconds": 0.39
+      }
+    ],
+    "A32_gallery": {
+      "status": "passed",
+      "capture_cases": 12,
+      "checks_passed": 383,
+      "production_inputs_current_matching": 115,
+      "production_inventory_sha256": "3cf5e028250e45c754d149b5811a8f4243b72afd99f0fe9e40a0b8a79952456d",
+      "source_qualifiers_current_matching": 10,
+      "manifest": {
+        "bytes": 9495,
+        "sha256": "641d9b31af5f59dc77c5b6904f0895d0877fa54e508c016556df4e6b7dc51828"
+      },
+      "executable": {
+        "bytes": 3721112,
+        "sha256": "eb9a501ec60d5a90a398ffbf14e21a21967712589c155b54c8be164a71bd823c"
+      },
+      "ordinary_focus_id_exported": false,
+      "native_focus_evidence": "Retained replay actions/owners and four-edge pixel probes, not a native ordinary-focus-ID export.",
+      "worker_A35_reran_gallery_or_visual_review": false
+    },
+    "retained_record_identities": {
+      "notes/A18.md": {
+        "bytes": 4702,
+        "sha256": "2e34a392967f9541afb1345fd31befefa24fc67af0dd1496cc1c94e88b63e45d"
+      },
+      "notes/A21.md": {
+        "bytes": 4496,
+        "sha256": "d2d0916b3c460010fec34cf312f19b80887c7d6e000dcff669e31236f53396b9"
+      },
+      "notes/A31.md": {
+        "bytes": 4665,
+        "sha256": "3a9d4cf6d6cf9d192ef3f66cb9eaf391db84065d48e155c25b2a6a52d221b1d7"
+      },
+      "notes/A32.md": {
+        "bytes": 3985,
+        "sha256": "33e00b4bc303ef52007782ef0e4246313b72b9e9d7b6ff6bd98d1df7aacae31d"
+      },
+      "reports/A21-layout-review.json": {
+        "bytes": 3386,
+        "sha256": "a4b545df27220de5bd4b4052035e7cefc2c84e5eb74e3ecc645ea1daf735c125"
+      },
+      "reports/A32-gallery-admission.json": {
+        "bytes": 24627,
+        "sha256": "90a551d74e2676adda4c742e630ccc7f72f27c0c8eb7dd74f5312c3b8b130e4e"
+      },
+      "reports/wave3-geometry-tests.log.gz": {
+        "bytes": 293,
+        "sha256": "c65ce8dab55aeca8b1798d02566d802076f9d949699efe3e1f6ed0f8053a10c5"
+      },
+      "reports/wave4-migration-tests.log.gz": {
+        "bytes": 396,
+        "sha256": "022c260a01cbf4fbaa038c082c071388dc240d09396a717f46a4ccc8be62ab2d"
+      }
+    }
+  },
+  "executed_A35_checks": [
+    "All 84 baseline SHA-256 values and base Git blob byte comparisons",
+    "Overlapping 94-file immutable core/include/VST3/assets/profile/catalog/reference scan",
+    "PDF/JPEG/manifests/asset compiler and decorative payload base byte comparisons",
+    "91 profile IDs and 47 registry IDs plus 470 compiled-descriptor field comparisons",
+    "Read-only exact three-crop source-pixel verification CLI",
+    "Actual native and CMake diffs, entrypoint hashes and no offline-name references in native/registry paths",
+    "A18/A21/A32 source hashes and all 115 gallery production input hashes",
+    "Read retained compressed geometry/migration CTest logs; no CTest rerun",
+    "git diff --check"
+  ],
+  "remaining_gates": [
+    "Root coherent full build/CTest at accepted current inputs and subsequent exact-source hosted CI remain pending at this audit.",
+    "Windows/macOS/native/VST3/DAW/device runs, deadlines and native callback retirement require their own current source/platform evidence.",
+    "Native semantic accessibility and real display/DPI/input journeys remain separate; Linux dummy SDL/software/MIDI-off captures do not close them.",
+    "Literal whole-interface 1:1, material/typography differences and physical instrument/audio/circuit/cabinet fidelity remain open.",
+    "Offline numerical reference is not runtime Engine integration or measured contact/bounce/loading calibration; original registration Table IV remains not independently verified.",
+    "No publication, release/signing or rights-clearance claim is made."
+  ]
+}

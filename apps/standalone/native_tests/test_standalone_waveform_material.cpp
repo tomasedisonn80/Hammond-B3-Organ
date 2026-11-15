@@ -24,6 +24,8 @@
 // documented one-time before/after qualification, link a second translation
 // unit made from the unmodified frozen before source, renaming only its three
 // exported functions. Both painters then share these exact dependencies/state.
+// They also share the current UiModel: after a composition change this optional
+// painter-only mode is not a genuine old/new layout comparison.
 #ifdef HAMMOND_WAVEFORM_BASELINE
 namespace hammond::standalone {
 void paint_instrument_before(Drawing&, const UiModel&, const InstrumentViewInfo&);
@@ -46,6 +48,15 @@ std::string current_case;
 std::filesystem::path captures;
 double reference_front{}, reference_top{};
 std::array<int, 3> reference_stems{};
+// The canonical Upper manual ends at 528 + 170 - 8 = 690; its clamped
+// 18-unit front therefore starts at 672. The previous front began at 668.88.
+// Translate the historical 7x5 patches by that 3.12-unit boundary movement,
+// preserving their depth within the unchanged material and their x708 band,
+// which remains inside the idle natural spanning canonical x701.28--725.56.
+// The 125--140 material budget is unchanged; the old literal y677 now samples
+// a shallower, brighter part of the same front gradient.
+constexpr UiRect kReferenceFrontPatch{708.0F, 680.12F, 7.0F, 5.0F};
+constexpr UiRect kReferenceTopPatch{708.0F, 656.12F, 7.0F, 5.0F};
 #ifdef HAMMOND_WAVEFORM_BASELINE
 double baseline_front{}, baseline_top{};
 std::array<int, 3> baseline_stems{};
@@ -351,9 +362,13 @@ void targets(const UiModel& model, const Frame& frame) {
 
 std::array<int, 3> stem_anchor(const Frame& frame) {
     std::array<int, 3> result{};
+    // The admitted first Upper rail is centered at canonical x158, with
+    // track y327--445 and its value-8 cap beginning at y429. These original
+    // three rows still lie on the exposed shaft; the 16-pixel scan follows
+    // the new center instead of probing the former x[103,119) rack position.
     const std::array<int, 3> rows{350, 365, 380};
     for (std::size_t row = 0; row < rows.size(); ++row)
-        for (int x = 103; x < 119; ++x)
+        for (int x = 150; x < 166; ++x)
             if (brightness(frame.pixels[frame.at(x, rows[row])]) > 25) ++result[row];
     return result;
 }
@@ -494,15 +509,15 @@ void run(const Case& test) {
         ++counts.focused_keys;
     }
     if (test.audition && test.width == 1672) {
-        reference_front = patch(after, {708, 677, 7, 5});
-        reference_top = patch(after, {708, 653, 7, 5});
+        reference_front = patch(after, kReferenceFrontPatch);
+        reference_top = patch(after, kReferenceTopPatch);
         reference_stems = stem_anchor(after);
         check(reference_front >= 125 && reference_front <= 140, "reference isolated idle-front median is 125-140 encoded-RGB levels");
         check(std::all_of(reference_stems.begin(), reference_stems.end(), [](int width_) { return width_ >= 7 && width_ <= 10; }),
               "reference stem has 7-10 bright pixels at all three fixed rows");
 #ifdef HAMMOND_WAVEFORM_BASELINE
-        baseline_front = patch(before, {708, 677, 7, 5});
-        baseline_top = patch(before, {708, 653, 7, 5});
+        baseline_front = patch(before, kReferenceFrontPatch);
+        baseline_top = patch(before, kReferenceTopPatch);
         baseline_stems = stem_anchor(before);
         check(baseline_front - reference_front >= 19 && baseline_top == reference_top,
               "isolated front darkens at least 19 levels and adjacent top pixels retain their median");

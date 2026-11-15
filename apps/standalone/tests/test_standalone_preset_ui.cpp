@@ -188,6 +188,11 @@ void geometry_and_occlusion() {
         CHECK(layout.show_cabinet == anchor.cabinet);
         CHECK(layout.bank_controls_in_cheeks == anchor.cheeks);
         CHECK(layout.sidebar_pedals == (anchor.cabinet && anchor.cheeks));
+        // Frozen wide-Play contract; do not obtain expectations from the
+        // production activation or mapping helpers. Legacy anchors stay below.
+        const bool reference = anchor.width >= 1400 && anchor.height >= 820;
+        const float sx = anchor.width / 1672.0F;
+        const float sy = anchor.height / 941.0F;
         unsigned preset_count = 0;
         for (const auto& control : layout.controls) {
             CHECK(control.id.kind != UiControlKind::SoundingBank);
@@ -197,18 +202,34 @@ void geometry_and_occlusion() {
         CHECK(preset_count == 24);
         for (unsigned manual = 0; manual < 2; ++manual) {
             const auto panel = layout.preset_key_panels[manual];
-            CHECK_NEAR(layout.manual_rail_panels[manual].width, anchor.rail, 0.001F);
-            CHECK_NEAR(layout.manual_panels[manual].height, anchor.manual, 0.001F);
-            CHECK_NEAR(panel.height, anchor.panel, 0.001F);
-            CHECK_NEAR(panel.width, anchor.rail - 16, 0.001F);
+            if (reference) {
+                CHECK_NEAR(layout.manual_rail_panels[manual].width,
+                           (manual == 0 ? 184.0F : 192.0F) * sx, 0.001F);
+                CHECK_NEAR(layout.manual_panels[manual].height,
+                           (manual == 0 ? 170.0F : 172.0F) * sy, 0.001F);
+                CHECK_NEAR(panel.height, (manual == 0 ? 81.0F : 83.0F) * sy, 0.001F);
+                CHECK_NEAR(panel.width, (manual == 0 ? 164.0F : 172.0F) * sx, 0.001F);
+            } else {
+                CHECK_NEAR(layout.manual_rail_panels[manual].width, anchor.rail, 0.001F);
+                CHECK_NEAR(layout.manual_panels[manual].height, anchor.manual, 0.001F);
+                CHECK_NEAR(panel.height, anchor.panel, 0.001F);
+                CHECK_NEAR(panel.width, anchor.rail - 16, 0.001F);
+            }
             for (unsigned pitch = 0; pitch < 12; ++pitch) {
                 const auto& key = geometry(model, preset(manual, pitch));
-                CHECK(key.bounds.width >= 11.99F);
+                if (reference) {
+                    CHECK_NEAR(key.bounds.width,
+                        (manual == 0 ? 164.0F : 172.0F) / 7.0F *
+                        (is_sharp(pitch) ? 0.60F : 1.0F) * sx, 0.001F);
+                } else CHECK(key.bounds.width >= 11.99F);
                 CHECK(key.label_bounds.x >= key.bounds.x);
                 CHECK(key.label_bounds.x + key.label_bounds.width <= key.bounds.x + key.bounds.width);
-                CHECK(key.label_bounds.height == (is_sharp(pitch) ? 20 : 11));
+                if (reference) {
+                    CHECK_NEAR(key.label_bounds.height, (is_sharp(pitch) ? 20.0F : 11.0F) * sy, 0.001F);
+                } else CHECK(key.label_bounds.height == (is_sharp(pitch) ? 20 : 11));
                 CHECK_NEAR(key.label_bounds.y,
-                    key.bounds.y + key.bounds.height - key.label_bounds.height - 2, 0.001F);
+                    key.bounds.y + key.bounds.height - key.label_bounds.height -
+                    (reference ? 2.0F * sy : 2.0F), 0.001F);
                 CHECK(key.label_bounds.y >= key.bounds.y);
                 CHECK(key.label_bounds.y + key.label_bounds.height <= key.bounds.y + key.bounds.height);
                 CHECK(ui_hit_test(layout, exposed_point(model, manual, pitch)) == preset(manual, pitch));

@@ -1374,6 +1374,791 @@ void paint_footer(Drawing& drawing, const UiModel& model, const InstrumentViewIn
               10.5F, preset_request ? kPresetPending : kMuted);
 }
 
+// Active composition helpers use mapped model geometry. Only their local
+// material distances are scaled here; glyph sizes remain isotropic and none of
+// these helpers changes the renderer scale, viewport or the live hit layout.
+[[nodiscard]] UiRect reference_inset(UiRect bounds, float amount,
+                                      ReferenceCompositionScale scale) noexcept {
+    const float x = amount * scale.sx;
+    const float y = amount * scale.sy;
+    return {bounds.x + x, bounds.y + y,
+            std::max(0.0F, bounds.width - 2.0F * x),
+            std::max(0.0F, bounds.height - 2.0F * y)};
+}
+
+void reference_outline(Drawing& drawing, UiRect bounds, UiColor color, float thickness,
+                       ReferenceCompositionScale scale) {
+    if (!material_surface(bounds)) return;
+    const float x = std::min(thickness * scale.sx, bounds.width / 2.0F);
+    const float y = std::min(thickness * scale.sy, bounds.height / 2.0F);
+    drawing.rect({bounds.x, bounds.y, bounds.width, y}, color);
+    drawing.rect({bounds.x, bounds.y + bounds.height - y, bounds.width, y}, color);
+    drawing.rect({bounds.x, bounds.y + y, x, bounds.height - 2.0F * y}, color);
+    drawing.rect({bounds.x + bounds.width - x, bounds.y + y, x,
+                  bounds.height - 2.0F * y}, color);
+}
+
+void reference_screw(Drawing& drawing, float x, float y, ReferenceCompositionScale scale) {
+    drawing.rounded({x - scale.sx, y - scale.sy, 8.0F * scale.sx, 8.0F * scale.sy},
+                    4.0F * scale.f, {8, 9, 8});
+    drawing.rounded({x, y, 6.0F * scale.sx, 6.0F * scale.sy}, 3.0F * scale.f, {131, 107, 65});
+    drawing.rect({x + scale.sx, y + scale.sy, 3.0F * scale.sx, scale.sy}, {221, 188, 125});
+    drawing.line(x + 1.5F * scale.sx, y + 4.5F * scale.sy,
+                 x + 4.5F * scale.sx, y + 1.5F * scale.sy, {34, 29, 20});
+}
+
+void reference_panel(Drawing& drawing, UiRect bounds, ReferenceCompositionScale scale,
+                     bool screws = true) {
+    if (!material_surface(bounds)) return;
+    for (int layer = 5; layer >= 1; --layer) {
+        const float spread = static_cast<float>(layer);
+        drawing.rounded({bounds.x - spread * scale.sx, bounds.y + (2.0F - spread) * scale.sy,
+                         bounds.width + 2.0F * spread * scale.sx,
+                         bounds.height + 2.0F * spread * scale.sy},
+                        (5.0F + spread) * scale.f, {0, 0, 0, 16});
+    }
+    drawing.rounded(bounds, 6.0F * scale.f, {7, 7, 7});
+    drawing.rounded(reference_inset(bounds, 1.0F, scale), 5.0F * scale.f, kMetalEdge);
+    drawing.rounded(reference_inset(bounds, 2.0F, scale), 4.0F * scale.f, {14, 14, 14});
+    drawing.gradient(reference_inset(bounds, 4.0F, scale), {43, 41, 38}, {21, 22, 21});
+    constexpr std::size_t maximum_grain_pairs = 2048;
+    const auto rows = static_cast<int>(std::max(0.0F, std::floor(bounds.height / scale.sy - 16.0F)));
+    const auto columns = static_cast<int>(std::max(0.0F, std::floor(bounds.width / scale.sx - 21.0F)));
+    int step = std::max(4, static_cast<int>(std::ceil(std::sqrt(
+        static_cast<double>(rows) * static_cast<double>(columns) /
+        (3.0 * static_cast<double>(maximum_grain_pairs))))));
+    const auto pair_count = [rows, columns](int pitch) {
+        const auto row_count = rows > 1 ? static_cast<std::size_t>((rows - 2) / pitch + 1) : 0;
+        const auto column_count = columns > 1 ? static_cast<std::size_t>((columns - 2) / (pitch * 3) + 1) : 0;
+        return row_count * column_count;
+    };
+    while (pair_count(step) > maximum_grain_pairs) ++step;
+    std::size_t pairs = 0;
+    for (int row = 1; row < rows && pairs < maximum_grain_pairs; row += step) {
+        for (int column = 1; column < columns && pairs < maximum_grain_pairs; column += step * 3) {
+            const auto grain = static_cast<std::uint32_t>(row) * 1973U +
+                static_cast<std::uint32_t>(column) * 9277U;
+            const float x = bounds.x + (7.0F + static_cast<float>(column) +
+                static_cast<float>((grain >> 5U) % 3U)) * scale.sx;
+            const float y = bounds.y + (7.0F + static_cast<float>(row)) * scale.sy;
+            drawing.rect({x, y, scale.sx, scale.sy},
+                         {212, 205, 190, static_cast<std::uint8_t>(6U + grain % 5U)});
+            drawing.rect({x + 3.0F * scale.sx, y + scale.sy, 2.0F * scale.sx, scale.sy},
+                         {0, 0, 0, static_cast<std::uint8_t>(10U + (grain >> 3U) % 9U)});
+            ++pairs;
+        }
+    }
+    drawing.rect({bounds.x + 7.0F * scale.sx, bounds.y + 3.0F * scale.sy,
+                  bounds.width - 14.0F * scale.sx, scale.sy}, {147, 133, 111, 120});
+    drawing.rect({bounds.x + 3.0F * scale.sx, bounds.y + 7.0F * scale.sy,
+                  scale.sx, bounds.height - 14.0F * scale.sy}, {123, 112, 94, 92});
+    drawing.rect({bounds.x + 7.0F * scale.sx, bounds.y + bounds.height - 3.0F * scale.sy,
+                  bounds.width - 14.0F * scale.sx, scale.sy}, {7, 8, 7});
+    drawing.rect({bounds.x + bounds.width - 3.0F * scale.sx, bounds.y + 7.0F * scale.sy,
+                  scale.sx, bounds.height - 14.0F * scale.sy}, {7, 8, 7});
+    if (screws) {
+        for (const float x : {bounds.x + 7.0F * scale.sx,
+                              bounds.x + bounds.width - 13.0F * scale.sx}) {
+            reference_screw(drawing, x, bounds.y + 7.0F * scale.sy, scale);
+            if (bounds.height > 80.0F * scale.sy)
+                reference_screw(drawing, x, bounds.y + bounds.height - 13.0F * scale.sy, scale);
+        }
+    }
+}
+
+void reference_wood(Drawing& drawing, UiRect bounds, ReferenceCompositionScale scale) {
+    if (!material_surface(bounds)) return;
+    drawing.gradient(bounds, {111, 64, 34}, {54, 28, 17});
+    const auto rows = static_cast<int>(bounds.height / scale.sy);
+    for (int row = 2; row < rows; row += 3) {
+        const auto alpha = static_cast<std::uint8_t>(15 + (row * 29) % 29);
+        const float y = bounds.y + static_cast<float>(row) * scale.sy;
+        drawing.rect({bounds.x, y, bounds.width, scale.sy}, {18, 8, 4, alpha});
+        if (row % 9 == 2)
+            drawing.rect({bounds.x, y + scale.sy, bounds.width, scale.sy}, {223, 154, 86, 25});
+    }
+    drawing.rect({bounds.x, bounds.y + scale.sy, bounds.width, scale.sy}, {207, 140, 82, 150});
+    const float underside = std::min(3.0F * scale.sy, bounds.height);
+    drawing.gradient({bounds.x, bounds.y + bounds.height - underside, bounds.width, underside},
+                     {20, 10, 6, 0}, {20, 10, 6, 155});
+    drawing.rect({bounds.x, bounds.y + bounds.height - scale.sy, bounds.width, scale.sy}, {17, 9, 5});
+}
+
+void reference_heading(Drawing& drawing, std::string_view value, UiRect bounds, float size,
+                       ReferenceCompositionScale scale) {
+    centered(drawing, value, bounds, size * scale.f, kUiBrass, TextFace::Serif, 3.0F * scale.sx);
+    const float half_gap = drawing.text_width(value, size * scale.f, TextFace::Serif) / 2.0F + 14.0F * scale.sx;
+    const float middle = bounds.x + bounds.width / 2.0F;
+    if (half_gap < bounds.width / 2.0F - 16.0F * scale.sx) {
+        const float y = bounds.y + bounds.height / 2.0F;
+        drawing.rect({bounds.x + 9.0F * scale.sx, y,
+                      middle - half_gap - bounds.x - 9.0F * scale.sx, scale.sy}, kMetalEdge);
+        drawing.rect({middle + half_gap, y,
+                      bounds.x + bounds.width - 9.0F * scale.sx - middle - half_gap, scale.sy}, kMetalEdge);
+    }
+}
+
+void reference_button(Drawing& drawing, const UiControlGeometry& geometry,
+                      std::string_view label, float size, ReferenceCompositionScale scale,
+                      bool selected = false, bool warning = false,
+                      TextFace face = TextFace::Sans, bool ivory = false) {
+    const auto& bounds = geometry.bounds;
+    if (!material_surface(bounds)) return;
+    const bool light = selected || ivory;
+    const UiColor cap = selected ? UiColor{238, 204, 145} : ivory ? kIvoryCap : UiColor{45, 41, 36};
+    drawing.rounded(bounds, 5.0F * scale.f, {5, 5, 5});
+    drawing.rounded(reference_inset(bounds, 1.0F, scale), 4.0F * scale.f,
+                    selected ? UiColor{137, 105, 62} : UiColor{77, 69, 56});
+    drawing.rounded(reference_inset(bounds, 2.0F, scale), 3.0F * scale.f, {18, 17, 15});
+    const float recess = selected ? scale.sy : 0.0F;
+    const UiRect cap_bounds{bounds.x + 4.0F * scale.sx, bounds.y + 3.0F * scale.sy + recess,
+                            bounds.width - 10.0F * scale.sx, bounds.height - 8.0F * scale.sy - recess};
+    drawing.rounded({cap_bounds.x + 2.0F * scale.sx, cap_bounds.y + 3.0F * scale.sy,
+                     cap_bounds.width, cap_bounds.height}, 3.0F * scale.f, {0, 0, 0, 210});
+    drawing.rounded(cap_bounds, 3.0F * scale.f, shade(cap, -35));
+    const float front = std::clamp(bounds.height / scale.sy * 0.12F, 3.0F, 5.0F) * scale.sy;
+    const UiRect surface{cap_bounds.x + scale.sx, cap_bounds.y + scale.sy,
+                         cap_bounds.width - 2.0F * scale.sx, cap_bounds.height - front - scale.sy};
+    const UiColor top = selected ? UiColor{254, 226, 173} : ivory ? UiColor{250, 237, 207} : shade(cap, 20);
+    const UiColor bottom = selected ? UiColor{225, 185, 115} : ivory ? UiColor{225, 204, 166} : shade(cap, -7);
+    drawing.gradient(surface, top, bottom);
+    drawing.gradient({surface.x, surface.y, surface.width, std::min(4.0F * scale.sy, surface.height * 0.12F)},
+                     light ? UiColor{255, 248, 225, 75} : UiColor{190, 174, 147, 42}, {255, 244, 219, 0});
+    drawing.rect({surface.x + scale.sx, surface.y, surface.width - 2.0F * scale.sx, scale.sy},
+                 light ? UiColor{255, 245, 218} : UiColor{122, 108, 88});
+    drawing.gradient({surface.x, surface.y + surface.height, surface.width, front},
+                     selected ? UiColor{197, 151, 86} : ivory ? UiColor{205, 180, 139} : shade(cap, -17),
+                     selected ? UiColor{153, 110, 56} : ivory ? UiColor{165, 135, 91} : shade(cap, -42));
+    drawing.rect({surface.x, surface.y + surface.height, surface.width, scale.sy},
+                 light ? shade(bottom, 14) : shade(cap, 14));
+    drawing.rect({surface.x, surface.y + scale.sy, scale.sx, surface.height - 2.0F * scale.sy},
+                 light ? UiColor{255, 246, 219, 175} : UiColor{120, 106, 86, 150});
+    drawing.rect({surface.x + surface.width - scale.sx, surface.y + scale.sy,
+                  scale.sx, surface.height + front - 2.0F * scale.sy},
+                 light ? UiColor{124, 98, 63, 180} : UiColor{11, 11, 10, 200});
+    centered(drawing, label, geometry.label_bounds, size * scale.f,
+             warning ? (light ? UiColor{112, 43, 24} : kRed) : light ? UiColor{35, 29, 21} : kUiIvory,
+             face, 3.0F * scale.sx);
+}
+
+void reference_drawbar(Drawing& drawing, const UiControlGeometry& geometry,
+                       std::uint8_t value, std::string_view label, UiColor cap,
+                       ReferenceCompositionScale scale) {
+    if (!material_surface(geometry.bounds) || !material_surface(geometry.track) || value > 8) return;
+    const bool mixture = geometry.id.kind == UiControlKind::PedalDrawbar;
+    const auto& track = geometry.track;
+    const float center = track.x + track.width / 2.0F;
+    const float cap_width = 34.0F * scale.sx;
+    const float cap_height = (mixture ? 22.0F : 32.0F) * scale.sy;
+    const float slot_width = 42.0F * scale.sx;
+    const UiRect slot{center - slot_width / 2.0F, track.y - cap_height / 2.0F,
+                      slot_width, track.height + cap_height};
+    const float position = track.y + track.height * static_cast<float>(value) / 8.0F;
+    const UiRect knob{center - cap_width / 2.0F, position - cap_height / 2.0F, cap_width, cap_height};
+    // The rail/cap travel owns the material envelope. Footage now has its own
+    // row below that envelope, so label-to-value arithmetic is not applicable.
+    const UiRect material_strip{geometry.bounds.x, slot.y, geometry.bounds.width, slot.height};
+    drawing.rounded(slot, 2.0F * scale.f, {5, 5, 5});
+    drawing.gradient({slot.x + scale.sx, slot.y + scale.sy, 3.0F * scale.sx,
+                      slot.height - 2.0F * scale.sy}, {47, 43, 36}, {22, 21, 18});
+    drawing.gradient({slot.x + slot.width - 3.0F * scale.sx, slot.y + scale.sy,
+                      2.0F * scale.sx, slot.height - 2.0F * scale.sy}, {27, 26, 23}, {13, 14, 12});
+    drawing.gradient({slot.x + scale.sx, slot.y + scale.sy, slot.width - 2.0F * scale.sx,
+                      std::min(6.0F * scale.sy, slot.height / 4.0F)}, {0, 0, 0, 135}, {0, 0, 0, 0});
+    drawing.rect({slot.x, slot.y + scale.sy, scale.sx, slot.height - 2.0F * scale.sy}, {63, 58, 49});
+    drawing.rect({slot.x + slot.width - scale.sx, slot.y, scale.sx, slot.height}, {36, 34, 30});
+    for (int tick = 0; tick <= 8; ++tick) {
+        const float y = track.y + track.height * static_cast<float>(tick) / 8.0F;
+        drawing.rect({slot.x + scale.sx, y, 2.0F * scale.sx, scale.sy}, {103, 94, 72});
+    }
+    const float shaft_left = center - 4.5F * scale.sx;
+    const float exposed_height = std::max(0.0F, knob.y - track.y);
+    drawing.gradient({shaft_left, track.y, 9.0F * scale.sx, track.height}, {37, 36, 31}, {20, 22, 19});
+    if (exposed_height > 0.0F) {
+        drawing.gradient({shaft_left, track.y, 9.0F * scale.sx, exposed_height}, {70, 65, 54}, {43, 41, 34});
+        drawing.rect({shaft_left, track.y, scale.sx, exposed_height}, {174, 158, 129, 170});
+        drawing.rect({shaft_left + 8.0F * scale.sx, track.y, scale.sx, exposed_height}, {15, 16, 14});
+    }
+    const float left = std::max(knob.x - scale.sx, material_strip.x);
+    const float top = std::max(knob.y + 3.0F * scale.sy, material_strip.y);
+    const float right = std::min(knob.x + knob.width + 2.0F * scale.sx, material_strip.x + material_strip.width);
+    const float bottom = std::min(knob.y + knob.height + 4.0F * scale.sy, material_strip.y + material_strip.height);
+    drawing.rounded({left, top, right - left, bottom - top}, 3.0F * scale.f, {0, 0, 0, 210});
+    drawing.rounded(knob, 3.0F * scale.f, shade(cap, -38));
+    const bool ivory = cap.red == kIvoryCap.red && cap.green == kIvoryCap.green && cap.blue == kIvoryCap.blue;
+    const float front = (mixture ? 6.0F : 8.0F) * scale.sy;
+    const UiRect surface{knob.x + scale.sx, knob.y + 2.0F * scale.sy,
+                         knob.width - 2.0F * scale.sx, knob.height - front - 3.0F * scale.sy};
+    drawing.gradient(surface, ivory ? UiColor{250, 237, 207} : shade(cap, 29),
+                     ivory ? UiColor{225, 204, 166} : shade(cap, -2));
+    drawing.gradient({surface.x, surface.y, surface.width, std::min(4.0F * scale.sy, surface.height * 0.12F)},
+                     ivory ? UiColor{255, 248, 225, 75} : UiColor{222, 197, 162, 40}, {255, 244, 219, 0});
+    drawing.gradient({surface.x, surface.y + surface.height, surface.width, front},
+                     ivory ? UiColor{205, 180, 139} : shade(cap, -13),
+                     ivory ? UiColor{165, 135, 91} : shade(cap, -34));
+    drawing.rect({surface.x, surface.y + scale.sy, scale.sx, surface.height - 2.0F * scale.sy},
+                 ivory ? UiColor{255, 246, 219} : shade(cap, 48));
+    drawing.rect({surface.x + surface.width - scale.sx, surface.y + scale.sy,
+                  scale.sx, surface.height + front - 2.0F * scale.sy},
+                 ivory ? UiColor{145, 118, 80} : shade(cap, -48));
+    drawing.rect({surface.x + 2.0F * scale.sx, surface.y, surface.width - 4.0F * scale.sx, scale.sy},
+                 ivory ? UiColor{255, 248, 224} : shade(cap, 65));
+    drawing.rect({surface.x + scale.sx, surface.y + surface.height,
+                  surface.width - 2.0F * scale.sx, scale.sy},
+                 ivory ? UiColor{244, 224, 186} : shade(cap, 34));
+    centered(drawing, label, geometry.label_bounds, (mixture ? 11.0F : 19.0F) * scale.f,
+             kUiIvory, mixture ? TextFace::Sans : TextFace::Serif, 2.0F * scale.sx);
+    centered(drawing, std::to_string(value), geometry.value_bounds, (mixture ? 13.0F : 12.0F) * scale.f,
+             kUiBrass, TextFace::Sans, 3.0F * scale.sx);
+}
+
+[[nodiscard]] UiQuad reference_inset_quad(const UiQuad& shape, float amount,
+                                         ReferenceCompositionScale scale) noexcept {
+    const float height = shape.points[3].y - shape.points[0].y;
+    const float y = amount * scale.sy;
+    if (!(height > 2.0F * y)) return {};
+    return quad_band(shape, y / height, 1.0F - y / height, amount * scale.sx);
+}
+
+void reference_quad_outline(Drawing& drawing, const UiQuad& shape, UiColor color,
+                            float thickness, ReferenceCompositionScale scale) {
+    if (!shape.contains(shape.points[0])) return;
+    const auto& points = shape.points;
+    const float height = points[3].y - points[0].y;
+    const float x = std::min(thickness * scale.sx,
+        std::min(points[1].x - points[0].x, points[2].x - points[3].x) / 2.0F);
+    const float y = std::min(thickness * scale.sy, height / 2.0F);
+    drawing.quad(quad_band(shape, 0.0F, y / height), color, color);
+    drawing.quad(quad_band(shape, 1.0F - y / height, 1.0F), color, color);
+    if (2.0F * y >= height) return;
+    const auto middle = quad_band(shape, y / height, 1.0F - y / height);
+    const auto& p = middle.points;
+    drawing.quad(UiQuad{{p[0], UiPoint{p[0].x + x, p[0].y}, UiPoint{p[3].x + x, p[3].y}, p[3]}}, color, color);
+    drawing.quad(UiQuad{{UiPoint{p[1].x - x, p[1].y}, p[1], p[2], UiPoint{p[2].x - x, p[2].y}}}, color, color);
+}
+
+[[nodiscard]] UiQuad reference_idle_key_side(const UiQuad& shape, bool left,
+                                            ReferenceCompositionScale scale) noexcept {
+    const auto& points = shape.points;
+    const float height = points[3].y - points[0].y;
+    if (!(height > 0.0F)) return {};
+    const std::size_t top = left ? 0U : 1U;
+    const std::size_t bottom = left ? 3U : 2U;
+    // Measure the normal in canonical space before applying the x metric.
+    const float offset = std::hypot(1.0F,
+        (points[bottom].x - points[top].x) / scale.sx / (height / scale.sy)) * scale.sx;
+    const auto edge = [&](std::size_t first, std::size_t last, float fraction) {
+        return points[first].x + (points[last].x - points[first].x) * fraction;
+    };
+    constexpr float start = 0.08F;
+    constexpr float finish = 0.88F;
+    if (edge(1, 2, start) - edge(0, 3, start) <= 3.0F * offset ||
+        edge(1, 2, finish) - edge(0, 3, finish) <= 3.0F * offset) return {};
+    const auto point = [&](float fraction, float distance) {
+        return UiPoint{edge(top, bottom, fraction) + (left ? distance : -distance) * offset,
+                       points[0].y + height * fraction};
+    };
+    return left ? UiQuad{{point(start, 1.0F), point(start, 2.0F), point(finish, 2.0F), point(finish, 1.0F)}} :
+                  UiQuad{{point(start, 2.0F), point(start, 1.0F), point(finish, 1.0F), point(finish, 2.0F)}};
+}
+
+void reference_key(Drawing& drawing, const UiKeyGeometry& key, bool held, bool focused,
+                   bool manual, ReferenceCompositionScale scale) {
+    if (!material_surface(key.bounds)) return;
+    if (key.accidental) {
+        drawing.quad(key.top, held ? UiColor{150, 124, 77} : UiColor{40, 39, 35},
+                     held ? UiColor{96, 77, 43} : UiColor{10, 12, 10});
+        drawing.quad(reference_inset_quad(key.top, 1.4F, scale),
+                     held ? UiColor{166, 138, 88} : UiColor{61, 58, 52},
+                     held ? UiColor{104, 84, 48} : UiColor{20, 22, 19});
+        drawing.quad(key.front, held ? UiColor{95, 75, 40} : UiColor{41, 39, 32},
+                     held ? UiColor{55, 42, 24} : UiColor{9, 11, 9});
+        reference_quad_outline(drawing, key.hit, {5, 6, 5}, 0.8F, scale);
+        reference_quad_outline(drawing, reference_inset_quad(key.top, 1.2F, scale),
+            held ? UiColor{185, 151, 92, 170} : UiColor{127, 115, 91, 130}, 0.65F, scale);
+        drawing.quad(quad_band(key.front, 0.0F, 0.12F, scale.sx), {155, 139, 106, 145}, {155, 139, 106, 70});
+    } else {
+        drawing.quad(key.top, held ? UiColor{209, 181, 122} : UiColor{226, 211, 181},
+                     held ? UiColor{244, 213, 149} : UiColor{255, 244, 220});
+        drawing.quad(key.front, held ? UiColor{190, 157, 96} : UiColor{198, 168, 124},
+                     held ? UiColor{145, 115, 62} : UiColor{131, 96, 62});
+        reference_quad_outline(drawing, key.hit, {83, 65, 42}, 0.7F, scale);
+        const float front_depth = key.front.points[3].y - key.front.points[0].y;
+        const float highlight = front_depth > 0.0F ? std::min(0.13F, 2.0F * scale.sy / front_depth) : 0.0F;
+        drawing.quad(quad_band(key.front, 0.0F, highlight, 0.9F * scale.sx),
+                     {255, 245, 217, 220}, {255, 245, 217, 60});
+        const float top_depth = key.top.points[3].y - key.top.points[0].y;
+        const float recess = top_depth > 0.0F ? std::min(0.12F, 18.0F * scale.sy / top_depth) : 0.0F;
+        const bool refined = manual && !held;
+        drawing.quad(quad_band(key.top, 0.0F, recess, 0.8F * scale.sx),
+                     {20, 17, 13, static_cast<std::uint8_t>(refined ? 70 : 90)}, {20, 17, 13, 0});
+        if (refined) {
+            drawing.quad(reference_idle_key_side(key.top, true, scale), {255, 245, 219, 75}, {255, 245, 219, 28});
+            drawing.quad(reference_idle_key_side(key.top, false, scale), {36, 26, 17, 40}, {36, 26, 17, 16});
+        }
+    }
+    if (held) drawing.quad(quad_band(key.top, 0.91F, 0.96F, 2.0F * scale.sx), kUiBrass, kUiBrass);
+    if (focused) reference_quad_outline(drawing, reference_inset_quad(key.hit, 2.0F, scale),
+                                        kUiFocusCyan, 2.0F, scale);
+}
+
+[[nodiscard]] UiRect reference_preset_indicator(const UiControlGeometry& geometry,
+                                               float amount, ReferenceCompositionScale scale) noexcept {
+    if (preset_accidental(geometry.id.index)) return reference_inset(geometry.bounds, amount, scale);
+    const auto& bounds = geometry.bounds;
+    return reference_inset({bounds.x, bounds.y + bounds.height * 0.62F,
+                            bounds.width, bounds.height * 0.38F}, amount, scale);
+}
+
+void reference_preset_label(Drawing& drawing, const UiControlGeometry& geometry,
+                            ReferenceCompositionScale scale) {
+    const auto label = preset_selection_label(static_cast<PresetSelection>(geometry.id.index));
+    const auto& bounds = geometry.label_bounds;
+    if (preset_accidental(geometry.id.index)) {
+        centered(drawing, label.substr(0, 1), {bounds.x, bounds.y, bounds.width, 11.0F * scale.sy},
+                 9.0F * scale.f, {37, 29, 20}, TextFace::Sans, 0.0F);
+        centered(drawing, label.substr(1), {bounds.x, bounds.y + 9.0F * scale.sy, bounds.width, 11.0F * scale.sy},
+                 9.0F * scale.f, {37, 29, 20}, TextFace::Sans, 0.0F);
+    } else {
+        centered(drawing, label, bounds, 9.0F * scale.f, kUiIvory, TextFace::Sans, 0.0F);
+    }
+}
+
+void reference_preset_key(Drawing& drawing, const UiControlGeometry& geometry,
+                          bool selected, ReferenceCompositionScale scale) {
+    const auto& bounds = geometry.bounds;
+    const bool ivory = preset_accidental(geometry.id.index);
+    selected = selected && geometry.id.index != 0;
+    const float recess = selected ? 2.0F * scale.sy : 0.0F;
+    const float front = std::clamp(bounds.height / scale.sy * 0.16F, 6.0F, 12.0F) * scale.sy;
+    drawing.rect(bounds, {5, 5, 5});
+    const UiRect surface{bounds.x + scale.sx, bounds.y + recess,
+                         bounds.width - 2.0F * scale.sx, bounds.height - front - recess};
+    drawing.gradient(surface, ivory ? UiColor{254, 238, 204} : UiColor{49, 46, 41},
+                     ivory ? UiColor{225, 204, 168} : UiColor{20, 20, 19});
+    drawing.rect({surface.x, surface.y + scale.sy, scale.sx, surface.height - 2.0F * scale.sy},
+                 ivory ? UiColor{255, 247, 222} : UiColor{101, 92, 75});
+    drawing.rect({bounds.x + bounds.width - 2.0F * scale.sx, surface.y + scale.sy,
+                  scale.sx, bounds.height - recess - 3.0F * scale.sy},
+                 ivory ? UiColor{155, 130, 93} : UiColor{9, 9, 9});
+    drawing.gradient({surface.x, bounds.y + bounds.height - front, surface.width, front - scale.sy},
+                     ivory ? UiColor{209, 183, 141} : UiColor{39, 36, 31},
+                     ivory ? UiColor{148, 119, 78} : UiColor{12, 12, 11});
+    drawing.rect({surface.x, bounds.y + bounds.height - front, surface.width, scale.sy},
+                 ivory ? UiColor{251, 230, 191} : UiColor{79, 69, 52});
+    drawing.gradient({surface.x, surface.y, surface.width, 4.0F * scale.sy}, {0, 0, 0, 105}, {0, 0, 0, 0});
+    if (selected) drawing.rect({surface.x + scale.sx, surface.y + 3.0F * scale.sy,
+                               std::max(scale.sx, surface.width - 2.0F * scale.sx), 2.0F * scale.sy}, kUiBrass);
+    reference_preset_label(drawing, geometry, scale);
+}
+
+void reference_preset_focus(Drawing& drawing, const UiControlGeometry& geometry,
+                            ReferenceCompositionScale scale) {
+    const auto bounds = reference_preset_indicator(geometry, 2.0F, scale);
+    if (!preset_accidental(geometry.id.index)) {
+        const auto open_frame = [&](UiRect frame, float stroke, UiColor color) {
+            drawing.rect({frame.x, frame.y, frame.width, stroke * scale.sy}, color);
+            drawing.rect({frame.x, frame.y, stroke * scale.sx, frame.height}, color);
+            drawing.rect({frame.x + frame.width - stroke * scale.sx, frame.y,
+                          stroke * scale.sx, frame.height}, color);
+        };
+        open_frame(bounds, 3.0F, {5, 6, 6});
+        open_frame(reference_inset(bounds, 1.0F, scale), 1.0F, kUiFocusCyan);
+        return;
+    }
+    const auto paint = [&] {
+        reference_outline(drawing, bounds, {5, 6, 6}, 3.0F, scale);
+        reference_outline(drawing, reference_inset(bounds, 1.0F, scale), kUiFocusCyan, 1.0F, scale);
+    };
+    // Preserve the original glyph pixels, and intersect the opening with the
+    // caller's physical clip before restoring its exact logical/physical state.
+    const int left = static_cast<int>(std::floor(geometry.bounds.x));
+    const int top = static_cast<int>(std::floor(geometry.bounds.y));
+    SDL_Rect focus_clip{left, top,
+        static_cast<int>(std::ceil(geometry.bounds.x + geometry.bounds.width)) - left,
+        static_cast<int>(std::floor(geometry.label_bounds.y)) - top};
+    auto* renderer = drawing.renderer();
+    const bool clipped = SDL_RenderIsClipEnabled(renderer) == SDL_TRUE;
+    SDL_Rect previous{};
+    SDL_RenderGetClipRect(renderer, &previous);
+    float scale_x = 1.0F;
+    float scale_y = 1.0F;
+    SDL_RenderGetScale(renderer, &scale_x, &scale_y);
+    SDL_RenderSetScale(renderer, 1.0F, 1.0F);
+    SDL_Rect previous_physical{};
+    SDL_RenderGetClipRect(renderer, &previous_physical);
+    SDL_RenderSetScale(renderer, scale_x, scale_y);
+    SDL_RenderSetClipRect(renderer, &focus_clip);
+    SDL_RenderSetScale(renderer, 1.0F, 1.0F);
+    SDL_RenderGetClipRect(renderer, &focus_clip);
+    const bool visible = !clipped || SDL_IntersectRect(&focus_clip, &previous_physical, &focus_clip) == SDL_TRUE;
+    SDL_RenderSetClipRect(renderer, &focus_clip);
+    SDL_RenderSetScale(renderer, scale_x, scale_y);
+    if (visible) paint();
+    SDL_RenderSetClipRect(renderer, clipped ? &previous : nullptr);
+    SDL_RenderSetScale(renderer, 1.0F, 1.0F);
+    SDL_Rect restored{};
+    SDL_RenderGetClipRect(renderer, &restored);
+    if (clipped && SDL_RectEquals(&restored, &previous_physical) == SDL_FALSE)
+        SDL_RenderSetClipRect(renderer, &previous_physical);
+    SDL_RenderSetScale(renderer, scale_x, scale_y);
+}
+
+void reference_presets(Drawing& drawing, const UiModel& model, ReferenceCompositionScale scale) {
+    const auto& view = model.view();
+    const auto& layout = model.layout();
+    std::array<PresetSelection, kManualCount> applied{};
+    std::array<bool, kManualCount> valid{};
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        valid[manual] = control_preset_selection(view.applied.controls, static_cast<Manual>(manual), applied[manual]);
+        const auto& bounds = layout.preset_key_panels[manual];
+        drawing.rect({bounds.x - scale.sx, bounds.y - 3.0F * scale.sy,
+                      bounds.width + 2.0F * scale.sx, bounds.height + 4.0F * scale.sy}, {4, 4, 4});
+    }
+    for (const bool accidental : {false, true}) {
+        for (std::size_t index = 0; index < layout.control_count; ++index) {
+            const auto& geometry = layout.controls[index];
+            if (!ui_control_visible(layout, geometry.id) || geometry.id.kind != UiControlKind::PresetKey ||
+                preset_accidental(geometry.id.index) != accidental) continue;
+            const auto manual = manual_index(geometry.id.manual);
+            const bool selected = valid[manual] && applied[manual] != PresetSelection::Cancel &&
+                static_cast<std::uint8_t>(applied[manual]) == geometry.id.index;
+            reference_preset_key(drawing, geometry, selected, scale);
+        }
+    }
+    for (std::size_t index = 0; index < layout.control_count; ++index) {
+        const auto& geometry = layout.controls[index];
+        if (!ui_control_visible(layout, geometry.id) || geometry.id.kind != UiControlKind::PresetKey) continue;
+        PresetSelection desired{};
+        if (pending_preset(view, geometry.id.manual, desired) && static_cast<std::uint8_t>(desired) == geometry.id.index)
+            reference_outline(drawing, reference_preset_indicator(geometry, 1.0F, scale), kPresetPending, 1.0F, scale);
+    }
+    for (std::size_t index = 0; index < layout.control_count; ++index) {
+        const auto& geometry = layout.controls[index];
+        if (ui_control_visible(layout, geometry.id) && geometry.id.kind == UiControlKind::PresetKey && geometry.id == view.focus)
+            reference_preset_focus(drawing, geometry, scale);
+    }
+}
+
+void reference_controls(Drawing& drawing, const UiModel& model, ReferenceCompositionScale scale) {
+    const auto& view = model.view();
+    const auto& layout = model.layout();
+    const std::array<UiColor, 9> caps{kBrownCap, kBrownCap, kIvoryCap, kIvoryCap, kBlackCap,
+                                     kIvoryCap, kBlackCap, kBlackCap, kIvoryCap};
+    for (std::size_t index = 0; index < layout.control_count; ++index) {
+        const auto& geometry = layout.controls[index];
+        const auto& id = geometry.id;
+        if (!ui_control_visible(layout, id) || id.kind == UiControlKind::PresetKey ||
+            id.kind == UiControlKind::SoundingBank || id.kind == UiControlKind::CancelManual) continue;
+        const auto manual = manual_index(id.manual);
+        bool selected = false;
+        if (id.kind == UiControlKind::ManualDrawbar) {
+            reference_drawbar(drawing, geometry, view.controls.drawbars[manual][static_cast<std::size_t>(id.bank)][id.index],
+                              kUiFootageLabels[id.index], caps[id.index], scale);
+        } else if (id.kind == UiControlKind::PedalDrawbar) {
+            reference_drawbar(drawing, geometry, view.controls.pedal_drawbars[id.index],
+                              id.index == 0 ? "MIX 1" : "MIX 2", kBrownCap, scale);
+        } else if (id.kind == UiControlKind::Expression) {
+            centered(drawing, "NOMINAL EXPRESSION", geometry.label_bounds, 10.5F * scale.f,
+                     kUiIvory, TextFace::Sans, 3.0F * scale.sx);
+            const auto& track = geometry.track;
+            drawing.rounded({track.x - 3.0F * scale.sx, track.y - 5.0F * scale.sy,
+                             track.width + 6.0F * scale.sx, 10.0F * scale.sy}, 3.0F * scale.f, {8, 9, 8});
+            drawing.rect({track.x, track.y + 3.0F * scale.sy, track.width, scale.sy}, kMetalEdge);
+            const float x = track.x + static_cast<float>(view.controls.expression) * track.width;
+            drawing.rect({track.x, track.y - scale.sy, x - track.x, 2.0F * scale.sy}, kUiBrass);
+            drawing.rounded({x - 7.0F * scale.sx, track.y - 11.0F * scale.sy,
+                             14.0F * scale.sx, 22.0F * scale.sy}, 3.0F * scale.f, {30, 26, 18});
+            drawing.gradient({x - 5.0F * scale.sx, track.y - 9.0F * scale.sy,
+                              10.0F * scale.sx, 17.0F * scale.sy}, {220, 193, 140}, {122, 97, 55});
+            drawing.rect({x - 3.0F * scale.sx, track.y - 7.0F * scale.sy,
+                          6.0F * scale.sx, scale.sy}, kUiIvory);
+            centered(drawing, std::to_string(static_cast<int>(std::round(view.controls.expression * 100.0))) + "%",
+                     geometry.value_bounds, 11.5F * scale.f, kUiBrass, TextFace::Sans, 3.0F * scale.sx);
+        } else if (id.kind == UiControlKind::Percussion) {
+            const auto& settings = view.controls.percussion;
+            constexpr std::array<std::string_view, 4> titles{"PERC", "HARM", "VOL", "DECAY"};
+            std::string_view value;
+            switch (id.index) {
+            case 0: value = settings.enabled ? "ON" : "OFF"; selected = settings.enabled; break;
+            case 1: value = settings.harmonic == PercussionHarmonic::Second ? "2ND" : "3RD"; break;
+            case 2: value = settings.volume == PercussionVolume::Normal ? "NORM" : "SOFT"; break;
+            default: value = settings.decay == PercussionDecay::Slow ? "SLOW" : "FAST"; break;
+            }
+            reference_button(drawing, geometry, {}, 20.0F, scale, selected, false, TextFace::Serif, true);
+            centered(drawing, titles[id.index], geometry.label_bounds, 13.5F * scale.f,
+                     kUiIvory, TextFace::Serif, 3.0F * scale.sx);
+            centered(drawing, value, geometry.value_bounds, 20.0F * scale.f,
+                     {33, 28, 21}, TextFace::Serif, 3.0F * scale.sx);
+        } else {
+            if (id.kind == UiControlKind::EditBank) selected = view.edited_banks[manual] == id.bank;
+            if (id.kind == UiControlKind::KeyboardTarget) selected = static_cast<std::uint8_t>(view.keyboard_target) == id.index;
+            if (id.kind == UiControlKind::Workspace) selected = static_cast<std::uint8_t>(view.workspace) == id.index;
+            const bool header = header_button(id.kind);
+            const float size = id.kind == UiControlKind::Workspace ? 18.0F : header ? 11.5F : 12.0F;
+            reference_button(drawing, geometry, button_label(id), size, scale, selected,
+                              id.kind == UiControlKind::Panic, header ? TextFace::Serif : TextFace::Sans);
+        }
+        if (view.focus == id) reference_outline(drawing, geometry.bounds, kUiFocusCyan, 2.0F, scale);
+    }
+    reference_presets(drawing, model, scale);
+}
+
+void reference_header(Drawing& drawing, const UiLayout& layout, ReferenceCompositionScale scale) {
+    reference_panel(drawing, layout.header, scale, false);
+    float title_left = layout.header.x;
+    float title_right = layout.header.x + layout.header.width;
+    float flat_left = title_right;
+    for (std::size_t index = 0; index < layout.control_count; ++index) {
+        const auto& control = layout.controls[index];
+        if (!ui_control_visible(layout, control.id)) continue;
+        if (control.id.kind == UiControlKind::Workspace && control.id.index == 2)
+            title_left = control.bounds.x + control.bounds.width + 12.0F * scale.sx;
+        if (control.id.kind == UiControlKind::SaveControls) title_right = control.bounds.x - 12.0F * scale.sx;
+        if (control.id.kind == UiControlKind::Presentation) flat_left = control.bounds.x;
+    }
+    const float middle = 836.0F * scale.sx;
+    const float half_width = std::max(0.0F, std::min(middle - title_left, title_right - middle));
+    title_left = middle - half_width;
+    title_right = middle + half_width;
+    constexpr std::string_view title = "TONEWHEEL ATLAS";
+    float size = 42.75F * scale.f;
+    const float natural_width = drawing.text_width(title, size, TextFace::Serif);
+    if (natural_width > title_right - title_left) size *= (title_right - title_left) / natural_width;
+    const float width = drawing.text_width(title, size, TextFace::Serif);
+    const float x = std::clamp(middle - width / 2.0F, title_left, std::max(title_left, title_right - width));
+    const float y = 11.5F * scale.sy;
+    drawing.text(title, x + scale.sx, y + 2.0F * scale.sy, size, {4, 5, 4}, TextFace::Serif);
+    drawing.text(title, x, y, size, kUiBrass, TextFace::Serif);
+    drawing.rect(reference_composition_rect({528.0F, 40.0F, 50.0F, 1.0F}, scale), kMetalEdge);
+    drawing.rect(reference_composition_rect({1094.0F, 40.0F, 108.0F, 1.0F}, scale), kMetalEdge);
+    constexpr std::string_view caption = "NOMINAL DRY ORGAN";
+    constexpr float gaps = static_cast<float>(caption.size() - 1);
+    const float caption_half_width = std::max(0.0F, std::min(middle - title_left,
+        std::min(title_right, flat_left - 10.0F * scale.sx) - middle));
+    const float caption_width = std::min(374.0F * scale.sx, 2.0F * caption_half_width);
+    float caption_size = 17.0F * scale.f;
+    float natural_caption_width = drawing.text_width(caption, caption_size);
+    const float tracking = std::max(0.0F, (caption_width - natural_caption_width) / gaps);
+    if (natural_caption_width > caption_width) {
+        caption_size *= caption_width / natural_caption_width;
+        natural_caption_width = drawing.text_width(caption, caption_size);
+    }
+    float cursor = middle - (natural_caption_width + gaps * tracking) / 2.0F;
+    for (std::size_t index = 0; index < caption.size(); ++index) {
+        const auto glyph = caption.substr(index, 1);
+        drawing.text(glyph, cursor, 67.5F * scale.sy, caption_size, kUiBrass);
+        cursor += drawing.text_width(glyph, caption_size) + tracking;
+    }
+}
+
+void reference_cabinet(Drawing& drawing, const UiLayout& layout,
+                       const InstrumentViewInfo& info, ReferenceCompositionScale scale) {
+    reference_panel(drawing, layout.cabinet_panel, scale);
+    reference_heading(drawing, "ROTARY CABINET",
+        reference_composition_rect({1143.0F, 131.0F, 444.0F, 31.0F}, scale), 16.0F, scale);
+    const auto& art = layout.cabinet_art;
+    drawing.rect({art.x - 3.0F * scale.sx, art.y - 3.0F * scale.sy,
+                  art.width + 6.0F * scale.sx, art.height + 6.0F * scale.sy}, {8, 9, 8});
+    if (!drawing.reference_art(ReferenceArt::Cabinet, art)) {
+        drawing.gradient(art, {34, 25, 18}, {12, 13, 11});
+        const float art_scale = art.width / 466.0F;
+        const UiRect box{art.x + art.width * 0.2F, art.y + art.height * 0.13F,
+                         art.width * 0.6F, art.height * 0.73F};
+        reference_wood(drawing, box, {art_scale, art_scale, art_scale});
+        for (int slot = 0; slot < 5; ++slot)
+            drawing.rect({box.x + box.width * 0.08F,
+                          box.y + (12.0F + static_cast<float>(slot) * 10.0F) * art_scale,
+                          box.width * 0.84F, 4.0F * art_scale}, {14, 10, 7});
+        centered(drawing, "DECORATIVE ART UNAVAILABLE",
+                 {art.x + 8.0F * art_scale, art.y + art.height - 28.0F * art_scale,
+                  art.width - 16.0F * art_scale, 20.0F * art_scale},
+                 10.0F * scale.f, kMuted, TextFace::Sans, 3.0F * scale.sx);
+    }
+    drawing.rect({art.x - 2.0F * scale.sx, art.y - 3.0F * scale.sy,
+                  art.width + 4.0F * scale.sx, scale.sy}, {132, 112, 82, 170});
+    drawing.rect({art.x - 3.0F * scale.sx, art.y - 2.0F * scale.sy,
+                  scale.sx, art.height + 4.0F * scale.sy}, {95, 81, 61, 130});
+    centered(drawing, "ROTARY AUDIO NOT CONNECTED",
+             reference_composition_rect({1144.0F, 584.0F, 442.0F, 17.0F}, scale),
+             12.0F * scale.f, kMuted, TextFace::Sans, 3.0F * scale.sx);
+    drawing.rect(reference_composition_rect({1144.0F, 691.0F, 442.0F, 54.0F}, scale), {19, 21, 18});
+    const std::string audio = std::string(info.audio_running ? "AUDIO RUNNING / " : "AUDIO STOPPED / ") + audio_configuration(info);
+    text_line(drawing, audio, reference_composition_rect({1144.0F, 692.0F, 442.0F, 15.0F}, scale),
+              12.0F * scale.f, info.audio_running ? kGreen : kRed);
+    text_line(drawing, midi_state(info), reference_composition_rect({1144.0F, 710.0F, 442.0F, 15.0F}, scale),
+              12.0F * scale.f, info.midi_open ? kGreen : kMuted);
+    text_line(drawing, "SCANNER / CHORUS: NOT CONNECTED",
+              reference_composition_rect({1144.0F, 728.0F, 442.0F, 15.0F}, scale), 12.0F * scale.f, kMuted);
+}
+
+void reference_footer(Drawing& drawing, const UiModel& model, const InstrumentViewInfo& info,
+                      ReferenceCompositionScale scale) {
+    const auto& footer = model.layout().footer;
+    const auto& view = model.view();
+    drawing.gradient(footer, {27, 26, 24}, {16, 16, 16});
+    drawing.rect({footer.x, footer.y, footer.width, scale.sy}, kMetalEdge);
+    drawing.rounded({footer.x + 6.0F * scale.sx, footer.y + 8.0F * scale.sy,
+                     6.0F * scale.sx, 6.0F * scale.sy}, 3.0F * scale.f, info.audio_running ? kGreen : kRed);
+    std::string audio = info.audio_running ? "AUDIO RUNNING" : "AUDIO STOPPED";
+    if (info.sample_rate != 0) audio += "  " + audio_configuration(info);
+    audio += "  /  " + midi_state(info);
+    const float meter_width = 84.0F * scale.sx;
+    const float meter_x = footer.x + footer.width - meter_width - 12.0F * scale.sx;
+    text_line(drawing, audio, {footer.x + 20.0F * scale.sx, footer.y + 4.0F * scale.sy,
+              footer.width - 220.0F * scale.sx, 15.0F * scale.sy}, 10.0F * scale.f, kUiIvory);
+    if (view.controls_dirty)
+        drawing.text("UNSAVED", meter_x - 67.0F * scale.sx, footer.y + 4.0F * scale.sy, 9.0F * scale.f, kUiBrass);
+    drawing.rect({meter_x, footer.y + 7.0F * scale.sy, meter_width, 5.0F * scale.sy}, {49, 50, 42});
+    drawing.rect({meter_x, footer.y + 7.0F * scale.sy,
+                  meter_width * std::clamp(view.applied.peak, 0.0F, 1.0F), 5.0F * scale.sy},
+                 info.clipped_samples > 0 ? kRed : kGreen);
+    std::string status;
+    bool preset_request = false;
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        PresetSelection desired{};
+        if (!pending_preset(view, static_cast<Manual>(manual), desired)) continue;
+        if (!status.empty()) status += " / ";
+        status += manual == 0 ? "PRESET UPPER " : "PRESET LOWER ";
+        status += preset_selection_label(desired);
+        status += " PENDING";
+        preset_request = true;
+    }
+    if (view.input_recovery || view.last_submit_status != SessionStatus::Ok) {
+        status = info.status_message.empty() ?
+            "Input recovered. Release held keys before playing again." : std::string(info.status_message);
+    } else if (!preset_request && view.focus.kind == UiControlKind::PresetKey) {
+        const auto selection = static_cast<PresetSelection>(view.focus.index);
+        status = view.focus.manual == Manual::Upper ? "Upper preset " : "Lower preset ";
+        status += preset_selection_label(selection);
+        status += selection == PresetSelection::Cancel ? ": Cancel manual route" :
+            selection == PresetSelection::BankA ? ": adjustable bank A" :
+            selection == PresetSelection::BankB ? ": adjustable bank B" : ": fixed registration";
+        status += " / " + registration_caption(view, view.focus.manual);
+        if (!info.status_message.empty()) status += " / " + std::string(info.status_message);
+    } else if (!preset_request && !focused_control_caption(model).empty()) {
+        status = focused_control_caption(model);
+        if (view.controls_pending) status += " / CONTROLS PENDING";
+        if (!info.status_message.empty()) status += " / " + std::string(info.status_message);
+    } else if (!preset_request && !info.status_message.empty()) status = info.status_message;
+    else if (!preset_request && view.controls_pending) status = "Applying controls...";
+    else if (!preset_request) status = "A W S E D F T G Y H U J K O L P ; play / F1-F3 target / F4-F6 workspace / F7 Flat / [ ] octave";
+    text_line(drawing, status, {footer.x + 20.0F * scale.sx, footer.y + 21.0F * scale.sy,
+              footer.width - 32.0F * scale.sx, 14.0F * scale.sy},
+              10.5F * scale.f, preset_request ? kPresetPending : kMuted);
+}
+
+void paint_reference_composition(Drawing& drawing, const UiModel& model, const InstrumentViewInfo& info) {
+    const auto& layout = model.layout();
+    const auto& view = model.view();
+    const auto scale = reference_composition_scale(layout);
+    const auto mapped = [scale](UiRect bounds) { return reference_composition_rect(bounds, scale); };
+    drawing.clear(kUiWalnut);
+    reference_wood(drawing, {0.0F, 0.0F, layout.width, layout.height}, scale);
+    const float margin = layout.header.x;
+    (void)drawing.reference_art(ReferenceArt::LeftWoodCheek, {0.0F, 0.0F, margin, layout.height});
+    (void)drawing.reference_art(ReferenceArt::RightWoodCheek,
+        {layout.width - margin, 0.0F, margin, layout.height});
+    drawing.rounded(mapped({65.0F, 8.0F, 1542.0F, 917.0F}), 9.0F * scale.f, {10, 11, 9});
+    drawing.rect(mapped({68.0F, 17.0F, 1.0F, 901.0F}), {143, 89, 48, 160});
+    drawing.rect(mapped({1603.0F, 17.0F, 1.0F, 901.0F}), {143, 89, 48, 160});
+    reference_wood(drawing, mapped({16.0F, 887.0F, 1640.0F, 54.0F}), scale);
+    reference_wood(drawing, mapped({48.0F, 510.0F, 1074.0F, 18.0F}), scale);
+    reference_header(drawing, layout, scale);
+    reference_panel(drawing, layout.performance_panel, scale);
+    for (const auto& rack : layout.registration_panels) reference_panel(drawing, rack, scale);
+    // The cabinet is a parent of the moved toolbar and pedals. Finish its art
+    // and truth rows now, before painting any nested live surfaces or focus.
+    reference_cabinet(drawing, layout, info, scale);
+    drawing.rect(mapped({556.0F, 137.0F, 1.0F, 115.0F}), kMetalEdge);
+    reference_heading(drawing, "PERCUSSION", mapped({90.0F, 136.0F, 448.0F, 26.0F}), 15.0F, scale);
+    reference_heading(drawing, "NOMINAL EXPRESSION / PEDAL MIXTURES",
+                      mapped({578.0F, 136.0F, 514.0F, 26.0F}), 14.0F, scale);
+    const bool eligible = view.applied.controls.route_enabled[0] &&
+        view.applied.controls.fixed_registrations[0] == FixedRegistration::None &&
+        view.applied.controls.selected_banks[0] == DrawbarBank::B;
+    centered(drawing, eligible ? "UPPER B ROUTE ACTIVE" : "REQUIRES UPPER B",
+             mapped({90.0F, 248.0F, 448.0F, 14.0F}), 12.0F * scale.f,
+             eligible ? kGreen : kMuted, TextFace::Sans, 3.0F * scale.sx);
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        const auto& rack = layout.registration_panels[manual];
+        reference_heading(drawing, manual == 0 ? "UPPER MANUAL DRAWBARS" : "LOWER MANUAL DRAWBARS",
+            {rack.x + 16.0F * scale.sx, rack.y + 8.0F * scale.sy,
+             rack.width - 32.0F * scale.sx, 27.0F * scale.sy}, 16.0F, scale);
+        // Numbered guide follows the same stored track endpoints as the caps.
+        for (std::size_t index = 0; index < layout.control_count; ++index) {
+            const auto& control = layout.controls[index];
+            if (control.id.kind != UiControlKind::ManualDrawbar ||
+                manual_index(control.id.manual) != manual || control.id.index != 0) continue;
+            const float left = (manual == 0 ? 110.0F : 638.0F) * scale.sx;
+            for (int tick = 0; tick <= 8; ++tick) {
+                const float y = control.track.y + control.track.height * static_cast<float>(tick) / 8.0F;
+                centered(drawing, std::to_string(tick), {left, y - 7.0F * scale.sy, 15.0F * scale.sx, 14.0F * scale.sy},
+                         12.0F * scale.f, kUiIvory, TextFace::Sans, 0.0F);
+                drawing.rect({left + 17.0F * scale.sx, y,
+                              control.bounds.x - left - 20.0F * scale.sx, scale.sy}, kMetalEdge);
+            }
+            break;
+        }
+        const auto& cheek = layout.manual_rail_panels[manual];
+        reference_wood(drawing, cheek, scale);
+        drawing.rect(reference_inset(cheek, 5.0F, scale), {19, 18, 17});
+        drawing.rect({cheek.x + 6.0F * scale.sx, cheek.y + 5.0F * scale.sy,
+                      cheek.width - 12.0F * scale.sx, scale.sy}, {112, 87, 59});
+        centered(drawing, manual == 0 ? "UPPER / SWELL" : "LOWER / GREAT",
+                 {cheek.x + 8.0F * scale.sx, cheek.y + 3.0F * scale.sy,
+                  cheek.width - 16.0F * scale.sx, 17.0F * scale.sy},
+                 13.0F * scale.f, kUiBrass, TextFace::Serif, 3.0F * scale.sx);
+        const UiColor state_color = view.applied.controls.route_enabled[manual] ? kUiBrass : kMuted;
+        centered(drawing, view.edited_banks[manual] == DrawbarBank::A ? "EDIT BANK A" : "EDIT BANK B",
+                 {cheek.x + 8.0F * scale.sx, cheek.y + 20.0F * scale.sy,
+                  cheek.width - 16.0F * scale.sx, 14.0F * scale.sy},
+                 12.0F * scale.f, state_color, TextFace::Sans, 3.0F * scale.sx);
+        centered(drawing, sounding_caption(view, static_cast<Manual>(manual)),
+                 {cheek.x + 8.0F * scale.sx, cheek.y + 34.0F * scale.sy,
+                  cheek.width - 16.0F * scale.sx, 14.0F * scale.sy},
+                 12.0F * scale.f, state_color, TextFace::Sans, 3.0F * scale.sx);
+    }
+    for (std::size_t manual = 0; manual < kManualCount; ++manual) {
+        const auto& bounds = layout.manual_panels[manual];
+        reference_panel(drawing, bounds, scale, false);
+        drawing.rect({bounds.x + 6.0F * scale.sx, bounds.y + 20.0F * scale.sy,
+                      bounds.width - 12.0F * scale.sx, bounds.height - 26.0F * scale.sy}, {7, 9, 8});
+        centered(drawing, manual == 0 ? "UPPER MANUAL" : "LOWER MANUAL",
+                 {bounds.x + 12.0F * scale.sx, bounds.y + 3.0F * scale.sy,
+                  bounds.width - 24.0F * scale.sx, 16.0F * scale.sy},
+                 10.5F * scale.f, kUiBrass, TextFace::Sans, 3.0F * scale.sx);
+        for (const bool accidental : {false, true}) {
+            for (std::size_t index = 0; index < kManualKeyCount; ++index) {
+                const auto& key = layout.manual_keys[manual][index];
+                if (key.accidental != accidental) continue;
+                const bool focused = view.focus.kind == UiControlKind::ManualKey &&
+                    manual_index(view.focus.manual) == manual && view.focus.index == index;
+                reference_key(drawing, key, view.applied.held_keys[manual][index], focused, true, scale);
+            }
+        }
+    }
+    drawing.gradient(layout.keyboard_toolbar, {27, 26, 25}, {16, 16, 16});
+    const std::string octave = view.keyboard_target == UiTarget::Pedals ?
+        "COMPUTER KEYS / PEDAL OCTAVE " + std::to_string(view.pedal_octave) :
+        "COMPUTER KEYS / BASE C" + std::to_string(static_cast<int>(view.manual_base_midi) / 12 - 1);
+    text_line(drawing, octave, mapped({1340.0F, 654.0F, 240.0F, 14.0F}), 12.0F * scale.f, kMuted);
+    reference_panel(drawing, layout.pedal_panel, scale, false);
+    centered(drawing, "PEDALBOARD / 25 NOTES", mapped({1150.0F, 755.0F, 426.0F, 16.0F}),
+             12.0F * scale.f, kUiBrass, TextFace::Sans, 3.0F * scale.sx);
+    for (const bool accidental : {false, true}) {
+        for (std::size_t index = 0; index < kPedalCount; ++index) {
+            const auto& key = layout.pedal_keys[index];
+            if (key.accidental != accidental) continue;
+            reference_key(drawing, key, view.applied.held_pedals[index],
+                view.focus.kind == UiControlKind::PedalKey && view.focus.index == index, false, scale);
+        }
+    }
+    reference_controls(drawing, model, scale);
+    reference_footer(drawing, model, info, scale);
+    overlay(drawing, layout, info);
+}
+
 } // namespace
 
 AudioOverlayLayout audio_overlay_layout(float width, float height) noexcept {
@@ -1405,6 +2190,10 @@ MidiOverlayLayout midi_overlay_layout(float width, float height) noexcept {
 
 void paint_instrument(Drawing& drawing, const UiModel& model, const InstrumentViewInfo& info) {
     const auto& layout = model.layout();
+    if (reference_composition_active(layout)) {
+        paint_reference_composition(drawing, model, info);
+        return;
+    }
     const auto& view = model.view();
     const bool flat = view.presentation == UiPresentation::Flat;
     const bool wide_legibility = layout.sidebar_pedals && !flat;

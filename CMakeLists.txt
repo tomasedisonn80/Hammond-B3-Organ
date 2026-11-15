@@ -426,6 +426,7 @@ endif()
 
 # Component-scoped installation is defined after all targets and tests.
 include(cmake/InstallHammondTools.cmake)
+include(cmake/InstallContactReferenceTools.cmake)
 include(cmake/InstallSourceLeakageTools.cmake)
 include(cmake/InstallCrossoverTools.cmake)
 include(cmake/InstallCaptureTools.cmake)

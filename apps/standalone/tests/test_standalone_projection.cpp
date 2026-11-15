@@ -29,12 +29,22 @@ constexpr std::array<UiWorkspace, 3> kWorkspaces{
     UiWorkspace::Play, UiWorkspace::Rotary, UiWorkspace::Service};
 constexpr std::array<UiPresentation, 2> kPresentations{
     UiPresentation::Dimensional, UiPresentation::Flat};
-constexpr std::array<UiPoint, 12> kSizes{{
+const std::array<UiPoint, 22> kSizes{{
     {960.0F, 700.0F}, {1280.0F, 900.0F}, {1672.0F, 941.0F},
     {1399.0F, 819.0F}, {1399.0F, 820.0F},
     {1400.0F, 819.0F}, {1400.0F, 820.0F},
     {1280.0F, 819.0F}, {1280.0F, 820.0F},
-    {8192.0F, 8192.0F}, {8192.0F, 700.0F}, {960.0F, 8192.0F}}};
+    {8192.0F, 8192.0F}, {8192.0F, 700.0F}, {960.0F, 8192.0F},
+    {1920.0F, 1080.0F}, {1400.25F, 820.25F}, {1672.5F, 941.25F},
+    {8192.0F, 820.0F}, {1400.0F, 8192.0F}, {6385.7314453125F, 5674.09375F},
+    {std::nextafter(1400.0F, 0.0F), 820.0F}, {std::nextafter(1400.0F, 2000.0F), 820.0F},
+    {1400.0F, std::nextafter(820.0F, 0.0F)}, {1400.0F, std::nextafter(820.0F, 1000.0F)}}};
+
+bool whole_reference(const UiLayout& layout) {
+    return layout.workspace == UiWorkspace::Play &&
+        layout.presentation == UiPresentation::Dimensional &&
+        layout.width >= 1400.0F && layout.height >= 820.0F;
+}
 
 struct ExactPoint {
     long double x{0.0L}, y{0.0L};
@@ -43,25 +53,43 @@ struct ExactPoint {
 struct KeyboardOracle {
     long double x, y, width, height;
     bool perspective;
+    long double numerator{47.0L}, denominator{50.0L}, front_scale{1.0L};
 
-    // Algebraically reduced rational coefficients, evaluated in long double:
-    // b = 47/50, d = (50 - 3v)/50. No production projection helper is used.
+    // Reduced rational homography: 47/50 remains the inactive contract;
+    // active manuals use 24/25 and 19/20. No production mapper is used.
     [[nodiscard]] ExactPoint at(long double u, long double v) const {
         if (!perspective) return {x + width * u, y + height * v};
-        const long double divisor = 50.0L - 3.0L * v;
-        return {x + width * (0.5L + 47.0L * (u - 0.5L) / divisor),
-                y + height * 47.0L * v / divisor};
+        const long double divisor = denominator - (denominator - numerator) * v;
+        return {x + width * (0.5L + numerator * (u - 0.5L) / divisor),
+                y + height * numerator * v / divisor};
     }
 
     // Independent screen-y form after eliminating v from the homography.
     [[nodiscard]] ExactPoint at_screen_y(long double u, long double screen_y) const {
         const long double s = (screen_y - y) / height;
-        const long double scale = perspective ? (47.0L + 3.0L * s) / 50.0L : 1.0L;
+        const long double scale = perspective ?
+            (numerator + (denominator - numerator) * s) / denominator : 1.0L;
         return {x + width * (0.5L + (u - 0.5L) * scale), screen_y};
+    }
+
+    [[nodiscard]] long double face_depth(long double screen_height) const {
+        return std::clamp(7.0L * screen_height / (50.0L * front_scale), 6.0L, 18.0L) * front_scale;
     }
 };
 
-[[nodiscard]] KeyboardOracle oracle(UiRect panel, bool perspective) {
+[[nodiscard]] KeyboardOracle oracle(const UiLayout& layout, UiRect panel,
+                                     UiTarget target, bool perspective) {
+    if (whole_reference(layout)) {
+        const long double sx = static_cast<long double>(layout.width / 1672.0F);
+        const long double sy = static_cast<long double>(layout.height / 941.0F);
+        // Literal canonical playing surfaces, already inset 8/20/8. In
+        // particular, no expected coordinate uses a returned parent panel.
+        if (target == UiTarget::Upper)
+            return {240 * sx, 548 * sy, 874 * sx, 142 * sy, true, 24, 25, sy};
+        if (target == UiTarget::Lower)
+            return {232 * sx, 718 * sy, 882 * sx, 144 * sy, true, 19, 20, sy};
+        return {1146 * sx, 772 * sy, 434 * sx, 82 * sy, false, 1, 1, sy};
+    }
     return {static_cast<long double>(panel.x) + 8.0L,
             static_cast<long double>(panel.y) + 22.0L,
             static_cast<long double>(panel.width) - 16.0L,
@@ -131,13 +159,14 @@ template <std::size_t Count>
 void check_keyboard(const UiLayout& layout, const std::array<UiKeyGeometry, Count>& keys,
                     UiRect panel, UiTarget target, std::size_t natural_count) {
     const bool dimensional = layout.presentation == UiPresentation::Dimensional;
-    const auto expected = oracle(panel, dimensional && target != UiTarget::Pedals);
+    const auto expected = oracle(layout, panel, target, dimensional && target != UiTarget::Pedals);
     // Endpoint storage and panel insets round to binary32. Four epsilon-scaled
     // units cover those roundings; face splitting uses additional float ops,
     // so receives eight. Edge identity/ownership checks below use no tolerance.
     const long double scale = std::max(layout.width, layout.height);
-    const long double coordinate_tolerance = 4.0L * std::numeric_limits<float>::epsilon() * scale;
-    const long double face_tolerance = 2.0L * coordinate_tolerance;
+    const long double coordinate_tolerance = whole_reference(layout) ? 0.002L :
+        4.0L * std::numeric_limits<float>::epsilon() * scale;
+    const long double face_tolerance = whole_reference(layout) ? 0.002L : 2.0L * coordinate_tolerance;
     std::size_t natural = 0;
     std::size_t accidentals = 0;
     std::size_t previous_natural = Count;
@@ -175,7 +204,7 @@ void check_keyboard(const UiLayout& layout, const std::array<UiKeyGeometry, Coun
         if (dimensional) {
             check_valid_quad(key.front, panel, layout);
             const long double height = corners[3].y - corners[0].y;
-            const long double face_depth = std::clamp(7.0L * height / 50.0L, 6.0L, 18.0L);
+            const long double face_depth = expected.face_depth(height);
             const long double split_y = corners[3].y - face_depth;
             near_point(key.top.points[2], expected.at_screen_y(u1, split_y), face_tolerance);
             near_point(key.top.points[3], expected.at_screen_y(u0, split_y), face_tolerance);
@@ -274,7 +303,7 @@ void check_keyboard(const UiLayout& layout, const std::array<UiKeyGeometry, Coun
         CHECK(!keys.back().hit.contains(right_corner));
         CHECK(ui_hit_test(layout, left_corner).kind == UiControlKind::None);
         CHECK(ui_hit_test(layout, right_corner).kind == UiControlKind::None);
-        const long double face_depth = std::clamp(7.0L * expected.height / 50.0L, 6.0L, 18.0L);
+        const long double face_depth = expected.face_depth(expected.height);
         const long double front_y = expected.y + expected.height - face_depth / 2.0L;
         const long double front_left = expected.at_screen_y(0.0L, front_y).x;
         const long double front_right = expected.at_screen_y(1.0L, front_y).x;
@@ -335,7 +364,7 @@ void layout_matrix() {
             }
         }
     }
-    CHECK(layouts == 288 && key_records == 42336);
+    CHECK(layouts == kSizes.size() * 24 && key_records == kSizes.size() * 24 * 147);
     std::cout << "projection matrix: " << layouts << " layouts, " << key_records
               << " playing-key records, " << layouts * 24 << " preset records\n";
 }
@@ -349,9 +378,11 @@ void retained_literal_landmarks() {
     near_point(layout.manual_keys[0].front().hit.points[3], {200.0L, 604.0L}, 0.0002L);
     near_point(layout.manual_keys[0].front().hit.points[2], {229.333333333333L, 604.0L}, 0.0002L);
     CHECK(make_ui_layout(1672.0F, 941.0F, {DrawbarBank::B, DrawbarBank::B}, layout));
-    near_point(layout.manual_keys[0].front().hit.points[0], {272.151147256L, 542.76L}, 0.0003L);
-    near_point(layout.manual_keys[0].front().hit.points[3], {246.3362968L, 686.88L}, 0.0003L);
-    near_point(layout.manual_keys[0].back().hit.points[2], {1106.831312L, 686.88L}, 0.0003L);
+    near_point(layout.manual_keys[0].front().hit.points[0], {257.48L, 548.0L}, 0.0003L);
+    near_point(layout.manual_keys[0].front().hit.points[3], {240.0L, 690.0L}, 0.0003L);
+    near_point(layout.manual_keys[0].back().hit.points[2], {1114.0L, 690.0L}, 0.0003L);
+    near_point(layout.manual_keys[1].front().hit.points[0], {254.05L, 718.0L}, 0.0003L);
+    near_point(layout.manual_keys[1].back().hit.points[2], {1114.0L, 862.0L}, 0.0003L);
 }
 
 void exact_half_open_quads() {

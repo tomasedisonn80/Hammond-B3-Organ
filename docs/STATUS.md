@@ -1,6 +1,144 @@
 # Development status
 
-## Current audio continuation — 15 November 2026
+## Current execution continuation — 15 November 2026
+
+The [execution session](development/2026-11-15-execution-continuation/README.md)
+implements the **M3 offline fractional-contact reference** and **M9 canonical
+wide Dimensional Play composition** under its
+[declared scope](development/2026-11-15-execution-continuation/SCOPE.md).
+Its base is `33fa95d51e44234eef47ee21c03d29b2b311a5ee`, tree
+`f5d9406ef099f6569a5d1f3fee27358b520bc928`; the delivered working changes are
+identified by the reports below, not by that base commit alone. The
+[coherent local qualification](development/2026-11-15-execution-continuation/reports/coherent-qualification.json)
+passed **203/203 CTests in 191.37 seconds**, with repository integrity passing.
+**Current-source hosted CI and publication remain pending.** The
+[live checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md)
+owns subsequent observations.
+
+Six direct readers completed all 500 atlas pages; the
+[coverage receipt](development/2026-11-15-execution-continuation/reports/atlas-reading-coverage.json)
+binds their notes and contiguous extracts. The requested **sixty distinct workers
+in ten waves** remain in progress: 42 distinct workers have been dispatched,
+with wave 7 under review. Consult the
+[actual ledger](development/2026-11-15-execution-continuation/assignments.json)
+for dispatch and acceptance; earlier sessions, planned names and followups add
+no worker credit.
+
+### Delivered behavior and scoped evidence
+
+The contact reference resolves continuous travel and independent hysteretic
+contacts, evaluates shared sine sources before bandwidth reduction, and retains
+exact event coordinates and full filter tails. It is an offline, finite, acausal,
+fixed-load numerical reference. The [operating guide](CONTACT_SWITCHING_GUIDE.md),
+[executed results](CONTACT_SWITCHING_RESULTS.md) and
+[48-file installation guide](CONTACT_REFERENCE_INSTALL.md) give the complete
+workflow. The frozen model and validation documents retain their admission-time
+wording; current execution results belong to the separate receipts.
+
+The native composition activates only in **Dimensional Play at width ≥1400 and
+height ≥820**. At 1672×941 it restores the performance band, percussion top y177,
+racks y269–508, below-rail footage, manual starts y548/y718 and aspect-contained
+cabinet, with its toolbar and pedals visible below. Compact, Flat, Rotary and
+Service retain their established layout paths. The earlier percussion-only
+stage and its approximately 27-unit vertical residual are historical; they do
+not describe the current active composition. All **68 controls, 147 playing
+keys, 24 presets and 71 Play focus stops** remain live.
+
+| Evidence | Executed result and limit |
+| --- | --- |
+| [Clean starting baseline](development/2026-11-15-execution-continuation/reports/baseline-inputs.json) | 567 build steps; **198/198 CTests in 206.69 s** at the starting source. This does not qualify the later overlay. |
+| [Final installed study](development/2026-11-15-execution-continuation/reports/contact-study-v1-qualified.json) and [external process receipt](development/2026-11-15-execution-continuation/reports/contact-study-v1-qualified-process.json) | **36 fixtures × four factors, 144 renders, zero failed cells**, exit 0; **21.728087337 s** external wall and **36,974,592 bytes** exact-child terminal peak RSS, including report publication. Convergence covers all 289 samples; independent continuous admission covers 64 frozen probes per fixture. |
+| [A30 independent review](development/2026-11-15-execution-continuation/notes/A30.md) and [final numerical identity](development/2026-11-15-execution-continuation/reports/qualified-study-numeric-identity.json) | **30,862 independent assertions** reconstruct the first retained numerical arrays. The repaired installed run has identical samples, events, metrics, filters and gates; only per-render durations differ. The no-clobber publication repair passes **14/14** focused checks; earlier reports and the demonstrated race remain retained. |
+| [A31 installation acceptance](development/2026-11-15-execution-continuation/notes/A31.md) | **17/17 methods**, zero skips, verify the 48-file component, relocation, exact bytes, default/component isolation and failure preservation. Linux execution does not qualify Windows/macOS or interrupted-copy atomicity. |
+| [Actual twelve-frame gallery](../examples/demos/whole-reference-layout-v1/README.md) and [A32 independent admission](reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md) | All twelve native captures pass; **383 independent checks** admit source, build, replay, state and decoded-pixel bindings. Root accepts this scoped software evidence. Dummy SDL/software rendering and keyboard replay do not qualify physical displays, devices or native accessibility. |
+| [Genuine old/new raster comparison v2](development/2026-11-15-execution-continuation/reports/whole-reference-raster-comparison-v2.json) | **66 pairs / 208,102,766 pixels**, all **28 inactive frames exactly equal**, zero escaped pixels. The smallest active protected area is only **34 pixels**: active containment is narrow and establishes no 1:1 equality. The original v1 17-pixel failure and independently reviewed exact stroke-footprint correction remain retained. |
+
+The default Engine stays a **nominal dry organ**: **91 shared free-running
+sources, 47 parameter meanings, `B3CONTROLS4` and readers 1–3** are preserved.
+The reference is not enabled in Engine, standalone or VST3 audio. Scanner,
+AO-28 and Leslie models remain unconnected to the playable dry path. No measured
+contact/bounce/loading result, current-Engine parity, causal streaming filter or
+full-window atlas `1e-4` grade follows from this bounded experiment.
+
+### Current workspace and setup
+
+Root exclusively coordinates this session's one native build, captures and
+publication. Other checkouts and their source/build/evidence remain preserved.
+The [normal desktop setup](../README.md#build-and-launch-the-native-application)
+and [native operating guide](MIDI_EXPRESSION_GUIDE.md) cover physical backend
+prerequisites; the following paths describe this managed dummy-SDL workspace.
+
+| Item | Current location or identity |
+| --- | --- |
+| Writable repository | `/workspace/scratch/ade21b726509/Hammond-B3-Organ` |
+| Coordinated build | `/workspace/scratch/ade21b726509/build-native` |
+| Pinned SDL | `/workspace/scratch/ade21b726509/SDL2`; **2.32.10**, commit `5d249570393f7a37e037abf22cd6012a4cc56a71` |
+| Tools | GCC **14.2.0**; Python **3.12.14**; CMake/CTest **3.31.6**; Ninja package **1.11.1.4**, executable `1.11.1.git.kitware.jobserver-1`. CMake/CTest/Ninja resolve under `/home/agent/.local/bin`; Python is the managed primary runtime. |
+| Selected configuration | Ninja Release, testing/standalone ON, MIDI/VST3/sanitizers OFF; static SDL, X11/Wayland/ALSA/PulseAudio/JACK OFF. Captures use dummy audio/video and software rendering. |
+| Captured application | `../build-native/apps/standalone/hammond_standalone`; SHA-256 `eb9a501ec60d5a90a398ffbf14e21a21967712589c155b54c8be164a71bd823c` |
+| Current application gallery | `examples/demos/whole-reference-layout-v1/`, including `manifest.json`, twelve PNGs and diagnostic/provenance records |
+| Numerical and execution receipts | `docs/development/2026-11-15-execution-continuation/reports/`; the final study is `contact-study-v1-qualified.json` with `contact-study-v1-qualified-process.json` |
+| Qualified relocated package | `/workspace/scratch/ade21b726509/contact-reference-relocated-v2/share/hammond-b3-organ/contact-reference`; its original 48-file bytes are bound by [contact-package-v2.json](development/2026-11-15-execution-continuation/reports/contact-package-v2.json) |
+
+Recover source and verify the existing dependency from the repository root:
+
+```sh
+cd /workspace/scratch/ade21b726509/Hammond-B3-Organ
+git status --short
+git rev-parse HEAD 'HEAD^{tree}'
+python3 tools/acquire_sdl2.py --verify-existing ../SDL2
+```
+
+To reproduce the completed local qualification, resume the existing
+configuration and build all required inputs:
+
+```sh
+cmake -S . -B ../build-native -G Ninja -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_TESTING=ON -DHAMMOND_BUILD_STANDALONE=ON \
+  -DHAMMOND_BUILD_VST3=OFF -DHAMMOND_ENABLE_MIDI=OFF \
+  -DHAMMOND_ENABLE_SANITIZERS=OFF -DHAMMOND_SDL2_ROOT="$PWD/../SDL2" \
+  -DSDL_X11=OFF -DSDL_WAYLAND=OFF -DSDL_ALSA=OFF \
+  -DSDL_PULSEAUDIO=OFF -DSDL_JACK=OFF
+cmake --build ../build-native --config Release --parallel 3
+ctest --test-dir ../build-native -C Release --output-on-failure --no-tests=error
+```
+
+The completed run built 14 incremental steps and passed all 203 CTests with
+`--parallel 3`; its source hashes and compressed logs are retained in the
+[qualification receipt](development/2026-11-15-execution-continuation/reports/coherent-qualification.json). The
+[contact guide](CONTACT_SWITCHING_GUIDE.md#run-one-fixture) supplies source and
+full-study commands without a native build; the
+[install guide](CONTACT_REFERENCE_INSTALL.md) supplies explicit component,
+relocation and PowerShell instructions. Preserve fresh report destinations and
+source hashes. Later documentation edits do not rewrite the original installed
+snapshot or the numerical receipt.
+
+### Remaining acceptance and engineering work
+
+The coherent full CTest and compatibility/resource reviews have passed. Finish
+all actual worker assignments, guarded publication and observed hosted CI. Publication must inspect fresh remote advances, preserve concurrent owners,
+update `main` without force and independently fetch the resulting commit/tree.
+A prior hosted pass or completed older worker batch cannot qualify this overlay.
+
+Then freeze a **causal streaming contact contract before Engine integration**,
+with latency, continuous phase/contact history, bounded work/allocation,
+partition/rate/reset/flush/tail behavior and an independently admitted full-window
+reference. M9 next needs independently declared material/type refinement and
+actual display/DPI/input/accessibility journeys. **Literal whole-interface 1:1
+remains unmet and unwaived.** Preserve scanner G5's original same-Hz failure,
+independent ScannerLineFoh/library work, M6/callback-retirement ownership, separate
+R4 acceptance, R5/R6 and physical acquisition/release gates. The
+[whole M0–M9 plan](PLAN.md) and [concrete next steps](NEXT_STEPS.md) retain these
+separate dependencies.
+
+## Earlier session snapshots and continuing ownership
+
+The dated sections below retain their original sources, captures, results and
+unfinished assignments. Their words “current” or “active” describe those
+snapshots. They do not supersede the execution section above or identify today's
+wide Play painter. Consult each owning checkpoint before touching another track.
+
+## Earlier audio continuation snapshot — 15 November 2026
 
 The [audio session](development/2026-11-15-audio-continuation/README.md) starts
 at `fe4f103f135cefebfe6d320f275d035d1b514f45`; six complete readings cover
@@ -21,7 +159,7 @@ composition and coordinated whole-reference layout work remain underway. The [ch
 and [ledger](development/2026-11-15-audio-continuation/assignments.json) own exact
 counts and source-bound results. Other sessions below retain their separate work.
 
-## Current playable continuation — 15 November 2026
+## Earlier playable continuation snapshot — 15 November 2026
 
 Start source is `3767b645e010066d63ca0b7fc1af8310a6f7e5ad`. The new
 [session](development/2026-11-15-playable-continuation/README.md) accepted six

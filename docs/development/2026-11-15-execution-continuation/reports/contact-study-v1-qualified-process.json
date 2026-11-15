@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "/workspace/scratch/ade21b726509/contact-reference-relocated-v2/share/hammond-b3-organ/contact-reference/tools/contact_switching_study.py",
+    "--fixtures",
+    "/workspace/scratch/ade21b726509/contact-reference-relocated-v2/share/hammond-b3-organ/contact-reference/data/contact-switching/reference-v1",
+    "--output",
+    "/workspace/scratch/ade21b726509/Hammond-B3-Organ/docs/development/2026-11-15-execution-continuation/reports/contact-study-v1-qualified.json"
+  ],
+  "cwd": "/workspace/scratch/ade21b726509/contact-reference-neutral-v2",
+  "source_package_manifest": "contact-package-v2.json",
+  "independent_review_sha256": "bd9fac8bb8cd3b86a851a3cae8b2a41f512114555eccc5fe7bec4f4f73878712",
+  "started_at_utc": "2026-11-15T22:28:19.788910+00:00",
+  "finished_at_utc": "2026-11-15T22:28:41.558931+00:00",
+  "external_process_wall_seconds": 21.728087337000034,
+  "wall_limit_seconds": 300,
+  "external_child_peak_resident_bytes": 36974592,
+  "peak_limit_bytes": 268435456,
+  "peak_measurement": "os.wait4(exact_child_pid) terminal ru_maxrss; Linux KiB converted to bytes; no aggregate earlier-child maximum",
+  "exit_code": 0,
+  "timed_out": false,
+  "report_exists": true,
+  "report_bytes": 2254328,
+  "report_sha256": "87d7a5ba4dbc12d5d42754386c695ecbd046a61560dc75b5c86b17cc51121dba",
+  "runner_sha256": "eb4d374cc46ed1c16448ab3b1c2f03c5714a27c20bfdd0c3dba6e005d8f8066e",
+  "meaning": "Final admitted runtime code executed from the moved installed48-file package in a neutral working directory. External wall includes Python startup and report publication; exact-child terminal RSS includes final encoding/publication. Overall pass also requires complete internal numerical and resource gates."
+}

@@ -1,5 +1,101 @@
 # Development log
 
+## 2026-11-15 — Execution source passes coherent local qualification
+
+The current execution implementation built 14 incremental Release steps and
+passed **203/203 CTests in 191.37 seconds**. Repository integrity reports zero
+errors. The [source-bound receipt](development/2026-11-15-execution-continuation/reports/coherent-qualification.json)
+retains the exact production/test/data inputs and compressed build/CTest logs.
+The application hash still matches the independently admitted twelve-frame
+native gallery. One Unix-socket-creation unit subtest remains unavailable under
+the workspace's EPERM restriction; the CTest suite passes with that explicit limit.
+
+The final relocated numerical run, 17-method installation acceptance and
+independent compatibility/resource reviews are complete. Forty-two distinct
+workers have been dispatched, with wave 7 reviewing the causal, material and
+physical-acquisition next-phase proposals. Publication, current-source hosted
+CI and the complete sixty-worker request remain pending at this entry. Later
+entries/checkpoints must record actual outcomes without rewriting this snapshot.
+
+
+## 2026-11-15 — Execution continuation: offline contact reference and canonical wide Play
+
+The [execution session](development/2026-11-15-execution-continuation/README.md)
+starts from `33fa95d51e44234eef47ee21c03d29b2b311a5ee`, tree
+`f5d9406ef099f6569a5d1f3fee27358b520bc928`. Six distinct readers completed all
+500 atlas pages; the [coverage receipt](development/2026-11-15-execution-continuation/reports/atlas-reading-coverage.json)
+binds their extracts and notes. Its requested sixty distinct workers in ten
+waves remain in progress. The [actual ledger](development/2026-11-15-execution-continuation/assignments.json)
+and [live checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md)
+own subsequent counts and observations. New code is an identified working
+overlay, not a claim that the base commit contains these changes.
+
+The bounded M3 delivery includes exact continuous travel/contact crossings,
+shared switched-sine integration before bandwidth reduction, strict JSON/CLI,
+an independent continuous oracle, frozen synthetic fixtures/probes and explicit
+48-file `ContactReferenceTools` installation. Root ran the repaired installed
+study from the moved package in a neutral directory. The
+[qualified report](development/2026-11-15-execution-continuation/reports/contact-study-v1-qualified.json)
+and [whole-process receipt](development/2026-11-15-execution-continuation/reports/contact-study-v1-qualified-process.json)
+record **36 fixtures × four factors / 144 renders, zero failed cells, exit 0,
+21.728087337 s external wall and 36,974,592 bytes exact-child terminal RSS**.
+Convergence covers all 289 samples; continuous admission covers 64 frozen probes
+per fixture. All original thresholds and resource ceilings are preserved.
+
+A30 independently reconstructed **30,862 assertions** on the first numerical
+arrays and reproduced a destination-publication race. The repaired runner uses
+atomic non-overwriting hard-link publication; the same interleaving preserves
+competing bytes and its focused **14/14** checks pass. The
+[numerical-identity receipt](development/2026-11-15-execution-continuation/reports/qualified-study-numeric-identity.json)
+binds the final installed arrays, events, metrics and filters to that independent
+audit; only per-factor durations differ. The original first report remains
+immutable. [A31's installation review](development/2026-11-15-execution-continuation/notes/A31.md)
+passes **17/17 methods**, zero skips, including byte preservation, relocation,
+default/component isolation and adversarial preflight behavior. Its initial
+incorrect test-key expectation and focused/full corrected runs remain recorded.
+
+The M9 implementation activates only in Dimensional Play at width ≥1400 and
+height ≥820. Canonical 1672×941 layout restores the performance band, percussion
+y177, racks y269–508, below-rail footage, manual starts y548/y718 and cabinet
+above its relocated toolbar/pedals. Correct controls, focus, gesture/note owners
+and pending/applied state remain. This supersedes the earlier percussion-only
+allocation residual in the active layout; historical images and results remain.
+
+All **twelve actual application captures** pass. [A32's independent admission](reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md)
+passes **383 checks** and root accepts the scoped software evidence, including
+minimum-active, wide Flat, toolbar-focus and held pedal-25 scenes. Executable
+SHA-256 is `eb9a501ec60d5a90a398ffbf14e21a21967712589c155b54c8be164a71bd823c`.
+The genuine [v2 raster comparison](development/2026-11-15-execution-continuation/reports/whole-reference-raster-comparison-v2.json)
+covers **66 pairs / 208,102,766 pixels**, with **28 exactly equal inactive
+frames and zero escapes**. V1's original 17 endpoint-pixel escapes remain
+retained; the separately reviewed exact SDL footprint correction permits only
+675 additional pixels. With a minimum of **34 protected active pixels**, this
+is narrow containment, not a whole-interface or material-fidelity result.
+
+A34 reconciles STATUS, NEXT_STEPS, the full M0–M9 PLAN and this log, linking the
+new [contact guide](CONTACT_SWITCHING_GUIDE.md), [results](CONTACT_SWITCHING_RESULTS.md),
+[installation](CONTACT_REFERENCE_INSTALL.md) and [actual gallery](../examples/demos/whole-reference-layout-v1/README.md).
+The current checkout/build/toolchain, retained artifacts, root's next coherent
+commands and causal-streaming/material/type/display/accessibility tasks are
+explicit. Earlier STATUS and log bodies remain source-specific history. A34
+performs documentation, link, command-syntax and evidence inspection only; no
+build, numerical rerun, native capture, commit or publication is attributed to
+this documentation work.
+
+The starting **198/198 CTest** baseline and affected passes remain distinct from
+**pending final coherent CTest, current-source hosted CI and publication**.
+Complete the actual worker request, freeze accepted inputs, preserve concurrent
+owners, publish without force and independently verify remote source/results.
+Default Engine, 91 free-running sources, 47 parameters, B3CONTROLS4/readers 1–3,
+68 controls and 147 playing keys are preserved. A causal streaming contract and
+full-window reference admission precede Engine integration. Literal 1:1,
+physical contact/display/device/audio evidence, native accessibility, scanner
+G5, connected AO-28/Leslie models, separate R4/R5/R6 and release remain open.
+
+The entries below preserve their original dates, sources, failures and pending
+observations; older “current” galleries or allocation residuals are not claims
+about the new composition.
+
 ## 2026-11-15 — Audio continuation: leakage and reference percussion
 
 Implementation checkpoint **9f5610b6a7f9648dd7b8b1bcb25c2fd38615b994** is
