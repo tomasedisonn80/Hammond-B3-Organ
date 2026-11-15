@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "model_id": "atlas-leslie-122-ideal-crossover-v1",
+  "realization_id": "physical-trapezoidal-leslie-crossover-v1",
+  "evidence_class": "atlas-documentary-with-explicit-ideal-assumptions",
+  "target": {
+    "cabinet_family": "Leslie 122",
+    "divider_assembly": "052803",
+    "documentary_year": 1971,
+    "specimen_identity": null,
+    "specimen_status": "not-acquired",
+    "related_assembly": {
+      "id": "113860",
+      "documentary_year": 1979,
+      "status": "atlas-reported-context-only; not an admitted substitute profile"
+    }
+  },
+  "source": {
+    "document": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+    "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+    "pages": [271, 272, 273, 274, 275, 276],
+    "verification": "atlas-read; manufacturer drawings not independently inspected",
+    "atlas_citations": ["S044-01", "S044-02"],
+    "missing_companion": "reference_code/crossover_ac_reference.py is cited by the atlas but was not supplied"
+  },
+  "nodes": ["A", "B", "H", "W"],
+  "reference_node": "B",
+  "components": [
+    {"id": "L2", "kind": "inductor", "nodes": ["A", "H"], "value": 0.0032, "unit": "H", "evidence": "documentary-nominal", "source_page": 271, "topology_page": 272},
+    {"id": "L3", "kind": "inductor", "nodes": ["A", "W"], "value": 0.0052, "unit": "H", "evidence": "documentary-nominal", "source_page": 271, "topology_page": 272},
+    {"id": "C16A", "kind": "capacitor", "nodes": ["H", "B"], "value": 0.0000078, "unit": "F", "evidence": "documentary-nominal", "source_page": 271, "topology_page": 272},
+    {"id": "C16B", "kind": "capacitor", "nodes": ["W", "B"], "value": 0.0000125, "unit": "F", "evidence": "documentary-nominal", "source_page": 271, "topology_page": 272}
+  ],
+  "ideal_loads": [
+    {"id": "RT", "nodes": ["A", "H"], "resistance": 16.0, "unit": "ohm", "evidence": "explicit-ideal-test-assumption", "source_page": 273},
+    {"id": "RW", "nodes": ["W", "B"], "resistance": 16.0, "unit": "ohm", "evidence": "explicit-ideal-test-assumption", "source_page": 273}
+  ],
+  "ports": {
+    "input_voltage": {"positive_node": "A", "negative_node": "B", "unit": "V"},
+    "input_current": {"positive_direction": "source into A", "unit": "A"},
+    "treble_voltage": {"positive_node": "A", "negative_node": "H", "unit": "V"},
+    "treble_current": {"positive_direction": "A to H through RT", "unit": "A"},
+    "bass_voltage": {"positive_node": "W", "negative_node": "B", "unit": "V"},
+    "bass_current": {"positive_direction": "W to B through RW", "unit": "A"}
+  },
+  "simulation_assumptions": {
+    "source": "ideal imposed input voltage",
+    "source_impedance_ohm": 0.0,
+    "inductor_series_resistance_ohm": 0.0,
+    "capacitor_loss": "ideal; no ESR or leakage in this numerical fixture",
+    "driver_loads": "constant resistors; not loudspeaker models",
+    "acoustics": "absent",
+    "engine_integration": false,
+    "physical_measurement_claim": false
+  },
+  "unknown_physical_fields": {
+    "reason": "No identified specimen, primary-drawing independent transcription or calibrated measurements acquired",
+    "winding_resistance_ohm": null,
+    "capacitor_esr_ohm": null,
+    "capacitor_leakage_ohm": null,
+    "actual_driver_complex_impedances": null,
+    "amplifier_source_impedance": null,
+    "acoustic_polarity": null,
+    "serial_applicability": null,
+    "measurement_uncertainty": null
+  },
+  "numerics": {
+    "sample_rates_hz": [44100, 48000, 96000, 192000],
+    "state_order": ["V(H)-V(B)", "V(W)-V(B)", "I(L2:A->H)", "I(L3:A->W)"],
+    "input_reconstruction": "endpoint-trapezoidal",
+    "prewarp": false,
+    "max_block_frames": 4096,
+    "default_loads_only_are_atlas_fixture": true,
+    "alternative_resistive_load_range_ohm": [1.0, 1024.0],
+    "limits_are_computational_not_device_ratings": true,
+    "max_abs_input_volts": 64.0,
+    "max_abs_capacitor_volts": 65536.0,
+    "max_abs_inductor_amps": 256.0,
+    "max_energy_joules": 1000000.0
+  }
+}

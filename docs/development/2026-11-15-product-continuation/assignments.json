@@ -91,36 +91,128 @@
       "wave": 2,
       "agent": "/root/w02_a07_channel_contract",
       "task": "Distinct scoped native MIDI channel-mode contract",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A07-channel-contract.md",
       "owned_files": [
         "docs/MIDI_CHANNEL_MODE_CONTRACT.md",
         "docs/development/2026-11-15-product-continuation/notes/A07-channel-contract.md"
-      ]
+      ],
+      "result": "Complete contract delivered; independent A10 review underway",
+      "note_sha256": "0af6bd03df20eba3508220007c6d31c62904d7808b8df8dba0c2ec5b4c69717f",
+      "acceptance": "Contract/review read; independent concerns integrated in root amendments; no runtime claims"
     },
     {
       "id": "A08",
       "wave": 2,
       "agent": "/root/w02_a08_expression_contract",
       "task": "Expression endpoint/inversion API and native UX contract",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A08-expression-contract.md",
       "owned_files": [
         "docs/MIDI_EXPRESSION_CALIBRATION.md",
         "docs/development/2026-11-15-product-continuation/notes/A08-expression-contract.md"
-      ]
+      ],
+      "result": "Complete contract delivered; independent A10 review underway",
+      "note_sha256": "090c9843d6edc6aaa39425e9bd7fd2ce00602e36566d823ec77bbfe0cf96ad80",
+      "acceptance": "Contract/review read; independent concerns integrated in root amendments; no runtime claims"
     },
     {
       "id": "A09",
       "wave": 2,
       "agent": "/root/w02_a09_crossover_contract",
       "task": "M6 passive topology, registry and numerical contract",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A09-crossover-contract.md",
       "owned_files": [
         "docs/LESLIE_CROSSOVER_CONTRACT.md",
         "data/crossover/leslie-122-ideal-v1.json",
         "docs/development/2026-11-15-product-continuation/notes/A09-crossover-contract.md"
+      ],
+      "acceptance": "Contract/review read; independent concerns integrated in root amendments; no runtime claims",
+      "note_sha256": "d9b43ee281f9548a3e7749828ad0b56585ebcf7bda4430be1f9436d4e604e87e"
+    },
+    {
+      "id": "A10",
+      "wave": 2,
+      "agent": "/root/w02_a10_midi_contract_review",
+      "task": "Independent MIDI and expression contract review",
+      "status": "accepted",
+      "note": "notes/A10-midi-contract-review.md",
+      "owned_files": [
+        "docs/development/2026-11-15-product-continuation/notes/A10-midi-contract-review.md"
+      ],
+      "acceptance": "Contract/review read; independent concerns integrated in root amendments; no runtime claims",
+      "note_sha256": "bbbc57b6b05748092f06da41509b08b4a8d80728c54db37920955bf79e97a2b9"
+    },
+    {
+      "id": "A11",
+      "wave": 2,
+      "agent": "/root/w02_a11_visual_contract",
+      "task": "Measured native visual refinement contract",
+      "status": "accepted",
+      "note": "notes/A11-visual-contract.md",
+      "owned_files": [
+        "docs/PRODUCT_VISUAL_REFINEMENT.md",
+        "docs/development/2026-11-15-product-continuation/notes/A11-visual-contract.md"
+      ],
+      "acceptance": "Contract/review read; independent concerns integrated in root amendments; no runtime claims",
+      "note_sha256": "c305ec2aec835b8f23a74c06590b8dc85381b320f68bf3da82bb3acf7bee5b62"
+    },
+    {
+      "id": "A12",
+      "wave": 2,
+      "agent": "/root/w02_a12_crossover_review",
+      "task": "Independent crossover KCL, energy and analog reference review",
+      "status": "accepted",
+      "note": "notes/A12-crossover-review.md",
+      "owned_files": [
+        "docs/development/2026-11-15-product-continuation/notes/A12-crossover-review.md"
+      ],
+      "acceptance": "Independent nodal/energy derivation passed; residual/precedence amendments adopted",
+      "note_sha256": "b1b87f4f4c77e7241e23caaabb1c9264d08b7c2be98f2bfecde93322cae89992"
+    },
+    {
+      "id": "A13",
+      "wave": 3,
+      "agent": "/root/w03_a13_crossover_native",
+      "task": "Four-state passive crossover native implementation",
+      "status": "running",
+      "note": "notes/A13-crossover-native.md",
+      "owned_files": [
+        "include/hammond/LeslieCrossover.h",
+        "src/LeslieCrossover.cpp",
+        "tests/test_leslie_crossover.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A13-crossover-native.md"
+      ]
+    },
+    {
+      "id": "A14",
+      "wave": 3,
+      "agent": "/root/w03_a14_midi_adapter",
+      "task": "Scoped MIDI sound-off/reset and expression calibration adapter",
+      "status": "running",
+      "note": "notes/A14-midi-adapter.md",
+      "owned_files": [
+        "apps/standalone/Session.h",
+        "apps/standalone/Session.cpp",
+        "apps/standalone/MidiInput.h",
+        "apps/standalone/MidiInput.cpp",
+        "apps/standalone/tests/test_standalone_channel_modes.cpp",
+        "apps/standalone/tests/test_standalone_expression_calibration.cpp",
+        "apps/standalone/tests/test_standalone_midi_input.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A14-midi-adapter.md"
+      ]
+    },
+    {
+      "id": "A15",
+      "wave": 3,
+      "agent": "/root/w03_a15_visual_implementation",
+      "task": "Native wide drawbar/key legibility and materials",
+      "status": "running",
+      "note": "notes/A15-visual-implementation.md",
+      "owned_files": [
+        "apps/standalone/InstrumentView.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A15-visual-implementation.md"
       ]
     }
   ]
