@@ -200,3 +200,50 @@ dependency cannot establish physical devices, asynchronous OS-driver races,
 callback deadlines, semantic accessibility, literal reference equality or
 measured electrical/acoustic fidelity. R4 remains separately owned; R5/R6 and
 the nominal dry Engine boundary are unchanged.
+
+## Final-source followup — c4486 Linux qualification
+
+This followup reuses accepted worker A49 and adds no worker or wave. All six
+assigned Linux jobs pass at **`c4486bafccbcfbcd9bcd9492e8949ddd44ea1340`**, tree
+`2d21135e570c5b328a7f54d17582ffc7ac62a489`, parent
+`d8c39f7986746eacc991747153c7dbb012bb9a32`. Remote commit identity and actual
+checkouts match. The [new primary receipt](../development/2026-11-15-product-continuation/reports/A49-final-source-hosted.json)
+retains exact logs, selections, hashes and strict-record output.
+
+| Final-source job | Executed result |
+| --- | --- |
+| [Linux Release 132685867405](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867405) | **157/157**, 85.00 s |
+| [Core sanitizers 132685867415](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867415) | **157/157**, 193.65 s |
+| [Native MIDI ON 132685867440](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867440) | **48/48**, 297.02 s |
+| [Native MIDI OFF 132685867475](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867475) | **48/48**, 313.06 s |
+| [Native sanitizers 132685867380](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867380) | **21/21**, 422.84 s |
+| [Full R4 132685867179](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867179) | **Full pass**, 734.604258623 s; 14 admission checks |
+
+The actual core selection adds exactly `python_test_product_session` and
+`python_test_plot_crossover_characterization`, removing no earlier names.
+Both execute in Release and sanitizer jobs: respectively **1.28/1.18 s** and
+**0.40/0.43 s**. GCC 13.3.0, CMake/CTest 3.31.6 and Python 3.12.16 remain logged.
+
+Linux Release executes the product checker **without `--allow-incomplete`**.
+Its strict JSON reports `completion_valid:true`, **60 accepted records, 60
+verified notes, 60 distinct agents, ten waves of six and zero errors**. The
+complete 59,441-byte stdout JSON matches the retained local strict result
+byte-for-byte after removing runner timestamps. Published identities match:
+
+- Manifest: `d361c48f1e742bc23d44f9a0c664dae4c350577d67c502bec9bc7cab8eee6819`.
+- Checker: `49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c`.
+
+Native production/build/dependency inputs are unchanged from d8. Fresh logs
+confirm the same probe identities, all 260 instrumented objects, six archive
+checks and 21 runtime-linked executables. Calibration again completes nine
+methods, ten subprocesses, seven lifecycles and two intentional failed replays;
+the instrumented stderr check passes. All three native material results remain
+1293/1293 over 109 frames. Relocated inventories remain 20 files ON / 16 OFF.
+No new leak exception or sanitizer diagnostic appears.
+
+**The full c4486 matrix is not green:** the CI run concludes failure because
+macOS core `132685867386` and Windows core `132685867528` fail their Release
+test steps. A50/A51 own those primary failure analyses and repairs. Preserve
+these original outcomes and qualify the replacement source separately. The
+record-consistency and physical/device/artifact-review limits above continue;
+no accepted note, ledger or prior report was edited by this followup.

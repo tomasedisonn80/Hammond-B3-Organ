@@ -9,6 +9,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import stat
 import subprocess
 import sys
 import tempfile
@@ -46,7 +47,9 @@ class ProductSessionTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="b3-product-record-test-")
         self.addCleanup(self.temp.cleanup)
-        self.temporary = Path(self.temp.name)
+        # macOS may expose its temporary directory through /var -> /private/var.
+        # Match the checker's canonical paths so injected faults reach their inputs.
+        self.temporary = Path(self.temp.name).resolve(strict=True)
         self.root = self.temporary / "repo"
         self.session = self.root / CHECKER.DIRECTORY
         (self.session / "notes").mkdir(parents=True)
@@ -385,6 +388,93 @@ class ProductSessionTests(unittest.TestCase):
         with mock.patch.object(CHECKER.os, "open", side_effect=mutate):
             self.assert_error(CHECKER.check(self.root, True), "note_read")
         self.assertEqual(len(observed), 1)
+
+    def reader_metadata(self):
+        actual = self.manifest_path.lstat()
+        return SimpleNamespace(st_dev=actual.st_dev, st_ino=actual.st_ino,
+                               st_mode=stat.S_IFREG | 0o644, st_size=actual.st_size,
+                               st_mtime_ns=200, st_ctime_ns=100, st_birthtime_ns=100)
+
+    def read_with_metadata(self, path_info, fd_info, *, path_after=None, fd_after=None,
+                           platform="win32"):
+        original_lstat = Path.lstat
+        path_calls = 0
+
+        def inspect(path, *args, **kwargs):
+            nonlocal path_calls
+            if path != self.manifest_path:
+                return original_lstat(path, *args, **kwargs)
+            path_calls += 1
+            return path_info if path_calls <= 2 or path_after is None else path_after
+
+        with (mock.patch.object(CHECKER, "sys", SimpleNamespace(platform=platform)),
+              mock.patch.object(Path, "lstat", autospec=True, side_effect=inspect),
+              mock.patch.object(CHECKER.os, "fstat", side_effect=[fd_info, fd_after or fd_info])):
+            return CHECKER._read(self.root, CHECKER.MANIFEST, CHECKER.MAX_MANIFEST_BYTES)
+
+    def test_windows_reader_accepts_only_cross_api_representation_differences(self):
+        expected = self.manifest_path.read_bytes()
+        for ctime_differs, execute_differs, birthtime_available in (
+                (True, False, True), (False, True, True), (True, True, True),
+                (True, False, False)):
+            with self.subTest(ctime=ctime_differs, execute=execute_differs,
+                              birthtime=birthtime_available):
+                path_info = self.reader_metadata()
+                fd_info = copy.copy(path_info)
+                if ctime_differs:
+                    fd_info.st_ctime_ns = 300
+                if execute_differs:
+                    path_info.st_mode |= 0o111
+                if not birthtime_available:
+                    del path_info.st_birthtime_ns
+                    del fd_info.st_birthtime_ns
+                raw, text = self.read_with_metadata(path_info, fd_info)
+                self.assertEqual(raw, expected)
+                self.assertEqual(text, expected.decode("utf-8").replace("\r\n", "\n"))
+
+    def test_windows_reader_rejects_changes_to_compatible_opening_fields(self):
+        path_info = self.reader_metadata()
+        changes = (("st_dev", path_info.st_dev + 1), ("st_ino", path_info.st_ino + 1),
+                   ("st_mode", stat.S_IFDIR | 0o644), ("st_mode", stat.S_IFREG | 0o444),
+                   ("st_size", path_info.st_size + 1), ("st_mtime_ns", 201),
+                   ("st_birthtime_ns", 101), ("st_birthtime_ns", None))
+        for field, value in changes:
+            with self.subTest(field=field, value=value):
+                fd_info = copy.copy(path_info)
+                fd_info.st_ctime_ns = 300
+                if value is None:
+                    delattr(fd_info, field)
+                else:
+                    setattr(fd_info, field, value)
+                with self.assertRaisesRegex(ValueError, "file changed while opening"):
+                    self.read_with_metadata(path_info, fd_info)
+
+    def test_windows_reader_keeps_full_same_api_change_detection(self):
+        path_info = self.reader_metadata()
+        fd_info = copy.copy(path_info)
+        fd_info.st_ctime_ns = 300
+        for family in ("path", "fd"):
+            for field in ("st_ctime_ns", "st_mode"):
+                with self.subTest(family=family, field=field):
+                    changed = copy.copy(path_info if family == "path" else fd_info)
+                    setattr(changed, field, getattr(changed, field) + 1)
+                    message = ("file or path changed while reading" if family == "path"
+                               else "file changed while reading or exceeded its byte limit")
+                    with self.assertRaisesRegex(ValueError, message):
+                        self.read_with_metadata(path_info, fd_info, **{family + "_after": changed})
+
+    def test_posix_reader_preserves_full_cross_api_signature(self):
+        path_info = self.reader_metadata()
+        for platform in ("linux", "darwin"):
+            with self.subTest(platform=platform, changed=None):
+                self.assertEqual(self.read_with_metadata(path_info, path_info, platform=platform)[0],
+                                 self.manifest_path.read_bytes())
+            for field in ("st_dev", "st_ino", "st_mode", "st_size", "st_mtime_ns", "st_ctime_ns"):
+                with self.subTest(platform=platform, changed=field):
+                    changed = copy.copy(path_info)
+                    setattr(changed, field, getattr(changed, field) + 1)
+                    with self.assertRaisesRegex(ValueError, "file changed while opening"):
+                        self.read_with_metadata(path_info, changed, platform=platform)
 
     def test_cli_progress_success_and_strict_failure_are_machine_readable(self):
         command = [sys.executable, str(REPO / CHECKER.SOURCE), "--repo", str(self.root), "--json"]

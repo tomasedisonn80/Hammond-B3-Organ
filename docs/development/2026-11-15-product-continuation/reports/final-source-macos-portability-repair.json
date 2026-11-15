@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w09_a51_macos_hosted",
+  "followup": true,
+  "new_worker_credit": false,
+  "snapshot_boundary": "This report records A51's canonical-temporary-directory-only repair and before/after verification before A50's separate Windows checker repair. Test ownership was released to A50 after recording the exact 2129745b... test hash; later checker/test changes require their own qualification.",
+  "source": {
+    "failed_commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "tree": "2d21135e570c5b328a7f54d17582ffc7ac62a489",
+    "parent": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "run_id": 43672641490,
+    "job_id": 132685867386,
+    "job_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867386"
+  },
+  "original_result": {
+    "job": "failure",
+    "ctest_total": 157,
+    "ctest_passed": 156,
+    "ctest_failed": 1,
+    "ctest_wall_seconds": 100.28,
+    "failed_ctest_id": 114,
+    "failed_ctest_name": "python_test_product_session",
+    "failed_ctest_seconds": 1.31,
+    "python_methods": 19,
+    "python_seconds": 1.22,
+    "assertion_failures": 4,
+    "failing_methods": [
+      {
+        "name": "test_changed_inputs_during_open_are_rejected",
+        "line": 386,
+        "expected_error": "note_read",
+        "actual_status": "incomplete",
+        "assertion": "'incomplete' != 'failed'"
+      },
+      {
+        "name": "test_reparse_points_are_rejected_on_windows_metadata",
+        "line": 344,
+        "failed_subcases": [
+          "repo/docs",
+          "repo/docs/development/2026-11-15-product-continuation/notes",
+          "repo/docs/development/2026-11-15-product-continuation/notes/A01-synthetic-fixture.md"
+        ],
+        "actual_status": "incomplete",
+        "assertion": "'incomplete' != 'failed'"
+      }
+    ],
+    "new_plot_module": {
+      "ctest_id": 111,
+      "name": "python_test_plot_crossover_characterization",
+      "result": "passed",
+      "seconds": 0.35
+    },
+    "original_primary_excerpt": "A51-final-source-primary-excerpts.txt"
+  },
+  "diagnosis": {
+    "mechanism": "The test fixture retained the spelling returned by TemporaryDirectory (/var/... on the macOS runner). CHECKER.check rejects a linked repository root leaf and then resolves its accepted root before reading descendants. Descendant lstat/os.open therefore use /private/var/... . Equality-based mock targets retained /var/... and missed three descendant reparse injections and the changed-open injection. The root reparse case still matched because the root lstat precedes resolution.",
+    "checker_source": "tools/check_product_session.py:237-240",
+    "fixture_source": "tests/test_product_session.py:setUp",
+    "confidence": "Exact four failures reproduced on Linux with a symlinked TMPDIR; same module passes through a regular TMPDIR before repair."
+  },
+  "repair": {
+    "path": "tests/test_product_session.py",
+    "before": "self.temporary = Path(self.temp.name)",
+    "after": "self.temporary = Path(self.temp.name).resolve(strict=True)",
+    "comment": "Canonicalize the already-created private temporary directory so fault-injection targets match the checker's admitted canonical root, including macOS /var -> /private/var.",
+    "before_sha256": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55",
+    "after_sha256": "2129745bcb1221b8b365af774ed631cf11d6916df3a6ca254c31b77beb9f26fd",
+    "production_checker_changed": false,
+    "thresholds_changed": false,
+    "assertions_removed_or_weakened": false,
+    "methods_before": 19,
+    "methods_after": 19
+  },
+  "local_reproduction": {
+    "environment": "Private temporary workspace with ordinary directory and alias symlink -> real directory. For each, launch the existing focused test module with TMPDIR, TEMP and TMP set to that path and PYTHONDONTWRITEBYTECODE=1.",
+    "command": "python3 -B tests/test_product_session.py -v",
+    "runs": [
+      {
+        "phase": "before",
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+        "test_sha256": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55",
+        "checker_sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c",
+        "records": [
+          {
+            "case": "ordinary_directory",
+            "command": [
+              "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+              "-B",
+              "tests/test_product_session.py",
+              "-v"
+            ],
+            "temp_directory": "/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/ordinary",
+            "canonical_temp_directory": "/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/ordinary",
+            "exit_code": 0,
+            "stdout": "",
+            "stderr": "test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth (__main__.ProductSessionTests.test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth) ... ok\ntest_byte_bounds_are_exact_and_have_no_word_ceiling (__main__.ProductSessionTests.test_byte_bounds_are_exact_and_have_no_word_ceiling) ... ok\ntest_changed_inputs_during_open_are_rejected (__main__.ProductSessionTests.test_changed_inputs_during_open_are_rejected) ... ok\ntest_cli_progress_success_and_strict_failure_are_machine_readable (__main__.ProductSessionTests.test_cli_progress_success_and_strict_failure_are_machine_readable) ... ok\ntest_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves (__main__.ProductSessionTests.test_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves) ... ok\ntest_fifo_inputs_are_rejected_before_open (__main__.ProductSessionTests.test_fifo_inputs_are_rejected_before_open) ... ok\ntest_hash_tampering_and_crlf_use_raw_bytes (__main__.ProductSessionTests.test_hash_tampering_and_crlf_use_raw_bytes) ... ok\ntest_id_agent_and_wave_identity_mutations (__main__.ProductSessionTests.test_id_agent_and_wave_identity_mutations) ... ok\ntest_missing_accepted_notes_and_nonregular_files_fail_closed (__main__.ProductSessionTests.test_missing_accepted_notes_and_nonregular_files_fail_closed) ... ok\ntest_note_paths_cannot_leave_current_session_or_change_identity (__main__.ProductSessionTests.test_note_paths_cannot_leave_current_session_or_change_identity) ... ok\ntest_ownership_supports_actual_scopes_and_directories (__main__.ProductSessionTests.test_ownership_supports_actual_scopes_and_directories) ... ok\ntest_ownership_traversal_globs_malformed_scopes_and_special_paths_fail (__main__.ProductSessionTests.test_ownership_traversal_globs_malformed_scopes_and_special_paths_fail) ... ok\ntest_partial_progress_never_certifies_completion (__main__.ProductSessionTests.test_partial_progress_never_certifies_completion) ... ok\ntest_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) ... ok\ntest_required_task_acceptance_and_owned_fields (__main__.ProductSessionTests.test_required_task_acceptance_and_owned_fields) ... ok\ntest_running_optional_notes_but_declared_evidence_must_match (__main__.ProductSessionTests.test_running_optional_notes_but_declared_evidence_must_match) ... ok\ntest_schema_count_and_actual_status_are_not_coercible (__main__.ProductSessionTests.test_schema_count_and_actual_status_are_not_coercible) ... ok\ntest_substantive_floor_does_not_impose_retroactive_word_ceiling (__main__.ProductSessionTests.test_substantive_floor_does_not_impose_retroactive_word_ceiling) ... ok\ntest_symlink_leaf_parent_ownership_and_root_are_rejected (__main__.ProductSessionTests.test_symlink_leaf_parent_ownership_and_root_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 1.275s\n\nOK\n"
+          },
+          {
+            "case": "symlinked_temp_directory",
+            "command": [
+              "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+              "-B",
+              "tests/test_product_session.py",
+              "-v"
+            ],
+            "temp_directory": "/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/alias",
+            "canonical_temp_directory": "/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/real",
+            "exit_code": 1,
+            "stdout": "",
+            "stderr": "test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth (__main__.ProductSessionTests.test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth) ... ok\ntest_byte_bounds_are_exact_and_have_no_word_ceiling (__main__.ProductSessionTests.test_byte_bounds_are_exact_and_have_no_word_ceiling) ... ok\ntest_changed_inputs_during_open_are_rejected (__main__.ProductSessionTests.test_changed_inputs_during_open_are_rejected) ... FAIL\ntest_cli_progress_success_and_strict_failure_are_machine_readable (__main__.ProductSessionTests.test_cli_progress_success_and_strict_failure_are_machine_readable) ... ok\ntest_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves (__main__.ProductSessionTests.test_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves) ... ok\ntest_fifo_inputs_are_rejected_before_open (__main__.ProductSessionTests.test_fifo_inputs_are_rejected_before_open) ... ok\ntest_hash_tampering_and_crlf_use_raw_bytes (__main__.ProductSessionTests.test_hash_tampering_and_crlf_use_raw_bytes) ... ok\ntest_id_agent_and_wave_identity_mutations (__main__.ProductSessionTests.test_id_agent_and_wave_identity_mutations) ... ok\ntest_missing_accepted_notes_and_nonregular_files_fail_closed (__main__.ProductSessionTests.test_missing_accepted_notes_and_nonregular_files_fail_closed) ... ok\ntest_note_paths_cannot_leave_current_session_or_change_identity (__main__.ProductSessionTests.test_note_paths_cannot_leave_current_session_or_change_identity) ... ok\ntest_ownership_supports_actual_scopes_and_directories (__main__.ProductSessionTests.test_ownership_supports_actual_scopes_and_directories) ... ok\ntest_ownership_traversal_globs_malformed_scopes_and_special_paths_fail (__main__.ProductSessionTests.test_ownership_traversal_globs_malformed_scopes_and_special_paths_fail) ... ok\ntest_partial_progress_never_certifies_completion (__main__.ProductSessionTests.test_partial_progress_never_certifies_completion) ... ok\ntest_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) ... \n  test_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) (path=PosixPath('/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/alias/b3-product-record-test-czzm_auw/repo/docs')) ... FAIL\n  test_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) (path=PosixPath('/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/alias/b3-product-record-test-czzm_auw/repo/docs/development/2026-11-15-product-continuation/notes')) ... FAIL\n  test_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) (path=PosixPath('/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/alias/b3-product-record-test-czzm_auw/repo/docs/development/2026-11-15-product-continuation/notes/A01-synthetic-fixture.md')) ... FAIL\ntest_required_task_acceptance_and_owned_fields (__main__.ProductSessionTests.test_required_task_acceptance_and_owned_fields) ... ok\ntest_running_optional_notes_but_declared_evidence_must_match (__main__.ProductSessionTests.test_running_optional_notes_but_declared_evidence_must_match) ... ok\ntest_schema_count_and_actual_status_are_not_coercible (__main__.ProductSessionTests.test_schema_count_and_actual_status_are_not_coercible) ... ok\ntest_substantive_floor_does_not_impose_retroactive_word_ceiling (__main__.ProductSessionTests.test_substantive_floor_does_not_impose_retroactive_word_ceiling) ... ok\ntest_symlink_leaf_parent_ownership_and_root_are_rejected (__main__.ProductSessionTests.test_symlink_leaf_parent_ownership_and_root_are_rejected) ... ok\n\n======================================================================\nFAIL: test_changed_inputs_during_open_are_rejected (__main__.ProductSessionTests.test_changed_inputs_during_open_are_rejected)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 386, in test_changed_inputs_during_open_are_rejected\n    self.assert_error(CHECKER.check(self.root, True), \"note_read\")\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 92, in assert_error\n    self.assertEqual(report[\"status\"], \"failed\")\nAssertionError: 'incomplete' != 'failed'\n- incomplete\n+ failed\n\n\n======================================================================\nFAIL: test_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) (path=PosixPath('/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/alias/b3-product-record-test-czzm_auw/repo/docs'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 344, in test_reparse_points_are_rejected_on_windows_metadata\n    self.assert_error(CHECKER.check(self.root, True))\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 92, in assert_error\n    self.assertEqual(report[\"status\"], \"failed\")\nAssertionError: 'incomplete' != 'failed'\n- incomplete\n+ failed\n\n\n======================================================================\nFAIL: test_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) (path=PosixPath('/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/alias/b3-product-record-test-czzm_auw/repo/docs/development/2026-11-15-product-continuation/notes'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 344, in test_reparse_points_are_rejected_on_windows_metadata\n    self.assert_error(CHECKER.check(self.root, True))\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 92, in assert_error\n    self.assertEqual(report[\"status\"], \"failed\")\nAssertionError: 'incomplete' != 'failed'\n- incomplete\n+ failed\n\n\n======================================================================\nFAIL: test_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) (path=PosixPath('/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-p7mgz2nw/alias/b3-product-record-test-czzm_auw/repo/docs/development/2026-11-15-product-continuation/notes/A01-synthetic-fixture.md'))\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 344, in test_reparse_points_are_rejected_on_windows_metadata\n    self.assert_error(CHECKER.check(self.root, True))\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 92, in assert_error\n    self.assertEqual(report[\"status\"], \"failed\")\nAssertionError: 'incomplete' != 'failed'\n- incomplete\n+ failed\n\n\n----------------------------------------------------------------------\nRan 19 tests in 1.328s\n\nFAILED (failures=4)\n"
+          }
+        ]
+      },
+      {
+        "phase": "after",
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+        "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+        "test_sha256": "2129745bcb1221b8b365af774ed631cf11d6916df3a6ca254c31b77beb9f26fd",
+        "checker_sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c",
+        "records": [
+          {
+            "case": "ordinary_directory",
+            "command": [
+              "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+              "-B",
+              "tests/test_product_session.py",
+              "-v"
+            ],
+            "temp_directory": "/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-i9lzgk9i/ordinary",
+            "canonical_temp_directory": "/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-i9lzgk9i/ordinary",
+            "exit_code": 0,
+            "stdout": "",
+            "stderr": "test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth (__main__.ProductSessionTests.test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth) ... ok\ntest_byte_bounds_are_exact_and_have_no_word_ceiling (__main__.ProductSessionTests.test_byte_bounds_are_exact_and_have_no_word_ceiling) ... ok\ntest_changed_inputs_during_open_are_rejected (__main__.ProductSessionTests.test_changed_inputs_during_open_are_rejected) ... ok\ntest_cli_progress_success_and_strict_failure_are_machine_readable (__main__.ProductSessionTests.test_cli_progress_success_and_strict_failure_are_machine_readable) ... ok\ntest_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves (__main__.ProductSessionTests.test_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves) ... ok\ntest_fifo_inputs_are_rejected_before_open (__main__.ProductSessionTests.test_fifo_inputs_are_rejected_before_open) ... ok\ntest_hash_tampering_and_crlf_use_raw_bytes (__main__.ProductSessionTests.test_hash_tampering_and_crlf_use_raw_bytes) ... ok\ntest_id_agent_and_wave_identity_mutations (__main__.ProductSessionTests.test_id_agent_and_wave_identity_mutations) ... ok\ntest_missing_accepted_notes_and_nonregular_files_fail_closed (__main__.ProductSessionTests.test_missing_accepted_notes_and_nonregular_files_fail_closed) ... ok\ntest_note_paths_cannot_leave_current_session_or_change_identity (__main__.ProductSessionTests.test_note_paths_cannot_leave_current_session_or_change_identity) ... ok\ntest_ownership_supports_actual_scopes_and_directories (__main__.ProductSessionTests.test_ownership_supports_actual_scopes_and_directories) ... ok\ntest_ownership_traversal_globs_malformed_scopes_and_special_paths_fail (__main__.ProductSessionTests.test_ownership_traversal_globs_malformed_scopes_and_special_paths_fail) ... ok\ntest_partial_progress_never_certifies_completion (__main__.ProductSessionTests.test_partial_progress_never_certifies_completion) ... ok\ntest_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) ... ok\ntest_required_task_acceptance_and_owned_fields (__main__.ProductSessionTests.test_required_task_acceptance_and_owned_fields) ... ok\ntest_running_optional_notes_but_declared_evidence_must_match (__main__.ProductSessionTests.test_running_optional_notes_but_declared_evidence_must_match) ... ok\ntest_schema_count_and_actual_status_are_not_coercible (__main__.ProductSessionTests.test_schema_count_and_actual_status_are_not_coercible) ... ok\ntest_substantive_floor_does_not_impose_retroactive_word_ceiling (__main__.ProductSessionTests.test_substantive_floor_does_not_impose_retroactive_word_ceiling) ... ok\ntest_symlink_leaf_parent_ownership_and_root_are_rejected (__main__.ProductSessionTests.test_symlink_leaf_parent_ownership_and_root_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 1.394s\n\nOK\n"
+          },
+          {
+            "case": "symlinked_temp_directory",
+            "command": [
+              "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+              "-B",
+              "tests/test_product_session.py",
+              "-v"
+            ],
+            "temp_directory": "/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-i9lzgk9i/alias",
+            "canonical_temp_directory": "/workspace/scratch/5b7d983ac078/a51-temp-alias-repro-i9lzgk9i/real",
+            "exit_code": 0,
+            "stdout": "",
+            "stderr": "test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth (__main__.ProductSessionTests.test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth) ... ok\ntest_byte_bounds_are_exact_and_have_no_word_ceiling (__main__.ProductSessionTests.test_byte_bounds_are_exact_and_have_no_word_ceiling) ... ok\ntest_changed_inputs_during_open_are_rejected (__main__.ProductSessionTests.test_changed_inputs_during_open_are_rejected) ... ok\ntest_cli_progress_success_and_strict_failure_are_machine_readable (__main__.ProductSessionTests.test_cli_progress_success_and_strict_failure_are_machine_readable) ... ok\ntest_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves (__main__.ProductSessionTests.test_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves) ... ok\ntest_fifo_inputs_are_rejected_before_open (__main__.ProductSessionTests.test_fifo_inputs_are_rejected_before_open) ... ok\ntest_hash_tampering_and_crlf_use_raw_bytes (__main__.ProductSessionTests.test_hash_tampering_and_crlf_use_raw_bytes) ... ok\ntest_id_agent_and_wave_identity_mutations (__main__.ProductSessionTests.test_id_agent_and_wave_identity_mutations) ... ok\ntest_missing_accepted_notes_and_nonregular_files_fail_closed (__main__.ProductSessionTests.test_missing_accepted_notes_and_nonregular_files_fail_closed) ... ok\ntest_note_paths_cannot_leave_current_session_or_change_identity (__main__.ProductSessionTests.test_note_paths_cannot_leave_current_session_or_change_identity) ... ok\ntest_ownership_supports_actual_scopes_and_directories (__main__.ProductSessionTests.test_ownership_supports_actual_scopes_and_directories) ... ok\ntest_ownership_traversal_globs_malformed_scopes_and_special_paths_fail (__main__.ProductSessionTests.test_ownership_traversal_globs_malformed_scopes_and_special_paths_fail) ... ok\ntest_partial_progress_never_certifies_completion (__main__.ProductSessionTests.test_partial_progress_never_certifies_completion) ... ok\ntest_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) ... ok\ntest_required_task_acceptance_and_owned_fields (__main__.ProductSessionTests.test_required_task_acceptance_and_owned_fields) ... ok\ntest_running_optional_notes_but_declared_evidence_must_match (__main__.ProductSessionTests.test_running_optional_notes_but_declared_evidence_must_match) ... ok\ntest_schema_count_and_actual_status_are_not_coercible (__main__.ProductSessionTests.test_schema_count_and_actual_status_are_not_coercible) ... ok\ntest_substantive_floor_does_not_impose_retroactive_word_ceiling (__main__.ProductSessionTests.test_substantive_floor_does_not_impose_retroactive_word_ceiling) ... ok\ntest_symlink_leaf_parent_ownership_and_root_are_rejected (__main__.ProductSessionTests.test_symlink_leaf_parent_ownership_and_root_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 1.409s\n\nOK\n"
+          }
+        ]
+      }
+    ],
+    "result": "Before repair: ordinary 19 methods passed in 1.275 s; alias produced exactly four failures across 19 methods in 1.328 s. After repair: ordinary 19/19 passed in 1.394 s; alias 19/19 passed in 1.409 s; no skips."
+  },
+  "preservation": {
+    "checker_sha256_before": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c",
+    "checker_sha256_after": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c",
+    "checker_notes_and_ledger_match_c4486ba": true,
+    "owned_diff_whitespace_passed": true,
+    "accepted_A51_note_unchanged": true,
+    "previous_A51_reports_unchanged": true,
+    "shared_build_untouched": true,
+    "committed_or_pushed": false
+  },
+  "disposition": "Narrow test-fixture portability repair is locally verified and awaits integrator review plus fresh-source macOS hosted execution. c4486ba remains a failed core qualification; do not relabel it as passing or inherit d8 results.",
+  "next_gate": "After the old workflows finish, publish the integrator-approved source and observe its exact macOS core job passing all 157 required CTests, including all 19 product-session methods; preserve strict real-ledger verification as a separate Linux-only step."
+}

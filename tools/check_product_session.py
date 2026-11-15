@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 import re
 import stat
+import sys
 
 
 SESSION = "2026-11-15-product-continuation"
@@ -84,6 +85,18 @@ def _signature(metadata):
     return _identity(metadata) + (metadata.st_size, metadata.st_mtime_ns, metadata.st_ctime_ns)
 
 
+def _opening_signature(metadata):
+    if sys.platform != "win32":
+        return _signature(metadata)
+    # CPython's Windows path APIs can report birth time as ctime and synthesize
+    # execute bits from the filename; fstat can report change time without those
+    # bits. Compare compatible fields here, retaining full signatures within
+    # each API before/after the read (https://github.com/python/cpython/issues/157671).
+    return (metadata.st_dev, metadata.st_ino, metadata.st_mode & ~0o111,
+            metadata.st_size, metadata.st_mtime_ns,
+            getattr(metadata, "st_birthtime_ns", None))
+
+
 def _safe_path(root, relative, *, allow_missing=False, directory_ok=False):
     """Check canonical local references without following symlinks/reparse points."""
     if (type(relative) is not str or not 0 < len(relative) <= 1024
@@ -131,7 +144,7 @@ def _read(root, relative, limit):
         raise
     with stream:
         opened = os.fstat(stream.fileno())
-        if not stat.S_ISREG(opened.st_mode) or _signature(before) != _signature(opened):
+        if not stat.S_ISREG(opened.st_mode) or _opening_signature(before) != _opening_signature(opened):
             raise ValueError("file changed while opening")
         raw = stream.read(limit + 1)
         if (len(raw) > limit or len(raw) != opened.st_size

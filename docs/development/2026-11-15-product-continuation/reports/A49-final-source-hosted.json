@@ -1,0 +1,4666 @@
+{
+  "schema": "product-linux-final-source-hosted-audit-v1",
+  "worker": "/root/w09_a49_linux_hosted",
+  "assignment": "A49",
+  "wave": 9,
+  "followup_of_existing_accepted_worker": true,
+  "new_worker_or_wave": false,
+  "source": {
+    "commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "tree": "2d21135e570c5b328a7f54d17582ffc7ac62a489",
+    "parent": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "remote_git_commit_matches_local": true,
+    "published_inputs": {
+      ".github/workflows/ci.yml": {
+        "bytes": 9253,
+        "sha256": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f"
+      },
+      ".github/workflows/standalone.yml": {
+        "bytes": 60379,
+        "sha256": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a"
+      },
+      "tools/check_product_session.py": {
+        "bytes": 20345,
+        "sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c"
+      },
+      "tests/test_product_session.py": {
+        "bytes": 21474,
+        "sha256": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55"
+      },
+      "tools/plot_crossover_characterization.py": {
+        "bytes": 19918,
+        "sha256": "3bc78b38516de384cf07e94b1cd9f33dbd71c0a6057b2012617814dfbd29ccf4"
+      },
+      "tests/test_plot_crossover_characterization.py": {
+        "bytes": 12324,
+        "sha256": "dd7ff3d635c54e680594fd8af6771cfe2af66871570a0cd5b1cb9df28f50b360"
+      },
+      "docs/development/2026-11-15-product-continuation/assignments.json": {
+        "bytes": 48995,
+        "sha256": "d361c48f1e742bc23d44f9a0c664dae4c350577d67c502bec9bc7cab8eee6819"
+      },
+      "docs/development/2026-11-15-product-continuation/notes/A49-linux-hosted.md": {
+        "bytes": 2617,
+        "sha256": "97a10fd19a3f1b5ec53b47e7a1fcd67cb1da3841bafc1c6eb43c5af70d979438"
+      },
+      "docs/development/2026-11-15-product-continuation/reports/A49-linux-hosted.json": {
+        "bytes": 142801,
+        "sha256": "c5f75b447a912f2d16da4ff18474541dbc405636293b467a5c6f430a043bba30"
+      },
+      "docs/reviews/PRODUCT_LINUX_HOSTED_REVIEW.md": {
+        "bytes": 13283,
+        "sha256": "2d9e9debc295f1e7b17f2111778c0df8c66bac4656d34d3521aa59c5d4b57233"
+      }
+    },
+    "native_production_build_workflow_and_dependency_paths_unchanged_from_d8": true,
+    "unchanged_comparison_paths": [
+      "apps/standalone",
+      "src",
+      "include",
+      "CMakeLists.txt",
+      "CMakePresets.json",
+      ".github/workflows/standalone.yml",
+      "data/dependencies"
+    ]
+  },
+  "strict_product_records": {
+    "job_id": 132685867405,
+    "command": "python tools/check_product_session.py --repo . --json",
+    "allow_incomplete": false,
+    "stdout_json_identity_without_runner_timestamps": {
+      "first_line": 3365,
+      "last_line": 5428,
+      "bytes": 59441,
+      "sha256": "c6c4f61c7a7f4530fe7cf74b46dc884da4b5f2729b48d9811ddca49f53f15fcb"
+    },
+    "retained_local_json_identity": {
+      "path": "docs/development/2026-11-15-product-continuation/reports/product-session-strict.json",
+      "bytes": 59441,
+      "sha256": "c6c4f61c7a7f4530fe7cf74b46dc884da4b5f2729b48d9811ddca49f53f15fcb"
+    },
+    "hosted_json_byte_identical_to_retained_local_result": true,
+    "summary": {
+      "accepted_waves": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "assignments_per_wave": 6,
+      "checked_notes_sha256": "bdae07733727bfad0e1731ee3054630e077d88cbe944a5d048e94dd76fa2e980",
+      "checker": {
+        "bytes": 20345,
+        "path": "tools/check_product_session.py",
+        "sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c"
+      },
+      "claim": "Retained record consistency only. This cannot attest actual tool dispatch, substantive integrator review, semantic truth, test execution, publication, product readiness, visual equality or physical/model fidelity. The narrative floor is a structural check; it does not replace substantive acceptance.",
+      "completion_valid": true,
+      "counts": {
+        "accepted": 60,
+        "distinct_agents": 60,
+        "distinct_ids": 60,
+        "distinct_note_paths": 60,
+        "invalid_status": 0,
+        "recorded": 60,
+        "review_complete": 0,
+        "running": 0,
+        "verified_accepted_notes": 60
+      },
+      "error_count": 0,
+      "errors": [],
+      "execution_attested": false,
+      "external_dispatch_attested": false,
+      "manifest": {
+        "bytes": 48995,
+        "path": "docs/development/2026-11-15-product-continuation/assignments.json",
+        "sha256": "d361c48f1e742bc23d44f9a0c664dae4c350577d67c502bec9bc7cab8eee6819"
+      },
+      "minimum_distinct_narrative_words": 40,
+      "minimum_narrative_words": 100,
+      "missing_ids": [],
+      "mode": "strict_completion",
+      "product_or_model_readiness_attested": false,
+      "record_consistency_valid": true,
+      "required_accepted": 60,
+      "required_waves": 10,
+      "schema": "b3-product-session-check-v1",
+      "scope": "retained_record_consistency_only",
+      "semantic_acceptance_attested": false,
+      "session": "2026-11-15-product-continuation",
+      "start_commit": "647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb",
+      "status": "passed",
+      "wave_counts": [
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 1
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 2
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 3
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 4
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 5
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 6
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 7
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 8
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 9
+        },
+        {
+          "accepted": 6,
+          "recorded": 6,
+          "review_complete": 0,
+          "running": 0,
+          "wave": 10
+        }
+      ]
+    },
+    "independent_identity_and_count_checks": {
+      "fields_match_local_receipt": true,
+      "notes": 60,
+      "all_60_notes_verified": true,
+      "manifest_matches_published_hash": true,
+      "checker_matches_published_hash": true
+    },
+    "checked_notes": [
+      {
+        "id": "A01",
+        "note": "notes/A01-atlas-foundation.md",
+        "bytes": 6042,
+        "sha256": "40182ce763969f1f0e49a00984d4e5105eeab0b7c90d2ec2608227de29fb865f",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A02",
+        "note": "notes/A02-atlas-console.md",
+        "bytes": 6585,
+        "sha256": "54a75ddf5101f495b2b2456381aa01366a2726428d83b59004f022fbb4f2c8b1",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A03",
+        "note": "notes/A03-atlas-electronics.md",
+        "bytes": 6733,
+        "sha256": "40d49bffc248accf1de8938f3d53ab4bf55908a329403257b13c07c1e3863868",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A04",
+        "note": "notes/A04-atlas-rotary.md",
+        "bytes": 5912,
+        "sha256": "1dc2d6ee74359183074fab14453279ed6cb4e107da017d427c6b02d1181cb327",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A05",
+        "note": "notes/A05-atlas-visual.md",
+        "bytes": 6716,
+        "sha256": "4030c449ac17b3c6e4f3d40c9a8be52809abef25acd3af0504c44d361008835f",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A06",
+        "note": "notes/A06-atlas-product.md",
+        "bytes": 7309,
+        "sha256": "6b933b0a588edee11d568e54e9fbe158b3001447d2d860bec3ce21f28b8ca329",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A07",
+        "note": "notes/A07-channel-contract.md",
+        "bytes": 2317,
+        "sha256": "0af6bd03df20eba3508220007c6d31c62904d7808b8df8dba0c2ec5b4c69717f",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A08",
+        "note": "notes/A08-expression-contract.md",
+        "bytes": 2288,
+        "sha256": "090c9843d6edc6aaa39425e9bd7fd2ce00602e36566d823ec77bbfe0cf96ad80",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A09",
+        "note": "notes/A09-crossover-contract.md",
+        "bytes": 2634,
+        "sha256": "d9b43ee281f9548a3e7749828ad0b56585ebcf7bda4430be1f9436d4e604e87e",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A10",
+        "note": "notes/A10-midi-contract-review.md",
+        "bytes": 3436,
+        "sha256": "bbbc57b6b05748092f06da41509b08b4a8d80728c54db37920955bf79e97a2b9",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A11",
+        "note": "notes/A11-visual-contract.md",
+        "bytes": 2288,
+        "sha256": "c305ec2aec835b8f23a74c06590b8dc85381b320f68bf3da82bb3acf7bee5b62",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A12",
+        "note": "notes/A12-crossover-review.md",
+        "bytes": 3565,
+        "sha256": "b1b87f4f4c77e7241e23caaabb1c9264d08b7c2be98f2bfecde93322cae89992",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A13",
+        "note": "notes/A13-crossover-native.md",
+        "bytes": 2636,
+        "sha256": "aa486688ebfb5133bc83fb9b378713822afc4611c3aa7121bd9df0b0be215bf9",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A14",
+        "note": "notes/A14-midi-adapter.md",
+        "bytes": 2737,
+        "sha256": "fd35fd2f9f104e66b4bcd73f166b8e8f17417359596105abdc2d9531491101f2",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A15",
+        "note": "notes/A15-visual-implementation.md",
+        "bytes": 2522,
+        "sha256": "d5f894c8a6e53fdac18d7af08a6034f495521b6761e224cc3d6c3f9ab850bf83",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A16",
+        "note": "notes/A16-native-calibration.md",
+        "bytes": 2789,
+        "sha256": "c67b1557c80b5d354adcf0b7b798313063fc09791e23770d4b9944a6e6d945d6",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A17",
+        "note": "notes/A17-crossover-reference.md",
+        "bytes": 2996,
+        "sha256": "cf2156d48f32c8e0fc1f9c5c5b0263d28fe861283546555daf8cbf332decec34",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A18",
+        "note": "notes/A18-calibration-overlay.md",
+        "bytes": 2316,
+        "sha256": "b4db01b4f24ded7d58b8249ffff8a7ae4ba46ac0aa90098028b95eded098c601",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A19",
+        "note": "notes/A19-crossover-response.md",
+        "bytes": 3485,
+        "sha256": "983e6e679deb3a4573e10461c788a4c001096324d0e1c56e3bdefec23ecf7c43",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A20",
+        "note": "notes/A20-crossover-lifecycle.md",
+        "bytes": 3155,
+        "sha256": "c4d86db8729c2b148c3fc4634905266dfed3942ad70816d80c790d79443aa320",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A21",
+        "note": "notes/A21-channel-acceptance.md",
+        "bytes": 3378,
+        "sha256": "9abf01918b41b21662971447b649f13e97ecd983407134a3149a9c99c84af371",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A22",
+        "note": "notes/A22-calibration-diagnostics.md",
+        "bytes": 3065,
+        "sha256": "810ee88bfdd59b0ead8bf844b065985739ba26bfa81fe08157f7714afec9065a",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A23",
+        "note": "notes/A23-visual-acceptance.md",
+        "bytes": 2797,
+        "sha256": "02425e31339cdfb7ae1e53b1784f2dee5fae9bace9bf76a3c89de54aba27e2c7",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A24",
+        "note": "notes/A24-native-midi-acceptance.md",
+        "bytes": 3081,
+        "sha256": "b01f10d2d1a1aa1566f217d9ea8e8b34dae7a45f92b310b4d445e2e0186c094a",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A25",
+        "note": "notes/A25-crossover-allocation.md",
+        "bytes": 3003,
+        "sha256": "ad046b2ce83b4f0d2cae860324b8901bc575680da4c6ecc1eb3525201f9c93bc",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A26",
+        "note": "notes/A26-native-calibration-lifecycle.md",
+        "bytes": 3060,
+        "sha256": "2be9daf4ea2a9afdf5cd8b647974c1a29ec97e84aab37077c6104eaf64d1fb15",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A27",
+        "note": "notes/A27-paint-performance.md",
+        "bytes": 3063,
+        "sha256": "d5fe12583e97aa6d33c24a47acb3c20c1dc9cdd8be28b2b6e62de852586b93e6",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A28",
+        "note": "notes/A28-crossover-characterization.md",
+        "bytes": 2891,
+        "sha256": "930d3546d63a6d3caae6af4c22ec6a28b096fd6794257eb9dc47d8f2d0d464aa",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A29",
+        "note": "notes/A29-compatibility.md",
+        "bytes": 2582,
+        "sha256": "86ad3615bc40de087851a5d944e77327326b9f1eb4568fd924dd3e55ccb1ae16",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A30",
+        "note": "notes/A30-portability-review.md",
+        "bytes": 3242,
+        "sha256": "9cbc76fbd2e2a3d92f5712a12ec9eb8ba2d07ac2ec0c942d05a32ff6d77472d1",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A31",
+        "note": "notes/A31-crossover-install.md",
+        "bytes": 3223,
+        "sha256": "490cb2ca292f5d35e0d746cb02799e1c2322d8c433259f195d1c03853078bf21",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A32",
+        "note": "notes/A32-midi-operating-guide.md",
+        "bytes": 2932,
+        "sha256": "3da6aef43041e63eaa4ea76a01e6f02473eee958039cf30d7d7b3b1deb04eab4",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A33",
+        "note": "notes/A33-crossover-developer-guide.md",
+        "bytes": 2828,
+        "sha256": "3e3f7b35c998775e725cf74dfc429389bf8d43f164ccfeb951b41aaea8439432",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A34",
+        "note": "notes/A34-reference-gap-review.md",
+        "bytes": 2738,
+        "sha256": "7538b7282979de4f612215310165eb2b8d4d2edff49b1d06efc28b86b4cabb8f",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A35",
+        "note": "notes/A35-readme-current-design.md",
+        "bytes": 3035,
+        "sha256": "a2252e875b716702f81f7f1d6e4d3229f6e1a151eb719b4701f780d0e1fc674c",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A36",
+        "note": "notes/A36-plan-status-reconciliation.md",
+        "bytes": 2605,
+        "sha256": "591f5a275313462f82ccd604a70c40bca0cbab55c26b3921db6af0504adb3525",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A37",
+        "note": "notes/A37-sanitizer-ci-coverage.md",
+        "bytes": 2701,
+        "sha256": "f3de53a6082381c3b4148930640fd17992f6cb818f67957f3ec06e752b85ea22",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A38",
+        "note": "notes/A38-integration-review.md",
+        "bytes": 2814,
+        "sha256": "6578e115dab190dadbc626c1292031fbf4f00ef8bac39216549a9cdc91870f2b",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A39",
+        "note": "notes/A39-capture-admission.md",
+        "bytes": 2812,
+        "sha256": "48ac2bd5067b58516f8b1f12823798f8cef053530206dd74cb1226ed8cad4ec6",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A40",
+        "note": "notes/A40-native-product-gallery.md",
+        "bytes": 2656,
+        "sha256": "77e6fc590ac425a4e173faee403fc7644d80ebabeee08283c0bf04d9c5df6602",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A41",
+        "note": "notes/A41-gallery-admission.md",
+        "bytes": 2852,
+        "sha256": "2840a2f303f86dbd7ae99267931316769d47830e41dcff8c6d46596ab41eb86b",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A42",
+        "note": "notes/A42-calibration-modal-raster.md",
+        "bytes": 2872,
+        "sha256": "f5950b6c75e194596c0eda200e989733ccbfaeea75e934f9932629788eaebad1",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A43",
+        "note": "notes/A43-installed-workflows.md",
+        "bytes": 3384,
+        "sha256": "e29966b9938af96541f1897f501b83cf4a13c42f76b6fc1ca2baefc2cde0c121",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A44",
+        "note": "notes/A44-provenance-licenses.md",
+        "bytes": 2590,
+        "sha256": "2370834d04d9666ba8cbd0b88cee9fdf84d9004a816c8e0d78d7e634a5305b8e",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A45",
+        "note": "notes/A45-recovery-resources.md",
+        "bytes": 2588,
+        "sha256": "9909c089e560118c436b452d56ac8a8fd320b7a1b3e81cf36061365fcf618e59",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A46",
+        "note": "notes/A46-session-validator.md",
+        "bytes": 2854,
+        "sha256": "ff268e38bc0aa0f4450a10fbb5a3f1e5b90b0dc1d5e76e329923f81d93d2dffc",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A47",
+        "note": "notes/A47-native-recovery-review.md",
+        "bytes": 2924,
+        "sha256": "9b1fa12d0063945d6b638e4dec9a58e2e09de197c649779d5c8c26657760ad25",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A48",
+        "note": "notes/A48-numerical-admission.md",
+        "bytes": 2758,
+        "sha256": "0862bbb49f705ea3dbf6a68723a2eb26c85bae7c778e3fa31f466013b0b9936d",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A49",
+        "note": "notes/A49-linux-hosted.md",
+        "bytes": 2617,
+        "sha256": "97a10fd19a3f1b5ec53b47e7a1fcd67cb1da3841bafc1c6eb43c5af70d979438",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A50",
+        "note": "notes/A50-windows-hosted.md",
+        "bytes": 2628,
+        "sha256": "b710b886e25a6b789fc72bf3169178e8a20f891574b5ec5fe06a7652bee8e1c2",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A51",
+        "note": "notes/A51-macos-hosted.md",
+        "bytes": 2579,
+        "sha256": "f6eb1ac0fed668e38f31d8035c81d366fe89cae07bbdff260d6ffa7fe2028e82",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A52",
+        "note": "notes/A52-vst3-hosted.md",
+        "bytes": 2462,
+        "sha256": "876310c38b9f2569c18bf52119cacf4c78ae7626e090a88b648d50ebbb496843",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A53",
+        "note": "notes/A53-current-docs.md",
+        "bytes": 2608,
+        "sha256": "008f8d8480c413f026899b419e635dd6666b70deb67c7d46de92a2a3d7816de7",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A54",
+        "note": "notes/A54-ui-acceptance.md",
+        "bytes": 2573,
+        "sha256": "762c8a3a5326382955e6238558d24fd12c57c70aa765c084bdee5c6ab3aea67f",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A55",
+        "note": "notes/A55-code-acceptance.md",
+        "bytes": 2536,
+        "sha256": "957ea8742cfada8b8e3466115710c8eefd28d00f2efaa5410b46610e229205c6",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A56",
+        "note": "notes/A56-phase-readiness.md",
+        "bytes": 2792,
+        "sha256": "a9120b622bc2ab2a7d09b63411f3e344d7e30530377e518b41adbee2619bf2bc",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A57",
+        "note": "notes/A57-ledger-audit.md",
+        "bytes": 2780,
+        "sha256": "8b8595f528bf663829c42b426b23b676c47bdb058980bdb63ca65482af2c083b",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A58",
+        "note": "notes/A58-publication-audit.md",
+        "bytes": 2320,
+        "sha256": "013da06ee982cccd0417be00fca3550164f4e1890971b4285d1b311432808a42",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A59",
+        "note": "notes/A59-recovery-audit.md",
+        "bytes": 2508,
+        "sha256": "54f76990118d3ab93638ef62512bda4ec96eba9aed4ffb9d5f067c819f330da9",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      },
+      {
+        "id": "A60",
+        "note": "notes/A60-final-requirements.md",
+        "bytes": 2585,
+        "sha256": "fb7fcb7b68aa52f2fbb3f64750a16feb47c445850d4d9e1f610b3160a90700de",
+        "sha256_matches": true,
+        "status": "accepted",
+        "structural_floor_met": true
+      }
+    ],
+    "checked_ownership_count": 173,
+    "primary_excerpts": [
+      {
+        "line": 3354,
+        "text": "2026-11-15T03:32:58.8901766Z \u001b[36;1mpython tools/check_product_session.py --repo . --json | tee ci-logs/product-session-records.json\u001b[0m"
+      },
+      {
+        "line": 5318,
+        "text": "2026-11-15T03:32:58.9889905Z     \"sha256\": \"49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c\""
+      },
+      {
+        "line": 5321,
+        "text": "2026-11-15T03:32:58.9890617Z   \"completion_valid\": true,"
+      },
+      {
+        "line": 5324,
+        "text": "2026-11-15T03:32:58.9890766Z     \"distinct_agents\": 60,"
+      },
+      {
+        "line": 5331,
+        "text": "2026-11-15T03:32:58.9891292Z     \"verified_accepted_notes\": 60"
+      },
+      {
+        "line": 5333,
+        "text": "2026-11-15T03:32:58.9891383Z   \"error_count\": 0,"
+      },
+      {
+        "line": 5334,
+        "text": "2026-11-15T03:32:58.9891433Z   \"errors\": [],"
+      },
+      {
+        "line": 5340,
+        "text": "2026-11-15T03:32:58.9891893Z     \"sha256\": \"d361c48f1e742bc23d44f9a0c664dae4c350577d67c502bec9bc7cab8eee6819\""
+      },
+      {
+        "line": 5345,
+        "text": "2026-11-15T03:32:58.9892171Z   \"mode\": \"strict_completion\","
+      },
+      {
+        "line": 5347,
+        "text": "2026-11-15T03:32:58.9892302Z   \"record_consistency_valid\": true,"
+      },
+      {
+        "line": 5355,
+        "text": "2026-11-15T03:32:58.9892825Z   \"status\": \"passed\","
+      }
+    ]
+  },
+  "core_selection_delta_from_d8": {
+    "added": [
+      "python_test_plot_crossover_characterization",
+      "python_test_product_session"
+    ],
+    "removed": []
+  },
+  "preservation": {
+    "accepted_A49_note_untouched": true,
+    "accepted_manifest_untouched": true,
+    "previous_A49_report_untouched": true,
+    "previous_report_final_source_sha256": "c5f75b447a912f2d16da4ff18474541dbc405636293b467a5c6f430a043bba30",
+    "prior_EOF_only_formatting_change": "Integrator recorded the prior report's one-byte EOF newline removal before c448 publication. This followup does not modify that file or its data."
+  },
+  "method": "Read-only GitHub commit/job metadata and complete decoded primary logs; exact published source comparison and parsed log selections. No local build, project test, application run, source/workflow/ledger/note change, CI dispatch, commit or push.",
+  "limitations": [
+    "This is qualification of c4486 Linux jobs only, not the full platform matrix or later repair source.",
+    "Strict completion reports retained record consistency; it does not attest external dispatch, semantic acceptance, product readiness or fidelity.",
+    "Archive symbol/runtime and retained scenario-stderr checks are audited as executed assertions plus primary compile/link/test output; complete artifact payloads are not independently downloaded.",
+    "Native execution uses dummy SDL and a substituted synchronous MIDI dependency. Real controllers/audio/displays, OS callback retirement, deadlines and native accessibility remain separate.",
+    "Original b9/d556 failures and the local ptrace-blocked sanitizer control remain preserved. Only the existing named core quarantine leak exception remains; it is outside the 21 native selection.",
+    "Literal whole-interface 1:1 equality, physical/electrical/acoustic fidelity and R5/R6 integration remain unqualified."
+  ],
+  "audit_utc": "2026-11-15 03:44:42 UTC",
+  "result": "all_six_scoped_linux_jobs_passed",
+  "full_platform_matrix_green": false,
+  "workflow_runs": [
+    {
+      "id": 43672641490,
+      "name": "CI",
+      "head_sha": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "head_branch": "main",
+      "event": "push",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-15T03:30:10Z",
+      "updated_at": "2026-11-15T03:42:55Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490"
+    },
+    {
+      "id": 43672641506,
+      "name": "Native standalone",
+      "head_sha": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "head_branch": "main",
+      "event": "push",
+      "run_attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-15T03:30:10Z",
+      "updated_at": "2026-11-15T03:42:24Z",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506"
+    }
+  ],
+  "jobs": [
+    {
+      "job_id": 132685867405,
+      "name": "Release (Linux GCC)",
+      "run_id": 43672641490,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867405",
+      "status": "completed",
+      "conclusion": "success",
+      "source_commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "started_at": "2026-11-15T03:30:13Z",
+      "completed_at": "2026-11-15T03:33:03Z",
+      "primary_log": {
+        "bytes": 572191,
+        "sha256": "7cf33ee1c015612ec971392944380ba46118d5a9fdb746e5be6cdd39e1421f84",
+        "lines": 5487,
+        "hash_encoding": "UTF-8 of exact returned decoded text including any initial BOM",
+        "complete_log_retained_here": false
+      },
+      "ctest": {
+        "executed": 157,
+        "unique_names": 157,
+        "all_passed": true,
+        "results": [
+          {
+            "name": "test_contact_bank",
+            "number": 2,
+            "seconds": 0.03,
+            "log_line": 1614
+          },
+          {
+            "name": "test_contact_rate",
+            "number": 3,
+            "seconds": 0.03,
+            "log_line": 1616
+          },
+          {
+            "name": "test_control_io",
+            "number": 4,
+            "seconds": 0.03,
+            "log_line": 1618
+          },
+          {
+            "name": "test_controls",
+            "number": 5,
+            "seconds": 0.09,
+            "log_line": 1620
+          },
+          {
+            "name": "test_core_robustness",
+            "number": 6,
+            "seconds": 0,
+            "log_line": 1622
+          },
+          {
+            "name": "test_decimal",
+            "number": 7,
+            "seconds": 0.02,
+            "log_line": 1624
+          },
+          {
+            "name": "test_console_engine",
+            "number": 1,
+            "seconds": 0.21,
+            "log_line": 1626
+          },
+          {
+            "name": "test_engine",
+            "number": 8,
+            "seconds": 0.13,
+            "log_line": 1628
+          },
+          {
+            "name": "test_factory_runtime",
+            "number": 10,
+            "seconds": 0.16,
+            "log_line": 1630
+          },
+          {
+            "name": "test_fixed_registration_data",
+            "number": 11,
+            "seconds": 0,
+            "log_line": 1632
+          },
+          {
+            "name": "test_engine_rate",
+            "number": 9,
+            "seconds": 0.5,
+            "log_line": 1634
+          },
+          {
+            "name": "test_fixed_registration_engine",
+            "number": 12,
+            "seconds": 0.62,
+            "log_line": 1636
+          },
+          {
+            "name": "test_fixed_registration_lifecycle",
+            "number": 13,
+            "seconds": 0.45,
+            "log_line": 1638
+          },
+          {
+            "name": "test_host_timeline",
+            "number": 14,
+            "seconds": 0.24,
+            "log_line": 1640
+          },
+          {
+            "name": "test_leslie_crossover",
+            "number": 16,
+            "seconds": 0.11,
+            "log_line": 1642
+          },
+          {
+            "name": "test_leslie_crossover_allocation",
+            "number": 17,
+            "seconds": 0.01,
+            "log_line": 1644
+          },
+          {
+            "name": "test_leslie_crossover_lifecycle",
+            "number": 18,
+            "seconds": 0.01,
+            "log_line": 1646
+          },
+          {
+            "name": "test_note_ownership",
+            "number": 19,
+            "seconds": 0.01,
+            "log_line": 1648
+          },
+          {
+            "name": "test_input_processor",
+            "number": 15,
+            "seconds": 0.66,
+            "log_line": 1650
+          },
+          {
+            "name": "test_owned_lifecycle",
+            "number": 21,
+            "seconds": 0.13,
+            "log_line": 1652
+          },
+          {
+            "name": "test_parameter_bridge",
+            "number": 22,
+            "seconds": 0,
+            "log_line": 1654
+          },
+          {
+            "name": "test_partial_key",
+            "number": 23,
+            "seconds": 0.14,
+            "log_line": 1656
+          },
+          {
+            "name": "test_pedal_controls",
+            "number": 24,
+            "seconds": 0,
+            "log_line": 1658
+          },
+          {
+            "name": "test_pedal_engine",
+            "number": 25,
+            "seconds": 0.01,
+            "log_line": 1660
+          },
+          {
+            "name": "test_pedal_integration",
+            "number": 26,
+            "seconds": 0.05,
+            "log_line": 1662
+          },
+          {
+            "name": "test_pedal_note_ownership",
+            "number": 27,
+            "seconds": 0,
+            "log_line": 1664
+          },
+          {
+            "name": "test_pedal_realtime",
+            "number": 28,
+            "seconds": 0,
+            "log_line": 1666
+          },
+          {
+            "name": "test_pedal_reference",
+            "number": 29,
+            "seconds": 0.01,
+            "log_line": 1668
+          },
+          {
+            "name": "test_pedal_routing",
+            "number": 30,
+            "seconds": 0,
+            "log_line": 1670
+          },
+          {
+            "name": "test_pedal_sources",
+            "number": 31,
+            "seconds": 0.08,
+            "log_line": 1672
+          },
+          {
+            "name": "test_pedal_voice",
+            "number": 32,
+            "seconds": 0,
+            "log_line": 1674
+          },
+          {
+            "name": "test_percussion",
+            "number": 33,
+            "seconds": 0,
+            "log_line": 1676
+          },
+          {
+            "name": "test_numerics",
+            "number": 20,
+            "seconds": 0.78,
+            "log_line": 1678
+          },
+          {
+            "name": "test_percussion_controls",
+            "number": 34,
+            "seconds": 0.03,
+            "log_line": 1680
+          },
+          {
+            "name": "test_percussion_rate",
+            "number": 35,
+            "seconds": 0,
+            "log_line": 1682
+          },
+          {
+            "name": "test_performance_input",
+            "number": 37,
+            "seconds": 0.05,
+            "log_line": 1684
+          },
+          {
+            "name": "test_preset_parameter_boundaries",
+            "number": 38,
+            "seconds": 0,
+            "log_line": 1686
+          },
+          {
+            "name": "test_preset_realtime",
+            "number": 39,
+            "seconds": 0.04,
+            "log_line": 1688
+          },
+          {
+            "name": "test_profile",
+            "number": 40,
+            "seconds": 0.14,
+            "log_line": 1690
+          },
+          {
+            "name": "test_performance_acceptance",
+            "number": 36,
+            "seconds": 0.36,
+            "log_line": 1692
+          },
+          {
+            "name": "test_realtime",
+            "number": 41,
+            "seconds": 0.25,
+            "log_line": 1694
+          },
+          {
+            "name": "test_realtime_console",
+            "number": 42,
+            "seconds": 0.53,
+            "log_line": 1696
+          },
+          {
+            "name": "test_rotary_history",
+            "number": 44,
+            "seconds": 0.03,
+            "log_line": 1698
+          },
+          {
+            "name": "test_realtime_pedals",
+            "number": 43,
+            "seconds": 0.45,
+            "log_line": 1700
+          },
+          {
+            "name": "test_rotary_motion",
+            "number": 46,
+            "seconds": 0.02,
+            "log_line": 1702
+          },
+          {
+            "name": "test_rotary_history_acceptance",
+            "number": 45,
+            "seconds": 0.06,
+            "log_line": 1704
+          },
+          {
+            "name": "test_rotary_propagation",
+            "number": 47,
+            "seconds": 0.01,
+            "log_line": 1706
+          },
+          {
+            "name": "test_rotary_propagation_allocation",
+            "number": 48,
+            "seconds": 0.05,
+            "log_line": 1708
+          },
+          {
+            "name": "test_rotary_renderer_transactions",
+            "number": 50,
+            "seconds": 0.02,
+            "log_line": 1710
+          },
+          {
+            "name": "test_rotary_streaming_path",
+            "number": 51,
+            "seconds": 0.1,
+            "log_line": 1712
+          },
+          {
+            "name": "test_scanner_line",
+            "number": 52,
+            "seconds": 0.24,
+            "log_line": 1714
+          },
+          {
+            "name": "test_scanner_rotor",
+            "number": 53,
+            "seconds": 0.04,
+            "log_line": 1716
+          },
+          {
+            "name": "test_rotary_renderer",
+            "number": 49,
+            "seconds": 0.48,
+            "log_line": 1718
+          },
+          {
+            "name": "test_state_exchange",
+            "number": 55,
+            "seconds": 0.02,
+            "log_line": 1720
+          },
+          {
+            "name": "test_source_rate",
+            "number": 54,
+            "seconds": 0.17,
+            "log_line": 1722
+          },
+          {
+            "name": "test_tonewheel",
+            "number": 56,
+            "seconds": 0.46,
+            "log_line": 1724
+          },
+          {
+            "name": "python_test_audio_analysis",
+            "number": 57,
+            "seconds": 0.57,
+            "log_line": 1726
+          },
+          {
+            "name": "python_test_capture",
+            "number": 59,
+            "seconds": 0.74,
+            "log_line": 1728
+          },
+          {
+            "name": "python_test_calibration_session_records",
+            "number": 58,
+            "seconds": 1.07,
+            "log_line": 1730
+          },
+          {
+            "name": "python_test_capture_audio",
+            "number": 60,
+            "seconds": 0.43,
+            "log_line": 1732
+          },
+          {
+            "name": "python_test_capture_audio_admission",
+            "number": 61,
+            "seconds": 1.7,
+            "log_line": 1734
+          },
+          {
+            "name": "python_test_capture_common",
+            "number": 63,
+            "seconds": 0.19,
+            "log_line": 1736
+          },
+          {
+            "name": "python_test_capture_comparison",
+            "number": 64,
+            "seconds": 0.45,
+            "log_line": 1738
+          },
+          {
+            "name": "python_test_capture_corpus",
+            "number": 65,
+            "seconds": 0.67,
+            "log_line": 1740
+          },
+          {
+            "name": "python_test_capture_corpus_admission",
+            "number": 66,
+            "seconds": 1.25,
+            "log_line": 1742
+          },
+          {
+            "name": "python_test_capture_cli_pipeline",
+            "number": 62,
+            "seconds": 4.43,
+            "log_line": 1744
+          },
+          {
+            "name": "python_test_capture_demo",
+            "number": 67,
+            "seconds": 1.04,
+            "log_line": 1746
+          },
+          {
+            "name": "python_test_capture_graph_scale",
+            "number": 68,
+            "seconds": 3.55,
+            "log_line": 1748
+          },
+          {
+            "name": "python_test_capture_install",
+            "number": 69,
+            "seconds": 4.39,
+            "log_line": 1750
+          },
+          {
+            "name": "python_test_capture_metadata_read",
+            "number": 71,
+            "seconds": 1.09,
+            "log_line": 1752
+          },
+          {
+            "name": "python_test_capture_numerics",
+            "number": 72,
+            "seconds": 0.6,
+            "log_line": 1754
+          },
+          {
+            "name": "python_test_capture_job",
+            "number": 70,
+            "seconds": 3.38,
+            "log_line": 1756
+          },
+          {
+            "name": "python_test_capture_policy",
+            "number": 73,
+            "seconds": 0.34,
+            "log_line": 1758
+          },
+          {
+            "name": "python_test_capture_readiness",
+            "number": 74,
+            "seconds": 0.56,
+            "log_line": 1760
+          },
+          {
+            "name": "python_test_capture_standalone_interface",
+            "number": 76,
+            "seconds": 0.25,
+            "log_line": 1762
+          },
+          {
+            "name": "python_test_capture_replay",
+            "number": 75,
+            "seconds": 5.2,
+            "log_line": 1764
+          },
+          {
+            "name": "python_test_capture_study",
+            "number": 77,
+            "seconds": 4.83,
+            "log_line": 1766
+          },
+          {
+            "name": "python_test_chapel_presets",
+            "number": 79,
+            "seconds": 4.45,
+            "log_line": 1768
+          },
+          {
+            "name": "python_test_cli_unicode",
+            "number": 80,
+            "seconds": 0.58,
+            "log_line": 1770
+          },
+          {
+            "name": "python_test_compile_fixed_registrations",
+            "number": 81,
+            "seconds": 1.56,
+            "log_line": 1772
+          },
+          {
+            "name": "python_test_compile_pedal_routing",
+            "number": 82,
+            "seconds": 2.73,
+            "log_line": 1774
+          },
+          {
+            "name": "python_test_chapel_controls",
+            "number": 78,
+            "seconds": 11.47,
+            "log_line": 1776
+          },
+          {
+            "name": "python_test_compile_rotary_profile",
+            "number": 84,
+            "seconds": 0.49,
+            "log_line": 1778
+          },
+          {
+            "name": "python_test_console_benchmark",
+            "number": 85,
+            "seconds": 0.57,
+            "log_line": 1780
+          },
+          {
+            "name": "python_test_compile_profile",
+            "number": 83,
+            "seconds": 3.27,
+            "log_line": 1782
+          },
+          {
+            "name": "python_test_console_catalog",
+            "number": 86,
+            "seconds": 0.67,
+            "log_line": 1784
+          },
+          {
+            "name": "python_test_console_evidence",
+            "number": 87,
+            "seconds": 2.77,
+            "log_line": 1786
+          },
+          {
+            "name": "python_test_continuation_ledger",
+            "number": 89,
+            "seconds": 0.2,
+            "log_line": 1788
+          },
+          {
+            "name": "python_test_console_trace",
+            "number": 88,
+            "seconds": 3.78,
+            "log_line": 1790
+          },
+          {
+            "name": "python_test_crossover_acceptance",
+            "number": 90,
+            "seconds": 1.15,
+            "log_line": 1792
+          },
+          {
+            "name": "python_test_crossover_reference",
+            "number": 92,
+            "seconds": 0.6,
+            "log_line": 1794
+          },
+          {
+            "name": "python_test_crossover_install",
+            "number": 91,
+            "seconds": 1.09,
+            "log_line": 1796
+          },
+          {
+            "name": "python_test_demo_bundle",
+            "number": 93,
+            "seconds": 0.64,
+            "log_line": 1798
+          },
+          {
+            "name": "python_test_factory_reference",
+            "number": 94,
+            "seconds": 0.38,
+            "log_line": 1800
+          },
+          {
+            "name": "python_test_fixed_registration_source_admission",
+            "number": 95,
+            "seconds": 0.37,
+            "log_line": 1802
+          },
+          {
+            "name": "python_test_fixture_catalog",
+            "number": 96,
+            "seconds": 1.32,
+            "log_line": 1804
+          },
+          {
+            "name": "python_test_model_info",
+            "number": 98,
+            "seconds": 0.1,
+            "log_line": 1806
+          },
+          {
+            "name": "python_test_native_bundle_inventory",
+            "number": 99,
+            "seconds": 0.33,
+            "log_line": 1808
+          },
+          {
+            "name": "python_test_parameter_bridge",
+            "number": 100,
+            "seconds": 0.45,
+            "log_line": 1810
+          },
+          {
+            "name": "python_test_parameters",
+            "number": 101,
+            "seconds": 0.83,
+            "log_line": 1812
+          },
+          {
+            "name": "python_test_partial_key_render",
+            "number": 102,
+            "seconds": 0.43,
+            "log_line": 1814
+          },
+          {
+            "name": "python_test_install",
+            "number": 97,
+            "seconds": 4.05,
+            "log_line": 1816
+          },
+          {
+            "name": "python_test_pedal_demo",
+            "number": 104,
+            "seconds": 1.37,
+            "log_line": 1818
+          },
+          {
+            "name": "python_test_pedal_catalog",
+            "number": 103,
+            "seconds": 2.28,
+            "log_line": 1820
+          },
+          {
+            "name": "python_test_pedal_map",
+            "number": 105,
+            "seconds": 0.27,
+            "log_line": 1822
+          },
+          {
+            "name": "python_test_pedal_render_cli",
+            "number": 106,
+            "seconds": 1.18,
+            "log_line": 1824
+          },
+          {
+            "name": "python_test_pedal_render_evidence",
+            "number": 107,
+            "seconds": 1.33,
+            "log_line": 1826
+          },
+          {
+            "name": "python_test_pedal_session",
+            "number": 108,
+            "seconds": 0.57,
+            "log_line": 1828
+          },
+          {
+            "name": "python_test_pedal_trace",
+            "number": 109,
+            "seconds": 4.39,
+            "log_line": 1830
+          },
+          {
+            "name": "python_test_plot_crossover_characterization",
+            "number": 111,
+            "seconds": 0.4,
+            "log_line": 1832
+          },
+          {
+            "name": "python_test_plot_console_trace",
+            "number": 110,
+            "seconds": 6.09,
+            "log_line": 1834
+          },
+          {
+            "name": "python_test_preset_parameter_oracle",
+            "number": 113,
+            "seconds": 0.6,
+            "log_line": 1836
+          },
+          {
+            "name": "python_test_product_session",
+            "number": 114,
+            "seconds": 1.28,
+            "log_line": 1838
+          },
+          {
+            "name": "python_test_refinement_session",
+            "number": 115,
+            "seconds": 1.28,
+            "log_line": 1840
+          },
+          {
+            "name": "python_test_render",
+            "number": 116,
+            "seconds": 1.86,
+            "log_line": 1842
+          },
+          {
+            "name": "python_test_plot_pedal_trace",
+            "number": 112,
+            "seconds": 10.92,
+            "log_line": 1844
+          },
+          {
+            "name": "python_test_render_fixture",
+            "number": 117,
+            "seconds": 5.47,
+            "log_line": 1846
+          },
+          {
+            "name": "python_test_rotary_motion_acceptance",
+            "number": 119,
+            "seconds": 0.49,
+            "log_line": 1848
+          },
+          {
+            "name": "python_test_repository_integrity",
+            "number": 118,
+            "seconds": 2.62,
+            "log_line": 1850
+          },
+          {
+            "name": "python_test_rotary_profile",
+            "number": 120,
+            "seconds": 1.44,
+            "log_line": 1852
+          },
+          {
+            "name": "python_test_rotary_reference",
+            "number": 122,
+            "seconds": 1.61,
+            "log_line": 1854
+          },
+          {
+            "name": "python_test_rotary_waveform_acceptance",
+            "number": 123,
+            "seconds": 2.72,
+            "log_line": 1856
+          },
+          {
+            "name": "python_test_scanner_ac_reference",
+            "number": 124,
+            "seconds": 2.23,
+            "log_line": 1858
+          },
+          {
+            "name": "python_test_scanner_line_profile",
+            "number": 125,
+            "seconds": 2.9,
+            "log_line": 1860
+          },
+          {
+            "name": "python_test_scanner_native_ac",
+            "number": 126,
+            "seconds": 1.24,
+            "log_line": 1862
+          },
+          {
+            "name": "python_test_rotary_propagation_acceptance",
+            "number": 121,
+            "seconds": 11.52,
+            "log_line": 1864
+          },
+          {
+            "name": "python_test_sdl2_dependency",
+            "number": 128,
+            "seconds": 0.92,
+            "log_line": 1866
+          },
+          {
+            "name": "python_test_standalone_session_records",
+            "number": 129,
+            "seconds": 0.5,
+            "log_line": 1868
+          },
+          {
+            "name": "python_test_scanner_transient_reference",
+            "number": 127,
+            "seconds": 1.9,
+            "log_line": 1870
+          },
+          {
+            "name": "python_test_vst3_build_tools",
+            "number": 131,
+            "seconds": 1.78,
+            "log_line": 1872
+          },
+          {
+            "name": "python_test_rotary_waveform_report_admission",
+            "number": 132,
+            "seconds": 0.44,
+            "log_line": 1874
+          },
+          {
+            "name": "test_standalone_channel_acceptance",
+            "number": 133,
+            "seconds": 0,
+            "log_line": 1876
+          },
+          {
+            "name": "test_standalone_channel_modes",
+            "number": 134,
+            "seconds": 0,
+            "log_line": 1878
+          },
+          {
+            "name": "test_standalone_concurrency",
+            "number": 135,
+            "seconds": 0.34,
+            "log_line": 1880
+          },
+          {
+            "name": "test_standalone_expression_calibration",
+            "number": 136,
+            "seconds": 0,
+            "log_line": 1882
+          },
+          {
+            "name": "test_standalone_external_control",
+            "number": 137,
+            "seconds": 0,
+            "log_line": 1884
+          },
+          {
+            "name": "test_standalone_inspection_acceptance",
+            "number": 138,
+            "seconds": 0,
+            "log_line": 1886
+          },
+          {
+            "name": "test_standalone_inspection_author",
+            "number": 139,
+            "seconds": 0,
+            "log_line": 1888
+          },
+          {
+            "name": "python_test_verify_render",
+            "number": 130,
+            "seconds": 2.62,
+            "log_line": 1890
+          },
+          {
+            "name": "test_standalone_midi_concurrency",
+            "number": 140,
+            "seconds": 0.03,
+            "log_line": 1892
+          },
+          {
+            "name": "test_standalone_midi_discovery",
+            "number": 141,
+            "seconds": 0,
+            "log_line": 1894
+          },
+          {
+            "name": "test_standalone_midi_input",
+            "number": 142,
+            "seconds": 0,
+            "log_line": 1896
+          },
+          {
+            "name": "test_standalone_midi_replay",
+            "number": 143,
+            "seconds": 0.01,
+            "log_line": 1898
+          },
+          {
+            "name": "test_standalone_preset_concurrency",
+            "number": 145,
+            "seconds": 0.01,
+            "log_line": 1900
+          },
+          {
+            "name": "test_standalone_midi_session",
+            "number": 144,
+            "seconds": 0.02,
+            "log_line": 1902
+          },
+          {
+            "name": "test_standalone_projection",
+            "number": 147,
+            "seconds": 0.09,
+            "log_line": 1904
+          },
+          {
+            "name": "test_standalone_reference_layout",
+            "number": 148,
+            "seconds": 0.02,
+            "log_line": 1906
+          },
+          {
+            "name": "test_standalone_preset_ui",
+            "number": 146,
+            "seconds": 0.29,
+            "log_line": 1908
+          },
+          {
+            "name": "test_standalone_state_files",
+            "number": 150,
+            "seconds": 0.01,
+            "log_line": 1910
+          },
+          {
+            "name": "test_standalone_ui",
+            "number": 151,
+            "seconds": 0.03,
+            "log_line": 1912
+          },
+          {
+            "name": "test_standalone_workspace_acceptance",
+            "number": 152,
+            "seconds": 0.02,
+            "log_line": 1914
+          },
+          {
+            "name": "test_standalone_session",
+            "number": 149,
+            "seconds": 0.25,
+            "log_line": 1916
+          },
+          {
+            "name": "test_standalone_workspaces_author",
+            "number": 154,
+            "seconds": 0,
+            "log_line": 1918
+          },
+          {
+            "name": "test_standalone_midi_backend",
+            "number": 155,
+            "seconds": 0,
+            "log_line": 1920
+          },
+          {
+            "name": "test_standalone_midi_backend_quarantine",
+            "number": 156,
+            "seconds": 0,
+            "log_line": 1922
+          },
+          {
+            "name": "test_standalone_benchmark",
+            "number": 157,
+            "seconds": 1.75,
+            "log_line": 1924
+          },
+          {
+            "name": "test_standalone_workspace_continuity",
+            "number": 153,
+            "seconds": 2.69,
+            "log_line": 1925
+          }
+        ],
+        "summaries": [
+          {
+            "line": 1927,
+            "text": "2026-11-15T03:32:58.7094398Z 100% tests passed, 0 tests failed out of 157"
+          },
+          {
+            "line": 1945,
+            "text": "2026-11-15T03:32:58.7099194Z Total Test time (real) =  85.00 sec"
+          }
+        ]
+      },
+      "primary_excerpts": {
+        "checkout": [
+          {
+            "line": 183,
+            "text": "2026-11-15T03:30:22.4265010Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340"
+          }
+        ],
+        "toolchain": [
+          {
+            "line": 184,
+            "text": "2026-11-15T03:30:23.1009735Z cmake version 3.31.6"
+          },
+          {
+            "line": 187,
+            "text": "2026-11-15T03:30:23.8282197Z ctest version 3.31.6"
+          },
+          {
+            "line": 190,
+            "text": "2026-11-15T03:30:23.9196327Z Python 3.12.16"
+          },
+          {
+            "line": 214,
+            "text": "2026-11-15T03:30:25.4214227Z -- The CXX compiler identification is GNU 13.3.0"
+          }
+        ],
+        "configuration": [
+          {
+            "line": 212,
+            "text": "2026-11-15T03:30:25.4213902Z   CMAKE_BUILD_TYPE=\"Release\""
+          },
+          {
+            "line": 1598,
+            "text": "2026-11-15T03:31:33.6752853Z ##[group]Run ctest --preset release --parallel 2 --timeout 300 --no-tests=error \\"
+          },
+          {
+            "line": 1599,
+            "text": "2026-11-15T03:31:33.6753182Z \u001b[36;1mctest --preset release --parallel 2 --timeout 300 --no-tests=error \\\u001b[0m"
+          }
+        ],
+        "policy": [],
+        "selected_tests": [
+          {
+            "line": 1796,
+            "text": "2026-11-15T03:32:14.0522741Z  92/157 Test  #91: python_test_crossover_install .....................   Passed    1.09 sec"
+          },
+          {
+            "line": 1832,
+            "text": "2026-11-15T03:32:26.5292812Z 110/157 Test #111: python_test_plot_crossover_characterization .......   Passed    0.40 sec"
+          },
+          {
+            "line": 1838,
+            "text": "2026-11-15T03:32:29.9093216Z 113/157 Test #114: python_test_product_session .......................   Passed    1.28 sec"
+          },
+          {
+            "line": 1922,
+            "text": "2026-11-15T03:32:56.0407154Z 155/157 Test #156: test_standalone_midi_backend_quarantine ...........   Passed    0.00 sec"
+          }
+        ],
+        "calibration": [],
+        "packaging": [],
+        "artifacts": [
+          {
+            "line": 5468,
+            "text": "2026-11-15T03:33:00.2488826Z Artifact ci-ubuntu-24.04-release-1 has been successfully uploaded! Final size is 145067 bytes. Artifact ID is 14144767292"
+          }
+        ]
+      },
+      "diagnostic_candidates": []
+    },
+    {
+      "job_id": 132685867415,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "run_id": 43672641490,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867415",
+      "status": "completed",
+      "conclusion": "success",
+      "source_commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "started_at": "2026-11-15T03:30:13Z",
+      "completed_at": "2026-11-15T03:35:09Z",
+      "primary_log": {
+        "bytes": 373882,
+        "sha256": "49751eacffb0491c0c6888b58f39d04e399b7d93ec074702cb8a65c9bf37842e",
+        "lines": 2030,
+        "hash_encoding": "UTF-8 of exact returned decoded text including any initial BOM",
+        "complete_log_retained_here": false
+      },
+      "ctest": {
+        "executed": 157,
+        "unique_names": 157,
+        "all_passed": true,
+        "results": [
+          {
+            "name": "test_contact_bank",
+            "number": 2,
+            "seconds": 0.65,
+            "log_line": 1637
+          },
+          {
+            "name": "test_console_engine",
+            "number": 1,
+            "seconds": 1.5,
+            "log_line": 1639
+          },
+          {
+            "name": "test_contact_rate",
+            "number": 3,
+            "seconds": 1,
+            "log_line": 1641
+          },
+          {
+            "name": "test_controls",
+            "number": 5,
+            "seconds": 0.54,
+            "log_line": 1643
+          },
+          {
+            "name": "test_core_robustness",
+            "number": 6,
+            "seconds": 0.03,
+            "log_line": 1645
+          },
+          {
+            "name": "test_decimal",
+            "number": 7,
+            "seconds": 0.1,
+            "log_line": 1647
+          },
+          {
+            "name": "test_control_io",
+            "number": 4,
+            "seconds": 0.83,
+            "log_line": 1649
+          },
+          {
+            "name": "test_engine",
+            "number": 8,
+            "seconds": 0.85,
+            "log_line": 1651
+          },
+          {
+            "name": "test_factory_runtime",
+            "number": 10,
+            "seconds": 1.25,
+            "log_line": 1653
+          },
+          {
+            "name": "test_fixed_registration_data",
+            "number": 11,
+            "seconds": 0.02,
+            "log_line": 1655
+          },
+          {
+            "name": "test_engine_rate",
+            "number": 9,
+            "seconds": 5.79,
+            "log_line": 1657
+          },
+          {
+            "name": "test_fixed_registration_engine",
+            "number": 12,
+            "seconds": 4.58,
+            "log_line": 1659
+          },
+          {
+            "name": "test_host_timeline",
+            "number": 14,
+            "seconds": 1.91,
+            "log_line": 1661
+          },
+          {
+            "name": "test_fixed_registration_lifecycle",
+            "number": 13,
+            "seconds": 3.76,
+            "log_line": 1663
+          },
+          {
+            "name": "test_input_processor",
+            "number": 15,
+            "seconds": 4.88,
+            "log_line": 1665
+          },
+          {
+            "name": "test_leslie_crossover",
+            "number": 16,
+            "seconds": 4.25,
+            "log_line": 1667
+          },
+          {
+            "name": "test_leslie_crossover_allocation",
+            "number": 17,
+            "seconds": 0.5,
+            "log_line": 1669
+          },
+          {
+            "name": "test_leslie_crossover_lifecycle",
+            "number": 18,
+            "seconds": 0.19,
+            "log_line": 1671
+          },
+          {
+            "name": "test_note_ownership",
+            "number": 19,
+            "seconds": 0.37,
+            "log_line": 1673
+          },
+          {
+            "name": "test_numerics",
+            "number": 20,
+            "seconds": 2.17,
+            "log_line": 1675
+          },
+          {
+            "name": "test_parameter_bridge",
+            "number": 22,
+            "seconds": 0.05,
+            "log_line": 1677
+          },
+          {
+            "name": "test_owned_lifecycle",
+            "number": 21,
+            "seconds": 1.88,
+            "log_line": 1679
+          },
+          {
+            "name": "test_pedal_controls",
+            "number": 24,
+            "seconds": 0.07,
+            "log_line": 1681
+          },
+          {
+            "name": "test_pedal_engine",
+            "number": 25,
+            "seconds": 0.06,
+            "log_line": 1683
+          },
+          {
+            "name": "test_pedal_integration",
+            "number": 26,
+            "seconds": 0.37,
+            "log_line": 1685
+          },
+          {
+            "name": "test_pedal_note_ownership",
+            "number": 27,
+            "seconds": 0.03,
+            "log_line": 1687
+          },
+          {
+            "name": "test_pedal_realtime",
+            "number": 28,
+            "seconds": 0.05,
+            "log_line": 1689
+          },
+          {
+            "name": "test_pedal_reference",
+            "number": 29,
+            "seconds": 0.3,
+            "log_line": 1691
+          },
+          {
+            "name": "test_pedal_routing",
+            "number": 30,
+            "seconds": 0.02,
+            "log_line": 1693
+          },
+          {
+            "name": "test_partial_key",
+            "number": 23,
+            "seconds": 1.03,
+            "log_line": 1695
+          },
+          {
+            "name": "test_pedal_voice",
+            "number": 32,
+            "seconds": 0.07,
+            "log_line": 1697
+          },
+          {
+            "name": "test_percussion",
+            "number": 33,
+            "seconds": 0.11,
+            "log_line": 1699
+          },
+          {
+            "name": "test_percussion_controls",
+            "number": 34,
+            "seconds": 0.16,
+            "log_line": 1701
+          },
+          {
+            "name": "test_percussion_rate",
+            "number": 35,
+            "seconds": 0.12,
+            "log_line": 1703
+          },
+          {
+            "name": "test_pedal_sources",
+            "number": 31,
+            "seconds": 1.41,
+            "log_line": 1705
+          },
+          {
+            "name": "test_performance_input",
+            "number": 37,
+            "seconds": 0.39,
+            "log_line": 1707
+          },
+          {
+            "name": "test_preset_parameter_boundaries",
+            "number": 38,
+            "seconds": 0.01,
+            "log_line": 1709
+          },
+          {
+            "name": "test_preset_realtime",
+            "number": 39,
+            "seconds": 0.53,
+            "log_line": 1711
+          },
+          {
+            "name": "test_performance_acceptance",
+            "number": 36,
+            "seconds": 2.85,
+            "log_line": 1713
+          },
+          {
+            "name": "test_realtime",
+            "number": 41,
+            "seconds": 1.53,
+            "log_line": 1715
+          },
+          {
+            "name": "test_profile",
+            "number": 40,
+            "seconds": 3.15,
+            "log_line": 1717
+          },
+          {
+            "name": "test_realtime_console",
+            "number": 42,
+            "seconds": 3.89,
+            "log_line": 1719
+          },
+          {
+            "name": "test_rotary_history",
+            "number": 44,
+            "seconds": 0.32,
+            "log_line": 1721
+          },
+          {
+            "name": "test_rotary_history_acceptance",
+            "number": 45,
+            "seconds": 0.74,
+            "log_line": 1723
+          },
+          {
+            "name": "test_realtime_pedals",
+            "number": 43,
+            "seconds": 4.65,
+            "log_line": 1725
+          },
+          {
+            "name": "test_rotary_motion",
+            "number": 46,
+            "seconds": 0.27,
+            "log_line": 1727
+          },
+          {
+            "name": "test_rotary_propagation",
+            "number": 47,
+            "seconds": 0.1,
+            "log_line": 1729
+          },
+          {
+            "name": "test_rotary_propagation_allocation",
+            "number": 48,
+            "seconds": 0.4,
+            "log_line": 1731
+          },
+          {
+            "name": "test_rotary_renderer_transactions",
+            "number": 50,
+            "seconds": 1.13,
+            "log_line": 1733
+          },
+          {
+            "name": "test_rotary_streaming_path",
+            "number": 51,
+            "seconds": 0.71,
+            "log_line": 1735
+          },
+          {
+            "name": "test_rotary_renderer",
+            "number": 49,
+            "seconds": 3.38,
+            "log_line": 1737
+          },
+          {
+            "name": "test_scanner_rotor",
+            "number": 53,
+            "seconds": 0.56,
+            "log_line": 1739
+          },
+          {
+            "name": "test_source_rate",
+            "number": 54,
+            "seconds": 0.6,
+            "log_line": 1741
+          },
+          {
+            "name": "test_state_exchange",
+            "number": 55,
+            "seconds": 0.17,
+            "log_line": 1743
+          },
+          {
+            "name": "test_tonewheel",
+            "number": 56,
+            "seconds": 2.08,
+            "log_line": 1745
+          },
+          {
+            "name": "python_test_audio_analysis",
+            "number": 57,
+            "seconds": 1.13,
+            "log_line": 1747
+          },
+          {
+            "name": "python_test_calibration_session_records",
+            "number": 58,
+            "seconds": 1.54,
+            "log_line": 1749
+          },
+          {
+            "name": "python_test_capture",
+            "number": 59,
+            "seconds": 0.82,
+            "log_line": 1751
+          },
+          {
+            "name": "python_test_capture_audio",
+            "number": 60,
+            "seconds": 0.41,
+            "log_line": 1753
+          },
+          {
+            "name": "test_scanner_line",
+            "number": 52,
+            "seconds": 10.14,
+            "log_line": 1755
+          },
+          {
+            "name": "python_test_capture_audio_admission",
+            "number": 61,
+            "seconds": 1.81,
+            "log_line": 1757
+          },
+          {
+            "name": "python_test_capture_common",
+            "number": 63,
+            "seconds": 0.18,
+            "log_line": 1759
+          },
+          {
+            "name": "python_test_capture_comparison",
+            "number": 64,
+            "seconds": 0.54,
+            "log_line": 1761
+          },
+          {
+            "name": "python_test_capture_corpus",
+            "number": 65,
+            "seconds": 0.66,
+            "log_line": 1763
+          },
+          {
+            "name": "python_test_capture_corpus_admission",
+            "number": 66,
+            "seconds": 1.2,
+            "log_line": 1765
+          },
+          {
+            "name": "python_test_capture_demo",
+            "number": 67,
+            "seconds": 1.04,
+            "log_line": 1767
+          },
+          {
+            "name": "python_test_capture_cli_pipeline",
+            "number": 62,
+            "seconds": 4.55,
+            "log_line": 1769
+          },
+          {
+            "name": "python_test_capture_graph_scale",
+            "number": 68,
+            "seconds": 3.46,
+            "log_line": 1771
+          },
+          {
+            "name": "python_test_capture_install",
+            "number": 69,
+            "seconds": 3.75,
+            "log_line": 1773
+          },
+          {
+            "name": "python_test_capture_metadata_read",
+            "number": 71,
+            "seconds": 1.05,
+            "log_line": 1775
+          },
+          {
+            "name": "python_test_capture_numerics",
+            "number": 72,
+            "seconds": 0.68,
+            "log_line": 1777
+          },
+          {
+            "name": "python_test_capture_policy",
+            "number": 73,
+            "seconds": 0.36,
+            "log_line": 1779
+          },
+          {
+            "name": "python_test_capture_job",
+            "number": 70,
+            "seconds": 3.19,
+            "log_line": 1781
+          },
+          {
+            "name": "python_test_capture_readiness",
+            "number": 74,
+            "seconds": 0.55,
+            "log_line": 1783
+          },
+          {
+            "name": "python_test_capture_standalone_interface",
+            "number": 76,
+            "seconds": 0.28,
+            "log_line": 1785
+          },
+          {
+            "name": "python_test_capture_replay",
+            "number": 75,
+            "seconds": 5.36,
+            "log_line": 1787
+          },
+          {
+            "name": "python_test_capture_study",
+            "number": 77,
+            "seconds": 4.64,
+            "log_line": 1789
+          },
+          {
+            "name": "python_test_chapel_presets",
+            "number": 79,
+            "seconds": 4.08,
+            "log_line": 1791
+          },
+          {
+            "name": "python_test_cli_unicode",
+            "number": 80,
+            "seconds": 2.09,
+            "log_line": 1793
+          },
+          {
+            "name": "python_test_compile_fixed_registrations",
+            "number": 81,
+            "seconds": 1.48,
+            "log_line": 1795
+          },
+          {
+            "name": "python_test_compile_pedal_routing",
+            "number": 82,
+            "seconds": 2.54,
+            "log_line": 1797
+          },
+          {
+            "name": "python_test_chapel_controls",
+            "number": 78,
+            "seconds": 11.05,
+            "log_line": 1799
+          },
+          {
+            "name": "python_test_compile_rotary_profile",
+            "number": 84,
+            "seconds": 0.48,
+            "log_line": 1801
+          },
+          {
+            "name": "python_test_compile_profile",
+            "number": 83,
+            "seconds": 3.71,
+            "log_line": 1803
+          },
+          {
+            "name": "python_test_console_benchmark",
+            "number": 85,
+            "seconds": 3.97,
+            "log_line": 1805
+          },
+          {
+            "name": "python_test_console_catalog",
+            "number": 86,
+            "seconds": 2.7,
+            "log_line": 1807
+          },
+          {
+            "name": "python_test_console_trace",
+            "number": 88,
+            "seconds": 6.06,
+            "log_line": 1809
+          },
+          {
+            "name": "python_test_continuation_ledger",
+            "number": 89,
+            "seconds": 0.18,
+            "log_line": 1811
+          },
+          {
+            "name": "python_test_console_evidence",
+            "number": 87,
+            "seconds": 9.8,
+            "log_line": 1813
+          },
+          {
+            "name": "python_test_crossover_install",
+            "number": 91,
+            "seconds": 1.22,
+            "log_line": 1815
+          },
+          {
+            "name": "python_test_crossover_reference",
+            "number": 92,
+            "seconds": 0.73,
+            "log_line": 1817
+          },
+          {
+            "name": "python_test_demo_bundle",
+            "number": 93,
+            "seconds": 0.79,
+            "log_line": 1819
+          },
+          {
+            "name": "python_test_factory_reference",
+            "number": 94,
+            "seconds": 0.43,
+            "log_line": 1821
+          },
+          {
+            "name": "python_test_crossover_acceptance",
+            "number": 90,
+            "seconds": 5.95,
+            "log_line": 1823
+          },
+          {
+            "name": "python_test_fixed_registration_source_admission",
+            "number": 95,
+            "seconds": 0.44,
+            "log_line": 1825
+          },
+          {
+            "name": "python_test_fixture_catalog",
+            "number": 96,
+            "seconds": 4.51,
+            "log_line": 1827
+          },
+          {
+            "name": "python_test_model_info",
+            "number": 98,
+            "seconds": 0.19,
+            "log_line": 1829
+          },
+          {
+            "name": "python_test_native_bundle_inventory",
+            "number": 99,
+            "seconds": 0.36,
+            "log_line": 1831
+          },
+          {
+            "name": "python_test_parameter_bridge",
+            "number": 100,
+            "seconds": 1.41,
+            "log_line": 1833
+          },
+          {
+            "name": "python_test_parameters",
+            "number": 101,
+            "seconds": 0.99,
+            "log_line": 1835
+          },
+          {
+            "name": "python_test_install",
+            "number": 97,
+            "seconds": 7.92,
+            "log_line": 1837
+          },
+          {
+            "name": "python_test_partial_key_render",
+            "number": 102,
+            "seconds": 1.24,
+            "log_line": 1839
+          },
+          {
+            "name": "python_test_pedal_demo",
+            "number": 104,
+            "seconds": 5.29,
+            "log_line": 1841
+          },
+          {
+            "name": "python_test_pedal_map",
+            "number": 105,
+            "seconds": 0.27,
+            "log_line": 1843
+          },
+          {
+            "name": "python_test_pedal_catalog",
+            "number": 103,
+            "seconds": 8.51,
+            "log_line": 1845
+          },
+          {
+            "name": "python_test_pedal_render_evidence",
+            "number": 107,
+            "seconds": 1.91,
+            "log_line": 1847
+          },
+          {
+            "name": "python_test_pedal_session",
+            "number": 108,
+            "seconds": 0.7,
+            "log_line": 1849
+          },
+          {
+            "name": "python_test_pedal_render_cli",
+            "number": 106,
+            "seconds": 6.09,
+            "log_line": 1851
+          },
+          {
+            "name": "python_test_pedal_trace",
+            "number": 109,
+            "seconds": 6.52,
+            "log_line": 1853
+          },
+          {
+            "name": "python_test_plot_crossover_characterization",
+            "number": 111,
+            "seconds": 0.43,
+            "log_line": 1855
+          },
+          {
+            "name": "python_test_plot_console_trace",
+            "number": 110,
+            "seconds": 5.83,
+            "log_line": 1857
+          },
+          {
+            "name": "python_test_preset_parameter_oracle",
+            "number": 113,
+            "seconds": 1.02,
+            "log_line": 1859
+          },
+          {
+            "name": "python_test_product_session",
+            "number": 114,
+            "seconds": 1.18,
+            "log_line": 1861
+          },
+          {
+            "name": "python_test_refinement_session",
+            "number": 115,
+            "seconds": 1.24,
+            "log_line": 1863
+          },
+          {
+            "name": "python_test_plot_pedal_trace",
+            "number": 112,
+            "seconds": 15.52,
+            "log_line": 1865
+          },
+          {
+            "name": "python_test_render",
+            "number": 116,
+            "seconds": 12.72,
+            "log_line": 1867
+          },
+          {
+            "name": "python_test_repository_integrity",
+            "number": 118,
+            "seconds": 2.7,
+            "log_line": 1869
+          },
+          {
+            "name": "python_test_rotary_motion_acceptance",
+            "number": 119,
+            "seconds": 0.61,
+            "log_line": 1871
+          },
+          {
+            "name": "python_test_rotary_profile",
+            "number": 120,
+            "seconds": 1.91,
+            "log_line": 1873
+          },
+          {
+            "name": "python_test_render_fixture",
+            "number": 117,
+            "seconds": 8.17,
+            "log_line": 1875
+          },
+          {
+            "name": "python_test_rotary_reference",
+            "number": 122,
+            "seconds": 1.77,
+            "log_line": 1877
+          },
+          {
+            "name": "python_test_rotary_propagation_acceptance",
+            "number": 121,
+            "seconds": 14.31,
+            "log_line": 1879
+          },
+          {
+            "name": "python_test_rotary_waveform_acceptance",
+            "number": 123,
+            "seconds": 12.17,
+            "log_line": 1881
+          },
+          {
+            "name": "python_test_scanner_ac_reference",
+            "number": 124,
+            "seconds": 2.38,
+            "log_line": 1883
+          },
+          {
+            "name": "python_test_scanner_line_profile",
+            "number": 125,
+            "seconds": 2.86,
+            "log_line": 1885
+          },
+          {
+            "name": "python_test_scanner_transient_reference",
+            "number": 127,
+            "seconds": 2.2,
+            "log_line": 1887
+          },
+          {
+            "name": "python_test_sdl2_dependency",
+            "number": 128,
+            "seconds": 0.72,
+            "log_line": 1889
+          },
+          {
+            "name": "python_test_standalone_session_records",
+            "number": 129,
+            "seconds": 0.51,
+            "log_line": 1891
+          },
+          {
+            "name": "python_test_verify_render",
+            "number": 130,
+            "seconds": 3.51,
+            "log_line": 1893
+          },
+          {
+            "name": "python_test_vst3_build_tools",
+            "number": 131,
+            "seconds": 1.41,
+            "log_line": 1895
+          },
+          {
+            "name": "python_test_rotary_waveform_report_admission",
+            "number": 132,
+            "seconds": 0.49,
+            "log_line": 1897
+          },
+          {
+            "name": "test_standalone_channel_acceptance",
+            "number": 133,
+            "seconds": 0.03,
+            "log_line": 1899
+          },
+          {
+            "name": "test_standalone_channel_modes",
+            "number": 134,
+            "seconds": 0.03,
+            "log_line": 1901
+          },
+          {
+            "name": "test_standalone_concurrency",
+            "number": 135,
+            "seconds": 1.1,
+            "log_line": 1903
+          },
+          {
+            "name": "test_standalone_expression_calibration",
+            "number": 136,
+            "seconds": 0.02,
+            "log_line": 1905
+          },
+          {
+            "name": "test_standalone_external_control",
+            "number": 137,
+            "seconds": 0.01,
+            "log_line": 1907
+          },
+          {
+            "name": "test_standalone_inspection_acceptance",
+            "number": 138,
+            "seconds": 0.04,
+            "log_line": 1909
+          },
+          {
+            "name": "test_standalone_inspection_author",
+            "number": 139,
+            "seconds": 0.02,
+            "log_line": 1911
+          },
+          {
+            "name": "test_standalone_midi_concurrency",
+            "number": 140,
+            "seconds": 0.49,
+            "log_line": 1913
+          },
+          {
+            "name": "test_standalone_midi_discovery",
+            "number": 141,
+            "seconds": 0.02,
+            "log_line": 1915
+          },
+          {
+            "name": "test_standalone_midi_input",
+            "number": 142,
+            "seconds": 0.03,
+            "log_line": 1917
+          },
+          {
+            "name": "test_standalone_midi_replay",
+            "number": 143,
+            "seconds": 0.1,
+            "log_line": 1919
+          },
+          {
+            "name": "test_standalone_midi_session",
+            "number": 144,
+            "seconds": 0.17,
+            "log_line": 1921
+          },
+          {
+            "name": "test_standalone_preset_concurrency",
+            "number": 145,
+            "seconds": 0.19,
+            "log_line": 1923
+          },
+          {
+            "name": "test_standalone_preset_ui",
+            "number": 146,
+            "seconds": 8.62,
+            "log_line": 1925
+          },
+          {
+            "name": "python_test_scanner_native_ac",
+            "number": 126,
+            "seconds": 22.27,
+            "log_line": 1927
+          },
+          {
+            "name": "test_standalone_reference_layout",
+            "number": 148,
+            "seconds": 0.46,
+            "log_line": 1929
+          },
+          {
+            "name": "test_standalone_session",
+            "number": 149,
+            "seconds": 1.19,
+            "log_line": 1931
+          },
+          {
+            "name": "test_standalone_state_files",
+            "number": 150,
+            "seconds": 0.05,
+            "log_line": 1933
+          },
+          {
+            "name": "test_standalone_ui",
+            "number": 151,
+            "seconds": 0.83,
+            "log_line": 1935
+          },
+          {
+            "name": "test_standalone_projection",
+            "number": 147,
+            "seconds": 3.06,
+            "log_line": 1937
+          },
+          {
+            "name": "test_standalone_workspace_acceptance",
+            "number": 152,
+            "seconds": 0.81,
+            "log_line": 1939
+          },
+          {
+            "name": "test_standalone_workspaces_author",
+            "number": 154,
+            "seconds": 0.02,
+            "log_line": 1941
+          },
+          {
+            "name": "test_standalone_midi_backend",
+            "number": 155,
+            "seconds": 0.02,
+            "log_line": 1943
+          },
+          {
+            "name": "test_standalone_midi_backend_quarantine",
+            "number": 156,
+            "seconds": 0.01,
+            "log_line": 1945
+          },
+          {
+            "name": "test_standalone_benchmark",
+            "number": 157,
+            "seconds": 9.64,
+            "log_line": 1947
+          },
+          {
+            "name": "test_standalone_workspace_continuity",
+            "number": 153,
+            "seconds": 17.63,
+            "log_line": 1948
+          }
+        ],
+        "summaries": [
+          {
+            "line": 1950,
+            "text": "2026-11-15T03:35:06.5322033Z 100% tests passed, 0 tests failed out of 157"
+          },
+          {
+            "line": 1968,
+            "text": "2026-11-15T03:35:06.5327452Z Total Test time (real) = 193.65 sec"
+          }
+        ]
+      },
+      "primary_excerpts": {
+        "checkout": [
+          {
+            "line": 192,
+            "text": "2026-11-15T03:30:23.6750434Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340"
+          }
+        ],
+        "toolchain": [
+          {
+            "line": 193,
+            "text": "2026-11-15T03:30:24.2368639Z cmake version 3.31.6"
+          },
+          {
+            "line": 196,
+            "text": "2026-11-15T03:30:24.7613415Z ctest version 3.31.6"
+          },
+          {
+            "line": 199,
+            "text": "2026-11-15T03:30:25.1582347Z Python 3.12.16"
+          },
+          {
+            "line": 200,
+            "text": "2026-11-15T03:30:25.2770566Z g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+          },
+          {
+            "line": 229,
+            "text": "2026-11-15T03:30:27.4914744Z -- The CXX compiler identification is GNU 13.3.0"
+          }
+        ],
+        "configuration": [
+          {
+            "line": 226,
+            "text": "2026-11-15T03:30:27.4914059Z   CMAKE_BUILD_TYPE=\"Debug\""
+          },
+          {
+            "line": 227,
+            "text": "2026-11-15T03:30:27.4914356Z   HAMMOND_ENABLE_SANITIZERS=\"ON\""
+          },
+          {
+            "line": 1618,
+            "text": "2026-11-15T03:31:52.8641623Z ##[group]Run ctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error \\"
+          },
+          {
+            "line": 1619,
+            "text": "2026-11-15T03:31:52.8642227Z \u001b[36;1mctest --preset sanitizers --parallel 2 --timeout 600 --no-tests=error \\\u001b[0m"
+          }
+        ],
+        "policy": [
+          {
+            "line": 53,
+            "text": "2026-11-15T03:30:16.8329402Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 54,
+            "text": "2026-11-15T03:30:16.8329987Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 55,
+            "text": "2026-11-15T03:30:16.8330585Z   LSAN_OPTIONS: exitcode=23"
+          }
+        ],
+        "selected_tests": [
+          {
+            "line": 1815,
+            "text": "2026-11-15T03:33:17.2627863Z  90/157 Test  #91: python_test_crossover_install .....................   Passed    1.22 sec"
+          },
+          {
+            "line": 1855,
+            "text": "2026-11-15T03:33:45.6379831Z 110/157 Test #111: python_test_plot_crossover_characterization .......   Passed    0.43 sec"
+          },
+          {
+            "line": 1861,
+            "text": "2026-11-15T03:33:47.9413600Z 113/157 Test #114: python_test_product_session .......................   Passed    1.18 sec"
+          },
+          {
+            "line": 1945,
+            "text": "2026-11-15T03:34:49.4670860Z 155/157 Test #156: test_standalone_midi_backend_quarantine ...........   Passed    0.01 sec"
+          }
+        ],
+        "calibration": [],
+        "packaging": [],
+        "artifacts": [
+          {
+            "line": 2011,
+            "text": "2026-11-15T03:35:07.8527830Z Artifact ci-linux-gcc-sanitizers-1 has been successfully uploaded! Final size is 127814 bytes. Artifact ID is 14144987889"
+          }
+        ]
+      },
+      "diagnostic_candidates": []
+    },
+    {
+      "job_id": 132685867440,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "run_id": 43672641506,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867440",
+      "status": "completed",
+      "conclusion": "success",
+      "source_commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "started_at": "2026-11-15T03:30:13Z",
+      "completed_at": "2026-11-15T03:37:29Z",
+      "primary_log": {
+        "bytes": 801274,
+        "sha256": "8df551abf1a7f0282d110f13b208694752a468044921e4caa1ed523bbf67f2d3",
+        "lines": 4072,
+        "hash_encoding": "UTF-8 of exact returned decoded text including any initial BOM",
+        "complete_log_retained_here": false
+      },
+      "ctest": {
+        "executed": 48,
+        "unique_names": 48,
+        "all_passed": true,
+        "results": [
+          {
+            "name": "test_standalone_install",
+            "number": 133,
+            "seconds": 5.21,
+            "log_line": 2914
+          },
+          {
+            "name": "test_standalone_channel_acceptance",
+            "number": 134,
+            "seconds": 0,
+            "log_line": 2922
+          },
+          {
+            "name": "test_standalone_channel_modes",
+            "number": 135,
+            "seconds": 0,
+            "log_line": 2930
+          },
+          {
+            "name": "test_standalone_concurrency",
+            "number": 136,
+            "seconds": 0.1,
+            "log_line": 2948
+          },
+          {
+            "name": "test_standalone_expression_calibration",
+            "number": 137,
+            "seconds": 0,
+            "log_line": 2956
+          },
+          {
+            "name": "test_standalone_external_control",
+            "number": 138,
+            "seconds": 0,
+            "log_line": 2964
+          },
+          {
+            "name": "test_standalone_inspection_acceptance",
+            "number": 139,
+            "seconds": 0,
+            "log_line": 2972
+          },
+          {
+            "name": "test_standalone_inspection_author",
+            "number": 140,
+            "seconds": 0,
+            "log_line": 2980
+          },
+          {
+            "name": "test_standalone_midi_concurrency",
+            "number": 141,
+            "seconds": 0.05,
+            "log_line": 2990
+          },
+          {
+            "name": "test_standalone_midi_discovery",
+            "number": 142,
+            "seconds": 0,
+            "log_line": 2998
+          },
+          {
+            "name": "test_standalone_midi_input",
+            "number": 143,
+            "seconds": 0,
+            "log_line": 3006
+          },
+          {
+            "name": "test_standalone_midi_replay",
+            "number": 144,
+            "seconds": 0,
+            "log_line": 3014
+          },
+          {
+            "name": "test_standalone_midi_session",
+            "number": 145,
+            "seconds": 0.02,
+            "log_line": 3022
+          },
+          {
+            "name": "test_standalone_preset_concurrency",
+            "number": 146,
+            "seconds": 0.01,
+            "log_line": 3030
+          },
+          {
+            "name": "test_standalone_preset_ui",
+            "number": 147,
+            "seconds": 0.34,
+            "log_line": 3038
+          },
+          {
+            "name": "test_standalone_projection",
+            "number": 148,
+            "seconds": 0.13,
+            "log_line": 3047
+          },
+          {
+            "name": "test_standalone_reference_layout",
+            "number": 149,
+            "seconds": 0.02,
+            "log_line": 3055
+          },
+          {
+            "name": "test_standalone_session",
+            "number": 150,
+            "seconds": 0.2,
+            "log_line": 3063
+          },
+          {
+            "name": "test_standalone_state_files",
+            "number": 151,
+            "seconds": 0,
+            "log_line": 3074
+          },
+          {
+            "name": "test_standalone_ui",
+            "number": 152,
+            "seconds": 0.04,
+            "log_line": 3082
+          },
+          {
+            "name": "test_standalone_workspace_acceptance",
+            "number": 153,
+            "seconds": 0.03,
+            "log_line": 3090
+          },
+          {
+            "name": "test_standalone_workspace_continuity",
+            "number": 154,
+            "seconds": 2.77,
+            "log_line": 3161
+          },
+          {
+            "name": "test_standalone_workspaces_author",
+            "number": 155,
+            "seconds": 0,
+            "log_line": 3169
+          },
+          {
+            "name": "test_standalone_midi_backend",
+            "number": 156,
+            "seconds": 0,
+            "log_line": 3192
+          },
+          {
+            "name": "test_standalone_midi_backend_quarantine",
+            "number": 157,
+            "seconds": 0,
+            "log_line": 3203
+          },
+          {
+            "name": "test_standalone_benchmark",
+            "number": 158,
+            "seconds": 1.7,
+            "log_line": 3216
+          },
+          {
+            "name": "test_standalone_drawing",
+            "number": 159,
+            "seconds": 0.07,
+            "log_line": 3225
+          },
+          {
+            "name": "test_standalone_quad_drawing",
+            "number": 160,
+            "seconds": 0,
+            "log_line": 3233
+          },
+          {
+            "name": "test_standalone_workspace_raster",
+            "number": 161,
+            "seconds": 6.17,
+            "log_line": 3241
+          },
+          {
+            "name": "test_standalone_inspection_raster",
+            "number": 162,
+            "seconds": 0.4,
+            "log_line": 3250
+          },
+          {
+            "name": "test_standalone_material_acceptance",
+            "number": 163,
+            "seconds": 4.7,
+            "log_line": 3258
+          },
+          {
+            "name": "test_standalone_waveform_material",
+            "number": 164,
+            "seconds": 5.31,
+            "log_line": 3266
+          },
+          {
+            "name": "test_standalone_product_visual",
+            "number": 165,
+            "seconds": 14.82,
+            "log_line": 3274
+          },
+          {
+            "name": "test_standalone_scaled_view",
+            "number": 166,
+            "seconds": 12.45,
+            "log_line": 3339
+          },
+          {
+            "name": "test_standalone_preset_raster",
+            "number": 167,
+            "seconds": 9.88,
+            "log_line": 3347
+          },
+          {
+            "name": "test_standalone_audio_device",
+            "number": 168,
+            "seconds": 2.81,
+            "log_line": 3373
+          },
+          {
+            "name": "test_standalone_device_removal",
+            "number": 169,
+            "seconds": 0.22,
+            "log_line": 3384
+          },
+          {
+            "name": "test_standalone_callback_allocation",
+            "number": 170,
+            "seconds": 0.91,
+            "log_line": 3413
+          },
+          {
+            "name": "test_standalone_app",
+            "number": 171,
+            "seconds": 13.99,
+            "log_line": 3449
+          },
+          {
+            "name": "test_standalone_midi_cli",
+            "number": 172,
+            "seconds": 18.02,
+            "log_line": 3484
+          },
+          {
+            "name": "test_standalone_expression_diagnostics",
+            "number": 173,
+            "seconds": 2.93,
+            "log_line": 3502
+          },
+          {
+            "name": "test_standalone_native_calibration",
+            "number": 174,
+            "seconds": 20.13,
+            "log_line": 3525
+          },
+          {
+            "name": "test_standalone_native_midi_replay",
+            "number": 175,
+            "seconds": 39.47,
+            "log_line": 3554
+          },
+          {
+            "name": "test_standalone_workflows",
+            "number": 176,
+            "seconds": 62.52,
+            "log_line": 3581
+          },
+          {
+            "name": "test_standalone_workspace_replay",
+            "number": 177,
+            "seconds": 47.63,
+            "log_line": 3601
+          },
+          {
+            "name": "test_standalone_replay_boundaries",
+            "number": 178,
+            "seconds": 4.63,
+            "log_line": 3624
+          },
+          {
+            "name": "test_standalone_chapel",
+            "number": 179,
+            "seconds": 19.29,
+            "log_line": 3639
+          },
+          {
+            "name": "test_standalone_input_replay",
+            "number": 180,
+            "seconds": 0.02,
+            "log_line": 3649
+          }
+        ],
+        "summaries": [
+          {
+            "line": 3701,
+            "text": "2026-11-15T03:37:23.5812205Z 100% tests passed, 0 tests failed out of 48"
+          },
+          {
+            "line": 3716,
+            "text": "2026-11-15T03:37:23.5815245Z Total Test time (real) = 297.02 sec"
+          }
+        ]
+      },
+      "primary_excerpts": {
+        "checkout": [
+          {
+            "line": 139,
+            "text": "2026-11-15T03:30:21.8685944Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340"
+          }
+        ],
+        "toolchain": [
+          {
+            "line": 273,
+            "text": "2026-11-15T03:30:24.2863479Z cmake version 3.31.6"
+          },
+          {
+            "line": 276,
+            "text": "2026-11-15T03:30:24.8010867Z ctest version 3.31.6"
+          },
+          {
+            "line": 279,
+            "text": "2026-11-15T03:30:24.8369990Z Python 3.12.16"
+          },
+          {
+            "line": 675,
+            "text": "2026-11-15T03:30:49.2047716Z gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+          },
+          {
+            "line": 680,
+            "text": "2026-11-15T03:30:49.2127020Z g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+          },
+          {
+            "line": 685,
+            "text": "2026-11-15T03:30:50.0733875Z -- The CXX compiler identification is GNU 13.3.0"
+          },
+          {
+            "line": 701,
+            "text": "2026-11-15T03:30:51.5421912Z -- The C compiler identification is GNU 13.3.0"
+          }
+        ],
+        "configuration": [
+          {
+            "line": 651,
+            "text": "2026-11-15T03:30:49.1851856Z \u001b[36;1m  -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \\\u001b[0m"
+          },
+          {
+            "line": 656,
+            "text": "2026-11-15T03:30:49.1854087Z \u001b[36;1m  -DHAMMOND_ENABLE_MIDI=\"$HAMMOND_CI_MIDI\" \\\u001b[0m"
+          },
+          {
+            "line": 2858,
+            "text": "2026-11-15T03:32:26.5078597Z \u001b[36;1mctest --test-dir build-standalone -C Release -V --parallel 1 \\\u001b[0m"
+          },
+          {
+            "line": 2859,
+            "text": "2026-11-15T03:32:26.5078919Z \u001b[36;1m  --no-tests=error --timeout 180 -R '^test_standalone_' \\\u001b[0m"
+          }
+        ],
+        "policy": [],
+        "selected_tests": [
+          {
+            "line": 2914,
+            "text": "2026-11-15T03:32:31.7685594Z  1/48 Test #133: test_standalone_install ...................   Passed    5.21 sec"
+          },
+          {
+            "line": 3203,
+            "text": "2026-11-15T03:32:35.5097044Z 25/48 Test #157: test_standalone_midi_backend_quarantine ...   Passed    0.00 sec"
+          },
+          {
+            "line": 3258,
+            "text": "2026-11-15T03:32:48.5426143Z 31/48 Test #163: test_standalone_material_acceptance .......   Passed    4.70 sec"
+          },
+          {
+            "line": 3274,
+            "text": "2026-11-15T03:33:08.6713099Z 33/48 Test #165: test_standalone_product_visual ............   Passed   14.82 sec"
+          },
+          {
+            "line": 3525,
+            "text": "2026-11-15T03:34:30.0187397Z 42/48 Test #174: test_standalone_native_calibration ........   Passed   20.13 sec"
+          }
+        ],
+        "calibration": [
+          {
+            "line": 3509,
+            "text": "2026-11-15T03:34:09.9898080Z 174: Native calibration fixture SHA-256: 0ace48a7aee3de7ce1e19ae270c2a38c1ca05278e4f6864138916cb448046144"
+          },
+          {
+            "line": 3519,
+            "text": "2026-11-15T03:34:30.0038271Z 174: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+          }
+        ],
+        "packaging": [
+          {
+            "line": 3974,
+            "text": "2026-11-15T03:37:26.0358381Z Verified 20 installed files, MIDI ALSA, relocated help/dummy smoke, and the archived bytes."
+          }
+        ],
+        "artifacts": [
+          {
+            "line": 4020,
+            "text": "2026-11-15T03:37:27.0942961Z Artifact standalone-ubuntu-24.04-X64-midi-ON-release-diagnostics-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 has been successfully uploaded! Final size is 356099 bytes. Artifact ID is 14145471166"
+          },
+          {
+            "line": 4053,
+            "text": "2026-11-15T03:37:27.8778072Z Artifact standalone-ubuntu-24.04-X64-midi-ON-release-package-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 has been successfully uploaded! Final size is 1866077 bytes. Artifact ID is 14144799137"
+          }
+        ]
+      },
+      "diagnostic_candidates": [],
+      "material_summary": {
+        "log_line": 3257,
+        "checks": 1293,
+        "failures": 0,
+        "frames": 109,
+        "legacy_checks": 901,
+        "header_checks": 170,
+        "calibration_modal": {
+          "checks": 222,
+          "scenes": 4,
+          "frames": 21,
+          "controls": 44,
+          "literal_glyph_regions": 96,
+          "changed_values": 12,
+          "focused_controls": 8,
+          "invalid_frames": 2,
+          "long_text_frames": 2,
+          "clipped_frames": 1,
+          "intersected_glyphs": 38,
+          "resampled_pixels": 212,
+          "unexplained_pixels": 0,
+          "literal_mismatches": 0
+        }
+      },
+      "calibration_method_results": [
+        {
+          "line": 3510,
+          "text": "2026-11-15T03:34:12.6679130Z 174: test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11) ... ok"
+        },
+        {
+          "line": 3511,
+          "text": "2026-11-15T03:34:14.9548971Z 174: test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration) ... ok"
+        },
+        {
+          "line": 3512,
+          "text": "2026-11-15T03:34:17.4320905Z 174: test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel) ... ok"
+        },
+        {
+          "line": 3513,
+          "text": "2026-11-15T03:34:20.8413365Z 174: test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry) ... ok"
+        },
+        {
+          "line": 3514,
+          "text": "2026-11-15T03:34:20.8434147Z 174: test_fixture_inventory_calibrates_real_enumeration_without_audio (__main__.NativeCalibrationLifecycle.test_fixture_inventory_calibrates_real_enumeration_without_audio) ... ok"
+        },
+        {
+          "line": 3515,
+          "text": "2026-11-15T03:34:20.8459415Z 174: test_fixture_rejects_missing_or_unknown_scenario_before_app_entry (__main__.NativeCalibrationLifecycle.test_fixture_rejects_missing_or_unknown_scenario_before_app_entry) ... ok"
+        },
+        {
+          "line": 3516,
+          "text": "2026-11-15T03:34:23.1396042Z 174: test_healthy_identical_apply_preserves_epoch_notes_and_expression (__main__.NativeCalibrationLifecycle.test_healthy_identical_apply_preserves_epoch_notes_and_expression) ... ok"
+        },
+        {
+          "line": 3517,
+          "text": "2026-11-15T03:34:26.4301432Z 174: test_native_fault_retires_midi_owners_while_original_ui_owner_survives (__main__.NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives) ... ok"
+        },
+        {
+          "line": 3518,
+          "text": "2026-11-15T03:34:30.0037562Z 174: test_no_input_apply_retains_calibration_without_touching_expression (__main__.NativeCalibrationLifecycle.test_no_input_apply_retains_calibration_without_touching_expression) ... ok"
+        }
+      ],
+      "calibration_methods_passed": 9,
+      "probe_sha256": "0ace48a7aee3de7ce1e19ae270c2a38c1ca05278e4f6864138916cb448046144"
+    },
+    {
+      "job_id": 132685867475,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "run_id": 43672641506,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867475",
+      "status": "completed",
+      "conclusion": "success",
+      "source_commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "started_at": "2026-11-15T03:30:13Z",
+      "completed_at": "2026-11-15T03:37:56Z",
+      "primary_log": {
+        "bytes": 788904,
+        "sha256": "4ac77033b560b485fe65faf797b807091734f3e995eee14fc2f76612f128b214",
+        "lines": 4010,
+        "hash_encoding": "UTF-8 of exact returned decoded text including any initial BOM",
+        "complete_log_retained_here": false
+      },
+      "ctest": {
+        "executed": 48,
+        "unique_names": 48,
+        "all_passed": true,
+        "results": [
+          {
+            "name": "test_standalone_install",
+            "number": 133,
+            "seconds": 5.18,
+            "log_line": 2857
+          },
+          {
+            "name": "test_standalone_channel_acceptance",
+            "number": 134,
+            "seconds": 0,
+            "log_line": 2865
+          },
+          {
+            "name": "test_standalone_channel_modes",
+            "number": 135,
+            "seconds": 0,
+            "log_line": 2873
+          },
+          {
+            "name": "test_standalone_concurrency",
+            "number": 136,
+            "seconds": 0.1,
+            "log_line": 2891
+          },
+          {
+            "name": "test_standalone_expression_calibration",
+            "number": 137,
+            "seconds": 0,
+            "log_line": 2899
+          },
+          {
+            "name": "test_standalone_external_control",
+            "number": 138,
+            "seconds": 0,
+            "log_line": 2907
+          },
+          {
+            "name": "test_standalone_inspection_acceptance",
+            "number": 139,
+            "seconds": 0,
+            "log_line": 2915
+          },
+          {
+            "name": "test_standalone_inspection_author",
+            "number": 140,
+            "seconds": 0,
+            "log_line": 2923
+          },
+          {
+            "name": "test_standalone_midi_concurrency",
+            "number": 141,
+            "seconds": 0.03,
+            "log_line": 2933
+          },
+          {
+            "name": "test_standalone_midi_discovery",
+            "number": 142,
+            "seconds": 0,
+            "log_line": 2941
+          },
+          {
+            "name": "test_standalone_midi_input",
+            "number": 143,
+            "seconds": 0,
+            "log_line": 2949
+          },
+          {
+            "name": "test_standalone_midi_replay",
+            "number": 144,
+            "seconds": 0,
+            "log_line": 2957
+          },
+          {
+            "name": "test_standalone_midi_session",
+            "number": 145,
+            "seconds": 0.03,
+            "log_line": 2965
+          },
+          {
+            "name": "test_standalone_preset_concurrency",
+            "number": 146,
+            "seconds": 0.01,
+            "log_line": 2973
+          },
+          {
+            "name": "test_standalone_preset_ui",
+            "number": 147,
+            "seconds": 0.33,
+            "log_line": 2981
+          },
+          {
+            "name": "test_standalone_projection",
+            "number": 148,
+            "seconds": 0.14,
+            "log_line": 2990
+          },
+          {
+            "name": "test_standalone_reference_layout",
+            "number": 149,
+            "seconds": 0.03,
+            "log_line": 2998
+          },
+          {
+            "name": "test_standalone_session",
+            "number": 150,
+            "seconds": 0.24,
+            "log_line": 3006
+          },
+          {
+            "name": "test_standalone_state_files",
+            "number": 151,
+            "seconds": 0.01,
+            "log_line": 3017
+          },
+          {
+            "name": "test_standalone_ui",
+            "number": 152,
+            "seconds": 0.04,
+            "log_line": 3025
+          },
+          {
+            "name": "test_standalone_workspace_acceptance",
+            "number": 153,
+            "seconds": 0.03,
+            "log_line": 3033
+          },
+          {
+            "name": "test_standalone_workspace_continuity",
+            "number": 154,
+            "seconds": 3.3,
+            "log_line": 3104
+          },
+          {
+            "name": "test_standalone_workspaces_author",
+            "number": 155,
+            "seconds": 0,
+            "log_line": 3112
+          },
+          {
+            "name": "test_standalone_midi_backend",
+            "number": 156,
+            "seconds": 0,
+            "log_line": 3135
+          },
+          {
+            "name": "test_standalone_midi_backend_quarantine",
+            "number": 157,
+            "seconds": 0,
+            "log_line": 3146
+          },
+          {
+            "name": "test_standalone_benchmark",
+            "number": 158,
+            "seconds": 2.07,
+            "log_line": 3159
+          },
+          {
+            "name": "test_standalone_drawing",
+            "number": 159,
+            "seconds": 0.06,
+            "log_line": 3168
+          },
+          {
+            "name": "test_standalone_quad_drawing",
+            "number": 160,
+            "seconds": 0,
+            "log_line": 3176
+          },
+          {
+            "name": "test_standalone_workspace_raster",
+            "number": 161,
+            "seconds": 7.08,
+            "log_line": 3184
+          },
+          {
+            "name": "test_standalone_inspection_raster",
+            "number": 162,
+            "seconds": 0.48,
+            "log_line": 3193
+          },
+          {
+            "name": "test_standalone_material_acceptance",
+            "number": 163,
+            "seconds": 5.54,
+            "log_line": 3201
+          },
+          {
+            "name": "test_standalone_waveform_material",
+            "number": 164,
+            "seconds": 6.29,
+            "log_line": 3209
+          },
+          {
+            "name": "test_standalone_product_visual",
+            "number": 165,
+            "seconds": 16.87,
+            "log_line": 3217
+          },
+          {
+            "name": "test_standalone_scaled_view",
+            "number": 166,
+            "seconds": 15.07,
+            "log_line": 3282
+          },
+          {
+            "name": "test_standalone_preset_raster",
+            "number": 167,
+            "seconds": 11.85,
+            "log_line": 3290
+          },
+          {
+            "name": "test_standalone_audio_device",
+            "number": 168,
+            "seconds": 2.83,
+            "log_line": 3316
+          },
+          {
+            "name": "test_standalone_device_removal",
+            "number": 169,
+            "seconds": 0.22,
+            "log_line": 3327
+          },
+          {
+            "name": "test_standalone_callback_allocation",
+            "number": 170,
+            "seconds": 0.92,
+            "log_line": 3356
+          },
+          {
+            "name": "test_standalone_app",
+            "number": 171,
+            "seconds": 14.44,
+            "log_line": 3392
+          },
+          {
+            "name": "test_standalone_midi_cli",
+            "number": 172,
+            "seconds": 18.61,
+            "log_line": 3427
+          },
+          {
+            "name": "test_standalone_expression_diagnostics",
+            "number": 173,
+            "seconds": 3.03,
+            "log_line": 3445
+          },
+          {
+            "name": "test_standalone_native_calibration",
+            "number": 174,
+            "seconds": 20.34,
+            "log_line": 3468
+          },
+          {
+            "name": "test_standalone_native_midi_replay",
+            "number": 175,
+            "seconds": 40.67,
+            "log_line": 3497
+          },
+          {
+            "name": "test_standalone_workflows",
+            "number": 176,
+            "seconds": 63.86,
+            "log_line": 3524
+          },
+          {
+            "name": "test_standalone_workspace_replay",
+            "number": 177,
+            "seconds": 48.31,
+            "log_line": 3544
+          },
+          {
+            "name": "test_standalone_replay_boundaries",
+            "number": 178,
+            "seconds": 4.84,
+            "log_line": 3567
+          },
+          {
+            "name": "test_standalone_chapel",
+            "number": 179,
+            "seconds": 20.13,
+            "log_line": 3582
+          },
+          {
+            "name": "test_standalone_input_replay",
+            "number": 180,
+            "seconds": 0.02,
+            "log_line": 3592
+          }
+        ],
+        "summaries": [
+          {
+            "line": 3644,
+            "text": "2026-11-15T03:37:49.0905420Z 100% tests passed, 0 tests failed out of 48"
+          },
+          {
+            "line": 3659,
+            "text": "2026-11-15T03:37:49.0908855Z Total Test time (real) = 313.06 sec"
+          }
+        ]
+      },
+      "primary_excerpts": {
+        "checkout": [
+          {
+            "line": 139,
+            "text": "2026-11-15T03:30:22.2910069Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340"
+          }
+        ],
+        "toolchain": [
+          {
+            "line": 273,
+            "text": "2026-11-15T03:30:24.1338912Z cmake version 3.31.6"
+          },
+          {
+            "line": 276,
+            "text": "2026-11-15T03:30:24.7599181Z ctest version 3.31.6"
+          },
+          {
+            "line": 279,
+            "text": "2026-11-15T03:30:24.7725348Z Python 3.12.16"
+          },
+          {
+            "line": 637,
+            "text": "2026-11-15T03:30:43.2066809Z gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+          },
+          {
+            "line": 642,
+            "text": "2026-11-15T03:30:43.2578982Z g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+          },
+          {
+            "line": 647,
+            "text": "2026-11-15T03:30:44.2960887Z -- The CXX compiler identification is GNU 13.3.0"
+          },
+          {
+            "line": 659,
+            "text": "2026-11-15T03:30:46.1532380Z -- The C compiler identification is GNU 13.3.0"
+          }
+        ],
+        "configuration": [
+          {
+            "line": 613,
+            "text": "2026-11-15T03:30:43.1931753Z \u001b[36;1m  -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \\\u001b[0m"
+          },
+          {
+            "line": 618,
+            "text": "2026-11-15T03:30:43.1933378Z \u001b[36;1m  -DHAMMOND_ENABLE_MIDI=\"$HAMMOND_CI_MIDI\" \\\u001b[0m"
+          },
+          {
+            "line": 2801,
+            "text": "2026-11-15T03:32:35.9538926Z \u001b[36;1mctest --test-dir build-standalone -C Release -V --parallel 1 \\\u001b[0m"
+          },
+          {
+            "line": 2802,
+            "text": "2026-11-15T03:32:35.9539285Z \u001b[36;1m  --no-tests=error --timeout 180 -R '^test_standalone_' \\\u001b[0m"
+          }
+        ],
+        "policy": [],
+        "selected_tests": [
+          {
+            "line": 2857,
+            "text": "2026-11-15T03:32:41.2178347Z  1/48 Test #133: test_standalone_install ...................   Passed    5.18 sec"
+          },
+          {
+            "line": 3146,
+            "text": "2026-11-15T03:32:45.5426165Z 25/48 Test #157: test_standalone_midi_backend_quarantine ...   Passed    0.00 sec"
+          },
+          {
+            "line": 3201,
+            "text": "2026-11-15T03:33:00.7921325Z 31/48 Test #163: test_standalone_material_acceptance .......   Passed    5.54 sec"
+          },
+          {
+            "line": 3217,
+            "text": "2026-11-15T03:33:23.9463439Z 33/48 Test #165: test_standalone_product_visual ............   Passed   16.87 sec"
+          },
+          {
+            "line": 3468,
+            "text": "2026-11-15T03:34:51.2551847Z 42/48 Test #174: test_standalone_native_calibration ........   Passed   20.34 sec"
+          }
+        ],
+        "calibration": [
+          {
+            "line": 3452,
+            "text": "2026-11-15T03:34:31.0252765Z 174: Native calibration fixture SHA-256: 0ace48a7aee3de7ce1e19ae270c2a38c1ca05278e4f6864138916cb448046144"
+          },
+          {
+            "line": 3462,
+            "text": "2026-11-15T03:34:51.2412227Z 174: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+          }
+        ],
+        "packaging": [
+          {
+            "line": 3912,
+            "text": "2026-11-15T03:37:51.3787733Z Verified 16 installed files, MIDI unavailable, relocated help/dummy smoke, and the archived bytes."
+          }
+        ],
+        "artifacts": [
+          {
+            "line": 3958,
+            "text": "2026-11-15T03:37:52.5496560Z Artifact standalone-ubuntu-24.04-X64-midi-OFF-release-diagnostics-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 has been successfully uploaded! Final size is 344874 bytes. Artifact ID is 14144762715"
+          },
+          {
+            "line": 3991,
+            "text": "2026-11-15T03:37:53.8267471Z Artifact standalone-ubuntu-24.04-X64-midi-OFF-release-package-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 has been successfully uploaded! Final size is 1831998 bytes. Artifact ID is 14144568706"
+          }
+        ]
+      },
+      "diagnostic_candidates": [],
+      "material_summary": {
+        "log_line": 3200,
+        "checks": 1293,
+        "failures": 0,
+        "frames": 109,
+        "legacy_checks": 901,
+        "header_checks": 170,
+        "calibration_modal": {
+          "checks": 222,
+          "scenes": 4,
+          "frames": 21,
+          "controls": 44,
+          "literal_glyph_regions": 96,
+          "changed_values": 12,
+          "focused_controls": 8,
+          "invalid_frames": 2,
+          "long_text_frames": 2,
+          "clipped_frames": 1,
+          "intersected_glyphs": 38,
+          "resampled_pixels": 212,
+          "unexplained_pixels": 0,
+          "literal_mismatches": 0
+        }
+      },
+      "calibration_method_results": [
+        {
+          "line": 3453,
+          "text": "2026-11-15T03:34:33.7511012Z 174: test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11) ... ok"
+        },
+        {
+          "line": 3454,
+          "text": "2026-11-15T03:34:36.0532052Z 174: test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration) ... ok"
+        },
+        {
+          "line": 3455,
+          "text": "2026-11-15T03:34:38.5584964Z 174: test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel) ... ok"
+        },
+        {
+          "line": 3456,
+          "text": "2026-11-15T03:34:41.9850849Z 174: test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry) ... ok"
+        },
+        {
+          "line": 3457,
+          "text": "2026-11-15T03:34:41.9875797Z 174: test_fixture_inventory_calibrates_real_enumeration_without_audio (__main__.NativeCalibrationLifecycle.test_fixture_inventory_calibrates_real_enumeration_without_audio) ... ok"
+        },
+        {
+          "line": 3458,
+          "text": "2026-11-15T03:34:41.9905753Z 174: test_fixture_rejects_missing_or_unknown_scenario_before_app_entry (__main__.NativeCalibrationLifecycle.test_fixture_rejects_missing_or_unknown_scenario_before_app_entry) ... ok"
+        },
+        {
+          "line": 3459,
+          "text": "2026-11-15T03:34:44.2907852Z 174: test_healthy_identical_apply_preserves_epoch_notes_and_expression (__main__.NativeCalibrationLifecycle.test_healthy_identical_apply_preserves_epoch_notes_and_expression) ... ok"
+        },
+        {
+          "line": 3460,
+          "text": "2026-11-15T03:34:47.6142272Z 174: test_native_fault_retires_midi_owners_while_original_ui_owner_survives (__main__.NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives) ... ok"
+        },
+        {
+          "line": 3461,
+          "text": "2026-11-15T03:34:51.2411389Z 174: test_no_input_apply_retains_calibration_without_touching_expression (__main__.NativeCalibrationLifecycle.test_no_input_apply_retains_calibration_without_touching_expression) ... ok"
+        }
+      ],
+      "calibration_methods_passed": 9,
+      "probe_sha256": "0ace48a7aee3de7ce1e19ae270c2a38c1ca05278e4f6864138916cb448046144"
+    },
+    {
+      "job_id": 132685867380,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "run_id": 43672641506,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867380",
+      "status": "completed",
+      "conclusion": "success",
+      "source_commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "started_at": "2026-11-15T03:30:13Z",
+      "completed_at": "2026-11-15T03:42:24Z",
+      "primary_log": {
+        "bytes": 971307,
+        "sha256": "b9341b7913c6701575206c9ce1cf6689e62587a8beef0de9445a64d50d160708",
+        "lines": 4582,
+        "hash_encoding": "UTF-8 of exact returned decoded text including any initial BOM",
+        "complete_log_retained_here": false
+      },
+      "ctest": {
+        "executed": 21,
+        "unique_names": 21,
+        "all_passed": true,
+        "results": [
+          {
+            "name": "test_standalone_channel_acceptance",
+            "number": 134,
+            "seconds": 0.17,
+            "log_line": 4158
+          },
+          {
+            "name": "test_standalone_channel_modes",
+            "number": 135,
+            "seconds": 0.02,
+            "log_line": 4166
+          },
+          {
+            "name": "test_standalone_expression_calibration",
+            "number": 137,
+            "seconds": 0.02,
+            "log_line": 4174
+          },
+          {
+            "name": "test_standalone_inspection_acceptance",
+            "number": 139,
+            "seconds": 0.03,
+            "log_line": 4182
+          },
+          {
+            "name": "test_standalone_inspection_author",
+            "number": 140,
+            "seconds": 0.03,
+            "log_line": 4190
+          },
+          {
+            "name": "test_standalone_preset_ui",
+            "number": 147,
+            "seconds": 4.06,
+            "log_line": 4198
+          },
+          {
+            "name": "test_standalone_projection",
+            "number": 148,
+            "seconds": 1.45,
+            "log_line": 4207
+          },
+          {
+            "name": "test_standalone_reference_layout",
+            "number": 149,
+            "seconds": 0.25,
+            "log_line": 4215
+          },
+          {
+            "name": "test_standalone_ui",
+            "number": 152,
+            "seconds": 0.36,
+            "log_line": 4223
+          },
+          {
+            "name": "test_standalone_workspace_acceptance",
+            "number": 153,
+            "seconds": 0.32,
+            "log_line": 4231
+          },
+          {
+            "name": "test_standalone_workspace_continuity",
+            "number": 154,
+            "seconds": 8.84,
+            "log_line": 4302
+          },
+          {
+            "name": "test_standalone_workspaces_author",
+            "number": 155,
+            "seconds": 0.02,
+            "log_line": 4310
+          },
+          {
+            "name": "test_standalone_drawing",
+            "number": 159,
+            "seconds": 0.61,
+            "log_line": 4319
+          },
+          {
+            "name": "test_standalone_quad_drawing",
+            "number": 160,
+            "seconds": 0.05,
+            "log_line": 4327
+          },
+          {
+            "name": "test_standalone_workspace_raster",
+            "number": 161,
+            "seconds": 47.16,
+            "log_line": 4335
+          },
+          {
+            "name": "test_standalone_inspection_raster",
+            "number": 162,
+            "seconds": 3.19,
+            "log_line": 4344
+          },
+          {
+            "name": "test_standalone_material_acceptance",
+            "number": 163,
+            "seconds": 37.5,
+            "log_line": 4352
+          },
+          {
+            "name": "test_standalone_product_visual",
+            "number": 165,
+            "seconds": 112.55,
+            "log_line": 4360
+          },
+          {
+            "name": "test_standalone_scaled_view",
+            "number": 166,
+            "seconds": 104.9,
+            "log_line": 4425
+          },
+          {
+            "name": "test_standalone_preset_raster",
+            "number": 167,
+            "seconds": 79.67,
+            "log_line": 4433
+          },
+          {
+            "name": "test_standalone_native_calibration",
+            "number": 174,
+            "seconds": 21.57,
+            "log_line": 4456
+          }
+        ],
+        "summaries": [
+          {
+            "line": 4481,
+            "text": "2026-11-15T03:42:20.0978824Z 100% tests passed, 0 tests failed out of 21"
+          },
+          {
+            "line": 4492,
+            "text": "2026-11-15T03:42:20.0981805Z Total Test time (real) = 422.84 sec"
+          }
+        ]
+      },
+      "primary_excerpts": {
+        "checkout": [
+          {
+            "line": 144,
+            "text": "2026-11-15T03:30:22.1202148Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340"
+          }
+        ],
+        "toolchain": [
+          {
+            "line": 268,
+            "text": "2026-11-15T03:30:22.7646076Z cmake version 3.31.6"
+          },
+          {
+            "line": 271,
+            "text": "2026-11-15T03:30:23.5105122Z ctest version 3.31.6"
+          },
+          {
+            "line": 274,
+            "text": "2026-11-15T03:30:23.5251319Z Python 3.12.16"
+          },
+          {
+            "line": 275,
+            "text": "2026-11-15T03:30:23.5321944Z gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+          },
+          {
+            "line": 280,
+            "text": "2026-11-15T03:30:23.6027187Z g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+          },
+          {
+            "line": 652,
+            "text": "2026-11-15T03:30:37.9200450Z -- The CXX compiler identification is GNU 13.3.0"
+          },
+          {
+            "line": 666,
+            "text": "2026-11-15T03:30:39.6911286Z -- The C compiler identification is GNU 13.3.0"
+          }
+        ],
+        "configuration": [
+          {
+            "line": 626,
+            "text": "2026-11-15T03:30:36.4147799Z \u001b[36;1m  -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON \\\u001b[0m"
+          },
+          {
+            "line": 630,
+            "text": "2026-11-15T03:30:36.4149370Z \u001b[36;1m  -DHAMMOND_ENABLE_MIDI=OFF -DHAMMOND_ENABLE_SANITIZERS=ON \\\u001b[0m"
+          },
+          {
+            "line": 4062,
+            "text": "2026-11-15T03:35:17.1068225Z \u001b[36;1m           \"--show-only=json-v1\", \"--no-tests=error\", \"-R\", selection]\u001b[0m"
+          },
+          {
+            "line": 4096,
+            "text": "2026-11-15T03:35:17.1085484Z \u001b[36;1mctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \\\u001b[0m"
+          },
+          {
+            "line": 4097,
+            "text": "2026-11-15T03:35:17.1086221Z \u001b[36;1m  --no-tests=error --timeout 180 -R \"$(cat standalone-sanitizer-logs/ctest-filter.txt)\" \\\u001b[0m"
+          }
+        ],
+        "policy": [
+          {
+            "line": 54,
+            "text": "2026-11-15T03:30:14.7926604Z   ASAN_OPTIONS: detect_leaks=1:halt_on_error=1"
+          },
+          {
+            "line": 55,
+            "text": "2026-11-15T03:30:14.7927243Z   UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1"
+          },
+          {
+            "line": 56,
+            "text": "2026-11-15T03:30:14.7927839Z   LSAN_OPTIONS: exitcode=23"
+          }
+        ],
+        "selected_tests": [
+          {
+            "line": 4352,
+            "text": "2026-11-15T03:37:01.4043331Z 17/21 Test #163: test_standalone_material_acceptance ......   Passed   37.50 sec"
+          },
+          {
+            "line": 4360,
+            "text": "2026-11-15T03:38:53.9549556Z 18/21 Test #165: test_standalone_product_visual ...........   Passed  112.55 sec"
+          },
+          {
+            "line": 4456,
+            "text": "2026-11-15T03:42:20.0967210Z 21/21 Test #174: test_standalone_native_calibration .......   Passed   21.57 sec"
+          }
+        ],
+        "calibration": [
+          {
+            "line": 4440,
+            "text": "2026-11-15T03:41:58.7513649Z 174: Native calibration fixture SHA-256: 0fc8805dbb63ead64da7f9b8b81b4e9d960acf1a0028d9c86167124b11d4478a"
+          },
+          {
+            "line": 4450,
+            "text": "2026-11-15T03:42:20.0130849Z 174: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2"
+          },
+          {
+            "line": 4493,
+            "text": "2026-11-15T03:42:20.1231248Z Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+          }
+        ],
+        "packaging": [],
+        "artifacts": [
+          {
+            "line": 4563,
+            "text": "2026-11-15T03:42:21.6988552Z Artifact standalone-linux-gcc-sanitizers-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 has been successfully uploaded! Final size is 188216 bytes. Artifact ID is 14144753364"
+          }
+        ]
+      },
+      "diagnostic_candidates": [],
+      "material_summary": {
+        "log_line": 4351,
+        "checks": 1293,
+        "failures": 0,
+        "frames": 109,
+        "legacy_checks": 901,
+        "header_checks": 170,
+        "calibration_modal": {
+          "checks": 222,
+          "scenes": 4,
+          "frames": 21,
+          "controls": 44,
+          "literal_glyph_regions": 96,
+          "changed_values": 12,
+          "focused_controls": 8,
+          "invalid_frames": 2,
+          "long_text_frames": 2,
+          "clipped_frames": 1,
+          "intersected_glyphs": 38,
+          "resampled_pixels": 212,
+          "unexplained_pixels": 0,
+          "literal_mismatches": 0
+        }
+      },
+      "calibration_method_results": [
+        {
+          "line": 4441,
+          "text": "2026-11-15T03:42:01.5570665Z 174: test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11) ... ok"
+        },
+        {
+          "line": 4442,
+          "text": "2026-11-15T03:42:04.0139199Z 174: test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration) ... ok"
+        },
+        {
+          "line": 4443,
+          "text": "2026-11-15T03:42:06.6887329Z 174: test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel) ... ok"
+        },
+        {
+          "line": 4444,
+          "text": "2026-11-15T03:42:10.2473160Z 174: test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry) ... ok"
+        },
+        {
+          "line": 4445,
+          "text": "2026-11-15T03:42:10.2905312Z 174: test_fixture_inventory_calibrates_real_enumeration_without_audio (__main__.NativeCalibrationLifecycle.test_fixture_inventory_calibrates_real_enumeration_without_audio) ... ok"
+        },
+        {
+          "line": 4446,
+          "text": "2026-11-15T03:42:10.3903134Z 174: test_fixture_rejects_missing_or_unknown_scenario_before_app_entry (__main__.NativeCalibrationLifecycle.test_fixture_rejects_missing_or_unknown_scenario_before_app_entry) ... ok"
+        },
+        {
+          "line": 4447,
+          "text": "2026-11-15T03:42:12.7940266Z 174: test_healthy_identical_apply_preserves_epoch_notes_and_expression (__main__.NativeCalibrationLifecycle.test_healthy_identical_apply_preserves_epoch_notes_and_expression) ... ok"
+        },
+        {
+          "line": 4448,
+          "text": "2026-11-15T03:42:16.2745081Z 174: test_native_fault_retires_midi_owners_while_original_ui_owner_survives (__main__.NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives) ... ok"
+        },
+        {
+          "line": 4449,
+          "text": "2026-11-15T03:42:20.0129005Z 174: test_no_input_apply_retains_calibration_without_touching_expression (__main__.NativeCalibrationLifecycle.test_no_input_apply_retains_calibration_without_touching_expression) ... ok"
+        }
+      ],
+      "calibration_methods_passed": 9,
+      "probe_sha256": "0fc8805dbb63ead64da7f9b8b81b4e9d960acf1a0028d9c86167124b11d4478a",
+      "instrumentation": {
+        "distinct_compile_commands": 260,
+        "targets": 27,
+        "sdl_c_objects": 196,
+        "project_cpp_objects": 64,
+        "counts_by_target": {
+          "SDL2-static": 196,
+          "hammond_core": 25,
+          "hammond_standalone_support": 7,
+          "hammond_standalone_replay": 1,
+          "hammond_standalone_audio": 1,
+          "hammond_standalone_drawing": 1,
+          "hammond_standalone_calibration_probe": 3,
+          "test_standalone_channel_acceptance": 1,
+          "test_standalone_channel_modes": 1,
+          "test_standalone_drawing": 1,
+          "test_standalone_expression_calibration": 1,
+          "test_standalone_inspection_acceptance": 1,
+          "test_standalone_inspection_author": 1,
+          "test_standalone_inspection_raster": 2,
+          "test_standalone_material_acceptance": 2,
+          "test_standalone_preset_raster": 2,
+          "test_standalone_preset_ui": 1,
+          "test_standalone_product_visual": 2,
+          "test_standalone_projection": 1,
+          "test_standalone_quad_drawing": 1,
+          "test_standalone_reference_layout": 1,
+          "test_standalone_scaled_view": 2,
+          "test_standalone_ui": 1,
+          "test_standalone_workspace_acceptance": 1,
+          "test_standalone_workspace_continuity": 1,
+          "test_standalone_workspace_raster": 2,
+          "test_standalone_workspaces_author": 1
+        },
+        "all_observed_compile_commands_have_sanitizers_and_frame_pointers": true,
+        "executable_link_commands": 21,
+        "all_observed_links_have_sanitizers": true,
+        "actual_names_match_21_required_map": true,
+        "test_target_map": {
+          "test_standalone_ui": "test_standalone_ui",
+          "test_standalone_preset_ui": "test_standalone_preset_ui",
+          "test_standalone_workspaces_author": "test_standalone_workspaces_author",
+          "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+          "test_standalone_projection": "test_standalone_projection",
+          "test_standalone_inspection_author": "test_standalone_inspection_author",
+          "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+          "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+          "test_standalone_drawing": "test_standalone_drawing",
+          "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+          "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+          "test_standalone_scaled_view": "test_standalone_scaled_view",
+          "test_standalone_preset_raster": "test_standalone_preset_raster",
+          "test_standalone_reference_layout": "test_standalone_reference_layout",
+          "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+          "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+          "test_standalone_channel_modes": "test_standalone_channel_modes",
+          "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+          "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+          "test_standalone_product_visual": "test_standalone_product_visual",
+          "test_standalone_native_calibration": "hammond_standalone_calibration_probe"
+        },
+        "six_archive_asan_ubsan_symbol_checks_completed": true,
+        "all_21_asan_ubsan_runtime_checks_completed": true,
+        "probe_sha256": "0fc8805dbb63ead64da7f9b8b81b4e9d960acf1a0028d9c86167124b11d4478a",
+        "probe_hash_matches_instrumentation_asserted": true,
+        "calibration": {
+          "methods": 9,
+          "subprocesses": 10,
+          "lifecycles": 7,
+          "intentional_failed_replays": 2,
+          "scenarios": [
+            "identical",
+            "calibration",
+            "route",
+            "port",
+            "no-input",
+            "failed-reopen",
+            "fault-retry"
+          ],
+          "all_common_assertions_passed": true,
+          "seven_retained_scenario_stderr_scans_passed": true
+        },
+        "primary_excerpts": {
+          "compile_examples": [
+            {
+              "line": 1533,
+              "text": "2026-11-15T03:30:58.7634083Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2 && /usr/bin/gcc -DSDL_STATIC_LIB -DUSING_GENERATED_CONFIG_H -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include/SDL2 -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include-config-release/SDL2 -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include-config-release -fsanitize=address,undefined -fno-omit-frame-pointer -idirafter \"/home/runner/work/_temp/hammond-sdl2/src/video/khronos\" -DHAVE_LINUX_VERSION_H  -Wall -Wundef -fno-strict-aliasing -Wdeclaration-after-statement -fvisibility=hidden -Wshadow -Wno-unused-local-typedefs -fdiagnostics-color=always -mmmx -msse -msse2 -msse3  -isystem/usr/include -D_REENTRANT  -DSDL_BUILD_MAJOR_VERSION=2 -DSDL_BUILD_MINOR_VERSION=32 -DSDL_BUILD_MICRO_VERSION=10 -O3 -DNDEBUG -MD -MT _sdl2/CMakeFiles/SDL2-static.dir/src/SDL.c.o -MF CMakeFiles/SDL2-static.dir/src/SDL.c.o.d -o CMakeFiles/SDL2-static.dir/src/SDL.c.o -c /home/runner/work/_temp/hammond-sdl2/src/SDL.c"
+            },
+            {
+              "line": 1544,
+              "text": "2026-11-15T03:30:58.8145611Z /usr/bin/g++  -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/generated -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -MF CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o.d -o CMakeFiles/hammond_core.dir/src/ContactBank.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/src/ContactBank.cpp"
+            },
+            {
+              "line": 2083,
+              "text": "2026-11-15T03:33:12.5787787Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/apps/standalone && /usr/bin/g++ -DHAMMOND_HAS_RTMIDI=1 -DSDL_MAIN_HANDLED -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/native_tests/fake_calibration -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/apps/standalone/generated -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include/SDL2 -I/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone-sanitizers/_sdl2/include-config-release/SDL2 -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -MD -MT apps/standalone/CMakeFiles/hammond_standalone_calibration_probe.dir/native_tests/calibration_lifecycle_driver.cpp.o -MF CMakeFiles/hammond_standalone_calibration_probe.dir/native_tests/calibration_lifecycle_driver.cpp.o.d -o CMakeFiles/hammond_standalone_calibration_probe.dir/native_tests/calibration_lifecycle_driver.cpp.o -c /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/apps/standalone/native_tests/calibration_lifecycle_driver.cpp"
+            }
+          ],
+          "probe_link": [
+            {
+              "line": 2089,
+              "text": "2026-11-15T03:33:28.4719292Z /usr/bin/g++ -O3 -DNDEBUG -fsanitize=address,undefined -Wl,--dependency-file=CMakeFiles/hammond_standalone_calibration_probe.dir/link.d CMakeFiles/hammond_standalone_calibration_probe.dir/native_tests/calibration_lifecycle_driver.cpp.o CMakeFiles/hammond_standalone_calibration_probe.dir/MidiDevice.cpp.o CMakeFiles/hammond_standalone_calibration_probe.dir/InstrumentView.cpp.o -o hammond_standalone_calibration_probe  libhammond_standalone_audio.a libhammond_standalone_replay.a libhammond_standalone_drawing.a libhammond_standalone_support.a ../../libhammond_core.a ../../_sdl2/libSDL2.a -lm -pthread -lasan -lubsan"
+            }
+          ],
+          "executed_checks": [
+            {
+              "line": 3954,
+              "text": "2026-11-15T03:35:15.7232499Z \u001b[36;1mlibraries = {\"SDL2-static\": \"_sdl2/libSDL2.a\", \"hammond_core\": \"libhammond_core.a\",\u001b[0m"
+            },
+            {
+              "line": 3955,
+              "text": "2026-11-15T03:35:15.7233149Z \u001b[36;1m             \"hammond_standalone_support\": \"apps/standalone/libhammond_standalone_support.a\",\u001b[0m"
+            },
+            {
+              "line": 3956,
+              "text": "2026-11-15T03:35:15.7233777Z \u001b[36;1m             \"hammond_standalone_drawing\": \"apps/standalone/libhammond_standalone_drawing.a\",\u001b[0m"
+            },
+            {
+              "line": 3957,
+              "text": "2026-11-15T03:35:15.7234386Z \u001b[36;1m             \"hammond_standalone_audio\": \"apps/standalone/libhammond_standalone_audio.a\",\u001b[0m"
+            },
+            {
+              "line": 3958,
+              "text": "2026-11-15T03:35:15.7234990Z \u001b[36;1m             \"hammond_standalone_replay\": \"apps/standalone/libhammond_standalone_replay.a\"}\u001b[0m"
+            },
+            {
+              "line": 3991,
+              "text": "2026-11-15T03:35:15.7263132Z \u001b[36;1m    \"hammond_standalone_support\": {\"apps/standalone/Session.cpp\", \"apps/standalone/MidiInput.cpp\"},\u001b[0m"
+            },
+            {
+              "line": 3992,
+              "text": "2026-11-15T03:35:15.7263732Z \u001b[36;1m    \"hammond_standalone_audio\": {\"apps/standalone/AudioDevice.cpp\"},\u001b[0m"
+            },
+            {
+              "line": 3993,
+              "text": "2026-11-15T03:35:15.7264219Z \u001b[36;1m    \"hammond_standalone_replay\": {\"apps/standalone/ScriptedInput.cpp\"},\u001b[0m"
+            },
+            {
+              "line": 3998,
+              "text": "2026-11-15T03:35:15.7266628Z \u001b[36;1massert '#include \"../main.cpp\"' in driver.read_text().splitlines(), \"Probe must compile the real application entry\"\u001b[0m"
+            },
+            {
+              "line": 4003,
+              "text": "2026-11-15T03:35:15.7268572Z \u001b[36;1m    symbols = subprocess.check_output([\"nm\", \"-u\", str(archive)], text=True)\u001b[0m"
+            },
+            {
+              "line": 4004,
+              "text": "2026-11-15T03:35:15.7269052Z \u001b[36;1m    assert \"__asan_\" in symbols and \"__ubsan_\" in symbols, relative\u001b[0m"
+            },
+            {
+              "line": 4014,
+              "text": "2026-11-15T03:35:15.7273424Z \u001b[36;1m            pathlib.Path(arg).name for arg in link_arguments}, \"Native probe must link all six instrumented archives\"\u001b[0m"
+            },
+            {
+              "line": 4015,
+              "text": "2026-11-15T03:35:15.7274049Z \u001b[36;1m    runtimes = subprocess.check_output([\"ldd\", str(executable)], text=True)\u001b[0m"
+            },
+            {
+              "line": 4016,
+              "text": "2026-11-15T03:35:15.7274588Z \u001b[36;1m    assert \"libasan.so\" in runtimes and \"libubsan.so\" in runtimes, (name, runtimes)\u001b[0m"
+            },
+            {
+              "line": 4106,
+              "text": "2026-11-15T03:35:17.1090283Z \u001b[36;1massert summary[\"binary_sha256\"] == instrumentation[\"executables\"][\"hammond_standalone_calibration_probe\"][\"sha256\"]\u001b[0m"
+            },
+            {
+              "line": 4107,
+              "text": "2026-11-15T03:35:17.1090949Z \u001b[36;1massert summary[\"subprocesses\"] == 10 and summary[\"native_lifecycles\"] == 7\u001b[0m"
+            },
+            {
+              "line": 4108,
+              "text": "2026-11-15T03:35:17.1091405Z \u001b[36;1massert summary[\"deliberately_failed_replays\"] == 2\u001b[0m"
+            },
+            {
+              "line": 4109,
+              "text": "2026-11-15T03:35:17.1092234Z \u001b[36;1massert len(summary[\"cases\"]) == 7 and all(case[\"common_assertions_passed\"] for case in summary[\"cases\"])\u001b[0m"
+            },
+            {
+              "line": 4110,
+              "text": "2026-11-15T03:35:17.1092849Z \u001b[36;1massert {case[\"scenario\"] for case in summary[\"cases\"]} == {\u001b[0m"
+            },
+            {
+              "line": 4111,
+              "text": "2026-11-15T03:35:17.1093364Z \u001b[36;1m    \"identical\", \"calibration\", \"route\", \"port\", \"no-input\", \"failed-reopen\", \"fault-retry\"}\u001b[0m"
+            },
+            {
+              "line": 4116,
+              "text": "2026-11-15T03:35:17.1095680Z \u001b[36;1m    stderr = (logs / \"native-calibration\" / case[\"scenario\"] / \"stderr.txt\").read_text()\u001b[0m"
+            },
+            {
+              "line": 4117,
+              "text": "2026-11-15T03:35:17.1096410Z \u001b[36;1m    assert not re.search(r\"AddressSanitizer|UndefinedBehaviorSanitizer|LeakSanitizer|runtime error:\", stderr), stderr\u001b[0m"
+            }
+          ],
+          "discovery_and_postcheck": [
+            {
+              "line": 4138,
+              "text": "2026-11-15T03:35:17.2497314Z Discovered exactly 21 built interface, channel, calibration and product paint gates; job sanitizer policy applies to every gate."
+            },
+            {
+              "line": 4493,
+              "text": "2026-11-15T03:42:20.1231248Z Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+            }
+          ]
+        },
+        "artifact_payloads_independently_downloaded": false
+      }
+    },
+    {
+      "job_id": 132685867179,
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "run_id": 43672641490,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867179",
+      "source_commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-15T03:30:13Z",
+      "completed_at": "2026-11-15T03:42:54Z",
+      "primary_log": {
+        "bytes": 61200,
+        "sha256": "a069e6b3b28c3a20eee8779754daa7302f9ddde41da5b70e4d74fbaf3af9eeeb",
+        "lines": 459,
+        "hash_encoding": "UTF-8 of exact decoded text including any initial BOM",
+        "complete_log_retained_here": false
+      },
+      "full_waveform": {
+        "status": "pass",
+        "mode": "full",
+        "qualification_json": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261115T033037.004359Z-f9663142/qualification.json",
+        "wall_seconds": 734.604258623,
+        "failures": []
+      },
+      "admission_self_tests": {
+        "passed": 14,
+        "seconds": 0.642,
+        "log_line": 252
+      },
+      "primary_excerpts": [
+        {
+          "line": 110,
+          "text": "2026-11-15T03:30:21.4169616Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340"
+        },
+        {
+          "line": 122,
+          "text": "2026-11-15T03:30:21.9405049Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340"
+        },
+        {
+          "line": 182,
+          "text": "2026-11-15T03:30:22.2740925Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340"
+        },
+        {
+          "line": 183,
+          "text": "2026-11-15T03:30:22.3073212Z cmake version 3.31.6"
+        },
+        {
+          "line": 186,
+          "text": "2026-11-15T03:30:22.3143318Z g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+        },
+        {
+          "line": 191,
+          "text": "2026-11-15T03:30:22.3311314Z Python 3.12.16"
+        },
+        {
+          "line": 210,
+          "text": "2026-11-15T03:30:22.5351704Z -- The CXX compiler identification is GNU 13.3.0"
+        },
+        {
+          "line": 252,
+          "text": "2026-11-15T03:30:24.0740730Z Ran 14 tests in 0.642s"
+        },
+        {
+          "line": 254,
+          "text": "2026-11-15T03:30:24.0741084Z OK"
+        },
+        {
+          "line": 396,
+          "text": "2026-11-15T03:30:36.8903095Z cd /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ && /opt/hostedtoolcache/Python/3.12.16/x64/bin/python /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/tests/test_rotary_waveform_acceptance.py --mode full --probe /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/hammond_rotary_waveform_probe --report-dir /home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full --timeout-seconds 1500"
+        },
+        {
+          "line": 397,
+          "text": "2026-11-15T03:42:51.6126653Z {\"status\": \"pass\", \"mode\": \"full\", \"qualification_json\": \"/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261115T033037.004359Z-f9663142/qualification.json\", \"wall_seconds\": 734.604258623, \"failures\": []}"
+        },
+        {
+          "line": 399,
+          "text": "2026-11-15T03:42:51.6268473Z [100%] Built target check_rotary_waveform_full"
+        },
+        {
+          "line": 440,
+          "text": "2026-11-15T03:42:52.7382676Z Artifact rotary-waveform-full-linux-1 has been successfully uploaded! Final size is 109401 bytes. Artifact ID is 14145098672"
+        }
+      ],
+      "scope": "Full native runner and strict report admission passed after a verbose fresh probe build. Complete qualification JSON and native metrics artifact were not independently downloaded; R4 owner retains separate lifecycle/transaction/R5/R6/physical gates."
+    }
+  ],
+  "observed_other_platform_failures": [
+    {
+      "job_id": 132685867386,
+      "name": "Release (macOS AppleClang)",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867386",
+      "status": "completed",
+      "conclusion": "failure",
+      "completed_at": "2026-11-15T03:33:12Z",
+      "failed_steps": [
+        "Run every registered Release test"
+      ],
+      "audit_scope": "Observed API metadata only; primary Windows/macOS failure analysis belongs to A50/A51."
+    },
+    {
+      "job_id": 132685867528,
+      "name": "Release (Windows MSVC)",
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867528",
+      "status": "completed",
+      "conclusion": "failure",
+      "completed_at": "2026-11-15T03:37:21Z",
+      "failed_steps": [
+        "Run every registered Release test"
+      ],
+      "audit_scope": "Observed API metadata only; primary Windows/macOS failure analysis belongs to A50/A51."
+    }
+  ],
+  "new_python_modules": {
+    "python_test_product_session": {
+      "linux_release": {
+        "order": 113,
+        "total": 157,
+        "number": 114,
+        "name": "python_test_product_session",
+        "result": "Passed",
+        "seconds": 1.28,
+        "log_line": 1838
+      },
+      "core_sanitizers": {
+        "order": 113,
+        "total": 157,
+        "number": 114,
+        "name": "python_test_product_session",
+        "result": "Passed",
+        "seconds": 1.18,
+        "log_line": 1861
+      }
+    },
+    "python_test_plot_crossover_characterization": {
+      "linux_release": {
+        "order": 110,
+        "total": 157,
+        "number": 111,
+        "name": "python_test_plot_crossover_characterization",
+        "result": "Passed",
+        "seconds": 0.4,
+        "log_line": 1832
+      },
+      "core_sanitizers": {
+        "order": 110,
+        "total": 157,
+        "number": 111,
+        "name": "python_test_plot_crossover_characterization",
+        "result": "Passed",
+        "seconds": 0.43,
+        "log_line": 1855
+      }
+    }
+  },
+  "sanitizer_policy": {
+    "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1",
+    "LSAN_OPTIONS": "exitcode=23",
+    "only_named_exception": "test_standalone_midi_backend_quarantine uses ASAN_OPTIONS=detect_leaks=0:halt_on_error=1 for intentional failed-close retention",
+    "exception_in_core_157": true,
+    "exception_in_native_21": false,
+    "new_suppressions": false,
+    "local_ptrace_blocker": "preserved; no local execution repeated"
+  },
+  "next_gate": "Preserve this c448 Linux qualification and the original macOS/Windows failures. Publish reviewed portable test-fixture repairs and qualify the replacement source; do not carry c448 results forward as proof of modified tests or claim the whole c448 matrix passed."
+}

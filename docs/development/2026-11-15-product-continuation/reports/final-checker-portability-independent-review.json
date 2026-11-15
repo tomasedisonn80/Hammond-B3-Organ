@@ -1,0 +1,137 @@
+{
+  "schema": "b3-product-checker-portability-independent-review-v1",
+  "reviewer": "/root/w08_a46_session_validator",
+  "followup": true,
+  "new_worker_credit": false,
+  "recorded_at_utc": "2026-11-15T03:48:44.471098+00:00",
+  "working_directory": "/workspace/scratch/5b7d983ac078/Hammond-B3-Organ",
+  "published_failed_base": {
+    "commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "tree": "2d21135e570c5b328a7f54d17582ffc7ac62a489"
+  },
+  "decision": "go_for_integration_and_repaired_source_hosted_qualification",
+  "blocking_findings": [],
+  "scope": "Independent review of A50/A51 portability changes and retained evidence. A46 authored the original checker but did not author these repairs, modify reviewed files, or rerun their suites.",
+  "frozen_inputs": {
+    "tools/check_product_session.py": {
+      "bytes": 20983,
+      "sha256": "3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631"
+    },
+    "tests/test_product_session.py": {
+      "bytes": 26558,
+      "sha256": "d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11"
+    },
+    "docs/development/2026-11-15-product-continuation/reports/final-source-windows-portability-repair.json": {
+      "bytes": 27020,
+      "sha256": "6ddcf4b41f867915205b05fcf536e2d4290ee0aef1fbaf1fe034a20821d4c765"
+    },
+    "docs/development/2026-11-15-product-continuation/reports/final-source-macos-portability-repair.json": {
+      "bytes": 24698,
+      "sha256": "997f20d143ae2c2d71ea39d026500c4b9d52323a00e28b2eb5f6810ef556de3b"
+    },
+    "docs/development/2026-11-15-product-continuation/reports/checker-portability-root-verification.json": {
+      "bytes": 2632,
+      "sha256": "021144344ad138250b31df95589e02e1c0fb04b1149d7d89310bcf60c5d75f72"
+    }
+  },
+  "review_methods": [
+    "Read the complete checker/test diff against c448 and the full retained A50/A51 reproduction and regression reports.",
+    "Parsed current and git-show c448 Python ASTs without executing either module; checked constants, checker functions and original test methods for unintended changes.",
+    "Recomputed SHA-256 of frozen checker, tests and reports and matched A50/A51 handed-off identities.",
+    "Read the root affected-CTest and actual strict-record receipt; these are root executions, not additional A46 runs.",
+    "Independently opened CPython issue157671; reviewed A50 retained exact v3.12.10 source URLs and hashes. Root/A50 performed the exact tagged-source audit; A46 did not repeat it."
+  ],
+  "static_preservation": {
+    "all_checker_constants_unchanged": true,
+    "unchanged_checker_functions": [
+      "_object",
+      "_integer",
+      "_reject_number",
+      "_placeholder",
+      "_text",
+      "_link",
+      "_identity",
+      "_signature",
+      "_safe_path",
+      "_ownership",
+      "_narrative",
+      "check",
+      "main"
+    ],
+    "changed_existing_checker_functions": [
+      "_read"
+    ],
+    "added_checker_function": "_opening_signature",
+    "additional_import": "sys",
+    "all_19_original_test_methods_unchanged": true,
+    "only_changed_existing_test_helper": "setUp: canonicalize the already-created temporary directory",
+    "added_reader_methods": 4,
+    "current_test_methods": 23
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "disposition": "accepted",
+      "finding": "Windows adjustment is confined to lstat-versus-fstat opening comparison. It ignores only incompatible cross-API ctime and filename-derived execute bits. Device, inode, all remaining mode bits, size, mtime and exposed birthtime must agree; asymmetric birthtime availability rejects."
+    },
+    {
+      "id": "R2",
+      "disposition": "accepted",
+      "finding": "The original full _signature remains unchanged and is still used for fstat-before/fstat-after and lstat-before/lstat-after checks. Same-API ctime and mode mutations therefore remain rejection conditions. POSIX opening comparison retains the complete original signature."
+    },
+    {
+      "id": "R3",
+      "disposition": "accepted",
+      "finding": "Safe-path traversal/reparse rejection, regular-file checks, byte limits, exact read length, decoding, raw SHA-256 comparison, schema/ID/wave/status/text/ownership admission, and strict-versus-progress behavior remain unchanged. No blanket exception or platform skip was added."
+    },
+    {
+      "id": "R4",
+      "disposition": "accepted",
+      "finding": "A51 canonicalizes only the private temporary fixture parent. This aligns injected descendant paths with the checker-resolved root, including /var aliases. Root-leaf symlink rejection and the original symlink/reparse assertions are unchanged."
+    },
+    {
+      "id": "R5",
+      "disposition": "accepted",
+      "finding": "The new reader tests exercise actual bounded file reads with synthetic metadata. They distinguish stable Windows representations from identity/type/permission/size/mtime/birthtime changes and retain expected rejection phases for same-API mutations. Linux/Darwin branches are covered separately."
+    }
+  ],
+  "retained_evidence_review": {
+    "macos_fixture": {
+      "original_hosted_result": "c448 macOS core failed 1/157 CTests; four assertion failures within the 19-method checker module.",
+      "local_before": "Ordinary temporary path: 19 passed in 1.275 s. Alias path: exactly four failures in 1.328 s.",
+      "local_after": "19 passed with ordinary path in 1.394 s and alias path in 1.409 s; no skips.",
+      "snapshot_boundary": "A51 test hash2129745b... predates the separate A50 reader methods. The canonical-temp change remains in the final d821b36e... test source."
+    },
+    "windows_reader": {
+      "original_hosted_result": "failed: 156/157 CTest, product-session 19 methods, 111 failures, one FIFO skip",
+      "focused_methods": 4,
+      "focused_subcases": 30,
+      "baseline_result": "Published c448 checker: four stable-representation errors plus four mutation-phase assertion failures. The unused sys binding allows platform injection without changing old checker behavior.",
+      "repaired_result": "Four focused methods passed, zero errors/failures/skips; 0.027744 s.",
+      "full_module_command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_product_session.py -v",
+      "full_module_result": "23 methods passed in 1.228 s; exit0, no skips.",
+      "scope": "Linux Python3.12.14, synthetic metadata; not actual Windows execution."
+    },
+    "root_integration": {
+      "affected_ctest_exit_code": 0,
+      "affected_ctest_measured_wall_seconds": 1.3636269760027062,
+      "strict_report_sha256": "48580dd10fd6b39cc639ae4bab5172f90e98db3d2b31bdd364dac067b377682c",
+      "strict_result": "60 accepted and verified notes, ten waves, zero errors; completion valid.",
+      "strict_difference_from_c448": [
+        "checker"
+      ],
+      "coherent_input_scope": "Root reports exactly two of366 prior coherent inputs changed and all three recorded binaries unchanged. This review does not rehash those366 inputs."
+    }
+  },
+  "upstream_reference": {
+    "url": "https://github.com/python/cpython/issues/157671",
+    "independently_observed": "The upstream report describes Windows path ctime as creation time and descriptor ctime as change time, with matching birthtime values. This supports separating cross-API comparison from same-API mutation checks.",
+    "version_limit": "The issue reproduces Python3.14.7 behavior. Applicability to hosted3.12.10 is supported by the separately retained tagged-source audit in A50/root evidence, not inferred from that issue alone."
+  },
+  "outstanding_required_gate": "Publish the approved exact repair source and observe fresh primary Windows and macOS core jobs passing the registered checker module and required suites. Retain strict real-ledger verification for that source. Existing c448 failures remain failures.",
+  "limitations": [
+    "No additional A46 functional suite, CMake/build/CTest, native platform run, commit or push was performed.",
+    "Synthetic metadata and alias reproductions do not replace actual repaired-source Windows/macOS execution.",
+    "This review provides no product-readiness, fidelity, dispatch or new-worker-count claim."
+  ]
+}

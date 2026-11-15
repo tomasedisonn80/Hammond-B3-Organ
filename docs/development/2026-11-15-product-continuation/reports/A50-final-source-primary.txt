@@ -1,0 +1,148 @@
+A50 follow-up: exact c448 Windows primary evidence; failed core retained, native passed.
+Commit c4486bafccbcfbcd9bcd9492e8949ddd44ea1340; tree2d21135e570c5b328a7f54d17582ffc7ac62a489.
+Selected lines retain original decoded line numbers and timestamps; CR/ANSI styling removed.
+JSON subsets below are explicitly derived from full primary lines; no full logs/artifact bytes retained.
+
+CORE job132685867528 / CI43672641490 / decoded UTF-8 SHA256b551561763def4b4cf299f50d750733f69c78fea4213981c744411a6ee58af7c
+https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867528
+L12: 2026-11-15T03:30:14.0283332Z Microsoft Windows Server 2022
+L13: 2026-11-15T03:30:14.0283848Z 10.0.20348
+L14: 2026-11-15T03:30:14.0284276Z Datacenter
+L15: 2026-11-15T03:30:14.0284737Z ##[endgroup]
+L16: 2026-11-15T03:30:14.0285180Z ##[group]Runner Image
+L17: 2026-11-15T03:30:14.0285637Z Image: windows-2022
+L18: 2026-11-15T03:30:14.0286119Z Version: 20261112.366.7
+L169: 2026-11-15T03:30:25.2987539Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340
+L170: 2026-11-15T03:30:26.0083312Z cmake version 3.31.6
+L171: 2026-11-15T03:30:26.0083848Z 
+L172: 2026-11-15T03:30:26.0084175Z CMake suite maintained and supported by Kitware (kitware.com/cmake).
+L173: 2026-11-15T03:30:26.4772639Z ctest version 3.31.6
+L174: 2026-11-15T03:30:26.4773002Z 
+L175: 2026-11-15T03:30:26.4773289Z CMake suite maintained and supported by Kitware (kitware.com/cmake).
+L176: 2026-11-15T03:30:26.6493794Z Python 3.12.10
+L177: 2026-11-15T03:30:27.3225490Z Windows-2022Server-10.0.20348-SP0
+L178: 2026-11-15T03:30:27.3226388Z AMD64
+L192: 2026-11-15T03:30:27.4475246Z Preset CMake variables:
+L193: 2026-11-15T03:30:27.4475647Z 
+L194: 2026-11-15T03:30:27.4475851Z   BUILD_TESTING="ON"
+L195: 2026-11-15T03:30:27.4476186Z   CMAKE_BUILD_TYPE="Release"
+L196: 2026-11-15T03:30:27.4476395Z 
+L197: 2026-11-15T03:30:27.6197230Z -- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.20348.
+L198: 2026-11-15T03:30:36.8334242Z -- The CXX compiler identification is MSVC 19.44.35230.0
+L199: 2026-11-15T03:30:36.9741120Z -- Detecting CXX compiler ABI info
+L2614: 2026-11-15T03:35:30.6918915Z  96/157 Test  #91: python_test_crossover_install .....................   Passed   11.19 sec
+L2641: 2026-11-15T03:35:53.9693416Z         Start 111: python_test_plot_crossover_characterization
+L2642: 2026-11-15T03:35:54.6887025Z 110/157 Test #111: python_test_plot_crossover_characterization .......   Passed    0.73 sec
+L2647: 2026-11-15T03:35:58.2251912Z         Start 114: python_test_product_session
+L2648: 2026-11-15T03:35:59.6322922Z 113/157 Test #114: python_test_product_session .......................***Failed    1.40 sec
+L2649: 2026-11-15T03:35:59.6324220Z .FFFFsFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+L2650: 2026-11-15T03:35:59.6325390Z ======================================================================
+L2651: 2026-11-15T03:35:59.6326384Z FAIL: test_byte_bounds_are_exact_and_have_no_word_ceiling (__main__.ProductSessionTests.test_byte_bounds_are_exact_and_have_no_word_ceiling)
+L2652: 2026-11-15T03:35:59.6327333Z ----------------------------------------------------------------------
+L2653: 2026-11-15T03:35:59.6327846Z Traceback (most recent call last):
+L2654: 2026-11-15T03:35:59.6336773Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_product_session.py", line 374, in test_byte_bounds_are_exact_and_have_no_word_ceiling
+L2655: 2026-11-15T03:35:59.6337871Z     self.assert_error(self.check(), "note_read")
+L2656: 2026-11-15T03:35:59.6338712Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_product_session.py", line 96, in assert_error
+L2657: 2026-11-15T03:35:59.6339612Z     self.assertIn(code, {error["code"] for error in report["errors"]}, report["errors"])
+L2658: 2026-11-15T03:35:59.6341265Z AssertionError: 'note_read' not found in {'manifest_read'} : [{'code': 'manifest_read', 'location': 'docs/development/2026-11-15-product-continuation/assignments.json', 'message': 'file changed while opening'}]
+L2661: 2026-11-15T03:35:59.6343354Z FAIL: test_changed_inputs_during_open_are_rejected (__main__.ProductSessionTests.test_changed_inputs_during_open_are_rejected)
+L2662: 2026-11-15T03:35:59.6344291Z ----------------------------------------------------------------------
+L2663: 2026-11-15T03:35:59.6344826Z Traceback (most recent call last):
+L2664: 2026-11-15T03:35:59.6345744Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_product_session.py", line 386, in test_changed_inputs_during_open_are_rejected
+L2665: 2026-11-15T03:35:59.6346730Z     self.assert_error(CHECKER.check(self.root, True), "note_read")
+L2666: 2026-11-15T03:35:59.6347549Z   File "D:\a\Hammond-B3-Organ\Hammond-B3-Organ\tests\test_product_session.py", line 92, in assert_error
+L2667: 2026-11-15T03:35:59.6348508Z     self.assertEqual(report["status"], "failed")
+L2668: 2026-11-15T03:35:59.6349119Z AssertionError: 'incomplete' != 'failed'
+L2669: 2026-11-15T03:35:59.6349657Z - incomplete
+L3768: 2026-11-15T03:35:59.7171542Z Ran 19 tests in 1.146s
+L3769: 2026-11-15T03:35:59.7171777Z 
+L3770: 2026-11-15T03:35:59.7171929Z FAILED (failures=111, skipped=1)
+L3860: 2026-11-15T03:37:16.7326589Z 99% tests passed, 1 tests failed out of 157
+L3878: 2026-11-15T03:37:16.7335455Z Total Test time (real) = 226.65 sec
+L3879: 2026-11-15T03:37:16.7335721Z 
+L3880: 2026-11-15T03:37:16.7335917Z The following tests FAILED:
+L3881: 2026-11-15T03:37:16.7336368Z 	114 - python_test_product_session (Failed)
+L3882: 2026-11-15T03:37:16.7481786Z Errors while running CTest
+L3883: 2026-11-15T03:37:16.7682131Z ##[error]Process completed with exit code 8.
+
+NATIVE job132685867505 / NativeStandalone43672641506 / decoded UTF-8 SHA2568f990485732839d1e742d473029d6432190e3645c4d693740c3216c110f262fa
+https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867505
+L12: 2026-11-15T03:30:14.5286739Z Microsoft Windows Server 2022
+L13: 2026-11-15T03:30:14.5287320Z 10.0.20348
+L14: 2026-11-15T03:30:14.5287758Z Datacenter
+L15: 2026-11-15T03:30:14.5288246Z ##[endgroup]
+L16: 2026-11-15T03:30:14.5288714Z ##[group]Runner Image
+L17: 2026-11-15T03:30:14.5289223Z Image: windows-2022
+L18: 2026-11-15T03:30:14.5289749Z Version: 20261112.366.7
+L168: 2026-11-15T03:30:23.8290550Z c4486bafccbcfbcd9bcd9492e8949ddd44ea1340
+L301: 2026-11-15T03:30:29.5947696Z cmake version 3.31.6
+L302: 2026-11-15T03:30:29.5948038Z 
+L303: 2026-11-15T03:30:29.5949283Z CMake suite maintained and supported by Kitware (kitware.com/cmake).
+L304: 2026-11-15T03:30:30.0944976Z ctest version 3.31.6
+L305: 2026-11-15T03:30:30.0945250Z 
+L306: 2026-11-15T03:30:30.0945542Z CMake suite maintained and supported by Kitware (kitware.com/cmake).
+L307: 2026-11-15T03:30:30.1540214Z Python 3.12.10
+L390: 2026-11-15T03:30:33.3506405Z cmake -S . -B build-standalone -G "Visual Studio 17 2022" -A x64 \
+L391: 2026-11-15T03:30:33.3507006Z   -DBUILD_TESTING=ON -DPython3_EXECUTABLE="$PYTHON_EXECUTABLE" \
+L392: 2026-11-15T03:30:33.3507531Z   -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF \
+L393: 2026-11-15T03:30:33.3507966Z   -DHAMMOND_SDL2_ROOT="$RUNNER_TEMP/hammond-sdl2" \
+L394: 2026-11-15T03:30:33.3508376Z   -DHAMMOND_ENABLE_MIDI="$HAMMOND_CI_MIDI" \
+L395: 2026-11-15T03:30:33.3508791Z   -DHAMMOND_RTMIDI_ROOT="$RUNNER_TEMP/hammond-rtmidi" \
+L396: 2026-11-15T03:30:33.3509230Z   -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_DATADIR=share \
+L410: 2026-11-15T03:30:33.5970903Z -- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.20348.
+L411: 2026-11-15T03:30:42.5254684Z -- The CXX compiler identification is MSVC 19.44.35230.0
+L2637: 2026-11-15T03:33:45.1597498Z 133: Ran 8 tests in 14.375s
+L2638: 2026-11-15T03:33:45.1597775Z 133: 
+L2639: 2026-11-15T03:33:45.1598060Z 133: OK
+L2640: 2026-11-15T03:33:45.1598296Z 133: 
+L2641: 2026-11-15T03:33:45.1654291Z  1/48 Test #133: test_standalone_install ...................   Passed   14.56 sec
+L2984: 2026-11-15T03:34:10.5992070Z 31/48 Test #163: test_standalone_material_acceptance .......   Passed    7.40 sec
+L3235: 2026-11-15T03:36:06.1779736Z 174: Native calibration fixture SHA-256: 3002fc089ea72b78fd2fdfbb406729a94eb99126d965a1fb23b4c9d9de986ba1
+L3236: 2026-11-15T03:36:08.9817121Z 174: test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11 (__main__.NativeCalibrationLifecycle.test_changed_calibration_reopens_only_after_ack_and_awaits_next_cc11) ... ok
+L3237: 2026-11-15T03:36:11.3771455Z 174: test_changed_exact_port_reconnects_with_unchanged_calibration (__main__.NativeCalibrationLifecycle.test_changed_exact_port_reconnects_with_unchanged_calibration) ... ok
+L3238: 2026-11-15T03:36:14.0335246Z 174: test_changed_route_retires_old_owners_and_rejects_old_wire_channel (__main__.NativeCalibrationLifecycle.test_changed_route_retires_old_owners_and_rejects_old_wire_channel) ... ok
+L3239: 2026-11-15T03:36:17.5853412Z 174: test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry (__main__.NativeCalibrationLifecycle.test_failed_reopen_discards_callback_prefix_and_requires_explicit_retry) ... ok
+L3240: 2026-11-15T03:36:17.6005761Z 174: test_fixture_inventory_calibrates_real_enumeration_without_audio (__main__.NativeCalibrationLifecycle.test_fixture_inventory_calibrates_real_enumeration_without_audio) ... ok
+L3241: 2026-11-15T03:36:17.6159868Z 174: test_fixture_rejects_missing_or_unknown_scenario_before_app_entry (__main__.NativeCalibrationLifecycle.test_fixture_rejects_missing_or_unknown_scenario_before_app_entry) ... ok
+L3242: 2026-11-15T03:36:20.0141540Z 174: test_healthy_identical_apply_preserves_epoch_notes_and_expression (__main__.NativeCalibrationLifecycle.test_healthy_identical_apply_preserves_epoch_notes_and_expression) ... ok
+L3243: 2026-11-15T03:36:23.4027288Z 174: test_native_fault_retires_midi_owners_while_original_ui_owner_survives (__main__.NativeCalibrationLifecycle.test_native_fault_retires_midi_owners_while_original_ui_owner_survives) ... ok
+L3244: 2026-11-15T03:36:27.1052136Z 174: test_no_input_apply_retains_calibration_without_touching_expression (__main__.NativeCalibrationLifecycle.test_no_input_apply_retains_calibration_without_touching_expression) ... ok
+L3245: 2026-11-15T03:36:27.1053259Z 174: Actual calibration fixture subprocesses: 10; native lifecycles: 7; deliberately failed replays: 2
+L3246: 2026-11-15T03:36:27.1091271Z 174: 
+L3247: 2026-11-15T03:36:27.1091881Z 174: ----------------------------------------------------------------------
+L3248: 2026-11-15T03:36:27.1092508Z 174: Ran 9 tests in 20.949s
+L3249: 2026-11-15T03:36:27.1092954Z 174: 
+L3250: 2026-11-15T03:36:27.1093627Z 174: OK
+L3251: 2026-11-15T03:36:27.1252406Z 42/48 Test #174: test_standalone_native_calibration ........   Passed   21.12 sec
+L3428: 2026-11-15T03:39:38.1055667Z 100% tests passed, 0 tests failed out of 48
+L3443: 2026-11-15T03:39:38.1060079Z Total Test time (real) = 367.52 sec
+L3626: 2026-11-15T03:39:39.6258747Z CMake Warning (dev) at build-standalone/cmake_install.cmake:910 (execute_process):
+L3627: 2026-11-15T03:39:39.6259491Z   Syntax error in cmake code at
+L3628: 2026-11-15T03:39:39.6259693Z 
+L3629: 2026-11-15T03:39:39.6260003Z     D:/a/Hammond-B3-Organ/Hammond-B3-Organ/build-standalone/cmake_install.cmake:910
+L3630: 2026-11-15T03:39:39.6260381Z 
+L3631: 2026-11-15T03:39:39.6260498Z   when parsing string
+L3632: 2026-11-15T03:39:39.6260684Z 
+L3633: 2026-11-15T03:39:39.6260843Z     C:\hostedtoolcache\windows\Python\3.12.10\x64\python.exe
+L3634: 2026-11-15T03:39:39.6261132Z 
+L3635: 2026-11-15T03:39:39.6261244Z   Invalid escape sequence \h
+L3636: 2026-11-15T03:39:39.6261430Z 
+L3637: 2026-11-15T03:39:39.6261660Z   Policy CMP0010 is not set: Bad variable reference syntax is an error.  Run
+L3638: 2026-11-15T03:39:39.6262179Z   "cmake --help-policy CMP0010" for policy details.  Use the cmake_policy
+L3639: 2026-11-15T03:39:39.6262634Z   command to set the policy and suppress this warning.
+L3640: 2026-11-15T03:39:39.6263066Z This warning is for project developers.  Use -Wno-dev to suppress it.
+L3661: 2026-11-15T03:39:39.6276250Z -- Installing: D:\a\_temp\hammond standalone staged/share/hammond-b3-organ/standalone/MIDI_EXPRESSION_GUIDE.md
+L3715: 2026-11-15T03:39:41.4128602Z Verified 20 installed files, MIDI WinMM, relocated help/dummy smoke, and the archived bytes.
+L3759: 2026-11-15T03:39:42.6087519Z Artifact standalone-windows-2022-X64-midi-ON-release-diagnostics-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 successfully finalized. Artifact ID 14144729791
+L3760: 2026-11-15T03:39:42.6088904Z Artifact standalone-windows-2022-X64-midi-ON-release-diagnostics-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 has been successfully uploaded! Final size is 322805 bytes. Artifact ID is 14144729791
+L3791: 2026-11-15T03:39:43.7831229Z Artifact standalone-windows-2022-X64-midi-ON-release-package-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 successfully finalized. Artifact ID 14145232794
+L3792: 2026-11-15T03:39:43.7832652Z Artifact standalone-windows-2022-X64-midi-ON-release-package-c4486bafccbcfbcd9bcd9492e8949ddd44ea1340-1 has been successfully uploaded! Final size is 1595685 bytes. Artifact ID is 14145232794
+
+Derived material subset from native primaryL2983:
+{"ctest_number":163,"ctest_seconds":7.4,"checks":1293,"failures":0,"frames":109,"legacy_checks":901,"header_checks":170,"backend":"SDL software surface; no window/audio","calibration_modal":{"checks":222,"scenes":4,"frames":21,"intersected_glyphs":38,"resampled_pixels":212,"unexplained_pixels":0,"literal_mismatches":0}}
+Derived installed payload subset from native primaryL2635:
+{"payload_files":20,"midi_backend":"WinMM","binary_sha256":"a4a5a51b358acf01db3974f6ab84731ad0b7b242ab105880df20217db1cf3652","smoke":{"audio_driver":"dummy","video_driver":"dummy","duration_ms":600,"passed":true,"errors":0}}
+
+Old b9 failures, d556 successes and d8 qualification remain in A50-windows-hosted.json.
+Later local checker repair is recorded separately in final-source-windows-portability-repair.json.
+Next gate: fresh published-source Windows core/native primary logs; c448 core remains failed.

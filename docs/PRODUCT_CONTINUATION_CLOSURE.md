@@ -10,9 +10,15 @@ and unwaived.** The [final requirements audit](reviews/PRODUCT_FINAL_REQUIREMENT
 and [UI acceptance](reviews/PRODUCT_UI_ACCEPTANCE.md) identify that gap plainly.
 There is no claim that M6, M9, physical fidelity or product release is complete.
 
-This is the frozen publication candidate. Final-source publication and hosted
-qualification are pending; the integrator will update this record with observed
-commit/tree and primary results. The earlier published source is
+The latest published checkpoint is **`c4486bafccbcfbcd9bcd9492e8949ddd44ea1340`**,
+tree `2d21135e570c5b328a7f54d17582ffc7ac62a489`, with verified parent d8.
+[The publication receipt](development/2026-11-15-product-continuation/reports/final-source-publication.json)
+records the guarded update. Its hosted matrix has failed in the new product
+record-checker module on macOS and Windows. A51 reproduced and repaired macOS
+temporary-directory alias handling in the test fixture; A50 repaired the
+checker's comparison of incompatible Windows path/descriptor timestamp meanings.
+Original primary failures are retained, and a new source-specific hosted gate
+is required. All thirteen c448 jobs are now complete: eleven success and those two core failures. The earlier published source is
 `d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
 `edf67b978f93e8dbea6537ce92d3928c171bc1f3`. Its thirteen hosted jobs passed,
 while the subsequently added checker and numerical-report admission repairs
@@ -74,7 +80,7 @@ checker cannot prove fresh dispatch by itself. The CI invocation is now strict.
 | --- | --- |
 | d8 published checkpoint | [All thirteen hosted job statuses](development/2026-11-15-product-continuation/reports/d8-hosted-status.json), independently audited in [Linux](reviews/PRODUCT_LINUX_HOSTED_REVIEW.md), [Windows](reviews/PRODUCT_WINDOWS_HOSTED_REVIEW.md), [macOS](reviews/PRODUCT_MACOS_HOSTED_REVIEW.md) and [VST3](reviews/PRODUCT_VST3_HOSTED_REVIEW.md) primary logs. Core 155/155, native 48/48 in all four Release configurations, expanded native sanitizers 21/21, VST3 8/7/7 and 47 plug-in-validator passes each; full R4 numerical job passes its named inputs. |
 | d8 plus frozen A46/A48 working repairs | [Successful coherent reconfigure/all-target build and 180/180 CTest](development/2026-11-15-product-continuation/reports/wave8-coherent-build.json) in **507.55 seconds**, with all **366 code/test/build/data inputs unchanged**. GCC 14.2 Release, native MIDI backend OFF and explicit dummy SDL. All three recorded binaries retain their hashes. |
-| Current actual records | Strict local completion passes after A60 acceptance. New-source hosted strict execution remains pending at this candidate. |
+| Current actual records | Strict local completion passes after A60 acceptance and the portable checker repair. The c448 Linux strict JSON passes with its old checker identity; fresh repaired-source hosted execution is required. |
 
 The original b9 CMake/Windows installer and fixture failures, d556 GCC13 native
 sanitizer build failure, and A42's two original clipping-oracle failures remain

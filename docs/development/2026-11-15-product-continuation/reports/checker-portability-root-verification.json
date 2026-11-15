@@ -1,0 +1,63 @@
+{
+  "schema": "b3-checker-portability-root-verification-v1",
+  "published_base": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+  "source_mode": "Published c448 plus the frozen A50/A51 portability changes; no application/model changes.",
+  "total_previous_coherent_inputs": 366,
+  "unchanged_previous_coherent_inputs": 364,
+  "changed_inputs": {
+    "tests/test_product_session.py": {
+      "previous": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55",
+      "current": "d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11"
+    },
+    "tools/check_product_session.py": {
+      "previous": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c",
+      "current": "3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631"
+    }
+  },
+  "source_inputs_unchanged_during_check": true,
+  "ctest": {
+    "command": [
+      "/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/ctest",
+      "--test-dir",
+      "/workspace/scratch/5b7d983ac078/build-native",
+      "--output-on-failure",
+      "--no-tests=error",
+      "-R",
+      "^python_test_product_session$"
+    ],
+    "exit_code": 0,
+    "measured_wall_seconds": 1.3636269760027062,
+    "log": "checker-portability-root-ctest.txt",
+    "log_sha256": "a8e6012364351a0d8c178f484a5ad38d1ca6bdd6aa38272853091fac342423c0"
+  },
+  "strict": {
+    "command": [
+      "python3",
+      "-B",
+      "tools/check_product_session.py",
+      "--repo",
+      ".",
+      "--json"
+    ],
+    "exit_code": 0,
+    "report": "product-session-strict.json",
+    "sha256": "48580dd10fd6b39cc639ae4bab5172f90e98db3d2b31bdd364dac067b377682c",
+    "completion_valid": true,
+    "accepted": 60,
+    "verified_notes": 60,
+    "waves": 10,
+    "errors": 0,
+    "changed_top_level_fields_from_retained_c448": [
+      "checker"
+    ],
+    "manifest_sha256": "d361c48f1e742bc23d44f9a0c664dae4c350577d67c502bec9bc7cab8eee6819",
+    "checker_sha256": "3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631",
+    "checked_notes_sha256": "bdae07733727bfad0e1731ee3054630e077d88cbe944a5d048e94dd76fa2e980"
+  },
+  "unchanged_binary_sha256": {
+    "apps/standalone/hammond_standalone": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852",
+    "apps/standalone/hammond_standalone_calibration_probe": "16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335",
+    "hammond_crossover_probe": "da09640f7520cd887a836961658ed8a79d6b6bff28f0e33a0ce44cf76f992eac"
+  },
+  "scope": "One registered affected CTest plus actual strict records. This is not a rerun of all180 tests or hosted platform evidence; new exact-source CI is required."
+}

@@ -1,0 +1,348 @@
+{
+  "schema": "b3-product-windows-final-source-audit-v1",
+  "author": "/root/w09_a50_windows_hosted",
+  "worker_id": "A50",
+  "followup": true,
+  "worker_credit": "Reuse of accepted A50; no new worker or wave.",
+  "reviewed_source": {
+    "commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "tree": "2d21135e570c5b328a7f54d17582ffc7ac62a489",
+    "parent": "d8c39f7986746eacc991747153c7dbb012bb9a32",
+    "verified": "Independent GitHub Git commit metadata and local Git objects agree."
+  },
+  "preceding_audit": "A50-windows-hosted.json",
+  "source_files": {
+    ".github/workflows/ci.yml": {
+      "bytes": 9253,
+      "sha256": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+      "unchanged_from_d8": false
+    },
+    ".github/workflows/standalone.yml": {
+      "bytes": 60379,
+      "sha256": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a",
+      "unchanged_from_d8": true
+    },
+    "CMakeLists.txt": {
+      "bytes": 23638,
+      "sha256": "36c17341aae955e55a482f6434ee563d4646a76027252797d53945e470d48aa2",
+      "unchanged_from_d8": true
+    },
+    "CMakePresets.json": {
+      "bytes": 1711,
+      "sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      "unchanged_from_d8": true
+    },
+    "apps/standalone/CMakeLists.txt": {
+      "bytes": 27268,
+      "sha256": "772f75acd307d955cd632afc01ec7c5221859aa997aa97bd4d108a69deafc94c",
+      "unchanged_from_d8": true
+    },
+    "apps/standalone/native_tests/calibration_lifecycle_driver.cpp": {
+      "bytes": 5011,
+      "sha256": "e33b17f3f9642d17e21e5d645f8f3d82a176ca030b78164521af2e530ce57dd6",
+      "unchanged_from_d8": true
+    },
+    "apps/standalone/native_tests/fake_calibration/RtMidi.h": {
+      "bytes": 12049,
+      "sha256": "15a24319a27cb6df6440b758902b8b9917e3ad317b93bc725e915049f4633041",
+      "unchanged_from_d8": true
+    },
+    "apps/standalone/native_tests/test_standalone_native_calibration.py": {
+      "bytes": 31325,
+      "sha256": "e4d2d86501582d9ee612b7c110144b595b0bbe85427c86000403a7a955f98e85",
+      "unchanged_from_d8": true
+    },
+    "apps/standalone/native_tests/test_standalone_material_acceptance.cpp": {
+      "bytes": 67285,
+      "sha256": "439d50f5990025fa09350283cb63f0bbb15ce0a526c561e742b6f5365b91a9c8",
+      "unchanged_from_d8": true
+    },
+    "apps/standalone/native_tests/test_standalone_install.py": {
+      "bytes": 43704,
+      "sha256": "5510eb68f0babfb28c72cc06471d01fb829845621610414fd2fcca7e9d9579b5",
+      "unchanged_from_d8": true
+    },
+    "cmake/InstallStandalone.cmake": {
+      "bytes": 16653,
+      "sha256": "43bc6780b688bfc2bcadb9ef09bc81056b0be5fb91f0ad68cef4de6238ce4036",
+      "unchanged_from_d8": true
+    },
+    "cmake/InstallCrossoverTools.cmake": {
+      "bytes": 8325,
+      "sha256": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844",
+      "unchanged_from_d8": true
+    },
+    "tests/test_crossover_install.py": {
+      "bytes": 26706,
+      "sha256": "8daf656ad24f812d9d11920c35c846ec46d344e4b7fc78ed330ae9f764ffcd03",
+      "unchanged_from_d8": true,
+      "declared_test_methods": 14
+    },
+    "docs/MIDI_EXPRESSION_GUIDE.md": {
+      "bytes": 23478,
+      "sha256": "1b494029b063afa32918ce4ba8ec820e134946bd781458cdd55a41dc43af8a7c",
+      "unchanged_from_d8": true
+    },
+    "data/dependencies/sdl2-lock.json": {
+      "bytes": 375,
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "unchanged_from_d8": true
+    },
+    "data/dependencies/rtmidi-lock.json": {
+      "bytes": 1161,
+      "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa",
+      "unchanged_from_d8": true
+    },
+    "tests/test_product_session.py": {
+      "bytes": 21474,
+      "sha256": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55",
+      "declared_test_methods": 19
+    },
+    "tests/test_plot_crossover_characterization.py": {
+      "bytes": 12324,
+      "sha256": "dd7ff3d635c54e680594fd8af6771cfe2af66871570a0cd5b1cb9df28f50b360",
+      "declared_test_methods": 11
+    },
+    "tools/check_product_session.py": {
+      "bytes": 20345,
+      "sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c"
+    },
+    "tools/plot_crossover_characterization.py": {
+      "bytes": 19918,
+      "sha256": "3bc78b38516de384cf07e94b1cd9f33dbd71c0a6057b2012617814dfbd29ccf4"
+    }
+  },
+  "unchanged_production_inputs": {
+    "receipt": "docs/development/2026-11-15-product-continuation/reports/capture-qualified-build.json",
+    "receipt_sha256": "485cb81c9337d4bf0b4a2e9c185cc90a8e3b7d11e74ad43ee14ee618ec3b67cc",
+    "count": 108,
+    "matched": true,
+    "canonical_hash_map_sha256": "9574d64a983221301d0aefc4e606e74422195c5d06bb08bb76e99fc79e37f504",
+    "scope": "Production input bytes only; this historical receipt is not a new Windows build attestation."
+  },
+  "protected_existing_files": {
+    "docs/development/2026-11-15-product-continuation/notes/A50-windows-hosted.md": "b710b886e25a6b789fc72bf3169178e8a20f891574b5ec5fe06a7652bee8e1c2",
+    "docs/development/2026-11-15-product-continuation/reports/A50-windows-hosted.json": "10730c9e15289619b81b86ef9ee0c017b9cfe32685b2790960ccebb1433d8afc",
+    "docs/development/2026-11-15-product-continuation/reports/A50-windows-primary-excerpts.txt": "93d269b26019828e67fefff70d71af237b873797acc0fef2b6a57f325a0c8225"
+  },
+  "modules": [
+    {
+      "name": "python_test_plot_crossover_characterization",
+      "source": "tests/test_plot_crossover_characterization.py",
+      "ctest_number": 111,
+      "declared_methods": 11,
+      "status": "passed",
+      "ctest_seconds": 0.73,
+      "qualification": "Actual primary CTest pass. Successful module output is not printed by --output-on-failure, so11 is source-declared methods rather than a per-method hosted transcript."
+    },
+    {
+      "name": "python_test_product_session",
+      "source": "tests/test_product_session.py",
+      "ctest_number": 114,
+      "declared_methods": 19,
+      "status": "failed",
+      "ctest_seconds": 1.4,
+      "python_tests_run": 19,
+      "python_seconds": 1.146,
+      "python_failure_entries": 111,
+      "python_skipped": 1,
+      "affected_methods": 16,
+      "failure_groups": {
+        "test_byte_bounds_are_exact_and_have_no_word_ceiling": 1,
+        "test_changed_inputs_during_open_are_rejected": 1,
+        "test_cli_progress_success_and_strict_failure_are_machine_readable": 1,
+        "test_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves": 1,
+        "test_hash_tampering_and_crlf_use_raw_bytes": 1,
+        "test_id_agent_and_wave_identity_mutations": 21,
+        "test_missing_accepted_notes_and_nonregular_files_fail_closed": 1,
+        "test_note_paths_cannot_leave_current_session_or_change_identity": 25,
+        "test_ownership_supports_actual_scopes_and_directories": 1,
+        "test_ownership_traversal_globs_malformed_scopes_and_special_paths_fail": 21,
+        "test_reparse_points_are_rejected_on_windows_metadata": 3,
+        "test_required_task_acceptance_and_owned_fields": 16,
+        "test_running_optional_notes_but_declared_evidence_must_match": 1,
+        "test_schema_count_and_actual_status_are_not_coercible": 9,
+        "test_substantive_floor_does_not_impose_retroactive_word_ceiling": 7,
+        "test_symlink_leaf_parent_ownership_and_root_are_rejected": 1
+      },
+      "qualification": "Primary log states19tests,111failures and one skip. Opening compares incompatible Windows ctime metadata and masks intended validation cases with manifest_read/file changed while opening. Source inspection attributes the explicit platform skip to FIFO support; canonical temporary path injection is repaired separately by A51."
+    }
+  ],
+  "strict_record_boundary": "The separate strict checker of the actual sixty accepted records is Linux-only in ci.yml. Windows runs the new synthetic product-session regression module; its gate is not that Linux actual-ledger result.",
+  "runtime_change_boundary": "Git tree comparison finds no changes from d8 in apps/standalone, include, src, assets, data, CMakeLists.txt, CMakePresets.json, InstallStandalone.cmake, InstallCrossoverTools.cmake or standalone.yml. Final-source execution is still inspected independently.",
+  "limits": [
+    "MSVC x64 Release only; no MinGW, Windows Debug/sanitizer, hardware MIDI/audio, real display, asynchronous OS driver race or callback deadline qualification.",
+    "The actual Windows standalone executable/package is MIDI ON / WinMM. The 16-file MIDI-OFF imported-target installer fixture does not constitute a separate Windows MIDI-OFF runtime build.",
+    "Native material uses an SDL software surface; automated runtime gates use dummy audio/video. Literal whole-interface 1:1, accessibility, physical/model fidelity, signing and DAW acceptance remain separate.",
+    "VST3 and Linux/macOS/sanitizer results have separate reviewers.",
+    "A50's c448 audit performed no build, CTest or dispatch. Root subsequently authorized only the product checker portability repair and focused Python regression evidence, recorded separately. Accepted notes, ledger, workflows, native production and old reports remain untouched."
+  ],
+  "recorded_at_utc": "2026-11-15T03:48:36.980Z",
+  "qualification": "Windows c448 source has a failed core job and a successful native job; overall Windows/source qualification remains blocked.",
+  "primary_logs": {
+    "core": {
+      "job_id": 132685867528,
+      "run_id": 43672641490,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867528",
+      "name": "Release (Windows MSVC)",
+      "head_sha": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-15T03:30:13Z",
+      "completed_at": "2026-11-15T03:37:21Z",
+      "decoded_utf8_sha256": "b551561763def4b4cf299f50d750733f69c78fea4213981c744411a6ee58af7c",
+      "decoded_characters": 583446,
+      "ctest": {
+        "selected": 157,
+        "passed": 156,
+        "failed": 1,
+        "seconds": 226.65
+      },
+      "failed_gate": "python_test_product_session",
+      "exit_code": 8
+    },
+    "native": {
+      "job_id": 132685867505,
+      "run_id": 43672641506,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867505",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "head_sha": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-15T03:30:13Z",
+      "completed_at": "2026-11-15T03:39:47Z",
+      "decoded_utf8_sha256": "8f990485732839d1e742d473029d6432190e3645c4d693740c3216c110f262fa",
+      "decoded_characters": 511055,
+      "ctest": {
+        "selected": 48,
+        "passed": 48,
+        "failed": 0,
+        "seconds": 367.52
+      }
+    }
+  },
+  "toolchain": {
+    "system": "Windows Server 2022 10.0.20348 AMD64",
+    "image": "windows-2022 20261112.366.7",
+    "generator": "Visual Studio 17 2022",
+    "architecture": "x64",
+    "configuration": "Release",
+    "msvc": "19.44.35230.0",
+    "msbuild": "17.14.60+43b635718",
+    "windows_sdk": "10.0.26100.0",
+    "cmake": "3.31.6",
+    "ctest": "3.31.6",
+    "python": "3.12.10"
+  },
+  "configurations": {
+    "core": "release preset; BUILD_TESTING ON; core suite plus registered Python modules; standalone/VST3 disabled by defaults",
+    "native": "BUILD_TESTING ON; HAMMOND_BUILD_STANDALONE ON; HAMMOND_BUILD_VST3 OFF; HAMMOND_ENABLE_MIDI ON; native WinMM backend; locked external SDL2 and RtMidi; bin/share install directories"
+  },
+  "dependencies": {
+    "sdl2": {
+      "version": "2.32.10",
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71"
+    },
+    "rtmidi": {
+      "version": "6.0.0",
+      "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "prepared_cpp_sha256": "240705532b17e593dc17434259233a586c9136808724124f1d3af649eadea17a"
+    },
+    "before_and_after_acceptance_checks": "Executed successful locked source/dependency checks in this exact native job."
+  },
+  "retained_native_gates": {
+    "calibration": {
+      "ctest_number": 174,
+      "methods": 9,
+      "subprocesses": 10,
+      "native_lifecycles": 7,
+      "intentional_failed_replays": 2,
+      "python_seconds": 20.949,
+      "ctest_seconds": 21.12,
+      "fixture_binary_sha256": "3002fc089ea72b78fd2fdfbb406729a94eb99126d965a1fb23b4c9d9de986ba1",
+      "scope": "Compiled native App under a controlled RtMidi facade and dummy SDL. The previous SDL_getenv borrowed-buffer ownership repair remains identical to d8; this is actual MSVC execution, not a real WinMM callback/race test."
+    },
+    "material": {
+      "ctest_number": 163,
+      "ctest_seconds": 7.4,
+      "checks": 1293,
+      "failures": 0,
+      "frames": 109,
+      "legacy_checks": 901,
+      "header_checks": 170,
+      "backend": "SDL software surface; no window/audio",
+      "calibration_modal": {
+        "checks": 222,
+        "scenes": 4,
+        "frames": 21,
+        "intersected_glyphs": 38,
+        "resampled_pixels": 212,
+        "unexplained_pixels": 0,
+        "literal_mismatches": 0
+      }
+    },
+    "install": {
+      "ctest_number": 133,
+      "methods": 8,
+      "python_seconds": 14.375,
+      "ctest_seconds": 14.56,
+      "actual_payload_files": 20,
+      "midi_enabled": true,
+      "midi_backend": "WinMM",
+      "binary_sha256": "a4a5a51b358acf01db3974f6ab84731ad0b7b242ab105880df20217db1cf3652",
+      "actual_smoke": {
+        "audio_driver": "dummy",
+        "video_driver": "dummy",
+        "duration_ms": 600,
+        "passed": true,
+        "errors": 0
+      },
+      "guide_installed": "MIDI_EXPRESSION_GUIDE.md",
+      "workflow_relocation": {
+        "verified_files": 20,
+        "help": true,
+        "dummy_smoke_ms": 600,
+        "archive_bytes_verified": true
+      },
+      "private_fixture": {
+        "midi_off_files": 16,
+        "classification": "Imported-target install-rule fixture covered by the same8method suite; not a separate Windows MIDI-OFF executable/runtime build."
+      },
+      "source_assertions_covered_by_passing_method": "Custom directories, deleted private build/source/dependency trees, guide calibration20/100/Inverted with rawCC11 40 expected0.75, unchanged package bytes, and4 other-component namespace sentinels. These are source-inspected assertions, not separate numeric console results."
+    },
+    "crossover_installer": {
+      "ctest_number": 91,
+      "status": "passed",
+      "ctest_seconds": 11.19,
+      "repair_scope": "Unchanged d8 repair: numeric while(1) avoids CMP0012 behavior; test normalizes stdout CRLF only. Windows POSIX-DESTDIR skip remains explicit in source."
+    }
+  },
+  "warnings": [
+    {
+      "kind": "nonfatal generated standalone installer developer warning",
+      "primary_lines": "native3626-3640",
+      "detail": "CMake3.31.6 reports CMP0010/invalid escape sequence in the Windows Python executable path (backslash-h). Actual install, relocation, smoke and archive verification succeed. This warning differs from the repaired earlier b9 CMP0012/while(TRUE) failure; no native/source change is made by this audit."
+    }
+  ],
+  "artifacts": {
+    "diagnostics": {
+      "id": 14144729791,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/artifacts/14144729791",
+      "uploaded_bytes": 322805
+    },
+    "package": {
+      "id": 14145232794,
+      "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/artifacts/14145232794",
+      "uploaded_bytes": 1595685
+    },
+    "boundary": "Primary upload/hosted archive verification inspected; A50 did not independently download or re-extract artifacts."
+  },
+  "repair_followup": {
+    "report": "final-source-windows-portability-repair.json",
+    "report_sha256": "6ddcf4b41f867915205b05fcf536e2d4290ee0aef1fbaf1fe034a20821d4c765",
+    "checker_after_sha256": "3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631",
+    "tests_after_sha256": "d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11",
+    "boundary": "Later uncommitted portability repair is separate from c448 and cannot change this failed source-specific result. Four focused methods/30subcases and full23method product module pass locally on Linux; new hosted exact-source logs remain required."
+  },
+  "next_gate": "Publish the frozen Python checker/test repair and independently inspect the new exact-source Windows core job. Require actual157/157 core execution plus new product module23method transcript/appropriate platform skip; retain c448 failure and native success as separate history. Rerun native jobs if part of the published-source gate; no transfer of c448 execution to a later tree."
+}

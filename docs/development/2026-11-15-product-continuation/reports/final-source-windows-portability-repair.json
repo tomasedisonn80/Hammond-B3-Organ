@@ -1,0 +1,196 @@
+{
+  "schema": "b3-a50-windows-product-checker-portability-repair-v1",
+  "worker": "/root/w09_a50_windows_hosted",
+  "recorded_at_utc": "2026-11-15T03:45:55.484939+00:00",
+  "published_source": {
+    "commit": "c4486bafccbcfbcd9bcd9492e8949ddd44ea1340",
+    "tree": "2d21135e570c5b328a7f54d17582ffc7ac62a489",
+    "checker_sha256": "49784fd2c7304dd1482a684b6a1750f8142bcf2283bec223341c7d7a24d8508c",
+    "windows_core_job": 132685867528,
+    "run": 43672641490,
+    "url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867528",
+    "result": "failed: 156/157 CTest, product-session 19 methods, 111 failures, one FIFO skip"
+  },
+  "local_environment": {
+    "system": "Linux",
+    "python": "3.12.14",
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+  },
+  "repair": {
+    "checker": "tools/check_product_session.py",
+    "tests": "tests/test_product_session.py",
+    "checker_after_sha256": "3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631",
+    "tests_published_sha256": "e96c052692bce5a69884629393cdee2d8cf1da5df9558f71f60979259eaa4f55",
+    "tests_a51_handoff_sha256": "2129745bcb1221b8b365af774ed631cf11d6916df3a6ca254c31b77beb9f26fd",
+    "tests_after_sha256": "d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11",
+    "a51_canonical_temp_fix_preserved": true,
+    "opening_windows": "dev, inode, mode with only filename-derived execute bits masked, size, mtime_ns, birthtime_ns when exposed; asymmetric birthtime availability rejects",
+    "opening_posix": "unchanged full signature: dev, inode, complete mode, size, mtime_ns, ctime_ns",
+    "same_api_after_read": "unchanged full signature within fstat and within lstat; component identities, byte bound, read length, decoding and raw-byte hashing unchanged"
+  },
+  "focused_cases": {
+    "methods": [
+      "test_posix_reader_preserves_full_cross_api_signature",
+      "test_windows_reader_accepts_only_cross_api_representation_differences",
+      "test_windows_reader_keeps_full_same_api_change_detection",
+      "test_windows_reader_rejects_changes_to_compatible_opening_fields"
+    ],
+    "method_count": 4,
+    "stable_windows_subcases": 4,
+    "windows_opening_mismatch_subcases": 8,
+    "windows_same_api_mutation_subcases": 4,
+    "posix_subcases": 14,
+    "scope": "Synthetic metadata over actual bounded temporary-file reads on Linux; no OS race or Windows runtime execution claimed."
+  },
+  "published_checker_focused_reproduction": {
+    "tests_run": 4,
+    "failures": 4,
+    "errors": 4,
+    "skipped": 0,
+    "passed": false,
+    "seconds": 0.029087,
+    "failure_cases": [
+      {
+        "test": "test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='path', field='st_ctime_ns')",
+        "last_lines": [
+          "Traceback (most recent call last):",
+          "  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 463, in test_windows_reader_keeps_full_same_api_change_detection",
+          "    with self.assertRaisesRegex(ValueError, message):",
+          "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "AssertionError: \"file or path changed while reading\" does not match \"file changed while opening\""
+        ]
+      },
+      {
+        "test": "test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='path', field='st_mode')",
+        "last_lines": [
+          "Traceback (most recent call last):",
+          "  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 463, in test_windows_reader_keeps_full_same_api_change_detection",
+          "    with self.assertRaisesRegex(ValueError, message):",
+          "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "AssertionError: \"file or path changed while reading\" does not match \"file changed while opening\""
+        ]
+      },
+      {
+        "test": "test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='fd', field='st_ctime_ns')",
+        "last_lines": [
+          "Traceback (most recent call last):",
+          "  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 463, in test_windows_reader_keeps_full_same_api_change_detection",
+          "    with self.assertRaisesRegex(ValueError, message):",
+          "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "AssertionError: \"file changed while reading or exceeded its byte limit\" does not match \"file changed while opening\""
+        ]
+      },
+      {
+        "test": "test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='fd', field='st_mode')",
+        "last_lines": [
+          "Traceback (most recent call last):",
+          "  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 463, in test_windows_reader_keeps_full_same_api_change_detection",
+          "    with self.assertRaisesRegex(ValueError, message):",
+          "         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "AssertionError: \"file changed while reading or exceeded its byte limit\" does not match \"file changed while opening\""
+        ]
+      }
+    ],
+    "error_cases": [
+      {
+        "test": "test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=False, birthtime=True)",
+        "last_lines": [
+          "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tools/check_product_session.py\", line 135, in _read",
+          "    if before.st_size > limit:",
+          "            ^^^^^^^^^^^^^^^^^^^",
+          "ValueError: file changed while opening"
+        ]
+      },
+      {
+        "test": "test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=False, execute=True, birthtime=True)",
+        "last_lines": [
+          "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tools/check_product_session.py\", line 135, in _read",
+          "    if before.st_size > limit:",
+          "            ^^^^^^^^^^^^^^^^^^^",
+          "ValueError: file changed while opening"
+        ]
+      },
+      {
+        "test": "test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=True, birthtime=True)",
+        "last_lines": [
+          "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tools/check_product_session.py\", line 135, in _read",
+          "    if before.st_size > limit:",
+          "            ^^^^^^^^^^^^^^^^^^^",
+          "ValueError: file changed while opening"
+        ]
+      },
+      {
+        "test": "test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=False, birthtime=False)",
+        "last_lines": [
+          "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tools/check_product_session.py\", line 135, in _read",
+          "    if before.st_size > limit:",
+          "            ^^^^^^^^^^^^^^^^^^^",
+          "ValueError: file changed while opening"
+        ]
+      }
+    ],
+    "output": "test_posix_reader_preserves_full_cross_api_signature (a50_product_tests.ProductSessionTests.test_posix_reader_preserves_full_cross_api_signature) ... ok\ntest_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) ... \n  test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=False, birthtime=True) ... ERROR\n  test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=False, execute=True, birthtime=True) ... ERROR\n  test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=True, birthtime=True) ... ERROR\n  test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=False, birthtime=False) ... ERROR\ntest_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) ... \n  test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='path', field='st_ctime_ns') ... FAIL\n  test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='path', field='st_mode') ... FAIL\n  test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='fd', field='st_ctime_ns') ... FAIL\n  test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='fd', field='st_mode') ... FAIL\ntest_windows_reader_rejects_changes_to_compatible_opening_fields (a50_product_tests.ProductSessionTests.test_windows_reader_rejects_changes_to_compatible_opening_fields) ... ok\n\n======================================================================\nERROR: test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=False, birthtime=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 431, in test_windows_reader_accepts_only_cross_api_representation_differences\n    raw, text = self.read_with_metadata(path_info, fd_info)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 413, in read_with_metadata\n    return CHECKER._read(self.root, CHECKER.MANIFEST, CHECKER.MAX_MANIFEST_BYTES)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tools/check_product_session.py\", line 135, in _read\n    if before.st_size > limit:\n            ^^^^^^^^^^^^^^^^^^^\nValueError: file changed while opening\n\n======================================================================\nERROR: test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=False, execute=True, birthtime=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 431, in test_windows_reader_accepts_only_cross_api_representation_differences\n    raw, text = self.read_with_metadata(path_info, fd_info)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 413, in read_with_metadata\n    return CHECKER._read(self.root, CHECKER.MANIFEST, CHECKER.MAX_MANIFEST_BYTES)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tools/check_product_session.py\", line 135, in _read\n    if before.st_size > limit:\n            ^^^^^^^^^^^^^^^^^^^\nValueError: file changed while opening\n\n======================================================================\nERROR: test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=True, birthtime=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 431, in test_windows_reader_accepts_only_cross_api_representation_differences\n    raw, text = self.read_with_metadata(path_info, fd_info)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 413, in read_with_metadata\n    return CHECKER._read(self.root, CHECKER.MANIFEST, CHECKER.MAX_MANIFEST_BYTES)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tools/check_product_session.py\", line 135, in _read\n    if before.st_size > limit:\n            ^^^^^^^^^^^^^^^^^^^\nValueError: file changed while opening\n\n======================================================================\nERROR: test_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) (ctime=True, execute=False, birthtime=False)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 431, in test_windows_reader_accepts_only_cross_api_representation_differences\n    raw, text = self.read_with_metadata(path_info, fd_info)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 413, in read_with_metadata\n    return CHECKER._read(self.root, CHECKER.MANIFEST, CHECKER.MAX_MANIFEST_BYTES)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tools/check_product_session.py\", line 135, in _read\n    if before.st_size > limit:\n            ^^^^^^^^^^^^^^^^^^^\nValueError: file changed while opening\n\n======================================================================\nFAIL: test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='path', field='st_ctime_ns')\n----------------------------------------------------------------------\nValueError: file changed while opening\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 463, in test_windows_reader_keeps_full_same_api_change_detection\n    with self.assertRaisesRegex(ValueError, message):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: \"file or path changed while reading\" does not match \"file changed while opening\"\n\n======================================================================\nFAIL: test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='path', field='st_mode')\n----------------------------------------------------------------------\nValueError: file changed while opening\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 463, in test_windows_reader_keeps_full_same_api_change_detection\n    with self.assertRaisesRegex(ValueError, message):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: \"file or path changed while reading\" does not match \"file changed while opening\"\n\n======================================================================\nFAIL: test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='fd', field='st_ctime_ns')\n----------------------------------------------------------------------\nValueError: file changed while opening\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 463, in test_windows_reader_keeps_full_same_api_change_detection\n    with self.assertRaisesRegex(ValueError, message):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: \"file changed while reading or exceeded its byte limit\" does not match \"file changed while opening\"\n\n======================================================================\nFAIL: test_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) (family='fd', field='st_mode')\n----------------------------------------------------------------------\nValueError: file changed while opening\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/workspace/scratch/5b7d983ac078/Hammond-B3-Organ/tests/test_product_session.py\", line 463, in test_windows_reader_keeps_full_same_api_change_detection\n    with self.assertRaisesRegex(ValueError, message):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: \"file changed while reading or exceeded its byte limit\" does not match \"file changed while opening\"\n\n----------------------------------------------------------------------\nRan 4 tests in 0.029s\n\nFAILED (failures=4, errors=4)\n"
+  },
+  "repaired_checker_focused_regression": {
+    "tests_run": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true,
+    "seconds": 0.027744,
+    "failure_cases": [],
+    "error_cases": [],
+    "output": "test_posix_reader_preserves_full_cross_api_signature (a50_product_tests.ProductSessionTests.test_posix_reader_preserves_full_cross_api_signature) ... ok\ntest_windows_reader_accepts_only_cross_api_representation_differences (a50_product_tests.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) ... ok\ntest_windows_reader_keeps_full_same_api_change_detection (a50_product_tests.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) ... ok\ntest_windows_reader_rejects_changes_to_compatible_opening_fields (a50_product_tests.ProductSessionTests.test_windows_reader_rejects_changes_to_compatible_opening_fields) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.028s\n\nOK\n"
+  },
+  "repaired_full_product_module": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_product_session.py -v",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth (__main__.ProductSessionTests.test_bounded_parser_rejects_duplicate_numbers_encoding_and_depth) ... ok\ntest_byte_bounds_are_exact_and_have_no_word_ceiling (__main__.ProductSessionTests.test_byte_bounds_are_exact_and_have_no_word_ceiling) ... ok\ntest_changed_inputs_during_open_are_rejected (__main__.ProductSessionTests.test_changed_inputs_during_open_are_rejected) ... ok\ntest_cli_progress_success_and_strict_failure_are_machine_readable (__main__.ProductSessionTests.test_cli_progress_success_and_strict_failure_are_machine_readable) ... ok\ntest_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves (__main__.ProductSessionTests.test_complete_synthetic_fixture_requires_exact_sixty_and_ten_waves) ... ok\ntest_fifo_inputs_are_rejected_before_open (__main__.ProductSessionTests.test_fifo_inputs_are_rejected_before_open) ... ok\ntest_hash_tampering_and_crlf_use_raw_bytes (__main__.ProductSessionTests.test_hash_tampering_and_crlf_use_raw_bytes) ... ok\ntest_id_agent_and_wave_identity_mutations (__main__.ProductSessionTests.test_id_agent_and_wave_identity_mutations) ... ok\ntest_missing_accepted_notes_and_nonregular_files_fail_closed (__main__.ProductSessionTests.test_missing_accepted_notes_and_nonregular_files_fail_closed) ... ok\ntest_note_paths_cannot_leave_current_session_or_change_identity (__main__.ProductSessionTests.test_note_paths_cannot_leave_current_session_or_change_identity) ... ok\ntest_ownership_supports_actual_scopes_and_directories (__main__.ProductSessionTests.test_ownership_supports_actual_scopes_and_directories) ... ok\ntest_ownership_traversal_globs_malformed_scopes_and_special_paths_fail (__main__.ProductSessionTests.test_ownership_traversal_globs_malformed_scopes_and_special_paths_fail) ... ok\ntest_partial_progress_never_certifies_completion (__main__.ProductSessionTests.test_partial_progress_never_certifies_completion) ... ok\ntest_posix_reader_preserves_full_cross_api_signature (__main__.ProductSessionTests.test_posix_reader_preserves_full_cross_api_signature) ... ok\ntest_reparse_points_are_rejected_on_windows_metadata (__main__.ProductSessionTests.test_reparse_points_are_rejected_on_windows_metadata) ... ok\ntest_required_task_acceptance_and_owned_fields (__main__.ProductSessionTests.test_required_task_acceptance_and_owned_fields) ... ok\ntest_running_optional_notes_but_declared_evidence_must_match (__main__.ProductSessionTests.test_running_optional_notes_but_declared_evidence_must_match) ... ok\ntest_schema_count_and_actual_status_are_not_coercible (__main__.ProductSessionTests.test_schema_count_and_actual_status_are_not_coercible) ... ok\ntest_substantive_floor_does_not_impose_retroactive_word_ceiling (__main__.ProductSessionTests.test_substantive_floor_does_not_impose_retroactive_word_ceiling) ... ok\ntest_symlink_leaf_parent_ownership_and_root_are_rejected (__main__.ProductSessionTests.test_symlink_leaf_parent_ownership_and_root_are_rejected) ... ok\ntest_windows_reader_accepts_only_cross_api_representation_differences (__main__.ProductSessionTests.test_windows_reader_accepts_only_cross_api_representation_differences) ... ok\ntest_windows_reader_keeps_full_same_api_change_detection (__main__.ProductSessionTests.test_windows_reader_keeps_full_same_api_change_detection) ... ok\ntest_windows_reader_rejects_changes_to_compatible_opening_fields (__main__.ProductSessionTests.test_windows_reader_rejects_changes_to_compatible_opening_fields) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 1.228s\n\nOK\n"
+  },
+  "next_gate": "Publish the repaired exact source, then require fresh primary Windows and macOS core logs. These local synthetic results do not replace hosted Windows execution.",
+  "primary_sources": [
+    {
+      "url": "https://github.com/python/cpython/blob/v3.12.10/Modules/posixmodule.c#L2139-L2149",
+      "version": "v3.12.10",
+      "source_sha256": "a8f1410ad95326648a473672ee3bf8158a5f744b7c032c0142327fb252688ab4",
+      "finding": "win32_xstat replaces st_ctime and st_ctime_nsec with birth time. Both win32_stat and win32_lstat call this function.",
+      "related_lines": [
+        2143,
+        2147,
+        2148,
+        2162,
+        2164
+      ]
+    },
+    {
+      "url": "https://github.com/python/cpython/blob/v3.12.10/Python/fileutils.c#L1108-L1126",
+      "version": "v3.12.10",
+      "source_sha256": "0742dd5d83b9e1b2642feb09de9a4489e84272d96e16309f44362deb278df652",
+      "finding": "_Py_attribute_data_to_stat sets birth time from CreationTime, ctime from ChangeTime, and mtime from LastWriteTime; _Py_fstat_noraise returns this metadata directly at lines1284-1285.",
+      "related_url": "https://github.com/python/cpython/blob/v3.12.10/Python/fileutils.c#L1284-L1285"
+    },
+    {
+      "url": "https://github.com/python/cpython/blob/v3.12.10/Modules/posixmodule.c#L1893-L1914",
+      "version": "v3.12.10",
+      "finding": "update_st_mode_from_path adds execute permission bits for executable filename extensions. The descriptor path does not apply this filename-based transformation. Windows opening comparisons therefore mask only those execute bits; all other mode bits remain compared.",
+      "dispatch_url": "https://github.com/python/cpython/blob/v3.12.10/Modules/posixmodule.c#L11174-L11194",
+      "windows_fstat_macro_line": 502
+    },
+    {
+      "url": "https://github.com/python/cpython/issues/157671",
+      "title": "Windows os.stat and os.fstat report different st_ctime_ns values",
+      "created_at": "2026-09-17T10:36:14Z",
+      "finding": "Upstream issue reports the same Windows stat/fstat ctime inconsistency on Python3.14.7. The exact v3.12.10 implementation above independently establishes applicability to this hosted job; the issue alone is not a3.12 runtime result."
+    }
+  ],
+  "baseline_reproduction": {
+    "source": "git show c4486bafccbcfbcd9bcd9492e8949ddd44ea1340:tools/check_product_session.py",
+    "execution": "Compile the exact published bytes into a fresh module with the original checker path as __file__, add a sys module binding only so the test can inject a module-local platform value, then substitute that module for tests.CHECKER and run the same four new reader tests. The old checker never consults the added sys binding.",
+    "meaning": "Four stable Windows representation cases fail opening under the old source. Four same-API mutation cases fail too early at opening instead of reaching the intended read-phase guard. The repaired source admits the stable inputs and reaches/rejects each intentional mutation at its expected phase."
+  }
+}

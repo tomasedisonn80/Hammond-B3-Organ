@@ -23,26 +23,52 @@ below. Do not invent more worker credit or rewrite historical failed outcomes.
 
 ## Source and executed gates
 
-Latest published/fetched main before final publication is
-`d8c39f7986746eacc991747153c7dbb012bb9a32`, tree
-`edf67b978f93e8dbea6537ce92d3928c171bc1f3`, parent
-`d556da017ea0a5d4f2d231416782dbc5066e58c2`.
-[The publication receipt](reports/gallery-publication.json) and
-[A58 audit](../../reviews/PRODUCT_PUBLICATION_AUDIT.md) verify its objects and
-preserved predecessors. All thirteen d8 hosted jobs passed; A49–A52 inspected
-primary Linux/Windows/macOS/VST3 logs. Expanded native sanitizers actually passed
-21/21 with leak checking, and the full R4 job passed its named published inputs.
+The latest published checkpoint is
+**`c4486bafccbcfbcd9bcd9492e8949ddd44ea1340`**, tree
+`2d21135e570c5b328a7f54d17582ffc7ac62a489`, parent
+`d8c39f7986746eacc991747153c7dbb012bb9a32`.
+[The publication receipt](reports/final-source-publication.json) records the
+expected-head/nonforced update, exact-tree/blob verification and preserved local
+predecessor65e9ea5 under `refs/checkpoints/local-product-final-source`.
+All sixty accepted records and the strict CI invocation are published.
 
-Accepted working changes after d8 include A46's actual-record checker, A48's
-complete numerical-report admission and regressions, identical-pixel plot
-metadata refresh, A46–A60 notes/reviews, current docs, original status corrections
-and strict CI mode. They still need final publication and exact-source hosted
-execution. CI now invokes the product checker without `--allow-incomplete`.
+Required source runs are **CI43672641490**, **Native standalone43672641506**
+and **Native VST343672641501**. At 03:38 UTC, macOS core job132685867386
+**failed**: 156/157 CTests pass, with four assertions failing inside the new
+`python_test_product_session` module. A51 reproduced those exact four failures
+through a private symlinked temporary directory and repaired the fixture's
+canonical path. Its original 19 methods then pass for both ordinary and aliased
+directories. Windows core job132685867528 separately **failed** 156/157 with
+111 assertions (one existing FIFO skip) because the checker compares Windows
+path-stat creation time with descriptor-stat change time. A50 owns the narrow
+portable reader repair and meaningful regression additions, building on A51's
+released fixture change. The published c448 matrix is not fully qualified.
+All thirteen c448 jobs have now completed: **eleven success and two failed core
+jobs**. Linux core Release/sanitizers, four native Release configurations,
+native sanitizers (21/21), R4 and all three VST3 jobs pass their named source.
+The [root status receipt](reports/c448-hosted-status.json) retains the complete
+failed-matrix observation; it must not be relabeled as overall success.
+A49/A50/A51/A52 followups add no worker/wave credit.
+The c448 runs are finished, so the reviewed portability repair can be published
+without cancelling their evidence. The earlier d8 thirteen-job success
+remains historical; it does not qualify this new source by inheritance.
+
+That source includes A46's record checker, A48's report-admission repair,
+identical-pixel plot metadata refresh, all notes/reviews and current handoffs.
+The strict local check was rerun after root removed four formatting-only EOF
+blank lines; the [formatting receipt](reports/final-eof-formatting.json) records
+reconstructable before/after identities, and A50's note hash is current.
 
 The [coherent local receipt](reports/wave8-coherent-build.json) records successful
 reconfigure/all-target build and **180/180 CTest in 507.55 seconds** over d8 plus
 A46/A48. All **366 code/test/build/data hashes** remained unchanged throughout
-and have been independently rechecked. The current production binaries are:
+during that run. The portable checker/test changes now differ in exactly two
+of those inputs; all other 364 and all three binaries still match. The
+[focused root verification](reports/checker-portability-root-verification.json)
+passes the registered affected CTest in 1.31 seconds and current actual strict
+records (60 accepted/verified, ten waves, zero errors). Only checker identity
+changes in the strict JSON; manifest and note hashes remain unchanged. The
+current production binaries are:
 
 - Application: `7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852`.
 - Calibration probe: `16da718ff92bdd940a6e457f100b08b54098dbd4183fd149f9a4b137460b4335`.
@@ -54,29 +80,35 @@ actual captures. Original BMP intermediates are unavailable after recorded
 lossless conversion. Original failures, 277 historical gallery files and earlier
 session records retain their identities.
 
-## Publication procedure and immediate next actions
+## Immediate next actions
 
-1. Keep all sixty accepted notes and the manifest frozen. Strict local validation
-   passed; rerun it only if those inputs change. Review the final CI strict-mode
-   diff, source hashes, current links and accepted staged paths.
-2. Preserve literal whitespace in exactly four raw artifacts: A42's original
-   failure patch, A43's original installed CTest log, the combined material/facade
-   log and `wave8-configure.txt`. Name their exact hashes in final preflight;
-   there is no source whitespace exemption.
-3. Query live main before writing. Commit only the accepted candidate; use
-   connected GitHub Git Data with expected head and `force:false` because CLI
-   push lacks credentials in this session. Compare every created tree with the
-   local committed tree and each new binary blob with its Git identity.
-4. Fetch the remote and verify commit, tree and parent. Preserve the same-tree
-   local predecessor under `refs/checkpoints/`, then synchronize local main with
-   a guarded update. Preserve current working files; never reset them.
-5. Observe the exact new source's required hosted jobs, both new Python modules
-   and primary strict-record output. Reuse existing reviewers for followup
-   evidence if useful; followups do not create additional workers or waves.
-6. Commit compact source-specific results and current closure pointers. A later
-   evidence-only commit must identify the actual tested source. Run the strict
-   record check after any manifest/note change, then verify clean local main and
-   exact remote tree. Report the completed batch and unresolved 1:1 objective.
+1. The portability code is frozen: checker SHA-256
+   `3496024e026abf8732623f16b9ef8ebec392a7636fe64f3f1d6e2efaab89d631`;
+   test module `d821b36ebb3b859f7b852c050adc37c65428fc8cc2aae93c2850081323cb1f11`.
+   A50's repair passes four reader methods / 30 synthetic subcases and all 23
+   current methods locally. A46 independently accepts the narrow repair for
+   integration and new hosted qualification. Preserve the exact original
+   [c448 strict result](reports/c448-product-session-strict.json), primary failures,
+   A51 alias reproduction and A50 metadata reproduction.
+2. Finish accepting the bounded A50/A46 followup receipts, stage only their
+   agreed paths and the root records, and publish the coherent repair with
+   expected head c448 and no force. Fetch and verify exact commit/tree/parent.
+   The old runs have finished. New Windows/macOS core success is mandatory;
+   observe the entire newly dispatched matrix and strict actual-record step.
+3. After all repaired-source outcomes are known, retain the compact root hosted
+   receipt and reconcile current README/status/next/log/handoff/plan/checkpoint.
+   Identify the replacement revision as the tested source. Earlier results stay
+   attached to their own inputs, including the failed c448 matrix.
+4. Verify the final evidence diff contains no further code/test/build/workflow
+   change before using `[skip ci]` for its publication. Recheck strict records,
+   source identities and changed document links. Preserve raw evidence bytes;
+   document any exact whitespace-only log exclusions rather than altering them.
+5. Publish with a fresh expected head and `force:false`, compare local/remote
+   trees, fetch, preserve the same-tree local predecessor and update local main
+   with an expected old SHA. Finish with clean local main and matching remote.
+6. Report the completed sixty-worker/development batch with the still-unmet,
+   unwaived 1:1 UI requirement and concrete next engineering gates. Do not label
+   the whole original request or physical/product milestones complete.
 
 ## Build, preservation and next engineering task
 

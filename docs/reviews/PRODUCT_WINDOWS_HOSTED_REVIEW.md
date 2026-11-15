@@ -149,3 +149,33 @@ real-device and WinMM fault/lifetime journey as a separate product gate.
 A50 performed source/log inspection and wrote only this review, its short note
 and bounded reports: no local build/test, production/workflow/shared-status edit,
 commit or push.
+
+## Source-specific follow-up: c448 core failure and native success
+
+The later exact source is `c4486bafccbcfbcd9bcd9492e8949ddd44ea1340`, tree
+`2d21135e570c5b328a7f54d17582ffc7ac62a489`, parent d8. The new
+[source-specific report](../development/2026-11-15-product-continuation/reports/A50-final-source-hosted.json)
+and [bounded primary excerpts](../development/2026-11-15-product-continuation/reports/A50-final-source-primary.txt)
+retain both outcomes; **this source is not Windows-qualified**.
+
+| Exact c448 Windows job | Primary result |
+| --- | --- |
+| [Core 132685867528 / CI43672641490](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641490/job/132685867528) | **156/157**, 226.65 s. New plot-admission module passes in 0.73 s; product-session module fails in 1.40 s, reporting 19 methods, 111 failure entries and one skip. |
+| [Native 132685867505 / Standalone43672641506](https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43672641506/job/132685867505) | **48/48**, 367.52 s. Calibration: 9 methods, 10 processes, 7 lifecycles, 2 intentional failed replays; material: 1,293 checks, zero failures, 109 frames; installer: 8 methods and the actual 20-file WinMM payload, guide, relocated dummy smoke and archived-byte verification. |
+
+Both logs identify MSVC 19.44.35230.0, CMake/CTest 3.31.6 and Python 3.12.10.
+Native production inputs are unchanged from d8. A nonfatal CMP0010 warning
+about the generated installer's Windows Python path remains; the install and
+archive gates pass. It differs from the earlier repaired CMP0012 failure.
+
+The new checker compares incompatible Windows path/descriptor `ctime` values.
+Exact CPython 3.12.10 source confirms that path queries substitute birth time
+while `fstat` can retain change time. The separately authorized
+[portability repair evidence](../development/2026-11-15-product-continuation/reports/final-source-windows-portability-repair.json)
+preserves full POSIX and same-API signatures, compares compatible Windows
+fields at open, and retains A51's canonical temporary-path test repair.
+Four focused methods with 30 synthetic cases and all 23 product-session
+methods pass locally on Linux. These later edits do not change c448's failed
+result. The next gate is primary Windows execution at the newly published
+repair source; hardware, real display, MinGW and OS race claims remain outside
+this audit. The accepted A50 note and earlier reports remain unchanged.
