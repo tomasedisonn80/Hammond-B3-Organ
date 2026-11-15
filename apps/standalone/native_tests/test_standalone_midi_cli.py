@@ -19,31 +19,37 @@ import tempfile
 import unittest
 import uuid
 
-from test_standalone_app import diagnostic_excerpt
+from test_standalone_app import assert_expression_calibration, diagnostic_excerpt
 
 
 TIMEOUT = 12
 CHANNEL_OPTIONS = (
     "--midi-upper-channel", "--midi-lower-channel", "--midi-pedal-channel",
 )
+EXPRESSION_OPTIONS = ("--expression-min", "--expression-max")
+DEFAULT_CALIBRATION = {"minimum": 0, "maximum": 127, "inverted": False}
 DEFAULT_CHANNELS = {"upper": 1, "lower": 2, "pedals": 3}
 ENUMERATION_ERROR = "hammond_standalone: Cannot enumerate MIDI input ports: "
 INVALID_CHANNEL_ERROR = "hammond_standalone: Choose three distinct MIDI channels from 1 through 16."
+INVALID_EXPRESSION_ERROR = ("hammond_standalone: Expression minimum must be below maximum; "
+                            "both endpoints must be from 0 through 127.")
 REPLAY_ERROR = "hammond_standalone: Native input replay failed or was interrupted; inspect the copied diagnostics"
 
 # Independently retained centers, not values computed by the application. The
-# MIDI dialog is 740 x 520; the two windows exercise its translation and the
+# MIDI dialog is 740 x 600; the two windows exercise its translation and the
 # separate header button. Pointer-down activates a modal control immediately.
 POINTER_CASES = (
     (960, 700, {
-        "header": (830, 66), "upper": (244, 348), "lower": (480, 348),
-        "pedals": (716, 348), "apply": (264, 534),
-        "disconnect": (500, 534), "close": (780, 130),
+        "header": (830, 66), "upper": (244, 308), "lower": (480, 308),
+        "pedals": (716, 308), "minimum": (244, 401), "maximum": (480, 401),
+        "direction": (716, 401), "apply": (264, 579),
+        "disconnect": (500, 579), "close": (780, 90),
     }),
     (1280, 900, {
-        "header": (1150, 66), "upper": (404, 448), "lower": (640, 448),
-        "pedals": (876, 448), "apply": (424, 634),
-        "disconnect": (660, 634), "close": (940, 230),
+        "header": (1150, 66), "upper": (404, 408), "lower": (640, 408),
+        "pedals": (876, 408), "minimum": (404, 501), "maximum": (640, 501),
+        "direction": (876, 501), "apply": (424, 679),
+        "disconnect": (660, 679), "close": (940, 190),
     }),
 )
 
@@ -200,6 +206,8 @@ class NativeMidiAcceptance(unittest.TestCase):
             self.assertEqual(session["fault_flags"], 0)
             self.assertFalse(midi["active_before_shutdown"])
             self.assertFalse(midi["active_after_shutdown"])
+            assert_expression_calibration(self, midi["expression_calibration"],
+                                          final=True, active=False, pre_shutdown_active=False)
             self.assertTrue(midi["quiescent_after_shutdown"])
             self.assertTrue(midi["diagnostics_stable_after_shutdown"])
             self.assertFalse(midi["shutdown_failed"])
@@ -222,7 +230,7 @@ class NativeMidiAcceptance(unittest.TestCase):
 
     def modal(self, replay: InputScript, *, arguments: list[str] | None = None,
               invalid_applies: int = 0, openings: int = 1,
-              notes: int = 0) -> dict:
+              notes: int = 0, invalid_calibration_applies: int = 0) -> dict:
         source = replay.source()
         process, data = self.runtime(arguments or [], source)
         try:
@@ -236,7 +244,8 @@ class NativeMidiAcceptance(unittest.TestCase):
             else:
                 self.assertIn(midi["backend"], ("ALSA", "WinMM", "CoreMIDI"))
             self.assertEqual(process.stderr.count(INVALID_CHANNEL_ERROR), invalid_applies)
-            expected_errors = enum_errors + invalid_applies
+            self.assertEqual(process.stderr.count(INVALID_EXPRESSION_ERROR), invalid_calibration_applies)
+            expected_errors = enum_errors + invalid_applies + invalid_calibration_applies
             for key in ("completed", "delivered", "final_acknowledged"):
                 self.assertTrue(observed[key], key + ": " + process.stderr)
             self.assertFalse(observed["observations_truncated"])
@@ -298,15 +307,64 @@ class NativeMidiAcceptance(unittest.TestCase):
                 self.assertEqual(process.stderr, "")
 
     def test_cli_repeated_options_and_conflicting_lists(self) -> None:
-        for option in ("--list-midi", *CHANNEL_OPTIONS, "--midi-port"):
+        for option in ("--list-midi", *CHANNEL_OPTIONS, "--midi-port",
+                       *EXPRESSION_OPTIONS, "--expression-invert"):
             with self.subTest(option=option):
-                value = [] if option == "--list-midi" else ["1" if "channel" in option else "unused name"]
+                value = ([] if option in ("--list-midi", "--expression-invert") else
+                         ["unused name" if option == "--midi-port" else "1"])
                 self.before_sdl(["--help", option, *value, option, *value], 2,
                                 f"Repeated option: {option}")
         self.before_sdl(["--list-midi", "--list-audio"], 2,
                         "--list-audio and --list-midi are mutually exclusive")
         self.before_sdl(["--list-audio", "--list-midi"], 2,
                         "--list-audio and --list-midi are mutually exclusive")
+
+    def test_cli_expression_endpoints_refuse_before_sdl_or_outputs(self) -> None:
+        lexical = ("-1", "+1", " 1", "1 ", "1.0", "1e0", "0x1", "NaN", "inf",
+                   "1x", "2147483648", "999999999999999999999999999")
+        for option in EXPRESSION_OPTIONS:
+            for value in lexical:
+                with self.subTest(option=option, value=value):
+                    self.before_sdl(["--help", option, value], 2, f"Invalid integer for {option}")
+            for value in ("128", "256", "2147483647"):
+                with self.subTest(option=option, value=value):
+                    self.before_sdl(["--help", option, value], 2,
+                                    f"Unsupported value for {option}; see --help")
+            for suffix in ([], [""]):
+                with self.subTest(option=option, suffix=suffix):
+                    self.before_sdl(["--help", option, *suffix], 2, f"Missing value for {option}")
+        for minimum, maximum in ((0, 0), (127, 127), (64, 64), (127, 0), (65, 64)):
+            with self.subTest(minimum=minimum, maximum=maximum):
+                self.before_sdl(["--help", "--expression-min", str(minimum),
+                                 "--expression-max", str(maximum), "--expression-invert"], 2,
+                                "Expression endpoints must satisfy 0 <= minimum < maximum <= 127")
+        self.before_sdl(["--expression-invert", "false", "--help"], 2, "Unknown option: false")
+        self.before_sdl(["--expression-invert=1", "--help"], 2,
+                        "Unknown option: --expression-invert=1")
+        for minimum, maximum in (("0", "1"), ("126", "127"), ("00000", "00127")):
+            for invert in ([], ["--expression-invert"]):
+                with self.subTest(minimum=minimum, maximum=maximum, invert=invert):
+                    process = self.before_sdl(["--help", "--expression-min", minimum,
+                                              "--expression-max", maximum, *invert], 0)
+                    self.assertIn("--expression-invert", process.stdout)
+                    self.assertEqual(process.stderr, "")
+
+    def test_cli_expression_configuration_does_not_write_musical_expression(self) -> None:
+        for inverted in (False, True):
+            with self.subTest(inverted=inverted):
+                arguments = ["--smoke-ms", "600", "--expression-min", "10", "--expression-max", "110"]
+                if inverted:
+                    arguments.append("--expression-invert")
+                process, data = self.runtime(arguments)
+                self.assertEqual(process.returncode, 0, process.stderr)
+                self.assertEqual(process.stderr, "")
+                settings = {"minimum": 10, "maximum": 110, "inverted": inverted}
+                calibration = data["midi"]["expression_calibration"]
+                self.assertEqual(calibration["configured"], settings)
+                self.assertEqual(calibration["selected"], settings)
+                self.assertEqual(data["controls"]["expression"], 1)
+                self.assertEqual(data["midi"]["parameter_messages"], 0)
+                self.assertTrue(data["smoke"]["passed"])
 
     def test_cli_exact_port_argument_bytes_and_no_name_coercion(self) -> None:
         # Help validates syntax without trying any of these names. A numeric
@@ -411,23 +469,31 @@ class NativeMidiAcceptance(unittest.TestCase):
                 self.assertEqual(data["midi"]["channels"], {"upper": 2, "lower": 3, "pedals": 4})
                 self.assertEqual(data["midi"]["status"], "No MIDI input selected.")
 
-    def test_modal_all_eight_keyboard_controls_and_no_port_auto_open(self) -> None:
+    def test_modal_all_eleven_keyboard_controls_and_no_port_auto_open(self) -> None:
         replay = InputScript().key("M", "ctrl")
         replay.key("Return").key("Home")  # Previous port, then explicit No input.
         replay.tabs(1).key("Space").key("Home")  # Next port, then No input.
         replay.tabs(1).key("End")  # Upper = 16.
         replay.tabs(1).key("Home")  # Lower = 1.
         replay.tabs(1).key("End").key("Down")  # Pedals = 15.
+        replay.tabs(1).key("Home").key("Right")  # Minimum = 1.
+        replay.tabs(1).key("End").key("Left")  # Maximum = 126.
+        replay.tabs(1).key("Space")  # Inverted direction.
         replay.tabs(1).key("Return")  # Apply, still on No input.
         replay.tabs(1).key("Space")  # Disconnect.
         replay.tabs(1).key("Return").note()  # Close, then ordinary playing.
         data = self.modal(replay, notes=1)
         self.assertEqual(data["midi"]["channels"], {"upper": 16, "lower": 1, "pedals": 15})
         self.assertEqual(data["midi"]["status"], "No MIDI input selected.")
+        self.assertEqual(data["midi"]["expression_calibration"]["configured"],
+                         {"minimum": 1, "maximum": 126, "inverted": True})
+        focus = {item["modal_focus"] for item in data["replay"]["observations"]
+                 if item["overlay"] == "midi"}
+        self.assertEqual(focus, set(range(11)))
 
-    def test_modal_focus_wraps_forward_and_reverse_across_eight_controls(self) -> None:
-        replay = InputScript().key("M", "ctrl").tabs(8).tabs(2).key("End")
-        replay.tabs(3).key("Return").key("Escape")
+    def test_modal_focus_wraps_forward_and_reverse_across_eleven_controls(self) -> None:
+        replay = InputScript().key("M", "ctrl").tabs(11).tabs(2).key("End")
+        replay.tabs(6).key("Return").key("Escape")
         replay.key("M", "ctrl").tabs(1, "shift").key("Return").note()
         data = self.modal(replay, openings=2, notes=1)
         self.assertEqual(data["midi"]["channels"], {"upper": 16, "lower": 2, "pedals": 3})
@@ -437,7 +503,7 @@ class NativeMidiAcceptance(unittest.TestCase):
         replay.key("End").key("Right").key("Left")  # 16 -> 1 -> 16.
         replay.tabs(1).key("Home").key("Left").key("Right")  # 1 -> 16 -> 1.
         replay.tabs(1).key("End").key("Up").key("Up")  # 16 -> 1 -> 2.
-        replay.tabs(1).key("Space")
+        replay.tabs(4).key("Space")
         data = self.modal(replay)
         self.assertEqual(data["midi"]["channels"], {"upper": 16, "lower": 1, "pedals": 2})
         self.assertEqual(data["midi"]["status"], "No MIDI input selected.")
@@ -448,11 +514,11 @@ class NativeMidiAcceptance(unittest.TestCase):
         for correct in (False, True):
             with self.subTest(correct_without_reopening=correct):
                 replay = InputScript().key("M", "ctrl").tabs(2).key("Home")
-                replay.tabs(1).key("Home").tabs(1).key("End").tabs(1).key("Return")
+                replay.tabs(1).key("Home").tabs(1).key("End").tabs(4).key("Return")
                 if correct:
                     # Preserve selected Upper=1 and Pedals=16 across rejection;
                     # change only Lower=1 to 2, then retry the same Apply control.
-                    replay.tabs(2, "shift").key("Right").tabs(2).key("Return")
+                    replay.tabs(5, "shift").key("Right").tabs(5).key("Return")
                 data = self.modal(replay, arguments=arguments, invalid_applies=1)
                 expected = {"upper": 1, "lower": 2, "pedals": 16} if correct else {
                     "upper": 4, "lower": 5, "pedals": 6}
@@ -462,7 +528,7 @@ class NativeMidiAcceptance(unittest.TestCase):
 
     def test_modal_escape_discards_unapplied_channels(self) -> None:
         replay = InputScript().key("M", "ctrl").tabs(2).key("End").key("Escape")
-        replay.key("M", "ctrl").tabs(5).key("Return").key("Escape").note()
+        replay.key("M", "ctrl").tabs(8).key("Return").key("Escape").note()
         data = self.modal(replay, openings=2, notes=1)
         self.assertEqual(data["midi"]["channels"], DEFAULT_CHANNELS)
 
@@ -470,9 +536,90 @@ class NativeMidiAcceptance(unittest.TestCase):
         replay = InputScript().key("M", "ctrl", repeat=1).key("M", "ctrl+alt").note()
         replay.key("M", "ctrl").key("Tab", repeat=1).key("Tab", "ctrl").key("Tab", "alt")
         replay.tabs(2).key("End").key("Right", "alt").key("Right", repeat=1)
-        replay.tabs(3).key("Return").key("Escape")
+        replay.tabs(6).key("Return").key("Escape")
         data = self.modal(replay, notes=1)
         self.assertEqual(data["midi"]["channels"], {"upper": 16, "lower": 2, "pedals": 3})
+
+    def test_modal_expression_pointer_controls_at_both_sizes_and_presentations(self) -> None:
+        for width, height, points in POINTER_CASES:
+            for flat in (False, True):
+                with self.subTest(width=width, height=height, flat=flat):
+                    replay = InputScript().click(points["header"])
+                    for control in ("minimum", "maximum", "direction", "apply", "close"):
+                        replay.click(points[control])
+                    arguments = ["--width", str(width), "--height", str(height),
+                                 "--expression-min", "10", "--expression-max", "110"]
+                    if flat:
+                        arguments.append("--flat")
+                    data = self.modal(replay, arguments=arguments)
+                    calibration = data["midi"]["expression_calibration"]
+                    self.assertEqual(calibration["configured"],
+                                     {"minimum": 11, "maximum": 111, "inverted": True})
+                    self.assertEqual(calibration["selected"], calibration["configured"])
+                    self.assertEqual(data["controls"]["expression"], 1)
+                    self.assertEqual(data["midi"]["channels"], DEFAULT_CHANNELS)
+                    self.assertEqual(data["midi"]["parameter_messages"], 0)
+                    self.assertEqual(data["presentation"]["last_painted"]["presentation"],
+                                     "flat" if flat else "dimensional")
+
+    def test_modal_expression_keyboard_clamps_and_direction_controls(self) -> None:
+        replay = InputScript().key("M", "ctrl").tabs(5)
+        replay.key("Home").key("Left").key("Right").key("Space").key("Return")
+        replay.key("End").key("Up").key("Down")  # minimum 0,0,1,2,3,127,127,126.
+        replay.tabs(1).key("End").key("Right").key("Home").key("Down").key("Up").key("Return")
+        # An invalid selected interval is permitted until Apply. Repair it explicitly.
+        replay.tabs(1, "shift").key("Home").tabs(1).key("End").key("Down")
+        replay.tabs(1).key("Right").key("Left").key("Up").key("Down")
+        replay.key("Home").key("End").key("Return").key("Space")
+        replay.tabs(1).key("Return")
+        data = self.modal(replay)
+        calibration = data["midi"]["expression_calibration"]
+        self.assertEqual(calibration["configured"], {"minimum": 0, "maximum": 126, "inverted": True})
+        observations = [item["expression_calibration"] for item in data["replay"]["observations"]
+                        if item["overlay"] == "midi"]
+        selected = {(item["selected"]["minimum"], item["selected"]["maximum"],
+                     item["selected"]["inverted"]) for item in observations}
+        for expected in ((1, 127, False), (2, 127, False), (3, 127, False),
+                         (127, 127, False), (126, 0, False), (126, 2, False),
+                         (0, 126, False), (0, 126, True)):
+            self.assertIn(expected, selected)
+        self.assertTrue(any(not item["selected_valid"] for item in observations))
+        self.assertEqual(data["controls"]["expression"], 1)
+        self.assertEqual(data["midi"]["parameter_messages"], 0)
+
+    def test_modal_invalid_calibration_apply_preserves_configuration_and_edit_intent(self) -> None:
+        arguments = ["--expression-min", "10", "--expression-max", "110"]
+        original = {"minimum": 10, "maximum": 110, "inverted": False}
+        for correct in (False, True):
+            with self.subTest(correct_without_reopening=correct):
+                replay = InputScript().key("M", "ctrl").tabs(5).key("End").tabs(3).key("Return")
+                if correct:
+                    replay.tabs(3, "shift").key("Home").tabs(1).key("End")
+                    replay.tabs(1).key("Space").tabs(1).key("Return")
+                data = self.modal(replay, arguments=arguments, invalid_calibration_applies=1)
+                calibration = data["midi"]["expression_calibration"]
+                expected = {"minimum": 0, "maximum": 127, "inverted": True} if correct else original
+                self.assertEqual(calibration["configured"], expected)
+                self.assertEqual(calibration["selected_valid"], correct)
+                rejected = [item for item in data["replay"]["observations"]
+                            if item["error_count"] and not item["expression_calibration"]["selected_valid"]]
+                self.assertTrue(rejected)
+                for item in rejected:
+                    value = item["expression_calibration"]
+                    self.assertEqual(value["configured"], original)
+                    self.assertIsNone(value["active"])
+                    self.assertIsNone(value["pending"])
+                self.assertEqual(data["midi"]["channels"], DEFAULT_CHANNELS)
+                self.assertEqual(data["controls"]["expression"], 1)
+
+    def test_modal_escape_discards_unapplied_calibration(self) -> None:
+        replay = InputScript().key("M", "ctrl").tabs(5).key("End").tabs(2).key("Space")
+        replay.key("Escape").key("M", "ctrl").tabs(8).key("Return")
+        data = self.modal(replay, openings=2)
+        calibration = data["midi"]["expression_calibration"]
+        self.assertEqual(calibration["configured"], DEFAULT_CALIBRATION)
+        self.assertEqual(calibration["selected"], DEFAULT_CALIBRATION)
+        self.assertEqual(data["controls"]["expression"], 1)
 
 
 if __name__ == "__main__":

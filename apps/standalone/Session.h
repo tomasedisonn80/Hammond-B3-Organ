@@ -26,11 +26,24 @@ inline constexpr std::uint8_t kUiInputChannel = 0;
 struct ReleaseUiNotes {};
 struct Panic {};
 
-// Offset-zero input, one whole control restore, scoped UI release, or global
-// panic. No pointer, parser, device handle, string, or dynamic payload is owned.
+// A distinct channel-mode action for the standalone's ideal-contact Engine.
+// Retires one origin's owners without clearing other origins, controls, shared
+// source phase or percussion history. It is not a persistent mute. Both domains
+// admit buses 0..1 and channels 0..15; wire MIDI maps to its own non-UI scopes.
+// A future non-ideal Session must supply a new tail policy before admitting it.
+enum class SoundOffDomain : std::uint8_t { Manual = 0, Pedal = 1 };
+struct ScopedSoundOff {
+    SoundOffDomain domain{SoundOffDomain::Manual};
+    std::uint8_t bus{0};
+    std::uint8_t channel{0};
+};
+
+// Offset-zero input, one whole control restore, scoped UI release, global
+// panic, or scoped sound-off. No pointer, parser, device handle, string, or
+// dynamic payload is owned. New alternatives append after existing identities.
 // Ordinary control input includes SelectPreset; preset selection owns no notes.
 using SessionCommand =
-    std::variant<PerformanceInputEvent, ControlSnapshot, ReleaseUiNotes, Panic>;
+    std::variant<PerformanceInputEvent, ControlSnapshot, ReleaseUiNotes, Panic, ScopedSoundOff>;
 
 // Finite limits permit actual exhaustion tests. They never reset at prepare().
 // publications must be <= UINT64_MAX / 2; zero is a valid exhausted limit.
@@ -148,8 +161,9 @@ public:
 
     // One producer; copies one command. Accepted means queued, not applied.
     // FIFO sequence starts at one and never wraps. Nonzero input offsets,
-    // forbidden physical Event alternatives and invalid ControlSnapshots reject
-    // immediately; other core payload/owner admission happens at the boundary.
+    // forbidden physical Event alternatives, invalid ControlSnapshots and invalid
+    // ScopedSoundOff domains/buses/channels reject before reserving a sequence
+    // or queue slot; other core payload/owner admission happens at the boundary.
     // QueueFull requests out-of-queue GLOBAL recovery, and further posts return
     // RecoveryPending until its acknowledgment. Sequence exhaustion likewise
     // releases owners but permanently rejects new commands for this object.

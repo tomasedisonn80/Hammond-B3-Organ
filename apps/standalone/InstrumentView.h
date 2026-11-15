@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Drawing.h"
+#include "MidiInput.h"
 
 #include <array>
 #include <cstddef>
@@ -37,6 +38,10 @@ struct InstrumentViewInfo {
     std::span<const std::string> midi_choices{};
     std::size_t selected_midi_port{0};
     std::array<std::uint8_t, 3> selected_midi_channels{1, 2, 3};
+    MidiExpressionCalibration selected_midi_expression{};
+    MidiExpressionCalibration active_midi_expression{};
+    bool midi_expression_active{false};
+    bool midi_reconnect_pending{false};
     std::uint64_t midi_messages{0};
     const InspectionDocument* inspection{nullptr};
 };
@@ -58,6 +63,9 @@ struct MidiOverlayLayout {
     UiRect upper_channel{};
     UiRect lower_channel{};
     UiRect pedal_channel{};
+    UiRect expression_minimum{};
+    UiRect expression_maximum{};
+    UiRect expression_direction{};
     UiRect apply{};
     UiRect disconnect{};
     UiRect close{};

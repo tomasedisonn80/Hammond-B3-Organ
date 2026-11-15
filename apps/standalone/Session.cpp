@@ -68,6 +68,17 @@ void increment(std::atomic<std::uint64_t>& value) noexcept {
     if (const auto* controls = std::get_if<ControlSnapshot>(&command)) {
         return is_valid_control_snapshot(*controls);
     }
+    if (const auto* silence = std::get_if<ScopedSoundOff>(&command)) {
+        switch (silence->domain) {
+        case SoundOffDomain::Manual:
+            return silence->bus < kHostInputBusCount &&
+                   silence->channel < kHostInputChannelCount;
+        case SoundOffDomain::Pedal:
+            return silence->bus < kPedalInputBusCount &&
+                   silence->channel < kPedalInputChannelCount;
+        }
+        return false;
+    }
     return std::holds_alternative<ReleaseUiNotes>(command) ||
            std::holds_alternative<Panic>(command);
 }
@@ -476,6 +487,29 @@ private:
                                              0, {}, releases).status;
         }
         if (std::holds_alternative<Panic>(command)) return global_panic();
+        if (const auto* silence = std::get_if<ScopedSoundOff>(&command)) {
+            // Ordinary final-owner releases suppress contributions immediately
+            // only in the ideal-contact Session. Preserve the distinct command
+            // and refuse a future finite-travel mode before translating it.
+            // Such a refusal follows the existing global failure recovery; it
+            // does not advertise scoped non-ideal or shared-tail support.
+            if (engine_.contact_mode() != ContactMode::Ideal) return Status::InvalidEvent;
+            PerformanceInputEvent release;
+            switch (silence->domain) {
+            case SoundOffDomain::Manual:
+                release = HostNoteEvent{0, HostNoteKind::AllNotesOff,
+                    silence->bus, silence->channel, 0, 0, -1};
+                break;
+            case SoundOffDomain::Pedal:
+                release = PedalNoteEvent{0, PedalNoteKind::AllNotesOff,
+                    silence->bus, silence->channel, PedalId{0}, 0, -1};
+                break;
+            default:
+                return Status::InvalidEvent;
+            }
+            return process_performance_input(engine_, manual_ownership_, pedal_ownership_,
+                                             0, {}, {&release, 1}).status;
+        }
         return Status::InvalidEvent;
     }
 

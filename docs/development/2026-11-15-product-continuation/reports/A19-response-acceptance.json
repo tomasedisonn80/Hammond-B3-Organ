@@ -1,0 +1,2275 @@
+{
+  "acceptance_id": "leslie-crossover-native-nodal-acceptance-v1",
+  "binary_sha256": "25c958c4d157af5a758a08fb852915c45a5655564d454977007166d61bdef107",
+  "engine_integration": false,
+  "errors": 0,
+  "failures": 0,
+  "limits": {
+    "settled_sine": 2e-08,
+    "warped_response": 2e-10
+  },
+  "maximum_half_window_gain_difference": 6.064307873515581e-13,
+  "maximum_independent_sine_tail_gain_bound": 4.014564579287608e-11,
+  "maximum_response_residual": 1.7554167342883506e-16,
+  "maximum_warped_response_error": 2.0923475127225402e-13,
+  "maximum_warped_sine_error": 3.429777428091277e-13,
+  "passed": true,
+  "physical_measurement_claim": false,
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "provenance_boundary": "Observed immutable inputs, not an independent compiler/source-to-binary attestation",
+  "python": "3.12.14",
+  "response_groups": [
+    {
+      "bass_ohms": 16.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 4.176719126097817e-15,
+        "input_admittance": 2.255140518769849e-16,
+        "treble_gain": 1.1322097734007351e-15
+      },
+      "nominal_same_hz_points": [
+        {
+          "frequency_hz": 400.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.0004248230073400857,
+              "normalized_complex_error": 0.0003090752672977859,
+              "phase_error_degrees": -0.017616512909962842
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.0004650032209847175,
+              "normalized_complex_error": 6.708869482513943e-06,
+              "phase_error_degrees": -0.0051679676733483075
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.004734319403378346,
+              "normalized_complex_error": 9.149914379886888e-05,
+              "phase_error_degrees": -0.009381881247692259
+            }
+          }
+        },
+        {
+          "frequency_hz": 800.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.0146032854530433,
+              "normalized_complex_error": 0.0012889955850950497,
+              "phase_error_degrees": -0.08692280216570052
+            },
+            "input_admittance": {
+              "magnitude_error_db": 0.0010457322482293019,
+              "normalized_complex_error": 6.35053595980901e-05,
+              "phase_error_degrees": 0.08642717404806723
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.014342415104556926,
+              "normalized_complex_error": 0.001334275505116275,
+              "phase_error_degrees": -0.08875551821819339
+            }
+          }
+        },
+        {
+          "frequency_hz": 1600.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.0758832998089736,
+              "normalized_complex_error": 0.0014042015840106555,
+              "phase_error_degrees": -0.14721825736395683
+            },
+            "input_admittance": {
+              "magnitude_error_db": 0.006046478642417135,
+              "normalized_complex_error": 0.00010467437848076165,
+              "phase_error_degrees": -0.08362741873677379
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.005843478637303826,
+              "normalized_complex_error": 0.004871726967972378,
+              "phase_error_degrees": -0.27636058057388174
+            }
+          }
+        },
+        {
+          "frequency_hz": 5000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.7591754732782292,
+              "normalized_complex_error": 0.0013123580920239946,
+              "phase_error_degrees": -0.39688527604243723
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.00989932459585538,
+              "normalized_complex_error": 8.435614836017193e-05,
+              "phase_error_degrees": -0.03934276050552288
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.004770989931584197,
+              "normalized_complex_error": 0.011471535927697916,
+              "phase_error_degrees": -0.6567010416855354
+            }
+          }
+        },
+        {
+          "frequency_hz": 10000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -3.347542914934386,
+              "normalized_complex_error": 0.00124804960529603,
+              "phase_error_degrees": -0.8022761140426209
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.010824128421621008,
+              "normalized_complex_error": 7.892334926374773e-05,
+              "phase_error_degrees": -0.010098121587503563
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.005376977888863402,
+              "normalized_complex_error": 0.022604647609355388,
+              "phase_error_degrees": -1.2950938054591299
+            }
+          }
+        },
+        {
+          "frequency_hz": 20000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -27.14914183213243,
+              "normalized_complex_error": 0.0009316571096197035,
+              "phase_error_degrees": -1.8029945191631565
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.008331072554656913,
+              "normalized_complex_error": 6.289025403915622e-05,
+              "phase_error_degrees": 0.017331165267210825
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.0041610868755288894,
+              "normalized_complex_error": 0.05046104156762357,
+              "phase_error_degrees": -2.89207407794713
+            }
+          }
+        }
+      ],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 27.14914183213243,
+          "normalized_complex_error": 0.001428162946200651,
+          "phase_error_degrees": 1.8029945191631565
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.01568980350301357,
+          "normalized_complex_error": 0.00010564604504778507,
+          "phase_error_degrees": 0.08791034173864344
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.015164721075599309,
+          "normalized_complex_error": 0.05046104156762357,
+          "phase_error_degrees": 2.89207407794713
+        }
+      },
+      "sample_rate_hz": 44100,
+      "treble_ohms": 16.0
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.5662114964356296e-14,
+        "input_admittance": 1.5726123974924598e-14,
+        "treble_gain": 4.482351546689576e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 25.752260439131284,
+          "normalized_complex_error": 0.0008315004407044305,
+          "phase_error_degrees": 24.907643325309547
+        },
+        "input_admittance": {
+          "magnitude_error_db": 2.9070543490686562,
+          "normalized_complex_error": 0.5507674514101967,
+          "phase_error_degrees": 33.39477379421922
+        },
+        "treble_gain": {
+          "magnitude_error_db": 2.894141772377849,
+          "normalized_complex_error": 0.5527648783436351,
+          "phase_error_degrees": 33.576939356858986
+        }
+      },
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.7148561717248045e-14,
+        "input_admittance": 1.9149061740248688e-14,
+        "treble_gain": 1.9142349260155886e-14
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 27.15572173021367,
+          "normalized_complex_error": 0.0329988750589354,
+          "phase_error_degrees": 0.9796487520740237
+        },
+        "input_admittance": {
+          "magnitude_error_db": 10.136327560085652,
+          "normalized_complex_error": 0.10478125895646069,
+          "phase_error_degrees": 35.54019871060156
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.7393609495355737,
+          "normalized_complex_error": 0.1058781999263401,
+          "phase_error_degrees": 4.03442164144334
+        }
+      },
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.7148561717248045e-14,
+        "input_admittance": 1.6837249697600844e-14,
+        "treble_gain": 4.482351546689576e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 27.15572173021367,
+          "normalized_complex_error": 0.0329988750589354,
+          "phase_error_degrees": 0.9796487520740237
+        },
+        "input_admittance": {
+          "magnitude_error_db": 2.907064028118258,
+          "normalized_complex_error": 0.5507677899812461,
+          "phase_error_degrees": 33.3947884018956
+        },
+        "treble_gain": {
+          "magnitude_error_db": 2.894141772377849,
+          "normalized_complex_error": 0.5527648783436351,
+          "phase_error_degrees": 33.576939356858986
+        }
+      },
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.5662114964356296e-14,
+        "input_admittance": 1.9323026078757816e-14,
+        "treble_gain": 1.9142349260155886e-14
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 25.752260439131284,
+          "normalized_complex_error": 0.0008315004407044305,
+          "phase_error_degrees": 24.907643325309547
+        },
+        "input_admittance": {
+          "magnitude_error_db": 10.13577714417157,
+          "normalized_complex_error": 0.10559467340812996,
+          "phase_error_degrees": 35.52976840076292
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.7393609495355737,
+          "normalized_complex_error": 0.1058781999263401,
+          "phase_error_degrees": 4.03442164144334
+        }
+      },
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 2.346823639911221e-15,
+        "input_admittance": 1.766354016019247e-16,
+        "treble_gain": 6.866350197783356e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 27.154076940674308,
+          "normalized_complex_error": 0.0034368930791462537,
+          "phase_error_degrees": 0.9019450327139625
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.07225493090303452,
+          "normalized_complex_error": 0.009375968985486045,
+          "phase_error_degrees": 4.298259829321569
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.06027992348711156,
+          "normalized_complex_error": 0.10024798380849917,
+          "phase_error_degrees": 5.754848393600515
+        }
+      },
+      "sample_rate_hz": 44100,
+      "treble_ohms": 8.0
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 4.098569545443839e-15,
+        "input_admittance": 2.3714374201337736e-16,
+        "treble_gain": 1.1957467920563633e-15
+      },
+      "nominal_same_hz_points": [
+        {
+          "frequency_hz": 400.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.0003585429128800879,
+              "normalized_complex_error": 0.00026087692485100286,
+              "phase_error_degrees": -0.01486930360347219
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.0003924466316927546,
+              "normalized_complex_error": 5.662545075650875e-06,
+              "phase_error_degrees": -0.004362073094284065
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.0039961315328053484,
+              "normalized_complex_error": 7.722888765021467e-05,
+              "phase_error_degrees": -0.007918809489188106
+            }
+          }
+        },
+        {
+          "frequency_hz": 800.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.012323996824328684,
+              "normalized_complex_error": 0.0010880342985162537,
+              "phase_error_degrees": -0.07336832935659389
+            },
+            "input_admittance": {
+              "magnitude_error_db": 0.0008774399149586954,
+              "normalized_complex_error": 5.359872606426757e-05,
+              "phase_error_degrees": 0.07294822915948816
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.012106290989268832,
+              "normalized_complex_error": 0.0011260120133361126,
+              "phase_error_degrees": -0.07490460944466587
+            }
+          }
+        },
+        {
+          "frequency_hz": 1600.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.06402205018644852,
+              "normalized_complex_error": 0.001185562622718973,
+              "phase_error_degrees": -0.12426238751150971
+            },
+            "input_admittance": {
+              "magnitude_error_db": 0.005113636097742784,
+              "normalized_complex_error": 8.837842634778642e-05,
+              "phase_error_degrees": -0.0705860313870624
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.00493970045387448,
+              "normalized_complex_error": 0.004111939881948639,
+              "phase_error_degrees": -0.23326515171696227
+            }
+          }
+        },
+        {
+          "frequency_hz": 5000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.6377627988581345,
+              "normalized_complex_error": 0.001110130418297796,
+              "phase_error_degrees": -0.33460887279527984
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.008363131883128472,
+              "normalized_complex_error": 7.137120886144453e-05,
+              "phase_error_degrees": -0.03341100016991141
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.004029325916842455,
+              "normalized_complex_error": 0.009673952124620643,
+              "phase_error_degrees": -0.553769870085342
+            }
+          }
+        },
+        {
+          "frequency_hz": 10000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -2.7645738051193236,
+              "normalized_complex_error": 0.0010638142974030266,
+              "phase_error_degrees": -0.673512826004369
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.00921673249084161,
+              "normalized_complex_error": 6.727014786234452e-05,
+              "phase_error_degrees": -0.008986574793904929
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.004577619765602612,
+              "normalized_complex_error": 0.018981956549560187,
+              "phase_error_degrees": -1.0874697941948936
+            }
+          }
+        },
+        {
+          "frequency_hz": 20000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -18.201744348111927,
+              "normalized_complex_error": 0.0008546096194454166,
+              "phase_error_degrees": -1.4810984883402127
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.007638728354880998,
+              "normalized_complex_error": 5.690829242921957e-05,
+              "phase_error_degrees": 0.013402667106656023
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.0038150109680126034,
+              "normalized_complex_error": 0.041461432884178674,
+              "phase_error_degrees": -2.376123873815603
+            }
+          }
+        }
+      ],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 18.201744348111927,
+          "normalized_complex_error": 0.0012056389822184847,
+          "phase_error_degrees": 1.4810984883402127
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.013245115954307574,
+          "normalized_complex_error": 8.918908171551848e-05,
+          "phase_error_degrees": 0.07421485479537154
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.012801776681876117,
+          "normalized_complex_error": 0.041461432884178674,
+          "phase_error_degrees": 2.376123873815603
+        }
+      },
+      "sample_rate_hz": 48000,
+      "treble_ohms": 16.0
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.8341542961861996e-14,
+        "input_admittance": 1.855343453520361e-14,
+        "treble_gain": 4.441578142196753e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 16.93905385133806,
+          "normalized_complex_error": 0.0007260233190784778,
+          "phase_error_degrees": 19.918332017307133
+        },
+        "input_admittance": {
+          "magnitude_error_db": 2.5783006109170565,
+          "normalized_complex_error": 0.4357391333136826,
+          "phase_error_degrees": 25.80183080831531
+        },
+        "treble_gain": {
+          "magnitude_error_db": 2.5664554624514766,
+          "normalized_complex_error": 0.43722346328330136,
+          "phase_error_degrees": 25.951493137370175
+        }
+      },
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 2.0642965459730844e-14,
+        "input_admittance": 1.9661623560525892e-14,
+        "treble_gain": 1.645579351282273e-14
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 18.207780378559708,
+          "normalized_complex_error": 0.02772875024445393,
+          "phase_error_degrees": 0.8231816713130999
+        },
+        "input_admittance": {
+          "magnitude_error_db": 7.660477115768092,
+          "normalized_complex_error": 0.08961873019894952,
+          "phase_error_degrees": 21.034436679708012
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.6255383573851048,
+          "normalized_complex_error": 0.09055827041076686,
+          "phase_error_degrees": 3.4498935730389424
+        }
+      },
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 2.0642965459730844e-14,
+        "input_admittance": 1.983516657326142e-14,
+        "treble_gain": 4.441578142196753e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 18.207780378559708,
+          "normalized_complex_error": 0.02772875024445393,
+          "phase_error_degrees": 0.8231816713130999
+        },
+        "input_admittance": {
+          "magnitude_error_db": 2.5783101777604993,
+          "normalized_complex_error": 0.4357395553119104,
+          "phase_error_degrees": 25.80184532008971
+        },
+        "treble_gain": {
+          "magnitude_error_db": 2.5664554624514766,
+          "normalized_complex_error": 0.43722346328330136,
+          "phase_error_degrees": 25.951493137370175
+        }
+      },
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.8341542961861996e-14,
+        "input_admittance": 1.843103977834127e-14,
+        "treble_gain": 1.645579351282273e-14
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 16.93905385133806,
+          "normalized_complex_error": 0.0007260233190784778,
+          "phase_error_degrees": 19.918332017307133
+        },
+        "input_admittance": {
+          "magnitude_error_db": 7.659908067786734,
+          "normalized_complex_error": 0.09031527833381209,
+          "phase_error_degrees": 21.024379763064786
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.6255383573851048,
+          "normalized_complex_error": 0.09055827041076686,
+          "phase_error_degrees": 3.4498935730389424
+        }
+      },
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 2.7285847970597712e-15,
+        "input_admittance": 2.0209342365144349e-16,
+        "treble_gain": 6.731800026102354e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 18.206271469786756,
+          "normalized_complex_error": 0.0029015084604538032,
+          "phase_error_degrees": 0.7409816988753866
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.0613632441966957,
+          "normalized_complex_error": 0.00769970396814874,
+          "phase_error_degrees": 3.5273711584502965
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.05123418821968788,
+          "normalized_complex_error": 0.08231168613143063,
+          "phase_error_degrees": 4.723955807559757
+        }
+      },
+      "sample_rate_hz": 48000,
+      "treble_ohms": 8.0
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 5.176633079172254e-15,
+        "input_admittance": 3.4762166109799766e-16,
+        "treble_gain": 3.1680287445335408e-15
+      },
+      "nominal_same_hz_points": [
+        {
+          "frequency_hz": 400.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -8.958412874137116e-05,
+              "normalized_complex_error": 6.520503021456437e-05,
+              "phase_error_degrees": -0.003716491130382289
+            },
+            "input_admittance": {
+              "magnitude_error_db": -9.804741330350823e-05,
+              "normalized_complex_error": 1.4152078357981578e-06,
+              "phase_error_degrees": -0.0010902984852460406
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.0009989162823666885,
+              "normalized_complex_error": 1.9301454833794577e-05,
+              "phase_error_degrees": -0.0019792445136128634
+            }
+          }
+        },
+        {
+          "frequency_hz": 800.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.003078301198607721,
+              "normalized_complex_error": 0.00027199941932232793,
+              "phase_error_degrees": -0.018338684193116066
+            },
+            "input_admittance": {
+              "magnitude_error_db": 0.00021402044912339994,
+              "normalized_complex_error": 1.3393332977902687e-05,
+              "phase_error_degrees": 0.018231823462533447
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.003026404894651123,
+              "normalized_complex_error": 0.00028124729378436775,
+              "phase_error_degrees": -0.018711885230495537
+            }
+          }
+        },
+        {
+          "frequency_hz": 1600.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.015973963139795242,
+              "normalized_complex_error": 0.0002966681677468842,
+              "phase_error_degrees": -0.031060755984813837
+            },
+            "input_admittance": {
+              "magnitude_error_db": 0.0012883562837613795,
+              "normalized_complex_error": 2.2117448633822825e-05,
+              "phase_error_degrees": -0.017642232997218614
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.0012422502177941368,
+              "normalized_complex_error": 0.0010276847574245298,
+              "phase_error_degrees": -0.058304768570265786
+            }
+          }
+        },
+        {
+          "frequency_hz": 5000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.15642445651658649,
+              "normalized_complex_error": 0.0002798989652638774,
+              "phase_error_degrees": -0.08324773357958606
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.0020974844142427787,
+              "normalized_complex_error": 1.8009041879638253e-05,
+              "phase_error_degrees": -0.008557051987179607
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.0010092149033763117,
+              "normalized_complex_error": 0.0024092660401350253,
+              "phase_error_degrees": -0.13788821827789524
+            }
+          }
+        },
+        {
+          "frequency_hz": 10000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.6365446921851958,
+              "normalized_complex_error": 0.0002757867125512423,
+              "phase_error_degrees": -0.16478049444326462
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.0023788128114471028,
+              "normalized_complex_error": 1.743768029627425e-05,
+              "phase_error_degrees": -0.002715017624238658
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.0011805006493567252,
+              "normalized_complex_error": 0.004649429937123368,
+              "phase_error_degrees": -0.2662972247083517
+            }
+          }
+        },
+        {
+          "frequency_hz": 20000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -2.7633040129592965,
+              "normalized_complex_error": 0.0002655710498075187,
+              "phase_error_degrees": -0.3355993952705997
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.0023660100181743375,
+              "normalized_complex_error": 1.7191477154857386e-05,
+              "phase_error_degrees": 0.002088569075406057
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.0011810046315345745,
+              "normalized_complex_error": 0.009404803399491285,
+              "phase_error_degrees": -0.5388378492474707
+            }
+          }
+        }
+      ],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 2.7633040129592965,
+          "normalized_complex_error": 0.0003015357670366092,
+          "phase_error_degrees": 0.3355993952705997
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.003312608136858776,
+          "normalized_complex_error": 2.2310456124900648e-05,
+          "phase_error_degrees": 0.018563361602022134
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.0032016701508679065,
+          "normalized_complex_error": 0.009404803399491285,
+          "phase_error_degrees": 0.5388378492474707
+        }
+      },
+      "sample_rate_hz": 96000,
+      "treble_ohms": 16.0
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 5.3352310081400754e-14,
+        "input_admittance": 5.326525649458515e-14,
+        "treble_gain": 4.477636837398153e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 2.408727382045811,
+          "normalized_complex_error": 0.0002053085549379729,
+          "phase_error_degrees": 3.9874735419862177
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.6517647661699097,
+          "normalized_complex_error": 0.07919024076147428,
+          "phase_error_degrees": 4.529858714371637
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.6480825424895297,
+          "normalized_complex_error": 0.07939805525734808,
+          "phase_error_degrees": 4.563794034284452
+        }
+      },
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 4.3506065393769725e-14,
+        "input_admittance": 1.1440782655094587e-13,
+        "treble_gain": 1.1507806345251874e-13
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 2.765180607008617,
+          "normalized_complex_error": 0.006806984051326143,
+          "phase_error_degrees": 0.20207265789007942
+        },
+        "input_admittance": {
+          "magnitude_error_db": 1.2962128147858907,
+          "normalized_complex_error": 0.023651134995466633,
+          "phase_error_degrees": 2.2380481747234575
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.1576541011914079,
+          "normalized_complex_error": 0.02390051911943964,
+          "phase_error_degrees": 0.9099928893059963
+        }
+      },
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 4.3506065393769725e-14,
+        "input_admittance": 4.35216860413696e-14,
+        "treble_gain": 4.477636837398153e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 2.765180607008617,
+          "normalized_complex_error": 0.006806984051326143,
+          "phase_error_degrees": 0.20207265789007942
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.6517694933012628,
+          "normalized_complex_error": 0.07919051481877462,
+          "phase_error_degrees": 4.529866163343458
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.6480825424895297,
+          "normalized_complex_error": 0.07939805525734808,
+          "phase_error_degrees": 4.563794034284452
+        }
+      },
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 5.3352310081400754e-14,
+        "input_admittance": 1.1532603746932503e-13,
+        "treble_gain": 1.1507806345251874e-13
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 2.408727382045811,
+          "normalized_complex_error": 0.0002053085549379729,
+          "phase_error_degrees": 3.9874735419862177
+        },
+        "input_admittance": {
+          "magnitude_error_db": 1.2959050629133828,
+          "normalized_complex_error": 0.02383586258773703,
+          "phase_error_degrees": 2.2344792088392382
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.1576541011914079,
+          "normalized_complex_error": 0.02390051911943964,
+          "phase_error_degrees": 0.9099928893059963
+        }
+      },
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 5.203855855232738e-15,
+        "input_admittance": 5.695073657969341e-16,
+        "treble_gain": 7.386582113839282e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 2.7647113207283303,
+          "normalized_complex_error": 0.0007258046381244725,
+          "phase_error_degrees": 0.16797130825619744
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.01588465848315224,
+          "normalized_complex_error": 0.0017395488110811081,
+          "phase_error_degrees": 0.7952915161182355
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.01332334158580965,
+          "normalized_complex_error": 0.01858488860506371,
+          "phase_error_degrees": 1.066477263265812
+        }
+      },
+      "sample_rate_hz": 96000,
+      "treble_ohms": 8.0
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.1430445635548515e-14,
+        "input_admittance": 8.738599561425956e-16,
+        "treble_gain": 2.91261673054264e-15
+      },
+      "nominal_same_hz_points": [
+        {
+          "frequency_hz": 400.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -2.239280888396309e-05,
+              "normalized_complex_error": 1.6300370172333917e-05,
+              "phase_error_degrees": -0.0009290706219826564
+            },
+            "input_admittance": {
+              "magnitude_error_db": -2.450784007064802e-05,
+              "normalized_complex_error": 3.5377518914761074e-07,
+              "phase_error_degrees": -0.00027256088376660534
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.0002497217842052856,
+              "normalized_complex_error": 4.825003387213479e-06,
+              "phase_error_degrees": -0.0004947825213280418
+            }
+          }
+        },
+        {
+          "frequency_hz": 800.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.0007694067790319113,
+              "normalized_complex_error": 6.799927440079634e-05,
+              "phase_error_degrees": -0.0045844584427628
+            },
+            "input_admittance": {
+              "magnitude_error_db": 5.3171696087679525e-05,
+              "normalized_complex_error": 3.3479360643030503e-06,
+              "phase_error_degrees": 0.004557624181199074
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.0007565906485010246,
+              "normalized_complex_error": 7.029585089364662e-05,
+              "phase_error_degrees": -0.004677080167960515
+            }
+          }
+        },
+        {
+          "frequency_hz": 1600.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.003991524329394958,
+              "normalized_complex_error": 7.418435359619918e-05,
+              "phase_error_degrees": -0.007764886766840138
+            },
+            "input_admittance": {
+              "magnitude_error_db": 0.0003227110382923195,
+              "normalized_complex_error": 5.530782139486112e-06,
+              "phase_error_degrees": -0.004410277864998403
+            },
+            "treble_gain": {
+              "magnitude_error_db": 0.0003110206484297181,
+              "normalized_complex_error": 0.00025690221897407383,
+              "phase_error_degrees": -0.014575465770424349
+            }
+          }
+        },
+        {
+          "frequency_hz": 5000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.03892295052076781,
+              "normalized_complex_error": 7.012038660947183e-05,
+              "phase_error_degrees": -0.020786915816538982
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.0005247588813273872,
+              "normalized_complex_error": 4.512506144659013e-06,
+              "phase_error_degrees": -0.0021520001761703785
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.00025240445402245485,
+              "normalized_complex_error": 0.0006017467319673807,
+              "phase_error_degrees": -0.03443782497302119
+            }
+          }
+        },
+        {
+          "frequency_hz": 10000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.15611828364337504,
+              "normalized_complex_error": 6.952277115971081e-05,
+              "phase_error_degrees": -0.04097909240720153
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.0005989770627584014,
+              "normalized_complex_error": 4.39580545041465e-06,
+              "phase_error_degrees": -0.0007078866832370381
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.0002971815287714073,
+              "normalized_complex_error": 0.0011565977542073063,
+              "phase_error_degrees": -0.06624030627226868
+            }
+          }
+        },
+        {
+          "frequency_hz": 20000.0,
+          "same_hz_errors": {
+            "bass_gain": {
+              "magnitude_error_db": -0.6362164078278081,
+              "normalized_complex_error": 6.883531126935818e-05,
+              "phase_error_degrees": -0.08207307609535404
+            },
+            "input_admittance": {
+              "magnitude_error_db": -0.0006126035203949373,
+              "normalized_complex_error": 4.439016831964947e-06,
+              "phase_error_degrees": 0.0004453140684889624
+            },
+            "treble_gain": {
+              "magnitude_error_db": -0.0003057269985509738,
+              "normalized_complex_error": 0.0023006861750588864,
+              "phase_error_degrees": -0.13180652942701623
+            }
+          }
+        }
+      ],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 0.6362164078278081,
+          "normalized_complex_error": 7.539180066085176e-05,
+          "phase_error_degrees": 0.08207307609535404
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.000828233891348255,
+          "normalized_complex_error": 5.578431655804398e-06,
+          "phase_error_degrees": 0.004641437375636102
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.0008004938874875247,
+          "normalized_complex_error": 0.0023006861750588864,
+          "phase_error_degrees": 0.13180652942701623
+        }
+      },
+      "sample_rate_hz": 192000,
+      "treble_ohms": 16.0
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.5523673343456507e-13,
+        "input_admittance": 1.5516791721626938e-13,
+        "treble_gain": 4.518280359883027e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 0.5470525405765299,
+          "normalized_complex_error": 5.1891638888651424e-05,
+          "phase_error_degrees": 0.9451007624068897
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.15986614525254,
+          "normalized_complex_error": 0.018306592365179546,
+          "phase_error_degrees": 1.0457795676292514
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.1589116018029877,
+          "normalized_complex_error": 0.018351469876012702,
+          "phase_error_degrees": 1.0540803958700553
+        }
+      },
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.8373934630539127e-13,
+        "input_admittance": 2.057981727789972e-13,
+        "treble_gain": 2.0923475127225402e-13
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 0.6367029004757112,
+          "normalized_complex_error": 0.0016940663871536875,
+          "phase_error_degrees": 0.05029013112900334
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.3008697447051018,
+          "normalized_complex_error": 0.005994189523206268,
+          "phase_error_degrees": 0.48790176129816704
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.03947867401423508,
+          "normalized_complex_error": 0.0060574847676240625,
+          "phase_error_degrees": 0.2306243877681008
+        }
+      },
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.8373934630539127e-13,
+        "input_admittance": 1.8337007236332817e-13,
+        "treble_gain": 4.518280359883027e-16
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 0.6367029004757112,
+          "normalized_complex_error": 0.0016940663871536875,
+          "phase_error_degrees": 0.05029013112900334
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.15986753146935673,
+          "normalized_complex_error": 0.0183066724339068,
+          "phase_error_degrees": 1.045781757428232
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.1589116018029877,
+          "normalized_complex_error": 0.018351469876012702,
+          "phase_error_degrees": 1.0540803958700553
+        }
+      },
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.5523673343456507e-13,
+        "input_admittance": 2.0730500819537668e-13,
+        "treble_gain": 2.0923475127225402e-13
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 0.5470525405765299,
+          "normalized_complex_error": 5.1891638888651424e-05,
+          "phase_error_degrees": 0.9451007624068897
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.30078122754955605,
+          "normalized_complex_error": 0.006041064592864439,
+          "phase_error_degrees": 0.4869656899842162
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.03947867401423508,
+          "normalized_complex_error": 0.0060574847676240625,
+          "phase_error_degrees": 0.2306243877681008
+        }
+      },
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequencies": 130,
+      "maximum_warped_normalized_errors": {
+        "bass_gain": 1.1082635732947481e-14,
+        "input_admittance": 7.744253254395708e-16,
+        "treble_gain": 3.3325189318763902e-15
+      },
+      "nominal_same_hz_points": [],
+      "same_hz_10_to_20000_maximum_absolute_errors": {
+        "bass_gain": {
+          "magnitude_error_db": 0.6365812269967852,
+          "normalized_complex_error": 0.00018147784634288874,
+          "phase_error_degrees": 0.041083602687233295
+        },
+        "input_admittance": {
+          "magnitude_error_db": 0.004042790509257276,
+          "normalized_complex_error": 0.00042497728378152345,
+          "phase_error_degrees": 0.19422093658267442
+        },
+        "treble_gain": {
+          "magnitude_error_db": 0.0033986714598681056,
+          "normalized_complex_error": 0.004539718674629338,
+          "phase_error_degrees": 0.26054499012533316
+        }
+      },
+      "sample_rate_hz": 192000,
+      "treble_ohms": 8.0
+    }
+  ],
+  "response_port_comparisons": 9360,
+  "same_hz_status": "characterized only; no audible acceptance threshold or physical fidelity claim",
+  "schema_version": 1,
+  "sine_groups": [
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 4.874688285114892e-14,
+      "independent_all_fit_tail_bound": 3.5489279643221366e-11,
+      "independent_largest_pole_modulus": 0.9449361343236866,
+      "maximum_warped_normalized_error": 4.788884954761309e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 16.0,
+      "warmup_frames": 446
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 2.001390642972063e-14,
+      "independent_all_fit_tail_bound": 3.427096495810268e-11,
+      "independent_largest_pole_modulus": 0.9449361343236866,
+      "maximum_warped_normalized_error": 1.9895308118908003e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 16.0,
+      "warmup_frames": 449
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 7.121725907352022e-15,
+      "independent_all_fit_tail_bound": 2.1968155529169288e-11,
+      "independent_largest_pole_modulus": 0.9449361343236866,
+      "maximum_warped_normalized_error": 7.261478704947493e-15,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 16.0,
+      "warmup_frames": 446
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 18963.0,
+      "half_window_max_difference": 1.1395084852176626e-15,
+      "independent_all_fit_tail_bound": 2.1937360333132414e-11,
+      "independent_largest_pole_modulus": 0.9449361343236866,
+      "maximum_warped_normalized_error": 1.1396436868822318e-15,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 16.0,
+      "warmup_frames": 381
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 6.739728240245285e-14,
+      "independent_all_fit_tail_bound": 3.1664339662861e-11,
+      "independent_largest_pole_modulus": 0.9956382812408702,
+      "maximum_warped_normalized_error": 6.738316517488505e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0,
+      "warmup_frames": 5260
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 2.087519757715626e-14,
+      "independent_all_fit_tail_bound": 1.957372455498541e-11,
+      "independent_largest_pole_modulus": 0.9956382812408702,
+      "maximum_warped_normalized_error": 2.0878042681105902e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0,
+      "warmup_frames": 5212
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 4.161489988385514e-15,
+      "independent_all_fit_tail_bound": 7.777203595781504e-12,
+      "independent_largest_pole_modulus": 0.9956382812408702,
+      "maximum_warped_normalized_error": 4.161907141158552e-15,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0,
+      "warmup_frames": 5264
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 18963.0,
+      "half_window_max_difference": 4.1153515682702524e-18,
+      "independent_all_fit_tail_bound": 6.586910023907875e-14,
+      "independent_largest_pole_modulus": 0.9956382812408702,
+      "maximum_warped_normalized_error": 2.2887833992611187e-16,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0,
+      "warmup_frames": 5517
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 6.637800456112773e-14,
+      "independent_all_fit_tail_bound": 4.0041088471736786e-11,
+      "independent_largest_pole_modulus": 0.9991163677154249,
+      "maximum_warped_normalized_error": 3.948956334317957e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 28750
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 9.573205260573057e-14,
+      "independent_all_fit_tail_bound": 3.674979413138473e-11,
+      "independent_largest_pole_modulus": 0.9991163677154249,
+      "maximum_warped_normalized_error": 6.103153300263639e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 29524
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 1.0386740997312978e-14,
+      "independent_all_fit_tail_bound": 1.7709625889125842e-11,
+      "independent_largest_pole_modulus": 0.9991163677154249,
+      "maximum_warped_normalized_error": 1.024750024116544e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 28689
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 18963.0,
+      "half_window_max_difference": 1.4892969050154466e-15,
+      "independent_all_fit_tail_bound": 2.475124271942096e-11,
+      "independent_largest_pole_modulus": 0.9991163677154249,
+      "maximum_warped_normalized_error": 1.4826991842819375e-15,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 23979
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 6.637800456112773e-14,
+      "independent_all_fit_tail_bound": 4.0041088471736786e-11,
+      "independent_largest_pole_modulus": 0.9991163677154249,
+      "maximum_warped_normalized_error": 3.948956334317957e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0,
+      "warmup_frames": 28750
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 1.1013823366070652e-13,
+      "independent_all_fit_tail_bound": 3.998884499171523e-11,
+      "independent_largest_pole_modulus": 0.9991163677154249,
+      "maximum_warped_normalized_error": 7.042158291446778e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0,
+      "warmup_frames": 29429
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 2.4256927053113856e-14,
+      "independent_all_fit_tail_bound": 3.993497571297213e-11,
+      "independent_largest_pole_modulus": 0.9991163677154249,
+      "maximum_warped_normalized_error": 2.3905859253368924e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0,
+      "warmup_frames": 27769
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 18963.0,
+      "half_window_max_difference": 8.504801835092585e-17,
+      "independent_all_fit_tail_bound": 1.3502015280597513e-12,
+      "independent_largest_pole_modulus": 0.9991163677154249,
+      "maximum_warped_normalized_error": 1.5700924586837752e-16,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1.0,
+      "warmup_frames": 27269
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 3.6067978624509595e-14,
+      "independent_all_fit_tail_bound": 3.9950894859241404e-11,
+      "independent_largest_pole_modulus": 0.9985887642017636,
+      "maximum_warped_normalized_error": 3.584171230591513e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 17406
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 9.026126099267129e-14,
+      "independent_all_fit_tail_bound": 3.9937864607119396e-11,
+      "independent_largest_pole_modulus": 0.9985887642017636,
+      "maximum_warped_normalized_error": 5.3180770270083975e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 18482
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 2.4368956766288155e-14,
+      "independent_all_fit_tail_bound": 3.988316078154506e-11,
+      "independent_largest_pole_modulus": 0.9985887642017636,
+      "maximum_warped_normalized_error": 1.4707465604011777e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 17960
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 18963.0,
+      "half_window_max_difference": 2.3536688231562227e-15,
+      "independent_all_fit_tail_bound": 3.990757587167954e-11,
+      "independent_largest_pole_modulus": 0.9985887642017636,
+      "maximum_warped_normalized_error": 2.355844581145096e-15,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 15011
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 4.302167940556016e-14,
+      "independent_all_fit_tail_bound": 3.694649785103558e-11,
+      "independent_largest_pole_modulus": 0.9721003144698803,
+      "maximum_warped_normalized_error": 3.112111969394126e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 8.0,
+      "warmup_frames": 896
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 6.207695662763849e-14,
+      "independent_all_fit_tail_bound": 3.7193663560036124e-11,
+      "independent_largest_pole_modulus": 0.9721003144698803,
+      "maximum_warped_normalized_error": 6.216941636433457e-14,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 8.0,
+      "warmup_frames": 907
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 8.656383475014294e-15,
+      "independent_all_fit_tail_bound": 2.4002264525778634e-11,
+      "independent_largest_pole_modulus": 0.9721003144698803,
+      "maximum_warped_normalized_error": 8.682109204658775e-15,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 8.0,
+      "warmup_frames": 886
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 18963.0,
+      "half_window_max_difference": 2.4535798664490557e-16,
+      "independent_all_fit_tail_bound": 8.694485758807982e-12,
+      "independent_largest_pole_modulus": 0.9721003144698803,
+      "maximum_warped_normalized_error": 2.4523453940021033e-16,
+      "sample_rate_hz": 44100,
+      "treble_ohms": 8.0,
+      "warmup_frames": 788
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 5.1870708059825384e-14,
+      "independent_all_fit_tail_bound": 3.4350091599124324e-11,
+      "independent_largest_pole_modulus": 0.9492876007104254,
+      "maximum_warped_normalized_error": 5.1184171305107836e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 486
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 2.1796876063349043e-14,
+      "independent_all_fit_tail_bound": 3.540267189918784e-11,
+      "independent_largest_pole_modulus": 0.9492876007104254,
+      "maximum_warped_normalized_error": 2.1957169048091763e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 488
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 8.252290897353858e-15,
+      "independent_all_fit_tail_bound": 2.2402894494166126e-11,
+      "independent_largest_pole_modulus": 0.9492876007104254,
+      "maximum_warped_normalized_error": 8.362274055888384e-15,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 485
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 20640.0,
+      "half_window_max_difference": 1.0582941997451552e-15,
+      "independent_all_fit_tail_bound": 2.1944055925270697e-11,
+      "independent_largest_pole_modulus": 0.9492876007104254,
+      "maximum_warped_normalized_error": 1.0583148580019488e-15,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 413
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 7.34431599257575e-14,
+      "independent_all_fit_tail_bound": 3.168274046334755e-11,
+      "independent_largest_pole_modulus": 0.9959919606862263,
+      "maximum_warped_normalized_error": 7.340845453084775e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 5725
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 2.2728992136274945e-14,
+      "independent_all_fit_tail_bound": 1.958248505690424e-11,
+      "independent_largest_pole_modulus": 0.9959919606862263,
+      "maximum_warped_normalized_error": 2.2713936181028157e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 5673
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 4.522946168940577e-15,
+      "independent_all_fit_tail_bound": 7.764500810231674e-12,
+      "independent_largest_pole_modulus": 0.9959919606862263,
+      "maximum_warped_normalized_error": 4.526655480592102e-15,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 5730
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 20640.0,
+      "half_window_max_difference": 5.551115123125783e-17,
+      "independent_all_fit_tail_bound": 6.501528600467185e-14,
+      "independent_largest_pole_modulus": 0.9959919606862263,
+      "maximum_warped_normalized_error": 1.1102230246251565e-16,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 5987
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 9.025421941507127e-14,
+      "independent_all_fit_tail_bound": 4.0058659642956145e-11,
+      "independent_largest_pole_modulus": 0.9991878839292032,
+      "maximum_warped_normalized_error": 5.4742436587651934e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 31282
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 8.000547559902755e-14,
+      "independent_all_fit_tail_bound": 3.682273139435122e-11,
+      "independent_largest_pole_modulus": 0.9991878839292032,
+      "maximum_warped_normalized_error": 5.4454383053175634e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 32124
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 1.2104224984248854e-14,
+      "independent_all_fit_tail_bound": 1.7682817690239855e-11,
+      "independent_largest_pole_modulus": 0.9991878839292032,
+      "maximum_warped_normalized_error": 1.2178239671048797e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 31219
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 20640.0,
+      "half_window_max_difference": 1.5327406047805364e-15,
+      "independent_all_fit_tail_bound": 2.47500215177567e-11,
+      "independent_largest_pole_modulus": 0.9991878839292032,
+      "maximum_warped_normalized_error": 1.5318471573673985e-15,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 25987
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 9.025421941507127e-14,
+      "independent_all_fit_tail_bound": 4.0058659642956145e-11,
+      "independent_largest_pole_modulus": 0.9991878839292032,
+      "maximum_warped_normalized_error": 5.4742436587651934e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 31282
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 1.1211608928046395e-13,
+      "independent_all_fit_tail_bound": 4.00024008528585e-11,
+      "independent_largest_pole_modulus": 0.9991878839292032,
+      "maximum_warped_normalized_error": 7.173884389305887e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 32023
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 2.7958877581331952e-14,
+      "independent_all_fit_tail_bound": 3.994015211369239e-11,
+      "independent_largest_pole_modulus": 0.9991878839292032,
+      "maximum_warped_normalized_error": 2.7611116520346694e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 30216
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 20640.0,
+      "half_window_max_difference": 2.0869622512067622e-17,
+      "independent_all_fit_tail_bound": 1.330915951956015e-12,
+      "independent_largest_pole_modulus": 0.9991878839292032,
+      "maximum_warped_normalized_error": 1.1102230246251565e-16,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 29585
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 2.4020913910162344e-14,
+      "independent_all_fit_tail_bound": 4.003864882536115e-11,
+      "independent_largest_pole_modulus": 0.9987023169758125,
+      "maximum_warped_normalized_error": 2.3965083348858784e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 18929
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 8.216162344122097e-14,
+      "independent_all_fit_tail_bound": 3.996057776897293e-11,
+      "independent_largest_pole_modulus": 0.9987023169758125,
+      "maximum_warped_normalized_error": 4.511033289639002e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 20100
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 3.263377073554853e-14,
+      "independent_all_fit_tail_bound": 3.9862764330084405e-11,
+      "independent_largest_pole_modulus": 0.9987023169758125,
+      "maximum_warped_normalized_error": 1.9444618529721753e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 19534
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 20640.0,
+      "half_window_max_difference": 2.45246978673175e-15,
+      "independent_all_fit_tail_bound": 3.9914658611661006e-11,
+      "independent_largest_pole_modulus": 0.9987023169758125,
+      "maximum_warped_normalized_error": 2.4525570208963163e-15,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 16260
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 4.662725227577869e-14,
+      "independent_all_fit_tail_bound": 3.788254048433174e-11,
+      "independent_largest_pole_modulus": 0.9743310688733141,
+      "maximum_warped_normalized_error": 3.3649128818090764e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 974
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 6.78141818102898e-14,
+      "independent_all_fit_tail_bound": 3.716319607135395e-11,
+      "independent_largest_pole_modulus": 0.9743310688733141,
+      "maximum_warped_normalized_error": 6.856326087508646e-14,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 987
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 9.731746132709853e-15,
+      "independent_all_fit_tail_bound": 2.407085075848809e-11,
+      "independent_largest_pole_modulus": 0.9743310688733141,
+      "maximum_warped_normalized_error": 9.771088643613723e-15,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 964
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 20640.0,
+      "half_window_max_difference": 1.0202143486899676e-16,
+      "independent_all_fit_tail_bound": 8.741335620447632e-12,
+      "independent_largest_pole_modulus": 0.9743310688733141,
+      "maximum_warped_normalized_error": 1.0199160394526445e-16,
+      "sample_rate_hz": 48000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 854
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 1.0936964740272228e-13,
+      "independent_all_fit_tail_bound": 3.757608988678575e-11,
+      "independent_largest_pole_modulus": 0.974299346759373,
+      "maximum_warped_normalized_error": 1.0785300986737863e-13,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 968
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 4.321595710668702e-14,
+      "independent_all_fit_tail_bound": 3.6825265364122215e-11,
+      "independent_largest_pole_modulus": 0.974299346759373,
+      "maximum_warped_normalized_error": 4.2606110440291576e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 974
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 2.0104814948496763e-14,
+      "independent_all_fit_tail_bound": 2.39697510838315e-11,
+      "independent_largest_pole_modulus": 0.974299346759373,
+      "maximum_warped_normalized_error": 2.0068068138486227e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 967
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 41280.0,
+      "half_window_max_difference": 4.7888840913282364e-17,
+      "independent_all_fit_tail_bound": 2.306270949539445e-11,
+      "independent_largest_pole_modulus": 0.974299346759373,
+      "maximum_warped_normalized_error": 4.772232446994779e-17,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 797
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 1.4780082403561467e-13,
+      "independent_all_fit_tail_bound": 3.1845147176702815e-11,
+      "independent_largest_pole_modulus": 0.9979939702816193,
+      "maximum_warped_normalized_error": 1.4783044634942087e-13,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 11448
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 4.5912508537235304e-14,
+      "independent_all_fit_tail_bound": 1.974798206362104e-11,
+      "independent_largest_pole_modulus": 0.9979939702816193,
+      "maximum_warped_normalized_error": 4.591969422225587e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 11343
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 9.132483094488826e-15,
+      "independent_all_fit_tail_bound": 7.863413163054521e-12,
+      "independent_largest_pole_modulus": 0.9979939702816193,
+      "maximum_warped_normalized_error": 9.127028273629492e-15,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 11456
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 41280.0,
+      "half_window_max_difference": 3.827510864164878e-18,
+      "independent_all_fit_tail_bound": 6.132548464386917e-14,
+      "independent_largest_pole_modulus": 0.9979939702816193,
+      "maximum_warped_normalized_error": 1.1443916996305594e-16,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 11658
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 1.9029932825524866e-13,
+      "independent_all_fit_tail_bound": 4.002834941604784e-11,
+      "independent_largest_pole_modulus": 0.9995933513828387,
+      "maximum_warped_normalized_error": 9.324299319141379e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 62483
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 2.8939135823433497e-13,
+      "independent_all_fit_tail_bound": 3.713911513601478e-11,
+      "independent_largest_pole_modulus": 0.9995933513828387,
+      "maximum_warped_normalized_error": 1.545099832963401e-13,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 64158
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 1.6003496117555986e-14,
+      "independent_all_fit_tail_bound": 1.767499932586614e-11,
+      "independent_largest_pole_modulus": 0.9995933513828387,
+      "maximum_warped_normalized_error": 1.2906856118783389e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 62373
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 41280.0,
+      "half_window_max_difference": 1.0102349349487122e-15,
+      "independent_all_fit_tail_bound": 2.4773198665180175e-11,
+      "independent_largest_pole_modulus": 0.9995933513828387,
+      "maximum_warped_normalized_error": 9.557848751281067e-16,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 50203
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 1.9029932825524866e-13,
+      "independent_all_fit_tail_bound": 4.002834941604784e-11,
+      "independent_largest_pole_modulus": 0.9995933513828387,
+      "maximum_warped_normalized_error": 9.324299319141379e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 62483
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 2.805900058240773e-13,
+      "independent_all_fit_tail_bound": 4.008589215603991e-11,
+      "independent_largest_pole_modulus": 0.9995933513828387,
+      "maximum_warped_normalized_error": 1.529228647253502e-13,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 63970
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 3.828138488096695e-14,
+      "independent_all_fit_tail_bound": 4.0007788998288094e-11,
+      "independent_largest_pole_modulus": 0.9995933513828387,
+      "maximum_warped_normalized_error": 3.151452745884476e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 60364
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 41280.0,
+      "half_window_max_difference": 5.716693862008203e-17,
+      "independent_all_fit_tail_bound": 1.2501922847537525e-12,
+      "independent_largest_pole_modulus": 0.9995933513828387,
+      "maximum_warped_normalized_error": 2.237726045655905e-16,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 57545
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 3.918707113520896e-14,
+      "independent_all_fit_tail_bound": 4.01012866161233e-11,
+      "independent_largest_pole_modulus": 0.9993488349273023,
+      "maximum_warped_normalized_error": 3.964221664410513e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 37733
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 1.5175927490830348e-13,
+      "independent_all_fit_tail_bound": 4.006082038866743e-11,
+      "independent_largest_pole_modulus": 0.9993488349273023,
+      "maximum_warped_normalized_error": 8.63018120391337e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 40062
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 5.456839519122085e-14,
+      "independent_all_fit_tail_bound": 4.0024962336255513e-11,
+      "independent_largest_pole_modulus": 0.9993488349273023,
+      "maximum_warped_normalized_error": 3.161248660176681e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 38947
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 41280.0,
+      "half_window_max_difference": 2.278179546625749e-15,
+      "independent_all_fit_tail_bound": 3.9954489149405325e-11,
+      "independent_largest_pole_modulus": 0.9993488349273023,
+      "maximum_warped_normalized_error": 2.175348830204145e-15,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 31348
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 9.494711429762357e-14,
+      "independent_all_fit_tail_bound": 3.884407054175819e-11,
+      "independent_largest_pole_modulus": 0.9870682069940903,
+      "maximum_warped_normalized_error": 6.90717662157376e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 1944
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 1.468596789371867e-13,
+      "independent_all_fit_tail_bound": 3.8661844981043364e-11,
+      "independent_largest_pole_modulus": 0.9870682069940903,
+      "maximum_warped_normalized_error": 1.482686950375899e-13,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 1969
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 2.3290405399252413e-14,
+      "independent_all_fit_tail_bound": 2.477402206701873e-11,
+      "independent_largest_pole_modulus": 0.9870682069940903,
+      "maximum_warped_normalized_error": 2.337402743367299e-14,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 1924
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 41280.0,
+      "half_window_max_difference": 5.01112908949528e-16,
+      "independent_all_fit_tail_bound": 8.95859807549145e-12,
+      "independent_largest_pole_modulus": 0.9870682069940903,
+      "maximum_warped_normalized_error": 5.011026798849453e-16,
+      "sample_rate_hz": 96000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 1651
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 2.2243910529491413e-13,
+      "independent_all_fit_tail_bound": 3.8917734604148554e-11,
+      "independent_largest_pole_modulus": 0.9870641855911603,
+      "maximum_warped_normalized_error": 2.277693360355696e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 1933
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 8.753628489510093e-14,
+      "independent_all_fit_tail_bound": 3.8196158188273746e-11,
+      "independent_largest_pole_modulus": 0.9870641855911603,
+      "maximum_warped_normalized_error": 8.919324508851814e-14,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 1945
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 4.3030792899366305e-14,
+      "independent_all_fit_tail_bound": 2.4565407037899565e-11,
+      "independent_largest_pole_modulus": 0.9870641855911603,
+      "maximum_warped_normalized_error": 4.309365967750719e-14,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 1932
+    },
+    {
+      "bass_ohms": 16.0,
+      "frequency_hz": 82560.0,
+      "half_window_max_difference": 1.2018449552828872e-15,
+      "independent_all_fit_tail_bound": 2.4143598220294236e-11,
+      "independent_largest_pole_modulus": 0.9870641855911603,
+      "maximum_warped_normalized_error": 1.2018448728334292e-15,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 16.0,
+      "warmup_frames": 1537
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 3.0619577751425807e-13,
+      "independent_all_fit_tail_bound": 3.1839294848540474e-11,
+      "independent_largest_pole_modulus": 0.9989964818690111,
+      "maximum_warped_normalized_error": 3.0153069116622944e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 22894
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 8.953541626052194e-14,
+      "independent_all_fit_tail_bound": 1.982145852762435e-11,
+      "independent_largest_pole_modulus": 0.9989964818690111,
+      "maximum_warped_normalized_error": 9.111850938318187e-14,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 22683
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 1.800897050360055e-14,
+      "independent_all_fit_tail_bound": 7.898861974603313e-12,
+      "independent_largest_pole_modulus": 0.9989964818690111,
+      "maximum_warped_normalized_error": 1.814066317194483e-14,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 22909
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 82560.0,
+      "half_window_max_difference": 3.804531731982221e-18,
+      "independent_all_fit_tail_bound": 6.051459970244677e-14,
+      "independent_largest_pole_modulus": 0.9989964818690111,
+      "maximum_warped_normalized_error": 1.1188630228279524e-16,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 22639
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 2.940393363662277e-13,
+      "independent_all_fit_tail_bound": 4.014564579287608e-11,
+      "independent_largest_pole_modulus": 0.9997965913912081,
+      "maximum_warped_normalized_error": 1.7345133817754584e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 124923
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 4.21933023550564e-13,
+      "independent_all_fit_tail_bound": 3.7182321189244154e-11,
+      "independent_largest_pole_modulus": 0.9997965913912081,
+      "maximum_warped_normalized_error": 2.3323736770968853e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 128270
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 4.3569975138560814e-14,
+      "independent_all_fit_tail_bound": 1.7703249599127107e-11,
+      "independent_largest_pole_modulus": 0.9997965913912081,
+      "maximum_warped_normalized_error": 3.001670314397794e-14,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 124711
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 82560.0,
+      "half_window_max_difference": 1.7353481012644975e-15,
+      "independent_all_fit_tail_bound": 2.4789773093509405e-11,
+      "independent_largest_pole_modulus": 0.9997965913912081,
+      "maximum_warped_normalized_error": 1.5176272950469933e-15,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 96964
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 2.940393363662277e-13,
+      "independent_all_fit_tail_bound": 4.014564579287608e-11,
+      "independent_largest_pole_modulus": 0.9997965913912081,
+      "maximum_warped_normalized_error": 1.7345133817754584e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 124923
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 5.977795592639503e-13,
+      "independent_all_fit_tail_bound": 4.0055704508890596e-11,
+      "independent_largest_pole_modulus": 0.9997965913912081,
+      "maximum_warped_normalized_error": 3.429777428091277e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 127901
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 1.2383672932358742e-13,
+      "independent_all_fit_tail_bound": 4.009866379549069e-11,
+      "independent_largest_pole_modulus": 0.9997965913912081,
+      "maximum_warped_normalized_error": 9.951183622419795e-14,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 120692
+    },
+    {
+      "bass_ohms": 1024.0,
+      "frequency_hz": 82560.0,
+      "half_window_max_difference": 8.584660316182429e-17,
+      "independent_all_fit_tail_bound": 1.230729237340553e-12,
+      "independent_largest_pole_modulus": 0.9997965913912081,
+      "maximum_warped_normalized_error": 1.1188630228279524e-16,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1.0,
+      "warmup_frames": 111725
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 8.969382281041877e-14,
+      "independent_all_fit_tail_bound": 4.012479971844092e-11,
+      "independent_largest_pole_modulus": 0.9996740991667029,
+      "maximum_warped_normalized_error": 1.2183518159646608e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 75402
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 6.064307873515581e-13,
+      "independent_all_fit_tail_bound": 4.0106586249727544e-11,
+      "independent_largest_pole_modulus": 0.9996740991667029,
+      "maximum_warped_normalized_error": 2.9419128828654523e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 80055
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 1.9748157404259722e-13,
+      "independent_all_fit_tail_bound": 4.0099529782949115e-11,
+      "independent_largest_pole_modulus": 0.9996740991667029,
+      "maximum_warped_normalized_error": 1.0215623768884307e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 77834
+    },
+    {
+      "bass_ohms": 1.0,
+      "frequency_hz": 82560.0,
+      "half_window_max_difference": 3.1914767931281976e-16,
+      "independent_all_fit_tail_bound": 3.9984382376188136e-11,
+      "independent_largest_pole_modulus": 0.9996740991667029,
+      "maximum_warped_normalized_error": 2.6281627032757516e-16,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 1024.0,
+      "warmup_frames": 60517
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 400.125,
+      "half_window_max_difference": 1.964291716357937e-13,
+      "independent_all_fit_tail_bound": 3.9599527179437036e-11,
+      "independent_largest_pole_modulus": 0.9935113135972478,
+      "maximum_warped_normalized_error": 1.3883041888013796e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 3884
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 800.0,
+      "half_window_max_difference": 3.0368693268116063e-13,
+      "independent_all_fit_tail_bound": 3.940196846341056e-11,
+      "independent_largest_pole_modulus": 0.9935113135972478,
+      "maximum_warped_normalized_error": 3.031553775323246e-13,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 3934
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 1600.375,
+      "half_window_max_difference": 5.092643707186681e-14,
+      "independent_all_fit_tail_bound": 2.534987890318459e-11,
+      "independent_largest_pole_modulus": 0.9935113135972478,
+      "maximum_warped_normalized_error": 5.09130288679061e-14,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 3844
+    },
+    {
+      "bass_ohms": 32.0,
+      "frequency_hz": 82560.0,
+      "half_window_max_difference": 4.733171678136321e-16,
+      "independent_all_fit_tail_bound": 9.055413659943743e-12,
+      "independent_largest_pole_modulus": 0.9935113135972478,
+      "maximum_warped_normalized_error": 4.733220707825383e-16,
+      "sample_rate_hz": 192000,
+      "treble_ohms": 8.0,
+      "warmup_frames": 3193
+    }
+  ],
+  "sine_port_comparisons": 864,
+  "source_sha256": {
+    "data/crossover/leslie-122-ideal-v1.json": "f55fa98c246b4a19dce12ca829a141cff744f71242cccb68db12b404400319cc",
+    "include/hammond/LeslieCrossover.h": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+    "src/LeslieCrossover.cpp": "1a1bdde72af95709143afc4f62991c138ff3458cc78765fbe49a229d82693525",
+    "tests/test_crossover_acceptance.py": "cf9d8e94e4b57a623fa7fcfaa91d50e81ad19818d151f7dc7f5a1ead69070f95",
+    "tools/crossover_probe.cpp": "e9525de45f6df95c05785f50430a049e71fcd5299a00a6b95db11337b65dc475",
+    "tools/crossover_reference.py": "33eaa88da2534e52f88c044b5fbabf19828655bacb357dc55bbeb6510b580ec5"
+  },
+  "subprocesses": 153,
+  "tests_run": 3
+}

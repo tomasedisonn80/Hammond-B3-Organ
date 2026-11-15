@@ -15,6 +15,8 @@ namespace hammond::standalone {
 
 inline constexpr std::string_view kMidiInputModelId =
     "standalone-three-division-midi-v1";
+inline constexpr std::string_view kMidiExpressionCalibrationModelId =
+    "midi-expression-endpoints-v1";
 inline constexpr std::size_t kMidiInboxCapacity = 256;
 inline constexpr std::size_t kMidiDrainBudget = 32;
 inline constexpr std::array<std::uint8_t, 3> kMidiOwnerChannels{1, 2, 3};
@@ -123,6 +125,24 @@ struct MidiRouting {
 
 [[nodiscard]] bool valid_midi_routing(const MidiRouting& routing) noexcept;
 
+// Adapter-only raw CC11 endpoints, immutable during an active device epoch.
+// The default is exactly raw/127; inversion follows saturation. This is neither
+// musical saved state nor a physical AO-28 expression law.
+struct MidiExpressionCalibration {
+    std::uint8_t minimum{0};
+    std::uint8_t maximum{127};
+    bool inverted{false};
+
+    [[nodiscard]] bool operator==(const MidiExpressionCalibration&) const noexcept = default;
+};
+
+[[nodiscard]] bool valid_midi_expression_calibration(
+    const MidiExpressionCalibration& calibration) noexcept;
+// Invalid endpoints or raw >127 return false without changing destination.
+[[nodiscard]] bool map_midi_expression(
+    const MidiExpressionCalibration& calibration, std::uint8_t raw,
+    double& destination) noexcept;
+
 // A main-thread control edit, NOT a separately posted Session Event. Apply it
 // through UiModel's shared desired-control state, then dispatch its normal
 // ControlSnapshot action/submission acknowledgment. Otherwise a later UI edit
@@ -169,19 +189,29 @@ struct MidiInputDiagnostics {
 // coalescing, steady-velocity gain, source reset or private note ledger is added.
 class MidiInput {
 public:
-    // Reject invalid routing or an already active epoch without changing any
+    // Reject invalid routing/calibration or an already active epoch without changing any
     // state/counter. The caller must first retire the preceding epoch's owners,
     // quiesce/reset its inbox and complete the release acknowledgment barrier.
-    [[nodiscard]] bool begin_epoch(const MidiRouting& routing = {}) noexcept;
+    [[nodiscard]] bool begin_epoch(
+        const MidiRouting& routing = {},
+        const MidiExpressionCalibration& calibration = {}) noexcept;
     // Stops translation and clears only timestamp comparison history. It does
     // not close hardware, reset the inbox or post any musical command.
     void end_epoch() noexcept;
     [[nodiscard]] bool active() const noexcept { return active_; }
     [[nodiscard]] const MidiRouting& routing() const noexcept { return routing_; }
+    // Last accepted epoch's settings; check active() before calling them active.
+    [[nodiscard]] const MidiExpressionCalibration& expression_calibration() const noexcept {
+        return expression_calibration_;
+    }
 
-    // Exactly one complete packet becomes zero or one action. Canonical notes
-    // and CC123 release use SessionCommand; CC11/manual-B drawbars/pedal values
-    // use MidiParameterEdit. All other voice/system messages are unsupported.
+    // Exactly one complete packet becomes zero or one action. Canonical notes,
+    // distinct CC120 ScopedSoundOff, and CC123 release use SessionCommand.
+    // CC11/manual-B drawbars/pedal values and CC121 expression default use
+    // MidiParameterEdit. CC120/121 require value zero; CC123 retains historical
+    // acceptance of any 0..127 value. CC121 bypasses expression calibration and
+    // resets the shared expression to 1.0 without releasing notes or settings.
+    // All other voice/system messages are unsupported.
     // Arrival order wins over regressing/equal timestamps; offsets are zero.
     [[nodiscard]] MidiDecoded decode(const MidiPacket& packet) noexcept;
     [[nodiscard]] const MidiInputDiagnostics& diagnostics() const noexcept {
@@ -190,6 +220,7 @@ public:
 
 private:
     MidiRouting routing_{};
+    MidiExpressionCalibration expression_calibration_{};
     MidiInputDiagnostics diagnostics_{};
     std::uint64_t last_arrival_ns_{0};
     bool have_arrival_{false};
@@ -208,6 +239,7 @@ static_assert(std::atomic<std::uint64_t>::is_always_lock_free,
               "MIDI diagnostics require lock-free 64-bit atomics");
 static_assert(std::is_trivially_copyable_v<MidiPacket>);
 static_assert(std::is_trivially_copyable_v<MidiParameterEdit>);
+static_assert(std::is_trivially_copyable_v<MidiExpressionCalibration>);
 static_assert(kMidiInboxCapacity < UINT32_MAX);
 static_assert(kMidiOwnerChannels[0] != kUiInputChannel &&
               kMidiOwnerChannels[1] != kUiInputChannel &&

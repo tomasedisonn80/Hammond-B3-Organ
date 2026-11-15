@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "purpose": "first coherent feature integration regression",
+  "executable_sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852",
+  "tests": 16,
+  "passed": 13,
+  "failed": [
+    "test_standalone_waveform_material",
+    "test_standalone_app",
+    "test_standalone_midi_cli"
+  ],
+  "elapsed_seconds": 28.61,
+  "findings": [
+    "Historical material fixture assumes7/6pixel cap fronts; reviewed new wide manual cap front is8pixels. Independently reconcile intent and retained old compact behavior.",
+    "Strict diagnostics schema rejects added expression_calibration member; migrate schema with exact typed validation.",
+    "MIDI modal tests retain old740x520 geometry and8focusstops; new dialog740x600 and11stops. Preserve behavioral assertions while updating measured constants."
+  ],
+  "status": "repair-and-independent-acceptance-required",
+  "raw_log": "sibling scratch/wave3-native-ctest.log"
+}

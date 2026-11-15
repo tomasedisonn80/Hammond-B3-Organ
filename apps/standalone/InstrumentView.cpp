@@ -298,21 +298,38 @@ void button(Drawing& drawing, UiRect bounds, std::string_view label,
 }
 
 void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
-             std::uint8_t value, std::string_view label, UiColor cap, bool flat) {
+             std::uint8_t value, std::string_view label, UiColor cap, bool flat,
+             bool wide_legibility = false) {
     if (!material_surface(geometry.bounds) || !material_surface(geometry.track)) return;
     const bool mixture = geometry.id.kind == UiControlKind::PedalDrawbar;
-    centered(drawing, label, geometry.label_bounds, mixture ? 11.0F : 13.0F,
-             kUiIvory, mixture ? TextFace::Sans : TextFace::Serif);
+    const bool refined = wide_legibility && !flat && !mixture;
+    UiRect material_strip{};
+    if (refined) {
+        if (!material_surface(geometry.label_bounds) || !material_surface(geometry.value_bounds) || value > 8) return;
+        material_strip = {geometry.bounds.x, geometry.label_bounds.y + 21.0F,
+                          geometry.bounds.width, geometry.value_bounds.y - geometry.label_bounds.y - 22.0F};
+        if (!material_surface(material_strip)) return;
+    } else {
+        centered(drawing, label, geometry.label_bounds, mixture ? 11.0F : 13.0F,
+                 kUiIvory, mixture ? TextFace::Sans : TextFace::Serif);
+    }
     const auto& track = geometry.track;
     const float center = track.x + track.width / 2.0F;
     const float cap_width = std::max(10.0F, std::min(34.0F, geometry.bounds.width - 8.0F));
-    const float cap_height = mixture ? 22.0F : 26.0F;
+    const float cap_height = mixture ? 22.0F : refined ? 32.0F : 26.0F;
     const float half_height = cap_height / 2.0F;
     const float slot_width = std::min(geometry.bounds.width - 2.0F, cap_width + 8.0F);
     const UiRect slot{center - slot_width / 2.0F, track.y - half_height,
                       slot_width, track.height + cap_height};
     const float y = track.y + track.height * static_cast<float>(value) / 8.0F;
     const UiRect knob{center - cap_width / 2.0F, y - half_height, cap_width, cap_height};
+    // Both endpoints fit between the unchanged text rows. Reject malformed
+    // local geometry instead of letting material enter a label or readout.
+    if (refined && (!material_surface(slot) || !material_surface(knob) ||
+        slot.x < material_strip.x || slot.x + slot.width > material_strip.x + material_strip.width ||
+        slot.y < material_strip.y || slot.y + slot.height > material_strip.y + material_strip.height ||
+        knob.x < material_strip.x || knob.x + knob.width > material_strip.x + material_strip.width ||
+        knob.y < material_strip.y || knob.y + knob.height > material_strip.y + material_strip.height)) return;
     if (flat) {
         drawing.rect(slot, {13, 15, 14});
         drawing.rect({center - 1.0F, track.y, 2.0F, track.height}, kMuted);
@@ -360,10 +377,19 @@ void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
                          {15, 16, 14});
         }
     }
-    drawing.rounded({knob.x - 1.0F, knob.y + 3.0F, knob.width + 3.0F, knob.height + 1.0F}, 3.0F, {0, 0, 0, 210});
+    if (refined) {
+        const float left = std::max(knob.x - 1.0F, material_strip.x);
+        const float top = std::max(knob.y + 3.0F, material_strip.y);
+        const float right = std::min(knob.x + knob.width + 2.0F, material_strip.x + material_strip.width);
+        const float bottom = std::min(knob.y + knob.height + 4.0F, material_strip.y + material_strip.height);
+        const UiRect shadow{left, top, right - left, bottom - top};
+        if (material_surface(shadow)) drawing.rounded(shadow, 3.0F, {0, 0, 0, 210});
+    } else {
+        drawing.rounded({knob.x - 1.0F, knob.y + 3.0F, knob.width + 3.0F, knob.height + 1.0F}, 3.0F, {0, 0, 0, 210});
+    }
     drawing.rounded(knob, 3.0F, shade(cap, -38));
     const bool ivory = cap.red == kIvoryCap.red && cap.green == kIvoryCap.green && cap.blue == kIvoryCap.blue;
-    const float front = mixture ? 6.0F : 7.0F;
+    const float front = mixture ? 6.0F : refined ? 8.0F : 7.0F;
     const UiRect face{knob.x + 1.0F, knob.y + 2.0F, knob.width - 2.0F, knob.height - front - 3.0F};
     drawing.gradient(face, ivory ? UiColor{250, 237, 207} : shade(cap, 29),
                      ivory ? UiColor{225, 204, 166} : shade(cap, -2));
@@ -382,7 +408,19 @@ void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
                  ivory ? UiColor{255, 248, 224} : shade(cap, 65));
     drawing.line(face.x + 1.0F, face.y + face.height, face.x + face.width - 1.0F,
                  face.y + face.height, ivory ? UiColor{244, 224, 186} : shade(cap, 34));
-    centered(drawing, std::to_string(value), geometry.value_bounds, 13.0F, kUiBrass);
+    if (refined) {
+        centered(drawing, label, {geometry.label_bounds.x, geometry.label_bounds.y,
+                 geometry.label_bounds.width, 20.0F}, 17.0F, kUiIvory, TextFace::Serif, 2.0F);
+        const char digit = static_cast<char>('0' + value);
+        const std::string_view text{&digit, 1};
+        const auto& bounds = geometry.value_bounds;
+        // The pinned sans digits' ink at 14 px fits within this 16 px row;
+        // its nominal 1.2-em line box is intentionally allowed to overhang.
+        drawing.text(text, bounds.x + (bounds.width - drawing.text_width(text, 14.0F)) / 2.0F,
+                     bounds.y + (bounds.height - 16.8F) / 2.0F, 14.0F, kUiBrass);
+    } else {
+        centered(drawing, std::to_string(value), geometry.value_bounds, 13.0F, kUiBrass);
+    }
 }
 
 [[nodiscard]] bool preset_accidental(std::uint8_t index) noexcept {
@@ -409,6 +447,17 @@ void drawbar(Drawing& drawing, const UiControlGeometry& geometry,
     if (applied != PresetSelection::BankA && applied != PresetSelection::BankB) result += "FIXED ";
     result += preset_selection_label(applied);
     return result;
+}
+
+[[nodiscard]] std::string_view sounding_caption(const UiViewState& view, Manual manual) noexcept {
+    constexpr std::array<std::string_view, 12> captions{
+        "CANCELLED", "SOUNDING FIXED C#", "SOUNDING FIXED D", "SOUNDING FIXED D#",
+        "SOUNDING FIXED E", "SOUNDING FIXED F", "SOUNDING FIXED F#", "SOUNDING FIXED G",
+        "SOUNDING FIXED G#", "SOUNDING FIXED A", "SOUNDING A#", "SOUNDING B"};
+    PresetSelection applied{};
+    if (!control_preset_selection(view.applied.controls, manual, applied)) return "SOUNDING UNAVAILABLE";
+    const auto index = static_cast<std::size_t>(applied);
+    return index < captions.size() ? captions[index] : "SOUNDING UNAVAILABLE";
 }
 
 // Use the exposed natural region for independent focus/request outlines, so
@@ -597,7 +646,8 @@ void paint_controls(Drawing& drawing, const UiModel& model) {
         bool selected = false;
         if (id.kind == UiControlKind::ManualDrawbar) {
             const auto value = view.controls.drawbars[manual][static_cast<std::size_t>(id.bank)][id.index];
-            drawbar(drawing, geometry, value, kUiFootageLabels[id.index], caps[id.index], flat);
+            drawbar(drawing, geometry, value, kUiFootageLabels[id.index], caps[id.index], flat,
+                    layout.sidebar_pedals && !flat);
         } else if (id.kind == UiControlKind::PedalDrawbar) {
             drawbar(drawing, geometry, view.controls.pedal_drawbars[id.index],
                     id.index == 0 ? "MIX 1" : "MIX 2", kBrownCap, flat);
@@ -663,7 +713,38 @@ void paint_controls(Drawing& drawing, const UiModel& model) {
     return quad_band(shape, amount / height, 1.0F - amount / height, amount);
 }
 
-void paint_key(Drawing& drawing, const UiKeyGeometry& key, bool held, bool focused, bool flat) {
+// A one-pixel band, one pixel inside the original sloping edge. Horizontal
+// offsets are adjusted by its slope so width and inset are measured normally.
+[[nodiscard]] UiQuad idle_key_side_band(const UiQuad& shape, bool left) noexcept {
+    for (const auto& point : shape.points) {
+        if (!std::isfinite(point.x) || !std::isfinite(point.y)) return {};
+    }
+    const auto& points = shape.points;
+    const float height = points[3].y - points[0].y;
+    if (!(height > 0.0F)) return {};
+    const std::size_t top = left ? 0U : 1U;
+    const std::size_t bottom = left ? 3U : 2U;
+    const float offset = std::hypot(1.0F, (points[bottom].x - points[top].x) / height);
+    if (!std::isfinite(offset)) return {};
+    const auto edge_x = [&](std::size_t first, std::size_t last, float fraction) {
+        return points[first].x + (points[last].x - points[first].x) * fraction;
+    };
+    constexpr float start = 0.08F;
+    constexpr float finish = 0.88F;
+    if (edge_x(1, 2, start) - edge_x(0, 3, start) <= 3.0F * offset ||
+        edge_x(1, 2, finish) - edge_x(0, 3, finish) <= 3.0F * offset) return {};
+    const auto point = [&](float fraction, float distance) {
+        return UiPoint{edge_x(top, bottom, fraction) + (left ? distance : -distance) * offset,
+                       points[0].y + height * fraction};
+    };
+    return left ? UiQuad{{point(start, 1.0F), point(start, 2.0F),
+                          point(finish, 2.0F), point(finish, 1.0F)}} :
+                  UiQuad{{point(start, 2.0F), point(start, 1.0F),
+                          point(finish, 1.0F), point(finish, 2.0F)}};
+}
+
+void paint_key(Drawing& drawing, const UiKeyGeometry& key, bool held, bool focused, bool flat,
+               bool wide_manual = false) {
     if (!material_surface(key.bounds)) return;
     if (flat) {
         const UiColor color = key.accidental ? (held ? UiColor{143, 115, 66} : UiColor{32, 33, 30}) :
@@ -701,7 +782,13 @@ void paint_key(Drawing& drawing, const UiKeyGeometry& key, bool held, bool focus
                      {255, 245, 217, 220}, {255, 245, 217, 60});
         const float top_depth = key.top.points[3].y - key.top.points[0].y;
         const float rear_recess = top_depth > 0.0F ? std::min(0.12F, 18.0F / top_depth) : 0.0F;
-        drawing.quad(quad_band(key.top, 0.0F, rear_recess, 0.8F), {20, 17, 13, 90}, {20, 17, 13, 0});
+        const bool refined = wide_manual && !held;
+        drawing.quad(quad_band(key.top, 0.0F, rear_recess, 0.8F),
+                     {20, 17, 13, static_cast<std::uint8_t>(refined ? 70 : 90)}, {20, 17, 13, 0});
+        if (refined) {
+            drawing.quad(idle_key_side_band(key.top, true), {255, 245, 219, 75}, {255, 245, 219, 28});
+            drawing.quad(idle_key_side_band(key.top, false), {36, 26, 17, 40}, {36, 26, 17, 16});
+        }
     }
     if (held) drawing.quad(quad_band(key.top, 0.91F, 0.96F, 2.0F), kUiBrass, kUiBrass);
     if (focused) drawing.quad_outline(inset_quad(key.hit, 2.0F), kUiFocusCyan, 2.0F);
@@ -1008,7 +1095,7 @@ void midi_overlay(Drawing& drawing, const UiLayout& layout, const InstrumentView
     const float y = boxes.panel.y;
     drawing.text("MIDI input", x, y + 22.0F, 28.0F, kUiIvory, TextFace::Serif);
     button(drawing, boxes.close, "CLOSE", false, false, TextFace::Sans, false, flat);
-    text_line(drawing, "INPUT PORT / EXACT NAME", {x, y + 73.0F, boxes.panel.width - 56.0F, 16.0F}, 11.0F, kUiBrass);
+    text_line(drawing, "SELECTED INPUT PORT / EXACT NAME", {x, y + 73.0F, boxes.panel.width - 56.0F, 16.0F}, 11.0F, kUiBrass);
     std::string_view choice = "No input";
     if (info.selected_midi_port < info.midi_choices.size()) choice = info.midi_choices[info.selected_midi_port];
     const UiRect port{boxes.previous_port.x + boxes.previous_port.width + 12.0F, y + 98.0F,
@@ -1032,19 +1119,49 @@ void midi_overlay(Drawing& drawing, const UiLayout& layout, const InstrumentView
     text_line(drawing, distinct ? "Three distinct wire channels, 1-16. Click or use arrows to change." :
               "Channels must be distinct. Change the repeated channel before Apply.",
               {x, y + 289.0F, boxes.panel.width - 56.0F, 18.0F}, 11.0F, distinct ? kMuted : kRed);
-    const UiRect status{x, y + 322.0F, boxes.panel.width - 56.0F, 83.0F};
+    constexpr std::array<std::string_view, 3> expression_names{
+        "EXPRESSION MIN", "EXPRESSION MAX", "EXPRESSION DIRECTION"};
+    const std::array<UiRect, 3> expression_controls{
+        boxes.expression_minimum, boxes.expression_maximum, boxes.expression_direction};
+    const auto& calibration = info.selected_midi_expression;
+    const std::array<std::string, 3> expression_values{
+        std::to_string(calibration.minimum), std::to_string(calibration.maximum),
+        calibration.inverted ? "INVERTED" : "NORMAL"};
+    for (std::size_t index = 0; index < expression_controls.size(); ++index) {
+        const auto& bounds = expression_controls[index];
+        text_line(drawing, expression_names[index],
+                  {bounds.x, bounds.y - 22.0F, bounds.width, 16.0F}, 11.0F, kUiBrass);
+        button(drawing, bounds, expression_values[index], false, false, TextFace::Sans, false, flat);
+    }
+    const bool valid_calibration = valid_midi_expression_calibration(calibration);
+    text_line(drawing, valid_calibration ?
+              "Selected calibration: raw 0-127. Arrows adjust; Home / End set bounds." :
+              "Expression minimum must be less than maximum. Change either value before Apply.",
+              {x, y + 382.0F, boxes.panel.width - 56.0F, 18.0F}, 11.0F,
+              valid_calibration ? kMuted : kRed);
+    const UiRect status{x, y + 410.0F, boxes.panel.width - 56.0F, 88.0F};
     drawing.rect(status, {17, 19, 16});
-    text_line(drawing, midi_state(info) + (info.midi_backend.empty() ? "" : " / " + std::string(info.midi_backend)),
+    const std::string connection = info.midi_reconnect_pending ? "MIDI RECONNECT PENDING" : midi_state(info);
+    text_line(drawing, connection + (info.midi_backend.empty() ? "" : " / " + std::string(info.midi_backend)),
               {x + 12.0F, status.y + 8.0F, status.width - 24.0F, 18.0F}, 12.0F,
-              info.midi_open ? kGreen : kUiBrass);
-    wrapped(drawing, info.midi_status, {x + 12.0F, status.y + 31.0F, status.width - 24.0F, 45.0F}, 11.5F, kUiIvory);
-    button(drawing, boxes.apply, "APPLY / CONNECT", distinct && info.midi_available,
+              info.midi_open && !info.midi_reconnect_pending ? kGreen : kUiBrass);
+    std::string active_calibration = "ACTIVE CALIBRATION: none (inactive)";
+    if (info.midi_expression_active) {
+        const auto& active = info.active_midi_expression;
+        active_calibration = "ACTIVE CALIBRATION: min " + std::to_string(active.minimum) +
+            " / max " + std::to_string(active.maximum) + (active.inverted ? " / INVERTED" : " / NORMAL");
+    }
+    text_line(drawing, active_calibration,
+              {x + 12.0F, status.y + 28.0F, status.width - 24.0F, 17.0F}, 11.0F,
+              info.midi_expression_active ? kGreen : kMuted);
+    wrapped(drawing, info.midi_status, {x + 12.0F, status.y + 49.0F, status.width - 24.0F, 32.0F}, 11.5F, kUiIvory);
+    button(drawing, boxes.apply, "APPLY / CONNECT", distinct && valid_calibration && info.midi_available,
            false, TextFace::Sans, false, flat);
     button(drawing, boxes.disconnect, "DISCONNECT", false, false, TextFace::Sans, false, flat);
-    text_line(drawing, "Apply changes the MIDI route. Disconnect releases MIDI-owned notes.",
-              {x, y + 477.0F, boxes.panel.width - 56.0F, 16.0F}, 11.0F, kMuted);
+    text_line(drawing, "Apply uses selected settings; reconnect and Disconnect release MIDI-owned notes.",
+              {x, y + 559.0F, boxes.panel.width - 56.0F, 16.0F}, 11.0F, kMuted);
     text_line(drawing, "Tab / Shift+Tab selects a control. Enter activates. Escape closes.",
-              {x, y + 495.0F, boxes.panel.width - 56.0F, 16.0F}, 10.5F, kMuted);
+              {x, y + 578.0F, boxes.panel.width - 56.0F, 14.0F}, 10.5F, kMuted);
 }
 
 void overlay(Drawing& drawing, const UiLayout& layout, const InstrumentViewInfo& info) {
@@ -1263,15 +1380,18 @@ AudioOverlayLayout audio_overlay_layout(float width, float height) noexcept {
 }
 
 MidiOverlayLayout midi_overlay_layout(float width, float height) noexcept {
-    const UiRect panel_rect{(width - 740.0F) / 2.0F, (height - 520.0F) / 2.0F, 740.0F, 520.0F};
+    const UiRect panel_rect{(width - 740.0F) / 2.0F, (height - 600.0F) / 2.0F, 740.0F, 600.0F};
     return {panel_rect,
             {panel_rect.x + 28.0F, panel_rect.y + 113.0F, 40.0F, 42.0F},
             {panel_rect.x + 672.0F, panel_rect.y + 113.0F, 40.0F, 42.0F},
             {panel_rect.x + 28.0F, panel_rect.y + 239.0F, 212.0F, 38.0F},
             {panel_rect.x + 264.0F, panel_rect.y + 239.0F, 212.0F, 38.0F},
             {panel_rect.x + 500.0F, panel_rect.y + 239.0F, 212.0F, 38.0F},
-            {panel_rect.x + 28.0F, panel_rect.y + 424.0F, 252.0F, 40.0F},
-            {panel_rect.x + 296.0F, panel_rect.y + 424.0F, 188.0F, 40.0F},
+            {panel_rect.x + 28.0F, panel_rect.y + 332.0F, 212.0F, 38.0F},
+            {panel_rect.x + 264.0F, panel_rect.y + 332.0F, 212.0F, 38.0F},
+            {panel_rect.x + 500.0F, panel_rect.y + 332.0F, 212.0F, 38.0F},
+            {panel_rect.x + 28.0F, panel_rect.y + 510.0F, 252.0F, 38.0F},
+            {panel_rect.x + 296.0F, panel_rect.y + 510.0F, 188.0F, 38.0F},
             {panel_rect.x + 628.0F, panel_rect.y + 24.0F, 84.0F, 32.0F}};
 }
 
@@ -1279,6 +1399,7 @@ void paint_instrument(Drawing& drawing, const UiModel& model, const InstrumentVi
     const auto& layout = model.layout();
     const auto& view = model.view();
     const bool flat = view.presentation == UiPresentation::Flat;
+    const bool wide_legibility = layout.sidebar_pedals && !flat;
     drawing.clear(flat ? UiColor{18, 21, 20} : kUiWalnut);
     const float margin = layout.header.x;
     if (!flat) {
@@ -1312,16 +1433,28 @@ void paint_instrument(Drawing& drawing, const UiModel& model, const InstrumentVi
     for (std::size_t manual = 0; manual < kManualCount; ++manual) {
         const auto& bounds = layout.registration_panels[manual];
         panel(drawing, bounds, true, flat);
-        std::string state = registration_caption(view, static_cast<Manual>(manual));
-        const float maximum_state_width = bounds.width * 0.43F;
-        if (drawing.text_width(state, 10.5F) > maximum_state_width - 6.0F) {
-            state = registration_caption(view, static_cast<Manual>(manual), true);
+        if (wide_legibility) {
+            const float state_width = bounds.width * 0.43F;
+            const float state_x = bounds.x + bounds.width - state_width - 14.0F;
+            heading(drawing, manual == 0 ? "UPPER DRAWBARS" : "LOWER DRAWBARS",
+                    {bounds.x + 16.0F, bounds.y + 3.0F, bounds.width - state_width - 32.0F, 23.0F}, 14.0F);
+            const UiColor state_color = view.applied.controls.route_enabled[manual] ? kUiBrass : kMuted;
+            centered(drawing, view.edited_banks[manual] == DrawbarBank::A ? "EDIT BANK A" : "EDIT BANK B",
+                     {state_x, bounds.y + 2.0F, state_width, 14.0F}, 11.5F, state_color);
+            centered(drawing, sounding_caption(view, static_cast<Manual>(manual)),
+                     {state_x, bounds.y + 16.0F, state_width, 14.0F}, 11.5F, state_color);
+        } else {
+            std::string state = registration_caption(view, static_cast<Manual>(manual));
+            const float maximum_state_width = bounds.width * 0.43F;
+            if (drawing.text_width(state, 10.5F) > maximum_state_width - 6.0F) {
+                state = registration_caption(view, static_cast<Manual>(manual), true);
+            }
+            const float state_width = std::min(maximum_state_width, drawing.text_width(state, 10.5F) + 8.0F);
+            heading(drawing, manual == 0 ? "UPPER DRAWBARS" : "LOWER DRAWBARS",
+                    {bounds.x + 16.0F, bounds.y + 3.0F, bounds.width - state_width - 32.0F, 23.0F}, 14.0F);
+            centered(drawing, state, {bounds.x + bounds.width - state_width - 14.0F, bounds.y + 5.0F, state_width, 20.0F},
+                     10.5F, view.applied.controls.route_enabled[manual] ? kUiBrass : kMuted);
         }
-        const float state_width = std::min(maximum_state_width, drawing.text_width(state, 10.5F) + 8.0F);
-        heading(drawing, manual == 0 ? "UPPER DRAWBARS" : "LOWER DRAWBARS",
-                {bounds.x + 16.0F, bounds.y + 3.0F, bounds.width - state_width - 32.0F, 23.0F}, 14.0F);
-        centered(drawing, state, {bounds.x + bounds.width - state_width - 14.0F, bounds.y + 5.0F, state_width, 20.0F},
-                 10.5F, view.applied.controls.route_enabled[manual] ? kUiBrass : kMuted);
         const auto& rail = layout.manual_rail_panels[manual];
         if (flat) drawing.rect(rail, {36, 38, 35});
         else wood(drawing, rail);
@@ -1352,7 +1485,7 @@ void paint_instrument(Drawing& drawing, const UiModel& model, const InstrumentVi
                 if (!ui_control_visible(layout, id) || key.accidental != accidental) continue;
                 const bool focused = view.focus.kind == UiControlKind::ManualKey &&
                     manual_index(view.focus.manual) == manual && view.focus.index == index;
-                paint_key(drawing, key, view.applied.held_keys[manual][index], focused, flat);
+                paint_key(drawing, key, view.applied.held_keys[manual][index], focused, flat, wide_legibility);
             }
         }
     }

@@ -150,6 +150,19 @@ void release(const MidiDecoded& decoded, Division division) {
     release(std::get<SessionCommand>(decoded.action), division);
 }
 
+void sound_off(const MidiDecoded& decoded, Division division) {
+    CHECK(decoded.status == MidiDecodeStatus::Action);
+    CHECK(std::holds_alternative<SessionCommand>(decoded.action));
+    const auto& command = std::get<SessionCommand>(decoded.action);
+    CHECK(std::holds_alternative<ScopedSoundOff>(command));
+    const auto& silence = std::get<ScopedSoundOff>(command);
+    CHECK(silence.domain == (division == Division::Pedals
+        ? SoundOffDomain::Pedal : SoundOffDomain::Manual));
+    CHECK(silence.bus == (division == Division::Lower ? 1 : 0));
+    CHECK(silence.channel == (division == Division::Upper ? 1 :
+                              division == Division::Lower ? 2 : 3));
+}
+
 void parameter(const MidiDecoded& decoded, std::uint32_t id, unsigned value) {
     CHECK(decoded.status == MidiDecodeStatus::Action);
     CHECK(std::holds_alternative<MidiParameterEdit>(decoded.action));
@@ -265,6 +278,13 @@ void all_wire_choices_and_note_domains() {
                       expected.first_drawbar_id, 64);
             release(decode(input, message(cc, 123, 127), MidiDecodeStatus::Action),
                     expected.division);
+            sound_off(decode(input, message(cc, 120, 0), MidiDecodeStatus::Action),
+                      expected.division);
+            parameter(decode(input, message(cc, 121, 0), MidiDecodeStatus::Action),
+                      8192, 127);
+            for (const auto controller : {std::uint8_t{120}, std::uint8_t{121}}) {
+                (void)decode(input, message(cc, controller, 127), MidiDecodeStatus::OutOfRange);
+            }
         }
         for (unsigned wire = 1; wire <= 16; ++wire) {
             if (wire == routing.upper_channel || wire == routing.lower_channel ||
@@ -372,25 +392,35 @@ void every_supported_controller_value() {
         }
     }
     for (const auto& expected : divisions) {
+        sound_off(decode(input, message(expected.cc_status, 120, 0), MidiDecodeStatus::Action),
+                  expected.division);
+        parameter(decode(input, message(expected.cc_status, 121, 0), MidiDecodeStatus::Action),
+                  8192, 127);
         for (unsigned value = 0; value <= 127; ++value) {
             release(decode(input, message(expected.cc_status, 123, byte(value)), MidiDecodeStatus::Action),
                     expected.division);
+            if (value != 0) {
+                for (const auto controller : {std::uint8_t{120}, std::uint8_t{121}}) {
+                    (void)decode(input, message(expected.cc_status, controller, byte(value)),
+                                 MidiDecodeStatus::OutOfRange);
+                }
+            }
         }
         for (unsigned controller = 0; controller <= 127; ++controller) {
             const bool mapped = std::any_of(mappings.begin(), mappings.end(),
                 [&](const Mapping& mapping) {
                     return mapping.status == expected.cc_status && mapping.controller == controller;
                 });
-            if (mapped || controller == 123) continue;
+            if (mapped || controller == 120 || controller == 121 || controller == 123) continue;
             for (const unsigned value : {0U, 63U, 64U, 127U}) {
                 (void)decode(input, message(expected.cc_status, byte(controller), byte(value)),
                              MidiDecodeStatus::Unsupported);
             }
         }
     }
-    CHECK(input.diagnostics().actions == 26U * 128U);
+    CHECK(input.diagnostics().actions == 26U * 128U + 6U);
     // Controllers on an unselected wire are unmapped even when the family or
-    // controller would otherwise be unsupported (including CC120 and CC121).
+    // value would otherwise be unsupported or out of range (CC120 and CC121).
     for (unsigned channel = 3; channel < 16; ++channel) {
         for (unsigned controller = 0; controller <= 127; ++controller) {
             (void)decode(input, message(byte(0xB0U + channel), byte(controller), 64),
@@ -454,7 +484,7 @@ void receipt_order_and_timestamp_history() {
     CHECK(input.begin_epoch());
     note(decode(input, message(0x90, 36, 1, 0), MidiDecodeStatus::Action), Division::Upper, true, 36, 1);
     note(decode(input, message(0x90, 96, 127, 0), MidiDecodeStatus::Action), Division::Upper, true, 96, 127);
-    (void)decode(input, message(0xB0, 120, 0, 100), MidiDecodeStatus::Unsupported);
+    sound_off(decode(input, message(0xB0, 120, 0, 100), MidiDecodeStatus::Action), Division::Upper);
     (void)decode(input, message(0x9F, 60, 1, 99), MidiDecodeStatus::UnmappedChannel, true);
     (void)decode(input, MidiPacket{{0x80, 60, 0xFF}, 3, 50}, MidiDecodeStatus::Malformed, true);
     (void)decode(input, message(0x92, 61, 1, 50), MidiDecodeStatus::OutOfRange);
@@ -468,7 +498,7 @@ void receipt_order_and_timestamp_history() {
     (void)decode(input, MidiPacket{{0xF8, 0, 0}, 1, 0}, MidiDecodeStatus::Unsupported, true);
     (void)decode(input, MidiPacket{{0xFE, 0, 0}, 1, 0}, MidiDecodeStatus::Unsupported);
     same_diagnostics(input.diagnostics(), MidiInputDiagnostics{
-        .packets = 12, .actions = 5, .unsupported = 3, .unmapped_channels = 1,
+        .packets = 12, .actions = 6, .unsupported = 2, .unmapped_channels = 1,
         .out_of_range = 1, .malformed = 1, .inactive = 1,
         .timestamp_regressions = 4, .epochs = 1});
     input.end_epoch();
@@ -478,7 +508,7 @@ void receipt_order_and_timestamp_history() {
 
     struct Observation { MidiPacket packet; MidiDecodeStatus status; };
     const std::array<Observation, 4> observations{{
-        {message(0xB0, 121, 0, 10), MidiDecodeStatus::Unsupported},
+        {message(0xB0, 122, 0, 10), MidiDecodeStatus::Unsupported},
         {message(0x9F, 60, 1, 10), MidiDecodeStatus::UnmappedChannel},
         {message(0x92, 61, 1, 10), MidiDecodeStatus::OutOfRange},
         {MidiPacket{{0x80, 60, 0x80}, 3, 10}, MidiDecodeStatus::Malformed},

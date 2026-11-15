@@ -58,6 +58,7 @@ constexpr std::size_t kMidiReplayObservationCapacity = 4 * kMidiReplayMaxEvents 
 struct Options {
     AudioDeviceConfig audio{};
     MidiRouting midi_routing{};
+    MidiExpressionCalibration midi_expression{};
     std::string midi_port{};
     std::filesystem::path state{};
     std::filesystem::path screenshot{};
@@ -86,6 +87,10 @@ void print_help() {
         "  --midi-lower-channel N Lower wire channel, 1..16 (default 2).\n"
         "  --midi-pedal-channel N Pedal wire channel, 1..16 (default 3).\n"
         "                         The three MIDI channels must be distinct.\n"
+        "  --expression-min N     CC11 raw lower endpoint, 0..127 (default 0).\n"
+        "  --expression-max N     CC11 raw upper endpoint, 0..127 (default 127).\n"
+        "                         The lower endpoint must be below the upper.\n"
+        "  --expression-invert    Invert calibrated CC11 direction (default normal).\n"
         "  --device NAME          Exact SDL output name; omitted means default.\n"
         "  --sample-rate N        44100, 48000 (default), or 96000 Hz.\n"
         "  --buffer-frames N      128, 256, 512 (default), 1024, or 2048.\n"
@@ -143,12 +148,13 @@ void print_help() {
         if (option == "--list-audio") { options.list_audio = true; continue; }
         if (option == "--list-midi") { options.list_midi = true; continue; }
         if (option == "--flat") { options.presentation = UiPresentation::Flat; continue; }
+        if (option == "--expression-invert") { options.midi_expression.inverted = true; continue; }
         const bool path_option = option == "--state" || option == "--screenshot" ||
             option == "--diagnostics" || option == "--input-script" || option == "--midi-script";
         const bool number_option = option == "--sample-rate" || option == "--buffer-frames" ||
             option == "--width" || option == "--height" || option == "--smoke-ms" ||
             option == "--midi-upper-channel" || option == "--midi-lower-channel" ||
-            option == "--midi-pedal-channel";
+            option == "--midi-pedal-channel" || option == "--expression-min" || option == "--expression-max";
         if (!path_option && !number_option && option != "--device" && option != "--midi-port" &&
             option != "--workspace") {
             error = "Unknown option: " + std::string(option);
@@ -208,6 +214,13 @@ void print_help() {
         } else if (option == "--smoke-ms") {
             valid = number >= 250 && number <= 10000;
             if (valid) options.smoke_ms = static_cast<std::uint32_t>(number);
+        } else if (option == "--expression-min" || option == "--expression-max") {
+            valid = number >= 0 && number <= 127;
+            if (valid) {
+                const auto endpoint = static_cast<std::uint8_t>(number);
+                if (option == "--expression-min") options.midi_expression.minimum = endpoint;
+                else options.midi_expression.maximum = endpoint;
+            }
         } else {
             valid = number >= 1 && number <= 16;
             if (valid) {
@@ -224,6 +237,10 @@ void print_help() {
     }
     if (!valid_midi_routing(options.midi_routing)) {
         error = "MIDI upper, lower, and pedal channels must be distinct values from 1 through 16";
+        return false;
+    }
+    if (!valid_midi_expression_calibration(options.midi_expression)) {
+        error = "Expression endpoints must satisfy 0 <= minimum < maximum <= 127";
         return false;
     }
     if (options.list_audio && options.list_midi) {
@@ -540,13 +557,15 @@ public:
         observe();
         midi_routing_ = options_.midi_routing;
         selected_midi_routing_ = midi_routing_;
+        midi_expression_ = options_.midi_expression;
+        selected_midi_expression_ = midi_expression_;
         midi_requested_port_ = options_.midi_port;
         midi_native_requested_ = !options_.midi_port.empty();
         if (midi_replay_requested()) {
             midi_status_ = "Synthetic replay is disconnected; waiting for an explicit script connect event.";
         } else if (!MidiDevice::backend_available()) midi_status_ = "MIDI backend unavailable in this build.";
         if (!options_.midi_port.empty()) {
-            const bool connected = request_midi(options_.midi_port, midi_routing_);
+            const bool connected = request_midi(options_.midi_port, midi_routing_, midi_expression_);
             midi_startup_failed_ = !connected;
         }
         return true;
@@ -625,6 +644,7 @@ public:
         replay_finalized_ = true;
         midi_before_shutdown_ = midi_.device.info();
         midi_active_before_shutdown_ = midi_input_.active();
+        if (midi_input_.active()) midi_expression_before_shutdown_ = midi_input_.expression_calibration();
         midi_replay_.connected_before_shutdown = midi_replay_.connected;
         midi_replay_.faulted_before_shutdown = midi_replay_.faulted;
         midi_replay_.pending_packets_before_shutdown = midi_.inbox->pending();
@@ -785,7 +805,21 @@ private:
     struct MidiRequest {
         std::string port;
         MidiRouting routing;
+        MidiExpressionCalibration calibration;
         bool synthetic{false};
+        bool operator==(const MidiRequest&) const noexcept = default;
+    };
+
+    // These are main-thread adapter settings, never saved musical controls.
+    // The decoder accessor retains its last epoch after retirement, so only
+    // copy it into active while the epoch is actually active.
+    struct MidiCalibrationObservation {
+        MidiExpressionCalibration configured;
+        MidiExpressionCalibration selected;
+        std::optional<MidiExpressionCalibration> active;
+        std::optional<MidiRequest> pending;
+        bool release_pending{false};
+        bool operator==(const MidiCalibrationObservation&) const noexcept = default;
     };
 
     // Main-thread synthetic producer state. MidiDevice remains unopened; its
@@ -825,6 +859,10 @@ private:
         SessionSnapshot snapshot;
         std::uint64_t elapsed_ms;
         std::uint64_t last_submitted_sequence;
+        MidiCalibrationObservation midi_expression;
+        ViewOverlay overlay;
+        std::size_t modal_focus;
+        std::uint64_t error_count;
     };
 
     struct PointerCaptureCounters {
@@ -854,7 +892,50 @@ private:
         bool sdl_captured{false};
         bool ui_captured{false};
         PointerCaptureCounters pointer_capture{};
+        MidiCalibrationObservation midi_expression{};
+        std::size_t modal_focus{0};
     };
+
+    [[nodiscard]] MidiCalibrationObservation midi_calibration_observation() const {
+        return {midi_expression_, selected_midi_expression_,
+            midi_input_.active() ? std::optional{midi_input_.expression_calibration()} : std::nullopt,
+            pending_midi_open_, midi_retirement_waiting_};
+    }
+
+    static void write_midi_calibration(std::ostream& output, const MidiExpressionCalibration& calibration) {
+        output << "{\"minimum\":" << static_cast<unsigned int>(calibration.minimum)
+               << ",\"maximum\":" << static_cast<unsigned int>(calibration.maximum)
+               << ",\"inverted\":" << calibration.inverted << '}';
+    }
+
+    static void write_midi_calibration(std::ostream& output,
+                                       const std::optional<MidiExpressionCalibration>& calibration) {
+        if (calibration) write_midi_calibration(output, *calibration);
+        else output << "null";
+    }
+
+    // Object members are shared by final diagnostics and retained observations.
+    static void write_midi_calibration_members(std::ostream& output,
+                                               const MidiCalibrationObservation& observation) {
+        output << "\"model\":"; json_string(output, kMidiExpressionCalibrationModelId);
+        output << ",\"configured\":"; write_midi_calibration(output, observation.configured);
+        output << ",\"selected\":"; write_midi_calibration(output, observation.selected);
+        output << ",\"selected_valid\":" << valid_midi_expression_calibration(observation.selected);
+        output << ",\"active\":"; write_midi_calibration(output, observation.active);
+        output << ",\"reconnect_pending\":" << observation.pending.has_value()
+               << ",\"release_pending\":" << observation.release_pending << ",\"pending\":";
+        if (observation.pending) {
+            const auto& request = *observation.pending;
+            output << "{\"port\":"; json_string(output, request.port);
+            output << ",\"synthetic\":" << request.synthetic
+                   << ",\"channels\":{\"upper\":" << static_cast<unsigned int>(request.routing.upper_channel)
+                   << ",\"lower\":" << static_cast<unsigned int>(request.routing.lower_channel)
+                   << ",\"pedals\":" << static_cast<unsigned int>(request.routing.pedal_channel)
+                   << "},\"calibration\":";
+            write_midi_calibration(output, request.calibration);
+            output << '}';
+        } else output << "null";
+    }
 
     static void write_presentation_observation(std::ostream& output,
                                                const PresentationObservation& observation) {
@@ -881,7 +962,10 @@ private:
                << ",\"attempts\":" << observation.pointer_capture.attempts
                << ",\"successes\":" << observation.pointer_capture.successes
                << ",\"losses\":" << observation.pointer_capture.losses
-               << ",\"release_calls\":" << observation.pointer_capture.release_calls << "}}";
+               << ",\"release_calls\":" << observation.pointer_capture.release_calls
+               << "},\"modal_focus\":" << observation.modal_focus << ",\"expression_calibration\":{";
+        write_midi_calibration_members(output, observation.midi_expression);
+        output << "}}";
     }
 
     static void write_presentation_observation(std::ostream& output,
@@ -916,7 +1000,7 @@ private:
             {static_cast<std::size_t>(std::count(view.applied.held_keys[0].begin(), view.applied.held_keys[0].end(), true)),
              static_cast<std::size_t>(std::count(view.applied.held_keys[1].begin(), view.applied.held_keys[1].end(), true)),
              static_cast<std::size_t>(std::count(view.applied.held_pedals.begin(), view.applied.held_pedals.end(), true))},
-            captured_, view.pointer_captured, pointer_capture_};
+            captured_, view.pointer_captured, pointer_capture_, midi_calibration_observation(), modal_focus_};
         last_painted_ = observation;
         // Retain the first painted frame and visible-state transitions. The
         // latest frame and capture are always exact even if this history fills.
@@ -932,7 +1016,9 @@ private:
                 previous.held_targets == observation.held_targets &&
                 previous.sdl_captured == observation.sdl_captured &&
                 previous.ui_captured == observation.ui_captured &&
-                previous.pointer_capture == observation.pointer_capture) return;
+                previous.pointer_capture == observation.pointer_capture &&
+                previous.midi_expression == observation.midi_expression &&
+                previous.modal_focus == observation.modal_focus) return;
         }
         if (presentation_observations_.size() == kPresentationObservationCapacity) {
             presentation_observations_truncated_ = true;
@@ -979,7 +1065,11 @@ private:
                << ",\"channels\":{\"upper\":" << static_cast<unsigned int>(midi_routing_.upper_channel)
                << ",\"lower\":" << static_cast<unsigned int>(midi_routing_.lower_channel)
                << ",\"pedals\":" << static_cast<unsigned int>(midi_routing_.pedal_channel)
-               << "},\"drain_budget\":" << kMidiDrainBudget
+               << "},\"expression_calibration\":{";
+        write_midi_calibration_members(output, midi_calibration_observation());
+        output << ",\"pre_shutdown_active\":";
+        write_midi_calibration(output, midi_expression_before_shutdown_);
+        output << "},\"drain_budget\":" << kMidiDrainBudget
                << ",\"maximum_drained_per_turn\":" << midi_maximum_drain_
                << ",\"timing_policy\":\"arrival_order_next_callback_boundary\""
                << ",\"arrival_time_unit\":\"steady_clock_nanoseconds\""
@@ -1062,6 +1152,7 @@ private:
         // running musical observations only after that restore is acknowledged.
         if (!snapshot_available_ || !snapshot_.running ||
             snapshot_.resolved_sequence < intended_sequence_) return;
+        const auto calibration = midi_calibration_observation();
         if (!replay_observations_.empty()) {
             const auto& previous = replay_observations_.back();
             if (previous.snapshot.controls == snapshot_.controls &&
@@ -1069,7 +1160,9 @@ private:
                 previous.snapshot.held_pedals == snapshot_.held_pedals &&
                 previous.snapshot.resolved_sequence == snapshot_.resolved_sequence &&
                 previous.snapshot.last_applied_sequence == snapshot_.last_applied_sequence &&
-                previous.last_submitted_sequence == last_submitted_sequence_) return;
+                previous.last_submitted_sequence == last_submitted_sequence_ &&
+                previous.midi_expression == calibration && previous.overlay == overlay_ &&
+                previous.modal_focus == modal_focus_ && previous.error_count == error_count_) return;
         }
         if (replay_observations_.size() == replay_observation_capacity()) {
             if (!replay_observations_truncated_) fail("Input replay observation capacity was exceeded");
@@ -1078,7 +1171,8 @@ private:
             running_ = false;
             return;
         }
-        replay_observations_.push_back({snapshot_, elapsed, last_submitted_sequence_});
+        replay_observations_.push_back({snapshot_, elapsed, last_submitted_sequence_,
+            calibration, overlay_, modal_focus_, error_count_});
     }
 
     static void write_replay_snapshot(std::ostream& output, const SessionSnapshot& snapshot) {
@@ -1186,7 +1280,11 @@ private:
             output << "{\"elapsed_ms\":" << observation.elapsed_ms
                    << ",\"last_submitted_sequence\":" << observation.last_submitted_sequence << ',';
             write_replay_snapshot(output, observation.snapshot);
-            output << '}';
+            output << ",\"overlay\":"; json_string(output, overlay_name(observation.overlay));
+            output << ",\"modal_focus\":" << observation.modal_focus
+                   << ",\"error_count\":" << observation.error_count << ",\"expression_calibration\":{";
+            write_midi_calibration_members(output, observation.midi_expression);
+            output << "}}";
         }
         output << ']';
     }
@@ -1316,8 +1414,8 @@ private:
             fail(midi_status_);
             return false;
         }
-        if (!midi_input_.begin_epoch(request.routing)) {
-            midi_status_ = "MIDI routing could not begin a fresh input epoch.";
+        if (!midi_input_.begin_epoch(request.routing, request.calibration)) {
+            midi_status_ = "MIDI routing and expression calibration could not begin a fresh input epoch.";
             fail(midi_status_);
             return false;
         }
@@ -1336,6 +1434,7 @@ private:
             }
         }
         midi_routing_ = request.routing;
+        midi_expression_ = request.calibration;
         midi_requested_port_ = std::move(request.port);
         midi_last_poll_ = SDL_GetTicks64();
         midi_startup_failed_ = false;
@@ -1346,16 +1445,29 @@ private:
         return true;
     }
 
-    [[nodiscard]] bool request_midi(std::string port, const MidiRouting& routing) {
-        if (midi_replay_requested()) {
-            midi_status_ = "Synthetic replay is script controlled. Only a later script connect event can open input.";
-            message(midi_status_);
-            return true; // UI Apply cannot enumerate, alter routes, or open a native port.
-        }
+    [[nodiscard]] bool validate_midi_settings(const MidiRouting& routing,
+                                               const MidiExpressionCalibration& calibration) {
         if (!valid_midi_routing(routing)) {
             midi_status_ = "Choose three distinct MIDI channels from 1 through 16.";
             fail(midi_status_);
-            return false; // Preserve the existing transport and routing.
+            return false;
+        }
+        if (!valid_midi_expression_calibration(calibration)) {
+            midi_status_ = "Expression minimum must be below maximum; both endpoints must be from 0 through 127.";
+            fail(midi_status_);
+            return false;
+        }
+        return true;
+    }
+
+    [[nodiscard]] bool request_midi(std::string port, const MidiRouting& routing,
+                                    const MidiExpressionCalibration& calibration) {
+        // Validation precedes even the replay no-op and all retirement/configuration writes.
+        if (!validate_midi_settings(routing, calibration)) return false;
+        if (midi_replay_requested()) {
+            midi_status_ = "Synthetic replay is script controlled. Apply retains its configured route and calibration; use CLI settings.";
+            message(midi_status_);
+            return true; // UI Apply cannot enumerate, alter configuration, or open a native port.
         }
         if (!port.empty()) midi_native_requested_ = true;
         if (!port.empty() && (!MidiDevice::backend_available() || midi_shutdown_failed_)) {
@@ -1370,21 +1482,23 @@ private:
             return false;
         }
         if (midi_input_.active() && midi_.device.is_open() && midi_.inbox->faults() == 0 &&
-            port == midi_requested_port_ && routing == midi_routing_) {
-            midi_status_ = "The selected MIDI port and channels are already active.";
+            port == midi_requested_port_ && routing == midi_input_.routing() &&
+            calibration == midi_input_.expression_calibration()) {
+            midi_status_ = "The selected MIDI port, channels, and expression calibration are already active.";
             return true;
         }
         retire_midi("MIDI input retired. Waiting for its scoped release acknowledgment.");
         if (midi_shutdown_failed_ || midi_release_failed_) return false;
         midi_requested_port_ = port;
         midi_routing_ = routing;
+        midi_expression_ = calibration;
         if (port.empty()) {
             midi_startup_failed_ = false;
             midi_status_ = midi_retirement_waiting_ ?
                 "MIDI disconnected; waiting for scoped releases to be acknowledged." : "No MIDI input selected.";
             return true;
         }
-        pending_midi_open_ = MidiRequest{std::move(port), routing};
+        pending_midi_open_ = MidiRequest{std::move(port), routing, calibration};
         if (midi_retirement_waiting_) {
             midi_status_ = "Apply requested. Waiting for the previous MIDI release acknowledgment.";
             return true;
@@ -1404,7 +1518,7 @@ private:
             fail(midi_status_);
             return;
         }
-        pending_midi_open_ = MidiRequest{{}, midi_routing_, true};
+        pending_midi_open_ = MidiRequest{{}, midi_routing_, midi_expression_, true};
         if (midi_retirement_waiting_) {
             increment_counter(midi_replay_.connect_barriers);
             midi_status_ = "Synthetic replay connect is waiting for the previous scoped release acknowledgment.";
@@ -1492,6 +1606,7 @@ private:
             ++midi_replay_.cursor;
             ++delivered;
             deliver_midi_replay_event(event);
+            record_replay_observation(elapsed);
         }
         midi_replay_.maximum_events_per_turn = std::max(midi_replay_.maximum_events_per_turn, delivered);
         if (delivered == kMidiReplayEventBudget && midi_replay_.cursor < midi_replay_.plan.event_count &&
@@ -1943,11 +2058,12 @@ private:
         modal_focus_ = overlay == ViewOverlay::Help ? 5U : 0U;
         if (overlay == ViewOverlay::Midi) {
             selected_midi_routing_ = midi_routing_;
+            selected_midi_expression_ = midi_expression_;
             midi_choices_.clear();
             if (midi_replay_requested()) {
                 midi_choices_.emplace_back("Synthetic replay (script controlled)");
                 selected_midi_port_ = 0;
-                midi_status_ = "Synthetic replay: Apply leaves the script route unchanged; Disconnect retires MIDI owners.";
+                midi_status_ = "Synthetic replay: Apply retains the configured route and calibration; Disconnect retires MIDI owners.";
                 message("Synthetic replay uses explicit script connect events. Native MIDI ports are not enumerated.");
                 return;
             }
@@ -1971,7 +2087,7 @@ private:
                     begin_midi_discovery();
                 }
             } else midi_status_ = "MIDI backend unavailable in this build.";
-            message("MIDI: choose an exact port and distinct channels; Apply connects; Disconnect releases MIDI notes.");
+            message("MIDI: choose a port, distinct channels, and expression endpoints; Apply connects; Disconnect releases MIDI notes.");
             return;
         }
         if (overlay != ViewOverlay::Audio) return;
@@ -2004,24 +2120,31 @@ private:
     }
 
     [[nodiscard]] std::size_t modal_control_count() const noexcept {
-        return overlay_ == ViewOverlay::Midi ? 8U : 6U;
+        return overlay_ == ViewOverlay::Midi ? 11U : 6U;
     }
 
-    [[nodiscard]] std::array<UiRect, 8> modal_rectangles() const noexcept {
+    [[nodiscard]] std::array<UiRect, 11> modal_rectangles() const noexcept {
         if (overlay_ == ViewOverlay::Midi) {
             const auto boxes = midi_overlay_layout(ui_.layout().width, ui_.layout().height);
             return {boxes.previous_port, boxes.next_port, boxes.upper_channel,
-                    boxes.lower_channel, boxes.pedal_channel, boxes.apply, boxes.disconnect, boxes.close};
+                    boxes.lower_channel, boxes.pedal_channel, boxes.expression_minimum,
+                    boxes.expression_maximum, boxes.expression_direction, boxes.apply, boxes.disconnect, boxes.close};
         }
         const auto boxes = audio_overlay_layout(ui_.layout().width, ui_.layout().height);
         return {boxes.previous_device, boxes.next_device, boxes.sample_rate,
-                boxes.buffer_frames, boxes.apply, boxes.close, {}, {}};
+                boxes.buffer_frames, boxes.apply, boxes.close, {}, {}, {}, {}, {}};
     }
 
     [[nodiscard]] std::uint8_t* selected_midi_channel() noexcept {
         if (modal_focus_ == 2) return &selected_midi_routing_.upper_channel;
         if (modal_focus_ == 3) return &selected_midi_routing_.lower_channel;
         if (modal_focus_ == 4) return &selected_midi_routing_.pedal_channel;
+        return nullptr;
+    }
+
+    [[nodiscard]] std::uint8_t* selected_midi_endpoint() noexcept {
+        if (modal_focus_ == 5) return &selected_midi_expression_.minimum;
+        if (modal_focus_ == 6) return &selected_midi_expression_.maximum;
         return nullptr;
     }
 
@@ -2034,7 +2157,10 @@ private:
             } else if (auto* channel = selected_midi_channel()) {
                 *channel = static_cast<std::uint8_t>(direction < 0 ? (*channel == 1 ? 16 : *channel - 1) :
                     (*channel == 16 ? 1 : *channel + 1));
-            }
+            } else if (auto* endpoint = selected_midi_endpoint()) {
+                *endpoint = static_cast<std::uint8_t>(std::clamp(static_cast<int>(*endpoint) +
+                    (direction < 0 ? -1 : 1), 0, 127));
+            } else if (modal_focus_ == 7) selected_midi_expression_.inverted = !selected_midi_expression_.inverted;
             return;
         }
         if (modal_focus_ <= 1 && !audio_choices_.empty()) {
@@ -2046,9 +2172,9 @@ private:
 
     void activate_modal() {
         if (overlay_ == ViewOverlay::Midi) {
-            if (modal_focus_ == 7) { close_overlay(); return; }
-            if (modal_focus_ < 5) { change_modal_value(modal_focus_ == 0 ? -1 : 1); return; }
-            if (modal_focus_ == 6) {
+            if (modal_focus_ == 10) { close_overlay(); return; }
+            if (modal_focus_ < 8) { change_modal_value(modal_focus_ == 0 ? -1 : 1); return; }
+            if (modal_focus_ == 9) {
                 increment_counter(midi_discovery_action_revision_);
                 retire_midi("MIDI disconnected by request. MIDI owners are being released.");
                 midi_requested_port_.clear();
@@ -2061,6 +2187,14 @@ private:
                             "MIDI disconnected; waiting for scoped release acknowledgment." : "No MIDI input selected.";
                     }
                 }
+                return;
+            }
+            // Invalid selection must be reported even for script-owned input,
+            // and before discovery revisions or the active transport change.
+            if (!validate_midi_settings(selected_midi_routing_, selected_midi_expression_)) return;
+            if (midi_replay_requested()) {
+                const bool requested = request_midi({}, selected_midi_routing_, selected_midi_expression_);
+                (void)requested;
                 return;
             }
             if (selected_midi_port_ >= midi_choices_.size()) return;
@@ -2076,7 +2210,7 @@ private:
                 return;
             }
             increment_counter(midi_discovery_action_revision_);
-            const bool requested = request_midi(std::move(port), selected_midi_routing_);
+            const bool requested = request_midi(std::move(port), selected_midi_routing_, selected_midi_expression_);
             (void)requested;
             return; // Keep the selected configuration and connection result reviewable.
         }
@@ -2114,6 +2248,8 @@ private:
                 if (modal_focus_ <= 1 && !midi_choices_.empty()) {
                     selected_midi_port_ = end ? midi_choices_.size() - 1 : 0;
                 } else if (auto* channel = selected_midi_channel()) *channel = end ? 16 : 1;
+                else if (auto* endpoint = selected_midi_endpoint()) *endpoint = end ? 127 : 0;
+                else if (modal_focus_ == 7) selected_midi_expression_.inverted = end;
                 return;
             }
             if (modal_focus_ <= 1) selected_device_ = end ? audio_choices_.size() - 1 : 0;
@@ -2131,7 +2267,11 @@ private:
         const bool accepted = dispatch(ui_.key(input)); // Up precedes every modal/modifier/focus gate.
         (void)accepted;
         if (!input.down) return;
-        if (previous_overlay != ViewOverlay::None) { modal_key(input); return; }
+        if (previous_overlay != ViewOverlay::None) {
+            modal_key(input);
+            if (replay_requested()) record_replay_observation(SDL_GetTicks64() - replay_started_);
+            return;
+        }
         if (input.repeat || input.alt) return;
         if (input.control || input.meta) {
             if (event.keysym.scancode == SDL_SCANCODE_S) request_save();
@@ -2139,6 +2279,7 @@ private:
             else if (event.keysym.scancode == SDL_SCANCODE_COMMA) open_overlay(ViewOverlay::Audio);
             else if (event.keysym.scancode == SDL_SCANCODE_M) open_overlay(ViewOverlay::Midi);
         } else if (event.keysym.scancode == SDL_SCANCODE_SLASH && input.shift) open_overlay(ViewOverlay::Help);
+        if (replay_requested()) record_replay_observation(SDL_GetTicks64() - replay_started_);
     }
 
     void handle_event(const SDL_Event& event) {
@@ -2167,7 +2308,12 @@ private:
                 const auto rectangles = modal_rectangles();
                 const std::size_t first = overlay_ == ViewOverlay::Help ? 5U : 0U;
                 for (std::size_t index = first; index < modal_control_count(); ++index) {
-                    if (rectangles[index].contains(point)) { modal_focus_ = index; activate_modal(); break; }
+                    if (rectangles[index].contains(point)) {
+                        modal_focus_ = index;
+                        activate_modal();
+                        if (replay_requested()) record_replay_observation(SDL_GetTicks64() - replay_started_);
+                        break;
+                    }
                 }
             } else {
                 increment_counter(pointer_capture_.attempts);
@@ -2291,6 +2437,10 @@ private:
         information.selected_midi_port = selected_midi_port_;
         information.selected_midi_channels = {selected_midi_routing_.upper_channel,
             selected_midi_routing_.lower_channel, selected_midi_routing_.pedal_channel};
+        information.selected_midi_expression = selected_midi_expression_;
+        information.midi_expression_active = midi_input_.active();
+        if (midi_input_.active()) information.active_midi_expression = midi_input_.expression_calibration();
+        information.midi_reconnect_pending = pending_midi_open_.has_value();
         information.midi_messages = midi_input_.diagnostics().packets;
         const auto inspection = make_inspection_document(profile_, ui_.view(),
             {snapshot_available_, snapshot_read_succeeded_});
@@ -2375,6 +2525,9 @@ private:
     MidiInputDiagnostics midi_final_input_{};
     MidiRouting midi_routing_{};
     MidiRouting selected_midi_routing_{};
+    MidiExpressionCalibration midi_expression_{};
+    MidiExpressionCalibration selected_midi_expression_{};
+    std::optional<MidiExpressionCalibration> midi_expression_before_shutdown_;
     std::vector<std::string> audio_choices_;
     std::vector<std::string> midi_choices_;
     std::string midi_requested_port_;

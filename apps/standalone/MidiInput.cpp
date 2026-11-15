@@ -1,5 +1,6 @@
 #include "MidiInput.h"
 
+#include <algorithm>
 #include <limits>
 
 namespace hammond::standalone {
@@ -134,9 +135,27 @@ bool valid_midi_routing(const MidiRouting& routing) noexcept {
            routing.lower_channel != routing.pedal_channel;
 }
 
-bool MidiInput::begin_epoch(const MidiRouting& routing) noexcept {
-    if (active_ || !valid_midi_routing(routing)) return false;
+bool valid_midi_expression_calibration(
+    const MidiExpressionCalibration& calibration) noexcept {
+    return calibration.minimum < calibration.maximum && calibration.maximum <= 127;
+}
+
+bool map_midi_expression(const MidiExpressionCalibration& calibration,
+                         std::uint8_t raw, double& destination) noexcept {
+    if (!valid_midi_expression_calibration(calibration) || raw > 127) return false;
+    const int extent = static_cast<int>(calibration.maximum) - calibration.minimum;
+    const int travel = std::clamp(static_cast<int>(raw) - calibration.minimum, 0, extent);
+    const double value = static_cast<double>(travel) / static_cast<double>(extent);
+    destination = calibration.inverted ? 1.0 - value : value;
+    return true;
+}
+
+bool MidiInput::begin_epoch(const MidiRouting& routing,
+                             const MidiExpressionCalibration& calibration) noexcept {
+    if (active_ || !valid_midi_routing(routing) ||
+        !valid_midi_expression_calibration(calibration)) return false;
     routing_ = routing;
+    expression_calibration_ = calibration;
     last_arrival_ns_ = 0;
     have_arrival_ = false;
     active_ = true;
@@ -224,6 +243,20 @@ MidiDecoded MidiInput::decode(const MidiPacket& packet) noexcept {
 
     if (family == 0xB0U) {
         const auto controller = packet.bytes[1];
+        if (controller == 120 || controller == 121) {
+            if (packet.bytes[2] != 0) return finish(MidiDecodeStatus::OutOfRange);
+            if (controller == 120) {
+                result.action = SessionCommand{ScopedSoundOff{
+                    division == 2 ? SoundOffDomain::Pedal : SoundOffDomain::Manual,
+                    static_cast<std::uint8_t>(division == 2 ? 0 : division),
+                    kMidiOwnerChannels[division]}};
+            } else {
+                // This is a normalized controller default, not raw CC11=127.
+                // Calibration must not invert or attenuate Reset Controllers.
+                result.action = MidiParameterEdit{8192, 1.0};
+            }
+            return finish(MidiDecodeStatus::Action);
+        }
         if (controller == 123) {
             result.action = scoped_release(division);
             return finish(MidiDecodeStatus::Action);
@@ -231,7 +264,12 @@ MidiDecoded MidiInput::decode(const MidiPacket& packet) noexcept {
 
         std::uint32_t parameter_id = 0;
         if (controller == 11) {
-            parameter_id = 8192;
+            double normalized = 0.0;
+            if (!map_midi_expression(expression_calibration_, packet.bytes[2], normalized)) {
+                return finish(MidiDecodeStatus::OutOfRange);
+            }
+            result.action = MidiParameterEdit{8192, normalized};
+            return finish(MidiDecodeStatus::Action);
         } else if (controller >= 16 && controller <= 24 && division < 2) {
             // Permanent upper/lower B-bank IDs. Neither the edited nor the
             // sounding bank affects these identities or selects/enables B.

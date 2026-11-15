@@ -86,6 +86,48 @@ def reject_nonfinite(token: str) -> None:
     raise ValueError(f"Non-JSON numeric token: {token}")
 
 
+@dataclass(frozen=True)
+class ArraySchema:
+    element: object
+
+
+@dataclass(frozen=True)
+class NullableSchema:
+    element: object
+
+
+# Public adapter diagnostics are independent of musical saved controls. A
+# selected interval may temporarily be invalid; accepted/pending intervals may
+# not. Keep exact member/type checks, including bool versus int distinctions.
+EXPRESSION_SETTINGS_SCHEMA = {"minimum": int, "maximum": int, "inverted": bool}
+EXPRESSION_OBSERVATION_SCHEMA = {
+    "model": str, "configured": EXPRESSION_SETTINGS_SCHEMA,
+    "selected": EXPRESSION_SETTINGS_SCHEMA, "selected_valid": bool,
+    "active": NullableSchema(EXPRESSION_SETTINGS_SCHEMA),
+    "reconnect_pending": bool, "release_pending": bool,
+    "pending": NullableSchema({
+        "port": str, "synthetic": bool,
+        "channels": {"upper": int, "lower": int, "pedals": int},
+        "calibration": EXPRESSION_SETTINGS_SCHEMA,
+    }),
+}
+EXPRESSION_FINAL_SCHEMA = {
+    **EXPRESSION_OBSERVATION_SCHEMA,
+    "pre_shutdown_active": NullableSchema(EXPRESSION_SETTINGS_SCHEMA),
+}
+REPLAY_EXPRESSION_FIELDS = {
+    "overlay": str, "modal_focus": int, "error_count": int,
+    "expression_calibration": EXPRESSION_OBSERVATION_SCHEMA,
+}
+DEFAULT_EXPRESSION_SETTINGS = {"minimum": 0, "maximum": 127, "inverted": False}
+DEFAULT_EXPRESSION_OBSERVATION = {
+    "model": "midi-expression-endpoints-v1",
+    "configured": DEFAULT_EXPRESSION_SETTINGS, "selected": DEFAULT_EXPRESSION_SETTINGS,
+    "selected_valid": True, "active": None, "pending": None,
+    "reconnect_pending": False, "release_pending": False,
+}
+
+
 MIDI_SCHEMA = {
     "source": str, "backend_available": bool, "backend": str,
     "requested_port": str, "port_name": str, "opened_port_index": int,
@@ -94,6 +136,7 @@ MIDI_SCHEMA = {
     "quiescent_after_shutdown": bool, "diagnostics_stable_after_shutdown": bool,
     "shutdown_failed": bool, "startup_failed": bool,
     "channels": {"upper": int, "lower": int, "pedals": int},
+    "expression_calibration": EXPRESSION_FINAL_SCHEMA,
     "drain_budget": int, "maximum_drained_per_turn": int,
     "timing_policy": str, "arrival_time_unit": str, "arrival_time_source": str,
     "arrival_time_is_sample_time": bool, "retirements": int,
@@ -127,16 +170,6 @@ MIDI_SCHEMA = {
 }
 
 
-@dataclass(frozen=True)
-class ArraySchema:
-    element: object
-
-
-@dataclass(frozen=True)
-class NullableSchema:
-    element: object
-
-
 def assert_schema(case: unittest.TestCase, value: object, schema: object, name: str = "$") -> None:
     """Exact keys and types; in particular, bool never satisfies an int field."""
     if isinstance(schema, NullableSchema):
@@ -163,6 +196,47 @@ def assert_schema(case: unittest.TestCase, value: object, schema: object, name: 
         case.assertIs(type(value), schema, name)
 
 
+def assert_expression_calibration(case: unittest.TestCase, value: dict, *,
+                                  final: bool = False, active: bool | None = None,
+                                  pre_shutdown_active: bool | None = None) -> None:
+    """Validate exact public shape and independent endpoint/lifecycle invariants."""
+    schema = EXPRESSION_FINAL_SCHEMA if final else EXPRESSION_OBSERVATION_SCHEMA
+    assert_schema(case, value, schema, "expression_calibration")
+    case.assertEqual(value["model"], "midi-expression-endpoints-v1")
+
+    def settings(item: dict, *, ordered: bool = True) -> None:
+        for endpoint in ("minimum", "maximum"):
+            case.assertGreaterEqual(item[endpoint], 0, endpoint)
+            case.assertLessEqual(item[endpoint], 127, endpoint)
+        if ordered:
+            case.assertLess(item["minimum"], item["maximum"])
+
+    settings(value["configured"])
+    settings(value["selected"], ordered=False)
+    case.assertEqual(value["selected_valid"],
+                     value["selected"]["minimum"] < value["selected"]["maximum"])
+    if value["active"] is not None:
+        settings(value["active"])
+    if active is not None:
+        case.assertEqual(value["active"] is not None, active)
+    case.assertEqual(value["reconnect_pending"], value["pending"] is not None)
+    pending = value["pending"]
+    if pending is not None:
+        settings(pending["calibration"])
+        channels = list(pending["channels"].values())
+        case.assertEqual(len(set(channels)), 3)
+        for channel in channels:
+            case.assertGreaterEqual(channel, 1)
+            case.assertLessEqual(channel, 16)
+        if pending["synthetic"]:
+            case.assertEqual(pending["port"], "")
+    if final:
+        if value["pre_shutdown_active"] is not None:
+            settings(value["pre_shutdown_active"])
+        if pre_shutdown_active is not None:
+            case.assertEqual(value["pre_shutdown_active"] is not None, pre_shutdown_active)
+
+
 def assert_no_midi_input(case: unittest.TestCase, report: dict) -> None:
     """No selected port or replay: the native transport must stay unopened.
 
@@ -172,6 +246,8 @@ def assert_no_midi_input(case: unittest.TestCase, report: dict) -> None:
     """
     midi = report["midi"]
     assert_schema(case, midi, MIDI_SCHEMA, "$.midi")
+    assert_expression_calibration(case, midi["expression_calibration"], final=True,
+                                  active=False, pre_shutdown_active=False)
     case.assertNotIn("midi_replay", report)
     available = midi["backend_available"]
     if available:
@@ -187,6 +263,7 @@ def assert_no_midi_input(case: unittest.TestCase, report: dict) -> None:
         "quiescent_after_shutdown": True, "diagnostics_stable_after_shutdown": True,
         "shutdown_failed": False, "startup_failed": False,
         "channels": {"upper": 1, "lower": 2, "pedals": 3},
+        "expression_calibration": {**DEFAULT_EXPRESSION_OBSERVATION, "pre_shutdown_active": None},
         "drain_budget": 32, "maximum_drained_per_turn": 0,
         "timing_policy": "arrival_order_next_callback_boundary",
         "arrival_time_unit": "steady_clock_nanoseconds", "arrival_time_source": "none",
@@ -234,6 +311,7 @@ PRESENTATION_FRAME_SCHEMA = {
         "sdl_captured": bool, "ui_captured": bool,
         "attempts": int, "successes": int, "losses": int, "release_calls": int,
     },
+    "modal_focus": int, "expression_calibration": EXPRESSION_OBSERVATION_SCHEMA,
 }
 PRESENTATION_SCHEMA = {
     "initial_workspace": str, "initial_presentation": str,
@@ -275,6 +353,11 @@ def assert_presentation(case: unittest.TestCase, report: dict) -> None:
         case.assertIn(frame["workspace"], ("play", "rotary", "service"))
         case.assertIn(frame["presentation"], ("dimensional", "flat"))
         case.assertIn(frame["overlay"], ("none", "help", "audio", "midi"))
+        case.assertGreaterEqual(frame["modal_focus"], 0)
+        case.assertLess(frame["modal_focus"], 11)
+        if frame["overlay"] in ("audio", "help"):
+            case.assertLess(frame["modal_focus"], 6)
+        assert_expression_calibration(case, frame["expression_calibration"])
         case.assertGreaterEqual(frame["window_width"], 960)
         case.assertGreaterEqual(frame["window_height"], 700)
         case.assertLessEqual(max(frame["window_width"], frame["window_height"]), 8192)

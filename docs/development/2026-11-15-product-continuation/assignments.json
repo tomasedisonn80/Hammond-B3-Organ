@@ -176,21 +176,23 @@
       "wave": 3,
       "agent": "/root/w03_a13_crossover_native",
       "task": "Four-state passive crossover native implementation",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A13-crossover-native.md",
       "owned_files": [
         "include/hammond/LeslieCrossover.h",
         "src/LeslieCrossover.cpp",
         "tests/test_leslie_crossover.cpp",
         "docs/development/2026-11-15-product-continuation/notes/A13-crossover-native.md"
-      ]
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "aa486688ebfb5133bc83fb9b378713822afc4611c3aa7121bd9df0b0be215bf9"
     },
     {
       "id": "A14",
       "wave": 3,
       "agent": "/root/w03_a14_midi_adapter",
       "task": "Scoped MIDI sound-off/reset and expression calibration adapter",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A14-midi-adapter.md",
       "owned_files": [
         "apps/standalone/Session.h",
@@ -201,18 +203,212 @@
         "apps/standalone/tests/test_standalone_expression_calibration.cpp",
         "apps/standalone/tests/test_standalone_midi_input.cpp",
         "docs/development/2026-11-15-product-continuation/notes/A14-midi-adapter.md"
-      ]
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "fd35fd2f9f104e66b4bcd73f166b8e8f17417359596105abdc2d9531491101f2"
     },
     {
       "id": "A15",
       "wave": 3,
       "agent": "/root/w03_a15_visual_implementation",
       "task": "Native wide drawbar/key legibility and materials",
-      "status": "running",
+      "status": "accepted",
       "note": "notes/A15-visual-implementation.md",
       "owned_files": [
         "apps/standalone/InstrumentView.cpp",
         "docs/development/2026-11-15-product-continuation/notes/A15-visual-implementation.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "d5f894c8a6e53fdac18d7af08a6034f495521b6761e224cc3d6c3f9ab850bf83"
+    },
+    {
+      "id": "A16",
+      "wave": 3,
+      "agent": "/root/w03_a16_native_calibration",
+      "task": "Native CLI, epoch lifecycle and calibration interaction",
+      "status": "accepted",
+      "note": "notes/A16-native-calibration.md",
+      "owned_files": [
+        "apps/standalone/main.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A16-native-calibration.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "c67b1557c80b5d354adcf0b7b798313063fc09791e23770d4b9944a6e6d945d6"
+    },
+    {
+      "id": "A17",
+      "wave": 3,
+      "agent": "/root/w03_a17_crossover_reference",
+      "task": "Independent Python circuit reference and registry validator",
+      "status": "accepted",
+      "note": "notes/A17-crossover-reference.md",
+      "owned_files": [
+        "tools/crossover_reference.py",
+        "tests/test_crossover_reference.py",
+        "docs/development/2026-11-15-product-continuation/notes/A17-crossover-reference.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations. Near-DC nodal-reference cancellation and authorized A19 correction retained explicitly.",
+      "note_sha256": "cf2156d48f32c8e0fc1f9c5c5b0263d28fe861283546555daf8cbf332decec34"
+    },
+    {
+      "id": "A18",
+      "wave": 3,
+      "agent": "/root/w03_a18_calibration_overlay",
+      "task": "Native expression calibration dialog layout and paint",
+      "status": "accepted",
+      "note": "notes/A18-calibration-overlay.md",
+      "owned_files": [
+        "apps/standalone/InstrumentView.h",
+        "apps/standalone/InstrumentView.cpp (MIDI overlay only)",
+        "docs/development/2026-11-15-product-continuation/notes/A18-calibration-overlay.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "b4db01b4f24ded7d58b8249ffff8a7ae4ba46ac0aa90098028b95eded098c601"
+    },
+    {
+      "id": "A19",
+      "wave": 4,
+      "agent": "/root/w04_a19_crossover_response",
+      "task": "Independent native probe, warped response and processed-sine acceptance",
+      "status": "accepted",
+      "note": "notes/A19-crossover-response.md",
+      "owned_files": [
+        "tools/crossover_probe.cpp",
+        "tests/test_crossover_acceptance.py",
+        "docs/development/2026-11-15-product-continuation/notes/A19-crossover-response.md",
+        "tools/crossover_reference.py (near-DC KCL fix)",
+        "tests/test_crossover_reference.py (near-DC regression)"
+      ],
+      "result": "Independent review caught near-DC cancellation in Python nodal current; ground-return KCL fix authorized and17reference/3native acceptance tests passed; final note pending",
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations. Near-DC nodal-reference cancellation and authorized A19 correction retained explicitly.",
+      "note_sha256": "983e6e679deb3a4573e10461c788a4c001096324d0e1c56e3bdefec23ecf7c43"
+    },
+    {
+      "id": "A20",
+      "wave": 4,
+      "agent": "/root/w04_a20_crossover_lifecycle",
+      "task": "Independent crossover lifecycle, physical conservation and transaction acceptance",
+      "status": "accepted",
+      "note": "notes/A20-crossover-lifecycle.md",
+      "owned_files": [
+        "tests/test_leslie_crossover_lifecycle.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A20-crossover-lifecycle.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "c4d86db8729c2b148c3fc4634905266dfed3942ad70816d80c790d79443aa320"
+    },
+    {
+      "id": "A21",
+      "wave": 4,
+      "agent": "/root/w04_a21_channel_acceptance",
+      "task": "Independent scoped MIDI queue, ownership and recovery acceptance",
+      "status": "accepted",
+      "note": "notes/A21-channel-acceptance.md",
+      "owned_files": [
+        "apps/standalone/tests/test_standalone_channel_acceptance.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A21-channel-acceptance.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "9abf01918b41b21662971447b649f13e97ecd983407134a3149a9c99c84af371"
+    },
+    {
+      "id": "A22",
+      "wave": 4,
+      "agent": "/root/w04_a22_calibration_diagnostics",
+      "task": "Strict calibration diagnostics schemas and native state observations",
+      "status": "accepted",
+      "note": "notes/A22-calibration-diagnostics.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_app.py",
+        "apps/standalone/native_tests/test_standalone_expression_diagnostics.py",
+        "docs/development/2026-11-15-product-continuation/notes/A22-calibration-diagnostics.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "810ee88bfdd59b0ead8bf844b065985739ba26bfa81fe08157f7714afec9065a"
+    },
+    {
+      "id": "A23",
+      "wave": 4,
+      "agent": "/root/w04_a23_visual_acceptance",
+      "task": "Independent bounded raster masks, compact identity and cap-front contract migration",
+      "status": "accepted",
+      "note": "notes/A23-visual-acceptance.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_product_visual.cpp",
+        "apps/standalone/native_tests/test_standalone_waveform_material.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A23-visual-acceptance.md"
+      ],
+      "note_sha256": "02425e31339cdfb7ae1e53b1784f2dee5fae9bace9bf76a3c89de54aba27e2c7",
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations."
+    },
+    {
+      "id": "A24",
+      "wave": 4,
+      "agent": "/root/w04_a24_native_midi_acceptance",
+      "task": "Native MIDI CLI/dialog and existing replay contract migration and acceptance",
+      "status": "accepted",
+      "note": "notes/A24-native-midi-acceptance.md",
+      "owned_files": [
+        "apps/standalone/native_tests/test_standalone_midi_cli.py",
+        "apps/standalone/native_tests/test_standalone_midi_replay.py",
+        "docs/development/2026-11-15-product-continuation/notes/A24-native-midi-acceptance.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations.",
+      "note_sha256": "b01f10d2d1a1aa1566f217d9ea8e8b34dae7a45f92b310b4d445e2e0186c094a"
+    },
+    {
+      "id": "A25",
+      "wave": 5,
+      "agent": "/root/w05_a25_crossover_allocation",
+      "task": "Calibrated prepared crossover allocation/deallocation acceptance",
+      "status": "accepted",
+      "note": "notes/A25-crossover-allocation.md",
+      "owned_files": [
+        "tests/test_leslie_crossover_allocation.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A25-crossover-allocation.md"
+      ],
+      "acceptance": "Delivered implementation or independent acceptance reviewed; root coherent all-target Release build and176/176CTest passed177.92s. Notes/reports retain exact scope and physical/device/fidelity limitations. Local leak-enabled sanitizer and empty-main control blocked by ptrace; hosted qualification required.",
+      "note_sha256": "ad046b2ce83b4f0d2cae860324b8901bc575680da4c6ecc1eb3525201f9c93bc"
+    },
+    {
+      "id": "A26",
+      "wave": 5,
+      "agent": "/root/w05_a26_native_calibration_lifecycle",
+      "task": "Real native calibration and reconnect lifecycle through isolated thread-safe test dependency",
+      "status": "running",
+      "note": "notes/A26-native-calibration-lifecycle.md",
+      "owned_files": [
+        "apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
+        "apps/standalone/native_tests/fake_calibration/RtMidi.h",
+        "apps/standalone/native_tests/test_standalone_native_calibration.py",
+        "docs/development/2026-11-15-product-continuation/notes/A26-native-calibration-lifecycle.md"
+      ]
+    },
+    {
+      "id": "A27",
+      "wave": 5,
+      "agent": "/root/w05_a27_paint_performance",
+      "task": "Paired before/after native paint timing and bounded-resource qualification",
+      "status": "running",
+      "note": "notes/A27-paint-performance.md",
+      "owned_files": [
+        "tools/standalone_paint_benchmark.cpp",
+        "docs/development/2026-11-15-product-continuation/notes/A27-paint-performance.md",
+        "docs/development/2026-11-15-product-continuation/reports/A27-paint-performance.json"
+      ]
+    },
+    {
+      "id": "A28",
+      "wave": 5,
+      "agent": "/root/w05_a28_crossover_characterization",
+      "task": "Same-Hz electrical characterization, reproducible plot and next numerical gate",
+      "status": "running",
+      "note": "notes/A28-crossover-characterization.md",
+      "owned_files": [
+        "docs/LESLIE_CROSSOVER_CHARACTERIZATION.md",
+        "tools/plot_crossover_characterization.py",
+        "docs/design/crossover/",
+        "docs/development/2026-11-15-product-continuation/notes/A28-crossover-characterization.md"
       ]
     }
   ]

@@ -1,0 +1,11 @@
+COMMAND: ['g++', '-std=c++20', '-O1', '-g1', '-fsanitize=address,undefined', '-fno-omit-frame-pointer', '-Wall', '-Wextra', '-Wpedantic', '-Wconversion', '-Wsign-conversion', '-Wshadow', '-Werror', '-Iinclude', '-Itests', '-DHAMMOND_SOURCE_DIR="/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"', '-DHAMMOND_TEST_PROFILE="/workspace/scratch/5b7d983ac078/build-native/nominal.b3p"', 'tests/test_leslie_crossover_allocation.cpp', 'src/LeslieCrossover.cpp', '-o', '/workspace/scratch/5b7d983ac078/a25-checks/test_leslie_crossover_allocation_sanitized']
+
+compile_exit=0
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1
+RUN:
+==13==LeakSanitizer has encountered a fatal error.
+==13==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1
+==13==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)
+
+run_exit=1
+elapsed_seconds=0.21761042499929317

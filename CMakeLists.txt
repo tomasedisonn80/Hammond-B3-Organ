@@ -166,6 +166,11 @@ add_executable(hammond_scanner_line_probe tools/scanner_line_probe.cpp)
 target_link_libraries(hammond_scanner_line_probe PRIVATE hammond_core)
 hammond_configure_target(hammond_scanner_line_probe)
 
+# Independent passive electrical probe; no Engine or acoustic path is added.
+add_executable(hammond_crossover_probe tools/crossover_probe.cpp)
+target_link_libraries(hammond_crossover_probe PRIVATE hammond_core)
+hammond_configure_target(hammond_crossover_probe)
+
 # Independent normalized mouth-input renderer; no organ profile or live route.
 set(HAMMOND_ROTARY_AUTHORING "${CMAKE_CURRENT_SOURCE_DIR}/data/rotary/nominal-research-v1.json")
 set(HAMMOND_ROTARY_HEADER "${HAMMOND_GENERATED_INCLUDE_DIR}/RotaryNominalProfile.h")
@@ -260,7 +265,14 @@ if(BUILD_TESTING)
         set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
             "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_scanner_line_probe>")
     endforeach()
-    list(APPEND HAMMOND_TEST_TARGETS hammond_scanner_line_probe)
+    list(APPEND HAMMOND_TEST_TARGETS hammond_scanner_line_probe hammond_crossover_probe)
+
+    if(TEST python_test_crossover_acceptance)
+        set_property(TEST python_test_crossover_acceptance APPEND PROPERTY ENVIRONMENT
+            "HAMMOND_CROSSOVER_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_crossover_probe>")
+        set_tests_properties(python_test_crossover_acceptance PROPERTIES
+            TIMEOUT 90 LABELS "crossover;electrical;independent")
+    endif()
 
     if(TEST python_test_rotary_motion_acceptance)
         set_property(TEST python_test_rotary_motion_acceptance APPEND PROPERTY ENVIRONMENT

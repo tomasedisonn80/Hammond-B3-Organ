@@ -203,6 +203,19 @@ if(HAMMOND_BUILD_STANDALONE)
         set_tests_properties(test_standalone_waveform_material PROPERTIES
             TIMEOUT 60 LABELS "standalone;native;material;geometry")
         list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_waveform_material)
+        add_executable(test_standalone_product_visual
+            native_tests/test_standalone_product_visual.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_product_visual PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_product_visual PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_product_visual)
+        add_test(NAME test_standalone_product_visual COMMAND test_standalone_product_visual)
+        set_tests_properties(test_standalone_product_visual PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;material;geometry")
+        if(HAMMOND_ENABLE_SANITIZERS)
+            set_tests_properties(test_standalone_product_visual PROPERTIES TIMEOUT 240)
+        endif()
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_product_visual)
         add_executable(test_standalone_scaled_view
             native_tests/test_standalone_scaled_view.cpp InstrumentView.cpp)
         target_link_libraries(test_standalone_scaled_view PRIVATE
@@ -290,6 +303,12 @@ if(HAMMOND_BUILD_STANDALONE)
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
                 "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_midi_cli.py")
         set_tests_properties(test_standalone_midi_cli PROPERTIES TIMEOUT 90 LABELS "standalone;native;midi")
+        add_test(NAME test_standalone_expression_diagnostics
+            COMMAND "${CMAKE_COMMAND}" -E env
+                "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"
+                "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/native_tests/test_standalone_expression_diagnostics.py")
+        set_tests_properties(test_standalone_expression_diagnostics PROPERTIES
+            TIMEOUT 90 LABELS "standalone;native;midi")
         add_test(NAME test_standalone_native_midi_replay
             COMMAND "${CMAKE_COMMAND}" -E env
                 "HAMMOND_STANDALONE_EXECUTABLE=$<TARGET_FILE:hammond_standalone>"

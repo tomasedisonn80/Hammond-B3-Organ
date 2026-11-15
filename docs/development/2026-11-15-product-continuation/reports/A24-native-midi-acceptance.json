@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "agent": "/root/w04_a24_native_midi_acceptance",
+  "head": "af006b0ae293c7c9a5f44b5dfe1dc9942fe9e12d",
+  "binary_sha256": "7ded143b676e9d51a29549dae12184763042a1f12192f72802db7927fa707852",
+  "source_sha256": {
+    "apps/standalone/native_tests/test_standalone_midi_cli.py": "54af4bd4bc9a203c8af2c9543a8e961f3f8fb13774a99c7ca1edce41e895ef48",
+    "apps/standalone/native_tests/test_standalone_midi_replay.py": "4fccad4d06dfd2875b24ba8798477089cc27f78061f7f17dd313c0aef0740fca",
+    "apps/standalone/native_tests/test_standalone_app.py": "5514d229bb969feeedd1be060d7e64dbd63cff22a08f0a70bd313d6308ae7236",
+    "apps/standalone/main.cpp": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027"
+  },
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "HAMMOND_STANDALONE_EXECUTABLE": "/workspace/scratch/5b7d983ac078/build-native/apps/standalone/hammond_standalone",
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_VIDEODRIVER": "dummy"
+  },
+  "results": [
+    {
+      "script": "apps/standalone/native_tests/test_standalone_midi_cli.py",
+      "tests": 21,
+      "subprocesses": 155,
+      "successful_ui_replays": 15,
+      "deliberately_failed_ui_replays": 4,
+      "elapsed_seconds": 18.888,
+      "passed": true,
+      "log": "cli-first.log"
+    },
+    {
+      "script": "apps/standalone/native_tests/test_standalone_midi_replay.py",
+      "tests": 15,
+      "subprocesses": 33,
+      "deliberately_failed_replays": 2,
+      "elapsed_seconds": 40.863,
+      "passed": true,
+      "log": "replay-first.log"
+    }
+  ],
+  "limits": [
+    "MIDI backend unavailable in this build",
+    "Synthetic callback-boundary acceptance, not native-port or hardware qualification",
+    "No rendered pixel acceptance or physical sound fidelity claim"
+  ]
+}

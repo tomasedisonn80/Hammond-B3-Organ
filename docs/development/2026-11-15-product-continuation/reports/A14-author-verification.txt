@@ -1,0 +1,29 @@
+COMMAND: ['c++', '-std=c++20', '-O2', '-DNDEBUG', '-Wall', '-Wextra', '-Wpedantic', '-Werror', '-Iinclude', '-Iapps/standalone', '-Itests', '-DHAMMOND_TEST_PROFILE="/workspace/scratch/5b7d983ac078/build-native/nominal.b3p"', '-DHAMMOND_SOURCE_DIR="/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"', '-c', 'apps/standalone/Session.cpp', '-o', '/workspace/scratch/5b7d983ac078/a14-checks/Session.o']
+ELAPSED: 1.539s
+
+COMMAND: ['c++', '-std=c++20', '-O2', '-DNDEBUG', '-Wall', '-Wextra', '-Wpedantic', '-Werror', '-Iinclude', '-Iapps/standalone', '-Itests', '-DHAMMOND_TEST_PROFILE="/workspace/scratch/5b7d983ac078/build-native/nominal.b3p"', '-DHAMMOND_SOURCE_DIR="/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"', '-c', 'apps/standalone/MidiInput.cpp', '-o', '/workspace/scratch/5b7d983ac078/a14-checks/MidiInput.o']
+ELAPSED: 1.236s
+
+COMMAND: ['c++', '-std=c++20', '-O2', '-DNDEBUG', '-Wall', '-Wextra', '-Wpedantic', '-Werror', '-Iinclude', '-Iapps/standalone', '-Itests', '-DHAMMOND_TEST_PROFILE="/workspace/scratch/5b7d983ac078/build-native/nominal.b3p"', '-DHAMMOND_SOURCE_DIR="/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"', '-c', 'apps/standalone/UiModel.cpp', '-o', '/workspace/scratch/5b7d983ac078/a14-checks/UiModel.o']
+ELAPSED: 1.965s
+
+COMMAND: ['c++', '-std=c++20', '-O2', '-DNDEBUG', '-Wall', '-Wextra', '-Wpedantic', '-Werror', '-Iinclude', '-Iapps/standalone', '-Itests', '-DHAMMOND_TEST_PROFILE="/workspace/scratch/5b7d983ac078/build-native/nominal.b3p"', '-DHAMMOND_SOURCE_DIR="/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"', 'apps/standalone/tests/test_standalone_midi_input.cpp', '/workspace/scratch/5b7d983ac078/a14-checks/MidiInput.o', '/workspace/scratch/5b7d983ac078/build-native/libhammond_core.a', '-pthread', '-o', '/workspace/scratch/5b7d983ac078/a14-checks/test_standalone_midi_input']
+ELAPSED: 1.291s
+
+COMMAND: ['c++', '-std=c++20', '-O2', '-DNDEBUG', '-Wall', '-Wextra', '-Wpedantic', '-Werror', '-Iinclude', '-Iapps/standalone', '-Itests', '-DHAMMOND_TEST_PROFILE="/workspace/scratch/5b7d983ac078/build-native/nominal.b3p"', '-DHAMMOND_SOURCE_DIR="/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"', 'apps/standalone/tests/test_standalone_channel_modes.cpp', '/workspace/scratch/5b7d983ac078/a14-checks/Session.o', '/workspace/scratch/5b7d983ac078/a14-checks/MidiInput.o', '/workspace/scratch/5b7d983ac078/build-native/libhammond_core.a', '-pthread', '-o', '/workspace/scratch/5b7d983ac078/a14-checks/test_standalone_channel_modes']
+ELAPSED: 1.234s
+
+COMMAND: ['c++', '-std=c++20', '-O2', '-DNDEBUG', '-Wall', '-Wextra', '-Wpedantic', '-Werror', '-Iinclude', '-Iapps/standalone', '-Itests', '-DHAMMOND_TEST_PROFILE="/workspace/scratch/5b7d983ac078/build-native/nominal.b3p"', '-DHAMMOND_SOURCE_DIR="/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"', 'apps/standalone/tests/test_standalone_expression_calibration.cpp', '/workspace/scratch/5b7d983ac078/a14-checks/Session.o', '/workspace/scratch/5b7d983ac078/a14-checks/MidiInput.o', '/workspace/scratch/5b7d983ac078/a14-checks/UiModel.o', '/workspace/scratch/5b7d983ac078/build-native/libhammond_core.a', '-pthread', '-o', '/workspace/scratch/5b7d983ac078/a14-checks/test_standalone_expression_calibration']
+ELAPSED: 1.162s
+
+COMMAND: ['/workspace/scratch/5b7d983ac078/a14-checks/test_standalone_midi_input']
+Standalone MIDI inbox/decoder acceptance: 10 behavioral scenarios passed
+ELAPSED: 0.003s
+
+COMMAND: ['/workspace/scratch/5b7d983ac078/a14-checks/test_standalone_channel_modes']
+standalone channel modes: isolation, ideal silence, continuity and admission passed
+ELAPSED: 0.007s
+
+COMMAND: ['/workspace/scratch/5b7d983ac078/a14-checks/test_standalone_expression_calibration']
+standalone expression calibration: endpoints, immutable epochs and reset pipeline passed
+ELAPSED: 0.002s

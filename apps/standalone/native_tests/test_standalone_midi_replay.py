@@ -23,7 +23,8 @@ import tempfile
 import time
 import unittest
 
-from test_standalone_app import SCHEMA, assert_schema, reject_nonfinite, unique_object
+from test_standalone_app import (REPLAY_EXPRESSION_FIELDS, SCHEMA, assert_expression_calibration,
+                                 assert_schema, reject_nonfinite, unique_object)
 from test_standalone_workflows import FIXED_STATE, FIXED_CONTROLS
 
 
@@ -121,6 +122,7 @@ def snapshot_schema(snapshot: dict, *, observation: bool = False) -> dict:
     schema["pedal_ids"] = [int] * len(snapshot["pedal_ids"])
     if observation:
         schema.update(elapsed_ms=int, last_submitted_sequence=int)
+        schema.update(REPLAY_EXPRESSION_FIELDS)
     return schema
 
 
@@ -316,6 +318,9 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
         self.assertEqual(midi["state_after_shutdown"], native_state)
         self.assertEqual(midi["active_before_shutdown"], replay["connected_before_shutdown"])
         self.assertFalse(midi["active_after_shutdown"])
+        assert_expression_calibration(self, midi["expression_calibration"], final=True,
+                                      active=False,
+                                      pre_shutdown_active=replay["connected_before_shutdown"])
         self.assertTrue(midi["quiescent_after_shutdown"])
         self.assertTrue(midi["diagnostics_stable_after_shutdown"])
         self.assertFalse(midi["startup_failed"])
@@ -386,6 +391,14 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
                 self.assertTrue(all(36 <= pitch <= 96 for pitch in notes))
             self.assertEqual(item["pedal_ids"], sorted(set(item["pedal_ids"])))
             self.assertTrue(all(1 <= pedal <= 25 for pedal in item["pedal_ids"]))
+        for item in replay["observations"]:
+            assert_expression_calibration(self, item["expression_calibration"])
+            self.assertIn(item["overlay"], ("none", "help", "audio", "midi"))
+            self.assertGreaterEqual(item["modal_focus"], 0)
+            self.assertLess(item["modal_focus"], 11)
+            if item["overlay"] in ("help", "audio"):
+                self.assertLess(item["modal_focus"], 6)
+            self.assertGreaterEqual(item["error_count"], 0)
         self.assertEqual(replay["before_shutdown"]["controls"], data["controls"])
         if replay["device_starts"] == 1:
             self.assertEqual(audio["rendered_frames"], audio["callback_count"] * audio["buffer_frames"])
@@ -452,8 +465,10 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
                            bytes_event(200, 0x90 | upper), bytes_event(200, 0x90 | upper, 128, 100),
                            bytes_event(200, 0xF8), bytes_event(200, 0xC0 | upper, 5),
                            bytes_event(200, 0xB0 | upper, 64, 127),
-                           bytes_event(200, 0xB0 | upper, 120, 0),
-                           bytes_event(200, 0xB0 | upper, 121, 0),
+                           # CC120/121 now have distinct supported contracts;
+                           # retain two genuinely unsupported channel-mode inputs.
+                           bytes_event(200, 0xB0 | upper, 122, 0),
+                           bytes_event(200, 0xB0 | upper, 124, 0),
                            bytes_event(200, 0xB0 | pedals, 18, 127)]
                 arguments = ["--midi-upper-channel", str(channels[0]),
                              "--midi-lower-channel", str(channels[1]),
@@ -596,14 +611,21 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
                         self.assertEqual(observed["controls"]["fixed_registrations"][1], 8)
 
     def test_cc123_releases_only_its_external_division_and_preserves_ui(self) -> None:
+        self.scoped_channel_release(123, (127, 0, 91))
+
+    def test_cc120_releases_only_its_external_division_and_preserves_ui(self) -> None:
+        self.scoped_channel_release(120, (0, 0, 0))
+
+    def scoped_channel_release(self, controller: int, values: tuple[int, int, int]) -> None:
         ui = [(100, "key_down A none 0")] + tap(220, "F2")
         ui += [(260, "key_down S none 0")] + tap(330, "F3")
         ui += [(370, "key_down D none 0")]
         events = [(0, "connect")]
         for status, pitches in ((0x90, (60, 64)), (0x91, (62, 65)), (0x92, (40, 41))):
             events += [bytes_event(150, status, pitch, 100) for pitch in pitches]
-        events += [bytes_event(650, 0xB0, 123, 127), bytes_event(950, 0xB1, 123, 0),
-                   bytes_event(1250, 0xB2, 123, 91)]
+        events += [bytes_event(650, 0xB0, controller, values[0]),
+                   bytes_event(950, 0xB1, controller, values[1]),
+                   bytes_event(1250, 0xB2, controller, values[2])]
         with self.run_native(1600, events, ui_events=ui) as run:
             self.assert_window(run, 370, 630, ((60, 64), (62, 65), (5, 6)))
             self.assert_window(run, 650, 930, ((60,), (62, 65), (5, 6)))
@@ -611,7 +633,84 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
             self.assert_final(run, ((60,), (62,), (5,)), on=9)
             self.assertEqual(run.data["midi"]["decoder"]["actions"], 9)
             self.assertEqual(run.data["midi"]["retirements"], 1,
-                             "CC123 must not retire the source or invoke global Panic")
+                             f"CC{controller} must not retire the source or invoke global Panic")
+
+    def test_calibrated_cc11_and_cc121_reset_preserve_all_division_owners(self) -> None:
+        # Under this inverted interval, raw110/127 maps to0, so a CC121 reset
+        # that mistakenly feeds a raw maximum back through calibration fails.
+        calibration = {"minimum": 10, "maximum": 110, "inverted": True}
+        arguments = ["--expression-min", "10", "--expression-max", "110", "--expression-invert"]
+        events = [(0, "connect"), bytes_event(100, 0x90, 60, 100),
+                  bytes_event(100, 0x91, 64, 100), bytes_event(100, 0x92, 36, 100),
+                  bytes_event(220, 0xB0, 11, 110),
+                  bytes_event(320, 0xB0, 120, 1), bytes_event(320, 0xB1, 121, 127),
+                  bytes_event(440, 0xB0, 121, 0), bytes_event(660, 0xB1, 11, 60),
+                  bytes_event(880, 0xB2, 121, 0), bytes_event(1100, 0xB2, 11, 110),
+                  bytes_event(1320, 0xB1, 121, 0)]
+        for endpoint, expression, parameters in ((400, 0.0, 1), (620, 1.0, 2),
+                (840, 0.5, 3), (1060, 1.0, 4), (1280, 0.0, 5), (1540, 1.0, 6)):
+            with self.subTest(endpoint_ms=endpoint):
+                expected = deepcopy(DEFAULT_CONTROLS)
+                expected["expression"] = expression
+                with self.run_native(endpoint, [event for event in events if event[0] < endpoint],
+                                     arguments=arguments) as run:
+                    self.assert_final(run, ((60,), (64,), (1,)), on=3, controls=expected)
+                    midi = run.data["midi"]
+                    self.assertEqual(midi["parameter_messages"], parameters)
+                    self.assertEqual(midi["decoder"]["actions"], 3 + parameters)
+                    self.assertEqual(midi["decoder"]["out_of_range"], 2)
+                    self.assertEqual(midi["decoder"]["epochs"], 1)
+                    self.assertEqual(midi["expression_calibration"]["configured"], calibration)
+                    self.assertEqual(midi["expression_calibration"]["pre_shutdown_active"], calibration)
+                    self.assertEqual(midi["retirements"], 1)
+                    self.assertTrue(run.midi["connected_before_shutdown"])
+
+    def test_script_apply_validates_selected_calibration_before_retaining_active_epoch(self) -> None:
+        calibration = {"minimum": 10, "maximum": 110, "inverted": True}
+        arguments = ["--expression-min", "10", "--expression-max", "110", "--expression-invert"]
+        events = [(0, "connect"), bytes_event(100, 0x90, 60, 100),
+                  bytes_event(100, 0x91, 64, 100), bytes_event(100, 0x92, 36, 100),
+                  bytes_event(220, 0xB0, 11, 60), bytes_event(1200, 0xB1, 11, 110)]
+        for invalid in (False, True):
+            with self.subTest(invalid_selection=invalid):
+                ui = tap(450, "M", "ctrl") + tabs(500, 5)
+                if invalid:
+                    ui += tap(560, "End") + tabs(600, 3) + tap(650, "Return")
+                    ui += tap(1000, "Escape")
+                    selected = {"minimum": 127, "maximum": 110, "inverted": True}
+                else:
+                    ui += tap(560, "Home") + tap(600, "Tab") + tap(620, "End")
+                    ui += tap(660, "Tab") + tap(680, "Home")
+                    ui += tabs(750, 6) + tap(830, "End") + tabs(850, 6) + tap(930, "Return")
+                    ui += tap(1050, "Escape")
+                    selected = {"minimum": 0, "maximum": 127, "inverted": False}
+                expected = deepcopy(DEFAULT_CONTROLS)
+                expected["expression"] = 0.0
+                with self.run_native(1450, events, ui_events=ui, arguments=arguments,
+                                     expected_exit=1 if invalid else 0) as run:
+                    self.assert_final(run, ((60,), (64,), (1,)), on=3, controls=expected)
+                    midi = run.data["midi"]
+                    self.assertEqual(midi["channels"], {"upper": 1, "lower": 2, "pedals": 3})
+                    self.assertEqual(midi["parameter_messages"], 2)
+                    self.assertEqual(midi["decoder"]["epochs"], 1)
+                    self.assertEqual(midi["retirements"], 1)
+                    settings = midi["expression_calibration"]
+                    self.assertEqual(settings["configured"], calibration)
+                    self.assertEqual(settings["pre_shutdown_active"], calibration)
+                    self.assertEqual(settings["selected"], selected)
+                    self.assertEqual(settings["selected_valid"], not invalid)
+                    after_apply = [item for item in run.midi["observations"]
+                                   if item["modal_focus"] == 8 and
+                                   item["expression_calibration"]["selected"] == selected]
+                    self.assertTrue(after_apply)
+                    for item in after_apply:
+                        self.assertEqual(item["expression_calibration"]["active"], calibration)
+                        self.assertEqual(item["expression_calibration"]["configured"], calibration)
+                        self.assertIsNone(item["expression_calibration"]["pending"])
+                    if invalid:
+                        self.assertTrue(any(item["error_count"] > 0 for item in after_apply))
+                    else:
+                        self.assertTrue(all(item["error_count"] == 0 for item in after_apply))
 
     def test_fault_discard_and_fresh_epoch_barriers_preserve_ui_owner(self) -> None:
         events = [bytes_event(0, 0x91, 70, 100), (0, "fault backend"), (50, "connect"),
@@ -686,7 +785,7 @@ class NativeMidiReplayAcceptance(unittest.TestCase):
                   bytes_event(150, 0x91, 64, 100), bytes_event(150, 0x92, 36, 100)]
         ui = [(100, "key_down A none 0"), (400, "focus_lost"), (500, "resize 960 700")]
         ui += tap(600, "Slash", "shift") + tap(850, "Return") + tap(1000, "M", "ctrl")
-        ui += tabs(1100, 2) + tap(1150, "End") + tabs(1200, 3) + tap(1300, "Return")
+        ui += tabs(1100, 2) + tap(1150, "End") + tabs(1200, 6) + tap(1300, "Return")
         ui += tap(1450, "Escape") + [(1550, "key_up A none")]
         # A coherent UI snapshot is sampled once per rendered main-loop turn.
         # Require each critical state as a separately completed/acknowledged

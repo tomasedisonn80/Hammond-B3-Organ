@@ -269,10 +269,13 @@ UiModel model_for(const Case& test) {
 
 struct DrawbarRegion { UiRect slot{}, cap{}; Pixel join{}; bool mixture{}; };
 DrawbarRegion drawbar_region(const UiModel& model, const UiControlGeometry& geometry) {
-    // Independently derive the old allocations from the accepted public
-    // track/control contract; no private production geometry helper is called.
+    // The product legibility contract changes only wide Dimensional manual
+    // caps to 32/8. Retain the 26/7 compact and 22/6 pedal allocations.
+    // No private production geometry helper is called.
     const bool mixture = geometry.id.kind == UiControlKind::PedalDrawbar;
-    const float height = mixture ? 22.0F : 26.0F;
+    const bool wide = model.layout().sidebar_pedals &&
+        model.view().presentation == UiPresentation::Dimensional;
+    const float height = mixture ? 22.0F : wide ? 32.0F : 26.0F;
     const float width = std::clamp(geometry.bounds.width - 8.0F, 10.0F, 34.0F);
     const float slot_width = std::min(geometry.bounds.width - 2.0F, width + 8.0F);
     const float center = geometry.track.x + geometry.track.width / 2;
@@ -295,13 +298,16 @@ void targets(const UiModel& model, const Frame& frame) {
         const auto& t = frame.t;
         const float center = region.cap.x + region.cap.width / 2;
         const int x = static_cast<int>(center * t.scale_x + static_cast<float>(t.viewport.x));
-        const float join_y = region.cap.y + region.cap.height - 1 - (region.mixture ? 6.0F : 7.0F);
+        const bool wide = model.layout().sidebar_pedals &&
+            model.view().presentation == UiPresentation::Dimensional;
+        const float front = region.mixture ? 6.0F : wide ? 8.0F : 7.0F;
+        const float join_y = region.cap.y + region.cap.height - 1 - front;
         std::vector<double> join_rows;
         visit(frame, {center - 1, region.cap.y + 3, 2, region.cap.height - 3}, [&](int px, int py, Point p) {
             if (px == x && frame.pixels[frame.at(px, py)] == region.join) join_rows.push_back(static_cast<double>(p.y));
         });
         check(!join_rows.empty() && std::abs(median(join_rows) - join_y) <= 1,
-              "observed cap face/front join is within one logical pixel of the 7/6-unit front");
+              "observed cap join is within one logical pixel of the 8-unit wide, 7-unit compact or 6-unit pedal front");
         ++counts.cap_joins;
         const float exposed = region.cap.y - geometry.track.y;
         if (exposed < 4) continue; // Value 0 has no exposed extension by definition.

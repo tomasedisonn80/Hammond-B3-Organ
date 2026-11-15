@@ -1,0 +1,8 @@
+COMMAND: ['g++', '-std=c++20', '-O2', '-DNDEBUG', '-Wall', '-Wextra', '-Wpedantic', '-Wconversion', '-Wsign-conversion', '-Wshadow', '-Werror', '-Iinclude', '-Itests', '-DHAMMOND_SOURCE_DIR="/workspace/scratch/5b7d983ac078/Hammond-B3-Organ"', '-DHAMMOND_TEST_PROFILE="/workspace/scratch/5b7d983ac078/build-native/nominal.b3p"', 'tests/test_leslie_crossover_allocation.cpp', '/workspace/scratch/5b7d983ac078/build-native/libhammond_core.a', '-o', '/workspace/scratch/5b7d983ac078/a25-checks/test_leslie_crossover_allocation']
+
+compile_exit=0
+RUN:
+{"status":"passed","observer":"current-thread-global-C++-allocation-calls","fixtures":12,"calibrations":26,"positive_control_allocations":312,"positive_control_deallocations":312,"scalar_frames":1550,"block_frames":473952,"intervals":{"scalar":{"calls":1550,"allocations":0,"deallocations":0},"block":{"calls":492,"allocations":0,"deallocations":0},"empty":{"calls":24,"allocations":0,"deallocations":0},"observe":{"calls":120,"allocations":0,"deallocations":0},"rejection":{"calls":158,"allocations":0,"deallocations":0},"offline_prepare":{"calls":25,"allocations":0,"deallocations":0},"offline_restore":{"calls":37,"allocations":0,"deallocations":0},"offline_rate_change":{"calls":24,"allocations":0,"deallocations":0},"offline_response":{"calls":48,"allocations":0,"deallocations":0}}}
+
+run_exit=0
+elapsed_seconds=0.01508088099944871

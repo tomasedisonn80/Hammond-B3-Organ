@@ -1,0 +1,9 @@
+COMMAND: ['g++', '-std=c++20', '-fsanitize=address,undefined', '/workspace/scratch/5b7d983ac078/a25-checks/sanitizer-control.cpp', '-o', '/workspace/scratch/5b7d983ac078/a25-checks/sanitizer-control']
+
+compile_exit=0
+RUN:
+==11==LeakSanitizer has encountered a fatal error.
+==11==HINT: For debugging, try setting environment variable LSAN_OPTIONS=verbosity=1:log_threads=1
+==11==HINT: LeakSanitizer does not work under ptrace (strace, gdb, etc)
+
+run_exit=1
