@@ -1,0 +1,11 @@
+# Recovery checkpoint
+
+## Wave 1 complete; wave 2 contracts underway
+
+Start source: `fe4f103f135cefebfe6d320f275d035d1b514f45`. Writable checkout `/workspace/scratch/7802a6528f89/Hammond-B3-Organ`; coordinated build `../build-native`. All six distinct A01–A06 workers completed and integrator accepted their entire contiguous reading notes, covering all 500 PDF pages. Original PDF SHA-256 `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`; each note retains its exact extraction hash. Selected scope is [M2 leakage/offline audition plus M9 percussion refinement](SCOPE.md). A07–A09 contracts dispatched; A10–A12 independently review before code.
+
+Native Release all-target build passed (541 steps), GCC 14.2, CMake 4.4.5, Ninja, standalone ON, MIDI OFF, VST3 OFF. Pinned SDL2 at `/workspace/scratch/1bb6ee17ad7e/SDL2` independently verified; other source/build/dependencies remain read-only. Full baseline CTest passed 183/183 tests, zero failures, in 263.92 seconds. Receipt `reports/baseline-source.json` identifies source and preserved `../baseline_standalone` binary. Logs retained in reports. System `cmake` was absent; Python wrapper failed with missing cmake module (retained `baseline-wrapper-failure.log.gz`); direct executable below configured/built successfully.
+
+Build command: `/workspace/scratch/1bb6ee17ad7e/build-tools/cmake/data/bin/cmake --build ../build-native --parallel 3`. Test command uses adjacent `ctest --test-dir ../build-native -C Release --output-on-failure --no-tests=error --parallel 2`. Configuration uses `-G Ninja -DCMAKE_MAKE_PROGRAM=/workspace/scratch/1bb6ee17ad7e/build-tools/bin/ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF -DHAMMOND_ENABLE_MIDI=OFF -DHAMMOND_SDL2_ROOT=/workspace/scratch/1bb6ee17ad7e/SDL2`.
+
+One 182 MiB source checkout, roughly 60 MiB build, approximately 46 GiB free. Keep compact logs/captures and never clean other sessions. Last observed remote main remains fe4f103. No model/UI implementation or fidelity pass is claimed yet. Next: accept contracts, implement additive owned paths, run declared independent gates, retain actual captures, update setup/status/next steps/log, publish guarded nonforced commits and verify remote.

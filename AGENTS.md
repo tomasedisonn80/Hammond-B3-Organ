@@ -1,5 +1,11 @@
 # Standing instructions for every development agent
 
+## Parallel audio continuation — 2026-11-15
+
+The owner's new sixty-agent, ten-wave request starts at `fe4f103f135cefebfe6d320f275d035d1b514f45` in `/workspace/scratch/7802a6528f89/Hammond-B3-Organ`. Read its [entry](docs/development/2026-11-15-audio-continuation/README.md), [scope](docs/development/2026-11-15-audio-continuation/SCOPE.md), [checkpoint](docs/development/2026-11-15-audio-continuation/CHECKPOINT.md) and [actual assignments](docs/development/2026-11-15-audio-continuation/assignments.json). Six actual readers covered all 500 atlas pages. Its scope is additive M2 sparse source leakage with explicit offline audition and M9 in-strip percussion cap/label refinement. Other sessions retain scanner/library, crossover/MIDI retirement/deck, harmonic source/racks and R4 ownership. Root owns shared navigation, build configuration, its one coordinated build and publication; workers edit only assigned paths.
+
+Future agents must recover the full M0–M9 plan and actual source/evidence, continue dependency-ready owned work, update setup/status/next steps/log and actual README screenshots after UI changes, and commit/push validated authorized work to `main` without force. Preserve all prior source/state identities and historical failures. Checkpoint every wave; bound storage and remove only this session's reproducible intermediates. Do not recount older workers. The original literal 1:1 UI objective remains active; scoped comparison is not whole-interface equality. All standing engineering and preservation instructions below apply.
+
 ## Current playable-continuation session — 2026-11-15
 
 The new owner-requested sixty-agent, ten-wave session starts from published
