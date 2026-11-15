@@ -1,5 +1,26 @@
 # Standing instructions for every development agent
 
+## Active product continuation
+
+The latest owner-requested [product continuation](docs/development/2026-11-15-product-continuation/README.md)
+starts from `647ae1b2b6ad8d30ee28ab348b94f974fb6aadbb`. Read its
+[checkpoint](docs/development/2026-11-15-product-continuation/CHECKPOINT.md) and
+[actual assignments](docs/development/2026-11-15-product-continuation/assignments.json)
+before choosing overlapping work. It owns M9 native MIDI channel modes,
+expression-controller calibration and measured visual refinement, plus the
+independent M6 passive-crossover foundation. The waveform session retains R4.
+The new sixty agents in ten waves are separate from every earlier ledger.
+
+The owner's standing completion rule applies to every future agent: recover the
+entire plan and current source, continue a dependency-ready phase, document actual
+changes and checks, update setup/status/next steps/log and README screenshots after
+UI changes, then commit and push authorized accepted work to `main`. Preserve
+other work, inspect concurrent advances, never force-push and verify publication.
+Checkpoint every wave and keep builds/evidence bounded. Follow the atlas's visual
+direction while retaining correct live controls; never replace them with concept
+art or claim literal 1:1 equality without measured evidence. Historical sections
+below retain their original source-specific qualification and ownership.
+
 **Closing source is published and qualified:** `fd2f6060b1f03b6d902ff0547441c07d6e74ba4f`,
 tree `89c0fb214b018ca43ec9c8b413d3030284a54ec2`. The
 [publication receipt](docs/development/2026-11-14-reference-refinement/reports/root-closing-publication.json) and
