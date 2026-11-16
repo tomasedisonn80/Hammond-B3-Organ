@@ -15,17 +15,10 @@ import os
 from pathlib import Path
 import re
 import shutil
-import signal
 import stat
 import subprocess
 import tempfile
 import unittest
-
-try:
-    import resource
-except ImportError:
-    resource = None
-
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDE = Path("docs/REGISTRATION_GUIDE.md")
@@ -444,9 +437,6 @@ class RegistrationInstallTests(unittest.TestCase):
                 self.refused(self.base, nominal, component, env=env, observed=stage)
             self.assertFalse(stage.exists() or nominal.exists())
 
-    @unittest.skipUnless(os.name == "posix" and resource is not None and
-                         hasattr(resource, "RLIMIT_FSIZE") and hasattr(signal, "SIGXFSZ"),
-                         "Deterministic late-copy failure requires POSIX file-size limits")
     def test_late_copy_failure_retains_partial_package_and_refuses_reinstall(self):
         source, build = self.new_path("partial source"), self.new_path("partial build")
         copy_source(source)
@@ -454,6 +444,30 @@ class RegistrationInstallTests(unittest.TestCase):
         # Exercise the actual configured rules, retaining only private paths.
         script = self.script_text.replace(self.build.as_posix(), build.as_posix())
         script = script.replace(ROOT.as_posix(), source.as_posix())
+        first, second, third = ENTRIES[:3]
+        third_source = source / SOURCE_PACK / "entries" / third
+        held = third_source.with_name(third + ".held-by-registration-install-test")
+        original_source = snapshot(source)
+        # A file-size limit need not stop a platform's native copy mechanism.
+        # Instead, withdraw this private input immediately before its actual
+        # generated file(INSTALL), after preflight and the first two copies.
+        anchors = []
+        for name in (first, second, third):
+            path = (source / SOURCE_PACK / "entries" / name).as_posix()
+            pattern = (r'(?m)^[ \t]*file\(INSTALL [^\n]* TYPE FILE FILES "'
+                       + re.escape(path) + r'"\)$')
+            matches = list(re.finditer(pattern, script))
+            self.assertEqual(len(matches), 1,
+                             f"Expected one actual generated copy command for {path}")
+            anchors.append(matches[0])
+        preflight = 'message(STATUS "StarterRegistrations preflight passed; copying begins.'
+        self.assertEqual(script.count(preflight), 1)
+        self.assertLess(script.index(preflight), anchors[0].start())
+        self.assertLess(anchors[0].start(), anchors[1].start())
+        self.assertLess(anchors[1].start(), anchors[2].start())
+        fault = f'  file(RENAME "{third_source.as_posix()}" "{held.as_posix()}")\n'
+        anchor = anchors[2].start()
+        script = script[:anchor] + fault + script[anchor:]
         install_script = build / "cmake_install.cmake"
         install_script.write_text(script, encoding="utf-8")
         prefix = self.new_path("partial prefix")
@@ -461,41 +475,45 @@ class RegistrationInstallTests(unittest.TestCase):
                 "-DCMAKE_INSTALL_COMPONENT=StarterRegistrations",
                 f"-DCMAKE_INSTALL_CONFIG_NAME={self.config}",
                 "-DCMAKE_INSTALL_LOCAL_ONLY=1", "-P", install_script]
-        first, second, third = ENTRIES[:3]
         expected = {name: self.originals[SOURCE_PACK / "entries" / name]
                     for name in (first, second, third)}
-        limit = len(expected[first])
-        self.assertEqual(len(expected[second]), limit)
-        self.assertGreater(len(expected[third]), limit,
-                           "The third copy must exceed the first pair's file-size limit")
-
-        def limit_child_files():
-            signal.signal(signal.SIGXFSZ, signal.SIG_IGN)
-            resource.setrlimit(resource.RLIMIT_FSIZE, (limit, limit))
-
-        global CALLS
-        CALLS += 1
-        failed = subprocess.run(list(map(str, args)), cwd=self.work, env=environment(),
-                                capture_output=True, check=False, timeout=45,
-                                preexec_fn=limit_child_files)
-        self.assertGreater(failed.returncode, 0, diagnostic(failed))
-        self.assertIn("preflight passed; copying begins", diagnostic(failed))
-        entries = prefix / self.datadir / PACKAGE / "entries"
-        for name in (first, second):
-            self.assertEqual((entries / name).read_bytes(), expected[name])
+        failed = invoke(args, self.work)
+        failure_output = diagnostic(failed)
+        # Retain the genuine child error even if a later filesystem assertion
+        # fails; the old size-limit test hid its eventual nonzero diagnostic.
+        print(f"registration late-copy fault (exit {failed.returncode}):\n{failure_output}")
+        self.assertGreater(failed.returncode, 0, failure_output)
+        self.assertIn("preflight passed; copying begins", failure_output)
+        self.assertIn("file INSTALL cannot find", " ".join(failure_output.split()), failure_output)
+        self.assertIn(third, " ".join(failure_output.split()), failure_output)
+        self.assertFalse(third_source.exists(), failure_output)
+        self.assertTrue(held.is_file(), failure_output)
+        self.assertEqual(held.read_bytes(), expected[third], failure_output)
         retained = snapshot(prefix)
-        files = {name for name, item in retained.items() if item[0] == "file"}
-        permitted = {(self.datadir / PACKAGE / "entries" / name).as_posix()
-                     for name in (first, second, third)}
-        self.assertLessEqual(files, permitted)
-        self.assertFalse(any(item[0] in ("link", "special") for item in retained.values()))
-        # The failed current file may be absent or partially copied. Preserve
-        # its actual state rather than prescribing CMake's partial-byte count.
+        self.assertIsInstance(retained, dict, failure_output)
+        files = {name: item[2] for name, item in retained.items() if item[0] == "file"}
+        expected_files = {(self.datadir / PACKAGE / "entries" / name).as_posix(): expected[name]
+                          for name in (first, second)}
+        self.assertEqual(files, expected_files, failure_output)
+        directories = {"."}
+        for name in expected_files:
+            directories.update(parent.as_posix() for parent in Path(name).parents)
+        self.assertEqual({name for name, item in retained.items() if item[0] == "directory"},
+                         directories, failure_output)
+        self.assertFalse(any(item[0] in ("link", "special") for item in retained.values()),
+                         failure_output)
+        # Restore every private input so the unchanged second preflight must
+        # refuse the existing package, rather than the deliberately absent file.
+        held.rename(third_source)
+        self.assertEqual(snapshot(source), original_source, failure_output)
         refused = invoke(args, self.work)
-        self.assertNotEqual(refused.returncode, 0, diagnostic(refused))
-        self.assertIn("destination already exists", diagnostic(refused))
-        self.assertNotIn("preflight passed; copying begins", diagnostic(refused))
-        self.assertEqual(snapshot(prefix), retained)
+        refusal_output = diagnostic(refused)
+        print(f"registration partial-package reinstall (exit {refused.returncode}):\n{refusal_output}")
+        self.assertNotEqual(refused.returncode, 0, refusal_output)
+        self.assertIn("destination already exists", refusal_output)
+        self.assertNotIn("preflight passed; copying begins", refusal_output)
+        self.assertEqual(snapshot(prefix), retained, refusal_output)
+        self.assertEqual(snapshot(source), original_source, refusal_output)
 
     def test_multiconfig_copies_selected_artifact_without_building(self):
         ninja = (self.make_program if self.make_program and "ninja" in Path(self.make_program).name.lower()
