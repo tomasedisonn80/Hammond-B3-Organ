@@ -1,0 +1,862 @@
+{
+  "schema": "b3-a56-future-rules-audit-v1",
+  "reviewer": "/root/w10_a56",
+  "started_utc": "2026-11-16T01:37:00.642421+00:00",
+  "finished_utc": "2026-11-16T01:37:00.822032+00:00",
+  "cwd": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "local_git": {
+    "head_before": "2f57723d9ec806fe8f721c317ef8c1a38d63b532",
+    "head_after": "2f57723d9ec806fe8f721c317ef8c1a38d63b532",
+    "head_tree": "cee5fdc4b07d95185ebd9e4d1c5f236f88a787f9",
+    "cached_origin_main": "2f57723d9ec806fe8f721c317ef8c1a38d63b532",
+    "fresh_remote_query": false,
+    "index_before": {
+      "bytes": 577322,
+      "sha256": "cd59311bc80c48e44932cee8b657f503d7300afd250c1df606ef9e59e0a9c883"
+    },
+    "index_after": {
+      "bytes": 577322,
+      "sha256": "cd59311bc80c48e44932cee8b657f503d7300afd250c1df606ef9e59e0a9c883"
+    },
+    "index_unchanged_during_audit": true
+  },
+  "source_snapshots": {
+    "AGENTS.md": {
+      "bytes": 10654,
+      "sha256": "b7dd97215b5f8e4bbebdee3536425f58e6e9a0cab2cf7a7565bdd141d8be6a62"
+    },
+    "docs/PLAN.md": {
+      "bytes": 30392,
+      "sha256": "c1de0a4edd7e3a449a03302f0fa53d6c6f7030a6ae4220bc682d85b3932f4ac6"
+    },
+    "docs/development/agent-guidance-history-2026-11-15.txt": {
+      "bytes": 44307,
+      "sha256": "027c7a2a2dd9e27092d338a3b1fa3d36d730195b616711eecfa4310eebabfd41"
+    },
+    "docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py": {
+      "bytes": 12302,
+      "sha256": "5049a83f1c88d4d61d4503f3dd692d388cbb09338b393008bebf29501792eef7"
+    },
+    "README.md": {
+      "bytes": 54067,
+      "sha256": "61c79d39a233556f301c152e027e139ce25aa55eb1a17e19095f68f51857e91a"
+    },
+    "docs/STATUS.md": {
+      "bytes": 110138,
+      "sha256": "c666c4c73e89e0910baa189f37f36c650114cd551a91490d9dbe4ff8f8aff1b6"
+    },
+    "docs/NEXT_STEPS.md": {
+      "bytes": 26588,
+      "sha256": "0b6a4c3441901e4b9d01fad908edc9c975194909e5a8a3a4bf5bb0b1255d96eb"
+    },
+    "docs/PROJECT_GUIDE.md": {
+      "bytes": 38041,
+      "sha256": "5a8eeb740d88d8abf04da9c30566476034598a0655a4356dbef3d2cb49ddfa74"
+    },
+    "docs/PRODUCT_HANDOFF.md": {
+      "bytes": 51055,
+      "sha256": "f00ffd98d849e07a269d4ec3100a9de9f8ba5bc342125ada6065d10a7cafa4a0"
+    },
+    "docs/DEVELOPMENT_LOG.md": {
+      "bytes": 274284,
+      "sha256": "bee87affb90a42b070f621f4dfab314735b4bf50ca4e838d36a96c284574f23c"
+    },
+    "docs/development/2026-11-15-streaming-continuation/README.md": {
+      "bytes": 1224,
+      "sha256": "7ec8285d7a8d2e4cf0c23d077d31f95a9eed5317601513616c68367575810e70"
+    },
+    "docs/development/2026-11-15-streaming-continuation/SCOPE.md": {
+      "bytes": 2395,
+      "sha256": "063e45c57ebeb00584663860a68c76257416174efd277a0d9dba94d067e19c62"
+    },
+    "docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md": {
+      "bytes": 7048,
+      "sha256": "6a6f947d3ab19ff940d8b18af1f8dd7cc2b5581508f715df6073b63ccc06a31a"
+    },
+    "docs/development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json": {
+      "bytes": 2661,
+      "sha256": "d7d3f86d54a769e7e9a19fbcb7757f222c966fcd138d33d7ace1fa9ccc9d883c"
+    },
+    "docs/development/2026-11-15-streaming-continuation/notes/A12.md": {
+      "bytes": 12316,
+      "sha256": "ca7de1e77aef78a4c213cd54139856ff1aec5a082ebe4271f4e0ea9c88fe0bbb"
+    },
+    "docs/development/2026-11-15-streaming-continuation/notes/A44.md": {
+      "bytes": 1795,
+      "sha256": "7db0b40b0e9975f89da398d009d94a3e0363a42b150df7de5854f8bfd57e461a"
+    },
+    "docs/reviews/STREAMING_PUBLICATION_ADMISSION.md": {
+      "bytes": 6927,
+      "sha256": "a580912a4ade2a2084edba7fb6978d8090f4d5c898ca864dbc764295412d6d45"
+    },
+    "docs/reviews/STREAMING_INITIAL_HOSTED_ADMISSION.md": {
+      "bytes": 12592,
+      "sha256": "963f102bc47afe428a35453d73470d70b6720d6da5c2bb325452dbede8170e0e"
+    },
+    "docs/reviews/STREAMING_FULL_PLAN_COVERAGE_REVIEW.md": {
+      "bytes": 14422,
+      "sha256": "a995b1d963a79bf7ca44c57c979a8fbaf7d149cc875cbffd7b43330125312b49"
+    },
+    "docs/development/2026-11-15-streaming-continuation/reports/implementation-publication.json": {
+      "bytes": 956,
+      "sha256": "bec1f519c9e2894464de8835c417f8da1521c65c46da2765c89fa4f9d8d8031c"
+    },
+    "docs/development/2026-11-15-streaming-continuation/reports/repair-publication.json": {
+      "bytes": 823,
+      "sha256": "487eb26a7aedfaaf45fc7e825df1467bcc694eccfd8a7ef001d784dc70c9fc36"
+    }
+  },
+  "source_changes_during_audit": [],
+  "archive_checks": {
+    "archive": {
+      "bytes": 44307,
+      "sha256": "027c7a2a2dd9e27092d338a3b1fa3d36d730195b616711eecfa4310eebabfd41"
+    },
+    "archive_lines": 574,
+    "expected_archive_hash_matches": true,
+    "parent_commit": "4aac394cde4da40906b615573a8779aee2d9a37a",
+    "parent_agents_blob": "68204d912efcfc62365617ca41a2555aaa706a67",
+    "parent_agents": {
+      "bytes": 43127,
+      "sha256": "a27b1e5db909b998647788796d1f906b57b1bf8f1141bb3b2514ec9063efe6d2"
+    },
+    "prefix": {
+      "bytes": 1180,
+      "sha256": "25de04a433e1b5b08ea344af2d5609ad9f003eb1db6ffec3b4e1d90802d3d98b"
+    },
+    "complete_parent_is_exact_suffix": true,
+    "expected_lengths_match": true,
+    "prefix_is_session_preface": true,
+    "limit": "The preserved pre-reorganization working file includes a session preface; it is not identical to the parent AGENTS blob alone."
+  },
+  "reading_checks": {
+    "pdf": {
+      "bytes": 21248265,
+      "sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769"
+    },
+    "pdf_hash_matches_receipt": true,
+    "six_distinct_recorded_readers": true,
+    "ranges_cover_1_to_500_once": true,
+    "reader_notes": [
+      {
+        "agent": "/root/w01_a01",
+        "path": "docs/development/2026-11-15-streaming-continuation/notes/A01-atlas-governance.md",
+        "bytes": 13245,
+        "sha256": "ca3547adfd6c1e24282867849c09df2a20a4a32a65ac695f47d9a288d3cfcca6",
+        "recorded_hash_matches": true
+      },
+      {
+        "agent": "/root/w01_a02",
+        "path": "docs/development/2026-11-15-streaming-continuation/notes/A02-atlas-ui.md",
+        "bytes": 11257,
+        "sha256": "249cfa2c922126d2f3259415a117b806fdc6d06d907dac6e6bc5904351f04d42",
+        "recorded_hash_matches": true
+      },
+      {
+        "agent": "/root/w01_a03",
+        "path": "docs/development/2026-11-15-streaming-continuation/notes/A03-atlas-build.md",
+        "bytes": 11242,
+        "sha256": "5fc39fbd7b1b8c4c013b41c6c1b590ca03a235eeffcc33a43d29e3574c0fe112",
+        "recorded_hash_matches": true
+      },
+      {
+        "agent": "/root/w01_a04",
+        "path": "docs/development/2026-11-15-streaming-continuation/notes/A04-atlas-numerics.md",
+        "bytes": 11534,
+        "sha256": "f518db85836af6fdc019f9b6f2525e58f0d26af980bbd539d251ea330375d7c2",
+        "recorded_hash_matches": true
+      },
+      {
+        "agent": "/root/w01_a05",
+        "path": "docs/development/2026-11-15-streaming-continuation/notes/A05-atlas-visual.md",
+        "bytes": 11265,
+        "sha256": "3538dbccfb8de5183118f5a5745349d2414383684288df8ff1ae4976db108412",
+        "recorded_hash_matches": true
+      },
+      {
+        "agent": "/root/w01_a06",
+        "path": "docs/development/2026-11-15-streaming-continuation/notes/A06-atlas-completion.md",
+        "bytes": 10721,
+        "sha256": "987acc356589c7df428e26d5916d736299fbc25070c4dd1dfdc6a24718aaf003",
+        "recorded_hash_matches": true
+      }
+    ],
+    "limit": "Checks retained ranges and note/PDF identities, not actual reading, extract bytes or underlying cited sources. A56 does not claim another 500-page reading."
+  },
+  "operative_link_checks": {
+    "AGENTS.md": [
+      {
+        "target": "docs/development/2026-11-15-streaming-continuation/README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/development/2026-11-15-streaming-continuation/SCOPE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/development/2026-11-15-streaming-continuation/assignments.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/PLAN.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/STATUS.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/NEXT_STEPS.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/DEVELOPMENT_LOG.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/PRODUCT_HANDOFF.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/PROJECT_GUIDE.md#source-and-reading-records",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/research/ATLAS_REVIEW.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/PLAN.md#current-ownership-and-source",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/design/atlas-reference.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/development/agent-guidance-history-2026-11-15.txt",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "docs/development/2026-11-15-streaming-continuation/notes/A12.md",
+        "file_exists": true,
+        "fragment_exists": true
+      }
+    ],
+    "docs/PLAN.md": [
+      {
+        "target": "development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CAUSAL_CONTACT_GRID_GUIDE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "../examples/demos/upper-rack-material-v1/README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/reports/coherent-qualification.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/assignments.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-execution-continuation/reports/atlas-reading-coverage.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "PROJECT_GUIDE.md#source-and-reading-records",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/SCOPE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/assignments.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-execution-continuation/SCOPE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-execution-continuation/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-execution-continuation/assignments.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-audio-continuation/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-playable-continuation/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-next-phase/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-fidelity-continuation/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-14-waveform-continuation/CHECKPOINT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-14-waveform-continuation/assignments.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "PRODUCT_CONTINUATION_CLOSURE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "REFERENCE_REFINEMENT_CLOSURE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/reports/baseline-qualification.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/reports/coherent-qualification.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CONTACT_SWITCHING_RESULTS.md#source-and-protocol-bindings",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-execution-continuation/reports/coherent-qualification.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "STATUS.md#earlier-product-continuation--15-november-2026",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "STATUS.md#current-workspace-and-setup",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CAUSAL_CONTACT_GRID_GUIDE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CONTACT_SWITCHING_GUIDE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "MIDI_EXPRESSION_GUIDE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CROSSOVER_DEVELOPER_GUIDE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "IMPLEMENTATION_CONTRACT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "FACTORY_REFERENCE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CAUSAL_CONTACT_GRID_CONTRACT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/notes/A21.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/notes/A22.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-streaming-continuation/notes/A24.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/STREAMING_CONTINUATION_COMPATIBILITY.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "FRACTIONAL_CONTACT_REFERENCE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CONTACT_SWITCHING_VALIDATION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CONTACT_REFERENCE_INSTALL.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CONTACT_SWITCHING_RESULTS.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "NEXT_STEPS.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CONTACT_STREAMING_NEXT_DESIGN.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "LESLIE_CROSSOVER_CONTRACT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CROSSOVER_INSTALL.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "LESLIE_CROSSOVER_CHARACTERIZATION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "NEXT_STEPS.md#next-dependency-ready-phase-after-session-closure",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/PRODUCT_NUMERICAL_ADMISSION_REVIEW.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "development/2026-11-15-product-continuation/reports/crossover-plot-admission-refresh.json",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "ROTARY_MOTION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "ROTARY_PROPAGATION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "ROTARY_NUMERICAL_CONTRACT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "ROTARY_RENDER_CLI.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "ROTARY_RENDERER_CONTRACT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "ROTARY_WAVEFORM_ACCEPTANCE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "ROTARY_RENDERER_PLAN.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "ROTARY_RENDERER_IMPLEMENTATION_PLAN.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/PRODUCT_LINUX_HOSTED_REVIEW.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "SCANNER_HANDOFF.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "SCANNER_NUMERICAL_CONTRACT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "CALIBRATION_NEXT_ACQUISITION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "INTERFACE_RUNBOOK.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "WHOLE_REFERENCE_LAYOUT_CONTRACT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "design/UPPER_RACK_MATERIAL_CONTRACT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/UPPER_RACK_COMPARISON_ADMISSION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "../examples/demos/upper-rack-material-v1/README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/UPPER_RACK_GALLERY_ADMISSION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/UPPER_RACK_PAINTER_REVIEW.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "../examples/demos/whole-reference-layout-v1/README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "MIDI_EXPRESSION_GUIDE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "../examples/demos/standalone-product-preview-v1/README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "../examples/demos/standalone-audio-preview-v1/README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "../examples/demos/standalone-interface-preview-v5/README.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "RELEASE_READINESS.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "NEXT_STEPS.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "STATUS.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "NEXT_STEPS.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "DEVELOPMENT_LOG.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "REFERENCE_REFINEMENT_CLOSURE.md",
+        "file_exists": true,
+        "fragment_exists": true
+      },
+      {
+        "target": "NEXT_STEPS.md#validate-this-sessions-actual-records",
+        "file_exists": true,
+        "fragment_exists": true
+      }
+    ]
+  },
+  "progress_checker": {
+    "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py --repo .",
+    "returncode": 0,
+    "stderr": "",
+    "result": {
+      "schema": "b3-streaming-session-check-v1",
+      "session": "2026-11-15-streaming-continuation",
+      "mode": "progress",
+      "valid": true,
+      "strict_record_closure": false,
+      "scope": "retained-ledger-and-note-consistency-only",
+      "external_dispatch_attested": false,
+      "requirements": {
+        "workers": 60,
+        "waves": 10,
+        "per_wave": 6
+      },
+      "narrative_floor": {
+        "words": 40,
+        "distinct_words": 20
+      },
+      "limits": "Checks root's retained ledger and accepted note bytes only; does not prove actual tool dispatch, chronology/concurrency, substantive review, technical correctness, test execution, publication, product readiness or fidelity. Only accepted notes are verified, not every owned deliverable. The narrative floor is structural and has no maximum note-size rule.",
+      "errors": [],
+      "ledger": {
+        "path": "docs/development/2026-11-15-streaming-continuation/assignments.json",
+        "sha256": "0877fb0b00f3ab5ede6eff415c2f2191503d71f47aa40f812462a316b46df69a",
+        "bytes": 36850
+      },
+      "checker_sha256": "5049a83f1c88d4d61d4503f3dd692d388cbb09338b393008bebf29501792eef7",
+      "counts": {
+        "records": 56,
+        "unique_numbers": 56,
+        "unique_agents": 56,
+        "accepted_numbers": 53,
+        "verified_accepted_notes": 53
+      },
+      "waves": [
+        {
+          "wave": 1,
+          "recorded": 6,
+          "accepted": 6,
+          "verified": 6
+        },
+        {
+          "wave": 2,
+          "recorded": 6,
+          "accepted": 6,
+          "verified": 6
+        },
+        {
+          "wave": 3,
+          "recorded": 6,
+          "accepted": 6,
+          "verified": 6
+        },
+        {
+          "wave": 4,
+          "recorded": 6,
+          "accepted": 6,
+          "verified": 6
+        },
+        {
+          "wave": 5,
+          "recorded": 6,
+          "accepted": 6,
+          "verified": 6
+        },
+        {
+          "wave": 6,
+          "recorded": 6,
+          "accepted": 6,
+          "verified": 6
+        },
+        {
+          "wave": 7,
+          "recorded": 6,
+          "accepted": 6,
+          "verified": 6
+        },
+        {
+          "wave": 8,
+          "recorded": 6,
+          "accepted": 6,
+          "verified": 6
+        },
+        {
+          "wave": 9,
+          "recorded": 6,
+          "accepted": 5,
+          "verified": 5
+        },
+        {
+          "wave": 10,
+          "recorded": 2,
+          "accepted": 0,
+          "verified": 0
+        }
+      ],
+      "missing_numbers": [
+        57,
+        58,
+        59,
+        60
+      ],
+      "unaccepted_numbers": [
+        54,
+        55,
+        56
+      ]
+    }
+  },
+  "strict_closure_executed": false,
+  "limits": [
+    "Human obligations crosswalk is in STREAMING_FUTURE_AGENT_RULES_REVIEW.md.",
+    "This is a per-file snapshot and narrow document/record integrity check, not a product source freeze or broad test run.",
+    "No build, CTest, UI capture, live remote query, staging, commit, push or ref update occurs here.",
+    "Historical archive link syntax retains repository-root meaning and is not interpreted relative to its archive directory."
+  ],
+  "checks_passed": true
+}

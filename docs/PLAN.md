@@ -1,6 +1,18 @@
 # Project plan: Hammond B-3 and Leslie
 
-**Post-review local update, 16 November 2026:** the [refreshed full suite](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json) passes **210/210 in 191.90 seconds** after the missing-probe and sanitizer-selection repairs. The [publication-source receipt](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) binds the sole later EOF whitespace cleanup, identical rebuilt resource binary and passing affected test. The earlier 191.89-second observation below retains its original inputs. Current-source hosted execution and final session publication remain pending.
+**Code qualification update, 16 November 2026:** implementation `af2b747` and the
+Windows I/O repair `2f57723` are published and independently fetched. All **13
+hosted jobs pass at `2f57723`**, as recorded in the
+[completed platform receipt](development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json).
+The original `af2b747` Windows failure remains separate. Local qualification is
+[210/210 in 191.90 seconds](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json),
+then the [sole EOF cleanup](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json),
+then [3/3 affected I/O suites](development/2026-11-15-streaming-continuation/reports/windows-repair-qualification.json).
+Earlier receipts keep their original inputs and timings. The
+[session checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+records completed worker closure and source-qualified publication history.
+[All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
+Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
 
 **Current streaming/material continuation — 15–16 November 2026:** the
 [session](development/2026-11-15-streaming-continuation/README.md) completed six
@@ -11,9 +23,10 @@ The [causal-grid guide](CAUSAL_CONTACT_GRID_GUIDE.md) and
 route to their independent, source-bound evidence. The default dry Engine and
 established musical identities are preserved. The
 [coherent local gate](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
-passed **210/210 CTests in 191.89 seconds**. Push/publication, current-source
-hosted CI and completion of this requested sixty-worker/ten-wave session remain
-pending; use the
+passed **210/210 CTests in 191.89 seconds** at its original inputs; the update
+above records the later local and published-platform results. The initial base
+is `4aac394`, the implementation is `af2b747`, and the repaired code is `2f57723`.
+All 60 scoped deliveries are accepted and strict record validation passes; use the
 [live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
 and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json).
 
@@ -92,7 +105,7 @@ adapter smoke test may start after M1/M2; that does not complete product release
 
 | Session | Responsibility and recovery authority |
 | --- | --- |
-| **Streaming/material continuation**, base `4aac394cde4da40906b615573a8779aee2d9a37a` | Current isolated M3 integer-grid trajectory and narrow M9 Upper-rack material; [scope](development/2026-11-15-streaming-continuation/SCOPE.md), [checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md), [actual ledger](development/2026-11-15-streaming-continuation/assignments.json). The requested sixty-worker session remains live. Root owns its coordinated build, final acceptance and publication. |
+| **Streaming/material continuation**, base `4aac394cde4da40906b615573a8779aee2d9a37a` | Current isolated M3 integer-grid trajectory and narrow M9 Upper-rack material; [scope](development/2026-11-15-streaming-continuation/SCOPE.md), [checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md), [actual ledger](development/2026-11-15-streaming-continuation/assignments.json). The requested sixty-worker session has 60 accepted deliveries and passing strict records. Root owns its coordinated build, acceptance and publication; the [closure handoff](STREAMING_CONTINUATION_CLOSURE.md) records scope and next work. |
 | Earlier execution continuation, base `33fa95d51e44234eef47ee21c03d29b2b311a5ee` | Delivered M3 offline contact reference and M9 canonical wide Play. Preserve its [scope](development/2026-11-15-execution-continuation/SCOPE.md), [checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md), [actual ledger](development/2026-11-15-execution-continuation/assignments.json) and source results as history. Their presence in the new base does not close the earlier ledger or transfer unfinished owner-local work. |
 | Audio continuation | Delivered additive M2 sparse source leakage and its explicit offline audition; earlier percussion-stage captures retain their identity. Preserve remaining owner-local work under its [checkpoint](development/2026-11-15-audio-continuation/CHECKPOINT.md). |
 | Playable continuation | Separate harmonic-source/offline and reference-rack work; recover actual implementation/publication state from its [checkpoint](development/2026-11-15-playable-continuation/CHECKPOINT.md) before integration. |
@@ -101,15 +114,20 @@ adapter smoke test may start after M1/M2; that does not complete product release
 | Waveform continuation | Separate R4 implementation and remaining acceptance; [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md) and [actual manifest](development/2026-11-14-waveform-continuation/assignments.json). |
 | Completed product and reference-refinement sessions | Their [product closure](PRODUCT_CONTINUATION_CLOSURE.md) and [refinement closure](REFERENCE_REFINEMENT_CLOSURE.md) preserve accepted work, original failures and exact published/hosted identities. Their sixty-worker records are historical. |
 
-The current base tree is `3605c9ce098a052afc10b2969fefe31e15644fe9`; HEAD
-alone does not identify the streaming session's working overlay. Its
-[baseline receipt](development/2026-11-15-streaming-continuation/reports/baseline-qualification.json)
-records **203/203 tests in 192.21 seconds** before changes. The later
-[coherent receipt](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
-binds **210/210 tests in 191.89 seconds** to 505 unchanged code/test/tool/data
-inputs, a 131-step all-target rebuild and exact binaries. This is Linux GCC
-14.2.0 Release with dummy SDL, standalone/testing on and MIDI/VST3/sanitizers
-off. Current-source hosted/platform and physical-device gates remain pending.
+The initial base tree was `3605c9ce098a052afc10b2969fefe31e15644fe9` at
+`4aac394cde4da40906b615573a8779aee2d9a37a`. The
+[implementation publication](development/2026-11-15-streaming-continuation/reports/implementation-publication.json)
+verifies `af2b74760ee195c9497b314a1a29172f5238dd44`; the
+[repair publication](development/2026-11-15-streaming-continuation/reports/repair-publication.json)
+verifies `2f57723d9ec806fe8f721c317ef8c1a38d63b532`, tree
+`cee5fdc4b07d95185ebd9e4d1c5f236f88a787f9`. All
+[13 required jobs pass at the repaired code](development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json).
+The [baseline](development/2026-11-15-streaming-continuation/reports/baseline-qualification.json)
+203/203 and first [coherent](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
+210/210 observations retain their exact sources. Later local source changes and
+affected gates are linked in the update above. Inspect live HEAD/index/remote
+before continuing; a documentation descendant is not a new production revision.
+Real-device, physical and full-product gates remain open.
 
 The earlier execution base tree was `f5d9406ef099f6569a5d1f3fee27358b520bc928`.
 Its
@@ -183,7 +201,11 @@ a **113,056-byte object on the measured ABI**, fixed staging and per-call ceilin
 4,608 edges and 80,640 ordering comparisons. These finite observations do not
 qualify indefinite full-organ processing or a callback deadline. The
 [Windows portability review](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) records
-the guarded raw-stdin repair; actual Windows execution awaits hosted CI.
+the guarded raw-stdin repair. [Initial hosted admission](reviews/STREAMING_INITIAL_HOSTED_ADMISSION.md)
+observes all six causal suites passing on Windows and the other three core jobs
+at `af2b747`; its separate installed-reference failure is retained. Repaired
+`2f57723` passes all four core jobs, including Windows 185/185. Forced stdin
+mode-failure execution and physical-device behavior remain unobserved.
 
 This model accepts grid values directly and has no implicit float converter,
 waveform, source-phase schedule, reconstruction filter or drain/tail API. Its
@@ -222,6 +244,23 @@ gates. Physical bounce, resistance, tap loading and timing still require
 synchronized identified contact/source/dry captures; see
 [next actions](NEXT_STEPS.md) and the
 [reviewed streaming proposal](CONTACT_STREAMING_NEXT_DESIGN.md).
+
+### Prepared continuation routes
+
+The [reviewed next-proposal table](NEXT_STEPS.md#reviewed-next-proposals-and-decisions)
+records concrete blockers and exclusive-owner boundaries. Start from
+[conversion](research/CONTACT_GRID_CONVERSION_NEXT.md) / [review](reviews/CONTACT_GRID_CONVERSION_NEXT_REVIEW.md),
+[isolated audio](research/CAUSAL_CONTACT_AUDIO_NEXT.md) / [review](reviews/CAUSAL_CONTACT_AUDIO_NEXT_REVIEW.md),
+[capacity](research/CAUSAL_CONTACT_CAPACITY_NEXT.md) / [review](reviews/CAUSAL_CONTACT_CAPACITY_NEXT_REVIEW.md),
+[whole-window comparison](design/WHOLE_WINDOW_REFERENCE_NEXT.md) and
+[materials/type](design/REFERENCE_MATERIAL_TYPE_NEXT.md) / [review](reviews/REFERENCE_MATERIAL_NEXT_REVIEW.md),
+then [native use/accessibility](design/NATIVE_ACCESSIBILITY_JOURNEY_NEXT.md) /
+[review](reviews/NATIVE_ACCESSIBILITY_JOURNEY_NEXT_REVIEW.md). These are completed
+planning/review inputs, **not admitted implementation contracts**. Lower L1 needs
+its own field/criteria; T1 separately needs unequal-aspect type geometry. Conversion needs event
+correspondence as well as scalar error; audio needs bounded wider-rational
+arithmetic, atomic history and full-window grading. Capacity, native semantics
+and physical acquisition keep separate exits.
 
 ## Current M6 foundation and next numerical phase
 
@@ -387,8 +426,9 @@ primary logs own detailed test/instrumentation claims. Preserve original failure
 source-bound timings and the [completed refinement evidence](REFERENCE_REFINEMENT_CLOSURE.md).
 Later documentation or ledger changes require their affected integrity checks,
 and changed build/test sources require appropriate coherent qualification.
-The current streaming session remains in progress; only its own actual ledger
-can record its sixty distinct workers and ten waves. The completed product
+The current streaming session has sixty accepted scoped deliveries in ten waves;
+its own [strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
+verifies all sixty retained identities and note hashes. The completed product
 batch's strict checker and thirteen jobs at 80b8cce remain historical evidence,
 not validation of this session; the previous execution ledger is not declared
 complete. [Record guidance](NEXT_STEPS.md#validate-this-sessions-actual-records)

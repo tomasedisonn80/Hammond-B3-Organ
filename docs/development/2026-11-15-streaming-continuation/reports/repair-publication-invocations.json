@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "scope": "Root retained ordered tool inputs/results and clock bounds; post-state independently fetched separately; no stronger server CAS assertion",
+  "events": [
+    {
+      "action": "fresh_ref_read",
+      "at_or_after_utc": "2026-11-16 01:18:12 UTC",
+      "observed_sha": "af2b74760ee195c9497b314a1a29172f5238dd44"
+    },
+    {
+      "action": "create_commit",
+      "at_or_after_utc": "2026-11-16 01:18:13 UTC",
+      "parent_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "tree_sha": "cee5fdc4b07d95185ebd9e4d1c5f236f88a787f9",
+      "sha": "2f57723d9ec806fe8f721c317ef8c1a38d63b532"
+    },
+    {
+      "action": "update_ref",
+      "before_utc": "2026-11-16 01:18:17 UTC",
+      "after_utc": "2026-11-16 01:18:18 UTC",
+      "branch_name": "main",
+      "sha": "2f57723d9ec806fe8f721c317ef8c1a38d63b532",
+      "expected_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "force": false,
+      "result": {
+        "success": true
+      }
+    }
+  ]
+}

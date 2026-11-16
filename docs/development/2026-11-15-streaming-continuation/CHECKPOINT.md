@@ -2,29 +2,114 @@
 
 ## Current state
 
-Actual workers: **50 dispatched / 47 accepted** and Waves 1–7 are complete. Independent comparison, gallery, resource, compatibility, painter and build integration admissions are accepted. Current README, status, next actions, full project/reading guide and handoff have been reconciled. Wave 7 is deriving concrete next converter, causal-audio and full-window visual gates. The ledger owns exact accepted counts. Earlier sessions never contribute worker credit to this request.
+**16 November 2026: 60 actual workers dispatched / 60 accepted; all ten waves complete.**
+The [strict record receipt](reports/streaming-session-strict.json) passes with
+60 unique identities and 60 matching accepted notes, six in every wave. The
+[actual ledger](assignments.json) retains each task, owned path, review acceptance
+and note hash. A58 admits repaired hosted results, A59 admits the reconciled
+handoff, and A60 finds no remaining source/evidence blocker. Earlier sessions,
+failed spawn attempts and repeated followups supply no worker credit. Strict
+record consistency does not establish external dispatch history, work quality,
+publication, physical fidelity or product completeness.
 
-**First coherent local qualification passed:** the 131-step all-target rebuild and all **210/210 CTests in 191.89 seconds**, with no failures. All 505 recorded source/test/tool/data inputs stayed unchanged through qualification. See reports/coherent-qualification.json, its compressed inventory and original logs. This is Linux GCC Release with dummy SDL, not hosted platform or physical-device qualification.
+The [closing handoff](../../STREAMING_CONTINUATION_CLOSURE.md) summarizes delivered
+scope and next contracts. All 505 qualified code inputs and three workflows are
+[unchanged from repaired `2f57723`](reports/final-documentary-source-admission.json).
+This closing documentary publication keeps its own Git commit and Actions runs;
+use the actual main ref and exact-head run list when recovering it. Retained
+`2f57723` runs remain bound to that code revision.
 
-Post-review hardening makes missing or empty probe setup fail both native Python suites and adds the Upper-rack raster fixture as native sanitizer gate 22, preserving the previous 21 mappings and all timeouts. Eight negative setup cases and both configured suites pass. The refreshed whole suite passes 210/210 in 191.90 seconds against 505 unchanged inputs; see reports/final-coherent-qualification.json. One later EOF empty-line cleanup has its own affected rebuild/test receipt, with identical binary bytes; reports/publication-source-qualification.json binds the composed final inputs. Original receipts remain unchanged.
+### Published code and qualification
 
-M3: isolated integer-grid trajectory, exact Fraction oracle, known answers, lifecycle rollback and strict transport are implemented. Differential testing passed 11 methods and 199 native probe invocations. CLI testing passed 17 methods and 150 processes; a source-identified Windows CRLF/Ctrl-Z issue was repaired with guarded raw-stdin setup, then all native tests passed. Windows execution remains pending CI. The resource receipt and independent admission verify 192 zero-allocation/deallocation API scopes, 113,056-byte local object, fixed staging and measured per-call bounds including 4,608 edges and 80,640 comparisons. No audio filter, converter, full-organ indefinite runtime, Engine integration, deadline or physical model is claimed.
+| Source | Publication and observed result |
+| --- | --- |
+| Initial base `4aac394cde4da40906b615573a8779aee2d9a37a` | Tree `3605c9ce098a052afc10b2969fefe31e15644fe9`; genuine baseline **203/203 CTests, 192.21 s**, before edits. |
+| Implementation `af2b74760ee195c9497b314a1a29172f5238dd44` | Tree `fb7d9ef7d1fcf24a70395c0671b75eb9c31558d4`, parent base. API and independent Git fetch verify all **243 staged entries**. [Publication receipt](reports/implementation-publication.json). Hosted **12/13** succeeds; Windows core is **184/185**, failing installed-reference input identity. All six new causal suites pass all four core jobs. [Initial hosted admission](../../reviews/STREAMING_INITIAL_HOSTED_ADMISSION.md). |
+| Windows repair `2f57723d9ec806fe8f721c317ef8c1a38d63b532` | Tree `cee5fdc4b07d95185ebd9e4d1c5f236f88a787f9`, parent implementation. API and independent Git fetch verify all **64 staged entries**. [Publication receipt](reports/repair-publication.json). All **13 hosted jobs pass**, including Windows core **185/185, 291.43 s** and its previously failing relocated install. [Completed jobs](reports/hosted-2f57723-complete.json) and [exact Windows log receipt](reports/windows-core-2f57723-success.json). |
 
-M9: all 96 genuine paired cases pass across 307,095,606 pixels, with zero changes outside the independently derived Upper-inset support and 37 exact required whole frames. Five local reference screens pass; baseline failures remain. Original report bytes are losslessly retained in reports/A20-raster-run1/report.json.gz. Independent comparison admission is accepted. Twelve actual app captures in examples/demos/upper-rack-material-v1 passed a separate 641-check gallery audit and direct full-frame inspection. Literal whole-interface 1:1 remains unmet.
+The first coherent local run rebuilt 131 steps and passed **210/210 in 191.89 s**.
+Post-review missing-probe failure handling and native Upper sanitizer gate 22
+then passed eight negative setup cases, two configured suites and the refreshed
+**210/210 in 191.90 s** against 505 unchanged inputs. One later EOF empty-line
+cleanup rebuilt an identical resource binary and passed its affected gate.
+[Publication-source qualification](reports/publication-source-qualification.json)
+composes those original receipts without rewriting them. The subsequent Windows
+I/O repair changes only the I/O wrapper and its test module; the other 503 inputs
+are unchanged. Its [three affected CTests pass in 2.82 s](reports/windows-repair-qualification.json).
+The completed `2f57723` matrix supplies separate exact-source platform evidence.
 
-Compatibility: original Engine, 91 shared sources, 47 parameters, state4/readers 1–3, UUIDs, PDF, art and prior fixtures are preserved. The dry fixture's entire WAV and all 16,384 decoded samples are identical; A30 distinguishes the old baseline report's mislabeled whole-WAV hash from the actual decoded-PCM hash without altering that original report.
+### Delivered scope and limits
 
-The runnable causal-grid guide and README's current UI section are written. Implementation and reviewed evidence are published as af2b74760ee195c9497b314a1a29172f5238dd44, tree fb7d9ef7d1fcf24a70395c0671b75eb9c31558d4, parent 4aac394cde4da40906b615573a8779aee2d9a37a. GitHub API and independent git fetch verify all 243 staged entries; local HEAD/index align without discarding workers. Three VST3 and several Release/sanitizer jobs pass. Windows core Release has an observed existing contact-reference installation failure (184/185, path/handle input-signature mismatch); A45 repaired the I/O identity comparison; A47 independently admits it. Three affected CTests pass in2.82seconds, and the original failed log/receipt remain. Repair publication and exact-source Windows execution are next. The six new causal suites pass there. All original jobs are now complete: twelve pass and the identified Windows core job fails. A48 independently audits exact source and selection evidence. The repair is separately scoped in WINDOWS_REPAIR_SCOPE.md and will receive fresh hosted qualification. Remaining workers, final documentation integrity/publication and exact-source hosted outcomes remain to complete. See reports/implementation-publication.json and reports/hosted-initial-observation.json. Storage remains approximately 51 GiB free; original binaries are preserved in ../baseline/ and optional scratch instrumentation in ../resource-work/.
+**M3:** `causal-contact-grid-v1` is an isolated integer-input trajectory with an
+independent Fraction oracle, known answers, rollback/lifecycle and strict
+transport. Differential tests cover 11 methods / 199 native invocations;
+CLI tests cover 17 methods / 150 processes. The guarded raw-stdin fix now has
+observed Windows suite execution; its forced mode-failure branch remains unrun.
+The resource admission verifies 192 scopes with zero observed hooked C++
+allocations/frees, a 113,056-byte local object and per-call bounds including
+4,608 edges and 80,640 comparisons. No converter, audio filter, full-organ
+indefinite runtime, Engine integration, deadline or physical model is claimed.
 
-## Setup
+**M9:** all 96 genuine paired cases cover 307,095,606 pixels with zero changes
+outside the independently derived Upper-inset support; 37 required whole frames
+are exact and all five local reference screens pass. Original baseline failures
+and the exact compressed A20 report remain. Twelve actual app captures in the
+[current gallery](../../../examples/demos/upper-rack-material-v1/README.md)
+passed 641 independent checks and direct full-frame review. **Literal
+whole-interface 1:1 remains unmet and unwaived.** The next Lower, wood and type
+slices need separate contracts, evidence and actual native journeys.
 
-Writable checkout: `/workspace/scratch/177e78b1ac09/Hammond-B3-Organ`. Base `4aac394cde4da40906b615573a8779aee2d9a37a`. One intended Release native build: `/workspace/scratch/177e78b1ac09/build-native`. Existing SDL in `/workspace/scratch/ade21b726509/SDL2` is a read-only dependency, never edited or cleaned by this session.
+**Compatibility:** nominal dry Engine, 91 shared sources, 47 parameters,
+state4/readers 1–3, UUIDs, PDF/art and earlier numerical fixtures remain.
+One dry fixture has identical full WAV and all 16,384 decoded samples. A30's old
+48-file installed-payload equality remains bound to its snapshot: the later
+[Windows repair](../../reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md)
+changes one wrapper, preserving all 48 names, other 47 payload hashes and install
+rules. Original numerical reports/timings are not relabelled to changed I/O bytes.
 
-Initial free storage: approximately 54 GiB. Root preserves actual logs and baseline binaries before source changes.
+## Setup and recovery
+
+Writable checkout: `/workspace/scratch/177e78b1ac09/Hammond-B3-Organ`.
+Coordinated build: `/workspace/scratch/177e78b1ac09/build-native`.
+SDL 2.32.10 at `/workspace/scratch/ade21b726509/SDL2`, commit
+`5d249570393f7a37e037abf22cd6012a4cc56a71`, is a **read-only dependency**.
+Other sessions' checkouts, indexes and builds remain outside this ownership.
+Current app SHA-256 is `c29495e98148767c0d55cab4adc18a245659cea891deb0f37fa160ea976c3cc1`.
+
+At **2026-11-16 01:43:02 UTC**, the [independent storage audit](reports/A57-storage-recovery.json)
+measured **51,162,886,144 available bytes (47.649 GiB)** and a **400,916,480-byte**
+owned allocated footprint, including checkout/build/baseline and named scratch
+artifacts. No storage pressure or cleanup was found. This is a dated observation,
+not a permanent free-space guarantee.
+
+Original baseline/current executables and dry WAVs remain in owned scratch,
+including `../baseline/`. Their hashes and recipes survive in Git; **their original
+executable bytes do not survive a loss of scratch merely because a hash is
+committed**. Preserve those files while available. A rebuilt binary or rerun is
+new evidence. Compact original logs, the exact passing A20 JSON/mask and twelve
+actual gallery PNGs are retained; not every original raster buffer is archived.
+See the [storage/recovery review](../../reviews/STREAMING_STORAGE_RECOVERY_REVIEW.md).
 
 ## Next
 
-Execute the remaining independent integration/continuation/publication reviews using sixty actual distinct workers in ten groups of six. Preserve the qualified production inputs. Resolve any concrete remaining findings and rerun only affected gates. Update the actual ledger, checkpoint, status, README and next-step instructions; check repository integrity after prose changes. Fetch and inspect fresh remote changes, publish accepted commits to main without force, independently fetch/verify commit/tree/parent and observe the thirteen required hosted jobs at the published source.
+1. Preserve all sixty accepted records, the strict receipt, original failures and
+   exact source qualification. A new scope needs its own actual assignments and
+   review; this completed worker credit is not reusable.
+2. Continue from the [six proposals and five reviews](../../NEXT_STEPS.md#reviewed-next-proposals-and-decisions).
+   First author/admit Lower L1's field/support/criteria and the next conversion/
+   isolated-audio contracts. Wider arithmetic, event correspondence, complete
+   storage/work, native semantic access and actual-device/physical gates remain.
+3. Before new code, claim exclusive paths and recover the existing separate owners.
+   Requalify affected source/build/test inputs; documentary edits require integrity.
+4. For publication, fetch/inspect fresh main, use a matching expected head without
+   force, independently verify remote commit/tree/parent/content and observe
+   required hosted jobs at that exact revision. An older green run does not belong
+   to a later documentation commit. Keep this recovery procedure in future handoffs.
+
+```sh
+python3 -B docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py --repo .
+python3 -B docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py --repo . --strict
+```
 
 ## Local build recipe
 

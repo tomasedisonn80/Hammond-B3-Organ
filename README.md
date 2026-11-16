@@ -16,12 +16,18 @@ match remains open; this material pass is a measured step toward it.
 [Scope](docs/development/2026-11-15-streaming-continuation/SCOPE.md) ·
 [Live checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md).
 The [actual ledger](docs/development/2026-11-15-streaming-continuation/assignments.json)
-tracks progress toward this request's sixty distinct workers in ten waves,
-separately from previous sessions. The
+records **60 distinct accepted workers in ten waves of six**, separately from
+previous sessions. The [strict record check](docs/development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
+passes for all 60 note hashes; the [continuation handoff](docs/STREAMING_CONTINUATION_CLOSURE.md)
+explains delivered scope and next work. The
 [coherent local gate](docs/development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json)
-passed **210/210 CTests in 191.90 seconds**. Completion of the requested worker
-session, current-source hosted platform CI and publication remain pending;
-the checkpoint records subsequent observed outcomes.
+passed **210/210 CTests in 191.90 seconds**. Implementation `af2b747` and the
+Windows I/O repair `2f57723` are published; all **13 hosted jobs pass at the
+repaired code revision**, including Windows core **185/185**. The
+[completed platform receipt](docs/development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json)
+retains exact source/run/job identities. The checkpoint records completed worker
+closure and publication history; final documentation descendants keep their own
+Git and Actions identities.
 
 The preceding [execution continuation](docs/development/2026-11-15-execution-continuation/README.md)
 supplies the offline fractional-contact reference and canonical wide composition.
@@ -397,6 +403,16 @@ The objective remains one inspectable engine for an identified B-3/AO-28 and Les
 | **M8 — Calibration** | Capture/corpus/split tools, declared comparison policies, studies and report replay. | Execute the [physical acquisition sequence](docs/CALIBRATION_NEXT_ACQUISITION.md), then fit and evaluate held-out evidence with uncertainty. |
 | **M9 — Product and release** | Canonical wide Play composition and scoped Upper-inset finish, complete live controls, standalone workspaces, MIDI calibration/channel modes, optional VST3, stable state, actual current captures and explicit install components. | Continue the requested 1:1 visual match and qualify native callback retirement, real displays/devices/hosts, accessibility, callback deadlines, licensing and distribution. |
 
+Six [next-phase proposals and five independent reviews](docs/NEXT_STEPS.md#reviewed-next-proposals-and-decisions)
+now make these actions concrete. For the UI, start with the
+[whole-window comparison plan](docs/design/WHOLE_WINDOW_REFERENCE_NEXT.md) and
+[Lower/wood/type slices](docs/design/REFERENCE_MATERIAL_TYPE_NEXT.md), using the
+[independent material review](docs/reviews/REFERENCE_MATERIAL_NEXT_REVIEW.md).
+Lower L1 needs its own admitted field, support and reference criteria before
+painting; the current Upper proof cannot be extended to it. For native use,
+follow the [display/accessibility journey](docs/design/NATIVE_ACCESSIBILITY_JOURNEY_NEXT.md)
+and its [review](docs/reviews/NATIVE_ACCESSIBILITY_JOURNEY_NEXT_REVIEW.md).
+
 The next concrete work is:
 
 1. **Continue toward the requested 1:1 interface.** The canonical composition and Upper-inset finish have scoped admission; the [current review](docs/reviews/UPPER_RACK_GALLERY_ADMISSION.md) retains other panel/wood lighting, key/cap shading, typography and semantic differences. Declare the next material/text comparison and execute an identified native display/DPI journey for small legends, focus, held-note resize, drawbar endpoints, pending/applied captions and calibration. Preserve the [current actual gallery](examples/demos/upper-rack-material-v1/README.md) and earlier [UI acceptance requirements](docs/reviews/PRODUCT_UI_ACCEPTANCE.md); the five local material screens do not waive whole-interface equality.
@@ -416,17 +432,20 @@ and each development session's worker waves are different organizations.
 
 ## Source-specific qualification
 
-The first implementation publication, [`af2b747`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/af2b74760ee195c9497b314a1a29172f5238dd44), completed **12 of 13 hosted jobs successfully**. Windows core Release exposed an existing contact-reference relocation failure; the [original failure](docs/development/2026-11-15-streaming-continuation/reports/windows-core-af2b747-failure.json) remains recorded. The [independently reviewed repair](docs/reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md) keeps full path and open-file signatures in their own metadata domains, preserving mutation and alias rejection. [All three affected local suites pass](docs/development/2026-11-15-streaming-continuation/reports/windows-repair-qualification.json). Repaired-source Windows/platform execution remains pending publication. Only the I/O wrapper changes within the 48-file installed component; original numerical results retain their original hashes.
+The first implementation publication, [`af2b747`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/af2b74760ee195c9497b314a1a29172f5238dd44), completed **12 of 13 hosted jobs successfully**. Windows core Release exposed an existing contact-reference relocation failure; the [original failure](docs/development/2026-11-15-streaming-continuation/reports/windows-core-af2b747-failure.json) remains recorded. The [independently reviewed repair](docs/reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md) keeps full path and open-file signatures in their own metadata domains, preserving mutation and alias rejection. [All three affected local suites pass](docs/development/2026-11-15-streaming-continuation/reports/windows-repair-qualification.json). The repair is published as [`2f57723`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/2f57723d9ec806fe8f721c317ef8c1a38d63b532), and [all 13 repaired-source jobs pass](docs/development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json). Windows core passes **185/185 in 291.43 seconds**, including the previously failing relocated install gate. Only the I/O wrapper changes within the 48-file installed component; original numerical results retain their original hashes.
 
 The current [coherent local qualification](docs/development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json)
 passed **210/210 CTests in 191.90 seconds**, with 505 code/input files unchanged
-during the run. It identifies the working overlay above base
-`4aac394cde4da40906b615573a8779aee2d9a37a`, its binaries and retained logs.
+during the run. It identifies the full-run input set, binaries and retained logs,
+before the EOF-only cleanup bridged by the publication-source receipt below.
+Implementation `af2b747` contains that cleanup; the initial base was
+`4aac394cde4da40906b615573a8779aee2d9a37a`. The separate Windows repair receipt
+binds the two later I/O/test file changes to `2f57723`.
 This is Linux GCC 14.2.0 Release with standalone/testing enabled, VST3, MIDI and
 sanitizers disabled and SDL 2.32.10 dummy audio/video. It does not establish
 current-source Windows/macOS, real-device or callback-deadline acceptance.
 
-The [publication-source receipt](docs/development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) also records the sole later change: one empty line removed from a resource test, followed by an identical rebuilt binary and a passing affected CTest. Eight missing/invalid-probe negative cases and both configured Python suites pass; native sanitizer selection now includes the rack fixture as gate 22 while preserving the previous gates and limits.
+The [publication-source receipt](docs/development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) also records the sole change between that full run and the implementation publication: one empty line removed from a resource test, followed by an identical rebuilt binary and a passing affected CTest. Eight missing/invalid-probe negative cases and both configured Python suites pass; native sanitizer selection now includes the rack fixture as gate 22 while preserving the previous gates and limits.
 
 Current M3 evidence covers the separately named **`causal-contact-grid-v1`**
 integer-input trajectory. The [independent differential record](docs/development/2026-11-15-streaming-continuation/notes/A21.md)
@@ -452,10 +471,10 @@ One matched **8,192-frame dry render** has byte-identical WAV and decoded PCM,
 with zero difference across 16,384 samples and no clipping. This is a bounded
 fixture result, not universal audio equivalence or physical calibration.
 
-The requested sixty-worker session, publication and current-source hosted CI
-remain pending. Use the [active checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+The implementation and repair are published with distinct qualification records.
+Use the [active checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md)
 and [actual ledger](docs/development/2026-11-15-streaming-continuation/assignments.json)
-for subsequent progress and observed outcomes. The preceding execution session's
+for the completed sixty-worker records, qualification lineage and publication recovery. The preceding execution session's
 [qualified installed study](docs/CONTACT_SWITCHING_RESULTS.md) at runner
 `eb4d374c`, [composition gallery](examples/demos/whole-reference-layout-v1/README.md),
 [gallery admission](docs/reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md) and

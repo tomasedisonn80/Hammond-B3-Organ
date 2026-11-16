@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "scope": "A58 owned read-only audit authoring; not a project or hosted test failure",
+  "first_invocation": {
+    "exit_code": 1,
+    "diagnostic": "KeyError: 'html_url'",
+    "cause": "The workflow-job wrapper retains job IDs and run IDs but omits html_url. The first auditor expected that optional field."
+  },
+  "correction": "Construct the provider job link from the observed run and job IDs. No metadata, test result, source identity or admission assertion changed.",
+  "final_invocation": {
+    "command": "python3 -B docs/development/2026-11-15-streaming-continuation/reports/A58-audit-repaired-hosted.py",
+    "exit_code": 0,
+    "successful_jobs": 13,
+    "matched_inputs": 505,
+    "auditor_sha256": "14da815a4bd6b1b2aaa7bb2dd1178432146a042fb064a021563bdea0ef7ad47f"
+  }
+}

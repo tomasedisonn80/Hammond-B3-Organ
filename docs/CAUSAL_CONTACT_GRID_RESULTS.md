@@ -5,8 +5,9 @@ Linux numerical, lifecycle, transport and resource evidence.** Root's retained
 [coherent gate](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
 passed **210/210 CTests in 191.89 seconds** after a 131-step all-target rebuild.
 Its 505 code/test/tool/data inputs stayed unchanged during that run. This is
-the working overlay above `4aac394cde4da40906b615573a8779aee2d9a37a`, not the
-base commit alone: GCC 14.2.0, Ninja Release, standalone/testing on,
+the original prepublication overlay above base
+`4aac394cde4da40906b615573a8779aee2d9a37a`, before the A36 and EOF changes
+listed below: GCC 14.2.0, Ninja Release, standalone/testing on,
 MIDI/VST3/sanitizers off and SDL 2.32.10 dummy audio/video.
 
 The [A36 integration finding](reviews/STREAMING_BUILD_INTEGRATION_REVIEW.md)
@@ -16,12 +17,15 @@ limits preserved. The [post-review full suite](development/2026-11-15-streaming-
 passes **210/210 in 191.90 seconds**, while
 [eight negative setup cases and both configured suites](development/2026-11-15-streaming-continuation/reports/post-review-setup-qualification.json)
 pass separately. The [publication-source receipt](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json)
-records the sole later source-byte change: one empty line removed at a resource
+records the sole source-byte change between that full run and implementation publication: one empty line removed at a resource
 test's EOF, with an identical rebuilt binary and a passing affected CTest.
-Original observations and inventories remain intact. Current-source hosted
-platform jobs and publication remain pending; the
-[checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
-owns later observations.
+Original observations and inventories remain intact. Implementation `af2b747`
+then the [Windows I/O repair](reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md)
+`2f57723` are published. [All 13 repaired-source hosted jobs pass](development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json),
+including Windows core 185/185. The I/O repair changes no trajectory code;
+its two changed source/test files have a separate 3/3 affected local receipt.
+The [checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+records completed worker closure and source-qualified publication history.
 
 [Runnable guide](CAUSAL_CONTACT_GRID_GUIDE.md) ·
 [Frozen contract](CAUSAL_CONTACT_GRID_CONTRACT.md) ·
@@ -61,7 +65,7 @@ at 64 frozen probes per fixture, and no full-window atlas `1e-4` audio grade.
 | [A21 differential](development/2026-11-15-streaming-continuation/notes/A21.md) | **11 methods / 199 native probes**, exact comparison of every edge and complete four-key padded snapshot across three rates, whole/single/irregular partitions, close distinct roots, future-prefix causality, limits and 24 seeded mixed cases. Registered CTest passed in 1.43 s. |
 | [A22 lifecycle/rollback](development/2026-11-15-streaming-continuation/notes/A22.md) | Nine public-API groups cover phases, canonical fields, validation precedence, late invalid inputs, short-output retry, output-byte preservation, closure, reset and budgets. The later coherent native CTest supplies runtime acceptance beyond A22's original syntax-only handoff. |
 | [A24 strict CLI](development/2026-11-15-streaming-continuation/notes/A24.md) | **17 methods / 150 processes: 19 successes and 131 exact rejections**, zero failures/errors/skips in its configured Linux run. Input limit 131,072 raw bytes; JSON ceiling 2 MiB. The corrected probe's coherent CLI CTest passed in 0.45 s. |
-| [A27 Windows transport review](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) | Guarded binary stdin setup prevents documented CRLF/Ctrl-Z translation from weakening byte admission. Linux regression passed in the coherent gate. Windows compile/runtime and mode-failure execution remain unrun; this was a source-identified risk, not an observed Windows failure. Stdout may use CRLF. |
+| [A27 Windows transport review](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) | Guarded binary stdin setup prevents documented CRLF/Ctrl-Z translation from weakening byte admission. Linux regression passed in the coherent gate. [Initial hosted admission](reviews/STREAMING_INITIAL_HOSTED_ADMISSION.md) later observes all six causal suites passing on all four core jobs, including Windows; repaired `2f57723` passes Windows 185/185. Forced mode-failure execution remains unrun. The stdin issue was source-identified, distinct from the observed contact-reference install failure. Stdout may use CRLF. |
 | [A23 resources](development/2026-11-15-streaming-continuation/reports/A23-resources.json) and [A28 independent admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md) | Independent reconstruction of instrumentation and 19 identities; normal/instrumented binaries reproduced original receipts byte for byte. See the storage/work limits below. |
 | [A35 guide replay](development/2026-11-15-streaming-continuation/reports/A35-guide-smoke.json) | Existing and revised examples each exit 0 with empty stderr; all nine contacts close at tick 32,768 and the final key/block state matches. Raw Linux output is unchanged. This small positive control does not replace the other gates. |
 
@@ -159,7 +163,7 @@ ctest --test-dir ../build-native -C Release --output-on-failure --no-tests=error
 ```
 
 The guide also gives clean-checkout presets and explicit direct Python probe-path
-setup. Root retains the setup-correction receipts and completes fresh coherent
+setup. Root retains the setup-correction receipts and completed coherent
 qualification before publication; no broad suite was rerun for this documentation.
 
 Next M3 work needs independently frozen conversion/rounding/collision and
@@ -169,7 +173,7 @@ nonempty drain and full-window continuous-reference audio grading. Full-organ
 and indefinite capacity, Engine/standalone/VST3 lifecycle integration, host
 callback resources/deadlines and synchronized physical contact/source/dry
 acquisition remain separate gates. Bounce, resistance and tap loading are not
-supplied by synthetic exactness. All current-source platform/hosted jobs and
-publication still need observed outcomes; see the
+supplied by synthetic exactness. The implemented grid has published platform
+qualification, while these next contracts remain unadmitted; see the
 [reviewed next design](CONTACT_STREAMING_NEXT_DESIGN.md) and
 [current next steps](NEXT_STEPS.md).

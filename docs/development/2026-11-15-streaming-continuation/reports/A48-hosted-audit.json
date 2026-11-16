@@ -1,0 +1,1064 @@
+{
+  "audit_kind": "Independent source-bound initial hosted observation admission",
+  "comparison_base": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "cross_job_checks": {
+    "all_four_core_jobs_executed_six_new_causal_suites_successfully": true,
+    "all_native_release_required_names_executed": true,
+    "four_native_release_selections_identical_53_tests": true,
+    "native_sanitizer_executed_exact_22_mapped_names": true,
+    "root_completion_receipt_independently_agrees": true,
+    "upper_rack_fixture_passed_in_four_native_release_jobs_and_native_sanitizer": true
+  },
+  "dependency_locks": {
+    "data/dependencies/rtmidi-lock.json": {
+      "commit": "1e5b49925aa60065db52de44c366d446a902547b",
+      "sha256": "4e2923a57abfaa98d68d7b339ea9a39c420f40dc3b175a339be108eaf0a987aa",
+      "version": "6.0.0"
+    },
+    "data/dependencies/sdl2-lock.json": {
+      "commit": "5d249570393f7a37e037abf22cd6012a4cc56a71",
+      "sha256": "ddc78f8cbe3deea26a71109f24e4121551af798f8347bbc3f6fabb8f87950e84",
+      "version": "2.32.10"
+    },
+    "data/dependencies/vst3-sdk-lock.json": {
+      "commit": "3cdf9ca5d1f5b1b21e0a86832aa4abe55607bd96",
+      "sha256": "ef3dfdf3feb5747967fe205ba196f5ef1b01457653f6ad7a62fffefd702ba965",
+      "version": "3.8.1"
+    }
+  },
+  "jobs": [
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": null,
+      "dependency_verification_lines": [],
+      "full_r4_qualification": {
+        "failures": [],
+        "mode": "full",
+        "qualification_json": "/home/runner/work/Hammond-B3-Organ/Hammond-B3-Organ/build-waveform/rotary-waveform/Release/full/full-20261116T005408.469197Z-20ff4d30/qualification.json",
+        "status": "pass",
+        "wall_seconds": 620.224896503
+      },
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034126/job/133024355788",
+      "job_id": 133024355788,
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "observed_toolchain": {
+        "cmake": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034126,
+      "selection_and_install_observations": [],
+      "upper_rack_fixture": null,
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [
+        {
+          "ctest_number": 2,
+          "line": 1871,
+          "name": "test_causal_contact_grid_lifecycle",
+          "outcome": "Passed",
+          "position": 1,
+          "seconds": 0,
+          "total": 185
+        },
+        {
+          "ctest_number": 3,
+          "line": 1873,
+          "name": "test_causal_contact_grid_resources",
+          "outcome": "Passed",
+          "position": 2,
+          "seconds": 0,
+          "total": 185
+        },
+        {
+          "ctest_number": 1,
+          "line": 1875,
+          "name": "test_causal_contact_grid",
+          "outcome": "Passed",
+          "position": 3,
+          "seconds": 0.01,
+          "total": 185
+        },
+        {
+          "ctest_number": 90,
+          "line": 2049,
+          "name": "python_test_causal_contact_grid_cli",
+          "outcome": "Passed",
+          "position": 90,
+          "seconds": 0.26,
+          "total": 185
+        },
+        {
+          "ctest_number": 92,
+          "line": 2051,
+          "name": "python_test_causal_contact_grid_reference",
+          "outcome": "Passed",
+          "position": 91,
+          "seconds": 0.11,
+          "total": 185
+        },
+        {
+          "ctest_number": 91,
+          "line": 2053,
+          "name": "python_test_causal_contact_grid_differential",
+          "outcome": "Passed",
+          "position": 92,
+          "seconds": 1.08,
+          "total": 185
+        }
+      ],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 185,
+        "registered_executed": 185,
+        "summary": [
+          "100% tests passed, 0 tests failed out of 185"
+        ],
+        "timing": [
+          "Total Test time (real) =  95.73 sec"
+        ]
+      },
+      "dependency_verification_lines": [],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034126/job/133024355960",
+      "job_id": 133024355960,
+      "name": "Release (Linux GCC)",
+      "observed_toolchain": {
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034126,
+      "selection_and_install_observations": [],
+      "upper_rack_fixture": null,
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [
+        {
+          "ctest_number": 2,
+          "line": 1408,
+          "name": "test_causal_contact_grid_lifecycle",
+          "outcome": "Passed",
+          "position": 1,
+          "seconds": 0.01,
+          "total": 185
+        },
+        {
+          "ctest_number": 1,
+          "line": 1410,
+          "name": "test_causal_contact_grid",
+          "outcome": "Passed",
+          "position": 2,
+          "seconds": 0.02,
+          "total": 185
+        },
+        {
+          "ctest_number": 3,
+          "line": 1418,
+          "name": "test_causal_contact_grid_resources",
+          "outcome": "Passed",
+          "position": 6,
+          "seconds": 0.34,
+          "total": 185
+        },
+        {
+          "ctest_number": 90,
+          "line": 1584,
+          "name": "python_test_causal_contact_grid_cli",
+          "outcome": "Passed",
+          "position": 89,
+          "seconds": 0.95,
+          "total": 185
+        },
+        {
+          "ctest_number": 91,
+          "line": 1586,
+          "name": "python_test_causal_contact_grid_differential",
+          "outcome": "Passed",
+          "position": 90,
+          "seconds": 2.12,
+          "total": 185
+        },
+        {
+          "ctest_number": 92,
+          "line": 1588,
+          "name": "python_test_causal_contact_grid_reference",
+          "outcome": "Passed",
+          "position": 91,
+          "seconds": 0.11,
+          "total": 185
+        }
+      ],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 185,
+        "registered_executed": 185,
+        "summary": [
+          "100% tests passed out of 185"
+        ],
+        "timing": [
+          "Total Test time (real) = 142.36 sec"
+        ]
+      },
+      "dependency_verification_lines": [],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034126/job/133024355982",
+      "job_id": 133024355982,
+      "name": "Release (macOS AppleClang)",
+      "observed_toolchain": {
+        "cmake": "4.4.5",
+        "ctest": "4.4.5",
+        "cxx": "AppleClang 17.0.0.17000013",
+        "python": "3.12.10"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034126,
+      "selection_and_install_observations": [],
+      "upper_rack_fixture": null,
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [
+        {
+          "ctest_number": 2,
+          "line": 2824,
+          "name": "test_causal_contact_grid_lifecycle",
+          "outcome": "Passed",
+          "position": 1,
+          "seconds": 0.01,
+          "total": 185
+        },
+        {
+          "ctest_number": 1,
+          "line": 2826,
+          "name": "test_causal_contact_grid",
+          "outcome": "Passed",
+          "position": 2,
+          "seconds": 0.02,
+          "total": 185
+        },
+        {
+          "ctest_number": 3,
+          "line": 2828,
+          "name": "test_causal_contact_grid_resources",
+          "outcome": "Passed",
+          "position": 3,
+          "seconds": 0.02,
+          "total": 185
+        },
+        {
+          "ctest_number": 90,
+          "line": 3000,
+          "name": "python_test_causal_contact_grid_cli",
+          "outcome": "Passed",
+          "position": 89,
+          "seconds": 0.85,
+          "total": 185
+        },
+        {
+          "ctest_number": 91,
+          "line": 3002,
+          "name": "python_test_causal_contact_grid_differential",
+          "outcome": "Passed",
+          "position": 90,
+          "seconds": 2.02,
+          "total": 185
+        },
+        {
+          "ctest_number": 92,
+          "line": 3004,
+          "name": "python_test_causal_contact_grid_reference",
+          "outcome": "Passed",
+          "position": 91,
+          "seconds": 0.15,
+          "total": 185
+        }
+      ],
+      "conclusion": "failure",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [
+          {
+            "ctest_number": 104,
+            "line": 3038,
+            "name": "python_test_contact_reference_install",
+            "outcome": "Failed",
+            "position": 108,
+            "seconds": 14.15,
+            "total": 185
+          }
+        ],
+        "passed": 184,
+        "registered_executed": 185,
+        "summary": [
+          "99% tests passed, 1 tests failed out of 185"
+        ],
+        "timing": [
+          "Total Test time (real) = 251.43 sec"
+        ]
+      },
+      "dependency_verification_lines": [],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034126/job/133024356072",
+      "job_id": 133024356072,
+      "name": "Release (Windows MSVC)",
+      "observed_toolchain": {
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "MSVC 19.44.35230.0",
+        "python": "3.12.10"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034126,
+      "selection_and_install_observations": [],
+      "upper_rack_fixture": null,
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [
+        {
+          "ctest_number": 2,
+          "line": 1894,
+          "name": "test_causal_contact_grid_lifecycle",
+          "outcome": "Passed",
+          "position": 1,
+          "seconds": 0.06,
+          "total": 185
+        },
+        {
+          "ctest_number": 3,
+          "line": 1896,
+          "name": "test_causal_contact_grid_resources",
+          "outcome": "Passed",
+          "position": 2,
+          "seconds": 0.04,
+          "total": 185
+        },
+        {
+          "ctest_number": 1,
+          "line": 1898,
+          "name": "test_causal_contact_grid",
+          "outcome": "Passed",
+          "position": 3,
+          "seconds": 0.41,
+          "total": 185
+        },
+        {
+          "ctest_number": 90,
+          "line": 2072,
+          "name": "python_test_causal_contact_grid_cli",
+          "outcome": "Passed",
+          "position": 90,
+          "seconds": 1.35,
+          "total": 185
+        },
+        {
+          "ctest_number": 92,
+          "line": 2074,
+          "name": "python_test_causal_contact_grid_reference",
+          "outcome": "Passed",
+          "position": 91,
+          "seconds": 0.15,
+          "total": 185
+        },
+        {
+          "ctest_number": 91,
+          "line": 2076,
+          "name": "python_test_causal_contact_grid_differential",
+          "outcome": "Passed",
+          "position": 92,
+          "seconds": 3.11,
+          "total": 185
+        }
+      ],
+      "conclusion": "success",
+      "configuration": "Debug",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 185,
+        "registered_executed": 185,
+        "summary": [
+          "100% tests passed, 0 tests failed out of 185"
+        ],
+        "timing": [
+          "Total Test time (real) = 236.26 sec"
+        ]
+      },
+      "dependency_verification_lines": [],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034126/job/133024356107",
+      "job_id": 133024356107,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "observed_toolchain": {
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034126,
+      "selection_and_install_observations": [],
+      "upper_rack_fixture": null,
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 7,
+        "registered_executed": 7,
+        "summary": [
+          "100% tests passed out of 7"
+        ],
+        "timing": [
+          "Total Test time (real) =   4.33 sec"
+        ]
+      },
+      "dependency_verification_lines": [
+        267,
+        268,
+        301
+      ],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034176/job/133024355469",
+      "job_id": 133024355469,
+      "name": "Native VST3 (macOS AppleClang)",
+      "observed_toolchain": {
+        "c": "AppleClang 17.0.0.17000013",
+        "cmake": "4.4.5",
+        "ctest": "4.4.5",
+        "cxx": "AppleClang 17.0.0.17000013",
+        "python": "3.12.10"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034176,
+      "selection_and_install_observations": [],
+      "upper_rack_fixture": null,
+      "validator_result": [
+        "159: Result: 47 tests passed, 0 tests failed"
+      ]
+    },
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 7,
+        "registered_executed": 7,
+        "summary": [
+          "100% tests passed, 0 tests failed out of 7"
+        ],
+        "timing": [
+          "Total Test time (real) =   6.02 sec"
+        ]
+      },
+      "dependency_verification_lines": [
+        249,
+        250,
+        276
+      ],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034176/job/133024355681",
+      "job_id": 133024355681,
+      "name": "Native VST3 (Windows MSVC x64)",
+      "observed_toolchain": {
+        "c": "MSVC 19.44.35230.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "MSVC 19.44.35230.0",
+        "python": "3.12.10"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034176,
+      "selection_and_install_observations": [],
+      "upper_rack_fixture": null,
+      "validator_result": [
+        "159: Result: 47 tests passed, 0 tests failed"
+      ]
+    },
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 8,
+        "registered_executed": 8,
+        "summary": [
+          "100% tests passed, 0 tests failed out of 8"
+        ],
+        "timing": [
+          "Total Test time (real) =   6.13 sec"
+        ]
+      },
+      "dependency_verification_lines": [
+        261,
+        262,
+        297
+      ],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034176/job/133024355801",
+      "job_id": 133024355801,
+      "name": "Native VST3 (Linux GCC)",
+      "observed_toolchain": {
+        "c": "GNU 13.3.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034176,
+      "selection_and_install_observations": [],
+      "upper_rack_fixture": null,
+      "validator_result": [
+        "159: Result: 47 tests passed, 0 tests failed"
+      ]
+    },
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 53,
+        "registered_executed": 53,
+        "summary": [
+          "100% tests passed, 0 tests failed out of 53"
+        ],
+        "timing": [
+          "Total Test time (real) = 416.64 sec"
+        ]
+      },
+      "dependency_verification_lines": [
+        321,
+        322,
+        358,
+        359,
+        397,
+        400,
+        2663,
+        3618,
+        3619
+      ],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034124/job/133024355471",
+      "job_id": 133024355471,
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "observed_toolchain": {
+        "c": "MSVC 19.44.35230.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "MSVC 19.44.35230.0",
+        "python": "3.12.10"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034124,
+      "selection_and_install_observations": [
+        "Discovered 53 standalone tests, including required MIDI, calibration, workspace, inspection and product drawing gates.",
+        "Verified 20 installed files, MIDI WinMM, relocated help/dummy smoke, and the archived bytes."
+      ],
+      "upper_rack_fixture": {
+        "backend": "SDL software surface; fixed copied state; no audio/window",
+        "case_28_repeats": 2,
+        "cases": 30,
+        "checks": 58876889,
+        "clip_companions": 15,
+        "cyan_focus_pixels": 21864,
+        "focus_cases": 12,
+        "literal_glyphs": 708,
+        "opaque_child_probes": 216,
+        "opaque_probe_pixels": 121526,
+        "protocol": "upper-rack-material-v1.1",
+        "schema": 1,
+        "state_restorations": 49,
+        "status": "passed",
+        "strong_ink_pixels": 34335,
+        "visible_clip_pixels": 29916
+      },
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 53,
+        "registered_executed": 53,
+        "summary": [
+          "100% tests passed out of 53"
+        ],
+        "timing": [
+          "Total Test time (real) = 317.35 sec"
+        ]
+      },
+      "dependency_verification_lines": [
+        303,
+        304,
+        323,
+        324,
+        371,
+        374,
+        2385,
+        3337,
+        3338
+      ],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034124/job/133024355700",
+      "job_id": 133024355700,
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "observed_toolchain": {
+        "c": "AppleClang 17.0.0.17000013",
+        "cmake": "4.4.5",
+        "ctest": "4.4.5",
+        "cxx": "AppleClang 17.0.0.17000013",
+        "python": "3.12.10"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034124,
+      "selection_and_install_observations": [
+        "Discovered 53 standalone tests, including required MIDI, calibration, workspace, inspection and product drawing gates.",
+        "Verified 20 installed files, MIDI CoreMIDI, relocated help/dummy smoke, and the archived bytes."
+      ],
+      "upper_rack_fixture": {
+        "backend": "SDL software surface; fixed copied state; no audio/window",
+        "case_28_repeats": 2,
+        "cases": 30,
+        "checks": 58876889,
+        "clip_companions": 15,
+        "cyan_focus_pixels": 21864,
+        "focus_cases": 12,
+        "literal_glyphs": 708,
+        "opaque_child_probes": 216,
+        "opaque_probe_pixels": 121526,
+        "protocol": "upper-rack-material-v1.1",
+        "schema": 1,
+        "state_restorations": 49,
+        "status": "passed",
+        "strong_ink_pixels": 34335,
+        "visible_clip_pixels": 29916
+      },
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 53,
+        "registered_executed": 53,
+        "summary": [
+          "100% tests passed, 0 tests failed out of 53"
+        ],
+        "timing": [
+          "Total Test time (real) = 316.30 sec"
+        ]
+      },
+      "dependency_verification_lines": [
+        322,
+        323,
+        657,
+        3810
+      ],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034124/job/133024355755",
+      "job_id": 133024355755,
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "observed_toolchain": {
+        "c": "GNU 13.3.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034124,
+      "selection_and_install_observations": [
+        "Discovered 53 standalone tests, including required MIDI, calibration, workspace, inspection and product drawing gates.",
+        "Verified 16 installed files, MIDI unavailable, relocated help/dummy smoke, and the archived bytes."
+      ],
+      "upper_rack_fixture": {
+        "backend": "SDL software surface; fixed copied state; no audio/window",
+        "case_28_repeats": 2,
+        "cases": 30,
+        "checks": 58876889,
+        "clip_companions": 15,
+        "cyan_focus_pixels": 21864,
+        "focus_cases": 12,
+        "literal_glyphs": 708,
+        "opaque_child_probes": 216,
+        "opaque_probe_pixels": 121526,
+        "protocol": "upper-rack-material-v1.1",
+        "schema": 1,
+        "state_restorations": 49,
+        "status": "passed",
+        "strong_ink_pixels": 34335,
+        "visible_clip_pixels": 29916
+      },
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 22,
+        "registered_executed": 22,
+        "summary": [
+          "100% tests passed, 0 tests failed out of 22"
+        ],
+        "timing": [
+          "Total Test time (real) = 396.20 sec"
+        ]
+      },
+      "dependency_verification_lines": [
+        332,
+        333,
+        665,
+        4642
+      ],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034124/job/133024355787",
+      "job_id": 133024355787,
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "observed_toolchain": {
+        "c": "GNU 13.3.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034124,
+      "selection_and_install_observations": [
+        "Discovered exactly 22 built interface, channel, calibration and product paint gates; job sanitizer policy applies to every gate.",
+        "Verified the instrumented native probe completed 10 subprocesses and all 7 lifecycle scenarios."
+      ],
+      "upper_rack_fixture": {
+        "backend": "SDL software surface; fixed copied state; no audio/window",
+        "case_28_repeats": 2,
+        "cases": 30,
+        "checks": 58876889,
+        "clip_companions": 15,
+        "cyan_focus_pixels": 21864,
+        "focus_cases": 12,
+        "literal_glyphs": 708,
+        "opaque_child_probes": 216,
+        "opaque_probe_pixels": 121526,
+        "protocol": "upper-rack-material-v1.1",
+        "schema": 1,
+        "state_restorations": 49,
+        "status": "passed",
+        "strong_ink_pixels": 34335,
+        "visible_clip_pixels": 29916
+      },
+      "validator_result": []
+    },
+    {
+      "causal_grid_results": [],
+      "conclusion": "success",
+      "configuration": "Release",
+      "configuration_basis": "Executed workflow/preset command and exact-source preset or configuration; provider step succeeded.",
+      "ctest": {
+        "failed": [],
+        "passed": 53,
+        "registered_executed": 53,
+        "summary": [
+          "100% tests passed, 0 tests failed out of 53"
+        ],
+        "timing": [
+          "Total Test time (real) = 337.18 sec"
+        ]
+      },
+      "dependency_verification_lines": [
+        322,
+        323,
+        360,
+        361,
+        696,
+        699,
+        2910,
+        3867,
+        3868
+      ],
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034124/job/133024355923",
+      "job_id": 133024355923,
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "observed_toolchain": {
+        "c": "GNU 13.3.0",
+        "cmake": "3.31.6",
+        "ctest": "3.31.6",
+        "cxx": "GNU 13.3.0",
+        "python": "3.12.16"
+      },
+      "run_attempt": 1,
+      "run_id": 43783034124,
+      "selection_and_install_observations": [
+        "Discovered 53 standalone tests, including required MIDI, calibration, workspace, inspection and product drawing gates.",
+        "Verified 20 installed files, MIDI ALSA, relocated help/dummy smoke, and the archived bytes."
+      ],
+      "upper_rack_fixture": {
+        "backend": "SDL software surface; fixed copied state; no audio/window",
+        "case_28_repeats": 2,
+        "cases": 30,
+        "checks": 58876889,
+        "clip_companions": 15,
+        "cyan_focus_pixels": 21864,
+        "focus_cases": 12,
+        "literal_glyphs": 708,
+        "opaque_child_probes": 216,
+        "opaque_probe_pixels": 121526,
+        "protocol": "upper-rack-material-v1.1",
+        "schema": 1,
+        "state_restorations": 49,
+        "status": "passed",
+        "strong_ink_pixels": 34335,
+        "visible_clip_pixels": 29916
+      },
+      "validator_result": []
+    }
+  ],
+  "observation_result": "completed_with_failure",
+  "observed_utc": "2026-11-16T01:13:35.730Z",
+  "original_failure_retained": {
+    "decoded_bytes": 526325,
+    "decoded_sha256": "2858f8f90bb79736630bf72b0fdaca93156baf9f8496afe83cb7500adc47ba6d",
+    "diagnostic": "contact-switching: input changed after path preflight",
+    "failed_test": "python_test_contact_reference_install",
+    "log": "windows-core-af2b747.log.gz",
+    "receipt": "windows-core-af2b747-failure.json"
+  },
+  "retained_evidence": {
+    "A48-native-sanitizer-af2b747.log.gz": {
+      "compressed_bytes": 82826,
+      "compressed_sha256": "b33a26f8292a2bee1b617440d39a12e5d0bda871d487acc120470f3a61d21865",
+      "decoded_bytes": 999586,
+      "decoded_sha256": "7b058feda7b5b0c2cf3b928c93dfa61fd848178a790c563ab08e759572c08966"
+    },
+    "A48-provider-evidence.json.gz": {
+      "compressed_bytes": 60934,
+      "compressed_sha256": "2382df998b85a1e37074d1d250503771dd057bccbc464462d700d4c44e7cd25e",
+      "decoded_bytes": 566161,
+      "decoded_sha256": "e1e723f27e7d121bf3b916995f9aec73bbd069a0275e7019d56706285b477d3e"
+    }
+  },
+  "reviewer": "A48",
+  "run_summaries": [
+    {
+      "conclusion": "failure",
+      "event": "push",
+      "head_branch": "main",
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034126",
+      "id": 43783034126,
+      "name": "CI",
+      "run_attempt": 1,
+      "status": "completed",
+      "tree": "fb7d9ef7d1fcf24a70395c0671b75eb9c31558d4",
+      "updated_at": "2026-11-16T01:04:33Z"
+    },
+    {
+      "conclusion": "success",
+      "event": "push",
+      "head_branch": "main",
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034176",
+      "id": 43783034176,
+      "name": "Native VST3",
+      "run_attempt": 1,
+      "status": "completed",
+      "tree": "fb7d9ef7d1fcf24a70395c0671b75eb9c31558d4",
+      "updated_at": "2026-11-16T00:55:35Z"
+    },
+    {
+      "conclusion": "success",
+      "event": "push",
+      "head_branch": "main",
+      "head_sha": "af2b74760ee195c9497b314a1a29172f5238dd44",
+      "html_url": "https://github.com/tomasedisonn80/Hammond-B3-Organ/actions/runs/43783034124",
+      "id": 43783034124,
+      "name": "Native standalone",
+      "run_attempt": 1,
+      "status": "completed",
+      "tree": "fb7d9ef7d1fcf24a70395c0671b75eb9c31558d4",
+      "updated_at": "2026-11-16T01:05:59Z"
+    }
+  ],
+  "schema_version": 1,
+  "scope_limits": [
+    "Initial hosted gate is failed; no all-green declaration.",
+    "Only af2b74760ee195c9497b314a1a29172f5238dd44 is observed here; local I/O repair and later sources require their own hosted evidence.",
+    "No rerun or GitHub write was requested or performed by A48. Attempt 1 results and original failure are retained.",
+    "No binary or diagnostic artifact ZIP bundles were downloaded. Selected provider log lines and one complete compressed native sanitizer log are retained; the root retains the complete Windows failure log.",
+    "VST3 validator/native fixtures do not qualify a DAW journey, physical audio/MIDI/display device, semantic accessibility or callback deadline.",
+    "Dummy SDL and substituted native MIDI calibration fixtures do not establish actual OS callback retirement.",
+    "Upper-rack software-surface fixture execution does not establish whole-interface 1:1 equality, physical fidelity or current-source paired gallery admission."
+  ],
+  "source_checks": {
+    "added_release_required_gates": [
+      "test_standalone_upper_rack_material_raster"
+    ],
+    "added_sanitizer_mapping": {
+      "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster"
+    },
+    "all_old_release_required_gates_retained": true,
+    "all_old_sanitizer_mappings_retained": true,
+    "all_old_sanitizer_timeouts_retained": true,
+    "audited_commit": "af2b74760ee195c9497b314a1a29172f5238dd44",
+    "audited_release_required_count": 32,
+    "audited_sanitizer_gate_count": 22,
+    "audited_sanitizer_mappings": {
+      "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+      "test_standalone_channel_modes": "test_standalone_channel_modes",
+      "test_standalone_drawing": "test_standalone_drawing",
+      "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+      "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author": "test_standalone_inspection_author",
+      "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+      "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+      "test_standalone_native_calibration": "hammond_standalone_calibration_probe",
+      "test_standalone_preset_raster": "test_standalone_preset_raster",
+      "test_standalone_preset_ui": "test_standalone_preset_ui",
+      "test_standalone_product_visual": "test_standalone_product_visual",
+      "test_standalone_projection": "test_standalone_projection",
+      "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+      "test_standalone_reference_layout": "test_standalone_reference_layout",
+      "test_standalone_scaled_view": "test_standalone_scaled_view",
+      "test_standalone_ui": "test_standalone_ui",
+      "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster",
+      "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+      "test_standalone_workspaces_author": "test_standalone_workspaces_author"
+    },
+    "audited_sanitizer_timeouts_seconds": {
+      "test_standalone_inspection_raster": 60,
+      "test_standalone_material_acceptance": 60,
+      "test_standalone_native_calibration": 180,
+      "test_standalone_preset_raster": 300,
+      "test_standalone_product_visual": 240,
+      "test_standalone_scaled_view": 360,
+      "test_standalone_upper_rack_material_raster": 240,
+      "test_standalone_workspace_raster": 180
+    },
+    "ci_workflow_unchanged": true,
+    "comparison_base": "4aac394cde4da40906b615573a8779aee2d9a37a",
+    "core_sanitizer_configuration": "Debug",
+    "native_release_regex_retained": "^test_standalone_",
+    "native_sanitizer_configuration": "Release",
+    "native_sanitizer_midi_enabled": false,
+    "native_sanitizer_scope": "Selected project C++ and pinned SDL C; native calibration probe compiles the real application entry through substituted MIDI. System libraries are not rebuilt.",
+    "old_release_required_count": 31,
+    "old_sanitizer_gate_count": 21,
+    "old_sanitizer_mappings": {
+      "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+      "test_standalone_channel_modes": "test_standalone_channel_modes",
+      "test_standalone_drawing": "test_standalone_drawing",
+      "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+      "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+      "test_standalone_inspection_author": "test_standalone_inspection_author",
+      "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+      "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+      "test_standalone_native_calibration": "hammond_standalone_calibration_probe",
+      "test_standalone_preset_raster": "test_standalone_preset_raster",
+      "test_standalone_preset_ui": "test_standalone_preset_ui",
+      "test_standalone_product_visual": "test_standalone_product_visual",
+      "test_standalone_projection": "test_standalone_projection",
+      "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+      "test_standalone_reference_layout": "test_standalone_reference_layout",
+      "test_standalone_scaled_view": "test_standalone_scaled_view",
+      "test_standalone_ui": "test_standalone_ui",
+      "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+      "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+      "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+      "test_standalone_workspaces_author": "test_standalone_workspaces_author"
+    },
+    "old_sanitizer_timeouts_seconds": {
+      "test_standalone_inspection_raster": 60,
+      "test_standalone_material_acceptance": 60,
+      "test_standalone_native_calibration": 180,
+      "test_standalone_preset_raster": 300,
+      "test_standalone_product_visual": 240,
+      "test_standalone_scaled_view": 360,
+      "test_standalone_workspace_raster": 180
+    },
+    "presets_unchanged": true,
+    "required_selections_retain_no_tests_error": true,
+    "sanitizer_runtime_policy": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "LSAN_OPTIONS": "exitcode=23",
+      "UBSAN_OPTIONS": "print_stacktrace=1:halt_on_error=1"
+    },
+    "source_files": {
+      ".github/workflows/ci.yml": {
+        "audited_sha256": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+        "base_sha256": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+        "worktree_matches_audited": true
+      },
+      ".github/workflows/native-vst3.yml": {
+        "audited_sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+        "base_sha256": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+        "worktree_matches_audited": true
+      },
+      ".github/workflows/standalone.yml": {
+        "audited_sha256": "766fb1c2cb890af1b921ce66b4a58f656a20f5e5ff6e00481fbccb39d8c41961",
+        "base_sha256": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a",
+        "worktree_matches_audited": true
+      },
+      "CMakeLists.txt": {
+        "audited_sha256": "27dcd10882464f949296ba2ad0ae08e016911a4ec746e38ce2116f459ad94673",
+        "base_sha256": "d968932bb49aed8e9c0ed0116f7209466d4e7890bc1db1f788369c1cad8b2a11",
+        "worktree_matches_audited": true
+      },
+      "CMakePresets.json": {
+        "audited_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+        "base_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+        "worktree_matches_audited": true
+      },
+      "apps/standalone/CMakeLists.txt": {
+        "audited_sha256": "a6996b75d61b9e39fcbc4df674196fc2cfaf398452dbbae799aab839e349b1b2",
+        "base_sha256": "36cfc23b38e7f2322cddd09dc9c37b5010765e0d09de1f8290113a4262bfa986",
+        "worktree_matches_audited": true
+      }
+    },
+    "upper_fixture_default_ctest_timeout_seconds": 90,
+    "upper_fixture_sanitizer_ctest_timeout_seconds": 240,
+    "vst3_workflow_unchanged": true
+  },
+  "source_commit": "af2b74760ee195c9497b314a1a29172f5238dd44",
+  "source_tree": "fb7d9ef7d1fcf24a70395c0671b75eb9c31558d4",
+  "successful_jobs": 12,
+  "total_jobs": 13,
+  "wave": 8
+}

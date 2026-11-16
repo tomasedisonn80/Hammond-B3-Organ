@@ -1,6 +1,18 @@
 # Product continuation: setup and recovery handoff
 
-**Post-review local update, 16 November 2026:** the [refreshed full suite](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json) passes **210/210 in 191.90 seconds** after the missing-probe and sanitizer-selection repairs. The [publication-source receipt](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) binds the sole later EOF whitespace cleanup, identical rebuilt resource binary and passing affected test. The earlier 191.89-second observation below retains its original inputs. Current-source hosted execution and final session publication remain pending.
+**Code qualification update, 16 November 2026:** implementation `af2b747` and the
+Windows I/O repair `2f57723` are published and independently fetched. All **13
+hosted jobs pass at `2f57723`**, as recorded in the
+[completed platform receipt](development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json).
+The original `af2b747` Windows failure remains separate. Local qualification is
+[210/210 in 191.90 seconds](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json),
+then the [sole EOF cleanup](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json),
+then [3/3 affected I/O suites](development/2026-11-15-streaming-continuation/reports/windows-repair-qualification.json).
+Earlier receipts keep their original inputs and timings. The
+[session checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+records completed worker closure and source-qualified publication history.
+[All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
+Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
 
 ## Current contact/material continuation — 16 November 2026
 
@@ -15,15 +27,15 @@ measurements nor independent verification of every cited primary document.
 Root's [coherent local qualification](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
 passed **210/210 CTests in 191.89 seconds** after a 131-step all-target rebuild.
 All 505 recorded code/test/tool/data inputs stayed unchanged during that run.
-This is the working overlay above base
-`4aac394cde4da40906b615573a8779aee2d9a37a`, tree
-`3605c9ce098a052afc10b2969fefe31e15644fe9`; the base alone does not contain the
-new work. **Completion of this request's sixty actual workers in ten waves,
-commit/push and current-source hosted CI remain pending at this handoff.** The
-[live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
-and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json)
-own later counts, acceptance and observed publication. Earlier sessions do not
-contribute worker credit, and this handoff does not close their unfinished ledgers.
+The initial base is `4aac394cde4da40906b615573a8779aee2d9a37a`, tree
+`3605c9ce098a052afc10b2969fefe31e15644fe9`. Implementation `af2b747` and the
+Windows I/O repair `2f57723` are published and independently fetched. All 13
+hosted jobs pass at the repaired code revision, including Windows core 185/185;
+the initial 12/13 result and failing install log remain preserved. All sixty
+actual scoped deliveries are accepted and the strict record check passes. The
+closing documentary handoff and publication recovery are recorded by the [live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json).
+Earlier sessions contribute no worker credit or unfinished-ledger closure.
 
 ### Current delivery and its evidence boundaries
 
@@ -31,7 +43,7 @@ contribute worker credit, and this handoff does not close their unfinished ledge
 | --- | --- |
 | Exact causal trajectory | [`CausalContactGrid`](../include/hammond/research/CausalContactGrid.h) implements `causal-contact-grid-v1`: nine independent hysteretic contacts per key, persistent command anchors, incoming-equality ordering, exact rational roots and partition-independent state. Its [contract](CAUSAL_CONTACT_GRID_CONTRACT.md) admits 44.1/48/96 kHz, 65,536 ticks/frame, positions 0 through `2^48`, 1–4 keys, at most 4,096 frames and 512 supplied commands per epoch, and 4,608 edges. Exactness is confined to that integer domain; there is no implicit binary64 converter. |
 | Independent numerical and lifecycle checks | The [source review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) establishes arithmetic/ordering arguments. The independent [Fraction differential suite](development/2026-11-15-streaming-continuation/notes/A21.md) passes eleven methods / 199 native invocations, comparing every edge and complete padded snapshot. The separate [lifecycle suite](development/2026-11-15-streaming-continuation/notes/A22.md) covers phase/error precedence, closure, reset, capacity and rollback; root's later coherent gate supplies its runtime result. Failure preserves state and caller-output bytes. `close_observation` applies endpoint targets without travel; it is not an audio drain. |
-| Strict native probe and Windows repair | The [CLI acceptance](development/2026-11-15-streaming-continuation/notes/A24.md) records 17 methods / 150 Linux processes, including 131 exact rejections, raw-byte limits, endpoint dispatch and typed output. Input is bounded to 131,072 bytes and output to 2 MiB. The [guarded Windows stdin repair](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) prevents documented CRT CRLF/Ctrl-Z translations from undermining that transport. The final Linux coherent gate passed; actual Windows compile/runtime and mode-failure execution still require hosted/platform evidence. |
+| Strict native probe and Windows repair | The [CLI acceptance](development/2026-11-15-streaming-continuation/notes/A24.md) records 17 methods / 150 Linux processes, including 131 exact rejections, raw-byte limits, endpoint dispatch and typed output. Input is bounded to 131,072 bytes and output to 2 MiB. The [guarded Windows stdin repair](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) prevents documented CRT CRLF/Ctrl-Z translations from undermining that transport. The final Linux coherent gate passed; [initial hosted admission](reviews/STREAMING_INITIAL_HOSTED_ADMISSION.md) observes all six causal suites passing on Windows and the other three core jobs. Repaired `2f57723` passes Windows 185/185. Forced mode-failure execution remains unobserved. |
 | Bounded resources | [Independent admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md) reproduced 192 scopes with zero observed current-thread C++ allocations/deallocations, fixed staging, a **113,056-byte object on the measured ABI**, and frozen per-call ceilings including 4,608 edges and 80,640 ordering comparisons. Hook coverage, finite workloads and source bounds do not establish all system allocation, compiler stack use, indefinite/full-organ operation or callback deadlines. |
 | Upper-rack material | Only the Upper inner inset in active wide Dimensional Play changes. [Independent comparison admission](reviews/UPPER_RACK_COMPARISON_ADMISSION.md) covers **96 genuine paired cases / 307,095,606 pixels**, zero escaping pixels/channels, **37 exact required whole frames**, preserved child/focus samples and five passing local reference light/texture screens. Baseline failures remain. The three resource crops protect zero exterior pixels and supply no external-containment claim. [Painter review](reviews/UPPER_RACK_PAINTER_REVIEW.md) separately admits arithmetic, renderer-state preservation and source work bounds. |
 | Actual changed application | The [twelve-view gallery](../examples/demos/upper-rack-material-v1/README.md) and [641-check independent admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md) bind actual native pixels, replay, controls and sources. Full-frame inspection found no new Upper-inset blocker. Reference/minimum-active/compact/Flat/Service/Rotary and toolbar/pedal-focus views retain their scope. Runtime counter/meter drift makes these captures distinct from exact-state raster pairs. Original BMP bytes are unavailable; lossless-conversion receipts and independently rechecked PNGs remain. |
@@ -46,7 +58,7 @@ playing keys, 24 presets, four banks and 68 ordinary controls including presets*
 One genuine-before/current 8,192-frame dry fixture has identical complete WAV and
 all **16,384 decoded samples**, with zero clipping. This is a bounded fixture
 result. Its review records the historical baseline's whole-WAV-versus-PCM hash
-label correction without rewriting that original report.
+label correction without rewriting that original report. The original 48-file ContactReferenceTools equality is also snapshot-bound: the [later I/O repair](reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md) changes only its wrapper, preserving all 48 names, other 47 hashes and install rules; the repaired hosted relocated-install gate passes.
 
 No new converter, audio reconstruction/filter, full-window audio grade or live
 Engine/standalone/VST3 contact route follows from this trajectory. Scanner,
@@ -58,11 +70,17 @@ DAWs and callback deadlines retain their separate evidence gates.
 
 ### Current source, workspace and setup
 
-Read-only recovery during A34 found HEAD and the locally fetched `origin/main`
-at the base above, an empty staged diff and the active unstaged/untracked overlay.
-This is not a fresh remote-main observation. Root must fetch and inspect remote
-changes before publication. Keep the accepted overlay and other owners' work;
-a clean base clone cannot recover unpublished files from hashes alone.
+The **earlier A34 recovery snapshot** found HEAD and locally fetched `origin/main`
+at base `4aac394`, with an empty index and an unpublished working overlay. That
+was a dated local observation before publication. Implementation `af2b747` and
+repair `2f57723` are now published and independently fetched; a checkout of those
+commits recovers their tracked source and evidence. The final sixty-worker
+acceptances, strict receipt and reconciled documents accompany this closing
+handoff. Recover the main commit containing those files, and inspect its exact
+Git/Actions identities rather than assigning it an older CI run. Root must fetch
+and inspect fresh remote changes before each push.
+Original scratch-only executables and WAVs have the distinct retention limits in
+the [storage review](reviews/STREAMING_STORAGE_RECOVERY_REVIEW.md).
 
 | Resource | Current identity and ownership |
 | --- | --- |
@@ -122,7 +140,24 @@ SDK-free build, verified one-frame probe example, lifecycle and focused tests.
 | M9 next material/type and native use | Declare the next panel/wood/key/type scope and reference targets before code. Preserve genuine before binaries, physical mask and independent paired/full-frame checks; recapture the actual app and update README. Execute identified native display/DPI/input journeys for small labels, focus, held-note resize, drawbar endpoints and pending/applied state. Semantic accessibility and whole-interface equality remain separate exits. |
 | Existing independent model/adapter owners | Recover [PLAN's ownership map](PLAN.md#current-ownership-and-source) before touching scanner/ScannerLineFoh, harmonic/leakage, same-Hz crossover, native MIDI retirement, deck or R4 work. Preserve scanner G5 failures, M5-before-downstream-fitting, separate horn/drum radiation inputs, one trajectory per rotor, R4 owner acceptance, R5 audible policy and R6 integration. A numerical pass cannot authorize a live Engine route. |
 | Physical inputs and release | Follow the [acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md): identify specimen/revision, obtain synchronized travel/nine-contact/source-phase/dry captures with calibrated clocks, loading, uncertainty and held-out trials. Bounce, resistance, tap loading and real percussion/expression need evidence. Complete AO-28/Leslie connectivity, operating points, losses, loads and cabinet inputs retain M5–M8 gates. Native close/callback retirement, real devices/DAWs, deadlines, rights and signed distribution retain [release requirements](RELEASE_READINESS.md). |
-| Current session closure | Finish sixty distinct actual workers in ten six-worker waves and retain the matching strict ledger result only after real acceptance. Complete source/evidence reviews and final integrity. Root commits accepted chunks, fetches/inspects concurrent main, pushes with a fresh expected head and no force, then independently fetches/verifies commit/tree/parent and intended contents. Observe the thirteen required hosted jobs at the published source. Earlier product CI and strict records qualify their named source/session only. |
+| Current session closure | All sixty actual scoped deliveries are accepted in ten six-worker waves, and the [matching strict receipt](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json) passes. The [closure handoff](STREAMING_CONTINUATION_CLOSURE.md) retains source/evidence boundaries. Root publishes with a fresh expected head and no force, independently verifies commit/tree/parent/content, then observes thirteen required jobs at that exact head. Earlier product CI and strict records qualify their named source/session only. |
+
+### Prepared continuation routes
+
+The [reviewed next-proposal table](NEXT_STEPS.md#reviewed-next-proposals-and-decisions)
+records concrete blockers and exclusive-owner boundaries. Start from
+[conversion](research/CONTACT_GRID_CONVERSION_NEXT.md) / [review](reviews/CONTACT_GRID_CONVERSION_NEXT_REVIEW.md),
+[isolated audio](research/CAUSAL_CONTACT_AUDIO_NEXT.md) / [review](reviews/CAUSAL_CONTACT_AUDIO_NEXT_REVIEW.md),
+[capacity](research/CAUSAL_CONTACT_CAPACITY_NEXT.md) / [review](reviews/CAUSAL_CONTACT_CAPACITY_NEXT_REVIEW.md),
+[whole-window comparison](design/WHOLE_WINDOW_REFERENCE_NEXT.md) and
+[materials/type](design/REFERENCE_MATERIAL_TYPE_NEXT.md) / [review](reviews/REFERENCE_MATERIAL_NEXT_REVIEW.md),
+then [native use/accessibility](design/NATIVE_ACCESSIBILITY_JOURNEY_NEXT.md) /
+[review](reviews/NATIVE_ACCESSIBILITY_JOURNEY_NEXT_REVIEW.md). These are completed
+planning/review inputs, **not admitted implementation contracts**. Lower L1 needs
+its own field/criteria; T1 separately needs unequal-aspect type geometry. Conversion needs event
+correspondence as well as scalar error; audio needs bounded wider-rational
+arithmetic, atomic history and full-window grading. Capacity, native semantics
+and physical acquisition keep separate exits.
 
 ### Mandatory continuation workflow
 

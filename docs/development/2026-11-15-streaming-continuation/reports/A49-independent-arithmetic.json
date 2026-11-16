@@ -1,0 +1,511 @@
+{
+  "author_bindings": {
+    "data/contact-switching/reference-v1/F09-48000-v1.json": {
+      "author_sha256": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b",
+      "current_sha256": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b",
+      "unchanged": true
+    },
+    "data/contact-switching/reference-v1/manifest.json": {
+      "author_sha256": "b80db78bb8477b683bfd2cc1013a0b600c45e8f20b7fc08f75c5efe6e10a22ec",
+      "current_sha256": "b80db78bb8477b683bfd2cc1013a0b600c45e8f20b7fc08f75c5efe6e10a22ec",
+      "unchanged": true
+    },
+    "data/contact-switching/reference-v1/probes.json": {
+      "author_sha256": "fdcdf6430c008cd28367d3c02f125af2a37ac55ebbe875361fba2549295e7026",
+      "current_sha256": "fdcdf6430c008cd28367d3c02f125af2a37ac55ebbe875361fba2549295e7026",
+      "unchanged": true
+    },
+    "docs/CAUSAL_CONTACT_GRID_CONTRACT.md": {
+      "author_sha256": "ba851e6af0601b52aef73d4b9effb64dffac3ef5e230eff7015e10e58a4ecb4e",
+      "current_sha256": "ba851e6af0601b52aef73d4b9effb64dffac3ef5e230eff7015e10e58a4ecb4e",
+      "unchanged": true
+    },
+    "docs/CAUSAL_CONTACT_GRID_GUIDE.md": {
+      "author_sha256": "d9f5b7ae4ef58e32f72b984b4ca94e5aea48673421ecdddde24d2f2d60bd2f4f",
+      "current_sha256": "d9f5b7ae4ef58e32f72b984b4ca94e5aea48673421ecdddde24d2f2d60bd2f4f",
+      "unchanged": true
+    },
+    "docs/CONTACT_SWITCHING_VALIDATION.md": {
+      "author_sha256": "5ccbba4d08a2272bef4f7d553446a7ca9582e289fba80f9bcfa223a2d6efb2b5",
+      "current_sha256": "5ccbba4d08a2272bef4f7d553446a7ca9582e289fba80f9bcfa223a2d6efb2b5",
+      "unchanged": true
+    },
+    "docs/FRACTIONAL_CONTACT_REFERENCE.md": {
+      "author_sha256": "3c05da4c3f35fcdc53fac05f1592ddc97e444f5038d9c147afae71f46e8deecd",
+      "current_sha256": "3c05da4c3f35fcdc53fac05f1592ddc97e444f5038d9c147afae71f46e8deecd",
+      "unchanged": true
+    },
+    "tests/reference/causal_contact_grid_reference.py": {
+      "author_sha256": "3b16fbdb299a93806b3a626bd259f1f4649e042fd8f55b314c8eedb10c2b5a27",
+      "current_sha256": "3b16fbdb299a93806b3a626bd259f1f4649e042fd8f55b314c8eedb10c2b5a27",
+      "unchanged": true
+    },
+    "tools/contact_switching_io.py": {
+      "author_sha256": "e3219265f1496a36b4f5d8a13941672b46ddc4116f331b7a1b99115a2dac9dc6",
+      "current_sha256": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+      "unchanged": false
+    },
+    "tools/fractional_contact_reference.py": {
+      "author_sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+      "current_sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+      "unchanged": true
+    }
+  },
+  "author_receipt_sha256": "b8fb5c44b26f7862a564b017b13138418762d08d6d01837ae61275d3c5f4be88",
+  "command": "python3 -B docs/development/2026-11-15-streaming-continuation/reports/A49-independent-arithmetic.py",
+  "conditional_root_bound": {
+    "conditions": "Matched eligible roots, same direction, positive speeds, d=original threshold distance; Ep is propagated anchor error, not only input rounding.",
+    "formula": "Ea + (Etheta + Ep)/vprime + d*Ev/(v*vprime)",
+    "status": "Correct conditional inequality; no acceptance threshold is provided or admitted."
+  },
+  "cwd": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+  "duration_endpoint_checks": [
+    {
+      "effective_seconds": {
+        "denominator": "10737418244175",
+        "numerator": "1073741824"
+      },
+      "effective_seconds_within_original_range": false,
+      "ideal_units_per_tick": {
+        "denominator": "81350141365059126525",
+        "numerator": "79228162514264337593543950336"
+      },
+      "input_seconds": {
+        "denominator": "73786976294838206464",
+        "numerator": "7378697629483821"
+      },
+      "rate_hz": 44100,
+      "relative_duration_error": {
+        "denominator": "79228162545070403993389992675",
+        "numerator": "30806066399846042339"
+      },
+      "rounded_units_per_tick": 973915487
+    },
+    {
+      "effective_seconds": {
+        "denominator": "67109175",
+        "numerator": "67108864"
+      },
+      "effective_seconds_within_original_range": true,
+      "ideal_units_per_tick": {
+        "denominator": "11025",
+        "numerator": "1073741824"
+      },
+      "input_seconds": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "rate_hz": 44100,
+      "relative_duration_error": {
+        "denominator": "67109175",
+        "numerator": "311"
+      },
+      "rounded_units_per_tick": 97392
+    },
+    {
+      "effective_seconds": {
+        "denominator": "335544319875",
+        "numerator": "33554432"
+      },
+      "effective_seconds_within_original_range": true,
+      "ideal_units_per_tick": {
+        "denominator": "2767011611056432875",
+        "numerator": "2475880078570760549798248448"
+      },
+      "input_seconds": {
+        "denominator": "73786976294838206464",
+        "numerator": "7378697629483821"
+      },
+      "rate_hz": 48000,
+      "relative_duration_error": {
+        "denominator": "2475880077648423464761242375",
+        "numerator": "922337085037006073"
+      },
+      "rounded_units_per_tick": 894784853
+    },
+    {
+      "effective_seconds": {
+        "denominator": "16777125",
+        "numerator": "16777216"
+      },
+      "effective_seconds_within_original_range": false,
+      "ideal_units_per_tick": {
+        "denominator": "375",
+        "numerator": "33554432"
+      },
+      "input_seconds": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "rate_hz": 48000,
+      "relative_duration_error": {
+        "denominator": "16777125",
+        "numerator": "91"
+      },
+      "rounded_units_per_tick": 89478
+    },
+    {
+      "effective_seconds": {
+        "denominator": "167772160125",
+        "numerator": "16777216"
+      },
+      "effective_seconds_within_original_range": false,
+      "ideal_units_per_tick": {
+        "denominator": "2767011611056432875",
+        "numerator": "1237940039285380274899124224"
+      },
+      "input_seconds": {
+        "denominator": "73786976294838206464",
+        "numerator": "7378697629483821"
+      },
+      "rate_hz": 96000,
+      "relative_duration_error": {
+        "denominator": "1237940040207717537908837625",
+        "numerator": "922337263009713401"
+      },
+      "rounded_units_per_tick": 447392427
+    },
+    {
+      "effective_seconds": {
+        "denominator": "16777125",
+        "numerator": "16777216"
+      },
+      "effective_seconds_within_original_range": false,
+      "ideal_units_per_tick": {
+        "denominator": "375",
+        "numerator": "16777216"
+      },
+      "input_seconds": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "rate_hz": 96000,
+      "relative_duration_error": {
+        "denominator": "16777125",
+        "numerator": "91"
+      },
+      "rounded_units_per_tick": 44739
+    }
+  ],
+  "evidence_class": "synthetic",
+  "examples": [
+    {
+      "grid_on": 140737488355328,
+      "grid_target": 140737488355328,
+      "hypothetical_grid_bit_after_arrival": true,
+      "name": "unreachable-target-becomes-equality",
+      "position_error_travel": {
+        "denominator": "18014398509481984",
+        "numerator": "1"
+      },
+      "required_rejection": "distinct threshold/target collision",
+      "source_bit_after_arrival": false,
+      "source_off": {
+        "denominator": "4",
+        "numerator": "1"
+      },
+      "source_on": {
+        "denominator": "2",
+        "numerator": "1"
+      },
+      "source_target": {
+        "denominator": "18014398509481984",
+        "numerator": "9007199254740991"
+      }
+    },
+    {
+      "grid_off": 140737488355328,
+      "grid_on": 140737488355328,
+      "name": "hysteresis-collapse",
+      "required_rejection": "grid off must remain strictly below on",
+      "source_off": {
+        "denominator": "2",
+        "numerator": "1"
+      },
+      "source_on": {
+        "denominator": "9007199254740992",
+        "numerator": "4503599627370497"
+      },
+      "source_width_travel": {
+        "denominator": "9007199254740992",
+        "numerator": "1"
+      }
+    },
+    {
+      "lost_interval_frames": {
+        "denominator": "131072",
+        "numerator": "1"
+      },
+      "name": "distinct-command-collision",
+      "required_rejection": "distinct exact times collide across the whole epoch",
+      "rounded_ticks": [
+        32768,
+        32768
+      ],
+      "source_times_frames": [
+        {
+          "denominator": "262144",
+          "numerator": "131071"
+        },
+        {
+          "denominator": "262144",
+          "numerator": "131073"
+        }
+      ],
+      "unrounded_ticks": [
+        {
+          "denominator": "4",
+          "numerator": "131071"
+        },
+        {
+          "denominator": "4",
+          "numerator": "131073"
+        }
+      ]
+    },
+    {
+      "hypothetical_grid_order": [
+        0,
+        1
+      ],
+      "hypothetical_grid_roots_frames": [
+        {
+          "denominator": "91625969",
+          "numerator": "1073741824"
+        },
+        {
+          "denominator": "91625969",
+          "numerator": "1073741824"
+        }
+      ],
+      "name": "contact-order-change",
+      "required_rejection": "threshold collision before any topology certificate",
+      "source_gap_frames": {
+        "denominator": "144115188075855872",
+        "numerator": "375"
+      },
+      "source_order": [
+        1,
+        0
+      ],
+      "source_roots_frames": [
+        {
+          "denominator": "144115188075855872",
+          "numerator": "1688849860263936375"
+        },
+        {
+          "denominator": "32",
+          "numerator": "375"
+        }
+      ]
+    },
+    {
+      "both_final_contact_vectors_all_open": true,
+      "command_frames": {
+        "denominator": "32",
+        "numerator": "375"
+      },
+      "command_tick": 768000,
+      "edge_advance_frames": {
+        "denominator": "2932031008",
+        "numerator": "7"
+      },
+      "edge_advance_seconds": {
+        "denominator": "140737488384000",
+        "numerator": "7"
+      },
+      "edge_command_sign_grid": -1,
+      "edge_command_sign_original": 0,
+      "final_bit_reason": "Both final targets are zero, release completes before N, and all off thresholds are positive.",
+      "grid_edge_frames": {
+        "denominator": "91625969",
+        "numerator": "1073741824"
+      },
+      "grid_edge_ticks": {
+        "denominator": "91625969",
+        "numerator": "70368744177664"
+      },
+      "ideal_units_per_tick": {
+        "denominator": "375",
+        "numerator": "68719476736"
+      },
+      "latest_full_release_arrival_frames_grid": {
+        "denominator": "3002399752192",
+        "numerator": "313675732406781"
+      },
+      "latest_full_release_arrival_frames_source": {
+        "denominator": "35184372088832",
+        "numerator": "3675887273980723"
+      },
+      "name": "F09-command-equality-lost",
+      "position_overshoot_travel_at_command": {
+        "denominator": "68719476736",
+        "numerator": "7"
+      },
+      "position_overshoot_units_at_command": 28672,
+      "required_rejection": "exact edge-versus-command equality changed",
+      "rounded_command_ticks_in_original_ordinal_order": [
+        0,
+        0,
+        768000,
+        768000,
+        768000,
+        768000,
+        3774874,
+        3774874
+      ],
+      "rounded_units_per_tick": 183251938,
+      "scalar_collision_checks_pass_for_actual_F09": true,
+      "source_edge_frames": {
+        "denominator": "32",
+        "numerator": "375"
+      },
+      "speed_error_units_per_tick": {
+        "denominator": "375",
+        "numerator": "14"
+      }
+    }
+  ],
+  "filesystem_boundary": {
+    "added_definitions": [
+      "_preflight_input_signature"
+    ],
+    "changed_definitions": [
+      "OutputPlan",
+      "load_input",
+      "preflight_paths"
+    ],
+    "current_io_sha256": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "historical_commit": "af2b74760ee195c9497b314a1a29172f5238dd44",
+    "historical_io_sha256": "e3219265f1496a36b4f5d8a13941672b46ddc4116f331b7a1b99115a2dac9dc6",
+    "parser_text_unchanged": true,
+    "scope": "A49 only checks source separation; A47 owns I/O admission and root owns current-platform qualification."
+  },
+  "midpoint_checks": [
+    {
+      "exact": {
+        "denominator": "2",
+        "numerator": "1"
+      },
+      "rne_integer": 0
+    },
+    {
+      "exact": {
+        "denominator": "2",
+        "numerator": "3"
+      },
+      "rne_integer": 2
+    },
+    {
+      "exact": {
+        "denominator": "2",
+        "numerator": "5"
+      },
+      "rne_integer": 2
+    },
+    {
+      "exact": {
+        "denominator": "2",
+        "numerator": "7"
+      },
+      "rne_integer": 4
+    },
+    {
+      "exact": {
+        "denominator": "2",
+        "numerator": "562949953421311"
+      },
+      "rne_integer": 281474976710656
+    },
+    {
+      "exact": {
+        "denominator": "2",
+        "numerator": "562949953421313"
+      },
+      "rne_integer": 281474976710656
+    }
+  ],
+  "no_exact_speed_argument": "For reduced P=p/2^k in the admitted duration range and F=2^a*m, m odd>1, ideal speed is 2^(32+k-a)/(m*p). Its odd denominator cannot cancel into a power-of-two numerator. No positive moving slope is exactly embedded by this direct integer-speed mapping.",
+  "not_executed": [
+    "converter implementation",
+    "36-fixture conversion admission",
+    "native probe",
+    "build",
+    "broad tests",
+    "audio rendering",
+    "full-window numerical admission",
+    "platform or physical qualification"
+  ],
+  "observed_head": "2f57723d9ec806fe8f721c317ef8c1a38d63b532",
+  "observed_head_tree": "cee5fdc4b07d95185ebd9e4d1c5f236f88a787f9",
+  "outcome": "All bounded exact assertions and source checks completed; five author fragments independently reproduced. Proposal arithmetic accepted for planning only; converter protocol remains unadmitted.",
+  "pairwise_topology_work_at_domain_max": {
+    "commands": 512,
+    "edge_command_and_endpoint_pairs": 2368512,
+    "edge_pairs": 10614528,
+    "edges": 4608
+  },
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "proposal_sha256": "87e3a5e513790af7a4dd1fdf4d3ca46852f97acfca5973decbef7449934c1251",
+  "python": "3.12.14",
+  "rate_factorizations": [
+    {
+      "half_tick_seconds": {
+        "denominator": "5780275200",
+        "numerator": "1"
+      },
+      "odd_factor": 11025,
+      "power_of_two": 2,
+      "rate_hz": 44100
+    },
+    {
+      "half_tick_seconds": {
+        "denominator": "6291456000",
+        "numerator": "1"
+      },
+      "odd_factor": 375,
+      "power_of_two": 7,
+      "rate_hz": 48000
+    },
+    {
+      "half_tick_seconds": {
+        "denominator": "12582912000",
+        "numerator": "1"
+      },
+      "odd_factor": 375,
+      "power_of_two": 8,
+      "rate_hz": 96000
+    }
+  ],
+  "receipt_kind": "independent-prospective-arithmetic-review",
+  "schema_version": 1,
+  "script_sha256": "c571f6468f67a4bfdd1b0480e0fbc2b43a3a768b56b0468ace6d6acf4e14a7de",
+  "source_identity_note": "Individual current input hashes bind this calculation; HEAD alone does not describe concurrent work.",
+  "subnormal_boundary": {
+    "exact_positive_binary64": {
+      "denominator": "202402253307310618352495346718917307049556649764142118356901358027430339567995346891960383701437124495187077864316811911389808737385793476867013399940738509921517424276566361364466907742093216341239767678472745068562007483424692698618103355649159556340810056512358769552333414615230502532186327508646006263307707741093494784",
+      "numerator": "1"
+    },
+    "finding": "Preserve admitted binary64 subnormals; explicitly reject new initial-target no-ops/interior-to-zero time collisions. Sidecar gains/amplitudes must not be flushed to zero.",
+    "position_rounds_to": 0,
+    "time_rounds_to_tick": 0
+  },
+  "units": {
+    "half_position_unit_travel": {
+      "denominator": "562949953421312",
+      "numerator": "1"
+    },
+    "half_speed_unit_travel_per_frame": {
+      "denominator": "8589934592",
+      "numerator": "1"
+    },
+    "half_tick_frames": {
+      "denominator": "131072",
+      "numerator": "1"
+    },
+    "ticks_per_frame": 65536,
+    "units_per_full_travel": 281474976710656
+  },
+  "wave": 9,
+  "worker": "/root/w09_a49"
+}

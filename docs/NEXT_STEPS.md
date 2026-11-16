@@ -1,8 +1,20 @@
 # Next steps
 
-**Post-review local update, 16 November 2026:** the [refreshed full suite](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json) passes **210/210 in 191.90 seconds** after the missing-probe and sanitizer-selection repairs. The [publication-source receipt](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) binds the sole later EOF whitespace cleanup, identical rebuilt resource binary and passing affected test. The earlier 191.89-second observation below retains its original inputs. Current-source hosted execution and final session publication remain pending.
+**Code qualification update, 16 November 2026:** implementation `af2b747` and the
+Windows I/O repair `2f57723` are published and independently fetched. All **13
+hosted jobs pass at `2f57723`**, as recorded in the
+[completed platform receipt](development/2026-11-15-streaming-continuation/reports/hosted-2f57723-complete.json).
+The original `af2b747` Windows failure remains separate. Local qualification is
+[210/210 in 191.90 seconds](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json),
+then the [sole EOF cleanup](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json),
+then [3/3 affected I/O suites](development/2026-11-15-streaming-continuation/reports/windows-repair-qualification.json).
+Earlier receipts keep their original inputs and timings. The
+[session checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+records completed worker closure and source-qualified publication history.
+[All 60 accepted records pass strict validation](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json).
+Code qualification does not close physical, whole-interface 1:1, device or accessibility gates.
 
-## Finish the current streaming/material source
+## Continue from the completed streaming/material scope
 
 The [active scope](development/2026-11-15-streaming-continuation/SCOPE.md)
 delivers the isolated `causal-contact-grid-v1` trajectory and the Upper-rack
@@ -12,24 +24,28 @@ rebuilt **131 steps** and passed **210/210 CTests in 191.89 seconds**, with all
 lifecycle, resource, comparison, gallery and compatibility evidence is retained
 in [current status](STATUS.md#current-tested-evidence-and-limits).
 
-The current base is `4aac394cde4da40906b615573a8779aee2d9a37a`; the qualified
-working overlay is identified by the receipt, not by HEAD alone. **Commit/push
-and exact-source hosted CI remain pending.** The requested sixty distinct
-workers in ten waves remain in progress. The [actual ledger](development/2026-11-15-streaming-continuation/assignments.json)
-owns dispatch/acceptance counts; the [live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
-owns later source/publication observations. Earlier sessions and followups do not
+The initial base is `4aac394cde4da40906b615573a8779aee2d9a37a`;
+implementation `af2b747` and repaired code `2f57723` are published. All 13
+required hosted jobs pass at `2f57723`. The original initial Windows failure,
+repair and new passing observations retain separate records. All sixty scoped
+worker deliveries are accepted, and strict record closure passes; the
+[actual ledger](development/2026-11-15-streaming-continuation/assignments.json)
+and [checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+retain accepted counts and publication recovery. The [closure handoff](STREAMING_CONTINUATION_CLOSURE.md)
+collects the outcome and next boundaries. Earlier sessions and followups do not
 count toward this request.
 
-Root's immediate integration sequence is:
+The continuation and publication sequence is:
 
 1. Preserve the qualified production inputs, genuine baseline binaries, frozen
    protocols, original failures and independent admissions. Resolve only concrete
    findings; later production/build/test edits require affected requalification,
    while prose/ledger edits require their integrity checks.
-2. Finish the actual assignments, substantive acceptance and matching strict
-   sixty-worker/ten-wave record check. Retain the result and each note/hash.
-   A record-consistency pass alone establishes neither worker work quality nor
-   implementation, physical or external-dispatch acceptance.
+2. Preserve the completed sixty-worker strict receipt and every accepted note.
+   For new work, record its own actual assignments, substantive review and source
+   acceptance without reusing this worker credit. Record consistency alone
+   establishes neither work quality, implementation, physical nor external-dispatch
+   acceptance.
 3. Inspect fresh remote advances and reconcile compatible work while preserving
    other owners' source, index, builds and evidence. Commit reviewable accepted
    paths and push to `main` with a fresh expected head, without force.
@@ -77,7 +93,9 @@ native probe example, bounded CGGRID1 wire format, API lifecycle and focused
 checks. Its probe is `../build-native/hammond_causal_contact_grid_probe`.
 The inherited [offline reference guide](CONTACT_SWITCHING_GUIDE.md) and
 [48-file installation guide](CONTACT_REFERENCE_INSTALL.md) retain their original
-source/package identities; the grid/probe is not added to that component.
+numerical-study bindings. The later [Windows I/O repair](reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md)
+changes only the I/O wrapper within that component; all 48 names, other 47 file
+hashes and install rules remain unchanged. The grid/probe is not added to it.
 Use fresh report destinations and preserve the prior 36×4 study's numerical
 evidence. The current actual-app gallery is
 [upper-rack-material-v1](../examples/demos/upper-rack-material-v1/README.md);
@@ -89,8 +107,30 @@ is the genuine prior baseline.
 The isolated integer-grid trajectory and narrow Upper finish are implemented
 and tested; repeating those tasks would not advance the remaining gates.
 Root must first assign exclusive paths to each next owner and check the existing
-ledgers. The proposed owners/modules below are future assignments, not claims
-that workers or new files already exist.
+ledgers. The next implementation owners/modules remain future assignments. Six written
+proposals and five independent reviews now supply their starting points; their
+reviewed calculations are not admitted implementation contracts.
+
+### Reviewed next proposals and decisions
+
+These six planning documents and five independent reviews are completed work.
+Their next implementation contracts are **not yet admitted**. Assign exclusive
+paths before continuing; retain all original failures and the unchanged default
+Engine.
+
+| Next boundary | Starting proposal and independent review | Next decision before implementation |
+| --- | --- | --- |
+| Integer conversion | [Conversion proposal](research/CONTACT_GRID_CONVERSION_NEXT.md) · [A49 review](reviews/CONTACT_GRID_CONVERSION_NEXT_REVIEW.md) | Freeze rounding, collisions, exact event correspondence including command ties, position/root error budgets and strict atomic certificates. F09 loses an edge/command equality; scalar rounding bounds alone cannot certify topology or audio. |
+| Isolated causal audio | [Audio proposal](research/CAUSAL_CONTACT_AUDIO_NEXT.md) · [A50 review](reviews/CAUSAL_CONTACT_AUDIO_NEXT_REVIEW.md) | Resolve portable wider-rational clipping, deterministic bounded sums, grid/audio stage-and-commit, phase origin/reset and independent full-window grading. D=16 and N+33 indexing are supported derivations; initial N≤256 and `1e-4` tolerances remain prospective. The accepted trajectory still permits 4096 frames. |
+| Continuing/full-organ capacity | [Capacity proposal](research/CAUSAL_CONTACT_CAPACITY_NEXT.md) · [A51 review](reviews/CAUSAL_CONTACT_CAPACITY_NEXT_REVIEW.md) | Define one input authority, post-expansion quotas, panic semantics, nonsealing boundaries, common rollback and complete callback storage/work. Keep 122×9 manual histories separate from 25×8 pedal bits; the illustrative subtotal is not a complete memory/deadline proof. |
+| Whole-window materials/type | [Whole-window plan](design/WHOLE_WINDOW_REFERENCE_NEXT.md) · [Material/type slices](design/REFERENCE_MATERIAL_TYPE_NEXT.md) · [A52 review](reviews/REFERENCE_MATERIAL_NEXT_REVIEW.md) | First author and independently admit Lower L1's own field/grain arithmetic, measurements, genuine current baseline, support and criteria. A mean-fitting bilinear field fails local horizontal slopes. Wood W1 and fraction T1 need separate geometry/scaling decisions; Upper masks/tolerances cannot transfer. |
+| Actual native use/accessibility | [Journey proposal](design/NATIVE_ACCESSIBILITY_JOURNEY_NEXT.md) · [A53 review](reviews/NATIVE_ACCESSIBILITY_JOURNEY_NEXT_REVIEW.md) | Run an identified native D1/J1 and percussion P1, genuinely pre-held J2/J3, modal cleanup and healthy-close journey. Observe S0 then admit one native semantic-provider contract. Different percussion Tab ordinals are not a proven focus-identity bug. Reduced-motion preference and numeric text editing remain absent. |
+
+The next visual action is Lower L1 protocol authoring. The next contact actions
+are explicit conversion and isolated-audio contracts, with independent numerical
+and resource acceptance. Physical [A1–A6 acquisition](CALIBRATION_NEXT_ACQUISITION.md),
+M5 dry validation before downstream fitting, actual devices/DAWs, semantic
+accessibility and literal whole-interface 1:1 remain independent requirements.
 
 ### M3: conversion policy and causal audio
 
@@ -176,20 +216,29 @@ decorative cabinet equality cannot close it.
 
 Use only this streaming session's
 [actual assignments](development/2026-11-15-streaming-continuation/assignments.json).
-Root must retain the matching validator's strict result for sixty distinct
-accepted workers in ten six-worker waves, including substantive notes/hashes and
-ownership/verification/acceptance. Until that exists, report progress without
-claiming closure. A planned slot or repeated followup is not another worker.
+The [retained strict result](development/2026-11-15-streaming-continuation/reports/streaming-session-strict.json)
+passes for sixty distinct accepted records in ten six-worker waves, with all
+substantive note hashes matching. Revalidate these records with the matching
+checker; preserve their scoped acceptance. A planned slot, old session or repeated
+followup is not another worker, and this result cannot close a future session.
 
 ```sh
+# Progress is valid while the actual ledger is still incomplete.
+python3 -B docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py --repo .
+# Strict closure requires all 60 accepted records and matching substantive notes.
+python3 -B docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py --repo . --strict
+# Separate repository/archive integrity, with its own scope.
 python3 -B tools/check_repository.py --json
 ```
 
-This read-only command checks repository integrity and local file links; it is
-**not** a worker-count or external-dispatch attestation. Older
-`check_product_session.py`, `check_continuation.py` and other session checkers
-remain bound to their own schemas/ledgers. Do not repurpose their passing result
-to close this one.
+The [independent record-checker review](reviews/STREAMING_SESSION_RECORD_ADMISSION.md)
+admits structural ledger/note consistency only. It does not prove historical
+external dispatch/concurrency, semantic work quality, publication or product
+fidelity. The repository checker is a separate source/archive integrity check,
+not a worker-count attestation. Root's documentary link audit is retained
+separately. Older `check_product_session.py`, `check_continuation.py` and other
+session checkers remain bound to their own schemas/ledgers; do not repurpose
+older passing results to close this one.
 
 ### Historical execution handoff — 15 November 2026
 
