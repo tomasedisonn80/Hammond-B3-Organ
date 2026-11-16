@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "agent": "/root/w08_a45",
+  "worker": 45,
+  "wave": 8,
+  "base_source": "af2b74760ee195c9497b314a1a29172f5238dd44",
+  "primary_sources": [
+    {
+      "url": "https://github.com/python/cpython/blob/v3.12.10/Python/fileutils.c",
+      "release": "v3.12.10",
+      "inspected_functions": [
+        "_Py_attribute_data_to_stat",
+        "_Py_fstat_noraise"
+      ],
+      "finding": "Descriptor stat retains Windows ChangeTime in ctime."
+    },
+    {
+      "url": "https://github.com/python/cpython/blob/v3.12.10/Modules/posixmodule.c",
+      "release": "v3.12.10",
+      "inspected_functions": [
+        "win32_xstat",
+        "os_fstat_impl",
+        "update_st_mode_from_path"
+      ],
+      "finding": "Path stat replaces ctime with birthtime and derives executable mode bits from path extension; fstat does neither."
+    },
+    {
+      "url": "https://github.com/python/cpython/issues/157671",
+      "finding": "Independent reported Windows stat/fstat ctime semantic mismatch; its reported runtime is 3.14, distinct from the inspected 3.12.10 source."
+    }
+  ],
+  "ci_failure_receipt": "windows-core-af2b747-failure.json",
+  "ci_limit": "Original CI has no individual stat-field dump. Exact source confirms the defect; Windows execution of repaired source remains unrun by A45.",
+  "production_old_sha256": "e3219265f1496a36b4f5d8a13941672b46ddc4116f331b7a1b99115a2dac9dc6",
+  "written_inputs_sha256": {
+    "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "tests/test_contact_switching_io.py": "ade725edc0d0b3f99714e10363f98c6454bacd7ed927698393fb2f1ed6410b81",
+    "docs/reviews/CONTACT_REFERENCE_WINDOWS_IDENTITY_REPAIR.md": "2729de93ffc1f23183b85aece136e950293592d46b5df6fa906768909996bd7b",
+    "docs/development/2026-11-15-streaming-continuation/notes/A45.md": "07ce1db1974b94efea55a6995908927ceccd944d4dacc24108d42609621a392b"
+  },
+  "note_bytes": 1967,
+  "before_tests": "A45-before-repair-tests.json",
+  "after_tests": "A45-after-repair-tests.json",
+  "after_test_summary": {
+    "methods": 39,
+    "passed": 38,
+    "skipped": 1,
+    "skip_reason": "Existing AF_UNIX facility returns EPERM",
+    "seconds": 0.911,
+    "new_regression_methods": 8
+  },
+  "preservation_receipt": "A45-preservation.json",
+  "preservation_summary": {
+    "files_compared": 114,
+    "unchanged": 113,
+    "installed_payload_names": 48,
+    "changed_in_payload": [
+      "tools/contact_switching_io.py"
+    ]
+  },
+  "integrity": {
+    "owned_diff_check": "pass",
+    "review_local_links": "pass",
+    "note_at_most_2000_bytes": "pass"
+  },
+  "unrun_by_worker": [
+    "native build",
+    "broad CTest",
+    "relocated install acceptance",
+    "complete numerical study",
+    "Windows execution",
+    "macOS execution"
+  ],
+  "next_owner": "Root independent integration/publication and exact-source hosted execution; A47 independent source/adversarial review."
+}

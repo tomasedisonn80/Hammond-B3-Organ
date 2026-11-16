@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "stage": "new focused regressions against unchanged production source",
+  "cwd": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "-B",
+    "tests/test_contact_switching_io.py",
+    "-v",
+    "FilesystemBoundaryTests.test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input",
+    "FilesystemBoundaryTests.test_real_rewritten_input_with_preserved_mtime_is_admitted",
+    "FilesystemBoundaryTests.test_descriptor_ctime_only_change_rejects_load_and_output_recheck",
+    "FilesystemBoundaryTests.test_descriptor_ctime_and_real_content_changes_during_read_reject",
+    "FilesystemBoundaryTests.test_same_bytes_replacement_after_preflight_rejects_load_and_output",
+    "FilesystemBoundaryTests.test_preflight_rejects_path_replacement_and_wrong_opened_file",
+    "FilesystemBoundaryTests.test_path_ctime_only_change_still_rejects_preflight_and_output_recheck",
+    "FilesystemBoundaryTests.test_input_descriptors_close_on_preflight_and_stream_wrapper_failures"
+  ],
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "exit_code": 1,
+  "elapsed_seconds": 0.3423811630000273,
+  "inputs_sha256": {
+    "tools/contact_switching_io.py": "e3219265f1496a36b4f5d8a13941672b46ddc4116f331b7a1b99115a2dac9dc6",
+    "tests/test_contact_switching_io.py": "ade725edc0d0b3f99714e10363f98c6454bacd7ed927698393fb2f1ed6410b81"
+  },
+  "log_sha256": "0ba40f4894c76a9673d374e1bd41fd9551ccc88a85843f5b29f228b740c3ab5a",
+  "log": "A45-before-repair-tests.log"
+}

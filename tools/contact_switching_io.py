@@ -59,13 +59,14 @@ class InputDocument(NamedTuple):
 
 @dataclass(frozen=True)
 class OutputPlan:
-    """Read-only preflight identities, checked again before atomic replacement."""
+    """Preflight identities, keeping path and descriptor metadata separate."""
 
     input_argument: Path
     output_argument: Path
     input_path: Path
     output_path: Path
     input_signature: tuple[int, ...]
+    input_path_signature: tuple[int, ...]
     output_signature: tuple[int, ...] | None
     parent_identity: tuple[int, int]
 
@@ -187,9 +188,32 @@ def _signature(information: os.stat_result) -> tuple[int, ...]:
             information.st_size, information.st_mtime_ns, information.st_ctime_ns)
 
 
+def _preflight_input_signature(path: Path, information: os.stat_result) -> tuple[int, ...]:
+    """Bind the admitted path to a descriptor without mixing metadata APIs.
+
+    Windows CPython 3.12 path stat keeps creation time in st_ctime_ns, while
+    fstat exposes change time. Path-derived execute bits may also differ.
+    Preserve both full signatures and bridge them using device/inode identity.
+    """
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_BINARY", 0)
+    descriptor = os.open(path, flags)
+    try:
+        opened = os.fstat(descriptor)
+        if not stat.S_ISREG(opened.st_mode):
+            raise ValueError("input must be a regular file")
+        if opened.st_size > MAX_INPUT_BYTES:
+            raise ValueError("input exceeds 256 KiB")
+        if (not os.path.samestat(information, opened)
+                or _signature(os.stat(path)) != _signature(information)):
+            raise ValueError("input changed during path preflight")
+        return _signature(opened)
+    finally:
+        os.close(descriptor)
+
+
 def load_input(path: str | os.PathLike, *,
                expected_signature: tuple[int, ...] | None = None) -> InputDocument:
-    """Read a bounded regular file; never block on an input FIFO/device."""
+    """Read a bounded regular file against a descriptor-derived preflight token."""
     information = os.stat(path)
     if not stat.S_ISREG(information.st_mode):
         raise ValueError("input must be a regular file")
@@ -197,7 +221,12 @@ def load_input(path: str | os.PathLike, *,
         raise ValueError("input exceeds 256 KiB")
     flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_BINARY", 0)
     descriptor = os.open(path, flags)
-    with os.fdopen(descriptor, "rb") as source:
+    try:
+        source = os.fdopen(descriptor, "rb")
+    except BaseException:
+        os.close(descriptor)
+        raise
+    with source:
         before = os.fstat(source.fileno())
         if not stat.S_ISREG(before.st_mode):
             raise ValueError("input must be a regular file")
@@ -253,6 +282,7 @@ def preflight_paths(input_path: str | os.PathLike,
         if not stat.S_ISREG(destination_stat.st_mode):
             raise ValueError("output must be absent or a regular file, not a symlink or special file")
     return OutputPlan(input_argument, output_argument, resolved_input, destination,
+                      _preflight_input_signature(resolved_input, source_stat),
                       _signature(source_stat),
                       _signature(destination_stat) if destination_stat is not None else None,
                       (parent_stat.st_dev, parent_stat.st_ino))

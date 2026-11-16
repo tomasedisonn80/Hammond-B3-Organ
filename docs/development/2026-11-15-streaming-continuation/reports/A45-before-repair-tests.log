@@ -1,0 +1,107 @@
+test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input (__main__.FilesystemBoundaryTests.test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input) ... 
+  test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input (__main__.FilesystemBoundaryTests.test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input) (path_execute_bits=0) ... FAIL
+  test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input (__main__.FilesystemBoundaryTests.test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input) (path_execute_bits=73) ... FAIL
+test_real_rewritten_input_with_preserved_mtime_is_admitted (__main__.FilesystemBoundaryTests.test_real_rewritten_input_with_preserved_mtime_is_admitted) ... ok
+test_descriptor_ctime_only_change_rejects_load_and_output_recheck (__main__.FilesystemBoundaryTests.test_descriptor_ctime_only_change_rejects_load_and_output_recheck) ... FAIL
+test_descriptor_ctime_and_real_content_changes_during_read_reject (__main__.FilesystemBoundaryTests.test_descriptor_ctime_and_real_content_changes_during_read_reject) ... ok
+test_same_bytes_replacement_after_preflight_rejects_load_and_output (__main__.FilesystemBoundaryTests.test_same_bytes_replacement_after_preflight_rejects_load_and_output) ... ok
+test_preflight_rejects_path_replacement_and_wrong_opened_file (__main__.FilesystemBoundaryTests.test_preflight_rejects_path_replacement_and_wrong_opened_file) ... 
+  test_preflight_rejects_path_replacement_and_wrong_opened_file (__main__.FilesystemBoundaryTests.test_preflight_rejects_path_replacement_and_wrong_opened_file) (mutation='replace-path') ... FAIL
+  test_preflight_rejects_path_replacement_and_wrong_opened_file (__main__.FilesystemBoundaryTests.test_preflight_rejects_path_replacement_and_wrong_opened_file) (mutation='different-descriptor') ... FAIL
+test_path_ctime_only_change_still_rejects_preflight_and_output_recheck (__main__.FilesystemBoundaryTests.test_path_ctime_only_change_still_rejects_preflight_and_output_recheck) ... 
+  test_path_ctime_only_change_still_rejects_preflight_and_output_recheck (__main__.FilesystemBoundaryTests.test_path_ctime_only_change_still_rejects_preflight_and_output_recheck) (when='during-preflight') ... FAIL
+test_input_descriptors_close_on_preflight_and_stream_wrapper_failures (__main__.FilesystemBoundaryTests.test_input_descriptors_close_on_preflight_and_stream_wrapper_failures) ... 
+  test_input_descriptors_close_on_preflight_and_stream_wrapper_failures (__main__.FilesystemBoundaryTests.test_input_descriptors_close_on_preflight_and_stream_wrapper_failures) (operation='preflight-fstat') ... FAIL
+  test_input_descriptors_close_on_preflight_and_stream_wrapper_failures (__main__.FilesystemBoundaryTests.test_input_descriptors_close_on_preflight_and_stream_wrapper_failures) (operation='load-fdopen') ... FAIL
+
+======================================================================
+FAIL: test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input (__main__.FilesystemBoundaryTests.test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input) (path_execute_bits=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_contact_switching_io.py", line 407, in test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input
+    self.assertEqual(self.invoke(), (0, "", ""))
+AssertionError: Tuples differ: (1, '', 'contact-switching: input changed after path preflight\n') != (0, '', '')
+
+First differing element 0:
+1
+0
+
+- (1, '', 'contact-switching: input changed after path preflight\n')
++ (0, '', '')
+
+======================================================================
+FAIL: test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input (__main__.FilesystemBoundaryTests.test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input) (path_execute_bits=73)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_contact_switching_io.py", line 407, in test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input
+    self.assertEqual(self.invoke(), (0, "", ""))
+AssertionError: Tuples differ: (1, '', 'contact-switching: input changed after path preflight\n') != (0, '', '')
+
+First differing element 0:
+1
+0
+
+- (1, '', 'contact-switching: input changed after path preflight\n')
++ (0, '', '')
+
+======================================================================
+FAIL: test_descriptor_ctime_only_change_rejects_load_and_output_recheck (__main__.FilesystemBoundaryTests.test_descriptor_ctime_only_change_rejects_load_and_output_recheck)
+----------------------------------------------------------------------
+ValueError: not enough values to unpack (expected 2, got 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_contact_switching_io.py", line 440, in test_descriptor_ctime_only_change_rejects_load_and_output_recheck
+    self.assertRaisesRegex(ValueError, "changed after path preflight"):
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "changed after path preflight" does not match "not enough values to unpack (expected 2, got 0)"
+
+======================================================================
+FAIL: test_preflight_rejects_path_replacement_and_wrong_opened_file (__main__.FilesystemBoundaryTests.test_preflight_rejects_path_replacement_and_wrong_opened_file) (mutation='replace-path')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_contact_switching_io.py", line 523, in test_preflight_rejects_path_replacement_and_wrong_opened_file
+    self.assertRaisesRegex(ValueError, "changed during path preflight"):
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_preflight_rejects_path_replacement_and_wrong_opened_file (__main__.FilesystemBoundaryTests.test_preflight_rejects_path_replacement_and_wrong_opened_file) (mutation='different-descriptor')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_contact_switching_io.py", line 523, in test_preflight_rejects_path_replacement_and_wrong_opened_file
+    self.assertRaisesRegex(ValueError, "changed during path preflight"):
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_path_ctime_only_change_still_rejects_preflight_and_output_recheck (__main__.FilesystemBoundaryTests.test_path_ctime_only_change_still_rejects_preflight_and_output_recheck) (when='during-preflight')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_contact_switching_io.py", line 557, in test_path_ctime_only_change_still_rejects_preflight_and_output_recheck
+    with self.assertRaisesRegex(ValueError, "changed during path preflight"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_input_descriptors_close_on_preflight_and_stream_wrapper_failures (__main__.FilesystemBoundaryTests.test_input_descriptors_close_on_preflight_and_stream_wrapper_failures) (operation='preflight-fstat')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_contact_switching_io.py", line 584, in test_input_descriptors_close_on_preflight_and_stream_wrapper_failures
+    self.assertRaisesRegex(OSError, "injected"):
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: OSError not raised
+
+======================================================================
+FAIL: test_input_descriptors_close_on_preflight_and_stream_wrapper_failures (__main__.FilesystemBoundaryTests.test_input_descriptors_close_on_preflight_and_stream_wrapper_failures) (operation='load-fdopen')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_contact_switching_io.py", line 598, in test_input_descriptors_close_on_preflight_and_stream_wrapper_failures
+    self.fail("input descriptor leaked on rejection")
+AssertionError: input descriptor leaked on rejection
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.148s
+
+FAILED (failures=8)

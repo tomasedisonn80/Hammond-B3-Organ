@@ -1,0 +1,860 @@
+{
+  "schema_version": 1,
+  "comparison_revision": "af2b74760ee195c9497b314a1a29172f5238dd44",
+  "payload_file_count": 48,
+  "payload_names": [
+    "tools/fractional_contact_reference.py",
+    "tools/contact_switching_io.py",
+    "tools/contact_switching_reference.py",
+    "tools/contact_switching_oracle.py",
+    "tools/contact_switching_study.py",
+    "tools/make_contact_switching_fixtures.py",
+    "docs/FRACTIONAL_CONTACT_REFERENCE.md",
+    "docs/CONTACT_SWITCHING_VALIDATION.md",
+    "docs/CONTACT_SWITCHING_GUIDE.md",
+    "docs/CONTACT_REFERENCE_INSTALL.md",
+    "data/contact-switching/reference-v1/F00-44100-v1.json",
+    "data/contact-switching/reference-v1/F00-48000-v1.json",
+    "data/contact-switching/reference-v1/F00-96000-v1.json",
+    "data/contact-switching/reference-v1/F01-44100-v1.json",
+    "data/contact-switching/reference-v1/F01-48000-v1.json",
+    "data/contact-switching/reference-v1/F01-96000-v1.json",
+    "data/contact-switching/reference-v1/F02-44100-v1.json",
+    "data/contact-switching/reference-v1/F02-48000-v1.json",
+    "data/contact-switching/reference-v1/F02-96000-v1.json",
+    "data/contact-switching/reference-v1/F03-44100-v1.json",
+    "data/contact-switching/reference-v1/F03-48000-v1.json",
+    "data/contact-switching/reference-v1/F03-96000-v1.json",
+    "data/contact-switching/reference-v1/F04-44100-v1.json",
+    "data/contact-switching/reference-v1/F04-48000-v1.json",
+    "data/contact-switching/reference-v1/F04-96000-v1.json",
+    "data/contact-switching/reference-v1/F05-44100-v1.json",
+    "data/contact-switching/reference-v1/F05-48000-v1.json",
+    "data/contact-switching/reference-v1/F05-96000-v1.json",
+    "data/contact-switching/reference-v1/F06-44100-v1.json",
+    "data/contact-switching/reference-v1/F06-48000-v1.json",
+    "data/contact-switching/reference-v1/F06-96000-v1.json",
+    "data/contact-switching/reference-v1/F07-44100-v1.json",
+    "data/contact-switching/reference-v1/F07-48000-v1.json",
+    "data/contact-switching/reference-v1/F07-96000-v1.json",
+    "data/contact-switching/reference-v1/F08-44100-v1.json",
+    "data/contact-switching/reference-v1/F08-48000-v1.json",
+    "data/contact-switching/reference-v1/F08-96000-v1.json",
+    "data/contact-switching/reference-v1/F09-44100-v1.json",
+    "data/contact-switching/reference-v1/F09-48000-v1.json",
+    "data/contact-switching/reference-v1/F09-96000-v1.json",
+    "data/contact-switching/reference-v1/F10-44100-v1.json",
+    "data/contact-switching/reference-v1/F10-48000-v1.json",
+    "data/contact-switching/reference-v1/F10-96000-v1.json",
+    "data/contact-switching/reference-v1/F11-44100-v1.json",
+    "data/contact-switching/reference-v1/F11-48000-v1.json",
+    "data/contact-switching/reference-v1/F11-96000-v1.json",
+    "data/contact-switching/reference-v1/manifest.json",
+    "data/contact-switching/reference-v1/probes.json"
+  ],
+  "payload_changed_files": [
+    "tools/contact_switching_io.py"
+  ],
+  "preserved_rows": 113,
+  "rows": [
+    {
+      "path": "cmake/InstallContactReferenceTools.cmake",
+      "in_48_file_payload": false,
+      "published_sha256": "b9994fcc297ca4f2ae005016dd7943b8d8960b35ca5f051f5bc57feba97bc9ea",
+      "current_sha256": "b9994fcc297ca4f2ae005016dd7943b8d8960b35ca5f051f5bc57feba97bc9ea",
+      "unchanged": true
+    },
+    {
+      "path": "cmake/InstallHammondTools.cmake",
+      "in_48_file_payload": false,
+      "published_sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+      "current_sha256": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F00-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "fa5b4a9316c9c9b5063427a93add8d9d0fe66363f8decdddca8eeb8fc8ecb113",
+      "current_sha256": "fa5b4a9316c9c9b5063427a93add8d9d0fe66363f8decdddca8eeb8fc8ecb113",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F00-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "2a67c702245770a525dbcdb20d40c5127a511500b3ae46ce01828eb271a72717",
+      "current_sha256": "2a67c702245770a525dbcdb20d40c5127a511500b3ae46ce01828eb271a72717",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F00-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "dc7c7554e76398c49fd9ed024a7e4037e98988f6373dbf53469337f9a4396e62",
+      "current_sha256": "dc7c7554e76398c49fd9ed024a7e4037e98988f6373dbf53469337f9a4396e62",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F01-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "73ca1b0542bbd60501fdea81da3411c3b4f363d086a2b6fb1688cc2f51ca3b63",
+      "current_sha256": "73ca1b0542bbd60501fdea81da3411c3b4f363d086a2b6fb1688cc2f51ca3b63",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F01-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "ac1ff9552af9d3db650abbac5f73edda14ee728aee0bab7865768194d9bd10f7",
+      "current_sha256": "ac1ff9552af9d3db650abbac5f73edda14ee728aee0bab7865768194d9bd10f7",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F01-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "3274472300ab9d42d11d34a6403a9b1695afe2b60c8bd7b3b26e2c2eded47a0d",
+      "current_sha256": "3274472300ab9d42d11d34a6403a9b1695afe2b60c8bd7b3b26e2c2eded47a0d",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F02-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "fb2ef23cdddedfd92152a335d146c3367cd5633f91010f335ee74944036db0e5",
+      "current_sha256": "fb2ef23cdddedfd92152a335d146c3367cd5633f91010f335ee74944036db0e5",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F02-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "edf3fddee3ca55d1ebbdf367210b1d032689a467e385cd1c0ecd66f014bad2af",
+      "current_sha256": "edf3fddee3ca55d1ebbdf367210b1d032689a467e385cd1c0ecd66f014bad2af",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F02-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "d28e76e089129483f78a7335aa408002cded5ecda5037c1d5d3fcb6ed19a85a9",
+      "current_sha256": "d28e76e089129483f78a7335aa408002cded5ecda5037c1d5d3fcb6ed19a85a9",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F03-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "fa00711d9e0b5fce1cbe957f2b8ddccec5a516dba06eac0508db4524a5d0b3b2",
+      "current_sha256": "fa00711d9e0b5fce1cbe957f2b8ddccec5a516dba06eac0508db4524a5d0b3b2",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F03-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "54489aa93a15ade35cc77327e662f4cd494c68c90bc3368e0f907e9571054d90",
+      "current_sha256": "54489aa93a15ade35cc77327e662f4cd494c68c90bc3368e0f907e9571054d90",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F03-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "74b881a35711f280e52cdbda6049ea704ea17b4ecfcfa04cd75d1335d7acef98",
+      "current_sha256": "74b881a35711f280e52cdbda6049ea704ea17b4ecfcfa04cd75d1335d7acef98",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F04-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "dd6dd7af67c2386fad422bdd6239e767d9570be10521f1441a5e8ecff5026187",
+      "current_sha256": "dd6dd7af67c2386fad422bdd6239e767d9570be10521f1441a5e8ecff5026187",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F04-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "e236564527eaeb037d866c941896996e106d48e857edba58675ac113f35c7b21",
+      "current_sha256": "e236564527eaeb037d866c941896996e106d48e857edba58675ac113f35c7b21",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F04-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "17e608f406c3a63da3ea1999a6a3905e5dc59ee53282200d429e24f3184e56ea",
+      "current_sha256": "17e608f406c3a63da3ea1999a6a3905e5dc59ee53282200d429e24f3184e56ea",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F05-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "c912354ab3db300b6d766151d628b5db2c981d411dc41d0c06e569ceb24cee46",
+      "current_sha256": "c912354ab3db300b6d766151d628b5db2c981d411dc41d0c06e569ceb24cee46",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F05-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "0f81743e647757d7a1a3385f333333a92e73fb0e4da5c2f95faca38f66f9824f",
+      "current_sha256": "0f81743e647757d7a1a3385f333333a92e73fb0e4da5c2f95faca38f66f9824f",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F05-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "446af94bd19d35d89cde478c0189165a3501062690e6390dbc089ae44a886002",
+      "current_sha256": "446af94bd19d35d89cde478c0189165a3501062690e6390dbc089ae44a886002",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F06-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "6e0e7ee103055153b504ed7a063db303d234696f618d97e85ed6f2b2ce3d1ab5",
+      "current_sha256": "6e0e7ee103055153b504ed7a063db303d234696f618d97e85ed6f2b2ce3d1ab5",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F06-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "08ab2d2f380413b2ea47395dddcd2b687b547c78700d598d20fb2cd26d91c32b",
+      "current_sha256": "08ab2d2f380413b2ea47395dddcd2b687b547c78700d598d20fb2cd26d91c32b",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F06-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "6d9cbade09e2ac03c98dd0ed269fe5b05e4525cb075593067cb3a4cbea2e215e",
+      "current_sha256": "6d9cbade09e2ac03c98dd0ed269fe5b05e4525cb075593067cb3a4cbea2e215e",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F07-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "093517f16f7ba55f3f56fb7b47b9d19f147641094d49cd7143c33c7b1fceb9f1",
+      "current_sha256": "093517f16f7ba55f3f56fb7b47b9d19f147641094d49cd7143c33c7b1fceb9f1",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F07-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "88a287c5b6d2242929c933de180644b1e3ccf1dba0e6ec66685453d4a6f47b19",
+      "current_sha256": "88a287c5b6d2242929c933de180644b1e3ccf1dba0e6ec66685453d4a6f47b19",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F07-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "46978a97833834b112b71a04ae3dbc3248f226450297d35e45a0a97b5146d79b",
+      "current_sha256": "46978a97833834b112b71a04ae3dbc3248f226450297d35e45a0a97b5146d79b",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F08-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "9b30d78048828334550c03308ed35d60a66d067fe57457596cfb9773d33329fe",
+      "current_sha256": "9b30d78048828334550c03308ed35d60a66d067fe57457596cfb9773d33329fe",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F08-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "e7bdaf521328cf59650d559522007b52c33683ac95f89733f6f2ac648ee5f5ed",
+      "current_sha256": "e7bdaf521328cf59650d559522007b52c33683ac95f89733f6f2ac648ee5f5ed",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F08-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "765e3c26745b8bb5895981ebe51c6bcf15c11d1c664dae29ff8eef41c9a66423",
+      "current_sha256": "765e3c26745b8bb5895981ebe51c6bcf15c11d1c664dae29ff8eef41c9a66423",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F09-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "a9348fb7ef67f4d4150006188b203bf7707a42465e485682f7b5aaaf75cf0455",
+      "current_sha256": "a9348fb7ef67f4d4150006188b203bf7707a42465e485682f7b5aaaf75cf0455",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F09-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b",
+      "current_sha256": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F09-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "449fb3ea0608b653c1f8a466f55852e47d3d0c9a4b00452e2ac61253bc933185",
+      "current_sha256": "449fb3ea0608b653c1f8a466f55852e47d3d0c9a4b00452e2ac61253bc933185",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F10-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "f992ff04092507840c0c03234988c5a9269c28d206f006bf188faab7c5c3faf8",
+      "current_sha256": "f992ff04092507840c0c03234988c5a9269c28d206f006bf188faab7c5c3faf8",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F10-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "22934b6c567dfc06d09dabadd634a2ca22f3819bcaeb8abb16ae31e8500d6a8b",
+      "current_sha256": "22934b6c567dfc06d09dabadd634a2ca22f3819bcaeb8abb16ae31e8500d6a8b",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F10-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "c343c63911b58e52b83803fcd00dce0e951ed26be6582b614ecd9f4440f03775",
+      "current_sha256": "c343c63911b58e52b83803fcd00dce0e951ed26be6582b614ecd9f4440f03775",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F11-44100-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "71b343694af63806742e3cd55260d8e8623bccaa8ec61a0d992e46c5167ede89",
+      "current_sha256": "71b343694af63806742e3cd55260d8e8623bccaa8ec61a0d992e46c5167ede89",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F11-48000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "11c86351c3ac242ee60ea7787137d7db1aafa9a3364340325a41cf73cedcfe1d",
+      "current_sha256": "11c86351c3ac242ee60ea7787137d7db1aafa9a3364340325a41cf73cedcfe1d",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/F11-96000-v1.json",
+      "in_48_file_payload": true,
+      "published_sha256": "b2f7969fc9e43083f2a62bb603faba2ba408fbf52412a1c7907d6117933acb90",
+      "current_sha256": "b2f7969fc9e43083f2a62bb603faba2ba408fbf52412a1c7907d6117933acb90",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/manifest.json",
+      "in_48_file_payload": true,
+      "published_sha256": "b80db78bb8477b683bfd2cc1013a0b600c45e8f20b7fc08f75c5efe6e10a22ec",
+      "current_sha256": "b80db78bb8477b683bfd2cc1013a0b600c45e8f20b7fc08f75c5efe6e10a22ec",
+      "unchanged": true
+    },
+    {
+      "path": "data/contact-switching/reference-v1/probes.json",
+      "in_48_file_payload": true,
+      "published_sha256": "fdcdf6430c008cd28367d3c02f125af2a37ac55ebbe875361fba2549295e7026",
+      "current_sha256": "fdcdf6430c008cd28367d3c02f125af2a37ac55ebbe875361fba2549295e7026",
+      "unchanged": true
+    },
+    {
+      "path": "docs/CONTACT_REFERENCE_INSTALL.md",
+      "in_48_file_payload": true,
+      "published_sha256": "e9cca6615e216875b09110aab5e4bf65ff7516d1acdfc145ac2bc70c84ad7365",
+      "current_sha256": "e9cca6615e216875b09110aab5e4bf65ff7516d1acdfc145ac2bc70c84ad7365",
+      "unchanged": true
+    },
+    {
+      "path": "docs/CONTACT_SWITCHING_GUIDE.md",
+      "in_48_file_payload": true,
+      "published_sha256": "633b0df2a65ce6f03556add5fe8edd3f37c83772bc9bb9bed70221d6aece51c3",
+      "current_sha256": "633b0df2a65ce6f03556add5fe8edd3f37c83772bc9bb9bed70221d6aece51c3",
+      "unchanged": true
+    },
+    {
+      "path": "docs/CONTACT_SWITCHING_RESULTS.md",
+      "in_48_file_payload": false,
+      "published_sha256": "2b497c2ea5284372be0876f901ae72c00cc75d42fce6a457b7d61cfc8c1d8bf6",
+      "current_sha256": "2b497c2ea5284372be0876f901ae72c00cc75d42fce6a457b7d61cfc8c1d8bf6",
+      "unchanged": true
+    },
+    {
+      "path": "docs/CONTACT_SWITCHING_VALIDATION.md",
+      "in_48_file_payload": true,
+      "published_sha256": "5ccbba4d08a2272bef4f7d553446a7ca9582e289fba80f9bcfa223a2d6efb2b5",
+      "current_sha256": "5ccbba4d08a2272bef4f7d553446a7ca9582e289fba80f9bcfa223a2d6efb2b5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/FRACTIONAL_CONTACT_REFERENCE.md",
+      "in_48_file_payload": true,
+      "published_sha256": "3c05da4c3f35fcdc53fac05f1592ddc97e444f5038d9c147afae71f46e8deecd",
+      "current_sha256": "3c05da4c3f35fcdc53fac05f1592ddc97e444f5038d9c147afae71f46e8deecd",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A12-numerical-admission.json",
+      "in_48_file_payload": false,
+      "published_sha256": "85c97523233e88654f159c644a15f2f0a2e332dfe8dbf5a9f80855b37b4ebbb1",
+      "current_sha256": "85c97523233e88654f159c644a15f2f0a2e332dfe8dbf5a9f80855b37b4ebbb1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A21-layout-review.json",
+      "in_48_file_payload": false,
+      "published_sha256": "a4b545df27220de5bd4b4052035e7cefc2c84e5eb74e3ecc645ea1daf735c125",
+      "current_sha256": "a4b545df27220de5bd4b4052035e7cefc2c84e5eb74e3ecc645ea1daf735c125",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A24-fixture-oracle-audit.json",
+      "in_48_file_payload": false,
+      "published_sha256": "b79b736cdb4b2ac008e14e413d306e71eff4b779f567616562512caad88ba55e",
+      "current_sha256": "b79b736cdb4b2ac008e14e413d306e71eff4b779f567616562512caad88ba55e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A25-first-driver-recovery.json",
+      "in_48_file_payload": false,
+      "published_sha256": "7da092bb9fc9f3d2e9e52094241f3889ea135d09061943dfe70ec4538e3339ed",
+      "current_sha256": "7da092bb9fc9f3d2e9e52094241f3889ea135d09061943dfe70ec4538e3339ed",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A29-mask-extent-review.json",
+      "in_48_file_payload": false,
+      "published_sha256": "b6b6d9a783493a652e58213305967169032e06b977c8e8e1a437315ffdddbaec",
+      "current_sha256": "b6b6d9a783493a652e58213305967169032e06b977c8e8e1a437315ffdddbaec",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A30-study-review.json",
+      "in_48_file_payload": false,
+      "published_sha256": "bd9fac8bb8cd3b86a851a3cae8b2a41f512114555eccc5fe7bec4f4f73878712",
+      "current_sha256": "bd9fac8bb8cd3b86a851a3cae8b2a41f512114555eccc5fe7bec4f4f73878712",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A32-gallery-admission.json",
+      "in_48_file_payload": false,
+      "published_sha256": "90a551d74e2676adda4c742e630ccc7f72f27c0c8eb7dd74f5312c3b8b130e4e",
+      "current_sha256": "90a551d74e2676adda4c742e630ccc7f72f27c0c8eb7dd74f5312c3b8b130e4e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A35-compatibility.json",
+      "in_48_file_payload": false,
+      "published_sha256": "fedc474fde43b816b3877a8452e0effbeb4109ebf7f78973d14282b3d844567f",
+      "current_sha256": "fedc474fde43b816b3877a8452e0effbeb4109ebf7f78973d14282b3d844567f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/A36-resource-reproducibility.json",
+      "in_48_file_payload": false,
+      "published_sha256": "6b1095f36f2dea464d8a3358ea4a854a96dd4d7fbebc3904e69c5a947e78660a",
+      "current_sha256": "6b1095f36f2dea464d8a3358ea4a854a96dd4d7fbebc3904e69c5a947e78660a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/a25-study-author-tests-final.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "84d43fcef34bc292c69f4e6c0bd3a10f0abba52da680c024a0e23104aa67e50f",
+      "current_sha256": "84d43fcef34bc292c69f4e6c0bd3a10f0abba52da680c024a0e23104aa67e50f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/a25-study-author-tests.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "334e334ae15d75fb8dc913730d4ba5482b5dd7791c4b58cc7d033ea902c7b4b1",
+      "current_sha256": "334e334ae15d75fb8dc913730d4ba5482b5dd7791c4b58cc7d033ea902c7b4b1",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/atlas-reading-coverage.json",
+      "in_48_file_payload": false,
+      "published_sha256": "7bac7e0fa55955a57ae9b899b5b15d492c7746a2122098d17473177d9a7724f5",
+      "current_sha256": "7bac7e0fa55955a57ae9b899b5b15d492c7746a2122098d17473177d9a7724f5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/baseline-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "dc816931126ec517f6259a116dd64a033ba6e841a2a66f7e97cddd319d137f65",
+      "current_sha256": "dc816931126ec517f6259a116dd64a033ba6e841a2a66f7e97cddd319d137f65",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/baseline-ctest.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "888598ed02ba6cd288c8e87ef4752e5e1d42562fff20a8da64ad86c92d79fd65",
+      "current_sha256": "888598ed02ba6cd288c8e87ef4752e5e1d42562fff20a8da64ad86c92d79fd65",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/baseline-inputs.json",
+      "in_48_file_payload": false,
+      "published_sha256": "be308edf608920b6c0b5ff72b9f707b955d858aec7684d44e97f2e1e59a9d34c",
+      "current_sha256": "be308edf608920b6c0b5ff72b9f707b955d858aec7684d44e97f2e1e59a9d34c",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/coherent-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "d7267662ff1a93f173b33a36b61fa15b37ee1a4608d6ab691c5909c1e8ff126d",
+      "current_sha256": "d7267662ff1a93f173b33a36b61fa15b37ee1a4608d6ab691c5909c1e8ff126d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/coherent-ctest-detail.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "46f596e5999f027812880142991c6f63a5a85727deb8943c613f703ebf13c056",
+      "current_sha256": "46f596e5999f027812880142991c6f63a5a85727deb8943c613f703ebf13c056",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/coherent-ctest.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "4cab38fcb8b46f92eff95aefb138e69c1259efb3a60a95c5ca7a0c775b686867",
+      "current_sha256": "4cab38fcb8b46f92eff95aefb138e69c1259efb3a60a95c5ca7a0c775b686867",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/coherent-qualification.json",
+      "in_48_file_payload": false,
+      "published_sha256": "51096c08933da4000aacf244f98969e4423c5e5f1ca9405d61577cf4ff2cc1d9",
+      "current_sha256": "51096c08933da4000aacf244f98969e4423c5e5f1ca9405d61577cf4ff2cc1d9",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/coherent-repository-check.json",
+      "in_48_file_payload": false,
+      "published_sha256": "72579428f0d8ebfef744e6bdee4502d7f203f52df7b8f5cf25b6e48b3d577364",
+      "current_sha256": "72579428f0d8ebfef744e6bdee4502d7f203f52df7b8f5cf25b6e48b3d577364",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/compatibility-baseline.json",
+      "in_48_file_payload": false,
+      "published_sha256": "e4e6a38fea5ab72f8e58bc041f97250fcfec48ec5bc44ac911a6061af8c03a73",
+      "current_sha256": "e4e6a38fea5ab72f8e58bc041f97250fcfec48ec5bc44ac911a6061af8c03a73",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/configure.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "8ae56456e8b966038ac993fef87ec44a82f1d7e0aa4749a9f5171ef8e5a8191d",
+      "current_sha256": "8ae56456e8b966038ac993fef87ec44a82f1d7e0aa4749a9f5171ef8e5a8191d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/contact-package-v2.json",
+      "in_48_file_payload": false,
+      "published_sha256": "03540425084b8533d892944d4cb4098f1db37eb826c8eb20dcc002337265a546",
+      "current_sha256": "03540425084b8533d892944d4cb4098f1db37eb826c8eb20dcc002337265a546",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/contact-study-first-driver.py",
+      "in_48_file_payload": false,
+      "published_sha256": "223b56f92dfd6b6de380176cc7f4830c885378be2e02658bd857dd950185be46",
+      "current_sha256": "223b56f92dfd6b6de380176cc7f4830c885378be2e02658bd857dd950185be46",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/contact-study-v1-process.json",
+      "in_48_file_payload": false,
+      "published_sha256": "40d8d06f8d696c7b22ecb47c93c4ce2ce7939a72f1d7f58f6f0789cda181b44f",
+      "current_sha256": "40d8d06f8d696c7b22ecb47c93c4ce2ce7939a72f1d7f58f6f0789cda181b44f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/contact-study-v1-qualified-process.json",
+      "in_48_file_payload": false,
+      "published_sha256": "98271b6d58953ba4ed3f0cc624d8e775abde5e0edd44bf1e5de4741dfa7209a0",
+      "current_sha256": "98271b6d58953ba4ed3f0cc624d8e775abde5e0edd44bf1e5de4741dfa7209a0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/contact-study-v1-qualified.json",
+      "in_48_file_payload": false,
+      "published_sha256": "87d7a5ba4dbc12d5d42754386c695ecbd046a61560dc75b5c86b17cc51121dba",
+      "current_sha256": "87d7a5ba4dbc12d5d42754386c695ecbd046a61560dc75b5c86b17cc51121dba",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/contact-study-v1.json",
+      "in_48_file_payload": false,
+      "published_sha256": "4a00633130daf77b1416cc86152e808726404edd88de45aaa840004e0d2e2a11",
+      "current_sha256": "4a00633130daf77b1416cc86152e808726404edd88de45aaa840004e0d2e2a11",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/execution-helper-identities.json",
+      "in_48_file_payload": false,
+      "published_sha256": "a6eb44e29149089d9c8bcf19a9091c0389f16e594df0afee9189e50817f4c489",
+      "current_sha256": "a6eb44e29149089d9c8bcf19a9091c0389f16e594df0afee9189e50817f4c489",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/git-api-export.py",
+      "in_48_file_payload": false,
+      "published_sha256": "e7d81c8b333bd7d716c915ddbafd3c09f73d68262584cbe0dd741afefe4cf25e",
+      "current_sha256": "e7d81c8b333bd7d716c915ddbafd3c09f73d68262584cbe0dd741afefe4cf25e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/implementation-admission.json",
+      "in_48_file_payload": false,
+      "published_sha256": "dc828bc4436023873a281fb51452792e81ddab6d8ff4fe8f630712fe9c41cc45",
+      "current_sha256": "dc828bc4436023873a281fb51452792e81ddab6d8ff4fe8f630712fe9c41cc45",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/native-source-qualification.json",
+      "in_48_file_payload": false,
+      "published_sha256": "c3e14a77f40060730a474798fc42c5468d1b2ed0713cb8c14ac1b3e2dc6c283c",
+      "current_sha256": "c3e14a77f40060730a474798fc42c5468d1b2ed0713cb8c14ac1b3e2dc6c283c",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/qualified-study-numeric-identity.json",
+      "in_48_file_payload": false,
+      "published_sha256": "f10cd3e8c00793077aa0564a8cc8291c8777c5fe67edcc6b24c4cadebc9f649b",
+      "current_sha256": "f10cd3e8c00793077aa0564a8cc8291c8777c5fe67edcc6b24c4cadebc9f649b",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/qualified-study-wrapper.py",
+      "in_48_file_payload": false,
+      "published_sha256": "c387d5729fbabfc66d0f0c086ba96199a036d707077af77c1cb663178b0c27c2",
+      "current_sha256": "c387d5729fbabfc66d0f0c086ba96199a036d707077af77c1cb663178b0c27c2",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/root-fixture-freeze.json",
+      "in_48_file_payload": false,
+      "published_sha256": "a1f79907d7abc6aa8b77330337964bdad707e1c80e946ea901f92b3826337ea4",
+      "current_sha256": "a1f79907d7abc6aa8b77330337964bdad707e1c80e946ea901f92b3826337ea4",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave3-app-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "53b11fa760aba8b8a812211439bb38104720b5a2f32549b2ce7845a1353166fc",
+      "current_sha256": "53b11fa760aba8b8a812211439bb38104720b5a2f32549b2ce7845a1353166fc",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave3-geometry-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "610f7b623cf09fa8ce66d44074817fc60f2734add479dfa0d9be10d13bfbf2b3",
+      "current_sha256": "610f7b623cf09fa8ce66d44074817fc60f2734add479dfa0d9be10d13bfbf2b3",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave3-geometry-tests.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "c65ce8dab55aeca8b1798d02566d802076f9d949699efe3e1f6ed0f8053a10c5",
+      "current_sha256": "c65ce8dab55aeca8b1798d02566d802076f9d949699efe3e1f6ed0f8053a10c5",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave3-native-test-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "8d4475acde0e990c19bb84dcd4bbbb7a5bd62a10e127e67cfe63487bef0aeff4",
+      "current_sha256": "8d4475acde0e990c19bb84dcd4bbbb7a5bd62a10e127e67cfe63487bef0aeff4",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave3-original-native-expectations.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "196bdc6b9b08dda39a9ae85f71f50740471c4c535e2f1a6b195cdb41830c124f",
+      "current_sha256": "196bdc6b9b08dda39a9ae85f71f50740471c4c535e2f1a6b195cdb41830c124f",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-migration-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "4bb8e7f7f5c7a9da0523dc469987fa966dd56d0ecc6552644a54eea41e63d567",
+      "current_sha256": "4bb8e7f7f5c7a9da0523dc469987fa966dd56d0ecc6552644a54eea41e63d567",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-migration-tests.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "022c260a01cbf4fbaa038c082c071388dc240d09396a717f46a4ccc8be62ab2d",
+      "current_sha256": "022c260a01cbf4fbaa038c082c071388dc240d09396a717f46a4ccc8be62ab2d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-other-native-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "a58bf202a0493320b101725fb300d6aa126932af7b009ce8b488e5ce726289b8",
+      "current_sha256": "a58bf202a0493320b101725fb300d6aa126932af7b009ce8b488e5ce726289b8",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-other-native-tests.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "c912de8a2eae29d71a2b9fae628d787b04eca9ad38b8540744a8e12249c52d08",
+      "current_sha256": "c912de8a2eae29d71a2b9fae628d787b04eca9ad38b8540744a8e12249c52d08",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-remaining-material-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "6294b60927655ddf507020a7dc8579655b9dbdab6df4a7ecd1ec8e81dfc97422",
+      "current_sha256": "6294b60927655ddf507020a7dc8579655b9dbdab6df4a7ecd1ec8e81dfc97422",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-remaining-material-detail.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "a746933bc505c4c90114ea4ae3a7001c8b7565c60dc8989a96b244e314b2a914",
+      "current_sha256": "a746933bc505c4c90114ea4ae3a7001c8b7565c60dc8989a96b244e314b2a914",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-remaining-material-tests.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "e42e2ed2900cf7d9b348bf591fecf00ee74f23a6d0cc221855bd5911a8d2b0b7",
+      "current_sha256": "e42e2ed2900cf7d9b348bf591fecf00ee74f23a6d0cc221855bd5911a8d2b0b7",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-sdkfree-build.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "0a4d2912b877ec69a62a0156923397eaab01f4edb1d6a3ab4b3ffd632f73e924",
+      "current_sha256": "0a4d2912b877ec69a62a0156923397eaab01f4edb1d6a3ab4b3ffd632f73e924",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave4-sdkfree-tests.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "141b6e55b01ae0196938e713bc7c2c56299f2d72571d454513724bed9d7bf13d",
+      "current_sha256": "141b6e55b01ae0196938e713bc7c2c56299f2d72571d454513724bed9d7bf13d",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave5-contact-study.stderr.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "current_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave5-contact-study.stdout.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "current_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave5-native-gallery.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "23c5b32a54054ee2eecb32090148af7adff0c6ee999d5fbfde6b1769b65cec44",
+      "current_sha256": "23c5b32a54054ee2eecb32090148af7adff0c6ee999d5fbfde6b1769b65cec44",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave5-package-configure.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "1a5c0560efbd8f865e8ad5ddae90cb3fc5793560670073c582852f6783175720",
+      "current_sha256": "1a5c0560efbd8f865e8ad5ddae90cb3fc5793560670073c582852f6783175720",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave5-package-install.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "c000d6995e48dd67f3bef8f9fb9e80c8bb3a2c531166f228ac1c95a693dcba89",
+      "current_sha256": "c000d6995e48dd67f3bef8f9fb9e80c8bb3a2c531166f228ac1c95a693dcba89",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave5-study-publication-tests.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "f085d4d588cfd81d768e9c0ea699d0201de95eb91ec479b87de67303440ebe15",
+      "current_sha256": "f085d4d588cfd81d768e9c0ea699d0201de95eb91ec479b87de67303440ebe15",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave6-package-install.log.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "bc750eafb0d1aff51a186e68b1b3a57d12b1ea5f49ec69680cb60044fad2b59a",
+      "current_sha256": "bc750eafb0d1aff51a186e68b1b3a57d12b1ea5f49ec69680cb60044fad2b59a",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave6-qualified-study.stderr.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "current_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/wave6-qualified-study.stdout.gz",
+      "in_48_file_payload": false,
+      "published_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "current_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/whole-reference-mask-v1.json",
+      "in_48_file_payload": false,
+      "published_sha256": "7b17af59df15e9d2b3b5c3b744349f61c95788e6a179764736112974b9a982b3",
+      "current_sha256": "7b17af59df15e9d2b3b5c3b744349f61c95788e6a179764736112974b9a982b3",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/whole-reference-mask-v2.json",
+      "in_48_file_payload": false,
+      "published_sha256": "b880a35fe9c0c253639c2bdd72c9edc5aeab362caa246647ebde6781abbc75d2",
+      "current_sha256": "b880a35fe9c0c253639c2bdd72c9edc5aeab362caa246647ebde6781abbc75d2",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/whole-reference-raster-comparison-v2.json",
+      "in_48_file_payload": false,
+      "published_sha256": "3303ee1a2a4a8a2c0634d0dab1d36d8c9371274511d4657fa880b467f01c2789",
+      "current_sha256": "3303ee1a2a4a8a2c0634d0dab1d36d8c9371274511d4657fa880b467f01c2789",
+      "unchanged": true
+    },
+    {
+      "path": "docs/development/2026-11-15-execution-continuation/reports/whole-reference-raster-comparison.json",
+      "in_48_file_payload": false,
+      "published_sha256": "31a8efc1a738402a50f6f00f8eb44e65564b9ea7e02115105ce2017408e47528",
+      "current_sha256": "31a8efc1a738402a50f6f00f8eb44e65564b9ea7e02115105ce2017408e47528",
+      "unchanged": true
+    },
+    {
+      "path": "tests/test_contact_reference_install.py",
+      "in_48_file_payload": false,
+      "published_sha256": "e586b3d1424235aeadb73df4544d742aec15e59a0b50120effd90983fc8a524a",
+      "current_sha256": "e586b3d1424235aeadb73df4544d742aec15e59a0b50120effd90983fc8a524a",
+      "unchanged": true
+    },
+    {
+      "path": "tools/contact_switching_io.py",
+      "in_48_file_payload": true,
+      "published_sha256": "e3219265f1496a36b4f5d8a13941672b46ddc4116f331b7a1b99115a2dac9dc6",
+      "current_sha256": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+      "unchanged": false
+    },
+    {
+      "path": "tools/contact_switching_oracle.py",
+      "in_48_file_payload": true,
+      "published_sha256": "17f6d93fb5d8fbb5eb1b0d36c609449f9c8b9b94e44ab10a80450f04bb2cf9d4",
+      "current_sha256": "17f6d93fb5d8fbb5eb1b0d36c609449f9c8b9b94e44ab10a80450f04bb2cf9d4",
+      "unchanged": true
+    },
+    {
+      "path": "tools/contact_switching_reference.py",
+      "in_48_file_payload": true,
+      "published_sha256": "46e1967af569e4a9ee35921439351e2ce5fe50c731a2619116cc9e424f4e97f5",
+      "current_sha256": "46e1967af569e4a9ee35921439351e2ce5fe50c731a2619116cc9e424f4e97f5",
+      "unchanged": true
+    },
+    {
+      "path": "tools/contact_switching_study.py",
+      "in_48_file_payload": true,
+      "published_sha256": "eb4d374cc46ed1c16448ab3b1c2f03c5714a27c20bfdd0c3dba6e005d8f8066e",
+      "current_sha256": "eb4d374cc46ed1c16448ab3b1c2f03c5714a27c20bfdd0c3dba6e005d8f8066e",
+      "unchanged": true
+    },
+    {
+      "path": "tools/fractional_contact_reference.py",
+      "in_48_file_payload": true,
+      "published_sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+      "current_sha256": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+      "unchanged": true
+    },
+    {
+      "path": "tools/make_contact_switching_fixtures.py",
+      "in_48_file_payload": true,
+      "published_sha256": "7e818b414342dfabfdcf23831fbb11ae4ccf51d093a4fd4cc97d046c6c73a387",
+      "current_sha256": "7e818b414342dfabfdcf23831fbb11ae4ccf51d093a4fd4cc97d046c6c73a387",
+      "unchanged": true
+    }
+  ],
+  "scope": "Byte identity only; no old numerical or platform result is rebound to the changed I/O source."
+}

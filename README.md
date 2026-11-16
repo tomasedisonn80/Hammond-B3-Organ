@@ -416,6 +416,8 @@ and each development session's worker waves are different organizations.
 
 ## Source-specific qualification
 
+The first implementation publication, [`af2b747`](https://github.com/tomasedisonn80/Hammond-B3-Organ/commit/af2b74760ee195c9497b314a1a29172f5238dd44), completed **12 of 13 hosted jobs successfully**. Windows core Release exposed an existing contact-reference relocation failure; the [original failure](docs/development/2026-11-15-streaming-continuation/reports/windows-core-af2b747-failure.json) remains recorded. The [independently reviewed repair](docs/reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md) keeps full path and open-file signatures in their own metadata domains, preserving mutation and alias rejection. [All three affected local suites pass](docs/development/2026-11-15-streaming-continuation/reports/windows-repair-qualification.json). Repaired-source Windows/platform execution remains pending publication. Only the I/O wrapper changes within the 48-file installed component; original numerical results retain their original hashes.
+
 The current [coherent local qualification](docs/development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json)
 passed **210/210 CTests in 191.90 seconds**, with 505 code/input files unchanged
 during the run. It identifies the working overlay above base

@@ -132,6 +132,17 @@ checks establish consistency only. Strict closure needs the actual accepted set,
 ten six-worker waves and retained result. Never fabricate participation/outcomes
 or clear gates for accounting.
 
+This session's [read-only checker](docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py)
+supports progress checks and `--strict` closure. From the repository root:
+
+```sh
+python3 -B docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py --repo . --strict
+```
+
+It checks this ledger and note bytes, not actual external dispatch, correctness,
+publication or fidelity. A later session must retain its own actual records and
+matching validator; this session's sixty cannot be counted again.
+
 Checkpoint every wave and before long operations/context changes/cleanup: owners,
 workers, accepted/unfinished work, identities, outcomes/limits, setup/resources and
 next actions. Reuse one checkout/session, pinned read-only dependencies and one

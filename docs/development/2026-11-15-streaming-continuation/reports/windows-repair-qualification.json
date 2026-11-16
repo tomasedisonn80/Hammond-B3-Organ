@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-16T01:15:38.779771+00:00",
+  "base_commit": "af2b74760ee195c9497b314a1a29172f5238dd44",
+  "scope": "Filesystem-only contact-reference Windows repair; existing core/standalone binaries and numerical inputs unchanged",
+  "source_inventory": {
+    "files": 505,
+    "path": "windows-repair-code-inputs.json.gz",
+    "raw_sha256": "9a1fc6b430b48a9ff49ee4753c35bcca1d82c73e0da81bc7844a0b7f1ad4b7cb",
+    "changed_from_first_publication": [
+      "tests/test_contact_switching_io.py",
+      "tools/contact_switching_io.py"
+    ]
+  },
+  "changed_sha256": {
+    "tests/test_contact_switching_io.py": {
+      "before": "79422af73ef4ec0c85bbd65edad750e1376a77b75472af35958ce2c379856d36",
+      "after": "ade725edc0d0b3f99714e10363f98c6454bacd7ed927698393fb2f1ed6410b81"
+    },
+    "tools/contact_switching_io.py": {
+      "before": "e3219265f1496a36b4f5d8a13941672b46ddc4116f331b7a1b99115a2dac9dc6",
+      "after": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6"
+    }
+  },
+  "inherited_local_qualification": "publication-source-qualification.json",
+  "observed_hosted_failure": "windows-core-af2b747-failure.json",
+  "author_regression": "A45-repair-summary.json",
+  "independent_admission": "../../../reviews/CONTACT_REFERENCE_WINDOWS_REPAIR_ADMISSION.md",
+  "ctest": {
+    "command": [
+      "ctest",
+      "--test-dir",
+      "../build-native",
+      "-C",
+      "Release",
+      "--output-on-failure",
+      "--no-tests=error",
+      "--parallel",
+      "2",
+      "-R",
+      "^python_test_contact_(switching_io|reference_install|switching_study)$"
+    ],
+    "selected": 3,
+    "passed": 3,
+    "failed": 0,
+    "wall_seconds": 2.82,
+    "log": "windows-repair-ctest.log.gz",
+    "raw_sha256": "b2f5e44ce091023b93fc76602adb44a49f4a071fab52696aedaa4a006c2a588d",
+    "inputs_unchanged": true
+  },
+  "native_build_required": false,
+  "native_build_reason": "Only two existing Python files changed; three registered tests run current source and create their own isolated installation fixture. No C++/CMake/native dependency changed.",
+  "numerical_claim": "Parser/kernel/report construction, fixtures and tolerances unchanged; earlier numerical receipts keep their original source hashes, not silently rebound.",
+  "repaired_windows_runtime": "pending published-source CI",
+  "workflow_sha256": {
+    ".github/workflows/ci.yml": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+    ".github/workflows/native-vst3.yml": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+    ".github/workflows/standalone.yml": "766fb1c2cb890af1b921ce66b4a58f656a20f5e5ff6e00481fbccb39d8c41961"
+  }
+}

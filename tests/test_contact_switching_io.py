@@ -23,6 +23,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -86,6 +87,14 @@ def exact_coordinate(value):
 def own_hashes():
     return {"tools/" + name: hashlib.sha256((TOOLS / name).read_bytes()).hexdigest()
             for name in IMPLEMENTATIONS}
+
+
+def stat_with(information, **changes):
+    """Retain real file facts except the explicitly injected platform metadata."""
+    fields = {name: getattr(information, name) for name in dir(information)
+              if name.startswith("st_")}
+    fields.update(changes)
+    return SimpleNamespace(**fields)
 
 
 def invalid_documents():
@@ -373,6 +382,221 @@ class FilesystemBoundaryTests(unittest.TestCase):
                 self.assertEqual((report["factor"], report["frames"], report["samples"]), (factor, 0, []))
                 self.assertIsNone(report["filter"])
                 self.assertEqual(report["observations"]["report_bytes"], len(payload))
+                self.assert_no_owned_temporary()
+
+    def test_distinct_path_and_descriptor_metadata_views_allow_unchanged_input(self):
+        # CPython 3.12 Windows path stat reports creation time in ctime while
+        # fstat reports change time; path-derived execute bits can differ too.
+        original_stat, original_fstat = candidate.os.stat, candidate.os.fstat
+        resolved_input = self.input.resolve()
+        for path_execute_bits in (0, 0o111):
+            with self.subTest(path_execute_bits=path_execute_bits):
+                def path_stat(path, *args, **kwargs):
+                    information = original_stat(path, *args, **kwargs)
+                    if path in (self.input, resolved_input):
+                        return stat_with(information,
+                                         st_mode=information.st_mode | path_execute_bits)
+                    return information
+
+                def descriptor_stat(fd):
+                    information = original_fstat(fd)
+                    return stat_with(information, st_ctime_ns=information.st_ctime_ns + 10**9)
+
+                with patch.object(candidate.os, "stat", side_effect=path_stat), \
+                        patch.object(candidate.os, "fstat", side_effect=descriptor_stat):
+                    self.assertEqual(self.invoke(), (0, "", ""))
+                report = json.loads(self.output.read_bytes())
+                self.assertEqual(report["input_sha256"], hashlib.sha256(self.input.read_bytes()).hexdigest())
+                self.assert_no_owned_temporary()
+
+    def test_real_rewritten_input_with_preserved_mtime_is_admitted(self):
+        previous = self.input.stat()
+        document = fixture(0)
+        document["fixture_id"] = "A45-rewritten-v1"
+        data = encoded(document)
+        self.input.write_bytes(data)
+        os.utime(self.input, ns=(previous.st_atime_ns, previous.st_mtime_ns))
+        self.assertEqual(self.invoke(real=True), (0, "", ""))
+        report = json.loads(self.output.read_bytes())
+        self.assertEqual(report["input_sha256"], hashlib.sha256(data).hexdigest())
+        self.assertEqual(report["fixture_id"], document["fixture_id"])
+        self.assert_no_owned_temporary()
+
+    def test_descriptor_ctime_only_change_rejects_load_and_output_recheck(self):
+        original_fstat = candidate.os.fstat
+        generation = 10**9
+
+        def descriptor_stat(fd):
+            information = original_fstat(fd)
+            return stat_with(information, st_ctime_ns=information.st_ctime_ns + generation)
+
+        report = candidate.build_report(candidate.parse_input(self.input.read_bytes()), 32)
+        with patch.object(candidate.os, "fstat", side_effect=descriptor_stat):
+            plan = candidate.preflight_paths(self.input, self.output)
+            generation += 1  # Same device, inode, mode, size and mtime; only change time moves.
+            with self.assertRaisesRegex(ValueError, "changed after path preflight"):
+                candidate.load_input(plan.input_path, expected_signature=plan.input_signature)
+            with patch.object(candidate.tempfile, "mkstemp") as create, \
+                    self.assertRaisesRegex(ValueError, "changed after path preflight"):
+                candidate.atomic_write_report(plan, report)
+            create.assert_not_called()
+        self.assertEqual(self.output.read_bytes(), PRIOR_OUTPUT)
+        self.assert_no_owned_temporary()
+
+    def test_descriptor_ctime_and_real_content_changes_during_read_reject(self):
+        original_fdopen, original_fstat = candidate.os.fdopen, candidate.os.fstat
+        original_bytes = self.input.read_bytes()
+        for mutation in ("ctime", "content"):
+            with self.subTest(mutation=mutation):
+                self.input.write_bytes(original_bytes)
+                generation = 10**9
+                streams = []
+
+                def descriptor_stat(fd):
+                    information = original_fstat(fd)
+                    return stat_with(information, st_ctime_ns=information.st_ctime_ns + generation)
+
+                def changing_stream(fd, mode):
+                    stream = original_fdopen(fd, mode)
+                    streams.append(stream)
+                    original_read = stream.read
+
+                    def read_then_change(*args):
+                        nonlocal generation
+                        data = original_read(*args)
+                        if mutation == "ctime":
+                            generation += 1
+                        else:
+                            self.input.write_bytes(original_bytes + b" ")
+                        return data
+
+                    stream.read = read_then_change
+                    return stream
+
+                with patch.object(candidate.os, "fstat", side_effect=descriptor_stat), \
+                        patch.object(candidate.os, "fdopen", side_effect=changing_stream), \
+                        self.assertRaisesRegex(ValueError, "changed while being read"):
+                    candidate.load_input(self.input)
+                self.assertTrue(streams)
+                self.assertTrue(all(stream.closed for stream in streams))
+                self.assertEqual(self.output.read_bytes(), PRIOR_OUTPUT)
+                self.assert_no_owned_temporary()
+
+    def test_same_bytes_replacement_after_preflight_rejects_load_and_output(self):
+        plan = candidate.preflight_paths(self.input, self.output)
+        data, previous = self.input.read_bytes(), self.input.stat()
+        replacement = self.directory / "replacement.json"
+        replacement.write_bytes(data)
+        os.utime(replacement, ns=(previous.st_atime_ns, previous.st_mtime_ns))
+        os.replace(replacement, self.input)
+        with self.assertRaisesRegex(ValueError, "changed after path preflight"):
+            candidate.load_input(plan.input_path, expected_signature=plan.input_signature)
+        report = candidate.build_report(candidate.parse_input(data), 32)
+        with patch.object(candidate.tempfile, "mkstemp") as create, self.assertRaises(ValueError):
+            candidate.atomic_write_report(plan, report)
+        create.assert_not_called()
+        self.assertEqual(self.input.read_bytes(), data)
+        self.assertEqual(self.output.read_bytes(), PRIOR_OUTPUT)
+        self.assert_no_owned_temporary()
+
+    def test_preflight_rejects_path_replacement_and_wrong_opened_file(self):
+        original_open = candidate.os.open
+        resolved_input = self.input.resolve()
+        data = self.input.read_bytes()
+        for mutation in ("replace-path", "different-descriptor"):
+            with self.subTest(mutation=mutation):
+                replacement = self.directory / "replacement.json"
+                replacement.write_bytes(data)
+                opened = []
+
+                def substituted_open(path, flags, *args, **kwargs):
+                    if path == resolved_input:
+                        if mutation == "replace-path":
+                            os.replace(replacement, self.input)
+                        else:
+                            path = replacement
+                    descriptor = original_open(path, flags, *args, **kwargs)
+                    opened.append(descriptor)
+                    return descriptor
+
+                with patch.object(candidate.os, "open", side_effect=substituted_open), \
+                        self.assertRaisesRegex(ValueError, "changed during path preflight"):
+                    candidate.preflight_paths(self.input, self.output)
+                self.assertTrue(opened, "the input identity must be obtained through an actual descriptor")
+                for descriptor in opened:
+                    with self.assertRaises(OSError):
+                        os.fstat(descriptor)
+                self.assertEqual(self.input.read_bytes(), data)
+                self.assertEqual(self.output.read_bytes(), PRIOR_OUTPUT)
+                self.assert_no_owned_temporary()
+
+    def test_path_ctime_only_change_still_rejects_preflight_and_output_recheck(self):
+        original_stat, original_fstat = candidate.os.stat, candidate.os.fstat
+        resolved_input = self.input.resolve()
+        report = candidate.build_report(candidate.parse_input(self.input.read_bytes()), 32)
+        for when in ("during-preflight", "after-preflight"):
+            with self.subTest(when=when):
+                generation = 0
+
+                def path_stat(path, *args, **kwargs):
+                    information = original_stat(path, *args, **kwargs)
+                    if path in (self.input, resolved_input):
+                        return stat_with(information, st_ctime_ns=information.st_ctime_ns + generation)
+                    return information
+
+                def descriptor_stat(fd):
+                    nonlocal generation
+                    information = original_fstat(fd)
+                    if when == "during-preflight":
+                        generation += 1
+                    return information
+
+                with patch.object(candidate.os, "stat", side_effect=path_stat), \
+                        patch.object(candidate.os, "fstat", side_effect=descriptor_stat):
+                    if when == "during-preflight":
+                        with self.assertRaisesRegex(ValueError, "changed during path preflight"):
+                            candidate.preflight_paths(self.input, self.output)
+                    else:
+                        plan = candidate.preflight_paths(self.input, self.output)
+                        generation += 1
+                        with patch.object(candidate.tempfile, "mkstemp") as create, \
+                                self.assertRaisesRegex(ValueError, "changed after path preflight"):
+                            candidate.atomic_write_report(plan, report)
+                        create.assert_not_called()
+                self.assertEqual(self.output.read_bytes(), PRIOR_OUTPUT)
+                self.assert_no_owned_temporary()
+
+    def test_input_descriptors_close_on_preflight_and_stream_wrapper_failures(self):
+        original_open = candidate.os.open
+        for operation in ("preflight-fstat", "load-fdopen"):
+            with self.subTest(operation=operation):
+                opened = []
+
+                def recording_open(*args, **kwargs):
+                    descriptor = original_open(*args, **kwargs)
+                    opened.append(descriptor)
+                    return descriptor
+
+                failure = OSError("injected input metadata or wrapper failure")
+                target = "fstat" if operation == "preflight-fstat" else "fdopen"
+                with patch.object(candidate.os, "open", side_effect=recording_open), \
+                        patch.object(candidate.os, target, side_effect=failure), \
+                        self.assertRaisesRegex(OSError, "injected"):
+                    if operation == "preflight-fstat":
+                        candidate.preflight_paths(self.input, self.output)
+                    else:
+                        candidate.load_input(self.input)
+                self.assertTrue(opened)
+                for descriptor in opened:
+                    try:
+                        os.fstat(descriptor)
+                    except OSError:
+                        pass
+                    else:
+                        # Keep the regression itself leak-free on the old source.
+                        os.close(descriptor)
+                        self.fail("input descriptor leaked on rejection")
+                self.assertEqual(self.output.read_bytes(), PRIOR_OUTPUT)
                 self.assert_no_owned_temporary()
 
     def test_direct_alias_and_normalized_parent_alias_preserve_input(self):

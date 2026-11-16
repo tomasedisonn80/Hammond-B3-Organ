@@ -1,0 +1,9 @@
+{
+  "recorded_utc": "2026-11-16T01:04:05.191012+00:00",
+  "command": "python3 -B docs/development/2026-11-15-streaming-continuation/reports/A44-audit-publication.py",
+  "audit_script_sha256_before_correction": "da28b5f8c79c77be65dc2201a47f064feea0c5f5e699984091b40763058a2c40",
+  "exit_code": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A44-audit-publication.py\", line 217, in <module>\n    assert blob(published_files[archive_path]['sha']) == blob(base_files['AGENTS.md']['sha'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "classification": "Audit-harness assumption error, not a publication mismatch",
+  "resolution": "The archived 44307-byte pre-reorganization AGENTS comprises the entire 43127-byte parent AGENTS plus an 1180-byte streaming-session preface. Verify exact retained suffix and declared archive SHA-256 instead of falsely requiring identity to the parent alone."
+}

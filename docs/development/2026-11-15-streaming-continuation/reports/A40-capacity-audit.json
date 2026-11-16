@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w07_a40",
+  "wave": 7,
+  "date": "2026-11-16",
+  "status": "author-only source inspection and exact integer arithmetic; proposal unadmitted",
+  "cwd": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "head": "af2b74760ee195c9497b314a1a29172f5238dd44",
+  "base_tree": "fb7d9ef7d1fcf24a70395c0671b75eb9c31558d4",
+  "source_sha256": {
+    "include/hammond/research/CausalContactGrid.h": {
+      "sha256": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f",
+      "bytes": 4279
+    },
+    "src/research/CausalContactGrid.cpp": {
+      "sha256": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+      "bytes": 14390
+    },
+    "docs/CAUSAL_CONTACT_GRID_CONTRACT.md": {
+      "sha256": "ba851e6af0601b52aef73d4b9effb64dffac3ef5e230eff7015e10e58a4ecb4e",
+      "bytes": 15359
+    },
+    "docs/reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md": {
+      "sha256": "78d59ba1b8224687eaa6127989ed6fd691c3a878b4e61bde21d9527817aba777",
+      "bytes": 5999
+    },
+    "include/hammond/Types.h": {
+      "sha256": "0abecd960c50186da5348570bfad820cf0f7f3c89c675743eb810b2ebda0dda8",
+      "bytes": 6015
+    },
+    "include/hammond/Engine.h": {
+      "sha256": "bb86ff66ed303bb00fed29564aeeefa0c68401d32f004c79213bbc5ae97d0408",
+      "bytes": 11513
+    },
+    "src/Engine.cpp": {
+      "sha256": "e1f890234bd09edfb0f0aec4f74cb778a950bbc92a48e3e79a99d2ea771029f3",
+      "bytes": 28448
+    },
+    "include/hammond/NoteOwnership.h": {
+      "sha256": "03baaa46de8c24d346c86a64a09e0503e85b78854d143a1cd616aeda38e4b1dc",
+      "bytes": 5037
+    },
+    "src/NoteOwnership.cpp": {
+      "sha256": "f16e7a2f1698898a5552f73004992fb16225b1247d4e0f3170cca201e78b5751",
+      "bytes": 8856
+    },
+    "include/hammond/PedalNoteOwnership.h": {
+      "sha256": "3df590c6747f01a19651b2220b3c002422c8934ff06710bc97be8f47c4747d33",
+      "bytes": 4596
+    },
+    "src/PedalNoteOwnership.cpp": {
+      "sha256": "a938f9d03a1a05d20cdf5d41567bd9c44bd3f5581ec446897ef79386d148acde",
+      "bytes": 7419
+    },
+    "include/hammond/PedalRouting.h": {
+      "sha256": "e77c52f1c541ef301fff4c8b0fb9a9449f93be632630326f2d7640694384bea8",
+      "bytes": 6909
+    },
+    "include/hammond/PerformanceInput.h": {
+      "sha256": "0229bc8a88c43c57f390a7342908eb22537f037642040ada7e1455d45ac3ad77",
+      "bytes": 3220
+    },
+    "src/PerformanceInput.cpp": {
+      "sha256": "80b9b77bca9e17f8b9a866daca32468d649ae4d6b975f1f0c66ceebba646b189",
+      "bytes": 4219
+    },
+    "include/hammond/HostTimeline.h": {
+      "sha256": "9af4c94ce22425bd6be878c976dce4950c4bbf52219fc8555a682ce2ef9d2316",
+      "bytes": 7260
+    },
+    "src/HostTimeline.cpp": {
+      "sha256": "f0a3f88396f0f9b743f91277ca31b85a32deda98abae53d022dbf601d2226149",
+      "bytes": 21374
+    },
+    "apps/standalone/Session.h": {
+      "sha256": "dc729465578ed02a8cb0640d07de679be33d731cdece947a09bce736bc84c929",
+      "bytes": 8982
+    },
+    "apps/standalone/Session.cpp": {
+      "sha256": "256c0ef82e5a6639b3437d01754a0b27673a9d4096fe099a8b66351818ef2ae3",
+      "bytes": 31176
+    },
+    "include/hammond/ContactBank.h": {
+      "sha256": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+      "bytes": 7646
+    },
+    "src/ContactBank.cpp": {
+      "sha256": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+      "bytes": 9665
+    },
+    "docs/research/CONTACT_GRID_CONVERSION_NEXT.md": {
+      "sha256": "87e3a5e513790af7a4dd1fdf4d3ca46852f97acfca5973decbef7449934c1251",
+      "bytes": 5974
+    },
+    "docs/research/CAUSAL_CONTACT_AUDIO_NEXT.md": {
+      "sha256": "131ea11770cefdba5f79c95808b7b51977276fcd2a85bbcf1b825e3994121b56",
+      "bytes": 6874
+    },
+    "docs/development/2026-11-15-streaming-continuation/reports/A38-audio-index-audit.json": {
+      "sha256": "713ce9a9016d1e88efec3f40a24499691c3e5c9c1bdb0eb7d723dcb66e06627c",
+      "bytes": 2827
+    }
+  },
+  "unchanged_initial_source_bindings": 18,
+  "source_anchor_checks": {
+    "noncopyable_grid": {
+      "path": "include/hammond/research/CausalContactGrid.h",
+      "first_line": 85,
+      "matched": true
+    },
+    "whole_call_grid_staging": {
+      "path": "src/research/CausalContactGrid.cpp",
+      "first_line": 189,
+      "matched": true
+    },
+    "grid_reset_clears_history": {
+      "path": "src/research/CausalContactGrid.cpp",
+      "first_line": 312,
+      "matched": true
+    },
+    "grid_zero_frame_target_rejection": {
+      "path": "src/research/CausalContactGrid.cpp",
+      "first_line": 167,
+      "matched": true
+    },
+    "engine_timeline_overflow": {
+      "path": "src/Engine.cpp",
+      "first_line": 245,
+      "matched": true
+    },
+    "engine_zero_frame_events": {
+      "path": "src/Engine.cpp",
+      "first_line": 268,
+      "matched": true
+    },
+    "single_shared_source_frame": {
+      "path": "src/Engine.cpp",
+      "first_line": 297,
+      "matched": true
+    },
+    "manual_owner_first_on": {
+      "path": "src/NoteOwnership.cpp",
+      "first_line": 112,
+      "matched": true
+    },
+    "manual_owner_final_off": {
+      "path": "src/NoteOwnership.cpp",
+      "first_line": 76,
+      "matched": true
+    },
+    "host_raw_plus_carry_budget": {
+      "path": "src/HostTimeline.cpp",
+      "first_line": 252,
+      "matched": true
+    },
+    "host_candidate_engine_copy": {
+      "path": "src/HostTimeline.cpp",
+      "first_line": 194,
+      "matched": true
+    },
+    "host_dense_zero_frame_slice": {
+      "path": "src/HostTimeline.cpp",
+      "first_line": 389,
+      "matched": true
+    },
+    "host_single_final_output_commit": {
+      "path": "src/HostTimeline.cpp",
+      "first_line": 479,
+      "matched": true
+    },
+    "session_captured_prefix": {
+      "path": "apps/standalone/Session.cpp",
+      "first_line": 238,
+      "matched": true
+    }
+  },
+  "current_constants": {
+    "kContactGridTicksPerFrame": 65536,
+    "kContactGridMaxKeys": 4,
+    "kContactGridContactsPerKey": 9,
+    "kContactGridMaxFrames": 4096,
+    "kContactGridMaxCommands": 512,
+    "kContactGridMaxEdges": 4608
+  },
+  "current_measured_ABI_arithmetic": {
+    "formula": "2*800+4608*24+36*24",
+    "object_bytes": 113056,
+    "measurement_owner": "existing A23/A28 resource admission; not rerun"
+  },
+  "domains": {
+    "manual_contact_states": 1098,
+    "pedal_contact_states": 200,
+    "combined_contact_states": 1298,
+    "playing_keys": 147,
+    "unjustified_147_times_9": 1323
+  },
+  "integer_horizons": {
+    "current_epoch_ticks": 268435456,
+    "uint32_tick_whole_frames": 65535,
+    "uint64_tick_whole_frames": 281474976710655,
+    "uint64_product_max_elapsed_at_max_uint32_speed": 4294967297
+  },
+  "projection": {
+    "status": "illustrative assumed-layout subtotal; not compiled, complete or admitted",
+    "manual_keys_K": 122,
+    "host_raw_plus_carry_R": 1024,
+    "manual_targets_M": "M<=2*R+K=2170; proposed conservative ownership bound",
+    "edge_bound": "9*(K+M)=20628; includes incoming motion",
+    "max_local_frames_B": 256,
+    "audio_factor_L": 256,
+    "layout_assumptions": {
+      "bool_bytes": 1,
+      "uint32_bytes_alignment": 4,
+      "uint64_bytes_alignment": 8,
+      "key_configuration_bytes": 152,
+      "key_snapshot_bytes": 40,
+      "snapshot_formula": "32+192*K",
+      "edge_bytes": 24,
+      "target_bytes": 16
+    },
+    "items": [
+      {
+        "item": "live_staged_snapshots",
+        "formula": "2*(32+192*K)",
+        "bytes": 46912
+      },
+      {
+        "item": "staged_edges",
+        "formula": "24*E",
+        "bytes": 495072
+      },
+      {
+        "item": "interval_edges",
+        "formula": "24*9*K",
+        "bytes": 26352
+      },
+      {
+        "item": "extra_wide_frame_fields",
+        "formula": "2*(K+1)*8",
+        "bytes": 1968
+      },
+      {
+        "item": "caller_edges",
+        "formula": "24*E",
+        "bytes": 495072
+      },
+      {
+        "item": "target_staging",
+        "formula": "16*M",
+        "bytes": 34720
+      },
+      {
+        "item": "two_audio_rings",
+        "formula": "2*(32*L+2)*8",
+        "bytes": 131104
+      },
+      {
+        "item": "coefficients",
+        "formula": "(32*L+1)*8",
+        "bytes": 65544
+      },
+      {
+        "item": "output_staging",
+        "formula": "B*4",
+        "bytes": 1024
+      }
+    ],
+    "subtotal_bytes": 1297768,
+    "illustrative_arena_bytes": 2097152,
+    "unassigned_bytes": 799384,
+    "excluded": "Route pieces/endpoints/summation, shared phases/replay bits, controls/percussion/pedals, owners, host queues/carry/full-callback output, metadata/alignment and stack; no application fit claim",
+    "stock_4_key_shards": {
+      "count": 31,
+      "object_only_bytes": 3504736
+    },
+    "work_bounds": {
+      "key_evaluations": 264862,
+      "contact_examinations": 2383758,
+      "roots": 20628,
+      "gcd_remainders": 1320192,
+      "edge_comparisons": 11314458,
+      "one_interval_comparisons": 602253
+    },
+    "callback_seconds_exact": {
+      "B256_F96000": "1/375",
+      "B1_F96000": "1/96000"
+    }
+  },
+  "proposal": {
+    "path": "docs/research/CAUSAL_CONTACT_CAPACITY_NEXT.md",
+    "sha256": "fffd4fd0ef2ee3f193bcb2939309c8003c7b326de1b081cc0d0b4abe4f5dc643",
+    "bytes": 15917
+  },
+  "checks_run": [
+    "Read-only source/hash queries",
+    "Python standard-library exact integer arithmetic and source-anchor assertions",
+    "Owned Markdown link and whitespace checks"
+  ],
+  "unrun": [
+    "No build/native probe/CTest",
+    "No audio render/deadline test",
+    "No new source/API implementation",
+    "No commit/push",
+    "No physical or independent architecture admission"
+  ],
+  "owned_markdown_checks": {
+    "local_links_checked": 16,
+    "all_exist": true,
+    "no_trailing_whitespace": true
+  }
+}
