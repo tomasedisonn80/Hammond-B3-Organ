@@ -155,6 +155,16 @@ diagnostic and inspect the failed new destination before choosing another prefix
 
 ## Executed implementation check and next acceptance
 
+The runtime continuation additionally repairs an observed Windows relocation
+failure: direct CLI startup removes automatic empty search-path entries before
+importing its dependencies, so a `json.py` in the working directory cannot be
+selected through that entry. Its script directory and explicitly configured
+search paths retain their normal behavior. The installer regression injects the
+same startup entry on every platform and requires the installed certificate to
+match the source certificate exactly. The [failure and repair witness](development/2026-11-16-runtime-continuation/reports/windows-cwd-import-repair.json)
+retains original failure, repaired success and local affected tests; the current
+session records subsequent exact-source hosted qualification separately.
+
 The [A23 authoring smoke](development/2026-11-16-conversion-material/reports/A23-install-smoke.json)
 used the real installer inside a small private `LANGUAGES NONE` project. Its
 **19 process invocations passed in 2.630 seconds**. It verified every missing

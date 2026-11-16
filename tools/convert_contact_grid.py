@@ -3,6 +3,15 @@
 
 from __future__ import annotations
 
+import sys
+
+# Windows startup may retain an empty working-directory entry even with -E -S.
+# The CLI's sibling modules belong to its script directory; importing unrelated
+# files from the caller's working directory must not shadow standard-library
+# dependencies. Keep explicitly configured absolute search paths unchanged.
+if __name__ == "__main__":
+    sys.path[:] = [entry for entry in sys.path if entry]
+
 import argparse
 from dataclasses import dataclass
 import hashlib
@@ -10,7 +19,6 @@ import json
 import os
 from pathlib import Path
 import signal
-import sys
 import tempfile
 import threading
 import time

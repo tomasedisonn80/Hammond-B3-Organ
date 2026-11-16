@@ -491,6 +491,22 @@ class ContactGridConversionInstallTests(unittest.TestCase):
         self.ok(result)
         self.assertEqual((result.stdout, result.stderr), (b"", b""))
         self.assertEqual(output.read_bytes(), initial.read_bytes())
+        # Reproduce Windows' automatic empty cwd search entry on every platform.
+        # Only sys/builtins are used before the actual CLI starts; otherwise a
+        # pre-imported json module could conceal the original relocation bug.
+        simulated = foreign / "empty search entry certificate.json"
+        bootstrap = (
+            "import sys;script=sys.argv[1];directory=sys.argv[2];"
+            "sys.argv=[script]+sys.argv[3:];sys.path[:0]=['',directory];"
+            "exec(compile(open(script,'rb').read(),script,'exec'),"
+            "{'__name__':'__main__','__file__':script})"
+        )
+        simulated_run = process("relocated CLI with empty cwd search entry",
+            [*python, "-c", bootstrap, installed / "tools/convert_contact_grid.py",
+             installed / "tools", "--input", fixture, "--output", simulated], foreign, env)
+        self.ok(simulated_run)
+        self.assertEqual((simulated_run.stdout, simulated_run.stderr), (b"", b""))
+        self.assertEqual(simulated.read_bytes(), initial.read_bytes())
         certificate = json.loads(output.read_bytes())
         self.assertEqual((certificate["status"], certificate["conversion_id"], certificate["audio_accuracy"]),
                          ("accepted", "fractional-to-contact-grid-rne-v1", "unqualified"))

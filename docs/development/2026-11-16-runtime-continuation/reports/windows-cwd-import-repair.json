@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "scope": "reproduced empty working-directory search entry; native Windows requalification pending",
+  "hosted_failure_commit": "f56b0f3b4ac98dd0f4bce289f9509fdad8e03331",
+  "hosted_failure_job": 133110256518,
+  "observations": [
+    {
+      "version": "original",
+      "returncode": 1,
+      "source_sha256": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/workspace/scratch/edcadc57554d/verification/cwd-import-fnxnlc6c/original/tools/convert_contact_grid.py\", line 9, in <module>\n    import json\n  File \"/workspace/scratch/edcadc57554d/verification/cwd-import-fnxnlc6c/foreign/json.py\", line 1, in <module>\n    raise AssertionError(\"foreign module imported\")\nAssertionError: foreign module imported\n",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "-E",
+        "-s",
+        "-S",
+        "-c",
+        "import sys;script=sys.argv[1];directory=sys.argv[2];sys.argv=[script]+sys.argv[3:];sys.path[:0]=['',directory];exec(compile(open(script,'rb').read(),script,'exec'),{'__name__':'__main__','__file__':script})",
+        "/workspace/scratch/edcadc57554d/verification/cwd-import-fnxnlc6c/original/tools/convert_contact_grid.py",
+        "/workspace/scratch/edcadc57554d/verification/cwd-import-fnxnlc6c/original/tools",
+        "--input",
+        "/workspace/scratch/edcadc57554d/Hammond-B3-Organ/data/contact-switching/reference-v1/F02-48000-v1.json",
+        "--output",
+        "/workspace/scratch/edcadc57554d/verification/cwd-import-fnxnlc6c/foreign/original.json"
+      ],
+      "certificate_created": false,
+      "certificate_status": null
+    },
+    {
+      "version": "repaired",
+      "returncode": 0,
+      "source_sha256": "637ce3f9b3b686e7f4e97cddc1bb29b2795a61141e77c7a8b2230d54b73c370d",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "-E",
+        "-s",
+        "-S",
+        "-c",
+        "import sys;script=sys.argv[1];directory=sys.argv[2];sys.argv=[script]+sys.argv[3:];sys.path[:0]=['',directory];exec(compile(open(script,'rb').read(),script,'exec'),{'__name__':'__main__','__file__':script})",
+        "/workspace/scratch/edcadc57554d/verification/cwd-import-fnxnlc6c/repaired/tools/convert_contact_grid.py",
+        "/workspace/scratch/edcadc57554d/verification/cwd-import-fnxnlc6c/repaired/tools",
+        "--input",
+        "/workspace/scratch/edcadc57554d/Hammond-B3-Organ/data/contact-switching/reference-v1/F02-48000-v1.json",
+        "--output",
+        "/workspace/scratch/edcadc57554d/verification/cwd-import-fnxnlc6c/foreign/repaired.json"
+      ],
+      "certificate_created": true,
+      "certificate_status": "accepted"
+    }
+  ],
+  "local_affected_ctest": {
+    "passed": 4,
+    "elapsed_seconds": 4.35
+  },
+  "sources": [
+    "https://docs.python.org/3.12/using/windows.html#finding-modules",
+    "https://docs.python.org/3.12/using/cmdline.html#cmdoption-E"
+  ]
+}

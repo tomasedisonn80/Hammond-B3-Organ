@@ -5,6 +5,10 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current session and recovery
 
+**Runtime and interface continuation, 16 November 2026**, base `3520c96`: current writable checkout `/workspace/scratch/edcadc57554d/Hammond-B3-Organ`, one coordinated build `../build-native`. Recover the [session](docs/development/2026-11-16-runtime-continuation/README.md), [checkpoint](docs/development/2026-11-16-runtime-continuation/CHECKPOINT.md) and [actual worker ledger](docs/development/2026-11-16-runtime-continuation/assignments.json). This request has its own sixty workers and full atlas coverage. Other checkouts, builds and unpublished work are read-only; reconcile published remote advances without discarding either session. The entries below retain their historical ownership and evidence.
+
+## Earlier conversion session
+
 **Contact conversion/material continuation**, base
 `a411268fd498f65c083203137831bf5afed83bd8`: writable checkout
 `/workspace/scratch/0d55e62af118/Hammond-B3-Organ`, coordinated build

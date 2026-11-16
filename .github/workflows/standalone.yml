@@ -401,6 +401,7 @@ jobs:
                       "test_standalone_upper_rack_material_raster",
                       "test_standalone_lower_rack_material_raster",
                       "test_standalone_footage_typography_raster",
+                      "test_standalone_manual_key_material_raster",
                       "test_standalone_expression_diagnostics", "test_standalone_native_calibration"}
           assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
           print("Discovered", len(names), "standalone tests, including required MIDI, calibration, workspace, inspection and product drawing gates.", flush=True)
@@ -639,6 +640,7 @@ jobs:
         test_standalone_upper_rack_material_raster=test_standalone_upper_rack_material_raster
         test_standalone_lower_rack_material_raster=test_standalone_lower_rack_material_raster
         test_standalone_footage_typography_raster=test_standalone_footage_typography_raster
+        test_standalone_manual_key_material_raster=test_standalone_manual_key_material_raster
         test_standalone_native_calibration=hammond_standalone_calibration_probe
     steps:
       - name: Check out the exact tested revision
@@ -686,6 +688,7 @@ jobs:
                      "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp",
                      "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp",
                      "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
+                     "apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp",
                      "apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
                      "apps/standalone/native_tests/fake_calibration/RtMidi.h",
                      "apps/standalone/native_tests/test_standalone_native_calibration.py",
@@ -826,6 +829,9 @@ jobs:
               "test_standalone_footage_typography_raster": {
                   "apps/standalone/native_tests/test_standalone_footage_typography_raster.cpp",
                   "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_manual_key_material_raster": {
+                  "apps/standalone/native_tests/test_standalone_manual_key_material_raster.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
               probe: {"apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
                       "apps/standalone/MidiDevice.cpp", "apps/standalone/InstrumentView.cpp"},
               "hammond_standalone_support": {"apps/standalone/Session.cpp", "apps/standalone/MidiInput.cpp"},
@@ -891,7 +897,7 @@ jobs:
               subprocess.run(command, stdout=output, check=True)
           discovered = json.loads((logs / "ctest-discovered.json").read_text())["tests"]
           names = [test["name"] for test in discovered]
-          assert len(names) == len(set(names)) == 24 and set(names) == set(required), names
+          assert len(names) == len(set(names)) == 25 and set(names) == set(required), names
           sanitizer_limits = {"test_standalone_workspace_raster": 180,
                               "test_standalone_scaled_view": 360,
                               "test_standalone_preset_raster": 300,
@@ -901,6 +907,7 @@ jobs:
                               "test_standalone_upper_rack_material_raster": 240,
                               "test_standalone_lower_rack_material_raster": 240,
                               "test_standalone_footage_typography_raster": 240,
+                              "test_standalone_manual_key_material_raster": 240,
                               "test_standalone_native_calibration": 180}
           for test in discovered:
               assert test.get("command"), "Missing built test command: " + test["name"]

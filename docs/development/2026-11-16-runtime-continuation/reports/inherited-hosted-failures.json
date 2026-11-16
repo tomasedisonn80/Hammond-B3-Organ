@@ -1,0 +1,42 @@
+{
+  "commit": "3520c96adcdcf4ce4bcb860082354bf0050a89c3",
+  "run": 43801643469,
+  "jobs": [
+    {
+      "id": 133083059308,
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "conclusion": "success",
+      "failed_steps": []
+    },
+    {
+      "id": 133083059313,
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "conclusion": "success",
+      "failed_steps": []
+    },
+    {
+      "id": 133083059424,
+      "name": "Release (macOS AppleClang)",
+      "conclusion": "failure",
+      "failed_steps": [
+        "Run every registered Release test"
+      ]
+    },
+    {
+      "id": 133083059453,
+      "name": "Release (Linux GCC)",
+      "conclusion": "success",
+      "failed_steps": []
+    },
+    {
+      "id": 133083060473,
+      "name": "Release (Windows MSVC)",
+      "conclusion": "failure",
+      "failed_steps": [
+        "Run every registered Release test"
+      ]
+    }
+  ],
+  "recovery_commit": "79bf34091dda5dc0528cf584891cff3e09657c66",
+  "observations": "Inspected retained hosted logs: macOS rejects arbitrary-byte filenames with EILSEQ and both macOS/Windows canonicalize temporary parent paths. Recovered completed commit includes capability-specific path tests and Unicode journeys. Hosted success at recovered commit has not yet been observed."
+}

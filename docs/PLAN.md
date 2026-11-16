@@ -1,6 +1,10 @@
 # Project plan: Hammond B-3 and Leslie
 
-## Active conversion/material continuation — 16 November 2026
+## Runtime and interface continuation — 16 November 2026
+
+The [current session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md) and [actual worker ledger](development/2026-11-16-runtime-continuation/assignments.json) identify the active checkout and ownership. All 500 PDF pages have been freshly covered by six readers. Selected next work is isolated causal contact audio and the live manual key materials, governed by independently reviewed contracts before implementation. The exact recovered conversion/typography tree is published as `f56b0f3`; its dated earlier evidence remains below. The nominal dry Engine and every M0–M9 exit remain binding.
+
+## Earlier conversion/material continuation — 16 November 2026
 
 This session's source is `/workspace/scratch/0d55e62af118/Hammond-B3-Organ`; root coordinates `../build-native`. The [current handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md) and [actual ledger](development/2026-11-16-conversion-material/assignments.json) supersede the earlier session's workspace and next-task pointers below. This request requires **60 new workers in ten waves**; its own ledger records actual progress. Earlier sixty-worker closures do not count again.
 

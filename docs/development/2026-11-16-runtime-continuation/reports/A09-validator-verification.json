@@ -1,0 +1,447 @@
+{
+  "schema": "b3-runtime-A09-validator-verification-v1",
+  "worker": "/root/w02_a09",
+  "scope": "record-validator-only",
+  "cwd": "/workspace/scratch/edcadc57554d/Hammond-B3-Organ",
+  "python": "3.12.14",
+  "head": "79bf34091dda5dc0528cf584891cff3e09657c66",
+  "checker": "docs/development/2026-11-16-runtime-continuation/reports/check_session.py",
+  "checker_sha256": "11ecd9bbd0d6b9f4f9a1d019137c5354b34087b86294cc2f29cbf6ad960fbcdc",
+  "initial_failure": {
+    "checker_sha256": "4a27d12d3ab5d8ab29105c612745eb69c9c7d82da29c6f76f8fa31ed3e3eff5b",
+    "command": [
+      "python3",
+      "-B",
+      "docs/development/2026-11-16-runtime-continuation/reports/check_session.py",
+      "--self-test"
+    ],
+    "exit_code": 1,
+    "case": "deep_json",
+    "observed": "Validator rejected deep top-level array with schema error; self-test incorrectly required only input/parser error.",
+    "repair": "Fixture requires clean invalid result regardless of parser-versus-schema admission stage; actual admission rules unchanged.",
+    "retained_evidence": "Failure summary and original source hash; original traceback is in the execution transcript, not a separate raw log."
+  },
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-runtime-continuation/reports/check_session.py",
+        "--self-test"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "report": {
+        "valid": true,
+        "checks": 74,
+        "cases": [
+          "complete_strict",
+          "partial_progress",
+          "partial_strict_rejected",
+          "empty_progress",
+          "empty_strict_rejected",
+          "running_without_note",
+          "accepted_missing_note",
+          "wrong_base",
+          "boolean_schema",
+          "wrong_worker_target",
+          "wrong_wave_target",
+          "wrong_concurrency_target",
+          "unknown_top_field",
+          "nonarray_workers",
+          "too_many_workers",
+          "nonobject_worker",
+          "missing_worker_field",
+          "unknown_worker_field",
+          "id_alias",
+          "id_boolean",
+          "id_out_of_range",
+          "duplicate_id",
+          "wrong_wave",
+          "boolean_wave",
+          "duplicate_agent",
+          "agent_alias",
+          "agent_followup",
+          "agent_nonstring",
+          "planned_status",
+          "status_nonstring",
+          "empty_task",
+          "placeholder_task",
+          "placeholder_acceptance",
+          "missing_acceptance",
+          "hash_type",
+          "hash_syntax",
+          "hash_mismatch",
+          "note_alias",
+          "old_note_path",
+          "owned_path_type",
+          "owned_path_member_type",
+          "unowned_note",
+          "duplicate_owned_path",
+          "running_acceptance",
+          "unsafe_path_0",
+          "unsafe_path_1",
+          "unsafe_path_2",
+          "unsafe_path_3",
+          "unsafe_path_4",
+          "unsafe_path_5",
+          "unsafe_path_6",
+          "unsafe_path_7",
+          "unsafe_path_8",
+          "unsafe_path_9",
+          "unsafe_path_10",
+          "duplicate_json_field",
+          "nonfinite_json",
+          "invalid_utf8",
+          "invalid_json",
+          "oversized_ledger",
+          "deep_json",
+          "nonobject_ledger",
+          "changed_note",
+          "blank_note",
+          "heading_and_code_only",
+          "invalid_note_encoding",
+          "oversized_note",
+          "duplicate_note_bytes",
+          "symlink_note",
+          "hardlink_note",
+          "symlink_parent_scope",
+          "previous_session_bytes",
+          "historical_records_never_count",
+          "final_complete_strict"
+        ],
+        "scope": "synthetic-validator-self-tests-only",
+        "checker_sha256": "11ecd9bbd0d6b9f4f9a1d019137c5354b34087b86294cc2f29cbf6ad960fbcdc"
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-runtime-continuation/reports/check_session.py",
+        "--repo",
+        "."
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "report": {
+        "schema": "b3-runtime-session-check-v1",
+        "session": "2026-11-16-runtime-continuation",
+        "mode": "progress",
+        "valid": true,
+        "strict_record_closure": false,
+        "scope": "retained-record-consistency-only",
+        "external_dispatch_attested": false,
+        "limits": "Retained-record consistency only: this checker does not attest actual or new external dispatch, chronology, measured concurrency, ownership handoffs, substantive quality, correctness, test execution, publication or fidelity. Canonical agent names are session-local records, not global identity proof. Owned paths are declared scopes, not verified completed deliverables. Prose floors reject empty/placeholder records but cannot grade the work. Other-session comparison detects exact note-byte reuse only; edited copies and fabricated claims require independent review. Files are read without locking; run again after the integrator finishes changing records.",
+        "errors": [],
+        "counts": {
+          "records": 9,
+          "unique_ids": 9,
+          "unique_canonical_agents": 9,
+          "accepted": 6,
+          "running": 3,
+          "verified_accepted_notes": 6
+        },
+        "waves": [
+          {
+            "wave": 1,
+            "recorded": 6,
+            "accepted": 6,
+            "verified": 6
+          },
+          {
+            "wave": 2,
+            "recorded": 3,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 3,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 4,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 5,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 6,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 7,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 8,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 9,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 10,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          }
+        ],
+        "other_session_notes_compared": 344,
+        "ledger": {
+          "path": "docs/development/2026-11-16-runtime-continuation/assignments.json",
+          "bytes": 4621,
+          "sha256": "95c1898d6875834725c439359d389abacf2e7d9ff783dedf1d190e5e15b0aba6"
+        },
+        "checker_sha256": "11ecd9bbd0d6b9f4f9a1d019137c5354b34087b86294cc2f29cbf6ad960fbcdc",
+        "missing_ids": [
+          "A10",
+          "A11",
+          "A12",
+          "A13",
+          "A14",
+          "A15",
+          "A16",
+          "A17",
+          "A18",
+          "A19",
+          "A20",
+          "A21",
+          "A22",
+          "A23",
+          "A24",
+          "A25",
+          "A26",
+          "A27",
+          "A28",
+          "A29",
+          "A30",
+          "A31",
+          "A32",
+          "A33",
+          "A34",
+          "A35",
+          "A36",
+          "A37",
+          "A38",
+          "A39",
+          "A40",
+          "A41",
+          "A42",
+          "A43",
+          "A44",
+          "A45",
+          "A46",
+          "A47",
+          "A48",
+          "A49",
+          "A50",
+          "A51",
+          "A52",
+          "A53",
+          "A54",
+          "A55",
+          "A56",
+          "A57",
+          "A58",
+          "A59",
+          "A60"
+        ],
+        "unaccepted_ids": [
+          "A07",
+          "A08",
+          "A09"
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "docs/development/2026-11-16-runtime-continuation/reports/check_session.py",
+        "--repo",
+        ".",
+        "--strict"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "report": {
+        "schema": "b3-runtime-session-check-v1",
+        "session": "2026-11-16-runtime-continuation",
+        "mode": "strict",
+        "valid": false,
+        "strict_record_closure": false,
+        "scope": "retained-record-consistency-only",
+        "external_dispatch_attested": false,
+        "limits": "Retained-record consistency only: this checker does not attest actual or new external dispatch, chronology, measured concurrency, ownership handoffs, substantive quality, correctness, test execution, publication or fidelity. Canonical agent names are session-local records, not global identity proof. Owned paths are declared scopes, not verified completed deliverables. Prose floors reject empty/placeholder records but cannot grade the work. Other-session comparison detects exact note-byte reuse only; edited copies and fabricated claims require independent review. Files are read without locking; run again after the integrator finishes changing records.",
+        "errors": [
+          {
+            "code": "incomplete",
+            "at": "assignments",
+            "message": "strict closure requires A01 through A60 accepted with verified notes"
+          },
+          {
+            "code": "incomplete_waves",
+            "at": "assignments",
+            "message": "strict closure requires ten waves of six verified records"
+          }
+        ],
+        "counts": {
+          "records": 9,
+          "unique_ids": 9,
+          "unique_canonical_agents": 9,
+          "accepted": 6,
+          "running": 3,
+          "verified_accepted_notes": 6
+        },
+        "waves": [
+          {
+            "wave": 1,
+            "recorded": 6,
+            "accepted": 6,
+            "verified": 6
+          },
+          {
+            "wave": 2,
+            "recorded": 3,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 3,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 4,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 5,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 6,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 7,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 8,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 9,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          },
+          {
+            "wave": 10,
+            "recorded": 0,
+            "accepted": 0,
+            "verified": 0
+          }
+        ],
+        "other_session_notes_compared": 344,
+        "ledger": {
+          "path": "docs/development/2026-11-16-runtime-continuation/assignments.json",
+          "bytes": 4621,
+          "sha256": "95c1898d6875834725c439359d389abacf2e7d9ff783dedf1d190e5e15b0aba6"
+        },
+        "checker_sha256": "11ecd9bbd0d6b9f4f9a1d019137c5354b34087b86294cc2f29cbf6ad960fbcdc",
+        "missing_ids": [
+          "A10",
+          "A11",
+          "A12",
+          "A13",
+          "A14",
+          "A15",
+          "A16",
+          "A17",
+          "A18",
+          "A19",
+          "A20",
+          "A21",
+          "A22",
+          "A23",
+          "A24",
+          "A25",
+          "A26",
+          "A27",
+          "A28",
+          "A29",
+          "A30",
+          "A31",
+          "A32",
+          "A33",
+          "A34",
+          "A35",
+          "A36",
+          "A37",
+          "A38",
+          "A39",
+          "A40",
+          "A41",
+          "A42",
+          "A43",
+          "A44",
+          "A45",
+          "A46",
+          "A47",
+          "A48",
+          "A49",
+          "A50",
+          "A51",
+          "A52",
+          "A53",
+          "A54",
+          "A55",
+          "A56",
+          "A57",
+          "A58",
+          "A59",
+          "A60"
+        ],
+        "unaccepted_ids": [
+          "A07",
+          "A08",
+          "A09"
+        ]
+      },
+      "stderr": ""
+    }
+  ]
+}

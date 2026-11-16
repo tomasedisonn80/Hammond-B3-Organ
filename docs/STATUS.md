@@ -1,6 +1,10 @@
 # Development status
 
-## Active conversion/material continuation — 16 November 2026
+## Runtime and interface continuation — 16 November 2026
+
+Current recovery: [session](development/2026-11-16-runtime-continuation/README.md), [checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md), [ledger](development/2026-11-16-runtime-continuation/assignments.json). Initial source `3520c96` passed 216/216 local tests. The completed conversion/typography work was recovered without touching other dirty checkouts, qualified with eight affected tests and archive integrity, and published with the identical tree as `f56b0f3`. Exact-source hosted qualification is pending. New causal-audio and key-material contracts are undergoing independent preimplementation admission; no new numerical or visual pass is inferred.
+
+## Earlier conversion/material continuation — 16 November 2026
 
 This session's source is `/workspace/scratch/0d55e62af118/Hammond-B3-Organ`; root coordinates `../build-native`. The [current handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md) and [actual ledger](development/2026-11-16-conversion-material/assignments.json) supersede the earlier session's workspace and next-task pointers below. This request requires **60 new workers in ten waves**; its own ledger records actual progress. Earlier sixty-worker closures do not count again.
 

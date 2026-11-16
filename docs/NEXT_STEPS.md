@@ -1,6 +1,10 @@
 # Next steps
 
-## Active conversion/material continuation — 16 November 2026
+## Runtime and interface continuation — 16 November 2026
+
+Resume the [current checkpoint](development/2026-11-16-runtime-continuation/CHECKPOINT.md) and [actual ledger](development/2026-11-16-runtime-continuation/assignments.json), then read the [selected scope](development/2026-11-16-runtime-continuation/SCOPE.md). Finish independent admission of the [causal audio contract](CAUSAL_CONTACT_AUDIO_CONTRACT.md), [validation inputs](CAUSAL_CONTACT_AUDIO_VALIDATION.md) and [manual materials](design/MANUAL_KEY_MATERIAL_CONTRACT.md). Retain the new genuine-before fixture before any painter edit. Implement the admitted fixed-storage audio wrapper and isolated idle-manual branch; independent numerical, lifecycle, resource and visual reviews follow. Root owns coherent builds, shared navigation and non-force publication. Earlier next-task proposals below remain historical where superseded.
+
+## Earlier conversion/material continuation — 16 November 2026
 
 This session's source is `/workspace/scratch/0d55e62af118/Hammond-B3-Organ`; root coordinates `../build-native`. The [current handoff](CONVERSION_MATERIAL_HANDOFF.md), [checkpoint](development/2026-11-16-conversion-material/CHECKPOINT.md) and [actual ledger](development/2026-11-16-conversion-material/assignments.json) supersede the earlier session's workspace and next-task pointers below. This request requires **60 new workers in ten waves**; its own ledger records actual progress. Earlier sixty-worker closures do not count again.
 
