@@ -131,7 +131,21 @@ if(HAMMOND_BUILD_STANDALONE)
             "${PROJECT_SOURCE_DIR}/docs/design/atlas-cover-reference.jpg"
         COMMENT "Verifying and embedding exact decorative reference pixels"
         VERBATIM)
-    add_library(hammond_standalone_drawing STATIC Drawing.cpp "${HAMMOND_REFERENCE_ART}")
+    set(HAMMOND_REFERENCE_APRON "${CMAKE_CURRENT_BINARY_DIR}/generated/ReferenceApronData.h")
+    add_custom_command(
+        OUTPUT "${HAMMOND_REFERENCE_APRON}"
+        COMMAND "${Python3_EXECUTABLE}" "${PROJECT_SOURCE_DIR}/tools/compile_reference_apron.py"
+            --input "${PROJECT_SOURCE_DIR}/assets/standalone/reference-apron-v1/manifest.json"
+            --source "${PROJECT_SOURCE_DIR}/docs/design/atlas-cover-reference.jpg"
+            --output "${HAMMOND_REFERENCE_APRON}"
+        DEPENDS "${PROJECT_SOURCE_DIR}/tools/compile_reference_apron.py"
+            "${PROJECT_SOURCE_DIR}/assets/standalone/reference-apron-v1/manifest.json"
+            "${PROJECT_SOURCE_DIR}/assets/standalone/reference-apron-v1/apron.rgba.gz"
+            "${PROJECT_SOURCE_DIR}/docs/design/atlas-cover-reference.jpg"
+        COMMENT "Verifying and embedding the exact masked reference apron"
+        VERBATIM)
+    add_library(hammond_standalone_drawing STATIC Drawing.cpp
+        "${HAMMOND_REFERENCE_ART}" "${HAMMOND_REFERENCE_APRON}")
     target_link_libraries(hammond_standalone_drawing PUBLIC SDL2::SDL2-static)
     target_include_directories(hammond_standalone_drawing
         PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}/include"
@@ -154,6 +168,54 @@ if(HAMMOND_BUILD_STANDALONE)
     target_compile_definitions(hammond_standalone_paint_benchmark PRIVATE SDL_MAIN_HANDLED)
     hammond_configure_target(hammond_standalone_paint_benchmark)
     if(BUILD_TESTING)
+        # The identical fixture is first retained against the genuine pre-edit
+        # painter; the independent paired checker owns all change allowances.
+        add_executable(test_standalone_reference_apron_raster
+            native_tests/test_standalone_reference_apron_raster.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_reference_apron_raster PRIVATE
+            hammond_standalone_drawing hammond_standalone_support)
+        target_compile_definitions(test_standalone_reference_apron_raster PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_reference_apron_raster)
+        add_test(NAME test_standalone_reference_apron_raster
+            COMMAND test_standalone_reference_apron_raster)
+        set_tests_properties(test_standalone_reference_apron_raster PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;reference-apron")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS test_standalone_reference_apron_raster)
+        add_executable(test_standalone_reference_apron_art
+            native_tests/test_standalone_reference_apron_art.cpp "${HAMMOND_REFERENCE_APRON}")
+        target_link_libraries(test_standalone_reference_apron_art PRIVATE hammond_standalone_drawing)
+        target_include_directories(test_standalone_reference_apron_art PRIVATE
+            "${CMAKE_CURRENT_BINARY_DIR}/generated")
+        target_compile_definitions(test_standalone_reference_apron_art PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_reference_apron_art)
+        add_test(NAME test_standalone_reference_apron_art COMMAND test_standalone_reference_apron_art)
+        set_tests_properties(test_standalone_reference_apron_art PROPERTIES
+            TIMEOUT 30 LABELS "standalone;native;reference-apron")
+
+        # Test-only failure injection compiles the same production Drawing and
+        # pairs the same frozen fixture with genuine optional-texture failure.
+        add_library(hammond_standalone_drawing_apron_unavailable STATIC Drawing.cpp
+            "${HAMMOND_REFERENCE_ART}" "${HAMMOND_REFERENCE_APRON}")
+        target_link_libraries(hammond_standalone_drawing_apron_unavailable PUBLIC SDL2::SDL2-static)
+        target_include_directories(hammond_standalone_drawing_apron_unavailable
+            PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}/include"
+            PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
+        target_compile_definitions(hammond_standalone_drawing_apron_unavailable PRIVATE
+            SDL_MAIN_HANDLED SDL_CreateTexture=hammond_test_create_texture)
+        hammond_configure_target(hammond_standalone_drawing_apron_unavailable)
+        add_executable(test_standalone_reference_apron_unavailable
+            native_tests/test_standalone_reference_apron_raster.cpp
+            native_tests/reference_apron_unavailable_texture.cpp InstrumentView.cpp)
+        target_link_libraries(test_standalone_reference_apron_unavailable PRIVATE
+            hammond_standalone_drawing_apron_unavailable hammond_standalone_support)
+        target_compile_definitions(test_standalone_reference_apron_unavailable PRIVATE SDL_MAIN_HANDLED)
+        hammond_configure_target(test_standalone_reference_apron_unavailable)
+        add_test(NAME test_standalone_reference_apron_unavailable
+            COMMAND test_standalone_reference_apron_unavailable)
+        set_tests_properties(test_standalone_reference_apron_unavailable PROPERTIES
+            TIMEOUT 60 LABELS "standalone;native;reference-apron;fallback")
+        list(APPEND HAMMOND_STANDALONE_TEST_TARGETS
+            test_standalone_reference_apron_art test_standalone_reference_apron_unavailable)
         add_executable(test_standalone_drawing native_tests/test_standalone_drawing.cpp)
         target_link_libraries(test_standalone_drawing PRIVATE hammond_standalone_drawing)
         target_compile_definitions(test_standalone_drawing PRIVATE SDL_MAIN_HANDLED)

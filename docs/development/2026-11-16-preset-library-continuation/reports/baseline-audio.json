@@ -1,0 +1,59 @@
+{
+  "scope": "Genuine baseline renderer without new controls option; exact whole WAV/stdout comparison inputs.",
+  "binary_sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf",
+  "profile_sha256": "b36b0773fa06aac3ee267362f97ce798d0c1f41695e666f71c4a8a52ae36389f",
+  "records": [
+    {
+      "name": "default",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/baseline-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+        "--output",
+        "/workspace/scratch/3edffb787db3/baseline-audio/default.wav",
+        "--frames",
+        "8192",
+        "--seed",
+        "0"
+      ],
+      "exit": 0,
+      "stdout_sha256": "889706eeefcc459a832553e1624b3f9a507f43c7605b02e1b0ca872a62134e85",
+      "wav_sha256": "35a460e99da4c9354e23ec13bb53a70c99f5cd5b70ecf337ec3926c422c7025d"
+    },
+    {
+      "name": "nominal",
+      "argv": [
+        "/workspace/scratch/3edffb787db3/baseline-native/hammond_render",
+        "--profile",
+        "/workspace/scratch/3edffb787db3/build-native/nominal.b3p",
+        "--output",
+        "/workspace/scratch/3edffb787db3/baseline-audio/nominal.wav",
+        "--frames",
+        "16384",
+        "--seed",
+        "1934",
+        "--note",
+        "36",
+        "--drawbars",
+        "808400008",
+        "--sample-rate",
+        "44100",
+        "--block-size",
+        "17",
+        "--contacts",
+        "nominal",
+        "--percussion",
+        "third",
+        "--percussion-volume",
+        "soft",
+        "--percussion-decay",
+        "fast",
+        "--pedal-drawbars",
+        "40"
+      ],
+      "exit": 0,
+      "stdout_sha256": "847fa985f66e1818fdce35e35d9bca4c8840f201f6a16c12ce0406a4138172d8",
+      "wav_sha256": "7cbe9d547a23a3b6d696e75652064c4c8aacc0ffe4d4cf385b889e9206f41630"
+    }
+  ]
+}

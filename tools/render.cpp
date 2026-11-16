@@ -1,4 +1,5 @@
 #include "CliArguments.h"
+#include "ControlFileInput.h"
 #include "hammond/Engine.h"
 #include "hammond/Profile.h"
 #include "hammond/detail/Decimal.h"
@@ -89,6 +90,7 @@ struct Options {
     fs::path profile;
     fs::path output;
     fs::path events;
+    fs::path controls;
     fs::path source_leakage;
     double leakage_input_gain = 1.0;
     std::uint32_t sample_rate = 48000;
@@ -101,6 +103,7 @@ struct Options {
     hammond::ContactMode contact_mode = hammond::ContactMode::Ideal;
     hammond::PercussionSettings percussion{};
     bool has_events = false;
+    bool has_controls = false;
     bool has_source_leakage = false;
     bool fail_on_clip = false;
 };
@@ -111,10 +114,15 @@ struct SourceLeakageSelection {
     hammond::SourceLeakageConfiguration configuration{};
 };
 
+struct ControlsSelection {
+    hammond::tools::ControlFileInput input;
+    std::string path;
+};
+
 enum class Flag : std::size_t {
     Profile, Output, SampleRate, BlockSize, Frames, Seed, Drawbars, PedalDrawbars, Note, Events,
     Contacts, Percussion, PercussionVolume, PercussionDecay, SourceLeakage, LeakageInputGain,
-    FailOnClip, Count
+    FailOnClip, Controls, Count
 };
 
 [[nodiscard]] Options parse_options(int argc, char* argv[]) {
@@ -123,7 +131,7 @@ enum class Flag : std::size_t {
         "--profile", "--output", "--sample-rate", "--block-size", "--frames",
         "--seed", "--drawbars", "--pedal-drawbars", "--note", "--events", "--contacts", "--percussion",
         "--percussion-volume", "--percussion-decay", "--source-leakage",
-        "--leakage-input-gain", "--fail-on-clip"};
+        "--leakage-input-gain", "--fail-on-clip", "--controls"};
     // One program argument, two per value-taking flag, and one valueless flag.
     // Duplicates and the mutually exclusive note/score pair still reject below.
     if (argc > static_cast<int>(names.size() * 2)) {
@@ -159,6 +167,10 @@ enum class Flag : std::size_t {
         case Flag::Events:
             options.events = hammond::cli::argument_path(value);
             options.has_events = true;
+            break;
+        case Flag::Controls:
+            options.controls = hammond::cli::argument_path(value);
+            options.has_controls = true;
             break;
         case Flag::SourceLeakage:
             options.source_leakage = hammond::cli::argument_path(value);
@@ -267,6 +279,15 @@ enum class Flag : std::size_t {
     if (options.has_events && seen[static_cast<std::size_t>(Flag::Note)]) {
         fail("Explicit --note is incompatible with --events.");
     }
+    if (options.has_controls) {
+        for (const auto flag : {Flag::Drawbars, Flag::PedalDrawbars, Flag::Percussion,
+                                Flag::PercussionVolume, Flag::PercussionDecay}) {
+            const auto index = static_cast<std::size_t>(flag);
+            if (seen[index]) {
+                fail("--controls is incompatible with explicit " + std::string(names[index]) + ".");
+            }
+        }
+    }
     if (seen[static_cast<std::size_t>(Flag::SourceLeakage)] !=
         seen[static_cast<std::size_t>(Flag::LeakageInputGain)]) {
         fail("--source-leakage and --leakage-input-gain must be supplied together.");
@@ -312,6 +333,7 @@ void preflight_paths(Options& options) {
         fail("Cannot resolve output path: " + error.message());
     }
     if (output == options.profile || (options.has_events && output == options.events) ||
+        (options.has_controls && output == options.controls) ||
         (options.has_source_leakage && output == options.source_leakage)) {
         fail("Output path collides with an input file.");
     }
@@ -368,6 +390,59 @@ void preflight_paths(Options& options) {
         }
     }
     return true;
+}
+
+[[nodiscard]] std::string controls_path_text(const fs::path& path) {
+    std::string text;
+    try {
+        text = hammond::cli::path_text(path);
+    } catch (const fs::filesystem_error&) {
+        fail("Cannot convert controls input path to UTF-8.");
+    }
+    if (!valid_utf8(text)) {
+        fail("Controls input path must be valid UTF-8.");
+    }
+    return text;
+}
+
+[[nodiscard]] std::optional<ControlsSelection> load_controls(Options& options) {
+    if (!options.has_controls) {
+        return std::nullopt;
+    }
+    static_cast<void>(controls_path_text(options.controls));
+    ControlsSelection selected;
+    // Admit the invocation path before resolving anything: canonicalizing its
+    // leaf first would hide a symlink from the shared no-follow reader.
+    const auto result = hammond::tools::read_control_file(options.controls, selected.input);
+    if (result.status != hammond::tools::ControlFileInputStatus::Read) {
+        fail("Cannot load controls: " + result.reason);
+    }
+    std::error_code error;
+    const auto parent = fs::canonical(options.controls.parent_path().empty()
+        ? fs::path(".") : options.controls.parent_path(), error);
+    if (error) {
+        fail("Cannot resolve controls input path: " + error.message());
+    }
+    // Existing ancestor links may resolve, but retain the admitted final leaf.
+    options.controls = parent / options.controls.filename();
+    selected.path = controls_path_text(options.controls);
+    return selected;
+}
+
+void write_json_string(std::ostream& output, std::string_view text) {
+    constexpr char digits[] = "0123456789abcdef";
+    output << '"';
+    for (const char character : text) {
+        const auto byte = static_cast<unsigned char>(character);
+        if (byte == '"' || byte == '\\') {
+            output << '\\' << static_cast<char>(byte);
+        } else if (byte < 0x20U) {
+            output << "\\u00" << digits[byte >> 4U] << digits[byte & 0x0fU];
+        } else {
+            output << static_cast<char>(byte);
+        }
+    }
+    output << '"';
 }
 
 struct AbsoluteEvent {
@@ -716,7 +791,8 @@ void encode_pcm(std::span<const float> samples, std::span<std::uint8_t> bytes,
 
 [[nodiscard]] std::string summary(const Options& options, const hammond::RuntimeProfile& profile,
                                    const Metrics& metrics, std::string_view status,
-                                   const std::optional<SourceLeakageSelection>& source_leakage) {
+                                   const std::optional<SourceLeakageSelection>& source_leakage,
+                                   const std::optional<ControlsSelection>& controls) {
     const double rms = static_cast<double>(std::sqrt(
         metrics.sum_squares / static_cast<long double>(options.frames)));
     std::ostringstream json;
@@ -724,7 +800,7 @@ void encode_pcm(std::span<const float> samples, std::span<std::uint8_t> bytes,
     const auto pedal_identity = hammond::compiled_pedal_identity();
     json << std::setprecision(std::numeric_limits<double>::max_digits10)
          << "{\"status\":\"" << status << "\",\"model\":\"ideal-shared-sine-v1\","
-         << "\"render_schema_version\":" << (source_leakage ? 5 : 3)
+         << "\"render_schema_version\":" << (controls ? 6 : source_leakage ? 5 : 3)
          << ",\"contact_model\":\""
          << hammond::contact_model_id(options.contact_mode)
          << "\",\"percussion_model\":\"" << hammond::kPercussionModelId << "\","
@@ -777,11 +853,22 @@ void encode_pcm(std::span<const float> samples, std::span<std::uint8_t> bytes,
              << (configuration.edge_count == 0 && configuration.input_gain == 1.0
                  ? "true" : "false");
     }
+    if (controls) {
+        json << ",\"controls\":{\"schema_version\":1,"
+             << "\"restore_policy\":\"full-state-including-expression\",\"path\":";
+        write_json_string(json, controls->path);
+        json << ",\"source_version\":" << controls->input.source_version
+             << ",\"source_bytes\":" << controls->input.source_bytes
+             << ",\"canonical_b3controls4\":";
+        write_json_string(json, controls->input.canonical_controls);
+        json << '}';
+    }
     json << '}';
     return json.str();
 }
 
 int render(Options options) {
+    const auto controls = load_controls(options);
     preflight_paths(options);
     hammond::RuntimeProfile profile;
     std::string error;
@@ -821,32 +908,42 @@ int render(Options options) {
         }
         source_leakage->configuration = engine.source_leakage_configuration();
     }
-    std::array<hammond::Event, hammond::kDrawbarCount + 4 + hammond::kPedalDrawbarCount>
-        initial_controls{};
-    for (std::size_t i = 0; i < options.drawbars.size(); ++i) {
-        initial_controls[i] = {0, hammond::EventType::Drawbar, hammond::Manual::Upper,
-                               static_cast<std::uint8_t>(i), static_cast<double>(options.drawbars[i])};
-    }
-    // These controls follow registration and precede all scored events. Later
-    // score automation, including frame zero, therefore overrides CLI defaults.
-    const std::array<double, 4> percussion_values{
-        options.percussion.enabled ? 1.0 : 0.0,
-        options.percussion.harmonic == hammond::PercussionHarmonic::Third ? 1.0 : 0.0,
-        options.percussion.volume == hammond::PercussionVolume::Soft ? 1.0 : 0.0,
-        options.percussion.decay == hammond::PercussionDecay::Fast ? 1.0 : 0.0};
-    for (std::size_t i = 0; i < percussion_values.size(); ++i) {
-        initial_controls[hammond::kDrawbarCount + i] = {
-            0, hammond::EventType::Percussion, hammond::Manual::Upper,
-            static_cast<std::uint8_t>(i), percussion_values[i]};
-    }
-    for (std::size_t i = 0; i < options.pedal_drawbars.size(); ++i) {
-        initial_controls[hammond::kDrawbarCount + percussion_values.size() + i] = {
-            0, hammond::EventType::PedalDrawbar, hammond::Manual::Lower,
-            static_cast<std::uint8_t>(i), static_cast<double>(options.pedal_drawbars[i])};
-    }
-    const auto flushed = engine.process(0, {}, initial_controls);
-    if (!flushed || flushed.events_consumed != initial_controls.size() || engine.frame_clock() != 0) {
-        fail("Engine rejected initial zero-frame controls.");
+    if (controls) {
+        // Restore the whole snapshot while stopped. Do not flush any default
+        // setters afterward; even silent/hidden fields and signed zero belong
+        // to this initial identity. Scored events are applied only below.
+        if (engine.frame_clock() != 0 || !engine.restore_controls(controls->input.controls) ||
+            engine.frame_clock() != 0) {
+            fail("Engine rejected initial controls restoration at frame zero.");
+        }
+    } else {
+        std::array<hammond::Event, hammond::kDrawbarCount + 4 + hammond::kPedalDrawbarCount>
+            initial_controls{};
+        for (std::size_t i = 0; i < options.drawbars.size(); ++i) {
+            initial_controls[i] = {0, hammond::EventType::Drawbar, hammond::Manual::Upper,
+                                   static_cast<std::uint8_t>(i), static_cast<double>(options.drawbars[i])};
+        }
+        // These controls follow registration and precede all scored events. Later
+        // score automation, including frame zero, therefore overrides CLI defaults.
+        const std::array<double, 4> percussion_values{
+            options.percussion.enabled ? 1.0 : 0.0,
+            options.percussion.harmonic == hammond::PercussionHarmonic::Third ? 1.0 : 0.0,
+            options.percussion.volume == hammond::PercussionVolume::Soft ? 1.0 : 0.0,
+            options.percussion.decay == hammond::PercussionDecay::Fast ? 1.0 : 0.0};
+        for (std::size_t i = 0; i < percussion_values.size(); ++i) {
+            initial_controls[hammond::kDrawbarCount + i] = {
+                0, hammond::EventType::Percussion, hammond::Manual::Upper,
+                static_cast<std::uint8_t>(i), percussion_values[i]};
+        }
+        for (std::size_t i = 0; i < options.pedal_drawbars.size(); ++i) {
+            initial_controls[hammond::kDrawbarCount + percussion_values.size() + i] = {
+                0, hammond::EventType::PedalDrawbar, hammond::Manual::Lower,
+                static_cast<std::uint8_t>(i), static_cast<double>(options.pedal_drawbars[i])};
+        }
+        const auto flushed = engine.process(0, {}, initial_controls);
+        if (!flushed || flushed.events_consumed != initial_controls.size() || engine.frame_clock() != 0) {
+            fail("Engine rejected initial zero-frame controls.");
+        }
     }
     std::vector<float> mono(options.block_size);
     std::vector<std::uint8_t> pcm(static_cast<std::size_t>(options.block_size) * kBytesPerFrame);
@@ -903,7 +1000,7 @@ int render(Options options) {
     output.finish();
     const bool clip_failure = options.fail_on_clip && metrics.clipped_frames != 0;
     const auto report = summary(options, profile, metrics, clip_failure ? "clipped" : "ok",
-                                source_leakage);
+                                source_leakage, controls);
     if (!clip_failure) {
         output.publish(options.output);
     }
@@ -934,6 +1031,7 @@ static int renderer_main(int argc, char* argv[]) {
                 "  --pedal-drawbars NN            (two digits 0..8; default 00)\n"
                 "  --note 36..96                  (default 60; incompatible with --events)\n"
                 "  --events FILE                  (absolute events replace the default note)\n"
+                "  --controls FILE                (restore full saved state, including expression)\n"
                 "  --contacts ideal|nominal        (default ideal; nominal travel is unmeasured)\n"
                 "  --percussion off|second|third    (default off; upper-B route only)\n"
                 "  --percussion-volume normal|soft (default normal)\n"
@@ -961,6 +1059,8 @@ static int renderer_main(int argc, char* argv[]) {
                 "Initial percussion then pedal controls follow drawbars; score events take precedence.\n"
                 "JSON schema 3 identifies source, console and nominal pedal models with map hashes.\n"
                 "Selecting leakage uses schema 5 with its provenance, explicit gain and guarded bound.\n"
+                "Controls use schema 6 with initial canonical state4 provenance; suffix does not change scope.\n"
+                "Controls conflict with explicit drawbar/pedal/percussion flags; score events take precedence.\n"
                 "Leakage gain is never reduced automatically; unsafe headroom rejects before output.\n";
             std::cout.flush();
             if (!std::cout) {

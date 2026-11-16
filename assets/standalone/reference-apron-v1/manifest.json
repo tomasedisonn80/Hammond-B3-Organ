@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "identity": "standalone-reference-apron-v1",
+  "evidence_class": "User-supplied generated design concept; decorative source pixels only; not an application capture or calibrated physical geometry.",
+  "rights": "Derived only from the unchanged user-supplied atlas already retained in this repository; no new external artwork acquired. Upstream publication-rights clearance remains the existing project gate.",
+  "source": {
+    "file": "docs/design/atlas-cover-reference.jpg",
+    "bytes": 412664,
+    "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "width": 1672,
+    "height": 941,
+    "decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+    "pdf": "Hammond_B3_Leslie_Research_Atlas_500pp.pdf",
+    "pdf_sha256": "4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769",
+    "pdf_pages": [
+      1,
+      409
+    ],
+    "pdf_image_object": 3
+  },
+  "authoring": {
+    "tool": "tools/compile_reference_apron.py",
+    "tool_version": 1,
+    "python": "3.12.14",
+    "pillow": "13.0.0",
+    "libjpeg_api": "6.2",
+    "libjpeg_turbo": "3.2.0",
+    "zlib_compile": "1.3.2",
+    "zlib_runtime": "1.3.2"
+  },
+  "pixels": {
+    "format": "RGBA8",
+    "channels": [
+      "R",
+      "G",
+      "B",
+      "A"
+    ],
+    "component_bits": 8,
+    "order": "row-major, top-to-bottom, left-to-right",
+    "row_padding": 0,
+    "alpha": "straight; binary 0 or 255",
+    "decode": "Pillow Image.open JPEG defaults, load(), convert(\"RGB\"); no ICC transform, EXIF transpose or resampling",
+    "mask_rule": "Inside half-open crop-local H, all four bytes are zero; outside H, original source RGB and alpha 255."
+  },
+  "compression": {
+    "format": "gzip",
+    "level": 9,
+    "mtime": 0,
+    "filename": "",
+    "os_byte": 255,
+    "members": 1
+  },
+  "asset": {
+    "name": "reference-apron",
+    "cpp_symbol": "kApron",
+    "file": "apron.rgba.gz",
+    "source_rect": [
+      16,
+      887,
+      1640,
+      54
+    ],
+    "hole_rect": [
+      32,
+      2,
+      1556,
+      36
+    ],
+    "width": 1640,
+    "height": 54,
+    "pitch": 6560,
+    "pixel_bytes": 354240,
+    "pixel_sha256": "2646c6fe3fd813ae2907fb04dafacf504309247656860b7161d12ff2f85ded13",
+    "opaque_texels": 32544,
+    "zero_texels": 56016,
+    "bytes": 61162,
+    "sha256": "87387e6c0bbd54012f0e0b23560175781a6515483b047822e4b64e4adfaac06c"
+  }
+}

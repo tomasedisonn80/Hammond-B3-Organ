@@ -1,6 +1,7 @@
 #include "Drawing.h"
 #include "FontData.h"
 #include "ReferenceArtData.h"
+#include "ReferenceApronData.h"
 
 #include <algorithm>
 #include <cmath>
@@ -188,6 +189,27 @@ void quad_rows(const UiQuad& shape, const PixelRaster& raster, Paint paint) noex
     return texture;
 }
 
+[[nodiscard]] SDL_Texture* make_apron(SDL_Renderer* renderer,
+                                      const reference_apron::RgbaImage& art) noexcept {
+    if (art.width <= 0 || art.height <= 0 || art.width > 8192 || art.height > 8192 ||
+        art.pitch != art.width * 4 || art.pixels == nullptr ||
+        art.byte_count != static_cast<std::size_t>(art.pitch) * static_cast<std::size_t>(art.height)) {
+        return nullptr;
+    }
+    auto* texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32,
+        SDL_TEXTUREACCESS_STATIC, art.width, art.height);
+    if (texture == nullptr) return nullptr;
+    if (SDL_UpdateTexture(texture, nullptr, art.pixels, art.pitch) != 0 ||
+        SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND) != 0 ||
+        SDL_SetTextureColorMod(texture, 255, 255, 255) != 0 ||
+        SDL_SetTextureAlphaMod(texture, 255) != 0 ||
+        SDL_SetTextureScaleMode(texture, SDL_ScaleModeNearest) != 0) {
+        SDL_DestroyTexture(texture);
+        return nullptr;
+    }
+    return texture;
+}
+
 } // namespace
 
 Drawing::~Drawing() {
@@ -196,6 +218,7 @@ Drawing::~Drawing() {
     SDL_DestroyTexture(cabinet_);
     SDL_DestroyTexture(left_wood_);
     SDL_DestroyTexture(right_wood_);
+    SDL_DestroyTexture(apron_);
 }
 
 bool Drawing::initialize(std::string& error) {
@@ -224,6 +247,7 @@ bool Drawing::initialize(std::string& error) {
     cabinet_ = make_art(renderer_, hammond::standalone::reference_art::kCabinet);
     left_wood_ = make_art(renderer_, hammond::standalone::reference_art::kLeftWoodCheek);
     right_wood_ = make_art(renderer_, hammond::standalone::reference_art::kRightWoodCheek);
+    apron_ = make_apron(renderer_, reference_apron::kApron);
     error.clear();
     return true;
 }
@@ -372,6 +396,12 @@ bool Drawing::reference_art(ReferenceArt art, UiRect bounds) const noexcept {
     if (texture == nullptr || !(bounds.width > 0.0F && bounds.height > 0.0F)) return false;
     const SDL_FRect target{bounds.x, bounds.y, bounds.width, bounds.height};
     return SDL_RenderCopyF(renderer_, texture, nullptr, &target) == 0;
+}
+
+bool Drawing::apron_art(UiRect bounds) const noexcept {
+    if (apron_ == nullptr || !valid_surface(bounds)) return false;
+    const SDL_FRect target{bounds.x, bounds.y, bounds.width, bounds.height};
+    return SDL_RenderCopyF(renderer_, apron_, nullptr, &target) == 0;
 }
 
 float Drawing::text_width(std::string_view value, float size, TextFace face) const noexcept {

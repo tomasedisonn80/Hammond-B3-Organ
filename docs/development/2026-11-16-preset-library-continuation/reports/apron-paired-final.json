@@ -1,0 +1,2218 @@
+{
+  "schema": 1,
+  "protocol": "reference-apron-independent-raster-admission-v1",
+  "status": "passed",
+  "observed_utc": "2026-11-16T11:46:19.189498+00:00",
+  "cwd": "/workspace/scratch/3edffb787db3/Hammond-B3-Organ",
+  "command": [
+    "tools/check_reference_apron_raster.py",
+    "--repo",
+    ".",
+    "--report",
+    "../a23-apron/paired-final.json",
+    "--progress"
+  ],
+  "scope": "Frozen25 genuine-before/candidate/unavailable; dummy SDL software pixels only",
+  "checker_sha256": "b10581af7de479fcc7f49960780e0d24cdeecc33f5a7e456eb0edfbde336e118",
+  "receipt_sha256": "bcdc5abd8fc0639b6383ced84e3adc43347d2294d8be8f06b23145a69e3bfe35",
+  "baseline_main": "54df95fe343d417dd89bb7a91f85e4f51c08dfe7",
+  "source_sha256": {
+    "apps/standalone/native_tests/test_standalone_reference_apron_raster.cpp": "59cecf6ba99bf9361f506954758a500845f2298bf934ceef27ba69d995743f73",
+    "docs/design/reference-apron-fixtures.json": "6a75548862cd7d313e07b7a21827f5acfd3d97533e02e7fccecf73611d7d832e",
+    "docs/design/REFERENCE_APRON_CONTRACT.md": "c07c08895d8f985a95c34630ddc19c51ed1a3d3771cac4918a614de90bc879d0",
+    "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "docs/design/atlas-reference.json": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+    "apps/standalone/Drawing.cpp": "666e998cc61a9d501238783c8f2917d9be30db0bac76739f91bc23eb54f34b0a",
+    "apps/standalone/Drawing.h": "36663f449abfbf01c755b8ab718b2a75252709b68ed38df9452d446ea82289f3",
+    "apps/standalone/InstrumentView.cpp": "63bede9eb5fccde155d6d6ddfbbcbfa7566ab06dcf2726d92b84bc7ad0e72a77",
+    "apps/standalone/InstrumentView.h": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+    "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+    "assets/standalone/reference-apron-v1/manifest.json": "41a8a503a8cef8c1df102599de83f6c2a3cf86c23cb2fbc8eedb18a6e52670d8",
+    "apps/standalone/native_tests/reference_apron_unavailable_texture.cpp": "a961981834c279397e25275c569c61fe08daee0747f3559db4a5ca839b1b37ce",
+    "tools/compile_reference_apron.py": "13d8fbbeafb482332d7be4909ad8e2338632bd98797813233c84289ca3b57aac"
+  },
+  "executables": {
+    "before": {
+      "path": "/workspace/scratch/3edffb787db3/baseline-native/test_standalone_reference_apron_raster",
+      "sha256": "8391cb06222f7f9eb61381f86631dce364752022dbc4faa14c22fab4ae7f35e6",
+      "bytes": 3448400
+    },
+    "candidate": {
+      "path": "/workspace/scratch/3edffb787db3/build-native/apps/standalone/test_standalone_reference_apron_raster",
+      "sha256": "0a7b2d506edbf8bc47ddbda8592d59b721e60e050d487b89cb0da6a2c1117ac3",
+      "bytes": 3800816
+    },
+    "unavailable": {
+      "path": "/workspace/scratch/3edffb787db3/build-native/apps/standalone/test_standalone_reference_apron_unavailable",
+      "sha256": "2577977a4e95049a1f072c03c9210dd4113047eabe99a4176ab886154d1aa83f",
+      "bytes": 3800936
+    }
+  },
+  "decoder": {
+    "python": "3.12.14",
+    "pillow": "13.0.0",
+    "numpy": "2.3.5",
+    "full_source_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb"
+  },
+  "lists": {
+    "before": {
+      "bytes": 12489,
+      "sha256": "be9bacfd9bfa3b53a0f60eaaf37fd5ccb811babcf556ad94b9c79fe536c51793"
+    },
+    "candidate": {
+      "bytes": 12489,
+      "sha256": "be9bacfd9bfa3b53a0f60eaaf37fd5ccb811babcf556ad94b9c79fe536c51793"
+    },
+    "unavailable": {
+      "bytes": 12489,
+      "sha256": "be9bacfd9bfa3b53a0f60eaaf37fd5ccb811babcf556ad94b9c79fe536c51793"
+    }
+  },
+  "cases": [
+    {
+      "case": 0,
+      "contract_case": 1,
+      "name": "reference-1672x941",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "bae62a339b951d027438e0becb79f97fb5f0c6ba22da9af2bbbdfb8f5d59074a",
+          "rgba_sha256": "e91d61c60458e161d0dba087a8a681afebde4904884fd6220ee99acdb607bfe1",
+          "header_bytes": 4121,
+          "rgba_bytes": 6293408
+        },
+        "candidate": {
+          "header_sha256": "bae62a339b951d027438e0becb79f97fb5f0c6ba22da9af2bbbdfb8f5d59074a",
+          "rgba_sha256": "54d71ccf1e3dd99021eaff2be89dab7d2e6324e86edca7d432a70de4297cef74",
+          "header_bytes": 4121,
+          "rgba_bytes": 6293408
+        },
+        "unavailable": {
+          "header_sha256": "bae62a339b951d027438e0becb79f97fb5f0c6ba22da9af2bbbdfb8f5d59074a",
+          "rgba_sha256": "e91d61c60458e161d0dba087a8a681afebde4904884fd6220ee99acdb607bfe1",
+          "header_bytes": 4121,
+          "rgba_bytes": 6293408
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "allowed_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "apron_center_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "footer_center_box": [
+          48,
+          889,
+          1604,
+          925
+        ],
+        "frame_pixels": 1573352,
+        "visible_pixels": 1573352,
+        "allowed_pixels": 88560,
+        "apron_center_pixels": 88560,
+        "visible_exterior_pixels": 1484792,
+        "visible_outside_allowance_pixels": 1484792,
+        "protected_outside_pixels": 1484792,
+        "footer_center_pixels": 56016,
+        "footer_visible_center_pixels": 56016
+      },
+      "comparison": {
+        "changed_pixels": 32542,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 1,
+      "contract_case": 2,
+      "name": "minimum-active-1400x820",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "c973643858e22b03de9ee1a1908d0c78bf15643e92e9f8ef36d2709e1de61241",
+          "rgba_sha256": "60eefb6006ec2a6c41758b459deea2ee95c809ea2aff271ed83ec404f84f81c4",
+          "header_bytes": 4578,
+          "rgba_bytes": 4592000
+        },
+        "candidate": {
+          "header_sha256": "c973643858e22b03de9ee1a1908d0c78bf15643e92e9f8ef36d2709e1de61241",
+          "rgba_sha256": "7a908a818f4c91e389db20deb1a09231f0a14fad9e7e928c7e81b9ac77036b5a",
+          "header_bytes": 4578,
+          "rgba_bytes": 4592000
+        },
+        "unavailable": {
+          "header_sha256": "c973643858e22b03de9ee1a1908d0c78bf15643e92e9f8ef36d2709e1de61241",
+          "rgba_sha256": "60eefb6006ec2a6c41758b459deea2ee95c809ea2aff271ed83ec404f84f81c4",
+          "header_bytes": 4578,
+          "rgba_bytes": 4592000
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          13.39712905883789,
+          772.9436645507812,
+          1386.6029052734375,
+          820.0
+        ],
+        "mapped_F_edges": [
+          40.19138717651367,
+          774.6865234375,
+          1343.0621337890625,
+          806.0574340820312
+        ],
+        "visible_box": [
+          0,
+          0,
+          1400,
+          820
+        ],
+        "allowed_box": [
+          13,
+          772,
+          1387,
+          820
+        ],
+        "apron_center_box": [
+          13,
+          773,
+          1387,
+          820
+        ],
+        "footer_center_box": [
+          40,
+          775,
+          1343,
+          806
+        ],
+        "frame_pixels": 1148000,
+        "visible_pixels": 1148000,
+        "allowed_pixels": 65952,
+        "apron_center_pixels": 64578,
+        "visible_exterior_pixels": 1083422,
+        "visible_outside_allowance_pixels": 1082048,
+        "protected_outside_pixels": 1082048,
+        "footer_center_pixels": 40393,
+        "footer_visible_center_pixels": 40393
+      },
+      "comparison": {
+        "changed_pixels": 22977,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 2,
+      "contract_case": 3,
+      "name": "large-1920x1080",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "bb71ed09b4bda68badd80017926753eca45fcc4421f710426a2f72d8cd1eb82b",
+          "rgba_sha256": "e335a0637a7844432fe50463935bd5608604972955a646a52ee4973304a094dc",
+          "header_bytes": 4574,
+          "rgba_bytes": 8294400
+        },
+        "candidate": {
+          "header_sha256": "bb71ed09b4bda68badd80017926753eca45fcc4421f710426a2f72d8cd1eb82b",
+          "rgba_sha256": "6e6709a4fb599581f081a379bd11f036cab6cea87e4b59fbde4f5a6289ba2c22",
+          "header_bytes": 4574,
+          "rgba_bytes": 8294400
+        },
+        "unavailable": {
+          "header_sha256": "bb71ed09b4bda68badd80017926753eca45fcc4421f710426a2f72d8cd1eb82b",
+          "rgba_sha256": "e335a0637a7844432fe50463935bd5608604972955a646a52ee4973304a094dc",
+          "header_bytes": 4574,
+          "rgba_bytes": 8294400
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          18.373205184936523,
+          1018.0233764648438,
+          1901.626708984375,
+          1080.0
+        ],
+        "mapped_F_edges": [
+          55.11961364746094,
+          1020.31884765625,
+          1841.913818359375,
+          1061.6365966796875
+        ],
+        "visible_box": [
+          0,
+          0,
+          1920,
+          1080
+        ],
+        "allowed_box": [
+          18,
+          1018,
+          1902,
+          1080
+        ],
+        "apron_center_box": [
+          18,
+          1018,
+          1902,
+          1080
+        ],
+        "footer_center_box": [
+          55,
+          1020,
+          1842,
+          1062
+        ],
+        "frame_pixels": 2073600,
+        "visible_pixels": 2073600,
+        "allowed_pixels": 116808,
+        "apron_center_pixels": 116808,
+        "visible_exterior_pixels": 1956792,
+        "visible_outside_allowance_pixels": 1956792,
+        "protected_outside_pixels": 1956792,
+        "footer_center_pixels": 75054,
+        "footer_visible_center_pixels": 75054
+      },
+      "comparison": {
+        "changed_pixels": 39999,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 3,
+      "contract_case": 4,
+      "name": "wide-2200x820",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "96a56c085a9cb366d5e5d69fbddf7f490061fa04daeb377479aedcdbf95aed50",
+          "rgba_sha256": "dd2130c2881972932466b99ec87b1a86711bcc7b422efef24e7e8f5b99d340ce",
+          "header_bytes": 4563,
+          "rgba_bytes": 7216000
+        },
+        "candidate": {
+          "header_sha256": "96a56c085a9cb366d5e5d69fbddf7f490061fa04daeb377479aedcdbf95aed50",
+          "rgba_sha256": "9179ba74ec56979e2b9463086e4c0975ea8aa535ad038fe61b64dc67f055febf",
+          "header_bytes": 4563,
+          "rgba_bytes": 7216000
+        },
+        "unavailable": {
+          "header_sha256": "96a56c085a9cb366d5e5d69fbddf7f490061fa04daeb377479aedcdbf95aed50",
+          "rgba_sha256": "dd2130c2881972932466b99ec87b1a86711bcc7b422efef24e7e8f5b99d340ce",
+          "header_bytes": 4563,
+          "rgba_bytes": 7216000
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          21.052631378173828,
+          772.9436645507812,
+          2178.947265625,
+          820.0
+        ],
+        "mapped_F_edges": [
+          63.157894134521484,
+          774.6865234375,
+          2110.5263671875,
+          806.0574340820312
+        ],
+        "visible_box": [
+          0,
+          0,
+          2200,
+          820
+        ],
+        "allowed_box": [
+          21,
+          772,
+          2179,
+          820
+        ],
+        "apron_center_box": [
+          21,
+          773,
+          2179,
+          820
+        ],
+        "footer_center_box": [
+          63,
+          775,
+          2111,
+          806
+        ],
+        "frame_pixels": 1804000,
+        "visible_pixels": 1804000,
+        "allowed_pixels": 103584,
+        "apron_center_pixels": 101426,
+        "visible_exterior_pixels": 1702574,
+        "visible_outside_allowance_pixels": 1700416,
+        "protected_outside_pixels": 1700416,
+        "footer_center_pixels": 63488,
+        "footer_visible_center_pixels": 63488
+      },
+      "comparison": {
+        "changed_pixels": 36037,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 4,
+      "contract_case": 5,
+      "name": "tall-1400x1100",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "b4b13f63cdff961d0d77399e18903f01f0ba0d75e3a88fdc993b5a1d5bdea0ea",
+          "rgba_sha256": "d95fb12df9b55497db63a03b8010e1362f109911ee2fa138746c28face788dc4",
+          "header_bytes": 4569,
+          "rgba_bytes": 6160000
+        },
+        "candidate": {
+          "header_sha256": "b4b13f63cdff961d0d77399e18903f01f0ba0d75e3a88fdc993b5a1d5bdea0ea",
+          "rgba_sha256": "0c3bba151887c0711c8960dced33acd5cbe10f2970261d4c82d750514348ed61",
+          "header_bytes": 4569,
+          "rgba_bytes": 6160000
+        },
+        "unavailable": {
+          "header_sha256": "b4b13f63cdff961d0d77399e18903f01f0ba0d75e3a88fdc993b5a1d5bdea0ea",
+          "rgba_sha256": "d95fb12df9b55497db63a03b8010e1362f109911ee2fa138746c28face788dc4",
+          "header_bytes": 4569,
+          "rgba_bytes": 6160000
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          13.39712905883789,
+          1036.8756103515625,
+          1386.6029052734375,
+          1100.0
+        ],
+        "mapped_F_edges": [
+          40.19138717651367,
+          1039.213623046875,
+          1343.0621337890625,
+          1081.2965087890625
+        ],
+        "visible_box": [
+          0,
+          0,
+          1400,
+          1100
+        ],
+        "allowed_box": [
+          13,
+          1036,
+          1387,
+          1100
+        ],
+        "apron_center_box": [
+          13,
+          1037,
+          1387,
+          1100
+        ],
+        "footer_center_box": [
+          40,
+          1039,
+          1343,
+          1081
+        ],
+        "frame_pixels": 1540000,
+        "visible_pixels": 1540000,
+        "allowed_pixels": 87936,
+        "apron_center_pixels": 86562,
+        "visible_exterior_pixels": 1453438,
+        "visible_outside_allowance_pixels": 1452064,
+        "protected_outside_pixels": 1452064,
+        "footer_center_pixels": 54726,
+        "footer_visible_center_pixels": 54726
+      },
+      "comparison": {
+        "changed_pixels": 31930,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 5,
+      "contract_case": 6,
+      "name": "scale-1.5",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "b15b28fd2e0d1f92c7a7d26834e4ddac8debc633dfa270db157ea04381929fcd",
+          "rgba_sha256": "8772b7e80e16811b700537889dd5c0de9c5ec517001fa7b7764fd4f090f6ef39",
+          "header_bytes": 4120,
+          "rgba_bytes": 14165184
+        },
+        "candidate": {
+          "header_sha256": "b15b28fd2e0d1f92c7a7d26834e4ddac8debc633dfa270db157ea04381929fcd",
+          "rgba_sha256": "30022b076d3f457582284d7987dc4f073316fb877e38e8234d57721774f0dd5c",
+          "header_bytes": 4120,
+          "rgba_bytes": 14165184
+        },
+        "unavailable": {
+          "header_sha256": "b15b28fd2e0d1f92c7a7d26834e4ddac8debc633dfa270db157ea04381929fcd",
+          "rgba_sha256": "8772b7e80e16811b700537889dd5c0de9c5ec517001fa7b7764fd4f090f6ef39",
+          "header_bytes": 4120,
+          "rgba_bytes": 14165184
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          24.0,
+          1330.5,
+          2484.0,
+          1411.5
+        ],
+        "mapped_F_edges": [
+          72.0,
+          1333.5,
+          2406.0,
+          1387.5
+        ],
+        "visible_box": [
+          0,
+          0,
+          2508,
+          1412
+        ],
+        "allowed_box": [
+          24,
+          1330,
+          2484,
+          1412
+        ],
+        "apron_center_box": [
+          24,
+          1330,
+          2484,
+          1411
+        ],
+        "footer_center_box": [
+          72,
+          1333,
+          2406,
+          1387
+        ],
+        "frame_pixels": 3541296,
+        "visible_pixels": 3541296,
+        "allowed_pixels": 201720,
+        "apron_center_pixels": 199260,
+        "visible_exterior_pixels": 3342036,
+        "visible_outside_allowance_pixels": 3339576,
+        "protected_outside_pixels": 3339576,
+        "footer_center_pixels": 126036,
+        "footer_visible_center_pixels": 126036
+      },
+      "comparison": {
+        "changed_pixels": 73222,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 6,
+      "contract_case": 7,
+      "name": "scale-2",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "afc9203674d422adc5f3d5e2b3858bd343fecfeeaeb6a2edf63bfb284d06cf97",
+          "rgba_sha256": "ac481fbceceea1dc1ae6fd7b8c17d85b8edbee4262655bff0a59f89eb258d2b2",
+          "header_bytes": 4114,
+          "rgba_bytes": 25173632
+        },
+        "candidate": {
+          "header_sha256": "afc9203674d422adc5f3d5e2b3858bd343fecfeeaeb6a2edf63bfb284d06cf97",
+          "rgba_sha256": "50a2936e3ab573a95de3d886b2919db91fad10804a5f805ec65162995875297a",
+          "header_bytes": 4114,
+          "rgba_bytes": 25173632
+        },
+        "unavailable": {
+          "header_sha256": "afc9203674d422adc5f3d5e2b3858bd343fecfeeaeb6a2edf63bfb284d06cf97",
+          "rgba_sha256": "ac481fbceceea1dc1ae6fd7b8c17d85b8edbee4262655bff0a59f89eb258d2b2",
+          "header_bytes": 4114,
+          "rgba_bytes": 25173632
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          32.0,
+          1774.0,
+          3312.0,
+          1882.0
+        ],
+        "mapped_F_edges": [
+          96.0,
+          1778.0,
+          3208.0,
+          1850.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          3344,
+          1882
+        ],
+        "allowed_box": [
+          32,
+          1774,
+          3312,
+          1882
+        ],
+        "apron_center_box": [
+          32,
+          1774,
+          3312,
+          1882
+        ],
+        "footer_center_box": [
+          96,
+          1778,
+          3208,
+          1850
+        ],
+        "frame_pixels": 6293408,
+        "visible_pixels": 6293408,
+        "allowed_pixels": 354240,
+        "apron_center_pixels": 354240,
+        "visible_exterior_pixels": 5939168,
+        "visible_outside_allowance_pixels": 5939168,
+        "protected_outside_pixels": 5939168,
+        "footer_center_pixels": 224064,
+        "footer_visible_center_pixels": 224064
+      },
+      "comparison": {
+        "changed_pixels": 130174,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 7,
+      "contract_case": 8,
+      "name": "scale-1.25x1.5",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "7100b803b2d3f63772eb62881027f8afdcd2584148907152fa983fbda27522e6",
+          "rgba_sha256": "4410cf60ad94a6f08cf3bf214aaf1796fa153a2c2d91d6efd2acb30dfccb2baf",
+          "header_bytes": 4126,
+          "rgba_bytes": 11804320
+        },
+        "candidate": {
+          "header_sha256": "7100b803b2d3f63772eb62881027f8afdcd2584148907152fa983fbda27522e6",
+          "rgba_sha256": "7e80d2c84de7d2b34fc819cda8ec62a7c6a69e6cf013d47372771607ed79a541",
+          "header_bytes": 4126,
+          "rgba_bytes": 11804320
+        },
+        "unavailable": {
+          "header_sha256": "7100b803b2d3f63772eb62881027f8afdcd2584148907152fa983fbda27522e6",
+          "rgba_sha256": "4410cf60ad94a6f08cf3bf214aaf1796fa153a2c2d91d6efd2acb30dfccb2baf",
+          "header_bytes": 4126,
+          "rgba_bytes": 11804320
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          20.0,
+          1330.5,
+          2070.0,
+          1411.5
+        ],
+        "mapped_F_edges": [
+          60.0,
+          1333.5,
+          2005.0,
+          1387.5
+        ],
+        "visible_box": [
+          0,
+          0,
+          2090,
+          1412
+        ],
+        "allowed_box": [
+          20,
+          1330,
+          2070,
+          1412
+        ],
+        "apron_center_box": [
+          20,
+          1330,
+          2070,
+          1411
+        ],
+        "footer_center_box": [
+          60,
+          1333,
+          2005,
+          1387
+        ],
+        "frame_pixels": 2951080,
+        "visible_pixels": 2951080,
+        "allowed_pixels": 168100,
+        "apron_center_pixels": 166050,
+        "visible_exterior_pixels": 2785030,
+        "visible_outside_allowance_pixels": 2782980,
+        "protected_outside_pixels": 2782980,
+        "footer_center_pixels": 105030,
+        "footer_visible_center_pixels": 105030
+      },
+      "comparison": {
+        "changed_pixels": 61017,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 8,
+      "contract_case": 9,
+      "name": "translated-full-companion",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "c9fd08d548ea0862098a1a1f8c6c20f54630a208ebe9583d40fa559e48218895",
+          "rgba_sha256": "8b6a36e0320497adf42304503cc8396198825b38bc3e62fba46c7189db2df93d",
+          "header_bytes": 4139,
+          "rgba_bytes": 14676928
+        },
+        "candidate": {
+          "header_sha256": "c9fd08d548ea0862098a1a1f8c6c20f54630a208ebe9583d40fa559e48218895",
+          "rgba_sha256": "9b6545bdc9f4c3cb8f50dc09135f2bd44363186c58e41b95318ea6b2790d0622",
+          "header_bytes": 4139,
+          "rgba_bytes": 14676928
+        },
+        "unavailable": {
+          "header_sha256": "c9fd08d548ea0862098a1a1f8c6c20f54630a208ebe9583d40fa559e48218895",
+          "rgba_sha256": "8b6a36e0320497adf42304503cc8396198825b38bc3e62fba46c7189db2df93d",
+          "header_bytes": 4139,
+          "rgba_bytes": 14676928
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          37.0,
+          1347.5,
+          2497.0,
+          1428.5
+        ],
+        "mapped_F_edges": [
+          85.0,
+          1350.5,
+          2419.0,
+          1404.5
+        ],
+        "visible_box": [
+          13,
+          17,
+          2521,
+          1431
+        ],
+        "allowed_box": [
+          37,
+          1347,
+          2497,
+          1429
+        ],
+        "apron_center_box": [
+          37,
+          1347,
+          2497,
+          1428
+        ],
+        "footer_center_box": [
+          85,
+          1350,
+          2419,
+          1404
+        ],
+        "frame_pixels": 3669232,
+        "visible_pixels": 3546312,
+        "allowed_pixels": 201720,
+        "apron_center_pixels": 199260,
+        "visible_exterior_pixels": 3347052,
+        "visible_outside_allowance_pixels": 3344592,
+        "protected_outside_pixels": 3467512,
+        "footer_center_pixels": 126036,
+        "footer_visible_center_pixels": 126036
+      },
+      "comparison": {
+        "changed_pixels": 73222,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 9,
+      "contract_case": 10,
+      "name": "translated-clip-left",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "62872b67993adb32242bc21099fa762d30f690632adf3f8764ed7bc28a14bc20",
+          "rgba_sha256": "a23f48c52039e91a1101c26f3b0eba184d1928f486f98ffef3d9ea709d81478c",
+          "header_bytes": 4148,
+          "rgba_bytes": 14676928
+        },
+        "candidate": {
+          "header_sha256": "62872b67993adb32242bc21099fa762d30f690632adf3f8764ed7bc28a14bc20",
+          "rgba_sha256": "a00b23bf85be7e743d44aecff22099482034e12b96f54ad749011283252fe9fb",
+          "header_bytes": 4148,
+          "rgba_bytes": 14676928
+        },
+        "unavailable": {
+          "header_sha256": "62872b67993adb32242bc21099fa762d30f690632adf3f8764ed7bc28a14bc20",
+          "rgba_sha256": "a23f48c52039e91a1101c26f3b0eba184d1928f486f98ffef3d9ea709d81478c",
+          "header_bytes": 4148,
+          "rgba_bytes": 14676928
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          37.0,
+          1347.5,
+          2497.0,
+          1428.5
+        ],
+        "mapped_F_edges": [
+          85.0,
+          1350.5,
+          2419.0,
+          1404.5
+        ],
+        "visible_box": [
+          35,
+          1345,
+          39,
+          1431
+        ],
+        "allowed_box": [
+          37,
+          1347,
+          39,
+          1429
+        ],
+        "apron_center_box": [
+          37,
+          1347,
+          39,
+          1428
+        ],
+        "footer_center_box": [
+          85,
+          1350,
+          2419,
+          1404
+        ],
+        "frame_pixels": 3669232,
+        "visible_pixels": 344,
+        "allowed_pixels": 164,
+        "apron_center_pixels": 162,
+        "visible_exterior_pixels": 182,
+        "visible_outside_allowance_pixels": 180,
+        "protected_outside_pixels": 3669068,
+        "footer_center_pixels": 126036,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 162,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 10,
+      "contract_case": 11,
+      "name": "translated-clip-right",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "89b832d15de86fd1c8015cfa0b23f41f96d7045247de7357f1add6b448398dc1",
+          "rgba_sha256": "fb6e3e07fbdd72749bb1675904ec406e2223abb2b9c3c707996877dfd4d7ce56",
+          "header_bytes": 4155,
+          "rgba_bytes": 14676928
+        },
+        "candidate": {
+          "header_sha256": "89b832d15de86fd1c8015cfa0b23f41f96d7045247de7357f1add6b448398dc1",
+          "rgba_sha256": "6ea4b6b1f7a52d3cfe60961032231dc9cc5fa81daf2c8231e8b99b07b73849b7",
+          "header_bytes": 4155,
+          "rgba_bytes": 14676928
+        },
+        "unavailable": {
+          "header_sha256": "89b832d15de86fd1c8015cfa0b23f41f96d7045247de7357f1add6b448398dc1",
+          "rgba_sha256": "fb6e3e07fbdd72749bb1675904ec406e2223abb2b9c3c707996877dfd4d7ce56",
+          "header_bytes": 4155,
+          "rgba_bytes": 14676928
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          37.0,
+          1347.5,
+          2497.0,
+          1428.5
+        ],
+        "mapped_F_edges": [
+          85.0,
+          1350.5,
+          2419.0,
+          1404.5
+        ],
+        "visible_box": [
+          2495,
+          1345,
+          2499,
+          1431
+        ],
+        "allowed_box": [
+          2495,
+          1347,
+          2497,
+          1429
+        ],
+        "apron_center_box": [
+          2495,
+          1347,
+          2497,
+          1428
+        ],
+        "footer_center_box": [
+          85,
+          1350,
+          2419,
+          1404
+        ],
+        "frame_pixels": 3669232,
+        "visible_pixels": 344,
+        "allowed_pixels": 164,
+        "apron_center_pixels": 162,
+        "visible_exterior_pixels": 182,
+        "visible_outside_allowance_pixels": 180,
+        "protected_outside_pixels": 3669068,
+        "footer_center_pixels": 126036,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 162,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 11,
+      "contract_case": 12,
+      "name": "translated-clip-top",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "69ea554f36ec84371e68ebcd052112105877d30449423fa307dd0591fb6aa67b",
+          "rgba_sha256": "60bb8c40e83bdb656ab89c86b22b5fbdb3b0938f6bdd9c1cf9bee3de5f97f3df",
+          "header_bytes": 4151,
+          "rgba_bytes": 14676928
+        },
+        "candidate": {
+          "header_sha256": "69ea554f36ec84371e68ebcd052112105877d30449423fa307dd0591fb6aa67b",
+          "rgba_sha256": "cfea41ede2c6411f355d418be6867fdac49e6d4e10e258817f721e66c2f8e5e7",
+          "header_bytes": 4151,
+          "rgba_bytes": 14676928
+        },
+        "unavailable": {
+          "header_sha256": "69ea554f36ec84371e68ebcd052112105877d30449423fa307dd0591fb6aa67b",
+          "rgba_sha256": "60bb8c40e83bdb656ab89c86b22b5fbdb3b0938f6bdd9c1cf9bee3de5f97f3df",
+          "header_bytes": 4151,
+          "rgba_bytes": 14676928
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          37.0,
+          1347.5,
+          2497.0,
+          1428.5
+        ],
+        "mapped_F_edges": [
+          85.0,
+          1350.5,
+          2419.0,
+          1404.5
+        ],
+        "visible_box": [
+          35,
+          1345,
+          2499,
+          1349
+        ],
+        "allowed_box": [
+          37,
+          1347,
+          2497,
+          1349
+        ],
+        "apron_center_box": [
+          37,
+          1347,
+          2497,
+          1349
+        ],
+        "footer_center_box": [
+          85,
+          1350,
+          2419,
+          1404
+        ],
+        "frame_pixels": 3669232,
+        "visible_pixels": 9856,
+        "allowed_pixels": 4920,
+        "apron_center_pixels": 4920,
+        "visible_exterior_pixels": 4936,
+        "visible_outside_allowance_pixels": 4936,
+        "protected_outside_pixels": 3664312,
+        "footer_center_pixels": 126036,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 4920,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 12,
+      "contract_case": 13,
+      "name": "translated-clip-bottom",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "1625cb8a3fd1cc26c2703ee46ec92b057b124e56a5120e4d3a28b5cf5f8eb4ab",
+          "rgba_sha256": "aecab4726568a7cf1fa36dd6642b0a85247744529bdc3b5c30412fc6eabcead0",
+          "header_bytes": 4157,
+          "rgba_bytes": 14676928
+        },
+        "candidate": {
+          "header_sha256": "1625cb8a3fd1cc26c2703ee46ec92b057b124e56a5120e4d3a28b5cf5f8eb4ab",
+          "rgba_sha256": "be6e26da624031a5e2b02df2d6db62e3057458d1a59fbc39356832407aab1161",
+          "header_bytes": 4157,
+          "rgba_bytes": 14676928
+        },
+        "unavailable": {
+          "header_sha256": "1625cb8a3fd1cc26c2703ee46ec92b057b124e56a5120e4d3a28b5cf5f8eb4ab",
+          "rgba_sha256": "aecab4726568a7cf1fa36dd6642b0a85247744529bdc3b5c30412fc6eabcead0",
+          "header_bytes": 4157,
+          "rgba_bytes": 14676928
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          37.0,
+          1347.5,
+          2497.0,
+          1428.5
+        ],
+        "mapped_F_edges": [
+          85.0,
+          1350.5,
+          2419.0,
+          1404.5
+        ],
+        "visible_box": [
+          35,
+          1427,
+          2499,
+          1431
+        ],
+        "allowed_box": [
+          37,
+          1427,
+          2497,
+          1429
+        ],
+        "apron_center_box": [
+          37,
+          1427,
+          2497,
+          1428
+        ],
+        "footer_center_box": [
+          85,
+          1350,
+          2419,
+          1404
+        ],
+        "frame_pixels": 3669232,
+        "visible_pixels": 9856,
+        "allowed_pixels": 4920,
+        "apron_center_pixels": 2460,
+        "visible_exterior_pixels": 7396,
+        "visible_outside_allowance_pixels": 4936,
+        "protected_outside_pixels": 3664312,
+        "footer_center_pixels": 126036,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 2460,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 13,
+      "contract_case": 14,
+      "name": "translated-enabled-empty",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "5f35c2f94782cb5d9c505943aff627bf1fc0bd988bbbd87e9c48c147fddac6b4",
+          "rgba_sha256": "5712b07eba917997babd96db62f3c0085dfe264836e72c88a37e1d77165bd7e6",
+          "header_bytes": 4152,
+          "rgba_bytes": 14676928
+        },
+        "candidate": {
+          "header_sha256": "5f35c2f94782cb5d9c505943aff627bf1fc0bd988bbbd87e9c48c147fddac6b4",
+          "rgba_sha256": "5712b07eba917997babd96db62f3c0085dfe264836e72c88a37e1d77165bd7e6",
+          "header_bytes": 4152,
+          "rgba_bytes": 14676928
+        },
+        "unavailable": {
+          "header_sha256": "5f35c2f94782cb5d9c505943aff627bf1fc0bd988bbbd87e9c48c147fddac6b4",
+          "rgba_sha256": "5712b07eba917997babd96db62f3c0085dfe264836e72c88a37e1d77165bd7e6",
+          "header_bytes": 4152,
+          "rgba_bytes": 14676928
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          37.0,
+          1347.5,
+          2497.0,
+          1428.5
+        ],
+        "mapped_F_edges": [
+          85.0,
+          1350.5,
+          2419.0,
+          1404.5
+        ],
+        "visible_box": [
+          37,
+          1347,
+          37,
+          1347
+        ],
+        "allowed_box": [
+          37,
+          1347,
+          37,
+          1347
+        ],
+        "apron_center_box": [
+          37,
+          1347,
+          37,
+          1347
+        ],
+        "footer_center_box": [
+          85,
+          1350,
+          2419,
+          1404
+        ],
+        "frame_pixels": 3669232,
+        "visible_pixels": 0,
+        "allowed_pixels": 0,
+        "apron_center_pixels": 0,
+        "visible_exterior_pixels": 0,
+        "visible_outside_allowance_pixels": 0,
+        "protected_outside_pixels": 3669232,
+        "footer_center_pixels": 126036,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 0,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 14,
+      "contract_case": 15,
+      "name": "translated-disjoint",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "fb8f4d9ce4f306e8728b1972dfb65b8bc339d36e60fc5c38c475f005a5a0c18f",
+          "rgba_sha256": "7a1b387db108f107e7f54bcc85b769a0623662e8905a977f90eb4293e2fffcac",
+          "header_bytes": 4153,
+          "rgba_bytes": 14676928
+        },
+        "candidate": {
+          "header_sha256": "fb8f4d9ce4f306e8728b1972dfb65b8bc339d36e60fc5c38c475f005a5a0c18f",
+          "rgba_sha256": "7a1b387db108f107e7f54bcc85b769a0623662e8905a977f90eb4293e2fffcac",
+          "header_bytes": 4153,
+          "rgba_bytes": 14676928
+        },
+        "unavailable": {
+          "header_sha256": "fb8f4d9ce4f306e8728b1972dfb65b8bc339d36e60fc5c38c475f005a5a0c18f",
+          "rgba_sha256": "7a1b387db108f107e7f54bcc85b769a0623662e8905a977f90eb4293e2fffcac",
+          "header_bytes": 4153,
+          "rgba_bytes": 14676928
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          37.0,
+          1347.5,
+          2497.0,
+          1428.5
+        ],
+        "mapped_F_edges": [
+          85.0,
+          1350.5,
+          2419.0,
+          1404.5
+        ],
+        "visible_box": [
+          113,
+          117,
+          129,
+          133
+        ],
+        "allowed_box": [
+          113,
+          1347,
+          129,
+          1347
+        ],
+        "apron_center_box": [
+          113,
+          1347,
+          129,
+          1347
+        ],
+        "footer_center_box": [
+          85,
+          1350,
+          2419,
+          1404
+        ],
+        "frame_pixels": 3669232,
+        "visible_pixels": 256,
+        "allowed_pixels": 0,
+        "apron_center_pixels": 0,
+        "visible_exterior_pixels": 256,
+        "visible_outside_allowance_pixels": 256,
+        "protected_outside_pixels": 3669232,
+        "footer_center_pixels": 126036,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 0,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 15,
+      "contract_case": 16,
+      "name": "output-cropped-height-880",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "8d2f32e1a8f0725937fe5b5e1e24f55db0d5fc5934336fbeb72ef188193f29e5",
+          "rgba_sha256": "89057f74815061b49a401235c262e4e444f8a938bbacebe8c2f711e1e31d2682",
+          "header_bytes": 4130,
+          "rgba_bytes": 5885440
+        },
+        "candidate": {
+          "header_sha256": "8d2f32e1a8f0725937fe5b5e1e24f55db0d5fc5934336fbeb72ef188193f29e5",
+          "rgba_sha256": "89057f74815061b49a401235c262e4e444f8a938bbacebe8c2f711e1e31d2682",
+          "header_bytes": 4130,
+          "rgba_bytes": 5885440
+        },
+        "unavailable": {
+          "header_sha256": "8d2f32e1a8f0725937fe5b5e1e24f55db0d5fc5934336fbeb72ef188193f29e5",
+          "rgba_sha256": "89057f74815061b49a401235c262e4e444f8a938bbacebe8c2f711e1e31d2682",
+          "header_bytes": 4130,
+          "rgba_bytes": 5885440
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          880
+        ],
+        "allowed_box": [
+          16,
+          887,
+          1656,
+          887
+        ],
+        "apron_center_box": [
+          16,
+          887,
+          1656,
+          887
+        ],
+        "footer_center_box": [
+          48,
+          889,
+          1604,
+          889
+        ],
+        "frame_pixels": 1471360,
+        "visible_pixels": 1471360,
+        "allowed_pixels": 0,
+        "apron_center_pixels": 0,
+        "visible_exterior_pixels": 1471360,
+        "visible_outside_allowance_pixels": 1471360,
+        "protected_outside_pixels": 1471360,
+        "footer_center_pixels": 0,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 0,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 16,
+      "contract_case": 17,
+      "name": "running-meter-dirty-clipped",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "429793765d3ef94271ea87b039ecaa88f77b3a6f75ba96392f414a8ff9ef8aa4",
+          "rgba_sha256": "5b6d5733a68d3807670e96a606b1f093ccdddef32ddca03ebad1b5d8bb082e43",
+          "header_bytes": 4133,
+          "rgba_bytes": 6293408
+        },
+        "candidate": {
+          "header_sha256": "429793765d3ef94271ea87b039ecaa88f77b3a6f75ba96392f414a8ff9ef8aa4",
+          "rgba_sha256": "f2060092396238894e887d92d7b7a6168e48333f5ab9beec8fbfeadadf66fbd9",
+          "header_bytes": 4133,
+          "rgba_bytes": 6293408
+        },
+        "unavailable": {
+          "header_sha256": "429793765d3ef94271ea87b039ecaa88f77b3a6f75ba96392f414a8ff9ef8aa4",
+          "rgba_sha256": "5b6d5733a68d3807670e96a606b1f093ccdddef32ddca03ebad1b5d8bb082e43",
+          "header_bytes": 4133,
+          "rgba_bytes": 6293408
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "allowed_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "apron_center_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "footer_center_box": [
+          48,
+          889,
+          1604,
+          925
+        ],
+        "frame_pixels": 1573352,
+        "visible_pixels": 1573352,
+        "allowed_pixels": 88560,
+        "apron_center_pixels": 88560,
+        "visible_exterior_pixels": 1484792,
+        "visible_outside_allowance_pixels": 1484792,
+        "protected_outside_pixels": 1484792,
+        "footer_center_pixels": 56016,
+        "footer_visible_center_pixels": 56016
+      },
+      "comparison": {
+        "changed_pixels": 32542,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 17,
+      "contract_case": 18,
+      "name": "pending-preset-controls-focus-held",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "73230662728be4701d4009b1c16897aa5ef0bac08436364c268083f8d751d577",
+          "rgba_sha256": "d0e266574b89246efc0065e647aafd8c93ad6ea52763bd1eff801915a9ea252d",
+          "header_bytes": 4134,
+          "rgba_bytes": 6293408
+        },
+        "candidate": {
+          "header_sha256": "73230662728be4701d4009b1c16897aa5ef0bac08436364c268083f8d751d577",
+          "rgba_sha256": "7498c1a0cd5753367a684c00dacdd94cfa36c59867cef246298931395ba374ec",
+          "header_bytes": 4134,
+          "rgba_bytes": 6293408
+        },
+        "unavailable": {
+          "header_sha256": "73230662728be4701d4009b1c16897aa5ef0bac08436364c268083f8d751d577",
+          "rgba_sha256": "d0e266574b89246efc0065e647aafd8c93ad6ea52763bd1eff801915a9ea252d",
+          "header_bytes": 4134,
+          "rgba_bytes": 6293408
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "allowed_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "apron_center_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "footer_center_box": [
+          48,
+          889,
+          1604,
+          925
+        ],
+        "frame_pixels": 1573352,
+        "visible_pixels": 1573352,
+        "allowed_pixels": 88560,
+        "apron_center_pixels": 88560,
+        "visible_exterior_pixels": 1484792,
+        "visible_outside_allowance_pixels": 1484792,
+        "protected_outside_pixels": 1484792,
+        "footer_center_pixels": 56016,
+        "footer_visible_center_pixels": 56016
+      },
+      "comparison": {
+        "changed_pixels": 32542,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 18,
+      "contract_case": 19,
+      "name": "input-recovery-status",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "9045a4d9a02cffe02e3c46d180b070e0131932486fbb35530f3a7eb3bc448913",
+          "rgba_sha256": "ef070c5089a5da482ecf0b28c67ffa23f1f5dba0cc4312aa10a9476ec0cf129a",
+          "header_bytes": 4153,
+          "rgba_bytes": 6293408
+        },
+        "candidate": {
+          "header_sha256": "9045a4d9a02cffe02e3c46d180b070e0131932486fbb35530f3a7eb3bc448913",
+          "rgba_sha256": "30e0139ff660b44c639f7340cbd58708c277258c117803dd28f19646f7431de0",
+          "header_bytes": 4153,
+          "rgba_bytes": 6293408
+        },
+        "unavailable": {
+          "header_sha256": "9045a4d9a02cffe02e3c46d180b070e0131932486fbb35530f3a7eb3bc448913",
+          "rgba_sha256": "ef070c5089a5da482ecf0b28c67ffa23f1f5dba0cc4312aa10a9476ec0cf129a",
+          "header_bytes": 4153,
+          "rgba_bytes": 6293408
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "allowed_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "apron_center_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "footer_center_box": [
+          48,
+          889,
+          1604,
+          925
+        ],
+        "frame_pixels": 1573352,
+        "visible_pixels": 1573352,
+        "allowed_pixels": 88560,
+        "apron_center_pixels": 88560,
+        "visible_exterior_pixels": 1484792,
+        "visible_outside_allowance_pixels": 1484792,
+        "protected_outside_pixels": 1484792,
+        "footer_center_pixels": 56016,
+        "footer_visible_center_pixels": 56016
+      },
+      "comparison": {
+        "changed_pixels": 32542,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 19,
+      "contract_case": 20,
+      "name": "audio-settings-overlay",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "be4e5776fa0a73de4859543296a8f4463b364884918058fa88116cde66c95ea5",
+          "rgba_sha256": "7a97beb60645a1c9f6eb37e502750303b012c683f52f2ae1b07816f963d37580",
+          "header_bytes": 4127,
+          "rgba_bytes": 6293408
+        },
+        "candidate": {
+          "header_sha256": "be4e5776fa0a73de4859543296a8f4463b364884918058fa88116cde66c95ea5",
+          "rgba_sha256": "f7f712857cf11f44ce14f1df7ea6a4b64bf8cbda6e635ad39a708e56d78ae9d1",
+          "header_bytes": 4127,
+          "rgba_bytes": 6293408
+        },
+        "unavailable": {
+          "header_sha256": "be4e5776fa0a73de4859543296a8f4463b364884918058fa88116cde66c95ea5",
+          "rgba_sha256": "7a97beb60645a1c9f6eb37e502750303b012c683f52f2ae1b07816f963d37580",
+          "header_bytes": 4127,
+          "rgba_bytes": 6293408
+        }
+      },
+      "mask": {
+        "active": true,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "allowed_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "apron_center_box": [
+          16,
+          887,
+          1656,
+          941
+        ],
+        "footer_center_box": [
+          48,
+          889,
+          1604,
+          925
+        ],
+        "frame_pixels": 1573352,
+        "visible_pixels": 1573352,
+        "allowed_pixels": 88560,
+        "apron_center_pixels": 88560,
+        "visible_exterior_pixels": 1484792,
+        "visible_outside_allowance_pixels": 1484792,
+        "protected_outside_pixels": 1484792,
+        "footer_center_pixels": 56016,
+        "footer_visible_center_pixels": 56016
+      },
+      "comparison": {
+        "changed_pixels": 32479,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 20,
+      "contract_case": 21,
+      "name": "inactive-width-1399",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "a54c1dd8b9929dff77285129c5eb0c7b329bfa81207d29947c8e6c48960fae8d",
+          "rgba_sha256": "7ef0b27af6ec1fe58c5d9dc561dedc0328d14a3926400bb5e2940990ef2c83d4",
+          "header_bytes": 4246,
+          "rgba_bytes": 5265836
+        },
+        "candidate": {
+          "header_sha256": "a54c1dd8b9929dff77285129c5eb0c7b329bfa81207d29947c8e6c48960fae8d",
+          "rgba_sha256": "7ef0b27af6ec1fe58c5d9dc561dedc0328d14a3926400bb5e2940990ef2c83d4",
+          "header_bytes": 4246,
+          "rgba_bytes": 5265836
+        },
+        "unavailable": {
+          "header_sha256": "a54c1dd8b9929dff77285129c5eb0c7b329bfa81207d29947c8e6c48960fae8d",
+          "rgba_sha256": "7ef0b27af6ec1fe58c5d9dc561dedc0328d14a3926400bb5e2940990ef2c83d4",
+          "header_bytes": 4246,
+          "rgba_bytes": 5265836
+        }
+      },
+      "mask": {
+        "active": false,
+        "mapped_R_edges": [
+          13.38755989074707,
+          887.0,
+          1385.6124267578125,
+          941.0
+        ],
+        "mapped_F_edges": [
+          40.162681579589844,
+          889.0,
+          1342.1029052734375,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1399,
+          941
+        ],
+        "allowed_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "apron_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "footer_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "frame_pixels": 1316459,
+        "visible_pixels": 1316459,
+        "allowed_pixels": 0,
+        "apron_center_pixels": 0,
+        "visible_exterior_pixels": 1316459,
+        "visible_outside_allowance_pixels": 1316459,
+        "protected_outside_pixels": 1316459,
+        "footer_center_pixels": 0,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 0,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 21,
+      "contract_case": 22,
+      "name": "inactive-height-819",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "8a53164c3aa56d7624a30a7ebe0d43995f88daaa2c4344208e1eeb495faf65d2",
+          "rgba_sha256": "c9cb5d4dda7b13915b7e888ed674b59dca841feb3eaa60c9ae86c14dc208625d",
+          "header_bytes": 4496,
+          "rgba_bytes": 5477472
+        },
+        "candidate": {
+          "header_sha256": "8a53164c3aa56d7624a30a7ebe0d43995f88daaa2c4344208e1eeb495faf65d2",
+          "rgba_sha256": "c9cb5d4dda7b13915b7e888ed674b59dca841feb3eaa60c9ae86c14dc208625d",
+          "header_bytes": 4496,
+          "rgba_bytes": 5477472
+        },
+        "unavailable": {
+          "header_sha256": "8a53164c3aa56d7624a30a7ebe0d43995f88daaa2c4344208e1eeb495faf65d2",
+          "rgba_sha256": "c9cb5d4dda7b13915b7e888ed674b59dca841feb3eaa60c9ae86c14dc208625d",
+          "header_bytes": 4496,
+          "rgba_bytes": 5477472
+        }
+      },
+      "mask": {
+        "active": false,
+        "mapped_R_edges": [
+          16.0,
+          772.0010986328125,
+          1656.0,
+          819.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          773.7417602539062,
+          1604.0,
+          805.0744018554688
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          819
+        ],
+        "allowed_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "apron_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "footer_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "frame_pixels": 1369368,
+        "visible_pixels": 1369368,
+        "allowed_pixels": 0,
+        "apron_center_pixels": 0,
+        "visible_exterior_pixels": 1369368,
+        "visible_outside_allowance_pixels": 1369368,
+        "protected_outside_pixels": 1369368,
+        "footer_center_pixels": 0,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 0,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 22,
+      "contract_case": 23,
+      "name": "flat-play",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "d3024b9cea3051a25d72771e55079c91016340cec194ef1bc4154b386f029797",
+          "rgba_sha256": "1ffb6c9940df3d56e41c1b36a4928e092d07ced0dda45095f6fb3ccfd34e5065",
+          "header_bytes": 4480,
+          "rgba_bytes": 6293408
+        },
+        "candidate": {
+          "header_sha256": "d3024b9cea3051a25d72771e55079c91016340cec194ef1bc4154b386f029797",
+          "rgba_sha256": "1ffb6c9940df3d56e41c1b36a4928e092d07ced0dda45095f6fb3ccfd34e5065",
+          "header_bytes": 4480,
+          "rgba_bytes": 6293408
+        },
+        "unavailable": {
+          "header_sha256": "d3024b9cea3051a25d72771e55079c91016340cec194ef1bc4154b386f029797",
+          "rgba_sha256": "1ffb6c9940df3d56e41c1b36a4928e092d07ced0dda45095f6fb3ccfd34e5065",
+          "header_bytes": 4480,
+          "rgba_bytes": 6293408
+        }
+      },
+      "mask": {
+        "active": false,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "allowed_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "apron_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "footer_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "frame_pixels": 1573352,
+        "visible_pixels": 1573352,
+        "allowed_pixels": 0,
+        "apron_center_pixels": 0,
+        "visible_exterior_pixels": 1573352,
+        "visible_outside_allowance_pixels": 1573352,
+        "protected_outside_pixels": 1573352,
+        "footer_center_pixels": 0,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 0,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 23,
+      "contract_case": 24,
+      "name": "rotary",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "6ce4534384a4af87a271016f63c2a7d1b27312aa568df84ad097b421b18a89f6",
+          "rgba_sha256": "ee08542a26559d5bf5d54f7f354f15d0b19c280526d78d8ebce28bd460ed67fd",
+          "header_bytes": 4478,
+          "rgba_bytes": 6293408
+        },
+        "candidate": {
+          "header_sha256": "6ce4534384a4af87a271016f63c2a7d1b27312aa568df84ad097b421b18a89f6",
+          "rgba_sha256": "ee08542a26559d5bf5d54f7f354f15d0b19c280526d78d8ebce28bd460ed67fd",
+          "header_bytes": 4478,
+          "rgba_bytes": 6293408
+        },
+        "unavailable": {
+          "header_sha256": "6ce4534384a4af87a271016f63c2a7d1b27312aa568df84ad097b421b18a89f6",
+          "rgba_sha256": "ee08542a26559d5bf5d54f7f354f15d0b19c280526d78d8ebce28bd460ed67fd",
+          "header_bytes": 4478,
+          "rgba_bytes": 6293408
+        }
+      },
+      "mask": {
+        "active": false,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "allowed_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "apron_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "footer_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "frame_pixels": 1573352,
+        "visible_pixels": 1573352,
+        "allowed_pixels": 0,
+        "apron_center_pixels": 0,
+        "visible_exterior_pixels": 1573352,
+        "visible_outside_allowance_pixels": 1573352,
+        "protected_outside_pixels": 1573352,
+        "footer_center_pixels": 0,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 0,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    },
+    {
+      "case": 24,
+      "contract_case": 25,
+      "name": "service",
+      "status": "passed",
+      "frames": {
+        "before": {
+          "header_sha256": "474aac71a885469f04c8d8dc45f23f8302e399e99965e5da8fd32dbdbe794a03",
+          "rgba_sha256": "df2cee55f96a8d51fb40a5cb4026ee75546643273a9cb7e97315135fbc76a545",
+          "header_bytes": 4479,
+          "rgba_bytes": 6293408
+        },
+        "candidate": {
+          "header_sha256": "474aac71a885469f04c8d8dc45f23f8302e399e99965e5da8fd32dbdbe794a03",
+          "rgba_sha256": "df2cee55f96a8d51fb40a5cb4026ee75546643273a9cb7e97315135fbc76a545",
+          "header_bytes": 4479,
+          "rgba_bytes": 6293408
+        },
+        "unavailable": {
+          "header_sha256": "474aac71a885469f04c8d8dc45f23f8302e399e99965e5da8fd32dbdbe794a03",
+          "rgba_sha256": "df2cee55f96a8d51fb40a5cb4026ee75546643273a9cb7e97315135fbc76a545",
+          "header_bytes": 4479,
+          "rgba_bytes": 6293408
+        }
+      },
+      "mask": {
+        "active": false,
+        "mapped_R_edges": [
+          16.0,
+          887.0,
+          1656.0,
+          941.0
+        ],
+        "mapped_F_edges": [
+          48.0,
+          889.0,
+          1604.0,
+          925.0
+        ],
+        "visible_box": [
+          0,
+          0,
+          1672,
+          941
+        ],
+        "allowed_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "apron_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "footer_center_box": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "frame_pixels": 1573352,
+        "visible_pixels": 1573352,
+        "allowed_pixels": 0,
+        "apron_center_pixels": 0,
+        "visible_exterior_pixels": 1573352,
+        "visible_outside_allowance_pixels": 1573352,
+        "protected_outside_pixels": 1573352,
+        "footer_center_pixels": 0,
+        "footer_visible_center_pixels": 0
+      },
+      "comparison": {
+        "changed_pixels": 0,
+        "outside_allowed_changed_pixels": 0,
+        "footer_changed_pixels": 0,
+        "unavailable_changed_pixels": 0
+      }
+    }
+  ],
+  "clip_companions": [
+    {
+      "case": 9,
+      "contract_case": 10,
+      "full_case": 8,
+      "visible_pixels": 344,
+      "apron_center_pixels": 162,
+      "before": {
+        "visible_changed_pixels": 165,
+        "apron_center_changed_pixels": 0
+      },
+      "candidate": {
+        "visible_changed_pixels": 165,
+        "apron_center_changed_pixels": 0
+      },
+      "unavailable": {
+        "visible_changed_pixels": 165,
+        "apron_center_changed_pixels": 0
+      }
+    },
+    {
+      "case": 10,
+      "contract_case": 11,
+      "full_case": 8,
+      "visible_pixels": 344,
+      "apron_center_pixels": 162,
+      "before": {
+        "visible_changed_pixels": 170,
+        "apron_center_changed_pixels": 0
+      },
+      "candidate": {
+        "visible_changed_pixels": 251,
+        "apron_center_changed_pixels": 81
+      },
+      "unavailable": {
+        "visible_changed_pixels": 170,
+        "apron_center_changed_pixels": 0
+      }
+    },
+    {
+      "case": 11,
+      "contract_case": 12,
+      "full_case": 8,
+      "visible_pixels": 9856,
+      "apron_center_pixels": 4920,
+      "before": {
+        "visible_changed_pixels": 308,
+        "apron_center_changed_pixels": 0
+      },
+      "candidate": {
+        "visible_changed_pixels": 308,
+        "apron_center_changed_pixels": 0
+      },
+      "unavailable": {
+        "visible_changed_pixels": 308,
+        "apron_center_changed_pixels": 0
+      }
+    },
+    {
+      "case": 12,
+      "contract_case": 13,
+      "full_case": 8,
+      "visible_pixels": 9856,
+      "apron_center_pixels": 2460,
+      "before": {
+        "visible_changed_pixels": 4,
+        "apron_center_changed_pixels": 0
+      },
+      "candidate": {
+        "visible_changed_pixels": 4,
+        "apron_center_changed_pixels": 0
+      },
+      "unavailable": {
+        "visible_changed_pixels": 4,
+        "apron_center_changed_pixels": 0
+      }
+    },
+    {
+      "case": 13,
+      "contract_case": 14,
+      "full_case": 8,
+      "visible_pixels": 0,
+      "apron_center_pixels": 0,
+      "before": {
+        "visible_changed_pixels": 0,
+        "apron_center_changed_pixels": 0
+      },
+      "candidate": {
+        "visible_changed_pixels": 0,
+        "apron_center_changed_pixels": 0
+      },
+      "unavailable": {
+        "visible_changed_pixels": 0,
+        "apron_center_changed_pixels": 0
+      }
+    },
+    {
+      "case": 14,
+      "contract_case": 15,
+      "full_case": 8,
+      "visible_pixels": 256,
+      "apron_center_pixels": 0,
+      "before": {
+        "visible_changed_pixels": 0,
+        "apron_center_changed_pixels": 0
+      },
+      "candidate": {
+        "visible_changed_pixels": 0,
+        "apron_center_changed_pixels": 0
+      },
+      "unavailable": {
+        "visible_changed_pixels": 0,
+        "apron_center_changed_pixels": 0
+      }
+    }
+  ],
+  "failures": [],
+  "canonical_source": {
+    "source_pixels": 32544,
+    "unequal_source_pixels": 0,
+    "candidate_R_minus_F_rgba_sha256": "b90cd031507fefe09e506719d10a9f12ffa59068d00edd54e396724ba12b7a2a",
+    "source_R_minus_F_rgba_sha256": "b90cd031507fefe09e506719d10a9f12ffa59068d00edd54e396724ba12b7a2a"
+  },
+  "totals": {
+    "frame_pixels": 61780011,
+    "allowed_pixels": 1753028,
+    "apron_center_pixels": 1738688,
+    "visible_exterior_pixels": 37923667,
+    "protected_outside_pixels": 60026983,
+    "footer_center_pixels": 1851123,
+    "changed_pixels": 638929,
+    "outside_allowed_changed_pixels": 0,
+    "footer_changed_pixels": 0,
+    "unavailable_changed_pixels": 0,
+    "checked_cases": 25,
+    "passed_cases": 25,
+    "required_whole_equal_cases": 8
+  },
+  "limits": [
+    "Cross-clip sampling differences are reported, not required to equal zero.",
+    "Direct pre-footer alpha/state probe and same-Drawing repeat qualification are separate native gates.",
+    "Source-package admission, genuine application visual inspection and real display/DPI/input/accessibility remain separate.",
+    "Literal whole-interface 1:1 remains unqualified."
+  ]
+}

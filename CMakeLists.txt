@@ -133,6 +133,16 @@ if(HAMMOND_RENDER_SOURCE)
     add_dependencies(hammond_render hammond_profile)
 endif()
 
+# Offline file admission is shared by the renderer and registration CLI only.
+# It does not enter the realtime core or require a native UI/audio SDK.
+add_library(hammond_control_file_input STATIC tools/ControlFileInput.cpp)
+target_link_libraries(hammond_control_file_input PUBLIC hammond_core)
+target_include_directories(hammond_control_file_input PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/tools")
+hammond_configure_target(hammond_control_file_input)
+if(TARGET hammond_render)
+    target_link_libraries(hammond_render PRIVATE hammond_control_file_input)
+endif()
+
 add_executable(hammond_source_leakage_probe tools/source_leakage_probe.cpp)
 target_link_libraries(hammond_source_leakage_probe PRIVATE hammond_core)
 hammond_configure_target(hammond_source_leakage_probe)
@@ -239,6 +249,29 @@ if(HAMMOND_BUILD_VST3)
 endif()
 
 add_subdirectory(apps/standalone)
+
+add_executable(hammond_registration tools/registration.cpp)
+target_link_libraries(hammond_registration PRIVATE
+    hammond_standalone_support hammond_control_file_input)
+hammond_configure_target(hammond_registration)
+if(MINGW)
+    target_link_options(hammond_registration PRIVATE -municode)
+endif()
+
+# Explicit developer authoring tool; installation copies its admitted payloads
+# and never executes this program or writes a user's preference directory.
+add_executable(hammond_generate_starter_registrations tools/generate_starter_registrations.cpp)
+target_link_libraries(hammond_generate_starter_registrations PRIVATE hammond_standalone_support)
+target_compile_definitions(hammond_generate_starter_registrations PRIVATE
+    HAMMOND_STARTER_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+hammond_configure_target(hammond_generate_starter_registrations)
+if(MSVC)
+    # The compiled source-root literal is decoded as UTF-8 by argument_path.
+    target_compile_options(hammond_generate_starter_registrations PRIVATE /utf-8)
+endif()
+if(MINGW)
+    target_link_options(hammond_generate_starter_registrations PRIVATE -municode)
+endif()
 
 if(BUILD_TESTING)
     find_package(Threads REQUIRED)
@@ -433,6 +466,25 @@ if(BUILD_TESTING)
     endforeach()
     list(APPEND HAMMOND_TEST_TARGETS hammond_pedal_trace)
 
+    if(TARGET test_control_file_input)
+        target_link_libraries(test_control_file_input PRIVATE hammond_control_file_input)
+        set_tests_properties(test_control_file_input PROPERTIES TIMEOUT 30 LABELS "registration;filesystem")
+    endif()
+    foreach(registration_test python_test_registration_cli python_test_registration_cli_admission
+                              python_test_render_controls python_test_render_controls_admission
+                              python_test_starter_registration_generator
+                              python_test_starter_registration_oracle python_test_starter_auditions)
+        if(TEST ${registration_test})
+            set_property(TEST ${registration_test} APPEND PROPERTY ENVIRONMENT
+                "HAMMOND_REGISTRATION_EXECUTABLE=$<TARGET_FILE:hammond_registration>"
+                "HAMMOND_RENDER_EXECUTABLE=$<TARGET_FILE:hammond_render>"
+                "HAMMOND_STARTER_GENERATOR_EXECUTABLE=$<TARGET_FILE:hammond_generate_starter_registrations>"
+                "HAMMOND_TEST_PROFILE=${HAMMOND_COMPILED_PROFILE}")
+            set_tests_properties(${registration_test} PROPERTIES TIMEOUT 90 LABELS "registration;offline")
+        endif()
+    endforeach()
+    list(APPEND HAMMOND_TEST_TARGETS hammond_registration hammond_generate_starter_registrations)
+
     # Unlike invoking CTest directly, this target first builds its required inputs.
     add_custom_target(check
         COMMAND "${CMAKE_CTEST_COMMAND}" --output-on-failure --no-tests=error -C "$<CONFIG>"
@@ -443,12 +495,27 @@ endif()
 
 # Component-scoped installation is defined after all targets and tests.
 include(cmake/InstallHammondTools.cmake)
+include(cmake/InstallRegistrationTools.cmake)
 include(cmake/InstallContactReferenceTools.cmake)
 include(cmake/InstallContactGridConversionTools.cmake)
 include(cmake/InstallSourceLeakageTools.cmake)
 include(cmake/InstallCrossoverTools.cmake)
 include(cmake/InstallCaptureTools.cmake)
 include(cmake/InstallStandalone.cmake)
+
+if(BUILD_TESTING AND TEST python_test_registration_install)
+    set_property(TEST python_test_registration_install APPEND PROPERTY ENVIRONMENT
+        "HAMMOND_TEST_CMAKE=${CMAKE_COMMAND}"
+        "HAMMOND_TEST_BUILD_DIR=${CMAKE_BINARY_DIR}"
+        "HAMMOND_TEST_CONFIG=$<CONFIG>"
+        "HAMMOND_TEST_CMAKE_GENERATOR=${CMAKE_GENERATOR}"
+        "HAMMOND_TEST_CMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}"
+        "HAMMOND_INSTALL_BINDIR=${CMAKE_INSTALL_BINDIR}"
+        "HAMMOND_INSTALL_DATADIR=${CMAKE_INSTALL_DATADIR}"
+        "HAMMOND_REGISTRATION_EXECUTABLE=$<TARGET_FILE:hammond_registration>")
+    set_tests_properties(python_test_registration_install PROPERTIES
+        TIMEOUT 180 LABELS "registration;install;relocation")
+endif()
 
 if(HAMMOND_BUILD_STANDALONE AND BUILD_TESTING)
     add_test(NAME test_standalone_install

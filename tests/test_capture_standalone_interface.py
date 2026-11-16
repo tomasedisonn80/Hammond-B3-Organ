@@ -6,9 +6,9 @@ exist only in copied Python dictionaries; no native process or image is edited.
 All three final painted records are changed together so the new checks cannot
 pass merely because the existing painted-record equality guard rejects them.
 
-The four added scenes use explicitly synthetic in-memory contract variants and
+The five added scenes use explicitly synthetic in-memory contract variants and
 pixel buffers to test admission rules. They are never written as captures and
-do not qualify the new application; root must run the twelve-case native suite.
+do not qualify the new application; root must run the thirteen-case native suite.
 """
 
 from copy import deepcopy
@@ -39,6 +39,7 @@ ADDED_CASES = (
     ("flat-reference-1672x941", 1672, 941, "play", "flat", 68, "standard"),
     ("play-toolbar-focus-1672x941", 1672, 941, "play", "dimensional", 151, "toolbar-focus"),
     ("play-pedal-focus-1672x941", 1672, 941, "play", "dimensional", 161, "pedal-focus"),
+    ("play-wide-1920x1080", 1920, 1080, "play", "dimensional", 66, "standard"),
 )
 # Independent literal canonical samples, not imported from the capture utility.
 FOCUS_PROBES = {
@@ -87,13 +88,13 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                 self.assertEqual(result["actual_painted_view"]["held_targets"], HELD)
                 self.assertEqual(result["actual_painted_view"]["pointer_capture"], POINTER)
 
-    def test_twelve_case_matrix_preserves_original_identities_and_adds_required_views(self):
+    def test_thirteen_case_matrix_preserves_original_identities_and_adds_required_views(self):
         self.assertEqual(CAPTURE.CASES, tuple(case[:5] for case in (*CASES, *ADDED_CASES)))
         self.assertEqual(CAPTURE.CASE_SCENES, {
             "play-toolbar-focus-1672x941": "toolbar-focus",
             "play-pedal-focus-1672x941": "pedal-focus",
         })
-        self.assertEqual(len({case[0] for case in CAPTURE.CASES}), 12)
+        self.assertEqual(len({case[0] for case in CAPTURE.CASES}), 13)
 
     def test_original_replay_and_state_bytes_match_immutable_gallery(self):
         self.assertEqual(CAPTURE.STATE.encode("ascii"), (GALLERY / "inputs/controls.b3controls").read_bytes())
@@ -194,7 +195,7 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                     CAPTURE.validate(data, *case[1:])
 
     def test_focus_scenes_require_exact_fifth_owner_and_zero_releases(self):
-        for case in ADDED_CASES[2:]:
+        for case in (case for case in ADDED_CASES if case[-1] != "standard"):
             for wrong_pedals in ([3], [2, 25], [2, 3, 25]):
                 with self.subTest(case=case[0], pedals=wrong_pedals):
                     data = self.contract_variant(case)
@@ -215,7 +216,7 @@ class InterfaceCaptureValidationTests(unittest.TestCase):
                 CAPTURE.validate(data, *case[1:])
 
     def test_focus_scenes_require_observed_edited_four_owner_prefix(self):
-        for case in ADDED_CASES[2:]:
+        for case in (case for case in ADDED_CASES if case[-1] != "standard"):
             with self.subTest(case=case[0]):
                 data = self.contract_variant(case)
                 data["replay"]["observations"] = [item for item in data["replay"]["observations"]

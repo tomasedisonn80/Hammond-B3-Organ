@@ -2,7 +2,45 @@
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The playable instrument is a **nominal dry organ** with a native standalone application, an offline renderer and an optional VST3 adapter. Its musical core has 91 continuously running sources, two 61-key manuals, 25 pedals, eighteen documentary fixed registrations, four retained drawbar banks, percussion and shared expression.
 
-**Current runtime/interface continuation:** [this session](docs/development/2026-11-16-runtime-continuation/README.md) has freshly covered all 500 PDF pages and is developing isolated causal contact audio plus reference-derived manual key materials. Its own [sixty-worker ledger](docs/development/2026-11-16-runtime-continuation/assignments.json) and [checkpoint](docs/development/2026-11-16-runtime-continuation/CHECKPOINT.md) record actual progress, validation and next actions. The recovered conversion/typography checkpoint is published as `f56b0f3`. New contracts receive independent admission before implementation; current progress is not final acceptance.
+<!-- preset-library-continuation-summary:start -->
+## Current continuation: portable registrations and reference apron
+
+The [current session](docs/development/2026-11-16-preset-library-continuation/README.md)
+read all 500 atlas pages afresh and advances M9 with a headless registration tool,
+saved-control rendering, twelve original starter recipes in 24 canonical files,
+explicit installation components, and reproducible auditions. The first five
+waves have delivered 30 distinct workers; the requested ten-wave/60-worker
+continuation remains active in the [actual ledger](docs/development/2026-11-16-preset-library-continuation/assignments.json)
+and [recovery checkpoint](docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md).
+
+[Registration setup and commands](docs/REGISTRATION_GUIDE.md) ·
+[Starter pack](data/registrations/starter-v1/README.md) ·
+[Actual new UI gallery](docs/design/native-gallery-preset-v1/README.md) ·
+[Full M0–M9 plan](docs/PLAN.md)
+
+The wide Dimensional Play apron now uses the reference's exact exposed RGB
+pixels with a transparent hole for the live footer. Independent comparison of
+25 genuine before/candidate cases covers 61,780,011 pixels with no changes outside
+the declared apron, no protected-footer changes, and exact procedural fallback.
+The source-matched apron is a scoped design improvement; **literal whole-interface
+1:1 remains unmet and unwaived**. The native gallery includes thirteen real views,
+including 1672×941, minimum-active 1400×820 and 1920×1080.
+
+![Actual native application at 1672×941, with the reference apron and live controls](docs/design/native-gallery-preset-v1/images/play-reference-1672x941.png)
+
+*Actual SDL software capture with dummy audio/video. The nominal dry Engine,
+live status and correct musical controls remain visible; this is not a rendered
+mockup or physical-device qualification.*
+
+Root's complete configured native suite passed **230/230**; later independent
+recipe, installer, audition and portability regressions pass their scoped gates.
+[Coherent source-bound results](docs/development/2026-11-16-preset-library-continuation/reports/w04-coherent-qualification.json)
+and [paired UI evidence](docs/development/2026-11-16-preset-library-continuation/reports/apron-paired-final.json)
+retain original failures and exact identities. Current-source hosted platform
+qualification and the remaining worker reviews are still in progress.
+<!-- preset-library-continuation-summary:end -->
+
+**Parallel runtime/interface continuation (separate owner):** [this session](docs/development/2026-11-16-runtime-continuation/README.md) has freshly covered all 500 PDF pages and is developing isolated causal contact audio plus reference-derived manual key materials. Its own [sixty-worker ledger](docs/development/2026-11-16-runtime-continuation/assignments.json) and [checkpoint](docs/development/2026-11-16-runtime-continuation/CHECKPOINT.md) record actual progress, validation and next actions. The recovered conversion/typography checkpoint is published as `f56b0f3`. New contracts receive independent admission before implementation; current progress is not final acceptance.
 
 **Earlier conversion/interface continuation:** [this session](docs/development/2026-11-16-conversion-material/README.md)
 has completed a fresh reading of all 500 atlas pages and implemented an explicit,

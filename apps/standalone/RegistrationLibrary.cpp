@@ -248,9 +248,25 @@ void entry_error(LibraryEntry& entry, LibraryEntryStatus status, std::string rea
 
 enum class NativeComparison { Same, Different, Uncertain };
 
+[[nodiscard]] bool distinct_ascii_components(const fs::path& a, const fs::path& b) {
+    const auto& x = a.native();
+    const auto& y = b.native();
+    const auto ascii = [](auto c) { return static_cast<std::uint32_t>(c) <= 127U; };
+    if (!std::all_of(x.begin(), x.end(), ascii) || !std::all_of(y.begin(), y.end(), ascii)) return false;
+    return x.size() != y.size() || !std::equal(x.begin(), x.end(), y.begin(),
+        [](auto u, auto v) { return fold(static_cast<char>(u)) == fold(static_cast<char>(v)); });
+}
+
 // Exact non-ASCII code units are safe to compare. Different non-ASCII units may
 // be aliases under a volume's case/normalization policy, so do not guess.
 [[nodiscard]] NativeComparison portable_path_compare(const fs::path& a, const fs::path& b) {
+    // Unicode length changes can misalign a flat native-string comparison. A
+    // complete ASCII component pair, aligned by path boundaries, can still prove
+    // distinction despite uncertainty elsewhere. Native identity and existing-
+    // ancestor/suffix checks remain mandatory in distinct_from_protected.
+    for (auto x = a.begin(), y = b.begin(); x != a.end() && y != b.end(); ++x, ++y) {
+        if (distinct_ascii_components(*x, *y)) return NativeComparison::Different;
+    }
     const auto& x = a.native();
     const auto& y = b.native();
     bool uncertain = false;

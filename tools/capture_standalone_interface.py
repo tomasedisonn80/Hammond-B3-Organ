@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture twelve real native interface views into a new, bounded gallery.
+"""Capture thirteen real native interface views into a new, bounded gallery.
 
 Requires Python 3.10+, Pillow, an already built standalone and a source/build
 qualification JSON with ``binary_sha256`` and ``source_sha256`` members. The
@@ -40,6 +40,7 @@ CASES = (
     ("flat-reference-1672x941", 1672, 941, "play", "flat"),
     ("play-toolbar-focus-1672x941", 1672, 941, "play", "dimensional"),
     ("play-pedal-focus-1672x941", 1672, 941, "play", "dimensional"),
+    ("play-wide-1920x1080", 1920, 1080, "play", "dimensional"),
 )
 CASE_SCENES = {
     "play-toolbar-focus-1672x941": "toolbar-focus",
@@ -163,7 +164,8 @@ def production_paths(source: Path) -> list[Path]:
     for name in ("data/pedal-map.json", "data/parameter-registry.json", "data/dependencies/sdl2-lock.json",
                  "data/dependencies/rtmidi-lock.json", "docs/design/atlas-reference.json",
                  "docs/design/atlas-cover-reference.jpg", "tools/compile_profile.py", "tools/embed_profile.py",
-                 "tools/compile_reference_art.py", "tools/compile_chapel_presets.py"):
+                 "tools/compile_reference_art.py", "tools/compile_reference_apron.py",
+                 "tools/compile_chapel_presets.py"):
         path = source / name
         if path.is_file():
             paths.append(path)
@@ -183,6 +185,8 @@ def build_paths(build: Path) -> list[Path]:
             "missing generated standalone profile")
     require((build / "apps/standalone/generated/ReferenceArtData.h") in paths,
             "missing generated standalone reference artwork")
+    require((build / "apps/standalone/generated/ReferenceApronData.h") in paths,
+            "missing generated standalone reference apron")
     return paths
 
 
@@ -454,6 +458,7 @@ def main() -> int:
         (output / name).mkdir()
     record = {
         "schema_version": 1, "capture_contract": "standalone-interface-capture-v1", "status": "incomplete",
+        "case_matrix": "Original twelve views retained in order; play-wide-1920x1080 appended for apron inspection.",
         "started_at_utc": datetime.now(timezone.utc).isoformat(), "command": [sys.executable, *sys.argv],
         "output_directory_at_capture": str(output), "platform": platform.platform(),
         "python": platform.python_version(), "pillow": pillow_version,

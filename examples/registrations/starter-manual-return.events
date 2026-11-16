@@ -1,0 +1,23 @@
+# Explicit state-changing companion for recipe 12 Manual Return only.
+# 48000 frames at 48000 Hz. Upper C begins held but cancelled (silent).
+# At 8000 reselect retained G# (preset code 8), making that held key audible.
+# At 18000 select both A banks; at 30000 select both B banks. These clear
+# fixed modes and reconnect routes. The later Upper-B attack is eligible
+# for the saved On/Third/Soft/Fast percussion. Expression is never changed.
+0 note_on upper 60 100
+8000 select_preset upper 0 8
+16000 note_off upper 60 0
+18000 select_bank upper 0 0
+18000 select_bank lower 0 0
+18000 note_on upper 64 100
+18000 note_on lower 48 100
+28000 note_off upper 64 0
+28000 note_off lower 48 0
+30000 select_bank upper 0 1
+30000 select_bank lower 0 1
+30000 note_on upper 67 100
+30000 note_on lower 55 100
+42000 note_off upper 67 0
+42000 note_off lower 55 0
+44000 pedal_on lower 8 100
+47000 pedal_off lower 8 0

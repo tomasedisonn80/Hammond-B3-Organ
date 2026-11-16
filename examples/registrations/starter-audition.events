@@ -1,0 +1,18 @@
+# Proposed nominal dry Engine audition; 48000 frames at 48000 Hz (one second).
+# Note-only: do not replace any saved expression, drawbar, route or preset.
+# Upper solo, Lower solo, pedal solo, then a brief combined cadence.
+# Manual numbers are MIDI notes; pedal numbers are one-based IDs, not MIDI.
+0 note_on upper 60 100
+7200 note_off upper 60 0
+9000 note_on upper 67 100
+14400 note_off upper 67 0
+16000 note_on lower 48 100
+24000 note_off lower 48 0
+26000 pedal_on lower 1 100
+34000 pedal_off lower 1 0
+36000 note_on upper 64 100
+36000 note_on lower 55 100
+36000 pedal_on lower 8 100
+44000 note_off upper 64 0
+44000 note_off lower 55 0
+44000 pedal_off lower 8 0

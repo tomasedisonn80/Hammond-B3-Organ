@@ -1,0 +1,53 @@
+{
+  "artifacts": {
+    "hammond_render": {
+      "bytes": 172528,
+      "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_render",
+      "sha256": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf"
+    },
+    "hammond_standalone": {
+      "bytes": 3733912,
+      "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_standalone",
+      "sha256": "e62d62109c76890e7b471b486cfc2f69929d0dcec4570e070b2da06da22e1012"
+    },
+    "hammond_standalone_paint_benchmark": {
+      "bytes": 3395520,
+      "path": "/workspace/scratch/3edffb787db3/baseline-native/hammond_standalone_paint_benchmark",
+      "sha256": "f80e261f8001df5099d8c824194c621dea42672db33434e4973e19e230cda492"
+    }
+  },
+  "cmake": "cmake version 3.31.6",
+  "commands": [
+    "cmake -S . -B ../build-native -G Ninja -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DHAMMOND_BUILD_STANDALONE=ON -DHAMMOND_BUILD_VST3=OFF -DHAMMOND_ENABLE_MIDI=OFF -DHAMMOND_SDL2_ROOT=/workspace/scratch/ade21b726509/SDL2 -DSDL_X11=OFF -DSDL_WAYLAND=OFF -DSDL_ALSA=OFF -DSDL_PULSEAUDIO=OFF -DSDL_JACK=OFF",
+    "cmake --build ../build-native --parallel 3",
+    "ctest --test-dir ../build-native --output-on-failure --no-tests=error --parallel 3"
+  ],
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "configuration": "Ninja Release; tests/standalone ON; MIDI/VST3 OFF; SDL X11/Wayland/ALSA/Pulse/JACK OFF",
+  "ctest_seconds": 216.89,
+  "failed": 0,
+  "head": "54df95fe343d417dd89bb7a91f85e4f51c08dfe7",
+  "logs": {
+    "baseline-build.log.gz": {
+      "compressed_sha256": "cc109d26f3b8cf5a26213a49b0aa1e9c404a2798ecaafebeba72c56c4c64247f",
+      "raw_bytes": 51509,
+      "raw_sha256": "8778d4de36b50167946d6e79bb3171d4a4a1ecacff1889089e1ec596fcf4932d"
+    },
+    "baseline-configure.log.gz": {
+      "compressed_sha256": "be3ba26920db8562e237797044e06e3e0cbfb2a9b4d1088703dcddd93d0b59fb",
+      "raw_bytes": 21981,
+      "raw_sha256": "d0a04cc707e33b940cfdf5ed84fa6888bfc8ea129b15ad333149ce7c3f3d9da8"
+    },
+    "baseline-ctest.log.gz": {
+      "compressed_sha256": "74bc42260db5882f405c03aeef71af3030b644d6669c2b823b6358948faa6aa0",
+      "raw_bytes": 33004,
+      "raw_sha256": "44b61b502b06836e6ada26720201cf35c43fc991fd5a575c1b0e196f5ea16d34"
+    }
+  },
+  "result": "passed",
+  "schema_version": 1,
+  "scope": "Linux dummy SDL. No display, physical MIDI/audio, DAW or fidelity qualification.",
+  "tests": 220,
+  "tree": "b221dc8b565f5da04c7ad1fabc1d4d605f27b97e",
+  "utc": "2026-11-16T11:01:45.405115+00:00"
+}

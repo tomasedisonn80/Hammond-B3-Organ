@@ -2404,7 +2404,8 @@ void paint_reference_composition(Drawing& drawing, const UiModel& model, const I
     drawing.rounded(mapped({65.0F, 8.0F, 1542.0F, 917.0F}), 9.0F * scale.f, {10, 11, 9});
     drawing.rect(mapped({68.0F, 17.0F, 1.0F, 901.0F}), {143, 89, 48, 160});
     drawing.rect(mapped({1603.0F, 17.0F, 1.0F, 901.0F}), {143, 89, 48, 160});
-    reference_wood(drawing, mapped({16.0F, 887.0F, 1640.0F, 54.0F}), scale);
+    if (!drawing.apron_art(mapped({16.0F, 887.0F, 1640.0F, 54.0F})))
+        reference_wood(drawing, mapped({16.0F, 887.0F, 1640.0F, 54.0F}), scale);
     reference_wood(drawing, mapped({48.0F, 510.0F, 1074.0F, 18.0F}), scale);
     reference_header(drawing, layout, scale);
     reference_panel(drawing, layout.performance_panel, scale);

@@ -363,6 +363,109 @@ void save_and_protection() {
     REQUIRE(staging_count(root) == 0);
 }
 
+void unicode_path_protection() {
+    TemporaryTree tree;
+    const auto output = tree.path() / "output";
+    const auto source = tree.path() / "source";
+    REQUIRE(fs::create_directory(output));
+    REQUIRE(fs::create_directory(source));
+    write_file(source / "reference.controls", "protected source bytes\n");
+    const std::array<fs::path, 1> protected_source{source / "reference.controls"};
+
+    // Distinct complete ASCII ancestors prove separation even though a later
+    // Unicode component makes a flat byte-offset comparison uncertain.
+    const auto unicode_parent = output / fs::path(u8"caf\u00e9 staging");
+    REQUIRE(fs::create_directory(unicode_parent));
+    const auto root = unicode_parent / "entries";
+    const auto saved = save_registration_entry_new(root, "Unicode", RegistrationScope::Registration,
+        expected_controls(), protected_source, permit);
+    REQUIRE(saved.status == LibrarySaveStatus::Saved && saved.committed());
+    REQUIRE(read_bytes(root / "Unicode.b3registration") == kDocument);
+    REQUIRE(read_bytes(protected_source[0]) == "protected source bytes\n");
+    REQUIRE(staging_count(root) == 0);
+    const auto repeated = save_registration_entry_new(root, "Second", RegistrationScope::Performance,
+        expected_controls(), protected_source, permit);
+    REQUIRE(repeated.status == LibrarySaveStatus::Saved && repeated.committed());
+    REQUIRE(read_bytes(root / "Second.b3performance") == kDocument);
+    REQUIRE(staging_count(root) == 0);
+
+    // A shared exact Unicode ancestor is also compatible with distinct ASCII
+    // leaf components. The same-parent suffix comparison must agree.
+    const std::array<fs::path, 1> sibling{unicode_parent / "reserved.controls"};
+    const auto sibling_save = save_registration_entry_new(root, "Sibling", RegistrationScope::Registration,
+        expected_controls(), sibling, permit);
+    REQUIRE(sibling_save.status == LibrarySaveStatus::Saved && sibling_save.committed());
+    REQUIRE(!fs::exists(sibling[0]));
+
+    // Normalization/case variants can have different native lengths. ASCII
+    // differences at shifted byte offsets are never a distinct-component proof.
+    const auto uncertain_parent = tree.path() / fs::path(u8"caf\u00e9");
+    REQUIRE(fs::create_directory(uncertain_parent));
+    const auto uncertain_root = uncertain_parent / "reserved";
+    for (const auto& spelling : {fs::path(u8"cafe\u0301"), fs::path(u8"CAF\u00c9")}) {
+        const std::array<fs::path, 1> uncertain{tree.path() / spelling / "RESERVED"};
+        std::size_t authorizations = 0;
+        const auto refused = save_registration_entry_new(uncertain_root, "Blocked", RegistrationScope::Registration,
+            expected_controls(), uncertain, [&]() { ++authorizations; return permit(); });
+        REQUIRE(refused.status == LibrarySaveStatus::ProtectedPath && !refused.committed());
+        REQUIRE(authorizations == 0 && !fs::exists(uncertain_root));
+    }
+
+    // Canonical/equivalent aliases stay protected even when invocation paths
+    // have distinct ASCII ancestors and one contains Unicode.
+    std::error_code code;
+    const auto alias = source / "output alias";
+    fs::create_directory_symlink(root, alias, code);
+    if (!code) {
+        REQUIRE(fs::equivalent(alias, root));
+        const std::array<fs::path, 1> reserved_alias{alias / "ALIAS.b3registration"};
+        const auto refused = save_registration_entry_new(root, "Alias", RegistrationScope::Registration,
+            expected_controls(), reserved_alias, permit);
+        REQUIRE(refused.status == LibrarySaveStatus::ProtectedPath && !refused.committed());
+        REQUIRE(!fs::exists(root / "Alias.b3registration") && staging_count(root) == 0);
+    } else {
+        ++link_skips;
+    }
+
+    const auto hard_alias = source / "hard alias.controls";
+    code.clear();
+    fs::create_hard_link(root / "Unicode.b3registration", hard_alias, code);
+    if (!code) {
+        REQUIRE(fs::equivalent(hard_alias, root / "Unicode.b3registration"));
+        const std::array<fs::path, 1> reserved_hard_alias{hard_alias};
+        const auto refused = save_registration_entry_new(root, "Unicode", RegistrationScope::Registration,
+            expected_controls(), reserved_hard_alias, permit);
+        REQUIRE(refused.status == LibrarySaveStatus::NameExists && !refused.committed());
+        REQUIRE(read_bytes(hard_alias) == kDocument);
+        REQUIRE(read_bytes(root / "Unicode.b3registration") == kDocument);
+    } else {
+        ++link_skips;
+    }
+
+    const auto dangling = source / "dangling alias";
+    code.clear();
+    fs::create_symlink(source / "missing target", dangling, code);
+    if (!code) {
+        const std::array<fs::path, 1> unresolved{dangling};
+        const auto refused = save_registration_entry_new(root, "Unresolved", RegistrationScope::Registration,
+            expected_controls(), unresolved, permit);
+        REQUIRE(refused.status == LibrarySaveStatus::ProtectedPath && !refused.committed());
+        REQUIRE(!fs::exists(root / "Unresolved.b3registration") && staging_count(root) == 0);
+        REQUIRE(fs::is_symlink(fs::symlink_status(dangling)));
+    } else {
+        ++link_skips;
+    }
+#ifdef _WIN32
+    for (const auto* spelling : {L"ambiguous.", L"ambiguous ", L"ambiguous:stream"}) {
+        const std::array<fs::path, 1> ambiguous{source / spelling};
+        const auto refused = save_registration_entry_new(root, "Ambiguous", RegistrationScope::Registration,
+            expected_controls(), ambiguous, permit);
+        REQUIRE(refused.status == LibrarySaveStatus::ProtectedPath && !refused.committed());
+        REQUIRE(!fs::exists(root / "Ambiguous.b3registration") && staging_count(root) == 0);
+    }
+#endif
+}
+
 void capacity() {
     TemporaryTree tree;
     const auto candidates = tree.path() / "candidates";
@@ -454,6 +557,7 @@ int main() {
         names_and_scopes();
         reading_and_catalogs();
         save_and_protection();
+        unicode_path_protection();
         capacity();
         concurrent_and_committed_warning();
         std::cout << "registration_library checks=" << checks << " symlink_unavailable=" << link_skips << '\n';

@@ -1,0 +1,1315 @@
+{
+  "schema": 1,
+  "protocol": "reference-apron-v1",
+  "case_count": 25,
+  "indexing": "--case uses zero-based case; contract_case is one-based",
+  "transport": {
+    "header_max_bytes": 65536,
+    "dimension_max": 4096,
+    "payload_max_bytes": 67108864,
+    "pixel_format": "RGBA8",
+    "row_order": "top-down",
+    "padding_bytes": 0,
+    "trailer_bytes": 0,
+    "header_terminator": "LF",
+    "binary_stdout_on_windows": true
+  },
+  "renderer": {
+    "creation": "SDL_CreateSoftwareRenderer on SDL_PIXELFORMAT_RGBA32 surface",
+    "initial_blend": 1,
+    "transform_installation": "Set physical viewport and enabled clip at scale 1, then install scale; query physical rectangles at scale 1 and restore scale",
+    "default_full_viewport": true
+  },
+  "state_defaults": {
+    "session": {
+      "controls": {
+        "drawbars": [
+          [
+            [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ]
+          ],
+          [
+            [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ],
+            [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ]
+          ]
+        ],
+        "selected_banks": [
+          1,
+          1
+        ],
+        "route_enabled": [
+          true,
+          true
+        ],
+        "expression": 0.625,
+        "percussion": [
+          true,
+          0,
+          0,
+          0
+        ],
+        "pedal_drawbars": [
+          3,
+          7
+        ],
+        "fixed_registrations": [
+          0,
+          0
+        ]
+      },
+      "held_keys": [
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      ],
+      "held_pedals": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "frame_clock": 38400,
+      "sample_rate": 48000,
+      "peak": 0,
+      "prepared": true,
+      "running": false,
+      "publication_revision": 4,
+      "resolved_sequence": 0,
+      "last_applied_sequence": 0,
+      "recovery_count": 0,
+      "queue_overflows": 0,
+      "rejected_commands": 0,
+      "discarded_commands": 0,
+      "fault_flags": 0,
+      "last_core_status": 0
+    },
+    "info": {
+      "audio_running": false,
+      "sample_rate": 48000,
+      "buffer_frames": 512,
+      "audio_driver": "fixed-software-fixture",
+      "device_name": "fixed copied state",
+      "status_message": "Reference apron qualification",
+      "clipped_samples": 0,
+      "overlay": 0,
+      "audio_choices": [
+        "Default fixture device",
+        "Second fixture device"
+      ],
+      "selected_device": 0,
+      "selected_sample_rate": 48000,
+      "selected_buffer_frames": 512,
+      "midi_available": false,
+      "midi_open": false,
+      "midi_backend": "none",
+      "midi_port": "",
+      "midi_status": "MIDI unavailable in fixed fixture",
+      "midi_choices": [],
+      "selected_midi_port": 0,
+      "selected_midi_channels": [
+        1,
+        2,
+        3
+      ],
+      "selected_midi_expression": [
+        0,
+        127,
+        false
+      ],
+      "active_midi_expression": [
+        0,
+        127,
+        false
+      ],
+      "midi_expression_active": false,
+      "midi_reconnect_pending": false,
+      "midi_messages": 0,
+      "inspection": null
+    },
+    "model_setup": [
+      "UiModel default construction",
+      "resize to logical_size",
+      "set_presentation to case presentation",
+      "set_workspace to case workspace",
+      "observe copied session",
+      "mark_saved with stopped base controls"
+    ],
+    "text_entry_active": false,
+    "no_live_session_window_audio_or_midi": true
+  },
+  "state_profiles": {
+    "stopped": {
+      "session_changes": {},
+      "info_changes": {}
+    },
+    "running": {
+      "session_changes": {
+        "running": true,
+        "peak": 0.75,
+        "controls.drawbars[0][1][2]": 6
+      },
+      "info_changes": {
+        "audio_running": true,
+        "clipped_samples": 17
+      },
+      "saved_controls": "unchanged stopped base; controls_dirty true"
+    },
+    "pending": {
+      "session_changes": {
+        "held_keys[0][24]": true,
+        "held_keys[1][36]": true,
+        "held_pedals[12]": true
+      },
+      "actions": [
+        "activate upper PresetKey BankA (index10)",
+        "external_parameter for lower bankB drawbar index4 with normalized0.625",
+        "submit resulting copied control command with Ok and sequence9",
+        "Tab down/up until focus [4,1,1,4]"
+      ],
+      "expected": {
+        "controls_pending": true,
+        "controls_dirty": true,
+        "focus": [
+          4,
+          1,
+          1,
+          4
+        ],
+        "desired_selected_banks": [
+          0,
+          1
+        ],
+        "applied_selected_banks": [
+          1,
+          1
+        ],
+        "desired_lower_B_drawbar4": 5
+      },
+      "info_changes": {}
+    },
+    "recovery": {
+      "session_changes": {
+        "recovery_count": 2,
+        "queue_overflows": 1,
+        "rejected_commands": 2,
+        "discarded_commands": 3,
+        "fault_flags": 1
+      },
+      "actions": [
+        "submitted ReleaseUiNotes with RecoveryPending and sequence0"
+      ],
+      "info_changes": {
+        "status_message": "Input recovered: release held keys before playing again."
+      },
+      "expected": {
+        "input_recovery": true,
+        "last_submit_status": 11
+      }
+    },
+    "audio-overlay": {
+      "session_changes": {},
+      "info_changes": {
+        "overlay": 2,
+        "selected_device": 1,
+        "selected_sample_rate": 96000,
+        "selected_buffer_frames": 256
+      }
+    }
+  },
+  "metadata_schema": {
+    "model": "Every public UiViewState member, complete desired/applied controls and copied session; layout scalar members and all named regions. Detailed control/key geometry is checked before/after paint locally and omitted from the bounded stream.",
+    "info": "Every InstrumentViewInfo member; inspection is explicitly null",
+    "control_id": [
+      "kind",
+      "manual",
+      "bank",
+      "index"
+    ],
+    "layout.controls_entry": [
+      "id",
+      "bounds",
+      "label_bounds",
+      "value_bounds",
+      "track"
+    ],
+    "layout.key_entry": [
+      "note[target,value]",
+      "bounds",
+      "accidental",
+      "hit",
+      "top",
+      "front"
+    ],
+    "rect": "[x,y,width,height]",
+    "quad": "four [x,y] pairs TL,TR,BR,BL",
+    "physical_clip_coordinates": "relative to physical viewport origin",
+    "logical_rectangles": "SDL public queries at incoming scale",
+    "renderer_identity": "name, flags, texture formats, limits, compiled/runtime SDL versions and RGBA format name",
+    "local_geometry_only": [
+      "layout.controls",
+      "layout.manual_keys",
+      "layout.pedal_keys"
+    ]
+  },
+  "cases": [
+    {
+      "case": 0,
+      "contract_case": 1,
+      "name": "reference-1672x941",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 1,
+      "contract_case": 2,
+      "name": "minimum-active-1400x820",
+      "logical_size": [
+        1400,
+        820
+      ],
+      "output_size": [
+        1400,
+        820
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1400,
+        820
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 2,
+      "contract_case": 3,
+      "name": "large-1920x1080",
+      "logical_size": [
+        1920,
+        1080
+      ],
+      "output_size": [
+        1920,
+        1080
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 3,
+      "contract_case": 4,
+      "name": "wide-2200x820",
+      "logical_size": [
+        2200,
+        820
+      ],
+      "output_size": [
+        2200,
+        820
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        2200,
+        820
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 4,
+      "contract_case": 5,
+      "name": "tall-1400x1100",
+      "logical_size": [
+        1400,
+        1100
+      ],
+      "output_size": [
+        1400,
+        1100
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1400,
+        1100
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 5,
+      "contract_case": 6,
+      "name": "scale-1.5",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2508,
+        1412
+      ],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "viewport": [
+        0,
+        0,
+        2508,
+        1412
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 6,
+      "contract_case": 7,
+      "name": "scale-2",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        3344,
+        1882
+      ],
+      "scale": [
+        2,
+        2
+      ],
+      "viewport": [
+        0,
+        0,
+        3344,
+        1882
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 7,
+      "contract_case": 8,
+      "name": "scale-1.25x1.5",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2090,
+        1412
+      ],
+      "scale": [
+        1.25,
+        1.5
+      ],
+      "viewport": [
+        0,
+        0,
+        2090,
+        1412
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 8,
+      "contract_case": 9,
+      "name": "translated-full-companion",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2534,
+        1448
+      ],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "viewport": [
+        13,
+        17,
+        2508,
+        1414
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 9,
+      "contract_case": 10,
+      "name": "translated-clip-left",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2534,
+        1448
+      ],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "viewport": [
+        13,
+        17,
+        2508,
+        1414
+      ],
+      "clip": [
+        22,
+        1328,
+        4,
+        86
+      ],
+      "clip_enabled": true,
+      "clip_kind": "physical-left",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 10,
+      "contract_case": 11,
+      "name": "translated-clip-right",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2534,
+        1448
+      ],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "viewport": [
+        13,
+        17,
+        2508,
+        1414
+      ],
+      "clip": [
+        2482,
+        1328,
+        4,
+        86
+      ],
+      "clip_enabled": true,
+      "clip_kind": "physical-right",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 11,
+      "contract_case": 12,
+      "name": "translated-clip-top",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2534,
+        1448
+      ],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "viewport": [
+        13,
+        17,
+        2508,
+        1414
+      ],
+      "clip": [
+        22,
+        1328,
+        2464,
+        4
+      ],
+      "clip_enabled": true,
+      "clip_kind": "physical-top",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 12,
+      "contract_case": 13,
+      "name": "translated-clip-bottom",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2534,
+        1448
+      ],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "viewport": [
+        13,
+        17,
+        2508,
+        1414
+      ],
+      "clip": [
+        22,
+        1410,
+        2464,
+        4
+      ],
+      "clip_enabled": true,
+      "clip_kind": "physical-bottom",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 13,
+      "contract_case": 14,
+      "name": "translated-enabled-empty",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2534,
+        1448
+      ],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "viewport": [
+        13,
+        17,
+        2508,
+        1414
+      ],
+      "clip": [
+        24,
+        1330,
+        0,
+        0
+      ],
+      "clip_enabled": true,
+      "clip_kind": "physical-empty",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 14,
+      "contract_case": 15,
+      "name": "translated-disjoint",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        2534,
+        1448
+      ],
+      "scale": [
+        1.5,
+        1.5
+      ],
+      "viewport": [
+        13,
+        17,
+        2508,
+        1414
+      ],
+      "clip": [
+        100,
+        100,
+        16,
+        16
+      ],
+      "clip_enabled": true,
+      "clip_kind": "physical-disjoint",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 15,
+      "contract_case": 16,
+      "name": "output-cropped-height-880",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        880
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        880
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 16,
+      "contract_case": 17,
+      "name": "running-meter-dirty-clipped",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "running",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 17,
+      "contract_case": 18,
+      "name": "pending-preset-controls-focus-held",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "pending",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 18,
+      "contract_case": 19,
+      "name": "input-recovery-status",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "recovery",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 19,
+      "contract_case": 20,
+      "name": "audio-settings-overlay",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "audio-overlay",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 20,
+      "contract_case": 21,
+      "name": "inactive-width-1399",
+      "logical_size": [
+        1399,
+        941
+      ],
+      "output_size": [
+        1399,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1399,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 21,
+      "contract_case": 22,
+      "name": "inactive-height-819",
+      "logical_size": [
+        1672,
+        819
+      ],
+      "output_size": [
+        1672,
+        819
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        819
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 0
+    },
+    {
+      "case": 22,
+      "contract_case": 23,
+      "name": "flat-play",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 0,
+      "presentation": 1
+    },
+    {
+      "case": 23,
+      "contract_case": 24,
+      "name": "rotary",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 1,
+      "presentation": 0
+    },
+    {
+      "case": 24,
+      "contract_case": 25,
+      "name": "service",
+      "logical_size": [
+        1672,
+        941
+      ],
+      "output_size": [
+        1672,
+        941
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "viewport": [
+        0,
+        0,
+        1672,
+        941
+      ],
+      "clip": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "clip_enabled": false,
+      "clip_kind": "disabled",
+      "blend": 1,
+      "state_profile": "stopped",
+      "workspace": 2,
+      "presentation": 0
+    }
+  ]
+}

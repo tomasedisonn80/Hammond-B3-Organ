@@ -5,6 +5,22 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current session and recovery
 
+**Portable registrations and reference apron, 16 November 2026**, base
+`54df95fe343d417dd89bb7a91f85e4f51c08dfe7`: this request's writable checkout is
+`/workspace/scratch/3edffb787db3/Hammond-B3-Organ`, with one root-coordinated
+`../build-native`. Read its [scope and wave plan](docs/development/2026-11-16-preset-library-continuation/README.md),
+[checkpoint](docs/development/2026-11-16-preset-library-continuation/CHECKPOINT.md)
+and [actual worker ledger](docs/development/2026-11-16-preset-library-continuation/assignments.json).
+This complementary scope adds headless registration preparation/export and a
+proposed pack, plus the lower wooden apron in wide Play. Existing LibraryModel,
+browser, native app integration, contact/audio, manual/rim/cap and semantic-entry
+work retain the owners below. Shared painter/build edits are root-assigned and
+sequential; preserve published advances at integration. Every future agent must
+recover current source/remote state, update setup/status/next actions with actual
+evidence, and commit/push accepted authorized work without recounting old workers.
+The request has its own sixty workers and fresh complete PDF coverage; its
+matching checker is record validation only. All existing obligations below bind.
+
 **Usable values, semantics and drawbar surfaces, 16 November 2026**, base `0865bc1584e4bda569fe2ccacfac87b842b8d906`: writable checkout `/workspace/scratch/db310007a069/Hammond-B3-Organ`; one coordinated `../build-native`. Read this session's [scope](docs/development/2026-11-16-accessibility-continuation/SCOPE.md), [checkpoint](docs/development/2026-11-16-accessibility-continuation/CHECKPOINT.md) and [actual assignments](docs/development/2026-11-16-accessibility-continuation/assignments.json). This request has its own 60 workers and fresh full atlas coverage. Existing other sessions remain read-only; reconcile their published advances without claiming their pending scope. Semantic inspection alone is not a native accessibility provider. Preserve the existing controls/state/Engine and all acceptance requirements below.
 
 ### Retained runtime session

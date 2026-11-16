@@ -37,6 +37,8 @@ public:
     // Optional decorative RGB assets are uploaded only during initialize().
     // A false result asks the caller to retain its procedural fallback.
     [[nodiscard]] bool reference_art(ReferenceArt art, UiRect bounds) const noexcept;
+    // Independent RGBA apron; its transparent hole preserves live footer backing.
+    [[nodiscard]] bool apron_art(UiRect bounds) const noexcept;
     void text(std::string_view value, float x, float top, float size,
               UiColor color, TextFace face = TextFace::Sans) const noexcept;
     [[nodiscard]] float text_width(std::string_view value, float size,
@@ -51,6 +53,7 @@ private:
     SDL_Texture* cabinet_{};
     SDL_Texture* left_wood_{};
     SDL_Texture* right_wood_{};
+    SDL_Texture* apron_{};
 };
 
 } // namespace hammond::standalone
