@@ -1,0 +1,551 @@
+{
+  "base_commit": "a411268fd498f65c083203137831bf5afed83bd8",
+  "case_count": 35,
+  "cases": [
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 704,
+      "input_sha256": "a188d92f8f3e637a6816379c7a6ad9165fec5637761c971140b4d21dd07af876",
+      "name": "ordinary-44100",
+      "reason": "Separated dyadic contacts and ordinary press/release; the 96 kHz observation ends during release, so final partial travel is retained."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 704,
+      "input_sha256": "9afccb0b043b8cd120bb1c04d28277e872296914d67f953768c3f994fce0950a",
+      "name": "ordinary-96000",
+      "reason": "Separated dyadic contacts and ordinary press/release; the 96 kHz observation ends during release, so final partial travel is retained."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_grid_fields": {
+        "targets[0].tick": 32768
+      },
+      "expected_status": "accepted",
+      "input_bytes": 723,
+      "input_sha256": "8f3e25893a570f9fc19144de50831ae35a9b4af8e6ae1e572fab527189aea880",
+      "name": "time-midpoint-even",
+      "reason": "Exact half-tick rounds to the even integer, with no collision or event equality at the shifted start."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_grid_fields": {
+        "targets[0].tick": 32770
+      },
+      "expected_status": "accepted",
+      "input_bytes": 722,
+      "input_sha256": "fe8e52952a7b0bdb56f74c44ae0611a0dd160eb8fff01d52d4fff691f915ec22",
+      "name": "time-midpoint-odd",
+      "reason": "Exact half-tick rounds to the even integer, with no collision or event equality at the shifted start."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_grid_fields": {
+        "targets[0].position": 140737488355328
+      },
+      "expected_status": "accepted",
+      "input_bytes": 633,
+      "input_sha256": "e467b5e80d067628e51ae475b79a1c6f580a33f94b255abb975ab2467dc84d2a",
+      "name": "target-midpoint-even",
+      "reason": "Interior target midpoint has no distinct threshold at its rounded value; complete arrival and hold are certified."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_grid_fields": {
+        "targets[0].position": 140737488355330
+      },
+      "expected_status": "accepted",
+      "input_bytes": 632,
+      "input_sha256": "40d77242e9d148b799b06f4ec791a2aaf4bfd56d5ec94602e889042c57314200",
+      "name": "target-midpoint-odd",
+      "reason": "Interior target midpoint has no distinct threshold at its rounded value; complete arrival and hold are certified."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_grid_fields": {
+        "keys[0].contacts[0].off": 70368744177664,
+        "keys[0].contacts[0].on": 140737488355328
+      },
+      "expected_status": "accepted",
+      "input_bytes": 711,
+      "input_sha256": "b601e7e738c66df59b3d033a82b8eb5f655bd29a8038c3122d582f45b71d997f",
+      "name": "threshold-midpoint-even",
+      "reason": "Independent make/break midpoints exercise even and odd integer parity without a per-key collision."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_grid_fields": {
+        "keys[0].contacts[0].off": 70368744177666,
+        "keys[0].contacts[0].on": 140737488355330
+      },
+      "expected_status": "accepted",
+      "input_bytes": 711,
+      "input_sha256": "5c3d607b7ea863e34a14aafa5a49a9779e1528b66058a1431bbe1b9f87b03a75",
+      "name": "threshold-midpoint-odd",
+      "reason": "Independent make/break midpoints exercise even and odd integer parity without a per-key collision."
+    },
+    {
+      "expected_code_or_stage": "position_collision",
+      "expected_status": "refused",
+      "input_bytes": 638,
+      "input_sha256": "c42b24b776dd7fd7b9571d504bf8e7f6cd1f773863ad2fc3783d8d723b8a5564",
+      "name": "reviewed-target-threshold",
+      "reason": "Distinct target 1/2-2^-54 and make 1/2 map to Q/2, turning an unreachable make into a reached threshold if admitted."
+    },
+    {
+      "expected_code_or_stage": "grid_domain",
+      "expected_status": "refused",
+      "input_bytes": 693,
+      "input_sha256": "db583f2c7200319adca65eac092f133c04fb09b83ac45b18d17ded210da5c02c",
+      "name": "reviewed-hysteresis-collapse",
+      "reason": "Positive source hysteresis rounds to off==on; grid-domain refusal precedes the general position-collision stage."
+    },
+    {
+      "expected_code_or_stage": "time_collision",
+      "expected_status": "refused",
+      "input_bytes": 740,
+      "input_sha256": "584077b2685556c00ea367ac93c6fbb42d19b5386fded39aad458f0ac583c740",
+      "name": "reviewed-time-collision",
+      "reason": "The exact reviewed 1/2 +/- 2^-18 frame pair both map to tick 32768."
+    },
+    {
+      "expected_code_or_stage": "position_collision",
+      "expected_status": "refused",
+      "input_bytes": 689,
+      "input_sha256": "6a907377b47882fdee8323871d79c9a451988d24bbe68561f038c284e4bab8bb",
+      "name": "reviewed-threshold-order",
+      "reason": "Contact 1 precedes contact 0 before rounding; distinct make thresholds would become one equality group, so scalar admission refuses first."
+    },
+    {
+      "expected_code_or_stage": "event_order",
+      "expected_status": "refused",
+      "input_bytes": 1262,
+      "input_sha256": "70e70c17f92fadbfea4f66990a4d67336bf2eb9418e7565829ae0ef74fc143f1",
+      "name": "reviewed-f09-equality",
+      "reason": "The unchanged F09 contact-4 make equals command 375/32 in the source; the grid make is 7/2932031008 frames earlier despite final-bit agreement.",
+      "source_path": "data/contact-switching/reference-v1/F09-48000-v1.json"
+    },
+    {
+      "expected_code_or_stage": "time_collision",
+      "expected_status": "refused",
+      "input_bytes": 1076,
+      "input_sha256": "31533257c9d6a9f581629213bbb54d7ac48d21ec70c1411746c50ecdcbe37143",
+      "name": "cross-key-frame-boundary-collision",
+      "reason": "Different keys on opposite sides of frame 1 collide at its tick; whole-epoch conversion must detect what per-block conversion can hide."
+    },
+    {
+      "expected_code_or_stage": "position_collision",
+      "expected_status": "refused",
+      "input_bytes": 664,
+      "input_sha256": "1e5af8780ad88f719f1f996ba1a7d33d2e7e29f17f3f509e9bc06b13f9201d22",
+      "name": "positive-subnormal-target",
+      "reason": "The smallest positive binary64 target collides with implicit initial zero; it cannot silently become a no-op."
+    },
+    {
+      "expected_code_or_stage": "position_collision",
+      "expected_status": "refused",
+      "input_bytes": 679,
+      "input_sha256": "405f7cea2e7825c6674cdbcd4f508df7aea147f2be4ab2546f2cbe2168127b81",
+      "name": "target-full-travel-collision",
+      "reason": "The distinct predecessor of 1 rounds to Q and collides with the implicit full-travel endpoint even without a threshold at 1."
+    },
+    {
+      "expected_code_or_stage": "position_collision",
+      "expected_status": "refused",
+      "input_bytes": 714,
+      "input_sha256": "8b01c1c9b630e31366a5d050a1c80383dc0d898c239380173a9d8e14201dfdbc",
+      "name": "subnormal-break-threshold",
+      "reason": "A positive subnormal break threshold maps to implicit zero while off<on remains valid; topology must not redefine that endpoint."
+    },
+    {
+      "expected_code_or_stage": "time_collision",
+      "expected_status": "refused",
+      "input_bytes": 671,
+      "input_sha256": "4c2fcbd0dd212ae14920622052362e5e07b63e2f1daa0f5a7c2b83080515d2c6",
+      "name": "interior-time-to-start",
+      "reason": "A strictly interior quarter-tick command cannot be rounded onto 0."
+    },
+    {
+      "expected_code_or_stage": "time_collision",
+      "expected_status": "refused",
+      "input_bytes": 671,
+      "input_sha256": "7c5feb57eb4b1e3185d8277de46bc81d055f88cd6a19bdbc8ebe81e0f75c89c3",
+      "name": "interior-time-to-close",
+      "reason": "A strictly interior quarter-tick-before-N command cannot become closure-only at N."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 1270,
+      "input_sha256": "a917fc0aa9ef16d93f122640ce8d3ea290f5d81bd637272905dd26bcd8610adf",
+      "name": "tied-caller-order-shared-cancel",
+      "reason": "Tied caller changes and independent shared-source histories survive even when equal signed gains cancel audio; zero-time reversals travel nowhere."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 819,
+      "input_sha256": "ad8335cc4e6be97f30a089ed1e99cf0834e72d238f200fb4e9274b29575d790f",
+      "name": "repeated-target-anchor",
+      "reason": "Repeated targets before arrival are quota-visible commands and retain the persistent motion anchor instead of restarting travel."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 772,
+      "input_sha256": "c92a4e538cf4743ca102cb68919f91b5a81e9939c924bd576166da318a851592",
+      "name": "partial-arrival-and-hold",
+      "reason": "Partial targets reach/hold before retargeting; an existing make/target equality remains an edge-arrival tie in both exact models."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 879,
+      "input_sha256": "ca25f5f8948691a73a92ec05e24d592a72d57098707109ff09829e0856f6ff4e",
+      "name": "incomplete-return-reversal",
+      "reason": "Repress during incomplete return preserves position and hysteresis; later partial holds exercise propagated anchors."
+    },
+    {
+      "expected_code_or_stage": "event_order",
+      "expected_status": "refused",
+      "input_bytes": 717,
+      "input_sha256": "b92dfb893f7c8d97d5873cfe2f1d5f2aab27b9962f9c306095c3a633709666a9",
+      "name": "arrival-command-equality",
+      "reason": "Source full-travel arrival at 375/16 exactly equals a release command; rounded positive speed reaches slightly earlier, losing that equality."
+    },
+    {
+      "expected_code_or_stage": "event_identity",
+      "expected_status": "refused",
+      "input_bytes": 658,
+      "input_sha256": "ffc25a581bd1cf7ade18c4c704c0c7dfe6b585b3a9b0bf552cd1412a6b0b5100",
+      "name": "arrival-at-observation-end",
+      "reason": "Source reaches 1 exactly at N=375; rounded speed is smaller, so the grid has no reached-target arrival inside the closed observation."
+    },
+    {
+      "expected_code_or_stage": "event_identity",
+      "expected_status": "refused",
+      "input_bytes": 615,
+      "input_sha256": "fcae821d1d419c682ab8b82d21daec63b4638d6a0d59a93740e47a73e8edb71a",
+      "name": "edge-at-observation-end",
+      "reason": "Source make at N=375 is included; a slightly smaller rounded speed moves it beyond N, changing the edge set before any error-budget test."
+    },
+    {
+      "expected_code_or_stage": "dynamic_topology",
+      "expected_status": "refused",
+      "input_bytes": 726,
+      "input_sha256": "82bb62c2aeb3bfd5b59ca4421ecc9df724a8cdd9e1f94ee0328e7e1ae7692301",
+      "name": "dynamic-arrived-target-direction",
+      "reason": "At 375/32 source position equals the new target while grid position is larger; source holds and grid releases, preceding event-order refusal."
+    },
+    {
+      "expected_code_or_stage": "root_budget",
+      "expected_status": "refused",
+      "input_bytes": 619,
+      "input_sha256": "7c1bb47da1c1fd2c46c93ffd00b80fe868b284c7b8d129cd677f9f7ac9bba783",
+      "name": "root-budget-slow-travel",
+      "reason": "The source root at 3000 frames and its matched grid root preserve topology but differ by over 2^-10 frames; position stays below 2^-18."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 759,
+      "input_sha256": "19efde5a7cd0cc785e91020b3f331e2f61c03ea25150d3cb096c6aae4d2cbbbd",
+      "name": "position-budget-below",
+      "reason": "Quarter-tick rounding biases alternating short moves without crossing contacts or reaching targets; the two- versus eight-change cases bracket the continuous 2^-18 position limit."
+    },
+    {
+      "expected_code_or_stage": "position_budget",
+      "expected_status": "refused",
+      "input_bytes": 1168,
+      "input_sha256": "0d5a3dc988f1ff80c78faa967b8d270ce7ed3ffbb4a6677d1608204fc3f3b213",
+      "name": "position-budget-above",
+      "reason": "Quarter-tick rounding biases alternating short moves without crossing contacts or reaching targets; the two- versus eight-change cases bracket the continuous 2^-18 position limit."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_grid_fields": {
+        "frames": 0
+      },
+      "expected_status": "accepted",
+      "input_bytes": 593,
+      "input_sha256": "50ce89c085e3f982ba8188061a923abaf2bcd1309e02e0ed0c85ce07f0281fef",
+      "name": "empty-epoch",
+      "reason": "N=0 retains both equal boundary labels, no edges/arrivals and no process partition; initial contacts stay open."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_grid_fields": {
+        "targets[1].position": 0,
+        "targets[2].position": 140737488355328
+      },
+      "expected_status": "accepted",
+      "input_bytes": 764,
+      "input_sha256": "c62b9e3809305cfe2c7e1a211d721f6f81d3b7759373d6e73e616200c1578006",
+      "name": "zero-frame-closure-ties",
+      "reason": "Closure-only tied targets have no travel or instantaneous arrival; original input admission canonicalizes signed zero."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 711,
+      "input_sha256": "9e88b39fb5da9de01e71bef16ef25e141eb32bbfe8208593002fcc5dc19e4135",
+      "name": "subnormal-canonical-sidecar",
+      "reason": "Permitted source/gain/phase subnormals survive canonical binary64 sidecar encoding; silent or muted routes still retain every contact."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 27738,
+      "input_sha256": "8b285b05f978b39c2ed11e5491150364fc16d0f0a4385dfb693ecd7674e70444",
+      "name": "maximum-command-noops",
+      "reason": "All 512 supplied tied no-ops count and remain separately labeled; none is deduplicated despite an unchanged final state."
+    },
+    {
+      "expected_code_or_stage": "accepted",
+      "expected_status": "accepted",
+      "input_bytes": 1759,
+      "input_sha256": "3247a558dc067f98aa3a041103050c746c7d3d81e2a63b5a28c46b99931a6610",
+      "name": "four-key-independent-ties",
+      "reason": "All four keys share one source and equal travel but keep 36 independent contact identities, including two wholly muted keys and caller order."
+    }
+  ],
+  "contract": {
+    "path": "docs/CONTACT_GRID_CONVERSION_CONTRACT.md",
+    "sha256": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0"
+  },
+  "corpus_id": "contact-grid-conversion-fixtures-v1",
+  "evidence_class": "synthetic",
+  "expectations_are_not_candidate_results": true,
+  "expected_accepted": 18,
+  "expected_refused": 17,
+  "frozen_before_candidate_implementation": true,
+  "generator": {
+    "encoding_entry_point": "canonical_input_bytes(input)",
+    "entry_point": "cases()",
+    "independence": "Python standard library only; imports no candidate, numerical replay, or test-oracle helper.",
+    "path": "tests/reference/contact_grid_conversion_cases.py",
+    "sha256": "74a83734d80a31db2f046e0dd70f4989dbb9784af81ef9ac52e344409a96b427"
+  },
+  "independent_exact_witnesses": {
+    "f09_equality_loss_frames": "7/2932031008",
+    "midpoint_checks": 6,
+    "position_budget": "1/262144",
+    "position_budget_above": {
+      "sup_error": "4835795696657716236951721/349396196687905745531201126400",
+      "time_frames": "4/1",
+      "within_budget": false
+    },
+    "position_budget_below": {
+      "sup_error": "4836165369454514389459789/1397584786751622982124804505600",
+      "time_frames": "4/1",
+      "within_budget": true
+    },
+    "slow_root": {
+      "error_frames": "728/44739",
+      "exceeds_root_budget": true,
+      "grid_speed": 44739,
+      "grid_time_frames": "134217728/44739",
+      "source_time_frames": "3000/1"
+    }
+  },
+  "limits": "Synthetic pre-implementation fixture expectations and original input identities only. Not converter acceptance, independent full trajectory-oracle coverage, native-resource evidence, audio accuracy, or physical fidelity.",
+  "original_fixture_count": 36,
+  "original_fixture_manifest": {
+    "path": "data/contact-switching/reference-v1/manifest.json",
+    "sha256": "b80db78bb8477b683bfd2cc1013a0b600c45e8f20b7fc08f75c5efe6e10a22ec"
+  },
+  "original_fixture_policy": "Execute and retain the observed disposition for every one of these 36 unchanged files. They are required study inputs, not a selected accepted subset. The reviewed 48 kHz F09 refusal is also a named case above; other original-file dispositions are deliberately not guessed here.",
+  "original_fixtures": [
+    {
+      "bytes": 1225,
+      "path": "data/contact-switching/reference-v1/F00-44100-v1.json",
+      "sha256": "fa5b4a9316c9c9b5063427a93add8d9d0fe66363f8decdddca8eeb8fc8ecb113"
+    },
+    {
+      "bytes": 1224,
+      "path": "data/contact-switching/reference-v1/F00-48000-v1.json",
+      "sha256": "2a67c702245770a525dbcdb20d40c5127a511500b3ae46ce01828eb271a72717"
+    },
+    {
+      "bytes": 1224,
+      "path": "data/contact-switching/reference-v1/F00-96000-v1.json",
+      "sha256": "dc7c7554e76398c49fd9ed024a7e4037e98988f6373dbf53469337f9a4396e62"
+    },
+    {
+      "bytes": 1222,
+      "path": "data/contact-switching/reference-v1/F01-44100-v1.json",
+      "sha256": "73ca1b0542bbd60501fdea81da3411c3b4f363d086a2b6fb1688cc2f51ca3b63"
+    },
+    {
+      "bytes": 1221,
+      "path": "data/contact-switching/reference-v1/F01-48000-v1.json",
+      "sha256": "ac1ff9552af9d3db650abbac5f73edda14ee728aee0bab7865768194d9bd10f7"
+    },
+    {
+      "bytes": 1221,
+      "path": "data/contact-switching/reference-v1/F01-96000-v1.json",
+      "sha256": "3274472300ab9d42d11d34a6403a9b1695afe2b60c8bd7b3b26e2c2eded47a0d"
+    },
+    {
+      "bytes": 1239,
+      "path": "data/contact-switching/reference-v1/F02-44100-v1.json",
+      "sha256": "fb2ef23cdddedfd92152a335d146c3367cd5633f91010f335ee74944036db0e5"
+    },
+    {
+      "bytes": 1238,
+      "path": "data/contact-switching/reference-v1/F02-48000-v1.json",
+      "sha256": "edf3fddee3ca55d1ebbdf367210b1d032689a467e385cd1c0ecd66f014bad2af"
+    },
+    {
+      "bytes": 1238,
+      "path": "data/contact-switching/reference-v1/F02-96000-v1.json",
+      "sha256": "d28e76e089129483f78a7335aa408002cded5ecda5037c1d5d3fcb6ed19a85a9"
+    },
+    {
+      "bytes": 1228,
+      "path": "data/contact-switching/reference-v1/F03-44100-v1.json",
+      "sha256": "fa00711d9e0b5fce1cbe957f2b8ddccec5a516dba06eac0508db4524a5d0b3b2"
+    },
+    {
+      "bytes": 1227,
+      "path": "data/contact-switching/reference-v1/F03-48000-v1.json",
+      "sha256": "54489aa93a15ade35cc77327e662f4cd494c68c90bc3368e0f907e9571054d90"
+    },
+    {
+      "bytes": 1227,
+      "path": "data/contact-switching/reference-v1/F03-96000-v1.json",
+      "sha256": "74b881a35711f280e52cdbda6049ea704ea17b4ecfcfa04cd75d1335d7acef98"
+    },
+    {
+      "bytes": 1227,
+      "path": "data/contact-switching/reference-v1/F04-44100-v1.json",
+      "sha256": "dd6dd7af67c2386fad422bdd6239e767d9570be10521f1441a5e8ecff5026187"
+    },
+    {
+      "bytes": 1226,
+      "path": "data/contact-switching/reference-v1/F04-48000-v1.json",
+      "sha256": "e236564527eaeb037d866c941896996e106d48e857edba58675ac113f35c7b21"
+    },
+    {
+      "bytes": 1226,
+      "path": "data/contact-switching/reference-v1/F04-96000-v1.json",
+      "sha256": "17e608f406c3a63da3ea1999a6a3905e5dc59ee53282200d429e24f3184e56ea"
+    },
+    {
+      "bytes": 2256,
+      "path": "data/contact-switching/reference-v1/F05-44100-v1.json",
+      "sha256": "c912354ab3db300b6d766151d628b5db2c981d411dc41d0c06e569ceb24cee46"
+    },
+    {
+      "bytes": 2255,
+      "path": "data/contact-switching/reference-v1/F05-48000-v1.json",
+      "sha256": "0f81743e647757d7a1a3385f333333a92e73fb0e4da5c2f95faca38f66f9824f"
+    },
+    {
+      "bytes": 2254,
+      "path": "data/contact-switching/reference-v1/F05-96000-v1.json",
+      "sha256": "446af94bd19d35d89cde478c0189165a3501062690e6390dbc089ae44a886002"
+    },
+    {
+      "bytes": 1359,
+      "path": "data/contact-switching/reference-v1/F06-44100-v1.json",
+      "sha256": "6e0e7ee103055153b504ed7a063db303d234696f618d97e85ed6f2b2ce3d1ab5"
+    },
+    {
+      "bytes": 1359,
+      "path": "data/contact-switching/reference-v1/F06-48000-v1.json",
+      "sha256": "08ab2d2f380413b2ea47395dddcd2b687b547c78700d598d20fb2cd26d91c32b"
+    },
+    {
+      "bytes": 1360,
+      "path": "data/contact-switching/reference-v1/F06-96000-v1.json",
+      "sha256": "6d9cbade09e2ac03c98dd0ed269fe5b05e4525cb075593067cb3a4cbea2e215e"
+    },
+    {
+      "bytes": 1470,
+      "path": "data/contact-switching/reference-v1/F07-44100-v1.json",
+      "sha256": "093517f16f7ba55f3f56fb7b47b9d19f147641094d49cd7143c33c7b1fceb9f1"
+    },
+    {
+      "bytes": 1470,
+      "path": "data/contact-switching/reference-v1/F07-48000-v1.json",
+      "sha256": "88a287c5b6d2242929c933de180644b1e3ccf1dba0e6ec66685453d4a6f47b19"
+    },
+    {
+      "bytes": 1471,
+      "path": "data/contact-switching/reference-v1/F07-96000-v1.json",
+      "sha256": "46978a97833834b112b71a04ae3dbc3248f226450297d35e45a0a97b5146d79b"
+    },
+    {
+      "bytes": 1691,
+      "path": "data/contact-switching/reference-v1/F08-44100-v1.json",
+      "sha256": "9b30d78048828334550c03308ed35d60a66d067fe57457596cfb9773d33329fe"
+    },
+    {
+      "bytes": 1691,
+      "path": "data/contact-switching/reference-v1/F08-48000-v1.json",
+      "sha256": "e7bdaf521328cf59650d559522007b52c33683ac95f89733f6f2ac648ee5f5ed"
+    },
+    {
+      "bytes": 1696,
+      "path": "data/contact-switching/reference-v1/F08-96000-v1.json",
+      "sha256": "765e3c26745b8bb5895981ebe51c6bcf15c11d1c664dae29ff8eef41c9a66423"
+    },
+    {
+      "bytes": 2542,
+      "path": "data/contact-switching/reference-v1/F09-44100-v1.json",
+      "sha256": "a9348fb7ef67f4d4150006188b203bf7707a42465e485682f7b5aaaf75cf0455"
+    },
+    {
+      "bytes": 2522,
+      "path": "data/contact-switching/reference-v1/F09-48000-v1.json",
+      "sha256": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b"
+    },
+    {
+      "bytes": 2522,
+      "path": "data/contact-switching/reference-v1/F09-96000-v1.json",
+      "sha256": "449fb3ea0608b653c1f8a466f55852e47d3d0c9a4b00452e2ac61253bc933185"
+    },
+    {
+      "bytes": 1226,
+      "path": "data/contact-switching/reference-v1/F10-44100-v1.json",
+      "sha256": "f992ff04092507840c0c03234988c5a9269c28d206f006bf188faab7c5c3faf8"
+    },
+    {
+      "bytes": 1226,
+      "path": "data/contact-switching/reference-v1/F10-48000-v1.json",
+      "sha256": "22934b6c567dfc06d09dabadd634a2ca22f3819bcaeb8abb16ae31e8500d6a8b"
+    },
+    {
+      "bytes": 1226,
+      "path": "data/contact-switching/reference-v1/F10-96000-v1.json",
+      "sha256": "c343c63911b58e52b83803fcd00dce0e951ed26be6582b614ecd9f4440f03775"
+    },
+    {
+      "bytes": 1377,
+      "path": "data/contact-switching/reference-v1/F11-44100-v1.json",
+      "sha256": "71b343694af63806742e3cd55260d8e8623bccaa8ec61a0d992e46c5167ede89"
+    },
+    {
+      "bytes": 1361,
+      "path": "data/contact-switching/reference-v1/F11-48000-v1.json",
+      "sha256": "11c86351c3ac242ee60ea7787137d7db1aafa9a3364340325a41cf73cedcfe1d"
+    },
+    {
+      "bytes": 1363,
+      "path": "data/contact-switching/reference-v1/F11-96000-v1.json",
+      "sha256": "b2f7969fc9e43083f2a62bb603faba2ba408fbf52412a1c7907d6117933acb90"
+    }
+  ],
+  "schema_version": 1,
+  "strict_input_admission": {
+    "all_admitted": true,
+    "new_cases": 35,
+    "original_cases": 36,
+    "parser_path": "tools/contact_switching_io.py",
+    "parser_sha256": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "scope": "Original schema/domain admission only; no converter result or waveform was evaluated."
+  }
+}

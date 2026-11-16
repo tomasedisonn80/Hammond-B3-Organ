@@ -5,6 +5,26 @@ and changes no authorities, approvals, obligations or frozen criteria.
 
 ## Current session and recovery
 
+**Contact conversion/material continuation**, base
+`a411268fd498f65c083203137831bf5afed83bd8`: writable checkout
+`/workspace/scratch/0d55e62af118/Hammond-B3-Organ`, coordinated build
+`../build-native`. Read the new [entry](docs/development/2026-11-16-conversion-material/README.md),
+[checkpoint](docs/development/2026-11-16-conversion-material/CHECKPOINT.md) and
+[actual ledger](docs/development/2026-11-16-conversion-material/assignments.json).
+The new [read-only checker](docs/development/2026-11-16-conversion-material/reports/check_session.py)
+accepts incomplete actual progress by default and requires all sixty accepted
+notes with `--strict`. Run it with `--repo .`; it verifies records, not external
+dispatch or product quality. Explicit sequential file handoffs belong in this
+ledger. The [fresh reading receipt](docs/development/2026-11-16-conversion-material/reports/atlas-reading-coverage.json)
+records all 500 pages covered by this session's six new readers.
+This request requires its own sixty distinct workers and complete atlas coverage;
+the prior session's accepted workers/results cannot count again. Root owns this
+checkout's shared integration/build/navigation files; new workers own only their
+assigned paths. The existing SDL checkout below is read-only. Preserve all old
+sessions and evidence. Read the full standing obligations and M0–M9 plan below.
+
+## Prior accepted streaming session
+
 **Streaming/material continuation, 2026-11-15**, base
 `4aac394cde4da40906b615573a8779aee2d9a37a`: writable checkout
 `/workspace/scratch/177e78b1ac09/Hammond-B3-Organ`; root's single Release native
@@ -28,7 +48,7 @@ identify dirty work or replace live queries. Resolve stale pointers through owne
 Choose bounded dependency-ready work, declare acceptance/missing inputs and continue
 useful work. All M0–M9 exits bind.
 
-This session's six new readers covered pages 1–500: [receipt](docs/development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json).
+The prior streaming session's six readers covered pages 1–500: [receipt](docs/development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json).
 Use the [reading map](docs/PROJECT_GUIDE.md#source-and-reading-records) and
 [atlas review](docs/research/ATLAS_REVIEW.md); read relevant chapters/errata before
 implementation. Retain contextual coverage across resets; no fabricated/recounted
@@ -132,14 +152,14 @@ checks establish consistency only. Strict closure needs the actual accepted set,
 ten six-worker waves and retained result. Never fabricate participation/outcomes
 or clear gates for accounting.
 
-This session's [read-only checker](docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py)
+The prior streaming session's [read-only checker](docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py)
 supports progress checks and `--strict` closure. From the repository root:
 
 ```sh
 python3 -B docs/development/2026-11-15-streaming-continuation/reports/check_streaming_session.py --repo . --strict
 ```
 
-It checks this ledger and note bytes, not actual external dispatch, correctness,
+It checks its historical ledger and note bytes, not actual external dispatch, correctness,
 publication or fidelity. A later session must retain its own actual records and
 matching validator; this session's sixty cannot be counted again.
 

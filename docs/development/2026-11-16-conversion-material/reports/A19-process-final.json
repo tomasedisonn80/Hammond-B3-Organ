@@ -1,0 +1,31 @@
+{
+  "external_timeout_seconds": 60,
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "tests/test_contact_grid_conversion_resources.py",
+        "-v",
+        "--report",
+        "docs/development/2026-11-16-conversion-material/reports/A19-resource-final.json"
+      ],
+      "exit_code": 0,
+      "enclosing_seconds": 3.4739829239988467,
+      "log": "A19-resource-final.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "tests/test_contact_grid_conversion.py",
+        "-v",
+        "--report",
+        "docs/development/2026-11-16-conversion-material/reports/A19-numerical-rerun.json"
+      ],
+      "exit_code": 0,
+      "enclosing_seconds": 1.2684542300012254,
+      "log": "A19-numerical-rerun.txt"
+    }
+  ]
+}

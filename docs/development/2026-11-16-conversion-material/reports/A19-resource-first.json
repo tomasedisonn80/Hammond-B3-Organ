@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "tests": 21,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 3.0963150800016592,
+  "python": "3.12.14",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cwd": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ",
+  "source_before": {
+    "tools/contact_grid_conversion.py": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797",
+    "tools/convert_contact_grid.py": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c",
+    "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+    "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0",
+    "tests/test_contact_grid_conversion_resources.py": "dcb6462d58acd61539cc46ab0834fd8e0aeca9b915bd4ead980fd41c2320e541"
+  },
+  "source_after": {
+    "tools/contact_grid_conversion.py": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797",
+    "tools/convert_contact_grid.py": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c",
+    "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+    "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0",
+    "tests/test_contact_grid_conversion_resources.py": "dcb6462d58acd61539cc46ab0834fd8e0aeca9b915bd4ead980fd41c2320e541"
+  },
+  "sources_unchanged": true,
+  "observations": {
+    "full_event_capacity": {
+      "edges": 4608,
+      "arrivals": 512,
+      "labels": 5634,
+      "union_knots": 1537,
+      "work_units": 162464,
+      "maximum_retained_rational_bits": 49,
+      "certificate_bytes": 4555161,
+      "transport_bytes": 10865,
+      "certificate_sha256": "a0e2b1cef7dc32dc798fe18db8f9a32b507fc8c40d34054b9c41d855fa079fa8",
+      "input_sha256": "a329247e170b5bad39044570d43bce4a078a0d8f7d58e0fe32042cef5a13dced"
+    },
+    "union_knot_boundary": {
+      "accepted_commands": 511,
+      "accepted_knots": 4096,
+      "accepted_work_units": 29933,
+      "refused_commands": 512,
+      "refusal": {
+        "reason": "union-knots",
+        "limit": 4096,
+        "retained": 3078,
+        "next_key_count": 1026
+      }
+    },
+    "segment_guard_injection": {
+      "accepted_limit": 1028,
+      "refused_limit": 1027,
+      "ordinary_limit": 1032
+    },
+    "arithmetic_distinction": {
+      "operand_bits": 4096,
+      "product_bits": [
+        8192,
+        8192
+      ],
+      "unreduced_sum_bits": 8193,
+      "reduced_result_numerator_bits": 8192,
+      "scope": "Independent arithmetic illustration; no private production helper call."
+    }
+  },
+  "process_peak_rss_bytes_linux": 187535360,
+  "limits": "Finite synthetic public-API cases; lowered-limit injections are guard tests. Process high-water RSS includes the entire test runner, not an API allocation bound. No native, audio, physical, callback or portable performance claim."
+}

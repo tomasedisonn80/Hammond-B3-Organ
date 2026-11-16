@@ -1598,8 +1598,97 @@ void reference_upper_rack_material(Drawing& drawing, UiRect bounds,
     }
 }
 
+// Lower v1 has its own illumination and grain. The existing mechanical raster
+// helpers are reused without changing the independently admitted Upper field.
+[[nodiscard]] std::array<double, 3> lower_rack_field(double u, double v) noexcept {
+    const auto r = upper_rack_binary64;
+    const double t = r(v - 0.48);
+    const double t2 = r(t * t);
+    const double t3 = r(t2 * t);
+    const double left_weight = std::max(0.0, r(1.0 - r(5.0 * u)));
+    const double right_weight = std::max(0.0, r(1.0 - r(5.0 * r(1.0 - u))));
+    const double left = r(r(r(61.0 * r(u - r(17.0 / 508.0))) * left_weight) * left_weight);
+    const double right = r(r(r(-74.0 * r(u - r(497.0 / 508.0))) * right_weight) * right_weight);
+    const double curve = r(r(r(40.0 - r(52.0 * u)) * t3) +
+                           r(r(4.0 * u) * r(t2 - 0.02581)));
+    const double correction = r(r(left + right) + curve);
+    constexpr std::array<std::array<double, 4>, 3> coefficients{{
+        {35.320924203, -10.874155773, -12.501738043, 6.205237100},
+        {34.943428203, -11.336804366, -14.777279430, 7.789951248},
+        {35.610452235, -13.973112652, -15.176662864, 10.100565245},
+    }};
+    std::array<double, 3> result{};
+    for (std::size_t channel = 0; channel < result.size(); ++channel) {
+        const auto& c = coefficients[channel];
+        const double base = r(r(r(c[0] + r(c[1] * u)) + r(c[2] * v)) + r(r(c[3] * u) * v));
+        result[channel] = r(base + correction);
+    }
+    return result;
+}
+
+[[nodiscard]] UiColor lower_rack_color(const std::array<double, 3>& field,
+                                      double grain = 0.0) noexcept {
+    const auto channel = [grain](double value) {
+        return static_cast<std::uint8_t>(std::clamp(
+            std::round(upper_rack_binary64(value + grain)), 0.0, 255.0));
+    };
+    return {channel(field[0]), channel(field[1]), channel(field[2]), 255};
+}
+
+void reference_lower_rack_material(Drawing& drawing, UiRect bounds,
+                                   ReferenceCompositionScale scale) noexcept {
+    if (!material_surface(bounds) || drawing.renderer() == nullptr) return;
+    auto* renderer = drawing.renderer();
+    const UpperRackColorGuard color_guard(renderer);
+    if (!color_guard.saved()) return;
+    const auto r = upper_rack_binary64;
+    {
+        const UpperRackRaster raster(renderer);
+        if (!raster.visible()) return;
+        std::array<int, 128> edges{};
+        for (std::size_t column = 0; column < edges.size(); ++column) {
+            const double product = r(static_cast<double>(bounds.width) * static_cast<double>(column));
+            edges[column] = raster.x_boundary(r(static_cast<double>(bounds.x) + r(product / 127.0)));
+        }
+        const int first_row = raster.y_boundary(bounds.y);
+        const int end_row = raster.y_boundary(r(static_cast<double>(bounds.y) +
+                                                static_cast<double>(bounds.height)));
+        if (edges.front() >= edges.back() || first_row >= end_row) return;
+        const double height = r(static_cast<double>(bounds.height) - 1.0);
+        for (int row = first_row; row < end_row; ++row) {
+            const double offset = r(raster.logical_y(row) - static_cast<double>(bounds.y));
+            const double center = r(offset - 0.5);
+            const double v = bounds.height <= 1.0F ? 0.0 : std::clamp(r(center / height), 0.0, 1.0);
+            for (std::size_t column = 0; column < 127; ++column) {
+                if (edges[column] >= edges[column + 1]) continue;
+                const double u = r(r(static_cast<double>(column) + 0.5) / 127.0);
+                const auto color = lower_rack_color(lower_rack_field(u, v));
+                SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
+                raster.span(edges[column], edges[column + 1], row);
+            }
+        }
+    }
+    // The raster guard restores both incoming scales before canonical marks.
+    constexpr std::uint32_t seed = 0xB3160A08U;
+    for (std::uint32_t pair = 0; pair < 2304U; ++pair) {
+        for (std::uint32_t mark = 0; mark < 2U; ++mark) {
+            const std::uint32_t k = 4U * pair + 2U * mark;
+            const std::uint32_t cx = 606U + upper_rack_mix(seed ^ k) % 504U;
+            const std::uint32_t cy = 275U + upper_rack_mix(seed ^ (k + 1U)) % 227U;
+            const double u = r(r(r(static_cast<double>(cx) + 0.5) - 604.0) / 508.0);
+            const double v = r(r(static_cast<double>(cy) - 273.0) / 230.0);
+            const auto color = lower_rack_color(lower_rack_field(u, v), mark == 0U ? 8.0 : -8.0);
+            const auto origin = reference_composition_point(
+                {static_cast<float>(cx), static_cast<float>(cy)}, scale);
+            drawing.rect({origin.x, origin.y, scale.sx, scale.sy}, color);
+        }
+    }
+}
+
+enum class ReferencePanelMaterial { Original, UpperRack, LowerRack };
+
 void reference_panel(Drawing& drawing, UiRect bounds, ReferenceCompositionScale scale,
-                     bool screws = true, bool upper_rack_material = false) {
+                     bool screws = true, ReferencePanelMaterial material = ReferencePanelMaterial::Original) {
     if (!material_surface(bounds)) return;
     for (int layer = 5; layer >= 1; --layer) {
         const float spread = static_cast<float>(layer);
@@ -1611,8 +1700,10 @@ void reference_panel(Drawing& drawing, UiRect bounds, ReferenceCompositionScale 
     drawing.rounded(bounds, 6.0F * scale.f, {7, 7, 7});
     drawing.rounded(reference_inset(bounds, 1.0F, scale), 5.0F * scale.f, kMetalEdge);
     drawing.rounded(reference_inset(bounds, 2.0F, scale), 4.0F * scale.f, {14, 14, 14});
-    if (upper_rack_material) {
+    if (material == ReferencePanelMaterial::UpperRack) {
         reference_upper_rack_material(drawing, reference_inset(bounds, 4.0F, scale), scale);
+    } else if (material == ReferencePanelMaterial::LowerRack) {
+        reference_lower_rack_material(drawing, reference_inset(bounds, 4.0F, scale), scale);
     } else {
         drawing.gradient(reference_inset(bounds, 4.0F, scale), {43, 41, 38}, {21, 22, 21});
         constexpr std::size_t maximum_grain_pairs = 2048;
@@ -2261,9 +2352,10 @@ void paint_reference_composition(Drawing& drawing, const UiModel& model, const I
     reference_wood(drawing, mapped({48.0F, 510.0F, 1074.0F, 18.0F}), scale);
     reference_header(drawing, layout, scale);
     reference_panel(drawing, layout.performance_panel, scale);
-    reference_panel(drawing, layout.registration_panels[0], scale, true, true);
+    reference_panel(drawing, layout.registration_panels[0], scale, true, ReferencePanelMaterial::UpperRack);
     for (std::size_t manual = 1; manual < layout.registration_panels.size(); ++manual)
-        reference_panel(drawing, layout.registration_panels[manual], scale);
+        reference_panel(drawing, layout.registration_panels[manual], scale, true,
+                        manual == 1 ? ReferencePanelMaterial::LowerRack : ReferencePanelMaterial::Original);
     // The cabinet is a parent of the moved toolbar and pedals. Finish its art
     // and truth rows now, before painting any nested live surfaces or focus.
     reference_cabinet(drawing, layout, info, scale);

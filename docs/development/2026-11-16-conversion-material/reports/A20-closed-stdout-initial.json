@@ -1,0 +1,12 @@
+{
+  "case": "actual CLI missing-argument refusal with parent stdout reader closed",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "tools/convert_contact_grid.py"
+  ],
+  "returncode": 120,
+  "stderr_utf8": "Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>\nBrokenPipeError: [Errno 32] Broken pipe\n",
+  "cli_sha256": "604eae2c20fd4fc0e7f9d8604558f6d196cc808c7451642d963323bee3b90e6f",
+  "scope": "No output destination supplied or changed; observations preserve initial behavior."
+}

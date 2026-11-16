@@ -1,0 +1,101 @@
+test_actual_empty_epoch_creates_previously_absent_output (__main__.ConversionCliTests.test_actual_empty_epoch_creates_previously_absent_output) ... ok
+test_actual_frozen_mathematical_refusals_preserve_destination (__main__.ConversionCliTests.test_actual_frozen_mathematical_refusals_preserve_destination) ... ok
+test_actual_subprocess_certificate_binds_original_bytes_and_five_files (__main__.ConversionCliTests.test_actual_subprocess_certificate_binds_original_bytes_and_five_files) ... ok
+test_changed_implementation_binding_is_refused_before_temporary (__main__.ConversionCliTests.test_changed_implementation_binding_is_refused_before_temporary) ... ok
+test_changed_output_is_not_overwritten_during_recheck (__main__.ConversionCliTests.test_changed_output_is_not_overwritten_during_recheck) ... ok
+test_complete_payload_precedes_all_output_io (__main__.ConversionCliTests.test_complete_payload_precedes_all_output_io) ... ok
+test_deadline_after_encoding_precedes_temporary_creation (__main__.ConversionCliTests.test_deadline_after_encoding_precedes_temporary_creation) ... ok
+test_deadline_at_last_precommit_checkpoint_preserves_destination (__main__.ConversionCliTests.test_deadline_at_last_precommit_checkpoint_preserves_destination) ... ok
+test_encoding_refusal_creates_no_temporary (__main__.ConversionCliTests.test_encoding_refusal_creates_no_temporary) ... ok
+test_expired_deadline_is_structured_and_does_not_publish (__main__.ConversionCliTests.test_expired_deadline_is_structured_and_does_not_publish) ... ok
+test_fifo_endpoints_are_refused_without_blocking (__main__.ConversionCliTests.test_fifo_endpoints_are_refused_without_blocking) ... ok
+test_fsync_and_replace_failures_preserve_destination (__main__.ConversionCliTests.test_fsync_and_replace_failures_preserve_destination) ... ok
+test_input_change_after_fsync_is_detected_and_temporary_removed (__main__.ConversionCliTests.test_input_change_after_fsync_is_detected_and_temporary_removed) ... ok
+test_input_change_before_temporary_creation_is_detected (__main__.ConversionCliTests.test_input_change_before_temporary_creation_is_detected) ... ok
+test_input_symlink_and_output_parent_symlink_are_supported (__main__.ConversionCliTests.test_input_symlink_and_output_parent_symlink_are_supported) ... ok
+test_interruption_while_restoring_handler_after_commit_is_success (__main__.ConversionCliTests.test_interruption_while_restoring_handler_after_commit_is_success) ... ok
+test_invalid_argument_diagnostic_is_sanitized_and_bounded (__main__.ConversionCliTests.test_invalid_argument_diagnostic_is_sanitized_and_bounded) ... ok
+test_malformed_input_uses_original_strict_admission (__main__.ConversionCliTests.test_malformed_input_uses_original_strict_admission) ... ok
+test_missing_parent_and_directory_endpoints_are_refused (__main__.ConversionCliTests.test_missing_parent_and_directory_endpoints_are_refused) ... ok
+test_one_absolute_deadline_is_shared_by_conversion_and_encoding (__main__.ConversionCliTests.test_one_absolute_deadline_is_shared_by_conversion_and_encoding) ... ok
+test_output_leaf_symlink_rejected_without_touching_target (__main__.ConversionCliTests.test_output_leaf_symlink_rejected_without_touching_target) ... ok
+test_oversized_exact_refusal_becomes_resource_without_truncation (__main__.ConversionCliTests.test_oversized_exact_refusal_becomes_resource_without_truncation) ... FAIL
+test_oversized_source_is_rejected_before_reading (__main__.ConversionCliTests.test_oversized_source_is_rejected_before_reading) ... ok
+test_partial_write_write_and_flush_failures_remove_owned_temporary (__main__.ConversionCliTests.test_partial_write_write_and_flush_failures_remove_owned_temporary) ... 
+  test_partial_write_write_and_flush_failures_remove_owned_temporary (__main__.ConversionCliTests.test_partial_write_write_and_flush_failures_remove_owned_temporary) (phase='write') ... FAIL
+  test_partial_write_write_and_flush_failures_remove_owned_temporary (__main__.ConversionCliTests.test_partial_write_write_and_flush_failures_remove_owned_temporary) (phase='short_write') ... FAIL
+  test_partial_write_write_and_flush_failures_remove_owned_temporary (__main__.ConversionCliTests.test_partial_write_write_and_flush_failures_remove_owned_temporary) (phase='flush') ... FAIL
+test_precommit_keyboard_interruptions_return_130 (__main__.ConversionCliTests.test_precommit_keyboard_interruptions_return_130) ... ok
+test_required_flags_accept_equals_syntax_once (__main__.ConversionCliTests.test_required_flags_accept_equals_syntax_once) ... ok
+test_same_path_and_hardlink_aliases_are_rejected (__main__.ConversionCliTests.test_same_path_and_hardlink_aliases_are_rejected) ... ok
+test_sigint_during_failed_replace_preserves_destination (__main__.ConversionCliTests.test_sigint_during_failed_replace_preserves_destination) ... ok
+test_sigint_during_successful_replace_cannot_report_refusal (__main__.ConversionCliTests.test_sigint_during_successful_replace_cannot_report_refusal) ... ok
+test_sigint_observed_before_replace_aborts (__main__.ConversionCliTests.test_sigint_observed_before_replace_aborts) ... ok
+test_strict_argument_refusals_preserve_output (__main__.ConversionCliTests.test_strict_argument_refusals_preserve_output) ... ok
+test_temporary_creation_and_fdopen_failures_preserve_destination (__main__.ConversionCliTests.test_temporary_creation_and_fdopen_failures_preserve_destination) ... 
+  test_temporary_creation_and_fdopen_failures_preserve_destination (__main__.ConversionCliTests.test_temporary_creation_and_fdopen_failures_preserve_destination) (function='fdopen') ... FAIL
+
+======================================================================
+FAIL: test_oversized_exact_refusal_becomes_resource_without_truncation (__main__.ConversionCliTests.test_oversized_exact_refusal_becomes_resource_without_truncation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 429, in test_oversized_exact_refusal_becomes_resource_without_truncation
+    self.assertIn("exact witness not emitted", value["witness"]["reason"])
+AssertionError: 'exact witness not emitted' not found in 'diagnostic-size'
+
+======================================================================
+FAIL: test_partial_write_write_and_flush_failures_remove_owned_temporary (__main__.ConversionCliTests.test_partial_write_write_and_flush_failures_remove_owned_temporary) (phase='write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 320, in test_partial_write_write_and_flush_failures_remove_owned_temporary
+    self.assert_refused(self.invoke(), code="operation")
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 105, in assert_refused
+    self.assertEqual(value["code"], code)
+AssertionError: 'input' != 'operation'
+- input
++ operation
+
+
+======================================================================
+FAIL: test_partial_write_write_and_flush_failures_remove_owned_temporary (__main__.ConversionCliTests.test_partial_write_write_and_flush_failures_remove_owned_temporary) (phase='short_write')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 320, in test_partial_write_write_and_flush_failures_remove_owned_temporary
+    self.assert_refused(self.invoke(), code="operation")
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 105, in assert_refused
+    self.assertEqual(value["code"], code)
+AssertionError: 'input' != 'operation'
+- input
++ operation
+
+
+======================================================================
+FAIL: test_partial_write_write_and_flush_failures_remove_owned_temporary (__main__.ConversionCliTests.test_partial_write_write_and_flush_failures_remove_owned_temporary) (phase='flush')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 320, in test_partial_write_write_and_flush_failures_remove_owned_temporary
+    self.assert_refused(self.invoke(), code="operation")
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 105, in assert_refused
+    self.assertEqual(value["code"], code)
+AssertionError: 'input' != 'operation'
+- input
++ operation
+
+
+======================================================================
+FAIL: test_temporary_creation_and_fdopen_failures_preserve_destination (__main__.ConversionCliTests.test_temporary_creation_and_fdopen_failures_preserve_destination) (function='fdopen')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 314, in test_temporary_creation_and_fdopen_failures_preserve_destination
+    self.assert_refused(self.invoke(), code="operation")
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 105, in assert_refused
+    self.assertEqual(value["code"], code)
+AssertionError: 'input' != 'operation'
+- input
++ operation
+
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.198s
+
+FAILED (failures=5)

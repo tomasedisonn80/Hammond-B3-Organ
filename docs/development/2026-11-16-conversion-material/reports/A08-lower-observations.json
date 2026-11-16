@@ -1,0 +1,3680 @@
+{
+  "schema_version": 1,
+  "scope": "authoring observations, no candidate admission",
+  "evidence_class": "generated-reference image statistics",
+  "decoder": {
+    "python": "3.12.14",
+    "pillow": "13.0.0",
+    "libjpeg_turbo": "3.2.0",
+    "operation": "RGB decode only; no resampling, gamma/ICC transform or registration"
+  },
+  "source_files": [
+    {
+      "path": "docs/design/atlas-cover-reference.jpg",
+      "bytes": 412664,
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    },
+    {
+      "path": "/workspace/scratch/0d55e62af118/baseline/play-reference.png",
+      "bytes": 728335,
+      "sha256": "835cfac199afa9a060b765c1c39a80f5819fc5f9b1c583002155ed1eea04b925"
+    },
+    {
+      "path": "apps/standalone/InstrumentView.cpp",
+      "bytes": 154324,
+      "sha256": "30ac6cec988ec1834f36456d25d1e53113642071d844d53f81b62b3474cf2c37"
+    },
+    {
+      "path": "apps/standalone/UiModel.cpp",
+      "bytes": 83758,
+      "sha256": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd"
+    },
+    {
+      "path": "apps/standalone/Drawing.cpp",
+      "bytes": 20951,
+      "sha256": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f"
+    },
+    {
+      "path": "docs/development/2026-11-16-conversion-material/reports/A08-lower-observations.py",
+      "bytes": 5635,
+      "sha256": "027f7a132622c0d2cb97b31487ddadc940176398ca4445eb5a803a2949a61f66"
+    }
+  ],
+  "patch_selection": {
+    "primary": [
+      "left",
+      "right",
+      "left_top",
+      "right_top",
+      "center_top",
+      "left_bottom",
+      "right_bottom"
+    ],
+    "descriptive_only": [
+      "bottom_interior_left",
+      "bottom_interior_middle",
+      "bottom_interior_right"
+    ],
+    "reason": "Primary strips avoid numerals, heading glyphs, wells and controls. Three bottom-interior witnesses expose an extra warm reflection not identified by the first field; preserve this residual."
+  },
+  "images": {
+    "reference": {
+      "decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+      "size": [
+        1672,
+        941
+      ],
+      "patches": {
+        "left": {
+          "xywh": [
+            612,
+            320,
+            18,
+            128
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "64350151",
+              "denominator": "2304000",
+              "value": 27.929753038194445
+            },
+            "slope_x": {
+              "numerator": "8366797",
+              "denominator": "124032000",
+              "value": 0.06745676115841073
+            },
+            "slope_y": {
+              "numerator": "-1915555067",
+              "denominator": "31455360000",
+              "value": -0.060897572528179615
+            },
+            "residual_sse": {
+              "numerator": "635780597390512056959",
+              "denominator": "101600812800000000",
+              "value": 6257.632984118332
+            },
+            "residual_population_rms": 1.6480250417532507,
+            "sufficient_statistics": {
+              "n": 2304,
+              "sum": 643501510,
+              "sum_squares": 181548892226052,
+              "twice_centered_x_sum": 83667970,
+              "twice_centered_y_sum": -3831110134,
+              "centered_x_square_sum": {
+                "numerator": "62016",
+                "denominator": "1",
+                "value": 62016.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "3145536",
+                "denominator": "1",
+                "value": 3145536.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "11155",
+                "denominator": "384",
+                "value": 29.049479166666668
+              },
+              "slope_x": {
+                "numerator": "947",
+                "denominator": "15504",
+                "value": 0.06108101135190919
+              },
+              "slope_y": {
+                "numerator": "-18601",
+                "denominator": "349504",
+                "value": -0.053221136238784106
+              },
+              "residual_sse": {
+                "numerator": "1166933986117",
+                "denominator": "169334688",
+                "value": 6891.28730740036
+              },
+              "residual_population_rms": 1.7294537045145741,
+              "sufficient_statistics": {
+                "n": 2304,
+                "sum": 66930,
+                "sum_squares": 1960314,
+                "twice_centered_x_sum": 7576,
+                "twice_centered_y_sum": -334818,
+                "centered_x_square_sum": {
+                  "numerator": "62016",
+                  "denominator": "1",
+                  "value": 62016.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3145536",
+                  "denominator": "1",
+                  "value": 3145536.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "5297",
+                "denominator": "192",
+                "value": 27.588541666666668
+              },
+              "slope_x": {
+                "numerator": "601",
+                "denominator": "7752",
+                "value": 0.07752837977296181
+              },
+              "slope_y": {
+                "numerator": "-65891",
+                "denominator": "1048512",
+                "value": -0.06284238997741562
+              },
+              "residual_sse": {
+                "numerator": "2225375233787",
+                "denominator": "338669376",
+                "value": 6570.937296045923
+              },
+              "residual_population_rms": 1.6887774609225255,
+              "sufficient_statistics": {
+                "n": 2304,
+                "sum": 63564,
+                "sum_squares": 1773004,
+                "twice_centered_x_sum": 9616,
+                "twice_centered_y_sum": -395346,
+                "centered_x_square_sum": {
+                  "numerator": "62016",
+                  "denominator": "1",
+                  "value": 62016.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3145536",
+                  "denominator": "1",
+                  "value": 3145536.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "64541",
+                "denominator": "2304",
+                "value": 28.012586805555557
+              },
+              "slope_x": {
+                "numerator": "-1679",
+                "denominator": "124032",
+                "value": -0.013536829205366358
+              },
+              "slope_y": {
+                "numerator": "-404117",
+                "denominator": "6291072",
+                "value": -0.06423658797737491
+              },
+              "residual_sse": {
+                "numerator": "33836005717631",
+                "denominator": "4064032512",
+                "value": 8325.722202694573
+              },
+              "residual_population_rms": 1.9009457398964944,
+              "sufficient_statistics": {
+                "n": 2304,
+                "sum": 64541,
+                "sum_squares": 1829277,
+                "twice_centered_x_sum": -1679,
+                "twice_centered_y_sum": -404117,
+                "centered_x_square_sum": {
+                  "numerator": "62016",
+                  "denominator": "1",
+                  "value": 62016.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3145536",
+                  "denominator": "1",
+                  "value": 3145536.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "right": {
+          "xywh": [
+            1094,
+            320,
+            14,
+            128
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "23061449",
+              "denominator": "1120000",
+              "value": 20.590579464285714
+            },
+            "slope_x": {
+              "numerator": "-190741",
+              "denominator": "1456000",
+              "value": -0.13100343406593407
+            },
+            "slope_y": {
+              "numerator": "-90916907",
+              "denominator": "3058160000",
+              "value": -0.02972928394851806
+            },
+            "residual_sse": {
+              "numerator": "187419175568710977",
+              "denominator": "49695100000000",
+              "value": 3771.3813951216716
+            },
+            "residual_population_rms": 1.4507120702160632,
+            "sufficient_statistics": {
+              "n": 1792,
+              "sum": 368983184,
+              "sum_squares": 76619120866432,
+              "twice_centered_x_sum": -76296400,
+              "twice_centered_y_sum": -1454670512,
+              "centered_x_square_sum": {
+                "numerator": "29120",
+                "denominator": "1",
+                "value": 29120.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "2446528",
+                "denominator": "1",
+                "value": 2446528.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "38693",
+                "denominator": "1792",
+                "value": 21.592075892857142
+              },
+              "slope_x": {
+                "numerator": "-2217",
+                "denominator": "11648",
+                "value": -0.19033310439560439
+              },
+              "slope_y": {
+                "numerator": "-136219",
+                "denominator": "4893056",
+                "value": -0.027839248109974624
+              },
+              "residual_sse": {
+                "numerator": "515209406233",
+                "denominator": "127219456",
+                "value": 4049.7689774196174
+              },
+              "residual_population_rms": 1.5033016077974781,
+              "sufficient_statistics": {
+                "n": 1792,
+                "sum": 38693,
+                "sum_squares": 842463,
+                "twice_centered_x_sum": -11085,
+                "twice_centered_y_sum": -136219,
+                "centered_x_square_sum": {
+                  "numerator": "29120",
+                  "denominator": "1",
+                  "value": 29120.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "2446528",
+                  "denominator": "1",
+                  "value": 2446528.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "36581",
+                "denominator": "1792",
+                "value": 20.413504464285715
+              },
+              "slope_x": {
+                "numerator": "-6861",
+                "denominator": "58240",
+                "value": -0.11780563186813187
+              },
+              "slope_y": {
+                "numerator": "-151579",
+                "denominator": "4893056",
+                "value": -0.03097839060088419
+              },
+              "residual_sse": {
+                "numerator": "2621117869309",
+                "denominator": "636097280",
+                "value": 4120.624237394947
+              },
+              "residual_population_rms": 1.516395558427192,
+              "sufficient_statistics": {
+                "n": 1792,
+                "sum": 36581,
+                "sum_squares": 753619,
+                "twice_centered_x_sum": -6861,
+                "twice_centered_y_sum": -151579,
+                "centered_x_square_sum": {
+                  "numerator": "29120",
+                  "denominator": "1",
+                  "value": 29120.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "2446528",
+                  "denominator": "1",
+                  "value": 2446528.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "34757",
+                "denominator": "1792",
+                "value": 19.395647321428573
+              },
+              "slope_x": {
+                "numerator": "-5069",
+                "denominator": "58240",
+                "value": -0.0870364010989011
+              },
+              "slope_y": {
+                "numerator": "-112155",
+                "denominator": "4893056",
+                "value": -0.022921258207549637
+              },
+              "residual_sse": {
+                "numerator": "2680848164669",
+                "denominator": "636097280",
+                "value": 4214.525433388113
+              },
+              "residual_population_rms": 1.5335761182921588,
+              "sufficient_statistics": {
+                "n": 1792,
+                "sum": 34757,
+                "sum_squares": 679855,
+                "twice_centered_x_sum": -5069,
+                "twice_centered_y_sum": -112155,
+                "centered_x_square_sum": {
+                  "numerator": "29120",
+                  "denominator": "1",
+                  "value": 29120.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "2446528",
+                  "denominator": "1",
+                  "value": 2446528.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "left_top": {
+          "xywh": [
+            612,
+            298,
+            18,
+            14
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "9782741",
+              "denominator": "315000",
+              "value": 31.056320634920635
+            },
+            "slope_x": {
+              "numerator": "-213",
+              "denominator": "8075",
+              "value": -0.02637770897832817
+            },
+            "slope_y": {
+              "numerator": "135664",
+              "denominator": "2559375",
+              "value": 0.053006691086691086
+            },
+            "residual_sse": {
+              "numerator": "505377177681689",
+              "denominator": "459265625000",
+              "value": 1100.4027956189602
+            },
+            "residual_population_rms": 2.0896597235896324,
+            "sufficient_statistics": {
+              "n": 252,
+              "sum": 78261928,
+              "sum_squares": 24416938100240,
+              "twice_centered_x_sum": -3578400,
+              "twice_centered_y_sum": 4341248,
+              "centered_x_square_sum": {
+                "numerator": "6783",
+                "denominator": "1",
+                "value": 6783.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "4095",
+                "denominator": "1",
+                "value": 4095.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "2012",
+                "denominator": "63",
+                "value": 31.936507936507937
+              },
+              "slope_x": {
+                "numerator": "-626",
+                "denominator": "6783",
+                "value": -0.09228954739790653
+              },
+              "slope_y": {
+                "numerator": "181",
+                "denominator": "4095",
+                "value": 0.0442002442002442
+              },
+              "residual_sse": {
+                "numerator": "454655609",
+                "denominator": "440895",
+                "value": 1031.2106261127933
+              },
+              "residual_population_rms": 2.0228953653557444,
+              "sufficient_statistics": {
+                "n": 252,
+                "sum": 8048,
+                "sum_squares": 258122,
+                "twice_centered_x_sum": -1252,
+                "twice_centered_y_sum": 362,
+                "centered_x_square_sum": {
+                  "numerator": "6783",
+                  "denominator": "1",
+                  "value": 6783.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "4095",
+                  "denominator": "1",
+                  "value": 4095.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "646",
+                "denominator": "21",
+                "value": 30.761904761904763
+              },
+              "slope_x": {
+                "numerator": "-2",
+                "denominator": "399",
+                "value": -0.005012531328320802
+              },
+              "slope_y": {
+                "numerator": "229",
+                "denominator": "4095",
+                "value": 0.055921855921855924
+              },
+              "residual_sse": {
+                "numerator": "91400471",
+                "denominator": "77805",
+                "value": 1174.7377546430178
+              },
+              "residual_population_rms": 2.1590872507890717,
+              "sufficient_statistics": {
+                "n": 252,
+                "sum": 7752,
+                "sum_squares": 239654,
+                "twice_centered_x_sum": -68,
+                "twice_centered_y_sum": 458,
+                "centered_x_square_sum": {
+                  "numerator": "6783",
+                  "denominator": "1",
+                  "value": 6783.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "4095",
+                  "denominator": "1",
+                  "value": 4095.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "659",
+                "denominator": "21",
+                "value": 31.38095238095238
+              },
+              "slope_x": {
+                "numerator": "-298",
+                "denominator": "6783",
+                "value": -0.04393336281881174
+              },
+              "slope_y": {
+                "numerator": "41",
+                "denominator": "819",
+                "value": 0.050061050061050064
+              },
+              "residual_sse": {
+                "numerator": "274079885",
+                "denominator": "264537",
+                "value": 1036.0739140460503
+              },
+              "residual_population_rms": 2.027659838537436,
+              "sufficient_statistics": {
+                "n": 252,
+                "sum": 7908,
+                "sum_squares": 249220,
+                "twice_centered_x_sum": -596,
+                "twice_centered_y_sum": 410,
+                "centered_x_square_sum": {
+                  "numerator": "6783",
+                  "denominator": "1",
+                  "value": 6783.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "4095",
+                  "denominator": "1",
+                  "value": 4095.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "right_top": {
+          "xywh": [
+            1094,
+            298,
+            14,
+            14
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "837387",
+              "denominator": "35000",
+              "value": 23.92534285714286
+            },
+            "slope_x": {
+              "numerator": "-456",
+              "denominator": "3185",
+              "value": -0.14317111459968604
+            },
+            "slope_y": {
+              "numerator": "-554",
+              "denominator": "3185",
+              "value": -0.1739403453689168
+            },
+            "residual_sse": {
+              "numerator": "62806",
+              "denominator": "245",
+              "value": 256.35102040816327
+            },
+            "residual_population_rms": 1.143640402149821,
+            "sufficient_statistics": {
+              "n": 196,
+              "sum": 46893672,
+              "sum_squares": 11261271804304,
+              "twice_centered_x_sum": -9120000,
+              "twice_centered_y_sum": -11080000,
+              "centered_x_square_sum": {
+                "numerator": "3185",
+                "denominator": "1",
+                "value": 3185.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "3185",
+                "denominator": "1",
+                "value": 3185.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "174",
+                "denominator": "7",
+                "value": 24.857142857142858
+              },
+              "slope_x": {
+                "numerator": "-456",
+                "denominator": "3185",
+                "value": -0.14317111459968604
+              },
+              "slope_y": {
+                "numerator": "-554",
+                "denominator": "3185",
+                "value": -0.1739403453689168
+              },
+              "residual_sse": {
+                "numerator": "62806",
+                "denominator": "245",
+                "value": 256.35102040816327
+              },
+              "residual_population_rms": 1.143640402149821,
+              "sufficient_statistics": {
+                "n": 196,
+                "sum": 4872,
+                "sum_squares": 121522,
+                "twice_centered_x_sum": -912,
+                "twice_centered_y_sum": -1108,
+                "centered_x_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "167",
+                "denominator": "7",
+                "value": 23.857142857142858
+              },
+              "slope_x": {
+                "numerator": "-456",
+                "denominator": "3185",
+                "value": -0.14317111459968604
+              },
+              "slope_y": {
+                "numerator": "-554",
+                "denominator": "3185",
+                "value": -0.1739403453689168
+              },
+              "residual_sse": {
+                "numerator": "62806",
+                "denominator": "245",
+                "value": 256.35102040816327
+              },
+              "residual_population_rms": 1.143640402149821,
+              "sufficient_statistics": {
+                "n": 196,
+                "sum": 4676,
+                "sum_squares": 111974,
+                "twice_centered_x_sum": -912,
+                "twice_centered_y_sum": -1108,
+                "centered_x_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "153",
+                "denominator": "7",
+                "value": 21.857142857142858
+              },
+              "slope_x": {
+                "numerator": "-456",
+                "denominator": "3185",
+                "value": -0.14317111459968604
+              },
+              "slope_y": {
+                "numerator": "-554",
+                "denominator": "3185",
+                "value": -0.1739403453689168
+              },
+              "residual_sse": {
+                "numerator": "62806",
+                "denominator": "245",
+                "value": 256.35102040816327
+              },
+              "residual_population_rms": 1.143640402149821,
+              "sufficient_statistics": {
+                "n": 196,
+                "sum": 4284,
+                "sum_squares": 94054,
+                "twice_centered_x_sum": -912,
+                "twice_centered_y_sum": -1108,
+                "centered_x_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "center_top": {
+          "xywh": [
+            800,
+            302,
+            112,
+            6
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "96058967",
+              "denominator": "3360000",
+              "value": 28.588978273809524
+            },
+            "slope_x": {
+              "numerator": "-30024317",
+              "denominator": "7024080000",
+              "value": -0.004274483918178609
+            },
+            "slope_y": {
+              "numerator": "-4941061",
+              "denominator": "19600000",
+              "value": -0.25209494897959184
+            },
+            "residual_sse": {
+              "numerator": "3535190704224034469",
+              "denominator": "819476000000000",
+              "value": 4313.964904675713
+            },
+            "residual_population_rms": 2.5336911082367375,
+            "sufficient_statistics": {
+              "n": 672,
+              "sum": 192117934,
+              "sum_squares": 55369690451628,
+              "twice_centered_x_sum": -60048634,
+              "twice_centered_y_sum": -9882122,
+              "centered_x_square_sum": {
+                "numerator": "702408",
+                "denominator": "1",
+                "value": 702408.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "1960",
+                "denominator": "1",
+                "value": 1960.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "10469",
+                "denominator": "336",
+                "value": 31.157738095238095
+              },
+              "slope_x": {
+                "numerator": "-121",
+                "denominator": "117068",
+                "value": -0.0010335873167731575
+              },
+              "slope_y": {
+                "numerator": "193",
+                "denominator": "1960",
+                "value": 0.09846938775510204
+              },
+              "residual_sse": {
+                "numerator": "66691310239",
+                "denominator": "12292140",
+                "value": 5425.52478567605
+              },
+              "residual_population_rms": 2.8414252757607787,
+              "sufficient_statistics": {
+                "n": 672,
+                "sum": 20938,
+                "sum_squares": 657826,
+                "twice_centered_x_sum": -1452,
+                "twice_centered_y_sum": 386,
+                "centered_x_square_sum": {
+                  "numerator": "702408",
+                  "denominator": "1",
+                  "value": 702408.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "1960",
+                  "denominator": "1",
+                  "value": 1960.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "1181",
+                "denominator": "42",
+                "value": 28.11904761904762
+              },
+              "slope_x": {
+                "numerator": "-539",
+                "denominator": "100344",
+                "value": -0.005371521964442318
+              },
+              "slope_y": {
+                "numerator": "-633",
+                "denominator": "1960",
+                "value": -0.3229591836734694
+              },
+              "residual_sse": {
+                "numerator": "18248813833",
+                "denominator": "4097380",
+                "value": 4453.776274839043
+              },
+              "residual_population_rms": 2.5744209574445143,
+              "sufficient_statistics": {
+                "n": 672,
+                "sum": 18896,
+                "sum_squares": 536016,
+                "twice_centered_x_sum": -7546,
+                "twice_centered_y_sum": -1266,
+                "centered_x_square_sum": {
+                  "numerator": "702408",
+                  "denominator": "1",
+                  "value": 702408.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "1960",
+                  "denominator": "1",
+                  "value": 1960.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "17257",
+                "denominator": "672",
+                "value": 25.680059523809526
+              },
+              "slope_x": {
+                "numerator": "-4145",
+                "denominator": "1404816",
+                "value": -0.002950564344369654
+              },
+              "slope_y": {
+                "numerator": "-2283",
+                "denominator": "3920",
+                "value": -0.5823979591836734
+              },
+              "residual_sse": {
+                "numerator": "175475722861",
+                "denominator": "32779040",
+                "value": 5353.290482607178
+              },
+              "residual_population_rms": 2.82244682417726,
+              "sufficient_statistics": {
+                "n": 672,
+                "sum": 17257,
+                "sum_squares": 449185,
+                "twice_centered_x_sum": -4145,
+                "twice_centered_y_sum": -2283,
+                "centered_x_square_sum": {
+                  "numerator": "702408",
+                  "denominator": "1",
+                  "value": 702408.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "1960",
+                  "denominator": "1",
+                  "value": 1960.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "left_bottom": {
+          "xywh": [
+            612,
+            460,
+            18,
+            20
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "695078",
+              "denominator": "28125",
+              "value": 24.713884444444446
+            },
+            "slope_x": {
+              "numerator": "-8011",
+              "denominator": "142500",
+              "value": -0.056217543859649124
+            },
+            "slope_y": {
+              "numerator": "294341",
+              "denominator": "14962500",
+              "value": 0.01967191311612364
+            },
+            "residual_sse": {
+              "numerator": "17392103403181",
+              "denominator": "18703125000",
+              "value": 929.9036071876224
+            },
+            "residual_population_rms": 1.6071918290985596,
+            "sufficient_statistics": {
+              "n": 360,
+              "sum": 88969984,
+              "sum_squares": 22084455056224,
+              "twice_centered_x_sum": -10894960,
+              "twice_centered_y_sum": 4709456,
+              "centered_x_square_sum": {
+                "numerator": "9690",
+                "denominator": "1",
+                "value": 9690.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "11970",
+                "denominator": "1",
+                "value": 11970.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "9397",
+                "denominator": "360",
+                "value": 26.102777777777778
+              },
+              "slope_x": {
+                "numerator": "-1",
+                "denominator": "1020",
+                "value": -0.000980392156862745
+              },
+              "slope_y": {
+                "numerator": "-131",
+                "denominator": "4788",
+                "value": -0.027360066833751043
+              },
+              "residual_sse": {
+                "numerator": "174224473",
+                "denominator": "162792",
+                "value": 1070.2274866086786
+              },
+              "residual_population_rms": 1.7241966620628146,
+              "sufficient_statistics": {
+                "n": 360,
+                "sum": 9397,
+                "sum_squares": 246367,
+                "twice_centered_x_sum": -19,
+                "twice_centered_y_sum": -655,
+                "centered_x_square_sum": {
+                  "numerator": "9690",
+                  "denominator": "1",
+                  "value": 9690.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "11970",
+                  "denominator": "1",
+                  "value": 11970.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "8773",
+                "denominator": "360",
+                "value": 24.369444444444444
+              },
+              "slope_x": {
+                "numerator": "-1603",
+                "denominator": "19380",
+                "value": -0.08271413828689371
+              },
+              "slope_y": {
+                "numerator": "929",
+                "denominator": "23940",
+                "value": 0.038805346700083544
+              },
+              "residual_sse": {
+                "numerator": "150019897",
+                "denominator": "162792",
+                "value": 921.5434235097548
+              },
+              "residual_population_rms": 1.5999508877095736,
+              "sufficient_statistics": {
+                "n": 360,
+                "sum": 8773,
+                "sum_squares": 214799,
+                "twice_centered_x_sum": -1603,
+                "twice_centered_y_sum": 929,
+                "centered_x_square_sum": {
+                  "numerator": "9690",
+                  "denominator": "1",
+                  "value": 9690.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "11970",
+                  "denominator": "1",
+                  "value": 11970.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "8653",
+                "denominator": "360",
+                "value": 24.03611111111111
+              },
+              "slope_x": {
+                "numerator": "169",
+                "denominator": "3876",
+                "value": 0.043601651186790505
+              },
+              "slope_y": {
+                "numerator": "-751",
+                "denominator": "23940",
+                "value": -0.03137009189640769
+              },
+              "residual_sse": {
+                "numerator": "55791791",
+                "denominator": "42840",
+                "value": 1302.3293884220354
+              },
+              "residual_population_rms": 1.901994120523419,
+              "sufficient_statistics": {
+                "n": 360,
+                "sum": 8653,
+                "sum_squares": 209317,
+                "twice_centered_x_sum": 845,
+                "twice_centered_y_sum": -751,
+                "centered_x_square_sum": {
+                  "numerator": "9690",
+                  "denominator": "1",
+                  "value": 9690.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "11970",
+                  "denominator": "1",
+                  "value": 11970.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "right_bottom": {
+          "xywh": [
+            1094,
+            460,
+            14,
+            20
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "24843827",
+              "denominator": "1400000",
+              "value": 17.745590714285715
+            },
+            "slope_x": {
+              "numerator": "-425563",
+              "denominator": "3500000",
+              "value": -0.12158942857142857
+            },
+            "slope_y": {
+              "numerator": "3050143",
+              "denominator": "93100000",
+              "value": 0.03276200859291085
+            },
+            "residual_sse": {
+              "numerator": "1824262098918169",
+              "denominator": "4655000000000",
+              "value": 391.89303950981076
+            },
+            "residual_population_rms": 1.1830545204044165,
+            "sufficient_statistics": {
+              "n": 280,
+              "sum": 49687654,
+              "sum_squares": 8864283021492,
+              "twice_centered_x_sum": -11064638,
+              "twice_centered_y_sum": 6100286,
+              "centered_x_square_sum": {
+                "numerator": "4550",
+                "denominator": "1",
+                "value": 4550.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "9310",
+                "denominator": "1",
+                "value": 9310.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "5219",
+                "denominator": "280",
+                "value": 18.639285714285716
+              },
+              "slope_x": {
+                "numerator": "-1243",
+                "denominator": "9100",
+                "value": -0.1365934065934066
+              },
+              "slope_y": {
+                "numerator": "267",
+                "denominator": "18620",
+                "value": 0.014339419978517723
+              },
+              "residual_sse": {
+                "numerator": "1248450453",
+                "denominator": "2420600",
+                "value": 515.7607423779228
+              },
+              "residual_population_rms": 1.3572039829552978,
+              "sufficient_statistics": {
+                "n": 280,
+                "sum": 5219,
+                "sum_squares": 97881,
+                "twice_centered_x_sum": -1243,
+                "twice_centered_y_sum": 267,
+                "centered_x_square_sum": {
+                  "numerator": "4550",
+                  "denominator": "1",
+                  "value": 4550.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "9310",
+                  "denominator": "1",
+                  "value": 9310.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "619",
+                "denominator": "35",
+                "value": 17.685714285714287
+              },
+              "slope_x": {
+                "numerator": "-537",
+                "denominator": "4550",
+                "value": -0.11802197802197802
+              },
+              "slope_y": {
+                "numerator": "178",
+                "denominator": "4655",
+                "value": 0.03823845327604726
+              },
+              "residual_sse": {
+                "numerator": "225934063",
+                "denominator": "605150",
+                "value": 373.3521655787821
+              },
+              "residual_population_rms": 1.1547296615887173,
+              "sufficient_statistics": {
+                "n": 280,
+                "sum": 4952,
+                "sum_squares": 88030,
+                "twice_centered_x_sum": -1074,
+                "twice_centered_y_sum": 712,
+                "centered_x_square_sum": {
+                  "numerator": "4550",
+                  "denominator": "1",
+                  "value": 4550.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "9310",
+                  "denominator": "1",
+                  "value": 9310.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2199",
+                "denominator": "140",
+                "value": 15.707142857142857
+              },
+              "slope_x": {
+                "numerator": "-513",
+                "denominator": "4550",
+                "value": -0.11274725274725275
+              },
+              "slope_y": {
+                "numerator": "61",
+                "denominator": "1862",
+                "value": 0.03276047261009667
+              },
+              "residual_sse": {
+                "numerator": "234891653",
+                "denominator": "605150",
+                "value": 388.15442948029414
+              },
+              "residual_population_rms": 1.1773979019738736,
+              "sufficient_statistics": {
+                "n": 280,
+                "sum": 4398,
+                "sum_squares": 69536,
+                "twice_centered_x_sum": -1026,
+                "twice_centered_y_sum": 610,
+                "centered_x_square_sum": {
+                  "numerator": "4550",
+                  "denominator": "1",
+                  "value": 4550.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "9310",
+                  "denominator": "1",
+                  "value": 9310.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "bottom_interior_left": {
+          "xywh": [
+            704,
+            492,
+            12,
+            8
+          ],
+          "primary": false,
+          "Yprime": {
+            "mean": {
+              "numerator": "5204711",
+              "denominator": "160000",
+              "value": 32.52944375
+            },
+            "slope_x": {
+              "numerator": "-67247",
+              "denominator": "2288000",
+              "value": -0.02939117132867133
+            },
+            "slope_y": {
+              "numerator": "-1696391",
+              "denominator": "5040000",
+              "value": -0.3365855158730159
+            },
+            "residual_sse": {
+              "numerator": "1472665561721047",
+              "denominator": "7207200000000",
+              "value": 204.3325510213463
+            },
+            "residual_population_rms": 1.4589256571666096,
+            "sufficient_statistics": {
+              "n": 96,
+              "sum": 31228266,
+              "sum_squares": 10184623107476,
+              "twice_centered_x_sum": -672470,
+              "twice_centered_y_sum": -3392782,
+              "centered_x_square_sum": {
+                "numerator": "1144",
+                "denominator": "1",
+                "value": 1144.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "504",
+                "denominator": "1",
+                "value": 504.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "1801",
+                "denominator": "48",
+                "value": 37.520833333333336
+              },
+              "slope_x": {
+                "numerator": "-69",
+                "denominator": "1144",
+                "value": -0.06031468531468531
+              },
+              "slope_y": {
+                "numerator": "-425",
+                "denominator": "504",
+                "value": -0.8432539682539683
+              },
+              "residual_sse": {
+                "numerator": "17831599",
+                "denominator": "72072",
+                "value": 247.41368353868353
+              },
+              "residual_population_rms": 1.6053740592754762,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 3602,
+                "sum_squares": 135760,
+                "twice_centered_x_sum": -138,
+                "twice_centered_y_sum": -850,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "1513",
+                "denominator": "48",
+                "value": 31.520833333333332
+              },
+              "slope_x": {
+                "numerator": "-21",
+                "denominator": "1144",
+                "value": -0.018356643356643356
+              },
+              "slope_y": {
+                "numerator": "-89",
+                "denominator": "504",
+                "value": -0.1765873015873016
+              },
+              "residual_sse": {
+                "numerator": "16854511",
+                "denominator": "72072",
+                "value": 233.85657398157397
+              },
+              "residual_population_rms": 1.560770956602771,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 3026,
+                "sum_squares": 95632,
+                "twice_centered_x_sum": -42,
+                "twice_centered_y_sum": -178,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2671",
+                "denominator": "96",
+                "value": 27.822916666666668
+              },
+              "slope_x": {
+                "numerator": "-109",
+                "denominator": "2288",
+                "value": -0.047639860139860137
+              },
+              "slope_y": {
+                "numerator": "-433",
+                "denominator": "1008",
+                "value": -0.42956349206349204
+              },
+              "residual_sse": {
+                "numerator": "56041087",
+                "denominator": "288288",
+                "value": 194.39271492396492
+              },
+              "residual_population_rms": 1.4229982831301313,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2671,
+                "sum_squares": 74605,
+                "twice_centered_x_sum": -109,
+                "twice_centered_y_sum": -433,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "bottom_interior_middle": {
+          "xywh": [
+            852,
+            492,
+            14,
+            8
+          ],
+          "primary": false,
+          "Yprime": {
+            "mean": {
+              "numerator": "3261801",
+              "denominator": "112000",
+              "value": 29.123223214285716
+            },
+            "slope_x": {
+              "numerator": "-871851",
+              "denominator": "3640000",
+              "value": -0.23951950549450549
+            },
+            "slope_y": {
+              "numerator": "-560641",
+              "denominator": "1960000",
+              "value": -0.28604132653061226
+            },
+            "residual_sse": {
+              "numerator": "110898706319883",
+              "denominator": "254800000000",
+              "value": 435.2382508629631
+            },
+            "residual_population_rms": 1.971308147215056,
+            "sufficient_statistics": {
+              "n": 112,
+              "sum": 32618010,
+              "sum_squares": 9558191946324,
+              "twice_centered_x_sum": -8718510,
+              "twice_centered_y_sum": -3363846,
+              "centered_x_square_sum": {
+                "numerator": "1820",
+                "denominator": "1",
+                "value": 1820.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "588",
+                "denominator": "1",
+                "value": 588.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "3665",
+                "denominator": "112",
+                "value": 32.723214285714285
+              },
+              "slope_x": {
+                "numerator": "-135",
+                "denominator": "728",
+                "value": -0.18543956043956045
+              },
+              "slope_y": {
+                "numerator": "-61",
+                "denominator": "168",
+                "value": -0.3630952380952381
+              },
+              "residual_sse": {
+                "numerator": "1958231",
+                "denominator": "4368",
+                "value": 448.31295787545787
+              },
+              "residual_population_rms": 2.0006984447300296,
+              "sufficient_statistics": {
+                "n": 112,
+                "sum": 3665,
+                "sum_squares": 120519,
+                "twice_centered_x_sum": -675,
+                "twice_centered_y_sum": -427,
+                "centered_x_square_sum": {
+                  "numerator": "1820",
+                  "denominator": "1",
+                  "value": 1820.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "588",
+                  "denominator": "1",
+                  "value": 588.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "453",
+                "denominator": "16",
+                "value": 28.3125
+              },
+              "slope_x": {
+                "numerator": "-893",
+                "denominator": "3640",
+                "value": -0.24532967032967032
+              },
+              "slope_y": {
+                "numerator": "-93",
+                "denominator": "392",
+                "value": -0.2372448979591837
+              },
+              "residual_sse": {
+                "numerator": "22902807",
+                "denominator": "50960",
+                "value": 449.42713893249606
+              },
+              "residual_population_rms": 2.003183045030405,
+              "sufficient_statistics": {
+                "n": 112,
+                "sum": 3171,
+                "sum_squares": 90371,
+                "twice_centered_x_sum": -893,
+                "twice_centered_y_sum": -279,
+                "centered_x_square_sum": {
+                  "numerator": "1820",
+                  "denominator": "1",
+                  "value": 1820.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "588",
+                  "denominator": "1",
+                  "value": 588.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "1487",
+                "denominator": "56",
+                "value": 26.553571428571427
+              },
+              "slope_x": {
+                "numerator": "-621",
+                "denominator": "1820",
+                "value": -0.3412087912087912
+              },
+              "slope_y": {
+                "numerator": "-319",
+                "denominator": "588",
+                "value": -0.5425170068027211
+              },
+              "residual_sse": {
+                "numerator": "20590069",
+                "denominator": "38220",
+                "value": 538.724986917844
+              },
+              "residual_population_rms": 2.1931813709887695,
+              "sufficient_statistics": {
+                "n": 112,
+                "sum": 2974,
+                "sum_squares": 79894,
+                "twice_centered_x_sum": -1242,
+                "twice_centered_y_sum": -638,
+                "centered_x_square_sum": {
+                  "numerator": "1820",
+                  "denominator": "1",
+                  "value": 1820.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "588",
+                  "denominator": "1",
+                  "value": 588.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "bottom_interior_right": {
+          "xywh": [
+            1047,
+            492,
+            12,
+            8
+          ],
+          "primary": false,
+          "Yprime": {
+            "mean": {
+              "numerator": "1790523",
+              "denominator": "80000",
+              "value": 22.3815375
+            },
+            "slope_x": {
+              "numerator": "-221321",
+              "denominator": "1430000",
+              "value": -0.15476993006993006
+            },
+            "slope_y": {
+              "numerator": "-509497",
+              "denominator": "2520000",
+              "value": -0.2021813492063492
+            },
+            "residual_sse": {
+              "numerator": "222443927047091",
+              "denominator": "900900000000",
+              "value": 246.91300593527694
+            },
+            "residual_population_rms": 1.6037488826161246,
+            "sufficient_statistics": {
+              "n": 96,
+              "sum": 21486276,
+              "sum_squares": 4838450743560,
+              "twice_centered_x_sum": -3541136,
+              "twice_centered_y_sum": -2037988,
+              "centered_x_square_sum": {
+                "numerator": "1144",
+                "denominator": "1",
+                "value": 1144.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "504",
+                "denominator": "1",
+                "value": 504.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "1103",
+                "denominator": "48",
+                "value": 22.979166666666668
+              },
+              "slope_x": {
+                "numerator": "-57",
+                "denominator": "286",
+                "value": -0.1993006993006993
+              },
+              "slope_y": {
+                "numerator": "-97",
+                "denominator": "504",
+                "value": -0.19246031746031747
+              },
+              "residual_sse": {
+                "numerator": "9580139",
+                "denominator": "36036",
+                "value": 265.8491230991231
+              },
+              "residual_population_rms": 1.6641098818735496,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2206,
+                "sum_squares": 51022,
+                "twice_centered_x_sum": -456,
+                "twice_centered_y_sum": -194,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2149",
+                "denominator": "96",
+                "value": 22.385416666666668
+              },
+              "slope_x": {
+                "numerator": "-31",
+                "denominator": "208",
+                "value": -0.14903846153846154
+              },
+              "slope_y": {
+                "numerator": "-197",
+                "denominator": "1008",
+                "value": -0.19543650793650794
+              },
+              "residual_sse": {
+                "numerator": "6606461",
+                "denominator": "26208",
+                "value": 252.0780296092796
+              },
+              "residual_population_rms": 1.620435993314761,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2149,
+                "sum_squares": 48403,
+                "twice_centered_x_sum": -341,
+                "twice_centered_y_sum": -197,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "247",
+                "denominator": "12",
+                "value": 20.583333333333332
+              },
+              "slope_x": {
+                "numerator": "-23",
+                "denominator": "286",
+                "value": -0.08041958041958042
+              },
+              "slope_y": {
+                "numerator": "-25",
+                "denominator": "84",
+                "value": -0.2976190476190476
+              },
+              "residual_sse": {
+                "numerator": "1557307",
+                "denominator": "6006",
+                "value": 259.2918747918748
+              },
+              "residual_population_rms": 1.6434588613902172,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 1976,
+                "sum_squares": 40984,
+                "twice_centered_x_sum": -184,
+                "twice_centered_y_sum": -300,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    "genuine_baseline": {
+      "decoded_rgb_sha256": "23b6b5094a7b76559be0adb59f532d7fd3548cd3008c050c2b08aa00dc1c7ca9",
+      "size": [
+        1672,
+        941
+      ],
+      "patches": {
+        "left": {
+          "xywh": [
+            612,
+            320,
+            18,
+            128
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "183200203",
+              "denominator": "5760000",
+              "value": 31.80559079861111
+            },
+            "slope_x": {
+              "numerator": "69",
+              "denominator": "20672",
+              "value": 0.0033378482972136222
+            },
+            "slope_y": {
+              "numerator": "-1326715381",
+              "denominator": "15727680000",
+              "value": -0.08435544091690574
+            },
+            "residual_sse": {
+              "numerator": "8992993746525719143",
+              "denominator": "12700101600000000",
+              "value": 708.1040789882909
+            },
+            "residual_population_rms": 0.55437968923714,
+            "sufficient_statistics": {
+              "n": 2304,
+              "sum": 732800812,
+              "sum_squares": 235380820353688,
+              "twice_centered_x_sum": 4140000,
+              "twice_centered_y_sum": -5306861524,
+              "centered_x_square_sum": {
+                "numerator": "62016",
+                "denominator": "1",
+                "value": 62016.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "3145536",
+                "denominator": "1",
+                "value": 3145536.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "37307",
+                "denominator": "1152",
+                "value": 32.384548611111114
+              },
+              "slope_x": {
+                "numerator": "69",
+                "denominator": "20672",
+                "value": 0.0033378482972136222
+              },
+              "slope_y": {
+                "numerator": "-74885",
+                "denominator": "786384",
+                "value": -0.09522701377444098
+              },
+              "residual_sse": {
+                "numerator": "397411218565",
+                "denominator": "508004064",
+                "value": 782.2992899619795
+              },
+              "residual_population_rms": 0.5827002852061525,
+              "sufficient_statistics": {
+                "n": 2304,
+                "sum": 74614,
+                "sum_squares": 2445648,
+                "twice_centered_x_sum": 414,
+                "twice_centered_y_sum": -599080,
+                "centered_x_square_sum": {
+                  "numerator": "62016",
+                  "denominator": "1",
+                  "value": 62016.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3145536",
+                  "denominator": "1",
+                  "value": 3145536.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "36677",
+                "denominator": "1152",
+                "value": 31.83767361111111
+              },
+              "slope_x": {
+                "numerator": "69",
+                "denominator": "20672",
+                "value": 0.0033378482972136222
+              },
+              "slope_y": {
+                "numerator": "-129313",
+                "denominator": "1572768",
+                "value": -0.08222000956275814
+              },
+              "residual_sse": {
+                "numerator": "398461523479",
+                "denominator": "508004064",
+                "value": 784.3668027801447
+              },
+              "residual_population_rms": 0.5834697767436859,
+              "sufficient_statistics": {
+                "n": 2304,
+                "sum": 73354,
+                "sum_squares": 2357470,
+                "twice_centered_x_sum": 414,
+                "twice_centered_y_sum": -517252,
+                "centered_x_square_sum": {
+                  "numerator": "62016",
+                  "denominator": "1",
+                  "value": 62016.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3145536",
+                  "denominator": "1",
+                  "value": 3145536.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "17155",
+                "denominator": "576",
+                "value": 29.78298611111111
+              },
+              "slope_x": {
+                "numerator": "69",
+                "denominator": "20672",
+                "value": 0.0033378482972136222
+              },
+              "slope_y": {
+                "numerator": "-231185",
+                "denominator": "3145536",
+                "value": -0.07349621813261714
+              },
+              "residual_sse": {
+                "numerator": "397045273777",
+                "denominator": "508004064",
+                "value": 781.5789319689379
+              },
+              "residual_population_rms": 0.5824319419472177,
+              "sufficient_statistics": {
+                "n": 2304,
+                "sum": 68620,
+                "sum_squares": 2061482,
+                "twice_centered_x_sum": 414,
+                "twice_centered_y_sum": -462370,
+                "centered_x_square_sum": {
+                  "numerator": "62016",
+                  "denominator": "1",
+                  "value": 62016.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3145536",
+                  "denominator": "1",
+                  "value": 3145536.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "right": {
+          "xywh": [
+            1094,
+            320,
+            14,
+            128
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "286845367",
+              "denominator": "8960000",
+              "value": 32.01399185267857
+            },
+            "slope_x": {
+              "numerator": "-1462829",
+              "denominator": "22400000",
+              "value": -0.06530486607142857
+            },
+            "slope_y": {
+              "numerator": "-273941031",
+              "denominator": "3495040000",
+              "value": -0.07837994157434536
+            },
+            "residual_sse": {
+              "numerator": "2122199149431066537",
+              "denominator": "1223264000000000",
+              "value": 1734.8660219143753
+            },
+            "residual_population_rms": 0.9839294688792506,
+            "sufficient_statistics": {
+              "n": 1792,
+              "sum": 573690734,
+              "sum_squares": 185350214065596,
+              "twice_centered_x_sum": -38033554,
+              "twice_centered_y_sum": -3835174434,
+              "centered_x_square_sum": {
+                "numerator": "29120",
+                "denominator": "1",
+                "value": 29120.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "2446528",
+                "denominator": "1",
+                "value": 2446528.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "58571",
+                "denominator": "1792",
+                "value": 32.68470982142857
+              },
+              "slope_x": {
+                "numerator": "-457",
+                "denominator": "4480",
+                "value": -0.10200892857142857
+              },
+              "slope_y": {
+                "numerator": "-432913",
+                "denominator": "4893056",
+                "value": -0.08847497351348524
+              },
+              "residual_sse": {
+                "numerator": "138319863513",
+                "denominator": "48930560",
+                "value": 2826.860422463998
+              },
+              "residual_population_rms": 1.255981319540905,
+              "sufficient_statistics": {
+                "n": 1792,
+                "sum": 58571,
+                "sum_squares": 1936657,
+                "twice_centered_x_sum": -5941,
+                "twice_centered_y_sum": -432913,
+                "centered_x_square_sum": {
+                  "numerator": "29120",
+                  "denominator": "1",
+                  "value": 29120.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "2446528",
+                  "denominator": "1",
+                  "value": 2446528.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "57405",
+                "denominator": "1792",
+                "value": 32.03404017857143
+              },
+              "slope_x": {
+                "numerator": "-271",
+                "denominator": "4480",
+                "value": -0.06049107142857143
+              },
+              "slope_y": {
+                "numerator": "-373815",
+                "denominator": "4893056",
+                "value": -0.07639704103120831
+              },
+              "residual_sse": {
+                "numerator": "11597860911",
+                "denominator": "6990080",
+                "value": 1659.1885802451475
+              },
+              "residual_population_rms": 0.9622299540711674,
+              "sufficient_statistics": {
+                "n": 1792,
+                "sum": 57405,
+                "sum_squares": 1854959,
+                "twice_centered_x_sum": -3523,
+                "twice_centered_y_sum": -373815,
+                "centered_x_square_sum": {
+                  "numerator": "29120",
+                  "denominator": "1",
+                  "value": 29120.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "2446528",
+                  "denominator": "1",
+                  "value": 2446528.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "26737",
+                "denominator": "896",
+                "value": 29.840401785714285
+              },
+              "slope_x": {
+                "numerator": "-11",
+                "denominator": "2240",
+                "value": -0.004910714285714286
+              },
+              "slope_y": {
+                "numerator": "-167089",
+                "denominator": "2446528",
+                "value": -0.0682963775603631
+              },
+              "residual_sse": {
+                "numerator": "12502727497",
+                "denominator": "12232640",
+                "value": 1022.0792483879195
+              },
+              "residual_population_rms": 0.7552196524394468,
+              "sufficient_statistics": {
+                "n": 1792,
+                "sum": 53474,
+                "sum_squares": 1608120,
+                "twice_centered_x_sum": -286,
+                "twice_centered_y_sum": -334178,
+                "centered_x_square_sum": {
+                  "numerator": "29120",
+                  "denominator": "1",
+                  "value": 29120.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "2446528",
+                  "denominator": "1",
+                  "value": 2446528.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "left_top": {
+          "xywh": [
+            612,
+            298,
+            18,
+            14
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "242527",
+              "denominator": "6300",
+              "value": 38.49634920634921
+            },
+            "slope_x": {
+              "numerator": "3563",
+              "denominator": "2422500",
+              "value": 0.0014707946336429308
+            },
+            "slope_y": {
+              "numerator": "-113483",
+              "denominator": "1137500",
+              "value": -0.09976527472527473
+            },
+            "residual_sse": {
+              "numerator": "66989445891811",
+              "denominator": "1033347656250",
+              "value": 64.82759745632413
+            },
+            "residual_population_rms": 0.5072005233223139,
+            "sufficient_statistics": {
+              "n": 252,
+              "sum": 97010800,
+              "sum_squares": 37356176361504,
+              "twice_centered_x_sum": 199528,
+              "twice_centered_y_sum": -8170776,
+              "centered_x_square_sum": {
+                "numerator": "6783",
+                "denominator": "1",
+                "value": 6783.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "4095",
+                "denominator": "1",
+                "value": 4095.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "559",
+                "denominator": "14",
+                "value": 39.92857142857143
+              },
+              "slope_x": {
+                "numerator": "1",
+                "denominator": "323",
+                "value": 0.0030959752321981426
+              },
+              "slope_y": {
+                "numerator": "-32",
+                "denominator": "315",
+                "value": -0.10158730158730159
+              },
+              "residual_sse": {
+                "numerator": "8993134",
+                "denominator": "101745",
+                "value": 88.38895277409209
+              },
+              "residual_population_rms": 0.592241346577224,
+              "sufficient_statistics": {
+                "n": 252,
+                "sum": 10062,
+                "sum_squares": 401892,
+                "twice_centered_x_sum": 42,
+                "twice_centered_y_sum": -832,
+                "centered_x_square_sum": {
+                  "numerator": "6783",
+                  "denominator": "1",
+                  "value": 6783.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "4095",
+                  "denominator": "1",
+                  "value": 4095.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2417",
+                "denominator": "63",
+                "value": 38.36507936507937
+              },
+              "slope_x": {
+                "numerator": "1",
+                "denominator": "969",
+                "value": 0.0010319917440660474
+              },
+              "slope_y": {
+                "numerator": "-409",
+                "denominator": "4095",
+                "value": -0.09987789987789988
+              },
+              "residual_sse": {
+                "numerator": "32430214",
+                "denominator": "440895",
+                "value": 73.5554134204289
+              },
+              "residual_population_rms": 0.5402652692818392,
+              "sufficient_statistics": {
+                "n": 252,
+                "sum": 9668,
+                "sum_squares": 371028,
+                "twice_centered_x_sum": 14,
+                "twice_centered_y_sum": -818,
+                "centered_x_square_sum": {
+                  "numerator": "6783",
+                  "denominator": "1",
+                  "value": 6783.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "4095",
+                  "denominator": "1",
+                  "value": 4095.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "4483",
+                "denominator": "126",
+                "value": 35.57936507936508
+              },
+              "slope_x": {
+                "numerator": "1",
+                "denominator": "969",
+                "value": 0.0010319917440660474
+              },
+              "slope_y": {
+                "numerator": "-382",
+                "denominator": "4095",
+                "value": -0.09328449328449329
+              },
+              "residual_sse": {
+                "numerator": "36052336",
+                "denominator": "440895",
+                "value": 81.77079803581351
+              },
+              "residual_population_rms": 0.569637861972772,
+              "sufficient_statistics": {
+                "n": 252,
+                "sum": 8966,
+                "sum_squares": 319122,
+                "twice_centered_x_sum": 14,
+                "twice_centered_y_sum": -764,
+                "centered_x_square_sum": {
+                  "numerator": "6783",
+                  "denominator": "1",
+                  "value": 6783.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "4095",
+                  "denominator": "1",
+                  "value": 4095.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "right_top": {
+          "xywh": [
+            1094,
+            298,
+            14,
+            14
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "18873",
+              "denominator": "490",
+              "value": 38.51632653061225
+            },
+            "slope_x": {
+              "numerator": "22149",
+              "denominator": "1225000",
+              "value": 0.01808081632653061
+            },
+            "slope_y": {
+              "numerator": "-452589",
+              "denominator": "3981250",
+              "value": -0.11368012558869701
+            },
+            "residual_sse": {
+              "numerator": "64281902803",
+              "denominator": "2275000000",
+              "value": 28.25578145186813
+            },
+            "residual_population_rms": 0.3796869108418584,
+            "sufficient_statistics": {
+              "n": 196,
+              "sum": 75492000,
+              "sum_squares": 29083790955304,
+              "twice_centered_x_sum": 1151748,
+              "twice_centered_y_sum": -7241424,
+              "centered_x_square_sum": {
+                "numerator": "3185",
+                "denominator": "1",
+                "value": 3185.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "3185",
+                "denominator": "1",
+                "value": 3185.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "1958",
+                "denominator": "49",
+                "value": 39.95918367346939
+              },
+              "slope_x": {
+                "numerator": "4",
+                "denominator": "245",
+                "value": 0.0163265306122449
+              },
+              "slope_y": {
+                "numerator": "-358",
+                "denominator": "3185",
+                "value": -0.11240188383045525
+              },
+              "residual_sse": {
+                "numerator": "2768",
+                "denominator": "65",
+                "value": 42.58461538461538
+              },
+              "residual_population_rms": 0.46612063442833596,
+              "sufficient_statistics": {
+                "n": 196,
+                "sum": 7832,
+                "sum_squares": 313044,
+                "twice_centered_x_sum": 104,
+                "twice_centered_y_sum": -716,
+                "centered_x_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "7523",
+                "denominator": "196",
+                "value": 38.38265306122449
+              },
+              "slope_x": {
+                "numerator": "9",
+                "denominator": "490",
+                "value": 0.018367346938775512
+              },
+              "slope_y": {
+                "numerator": "-729",
+                "denominator": "6370",
+                "value": -0.11444270015698588
+              },
+              "residual_sse": {
+                "numerator": "90485",
+                "denominator": "2548",
+                "value": 35.51216640502355
+              },
+              "residual_population_rms": 0.4256577527481556,
+              "sufficient_statistics": {
+                "n": 196,
+                "sum": 7523,
+                "sum_squares": 288831,
+                "twice_centered_x_sum": 117,
+                "twice_centered_y_sum": -729,
+                "centered_x_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "1744",
+                "denominator": "49",
+                "value": 35.59183673469388
+              },
+              "slope_x": {
+                "numerator": "1",
+                "denominator": "49",
+                "value": 0.02040816326530612
+              },
+              "slope_y": {
+                "numerator": "-10",
+                "denominator": "91",
+                "value": -0.10989010989010989
+              },
+              "residual_sse": {
+                "numerator": "31569",
+                "denominator": "637",
+                "value": 49.55886970172684
+              },
+              "residual_population_rms": 0.5028432917214056,
+              "sufficient_statistics": {
+                "n": 196,
+                "sum": 6976,
+                "sum_squares": 248378,
+                "twice_centered_x_sum": 130,
+                "twice_centered_y_sum": -700,
+                "centered_x_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "3185",
+                  "denominator": "1",
+                  "value": 3185.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "center_top": {
+          "xywh": [
+            800,
+            302,
+            112,
+            6
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "32360669",
+              "denominator": "840000",
+              "value": 38.52460595238095
+            },
+            "slope_x": {
+              "numerator": "1027",
+              "denominator": "4181000",
+              "value": 0.00024563501554652
+            },
+            "slope_y": {
+              "numerator": "-715511",
+              "denominator": "4900000",
+              "value": -0.1460226530612245
+            },
+            "residual_sse": {
+              "numerator": "19458933105124321",
+              "denominator": "76825875000000",
+              "value": 253.28618912735223
+            },
+            "residual_population_rms": 0.6139331982518152,
+            "sufficient_statistics": {
+              "n": 672,
+              "sum": 258885352,
+              "sum_squares": 99764073816016,
+              "twice_centered_x_sum": 3450720,
+              "twice_centered_y_sum": -5724088,
+              "centered_x_square_sum": {
+                "numerator": "702408",
+                "denominator": "1",
+                "value": 702408.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "1960",
+                "denominator": "1",
+                "value": 1960.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "13445",
+                "denominator": "336",
+                "value": 40.01488095238095
+              },
+              "slope_x": {
+                "numerator": "27",
+                "denominator": "117068",
+                "value": 0.00023063518638739876
+              },
+              "slope_y": {
+                "numerator": "57",
+                "denominator": "1960",
+                "value": 0.029081632653061223
+              },
+              "residual_sse": {
+                "numerator": "3050370439",
+                "denominator": "12292140",
+                "value": 248.15617451477124
+              },
+              "residual_population_rms": 0.60768414624652,
+              "sufficient_statistics": {
+                "n": 672,
+                "sum": 26890,
+                "sum_squares": 1076250,
+                "twice_centered_x_sum": 324,
+                "twice_centered_y_sum": 114,
+                "centered_x_square_sum": {
+                  "numerator": "702408",
+                  "denominator": "1",
+                  "value": 702408.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "1960",
+                  "denominator": "1",
+                  "value": 1960.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "6443",
+                "denominator": "168",
+                "value": 38.351190476190474
+              },
+              "slope_x": {
+                "numerator": "23",
+                "denominator": "87801",
+                "value": 0.0002619560141684036
+              },
+              "slope_y": {
+                "numerator": "-197",
+                "denominator": "980",
+                "value": -0.2010204081632653
+              },
+              "residual_sse": {
+                "numerator": "284633523",
+                "denominator": "1024345",
+                "value": 277.8688068961141
+              },
+              "residual_population_rms": 0.6430359619471625,
+              "sufficient_statistics": {
+                "n": 672,
+                "sum": 25772,
+                "sum_squares": 988744,
+                "twice_centered_x_sum": 368,
+                "twice_centered_y_sum": -788,
+                "centered_x_square_sum": {
+                  "numerator": "702408",
+                  "denominator": "1",
+                  "value": 702408.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "1960",
+                  "denominator": "1",
+                  "value": 1960.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "1721",
+                "denominator": "48",
+                "value": 35.854166666666664
+              },
+              "slope_x": {
+                "numerator": "15",
+                "denominator": "117068",
+                "value": 0.00012813065910411044
+              },
+              "slope_y": {
+                "numerator": "-229",
+                "denominator": "1960",
+                "value": -0.11683673469387755
+              },
+              "residual_sse": {
+                "numerator": "3109188511",
+                "denominator": "12292140",
+                "value": 252.941189329116
+              },
+              "residual_population_rms": 0.6135149381708677,
+              "sufficient_statistics": {
+                "n": 672,
+                "sum": 24094,
+                "sum_squares": 864150,
+                "twice_centered_x_sum": 180,
+                "twice_centered_y_sum": -458,
+                "centered_x_square_sum": {
+                  "numerator": "702408",
+                  "denominator": "1",
+                  "value": 702408.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "1960",
+                  "denominator": "1",
+                  "value": 1960.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "left_bottom": {
+          "xywh": [
+            612,
+            460,
+            18,
+            20
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "11008177",
+              "denominator": "450000",
+              "value": 24.462615555555555
+            },
+            "slope_x": {
+              "numerator": "4",
+              "denominator": "1615",
+              "value": 0.002476780185758514
+            },
+            "slope_y": {
+              "numerator": "-130087",
+              "denominator": "1425000",
+              "value": -0.09128912280701755
+            },
+            "residual_sse": {
+              "numerator": "621176036957",
+              "denominator": "5677734375",
+              "value": 109.40561779222016
+            },
+            "residual_population_rms": 0.5512753339913533,
+            "sufficient_statistics": {
+              "n": 360,
+              "sum": 88065416,
+              "sum_squares": 21564026103152,
+              "twice_centered_x_sum": 480000,
+              "twice_centered_y_sum": -21854616,
+              "centered_x_square_sum": {
+                "numerator": "9690",
+                "denominator": "1",
+                "value": 9690.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "11970",
+                "denominator": "1",
+                "value": 11970.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "1087",
+                "denominator": "45",
+                "value": 24.155555555555555
+              },
+              "slope_x": {
+                "numerator": "4",
+                "denominator": "1615",
+                "value": 0.002476780185758514
+              },
+              "slope_y": {
+                "numerator": "-221",
+                "denominator": "1995",
+                "value": -0.11077694235588972
+              },
+              "residual_sse": {
+                "numerator": "12243914",
+                "denominator": "101745",
+                "value": 120.3392206005209
+              },
+              "residual_population_rms": 0.578165731239084,
+              "sufficient_statistics": {
+                "n": 360,
+                "sum": 8696,
+                "sum_squares": 210324,
+                "twice_centered_x_sum": 48,
+                "twice_centered_y_sum": -2652,
+                "centered_x_square_sum": {
+                  "numerator": "9690",
+                  "denominator": "1",
+                  "value": 9690.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "11970",
+                  "denominator": "1",
+                  "value": 11970.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2219",
+                "denominator": "90",
+                "value": 24.655555555555555
+              },
+              "slope_x": {
+                "numerator": "4",
+                "denominator": "1615",
+                "value": 0.002476780185758514
+              },
+              "slope_y": {
+                "numerator": "-173",
+                "denominator": "1995",
+                "value": -0.08671679197994987
+              },
+              "residual_sse": {
+                "numerator": "13147226",
+                "denominator": "101745",
+                "value": 129.2174160892427
+              },
+              "residual_population_rms": 0.5991137345400813,
+              "sufficient_statistics": {
+                "n": 360,
+                "sum": 8876,
+                "sum_squares": 219062,
+                "twice_centered_x_sum": 48,
+                "twice_centered_y_sum": -2076,
+                "centered_x_square_sum": {
+                  "numerator": "9690",
+                  "denominator": "1",
+                  "value": 9690.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "11970",
+                  "denominator": "1",
+                  "value": 11970.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2111",
+                "denominator": "90",
+                "value": 23.455555555555556
+              },
+              "slope_x": {
+                "numerator": "4",
+                "denominator": "1615",
+                "value": 0.002476780185758514
+              },
+              "slope_y": {
+                "numerator": "-158",
+                "denominator": "1995",
+                "value": -0.07919799498746867
+              },
+              "residual_sse": {
+                "numerator": "11207186",
+                "denominator": "101745",
+                "value": 110.14974691631038
+              },
+              "residual_population_rms": 0.5531469237119314,
+              "sufficient_statistics": {
+                "n": 360,
+                "sum": 8444,
+                "sum_squares": 198244,
+                "twice_centered_x_sum": 48,
+                "twice_centered_y_sum": -1896,
+                "centered_x_square_sum": {
+                  "numerator": "9690",
+                  "denominator": "1",
+                  "value": 9690.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "11970",
+                  "denominator": "1",
+                  "value": 11970.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "right_bottom": {
+          "xywh": [
+            1094,
+            460,
+            14,
+            20
+          ],
+          "primary": true,
+          "Yprime": {
+            "mean": {
+              "numerator": "34342351",
+              "denominator": "1400000",
+              "value": 24.530250714285714
+            },
+            "slope_x": {
+              "numerator": "-32467",
+              "denominator": "3500000",
+              "value": -0.009276285714285714
+            },
+            "slope_y": {
+              "numerator": "-9002557",
+              "denominator": "93100000",
+              "value": -0.09669771213748657
+            },
+            "residual_sse": {
+              "numerator": "422733601094809",
+              "denominator": "4655000000000",
+              "value": 90.81280367235425
+            },
+            "residual_population_rms": 0.5695010462562641,
+            "sufficient_statistics": {
+              "n": 280,
+              "sum": 68684702,
+              "sum_squares": 16866355302492,
+              "twice_centered_x_sum": -844142,
+              "twice_centered_y_sum": -18005114,
+              "centered_x_square_sum": {
+                "numerator": "4550",
+                "denominator": "1",
+                "value": 4550.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "9310",
+                "denominator": "1",
+                "value": 9310.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "1357",
+                "denominator": "56",
+                "value": 24.232142857142858
+              },
+              "slope_x": {
+                "numerator": "-9",
+                "denominator": "700",
+                "value": -0.012857142857142857
+              },
+              "slope_y": {
+                "numerator": "-2211",
+                "denominator": "18620",
+                "value": -0.11874328678839957
+              },
+              "residual_sse": {
+                "numerator": "26047121",
+                "denominator": "186200",
+                "value": 139.8878678839957
+              },
+              "residual_population_rms": 0.7068235481059806,
+              "sufficient_statistics": {
+                "n": 280,
+                "sum": 6785,
+                "sum_squares": 164687,
+                "twice_centered_x_sum": -117,
+                "twice_centered_y_sum": -2211,
+                "centered_x_square_sum": {
+                  "numerator": "4550",
+                  "denominator": "1",
+                  "value": 4550.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "9310",
+                  "denominator": "1",
+                  "value": 9310.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "3461",
+                "denominator": "140",
+                "value": 24.72142857142857
+              },
+              "slope_x": {
+                "numerator": "-3",
+                "denominator": "350",
+                "value": -0.008571428571428572
+              },
+              "slope_y": {
+                "numerator": "-853",
+                "denominator": "9310",
+                "value": -0.0916219119226638
+              },
+              "residual_sse": {
+                "numerator": "4644929",
+                "denominator": "46550",
+                "value": 99.78365198711063
+              },
+              "residual_population_rms": 0.5969674912993607,
+              "sufficient_statistics": {
+                "n": 280,
+                "sum": 6922,
+                "sum_squares": 171300,
+                "twice_centered_x_sum": -78,
+                "twice_centered_y_sum": -1706,
+                "centered_x_square_sum": {
+                  "numerator": "4550",
+                  "denominator": "1",
+                  "value": 4550.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "9310",
+                  "denominator": "1",
+                  "value": 9310.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "823",
+                "denominator": "35",
+                "value": 23.514285714285716
+              },
+              "slope_x": {
+                "numerator": "-1",
+                "denominator": "175",
+                "value": -0.005714285714285714
+              },
+              "slope_y": {
+                "numerator": "-382",
+                "denominator": "4655",
+                "value": -0.08206229860365198
+              },
+              "residual_sse": {
+                "numerator": "1282422",
+                "denominator": "23275",
+                "value": 55.0986895810956
+              },
+              "residual_population_rms": 0.4436000836544089,
+              "sufficient_statistics": {
+                "n": 280,
+                "sum": 6584,
+                "sum_squares": 154936,
+                "twice_centered_x_sum": -52,
+                "twice_centered_y_sum": -1528,
+                "centered_x_square_sum": {
+                  "numerator": "4550",
+                  "denominator": "1",
+                  "value": 4550.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "9310",
+                  "denominator": "1",
+                  "value": 9310.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "bottom_interior_left": {
+          "xywh": [
+            704,
+            492,
+            12,
+            8
+          ],
+          "primary": false,
+          "Yprime": {
+            "mean": {
+              "numerator": "2690263",
+              "denominator": "120000",
+              "value": 22.418858333333333
+            },
+            "slope_x": {
+              "numerator": "5",
+              "denominator": "176",
+              "value": 0.028409090909090908
+            },
+            "slope_y": {
+              "numerator": "-236683",
+              "denominator": "1260000",
+              "value": -0.18784365079365078
+            },
+            "residual_sse": {
+              "numerator": "356513249489",
+              "denominator": "17325000000",
+              "value": 20.577965338470417
+            },
+            "residual_population_rms": 0.46298359107971293,
+            "sufficient_statistics": {
+              "n": 96,
+              "sum": 21522104,
+              "sum_squares": 4828938508144,
+              "twice_centered_x_sum": 650000,
+              "twice_centered_y_sum": -1893464,
+              "centered_x_square_sum": {
+                "numerator": "1144",
+                "denominator": "1",
+                "value": 1144.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "504",
+                "denominator": "1",
+                "value": 504.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "2093",
+                "denominator": "96",
+                "value": 21.802083333333332
+              },
+              "slope_x": {
+                "numerator": "5",
+                "denominator": "176",
+                "value": 0.028409090909090908
+              },
+              "slope_y": {
+                "numerator": "-23",
+                "denominator": "144",
+                "value": -0.1597222222222222
+              },
+              "residual_sse": {
+                "numerator": "86989",
+                "denominator": "3168",
+                "value": 27.45864898989899
+              },
+              "residual_population_rms": 0.5348154762577286,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2093,
+                "sum_squares": 45673,
+                "twice_centered_x_sum": 65,
+                "twice_centered_y_sum": -161,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2177",
+                "denominator": "96",
+                "value": 22.677083333333332
+              },
+              "slope_x": {
+                "numerator": "5",
+                "denominator": "176",
+                "value": 0.028409090909090908
+              },
+              "slope_y": {
+                "numerator": "-197",
+                "denominator": "1008",
+                "value": -0.19543650793650794
+              },
+              "residual_sse": {
+                "numerator": "461611",
+                "denominator": "22176",
+                "value": 20.815791847041847
+              },
+              "residual_population_rms": 0.4656513342334075,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2177,
+                "sum_squares": 49409,
+                "twice_centered_x_sum": 65,
+                "twice_centered_y_sum": -197,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2081",
+                "denominator": "96",
+                "value": 21.677083333333332
+              },
+              "slope_x": {
+                "numerator": "5",
+                "denominator": "176",
+                "value": 0.028409090909090908
+              },
+              "slope_y": {
+                "numerator": "-197",
+                "denominator": "1008",
+                "value": -0.19543650793650794
+              },
+              "residual_sse": {
+                "numerator": "461611",
+                "denominator": "22176",
+                "value": 20.815791847041847
+              },
+              "residual_population_rms": 0.4656513342334075,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2081,
+                "sum_squares": 45151,
+                "twice_centered_x_sum": 65,
+                "twice_centered_y_sum": -197,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "bottom_interior_middle": {
+          "xywh": [
+            852,
+            492,
+            14,
+            8
+          ],
+          "primary": false,
+          "Yprime": {
+            "mean": {
+              "numerator": "6270197",
+              "denominator": "280000",
+              "value": 22.393560714285716
+            },
+            "slope_x": {
+              "numerator": "23",
+              "denominator": "728",
+              "value": 0.03159340659340659
+            },
+            "slope_y": {
+              "numerator": "-74311",
+              "denominator": "420000",
+              "value": -0.17693095238095238
+            },
+            "residual_sse": {
+              "numerator": "315932995351",
+              "denominator": "13650000000",
+              "value": 23.145274384688644
+            },
+            "residual_population_rms": 0.4545923839854526,
+            "sufficient_statistics": {
+              "n": 112,
+              "sum": 25080788,
+              "sum_squares": 5620818386168,
+              "twice_centered_x_sum": 1150000,
+              "twice_centered_y_sum": -2080708,
+              "centered_x_square_sum": {
+                "numerator": "1820",
+                "denominator": "1",
+                "value": 1820.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "588",
+                "denominator": "1",
+                "value": 588.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "2439",
+                "denominator": "112",
+                "value": 21.776785714285715
+              },
+              "slope_x": {
+                "numerator": "23",
+                "denominator": "728",
+                "value": 0.03159340659340659
+              },
+              "slope_y": {
+                "numerator": "-25",
+                "denominator": "168",
+                "value": -0.1488095238095238
+              },
+              "residual_sse": {
+                "numerator": "133583",
+                "denominator": "4368",
+                "value": 30.582188644688646
+              },
+              "residual_population_rms": 0.5225468933561357,
+              "sufficient_statistics": {
+                "n": 112,
+                "sum": 2439,
+                "sum_squares": 53159,
+                "twice_centered_x_sum": 115,
+                "twice_centered_y_sum": -175,
+                "centered_x_square_sum": {
+                  "numerator": "1820",
+                  "denominator": "1",
+                  "value": 1820.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "588",
+                  "denominator": "1",
+                  "value": 588.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2537",
+                "denominator": "112",
+                "value": 22.651785714285715
+              },
+              "slope_x": {
+                "numerator": "23",
+                "denominator": "728",
+                "value": 0.03159340659340659
+              },
+              "slope_y": {
+                "numerator": "-31",
+                "denominator": "168",
+                "value": -0.18452380952380953
+              },
+              "residual_sse": {
+                "numerator": "103007",
+                "denominator": "4368",
+                "value": 23.582188644688646
+              },
+              "residual_population_rms": 0.45886300325494606,
+              "sufficient_statistics": {
+                "n": 112,
+                "sum": 2537,
+                "sum_squares": 57513,
+                "twice_centered_x_sum": 115,
+                "twice_centered_y_sum": -217,
+                "centered_x_square_sum": {
+                  "numerator": "1820",
+                  "denominator": "1",
+                  "value": 1820.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "588",
+                  "denominator": "1",
+                  "value": 588.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "2425",
+                "denominator": "112",
+                "value": 21.651785714285715
+              },
+              "slope_x": {
+                "numerator": "23",
+                "denominator": "728",
+                "value": 0.03159340659340659
+              },
+              "slope_y": {
+                "numerator": "-31",
+                "denominator": "168",
+                "value": -0.18452380952380953
+              },
+              "residual_sse": {
+                "numerator": "103007",
+                "denominator": "4368",
+                "value": 23.582188644688646
+              },
+              "residual_population_rms": 0.45886300325494606,
+              "sufficient_statistics": {
+                "n": 112,
+                "sum": 2425,
+                "sum_squares": 52551,
+                "twice_centered_x_sum": 115,
+                "twice_centered_y_sum": -217,
+                "centered_x_square_sum": {
+                  "numerator": "1820",
+                  "denominator": "1",
+                  "value": 1820.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "588",
+                  "denominator": "1",
+                  "value": 588.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        },
+        "bottom_interior_right": {
+          "xywh": [
+            1047,
+            492,
+            12,
+            8
+          ],
+          "primary": false,
+          "Yprime": {
+            "mean": {
+              "numerator": "2679013",
+              "denominator": "120000",
+              "value": 22.325108333333333
+            },
+            "slope_x": {
+              "numerator": "1",
+              "denominator": "52",
+              "value": 0.019230769230769232
+            },
+            "slope_y": {
+              "numerator": "-23937",
+              "denominator": "140000",
+              "value": -0.17097857142857142
+            },
+            "residual_sse": {
+              "numerator": "93329641579",
+              "denominator": "6825000000",
+              "value": 13.674672758827839
+            },
+            "residual_population_rms": 0.3774182135303709,
+            "sufficient_statistics": {
+              "n": 96,
+              "sum": 21432104,
+              "sum_squares": 4787623588144,
+              "twice_centered_x_sum": 440000,
+              "twice_centered_y_sum": -1723464,
+              "centered_x_square_sum": {
+                "numerator": "1144",
+                "denominator": "1",
+                "value": 1144.0
+              },
+              "centered_y_square_sum": {
+                "numerator": "504",
+                "denominator": "1",
+                "value": 504.0
+              },
+              "channel_denominator": 10000
+            }
+          },
+          "RGB": [
+            {
+              "mean": {
+                "numerator": "521",
+                "denominator": "24",
+                "value": 21.708333333333332
+              },
+              "slope_x": {
+                "numerator": "1",
+                "denominator": "52",
+                "value": 0.019230769230769232
+              },
+              "slope_y": {
+                "numerator": "-1",
+                "denominator": "7",
+                "value": -0.14285714285714285
+              },
+              "residual_sse": {
+                "numerator": "4675",
+                "denominator": "273",
+                "value": 17.124542124542124
+              },
+              "residual_population_rms": 0.42235133139442943,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2084,
+                "sum_squares": 45268,
+                "twice_centered_x_sum": 44,
+                "twice_centered_y_sum": -144,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "271",
+                "denominator": "12",
+                "value": 22.583333333333332
+              },
+              "slope_x": {
+                "numerator": "1",
+                "denominator": "52",
+                "value": 0.019230769230769232
+              },
+              "slope_y": {
+                "numerator": "-5",
+                "denominator": "28",
+                "value": -0.17857142857142858
+              },
+              "residual_sse": {
+                "numerator": "4051",
+                "denominator": "273",
+                "value": 14.83882783882784
+              },
+              "residual_population_rms": 0.39315534248070866,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2168,
+                "sum_squares": 48992,
+                "twice_centered_x_sum": 44,
+                "twice_centered_y_sum": -180,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            },
+            {
+              "mean": {
+                "numerator": "259",
+                "denominator": "12",
+                "value": 21.583333333333332
+              },
+              "slope_x": {
+                "numerator": "1",
+                "denominator": "52",
+                "value": 0.019230769230769232
+              },
+              "slope_y": {
+                "numerator": "-5",
+                "denominator": "28",
+                "value": -0.17857142857142858
+              },
+              "residual_sse": {
+                "numerator": "4051",
+                "denominator": "273",
+                "value": 14.83882783882784
+              },
+              "residual_population_rms": 0.39315534248070866,
+              "sufficient_statistics": {
+                "n": 96,
+                "sum": 2072,
+                "sum_squares": 44752,
+                "twice_centered_x_sum": 44,
+                "twice_centered_y_sum": -180,
+                "centered_x_square_sum": {
+                  "numerator": "1144",
+                  "denominator": "1",
+                  "value": 1144.0
+                },
+                "centered_y_square_sum": {
+                  "numerator": "504",
+                  "denominator": "1",
+                  "value": 504.0
+                },
+                "channel_denominator": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "mapped_insets": [
+    {
+      "logical_size": [
+        1672,
+        941
+      ],
+      "inset": [
+        604.0,
+        273.0,
+        508.0,
+        231.0
+      ]
+    },
+    {
+      "logical_size": [
+        1400,
+        820
+      ],
+      "inset": [
+        505.7416076660156,
+        237.89585876464844,
+        425.3588562011719,
+        201.29649353027344
+      ]
+    },
+    {
+      "logical_size": [
+        1920,
+        1080
+      ],
+      "inset": [
+        693.5885009765625,
+        313.32623291015625,
+        583.3492431640625,
+        265.1221923828125
+      ]
+    },
+    {
+      "logical_size": [
+        1920,
+        820
+      ],
+      "inset": [
+        693.5885009765625,
+        237.89585876464844,
+        583.3492431640625,
+        201.29649353027344
+      ]
+    },
+    {
+      "logical_size": [
+        1672.5,
+        941.25
+      ],
+      "inset": [
+        604.1806640625,
+        273.0725402832031,
+        508.15191650390625,
+        231.06138610839844
+      ]
+    },
+    {
+      "logical_size": [
+        8192,
+        8192
+      ],
+      "inset": [
+        2959.31103515625,
+        2376.6376953125,
+        2488.95654296875,
+        2011.000732421875
+      ]
+    }
+  ],
+  "canonical_support": {
+    "gradient": [
+      604,
+      273,
+      1112,
+      504
+    ],
+    "expanded_one_device_pixel": [
+      603,
+      272,
+      1113,
+      505
+    ],
+    "gradient_pixels": 117348,
+    "expanded_pixels": 118830,
+    "new_grain_canonical_envelope": [
+      606,
+      275,
+      1110,
+      502
+    ],
+    "pairs": 2304,
+    "marks": 4608,
+    "nominal_density": 0.03926781879537785,
+    "ideal_sparse_rms_at_amplitude_8": 1.585288744331512
+  }
+}

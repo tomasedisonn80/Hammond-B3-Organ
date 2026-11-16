@@ -298,7 +298,7 @@ if(BUILD_TESTING)
             "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_scanner_line_probe>")
         set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
             "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_scanner_line_foh_probe>")
-        if(test_name MATCHES "^test_causal_contact_grid")
+        if(test_name MATCHES "^test_(causal_contact_grid|contact_grid_conversion)")
             set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
                 "HAMMOND_CAUSAL_CONTACT_GRID_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_causal_contact_grid_probe>")
             set_tests_properties("python_${test_name}" PROPERTIES
@@ -444,6 +444,7 @@ endif()
 # Component-scoped installation is defined after all targets and tests.
 include(cmake/InstallHammondTools.cmake)
 include(cmake/InstallContactReferenceTools.cmake)
+include(cmake/InstallContactGridConversionTools.cmake)
 include(cmake/InstallSourceLeakageTools.cmake)
 include(cmake/InstallCrossoverTools.cmake)
 include(cmake/InstallCaptureTools.cmake)

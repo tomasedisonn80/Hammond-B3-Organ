@@ -1,0 +1,488 @@
+Internal ctest changing into directory: /workspace/scratch/0d55e62af118/build-native
+Test project /workspace/scratch/0d55e62af118/build-native
+        Start 209: test_standalone_workflows
+        Start 210: test_standalone_workspace_replay
+        Start 208: test_standalone_native_midi_replay
+  1/213 Test #208: test_standalone_native_midi_replay ................   Passed   40.36 sec
+        Start 195: test_standalone_product_visual
+  2/213 Test #210: test_standalone_workspace_replay ..................   Passed   48.78 sec
+        Start 207: test_standalone_native_calibration
+  3/213 Test #195: test_standalone_product_visual ....................   Passed   19.30 sec
+        Start 196: test_standalone_percussion_raster
+  4/213 Test #209: test_standalone_workflows .........................   Passed   63.91 sec
+        Start 212: test_standalone_chapel
+  5/213 Test #207: test_standalone_native_calibration ................   Passed   20.37 sec
+        Start 205: test_standalone_midi_cli
+  6/213 Test #196: test_standalone_percussion_raster .................   Passed   13.74 sec
+        Start 199: test_standalone_scaled_view
+  7/213 Test #212: test_standalone_chapel ............................   Passed   19.94 sec
+        Start 133: python_test_plot_pedal_trace
+  8/213 Test #205: test_standalone_midi_cli ..........................   Passed   18.44 sec
+        Start 204: test_standalone_app
+  9/213 Test #199: test_standalone_scaled_view .......................   Passed   20.40 sec
+        Start  93: python_test_chapel_controls
+ 10/213 Test #133: python_test_plot_pedal_trace ......................   Passed   13.55 sec
+        Start 142: python_test_rotary_propagation_acceptance
+ 11/213 Test #204: test_standalone_app ...............................   Passed   14.59 sec
+        Start 200: test_standalone_preset_raster
+ 12/213 Test  #93: python_test_chapel_controls .......................   Passed   14.56 sec
+        Start 197: test_standalone_upper_rack_material_raster
+ 13/213 Test #142: python_test_rotary_propagation_acceptance .........   Passed   13.61 sec
+        Start 194: test_standalone_waveform_material
+ 14/213 Test #194: test_standalone_waveform_material .................   Passed    6.36 sec
+        Start 191: test_standalone_workspace_raster
+ 15/213 Test #197: test_standalone_upper_rack_material_raster ........   Passed   10.94 sec
+        Start  87: python_test_capture_replay
+ 16/213 Test #200: test_standalone_preset_raster .....................   Passed   18.38 sec
+        Start 193: test_standalone_material_acceptance
+ 17/213 Test #191: test_standalone_workspace_raster ..................   Passed    8.13 sec
+        Start  81: python_test_capture_install
+ 18/213 Test #193: test_standalone_material_acceptance ...............   Passed    7.05 sec
+        Start  65: test_source_leakage_spectrum
+ 19/213 Test  #87: python_test_capture_replay ........................   Passed    8.52 sec
+        Start  89: python_test_capture_study
+ 20/213 Test  #81: python_test_capture_install .......................   Passed    6.65 sec
+        Start 131: python_test_plot_console_trace
+ 21/213 Test  #65: test_source_leakage_spectrum ......................   Passed    6.18 sec
+        Start 138: python_test_render_fixture
+ 22/213 Test  #89: python_test_capture_study .........................   Passed    6.08 sec
+        Start 160: test_standalone_install
+ 23/213 Test #131: python_test_plot_console_trace ....................   Passed    6.28 sec
+        Start  74: python_test_capture_cli_pipeline
+ 24/213 Test #160: test_standalone_install ...........................   Passed    6.09 sec
+        Start  94: python_test_chapel_presets
+ 25/213 Test #138: python_test_render_fixture ........................   Passed    6.40 sec
+        Start 118: python_test_install
+ 26/213 Test  #74: python_test_capture_cli_pipeline ..................   Passed    6.12 sec
+        Start 211: test_standalone_replay_boundaries
+ 27/213 Test #118: python_test_install ...............................   Passed    5.46 sec
+        Start 130: python_test_pedal_trace
+ 28/213 Test  #94: python_test_chapel_presets ........................   Passed    5.99 sec
+        Start 103: python_test_console_trace
+ 29/213 Test #211: test_standalone_replay_boundaries .................   Passed    4.81 sec
+        Start 152: python_test_source_leakage_demo
+ 30/213 Test #130: python_test_pedal_trace ...........................   Passed    5.16 sec
+        Start 139: python_test_repository_integrity
+ 31/213 Test #103: python_test_console_trace .........................   Passed    7.05 sec
+        Start  82: python_test_capture_job
+ 32/213 Test #152: python_test_source_leakage_demo ...................   Passed    4.78 sec
+        Start  98: python_test_compile_profile
+ 33/213 Test #139: python_test_repository_integrity ..................***Failed    3.34 sec
+F........................................
+======================================================================
+FAIL: test_current_source_tree_and_supplied_pdf (__main__.RealRepositorySmokeTests.test_current_source_tree_and_supplied_pdf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_repository_integrity.py", line 384, in test_current_source_tree_and_supplied_pdf
+    self.assertEqual(result["status"], "passed", result["errors"])
+AssertionError: 'failed' != 'passed'
+- failed
++ passed
+ : [{'check': 'markdown_links', 'message': "docs/development/2026-11-16-conversion-material/reports/converter-proposal-before-admission.md:8: research/CONTACT_GRID_CONVERSION_NEXT.md: [Errno 2] No such file or directory: '/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/research/CONTACT_GRID_CONVERSION_NEXT.md'"}, {'check': 'markdown_links', 'message': "docs/development/2026-11-16-conversion-material/reports/converter-proposal-before-admission.md:9: reviews/CONTACT_GRID_CONVERSION_NEXT_REVIEW.md: [Errno 2] No such file or directory: '/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/reviews/CONTACT_GRID_CONVERSION_NEXT_REVIEW.md'"}]
+
+----------------------------------------------------------------------
+Ran 41 tests in 3.223s
+
+FAILED (failures=1)
+
+        Start  80: python_test_capture_graph_scale
+ 34/213 Test  #82: python_test_capture_job ...........................   Passed    4.31 sec
+        Start 184: test_standalone_workspace_continuity
+ 35/213 Test  #98: python_test_compile_profile .......................   Passed    4.94 sec
+        Start 102: python_test_console_evidence
+ 36/213 Test  #80: python_test_capture_graph_scale ...................   Passed    6.63 sec
+        Start 147: python_test_scanner_line_profile
+ 37/213 Test #184: test_standalone_workspace_continuity ..............   Passed    3.61 sec
+        Start 144: python_test_rotary_waveform_acceptance
+ 38/213 Test #102: python_test_console_evidence ......................   Passed    3.32 sec
+        Start  97: python_test_compile_pedal_routing
+ 39/213 Test #144: python_test_rotary_waveform_acceptance ............   Passed    3.42 sec
+        Start 206: test_standalone_expression_diagnostics
+ 40/213 Test #147: python_test_scanner_line_profile ..................   Passed    3.73 sec
+        Start 124: python_test_pedal_catalog
+ 41/213 Test  #97: python_test_compile_pedal_routing .................   Passed    2.86 sec
+        Start 106: python_test_contact_reference_install
+ 42/213 Test #206: test_standalone_expression_diagnostics ............   Passed    2.92 sec
+        Start 201: test_standalone_audio_device
+ 43/213 Test #124: python_test_pedal_catalog .........................   Passed    3.33 sec
+        Start 137: python_test_render
+ 44/213 Test #106: python_test_contact_reference_install .............   Passed    2.83 sec
+        Start 157: python_test_verify_render
+ 45/213 Test #201: test_standalone_audio_device ......................   Passed    2.81 sec
+        Start  19: test_leslie_crossover
+ 46/213 Test #137: python_test_render ................................   Passed    2.69 sec
+        Start 188: test_standalone_benchmark
+ 47/213 Test #157: python_test_verify_render .........................   Passed    3.89 sec
+        Start 145: python_test_scanner_ac_reference
+ 48/213 Test  #19: test_leslie_crossover .............................   Passed    2.75 sec
+        Start 141: python_test_rotary_profile
+ 49/213 Test #188: test_standalone_benchmark .........................   Passed    2.37 sec
+        Start 158: python_test_vst3_build_tools
+ 50/213 Test #145: python_test_scanner_ac_reference ..................   Passed    2.59 sec
+        Start 149: python_test_scanner_transient_reference
+ 51/213 Test #158: python_test_vst3_build_tools ......................   Passed    2.35 sec
+        Start 136: python_test_refinement_session
+ 52/213 Test #141: python_test_rotary_profile ........................   Passed    2.83 sec
+        Start  96: python_test_compile_fixed_registrations
+ 53/213 Test #136: python_test_refinement_session ....................   Passed    1.34 sec
+        Start  73: python_test_capture_audio_admission
+ 54/213 Test #149: python_test_scanner_transient_reference ...........   Passed    2.24 sec
+        Start 146: python_test_scanner_foh_probe
+ 55/213 Test  #96: python_test_compile_fixed_registrations ...........   Passed    2.06 sec
+        Start 143: python_test_rotary_reference
+ 56/213 Test  #73: python_test_capture_audio_admission ...............   Passed    2.47 sec
+        Start 125: python_test_pedal_demo
+ 57/213 Test #146: python_test_scanner_foh_probe .....................   Passed    2.33 sec
+        Start 116: python_test_fixture_catalog
+ 58/213 Test #143: python_test_rotary_reference ......................   Passed    2.01 sec
+        Start 127: python_test_pedal_render_cli
+ 59/213 Test #116: python_test_fixture_catalog .......................   Passed    1.92 sec
+        Start 148: python_test_scanner_native_ac
+ 60/213 Test #125: python_test_pedal_demo ............................   Passed    2.06 sec
+        Start 110: python_test_crossover_acceptance
+ 61/213 Test #127: python_test_pedal_render_cli ......................   Passed    1.70 sec
+        Start  91: python_test_causal_contact_grid_differential
+ 62/213 Test #148: python_test_scanner_native_ac .....................   Passed    1.68 sec
+        Start 128: python_test_pedal_render_evidence
+ 63/213 Test #110: python_test_crossover_acceptance ..................   Passed    1.62 sec
+        Start 111: python_test_crossover_install
+ 64/213 Test  #91: python_test_causal_contact_grid_differential ......   Passed    1.37 sec
+        Start 154: python_test_source_leakage_render
+ 65/213 Test #128: python_test_pedal_render_evidence .................   Passed    1.50 sec
+        Start  78: python_test_capture_corpus_admission
+ 66/213 Test #111: python_test_crossover_install .....................   Passed    1.60 sec
+        Start 135: python_test_product_session
+ 67/213 Test #154: python_test_source_leakage_render .................   Passed    1.65 sec
+        Start  79: python_test_capture_demo
+ 68/213 Test  #78: python_test_capture_corpus_admission ..............   Passed    1.44 sec
+        Start 153: python_test_source_leakage_install
+ 69/213 Test  #79: python_test_capture_demo ..........................   Passed    1.31 sec
+        Start  83: python_test_capture_metadata_read
+ 70/213 Test #135: python_test_product_session .......................   Passed    2.11 sec
+        Start  15: test_fixed_registration_engine
+ 71/213 Test #153: python_test_source_leakage_install ................   Passed    1.25 sec
+        Start  71: python_test_capture
+ 72/213 Test  #83: python_test_capture_metadata_read .................   Passed    1.37 sec
+        Start 122: python_test_parameters
+ 73/213 Test  #15: test_fixed_registration_engine ....................   Passed    1.00 sec
+        Start 150: python_test_sdl2_dependency
+ 74/213 Test  #71: python_test_capture ...............................   Passed    0.97 sec
+        Start 107: python_test_contact_switching_io
+ 75/213 Test #150: python_test_sdl2_dependency .......................   Passed    0.93 sec
+        Start 203: test_standalone_callback_allocation
+ 76/213 Test #107: python_test_contact_switching_io ..................   Passed    0.94 sec
+        Start  23: test_numerics
+ 77/213 Test #122: python_test_parameters ............................   Passed    1.92 sec
+        Start 101: python_test_console_catalog
+ 78/213 Test #203: test_standalone_callback_allocation ...............   Passed    0.93 sec
+        Start  16: test_fixed_registration_lifecycle
+ 79/213 Test  #23: test_numerics .....................................   Passed    0.96 sec
+        Start  18: test_input_processor
+ 80/213 Test #101: python_test_console_catalog .......................   Passed    0.90 sec
+        Start  56: test_scanner_line_foh
+ 81/213 Test  #16: test_fixed_registration_lifecycle .................   Passed    0.88 sec
+        Start  70: python_test_calibration_session_records
+ 82/213 Test  #56: test_scanner_line_foh .............................   Passed    0.76 sec
+        Start  95: python_test_cli_unicode
+ 83/213 Test  #70: python_test_calibration_session_records ...........   Passed    0.84 sec
+        Start 134: python_test_preset_parameter_oracle
+ 84/213 Test  #18: test_input_processor ..............................   Passed    1.29 sec
+        Start  84: python_test_capture_numerics
+ 85/213 Test  #95: python_test_cli_unicode ...........................   Passed    0.83 sec
+        Start 100: python_test_console_benchmark
+ 86/213 Test  #84: python_test_capture_numerics ......................   Passed    0.68 sec
+        Start  12: test_engine_rate
+ 87/213 Test #134: python_test_preset_parameter_oracle ...............   Passed    0.81 sec
+        Start  77: python_test_capture_corpus
+ 88/213 Test  #12: test_engine_rate ..................................   Passed    0.69 sec
+        Start  68: test_tonewheel
+ 89/213 Test #100: python_test_console_benchmark .....................   Passed    1.00 sec
+        Start 155: python_test_source_leakage_roundtrip
+ 90/213 Test  #77: python_test_capture_corpus ........................   Passed    0.93 sec
+        Start  76: python_test_capture_comparison
+ 91/213 Test  #68: test_tonewheel ....................................   Passed    0.56 sec
+        Start  69: python_test_audio_analysis
+ 92/213 Test  #76: python_test_capture_comparison ....................   Passed    0.49 sec
+        Start  45: test_realtime_console
+ 93/213 Test #155: python_test_source_leakage_roundtrip ..............   Passed    0.72 sec
+        Start 112: python_test_crossover_reference
+ 94/213 Test  #69: python_test_audio_analysis ........................   Passed    0.82 sec
+        Start 108: python_test_contact_switching_study
+ 95/213 Test  #45: test_realtime_console .............................   Passed    0.74 sec
+        Start 121: python_test_parameter_bridge
+ 96/213 Test #112: python_test_crossover_reference ...................   Passed    0.72 sec
+        Start  52: test_rotary_renderer
+ 97/213 Test  #52: test_rotary_renderer ..............................   Passed    0.65 sec
+        Start  86: python_test_capture_readiness
+ 98/213 Test #121: python_test_parameter_bridge ......................   Passed    0.72 sec
+        Start 129: python_test_pedal_session
+ 99/213 Test #108: python_test_contact_switching_study ...............   Passed    0.90 sec
+        Start  90: python_test_causal_contact_grid_cli
+100/213 Test  #90: python_test_causal_contact_grid_cli ...............   Passed    0.55 sec
+        Start 113: python_test_demo_bundle
+101/213 Test #129: python_test_pedal_session .........................   Passed    0.60 sec
+        Start  39: test_performance_acceptance
+102/213 Test  #86: python_test_capture_readiness .....................   Passed    0.71 sec
+        Start  46: test_realtime_pedals
+103/213 Test  #39: test_performance_acceptance .......................   Passed    0.48 sec
+        Start 140: python_test_rotary_motion_acceptance
+104/213 Test #113: python_test_demo_bundle ...........................   Passed    0.54 sec
+        Start 156: python_test_standalone_session_records
+105/213 Test  #46: test_realtime_pedals ..............................   Passed    0.52 sec
+        Start  99: python_test_compile_rotary_profile
+106/213 Test  #99: python_test_compile_rotary_profile ................   Passed    0.55 sec
+        Start 192: test_standalone_inspection_raster
+107/213 Test #156: python_test_standalone_session_records ............   Passed    0.62 sec
+        Start 159: python_test_rotary_waveform_report_admission
+108/213 Test #140: python_test_rotary_motion_acceptance ..............   Passed    0.71 sec
+        Start  72: python_test_capture_audio
+109/213 Test  #72: python_test_capture_audio .........................   Passed    0.48 sec
+        Start 123: python_test_partial_key_render
+110/213 Test #159: python_test_rotary_waveform_report_admission ......   Passed    0.78 sec
+        Start 132: python_test_plot_crossover_characterization
+111/213 Test #192: test_standalone_inspection_raster .................   Passed    0.87 sec
+        Start  63: test_source_leakage_oracle
+112/213 Test #123: python_test_partial_key_render ....................   Passed    0.54 sec
+        Start 114: python_test_factory_reference
+113/213 Test #132: python_test_plot_crossover_characterization .......   Passed    0.48 sec
+        Start 120: python_test_native_bundle_inventory
+114/213 Test  #63: test_source_leakage_oracle ........................   Passed    0.54 sec
+        Start 151: python_test_source_leakage_compiler
+115/213 Test #114: python_test_factory_reference .....................   Passed    0.49 sec
+        Start  13: test_factory_runtime
+116/213 Test #120: python_test_native_bundle_inventory ...............   Passed    0.31 sec
+        Start 115: python_test_fixed_registration_source_admission
+117/213 Test  #13: test_factory_runtime ..............................   Passed    0.23 sec
+        Start 175: test_standalone_preset_ui
+118/213 Test #151: python_test_source_leakage_compiler ...............   Passed    0.58 sec
+        Start  88: python_test_capture_standalone_interface
+119/213 Test #115: python_test_fixed_registration_source_admission ...   Passed    0.45 sec
+        Start 126: python_test_pedal_map
+120/213 Test #175: test_standalone_preset_ui .........................   Passed    0.41 sec
+        Start  43: test_profile
+121/213 Test #126: python_test_pedal_map .............................   Passed    0.32 sec
+        Start  17: test_host_timeline
+122/213 Test  #88: python_test_capture_standalone_interface ..........   Passed    0.38 sec
+        Start  85: python_test_capture_policy
+123/213 Test  #43: test_profile ......................................   Passed    0.29 sec
+        Start  44: test_realtime
+124/213 Test  #17: test_host_timeline ................................   Passed    0.38 sec
+        Start  55: test_scanner_line
+125/213 Test  #85: python_test_capture_policy ........................   Passed    0.46 sec
+        Start 179: test_standalone_session
+126/213 Test  #44: test_realtime .....................................   Passed    0.44 sec
+        Start 176: test_standalone_projection
+127/213 Test  #55: test_scanner_line .................................   Passed    0.47 sec
+        Start  64: test_source_leakage_resources
+128/213 Test #179: test_standalone_session ...........................   Passed    0.37 sec
+        Start   4: test_console_engine
+129/213 Test #176: test_standalone_projection ........................   Passed    0.27 sec
+        Start 202: test_standalone_device_removal
+130/213 Test  #64: test_source_leakage_resources .....................   Passed    0.20 sec
+        Start 109: python_test_continuation_ledger
+131/213 Test #202: test_standalone_device_removal ....................   Passed    0.23 sec
+        Start  26: test_partial_key
+132/213 Test   #4: test_console_engine ...............................   Passed    0.28 sec
+        Start  66: test_source_rate
+133/213 Test  #66: test_source_rate ..................................   Passed    0.18 sec
+        Start  59: test_source_leakage_contacts
+134/213 Test  #26: test_partial_key ..................................   Passed    0.24 sec
+        Start  54: test_rotary_streaming_path
+135/213 Test #109: python_test_continuation_ledger ...................   Passed    0.31 sec
+        Start 117: python_test_fractional_contact_reference
+136/213 Test  #59: test_source_leakage_contacts ......................   Passed    0.19 sec
+        Start  24: test_owned_lifecycle
+137/213 Test  #54: test_rotary_streaming_path ........................   Passed    0.17 sec
+        Start  62: test_source_leakage_lifecycle
+138/213 Test #117: python_test_fractional_contact_reference ..........   Passed    0.22 sec
+        Start  11: test_engine
+139/213 Test  #24: test_owned_lifecycle ..............................   Passed    0.21 sec
+        Start  75: python_test_capture_common
+140/213 Test  #62: test_source_leakage_lifecycle .....................   Passed    0.22 sec
+        Start 119: python_test_model_info
+141/213 Test  #11: test_engine .......................................   Passed    0.21 sec
+        Start   8: test_controls
+142/213 Test #119: python_test_model_info ............................   Passed    0.17 sec
+        Start 182: test_standalone_whole_reference
+143/213 Test   #8: test_controls .....................................   Passed    0.11 sec
+        Start  92: python_test_causal_contact_grid_reference
+144/213 Test  #75: python_test_capture_common ........................   Passed    0.19 sec
+        Start  34: test_pedal_sources
+145/213 Test  #34: test_pedal_sources ................................   Passed    0.10 sec
+        Start 163: test_standalone_concurrency
+146/213 Test  #92: python_test_causal_contact_grid_reference .........   Passed    0.12 sec
+        Start 189: test_standalone_drawing
+147/213 Test #182: test_standalone_whole_reference ...................   Passed    0.12 sec
+        Start  57: test_scanner_rotor
+148/213 Test  #57: test_scanner_rotor ................................   Passed    0.08 sec
+        Start  29: test_pedal_integration
+149/213 Test #189: test_standalone_drawing ...........................   Passed    0.10 sec
+        Start 168: test_standalone_midi_concurrency
+150/213 Test #163: test_standalone_concurrency .......................   Passed    0.11 sec
+        Start  48: test_rotary_history_acceptance
+151/213 Test  #48: test_rotary_history_acceptance ....................   Passed    0.07 sec
+        Start  53: test_rotary_renderer_transactions
+152/213 Test #168: test_standalone_midi_concurrency ..................   Passed    0.08 sec
+        Start  51: test_rotary_propagation_allocation
+153/213 Test  #29: test_pedal_integration ............................   Passed    0.10 sec
+        Start  40: test_performance_input
+154/213 Test  #53: test_rotary_renderer_transactions .................   Passed    0.03 sec
+        Start   7: test_control_io
+155/213 Test  #40: test_performance_input ............................   Passed    0.06 sec
+        Start  42: test_preset_realtime
+156/213 Test  #51: test_rotary_propagation_allocation ................   Passed    0.07 sec
+        Start   6: test_contact_rate
+157/213 Test   #7: test_control_io ...................................   Passed    0.09 sec
+        Start  47: test_rotary_history
+158/213 Test  #47: test_rotary_history ...............................   Passed    0.03 sec
+        Start  49: test_rotary_motion
+159/213 Test   #6: test_contact_rate .................................   Passed    0.08 sec
+        Start 181: test_standalone_ui
+160/213 Test  #42: test_preset_realtime ..............................   Passed    0.09 sec
+        Start   5: test_contact_bank
+161/213 Test #181: test_standalone_ui ................................   Passed    0.04 sec
+        Start  37: test_percussion_controls
+162/213 Test  #49: test_rotary_motion ................................   Passed    0.05 sec
+        Start 183: test_standalone_workspace_acceptance
+163/213 Test   #5: test_contact_bank .................................   Passed    0.04 sec
+        Start 177: test_standalone_reference_layout
+164/213 Test  #37: test_percussion_controls ..........................   Passed    0.03 sec
+        Start  10: test_decimal
+165/213 Test #183: test_standalone_workspace_acceptance ..............   Passed    0.03 sec
+        Start 172: test_standalone_midi_session
+166/213 Test #177: test_standalone_reference_layout ..................   Passed    0.04 sec
+        Start  32: test_pedal_reference
+167/213 Test  #10: test_decimal ......................................   Passed    0.04 sec
+        Start  67: test_state_exchange
+168/213 Test #172: test_standalone_midi_session ......................   Passed    0.04 sec
+        Start  60: test_source_leakage_engine
+169/213 Test  #32: test_pedal_reference ..............................   Passed    0.04 sec
+        Start  22: test_note_ownership
+170/213 Test  #60: test_source_leakage_engine ........................   Passed    0.02 sec
+        Start  50: test_rotary_propagation
+171/213 Test  #67: test_state_exchange ...............................   Passed    0.03 sec
+        Start 178: test_standalone_registration_library
+172/213 Test  #50: test_rotary_propagation ...........................   Passed    0.02 sec
+        Start 213: test_standalone_input_replay
+173/213 Test  #22: test_note_ownership ...............................   Passed    0.04 sec
+174/213 Test #178: test_standalone_registration_library ..............   Passed    0.02 sec
+        Start  20: test_leslie_crossover_allocation
+        Start   1: test_causal_contact_grid
+175/213 Test #213: test_standalone_input_replay ......................   Passed    0.02 sec
+        Start 174: test_standalone_preset_concurrency
+176/213 Test  #20: test_leslie_crossover_allocation ..................   Passed    0.01 sec
+        Start  25: test_parameter_bridge
+177/213 Test   #1: test_causal_contact_grid ..........................   Passed    0.02 sec
+        Start  28: test_pedal_engine
+178/213 Test  #25: test_parameter_bridge .............................   Passed    0.01 sec
+        Start  21: test_leslie_crossover_lifecycle
+179/213 Test #174: test_standalone_preset_concurrency ................   Passed    0.01 sec
+        Start  61: test_source_leakage_io
+180/213 Test  #28: test_pedal_engine .................................   Passed    0.01 sec
+        Start 173: test_standalone_percussion_reference
+181/213 Test  #21: test_leslie_crossover_lifecycle ...................   Passed    0.01 sec
+        Start  38: test_percussion_rate
+182/213 Test  #61: test_source_leakage_io ............................   Passed    0.01 sec
+        Start  36: test_percussion
+183/213 Test #173: test_standalone_percussion_reference ..............   Passed    0.01 sec
+        Start 171: test_standalone_midi_replay
+184/213 Test  #38: test_percussion_rate ..............................   Passed    0.01 sec
+        Start 166: test_standalone_inspection_acceptance
+185/213 Test #171: test_standalone_midi_replay .......................   Passed    0.01 sec
+        Start 169: test_standalone_midi_discovery
+186/213 Test  #36: test_percussion ...................................   Passed    0.01 sec
+187/213 Test #166: test_standalone_inspection_acceptance .............   Passed    0.01 sec
+        Start   3: test_causal_contact_grid_resources
+        Start  27: test_pedal_controls
+188/213 Test #169: test_standalone_midi_discovery ....................   Passed    0.01 sec
+        Start   9: test_core_robustness
+189/213 Test   #3: test_causal_contact_grid_resources ................   Passed    0.01 sec
+        Start 162: test_standalone_channel_modes
+190/213 Test  #27: test_pedal_controls ...............................   Passed    0.01 sec
+        Start  31: test_pedal_realtime
+191/213 Test   #9: test_core_robustness ..............................   Passed    0.01 sec
+        Start 161: test_standalone_channel_acceptance
+192/213 Test  #31: test_pedal_realtime ...............................   Passed    0.00 sec
+        Start 180: test_standalone_state_files
+193/213 Test #162: test_standalone_channel_modes .....................   Passed    0.01 sec
+        Start  35: test_pedal_voice
+194/213 Test #161: test_standalone_channel_acceptance ................   Passed    0.01 sec
+        Start 186: test_standalone_midi_backend
+195/213 Test #180: test_standalone_state_files .......................   Passed    0.01 sec
+        Start 190: test_standalone_quad_drawing
+196/213 Test  #35: test_pedal_voice ..................................   Passed    0.01 sec
+197/213 Test #186: test_standalone_midi_backend ......................   Passed    0.01 sec
+        Start   2: test_causal_contact_grid_lifecycle
+        Start 185: test_standalone_workspaces_author
+198/213 Test   #2: test_causal_contact_grid_lifecycle ................   Passed    0.00 sec
+        Start  33: test_pedal_routing
+199/213 Test #190: test_standalone_quad_drawing ......................   Passed    0.01 sec
+        Start  58: test_source_leakage
+200/213 Test #185: test_standalone_workspaces_author .................   Passed    0.01 sec
+        Start 164: test_standalone_expression_calibration
+201/213 Test  #33: test_pedal_routing ................................   Passed    0.00 sec
+        Start 187: test_standalone_midi_backend_quarantine
+202/213 Test  #58: test_source_leakage ...............................   Passed    0.00 sec
+        Start 167: test_standalone_inspection_author
+203/213 Test #164: test_standalone_expression_calibration ............   Passed    0.00 sec
+        Start 165: test_standalone_external_control
+204/213 Test #187: test_standalone_midi_backend_quarantine ...........   Passed    0.00 sec
+        Start  30: test_pedal_note_ownership
+205/213 Test #165: test_standalone_external_control ..................   Passed    0.00 sec
+        Start 170: test_standalone_midi_input
+206/213 Test #167: test_standalone_inspection_author .................   Passed    0.01 sec
+        Start  14: test_fixed_registration_data
+207/213 Test  #30: test_pedal_note_ownership .........................   Passed    0.00 sec
+        Start  41: test_preset_parameter_boundaries
+208/213 Test #170: test_standalone_midi_input ........................   Passed    0.00 sec
+        Start 104: python_test_contact_grid_conversion
+209/213 Test  #14: test_fixed_registration_data ......................   Passed    0.00 sec
+        Start 105: python_test_contact_grid_conversion_cli
+210/213 Test  #41: test_preset_parameter_boundaries ..................   Passed    0.00 sec
+        Start 198: test_standalone_lower_rack_material_raster
+211/213 Test #105: python_test_contact_grid_conversion_cli ...........   Passed    0.37 sec
+212/213 Test #104: python_test_contact_grid_conversion ...............   Passed    1.25 sec
+213/213 Test #198: test_standalone_lower_rack_material_raster ........   Passed    9.56 sec
+
+99% tests passed, 1 tests failed out of 213
+
+Label Time Summary:
+admission                 =   0.78 sec*proc (1 test)
+backend                   =   0.01 sec*proc (2 tests)
+benchmark                 =   2.37 sec*proc (1 test)
+causal                    =   3.69 sec*proc (8 tests)
+concurrency               =   0.08 sec*proc (1 test)
+contact                   =   6.52 sec*proc (9 tests)
+crossover                 =   3.22 sec*proc (2 tests)
+data                      =   0.72 sec*proc (1 test)
+electrical                =   1.62 sec*proc (1 test)
+filesystem                =   0.02 sec*proc (1 test)
+foh                       =   2.33 sec*proc (1 test)
+geometry                  =  75.08 sec*proc (8 tests)
+independent               =   1.62 sec*proc (1 test)
+inspection                =   0.87 sec*proc (1 test)
+install                   =   5.67 sec*proc (3 tests)
+intentional-quarantine    =   0.00 sec*proc (1 test)
+leakage                   =   0.72 sec*proc (1 test)
+library                   =   0.02 sec*proc (1 test)
+material                  =  53.21 sec*proc (5 tests)
+midi                      =  82.10 sec*proc (4 tests)
+native                    = 355.27 sec*proc (23 tests)
+offline                   =   5.67 sec*proc (3 tests)
+percussion                =  13.74 sec*proc (1 test)
+probe                     =   2.33 sec*proc (1 test)
+research                  =   3.69 sec*proc (8 tests)
+rotary                    =   4.21 sec*proc (2 tests)
+scanner                   =   2.33 sec*proc (1 test)
+smoke                     =   3.42 sec*proc (1 test)
+source                    =   0.72 sec*proc (1 test)
+source-leakage            =   1.25 sec*proc (1 test)
+standalone                = 357.75 sec*proc (28 tests)
+waveform                  =   4.21 sec*proc (2 tests)
+workspace                 =  77.31 sec*proc (3 tests)
+
+Total Test time (real) = 210.97 sec
+
+The following tests FAILED:
+	139 - python_test_repository_integrity (Failed)
+Errors while running CTest

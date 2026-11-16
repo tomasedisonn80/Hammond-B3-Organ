@@ -1,0 +1,44 @@
+{
+  "commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "../build-native"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9505410339988885,
+      "log": "wave04-configure.log"
+    },
+    {
+      "command": [
+        "ctest",
+        "--test-dir",
+        "../build-native",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--parallel",
+        "3",
+        "-R",
+        "^python_test_contact_grid_conversion"
+      ],
+      "exit_code": 0,
+      "seconds": 4.574403828999493,
+      "log": "wave04-converter-ctest.log"
+    }
+  ],
+  "files": {
+    "CMakeLists.txt": "8edf67b8556140aead2e39ec300061d08455cb56c963ca4695bfe47e3f04c5e7",
+    "tools/contact_grid_conversion.py": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797",
+    "tools/convert_contact_grid.py": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c",
+    "tests/test_contact_grid_conversion_cli.py": "06c37b7cf0bd67c164001ff325e0589e6419d89b19d9653b9960fe7bfa97900f",
+    "tests/test_contact_grid_conversion_adversarial.py": "1fc0724282b3a2fd4b00f04a9046b849882a8f02f437be5184868939498006aa",
+    "tests/test_contact_grid_conversion.py": "645be7294bdac6030d607d0780c60eb7373a76a024f915ce2584f166f8698720",
+    "tests/test_contact_grid_conversion_native.py": "d6f036e217b41d33b11f09a89b36bee92f80119c025ada971e0c99212ccd7cbc",
+    "tests/test_contact_grid_conversion_resources.py": "6db9293c555f94789bf641057a59312facbdc692ab8f3bbdc717f91c9fd1cd37"
+  },
+  "unchanged": true,
+  "scope": "Affected repaired converter suites through actual CMake discovery/probe environment; native production binaries unchanged."
+}

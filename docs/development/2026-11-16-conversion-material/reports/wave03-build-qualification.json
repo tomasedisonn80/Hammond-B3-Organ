@@ -1,0 +1,36 @@
+{
+  "scope": "Wave3 candidate coherent build; native/read-only source and currentconverter inputs.",
+  "commands": [
+    {
+      "command": [
+        "cmake",
+        "-S",
+        ".",
+        "-B",
+        "../build-native"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8451650550014165,
+      "log": "wave03-configure.log"
+    },
+    {
+      "command": [
+        "cmake",
+        "--build",
+        "../build-native",
+        "--parallel",
+        "3"
+      ],
+      "exit_code": 0,
+      "seconds": 22.0945102509977,
+      "log": "wave03-build.log"
+    }
+  ],
+  "files": {
+    "CMakeLists.txt": "8edf67b8556140aead2e39ec300061d08455cb56c963ca4695bfe47e3f04c5e7",
+    "apps/standalone/CMakeLists.txt": "dd48f6262640688f9cb65aae1d00a292708fef7a6106b69751aee0caaa3d8eea",
+    "apps/standalone/InstrumentView.cpp": "45b710a9c207f456701732f55ec1086487d63bdb9a8b6ed995f4de12cd5bdb10",
+    "tools/contact_grid_conversion.py": "77d48ab503daf4ebaf89e1195685d0a78957989ce7fe67e8881c68928ea81c93",
+    "tools/convert_contact_grid.py": "604eae2c20fd4fc0e7f9d8604558f6d196cc808c7451642d963323bee3b90e6f"
+  }
+}

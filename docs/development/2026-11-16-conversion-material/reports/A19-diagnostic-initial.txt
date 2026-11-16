@@ -1,0 +1,27 @@
+test_deep_diagnostic_is_bounded_instead_of_recursion_error (__main__.DeadlineAndDiagnosticTests.test_deep_diagnostic_is_bounded_instead_of_recursion_error) ... ERROR
+
+======================================================================
+ERROR: test_deep_diagnostic_is_bounded_instead_of_recursion_error (__main__.DeadlineAndDiagnosticTests.test_deep_diagnostic_is_bounded_instead_of_recursion_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_resources.py", line 381, in test_deep_diagnostic_is_bounded_instead_of_recursion_error
+    failure = candidate.ConversionRefusal("input", "deep", {"nested": nested})
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tools/contact_grid_conversion.py", line 63, in __init__
+    size = len(json.dumps(envelope, sort_keys=True, separators=(",", ":"),
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+RecursionError: maximum recursion depth exceeded while encoding a JSON object
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (errors=1)

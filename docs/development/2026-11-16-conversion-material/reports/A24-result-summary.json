@@ -1,0 +1,378 @@
+{
+  "agent": "/root/w04_a24",
+  "wave": 4,
+  "status": "passed",
+  "scope": "Explicit admitted Lower material v2 software comparison; original v1 remains failed; full visual/whole-interface acceptance is separate.",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "tools/compare_lower_rack_material.py",
+    "--protocol",
+    "lower-rack-material-v2",
+    "--before-percussion",
+    "../baseline/test_standalone_percussion_raster",
+    "--after-percussion",
+    "../build-native/apps/standalone/test_standalone_percussion_raster",
+    "--before-lower",
+    "../baseline/test_standalone_lower_rack_material_raster",
+    "--after-lower",
+    "../build-native/apps/standalone/test_standalone_lower_rack_material_raster",
+    "--before-painter",
+    "../baseline/InstrumentView.cpp",
+    "--build-dir",
+    "../build-native",
+    "--output-dir",
+    "docs/development/2026-11-16-conversion-material/reports/A24-v2-comparison"
+  ],
+  "full_run_exit_code": 0,
+  "full_run_elapsed_seconds": 88.5958866300025,
+  "full_run_output_bytes": 3808477,
+  "selfcheck_exit_code": 0,
+  "selfcheck_count": 116,
+  "unchanged_original_functions": 36,
+  "totals": {
+    "pairs": 98,
+    "passed_pairs": 98,
+    "preservation_passed_pairs": 98,
+    "failed_pairs": 0,
+    "active_pairs": 70,
+    "nonempty_allowances": 61,
+    "whole_frame_equality_required": 37,
+    "required_whole_frames_identical": 37,
+    "compared_pixels": 313612634,
+    "protected_pixels": 303580749,
+    "different_pixels": 4985696,
+    "different_channels": 14225129,
+    "outside_allowance_pixels": 0,
+    "outside_allowance_channels": 0,
+    "minimum_nonempty_protected_pixels": 0,
+    "minimum_full_frame_active_protected_pixels": 1061319,
+    "full_frame_child_cases": 14,
+    "opaque_child_probes": 252,
+    "opaque_probe_pixels": 142099,
+    "minimum_opaque_probe_pixels": 111,
+    "cyan_focus_pixels": 25508,
+    "minimum_cyan_focus_pixels": 412
+  },
+  "retained_v1": {
+    "status": "failed",
+    "reproduced_all_98_case_facts": true,
+    "before_passed_inequalities": 7,
+    "after_passed_inequalities": 33,
+    "failed_inequalities": [
+      {
+        "name": "right_residual_rms",
+        "reference": 1.4507120702160632,
+        "actual": 3.315923958189891,
+        "absolute_error": 1.865211887973828,
+        "maximum_error": 0.5,
+        "exact_variance_comparison": {
+          "a": "62667255228798818249/5699431628800000000",
+          "b": "187419175568710977/89053619200000000",
+          "q": "73237224557996320777/5699431628800000000"
+        },
+        "passed": false
+      },
+      {
+        "name": "right_slope_x",
+        "reference": -0.13100343406593407,
+        "actual": -0.49477398695054947,
+        "absolute_error": 0.3637705528846154,
+        "absolute_error_exact": "3026571/8320000",
+        "maximum_error": 0.06,
+        "maximum_error_exact": "3/50",
+        "passed": false
+      }
+    ],
+    "totals": {
+      "pairs": 98,
+      "passed_pairs": 97,
+      "preservation_passed_pairs": 98,
+      "failed_pairs": 1,
+      "active_pairs": 70,
+      "nonempty_allowances": 61,
+      "whole_frame_equality_required": 37,
+      "required_whole_frames_identical": 37,
+      "compared_pixels": 313612634,
+      "protected_pixels": 303580749,
+      "different_pixels": 4985696,
+      "different_channels": 14225129,
+      "outside_allowance_pixels": 0,
+      "outside_allowance_channels": 0,
+      "minimum_nonempty_protected_pixels": 0,
+      "minimum_full_frame_active_protected_pixels": 1061319,
+      "full_frame_child_cases": 14,
+      "opaque_child_probes": 252,
+      "opaque_probe_pixels": 142099,
+      "minimum_opaque_probe_pixels": 111,
+      "cyan_focus_pixels": 25508,
+      "minimum_cyan_focus_pixels": 412
+    }
+  },
+  "v2_result": {
+    "protocol": "lower-rack-material-v2",
+    "passed": true,
+    "before_passed_inequalities": 6,
+    "after_passed_inequalities": 35,
+    "foreground": {
+      "protocol": "lower-rack-material-v2",
+      "passed": true,
+      "pixels": 166,
+      "guards": [
+        {
+          "name": "complete_last_slot_border",
+          "device_box": [
+            1094,
+            311,
+            1095,
+            461
+          ],
+          "pixels": 150,
+          "expected_rgba": [
+            36,
+            34,
+            30,
+            255
+          ],
+          "before_source_color_pixels": 150,
+          "after_source_color_pixels": 150,
+          "before_rgba_sha256": "aa7b1ecaba3ec463d97cd4b09096252b218c5169118bf31d5e0e2a4692d7cef8",
+          "after_rgba_sha256": "aa7b1ecaba3ec463d97cd4b09096252b218c5169118bf31d5e0e2a4692d7cef8",
+          "expected_rgba_sha256": "aa7b1ecaba3ec463d97cd4b09096252b218c5169118bf31d5e0e2a4692d7cef8",
+          "different_pixels": 0,
+          "different_channels": 0,
+          "maximum_channel_delta": 0,
+          "passed": true
+        },
+        {
+          "name": "descriptive_middle_focus",
+          "device_box": [
+            855,
+            492,
+            857,
+            500
+          ],
+          "pixels": 16,
+          "expected_rgba": [
+            165,
+            228,
+            223,
+            255
+          ],
+          "before_source_color_pixels": 16,
+          "after_source_color_pixels": 16,
+          "before_rgba_sha256": "091e477dbc79eb63d6961a6f5f6dae3f76ee7a0404b5851afc84cdc893e72ae6",
+          "after_rgba_sha256": "091e477dbc79eb63d6961a6f5f6dae3f76ee7a0404b5851afc84cdc893e72ae6",
+          "expected_rgba_sha256": "091e477dbc79eb63d6961a6f5f6dae3f76ee7a0404b5851afc84cdc893e72ae6",
+          "different_pixels": 0,
+          "different_channels": 0,
+          "maximum_channel_delta": 0,
+          "passed": true
+        }
+      ],
+      "descriptive_annotation": {
+        "patch": "bottom_interior_middle",
+        "xywh": [
+          852,
+          492,
+          14,
+          8
+        ],
+        "pixels": 112,
+        "source_focus_pixels": 16,
+        "pure_material_sample": false,
+        "acceptance_patch": false,
+        "handling": "Retain the unchanged raw statistic, fixture and focus. This descriptive witness includes cyan foreground."
+      }
+    },
+    "scope": "Canonical Lower case28 material screens and added foreground guards; full 98-pair status remains in the top-level totals/status. Full visual acceptance is separate."
+  },
+  "files": {
+    "tools/compare_lower_rack_material.py": {
+      "bytes": 65174,
+      "sha256": "34a8ce6f68625a528aca749c8913e2aff2cb25d82b9d65a69c874aca5c04e4e4"
+    },
+    "docs/development/2026-11-16-conversion-material/reports/A24-v2-comparison/report.json": {
+      "bytes": 3592424,
+      "sha256": "0f9bece7e5ab0fb23eae5823c07c07bc65c570f6f180912dcf6d8c4d2a16402a"
+    },
+    "docs/development/2026-11-16-conversion-material/reports/A24-v2-comparison/mask.json": {
+      "bytes": 216053,
+      "sha256": "48ee74e075ee89a12f35cb954630345138a635e1700b1dc0ed3ff83846563f44"
+    },
+    "docs/development/2026-11-16-conversion-material/reports/A24-v2-run.log": {
+      "bytes": 1785,
+      "sha256": "bf225c2a2a99e727d113ffdd2427b7aa875ea06402cbda2325fb95604d2bf5de"
+    },
+    "docs/development/2026-11-16-conversion-material/reports/A24-checker-selfcheck.py": {
+      "bytes": 15290,
+      "sha256": "28c18527dcd3bbdd7d1378cfdf8a4a224a5e2e1244f0c25a127c87ff5c1d3a3b"
+    },
+    "docs/development/2026-11-16-conversion-material/reports/A24-checker-selfcheck.json": {
+      "bytes": 16239,
+      "sha256": "aacf3bfdef35b351e8ecb79770e8be74190c7ea02abaa519620d4d2fd6d1e8fd"
+    }
+  },
+  "identities": {
+    "baseline_commit": "a411268fd498f65c083203137831bf5afed83bd8",
+    "observed_head": "a411268fd498f65c083203137831bf5afed83bd8",
+    "observed_head_tree": "37e37d8e038675597b4851961ee698168de435d5",
+    "baseline_source_sha256": {
+      "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+      "apps/standalone/InstrumentView.h": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+      "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+      "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+      "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+      "apps/standalone/InspectionModel.cpp": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+      "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+      "apps/standalone/native_tests/test_standalone_percussion_raster.cpp": "a96b3c43d64aee7409249141bc1bd6b0812ca3c906b46c7f41cd8030f5390dc8",
+      "apps/standalone/InstrumentView.cpp": "30ac6cec988ec1834f36456d25d1e53113642071d844d53f81b62b3474cf2c37",
+      "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp": "281df1de3edce6a91a851d0b5674677646f1741fac1512f474ea7ffda67350e7"
+    },
+    "current_source_sha256": {
+      "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+      "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+      "apps/standalone/InstrumentView.h": "b334ba3b085ec63fbbd715e4d2ae5fcecfc41a00dcdf7f4d079b7076c254c1f0",
+      "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+      "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+      "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+      "apps/standalone/InspectionModel.cpp": "b0a288d045f66f809e65f3b8330f6e68feba247e964b1a543fb0023fc62a0fd8",
+      "apps/standalone/InspectionModel.h": "d16fe12811c399fd9edc03286ec00767e086268447e03f40fa9d9cdf9badddb9",
+      "apps/standalone/native_tests/test_standalone_percussion_raster.cpp": "a96b3c43d64aee7409249141bc1bd6b0812ca3c906b46c7f41cd8030f5390dc8",
+      "apps/standalone/InstrumentView.cpp": "45b710a9c207f456701732f55ec1086487d63bdb9a8b6ed995f4de12cd5bdb10",
+      "apps/standalone/native_tests/test_standalone_lower_rack_material_raster.cpp": "281df1de3edce6a91a851d0b5674677646f1741fac1512f474ea7ffda67350e7",
+      "docs/design/LOWER_RACK_MATERIAL_CONTRACT.md": "84e3c95b4844861ffee71217ced99dbdb52bfb3216b44f4d2817c462cadccb91",
+      "docs/design/atlas-reference.json": "896b09b07b794ecb02d9b3be350b3166a22136fa920432c99dc7a73904c3dc50",
+      "docs/reviews/LOWER_RACK_MATERIAL_ADMISSION.md": "504266fdee1481bb410f51f4f954d49ad04040c159cafd3f7696fc65be082c10"
+    },
+    "binaries": {
+      "before_percussion": {
+        "path": "/workspace/scratch/0d55e62af118/baseline/test_standalone_percussion_raster",
+        "bytes": 3396032,
+        "sha256": "622fe1c17828cc3a540d18479c85e331852ba68fff739e8a6317ead02dad4ffc"
+      },
+      "after_percussion": {
+        "path": "/workspace/scratch/0d55e62af118/build-native/apps/standalone/test_standalone_percussion_raster",
+        "bytes": 3400392,
+        "sha256": "2bb6c0b613a63588575295e80108341e3eaf37b3b2897c3aa7c762bb3f58a051"
+      },
+      "before_lower": {
+        "path": "/workspace/scratch/0d55e62af118/baseline/test_standalone_lower_rack_material_raster",
+        "bytes": 3422656,
+        "sha256": "1ffcd7e3b70b813e7af2cc5986be0659df93ee0c058ad66f329208d7e11c60ac"
+      },
+      "after_lower": {
+        "path": "/workspace/scratch/0d55e62af118/build-native/apps/standalone/test_standalone_lower_rack_material_raster",
+        "bytes": 3427016,
+        "sha256": "9206d10ee6b85f6f166a70dd3f01d2536f99560fac369de177d226dd619da3a5"
+      }
+    },
+    "baseline_painter": {
+      "path": "/workspace/scratch/0d55e62af118/baseline/InstrumentView.cpp",
+      "bytes": 154324,
+      "sha256": "30ac6cec988ec1834f36456d25d1e53113642071d844d53f81b62b3474cf2c37"
+    },
+    "reference": {
+      "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/design/atlas-cover-reference.jpg",
+      "bytes": 412664,
+      "sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+    },
+    "supplemental_before_receipt": {
+      "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/lower-before-identity.json",
+      "bytes": 1600,
+      "sha256": "1e454c3c4d549976ad7092b9fc688181233eab6b89aa2302613a5da61077d061"
+    },
+    "tool": {
+      "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tools/compare_lower_rack_material.py",
+      "bytes": 65174,
+      "sha256": "34a8ce6f68625a528aca749c8913e2aff2cb25d82b9d65a69c874aca5c04e4e4"
+    },
+    "build_inputs": {
+      "CMakeCache.txt": {
+        "path": "/workspace/scratch/0d55e62af118/build-native/CMakeCache.txt",
+        "bytes": 47961,
+        "sha256": "62ecf19aceb77b9a52683a28e35b09096598daf1462458770e5576a980801b80"
+      },
+      "build.ninja": {
+        "path": "/workspace/scratch/0d55e62af118/build-native/build.ninja",
+        "bytes": 747078,
+        "sha256": "9ce835b2628f1e40b18b59e64038f4e4948bc3fb35cd5910ec374458aa781dc0"
+      },
+      "apps/standalone/generated/ReferenceArtData.h": {
+        "path": "/workspace/scratch/0d55e62af118/build-native/apps/standalone/generated/ReferenceArtData.h",
+        "bytes": 5093899,
+        "sha256": "d94cefd9ad69726c267d4674acd66912f4764ee9f88d1c21ecce4ed7befcbac6"
+      },
+      "_sdl2/libSDL2.a": {
+        "path": "/workspace/scratch/0d55e62af118/build-native/_sdl2/libSDL2.a",
+        "bytes": 3245774,
+        "sha256": "99c128d680ca704056dc09ff3b47c8f5374485e98f1202e687ceb9770002849b"
+      }
+    },
+    "source_binding_limit": "Source, protocol and executable hashes plus the retained genuine supplemental before build receipt; hashes alone do not prove coherent candidate compilation. Root retains actual coordinated build evidence."
+  },
+  "v2_bindings": {
+    "files": {
+      "amendment": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/design/LOWER_RACK_MATERIAL_V2_AMENDMENT.md",
+        "bytes": 8470,
+        "sha256": "b2ebad8944a31ac6e631f457507017dfac1c6191c721fb961c7adafe9b659695"
+      },
+      "independent_admission": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/reviews/LOWER_RACK_MATERIAL_V2_ADMISSION.md",
+        "bytes": 9383,
+        "sha256": "6800031150e7a37335f32c6613471998c1acd3ff0c173c7a210e4514c0ab644b"
+      },
+      "original_report": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A17-v1-comparison/report.json",
+        "bytes": 3387859,
+        "sha256": "1db2294e250a36aa73d0a354b264656eff3d1e5f292628bc2c7c28e560b623ed"
+      },
+      "original_mask": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A17-v1-comparison/mask.json",
+        "bytes": 212328,
+        "sha256": "dc8bf9cfb0e10251dfc6ec6d7aa02f8d478c79f9d04ed9f1f722ff8adfd8855a"
+      },
+      "original_comparator": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A17-comparator-v1.py",
+        "bytes": 51246,
+        "sha256": "2c21521211555adc1076c258a8c1659549ad7f1c0f2bccdc2ce160fa6485554f"
+      }
+    },
+    "retained_failure_artifacts": {
+      "lower-28-before": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A17-v1-comparison/lower-28-before.png",
+        "bytes": 723372,
+        "sha256": "2939ff447a77dd31cee8ec6e3349de821b768b427ecadf25cc2b4342bae9d3f0"
+      },
+      "lower-28-after": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A17-v1-comparison/lower-28-after.png",
+        "bytes": 733732,
+        "sha256": "8807597be294b1cd0516c83b6c939a02397660f13c6593f697d24fbf4998e46a"
+      },
+      "lower-28-absolute-rgba-difference": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A17-v1-comparison/lower-28-absolute-rgba-difference.png",
+        "bytes": 38286,
+        "sha256": "c0b426146e95a6d9ee83ac3fbef459c10b5455dc8f973488cadb815a32d8588b"
+      },
+      "lower-28-maximum-channel-difference": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A17-v1-comparison/lower-28-maximum-channel-difference.png",
+        "bytes": 17395,
+        "sha256": "d677e67802ed1a95ee22cffd36fc2ceb0fddd997ce6aeff3f28f302cdfbef8fd"
+      },
+      "lower-28-outside-allowance-mask": {
+        "path": "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/docs/development/2026-11-16-conversion-material/reports/A17-v1-comparison/lower-28-outside-allowance-mask.png",
+        "bytes": 1604,
+        "sha256": "7fd4659591b3510db3f32431d5f8a8f5bbabff5eaeb39a01eb3f2ae5b5ef4f25"
+      }
+    },
+    "original_protocol": "lower-rack-material-v1",
+    "original_status": "failed",
+    "fixture_protocol": "lower-rack-material-v1",
+    "selected_protocol": "lower-rack-material-v2",
+    "original_sources_and_executables_equal": true,
+    "all_original_mask_fields_equal_except_timestamp_and_run_identities": true,
+    "build_identity_policy": "Current configure/build identities are stable across this run; generated art and SDL contents also match v1. Unrelated root reconfiguration may differ from the retained v1 build files."
+  },
+  "next_owner": "Root: combine these results with A16 visual review, source-qualified gallery and coherent affected native gates before scoped L1 acceptance; preserve v1 failure, then qualify a genuine next-stage baseline."
+}

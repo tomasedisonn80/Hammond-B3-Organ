@@ -1,0 +1,102 @@
+{
+  "scope": "Original frozen-v1 comparison and comparator selfchecks; no v2 or full visual acceptance.",
+  "status": "failed",
+  "exit_code": 1,
+  "elapsed_seconds": 75.18195053300224,
+  "totals": {
+    "pairs": 98,
+    "passed_pairs": 97,
+    "preservation_passed_pairs": 98,
+    "failed_pairs": 1,
+    "active_pairs": 70,
+    "nonempty_allowances": 61,
+    "whole_frame_equality_required": 37,
+    "required_whole_frames_identical": 37,
+    "compared_pixels": 313612634,
+    "protected_pixels": 303580749,
+    "different_pixels": 4985696,
+    "different_channels": 14225129,
+    "outside_allowance_pixels": 0,
+    "outside_allowance_channels": 0,
+    "minimum_nonempty_protected_pixels": 0,
+    "minimum_full_frame_active_protected_pixels": 1061319,
+    "full_frame_child_cases": 14,
+    "opaque_child_probes": 252,
+    "opaque_probe_pixels": 142099,
+    "minimum_opaque_probe_pixels": 111,
+    "cyan_focus_pixels": 25508,
+    "minimum_cyan_focus_pixels": 412
+  },
+  "frozen_reference_statistics_matches": 200,
+  "before_screen_passes": 7,
+  "after_screen_passes": 33,
+  "candidate_failures": [
+    {
+      "name": "right_residual_rms",
+      "reference": 1.4507120702160632,
+      "actual": 3.315923958189891,
+      "absolute_error": 1.865211887973828,
+      "maximum_error": 0.5,
+      "exact_variance_comparison": {
+        "a": "62667255228798818249/5699431628800000000",
+        "b": "187419175568710977/89053619200000000",
+        "q": "73237224557996320777/5699431628800000000"
+      },
+      "passed": false
+    },
+    {
+      "name": "right_slope_x",
+      "reference": -0.13100343406593407,
+      "actual": -0.49477398695054947,
+      "absolute_error": 0.3637705528846154,
+      "absolute_error_exact": "3026571/8320000",
+      "maximum_error": 0.06,
+      "maximum_error_exact": "3/50",
+      "passed": false
+    }
+  ],
+  "source_sha256": "2c21521211555adc1076c258a8c1659549ad7f1c0f2bccdc2ce160fa6485554f",
+  "mask_sha256": "dc8bf9cfb0e10251dfc6ec6d7aa02f8d478c79f9d04ed9f1f722ff8adfd8855a",
+  "report_sha256": "1db2294e250a36aa73d0a354b264656eff3d1e5f292628bc2c7c28e560b623ed",
+  "retained_output_bytes": 5114576,
+  "ordinary_before": {
+    "schema": 1,
+    "protocol": "lower-rack-material-v1",
+    "status": "passed",
+    "cases": 32,
+    "checks": 58957343,
+    "state_restorations": 51,
+    "clip_companions": 15,
+    "visible_clip_pixels": 29340,
+    "opaque_child_probes": 252,
+    "opaque_probe_pixels": 142099,
+    "literal_glyphs": 826,
+    "strong_ink_pixels": 40192,
+    "focus_cases": 14,
+    "cyan_focus_pixels": 25508,
+    "case_28_repeats": 2,
+    "backend": "SDL software surface; fixed copied state; no audio/window"
+  },
+  "ordinary_after": {
+    "schema": 1,
+    "protocol": "lower-rack-material-v1",
+    "status": "passed",
+    "cases": 32,
+    "checks": 58957343,
+    "state_restorations": 51,
+    "clip_companions": 15,
+    "visible_clip_pixels": 29340,
+    "opaque_child_probes": 252,
+    "opaque_probe_pixels": 142099,
+    "literal_glyphs": 826,
+    "strong_ink_pixels": 40192,
+    "focus_cases": 14,
+    "cyan_focus_pixels": 25508,
+    "case_28_repeats": 2,
+    "backend": "SDL software surface; fixed copied state; no audio/window"
+  },
+  "retained_comparator_snapshot": {
+    "path": "docs/development/2026-11-16-conversion-material/reports/A17-comparator-v1.py",
+    "sha256": "2c21521211555adc1076c258a8c1659549ad7f1c0f2bccdc2ce160fa6485554f"
+  }
+}

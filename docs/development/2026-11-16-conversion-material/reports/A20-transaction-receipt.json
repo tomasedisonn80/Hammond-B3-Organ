@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "agent": "A20",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "source_hashes_before": {
+    "tools/convert_contact_grid.py": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c",
+    "tools/contact_grid_conversion.py": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797",
+    "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+    "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0",
+    "tests/test_contact_grid_conversion_cli.py": "06c37b7cf0bd67c164001ff325e0589e6419d89b19d9653b9960fe7bfa97900f",
+    "tests/test_contact_grid_conversion_adversarial.py": "1fc0724282b3a2fd4b00f04a9046b849882a8f02f437be5184868939498006aa"
+  },
+  "source_hashes_after": {
+    "tools/convert_contact_grid.py": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c",
+    "tools/contact_grid_conversion.py": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797",
+    "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+    "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0",
+    "tests/test_contact_grid_conversion_cli.py": "06c37b7cf0bd67c164001ff325e0589e6419d89b19d9653b9960fe7bfa97900f",
+    "tests/test_contact_grid_conversion_adversarial.py": "1fc0724282b3a2fd4b00f04a9046b849882a8f02f437be5184868939498006aa"
+  },
+  "source_bytes_unchanged": true,
+  "executions": [
+    {
+      "name": "adversarial",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "tests/test_contact_grid_conversion_adversarial.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.9661988740008383,
+      "log": "docs/development/2026-11-16-conversion-material/reports/A20-adversarial-final.txt",
+      "log_sha256": "7cdae8dbdbd7981cd8112e1671c47ca96be4cf9d106dacc52ad67b266617e98d"
+    },
+    {
+      "name": "existing-cli",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "tests/test_contact_grid_conversion_cli.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.4176571589996456,
+      "log": "docs/development/2026-11-16-conversion-material/reports/A20-existing-cli-final.txt",
+      "log_sha256": "50081e89c8bcbb37915265829c1e962e37c476bfd85118892a78a9e134e3a208"
+    }
+  ],
+  "limits": "Actual OS SIGINT and undecodable filenames tested on POSIX/Linux only. Closed diagnostic sink cannot receive a JSON record; intended exit status and silent shutdown are preserved. Pure encoder reconstructs facts but cannot authenticate unprovided raw input bytes. Source-file hashing is not hostile-code or stale-bytecode execution authentication."
+}

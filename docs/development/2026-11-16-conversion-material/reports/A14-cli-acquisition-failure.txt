@@ -1,0 +1,23 @@
+test_sigint_during_temporary_acquisition_cleans_owned_file (__main__.ConversionCliTests.test_sigint_during_temporary_acquisition_cleans_owned_file) ... FAIL
+
+======================================================================
+FAIL: test_sigint_during_temporary_acquisition_cleans_owned_file (__main__.ConversionCliTests.test_sigint_during_temporary_acquisition_cleans_owned_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 390, in test_sigint_during_temporary_acquisition_cleans_owned_file
+    self.assert_refused(self.invoke(), code="interrupted", status=130)
+  File "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/tests/test_contact_grid_conversion_cli.py", line 108, in assert_refused
+    self.assertEqual(list(self.root.glob(".contact-grid-*.tmp")), [])
+AssertionError: Lists differ: [PosixPath('/tmp/contact-grid-cli-test-aey6w_23/.contact-grid-1of9gx88.tmp')] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+PosixPath('/tmp/contact-grid-cli-test-aey6w_23/.contact-grid-1of9gx88.tmp')
+
+- [PosixPath('/tmp/contact-grid-cli-test-aey6w_23/.contact-grid-1of9gx88.tmp')]
++ []
+
+----------------------------------------------------------------------
+Ran 1 test in 0.005s
+
+FAILED (failures=1)

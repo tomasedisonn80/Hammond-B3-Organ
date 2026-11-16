@@ -1,0 +1,2124 @@
+{
+  "case_count": 71,
+  "contract_sha256": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0",
+  "elapsed_seconds": 1.1838675119979598,
+  "errors": 0,
+  "evidence_class": "synthetic",
+  "failures": 0,
+  "generator_sha256": "74a83734d80a31db2f046e0dd70f4989dbb9784af81ef9ac52e344409a96b427",
+  "implementation_sha256": {
+    "tools/contact_grid_conversion.py": "77d48ab503daf4ebaf89e1195685d0a78957989ce7fe67e8881c68928ea81c93",
+    "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "tools/convert_contact_grid.py": "604eae2c20fd4fc0e7f9d8604558f6d196cc808c7451642d963323bee3b90e6f",
+    "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23"
+  },
+  "limits": "Exact finite synthetic trajectories only. No native snapshots, CLI atomicity, audio accuracy, live callback deadline, or physical-fidelity qualification.",
+  "manifest_sha256": "b2e9b99b00b1263aed49eb967e85ceab9f1cb0e4989f70c9a82f7b9f4374dfdb",
+  "oracle_sha256": "0b6dda60c57656afd0adb118c395c80f3030f7f443556a6e168b049000846edc",
+  "outcomes": [
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 25928,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 7,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013488865002727835,
+      "family": "frozen",
+      "input_bytes": 704,
+      "input_sha256": "a188d92f8f3e637a6816379c7a6ad9165fec5637761c971140b4d21dd07af876",
+      "name": "ordinary-44100",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "549755814825",
+          "numerator": "937"
+        },
+        "max_root_error": {
+          "denominator": "12765305088",
+          "numerator": "937"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 605
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 20809,
+      "counts": {
+        "arrivals": 1,
+        "commands": 2,
+        "edges": 13,
+        "position_samples": 5,
+        "root_bounds": 14
+      },
+      "elapsed_seconds": 0.012725204000162194,
+      "family": "frozen",
+      "input_bytes": 704,
+      "input_sha256": "9afccb0b043b8cd120bb1c04d28277e872296914d67f953768c3f994fce0950a",
+      "name": "ordinary-96000",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "3145728000",
+          "numerator": "23"
+        },
+        "max_root_error": {
+          "denominator": "104715392",
+          "numerator": "69"
+        },
+        "position_witness": 4,
+        "root_witness": 6,
+        "work_units": 444
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 26424,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 9,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.019131475000904175,
+      "family": "frozen",
+      "input_bytes": 723,
+      "input_sha256": "8f3e25893a570f9fc19144de50831ae35a9b4af8e6ae1e572fab527189aea880",
+      "name": "time-midpoint-even",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "281474976768000",
+          "numerator": "91683313"
+        },
+        "max_root_error": {
+          "denominator": "12009599008768",
+          "numerator": "91683313"
+        },
+        "position_witness": 3,
+        "root_witness": 1,
+        "work_units": 623
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 26586,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 9,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.021586544000456342,
+      "family": "frozen",
+      "input_bytes": 722,
+      "input_sha256": "fe8e52952a7b0bdb56f74c44ae0611a0dd160eb8fff01d52d4fff691f915ec22",
+      "name": "time-midpoint-odd",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "3072000",
+          "numerator": "1"
+        },
+        "max_root_error": {
+          "denominator": "12009599008768",
+          "numerator": "91622385"
+        },
+        "position_witness": 2,
+        "root_witness": 3,
+        "work_units": 622
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 10467,
+      "counts": {
+        "arrivals": 1,
+        "commands": 1,
+        "edges": 0,
+        "position_samples": 4,
+        "root_bounds": 1
+      },
+      "elapsed_seconds": 0.0067265809993841685,
+      "family": "frozen",
+      "input_bytes": 633,
+      "input_sha256": "e467b5e80d067628e51ae475b79a1c6f580a33f94b255abb975ab2467dc84d2a",
+      "name": "target-midpoint-even",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "68719476750",
+          "numerator": "7"
+        },
+        "max_root_error": {
+          "denominator": "825293359691721236021248",
+          "numerator": "1970359196712967"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 84
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 10704,
+      "counts": {
+        "arrivals": 1,
+        "commands": 1,
+        "edges": 0,
+        "position_samples": 4,
+        "root_bounds": 1
+      },
+      "elapsed_seconds": 0.0056173899974965025,
+      "family": "frozen",
+      "input_bytes": 632,
+      "input_sha256": "40d77242e9d148b799b06f4ec791a2aaf4bfd56d5ec94602e889042c57314200",
+      "name": "target-midpoint-odd",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "967140655888735823462400",
+          "numerator": "98516241848731"
+        },
+        "max_root_error": {
+          "denominator": "825293359691721236021248",
+          "numerator": "1970290477236245"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 84
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 25826,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 7,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.012532893000752665,
+      "family": "frozen",
+      "input_bytes": 711,
+      "input_sha256": "b601e7e738c66df59b3d033a82b8eb5f655bd29a8038c3122d582f45b71d997f",
+      "name": "threshold-midpoint-even",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "34359738375",
+          "numerator": "7"
+        },
+        "max_root_error": {
+          "denominator": "733007752",
+          "numerator": "7"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 539
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 25950,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 7,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.01780429000064032,
+      "family": "frozen",
+      "input_bytes": 711,
+      "input_sha256": "5c3d607b7ea863e34a14aafa5a49a9779e1528b66058a1431bbe1b9f87b03a75",
+      "name": "threshold-midpoint-odd",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "34359738375",
+          "numerator": "7"
+        },
+        "max_root_error": {
+          "denominator": "733007752",
+          "numerator": "7"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 539
+      }
+    },
+    {
+      "candidate": "position_collision",
+      "elapsed_seconds": 0.0006627590009884443,
+      "family": "frozen",
+      "input_bytes": 638,
+      "input_sha256": "c42b24b776dd7fd7b9571d504bf8e7f6cd1f773863ad2fc3783d8d723b8a5564",
+      "name": "reviewed-target-threshold",
+      "oracle": "position_collision",
+      "refusal_path": "keys[0]",
+      "witness": {
+        "lower": {
+          "denominator": "18014398509481984",
+          "numerator": "9007199254740991"
+        },
+        "lower_labels": [
+          "target:0"
+        ],
+        "rounded": 140737488355328,
+        "upper": {
+          "denominator": "2",
+          "numerator": "1"
+        },
+        "upper_labels": [
+          "on:0"
+        ]
+      }
+    },
+    {
+      "candidate": "grid_domain",
+      "elapsed_seconds": 0.0002038849997916259,
+      "family": "frozen",
+      "input_bytes": 693,
+      "input_sha256": "db583f2c7200319adca65eac092f133c04fb09b83ac45b18d17ded210da5c02c",
+      "name": "reviewed-hysteresis-collapse",
+      "oracle": "grid_domain",
+      "refusal_path": "keys[0].contacts[0]",
+      "witness": {
+        "off": 140737488355328,
+        "on": 140737488355328,
+        "source_off": {
+          "denominator": "2",
+          "numerator": "1"
+        },
+        "source_on": {
+          "denominator": "9007199254740992",
+          "numerator": "4503599627370497"
+        }
+      }
+    },
+    {
+      "candidate": "time_collision",
+      "elapsed_seconds": 0.0005579730022873264,
+      "family": "frozen",
+      "input_bytes": 740,
+      "input_sha256": "584077b2685556c00ea367ac93c6fbb42d19b5386fded39aad458f0ac583c740",
+      "name": "reviewed-time-collision",
+      "oracle": "time_collision",
+      "refusal_path": "targets[1].time",
+      "witness": {
+        "left": {
+          "denominator": "262144",
+          "numerator": "131071"
+        },
+        "left_ordinal": 0,
+        "right": {
+          "denominator": "262144",
+          "numerator": "131073"
+        },
+        "right_ordinal": 1,
+        "tick": 32768
+      }
+    },
+    {
+      "candidate": "position_collision",
+      "elapsed_seconds": 0.0007010269982856698,
+      "family": "frozen",
+      "input_bytes": 689,
+      "input_sha256": "6a907377b47882fdee8323871d79c9a451988d24bbe68561f038c284e4bab8bb",
+      "name": "reviewed-threshold-order",
+      "oracle": "position_collision",
+      "refusal_path": "keys[0]",
+      "witness": {
+        "lower": {
+          "denominator": "2",
+          "numerator": "1"
+        },
+        "lower_labels": [
+          "on:1"
+        ],
+        "rounded": 140737488355328,
+        "upper": {
+          "denominator": "9007199254740992",
+          "numerator": "4503599627370497"
+        },
+        "upper_labels": [
+          "on:0"
+        ]
+      }
+    },
+    {
+      "candidate": "event_order",
+      "elapsed_seconds": 0.004714710998086957,
+      "family": "frozen",
+      "input_bytes": 1262,
+      "input_sha256": "70e70c17f92fadbfea4f66990a4d67336bf2eb9418e7565829ae0ef74fc143f1",
+      "name": "reviewed-f09-equality",
+      "oracle": "event_order",
+      "refusal_path": "preorder[5]",
+      "witness": {
+        "grid_group_count": 30,
+        "grid_group_index": 5,
+        "grid_times": [
+          {
+            "denominator": "32",
+            "numerator": "375"
+          },
+          {
+            "denominator": "91625969",
+            "numerator": "1073741824"
+          }
+        ],
+        "labels": [
+          "C:2",
+          "E:0:4:1:0"
+        ],
+        "source_group_count": 28,
+        "source_group_index": 5,
+        "source_times": [
+          {
+            "denominator": "32",
+            "numerator": "375"
+          },
+          {
+            "denominator": "32",
+            "numerator": "375"
+          }
+        ]
+      }
+    },
+    {
+      "candidate": "time_collision",
+      "elapsed_seconds": 0.0013133760003256612,
+      "family": "frozen",
+      "input_bytes": 1076,
+      "input_sha256": "31533257c9d6a9f581629213bbb54d7ac48d21ec70c1411746c50ecdcbe37143",
+      "name": "cross-key-frame-boundary-collision",
+      "oracle": "time_collision",
+      "refusal_path": "targets[1].time",
+      "witness": {
+        "left": {
+          "denominator": "262144",
+          "numerator": "262143"
+        },
+        "left_ordinal": 0,
+        "right": {
+          "denominator": "262144",
+          "numerator": "262145"
+        },
+        "right_ordinal": 1,
+        "tick": 65536
+      }
+    },
+    {
+      "candidate": "position_collision",
+      "elapsed_seconds": 0.0011362889999873005,
+      "family": "frozen",
+      "input_bytes": 664,
+      "input_sha256": "1e5af8780ad88f719f1f996ba1a7d33d2e7e29f17f3f509e9bc06b13f9201d22",
+      "name": "positive-subnormal-target",
+      "oracle": "position_collision",
+      "refusal_path": "keys[0]",
+      "witness": {
+        "lower": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "lower_labels": [
+          "implicit:0"
+        ],
+        "rounded": 0,
+        "upper": {
+          "denominator": "202402253307310618352495346718917307049556649764142118356901358027430339567995346891960383701437124495187077864316811911389808737385793476867013399940738509921517424276566361364466907742093216341239767678472745068562007483424692698618103355649159556340810056512358769552333414615230502532186327508646006263307707741093494784",
+          "numerator": "1"
+        },
+        "upper_labels": [
+          "target:0"
+        ]
+      }
+    },
+    {
+      "candidate": "position_collision",
+      "elapsed_seconds": 0.0010940790016320534,
+      "family": "frozen",
+      "input_bytes": 679,
+      "input_sha256": "405f7cea2e7825c6674cdbcd4f508df7aea147f2be4ab2546f2cbe2168127b81",
+      "name": "target-full-travel-collision",
+      "oracle": "position_collision",
+      "refusal_path": "keys[0]",
+      "witness": {
+        "lower": {
+          "denominator": "9007199254740992",
+          "numerator": "9007199254740991"
+        },
+        "lower_labels": [
+          "target:0"
+        ],
+        "rounded": 281474976710656,
+        "upper": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "upper_labels": [
+          "implicit:1"
+        ]
+      }
+    },
+    {
+      "candidate": "position_collision",
+      "elapsed_seconds": 0.0009527250003884546,
+      "family": "frozen",
+      "input_bytes": 714,
+      "input_sha256": "8b01c1c9b630e31366a5d050a1c80383dc0d898c239380173a9d8e14201dfdbc",
+      "name": "subnormal-break-threshold",
+      "oracle": "position_collision",
+      "refusal_path": "keys[0]",
+      "witness": {
+        "lower": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "lower_labels": [
+          "implicit:0",
+          "target:1"
+        ],
+        "rounded": 0,
+        "upper": {
+          "denominator": "202402253307310618352495346718917307049556649764142118356901358027430339567995346891960383701437124495187077864316811911389808737385793476867013399940738509921517424276566361364466907742093216341239767678472745068562007483424692698618103355649159556340810056512358769552333414615230502532186327508646006263307707741093494784",
+          "numerator": "1"
+        },
+        "upper_labels": [
+          "off:0"
+        ]
+      }
+    },
+    {
+      "candidate": "time_collision",
+      "elapsed_seconds": 0.0010427889974380378,
+      "family": "frozen",
+      "input_bytes": 671,
+      "input_sha256": "4c2fcbd0dd212ae14920622052362e5e07b63e2f1daa0f5a7c2b83080515d2c6",
+      "name": "interior-time-to-start",
+      "oracle": "time_collision",
+      "refusal_path": "targets[0].time",
+      "witness": {
+        "end": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "grid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "reason": "interior-to-boundary",
+        "source": {
+          "denominator": "262144",
+          "numerator": "1"
+        }
+      }
+    },
+    {
+      "candidate": "time_collision",
+      "elapsed_seconds": 0.0018461780018697027,
+      "family": "frozen",
+      "input_bytes": 671,
+      "input_sha256": "7c5feb57eb4b1e3185d8277de46bc81d055f88cd6a19bdbc8ebe81e0f75c89c3",
+      "name": "interior-time-to-close",
+      "oracle": "time_collision",
+      "refusal_path": "targets[0].time",
+      "witness": {
+        "end": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "grid": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "reason": "interior-to-boundary",
+        "source": {
+          "denominator": "262144",
+          "numerator": "262143"
+        }
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 35630,
+      "counts": {
+        "arrivals": 2,
+        "commands": 6,
+        "edges": 18,
+        "position_samples": 10,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.019716031001735246,
+      "family": "frozen",
+      "input_bytes": 1270,
+      "input_sha256": "a917fc0aa9ef16d93f122640ce8d3ea290f5d81bd637272905dd26bcd8610adf",
+      "name": "tied-caller-order-shared-cancel",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "34359738375",
+          "numerator": "7"
+        },
+        "max_root_error": {
+          "denominator": "1466015504",
+          "numerator": "7"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 723
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 27714,
+      "counts": {
+        "arrivals": 2,
+        "commands": 4,
+        "edges": 18,
+        "position_samples": 9,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013547503000154393,
+      "family": "frozen",
+      "input_bytes": 819,
+      "input_sha256": "ad8335cc4e6be97f30a089ed1e99cf0834e72d238f200fb4e9274b29575d790f",
+      "name": "repeated-target-anchor",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "34359738375",
+          "numerator": "7"
+        },
+        "max_root_error": {
+          "denominator": "733007752",
+          "numerator": "7"
+        },
+        "position_witness": 3,
+        "root_witness": 0,
+        "work_units": 699
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 27748,
+      "counts": {
+        "arrivals": 3,
+        "commands": 3,
+        "edges": 18,
+        "position_samples": 10,
+        "root_bounds": 21
+      },
+      "elapsed_seconds": 0.01391100699765957,
+      "family": "frozen",
+      "input_bytes": 772,
+      "input_sha256": "c92a4e538cf4743ca102cb68919f91b5a81e9939c924bd576166da318a851592",
+      "name": "partial-arrival-and-hold",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "274877907000",
+          "numerator": "49"
+        },
+        "max_root_error": {
+          "denominator": "5864062016",
+          "numerator": "49"
+        },
+        "position_witness": 7,
+        "root_witness": 0,
+        "work_units": 704
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 25132,
+      "counts": {
+        "arrivals": 2,
+        "commands": 5,
+        "edges": 13,
+        "position_samples": 10,
+        "root_bounds": 15
+      },
+      "elapsed_seconds": 0.014068145999772241,
+      "family": "frozen",
+      "input_bytes": 879,
+      "input_sha256": "ca25f5f8948691a73a92ec05e24d592a72d57098707109ff09829e0856f6ff4e",
+      "name": "incomplete-return-reversal",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "268435456000",
+          "numerator": "21"
+        },
+        "max_root_error": {
+          "denominator": "23456248064",
+          "numerator": "77"
+        },
+        "position_witness": 3,
+        "root_witness": 9,
+        "work_units": 626
+      }
+    },
+    {
+      "candidate": "event_order",
+      "elapsed_seconds": 0.0021363209998526145,
+      "family": "frozen",
+      "input_bytes": 717,
+      "input_sha256": "b92dfb893f7c8d97d5873cfe2f1d5f2aab27b9962f9c306095c3a633709666a9",
+      "name": "arrival-command-equality",
+      "oracle": "event_order",
+      "refusal_path": "preorder[10]",
+      "witness": {
+        "grid_group_count": 23,
+        "grid_group_index": 10,
+        "grid_times": [
+          {
+            "denominator": "91625969",
+            "numerator": "2147483648"
+          },
+          {
+            "denominator": "16",
+            "numerator": "375"
+          }
+        ],
+        "labels": [
+          "A:0:1:0",
+          "C:1"
+        ],
+        "source_group_count": 22,
+        "source_group_index": 10,
+        "source_times": [
+          {
+            "denominator": "16",
+            "numerator": "375"
+          },
+          {
+            "denominator": "16",
+            "numerator": "375"
+          }
+        ]
+      }
+    },
+    {
+      "candidate": "event_identity",
+      "elapsed_seconds": 0.0013125900004524738,
+      "family": "frozen",
+      "input_bytes": 658,
+      "input_sha256": "ffc25a581bd1cf7ade18c4c704c0c7dfe6b585b3a9b0bf552cd1412a6b0b5100",
+      "name": "arrival-at-observation-end",
+      "oracle": "event_identity",
+      "refusal_path": "arrivals",
+      "witness": {
+        "first_label": "A:0:1:0",
+        "grid_count": 0,
+        "grid_has": false,
+        "source_count": 1,
+        "source_has": true
+      }
+    },
+    {
+      "candidate": "event_identity",
+      "elapsed_seconds": 0.0009087430007639341,
+      "family": "frozen",
+      "input_bytes": 615,
+      "input_sha256": "fcae821d1d419c682ab8b82d21daec63b4638d6a0d59a93740e47a73e8edb71a",
+      "name": "edge-at-observation-end",
+      "oracle": "event_identity",
+      "refusal_path": "edges",
+      "witness": {
+        "first_label": "E:0:0:1:0",
+        "grid_count": 0,
+        "grid_has": false,
+        "source_count": 1,
+        "source_has": true
+      }
+    },
+    {
+      "candidate": "dynamic_topology",
+      "elapsed_seconds": 0.0016910240010474809,
+      "family": "frozen",
+      "input_bytes": 726,
+      "input_sha256": "82bb62c2aeb3bfd5b59ca4421ecc9df724a8cdd9e1f94ee0328e7e1ae7692301",
+      "name": "dynamic-arrived-target-direction",
+      "oracle": "dynamic_topology",
+      "refusal_path": "commands[1].after_direction",
+      "witness": {
+        "grid": -1,
+        "grid_position": {
+          "denominator": "68719476736",
+          "numerator": "34359738375"
+        },
+        "source": 0,
+        "source_position": {
+          "denominator": "2",
+          "numerator": "1"
+        }
+      }
+    },
+    {
+      "candidate": "root_budget",
+      "elapsed_seconds": 0.0013452650018734857,
+      "family": "frozen",
+      "input_bytes": 619,
+      "input_sha256": "7c1bb47da1c1fd2c46c93ffd00b80fe868b284c7b8d129cd677f9f7ac9bba783",
+      "name": "root-budget-slow-travel",
+      "oracle": "root_budget",
+      "refusal_path": "E:0:0:1:0",
+      "witness": {
+        "bound": {
+          "denominator": "44739",
+          "numerator": "728"
+        },
+        "error": {
+          "denominator": "44739",
+          "numerator": "728"
+        },
+        "limit": {
+          "denominator": "1024",
+          "numerator": "1"
+        },
+        "reason": "time-error"
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 12318,
+      "counts": {
+        "arrivals": 0,
+        "commands": 3,
+        "edges": 0,
+        "position_samples": 6,
+        "root_bounds": 0
+      },
+      "elapsed_seconds": 0.006513100997835863,
+      "family": "frozen",
+      "input_bytes": 759,
+      "input_sha256": "19efde5a7cd0cc785e91020b3f331e2f61c03ea25150d3cb096c6aae4d2cbbbd",
+      "name": "position-budget-below",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "1397584786751622982124804505600",
+          "numerator": "4836165369454514389459789"
+        },
+        "max_root_error": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "position_witness": 5,
+        "root_witness": null,
+        "work_units": 145
+      }
+    },
+    {
+      "candidate": "position_budget",
+      "elapsed_seconds": 0.0034998819974134676,
+      "family": "frozen",
+      "input_bytes": 1168,
+      "input_sha256": "0d5a3dc988f1ff80c78faa967b8d270ce7ed3ffbb4a6677d1608204fc3f3b213",
+      "name": "position-budget-above",
+      "oracle": "position_budget",
+      "refusal_path": "position_samples[6]",
+      "witness": {
+        "error": {
+          "denominator": "174698098343952872765600563200",
+          "numerator": "906725170777371727071971"
+        },
+        "grid": {
+          "denominator": "2147483648",
+          "numerator": "973915487"
+        },
+        "key_index": 0,
+        "limit": {
+          "denominator": "262144",
+          "numerator": "1"
+        },
+        "source": {
+          "denominator": "81350141365059126525",
+          "numerator": "36893065934954037248"
+        },
+        "time": {
+          "denominator": "4",
+          "numerator": "9"
+        }
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 8098,
+      "counts": {
+        "arrivals": 0,
+        "commands": 0,
+        "edges": 0,
+        "position_samples": 1,
+        "root_bounds": 0
+      },
+      "elapsed_seconds": 0.0037305229998310097,
+      "family": "frozen",
+      "input_bytes": 593,
+      "input_sha256": "50ce89c085e3f982ba8188061a923abaf2bcd1309e02e0ed0c85ce07f0281fef",
+      "name": "empty-epoch",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "max_root_error": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "position_witness": 0,
+        "root_witness": null,
+        "work_units": 91
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 10543,
+      "counts": {
+        "arrivals": 0,
+        "commands": 3,
+        "edges": 0,
+        "position_samples": 1,
+        "root_bounds": 0
+      },
+      "elapsed_seconds": 0.0047235489982995205,
+      "family": "frozen",
+      "input_bytes": 764,
+      "input_sha256": "c62b9e3809305cfe2c7e1a211d721f6f81d3b7759373d6e73e616200c1578006",
+      "name": "zero-frame-closure-ties",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "max_root_error": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "position_witness": 0,
+        "root_witness": null,
+        "work_units": 114
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 25671,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 7,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013883941999665694,
+      "family": "frozen",
+      "input_bytes": 711,
+      "input_sha256": "9e88b39fb5da9de01e71bef16ef25e141eb32bbfe8208593002fcc5dc19e4135",
+      "name": "subnormal-canonical-sidecar",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "34359738375",
+          "numerator": "7"
+        },
+        "max_root_error": {
+          "denominator": "733007752",
+          "numerator": "7"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 605
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 417271,
+      "counts": {
+        "arrivals": 0,
+        "commands": 512,
+        "edges": 0,
+        "position_samples": 1,
+        "root_bounds": 0
+      },
+      "elapsed_seconds": 0.20460255600119126,
+      "family": "frozen",
+      "input_bytes": 27738,
+      "input_sha256": "8b285b05f978b39c2ed11e5491150364fc16d0f0a4385dfb693ecd7674e70444",
+      "name": "maximum-command-noops",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "max_root_error": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "position_witness": 0,
+        "root_witness": null,
+        "work_units": 5242
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 62349,
+      "counts": {
+        "arrivals": 4,
+        "commands": 4,
+        "edges": 36,
+        "position_samples": 16,
+        "root_bounds": 40
+      },
+      "elapsed_seconds": 0.030284106000181055,
+      "family": "frozen",
+      "input_bytes": 1759,
+      "input_sha256": "3247a558dc067f98aa3a041103050c746c7d3d81e2a63b5a28c46b99931a6610",
+      "name": "four-key-independent-ties",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "34359738375",
+          "numerator": "7"
+        },
+        "max_root_error": {
+          "denominator": "1466015504",
+          "numerator": "7"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 1343
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33730,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013022651000937913,
+      "family": "original",
+      "input_bytes": 1225,
+      "input_sha256": "fa5b4a9316c9c9b5063427a93add8d9d0fe66363f8decdddca8eeb8fc8ecb113",
+      "name": "data/contact-switching/reference-v1/F00-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "618970020518910426726803625",
+          "numerator": "29431724409928624297"
+        },
+        "max_root_error": {
+          "denominator": "23392668953851492099424256",
+          "numerator": "29431724409928624297"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33678,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013066539999272209,
+      "family": "original",
+      "input_bytes": 1224,
+      "input_sha256": "2a67c702245770a525dbcdb20d40c5127a511500b3ae46ce01828eb271a72717",
+      "name": "data/contact-switching/reference-v1/F00-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "309485010051929342534169375",
+          "numerator": "65819007680595093791"
+        },
+        "max_root_error": {
+          "denominator": "10746007293469769779380224",
+          "numerator": "65819007680595093791"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 611
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33523,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.014857014000881463,
+      "family": "original",
+      "input_bytes": 1224,
+      "input_sha256": "dc7c7554e76398c49fd9ed024a7e4037e98988f6373dbf53469337f9a4396e62",
+      "name": "data/contact-switching/reference-v1/F00-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "38685626227668133590597632",
+          "numerator": "2280222524414617887"
+        },
+        "max_root_error": {
+          "denominator": "671625451338260983840768",
+          "numerator": "2280222524414617887"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33730,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.01323140299791703,
+      "family": "original",
+      "input_bytes": 1222,
+      "input_sha256": "73ca1b0542bbd60501fdea81da3411c3b4f363d086a2b6fb1688cc2f51ca3b63",
+      "name": "data/contact-switching/reference-v1/F01-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "618970020518910426726803625",
+          "numerator": "29431724409928624297"
+        },
+        "max_root_error": {
+          "denominator": "23392668953851492099424256",
+          "numerator": "29431724409928624297"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33678,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.014797339001233922,
+      "family": "original",
+      "input_bytes": 1221,
+      "input_sha256": "ac1ff9552af9d3db650abbac5f73edda14ee728aee0bab7865768194d9bd10f7",
+      "name": "data/contact-switching/reference-v1/F01-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "309485010051929342534169375",
+          "numerator": "65819007680595093791"
+        },
+        "max_root_error": {
+          "denominator": "10746007293469769779380224",
+          "numerator": "65819007680595093791"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 611
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33523,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013433980999252526,
+      "family": "original",
+      "input_bytes": 1221,
+      "input_sha256": "3274472300ab9d42d11d34a6403a9b1695afe2b60c8bd7b3b26e2c2eded47a0d",
+      "name": "data/contact-switching/reference-v1/F01-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "38685626227668133590597632",
+          "numerator": "2280222524414617887"
+        },
+        "max_root_error": {
+          "denominator": "671625451338260983840768",
+          "numerator": "2280222524414617887"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33730,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013121169999067206,
+      "family": "original",
+      "input_bytes": 1239,
+      "input_sha256": "fb2ef23cdddedfd92152a335d146c3367cd5633f91010f335ee74944036db0e5",
+      "name": "data/contact-switching/reference-v1/F02-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "618970020518910426726803625",
+          "numerator": "29431724409928624297"
+        },
+        "max_root_error": {
+          "denominator": "23392668953851492099424256",
+          "numerator": "29431724409928624297"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33678,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013725544999033445,
+      "family": "original",
+      "input_bytes": 1238,
+      "input_sha256": "edf3fddee3ca55d1ebbdf367210b1d032689a467e385cd1c0ecd66f014bad2af",
+      "name": "data/contact-switching/reference-v1/F02-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "309485010051929342534169375",
+          "numerator": "65819007680595093791"
+        },
+        "max_root_error": {
+          "denominator": "10746007293469769779380224",
+          "numerator": "65819007680595093791"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 611
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33523,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013901973001338774,
+      "family": "original",
+      "input_bytes": 1238,
+      "input_sha256": "d28e76e089129483f78a7335aa408002cded5ecda5037c1d5d3fcb6ed19a85a9",
+      "name": "data/contact-switching/reference-v1/F02-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "38685626227668133590597632",
+          "numerator": "2280222524414617887"
+        },
+        "max_root_error": {
+          "denominator": "671625451338260983840768",
+          "numerator": "2280222524414617887"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33730,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.014597555000364082,
+      "family": "original",
+      "input_bytes": 1228,
+      "input_sha256": "fa00711d9e0b5fce1cbe957f2b8ddccec5a516dba06eac0508db4524a5d0b3b2",
+      "name": "data/contact-switching/reference-v1/F03-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "618970020518910426726803625",
+          "numerator": "29431724409928624297"
+        },
+        "max_root_error": {
+          "denominator": "23392668953851492099424256",
+          "numerator": "29431724409928624297"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33678,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013360594999539899,
+      "family": "original",
+      "input_bytes": 1227,
+      "input_sha256": "54489aa93a15ade35cc77327e662f4cd494c68c90bc3368e0f907e9571054d90",
+      "name": "data/contact-switching/reference-v1/F03-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "309485010051929342534169375",
+          "numerator": "65819007680595093791"
+        },
+        "max_root_error": {
+          "denominator": "10746007293469769779380224",
+          "numerator": "65819007680595093791"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 611
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33523,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013694220997422235,
+      "family": "original",
+      "input_bytes": 1227,
+      "input_sha256": "74b881a35711f280e52cdbda6049ea704ea17b4ecfcfa04cd75d1335d7acef98",
+      "name": "data/contact-switching/reference-v1/F03-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "38685626227668133590597632",
+          "numerator": "2280222524414617887"
+        },
+        "max_root_error": {
+          "denominator": "671625451338260983840768",
+          "numerator": "2280222524414617887"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33730,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.01615330200002063,
+      "family": "original",
+      "input_bytes": 1227,
+      "input_sha256": "dd6dd7af67c2386fad422bdd6239e767d9570be10521f1441a5e8ecff5026187",
+      "name": "data/contact-switching/reference-v1/F04-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "618970020518910426726803625",
+          "numerator": "29431724409928624297"
+        },
+        "max_root_error": {
+          "denominator": "23392668953851492099424256",
+          "numerator": "29431724409928624297"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33678,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013753470997471595,
+      "family": "original",
+      "input_bytes": 1226,
+      "input_sha256": "e236564527eaeb037d866c941896996e106d48e857edba58675ac113f35c7b21",
+      "name": "data/contact-switching/reference-v1/F04-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "309485010051929342534169375",
+          "numerator": "65819007680595093791"
+        },
+        "max_root_error": {
+          "denominator": "10746007293469769779380224",
+          "numerator": "65819007680595093791"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 611
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 33523,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 18,
+        "position_samples": 8,
+        "root_bounds": 20
+      },
+      "elapsed_seconds": 0.013603976000013063,
+      "family": "original",
+      "input_bytes": 1226,
+      "input_sha256": "17e608f406c3a63da3ea1999a6a3905e5dc59ee53282200d429e24f3184e56ea",
+      "name": "data/contact-switching/reference-v1/F04-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "38685626227668133590597632",
+          "numerator": "2280222524414617887"
+        },
+        "max_root_error": {
+          "denominator": "671625451338260983840768",
+          "numerator": "2280222524414617887"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 612
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 67930,
+      "counts": {
+        "arrivals": 4,
+        "commands": 4,
+        "edges": 36,
+        "position_samples": 24,
+        "root_bounds": 40
+      },
+      "elapsed_seconds": 0.02810429500095779,
+      "family": "original",
+      "input_bytes": 2256,
+      "input_sha256": "c912354ab3db300b6d766151d628b5db2c981d411dc41d0c06e569ceb24cee46",
+      "name": "data/contact-switching/reference-v1/F05-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "81350141365059126525",
+          "numerator": "16888498601984"
+        },
+        "max_root_error": {
+          "denominator": "1264214582205203403709040263838649613811712",
+          "numerator": "4625903795692418706852209255628995671"
+        },
+        "position_witness": 14,
+        "root_witness": 23,
+        "work_units": 1429
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 67843,
+      "counts": {
+        "arrivals": 4,
+        "commands": 4,
+        "edges": 36,
+        "position_samples": 24,
+        "root_bounds": 40
+      },
+      "elapsed_seconds": 0.026785711997945327,
+      "family": "original",
+      "input_bytes": 2255,
+      "input_sha256": "0f81743e647757d7a1a3385f333333a92e73fb0e4da5c2f95faca38f66f9824f",
+      "name": "data/contact-switching/reference-v1/F05-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "309485010051929342534169375",
+          "numerator": "65819007680595093791"
+        },
+        "max_root_error": {
+          "denominator": "10746007293469769779380224",
+          "numerator": "65819007680595093791"
+        },
+        "position_witness": 9,
+        "root_witness": 0,
+        "work_units": 1431
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 67546,
+      "counts": {
+        "arrivals": 4,
+        "commands": 4,
+        "edges": 36,
+        "position_samples": 24,
+        "root_bounds": 40
+      },
+      "elapsed_seconds": 0.029066236998914974,
+      "family": "original",
+      "input_bytes": 2254,
+      "input_sha256": "446af94bd19d35d89cde478c0189165a3501062690e6390dbc089ae44a886002",
+      "name": "data/contact-switching/reference-v1/F05-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "2767011611056432875",
+          "numerator": "439804651136"
+        },
+        "max_root_error": {
+          "denominator": "72593571826145907977804400774214565494784",
+          "numerator": "442079081713727795542771920284766177"
+        },
+        "position_witness": 14,
+        "root_witness": 23,
+        "work_units": 1430
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 23191,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 8,
+        "position_samples": 8,
+        "root_bounds": 10
+      },
+      "elapsed_seconds": 0.009870152000075905,
+      "family": "original",
+      "input_bytes": 1359,
+      "input_sha256": "6e0e7ee103055153b504ed7a063db303d234696f618d97e85ed6f2b2ce3d1ab5",
+      "name": "data/contact-switching/reference-v1/F06-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "1237940041037820853453607250",
+          "numerator": "115098236771882772649"
+        },
+        "max_root_error": {
+          "denominator": "46785337907702984198848512",
+          "numerator": "115098236771882772649"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 394
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 23144,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 8,
+        "position_samples": 8,
+        "root_bounds": 10
+      },
+      "elapsed_seconds": 0.009274088999518426,
+      "family": "original",
+      "input_bytes": 1359,
+      "input_sha256": "08ab2d2f380413b2ea47395dddcd2b687b547c78700d598d20fb2cd26d91c32b",
+      "name": "data/contact-switching/reference-v1/F06-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "415051741658464875",
+          "numerator": "43980465152"
+        },
+        "max_root_error": {
+          "denominator": "193582857770364349729576099687030813884416",
+          "numerator": "590103386125688845351520886193429405"
+        },
+        "position_witness": 4,
+        "root_witness": 8,
+        "work_units": 393
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 23063,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 8,
+        "position_samples": 8,
+        "root_bounds": 10
+      },
+      "elapsed_seconds": 0.009826140998484334,
+      "family": "original",
+      "input_bytes": 1360,
+      "input_sha256": "6d9cbade09e2ac03c98dd0ed269fe5b05e4525cb075593067cb3a4cbea2e215e",
+      "name": "data/contact-switching/reference-v1/F06-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "77371252455336267181195264",
+          "numerator": "8429137184727370527"
+        },
+        "max_root_error": {
+          "denominator": "1343250902676521967681536",
+          "numerator": "8429137184727370527"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 393
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 36409,
+      "counts": {
+        "arrivals": 3,
+        "commands": 3,
+        "edges": 18,
+        "position_samples": 12,
+        "root_bounds": 21
+      },
+      "elapsed_seconds": 0.01629873500132817,
+      "family": "original",
+      "input_bytes": 1470,
+      "input_sha256": "093517f16f7ba55f3f56fb7b47b9d19f147641094d49cd7143c33c7b1fceb9f1",
+      "name": "data/contact-switching/reference-v1/F07-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "968454063869751375",
+          "numerator": "245732122624"
+        },
+        "max_root_error": {
+          "denominator": "210702430367533900618173377306441602301952",
+          "numerator": "1413365368241118444020510779906475657"
+        },
+        "position_witness": 4,
+        "root_witness": 19,
+        "work_units": 720
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 36293,
+      "counts": {
+        "arrivals": 3,
+        "commands": 3,
+        "edges": 18,
+        "position_samples": 12,
+        "root_bounds": 21
+      },
+      "elapsed_seconds": 0.0160366910022276,
+      "family": "original",
+      "input_bytes": 1470,
+      "input_sha256": "88a287c5b6d2242929c933de180644b1e3ccf1dba0e6ec66685453d4a6f47b19",
+      "name": "data/contact-switching/reference-v1/F07-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "415051741658464875",
+          "numerator": "43980465152"
+        },
+        "max_root_error": {
+          "denominator": "193582857770364349729576099687030813884416",
+          "numerator": "590518761778920772965777725884421111"
+        },
+        "position_witness": 4,
+        "root_witness": 11,
+        "work_units": 720
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 36149,
+      "counts": {
+        "arrivals": 3,
+        "commands": 3,
+        "edges": 18,
+        "position_samples": 12,
+        "root_bounds": 21
+      },
+      "elapsed_seconds": 0.014955547001591185,
+      "family": "original",
+      "input_bytes": 1471,
+      "input_sha256": "46978a97833834b112b71a04ae3dbc3248f226450297d35e45a0a97b5146d79b",
+      "name": "data/contact-switching/reference-v1/F07-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "77371252455336267181195264",
+          "numerator": "8429137184727370527"
+        },
+        "max_root_error": {
+          "denominator": "1343250902676521967681536",
+          "numerator": "8429137184727370527"
+        },
+        "position_witness": 5,
+        "root_witness": 0,
+        "work_units": 720
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 42055,
+      "counts": {
+        "arrivals": 2,
+        "commands": 5,
+        "edges": 20,
+        "position_samples": 12,
+        "root_bounds": 22
+      },
+      "elapsed_seconds": 0.018490361999283778,
+      "family": "original",
+      "input_bytes": 1691,
+      "input_sha256": "9b30d78048828334550c03308ed35d60a66d067fe57457596cfb9773d33329fe",
+      "name": "data/contact-switching/reference-v1/F08-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "913438524624887281929984780021098796330225",
+          "numerator": "506978905965092209282322306448823537"
+        },
+        "max_root_error": {
+          "denominator": "86372751304411236201738230709608239939675224829952262144",
+          "numerator": "1186925701785093903985530524790927740787664032901547"
+        },
+        "position_witness": 5,
+        "root_witness": 6,
+        "work_units": 802
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 41915,
+      "counts": {
+        "arrivals": 2,
+        "commands": 5,
+        "edges": 20,
+        "position_samples": 12,
+        "root_bounds": 22
+      },
+      "elapsed_seconds": 0.016300212002533954,
+      "family": "original",
+      "input_bytes": 1691,
+      "input_sha256": "e7bdaf521328cf59650d559522007b52c33683ac95f89733f6f2ac648ee5f5ed",
+      "name": "data/contact-switching/reference-v1/F08-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "1141798154164767804821073601300869897256960",
+          "numerator": "728019945056602996168901289887577971"
+        },
+        "max_root_error": {
+          "denominator": "59468653774133123448769866303837967482880",
+          "numerator": "728019945056602996168901289887577971"
+        },
+        "position_witness": 5,
+        "root_witness": 1,
+        "work_units": 801
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 42117,
+      "counts": {
+        "arrivals": 2,
+        "commands": 5,
+        "edges": 20,
+        "position_samples": 12,
+        "root_bounds": 22
+      },
+      "elapsed_seconds": 0.017425306999939494,
+      "family": "original",
+      "input_bytes": 1696,
+      "input_sha256": "765e3c26745b8bb5895981ebe51c6bcf15c11d1c664dae29ff8eef41c9a66423",
+      "name": "data/contact-switching/reference-v1/F08-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "418138972472449203941740177724635348992000",
+          "numerator": "110301692832146744474879382068976247"
+        },
+        "max_root_error": {
+          "denominator": "7439527938337468621006560334622728814673774973651255296",
+          "numerator": "112694471086162534579409350694394023298500481965447"
+        },
+        "position_witness": 2,
+        "root_witness": 6,
+        "work_units": 802
+      }
+    },
+    {
+      "candidate": "event_order",
+      "elapsed_seconds": 0.004463949000637513,
+      "family": "original",
+      "input_bytes": 2542,
+      "input_sha256": "a9348fb7ef67f4d4150006188b203bf7707a42465e485682f7b5aaaf75cf0455",
+      "name": "data/contact-switching/reference-v1/F09-44100-v1.json",
+      "oracle": "event_order",
+      "refusal_path": "preorder[5]",
+      "witness": {
+        "grid_group_count": 30,
+        "grid_group_index": 5,
+        "grid_times": [
+          {
+            "denominator": "1024",
+            "numerator": "11025"
+          },
+          {
+            "denominator": "49864473",
+            "numerator": "536870912"
+          }
+        ],
+        "labels": [
+          "C:2",
+          "E:0:4:1:0"
+        ],
+        "source_group_count": 28,
+        "source_group_index": 5,
+        "source_times": [
+          {
+            "denominator": "1024",
+            "numerator": "11025"
+          },
+          {
+            "denominator": "1024",
+            "numerator": "11025"
+          }
+        ]
+      }
+    },
+    {
+      "candidate": "event_order",
+      "elapsed_seconds": 0.004595286001858767,
+      "family": "original",
+      "input_bytes": 2522,
+      "input_sha256": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b",
+      "name": "data/contact-switching/reference-v1/F09-48000-v1.json",
+      "oracle": "event_order",
+      "refusal_path": "preorder[5]",
+      "witness": {
+        "grid_group_count": 30,
+        "grid_group_index": 5,
+        "grid_times": [
+          {
+            "denominator": "32",
+            "numerator": "375"
+          },
+          {
+            "denominator": "91625969",
+            "numerator": "1073741824"
+          }
+        ],
+        "labels": [
+          "C:2",
+          "E:0:4:1:0"
+        ],
+        "source_group_count": 28,
+        "source_group_index": 5,
+        "source_times": [
+          {
+            "denominator": "32",
+            "numerator": "375"
+          },
+          {
+            "denominator": "32",
+            "numerator": "375"
+          }
+        ]
+      }
+    },
+    {
+      "candidate": "event_order",
+      "elapsed_seconds": 0.004643264997866936,
+      "family": "original",
+      "input_bytes": 2522,
+      "input_sha256": "449fb3ea0608b653c1f8a466f55852e47d3d0c9a4b00452e2ac61253bc933185",
+      "name": "data/contact-switching/reference-v1/F09-96000-v1.json",
+      "oracle": "event_order",
+      "refusal_path": "preorder[5]",
+      "witness": {
+        "grid_group_count": 30,
+        "grid_group_index": 5,
+        "grid_times": [
+          {
+            "denominator": "16",
+            "numerator": "375"
+          },
+          {
+            "denominator": "91625969",
+            "numerator": "2147483648"
+          }
+        ],
+        "labels": [
+          "C:2",
+          "E:0:4:1:0"
+        ],
+        "source_group_count": 28,
+        "source_group_index": 5,
+        "source_times": [
+          {
+            "denominator": "16",
+            "numerator": "375"
+          },
+          {
+            "denominator": "16",
+            "numerator": "375"
+          }
+        ]
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 23500,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 10,
+        "position_samples": 7,
+        "root_bounds": 12
+      },
+      "elapsed_seconds": 0.01179572500041104,
+      "family": "original",
+      "input_bytes": 1226,
+      "input_sha256": "f992ff04092507840c0c03234988c5a9269c28d206f006bf188faab7c5c3faf8",
+      "name": "data/contact-switching/reference-v1/F10-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "495176016558126680128880640",
+          "numerator": "430426261128168349"
+        },
+        "max_root_error": {
+          "denominator": "114979646475174993299767296",
+          "numerator": "2152131305640841745"
+        },
+        "position_witness": 4,
+        "root_witness": 0,
+        "work_units": 429
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 23223,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 10,
+        "position_samples": 7,
+        "root_bounds": 12
+      },
+      "elapsed_seconds": 0.010304425999493105,
+      "family": "original",
+      "input_bytes": 1226,
+      "input_sha256": "22934b6c567dfc06d09dabadd634a2ca22f3819bcaeb8abb16ae31e8500d6a8b",
+      "name": "data/contact-switching/reference-v1/F10-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "1934281311777471646924800",
+          "numerator": "200973133371409"
+        },
+        "max_root_error": {
+          "denominator": "6602346877533769888169984",
+          "numerator": "16077610151544095"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 430
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 23198,
+      "counts": {
+        "arrivals": 2,
+        "commands": 2,
+        "edges": 10,
+        "position_samples": 7,
+        "root_bounds": 12
+      },
+      "elapsed_seconds": 0.01306579200172564,
+      "family": "original",
+      "input_bytes": 1226,
+      "input_sha256": "c343c63911b58e52b83803fcd00dce0e951ed26be6582b614ecd9f4440f03775",
+      "name": "data/contact-switching/reference-v1/F10-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "1934281311777471646924800",
+          "numerator": "200973133371409"
+        },
+        "max_root_error": {
+          "denominator": "3301173438766884944084992",
+          "numerator": "16077610151544095"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 429
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 22216,
+      "counts": {
+        "arrivals": 1,
+        "commands": 2,
+        "edges": 9,
+        "position_samples": 4,
+        "root_bounds": 10
+      },
+      "elapsed_seconds": 0.011251076000917237,
+      "family": "original",
+      "input_bytes": 1377,
+      "input_sha256": "71b343694af63806742e3cd55260d8e8623bccaa8ec61a0d992e46c5167ede89",
+      "name": "data/contact-switching/reference-v1/F11-44100-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "19807040628566084398385987584",
+          "numerator": "18446744654603877859"
+        },
+        "max_root_error": {
+          "denominator": "1650586717509945027056369664",
+          "numerator": "18446744654603877859"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 316
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 21996,
+      "counts": {
+        "arrivals": 1,
+        "commands": 2,
+        "edges": 9,
+        "position_samples": 4,
+        "root_bounds": 10
+      },
+      "elapsed_seconds": 0.008859429999574786,
+      "family": "original",
+      "input_bytes": 1361,
+      "input_sha256": "11c86351c3ac242ee60ea7787137d7db1aafa9a3364340325a41cf73cedcfe1d",
+      "name": "data/contact-switching/reference-v1/F11-48000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "154742504910672534362390528",
+          "numerator": "144115184854630403"
+        },
+        "max_root_error": {
+          "denominator": "12895208730546445523877888",
+          "numerator": "144115184854630403"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 316
+      }
+    },
+    {
+      "candidate": "accepted",
+      "certificate_bytes": 21998,
+      "counts": {
+        "arrivals": 1,
+        "commands": 2,
+        "edges": 9,
+        "position_samples": 4,
+        "root_bounds": 10
+      },
+      "elapsed_seconds": 0.008452327001577942,
+      "family": "original",
+      "input_bytes": 1363,
+      "input_sha256": "b2f7969fc9e43083f2a62bb603faba2ba408fbf52412a1c7907d6117933acb90",
+      "name": "data/contact-switching/reference-v1/F11-96000-v1.json",
+      "oracle": "accepted",
+      "summary": {
+        "max_position_error": {
+          "denominator": "154742504910672534362390528",
+          "numerator": "144115184854630403"
+        },
+        "max_root_error": {
+          "denominator": "12895208730546445523877888",
+          "numerator": "144115184854630403"
+        },
+        "position_witness": 1,
+        "root_witness": 0,
+        "work_units": 316
+      }
+    }
+  ],
+  "passed": true,
+  "schema_version": 1,
+  "skipped": 0,
+  "suite": "independent-contact-grid-conversion-v1",
+  "test_sha256": "645be7294bdac6030d607d0780c60eb7373a76a024f915ce2584f166f8698720",
+  "tests_run": 12
+}

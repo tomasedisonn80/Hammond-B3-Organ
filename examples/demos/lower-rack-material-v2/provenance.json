@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "identity": "lower-rack-material-v2-gallery",
+  "scope": "Actual Lower-stage application captures, before typography; not identical-state raster comparison or full-interface equality.",
+  "base_commit": "a411268fd498f65c083203137831bf5afed83bd8",
+  "production_overlay": {
+    "apps/standalone/InstrumentView.cpp": "45b710a9c207f456701732f55ec1086487d63bdb9a8b6ed995f4de12cd5bdb10"
+  },
+  "production_source_sha256": {
+    "apps/standalone/InstrumentView.cpp": "45b710a9c207f456701732f55ec1086487d63bdb9a8b6ed995f4de12cd5bdb10",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+    "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+    "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+    "apps/standalone/main.cpp": "937b837d4ef4317d02ea2862ac34dc95031c73f0f32719b0924de29f4b721027"
+  },
+  "executable_sha256": "131b86779e52776ebab6ee73ec46341b7eeac7888f4df2d1b37cce62ad402da9",
+  "environment_overrides": {
+    "SDL_AUDIODRIVER": "dummy",
+    "SDL_VIDEODRIVER": "dummy"
+  },
+  "inputs": {
+    "play-dimensional.b3uireplay": "00694e49bf1d98b7ceddbb90a7ae6e9c87a028d864a98fb51d9090a73a4bcf65",
+    "controls.b3controls": "2490eee50d77e8b23324eaf7d67d1ca65c4670c000e33023fcac6f97d23da558"
+  },
+  "images": [
+    {
+      "command": [
+        "/workspace/scratch/0d55e62af118/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/examples/demos/upper-rack-material-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/examples/demos/upper-rack-material-v1/inputs/play-dimensional.b3uireplay",
+        "--width",
+        "1672",
+        "--height",
+        "941",
+        "--screenshot",
+        "/workspace/scratch/0d55e62af118/lower-preview/play-1672x941.bmp",
+        "--diagnostics",
+        "/workspace/scratch/0d55e62af118/lower-preview/play-1672x941.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.9730845900012355,
+      "image": "images/play-reference-1672x941.png",
+      "image_sha256": "053dcd23028e865b3899d95ed10bb0172ec20929a67ad13559bca40e9fd1f74a",
+      "pixel_sha256": "1e57f695b9c6a6fcaed815678827ae9fba48c74d4b4737897415f855972d9e01",
+      "original_capture_image": "/workspace/scratch/0d55e62af118/lower-preview/play-1672x941.png",
+      "diagnostics": "diagnostics/play-reference-1672x941.json",
+      "diagnostics_sha256": "8ee0659910c1417d98de45d37f16199410618ed182fe938271250ecb2f61838a"
+    },
+    {
+      "command": [
+        "/workspace/scratch/0d55e62af118/build-native/apps/standalone/hammond_standalone",
+        "--state",
+        "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/examples/demos/upper-rack-material-v1/inputs/controls.b3controls",
+        "--input-script",
+        "/workspace/scratch/0d55e62af118/Hammond-B3-Organ/examples/demos/upper-rack-material-v1/inputs/play-dimensional.b3uireplay",
+        "--width",
+        "1400",
+        "--height",
+        "820",
+        "--screenshot",
+        "/workspace/scratch/0d55e62af118/lower-preview/play-1400x820.bmp",
+        "--diagnostics",
+        "/workspace/scratch/0d55e62af118/lower-preview/play-1400x820.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.9053732229986053,
+      "image": "images/play-minimum-active-1400x820.png",
+      "image_sha256": "1deaebf15d052c38cd418ce1190f5014f5a0fe7d0f1bc355196b240f5078facf",
+      "pixel_sha256": "80393db0dcd99d1643028a4c4539435d8b4c94800b1e9b4c3b5746f1d1386578",
+      "original_capture_image": "/workspace/scratch/0d55e62af118/lower-preview/play-1400x820.png",
+      "diagnostics": "diagnostics/play-minimum-active-1400x820.json",
+      "diagnostics_sha256": "d3502dd8be20d289d160dccf2cf58b42950400d17f0d31a5e2dd48b82dd2ff8e"
+    }
+  ],
+  "reference_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+  "original_capture_receipt": "docs/development/2026-11-16-conversion-material/reports/root-lower-preview.json",
+  "notes": [
+    "Original input paths in commands are retained verbatim; copied gallery input bytes are identical.",
+    "PNG format conversion preserves original decoded screenshot pixels; no crop, repaint or compositing.",
+    "Runtime counters and meters vary; use the separate fixed-state98-pair receipt for containment."
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "all_checks_passed": true,
+  "analytic_root_inequality_cases": 128,
+  "candidate_imported": false,
+  "changed_relation_witnesses": 5550,
+  "chosen_budgets": {
+    "position_travel": {
+      "denominator": "262144",
+      "numerator": "1"
+    },
+    "root_frames": {
+      "denominator": "1024",
+      "numerator": "1"
+    },
+    "root_nanoseconds_by_rate": {
+      "44100": {
+        "denominator": "3528",
+        "numerator": "78125"
+      },
+      "48000": {
+        "denominator": "768",
+        "numerator": "15625"
+      },
+      "96000": {
+        "denominator": "1536",
+        "numerator": "15625"
+      }
+    },
+    "root_ticks": 64
+  },
+  "duration_endpoints": [
+    {
+      "duration_hex": "0x1.a36e2eb1c432dp-14",
+      "rate_hz": 44100,
+      "relative_duration_error": {
+        "denominator": "79228162545070403993389992675",
+        "numerator": "30806066399846042339"
+      },
+      "rounded_speed": 973915487
+    },
+    {
+      "duration_hex": "0x1.0000000000000p+0",
+      "rate_hz": 44100,
+      "relative_duration_error": {
+        "denominator": "67109175",
+        "numerator": "311"
+      },
+      "rounded_speed": 97392
+    },
+    {
+      "duration_hex": "0x1.a36e2eb1c432dp-14",
+      "rate_hz": 48000,
+      "relative_duration_error": {
+        "denominator": "2475880077648423464761242375",
+        "numerator": "922337085037006073"
+      },
+      "rounded_speed": 894784853
+    },
+    {
+      "duration_hex": "0x1.0000000000000p+0",
+      "rate_hz": 48000,
+      "relative_duration_error": {
+        "denominator": "16777125",
+        "numerator": "91"
+      },
+      "rounded_speed": 89478
+    },
+    {
+      "duration_hex": "0x1.a36e2eb1c432dp-14",
+      "rate_hz": 96000,
+      "relative_duration_error": {
+        "denominator": "1237940040207717537908837625",
+        "numerator": "922337263009713401"
+      },
+      "rounded_speed": 447392427
+    },
+    {
+      "duration_hex": "0x1.0000000000000p+0",
+      "rate_hz": 96000,
+      "relative_duration_error": {
+        "denominator": "16777125",
+        "numerator": "91"
+      },
+      "rounded_speed": 44739
+    }
+  ],
+  "f09": {
+    "early_by_frames": {
+      "denominator": "2932031008",
+      "numerator": "7"
+    },
+    "grid_edge": {
+      "denominator": "91625969",
+      "numerator": "1073741824"
+    },
+    "rounded_speed": 183251938,
+    "source_edge_and_command": {
+      "denominator": "32",
+      "numerator": "375"
+    }
+  },
+  "input_sha256": {
+    "data/contact-switching/reference-v1/F09-48000-v1.json": "3036dc114525c35ad000d5c6cc5c3849c7b8362231aba6fae784e35f2ee3694b",
+    "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0",
+    "docs/reviews/CONTACT_GRID_CONVERSION_NEXT_REVIEW.md": "bd7afbcf9e9a0b99441c505838dd51183dcbe3b42fa8da65829d6bed51c08045",
+    "src/research/CausalContactGrid.cpp": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+    "tools/causal_contact_grid_probe.cpp": "265b3c3fd82d8fe5f2a2d09ea235ab54071686a66535f352352a0403d9a0f576",
+    "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23"
+  },
+  "limits": "Does not qualify candidate implementation, native agreement, complete corpus outcomes, I/O, resource instrumentation, audio, physical fidelity or publication.",
+  "native_process_executed": false,
+  "preorder_pairs": 5625,
+  "preorders": 75,
+  "python": "3.12.14",
+  "rounding_cases": 24,
+  "scalar_counterexamples": {
+    "collapsed_hysteresis": true,
+    "command_time_collision": true,
+    "threshold_order_collision": true,
+    "unreachable_target_collision": true
+  },
+  "scope": "independent contract arithmetic and finite preorder lemma checks only"
+}

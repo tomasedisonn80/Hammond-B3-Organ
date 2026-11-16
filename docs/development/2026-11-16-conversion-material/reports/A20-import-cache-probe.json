@@ -1,0 +1,40 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "source_inputs": {
+    "tools/contact_grid_conversion.py": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797",
+    "tools/convert_contact_grid.py": "56b73884ab44fc0694a763e6ffd576590c613926bfbc42f60ad0491c2caa935c",
+    "tools/contact_switching_io.py": "1281cd0726a6cf16dcc0ceea8445b4e42900ed995bb82dfea70c6dffdd104cc6",
+    "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23",
+    "docs/CONTACT_GRID_CONVERSION_CONTRACT.md": "e5b4d26e9d74aef41fc5c6abe351597d43097da3faed5af6a26d0e3e557e18c0"
+  },
+  "original_numerical_sha256": "eff387f8457040ea67400dcb378ee1c2049b604d7c862fd6ca683b52c8f93797",
+  "edited_numerical_sha256": "2f03a046d4527091f1ff03432f595e83433c4dcfd7a2b822809806b0705aa540",
+  "same_size_and_timestamp": true,
+  "rows": [
+    {
+      "phase": "timestamp_cache_present",
+      "returncode": 0,
+      "stderr": "",
+      "status": "accepted",
+      "work_units": 91,
+      "certificate_numerical_sha256": "2f03a046d4527091f1ff03432f595e83433c4dcfd7a2b822809806b0705aa540"
+    },
+    {
+      "phase": "cache_removed",
+      "returncode": 2,
+      "stderr": "",
+      "refusal": {
+        "code": "resource",
+        "conversion_id": "fractional-to-contact-grid-rne-v1",
+        "path": "position_collision.sort",
+        "schema_version": 1,
+        "status": "refused",
+        "witness": {
+          "limit": 1,
+          "reason": "work-units"
+        }
+      }
+    }
+  ],
+  "limits": "Source hashes describe bytes read from disk. Python -B prevents writing caches, not reading a valid timestamp cache. Trusted unchanged sources and a consistent import environment remain necessary; no hostile-code authentication is supplied."
+}
