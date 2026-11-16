@@ -398,6 +398,7 @@ jobs:
                       "test_standalone_material_acceptance", "test_standalone_waveform_material",
                       "test_standalone_channel_modes", "test_standalone_expression_calibration",
                       "test_standalone_channel_acceptance", "test_standalone_product_visual",
+                      "test_standalone_upper_rack_material_raster",
                       "test_standalone_expression_diagnostics", "test_standalone_native_calibration"}
           assert required <= names, "Missing required native acceptance: " + ", ".join(sorted(required - names))
           print("Discovered", len(names), "standalone tests, including required MIDI, calibration, workspace, inspection and product drawing gates.", flush=True)
@@ -633,6 +634,7 @@ jobs:
         test_standalone_expression_calibration=test_standalone_expression_calibration
         test_standalone_channel_acceptance=test_standalone_channel_acceptance
         test_standalone_product_visual=test_standalone_product_visual
+        test_standalone_upper_rack_material_raster=test_standalone_upper_rack_material_raster
         test_standalone_native_calibration=hammond_standalone_calibration_probe
     steps:
       - name: Check out the exact tested revision
@@ -662,9 +664,9 @@ jobs:
           assert all(len(pair) == 2 and all(re.fullmatch(r"[a-z][a-z0-9_]*", name) for name in pair)
                      for pair in pairs), pairs
           test_targets = dict(pairs)
-          assert len(test_targets) == len(pairs) == 21, "Required CTest names must be unique"
+          assert len(test_targets) == len(pairs) == 22, "Required CTest names must be unique"
           build_targets = sorted(set(test_targets.values()))
-          assert len(build_targets) == 21
+          assert len(build_targets) == 22
           (logs / "build-targets.txt").write_text(" ".join(build_targets) + "\n")
           sources = (".github/workflows/standalone.yml", "CMakeLists.txt",
                      "apps/standalone/CMakeLists.txt", "cmake/VerifySdl2.cmake",
@@ -677,6 +679,7 @@ jobs:
                      "apps/standalone/tests/test_standalone_expression_calibration.cpp",
                      "apps/standalone/tests/test_standalone_channel_acceptance.cpp",
                      "apps/standalone/native_tests/test_standalone_product_visual.cpp",
+                     "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp",
                      "apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
                      "apps/standalone/native_tests/fake_calibration/RtMidi.h",
                      "apps/standalone/native_tests/test_standalone_native_calibration.py",
@@ -753,11 +756,11 @@ jobs:
             '-DCMAKE_C_FLAGS=-fsanitize=address,undefined -fno-omit-frame-pointer' \
             2>&1 | tee standalone-sanitizer-logs/configure.log
 
-      - name: Build only the twenty-one selected acceptance inputs
+      - name: Build only the twenty-two selected acceptance inputs
         run: |
           set -euo pipefail
           read -r -a targets < standalone-sanitizer-logs/build-targets.txt
-          [[ ${#targets[@]} -eq 21 ]]
+          [[ ${#targets[@]} -eq 22 ]]
           cmake --build build-standalone-sanitizers --config Release \
             --target "${targets[@]}" --parallel 2 --verbose \
             2>&1 | tee standalone-sanitizer-logs/build.log
@@ -772,7 +775,7 @@ jobs:
           provenance = json.loads((logs / "provenance.json").read_text())
           test_targets = provenance["test_targets"]
           required = provenance["build_targets"]
-          assert len(test_targets) == len(required) == 21 and set(required) == set(test_targets.values())
+          assert len(test_targets) == len(required) == 22 and set(required) == set(test_targets.values())
           libraries = {"SDL2-static": "_sdl2/libSDL2.a", "hammond_core": "libhammond_core.a",
                        "hammond_standalone_support": "apps/standalone/libhammond_standalone_support.a",
                        "hammond_standalone_drawing": "apps/standalone/libhammond_standalone_drawing.a",
@@ -808,6 +811,9 @@ jobs:
               "test_standalone_channel_acceptance": {"apps/standalone/tests/test_standalone_channel_acceptance.cpp"},
               "test_standalone_product_visual": {"apps/standalone/native_tests/test_standalone_product_visual.cpp",
                                                  "apps/standalone/InstrumentView.cpp"},
+              "test_standalone_upper_rack_material_raster": {
+                  "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp",
+                  "apps/standalone/InstrumentView.cpp"},
               probe: {"apps/standalone/native_tests/calibration_lifecycle_driver.cpp",
                       "apps/standalone/MidiDevice.cpp", "apps/standalone/InstrumentView.cpp"},
               "hammond_standalone_support": {"apps/standalone/Session.cpp", "apps/standalone/MidiInput.cpp"},
@@ -853,7 +859,7 @@ jobs:
           (logs / "instrumentation.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
           PY
 
-      - name: Discover exactly twenty-one gates and run with leak checking
+      - name: Discover exactly twenty-two gates and run with leak checking
         env:
           HAMMOND_NATIVE_CALIBRATION_EVIDENCE: ${{ github.workspace }}/standalone-sanitizer-logs/native-calibration
         run: |
@@ -864,7 +870,7 @@ jobs:
           provenance = json.loads((logs / "provenance.json").read_text())
           test_targets = provenance["test_targets"]
           required = provenance["required_tests"]
-          assert len(required) == len(set(required)) == 21 and set(required) == set(test_targets)
+          assert len(required) == len(set(required)) == 22 and set(required) == set(test_targets)
           selection = "^(" + "|".join(re.escape(name) for name in required) + ")$"
           (logs / "ctest-filter.txt").write_text(selection + "\n")
           command = ["ctest", "--test-dir", "build-standalone-sanitizers", "-C", "Release",
@@ -873,13 +879,14 @@ jobs:
               subprocess.run(command, stdout=output, check=True)
           discovered = json.loads((logs / "ctest-discovered.json").read_text())["tests"]
           names = [test["name"] for test in discovered]
-          assert len(names) == len(set(names)) == 21 and set(names) == set(required), names
+          assert len(names) == len(set(names)) == 22 and set(names) == set(required), names
           sanitizer_limits = {"test_standalone_workspace_raster": 180,
                               "test_standalone_scaled_view": 360,
                               "test_standalone_preset_raster": 300,
                               "test_standalone_inspection_raster": 60,
                               "test_standalone_material_acceptance": 60,
                               "test_standalone_product_visual": 240,
+                              "test_standalone_upper_rack_material_raster": 240,
                               "test_standalone_native_calibration": 180}
           for test in discovered:
               assert test.get("command"), "Missing built test command: " + test["name"]
@@ -900,7 +907,7 @@ jobs:
               overrides = properties.get("ENVIRONMENT", []) + properties.get("ENVIRONMENT_MODIFICATION", []) + command
               assert not any(value.startswith(("ASAN_OPTIONS=", "UBSAN_OPTIONS=", "LSAN_OPTIONS="))
                              for value in overrides), (test["name"], overrides)
-          print("Discovered exactly 21 built interface, channel, calibration and product paint gates; job sanitizer policy applies to every gate.", flush=True)
+          print("Discovered exactly 22 built interface, channel, calibration and product paint gates; job sanitizer policy applies to every gate.", flush=True)
           PY
           ctest --test-dir build-standalone-sanitizers -C Release -V --parallel 1 \
             --no-tests=error --timeout 180 -R "$(cat standalone-sanitizer-logs/ctest-filter.txt)" \

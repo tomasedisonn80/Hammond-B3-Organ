@@ -1,5 +1,126 @@
 # Development log
 
+## 2026-11-16 — Post-review integration gates qualified
+
+A36 identified absent-probe skips in two Python suites and missing Upper-rack
+coverage in the fixed sanitizer selection. Both setup paths now fail clearly;
+the additive 22nd raster gate preserves all earlier mappings and limits. Eight
+negative cases and both configured suites pass. The
+[refreshed full suite](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json)
+passes **210/210 in 191.90 seconds** with 505 unchanged inputs. An EOF-only
+resource-test cleanup then rebuilt to identical binary bytes and passed its
+affected test; the [publication-source receipt](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json)
+retains that exact boundary. Prior receipts and failures remain unchanged.
+Publication and exact-source hosted outcomes remain in progress.
+
+
+## 2026-11-16 — Causal contact grid and Upper-rack material pass local qualification
+
+The [streaming/material continuation](development/2026-11-15-streaming-continuation/README.md)
+starts from `4aac394cde4da40906b615573a8779aee2d9a37a`, tree
+`3605c9ce098a052afc10b2969fefe31e15644fe9`. Its six new readers covered all
+**500 atlas pages**, with individual ranges, extract hashes and notes in the
+[coverage receipt](development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json).
+The accepted scope is the isolated M3 integer-grid contact trajectory and the
+M9 Upper-rack inner-metal finish. Current work is an identified overlay; the
+base commit alone does not contain it. This request's **sixty distinct workers
+in ten waves of six, commit/push and current-source hosted CI remain pending**
+at this dated entry. The [live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json)
+own subsequent progress and closure; earlier workers never count again.
+
+`causal-contact-grid-v1` implements nine independent hysteretic contacts per
+key, exact rational roots, incoming-equality ordering, persistent command
+anchors, causal partitions and transactional lifecycle. Its finite domain is
+44.1/48/96 kHz, 65,536 ticks/frame, positions 0 through `2^48`, 1–4 keys,
+4,096 frames and 512 supplied commands per epoch, with at most 4,608 edges.
+The [independent source review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md)
+retains arithmetic/ordering arguments; the [Fraction differential suite](development/2026-11-15-streaming-continuation/notes/A21.md)
+passes **eleven methods / 199 native invocations** with exact edge and complete
+snapshot comparisons. Separate native lifecycle tests cover rejection precedence,
+closure/reset, capacity and byte-preserving rollback. The strict probe's
+[17-method / 150-process acceptance](development/2026-11-15-streaming-continuation/notes/A24.md)
+includes 131 exact rejections and bounded raw input/output. The
+[Windows raw-stdin repair](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) addresses
+documented CRLF/Ctrl-Z translation through guarded binary-mode setup; the final
+Linux gate passed, while Windows execution still awaits its own hosted evidence.
+
+[Independent resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md)
+reproduces **192 zero-allocation/deallocation API scopes**, a **113,056-byte
+object on the observed ABI**, fixed staging and per-call bounds including
+**4,608 edges / 80,640 ordering comparisons**. Finite hooks and source bounds
+do not qualify all system allocation, stack budgets or callback deadlines.
+There is no implicit float converter, audio filter/drain or live Engine route.
+Exact integer trajectories do not establish binary64-reference equivalence,
+full-window audio accuracy, indefinite/full-organ operation or physical contacts.
+
+M9 changes only the Upper rack's inner metal in active wide Dimensional Play,
+preserving geometry, children, controls and other panels. The
+[independently admitted paired report](reviews/UPPER_RACK_COMPARISON_ADMISSION.md)
+passes **96 genuine pairs / 307,095,606 pixels**, zero escaping pixels/channels,
+**37 exact required whole frames** and all five local reference screens.
+The original baseline failures and compressed report bytes remain. Resource
+crops protect zero exterior pixels and cannot qualify full-view containment.
+The [painter review](reviews/UPPER_RACK_PAINTER_REVIEW.md) separately admits
+arithmetic, renderer-state preservation and work bounds. All **twelve actual
+native captures** in the [current gallery](../examples/demos/upper-rack-material-v1/README.md)
+pass a separate **641-check admission** and direct full-frame inspection, with
+no new Upper-inset blocker. Application SHA-256 is
+`c29495e98148767c0d55cab4adc18a245659cea891deb0f37fa160ea976c3cc1`.
+These actual dummy-SDL captures retain runtime counter/meter drift and are
+distinct from fixed-state raster comparisons. Whole-interface **1:1 remains
+unmet and unwaived**.
+
+Root rebuilt all selected targets in **131 steps** and passed **210/210 CTests
+in 191.89 seconds**, zero failures. The
+[coherent receipt](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
+binds 505 unchanged code/test/tool/data inputs, three binaries and compressed
+original logs. Configuration is Linux GCC 14.2.0 Release, standalone/testing ON,
+MIDI/VST3/sanitizers OFF and SDL 2.32.10 dummy audio/video. The prior **203/203
+in 192.21 seconds** remains the separate before-change baseline. These are local
+software observations; current-source hosted, physical display/audio/MIDI,
+accessibility, DAW and deadline gates remain open.
+
+The [compatibility review](reviews/STREAMING_CONTINUATION_COMPATIBILITY.md)
+preserves the nominal dry Engine, 91 shared free-running sources, 47 parameters,
+`B3CONTROLS4`/readers 1–3, UUIDs, note owners and phase/percussion histories.
+The interface retains 147 playing keys, 24 presets, four banks and 68 ordinary
+controls including presets. One 8,192-frame dry render has identical WAV and
+all **16,384 decoded samples**, zero clipping. A30 separately records that the
+historical `baseline_pcm_sha256` field actually hashes the whole WAV; original
+report bytes are preserved. The bounded fixture supplies no universal audio
+or physical-equivalence claim.
+
+A34 updates the [current handoff](PRODUCT_HANDOFF.md#current-contactmaterial-continuation--16-november-2026)
+and this log only. The writable checkout is
+`/workspace/scratch/177e78b1ac09/Hammond-B3-Organ`; root owns the single
+`/workspace/scratch/177e78b1ac09/build-native` build, borrowing
+`/workspace/scratch/ade21b726509/SDL2` read-only. Current read-only tool/cache
+inspection finds CMake/CTest 3.31.6, Ninja 1.11.1.git.kitware.jobserver-1,
+GCC 14.2.0 and Python 3.12.14. The handoff separates normal desktop/backend
+setup from dummy recovery and retains older product commands under explicit
+historical headings with their original anchors. No build, recapture, numerical
+rerun or publication is attributed to this documentation work.
+
+Next M3 work independently admits conversion/error/collision policy and causal
+audio reconstruction, including absolute source phase, partial-cell integration,
+proposed D=16 scheduling, 33-sample nonempty drain and full-window reference
+criteria before live integration. Next M9 work declares other material/type
+targets and performs native display/DPI/input and accessibility journeys.
+Recover separate scanner/FOH, harmonic/leakage, crossover/native-retirement
+and R4 owners before overlap; physical acquisition and M0–M9 exits remain.
+Future agents must read complete AGENTS/PLAN and current recovery records,
+claim bounded paths, preserve concurrent work and original failures, checkpoint
+each wave, retain actual source-bound checks, update setup/status/next steps/log
+and actual UI captures, then commit/push accepted work without force and verify
+remote identities plus exact-source hosted results. Later prose changes need
+integrity checks; changed qualified inputs need affected requalification.
+
+All older entries below retain their original text, anchors, sources and dated
+pending observations. Their “current” sessions are historical. Neither this
+entry nor the current base declares the earlier execution/audio/playable or
+other unfinished worker ledgers complete.
+
 ## 2026-11-15 — Execution source passes coherent local qualification
 
 The current execution implementation built 14 incremental Release steps and

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "scope": "Post-review coherent Linux GCC Release all-target build and complete 210-test suite; missing-probe setup fails closed; no physical-device qualification",
+  "base_commit": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "build_steps": 0,
+  "ctest_passed": 210,
+  "ctest_total": 210,
+  "ctest_failed": 0,
+  "ctest_wall_seconds": 191.9,
+  "ctest_command": [
+    "ctest",
+    "--test-dir",
+    "../build-native",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "3"
+  ],
+  "compiler": "GCC 14.2.0",
+  "configuration": "Ninja Release; standalone/testing on; VST3/MIDI/sanitizers off; SDL 2.32.10 dummy audio/video",
+  "source_inventory": {
+    "files": 505,
+    "path": "final-coherent-code-inputs.json.gz",
+    "raw_sha256": "82c29cef72b58ece7058cbc3c136e89cc14eb13aa3a0bb0535772a7d4ab1b250",
+    "changed_during_qualification": [],
+    "scope": "All files under include, src, tests, tools, apps, plugins, cmake, assets and data, plus root CMake files; prose/worker reports may continue changing."
+  },
+  "binary_sha256": {
+    "../build-native/hammond_causal_contact_grid_probe": "191c1179cf5fb6b2059498445651a6a81cc63161aececa8c248a981b0afb306d",
+    "../build-native/apps/standalone/hammond_standalone": "c29495e98148767c0d55cab4adc18a245659cea891deb0f37fa160ea976c3cc1",
+    "../build-native/hammond_render": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf"
+  },
+  "logs": {
+    "final-coherent-build": {
+      "path": "final-coherent-build.log.gz",
+      "raw_sha256": "c2ed93ffd93c840755c0e91392ae593b1b52de9b7aaf6c208123feaceb1dde2e"
+    },
+    "final-coherent-ctest": {
+      "path": "final-coherent-ctest.log.gz",
+      "raw_sha256": "c635b98583c2e09f9958f6d1771a2fa86776581af84385137586a3592cd9dcde"
+    }
+  },
+  "storage_free_bytes": 54344761344,
+  "limitations": [
+    "Not actual MSVC/macOS/ASan hosted execution.",
+    "Not physical display/audio/MIDI, DAW, accessibility, callback deadline or calibrated physical fidelity.",
+    "Later source/test/build changes need affected requalification; prose changes need repository integrity."
+  ],
+  "recorded_utc": "2026-11-16T00:51:51.246331+00:00",
+  "build_result": "Ninja no work to do; existing coherently built binaries unchanged",
+  "workflow_sha256": {
+    ".github/workflows/ci.yml": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+    ".github/workflows/native-vst3.yml": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+    ".github/workflows/standalone.yml": "766fb1c2cb890af1b921ce66b4a58f656a20f5e5ff6e00481fbccb39d8c41961"
+  },
+  "predecessor": "coherent-qualification.json",
+  "post_review_setup": "post-review-setup-qualification.json",
+  "native_sanitizer_gate_count": 22
+}

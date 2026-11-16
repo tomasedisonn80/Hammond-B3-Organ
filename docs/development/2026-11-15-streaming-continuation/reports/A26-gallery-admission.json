@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "reviewer": "A26 /root/w05_a26",
+  "date_utc": "2026-11-16",
+  "scope": "Independent actual-gallery evidence admission; A25 owns numerical/mask admission. No build, capture, image edit or physical-device claim.",
+  "method": "Read-only Python 3/Pillow rehash and decode, full diagnostic/control replay cross-check, genuine previous-gallery comparison, protected art/source inventory; all twelve current full PNGs, old full Play and original JPEG separately viewed. No capture-tool validation functions imported.",
+  "python": "3.12.14",
+  "pillow": "13.0.0",
+  "status": "passed",
+  "check_counts": {
+    "manifest": 119,
+    "source": 119,
+    "build": 17,
+    "executable": 1,
+    "tool": 1,
+    "inputs": 45,
+    "qualification": 13,
+    "preservation": 18,
+    "art": 12,
+    "captures": 170,
+    "png": 36,
+    "state": 74,
+    "old_png": 12,
+    "focus": 4
+  },
+  "checks": 641,
+  "errors": [],
+  "capture_interval": [
+    "2026-11-16T00:05:52.194247+00:00",
+    "2026-11-16T00:06:21.131480+00:00"
+  ],
+  "payload": {
+    "members": 57,
+    "files_with_manifest": 58,
+    "bytes_with_manifest": 5466046,
+    "manifest_sha256": "a44ef50047145713bd9fa085ac5fec173927e9c757b57e90108b02fcbf1c4e1d",
+    "provenance_sha256": "1d71b0814e2661421cbb5285a87c5930a82c71cb1f6319feddc8d8ecd193f811"
+  },
+  "source": {
+    "base": {
+      "committed_tree": "3605c9ce098a052afc10b2969fefe31e15644fe9",
+      "head": "4aac394cde4da40906b615573a8779aee2d9a37a"
+    },
+    "production_count": 117,
+    "production_inventory_sha256": "557b032ba9d56ce9e42aa612deb6d6f23d7d60001f4e8199129020b1ddc9de48",
+    "common_previous_count": 115,
+    "changed_common_paths": [
+      "apps/standalone/InstrumentView.cpp"
+    ],
+    "added_paths": [
+      "include/hammond/research/CausalContactGrid.h",
+      "src/research/CausalContactGrid.cpp"
+    ],
+    "qualified_sources": 10,
+    "selected_build_count": 13,
+    "selected_build_inventory_sha256": "a076e2400b253282414e1a5fa2154ad83c46a9d6eeae471d2d1689c9016eb815",
+    "executable_sha256": "c29495e98148767c0d55cab4adc18a245659cea891deb0f37fa160ea976c3cc1",
+    "source_qualification_sha256": "38e9976f1092d8fff532971b15c0913de4628170d470e03da4c14bad733c287a"
+  },
+  "previous_gallery": {
+    "manifest_sha256": "641d9b31af5f59dc77c5b6904f0895d0877fa54e508c016556df4e6b7dc51828",
+    "preserved_executable_sha256": "eb9a501ec60d5a90a398ffbf14e21a21967712589c155b54c8be164a71bd823c",
+    "payload_members_checked": 57,
+    "decoded_images_checked": 12
+  },
+  "original_reference": {
+    "file_sha256": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187",
+    "decoded_rgb_sha256": "07a7e35a2fd6610d623bbc1da8c995f3f4d95c4b45a0a5c1f41ad1395584bbeb",
+    "cabinet_exact_pixels": 185002,
+    "art_assets_verified": 3
+  },
+  "cases": [
+    {
+      "name": "play-reference-1672x941",
+      "events": 66,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 61110,
+      "previous_gallery_difference_bbox": [
+        76,
+        273,
+        1512,
+        901
+      ],
+      "nonfooter_difference_bbox": [
+        76,
+        273,
+        596,
+        504
+      ],
+      "footer_different_pixels": 5
+    },
+    {
+      "name": "play-default-1280x900",
+      "events": 66,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 5,
+      "previous_gallery_difference_bbox": [
+        1171,
+        855,
+        1172,
+        860
+      ],
+      "nonfooter_difference_bbox": null,
+      "footer_different_pixels": 5
+    },
+    {
+      "name": "play-minimum-960x700",
+      "events": 66,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 0,
+      "previous_gallery_difference_bbox": null,
+      "nonfooter_difference_bbox": null,
+      "footer_different_pixels": 0
+    },
+    {
+      "name": "service-reference-1672x941",
+      "events": 66,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 196,
+      "previous_gallery_difference_bbox": [
+        253,
+        129,
+        1510,
+        901
+      ],
+      "nonfooter_difference_bbox": [
+        253,
+        129,
+        367,
+        137
+      ],
+      "footer_different_pixels": 15
+    },
+    {
+      "name": "service-minimum-960x700",
+      "events": 66,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 159,
+      "previous_gallery_difference_bbox": [
+        198,
+        109,
+        852,
+        660
+      ],
+      "nonfooter_difference_bbox": [
+        198,
+        109,
+        303,
+        117
+      ],
+      "footer_different_pixels": 5
+    },
+    {
+      "name": "rotary-reference-1672x941",
+      "events": 66,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 194,
+      "previous_gallery_difference_bbox": [
+        942,
+        178,
+        1510,
+        901
+      ],
+      "nonfooter_difference_bbox": [
+        942,
+        178,
+        1055,
+        186
+      ],
+      "footer_different_pixels": 10
+    },
+    {
+      "name": "rotary-minimum-960x700",
+      "events": 66,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 230,
+      "previous_gallery_difference_bbox": [
+        628,
+        158,
+        854,
+        660
+      ],
+      "nonfooter_difference_bbox": [
+        628,
+        158,
+        741,
+        166
+      ],
+      "footer_different_pixels": 15
+    },
+    {
+      "name": "flat-minimum-960x700",
+      "events": 68,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 10,
+      "previous_gallery_difference_bbox": [
+        851,
+        655,
+        853,
+        660
+      ],
+      "nonfooter_difference_bbox": null,
+      "footer_different_pixels": 10
+    },
+    {
+      "name": "play-minimum-active-1400x820",
+      "events": 66,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 44177,
+      "previous_gallery_difference_bbox": [
+        64,
+        238,
+        1267,
+        784
+      ],
+      "nonfooter_difference_bbox": [
+        64,
+        238,
+        499,
+        439
+      ],
+      "footer_different_pixels": 8
+    },
+    {
+      "name": "flat-reference-1672x941",
+      "events": 68,
+      "held_pedals": [
+        3
+      ],
+      "previous_gallery_different_pixels": 10,
+      "previous_gallery_difference_bbox": [
+        1507,
+        896,
+        1509,
+        901
+      ],
+      "nonfooter_difference_bbox": null,
+      "footer_different_pixels": 10
+    },
+    {
+      "name": "play-toolbar-focus-1672x941",
+      "events": 151,
+      "held_pedals": [
+        2,
+        3
+      ],
+      "previous_gallery_different_pixels": 61974,
+      "previous_gallery_difference_bbox": [
+        76,
+        273,
+        1513,
+        901
+      ],
+      "cyan_edge_counts": {
+        "top": 256,
+        "bottom": 256,
+        "left": 36,
+        "right": 36
+      },
+      "nonfooter_difference_bbox": [
+        76,
+        273,
+        596,
+        504
+      ],
+      "footer_different_pixels": 5
+    },
+    {
+      "name": "play-pedal-focus-1672x941",
+      "events": 161,
+      "held_pedals": [
+        3,
+        25
+      ],
+      "previous_gallery_different_pixels": 61969,
+      "previous_gallery_difference_bbox": [
+        76,
+        273,
+        596,
+        504
+      ],
+      "cyan_edge_counts": {
+        "top": 38,
+        "bottom": 38,
+        "left": 140,
+        "right": 140
+      },
+      "nonfooter_difference_bbox": [
+        76,
+        273,
+        596,
+        504
+      ],
+      "footer_different_pixels": 0
+    }
+  ],
+  "comparison_report": {
+    "compressed_sha256": "3d8b800220cbfb0bf81fd0f86a2732cce9b9c623ee4ab2b86c65a1f2deb4805c",
+    "uncompressed_sha256": "20651ce04553a3cfd1d56c9c8e997765072d3d0223b1b5cc28aff0816cb0bbf9",
+    "reported_totals": {
+      "pairs": 96,
+      "passed_pairs": 96,
+      "compared_pixels": 307095606,
+      "required_whole_frames_identical": 37,
+      "outside_allowance_pixels": 0,
+      "outside_allowance_channels": 0
+    },
+    "interpretation": "Source-bound scoped software matrix; numerical/mask acceptance belongs to A25, no whole-UI equality implication."
+  },
+  "limits": [
+    "Original BMP bytes unavailable; utility recorded verified lossless conversion and deletion; PNG identities independently rechecked.",
+    "Production/build hashes and author qualification are observed bindings, not a hermetic independent rebuild attestation.",
+    "Runtime frame/revision labels and footer peak meters vary between real captures. These differences are retained, not used as a frozen-state raster failure or excused by extending the material mask.",
+    "No whole-interface 1:1, real display/DPI/input, semantic accessibility, device deadlines, connected scanner/rotary audio or physical fidelity qualification."
+  ],
+  "qualified_build_logs": {
+    "wave3-candidate-build": {
+      "uncompressed_sha256": "87169b9bea2baf55fb93ef8d8ace32d1f71c3b5fbfb0bf8f4ea0623a92acf1e9",
+      "matched": true
+    },
+    "wave3-candidate-tests": {
+      "uncompressed_sha256": "58f670145cfa68fb77b0bcbec3112fc9c0f3eb4e0a260d5a6588830ad9520da4",
+      "matched": true
+    }
+  }
+}

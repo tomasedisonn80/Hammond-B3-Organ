@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "scope": "Coherent Linux GCC Release all-target build and complete registered native/core/tool suite; no physical-device qualification",
+  "base_commit": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "build_steps": 131,
+  "ctest_passed": 210,
+  "ctest_total": 210,
+  "ctest_failed": 0,
+  "ctest_wall_seconds": 191.89,
+  "ctest_command": [
+    "ctest",
+    "--test-dir",
+    "../build-native",
+    "-C",
+    "Release",
+    "--output-on-failure",
+    "--no-tests=error",
+    "--parallel",
+    "3"
+  ],
+  "compiler": "GCC 14.2.0",
+  "configuration": "Ninja Release; standalone/testing on; VST3/MIDI/sanitizers off; SDL 2.32.10 dummy audio/video",
+  "source_inventory": {
+    "files": 505,
+    "path": "coherent-code-inputs.json.gz",
+    "raw_sha256": "85b57e7d333f717c177238066221e812dbc43e3241d9aa758bdf5bf7ee992252",
+    "changed_during_qualification": [],
+    "scope": "All files under include, src, tests, tools, apps, plugins, cmake, assets and data, plus root CMake files; prose/worker reports may continue changing."
+  },
+  "binary_sha256": {
+    "../build-native/hammond_causal_contact_grid_probe": "191c1179cf5fb6b2059498445651a6a81cc63161aececa8c248a981b0afb306d",
+    "../build-native/apps/standalone/hammond_standalone": "c29495e98148767c0d55cab4adc18a245659cea891deb0f37fa160ea976c3cc1",
+    "../build-native/hammond_render": "928205dc3b31e57faa7664cb39e691659d1c7f7430b5555ade70b4a9830835bf"
+  },
+  "logs": {
+    "wave5-coherent-configure": {
+      "path": "wave5-coherent-configure.log.gz",
+      "raw_sha256": "43a6b7c34a6402d079da7aee8f63a187c733c2d2cc92463a7657fb469068bf7d"
+    },
+    "wave5-coherent-build": {
+      "path": "wave5-coherent-build.log.gz",
+      "raw_sha256": "72513f6a59206e679ecaa41a381397a1d61ef614095872a470f6694eb49e2a6a"
+    },
+    "wave5-coherent-ctest": {
+      "path": "wave5-coherent-ctest.log.gz",
+      "raw_sha256": "f61216beac32554a43d37bc5e1044802f7d5a03dce2ee153ce494042d3a5f6ad"
+    }
+  },
+  "storage_free_bytes": 54362107904,
+  "limitations": [
+    "Not actual MSVC/macOS/ASan hosted execution.",
+    "Not physical display/audio/MIDI, DAW, accessibility, callback deadline or calibrated physical fidelity.",
+    "Later source/test/build changes need affected requalification; prose changes need repository integrity."
+  ]
+}

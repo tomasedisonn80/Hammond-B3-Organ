@@ -41,13 +41,17 @@ The benchmark receives that aggregate as its compiled `_SOURCE_ID` macro.
 
 | Included domain | Purpose |
 | --- | --- |
-| `src/*.cpp`, `include/hammond/*.h` | Current core sources and public contracts; both inventories track additions/removals. |
+| `src/*.cpp`, `include/hammond/*.h` | Ordinary core sources and public contracts; both nonrecursive inventories track additions/removals. |
+| `src/research/CausalContactGrid.cpp`, `include/hammond/research/CausalContactGrid.h` | Explicit nested research source/header additions; the source follows the core target list and the header is appended to benchmark dependencies. |
 | `apps/standalone/Session.h`, `Session.cpp`, `benchmark.cpp`, `tools/CliArguments.h` | Actual measured boundary, workload/report implementation and portable CLI handling. |
 | Pedal compiler, both validators, map, factory reference and both CSV readings | Actual documentary routing generation inputs from root CMake. |
 | Scanner compiler, authoring graph and schema | Actual native scanner-constant generation inputs. |
 | Profile compiler and authoring profile | Actual compiled nominal-profile inputs. |
 
-There are 54 entries at the assignment-33 checkpoint. Paths use forward slashes;
+There were 54 entries at the historical assignment-33 checkpoint. The current
+contact/material configuration records 81 entries; use the generated inventory for
+the actual configured source, rather than treating either count as permanent.
+Paths use forward slashes;
 absolute, parent/current-directory components, empty components and characters
 outside the selected ASCII filename vocabulary reject. The checkout's enclosing
 directory may contain spaces or Unicode. Manifest paths do not contain it.

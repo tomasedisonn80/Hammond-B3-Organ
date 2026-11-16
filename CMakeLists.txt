@@ -58,6 +58,8 @@ file(GLOB HAMMOND_CORE_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/sr
 if(NOT HAMMOND_CORE_SOURCES)
     message(FATAL_ERROR "No core C++ sources were found in src/.")
 endif()
+list(APPEND HAMMOND_CORE_SOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/research/CausalContactGrid.cpp")
 add_library(hammond_core STATIC ${HAMMOND_CORE_SOURCES})
 target_include_directories(hammond_core PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 hammond_configure_target(hammond_core)
@@ -191,6 +193,11 @@ add_executable(hammond_crossover_probe tools/crossover_probe.cpp)
 target_link_libraries(hammond_crossover_probe PRIVATE hammond_core)
 hammond_configure_target(hammond_crossover_probe)
 
+# Explicit integer-grid trajectory research; no Engine or audio route is added.
+add_executable(hammond_causal_contact_grid_probe tools/causal_contact_grid_probe.cpp)
+target_link_libraries(hammond_causal_contact_grid_probe PRIVATE hammond_core)
+hammond_configure_target(hammond_causal_contact_grid_probe)
+
 # Independent normalized mouth-input renderer; no organ profile or live route.
 set(HAMMOND_ROTARY_AUTHORING "${CMAKE_CURRENT_SOURCE_DIR}/data/rotary/nominal-research-v1.json")
 set(HAMMOND_ROTARY_HEADER "${HAMMOND_GENERATED_INCLUDE_DIR}/RotaryNominalProfile.h")
@@ -273,6 +280,10 @@ if(BUILD_TESTING)
         hammond_configure_target(${test_name})
         add_dependencies(${test_name} hammond_profile)
         add_test(NAME ${test_name} COMMAND ${test_name})
+        if(test_name MATCHES "^test_causal_contact_grid")
+            set_tests_properties(${test_name} PROPERTIES
+                TIMEOUT 90 LABELS "contact;causal;research")
+        endif()
         list(APPEND HAMMOND_TEST_TARGETS ${test_name})
     endforeach()
 
@@ -287,9 +298,15 @@ if(BUILD_TESTING)
             "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_scanner_line_probe>")
         set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
             "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_scanner_line_foh_probe>")
+        if(test_name MATCHES "^test_causal_contact_grid")
+            set_property(TEST "python_${test_name}" APPEND PROPERTY ENVIRONMENT
+                "HAMMOND_CAUSAL_CONTACT_GRID_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_causal_contact_grid_probe>")
+            set_tests_properties("python_${test_name}" PROPERTIES
+                TIMEOUT 90 LABELS "contact;causal;research")
+        endif()
     endforeach()
     list(APPEND HAMMOND_TEST_TARGETS hammond_scanner_line_probe hammond_scanner_line_foh_probe
-        hammond_crossover_probe)
+        hammond_crossover_probe hammond_causal_contact_grid_probe)
 
     if(TEST python_test_scanner_foh_probe)
         set_tests_properties(python_test_scanner_foh_probe PROPERTIES

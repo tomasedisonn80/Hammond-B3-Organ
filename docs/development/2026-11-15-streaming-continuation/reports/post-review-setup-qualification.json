@@ -1,0 +1,93 @@
+{
+  "scope": "Direct missing-probe negative gates and YAML syntax/selection; not hosted execution",
+  "negative_cases": [
+    {
+      "source": "tests/test_causal_contact_grid_differential.py",
+      "mode": "unset",
+      "exit_code": 5,
+      "explicit_RuntimeError": true,
+      "skipped": false,
+      "log": "test_causal_contact_grid_differential-unset.log.gz",
+      "raw_sha256": "3af2818d8ba3260fcf57fdfedd3410638ee626ba7a203e988e466835f3698cef"
+    },
+    {
+      "source": "tests/test_causal_contact_grid_differential.py",
+      "mode": "empty",
+      "exit_code": 5,
+      "explicit_RuntimeError": true,
+      "skipped": false,
+      "log": "test_causal_contact_grid_differential-empty.log.gz",
+      "raw_sha256": "3af2818d8ba3260fcf57fdfedd3410638ee626ba7a203e988e466835f3698cef"
+    },
+    {
+      "source": "tests/test_causal_contact_grid_differential.py",
+      "mode": "missing",
+      "exit_code": 5,
+      "explicit_RuntimeError": true,
+      "skipped": false,
+      "log": "test_causal_contact_grid_differential-missing.log.gz",
+      "raw_sha256": "c56c7f5cb6a0f0c43bab75aba921ac9132fabb319abf342fe9e522f2c41b33cb"
+    },
+    {
+      "source": "tests/test_causal_contact_grid_differential.py",
+      "mode": "nonexecutable",
+      "exit_code": 5,
+      "explicit_RuntimeError": true,
+      "skipped": false,
+      "log": "test_causal_contact_grid_differential-nonexecutable.log.gz",
+      "raw_sha256": "7a10310ada6d92e2885338829c3ba01485f57f51d3548715de02b018b0b71442"
+    },
+    {
+      "source": "tests/test_causal_contact_grid_cli.py",
+      "mode": "unset",
+      "exit_code": 5,
+      "explicit_RuntimeError": true,
+      "skipped": false,
+      "log": "test_causal_contact_grid_cli-unset.log.gz",
+      "raw_sha256": "41eeb6710f07fdb4aedb7da040715d82f86cc2bdc4bbe228f9e3f18069074bb9"
+    },
+    {
+      "source": "tests/test_causal_contact_grid_cli.py",
+      "mode": "empty",
+      "exit_code": 5,
+      "explicit_RuntimeError": true,
+      "skipped": false,
+      "log": "test_causal_contact_grid_cli-empty.log.gz",
+      "raw_sha256": "e1d124f828933423b63bdae23c3faf7893befb73da3d9eeb0b4ef02222dec901"
+    },
+    {
+      "source": "tests/test_causal_contact_grid_cli.py",
+      "mode": "missing",
+      "exit_code": 5,
+      "explicit_RuntimeError": true,
+      "skipped": false,
+      "log": "test_causal_contact_grid_cli-missing.log.gz",
+      "raw_sha256": "aa1c50cd8f329b66b2a130bbc7526b26dee6d67f3f815f12317fc0d398687eee"
+    },
+    {
+      "source": "tests/test_causal_contact_grid_cli.py",
+      "mode": "nonexecutable",
+      "exit_code": 5,
+      "explicit_RuntimeError": true,
+      "skipped": false,
+      "log": "test_causal_contact_grid_cli-nonexecutable.log.gz",
+      "raw_sha256": "4705261c10aac44f069980f5befd55d7728c85e463fb1c6e21403c53733b37e0"
+    }
+  ],
+  "negative_cases_passed": 8,
+  "native_sanitizer_gate_count": 22,
+  "source_sha256": {
+    "tests/test_causal_contact_grid_differential.py": "eb15efa27f30c5ba813fe2d4255de6010d5f3a8da2f8be29b09bcf8de3ede812",
+    "tests/test_causal_contact_grid_cli.py": "015a1ef3f5e436a629c7f4885c3f3ed03f4e2b88071cad6bbd7cbc73e6efa6e3",
+    ".github/workflows/standalone.yml": "766fb1c2cb890af1b921ce66b4a58f656a20f5e5ff6e00481fbccb39d8c41961"
+  },
+  "all_passed": true,
+  "positive_ctest": {
+    "passed": 2,
+    "total": 2,
+    "wall_seconds": 1.8,
+    "log": "post-review-positive-tests.log.gz",
+    "raw_sha256": "9d01f06fed3ead51384074ad925c21273100ee679dc5b7b78c53619a6b5d944c"
+  },
+  "subsequent_change": "CLI module docstring corrected only; final whole-suite source inventory will bind that comment revision."
+}

@@ -1,6 +1,163 @@
 # Development status
 
-## Current execution continuation — 15 November 2026
+**Post-review local update, 16 November 2026:** the [refreshed full suite](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json) passes **210/210 in 191.90 seconds** after the missing-probe and sanitizer-selection repairs. The [publication-source receipt](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) binds the sole later EOF whitespace cleanup, identical rebuilt resource binary and passing affected test. The earlier 191.89-second observation below retains its original inputs. Current-source hosted execution and final session publication remain pending.
+
+## Current streaming/material continuation — 16 November 2026
+
+The [active session](development/2026-11-15-streaming-continuation/README.md),
+started 15 November, implements the isolated **M3 causal integer-grid contact
+trajectory** and a narrow **M9 Upper-rack inner-metal material change** under its
+[accepted scope](development/2026-11-15-streaming-continuation/SCOPE.md).
+Base/HEAD is `4aac394cde4da40906b615573a8779aee2d9a37a`, tree
+`3605c9ce098a052afc10b2969fefe31e15644fe9`; these new deliveries are a working
+overlay, identified by the source inventories and receipts below.
+
+The [coherent Linux Release qualification](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
+rebuilt **131 steps** and passed **210/210 CTests in 191.89 seconds**. All 505
+recorded code/test/tool/data inputs stayed unchanged during that qualification.
+**Commit/push and exact-source hosted CI remain pending.** The requested
+sixty-worker/ten-wave session remains in progress. Use the
+[live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json)
+for dispatch, acceptance and later publication observations. Six new readers
+covered all 500 atlas pages, as bound by this session's
+[coverage receipt](development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json).
+Previous sessions and repeated followups supply no worker credit here.
+
+### Implemented current behavior
+
+[`CausalContactGrid`](../include/hammond/research/CausalContactGrid.h) is a separate
+C++20 research API, `causal-contact-grid-v1`. It retains nine independent
+hysteretic contacts per key, exact rational crossing times, persistent command
+anchors, stable equality ordering, partition-invariant travel and transactional
+failure. Its [frozen contract](CAUSAL_CONTACT_GRID_CONTRACT.md) admits **one to
+four keys, at most 4096 frames and 512 commands per epoch**, at 44.1/48/96 kHz,
+with 65,536 integer ticks per frame and caller-owned output. The
+[developer guide](CAUSAL_CONTACT_GRID_GUIDE.md) covers its strict native probe,
+API phases, endpoint ownership and replay. There is **no implicit float
+converter, waveform/filter, drain API or Engine route**. Integer-domain exactness
+does not establish equivalence to every binary64 input of the offline reference.
+
+The [Upper-rack material contract](design/UPPER_RACK_MATERIAL_CONTRACT.md) changes
+only the inner metal of the Upper registration panel in existing wide Dimensional
+Play, active at width ≥1400 and height ≥820. The new field and grain preserve
+geometry, child painting, original art, other panels and inactive layouts. The
+[current twelve-view gallery](../examples/demos/upper-rack-material-v1/README.md)
+shows the actual app at reference/minimum-active sizes, compact/Flat and focus
+scenes. Its live inventory retains **147 playing keys, 24 presets, four drawbar
+banks, 68 controls and 71 Play focus stops**.
+
+The [compatibility review](reviews/STREAMING_CONTINUATION_COMPATIBILITY.md)
+retains the nominal dry Engine, **91 shared free-running sources, 47 parameter
+meanings, `B3CONTROLS4` and readers 1–3**, plugin identities and musical ownership.
+The earlier offline contact reference and canonical wide layout remain their
+own source-bound deliveries; they have not been replaced or regraded.
+
+### Current tested evidence and limits
+
+| Evidence | Observed result and scope |
+| --- | --- |
+| [Starting baseline](development/2026-11-15-streaming-continuation/reports/baseline-qualification.json) | 569 build steps; **203/203 CTests, 192.21 s**, before production edits. Genuine binaries, painter and dry fixture remain in this session's `../baseline/`. This is distinct from the previous session's 203-test run. |
+| [Coherent all-target gate](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json) | **131 build steps; 210/210 CTests, zero failures, 191.89 s**, with a retained 505-file input inventory and original compressed logs. Linux GCC Release, dummy SDL, MIDI/VST3/sanitizers OFF; no hosted-platform or physical-device pass is inferred. |
+| [Independent differential replay](development/2026-11-15-streaming-continuation/notes/A21.md) and [lifecycle suite](../tests/test_causal_contact_grid_lifecycle.cpp) | **11 methods / 199 native probes** compare exact edges and full padded snapshots with an independent Fraction oracle across three rates, partitions, ties, extrema and capacity. Registered differential CTest passed in 1.43 s; the native lifecycle/rollback gate also passed. |
+| [Strict native transport](development/2026-11-15-streaming-continuation/notes/A24.md) and [portability review](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) | **17 methods / 150 processes**, including 131 exact rejections. The guarded Windows raw-stdin repair preserves byte limits against CRLF/Ctrl-Z translation; the coherent Linux rerun passes, while Windows execution remains pending hosted CI. |
+| [Independent resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md) | **192 API scopes** observe zero hooked current-thread C++ allocations/frees; six calibrations pass. Local object **113,056 B**, embedded scratch **112,256 B**; constructive cases reach **4608 edges, 80,640 comparisons and 2052 position evaluations**. Hook scope, compiler stack, other ABIs and callback deadlines remain distinct limits. |
+| [Independent material comparison admission](reviews/UPPER_RACK_COMPARISON_ADMISSION.md) | **96 genuine pairs / 307,095,606 pixels**, zero escaping pixels/channels, **37 exact required whole frames**, and **five passing local reference screens**. Original baseline failures remain. Ordinary active frames protect at least 1,059,289 pixels; resource crops protect zero, so no external-containment claim applies there. |
+| [Independent actual-gallery admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md) | **12 actual native captures / 641 checks**, including source/build/replay/state/pixel bindings and direct full-frame inspection. Scoped Upper-finish improvement is admitted; app counters/footer meters vary between gallery captures, which are not identical-state raster pairs. |
+| [Compatibility and dry fixture](reviews/STREAMING_CONTINUATION_COMPATIBILITY.md) | Original Engine/state/parameter/source identities and the frozen 48-file ContactReferenceTools payload are preserved. One matched 8192-frame, 48 kHz dry fixture has identical WAV bytes and **zero difference across 16,384 decoded samples**. This is one fixture, not universal audio or physical equivalence. |
+
+No current result admits an audio reconstruction filter, full-window continuous
+reference/atlas `1e-4` grade, indefinite/full-organ capacity, live Engine/host
+integration or a physical contact model. The previous continuous reference
+admission remains **64 frozen probes per fixture**; its all-289-sample convergence
+is a different test. **Literal whole-interface 1:1 remains unmet and unwaived.**
+Other panel/wood illumination, key/cap bevels, shadows and typography still need
+work, followed by actual display/DPI/input and native semantic-accessibility
+journeys. Dummy SDL and local resource bounds qualify none of those gates.
+
+### Current workspace and setup
+
+Root coordinates the single build, captures and publication. Other sessions'
+checkouts, indexes, builds and evidence are read-only to this session. In
+particular, sharing the pinned SDL dependency grants no ownership of its parent
+workspace.
+
+| Item | Current location or identity |
+| --- | --- |
+| Writable repository | `/workspace/scratch/177e78b1ac09/Hammond-B3-Organ` |
+| Coordinated build | `/workspace/scratch/177e78b1ac09/build-native` |
+| Read-only pinned SDL | `/workspace/scratch/ade21b726509/SDL2`; **2.32.10**, commit `5d249570393f7a37e037abf22cd6012a4cc56a71` |
+| Tools | GCC **14.2.0**, Python **3.12.14**, CMake/CTest **3.31.6**, Ninja executable **1.11.1.git.kitware.jobserver-1**; CMake/Ninja under `/home/agent/.local/bin` |
+| Selected configuration | Ninja Release; testing/standalone ON; MIDI/VST3/sanitizers OFF; static SDL, X11/Wayland/ALSA/PulseAudio/JACK OFF |
+| Captured app | `../build-native/apps/standalone/hammond_standalone`; SHA-256 `c29495e98148767c0d55cab4adc18a245659cea891deb0f37fa160ea976c3cc1` |
+| Native trajectory probe | `../build-native/hammond_causal_contact_grid_probe`; SHA-256 `191c1179cf5fb6b2059498445651a6a81cc63161aececa8c248a981b0afb306d` |
+| Retained outputs | [Current gallery](../examples/demos/upper-rack-material-v1/README.md), [session receipts](development/2026-11-15-streaming-continuation/CHECKPOINT.md), original binaries in `../baseline/`, optional instrumentation in `../resource-work/` |
+
+For recovery of this **dummy-SDL qualification build**, inspect the working
+source and preserve owned changes before reproducing the recorded configuration:
+
+```sh
+cd /workspace/scratch/177e78b1ac09/Hammond-B3-Organ
+git status --short
+git rev-parse HEAD 'HEAD^{tree}'
+python3 -B tools/acquire_sdl2.py --verify-existing /workspace/scratch/ade21b726509/SDL2
+cmake -S . -B ../build-native -G Ninja -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_TESTING=ON -DHAMMOND_BUILD_STANDALONE=ON \
+  -DHAMMOND_BUILD_VST3=OFF -DHAMMOND_ENABLE_MIDI=OFF \
+  -DHAMMOND_ENABLE_SANITIZERS=OFF \
+  -DHAMMOND_SDL2_ROOT=/workspace/scratch/ade21b726509/SDL2 \
+  -DSDL_X11=OFF -DSDL_WAYLAND=OFF -DSDL_ALSA=OFF \
+  -DSDL_PULSEAUDIO=OFF -DSDL_JACK=OFF
+cmake --build ../build-native --config Release --parallel 3
+ctest --test-dir ../build-native -C Release --output-on-failure --no-tests=error --parallel 3
+```
+
+The 210-test run above is already complete for its frozen inputs. Subsequent
+production/build/test changes require affected qualification; documentation and
+ledger changes require their integrity checks. Do not rerun a broad gate solely
+to refresh its date or count. The [causal-grid guide](CAUSAL_CONTACT_GRID_GUIDE.md)
+supplies the runnable probe example and focused checks. The unchanged
+[offline guide](CONTACT_SWITCHING_GUIDE.md) and
+[installation guide](CONTACT_REFERENCE_INSTALL.md) retain their separate source
+and relocatable component workflows; the causal probe is not part of that
+48-file package.
+
+For a **normal desktop clean checkout**, use the
+[README build-and-launch commands](../README.md#build-and-launch-the-native-application)
+and [platform/MIDI prerequisites](MIDI_EXPRESSION_GUIDE.md#build-the-native-application).
+They explicitly acquire locked SDL 2.32.10 and optional RtMidi 6.0.0, use an
+ordinary build with native backends enabled, and launch at **1672×941** to show
+the wide material path. Do not reuse this dummy-only cache for a physical-device
+journey. Keyboard/pointer builds may leave MIDI OFF; Windows executable paths
+and PowerShell commands are in the same guide. Launching at the default
+1280×900 shows the established compact layout.
+
+### Remaining current acceptance and engineering work
+
+Root must finish the actual assignments and substantive acceptance, reconcile
+shared documentation, retain the matching strict record result, and publish
+accepted work to `main` using a fresh expected remote head without force. Fetch
+and verify the resulting commit/tree/parent, then observe required hosted jobs at
+that exact source. Older published/hosted passes do not qualify this overlay.
+
+The next M3 owners must independently admit **conversion/error policy**, then
+the audio stage's **D=16 schedule, absolute source phase, partial-cell history,
+33-sample nonempty drain and full-window reference protocol**. Capacity extension,
+Engine scheduling/latency/lifetime and physical acquisition remain separate
+contracts. The next M9 owners must declare subsequent material and typography
+comparisons against the current genuine baseline, followed by real display and
+accessibility work. [NEXT_STEPS.md](NEXT_STEPS.md) names proposed modules, inputs,
+ownership boundaries and acceptance. The entire [M0–M9 plan](PLAN.md), scanner
+G5 failure, separately owned ScannerLineFoh/library and M6/callback-retirement
+work, R4 owner acceptance, R5/R6 and physical/release gates remain binding.
+
+## Earlier execution continuation snapshot — 15 November 2026
+
+**Dated prior-session record.** The following execution results, workspace
+commands, worker counts and pending statements describe that 15 November
+snapshot. They are preserved without asserting later completion on its owner's
+behalf. The streaming session above is current; recover the execution owner's
+own checkpoint before using or changing its work.
 
 The [execution session](development/2026-11-15-execution-continuation/README.md)
 implements the **M3 offline fractional-contact reference** and **M9 canonical
@@ -60,7 +217,7 @@ AO-28 and Leslie models remain unconnected to the playable dry path. No measured
 contact/bounce/loading result, current-Engine parity, causal streaming filter or
 full-window atlas `1e-4` grade follows from this bounded experiment.
 
-### Current workspace and setup
+### Execution snapshot workspace and setup
 
 Root exclusively coordinates this session's one native build, captures and
 publication. Other checkouts and their source/build/evidence remain preserved.
@@ -113,7 +270,7 @@ relocation and PowerShell instructions. Preserve fresh report destinations and
 source hashes. Later documentation edits do not rewrite the original installed
 snapshot or the numerical receipt.
 
-### Remaining acceptance and engineering work
+### Execution snapshot remaining acceptance and engineering work
 
 The coherent full CTest and compatibility/resource reviews have passed. Finish
 all actual worker assignments, guarded publication and observed hosted CI. Publication must inspect fresh remote advances, preserve concurrent owners,
@@ -135,7 +292,7 @@ separate dependencies.
 
 The dated sections below retain their original sources, captures, results and
 unfinished assignments. Their words “current” or “active” describe those
-snapshots. They do not supersede the execution section above or identify today's
+snapshots. They do not supersede the streaming section above or identify today's
 wide Play painter. Consult each owning checkpoint before touching another track.
 
 ## Earlier audio continuation snapshot — 15 November 2026

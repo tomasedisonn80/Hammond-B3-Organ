@@ -1,0 +1,38 @@
+{
+  "stage": "first candidate affected gates",
+  "ctest_native_passes": 3,
+  "ctest_native_wall_seconds": 11.22,
+  "oracle_self_tests": 18,
+  "native_ctest_names": [
+    "test_causal_contact_grid",
+    "test_standalone_upper_rack_material_raster",
+    "test_standalone_percussion_raster"
+  ],
+  "source_sha256": {
+    "src/research/CausalContactGrid.cpp": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+    "include/hammond/research/CausalContactGrid.h": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f",
+    "apps/standalone/InstrumentView.cpp": "30ac6cec988ec1834f36456d25d1e53113642071d844d53f81b62b3474cf2c37"
+  },
+  "logs": {
+    "wave3-probe-configure": {
+      "path": "reports/wave3-probe-configure.log.gz",
+      "raw_sha256": "bc4c8610f707c7897697c2c6d8b91446dab5c6ce365c13babf6704655f3ad7f6"
+    },
+    "wave3-candidate-build": {
+      "path": "reports/wave3-candidate-build.log.gz",
+      "raw_sha256": "87169b9bea2baf55fb93ef8d8ace32d1f71c3b5fbfb0bf8f4ea0623a92acf1e9"
+    },
+    "wave3-candidate-tests": {
+      "path": "reports/wave3-candidate-tests.log.gz",
+      "raw_sha256": "58f670145cfa68fb77b0bcbec3112fc9c0f3eb4e0a260d5a6588830ad9520da4"
+    },
+    "wave3-oracle-test": {
+      "path": "reports/wave3-oracle-test.log.gz",
+      "raw_sha256": "1b40f0019998dde334498c442510dd95c0ca7bb8ada53f3296bb67f59ec6516f"
+    }
+  },
+  "limitations": [
+    "Not independent differential or paired-image acceptance.",
+    "Not the final coherent all-target build/test."
+  ]
+}

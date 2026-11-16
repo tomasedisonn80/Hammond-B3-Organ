@@ -1,0 +1,617 @@
+{
+  "schema_version": 1,
+  "worker": "A36",
+  "wave": 6,
+  "session": "2026-11-15-streaming-continuation",
+  "date": "2026-11-16",
+  "base_commit": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "base_tree": "3605c9ce098a052afc10b2969fefe31e15644fe9",
+  "checkout": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+  "initial_source_sha256": {
+    "CMakeLists.txt": "27dcd10882464f949296ba2ad0ae08e016911a4ec746e38ce2116f459ad94673",
+    "apps/standalone/CMakeLists.txt": "a6996b75d61b9e39fcbc4df674196fc2cfaf398452dbbae799aab839e349b1b2",
+    "cmake/StandaloneBenchmark.cmake": "e9e9469715ec73feb71940cd272176f77ec2e93e0fc262fa1abf5bc65750e666",
+    "cmake/InstallContactReferenceTools.cmake": "b9994fcc297ca4f2ae005016dd7943b8d8960b35ca5f051f5bc57feba97bc9ea",
+    ".github/workflows/ci.yml": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+    ".github/workflows/native-vst3.yml": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+    ".github/workflows/standalone.yml": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a",
+    "include/hammond/research/CausalContactGrid.h": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f",
+    "src/research/CausalContactGrid.cpp": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+    "tools/causal_contact_grid_probe.cpp": "265b3c3fd82d8fe5f2a2d09ea235ab54071686a66535f352352a0403d9a0f576",
+    "tests/test_causal_contact_grid_cli.py": "cf286e63d329d2d90814ccdf23bb0af963a160f3ba8c4696f96f5c2b6cd94020",
+    "tests/test_causal_contact_grid_differential.py": "d73dc8aa7ac16577eb779c4fed73b4c9bbd09dcc57367abde5886e600964c850"
+  },
+  "methods": [
+    "Read-only source/CMake/generated-Ninja inspection",
+    "ctest --test-dir ../build-native -C Release --show-only=json-v1",
+    "Six direct setUpClass calls under unset, empty and nonexistent probe paths; no test body or native subprocess executed",
+    "SHA-256 comparison with the retained coherent 505-input inventory",
+    "Byte comparison of the 48 explicit ContactReferenceTools payloads with HEAD",
+    "Parse three workflow YAMLs and thirteen embedded Python blocks; compare all original sanitizer gates/budgets, final source hashes and setup ASTs."
+  ],
+  "configure_build_full_suites": "not_run",
+  "hosted_jobs": "not_queried_or_run",
+  "registered_test_count": 210,
+  "selected_tests": [
+    {
+      "name": "test_causal_contact_grid",
+      "command": [
+        "/workspace/scratch/177e78b1ac09/build-native/test_causal_contact_grid"
+      ],
+      "properties": {
+        "LABELS": [
+          "causal",
+          "contact",
+          "research"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/177e78b1ac09/build-native"
+      }
+    },
+    {
+      "name": "test_causal_contact_grid_lifecycle",
+      "command": [
+        "/workspace/scratch/177e78b1ac09/build-native/test_causal_contact_grid_lifecycle"
+      ],
+      "properties": {
+        "LABELS": [
+          "causal",
+          "contact",
+          "research"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/177e78b1ac09/build-native"
+      }
+    },
+    {
+      "name": "test_causal_contact_grid_resources",
+      "command": [
+        "/workspace/scratch/177e78b1ac09/build-native/test_causal_contact_grid_resources"
+      ],
+      "properties": {
+        "LABELS": [
+          "causal",
+          "contact",
+          "research"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/177e78b1ac09/build-native"
+      }
+    },
+    {
+      "name": "python_test_causal_contact_grid_cli",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_causal_contact_grid_cli.py"
+      ],
+      "properties": {
+        "ENVIRONMENT": [
+          "PYTHONDONTWRITEBYTECODE=1",
+          "HAMMOND_TEST_PROFILE=/workspace/scratch/177e78b1ac09/build-native/nominal.b3p",
+          "HAMMOND_SOURCE_DIR=/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+          "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_scanner_line_probe",
+          "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_scanner_line_foh_probe",
+          "HAMMOND_CAUSAL_CONTACT_GRID_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_causal_contact_grid_probe",
+          "HAMMOND_RENDER_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_render",
+          "HAMMOND_CONSOLE_TRACE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_console_trace",
+          "HAMMOND_PEDAL_TRACE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_pedal_trace"
+        ],
+        "LABELS": [
+          "causal",
+          "contact",
+          "research"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ"
+      }
+    },
+    {
+      "name": "python_test_causal_contact_grid_differential",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_causal_contact_grid_differential.py"
+      ],
+      "properties": {
+        "ENVIRONMENT": [
+          "PYTHONDONTWRITEBYTECODE=1",
+          "HAMMOND_TEST_PROFILE=/workspace/scratch/177e78b1ac09/build-native/nominal.b3p",
+          "HAMMOND_SOURCE_DIR=/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+          "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_scanner_line_probe",
+          "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_scanner_line_foh_probe",
+          "HAMMOND_CAUSAL_CONTACT_GRID_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_causal_contact_grid_probe",
+          "HAMMOND_RENDER_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_render",
+          "HAMMOND_CONSOLE_TRACE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_console_trace",
+          "HAMMOND_PEDAL_TRACE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_pedal_trace"
+        ],
+        "LABELS": [
+          "causal",
+          "contact",
+          "research"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ"
+      }
+    },
+    {
+      "name": "python_test_causal_contact_grid_reference",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/tests/test_causal_contact_grid_reference.py"
+      ],
+      "properties": {
+        "ENVIRONMENT": [
+          "PYTHONDONTWRITEBYTECODE=1",
+          "HAMMOND_TEST_PROFILE=/workspace/scratch/177e78b1ac09/build-native/nominal.b3p",
+          "HAMMOND_SOURCE_DIR=/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+          "HAMMOND_SCANNER_LINE_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_scanner_line_probe",
+          "HAMMOND_SCANNER_LINE_FOH_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_scanner_line_foh_probe",
+          "HAMMOND_CAUSAL_CONTACT_GRID_PROBE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_causal_contact_grid_probe",
+          "HAMMOND_RENDER_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_render",
+          "HAMMOND_CONSOLE_TRACE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_console_trace",
+          "HAMMOND_PEDAL_TRACE_EXECUTABLE=/workspace/scratch/177e78b1ac09/build-native/hammond_pedal_trace"
+        ],
+        "LABELS": [
+          "causal",
+          "contact",
+          "research"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ"
+      }
+    },
+    {
+      "name": "test_standalone_upper_rack_material_raster",
+      "command": [
+        "/workspace/scratch/177e78b1ac09/build-native/apps/standalone/test_standalone_upper_rack_material_raster"
+      ],
+      "properties": {
+        "LABELS": [
+          "geometry",
+          "material",
+          "native",
+          "standalone"
+        ],
+        "TIMEOUT": 90.0,
+        "WORKING_DIRECTORY": "/workspace/scratch/177e78b1ac09/build-native/apps/standalone"
+      }
+    }
+  ],
+  "coherent_inventory_at_initial_inspection": {
+    "files": 505,
+    "changed": [],
+    "prior_qualification": {
+      "passed": 210,
+      "total": 210,
+      "wall_seconds": 191.89,
+      "configuration": "Linux GCC 14.2.0 Ninja Release; dummy SDL; standalone/testing ON; MIDI/VST3/sanitizers OFF"
+    },
+    "runtime_pass_not_reproduced_by_A36": true
+  },
+  "benchmark": {
+    "entries": 81,
+    "research_entries": [
+      {
+        "path": "include/hammond/research/CausalContactGrid.h",
+        "sha256": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f"
+      },
+      {
+        "path": "src/research/CausalContactGrid.cpp",
+        "sha256": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd"
+      }
+    ]
+  },
+  "contact_reference_install": {
+    "count": 48,
+    "changed_payloads_vs_base": [],
+    "explicit_payloads": [
+      "tools/fractional_contact_reference.py",
+      "tools/contact_switching_io.py",
+      "tools/contact_switching_reference.py",
+      "tools/contact_switching_oracle.py",
+      "tools/contact_switching_study.py",
+      "tools/make_contact_switching_fixtures.py",
+      "docs/FRACTIONAL_CONTACT_REFERENCE.md",
+      "docs/CONTACT_SWITCHING_VALIDATION.md",
+      "docs/CONTACT_SWITCHING_GUIDE.md",
+      "docs/CONTACT_REFERENCE_INSTALL.md",
+      "data/contact-switching/reference-v1/F00-44100-v1.json",
+      "data/contact-switching/reference-v1/F00-48000-v1.json",
+      "data/contact-switching/reference-v1/F00-96000-v1.json",
+      "data/contact-switching/reference-v1/F01-44100-v1.json",
+      "data/contact-switching/reference-v1/F01-48000-v1.json",
+      "data/contact-switching/reference-v1/F01-96000-v1.json",
+      "data/contact-switching/reference-v1/F02-44100-v1.json",
+      "data/contact-switching/reference-v1/F02-48000-v1.json",
+      "data/contact-switching/reference-v1/F02-96000-v1.json",
+      "data/contact-switching/reference-v1/F03-44100-v1.json",
+      "data/contact-switching/reference-v1/F03-48000-v1.json",
+      "data/contact-switching/reference-v1/F03-96000-v1.json",
+      "data/contact-switching/reference-v1/F04-44100-v1.json",
+      "data/contact-switching/reference-v1/F04-48000-v1.json",
+      "data/contact-switching/reference-v1/F04-96000-v1.json",
+      "data/contact-switching/reference-v1/F05-44100-v1.json",
+      "data/contact-switching/reference-v1/F05-48000-v1.json",
+      "data/contact-switching/reference-v1/F05-96000-v1.json",
+      "data/contact-switching/reference-v1/F06-44100-v1.json",
+      "data/contact-switching/reference-v1/F06-48000-v1.json",
+      "data/contact-switching/reference-v1/F06-96000-v1.json",
+      "data/contact-switching/reference-v1/F07-44100-v1.json",
+      "data/contact-switching/reference-v1/F07-48000-v1.json",
+      "data/contact-switching/reference-v1/F07-96000-v1.json",
+      "data/contact-switching/reference-v1/F08-44100-v1.json",
+      "data/contact-switching/reference-v1/F08-48000-v1.json",
+      "data/contact-switching/reference-v1/F08-96000-v1.json",
+      "data/contact-switching/reference-v1/F09-44100-v1.json",
+      "data/contact-switching/reference-v1/F09-48000-v1.json",
+      "data/contact-switching/reference-v1/F09-96000-v1.json",
+      "data/contact-switching/reference-v1/F10-44100-v1.json",
+      "data/contact-switching/reference-v1/F10-48000-v1.json",
+      "data/contact-switching/reference-v1/F10-96000-v1.json",
+      "data/contact-switching/reference-v1/F11-44100-v1.json",
+      "data/contact-switching/reference-v1/F11-48000-v1.json",
+      "data/contact-switching/reference-v1/F11-96000-v1.json",
+      "data/contact-switching/reference-v1/manifest.json",
+      "data/contact-switching/reference-v1/probes.json"
+    ],
+    "native_probe_installed": false
+  },
+  "initial_python_setup_observations": [
+    {
+      "suite": "CausalContactGridCli",
+      "configuration": "unset",
+      "outcome": "SkipTest"
+    },
+    {
+      "suite": "CausalContactGridCli",
+      "configuration": "empty",
+      "outcome": "RuntimeError"
+    },
+    {
+      "suite": "CausalContactGridCli",
+      "configuration": "missing",
+      "outcome": "RuntimeError"
+    },
+    {
+      "suite": "CausalContactGridDifferential",
+      "configuration": "unset",
+      "outcome": "SkipTest"
+    },
+    {
+      "suite": "CausalContactGridDifferential",
+      "configuration": "empty",
+      "outcome": "SkipTest"
+    },
+    {
+      "suite": "CausalContactGridDifferential",
+      "configuration": "missing",
+      "outcome": "RuntimeError"
+    }
+  ],
+  "initial_hosted_jobs": [
+    {
+      "workflow": "ci.yml",
+      "name": "Release (Linux GCC)",
+      "executes_six_causal_tests": true,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "ci.yml",
+      "name": "Release (macOS AppleClang)",
+      "executes_six_causal_tests": true,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "ci.yml",
+      "name": "Release (Windows MSVC)",
+      "executes_six_causal_tests": true,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "ci.yml",
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "executes_six_causal_tests": true,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "ci.yml",
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "native-vst3.yml",
+      "name": "Native VST3 (Linux GCC)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "native-vst3.yml",
+      "name": "Native VST3 (macOS AppleClang)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "native-vst3.yml",
+      "name": "Native VST3 (Windows MSVC x64)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false,
+      "initial_exact_gate_count": 21
+    }
+  ],
+  "initial_findings": [
+    {
+      "id": "A36-F1",
+      "scope": "Direct native Python suite setup",
+      "finding": "Unset probe variable skips both suites; empty variable also skips differential. Current CTest supplies a nonempty target-file path.",
+      "recommendation": "Fail unset/empty probe setup in both scripts and update guide; preserve original receipts."
+    },
+    {
+      "id": "A36-F2",
+      "scope": "Native standalone sanitizer selection",
+      "finding": "Exact 21-gate selection omits the new Upper-rack raster fixture.",
+      "recommendation": "Add unchanged fixture as gate 22, update six count guards/two labels/one diagnostic, provenance source inventory, required compiled sources and 240s timeout map; preserve every existing gate/threshold."
+    },
+    {
+      "id": "A36-F3",
+      "scope": "Build documentation",
+      "finding": "BUILD and STANDALONE_BENCHMARK_BUILD omit explicitly appended nested research source/header.",
+      "recommendation": "Document explicit nested inputs; keep original 54-entry checkpoint historical."
+    }
+  ],
+  "root_followup": "F1/F2/F3 repairs independently accepted at exact patched source; root owns runtime requalification and hosted execution.",
+  "initial_sanitizer_gate_map": {
+    "test_standalone_ui": "test_standalone_ui",
+    "test_standalone_preset_ui": "test_standalone_preset_ui",
+    "test_standalone_workspaces_author": "test_standalone_workspaces_author",
+    "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+    "test_standalone_projection": "test_standalone_projection",
+    "test_standalone_inspection_author": "test_standalone_inspection_author",
+    "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+    "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+    "test_standalone_drawing": "test_standalone_drawing",
+    "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+    "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+    "test_standalone_scaled_view": "test_standalone_scaled_view",
+    "test_standalone_preset_raster": "test_standalone_preset_raster",
+    "test_standalone_reference_layout": "test_standalone_reference_layout",
+    "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+    "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+    "test_standalone_channel_modes": "test_standalone_channel_modes",
+    "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+    "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+    "test_standalone_product_visual": "test_standalone_product_visual",
+    "test_standalone_native_calibration": "hammond_standalone_calibration_probe"
+  },
+  "coherent_log_selected_seconds": {
+    "test_causal_contact_grid": 0.01,
+    "test_causal_contact_grid_lifecycle": 0.0,
+    "test_causal_contact_grid_resources": 0.01,
+    "python_test_causal_contact_grid_cli": 0.45,
+    "python_test_causal_contact_grid_differential": 1.43,
+    "python_test_causal_contact_grid_reference": 0.11,
+    "test_standalone_upper_rack_material_raster": 11.35
+  },
+  "post_repair_static_audit": {
+    "source_sha256": {
+      "tests/test_causal_contact_grid_differential.py": "eb15efa27f30c5ba813fe2d4255de6010d5f3a8da2f8be29b09bcf8de3ede812",
+      "tests/test_causal_contact_grid_cli.py": "cda3e12ed7d5df2ca79999aadf01185c3107a597e62423573b189170ad6710aa",
+      ".github/workflows/standalone.yml": "766fb1c2cb890af1b921ce66b4a58f656a20f5e5ff6e00481fbccb39d8c41961",
+      "docs/BUILD.md": "502e0d66384a5c963a486dbbcd93ca43a72520c90ebc08b925e6f97f4fa3225d",
+      "docs/STANDALONE_BENCHMARK_BUILD.md": "014a6d959a5592343bf2e60167a5c2756b0d9cd9701271cd15c603151cbe1010",
+      "docs/CAUSAL_CONTACT_GRID_GUIDE.md": "d9f5b7ae4ef58e32f72b984b4ca94e5aea48673421ecdddde24d2f2d60bd2f4f"
+    },
+    "yaml_workflows_parsed": 3,
+    "embedded_python_blocks_parsed": 13,
+    "expected_hosted_jobs": [
+      {
+        "workflow": "ci.yml",
+        "name": "Release (Linux GCC)"
+      },
+      {
+        "workflow": "ci.yml",
+        "name": "Release (macOS AppleClang)"
+      },
+      {
+        "workflow": "ci.yml",
+        "name": "Release (Windows MSVC)"
+      },
+      {
+        "workflow": "ci.yml",
+        "name": "Complete R4 waveform qualification (Linux GCC)"
+      },
+      {
+        "workflow": "ci.yml",
+        "name": "Linux GCC ASan + UBSan + leaks"
+      },
+      {
+        "workflow": "standalone.yml",
+        "name": "Native standalone (Linux GCC, MIDI ON)"
+      },
+      {
+        "workflow": "standalone.yml",
+        "name": "Native standalone (macOS AppleClang, MIDI ON)"
+      },
+      {
+        "workflow": "standalone.yml",
+        "name": "Native standalone (Windows MSVC x64, MIDI ON)"
+      },
+      {
+        "workflow": "standalone.yml",
+        "name": "Native standalone (Linux GCC, MIDI OFF)"
+      },
+      {
+        "workflow": "standalone.yml",
+        "name": "Native standalone (Linux GCC ASan + UBSan + leaks)"
+      },
+      {
+        "workflow": "native-vst3.yml",
+        "name": "Native VST3 (Linux GCC)"
+      },
+      {
+        "workflow": "native-vst3.yml",
+        "name": "Native VST3 (macOS AppleClang)"
+      },
+      {
+        "workflow": "native-vst3.yml",
+        "name": "Native VST3 (Windows MSVC x64)"
+      }
+    ],
+    "sanitizer_gate_map": {
+      "test_standalone_ui": "test_standalone_ui",
+      "test_standalone_preset_ui": "test_standalone_preset_ui",
+      "test_standalone_workspaces_author": "test_standalone_workspaces_author",
+      "test_standalone_workspace_acceptance": "test_standalone_workspace_acceptance",
+      "test_standalone_projection": "test_standalone_projection",
+      "test_standalone_inspection_author": "test_standalone_inspection_author",
+      "test_standalone_inspection_acceptance": "test_standalone_inspection_acceptance",
+      "test_standalone_workspace_continuity": "test_standalone_workspace_continuity",
+      "test_standalone_drawing": "test_standalone_drawing",
+      "test_standalone_quad_drawing": "test_standalone_quad_drawing",
+      "test_standalone_workspace_raster": "test_standalone_workspace_raster",
+      "test_standalone_scaled_view": "test_standalone_scaled_view",
+      "test_standalone_preset_raster": "test_standalone_preset_raster",
+      "test_standalone_reference_layout": "test_standalone_reference_layout",
+      "test_standalone_inspection_raster": "test_standalone_inspection_raster",
+      "test_standalone_material_acceptance": "test_standalone_material_acceptance",
+      "test_standalone_channel_modes": "test_standalone_channel_modes",
+      "test_standalone_expression_calibration": "test_standalone_expression_calibration",
+      "test_standalone_channel_acceptance": "test_standalone_channel_acceptance",
+      "test_standalone_product_visual": "test_standalone_product_visual",
+      "test_standalone_upper_rack_material_raster": "test_standalone_upper_rack_material_raster",
+      "test_standalone_native_calibration": "hammond_standalone_calibration_probe"
+    },
+    "all_old_sanitizer_gates_preserved": true,
+    "sanitizer_gate_count": 22,
+    "six_count_guards_updated": true,
+    "provenance_contains_fixture": true,
+    "required_compiled_fixture_sources": [
+      "apps/standalone/InstrumentView.cpp",
+      "apps/standalone/native_tests/test_standalone_upper_rack_material_raster.cpp"
+    ],
+    "all_old_timeout_values_preserved": true,
+    "rack_timeout_seconds": 240,
+    "native_release_required_set_addition": [
+      "test_standalone_upper_rack_material_raster"
+    ],
+    "all_selected_ctest_names_registered_in_local_release": true,
+    "sanitizer_policy_unchanged": true,
+    "runtime_execution": "not_performed",
+    "remaining_documentary_fix": null,
+    "cli_description_correction_verified": true,
+    "guide_failure_policy_verified": true,
+    "matches_root_post_review_final_after_hashes": true,
+    "hash_verification_note": "The initial comparison against the older after_sha256 field failed for the later CLI docstring correction; the dedicated final_after_sha256 field matches all five actual files.",
+    "source_acceptance": "accepted; hosted and runtime qualification remain separately owned by root"
+  },
+  "final_hosted_selection": [
+    {
+      "workflow": "ci.yml",
+      "name": "Release (Linux GCC)",
+      "executes_six_causal_tests": true,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "ci.yml",
+      "name": "Release (macOS AppleClang)",
+      "executes_six_causal_tests": true,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "ci.yml",
+      "name": "Release (Windows MSVC)",
+      "executes_six_causal_tests": true,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "ci.yml",
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "executes_six_causal_tests": true,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "ci.yml",
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "native-vst3.yml",
+      "name": "Native VST3 (Linux GCC)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "native-vst3.yml",
+      "name": "Native VST3 (macOS AppleClang)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "native-vst3.yml",
+      "name": "Native VST3 (Windows MSVC x64)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": false
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true
+    },
+    {
+      "workflow": "standalone.yml",
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "executes_six_causal_tests": false,
+      "executes_upper_rack_raster": true,
+      "exact_gate_count": 22
+    }
+  ]
+}

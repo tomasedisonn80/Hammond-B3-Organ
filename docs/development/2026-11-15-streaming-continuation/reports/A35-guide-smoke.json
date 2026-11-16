@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "worker": "/root/w06_a35",
+  "observed_utc": "2026-11-16T00:42:03.693329+00:00",
+  "cwd": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+  "base_commit": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "scope": "Two exact guide Python-block executions and read-only source/evidence audit; no build or acceptance-suite rerun",
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python_executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3"
+  },
+  "execution_method": "Extract the first python fenced block and execute it from the repository root; additionally assert every expected edge, complete active key state and block report. Revised run also checks canonical inactive configuration/state.",
+  "probe": {
+    "path": "../build-native/hammond_causal_contact_grid_probe",
+    "sha256": "191c1179cf5fb6b2059498445651a6a81cc63161aececa8c248a981b0afb306d",
+    "matches_older_coherent_receipt": true
+  },
+  "original_guide_run": {
+    "guide_sha256": "a12e17fe1454491e177774a789773876a26fc8b450d513bd915efbb696f8d097",
+    "python_block_sha256": "1b1e76cedc2ea4b073395fcff7d30e678c2614230a6feba4b51850f91a40e444",
+    "input_ascii": "CGGRID1 48000 1 1 1 1\n1 1 0 32768 0 32768 0 32768 0 32768 0 32768 0 32768 0 32768 0 32768 0 32768\n0 0 65536\n1\n",
+    "input_sha256": "c4932b4cd807b95a29407e6c24c6448cbf80ad3ba51d4e9de98bc80206ca93bc",
+    "stdout": "{\"schema_version\":1,\"model_id\":\"causal-contact-grid-v1\",\"edges\":[{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":0,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":1,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":2,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":3,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":4,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":5,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":6,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":7,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":8,\"closed_after\":true}],\"snapshot\":{\"phase\":\"closed\",\"config\":{\"sample_rate_hz\":48000,\"key_count\":1,\"keys\":[{\"press_units_per_tick\":1,\"release_units_per_tick\":1,\"contacts\":[{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]}]},\"cursor_frames\":1,\"command_count\":1,\"edge_count\":9,\"keys\":[{\"position\":65536,\"target\":65536,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[true,true,true,true,true,true,true,true,true]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]}]},\"blocks\":[{\"frames\":1,\"cursor_frames\":1,\"edges_written\":9}]}\n",
+    "stdout_sha256": "03bf231dbba0e4cb4737abd4012f0b7e54a0bc7a99e8d2078589b29454ba6c75",
+    "stderr": "",
+    "exit_code": 0,
+    "printed_summary": "causal-contact-grid-v1 9 1",
+    "all_nine_expected_edges_and_key_state": true
+  },
+  "revised_guide_run": {
+    "guide_sha256": "d9f5b7ae4ef58e32f72b984b4ca94e5aea48673421ecdddde24d2f2d60bd2f4f",
+    "python_block_sha256": "cc0a5741c4792068686824a79971398a57566a6ca5a54bbe2098e9353fb6418d",
+    "input_ascii": "CGGRID1 48000 1 1 1 1\n1 1 0 32768 0 32768 0 32768 0 32768 0 32768 0 32768 0 32768 0 32768 0 32768\n0 0 65536\n1\n",
+    "input_sha256": "c4932b4cd807b95a29407e6c24c6448cbf80ad3ba51d4e9de98bc80206ca93bc",
+    "stdout": "{\"schema_version\":1,\"model_id\":\"causal-contact-grid-v1\",\"edges\":[{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":0,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":1,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":2,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":3,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":4,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":5,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":6,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":7,\"closed_after\":true},{\"time\":{\"tick\":32768,\"numerator\":0,\"denominator\":1},\"key_index\":0,\"contact_index\":8,\"closed_after\":true}],\"snapshot\":{\"phase\":\"closed\",\"config\":{\"sample_rate_hz\":48000,\"key_count\":1,\"keys\":[{\"press_units_per_tick\":1,\"release_units_per_tick\":1,\"contacts\":[{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768},{\"off\":0,\"on\":32768}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]},{\"press_units_per_tick\":0,\"release_units_per_tick\":0,\"contacts\":[{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0},{\"off\":0,\"on\":0}]}]},\"cursor_frames\":1,\"command_count\":1,\"edge_count\":9,\"keys\":[{\"position\":65536,\"target\":65536,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[true,true,true,true,true,true,true,true,true]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]},{\"position\":0,\"target\":0,\"anchor_position\":0,\"anchor_tick\":0,\"closed\":[false,false,false,false,false,false,false,false,false]}]},\"blocks\":[{\"frames\":1,\"cursor_frames\":1,\"edges_written\":9}]}\n",
+    "stdout_sha256": "03bf231dbba0e4cb4737abd4012f0b7e54a0bc7a99e8d2078589b29454ba6c75",
+    "stderr": "",
+    "exit_code": 0,
+    "printed_summary": "causal-contact-grid-v1 9 1",
+    "all_nine_expected_edges_and_key_state": true,
+    "canonical_inactive_keys": true
+  },
+  "same_input_and_output_bytes": true,
+  "coherent_receipt": {
+    "path": "docs/development/2026-11-15-streaming-continuation/reports/coherent-qualification.json",
+    "sha256": "bab01815d3c582785a58effeaa125857142e85df8c61c929fea7abafc5e7eaa7",
+    "ctest_passed": 210,
+    "ctest_total": 210,
+    "ctest_wall_seconds": 191.89,
+    "grid_pass_lines": [
+      "97/210 Test  #91: python_test_causal_contact_grid_differential ......   Passed    1.43 sec",
+      "140/210 Test  #92: python_test_causal_contact_grid_reference .........   Passed    0.11 sec",
+      "173/210 Test   #1: test_causal_contact_grid ..........................   Passed    0.01 sec",
+      "192/210 Test   #3: test_causal_contact_grid_resources ................   Passed    0.01 sec",
+      "208/210 Test   #2: test_causal_contact_grid_lifecycle ................   Passed    0.00 sec",
+      "210/210 Test  #90: python_test_causal_contact_grid_cli ...............   Passed    0.45 sec"
+    ],
+    "inventory_raw_sha256": "85b57e7d333f717c177238066221e812dbc43e3241d9aa758bdf5bf7ee992252",
+    "log_checks": [
+      {
+        "path": "docs/development/2026-11-15-streaming-continuation/reports/wave5-coherent-configure.log.gz",
+        "raw_sha256": "43a6b7c34a6402d079da7aee8f63a187c733c2d2cc92463a7657fb469068bf7d",
+        "matches_receipt": true
+      },
+      {
+        "path": "docs/development/2026-11-15-streaming-continuation/reports/wave5-coherent-build.log.gz",
+        "raw_sha256": "72513f6a59206e679ecaa41a381397a1d61ef614095872a470f6694eb49e2a6a",
+        "matches_receipt": true
+      },
+      {
+        "path": "docs/development/2026-11-15-streaming-continuation/reports/wave5-coherent-ctest.log.gz",
+        "raw_sha256": "f61216beac32554a43d37bc5e1044802f7d5a03dce2ee153ce494042d3a5f6ad",
+        "matches_receipt": true
+      }
+    ]
+  },
+  "audit_time_inputs": {
+    "CMakeLists.txt": {
+      "observed_sha256": "27dcd10882464f949296ba2ad0ae08e016911a4ec746e38ce2116f459ad94673",
+      "older_coherent_sha256": "27dcd10882464f949296ba2ad0ae08e016911a4ec746e38ce2116f459ad94673",
+      "matches_older_coherent_inventory": true
+    },
+    "CMakePresets.json": {
+      "observed_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      "older_coherent_sha256": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+      "matches_older_coherent_inventory": true
+    },
+    "include/hammond/research/CausalContactGrid.h": {
+      "observed_sha256": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f",
+      "older_coherent_sha256": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f",
+      "matches_older_coherent_inventory": true
+    },
+    "src/research/CausalContactGrid.cpp": {
+      "observed_sha256": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+      "older_coherent_sha256": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+      "matches_older_coherent_inventory": true
+    },
+    "tools/causal_contact_grid_probe.cpp": {
+      "observed_sha256": "265b3c3fd82d8fe5f2a2d09ea235ab54071686a66535f352352a0403d9a0f576",
+      "older_coherent_sha256": "265b3c3fd82d8fe5f2a2d09ea235ab54071686a66535f352352a0403d9a0f576",
+      "matches_older_coherent_inventory": true
+    },
+    "tests/reference/causal_contact_grid_reference.py": {
+      "observed_sha256": "3b16fbdb299a93806b3a626bd259f1f4649e042fd8f55b314c8eedb10c2b5a27",
+      "older_coherent_sha256": "3b16fbdb299a93806b3a626bd259f1f4649e042fd8f55b314c8eedb10c2b5a27",
+      "matches_older_coherent_inventory": true
+    },
+    "tests/test_causal_contact_grid.cpp": {
+      "observed_sha256": "a313f050aae54460499ee22a004300c62e5000783f6ad3853663ef516bb780ab",
+      "older_coherent_sha256": "a313f050aae54460499ee22a004300c62e5000783f6ad3853663ef516bb780ab",
+      "matches_older_coherent_inventory": true
+    },
+    "tests/test_causal_contact_grid_reference.py": {
+      "observed_sha256": "8f1c9f32a5260a930fe71f2ecc0474192bfe4d1c81100e538be7814c8f8157ff",
+      "older_coherent_sha256": "8f1c9f32a5260a930fe71f2ecc0474192bfe4d1c81100e538be7814c8f8157ff",
+      "matches_older_coherent_inventory": true
+    },
+    "tests/test_causal_contact_grid_differential.py": {
+      "observed_sha256": "eb15efa27f30c5ba813fe2d4255de6010d5f3a8da2f8be29b09bcf8de3ede812",
+      "older_coherent_sha256": "d73dc8aa7ac16577eb779c4fed73b4c9bbd09dcc57367abde5886e600964c850",
+      "matches_older_coherent_inventory": false
+    },
+    "tests/test_causal_contact_grid_lifecycle.cpp": {
+      "observed_sha256": "df78d378a736eff5f5c7209fcef7737b8885bee4af7adf431a92968ce2efb202",
+      "older_coherent_sha256": "df78d378a736eff5f5c7209fcef7737b8885bee4af7adf431a92968ce2efb202",
+      "matches_older_coherent_inventory": true
+    },
+    "tests/test_causal_contact_grid_cli.py": {
+      "observed_sha256": "015a1ef3f5e436a629c7f4885c3f3ed03f4e2b88071cad6bbd7cbc73e6efa6e3",
+      "older_coherent_sha256": "cf286e63d329d2d90814ccdf23bb0af963a160f3ba8c4696f96f5c2b6cd94020",
+      "matches_older_coherent_inventory": false
+    },
+    "tests/test_causal_contact_grid_resources.cpp": {
+      "observed_sha256": "fcb153c854d788f6b97859364088655ed7a81399818246c754e6c9409ab2515c",
+      "older_coherent_sha256": "fcb153c854d788f6b97859364088655ed7a81399818246c754e6c9409ab2515c",
+      "matches_older_coherent_inventory": true
+    },
+    "tools/causal_contact_grid_work_receipt.py": {
+      "observed_sha256": "80a7b8dfc9ab923037c52e3b199806e762984bb6b34b458675a38f9f0be00881",
+      "older_coherent_sha256": "80a7b8dfc9ab923037c52e3b199806e762984bb6b34b458675a38f9f0be00881",
+      "matches_older_coherent_inventory": true
+    }
+  },
+  "review_inputs": {
+    "docs/CAUSAL_CONTACT_GRID_CONTRACT.md": "ba851e6af0601b52aef73d4b9effb64dffac3ef5e230eff7015e10e58a4ecb4e",
+    "docs/reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md": "43ad38a02c76150e97e20f1a6aea43691e521d8ed5c17157f2ef629dba2271e0",
+    "docs/reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md": "087cc4d6c2b89d37f9d9da2ddc8fa63de3a239a28c90cdbece6f12767e9f25e2",
+    "docs/reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md": "78d59ba1b8224687eaa6127989ed6fd691c3a878b4e61bde21d9527817aba777",
+    "docs/reviews/STREAMING_CONTINUATION_COMPATIBILITY.md": "da5654dca572427239ddbff72ee51ecaca4b3d4d118179b4b367b581f11c5006"
+  },
+  "limitations": [
+    "Linux example replay only; no Windows runtime, filter/audio/Engine integration, callback-deadline or physical evidence.",
+    "A36 setup correction changes the two Python native-probe helpers after the older 505-file coherent qualification; those edited helpers require fresh negative/positive and coherent gates.",
+    "Original guide-smoke and historical acceptance/failure reports remain unchanged."
+  ]
+}

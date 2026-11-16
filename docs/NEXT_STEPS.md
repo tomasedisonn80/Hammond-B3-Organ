@@ -1,121 +1,213 @@
 # Next steps
 
-## Finish the current execution source
+**Post-review local update, 16 November 2026:** the [refreshed full suite](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json) passes **210/210 in 191.90 seconds** after the missing-probe and sanitizer-selection repairs. The [publication-source receipt](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) binds the sole later EOF whitespace cleanup, identical rebuilt resource binary and passing affected test. The earlier 191.89-second observation below retains its original inputs. Current-source hosted execution and final session publication remain pending.
 
-The [current scope](development/2026-11-15-execution-continuation/SCOPE.md)
-delivers an **offline M3 fractional-contact reference** and the **M9 canonical
-wide Dimensional Play composition**. All 500 atlas pages have been read. The
-[installed numerical study](CONTACT_SWITCHING_RESULTS.md) passes 36 fixtures at
-four factors, and the [twelve actual native captures](../examples/demos/whole-reference-layout-v1/README.md)
-have [independent admission](reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md)
-accepted by root for their scoped software evidence. The default nominal dry
-Engine, 91 sources, 47 parameter identities and `B3CONTROLS4`/readers 1–3 are
-preserved. The requested sixty distinct workers in ten waves are **in progress**;
-use the [actual ledger](development/2026-11-15-execution-continuation/assignments.json)
-and [live checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md)
-for current dispatch, acceptance and source identities.
+## Finish the current streaming/material source
 
-The immediate integration sequence is:
+The [active scope](development/2026-11-15-streaming-continuation/SCOPE.md)
+delivers the isolated `causal-contact-grid-v1` trajectory and the Upper-rack
+inner-metal material change. Its [coherent local qualification](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
+rebuilt **131 steps** and passed **210/210 CTests in 191.89 seconds**, with all
+505 recorded code/test/tool/data inputs unchanged. Independent trajectory,
+lifecycle, resource, comparison, gallery and compatibility evidence is retained
+in [current status](STATUS.md#current-tested-evidence-and-limits).
 
-1. Preserve the accepted source freeze and the completed independent compatibility,
-   resource, gallery and installation reviews.
-2. Retain the [coherent local qualification](development/2026-11-15-execution-continuation/reports/coherent-qualification.json):
-   all **203 CTests passed in 191.37 seconds**, alongside repository integrity.
-   The receipt identifies the actual inputs and logs; the 198-test baseline
-   remains separate historical evidence.
-3. Complete the actual worker assignments and substantive acceptance. Keep
-   original failed raster/test attempts and all frozen protocols unchanged.
-4. Inspect fresh remote advances, reconcile compatible work without discarding
-   another owner's checkout, publish accepted commits to `main` without force,
-   then fetch and verify exact commit/tree/parent and observe required hosted CI.
-   **Current-source hosted CI and publication are still pending.**
+The current base is `4aac394cde4da40906b615573a8779aee2d9a37a`; the qualified
+working overlay is identified by the receipt, not by HEAD alone. **Commit/push
+and exact-source hosted CI remain pending.** The requested sixty distinct
+workers in ten waves remain in progress. The [actual ledger](development/2026-11-15-streaming-continuation/assignments.json)
+owns dispatch/acceptance counts; the [live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+owns later source/publication observations. Earlier sessions and followups do not
+count toward this request.
 
-Shell push authentication is unavailable in this workspace; the checkpoint
-records the tested GitHub object-API route and expected-head/nonforce procedure.
-An object creation or workflow dispatch is not verified publication or a CI pass.
-Root owns these operations and the coordinated build; no new permission cycle is
-required for the owner's already authorized project work.
+Root's immediate integration sequence is:
+
+1. Preserve the qualified production inputs, genuine baseline binaries, frozen
+   protocols, original failures and independent admissions. Resolve only concrete
+   findings; later production/build/test edits require affected requalification,
+   while prose/ledger edits require their integrity checks.
+2. Finish the actual assignments, substantive acceptance and matching strict
+   sixty-worker/ten-wave record check. Retain the result and each note/hash.
+   A record-consistency pass alone establishes neither worker work quality nor
+   implementation, physical or external-dispatch acceptance.
+3. Inspect fresh remote advances and reconcile compatible work while preserving
+   other owners' source, index, builds and evidence. Commit reviewable accepted
+   paths and push to `main` with a fresh expected head, without force.
+4. Independently fetch and verify exact remote commit/tree/parent and intended
+   contents, then observe the required hosted jobs at that source. Record
+   queued/unacquired, failed, cancelled and successful outcomes accurately.
+   A workflow dispatch or older hosted pass is not current-source qualification.
+
+These are already authorized project operations owned by root. The earlier
+execution workspace's authentication observations are historical; inspect the
+actual current publication path instead of assuming that its access state
+applies here.
 
 ## Resume this workspace and its delivered tools
 
-Use [the exact workspace/toolchain/setup](STATUS.md#current-workspace-and-setup).
-Writable source is `/workspace/scratch/ade21b726509/Hammond-B3-Organ`; the one
-coordinated Release build is `/workspace/scratch/ade21b726509/build-native`.
-Pinned SDL 2.32.10 is in the sibling `SDL2` directory. This configuration has
-standalone ON, MIDI/VST3 OFF and dummy-SDL/software capture evidence. Normal
-physical-backend setup is in [README](../README.md#build-and-launch-the-native-application)
-and the [MIDI operating guide](MIDI_EXPRESSION_GUIDE.md).
+Writable source is **`/workspace/scratch/177e78b1ac09/Hammond-B3-Organ`**; the
+single coordinated Release build is
+**`/workspace/scratch/177e78b1ac09/build-native`**. SDL 2.32.10 at
+`/workspace/scratch/ade21b726509/SDL2` is a **read-only dependency**. That other
+workspace's checkout, index and build remain outside this session's ownership.
 
-To reproduce the completed local gate, from the repository root:
+[Current workspace and setup](STATUS.md#current-workspace-and-setup) contains
+the exact dependency verification and CMake configuration. This local build is
+Ninja Release with testing/standalone ON, MIDI/VST3/sanitizers OFF and native
+X11/Wayland/ALSA/PulseAudio/JACK backends disabled. To reproduce its completed
+qualification after recovering the configuration, root uses:
 
 ```sh
 cmake --build ../build-native --config Release --parallel 3
-ctest --test-dir ../build-native -C Release --output-on-failure --no-tests=error
+ctest --test-dir ../build-native -C Release --output-on-failure --no-tests=error --parallel 3
 ```
 
-The preceding [setup section](STATUS.md#current-workspace-and-setup) contains the
-reconfiguration command that must run first when inputs or discovered tests
-change. Record actual outcomes and frozen inputs. The retained coherent run
-used `--parallel 3` and passed all 203 tests; subsequent source changes require
-checks appropriate to the affected risk.
+The 210-test result already qualifies its frozen inputs. Regenerate CMake before
+building if test discovery or configuration changes; never test changed headers
+against stale objects. Do not broaden testing without a concrete remaining risk.
+For ordinary physical desktop use, follow the separate
+[normal build-and-launch recipe](../README.md#build-and-launch-the-native-application)
+and [platform/MIDI setup](MIDI_EXPRESSION_GUIDE.md#build-the-native-application),
+with native backends enabled in a distinct clean configuration. Launch at
+1672×941 for wide Dimensional Play; the default 1280×900 is compact. Dummy-SDL
+recovery does not qualify a real display, controller, audio device or callback.
 
-For offline use without a native build, run the [single-fixture or fixed-study
-commands](CONTACT_SWITCHING_GUIDE.md). The [installation guide](CONTACT_REFERENCE_INSTALL.md)
-shows the explicit 48-file `ContactReferenceTools` component, fresh prefixes,
-relocation, component isolation and PowerShell commands. Current immutable
-numerical evidence is `contact-study-v1-qualified.json` plus its external process
-receipt under `docs/development/2026-11-15-execution-continuation/reports/`.
-The twelve-frame gallery is `examples/demos/whole-reference-layout-v1/`.
-Keep reports outside installed payloads and choose fresh study destinations.
+The [causal-grid developer guide](CAUSAL_CONTACT_GRID_GUIDE.md) gives a complete
+native probe example, bounded CGGRID1 wire format, API lifecycle and focused
+checks. Its probe is `../build-native/hammond_causal_contact_grid_probe`.
+The inherited [offline reference guide](CONTACT_SWITCHING_GUIDE.md) and
+[48-file installation guide](CONTACT_REFERENCE_INSTALL.md) retain their original
+source/package identities; the grid/probe is not added to that component.
+Use fresh report destinations and preserve the prior 36×4 study's numerical
+evidence. The current actual-app gallery is
+[upper-rack-material-v1](../examples/demos/upper-rack-material-v1/README.md);
+the [whole-reference gallery](../examples/demos/whole-reference-layout-v1/README.md)
+is the genuine prior baseline.
 
 ## Next engineering assignments
 
-| Priority | Concrete task and inputs | Required acceptance |
+The isolated integer-grid trajectory and narrow Upper finish are implemented
+and tested; repeating those tasks would not advance the remaining gates.
+Root must first assign exclusive paths to each next owner and check the existing
+ledgers. The proposed owners/modules below are future assignments, not claims
+that workers or new files already exist.
+
+### M3: conversion policy and causal audio
+
+1. **Conversion/design owner — a separately named input converter and contract.**
+   Use the [grid contract](CAUSAL_CONTACT_GRID_CONTRACT.md), its
+   [independent admission](reviews/CAUSAL_CONTACT_GRID_ADMISSION.md),
+   [implementation review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md),
+   [offline model](FRACTIONAL_CONTACT_REFERENCE.md) and
+   [earlier streaming review](reviews/CONTACT_STREAMING_DESIGN_REVIEW.md).
+   Freeze how source time, travel, thresholds and speeds enter the integer
+   domain: units, rounding, out-of-domain rejection, collisions, stable caller
+   order and state retained across calls. Study quantization error and changes
+   to threshold/crossing topology, including adjacent commands, tied/reversed
+   targets, tiny/subnormal inputs and distinct exact times sharing a binary64
+   display. No implicit clamp or conversion may silently redefine v1.
+   Acceptance requires independent fixtures and declared error/topology limits
+   before the converter is called equivalent to any reference subset.
+2. **Audio-stage owner — proposed `include/hammond/research/ContactStream.h` and
+   an isolated implementation/tests.** Those paths are prospective. Preserve
+   `CausalContactGrid` and the frozen reference as identified inputs. Admit the
+   signal, accumulation, lifecycle and work contract before code. The
+   [D=16 proposal](CONTACT_STREAMING_NEXT_DESIGN.md) uses
+   `z[m]=y_L[m−16]`: emit before integrating `[m,m+1)`, evaluate shared sources
+   from absolute **input** time, and retain unfinished centered cells and their
+   deterministic sums across every callback boundary. Declare ring retention/
+   eviction, equality ordering and complete rollback of cells, cursor, history
+   and output. The trajectory itself implements none of this filtering.
+3. **Independent numerical owner — a new full-window oracle/protocol.**
+   Preserve the existing `tools/contact_switching_oracle.py`, frozen fixture/
+   probe set and original [results](CONTACT_SWITCHING_RESULTS.md). Independently
+   reconstruct all **289 samples of every retained fixture**, including tails,
+   under a separately admitted resource budget. Existing all-sample high-rate
+   convergence and 64-probe continuous admission do not supply this missing
+   full-window grade. Justify and freeze tolerances before inspecting candidate
+   errors; the proposal's atlas `1e-4` limits are still unadmitted. Permit only
+   declared D=16 alignment, with no fitted gain/delay or trimmed tails. Retain
+   exact events, all arrays/refinements, scaled error/silence cases, response
+   checks, failures and source/fixture/toolchain identities.
+4. **Lifecycle/resource owner — actual filtered output and complete drainage.**
+   Freeze nonempty N processing outputs plus **33 drain samples**, giving
+   **N+33 outputs** for reference indices −16 through N+16; retain both endpoint
+   zeros and the **N=0 empty exception**. At closure, preserve the already
+   integrated left portion of the straddling cell and fill only its remaining
+   portion with zero. Distinguish incoming equality edges, endpoint commands,
+   the final trajectory snapshot and the raw-gate jump. Physical note release
+   continues travel/source/filter evolution and never closes that gate.
+   Test one-frame/irregular/maximum partitions, future-command causality,
+   cancellation, partial/empty drains, repeated/invalid closure, late rejection,
+   short-output retry and continued processing after failure. Reject active
+   rate changes; specify stopped drain/reset/phase-origin policy. Measure actual
+   prepared storage, allocation scope, bounded work and platform callback
+   distributions against predeclared deadline/headroom criteria.
+
+The current **four-key, 4096-frame, 512-command** epoch is deliberately finite.
+The [resource admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md)
+bounds that model; it supplies neither indefinite full-organ capacity nor an
+audio deadline. A separate capacity owner must review clock/counter horizons,
+event storage, full manual/pedal ownership and continued phase/history before
+extending it. Only after the filtered numerical/lifecycle/resource gates should
+an integration owner propose changes to `ContactBank`, `Engine`, standalone or
+VST3: explicit scheduling/latency reporting, ownership and callback retirement,
+plus unchanged-default PCM evidence. Preserve all 91 sources, 47 parameters,
+state4/readers 1–3 and plugin identities. Physical bounce, resistance, tap
+loading and specimen timing still require synchronized identified travel,
+contact/source/dry captures and held-out evaluation.
+
+### M9: subsequent materials, typography and actual display
+
+| Proposed owner and modules | Inputs and bounded next work | Required acceptance |
 | --- | --- | --- |
-| **M3 causal streaming design** | Read the [frozen reference](FRACTIONAL_CONTACT_REFERENCE.md), [validation protocol](CONTACT_SWITCHING_VALIDATION.md), [executed results](CONTACT_SWITCHING_RESULTS.md) and A30 audit. Freeze a separately identified causal contract before writing the streaming implementation or changing Engine. | Explicit latency, absolute source phase, independent contact histories, fractional crossing/tie order, finite supported rates and domains, bounded memory/work and no callback allocation; partition/rate/reset/empty-flush/tail behavior and transactional failure semantics. Independently admit the complete-window reference before an all-sample atlas `1e-4` grade. |
-| **M3 implementation and integration after admission** | Implement the admitted streaming candidate under new owned paths, compare actual output against the reference, then separately design Engine/adapter integration. Preserve the current nominal ContactBank and default path as named baselines. | Independent all-sample/response and adversarial lifecycle checks, source/fixture/protocol hashes, complete tails and measured resources. Engine/native/VST3 integration requires its own scheduling, ownership, allocation and deadline evidence; offline range concatenation does not qualify streaming. |
-| **M9 materials and typography** | Use the [current gallery admission](reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md), original reference and canonical layout. Predeclare an independent material/type comparison covering wood/panel illumination, key/cap bevels and shadows, small labels and readable live status. | Genuine same-state old/new captures, source/executable/state/pixel bindings, complete live inventory/focus/ownership and preserved inactive output. The 66-pair containment pass protects as few as 34 active pixels and is not a material or whole-interface equality grade. |
-| **M9 display and accessibility** | Execute an identified physical display/DPI/input journey and scope one platform's native semantic bridge. Include compact/active thresholds, Flat, focus, held owners through resize/navigation and release outside the window. | Actual display/OS/backend/scale evidence, input and numeric-exit records, screen-reader names/roles/values/actions/status and complete keyboard use. Keep literal 1:1, physical usability and native accessibility as distinct outcomes. |
-| **Independent numerical/adapter tracks** | Coordinate the existing scanner/library, same-Hz crossover, native MIDI close/retirement and R4 owners before selecting their next work. Their current checkpoints and the retained M6 sequence below own their source and remaining gates. | No duplicate ownership or overwritten unpublished work; independently admitted criteria, actual affected checks and source-bound integration evidence. Research modules remain separate from the dry Engine until their integration contracts pass. |
+| Material owner: separately assigned `apps/standalone/InstrumentView.cpp` region | Use the current `c29495e9…` app, [Upper comparison admission](reviews/UPPER_RACK_COMPARISON_ADMISSION.md), [actual gallery admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md) and original atlas cover/page 409. Choose and freeze the next Lower-rack/casework illumination or key/cap bevel/shadow scope; keep the already admitted Upper field as its baseline. | New independently admitted support/metrics, genuine same-state old/new binaries, full-frame review, source/executable/state/pixel bindings and preserved geometry/child order/inactive paths. Do not enlarge the frozen Upper mask to grade another surface. |
+| Typography owner: separately assigned label/font/drawing paths | Measure the remaining small labels, density and readable live status against the original reference and current captures. Specify one coherent type/spacing change with explicit inventory and focus constraints before editing shared drawing code. | Actual app captures at reference, minimum-active, compact, Flat and supported scales; independent glyph/clip/contrast checks; all 147 keys, 24 presets, four banks and 68 controls remain truthful and operable. Decorative illustration labels cannot replace live semantics. |
+| Display/input owner: normal native backend build and identified hardware | Execute the [concrete display/device journey](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md#concrete-next-actual-displaydevice-journey): both resize/navigation directions, held owners, off-window release/fresh press, focus loss, keyboard use and joined shutdown. | OS/backend/display/DPI/device identities, actual step frames, input/diagnostic records and numeric exit status; assess label/focus usability at the observed scale. Dummy SDL provides no substitute for this evidence. |
+| Accessibility owner: one platform's native semantic bridge | Freeze names, roles, values, actions, status announcements, focus order, keyboard behavior and reduced-motion/Flat handling from the current live inventory. | Actual screen-reader and keyboard journeys on the identified OS, including pending/applied controls and modal/numeric-entry exit behavior; semantic accessibility is separate from screenshot contrast. |
 
-The offline reference is a finite **acausal** fixed-load switched-sine experiment.
-Its independent continuous grade covers **64 frozen probes per fixture**, while
-high-rate convergence covers all **289 samples**. It is neither measured contact
-physics nor current-Engine parity. A new filter, probe set, model or tolerance
-requires a separately reviewed protocol; never rewrite frozen inputs to promote
-existing evidence. Physical work needs synchronized specimen-specific
-travel/contact/source/dry captures and held-out evaluation.
-
-The wide composition is now implemented at Dimensional Play width ≥1400 and
-height ≥820, including percussion y177 at reference size. The earlier
-percussion-only allocation and approximately 27-unit residual belong to the
-[audio-stage gallery](../examples/demos/standalone-audio-preview-v1/README.md).
-They are not current work to implement again. **Literal whole-interface 1:1
-remains unmet and unwaived**; materials/type and real-device/accessibility work
-remain concrete next tasks.
+The current 96-pair/five-screen material result and twelve admitted app captures
+close their declared software scopes only. **Literal whole-interface 1:1 remains
+unmet and unwaived.** A whole-interface comparison needs its own complete
+reference/source/state/dimension criteria; a protected crop, patch statistic or
+decorative cabinet equality cannot close it.
 
 ### Validate this session's actual records
 
-The execution session's
-[actual assignments](development/2026-11-15-execution-continuation/assignments.json)
-record only distinct dispatches, owned paths, substantive notes and integrator
-acceptance. Root must finish and validate this session's own sixty accepted
-records and ten six-worker waves. No completed older ledger or repeated
-followup can supply a missing worker; record consistency does not establish
-implementation quality, physical fidelity or external dispatch by itself.
-
-The existing command below validates the **completed earlier product session**
-only; retain it for historical verification and do not use it to count this
-execution session:
+Use only this streaming session's
+[actual assignments](development/2026-11-15-streaming-continuation/assignments.json).
+Root must retain the matching validator's strict result for sixty distinct
+accepted workers in ten six-worker waves, including substantive notes/hashes and
+ownership/verification/acceptance. Until that exists, report progress without
+claiming closure. A planned slot or repeated followup is not another worker.
 
 ```sh
-python3 -B tools/check_product_session.py --repo . --json
+python3 -B tools/check_repository.py --json
 ```
 
-Its [retained strict result](development/2026-11-15-product-continuation/reports/product-session-strict.json)
-and thirteen hosted jobs belong to that source and ledger. The product checker's
-`--allow-incomplete` option checks only that older format's consistency and
-declines closure; it is not a current execution-session completion gate.
+This read-only command checks repository integrity and local file links; it is
+**not** a worker-count or external-dispatch attestation. Older
+`check_product_session.py`, `check_continuation.py` and other session checkers
+remain bound to their own schemas/ledgers. Do not repurpose their passing result
+to close this one.
+
+### Historical execution handoff — 15 November 2026
+
+The prior [execution receipt](development/2026-11-15-execution-continuation/reports/coherent-qualification.json)
+records **203/203 CTests in 191.37 s**, its installed 36×4 offline contact study
+and canonical wide composition. Its dated handoff stated that worker closure,
+publication and current-source hosted CI were pending, and proposed causal
+streaming/material work next. Those are preserved historical observations,
+not current streaming-session tasks or claims that its owner later completed
+them. Consult that [owner's checkpoint](development/2026-11-15-execution-continuation/CHECKPOINT.md)
+for later outcomes. [STATUS](STATUS.md#earlier-execution-continuation-snapshot--15-november-2026)
+retains the source, original results and then-current workspace/setup.
+
+Likewise, the earlier product session's
+[strict record result](development/2026-11-15-product-continuation/reports/product-session-strict.json)
+and thirteen successful hosted jobs at `80b8cce1773e4c31bf64cb6c2b7f43e8445ec3fe`
+qualify only that ledger/source. They neither count workers nor qualify hosted
+execution for this continuation.
 
 ## Next dependency-ready phase after session closure
 
@@ -179,7 +271,7 @@ reports and nominal dry Engine as reproducible baselines.
 | M0/M3/M8 acquisition | Use [A1–A6](CALIBRATION_NEXT_ACQUISITION.md) with identified specimen, permission, calibrated chain/clock and repeatability plan. Begin an external-output pilot archive, then boundary-specific captures. | Immutable originals, source/condition/uncertainty records, admission and acquisition-group splits; justified fitting and untouched held-out/listening outcomes. Contact/latch/tap loading, physical expression and pedal-reactor behavior remain unmeasured. |
 | M9 native callback retirement | Assign the [A47-N1 gate](reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md): in an isolated source-identified prepared RtMidi build, inject failed WinMM reset/stop/close and CoreMIDI disposal below the wrapper while holding a callback before wrapper entry. The suppressed-error gap is source-proven; no hardware failure or use-after-free was observed. | First retain current behavior, then review checked close that reports failure and preserves native handles, callback storage, adapter context and inbox before destructive cleanup. Require poison/no-reopen/no-reset behavior and ordinary leak-free teardown. Successful close also needs platform-specific callback-retirement evidence; return-code checks alone are insufficient. |
 | M9 display and device behavior | Use the current native guides and [desktop journey](reviews/REFERENCE_REFINEMENT_NATIVE_INPUT.md#concrete-next-actual-displaydevice-journey) on an identified display/controller/audio system. Preserve painted pre-held input, both navigation/resize directions, off-window release/fresh press, deliberate focus loss and joined shutdown. | Actual step frames, input/diagnostic records and numeric exit status, with OS/backend/device identities. Dummy SDL and synchronous dependency fixtures do not qualify physical timing or driver concurrency. |
-| M9 accessibility and further visual work | Use the [current admitted gallery](reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md) and canonical layout/inspection contracts. Treat [older reference gaps](design/PRODUCT_REFERENCE_GAPS.md) as dated evidence; measure current small-label display usability and specify one platform's native semantic bridge before implementation. | Correct live inventory, focus/actions/value/status semantics, actual screen-reader journeys and source-bound visual comparisons. The relative paint budget does not establish frame rate; literal 1:1 equality remains unmet. |
+| M9 accessibility and further visual work | Use the [current admitted gallery](reviews/UPPER_RACK_GALLERY_ADMISSION.md) and canonical layout/inspection contracts. Treat [older reference gaps](design/PRODUCT_REFERENCE_GAPS.md) as dated evidence; measure current small-label display usability and specify one platform's native semantic bridge before implementation. | Correct live inventory, focus/actions/value/status semantics, actual screen-reader journeys and source-bound visual comparisons. The relative paint budget does not establish frame rate; literal 1:1 equality remains unmet. |
 | M9 release | Review [release readiness](RELEASE_READINESS.md), [dependencies and rights](DEPENDENCIES_AND_RIGHTS.md), actual installed artifacts and named DAW workflows. | Device deadlines, DAW save/reopen, redistribution/branding decisions, platform signing/notarization and qualified distribution remain separately observed gates. |
 
 ## Preserve the independent R4 owner
@@ -190,7 +282,7 @@ Preserve the other owners' unfinished work: [harmonic source/racks](development/
 and [audio continuation](development/2026-11-15-audio-continuation/CHECKPOINT.md).
 The earlier [product closure](PRODUCT_CONTINUATION_CLOSURE.md) and
 [setup handoff](PRODUCT_HANDOFF.md) retain their original source-specific results;
-their old workspace paths are not this execution workspace.
+their old workspace paths are not this streaming workspace.
 
 The [waveform session](development/2026-11-14-waveform-continuation/README.md)
 and its [checkpoint](development/2026-11-14-waveform-continuation/CHECKPOINT.md)

@@ -106,7 +106,7 @@ and preserve quoting around paths containing spaces.
 
 | Target | Purpose |
 |---|---|
-| `hammond_core` | Static framework-independent core from `src/*.cpp` |
+| `hammond_core` | Static framework-independent core from `src/*.cpp` plus explicitly listed `src/research/CausalContactGrid.cpp` |
 | `hammond_profile` | Validate authoring JSON and write `build/nominal.b3p` |
 | `hammond_pedal_routing` | Validate/compile the reviewed 200-position pedal routing data into the private generated header |
 | `hammond_render` | Offline WAV renderer from `tools/render.cpp` |
@@ -257,3 +257,11 @@ A successful build does not establish real-time deadlines, host compatibility,
 physical fidelity, product release readiness or sanitizer coverage of unexecuted
 paths. For practical render/install workflows and the related evidence contracts,
 see the [project guide](PROJECT_GUIDE.md).
+
+The causal contact research source is explicitly appended because the ordinary core
+source glob is nonrecursive. The public header is
+`include/hammond/research/CausalContactGrid.h`. Future nested sources need explicit
+build registration and appropriate tests; directory presence alone does not compile
+them. See the [causal-grid guide](CAUSAL_CONTACT_GRID_GUIDE.md) for the native probe
+and the [current qualification](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
+for the source-bound Linux gate.

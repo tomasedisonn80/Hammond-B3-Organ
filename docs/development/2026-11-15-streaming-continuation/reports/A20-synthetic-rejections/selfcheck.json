@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "scope": "Synthetic 16x16 fault injection for comparator only; these are not additional native fixture cases or product evidence.",
+  "tool_sha256": "f06b7ba4ad3863367d63404cb6985ad8cc63f915af9aa01cab3de6378c28ec47",
+  "checks": [
+    {
+      "name": "inside_rgb",
+      "observed": {
+        "passed": true,
+        "outside_allowance_pixels": 0,
+        "outside_allowance_channels": 0,
+        "different_pixels": 1
+      },
+      "expectations_met": true,
+      "artifacts": {}
+    },
+    {
+      "name": "outside_alpha",
+      "observed": {
+        "passed": false,
+        "outside_allowance_pixels": 1,
+        "outside_allowance_channels": 1,
+        "outside_allowance_maximum_channel_delta": 1,
+        "outside_allowance_bounds": [
+          0,
+          0,
+          1,
+          1
+        ]
+      },
+      "expectations_met": true,
+      "artifacts": {
+        "before": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/outside_alpha/percussion-99-before.png",
+          "bytes": 86,
+          "sha256": "da75a986e00eef034f1e92f0e0e64b2fea6be7bafb0f663cce6f27bf8f601b17"
+        },
+        "after": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/outside_alpha/percussion-99-after.png",
+          "bytes": 104,
+          "sha256": "53464c58295a6e42637c9a6a7bafb24546876bf54654ffaa039761c937609215"
+        },
+        "absolute-rgba-difference": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/outside_alpha/percussion-99-absolute-rgba-difference.png",
+          "bytes": 80,
+          "sha256": "c33f046631818297afed3a7343b272b76bf421b948d823a74efcc381faa20325"
+        },
+        "maximum-channel-difference": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/outside_alpha/percussion-99-maximum-channel-difference.png",
+          "bytes": 74,
+          "sha256": "79897fa620e250690b0791bb55f56788d4915c2a9a7c341aea69fa96436383ba"
+        },
+        "outside-allowance-mask": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/outside_alpha/percussion-99-outside-allowance-mask.png",
+          "bytes": 71,
+          "sha256": "d6097e2b85281a5b53c21050cb1ed3e8638ffe67502d22feb440a5abb5be2edb"
+        }
+      }
+    },
+    {
+      "name": "changed_header",
+      "observed": {
+        "passed": false,
+        "all_metadata_exact": false,
+        "outside_allowance_pixels": 0
+      },
+      "expectations_met": true,
+      "artifacts": {
+        "before": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/changed_header/percussion-99-before.png",
+          "bytes": 86,
+          "sha256": "da75a986e00eef034f1e92f0e0e64b2fea6be7bafb0f663cce6f27bf8f601b17"
+        },
+        "after": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/changed_header/percussion-99-after.png",
+          "bytes": 93,
+          "sha256": "d3093986eeb1655ab148da6863b7f1d65b6743ba1c323a2849e07491780b6cf2"
+        },
+        "absolute-rgba-difference": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/changed_header/percussion-99-absolute-rgba-difference.png",
+          "bytes": 79,
+          "sha256": "599ea0fc1b3e4d433088fcf6f37d25f6a82d7ee9a5315fb81ad4253a259a2cc5"
+        },
+        "maximum-channel-difference": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/changed_header/percussion-99-maximum-channel-difference.png",
+          "bytes": 74,
+          "sha256": "3953db6f65fa033f9c62d33e137b2e48f182d6188fe15c088d806acd4a8ec09a"
+        },
+        "outside-allowance-mask": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/changed_header/percussion-99-outside-allowance-mask.png",
+          "bytes": 70,
+          "sha256": "3552bb8bf493ba63896f7abfb3ee3d899bf7312cd0b3d87691a639344b051238"
+        },
+        "headers": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/changed_header/percussion-99-headers.json",
+          "bytes": 577,
+          "sha256": "9fd99e5e6781f46c5aa115d3f2d09e34679ab1fdabd3ba3f63ea32be20771422"
+        }
+      }
+    },
+    {
+      "name": "active_no_change",
+      "observed": {
+        "passed": false,
+        "nonvacuous_surface_change": false,
+        "whole_frame_equal": true
+      },
+      "expectations_met": true,
+      "artifacts": {
+        "before": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/active_no_change/percussion-99-before.png",
+          "bytes": 86,
+          "sha256": "da75a986e00eef034f1e92f0e0e64b2fea6be7bafb0f663cce6f27bf8f601b17"
+        },
+        "after": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/active_no_change/percussion-99-after.png",
+          "bytes": 86,
+          "sha256": "da75a986e00eef034f1e92f0e0e64b2fea6be7bafb0f663cce6f27bf8f601b17"
+        },
+        "absolute-rgba-difference": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/active_no_change/percussion-99-absolute-rgba-difference.png",
+          "bytes": 75,
+          "sha256": "50b068e07b4bf235705c19b77da49fdbbc7e98ddc0a46f1c6659cca98c963904"
+        },
+        "maximum-channel-difference": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/active_no_change/percussion-99-maximum-channel-difference.png",
+          "bytes": 70,
+          "sha256": "3552bb8bf493ba63896f7abfb3ee3d899bf7312cd0b3d87691a639344b051238"
+        },
+        "outside-allowance-mask": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/active_no_change/percussion-99-outside-allowance-mask.png",
+          "bytes": 70,
+          "sha256": "3552bb8bf493ba63896f7abfb3ee3d899bf7312cd0b3d87691a639344b051238"
+        }
+      }
+    },
+    {
+      "name": "empty_allowance",
+      "observed": {
+        "passed": false,
+        "outside_allowance_pixels": 1,
+        "outside_allowance_channels": 1
+      },
+      "expectations_met": true,
+      "artifacts": {
+        "before": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/empty_allowance/percussion-99-before.png",
+          "bytes": 86,
+          "sha256": "da75a986e00eef034f1e92f0e0e64b2fea6be7bafb0f663cce6f27bf8f601b17"
+        },
+        "after": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/empty_allowance/percussion-99-after.png",
+          "bytes": 93,
+          "sha256": "d3093986eeb1655ab148da6863b7f1d65b6743ba1c323a2849e07491780b6cf2"
+        },
+        "absolute-rgba-difference": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/empty_allowance/percussion-99-absolute-rgba-difference.png",
+          "bytes": 79,
+          "sha256": "599ea0fc1b3e4d433088fcf6f37d25f6a82d7ee9a5315fb81ad4253a259a2cc5"
+        },
+        "maximum-channel-difference": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/empty_allowance/percussion-99-maximum-channel-difference.png",
+          "bytes": 74,
+          "sha256": "3953db6f65fa033f9c62d33e137b2e48f182d6188fe15c088d806acd4a8ec09a"
+        },
+        "outside-allowance-mask": {
+          "path": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ/docs/development/2026-11-15-streaming-continuation/reports/A20-synthetic-rejections/empty_allowance/percussion-99-outside-allowance-mask.png",
+          "bytes": 75,
+          "sha256": "8c6232c3d583271b2963a56e056d8d9cdee47cc795e2e8e2ad50b75540b7ffa4"
+        }
+      }
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,28 @@
+{
+  "base_commit": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "compiler": "GCC 14.2.0",
+  "configuration": "Release, SDL 2.32.10 dummy video/audio, MIDI and VST3 off",
+  "build_steps": 569,
+  "ctest_summary": "100% tests passed, 0 tests failed out of 203",
+  "ctest_wall_seconds": 192.21,
+  "executable_sha256": "eb9a501ec60d5a90a398ffbf14e21a21967712589c155b54c8be164a71bd823c",
+  "baseline_pcm_sha256": "35a460e99da4c9354e23ec13bb53a70c99f5cd5b70ecf337ec3926c422c7025d",
+  "logs": {
+    "baseline-configure": {
+      "log": "baseline-configure.log.gz",
+      "raw_sha256": "46d626d17ea17235c50c2c5fb5e49fd003650bf65ff44bac5c238d0890ba5519"
+    },
+    "baseline-build": {
+      "log": "baseline-build.log.gz",
+      "raw_sha256": "b626c30c43f576716f10e8e64dbf56eafe7b4a16202ec5083f69f8c52d18548c"
+    },
+    "baseline-ctest": {
+      "log": "baseline-ctest.log.gz",
+      "raw_sha256": "122ef46ffe1417a3d4dd868af36bbc23fe86f491216ab435f5884fafdc63665e"
+    }
+  },
+  "limitations": [
+    "Dummy SDL does not qualify physical display, audio or MIDI hardware.",
+    "Baseline was recorded before production edits; new source requires its own affected validation."
+  ]
+}

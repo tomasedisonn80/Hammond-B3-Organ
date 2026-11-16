@@ -1,0 +1,30 @@
+{
+  "reason": "A36 identified missing-probe skip admission and missing Upper-rack sanitizer selection; root applied additive gate hardening and build-document corrections.",
+  "before_sha256": {
+    "tests/test_causal_contact_grid_differential.py": "d73dc8aa7ac16577eb779c4fed73b4c9bbd09dcc57367abde5886e600964c850",
+    "tests/test_causal_contact_grid_cli.py": "cf286e63d329d2d90814ccdf23bb0af963a160f3ba8c4696f96f5c2b6cd94020",
+    ".github/workflows/standalone.yml": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a",
+    "docs/BUILD.md": "90ad01e73bad3658f6ff8a999711634598787f2c0cffea4e33add30bab40b53b",
+    "docs/STANDALONE_BENCHMARK_BUILD.md": "9b9cd9d53862430b5d33d67c2755baa1994898386d67d980e7db770c35315cd7"
+  },
+  "after_sha256": {
+    "tests/test_causal_contact_grid_differential.py": "eb15efa27f30c5ba813fe2d4255de6010d5f3a8da2f8be29b09bcf8de3ede812",
+    "tests/test_causal_contact_grid_cli.py": "015a1ef3f5e436a629c7f4885c3f3ed03f4e2b88071cad6bbd7cbc73e6efa6e3",
+    ".github/workflows/standalone.yml": "766fb1c2cb890af1b921ce66b4a58f656a20f5e5ff6e00481fbccb39d8c41961",
+    "docs/BUILD.md": "502e0d66384a5c963a486dbbcd93ca43a72520c90ebc08b925e6f97f4fa3225d",
+    "docs/STANDALONE_BENCHMARK_BUILD.md": "014a6d959a5592343bf2e60167a5c2756b0d9cd9701271cd15c603151cbe1010"
+  },
+  "native_sanitizer_gate_count": 22,
+  "prior_native_sanitizer_gates_preserved": 21,
+  "new_upper_rack_timeout_seconds": 240,
+  "prior_coherent_receipt": "coherent-qualification.json",
+  "new_qualification": "final-coherent-qualification.json",
+  "final_after_sha256": {
+    "tests/test_causal_contact_grid_differential.py": "eb15efa27f30c5ba813fe2d4255de6010d5f3a8da2f8be29b09bcf8de3ede812",
+    "tests/test_causal_contact_grid_cli.py": "cda3e12ed7d5df2ca79999aadf01185c3107a597e62423573b189170ad6710aa",
+    ".github/workflows/standalone.yml": "766fb1c2cb890af1b921ce66b4a58f656a20f5e5ff6e00481fbccb39d8c41961",
+    "docs/BUILD.md": "502e0d66384a5c963a486dbbcd93ca43a72520c90ebc08b925e6f97f4fa3225d",
+    "docs/STANDALONE_BENCHMARK_BUILD.md": "014a6d959a5592343bf2e60167a5c2756b0d9cd9701271cd15c603151cbe1010"
+  },
+  "description_correction": "After positive and negative setup checks, the CLI module docstring was corrected to describe fail-closed behavior; executable setup statements unchanged."
+}

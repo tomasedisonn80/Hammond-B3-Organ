@@ -5,6 +5,8 @@ include_guard(DIRECTORY)
 function(hammond_add_standalone_benchmark)
     file(GLOB benchmark_core_headers CONFIGURE_DEPENDS
         "${PROJECT_SOURCE_DIR}/include/hammond/*.h")
+    list(APPEND benchmark_core_headers
+        "${PROJECT_SOURCE_DIR}/include/hammond/research/CausalContactGrid.h")
     set(benchmark_inputs
         ${HAMMOND_CORE_SOURCES} ${benchmark_core_headers}
         "${PROJECT_SOURCE_DIR}/apps/standalone/Session.h"

@@ -1,0 +1,24 @@
+{
+  "scope": "Read-only publication preflight, not publication",
+  "observed_remote_main": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "authorized_target": "main",
+  "force_allowed": false,
+  "required_procedure": [
+    "Fetch and inspect fresh remote main immediately before publication.",
+    "Preserve concurrent changes and reconcile conflicts without deleting other work.",
+    "Publish exact reviewed staged tree using fresh expected main SHA, force=false.",
+    "Fetch and compare remote commit, parent, tree and intended files.",
+    "Observe current-source hosted workflow outcomes."
+  ],
+  "api_owner_link_available": true,
+  "api_repository": "tomasedisonn80/Hammond-B3-Organ",
+  "local_qualification": "coherent-qualification.json",
+  "current_code_inputs_unchanged": true,
+  "publication_status": "pending",
+  "shell_push_preflight": {
+    "command": "GIT_TERMINAL_PROMPT=0 git push --dry-run origin HEAD:main",
+    "exit_code": 128,
+    "observed_stderr": "fatal: could not read Username for 'https://github.com': terminal prompts disabled\n",
+    "interpretation": "Shell credentials are unavailable; no ref changed. Connected owner Git Data API is the authorized publication path."
+  }
+}

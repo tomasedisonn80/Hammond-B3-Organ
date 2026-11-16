@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <cstdint>
 #include <string>
 
 namespace hammond::standalone {
@@ -1375,8 +1376,8 @@ void paint_footer(Drawing& drawing, const UiModel& model, const InstrumentViewIn
 }
 
 // Active composition helpers use mapped model geometry. Only their local
-// material distances are scaled here; glyph sizes remain isotropic and none of
-// these helpers changes the renderer scale, viewport or the live hit layout.
+// material distances are scaled here; glyph sizes remain isotropic. Helpers
+// preserve the incoming renderer transform and the live hit layout.
 [[nodiscard]] UiRect reference_inset(UiRect bounds, float amount,
                                       ReferenceCompositionScale scale) noexcept {
     const float x = amount * scale.sx;
@@ -1407,8 +1408,198 @@ void reference_screw(Drawing& drawing, float x, float y, ReferenceCompositionSca
                  x + 4.5F * scale.sx, y + 1.5F * scale.sy, {34, 29, 20});
 }
 
+// The v1.1 material arithmetic rounds each operation separately to binary64.
+// A private volatile boundary prevents contraction across multiply/add joins
+// without changing compilation or arithmetic in the existing painters.
+[[nodiscard]] double upper_rack_binary64(double value) noexcept {
+    volatile double rounded = value;
+    return rounded;
+}
+
+[[nodiscard]] double upper_rack_field(double u, double v) noexcept {
+    const double lateral = upper_rack_binary64(7.6 * u);
+    const double vertical = upper_rack_binary64(9.4 * v);
+    const double base = upper_rack_binary64(22.4 + lateral);
+    return upper_rack_binary64(base - vertical);
+}
+
+[[nodiscard]] UiColor upper_rack_color(double q) noexcept {
+    const auto channel = [](double value) {
+        return static_cast<std::uint8_t>(std::clamp(std::round(value), 0.0, 255.0));
+    };
+    return {channel(upper_rack_binary64(q + 1.0)), channel(q),
+            channel(upper_rack_binary64(q - 1.0)), 255};
+}
+
+class UpperRackColorGuard {
+public:
+    explicit UpperRackColorGuard(SDL_Renderer* renderer) noexcept : renderer_(renderer) {
+        saved_ = SDL_GetRenderDrawColor(renderer_, &color_.red, &color_.green,
+                                       &color_.blue, &color_.alpha) == 0;
+    }
+    ~UpperRackColorGuard() {
+        if (saved_) SDL_SetRenderDrawColor(renderer_, color_.red, color_.green,
+                                           color_.blue, color_.alpha);
+    }
+    UpperRackColorGuard(const UpperRackColorGuard&) = delete;
+    UpperRackColorGuard& operator=(const UpperRackColorGuard&) = delete;
+    [[nodiscard]] bool saved() const noexcept { return saved_; }
+
+private:
+    SDL_Renderer* renderer_{};
+    UiColor color_{};
+    bool saved_{};
+};
+
+// Private counterpart of Drawing's PixelRaster: physical clipping and integer
+// center spans, with a scoped scale change. Viewport, clip (including enabled
+// empty clips) and blend mode are never reset through rounded logical getters.
+class UpperRackRaster {
+public:
+    explicit UpperRackRaster(SDL_Renderer* renderer) noexcept : renderer_(renderer) {
+        int width = 0;
+        int height = 0;
+        if (SDL_GetRendererOutputSize(renderer_, &width, &height) != 0 ||
+            width <= 0 || height <= 0) return;
+        SDL_RenderGetScale(renderer_, &scale_x_, &scale_y_);
+        if (!std::isfinite(scale_x_) || !std::isfinite(scale_y_) ||
+            scale_x_ <= 0.0F || scale_y_ <= 0.0F) return;
+        if (SDL_RenderSetScale(renderer_, 1.0F, 1.0F) != 0) return;
+        restore_scale_ = true;
+        SDL_Rect viewport{};
+        SDL_RenderGetViewport(renderer_, &viewport);
+        if (viewport.w <= 0 || viewport.h <= 0) return;
+        std::int64_t left = std::max<std::int64_t>(0, -static_cast<std::int64_t>(viewport.x));
+        std::int64_t top = std::max<std::int64_t>(0, -static_cast<std::int64_t>(viewport.y));
+        std::int64_t right = std::min<std::int64_t>(viewport.w,
+            static_cast<std::int64_t>(width) - viewport.x);
+        std::int64_t bottom = std::min<std::int64_t>(viewport.h,
+            static_cast<std::int64_t>(height) - viewport.y);
+        if (SDL_RenderIsClipEnabled(renderer_) == SDL_TRUE) {
+            SDL_Rect clip{};
+            SDL_RenderGetClipRect(renderer_, &clip);
+            if (clip.w <= 0 || clip.h <= 0) return;
+            left = std::max(left, static_cast<std::int64_t>(clip.x));
+            top = std::max(top, static_cast<std::int64_t>(clip.y));
+            right = std::min(right, static_cast<std::int64_t>(clip.x) + clip.w);
+            bottom = std::min(bottom, static_cast<std::int64_t>(clip.y) + clip.h);
+        }
+        if (left >= right || top >= bottom) return;
+        left_ = static_cast<int>(left);
+        right_ = static_cast<int>(right);
+        top_ = static_cast<int>(top);
+        bottom_ = static_cast<int>(bottom);
+    }
+
+    ~UpperRackRaster() {
+        if (restore_scale_) SDL_RenderSetScale(renderer_, scale_x_, scale_y_);
+    }
+    UpperRackRaster(const UpperRackRaster&) = delete;
+    UpperRackRaster& operator=(const UpperRackRaster&) = delete;
+    [[nodiscard]] bool visible() const noexcept { return left_ < right_ && top_ < bottom_; }
+    [[nodiscard]] int x_boundary(double x) const noexcept {
+        return boundary(upper_rack_binary64(x * static_cast<double>(scale_x_)), left_, right_);
+    }
+    [[nodiscard]] int y_boundary(double y) const noexcept {
+        return boundary(upper_rack_binary64(y * static_cast<double>(scale_y_)), top_, bottom_);
+    }
+    [[nodiscard]] double logical_y(int row) const noexcept {
+        return upper_rack_binary64(upper_rack_binary64(static_cast<double>(row) + 0.5) /
+                                   static_cast<double>(scale_y_));
+    }
+    void span(int first, int end, int row) const noexcept {
+        if (first >= end) return;
+        if (end - first == 1) SDL_RenderDrawPoint(renderer_, first, row);
+        else SDL_RenderDrawLine(renderer_, first, row, end - 1, row);
+    }
+
+private:
+    [[nodiscard]] static int boundary(double edge, int minimum, int maximum) noexcept {
+        const double value = std::ceil(upper_rack_binary64(edge - 0.5));
+        if (value <= minimum) return minimum;
+        if (value >= maximum) return maximum;
+        return static_cast<int>(value);
+    }
+
+    SDL_Renderer* renderer_{};
+    float scale_x_{1.0F};
+    float scale_y_{1.0F};
+    bool restore_scale_{};
+    int left_{};
+    int right_{};
+    int top_{};
+    int bottom_{};
+};
+
+[[nodiscard]] std::uint32_t upper_rack_mix(std::uint32_t value) noexcept {
+    value ^= value >> 16U;
+    value = static_cast<std::uint32_t>(value * 0x7FEB352DU);
+    value ^= value >> 15U;
+    value = static_cast<std::uint32_t>(value * 0x846CA68BU);
+    value ^= value >> 16U;
+    return value;
+}
+
+void reference_upper_rack_material(Drawing& drawing, UiRect bounds,
+                                   ReferenceCompositionScale scale) noexcept {
+    if (!material_surface(bounds) || drawing.renderer() == nullptr) return;
+    auto* renderer = drawing.renderer();
+    const UpperRackColorGuard color_guard(renderer);
+    if (!color_guard.saved()) return;
+    {
+        const UpperRackRaster raster(renderer);
+        if (!raster.visible()) return;
+        std::array<int, 66> edges{};
+        for (std::size_t column = 0; column < edges.size(); ++column) {
+            const double product = upper_rack_binary64(static_cast<double>(bounds.width) *
+                                                       static_cast<double>(column));
+            const double offset = upper_rack_binary64(product / 65.0);
+            edges[column] = raster.x_boundary(upper_rack_binary64(
+                static_cast<double>(bounds.x) + offset));
+        }
+        const int first_row = raster.y_boundary(bounds.y);
+        const int end_row = raster.y_boundary(upper_rack_binary64(
+            static_cast<double>(bounds.y) + static_cast<double>(bounds.height)));
+        if (edges.front() >= edges.back() || first_row >= end_row) return;
+        const double height = upper_rack_binary64(static_cast<double>(bounds.height) - 1.0);
+        for (int row = first_row; row < end_row; ++row) {
+            const double offset = upper_rack_binary64(raster.logical_y(row) -
+                                                      static_cast<double>(bounds.y));
+            const double center = upper_rack_binary64(offset - 0.5);
+            const double v = bounds.height <= 1.0F ? 0.0 : std::clamp(
+                upper_rack_binary64(center / height), 0.0, 1.0);
+            for (std::size_t column = 0; column < 65; ++column) {
+                if (edges[column] >= edges[column + 1]) continue;
+                const double u = upper_rack_binary64(upper_rack_binary64(
+                    static_cast<double>(column) + 0.5) / 65.0);
+                const UiColor color = upper_rack_color(upper_rack_field(u, v));
+                SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
+                raster.span(edges[column], edges[column + 1], row);
+            }
+        }
+    }
+    // The field guard has restored the incoming scale before Drawing::rect.
+    // All 2,048 pairs are visited in order, even when only a clip is visible.
+    constexpr std::uint32_t seed = 0xB3A08E11U;
+    for (std::uint32_t pair = 0; pair < 2048U; ++pair) {
+        for (std::uint32_t mark = 0; mark < 2U; ++mark) {
+            const std::uint32_t k = 4U * pair + 2U * mark;
+            const std::uint32_t cx = 78U + upper_rack_mix(seed ^ k) % 516U;
+            const std::uint32_t cy = 275U + upper_rack_mix(seed ^ (k + 1U)) % 227U;
+            const double center = upper_rack_binary64(static_cast<double>(cx) + 0.5);
+            const double u = upper_rack_binary64(upper_rack_binary64(center - 76.0) / 520.0);
+            const double v = upper_rack_binary64(upper_rack_binary64(
+                static_cast<double>(cy) - 273.0) / 230.0);
+            const double q = upper_rack_binary64(upper_rack_field(u, v) + (mark == 0U ? 8.0 : -8.0));
+            const auto origin = reference_composition_point(
+                {static_cast<float>(cx), static_cast<float>(cy)}, scale);
+            drawing.rect({origin.x, origin.y, scale.sx, scale.sy}, upper_rack_color(q));
+        }
+    }
+}
+
 void reference_panel(Drawing& drawing, UiRect bounds, ReferenceCompositionScale scale,
-                     bool screws = true) {
+                     bool screws = true, bool upper_rack_material = false) {
     if (!material_surface(bounds)) return;
     for (int layer = 5; layer >= 1; --layer) {
         const float spread = static_cast<float>(layer);
@@ -1420,32 +1611,36 @@ void reference_panel(Drawing& drawing, UiRect bounds, ReferenceCompositionScale 
     drawing.rounded(bounds, 6.0F * scale.f, {7, 7, 7});
     drawing.rounded(reference_inset(bounds, 1.0F, scale), 5.0F * scale.f, kMetalEdge);
     drawing.rounded(reference_inset(bounds, 2.0F, scale), 4.0F * scale.f, {14, 14, 14});
-    drawing.gradient(reference_inset(bounds, 4.0F, scale), {43, 41, 38}, {21, 22, 21});
-    constexpr std::size_t maximum_grain_pairs = 2048;
-    const auto rows = static_cast<int>(std::max(0.0F, std::floor(bounds.height / scale.sy - 16.0F)));
-    const auto columns = static_cast<int>(std::max(0.0F, std::floor(bounds.width / scale.sx - 21.0F)));
-    int step = std::max(4, static_cast<int>(std::ceil(std::sqrt(
-        static_cast<double>(rows) * static_cast<double>(columns) /
-        (3.0 * static_cast<double>(maximum_grain_pairs))))));
-    const auto pair_count = [rows, columns](int pitch) {
-        const auto row_count = rows > 1 ? static_cast<std::size_t>((rows - 2) / pitch + 1) : 0;
-        const auto column_count = columns > 1 ? static_cast<std::size_t>((columns - 2) / (pitch * 3) + 1) : 0;
-        return row_count * column_count;
-    };
-    while (pair_count(step) > maximum_grain_pairs) ++step;
-    std::size_t pairs = 0;
-    for (int row = 1; row < rows && pairs < maximum_grain_pairs; row += step) {
-        for (int column = 1; column < columns && pairs < maximum_grain_pairs; column += step * 3) {
-            const auto grain = static_cast<std::uint32_t>(row) * 1973U +
-                static_cast<std::uint32_t>(column) * 9277U;
-            const float x = bounds.x + (7.0F + static_cast<float>(column) +
-                static_cast<float>((grain >> 5U) % 3U)) * scale.sx;
-            const float y = bounds.y + (7.0F + static_cast<float>(row)) * scale.sy;
-            drawing.rect({x, y, scale.sx, scale.sy},
-                         {212, 205, 190, static_cast<std::uint8_t>(6U + grain % 5U)});
-            drawing.rect({x + 3.0F * scale.sx, y + scale.sy, 2.0F * scale.sx, scale.sy},
-                         {0, 0, 0, static_cast<std::uint8_t>(10U + (grain >> 3U) % 9U)});
-            ++pairs;
+    if (upper_rack_material) {
+        reference_upper_rack_material(drawing, reference_inset(bounds, 4.0F, scale), scale);
+    } else {
+        drawing.gradient(reference_inset(bounds, 4.0F, scale), {43, 41, 38}, {21, 22, 21});
+        constexpr std::size_t maximum_grain_pairs = 2048;
+        const auto rows = static_cast<int>(std::max(0.0F, std::floor(bounds.height / scale.sy - 16.0F)));
+        const auto columns = static_cast<int>(std::max(0.0F, std::floor(bounds.width / scale.sx - 21.0F)));
+        int step = std::max(4, static_cast<int>(std::ceil(std::sqrt(
+            static_cast<double>(rows) * static_cast<double>(columns) /
+            (3.0 * static_cast<double>(maximum_grain_pairs))))));
+        const auto pair_count = [rows, columns](int pitch) {
+            const auto row_count = rows > 1 ? static_cast<std::size_t>((rows - 2) / pitch + 1) : 0;
+            const auto column_count = columns > 1 ? static_cast<std::size_t>((columns - 2) / (pitch * 3) + 1) : 0;
+            return row_count * column_count;
+        };
+        while (pair_count(step) > maximum_grain_pairs) ++step;
+        std::size_t pairs = 0;
+        for (int row = 1; row < rows && pairs < maximum_grain_pairs; row += step) {
+            for (int column = 1; column < columns && pairs < maximum_grain_pairs; column += step * 3) {
+                const auto grain = static_cast<std::uint32_t>(row) * 1973U +
+                    static_cast<std::uint32_t>(column) * 9277U;
+                const float x = bounds.x + (7.0F + static_cast<float>(column) +
+                    static_cast<float>((grain >> 5U) % 3U)) * scale.sx;
+                const float y = bounds.y + (7.0F + static_cast<float>(row)) * scale.sy;
+                drawing.rect({x, y, scale.sx, scale.sy},
+                             {212, 205, 190, static_cast<std::uint8_t>(6U + grain % 5U)});
+                drawing.rect({x + 3.0F * scale.sx, y + scale.sy, 2.0F * scale.sx, scale.sy},
+                             {0, 0, 0, static_cast<std::uint8_t>(10U + (grain >> 3U) % 9U)});
+                ++pairs;
+            }
         }
     }
     drawing.rect({bounds.x + 7.0F * scale.sx, bounds.y + 3.0F * scale.sy,
@@ -2066,7 +2261,9 @@ void paint_reference_composition(Drawing& drawing, const UiModel& model, const I
     reference_wood(drawing, mapped({48.0F, 510.0F, 1074.0F, 18.0F}), scale);
     reference_header(drawing, layout, scale);
     reference_panel(drawing, layout.performance_panel, scale);
-    for (const auto& rack : layout.registration_panels) reference_panel(drawing, rack, scale);
+    reference_panel(drawing, layout.registration_panels[0], scale, true, true);
+    for (std::size_t manual = 1; manual < layout.registration_panels.size(); ++manual)
+        reference_panel(drawing, layout.registration_panels[manual], scale);
     // The cabinet is a parent of the moved toolbar and pedals. Finish its art
     // and truth rows now, before painting any nested live surfaces or focus.
     reference_cabinet(drawing, layout, info, scale);

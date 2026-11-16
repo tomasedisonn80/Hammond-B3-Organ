@@ -1,0 +1,93 @@
+{
+  "status": "bounded source/index calculation; no audio implementation or admission",
+  "worker": "/root/w07_a38",
+  "date": "2026-11-16",
+  "head": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "source_sha256": {
+    "docs/CAUSAL_CONTACT_GRID_CONTRACT.md": "ba851e6af0601b52aef73d4b9effb64dffac3ef5e230eff7015e10e58a4ecb4e",
+    "include/hammond/research/CausalContactGrid.h": "69c655897b24688873472c559c952d9932f76b0cbed5c3eabd9a9da5b3a5d89f",
+    "src/research/CausalContactGrid.cpp": "17c1c1cdb8e0edb1c90f098e4e92f351eea4f2c50fab1e2282d3f7f304f9e9bd",
+    "docs/FRACTIONAL_CONTACT_REFERENCE.md": "3c05da4c3f35fcdc53fac05f1592ddc97e444f5038d9c147afae71f46e8deecd",
+    "docs/CONTACT_SWITCHING_VALIDATION.md": "5ccbba4d08a2272bef4f7d553446a7ca9582e289fba80f9bcfa223a2d6efb2b5",
+    "docs/CONTACT_STREAMING_NEXT_DESIGN.md": "46e563e6be33a057dc406ee88d9245ad3f9cd8fdb75b6a6c5dcc2bfee185f4da",
+    "tools/fractional_contact_reference.py": "fc269514eca98c05ee8fb14ff362248d140862cff942a250a01714bb06788e23"
+  },
+  "factor": 256,
+  "filter": {
+    "coefficient_count": 8193,
+    "endpoint_values": [
+      0.0,
+      0.0
+    ],
+    "exact_symmetry": true,
+    "normalizer": 256.0011286257794,
+    "sum": 1.0,
+    "coefficient_sha256": "600df579a3a4c4d4588f567587ad831c4f83114c9d8fb1cd34d6d3afee34a1fe"
+  },
+  "indexing": {
+    "output_reference_index": "n=m-16",
+    "python_coefficient_array_index": "m*L-j",
+    "first_potential_nonzero_cell": "(m-32)*L+1",
+    "last_potential_nonzero_cell": "m*L-1",
+    "last_cell_end_before_m_host_frames": "1/512",
+    "centered_cell_tick_bounds": "256*j-128,256*j+128",
+    "ring_cells": 8194,
+    "ring_double_bytes": 65552,
+    "rows": [
+      {
+        "frames": 1,
+        "process_m_inclusive": [
+          0,
+          0
+        ],
+        "drain_m_inclusive": [
+          1,
+          33
+        ],
+        "reference_n_inclusive": [
+          -16,
+          17
+        ],
+        "total_samples": 34
+      },
+      {
+        "frames": 3,
+        "process_m_inclusive": [
+          0,
+          2
+        ],
+        "drain_m_inclusive": [
+          3,
+          35
+        ],
+        "reference_n_inclusive": [
+          -16,
+          19
+        ],
+        "total_samples": 36
+      },
+      {
+        "frames": 256,
+        "process_m_inclusive": [
+          0,
+          255
+        ],
+        "drain_m_inclusive": [
+          256,
+          288
+        ],
+        "reference_n_inclusive": [
+          -16,
+          272
+        ],
+        "total_samples": 289
+      }
+    ],
+    "empty_N0_samples": 0
+  },
+  "work_formula_values": {
+    "N256_K4_M512": 4744518,
+    "N4096_K4_M512": 71595078
+  },
+  "limits": "One 8193-coefficient construction and integer index/count arithmetic only; no render, continuous oracle, build, broad rerun, deadline, platform or fidelity grade."
+}

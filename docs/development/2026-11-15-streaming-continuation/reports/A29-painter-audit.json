@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "reviewer": "A29 /root/w05_a29",
+  "date_utc": "2026-11-16T00:29:31.685249+00:00",
+  "decision": "admit private Upper-rack v1.1 painter source; no blocking counterexample found",
+  "base_commit": "4aac394cde4da40906b615573a8779aee2d9a37a",
+  "method": "Read-only source audit, exact reversal to genuine preserved before source, identity rehash, independent arithmetic enumeration and four original full images viewed. No build, candidate execution, recapture or source edit.",
+  "painter_sha256": "30ac6cec988ec1834f36456d25d1e53113642071d844d53f81b62b3474cf2c37",
+  "original_painter_sha256": "0614f236e1e5bbe0cd8ac89210b27c77140724be5da49e3f2f4e67583b159c0a",
+  "contract_sha256": "baca5edb5878713291316751ad496e31513251c8bf8ce893605ede0496d00868",
+  "preservation": {
+    "exact_reconstruction_to_preserved_original": true,
+    "preserved_original_matches_git_base": true,
+    "baseline_inventory_files": 187,
+    "baseline_inventory_unchanged": 185,
+    "changed_baseline_inventory_paths": [
+      "apps/standalone/CMakeLists.txt",
+      "apps/standalone/InstrumentView.cpp"
+    ],
+    "other_painter_bytes_exact_after_declared_reversal": true
+  },
+  "protected_sha256": {
+    "apps/standalone/Drawing.cpp": "9b788234405964f6675ab43428735e425b460c8045f2c6eb064c9e19b40a0a5f",
+    "apps/standalone/Drawing.h": "749e718436e61ad4a13a28e167c4b07e4dd789adf213a6229a503fc1f2bcf188",
+    "apps/standalone/UiModel.cpp": "0ecb0c4ee90d98cdb87c6f06b4685d368a7c12b72f9ea66e6c40228a4a855ecd",
+    "apps/standalone/UiModel.h": "6d8c0b16ddb6f3059dc14aff41bfc615e37b43c53b2f6e88cc199255a6b674b1",
+    "apps/standalone/FontData.h": "f1a3121a2707a03a3b2e025c399e68c553ce9498f4b002ec13b18f512e334802",
+    "../build-native/apps/standalone/generated/ReferenceArtData.h": "d94cefd9ad69726c267d4674acd66912f4764ee9f88d1c21ecce4ed7befcbac6",
+    "/workspace/scratch/ade21b726509/SDL2/src/render/SDL_render.c": "ae904d0fd11c6122c77d78909538b26694b4d57a9b6b722c51e0417d4709be54",
+    "/workspace/scratch/ade21b726509/SDL2/src/render/software/SDL_render_sw.c": "2e3bbc7ab7d6d59310c634d6374eabb60da185d8c7cfc8526baa45318e6d3257"
+  },
+  "arithmetic": {
+    "method": "Python IEEE binary64 separate-operation enumeration; local C libm round and fma for rounding/contraction contrast, not candidate execution.",
+    "half_tie": {
+      "column": 32,
+      "row": 388,
+      "q": 21.5,
+      "rgb": [
+        23,
+        22,
+        21
+      ]
+    },
+    "canonical_column_row_samples": 15015,
+    "alternative_fma_results": {
+      "lateral": {
+        "binary64_q_differences": 1240,
+        "rgb_differences": 0
+      },
+      "vertical": {
+        "binary64_q_differences": 1543,
+        "rgb_differences": 0
+      },
+      "both": {
+        "binary64_q_differences": 2692,
+        "rgb_differences": 0
+      }
+    },
+    "conclusion": "Canonical RGB agreement alone does not prove noncontraction: alternative FMA evaluation changes q. Source volatile boundaries materialize each required double operation."
+  },
+  "grain": {
+    "pairs": 2048,
+    "marks": 4096,
+    "hash_evaluations": 8192,
+    "unique_origins": 4041,
+    "origin_bounds_inclusive": [
+      78,
+      275,
+      593,
+      501
+    ],
+    "ordered_u16le_xy_sha256": "827dab5c1773d437058ea21cb69fb63fc2241ae10b342a649efbc559b1db90eb"
+  },
+  "source_work": {
+    "field_edges": 66,
+    "field_span_bound": "65 * visible_inset_rows",
+    "grain_primitive_bound": 4096,
+    "height_8192_scale_2_unclipped_rows": 4022,
+    "resulting_new_primitive_bound": 265526,
+    "resource_crop_visible_row_bound": 64,
+    "resource_crop_primitive_bound": 8256,
+    "custom_storage": "66 int edges plus fixed scalars and guards; no dynamic storage or new texture/cache",
+    "runtime_instrumentation": false
+  },
+  "state_review": {
+    "scale_restored_before_grain_and_on_early_return": true,
+    "viewport_clip_blend_never_set_in_helper": true,
+    "helper_color_guard_covers_all_paths": true,
+    "visible_intersection_int64_before_narrowing": true,
+    "ordinary_fixture_compares_draw_color": false,
+    "ordinary_fixture_uses_equal_xy_scales_only": true
+  },
+  "root_coherent_evidence": {
+    "receipt_sha256": "bab01815d3c582785a58effeaa125857142e85df8c61c929fea7abafc5e7eaa7",
+    "source_inventory_files_rehashed": 505,
+    "source_inventory_raw_sha256": "85b57e7d333f717c177238066221e812dbc43e3241d9aa758bdf5bf7ee992252",
+    "all_recorded_log_hashes_and_binaries_verified": true,
+    "tests_passed": 210,
+    "tests_total": 210,
+    "ctest_wall_seconds": 191.89,
+    "compiler": "GCC 14.2.0",
+    "configuration": "Ninja Release; standalone/testing on; VST3/MIDI/sanitizers off; SDL 2.32.10 dummy audio/video"
+  },
+  "reviewed_full_images_sha256": {
+    "examples/demos/upper-rack-material-v1/images/play-reference-1672x941.png": "acc8ba94a8c3fee5e39bb26f575b9490767bd65210f2388bf1feabb947a545be",
+    "examples/demos/upper-rack-material-v1/images/play-minimum-active-1400x820.png": "3b356fdbdc91be20a581100b577fda51b604d34743d09e0690b834abf6ec3dc0",
+    "examples/demos/whole-reference-layout-v1/images/play-reference-1672x941.png": "f554c348a4dc63901726d8e297c0808ee942052a40babccf2333ef8111be3eae",
+    "docs/design/atlas-cover-reference.jpg": "9d802c3577367a904516fdd90dd51effb73bc3d0c692c1c7a2fa29699d54a187"
+  },
+  "visual_observation": "No conspicuous new band, seam, periodic grain or loss of label/focus readability in viewed complete reference/minimum-active candidates. Other materials/type differ from reference; A26 owns twelve-frame gallery admission.",
+  "limits": [
+    "Source guard proof does not replace direct helper draw-color fault instrumentation.",
+    "No new 96-pair run; A25 owns finite mask/numerical admission and A26 gallery admission.",
+    "64x64 maximum-geometry crops have zero protected output pixels and are not a full maximum display.",
+    "No SDL internal-allocation, timing/deadline, unequal-scale runtime, MSVC/macOS/FMA-platform, physical-display/device, accessibility or literal whole-interface 1:1 qualification."
+  ]
+}

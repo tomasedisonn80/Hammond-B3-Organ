@@ -2,20 +2,32 @@
 
 A C++20 Hammond B-3/AO-28 and Leslie research instrument, guided by the repository's **500-page atlas**. The playable instrument is a **nominal dry organ** with a native standalone application, an offline renderer and an optional VST3 adapter. Its musical core has 91 continuously running sources, two 61-key manuals, 25 pedals, eighteen documentary fixed registrations, four retained drawbar banks, percussion and shared expression.
 
-**Current execution continuation:** [this session](docs/development/2026-11-15-execution-continuation/README.md)
-read all 500 atlas pages and implements an **offline fractional-contact reference
-(M3)** and the **canonical wide Dimensional Play composition (M9)**. The fixed
-contact study passes all 36 fixtures and 144 renders under its frozen numerical
-and resource criteria, including a complete run from the relocated tools package.
-The interface now restores the reference performance-band, rack, manual and
-cabinet arrangement; twelve actual application captures make the result reviewable.
-[Contact results and limits](docs/CONTACT_SWITCHING_RESULTS.md) ·
-[Current native gallery](examples/demos/whole-reference-layout-v1/README.md) ·
-[Scope](docs/development/2026-11-15-execution-continuation/SCOPE.md) ·
-[Live checkpoint](docs/development/2026-11-15-execution-continuation/CHECKPOINT.md).
-The [actual ledger](docs/development/2026-11-15-execution-continuation/assignments.json)
-tracks this sixty-worker, ten-wave request separately from earlier sessions;
-focused evidence does not stand for final platform qualification or fidelity.
+**Current contact/material continuation:** [this session](docs/development/2026-11-15-streaming-continuation/README.md)
+read all 500 atlas pages and advances **M3 with an isolated causal contact grid**
+and **M9 with a reference-tested Upper-rack metal finish**. Exact native events
+and complete state agree with an independent rational oracle in 199 probe runs.
+All 96 genuine before/after raster pairs preserve pixels outside the declared
+surface, and all five local reference light/texture checks pass. Twelve actual
+application captures show the changed build. The full requested 1:1 interface
+match remains open; this material pass is a measured step toward it.
+
+[Causal-grid guide](docs/CAUSAL_CONTACT_GRID_GUIDE.md) ·
+[Current native gallery](examples/demos/upper-rack-material-v1/README.md) ·
+[Scope](docs/development/2026-11-15-streaming-continuation/SCOPE.md) ·
+[Live checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md).
+The [actual ledger](docs/development/2026-11-15-streaming-continuation/assignments.json)
+tracks progress toward this request's sixty distinct workers in ten waves,
+separately from previous sessions. The
+[coherent local gate](docs/development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json)
+passed **210/210 CTests in 191.90 seconds**. Completion of the requested worker
+session, current-source hosted platform CI and publication remain pending;
+the checkpoint records subsequent observed outcomes.
+
+The preceding [execution continuation](docs/development/2026-11-15-execution-continuation/README.md)
+supplies the offline fractional-contact reference and canonical wide composition.
+Its [36-fixture/four-factor study](docs/CONTACT_SWITCHING_RESULTS.md) and
+[original composition gallery](examples/demos/whole-reference-layout-v1/README.md)
+retain their own source identities and limits.
 
 The earlier [audio continuation](docs/development/2026-11-15-audio-continuation/README.md)
 adds prepared sparse source leakage with explicit offline gain (M2). Its
@@ -35,9 +47,9 @@ The earlier [product continuation](docs/development/2026-11-15-product-continuat
 | **Live controls and copied state — M9** | Complete fitted footage labels, separate **EDIT BANK** / **SOUNDING** captions, retained drawbar banks and explicit pending/applied state. The current composition relocates these live elements; the MIDI dialog retains explicit calibration and connection state. [Earlier design and evidence](docs/PRODUCT_VISUAL_REFINEMENT.md) |
 | **Independent passive crossover — M6** | A four-state ideal Leslie 122 electrical model, native probe, independent analog reference and numerical/lifecycle checks. It remains separate from the playable Engine. [Developer guide](docs/CROSSOVER_DEVELOPER_GUIDE.md) |
 
-The **47 sound parameters**, **`B3CONTROLS4`** writer and readers for versions **1–3** retain their meanings. MIDI calibration is native adapter configuration; it adds no sound parameter or VST3 mapping. Scanner, AO-28 and Leslie audio are not connected to the dry Engine. The [compatibility review](docs/PRODUCT_COMPATIBILITY.md) and [full plan](docs/PLAN.md) preserve these boundaries.
+The **47 sound parameters**, **`B3CONTROLS4`** writer and readers for versions **1–3** retain their meanings. MIDI calibration is native adapter configuration; it adds no sound parameter or VST3 mapping. Scanner, AO-28 and Leslie audio are not connected to the dry Engine. The [current compatibility review](docs/reviews/STREAMING_CONTINUATION_COMPATIBILITY.md), [earlier product review](docs/PRODUCT_COMPATIBILITY.md) and [full plan](docs/PLAN.md) preserve these boundaries.
 
-[Get started](#getting-started) · [Play and configure MIDI](docs/MIDI_EXPRESSION_GUIDE.md) · [Interface guide](docs/INTERFACE_RUNBOOK.md) · [Contact reference guide](docs/CONTACT_SWITCHING_GUIDE.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [M0–M9 plan](docs/PLAN.md) · [Current recovery checkpoint](docs/development/2026-11-15-execution-continuation/CHECKPOINT.md)
+[Get started](#getting-started) · [Play and configure MIDI](docs/MIDI_EXPRESSION_GUIDE.md) · [Interface guide](docs/INTERFACE_RUNBOOK.md) · [Contact reference guide](docs/CONTACT_SWITCHING_GUIDE.md) · [Current status](docs/STATUS.md) · [Next steps](docs/NEXT_STEPS.md) · [M0–M9 plan](docs/PLAN.md) · [Current recovery checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md)
 
 The earlier [product batch record](docs/PRODUCT_CONTINUATION_CLOSURE.md) preserves
 its accepted development, strict accounting and remaining requirements. Literal
@@ -137,6 +149,25 @@ model or change to Engine/native/VST3 audio.
 [Frozen model](docs/FRACTIONAL_CONTACT_REFERENCE.md) ·
 [Frozen validation protocol](docs/CONTACT_SWITCHING_VALIDATION.md).
 
+### Run the causal contact grid
+
+The new C++20 research module returns exact rational crossing times for nine
+hysteretic contacts per key. It supports four keys, three sample rates, explicit
+integer targets, persistent anchors, transactional failures and bounded storage.
+It is separate from audio synthesis and does not change the nominal dry Engine.
+
+```sh
+cmake --preset release
+cmake --build --preset release --target hammond_causal_contact_grid_probe --parallel 2
+```
+
+The [developer guide](docs/CAUSAL_CONTACT_GRID_GUIDE.md) includes a verified
+one-frame example, strict ASCII transport, C++ lifecycle, test commands and the
+next audio/filter boundary. Single-frame and irregular blocks preserve exact
+results. The original offline model remains a separate, acausal reference;
+integer-input exactness does not establish universal binary64 equivalence or a
+full-window audio grade.
+
 ### Audition synthetic source leakage
 
 The optional M2 layer mixes a prepared sparse graph over the same 91 original
@@ -184,7 +215,7 @@ endpoints drive paint, pointer targets and focus; the keyboard toolbar and
 25-note pedalboard sit in the cabinet's right panel. The
 [frozen composition contract](docs/WHOLE_REFERENCE_LAYOUT_CONTRACT.md),
 [independent geometry/input evidence](docs/development/2026-11-15-execution-continuation/notes/A18.md)
-and [current gallery review](docs/reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md)
+and [current gallery review](docs/reviews/UPPER_RACK_GALLERY_ADMISSION.md)
 separate chosen geometry from observed shaded pixels.
 
 | Landmark | Current canonical geometry at 1672×941 |
@@ -218,17 +249,17 @@ The functional inventory remains **68 ordinary controls, including 24 reversed p
 
 ### Current native interface
 
-**This is an actual capture of the changed standalone at 1672×941.** It shows
-the new band/rack/manual composition, below-rail footage and relocated right-panel
-controls. The replay holds two Upper notes, one Lower note and one pedal while
-editing the retained Upper B drawbar; applied registration captions remain
-distinct. The [twelve-view gallery](examples/demos/whole-reference-layout-v1/README.md)
-and [independent admission](docs/reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md)
-retain source/executable hashes, replay inputs, native diagnostics and image
-identities. These captures come from the identified working tree based on
-`33fa95d5`; that base commit alone does not contain or qualify the new code.
+**This is an actual capture of the changed standalone at 1672×941.** The Upper
+rack now has a darker directional charcoal finish and fine deterministic grain,
+while its geometry, labels, live drawbars and focus remain intact. The replay
+holds two Upper notes, one Lower note and one pedal while editing retained Upper
+B; applied registration captions remain distinct. The
+[twelve-view gallery](examples/demos/upper-rack-material-v1/README.md) and
+[independent gallery review](docs/reviews/UPPER_RACK_GALLERY_ADMISSION.md)
+retain executable, production-source, replay, native-state and pixel identities.
+The captured executable is `c29495e98148767c0d55cab4adc18a245659cea891deb0f37fa160ea976c3cc1`.
 
-![Actual native Play at 1672 by 941 with canonical performance band, below-rail footage, complete manuals and right-panel toolbar and pedals](examples/demos/whole-reference-layout-v1/images/play-reference-1672x941.png)
+![Actual native Play at 1672 by 941 with the reference-tested darker Upper rack, complete live manuals, controls and focus](examples/demos/upper-rack-material-v1/images/play-reference-1672x941.png)
 
 The retained calibration-dialog capture from the earlier product continuation at
 the minimum 960×700 window shows illustrative raw endpoints **20 / 100 / Inverted**,
@@ -240,24 +271,48 @@ MIDI-disabled build; the setup above explains how to enable a physical backend.
 
 | Current actual views | Linked captures |
 | --- | --- |
-| Active Dimensional Play | [Reference 1672×941](examples/demos/whole-reference-layout-v1/images/play-reference-1672x941.png) · [minimum active 1400×820](examples/demos/whole-reference-layout-v1/images/play-minimum-active-1400x820.png) |
-| Compact Play | [Default 1280×900](examples/demos/whole-reference-layout-v1/images/play-default-1280x900.png) · [minimum 960×700](examples/demos/whole-reference-layout-v1/images/play-minimum-960x700.png) |
-| Flat | [Reference size](examples/demos/whole-reference-layout-v1/images/flat-reference-1672x941.png) · [minimum size](examples/demos/whole-reference-layout-v1/images/flat-minimum-960x700.png) |
-| Rotary | [Reference size](examples/demos/whole-reference-layout-v1/images/rotary-reference-1672x941.png) · [minimum size](examples/demos/whole-reference-layout-v1/images/rotary-minimum-960x700.png) |
-| Service | [Reference size](examples/demos/whole-reference-layout-v1/images/service-reference-1672x941.png) · [minimum size](examples/demos/whole-reference-layout-v1/images/service-minimum-960x700.png) |
-| Relocated control focus | [Keyboard toolbar](examples/demos/whole-reference-layout-v1/images/play-toolbar-focus-1672x941.png) · [pedalboard](examples/demos/whole-reference-layout-v1/images/play-pedal-focus-1672x941.png) |
+| Active Dimensional Play | [Reference 1672×941](examples/demos/upper-rack-material-v1/images/play-reference-1672x941.png) · [minimum active 1400×820](examples/demos/upper-rack-material-v1/images/play-minimum-active-1400x820.png) |
+| Compact Play | [Default 1280×900](examples/demos/upper-rack-material-v1/images/play-default-1280x900.png) · [minimum 960×700](examples/demos/upper-rack-material-v1/images/play-minimum-960x700.png) |
+| Flat | [Reference size](examples/demos/upper-rack-material-v1/images/flat-reference-1672x941.png) · [minimum size](examples/demos/upper-rack-material-v1/images/flat-minimum-960x700.png) |
+| Rotary | [Reference size](examples/demos/upper-rack-material-v1/images/rotary-reference-1672x941.png) · [minimum size](examples/demos/upper-rack-material-v1/images/rotary-minimum-960x700.png) |
+| Service | [Reference size](examples/demos/upper-rack-material-v1/images/service-reference-1672x941.png) · [minimum size](examples/demos/upper-rack-material-v1/images/service-minimum-960x700.png) |
+| Relocated control focus | [Keyboard toolbar](examples/demos/upper-rack-material-v1/images/play-toolbar-focus-1672x941.png) · [pedalboard](examples/demos/upper-rack-material-v1/images/play-pedal-focus-1672x941.png) |
 
-The [capture provenance](examples/demos/whole-reference-layout-v1/provenance.json)
-records SDL dummy audio/video, software rendering, a MIDI-disabled build and equal
-logical/drawable dimensions. Running phase/frame/status fields can differ between
-captures. The separate [66-pair fixed-state raster comparison](docs/development/2026-11-15-execution-continuation/reports/whole-reference-raster-comparison-v2.json)
-covers **208,102,766 pixels**, with **28 entirely byte-identical inactive frames**
-and zero escaping changes. Its active mask protects as few as **34 pixels** in an
-unclipped frame: this is a narrow change-containment result, not visual equality.
-The [original 17-pixel mask failure](docs/development/2026-11-15-execution-continuation/reports/whole-reference-raster-comparison.json)
-and [independent legacy wood-stroke correction](docs/development/2026-11-15-execution-continuation/notes/A29.md)
-remain preserved. V2 follows the separately reviewed footprint of the original
-SDL strokes; the first declaration and failed result remain unchanged.
+The [capture provenance](examples/demos/upper-rack-material-v1/provenance.json)
+records dummy SDL audio/video, software rendering, a MIDI-disabled build and equal
+logical/drawable dimensions. These are actual app pixels and scripted interactions,
+not physical display, audio-device or accessibility qualification.
+
+### Upper-rack material comparison
+
+The [frozen material contract](docs/design/UPPER_RACK_MATERIAL_CONTRACT.md)
+changes only the inner metal of the Upper rack in active wide Dimensional Play.
+A source-derived physical mask was fixed before comparing the genuine old and
+new binaries. The [complete compressed result](docs/development/2026-11-15-streaming-continuation/reports/A20-raster-run1/report.json.gz)
+records **96 pairs and 307,095,606 pixels**, **zero changed pixels or channels
+outside the allowance**, and **37 required whole frames exactly equal**.
+There are 216 unchanged opaque child probes and 21,864 unchanged cyan focus
+pixels. The smallest ordinary active full frame protects 1,059,289 pixels;
+the three tiny resource crops protect zero outside pixels and do not supply
+containment evidence for a full view.
+
+The original JPEG and actual reference-size material use the same two frozen
+quiet patches. Values below are encoded-image statistics, not physical metal
+measurements; the report retains full precision, raw sums and original failures.
+
+| Image screen | Original reference | Previous material | Current material | Allowed absolute error |
+| --- | ---: | ---: | ---: | ---: |
+| Left patch mean | 18.291 | 31.841 | 18.334 | 2.0 |
+| Right patch mean | 25.323 | 31.819 | 25.408 | 2.0 |
+| Left detrended residual RMS | 1.377 | 0.487 | 1.608 | 0.4 |
+| Right detrended residual RMS | 1.563 | 0.622 | 1.468 | 0.4 |
+| Right-minus-left mean | 7.032 | −0.023 | 7.074 | 1.5 |
+
+All five screens pass for the current material; the baseline fails all five.
+The [independent comparison admission](docs/reviews/UPPER_RACK_COMPARISON_ADMISSION.md)
+separates these narrow measurements from visual acceptance. Earlier composition
+comparisons and their original failures remain in the
+[previous gallery](examples/demos/whole-reference-layout-v1/README.md).
 
 **Literal whole-interface 1:1 equality remains unmet and unwaived.** Comparing
 the [original reference](docs/design/atlas-cover-reference.jpg) with the new
@@ -265,8 +320,8 @@ capture still shows different panel/wood lighting, dark wells and rims, key/cap
 shading and bevels, and typography. Correct footage, the 0–8 drawbar direction,
 24 real presets, expression, pedals, utility controls and truthful unconnected
 model labels also differ from the concept's illustrative contents. The
-[current gallery review](docs/reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md)
-records these residuals separately from the improved geometry. Native display
+[current gallery review](docs/reviews/UPPER_RACK_GALLERY_ADMISSION.md)
+records these residuals separately from the improved Upper-rack material. Native display
 usability, semantic accessibility, physical devices, callback deadlines and
 measured audio/cabinet fidelity require their own evidence.
 
@@ -334,25 +389,25 @@ The objective remains one inspectable engine for an identified B-3/AO-28 and Les
 | **M0 — Reference and contracts** | Preserved atlas, source identities, nominal profiles, evidence classes and acquisition planning. | Identify specimen/revisions, applicable primary sources, permissions and measured inputs. |
 | **M1 — Testable core** | Prepared framework-independent core, bounded event handling, offline render and diagnostics. | Preserve timing, transactional failure, lifetime and coherent-source acceptance as models expand. |
 | **M2 — Shared generator** | 91 free-running nominal sources, corroborated documentary routing, and optional prepared synthetic sparse leakage with explicit offline gain. | Acquire geared tuning, pickup waves/levels/phases, loading and leakage evidence. |
-| **M3 — Console** | Manuals, pedals, fixed registrations, four retained banks, Cancel, percussion, expression and state4; separately qualified offline fractional-contact reference. | Design and admit a causal streaming candidate against a suitable independent reference, then measure contacts, loaded gains, preset behavior, percussion and expression circuits. |
+| **M3 — Console** | Manuals, pedals, fixed registrations, four retained banks, Cancel, percussion, expression and state4; separately qualified offline fractional-contact reference and isolated causal integer-grid trajectory. | Admit causal audio reconstruction and full-window reference grading, then qualify full-organ capacity and Engine/host integration; measure contacts, loaded gains, preset behavior, percussion and expression circuits. |
 | **M4 — Scanner** | Graph/compiler, independent references and prepared numerical modules. | Resolve the retained [G5 same-hertz failure](docs/SCANNER_HANDOFF.md) under its frozen contract before Engine integration. |
 | **M5 — Organ electronics** | Documentary inventory and signal-boundary work. | Complete revision-specific AO-28 connectivity, operating points, transformers and loaded/nonlinear dry-output validation. |
 | **M6 — Leslie electronics** | Independent ideal passive crossover and numerical/lifecycle evidence. | Declare same-Hz criteria, evaluate a separately identified numerical candidate, acquire real loads/losses, then qualify the coupled amplifier/transformer/crossover/driver model. |
 | **M7 — Rotary acoustics** | Independent R2 motion/R3 propagation and implemented R4 waveform renderer/CLI. | Complete the waveform owner's remaining independent acceptance; R5 audible policy, R6 runtime integration and physical cabinet evidence remain separate. |
 | **M8 — Calibration** | Capture/corpus/split tools, declared comparison policies, studies and report replay. | Execute the [physical acquisition sequence](docs/CALIBRATION_NEXT_ACQUISITION.md), then fit and evaluate held-out evidence with uncertainty. |
-| **M9 — Product and release** | Canonical wide Play composition, complete live controls, standalone workspaces, MIDI calibration/channel modes, optional VST3, stable state, actual current captures and explicit install components. | Continue the requested 1:1 visual match and qualify native callback retirement, real displays/devices/hosts, accessibility, callback deadlines, licensing and distribution. |
+| **M9 — Product and release** | Canonical wide Play composition and scoped Upper-inset finish, complete live controls, standalone workspaces, MIDI calibration/channel modes, optional VST3, stable state, actual current captures and explicit install components. | Continue the requested 1:1 visual match and qualify native callback retirement, real displays/devices/hosts, accessibility, callback deadlines, licensing and distribution. |
 
 The next concrete work is:
 
-1. **Continue toward the requested 1:1 interface.** The canonical composition is implemented; the [current review](docs/reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md) retains material, lighting, typography and semantic differences. Declare the next material/text comparison and execute an identified native display/DPI journey for small legends, focus, held-note resize, drawbar endpoints, pending/applied captions and calibration. Preserve the new gallery and earlier [UI acceptance requirements](docs/reviews/PRODUCT_UI_ACCEPTANCE.md); correct control counts do not waive the visual requirement.
-2. **Continue M3 from the admitted offline reference.** The [results](docs/CONTACT_SWITCHING_RESULTS.md) supply frozen source, input and resource evidence. Before a live implementation, declare causal latency, source phase, independent contact histories, bounded work/allocation, reset/tail behavior and block-partition acceptance. A later atlas `1e-4` grade needs an independently admitted full-window reference; 64 probes cannot supply it. Synchronized gesture/contact/source/dry captures remain a separate physical gate.
+1. **Continue toward the requested 1:1 interface.** The canonical composition and Upper-inset finish have scoped admission; the [current review](docs/reviews/UPPER_RACK_GALLERY_ADMISSION.md) retains other panel/wood lighting, key/cap shading, typography and semantic differences. Declare the next material/text comparison and execute an identified native display/DPI journey for small legends, focus, held-note resize, drawbar endpoints, pending/applied captions and calibration. Preserve the [current actual gallery](examples/demos/upper-rack-material-v1/README.md) and earlier [UI acceptance requirements](docs/reviews/PRODUCT_UI_ACCEPTANCE.md); the five local material screens do not waive whole-interface equality.
+2. **Continue M3 from the admitted integer-grid trajectory.** The [causal-grid guide](docs/CAUSAL_CONTACT_GRID_GUIDE.md) describes the implemented four-key, 4096-frame research epoch and its exact event/state acceptance. Freeze and independently admit the next causal audio/filter contract: integer conversion and error policy, absolute source phase, partial-cell integration, latency, full-window grading and reset/tail/flush ownership. Full-organ capacity and Engine/native/VST3 scheduling, lifecycle, allocation and deadlines need separate integration acceptance. A later atlas `1e-4` grade needs an independently admitted full-window reference; the [offline study's](docs/CONTACT_SWITCHING_RESULTS.md) 64 continuous probes cannot supply it. Synchronized gesture/contact/source/dry captures remain a separate physical gate.
 3. **Continue M6 through an explicit numerical and physical protocol.** Freeze frequency band, load family, magnitude/phase/complex-error criteria and independent check grid before comparing a new realization. Preserve the current same-Hz results and fixed documentary registry. [Crossover next gates](docs/CROSSOVER_DEVELOPER_GUIDE.md#5-continue-m6-through-explicit-gates)
 4. **Preserve the independent model tracks.** Resolve scanner G5; continue R4 integration/publication/final acceptance with its owner; acquire complete AO-28/Leslie electrical and cabinet inputs. Validate the dry organ before fitting downstream cabinet or room effects.
 5. **Complete native and release gates with observed evidence.** The [recovery review](docs/reviews/PRODUCT_NATIVE_RECOVERY_REVIEW.md) identifies a source-proven WinMM/CoreMIDI close-error observability gap. Its below-RtMidi fault-injection and checked-close task requires platform callback-retirement evidence; the review observed no hardware failure or use-after-free. Actual DAW/device journeys, native semantic accessibility, deadlines, rights and signed distribution retain separate requirements.
 
-The [active checkpoint](docs/development/2026-11-15-execution-continuation/CHECKPOINT.md)
+The [active checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md)
 records current source and actual progress; its
-[manifest](docs/development/2026-11-15-execution-continuation/assignments.json)
+[manifest](docs/development/2026-11-15-streaming-continuation/assignments.json)
 records this session's actual work and acceptance. The
 [earlier product handoff](docs/PRODUCT_HANDOFF.md) and
 [waveform checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md)
@@ -361,15 +416,50 @@ and each development session's worker waves are different organizations.
 
 ## Source-specific qualification
 
-Current M3 evidence is the [qualified installed study](docs/CONTACT_SWITCHING_RESULTS.md)
-at admitted runner `eb4d374c`, with an external whole-process resource receipt.
-Current M9 evidence is the [twelve-view gallery](examples/demos/whole-reference-layout-v1/README.md),
-[independent admission](docs/reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md) and
-[genuine old/new raster result](docs/development/2026-11-15-execution-continuation/reports/whole-reference-raster-comparison-v2.json).
-The [execution checkpoint](docs/development/2026-11-15-execution-continuation/CHECKPOINT.md)
-owns coherent-build, publication and hosted outcomes as they are observed. The
-earlier platform matrix below is retained at its original source and does not
-qualify later M3/M9 changes.
+The current [coherent local qualification](docs/development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json)
+passed **210/210 CTests in 191.90 seconds**, with 505 code/input files unchanged
+during the run. It identifies the working overlay above base
+`4aac394cde4da40906b615573a8779aee2d9a37a`, its binaries and retained logs.
+This is Linux GCC 14.2.0 Release with standalone/testing enabled, VST3, MIDI and
+sanitizers disabled and SDL 2.32.10 dummy audio/video. It does not establish
+current-source Windows/macOS, real-device or callback-deadline acceptance.
+
+The [publication-source receipt](docs/development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) also records the sole later change: one empty line removed from a resource test, followed by an identical rebuilt binary and a passing affected CTest. Eight missing/invalid-probe negative cases and both configured Python suites pass; native sanitizer selection now includes the rack fixture as gate 22 while preserving the previous gates and limits.
+
+Current M3 evidence covers the separately named **`causal-contact-grid-v1`**
+integer-input trajectory. The [independent differential record](docs/development/2026-11-15-streaming-continuation/notes/A21.md)
+reports **199 native probe invocations across eleven tests**, with every edge
+and complete padded snapshot equal to the rational oracle. The
+[frozen contract](docs/CAUSAL_CONTACT_GRID_CONTRACT.md) and
+[implementation review](docs/reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md)
+bound that exactness to its finite integer domain. Audio reconstruction,
+full-window audio grading, indefinite/full-organ operation and live integration
+remain separate work.
+
+Current M9 evidence is the [twelve-view Upper-rack gallery](examples/demos/upper-rack-material-v1/README.md)
+and its [independent admission](docs/reviews/UPPER_RACK_GALLERY_ADMISSION.md),
+together with the separately admitted [96-pair comparison](docs/reviews/UPPER_RACK_COMPARISON_ADMISSION.md).
+The comparison has zero escaping pixels or channels, 37 required whole frames
+exactly equal and all five local reference screens passing. These results
+qualify the declared Upper-inset surface and reviewed software captures;
+whole-interface 1:1, native display/DPI and accessibility remain open.
+
+The [current compatibility review](docs/reviews/STREAMING_CONTINUATION_COMPATIBILITY.md)
+checks preserved default Engine, musical-state and original-evidence identities.
+One matched **8,192-frame dry render** has byte-identical WAV and decoded PCM,
+with zero difference across 16,384 samples and no clipping. This is a bounded
+fixture result, not universal audio equivalence or physical calibration.
+
+The requested sixty-worker session, publication and current-source hosted CI
+remain pending. Use the [active checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+and [actual ledger](docs/development/2026-11-15-streaming-continuation/assignments.json)
+for subsequent progress and observed outcomes. The preceding execution session's
+[qualified installed study](docs/CONTACT_SWITCHING_RESULTS.md) at runner
+`eb4d374c`, [composition gallery](examples/demos/whole-reference-layout-v1/README.md),
+[gallery admission](docs/reviews/WHOLE_REFERENCE_GALLERY_ADMISSION.md) and
+[old/new raster result](docs/development/2026-11-15-execution-continuation/reports/whole-reference-raster-comparison-v2.json)
+retain their original source-specific scope. The earlier platform matrix below
+also remains historical evidence and does not qualify the current M3/M9 changes.
 
 ### Earlier product platform qualification
 
@@ -453,10 +543,11 @@ These recordings demonstrate the named nominal models and retained inputs; they 
 | --- | --- |
 | [Project guide](docs/PROJECT_GUIDE.md) | Reading order and the wider technical/documentary index. |
 | [Status](docs/STATUS.md), [Next steps](docs/NEXT_STEPS.md), [development log](docs/DEVELOPMENT_LOG.md) | Implemented work, observed checks, open gates and concrete continuation. |
-| [Active execution session](docs/development/2026-11-15-execution-continuation/README.md), [scope](docs/development/2026-11-15-execution-continuation/SCOPE.md) and [checkpoint](docs/development/2026-11-15-execution-continuation/CHECKPOINT.md) | Current M3/M9 scope, actual assignment ownership, exact setup and future-agent recovery. |
+| [Active contact/material session](docs/development/2026-11-15-streaming-continuation/README.md), [scope](docs/development/2026-11-15-streaming-continuation/SCOPE.md) and [checkpoint](docs/development/2026-11-15-streaming-continuation/CHECKPOINT.md) | Current M3/M9 scope, actual assignment ownership, exact setup and future-agent recovery. |
 | [Complete M0–M9 plan](docs/PLAN.md), [acceptance matrix](docs/ACCEPTANCE_MATRIX.md), [release readiness](docs/RELEASE_READINESS.md) | Whole-project dependencies and evidence required to finish. |
 | [Interface guide](docs/INTERFACE_RUNBOOK.md), [expression guide](docs/MIDI_EXPRESSION_GUIDE.md), [preset guide](docs/PRESET_RUNBOOK.md) | Current standalone operation, controller calibration and registration/state behavior. |
 | [Contact reference guide](docs/CONTACT_SWITCHING_GUIDE.md), [installation](docs/CONTACT_REFERENCE_INSTALL.md), [results](docs/CONTACT_SWITCHING_RESULTS.md) | Offline M3 operation, relocated package, frozen numerical admission and remaining causal/physical gates. |
+| [Causal contact grid guide](docs/CAUSAL_CONTACT_GRID_GUIDE.md), [contract](docs/CAUSAL_CONTACT_GRID_CONTRACT.md) | Exact integer-input trajectories, lifecycle, native transport, tests and remaining filter/integration work. |
 | [Parameters](docs/PARAMETERS.md), [control state](docs/CONTROL_STATE_FORMAT.md), [Engine API](docs/ENGINE_API.md) | Stable sound identities, state4/readers 1–3 and core timing/ownership. |
 | [Scanner handoff](docs/SCANNER_HANDOFF.md), [crossover guide](docs/CROSSOVER_DEVELOPER_GUIDE.md), [waveform checkpoint](docs/development/2026-11-14-waveform-continuation/CHECKPOINT.md) | Separate model implementations, source-specific evidence and remaining numerical gates. |
 | [Calibration handoff](docs/CALIBRATION_HANDOFF.md) and [next acquisition](docs/CALIBRATION_NEXT_ACQUISITION.md) | Existing capture tooling and missing real inputs. |
@@ -465,7 +556,7 @@ These recordings demonstrate the named nominal models and retained inputs; they 
 | [Original session handoff](docs/SESSION_HANDOFF.md), [earlier refinement handoff](docs/REFERENCE_REFINEMENT_HANDOFF.md) | Preserved dated commands and evidence; use the active checkpoint for current work. |
 | [Agent instructions](AGENTS.md), [repository checks](docs/REPOSITORY_CHECKS.md) | Standing continuation/publication workflow and read-only source/link integrity checks. |
 
-The unchanged [research atlas](Hammond_B3_Leslie_Research_Atlas_500pp.pdf) contains 80 chapters across 500 pages. The original [complete review](docs/research/ATLAS_REVIEW.md) and the current session's [six direct reading records](docs/development/2026-11-15-execution-continuation/reports/atlas-reading-coverage.json) cover every page. Coverage does not independently validate all underlying manufacturer sources or supply physical measurements. Referenced companion files absent from the baseline remain absent; new code/data retain reconstruction identities.
+The unchanged [research atlas](Hammond_B3_Leslie_Research_Atlas_500pp.pdf) contains 80 chapters across 500 pages. The original [complete review](docs/research/ATLAS_REVIEW.md) and the current session's [six direct reading records](docs/development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json) cover every page. Coverage does not independently validate all underlying manufacturer sources or supply physical measurements. Referenced companion files absent from the baseline remain absent; new code/data retain reconstruction identities.
 
 The nominal generator uses 12-TET, ideal shared sine sources, proposed phases and normalized amplitude. Two independent direct-image factory-table transcriptions corroborate the retained routing in the [factory comparison](docs/FACTORY_REFERENCE.md). They do not calibrate tuning, pickup levels, contact timing, circuits, rotors or acoustics. Historical G-G service readings are not oscillator amplitudes.
 

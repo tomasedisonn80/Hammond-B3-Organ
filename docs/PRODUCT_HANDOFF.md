@@ -1,6 +1,166 @@
 # Product continuation: setup and recovery handoff
 
-## Current recovery authority — portability publication
+**Post-review local update, 16 November 2026:** the [refreshed full suite](development/2026-11-15-streaming-continuation/reports/final-coherent-qualification.json) passes **210/210 in 191.90 seconds** after the missing-probe and sanitizer-selection repairs. The [publication-source receipt](development/2026-11-15-streaming-continuation/reports/publication-source-qualification.json) binds the sole later EOF whitespace cleanup, identical rebuilt resource binary and passing affected test. The earlier 191.89-second observation below retains its original inputs. Current-source hosted execution and final session publication remain pending.
+
+## Current contact/material continuation — 16 November 2026
+
+The [active streaming/material session](development/2026-11-15-streaming-continuation/README.md)
+advances the [accepted scope](development/2026-11-15-streaming-continuation/SCOPE.md):
+an **isolated M3 causal integer-grid contact trajectory** and **M9 Upper-rack
+inner-metal material**. Its six new readers covered all **500 atlas pages**;
+the [reading receipt](development/2026-11-15-streaming-continuation/reports/atlas-reading-coverage.json)
+retains each range, worker and extract identity. Reading supplies neither missing
+measurements nor independent verification of every cited primary document.
+
+Root's [coherent local qualification](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json)
+passed **210/210 CTests in 191.89 seconds** after a 131-step all-target rebuild.
+All 505 recorded code/test/tool/data inputs stayed unchanged during that run.
+This is the working overlay above base
+`4aac394cde4da40906b615573a8779aee2d9a37a`, tree
+`3605c9ce098a052afc10b2969fefe31e15644fe9`; the base alone does not contain the
+new work. **Completion of this request's sixty actual workers in ten waves,
+commit/push and current-source hosted CI remain pending at this handoff.** The
+[live checkpoint](development/2026-11-15-streaming-continuation/CHECKPOINT.md)
+and [actual ledger](development/2026-11-15-streaming-continuation/assignments.json)
+own later counts, acceptance and observed publication. Earlier sessions do not
+contribute worker credit, and this handoff does not close their unfinished ledgers.
+
+### Current delivery and its evidence boundaries
+
+| Delivery | Accepted evidence and limits |
+| --- | --- |
+| Exact causal trajectory | [`CausalContactGrid`](../include/hammond/research/CausalContactGrid.h) implements `causal-contact-grid-v1`: nine independent hysteretic contacts per key, persistent command anchors, incoming-equality ordering, exact rational roots and partition-independent state. Its [contract](CAUSAL_CONTACT_GRID_CONTRACT.md) admits 44.1/48/96 kHz, 65,536 ticks/frame, positions 0 through `2^48`, 1–4 keys, at most 4,096 frames and 512 supplied commands per epoch, and 4,608 edges. Exactness is confined to that integer domain; there is no implicit binary64 converter. |
+| Independent numerical and lifecycle checks | The [source review](reviews/CAUSAL_CONTACT_GRID_IMPLEMENTATION_REVIEW.md) establishes arithmetic/ordering arguments. The independent [Fraction differential suite](development/2026-11-15-streaming-continuation/notes/A21.md) passes eleven methods / 199 native invocations, comparing every edge and complete padded snapshot. The separate [lifecycle suite](development/2026-11-15-streaming-continuation/notes/A22.md) covers phase/error precedence, closure, reset, capacity and rollback; root's later coherent gate supplies its runtime result. Failure preserves state and caller-output bytes. `close_observation` applies endpoint targets without travel; it is not an audio drain. |
+| Strict native probe and Windows repair | The [CLI acceptance](development/2026-11-15-streaming-continuation/notes/A24.md) records 17 methods / 150 Linux processes, including 131 exact rejections, raw-byte limits, endpoint dispatch and typed output. Input is bounded to 131,072 bytes and output to 2 MiB. The [guarded Windows stdin repair](reviews/CAUSAL_CONTACT_GRID_PORTABILITY.md) prevents documented CRT CRLF/Ctrl-Z translations from undermining that transport. The final Linux coherent gate passed; actual Windows compile/runtime and mode-failure execution still require hosted/platform evidence. |
+| Bounded resources | [Independent admission](reviews/CAUSAL_CONTACT_GRID_RESOURCE_ADMISSION.md) reproduced 192 scopes with zero observed current-thread C++ allocations/deallocations, fixed staging, a **113,056-byte object on the measured ABI**, and frozen per-call ceilings including 4,608 edges and 80,640 ordering comparisons. Hook coverage, finite workloads and source bounds do not establish all system allocation, compiler stack use, indefinite/full-organ operation or callback deadlines. |
+| Upper-rack material | Only the Upper inner inset in active wide Dimensional Play changes. [Independent comparison admission](reviews/UPPER_RACK_COMPARISON_ADMISSION.md) covers **96 genuine paired cases / 307,095,606 pixels**, zero escaping pixels/channels, **37 exact required whole frames**, preserved child/focus samples and five passing local reference light/texture screens. Baseline failures remain. The three resource crops protect zero exterior pixels and supply no external-containment claim. [Painter review](reviews/UPPER_RACK_PAINTER_REVIEW.md) separately admits arithmetic, renderer-state preservation and source work bounds. |
+| Actual changed application | The [twelve-view gallery](../examples/demos/upper-rack-material-v1/README.md) and [641-check independent admission](reviews/UPPER_RACK_GALLERY_ADMISSION.md) bind actual native pixels, replay, controls and sources. Full-frame inspection found no new Upper-inset blocker. Reference/minimum-active/compact/Flat/Service/Rotary and toolbar/pedal-focus views retain their scope. Runtime counter/meter drift makes these captures distinct from exact-state raster pairs. Original BMP bytes are unavailable; lossless-conversion receipts and independently rechecked PNGs remain. |
+
+The [compatibility review](reviews/STREAMING_CONTINUATION_COMPATIBILITY.md)
+preserves the nominal dry Engine, original ContactBank, **91 shared free-running
+sources**, **47 parameter identities**, **`B3CONTROLS4` and readers 1–3**, plugin
+UUIDs, note ownership and phase/percussion histories. Notes do not restart source
+phase; silence/disconnected output still advances it; velocity does not scale
+steady loudness. UI changes add no sound state. The inventory remains **147
+playing keys, 24 presets, four banks and 68 ordinary controls including presets**.
+One genuine-before/current 8,192-frame dry fixture has identical complete WAV and
+all **16,384 decoded samples**, with zero clipping. This is a bounded fixture
+result. Its review records the historical baseline's whole-WAV-versus-PCM hash
+label correction without rewriting that original report.
+
+No new converter, audio reconstruction/filter, full-window audio grade or live
+Engine/standalone/VST3 contact route follows from this trajectory. Scanner,
+AO-28 and Leslie audio remain separate from the nominal dry Engine. **Literal
+whole-interface 1:1 remains unmet and unwaived**: other panel/wood illumination,
+key/cap bevels and shadows, typography and small-label density still differ.
+Physical fidelity, actual display/DPI/input, semantic accessibility, devices,
+DAWs and callback deadlines retain their separate evidence gates.
+
+### Current source, workspace and setup
+
+Read-only recovery during A34 found HEAD and the locally fetched `origin/main`
+at the base above, an empty staged diff and the active unstaged/untracked overlay.
+This is not a fresh remote-main observation. Root must fetch and inspect remote
+changes before publication. Keep the accepted overlay and other owners' work;
+a clean base clone cannot recover unpublished files from hashes alone.
+
+| Resource | Current identity and ownership |
+| --- | --- |
+| Writable source | `/workspace/scratch/177e78b1ac09/Hammond-B3-Organ`; workers edit assigned paths only. |
+| Coordinated build | `/workspace/scratch/177e78b1ac09/build-native`; root exclusively owns configure/build/CTest/capture coordination. |
+| Borrowed dependency | `/workspace/scratch/ade21b726509/SDL2`, pinned SDL **2.32.10**, commit `5d249570393f7a37e037abf22cd6012a4cc56a71`; read-only, never a cleanup target. |
+| Current tools | GCC **14.2.0** (`/usr/bin/cc`, `/usr/bin/c++`); CMake/CTest **3.31.6** from `/home/agent/.local/bin`; Ninja **1.11.1.git.kitware.jobserver-1** at `/home/agent/.local/bin/ninja`; Python **3.12.14**, selected executable `/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12`. These are A34's read-only current-tool/cache observations, separate from older toolchains below. |
+| Qualified native application | `../build-native/apps/standalone/hammond_standalone`, SHA-256 `c29495e98148767c0d55cab4adc18a245659cea891deb0f37fa160ea976c3cc1`; matches the admitted current gallery. |
+| Qualified probe and renderer | `../build-native/hammond_causal_contact_grid_probe` and `../build-native/hammond_render`; exact hashes, 505-input inventory and compressed original configure/build/CTest logs are in the [coherent receipt](development/2026-11-15-streaming-continuation/reports/coherent-qualification.json). |
+| Preserved local resources | `../baseline/` contains genuine prior binaries, painter, profile and dry WAV. `../resource-work/` contains this session's optional diagnostic instrumentation. Preserve original bytes and receipts before any owner-approved removal of reproducible intermediates. |
+
+**Normal desktop setup:** follow [README's current clean-checkout commands](../README.md#build-and-launch-the-native-application)
+and the [platform/MIDI guide](MIDI_EXPRESSION_GUIDE.md#build-the-native-application).
+Use C++20/C, CMake 3.21+, Python 3.10+, Git and the platform desktop/audio
+development packages. Acquire locked SDL explicitly; acquire locked RtMidi
+6.0.0 only for `HAMMOND_ENABLE_MIDI=ON`. Normal configuration keeps its native
+display/audio backends and can launch at `--width 1672 --height 941`; the new
+finish activates only in Dimensional Play at width ≥1400 and height ≥820.
+Without size arguments, 1280×900 remains the compact default. Keyboard/pointer
+operation can use MIDI OFF. No physical MIDI port is selected automatically.
+Optional VST3 needs its separate SDK and CMake 3.25+.
+
+**This workspace's recovery configuration is dummy SDL, MIDI OFF, VST3 OFF and
+sanitizers OFF.** It supports the recorded software tests/captures, not real
+display/audio/MIDI acceptance. From the current repository, root can recover the
+same intended configuration after releasing any source/build freeze:
+
+```sh
+cd /workspace/scratch/177e78b1ac09/Hammond-B3-Organ
+python3 -B tools/acquire_sdl2.py --verify-existing /workspace/scratch/ade21b726509/SDL2
+cmake -S . -B ../build-native -G Ninja -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_TESTING=ON -DHAMMOND_BUILD_STANDALONE=ON \
+  -DHAMMOND_BUILD_VST3=OFF -DHAMMOND_ENABLE_MIDI=OFF \
+  -DHAMMOND_ENABLE_SANITIZERS=OFF \
+  -DHAMMOND_SDL2_ROOT=/workspace/scratch/ade21b726509/SDL2 \
+  -DSDL_X11=OFF -DSDL_WAYLAND=OFF -DSDL_ALSA=OFF \
+  -DSDL_PULSEAUDIO=OFF -DSDL_JACK=OFF
+cmake --build ../build-native --config Release --parallel 3
+ctest --test-dir ../build-native -C Release --output-on-failure \
+  --no-tests=error --parallel 3
+```
+
+The 210-test gate is already complete; this recovery recipe is not a second A34
+execution. Prose/ledger changes require [repository integrity](REPOSITORY_CHECKS.md),
+while changes to qualified code/test/build inputs require affected coherent
+gates. Build inputs before CTest and discover the actual selection instead of
+inferring a future count. The earlier same-session **203/203 in 192.21 seconds**
+is the preserved [before-change baseline](development/2026-11-15-streaming-continuation/reports/baseline-qualification.json).
+The [causal-grid guide](CAUSAL_CONTACT_GRID_GUIDE.md) separately supplies the
+SDK-free build, verified one-frame probe example, lifecycle and focused tests.
+
+### Concrete next modules, inputs and gates
+
+| Boundary | Required next work and acceptance |
+| --- | --- |
+| M3 converter and causal audio | Start from the admitted grid and unchanged [offline reference/results](CONTACT_SWITCHING_RESULTS.md). Independently freeze integer conversion, rounding/collision history, error/contact-topology effects, absolute source phase, deterministic partial-cell integration, filter and reset/tail/rate behavior. The [reviewed proposal](CONTACT_STREAMING_NEXT_DESIGN.md) supplies proposed **D=16** scheduling and **33-sample nonempty drain**, not implemented audio. Its proposed `ContactStream` module/path still needs a new admitted contract. Extend independent continuous reference admission to every output sample before claiming full-window accuracy; the old 64-probe study does not supply that grade. Full-organ/indefinite capacity, host scheduling, latency reporting, ownership, allocation and deadlines need separate integration gates. |
+| M9 next material/type and native use | Declare the next panel/wood/key/type scope and reference targets before code. Preserve genuine before binaries, physical mask and independent paired/full-frame checks; recapture the actual app and update README. Execute identified native display/DPI/input journeys for small labels, focus, held-note resize, drawbar endpoints and pending/applied state. Semantic accessibility and whole-interface equality remain separate exits. |
+| Existing independent model/adapter owners | Recover [PLAN's ownership map](PLAN.md#current-ownership-and-source) before touching scanner/ScannerLineFoh, harmonic/leakage, same-Hz crossover, native MIDI retirement, deck or R4 work. Preserve scanner G5 failures, M5-before-downstream-fitting, separate horn/drum radiation inputs, one trajectory per rotor, R4 owner acceptance, R5 audible policy and R6 integration. A numerical pass cannot authorize a live Engine route. |
+| Physical inputs and release | Follow the [acquisition sequence](CALIBRATION_NEXT_ACQUISITION.md): identify specimen/revision, obtain synchronized travel/nine-contact/source-phase/dry captures with calibrated clocks, loading, uncertainty and held-out trials. Bounce, resistance, tap loading and real percussion/expression need evidence. Complete AO-28/Leslie connectivity, operating points, losses, loads and cabinet inputs retain M5–M8 gates. Native close/callback retirement, real devices/DAWs, deadlines, rights and signed distribution retain [release requirements](RELEASE_READINESS.md). |
+| Current session closure | Finish sixty distinct actual workers in ten six-worker waves and retain the matching strict ledger result only after real acceptance. Complete source/evidence reviews and final integrity. Root commits accepted chunks, fetches/inspects concurrent main, pushes with a fresh expected head and no force, then independently fetches/verifies commit/tree/parent and intended contents. Observe the thirteen required hosted jobs at the published source. Earlier product CI and strict records qualify their named source/session only. |
+
+### Mandatory continuation workflow
+
+Every future agent reads the **entire [AGENTS.md](../AGENTS.md) and complete
+[M0–M9 plan](PLAN.md)**, then README, status, next steps, latest log/handoff,
+active scope/checkpoint/ledger, relevant reviewed contracts and original evidence.
+Retain the 500-page coverage and read applicable chapters/errata; do not invent
+fresh reading credit. Inspect live HEAD/tree/index/remote, recover concurrent
+owners and claim a bounded dependency-ready task with acceptance and missing
+inputs before editing. This handoff adds no permission requirement.
+
+Use one coordinated build and assigned paths; preserve other sessions' checkouts,
+indexes, dependencies, builds and unfinished evidence as read-only. Record actual
+commands, source/toolchain/data identities, results, failures, setup blocks and
+unrun gates. Checkpoint each wave and before long operations/context changes or
+cleanup. Inspect storage and retain compact original logs, failures, hashes and
+selected lossless captures before removing only owned reproducible intermediates.
+
+This request requires **sixty new distinct workers, ten waves of six, at most
+three child workers running together**. Old workers, plans and follow-ups cannot
+count again. The matching ledger/validator owns record closure; historical
+product checkers cannot close the streaming or earlier execution session.
+After substantial work, update setup/runbooks/status/next steps/log/notes and
+actual README UI captures. Preserve qualification bindings through review,
+authorized nonforced commit/push and observed exact-source hosted outcomes.
+Physical and product gates remain open until their own evidence exists.
+
+## Historical product-continuation record — 15 November 2026
+
+All sections below retain the earlier product batch's sources, observations,
+commands, failures and pending statements. Their words “current”, “this session”
+and “next” refer to that historical batch, not the streaming/material session
+above. Original section anchors are retained. Its completed sixty-worker ledger
+and hosted results do not close this request or any other owner's ledger.
+
+<a id="current-recovery-authority--portability-publication"></a>
+
+## Historical product recovery authority — portability publication
 
 All **60 actual workers in ten logical waves are accepted**. The strict actual
 record check passes with the repaired checker and unchanged manifest/notes.
@@ -29,7 +189,9 @@ and below-RtMidi checked-close/callback-retirement qualification. Preserve the
 separate R4 checkout. All normal clean-checkout and coordinated-workspace commands
 below remain available; their dated verification statements retain their sources.
 
-## Dated A59 recovery audit — retained evidence
+<a id="dated-a59-recovery-audit--retained-evidence"></a>
+
+## Historical A59 recovery audit — retained evidence
 
 **A59 recovery audit: 15 November 2026, during wave 10.** The active session advances
 native M9 MIDI channel modes, expression-controller calibration and measured
@@ -49,7 +211,9 @@ The [recovery acceptance](reviews/PRODUCT_RECOVERY_ACCEPTANCE.md) and
 record exact observations and checks. This is a dated snapshot; the live
 checkpoint owns subsequent publication, worker counts and observed outcomes.
 
-## Recover the actual state first
+<a id="recover-the-actual-state-first"></a>
+
+## Historical product session: recover the actual state first
 
 Read the whole [AGENTS.md](../AGENTS.md), [M0–M9 plan](PLAN.md),
 [README](../README.md), [status](STATUS.md), [next steps](NEXT_STEPS.md), latest
@@ -87,7 +251,9 @@ The original PDF remains **21,248,265 bytes**, SHA-256
 `4ae13c3065c60d733d0daa33817259b3198cdb959070baecadc2981678e5e769`.
 Do not duplicate or rewrite it.
 
-### Validate this session's actual records
+<a id="validate-this-sessions-actual-records"></a>
+
+### Historical product session: validate its actual records
 
 The accepted [A46 checker](development/2026-11-15-product-continuation/notes/A46-session-validator.md)
 is present in this working checkout. From its repository root, while actual
@@ -113,7 +279,9 @@ Historical checkers and earlier partial snapshots cannot close this session.
 Until the later files are published, a clean d8 checkout lacks this checker;
 that is a publication boundary, not a reason to substitute an older script.
 
-## Where the product is
+<a id="where-the-product-is"></a>
+
+## Historical product session: implemented state
 
 | Area | Implemented behavior and retained boundary |
 | --- | --- |
@@ -131,7 +299,9 @@ differences, rack offsets and native-display/performance gaps. Scoped raster
 acceptance is complete for its named inputs; it does not close the user's full
 objective. Dummy SDL captures are not physical display or controller acceptance.
 
-## What the retained checks establish
+<a id="what-the-retained-checks-establish"></a>
+
+## Historical product session: retained checks
 
 | Exact source or observation | Result and scope |
 | --- | --- |
@@ -173,7 +343,9 @@ match the recorded decoded native-pixel hashes; the independent admission states
 that precise boundary. Do not recreate BMP files and label them originals.
 Original failures, historical galleries and named-source reports remain intact.
 
-## Clean checkout with a normal toolchain
+<a id="clean-checkout-with-a-normal-toolchain"></a>
+
+## Historical product session: clean checkout with a normal toolchain
 
 These commands are for a fresh developer checkout. Use a C++20 compiler, a C
 compiler for SDL, **CMake/CTest 3.21+**, **Python 3.10+**, Git and a supported build
@@ -245,7 +417,9 @@ Those are reproducible setup instructions, not newly executed results in A45
 or A59. A59 checked command syntax and actual CMake/preset/target definitions.
 Record the actual source, selected configuration and discovered tests when run.
 
-## This workspace's recovery setup
+<a id="this-workspaces-recovery-setup"></a>
+
+## Historical product workspace: recovery setup
 
 This session's source checkout is
 `/workspace/scratch/5b7d983ac078/Hammond-B3-Organ`; workers edit only assigned paths.
@@ -326,7 +500,9 @@ affected integrity checks; they do not justify repeating that full run while
 its code inputs still match. Neither A59 nor this recipe launches a physical
 MIDI backend from the current MIDI-OFF/dummy configuration.
 
-## Resource ownership and bounded continuation
+<a id="resource-ownership-and-bounded-continuation"></a>
+
+## Historical product session: resources and continuation
 
 At A45's earlier read-only `du`/`df` audit, approximately **309 MiB** was in this
 session's workspace: **177 MiB** for the repository, **92 MiB** for the primary build and
@@ -357,7 +533,9 @@ becomes constrained, inspect exact paths and ownership first, retain needed
 original evidence and list bounded reproducible candidates before removal.
 There is no authority to delete another session's files or blanket-clean scratch.
 
-## What to do next
+<a id="what-to-do-next"></a>
+
+## Historical product session: next work at that audit
 
 1. **Finish actual acceptance and strict accounting.** Use the live checkpoint
    for remaining assigned owners and their delivered note hashes. A46 is already

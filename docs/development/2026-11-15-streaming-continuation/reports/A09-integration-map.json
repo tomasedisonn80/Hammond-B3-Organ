@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "worker": "A09",
+  "wave": 2,
+  "session": "2026-11-15-streaming-continuation",
+  "scope": "Read-only CMake, CTest, installation, header, portability and hosted-workflow integration review",
+  "source": {
+    "checkout": "/workspace/scratch/177e78b1ac09/Hammond-B3-Organ",
+    "head_commit": "4aac394cde4da40906b615573a8779aee2d9a37a",
+    "head_tree": "3605c9ce098a052afc10b2969fefe31e15644fe9",
+    "origin": "https://github.com/tomasedisonn80/Hammond-B3-Organ.git",
+    "remote_identity_queried": false,
+    "head_identifies_working_overlay": false,
+    "concurrent_root_edits_observed": [
+      "AGENTS.md"
+    ]
+  },
+  "owned_paths": [
+    "docs/development/2026-11-15-streaming-continuation/notes/A09.md",
+    "docs/development/2026-11-15-streaming-continuation/reports/A09-integration-map.json"
+  ],
+  "execution": {
+    "configure": "not_run",
+    "build": "not_run",
+    "ctest": "not_run",
+    "install": "not_run",
+    "hosted_jobs": "not_queried",
+    "branch_protection": "not_queried",
+    "runtime_acceptance_claim": false
+  },
+  "proposed_names": {
+    "header": "include/hammond/research/CausalContactGrid.h",
+    "source": "src/research/CausalContactGrid.cpp",
+    "probe_source": "tools/causal_contact_grid_probe.cpp",
+    "probe_target": "hammond_causal_contact_grid_probe",
+    "cpp_test_source": "tests/test_causal_contact_grid.cpp",
+    "cpp_test_target_and_ctest": "test_causal_contact_grid",
+    "python_test_source": "tests/test_causal_contact_grid.py",
+    "python_ctest": "python_test_causal_contact_grid",
+    "python_native_path_variable": "HAMMOND_CAUSAL_CONTACT_GRID_PROBE_EXECUTABLE"
+  },
+  "integration_actions": [
+    {
+      "path": "CMakeLists.txt",
+      "action": "Append the absolute research source path to HAMMOND_CORE_SOURCES after its nonrecursive glob and before add_library."
+    },
+    {
+      "path": "CMakeLists.txt",
+      "action": "Create the probe executable, link hammond_core, and call hammond_configure_target."
+    },
+    {
+      "path": "CMakeLists.txt",
+      "action": "If the probe uses Windows wmain, add it to the MinGW CLI target list for -municode."
+    },
+    {
+      "path": "CMakeLists.txt",
+      "action": "Attach HAMMOND_CAUSAL_CONTACT_GRID_PROBE_EXECUTABLE=$<TARGET_FILE:hammond_causal_contact_grid_probe> to each native-consuming Python test after discovery."
+    },
+    {
+      "path": "CMakeLists.txt",
+      "action": "Append the probe to HAMMOND_TEST_TARGETS so the root check target builds its input. There is no generic core test-inputs target."
+    },
+    {
+      "path": "cmake/StandaloneBenchmark.cmake",
+      "action": "Append the exact nested research header to benchmark_core_headers; its current glob is nonrecursive. Source-list append automatically includes the new cpp in benchmark_inputs."
+    }
+  ],
+  "discovery": {
+    "core_sources": "src/*.cpp, nonrecursive CONFIGURE_DEPENDS",
+    "cpp_tests": "tests/test_*.cpp, nonrecursive CONFIGURE_DEPENDS",
+    "python_tests": "tests/test_*.py, nonrecursive CONFIGURE_DEPENDS",
+    "python_runner": "Execute each script directly with Python3_EXECUTABLE; script must call its runner as __main__.",
+    "cpp_common_definitions": [
+      "HAMMOND_TEST_PROFILE",
+      "HAMMOND_SOURCE_DIR"
+    ],
+    "python_common_environment": [
+      "PYTHONDONTWRITEBYTECODE=1",
+      "HAMMOND_TEST_PROFILE",
+      "HAMMOND_SOURCE_DIR"
+    ],
+    "missing_native_probe_policy": "Fail explicitly; do not skip or find a different binary.",
+    "core_build_then_test_target": "check",
+    "ctest_builds_inputs": false,
+    "required_selection_policy": "Inspect --show-only=json-v1, then use --no-tests=error and the exact accepted test set."
+  },
+  "core_and_install": {
+    "core_type": "STATIC, explicit",
+    "build_shared_libs_changes_core_type": false,
+    "installed_core_library": false,
+    "installed_public_headers": false,
+    "cmake_exported_package": false,
+    "dll_annotation_required_for_current_core": false,
+    "vst3_core_pic": "POSITION_INDEPENDENT_CODE ON when HAMMOND_BUILD_VST3 is enabled",
+    "current_include_interface": "Source-checkout include directory only",
+    "contact_reference_component": "Explicit 48-file copy-only Python/reference package, no native target/build required",
+    "minimal_install_change": "None; preserve every existing component inventory."
+  },
+  "toolchain": {
+    "cpp_standard": 20,
+    "cpp_extensions": false,
+    "cmake_minimum": "3.21",
+    "vst3_cmake_minimum": "3.25",
+    "python_minimum": "3.10",
+    "hosted_python": "3.12",
+    "gnu_clang_warning_options": [
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Wconversion",
+      "-Wsign-conversion",
+      "-Wshadow",
+      "-Werror"
+    ],
+    "msvc_warning_options": [
+      "/W4",
+      "/WX",
+      "/permissive-",
+      "/Zc:__cplusplus"
+    ],
+    "sanitizer_support": "GCC/Clang/AppleClang drivers with combined ASan and UBSan; MSVC/clang-cl rejected"
+  },
+  "portability_risks": [
+    "__int128 is not the portable MSVC/C++20 arithmetic solution.",
+    "Check all rational/grid intermediate bounds before arithmetic; unsigned wrap is not a normal UBSan failure.",
+    "Do not assume long double exceeds binary64 precision or use floating display coordinates as exact ordering keys.",
+    "Check nonfinite and out-of-range floating inputs before integer conversion; UINT64_MAX rounds upward in binary64.",
+    "Preserve collision/tie/no-op/reversal history across partitions; rollback includes admission state and output.",
+    "Use a separately frozen identity if the grid narrows or quantizes the older full binary64/Fraction reference domain.",
+    "Release tests require TestSupport CHECK rather than assert; whole-object memcmp may include padding.",
+    "Decimal parsing and CliArguments are offline boundary helpers, not allocation-free processing utilities.",
+    "Use target-file generator expressions for Windows/multi-configuration probe paths and retain inherited sanitizer environment."
+  ],
+  "hosted_expected_job_count": 13,
+  "hosted_expected_jobs": [
+    {
+      "workflow": ".github/workflows/ci.yml",
+      "name": "Release (Linux GCC)",
+      "new_contact_tests_selected": true
+    },
+    {
+      "workflow": ".github/workflows/ci.yml",
+      "name": "Release (macOS AppleClang)",
+      "new_contact_tests_selected": true
+    },
+    {
+      "workflow": ".github/workflows/ci.yml",
+      "name": "Release (Windows MSVC)",
+      "new_contact_tests_selected": true
+    },
+    {
+      "workflow": ".github/workflows/ci.yml",
+      "name": "Linux GCC ASan + UBSan + leaks",
+      "new_contact_tests_selected": true
+    },
+    {
+      "workflow": ".github/workflows/ci.yml",
+      "name": "Complete R4 waveform qualification (Linux GCC)",
+      "new_contact_tests_selected": false
+    },
+    {
+      "workflow": ".github/workflows/native-vst3.yml",
+      "name": "Native VST3 (Linux GCC)",
+      "new_contact_tests_selected": false
+    },
+    {
+      "workflow": ".github/workflows/native-vst3.yml",
+      "name": "Native VST3 (macOS AppleClang)",
+      "new_contact_tests_selected": false
+    },
+    {
+      "workflow": ".github/workflows/native-vst3.yml",
+      "name": "Native VST3 (Windows MSVC x64)",
+      "new_contact_tests_selected": false
+    },
+    {
+      "workflow": ".github/workflows/standalone.yml",
+      "name": "Native standalone (Linux GCC, MIDI ON)",
+      "new_contact_tests_selected": false
+    },
+    {
+      "workflow": ".github/workflows/standalone.yml",
+      "name": "Native standalone (macOS AppleClang, MIDI ON)",
+      "new_contact_tests_selected": false
+    },
+    {
+      "workflow": ".github/workflows/standalone.yml",
+      "name": "Native standalone (Windows MSVC x64, MIDI ON)",
+      "new_contact_tests_selected": false
+    },
+    {
+      "workflow": ".github/workflows/standalone.yml",
+      "name": "Native standalone (Linux GCC, MIDI OFF)",
+      "new_contact_tests_selected": false
+    },
+    {
+      "workflow": ".github/workflows/standalone.yml",
+      "name": "Native standalone (Linux GCC ASan + UBSan + leaks)",
+      "new_contact_tests_selected": false
+    }
+  ],
+  "workflow_patch_needed_for_top_level_contact_tests": false,
+  "documentation_reconciliation": [
+    "Shared current routing/checkout/source in AGENTS, PLAN, STATUS and NEXT_STEPS still described execution-continuation at first inspection; root started editing AGENTS during this review.",
+    "BUILD begins with an older reference-refinement handoff and describes core sources only as src/*.cpp.",
+    "STANDALONE_BENCHMARK_BUILD source-inventory wording must describe the explicit research additions.",
+    "Streaming checkpoint said three dispatched wave-1 workers while the inspected ledger listed six and did not yet record wave 2.",
+    "Keep historical 203-test and thirteen-job observations bound to their actual sources; no runtime outcome was observed by A09.",
+    "Preserve the unadmitted ContactStream proposal and frozen reference review/hashes; record a newly accepted CausalContactGrid contract separately."
+  ],
+  "preserved_boundaries": [
+    "Default ContactBank and dry Engine behavior",
+    "91 source identities",
+    "47 sound parameter identities",
+    "B3CONTROLS4 writer and readers 1 through 3",
+    "Other sessions' source/build ownership",
+    "Separate filter, full-window numerical, callback-resource, physical-fidelity and adapter-integration gates"
+  ],
+  "source_sha256": {
+    "CMakeLists.txt": "d968932bb49aed8e9c0ed0116f7209466d4e7890bc1db1f788369c1cad8b2a11",
+    "CMakePresets.json": "ff1fd841008624021f39ab22342560bf1e422477dd2ff1ee05dce71ac82c6fe8",
+    "cmake/StandaloneBenchmark.cmake": "737fdac548210959ccc4d7fbb59bed892237da78076884c6485b86105053d871",
+    "cmake/InstallHammondTools.cmake": "97cb6ec2c7073e3c50a1b00106317ddd726a2fb01e580dc96b55be0044140355",
+    "cmake/InstallContactReferenceTools.cmake": "b9994fcc297ca4f2ae005016dd7943b8d8960b35ca5f051f5bc57feba97bc9ea",
+    "cmake/InstallCrossoverTools.cmake": "20ee5ff15a55e3ba2d652da4360aa647adfa8ca55a7f947a1f127ade98bc7844",
+    "cmake/InstallSourceLeakageTools.cmake": "1307f47bba569812e2f94b42a23eb5184fb188f87071c1470754f84c0ef69cd1",
+    "cmake/InstallCaptureTools.cmake": "b7658c5ac2083e7661dd01d6ebf1cb66ee838a73e71fa2300c6d9b1affd5f015",
+    "cmake/InstallStandalone.cmake": "43bc6780b688bfc2bcadb9ef09bc81056b0be5fb91f0ad68cef4de6238ce4036",
+    ".github/workflows/ci.yml": "bafc57fa861490ffe89f3103c16c0dbe03afcdb35948faa11c25614d161b889f",
+    ".github/workflows/native-vst3.yml": "2376f41bfd96ff5afa2c821299588de05e5c49221879aef91a82074955649721",
+    ".github/workflows/standalone.yml": "daa195b2eb9d3dfd3664ca6f4d2a06ec2ff4005bca7c184eb5ced25fe288e57a",
+    "plugins/vst3/CMakeLists.txt": "25346bdd7edd1c966b3edc7f7b553ef49924bd5f21ddf7125422e76940652545",
+    "apps/standalone/CMakeLists.txt": "36cfc23b38e7f2322cddd09dc9c37b5010765e0d09de1f8290113a4262bfa986",
+    "include/hammond/ScannerLineFoh.h": "c7cf443b9fe85f0fe544605b2a15fbc2539661f735ca62760dbb510f7111b887",
+    "include/hammond/LeslieCrossover.h": "54efff218f873045bd07a2eb3270d07637e3f3fc5d2d51bac032b7efca53559c",
+    "include/hammond/ContactBank.h": "a083dcd65d989cc5be78a393fad74f40cbb530e33f89492d523e406f477be99d",
+    "include/hammond/detail/Decimal.h": "ae2c63ec61e823fda198a4951e029df11184980c9bc8394142a2d46951338c42",
+    "src/ContactBank.cpp": "91747d963d6cec74b3be12549abd8e816f4c176ce172fba52f9cdbc593c6e9e1",
+    "tools/CliArguments.h": "8ac5d91ebf66c31456159f028bce3c1c4b0dcd0c09118ac8c8d55c53a8912a47",
+    "tools/scanner_line_foh_probe.cpp": "6c39384dc5235abd84017faf834cece93bb96cabc8882f8e2e1e85168a2c8897",
+    "tests/TestSupport.h": "8869acab1e7492699b656984c7b24eb6d33f09dad6f989814a8a0c04e3c86be5",
+    "tests/test_scanner_foh_probe.py": "16b40506f5c076e1ccfe6265a01a552c3e2929202ae8d300b2988e047785e885",
+    "tests/test_crossover_acceptance.py": "cf9d8e94e4b57a623fa7fcfaa91d50e81ad19818d151f7dc7f5a1ead69070f95",
+    "tests/test_leslie_crossover_lifecycle.cpp": "b618ae41356a081891b1ab23e8a84feff508996f5c2c2a9360f9db2fe4004138",
+    "apps/standalone/tests/test_standalone_benchmark.py": "24039a7688eaece449cdfd088349a23e78a9146ef001f99b1b4770122773ff9f",
+    "docs/CONTACT_STREAMING_NEXT_DESIGN.md": "46e563e6be33a057dc406ee88d9245ad3f9cd8fdb75b6a6c5dcc2bfee185f4da",
+    "docs/reviews/CONTACT_STREAMING_DESIGN_REVIEW.md": "1a8020542304e0e24e86d57db317bed8ced9ad12ae3a68ad878d0749f2c18482",
+    "docs/BUILD.md": "90ad01e73bad3658f6ff8a999711634598787f2c0cffea4e33add30bab40b53b",
+    "docs/OFFLINE_INSTALL.md": "fa73ec5f084ab2b096581248715e91a3960554afcfb98268cdb334d526468334",
+    "docs/STANDALONE_BENCHMARK_BUILD.md": "9b9cd9d53862430b5d33d67c2755baa1994898386d67d980e7db770c35315cd7"
+  }
+}
